@@ -36,7 +36,7 @@ def md_template_path() -> str:
     passing in an absolute path on Windows causes `protoc-gen-markdown` to explode.
     """
 
-    return relpath(abspath(join(dirname(__file__), 'resources/markdown.tmpl')))
+    return relpath(abspath(join(dirname(__file__), 'resources/html.tmpl')))
 
 
 def java_plugin() -> str:

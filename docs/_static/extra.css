@@ -57,3 +57,87 @@ h1, h2, h3 {
 .proto-obj-contents p {
     font-size: 0.6rem;
 }
+
+
+/** BLAH BLAH **/
+.proto-obj-container {
+    margin-top: 5em;
+    margin-bottom: 5em;
+}
+
+.proto-obj-name {
+    font-feature-settings: "kern";
+    font-family: var(--md-code-font-family);
+}
+
+.proto-obj-description {
+    font-size: 0.6rem;
+}
+
+.proto-obj-fields {
+    margin-top: 1rem;
+}
+
+.proto-field:first-child {
+    border-top: unset !important;
+}
+
+.proto-field {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-top: 1px solid #e3e8ee;
+}
+
+.proto-field-name {
+    font-weight: bold;
+    font-size: 0.6rem;
+    font-feature-settings: "kern";
+    font-family: var(--md-code-font-family);
+
+    display: inline-block;
+}
+
+.proto-type-separator {
+    display: inline-block;
+}
+
+.proto-field-type {
+    font-size: 0.5rem;
+    font-feature-settings: "kern";
+    font-family: var(--md-code-font-family);
+    display: inline-block;
+}
+
+.proto-field-description {
+    font-size: 14px;
+}
+
+
+.proto-field-expand-btn {
+    cursor: pointer;
+    margin-top: 0.5rem;
+    margin-bottom: 0.3rem;
+    font-size: 0.75em;
+    border: 1px solid #e3e8ee;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: fit-content;
+}
+
+.proto-field-expand-btn:hover {
+    color: black;
+}
+
+.proto-field-sub-child.hidden {
+    display: none;
+}
+
+.proto-field-sub-child .proto-obj-fields {
+    margin-top: 0em;
+    margin-left: 1em;
+}
+
+.proto-obj-subtype-context {
+    color: grey;
+}

@@ -1,0 +1,4301 @@
+{
+  "files": [
+    {
+      "name": "sdk/options/v1/options.proto",
+      "description": "",
+      "package": "sdk.options.v1",
+      "hasEnums": false,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": false,
+      "enums": [],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "ServiceOptions",
+          "longName": "ServiceOptions",
+          "fullName": "sdk.options.v1.ServiceOptions",
+          "description": "Configuration for Trinsic SDK Services",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "server_endpoint",
+              "description": "Trinsic API endpoint; defaults to `prod.trinsic.cloud`",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "server_port",
+              "description": "Trinsic API port; defaults to `443`",
+              "label": "",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "server_use_tls",
+              "description": "Whether TLS is enabled between SDK and Trinsic API; defaults to `true`",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "auth_token",
+              "description": "Authentication token for SDK calls; defaults to empty string (unauthenticated)",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "default_ecosystem",
+              "description": "Default ecosystem ID to use for various SDK calls; defaults to `default`",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        }
+      ],
+      "services": []
+    },
+    {
+      "name": "services/account/v1/account.proto",
+      "description": "",
+      "package": "services.account.v1",
+      "hasEnums": true,
+      "hasExtensions": true,
+      "hasMessages": true,
+      "hasServices": true,
+      "enums": [
+        {
+          "name": "ConfirmationMethod",
+          "longName": "ConfirmationMethod",
+          "fullName": "services.account.v1.ConfirmationMethod",
+          "description": "Confirmation method type for two-factor workflows",
+          "values": [
+            {
+              "name": "None",
+              "number": "0",
+              "description": "No confirmation required"
+            },
+            {
+              "name": "Email",
+              "number": "1",
+              "description": "Email confirmation required"
+            },
+            {
+              "name": "Sms",
+              "number": "2",
+              "description": "SMS confirmation required"
+            },
+            {
+              "name": "ConnectedDevice",
+              "number": "3",
+              "description": "Confirmation from a connected device is required"
+            },
+            {
+              "name": "Other",
+              "number": "10",
+              "description": "Indicates third-party method of confirmation is required"
+            }
+          ]
+        }
+      ],
+      "extensions": [
+        {
+          "name": "optional",
+          "longName": ".google.protobuf.FieldOptions.optional",
+          "fullName": ".google.protobuf.FieldOptions.optional",
+          "description": "Whether field is optional in Trinsic's backend.\nThis is not the same as an `optional` protobuf label;\nit only impacts documentation generation for the field.",
+          "label": "optional",
+          "type": "bool",
+          "longType": "bool",
+          "fullType": "bool",
+          "number": 60000,
+          "defaultValue": "",
+          "containingType": "FieldOptions",
+          "containingLongType": ".google.protobuf.FieldOptions",
+          "containingFullType": "google.protobuf.FieldOptions"
+        }
+      ],
+      "messages": [
+        {
+          "name": "AccountDetails",
+          "longName": "AccountDetails",
+          "fullName": "services.account.v1.AccountDetails",
+          "description": "Account Registration Details",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "name",
+              "description": "Account name (optional)",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "email",
+              "description": "Email account (required)",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "sms",
+              "description": "SMS number including country code (optional)",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "AccountEcosystem",
+          "longName": "AccountEcosystem",
+          "fullName": "services.account.v1.AccountEcosystem",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "description",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "uri",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "AccountProfile",
+          "longName": "AccountProfile",
+          "fullName": "services.account.v1.AccountProfile",
+          "description": "Device profile containing sensitive authentication data.\nThis information should be stored securely",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "profile_type",
+              "description": "The type of profile, used to differentiate between\nprotocol schemes or versions",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "auth_data",
+              "description": "Auth data containg information about the current device access",
+              "label": "",
+              "type": "bytes",
+              "longType": "bytes",
+              "fullType": "bytes",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "auth_token",
+              "description": "Secure token issued by server used to generate zero-knowledge proofs",
+              "label": "",
+              "type": "bytes",
+              "longType": "bytes",
+              "fullType": "bytes",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "protection",
+              "description": "Token security information about the token.\nIf token protection is enabled, implementations must supply\nprotection secret before using the token for authentication.",
+              "label": "",
+              "type": "TokenProtection",
+              "longType": "TokenProtection",
+              "fullType": "services.account.v1.TokenProtection",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "InfoRequest",
+          "longName": "InfoRequest",
+          "fullName": "services.account.v1.InfoRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "InfoResponse",
+          "longName": "InfoResponse",
+          "fullName": "services.account.v1.InfoResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "details",
+              "description": "The account details associated with\nthe calling request context",
+              "label": "",
+              "type": "AccountDetails",
+              "longType": "AccountDetails",
+              "fullType": "services.account.v1.AccountDetails",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "ecosystems",
+              "description": "any ecosystems the account has access to",
+              "label": "repeated",
+              "type": "AccountEcosystem",
+              "longType": "AccountEcosystem",
+              "fullType": "services.account.v1.AccountEcosystem",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "deprecated": true
+              }
+            },
+            {
+              "name": "wallet_id",
+              "description": "The wallet id associated with this account",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "device_id",
+              "description": "The device id associated with this account",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "ecosystem_id",
+              "description": "The ecosystem id associated with this account",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ListDevicesRequest",
+          "longName": "ListDevicesRequest",
+          "fullName": "services.account.v1.ListDevicesRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "ListDevicesResponse",
+          "longName": "ListDevicesResponse",
+          "fullName": "services.account.v1.ListDevicesResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "RevokeDeviceRequest",
+          "longName": "RevokeDeviceRequest",
+          "fullName": "services.account.v1.RevokeDeviceRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "RevokeDeviceResponse",
+          "longName": "RevokeDeviceResponse",
+          "fullName": "services.account.v1.RevokeDeviceResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "SignInRequest",
+          "longName": "SignInRequest",
+          "fullName": "services.account.v1.SignInRequest",
+          "description": "Request for creating new account",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "details",
+              "description": "Account registration details",
+              "label": "",
+              "type": "AccountDetails",
+              "longType": "AccountDetails",
+              "fullType": "services.account.v1.AccountDetails",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "invitation_code",
+              "description": "Invitation code associated with this registration\nThis field is optional.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "ecosystem_id",
+              "description": "EcosystemId to sign in. This field is optional\nand will be ignored if invitation_code is passed",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "SignInResponse",
+          "longName": "SignInResponse",
+          "fullName": "services.account.v1.SignInResponse",
+          "description": "Response for creating new account\nThis object will indicate if a confirmation code\nwas sent to one of the users two-factor methods\nlike email, SMS, etc.",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "confirmation_method",
+              "description": "Indicates if confirmation of account is required.\nThis settings is configured globally by the server administrator.",
+              "label": "",
+              "type": "ConfirmationMethod",
+              "longType": "ConfirmationMethod",
+              "fullType": "services.account.v1.ConfirmationMethod",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "profile",
+              "description": "Contains authentication data for use with the current device.\nThis object must be stored in a secure place. It can also be\nprotected with a PIN, but this is optional.\nSee the docs at https://docs.trinsic.id for more information\non working with authentication data.",
+              "label": "",
+              "type": "AccountProfile",
+              "longType": "AccountProfile",
+              "fullType": "services.account.v1.AccountProfile",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TokenProtection",
+          "longName": "TokenProtection",
+          "fullName": "services.account.v1.TokenProtection",
+          "description": "Token protection info",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "enabled",
+              "description": "Indicates if token is protected using a PIN,\nsecurity code, HSM secret, etc.",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "method",
+              "description": "The method used to protect the token",
+              "label": "",
+              "type": "ConfirmationMethod",
+              "longType": "ConfirmationMethod",
+              "fullType": "services.account.v1.ConfirmationMethod",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        }
+      ],
+      "services": [
+        {
+          "name": "Account",
+          "longName": "Account",
+          "fullName": "services.account.v1.Account",
+          "description": "",
+          "methods": [
+            {
+              "name": "SignIn",
+              "description": "Sign in to an already existing account\n\nrpc SIgnInConfirm       (SignInConfirmRequest)      returns (SignInConfirmResponse);",
+              "requestType": "SignInRequest",
+              "requestLongType": "SignInRequest",
+              "requestFullType": "services.account.v1.SignInRequest",
+              "requestStreaming": false,
+              "responseType": "SignInResponse",
+              "responseLongType": "SignInResponse",
+              "responseFullType": "services.account.v1.SignInResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Info",
+              "description": "Get account information",
+              "requestType": "InfoRequest",
+              "requestLongType": "InfoRequest",
+              "requestFullType": "services.account.v1.InfoRequest",
+              "requestStreaming": false,
+              "responseType": "InfoResponse",
+              "responseLongType": "InfoResponse",
+              "responseFullType": "services.account.v1.InfoResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "ListDevices",
+              "description": "List all connected devices",
+              "requestType": "ListDevicesRequest",
+              "requestLongType": "ListDevicesRequest",
+              "requestFullType": "services.account.v1.ListDevicesRequest",
+              "requestStreaming": false,
+              "responseType": "ListDevicesResponse",
+              "responseLongType": "ListDevicesResponse",
+              "responseFullType": "services.account.v1.ListDevicesResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "RevokeDevice",
+              "description": "Revoke device access to the account's cloud wallet",
+              "requestType": "RevokeDeviceRequest",
+              "requestLongType": "RevokeDeviceRequest",
+              "requestFullType": "services.account.v1.RevokeDeviceRequest",
+              "requestStreaming": false,
+              "responseType": "RevokeDeviceResponse",
+              "responseLongType": "RevokeDeviceResponse",
+              "responseFullType": "services.account.v1.RevokeDeviceResponse",
+              "responseStreaming": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "services/common/v1/common.proto",
+      "description": "",
+      "package": "services.common.v1",
+      "hasEnums": true,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": false,
+      "enums": [
+        {
+          "name": "ResponseStatus",
+          "longName": "ResponseStatus",
+          "fullName": "services.common.v1.ResponseStatus",
+          "description": "",
+          "values": [
+            {
+              "name": "SUCCESS",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "WALLET_ACCESS_DENIED",
+              "number": "10",
+              "description": ""
+            },
+            {
+              "name": "WALLET_EXISTS",
+              "number": "11",
+              "description": ""
+            },
+            {
+              "name": "ITEM_NOT_FOUND",
+              "number": "20",
+              "description": ""
+            },
+            {
+              "name": "SERIALIZATION_ERROR",
+              "number": "200",
+              "description": ""
+            },
+            {
+              "name": "UNKNOWN_ERROR",
+              "number": "100",
+              "description": ""
+            }
+          ]
+        }
+      ],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "Nonce",
+          "longName": "Nonce",
+          "fullName": "services.common.v1.Nonce",
+          "description": "Nonce used to generate an oberon proof",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "timestamp",
+              "description": "UTC unix millisecond timestamp the request was made",
+              "label": "",
+              "type": "int64",
+              "longType": "int64",
+              "fullType": "int64",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "request_hash",
+              "description": "blake3256 hash of the request body",
+              "label": "",
+              "type": "bytes",
+              "longType": "bytes",
+              "fullType": "bytes",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ServerConfig",
+          "longName": "ServerConfig",
+          "fullName": "services.common.v1.ServerConfig",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "endpoint",
+              "description": "service endpoint",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "port",
+              "description": "service port",
+              "label": "",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "use_tls",
+              "description": "indicates if tls is used",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        }
+      ],
+      "services": []
+    },
+    {
+      "name": "services/debug/v1/debug.proto",
+      "description": "",
+      "package": "services.debug.v1",
+      "hasEnums": false,
+      "hasExtensions": false,
+      "hasMessages": false,
+      "hasServices": true,
+      "enums": [],
+      "extensions": [],
+      "messages": [],
+      "services": [
+        {
+          "name": "Debugging",
+          "longName": "Debugging",
+          "fullName": "services.debug.v1.Debugging",
+          "description": "",
+          "methods": [
+            {
+              "name": "CallEmpty",
+              "description": "",
+              "requestType": "Empty",
+              "requestLongType": ".google.protobuf.Empty",
+              "requestFullType": "google.protobuf.Empty",
+              "requestStreaming": false,
+              "responseType": "Empty",
+              "responseLongType": ".google.protobuf.Empty",
+              "responseFullType": "google.protobuf.Empty",
+              "responseStreaming": false
+            },
+            {
+              "name": "CallEmptyAuth",
+              "description": "",
+              "requestType": "Empty",
+              "requestLongType": ".google.protobuf.Empty",
+              "requestFullType": "google.protobuf.Empty",
+              "requestStreaming": false,
+              "responseType": "Empty",
+              "responseLongType": ".google.protobuf.Empty",
+              "responseFullType": "google.protobuf.Empty",
+              "responseStreaming": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "services/provider/v1/provider.proto",
+      "description": "",
+      "package": "services.provider.v1",
+      "hasEnums": true,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": true,
+      "enums": [
+        {
+          "name": "Status",
+          "longName": "InvitationStatusResponse.Status",
+          "fullName": "services.provider.v1.InvitationStatusResponse.Status",
+          "description": "",
+          "values": [
+            {
+              "name": "Error",
+              "number": "0",
+              "description": "Onboarding resulted in error"
+            },
+            {
+              "name": "InvitationSent",
+              "number": "1",
+              "description": "The participant has been invited"
+            },
+            {
+              "name": "Completed",
+              "number": "2",
+              "description": "The participant has been onboarded"
+            },
+            {
+              "name": "Expired",
+              "number": "3",
+              "description": "The invite has expired"
+            }
+          ]
+        },
+        {
+          "name": "ParticipantType",
+          "longName": "ParticipantType",
+          "fullName": "services.provider.v1.ParticipantType",
+          "description": "",
+          "values": [
+            {
+              "name": "participant_type_individual",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "participant_type_organization",
+              "number": "1",
+              "description": ""
+            }
+          ]
+        }
+      ],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "CreateEcosystemRequest",
+          "longName": "CreateEcosystemRequest",
+          "fullName": "services.provider.v1.CreateEcosystemRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "name",
+              "description": "Globally unique name for the Ecosystem. This name will be\npart of the ecosystem specific URLs and namespaces.\nAllowed characters are lowercase letters, numbers, underscore and hyphen.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "description",
+              "description": "Ecosystem description.\nThis field is optional.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "uri",
+              "description": "External URL associated with your organization or ecosystem entity.\nThis field is optional",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "details",
+              "description": "The account details of the owner of the ecosystem",
+              "label": "",
+              "type": "AccountDetails",
+              "longType": "services.account.v1.AccountDetails",
+              "fullType": "services.account.v1.AccountDetails",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "CreateEcosystemResponse",
+          "longName": "CreateEcosystemResponse",
+          "fullName": "services.provider.v1.CreateEcosystemResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "ecosystem",
+              "description": "Details of the created ecosystem",
+              "label": "",
+              "type": "Ecosystem",
+              "longType": "Ecosystem",
+              "fullType": "services.provider.v1.Ecosystem",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "profile",
+              "description": "Account profile for auth of the owner of the ecosystem",
+              "label": "",
+              "type": "AccountProfile",
+              "longType": "services.account.v1.AccountProfile",
+              "fullType": "services.account.v1.AccountProfile",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "confirmation_method",
+              "description": "Indicates if confirmation of account is required.\nThis settings is configured globally by the server administrator.",
+              "label": "",
+              "type": "ConfirmationMethod",
+              "longType": "services.account.v1.ConfirmationMethod",
+              "fullType": "services.account.v1.ConfirmationMethod",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "Ecosystem",
+          "longName": "Ecosystem",
+          "fullName": "services.provider.v1.Ecosystem",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "description",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "uri",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "GenerateTokenRequest",
+          "longName": "GenerateTokenRequest",
+          "fullName": "services.provider.v1.GenerateTokenRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "description",
+              "description": "Optional description to identify this token",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "GenerateTokenResponse",
+          "longName": "GenerateTokenResponse",
+          "fullName": "services.provider.v1.GenerateTokenResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "profile",
+              "description": "Account authentication profile that contains unprotected token",
+              "label": "",
+              "type": "AccountProfile",
+              "longType": "services.account.v1.AccountProfile",
+              "fullType": "services.account.v1.AccountProfile",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "GetOberonKeyRequest",
+          "longName": "GetOberonKeyRequest",
+          "fullName": "services.provider.v1.GetOberonKeyRequest",
+          "description": "request message for GetOberonKey",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "GetOberonKeyResponse",
+          "longName": "GetOberonKeyResponse",
+          "fullName": "services.provider.v1.GetOberonKeyResponse",
+          "description": "response message for GetOberonKey",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "key",
+              "description": "Oberon Public Key as RAW base64 URL encoded string",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "InvitationStatusRequest",
+          "longName": "InvitationStatusRequest",
+          "fullName": "services.provider.v1.InvitationStatusRequest",
+          "description": "Request details for the status of onboarding\nan individual or organization.\nThe reference_id passed is the response from the\n`Onboard` method call",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "invitation_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "InvitationStatusResponse",
+          "longName": "InvitationStatusResponse",
+          "fullName": "services.provider.v1.InvitationStatusResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "status",
+              "description": "",
+              "label": "",
+              "type": "Status",
+              "longType": "InvitationStatusResponse.Status",
+              "fullType": "services.provider.v1.InvitationStatusResponse.Status",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "status_details",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "Invite",
+          "longName": "Invite",
+          "fullName": "services.provider.v1.Invite",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "code",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "created",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "accepted",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "expires",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "InviteRequest",
+          "longName": "InviteRequest",
+          "fullName": "services.provider.v1.InviteRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "participant",
+              "description": "",
+              "label": "",
+              "type": "ParticipantType",
+              "longType": "ParticipantType",
+              "fullType": "services.provider.v1.ParticipantType",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "description",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "details",
+              "description": "",
+              "label": "",
+              "type": "AccountDetails",
+              "longType": "services.account.v1.AccountDetails",
+              "fullType": "services.account.v1.AccountDetails",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "DidCommInvitation",
+          "longName": "InviteRequest.DidCommInvitation",
+          "fullName": "services.provider.v1.InviteRequest.DidCommInvitation",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "InviteResponse",
+          "longName": "InviteResponse",
+          "fullName": "services.provider.v1.InviteResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "invitation_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "invitation_code",
+              "description": "Invitation Code that must be passed with the account 'SignIn' request\nto correlate this user with the invitation sent.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        }
+      ],
+      "services": [
+        {
+          "name": "Provider",
+          "longName": "Provider",
+          "fullName": "services.provider.v1.Provider",
+          "description": "",
+          "methods": [
+            {
+              "name": "CreateEcosystem",
+              "description": "Create new ecosystem and assign the authenticated user as owner",
+              "requestType": "CreateEcosystemRequest",
+              "requestLongType": "CreateEcosystemRequest",
+              "requestFullType": "services.provider.v1.CreateEcosystemRequest",
+              "requestStreaming": false,
+              "responseType": "CreateEcosystemResponse",
+              "responseLongType": "CreateEcosystemResponse",
+              "responseFullType": "services.provider.v1.CreateEcosystemResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "GenerateToken",
+              "description": "Generates an unprotected authentication token that can be used to\nconfigure server side applications",
+              "requestType": "GenerateTokenRequest",
+              "requestLongType": "GenerateTokenRequest",
+              "requestFullType": "services.provider.v1.GenerateTokenRequest",
+              "requestStreaming": false,
+              "responseType": "GenerateTokenResponse",
+              "responseLongType": "GenerateTokenResponse",
+              "responseFullType": "services.provider.v1.GenerateTokenResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Invite",
+              "description": "Invite a user to the ecosystem",
+              "requestType": "InviteRequest",
+              "requestLongType": "InviteRequest",
+              "requestFullType": "services.provider.v1.InviteRequest",
+              "requestStreaming": false,
+              "responseType": "InviteResponse",
+              "responseLongType": "InviteResponse",
+              "responseFullType": "services.provider.v1.InviteResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "InvitationStatus",
+              "description": "Check the invitation status",
+              "requestType": "InvitationStatusRequest",
+              "requestLongType": "InvitationStatusRequest",
+              "requestFullType": "services.provider.v1.InvitationStatusRequest",
+              "requestStreaming": false,
+              "responseType": "InvitationStatusResponse",
+              "responseLongType": "InvitationStatusResponse",
+              "responseFullType": "services.provider.v1.InvitationStatusResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "GetOberonKey",
+              "description": "Returns the public key being used to create/verify oberon tokens",
+              "requestType": "GetOberonKeyRequest",
+              "requestLongType": "GetOberonKeyRequest",
+              "requestFullType": "services.provider.v1.GetOberonKeyRequest",
+              "requestStreaming": false,
+              "responseType": "GetOberonKeyResponse",
+              "responseLongType": "GetOberonKeyResponse",
+              "responseFullType": "services.provider.v1.GetOberonKeyResponse",
+              "responseStreaming": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "services/trust-registry/v1/trust-registry.proto",
+      "description": "",
+      "package": "services.trustregistry.v1",
+      "hasEnums": true,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": true,
+      "enums": [
+        {
+          "name": "RegistrationStatus",
+          "longName": "RegistrationStatus",
+          "fullName": "services.trustregistry.v1.RegistrationStatus",
+          "description": "",
+          "values": [
+            {
+              "name": "CURRENT",
+              "number": "0",
+              "description": "- the entity is currently authorized, as of time of the query."
+            },
+            {
+              "name": "EXPIRED",
+              "number": "1",
+              "description": "- entity rights have expired."
+            },
+            {
+              "name": "TERMINATED",
+              "number": "2",
+              "description": "- entity has voluntarily ceased Issuer role under the specific EGF."
+            },
+            {
+              "name": "REVOKED",
+              "number": "3",
+              "description": "- entity authority under specific EGF was terminated by the governing authority."
+            },
+            {
+              "name": "NOT_FOUND",
+              "number": "10",
+              "description": ""
+            }
+          ]
+        }
+      ],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "AddFrameworkRequest",
+          "longName": "AddFrameworkRequest",
+          "fullName": "services.trustregistry.v1.AddFrameworkRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "governance_framework",
+              "description": "",
+              "label": "",
+              "type": "GovernanceFramework",
+              "longType": "GovernanceFramework",
+              "fullType": "services.trustregistry.v1.GovernanceFramework",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "AddFrameworkResponse",
+          "longName": "AddFrameworkResponse",
+          "fullName": "services.trustregistry.v1.AddFrameworkResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "CheckIssuerStatusRequest",
+          "longName": "CheckIssuerStatusRequest",
+          "fullName": "services.trustregistry.v1.CheckIssuerStatusRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "governance_framework_uri",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "did_uri",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "member",
+              "defaultValue": ""
+            },
+            {
+              "name": "x509_cert",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "member",
+              "defaultValue": ""
+            },
+            {
+              "name": "credential_type_uri",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "CheckIssuerStatusResponse",
+          "longName": "CheckIssuerStatusResponse",
+          "fullName": "services.trustregistry.v1.CheckIssuerStatusResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "status",
+              "description": "",
+              "label": "",
+              "type": "RegistrationStatus",
+              "longType": "RegistrationStatus",
+              "fullType": "services.trustregistry.v1.RegistrationStatus",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "CheckVerifierStatusRequest",
+          "longName": "CheckVerifierStatusRequest",
+          "fullName": "services.trustregistry.v1.CheckVerifierStatusRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "governance_framework_uri",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "did_uri",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "member",
+              "defaultValue": ""
+            },
+            {
+              "name": "x509_cert",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "member",
+              "defaultValue": ""
+            },
+            {
+              "name": "presentation_type_uri",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "CheckVerifierStatusResponse",
+          "longName": "CheckVerifierStatusResponse",
+          "fullName": "services.trustregistry.v1.CheckVerifierStatusResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "status",
+              "description": "",
+              "label": "",
+              "type": "RegistrationStatus",
+              "longType": "RegistrationStatus",
+              "fullType": "services.trustregistry.v1.RegistrationStatus",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "FetchDataRequest",
+          "longName": "FetchDataRequest",
+          "fullName": "services.trustregistry.v1.FetchDataRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "governance_framework_uri",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "query",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "FetchDataResponse",
+          "longName": "FetchDataResponse",
+          "fullName": "services.trustregistry.v1.FetchDataResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "response_json",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "has_more_results",
+              "description": "",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "continuation_token",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "GovernanceFramework",
+          "longName": "GovernanceFramework",
+          "fullName": "services.trustregistry.v1.GovernanceFramework",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "governance_framework_uri",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "trust_registry_uri",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "description",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "RegisterIssuerRequest",
+          "longName": "RegisterIssuerRequest",
+          "fullName": "services.trustregistry.v1.RegisterIssuerRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "did_uri",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "authority",
+              "defaultValue": ""
+            },
+            {
+              "name": "x509_cert",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "authority",
+              "defaultValue": ""
+            },
+            {
+              "name": "credential_type_uri",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "valid_from_utc",
+              "description": "",
+              "label": "",
+              "type": "uint64",
+              "longType": "uint64",
+              "fullType": "uint64",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "valid_until_utc",
+              "description": "",
+              "label": "",
+              "type": "uint64",
+              "longType": "uint64",
+              "fullType": "uint64",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "governance_framework_uri",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "RegisterIssuerResponse",
+          "longName": "RegisterIssuerResponse",
+          "fullName": "services.trustregistry.v1.RegisterIssuerResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "RegisterVerifierRequest",
+          "longName": "RegisterVerifierRequest",
+          "fullName": "services.trustregistry.v1.RegisterVerifierRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "did_uri",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "authority",
+              "defaultValue": ""
+            },
+            {
+              "name": "x509_cert",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "authority",
+              "defaultValue": ""
+            },
+            {
+              "name": "presentation_type_uri",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "valid_from_utc",
+              "description": "",
+              "label": "",
+              "type": "uint64",
+              "longType": "uint64",
+              "fullType": "uint64",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "valid_until_utc",
+              "description": "",
+              "label": "",
+              "type": "uint64",
+              "longType": "uint64",
+              "fullType": "uint64",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "governance_framework_uri",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "RegisterVerifierResponse",
+          "longName": "RegisterVerifierResponse",
+          "fullName": "services.trustregistry.v1.RegisterVerifierResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "RemoveFrameworkRequest",
+          "longName": "RemoveFrameworkRequest",
+          "fullName": "services.trustregistry.v1.RemoveFrameworkRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "governance_framework",
+              "description": "",
+              "label": "",
+              "type": "GovernanceFramework",
+              "longType": "GovernanceFramework",
+              "fullType": "services.trustregistry.v1.GovernanceFramework",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "RemoveFrameworkResponse",
+          "longName": "RemoveFrameworkResponse",
+          "fullName": "services.trustregistry.v1.RemoveFrameworkResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "SearchRegistryRequest",
+          "longName": "SearchRegistryRequest",
+          "fullName": "services.trustregistry.v1.SearchRegistryRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "query",
+              "description": "SELECT c from c where c.type == 'GovernanceFramework'",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "continuation_token",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "SearchRegistryResponse",
+          "longName": "SearchRegistryResponse",
+          "fullName": "services.trustregistry.v1.SearchRegistryResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "items_json",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "has_more",
+              "description": "",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "count",
+              "description": "",
+              "label": "",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "continuation_token",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "UnregisterIssuerRequest",
+          "longName": "UnregisterIssuerRequest",
+          "fullName": "services.trustregistry.v1.UnregisterIssuerRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "did_uri",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "authority",
+              "defaultValue": ""
+            },
+            {
+              "name": "x509_cert",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "authority",
+              "defaultValue": ""
+            },
+            {
+              "name": "credential_type_uri",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "governance_framework_uri",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "UnregisterIssuerResponse",
+          "longName": "UnregisterIssuerResponse",
+          "fullName": "services.trustregistry.v1.UnregisterIssuerResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "UnregisterVerifierRequest",
+          "longName": "UnregisterVerifierRequest",
+          "fullName": "services.trustregistry.v1.UnregisterVerifierRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "did_uri",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "authority",
+              "defaultValue": ""
+            },
+            {
+              "name": "x509_cert",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "authority",
+              "defaultValue": ""
+            },
+            {
+              "name": "presentation_type_uri",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "governance_framework_uri",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "UnregisterVerifierResponse",
+          "longName": "UnregisterVerifierResponse",
+          "fullName": "services.trustregistry.v1.UnregisterVerifierResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        }
+      ],
+      "services": [
+        {
+          "name": "TrustRegistry",
+          "longName": "TrustRegistry",
+          "fullName": "services.trustregistry.v1.TrustRegistry",
+          "description": "",
+          "methods": [
+            {
+              "name": "AddFramework",
+              "description": "Adds a trust registry defintion to the ecosystem",
+              "requestType": "AddFrameworkRequest",
+              "requestLongType": "AddFrameworkRequest",
+              "requestFullType": "services.trustregistry.v1.AddFrameworkRequest",
+              "requestStreaming": false,
+              "responseType": "AddFrameworkResponse",
+              "responseLongType": "AddFrameworkResponse",
+              "responseFullType": "services.trustregistry.v1.AddFrameworkResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "RemoveFramework",
+              "description": "",
+              "requestType": "RemoveFrameworkRequest",
+              "requestLongType": "RemoveFrameworkRequest",
+              "requestFullType": "services.trustregistry.v1.RemoveFrameworkRequest",
+              "requestStreaming": false,
+              "responseType": "RemoveFrameworkResponse",
+              "responseLongType": "RemoveFrameworkResponse",
+              "responseFullType": "services.trustregistry.v1.RemoveFrameworkResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "SearchRegistry",
+              "description": "",
+              "requestType": "SearchRegistryRequest",
+              "requestLongType": "SearchRegistryRequest",
+              "requestFullType": "services.trustregistry.v1.SearchRegistryRequest",
+              "requestStreaming": false,
+              "responseType": "SearchRegistryResponse",
+              "responseLongType": "SearchRegistryResponse",
+              "responseFullType": "services.trustregistry.v1.SearchRegistryResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "RegisterIssuer",
+              "description": "Registers an authoritative issuer with a credential template",
+              "requestType": "RegisterIssuerRequest",
+              "requestLongType": "RegisterIssuerRequest",
+              "requestFullType": "services.trustregistry.v1.RegisterIssuerRequest",
+              "requestStreaming": false,
+              "responseType": "RegisterIssuerResponse",
+              "responseLongType": "RegisterIssuerResponse",
+              "responseFullType": "services.trustregistry.v1.RegisterIssuerResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "RegisterVerifier",
+              "description": "Registers an authoritative verifier with a credential template",
+              "requestType": "RegisterVerifierRequest",
+              "requestLongType": "RegisterVerifierRequest",
+              "requestFullType": "services.trustregistry.v1.RegisterVerifierRequest",
+              "requestStreaming": false,
+              "responseType": "RegisterVerifierResponse",
+              "responseLongType": "RegisterVerifierResponse",
+              "responseFullType": "services.trustregistry.v1.RegisterVerifierResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "UnregisterIssuer",
+              "description": "Removes an authoritative issuer with a credential template from the trust registry",
+              "requestType": "UnregisterIssuerRequest",
+              "requestLongType": "UnregisterIssuerRequest",
+              "requestFullType": "services.trustregistry.v1.UnregisterIssuerRequest",
+              "requestStreaming": false,
+              "responseType": "UnregisterIssuerResponse",
+              "responseLongType": "UnregisterIssuerResponse",
+              "responseFullType": "services.trustregistry.v1.UnregisterIssuerResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "UnregisterVerifier",
+              "description": "Removes an authoritative verifier with a presentation template from the trust registry",
+              "requestType": "UnregisterVerifierRequest",
+              "requestLongType": "UnregisterVerifierRequest",
+              "requestFullType": "services.trustregistry.v1.UnregisterVerifierRequest",
+              "requestStreaming": false,
+              "responseType": "UnregisterVerifierResponse",
+              "responseLongType": "UnregisterVerifierResponse",
+              "responseFullType": "services.trustregistry.v1.UnregisterVerifierResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "CheckIssuerStatus",
+              "description": "",
+              "requestType": "CheckIssuerStatusRequest",
+              "requestLongType": "CheckIssuerStatusRequest",
+              "requestFullType": "services.trustregistry.v1.CheckIssuerStatusRequest",
+              "requestStreaming": false,
+              "responseType": "CheckIssuerStatusResponse",
+              "responseLongType": "CheckIssuerStatusResponse",
+              "responseFullType": "services.trustregistry.v1.CheckIssuerStatusResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "CheckVerifierStatus",
+              "description": "",
+              "requestType": "CheckVerifierStatusRequest",
+              "requestLongType": "CheckVerifierStatusRequest",
+              "requestFullType": "services.trustregistry.v1.CheckVerifierStatusRequest",
+              "requestStreaming": false,
+              "responseType": "CheckVerifierStatusResponse",
+              "responseLongType": "CheckVerifierStatusResponse",
+              "responseFullType": "services.trustregistry.v1.CheckVerifierStatusResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "FetchData",
+              "description": "",
+              "requestType": "FetchDataRequest",
+              "requestLongType": "FetchDataRequest",
+              "requestFullType": "services.trustregistry.v1.FetchDataRequest",
+              "requestStreaming": false,
+              "responseType": "FetchDataResponse",
+              "responseLongType": "FetchDataResponse",
+              "responseFullType": "services.trustregistry.v1.FetchDataResponse",
+              "responseStreaming": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "services/universal-wallet/v1/universal-wallet.proto",
+      "description": "",
+      "package": "services.universalwallet.v1",
+      "hasEnums": false,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": true,
+      "enums": [],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "DeleteItemRequest",
+          "longName": "DeleteItemRequest",
+          "fullName": "services.universalwallet.v1.DeleteItemRequest",
+          "description": "Delete item request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "item_id",
+              "description": "item identifier of the record to delete",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "DeleteItemResponse",
+          "longName": "DeleteItemResponse",
+          "fullName": "services.universalwallet.v1.DeleteItemResponse",
+          "description": "Delete item response",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "GetItemRequest",
+          "longName": "GetItemRequest",
+          "fullName": "services.universalwallet.v1.GetItemRequest",
+          "description": "Get item request object",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "item_id",
+              "description": "The item identifier",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "GetItemResponse",
+          "longName": "GetItemResponse",
+          "fullName": "services.universalwallet.v1.GetItemResponse",
+          "description": "Get item response object",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "item_json",
+              "description": "The item data represented as stringified JSON",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "item_type",
+              "description": "User set item type that described the content of this item",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "InsertItemRequest",
+          "longName": "InsertItemRequest",
+          "fullName": "services.universalwallet.v1.InsertItemRequest",
+          "description": "Insert item request",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "item_json",
+              "description": "the document to insert as stringified json",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "item_type",
+              "description": "optional item type ex. \"VerifiableCredential\"",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "InsertItemResponse",
+          "longName": "InsertItemResponse",
+          "fullName": "services.universalwallet.v1.InsertItemResponse",
+          "description": "Insert item response",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "item_id",
+              "description": "The item identifier of the inserted record",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "SearchRequest",
+          "longName": "SearchRequest",
+          "fullName": "services.universalwallet.v1.SearchRequest",
+          "description": "Search request object",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "query",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "continuation_token",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "SearchResponse",
+          "longName": "SearchResponse",
+          "fullName": "services.universalwallet.v1.SearchResponse",
+          "description": "Search response object",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "items",
+              "description": "",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "has_more",
+              "description": "",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "continuation_token",
+              "description": "int32 count = 3;",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "UpdateItemRequest",
+          "longName": "UpdateItemRequest",
+          "fullName": "services.universalwallet.v1.UpdateItemRequest",
+          "description": "Update item request object",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "item_id",
+              "description": "The item identifier",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "item_type",
+              "description": "The item type that described the content of this item",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "UpdateItemResponse",
+          "longName": "UpdateItemResponse",
+          "fullName": "services.universalwallet.v1.UpdateItemResponse",
+          "description": "Update item response object",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        }
+      ],
+      "services": [
+        {
+          "name": "UniversalWallet",
+          "longName": "UniversalWallet",
+          "fullName": "services.universalwallet.v1.UniversalWallet",
+          "description": "",
+          "methods": [
+            {
+              "name": "GetItem",
+              "description": "Retrieve an item from the wallet with a given item identifier",
+              "requestType": "GetItemRequest",
+              "requestLongType": "GetItemRequest",
+              "requestFullType": "services.universalwallet.v1.GetItemRequest",
+              "requestStreaming": false,
+              "responseType": "GetItemResponse",
+              "responseLongType": "GetItemResponse",
+              "responseFullType": "services.universalwallet.v1.GetItemResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Search",
+              "description": "Search the wallet using a SQL-like syntax",
+              "requestType": "SearchRequest",
+              "requestLongType": "SearchRequest",
+              "requestFullType": "services.universalwallet.v1.SearchRequest",
+              "requestStreaming": false,
+              "responseType": "SearchResponse",
+              "responseLongType": "SearchResponse",
+              "responseFullType": "services.universalwallet.v1.SearchResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "InsertItem",
+              "description": "Insert an item into the wallet",
+              "requestType": "InsertItemRequest",
+              "requestLongType": "InsertItemRequest",
+              "requestFullType": "services.universalwallet.v1.InsertItemRequest",
+              "requestStreaming": false,
+              "responseType": "InsertItemResponse",
+              "responseLongType": "InsertItemResponse",
+              "responseFullType": "services.universalwallet.v1.InsertItemResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "UpdateItem",
+              "description": "Insert an item into the wallet",
+              "requestType": "UpdateItemRequest",
+              "requestLongType": "UpdateItemRequest",
+              "requestFullType": "services.universalwallet.v1.UpdateItemRequest",
+              "requestStreaming": false,
+              "responseType": "UpdateItemResponse",
+              "responseLongType": "UpdateItemResponse",
+              "responseFullType": "services.universalwallet.v1.UpdateItemResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "DeleteItem",
+              "description": "Delete an item from the wallet permanently",
+              "requestType": "DeleteItemRequest",
+              "requestLongType": "DeleteItemRequest",
+              "requestFullType": "services.universalwallet.v1.DeleteItemRequest",
+              "requestStreaming": false,
+              "responseType": "DeleteItemResponse",
+              "responseLongType": "DeleteItemResponse",
+              "responseFullType": "services.universalwallet.v1.DeleteItemResponse",
+              "responseStreaming": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "services/verifiable-credentials/templates/v1/templates.proto",
+      "description": "",
+      "package": "services.verifiablecredentials.templates.v1",
+      "hasEnums": true,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": true,
+      "enums": [
+        {
+          "name": "FieldType",
+          "longName": "FieldType",
+          "fullName": "services.verifiablecredentials.templates.v1.FieldType",
+          "description": "",
+          "values": [
+            {
+              "name": "STRING",
+              "number": "0",
+              "description": ""
+            },
+            {
+              "name": "NUMBER",
+              "number": "1",
+              "description": ""
+            },
+            {
+              "name": "BOOL",
+              "number": "2",
+              "description": ""
+            },
+            {
+              "name": "DATETIME",
+              "number": "4",
+              "description": ""
+            }
+          ]
+        }
+      ],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "CreateCredentialTemplateRequest",
+          "longName": "CreateCredentialTemplateRequest",
+          "fullName": "services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest",
+          "description": "Request to create new template",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "name",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "fields",
+              "description": "",
+              "label": "repeated",
+              "type": "FieldsEntry",
+              "longType": "CreateCredentialTemplateRequest.FieldsEntry",
+              "fullType": "services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest.FieldsEntry",
+              "ismap": true,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "allow_additional_fields",
+              "description": "",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "FieldsEntry",
+          "longName": "CreateCredentialTemplateRequest.FieldsEntry",
+          "fullName": "services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest.FieldsEntry",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "key",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "value",
+              "description": "",
+              "label": "",
+              "type": "TemplateField",
+              "longType": "TemplateField",
+              "fullType": "services.verifiablecredentials.templates.v1.TemplateField",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "CreateCredentialTemplateResponse",
+          "longName": "CreateCredentialTemplateResponse",
+          "fullName": "services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "data",
+              "description": "",
+              "label": "",
+              "type": "TemplateData",
+              "longType": "TemplateData",
+              "fullType": "services.verifiablecredentials.templates.v1.TemplateData",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "DeleteCredentialTemplateRequest",
+          "longName": "DeleteCredentialTemplateRequest",
+          "fullName": "services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "DeleteCredentialTemplateResponse",
+          "longName": "DeleteCredentialTemplateResponse",
+          "fullName": "services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "GetCredentialTemplateRequest",
+          "longName": "GetCredentialTemplateRequest",
+          "fullName": "services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "GetCredentialTemplateResponse",
+          "longName": "GetCredentialTemplateResponse",
+          "fullName": "services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "template",
+              "description": "",
+              "label": "",
+              "type": "TemplateData",
+              "longType": "TemplateData",
+              "fullType": "services.verifiablecredentials.templates.v1.TemplateData",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "GetTemplateRequest",
+          "longName": "GetTemplateRequest",
+          "fullName": "services.verifiablecredentials.templates.v1.GetTemplateRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "GetTemplateResponse",
+          "longName": "GetTemplateResponse",
+          "fullName": "services.verifiablecredentials.templates.v1.GetTemplateResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "data",
+              "description": "",
+              "label": "",
+              "type": "TemplateData",
+              "longType": "TemplateData",
+              "fullType": "services.verifiablecredentials.templates.v1.TemplateData",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ListCredentialTemplatesRequest",
+          "longName": "ListCredentialTemplatesRequest",
+          "fullName": "services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "query",
+              "description": "SELECT * FROM c WHERE c.name = 'Diploma'",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "continuation_token",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ListCredentialTemplatesResponse",
+          "longName": "ListCredentialTemplatesResponse",
+          "fullName": "services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "templates",
+              "description": "",
+              "label": "repeated",
+              "type": "TemplateData",
+              "longType": "TemplateData",
+              "fullType": "services.verifiablecredentials.templates.v1.TemplateData",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "has_more_results",
+              "description": "",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "continuation_token",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ListTemplatesRequest",
+          "longName": "ListTemplatesRequest",
+          "fullName": "services.verifiablecredentials.templates.v1.ListTemplatesRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "ListTemplatesResponse",
+          "longName": "ListTemplatesResponse",
+          "fullName": "services.verifiablecredentials.templates.v1.ListTemplatesResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "templates",
+              "description": "",
+              "label": "repeated",
+              "type": "TemplateData",
+              "longType": "TemplateData",
+              "fullType": "services.verifiablecredentials.templates.v1.TemplateData",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "SearchCredentialTemplatesRequest",
+          "longName": "SearchCredentialTemplatesRequest",
+          "fullName": "services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "query",
+              "description": "SELECT * FROM c WHERE c.name = 'Diploma'",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "continuation_token",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "SearchCredentialTemplatesResponse",
+          "longName": "SearchCredentialTemplatesResponse",
+          "fullName": "services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "items_json",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "has_more",
+              "description": "",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "continuation_token",
+              "description": "int32 count = 3; - not populated nor valid",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TemplateData",
+          "longName": "TemplateData",
+          "fullName": "services.verifiablecredentials.templates.v1.TemplateData",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "name",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "version",
+              "description": "",
+              "label": "",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "fields",
+              "description": "",
+              "label": "repeated",
+              "type": "FieldsEntry",
+              "longType": "TemplateData.FieldsEntry",
+              "fullType": "services.verifiablecredentials.templates.v1.TemplateData.FieldsEntry",
+              "ismap": true,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "allow_additional_fields",
+              "description": "",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "schema_uri",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "context_uri",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "ecosystem_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "type",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "created_by",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "FieldsEntry",
+          "longName": "TemplateData.FieldsEntry",
+          "fullName": "services.verifiablecredentials.templates.v1.TemplateData.FieldsEntry",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "key",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "value",
+              "description": "",
+              "label": "",
+              "type": "TemplateField",
+              "longType": "TemplateField",
+              "fullType": "services.verifiablecredentials.templates.v1.TemplateField",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "TemplateField",
+          "longName": "TemplateField",
+          "fullName": "services.verifiablecredentials.templates.v1.TemplateField",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "description",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "optional",
+              "description": "",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "type",
+              "description": "",
+              "label": "",
+              "type": "FieldType",
+              "longType": "FieldType",
+              "fullType": "services.verifiablecredentials.templates.v1.FieldType",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        }
+      ],
+      "services": [
+        {
+          "name": "CredentialTemplates",
+          "longName": "CredentialTemplates",
+          "fullName": "services.verifiablecredentials.templates.v1.CredentialTemplates",
+          "description": "",
+          "methods": [
+            {
+              "name": "Create",
+              "description": "",
+              "requestType": "CreateCredentialTemplateRequest",
+              "requestLongType": "CreateCredentialTemplateRequest",
+              "requestFullType": "services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest",
+              "requestStreaming": false,
+              "responseType": "CreateCredentialTemplateResponse",
+              "responseLongType": "CreateCredentialTemplateResponse",
+              "responseFullType": "services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Get",
+              "description": "",
+              "requestType": "GetCredentialTemplateRequest",
+              "requestLongType": "GetCredentialTemplateRequest",
+              "requestFullType": "services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest",
+              "requestStreaming": false,
+              "responseType": "GetCredentialTemplateResponse",
+              "responseLongType": "GetCredentialTemplateResponse",
+              "responseFullType": "services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "List",
+              "description": "",
+              "requestType": "ListCredentialTemplatesRequest",
+              "requestLongType": "ListCredentialTemplatesRequest",
+              "requestFullType": "services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest",
+              "requestStreaming": false,
+              "responseType": "ListCredentialTemplatesResponse",
+              "responseLongType": "ListCredentialTemplatesResponse",
+              "responseFullType": "services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Search",
+              "description": "",
+              "requestType": "SearchCredentialTemplatesRequest",
+              "requestLongType": "SearchCredentialTemplatesRequest",
+              "requestFullType": "services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest",
+              "requestStreaming": false,
+              "responseType": "SearchCredentialTemplatesResponse",
+              "responseLongType": "SearchCredentialTemplatesResponse",
+              "responseFullType": "services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Delete",
+              "description": "",
+              "requestType": "DeleteCredentialTemplateRequest",
+              "requestLongType": "DeleteCredentialTemplateRequest",
+              "requestFullType": "services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest",
+              "requestStreaming": false,
+              "responseType": "DeleteCredentialTemplateResponse",
+              "responseLongType": "DeleteCredentialTemplateResponse",
+              "responseFullType": "services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse",
+              "responseStreaming": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "description": "",
+      "package": "services.verifiablecredentials.v1",
+      "hasEnums": false,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": true,
+      "enums": [],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "CheckStatusRequest",
+          "longName": "CheckStatusRequest",
+          "fullName": "services.verifiablecredentials.v1.CheckStatusRequest",
+          "description": "request object to check the status of the revocation entry",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "credential_status_id",
+              "description": "the credential status id",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "CheckStatusResponse",
+          "longName": "CheckStatusResponse",
+          "fullName": "services.verifiablecredentials.v1.CheckStatusResponse",
+          "description": "response object for checking the status of revocation entry",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "revoked",
+              "description": "indicates if the status is revoked",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "CreateProofRequest",
+          "longName": "CreateProofRequest",
+          "fullName": "services.verifiablecredentials.v1.CreateProofRequest",
+          "description": "Create Proof",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "reveal_document_json",
+              "description": "Optional document that describes which fields should be\nrevealed in the generated proof. If specified, this document must be\na valid JSON-LD frame.\nIf this field is not specified, a default reveal document will be\nused and all fields in the signed document will be revealed",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "item_id",
+              "description": "The item identifier that contains a record with a verifiable\ncredential to be used for generating the proof.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "proof",
+              "defaultValue": ""
+            },
+            {
+              "name": "document_json",
+              "description": "A document that contains a valid verifiable credential with an\nunbound signature. The proof will be derived from this document\ndirectly. The document will not be stored in the wallet.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "proof",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "CreateProofResponse",
+          "longName": "CreateProofResponse",
+          "fullName": "services.verifiablecredentials.v1.CreateProofResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "proof_document_json",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "IssueFromTemplateRequest",
+          "longName": "IssueFromTemplateRequest",
+          "fullName": "services.verifiablecredentials.v1.IssueFromTemplateRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "template_id",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "values_json",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "IssueFromTemplateResponse",
+          "longName": "IssueFromTemplateResponse",
+          "fullName": "services.verifiablecredentials.v1.IssueFromTemplateResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "document_json",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "IssueRequest",
+          "longName": "IssueRequest",
+          "fullName": "services.verifiablecredentials.v1.IssueRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "document_json",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "IssueResponse",
+          "longName": "IssueResponse",
+          "fullName": "services.verifiablecredentials.v1.IssueResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "signed_document_json",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "SendRequest",
+          "longName": "SendRequest",
+          "fullName": "services.verifiablecredentials.v1.SendRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "email",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "delivery_method",
+              "defaultValue": ""
+            },
+            {
+              "name": "did_uri",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "delivery_method",
+              "defaultValue": ""
+            },
+            {
+              "name": "didcomm_invitation_json",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "delivery_method",
+              "defaultValue": ""
+            },
+            {
+              "name": "document_json",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "SendResponse",
+          "longName": "SendResponse",
+          "fullName": "services.verifiablecredentials.v1.SendResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "UpdateStatusRequest",
+          "longName": "UpdateStatusRequest",
+          "fullName": "services.verifiablecredentials.v1.UpdateStatusRequest",
+          "description": "request object to update the status of the revocation entry",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "credential_status_id",
+              "description": "the credential status id",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "revoked",
+              "description": "indicates if the status is revoked",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "UpdateStatusResponse",
+          "longName": "UpdateStatusResponse",
+          "fullName": "services.verifiablecredentials.v1.UpdateStatusResponse",
+          "description": "response object for update of status of revocation entry",
+          "hasExtensions": false,
+          "hasFields": false,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": []
+        },
+        {
+          "name": "ValidationMessage",
+          "longName": "ValidationMessage",
+          "fullName": "services.verifiablecredentials.v1.ValidationMessage",
+          "description": "validation message that contains results and error messages",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "is_valid",
+              "description": "the validation result",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "messages",
+              "description": "set of messages that contain validation results",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "VerifyProofRequest",
+          "longName": "VerifyProofRequest",
+          "fullName": "services.verifiablecredentials.v1.VerifyProofRequest",
+          "description": "Verify Proof",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "proof_document_json",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "VerifyProofResponse",
+          "longName": "VerifyProofResponse",
+          "fullName": "services.verifiablecredentials.v1.VerifyProofResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "is_valid",
+              "description": "Indicates if the proof is valid",
+              "label": "",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "validation_messages",
+              "description": "",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": "",
+              "options": {
+                "deprecated": true
+              }
+            },
+            {
+              "name": "validation_results",
+              "description": "Validation messages that describe invalid verifications\nbased on different factors, such as schema validation,\nproof verification, revocation registry membership, etc.\nIf the proof is not valid, this field will contain detailed\nresults where this verification failed.",
+              "label": "repeated",
+              "type": "ValidationResultsEntry",
+              "longType": "VerifyProofResponse.ValidationResultsEntry",
+              "fullType": "services.verifiablecredentials.v1.VerifyProofResponse.ValidationResultsEntry",
+              "ismap": true,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "ValidationResultsEntry",
+          "longName": "VerifyProofResponse.ValidationResultsEntry",
+          "fullName": "services.verifiablecredentials.v1.VerifyProofResponse.ValidationResultsEntry",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "key",
+              "description": "",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "value",
+              "description": "",
+              "label": "",
+              "type": "ValidationMessage",
+              "longType": "ValidationMessage",
+              "fullType": "services.verifiablecredentials.v1.ValidationMessage",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        }
+      ],
+      "services": [
+        {
+          "name": "VerifiableCredential",
+          "longName": "VerifiableCredential",
+          "fullName": "services.verifiablecredentials.v1.VerifiableCredential",
+          "description": "",
+          "methods": [
+            {
+              "name": "Issue",
+              "description": "Sign and issue a verifiable credential from a submitted document.\nThe document must be a valid JSON-LD document.",
+              "requestType": "IssueRequest",
+              "requestLongType": "IssueRequest",
+              "requestFullType": "services.verifiablecredentials.v1.IssueRequest",
+              "requestStreaming": false,
+              "responseType": "IssueResponse",
+              "responseLongType": "IssueResponse",
+              "responseFullType": "services.verifiablecredentials.v1.IssueResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "IssueFromTemplate",
+              "description": "Sign and issue a verifiable credential from a pre-defined template.\nThis process will also add schema validation and \nrevocation registry entry in the credential.",
+              "requestType": "IssueFromTemplateRequest",
+              "requestLongType": "IssueFromTemplateRequest",
+              "requestFullType": "services.verifiablecredentials.v1.IssueFromTemplateRequest",
+              "requestStreaming": false,
+              "responseType": "IssueFromTemplateResponse",
+              "responseLongType": "IssueFromTemplateResponse",
+              "responseFullType": "services.verifiablecredentials.v1.IssueFromTemplateResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "CheckStatus",
+              "description": "Check credential status in the revocation registry",
+              "requestType": "CheckStatusRequest",
+              "requestLongType": "CheckStatusRequest",
+              "requestFullType": "services.verifiablecredentials.v1.CheckStatusRequest",
+              "requestStreaming": false,
+              "responseType": "CheckStatusResponse",
+              "responseLongType": "CheckStatusResponse",
+              "responseFullType": "services.verifiablecredentials.v1.CheckStatusResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "UpdateStatus",
+              "description": "Update credential status by setting the revocation value",
+              "requestType": "UpdateStatusRequest",
+              "requestLongType": "UpdateStatusRequest",
+              "requestFullType": "services.verifiablecredentials.v1.UpdateStatusRequest",
+              "requestStreaming": false,
+              "responseType": "UpdateStatusResponse",
+              "responseLongType": "UpdateStatusResponse",
+              "responseFullType": "services.verifiablecredentials.v1.UpdateStatusResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "CreateProof",
+              "description": "Create a proof from a signed document that is a valid\nverifiable credential and contains a signature from which a proof can be derived.",
+              "requestType": "CreateProofRequest",
+              "requestLongType": "CreateProofRequest",
+              "requestFullType": "services.verifiablecredentials.v1.CreateProofRequest",
+              "requestStreaming": false,
+              "responseType": "CreateProofResponse",
+              "responseLongType": "CreateProofResponse",
+              "responseFullType": "services.verifiablecredentials.v1.CreateProofResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "VerifyProof",
+              "description": "Verifies a proof by checking the signature value, and if possible schema validation,\nrevocation status, and issuer status against a trust registry",
+              "requestType": "VerifyProofRequest",
+              "requestLongType": "VerifyProofRequest",
+              "requestFullType": "services.verifiablecredentials.v1.VerifyProofRequest",
+              "requestStreaming": false,
+              "responseType": "VerifyProofResponse",
+              "responseLongType": "VerifyProofResponse",
+              "responseFullType": "services.verifiablecredentials.v1.VerifyProofResponse",
+              "responseStreaming": false
+            },
+            {
+              "name": "Send",
+              "description": "Sends a document directly to a user's email within the given ecosystem",
+              "requestType": "SendRequest",
+              "requestLongType": "SendRequest",
+              "requestFullType": "services.verifiablecredentials.v1.SendRequest",
+              "requestStreaming": false,
+              "responseType": "SendResponse",
+              "responseLongType": "SendResponse",
+              "responseFullType": "services.verifiablecredentials.v1.SendResponse",
+              "responseStreaming": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "scalarValueTypes": [
+    {
+      "protoType": "double",
+      "notes": "",
+      "cppType": "double",
+      "csType": "double",
+      "goType": "float64",
+      "javaType": "double",
+      "phpType": "float",
+      "pythonType": "float",
+      "rubyType": "Float"
+    },
+    {
+      "protoType": "float",
+      "notes": "",
+      "cppType": "float",
+      "csType": "float",
+      "goType": "float32",
+      "javaType": "float",
+      "phpType": "float",
+      "pythonType": "float",
+      "rubyType": "Float"
+    },
+    {
+      "protoType": "int32",
+      "notes": "Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint32 instead.",
+      "cppType": "int32",
+      "csType": "int",
+      "goType": "int32",
+      "javaType": "int",
+      "phpType": "integer",
+      "pythonType": "int",
+      "rubyType": "Bignum or Fixnum (as required)"
+    },
+    {
+      "protoType": "int64",
+      "notes": "Uses variable-length encoding. Inefficient for encoding negative numbers – if your field is likely to have negative values, use sint64 instead.",
+      "cppType": "int64",
+      "csType": "long",
+      "goType": "int64",
+      "javaType": "long",
+      "phpType": "integer/string",
+      "pythonType": "int/long",
+      "rubyType": "Bignum"
+    },
+    {
+      "protoType": "uint32",
+      "notes": "Uses variable-length encoding.",
+      "cppType": "uint32",
+      "csType": "uint",
+      "goType": "uint32",
+      "javaType": "int",
+      "phpType": "integer",
+      "pythonType": "int/long",
+      "rubyType": "Bignum or Fixnum (as required)"
+    },
+    {
+      "protoType": "uint64",
+      "notes": "Uses variable-length encoding.",
+      "cppType": "uint64",
+      "csType": "ulong",
+      "goType": "uint64",
+      "javaType": "long",
+      "phpType": "integer/string",
+      "pythonType": "int/long",
+      "rubyType": "Bignum or Fixnum (as required)"
+    },
+    {
+      "protoType": "sint32",
+      "notes": "Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int32s.",
+      "cppType": "int32",
+      "csType": "int",
+      "goType": "int32",
+      "javaType": "int",
+      "phpType": "integer",
+      "pythonType": "int",
+      "rubyType": "Bignum or Fixnum (as required)"
+    },
+    {
+      "protoType": "sint64",
+      "notes": "Uses variable-length encoding. Signed int value. These more efficiently encode negative numbers than regular int64s.",
+      "cppType": "int64",
+      "csType": "long",
+      "goType": "int64",
+      "javaType": "long",
+      "phpType": "integer/string",
+      "pythonType": "int/long",
+      "rubyType": "Bignum"
+    },
+    {
+      "protoType": "fixed32",
+      "notes": "Always four bytes. More efficient than uint32 if values are often greater than 2^28.",
+      "cppType": "uint32",
+      "csType": "uint",
+      "goType": "uint32",
+      "javaType": "int",
+      "phpType": "integer",
+      "pythonType": "int",
+      "rubyType": "Bignum or Fixnum (as required)"
+    },
+    {
+      "protoType": "fixed64",
+      "notes": "Always eight bytes. More efficient than uint64 if values are often greater than 2^56.",
+      "cppType": "uint64",
+      "csType": "ulong",
+      "goType": "uint64",
+      "javaType": "long",
+      "phpType": "integer/string",
+      "pythonType": "int/long",
+      "rubyType": "Bignum"
+    },
+    {
+      "protoType": "sfixed32",
+      "notes": "Always four bytes.",
+      "cppType": "int32",
+      "csType": "int",
+      "goType": "int32",
+      "javaType": "int",
+      "phpType": "integer",
+      "pythonType": "int",
+      "rubyType": "Bignum or Fixnum (as required)"
+    },
+    {
+      "protoType": "sfixed64",
+      "notes": "Always eight bytes.",
+      "cppType": "int64",
+      "csType": "long",
+      "goType": "int64",
+      "javaType": "long",
+      "phpType": "integer/string",
+      "pythonType": "int/long",
+      "rubyType": "Bignum"
+    },
+    {
+      "protoType": "bool",
+      "notes": "",
+      "cppType": "bool",
+      "csType": "bool",
+      "goType": "bool",
+      "javaType": "boolean",
+      "phpType": "boolean",
+      "pythonType": "boolean",
+      "rubyType": "TrueClass/FalseClass"
+    },
+    {
+      "protoType": "string",
+      "notes": "A string must always contain UTF-8 encoded or 7-bit ASCII text.",
+      "cppType": "string",
+      "csType": "string",
+      "goType": "string",
+      "javaType": "String",
+      "phpType": "string",
+      "pythonType": "str/unicode",
+      "rubyType": "String (UTF-8)"
+    },
+    {
+      "protoType": "bytes",
+      "notes": "May contain any arbitrary sequence of bytes.",
+      "cppType": "string",
+      "csType": "ByteString",
+      "goType": "[]byte",
+      "javaType": "ByteString",
+      "phpType": "string",
+      "pythonType": "str",
+      "rubyType": "String (ASCII-8BIT)"
+    }
+  ]
+}

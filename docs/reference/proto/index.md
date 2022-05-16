@@ -16,26 +16,105 @@ This page documents the Protobuf Services and Messages which compose the Trinsic
 
  <!-- end services -->
 
+<!-- start messages -->
 
-<a name="sdk-options-v1-ServiceOptions"></a>
+  <div class="proto-obj-container" data-proto-name="sdk-options-v1-ServiceOptions">
+    <div class="proto-obj-name"><a name="sdk-options-v1-ServiceOptions" href="/reference/proto#sdk-options-v1-ServiceOptions">ServiceOptions</a></div>
+    <div class="proto-obj-description" markdown>Configuration for Trinsic SDK Services</div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
 
-### ServiceOptions
-Configuration for Trinsic SDK Services
+        
+        
+          
+        
 
+          <div class="proto-field">
+            <div class="proto-field-name">server_endpoint</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">Trinsic API endpoint; defaults to `prod.trinsic.cloud`</div>
+            
+          </div>
+        
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| server_endpoint | [string](/reference/proto#string) | Trinsic API endpoint; defaults to `prod.trinsic.cloud` |
-| server_port | [int32](/reference/proto#int32) | Trinsic API port; defaults to `443` |
-| server_use_tls | [bool](/reference/proto#bool) | Whether TLS is enabled between SDK and Trinsic API; defaults to `true` |
-| auth_token | [string](/reference/proto#string) | Authentication token for SDK calls; defaults to empty string (unauthenticated) |
-| default_ecosystem | [string](/reference/proto#string) | Default ecosystem ID to use for various SDK calls; defaults to `default` |
+        
+        
+          
+        
 
+          <div class="proto-field">
+            <div class="proto-field-name">server_port</div>
+            <div class="proto-field-type">
+              
+                int32
+              
+            </div>
+            <div class="proto-field-description">Trinsic API port; defaults to `443`</div>
+            
+          </div>
+        
 
+        
+        
+          
+        
 
+          <div class="proto-field">
+            <div class="proto-field-name">server_use_tls</div>
+            <div class="proto-field-type">
+              
+                bool
+              
+            </div>
+            <div class="proto-field-description">Whether TLS is enabled between SDK and Trinsic API; defaults to `true`</div>
+            
+          </div>
+        
 
+        
+        
+          
+        
 
- <!-- end messages -->
+          <div class="proto-field">
+            <div class="proto-field-name">auth_token</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">Authentication token for SDK calls; defaults to empty string (unauthenticated)</div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">default_ecosystem</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">Default ecosystem ID to use for various SDK calls; defaults to `default`</div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+ 
+<!-- end messages -->
 
  <!-- end enums -->
 
@@ -66,182 +145,535 @@ rpc SIgnInConfirm (SignInConfirmRequest) returns (SignInConfirmResponse); |
 
  <!-- end services -->
 
-
-<a name="services-account-v1-AccountDetails"></a>
-
-### AccountDetails
-Account Registration Details
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| name | [string](/reference/proto#string) | Account name (optional) |
-| email | [string](/reference/proto#string) | Email account (required) |
-| sms | [string](/reference/proto#string) | SMS number including country code (optional) |
-
-
-
-
-
-
-<a name="services-account-v1-AccountEcosystem"></a>
-
-### AccountEcosystem
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) |  |
-| name | [string](/reference/proto#string) |  |
-| description | [string](/reference/proto#string) |  |
-| uri | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-account-v1-AccountProfile"></a>
-
-### AccountProfile
-Device profile containing sensitive authentication data.
-This information should be stored securely
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| profile_type | [string](/reference/proto#string) | The type of profile, used to differentiate between protocol schemes or versions |
-| auth_data | [bytes](/reference/proto#bytes) | Auth data containg information about the current device access |
-| auth_token | [bytes](/reference/proto#bytes) | Secure token issued by server used to generate zero-knowledge proofs |
-| protection | [TokenProtection](/reference/proto#services-account-v1-TokenProtection) | Token security information about the token. If token protection is enabled, implementations must supply protection secret before using the token for authentication. |
-
-
-
-
-
-
-<a name="services-account-v1-InfoRequest"></a>
-
-### InfoRequest
-
-
-
-
-
-
-
-<a name="services-account-v1-InfoResponse"></a>
-
-### InfoResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| details | [AccountDetails](/reference/proto#services-account-v1-AccountDetails) | The account details associated with the calling request context |
-| ecosystems | [AccountEcosystem](/reference/proto#services-account-v1-AccountEcosystem)[] | **Deprecated.** any ecosystems the account has access to |
-| wallet_id | [string](/reference/proto#string) | The wallet id associated with this account |
-| device_id | [string](/reference/proto#string) | The device id associated with this account |
-| ecosystem_id | [string](/reference/proto#string) | The ecosystem id associated with this account |
-
-
-
-
-
-
-<a name="services-account-v1-ListDevicesRequest"></a>
-
-### ListDevicesRequest
-
-
-
-
-
-
-
-<a name="services-account-v1-ListDevicesResponse"></a>
-
-### ListDevicesResponse
-
-
-
-
-
-
-
-<a name="services-account-v1-RevokeDeviceRequest"></a>
-
-### RevokeDeviceRequest
-
-
-
-
-
-
-
-<a name="services-account-v1-RevokeDeviceResponse"></a>
-
-### RevokeDeviceResponse
-
-
-
-
-
-
-
-<a name="services-account-v1-SignInRequest"></a>
-
-### SignInRequest
-Request for creating new account
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| details | [AccountDetails](/reference/proto#services-account-v1-AccountDetails) | Account registration details |
-| invitation_code | [string](/reference/proto#string) | Invitation code associated with this registration This field is optional. |
-| ecosystem_id | [string](/reference/proto#string) | EcosystemId to sign in. This field is optional and will be ignored if invitation_code is passed |
-
-
-
-
-
-
-<a name="services-account-v1-SignInResponse"></a>
-
-### SignInResponse
-Response for creating new account
+<!-- start messages -->
+
+  <div class="proto-obj-container" data-proto-name="services-account-v1-AccountDetails">
+    <div class="proto-obj-name"><a name="services-account-v1-AccountDetails" href="/reference/proto#services-account-v1-AccountDetails">AccountDetails</a></div>
+    <div class="proto-obj-description" markdown>Account Registration Details</div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">name</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">Account name (optional)</div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">email</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">Email account (required)</div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">sms</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">SMS number including country code (optional)</div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-account-v1-AccountEcosystem">
+    <div class="proto-obj-name"><a name="services-account-v1-AccountEcosystem" href="/reference/proto#services-account-v1-AccountEcosystem">AccountEcosystem</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">id</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">name</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">description</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">uri</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-account-v1-AccountProfile">
+    <div class="proto-obj-name"><a name="services-account-v1-AccountProfile" href="/reference/proto#services-account-v1-AccountProfile">AccountProfile</a></div>
+    <div class="proto-obj-description" markdown>Device profile containing sensitive authentication data.
+This information should be stored securely</div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">profile_type</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">The type of profile, used to differentiate between protocol schemes or versions</div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">auth_data</div>
+            <div class="proto-field-type">
+              
+                bytes
+              
+            </div>
+            <div class="proto-field-description">Auth data containg information about the current device access</div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">auth_token</div>
+            <div class="proto-field-type">
+              
+                bytes
+              
+            </div>
+            <div class="proto-field-description">Secure token issued by server used to generate zero-knowledge proofs</div>
+            
+          </div>
+        
+
+        
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">protection</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-account-v1-TokenProtection">TokenProtection</a>
+              
+            </div>
+            <div class="proto-field-description">Token security information about the token. If token protection is enabled, implementations must supply protection secret before using the token for authentication.</div>
+            
+              
+                <div class="proto-field-expand-btn" onclick="onClick(this, 'services-account-v1-TokenProtection');">Show child attributes</div>
+                <div class="proto-field-sub-child empty hidden"></div>
+              
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-account-v1-InfoRequest">
+    <div class="proto-obj-name"><a name="services-account-v1-InfoRequest" href="/reference/proto#services-account-v1-InfoRequest">InfoRequest</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-account-v1-InfoResponse">
+    <div class="proto-obj-name"><a name="services-account-v1-InfoResponse" href="/reference/proto#services-account-v1-InfoResponse">InfoResponse</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">details</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-account-v1-AccountDetails">AccountDetails</a>
+              
+            </div>
+            <div class="proto-field-description">The account details associated with the calling request context</div>
+            
+              
+                <div class="proto-field-expand-btn" onclick="onClick(this, 'services-account-v1-AccountDetails');">Show child attributes</div>
+                <div class="proto-field-sub-child empty hidden"></div>
+              
+            
+          </div>
+        
+        BLAH BLAH deprecated true
+        
+
+        
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">ecosystems</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-account-v1-AccountEcosystem">AccountEcosystem</a>[]
+              
+            </div>
+            <div class="proto-field-description">**Deprecated.** any ecosystems the account has access to</div>
+            
+              
+                <div class="proto-field-expand-btn" onclick="onClick(this, 'services-account-v1-AccountEcosystem');">Show child attributes</div>
+                <div class="proto-field-sub-child empty hidden"></div>
+              
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">wallet_id</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">The wallet id associated with this account</div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">device_id</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">The device id associated with this account</div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">ecosystem_id</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">The ecosystem id associated with this account</div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-account-v1-ListDevicesRequest">
+    <div class="proto-obj-name"><a name="services-account-v1-ListDevicesRequest" href="/reference/proto#services-account-v1-ListDevicesRequest">ListDevicesRequest</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-account-v1-ListDevicesResponse">
+    <div class="proto-obj-name"><a name="services-account-v1-ListDevicesResponse" href="/reference/proto#services-account-v1-ListDevicesResponse">ListDevicesResponse</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-account-v1-RevokeDeviceRequest">
+    <div class="proto-obj-name"><a name="services-account-v1-RevokeDeviceRequest" href="/reference/proto#services-account-v1-RevokeDeviceRequest">RevokeDeviceRequest</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-account-v1-RevokeDeviceResponse">
+    <div class="proto-obj-name"><a name="services-account-v1-RevokeDeviceResponse" href="/reference/proto#services-account-v1-RevokeDeviceResponse">RevokeDeviceResponse</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-account-v1-SignInRequest">
+    <div class="proto-obj-name"><a name="services-account-v1-SignInRequest" href="/reference/proto#services-account-v1-SignInRequest">SignInRequest</a></div>
+    <div class="proto-obj-description" markdown>Request for creating new account</div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">details</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-account-v1-AccountDetails">AccountDetails</a>
+              
+            </div>
+            <div class="proto-field-description">Account registration details</div>
+            
+              
+                <div class="proto-field-expand-btn" onclick="onClick(this, 'services-account-v1-AccountDetails');">Show child attributes</div>
+                <div class="proto-field-sub-child empty hidden"></div>
+              
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">invitation_code</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">Invitation code associated with this registration This field is optional.</div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">ecosystem_id</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">EcosystemId to sign in. This field is optional and will be ignored if invitation_code is passed</div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-account-v1-SignInResponse">
+    <div class="proto-obj-name"><a name="services-account-v1-SignInResponse" href="/reference/proto#services-account-v1-SignInResponse">SignInResponse</a></div>
+    <div class="proto-obj-description" markdown>Response for creating new account
 This object will indicate if a confirmation code
 was sent to one of the users two-factor methods
-like email, SMS, etc.
+like email, SMS, etc.</div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
 
+        
+        
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| confirmation_method | [ConfirmationMethod](/reference/proto#services-account-v1-ConfirmationMethod) | Indicates if confirmation of account is required. This settings is configured globally by the server administrator. |
-| profile | [AccountProfile](/reference/proto#services-account-v1-AccountProfile) | Contains authentication data for use with the current device. This object must be stored in a secure place. It can also be protected with a PIN, but this is optional. See the docs at https://docs.trinsic.id for more information on working with authentication data. |
+          <div class="proto-field">
+            <div class="proto-field-name">confirmation_method</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-account-v1-ConfirmationMethod">ConfirmationMethod</a>
+              
+            </div>
+            <div class="proto-field-description">Indicates if confirmation of account is required. This settings is configured globally by the server administrator.</div>
+            
+              
+              
+            
+          </div>
+        
 
+        
+        
 
+          <div class="proto-field">
+            <div class="proto-field-name">profile</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-account-v1-AccountProfile">AccountProfile</a>
+              
+            </div>
+            <div class="proto-field-description">Contains authentication data for use with the current device. This object must be stored in a secure place. It can also be protected with a PIN, but this is optional. See the docs at https://docs.trinsic.id for more information on working with authentication data.</div>
+            
+              
+                <div class="proto-field-expand-btn" onclick="onClick(this, 'services-account-v1-AccountProfile');">Show child attributes</div>
+                <div class="proto-field-sub-child empty hidden"></div>
+              
+            
+          </div>
+        
+      </div>
+    
+  </div>
 
+  <div class="proto-obj-container" data-proto-name="services-account-v1-TokenProtection">
+    <div class="proto-obj-name"><a name="services-account-v1-TokenProtection" href="/reference/proto#services-account-v1-TokenProtection">TokenProtection</a></div>
+    <div class="proto-obj-description" markdown>Token protection info</div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
 
+        
+        
+          
+        
 
+          <div class="proto-field">
+            <div class="proto-field-name">enabled</div>
+            <div class="proto-field-type">
+              
+                bool
+              
+            </div>
+            <div class="proto-field-description">Indicates if token is protected using a PIN, security code, HSM secret, etc.</div>
+            
+          </div>
+        
 
-<a name="services-account-v1-TokenProtection"></a>
+        
+        
 
-### TokenProtection
-Token protection info
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| enabled | [bool](/reference/proto#bool) | Indicates if token is protected using a PIN, security code, HSM secret, etc. |
-| method | [ConfirmationMethod](/reference/proto#services-account-v1-ConfirmationMethod) | The method used to protect the token |
-
-
-
-
-
- <!-- end messages -->
+          <div class="proto-field">
+            <div class="proto-field-name">method</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-account-v1-ConfirmationMethod">ConfirmationMethod</a>
+              
+            </div>
+            <div class="proto-field-description">The method used to protect the token</div>
+            
+              
+              
+            
+          </div>
+        
+      </div>
+    
+  </div>
+ 
+<!-- end messages -->
 
 
 <a name="services-account-v1-ConfirmationMethod"></a>
@@ -260,6 +692,14 @@ Confirmation method type for two-factor workflows
 
  <!-- end enums -->
 
+
+<a name="services_account_v1_account-proto-extensions"></a>
+
+### File-level Extensions
+| Extension | Type | Base | Number | Description |
+| --------- | ---- | ---- | ------ | ----------- |
+| optional | bool | .google.protobuf.FieldOptions | 60000 | Whether field is optional in Trinsic's backend. This is not the same as an `optional` protobuf label; it only impacts documentation generation for the field. |
+
  <!-- end HasExtensions -->
 
 
@@ -272,40 +712,116 @@ Confirmation method type for two-factor workflows
 
  <!-- end services -->
 
+<!-- start messages -->
 
-<a name="services-common-v1-Nonce"></a>
+  <div class="proto-obj-container" data-proto-name="services-common-v1-Nonce">
+    <div class="proto-obj-name"><a name="services-common-v1-Nonce" href="/reference/proto#services-common-v1-Nonce">Nonce</a></div>
+    <div class="proto-obj-description" markdown>Nonce used to generate an oberon proof</div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
 
-### Nonce
-Nonce used to generate an oberon proof
+        
+        
+          
+        
 
+          <div class="proto-field">
+            <div class="proto-field-name">timestamp</div>
+            <div class="proto-field-type">
+              
+                int64
+              
+            </div>
+            <div class="proto-field-description">UTC unix millisecond timestamp the request was made</div>
+            
+          </div>
+        
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| timestamp | [int64](/reference/proto#int64) | UTC unix millisecond timestamp the request was made |
-| request_hash | [bytes](/reference/proto#bytes) | blake3256 hash of the request body |
+        
+        
+          
+        
 
+          <div class="proto-field">
+            <div class="proto-field-name">request_hash</div>
+            <div class="proto-field-type">
+              
+                bytes
+              
+            </div>
+            <div class="proto-field-description">blake3256 hash of the request body</div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
 
+  <div class="proto-obj-container" data-proto-name="services-common-v1-ServerConfig">
+    <div class="proto-obj-name"><a name="services-common-v1-ServerConfig" href="/reference/proto#services-common-v1-ServerConfig">ServerConfig</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
 
+        
+        
+          
+        
 
+          <div class="proto-field">
+            <div class="proto-field-name">endpoint</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">service endpoint</div>
+            
+          </div>
+        
 
+        
+        
+          
+        
 
-<a name="services-common-v1-ServerConfig"></a>
+          <div class="proto-field">
+            <div class="proto-field-name">port</div>
+            <div class="proto-field-type">
+              
+                int32
+              
+            </div>
+            <div class="proto-field-description">service port</div>
+            
+          </div>
+        
 
-### ServerConfig
+        
+        
+          
+        
 
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| endpoint | [string](/reference/proto#string) | service endpoint |
-| port | [int32](/reference/proto#int32) | service port |
-| use_tls | [bool](/reference/proto#bool) | indicates if tls is used |
-
-
-
-
-
- <!-- end messages -->
+          <div class="proto-field">
+            <div class="proto-field-name">use_tls</div>
+            <div class="proto-field-type">
+              
+                bool
+              
+            </div>
+            <div class="proto-field-description">indicates if tls is used</div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+ 
+<!-- end messages -->
 
 
 <a name="services-common-v1-ResponseStatus"></a>
@@ -348,7 +864,9 @@ Nonce used to generate an oberon proof
 
  <!-- end services -->
 
- <!-- end messages -->
+<!-- start messages -->
+ 
+<!-- end messages -->
 
  <!-- end enums -->
 
@@ -378,211 +896,628 @@ Nonce used to generate an oberon proof
 
  <!-- end services -->
 
-
-<a name="services-provider-v1-CreateEcosystemRequest"></a>
-
-### CreateEcosystemRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| name | [string](/reference/proto#string) | Globally unique name for the Ecosystem. This name will be part of the ecosystem specific URLs and namespaces. Allowed characters are lowercase letters, numbers, underscore and hyphen. |
-| description | [string](/reference/proto#string) | Ecosystem description. This field is optional. |
-| uri | [string](/reference/proto#string) | External URL associated with your organization or ecosystem entity. This field is optional |
-| details | [services.account.v1.AccountDetails](/reference/proto#services-account-v1-AccountDetails) | The account details of the owner of the ecosystem |
-
-
-
-
-
-
-<a name="services-provider-v1-CreateEcosystemResponse"></a>
-
-### CreateEcosystemResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| ecosystem | [Ecosystem](/reference/proto#services-provider-v1-Ecosystem) | Details of the created ecosystem |
-| profile | [services.account.v1.AccountProfile](/reference/proto#services-account-v1-AccountProfile) | Account profile for auth of the owner of the ecosystem |
-| confirmation_method | [services.account.v1.ConfirmationMethod](/reference/proto#services-account-v1-ConfirmationMethod) | Indicates if confirmation of account is required. This settings is configured globally by the server administrator. |
-
-
-
-
-
-
-<a name="services-provider-v1-Ecosystem"></a>
-
-### Ecosystem
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) |  |
-| name | [string](/reference/proto#string) |  |
-| description | [string](/reference/proto#string) |  |
-| uri | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-provider-v1-GenerateTokenRequest"></a>
-
-### GenerateTokenRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| description | [string](/reference/proto#string) | Optional description to identify this token |
-
-
-
-
-
-
-<a name="services-provider-v1-GenerateTokenResponse"></a>
-
-### GenerateTokenResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| profile | [services.account.v1.AccountProfile](/reference/proto#services-account-v1-AccountProfile) | Account authentication profile that contains unprotected token |
-
-
-
-
-
-
-<a name="services-provider-v1-GetOberonKeyRequest"></a>
-
-### GetOberonKeyRequest
-request message for GetOberonKey
-
-
-
-
-
-
-<a name="services-provider-v1-GetOberonKeyResponse"></a>
-
-### GetOberonKeyResponse
-response message for GetOberonKey
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| key | [string](/reference/proto#string) | Oberon Public Key as RAW base64 URL encoded string |
-
-
-
-
-
-
-<a name="services-provider-v1-InvitationStatusRequest"></a>
-
-### InvitationStatusRequest
-Request details for the status of onboarding
+<!-- start messages -->
+
+  <div class="proto-obj-container" data-proto-name="services-provider-v1-CreateEcosystemRequest">
+    <div class="proto-obj-name"><a name="services-provider-v1-CreateEcosystemRequest" href="/reference/proto#services-provider-v1-CreateEcosystemRequest">CreateEcosystemRequest</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">name</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">Globally unique name for the Ecosystem. This name will be part of the ecosystem specific URLs and namespaces. Allowed characters are lowercase letters, numbers, underscore and hyphen.</div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">description</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">Ecosystem description. This field is optional.</div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">uri</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">External URL associated with your organization or ecosystem entity. This field is optional</div>
+            
+          </div>
+        
+
+        
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">details</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-account-v1-AccountDetails">AccountDetails</a>
+              
+            </div>
+            <div class="proto-field-description">The account details of the owner of the ecosystem</div>
+            
+              
+                <div class="proto-field-expand-btn" onclick="onClick(this, 'services-account-v1-AccountDetails');">Show child attributes</div>
+                <div class="proto-field-sub-child empty hidden"></div>
+              
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-provider-v1-CreateEcosystemResponse">
+    <div class="proto-obj-name"><a name="services-provider-v1-CreateEcosystemResponse" href="/reference/proto#services-provider-v1-CreateEcosystemResponse">CreateEcosystemResponse</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">ecosystem</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-provider-v1-Ecosystem">Ecosystem</a>
+              
+            </div>
+            <div class="proto-field-description">Details of the created ecosystem</div>
+            
+              
+                <div class="proto-field-expand-btn" onclick="onClick(this, 'services-provider-v1-Ecosystem');">Show child attributes</div>
+                <div class="proto-field-sub-child empty hidden"></div>
+              
+            
+          </div>
+        
+
+        
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">profile</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-account-v1-AccountProfile">AccountProfile</a>
+              
+            </div>
+            <div class="proto-field-description">Account profile for auth of the owner of the ecosystem</div>
+            
+              
+                <div class="proto-field-expand-btn" onclick="onClick(this, 'services-account-v1-AccountProfile');">Show child attributes</div>
+                <div class="proto-field-sub-child empty hidden"></div>
+              
+            
+          </div>
+        
+
+        
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">confirmation_method</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-account-v1-ConfirmationMethod">ConfirmationMethod</a>
+              
+            </div>
+            <div class="proto-field-description">Indicates if confirmation of account is required. This settings is configured globally by the server administrator.</div>
+            
+              
+              
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-provider-v1-Ecosystem">
+    <div class="proto-obj-name"><a name="services-provider-v1-Ecosystem" href="/reference/proto#services-provider-v1-Ecosystem">Ecosystem</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">id</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">name</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">description</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">uri</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-provider-v1-GenerateTokenRequest">
+    <div class="proto-obj-name"><a name="services-provider-v1-GenerateTokenRequest" href="/reference/proto#services-provider-v1-GenerateTokenRequest">GenerateTokenRequest</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">description</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">Optional description to identify this token</div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-provider-v1-GenerateTokenResponse">
+    <div class="proto-obj-name"><a name="services-provider-v1-GenerateTokenResponse" href="/reference/proto#services-provider-v1-GenerateTokenResponse">GenerateTokenResponse</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">profile</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-account-v1-AccountProfile">AccountProfile</a>
+              
+            </div>
+            <div class="proto-field-description">Account authentication profile that contains unprotected token</div>
+            
+              
+                <div class="proto-field-expand-btn" onclick="onClick(this, 'services-account-v1-AccountProfile');">Show child attributes</div>
+                <div class="proto-field-sub-child empty hidden"></div>
+              
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-provider-v1-GetOberonKeyRequest">
+    <div class="proto-obj-name"><a name="services-provider-v1-GetOberonKeyRequest" href="/reference/proto#services-provider-v1-GetOberonKeyRequest">GetOberonKeyRequest</a></div>
+    <div class="proto-obj-description" markdown>request message for GetOberonKey</div>
+    
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-provider-v1-GetOberonKeyResponse">
+    <div class="proto-obj-name"><a name="services-provider-v1-GetOberonKeyResponse" href="/reference/proto#services-provider-v1-GetOberonKeyResponse">GetOberonKeyResponse</a></div>
+    <div class="proto-obj-description" markdown>response message for GetOberonKey</div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">key</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">Oberon Public Key as RAW base64 URL encoded string</div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-provider-v1-InvitationStatusRequest">
+    <div class="proto-obj-name"><a name="services-provider-v1-InvitationStatusRequest" href="/reference/proto#services-provider-v1-InvitationStatusRequest">InvitationStatusRequest</a></div>
+    <div class="proto-obj-description" markdown>Request details for the status of onboarding
 an individual or organization.
 The reference_id passed is the response from the
-`Onboard` method call
+`Onboard` method call</div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
 
+        
+        
+          
+        
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| invitation_id | [string](/reference/proto#string) |  |
+          <div class="proto-field">
+            <div class="proto-field-name">invitation_id</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
 
+  <div class="proto-obj-container" data-proto-name="services-provider-v1-InvitationStatusResponse">
+    <div class="proto-obj-name"><a name="services-provider-v1-InvitationStatusResponse" href="/reference/proto#services-provider-v1-InvitationStatusResponse">InvitationStatusResponse</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
 
+        
+        
 
+          <div class="proto-field">
+            <div class="proto-field-name">status</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-provider-v1-InvitationStatusResponse-Status">Status</a>
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+              
+                <div class="proto-field-expand-btn" onclick="onClick(this, 'services-provider-v1-InvitationStatusResponse-Status');">Show child attributes</div>
+                <div class="proto-field-sub-child empty hidden"></div>
+              
+            
+          </div>
+        
 
+        
+        
+          
+        
 
+          <div class="proto-field">
+            <div class="proto-field-name">status_details</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
 
-<a name="services-provider-v1-InvitationStatusResponse"></a>
+  <div class="proto-obj-container" data-proto-name="services-provider-v1-Invite">
+    <div class="proto-obj-name"><a name="services-provider-v1-Invite" href="/reference/proto#services-provider-v1-Invite">Invite</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
 
-### InvitationStatusResponse
+        
+        
+          
+        
 
+          <div class="proto-field">
+            <div class="proto-field-name">id</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
 
+        
+        
+          
+        
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| status | [InvitationStatusResponse.Status](/reference/proto#services-provider-v1-InvitationStatusResponse-Status) |  |
-| status_details | [string](/reference/proto#string) |  |
+          <div class="proto-field">
+            <div class="proto-field-name">code</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
 
+        
+        
+          
+        
 
+          <div class="proto-field">
+            <div class="proto-field-name">created</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
 
+        
+        
+          
+        
 
+          <div class="proto-field">
+            <div class="proto-field-name">accepted</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
 
+        
+        
+          
+        
 
-<a name="services-provider-v1-Invite"></a>
+          <div class="proto-field">
+            <div class="proto-field-name">expires</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
 
-### Invite
+  <div class="proto-obj-container" data-proto-name="services-provider-v1-InviteRequest">
+    <div class="proto-obj-name"><a name="services-provider-v1-InviteRequest" href="/reference/proto#services-provider-v1-InviteRequest">InviteRequest</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
 
+        
+        
 
+          <div class="proto-field">
+            <div class="proto-field-name">participant</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-provider-v1-ParticipantType">ParticipantType</a>
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+              
+                <div class="proto-field-expand-btn" onclick="onClick(this, 'services-provider-v1-ParticipantType');">Show child attributes</div>
+                <div class="proto-field-sub-child empty hidden"></div>
+              
+            
+          </div>
+        
 
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) |  |
-| code | [string](/reference/proto#string) |  |
-| created | [string](/reference/proto#string) |  |
-| accepted | [string](/reference/proto#string) |  |
-| expires | [string](/reference/proto#string) |  |
+        
+        
+          
+        
 
+          <div class="proto-field">
+            <div class="proto-field-name">description</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
 
+        
+        
 
+          <div class="proto-field">
+            <div class="proto-field-name">details</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-account-v1-AccountDetails">AccountDetails</a>
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+              
+                <div class="proto-field-expand-btn" onclick="onClick(this, 'services-account-v1-AccountDetails');">Show child attributes</div>
+                <div class="proto-field-sub-child empty hidden"></div>
+              
+            
+          </div>
+        
+      </div>
+    
+  </div>
 
+  <div class="proto-obj-container" data-proto-name="services-provider-v1-InviteRequest-DidCommInvitation">
+    <div class="proto-obj-name"><a name="services-provider-v1-InviteRequest-DidCommInvitation" href="/reference/proto#services-provider-v1-InviteRequest-DidCommInvitation">InviteRequest.DidCommInvitation</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+  </div>
 
+  <div class="proto-obj-container" data-proto-name="services-provider-v1-InviteResponse">
+    <div class="proto-obj-name"><a name="services-provider-v1-InviteResponse" href="/reference/proto#services-provider-v1-InviteResponse">InviteResponse</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
 
-<a name="services-provider-v1-InviteRequest"></a>
+        
+        
+          
+        
 
-### InviteRequest
+          <div class="proto-field">
+            <div class="proto-field-name">invitation_id</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
 
+        
+        
+          
+        
 
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| participant | [ParticipantType](/reference/proto#services-provider-v1-ParticipantType) |  |
-| description | [string](/reference/proto#string) |  |
-| details | [services.account.v1.AccountDetails](/reference/proto#services-account-v1-AccountDetails) |  |
-
-
-
-
-
-
-<a name="services-provider-v1-InviteRequest-DidCommInvitation"></a>
-
-### InviteRequest.DidCommInvitation
-
-
-
-
-
-
-
-<a name="services-provider-v1-InviteResponse"></a>
-
-### InviteResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| invitation_id | [string](/reference/proto#string) |  |
-| invitation_code | [string](/reference/proto#string) | Invitation Code that must be passed with the account 'SignIn' request to correlate this user with the invitation sent. |
-
-
-
-
-
- <!-- end messages -->
+          <div class="proto-field">
+            <div class="proto-field-name">invitation_code</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">Invitation Code that must be passed with the account 'SignIn' request to correlate this user with the invitation sent.</div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+ 
+<!-- end messages -->
 
 
 <a name="services-provider-v1-InvitationStatusResponse-Status"></a>
@@ -643,323 +1578,1010 @@ The reference_id passed is the response from the
 
  <!-- end services -->
 
-
-<a name="services-trustregistry-v1-AddFrameworkRequest"></a>
-
-### AddFrameworkRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| governance_framework | [GovernanceFramework](/reference/proto#services-trustregistry-v1-GovernanceFramework) |  |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-AddFrameworkResponse"></a>
-
-### AddFrameworkResponse
-
-
-
-
-
-
-
-<a name="services-trustregistry-v1-CheckIssuerStatusRequest"></a>
-
-### CheckIssuerStatusRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| governance_framework_uri | [string](/reference/proto#string) |  |
-| did_uri | [string](/reference/proto#string) |  |
-| x509_cert | [string](/reference/proto#string) |  |
-| credential_type_uri | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-CheckIssuerStatusResponse"></a>
-
-### CheckIssuerStatusResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| status | [RegistrationStatus](/reference/proto#services-trustregistry-v1-RegistrationStatus) |  |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-CheckVerifierStatusRequest"></a>
-
-### CheckVerifierStatusRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| governance_framework_uri | [string](/reference/proto#string) |  |
-| did_uri | [string](/reference/proto#string) |  |
-| x509_cert | [string](/reference/proto#string) |  |
-| presentation_type_uri | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-CheckVerifierStatusResponse"></a>
-
-### CheckVerifierStatusResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| status | [RegistrationStatus](/reference/proto#services-trustregistry-v1-RegistrationStatus) |  |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-FetchDataRequest"></a>
-
-### FetchDataRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| governance_framework_uri | [string](/reference/proto#string) |  |
-| query | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-FetchDataResponse"></a>
-
-### FetchDataResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| response_json | [string](/reference/proto#string) |  |
-| has_more_results | [bool](/reference/proto#bool) |  |
-| continuation_token | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-GovernanceFramework"></a>
-
-### GovernanceFramework
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| governance_framework_uri | [string](/reference/proto#string) |  |
-| trust_registry_uri | [string](/reference/proto#string) |  |
-| description | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-RegisterIssuerRequest"></a>
-
-### RegisterIssuerRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| did_uri | [string](/reference/proto#string) |  |
-| x509_cert | [string](/reference/proto#string) |  |
-| credential_type_uri | [string](/reference/proto#string) |  |
-| valid_from_utc | [uint64](/reference/proto#uint64) |  |
-| valid_until_utc | [uint64](/reference/proto#uint64) |  |
-| governance_framework_uri | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-RegisterIssuerResponse"></a>
-
-### RegisterIssuerResponse
-
-
-
-
-
-
-
-<a name="services-trustregistry-v1-RegisterVerifierRequest"></a>
-
-### RegisterVerifierRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| did_uri | [string](/reference/proto#string) |  |
-| x509_cert | [string](/reference/proto#string) |  |
-| presentation_type_uri | [string](/reference/proto#string) |  |
-| valid_from_utc | [uint64](/reference/proto#uint64) |  |
-| valid_until_utc | [uint64](/reference/proto#uint64) |  |
-| governance_framework_uri | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-RegisterVerifierResponse"></a>
-
-### RegisterVerifierResponse
-
-
-
-
-
-
-
-<a name="services-trustregistry-v1-RemoveFrameworkRequest"></a>
-
-### RemoveFrameworkRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| governance_framework | [GovernanceFramework](/reference/proto#services-trustregistry-v1-GovernanceFramework) |  |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-RemoveFrameworkResponse"></a>
-
-### RemoveFrameworkResponse
-
-
-
-
-
-
-
-<a name="services-trustregistry-v1-SearchRegistryRequest"></a>
-
-### SearchRegistryRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| query | [string](/reference/proto#string) | SELECT c from c where c.type == 'GovernanceFramework' |
-| continuation_token | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-SearchRegistryResponse"></a>
-
-### SearchRegistryResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| items_json | [string](/reference/proto#string) |  |
-| has_more | [bool](/reference/proto#bool) |  |
-| count | [int32](/reference/proto#int32) |  |
-| continuation_token | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-UnregisterIssuerRequest"></a>
-
-### UnregisterIssuerRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| did_uri | [string](/reference/proto#string) |  |
-| x509_cert | [string](/reference/proto#string) |  |
-| credential_type_uri | [string](/reference/proto#string) |  |
-| governance_framework_uri | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-UnregisterIssuerResponse"></a>
-
-### UnregisterIssuerResponse
-
-
-
-
-
-
-
-<a name="services-trustregistry-v1-UnregisterVerifierRequest"></a>
-
-### UnregisterVerifierRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| did_uri | [string](/reference/proto#string) |  |
-| x509_cert | [string](/reference/proto#string) |  |
-| presentation_type_uri | [string](/reference/proto#string) |  |
-| governance_framework_uri | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-trustregistry-v1-UnregisterVerifierResponse"></a>
-
-### UnregisterVerifierResponse
-
-
-
-
-
-
- <!-- end messages -->
+<!-- start messages -->
+
+  <div class="proto-obj-container" data-proto-name="services-trustregistry-v1-AddFrameworkRequest">
+    <div class="proto-obj-name"><a name="services-trustregistry-v1-AddFrameworkRequest" href="/reference/proto#services-trustregistry-v1-AddFrameworkRequest">AddFrameworkRequest</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">governance_framework</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-trustregistry-v1-GovernanceFramework">GovernanceFramework</a>
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+              
+                <div class="proto-field-expand-btn" onclick="onClick(this, 'services-trustregistry-v1-GovernanceFramework');">Show child attributes</div>
+                <div class="proto-field-sub-child empty hidden"></div>
+              
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-trustregistry-v1-AddFrameworkResponse">
+    <div class="proto-obj-name"><a name="services-trustregistry-v1-AddFrameworkResponse" href="/reference/proto#services-trustregistry-v1-AddFrameworkResponse">AddFrameworkResponse</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-trustregistry-v1-CheckIssuerStatusRequest">
+    <div class="proto-obj-name"><a name="services-trustregistry-v1-CheckIssuerStatusRequest" href="/reference/proto#services-trustregistry-v1-CheckIssuerStatusRequest">CheckIssuerStatusRequest</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">governance_framework_uri</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">did_uri</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">x509_cert</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">credential_type_uri</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-trustregistry-v1-CheckIssuerStatusResponse">
+    <div class="proto-obj-name"><a name="services-trustregistry-v1-CheckIssuerStatusResponse" href="/reference/proto#services-trustregistry-v1-CheckIssuerStatusResponse">CheckIssuerStatusResponse</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">status</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-trustregistry-v1-RegistrationStatus">RegistrationStatus</a>
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+              
+                <div class="proto-field-expand-btn" onclick="onClick(this, 'services-trustregistry-v1-RegistrationStatus');">Show child attributes</div>
+                <div class="proto-field-sub-child empty hidden"></div>
+              
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-trustregistry-v1-CheckVerifierStatusRequest">
+    <div class="proto-obj-name"><a name="services-trustregistry-v1-CheckVerifierStatusRequest" href="/reference/proto#services-trustregistry-v1-CheckVerifierStatusRequest">CheckVerifierStatusRequest</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">governance_framework_uri</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">did_uri</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">x509_cert</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">presentation_type_uri</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-trustregistry-v1-CheckVerifierStatusResponse">
+    <div class="proto-obj-name"><a name="services-trustregistry-v1-CheckVerifierStatusResponse" href="/reference/proto#services-trustregistry-v1-CheckVerifierStatusResponse">CheckVerifierStatusResponse</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">status</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-trustregistry-v1-RegistrationStatus">RegistrationStatus</a>
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+              
+                <div class="proto-field-expand-btn" onclick="onClick(this, 'services-trustregistry-v1-RegistrationStatus');">Show child attributes</div>
+                <div class="proto-field-sub-child empty hidden"></div>
+              
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-trustregistry-v1-FetchDataRequest">
+    <div class="proto-obj-name"><a name="services-trustregistry-v1-FetchDataRequest" href="/reference/proto#services-trustregistry-v1-FetchDataRequest">FetchDataRequest</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">governance_framework_uri</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">query</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-trustregistry-v1-FetchDataResponse">
+    <div class="proto-obj-name"><a name="services-trustregistry-v1-FetchDataResponse" href="/reference/proto#services-trustregistry-v1-FetchDataResponse">FetchDataResponse</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">response_json</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">has_more_results</div>
+            <div class="proto-field-type">
+              
+                bool
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">continuation_token</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-trustregistry-v1-GovernanceFramework">
+    <div class="proto-obj-name"><a name="services-trustregistry-v1-GovernanceFramework" href="/reference/proto#services-trustregistry-v1-GovernanceFramework">GovernanceFramework</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">governance_framework_uri</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">trust_registry_uri</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">description</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-trustregistry-v1-RegisterIssuerRequest">
+    <div class="proto-obj-name"><a name="services-trustregistry-v1-RegisterIssuerRequest" href="/reference/proto#services-trustregistry-v1-RegisterIssuerRequest">RegisterIssuerRequest</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">did_uri</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">x509_cert</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">credential_type_uri</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">valid_from_utc</div>
+            <div class="proto-field-type">
+              
+                uint64
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">valid_until_utc</div>
+            <div class="proto-field-type">
+              
+                uint64
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">governance_framework_uri</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-trustregistry-v1-RegisterIssuerResponse">
+    <div class="proto-obj-name"><a name="services-trustregistry-v1-RegisterIssuerResponse" href="/reference/proto#services-trustregistry-v1-RegisterIssuerResponse">RegisterIssuerResponse</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-trustregistry-v1-RegisterVerifierRequest">
+    <div class="proto-obj-name"><a name="services-trustregistry-v1-RegisterVerifierRequest" href="/reference/proto#services-trustregistry-v1-RegisterVerifierRequest">RegisterVerifierRequest</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">did_uri</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">x509_cert</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">presentation_type_uri</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">valid_from_utc</div>
+            <div class="proto-field-type">
+              
+                uint64
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">valid_until_utc</div>
+            <div class="proto-field-type">
+              
+                uint64
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">governance_framework_uri</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-trustregistry-v1-RegisterVerifierResponse">
+    <div class="proto-obj-name"><a name="services-trustregistry-v1-RegisterVerifierResponse" href="/reference/proto#services-trustregistry-v1-RegisterVerifierResponse">RegisterVerifierResponse</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-trustregistry-v1-RemoveFrameworkRequest">
+    <div class="proto-obj-name"><a name="services-trustregistry-v1-RemoveFrameworkRequest" href="/reference/proto#services-trustregistry-v1-RemoveFrameworkRequest">RemoveFrameworkRequest</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">governance_framework</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-trustregistry-v1-GovernanceFramework">GovernanceFramework</a>
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+              
+                <div class="proto-field-expand-btn" onclick="onClick(this, 'services-trustregistry-v1-GovernanceFramework');">Show child attributes</div>
+                <div class="proto-field-sub-child empty hidden"></div>
+              
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-trustregistry-v1-RemoveFrameworkResponse">
+    <div class="proto-obj-name"><a name="services-trustregistry-v1-RemoveFrameworkResponse" href="/reference/proto#services-trustregistry-v1-RemoveFrameworkResponse">RemoveFrameworkResponse</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-trustregistry-v1-SearchRegistryRequest">
+    <div class="proto-obj-name"><a name="services-trustregistry-v1-SearchRegistryRequest" href="/reference/proto#services-trustregistry-v1-SearchRegistryRequest">SearchRegistryRequest</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">query</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">SELECT c from c where c.type == 'GovernanceFramework'</div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">continuation_token</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-trustregistry-v1-SearchRegistryResponse">
+    <div class="proto-obj-name"><a name="services-trustregistry-v1-SearchRegistryResponse" href="/reference/proto#services-trustregistry-v1-SearchRegistryResponse">SearchRegistryResponse</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">items_json</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">has_more</div>
+            <div class="proto-field-type">
+              
+                bool
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">count</div>
+            <div class="proto-field-type">
+              
+                int32
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">continuation_token</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-trustregistry-v1-UnregisterIssuerRequest">
+    <div class="proto-obj-name"><a name="services-trustregistry-v1-UnregisterIssuerRequest" href="/reference/proto#services-trustregistry-v1-UnregisterIssuerRequest">UnregisterIssuerRequest</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">did_uri</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">x509_cert</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">credential_type_uri</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">governance_framework_uri</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-trustregistry-v1-UnregisterIssuerResponse">
+    <div class="proto-obj-name"><a name="services-trustregistry-v1-UnregisterIssuerResponse" href="/reference/proto#services-trustregistry-v1-UnregisterIssuerResponse">UnregisterIssuerResponse</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-trustregistry-v1-UnregisterVerifierRequest">
+    <div class="proto-obj-name"><a name="services-trustregistry-v1-UnregisterVerifierRequest" href="/reference/proto#services-trustregistry-v1-UnregisterVerifierRequest">UnregisterVerifierRequest</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">did_uri</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">x509_cert</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">presentation_type_uri</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">governance_framework_uri</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-trustregistry-v1-UnregisterVerifierResponse">
+    <div class="proto-obj-name"><a name="services-trustregistry-v1-UnregisterVerifierResponse" href="/reference/proto#services-trustregistry-v1-UnregisterVerifierResponse">UnregisterVerifierResponse</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+  </div>
+ 
+<!-- end messages -->
 
 
 <a name="services-trustregistry-v1-RegistrationStatus"></a>
@@ -1004,153 +2626,349 @@ The reference_id passed is the response from the
 
  <!-- end services -->
 
-
-<a name="services-universalwallet-v1-DeleteItemRequest"></a>
-
-### DeleteItemRequest
-Delete item request
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| item_id | [string](/reference/proto#string) | item identifier of the record to delete |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-DeleteItemResponse"></a>
-
-### DeleteItemResponse
-Delete item response
-
-
-
-
-
-
-<a name="services-universalwallet-v1-GetItemRequest"></a>
-
-### GetItemRequest
-Get item request object
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| item_id | [string](/reference/proto#string) | The item identifier |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-GetItemResponse"></a>
-
-### GetItemResponse
-Get item response object
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| item_json | [string](/reference/proto#string) | The item data represented as stringified JSON |
-| item_type | [string](/reference/proto#string) | User set item type that described the content of this item |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-InsertItemRequest"></a>
-
-### InsertItemRequest
-Insert item request
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| item_json | [string](/reference/proto#string) | the document to insert as stringified json |
-| item_type | [string](/reference/proto#string) | optional item type ex. "VerifiableCredential" |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-InsertItemResponse"></a>
-
-### InsertItemResponse
-Insert item response
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| item_id | [string](/reference/proto#string) | The item identifier of the inserted record |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-SearchRequest"></a>
-
-### SearchRequest
-Search request object
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| query | [string](/reference/proto#string) |  |
-| continuation_token | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-SearchResponse"></a>
-
-### SearchResponse
-Search response object
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| items | [string](/reference/proto#string)[] |  |
-| has_more | [bool](/reference/proto#bool) |  |
-| continuation_token | [string](/reference/proto#string) | int32 count = 3; |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-UpdateItemRequest"></a>
-
-### UpdateItemRequest
-Update item request object
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| item_id | [string](/reference/proto#string) | The item identifier |
-| item_type | [string](/reference/proto#string) | The item type that described the content of this item |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-UpdateItemResponse"></a>
-
-### UpdateItemResponse
-Update item response object
-
-
-
-
-
- <!-- end messages -->
+<!-- start messages -->
+
+  <div class="proto-obj-container" data-proto-name="services-universalwallet-v1-DeleteItemRequest">
+    <div class="proto-obj-name"><a name="services-universalwallet-v1-DeleteItemRequest" href="/reference/proto#services-universalwallet-v1-DeleteItemRequest">DeleteItemRequest</a></div>
+    <div class="proto-obj-description" markdown>Delete item request</div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">item_id</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">item identifier of the record to delete</div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-universalwallet-v1-DeleteItemResponse">
+    <div class="proto-obj-name"><a name="services-universalwallet-v1-DeleteItemResponse" href="/reference/proto#services-universalwallet-v1-DeleteItemResponse">DeleteItemResponse</a></div>
+    <div class="proto-obj-description" markdown>Delete item response</div>
+    
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-universalwallet-v1-GetItemRequest">
+    <div class="proto-obj-name"><a name="services-universalwallet-v1-GetItemRequest" href="/reference/proto#services-universalwallet-v1-GetItemRequest">GetItemRequest</a></div>
+    <div class="proto-obj-description" markdown>Get item request object</div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">item_id</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">The item identifier</div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-universalwallet-v1-GetItemResponse">
+    <div class="proto-obj-name"><a name="services-universalwallet-v1-GetItemResponse" href="/reference/proto#services-universalwallet-v1-GetItemResponse">GetItemResponse</a></div>
+    <div class="proto-obj-description" markdown>Get item response object</div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">item_json</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">The item data represented as stringified JSON</div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">item_type</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">User set item type that described the content of this item</div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-universalwallet-v1-InsertItemRequest">
+    <div class="proto-obj-name"><a name="services-universalwallet-v1-InsertItemRequest" href="/reference/proto#services-universalwallet-v1-InsertItemRequest">InsertItemRequest</a></div>
+    <div class="proto-obj-description" markdown>Insert item request</div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">item_json</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">the document to insert as stringified json</div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">item_type</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">optional item type ex. "VerifiableCredential"</div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-universalwallet-v1-InsertItemResponse">
+    <div class="proto-obj-name"><a name="services-universalwallet-v1-InsertItemResponse" href="/reference/proto#services-universalwallet-v1-InsertItemResponse">InsertItemResponse</a></div>
+    <div class="proto-obj-description" markdown>Insert item response</div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">item_id</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">The item identifier of the inserted record</div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-universalwallet-v1-SearchRequest">
+    <div class="proto-obj-name"><a name="services-universalwallet-v1-SearchRequest" href="/reference/proto#services-universalwallet-v1-SearchRequest">SearchRequest</a></div>
+    <div class="proto-obj-description" markdown>Search request object</div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">query</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">continuation_token</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-universalwallet-v1-SearchResponse">
+    <div class="proto-obj-name"><a name="services-universalwallet-v1-SearchResponse" href="/reference/proto#services-universalwallet-v1-SearchResponse">SearchResponse</a></div>
+    <div class="proto-obj-description" markdown>Search response object</div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">items</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">has_more</div>
+            <div class="proto-field-type">
+              
+                bool
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">continuation_token</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">int32 count = 3;</div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-universalwallet-v1-UpdateItemRequest">
+    <div class="proto-obj-name"><a name="services-universalwallet-v1-UpdateItemRequest" href="/reference/proto#services-universalwallet-v1-UpdateItemRequest">UpdateItemRequest</a></div>
+    <div class="proto-obj-description" markdown>Update item request object</div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">item_id</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">The item identifier</div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">item_type</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">The item type that described the content of this item</div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-universalwallet-v1-UpdateItemResponse">
+    <div class="proto-obj-name"><a name="services-universalwallet-v1-UpdateItemResponse" href="/reference/proto#services-universalwallet-v1-UpdateItemResponse">UpdateItemResponse</a></div>
+    <div class="proto-obj-description" markdown>Update item response object</div>
+    
+    
+  </div>
+ 
+<!-- end messages -->
 
  <!-- end enums -->
 
@@ -1180,288 +2998,858 @@ Update item response object
 
  <!-- end services -->
 
-
-<a name="services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest"></a>
-
-### CreateCredentialTemplateRequest
-Request to create new template
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| name | [string](/reference/proto#string) |  |
-| fields | [CreateCredentialTemplateRequest.FieldsEntry](/reference/proto#services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest-FieldsEntry)[] |  |
-| allow_additional_fields | [bool](/reference/proto#bool) |  |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest-FieldsEntry"></a>
-
-### CreateCredentialTemplateRequest.FieldsEntry
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| key | [string](/reference/proto#string) |  |
-| value | [TemplateField](/reference/proto#services-verifiablecredentials-templates-v1-TemplateField) |  |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-CreateCredentialTemplateResponse"></a>
-
-### CreateCredentialTemplateResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| data | [TemplateData](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData) |  |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-DeleteCredentialTemplateRequest"></a>
-
-### DeleteCredentialTemplateRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-DeleteCredentialTemplateResponse"></a>
-
-### DeleteCredentialTemplateResponse
-
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-GetCredentialTemplateRequest"></a>
-
-### GetCredentialTemplateRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-GetCredentialTemplateResponse"></a>
-
-### GetCredentialTemplateResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| template | [TemplateData](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData) |  |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-GetTemplateRequest"></a>
-
-### GetTemplateRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-GetTemplateResponse"></a>
-
-### GetTemplateResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| data | [TemplateData](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData) |  |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-ListCredentialTemplatesRequest"></a>
-
-### ListCredentialTemplatesRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| query | [string](/reference/proto#string) | SELECT * FROM c WHERE c.name = 'Diploma' |
-| continuation_token | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-ListCredentialTemplatesResponse"></a>
-
-### ListCredentialTemplatesResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| templates | [TemplateData](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData)[] |  |
-| has_more_results | [bool](/reference/proto#bool) |  |
-| continuation_token | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-ListTemplatesRequest"></a>
-
-### ListTemplatesRequest
-
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-ListTemplatesResponse"></a>
-
-### ListTemplatesResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| templates | [TemplateData](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData)[] |  |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-SearchCredentialTemplatesRequest"></a>
-
-### SearchCredentialTemplatesRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| query | [string](/reference/proto#string) | SELECT * FROM c WHERE c.name = 'Diploma' |
-| continuation_token | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-SearchCredentialTemplatesResponse"></a>
-
-### SearchCredentialTemplatesResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| items_json | [string](/reference/proto#string) |  |
-| has_more | [bool](/reference/proto#bool) |  |
-| continuation_token | [string](/reference/proto#string) | int32 count = 3; - not populated nor valid |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-TemplateData"></a>
-
-### TemplateData
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) |  |
-| name | [string](/reference/proto#string) |  |
-| version | [int32](/reference/proto#int32) |  |
-| fields | [TemplateData.FieldsEntry](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData-FieldsEntry)[] |  |
-| allow_additional_fields | [bool](/reference/proto#bool) |  |
-| schema_uri | [string](/reference/proto#string) |  |
-| context_uri | [string](/reference/proto#string) |  |
-| ecosystem_id | [string](/reference/proto#string) |  |
-| type | [string](/reference/proto#string) |  |
-| created_by | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-TemplateData-FieldsEntry"></a>
-
-### TemplateData.FieldsEntry
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| key | [string](/reference/proto#string) |  |
-| value | [TemplateField](/reference/proto#services-verifiablecredentials-templates-v1-TemplateField) |  |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-TemplateField"></a>
-
-### TemplateField
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| description | [string](/reference/proto#string) |  |
-| optional | [bool](/reference/proto#bool) |  |
-| type | [FieldType](/reference/proto#services-verifiablecredentials-templates-v1-FieldType) |  |
-
-
-
-
-
- <!-- end messages -->
+<!-- start messages -->
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest" href="/reference/proto#services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest">CreateCredentialTemplateRequest</a></div>
+    <div class="proto-obj-description" markdown>Request to create new template</div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">name</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">fields</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest-FieldsEntry">FieldsEntry</a>[]
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+              
+                <div class="proto-field-expand-btn" onclick="onClick(this, 'services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest-FieldsEntry');">Show child attributes</div>
+                <div class="proto-field-sub-child empty hidden"></div>
+              
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">allow_additional_fields</div>
+            <div class="proto-field-type">
+              
+                bool
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest-FieldsEntry">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest-FieldsEntry" href="/reference/proto#services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest-FieldsEntry">CreateCredentialTemplateRequest.FieldsEntry</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">key</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">value</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-verifiablecredentials-templates-v1-TemplateField">TemplateField</a>
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+              
+                <div class="proto-field-expand-btn" onclick="onClick(this, 'services-verifiablecredentials-templates-v1-TemplateField');">Show child attributes</div>
+                <div class="proto-field-sub-child empty hidden"></div>
+              
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-templates-v1-CreateCredentialTemplateResponse">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-templates-v1-CreateCredentialTemplateResponse" href="/reference/proto#services-verifiablecredentials-templates-v1-CreateCredentialTemplateResponse">CreateCredentialTemplateResponse</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">data</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-verifiablecredentials-templates-v1-TemplateData">TemplateData</a>
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+              
+                <div class="proto-field-expand-btn" onclick="onClick(this, 'services-verifiablecredentials-templates-v1-TemplateData');">Show child attributes</div>
+                <div class="proto-field-sub-child empty hidden"></div>
+              
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-templates-v1-DeleteCredentialTemplateRequest">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-templates-v1-DeleteCredentialTemplateRequest" href="/reference/proto#services-verifiablecredentials-templates-v1-DeleteCredentialTemplateRequest">DeleteCredentialTemplateRequest</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">id</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-templates-v1-DeleteCredentialTemplateResponse">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-templates-v1-DeleteCredentialTemplateResponse" href="/reference/proto#services-verifiablecredentials-templates-v1-DeleteCredentialTemplateResponse">DeleteCredentialTemplateResponse</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-templates-v1-GetCredentialTemplateRequest">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-templates-v1-GetCredentialTemplateRequest" href="/reference/proto#services-verifiablecredentials-templates-v1-GetCredentialTemplateRequest">GetCredentialTemplateRequest</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">id</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-templates-v1-GetCredentialTemplateResponse">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-templates-v1-GetCredentialTemplateResponse" href="/reference/proto#services-verifiablecredentials-templates-v1-GetCredentialTemplateResponse">GetCredentialTemplateResponse</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">template</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-verifiablecredentials-templates-v1-TemplateData">TemplateData</a>
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+              
+                <div class="proto-field-expand-btn" onclick="onClick(this, 'services-verifiablecredentials-templates-v1-TemplateData');">Show child attributes</div>
+                <div class="proto-field-sub-child empty hidden"></div>
+              
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-templates-v1-GetTemplateRequest">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-templates-v1-GetTemplateRequest" href="/reference/proto#services-verifiablecredentials-templates-v1-GetTemplateRequest">GetTemplateRequest</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">id</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-templates-v1-GetTemplateResponse">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-templates-v1-GetTemplateResponse" href="/reference/proto#services-verifiablecredentials-templates-v1-GetTemplateResponse">GetTemplateResponse</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">data</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-verifiablecredentials-templates-v1-TemplateData">TemplateData</a>
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+              
+                <div class="proto-field-expand-btn" onclick="onClick(this, 'services-verifiablecredentials-templates-v1-TemplateData');">Show child attributes</div>
+                <div class="proto-field-sub-child empty hidden"></div>
+              
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-templates-v1-ListCredentialTemplatesRequest">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-templates-v1-ListCredentialTemplatesRequest" href="/reference/proto#services-verifiablecredentials-templates-v1-ListCredentialTemplatesRequest">ListCredentialTemplatesRequest</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">query</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">SELECT * FROM c WHERE c.name = 'Diploma'</div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">continuation_token</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-templates-v1-ListCredentialTemplatesResponse">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-templates-v1-ListCredentialTemplatesResponse" href="/reference/proto#services-verifiablecredentials-templates-v1-ListCredentialTemplatesResponse">ListCredentialTemplatesResponse</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">templates</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-verifiablecredentials-templates-v1-TemplateData">TemplateData</a>[]
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+              
+                <div class="proto-field-expand-btn" onclick="onClick(this, 'services-verifiablecredentials-templates-v1-TemplateData');">Show child attributes</div>
+                <div class="proto-field-sub-child empty hidden"></div>
+              
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">has_more_results</div>
+            <div class="proto-field-type">
+              
+                bool
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">continuation_token</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-templates-v1-ListTemplatesRequest">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-templates-v1-ListTemplatesRequest" href="/reference/proto#services-verifiablecredentials-templates-v1-ListTemplatesRequest">ListTemplatesRequest</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-templates-v1-ListTemplatesResponse">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-templates-v1-ListTemplatesResponse" href="/reference/proto#services-verifiablecredentials-templates-v1-ListTemplatesResponse">ListTemplatesResponse</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">templates</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-verifiablecredentials-templates-v1-TemplateData">TemplateData</a>[]
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+              
+                <div class="proto-field-expand-btn" onclick="onClick(this, 'services-verifiablecredentials-templates-v1-TemplateData');">Show child attributes</div>
+                <div class="proto-field-sub-child empty hidden"></div>
+              
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-templates-v1-SearchCredentialTemplatesRequest">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-templates-v1-SearchCredentialTemplatesRequest" href="/reference/proto#services-verifiablecredentials-templates-v1-SearchCredentialTemplatesRequest">SearchCredentialTemplatesRequest</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">query</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">SELECT * FROM c WHERE c.name = 'Diploma'</div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">continuation_token</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-templates-v1-SearchCredentialTemplatesResponse">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-templates-v1-SearchCredentialTemplatesResponse" href="/reference/proto#services-verifiablecredentials-templates-v1-SearchCredentialTemplatesResponse">SearchCredentialTemplatesResponse</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">items_json</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">has_more</div>
+            <div class="proto-field-type">
+              
+                bool
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">continuation_token</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">int32 count = 3; - not populated nor valid</div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-templates-v1-TemplateData">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-templates-v1-TemplateData" href="/reference/proto#services-verifiablecredentials-templates-v1-TemplateData">TemplateData</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">id</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">name</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">version</div>
+            <div class="proto-field-type">
+              
+                int32
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">fields</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-verifiablecredentials-templates-v1-TemplateData-FieldsEntry">FieldsEntry</a>[]
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+              
+                <div class="proto-field-expand-btn" onclick="onClick(this, 'services-verifiablecredentials-templates-v1-TemplateData-FieldsEntry');">Show child attributes</div>
+                <div class="proto-field-sub-child empty hidden"></div>
+              
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">allow_additional_fields</div>
+            <div class="proto-field-type">
+              
+                bool
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">schema_uri</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">context_uri</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">ecosystem_id</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">type</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">created_by</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-templates-v1-TemplateData-FieldsEntry">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-templates-v1-TemplateData-FieldsEntry" href="/reference/proto#services-verifiablecredentials-templates-v1-TemplateData-FieldsEntry">TemplateData.FieldsEntry</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">key</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">value</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-verifiablecredentials-templates-v1-TemplateField">TemplateField</a>
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+              
+                <div class="proto-field-expand-btn" onclick="onClick(this, 'services-verifiablecredentials-templates-v1-TemplateField');">Show child attributes</div>
+                <div class="proto-field-sub-child empty hidden"></div>
+              
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-templates-v1-TemplateField">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-templates-v1-TemplateField" href="/reference/proto#services-verifiablecredentials-templates-v1-TemplateField">TemplateField</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">description</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">optional</div>
+            <div class="proto-field-type">
+              
+                bool
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">type</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-verifiablecredentials-templates-v1-FieldType">FieldType</a>
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+              
+                <div class="proto-field-expand-btn" onclick="onClick(this, 'services-verifiablecredentials-templates-v1-FieldType');">Show child attributes</div>
+                <div class="proto-field-sub-child empty hidden"></div>
+              
+            
+          </div>
+        
+      </div>
+    
+  </div>
+ 
+<!-- end messages -->
 
 
 <a name="services-verifiablecredentials-templates-v1-FieldType"></a>
@@ -1507,248 +3895,610 @@ Request to create new template
 
  <!-- end services -->
 
-
-<a name="services-verifiablecredentials-v1-CheckStatusRequest"></a>
-
-### CheckStatusRequest
-request object to check the status of the revocation entry
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| credential_status_id | [string](/reference/proto#string) | the credential status id |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-CheckStatusResponse"></a>
-
-### CheckStatusResponse
-response object for checking the status of revocation entry
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| revoked | [bool](/reference/proto#bool) | indicates if the status is revoked |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-CreateProofRequest"></a>
-
-### CreateProofRequest
-Create Proof
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| reveal_document_json | [string](/reference/proto#string) | Optional document that describes which fields should be revealed in the generated proof. If specified, this document must be a valid JSON-LD frame. If this field is not specified, a default reveal document will be used and all fields in the signed document will be revealed |
-| item_id | [string](/reference/proto#string) | The item identifier that contains a record with a verifiable credential to be used for generating the proof. |
-| document_json | [string](/reference/proto#string) | A document that contains a valid verifiable credential with an unbound signature. The proof will be derived from this document directly. The document will not be stored in the wallet. |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-CreateProofResponse"></a>
-
-### CreateProofResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| proof_document_json | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-IssueFromTemplateRequest"></a>
-
-### IssueFromTemplateRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| template_id | [string](/reference/proto#string) |  |
-| values_json | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-IssueFromTemplateResponse"></a>
-
-### IssueFromTemplateResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| document_json | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-IssueRequest"></a>
-
-### IssueRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| document_json | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-IssueResponse"></a>
-
-### IssueResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| signed_document_json | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-SendRequest"></a>
-
-### SendRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| email | [string](/reference/proto#string) |  |
-| did_uri | [string](/reference/proto#string) |  |
-| didcomm_invitation_json | [string](/reference/proto#string) |  |
-| document_json | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-SendResponse"></a>
-
-### SendResponse
-
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-UpdateStatusRequest"></a>
-
-### UpdateStatusRequest
-request object to update the status of the revocation entry
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| credential_status_id | [string](/reference/proto#string) | the credential status id |
-| revoked | [bool](/reference/proto#bool) | indicates if the status is revoked |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-UpdateStatusResponse"></a>
-
-### UpdateStatusResponse
-response object for update of status of revocation entry
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-ValidationMessage"></a>
-
-### ValidationMessage
-validation message that contains results and error messages
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| is_valid | [bool](/reference/proto#bool) | the validation result |
-| messages | [string](/reference/proto#string)[] | set of messages that contain validation results |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-VerifyProofRequest"></a>
-
-### VerifyProofRequest
-Verify Proof
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| proof_document_json | [string](/reference/proto#string) |  |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-VerifyProofResponse"></a>
-
-### VerifyProofResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| is_valid | [bool](/reference/proto#bool) | Indicates if the proof is valid |
-| validation_messages | [string](/reference/proto#string)[] | **Deprecated.**  |
-| validation_results | [VerifyProofResponse.ValidationResultsEntry](/reference/proto#services-verifiablecredentials-v1-VerifyProofResponse-ValidationResultsEntry)[] | Validation messages that describe invalid verifications based on different factors, such as schema validation, proof verification, revocation registry membership, etc. If the proof is not valid, this field will contain detailed results where this verification failed. |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-VerifyProofResponse-ValidationResultsEntry"></a>
-
-### VerifyProofResponse.ValidationResultsEntry
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| key | [string](/reference/proto#string) |  |
-| value | [ValidationMessage](/reference/proto#services-verifiablecredentials-v1-ValidationMessage) |  |
-
-
-
-
-
- <!-- end messages -->
+<!-- start messages -->
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-v1-CheckStatusRequest">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-v1-CheckStatusRequest" href="/reference/proto#services-verifiablecredentials-v1-CheckStatusRequest">CheckStatusRequest</a></div>
+    <div class="proto-obj-description" markdown>request object to check the status of the revocation entry</div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">credential_status_id</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">the credential status id</div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-v1-CheckStatusResponse">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-v1-CheckStatusResponse" href="/reference/proto#services-verifiablecredentials-v1-CheckStatusResponse">CheckStatusResponse</a></div>
+    <div class="proto-obj-description" markdown>response object for checking the status of revocation entry</div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">revoked</div>
+            <div class="proto-field-type">
+              
+                bool
+              
+            </div>
+            <div class="proto-field-description">indicates if the status is revoked</div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-v1-CreateProofRequest">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-v1-CreateProofRequest" href="/reference/proto#services-verifiablecredentials-v1-CreateProofRequest">CreateProofRequest</a></div>
+    <div class="proto-obj-description" markdown>Create Proof</div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">reveal_document_json</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">Optional document that describes which fields should be revealed in the generated proof. If specified, this document must be a valid JSON-LD frame. If this field is not specified, a default reveal document will be used and all fields in the signed document will be revealed</div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">item_id</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">The item identifier that contains a record with a verifiable credential to be used for generating the proof.</div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">document_json</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">A document that contains a valid verifiable credential with an unbound signature. The proof will be derived from this document directly. The document will not be stored in the wallet.</div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-v1-CreateProofResponse">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-v1-CreateProofResponse" href="/reference/proto#services-verifiablecredentials-v1-CreateProofResponse">CreateProofResponse</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">proof_document_json</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-v1-IssueFromTemplateRequest">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-v1-IssueFromTemplateRequest" href="/reference/proto#services-verifiablecredentials-v1-IssueFromTemplateRequest">IssueFromTemplateRequest</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">template_id</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">values_json</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-v1-IssueFromTemplateResponse">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-v1-IssueFromTemplateResponse" href="/reference/proto#services-verifiablecredentials-v1-IssueFromTemplateResponse">IssueFromTemplateResponse</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">document_json</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-v1-IssueRequest">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-v1-IssueRequest" href="/reference/proto#services-verifiablecredentials-v1-IssueRequest">IssueRequest</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">document_json</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-v1-IssueResponse">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-v1-IssueResponse" href="/reference/proto#services-verifiablecredentials-v1-IssueResponse">IssueResponse</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">signed_document_json</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-v1-SendRequest">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-v1-SendRequest" href="/reference/proto#services-verifiablecredentials-v1-SendRequest">SendRequest</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">email</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">did_uri</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">didcomm_invitation_json</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">document_json</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-v1-SendResponse">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-v1-SendResponse" href="/reference/proto#services-verifiablecredentials-v1-SendResponse">SendResponse</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-v1-UpdateStatusRequest">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-v1-UpdateStatusRequest" href="/reference/proto#services-verifiablecredentials-v1-UpdateStatusRequest">UpdateStatusRequest</a></div>
+    <div class="proto-obj-description" markdown>request object to update the status of the revocation entry</div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">credential_status_id</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">the credential status id</div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">revoked</div>
+            <div class="proto-field-type">
+              
+                bool
+              
+            </div>
+            <div class="proto-field-description">indicates if the status is revoked</div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-v1-UpdateStatusResponse">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-v1-UpdateStatusResponse" href="/reference/proto#services-verifiablecredentials-v1-UpdateStatusResponse">UpdateStatusResponse</a></div>
+    <div class="proto-obj-description" markdown>response object for update of status of revocation entry</div>
+    
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-v1-ValidationMessage">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-v1-ValidationMessage" href="/reference/proto#services-verifiablecredentials-v1-ValidationMessage">ValidationMessage</a></div>
+    <div class="proto-obj-description" markdown>validation message that contains results and error messages</div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">is_valid</div>
+            <div class="proto-field-type">
+              
+                bool
+              
+            </div>
+            <div class="proto-field-description">the validation result</div>
+            
+          </div>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">messages</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">set of messages that contain validation results</div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-v1-VerifyProofRequest">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-v1-VerifyProofRequest" href="/reference/proto#services-verifiablecredentials-v1-VerifyProofRequest">VerifyProofRequest</a></div>
+    <div class="proto-obj-description" markdown>Verify Proof</div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">proof_document_json</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-v1-VerifyProofResponse">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-v1-VerifyProofResponse" href="/reference/proto#services-verifiablecredentials-v1-VerifyProofResponse">VerifyProofResponse</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">is_valid</div>
+            <div class="proto-field-type">
+              
+                bool
+              
+            </div>
+            <div class="proto-field-description">Indicates if the proof is valid</div>
+            
+          </div>
+        
+        BLAH BLAH deprecated true
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">validation_messages</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description">**Deprecated.** </div>
+            
+          </div>
+        
+
+        
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">validation_results</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-verifiablecredentials-v1-VerifyProofResponse-ValidationResultsEntry">ValidationResultsEntry</a>[]
+              
+            </div>
+            <div class="proto-field-description">Validation messages that describe invalid verifications based on different factors, such as schema validation, proof verification, revocation registry membership, etc. If the proof is not valid, this field will contain detailed results where this verification failed.</div>
+            
+              
+                <div class="proto-field-expand-btn" onclick="onClick(this, 'services-verifiablecredentials-v1-VerifyProofResponse-ValidationResultsEntry');">Show child attributes</div>
+                <div class="proto-field-sub-child empty hidden"></div>
+              
+            
+          </div>
+        
+      </div>
+    
+  </div>
+
+  <div class="proto-obj-container" data-proto-name="services-verifiablecredentials-v1-VerifyProofResponse-ValidationResultsEntry">
+    <div class="proto-obj-name"><a name="services-verifiablecredentials-v1-VerifyProofResponse-ValidationResultsEntry" href="/reference/proto#services-verifiablecredentials-v1-VerifyProofResponse-ValidationResultsEntry">VerifyProofResponse.ValidationResultsEntry</a></div>
+    <div class="proto-obj-description" markdown></div>
+    
+    
+      <div class="proto-obj-fields" markdown>
+        
+
+        
+        
+          
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">key</div>
+            <div class="proto-field-type">
+              
+                string
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+          </div>
+        
+
+        
+        
+
+          <div class="proto-field">
+            <div class="proto-field-name">value</div>
+            <div class="proto-field-type">
+              
+                <a href="/reference/proto#services-verifiablecredentials-v1-ValidationMessage">ValidationMessage</a>
+              
+            </div>
+            <div class="proto-field-description"></div>
+            
+              
+                <div class="proto-field-expand-btn" onclick="onClick(this, 'services-verifiablecredentials-v1-ValidationMessage');">Show child attributes</div>
+                <div class="proto-field-sub-child empty hidden"></div>
+              
+            
+          </div>
+        
+      </div>
+    
+  </div>
+ 
+<!-- end messages -->
 
  <!-- end enums -->
 

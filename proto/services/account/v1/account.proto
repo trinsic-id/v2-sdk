@@ -5,13 +5,25 @@ option csharp_namespace = "Trinsic.Services.Account.V1";
 option go_package = "github.com/trinsic-id/sdk";
 option java_package = "trinsic.services.account.v1";
 
+import "google/protobuf/descriptor.proto";
+
+
+// Trinsic public SDK proto options start at 60,000
+extend google.protobuf.FieldOptions {
+    // Whether field is optional in Trinsic's backend.
+    // This is not the same as an `optional` protobuf label;
+    // it only impacts documentation generation for the field.
+    optional bool optional = 60000;
+} 
+
+
 // Request for creating new account
 message SignInRequest {
     // Account registration details
-    AccountDetails details = 1;
+    AccountDetails details = 1 [(optional)=true];
     // Invitation code associated with this registration
     // This field is optional.
-    string invitation_code = 2;
+    string invitation_code = 2 [(optional)=true];
     // EcosystemId to sign in. This field is optional
     // and will be ignored if invitation_code is passed
     string ecosystem_id = 3;
