@@ -12,7 +12,13 @@ h1, h2, h3 {
     --md-primary-fg-color:        #006BE5;
     --md-primary-fg-color--light: #B3D6FF;
     --md-primary-fg-color--dark:  #003B80;
-  }
+
+    font-variant-ligatures: none;
+}
+
+input {
+    font-variant-ligatures: none;
+}
 
 [data-md-color-scheme="slate"] {
     --md-hue: 200; /* [0, 360] */
