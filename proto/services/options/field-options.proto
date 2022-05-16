@@ -1,0 +1,17 @@
+syntax = "proto3";
+package services.options;
+
+option csharp_namespace = "Trinsic.Services.Protobuf.Options";
+option java_package = "trinsic.services.protobuf.options";
+option go_package = "github.com/trinsic-id/sdk";
+
+import "google/protobuf/descriptor.proto";
+
+
+// Trinsic public SDK proto options start at 60,000
+extend google.protobuf.FieldOptions {
+    // Whether field is optional in Trinsic's backend.
+    // This is not the same as an `optional` protobuf label;
+    // it only impacts documentation generation for the field.
+    optional bool optional = 60000;
+}

@@ -7,6 +7,7 @@ option go_package = "github.com/trinsic-id/sdk";
 option java_package = "trinsic.services.common.v1";
 
 import "services/account/v1/account.proto";
+import "services/options/field-options.proto";
 
 message Invite {
     string id = 1;
@@ -17,9 +18,14 @@ message Invite {
 }
 
 message InviteRequest {
+    // Type of participant being invited (individual/organization)
     ParticipantType participant = 1;
-    string description = 2;
-    services.account.v1.AccountDetails details = 3;
+
+    // Description of invitation
+    string description = 2 [(options.optional)=true];
+
+    // Account details of invitee
+    services.account.v1.AccountDetails details = 3 [(options.optional)=true];
 
     message DidCommInvitation {}
 }
@@ -29,6 +35,7 @@ enum ParticipantType {
 }
 
 message InviteResponse {
+    // ID of created invitation
     string invitation_id = 10;
         
     // Invitation Code that must be passed with the account 'SignIn' request
@@ -41,6 +48,7 @@ message InviteResponse {
 // The reference_id passed is the response from the
 // `Onboard` method call
 message InvitationStatusRequest {
+    // ID of invitation
     string invitation_id = 1;
 }
 
@@ -59,7 +67,10 @@ message InvitationStatusResponse {
         Expired = 3;
     }
 
+    // Status of invitation
     Status status = 1;
+
+    // Human-readable string with details about invitation status
     string status_details = 2;
 }
 
@@ -75,12 +86,10 @@ message CreateEcosystemRequest {
     // part of the ecosystem specific URLs and namespaces.
     // Allowed characters are lowercase letters, numbers, underscore and hyphen.
     string name = 1;
-    // Ecosystem description.
-    // This field is optional.
-    string description = 2;
-    // External URL associated with your organization or ecosystem entity.
-    // This field is optional
-    string uri = 3;
+    // Ecosystem description
+    string description = 2 [(options.optional)=true];
+    // External URL associated with your organization or ecosystem entity
+    string uri = 3 [(options.optional)=true];
     // The account details of the owner of the ecosystem
     services.account.v1.AccountDetails details = 4;
 }
@@ -91,13 +100,13 @@ message CreateEcosystemResponse {
     // Account profile for auth of the owner of the ecosystem
     services.account.v1.AccountProfile profile = 2;
     // Indicates if confirmation of account is required.
-    // This settings is configured globally by the server administrator.
+    // This setting is configured globally by the server administrator.
     services.account.v1.ConfirmationMethod confirmation_method = 3;
 }
 
 message GenerateTokenRequest {
-    // Optional description to identify this token
-    string description = 1;
+    // Description to identify this token
+    string description = 1 [(options.optional)=true];
 }
 message GenerateTokenResponse {
     // Account authentication profile that contains unprotected token

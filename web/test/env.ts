@@ -1,5 +1,5 @@
 import { ServiceOptions } from "../src";
-import ServiceBase from "../lib/ServiceBase";
+import ServiceBase from "../src/ServiceBase";
 
 function isNode(): boolean {
   // TODO - Refactor this into one location, utility class?
@@ -9,7 +9,7 @@ function isNode(): boolean {
 
 export function getTestServerOptions(): ServiceOptions {
   let defaults = ServiceOptions.fromPartial({
-    serverEndpoint: "staging-internal.trinsic.cloud",
+    serverEndpoint: "dev-internal.trinsic.cloud",
     serverPort: 443,
     serverUseTls: true,
   });

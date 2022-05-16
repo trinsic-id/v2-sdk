@@ -154,12 +154,14 @@ class Services::Verifiablecredentials::V1::IssueFromTemplateRequest
   sig do
     params(
       template_id: T.nilable(String),
-      values_json: T.nilable(String)
+      values_json: T.nilable(String),
+      framework_id: T.nilable(String)
     ).void
   end
   def initialize(
     template_id: "",
-    values_json: ""
+    values_json: "",
+    framework_id: ""
   )
   end
 
@@ -185,6 +187,18 @@ class Services::Verifiablecredentials::V1::IssueFromTemplateRequest
 
   sig { void }
   def clear_values_json
+  end
+
+  sig { returns(String) }
+  def framework_id
+  end
+
+  sig { params(value: String).void }
+  def framework_id=(value)
+  end
+
+  sig { void }
+  def clear_framework_id
   end
 
   sig { params(field: String).returns(T.untyped) }

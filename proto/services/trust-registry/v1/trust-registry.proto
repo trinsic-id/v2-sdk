@@ -5,19 +5,25 @@ option csharp_namespace = "Trinsic.Services.TrustRegistry.V1";
 option java_package = "trinsic.services.trustregistry.v1";
 option go_package = "github.com/trinsic-id/sdk";
 
+// Register new ecosystem governance framework
 message AddFrameworkRequest {
-    GovernanceFramework governance_framework = 1;
+    string governance_framework_uri = 1;
+    string name = 2;
+    string description = 3;
 }
 
 message AddFrameworkResponse {
+    // Unique framework identifier
+    string id = 1;
+    string governing_authority = 2;
+    string trust_registry = 3;
 }
 
 message RemoveFrameworkRequest {
-    GovernanceFramework governance_framework = 1;
+    string id = 1;
 }
 
-message RemoveFrameworkResponse {
-}
+message RemoveFrameworkResponse {}
 
 message SearchRegistryRequest {
     string query = 1; // SELECT c from c where c.type == 'GovernanceFramework'
@@ -27,7 +33,6 @@ message SearchRegistryRequest {
 message SearchRegistryResponse {
     string items_json = 1;
     bool has_more = 2;
-    int32 count = 3;
     string continuation_token = 4;
 }
 
@@ -37,85 +42,45 @@ message GovernanceFramework {
     string description = 3;
 }
 
-message RegisterIssuerRequest {
-    oneof authority {
+message RegisterMemberRequest {
+    oneof member {
         string did_uri = 1;
-        string x509_cert = 2;
+        string wallet_id = 3;
+        string email = 4;
     }
 
-    string credential_type_uri = 10;
+    string schema_uri = 10;
     uint64 valid_from_utc = 11;
     uint64 valid_until_utc = 12;
-    string governance_framework_uri = 20;
+    // the id of the governance framework
+    string framework_id = 30;
 }
 
-message RegisterIssuerResponse {
-}
+message RegisterMemberResponse {}
 
-message RegisterVerifierRequest {
-    oneof authority {
+message UnregisterMemberRequest {
+    oneof member {
         string did_uri = 1;
-        string x509_cert = 2;
+        string wallet_id = 3;
+        string email = 4;
     }
 
-    string presentation_type_uri = 10;
-    uint64 valid_from_utc = 11;
-    uint64 valid_until_utc = 12;
-    string governance_framework_uri = 20;
+    string schema_uri = 10;
+    string framework_id = 20;
 }
 
-message RegisterVerifierResponse {
-}
+message UnregisterMemberResponse {}
 
-message UnregisterIssuerRequest {
-    oneof authority {
-        string did_uri = 1;
-        string x509_cert = 2;
-    }
-
-    string credential_type_uri = 10;
-    string governance_framework_uri = 20;
-}
-
-message UnregisterIssuerResponse {
-}
-
-message UnregisterVerifierRequest {
-    oneof authority {
-        string did_uri = 1;
-        string x509_cert = 2;
-    }
-
-    string presentation_type_uri = 10;
-    string governance_framework_uri = 20;
-}
-
-message UnregisterVerifierResponse {
-}
-
-message CheckIssuerStatusRequest {
+message GetMembershipStatusRequest {
     string governance_framework_uri = 1;
     oneof member {
         string did_uri = 2;
         string x509_cert = 3;
     }
-    string credential_type_uri = 4;
+    string schema_uri = 4;
 }
 
-message CheckIssuerStatusResponse {
-    RegistrationStatus status = 1;
-}
-
-message CheckVerifierStatusRequest {
-    string governance_framework_uri = 1;
-    oneof member {
-        string did_uri = 2;
-        string x509_cert = 3;
-    }
-    string presentation_type_uri = 4;
-}
-
-message CheckVerifierStatusResponse {
+message GetMembershipStatusResponse {
     RegistrationStatus status = 1;
 }
 
@@ -147,20 +112,12 @@ service TrustRegistry {
     rpc SearchRegistry(SearchRegistryRequest) returns (SearchRegistryResponse);
 
     // Registers an authoritative issuer with a credential template
-    rpc RegisterIssuer(RegisterIssuerRequest) returns (RegisterIssuerResponse);
-
-    // Registers an authoritative verifier with a credential template
-    rpc RegisterVerifier(RegisterVerifierRequest) returns (RegisterVerifierResponse);
+    rpc RegisterMember(RegisterMemberRequest) returns (RegisterMemberResponse);
 
     // Removes an authoritative issuer with a credential template from the trust registry
-    rpc UnregisterIssuer(UnregisterIssuerRequest) returns (UnregisterIssuerResponse);
+    rpc UnregisterMember(UnregisterMemberRequest) returns (UnregisterMemberResponse);
 
-    // Removes an authoritative verifier with a presentation template from the trust registry
-    rpc UnregisterVerifier(UnregisterVerifierRequest) returns (UnregisterVerifierResponse);
-
-    rpc CheckIssuerStatus(CheckIssuerStatusRequest) returns (CheckIssuerStatusResponse);
-
-    rpc CheckVerifierStatus(CheckVerifierStatusRequest) returns (CheckVerifierStatusResponse);
+    rpc GetMembershipStatus(GetMembershipStatusRequest) returns (GetMembershipStatusResponse);
 
     rpc FetchData(FetchDataRequest) returns (stream FetchDataResponse);
 }

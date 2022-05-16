@@ -109,7 +109,7 @@ public class Tests
 
         // STORE CREDENTIAL
         // Allison stores the credential in her cloud wallet.
-        
+
         // storeCredential() {
         // Set active profile to 'allison' so we can manage her cloud wallet
         walletService.Options.AuthToken = credentialsService.Options.AuthToken = allison;
@@ -163,54 +163,42 @@ public class Tests
 
     [Fact(DisplayName = "Demo: trust registries")]
     public async Task TestTrustRegistry() {
+        var governanceUri = $"https://example.com/{Guid.NewGuid():N}";
+
         // setup
         var providerService = new ProviderService(_options.Clone());
         var (_, authToken) = await providerService.CreateEcosystemAsync(new());
         var service = new TrustRegistryService(_options.CloneWithAuthToken(authToken));
-        
-        // registerGovernanceFramework() {
-        var registerFrameworkResponse = await service.RegisterGovernanceFrameworkAsync(new() { GovernanceFramework = new() {
-            Description = "Demo framework",
-            GovernanceFrameworkUri = "https://example.com",
-            TrustRegistryUri = "https://schema.org/Card"
-        }});
-        // }
-        
 
-        // registerIssuerSample() {
-        await service.RegisterIssuerAsync(new() {
-            DidUri = "did:example:test",
-            GovernanceFrameworkUri = "https://example.com",
-            CredentialTypeUri = "https://schema.org/Card"
+        // registerGovernanceFramework() {
+        var schemaUri = "https://schema.org/Card";
+        var frameworkUri = "https://example.com";
+        var registerFrameworkResponse = await service.AddFrameworkAsync(new() {
+            Name = $"Demo framework-{Guid.NewGuid()}",
+            GovernanceFrameworkUri = frameworkUri,
+            Description = schemaUri
         });
         // }
 
-        // registerVerifierSample() {
-        await service.RegisterVerifierAsync(new() {
-            DidUri = "did:example:test",
-            GovernanceFrameworkUri = "https://example.com",
-            PresentationTypeUri = "https://schema.org/Card"
+
+        // registerIssuerSample() {
+        var didUri = "did:example:test";
+        var registerMemberResponse = await service.RegisterMemberAsync(new() {
+            DidUri = didUri,
+            FrameworkId = registerFrameworkResponse.Id,
+            SchemaUri = schemaUri
         });
         // }
 
         // checkIssuerStatus() {
-        var issuerStatus = await service.CheckIssuerStatusAsync(new() {
-            DidUri = "did:example:test",
-            GovernanceFrameworkUri = "https://example.com",
-            CredentialTypeUri = "https://schema.org/Card"
+        var issuerStatus = await service.GetMembershipStatusAsync(new() {
+            DidUri = didUri,
+            GovernanceFrameworkUri = frameworkUri,
+            SchemaUri = schemaUri
         });
         // }
         issuerStatus.Should().NotBeNull();
         issuerStatus.Status.Should().Be(RegistrationStatus.Current);
-
-        // checkVerifierStatus() {
-        var verifierStatus = await service.CheckVerifierStatusAsync(new() {
-            DidUri = "did:example:test",
-            GovernanceFrameworkUri = "https://example.com",
-            PresentationTypeUri = "https://schema.org/Card"
-        });
-        // }
-        verifierStatus.Status.Should().Be(RegistrationStatus.Current);
 
         // searchTrustRegistry() {
         var searchResult = await service.SearchRegistryAsync(new());
@@ -218,20 +206,12 @@ public class Tests
 
         searchResult.Should().NotBeNull();
         searchResult.ItemsJson.Should().NotBeNull().And.NotBeEmpty();
-        
-        // unregisterIssuer() {
-        await service.UnregisterIssuerAsync(new() {
-            DidUri = "did:example:test",
-            GovernanceFrameworkUri = "https://example.com",
-            CredentialTypeUri = "https://schema.org/Card"
-        });
-        // }
 
-        // unregisterVerifier() {
-        await service.UnregisterVerifierAsync(new() {
-            DidUri = "did:example:test",
-            GovernanceFrameworkUri = "https://example.com",
-            PresentationTypeUri = "https://schema.org/Card"
+        // unregisterIssuer() {
+        await service.UnregisterMemberAsync(new() {
+            DidUri = didUri,
+            FrameworkId = registerFrameworkResponse.Id,
+            SchemaUri = schemaUri
         });
         // }
     }
@@ -269,9 +249,9 @@ public class Tests
 
         var invitationId = "N/A";
         try {
-        // invitationStatus() {
-        var inviteStatus = await service.InvitationStatusAsync(new() {InvitationId = invitationId});
-        // }
+            // invitationStatus() {
+            var inviteStatus = await service.InvitationStatusAsync(new() {InvitationId = invitationId});
+            // }
         } catch(Exception) { } // This is expected as a doc sample
     }
 
@@ -334,11 +314,9 @@ public class Tests
         var myAccountService = new AccountService(_options);
         var myProfile = await myAccountService.SignInAsync(new());
         var myTrustRegistryService = new TrustRegistryService(_options.CloneWithAuthToken(myProfile));
-        await Assert.ThrowsAsync<Exception>(async () => await myTrustRegistryService.RegisterGovernanceFrameworkAsync(new() {
-            GovernanceFramework = new() {
-                Description = "invalid uri",
-                GovernanceFrameworkUri = ""
-            }
+        await Assert.ThrowsAsync<Exception>(async () => await myTrustRegistryService.AddFrameworkAsync(new() {
+            Description = "invalid uri",
+            GovernanceFrameworkUri = ""
         }));
     }
 
@@ -360,7 +338,7 @@ public class Tests
         };
         templateRequest.Fields.Add("firstName", new() {Description = "Given name"});
         templateRequest.Fields.Add("lastName", new());
-        templateRequest.Fields.Add("age", new() {Optional = true});  // TODO - use FieldType.NUMBER once schema validation is fixed.
+        templateRequest.Fields.Add("age", new() {Optional = true}); // TODO - use FieldType.NUMBER once schema validation is fixed.
 
         var template = await templateService.CreateAsync(templateRequest);
         // }
@@ -434,7 +412,7 @@ public class Tests
             await credentialService.UpdateStatusAsync(new() {CredentialStatusId = "", Revoked = true});
             // }
         } catch { } // We expect this to fail
-        
+
         // getCredentialTemplate() {
         var getTemplateResponse = await templateService.GetAsync(new() {Id = template.Data.Id});
         // }

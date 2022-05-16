@@ -1,19 +1,14 @@
 use std::fs::{copy, remove_file};
 
 fn main() {
-    let config = tonic_build::configure()
-        .build_server(false)
-        .out_dir("./src/proto")
-        .format(true);
+    let config = tonic_build::configure().build_server(false).out_dir("./src/proto").format(true);
 
     config
         .compile_well_known_types(true)
+        .type_attribute("ServiceOptions", "#[derive(::serde::Serialize, ::serde::Deserialize)]")
+        .type_attribute(".services", "#[derive(::serde::Serialize, ::serde::Deserialize)]")
         .type_attribute(
-            "ServiceOptions",
-            "#[derive(::serde::Serialize, ::serde::Deserialize)]",
-        )
-        .type_attribute(
-            ".services",
+            ".google.protobuf.UninterpretedOption",
             "#[derive(::serde::Serialize, ::serde::Deserialize)]",
         )
         // .field_attribute(
@@ -40,34 +35,14 @@ fn main() {
         )
         .unwrap();
 
-    move_file!(
-        "./src/proto/google.protobuf.rs",
-        "./src/proto/google/protobuf/mod.rs"
-    );
-    move_file!(
-        "./src/proto/sdk.options.v1.rs",
-        "./src/proto/sdk/options/v1/mod.rs"
-    );
-    move_file!(
-        "./src/proto/services.common.v1.rs",
-        "./src/proto/services/common/v1/mod.rs"
-    );
-    move_file!(
-        "./src/proto/services.debug.v1.rs",
-        "./src/proto/services/debug/v1/mod.rs"
-    );
-    move_file!(
-        "./src/proto/services.provider.v1.rs",
-        "./src/proto/services/provider/v1/mod.rs"
-    );
-    move_file!(
-        "./src/proto/services.account.v1.rs",
-        "./src/proto/services/account/v1/mod.rs"
-    );
-    move_file!(
-        "./src/proto/services.trustregistry.v1.rs",
-        "./src/proto/services/trustregistry/v1/mod.rs"
-    );
+    _ = remove_file("./src/proto/services.options.rs");
+    move_file!("./src/proto/google.protobuf.rs", "./src/proto/google/protobuf/mod.rs");
+    move_file!("./src/proto/sdk.options.v1.rs", "./src/proto/sdk/options/v1/mod.rs");
+    move_file!("./src/proto/services.common.v1.rs", "./src/proto/services/common/v1/mod.rs");
+    move_file!("./src/proto/services.debug.v1.rs", "./src/proto/services/debug/v1/mod.rs");
+    move_file!("./src/proto/services.provider.v1.rs", "./src/proto/services/provider/v1/mod.rs");
+    move_file!("./src/proto/services.account.v1.rs", "./src/proto/services/account/v1/mod.rs");
+    move_file!("./src/proto/services.trustregistry.v1.rs", "./src/proto/services/trustregistry/v1/mod.rs");
     move_file!(
         "./src/proto/services.universalwallet.v1.rs",
         "./src/proto/services/universalwallet/v1/mod.rs"

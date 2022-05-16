@@ -23,10 +23,11 @@ on:
 jobs:
   build_test:
     name: Test
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
         target: [ "web" ]
         node-version: [ 14, 16 ]
         node-http-protocol: ["true", "false"]
@@ -36,6 +37,8 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: arduino/setup-protoc@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/setup-node@v3
         name: Setup Node v${{ matrix.node-version }}
         with:

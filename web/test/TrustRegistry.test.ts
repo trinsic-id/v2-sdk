@@ -1,19 +1,14 @@
 import {
   AccountService,
-  CheckIssuerStatusRequest,
-  CheckVerifierStatusRequest,
-  GovernanceFramework,
-  RegisterIssuerRequest,
-  RegisterVerifierRequest,
+  AddFrameworkRequest,
+  RegisterMemberRequest,
   RegistrationStatus,
   SignInRequest,
   TrustRegistryService,
 } from "../src";
 import { v4 as uuid } from "uuid";
-import {getTestServerOptions} from "./env";
-
-
-
+import { getTestServerOptions } from "./env";
+import { GetMembershipStatusRequest } from "../lib";
 
 const options = getTestServerOptions();
 
@@ -26,11 +21,12 @@ describe("TrustRegistryService Unit Tests", () => {
   it("add governance framework", async () => {
     let trustRegistryService = new TrustRegistryService(options);
 
-    let response = await trustRegistryService.addGovernanceFramework({
-      governanceFramework: GovernanceFramework.fromPartial({
+    let response = await trustRegistryService.addGovernanceFramework(
+      AddFrameworkRequest.fromPartial({
         governanceFrameworkUri: `urn:egf:${uuid()}`,
-      }),
-    });
+        name: `Test Governance Framework - ${uuid()}`,
+      })
+    );
     expect(response).not.toBeNull();
   });
 
@@ -38,48 +34,59 @@ describe("TrustRegistryService Unit Tests", () => {
     let trustRegistryService = new TrustRegistryService(options);
 
     await expectAsync(
-      trustRegistryService.addGovernanceFramework({
-          governanceFramework: GovernanceFramework.fromPartial({}),
-        })
+      trustRegistryService.addGovernanceFramework(
+        AddFrameworkRequest.fromPartial({})
+      )
     ).toBeRejected();
   });
 
   it("Demo: Trust Registry", async () => {
     let trustRegistryService = new TrustRegistryService(options);
 
-    let response = await trustRegistryService.registerIssuer(
-      RegisterIssuerRequest.fromPartial({
-        didUri: "did:example:test",
-        governanceFrameworkUri: "https://example.com",
-        credentialTypeUri: "https://schema.org/Card",
+    const didUri = "did:example:test";
+    const frameworkUri = `urn:egf:${uuid()}`;
+    const schemaUri = "https://schema.org/Card";
+
+    let frameworkResponse = await trustRegistryService.addGovernanceFramework(
+      AddFrameworkRequest.fromPartial({
+        governanceFrameworkUri: frameworkUri,
+        name: `Test Governance Framework - ${uuid()}`,
+      })
+    );
+
+    let response = await trustRegistryService.registerMember(
+      RegisterMemberRequest.fromPartial({
+        didUri: didUri,
+        frameworkId: frameworkResponse.id,
+        schemaUri: schemaUri,
       })
     );
     expect(response).not.toBeNull();
 
-    let response2 = await trustRegistryService.registerVerifier(
-      RegisterVerifierRequest.fromPartial({
-        didUri: "did:example:test",
-        governanceFrameworkUri: "https://example.com",
-        presentationTypeUri: "https://schema.org/Card",
+    let response2 = await trustRegistryService.registerMember(
+      RegisterMemberRequest.fromPartial({
+        didUri: didUri,
+        frameworkId: frameworkResponse.id,
+        schemaUri: schemaUri,
       })
     );
     expect(response2).not.toBeNull();
 
-    let issuerStatus = await trustRegistryService.checkIssuerStatus(
-      CheckIssuerStatusRequest.fromPartial({
-        didUri: "did:example:test",
-        governanceFrameworkUri: "https://example.com",
-        credentialTypeUri: "https://schema.org/Card",
+    let issuerStatus = await trustRegistryService.getMembershipStatus(
+      GetMembershipStatusRequest.fromPartial({
+        didUri: didUri,
+        governanceFrameworkUri: frameworkUri,
+        schemaUri: schemaUri,
       })
     );
     expect(issuerStatus).not.toBeNull();
     expect(issuerStatus.status).toBe(RegistrationStatus.CURRENT);
 
-    let verifierStatus = await trustRegistryService.checkVerifierStatus(
-      CheckVerifierStatusRequest.fromPartial({
-        didUri: "did:example:test",
-        governanceFrameworkUri: "https://example.com",
-        presentationTypeUri: "https://schema.org/Card",
+    let verifierStatus = await trustRegistryService.getMembershipStatus(
+      GetMembershipStatusRequest.fromPartial({
+        didUri: didUri,
+        governanceFrameworkUri: frameworkUri,
+        schemaUri: schemaUri,
       })
     );
     expect(verifierStatus).not.toBeNull();

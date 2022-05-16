@@ -225,8 +225,8 @@ If you would like to save the profile for future use, you can simply export the 
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Define Template](../../web/test/CredentialTemplates.test.ts) inside_block:defineTemplate
-    [Create Template](../../web/test/CredentialTemplates.test.ts) inside_block:createTemplate
+    [Define Template](../../web/test/CredentialTemplateShared.ts) inside_block:defineTemplate
+    [Create Template](../../web/test/CredentialTemplateShared.ts) inside_block:createTemplate
     ```
     <!--/codeinclude-->
 

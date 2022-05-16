@@ -18,8 +18,7 @@ import {
 
 
 import {getTestServerOptions} from "./env";
-
-
+import {v4 as uuid} from "uuid";
 
 const options = getTestServerOptions();
 const allison = getTestServerOptions();
@@ -67,7 +66,7 @@ describe("WalletService Unit Tests", () => {
 
     expect(insertItemResponse).not.toBeNull();
     expect(insertItemResponse.itemId).not.toBe("");
-    console.log("Item id=", insertItemResponse.itemId);
+    // console.log("Item id=", insertItemResponse.itemId);
 
     // Delay half a second for race condition fixes?
     await new Promise((res) => setTimeout(res, 1000));
@@ -110,7 +109,7 @@ describe("WalletService Unit Tests", () => {
 
     // create example template
     let templateRequest = CreateCredentialTemplateRequest.fromPartial({
-      name: "My Example Credential",
+      name: `My Example Credential-${uuid()}`,
       allowAdditionalFields: false,
       fields: {
         firstName: TemplateField.fromPartial({ description: "Given name" }),
