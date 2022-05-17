@@ -41,11 +41,6 @@ jobs:
           TEST_SERVER_ENDPOINT: ${{ secrets.TEST_SERVER_ENDPOINT }}
           TEST_SERVER_PORT: ${{ secrets.TEST_SERVER_PORT }}
           TEST_SERVER_USE_TLS: ${{ secrets.TEST_SERVER_USE_TLS }}
-      - uses: trinsic-id/set-version@v0.1
-        id: setversion
-        with:
-          githubToken: ${{ secrets.API_GITHUB_TOKEN }}
-          overrideVersion: ${{ github.event.inputs.packageVersion }}
       - run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
       - run: |
           npm install
