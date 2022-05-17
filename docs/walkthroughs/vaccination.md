@@ -198,21 +198,21 @@ If you would like to save the profile for future use, you can simply export the 
 
     # Contents of templateData.json:  
     {
-        "name": {
+        "firstName": {
             "type": "string",
-            "description": "Name of the business",
+            "description": "First name of vaccine recipient",
         },
-        "website": {
+        "lastName": {
             "type": "string",
-            "description": "More information about the business"
+            "description": "Last name of vaccine recipient"
         },
-        "rating":{
-            "type": "number",
-            "description": "rating on scale of 1-10",
-        },
-        "details":{
+        "batchNumber":{
             "type": "string",
-            "description": "An individual's last name",
+            "description": "Batch number of vaccine",
+        },
+        "countryOfVaccination":{
+            "type": "string",
+            "description": "Country in which the subject was vaccinated",
         }
     }
     ```
