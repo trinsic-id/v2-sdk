@@ -193,6 +193,29 @@ If you would like to save the profile for future use, you can simply export the 
 ## Define a Template
 
 === "Trinsic CLI"
+    ```bash
+    trinsic template create -n "First Template" --fields-file templateData.json 
+
+    # Contents of templateData.json:  
+    {
+        "firstName": {
+            "type": "string",
+            "description": "First name of vaccine recipient",
+        },
+        "lastName": {
+            "type": "string",
+            "description": "Last name of vaccine recipient"
+        },
+        "batchNumber":{
+            "type": "string",
+            "description": "Batch number of vaccine",
+        },
+        "countryOfVaccination":{
+            "type": "string",
+            "description": "Country in which the subject was vaccinated",
+        }
+    }
+    ```
 
 === "Typescript"
     <!--codeinclude-->
@@ -234,14 +257,44 @@ If you would like to save the profile for future use, you can simply export the 
 ## Create an Ecosystem
 
 === "Trinsic CLI"
-
+    ```
+    trinsic provider create-ecosystem --name "Bobs-Ecosystem" --email bob@example.com
+    ```
+    
 === "Typescript"
+    <!--codeinclude-->
+    ```javascript
+    [Create Ecosystem](../../web/test/ProviderService.test.ts) inside_block:createEcosystem
+    ```
+    <!--/codeinclude-->
 
 === "C#"
+    <!--codeinclude-->
+    ```csharp
+    [Create Ecosystem](../../dotnet/Tests/Tests.cs) inside_block:createEcosystem
+    ```
+    <!--/codeinclude-->
 
 === "Python"
+    <!--codeinclude-->
+    ```python
+    [Create Ecosystem](../../python/samples/ecosystem_demo.py) inside_block:createEcosystem
+    ```
+    <!--/codeinclude-->
 
 === "Java"
+    <!--codeinclude-->
+    ```java
+    [Create Ecosystem](../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:createEcosystem
+    ```
+    <!--/codeinclude-->
+
+=== "Go"
+    <!--codeinclude-->
+    ```go
+    [Create Ecosystem](../../go/services/services_test.go) inside_block:createEcosystem
+    ```
+    <!--/codeinclude-->
 
 ## Issue a Credential
 Upon receiving her vaccine, Allison also receives a digital certificate from the clinic. This certificate is digitally signed by the clinic, acting as an issuer.
