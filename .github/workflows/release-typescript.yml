@@ -15,9 +15,6 @@ jobs:
     name: Publish
     runs-on: ubuntu-latest
     environment: npmjs.com
-    strategy:
-      matrix:
-        target: [ "node", "web" ]
     defaults:
       run:
         working-directory: ${{ matrix.target }}
@@ -44,10 +41,17 @@ jobs:
           TEST_SERVER_ENDPOINT: ${{ secrets.TEST_SERVER_ENDPOINT }}
           TEST_SERVER_PORT: ${{ secrets.TEST_SERVER_PORT }}
           TEST_SERVER_USE_TLS: ${{ secrets.TEST_SERVER_USE_TLS }}
-      # - run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
+      - uses: trinsic-id/set-version@v0.1
+        id: setversion
+        with:
+          githubToken: ${{ secrets.API_GITHUB_TOKEN }}
+          overrideVersion: ${{ github.event.inputs.packageVersion }}
+      - run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
       - run: |
-          npm version ${{ steps.setversion.outputs.packageVersion }}
-          npm publish
+          npm install
+          npm version ${{ steps.setversion.outputs.packageVersion }} --no-git-tag-version --yes
+          npm run build
+          npm publish --no-git-tag-version --yes --no-verify-access
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
