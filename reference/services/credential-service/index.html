@@ -1816,9 +1816,8 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// Sign a credential as the clinic and send it to Allison</span><span class="w"></span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">credentialJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getVaccineCertUnsignedJSON</span><span class="p">();</span><span class="w"></span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">credential</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">issueCredential</span><span class="p">(</span><span class="w"></span>
-<span class="w">  </span><span class="nx">IssueRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"> </span><span class="nx">documentJson</span><span class="o">:</span><span class="w"> </span><span class="kt">credentialJson</span><span class="w"> </span><span class="p">})</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">issueResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">issueCredential</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="nx">IssueRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"> </span><span class="nx">documentJson</span><span class="o">:</span><span class="w"> </span><span class="kt">JSON.stringify</span><span class="p">(</span><span class="nx">vaccineCertUnsigned</span><span class="p">)</span><span class="w"> </span><span class="p">})</span><span class="w"></span>
 <span class="p">);</span><span class="w"></span>
 </code></pre></div>
 </div>

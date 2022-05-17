@@ -2005,7 +2005,7 @@ trinsic account login --description <span class="s2">&quot;Vaccination Clinic&qu
 <p>If you would like to save the profile for future use, you can simply export the serialized profile to a local storage. Please note that the profiles contain sensitive key data, so they should be stored in a secure enclave.</p>
 <!-- === "Typescript" 
 
-    <div class="highlight"><pre><span></span><code><span class="p">[</span><span class="nx">Setup</span><span class="w"> </span><span class="nx">Wallets</span><span class="p">](..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="nx">web</span><span class="o">/</span><span class="nx">test</span><span class="o">/</span><span class="nx">VaccineDemo</span><span class="p">.</span><span class="nx">test</span><span class="p">.</span><span class="nx">ts</span><span class="p">)</span><span class="w"> </span><span class="nx">inside_block</span><span class="o">:</span><span class="nx">storeAndRecallProfile</span><span class="w"></span>
+    <div class="highlight"><pre><span></span><code><span class="p">[</span><span class="nx">Setup</span><span class="w"> </span><span class="nx">Wallets</span><span class="p">](..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="nx">web</span><span class="o">/</span><span class="nx">test</span><span class="o">/</span><span class="nx">VaccineDemoShared</span><span class="p">.</span><span class="nx">ts</span><span class="p">)</span><span class="w"> </span><span class="nx">inside_block</span><span class="o">:</span><span class="nx">storeAndRecallProfile</span><span class="w"></span>
 </code></pre></div>
 
 -->
@@ -2205,9 +2205,8 @@ The certificate is in a JSON form, and for this example, we will use the followi
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// Sign a credential as the clinic and send it to Allison</span><span class="w"></span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">credentialJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getVaccineCertUnsignedJSON</span><span class="p">();</span><span class="w"></span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">credential</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">issueCredential</span><span class="p">(</span><span class="w"></span>
-<span class="w">  </span><span class="nx">IssueRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"> </span><span class="nx">documentJson</span><span class="o">:</span><span class="w"> </span><span class="kt">credentialJson</span><span class="w"> </span><span class="p">})</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">issueResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">issueCredential</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="nx">IssueRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"> </span><span class="nx">documentJson</span><span class="o">:</span><span class="w"> </span><span class="kt">JSON.stringify</span><span class="p">(</span><span class="nx">vaccineCertUnsigned</span><span class="p">)</span><span class="w"> </span><span class="p">})</span><span class="w"></span>
 <span class="p">);</span><span class="w"></span>
 </code></pre></div>
 </div>
@@ -2326,8 +2325,10 @@ The certificate is in a JSON form, and for this example, we will use the followi
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// Alice stores the credential in her cloud wallet.</span><span class="w"></span>
 <span class="nx">walletService</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">authToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allison</span><span class="p">;</span><span class="w"></span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">itemId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">walletService</span><span class="p">.</span><span class="nx">insertItem</span><span class="p">(</span><span class="w"></span>
-<span class="w">  </span><span class="nx">InsertItemRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"> </span><span class="nx">itemJson</span><span class="o">:</span><span class="w"> </span><span class="kt">credential.signedDocumentJson</span><span class="w"> </span><span class="p">})</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">insertResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">walletService</span><span class="p">.</span><span class="nx">insertItem</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="nx">InsertItemRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
+<span class="w">    </span><span class="nx">itemJson</span><span class="o">:</span><span class="w"> </span><span class="kt">issueResponse.signedDocumentJson</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="p">})</span><span class="w"></span>
 <span class="p">);</span><span class="w"></span>
 </code></pre></div>
 </div>
@@ -2421,11 +2422,10 @@ The certificate is in a JSON form, and for this example, we will use the followi
 <span class="c1">// The venue has communicated with Allison the details of the credential</span><span class="w"></span>
 <span class="c1">// that they require expressed as a JSON-LD frame.</span><span class="w"></span>
 <span class="nx">credentialService</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">authToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allison</span><span class="p">;</span><span class="w"></span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">proofRequestJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getVaccineCertFrameJSON</span><span class="p">();</span><span class="w"></span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">proof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">createProof</span><span class="p">(</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">proofResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">createProof</span><span class="p">(</span><span class="w"></span>
 <span class="w">  </span><span class="nx">CreateProofRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
-<span class="w">    </span><span class="nx">itemId</span><span class="o">:</span><span class="w"> </span><span class="kt">itemId.itemId</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">revealDocumentJson</span><span class="o">:</span><span class="w"> </span><span class="kt">proofRequestJson</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">itemId</span><span class="o">:</span><span class="w"> </span><span class="kt">insertResponse.itemId</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">revealDocumentJson</span><span class="o">:</span><span class="w"> </span><span class="kt">JSON.stringify</span><span class="p">(</span><span class="nx">vaccineCertFrame</span><span class="p">),</span><span class="w"></span>
 <span class="w">  </span><span class="p">})</span><span class="w"></span>
 <span class="p">);</span><span class="w"></span>
 </code></pre></div>
@@ -2521,7 +2521,7 @@ The certificate is in a JSON form, and for this example, we will use the followi
 <span class="nx">credentialService</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">authToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">airline</span><span class="p">;</span><span class="w"></span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">verifyResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">verifyProof</span><span class="p">(</span><span class="w"></span>
 <span class="w">  </span><span class="nx">VerifyProofRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
-<span class="w">    </span><span class="nx">proofDocumentJson</span><span class="o">:</span><span class="w"> </span><span class="kt">proof.proofDocumentJson</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">proofDocumentJson</span><span class="o">:</span><span class="w"> </span><span class="kt">proofResponse.proofDocumentJson</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="p">})</span><span class="w"></span>
 <span class="p">);</span><span class="w"></span>
 </code></pre></div>
@@ -2606,7 +2606,7 @@ The certificate is in a JSON form, and for this example, we will use the followi
 <div class="tabbed-set tabbed-alternate" data-tabs="12:4"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><input id="__tabbed_12_3" name="__tabbed_12" type="radio" /><input id="__tabbed_12_4" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Typescript</label><label for="__tabbed_12_2">C#</label><label for="__tabbed_12_3">Python</label><label for="__tabbed_12_4">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><a href="https://github.com/trinsic-id/sdk/tree/main/web/test/VaccineDemo.test.ts">web</a>    </p>
+<p><a href="https://github.com/trinsic-id/sdk/tree/main/web/test/VaccineDemoShared.ts">web</a>    </p>
 </div>
 <div class="tabbed-block">
 <p>This sample is available in our <a href="https://github.com/trinsic-id/sdk/blob/main/dotnet/Tests/Tests.cs#L42">dotnet</a> directory. </p>
