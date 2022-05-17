@@ -15,6 +15,9 @@ jobs:
     name: Publish
     runs-on: ubuntu-latest
     environment: npmjs.com
+    defaults:
+      run:
+        working-directory: "web"
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v2
@@ -29,15 +32,6 @@ jobs:
         with:
           githubToken: ${{ secrets.API_GITHUB_TOKEN }}
           overrideVersion: ${{ github.event.inputs.packageVersion }}
-      - run: |
-          npm install
-          npm run build
-          npm test
-        shell: pwsh
-        env:
-          TEST_SERVER_ENDPOINT: ${{ secrets.TEST_SERVER_ENDPOINT }}
-          TEST_SERVER_PORT: ${{ secrets.TEST_SERVER_PORT }}
-          TEST_SERVER_USE_TLS: ${{ secrets.TEST_SERVER_USE_TLS }}
       - run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
       - run: |
           npm install
@@ -46,4 +40,7 @@ jobs:
           npm publish --no-git-tag-version --yes --no-verify-access
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          TEST_SERVER_ENDPOINT: ${{ secrets.TEST_SERVER_ENDPOINT }}
+          TEST_SERVER_PORT: ${{ secrets.TEST_SERVER_PORT }}
+          TEST_SERVER_USE_TLS: ${{ secrets.TEST_SERVER_USE_TLS }}
 
