@@ -100,7 +100,7 @@ describe("WalletService Unit Tests", () => {
     });
     // }
 
-    expect(verifyResponse.isValid).toBeTrue();
+    expect(verifyResponse.isValid).toBeTruthy();
   });
 
   it("Demo: template management and credential issuance from template", async () => {
@@ -146,7 +146,7 @@ describe("WalletService Unit Tests", () => {
     let jsonDocument = JSON.parse(issueResponse.documentJson);
 
     expect(jsonDocument).not.toBeNull();
-    expect(jsonDocument.hasOwnProperty("id")).toBeTrue();
-    expect(jsonDocument.hasOwnProperty("credentialSubject")).toBeTrue();
+    expect(jsonDocument.hasOwnProperty("id")).toBeTruthy();
+    expect(jsonDocument.hasOwnProperty("credentialSubject")).toBeTruthy();
   });
 });

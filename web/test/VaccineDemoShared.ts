@@ -7,16 +7,12 @@ import {
   VerifyProofRequest,
   WalletService,
 } from "../src";
-import {
-  getVaccineCertFrameJSON,
-  getVaccineCertUnsignedJSON,
-} from "./TestData";
 
 import { getTestServerOptions } from "./env";
 
 const options = getTestServerOptions();
 
-async function vaccineDemo() {
+export async function vaccineDemo(vaccineCertUnsigned: any, vaccineCertFrame: any) {
   // createAccountService() {
   const accountService = new AccountService(options);
   // }
@@ -39,7 +35,7 @@ async function vaccineDemo() {
   // issueCredential() {
   // Sign a credential as the clinic and send it to Allison
   const issueResponse = await credentialService.issueCredential(
-    IssueRequest.fromPartial({ documentJson: JSON.stringify(vaccineCertUnsignedPath) })
+    IssueRequest.fromPartial({ documentJson: JSON.stringify(vaccineCertUnsigned) })
   );
   // }
 
@@ -61,7 +57,7 @@ async function vaccineDemo() {
   const proofResponse = await credentialService.createProof(
     CreateProofRequest.fromPartial({
       itemId: insertResponse.itemId,
-      revealDocumentJson: JSON.stringify(vaccineCertFramePath),
+      revealDocumentJson: JSON.stringify(vaccineCertFrame),
     })
   );
   // }
@@ -78,10 +74,3 @@ async function vaccineDemo() {
 
   return verifyResponse;
 }
-
-describe("Demo: vaccination demo - credential issuance, storing, and verification", () => {
-  it("should run the demo without raising exceptions", async () => {
-    let response = await vaccineDemo();
-    expect(response.isValid).toBeTrue();
-  });
-});

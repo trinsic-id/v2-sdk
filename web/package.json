@@ -2,14 +2,13 @@
   "name": "@trinsic/trinsic",
   "version": "1.0.0",
   "description": "Node and Browser wrapper for the Trinsic services",
-  "type": "module",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "npm run build:proto && npm run build:typescript",
     "build:proto": "pwsh Generate-Proto.ps1",
     "build:typescript": "npx tsc",
-    "test:node": "jest --config .config/jest.config.cjs",
+    "test:node": "jest --config .config/jest.config.cjs --no-cache",
     "test:browser": "karma start .config/karma.conf.cjs",
     "test": "npm run test:node && npm run test:browser",
     "build-and-test": "npm run build && npx run test"
@@ -54,6 +53,8 @@
     "url": "^0.11.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.17.12",
+    "@babel/plugin-transform-modules-commonjs": "^7.17.12",
     "@types/google-protobuf": "^3.15.6",
     "@types/jasmine": "^4.0.3",
     "@types/jest": "^27.5.1",
@@ -61,9 +62,12 @@
     "@types/karma-webpack": "^2.0.11",
     "@types/node": "^17.0.33",
     "@types/uuid": "^8.3.4",
+    "babel-jest": "^28.1.0",
+    "babel-plugin-dynamic-import-node": "^2.3.3",
     "chromedriver": "^101.0.0",
     "copyfiles": "^2.4.1",
     "dotenv": "^16.0.1",
+    "esm": "^3.2.25",
     "expect": "^28.1.0",
     "jasmine": "^4.1.0",
     "jasmine-core": "^4.1.1",

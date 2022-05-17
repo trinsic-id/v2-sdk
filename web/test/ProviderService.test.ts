@@ -33,6 +33,6 @@ describe("ProviderService Unit Tests", () => {
     expect(actualCreate.ecosystem).not.toBeNull();
     expect(
       actualCreate.ecosystem!.id.startsWith("urn:trinsic:ecosystems:")
-    ).toBeTrue();
+    ).toBeTruthy();
   });
 });

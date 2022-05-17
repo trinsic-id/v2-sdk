@@ -20,7 +20,12 @@ const {
 let options: ServiceOptions = getTestServerOptions();
 
 describe("Demo: Credential Templates", () => {
-  jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000
+  try {
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000
+  } catch (e) {}
+  try {
+    jest.setTimeout(20000)
+  } catch {}
   beforeAll(async () => {
     let service = new AccountService(options);
     options.authToken = await service.signIn();
@@ -32,7 +37,7 @@ describe("Demo: Credential Templates", () => {
     // We use GUID's to prevent the "not an owner" error.
     expect(
       response.data?.name.startsWith("My First Credential Template")
-    ).toBeTrue();
+    ).toBeTruthy();
 
     const fieldsMap = response.data?.fields!;
     expect(fieldsMap["name"]).toEqual(nameField);
@@ -61,6 +66,6 @@ describe("Demo: Credential Templates", () => {
       options,
       JSON.stringify(templateCertFrame)
     );
-    expect(response).toBeTrue();
+    expect(response).toBeTruthy();
   });
 });

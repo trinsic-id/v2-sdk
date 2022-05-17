@@ -81,6 +81,8 @@ module.exports = async (config) => {
             },
             output: {
                 path: resolve(__dirname, "../test/build"),
+                libraryTarget: 'umd',
+                globalObject: 'this',
                 libraryExport: 'default'
             },
             plugins: [
