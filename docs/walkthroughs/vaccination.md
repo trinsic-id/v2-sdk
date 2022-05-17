@@ -196,13 +196,11 @@ If you would like to save the profile for future use, you can simply export the 
     ```bash
     trinsic template create -n "First Template" --fields-file templateData.json 
 
-    # fields-file looks like the following
-    : '  
+    # Contents of templateData.json:  
     {
         "name": {
             "type": "string",
             "description": "Name of the business",
-            "required": true
         },
         "website": {
             "type": "string",
@@ -211,15 +209,12 @@ If you would like to save the profile for future use, you can simply export the 
         "rating":{
             "type": "number",
             "description": "rating on scale of 1-10",
-            "optional": false
         },
         "details":{
             "type": "string",
             "description": "An individual's last name",
-            "optional": false
         }
     }
-    ' 
     ```
 
 === "Typescript"
@@ -263,7 +258,7 @@ If you would like to save the profile for future use, you can simply export the 
 
 === "Trinsic CLI"
     ```
-    trinsic provider create-ecosystem --name "Bobs-Ecosystem" --email bob@example.com --alias bob
+    trinsic provider create-ecosystem --name "Bobs-Ecosystem" --email bob@example.com
     ```
     
 === "Typescript"
