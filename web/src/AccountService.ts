@@ -45,11 +45,11 @@ export class AccountService extends ServiceBase {
     securityCode = AccountService.convertToUtf8(securityCode);
     profile = AccountService.convertToProfile(profile);
     let cloned = AccountProfile.fromPartial(profile);
-    const request = new BlindOberonTokenRequest()
-      .setToken(cloned.authToken)
-      .setBlindingList([securityCode]);
-    const result = await Oberon.blindToken(request);
-    cloned.authToken = result.getToken_asU8();
+    const result = await Oberon.blindToken({
+      blinding: [securityCode],
+      token: cloned.authToken
+    });
+    cloned.authToken = result.token
     cloned.protection = TokenProtection.fromPartial({
       enabled: true,
       method: ConfirmationMethod.Other,
@@ -69,11 +69,11 @@ export class AccountService extends ServiceBase {
     securityCode = AccountService.convertToUtf8(securityCode);
     profile = AccountService.convertToProfile(profile);
     let cloned = AccountProfile.fromPartial(profile);
-    const request = new UnBlindOberonTokenRequest()
-      .setToken(cloned.authToken)
-      .setBlindingList([securityCode]);
-    const result = await Oberon.unblindToken(request);
-    cloned.authToken = result.getToken_asU8();
+    const result = await Oberon.unblindToken({
+      token: cloned.authToken,
+      blinding: [securityCode]
+    });
+    cloned.authToken = result.token
     cloned.protection = TokenProtection.fromPartial({
       enabled: false,
       method: ConfirmationMethod.None,

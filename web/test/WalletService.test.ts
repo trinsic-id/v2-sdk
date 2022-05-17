@@ -17,7 +17,7 @@ import {
 } from "./TestData";
 
 
-import {getTestServerOptions} from "./env";
+import {getTestServerOptions, set20SecTimeout} from "./env";
 import {v4 as uuid} from "uuid";
 
 const options = getTestServerOptions();
@@ -26,6 +26,7 @@ const clinic = getTestServerOptions();
 const airline = getTestServerOptions();
 
 describe("WalletService Unit Tests", () => {
+  set20SecTimeout()
   beforeAll(async () => {
     let service = new AccountService(options);
     allison.authToken = await service.signIn();
@@ -100,7 +101,7 @@ describe("WalletService Unit Tests", () => {
     });
     // }
 
-    expect(verifyResponse.isValid).toBeTrue();
+    expect(verifyResponse.isValid).toBeTruthy();
   });
 
   it("Demo: template management and credential issuance from template", async () => {
@@ -146,7 +147,7 @@ describe("WalletService Unit Tests", () => {
     let jsonDocument = JSON.parse(issueResponse.documentJson);
 
     expect(jsonDocument).not.toBeNull();
-    expect(jsonDocument.hasOwnProperty("id")).toBeTrue();
-    expect(jsonDocument.hasOwnProperty("credentialSubject")).toBeTrue();
+    expect(jsonDocument.hasOwnProperty("id")).toBeTruthy();
+    expect(jsonDocument.hasOwnProperty("credentialSubject")).toBeTruthy();
   });
 });

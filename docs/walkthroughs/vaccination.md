@@ -104,7 +104,7 @@ When a new Trinsic account is created, a cloud wallet is created on our platform
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Setup Wallets](../../web/test/VaccineDemo.test.ts) inside_block:setupActors
+    [Setup Wallets](../../web/test/VaccineDemoShared.ts) inside_block:setupActors
     ```
     <!--/codeinclude-->
 
@@ -145,7 +145,7 @@ If you would like to save the profile for future use, you can simply export the 
 <!-- === "Typescript" 
     
     ```javascript
-    [Setup Wallets](../../web/test/VaccineDemo.test.ts) inside_block:storeAndRecallProfile
+    [Setup Wallets](../../web/test/VaccineDemoShared.ts) inside_block:storeAndRecallProfile
     ```
      
 -->
@@ -266,7 +266,7 @@ To issue this credential we'll specify links to the json files, set the active p
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Setup Wallets](../../web/test/VaccineDemo.test.ts) inside_block:issueCredential
+    [Setup Wallets](../../web/test/VaccineDemoShared.ts) inside_block:issueCredential
     ```
     <!--/codeinclude-->
 
@@ -357,7 +357,7 @@ Once Allison receives the credential, she or her wallet application can store it
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Store Credential](../../web/test/VaccineDemo.test.ts) inside_block:storeCredential
+    [Store Credential](../../web/test/VaccineDemoShared.ts) inside_block:storeCredential
     ```
     <!--/codeinclude-->
 
@@ -428,7 +428,7 @@ Now let's create a proof for Allison. She may choose to generate this proof befo
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Share Credential](../../web/test/VaccineDemo.test.ts) inside_block:shareCredential
+    [Share Credential](../../web/test/VaccineDemoShared.ts) inside_block:shareCredential
     ```
     <!--/codeinclude-->
 
@@ -481,7 +481,7 @@ Once the airline receives the proof, they can now verify it to ensure its authen
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Verify Credential](../../web/test/VaccineDemo.test.ts) inside_block:verifyCredential
+    [Verify Credential](../../web/test/VaccineDemoShared.ts) inside_block:verifyCredential
     ```
     <!--/codeinclude-->
 
@@ -545,7 +545,7 @@ Watch for the result of `true` to know that the credential successfully passed a
 ## Full Source Code
 
 === "Typescript"
-    [web](https://github.com/trinsic-id/sdk/tree/main/web/test/VaccineDemo.test.ts)    
+    [web](https://github.com/trinsic-id/sdk/tree/main/web/test/VaccineDemoShared.ts)    
 
 === "C#"
     This sample is available in our [dotnet](https://github.com/trinsic-id/sdk/blob/main/dotnet/Tests/Tests.cs#L42) directory. 
