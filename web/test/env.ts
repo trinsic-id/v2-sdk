@@ -25,3 +25,12 @@ export function getTestServerOptions(): ServiceOptions {
     serverUseTls: useTls,
   });
 }
+
+export function set20SecTimeout() {
+  try {
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000
+  } catch (e) {}
+  try {
+    jest.setTimeout(20000)
+  } catch {}
+}

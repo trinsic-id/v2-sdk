@@ -1,7 +1,7 @@
 import { AccountService, ServiceOptions } from "../src";
 // @ts-ignore
 import templateCertFrame from "./data/credential-template-frame.json";
-import { getTestServerOptions } from "./env";
+import {getTestServerOptions, set20SecTimeout} from "./env";
 import {
   createCredentialTemplateTest,
   createRequiredTestObjects,
@@ -20,12 +20,7 @@ const {
 let options: ServiceOptions = getTestServerOptions();
 
 describe("Demo: Credential Templates", () => {
-  try {
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000
-  } catch (e) {}
-  try {
-    jest.setTimeout(20000)
-  } catch {}
+  set20SecTimeout()
   beforeAll(async () => {
     let service = new AccountService(options);
     options.authToken = await service.signIn();
