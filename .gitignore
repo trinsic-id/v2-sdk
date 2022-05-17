@@ -396,3 +396,4 @@ samples/java/.gradle/
 samples/java/gradle/wrapper/gradle-wrapper.jar
 web/coverage/
 web/test/build/
+web/.config/coverage/

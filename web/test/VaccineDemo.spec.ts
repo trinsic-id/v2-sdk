@@ -15,7 +15,7 @@ import vaccineCertUnsignedPath from "./data/vaccination-certificate-unsigned.jso
 // @ts-ignore
 import vaccineCertFramePath from "./data/vaccination-certificate-frame.json";
 
-let options = getTestServerOptions()
+const options = getTestServerOptions();
 
 async function vaccineDemo() {
   // createAccountService() {
@@ -31,7 +31,6 @@ async function vaccineDemo() {
 
   accountService.options.authToken = clinic;
   const info = await accountService.info();
-  // console.log(`Account info=${info}`);
 
   // createService() {
   const walletService = new WalletService(options);
@@ -44,7 +43,6 @@ async function vaccineDemo() {
     IssueRequest.fromPartial({ documentJson: JSON.stringify(vaccineCertUnsignedPath) })
   );
   // }
-  // console.log(`Credential=${issueResponse}`);
 
   // storeCredential() {
   // Alice stores the credential in her cloud wallet.
@@ -55,7 +53,6 @@ async function vaccineDemo() {
     })
   );
   // }
-  // console.log(`Item id=${insertResponse.itemId}`);
 
   // shareCredential() {
   // Allison shares the credential with the venue.
@@ -69,7 +66,6 @@ async function vaccineDemo() {
     })
   );
   // }
-  // console.log(`Proof=${proofResponse.proofDocumentJson}`);
 
   // verifyCredential() {
   // The airline verifies the credential
@@ -80,15 +76,13 @@ async function vaccineDemo() {
     })
   );
   // }
-  // console.log(`Verification result=${verifyResponse.isValid}`);
 
-  if (!verifyResponse.isValid) throw new Error("Verification should be true!");
+  return verifyResponse;
 }
 
 describe("Demo: vaccination demo - credential issuance, storing, and verification", () => {
   it("should run the demo without raising exceptions", async () => {
-    expect(async () => {
-      await vaccineDemo();
-    }).not.toThrow();
+    let response = await vaccineDemo();
+    expect(response.isValid).toBeTrue();
   });
 });

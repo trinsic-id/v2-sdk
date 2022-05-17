@@ -5,9 +5,9 @@ const config: Configuration = {
   mode: "development",
   devtool: "inline-source-map",
   entry: {
-    wallet: "./test/WalletService.spec.ts",
-    vaccine: "./test/VaccineDemo.spec.ts",
-    templates: "./test/CredentialTemplates.spec.ts",
+    wallet: "../test/WalletService.spec.ts",
+    vaccine: "../test/VaccineDemo.spec.ts",
+    templates: "../test/CredentialTemplates.spec.ts",
   },
   module: {
     rules: [
@@ -15,6 +15,9 @@ const config: Configuration = {
         test: /\.tsx?$/,
         exclude: /node_modules/,
         loader: "ts-loader",
+        options: {
+          configFile: 'tsconfig.json'
+        }
       }
     ],
   },
@@ -25,7 +28,7 @@ const config: Configuration = {
     },
   },
   output: {
-    path: resolve(__dirname, "./test/build"),
+    path: resolve(__dirname, "../test/build"),
     filename: "[name].bundle.js",
     libraryExport: 'default'
   },
