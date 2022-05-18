@@ -34,9 +34,9 @@ walkthrough
 ```
 
 ## Our SDKs
-This tutorial is meant to share the concepts of verifiable credentials. So feel free to sit back and read through this without running any code. However, you can also follow along using one of our SDKs. 
+This tutorial is meant to share the concepts of verifiable credentials, so feel free to sit back and read through this without running any code. However, you can also follow along using one of our SDKs. 
 
-We've set up some environments to use on Repl.it. If your language of choice isn't supported on repl.it, you can also run locally by installing the SDK of your choice.
+<!-- We've set up some environments to use on Repl.it. If your language of choice isn't supported on repl.it, you can also run locally by installing the SDK of your choice. -->
 
 === "Trinsic CLI"
     
