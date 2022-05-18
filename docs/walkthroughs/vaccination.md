@@ -309,9 +309,13 @@ If you would like to save the profile for future use, you can simply export the 
 
 ## Define a Template
 
+Before we can issue a credential, we need to create a [Template](/learn/templates/){target:_blank} for it. 
+
+Templates are simply a list of the fields that a credential can have.
+
 === "Trinsic CLI"
     ```bash
-    trinsic template create -n "First Template" --fields-file templateData.json 
+    trinsic template create -n "VaccineCertificate" --fields-file templateData.json 
 
     # Contents of templateData.json:  
     {
@@ -370,48 +374,14 @@ If you would like to save the profile for future use, you can simply export the 
     ```
     <!--/codeinclude-->
 
+!!! info "Templates are Optional"
 
-## Create an Ecosystem
+    Templates are an optional helpful abstraction which removes the need to work directly with complex data formats such as JSON-LD.
 
-=== "Trinsic CLI"
-    ```
-    trinsic provider create-ecosystem --name "Bobs-Ecosystem" --email bob@example.com
-    ```
-    
-=== "Typescript"
-    <!--codeinclude-->
-    ```javascript
-    [Create Ecosystem](../../web/test/ProviderService.test.ts) inside_block:createEcosystem
-    ```
-    <!--/codeinclude-->
+    When a template is used to issue a credential, the result is a valid, interoperable JSON-LD Verifiable Credential.
 
-=== "C#"
-    <!--codeinclude-->
-    ```csharp
-    [Create Ecosystem](../../dotnet/Tests/Tests.cs) inside_block:createEcosystem
-    ```
-    <!--/codeinclude-->
+    Trinsic's SDKs support issuing JSON-LD credentials that you create yourself, should you choose not to use templates.
 
-=== "Python"
-    <!--codeinclude-->
-    ```python
-    [Create Ecosystem](../../python/samples/ecosystem_demo.py) inside_block:createEcosystem
-    ```
-    <!--/codeinclude-->
-
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    [Create Ecosystem](../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:createEcosystem
-    ```
-    <!--/codeinclude-->
-
-=== "Go"
-    <!--codeinclude-->
-    ```go
-    [Create Ecosystem](../../go/services/services_test.go) inside_block:createEcosystem
-    ```
-    <!--/codeinclude-->
 
 ## Issue a Credential
 Upon receiving her vaccine, Allison also receives a digital certificate from the clinic. This certificate is digitally signed by the clinic, acting as an issuer.
