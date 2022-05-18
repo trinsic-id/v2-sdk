@@ -33,11 +33,15 @@ describe("TrustRegistryService Unit Tests", () => {
   it("add governance framework - invalid uri", async () => {
     let trustRegistryService = new TrustRegistryService(options);
 
-    await expectAsync(
-      trustRegistryService.addGovernanceFramework(
-        AddFrameworkRequest.fromPartial({})
-      )
-    ).toBeRejected();
+    try {
+        await trustRegistryService.addGovernanceFramework(
+            AddFrameworkRequest.fromPartial({})
+        );
+        // This is a failure case since jest doesn't have expect().toThrow()
+        expect(false).toBeTruthy()
+    }catch (e) {
+        // This is expected, pass
+    }
   });
 
   it("Demo: Trust Registry", async () => {
@@ -95,6 +99,6 @@ describe("TrustRegistryService Unit Tests", () => {
     let searchResult = await trustRegistryService.searchRegistry();
     expect(searchResult).not.toBeNull();
     expect(searchResult.itemsJson).not.toBeNull();
-    expect(searchResult.itemsJson.length > 0).toBeTrue();
+    expect(searchResult.itemsJson.length > 0).toBeTruthy();
   });
 });

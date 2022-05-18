@@ -1,19 +1,13 @@
 import { ServiceOptions } from "../src";
 import ServiceBase from "../src/ServiceBase";
 
-function isNode(): boolean {
-  // TODO - Refactor this into one location, utility class?
-  let node = (typeof process !== 'undefined') && (typeof process.release !== 'undefined') && (process.release.name === 'node')
-  return node
-}
-
 export function getTestServerOptions(): ServiceOptions {
   let defaults = ServiceOptions.fromPartial({
     serverEndpoint: "dev-internal.trinsic.cloud",
     serverPort: 443,
     serverUseTls: true,
   });
-  if (!isNode())
+  if (!ServiceBase.isNode())
     return defaults
 
   // Use environment variables for which node transport protocol we need
@@ -30,4 +24,13 @@ export function getTestServerOptions(): ServiceOptions {
     serverPort: port,
     serverUseTls: useTls,
   });
+}
+
+export function set20SecTimeout() {
+  try {
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000
+  } catch (e) {}
+  try {
+    jest.setTimeout(20000)
+  } catch {}
 }

@@ -221,7 +221,7 @@ When a new Trinsic account is created, a cloud wallet is created on our platform
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Setup Wallets](../../web/test/VaccineDemo.test.ts) inside_block:setupActors
+    [Setup Wallets](../../web/test/VaccineDemoShared.ts) inside_block:setupActors
     ```
     <!--/codeinclude-->
 
@@ -262,7 +262,7 @@ If you would like to save the profile for future use, you can simply export the 
 <!-- === "Typescript" 
     
     ```javascript
-    [Setup Wallets](../../web/test/VaccineDemo.test.ts) inside_block:storeAndRecallProfile
+    [Setup Wallets](../../web/test/VaccineDemoShared.ts) inside_block:storeAndRecallProfile
     ```
      
 -->
@@ -315,21 +315,21 @@ If you would like to save the profile for future use, you can simply export the 
 
     # Contents of templateData.json:  
     {
-        "name": {
+        "firstName": {
             "type": "string",
-            "description": "Name of the business",
+            "description": "First name of vaccine recipient",
         },
-        "website": {
+        "lastName": {
             "type": "string",
-            "description": "More information about the business"
+            "description": "Last name of vaccine recipient"
         },
-        "rating":{
-            "type": "number",
-            "description": "rating on scale of 1-10",
-        },
-        "details":{
+        "batchNumber":{
             "type": "string",
-            "description": "An individual's last name",
+            "description": "Batch number of vaccine",
+        },
+        "countryOfVaccination":{
+            "type": "string",
+            "description": "Country in which the subject was vaccinated",
         }
     }
     ```
@@ -370,6 +370,49 @@ If you would like to save the profile for future use, you can simply export the 
     ```
     <!--/codeinclude-->
 
+
+## Create an Ecosystem
+
+=== "Trinsic CLI"
+    ```
+    trinsic provider create-ecosystem --name "Bobs-Ecosystem" --email bob@example.com
+    ```
+    
+=== "Typescript"
+    <!--codeinclude-->
+    ```javascript
+    [Create Ecosystem](../../web/test/ProviderService.test.ts) inside_block:createEcosystem
+    ```
+    <!--/codeinclude-->
+
+=== "C#"
+    <!--codeinclude-->
+    ```csharp
+    [Create Ecosystem](../../dotnet/Tests/Tests.cs) inside_block:createEcosystem
+    ```
+    <!--/codeinclude-->
+
+=== "Python"
+    <!--codeinclude-->
+    ```python
+    [Create Ecosystem](../../python/samples/ecosystem_demo.py) inside_block:createEcosystem
+    ```
+    <!--/codeinclude-->
+
+=== "Java"
+    <!--codeinclude-->
+    ```java
+    [Create Ecosystem](../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:createEcosystem
+    ```
+    <!--/codeinclude-->
+
+=== "Go"
+    <!--codeinclude-->
+    ```go
+    [Create Ecosystem](../../go/services/services_test.go) inside_block:createEcosystem
+    ```
+    <!--/codeinclude-->
+
 ## Issue a Credential
 Upon receiving her vaccine, Allison also receives a digital certificate from the clinic. This certificate is digitally signed by the clinic, acting as an issuer.
 The certificate is in a JSON form, and for this example, we will use the following JSON. Add this file to your project named `vaccination-certificate-unsigned.jsonld`.
@@ -393,7 +436,7 @@ To issue this credential we'll specify links to the json files, set the active p
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Setup Wallets](../../web/test/VaccineDemo.test.ts) inside_block:issueCredential
+    [Setup Wallets](../../web/test/VaccineDemoShared.ts) inside_block:issueCredential
     ```
     <!--/codeinclude-->
 
@@ -484,7 +527,7 @@ Once Allison receives the credential, she or her wallet application can store it
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Store Credential](../../web/test/VaccineDemo.test.ts) inside_block:storeCredential
+    [Store Credential](../../web/test/VaccineDemoShared.ts) inside_block:storeCredential
     ```
     <!--/codeinclude-->
 
@@ -555,7 +598,7 @@ Now let's create a proof for Allison. She may choose to generate this proof befo
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Share Credential](../../web/test/VaccineDemo.test.ts) inside_block:shareCredential
+    [Share Credential](../../web/test/VaccineDemoShared.ts) inside_block:shareCredential
     ```
     <!--/codeinclude-->
 
@@ -608,7 +651,7 @@ Once the airline receives the proof, they can now verify it to ensure its authen
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Verify Credential](../../web/test/VaccineDemo.test.ts) inside_block:verifyCredential
+    [Verify Credential](../../web/test/VaccineDemoShared.ts) inside_block:verifyCredential
     ```
     <!--/codeinclude-->
 
@@ -672,7 +715,7 @@ Watch for the result of `true` to know that the credential successfully passed a
 ## Full Source Code
 
 === "Typescript"
-    [web](https://github.com/trinsic-id/sdk/tree/main/web/test/VaccineDemo.test.ts)    
+    [web](https://github.com/trinsic-id/sdk/tree/main/web/test/VaccineDemoShared.ts)    
 
 === "C#"
     This sample is available in our [dotnet](https://github.com/trinsic-id/sdk/blob/main/dotnet/Tests/Tests.cs#L42) directory. 
