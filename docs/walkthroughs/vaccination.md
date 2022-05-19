@@ -400,7 +400,8 @@ To issue this credential we'll specify links to the json files, set the active p
 
 === "Trinsic CLI"
     ```bash
-    trinsic  --profile clinic issuer issue --document data/vaccination-certificate-unsigned.json --out vaccination-certificate-signed.json
+    trinsic config --auth-token $(cat clinic.txt)
+    trinsic issuer issue --document data/vaccination-certificate-unsigned.json --out vaccination-certificate-signed.json
     ```
 
 === "Typescript"
@@ -491,7 +492,8 @@ Once Allison receives the credential, she or her wallet application can store it
 === "Trinsic CLI"
 
     ```bash
-    trinsic --profile allison wallet insert-item --item vaccination-certificate-signed.json
+    trinsic config --auth-token $(cat allison.txt)
+    trinsic wallet insert-item --item vaccination-certificate-signed.json
     ```
 
 === "Typescript"
@@ -562,7 +564,8 @@ Now let's create a proof for Allison. She may choose to generate this proof befo
     Replace the `<item_id>` in the generate proof command below with the output from the `insert_item` above.
 
     ```bash
-    trinsic --profile allison issuer create-proof --document-id "<item-id>" --out vaccination-certificate-partial-proof.json --reveal-document data/vaccination-certificate-frame.json
+    trinsic config --auth-token $(cat allison.txt)
+    trinsic issuer create-proof --document-id "<item-id>" --out vaccination-certificate-partial-proof.json --reveal-document data/vaccination-certificate-frame.json
     ```
 
 === "Typescript"
@@ -615,7 +618,8 @@ Once the airline receives the proof, they can now verify it to ensure its authen
 
 === "Trinsic CLI"
     ```bash
-    trinsic --profile airline issuer verify-proof --proof-document vaccination-certificate-partial-proof.json
+    trinsic config --auth-token $(cat issuer.txt)
+    trinsic issuer verify-proof --proof-document vaccination-certificate-partial-proof.json
     ```
 
 === "Typescript"
