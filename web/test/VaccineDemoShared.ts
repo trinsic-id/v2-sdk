@@ -80,8 +80,6 @@ export async function vaccineDemo() {
 
   // shareCredential() {
   // Allison shares the credential with the venue.
-  // The venue has communicated with Allison the details of the credential
-  // that they require expressed as a JSON-LD frame.
   credentialService.options.authToken = allison;
   const proofResponse = await credentialService.createProof(
     CreateProofRequest.fromPartial({
