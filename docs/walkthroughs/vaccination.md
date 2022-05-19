@@ -393,7 +393,7 @@ Templates are simply a list of the fields that a credential can have.
 ## Issue a Credential
 Upon receiving her vaccine, the clinic issues Allison a Verifiable Credential, which proves that she was given the vaccine by the clinic.
 
-A credential is a JSON document that has been cryptographically signed; this signature enables verifiers to trust that the data comes from its claimed issue, and has not been tampered with.
+A credential is a JSON document that has been cryptographically signed; this signature enables verifiers to trust that the data comes a trusted source, and has not been tampered with.
 
 To issue a vaccine certificate, we'll use the template we created in the last step.
 
