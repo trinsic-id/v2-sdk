@@ -25,7 +25,7 @@ export async function vaccineDemo() {
 
   // createEcosystem() {
   const ecosystem = await providerService.createEcosystem(CreateEcosystemRequest.fromPartial({}));
-  const ecosystemId = ecosystem.ecosystem.id;
+  const ecosystemId = ecosystem.ecosystem!.id;
   // }
 
   options.defaultEcosystem = providerService.options.defaultEcosystem = ecosystemId;
@@ -142,5 +142,5 @@ async function doTemplate(templateService: TemplateService): Promise<TemplateDat
   const template = response.data;
   // }
 
-  return template;
+  return template!;
 }
