@@ -557,31 +557,16 @@ Note down the response `item_id` printed to the console for the next step.
 ---
 
 ## Create a Proof of Vaccination
-Before boarding an airplane, Allison must show a proof of vaccination. The request for this proof also comes in a form of JSON, in this case a JSON-LD frame.
+Before boarding, the airline requests proof of vaccination from Allison. Specifically, they want to see proof that she holds a `VaccinationCertificate` credential.
 
 This request can be communicated using any exchange protocol. Again, we'll assume this was done offline.
 
-Let's save this request in a file named `vaccination-certificate-frame.jsonld`
-
-=== "vaccination-certificate-frame.jsonld"
-```json
-----8<---- "devops/testdata/vaccination-certificate-frame.jsonld"
-```
-
-This request asks Allison to provide proof of valid vaccination certificate, including the `issuer`, `batchNumber`and `countryOfVaccination` fields.
-
-Allison can use the [Create Proof](../reference/services/wallet-service/#create-proof) functions to build a proof that will share only the requested fields.
-
-Now let's create a proof for Allison. She may choose to generate this proof before going to the airport, or might generate it right as she boards.
-
-
+Let's use the [CreateProof](../../reference/services/credential-service/#create-proof) call to build a proof for Allison's held credential.
 
 === "Trinsic CLI"
-    Replace the `<item_id>` in the generate proof command below with the output from the `insert_item` above.
-
     ```bash
     trinsic config --auth-token $(cat allison.txt)
-    trinsic issuer create-proof --document-id "<item-id>" --out vaccination-certificate-partial-proof.json --reveal-document data/vaccination-certificate-frame.json
+    trinsic vc create-proof --document-id "{ITEM_ID}" --out proof.json
     ```
 
 === "Typescript"
@@ -620,12 +605,16 @@ Now let's create a proof for Allison. She may choose to generate this proof befo
     ```
     <!--/codeinclude-->
 
-Take a look at the proof. Notice how only the attributes included in the `frame` are included with the proof.
-
 Allison sends this proof to the airline for them to verify.
 
-!!! info
-    Reference: [Create Proof](../reference/services/wallet-service.md#create-proof)
+!!! info "Partial Proofs"
+
+    In this example, the proof is being created over the entire credential; all of its fields are revealed to the verifier.
+
+    It is possible for the airline to send Allison a *frame* which requests only certain fields of the credential. The airline would not be able to see other fields of the credential, but cryptographic guarantees would still hold over the revealed fields.
+
+    See the [CreateProof](../../reference/services/credential-service/#create-proof) reference for more information.
+    
 
 ---
 
