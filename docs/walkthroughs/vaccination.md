@@ -52,7 +52,7 @@ This tutorial is meant to share the concepts of verifiable credentials, so feel 
 
    
 
-=== "TypeScript"
+=== "Typescript"
     <a href="/web/" target="_blank">Installation instructions</a> for the Node/Browser SDk.
 
 === "C#"
