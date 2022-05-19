@@ -392,25 +392,33 @@ Templates are simply a list of the fields that a credential can have.
 
 
 ## Issue a Credential
-Upon receiving her vaccine, Allison also receives a digital certificate from the clinic. This certificate is digitally signed by the clinic, acting as an issuer.
-The certificate is in a JSON form, and for this example, we will use the following JSON. Add this file to your project named `vaccination-certificate-unsigned.jsonld`.
+Upon receiving her vaccine, the clinic issues Allison a Verifiable Credential, which proves that she was given the vaccine by the clinic.
 
-=== "vaccination-certificate-unsigned.jsonld"
-```json
-----8<---- "devops/testdata/vaccination-certificate-unsigned.jsonld"
-```
+A credential is a JSON document that has been cryptographically signed; this signature enables verifiers to trust that the data comes from its claimed issue, and has not been tampered with.
 
-Behind the scenes, each credential is a JSON document that is signed with a special digital signature to make each piece of data in the credential separately verifiable.
-
-Signatures are a way to make sure that credentials are not forged or tampered with between getting issued and verified. They also are how a verifier can know that the credential was issued by who the credential says it was issued by.
-
-To issue this credential we'll specify links to the json files, set the active profile to the clinic, and call the issuance endpoint:
+To issue a vaccine certificate, we'll use the template we created in the last step.
 
 === "Trinsic CLI"
+
+    First, prepare a file named `values.json` with the following content:
+    === "values.json"
+    ```json
+    {
+        "firstName": "Allison",
+        "lastName": "Allisonne",
+        "batchNumber": "123454321",
+        "countryOfVaccination": "US"
+    }
+    ```
+
+    Then issue the credential:
+
     ```bash
     trinsic config --auth-token $(cat clinic.txt)
-    trinsic issuer issue --document data/vaccination-certificate-unsigned.json --out vaccination-certificate-signed.json
+    trinsic vc issue-from-template --template-id {TEMPLATE_ID} --values-file values.json --out credential.json
     ```
+
+    The output of this command will contain a signed JSON document, which has been saved to `credential.json`.
 
 === "Typescript"
     <!--codeinclude-->
