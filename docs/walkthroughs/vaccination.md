@@ -619,12 +619,12 @@ Allison sends this proof to the airline for them to verify.
 ---
 
 ## Verify Proof
-Once the airline receives the proof, they can now verify it to ensure its authenticity. Because Allison sent a proof of her vaccination credential and not the credential itself, the airline only receives its required information.
+Once the airline receives the proof, they can now verify it to ensure its authenticity. 
 
 === "Trinsic CLI"
     ```bash
     trinsic config --auth-token $(cat issuer.txt)
-    trinsic issuer verify-proof --proof-document vaccination-certificate-partial-proof.json
+    trinsic vc verify-proof --proof-document proof.json
     ```
 
 === "Typescript"
@@ -664,30 +664,8 @@ Once the airline receives the proof, they can now verify it to ensure its authen
     ```
     <!--/codeinclude-->
 
-
-Watch for the result of `true` to know that the credential successfully passed all of the verification processes.
-
 !!! info
     Reference: [Verify Proof](../reference/services/credential-service.md#verify-proof)
-
----
-
-<!-- ## Check Issuer Status
-
-
-=== "Trinsic CLI"
-
-
-=== "Typescript"
-
-
-=== "C#"
-
-
-=== "Python"
-   
-
-=== "Java" -->
 
 ---
 
