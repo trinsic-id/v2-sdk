@@ -213,9 +213,14 @@ When a new Trinsic account is created, a cloud wallet is created on our platform
     
     When creating a wallet in the CLI, the wallet will store a private authentication token for the wallet in ~/.trinsic. If using the CLI with a real-world wallet, store this authentication token somewhere securely. 
     ```bash
-    trinsic account login --description "Allison's Wallet" --alias allison && \
-    trinsic account login --description "Airline's wallet" --alias airline && \
-    trinsic account login --description "Vaccination Clinic" --alias clinic
+    trinsic account login --name "Allison"
+    # Save auth token in `allison.txt` before continuing
+
+    trinsic account login --name "Airline"
+    # Save auth token in `airline.txt` before continuing
+
+    trinsic account login --name "Vaccination Clinic"
+    # Save auth token in `clinic.txt` before continuing
     ```
 
 === "Typescript"
@@ -225,6 +230,12 @@ When a new Trinsic account is created, a cloud wallet is created on our platform
     ```
     <!--/codeinclude-->
 
+    If you would like to save the profile for future use, you can simply export the serialized profile to a local storage. Please note that the profiles contain sensitive key data, so they should be stored in a secure enclave.
+
+    <!-- ```javascript
+    [Setup Wallets](../../web/test/VaccineDemoShared.ts) inside_block:storeAndRecallProfile
+    ``` -->
+
 
 === "C#"
     <!--codeinclude-->
@@ -233,6 +244,13 @@ When a new Trinsic account is created, a cloud wallet is created on our platform
     ```
     <!--/codeinclude-->
 
+    If you would like to save the profile for future use, you can simply export the serialized profile to a local storage. Please note that the profiles contain sensitive key data, so they should be stored in a secure enclave.
+
+    <!--codeinclude-->
+    ```csharp
+    [Save and Load Profile](../../dotnet/Tests/Tests.cs) inside_block:storeAndRecallProfile
+    ```
+    <!--/codeinclude-->
 
 === "Python"
     <!--codeinclude-->
@@ -241,42 +259,8 @@ When a new Trinsic account is created, a cloud wallet is created on our platform
     ```
     <!--/codeinclude-->
 
+    If you would like to save the profile for future use, you can simply export the serialized profile to a local storage. Please note that the profiles contain sensitive key data, so they should be stored in a secure enclave.
 
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    [Setup Wallets](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:setupActors
-    ```
-    <!--/codeinclude-->
-
-    
-=== "Go"
-    <!--codeinclude-->
-    ```go
-    [Setup Wallets](../../go/services/services_test.go) inside_block:setupActors
-    ```
-    <!--/codeinclude-->
-
-If you would like to save the profile for future use, you can simply export the serialized profile to a local storage. Please note that the profiles contain sensitive key data, so they should be stored in a secure enclave.
-
-<!-- === "Typescript" 
-    
-    ```javascript
-    [Setup Wallets](../../web/test/VaccineDemoShared.ts) inside_block:storeAndRecallProfile
-    ```
-     
--->
-
-
-=== "C#"
-    <!--codeinclude-->
-    ```csharp
-    [Save and Load Profile](../../dotnet/Tests/Tests.cs) inside_block:storeAndRecallProfile
-    ```
-    <!--/codeinclude-->
-
-
-=== "Python"    
     <!--codeinclude-->
     ```python
     [Save and Load Profile](../../python/samples/vaccine_demo.py) inside_block:storeAndRecallProfile
@@ -286,11 +270,27 @@ If you would like to save the profile for future use, you can simply export the 
 === "Java"
     <!--codeinclude-->
     ```java
-    [Save and Load Profile](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:storeAndRecallProfile
+    [Setup Wallets](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:setupActors
     ```
     <!--/codeinclude-->
 
+    If you would like to save the profile for future use, you can simply export the serialized profile to a local storage. Please note that the profiles contain sensitive key data, so they should be stored in a secure enclave.
+
+    <!--codeinclude-->
+    ```java
+    [Save and Load Profile](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:storeAndRecallProfile
+    ```
+    <!--/codeinclude-->
+    
 === "Go"
+    <!--codeinclude-->
+    ```go
+    [Setup Wallets](../../go/services/services_test.go) inside_block:setupActors
+    ```
+    <!--/codeinclude-->
+
+    If you would like to save the profile for future use, you can simply export the serialized profile to a local storage. Please note that the profiles contain sensitive key data, so they should be stored in a secure enclave.
+
     <!--codeinclude-->
     ```go
     [Save and Load Profile](../../go/services/services_test.go) inside_block:storeAndRecallProfile
