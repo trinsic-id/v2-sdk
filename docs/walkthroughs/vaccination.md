@@ -96,7 +96,7 @@ The first step is to create an [ecosystem](/learn/ecosystems/), within which eve
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Create Ecosystem](../../web/test/ProviderService.test.ts) inside_block:createEcosystem
+    [Create Ecosystem](../../web/test/VaccineDemoShared.ts) inside_block:createEcosystem
     ```
     <!--/codeinclude-->
 
@@ -349,8 +349,7 @@ Templates are simply a list of the fields that a credential can have.
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Define Template](../../web/test/CredentialTemplateShared.ts) inside_block:defineTemplate
-    [Create Template](../../web/test/CredentialTemplateShared.ts) inside_block:createTemplate
+    [Define Template](../../web/test/VaccineDemoShared.ts) inside_block:createTemplate
     ```
     <!--/codeinclude-->
 
