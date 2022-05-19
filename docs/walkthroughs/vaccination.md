@@ -509,7 +509,7 @@ Once Allison receives the credential, she or her wallet application can store it
 
     ```bash
     trinsic config --auth-token $(cat allison.txt)
-    trinsic wallet insert-item --item vaccination-certificate-signed.json
+    trinsic wallet insert-item --item credential.json
     ```
 
 === "Typescript"
