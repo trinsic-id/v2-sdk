@@ -314,10 +314,10 @@ Before we can issue a credential, we need to create a [Template](/learn/template
 Templates are simply a list of the fields that a credential can have.
 
 === "Trinsic CLI"
-    ```bash
-    trinsic template create -n "VaccineCertificate" --fields-file templateData.json 
+    First, prepare a JSON file which describes your template:
 
-    # Contents of templateData.json:  
+    === "templateData.json"
+    ```json
     {
         "firstName": {
             "type": "string",
@@ -337,6 +337,14 @@ Templates are simply a list of the fields that a credential can have.
         }
     }
     ```
+
+    Then create the template:
+
+    ```bash
+    trinsic template create -n "VaccinationCertificate" --fields-file templateData.json 
+    ```
+
+    The output of this command will include a template ID; copy this down for later use.
 
 === "Typescript"
     <!--codeinclude-->
