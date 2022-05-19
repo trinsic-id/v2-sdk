@@ -128,7 +128,7 @@ The first step is to create an [ecosystem](/learn/ecosystems/), within which eve
     ```
     <!--/codeinclude-->
 
-The response to this call contains the name and ID of your newly-created ecosystem; copy both of these down.
+The response to this call contains the name and ID of your newly-created ecosystem; copy either of these down.
 
 ### Configure SDK for Created Ecosystem
 
