@@ -321,7 +321,7 @@ Templates are simply a list of the fields that a credential can have.
     {
         "firstName": {
             "type": "string",
-            "description": "First name of vaccine recipient",
+            "description": "First name of vaccine recipient"
         },
         "lastName": {
             "type": "string",
@@ -329,11 +329,11 @@ Templates are simply a list of the fields that a credential can have.
         },
         "batchNumber":{
             "type": "string",
-            "description": "Batch number of vaccine",
+            "description": "Batch number of vaccine"
         },
         "countryOfVaccination":{
             "type": "string",
-            "description": "Country in which the subject was vaccinated",
+            "description": "Country in which the subject was vaccinated"
         }
     }
     ```
