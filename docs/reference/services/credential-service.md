@@ -24,7 +24,7 @@ Then you can supply it to SDK:
 === "TypeScript"
     <!--codeinclude-->
     ```typescript
-    [Issue Credential](../../../web/test/VaccineDemoShared.ts) inside_block:issueCredential
+    [Issue Credential](../../../web/test/CredentialService.spec.ts) inside_block:issueCredential
     ```
     <!--/codeinclude-->
 
