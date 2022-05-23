@@ -486,16 +486,14 @@ To issue a vaccine certificate, we'll use the template we created in the last st
 ---
 ## Send Credential to Allison
 
-At this point, the clinic can send the signed credential to Allison using any available methods. These methods can include any message exchange protocol, or a custom transport. In this case, we'll assume that the credential was delivered to Allison in an offline environment.
+Now that the clinic has a signed credential, it must be securely transmitted to Allison, so she can store it in her wallet.
 
-Sending credentials securely is an important part of maintaining the privacy of a credential holder. At this point we do not have a standard way of sending credentials to a wallet. There are a couple of options available. 
+Because it's just a JSON string, it could be delivered in many ways -- for example, in the response to an HTTPS request which triggered the issuance process.
 
-First, if you've onboarded two wallets on the Trinsic platform there is a way to send credentials to a wallet via the wallet's email address. This method is a temporary fix. We recommend using a secure channel of communication within your application for sending and receiving credentials. Sending via https or another encrypted messaging protocol is critical to ensure the personal information inside the credential is not accidentally leaked. As Trinsic's platform develops, we will embed an encrypted messaging protocol called DIDComm (decentralized identifier communication) to exchange credentials between any wallet.
+!!! info "Send via Trinsic"
+    In the future, we will offer the ability to send a credential directly to a Trinsic user's wallet.
 
-!!! info
-    Dive Deeper: 
-
-    - Learn more about how to [exchange credentials](../reference/services/credential-service.md#exchange-credentials)
+    [Click here](../reference/services/credential-service.md#exchange-credentials) to learn more about this feature.
     
 
 ---
