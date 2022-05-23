@@ -255,7 +255,8 @@ def parse_arguments():
 
 def main():
     logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
-    # download_protoc_plugins()
+    logging.getLogger().setLevel(logging.INFO)
+    download_protoc_plugins()
 
     # Get command line arguments
     args = parse_arguments()
