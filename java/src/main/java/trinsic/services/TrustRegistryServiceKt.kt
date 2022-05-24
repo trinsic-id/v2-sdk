@@ -3,7 +3,7 @@ package trinsic.services
 import com.google.protobuf.InvalidProtocolBufferException
 import kotlinx.coroutines.flow.Flow
 import trinsic.okapi.DidException
-import trinsic.sdk.v1.Options
+import trinsic.sdk.options.v1.Options;
 import trinsic.services.trustregistry.v1.TrustRegistryGrpcKt
 import trinsic.services.trustregistry.v1.TrustRegistryOuterClass.*
 import java.net.MalformedURLException

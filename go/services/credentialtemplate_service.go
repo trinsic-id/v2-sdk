@@ -2,8 +2,7 @@ package services
 
 import (
 	"context"
-
-	sdk "github.com/trinsic-id/sdk/go/proto"
+	template "github.com/trinsic-id/sdk/go/proto/verifiablecredentials/templates/v1"
 )
 
 // NewCredentialTemplateService returns a credential template servcie with the base service configured
@@ -15,7 +14,7 @@ func NewCredentialTemplateService(options *Options) (CredentialTemplateService, 
 	}
 	service := &credentialTemplateBase{
 		Service: base,
-		client:  sdk.NewCredentialTemplatesClient(base.GetChannel()),
+		client:  template.NewCredentialTemplatesClient(base.GetChannel()),
 	}
 
 	return service, nil
@@ -25,23 +24,23 @@ func NewCredentialTemplateService(options *Options) (CredentialTemplateService, 
 type CredentialTemplateService interface {
 	Service
 	// Create a credential template
-	Create(userContext context.Context, request *sdk.CreateCredentialTemplateRequest) (*sdk.CreateCredentialTemplateResponse, error)
+	Create(userContext context.Context, request *template.CreateCredentialTemplateRequest) (*template.CreateCredentialTemplateResponse, error)
 	// Get a specific credential template
-	Get(userContext context.Context, request *sdk.GetCredentialTemplateRequest) (*sdk.GetCredentialTemplateResponse, error)
+	Get(userContext context.Context, request *template.GetCredentialTemplateRequest) (*template.GetCredentialTemplateResponse, error)
 	// List available credential templates
-	List(userContext context.Context, request *sdk.ListCredentialTemplatesRequest) (*sdk.ListCredentialTemplatesResponse, error)
+	List(userContext context.Context, request *template.ListCredentialTemplatesRequest) (*template.ListCredentialTemplatesResponse, error)
 	// Search for a template
-	Search(userContext context.Context, request *sdk.SearchCredentialTemplatesRequest) (*sdk.SearchCredentialTemplatesResponse, error)
+	Search(userContext context.Context, request *template.SearchCredentialTemplatesRequest) (*template.SearchCredentialTemplatesResponse, error)
 	// Delete a template
-	Delete(userContext context.Context, request *sdk.DeleteCredentialTemplateRequest) (*sdk.DeleteCredentialTemplateResponse, error)
+	Delete(userContext context.Context, request *template.DeleteCredentialTemplateRequest) (*template.DeleteCredentialTemplateResponse, error)
 }
 
 type credentialTemplateBase struct {
 	Service
-	client sdk.CredentialTemplatesClient
+	client template.CredentialTemplatesClient
 }
 
-func (c *credentialTemplateBase) Create(userContext context.Context, request *sdk.CreateCredentialTemplateRequest) (*sdk.CreateCredentialTemplateResponse, error) {
+func (c *credentialTemplateBase) Create(userContext context.Context, request *template.CreateCredentialTemplateRequest) (*template.CreateCredentialTemplateResponse, error) {
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -53,7 +52,7 @@ func (c *credentialTemplateBase) Create(userContext context.Context, request *sd
 	return response, nil
 }
 
-func (c *credentialTemplateBase) Get(userContext context.Context, request *sdk.GetCredentialTemplateRequest) (*sdk.GetCredentialTemplateResponse, error) {
+func (c *credentialTemplateBase) Get(userContext context.Context, request *template.GetCredentialTemplateRequest) (*template.GetCredentialTemplateResponse, error) {
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -65,7 +64,7 @@ func (c *credentialTemplateBase) Get(userContext context.Context, request *sdk.G
 	return response, nil
 }
 
-func (c *credentialTemplateBase) List(userContext context.Context, request *sdk.ListCredentialTemplatesRequest) (*sdk.ListCredentialTemplatesResponse, error) {
+func (c *credentialTemplateBase) List(userContext context.Context, request *template.ListCredentialTemplatesRequest) (*template.ListCredentialTemplatesResponse, error) {
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -77,7 +76,7 @@ func (c *credentialTemplateBase) List(userContext context.Context, request *sdk.
 	return response, nil
 }
 
-func (c *credentialTemplateBase) Search(userContext context.Context, request *sdk.SearchCredentialTemplatesRequest) (*sdk.SearchCredentialTemplatesResponse, error) {
+func (c *credentialTemplateBase) Search(userContext context.Context, request *template.SearchCredentialTemplatesRequest) (*template.SearchCredentialTemplatesResponse, error) {
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -89,7 +88,7 @@ func (c *credentialTemplateBase) Search(userContext context.Context, request *sd
 	return response, nil
 }
 
-func (c *credentialTemplateBase) Delete(userContext context.Context, request *sdk.DeleteCredentialTemplateRequest) (*sdk.DeleteCredentialTemplateResponse, error) {
+func (c *credentialTemplateBase) Delete(userContext context.Context, request *template.DeleteCredentialTemplateRequest) (*template.DeleteCredentialTemplateResponse, error) {
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err

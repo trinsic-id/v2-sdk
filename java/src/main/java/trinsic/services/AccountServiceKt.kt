@@ -6,13 +6,13 @@ import trinsic.okapi.DidException
 import trinsic.okapi.Oberon
 import trinsic.okapi.security.v1.Security.BlindOberonTokenRequest
 import trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest
-import trinsic.sdk.v1.Options.ServiceOptions
+import trinsic.sdk.options.v1.Options
 import trinsic.services.account.v1.AccountGrpcKt
 import trinsic.services.account.v1.AccountOuterClass.*
 import java.util.*
 
 class AccountServiceKt(
-    options: ServiceOptions?
+    options: Options.ServiceOptions?
 ) : ServiceBase(options) {
     var stub: AccountGrpcKt.AccountCoroutineStub = AccountGrpcKt.AccountCoroutineStub(this.channel)
 

@@ -2,7 +2,7 @@ package trinsic.services
 
 import com.google.protobuf.InvalidProtocolBufferException
 import trinsic.okapi.DidException
-import trinsic.sdk.v1.Options
+import trinsic.sdk.options.v1.Options;
 import trinsic.services.universalwallet.v1.UniversalWalletGrpcKt
 import trinsic.services.universalwallet.v1.UniversalWalletOuterClass.*
 

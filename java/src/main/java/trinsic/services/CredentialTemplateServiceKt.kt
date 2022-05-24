@@ -2,7 +2,7 @@ package trinsic.services
 
 import com.google.protobuf.InvalidProtocolBufferException
 import trinsic.okapi.DidException
-import trinsic.sdk.v1.Options.ServiceOptions
+import trinsic.sdk.options.v1.Options.ServiceOptions
 import trinsic.services.verifiablecredentials.templates.v1.CredentialTemplatesGrpcKt
 import trinsic.services.verifiablecredentials.templates.v1.Templates.*
 

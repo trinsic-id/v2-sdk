@@ -146,9 +146,11 @@ def update_golang():
     clean_dir(join(go_proto_path, "go"))
     # find and replace the sdk proto with okapi proto
     replace_pairs = {
-        'okapiproto "github.com/trinsic-id/sdk/go/okapiproto"': 'okapiproto "github.com/trinsic-id/okapi/go/okapiproto"'
+        'okapiproto "github.com/trinsic-id/sdk/go/okapiproto"': 'okapiproto "github.com/trinsic-id/okapi/go/okapiproto"',
+        '_ "github.com/trinsic-id/sdk/protobuf/options"': '_ "github.com/trinsic-id/sdk/go/proto/protobuf/options"',
+        'v1 "github.com/trinsic-id/sdk/account/v1"': 'v1 "github.com/trinsic-id/sdk/go/proto/account/v1"',
     }
-    for file_name in glob.glob(join(go_proto_path, "*.go")):
+    for file_name in glob.glob(join(go_proto_path, "**", "*.go"), recursive=True):
         update_line(file_name, replace_pairs)
 
 

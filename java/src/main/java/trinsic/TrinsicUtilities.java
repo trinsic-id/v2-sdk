@@ -3,7 +3,7 @@ package trinsic;
 import com.google.gson.Gson;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import trinsic.sdk.v1.Options;
+import trinsic.sdk.options.v1.Options;
 
 import java.util.HashMap;
 

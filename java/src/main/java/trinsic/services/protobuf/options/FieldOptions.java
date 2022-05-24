@@ -44,10 +44,10 @@ public final class FieldOptions {
       "\n$services/options/field-options.proto\022\020" +
       "services.options\032 google/protobuf/descri" +
       "ptor.proto:4\n\010optional\022\035.google.protobuf" +
-      ".FieldOptions\030\340\324\003 \001(\010\210\001\001Bb\n!trinsic.serv" +
-      "ices.protobuf.optionsZ\031github.com/trinsi" +
-      "c-id/sdk\252\002!Trinsic.Services.Protobuf.Opt" +
-      "ionsb\006proto3"
+      ".FieldOptions\030\340\324\003 \001(\010\210\001\001Bs\n!trinsic.serv" +
+      "ices.protobuf.optionsZ*github.com/trinsi" +
+      "c-id/sdk/protobuf/options\252\002!Trinsic.Serv" +
+      "ices.Protobuf.Optionsb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

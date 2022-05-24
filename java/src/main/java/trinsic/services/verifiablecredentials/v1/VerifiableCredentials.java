@@ -11665,11 +11665,12 @@ trinsic.services.verifiablecredentials.v1.VerifiableCredentials.ValidationMessag
       "ces.verifiablecredentials.v1.VerifyProof" +
       "Response\022g\n\004Send\022..services.verifiablecr" +
       "edentials.v1.SendRequest\032/.services.veri" +
-      "fiablecredentials.v1.SendResponseB\204\001\n)tr" +
+      "fiablecredentials.v1.SendResponseB\235\001\n)tr" +
       "insic.services.verifiablecredentials.v1Z" +
-      "\031github.com/trinsic-id/sdk\242\002\017TrinsicServ" +
-      "ices\252\002)Trinsic.Services.VerifiableCreden" +
-      "tials.V1b\006proto3"
+      "2github.com/trinsic-id/sdk/verifiablecre" +
+      "dentials/v1\242\002\017TrinsicServices\252\002)Trinsic." +
+      "Services.VerifiableCredentials.V1b\006proto" +
+      "3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

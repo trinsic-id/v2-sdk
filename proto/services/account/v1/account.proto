@@ -2,7 +2,7 @@ syntax = "proto3";
 package services.account.v1;
 
 option csharp_namespace = "Trinsic.Services.Account.V1";
-option go_package = "github.com/trinsic-id/sdk";
+option go_package = "github.com/trinsic-id/sdk/account/v1";
 option java_package = "trinsic.services.account.v1";
 
 import "services/options/field-options.proto";

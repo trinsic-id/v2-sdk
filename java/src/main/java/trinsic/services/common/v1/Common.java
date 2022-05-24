@@ -1584,10 +1584,10 @@ public final class Common {
       "sh\030\002 \001(\014*\213\001\n\016ResponseStatus\022\013\n\007SUCCESS\020\000" +
       "\022\030\n\024WALLET_ACCESS_DENIED\020\n\022\021\n\rWALLET_EXI" +
       "STS\020\013\022\022\n\016ITEM_NOT_FOUND\020\024\022\030\n\023SERIALIZATI" +
-      "ON_ERROR\020\310\001\022\021\n\rUNKNOWN_ERROR\020dBT\n\032trinsi" +
-      "c.services.common.v1Z\031github.com/trinsic" +
-      "-id/sdk\252\002\032Trinsic.Services.Common.V1b\006pr" +
-      "oto3"
+      "ON_ERROR\020\310\001\022\021\n\rUNKNOWN_ERROR\020dB^\n\032trinsi" +
+      "c.services.common.v1Z#github.com/trinsic" +
+      "-id/sdk/common/v1\252\002\032Trinsic.Services.Com" +
+      "mon.V1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
