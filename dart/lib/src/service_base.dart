@@ -25,6 +25,7 @@ class ServiceBase {
               ? ChannelCredentials.secure()
               : ChannelCredentials.insecure(),
         ));
+    // TODO - Set up metadata interceptors
   }
 
   void close() {

@@ -1,13 +1,14 @@
 import 'package:test/test.dart';
+import '../example/vaccine_example.dart';
 
 void main() {
-  group('A group of tests', () {
+  group('Dart Examples', () {
     setUp(() {
       // Additional setup goes here.
     });
 
-    test('First Test', () {
-      expect(false, isTrue);
+    test('Vaccine Demo', () async {
+      await run();
     });
   });
 }

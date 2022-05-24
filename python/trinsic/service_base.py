@@ -15,7 +15,7 @@ from trinsic.proto.services.common.v1 import ResponseStatus
 from trinsic.security_providers import OberonSecurityProvider, SecurityProvider
 from trinsic.trinsic_util import trinsic_config, create_channel
 
-_skip_routes = ["/services.account.v1.Account/SignIn"]
+_skip_routes = ["/services.account.v1.Account/SignIn", "/services.provider.v1.Provider/CreateEcosystem"]
 
 
 def _update_metadata(
