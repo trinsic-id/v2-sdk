@@ -10882,9 +10882,10 @@ public final class ProviderOuterClass {
       "ices.provider.v1.InvitationStatusRespons" +
       "e\022e\n\014GetOberonKey\022).services.provider.v1" +
       ".GetOberonKeyRequest\032*.services.provider" +
-      ".v1.GetOberonKeyResponseBV\n\032trinsic.serv" +
-      "ices.common.v1Z\031github.com/trinsic-id/sd" +
-      "k\252\002\034Trinsic.Services.Provider.V1b\006proto3"
+      ".v1.GetOberonKeyResponseBb\n\032trinsic.serv" +
+      "ices.common.v1Z%github.com/trinsic-id/sd" +
+      "k/provider/v1\252\002\034Trinsic.Services.Provide" +
+      "r.V1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

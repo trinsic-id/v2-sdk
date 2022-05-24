@@ -10114,9 +10114,9 @@ public final class AccountOuterClass {
       "unt.v1.ListDevicesResponse\022c\n\014RevokeDevi" +
       "ce\022(.services.account.v1.RevokeDeviceReq" +
       "uest\032).services.account.v1.RevokeDeviceR" +
-      "esponseBV\n\033trinsic.services.account.v1Z\031" +
-      "github.com/trinsic-id/sdk\252\002\033Trinsic.Serv" +
-      "ices.Account.V1b\006proto3"
+      "esponseBa\n\033trinsic.services.account.v1Z$" +
+      "github.com/trinsic-id/sdk/account/v1\252\002\033T" +
+      "rinsic.Services.Account.V1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

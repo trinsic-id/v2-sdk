@@ -13765,11 +13765,12 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       "fiablecredentials.templates.v1.DeleteCre" +
       "dentialTemplateRequest\032M.services.verifi" +
       "ablecredentials.templates.v1.DeleteCrede" +
-      "ntialTemplateResponseB\206\001\n3trinsic.servic" +
-      "es.verifiablecredentials.templates.v1Z\031g" +
-      "ithub.com/trinsic-id/sdk\252\0023Trinsic.Servi" +
-      "ces.VerifiableCredentials.Templates.V1b\006" +
-      "proto3"
+      "ntialTemplateResponseB\251\001\n3trinsic.servic" +
+      "es.verifiablecredentials.templates.v1Z<g" +
+      "ithub.com/trinsic-id/sdk/verifiablecrede" +
+      "ntials/templates/v1\252\0023Trinsic.Services.V" +
+      "erifiableCredentials.Templates.V1b\006proto" +
+      "3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

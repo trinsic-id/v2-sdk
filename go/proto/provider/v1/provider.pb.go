@@ -4,9 +4,11 @@
 // 	protoc        v3.20.1
 // source: services/provider/v1/provider.proto
 
-package sdk
+package v1
 
 import (
+	v1 "github.com/trinsic-id/sdk/account/v1"
+	_ "github.com/trinsic-id/sdk/protobuf/options"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -211,7 +213,7 @@ type InviteRequest struct {
 	// Description of invitation
 	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
 	// Account details of invitee
-	Details *AccountDetails `protobuf:"bytes,3,opt,name=details,proto3" json:"details,omitempty"`
+	Details *v1.AccountDetails `protobuf:"bytes,3,opt,name=details,proto3" json:"details,omitempty"`
 }
 
 func (x *InviteRequest) Reset() {
@@ -260,7 +262,7 @@ func (x *InviteRequest) GetDescription() string {
 	return ""
 }
 
-func (x *InviteRequest) GetDetails() *AccountDetails {
+func (x *InviteRequest) GetDetails() *v1.AccountDetails {
 	if x != nil {
 		return x.Details
 	}
@@ -519,7 +521,7 @@ type CreateEcosystemRequest struct {
 	// External URL associated with your organization or ecosystem entity
 	Uri string `protobuf:"bytes,3,opt,name=uri,proto3" json:"uri,omitempty"`
 	// The account details of the owner of the ecosystem
-	Details *AccountDetails `protobuf:"bytes,4,opt,name=details,proto3" json:"details,omitempty"`
+	Details *v1.AccountDetails `protobuf:"bytes,4,opt,name=details,proto3" json:"details,omitempty"`
 }
 
 func (x *CreateEcosystemRequest) Reset() {
@@ -575,7 +577,7 @@ func (x *CreateEcosystemRequest) GetUri() string {
 	return ""
 }
 
-func (x *CreateEcosystemRequest) GetDetails() *AccountDetails {
+func (x *CreateEcosystemRequest) GetDetails() *v1.AccountDetails {
 	if x != nil {
 		return x.Details
 	}
@@ -590,10 +592,10 @@ type CreateEcosystemResponse struct {
 	// Details of the created ecosystem
 	Ecosystem *Ecosystem `protobuf:"bytes,1,opt,name=ecosystem,proto3" json:"ecosystem,omitempty"`
 	// Account profile for auth of the owner of the ecosystem
-	Profile *AccountProfile `protobuf:"bytes,2,opt,name=profile,proto3" json:"profile,omitempty"`
+	Profile *v1.AccountProfile `protobuf:"bytes,2,opt,name=profile,proto3" json:"profile,omitempty"`
 	// Indicates if confirmation of account is required.
 	// This setting is configured globally by the server administrator.
-	ConfirmationMethod ConfirmationMethod `protobuf:"varint,3,opt,name=confirmation_method,json=confirmationMethod,proto3,enum=services.account.v1.ConfirmationMethod" json:"confirmation_method,omitempty"`
+	ConfirmationMethod v1.ConfirmationMethod `protobuf:"varint,3,opt,name=confirmation_method,json=confirmationMethod,proto3,enum=services.account.v1.ConfirmationMethod" json:"confirmation_method,omitempty"`
 }
 
 func (x *CreateEcosystemResponse) Reset() {
@@ -635,18 +637,18 @@ func (x *CreateEcosystemResponse) GetEcosystem() *Ecosystem {
 	return nil
 }
 
-func (x *CreateEcosystemResponse) GetProfile() *AccountProfile {
+func (x *CreateEcosystemResponse) GetProfile() *v1.AccountProfile {
 	if x != nil {
 		return x.Profile
 	}
 	return nil
 }
 
-func (x *CreateEcosystemResponse) GetConfirmationMethod() ConfirmationMethod {
+func (x *CreateEcosystemResponse) GetConfirmationMethod() v1.ConfirmationMethod {
 	if x != nil {
 		return x.ConfirmationMethod
 	}
-	return ConfirmationMethod_None
+	return v1.ConfirmationMethod(0)
 }
 
 type GenerateTokenRequest struct {
@@ -703,7 +705,7 @@ type GenerateTokenResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Account authentication profile that contains unprotected token
-	Profile *AccountProfile `protobuf:"bytes,1,opt,name=profile,proto3" json:"profile,omitempty"`
+	Profile *v1.AccountProfile `protobuf:"bytes,1,opt,name=profile,proto3" json:"profile,omitempty"`
 }
 
 func (x *GenerateTokenResponse) Reset() {
@@ -738,7 +740,7 @@ func (*GenerateTokenResponse) Descriptor() ([]byte, []int) {
 	return file_services_provider_v1_provider_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *GenerateTokenResponse) GetProfile() *AccountProfile {
+func (x *GenerateTokenResponse) GetProfile() *v1.AccountProfile {
 	if x != nil {
 		return x.Profile
 	}
@@ -1011,13 +1013,13 @@ var file_services_provider_v1_provider_proto_rawDesc = []byte{
 	0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2a, 0x2e, 0x73, 0x65, 0x72, 0x76, 0x69,
 	0x63, 0x65, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x76, 0x69, 0x64, 0x65, 0x72, 0x2e, 0x76, 0x31, 0x2e,
 	0x47, 0x65, 0x74, 0x4f, 0x62, 0x65, 0x72, 0x6f, 0x6e, 0x4b, 0x65, 0x79, 0x52, 0x65, 0x73, 0x70,
-	0x6f, 0x6e, 0x73, 0x65, 0x42, 0x56, 0x0a, 0x1a, 0x74, 0x72, 0x69, 0x6e, 0x73, 0x69, 0x63, 0x2e,
+	0x6f, 0x6e, 0x73, 0x65, 0x42, 0x62, 0x0a, 0x1a, 0x74, 0x72, 0x69, 0x6e, 0x73, 0x69, 0x63, 0x2e,
 	0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e,
-	0x76, 0x31, 0x5a, 0x19, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x74,
-	0x72, 0x69, 0x6e, 0x73, 0x69, 0x63, 0x2d, 0x69, 0x64, 0x2f, 0x73, 0x64, 0x6b, 0xaa, 0x02, 0x1c,
-	0x54, 0x72, 0x69, 0x6e, 0x73, 0x69, 0x63, 0x2e, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73,
-	0x2e, 0x50, 0x72, 0x6f, 0x76, 0x69, 0x64, 0x65, 0x72, 0x2e, 0x56, 0x31, 0x62, 0x06, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x33,
+	0x76, 0x31, 0x5a, 0x25, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x74,
+	0x72, 0x69, 0x6e, 0x73, 0x69, 0x63, 0x2d, 0x69, 0x64, 0x2f, 0x73, 0x64, 0x6b, 0x2f, 0x70, 0x72,
+	0x6f, 0x76, 0x69, 0x64, 0x65, 0x72, 0x2f, 0x76, 0x31, 0xaa, 0x02, 0x1c, 0x54, 0x72, 0x69, 0x6e,
+	0x73, 0x69, 0x63, 0x2e, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2e, 0x50, 0x72, 0x6f,
+	0x76, 0x69, 0x64, 0x65, 0x72, 0x2e, 0x56, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1050,9 +1052,9 @@ var file_services_provider_v1_provider_proto_goTypes = []interface{}{
 	(*GetOberonKeyRequest)(nil),             // 12: services.provider.v1.GetOberonKeyRequest
 	(*GetOberonKeyResponse)(nil),            // 13: services.provider.v1.GetOberonKeyResponse
 	(*InviteRequest_DidCommInvitation)(nil), // 14: services.provider.v1.InviteRequest.DidCommInvitation
-	(*AccountDetails)(nil),                  // 15: services.account.v1.AccountDetails
-	(*AccountProfile)(nil),                  // 16: services.account.v1.AccountProfile
-	(ConfirmationMethod)(0),                 // 17: services.account.v1.ConfirmationMethod
+	(*v1.AccountDetails)(nil),               // 15: services.account.v1.AccountDetails
+	(*v1.AccountProfile)(nil),               // 16: services.account.v1.AccountProfile
+	(v1.ConfirmationMethod)(0),              // 17: services.account.v1.ConfirmationMethod
 }
 var file_services_provider_v1_provider_proto_depIdxs = []int32{
 	0,  // 0: services.provider.v1.InviteRequest.participant:type_name -> services.provider.v1.ParticipantType
@@ -1085,8 +1087,6 @@ func file_services_provider_v1_provider_proto_init() {
 	if File_services_provider_v1_provider_proto != nil {
 		return
 	}
-	file_services_account_v1_account_proto_init()
-	file_services_options_field_options_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_services_provider_v1_provider_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Invite); i {
