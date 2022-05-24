@@ -146,7 +146,7 @@ func file_sdk_options_v1_options_proto_rawDescGZIP() []byte {
 
 var file_sdk_options_v1_options_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_sdk_options_v1_options_proto_goTypes = []interface{}{
-	(*ServiceOptions)(nil), // 0: options.v1.ServiceOptions
+	(*ServiceOptions)(nil), // 0: sdk.options.v1.ServiceOptions
 }
 var file_sdk_options_v1_options_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
