@@ -5,7 +5,6 @@
 // @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
 
-import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
@@ -729,27 +728,5 @@ class AccountEcosystem extends $pb.GeneratedMessage {
   $core.bool hasUri() => $_has(3);
   @$pb.TagNumber(4)
   void clearUri() => clearField(4);
-}
-
-class AccountApi {
-  $pb.RpcClient _client;
-  AccountApi(this._client);
-
-  $async.Future<SignInResponse> signIn($pb.ClientContext? ctx, SignInRequest request) {
-    var emptyResponse = SignInResponse();
-    return _client.invoke<SignInResponse>(ctx, 'Account', 'SignIn', request, emptyResponse);
-  }
-  $async.Future<InfoResponse> info($pb.ClientContext? ctx, InfoRequest request) {
-    var emptyResponse = InfoResponse();
-    return _client.invoke<InfoResponse>(ctx, 'Account', 'Info', request, emptyResponse);
-  }
-  $async.Future<ListDevicesResponse> listDevices($pb.ClientContext? ctx, ListDevicesRequest request) {
-    var emptyResponse = ListDevicesResponse();
-    return _client.invoke<ListDevicesResponse>(ctx, 'Account', 'ListDevices', request, emptyResponse);
-  }
-  $async.Future<RevokeDeviceResponse> revokeDevice($pb.ClientContext? ctx, RevokeDeviceRequest request) {
-    var emptyResponse = RevokeDeviceResponse();
-    return _client.invoke<RevokeDeviceResponse>(ctx, 'Account', 'RevokeDevice', request, emptyResponse);
-  }
 }
 

@@ -49,7 +49,7 @@ jobs:
         run: |
           dart pub get
           python ../devops/build_sdks.py --language=dart
-          dart test ./lib/test/test-sdk.dart
+          dart test ./lib/test/dart_test.dart
         shell: pwsh
         working-directory: dart
         env:

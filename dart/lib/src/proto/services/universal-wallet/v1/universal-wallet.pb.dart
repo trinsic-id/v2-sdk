@@ -5,7 +5,6 @@
 // @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
 
-import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
@@ -520,31 +519,5 @@ class DeleteItemResponse extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static DeleteItemResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DeleteItemResponse>(create);
   static DeleteItemResponse? _defaultInstance;
-}
-
-class UniversalWalletApi {
-  $pb.RpcClient _client;
-  UniversalWalletApi(this._client);
-
-  $async.Future<GetItemResponse> getItem($pb.ClientContext? ctx, GetItemRequest request) {
-    var emptyResponse = GetItemResponse();
-    return _client.invoke<GetItemResponse>(ctx, 'UniversalWallet', 'GetItem', request, emptyResponse);
-  }
-  $async.Future<SearchResponse> search($pb.ClientContext? ctx, SearchRequest request) {
-    var emptyResponse = SearchResponse();
-    return _client.invoke<SearchResponse>(ctx, 'UniversalWallet', 'Search', request, emptyResponse);
-  }
-  $async.Future<InsertItemResponse> insertItem($pb.ClientContext? ctx, InsertItemRequest request) {
-    var emptyResponse = InsertItemResponse();
-    return _client.invoke<InsertItemResponse>(ctx, 'UniversalWallet', 'InsertItem', request, emptyResponse);
-  }
-  $async.Future<UpdateItemResponse> updateItem($pb.ClientContext? ctx, UpdateItemRequest request) {
-    var emptyResponse = UpdateItemResponse();
-    return _client.invoke<UpdateItemResponse>(ctx, 'UniversalWallet', 'UpdateItem', request, emptyResponse);
-  }
-  $async.Future<DeleteItemResponse> deleteItem($pb.ClientContext? ctx, DeleteItemRequest request) {
-    var emptyResponse = DeleteItemResponse();
-    return _client.invoke<DeleteItemResponse>(ctx, 'UniversalWallet', 'DeleteItem', request, emptyResponse);
-  }
 }
 

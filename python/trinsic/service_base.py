@@ -4,7 +4,7 @@ Base class and helper methods for the Service wrappers
 import base64
 import types
 from abc import ABC
-from typing import Optional, Type, T
+from typing import Optional, Type, T, Dict
 
 from betterproto import Message, ServiceStub
 from grpclib.client import Channel
@@ -60,7 +60,7 @@ class ServiceBase(ABC):
                 # If the event loop is closed, NBD.
                 pass
 
-    def build_metadata(self, request: Message):
+    def build_metadata(self, request: Message) -> Dict[str, str]:
         """
         Create call metadata by setting required authentication headers via `AccountProfile`
         :return: authentication headers with base-64 encoded Oberon

@@ -108,30 +108,3 @@ const DeleteItemResponse$json = const {
 
 /// Descriptor for `DeleteItemResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List deleteItemResponseDescriptor = $convert.base64Decode('ChJEZWxldGVJdGVtUmVzcG9uc2U=');
-const $core.Map<$core.String, $core.dynamic> UniversalWalletServiceBase$json = const {
-  '1': 'UniversalWallet',
-  '2': const [
-    const {'1': 'GetItem', '2': '.services.universalwallet.v1.GetItemRequest', '3': '.services.universalwallet.v1.GetItemResponse'},
-    const {'1': 'Search', '2': '.services.universalwallet.v1.SearchRequest', '3': '.services.universalwallet.v1.SearchResponse'},
-    const {'1': 'InsertItem', '2': '.services.universalwallet.v1.InsertItemRequest', '3': '.services.universalwallet.v1.InsertItemResponse'},
-    const {'1': 'UpdateItem', '2': '.services.universalwallet.v1.UpdateItemRequest', '3': '.services.universalwallet.v1.UpdateItemResponse'},
-    const {'1': 'DeleteItem', '2': '.services.universalwallet.v1.DeleteItemRequest', '3': '.services.universalwallet.v1.DeleteItemResponse'},
-  ],
-};
-
-@$core.Deprecated('Use universalWalletServiceDescriptor instead')
-const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> UniversalWalletServiceBase$messageJson = const {
-  '.services.universalwallet.v1.GetItemRequest': GetItemRequest$json,
-  '.services.universalwallet.v1.GetItemResponse': GetItemResponse$json,
-  '.services.universalwallet.v1.SearchRequest': SearchRequest$json,
-  '.services.universalwallet.v1.SearchResponse': SearchResponse$json,
-  '.services.universalwallet.v1.InsertItemRequest': InsertItemRequest$json,
-  '.services.universalwallet.v1.InsertItemResponse': InsertItemResponse$json,
-  '.services.universalwallet.v1.UpdateItemRequest': UpdateItemRequest$json,
-  '.services.universalwallet.v1.UpdateItemResponse': UpdateItemResponse$json,
-  '.services.universalwallet.v1.DeleteItemRequest': DeleteItemRequest$json,
-  '.services.universalwallet.v1.DeleteItemResponse': DeleteItemResponse$json,
-};
-
-/// Descriptor for `UniversalWallet`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List universalWalletServiceDescriptor = $convert.base64Decode('Cg9Vbml2ZXJzYWxXYWxsZXQSZAoHR2V0SXRlbRIrLnNlcnZpY2VzLnVuaXZlcnNhbHdhbGxldC52MS5HZXRJdGVtUmVxdWVzdBosLnNlcnZpY2VzLnVuaXZlcnNhbHdhbGxldC52MS5HZXRJdGVtUmVzcG9uc2USYQoGU2VhcmNoEiouc2VydmljZXMudW5pdmVyc2Fsd2FsbGV0LnYxLlNlYXJjaFJlcXVlc3QaKy5zZXJ2aWNlcy51bml2ZXJzYWx3YWxsZXQudjEuU2VhcmNoUmVzcG9uc2USbQoKSW5zZXJ0SXRlbRIuLnNlcnZpY2VzLnVuaXZlcnNhbHdhbGxldC52MS5JbnNlcnRJdGVtUmVxdWVzdBovLnNlcnZpY2VzLnVuaXZlcnNhbHdhbGxldC52MS5JbnNlcnRJdGVtUmVzcG9uc2USbQoKVXBkYXRlSXRlbRIuLnNlcnZpY2VzLnVuaXZlcnNhbHdhbGxldC52MS5VcGRhdGVJdGVtUmVxdWVzdBovLnNlcnZpY2VzLnVuaXZlcnNhbHdhbGxldC52MS5VcGRhdGVJdGVtUmVzcG9uc2USbQoKRGVsZXRlSXRlbRIuLnNlcnZpY2VzLnVuaXZlcnNhbHdhbGxldC52MS5EZWxldGVJdGVtUmVxdWVzdBovLnNlcnZpY2VzLnVuaXZlcnNhbHdhbGxldC52MS5EZWxldGVJdGVtUmVzcG9uc2U=');

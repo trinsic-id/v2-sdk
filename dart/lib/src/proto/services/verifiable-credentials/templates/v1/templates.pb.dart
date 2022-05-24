@@ -5,7 +5,6 @@
 // @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
 
-import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
@@ -976,31 +975,5 @@ class TemplateData extends $pb.GeneratedMessage {
   $core.bool hasCreatedBy() => $_has(9);
   @$pb.TagNumber(10)
   void clearCreatedBy() => clearField(10);
-}
-
-class CredentialTemplatesApi {
-  $pb.RpcClient _client;
-  CredentialTemplatesApi(this._client);
-
-  $async.Future<CreateCredentialTemplateResponse> create_($pb.ClientContext? ctx, CreateCredentialTemplateRequest request) {
-    var emptyResponse = CreateCredentialTemplateResponse();
-    return _client.invoke<CreateCredentialTemplateResponse>(ctx, 'CredentialTemplates', 'Create', request, emptyResponse);
-  }
-  $async.Future<GetCredentialTemplateResponse> get($pb.ClientContext? ctx, GetCredentialTemplateRequest request) {
-    var emptyResponse = GetCredentialTemplateResponse();
-    return _client.invoke<GetCredentialTemplateResponse>(ctx, 'CredentialTemplates', 'Get', request, emptyResponse);
-  }
-  $async.Future<ListCredentialTemplatesResponse> list($pb.ClientContext? ctx, ListCredentialTemplatesRequest request) {
-    var emptyResponse = ListCredentialTemplatesResponse();
-    return _client.invoke<ListCredentialTemplatesResponse>(ctx, 'CredentialTemplates', 'List', request, emptyResponse);
-  }
-  $async.Future<SearchCredentialTemplatesResponse> search($pb.ClientContext? ctx, SearchCredentialTemplatesRequest request) {
-    var emptyResponse = SearchCredentialTemplatesResponse();
-    return _client.invoke<SearchCredentialTemplatesResponse>(ctx, 'CredentialTemplates', 'Search', request, emptyResponse);
-  }
-  $async.Future<DeleteCredentialTemplateResponse> delete($pb.ClientContext? ctx, DeleteCredentialTemplateRequest request) {
-    var emptyResponse = DeleteCredentialTemplateResponse();
-    return _client.invoke<DeleteCredentialTemplateResponse>(ctx, 'CredentialTemplates', 'Delete', request, emptyResponse);
-  }
 }
 

@@ -5,7 +5,6 @@
 // @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
 
-import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
@@ -824,31 +823,5 @@ class GetOberonKeyResponse extends $pb.GeneratedMessage {
   $core.bool hasKey() => $_has(0);
   @$pb.TagNumber(1)
   void clearKey() => clearField(1);
-}
-
-class ProviderApi {
-  $pb.RpcClient _client;
-  ProviderApi(this._client);
-
-  $async.Future<CreateEcosystemResponse> createEcosystem($pb.ClientContext? ctx, CreateEcosystemRequest request) {
-    var emptyResponse = CreateEcosystemResponse();
-    return _client.invoke<CreateEcosystemResponse>(ctx, 'Provider', 'CreateEcosystem', request, emptyResponse);
-  }
-  $async.Future<GenerateTokenResponse> generateToken($pb.ClientContext? ctx, GenerateTokenRequest request) {
-    var emptyResponse = GenerateTokenResponse();
-    return _client.invoke<GenerateTokenResponse>(ctx, 'Provider', 'GenerateToken', request, emptyResponse);
-  }
-  $async.Future<InviteResponse> invite($pb.ClientContext? ctx, InviteRequest request) {
-    var emptyResponse = InviteResponse();
-    return _client.invoke<InviteResponse>(ctx, 'Provider', 'Invite', request, emptyResponse);
-  }
-  $async.Future<InvitationStatusResponse> invitationStatus($pb.ClientContext? ctx, InvitationStatusRequest request) {
-    var emptyResponse = InvitationStatusResponse();
-    return _client.invoke<InvitationStatusResponse>(ctx, 'Provider', 'InvitationStatus', request, emptyResponse);
-  }
-  $async.Future<GetOberonKeyResponse> getOberonKey($pb.ClientContext? ctx, GetOberonKeyRequest request) {
-    var emptyResponse = GetOberonKeyResponse();
-    return _client.invoke<GetOberonKeyResponse>(ctx, 'Provider', 'GetOberonKey', request, emptyResponse);
-  }
 }
 

@@ -5,7 +5,6 @@
 // @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
 
-import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:fixnum/fixnum.dart' as $fixnum;
@@ -1063,39 +1062,5 @@ class FetchDataResponse extends $pb.GeneratedMessage {
   $core.bool hasContinuationToken() => $_has(2);
   @$pb.TagNumber(3)
   void clearContinuationToken() => clearField(3);
-}
-
-class TrustRegistryApi {
-  $pb.RpcClient _client;
-  TrustRegistryApi(this._client);
-
-  $async.Future<AddFrameworkResponse> addFramework($pb.ClientContext? ctx, AddFrameworkRequest request) {
-    var emptyResponse = AddFrameworkResponse();
-    return _client.invoke<AddFrameworkResponse>(ctx, 'TrustRegistry', 'AddFramework', request, emptyResponse);
-  }
-  $async.Future<RemoveFrameworkResponse> removeFramework($pb.ClientContext? ctx, RemoveFrameworkRequest request) {
-    var emptyResponse = RemoveFrameworkResponse();
-    return _client.invoke<RemoveFrameworkResponse>(ctx, 'TrustRegistry', 'RemoveFramework', request, emptyResponse);
-  }
-  $async.Future<SearchRegistryResponse> searchRegistry($pb.ClientContext? ctx, SearchRegistryRequest request) {
-    var emptyResponse = SearchRegistryResponse();
-    return _client.invoke<SearchRegistryResponse>(ctx, 'TrustRegistry', 'SearchRegistry', request, emptyResponse);
-  }
-  $async.Future<RegisterMemberResponse> registerMember($pb.ClientContext? ctx, RegisterMemberRequest request) {
-    var emptyResponse = RegisterMemberResponse();
-    return _client.invoke<RegisterMemberResponse>(ctx, 'TrustRegistry', 'RegisterMember', request, emptyResponse);
-  }
-  $async.Future<UnregisterMemberResponse> unregisterMember($pb.ClientContext? ctx, UnregisterMemberRequest request) {
-    var emptyResponse = UnregisterMemberResponse();
-    return _client.invoke<UnregisterMemberResponse>(ctx, 'TrustRegistry', 'UnregisterMember', request, emptyResponse);
-  }
-  $async.Future<GetMembershipStatusResponse> getMembershipStatus($pb.ClientContext? ctx, GetMembershipStatusRequest request) {
-    var emptyResponse = GetMembershipStatusResponse();
-    return _client.invoke<GetMembershipStatusResponse>(ctx, 'TrustRegistry', 'GetMembershipStatus', request, emptyResponse);
-  }
-  $async.Future<FetchDataResponse> fetchData($pb.ClientContext? ctx, FetchDataRequest request) {
-    var emptyResponse = FetchDataResponse();
-    return _client.invoke<FetchDataResponse>(ctx, 'TrustRegistry', 'FetchData', request, emptyResponse);
-  }
 }
 

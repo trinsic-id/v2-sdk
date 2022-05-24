@@ -187,38 +187,3 @@ const CheckStatusResponse$json = const {
 
 /// Descriptor for `CheckStatusResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List checkStatusResponseDescriptor = $convert.base64Decode('ChNDaGVja1N0YXR1c1Jlc3BvbnNlEhgKB3Jldm9rZWQYASABKAhSB3Jldm9rZWQ=');
-const $core.Map<$core.String, $core.dynamic> VerifiableCredentialServiceBase$json = const {
-  '1': 'VerifiableCredential',
-  '2': const [
-    const {'1': 'Issue', '2': '.services.verifiablecredentials.v1.IssueRequest', '3': '.services.verifiablecredentials.v1.IssueResponse'},
-    const {'1': 'IssueFromTemplate', '2': '.services.verifiablecredentials.v1.IssueFromTemplateRequest', '3': '.services.verifiablecredentials.v1.IssueFromTemplateResponse'},
-    const {'1': 'CheckStatus', '2': '.services.verifiablecredentials.v1.CheckStatusRequest', '3': '.services.verifiablecredentials.v1.CheckStatusResponse'},
-    const {'1': 'UpdateStatus', '2': '.services.verifiablecredentials.v1.UpdateStatusRequest', '3': '.services.verifiablecredentials.v1.UpdateStatusResponse'},
-    const {'1': 'CreateProof', '2': '.services.verifiablecredentials.v1.CreateProofRequest', '3': '.services.verifiablecredentials.v1.CreateProofResponse'},
-    const {'1': 'VerifyProof', '2': '.services.verifiablecredentials.v1.VerifyProofRequest', '3': '.services.verifiablecredentials.v1.VerifyProofResponse'},
-    const {'1': 'Send', '2': '.services.verifiablecredentials.v1.SendRequest', '3': '.services.verifiablecredentials.v1.SendResponse'},
-  ],
-};
-
-@$core.Deprecated('Use verifiableCredentialServiceDescriptor instead')
-const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> VerifiableCredentialServiceBase$messageJson = const {
-  '.services.verifiablecredentials.v1.IssueRequest': IssueRequest$json,
-  '.services.verifiablecredentials.v1.IssueResponse': IssueResponse$json,
-  '.services.verifiablecredentials.v1.IssueFromTemplateRequest': IssueFromTemplateRequest$json,
-  '.services.verifiablecredentials.v1.IssueFromTemplateResponse': IssueFromTemplateResponse$json,
-  '.services.verifiablecredentials.v1.CheckStatusRequest': CheckStatusRequest$json,
-  '.services.verifiablecredentials.v1.CheckStatusResponse': CheckStatusResponse$json,
-  '.services.verifiablecredentials.v1.UpdateStatusRequest': UpdateStatusRequest$json,
-  '.services.verifiablecredentials.v1.UpdateStatusResponse': UpdateStatusResponse$json,
-  '.services.verifiablecredentials.v1.CreateProofRequest': CreateProofRequest$json,
-  '.services.verifiablecredentials.v1.CreateProofResponse': CreateProofResponse$json,
-  '.services.verifiablecredentials.v1.VerifyProofRequest': VerifyProofRequest$json,
-  '.services.verifiablecredentials.v1.VerifyProofResponse': VerifyProofResponse$json,
-  '.services.verifiablecredentials.v1.VerifyProofResponse.ValidationResultsEntry': VerifyProofResponse_ValidationResultsEntry$json,
-  '.services.verifiablecredentials.v1.ValidationMessage': ValidationMessage$json,
-  '.services.verifiablecredentials.v1.SendRequest': SendRequest$json,
-  '.services.verifiablecredentials.v1.SendResponse': SendResponse$json,
-};
-
-/// Descriptor for `VerifiableCredential`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List verifiableCredentialServiceDescriptor = $convert.base64Decode('ChRWZXJpZmlhYmxlQ3JlZGVudGlhbBJqCgVJc3N1ZRIvLnNlcnZpY2VzLnZlcmlmaWFibGVjcmVkZW50aWFscy52MS5Jc3N1ZVJlcXVlc3QaMC5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudjEuSXNzdWVSZXNwb25zZRKOAQoRSXNzdWVGcm9tVGVtcGxhdGUSOy5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudjEuSXNzdWVGcm9tVGVtcGxhdGVSZXF1ZXN0Gjwuc2VydmljZXMudmVyaWZpYWJsZWNyZWRlbnRpYWxzLnYxLklzc3VlRnJvbVRlbXBsYXRlUmVzcG9uc2USfAoLQ2hlY2tTdGF0dXMSNS5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudjEuQ2hlY2tTdGF0dXNSZXF1ZXN0GjYuc2VydmljZXMudmVyaWZpYWJsZWNyZWRlbnRpYWxzLnYxLkNoZWNrU3RhdHVzUmVzcG9uc2USfwoMVXBkYXRlU3RhdHVzEjYuc2VydmljZXMudmVyaWZpYWJsZWNyZWRlbnRpYWxzLnYxLlVwZGF0ZVN0YXR1c1JlcXVlc3QaNy5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudjEuVXBkYXRlU3RhdHVzUmVzcG9uc2USfAoLQ3JlYXRlUHJvb2YSNS5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudjEuQ3JlYXRlUHJvb2ZSZXF1ZXN0GjYuc2VydmljZXMudmVyaWZpYWJsZWNyZWRlbnRpYWxzLnYxLkNyZWF0ZVByb29mUmVzcG9uc2USfAoLVmVyaWZ5UHJvb2YSNS5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudjEuVmVyaWZ5UHJvb2ZSZXF1ZXN0GjYuc2VydmljZXMudmVyaWZpYWJsZWNyZWRlbnRpYWxzLnYxLlZlcmlmeVByb29mUmVzcG9uc2USZwoEU2VuZBIuLnNlcnZpY2VzLnZlcmlmaWFibGVjcmVkZW50aWFscy52MS5TZW5kUmVxdWVzdBovLnNlcnZpY2VzLnZlcmlmaWFibGVjcmVkZW50aWFscy52MS5TZW5kUmVzcG9uc2U=');

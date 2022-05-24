@@ -19,9 +19,6 @@ from trinsic.trinsic_util import trinsic_config
 from trinsic.trustregistry_service import TrustRegistryService
 
 
-# Due to some issues with python and async io test cases, we have to run each sample in a separate asyncio event loop.
-
-
 class TestServices(unittest.IsolatedAsyncioTestCase):
     def __init__(self, method_name="runTest"):
         super().__init__(methodName=method_name)

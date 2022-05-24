@@ -152,31 +152,3 @@ const AccountEcosystem$json = const {
 
 /// Descriptor for `AccountEcosystem`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List accountEcosystemDescriptor = $convert.base64Decode('ChBBY2NvdW50RWNvc3lzdGVtEg4KAmlkGAEgASgJUgJpZBISCgRuYW1lGAIgASgJUgRuYW1lEiAKC2Rlc2NyaXB0aW9uGAMgASgJUgtkZXNjcmlwdGlvbhIQCgN1cmkYBCABKAlSA3VyaQ==');
-const $core.Map<$core.String, $core.dynamic> AccountServiceBase$json = const {
-  '1': 'Account',
-  '2': const [
-    const {'1': 'SignIn', '2': '.services.account.v1.SignInRequest', '3': '.services.account.v1.SignInResponse'},
-    const {'1': 'Info', '2': '.services.account.v1.InfoRequest', '3': '.services.account.v1.InfoResponse'},
-    const {'1': 'ListDevices', '2': '.services.account.v1.ListDevicesRequest', '3': '.services.account.v1.ListDevicesResponse'},
-    const {'1': 'RevokeDevice', '2': '.services.account.v1.RevokeDeviceRequest', '3': '.services.account.v1.RevokeDeviceResponse'},
-  ],
-};
-
-@$core.Deprecated('Use accountServiceDescriptor instead')
-const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> AccountServiceBase$messageJson = const {
-  '.services.account.v1.SignInRequest': SignInRequest$json,
-  '.services.account.v1.AccountDetails': AccountDetails$json,
-  '.services.account.v1.SignInResponse': SignInResponse$json,
-  '.services.account.v1.AccountProfile': AccountProfile$json,
-  '.services.account.v1.TokenProtection': TokenProtection$json,
-  '.services.account.v1.InfoRequest': InfoRequest$json,
-  '.services.account.v1.InfoResponse': InfoResponse$json,
-  '.services.account.v1.AccountEcosystem': AccountEcosystem$json,
-  '.services.account.v1.ListDevicesRequest': ListDevicesRequest$json,
-  '.services.account.v1.ListDevicesResponse': ListDevicesResponse$json,
-  '.services.account.v1.RevokeDeviceRequest': RevokeDeviceRequest$json,
-  '.services.account.v1.RevokeDeviceResponse': RevokeDeviceResponse$json,
-};
-
-/// Descriptor for `Account`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List accountServiceDescriptor = $convert.base64Decode('CgdBY2NvdW50ElEKBlNpZ25JbhIiLnNlcnZpY2VzLmFjY291bnQudjEuU2lnbkluUmVxdWVzdBojLnNlcnZpY2VzLmFjY291bnQudjEuU2lnbkluUmVzcG9uc2USSwoESW5mbxIgLnNlcnZpY2VzLmFjY291bnQudjEuSW5mb1JlcXVlc3QaIS5zZXJ2aWNlcy5hY2NvdW50LnYxLkluZm9SZXNwb25zZRJgCgtMaXN0RGV2aWNlcxInLnNlcnZpY2VzLmFjY291bnQudjEuTGlzdERldmljZXNSZXF1ZXN0Giguc2VydmljZXMuYWNjb3VudC52MS5MaXN0RGV2aWNlc1Jlc3BvbnNlEmMKDFJldm9rZURldmljZRIoLnNlcnZpY2VzLmFjY291bnQudjEuUmV2b2tlRGV2aWNlUmVxdWVzdBopLnNlcnZpY2VzLmFjY291bnQudjEuUmV2b2tlRGV2aWNlUmVzcG9uc2U=');

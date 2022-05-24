@@ -197,36 +197,3 @@ const FetchDataResponse$json = const {
 
 /// Descriptor for `FetchDataResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List fetchDataResponseDescriptor = $convert.base64Decode('ChFGZXRjaERhdGFSZXNwb25zZRIjCg1yZXNwb25zZV9qc29uGAEgASgJUgxyZXNwb25zZUpzb24SKAoQaGFzX21vcmVfcmVzdWx0cxgCIAEoCFIOaGFzTW9yZVJlc3VsdHMSLQoSY29udGludWF0aW9uX3Rva2VuGAMgASgJUhFjb250aW51YXRpb25Ub2tlbg==');
-const $core.Map<$core.String, $core.dynamic> TrustRegistryServiceBase$json = const {
-  '1': 'TrustRegistry',
-  '2': const [
-    const {'1': 'AddFramework', '2': '.services.trustregistry.v1.AddFrameworkRequest', '3': '.services.trustregistry.v1.AddFrameworkResponse'},
-    const {'1': 'RemoveFramework', '2': '.services.trustregistry.v1.RemoveFrameworkRequest', '3': '.services.trustregistry.v1.RemoveFrameworkResponse'},
-    const {'1': 'SearchRegistry', '2': '.services.trustregistry.v1.SearchRegistryRequest', '3': '.services.trustregistry.v1.SearchRegistryResponse'},
-    const {'1': 'RegisterMember', '2': '.services.trustregistry.v1.RegisterMemberRequest', '3': '.services.trustregistry.v1.RegisterMemberResponse'},
-    const {'1': 'UnregisterMember', '2': '.services.trustregistry.v1.UnregisterMemberRequest', '3': '.services.trustregistry.v1.UnregisterMemberResponse'},
-    const {'1': 'GetMembershipStatus', '2': '.services.trustregistry.v1.GetMembershipStatusRequest', '3': '.services.trustregistry.v1.GetMembershipStatusResponse'},
-    const {'1': 'FetchData', '2': '.services.trustregistry.v1.FetchDataRequest', '3': '.services.trustregistry.v1.FetchDataResponse', '6': true},
-  ],
-};
-
-@$core.Deprecated('Use trustRegistryServiceDescriptor instead')
-const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> TrustRegistryServiceBase$messageJson = const {
-  '.services.trustregistry.v1.AddFrameworkRequest': AddFrameworkRequest$json,
-  '.services.trustregistry.v1.AddFrameworkResponse': AddFrameworkResponse$json,
-  '.services.trustregistry.v1.RemoveFrameworkRequest': RemoveFrameworkRequest$json,
-  '.services.trustregistry.v1.RemoveFrameworkResponse': RemoveFrameworkResponse$json,
-  '.services.trustregistry.v1.SearchRegistryRequest': SearchRegistryRequest$json,
-  '.services.trustregistry.v1.SearchRegistryResponse': SearchRegistryResponse$json,
-  '.services.trustregistry.v1.RegisterMemberRequest': RegisterMemberRequest$json,
-  '.services.trustregistry.v1.RegisterMemberResponse': RegisterMemberResponse$json,
-  '.services.trustregistry.v1.UnregisterMemberRequest': UnregisterMemberRequest$json,
-  '.services.trustregistry.v1.UnregisterMemberResponse': UnregisterMemberResponse$json,
-  '.services.trustregistry.v1.GetMembershipStatusRequest': GetMembershipStatusRequest$json,
-  '.services.trustregistry.v1.GetMembershipStatusResponse': GetMembershipStatusResponse$json,
-  '.services.trustregistry.v1.FetchDataRequest': FetchDataRequest$json,
-  '.services.trustregistry.v1.FetchDataResponse': FetchDataResponse$json,
-};
-
-/// Descriptor for `TrustRegistry`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List trustRegistryServiceDescriptor = $convert.base64Decode('Cg1UcnVzdFJlZ2lzdHJ5Em8KDEFkZEZyYW1ld29yaxIuLnNlcnZpY2VzLnRydXN0cmVnaXN0cnkudjEuQWRkRnJhbWV3b3JrUmVxdWVzdBovLnNlcnZpY2VzLnRydXN0cmVnaXN0cnkudjEuQWRkRnJhbWV3b3JrUmVzcG9uc2USeAoPUmVtb3ZlRnJhbWV3b3JrEjEuc2VydmljZXMudHJ1c3RyZWdpc3RyeS52MS5SZW1vdmVGcmFtZXdvcmtSZXF1ZXN0GjIuc2VydmljZXMudHJ1c3RyZWdpc3RyeS52MS5SZW1vdmVGcmFtZXdvcmtSZXNwb25zZRJ1Cg5TZWFyY2hSZWdpc3RyeRIwLnNlcnZpY2VzLnRydXN0cmVnaXN0cnkudjEuU2VhcmNoUmVnaXN0cnlSZXF1ZXN0GjEuc2VydmljZXMudHJ1c3RyZWdpc3RyeS52MS5TZWFyY2hSZWdpc3RyeVJlc3BvbnNlEnUKDlJlZ2lzdGVyTWVtYmVyEjAuc2VydmljZXMudHJ1c3RyZWdpc3RyeS52MS5SZWdpc3Rlck1lbWJlclJlcXVlc3QaMS5zZXJ2aWNlcy50cnVzdHJlZ2lzdHJ5LnYxLlJlZ2lzdGVyTWVtYmVyUmVzcG9uc2USewoQVW5yZWdpc3Rlck1lbWJlchIyLnNlcnZpY2VzLnRydXN0cmVnaXN0cnkudjEuVW5yZWdpc3Rlck1lbWJlclJlcXVlc3QaMy5zZXJ2aWNlcy50cnVzdHJlZ2lzdHJ5LnYxLlVucmVnaXN0ZXJNZW1iZXJSZXNwb25zZRKEAQoTR2V0TWVtYmVyc2hpcFN0YXR1cxI1LnNlcnZpY2VzLnRydXN0cmVnaXN0cnkudjEuR2V0TWVtYmVyc2hpcFN0YXR1c1JlcXVlc3QaNi5zZXJ2aWNlcy50cnVzdHJlZ2lzdHJ5LnYxLkdldE1lbWJlcnNoaXBTdGF0dXNSZXNwb25zZRJoCglGZXRjaERhdGESKy5zZXJ2aWNlcy50cnVzdHJlZ2lzdHJ5LnYxLkZldGNoRGF0YVJlcXVlc3QaLC5zZXJ2aWNlcy50cnVzdHJlZ2lzdHJ5LnYxLkZldGNoRGF0YVJlc3BvbnNlMAE=');

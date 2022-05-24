@@ -5,7 +5,6 @@
 // @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
 
-import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
@@ -848,39 +847,5 @@ class CheckStatusResponse extends $pb.GeneratedMessage {
   $core.bool hasRevoked() => $_has(0);
   @$pb.TagNumber(1)
   void clearRevoked() => clearField(1);
-}
-
-class VerifiableCredentialApi {
-  $pb.RpcClient _client;
-  VerifiableCredentialApi(this._client);
-
-  $async.Future<IssueResponse> issue($pb.ClientContext? ctx, IssueRequest request) {
-    var emptyResponse = IssueResponse();
-    return _client.invoke<IssueResponse>(ctx, 'VerifiableCredential', 'Issue', request, emptyResponse);
-  }
-  $async.Future<IssueFromTemplateResponse> issueFromTemplate($pb.ClientContext? ctx, IssueFromTemplateRequest request) {
-    var emptyResponse = IssueFromTemplateResponse();
-    return _client.invoke<IssueFromTemplateResponse>(ctx, 'VerifiableCredential', 'IssueFromTemplate', request, emptyResponse);
-  }
-  $async.Future<CheckStatusResponse> checkStatus($pb.ClientContext? ctx, CheckStatusRequest request) {
-    var emptyResponse = CheckStatusResponse();
-    return _client.invoke<CheckStatusResponse>(ctx, 'VerifiableCredential', 'CheckStatus', request, emptyResponse);
-  }
-  $async.Future<UpdateStatusResponse> updateStatus($pb.ClientContext? ctx, UpdateStatusRequest request) {
-    var emptyResponse = UpdateStatusResponse();
-    return _client.invoke<UpdateStatusResponse>(ctx, 'VerifiableCredential', 'UpdateStatus', request, emptyResponse);
-  }
-  $async.Future<CreateProofResponse> createProof($pb.ClientContext? ctx, CreateProofRequest request) {
-    var emptyResponse = CreateProofResponse();
-    return _client.invoke<CreateProofResponse>(ctx, 'VerifiableCredential', 'CreateProof', request, emptyResponse);
-  }
-  $async.Future<VerifyProofResponse> verifyProof($pb.ClientContext? ctx, VerifyProofRequest request) {
-    var emptyResponse = VerifyProofResponse();
-    return _client.invoke<VerifyProofResponse>(ctx, 'VerifiableCredential', 'VerifyProof', request, emptyResponse);
-  }
-  $async.Future<SendResponse> send($pb.ClientContext? ctx, SendRequest request) {
-    var emptyResponse = SendResponse();
-    return _client.invoke<SendResponse>(ctx, 'VerifiableCredential', 'Send', request, emptyResponse);
-  }
 }
 

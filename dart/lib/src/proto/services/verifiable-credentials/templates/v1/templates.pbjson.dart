@@ -216,34 +216,3 @@ const TemplateData_FieldsEntry$json = const {
 
 /// Descriptor for `TemplateData`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List templateDataDescriptor = $convert.base64Decode('CgxUZW1wbGF0ZURhdGESDgoCaWQYASABKAlSAmlkEhIKBG5hbWUYAiABKAlSBG5hbWUSGAoHdmVyc2lvbhgDIAEoBVIHdmVyc2lvbhJdCgZmaWVsZHMYBCADKAsyRS5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLlRlbXBsYXRlRGF0YS5GaWVsZHNFbnRyeVIGZmllbGRzEjYKF2FsbG93X2FkZGl0aW9uYWxfZmllbGRzGAUgASgIUhVhbGxvd0FkZGl0aW9uYWxGaWVsZHMSHQoKc2NoZW1hX3VyaRgGIAEoCVIJc2NoZW1hVXJpEh8KC2NvbnRleHRfdXJpGAcgASgJUgpjb250ZXh0VXJpEiEKDGVjb3N5c3RlbV9pZBgIIAEoCVILZWNvc3lzdGVtSWQSEgoEdHlwZRgJIAEoCVIEdHlwZRIdCgpjcmVhdGVkX2J5GAogASgJUgljcmVhdGVkQnkadQoLRmllbGRzRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSUAoFdmFsdWUYAiABKAsyOi5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLlRlbXBsYXRlRmllbGRSBXZhbHVlOgI4AQ==');
-const $core.Map<$core.String, $core.dynamic> CredentialTemplatesServiceBase$json = const {
-  '1': 'CredentialTemplates',
-  '2': const [
-    const {'1': 'Create', '2': '.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest', '3': '.services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse'},
-    const {'1': 'Get', '2': '.services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest', '3': '.services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse'},
-    const {'1': 'List', '2': '.services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest', '3': '.services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse'},
-    const {'1': 'Search', '2': '.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest', '3': '.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse'},
-    const {'1': 'Delete', '2': '.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest', '3': '.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse'},
-  ],
-};
-
-@$core.Deprecated('Use credentialTemplatesServiceDescriptor instead')
-const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> CredentialTemplatesServiceBase$messageJson = const {
-  '.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest': CreateCredentialTemplateRequest$json,
-  '.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest.FieldsEntry': CreateCredentialTemplateRequest_FieldsEntry$json,
-  '.services.verifiablecredentials.templates.v1.TemplateField': TemplateField$json,
-  '.services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse': CreateCredentialTemplateResponse$json,
-  '.services.verifiablecredentials.templates.v1.TemplateData': TemplateData$json,
-  '.services.verifiablecredentials.templates.v1.TemplateData.FieldsEntry': TemplateData_FieldsEntry$json,
-  '.services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest': GetCredentialTemplateRequest$json,
-  '.services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse': GetCredentialTemplateResponse$json,
-  '.services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest': ListCredentialTemplatesRequest$json,
-  '.services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse': ListCredentialTemplatesResponse$json,
-  '.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest': SearchCredentialTemplatesRequest$json,
-  '.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse': SearchCredentialTemplatesResponse$json,
-  '.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest': DeleteCredentialTemplateRequest$json,
-  '.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse': DeleteCredentialTemplateResponse$json,
-};
-
-/// Descriptor for `CredentialTemplates`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List credentialTemplatesServiceDescriptor = $convert.base64Decode('ChNDcmVkZW50aWFsVGVtcGxhdGVzEqUBCgZDcmVhdGUSTC5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLkNyZWF0ZUNyZWRlbnRpYWxUZW1wbGF0ZVJlcXVlc3QaTS5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLkNyZWF0ZUNyZWRlbnRpYWxUZW1wbGF0ZVJlc3BvbnNlEpwBCgNHZXQSSS5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLkdldENyZWRlbnRpYWxUZW1wbGF0ZVJlcXVlc3QaSi5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLkdldENyZWRlbnRpYWxUZW1wbGF0ZVJlc3BvbnNlEqEBCgRMaXN0Eksuc2VydmljZXMudmVyaWZpYWJsZWNyZWRlbnRpYWxzLnRlbXBsYXRlcy52MS5MaXN0Q3JlZGVudGlhbFRlbXBsYXRlc1JlcXVlc3QaTC5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLkxpc3RDcmVkZW50aWFsVGVtcGxhdGVzUmVzcG9uc2USpwEKBlNlYXJjaBJNLnNlcnZpY2VzLnZlcmlmaWFibGVjcmVkZW50aWFscy50ZW1wbGF0ZXMudjEuU2VhcmNoQ3JlZGVudGlhbFRlbXBsYXRlc1JlcXVlc3QaTi5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLlNlYXJjaENyZWRlbnRpYWxUZW1wbGF0ZXNSZXNwb25zZRKlAQoGRGVsZXRlEkwuc2VydmljZXMudmVyaWZpYWJsZWNyZWRlbnRpYWxzLnRlbXBsYXRlcy52MS5EZWxldGVDcmVkZW50aWFsVGVtcGxhdGVSZXF1ZXN0Gk0uc2VydmljZXMudmVyaWZpYWJsZWNyZWRlbnRpYWxzLnRlbXBsYXRlcy52MS5EZWxldGVDcmVkZW50aWFsVGVtcGxhdGVSZXNwb25zZQ==');

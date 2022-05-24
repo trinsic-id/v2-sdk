@@ -8,8 +8,6 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-import '../../account/v1/account.pbjson.dart' as $0;
-
 @$core.Deprecated('Use participantTypeDescriptor instead')
 const ParticipantType$json = const {
   '1': 'ParticipantType',
@@ -172,34 +170,3 @@ const GetOberonKeyResponse$json = const {
 
 /// Descriptor for `GetOberonKeyResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getOberonKeyResponseDescriptor = $convert.base64Decode('ChRHZXRPYmVyb25LZXlSZXNwb25zZRIQCgNrZXkYASABKAlSA2tleQ==');
-const $core.Map<$core.String, $core.dynamic> ProviderServiceBase$json = const {
-  '1': 'Provider',
-  '2': const [
-    const {'1': 'CreateEcosystem', '2': '.services.provider.v1.CreateEcosystemRequest', '3': '.services.provider.v1.CreateEcosystemResponse'},
-    const {'1': 'GenerateToken', '2': '.services.provider.v1.GenerateTokenRequest', '3': '.services.provider.v1.GenerateTokenResponse'},
-    const {'1': 'Invite', '2': '.services.provider.v1.InviteRequest', '3': '.services.provider.v1.InviteResponse'},
-    const {'1': 'InvitationStatus', '2': '.services.provider.v1.InvitationStatusRequest', '3': '.services.provider.v1.InvitationStatusResponse'},
-    const {'1': 'GetOberonKey', '2': '.services.provider.v1.GetOberonKeyRequest', '3': '.services.provider.v1.GetOberonKeyResponse'},
-  ],
-};
-
-@$core.Deprecated('Use providerServiceDescriptor instead')
-const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> ProviderServiceBase$messageJson = const {
-  '.services.provider.v1.CreateEcosystemRequest': CreateEcosystemRequest$json,
-  '.services.account.v1.AccountDetails': $0.AccountDetails$json,
-  '.services.provider.v1.CreateEcosystemResponse': CreateEcosystemResponse$json,
-  '.services.provider.v1.Ecosystem': Ecosystem$json,
-  '.services.account.v1.AccountProfile': $0.AccountProfile$json,
-  '.services.account.v1.TokenProtection': $0.TokenProtection$json,
-  '.services.provider.v1.GenerateTokenRequest': GenerateTokenRequest$json,
-  '.services.provider.v1.GenerateTokenResponse': GenerateTokenResponse$json,
-  '.services.provider.v1.InviteRequest': InviteRequest$json,
-  '.services.provider.v1.InviteResponse': InviteResponse$json,
-  '.services.provider.v1.InvitationStatusRequest': InvitationStatusRequest$json,
-  '.services.provider.v1.InvitationStatusResponse': InvitationStatusResponse$json,
-  '.services.provider.v1.GetOberonKeyRequest': GetOberonKeyRequest$json,
-  '.services.provider.v1.GetOberonKeyResponse': GetOberonKeyResponse$json,
-};
-
-/// Descriptor for `Provider`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List providerServiceDescriptor = $convert.base64Decode('CghQcm92aWRlchJuCg9DcmVhdGVFY29zeXN0ZW0SLC5zZXJ2aWNlcy5wcm92aWRlci52MS5DcmVhdGVFY29zeXN0ZW1SZXF1ZXN0Gi0uc2VydmljZXMucHJvdmlkZXIudjEuQ3JlYXRlRWNvc3lzdGVtUmVzcG9uc2USaAoNR2VuZXJhdGVUb2tlbhIqLnNlcnZpY2VzLnByb3ZpZGVyLnYxLkdlbmVyYXRlVG9rZW5SZXF1ZXN0Gisuc2VydmljZXMucHJvdmlkZXIudjEuR2VuZXJhdGVUb2tlblJlc3BvbnNlElMKBkludml0ZRIjLnNlcnZpY2VzLnByb3ZpZGVyLnYxLkludml0ZVJlcXVlc3QaJC5zZXJ2aWNlcy5wcm92aWRlci52MS5JbnZpdGVSZXNwb25zZRJxChBJbnZpdGF0aW9uU3RhdHVzEi0uc2VydmljZXMucHJvdmlkZXIudjEuSW52aXRhdGlvblN0YXR1c1JlcXVlc3QaLi5zZXJ2aWNlcy5wcm92aWRlci52MS5JbnZpdGF0aW9uU3RhdHVzUmVzcG9uc2USZQoMR2V0T2Jlcm9uS2V5Eikuc2VydmljZXMucHJvdmlkZXIudjEuR2V0T2Jlcm9uS2V5UmVxdWVzdBoqLnNlcnZpY2VzLnByb3ZpZGVyLnYxLkdldE9iZXJvbktleVJlc3BvbnNl');
