@@ -7,8 +7,8 @@
 package v1
 
 import (
-	v1 "github.com/trinsic-id/sdk/account/v1"
-	_ "github.com/trinsic-id/sdk/protobuf/options"
+	v1 "github.com/trinsic-id/sdk/go/proto/account/v1"
+	_ "github.com/trinsic-id/sdk/go/proto/protobuf/options"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
