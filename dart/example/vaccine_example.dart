@@ -8,7 +8,7 @@ import 'package:trinsic_dart/src/trinsic_util.dart';
 import 'package:trinsic_dart/trinsic.dart';
 
 String baseDataPath() {
-  return path.join(path.current, "..", "..", "devops", "testdata");
+  return path.join(path.current, "..", "devops", "testdata");
 }
 
 String vaccineCertUnsignedPath() {

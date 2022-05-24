@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:fixnum/fixnum.dart' as $fixnum;
@@ -11,6 +12,38 @@ import 'package:trinsic_dart/src/proto/services/account/v1/account.pb.dart';
 import 'package:trinsic_dart/src/proto/services/common/v1/common.pb.dart';
 import 'package:trinsic_dart/src/trinsic_util.dart';
 
+class MetadataInterceptor extends ClientInterceptor {
+  static const skipRoutes = [
+    "/services.account.v1.Account/SignIn",
+    "/services.provider.v1.Provider/CreateEcosystem"
+  ];
+  late ServiceBase serviceContext;
+  MetadataInterceptor(ServiceBase base) {
+    serviceContext = base;
+  }
+
+  FutureOr<void> addMetadataProvider(Map<String, String> metadata, String uri,
+      $pb.GeneratedMessage request) async {
+  }
+
+  @override
+  ResponseFuture<R> interceptUnary<Q, R>(ClientMethod<Q, R> method, Q request, CallOptions options, invoker) {
+
+    FutureOr<void> _provider(Map<String, String> metadata, String uri) async {
+      if (!skipRoutes.any((element) => element == method.path)) {
+        metadata['authorization'] = serviceContext.buildMetadata(request as $pb.GeneratedMessage);
+      }
+    }
+
+    return super.interceptUnary(
+        method,
+        request,
+        options.mergedWith(CallOptions(providers: [_provider])),
+        invoker
+    );
+  }
+}
+
 class ServiceBase {
   late ServiceOptions serviceOptions;
   final ISecurityProvider _securityProvider = OberonSecurityProvider();
@@ -18,31 +51,28 @@ class ServiceBase {
 
   ServiceBase(ServiceOptions? serverOptions) {
     serviceOptions = serverOptions ?? trinsicConfig();
-    channel = ClientChannel(serviceOptions!.serverEndpoint,
+    channel = ClientChannel(serviceOptions.serverEndpoint,
         port: serviceOptions.serverPort,
         options: ChannelOptions(
           credentials: serviceOptions.serverUseTls
               ? ChannelCredentials.secure()
               : ChannelCredentials.insecure(),
         ));
-    // TODO - Set up metadata interceptors
   }
 
   void close() {
     throw UnsupportedError("Closing the channel not yet supported");
   }
 
-  Map<String, String> buildMetadata($pb.GeneratedMessage request) {
+  String buildMetadata($pb.GeneratedMessage request) {
     if (serviceOptions.authToken == "") {
       throw Exception(
           "cannot call authenticated endpoint: auth token must be set in service options");
     }
-    return {
-      "authorization": _securityProvider.getAuthHeader(
-          AccountProfile.fromBuffer(
-              Base64Decoder().convert(serviceOptions.authToken)),
-          request)
-    };
+    return _securityProvider.getAuthHeader(
+        AccountProfile.fromBuffer(
+            Base64Decoder().convert(serviceOptions.authToken)),
+        request);
   }
 }
 
@@ -70,8 +100,8 @@ class OberonSecurityProvider implements ISecurityProvider {
         nonce: nonce.writeToBuffer()));
 
     return "Oberon ver=${1},"
-        "proof=${Base64Encoder.urlSafe().convert(proof.proof)}"
-        "data=${Base64Encoder.urlSafe().convert(profile.authData)}"
+        "proof=${Base64Encoder.urlSafe().convert(proof.proof)},"
+        "data=${Base64Encoder.urlSafe().convert(profile.authData)},"
         "nonce=${Base64Encoder.urlSafe().convert(nonce.writeToBuffer())}";
   }
 }
