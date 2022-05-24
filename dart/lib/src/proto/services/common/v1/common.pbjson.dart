@@ -8,7 +8,6 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-
 @$core.Deprecated('Use responseStatusDescriptor instead')
 const ResponseStatus$json = const {
   '1': 'ResponseStatus',
@@ -23,8 +22,7 @@ const ResponseStatus$json = const {
 };
 
 /// Descriptor for `ResponseStatus`. Decode as a `google.protobuf.EnumDescriptorProto`.
-final $typed_data.Uint8List responseStatusDescriptor = $convert.base64Decode(
-    'Cg5SZXNwb25zZVN0YXR1cxILCgdTVUNDRVNTEAASGAoUV0FMTEVUX0FDQ0VTU19ERU5JRUQQChIRCg1XQUxMRVRfRVhJU1RTEAsSEgoOSVRFTV9OT1RfRk9VTkQQFBIYChNTRVJJQUxJWkFUSU9OX0VSUk9SEMgBEhEKDVVOS05PV05fRVJST1IQZA==');
+final $typed_data.Uint8List responseStatusDescriptor = $convert.base64Decode('Cg5SZXNwb25zZVN0YXR1cxILCgdTVUNDRVNTEAASGAoUV0FMTEVUX0FDQ0VTU19ERU5JRUQQChIRCg1XQUxMRVRfRVhJU1RTEAsSEgoOSVRFTV9OT1RfRk9VTkQQFBIYChNTRVJJQUxJWkFUSU9OX0VSUk9SEMgBEhEKDVVOS05PV05fRVJST1IQZA==');
 @$core.Deprecated('Use serverConfigDescriptor instead')
 const ServerConfig$json = const {
   '1': 'ServerConfig',
@@ -36,8 +34,7 @@ const ServerConfig$json = const {
 };
 
 /// Descriptor for `ServerConfig`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List serverConfigDescriptor = $convert.base64Decode(
-    'CgxTZXJ2ZXJDb25maWcSGgoIZW5kcG9pbnQYASABKAlSCGVuZHBvaW50EhIKBHBvcnQYAiABKAVSBHBvcnQSFwoHdXNlX3RscxgDIAEoCFIGdXNlVGxz');
+final $typed_data.Uint8List serverConfigDescriptor = $convert.base64Decode('CgxTZXJ2ZXJDb25maWcSGgoIZW5kcG9pbnQYASABKAlSCGVuZHBvaW50EhIKBHBvcnQYAiABKAVSBHBvcnQSFwoHdXNlX3RscxgDIAEoCFIGdXNlVGxz');
 @$core.Deprecated('Use nonceDescriptor instead')
 const Nonce$json = const {
   '1': 'Nonce',
@@ -48,5 +45,4 @@ const Nonce$json = const {
 };
 
 /// Descriptor for `Nonce`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List nonceDescriptor = $convert.base64Decode(
-    'CgVOb25jZRIcCgl0aW1lc3RhbXAYASABKANSCXRpbWVzdGFtcBIhCgxyZXF1ZXN0X2hhc2gYAiABKAxSC3JlcXVlc3RIYXNo');
+final $typed_data.Uint8List nonceDescriptor = $convert.base64Decode('CgVOb25jZRIcCgl0aW1lc3RhbXAYASABKANSCXRpbWVzdGFtcBIhCgxyZXF1ZXN0X2hhc2gYAiABKAxSC3JlcXVlc3RIYXNo');

@@ -10,16 +10,9 @@ import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class Field_options {
-  static final optional = $pb.Extension<$core.bool>(
-      const $core.bool.fromEnvironment('protobuf.omit_message_names')
-          ? ''
-          : 'google.protobuf.FieldOptions',
-      const $core.bool.fromEnvironment('protobuf.omit_field_names')
-          ? ''
-          : 'optional',
-      60000,
-      $pb.PbFieldType.OB);
+  static final optional = $pb.Extension<$core.bool>(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'google.protobuf.FieldOptions', const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'optional', 60000, $pb.PbFieldType.OB);
   static void registerAllExtensions($pb.ExtensionRegistry registry) {
     registry.add(optional);
   }
 }
+
