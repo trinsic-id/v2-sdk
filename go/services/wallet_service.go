@@ -2,8 +2,7 @@ package services
 
 import (
 	"context"
-
-	sdk "github.com/trinsic-id/sdk/go/proto"
+	walletV1 "github.com/trinsic-id/sdk/go/proto/universalwallet/v1"
 )
 
 // NewWalletService returns a wallet service with the base service configured
@@ -15,7 +14,7 @@ func NewWalletService(options *Options) (WalletService, error) {
 	}
 	service := &walletBase{
 		Service: base,
-		client:  sdk.NewUniversalWalletClient(base.GetChannel()),
+		client:  walletV1.NewUniversalWalletClient(base.GetChannel()),
 	}
 
 	return service, nil
@@ -24,19 +23,19 @@ func NewWalletService(options *Options) (WalletService, error) {
 // WalletService defines the interface for interacting with wallet
 type WalletService interface {
 	Service
-	Search(userContext context.Context, request *sdk.SearchRequest) (*sdk.SearchResponse, error)
-	InsertItem(userContext context.Context, request *sdk.InsertItemRequest) (string, error)
-	DeleteItem(userContext context.Context, request *sdk.DeleteItemRequest) error
+	Search(userContext context.Context, request *walletV1.SearchRequest) (*walletV1.SearchResponse, error)
+	InsertItem(userContext context.Context, request *walletV1.InsertItemRequest) (string, error)
+	DeleteItem(userContext context.Context, request *walletV1.DeleteItemRequest) error
 }
 
 type walletBase struct {
 	Service
-	client sdk.UniversalWalletClient
+	client walletV1.UniversalWalletClient
 }
 
-func (w *walletBase) Search(userContext context.Context, request *sdk.SearchRequest) (*sdk.SearchResponse, error) {
+func (w *walletBase) Search(userContext context.Context, request *walletV1.SearchRequest) (*walletV1.SearchResponse, error) {
 	if request == nil {
-		request = &sdk.SearchRequest{}
+		request = &walletV1.SearchRequest{}
 	}
 
 	if len(request.Query) == 0 {
@@ -56,7 +55,7 @@ func (w *walletBase) Search(userContext context.Context, request *sdk.SearchRequ
 	return response, nil
 }
 
-func (w *walletBase) InsertItem(userContext context.Context, request *sdk.InsertItemRequest) (string, error) {
+func (w *walletBase) InsertItem(userContext context.Context, request *walletV1.InsertItemRequest) (string, error) {
 	md, err := w.GetMetadataContext(userContext, request)
 	if err != nil {
 		return "", err
@@ -70,7 +69,7 @@ func (w *walletBase) InsertItem(userContext context.Context, request *sdk.Insert
 	return response.ItemId, nil
 }
 
-func (w *walletBase) DeleteItem(userContext context.Context, request *sdk.DeleteItemRequest) error {
+func (w *walletBase) DeleteItem(userContext context.Context, request *walletV1.DeleteItemRequest) error {
 	md, err := w.GetMetadataContext(userContext, request)
 	if err != nil {
 		return err

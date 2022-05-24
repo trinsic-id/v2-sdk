@@ -5,9 +5,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/google/uuid"
+	templatesV1 "github.com/trinsic-id/sdk/go/proto/verifiablecredentials/templates/v1"
+	credentialsV1 "github.com/trinsic-id/sdk/go/proto/verifiablecredentials/v1"
 	"testing"
-
-	sdk "github.com/trinsic-id/sdk/go/proto"
 )
 
 func TestTemplatesDemo(t *testing.T) {
@@ -33,10 +33,10 @@ func TestTemplatesDemo(t *testing.T) {
 
 	// create example template
 	// createTemplate() {
-	templateRequest := &sdk.CreateCredentialTemplateRequest{Name: fmt.Sprintf("Example Template - %s", uuid.New()), AllowAdditionalFields: false, Fields: make(map[string]*sdk.TemplateField)}
-	templateRequest.Fields["firstName"] = &sdk.TemplateField{Description: "Given name"}
-	templateRequest.Fields["lastName"] = &sdk.TemplateField{}
-	templateRequest.Fields["age"] = &sdk.TemplateField{Type: sdk.FieldType_NUMBER, Optional: true}
+	templateRequest := &templatesV1.CreateCredentialTemplateRequest{Name: fmt.Sprintf("Example Template - %s", uuid.New()), AllowAdditionalFields: false, Fields: make(map[string]*templatesV1.TemplateField)}
+	templateRequest.Fields["firstName"] = &templatesV1.TemplateField{Description: "Given name"}
+	templateRequest.Fields["lastName"] = &templatesV1.TemplateField{}
+	templateRequest.Fields["age"] = &templatesV1.TemplateField{Type: templatesV1.FieldType_NUMBER, Optional: true}
 
 	template, err := templateService.Create(context.Background(), templateRequest)
 	// }
@@ -63,7 +63,7 @@ func TestTemplatesDemo(t *testing.T) {
 	}
 
 	// issueFromTemplate() {
-	credentialJSON, err := credentialService.IssueFromTemplate(context.Background(), &sdk.IssueFromTemplateRequest{
+	credentialJSON, err := credentialService.IssueFromTemplate(context.Background(), &credentialsV1.IssueFromTemplateRequest{
 		TemplateId: template.Data.Id,
 		ValuesJson: string(valuesString),
 	})
@@ -81,31 +81,31 @@ func TestTemplatesDemo(t *testing.T) {
 	assert2.NotNil(jsonDocument["credentialSubject"])
 
 	// getCredentialTemplate() {
-	getResponse, err := templateService.Get(context.Background(), &sdk.GetCredentialTemplateRequest{Id: template.Data.Id})
+	getResponse, err := templateService.Get(context.Background(), &templatesV1.GetCredentialTemplateRequest{Id: template.Data.Id})
 	// }
 	if getResponse != nil {
 	}
 
 	// searchCredentialTemplate() {
-	searchResponse, err := templateService.Search(context.Background(), &sdk.SearchCredentialTemplatesRequest{Query: "SELECT * FROM c"})
+	searchResponse, err := templateService.Search(context.Background(), &templatesV1.SearchCredentialTemplatesRequest{Query: "SELECT * FROM c"})
 	// }
 	if searchResponse != nil {
 	}
 
 	// deleteCredentialTemplate() {
-	deleteResponse, err := templateService.Delete(context.Background(), &sdk.DeleteCredentialTemplateRequest{Id: template.Data.Id})
+	deleteResponse, err := templateService.Delete(context.Background(), &templatesV1.DeleteCredentialTemplateRequest{Id: template.Data.Id})
 	// }
 	if deleteResponse != nil {
 	}
 
 	// checkCredentialStatus() {
-	status, err := credentialService.CheckStatus(context.Background(), &sdk.CheckStatusRequest{CredentialStatusId: ""})
+	status, err := credentialService.CheckStatus(context.Background(), &credentialsV1.CheckStatusRequest{CredentialStatusId: ""})
 	// }
 	if status != nil {
 	}
 
 	// updateCredentialStatus() {
-	updateResponse, err := credentialService.UpdateStatus(context.Background(), &sdk.UpdateStatusRequest{CredentialStatusId: "", Revoked: true})
+	updateResponse, err := credentialService.UpdateStatus(context.Background(), &credentialsV1.UpdateStatusRequest{CredentialStatusId: "", Revoked: true})
 	// }
 	if updateResponse != nil {
 	}

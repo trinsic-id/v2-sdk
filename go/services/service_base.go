@@ -5,9 +5,10 @@ import (
 	"crypto/x509"
 	"errors"
 	"fmt"
+	accountV1 "github.com/trinsic-id/sdk/go/proto/account/v1"
+	optionsV1 "github.com/trinsic-id/sdk/go/proto/options/v1"
 	"runtime"
 
-	sdk "github.com/trinsic-id/sdk/go/proto"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/metadata"
@@ -42,9 +43,9 @@ type Service interface {
 	// if none is set
 	GetToken() string
 	// GetProfile returns the account profile associated with this service, or null if none
-	GetProfile() *sdk.AccountProfile
+	GetProfile() *accountV1.AccountProfile
 	// GetServiceOptions returns the set of ServiceOptions the service is using
-	GetServiceOptions() *sdk.ServiceOptions
+	GetServiceOptions() *optionsV1.ServiceOptions
 	// GetChannel returns the grpc client connect
 	GetChannel() *grpc.ClientConn
 }
@@ -67,7 +68,7 @@ func (s *serviceBase) GetToken() string {
 	return s.options.ServiceOptions.AuthToken
 }
 
-func (s *serviceBase) GetProfile() *sdk.AccountProfile {
+func (s *serviceBase) GetProfile() *accountV1.AccountProfile {
 	if s.options != nil && len(s.options.ServiceOptions.AuthToken) != 0 {
 		profile, _ := ProfileFromToken(s.options.ServiceOptions.AuthToken)
 		return profile
@@ -76,7 +77,7 @@ func (s *serviceBase) GetProfile() *sdk.AccountProfile {
 	return nil
 }
 
-func (s *serviceBase) GetServiceOptions() *sdk.ServiceOptions {
+func (s *serviceBase) GetServiceOptions() *optionsV1.ServiceOptions {
 	return s.options.ServiceOptions
 }
 
@@ -121,7 +122,7 @@ func (s *serviceBase) BuildMetadata(message proto.Message) (metadata.MD, error) 
 
 // NewServiceConnection returns a grpc client connection to the target
 // provided in the options (ServerEndpoint, ServerPort, and ServerUseTLS)
-func NewServiceConnection(options *sdk.ServiceOptions, grpcDialOptions ...grpc.DialOption) (*grpc.ClientConn, error) {
+func NewServiceConnection(options *optionsV1.ServiceOptions, grpcDialOptions ...grpc.DialOption) (*grpc.ClientConn, error) {
 	var dialOptions []grpc.DialOption
 
 	if !options.ServerUseTls {
