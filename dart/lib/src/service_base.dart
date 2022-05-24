@@ -12,18 +12,19 @@ import 'package:trinsic_dart/src/proto/services/common/v1/common.pb.dart';
 import 'package:trinsic_dart/src/trinsic_util.dart';
 
 class ServiceBase {
-  ServiceOptions serviceOptions;
-  ISecurityProvider _securityProvider = OberonSecurityProvider();
-  ClientChannel channel;
+  late ServiceOptions serviceOptions;
+  final ISecurityProvider _securityProvider = OberonSecurityProvider();
+  late ClientChannel channel;
 
-  ServiceBase(ServiceOptions? serviceOptions) {
-    this.serviceOptions = serviceOptions ?? trinsicConfig();
-    // TODO - Open a channel?
-    this.channel = ClientChannel(
-        serviceOptions.serverEndpoint, port: serviceOptions.serverPort,
-        options: ChannelOptions(credentials: serviceOptions.serverUseTls
-            ? ChannelCredentials.secure()
-            : ChannelCredentials.insecure(),))
+  ServiceBase(ServiceOptions? serverOptions) {
+    serviceOptions = serverOptions ?? trinsicConfig();
+    channel = ClientChannel(serviceOptions!.serverEndpoint,
+        port: serviceOptions.serverPort,
+        options: ChannelOptions(
+          credentials: serviceOptions.serverUseTls
+              ? ChannelCredentials.secure()
+              : ChannelCredentials.insecure(),
+        ));
   }
 
   void close() {
@@ -31,14 +32,15 @@ class ServiceBase {
   }
 
   Map<String, String> buildMetadata($pb.GeneratedMessage request) {
-    if (serviceOptions?.authToken == null) {
+    if (serviceOptions.authToken == "") {
       throw Exception(
           "cannot call authenticated endpoint: auth token must be set in service options");
     }
     return {
       "authorization": _securityProvider.getAuthHeader(
           AccountProfile.fromBuffer(
-              Base64Decoder().convert(serviceOptions!.authToken)), request)
+              Base64Decoder().convert(serviceOptions.authToken)),
+          request)
     };
   }
 }
@@ -48,7 +50,6 @@ abstract class ISecurityProvider {
 }
 
 class OberonSecurityProvider implements ISecurityProvider {
-
   @override
   String getAuthHeader(AccountProfile profile, $pb.GeneratedMessage message) {
     if (profile.protection.enabled) {
@@ -56,12 +57,12 @@ class OberonSecurityProvider implements ISecurityProvider {
     }
 
     // Compute hash request and capture current timestamp
-    var requestHash = okapi.Hashing
-        .blake3Hash(Blake3HashRequest(data: message.writeToBuffer()))
+    var requestHash = okapi.Hashing.blake3Hash(
+            Blake3HashRequest(data: message.writeToBuffer()))
         .digest;
-    var nonce = Nonce(timestamp: $fixnum.Int64(DateTime
-        .now()
-        .millisecondsSinceEpoch), requestHash: requestHash);
+    var nonce = Nonce(
+        timestamp: $fixnum.Int64(DateTime.now().millisecondsSinceEpoch),
+        requestHash: requestHash);
     var proof = okapi.Oberon.CreateProof(CreateOberonProofRequest(
         token: profile.authToken,
         data: profile.authData,
@@ -72,5 +73,4 @@ class OberonSecurityProvider implements ISecurityProvider {
         "data=${Base64Encoder.urlSafe().convert(profile.authData)}"
         "nonce=${Base64Encoder.urlSafe().convert(nonce.writeToBuffer())}";
   }
-
 }
