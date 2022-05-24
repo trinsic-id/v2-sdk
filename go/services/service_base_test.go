@@ -2,8 +2,8 @@ package services
 
 import (
 	"context"
-	accountV1 "github.com/trinsic-id/sdk/go/proto/account/v1"
-	optionsV1 "github.com/trinsic-id/sdk/go/proto/options/v1"
+	account "github.com/trinsic-id/sdk/go/proto/account/v1"
+	options "github.com/trinsic-id/sdk/go/proto/options/v1"
 	"strings"
 	"testing"
 
@@ -17,7 +17,7 @@ func TestServiceBase(t *testing.T) {
 	assert := assert.New(t)
 
 	opts, err := NewServiceOptions(
-		WithOptions(&optionsV1.ServiceOptions{
+		WithOptions(&options.ServiceOptions{
 			ServerEndpoint:   "127.0.0.1",
 			ServerPort:       1234,
 			DefaultEcosystem: "test"},
@@ -46,7 +46,7 @@ func TestServiceBase(t *testing.T) {
 	}
 
 	opts, err = NewServiceOptions(
-		WithOptions(&optionsV1.ServiceOptions{
+		WithOptions(&options.ServiceOptions{
 			ServerEndpoint:   "127.0.0.1",
 			ServerPort:       1234,
 			DefaultEcosystem: "test"},
@@ -66,15 +66,15 @@ func TestServiceBase(t *testing.T) {
 	assert.Empty(base.GetProfile(), "auth Profile should be empty")
 
 	// we should refuse to build metadata without a set token
-	_, err = base.GetMetadataContext(context.Background(), &accountV1.AccountDetails{})
+	_, err = base.GetMetadataContext(context.Background(), &account.AccountDetails{})
 	if assert.NotNil(err) {
 		assert.Equal("cannot call authenticated endpoint: auth token must be set in service options", err.Error(), "auth token must be set")
 	}
 
-	profile := &accountV1.AccountProfile{
+	profile := &account.AccountProfile{
 		AuthData:  []byte(`1234567890`),
 		AuthToken: []byte(`1234567890`),
-		Protection: &accountV1.TokenProtection{
+		Protection: &account.TokenProtection{
 			Enabled: true,
 		},
 	}
@@ -88,7 +88,7 @@ func TestServiceBase(t *testing.T) {
 	assert.Equal(tkn, base.GetServiceOptions().AuthToken, "auth token should have been replaced")
 
 	// Must Unprotect token
-	_, err = base.GetMetadataContext(context.Background(), &accountV1.AccountDetails{})
+	_, err = base.GetMetadataContext(context.Background(), &account.AccountDetails{})
 	if assert.NotNil(err) {
 		assert.Equal("the token must be unprotected before use", err.Error(), "should refuse to us a protected token")
 	}
@@ -99,7 +99,7 @@ func TestServiceBase(t *testing.T) {
 	assert.Equal(testToken, base.GetServiceOptions().AuthToken, "auth token should have been replaced")
 
 	// Sets the authorization header to oberon
-	md, err := base.BuildMetadata(&accountV1.AccountDetails{})
+	md, err := base.BuildMetadata(&account.AccountDetails{})
 	assert.Nil(err)
 	if assert.Len(md.Get("authorization"), 1, "should have single authorization header") {
 		assert.True(strings.HasPrefix(md.Get("authorization")[0], "Oberon "), "authorization header should be Oberon")

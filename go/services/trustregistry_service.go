@@ -2,7 +2,7 @@ package services
 
 import (
 	"context"
-	trustregistryV1 "github.com/trinsic-id/sdk/go/proto/trustregistry/v1"
+	trustregistry "github.com/trinsic-id/sdk/go/proto/trustregistry/v1"
 	"net/url"
 )
 
@@ -15,7 +15,7 @@ func NewTrustRegistryService(options *Options) (TrustRegistryService, error) {
 	}
 	service := &trustRegistryBase{
 		Service: base,
-		client:  trustregistryV1.NewTrustRegistryClient(base.GetChannel()),
+		client:  trustregistry.NewTrustRegistryClient(base.GetChannel()),
 	}
 
 	return service, nil
@@ -25,27 +25,27 @@ func NewTrustRegistryService(options *Options) (TrustRegistryService, error) {
 type TrustRegistryService interface {
 	Service
 	// RegisterGovernanceFramework in the ecosystem
-	RegisterGovernanceFramework(userContext context.Context, request *trustregistryV1.AddFrameworkRequest) (*trustregistryV1.AddFrameworkResponse, error)
+	RegisterGovernanceFramework(userContext context.Context, request *trustregistry.AddFrameworkRequest) (*trustregistry.AddFrameworkResponse, error)
 	// RemoveGovernanceFramework from the ecosystem
-	RemoveGovernanceFramework(userContext context.Context, request *trustregistryV1.RemoveFrameworkRequest) (*trustregistryV1.RemoveFrameworkResponse, error)
+	RemoveGovernanceFramework(userContext context.Context, request *trustregistry.RemoveFrameworkRequest) (*trustregistry.RemoveFrameworkResponse, error)
 	// RegisterMember to issue the given credentials within the governance framework
-	RegisterMember(userContext context.Context, request *trustregistryV1.RegisterMemberRequest) (*trustregistryV1.RegisterMemberResponse, error)
+	RegisterMember(userContext context.Context, request *trustregistry.RegisterMemberRequest) (*trustregistry.RegisterMemberResponse, error)
 	// UnregisterMember in the given governance framework
-	UnregisterMember(userContext context.Context, request *trustregistryV1.UnregisterMemberRequest) (*trustregistryV1.UnregisterMemberResponse, error)
+	UnregisterMember(userContext context.Context, request *trustregistry.UnregisterMemberRequest) (*trustregistry.UnregisterMemberResponse, error)
 	// GetMembershipStatus indicates whether the given member has a status within the given framework
-	GetMembershipStatus(userContext context.Context, request *trustregistryV1.GetMembershipStatusRequest) (*trustregistryV1.GetMembershipStatusResponse, error)
+	GetMembershipStatus(userContext context.Context, request *trustregistry.GetMembershipStatusRequest) (*trustregistry.GetMembershipStatusResponse, error)
 	// SearchRegistry for frameworks, issues, and verifiers
-	SearchRegistry(userContext context.Context, request *trustregistryV1.SearchRegistryRequest) (*trustregistryV1.SearchRegistryResponse, error)
+	SearchRegistry(userContext context.Context, request *trustregistry.SearchRegistryRequest) (*trustregistry.SearchRegistryResponse, error)
 	// FetchData from the provided governance framework
-	FetchData(userContext context.Context, request *trustregistryV1.FetchDataRequest) (trustregistryV1.TrustRegistry_FetchDataClient, error)
+	FetchData(userContext context.Context, request *trustregistry.FetchDataRequest) (trustregistry.TrustRegistry_FetchDataClient, error)
 }
 
 type trustRegistryBase struct {
 	Service
-	client trustregistryV1.TrustRegistryClient
+	client trustregistry.TrustRegistryClient
 }
 
-func (t *trustRegistryBase) RegisterGovernanceFramework(userContext context.Context, request *trustregistryV1.AddFrameworkRequest) (*trustregistryV1.AddFrameworkResponse, error) {
+func (t *trustRegistryBase) RegisterGovernanceFramework(userContext context.Context, request *trustregistry.AddFrameworkRequest) (*trustregistry.AddFrameworkResponse, error) {
 	// Verify that it is a valid uri
 	_, err := url.Parse(request.GovernanceFrameworkUri)
 	if err != nil {
@@ -65,7 +65,7 @@ func (t *trustRegistryBase) RegisterGovernanceFramework(userContext context.Cont
 	return response, nil
 }
 
-func (t *trustRegistryBase) RegisterMember(userContext context.Context, request *trustregistryV1.RegisterMemberRequest) (*trustregistryV1.RegisterMemberResponse, error) {
+func (t *trustRegistryBase) RegisterMember(userContext context.Context, request *trustregistry.RegisterMemberRequest) (*trustregistry.RegisterMemberResponse, error) {
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -75,7 +75,7 @@ func (t *trustRegistryBase) RegisterMember(userContext context.Context, request 
 	return response, err
 }
 
-func (t *trustRegistryBase) UnregisterMember(userContext context.Context, request *trustregistryV1.UnregisterMemberRequest) (*trustregistryV1.UnregisterMemberResponse, error) {
+func (t *trustRegistryBase) UnregisterMember(userContext context.Context, request *trustregistry.UnregisterMemberRequest) (*trustregistry.UnregisterMemberResponse, error) {
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -85,7 +85,7 @@ func (t *trustRegistryBase) UnregisterMember(userContext context.Context, reques
 	return response, err
 }
 
-func (t *trustRegistryBase) GetMembershipStatus(userContext context.Context, request *trustregistryV1.GetMembershipStatusRequest) (*trustregistryV1.GetMembershipStatusResponse, error) {
+func (t *trustRegistryBase) GetMembershipStatus(userContext context.Context, request *trustregistry.GetMembershipStatusRequest) (*trustregistry.GetMembershipStatusResponse, error) {
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -99,9 +99,9 @@ func (t *trustRegistryBase) GetMembershipStatus(userContext context.Context, req
 	return response, nil
 }
 
-func (t *trustRegistryBase) SearchRegistry(userContext context.Context, request *trustregistryV1.SearchRegistryRequest) (*trustregistryV1.SearchRegistryResponse, error) {
+func (t *trustRegistryBase) SearchRegistry(userContext context.Context, request *trustregistry.SearchRegistryRequest) (*trustregistry.SearchRegistryResponse, error) {
 	if request == nil {
-		request = &trustregistryV1.SearchRegistryRequest{}
+		request = &trustregistry.SearchRegistryRequest{}
 	}
 
 	if request.Query == "" {
@@ -121,7 +121,7 @@ func (t *trustRegistryBase) SearchRegistry(userContext context.Context, request 
 	return response, nil
 }
 
-func (t *trustRegistryBase) RemoveGovernanceFramework(userContext context.Context, request *trustregistryV1.RemoveFrameworkRequest) (*trustregistryV1.RemoveFrameworkResponse, error) {
+func (t *trustRegistryBase) RemoveGovernanceFramework(userContext context.Context, request *trustregistry.RemoveFrameworkRequest) (*trustregistry.RemoveFrameworkResponse, error) {
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -135,7 +135,7 @@ func (t *trustRegistryBase) RemoveGovernanceFramework(userContext context.Contex
 	return response, nil
 }
 
-func (t *trustRegistryBase) FetchData(userContext context.Context, request *trustregistryV1.FetchDataRequest) (trustregistryV1.TrustRegistry_FetchDataClient, error) {
+func (t *trustRegistryBase) FetchData(userContext context.Context, request *trustregistry.FetchDataRequest) (trustregistry.TrustRegistry_FetchDataClient, error) {
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err

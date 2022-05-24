@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/google/uuid"
-	templatesV1 "github.com/trinsic-id/sdk/go/proto/verifiablecredentials/templates/v1"
-	credentialsV1 "github.com/trinsic-id/sdk/go/proto/verifiablecredentials/v1"
+	template "github.com/trinsic-id/sdk/go/proto/verifiablecredentials/templates/v1"
+	credential "github.com/trinsic-id/sdk/go/proto/verifiablecredentials/v1"
 	"testing"
 )
 
@@ -33,19 +33,19 @@ func TestTemplatesDemo(t *testing.T) {
 
 	// create example template
 	// createTemplate() {
-	templateRequest := &templatesV1.CreateCredentialTemplateRequest{Name: fmt.Sprintf("Example Template - %s", uuid.New()), AllowAdditionalFields: false, Fields: make(map[string]*templatesV1.TemplateField)}
-	templateRequest.Fields["firstName"] = &templatesV1.TemplateField{Description: "Given name"}
-	templateRequest.Fields["lastName"] = &templatesV1.TemplateField{}
-	templateRequest.Fields["age"] = &templatesV1.TemplateField{Type: templatesV1.FieldType_NUMBER, Optional: true}
+	templateRequest := &template.CreateCredentialTemplateRequest{Name: fmt.Sprintf("Example Template - %s", uuid.New()), AllowAdditionalFields: false, Fields: make(map[string]*template.TemplateField)}
+	templateRequest.Fields["firstName"] = &template.TemplateField{Description: "Given name"}
+	templateRequest.Fields["lastName"] = &template.TemplateField{}
+	templateRequest.Fields["age"] = &template.TemplateField{Type: template.FieldType_NUMBER, Optional: true}
 
-	template, err := templateService.Create(context.Background(), templateRequest)
+	templateResponse, err := templateService.Create(context.Background(), templateRequest)
 	// }
-	if !assert2.Nil(err) && !assert2.NotNil(template) {
+	if !assert2.Nil(err) && !assert2.NotNil(templateResponse) {
 		return
 	}
-	assert2.NotNil(template.Data)
-	assert2.NotNil(template.Data.Id)
-	assert2.NotNil(template.Data.SchemaUri)
+	assert2.NotNil(templateResponse.Data)
+	assert2.NotNil(templateResponse.Data.Id)
+	assert2.NotNil(templateResponse.Data.SchemaUri)
 
 	// issue credential from this template
 	values := struct {
@@ -63,8 +63,8 @@ func TestTemplatesDemo(t *testing.T) {
 	}
 
 	// issueFromTemplate() {
-	credentialJSON, err := credentialService.IssueFromTemplate(context.Background(), &credentialsV1.IssueFromTemplateRequest{
-		TemplateId: template.Data.Id,
+	credentialJSON, err := credentialService.IssueFromTemplate(context.Background(), &credential.IssueFromTemplateRequest{
+		TemplateId: templateResponse.Data.Id,
 		ValuesJson: string(valuesString),
 	})
 	// }
@@ -81,31 +81,31 @@ func TestTemplatesDemo(t *testing.T) {
 	assert2.NotNil(jsonDocument["credentialSubject"])
 
 	// getCredentialTemplate() {
-	getResponse, err := templateService.Get(context.Background(), &templatesV1.GetCredentialTemplateRequest{Id: template.Data.Id})
+	getResponse, err := templateService.Get(context.Background(), &template.GetCredentialTemplateRequest{Id: templateResponse.Data.Id})
 	// }
 	if getResponse != nil {
 	}
 
 	// searchCredentialTemplate() {
-	searchResponse, err := templateService.Search(context.Background(), &templatesV1.SearchCredentialTemplatesRequest{Query: "SELECT * FROM c"})
+	searchResponse, err := templateService.Search(context.Background(), &template.SearchCredentialTemplatesRequest{Query: "SELECT * FROM c"})
 	// }
 	if searchResponse != nil {
 	}
 
 	// deleteCredentialTemplate() {
-	deleteResponse, err := templateService.Delete(context.Background(), &templatesV1.DeleteCredentialTemplateRequest{Id: template.Data.Id})
+	deleteResponse, err := templateService.Delete(context.Background(), &template.DeleteCredentialTemplateRequest{Id: templateResponse.Data.Id})
 	// }
 	if deleteResponse != nil {
 	}
 
 	// checkCredentialStatus() {
-	status, err := credentialService.CheckStatus(context.Background(), &credentialsV1.CheckStatusRequest{CredentialStatusId: ""})
+	status, err := credentialService.CheckStatus(context.Background(), &credential.CheckStatusRequest{CredentialStatusId: ""})
 	// }
 	if status != nil {
 	}
 
 	// updateCredentialStatus() {
-	updateResponse, err := credentialService.UpdateStatus(context.Background(), &credentialsV1.UpdateStatusRequest{CredentialStatusId: "", Revoked: true})
+	updateResponse, err := credentialService.UpdateStatus(context.Background(), &credential.UpdateStatusRequest{CredentialStatusId: "", Revoked: true})
 	// }
 	if updateResponse != nil {
 	}

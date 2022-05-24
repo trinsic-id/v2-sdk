@@ -2,7 +2,7 @@ package services
 
 import (
 	"context"
-	providerV1 "github.com/trinsic-id/sdk/go/proto/provider/v1"
+	provider "github.com/trinsic-id/sdk/go/proto/provider/v1"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -21,7 +21,7 @@ func TestProviderBase_InviteParticipant(t *testing.T) {
 		if !assert2.Nil(err) {
 			return
 		}
-		_, err = providerService.InviteParticipant(context.Background(), &providerV1.InviteRequest{})
+		_, err = providerService.InviteParticipant(context.Background(), &provider.InviteRequest{})
 		if !assert2.NotNil(err) {
 			return
 		}

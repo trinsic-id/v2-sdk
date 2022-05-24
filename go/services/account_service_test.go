@@ -2,7 +2,7 @@ package services
 
 import (
 	"context"
-	accountV1 "github.com/trinsic-id/sdk/go/proto/account/v1"
+	account "github.com/trinsic-id/sdk/go/proto/account/v1"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -23,7 +23,7 @@ func TestProtectUnprotectProfile(t *testing.T) {
 	}
 	// }
 	// accountServiceSignIn() {
-	profile, _, err := accountService.SignIn(context.Background(), &accountV1.SignInRequest{})
+	profile, _, err := accountService.SignIn(context.Background(), &account.SignInRequest{})
 	if !assert2.Nil(err) {
 		return
 	}

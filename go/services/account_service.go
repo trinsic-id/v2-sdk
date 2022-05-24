@@ -9,7 +9,7 @@ import (
 
 	"google.golang.org/protobuf/proto"
 
-	accountV1 "github.com/trinsic-id/sdk/go/proto/account/v1"
+	account "github.com/trinsic-id/sdk/go/proto/account/v1"
 )
 
 // NewAccountService returns an account servcie with the base service configured
@@ -21,7 +21,7 @@ func NewAccountService(options *Options) (AccountService, error) {
 	}
 	service := &accountBase{
 		Service: base,
-		client:  accountV1.NewAccountClient(base.GetChannel()),
+		client:  account.NewAccountClient(base.GetChannel()),
 	}
 
 	return service, nil
@@ -31,32 +31,32 @@ func NewAccountService(options *Options) (AccountService, error) {
 type AccountService interface {
 	Service
 	// SignIn returns an encoded auth token
-	SignIn(userContext context.Context, request *accountV1.SignInRequest) (string, accountV1.ConfirmationMethod, error)
+	SignIn(userContext context.Context, request *account.SignInRequest) (string, account.ConfirmationMethod, error)
 	// Unprotect takes an authtoken that has been protected using a pin code
 	// and returns an unlocked token
 	Unprotect(authtoken, securityCode string) (string, error)
 	// Protect will apply the given security code blind to the provided token
 	Protect(authtoken, securityCode string) (string, error)
 	// GetInfo returns details about the wallet associated with the account token
-	GetInfo(userContext context.Context) (*accountV1.InfoResponse, error)
+	GetInfo(userContext context.Context) (*account.InfoResponse, error)
 	// ListDevices returns a list of devices that are associated with the cloud wallet
-	ListDevices(userContext context.Context, request *accountV1.ListDevicesRequest) (*accountV1.ListDevicesResponse, error)
+	ListDevices(userContext context.Context, request *account.ListDevicesRequest) (*account.ListDevicesResponse, error)
 	// RevokeDevice removes access to the cloud wallet for the provided device
-	RevokeDevice(userContext context.Context, request *accountV1.RevokeDeviceRequest) (*accountV1.RevokeDeviceResponse, error)
+	RevokeDevice(userContext context.Context, request *account.RevokeDeviceRequest) (*account.RevokeDeviceResponse, error)
 }
 
 type accountBase struct {
 	Service
-	client accountV1.AccountClient
+	client account.AccountClient
 }
 
 // SignIn to a given account
-func (a *accountBase) SignIn(userContext context.Context, request *accountV1.SignInRequest) (string, accountV1.ConfirmationMethod, error) {
+func (a *accountBase) SignIn(userContext context.Context, request *account.SignInRequest) (string, account.ConfirmationMethod, error) {
 	if request == nil {
-		request = &accountV1.SignInRequest{}
+		request = &account.SignInRequest{}
 	}
 	if request.Details == nil {
-		request.Details = &accountV1.AccountDetails{}
+		request.Details = &account.AccountDetails{}
 	}
 
 	if len(request.EcosystemId) == 0 {
@@ -65,12 +65,12 @@ func (a *accountBase) SignIn(userContext context.Context, request *accountV1.Sig
 
 	resp, err := a.client.SignIn(userContext, request)
 	if err != nil {
-		return "", accountV1.ConfirmationMethod_None, err
+		return "", account.ConfirmationMethod_None, err
 	}
 
 	tkn, err := ProfileToToken(resp.Profile)
 	if err != nil {
-		return "", accountV1.ConfirmationMethod_None, err
+		return "", account.ConfirmationMethod_None, err
 	}
 
 	return tkn, resp.ConfirmationMethod, nil
@@ -97,9 +97,9 @@ func (a *accountBase) Unprotect(authtoken, securityCode string) (string, error) 
 	}
 
 	profile.AuthToken = response.Token
-	profile.Protection = &accountV1.TokenProtection{
+	profile.Protection = &account.TokenProtection{
 		Enabled: false,
-		Method:  accountV1.ConfirmationMethod_None,
+		Method:  account.ConfirmationMethod_None,
 	}
 
 	return ProfileToToken(profile)
@@ -126,17 +126,17 @@ func (a *accountBase) Protect(authtoken, securityCode string) (string, error) {
 	}
 
 	profile.AuthToken = response.Token
-	profile.Protection = &accountV1.TokenProtection{
+	profile.Protection = &account.TokenProtection{
 		Enabled: true,
-		Method:  accountV1.ConfirmationMethod_Other,
+		Method:  account.ConfirmationMethod_Other,
 	}
 
 	return ProfileToToken(profile)
 }
 
 // GetInfo associated with a given wallet
-func (a *accountBase) GetInfo(userContext context.Context) (*accountV1.InfoResponse, error) {
-	request := &accountV1.InfoRequest{}
+func (a *accountBase) GetInfo(userContext context.Context) (*account.InfoResponse, error) {
+	request := &account.InfoRequest{}
 	md, err := a.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -149,7 +149,7 @@ func (a *accountBase) GetInfo(userContext context.Context) (*accountV1.InfoRespo
 }
 
 // ListDevices that can access the cloud wallet
-func (a *accountBase) ListDevices(userContext context.Context, request *accountV1.ListDevicesRequest) (*accountV1.ListDevicesResponse, error) {
+func (a *accountBase) ListDevices(userContext context.Context, request *account.ListDevicesRequest) (*account.ListDevicesResponse, error) {
 	md, err := a.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -162,7 +162,7 @@ func (a *accountBase) ListDevices(userContext context.Context, request *accountV
 }
 
 // RevokeDevice from the cloud wallet
-func (a *accountBase) RevokeDevice(userContext context.Context, request *accountV1.RevokeDeviceRequest) (*accountV1.RevokeDeviceResponse, error) {
+func (a *accountBase) RevokeDevice(userContext context.Context, request *account.RevokeDeviceRequest) (*account.RevokeDeviceResponse, error) {
 	md, err := a.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -175,7 +175,7 @@ func (a *accountBase) RevokeDevice(userContext context.Context, request *account
 }
 
 // ProfileToToken takes the proile and returns an encoded auth token
-func ProfileToToken(profile *accountV1.AccountProfile) (string, error) {
+func ProfileToToken(profile *account.AccountProfile) (string, error) {
 	pbytes, err := proto.Marshal(profile)
 	if err != nil {
 		return "", err
@@ -185,13 +185,13 @@ func ProfileToToken(profile *accountV1.AccountProfile) (string, error) {
 }
 
 // ProfileFromToken takes an encoded auth token and returns the account profile
-func ProfileFromToken(token string) (*accountV1.AccountProfile, error) {
+func ProfileFromToken(token string) (*account.AccountProfile, error) {
 	tb, err := base64.RawURLEncoding.DecodeString(token)
 	if err != nil {
 		return nil, err
 	}
 
-	profile := &accountV1.AccountProfile{}
+	profile := &account.AccountProfile{}
 
 	err = proto.Unmarshal(tb, profile)
 

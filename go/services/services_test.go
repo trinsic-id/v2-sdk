@@ -3,12 +3,12 @@ package services
 import (
 	"context"
 	"fmt"
-	accountV1 "github.com/trinsic-id/sdk/go/proto/account/v1"
-	optionsV1 "github.com/trinsic-id/sdk/go/proto/options/v1"
-	providerV1 "github.com/trinsic-id/sdk/go/proto/provider/v1"
-	trustregistryV1 "github.com/trinsic-id/sdk/go/proto/trustregistry/v1"
-	walletV1 "github.com/trinsic-id/sdk/go/proto/universalwallet/v1"
-	credentialsV1 "github.com/trinsic-id/sdk/go/proto/verifiablecredentials/v1"
+	account "github.com/trinsic-id/sdk/go/proto/account/v1"
+	options "github.com/trinsic-id/sdk/go/proto/options/v1"
+	provider "github.com/trinsic-id/sdk/go/proto/provider/v1"
+	trustregistry "github.com/trinsic-id/sdk/go/proto/trustregistry/v1"
+	wallet "github.com/trinsic-id/sdk/go/proto/universalwallet/v1"
+	credential "github.com/trinsic-id/sdk/go/proto/verifiablecredentials/v1"
 	"io/ioutil"
 	"path/filepath"
 	"runtime"
@@ -39,7 +39,7 @@ func TestServiceOptions(t *testing.T) {
 	opts, err := NewServiceOptions()
 	assert.Nil(err)
 
-	prodOpts := &Options{ServiceOptions: &optionsV1.ServiceOptions{}}
+	prodOpts := &Options{ServiceOptions: &options.ServiceOptions{}}
 	err = WithProductionEnv()(prodOpts)
 	assert.Nil(err, "production options should return")
 
@@ -85,19 +85,19 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 	// SETUP ACTORS
 	// Create 3 different profiles for each participant in the scenario
 	// setupActors() {
-	allison, _, err := accountService.SignIn(context.Background(), &accountV1.SignInRequest{})
+	allison, _, err := accountService.SignIn(context.Background(), &account.SignInRequest{})
 	failError(t, "error creating profile", err)
 	if !assert2.NotNil(allison) {
 		return
 	}
 
-	clinic, _, err := accountService.SignIn(context.Background(), &accountV1.SignInRequest{})
+	clinic, _, err := accountService.SignIn(context.Background(), &account.SignInRequest{})
 	failError(t, "error creating profile", err)
 	if !assert2.NotNil(clinic) {
 		return
 	}
 
-	airline, _, err := accountService.SignIn(context.Background(), &accountV1.SignInRequest{})
+	airline, _, err := accountService.SignIn(context.Background(), &account.SignInRequest{})
 	failError(t, "error creating profile", err)
 	if !assert2.NotNil(airline) {
 		return
@@ -126,15 +126,15 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 
 	credentialService.SetToken(clinic)
 	// issueCredentialSample() {
-	credential, err := credentialService.IssueCredential(context.Background(), &credentialsV1.IssueRequest{DocumentJson: string(fileContent)})
+	credentialResponse, err := credentialService.IssueCredential(context.Background(), &credential.IssueRequest{DocumentJson: string(fileContent)})
 	// }
 	failError(t, "error issuing credential", err)
-	fmt.Printf("Credential:%s\n", credential)
+	fmt.Printf("Credential:%s\n", credentialResponse)
 	// }
 
 	// sendCredential() {
-	err = credentialService.Send(context.Background(), &credentialsV1.SendRequest{DocumentJson: credential.SignedDocumentJson,
-		DeliveryMethod: &credentialsV1.SendRequest_Email{Email: "example@trinsic.id"}})
+	err = credentialService.Send(context.Background(), &credential.SendRequest{DocumentJson: credentialResponse.SignedDocumentJson,
+		DeliveryMethod: &credential.SendRequest_Email{Email: "example@trinsic.id"}})
 	// }
 	// We ignore errors because we don't expect this email account to exist.
 	err = nil
@@ -145,17 +145,17 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 	walletService.SetToken(allison)
 	failError(t, "error setting profile", err)
 	// insertItemWallet() {
-	itemID, err := walletService.InsertItem(context.Background(), &walletV1.InsertItemRequest{ItemJson: credential.SignedDocumentJson})
+	itemID, err := walletService.InsertItem(context.Background(), &wallet.InsertItemRequest{ItemJson: credentialResponse.SignedDocumentJson})
 	// }
 	failError(t, "error inserting item", err)
 	fmt.Println("item id", itemID)
 	// }
 
 	// searchWalletBasic() {
-	items, err := walletService.Search(context.Background(), &walletV1.SearchRequest{})
+	items, err := walletService.Search(context.Background(), &wallet.SearchRequest{})
 	// }
 	// searchWalletSQL() {
-	items2, err := walletService.Search(context.Background(), &walletV1.SearchRequest{Query: "SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'"})
+	items2, err := walletService.Search(context.Background(), &wallet.SearchRequest{Query: "SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'"})
 	// }
 	if items != nil && items2 != nil {
 	}
@@ -171,9 +171,9 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 	fileContent2, err := ioutil.ReadFile(GetVaccineCertFramePath())
 	failError(t, "error reading file", err)
 
-	req := &credentialsV1.CreateProofRequest{
+	req := &credential.CreateProofRequest{
 		RevealDocumentJson: string(fileContent2),
-		Proof:              &credentialsV1.CreateProofRequest_ItemId{ItemId: itemID},
+		Proof:              &credential.CreateProofRequest_ItemId{ItemId: itemID},
 	}
 
 	credentialService.SetToken(allison)
@@ -190,7 +190,7 @@ func TestVaccineCredentialsDemo(t *testing.T) {
 	walletService.SetToken(airline)
 	failError(t, "error setting profile", err)
 	// verifyProof() {
-	valid, err := credentialService.VerifyProof(context.Background(), &credentialsV1.VerifyProofRequest{ProofDocumentJson: credential.SignedDocumentJson})
+	valid, err := credentialService.VerifyProof(context.Background(), &credential.VerifyProofRequest{ProofDocumentJson: credentialResponse.SignedDocumentJson})
 	// }
 	failError(t, "error verifying proof", err)
 	fmt.Println("Validation result", valid)
@@ -219,7 +219,7 @@ func TestTrustRegistryDemo(t *testing.T) {
 	frameworkURI := fmt.Sprintf("https://example.com/%s", uuid.New())
 
 	// registerGovernanceFramework() {
-	newFramework, err := service.RegisterGovernanceFramework(context.Background(), &trustregistryV1.AddFrameworkRequest{
+	newFramework, err := service.RegisterGovernanceFramework(context.Background(), &trustregistry.AddFrameworkRequest{
 		GovernanceFrameworkUri: frameworkURI,
 		Name:                   fmt.Sprintf("Example Framework - %s", uuid.New()),
 	})
@@ -229,10 +229,10 @@ func TestTrustRegistryDemo(t *testing.T) {
 	}
 
 	// registerMemberSample() {
-	registerMemberResponse, err := service.RegisterMember(context.Background(), &trustregistryV1.RegisterMemberRequest{
+	registerMemberResponse, err := service.RegisterMember(context.Background(), &trustregistry.RegisterMemberRequest{
 		FrameworkId: newFramework.Id,
 		SchemaUri:   schemaUri,
-		Member:      &trustregistryV1.RegisterMemberRequest_DidUri{DidUri: didURI},
+		Member:      &trustregistry.RegisterMemberRequest_DidUri{DidUri: didURI},
 	})
 	// }
 	if !assert2.Nil(err) {
@@ -240,16 +240,16 @@ func TestTrustRegistryDemo(t *testing.T) {
 	}
 
 	// getMembershipStatus() {
-	getMembershipStatusResponse, err := service.GetMembershipStatus(context.Background(), &trustregistryV1.GetMembershipStatusRequest{
+	getMembershipStatusResponse, err := service.GetMembershipStatus(context.Background(), &trustregistry.GetMembershipStatusRequest{
 		GovernanceFrameworkUri: frameworkURI,
-		Member:                 &trustregistryV1.GetMembershipStatusRequest_DidUri{DidUri: didURI},
+		Member:                 &trustregistry.GetMembershipStatusRequest_DidUri{DidUri: didURI},
 		SchemaUri:              schemaUri,
 	})
 	// }
 	if !assert2.Nil(err) {
 		return
 	}
-	assert2.Equal(trustregistryV1.RegistrationStatus_CURRENT, getMembershipStatusResponse.Status, "Member status should be current")
+	assert2.Equal(trustregistry.RegistrationStatus_CURRENT, getMembershipStatusResponse.Status, "Member status should be current")
 
 	// searchTrustRegistry() {
 	ecosystemList, err := service.SearchRegistry(context.Background(), nil)
@@ -261,7 +261,7 @@ func TestTrustRegistryDemo(t *testing.T) {
 	assert2.NotEmpty(ecosystemList)
 
 	// unregisterIssuer() {
-	unregisterMemberResponse, err := service.UnregisterMember(context.Background(), &trustregistryV1.UnregisterMemberRequest{
+	unregisterMemberResponse, err := service.UnregisterMember(context.Background(), &trustregistry.UnregisterMemberRequest{
 		SchemaUri:   schemaUri,
 		FrameworkId: newFramework.Id,
 	})
@@ -284,7 +284,7 @@ func createAccountAndSignIn(t *testing.T) (*assert.Assertions, string, error) {
 	if !assert2.Nil(err) {
 		return assert2, "", err
 	}
-	authtoken, _, err := accountService.SignIn(context.Background(), &accountV1.SignInRequest{})
+	authtoken, _, err := accountService.SignIn(context.Background(), &account.SignInRequest{})
 	if !assert2.Nil(err) {
 		fmt.Println(err)
 		return assert2, "", err
@@ -303,7 +303,7 @@ func createRandomEcosystem() error {
 		return err
 	}
 
-	_, err = ps.CreateEcosystem(context.Background(), &providerV1.CreateEcosystemRequest{Name: "test-sdk-" + uuid.New().String()})
+	_, err = ps.CreateEcosystem(context.Background(), &provider.CreateEcosystemRequest{Name: "test-sdk-" + uuid.New().String()})
 
 	return err
 }
@@ -324,7 +324,7 @@ func TestEcosystemDemo(t *testing.T) {
 	}
 
 	// createEcosystem() {
-	actualCreate, err := service.CreateEcosystem(context.Background(), &providerV1.CreateEcosystemRequest{
+	actualCreate, err := service.CreateEcosystem(context.Background(), &provider.CreateEcosystemRequest{
 		Description: "My ecosystem",
 		Uri:         "https://example.com",
 	})
@@ -338,14 +338,14 @@ func TestEcosystemDemo(t *testing.T) {
 
 	// inviteParticipant() {
 	inviteResponse, err := service.InviteParticipant(context.Background(),
-		&providerV1.InviteRequest{Participant: providerV1.ParticipantType_participant_type_individual,
-			Details: &accountV1.AccountDetails{Email: "example@trinsic.id"}})
+		&provider.InviteRequest{Participant: provider.ParticipantType_participant_type_individual,
+			Details: &account.AccountDetails{Email: "example@trinsic.id"}})
 	// }
 	if inviteResponse == nil {
-		inviteResponse = &providerV1.InviteResponse{InvitationId: "NA"}
+		inviteResponse = &provider.InviteResponse{InvitationId: "NA"}
 	}
 	// invitationStatus() {
-	inviteStatus, err := service.InvitationStatus(context.Background(), &providerV1.InvitationStatusRequest{InvitationId: inviteResponse.InvitationId})
+	inviteStatus, err := service.InvitationStatus(context.Background(), &provider.InvitationStatusRequest{InvitationId: inviteResponse.InvitationId})
 	// }
 	if inviteStatus != nil {
 	}

@@ -1,7 +1,7 @@
 package services
 
 import (
-	optionsV1 "github.com/trinsic-id/sdk/go/proto/options/v1"
+	options "github.com/trinsic-id/sdk/go/proto/options/v1"
 	"os"
 	"strconv"
 	"strings"
@@ -11,14 +11,14 @@ import (
 
 //Options for configuring the sdk
 type Options struct {
-	ServiceOptions  *optionsV1.ServiceOptions
+	ServiceOptions  *options.ServiceOptions
 	GrpcDialOptions []grpc.DialOption
 }
 
 // NewServiceOptions returns a service options configuration with the provided options set
 func NewServiceOptions(opts ...Option) (*Options, error) {
 	options := &Options{
-		ServiceOptions: &optionsV1.ServiceOptions{
+		ServiceOptions: &options.ServiceOptions{
 			DefaultEcosystem: "default",
 		},
 	}
@@ -73,7 +73,7 @@ func WithDefaultEcosystem(ecosystemID string) Option {
 }
 
 // WithOptions will replace the current options with the one provided
-func WithOptions(serviceOptions *optionsV1.ServiceOptions) Option {
+func WithOptions(serviceOptions *options.ServiceOptions) Option {
 	return func(s *Options) error {
 		s.ServiceOptions.AuthToken = serviceOptions.AuthToken
 		s.ServiceOptions.ServerPort = serviceOptions.ServerPort
