@@ -1849,7 +1849,7 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">insert_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">wallet_service</span><span class="o">.</span><span class="n">insert_item</span><span class="p">(</span>
-    <span class="n">request</span><span class="o">=</span><span class="n">InsertItemRequest</span><span class="p">(</span><span class="n">item_json</span><span class="o">=</span><span class="n">credential</span><span class="p">)</span>
+    <span class="n">request</span><span class="o">=</span><span class="n">InsertItemRequest</span><span class="p">(</span><span class="n">item_json</span><span class="o">=</span><span class="n">credential</span><span class="p">,</span> <span class="n">item_type</span><span class="o">=</span><span class="s2">&quot;VerifiableCredential&quot;</span><span class="p">)</span>
 <span class="p">)</span>
 </code></pre></div>
 </div>
@@ -1948,7 +1948,7 @@ This approach allows us to give developers full control over how data is retriev
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">wallet_items2</span> <span class="o">=</span> <span class="k">await</span> <span class="n">wallet_service</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="n">wallet_items</span> <span class="o">=</span> <span class="k">await</span> <span class="n">wallet_service</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
     <span class="n">request</span><span class="o">=</span><span class="n">SearchRequest</span><span class="p">(</span>
         <span class="n">query</span><span class="o">=</span><span class="s2">&quot;SELECT c.id, c.type, c.data FROM c WHERE c.type = &#39;VerifiableCredential&#39;&quot;</span>
     <span class="p">)</span>
