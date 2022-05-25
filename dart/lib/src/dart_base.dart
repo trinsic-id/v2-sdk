@@ -17,7 +17,8 @@ class AccountService extends ServiceBase {
   late AccountClient client;
 
   AccountService(ServiceOptions? serverOptions) : super(serverOptions) {
-    client = AccountClient(super.channel, interceptors: [MetadataInterceptor(this)]);
+    client =
+        AccountClient(super.channel, interceptors: [MetadataInterceptor(this)]);
   }
 
   Future<String> signIn({SignInRequest? request}) async {
@@ -89,7 +90,8 @@ class CredentialService extends ServiceBase {
   late VerifiableCredentialClient client;
 
   CredentialService(ServiceOptions? serverOptions) : super(serverOptions) {
-    client = VerifiableCredentialClient(super.channel, interceptors: [MetadataInterceptor(this)]);
+    client = VerifiableCredentialClient(super.channel,
+        interceptors: [MetadataInterceptor(this)]);
   }
 
   Future<IssueResponse> issueCredential(IssueRequest request) async {
@@ -127,7 +129,8 @@ class CredentialTemplateService extends ServiceBase {
 
   CredentialTemplateService(ServiceOptions? serverOptions)
       : super(serverOptions) {
-    client = CredentialTemplatesClient(super.channel, interceptors: [MetadataInterceptor(this)]);
+    client = CredentialTemplatesClient(super.channel,
+        interceptors: [MetadataInterceptor(this)]);
   }
 
   Future<CreateCredentialTemplateResponse> create(
@@ -160,7 +163,8 @@ class ProviderService extends ServiceBase {
   late ProviderClient client;
 
   ProviderService(ServiceOptions? serverOptions) : super(serverOptions) {
-    client = ProviderClient(super.channel, interceptors: [MetadataInterceptor(this)]);
+    client = ProviderClient(super.channel,
+        interceptors: [MetadataInterceptor(this)]);
   }
 
   Future<InviteResponse> invite(InviteRequest request) async {
@@ -173,7 +177,7 @@ class ProviderService extends ServiceBase {
   }
 
   Future<CreateEcosystemResponse> createEcosystem(
-  {CreateEcosystemRequest? request}) async {
+      {CreateEcosystemRequest? request}) async {
     request = request ?? CreateEcosystemRequest();
     return await client.createEcosystem(request);
   }
@@ -183,7 +187,8 @@ class TrustRegistryService extends ServiceBase {
   late TrustRegistryClient client;
 
   TrustRegistryService(ServiceOptions? serverOptions) : super(serverOptions) {
-    client = TrustRegistryClient(super.channel, interceptors: [MetadataInterceptor(this)]);
+    client = TrustRegistryClient(super.channel,
+        interceptors: [MetadataInterceptor(this)]);
   }
 
   Future<AddFrameworkResponse> registerGovernanceFramework(
@@ -228,7 +233,8 @@ class WalletService extends ServiceBase {
   late UniversalWalletClient client;
 
   WalletService(ServiceOptions? serverOptions) : super(serverOptions) {
-    client = UniversalWalletClient(super.channel, interceptors: [MetadataInterceptor(this)]);
+    client = UniversalWalletClient(super.channel,
+        interceptors: [MetadataInterceptor(this)]);
   }
 
   Future<SearchResponse> search(SearchRequest request) async {

@@ -1,5 +1,6 @@
 import 'package:test/test.dart';
 import '../example/vaccine_example.dart';
+import '../example/ecosystem_example.dart';
 
 void main() {
   group('Dart Examples', () {
@@ -8,7 +9,10 @@ void main() {
     });
 
     test('Vaccine Demo', () async {
-      await run();
+      await runVaccineDemo();
+    });
+    test('Ecosystem Demo', () async {
+      await runEcosystemDemo();
     });
   });
 }

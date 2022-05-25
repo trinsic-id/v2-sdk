@@ -23,24 +23,20 @@ class MetadataInterceptor extends ClientInterceptor {
   }
 
   FutureOr<void> addMetadataProvider(Map<String, String> metadata, String uri,
-      $pb.GeneratedMessage request) async {
-  }
+      $pb.GeneratedMessage request) async {}
 
   @override
-  ResponseFuture<R> interceptUnary<Q, R>(ClientMethod<Q, R> method, Q request, CallOptions options, invoker) {
-
+  ResponseFuture<R> interceptUnary<Q, R>(
+      ClientMethod<Q, R> method, Q request, CallOptions options, invoker) {
     FutureOr<void> _provider(Map<String, String> metadata, String uri) async {
       if (!skipRoutes.any((element) => element == method.path)) {
-        metadata['authorization'] = serviceContext.buildMetadata(request as $pb.GeneratedMessage);
+        metadata['authorization'] =
+            serviceContext.buildMetadata(request as $pb.GeneratedMessage);
       }
     }
 
-    return super.interceptUnary(
-        method,
-        request,
-        options.mergedWith(CallOptions(providers: [_provider])),
-        invoker
-    );
+    return super.interceptUnary(method, request,
+        options.mergedWith(CallOptions(providers: [_provider])), invoker);
   }
 }
 

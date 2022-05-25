@@ -21,7 +21,7 @@ String vaccineCertFramePath() {
       path.join(baseDataPath(), "vaccination-certificate-frame.jsonld"));
 }
 
-Future run() async {
+Future runVaccineDemo() async {
   // createAccountService() {
   var accountService = AccountService(trinsicConfig());
   var account = await accountService.signIn();
@@ -66,8 +66,8 @@ Future run() async {
   var credentialJson = await vaccineCertFile.readAsString();
 
   // issueCredential() {
-  var issueResponse = await credentialService.issueCredential(
-      IssueRequest(documentJson: credentialJson));
+  var issueResponse = await credentialService
+      .issueCredential(IssueRequest(documentJson: credentialJson));
   // }
   var credential = issueResponse.signedDocumentJson;
   print("Credential: $credential");
@@ -78,8 +78,8 @@ Future run() async {
   // Alice stores the credential in her cloud wallet.
   walletService.serviceOptions.authToken = allison;
   // insertItemWallet() {
-  var insertResponse = await walletService.insertItem(
-      InsertItemRequest(itemJson: credential));
+  var insertResponse =
+      await walletService.insertItem(InsertItemRequest(itemJson: credential));
   // }
   var itemId = insertResponse.itemId;
   // }
@@ -94,7 +94,8 @@ Future run() async {
   var proofRequestJson = await File(vaccineCertFramePath()).readAsString();
 
   // createProof() {
-  var proofResponse = await credentialService.createProof(CreateProofRequest(revealDocumentJson: proofRequestJson, itemId: itemId));
+  var proofResponse = await credentialService.createProof(
+      CreateProofRequest(revealDocumentJson: proofRequestJson, itemId: itemId));
   // }
   var credentialProof = proofResponse.proofDocumentJson;
   print("Proof: $credentialProof");
@@ -105,7 +106,8 @@ Future run() async {
   credentialService.serviceOptions.authToken = airline;
   walletService.serviceOptions.authToken = airline;
   // verifyProof() {
-  var verifyResult = await credentialService.verifyProof(VerifyProofRequest(proofDocumentJson: credentialProof));
+  var verifyResult = await credentialService
+      .verifyProof(VerifyProofRequest(proofDocumentJson: credentialProof));
   // }
   var valid = verifyResult.isValid;
   print("Verification result: $valid");
@@ -116,5 +118,5 @@ Future run() async {
 }
 
 void main() async {
-  await run();
+  await runVaccineDemo();
 }
