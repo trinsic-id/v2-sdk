@@ -1,15 +1,13 @@
-import 'dart:convert';
-
 import 'package:test/test.dart';
-import 'package:trinsic_dart/src/proto/services/account/v1/account.pbgrpc.dart';
 import 'package:trinsic_dart/src/proto/services/trust-registry/v1/trust-registry.pbgrpc.dart';
 import 'package:trinsic_dart/src/trinsic_util.dart';
 import 'package:trinsic_dart/trinsic.dart';
+
+import '../example/ecosystem_example.dart';
 import '../example/provider_example.dart';
 import '../example/templates_demo.dart';
 import '../example/trustregistry_demo.dart';
 import '../example/vaccine_example.dart';
-import '../example/ecosystem_example.dart';
 
 void main() {
   group('Dart Examples', () {
@@ -36,7 +34,8 @@ void main() {
     test('Trust Registry Service Input Validation', () async {
       var trService = TrustRegistryService(trinsicConfig());
       try {
-        await trService.registerGovernanceFramework(AddFrameworkRequest(governanceFrameworkUri: "", description: "invalid framework"));
+        await trService.registerGovernanceFramework(AddFrameworkRequest(
+            governanceFrameworkUri: "", description: "invalid framework"));
         assert(false);
       } catch (e) {
         // This is expected
@@ -55,7 +54,8 @@ void main() {
       // protectUnprotectProfile() {
       var securityCode = "1234";
       var myProtectedProfile = AccountService.protect(myProfile, securityCode);
-      var myUnprotectedProfile = AccountService.unprotect(myProtectedProfile, securityCode);
+      var myUnprotectedProfile =
+          AccountService.unprotect(myProtectedProfile, securityCode);
       // }
       try {
         await printGetInfo(accountService, myProtectedProfile);

@@ -11,32 +11,32 @@ Future runTrustRegistryDemo() async {
 
   var uuid = Uuid();
 
-  var https_schema_org = "https://schema.org/Card";
-  var https_example_com = "https://example.com/${uuid.v4()}";
-  var did_example_test = "did:example:test";
-  var framework_name = "Example Framework: ${uuid.v4()}";
+  var httpsSchemaOrg = "https://schema.org/Card";
+  var httpsExampleCom = "https://example.com/${uuid.v4()}";
+  var didExampleTest = "did:example:test";
+  var frameworkName = "Example Framework: ${uuid.v4()}";
 
   // registerGovernanceFramework() {
   var registerFrameworkResponse = await trustRegistryService
       .registerGovernanceFramework(AddFrameworkRequest(
           description: "Demo framework",
-          name: framework_name,
-          governanceFrameworkUri: https_example_com));
+          name: frameworkName,
+          governanceFrameworkUri: httpsExampleCom));
   // }
 
   // registerIssuerSample() {
   await trustRegistryService.registerMember(RegisterMemberRequest(
-      didUri: did_example_test,
+      didUri: didExampleTest,
       frameworkId: registerFrameworkResponse.id,
-      schemaUri: https_schema_org));
+      schemaUri: httpsSchemaOrg));
   // }
 
   // checkIssuerStatus() {
   var checkResponse = await trustRegistryService.getMembershipStatus(
       GetMembershipStatusRequest(
-          didUri: did_example_test,
-          governanceFrameworkUri: https_example_com,
-          schemaUri: https_schema_org));
+          didUri: didExampleTest,
+          governanceFrameworkUri: httpsExampleCom,
+          schemaUri: httpsSchemaOrg));
   // }
 
   assert(checkResponse.status == RegistrationStatus.CURRENT);
@@ -50,8 +50,8 @@ Future runTrustRegistryDemo() async {
   var unregisterIssuerResponse = await trustRegistryService.unregisterMember(
       UnregisterMemberRequest(
           frameworkId: registerFrameworkResponse.id,
-          schemaUri: https_schema_org,
-          didUri: did_example_test));
+          schemaUri: httpsSchemaOrg,
+          didUri: didExampleTest));
   // }
 }
 
