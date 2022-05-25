@@ -215,7 +215,7 @@ func TestTrustRegistryDemo(t *testing.T) {
 
 	// register issuer
 	didURI := "did:example:test"
-	schemaUri := "https://schema.org/Card"
+	schemaURI := "https://schema.org/Card"
 	frameworkURI := fmt.Sprintf("https://example.com/%s", uuid.New())
 
 	// registerGovernanceFramework() {
@@ -231,7 +231,7 @@ func TestTrustRegistryDemo(t *testing.T) {
 	// registerMemberSample() {
 	registerMemberResponse, err := service.RegisterMember(context.Background(), &trustregistry.RegisterMemberRequest{
 		FrameworkId: newFramework.Id,
-		SchemaUri:   schemaUri,
+		SchemaUri:   schemaURI,
 		Member:      &trustregistry.RegisterMemberRequest_DidUri{DidUri: didURI},
 	})
 	// }
@@ -243,7 +243,7 @@ func TestTrustRegistryDemo(t *testing.T) {
 	getMembershipStatusResponse, err := service.GetMembershipStatus(context.Background(), &trustregistry.GetMembershipStatusRequest{
 		GovernanceFrameworkUri: frameworkURI,
 		Member:                 &trustregistry.GetMembershipStatusRequest_DidUri{DidUri: didURI},
-		SchemaUri:              schemaUri,
+		SchemaUri:              schemaURI,
 	})
 	// }
 	if !assert2.Nil(err) {
@@ -262,7 +262,7 @@ func TestTrustRegistryDemo(t *testing.T) {
 
 	// unregisterIssuer() {
 	unregisterMemberResponse, err := service.UnregisterMember(context.Background(), &trustregistry.UnregisterMemberRequest{
-		SchemaUri:   schemaUri,
+		SchemaUri:   schemaURI,
 		FrameworkId: newFramework.Id,
 	})
 	// }
