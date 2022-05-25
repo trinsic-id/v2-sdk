@@ -13,8 +13,8 @@ Languages:
 - [ ] .NET
 - [ ] Go
 - [ ] Java
-- [ ] Node
+- [ ] Dart
 - [ ] Python
 - [ ] Ruby
 - [ ] Swift
-- [ ] Web
+- [ ] Typescript
