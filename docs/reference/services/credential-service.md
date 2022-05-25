@@ -38,7 +38,7 @@ Then you can supply it to SDK:
 === "Python"
     <!--codeinclude-->
     ```python
-    [Issue Credential](../../../python/samples/vaccine_demo.py) inside_block:issueCredential
+    [Issue Credential](../../../python/samples/credential_demo.py) inside_block:issueCredential
     ```
     <!--/codeinclude-->
 
@@ -267,7 +267,7 @@ Then you can supply it to SDK:
 === "Python"
     <!--codeinclude-->
     ```python
-    [CreateProof](../../../python/samples/vaccine_demo.py) inside_block:createProof
+    [CreateProof](../../../python/samples/credential_demo.py) inside_block:createProof
     ```
     <!--/codeinclude-->
 
@@ -322,7 +322,7 @@ Then you can supply it to SDK:
 === "Python"
     <!--codeinclude-->
     ```python
-    [VerifyProof](../../../python/samples/vaccine_demo.py) inside_block:verifyProof
+    [VerifyProof](../../../python/samples/credential_demo.py) inside_block:verifyProof
     ```
     <!--/codeinclude-->
 
@@ -392,7 +392,7 @@ Then you can supply it to SDK:
 === "Python"
     <!--codeinclude-->
     ```python
-    [SendRequest](../../../python/samples/vaccine_demo.py) inside_block:sendCredential
+    [SendRequest](../../../python/samples/credential_demo.py) inside_block:sendCredential
     ```
     <!--/codeinclude-->
 
