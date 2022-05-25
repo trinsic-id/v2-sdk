@@ -4,7 +4,7 @@
 
 ```bash
 pip install trinsic-sdk
-python -m trinsic-sdk
+python -m trinsic
 ```
 
 Installs and verifies the installation. You should receive a console

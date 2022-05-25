@@ -75,9 +75,13 @@ This tutorial is meant to share the concepts of verifiable credentials, so feel 
 
     In this project, we'll be following along the [`java/src/test/java/trinsic/VaccineDemo.java`](https://github.com/trinsic-id/sdk/blob/main/java/src/test/java/trinsic/VaccineDemo.java) in our [SDK repository](https://github.com/trinsic-id/sdk)
 
-=== "Ruby"
-    - [Install Instructions](../ruby/index.md) 
-    
+
+    <!-- Ruby commented out because we don't have a Ruby sample for the rest of this yet
+    === "Ruby"
+        - [Install Instructions](../ruby/index.md) 
+    -->
+
+
 === "Go"
     - [Install Instructions](../go/index.md)
    
@@ -110,7 +114,7 @@ The first step is to create an [ecosystem](/learn/ecosystems/), within which eve
 === "Python"
     <!--codeinclude-->
     ```python
-    [Create Ecosystem](../../python/samples/ecosystem_demo.py) inside_block:createEcosystem
+    [Create Ecosystem](../../python/samples/vaccine_demo.py) inside_block:createEcosystem
     ```
     <!--/codeinclude-->
 
@@ -339,7 +343,7 @@ Templates are simply a list of the fields that a credential can have.
 === "Python"
     <!--codeinclude-->
     ```python
-    [Create Template](../../python/samples/templates_demo.py) inside_block:createTemplate
+    [Create Template](../../python/samples/vaccine_demo.py) inside_block:createTemplate
     ```
     <!--/codeinclude-->
 
@@ -408,14 +412,6 @@ To issue a vaccine certificate, we'll use the template we created in the last st
     <!--/codeinclude-->
 
 === "Python"
-    We specify links to the jsonld files:
-    <!--codeinclude-->
-    ```python
-    [Data Paths](../../python/samples/vaccine_demo.py) inside_block:pathData
-    ```
-    <!--/codeinclude-->
-
-    Let's set the active profile to the clinic, and call the issuance endpoint
     <!--codeinclude-->
     ```python
     [Issue Credential](../../python/samples/vaccine_demo.py) inside_block:issueCredential
@@ -654,7 +650,7 @@ Once the airline receives the proof, they can now verify it to ensure its authen
 
 
 === "Python"
-    This sample is available as [`ecosystem_demo.py`](https://github.com/trinsic-id/sdk/blob/main/python/samples/ecosystem_demo.py)
+    This sample is available as [`vaccine_demo.py`](https://github.com/trinsic-id/sdk/blob/main/python/samples/vaccine_demo.py)
 
 === "Java"
     This sample is available in the [Java](https://github.com/trinsic-id/sdk/tree/main/java/src/test/java) directory.
