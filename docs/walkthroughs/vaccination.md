@@ -103,7 +103,7 @@ The first step is to create an [ecosystem](/learn/ecosystems/), within which eve
 === "C#"
     <!--codeinclude-->
     ```csharp
-    [Create Ecosystem](../../dotnet/Tests/Tests.cs) inside_block:createEcosystem
+    [Create Ecosystem](../../dotnet/Tests/Samples/VaccineWalkthroughTests.cs) inside_block:createEcosystem
     ```
     <!--/codeinclude-->
 
@@ -242,17 +242,11 @@ The clinic's account will **issue** the credential, Allison's account will **hol
 === "C#"
     <!--codeinclude-->
     ```csharp
-    [Setup Wallets](../../dotnet/Tests/Tests.cs) inside_block:setupActors
+    [Setup Wallets](../../dotnet/Tests/Samples/VaccineWalkthroughTests.cs) inside_block:setupActors
     ```
     <!--/codeinclude-->
 
-    If you would like to save the account for future use, simply write the auth token to storage. Take care to store it in a secure location.
-
-    <!--codeinclude-->
-    ```csharp
-    [Save and Load Profile](../../dotnet/Tests/Tests.cs) inside_block:storeAndRecallProfile
-    ```
-    <!--/codeinclude-->
+    If you would like to save an account for future use, simply write the auth token to storage. Take care to store it in a secure location.
 
 === "Python"
     <!--codeinclude-->
@@ -261,13 +255,7 @@ The clinic's account will **issue** the credential, Allison's account will **hol
     ```
     <!--/codeinclude-->
 
-    If you would like to save the account for future use, simply write the auth token to storage. Take care to store it in a secure location.
-
-    <!--codeinclude-->
-    ```python
-    [Save and Load Profile](../../python/samples/vaccine_demo.py) inside_block:storeAndRecallProfile
-    ```
-    <!--/codeinclude-->
+    If you would like to save an account for future use, simply write the auth token to storage. Take care to store it in a secure location.
 
 === "Java"
     <!--codeinclude-->
@@ -276,13 +264,7 @@ The clinic's account will **issue** the credential, Allison's account will **hol
     ```
     <!--/codeinclude-->
 
-    If you would like to save the account for future use, simply write the auth token to storage. Take care to store it in a secure location.
-
-    <!--codeinclude-->
-    ```java
-    [Save and Load Profile](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:storeAndRecallProfile
-    ```
-    <!--/codeinclude-->
+    If you would like to save an account for future use, simply write the auth token to storage. Take care to store it in a secure location.
     
 === "Go"
     <!--codeinclude-->
@@ -291,13 +273,7 @@ The clinic's account will **issue** the credential, Allison's account will **hol
     ```
     <!--/codeinclude-->
 
-    If you would like to save the account for future use, simply write the auth token to storage. Take care to store it in a secure location.
-
-    <!--codeinclude-->
-    ```go
-    [Save and Load Profile](../../go/services/services_test.go) inside_block:storeAndRecallProfile
-    ```
-    <!--/codeinclude-->
+    If you would like to save an account for future use, simply write the auth token to storage. Take care to store it in a secure location.
 
 
 !!! note "Further Reading"
@@ -356,7 +332,7 @@ Templates are simply a list of the fields that a credential can have.
 === "C#"
     <!--codeinclude-->
     ```csharp
-    [Create Template](../../dotnet/Tests/Tests.cs) inside_block:createTemplate
+    [Create Template](../../dotnet/Tests/Samples/VaccineWalkthroughTests.cs) inside_block:createTemplate
     ```
     <!--/codeinclude-->
 
@@ -428,7 +404,7 @@ To issue a vaccine certificate, we'll use the template we created in the last st
 
 === "C#"
     <!--codeinclude-->
-    [C#](../../dotnet/Tests/Tests.cs) inside_block:issueCredential
+    [C#](../../dotnet/Tests/Samples/VaccineWalkthroughTests.cs) inside_block:issueCredential
     <!--/codeinclude-->
 
 === "Python"
@@ -519,7 +495,7 @@ Once Allison receives the credential, she or her wallet application can store it
 === "C#"
     <!--codeinclude-->
     ```csharp
-    [Store Credential](../../dotnet/Tests/Tests.cs) inside_block:storeCredential
+    [Store Credential](../../dotnet/Tests/Samples/VaccineWalkthroughTests.cs) inside_block:storeCredential
     ```
     <!--/codeinclude-->
 
@@ -576,7 +552,7 @@ Let's use the [CreateProof](../../reference/services/credential-service/#create-
 === "C#"
     <!--codeinclude-->
     ```csharp
-    [Share Credential](../../dotnet/Tests/Tests.cs) inside_block:shareCredential
+    [Share Credential](../../dotnet/Tests/Samples/VaccineWalkthroughTests.cs) inside_block:shareCredential
     ```
     <!--/codeinclude-->
 
@@ -634,7 +610,7 @@ Once the airline receives the proof, they can now verify it to ensure its authen
 === "C#"
     <!--codeinclude-->
     ```csharp
-    [Verify Credential](../../dotnet/Tests/Tests.cs) inside_block:verifyCredential
+    [Verify Credential](../../dotnet/Tests/Samples/VaccineWalkthroughTests.cs) inside_block:verifyCredential
     ```
     <!--/codeinclude-->
 
@@ -672,7 +648,7 @@ Once the airline receives the proof, they can now verify it to ensure its authen
     [web](https://github.com/trinsic-id/sdk/tree/main/web/test/VaccineDemoShared.ts)    
 
 === "C#"
-    This sample is available in our [dotnet](https://github.com/trinsic-id/sdk/blob/main/dotnet/Tests/Tests.cs#L42) directory. 
+    This sample is available in our [dotnet](https://github.com/trinsic-id/sdk/blob/main/dotnet/Tests/Samples/VaccineWalkthroughTests.cs) SDK repository. 
 
     <!-- TODO: include working replit embed -->
 
