@@ -75,9 +75,13 @@ This tutorial is meant to share the concepts of verifiable credentials, so feel 
 
     In this project, we'll be following along the [`java/src/test/java/trinsic/VaccineDemo.java`](https://github.com/trinsic-id/sdk/blob/main/java/src/test/java/trinsic/VaccineDemo.java) in our [SDK repository](https://github.com/trinsic-id/sdk)
 
-=== "Ruby"
-    - [Install Instructions](../ruby/index.md) 
-    
+
+    <!-- Ruby commented out because we don't have a Ruby sample for the rest of this yet
+    === "Ruby"
+        - [Install Instructions](../ruby/index.md) 
+    -->
+
+
 === "Go"
     - [Install Instructions](../go/index.md)
    
