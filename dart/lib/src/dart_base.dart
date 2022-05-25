@@ -217,7 +217,8 @@ class TrustRegistryService extends ServiceBase {
   }
 
   Future<SearchRegistryResponse> searchRegistry(
-      SearchRegistryRequest request) async {
+      {SearchRegistryRequest? request}) async {
+    request ??= SearchRegistryRequest();
     if (request.query == "") {
       request.query = "SELECT * FROM c OFFSET 0 LIMIT 100";
     }

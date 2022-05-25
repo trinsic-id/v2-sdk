@@ -17,7 +17,6 @@ from trinsic.proto.services.verifiablecredentials.v1 import (
     IssueFromTemplateRequest,
 )
 from trinsic.trinsic_util import trinsic_config
-from trinsic.wallet_service import WalletService
 
 
 async def templates_demo():
@@ -25,7 +24,6 @@ async def templates_demo():
     profile = await account_service.sign_in()
     template_service = TemplateService(server_config=trinsic_config(profile))
     credential_service = CredentialsService(server_config=trinsic_config(profile))
-    wallet_service = WalletService(server_config=trinsic_config(profile))
 
     # create example template
     # createTemplate() {
