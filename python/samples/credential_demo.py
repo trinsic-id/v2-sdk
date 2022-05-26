@@ -30,7 +30,7 @@ def _vaccine_cert_frame_path() -> str:
 
 async def credential_demo():
     config = trinsic_config()
-    
+
     account_service = AccountService(server_config=config)
     account = await account_service.sign_in()
 
@@ -41,7 +41,9 @@ async def credential_demo():
     ecosystem_id = ecosystem.ecosystem.id
 
     # Set service default ecosystem
-    provider_service.service_options.default_ecosystem = account_service.service_options.default_ecosystem = ecosystem_id
+    provider_service.service_options.default_ecosystem = (
+        account_service.service_options.default_ecosystem
+    ) = ecosystem_id
     config.default_ecosystem = ecosystem_id
 
     wallet_service = WalletService(server_config=config)
@@ -62,7 +64,9 @@ async def credential_demo():
     try:
         # sendCredential() {
         send_response = await credentials_service.send(
-            request=SendRequest(document_json=credential_json, email="example@trinsic.id")
+            request=SendRequest(
+                document_json=credential_json, email="example@trinsic.id"
+            )
         )
         # }
     except:

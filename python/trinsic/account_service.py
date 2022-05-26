@@ -114,7 +114,7 @@ class AccountService(ServiceBase):
     async def list_devices(self, *, request: ListDevicesRequest) -> ListDevicesResponse:
         return await self.client.list_devices(list_devices_request=request)
 
-    async def revoke_device(self, *, request: RevokeDeviceRequest) -> RevokeDeviceResponse:
-        return await self.client.revoke_device(
-            revoke_device_request=request
-        )
+    async def revoke_device(
+        self, *, request: RevokeDeviceRequest
+    ) -> RevokeDeviceResponse:
+        return await self.client.revoke_device(revoke_device_request=request)

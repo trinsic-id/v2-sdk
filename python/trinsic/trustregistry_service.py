@@ -48,9 +48,7 @@ class TrustRegistryService(ServiceBase):
         if governance_url.scheme and governance_url.netloc:
             return await self.client.add_framework(add_framework_request=request)
         else:
-            raise ValueError(
-                f"Invalid URI string={request.governance_framework_uri}"
-            )
+            raise ValueError(f"Invalid URI string={request.governance_framework_uri}")
 
     async def remove_governance_framework(
         self, *, request: RemoveFrameworkRequest
