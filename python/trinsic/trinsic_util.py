@@ -12,11 +12,10 @@ from grpclib.client import Channel
 from trinsic.proto.sdk.options.v1 import ServiceOptions
 
 
-def trinsic_config(*, auth_token: str = None, ecosystem_id: str = None) -> ServiceOptions:
+def trinsic_config(auth_token: str = None) -> ServiceOptions:
     """
     Test Server configuration - if environment variables aren't set, default to production
     Args:
-        ecosystem_id: ID of ecosystem to use by default
         auth_token: Existing auth token to use (instead of `clone_options_with_auth_token(trinsic_config(), auth_token)`)
     Returns:
         [ServiceOptions](/reference/proto/#serviceoptions)
@@ -24,7 +23,7 @@ def trinsic_config(*, auth_token: str = None, ecosystem_id: str = None) -> Servi
     endpoint = getenv("TEST_SERVER_ENDPOINT", "prod.trinsic.cloud")
     port = int(getenv("TEST_SERVER_PORT", 443))
     use_tls = bool(strtobool(getenv("TEST_SERVER_USE_TLS", "true")))
-    ecosystem = ecosystem_id or getenv("TEST_SERVER_ECOSYSTEM", "default")
+    ecosystem = getenv("TEST_SERVER_ECOSYSTEM", "default")
     return ServiceOptions(
         server_endpoint=endpoint,
         server_port=port,

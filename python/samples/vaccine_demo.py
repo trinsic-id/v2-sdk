@@ -159,9 +159,7 @@ async def do_template(template_service: TemplateService) -> TemplateData:
     template_id = template.data.id
     # }
 
-    assert template is not None
-    assert template.data is not None
-    assert template.data.id is not None
+    assert template_id is not None
     assert template.data.schema_uri is not None
 
     return template.data
