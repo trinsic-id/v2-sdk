@@ -363,7 +363,7 @@ Templates are simply a list of the fields that a credential can have.
 === "Go"
     <!--codeinclude-->
     ```go
-    [Create Template](../../go/services/credentialtemplate_service_test.go) inside_block:createTemplate
+    [Create Template](../../go/examples/vaccine_test.go) inside_block:createTemplate
     ```
     <!--/codeinclude-->
 

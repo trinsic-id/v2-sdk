@@ -12,7 +12,7 @@ import (
 	"testing"
 )
 
-func createTemplate(templateService services.CredentialTemplateService, t *testing.T) *template.TemplateData {
+func defineTemplate(templateService services.CredentialTemplateService, t *testing.T) *template.TemplateData {
 	// createTemplate() {
 	templateRequest := &template.CreateCredentialTemplateRequest{Name: "VaccinationCertificate", AllowAdditionalFields: false, Fields: make(map[string]*template.TemplateField)}
 	templateRequest.Fields["firstName"] = &template.TemplateField{Description: "First name of vaccine recipient"}
@@ -63,7 +63,7 @@ func TestVaccineDemo(t *testing.T) {
 
 	// Create a template
 	templateService.SetToken(clinic)
-	createdTemplate := createTemplate(templateService, t)
+	createdTemplate := defineTemplate(templateService, t)
 
 	// Create template values
 	// issueCredential() {
