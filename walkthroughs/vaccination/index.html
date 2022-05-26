@@ -1947,7 +1947,7 @@ journey
 <p>This tutorial is meant to share the concepts of verifiable credentials, so feel free to sit back and read through this without running any code. However, you can also follow along using one of our SDKs. </p>
 <!-- We've set up some environments to use on Repl.it. If your language of choice isn't supported on repl.it, you can also run locally by installing the SDK of your choice. -->
 
-<div class="tabbed-set tabbed-alternate" data-tabs="1:6"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Trinsic CLI</label><label for="__tabbed_1_2">Typescript</label><label for="__tabbed_1_3">C#</label><label for="__tabbed_1_4">Python</label><label for="__tabbed_1_5">Java</label><label for="__tabbed_1_6">Go</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:7"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><input id="__tabbed_1_7" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Trinsic CLI</label><label for="__tabbed_1_2">Typescript</label><label for="__tabbed_1_3">C#</label><label for="__tabbed_1_4">Python</label><label for="__tabbed_1_5">Java</label><label for="__tabbed_1_6">Go</label><label for="__tabbed_1_7">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ul>
@@ -1977,9 +1977,12 @@ journey
 <li><a href="/java/" target="_blank">Installation instructions</a> for Java.</li>
 </ul>
 <p>In this project, we'll be following along the <a href="https://github.com/trinsic-id/sdk/blob/main/java/src/test/java/trinsic/VaccineDemo.java"><code>java/src/test/java/trinsic/VaccineDemo.java</code></a> in our <a href="https://github.com/trinsic-id/sdk">SDK repository</a></p>
-<p>&lt;!-- Ruby commented out because we don't have a Ruby sample for the rest of this yet</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Ruby</label></div>
-<div class="tabbed-content">
+</div>
+<div class="tabbed-block">
+<ul>
+<li><a href="../../go/">Install Instructions</a></li>
+</ul>
+</div>
 <div class="tabbed-block">
 <ul>
 <li><a href="../../ruby/">Install Instructions</a> </li>
@@ -1987,19 +1990,10 @@ journey
 </div>
 </div>
 </div>
-<p>--&gt;</p>
-</div>
-<div class="tabbed-block">
-<ul>
-<li><a href="../../go/">Install Instructions</a></li>
-</ul>
-</div>
-</div>
-</div>
 <hr />
 <h2 id="create-an-ecosystem">Create an Ecosystem<a class="headerlink" href="#create-an-ecosystem" title="Permanent link">&para;</a></h2>
 <p>The first step is to create an <a href="/learn/ecosystems/">ecosystem</a>, within which everything else (wallets, templates, and credentials) will live.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:6"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><input id="__tabbed_3_5" name="__tabbed_3" type="radio" /><input id="__tabbed_3_6" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Trinsic CLI</label><label for="__tabbed_3_2">Typescript</label><label for="__tabbed_3_3">C#</label><label for="__tabbed_3_4">Python</label><label for="__tabbed_3_5">Java</label><label for="__tabbed_3_6">Go</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:7"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><input id="__tabbed_2_6" name="__tabbed_2" type="radio" /><input id="__tabbed_2_7" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Trinsic CLI</label><label for="__tabbed_2_2">Typescript</label><label for="__tabbed_2_3">C#</label><label for="__tabbed_2_4">Python</label><label for="__tabbed_2_5">Java</label><label for="__tabbed_2_6">Go</label><label for="__tabbed_2_7">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic provider create-ecosystem
@@ -2027,10 +2021,13 @@ journey
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">actualCreate</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">CreateEcosystem</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">CreateEcosystemRequest</span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">Description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My ecosystem&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">Uri</span><span class="p">:</span><span class="w">         </span><span class="s">&quot;https://example.com&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="p">})</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">ecosystem</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">providerService</span><span class="p">.</span><span class="nx">CreateEcosystem</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span><span class="w"></span>
+<span class="nx">ecosystemId</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ecosystem</span><span class="p">.</span><span class="nx">Ecosystem</span><span class="p">.</span><span class="nx">Id</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">ecosystem</span> <span class="o">=</span> <span class="n">provider_service</span><span class="o">.</span><span class="n">create_ecosystem</span>
+<span class="n">ecosystem_id</span> <span class="o">=</span> <span class="n">ecosystem</span><span class="o">.</span><span class="n">ecosystem</span><span class="o">.</span><span class="n">id</span>
 </code></pre></div>
 </div>
 </div>
@@ -2038,7 +2035,7 @@ journey
 <p>The response to this call contains the name and ID of your newly-created ecosystem; copy either of these down.</p>
 <h3 id="configure-sdk-for-created-ecosystem">Configure SDK for Created Ecosystem<a class="headerlink" href="#configure-sdk-for-created-ecosystem" title="Permanent link">&para;</a></h3>
 <p>Once we've created our ecosystem, we need to configure our SDK client (or CLI) to use it as the default ecosystem for all service calls in the rest of the walkthrough.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:6"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><input id="__tabbed_4_6" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Trinsic CLI</label><label for="__tabbed_4_2">Typescript</label><label for="__tabbed_4_3">C#</label><label for="__tabbed_4_4">Python</label><label for="__tabbed_4_5">Java</label><label for="__tabbed_4_6">Go</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:6"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><input id="__tabbed_3_5" name="__tabbed_3" type="radio" /><input id="__tabbed_3_6" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Trinsic CLI</label><label for="__tabbed_3_2">Typescript</label><label for="__tabbed_3_3">C#</label><label for="__tabbed_3_4">Python</label><label for="__tabbed_3_5">Java</label><label for="__tabbed_3_6">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic config default-ecosystem &quot;{ECOSYSTEM_NAME_OR_ID}&quot;
@@ -2103,7 +2100,7 @@ journey
 <p>We need to create Trinsic accounts for the participants in this credential exchange. Accounts and wallets can be considered interchangeably; all accounts have exactly one associated wallet.</p>
 <p>Accounts can be created with a single call; they're designed to minimize onboarding friction for your users.</p>
 <p>The clinic's account will <strong>issue</strong> the credential, Allison's account will <strong>hold</strong> it, and the airline's account will <strong>verify</strong> its contents.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:6"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><input id="__tabbed_5_4" name="__tabbed_5" type="radio" /><input id="__tabbed_5_5" name="__tabbed_5" type="radio" /><input id="__tabbed_5_6" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Trinsic CLI</label><label for="__tabbed_5_2">Typescript</label><label for="__tabbed_5_3">C#</label><label for="__tabbed_5_4">Python</label><label for="__tabbed_5_5">Java</label><label for="__tabbed_5_6">Go</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:7"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><input id="__tabbed_4_6" name="__tabbed_4" type="radio" /><input id="__tabbed_4_7" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Trinsic CLI</label><label for="__tabbed_4_2">Typescript</label><label for="__tabbed_4_3">C#</label><label for="__tabbed_4_4">Python</label><label for="__tabbed_4_5">Java</label><label for="__tabbed_4_6">Go</label><label for="__tabbed_4_7">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>The CLI offers an interactive way of creating wallets. For demo purposes, we'll create all three on the same machine.</p>
@@ -2125,8 +2122,6 @@ trinsic account login --name <span class="s2">&quot;Vaccination Clinic&quot;</sp
 <span class="kd">const</span><span class="w"> </span><span class="nx">airline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">signIn</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 <p>If you would like to save the account for future use, simply write the auth token to storage. Take care to store it in a secure location.</p>
-<!-- <code>javascript
-[Setup Wallets](../../web/test/VaccineDemoShared.ts) inside_block:storeAndRecallProfile</code> -->
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">accountService</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AccountService</span><span class="p">(</span><span class="n">_options</span><span class="p">);</span><span class="w"></span>
@@ -2154,25 +2149,19 @@ trinsic account login --name <span class="s2">&quot;Vaccination Clinic&quot;</sp
 <p>If you would like to save an account for future use, simply write the auth token to storage. Take care to store it in a secure location.</p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">allison</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">SignIn</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">account</span><span class="p">.</span><span class="nx">SignInRequest</span><span class="p">{})</span><span class="w"></span>
-<span class="nx">failError</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error creating profile&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
-<span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">NotNil</span><span class="p">(</span><span class="nx">allison</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-
-<span class="nx">clinic</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">SignIn</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">account</span><span class="p">.</span><span class="nx">SignInRequest</span><span class="p">{})</span><span class="w"></span>
-<span class="nx">failError</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error creating profile&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
-<span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">NotNil</span><span class="p">(</span><span class="nx">clinic</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-
-<span class="nx">airline</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">SignIn</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">account</span><span class="p">.</span><span class="nx">SignInRequest</span><span class="p">{})</span><span class="w"></span>
-<span class="nx">failError</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error creating profile&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
-<span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">NotNil</span><span class="p">(</span><span class="nx">airline</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Create an account for each participant in the scenario</span><span class="w"></span>
+<span class="nx">allison</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">SignIn</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span><span class="w"></span>
+<span class="nx">airline</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">SignIn</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span><span class="w"></span>
+<span class="nx">clinic</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">SignIn</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>If you would like to save an account for future use, simply write the auth token to storage. Take care to store it in a secure location.</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># Create an account for each participant in the scenario</span>
+<span class="n">allison</span> <span class="o">=</span> <span class="n">account_service</span><span class="o">.</span><span class="n">sign_in</span>
+<span class="n">clinic</span> <span class="o">=</span> <span class="n">account_service</span><span class="o">.</span><span class="n">sign_in</span>
+<span class="n">airline</span> <span class="o">=</span> <span class="n">account_service</span><span class="o">.</span><span class="n">sign_in</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2188,11 +2177,11 @@ trinsic account login --name <span class="s2">&quot;Vaccination Clinic&quot;</sp
 <h2 id="define-a-template">Define a Template<a class="headerlink" href="#define-a-template" title="Permanent link">&para;</a></h2>
 <p>Before we can issue a credential, we need to create a <a href="/learn/templates/" target:_blank="target:_blank">Template</a> for it. </p>
 <p>Templates are simply a list of the fields that a credential can have.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:6"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><input id="__tabbed_6_6" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Trinsic CLI</label><label for="__tabbed_6_2">Typescript</label><label for="__tabbed_6_3">C#</label><label for="__tabbed_6_4">Python</label><label for="__tabbed_6_5">Java</label><label for="__tabbed_6_6">Go</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:7"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><input id="__tabbed_5_4" name="__tabbed_5" type="radio" /><input id="__tabbed_5_5" name="__tabbed_5" type="radio" /><input id="__tabbed_5_6" name="__tabbed_5" type="radio" /><input id="__tabbed_5_7" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Trinsic CLI</label><label for="__tabbed_5_2">Typescript</label><label for="__tabbed_5_3">C#</label><label for="__tabbed_5_4">Python</label><label for="__tabbed_5_5">Java</label><label for="__tabbed_5_6">Go</label><label for="__tabbed_5_7">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>First, prepare a JSON file which describes your template:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">templateData.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">templateData.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
@@ -2306,12 +2295,27 @@ trinsic account login --name <span class="s2">&quot;Vaccination Clinic&quot;</sp
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">templateRequest</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">template</span><span class="p">.</span><span class="nx">CreateCredentialTemplateRequest</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;Example Template - %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">uuid</span><span class="p">.</span><span class="nx">New</span><span class="p">()),</span><span class="w"> </span><span class="nx">AllowAdditionalFields</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nx">Fields</span><span class="p">:</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="o">*</span><span class="nx">template</span><span class="p">.</span><span class="nx">TemplateField</span><span class="p">)}</span><span class="w"></span>
-<span class="nx">templateRequest</span><span class="p">.</span><span class="nx">Fields</span><span class="p">[</span><span class="s">&quot;firstName&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">template</span><span class="p">.</span><span class="nx">TemplateField</span><span class="p">{</span><span class="nx">Description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Given name&quot;</span><span class="p">}</span><span class="w"></span>
-<span class="nx">templateRequest</span><span class="p">.</span><span class="nx">Fields</span><span class="p">[</span><span class="s">&quot;lastName&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">template</span><span class="p">.</span><span class="nx">TemplateField</span><span class="p">{}</span><span class="w"></span>
-<span class="nx">templateRequest</span><span class="p">.</span><span class="nx">Fields</span><span class="p">[</span><span class="s">&quot;age&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">template</span><span class="p">.</span><span class="nx">TemplateField</span><span class="p">{</span><span class="nx">Type</span><span class="p">:</span><span class="w"> </span><span class="nx">template</span><span class="p">.</span><span class="nx">FieldType_NUMBER</span><span class="p">,</span><span class="w"> </span><span class="nx">Optional</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">templateRequest</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">template</span><span class="p">.</span><span class="nx">CreateCredentialTemplateRequest</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;VaccinationCertificate&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">AllowAdditionalFields</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nx">Fields</span><span class="p">:</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="o">*</span><span class="nx">template</span><span class="p">.</span><span class="nx">TemplateField</span><span class="p">)}</span><span class="w"></span>
+<span class="nx">templateRequest</span><span class="p">.</span><span class="nx">Fields</span><span class="p">[</span><span class="s">&quot;firstName&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">template</span><span class="p">.</span><span class="nx">TemplateField</span><span class="p">{</span><span class="nx">Description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;First name of vaccine recipient&quot;</span><span class="p">}</span><span class="w"></span>
+<span class="nx">templateRequest</span><span class="p">.</span><span class="nx">Fields</span><span class="p">[</span><span class="s">&quot;lastName&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">template</span><span class="p">.</span><span class="nx">TemplateField</span><span class="p">{</span><span class="nx">Description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Last name of vaccine recipient&quot;</span><span class="p">}</span><span class="w"></span>
+<span class="nx">templateRequest</span><span class="p">.</span><span class="nx">Fields</span><span class="p">[</span><span class="s">&quot;batchNumber&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">template</span><span class="p">.</span><span class="nx">TemplateField</span><span class="p">{</span><span class="nx">Description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Batch number of vaccine&quot;</span><span class="p">}</span><span class="w"></span>
+<span class="nx">templateRequest</span><span class="p">.</span><span class="nx">Fields</span><span class="p">[</span><span class="s">&quot;countryOfVaccination&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">template</span><span class="p">.</span><span class="nx">TemplateField</span><span class="p">{</span><span class="nx">Description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Country in which the subject was vaccinated&quot;</span><span class="p">}</span><span class="w"></span>
 
-<span class="nx">templateResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">templateService</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">templateRequest</span><span class="p">)</span><span class="w"></span>
+<span class="nx">createdTemplate</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">templateService</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">templateRequest</span><span class="p">)</span><span class="w"></span>
+
+<span class="nx">templateId</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">createdTemplate</span><span class="p">.</span><span class="nx">Data</span><span class="p">.</span><span class="nx">Id</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">request</span> <span class="o">=</span> <span class="no">Trinsic</span><span class="o">::</span><span class="no">Template_V1</span><span class="o">::</span><span class="no">CreateCredentialTemplateRequest</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">name</span><span class="p">:</span> <span class="s1">&#39;VaccinationCertificate&#39;</span><span class="p">,</span>
+                                                                    <span class="ss">allow_additional_fields</span><span class="p">:</span> <span class="kp">false</span><span class="p">)</span>
+<span class="n">request</span><span class="o">.</span><span class="n">fields</span><span class="o">[</span><span class="s1">&#39;firstName&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="no">Trinsic</span><span class="o">::</span><span class="no">Template_V1</span><span class="o">::</span><span class="no">TemplateField</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">description</span><span class="p">:</span> <span class="s1">&#39;First name of vaccine recipient&#39;</span><span class="p">)</span>
+<span class="n">request</span><span class="o">.</span><span class="n">fields</span><span class="o">[</span><span class="s1">&#39;lastName&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="no">Trinsic</span><span class="o">::</span><span class="no">Template_V1</span><span class="o">::</span><span class="no">TemplateField</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">description</span><span class="p">:</span> <span class="s1">&#39;Last name of vaccine recipient&#39;</span><span class="p">)</span>
+<span class="n">request</span><span class="o">.</span><span class="n">fields</span><span class="o">[</span><span class="s1">&#39;batchNumber&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="no">Trinsic</span><span class="o">::</span><span class="no">Template_V1</span><span class="o">::</span><span class="no">TemplateField</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">description</span><span class="p">:</span> <span class="s1">&#39;Batch number of vaccine&#39;</span><span class="p">)</span>
+<span class="n">request</span><span class="o">.</span><span class="n">fields</span><span class="o">[</span><span class="s1">&#39;countryOfVaccination&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="no">Trinsic</span><span class="o">::</span><span class="no">Template_V1</span><span class="o">::</span><span class="no">TemplateField</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">description</span><span class="p">:</span> <span class="s1">&#39;Country in which the subject was vaccinated&#39;</span><span class="p">)</span>
+
+<span class="n">template</span> <span class="o">=</span> <span class="n">template_service</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="n">template_id</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">id</span>
 </code></pre></div>
 </div>
 </div>
@@ -2326,11 +2330,11 @@ trinsic account login --name <span class="s2">&quot;Vaccination Clinic&quot;</sp
 <p>Upon receiving her vaccine, the clinic issues Allison a Verifiable Credential, which proves that she was given the vaccine by the clinic.</p>
 <p>A credential is a JSON document that has been cryptographically signed; this signature enables verifiers to trust that the data comes a trusted source, and has not been tampered with.</p>
 <p>To issue a vaccine certificate, we'll use the template we created in the last step.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:6"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><input id="__tabbed_8_4" name="__tabbed_8" type="radio" /><input id="__tabbed_8_5" name="__tabbed_8" type="radio" /><input id="__tabbed_8_6" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Trinsic CLI</label><label for="__tabbed_8_2">Typescript</label><label for="__tabbed_8_3">C#</label><label for="__tabbed_8_4">Python</label><label for="__tabbed_8_5">Java</label><label for="__tabbed_8_6">Go</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:7"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><input id="__tabbed_7_4" name="__tabbed_7" type="radio" /><input id="__tabbed_7_5" name="__tabbed_7" type="radio" /><input id="__tabbed_7_6" name="__tabbed_7" type="radio" /><input id="__tabbed_7_7" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Trinsic CLI</label><label for="__tabbed_7_2">Typescript</label><label for="__tabbed_7_3">C#</label><label for="__tabbed_7_4">Python</label><label for="__tabbed_7_5">Java</label><label for="__tabbed_7_6">Go</label><label for="__tabbed_7_7">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>First, prepare a file named <code>values.json</code> with the following content:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">values.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">values.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
@@ -2408,20 +2412,6 @@ trinsic vc issue-from-template --template-id <span class="o">{</span>TEMPLATE_ID
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<p>We specify links to the jsonld files:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">baseTestPath</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Path</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">).</span><span class="na">getAbsolutePath</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;..&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;devops&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;testdata&quot;</span><span class="p">).</span><span class="na">toAbsolutePath</span><span class="p">().</span><span class="na">toString</span><span class="p">();</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-
-<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Path</span><span class="w"> </span><span class="nf">vaccineCertUnsignedPath</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Path</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">baseTestPath</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;vaccination-certificate-unsigned.jsonld&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-
-<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Path</span><span class="w"> </span><span class="nf">vaccineCertFramePath</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Path</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">baseTestPath</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;vaccination-certificate-frame.jsonld&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-<p>Let's set the active profile to the clinic, and call the issuance endpoint</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Sign a credential as the clinic and send it to Allison</span><span class="w"></span>
 <span class="kd">var</span><span class="w"> </span><span class="n">credentialJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Files</span><span class="p">.</span><span class="na">readString</span><span class="p">(</span><span class="n">vaccineCertUnsignedPath</span><span class="p">());</span><span class="w"></span>
 <span class="c1">// issueCredentialSample() {</span><span class="w"></span>
@@ -2432,27 +2422,39 @@ trinsic vc issue-from-template --template-id <span class="o">{</span>TEMPLATE_ID
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">GetBasePath</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">fileName</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">runtime</span><span class="p">.</span><span class="nx">Caller</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="nx">path</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">filepath</span><span class="p">.</span><span class="nx">Clean</span><span class="p">(</span><span class="nx">filepath</span><span class="p">.</span><span class="nx">Join</span><span class="p">(</span><span class="nx">filepath</span><span class="p">.</span><span class="nx">Dir</span><span class="p">(</span><span class="nx">fileName</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;..&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;..&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;devops&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;testdata&quot;</span><span class="p">))</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">path</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Prepare values for credential</span><span class="w"></span>
+<span class="nx">valuesStruct</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">FirstName</span><span class="w">            </span><span class="kt">string</span><span class="w"></span>
+<span class="w">    </span><span class="nx">LastName</span><span class="w">             </span><span class="kt">string</span><span class="w"></span>
+<span class="w">    </span><span class="nx">batchNumber</span><span class="w">          </span><span class="kt">int</span><span class="w"></span>
+<span class="w">    </span><span class="nx">countryOfVaccination</span><span class="w"> </span><span class="kt">string</span><span class="w"></span>
+<span class="p">}{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">FirstName</span><span class="p">:</span><span class="w">            </span><span class="s">&quot;Allison&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">LastName</span><span class="p">:</span><span class="w">             </span><span class="s">&quot;Allisonne&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">batchNumber</span><span class="p">:</span><span class="w">          </span><span class="mi">123454321</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">countryOfVaccination</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;US&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-<span class="kd">func</span><span class="w"> </span><span class="nx">GetVaccineCertUnsignedPath</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">filepath</span><span class="p">.</span><span class="nx">Join</span><span class="p">(</span><span class="nx">GetBasePath</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;vaccination-certificate-unsigned.jsonld&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="kd">func</span><span class="w"> </span><span class="nx">GetVaccineCertFramePath</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">filepath</span><span class="p">.</span><span class="nx">Join</span><span class="p">(</span><span class="nx">GetBasePath</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;vaccination-certificate-frame.jsonld&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nx">fileContent</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadFile</span><span class="p">(</span><span class="nx">GetVaccineCertUnsignedPath</span><span class="p">())</span><span class="w"></span>
-<span class="nx">failError</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error reading file&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
+<span class="nx">values</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="nx">valuesStruct</span><span class="p">)</span><span class="w"></span>
 
-<span class="nx">credentialService</span><span class="p">.</span><span class="nx">SetToken</span><span class="p">(</span><span class="nx">clinic</span><span class="p">)</span><span class="w"></span>
-<span class="c1">// issueCredentialSample() {</span><span class="w"></span>
-<span class="nx">credentialResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">IssueCredential</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">IssueRequest</span><span class="p">{</span><span class="nx">DocumentJson</span><span class="p">:</span><span class="w"> </span><span class="nb">string</span><span class="p">(</span><span class="nx">fileContent</span><span class="p">)})</span><span class="w"></span>
-<span class="c1">// }</span><span class="w"></span>
-<span class="nx">failError</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error issuing credential&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Credential:%s\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">credentialResponse</span><span class="p">)</span><span class="w"></span>
+<span class="c1">// Issue credential</span><span class="w"></span>
+<span class="nx">issueResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">IssueFromTemplate</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">IssueFromTemplateRequest</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">TemplateId</span><span class="p">:</span><span class="w"> </span><span class="nx">createdTemplate</span><span class="p">.</span><span class="nx">Id</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">ValuesJson</span><span class="p">:</span><span class="w"> </span><span class="nb">string</span><span class="p">(</span><span class="nx">values</span><span class="p">),</span><span class="w"></span>
+<span class="p">})</span><span class="w"></span>
+
+<span class="nx">issuedCredential</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">issueResponse</span><span class="p">.</span><span class="nx">DocumentJson</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># Prepares values for credential</span>
+<span class="n">values</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">generate</span><span class="p">({</span> <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="s1">&#39;Allison&#39;</span><span class="p">,</span> <span class="s2">&quot;lastName&quot;</span><span class="p">:</span> <span class="s1">&#39;Allisonne&#39;</span><span class="p">,</span> <span class="s2">&quot;batchNumber&quot;</span><span class="p">:</span> <span class="s1">&#39;123454321&#39;</span><span class="p">,</span>
+                         <span class="s2">&quot;countryOfVaccination&quot;</span><span class="p">:</span> <span class="s1">&#39;US&#39;</span> <span class="p">})</span>
+
+<span class="c1"># Issue credential</span>
+<span class="n">issue_response</span> <span class="o">=</span> <span class="n">credential_service</span><span class="o">.</span><span class="n">issue_from_template</span><span class="p">(</span><span class="no">Trinsic</span><span class="o">::</span><span class="no">Credentials_V1</span><span class="o">::</span><span class="no">IssueFromTemplateRequest</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+                                                          <span class="ss">template_id</span><span class="p">:</span> <span class="n">template</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="ss">values_json</span><span class="p">:</span> <span class="n">values</span>
+                                                        <span class="p">))</span>
+<span class="n">credential</span> <span class="o">=</span> <span class="n">issue_response</span><span class="o">.</span><span class="n">document_json</span>
 </code></pre></div>
 </div>
 </div>
@@ -2477,7 +2479,7 @@ trinsic vc issue-from-template --template-id <span class="o">{</span>TEMPLATE_ID
 <hr />
 <h2 id="store-credential-in-wallet">Store Credential in Wallet<a class="headerlink" href="#store-credential-in-wallet" title="Permanent link">&para;</a></h2>
 <p>Once Allison receives the credential, she or her wallet application can store it within her wallet. She can use any device that she's authorized to use with her wallet. Storing credentials securely is also important to maintaining Allison's privacy. </p>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:6"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><input id="__tabbed_10_4" name="__tabbed_10" type="radio" /><input id="__tabbed_10_5" name="__tabbed_10" type="radio" /><input id="__tabbed_10_6" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Trinsic CLI</label><label for="__tabbed_10_2">Typescript</label><label for="__tabbed_10_3">C#</label><label for="__tabbed_10_4">Python</label><label for="__tabbed_10_5">Java</label><label for="__tabbed_10_6">Go</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:7"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><input id="__tabbed_9_4" name="__tabbed_9" type="radio" /><input id="__tabbed_9_5" name="__tabbed_9" type="radio" /><input id="__tabbed_9_6" name="__tabbed_9" type="radio" /><input id="__tabbed_9_7" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Trinsic CLI</label><label for="__tabbed_9_2">Typescript</label><label for="__tabbed_9_3">C#</label><label for="__tabbed_9_4">Python</label><label for="__tabbed_9_5">Java</label><label for="__tabbed_9_6">Go</label><label for="__tabbed_9_7">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic config --auth-token <span class="k">$(</span>cat allison.txt<span class="k">)</span>
@@ -2509,7 +2511,7 @@ trinsic wallet insert-item --item credential.json
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Alice stores the credential in her cloud wallet</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Allison stores the credential in her cloud wallet</span>
 <span class="n">wallet_service</span><span class="o">.</span><span class="n">service_options</span><span class="o">.</span><span class="n">auth_token</span> <span class="o">=</span> <span class="n">allison</span>
 
 <span class="n">insert_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">wallet_service</span><span class="o">.</span><span class="n">insert_item</span><span class="p">(</span>
@@ -2529,13 +2531,18 @@ trinsic wallet insert-item --item credential.json
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">walletService</span><span class="p">.</span><span class="nx">SetToken</span><span class="p">(</span><span class="nx">allison</span><span class="p">)</span><span class="w"></span>
-<span class="nx">failError</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error setting profile&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
-<span class="c1">// insertItemWallet() {</span><span class="w"></span>
-<span class="nx">itemID</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">walletService</span><span class="p">.</span><span class="nx">InsertItem</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">wallet</span><span class="p">.</span><span class="nx">InsertItemRequest</span><span class="p">{</span><span class="nx">ItemJson</span><span class="p">:</span><span class="w"> </span><span class="nx">credentialResponse</span><span class="p">.</span><span class="nx">SignedDocumentJson</span><span class="p">})</span><span class="w"></span>
-<span class="c1">// }</span><span class="w"></span>
-<span class="nx">failError</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error inserting item&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;item id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">itemID</span><span class="p">)</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Allison stores the credential in her cloud wallet</span><span class="w"></span>
+<span class="nx">walletService</span><span class="p">.</span><span class="nx">SetToken</span><span class="p">(</span><span class="nx">allison</span><span class="p">)</span><span class="w"></span>
+<span class="nx">insertResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">walletService</span><span class="p">.</span><span class="nx">InsertItem</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">wallet</span><span class="p">.</span><span class="nx">InsertItemRequest</span><span class="p">{</span><span class="nx">ItemJson</span><span class="p">:</span><span class="w"> </span><span class="nx">issuedCredential</span><span class="p">})</span><span class="w"></span>
+
+<span class="nx">itemId</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">insertResponse</span><span class="p">.</span><span class="nx">ItemId</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># Allison stores the credential in her cloud wallet</span>
+<span class="n">wallet_service</span><span class="o">.</span><span class="n">auth_token</span> <span class="o">=</span> <span class="n">allison</span>
+<span class="n">insert_response</span> <span class="o">=</span> <span class="n">wallet_service</span><span class="o">.</span><span class="n">insert_item</span><span class="p">(</span><span class="no">Trinsic</span><span class="o">::</span><span class="no">Wallet_V1</span><span class="o">::</span><span class="no">InsertItemRequest</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">item_json</span><span class="p">:</span> <span class="n">credential</span><span class="p">))</span>
+<span class="n">item_id</span> <span class="o">=</span> <span class="n">insert_response</span><span class="o">.</span><span class="n">item_id</span>
 </code></pre></div>
 </div>
 </div>
@@ -2550,7 +2557,7 @@ trinsic wallet insert-item --item credential.json
 <p>Before boarding, the airline requests proof of vaccination from Allison. Specifically, they want to see proof that she holds a <code>VaccinationCertificate</code> credential.</p>
 <p>This request can be communicated using any exchange protocol. Again, we'll assume this was done offline.</p>
 <p>Let's use the <a href="../../reference/services/credential-service/#create-proof">CreateProof</a> call to build a proof for Allison's held credential.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="11:6"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><input id="__tabbed_11_3" name="__tabbed_11" type="radio" /><input id="__tabbed_11_4" name="__tabbed_11" type="radio" /><input id="__tabbed_11_5" name="__tabbed_11" type="radio" /><input id="__tabbed_11_6" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Trinsic CLI</label><label for="__tabbed_11_2">Typescript</label><label for="__tabbed_11_3">C#</label><label for="__tabbed_11_4">Python</label><label for="__tabbed_11_5">Java</label><label for="__tabbed_11_6">Go</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:7"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><input id="__tabbed_10_4" name="__tabbed_10" type="radio" /><input id="__tabbed_10_5" name="__tabbed_10" type="radio" /><input id="__tabbed_10_6" name="__tabbed_10" type="radio" /><input id="__tabbed_10_7" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Trinsic CLI</label><label for="__tabbed_10_2">Typescript</label><label for="__tabbed_10_3">C#</label><label for="__tabbed_10_4">Python</label><label for="__tabbed_10_5">Java</label><label for="__tabbed_10_6">Go</label><label for="__tabbed_10_7">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic config --auth-token <span class="k">$(</span>cat allison.txt<span class="k">)</span>
@@ -2580,7 +2587,7 @@ trinsic vc create-proof --document-id <span class="s2">&quot;{ITEM_ID}&quot;</sp
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Allison shares the credential with the venue</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Allison shares the credential with the airline</span>
 <span class="n">credential_service</span><span class="o">.</span><span class="n">service_options</span><span class="o">.</span><span class="n">auth_token</span> <span class="o">=</span> <span class="n">allison</span>
 
 <span class="n">proof_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">credential_service</span><span class="o">.</span><span class="n">create_proof</span><span class="p">(</span>
@@ -2604,23 +2611,20 @@ trinsic vc create-proof --document-id <span class="s2">&quot;{ITEM_ID}&quot;</sp
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">walletService</span><span class="p">.</span><span class="nx">SetToken</span><span class="p">(</span><span class="nx">allison</span><span class="p">)</span><span class="w"></span>
-<span class="nx">failError</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error reading file&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
-
-<span class="nx">fileContent2</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadFile</span><span class="p">(</span><span class="nx">GetVaccineCertFramePath</span><span class="p">())</span><span class="w"></span>
-<span class="nx">failError</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error reading file&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
-
-<span class="nx">req</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">CreateProofRequest</span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">RevealDocumentJson</span><span class="p">:</span><span class="w"> </span><span class="nb">string</span><span class="p">(</span><span class="nx">fileContent2</span><span class="p">),</span><span class="w"></span>
-<span class="w">    </span><span class="nx">Proof</span><span class="p">:</span><span class="w">              </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">CreateProofRequest_ItemId</span><span class="p">{</span><span class="nx">ItemId</span><span class="p">:</span><span class="w"> </span><span class="nx">itemID</span><span class="p">},</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-
+<div class="highlight"><pre><span></span><code><span class="c1">// Allison shares the credential with the airline</span><span class="w"></span>
 <span class="nx">credentialService</span><span class="p">.</span><span class="nx">SetToken</span><span class="p">(</span><span class="nx">allison</span><span class="p">)</span><span class="w"></span>
-<span class="c1">// createProof() {</span><span class="w"></span>
-<span class="nx">credentialProof</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">CreateProof</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">req</span><span class="p">)</span><span class="w"></span>
-<span class="c1">// }</span><span class="w"></span>
-<span class="nx">failError</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error creating proof&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Credential proof&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">credentialProof</span><span class="p">)</span><span class="w"></span>
+<span class="nx">proofResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">CreateProof</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">CreateProofRequest</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">Proof</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">CreateProofRequest_ItemId</span><span class="p">{</span><span class="nx">ItemId</span><span class="p">:</span><span class="w"> </span><span class="nx">itemId</span><span class="p">},</span><span class="w"></span>
+<span class="p">})</span><span class="w"></span>
+
+<span class="nx">credentialProof</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">proofResponse</span><span class="p">.</span><span class="nx">ProofDocumentJson</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># Allison shares the credential with the airline</span>
+<span class="n">credential_service</span><span class="o">.</span><span class="n">auth_token</span> <span class="o">=</span> <span class="n">allison</span>
+<span class="n">proof_response</span> <span class="o">=</span> <span class="n">credential_service</span><span class="o">.</span><span class="n">create_proof</span><span class="p">(</span><span class="no">Trinsic</span><span class="o">::</span><span class="no">Credentials_V1</span><span class="o">::</span><span class="no">CreateProofRequest</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">item_id</span><span class="p">:</span> <span class="n">item_id</span><span class="p">))</span>
+<span class="n">credential_proof</span> <span class="o">=</span> <span class="n">proof_response</span><span class="o">.</span><span class="n">proof_document_json</span>
 </code></pre></div>
 </div>
 </div>
@@ -2635,7 +2639,7 @@ trinsic vc create-proof --document-id <span class="s2">&quot;{ITEM_ID}&quot;</sp
 <hr />
 <h2 id="verify-proof">Verify Proof<a class="headerlink" href="#verify-proof" title="Permanent link">&para;</a></h2>
 <p>Once the airline receives the proof, they can now verify it to ensure its authenticity. </p>
-<div class="tabbed-set tabbed-alternate" data-tabs="12:6"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><input id="__tabbed_12_3" name="__tabbed_12" type="radio" /><input id="__tabbed_12_4" name="__tabbed_12" type="radio" /><input id="__tabbed_12_5" name="__tabbed_12" type="radio" /><input id="__tabbed_12_6" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Trinsic CLI</label><label for="__tabbed_12_2">Typescript</label><label for="__tabbed_12_3">C#</label><label for="__tabbed_12_4">Python</label><label for="__tabbed_12_5">Java</label><label for="__tabbed_12_6">Go</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:7"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><input id="__tabbed_11_3" name="__tabbed_11" type="radio" /><input id="__tabbed_11_4" name="__tabbed_11" type="radio" /><input id="__tabbed_11_5" name="__tabbed_11" type="radio" /><input id="__tabbed_11_6" name="__tabbed_11" type="radio" /><input id="__tabbed_11_7" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Trinsic CLI</label><label for="__tabbed_11_2">Typescript</label><label for="__tabbed_11_3">C#</label><label for="__tabbed_11_4">Python</label><label for="__tabbed_11_5">Java</label><label for="__tabbed_11_6">Go</label><label for="__tabbed_11_7">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic config --auth-token <span class="k">$(</span>cat issuer.txt<span class="k">)</span>
@@ -2684,16 +2688,19 @@ trinsic vc verify-proof --proof-document proof.json
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">walletService</span><span class="p">.</span><span class="nx">SetToken</span><span class="p">(</span><span class="nx">airline</span><span class="p">)</span><span class="w"></span>
-<span class="nx">failError</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error setting profile&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
-<span class="c1">// verifyProof() {</span><span class="w"></span>
-<span class="nx">valid</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">VerifyProof</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">VerifyProofRequest</span><span class="p">{</span><span class="nx">ProofDocumentJson</span><span class="p">:</span><span class="w"> </span><span class="nx">credentialResponse</span><span class="p">.</span><span class="nx">SignedDocumentJson</span><span class="p">})</span><span class="w"></span>
-<span class="c1">// }</span><span class="w"></span>
-<span class="nx">failError</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error verifying proof&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span><span class="w"></span>
-<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Validation result&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">valid</span><span class="p">)</span><span class="w"></span>
-<span class="k">if</span><span class="w"> </span><span class="nx">valid</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">t</span><span class="p">.</span><span class="nx">Fail</span><span class="p">()</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1">// The airline verifies the credential</span><span class="w"></span>
+<span class="nx">credentialService</span><span class="p">.</span><span class="nx">SetToken</span><span class="p">(</span><span class="nx">airline</span><span class="p">)</span><span class="w"></span>
+<span class="nx">verifyResult</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">VerifyProof</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">VerifyProofRequest</span><span class="p">{</span><span class="nx">ProofDocumentJson</span><span class="p">:</span><span class="w"> </span><span class="nx">credentialProof</span><span class="p">})</span><span class="w"></span>
+<span class="nx">valid</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">verifyResult</span><span class="p">.</span><span class="nx">IsValid</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1"># The airline verifies the credential</span>
+<span class="n">credential_service</span><span class="o">.</span><span class="n">auth_token</span> <span class="o">=</span> <span class="n">airline</span>
+
+<span class="n">verify_result</span> <span class="o">=</span> <span class="n">credential_service</span><span class="o">.</span><span class="n">verify_proof</span><span class="p">(</span><span class="no">Trinsic</span><span class="o">::</span><span class="no">Credentials_V1</span><span class="o">::</span><span class="no">VerifyProofRequest</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">proof_document_json</span><span class="p">:</span> <span class="n">credential_proof</span><span class="p">))</span>
+
+<span class="n">valid</span> <span class="o">=</span> <span class="n">verify_result</span><span class="o">.</span><span class="n">is_valid</span>
 </code></pre></div>
 </div>
 </div>
@@ -2704,7 +2711,7 @@ trinsic vc verify-proof --proof-document proof.json
 </div>
 <hr />
 <h2 id="full-source-code">Full Source Code<a class="headerlink" href="#full-source-code" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="13:4"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><input id="__tabbed_13_3" name="__tabbed_13" type="radio" /><input id="__tabbed_13_4" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Typescript</label><label for="__tabbed_13_2">C#</label><label for="__tabbed_13_3">Python</label><label for="__tabbed_13_4">Java</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:4"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><input id="__tabbed_12_3" name="__tabbed_12" type="radio" /><input id="__tabbed_12_4" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Typescript</label><label for="__tabbed_12_2">C#</label><label for="__tabbed_12_3">Python</label><label for="__tabbed_12_4">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p><a href="https://github.com/trinsic-id/sdk/tree/main/web/test/VaccineDemoShared.ts">web</a>    </p>
@@ -2730,7 +2737,7 @@ trinsic vc verify-proof --proof-document proof.json
 </ul>
 <h3 id="sample-applications">Sample Applications<a class="headerlink" href="#sample-applications" title="Permanent link">&para;</a></h3>
 <p>We have language specific sample applications that you can run to understand how the Trinsic SDK works in a development environment. </p>
-<div class="tabbed-set tabbed-alternate" data-tabs="14:4"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><input id="__tabbed_14_3" name="__tabbed_14" type="radio" /><input id="__tabbed_14_4" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Typescript</label><label for="__tabbed_14_2">C#</label><label for="__tabbed_14_3">Python</label><label for="__tabbed_14_4">Java</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:6"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><input id="__tabbed_13_3" name="__tabbed_13" type="radio" /><input id="__tabbed_13_4" name="__tabbed_13" type="radio" /><input id="__tabbed_13_5" name="__tabbed_13" type="radio" /><input id="__tabbed_13_6" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Typescript</label><label for="__tabbed_13_2">C#</label><label for="__tabbed_13_3">Python</label><label for="__tabbed_13_4">Java</label><label for="__tabbed_13_5">Go</label><label for="__tabbed_13_6">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>This sample is available in our <a href="https://github.com/trinsic-id/sdk-examples/tree/main/web/basic">node directory</a>  </p>
@@ -2743,6 +2750,12 @@ trinsic vc verify-proof --proof-document proof.json
 </div>
 <div class="tabbed-block">
 <p>This sample is available in our Github repo in the <a href="https://github.com/trinsic-id/sdk/tree/main/java/src/test/java">java directory</a>.</p>
+</div>
+<div class="tabbed-block">
+<p>This sample is available in our Github repo in the <a href="https://github.com/trinsic-id/sdk/tree/main/go/examples/vaccine_test.go">go directory</a>.</p>
+</div>
+<div class="tabbed-block">
+<p>This sample is available in our Github repo in the <a href="https://github.com/trinsic-id/sdk/tree/main/ruby/test/vaccine_demo.rb">ruby directory</a>.</p>
 </div>
 </div>
 </div>
