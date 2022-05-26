@@ -76,13 +76,11 @@ This tutorial is meant to share the concepts of verifiable credentials, so feel 
     In this project, we'll be following along the [`java/src/test/java/trinsic/VaccineDemo.java`](https://github.com/trinsic-id/sdk/blob/main/java/src/test/java/trinsic/VaccineDemo.java) in our [SDK repository](https://github.com/trinsic-id/sdk)
 
 
-=== "Ruby"
-    - [Install Instructions](../ruby/index.md) 
-
-
 === "Go"
     - [Install Instructions](../go/index.md)
    
+=== "Ruby"
+    - [Install Instructions](../ruby/index.md) 
 
 ---
 
@@ -126,7 +124,7 @@ The first step is to create an [ecosystem](/learn/ecosystems/), within which eve
 === "Go"
     <!--codeinclude-->
     ```go
-    [Create Ecosystem](../../go/services/services_test.go) inside_block:createEcosystem
+    [Create Ecosystem](../../go/examples/vaccine_test.go) inside_block:createEcosystem
     ```
     <!--/codeinclude-->
 
@@ -274,7 +272,7 @@ The clinic's account will **issue** the credential, Allison's account will **hol
 === "Go"
     <!--codeinclude-->
     ```go
-    [Setup Wallets](../../go/services/services_test.go) inside_block:setupActors
+    [Setup Wallets](../../go/examples/vaccine_test.go) inside_block:setupActors
     ```
     <!--/codeinclude-->
 
@@ -444,7 +442,7 @@ To issue a vaccine certificate, we'll use the template we created in the last st
 === "Go"
     <!--codeinclude-->
     ```go
-    [Issue Credential](../../go/services/services_test.go) inside_block:issueCredential
+    [Issue Credential](../../go/examples/vaccine_test.go) inside_block:issueCredential
     ```
     <!--/codeinclude-->
 
@@ -521,7 +519,7 @@ Once Allison receives the credential, she or her wallet application can store it
 === "Go"
     <!--codeinclude-->
     ```go
-    [Store Credential](../../go/services/services_test.go) inside_block:storeCredential
+    [Store Credential](../../go/examples/vaccine_test.go) inside_block:storeCredential
     ```
     <!--/codeinclude-->
 
@@ -586,7 +584,7 @@ Let's use the [CreateProof](../../reference/services/credential-service/#create-
 === "Go"
     <!--codeinclude-->
     ```go
-    [Share Credential](../../go/services/services_test.go) inside_block:shareCredential
+    [Share Credential](../../go/examples/vaccine_test.go) inside_block:shareCredential
     ```
     <!--/codeinclude-->
 
@@ -652,7 +650,7 @@ Once the airline receives the proof, they can now verify it to ensure its authen
 === "Go"
     <!--codeinclude-->
     ```go
-    [Verify Credential](../../go/services/services_test.go) inside_block:verifyCredential
+    [Verify Credential](../../go/examples/vaccine_test.go) inside_block:verifyCredential
     ```
     <!--/codeinclude-->
 
