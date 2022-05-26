@@ -17,7 +17,7 @@ func createTemplate(templateService services.CredentialTemplateService, t *testi
 	templateRequest := &template.CreateCredentialTemplateRequest{Name: "VaccinationCertificate", AllowAdditionalFields: false, Fields: make(map[string]*template.TemplateField)}
 	templateRequest.Fields["firstName"] = &template.TemplateField{Description: "First name of vaccine recipient"}
 	templateRequest.Fields["lastName"] = &template.TemplateField{Description: "Last name of vaccine recipient"}
-	templateRequest.Fields["batchNumber"] = &template.TemplateField{Type: template.FieldType_NUMBER}
+	templateRequest.Fields["batchNumber"] = &template.TemplateField{Description: "Batch number of vaccine"}
 	templateRequest.Fields["countryOfVaccination"] = &template.TemplateField{}
 
 	createdTemplate, _ := templateService.Create(context.Background(), templateRequest)
