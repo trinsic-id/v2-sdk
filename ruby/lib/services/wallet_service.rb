@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require 'services/service_base'
 
 module Trinsic
   class WalletService < ServiceBase
-
     def initialize(service_options = nil)
       super(service_options)
       if @service_options.server_use_tls
@@ -15,14 +16,14 @@ module Trinsic
 
     def search(request = nil)
       # request = Wallet_V1::SearchRequest.new(query: query)
-      request = request || Wallet_V1::SearchRequest.new
-      request.query = request.query.empty? ? "SELECT c.id, c.type, c.data FROM c OFFSET 0 LIMIT 100" : request.query
+      request ||= Wallet_V1::SearchRequest.new
+      request.query = request.query.empty? ? 'SELECT c.id, c.type, c.data FROM c OFFSET 0 LIMIT 100' : request.query
       @client.search(request, metadata: metadata(request))
     end
 
     def insert_item(request)
       # request = Wallet_V1::InsertItemRequest.new(item_json: JSON.generate(item))
-      @client.insert_item(request, metadata: metadata(request)).item_id
+      @client.insert_item(request, metadata: metadata(request))
     end
 
     def delete_item(request)

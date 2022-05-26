@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require 'services/service_base'
 
 module Trinsic
   class ProviderService < ServiceBase
-
     def initialize(service_options = nil)
       super(service_options)
       if @service_options.server_use_tls
@@ -15,7 +16,7 @@ module Trinsic
 
     def invite_participant(request)
       # Ensure a field has been set
-      raise('Contact method must be set') if request.email.nil? and request.phone.nil? and request.didcomm_invitation.nil?
+      raise('Contact method must be set') if request.email.nil? && request.phone.nil? && request.didcomm_invitation.nil?
 
       @client.invite(request, metadata: metadata(request))
     end
@@ -32,8 +33,8 @@ module Trinsic
     end
 
     def create_ecosystem(request = nil)
-      request = request || Provider_V1::CreateEcosystemRequest.new
-      @client.create_ecosystem(request, metadata: metadata(request))
+      request ||= Provider_V1::CreateEcosystemRequest.new
+      @client.create_ecosystem(request)
     end
 
     # def list_ecosystems(request = nil)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'version'
 require 'grpc'
 require 'okapi'
@@ -16,7 +18,6 @@ require 'sdk/options/v1/options_pb'
 require 'security'
 
 module Trinsic
-
   Common_V1 = Services::Common::V1
   Account_V1 = Services::Account::V1
   Credentials_V1 = Services::Verifiablecredentials::V1
@@ -32,7 +33,8 @@ module Trinsic
     server_use_tls = ENV['TEST_SERVER_USE_TLS'] || 'true'
     server_authtoken = auth_token || ''
     server_default_ecosystem = ecosystem_id || ENV['TEST_SERVER_ECOSYSTEM'] || 'default'
-    Options_V1::ServiceOptions.new(server_endpoint: server_endpoint, server_port: server_port.to_i, server_use_tls: server_use_tls.downcase != 'false', auth_token: server_authtoken, default_ecosystem: server_default_ecosystem)
+    Options_V1::ServiceOptions.new(server_endpoint: server_endpoint, server_port: server_port.to_i,
+                                   server_use_tls: server_use_tls.downcase != 'false', auth_token: server_authtoken, default_ecosystem: server_default_ecosystem)
   end
 
   class Error < StandardError; end

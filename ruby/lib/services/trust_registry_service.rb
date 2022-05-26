@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 require 'services/service_base'
 require 'json'
 require 'uri'
 
 module Trinsic
   class TrustRegistryService < ServiceBase
-
     def initialize(service_options = nil)
       super(service_options)
       if @service_options.server_use_tls
@@ -41,7 +42,7 @@ module Trinsic
 
     def search_registry(request = nil)
       request ||= TrustRegistry_V1::SearchRegistryRequest.new
-      request.query = request.query.empty? ? "SELECT * FROM c OFFSET 0 LIMIT 100" : request.query
+      request.query = request.query.empty? ? 'SELECT * FROM c OFFSET 0 LIMIT 100' : request.query
       @client.search_registry(request, metadata: metadata(request))
     end
 

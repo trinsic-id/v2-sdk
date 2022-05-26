@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require 'services/service_base'
 
 module Trinsic
   class CredentialService < ServiceBase
-
     def initialize(service_options = nil)
       super(service_options)
       if @service_options.server_use_tls
@@ -22,7 +23,7 @@ module Trinsic
       @client.issue_from_template(request, metadata: metadata(request))
     end
 
-    def send_document(request)
+    def send(request)
       # request = Credentials_V1::SendRequest.new(email: email, document: Common_V1::JsonPayload.new(json_string: JSON.generate(document)))
       @client.send(request, metadata: metadata(request))
     end
