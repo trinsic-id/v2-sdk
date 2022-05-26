@@ -1,5 +1,4 @@
 import asyncio
-import uuid
 
 from trinsic.account_service import AccountService
 from trinsic.proto.services.account.v1 import AccountDetails

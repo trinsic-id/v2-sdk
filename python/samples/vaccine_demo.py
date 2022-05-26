@@ -21,7 +21,7 @@ from trinsic.proto.services.verifiablecredentials.templates.v1 import (
     CreateCredentialTemplateRequest,
     CreateCredentialTemplateResponse,
     TemplateData,
-    TemplateField
+    TemplateField,
 )
 
 from trinsic.trinsic_util import trinsic_config
@@ -41,7 +41,9 @@ async def vaccine_demo():
     # }
 
     # Set service default ecosystem
-    provider_service.service_options.default_ecosystem = account_service.service_options.default_ecosystem = ecosystem_id
+    provider_service.service_options.default_ecosystem = (
+        account_service.service_options.default_ecosystem
+    ) = ecosystem_id
     config.default_ecosystem = ecosystem_id
 
     wallet_service = WalletService(server_config=config)
@@ -67,18 +69,18 @@ async def vaccine_demo():
 
     # issueCredential() {
     # Prepare values for credential
-    values = json.dumps({
-        "firstName": "Allison",
-        "lastName": "Allisonne",
-        "batchNumber": "123454321",
-        "countryOfVaccination": "US"
-    })
+    values = json.dumps(
+        {
+            "firstName": "Allison",
+            "lastName": "Allisonne",
+            "batchNumber": "123454321",
+            "countryOfVaccination": "US",
+        }
+    )
 
     # Issue credential
     issue_response = await credential_service.issue_from_template(
-        request=IssueFromTemplateRequest(
-            template_id=template.id, values_json=values
-        )
+        request=IssueFromTemplateRequest(template_id=template.id, values_json=values)
     )
 
     credential = issue_response.document_json
@@ -89,8 +91,7 @@ async def vaccine_demo():
     try:
         # sendCredential() {
         send_response = await credential_service.send(
-            request=SendRequest(document_json=credential,
-                                email="example@trinsic.id")
+            request=SendRequest(document_json=credential, email="example@trinsic.id")
         )
         # }
     except:
@@ -113,9 +114,7 @@ async def vaccine_demo():
     credential_service.service_options.auth_token = allison
 
     proof_response = await credential_service.create_proof(
-        request=CreateProofRequest(
-            item_id=item_id
-        )
+        request=CreateProofRequest(item_id=item_id)
     )
 
     credential_proof = proof_response.proof_document_json
@@ -160,7 +159,7 @@ async def do_template(template_service: TemplateService) -> TemplateData:
                 "firstName": TemplateField(description="Given name"),
                 "lastName": TemplateField(),
                 "batchNumber": TemplateField(description=""),
-                "countryOfVaccination": TemplateField(description="")
+                "countryOfVaccination": TemplateField(description=""),
             },
         )
     )
@@ -174,6 +173,7 @@ async def do_template(template_service: TemplateService) -> TemplateData:
     assert template.data.schema_uri is not None
 
     return template.data
+
 
 if __name__ == "__main__":
     asyncio.run(vaccine_demo())

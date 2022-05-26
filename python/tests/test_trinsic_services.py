@@ -19,9 +19,6 @@ from trinsic.trinsic_util import trinsic_config
 from trinsic.trustregistry_service import TrustRegistryService
 
 
-# Due to some issues with python and async io test cases, we have to run each sample in a separate asyncio event loop.
-
-
 class TestServices(unittest.IsolatedAsyncioTestCase):
     def __init__(self, method_name="runTest"):
         super().__init__(methodName=method_name)
@@ -93,13 +90,12 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
         my_protected_profile = account_service.protect(
             profile=my_profile, security_code=code
         )
-        with self.assertRaises(Exception) as ve:
-            await self.print_get_info(account_service, my_protected_profile)
-
         my_unprotected_profile = account_service.unprotect(
             profile=my_protected_profile, security_code=code
         )
         # }
+        with self.assertRaises(Exception) as ve:
+            await self.print_get_info(account_service, my_protected_profile)
         await self.print_get_info(account_service, my_unprotected_profile)
 
     @staticmethod

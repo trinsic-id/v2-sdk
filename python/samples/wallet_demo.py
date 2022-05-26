@@ -14,13 +14,14 @@ from trinsic.wallet_service import WalletService
 def _base_data_path() -> str:
     return abspath(join(dirname(__file__), "..", "..", "devops", "testdata"))
 
+
 def _vaccine_cert_unsigned_path() -> str:
     return abspath(join(_base_data_path(), "vaccination-certificate-unsigned.jsonld"))
 
 
 async def wallet_demo():
     config = trinsic_config()
-    
+
     account_service = AccountService(server_config=config)
     account = await account_service.sign_in()
 
@@ -31,7 +32,9 @@ async def wallet_demo():
     ecosystem_id = ecosystem.ecosystem.id
 
     # Set service default ecosystem
-    provider_service.service_options.default_ecosystem = account_service.service_options.default_ecosystem = ecosystem_id
+    provider_service.service_options.default_ecosystem = (
+        account_service.service_options.default_ecosystem
+    ) = ecosystem_id
     config.default_ecosystem = ecosystem_id
 
     wallet_service = WalletService(server_config=config)
@@ -49,7 +52,9 @@ async def wallet_demo():
 
     # insertItemWallet() {
     insert_response = await wallet_service.insert_item(
-        request=InsertItemRequest(item_json=credential, item_type="VerifiableCredential")
+        request=InsertItemRequest(
+            item_json=credential, item_type="VerifiableCredential"
+        )
     )
     # }
 

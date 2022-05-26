@@ -1,7 +1,7 @@
 /// Support for doing something awesome.
 ///
 /// More dartdocs go here.
-library dart;
+library trinsic_dart;
 
 export 'src/dart_base.dart';
 
