@@ -2473,7 +2473,9 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">send_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">credentials_service</span><span class="o">.</span><span class="n">send</span><span class="p">(</span>
-    <span class="n">request</span><span class="o">=</span><span class="n">SendRequest</span><span class="p">(</span><span class="n">document_json</span><span class="o">=</span><span class="n">credential_json</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s2">&quot;example@trinsic.id&quot;</span><span class="p">)</span>
+    <span class="n">request</span><span class="o">=</span><span class="n">SendRequest</span><span class="p">(</span>
+        <span class="n">document_json</span><span class="o">=</span><span class="n">credential_json</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s2">&quot;example@trinsic.id&quot;</span>
+    <span class="p">)</span>
 <span class="p">)</span>
 </code></pre></div>
 </div>

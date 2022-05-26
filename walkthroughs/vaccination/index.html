@@ -2288,7 +2288,7 @@ trinsic account login --name <span class="s2">&quot;Vaccination Clinic&quot;</sp
             <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="n">TemplateField</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Given name&quot;</span><span class="p">),</span>
             <span class="s2">&quot;lastName&quot;</span><span class="p">:</span> <span class="n">TemplateField</span><span class="p">(),</span>
             <span class="s2">&quot;batchNumber&quot;</span><span class="p">:</span> <span class="n">TemplateField</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">),</span>
-            <span class="s2">&quot;countryOfVaccination&quot;</span><span class="p">:</span> <span class="n">TemplateField</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="s2">&quot;countryOfVaccination&quot;</span><span class="p">:</span> <span class="n">TemplateField</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">),</span>
         <span class="p">},</span>
     <span class="p">)</span>
 <span class="p">)</span>
@@ -2390,18 +2390,18 @@ trinsic vc issue-from-template --template-id <span class="o">{</span>TEMPLATE_ID
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Prepare values for credential</span>
-<span class="n">values</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
-    <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="s2">&quot;Allison&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;lastName&quot;</span><span class="p">:</span> <span class="s2">&quot;Allisonne&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;batchNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;123454321&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;countryOfVaccination&quot;</span><span class="p">:</span> <span class="s2">&quot;US&quot;</span>
-<span class="p">})</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="s2">&quot;Allison&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;lastName&quot;</span><span class="p">:</span> <span class="s2">&quot;Allisonne&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;batchNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;123454321&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;countryOfVaccination&quot;</span><span class="p">:</span> <span class="s2">&quot;US&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
 
 <span class="c1"># Issue credential</span>
 <span class="n">issue_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">credential_service</span><span class="o">.</span><span class="n">issue_from_template</span><span class="p">(</span>
-    <span class="n">request</span><span class="o">=</span><span class="n">IssueFromTemplateRequest</span><span class="p">(</span>
-        <span class="n">template_id</span><span class="o">=</span><span class="n">template</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">values_json</span><span class="o">=</span><span class="n">values</span>
-    <span class="p">)</span>
+    <span class="n">request</span><span class="o">=</span><span class="n">IssueFromTemplateRequest</span><span class="p">(</span><span class="n">template_id</span><span class="o">=</span><span class="n">template</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">values_json</span><span class="o">=</span><span class="n">values</span><span class="p">)</span>
 <span class="p">)</span>
 
 <span class="n">credential</span> <span class="o">=</span> <span class="n">issue_response</span><span class="o">.</span><span class="n">document_json</span>
@@ -2584,9 +2584,7 @@ trinsic vc create-proof --document-id <span class="s2">&quot;{ITEM_ID}&quot;</sp
 <span class="n">credential_service</span><span class="o">.</span><span class="n">service_options</span><span class="o">.</span><span class="n">auth_token</span> <span class="o">=</span> <span class="n">allison</span>
 
 <span class="n">proof_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">credential_service</span><span class="o">.</span><span class="n">create_proof</span><span class="p">(</span>
-    <span class="n">request</span><span class="o">=</span><span class="n">CreateProofRequest</span><span class="p">(</span>
-        <span class="n">item_id</span><span class="o">=</span><span class="n">item_id</span>
-    <span class="p">)</span>
+    <span class="n">request</span><span class="o">=</span><span class="n">CreateProofRequest</span><span class="p">(</span><span class="n">item_id</span><span class="o">=</span><span class="n">item_id</span><span class="p">)</span>
 <span class="p">)</span>
 
 <span class="n">credential_proof</span> <span class="o">=</span> <span class="n">proof_response</span><span class="o">.</span><span class="n">proof_document_json</span>

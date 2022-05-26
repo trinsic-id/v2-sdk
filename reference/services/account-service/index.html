@@ -1955,9 +1955,6 @@
 <span class="n">my_protected_profile</span> <span class="o">=</span> <span class="n">account_service</span><span class="o">.</span><span class="n">protect</span><span class="p">(</span>
     <span class="n">profile</span><span class="o">=</span><span class="n">my_profile</span><span class="p">,</span> <span class="n">security_code</span><span class="o">=</span><span class="n">code</span>
 <span class="p">)</span>
-<span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">Exception</span><span class="p">)</span> <span class="k">as</span> <span class="n">ve</span><span class="p">:</span>
-    <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">print_get_info</span><span class="p">(</span><span class="n">account_service</span><span class="p">,</span> <span class="n">my_protected_profile</span><span class="p">)</span>
-
 <span class="n">my_unprotected_profile</span> <span class="o">=</span> <span class="n">account_service</span><span class="o">.</span><span class="n">unprotect</span><span class="p">(</span>
     <span class="n">profile</span><span class="o">=</span><span class="n">my_protected_profile</span><span class="p">,</span> <span class="n">security_code</span><span class="o">=</span><span class="n">code</span>
 <span class="p">)</span>
@@ -2008,9 +2005,6 @@
 <span class="n">my_protected_profile</span> <span class="o">=</span> <span class="n">account_service</span><span class="o">.</span><span class="n">protect</span><span class="p">(</span>
     <span class="n">profile</span><span class="o">=</span><span class="n">my_profile</span><span class="p">,</span> <span class="n">security_code</span><span class="o">=</span><span class="n">code</span>
 <span class="p">)</span>
-<span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaises</span><span class="p">(</span><span class="ne">Exception</span><span class="p">)</span> <span class="k">as</span> <span class="n">ve</span><span class="p">:</span>
-    <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">print_get_info</span><span class="p">(</span><span class="n">account_service</span><span class="p">,</span> <span class="n">my_protected_profile</span><span class="p">)</span>
-
 <span class="n">my_unprotected_profile</span> <span class="o">=</span> <span class="n">account_service</span><span class="o">.</span><span class="n">unprotect</span><span class="p">(</span>
     <span class="n">profile</span><span class="o">=</span><span class="n">my_protected_profile</span><span class="p">,</span> <span class="n">security_code</span><span class="o">=</span><span class="n">code</span>
 <span class="p">)</span>
