@@ -2,10 +2,11 @@ package services
 
 import (
 	"context"
+
 	template "github.com/trinsic-id/sdk/go/proto/verifiablecredentials/templates/v1"
 )
 
-// NewCredentialTemplateService returns a credential template servcie with the base service configured
+// NewCredentialTemplateService returns a credential template service with the base service configured
 // using the provided options
 func NewCredentialTemplateService(options *Options) (CredentialTemplateService, error) {
 	base, err := NewServiceBase(options)

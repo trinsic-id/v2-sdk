@@ -12,7 +12,7 @@ import (
 	account "github.com/trinsic-id/sdk/go/proto/account/v1"
 )
 
-// NewAccountService returns an account servcie with the base service configured
+// NewAccountService returns an account service with the base service configured
 // using the provided options
 func NewAccountService(options *Options) (AccountService, error) {
 	base, err := NewServiceBase(options)

@@ -2,11 +2,12 @@ package services
 
 import (
 	"context"
-	trustregistry "github.com/trinsic-id/sdk/go/proto/trustregistry/v1"
 	"net/url"
+
+	trustregistry "github.com/trinsic-id/sdk/go/proto/trustregistry/v1"
 )
 
-// NewTrustRegistryService returns a trust registry servcie with the base service configured
+// NewTrustRegistryService returns a trust registry service with the base service configured
 // using the provided options
 func NewTrustRegistryService(options *Options) (TrustRegistryService, error) {
 	base, err := NewServiceBase(options)

@@ -3,10 +3,11 @@ package services
 import (
 	"context"
 	"errors"
+
 	provider "github.com/trinsic-id/sdk/go/proto/provider/v1"
 )
 
-// NewProviderService returns a provider servcie with the base service configured
+// NewProviderService returns a provider service with the base service configured
 // using the provided options
 func NewProviderService(options *Options) (ProviderService, error) {
 	base, err := NewServiceBase(options)
