@@ -1,6 +1,5 @@
 import ServiceBase from "./ServiceBase";
 import {
-  AccountDefinition,
   CheckStatusRequest,
   CheckStatusResponse,
   CreateProofRequest,
