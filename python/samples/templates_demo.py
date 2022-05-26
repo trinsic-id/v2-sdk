@@ -5,7 +5,6 @@ import uuid
 from trinsic.account_service import AccountService
 from trinsic.credentials_service import CredentialsService
 from trinsic.credentialtemplates_service import TemplateService
-from trinsic.proto.services.universalwallet.v1 import InsertItemRequest
 from trinsic.proto.services.verifiablecredentials.templates.v1 import (
     TemplateField,
     FieldType,
@@ -16,13 +15,8 @@ from trinsic.proto.services.verifiablecredentials.templates.v1 import (
 )
 from trinsic.proto.services.verifiablecredentials.v1 import (
     IssueFromTemplateRequest,
-    CreateProofRequest,
-    VerifyProofRequest,
-    CheckStatusRequest,
-    UpdateStatusRequest,
 )
 from trinsic.trinsic_util import trinsic_config
-from trinsic.wallet_service import WalletService
 
 
 async def templates_demo():
@@ -30,7 +24,6 @@ async def templates_demo():
     profile = await account_service.sign_in()
     template_service = TemplateService(server_config=trinsic_config(profile))
     credential_service = CredentialsService(server_config=trinsic_config(profile))
-    wallet_service = WalletService(server_config=trinsic_config(profile))
 
     # create example template
     # createTemplate() {

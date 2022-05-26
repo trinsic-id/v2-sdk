@@ -234,7 +234,7 @@ def update_dart():
     language_proto_path = join(language_path, "lib", "src", "proto")
     clean_dir(language_proto_path)
     # https://github.com/google/protobuf.dart/tree/master/protoc_plugin#how-to-build-and-use
-    run_protoc({"dart_out": language_proto_path}, {}, get_proto_files())
+    run_protoc({"dart_out": f"grpc:{language_proto_path}"}, {}, get_proto_files())
     run_protoc(
         {"dart_out": language_proto_path},
         {},

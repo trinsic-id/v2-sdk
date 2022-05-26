@@ -223,6 +223,43 @@
             blake3256 hash of the request body
             </summary>
         </member>
+        <member name="P:Trinsic.Services.Common.V1.Common.Descriptor">
+            <summary>Service descriptor</summary>
+        </member>
+        <member name="T:Trinsic.Services.Common.V1.Common.CommonBase">
+            <summary>Base class for server-side implementations of Common</summary>
+        </member>
+        <member name="T:Trinsic.Services.Common.V1.Common.CommonClient">
+            <summary>Client for Common</summary>
+        </member>
+        <member name="M:Trinsic.Services.Common.V1.Common.CommonClient.#ctor(Grpc.Core.ChannelBase)">
+            <summary>Creates a new client for Common</summary>
+            <param name="channel">The channel to use to make remote calls.</param>
+        </member>
+        <member name="M:Trinsic.Services.Common.V1.Common.CommonClient.#ctor(Grpc.Core.CallInvoker)">
+            <summary>Creates a new client for Common that uses a custom <c>CallInvoker</c>.</summary>
+            <param name="callInvoker">The callInvoker to use to make remote calls.</param>
+        </member>
+        <member name="M:Trinsic.Services.Common.V1.Common.CommonClient.#ctor">
+            <summary>Protected parameterless constructor to allow creation of test doubles.</summary>
+        </member>
+        <member name="M:Trinsic.Services.Common.V1.Common.CommonClient.#ctor(Grpc.Core.ClientBase.ClientBaseConfiguration)">
+            <summary>Protected constructor to allow creation of configured clients.</summary>
+            <param name="configuration">The client configuration.</param>
+        </member>
+        <member name="M:Trinsic.Services.Common.V1.Common.CommonClient.NewInstance(Grpc.Core.ClientBase.ClientBaseConfiguration)">
+            <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
+        </member>
+        <member name="M:Trinsic.Services.Common.V1.Common.BindService(Trinsic.Services.Common.V1.Common.CommonBase)">
+            <summary>Creates service definition that can be registered with a server</summary>
+            <param name="serviceImpl">An object implementing the server-side handling logic.</param>
+        </member>
+        <member name="M:Trinsic.Services.Common.V1.Common.BindService(Grpc.Core.ServiceBinderBase,Trinsic.Services.Common.V1.Common.CommonBase)">
+            <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
+            Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
+            <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
+            <param name="serviceImpl">An object implementing the server-side handling logic.</param>
+        </member>
         <member name="T:Trinsic.Services.Account.V1.AccountReflection">
             <summary>Holder for reflection information generated from services/account/v1/account.proto</summary>
         </member>
