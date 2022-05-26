@@ -13,12 +13,20 @@ class ServiceBase
     { 'authorization' => @security_provider.get_auth_header(Account_V1::AccountProfile.decode(Base64.urlsafe_decode64(@service_options.auth_token)), message) }
   end
 
-  def profile=(new_profile)
+  def auth_token=(new_profile)
     @service_options.auth_token = new_profile
   end
 
-  def profile
+  def auth_token
     @service_options.auth_token
+  end
+
+  def ecosystem_id=(new_ecosystem_id)
+    @service_options.ecosystem_id = new_ecosystem_id
+  end
+
+  def ecosystem_id
+    @service_options.ecosystem_id
   end
 
   def get_url

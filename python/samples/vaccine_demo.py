@@ -1,38 +1,30 @@
 import asyncio
 import json
-from os.path import abspath, join, dirname
 
 from trinsic.account_service import AccountService
 from trinsic.credentials_service import CredentialsService
-from trinsic.provider_service import ProviderService
 from trinsic.credentialtemplates_service import TemplateService
-from trinsic.wallet_service import WalletService
-
-from trinsic.proto.services.account.v1 import SignInRequest
-from trinsic.proto.services.universalwallet.v1 import InsertItemRequest, SearchRequest
+from trinsic.proto.services.universalwallet.v1 import InsertItemRequest
+from trinsic.proto.services.verifiablecredentials.templates.v1 import (
+    CreateCredentialTemplateRequest,
+    TemplateData,
+    TemplateField,
+)
 from trinsic.proto.services.verifiablecredentials.v1 import (
-    IssueRequest,
     IssueFromTemplateRequest,
     CreateProofRequest,
     VerifyProofRequest,
     SendRequest,
 )
-from trinsic.proto.services.verifiablecredentials.templates.v1 import (
-    CreateCredentialTemplateRequest,
-    CreateCredentialTemplateResponse,
-    TemplateData,
-    TemplateField,
-)
-
+from trinsic.provider_service import ProviderService
 from trinsic.trinsic_util import trinsic_config
+from trinsic.wallet_service import WalletService
 
 
 async def vaccine_demo():
     config = trinsic_config()
 
     account_service = AccountService(server_config=config)
-    account = await account_service.sign_in()
-
     provider_service = ProviderService(server_config=config)
 
     # createEcosystem() {
@@ -98,7 +90,7 @@ async def vaccine_demo():
         pass
 
     # storeCredential() {
-    # Alice stores the credential in her cloud wallet
+    # Allison stores the credential in her cloud wallet
     wallet_service.service_options.auth_token = allison
 
     insert_response = await wallet_service.insert_item(
@@ -110,7 +102,7 @@ async def vaccine_demo():
     print(f"item id = {item_id}")
 
     # shareCredential() {
-    # Allison shares the credential with the venue
+    # Allison shares the credential with the airline
     credential_service.service_options.auth_token = allison
 
     proof_response = await credential_service.create_proof(

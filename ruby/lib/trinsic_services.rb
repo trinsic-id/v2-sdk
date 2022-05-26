@@ -26,12 +26,12 @@ module Trinsic
   TrustRegistry_V1 = Services::Trustregistry::V1
   Wallet_V1 = Services::Universalwallet::V1
 
-  def self.trinsic_server(auth_token = nil)
+  def self.trinsic_server(auth_token = nil, ecosystem_id = nil)
     server_endpoint = ENV['TEST_SERVER_ENDPOINT'] || 'prod.trinsic.cloud'
     server_port = ENV['TEST_SERVER_PORT'] || '443'
     server_use_tls = ENV['TEST_SERVER_USE_TLS'] || 'true'
     server_authtoken = auth_token || ''
-    server_default_ecosystem = ENV['TEST_SERVER_ECOSYSTEM'] || 'default'
+    server_default_ecosystem = ecosystem_id || ENV['TEST_SERVER_ECOSYSTEM'] || 'default'
     Options_V1::ServiceOptions.new(server_endpoint: server_endpoint, server_port: server_port.to_i, server_use_tls: server_use_tls.downcase != 'false', auth_token: server_authtoken, default_ecosystem: server_default_ecosystem)
   end
 

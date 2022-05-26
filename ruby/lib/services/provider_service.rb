@@ -31,7 +31,8 @@ module Trinsic
       @client.invitation_status(request, metadata: metadata(request))
     end
 
-    def create_ecosystem(request)
+    def create_ecosystem(request = nil)
+      request = request || Provider_V1::CreateEcosystemRequest.new
       @client.create_ecosystem(request, metadata: metadata(request))
     end
 
