@@ -13,7 +13,7 @@ def do_template(template_service)
   # createTemplate() {
   request = Trinsic::Template_V1::CreateCredentialTemplateRequest.new(name: 'VaccinationCertificate',
                                                                       allow_additional_fields: false)
-  request.fields['firstName'] = Trinsic::Template_V1::TemplateField.new(description: 'Given name')
+  request.fields['firstName'] = Trinsic::Template_V1::TemplateField.new(description: 'First name of vaccine recipient')
   request.fields['lastName'] = Trinsic::Template_V1::TemplateField.new
   request.fields['batchNumber'] = Trinsic::Template_V1::TemplateField.new(description: '')
   request.fields['countryOfVaccination'] = Trinsic::Template_V1::TemplateField.new(description: '')
