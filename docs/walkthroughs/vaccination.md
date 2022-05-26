@@ -76,10 +76,8 @@ This tutorial is meant to share the concepts of verifiable credentials, so feel 
     In this project, we'll be following along the [`java/src/test/java/trinsic/VaccineDemo.java`](https://github.com/trinsic-id/sdk/blob/main/java/src/test/java/trinsic/VaccineDemo.java) in our [SDK repository](https://github.com/trinsic-id/sdk)
 
 
-    <!-- Ruby commented out because we don't have a Ruby sample for the rest of this yet
-    === "Ruby"
-        - [Install Instructions](../ruby/index.md) 
-    -->
+=== "Ruby"
+    - [Install Instructions](../ruby/index.md) 
 
 
 === "Go"
@@ -129,6 +127,13 @@ The first step is to create an [ecosystem](/learn/ecosystems/), within which eve
     <!--codeinclude-->
     ```go
     [Create Ecosystem](../../go/services/services_test.go) inside_block:createEcosystem
+    ```
+    <!--/codeinclude-->
+
+=== "Ruby"
+    <!--codeinclude-->
+    ```ruby
+    [Create Ecosystem](../../ruby/test/vaccine_demo.rb) inside_block:createEcosystem
     ```
     <!--/codeinclude-->
 
@@ -238,10 +243,6 @@ The clinic's account will **issue** the credential, Allison's account will **hol
 
     If you would like to save the account for future use, simply write the auth token to storage. Take care to store it in a secure location.
 
-    <!-- ```javascript
-    [Setup Wallets](../../web/test/VaccineDemoShared.ts) inside_block:storeAndRecallProfile
-    ``` -->
-
 
 === "C#"
     <!--codeinclude-->
@@ -278,6 +279,13 @@ The clinic's account will **issue** the credential, Allison's account will **hol
     <!--/codeinclude-->
 
     If you would like to save an account for future use, simply write the auth token to storage. Take care to store it in a secure location.
+
+=== "Ruby"
+    <!--codeinclude-->
+    ```ruby
+    [Create Ecosystem](../../ruby/test/vaccine_demo.rb) inside_block:setupActors
+    ```
+    <!--/codeinclude-->
 
 
 !!! note "Further Reading"
@@ -361,6 +369,13 @@ Templates are simply a list of the fields that a credential can have.
     ```
     <!--/codeinclude-->
 
+=== "Ruby"
+    <!--codeinclude-->
+    ```ruby
+    [Create Ecosystem](../../ruby/test/vaccine_demo.rb) inside_block:createTemplate
+    ```
+    <!--/codeinclude-->
+
 !!! info "Templates are Optional"
 
     Templates are an optional helpful abstraction which removes the need to work directly with complex data formats such as JSON-LD.
@@ -420,14 +435,6 @@ To issue a vaccine certificate, we'll use the template we created in the last st
 
 
 === "Java"
-    We specify links to the jsonld files:
-    <!--codeinclude-->
-    ```java
-    [Data Paths](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:pathData
-    ```
-    <!--/codeinclude-->
-
-    Let's set the active profile to the clinic, and call the issuance endpoint
     <!--codeinclude-->
     ```java
     [Issue Credential](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:issueCredential
@@ -437,12 +444,14 @@ To issue a vaccine certificate, we'll use the template we created in the last st
 === "Go"
     <!--codeinclude-->
     ```go
-    [Data Paths](../../go/services/services_test.go) inside_block:pathData
+    [Issue Credential](../../go/services/services_test.go) inside_block:issueCredential
     ```
     <!--/codeinclude-->
+
+=== "Ruby"
     <!--codeinclude-->
-    ```go
-    [Issue Credential](../../go/services/services_test.go) inside_block:issueCredential
+    ```ruby
+    [Create Ecosystem](../../ruby/test/vaccine_demo.rb) inside_block:issueCredential
     ```
     <!--/codeinclude-->
 
@@ -516,6 +525,13 @@ Once Allison receives the credential, she or her wallet application can store it
     ```
     <!--/codeinclude-->
 
+=== "Ruby"
+    <!--codeinclude-->
+    ```ruby
+    [Create Ecosystem](../../ruby/test/vaccine_demo.rb) inside_block:storeCredential
+    ```
+    <!--/codeinclude-->
+
 
 Note down the response `item_id` printed to the console for the next step.
 
@@ -571,6 +587,13 @@ Let's use the [CreateProof](../../reference/services/credential-service/#create-
     <!--codeinclude-->
     ```go
     [Share Credential](../../go/services/services_test.go) inside_block:shareCredential
+    ```
+    <!--/codeinclude-->
+
+=== "Ruby"
+    <!--codeinclude-->
+    ```ruby
+    [Create Ecosystem](../../ruby/test/vaccine_demo.rb) inside_block:shareCredential
     ```
     <!--/codeinclude-->
 
@@ -633,6 +656,13 @@ Once the airline receives the proof, they can now verify it to ensure its authen
     ```
     <!--/codeinclude-->
 
+=== "Ruby"
+    <!--codeinclude-->
+    ```ruby
+    [Create Ecosystem](../../ruby/test/vaccine_demo.rb) inside_block:verifyCredential
+    ```
+    <!--/codeinclude-->
+
 !!! info
     Reference: [Verify Proof](../reference/services/credential-service.md#verify-proof)
 
@@ -676,3 +706,7 @@ We have language specific sample applications that you can run to understand how
     This sample is available in the [python directory](https://github.com/trinsic-id/sdk/tree/main/python/samples/vaccine_demo.py).
 === "Java"
     This sample is available in our Github repo in the [java directory](https://github.com/trinsic-id/sdk/tree/main/java/src/test/java).
+=== "Go"
+    This sample is available in our Github repo in the [go directory](https://github.com/trinsic-id/sdk/tree/main/go/examples/vaccine_test.go).
+=== "Ruby"
+    This sample is available in our Github repo in the [ruby directory](https://github.com/trinsic-id/sdk/tree/main/ruby/test/vaccine_demo.rb).
