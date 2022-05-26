@@ -75,7 +75,7 @@ public class Tests
 
         // createService() {
         var walletService = new WalletService(_options.CloneWithAuthToken(allison));
-        var credentialsService = new CredentialsService(_options.CloneWithAuthToken(clinic));
+        var credentialsService = new CredentialService(_options.CloneWithAuthToken(clinic));
         // }
 
         // ISSUE CREDENTIAL
@@ -327,7 +327,7 @@ public class Tests
         var options = _options.CloneWithAuthToken(authToken);
 
         var templateService = new TemplateService(options);
-        var credentialService = new CredentialsService(options);
+        var credentialService = new CredentialService(options);
         var walletService = new WalletService(options);
 
         // create example template

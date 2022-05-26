@@ -2,7 +2,7 @@ import org.junit.jupiter.api.Assertions
 import trinsic.TrinsicUtilities
 import trinsic.okapi.DidException
 import trinsic.services.AccountServiceKt
-import trinsic.services.CredentialsServiceKt
+import trinsic.services.CredentialServiceKt
 import trinsic.services.WalletServiceKt
 import trinsic.services.universalwallet.v1.UniversalWalletOuterClass.InsertItemRequest
 import trinsic.services.verifiablecredentials.v1.VerifiableCredentials
@@ -32,7 +32,7 @@ suspend fun runVaccineDemo() {
 
     // createService() {
     val walletService = WalletServiceKt(TrinsicUtilities.getTrinsicServiceOptions(allison))
-    val credentialsService = CredentialsServiceKt(TrinsicUtilities.getTrinsicServiceOptions(clinic))
+    val credentialsService = CredentialServiceKt(TrinsicUtilities.getTrinsicServiceOptions(clinic))
     // }
 
     // storeAndRecallProfile() {

@@ -2,7 +2,7 @@ import asyncio
 from os.path import abspath, join, dirname
 
 from trinsic.account_service import AccountService
-from trinsic.credentials_service import CredentialsService
+from trinsic.credential_service import CredentialService
 from trinsic.proto.services.account.v1 import SignInRequest
 from trinsic.proto.services.universalwallet.v1 import InsertItemRequest, SearchRequest
 from trinsic.proto.services.verifiablecredentials.v1 import (
@@ -47,7 +47,7 @@ async def credential_demo():
     config.default_ecosystem = ecosystem_id
 
     wallet_service = WalletService(server_config=config)
-    credentials_service = CredentialsService(server_config=config)
+    credentials_service = CredentialService(server_config=config)
 
     # Sign a credential as the clinic and send it to Allison
     with open(_vaccine_cert_unsigned_path(), "r") as fid:

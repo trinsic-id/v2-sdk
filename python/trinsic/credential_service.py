@@ -17,7 +17,7 @@ from trinsic.proto.services.verifiablecredentials.v1 import (
 from trinsic.service_base import ServiceBase, ResponseStatusException
 
 
-class CredentialsService(ServiceBase):
+class CredentialService(ServiceBase):
     """Wrapper for the [Credentials Service](/reference/services/Credentials-service/)"""
 
     def __init__(

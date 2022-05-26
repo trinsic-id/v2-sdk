@@ -4,20 +4,19 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.InvalidProtocolBufferException;
 import trinsic.okapi.DidException;
 import trinsic.sdk.options.v1.Options;
-import trinsic.services.common.v1.Common;
 import trinsic.services.verifiablecredentials.v1.VerifiableCredentialGrpc;
 import trinsic.services.verifiablecredentials.v1.VerifiableCredentials;
 
 import java.util.concurrent.ExecutionException;
 
-public class CredentialsService extends ServiceBase {
+public class CredentialService extends ServiceBase {
     private final VerifiableCredentialGrpc.VerifiableCredentialFutureStub stub;
 
-    public CredentialsService() {
+    public CredentialService() {
         this(null);
     }
 
-    public CredentialsService(Options.ServiceOptions options) {
+    public CredentialService(Options.ServiceOptions options) {
         super(options);
 
         this.stub = VerifiableCredentialGrpc.newFutureStub(this.getChannel());
