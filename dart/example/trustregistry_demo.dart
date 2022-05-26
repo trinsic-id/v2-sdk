@@ -16,7 +16,7 @@ Future runTrustRegistryDemo() async {
   var didExampleTest = "did:example:test";
   var frameworkName = "Example Framework: ${uuid.v4()}";
 
-  print("services created");
+  print("services created: $frameworkName  $httpsExampleCom");
 
   // registerGovernanceFramework() {
   var registerFrameworkResponse = await trustRegistryService
