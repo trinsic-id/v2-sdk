@@ -34,7 +34,7 @@ class TrustRegistryService(ServiceBase):
         super().__init__(server_config)
         self.client: TrustRegistryStub = self.stub_with_metadata(TrustRegistryStub)
 
-    async def register_governance_framework(
+    async def add_framework(
         self, *, request: AddFrameworkRequest
     ) -> AddFrameworkResponse:
         """
@@ -50,7 +50,7 @@ class TrustRegistryService(ServiceBase):
         else:
             raise ValueError(f"Invalid URI string={request.governance_framework_uri}")
 
-    async def remove_governance_framework(
+    async def remove_framework(
         self, *, request: RemoveFrameworkRequest
     ) -> RemoveFrameworkResponse:
         return await self.client.remove_framework(remove_framework_request=request)

@@ -35,7 +35,7 @@ void main() {
     test('Trust Registry Service Input Validation', () async {
       var trService = TrustRegistryService(trinsicConfig());
       try {
-        await trService.registerGovernanceFramework(AddFrameworkRequest(
+        await trService.addFramework(AddFrameworkRequest(
             governanceFrameworkUri: "", description: "invalid framework"));
         assert(false);
       } catch (e) {

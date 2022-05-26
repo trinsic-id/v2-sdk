@@ -70,7 +70,7 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
     async def test_trustregistryservice_input_validation(self):
         cred_service = TrustRegistryService(server_config=trinsic_config())
         with self.assertRaises(ValueError) as ve:
-            await cred_service.register_governance_framework(
+            await cred_service.add_framework(
                 request=AddFrameworkRequest(
                     governance_framework_uri="", description="invalid framework"
                 )

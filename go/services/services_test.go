@@ -80,7 +80,7 @@ func TestTrustRegistryDemo(t *testing.T) {
 	frameworkURI := fmt.Sprintf("https://example.com/%s", uuid.New())
 
 	// registerGovernanceFramework() {
-	newFramework, err := service.RegisterGovernanceFramework(context.Background(), &trustregistry.AddFrameworkRequest{
+	newFramework, err := service.AddFramework(context.Background(), &trustregistry.AddFrameworkRequest{
 		GovernanceFrameworkUri: frameworkURI,
 		Name:                   fmt.Sprintf("Example Framework - %s", uuid.New()),
 	})

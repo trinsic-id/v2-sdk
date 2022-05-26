@@ -25,7 +25,7 @@ public class TrustRegistryService extends ServiceBase {
         this.stub2 = TrustRegistryGrpc.newBlockingStub(this.getChannel());
     }
 
-    public ListenableFuture<TrustRegistryOuterClass.AddFrameworkResponse> registerGovernanceFramework(TrustRegistryOuterClass.AddFrameworkRequest request) throws InvalidProtocolBufferException, DidException {
+    public ListenableFuture<TrustRegistryOuterClass.AddFrameworkResponse> addFramework(TrustRegistryOuterClass.AddFrameworkRequest request) throws InvalidProtocolBufferException, DidException {
         try {
             new URL(request.getGovernanceFrameworkUri());
         } catch (MalformedURLException e) {
@@ -34,7 +34,7 @@ public class TrustRegistryService extends ServiceBase {
         return withMetadata(stub, request).addFramework(request);
     }
 
-    public TrustRegistryOuterClass.RemoveFrameworkResponse removeGovernanceFramework(TrustRegistryOuterClass.RemoveFrameworkRequest request) throws InvalidProtocolBufferException, DidException, ExecutionException, InterruptedException {
+    public TrustRegistryOuterClass.RemoveFrameworkResponse removeFramework(TrustRegistryOuterClass.RemoveFrameworkRequest request) throws InvalidProtocolBufferException, DidException, ExecutionException, InterruptedException {
         return withMetadata(stub, request).removeFramework(request).get();
     }
 

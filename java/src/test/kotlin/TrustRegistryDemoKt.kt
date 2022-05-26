@@ -23,7 +23,7 @@ suspend fun runTrustRegistryDemo() {
     val frameworkUri = "https://example.com"
     val typeUri = "https://schema.org/Card"
 
-    val frameworkResponse = service.registerGovernanceFramework(
+    val frameworkResponse = service.addFramework(
         AddFrameworkRequest.newBuilder().setGovernanceFrameworkUri(frameworkUri).build()
     )
     service.registerMember(

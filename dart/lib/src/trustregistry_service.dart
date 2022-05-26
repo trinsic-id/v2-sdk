@@ -13,12 +13,12 @@ class TrustRegistryService extends ServiceBase {
         interceptors: [MetadataInterceptor(this)]);
   }
 
-  Future<AddFrameworkResponse> registerGovernanceFramework(
+  Future<AddFrameworkResponse> addFramework(
       AddFrameworkRequest request) async {
     return await client.addFramework(request);
   }
 
-  Future<RemoveFrameworkResponse> removeGovernanceFramework(
+  Future<RemoveFrameworkResponse> removeFramework(
       RemoveFrameworkRequest request) async {
     return await client.removeFramework(request);
   }
