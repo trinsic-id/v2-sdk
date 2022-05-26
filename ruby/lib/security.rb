@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'services/common/v1/common_pb'
 require 'okapi/security/v1/security_pb'
 require 'okapi'
@@ -8,7 +10,7 @@ require 'okapi/oberon'
 module Trinsic
   # Interface
   module ISecurityProvider
-    def get_auth_header(account_profile, message)
+    def get_auth_header(_account_profile, _message)
       raise 'Not implemented'
     end
   end
@@ -21,12 +23,12 @@ module Trinsic
     end
 
     def get_auth_header(account_profile, message)
-      if account_profile.protection.enabled
-        raise 'The token must be unprotected before use'
-      end
+      raise 'The token must be unprotected before use' if account_profile.protection.enabled
 
       request_hash = Google::Protobuf.encode(message)
-      request_hash = Okapi::Hashing.blake3_hash(Okapi::Hashing::V1::Blake3HashRequest.new(data: request_hash)).digest unless request_hash.length == 0 # skip hashing if empty
+      unless request_hash.length.zero?
+        request_hash = Okapi::Hashing.blake3_hash(Okapi::Hashing::V1::Blake3HashRequest.new(data: request_hash)).digest
+      end
       nonce = Trinsic::Common_V1::Nonce.new(timestamp: (Time.now.to_f * 1000).to_int, request_hash: request_hash)
       request = Okapi::Security::V1::CreateOberonProofRequest.new(token: account_profile.auth_token,
                                                                   data: account_profile.auth_data,
@@ -34,7 +36,7 @@ module Trinsic
       proof = Okapi::Oberon.create_proof(request)
 
       # Convert to base-64
-      "Oberon ver=#{1},proof=#{Base64.urlsafe_encode64(proof.proof)},data=#{Base64.urlsafe_encode64(account_profile.auth_data)},nonce=#{base64_binary_encode(nonce)}"
+      "Oberon ver=1,proof=#{Base64.urlsafe_encode64(proof.proof)},data=#{Base64.urlsafe_encode64(account_profile.auth_data)},nonce=#{base64_binary_encode(nonce)}"
     end
   end
 end

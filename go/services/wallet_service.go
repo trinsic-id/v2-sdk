@@ -24,8 +24,8 @@ func NewWalletService(options *Options) (WalletService, error) {
 type WalletService interface {
 	Service
 	Search(userContext context.Context, request *wallet.SearchRequest) (*wallet.SearchResponse, error)
-	InsertItem(userContext context.Context, request *wallet.InsertItemRequest) (string, error)
-	DeleteItem(userContext context.Context, request *wallet.DeleteItemRequest) error
+	InsertItem(userContext context.Context, request *wallet.InsertItemRequest) (*wallet.InsertItemResponse, error)
+	DeleteItem(userContext context.Context, request *wallet.DeleteItemRequest) (*wallet.DeleteItemResponse, error)
 }
 
 type walletBase struct {
@@ -55,30 +55,30 @@ func (w *walletBase) Search(userContext context.Context, request *wallet.SearchR
 	return response, nil
 }
 
-func (w *walletBase) InsertItem(userContext context.Context, request *wallet.InsertItemRequest) (string, error) {
+func (w *walletBase) InsertItem(userContext context.Context, request *wallet.InsertItemRequest) (*wallet.InsertItemResponse, error) {
 	md, err := w.GetMetadataContext(userContext, request)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 
 	response, err := w.client.InsertItem(md, request)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 
-	return response.ItemId, nil
+	return response, nil
 }
 
-func (w *walletBase) DeleteItem(userContext context.Context, request *wallet.DeleteItemRequest) error {
+func (w *walletBase) DeleteItem(userContext context.Context, request *wallet.DeleteItemRequest) (*wallet.DeleteItemResponse, error) {
 	md, err := w.GetMetadataContext(userContext, request)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
-	_, err = w.client.DeleteItem(md, request)
+	response, err := w.client.DeleteItem(md, request)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
-	return nil
+	return response, nil
 }

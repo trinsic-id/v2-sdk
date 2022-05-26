@@ -72,6 +72,9 @@ func (p *providerBase) InvitationStatus(ctx context.Context, request *provider.I
 }
 
 func (p *providerBase) CreateEcosystem(ctx context.Context, request *provider.CreateEcosystemRequest) (*provider.CreateEcosystemResponse, error) {
+	if request == nil {
+		request = &provider.CreateEcosystemRequest{}
+	}
 	resp, err := p.client.CreateEcosystem(ctx, request)
 	if err != nil {
 		return nil, err
