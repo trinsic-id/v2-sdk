@@ -78,6 +78,8 @@ public class WalletsDemo {
             Assertions.assertEquals(0, walletItems.getItemsCount());
         }
 
+        System.out.println("Wallets demo successful");
+
         walletService.shutdown();
         accountService.shutdown();
         providerService.shutdown();
