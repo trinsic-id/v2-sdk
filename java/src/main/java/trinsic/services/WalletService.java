@@ -17,6 +17,10 @@ public class WalletService extends ServiceBase {
         this.stub = UniversalWalletGrpc.newFutureStub(this.getChannel());
     }
 
+    public ListenableFuture<UniversalWalletOuterClass.SearchResponse> search() throws InvalidProtocolBufferException, DidException {
+        return search(UniversalWalletOuterClass.SearchRequest.getDefaultInstance());
+    }
+
     public ListenableFuture<UniversalWalletOuterClass.SearchResponse> search(UniversalWalletOuterClass.SearchRequest request) throws InvalidProtocolBufferException, DidException {
         if (request.getQuery().isBlank()) request = UniversalWalletOuterClass.SearchRequest.newBuilder(request).setQuery("SELECT c.id, c.type, c.data FROM c OFFSET 0 LIMIT 100").build();
 
