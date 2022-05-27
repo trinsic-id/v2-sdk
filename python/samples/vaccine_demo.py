@@ -65,7 +65,7 @@ async def vaccine_demo():
     values = json.dumps(
         {
             "firstName": "Allison",
-            "lastName": Allisonne,
+            "lastName": "Allisonne",
             "batchNumber": "123454321",
             "countryOfVaccination": "US",
         }
