@@ -52,7 +52,7 @@ Then you can supply it to SDK:
 === "Java"
     <!--codeinclude-->
     ```java
-    [CreateProof](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:issueCredentialSample
+    [CreateProof](../../../java/src/test/java/trinsic/CredentialsDemo.java) inside_block:issueCredentialSample
     ```
     <!--/codeinclude-->
 
@@ -281,7 +281,7 @@ Then you can supply it to SDK:
 === "Java"
     <!--codeinclude-->
     ```java
-    [CreateProof](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:createProof
+    [CreateProof](../../../java/src/test/java/trinsic/CredentialsDemo.java) inside_block:createProof
     ```
     <!--/codeinclude-->
 
@@ -336,7 +336,7 @@ Then you can supply it to SDK:
 === "Java"
     <!--codeinclude-->
     ```java
-    [VerifyProof](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:verifyProof
+    [VerifyProof](../../../java/src/test/java/trinsic/CredentialsDemo.java) inside_block:verifyProof
     ```
     <!--/codeinclude-->
 
@@ -406,7 +406,7 @@ Then you can supply it to SDK:
 === "Java"
     <!--codeinclude-->
     ```java
-    [SendRequest](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:sendCredential
+    [SendRequest](../../../java/src/test/java/trinsic/CredentialsDemo.java) inside_block:sendCredential
     ```
     <!--/codeinclude-->
 

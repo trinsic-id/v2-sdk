@@ -63,6 +63,11 @@ class TrinsicServicesTest {
     }
 
     @Test
+    public void testCredentialsDemo() throws IOException, ExecutionException, InterruptedException, DidException {
+        CredentialsDemo.run();
+    }
+
+    @Test
     public void testProviderServiceInputValidation() {
         var providerService = new ProviderService(TrinsicUtilities.getTrinsicServiceOptions());
         Assertions.assertThrows(IllegalArgumentException.class, () -> providerService.inviteParticipant(ProviderOuterClass.InviteRequest.newBuilder().build()));
