@@ -115,7 +115,7 @@ async function doTemplate(templateService: TemplateService): Promise<TemplateDat
   });
 
   const batchNumberField = TemplateField.fromPartial({
-    type: FieldType.STRING,
+    type: FieldType.NUMBER,
     description: "Batch number of vaccine"
   });
 

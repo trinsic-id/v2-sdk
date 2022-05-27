@@ -9,6 +9,7 @@ from trinsic.proto.services.verifiablecredentials.templates.v1 import (
     CreateCredentialTemplateRequest,
     TemplateData,
     TemplateField,
+    FieldType
 )
 from trinsic.proto.services.verifiablecredentials.v1 import (
     IssueFromTemplateRequest,
@@ -148,10 +149,10 @@ async def do_template(template_service: TemplateService) -> TemplateData:
             name="VaccinationCertificate",
             allow_additional_fields=False,
             fields={
-                "firstName": TemplateField(description="Given name"),
-                "lastName": TemplateField(),
-                "batchNumber": TemplateField(description=""),
-                "countryOfVaccination": TemplateField(description=""),
+                "firstName": TemplateField(description="First name of vaccine recipient"),
+                "lastName": TemplateField(description="Last name of vaccine recipient"),
+                "batchNumber": TemplateField(description="Batch number of vaccine", type=FieldType.NUMBER),
+                "countryOfVaccination": TemplateField(description="Country in which the subject was vaccinated"),
             },
         )
     )
