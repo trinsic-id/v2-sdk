@@ -14,6 +14,7 @@ import trinsic.security.OberonSecurityProvider;
 import trinsic.services.account.v1.AccountOuterClass;
 
 import java.util.Base64;
+import java.util.Optional;
 
 public abstract class ServiceBase {
     private final ISecurityProvider securityProvider = new OberonSecurityProvider();
@@ -45,6 +46,10 @@ public abstract class ServiceBase {
 
     public void setProfile(String base64ProfileToken) {
         this.options = Options.ServiceOptions.newBuilder().mergeFrom(this.options).setAuthToken(base64ProfileToken).build();
+    }
+
+    public void setDefaultEcosystem(String ecosystemId) {
+        this.options = Options.ServiceOptions.newBuilder().mergeFrom(this.options).setDefaultEcosystem(ecosystemId).build();
     }
 
     public Options.ServiceOptions getOptions() {
