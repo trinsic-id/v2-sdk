@@ -1,4 +1,4 @@
-name: Node (prod test)
+name: Typescript (prod test)
 
 on:
   workflow_call:
