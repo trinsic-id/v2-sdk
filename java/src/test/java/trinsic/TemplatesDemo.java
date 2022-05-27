@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import trinsic.okapi.DidException;
 import trinsic.services.AccountService;
 import trinsic.services.CredentialTemplateService;
-import trinsic.services.CredentialsService;
+import trinsic.services.CredentialService;
 import trinsic.services.verifiablecredentials.templates.v1.Templates;
 import trinsic.services.verifiablecredentials.v1.VerifiableCredentials;
 
@@ -22,7 +22,7 @@ public class TemplatesDemo {
         var accountService = new AccountService(TrinsicUtilities.getTrinsicServiceOptions());
         var account = accountService.signIn().get();
         var templateService = new CredentialTemplateService(TrinsicUtilities.getTrinsicServiceOptions(account));
-        var credentialService = new CredentialsService(TrinsicUtilities.getTrinsicServiceOptions(account));
+        var credentialService = new CredentialService(TrinsicUtilities.getTrinsicServiceOptions(account));
 
         // create example template
         // createTemplate() {

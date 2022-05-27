@@ -3,7 +3,7 @@ import json
 import uuid
 
 from trinsic.account_service import AccountService
-from trinsic.credentials_service import CredentialsService
+from trinsic.credential_service import CredentialService
 from trinsic.credentialtemplates_service import TemplateService
 from trinsic.proto.services.verifiablecredentials.templates.v1 import (
     TemplateField,
@@ -23,7 +23,7 @@ async def templates_demo():
     account_service = AccountService(server_config=trinsic_config())
     profile = await account_service.sign_in()
     template_service = TemplateService(server_config=trinsic_config(profile))
-    credential_service = CredentialsService(server_config=trinsic_config(profile))
+    credential_service = CredentialService(server_config=trinsic_config(profile))
 
     # create example template
     # createTemplate() {

@@ -2,7 +2,7 @@ import asyncio
 import json
 
 from trinsic.account_service import AccountService
-from trinsic.credentials_service import CredentialsService
+from trinsic.credential_service import CredentialService
 from trinsic.credentialtemplates_service import TemplateService
 from trinsic.proto.services.universalwallet.v1 import InsertItemRequest
 from trinsic.proto.services.verifiablecredentials.templates.v1 import (
@@ -39,7 +39,7 @@ async def vaccine_demo():
     config.default_ecosystem = ecosystem_id
 
     wallet_service = WalletService(server_config=config)
-    credential_service = CredentialsService(server_config=config)
+    credential_service = CredentialService(server_config=config)
     template_service = TemplateService(server_config=config)
 
     # setupActors() {
