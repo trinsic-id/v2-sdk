@@ -14,7 +14,6 @@ import trinsic.security.OberonSecurityProvider;
 import trinsic.services.account.v1.AccountOuterClass;
 
 import java.util.Base64;
-import java.util.Optional;
 
 public abstract class ServiceBase {
     private final ISecurityProvider securityProvider = new OberonSecurityProvider();
