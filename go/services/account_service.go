@@ -91,7 +91,7 @@ func (a *accountBase) Unprotect(authtoken, securityCode string) (string, error) 
 		Blinding: append([][]byte{}, []byte(securityCode)),
 	}
 
-	response, err := okapi.Oberon().UnblindToken(request)
+	response, err := okapi.Oberon().UnBlindToken(request)
 	if err != nil {
 		return "", err
 	}
