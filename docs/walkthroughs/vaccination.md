@@ -73,9 +73,6 @@ This tutorial is meant to share the concepts of verifiable credentials, so feel 
 === "Java"
     - <a href="/java/" target="_blank">Installation instructions</a> for Java.
 
-    In this project, we'll be following along the [`java/src/test/java/trinsic/VaccineDemo.java`](https://github.com/trinsic-id/sdk/blob/main/java/src/test/java/trinsic/VaccineDemo.java) in our [SDK repository](https://github.com/trinsic-id/sdk)
-
-
 === "Go"
     - [Install Instructions](../go/index.md)
    
@@ -117,7 +114,7 @@ The first step is to create an [ecosystem](/learn/ecosystems/), within which eve
 === "Java"
     <!--codeinclude-->
     ```java
-    [Create Ecosystem](../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:createEcosystem
+    [Create Ecosystem](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:createEcosystem
     ```
     <!--/codeinclude-->
 
@@ -356,7 +353,7 @@ Templates are simply a list of the fields that a credential can have.
 === "Java"
     <!--codeinclude-->
     ```java
-    [Create Template](../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:createTemplate
+    [Create Template](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:createTemplate
     ```
     <!--/codeinclude-->
 
