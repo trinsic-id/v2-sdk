@@ -2090,7 +2090,14 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">issueResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">credentialsService</span><span class="p">.</span><span class="na">issueCredential</span><span class="p">(</span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">IssueRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setDocumentJson</span><span class="p">(</span><span class="n">credentialJson</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">issueResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">credentialService</span><span class="p">.</span><span class="na">issueCredential</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">IssueRequest</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">setDocumentJson</span><span class="p">(</span><span class="n">unsignedCredential</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">()</span><span class="w"></span>
+<span class="p">).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+
+<span class="kd">var</span><span class="w"> </span><span class="n">signedCredentialJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">issueResult</span><span class="p">.</span><span class="na">getSignedDocumentJson</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>
@@ -2725,7 +2732,15 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">createProofResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">credentialsService</span><span class="p">.</span><span class="na">createProof</span><span class="p">(</span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">CreateProofRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setItemId</span><span class="p">(</span><span class="n">itemId</span><span class="p">).</span><span class="na">setRevealDocumentJson</span><span class="p">(</span><span class="n">proofRequestJson</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">createProofResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">credentialService</span><span class="p">.</span><span class="na">createProof</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">CreateProofRequest</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">setDocumentJson</span><span class="p">(</span><span class="n">signedCredentialJson</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">setRevealDocumentJson</span><span class="p">(</span><span class="n">proofRequestJson</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">()</span><span class="w"></span>
+<span class="p">).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+
+<span class="kd">var</span><span class="w"> </span><span class="n">credentialProof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createProofResponse</span><span class="p">.</span><span class="na">getProofDocumentJson</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>
@@ -3043,7 +3058,14 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">verifyProofResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">credentialsService</span><span class="p">.</span><span class="na">verifyProof</span><span class="p">(</span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">VerifyProofRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setProofDocumentJson</span><span class="p">(</span><span class="n">credentialProof</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">verifyProofResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">credentialService</span><span class="p">.</span><span class="na">verifyProof</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">VerifyProofRequest</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">setProofDocumentJson</span><span class="p">(</span><span class="n">credentialProof</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">()</span><span class="w"></span>
+<span class="p">).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+
+<span class="kt">boolean</span><span class="w"> </span><span class="n">isValid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">verifyProofResponse</span><span class="p">.</span><span class="na">getIsValid</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block"></div>
@@ -3396,7 +3418,13 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">credentialsService</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">SendRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setDocumentJson</span><span class="p">(</span><span class="n">credentialProof</span><span class="p">).</span><span class="na">setEmail</span><span class="p">(</span><span class="s">&quot;example@trinsic.id&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">());</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">credentialService</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">SendRequest</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">setDocumentJson</span><span class="p">(</span><span class="n">signedCredentialJson</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">setEmail</span><span class="p">(</span><span class="n">recipientEmail</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">()</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>

@@ -1998,9 +1998,6 @@
 <h2 id="search-query">Search / Query<a class="headerlink" href="#search-query" title="Permanent link">&para;</a></h2>
 <p>Querying template data in our SDK is enabled through the use of familiar SQL syntax. All data is stored in JSON-LD format, so it can be easily searched.
 This approach allows us to give developers full control over how data is retrieved. In addition to customizable sorting, paging and filtering, developers have the ability to construct projections, combine result sets, and even run user-defined functions over their queries.</p>
-<blockquote>
-<p>This endpoint will support querying using <a href="https://w3c-ccg.github.io/vp-request-spec/" target="_blank">Verifiable Presentation Request Spec <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a>. This feature is still in development.</p>
-</blockquote>
 <p>Template searching works very similarly to Wallet searching. Please refer to <a href="../wallet-service/#search--query">Wallet Service &gt; Search / Query</a> for more information.</p>
 <h3 id="basic-search">Basic Search<a class="headerlink" href="#basic-search" title="Permanent link">&para;</a></h3>
 <p>The default query used in the commands below returns the first 100 items in the template result set. The query is <code>SELECT * FROM c OFFSET 0 LIMIT 100</code>.</p>
