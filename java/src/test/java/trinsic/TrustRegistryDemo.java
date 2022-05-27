@@ -24,8 +24,8 @@ public class TrustRegistryDemo {
         final String frameworkUri = "https://example.com/" + UUID.randomUUID();
         final String typeUri = "https://schema.org/Card";
 
-        // registerGovernanceFramework() {
-        var frameworkResponse = service.registerGovernanceFramework(TrustRegistryOuterClass.AddFrameworkRequest.newBuilder().setGovernanceFrameworkUri(frameworkUri).setName("Example Framework" + UUID.randomUUID()).build()).get();
+        // addFramework() {
+        var frameworkResponse = service.addFramework(TrustRegistryOuterClass.AddFrameworkRequest.newBuilder().setGovernanceFrameworkUri(frameworkUri).setName("Example Framework" + UUID.randomUUID()).build()).get();
         // }
 
         // registerIssuerSample() {

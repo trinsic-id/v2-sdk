@@ -7,7 +7,7 @@ import trinsic.services.verifiablecredentials.v1.VerifiableCredentialGrpcKt
 import trinsic.services.verifiablecredentials.v1.VerifiableCredentials.*
 import java.util.concurrent.ExecutionException
 
-class CredentialsServiceKt(
+class CredentialServiceKt(
     options: Options.ServiceOptions?
 ) : ServiceBase(options) {
     var stub = VerifiableCredentialGrpcKt.VerifiableCredentialCoroutineStub(this.channel)

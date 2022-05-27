@@ -71,7 +71,7 @@ export class TrustRegistryService extends ServiceBase {
     });
   }
 
-  public async addGovernanceFramework(
+  public async addFramework(
     request: AddFrameworkRequest
   ): Promise<AddFrameworkResponse> {
     return this.client.addFramework(request, {
@@ -81,7 +81,7 @@ export class TrustRegistryService extends ServiceBase {
     });
   }
 
-  public async removeGovernanceFramework(
+  public async removeFramework(
     request: RemoveFrameworkRequest
   ): Promise<RemoveFrameworkResponse> {
     return this.client.removeFramework(request, {

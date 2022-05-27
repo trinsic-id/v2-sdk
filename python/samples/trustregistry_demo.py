@@ -26,7 +26,7 @@ async def trustregistry_demo():
     framework_name = f"Example Framework: {uuid.uuid4()}"
 
     # registerGovernanceFramework() {
-    register_framework_response = await service.register_governance_framework(
+    register_framework_response = await service.add_framework(
         request=AddFrameworkRequest(
             governance_framework_uri=https_example_com,
             description="Demo framework",

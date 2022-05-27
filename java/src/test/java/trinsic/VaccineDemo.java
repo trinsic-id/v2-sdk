@@ -3,7 +3,7 @@ package trinsic;
 
 import trinsic.okapi.DidException;
 import trinsic.services.AccountService;
-import trinsic.services.CredentialsService;
+import trinsic.services.CredentialService;
 import trinsic.services.WalletService;
 import trinsic.services.universalwallet.v1.UniversalWalletOuterClass;
 import trinsic.services.verifiablecredentials.v1.VerifiableCredentials;
@@ -35,7 +35,7 @@ public class VaccineDemo {
 
         // createService() {
         var walletService = new WalletService(TrinsicUtilities.getTrinsicServiceOptions(allison));
-        var credentialsService = new CredentialsService(TrinsicUtilities.getTrinsicServiceOptions(clinic));
+        var credentialsService = new CredentialService(TrinsicUtilities.getTrinsicServiceOptions(clinic));
         // }
 
         // storeAndRecallProfile() {

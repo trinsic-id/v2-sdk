@@ -16,20 +16,26 @@ Future runTrustRegistryDemo() async {
   var didExampleTest = "did:example:test";
   var frameworkName = "Example Framework: ${uuid.v4()}";
 
+  print("services created: $frameworkName  $httpsExampleCom");
+
   // registerGovernanceFramework() {
   var registerFrameworkResponse = await trustRegistryService
-      .registerGovernanceFramework(AddFrameworkRequest(
+      .addFramework(AddFrameworkRequest(
           description: "Demo framework",
           name: frameworkName,
           governanceFrameworkUri: httpsExampleCom));
   // }
 
+  print("Framework registered: $registerFrameworkResponse");
+
   // registerIssuerSample() {
-  await trustRegistryService.registerMember(RegisterMemberRequest(
+  var registerMemberResponse = await trustRegistryService.registerMember(RegisterMemberRequest(
       didUri: didExampleTest,
       frameworkId: registerFrameworkResponse.id,
       schemaUri: httpsSchemaOrg));
   // }
+
+  print("Member registered: $registerMemberResponse");
 
   // checkIssuerStatus() {
   var checkResponse = await trustRegistryService.getMembershipStatus(
@@ -38,6 +44,8 @@ Future runTrustRegistryDemo() async {
           governanceFrameworkUri: httpsExampleCom,
           schemaUri: httpsSchemaOrg));
   // }
+
+  print("Member Status: $checkResponse");
 
   assert(checkResponse.status == RegistrationStatus.CURRENT);
 

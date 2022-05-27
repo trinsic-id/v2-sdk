@@ -1,80 +1,131 @@
+# frozen_string_literal: true
+
 require 'trinsic_services'
 require 'services/service_base'
 require 'services/account_service'
+require 'services/provider_service'
 require 'services/credential_service'
+require 'services/credential_template_service'
 require 'services/wallet_service'
 require 'json'
 
-def data_base_path
-  File.expand_path(File.join(File.dirname(__FILE__), "..", "..", "devops", "testdata"))
-end
+def do_template(template_service)
+  # createTemplate() {
+  request = Trinsic::Template_V1::CreateCredentialTemplateRequest.new(name: 'VaccinationCertificate',
+                                                                      allow_additional_fields: false)
+  request.fields['firstName'] = Trinsic::Template_V1::TemplateField.new(description: 'First name of vaccine recipient')
+  request.fields['lastName'] = Trinsic::Template_V1::TemplateField.new(description: 'Last name of vaccine recipient')
+  request.fields['batchNumber'] = Trinsic::Template_V1::TemplateField.new(description: 'Batch number of vaccine')
+  request.fields['countryOfVaccination'] = Trinsic::Template_V1::TemplateField.new(description: 'Country in which the subject was vaccinated')
 
-def vaccine_cert_unsigned_path
-  File.expand_path(File.join(data_base_path, "vaccination-certificate-unsigned.jsonld"))
-end
+  template = template_service.create(request)
+  template_id = template.data.id
+  # }
 
-def vaccine_cert_frame_path
-  File.expand_path(File.join(data_base_path, "vaccination-certificate-frame.jsonld"))
+  raise 'template should not be nil' if template.nil?
+  raise 'template data should not be nil' if template.data.nil?
+  raise 'template data id should not be nil' if template.data.id.nil?
+  raise 'template data schema uri should not be nil' if template.data.schema_uri.nil?
+
+  template.data
 end
 
 def vaccine_demo_run
-  account_service = Trinsic::AccountService.new(Trinsic::trinsic_server)
+  config = Trinsic.trinsic_server
 
-  # SETUP ACTORS
-  # Create 3 different profiles for each participant in the scenario
+  account_service = Trinsic::AccountService.new(config)
+  provider_service = Trinsic::ProviderService.new(config)
+
+  # createEcosystem() {
+  ecosystem = provider_service.create_ecosystem
+  ecosystem_id = ecosystem.ecosystem.id
+  # }
+
+  # Set service default ecosystem
+  provider_service.default_ecosystem = ecosystem_id
+  account_service.default_ecosystem = ecosystem_id
+  config.default_ecosystem = ecosystem_id
+
+  wallet_service = Trinsic::WalletService.new(config)
+  credential_service = Trinsic::CredentialService.new(config)
+  template_service = Trinsic::CredentialTemplateService.new(config)
+
+  # setupActors() {
+  # Create an account for each participant in the scenario
   allison = account_service.sign_in
   clinic = account_service.sign_in
   airline = account_service.sign_in
+  # }
 
-  # Store profile for later use
-  # File.WriteAllBytes("allison.bin", allison.ToByteString().ToByteArray());
+  account_service.auth_token = clinic
+  info = account_service.get_info
+  puts("account info #{info}")
 
-  # Create profile from existing data
-  # var allison = WalletProfile.Parser.ParseFrom(File.ReadAllBytes("allison.bin"));
+  # Create a template
+  template_service.auth_token = clinic
+  template = do_template(template_service)
 
-  wallet_service = Trinsic::WalletService.new(Trinsic::trinsic_server(allison))
-  credential_service = Trinsic::CredentialService.new(Trinsic::trinsic_server(clinic))
+  # Create template values
 
-  # ISSUE CREDENTIAL
-  # Sign a credential as the clinic and send it to Allison
-  wallet_service.profile = clinic
-  credential_service.profile = clinic
-  text = File.open(self.vaccine_cert_unsigned_path).read
-  credential_json = JSON.parse(text)
+  # issueCredential() {
+  # Prepares values for credential
+  values = JSON.generate({ "firstName": 'Allison', "lastName": 'Allisonne', "batchNumber": '123454321',
+                           "countryOfVaccination": 'US' })
 
-  issue_result = credential_service.issue_credential(Trinsic::Credentials_V1::IssueRequest.new(document_json: JSON.generate(credential_json)))
-  credential = issue_result.signed_document_json
-  puts "Credential: #{credential}"
+  # Issue credential
+  issue_response = credential_service.issue_from_template(Trinsic::Credentials_V1::IssueFromTemplateRequest.new(
+                                                            template_id: template.id, values_json: values
+                                                          ))
+  credential = issue_response.document_json
+  # }
 
-  # STORE CREDENTIAL
-  # Alice stores the credential in her cloud wallet.
-  wallet_service.profile = allison
-  credential_service.profile = allison
-  item_id = wallet_service.insert_item(Trinsic::Wallet_V1::InsertItemRequest.new(item_json: credential))
-  puts "item id = #{item_id}"
+  puts("Credential: #{credential}")
 
-  # SHARE CREDENTIAL
-  # Allison shares the credential with the venue.
-  # The venue has communicated with Allison the details of the credential
-  # that they require expressed as a JSON-LD frame.
-  wallet_service.profile = allison
-  credential_service.profile = allison
-  text2 = File.open(self.vaccine_cert_frame_path).read
-  proof_request_json = JSON.parse(text2)
+  begin
+    # sendCredential() {
+    send_response = credential_service.send(Trinsic::Credentials_V1::SendRequest.new(document_json: credential,
+                                                                                     email: 'example@trinsic.id'))
+    # }
+  rescue Exception
+    # this is expected since the email doesn't exist
+  end
 
-  proof_result = credential_service.create_proof(Trinsic::Credentials_V1::CreateProofRequest.new(item_id: item_id, reveal_document_json: JSON.generate(proof_request_json)))
-  credential_proof = proof_result.proof_document_json
-  puts "Proof: #{credential_proof}"
+  # storeCredential() {
+  # Allison stores the credential in her cloud wallet
+  wallet_service.auth_token = allison
+  insert_response = wallet_service.insert_item(Trinsic::Wallet_V1::InsertItemRequest.new(item_json: credential))
+  item_id = insert_response.item_id
+  # }
+  puts("item id = #{item_id}")
 
-  # VERIFY CREDENTIAL
+  # shareCredential() {
+  # Allison shares the credential with the airline
+  credential_service.auth_token = allison
+  proof_response = credential_service.create_proof(Trinsic::Credentials_V1::CreateProofRequest.new(item_id: item_id))
+  credential_proof = proof_response.proof_document_json
+  # }
+
+  puts("Proof: #{credential_proof}")
+
+  # verifyCredential() {
   # The airline verifies the credential
-  wallet_service.profile = airline
-  credential_service.profile = airline
-  verify_result = credential_service.verify_proof(Trinsic::Credentials_V1::VerifyProofRequest.new(proof_document_json: credential_proof))
-  valid = verify_result.is_valid
-  puts "Verification result: #{valid}"
+  credential_service.auth_token = airline
 
-  raise "Credential should be valid" unless valid
+  verify_result = credential_service.verify_proof(Trinsic::Credentials_V1::VerifyProofRequest.new(proof_document_json: credential_proof))
+
+  valid = verify_result.is_valid
+  # }
+
+  puts("Verification result: #{valid}")
+  raise 'Proof should be valid' unless valid
+
+  # revokeCredential() {
+  # update_status_response = await credential_service.update_status(credential_status_id=status_id, revoked=True)
+  # print(f"UpdateStatusResponse: {update_status_response}")
+  # credential_status = await credential_service.check_status(credential_status_id=status_id)
+  # print(f"Credential_status: {credential_status}")
+  # assert credential_status.revoked is True
+  # }
 end
 
 vaccine_demo_run

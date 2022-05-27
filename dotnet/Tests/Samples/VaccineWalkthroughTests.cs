@@ -89,7 +89,7 @@ public class VaccineWalkthroughTests
 
 
         // issueCredential() {
-        var credentialService = new CredentialsService(_options);
+        var credentialService = new CredentialService(_options);
 
         // Set active profile to 'clinic' so we can issue credential signed
         // with the clinic's signing keys

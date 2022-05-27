@@ -24,10 +24,10 @@ func NewTrustRegistryService(options *Options) (TrustRegistryService, error) {
 // TrustRegistryService defines the interface for interacting with trust registries
 type TrustRegistryService interface {
 	Service
-	// RegisterGovernanceFramework in the ecosystem
-	RegisterGovernanceFramework(userContext context.Context, request *trustregistry.AddFrameworkRequest) (*trustregistry.AddFrameworkResponse, error)
-	// RemoveGovernanceFramework from the ecosystem
-	RemoveGovernanceFramework(userContext context.Context, request *trustregistry.RemoveFrameworkRequest) (*trustregistry.RemoveFrameworkResponse, error)
+	// AddFramework in the ecosystem
+	AddFramework(userContext context.Context, request *trustregistry.AddFrameworkRequest) (*trustregistry.AddFrameworkResponse, error)
+	// RemoveFramework from the ecosystem
+	RemoveFramework(userContext context.Context, request *trustregistry.RemoveFrameworkRequest) (*trustregistry.RemoveFrameworkResponse, error)
 	// RegisterMember to issue the given credentials within the governance framework
 	RegisterMember(userContext context.Context, request *trustregistry.RegisterMemberRequest) (*trustregistry.RegisterMemberResponse, error)
 	// UnregisterMember in the given governance framework
@@ -45,7 +45,7 @@ type trustRegistryBase struct {
 	client trustregistry.TrustRegistryClient
 }
 
-func (t *trustRegistryBase) RegisterGovernanceFramework(userContext context.Context, request *trustregistry.AddFrameworkRequest) (*trustregistry.AddFrameworkResponse, error) {
+func (t *trustRegistryBase) AddFramework(userContext context.Context, request *trustregistry.AddFrameworkRequest) (*trustregistry.AddFrameworkResponse, error) {
 	// Verify that it is a valid uri
 	_, err := url.Parse(request.GovernanceFrameworkUri)
 	if err != nil {
@@ -121,7 +121,7 @@ func (t *trustRegistryBase) SearchRegistry(userContext context.Context, request 
 	return response, nil
 }
 
-func (t *trustRegistryBase) RemoveGovernanceFramework(userContext context.Context, request *trustregistry.RemoveFrameworkRequest) (*trustregistry.RemoveFrameworkResponse, error) {
+func (t *trustRegistryBase) RemoveFramework(userContext context.Context, request *trustregistry.RemoveFrameworkRequest) (*trustregistry.RemoveFrameworkResponse, error) {
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err

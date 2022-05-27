@@ -7,22 +7,22 @@ using Trinsic.Services.VerifiableCredentials.V1;
 
 namespace Trinsic;
 
-public class CredentialsService : ServiceBase
+public class CredentialService : ServiceBase
 {
-    public CredentialsService(ServiceOptions options)
+    public CredentialService(ServiceOptions options)
         : base(options) {
         Client = new(Channel);
     }
 
-    public CredentialsService() {
+    public CredentialService() {
         Client = new(Channel);
     }
 
-    internal CredentialsService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
+    internal CredentialService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
         Client = new(Channel);
     }
 
-    internal CredentialsService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
+    internal CredentialService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
         : base(options.Value, tokenProvider) {
         Client = new(Channel);
     }

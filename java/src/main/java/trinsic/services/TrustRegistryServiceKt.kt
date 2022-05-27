@@ -16,7 +16,7 @@ class TrustRegistryServiceKt(
     var stub = TrustRegistryGrpcKt.TrustRegistryCoroutineStub(this.channel)
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
-    suspend fun registerGovernanceFramework(request: AddFrameworkRequest): AddFrameworkResponse {
+    suspend fun addFramework(request: AddFrameworkRequest): AddFrameworkResponse {
         try {
             URL(request.governanceFrameworkUri)
         } catch (e: MalformedURLException) {
@@ -31,7 +31,7 @@ class TrustRegistryServiceKt(
         ExecutionException::class,
         InterruptedException::class
     )
-    suspend fun removeGovernanceFramework(request: RemoveFrameworkRequest): RemoveFrameworkResponse {
+    suspend fun removeFramework(request: RemoveFrameworkRequest): RemoveFrameworkResponse {
         return withMetadata(stub, request).removeFramework(request)
     }
 
