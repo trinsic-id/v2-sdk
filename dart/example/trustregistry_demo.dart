@@ -20,7 +20,7 @@ Future runTrustRegistryDemo() async {
 
   // registerGovernanceFramework() {
   var registerFrameworkResponse = await trustRegistryService
-      .registerGovernanceFramework(AddFrameworkRequest(
+      .addFramework(AddFrameworkRequest(
           description: "Demo framework",
           name: frameworkName,
           governanceFrameworkUri: httpsExampleCom));

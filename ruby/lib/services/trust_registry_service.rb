@@ -16,7 +16,7 @@ module Trinsic
       end
     end
 
-    def add_governance_framework(request)
+    def add_framework(request)
       # verify uri
       uri = URI(request.governance_framework_uri)
       raise 'Invalid governance framework uri' unless uri.scheme
@@ -24,7 +24,7 @@ module Trinsic
       @client.add_framework(request, metadata: metadata(request))
     end
 
-    def remove_governance_framework(request)
+    def remove_framework(request)
       @client.remove_framework(request, metadata: metadata(request))
     end
 

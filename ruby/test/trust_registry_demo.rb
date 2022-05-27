@@ -12,7 +12,7 @@ def trust_registry_demo_run
 
   # New governance framework
   framework_uri = "urn:egf:#{SecureRandom.uuid}"
-  governance_framework_response = service.add_governance_framework(Trinsic::TrustRegistry_V1::AddFrameworkRequest.new(
+  governance_framework_response = service.add_framework(Trinsic::TrustRegistry_V1::AddFrameworkRequest.new(
                                                                      governance_framework_uri: framework_uri, name: "Test Governance Framework - #{SecureRandom.uuid}"
                                                                    ))
 
