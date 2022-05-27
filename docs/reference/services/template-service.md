@@ -113,8 +113,6 @@ The response model is of type [Get Credential Template Response](../proto/index.
 Querying template data in our SDK is enabled through the use of familiar SQL syntax. All data is stored in JSON-LD format, so it can be easily searched.
 This approach allows us to give developers full control over how data is retrieved. In addition to customizable sorting, paging and filtering, developers have the ability to construct projections, combine result sets, and even run user-defined functions over their queries.
 
-> This endpoint will support querying using [Verifiable Presentation Request Spec <small>:material-open-in-new:</small>](https://w3c-ccg.github.io/vp-request-spec/){target=_blank}. This feature is still in development.
-
 Template searching works very similarly to Wallet searching. Please refer to [Wallet Service > Search / Query](./wallet-service.md#search--query) for more information.
 
 ### Basic Search

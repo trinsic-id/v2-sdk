@@ -47,6 +47,10 @@ public abstract class ServiceBase {
         this.options = Options.ServiceOptions.newBuilder().mergeFrom(this.options).setAuthToken(base64ProfileToken).build();
     }
 
+    public void setDefaultEcosystem(String ecosystemId) {
+        this.options = Options.ServiceOptions.newBuilder().mergeFrom(this.options).setDefaultEcosystem(ecosystemId).build();
+    }
+
     public Options.ServiceOptions getOptions() {
         return this.options;
     }
