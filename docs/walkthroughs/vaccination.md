@@ -651,19 +651,24 @@ Once the airline receives the proof, they can use the [VerifyProof](../reference
 ## Full Source Code
 
 === "Typescript"
-    [web](https://github.com/trinsic-id/sdk/tree/main/web/test/VaccineDemoShared.ts)    
+    This sample is available as [`VaccineDemoShared.ts`](https://github.com/trinsic-id/sdk/tree/main/web/test/VaccineDemoShared.ts) in our SDK repository.
 
 === "C#"
-    This sample is available in our [dotnet](https://github.com/trinsic-id/sdk/blob/main/dotnet/Tests/Samples/VaccineWalkthroughTests.cs) SDK repository. 
-
-    <!-- TODO: include working replit embed -->
-
+    This sample is available as [`VaccineWalkthroughTests.cs`](https://github.com/trinsic-id/sdk/blob/main/dotnet/Tests/Samples/VaccineWalkthroughTests.cs) in our SDK repository.
 
 === "Python"
-    This sample is available as [`vaccine_demo.py`](https://github.com/trinsic-id/sdk/blob/main/python/samples/vaccine_demo.py)
+    This sample is available as [`vaccine_demo.py`](https://github.com/trinsic-id/sdk/blob/main/python/samples/vaccine_demo.py) in our SDK repository.
 
 === "Java"
-    This sample is available in the [Java](https://github.com/trinsic-id/sdk/tree/main/java/src/test/java) directory.
+    This sample is available as [`VaccineDemo.java`](https://github.com/trinsic-id/sdk/blob/main/java/src/test/java/trinsic/VaccineDemo.java) in our SDK repository.
+
+=== "Go"
+    This sample is available as [`vaccine_test.go`](https://github.com/trinsic-id/sdk/blob/main/go/examples/vaccine_test.go) in our SDK repository.
+
+=== "Ruby"
+    This sample is available as [`vaccine_demo.rb`](https://github.com/trinsic-id/sdk/blob/main/ruby/test/vaccine_demo.rb) in our SDK repository.
+
+--- 
 
 ## Next Steps:
 
