@@ -361,6 +361,8 @@ Templates are simply a list of the fields that a credential can have.
     - Learn more about [Templates](/learn/templates){target=_blank}
     - Browse the [Template API reference](/reference/services/template-service/){target=_blank}
 
+---
+
 ## Issue a Credential
 Upon receiving her vaccine, the clinic issues Allison a Verifiable Credential, which proves that she was given the vaccine by the clinic.
 
@@ -440,6 +442,7 @@ To issue a vaccine certificate, we'll use the template we created in the last st
 
 
 ---
+
 ## Send Credential to Allison
 
 Now that the clinic has a signed credential, it must be securely transmitted to Allison, so she can store it in her wallet.
@@ -582,8 +585,6 @@ Allison sends this proof to the airline for them to verify.
     It is possible for the airline to send Allison a *frame* which requests only certain fields of the credential. The airline would not be able to see other fields of the credential, but cryptographic guarantees would still hold over the revealed fields.
 
     See the [CreateProof](../../reference/services/credential-service/#create-proof) reference for more information.
-    
-
 ---
 
 ## Verify Proof
@@ -670,7 +671,7 @@ Once the airline receives the proof, they can use the [VerifyProof](../reference
 
 --- 
 
-## Next Steps:
+## Next Steps
 
 Congratulations! If you've completed all the steps of this walkthrough, you've just created a mini ecosystem of issuers, verifiers, and holders all exchanging credentials. Depending on your goals, there are a couple of possible next steps to take. 
 
