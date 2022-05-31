@@ -587,7 +587,7 @@ Allison sends this proof to the airline for them to verify.
 ---
 
 ## Verify Proof
-Once the airline receives the proof, they can now verify it to ensure its authenticity. 
+Once the airline receives the proof, they can use the [VerifyProof](../reference/services/credential-service.md#verify-proof){target=_blank} call to ensure its authenticity.
 
 === "Trinsic CLI"
     ```bash
@@ -639,8 +639,12 @@ Once the airline receives the proof, they can now verify it to ensure its authen
     ```
     <!--/codeinclude-->
 
-!!! info
-    Reference: [Verify Proof](../reference/services/credential-service.md#verify-proof)
+
+!!! info "Interoperability"
+
+    The Verifiable Credentials and Proofs that Trinsic's platform produces are based on open standards.
+
+    Although we use the [VerifyProof](../reference/services/credential-service.md#verify-proof){target=_blank} call in this example, the proof could be verified using any standards-compliant software.
 
 ---
 
