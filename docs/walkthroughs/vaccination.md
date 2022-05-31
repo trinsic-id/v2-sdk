@@ -185,7 +185,7 @@ Accounts can be created with a single call; they're designed to minimize onboard
 The clinic's account will **issue** the credential, Allison's account will **hold** it, and the airline's account will **verify** its contents.
 
 === "Trinsic CLI"
-    The CLI offers an interactive way of creating wallets. For demo purposes, we'll create all three on the same machine.
+    The CLI makes it easy to create wallets. For demo purposes, we'll create all three on the same machine.
     
     When using the CLI, the authentication token of the most recently used account is saved in `~/.trinsic`. In a real-world scenario, you should back this token up securely.
 
@@ -253,6 +253,12 @@ The clinic's account will **issue** the credential, Allison's account will **hol
     ```
     <!--/codeinclude-->
 
+!!! info "Production Usage"
+    In this example, we've created *anonymous* accounts; the only way to access them is by saving the authentication token generated on account creation.
+
+    In a production scenario, you may want to create accounts tied to a user's email address or phone number. This allows users to securely access their Trinsic cloud wallets at any time.
+
+    Note that accounts are tied to their ecosystem. If you create an account tied to `bob@example.com` in the `example1` ecosystem, it will not be visible in any other ecosystem. The same email address can be used to create accounts in multiple ecosystems.
 
 !!! note "Further Reading: Accounts and Wallets"
     - Learn more about [Wallets](../learn/wallets.md){target=_blank}
