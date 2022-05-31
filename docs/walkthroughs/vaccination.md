@@ -171,8 +171,10 @@ Once we've created our ecosystem, we need to configure our SDK client (or CLI) t
 
     ```
 
+!!! info "Further Reading: Ecosystems"
 
-
+    - Learn more about [Ecosystems](/learn/ecosystems){target=_blank}
+    - Browse the [Provider API reference](/reference/services/provider-service/){target=_blank}
 
 ## Create Accounts
 
@@ -252,10 +254,10 @@ The clinic's account will **issue** the credential, Allison's account will **hol
     <!--/codeinclude-->
 
 
-!!! note "Further Reading"
-    - Manage access to cloud wallets with the [Account Service](../reference/services/account-service.md#login)
-    - Learn more about [Wallets](../learn/wallets.md)
-    - Read more about [security profiles](../reference/index.md#authorization) and authentication.
+!!! note "Further Reading: Accounts and Wallets"
+    - Learn more about [Wallets](../learn/wallets.md){target=_blank}
+    - Browse the [Account API reference](/reference/services/account-service/){target=_blank}
+    - Read about [authentication tokens and security](/learn/security/){target=_blank}
 
 ---
 
@@ -348,6 +350,10 @@ Templates are simply a list of the fields that a credential can have.
 
     Trinsic's SDKs support issuing JSON-LD credentials that you create yourself, should you choose not to use templates.
 
+!!! note "Further Reading: Templates"
+
+    - Learn more about [Templates](/learn/templates){target=_blank}
+    - Browse the [Template API reference](/reference/services/template-service/){target=_blank}
 
 ## Issue a Credential
 Upon receiving her vaccine, the clinic issues Allison a Verifiable Credential, which proves that she was given the vaccine by the clinic.
@@ -421,11 +427,10 @@ To issue a vaccine certificate, we'll use the template we created in the last st
 
 
 
-!!! info
-    Reference: 
-    
-    - Learn more about how to [issue a credential](../reference/services/wallet-service.md#issue-credential)
-    - Learn more about [verifiable credentials](../learn/credentials.md)
+!!! note "Further Reading: Issuance and Credentials"
+
+    - Learn more about [Verifiable Credentials](/learn/credentials/){target=_blank}
+    - Browse the [Credential API reference](/reference/services/credential-service/){target=_blank}
 
 
 ---
@@ -499,8 +504,9 @@ Once Allison receives the credential, she or her wallet application can store it
 
 Note down the response `item_id` printed to the console for the next step.
 
-!!! info
-    Reference: [Insert Record](../reference/services/wallet-service.md#insert-item)
+!!! note "Further Reading: Wallets"
+    - Learn more about [Wallets](/learn/wallets/){target=_blank}
+    - Browse the [Wallet API reference](/reference/services/wallet-service/){target=_blank}
 
 
 ---
