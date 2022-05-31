@@ -14,7 +14,7 @@
         
       
       <link rel="icon" href="../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15+insiders-4.16.0">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.16+insiders-4.16.2">
     
     
       
@@ -22,10 +22,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.bec4e691.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ca782038.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.96b5c56e.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
         
       
       
@@ -147,7 +147,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#walkthrough" class="md-skip">
+        <a href="#walkthrough-build-a-vaccine-card" class="md-skip">
           Skip to content
         </a>
       
@@ -288,10 +288,8 @@
         
 
 
-  
-    
-    
-  
+
+
   
     
     
@@ -312,13 +310,11 @@
       
         
 
+  
 
-  
-    
-    
-      
-    
-  
+
+
+
   
     
     
@@ -340,10 +336,8 @@
         
 
 
-  
-    
-    
-  
+
+
   
     
     
@@ -365,10 +359,8 @@
         
 
 
-  
-    
-    
-  
+
+
   
     
     
@@ -390,10 +382,8 @@
         
 
 
-  
-    
-    
-  
+
+
   
     
     
@@ -964,24 +954,9 @@
         <li class="md-nav__item">
   <a href="#next-steps" class="md-nav__link">
     <span class="md-ellipsis">
-      Next Steps:
+      Next Steps
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Next Steps:">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sample-applications" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sample Applications
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1878,24 +1853,9 @@
         <li class="md-nav__item">
   <a href="#next-steps" class="md-nav__link">
     <span class="md-ellipsis">
-      Next Steps:
+      Next Steps
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Next Steps:">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sample-applications" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sample Applications
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1918,74 +1878,40 @@
 
 
 
-<h1 id="walkthrough">Walkthrough<a class="headerlink" href="#walkthrough" title="Permanent link">&para;</a></h1>
-<p>This walkthrough will show how a vaccination card can be issued, held, and proven using verifiable credentials with the Trinsic CLI. Feel free to follow along in a terminal using the CLI. We'll cover each part of Trinsic's platform during the tutorial. </p>
+<h1 id="walkthrough-build-a-vaccine-card">Walkthrough: Build a Vaccine Card<a class="headerlink" href="#walkthrough-build-a-vaccine-card" title="Permanent link">&para;</a></h1>
+<p>This walkthrough demonstrates how a vaccination card can be issued, held, and shared using Verifiable Credentials with Trinsic.</p>
 <h2 id="meet-allison">Meet Allison<a class="headerlink" href="#meet-allison" title="Permanent link">&para;</a></h2>
-<p>In this walkthrough we'll explore a scenario where Allison gets her vaccination certificate. She then uses this certificate to board an airline that requires proof of vaccination.</p>
-<!-- ```mermaid
-journey
-    section Issuance
-      Obtain cert.: 3: Allison, Clinic
-      Store in wallet: 3: Allison
-    section Verification
-      Request cert.: 3: Allison, Airline
-      Share: 3: Allison
-      Verify: 5: Airline
-``` -->
-
-<p>In most credential exchange scenarios there are three primary roles - Issuer, Holder, and Verifier.</p>
-<p><strong>Holder</strong>: Stores issued credentials from an issuer. Most often this is the credential subject. Also generates passes to share with verifiers.</p>
-<p><strong>Issuer</strong>: Responsible for issuing signed credentials that attest information about a credential subject</p>
-<p><strong>Verifier</strong>: Verifies passes presented from holders.</p>
-<p>In this case, Allison will be the holder, a vaccination clinic will be an issuer, and an airline will be the verifier. 
-<div class="highlight"><pre><span></span><code>walkthrough
-|- allison - Holder
-|- clinic - Issuer
-|- airline - Verifier
-</code></pre></div></p>
+<p>We'll follow Allison as she obtains a vaccine certificate, stores it in her digital wallet, and presents it to board an airplane.</p>
+<p>In most credential exchange scenarios, there are three primary roles: Issuer, Holder, and Verifier.</p>
+<p><strong>Holder</strong>: Stores credentials received from issuers, and presents them to verifiers. <em>(Said credentials are often, but not always, attesting information about the holder)</em></p>
+<p><strong>Issuer</strong>: Signs and issues credentials which attest information about a credential subject.</p>
+<p><strong>Verifier</strong>: Verifies credentials presented by holders.</p>
+<p>In this case, Allison will be the <em>holder</em>, a vaccination clinic will be the <em>issuer</em>, and an airline will be the <em>verifier</em>. </p>
 <h2 id="our-sdks">Our SDKs<a class="headerlink" href="#our-sdks" title="Permanent link">&para;</a></h2>
-<p>This tutorial is meant to share the concepts of verifiable credentials, so feel free to sit back and read through this without running any code. However, you can also follow along using one of our SDKs. </p>
-<!-- We've set up some environments to use on Repl.it. If your language of choice isn't supported on repl.it, you can also run locally by installing the SDK of your choice. -->
-
+<p>You can follow along using one of our SDKs, or use the Trinsic CLI, which implements full platform functionality.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:7"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><input id="__tabbed_1_7" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Trinsic CLI</label><label for="__tabbed_1_2">Typescript</label><label for="__tabbed_1_3">C#</label><label for="__tabbed_1_4">Python</label><label for="__tabbed_1_5">Java</label><label for="__tabbed_1_6">Go</label><label for="__tabbed_1_7">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<ul>
-<li><a href="/cli/" target="_blank">Installation instructions</a> for the Trinsic CLI.</li>
-</ul>
-<p>Once the CLI is installed, clone our CLI example repository on Github to download the credential data for this walkthrough.</p>
-<div class="highlight"><pre><span></span><code>git clone https://github.com/trinsic-id/cli-example &amp;&amp; cd cli-example
-</code></pre></div>
-<p>If you don't want to install locally, we also have a replit environment for you to use. In a new tab, you can open our <!--<a href="./demo.md">demo environment</a>--> to use the CLI. This demo environment works best when run side-by-side the following walkthrough using two tabs in your browser.</p>
+<p><a href="/cli/" target="_blank">Click here</a> for installation instructions for the Trinsic CLI.</p>
+<!-- If you don't want to install locally, we also have a replit environment for you to use. In a new tab, you can open our <a href="./demo.md">demo environment</a> to use the CLI. This demo environment works best when run side-by-side the following walkthrough using two tabs in your browser. -->
 </div>
 <div class="tabbed-block">
-<p><a href="/web/" target="_blank">Installation instructions</a> for the Node/Browser SDk.</p>
+<p><a href="/web/" target="_blank">Click here</a> for installation instructions for the Node/Browser SDK.</p>
 </div>
 <div class="tabbed-block">
-<p>Let's create a new .NET console app that we will use to add our sample code</p>
-<div class="highlight"><pre><span></span><code>dotnet new console -n TrinsicSample <span class="o">&amp;&amp;</span> <span class="nb">cd</span> TrinsicSample
-</code></pre></div>
-<p>Now we'll follow the <a href="/dotnet/" target="_blank">installation instructions</a> for Dotnet.</p>
+<p><a href="/dotnet/" target="_blank">Click here</a> for installation instructions for the .NET SDK.</p>
 </div>
 <div class="tabbed-block">
-<ul>
-<li><a href="/python/" target="_blank">Installation instructions</a> for Python.</li>
-</ul>
+<p><a href="/python/" target="_blank">Click here</a> for installation instructions for the Python SDK.</p>
 </div>
 <div class="tabbed-block">
-<ul>
-<li><a href="/java/" target="_blank">Installation instructions</a> for Java.</li>
-</ul>
+<p><a href="/java/" target="_blank">Click here</a> for installation instructions for the Java SDK.</p>
 </div>
 <div class="tabbed-block">
-<ul>
-<li><a href="../../go/">Install Instructions</a></li>
-</ul>
+<p><a href="/go/" target="_blank">Click here</a> for installation instructions for the Go SDK.</p>
 </div>
 <div class="tabbed-block">
-<ul>
-<li><a href="../../ruby/">Install Instructions</a> </li>
-</ul>
+<p><a href="/ruby/" target="_blank">Click here</a> for installation instructions for the Ruby   SDK.</p>
 </div>
 </div>
 </div>
@@ -2099,6 +2025,13 @@ journey
 </div>
 </div>
 </div>
+<div class="admonition info">
+<p class="admonition-title">Further Reading: Ecosystems</p>
+<ul>
+<li>Learn more about <a href="/learn/ecosystems" target="_blank">Ecosystems</a></li>
+<li>Browse the <a href="/reference/services/provider-service/" target="_blank">Provider API reference</a></li>
+</ul>
+</div>
 <h2 id="create-accounts">Create Accounts<a class="headerlink" href="#create-accounts" title="Permanent link">&para;</a></h2>
 <p>We need to create Trinsic accounts for the participants in this credential exchange. Accounts and wallets can be considered interchangeably; all accounts have exactly one associated wallet.</p>
 <p>Accounts can be created with a single call; they're designed to minimize onboarding friction for your users.</p>
@@ -2106,7 +2039,7 @@ journey
 <div class="tabbed-set tabbed-alternate" data-tabs="4:7"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><input id="__tabbed_4_6" name="__tabbed_4" type="radio" /><input id="__tabbed_4_7" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Trinsic CLI</label><label for="__tabbed_4_2">Typescript</label><label for="__tabbed_4_3">C#</label><label for="__tabbed_4_4">Python</label><label for="__tabbed_4_5">Java</label><label for="__tabbed_4_6">Go</label><label for="__tabbed_4_7">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>The CLI offers an interactive way of creating wallets. For demo purposes, we'll create all three on the same machine.</p>
+<p>The CLI makes it easy to create wallets. For demo purposes, we'll create all three on the same machine.</p>
 <p>When using the CLI, the authentication token of the most recently used account is saved in <code>~/.trinsic</code>. In a real-world scenario, you should back this token up securely.</p>
 <div class="highlight"><pre><span></span><code>trinsic account login --name <span class="s2">&quot;Allison&quot;</span>
 <span class="c1"># Save auth token in `allison.txt` before continuing</span>
@@ -2168,17 +2101,23 @@ trinsic account login --name <span class="s2">&quot;Vaccination Clinic&quot;</sp
 </div>
 </div>
 </div>
+<div class="admonition info">
+<p class="admonition-title">Production Usage</p>
+<p>In this example, we've created <em>anonymous</em> accounts; the only way to access them is by saving the authentication token generated on account creation.</p>
+<p>In a production scenario, you may want to create accounts tied to a user's email address or phone number. This allows users to securely access their Trinsic cloud wallets at any time.</p>
+<p>Note that accounts are tied to their ecosystem. If you create an account tied to <code>bob@example.com</code> in the <code>example1</code> ecosystem, it will not be visible in any other ecosystem. The same email address can be used to create accounts in multiple ecosystems.</p>
+</div>
 <div class="admonition note">
-<p class="admonition-title">Further Reading</p>
+<p class="admonition-title">Further Reading: Accounts and Wallets</p>
 <ul>
-<li>Manage access to cloud wallets with the <a href="../../reference/services/account-service/#login">Account Service</a></li>
-<li>Learn more about <a href="../../learn/wallets/">Wallets</a></li>
-<li>Read more about <a href="../../reference/#authorization">security profiles</a> and authentication.</li>
+<li>Learn more about <a href="../../learn/wallets/" target="_blank">Wallets</a></li>
+<li>Browse the <a href="/reference/services/account-service/" target="_blank">Account API reference</a></li>
+<li>Read about <a href="/learn/security/" target="_blank">authentication tokens and security</a></li>
 </ul>
 </div>
 <hr />
 <h2 id="define-a-template">Define a Template<a class="headerlink" href="#define-a-template" title="Permanent link">&para;</a></h2>
-<p>Before we can issue a credential, we need to create a <a href="/learn/templates/" target:_blank="target:_blank">Template</a> for it. </p>
+<p>Before we can issue a credential, we need to create a <a href="/learn/templates/" target="_blank">Template</a> for it. </p>
 <p>Templates are simply a list of the fields that a credential can have.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:7"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><input id="__tabbed_5_4" name="__tabbed_5" type="radio" /><input id="__tabbed_5_5" name="__tabbed_5" type="radio" /><input id="__tabbed_5_6" name="__tabbed_5" type="radio" /><input id="__tabbed_5_7" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Trinsic CLI</label><label for="__tabbed_5_2">Typescript</label><label for="__tabbed_5_3">C#</label><label for="__tabbed_5_4">Python</label><label for="__tabbed_5_5">Java</label><label for="__tabbed_5_6">Go</label><label for="__tabbed_5_7">Ruby</label></div>
 <div class="tabbed-content">
@@ -2353,6 +2292,14 @@ trinsic account login --name <span class="s2">&quot;Vaccination Clinic&quot;</sp
 <p>When a template is used to issue a credential, the result is a valid, interoperable JSON-LD Verifiable Credential.</p>
 <p>Trinsic's SDKs support issuing JSON-LD credentials that you create yourself, should you choose not to use templates.</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Further Reading: Templates</p>
+<ul>
+<li>Learn more about <a href="/learn/templates" target="_blank">Templates</a></li>
+<li>Browse the <a href="/reference/services/template-service/" target="_blank">Template API reference</a></li>
+</ul>
+</div>
+<hr />
 <h2 id="issue-a-credential">Issue a Credential<a class="headerlink" href="#issue-a-credential" title="Permanent link">&para;</a></h2>
 <p>Upon receiving her vaccine, the clinic issues Allison a Verifiable Credential, which proves that she was given the vaccine by the clinic.</p>
 <p>A credential is a JSON document that has been cryptographically signed; this signature enables verifiers to trust that the data comes a trusted source, and has not been tampered with.</p>
@@ -2502,12 +2449,11 @@ trinsic vc issue-from-template --template-id <span class="o">{</span>TEMPLATE_ID
 </div>
 </div>
 </div>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>Reference: </p>
+<div class="admonition note">
+<p class="admonition-title">Further Reading: Issuance and Credentials</p>
 <ul>
-<li>Learn more about how to <a href="../../reference/services/wallet-service/#issue-credential">issue a credential</a></li>
-<li>Learn more about <a href="../../learn/credentials/">verifiable credentials</a></li>
+<li>Learn more about <a href="/learn/credentials/" target="_blank">Verifiable Credentials</a></li>
+<li>Browse the <a href="/reference/services/credential-service/" target="_blank">Credential API reference</a></li>
 </ul>
 </div>
 <hr />
@@ -2597,9 +2543,12 @@ trinsic wallet insert-item --item credential.json
 </div>
 </div>
 <p>Note down the response <code>item_id</code> printed to the console for the next step.</p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>Reference: <a href="../../reference/services/wallet-service/#insert-item">Insert Record</a></p>
+<div class="admonition note">
+<p class="admonition-title">Further Reading: Wallets</p>
+<ul>
+<li>Learn more about <a href="/learn/wallets/" target="_blank">Wallets</a></li>
+<li>Browse the <a href="/reference/services/wallet-service/" target="_blank">Wallet API reference</a></li>
+</ul>
 </div>
 <hr />
 <h2 id="create-a-proof-of-vaccination">Create a Proof of Vaccination<a class="headerlink" href="#create-a-proof-of-vaccination" title="Permanent link">&para;</a></h2>
@@ -2689,7 +2638,7 @@ trinsic vc create-proof --document-id <span class="s2">&quot;{ITEM_ID}&quot;</sp
 </div>
 <hr />
 <h2 id="verify-proof">Verify Proof<a class="headerlink" href="#verify-proof" title="Permanent link">&para;</a></h2>
-<p>Once the airline receives the proof, they can now verify it to ensure its authenticity. </p>
+<p>Once the airline receives the proof, they can use the <a href="../../reference/services/credential-service/#verify-proof" target="_blank">VerifyProof</a> call to ensure its authenticity.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="11:7"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><input id="__tabbed_11_3" name="__tabbed_11" type="radio" /><input id="__tabbed_11_4" name="__tabbed_11" type="radio" /><input id="__tabbed_11_5" name="__tabbed_11" type="radio" /><input id="__tabbed_11_6" name="__tabbed_11" type="radio" /><input id="__tabbed_11_7" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Trinsic CLI</label><label for="__tabbed_11_2">Typescript</label><label for="__tabbed_11_3">C#</label><label for="__tabbed_11_4">Python</label><label for="__tabbed_11_5">Java</label><label for="__tabbed_11_6">Go</label><label for="__tabbed_11_7">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -2760,59 +2709,42 @@ trinsic vc verify-proof --proof-document proof.json
 </div>
 </div>
 <div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>Reference: <a href="../../reference/services/credential-service/#verify-proof">Verify Proof</a></p>
+<p class="admonition-title">Interoperability</p>
+<p>The Verifiable Credentials and Proofs that Trinsic's platform produces are based on open standards.</p>
+<p>Although we use the <a href="../../reference/services/credential-service/#verify-proof" target="_blank">VerifyProof</a> call in this example, the proof could be verified using any standards-compliant software.</p>
 </div>
 <hr />
 <h2 id="full-source-code">Full Source Code<a class="headerlink" href="#full-source-code" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="12:4"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><input id="__tabbed_12_3" name="__tabbed_12" type="radio" /><input id="__tabbed_12_4" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Typescript</label><label for="__tabbed_12_2">C#</label><label for="__tabbed_12_3">Python</label><label for="__tabbed_12_4">Java</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:6"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><input id="__tabbed_12_3" name="__tabbed_12" type="radio" /><input id="__tabbed_12_4" name="__tabbed_12" type="radio" /><input id="__tabbed_12_5" name="__tabbed_12" type="radio" /><input id="__tabbed_12_6" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Typescript</label><label for="__tabbed_12_2">C#</label><label for="__tabbed_12_3">Python</label><label for="__tabbed_12_4">Java</label><label for="__tabbed_12_5">Go</label><label for="__tabbed_12_6">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><a href="https://github.com/trinsic-id/sdk/tree/main/web/test/VaccineDemoShared.ts">web</a>    </p>
+<p>This sample is available as <a href="https://github.com/trinsic-id/sdk/tree/main/web/test/VaccineDemoShared.ts"><code>VaccineDemoShared.ts</code></a> in our SDK repository.</p>
 </div>
 <div class="tabbed-block">
-<p>This sample is available in our <a href="https://github.com/trinsic-id/sdk/blob/main/dotnet/Tests/Samples/VaccineWalkthroughTests.cs">dotnet</a> SDK repository. </p>
-<!-- TODO: include working replit embed -->
+<p>This sample is available as <a href="https://github.com/trinsic-id/sdk/blob/main/dotnet/Tests/Samples/VaccineWalkthroughTests.cs"><code>VaccineWalkthroughTests.cs</code></a> in our SDK repository.</p>
 </div>
 <div class="tabbed-block">
-<p>This sample is available as <a href="https://github.com/trinsic-id/sdk/blob/main/python/samples/vaccine_demo.py"><code>vaccine_demo.py</code></a></p>
+<p>This sample is available as <a href="https://github.com/trinsic-id/sdk/blob/main/python/samples/vaccine_demo.py"><code>vaccine_demo.py</code></a> in our SDK repository.</p>
 </div>
 <div class="tabbed-block">
-<p>This sample is available in the <a href="https://github.com/trinsic-id/sdk/tree/main/java/src/test/java">Java</a> directory.</p>
+<p>This sample is available as <a href="https://github.com/trinsic-id/sdk/blob/main/java/src/test/java/trinsic/VaccineDemo.java"><code>VaccineDemo.java</code></a> in our SDK repository.</p>
+</div>
+<div class="tabbed-block">
+<p>This sample is available as <a href="https://github.com/trinsic-id/sdk/blob/main/go/examples/vaccine_test.go"><code>vaccine_test.go</code></a> in our SDK repository.</p>
+</div>
+<div class="tabbed-block">
+<p>This sample is available as <a href="https://github.com/trinsic-id/sdk/blob/main/ruby/test/vaccine_demo.rb"><code>vaccine_demo.rb</code></a> in our SDK repository.</p>
 </div>
 </div>
 </div>
-<h2 id="next-steps">Next Steps:<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <p>Congratulations! If you've completed all the steps of this walkthrough, you've just created a mini ecosystem of issuers, verifiers, and holders all exchanging credentials. Depending on your goals, there are a couple of possible next steps to take. </p>
 <ul>
 <li>Try out a sample app</li>
 <li>Learn more about wallets, credentials, templates, and ecosystems</li>
 <li>Review the SDK Reference</li>
 </ul>
-<h3 id="sample-applications">Sample Applications<a class="headerlink" href="#sample-applications" title="Permanent link">&para;</a></h3>
-<p>We have language specific sample applications that you can run to understand how the Trinsic SDK works in a development environment. </p>
-<div class="tabbed-set tabbed-alternate" data-tabs="13:6"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><input id="__tabbed_13_3" name="__tabbed_13" type="radio" /><input id="__tabbed_13_4" name="__tabbed_13" type="radio" /><input id="__tabbed_13_5" name="__tabbed_13" type="radio" /><input id="__tabbed_13_6" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Typescript</label><label for="__tabbed_13_2">C#</label><label for="__tabbed_13_3">Python</label><label for="__tabbed_13_4">Java</label><label for="__tabbed_13_5">Go</label><label for="__tabbed_13_6">Ruby</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p>This sample is available in our <a href="https://github.com/trinsic-id/sdk-examples/tree/main/web/basic">node directory</a>  </p>
-</div>
-<div class="tabbed-block">
-<p>This sample is available in our <a href="https://github.com/trinsic-id/sdk/blob/main/dotnet/Tests/Tests.cs">dotnet directory</a>. </p>
-</div>
-<div class="tabbed-block">
-<p>This sample is available in the <a href="https://github.com/trinsic-id/sdk/tree/main/python/samples/vaccine_demo.py">python directory</a>.</p>
-</div>
-<div class="tabbed-block">
-<p>This sample is available in our Github repo in the <a href="https://github.com/trinsic-id/sdk/tree/main/java/src/test/java">java directory</a>.</p>
-</div>
-<div class="tabbed-block">
-<p>This sample is available in our Github repo in the <a href="https://github.com/trinsic-id/sdk/tree/main/go/examples/vaccine_test.go">go directory</a>.</p>
-</div>
-<div class="tabbed-block">
-<p>This sample is available in our Github repo in the <a href="https://github.com/trinsic-id/sdk/tree/main/ruby/test/vaccine_demo.rb">ruby directory</a>.</p>
-</div>
-</div>
-</div>
 
 
 
@@ -2892,7 +2824,7 @@ trinsic vc verify-proof --proof-document proof.json
     <script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link", "navigation.instant", "navigation.tracking", "announce.dismiss", "navigation.tabs"], "search": "../../assets/javascripts/workers/search.4bc08946.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.560c3827.min.js"></script>
+      <script src="../../assets/javascripts/bundle.1a3bf749.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
       
