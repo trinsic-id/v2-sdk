@@ -19,50 +19,34 @@ In this case, Allison will be the *holder*, a vaccination clinic will be the *is
 
 
 ## Our SDKs
-This tutorial is meant to share the concepts of verifiable credentials, so feel free to sit back and read through this without running any code. However, you can also follow along using one of our SDKs. 
 
-<!-- We've set up some environments to use on Repl.it. If your language of choice isn't supported on repl.it, you can also run locally by installing the SDK of your choice. -->
+You can follow along using one of our SDKs, or use the Trinsic CLI, which implements full platform functionality.
 
 === "Trinsic CLI"
     
-    - <a href="/cli/" target="_blank">Installation instructions</a> for the Trinsic CLI.
+    [Click here](/cli/){target=_blank} for installation instructions for the Trinsic CLI.
 
-    Once the CLI is installed, clone our CLI example repository on Github to download the credential data for this walkthrough.
-    
-    ```
-    git clone https://github.com/trinsic-id/cli-example && cd cli-example
-    ```
-
-    If you don't want to install locally, we also have a replit environment for you to use. In a new tab, you can open our <!--[demo environment](./demo.md)--> to use the CLI. This demo environment works best when run side-by-side the following walkthrough using two tabs in your browser.
+    <!-- If you don't want to install locally, we also have a replit environment for you to use. In a new tab, you can open our [demo environment](./demo.md) to use the CLI. This demo environment works best when run side-by-side the following walkthrough using two tabs in your browser. -->
 
    
 
 === "Typescript"
-    <a href="/web/" target="_blank">Installation instructions</a> for the Node/Browser SDk.
+    [Click here](/web/){target=_blank} for installation instructions for the Node/Browser SDK.
 
 === "C#"
-    Let's create a new .NET console app that we will use to add our sample code
-
-    ```bash
-    dotnet new console -n TrinsicSample && cd TrinsicSample
-    ```
-
-    Now we'll follow the <a href="/dotnet/" target="_blank">installation instructions</a> for Dotnet.
-
+    [Click here](/dotnet/){target=_blank} for installation instructions for the .NET SDK.
 
 === "Python"
-
-    - <a href="/python/" target="_blank">Installation instructions</a> for Python.
-
+    [Click here](/python/){target=_blank} for installation instructions for the Python SDK.
 
 === "Java"
-    - <a href="/java/" target="_blank">Installation instructions</a> for Java.
+    [Click here](/java/){target=_blank} for installation instructions for the Java SDK.
 
 === "Go"
-    - [Install Instructions](../go/index.md)
+    [Click here](/go/){target=_blank} for installation instructions for the Go SDK.
    
 === "Ruby"
-    - [Install Instructions](../ruby/index.md) 
+    [Click here](/ruby/){target=_blank} for installation instructions for the Ruby   SDK.
 
 ---
 
