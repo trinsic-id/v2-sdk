@@ -269,7 +269,7 @@ The clinic's account will **issue** the credential, Allison's account will **hol
 
 ## Define a Template
 
-Before we can issue a credential, we need to create a [Template](/learn/templates/){target:_blank} for it. 
+Before we can issue a credential, we need to create a [Template](/learn/templates/){target=_blank} for it. 
 
 Templates are simply a list of the fields that a credential can have.
 
