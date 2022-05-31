@@ -1,37 +1,22 @@
-# Walkthrough
+# Walkthrough: Build a Vaccine Card
 
-This walkthrough will show how a vaccination card can be issued, held, and proven using verifiable credentials with the Trinsic CLI. Feel free to follow along in a terminal using the CLI. We'll cover each part of Trinsic's platform during the tutorial. 
+This walkthrough demonstrates how a vaccination card can be issued, held, and shared using Verifiable Credentials with Trinsic.
+
 ## Meet Allison
 
-In this walkthrough we'll explore a scenario where Allison gets her vaccination certificate. She then uses this certificate to board an airline that requires proof of vaccination.
+We'll follow Allison as she obtains a vaccine certificate, stores it in her digital wallet, and presents it to board an airplane.
 
-<!-- ```mermaid
-journey
-    section Issuance
-      Obtain cert.: 3: Allison, Clinic
-      Store in wallet: 3: Allison
-    section Verification
-      Request cert.: 3: Allison, Airline
-      Share: 3: Allison
-      Verify: 5: Airline
-``` -->
+In most credential exchange scenarios, there are three primary roles: Issuer, Holder, and Verifier.
 
-In most credential exchange scenarios there are three primary roles - Issuer, Holder, and Verifier.
+**Holder**: Stores credentials received from issuers, and presents them to verifiers. *(Said credentials are often, but not always, attesting information about the holder)*
 
-**Holder**: Stores issued credentials from an issuer. Most often this is the credential subject. Also generates passes to share with verifiers.
+**Issuer**: Signs and issues credentials which attest information about a credential subject.
 
-**Issuer**: Responsible for issuing signed credentials that attest information about a credential subject
-
-**Verifier**: Verifies passes presented from holders.
+**Verifier**: Verifies credentials presented by holders.
 
 
-In this case, Allison will be the holder, a vaccination clinic will be an issuer, and an airline will be the verifier. 
-```
-walkthrough
-|- allison - Holder
-|- clinic - Issuer
-|- airline - Verifier
-```
+In this case, Allison will be the *holder*, a vaccination clinic will be the *issuer*, and an airline will be the *verifier*. 
+
 
 ## Our SDKs
 This tutorial is meant to share the concepts of verifiable credentials, so feel free to sit back and read through this without running any code. However, you can also follow along using one of our SDKs. 
