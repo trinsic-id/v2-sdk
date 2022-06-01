@@ -133,7 +133,7 @@ public class VaccineDemo {
         var valuesMap = new HashMap<String, Object>();
         valuesMap.put("firstName", "Allison");
         valuesMap.put("lastName", "Allissonne");
-        valuesMap.put("batchNumber", 123454321);
+        valuesMap.put("batchNumber", "123454321");
         valuesMap.put("countryOfVaccination", "US");
 
         //Serialize values to JSON
@@ -167,7 +167,7 @@ public class VaccineDemo {
                 .setDescription("Last name of vaccine recipient")
                 .build());
         fields.put("batchNumber", Templates.TemplateField.newBuilder()
-                .setType(Templates.FieldType.NUMBER)
+                .setType(Templates.FieldType.STRING)
                 .setDescription("Batch number of vaccine")
                 .build());
         fields.put("countryOfVaccination", Templates.TemplateField.newBuilder()
