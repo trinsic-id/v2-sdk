@@ -1967,7 +1967,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:6"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><input id="__tabbed_3_5" name="__tabbed_3" type="radio" /><input id="__tabbed_3_6" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Trinsic CLI</label><label for="__tabbed_3_2">Typescript</label><label for="__tabbed_3_3">C#</label><label for="__tabbed_3_4">Python</label><label for="__tabbed_3_5">Java</label><label for="__tabbed_3_6">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic config default-ecosystem &quot;{ECOSYSTEM_NAME_OR_ID}&quot;
+<div class="highlight"><pre><span></span><code>trinsic config --default-ecosystem &quot;{ECOSYSTEM_NAME_OR_ID}&quot;
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2104,10 +2104,10 @@ trinsic account login --name <span class="s2">&quot;Vaccination Clinic&quot;</sp
 <div class="admonition info">
 <p class="admonition-title">Production Usage</p>
 <p>In this example, we've created <em>anonymous</em> accounts; the only way to access them is by saving the authentication token generated on account creation.</p>
-<p>In a production scenario, you may want to create accounts tied to a user's email address or phone number. This allows users to securely access their Trinsic cloud wallets at any time.</p>
+<p>In a production scenario, you may want to <a href="/reference/services/account-service/#sign-in" target="_blank">create accounts tied to a user's email address</a> or phone number. This allows users to securely access their Trinsic cloud wallets at any time.</p>
 <p>Note that accounts are tied to their ecosystem. If you create an account tied to <code>bob@example.com</code> in the <code>example1</code> ecosystem, it will not be visible in any other ecosystem. The same email address can be used to create accounts in multiple ecosystems.</p>
 </div>
-<div class="admonition note">
+<div class="admonition abstract">
 <p class="admonition-title">Further Reading: Accounts and Wallets</p>
 <ul>
 <li>Learn more about <a href="../../learn/wallets/" target="_blank">Wallets</a></li>
@@ -2292,7 +2292,7 @@ trinsic account login --name <span class="s2">&quot;Vaccination Clinic&quot;</sp
 <p>When a template is used to issue a credential, the result is a valid, interoperable JSON-LD Verifiable Credential.</p>
 <p>Trinsic's SDKs support issuing JSON-LD credentials that you create yourself, should you choose not to use templates.</p>
 </div>
-<div class="admonition note">
+<div class="admonition abstract">
 <p class="admonition-title">Further Reading: Templates</p>
 <ul>
 <li>Learn more about <a href="/learn/templates" target="_blank">Templates</a></li>
@@ -2449,7 +2449,7 @@ trinsic vc issue-from-template --template-id <span class="o">{</span>TEMPLATE_ID
 </div>
 </div>
 </div>
-<div class="admonition note">
+<div class="admonition abstract">
 <p class="admonition-title">Further Reading: Issuance and Credentials</p>
 <ul>
 <li>Learn more about <a href="/learn/credentials/" target="_blank">Verifiable Credentials</a></li>
@@ -2467,7 +2467,7 @@ trinsic vc issue-from-template --template-id <span class="o">{</span>TEMPLATE_ID
 </div>
 <hr />
 <h2 id="store-credential-in-wallet">Store Credential in Wallet<a class="headerlink" href="#store-credential-in-wallet" title="Permanent link">&para;</a></h2>
-<p>Once Allison receives the credential, she or her wallet application can store it within her wallet. She can use any device that she's authorized to use with her wallet. Storing credentials securely is also important to maintaining Allison's privacy. </p>
+<p>Once Allison receives the credential, it must be stored in her wallet.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="9:7"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><input id="__tabbed_9_4" name="__tabbed_9" type="radio" /><input id="__tabbed_9_5" name="__tabbed_9" type="radio" /><input id="__tabbed_9_6" name="__tabbed_9" type="radio" /><input id="__tabbed_9_7" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Trinsic CLI</label><label for="__tabbed_9_2">Typescript</label><label for="__tabbed_9_3">C#</label><label for="__tabbed_9_4">Python</label><label for="__tabbed_9_5">Java</label><label for="__tabbed_9_6">Go</label><label for="__tabbed_9_7">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -2542,8 +2542,8 @@ trinsic wallet insert-item --item credential.json
 </div>
 </div>
 </div>
-<p>Note down the response <code>item_id</code> printed to the console for the next step.</p>
-<div class="admonition note">
+<p>The response to this call contains an Item ID; copy this down.</p>
+<div class="admonition abstract">
 <p class="admonition-title">Further Reading: Wallets</p>
 <ul>
 <li>Learn more about <a href="/learn/wallets/" target="_blank">Wallets</a></li>
@@ -2553,13 +2553,12 @@ trinsic wallet insert-item --item credential.json
 <hr />
 <h2 id="create-a-proof-of-vaccination">Create a Proof of Vaccination<a class="headerlink" href="#create-a-proof-of-vaccination" title="Permanent link">&para;</a></h2>
 <p>Before boarding, the airline requests proof of vaccination from Allison. Specifically, they want to see proof that she holds a <code>VaccinationCertificate</code> credential.</p>
-<p>This request can be communicated using any exchange protocol. Again, we'll assume this was done offline.</p>
 <p>Let's use the <a href="../../reference/services/credential-service/#create-proof">CreateProof</a> call to build a proof for Allison's held credential.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="10:7"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><input id="__tabbed_10_4" name="__tabbed_10" type="radio" /><input id="__tabbed_10_5" name="__tabbed_10" type="radio" /><input id="__tabbed_10_6" name="__tabbed_10" type="radio" /><input id="__tabbed_10_7" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Trinsic CLI</label><label for="__tabbed_10_2">Typescript</label><label for="__tabbed_10_3">C#</label><label for="__tabbed_10_4">Python</label><label for="__tabbed_10_5">Java</label><label for="__tabbed_10_6">Go</label><label for="__tabbed_10_7">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic config --auth-token <span class="k">$(</span>cat allison.txt<span class="k">)</span>
-trinsic vc create-proof --document-id <span class="s2">&quot;{ITEM_ID}&quot;</span> --out proof.json
+trinsic vc create-proof --item-id <span class="s2">&quot;{ITEM_ID}&quot;</span> --out proof.json
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2636,13 +2635,18 @@ trinsic vc create-proof --document-id <span class="s2">&quot;{ITEM_ID}&quot;</sp
 <p>It is possible for the airline to send Allison a <em>frame</em> which requests only certain fields of the credential. The airline would not be able to see other fields of the credential, but cryptographic guarantees would still hold over the revealed fields.</p>
 <p>See the <a href="../../reference/services/credential-service/#create-proof">CreateProof</a> reference for more information.</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">OpenID Connect for Presentation</p>
+<p>Trinsic offers an <a href="/reference/other/openid/" target="_blank">OpenID Connect service</a> as an alternative flow for the exchange of a credential between a holder and a verifier.</p>
+<p>In this flow, a holder simply clicks a link (or scans a QR code), logs into their Trinsic cloud wallet, and selects a credential to share. </p>
+</div>
 <hr />
 <h2 id="verify-proof">Verify Proof<a class="headerlink" href="#verify-proof" title="Permanent link">&para;</a></h2>
 <p>Once the airline receives the proof, they can use the <a href="../../reference/services/credential-service/#verify-proof" target="_blank">VerifyProof</a> call to ensure its authenticity.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="11:7"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><input id="__tabbed_11_3" name="__tabbed_11" type="radio" /><input id="__tabbed_11_4" name="__tabbed_11" type="radio" /><input id="__tabbed_11_5" name="__tabbed_11" type="radio" /><input id="__tabbed_11_6" name="__tabbed_11" type="radio" /><input id="__tabbed_11_7" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Trinsic CLI</label><label for="__tabbed_11_2">Typescript</label><label for="__tabbed_11_3">C#</label><label for="__tabbed_11_4">Python</label><label for="__tabbed_11_5">Java</label><label for="__tabbed_11_6">Go</label><label for="__tabbed_11_7">Ruby</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic config --auth-token <span class="k">$(</span>cat issuer.txt<span class="k">)</span>
+<div class="highlight"><pre><span></span><code>trinsic config --auth-token <span class="k">$(</span>cat airline.txt<span class="k">)</span>
 trinsic vc verify-proof --proof-document proof.json
 </code></pre></div>
 </div>
@@ -2741,9 +2745,9 @@ trinsic vc verify-proof --proof-document proof.json
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <p>Congratulations! If you've completed all the steps of this walkthrough, you've just created a mini ecosystem of issuers, verifiers, and holders all exchanging credentials. Depending on your goals, there are a couple of possible next steps to take. </p>
 <ul>
-<li>Try out a sample app</li>
-<li>Learn more about wallets, credentials, templates, and ecosystems</li>
-<li>Review the SDK Reference</li>
+<li>Try out a <a href="https://github.com/trinsic-id/sdk-examples" target="_blank">sample app</a></li>
+<li>Browse the <a href="/reference/" target="_blank">Service Reference</a></li>
+<li><a href="/learn/intro/" target="_blank">Read more</a> about the key concepts and technologies at play</li>
 </ul>
 
 
