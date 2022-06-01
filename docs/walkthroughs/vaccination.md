@@ -683,6 +683,6 @@ Once the airline receives the proof, they can use the [VerifyProof](../reference
 Congratulations! If you've completed all the steps of this walkthrough, you've just created a mini ecosystem of issuers, verifiers, and holders all exchanging credentials. Depending on your goals, there are a couple of possible next steps to take. 
 
 
-- Try out a sample app
-- Learn more about wallets, credentials, templates, and ecosystems
-- Review the SDK Reference
+- Try out a [sample app](https://github.com/trinsic-id/sdk-examples){target=_blank}
+- Browse the [Service Reference](/reference/){target=_blank}
+- [Read more](/learn/intro/){target=_blank} about the key concepts and technologies at play
