@@ -458,7 +458,8 @@ Because it's just a JSON string, it could be delivered in many ways -- for examp
 ---
 
 ## Store Credential in Wallet
-Once Allison receives the credential, she or her wallet application can store it within her wallet. She can use any device that she's authorized to use with her wallet. Storing credentials securely is also important to maintaining Allison's privacy. 
+
+Once Allison receives the credential, it must be stored in her wallet.
 
 
 === "Trinsic CLI"
@@ -511,7 +512,7 @@ Once Allison receives the credential, she or her wallet application can store it
     <!--/codeinclude-->
 
 
-Note down the response `item_id` printed to the console for the next step.
+The response to this call contains an Item ID; copy this down.
 
 !!! abstract "Further Reading: Wallets"
     - Learn more about [Wallets](/learn/wallets/){target=_blank}
@@ -522,8 +523,6 @@ Note down the response `item_id` printed to the console for the next step.
 
 ## Create a Proof of Vaccination
 Before boarding, the airline requests proof of vaccination from Allison. Specifically, they want to see proof that she holds a `VaccinationCertificate` credential.
-
-This request can be communicated using any exchange protocol. Again, we'll assume this was done offline.
 
 Let's use the [CreateProof](../../reference/services/credential-service/#create-proof) call to build a proof for Allison's held credential.
 
