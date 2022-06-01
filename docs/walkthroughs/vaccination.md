@@ -288,7 +288,7 @@ Templates are simply a list of the fields that a credential can have.
             "description": "Last name of vaccine recipient"
         },
         "batchNumber":{
-            "type": "number",
+            "type": "string",
             "description": "Batch number of vaccine"
         },
         "countryOfVaccination":{

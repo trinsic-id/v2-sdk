@@ -151,7 +151,7 @@ async def do_template(template_service: TemplateService) -> TemplateData:
             fields={
                 "firstName": TemplateField(description="First name of vaccine recipient"),
                 "lastName": TemplateField(description="Last name of vaccine recipient"),
-                "batchNumber": TemplateField(description="Batch number of vaccine", type=FieldType.NUMBER),
+                "batchNumber": TemplateField(description="Batch number of vaccine", type=FieldType.STRING),
                 "countryOfVaccination": TemplateField(description="Country in which the subject was vaccinated"),
             },
         )
