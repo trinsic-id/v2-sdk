@@ -256,11 +256,11 @@ The clinic's account will **issue** the credential, Allison's account will **hol
 !!! info "Production Usage"
     In this example, we've created *anonymous* accounts; the only way to access them is by saving the authentication token generated on account creation.
 
-    In a production scenario, you may want to create accounts tied to a user's email address or phone number. This allows users to securely access their Trinsic cloud wallets at any time.
+    In a production scenario, you may want to [create accounts tied to a user's email address](/reference/services/account-service/#sign-in){target=_blank} or phone number. This allows users to securely access their Trinsic cloud wallets at any time.
 
     Note that accounts are tied to their ecosystem. If you create an account tied to `bob@example.com` in the `example1` ecosystem, it will not be visible in any other ecosystem. The same email address can be used to create accounts in multiple ecosystems.
 
-!!! note "Further Reading: Accounts and Wallets"
+!!! abstract "Further Reading: Accounts and Wallets"
     - Learn more about [Wallets](../learn/wallets.md){target=_blank}
     - Browse the [Account API reference](/reference/services/account-service/){target=_blank}
     - Read about [authentication tokens and security](/learn/security/){target=_blank}
@@ -356,7 +356,7 @@ Templates are simply a list of the fields that a credential can have.
 
     Trinsic's SDKs support issuing JSON-LD credentials that you create yourself, should you choose not to use templates.
 
-!!! note "Further Reading: Templates"
+!!! abstract "Further Reading: Templates"
 
     - Learn more about [Templates](/learn/templates){target=_blank}
     - Browse the [Template API reference](/reference/services/template-service/){target=_blank}
@@ -435,7 +435,7 @@ To issue a vaccine certificate, we'll use the template we created in the last st
 
 
 
-!!! note "Further Reading: Issuance and Credentials"
+!!! abstract "Further Reading: Issuance and Credentials"
 
     - Learn more about [Verifiable Credentials](/learn/credentials/){target=_blank}
     - Browse the [Credential API reference](/reference/services/credential-service/){target=_blank}
@@ -513,7 +513,7 @@ Once Allison receives the credential, she or her wallet application can store it
 
 Note down the response `item_id` printed to the console for the next step.
 
-!!! note "Further Reading: Wallets"
+!!! abstract "Further Reading: Wallets"
     - Learn more about [Wallets](/learn/wallets/){target=_blank}
     - Browse the [Wallet API reference](/reference/services/wallet-service/){target=_blank}
 
@@ -585,6 +585,14 @@ Allison sends this proof to the airline for them to verify.
     It is possible for the airline to send Allison a *frame* which requests only certain fields of the credential. The airline would not be able to see other fields of the credential, but cryptographic guarantees would still hold over the revealed fields.
 
     See the [CreateProof](../../reference/services/credential-service/#create-proof) reference for more information.
+
+!!! note "OpenID Connect for Presentation"
+
+    Trinsic offers an [OpenID Connect service](/reference/other/openid/){target=_blank} as an alternative flow for the exchange of a credential between a holder and a verifier.
+
+    In this flow, a holder simply clicks a link (or scans a QR code), logs into their Trinsic cloud wallet, and selects a credential to share. 
+
+
 ---
 
 ## Verify Proof
