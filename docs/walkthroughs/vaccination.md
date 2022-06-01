@@ -109,7 +109,7 @@ Once we've created our ecosystem, we need to configure our SDK client (or CLI) t
 
 === "Trinsic CLI"
     ```
-    trinsic config default-ecosystem "{ECOSYSTEM_NAME_OR_ID}"
+    trinsic config --default-ecosystem "{ECOSYSTEM_NAME_OR_ID}"
     ```
     
 === "Typescript"
@@ -530,7 +530,7 @@ Let's use the [CreateProof](../../reference/services/credential-service/#create-
 === "Trinsic CLI"
     ```bash
     trinsic config --auth-token $(cat allison.txt)
-    trinsic vc create-proof --document-id "{ITEM_ID}" --out proof.json
+    trinsic vc create-proof --item-id "{ITEM_ID}" --out proof.json
     ```
 
 === "Typescript"
@@ -592,7 +592,7 @@ Once the airline receives the proof, they can use the [VerifyProof](../reference
 
 === "Trinsic CLI"
     ```bash
-    trinsic config --auth-token $(cat issuer.txt)
+    trinsic config --auth-token $(cat airline.txt)
     trinsic vc verify-proof --proof-document proof.json
     ```
 
