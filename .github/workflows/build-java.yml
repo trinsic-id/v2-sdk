@@ -64,5 +64,5 @@ jobs:
         uses: codecov/codecov-action@v2
         with:
           fail_ci_if_error: true
-          directory: java
+          directory: java/build/reports/jacoco/test
           token: ${{ secrets.CODECOV_TOKEN }}

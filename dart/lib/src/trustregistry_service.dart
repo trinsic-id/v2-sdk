@@ -3,8 +3,6 @@ import 'package:trinsic_dart/src/proto/sdk/options/v1/options.pb.dart';
 import 'package:trinsic_dart/src/proto/services/trust-registry/v1/trust-registry.pbgrpc.dart';
 import 'package:trinsic_dart/src/service_base.dart';
 
-
-
 class TrustRegistryService extends ServiceBase {
   late TrustRegistryClient client;
 
@@ -13,8 +11,7 @@ class TrustRegistryService extends ServiceBase {
         interceptors: [MetadataInterceptor(this)]);
   }
 
-  Future<AddFrameworkResponse> addFramework(
-      AddFrameworkRequest request) async {
+  Future<AddFrameworkResponse> addFramework(AddFrameworkRequest request) async {
     return await client.addFramework(request);
   }
 

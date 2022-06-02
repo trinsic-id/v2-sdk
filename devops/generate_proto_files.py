@@ -17,7 +17,7 @@ from build_sdks import update_line, clean_dir, get_language_dir
 
 
 def protoc_plugin_versions(key: str = None) -> Union[str, Dict[str, str]]:
-    version_dict = {"java": "1.44.1", "kotlin": "1.2.1", "mkdocs": "v1.5.0"}
+    version_dict = {"java": "1.46.0", "kotlin": "1.2.1", "mkdocs": "v1.5.0"}
     if key:
         return version_dict[key]
     else:
