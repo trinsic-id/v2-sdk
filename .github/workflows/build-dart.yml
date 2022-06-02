@@ -49,9 +49,8 @@ jobs:
         run: |
           dart pub get
           python ../devops/build_sdks.py --language=dart
-          dart test --coverage="coverage" ./test/dart_test.dart
           dart pub global activate coverage
-          dart run coverage:format_coverage --lcov --in=coverage --out=coverage.lcov --packages=.packages --report-on=lib
+          dart run coverage:test_with_coverage
         shell: pwsh
         working-directory: dart
         env:
