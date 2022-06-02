@@ -4,10 +4,11 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"testing"
+
 	"github.com/google/uuid"
 	template "github.com/trinsic-id/sdk/go/proto/verifiablecredentials/templates/v1"
 	credential "github.com/trinsic-id/sdk/go/proto/verifiablecredentials/v1"
-	"testing"
 )
 
 func TestTemplatesDemo(t *testing.T) {

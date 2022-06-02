@@ -4,7 +4,7 @@
 // 	protoc        v3.20.1
 // source: services/provider/v1/provider.proto
 
-package v1
+package provider
 
 import (
 v1 "github.com/trinsic-id/sdk/go/proto/account/v1"

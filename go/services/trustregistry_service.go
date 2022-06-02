@@ -2,8 +2,9 @@ package services
 
 import (
 	"context"
-	trustregistry "github.com/trinsic-id/sdk/go/proto/trustregistry/v1"
 	"net/url"
+
+	trustregistry "github.com/trinsic-id/sdk/go/proto/trustregistry/v1"
 )
 
 // NewTrustRegistryService returns a trust registry servcie with the base service configured

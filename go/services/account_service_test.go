@@ -2,10 +2,11 @@ package services
 
 import (
 	"context"
-	account "github.com/trinsic-id/sdk/go/proto/account/v1"
+
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/trinsic-id/sdk/go/proto/account/v1"
 )
 
 func TestProtectUnprotectProfile(t *testing.T) {

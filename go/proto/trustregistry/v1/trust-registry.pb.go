@@ -4,7 +4,7 @@
 // 	protoc        v3.20.1
 // source: services/trust-registry/v1/trust-registry.proto
 
-package v1
+package trustregistry
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"

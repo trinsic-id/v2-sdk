@@ -4,7 +4,7 @@
 // 	protoc        v3.20.1
 // source: services/account/v1/account.proto
 
-package v1
+package account
 
 import (
 _ "github.com/trinsic-id/sdk/go/proto/protobuf/options"

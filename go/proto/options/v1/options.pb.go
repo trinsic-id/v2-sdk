@@ -4,7 +4,7 @@
 // 	protoc        v3.20.1
 // source: sdk/options/v1/options.proto
 
-package v1
+package options
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"

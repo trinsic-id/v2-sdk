@@ -4,7 +4,7 @@
 // 	protoc        v3.20.1
 // source: services/universal-wallet/v1/universal-wallet.proto
 
-package v1
+package wallet
 
 import (
 _ "github.com/trinsic-id/sdk/go/proto/protobuf/options"

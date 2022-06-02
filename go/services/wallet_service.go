@@ -2,6 +2,7 @@ package services
 
 import (
 	"context"
+
 	wallet "github.com/trinsic-id/sdk/go/proto/universalwallet/v1"
 )
 

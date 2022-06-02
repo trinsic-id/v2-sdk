@@ -4,7 +4,7 @@
 // 	protoc        v3.20.1
 // source: services/verifiable-credentials/templates/v1/templates.proto
 
-package v1
+package templates
 
 import (
 _ "github.com/trinsic-id/sdk/go/proto/protobuf/options"

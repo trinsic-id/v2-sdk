@@ -1,10 +1,11 @@
 package services
 
 import (
-	options "github.com/trinsic-id/sdk/go/proto/options/v1"
 	"os"
 	"strconv"
 	"strings"
+
+	options "github.com/trinsic-id/sdk/go/proto/options/v1"
 
 	"google.golang.org/grpc"
 )
