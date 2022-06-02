@@ -36,9 +36,15 @@ jobs:
           dotnet restore
           dotnet build -c Release -f net6.0 -p:IsBrowser=true ./Trinsic
           dotnet build -c Release
-          dotnet test -c Release -v n
+          dotnet test -c Release -v n /p:CollectCoverage=true /p:CoverletOutput=$root/coverage /p:CoverletOutputFormat=opencover
         working-directory: ./dotnet
         env:
           TEST_SERVER_ENDPOINT: ${{ secrets.TEST_SERVER_ENDPOINT }}
           TEST_SERVER_PORT: ${{ secrets.TEST_SERVER_PORT }}
           TEST_SERVER_USE_TLS: ${{ secrets.TEST_SERVER_USE_TLS }}
+      - name: "Upload coverage to Codecov"
+        uses: codecov/codecov-action@v2
+        with:
+          fail_ci_if_error: true
+          directory: dotnet/coverage
+          token: ${{ secrets.CODECOV_TOKEN }}
