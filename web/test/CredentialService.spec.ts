@@ -1,13 +1,13 @@
 import { AccountService, CredentialService, IssueRequest, IssueResponse, ServiceOptions } from "../src";
 // @ts-ignore
 import vaccineCertUnsigned from "./data/vaccination-certificate-unsigned.json";
-import {getTestServerOptions, set20SecTimeout} from "./env";
+import {getTestServerOptions, setTestTimeout} from "./env";
 
 
 let options: ServiceOptions = getTestServerOptions();
 
 describe("CredentialService Unit Tests", () => {
-  set20SecTimeout()
+  setTestTimeout()
   beforeAll(async () => {
     let service = new AccountService(options);
     options.authToken = await service.signIn();

@@ -17,7 +17,7 @@ import {
 } from "./TestData";
 
 
-import {getTestServerOptions, set20SecTimeout} from "./env";
+import {getTestServerOptions, setTestTimeout} from "./env";
 import {v4 as uuid} from "uuid";
 
 const options = getTestServerOptions();
@@ -26,7 +26,7 @@ const clinic = getTestServerOptions();
 const airline = getTestServerOptions();
 
 describe("WalletService Unit Tests", () => {
-  set20SecTimeout()
+  setTestTimeout()
   beforeAll(async () => {
     let service = new AccountService(options);
     allison.authToken = await service.signIn();
