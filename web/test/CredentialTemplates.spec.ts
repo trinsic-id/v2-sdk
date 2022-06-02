@@ -1,7 +1,7 @@
 import { AccountService, ServiceOptions } from "../src";
 // @ts-ignore
 import templateCertFrame from "./data/credential-template-frame.json";
-import {getTestServerOptions, set20SecTimeout} from "./env";
+import {getTestServerOptions, setTestTimeout} from "./env";
 import {
   createCredentialTemplateTest,
   createRequiredTestObjects,
@@ -20,7 +20,7 @@ const {
 let options: ServiceOptions = getTestServerOptions();
 
 describe("Demo: Credential Templates", () => {
-  set20SecTimeout()
+  setTestTimeout()
   beforeAll(async () => {
     let service = new AccountService(options);
     options.authToken = await service.signIn();
