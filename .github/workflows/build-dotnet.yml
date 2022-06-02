@@ -36,7 +36,7 @@ jobs:
           dotnet restore
           dotnet build -c Release -f net6.0 -p:IsBrowser=true ./Trinsic
           dotnet build -c Release
-          dotnet test -c Release -v n /p:CollectCoverage=true /p:CoverletOutput=./coverage /p:CoverletOutputFormat=opencover
+          dotnet test -c Release -v n /p:CollectCoverage=true /p:CoverletOutput=coverage/ /p:CoverletOutputFormat=lcov
         working-directory: ./dotnet
         env:
           TEST_SERVER_ENDPOINT: ${{ secrets.TEST_SERVER_ENDPOINT }}
