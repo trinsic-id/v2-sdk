@@ -36,7 +36,7 @@ jobs:
           dotnet restore
           dotnet build -c Release -f net6.0 -p:IsBrowser=true ./Trinsic
           dotnet build -c Release
-          dotnet test -c Release -v n /p:CollectCoverage=true /p:CoverletOutput=coverage/ /p:CoverletOutputFormat=lcov
+          dotnet test -c Release -v n /p:CollectCoverage=true /p:CoverletOutput=./ /p:CoverletOutputFormat=cobertura
         working-directory: ./dotnet
         env:
           TEST_SERVER_ENDPOINT: ${{ secrets.TEST_SERVER_ENDPOINT }}
@@ -46,5 +46,5 @@ jobs:
         uses: codecov/codecov-action@v2
         with:
           fail_ci_if_error: true
-          directory: dotnet/coverage
+          directory: dotnet
           token: ${{ secrets.CODECOV_TOKEN }}
