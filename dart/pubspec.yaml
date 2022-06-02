@@ -17,6 +17,7 @@ dependencies:
       path: dart
 
 dev_dependencies:
-  lints: ^2.0.0
+  lints: any
   test: ^1.16.0
   path: any
+  coverage: any

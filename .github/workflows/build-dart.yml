@@ -49,9 +49,17 @@ jobs:
         run: |
           dart pub get
           python ../devops/build_sdks.py --language=dart
-          dart test ./test/dart_test.dart
+          dart test --coverage="coverage" ./test/dart_test.dart
+          dart pub global activate coverage
+          dart run coverage:format_coverage --lcov --in=coverage --out=coverage.lcov --packages=.packages --report-on=lib
         shell: pwsh
         working-directory: dart
         env:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
           LD_LIBRARY_PATH: "${{ github.workspace }}/libs"
+      - name: "Upload coverage to Codecov"
+        uses: codecov/codecov-action@v2
+        with:
+          fail_ci_if_error: true
+          directory: dart
+          token: ${{ secrets.CODECOV_TOKEN }}
