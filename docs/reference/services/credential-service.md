@@ -10,16 +10,12 @@ Issues a credential from a valid JSON-LD document. You can learn more about how 
 
 **`IssueCredential` requires a valid JSON-LD document to be provided**. Do not confuse this operation with [Issue Credential From Template](./credential-service.md#issue-credential-from-template).
 
-=== "Trinsic CLI"
+{{ proto_method("services.verifiablecredentials.v1.VerifiableCredential.Issue") }}
+
+===! "Trinsic CLI"
     ```bash
     trinsic vc issue --document <JSONLD_FILE> --out <OUTPUT_FILE>
     ```
-
-When using one of the SDKs, you must supply an [Issue Request](../proto/index.md#issuerequest) object. This object follows the model below:
-
-{{ proto_obj('IssueRequest') }}
-
-Then you can supply it to SDK:
 
 === "TypeScript"
     <!--codeinclude-->
@@ -58,10 +54,6 @@ Then you can supply it to SDK:
 
 The output of this method will be a signed JSON document using BBS+ Signature Suite 2020. This document is not automatically stored in the wallet when issued. You need to call the [insert record](#insert-record) separately if you'd like to store a copy of this document.
 
-The response model is of type [Issue Response](../proto/index.md#issueresponse):
-
-{{ proto_obj('IssueResponse') }}
-
 ## Issue Credential from Template
 
 Issues a credential from a previously defined template through [CreateCredential](./template-service.md#create-credential-template) call. The template is specified by passing a JSON document that matches the structure of the template. For example:
@@ -76,7 +68,9 @@ Issues a credential from a previously defined template through [CreateCredential
 
 Do not confuse this operation with [Issue Credential](./credential-service.md#issue-credential) where JSON-LD document is required..
 
-=== "Trinsic CLI"
+{{ proto_method("services.verifiablecredentials.v1.VerifiableCredential.IssueFromTemplate") }}
+
+===! "Trinsic CLI"
     ```bash
     trinsic vc issue-from-template [OPTIONS] --template-id <ID>
 
@@ -85,12 +79,6 @@ Do not confuse this operation with [Issue Credential](./credential-service.md#is
     # --values-data <JSON>    The JSON values of the credential subject
     # --values-file <FILE>    The file with JSON values of the credential subject
     ```
-
-When using one of the SDKs, you must supply an [Issue From Template Request](../proto/index.md#issuefromtemplaterequest) object. This object follows the model below:
-
-{{ proto_obj('IssueFromTemplateRequest') }}
-
-Then you can supply it to SDK:
 
 === "TypeScript"
     <!--codeinclude-->
@@ -129,24 +117,16 @@ Then you can supply it to SDK:
 
 The output of this method will be a signed JSON document using BBS+ Signature Suite 2020. This document is not automatically stored in the wallet when issued. You need to call the [insert record](#insert-record) separately if you'd like to store a copy of this document.
 
-The response model is of type [Issue From Template Response](../proto/index.md#issuefromtemplateresponse):
-
-{{ proto_obj('IssueFromTemplateResponse') }}
-
 ## Check Revocation Status
 
 Get the credential status (revocation) of a previously issued credential. You must supply the credential id to this call.
 
-=== "Trinsic CLI"
+{{ proto_method("services.verifiablecredentials.v1.VerifiableCredential.CheckStatus") }}
+
+===! "Trinsic CLI"
     ```bash
     trinsic vc get-status --credential-status-id <ID>
     ```
-
-When using one of the SDKs, you must supply an [Check Status Request](../proto/index.md#checkstatusrequest) object. This object follows the model below:
-
-{{ proto_obj('CheckStatusRequest') }}
-
-Then you can supply it to SDK:
 
 === "C#"
     <!--codeinclude-->
@@ -176,15 +156,13 @@ Then you can supply it to SDK:
     ```
     <!--/codeinclude-->
 
-The response model is of type [Check Status Response](../proto/index.md#checkstatusresponse):
-
-{{ proto_obj('CheckStatusResponse') }}
-
 ## Update Revocation Status
 
 Update the credential status (revocation) of a previously issued credential. You must supply the credential id to this call.
 
-=== "Trinsic CLI"
+{{ proto_method("services.verifiablecredentials.v1.VerifiableCredential.UpdateStatus") }}
+
+===! "Trinsic CLI"
     ```bash
     # Revoke a credential
     trinsic vc update-status --revoked --credential-status-id <ID>
@@ -192,12 +170,6 @@ Update the credential status (revocation) of a previously issued credential. You
     # Unrevoke a credential
     trinsic vc update-status --unrevoked --credential-status-id <ID>
     ```
-
-When using one of the SDKs, you must supply an [Update Status Request](../proto/index.md#updatestatusrequest) object. This object follows the model below:
-
-{{ proto_obj('UpdateStatusRequest') }}
-
-Then you can supply it to SDK:
 
 === "C#"
     <!--codeinclude-->
@@ -227,10 +199,6 @@ Then you can supply it to SDK:
     ```
     <!--/codeinclude-->
 
-The response model is of type [Update Status Response](../proto/index.md#updatestatusresponse):
-
-{{ proto_obj('UpdateStatusResponse') }}
-
 ## Create Proof
 Wallets allow data to be shared between parties in a secure manner, using a technique called [Zero Knowledge Proofs](/faq/#what-are-zero-knowledge-proofs). Trinsic Ecosystems uses the BBS+ Signature Proof scheme to allow data to be selectively disclosed to the requesting party. This allows users to share only the requested subset of data, instead the entire document.
 
@@ -239,16 +207,12 @@ The endpoint to create a proof requires two inputs:
 - document in the wallet that is signed with the correct signature
 - JSONLD frame that describes the data to be disclosed
 
-=== "Trinsic CLI"
+{{ proto_method("services.verifiablecredentials.v1.VerifiableCredential.CreateProof") }}
+
+===! "Trinsic CLI"
     ```bash
     trinsic vc create-proof --document-id <STRING> --out <OUTPUT_FILE> --reveal-document <JSONLD_FRAME_FILE>
     ```
-
-When using one of the SDKs, you must supply an [Create Proof Request](../proto/index.md#createproofrequest) object. This object follows the model below:
-
-{{ proto_obj('CreateProofRequest') }}
-
-Then you can supply it to SDK:
 
 === "TypeScript"
     <!--codeinclude-->
@@ -285,25 +249,17 @@ Then you can supply it to SDK:
     ```
     <!--/codeinclude-->
 
-The response model is of type [Create Proof Response](../proto/index.md#createproofresponse):
-
-{{ proto_obj('CreateProofResponse') }}
-
 ## Verify Proof
 
 This endpoint verifies if the submitted data contains a valid proof. The data to be verified must contain a Linked Data Proof with BBS+ signature scheme.
 
-=== "Trinsic CLI"
+{{ proto_method("services.verifiablecredentials.v1.VerifiableCredential.VerifyProof") }}
+
+===! "Trinsic CLI"
     ```bash
     # The JSONLD_FILE refers to the proof document obtained from a CreateProofResponse
     trinsic vc issuer verify-proof --proof-document <JSONLD_FILE>
     ```
-
-When using one of the SDKs, you must supply an [Verify Proof Request](../proto/index.md#verifyproofrequest) object. This object follows the model below:
-
-{{ proto_obj('VerifyProofRequest') }}
-
-Then you can supply it to SDK:
 
 === "TypeScript"
     <!--codeinclude-->
@@ -347,10 +303,6 @@ Then you can supply it to SDK:
     ```
     <!--/codeinclude-->
 
-The response model is of type [Verify Proof Response](../proto/index.md#verifyproofresponse):
-
-{{ proto_obj('VerifyProofResponse') }}
-
 ## Exchange Credentials
 
 Exchanging data securely is one of the fundamental functions of digital identity systems. There are many specifications with varying maturity that aim to provide interoperable and secure way of exchanging authentic data. We are commited to providing support for these methods.
@@ -365,16 +317,12 @@ Exchanging data securely is one of the fundamental functions of digital identity
 
 To send a document to another user, they must have created a wallet and [associated their email address](#create-wallet-with-provider-invitation) with that wallet.
 
-=== "Trinsic CLI"
+{{ proto_method("services.verifiablecredentials.v1.VerifiableCredential.Send") }}
+
+===! "Trinsic CLI"
     ```bash
     trinsic vc send --email <EMAIL_ADDRESS> --item <FILE>
     ```
-
-When using one of the SDKs, you must supply an [Send Request](../proto/index.md#sendrequest) object. This object follows the model below:
-
-{{ proto_obj('SendRequest') }}
-
-Then you can supply it to SDK:
 
 === "TypeScript"
 
@@ -409,7 +357,3 @@ Then you can supply it to SDK:
     [SendRequest](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:sendCredential
     ```
     <!--/codeinclude-->
-
-The response model is of type [Send Response](../proto/index.md#sendresponse):
-
-{{ proto_obj('SendResponse') }}

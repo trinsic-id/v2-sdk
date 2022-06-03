@@ -20,10 +20,9 @@ Sign in to an existing account, or create a new one.
 
 If no account details are passed to this method, an anonymous account will be created.
 
-{{ proto_obj('SignInRequest') }}
-{{ proto_obj('AccountDetails') }}
+{{ proto_method("services.account.v1.Account.SignIn") }}
 
-=== "Trinsic CLI"
+===! "Trinsic CLI"
     ```bash
     trinsic account login --email <PROFILE_EMAIL> --name <PROFILE_NAME>
     ```
@@ -86,7 +85,9 @@ Returns the account information (name, email address, phone number, etc.) used t
 
     When using the SDK, this will return information for the authentication token stored in the `AccountService` instance's `ServiceOptions.AuthToken` field, which will be the account most recently logged in to, unless you have manually set this value yourself.
 
-=== "Trinsic CLI"
+{{ proto_method("services.account.v1.Account.Info") }}
+
+===! "Trinsic CLI"
     ```bash
     trinsic account info
     ```
@@ -129,8 +130,6 @@ Returns the account information (name, email address, phone number, etc.) used t
     info = account_service.get_info()
     ```
 
-{{ proto_obj('InfoResponse') }}
-
 ### Protect Account Profile
 Protects the specified account profile with a security code. It is not possible to execute this call using the CLI.
 
@@ -143,7 +142,7 @@ Protects the specified account profile with a security code. It is not possible 
 
     Specifically, Trinsic is using Oberon to handle access tokens; protection and unprotection is handled using the blinding/unblinding features of Oberon.
 
-=== "TypeScript"
+===! "TypeScript"
     ```typescript
     const protectedProfile = await accountService.protect(accountProfile, "1234");
     ```

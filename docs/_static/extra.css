@@ -60,9 +60,22 @@ h1, h2, h3 {
 
 
 /** BLAH BLAH **/
+
+.center-next-tabs {
+    display: none;
+}
+
+.center-next-tabs + .tabbed-set {
+    align-items: center;
+}
+
+.center-next-tabs + .tabbed-set p:first-child {
+    display: none;
+}
+
 .proto-obj-container {
-    margin-top: 5em;
-    margin-bottom: 5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
 
 .proto-obj-name {
@@ -75,7 +88,6 @@ h1, h2, h3 {
 }
 
 .proto-obj-fields {
-    margin-top: 1rem;
 }
 
 .proto-field:first-child {
@@ -90,7 +102,7 @@ h1, h2, h3 {
 
 .proto-field-name {
     font-weight: bold;
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     font-feature-settings: "kern";
     font-family: var(--md-code-font-family);
 
@@ -102,7 +114,7 @@ h1, h2, h3 {
 }
 
 .proto-field-type {
-    font-size: 0.5rem;
+    font-size: 0.55rem;
     font-feature-settings: "kern";
     font-family: var(--md-code-font-family);
     display: inline-block;
@@ -127,6 +139,12 @@ h1, h2, h3 {
 
 .proto-field-expand-btn:hover {
     color: black;
+}
+
+.proto-field-sub-child {
+    border-radius: 5px;
+    border: 1px solid #8080806b;
+    padding-right: 1em;
 }
 
 .proto-field-sub-child.hidden {

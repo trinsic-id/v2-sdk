@@ -18,7 +18,7 @@ Creates a new credential template. Once created, the template is saved in JSON-L
 
 When using one of the SDKs, you must supply a [Create Credential Template Request](../proto/index.md#createcredentialtemplaterequest) object. This object follows the model below:
 
-{{ proto_obj('CreateCredentialTemplateRequest') }}
+{{ proto_obj('services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest') }}
 
 Then you can supply it to SDK:
 
@@ -59,7 +59,7 @@ Then you can supply it to SDK:
 
 The response model is of type [Create Credential Template Response](../proto/index.md#createcredentialtemplateresponse):
 
-{{ proto_obj('CreateCredentialTemplateResponse') }} 
+{{ proto_obj('services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse') }} 
 
 ## Get
 
@@ -72,7 +72,7 @@ Get the specified credential template through the supplied template/definition I
 
 When using one of the SDKs, you must supply a [Get Credential Template Request](../proto/index.md#getcredentialtemplaterequest) object. This object follows the model below:
 
-{{ proto_obj('GetCredentialTemplateRequest') }}
+{{ proto_obj('services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest') }}
 
 Then you can supply it to SDK:
 
@@ -106,7 +106,7 @@ Then you can supply it to SDK:
 
 The response model is of type [Get Credential Template Response](../proto/index.md#getcredentialtemplateresponse):
 
-{{ proto_obj('GetCredentialTemplateResponse') }}
+{{ proto_obj('services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse') }}
 
 ## Search / Query
 
@@ -175,7 +175,7 @@ Deletes a credential template.
 
 When using one of the SDKs, you must supply a [Delete Credential Template Request](../proto/index.md#deletecredentialtemplaterequest) object. This object follows the model below:
 
-{{ proto_obj('DeleteCredentialTemplateRequest') }}
+{{ proto_obj('services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest') }}
 
 Then you can supply it to SDK:
 

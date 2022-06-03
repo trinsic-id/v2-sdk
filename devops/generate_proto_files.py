@@ -175,6 +175,12 @@ def update_markdown():
 
     run_protoc({'doc_out': lang_proto_path}, {'doc_opt': f"{template_path},index.md"}, get_proto_files())
 
+    run_protoc(
+        {"json_out": lang_proto_path},
+        {"json_opt": "proto.json"},
+        get_proto_files(),
+    )
+
 
 def update_python():
     """

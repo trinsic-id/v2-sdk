@@ -64,6 +64,6 @@ If you are using one of the Trinsic SDKs, you will need to create an instance of
 
 All service constructors also accept a [ServiceOptions](../proto/index.md#serviceoptions) object as an argument, allowing you to specify a default ecosystem and other configuration properties.
 
-{{ proto_obj('ServiceOptions') }}
+{{ proto_obj('sdk.options.v1.ServiceOptions') }}
 
 The exact structure of this object will depend on the language you are working with. You can always rely on your editor's intellisense when in doubt. 

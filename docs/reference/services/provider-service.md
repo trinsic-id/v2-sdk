@@ -13,7 +13,7 @@ Creates a new provider ecosystem
 
 When using one of the SDKs, you must supply a [Create Ecosystem Request](../proto/index.md#createecosystemrequest) object.
 
-{{ proto_obj('CreateEcosystemRequest') }}
+{{ proto_obj('services.provider.v1.CreateEcosystemRequest') }}
 
 Then you can supply it to SDK:
 
@@ -54,7 +54,7 @@ Then you can supply it to SDK:
 
 The response model is of type [Create Ecosystem Response](../proto/index.md#createecosystemresponse):
 
-{{ proto_obj('CreateEcosystemResponse') }}
+{{ proto_obj('services.provider.v1.CreateEcosystemResponse') }}
 
 <!-- 
 // This call is not yet implemented
@@ -64,11 +64,11 @@ Lists all available ecosystem for the current authentication context.
 
 When using one of the SDKs, you must supply an [List Ecosystem Request](../proto/index.md#listecosystemrequest) object. This object follows the model below:
 
-{{ proto_obj('ListEcosystemRequest') }}
+{{ proto_obj('services.provider.v1.ListEcosystemRequest') }}
 
 The response model is of type [List Ecosystem Response](../proto/index.md#listecosystemresponse):
 
-{{ proto_obj('ListEcosystemResponse') }} 
+{{ proto_obj('services.provider.v1.ListEcosystemResponse') }} 
 -->
 
 ## Onboarding
@@ -89,7 +89,7 @@ In Trinsic Ecosystems, participants can be Individuals or Organizations. This di
 
 When using one of the SDKs, you must supply an [Invite Request](../proto/index.md#inviterequest) object. This object follows the model below:
 
-{{ proto_obj('InviteRequest') }}
+{{ proto_obj('services.provider.v1.InviteRequest') }}
 
 Then you can supply it to SDK:
 
@@ -138,7 +138,7 @@ Then you can supply it to SDK:
 
 The response model is of type [Invite Response](../proto/index.md#inviteresponse):
 
-{{ proto_obj('InviteResponse') }}
+{{ proto_obj('services.provider.v1.InviteResponse') }}
 
 The `invitation_code` in the response contains is security code that users must supply when creating their wallet. If the email method is used during onboarding, participants will receive this code in their email.
 
@@ -153,7 +153,7 @@ User invitation status can be checked with the provided `invitation id`. It retu
 
 When using one of the SDKs, you must supply an [Invitation Status Request](../proto/index.md#invitationstatusrequest) object. This object follows the model below:
 
-{{ proto_obj('InvitationStatusRequest') }}
+{{ proto_obj('services.provider.v1.InvitationStatusRequest') }}
 
 Then you can supply it to SDK:
 
@@ -198,4 +198,4 @@ Then you can supply it to SDK:
 
 The response model is of type [Invitation Status Response](../proto/index.md#invitationstatusresponse):
 
-{{ proto_obj('InvitationStatusResponse') }}
+{{ proto_obj('services.provider.v1.InvitationStatusResponse') }}
