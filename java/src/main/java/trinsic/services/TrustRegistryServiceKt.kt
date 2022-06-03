@@ -67,10 +67,10 @@ class TrustRegistryServiceKt(
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
     suspend fun searchRegistry(request: SearchRegistryRequest): SearchRegistryResponse {
-        var request = request
-        if (request.query.isBlank()) request =
-            SearchRegistryRequest.newBuilder(request).setQuery("SELECT * FROM c OFFSET 0 LIMIT 100").build()
-        return withMetadata(stub, request).searchRegistry(request)
+        var request2 = request
+        if (request2.query.isBlank()) request2 =
+            SearchRegistryRequest.newBuilder(request2).setQuery("SELECT * FROM c OFFSET 0 LIMIT 100").build()
+        return withMetadata(stub, request2).searchRegistry(request2)
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)

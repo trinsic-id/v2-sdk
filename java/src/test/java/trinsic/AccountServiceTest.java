@@ -37,6 +37,8 @@ class AccountServiceTest {
             var info = accountService.getInfo().get();
             // }
         });
+
+        accountService.shutdown();
     }
 
 }

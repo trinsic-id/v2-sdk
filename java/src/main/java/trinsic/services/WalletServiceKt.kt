@@ -13,9 +13,9 @@ class WalletServiceKt(
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
     suspend fun search(request: SearchRequest): SearchResponse {
-        var request = request
-        if (request.query.isBlank()) request = SearchRequest.newBuilder(request).setQuery("SELECT c.id, c.type, c.data FROM c OFFSET 0 LIMIT 100").build()
-        return withMetadata(stub, request).search(request)
+        var request2 = request
+        if (request2.query.isBlank()) request2 = SearchRequest.newBuilder(request2).setQuery("SELECT c.id, c.type, c.data FROM c OFFSET 0 LIMIT 100").build()
+        return withMetadata(stub, request2).search(request2)
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
