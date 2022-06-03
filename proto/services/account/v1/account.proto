@@ -2,7 +2,7 @@ syntax = "proto3";
 package services.account.v1;
 
 option csharp_namespace = "Trinsic.Services.Account.V1";
-option go_package = "github.com/trinsic-id/sdk";
+option go_package = "github.com/trinsic-id/sdk/account/v1";
 option java_package = "trinsic.services.account.v1";
 
 import "services/options/field-options.proto";
@@ -15,7 +15,7 @@ message SignInRequest {
     // Invitation code associated with this registration
     string invitation_code = 2 [(options.optional)=true];
 
-    // ID of Ecosystem to sign into.
+    // ID of Ecosystem to sign into. 
     // Ignored if `invitation_code` is passed
     string ecosystem_id = 3 [(options.optional)=true];
 }
@@ -75,7 +75,7 @@ message AccountProfile {
     // If token protection is enabled, implementations must supply
     // protection secret before using the token for authentication.
     TokenProtection protection = 4;
-
+    
 }
 
 // Token protection info
