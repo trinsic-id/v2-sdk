@@ -2,7 +2,7 @@ syntax = "proto3";
 package services.account.v1;
 
 option csharp_namespace = "Trinsic.Services.Account.V1";
-option go_package = "github.com/trinsic-id/sdk/account/v1";
+option go_package = "github.com/trinsic-id/sdk";
 option java_package = "trinsic.services.account.v1";
 
 import "services/options/field-options.proto";
@@ -15,7 +15,7 @@ message SignInRequest {
     // Invitation code associated with this registration
     string invitation_code = 2 [(options.optional)=true];
 
-    // ID of Ecosystem to sign into. 
+    // ID of Ecosystem to sign into.
     // Ignored if `invitation_code` is passed
     string ecosystem_id = 3 [(options.optional)=true];
 }
@@ -75,7 +75,7 @@ message AccountProfile {
     // If token protection is enabled, implementations must supply
     // protection secret before using the token for authentication.
     TokenProtection protection = 4;
-    
+
 }
 
 // Token protection info
@@ -121,10 +121,52 @@ message AccountEcosystem {
     string uri = 4;
 }
 
+// Login
+
+message LoginRequest {
+    // Email account to associate with the login request
+    string email = 1  [(options.optional) = true];
+    // Invitation code associated with this registration
+    string invitation_code = 2 [(options.optional) = true];
+    // ID of Ecosystem to sign into.
+    // Ignored if `invitation_code` is passed
+    string ecosystem_id = 3 [(options.optional) = true];
+}
+
+message LoginResponse{
+    oneof response {
+        // Challenge response. Random byte sequence unique
+        // for this login request
+        bytes challenge = 1;
+        // Profile response. The login isn't challenged and
+        // the token is returned in this call. Does not require
+        // confirmation step
+        AccountProfile profile = 2;
+    }
+}
+
+message LoginConfirmRequest {
+    // Login challenge received during the Login call
+    bytes challenge = 1;
+    // Confirmation code received in email or SMS
+    // hashed using Blake3
+    bytes confirmation_code_hashed = 2;
+}
+message LoginConfirmResponse {
+    // Profile response. This profile may be protected and
+    // require unblinding/unprotection using the raw hashed code
+    AccountProfile profile = 1;
+}
+
 service Account {
     // Sign in to an already existing account
     rpc SignIn              (SignInRequest)             returns (SignInResponse);
-    // rpc SIgnInConfirm       (SignInConfirmRequest)      returns (SignInConfirmResponse);
+
+    // Login to account. If account doesn't exist, new will be created
+    rpc Login               (LoginRequest)              returns (LoginResponse);
+
+    // Confirm login step by responding to the challenge request
+    rpc LoginConfirm        (LoginConfirmRequest)       returns (LoginConfirmResponse);
 
     // Get account information
     rpc Info                (InfoRequest)               returns (InfoResponse);
