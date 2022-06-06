@@ -3,7 +3,7 @@ document$.subscribe(() => {
 });
 
 
-function onClick(btn) {
+function expandSubField(btn) {
   console.log(btn);
   
   let expandContainer = btn.parentElement.querySelector(".proto-field-sub-child");

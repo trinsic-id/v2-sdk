@@ -208,7 +208,7 @@ def print_field(fieldName, context: str = None):
             sub_content = print_message_fields(field["full_type"], context)
 
             ret += (
-                f"<div class='proto-field-expand-btn' onclick='onClick(this);'>Show child attributes</div>"
+                f"<div class='proto-field-expand-btn' onclick='expandSubField(this);'>Show child attributes</div>"
                 f"<div class='proto-field-sub-child hidden'>{sub_content}</div>"
             )
 
