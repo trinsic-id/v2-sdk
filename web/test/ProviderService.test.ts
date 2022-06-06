@@ -4,9 +4,7 @@ import {
   ProviderService,
 } from "../src";
 
-import {getTestServerOptions} from "./env";
-
-
+import { getTestServerOptions } from "./env";
 
 const options = getTestServerOptions();
 

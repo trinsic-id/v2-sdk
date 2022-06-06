@@ -20,7 +20,7 @@ import {
 } from "@trinsic/okapi";
 import base64url from "base64url";
 
-import type {Client as BrowserClient} from "nice-grpc-web";
+import type { Client as BrowserClient } from "nice-grpc-web";
 
 export class AccountService extends ServiceBase {
   client: BrowserClient<typeof AccountDefinition>;
@@ -28,9 +28,7 @@ export class AccountService extends ServiceBase {
   constructor(options?: ServiceOptions) {
     super(options);
 
-    this.client = this.createClient(
-      AccountDefinition
-    );
+    this.client = this.createClient(AccountDefinition);
   }
 
   /**
@@ -47,9 +45,9 @@ export class AccountService extends ServiceBase {
     let cloned = AccountProfile.fromPartial(profile);
     const result = await Oberon.blindToken({
       blinding: [securityCode],
-      token: cloned.authToken
+      token: cloned.authToken,
     });
-    cloned.authToken = result.token
+    cloned.authToken = result.token;
     cloned.protection = TokenProtection.fromPartial({
       enabled: true,
       method: ConfirmationMethod.Other,
@@ -71,9 +69,9 @@ export class AccountService extends ServiceBase {
     let cloned = AccountProfile.fromPartial(profile);
     const result = await Oberon.unblindToken({
       token: cloned.authToken,
-      blinding: [securityCode]
+      blinding: [securityCode],
     });
-    cloned.authToken = result.token
+    cloned.authToken = result.token;
     cloned.protection = TokenProtection.fromPartial({
       enabled: false,
       method: ConfirmationMethod.None,

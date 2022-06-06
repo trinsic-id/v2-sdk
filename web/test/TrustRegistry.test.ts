@@ -34,13 +34,13 @@ describe("TrustRegistryService Unit Tests", () => {
     let trustRegistryService = new TrustRegistryService(options);
 
     try {
-        await trustRegistryService.addFramework(
-            AddFrameworkRequest.fromPartial({})
-        );
-        // This is a failure case since jest doesn't have expect().toThrow()
-        expect(false).toBeTruthy()
-    }catch (e) {
-        // This is expected, pass
+      await trustRegistryService.addFramework(
+        AddFrameworkRequest.fromPartial({})
+      );
+      // This is a failure case since jest doesn't have expect().toThrow()
+      expect(false).toBeTruthy();
+    } catch (e) {
+      // This is expected, pass
     }
   });
 

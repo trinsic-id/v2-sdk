@@ -13,7 +13,7 @@ import {
   FieldType,
   CreateCredentialTemplateRequest,
   TemplateData,
-  IssueFromTemplateRequest
+  IssueFromTemplateRequest,
 } from "../src";
 
 import { getTestServerOptions } from "./env";
@@ -24,11 +24,14 @@ export async function vaccineDemo() {
   const providerService = new ProviderService(options);
 
   // createEcosystem() {
-  const ecosystem = await providerService.createEcosystem(CreateEcosystemRequest.fromPartial({}));
+  const ecosystem = await providerService.createEcosystem(
+    CreateEcosystemRequest.fromPartial({})
+  );
   const ecosystemId = ecosystem.ecosystem!.id;
   // }
 
-  options.defaultEcosystem = providerService.options.defaultEcosystem = ecosystemId;
+  options.defaultEcosystem = providerService.options.defaultEcosystem =
+    ecosystemId;
 
   const accountService = new AccountService(options);
   const templateService = new TemplateService(options);
@@ -55,16 +58,19 @@ export async function vaccineDemo() {
   // issueCredential() {
   // Prepare the credential values JSON document
   const credentialValues = JSON.stringify({
-    "firstName": "Allison",
-    "lastName": "Allisonne",
-    "batchNumber": "123454321",
-    "countryOfVaccination": "US"
+    firstName: "Allison",
+    lastName: "Allisonne",
+    batchNumber: "123454321",
+    countryOfVaccination: "US",
   });
 
   // Sign a credential as the clinic and send it to Allison
   credentialService.options.authToken = clinic;
   const issueResponse = await credentialService.issueFromTemplate(
-    IssueFromTemplateRequest.fromPartial({ templateId: template.id, valuesJson: credentialValues })
+    IssueFromTemplateRequest.fromPartial({
+      templateId: template.id,
+      valuesJson: credentialValues,
+    })
   );
   // }
 
@@ -83,7 +89,7 @@ export async function vaccineDemo() {
   credentialService.options.authToken = allison;
   const proofResponse = await credentialService.createProof(
     CreateProofRequest.fromPartial({
-      itemId: insertResponse.itemId
+      itemId: insertResponse.itemId,
     })
   );
   // }
@@ -101,27 +107,29 @@ export async function vaccineDemo() {
   return verifyResponse;
 }
 
-async function doTemplate(templateService: TemplateService): Promise<TemplateData> {
+async function doTemplate(
+  templateService: TemplateService
+): Promise<TemplateData> {
   // createTemplate() {
   //Define all fields
   const firstNameField = TemplateField.fromPartial({
     description: "First name of vaccine recipient",
-    type: FieldType.STRING
+    type: FieldType.STRING,
   });
 
   const lastNameField = TemplateField.fromPartial({
     type: FieldType.STRING,
-    description: "Last name of vaccine recipient"
+    description: "Last name of vaccine recipient",
   });
 
   const batchNumberField = TemplateField.fromPartial({
     type: FieldType.STRING,
-    description: "Batch number of vaccine"
+    description: "Batch number of vaccine",
   });
 
   const countryOfVaccinationField = TemplateField.fromPartial({
     type: FieldType.STRING,
-    description: "Country in which the subject was vaccinated"
+    description: "Country in which the subject was vaccinated",
   });
 
   //Create request

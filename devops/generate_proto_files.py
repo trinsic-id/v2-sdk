@@ -287,6 +287,16 @@ def update_dart():
     subprocess.Popen(args="dart format .", cwd=language_path, shell=True).wait()
 
 
+def update_typescript():
+    language_path = get_language_dir("web")
+
+    subprocess.Popen(
+        args=f"prettier --write **/*.ts",
+        cwd=language_path,
+        shell=True,
+    ).wait()
+
+
 def parse_arguments():
     parser = argparse.ArgumentParser(
         description="Compile proto files for each SDK language and documentation"
@@ -316,6 +326,7 @@ def main():
         "java": update_java,
         "docs": update_markdown,
         "dart": update_dart,
+        "typescript": update_typescript,
     }
 
     # If "all" is specified, set the array of languages to build to the list of all languages we _can_ build.
