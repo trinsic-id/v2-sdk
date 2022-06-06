@@ -1,5 +1,7 @@
-h1, h2, h3 {
-  font-weight: 800;
+h1,
+h2,
+h3 {
+    font-weight: 800;
 }
 
 .md-header {
@@ -9,20 +11,24 @@ h1, h2, h3 {
 }
 
 :root {
-    --md-primary-fg-color:        #006BE5;
+    --md-primary-fg-color: #006BE5;
     --md-primary-fg-color--light: #B3D6FF;
-    --md-primary-fg-color--dark:  #003B80;
-  }
+    --md-primary-fg-color--dark: #003B80;
+}
 
 [data-md-color-scheme="slate"] {
-    --md-hue: 200; /* [0, 360] */
+    --md-hue: 200;
+    /* [0, 360] */
 }
 
 .md-header__button.md-logo {
     margin-bottom: .4rem;
 }
 
-.md-header__button.md-logo img, .md-header__button.md-logo svg, .md-nav__title .md-nav__button.md-logo img, .md-nav__title .md-nav__button.md-logo svg {
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg,
+.md-nav__title .md-nav__button.md-logo img,
+.md-nav__title .md-nav__button.md-logo svg {
     width: auto;
     height: 1.8rem;
 }
@@ -59,19 +65,9 @@ h1, h2, h3 {
 }
 
 
-/** BLAH BLAH **/
-
-.center-next-tabs {
-    display: none;
-}
-
-.center-next-tabs + .tabbed-set {
-    align-items: center;
-}
-
-.center-next-tabs + .tabbed-set p:first-child {
-    display: none;
-}
+/***********************************************************
+ * New-style Protobuf Object Rendering                     *
+ ***********************************************************/
 
 .proto-obj-container {
     margin-top: 0.5em;
@@ -85,9 +81,6 @@ h1, h2, h3 {
 
 .proto-obj-description {
     font-size: 0.6rem;
-}
-
-.proto-obj-fields {
 }
 
 .proto-field:first-child {
@@ -158,4 +151,28 @@ h1, h2, h3 {
 
 .proto-obj-subtype-context {
     color: grey;
+}
+
+
+
+/** 
+  * When we render the "Sample / Request / Response" tabs 
+  * for protobuf method documentation, we want those tabs to be centered.
+  *
+  * We have basically no control over the styling of specific tabhosts, but we do have CSS.
+  * So we create a <div class="center-next-tabs"/> immediately preceeding the tab declaration,
+  * then use a sibling selector to style the immediately preceding tabs.
+  **/
+
+.center-next-tabs {
+    display: none;
+}
+
+/* Center any tabs immediately following a .center-next-tabs */
+.center-next-tabs+.tabbed-set {
+    align-items: center;
+}
+/* For some reason a mystery <p/> is being generated, adding padding... get rid of it. */
+.center-next-tabs+.tabbed-set p:first-child {
+    display: none;
 }
