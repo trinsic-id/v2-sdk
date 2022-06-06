@@ -155,24 +155,26 @@ def update_golang():
 
 
 def update_ruby():
-    ruby_path = get_language_dir("ruby")
-    ruby_proto_path = join(ruby_path, "lib")
+    language_path = get_language_dir("ruby")
+    lang_proto_path = join(language_path, "lib")
     # Clean selectively
-    services_dir = join(ruby_proto_path, "services")
+    services_dir = join(lang_proto_path, "services")
     services_subfolders = [f.path for f in os.scandir(services_dir) if f.is_dir()]
     for folder in services_subfolders:
         clean_dir(folder)
 
-    clean_dir(join(ruby_proto_path, "sdk"))
-    clean_dir(join(ruby_proto_path, "pbmse"))
+    clean_dir(join(lang_proto_path, "sdk"))
+    clean_dir(join(lang_proto_path, "pbmse"))
     run_protoc(
-        {"ruby_out": ruby_proto_path, "grpc_out": ruby_proto_path},
+        {"ruby_out": lang_proto_path, "grpc_out": lang_proto_path},
         {},
         get_proto_files(),
         protoc_executable="grpc_tools_ruby_protoc",
     )
     # Ruby type specifications
-    run_protoc({"rbi_out": f"grpc=true:{ruby_proto_path}"}, {}, get_proto_files())
+    run_protoc({"rbi_out": f"grpc=true:{lang_proto_path}"}, {}, get_proto_files())
+
+    subprocess.Popen(args='rubocop -A', cwd=language_path, shell=True).wait()
 
 
 def update_java():
@@ -228,6 +230,8 @@ def update_python():
         {"python_betterproto_out": python_proto_path}, {}, proto_files=get_proto_files()
     )
 
+    subprocess.Popen(args='black .', cwd=get_language_dir("python"), shell=True).wait()
+
 
 def update_dart():
     language_path = get_language_dir("dart")
@@ -241,6 +245,7 @@ def update_dart():
         get_proto_files(dir_name="c:/bin/google"),
         proto_path="c:/bin",
     )
+    subprocess.Popen(args='dart format .', cwd=language_path, shell=True).wait()
 
 
 def parse_arguments():
