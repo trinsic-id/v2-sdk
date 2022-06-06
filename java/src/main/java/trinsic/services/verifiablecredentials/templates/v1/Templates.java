@@ -15,6 +15,10 @@ public final class Templates {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   /**
+   * <pre>
+   * Valid types for credential fields
+   * </pre>
+   *
    * Protobuf enum {@code services.verifiablecredentials.templates.v1.FieldType}
    */
   public enum FieldType
@@ -145,11 +149,19 @@ public final class Templates {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * ID of template to fetch
+     * </pre>
+     *
      * <code>string id = 1;</code>
      * @return The id.
      */
     java.lang.String getId();
     /**
+     * <pre>
+     * ID of template to fetch
+     * </pre>
+     *
      * <code>string id = 1;</code>
      * @return The bytes for id.
      */
@@ -157,6 +169,10 @@ public final class Templates {
         getIdBytes();
   }
   /**
+   * <pre>
+   * Request to fetch a template by ID
+   * </pre>
+   *
    * Protobuf type {@code services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest}
    */
   public static final class GetCredentialTemplateRequest extends
@@ -219,6 +235,8 @@ public final class Templates {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -243,6 +261,10 @@ public final class Templates {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
+     * <pre>
+     * ID of template to fetch
+     * </pre>
+     *
      * <code>string id = 1;</code>
      * @return The id.
      */
@@ -260,6 +282,10 @@ public final class Templates {
       }
     }
     /**
+     * <pre>
+     * ID of template to fetch
+     * </pre>
+     *
      * <code>string id = 1;</code>
      * @return The bytes for id.
      */
@@ -433,6 +459,10 @@ public final class Templates {
       return builder;
     }
     /**
+     * <pre>
+     * Request to fetch a template by ID
+     * </pre>
+     *
      * Protobuf type {@code services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest}
      */
     public static final class Builder extends
@@ -582,6 +612,10 @@ public final class Templates {
 
       private java.lang.Object id_ = "";
       /**
+       * <pre>
+       * ID of template to fetch
+       * </pre>
+       *
        * <code>string id = 1;</code>
        * @return The id.
        */
@@ -598,6 +632,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * ID of template to fetch
+       * </pre>
+       *
        * <code>string id = 1;</code>
        * @return The bytes for id.
        */
@@ -615,6 +653,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * ID of template to fetch
+       * </pre>
+       *
        * <code>string id = 1;</code>
        * @param value The id to set.
        * @return This builder for chaining.
@@ -630,6 +672,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * ID of template to fetch
+       * </pre>
+       *
        * <code>string id = 1;</code>
        * @return This builder for chaining.
        */
@@ -640,6 +686,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * ID of template to fetch
+       * </pre>
+       *
        * <code>string id = 1;</code>
        * @param value The bytes for id to set.
        * @return This builder for chaining.
@@ -713,21 +763,37 @@ public final class Templates {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * Template fetched by ID
+     * </pre>
+     *
      * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
      * @return Whether the template field is set.
      */
     boolean hasTemplate();
     /**
+     * <pre>
+     * Template fetched by ID
+     * </pre>
+     *
      * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
      * @return The template.
      */
     trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData getTemplate();
     /**
+     * <pre>
+     * Template fetched by ID
+     * </pre>
+     *
      * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
      */
     trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder getTemplateOrBuilder();
   }
   /**
+   * <pre>
+   * Response to `GetCredentialTemplateRequest`
+   * </pre>
+   *
    * Protobuf type {@code services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse}
    */
   public static final class GetCredentialTemplateResponse extends
@@ -796,6 +862,8 @@ public final class Templates {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -820,6 +888,10 @@ public final class Templates {
     public static final int TEMPLATE_FIELD_NUMBER = 1;
     private trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData template_;
     /**
+     * <pre>
+     * Template fetched by ID
+     * </pre>
+     *
      * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
      * @return Whether the template field is set.
      */
@@ -828,6 +900,10 @@ public final class Templates {
       return template_ != null;
     }
     /**
+     * <pre>
+     * Template fetched by ID
+     * </pre>
+     *
      * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
      * @return The template.
      */
@@ -836,6 +912,10 @@ public final class Templates {
       return template_ == null ? trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.getDefaultInstance() : template_;
     }
     /**
+     * <pre>
+     * Template fetched by ID
+     * </pre>
+     *
      * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
      */
     @java.lang.Override
@@ -1004,6 +1084,10 @@ public final class Templates {
       return builder;
     }
     /**
+     * <pre>
+     * Response to `GetCredentialTemplateRequest`
+     * </pre>
+     *
      * Protobuf type {@code services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse}
      */
     public static final class Builder extends
@@ -1162,6 +1246,10 @@ public final class Templates {
       private com.google.protobuf.SingleFieldBuilderV3<
           trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder> templateBuilder_;
       /**
+       * <pre>
+       * Template fetched by ID
+       * </pre>
+       *
        * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
        * @return Whether the template field is set.
        */
@@ -1169,6 +1257,10 @@ public final class Templates {
         return templateBuilder_ != null || template_ != null;
       }
       /**
+       * <pre>
+       * Template fetched by ID
+       * </pre>
+       *
        * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
        * @return The template.
        */
@@ -1180,6 +1272,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * Template fetched by ID
+       * </pre>
+       *
        * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
        */
       public Builder setTemplate(trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData value) {
@@ -1196,6 +1292,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Template fetched by ID
+       * </pre>
+       *
        * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
        */
       public Builder setTemplate(
@@ -1210,6 +1310,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Template fetched by ID
+       * </pre>
+       *
        * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
        */
       public Builder mergeTemplate(trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData value) {
@@ -1228,6 +1332,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Template fetched by ID
+       * </pre>
+       *
        * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
        */
       public Builder clearTemplate() {
@@ -1242,6 +1350,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Template fetched by ID
+       * </pre>
+       *
        * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
        */
       public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder getTemplateBuilder() {
@@ -1250,6 +1362,10 @@ public final class Templates {
         return getTemplateFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * Template fetched by ID
+       * </pre>
+       *
        * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
        */
       public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder getTemplateOrBuilder() {
@@ -1261,6 +1377,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * Template fetched by ID
+       * </pre>
+       *
        * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -1335,7 +1455,7 @@ public final class Templates {
 
     /**
      * <pre>
-     * SELECT * FROM c WHERE c.name = 'Diploma'
+     * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
      * </pre>
      *
      * <code>string query = 1;</code>
@@ -1344,7 +1464,7 @@ public final class Templates {
     java.lang.String getQuery();
     /**
      * <pre>
-     * SELECT * FROM c WHERE c.name = 'Diploma'
+     * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
      * </pre>
      *
      * <code>string query = 1;</code>
@@ -1354,18 +1474,32 @@ public final class Templates {
         getQueryBytes();
 
     /**
-     * <code>string continuation_token = 2;</code>
+     * <pre>
+     * Token provided by previous `SearchCredentialTemplatesResponse`
+     * if more data is available for query
+     * </pre>
+     *
+     * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
      * @return The continuationToken.
      */
     java.lang.String getContinuationToken();
     /**
-     * <code>string continuation_token = 2;</code>
+     * <pre>
+     * Token provided by previous `SearchCredentialTemplatesResponse`
+     * if more data is available for query
+     * </pre>
+     *
+     * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
      * @return The bytes for continuationToken.
      */
     com.google.protobuf.ByteString
         getContinuationTokenBytes();
   }
   /**
+   * <pre>
+   * Request to search templates using a SQL query
+   * </pre>
+   *
    * Protobuf type {@code services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest}
    */
   public static final class SearchCredentialTemplatesRequest extends
@@ -1435,6 +1569,8 @@ public final class Templates {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -1460,7 +1596,7 @@ public final class Templates {
     private volatile java.lang.Object query_;
     /**
      * <pre>
-     * SELECT * FROM c WHERE c.name = 'Diploma'
+     * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
      * </pre>
      *
      * <code>string query = 1;</code>
@@ -1481,7 +1617,7 @@ public final class Templates {
     }
     /**
      * <pre>
-     * SELECT * FROM c WHERE c.name = 'Diploma'
+     * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
      * </pre>
      *
      * <code>string query = 1;</code>
@@ -1505,7 +1641,12 @@ public final class Templates {
     public static final int CONTINUATION_TOKEN_FIELD_NUMBER = 2;
     private volatile java.lang.Object continuationToken_;
     /**
-     * <code>string continuation_token = 2;</code>
+     * <pre>
+     * Token provided by previous `SearchCredentialTemplatesResponse`
+     * if more data is available for query
+     * </pre>
+     *
+     * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
      * @return The continuationToken.
      */
     @java.lang.Override
@@ -1522,7 +1663,12 @@ public final class Templates {
       }
     }
     /**
-     * <code>string continuation_token = 2;</code>
+     * <pre>
+     * Token provided by previous `SearchCredentialTemplatesResponse`
+     * if more data is available for query
+     * </pre>
+     *
+     * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
      * @return The bytes for continuationToken.
      */
     @java.lang.Override
@@ -1705,6 +1851,10 @@ public final class Templates {
       return builder;
     }
     /**
+     * <pre>
+     * Request to search templates using a SQL query
+     * </pre>
+     *
      * Protobuf type {@code services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest}
      */
     public static final class Builder extends
@@ -1862,7 +2012,7 @@ public final class Templates {
       private java.lang.Object query_ = "";
       /**
        * <pre>
-       * SELECT * FROM c WHERE c.name = 'Diploma'
+       * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
        * </pre>
        *
        * <code>string query = 1;</code>
@@ -1882,7 +2032,7 @@ public final class Templates {
       }
       /**
        * <pre>
-       * SELECT * FROM c WHERE c.name = 'Diploma'
+       * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
        * </pre>
        *
        * <code>string query = 1;</code>
@@ -1903,7 +2053,7 @@ public final class Templates {
       }
       /**
        * <pre>
-       * SELECT * FROM c WHERE c.name = 'Diploma'
+       * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
        * </pre>
        *
        * <code>string query = 1;</code>
@@ -1922,7 +2072,7 @@ public final class Templates {
       }
       /**
        * <pre>
-       * SELECT * FROM c WHERE c.name = 'Diploma'
+       * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
        * </pre>
        *
        * <code>string query = 1;</code>
@@ -1936,7 +2086,7 @@ public final class Templates {
       }
       /**
        * <pre>
-       * SELECT * FROM c WHERE c.name = 'Diploma'
+       * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
        * </pre>
        *
        * <code>string query = 1;</code>
@@ -1957,7 +2107,12 @@ public final class Templates {
 
       private java.lang.Object continuationToken_ = "";
       /**
-       * <code>string continuation_token = 2;</code>
+       * <pre>
+       * Token provided by previous `SearchCredentialTemplatesResponse`
+       * if more data is available for query
+       * </pre>
+       *
+       * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
        * @return The continuationToken.
        */
       public java.lang.String getContinuationToken() {
@@ -1973,7 +2128,12 @@ public final class Templates {
         }
       }
       /**
-       * <code>string continuation_token = 2;</code>
+       * <pre>
+       * Token provided by previous `SearchCredentialTemplatesResponse`
+       * if more data is available for query
+       * </pre>
+       *
+       * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
        * @return The bytes for continuationToken.
        */
       public com.google.protobuf.ByteString
@@ -1990,7 +2150,12 @@ public final class Templates {
         }
       }
       /**
-       * <code>string continuation_token = 2;</code>
+       * <pre>
+       * Token provided by previous `SearchCredentialTemplatesResponse`
+       * if more data is available for query
+       * </pre>
+       *
+       * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
        * @param value The continuationToken to set.
        * @return This builder for chaining.
        */
@@ -2005,7 +2170,12 @@ public final class Templates {
         return this;
       }
       /**
-       * <code>string continuation_token = 2;</code>
+       * <pre>
+       * Token provided by previous `SearchCredentialTemplatesResponse`
+       * if more data is available for query
+       * </pre>
+       *
+       * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
        * @return This builder for chaining.
        */
       public Builder clearContinuationToken() {
@@ -2015,7 +2185,12 @@ public final class Templates {
         return this;
       }
       /**
-       * <code>string continuation_token = 2;</code>
+       * <pre>
+       * Token provided by previous `SearchCredentialTemplatesResponse`
+       * if more data is available for query
+       * </pre>
+       *
+       * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
        * @param value The bytes for continuationToken to set.
        * @return This builder for chaining.
        */
@@ -2088,11 +2263,19 @@ public final class Templates {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * Raw JSON data returned from query
+     * </pre>
+     *
      * <code>string items_json = 1;</code>
      * @return The itemsJson.
      */
     java.lang.String getItemsJson();
     /**
+     * <pre>
+     * Raw JSON data returned from query
+     * </pre>
+     *
      * <code>string items_json = 1;</code>
      * @return The bytes for itemsJson.
      */
@@ -2100,6 +2283,10 @@ public final class Templates {
         getItemsJsonBytes();
 
     /**
+     * <pre>
+     * Whether more results are available for this query via `continuation_token`
+     * </pre>
+     *
      * <code>bool has_more = 2;</code>
      * @return The hasMore.
      */
@@ -2107,7 +2294,9 @@ public final class Templates {
 
     /**
      * <pre>
-     * int32 count = 3; - not populated nor valid
+     * Count of items in `items_json`
+     * int32 count = 3; unpopulated and unused
+     * Token to fetch next set of results via `SearchCredentialTemplatesRequest`
      * </pre>
      *
      * <code>string continuation_token = 4;</code>
@@ -2116,7 +2305,9 @@ public final class Templates {
     java.lang.String getContinuationToken();
     /**
      * <pre>
-     * int32 count = 3; - not populated nor valid
+     * Count of items in `items_json`
+     * int32 count = 3; unpopulated and unused
+     * Token to fetch next set of results via `SearchCredentialTemplatesRequest`
      * </pre>
      *
      * <code>string continuation_token = 4;</code>
@@ -2126,6 +2317,10 @@ public final class Templates {
         getContinuationTokenBytes();
   }
   /**
+   * <pre>
+   * Response to `SearchCredentialTemplatesRequest`
+   * </pre>
+   *
    * Protobuf type {@code services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse}
    */
   public static final class SearchCredentialTemplatesResponse extends
@@ -2200,6 +2395,8 @@ public final class Templates {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -2224,6 +2421,10 @@ public final class Templates {
     public static final int ITEMS_JSON_FIELD_NUMBER = 1;
     private volatile java.lang.Object itemsJson_;
     /**
+     * <pre>
+     * Raw JSON data returned from query
+     * </pre>
+     *
      * <code>string items_json = 1;</code>
      * @return The itemsJson.
      */
@@ -2241,6 +2442,10 @@ public final class Templates {
       }
     }
     /**
+     * <pre>
+     * Raw JSON data returned from query
+     * </pre>
+     *
      * <code>string items_json = 1;</code>
      * @return The bytes for itemsJson.
      */
@@ -2262,6 +2467,10 @@ public final class Templates {
     public static final int HAS_MORE_FIELD_NUMBER = 2;
     private boolean hasMore_;
     /**
+     * <pre>
+     * Whether more results are available for this query via `continuation_token`
+     * </pre>
+     *
      * <code>bool has_more = 2;</code>
      * @return The hasMore.
      */
@@ -2274,7 +2483,9 @@ public final class Templates {
     private volatile java.lang.Object continuationToken_;
     /**
      * <pre>
-     * int32 count = 3; - not populated nor valid
+     * Count of items in `items_json`
+     * int32 count = 3; unpopulated and unused
+     * Token to fetch next set of results via `SearchCredentialTemplatesRequest`
      * </pre>
      *
      * <code>string continuation_token = 4;</code>
@@ -2295,7 +2506,9 @@ public final class Templates {
     }
     /**
      * <pre>
-     * int32 count = 3; - not populated nor valid
+     * Count of items in `items_json`
+     * int32 count = 3; unpopulated and unused
+     * Token to fetch next set of results via `SearchCredentialTemplatesRequest`
      * </pre>
      *
      * <code>string continuation_token = 4;</code>
@@ -2493,6 +2706,10 @@ public final class Templates {
       return builder;
     }
     /**
+     * <pre>
+     * Response to `SearchCredentialTemplatesRequest`
+     * </pre>
+     *
      * Protobuf type {@code services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse}
      */
     public static final class Builder extends
@@ -2655,6 +2872,10 @@ public final class Templates {
 
       private java.lang.Object itemsJson_ = "";
       /**
+       * <pre>
+       * Raw JSON data returned from query
+       * </pre>
+       *
        * <code>string items_json = 1;</code>
        * @return The itemsJson.
        */
@@ -2671,6 +2892,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * Raw JSON data returned from query
+       * </pre>
+       *
        * <code>string items_json = 1;</code>
        * @return The bytes for itemsJson.
        */
@@ -2688,6 +2913,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * Raw JSON data returned from query
+       * </pre>
+       *
        * <code>string items_json = 1;</code>
        * @param value The itemsJson to set.
        * @return This builder for chaining.
@@ -2703,6 +2932,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Raw JSON data returned from query
+       * </pre>
+       *
        * <code>string items_json = 1;</code>
        * @return This builder for chaining.
        */
@@ -2713,6 +2946,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Raw JSON data returned from query
+       * </pre>
+       *
        * <code>string items_json = 1;</code>
        * @param value The bytes for itemsJson to set.
        * @return This builder for chaining.
@@ -2731,6 +2968,10 @@ public final class Templates {
 
       private boolean hasMore_ ;
       /**
+       * <pre>
+       * Whether more results are available for this query via `continuation_token`
+       * </pre>
+       *
        * <code>bool has_more = 2;</code>
        * @return The hasMore.
        */
@@ -2739,6 +2980,10 @@ public final class Templates {
         return hasMore_;
       }
       /**
+       * <pre>
+       * Whether more results are available for this query via `continuation_token`
+       * </pre>
+       *
        * <code>bool has_more = 2;</code>
        * @param value The hasMore to set.
        * @return This builder for chaining.
@@ -2750,6 +2995,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Whether more results are available for this query via `continuation_token`
+       * </pre>
+       *
        * <code>bool has_more = 2;</code>
        * @return This builder for chaining.
        */
@@ -2763,7 +3012,9 @@ public final class Templates {
       private java.lang.Object continuationToken_ = "";
       /**
        * <pre>
-       * int32 count = 3; - not populated nor valid
+       * Count of items in `items_json`
+       * int32 count = 3; unpopulated and unused
+       * Token to fetch next set of results via `SearchCredentialTemplatesRequest`
        * </pre>
        *
        * <code>string continuation_token = 4;</code>
@@ -2783,7 +3034,9 @@ public final class Templates {
       }
       /**
        * <pre>
-       * int32 count = 3; - not populated nor valid
+       * Count of items in `items_json`
+       * int32 count = 3; unpopulated and unused
+       * Token to fetch next set of results via `SearchCredentialTemplatesRequest`
        * </pre>
        *
        * <code>string continuation_token = 4;</code>
@@ -2804,7 +3057,9 @@ public final class Templates {
       }
       /**
        * <pre>
-       * int32 count = 3; - not populated nor valid
+       * Count of items in `items_json`
+       * int32 count = 3; unpopulated and unused
+       * Token to fetch next set of results via `SearchCredentialTemplatesRequest`
        * </pre>
        *
        * <code>string continuation_token = 4;</code>
@@ -2823,7 +3078,9 @@ public final class Templates {
       }
       /**
        * <pre>
-       * int32 count = 3; - not populated nor valid
+       * Count of items in `items_json`
+       * int32 count = 3; unpopulated and unused
+       * Token to fetch next set of results via `SearchCredentialTemplatesRequest`
        * </pre>
        *
        * <code>string continuation_token = 4;</code>
@@ -2837,7 +3094,9 @@ public final class Templates {
       }
       /**
        * <pre>
-       * int32 count = 3; - not populated nor valid
+       * Count of items in `items_json`
+       * int32 count = 3; unpopulated and unused
+       * Token to fetch next set of results via `SearchCredentialTemplatesRequest`
        * </pre>
        *
        * <code>string continuation_token = 4;</code>
@@ -2914,7 +3173,7 @@ public final class Templates {
 
     /**
      * <pre>
-     * SELECT * FROM c WHERE c.name = 'Diploma'
+     * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
      * </pre>
      *
      * <code>string query = 1;</code>
@@ -2923,7 +3182,7 @@ public final class Templates {
     java.lang.String getQuery();
     /**
      * <pre>
-     * SELECT * FROM c WHERE c.name = 'Diploma'
+     * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
      * </pre>
      *
      * <code>string query = 1;</code>
@@ -2933,18 +3192,32 @@ public final class Templates {
         getQueryBytes();
 
     /**
-     * <code>string continuation_token = 2;</code>
+     * <pre>
+     * Token provided by previous `ListCredentialTemplatesResponse`
+     * if more data is available for query
+     * </pre>
+     *
+     * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
      * @return The continuationToken.
      */
     java.lang.String getContinuationToken();
     /**
-     * <code>string continuation_token = 2;</code>
+     * <pre>
+     * Token provided by previous `ListCredentialTemplatesResponse`
+     * if more data is available for query
+     * </pre>
+     *
+     * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
      * @return The bytes for continuationToken.
      */
     com.google.protobuf.ByteString
         getContinuationTokenBytes();
   }
   /**
+   * <pre>
+   * Request to list templates using a SQL query
+   * </pre>
+   *
    * Protobuf type {@code services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest}
    */
   public static final class ListCredentialTemplatesRequest extends
@@ -3014,6 +3287,8 @@ public final class Templates {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -3039,7 +3314,7 @@ public final class Templates {
     private volatile java.lang.Object query_;
     /**
      * <pre>
-     * SELECT * FROM c WHERE c.name = 'Diploma'
+     * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
      * </pre>
      *
      * <code>string query = 1;</code>
@@ -3060,7 +3335,7 @@ public final class Templates {
     }
     /**
      * <pre>
-     * SELECT * FROM c WHERE c.name = 'Diploma'
+     * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
      * </pre>
      *
      * <code>string query = 1;</code>
@@ -3084,7 +3359,12 @@ public final class Templates {
     public static final int CONTINUATION_TOKEN_FIELD_NUMBER = 2;
     private volatile java.lang.Object continuationToken_;
     /**
-     * <code>string continuation_token = 2;</code>
+     * <pre>
+     * Token provided by previous `ListCredentialTemplatesResponse`
+     * if more data is available for query
+     * </pre>
+     *
+     * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
      * @return The continuationToken.
      */
     @java.lang.Override
@@ -3101,7 +3381,12 @@ public final class Templates {
       }
     }
     /**
-     * <code>string continuation_token = 2;</code>
+     * <pre>
+     * Token provided by previous `ListCredentialTemplatesResponse`
+     * if more data is available for query
+     * </pre>
+     *
+     * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
      * @return The bytes for continuationToken.
      */
     @java.lang.Override
@@ -3284,6 +3569,10 @@ public final class Templates {
       return builder;
     }
     /**
+     * <pre>
+     * Request to list templates using a SQL query
+     * </pre>
+     *
      * Protobuf type {@code services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest}
      */
     public static final class Builder extends
@@ -3441,7 +3730,7 @@ public final class Templates {
       private java.lang.Object query_ = "";
       /**
        * <pre>
-       * SELECT * FROM c WHERE c.name = 'Diploma'
+       * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
        * </pre>
        *
        * <code>string query = 1;</code>
@@ -3461,7 +3750,7 @@ public final class Templates {
       }
       /**
        * <pre>
-       * SELECT * FROM c WHERE c.name = 'Diploma'
+       * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
        * </pre>
        *
        * <code>string query = 1;</code>
@@ -3482,7 +3771,7 @@ public final class Templates {
       }
       /**
        * <pre>
-       * SELECT * FROM c WHERE c.name = 'Diploma'
+       * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
        * </pre>
        *
        * <code>string query = 1;</code>
@@ -3501,7 +3790,7 @@ public final class Templates {
       }
       /**
        * <pre>
-       * SELECT * FROM c WHERE c.name = 'Diploma'
+       * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
        * </pre>
        *
        * <code>string query = 1;</code>
@@ -3515,7 +3804,7 @@ public final class Templates {
       }
       /**
        * <pre>
-       * SELECT * FROM c WHERE c.name = 'Diploma'
+       * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
        * </pre>
        *
        * <code>string query = 1;</code>
@@ -3536,7 +3825,12 @@ public final class Templates {
 
       private java.lang.Object continuationToken_ = "";
       /**
-       * <code>string continuation_token = 2;</code>
+       * <pre>
+       * Token provided by previous `ListCredentialTemplatesResponse`
+       * if more data is available for query
+       * </pre>
+       *
+       * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
        * @return The continuationToken.
        */
       public java.lang.String getContinuationToken() {
@@ -3552,7 +3846,12 @@ public final class Templates {
         }
       }
       /**
-       * <code>string continuation_token = 2;</code>
+       * <pre>
+       * Token provided by previous `ListCredentialTemplatesResponse`
+       * if more data is available for query
+       * </pre>
+       *
+       * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
        * @return The bytes for continuationToken.
        */
       public com.google.protobuf.ByteString
@@ -3569,7 +3868,12 @@ public final class Templates {
         }
       }
       /**
-       * <code>string continuation_token = 2;</code>
+       * <pre>
+       * Token provided by previous `ListCredentialTemplatesResponse`
+       * if more data is available for query
+       * </pre>
+       *
+       * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
        * @param value The continuationToken to set.
        * @return This builder for chaining.
        */
@@ -3584,7 +3888,12 @@ public final class Templates {
         return this;
       }
       /**
-       * <code>string continuation_token = 2;</code>
+       * <pre>
+       * Token provided by previous `ListCredentialTemplatesResponse`
+       * if more data is available for query
+       * </pre>
+       *
+       * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
        * @return This builder for chaining.
        */
       public Builder clearContinuationToken() {
@@ -3594,7 +3903,12 @@ public final class Templates {
         return this;
       }
       /**
-       * <code>string continuation_token = 2;</code>
+       * <pre>
+       * Token provided by previous `ListCredentialTemplatesResponse`
+       * if more data is available for query
+       * </pre>
+       *
+       * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
        * @param value The bytes for continuationToken to set.
        * @return This builder for chaining.
        */
@@ -3667,41 +3981,73 @@ public final class Templates {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * Templates found by query
+     * </pre>
+     *
      * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
      */
     java.util.List<trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData> 
         getTemplatesList();
     /**
+     * <pre>
+     * Templates found by query
+     * </pre>
+     *
      * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
      */
     trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData getTemplates(int index);
     /**
+     * <pre>
+     * Templates found by query
+     * </pre>
+     *
      * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
      */
     int getTemplatesCount();
     /**
+     * <pre>
+     * Templates found by query
+     * </pre>
+     *
      * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
      */
     java.util.List<? extends trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder> 
         getTemplatesOrBuilderList();
     /**
+     * <pre>
+     * Templates found by query
+     * </pre>
+     *
      * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
      */
     trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder getTemplatesOrBuilder(
         int index);
 
     /**
+     * <pre>
+     * Whether more results are available for this query via `continuation_token`
+     * </pre>
+     *
      * <code>bool has_more_results = 2;</code>
      * @return The hasMoreResults.
      */
     boolean getHasMoreResults();
 
     /**
+     * <pre>
+     * Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
+     * </pre>
+     *
      * <code>string continuation_token = 3;</code>
      * @return The continuationToken.
      */
     java.lang.String getContinuationToken();
     /**
+     * <pre>
+     * Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
+     * </pre>
+     *
      * <code>string continuation_token = 3;</code>
      * @return The bytes for continuationToken.
      */
@@ -3709,6 +4055,10 @@ public final class Templates {
         getContinuationTokenBytes();
   }
   /**
+   * <pre>
+   * Response to `ListCredentialTemplatesRequest` 
+   * </pre>
+   *
    * Protobuf type {@code services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse}
    */
   public static final class ListCredentialTemplatesResponse extends
@@ -3787,6 +4137,8 @@ public final class Templates {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -3814,6 +4166,10 @@ public final class Templates {
     public static final int TEMPLATES_FIELD_NUMBER = 1;
     private java.util.List<trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData> templates_;
     /**
+     * <pre>
+     * Templates found by query
+     * </pre>
+     *
      * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
      */
     @java.lang.Override
@@ -3821,6 +4177,10 @@ public final class Templates {
       return templates_;
     }
     /**
+     * <pre>
+     * Templates found by query
+     * </pre>
+     *
      * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
      */
     @java.lang.Override
@@ -3829,6 +4189,10 @@ public final class Templates {
       return templates_;
     }
     /**
+     * <pre>
+     * Templates found by query
+     * </pre>
+     *
      * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
      */
     @java.lang.Override
@@ -3836,6 +4200,10 @@ public final class Templates {
       return templates_.size();
     }
     /**
+     * <pre>
+     * Templates found by query
+     * </pre>
+     *
      * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
      */
     @java.lang.Override
@@ -3843,6 +4211,10 @@ public final class Templates {
       return templates_.get(index);
     }
     /**
+     * <pre>
+     * Templates found by query
+     * </pre>
+     *
      * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
      */
     @java.lang.Override
@@ -3854,6 +4226,10 @@ public final class Templates {
     public static final int HAS_MORE_RESULTS_FIELD_NUMBER = 2;
     private boolean hasMoreResults_;
     /**
+     * <pre>
+     * Whether more results are available for this query via `continuation_token`
+     * </pre>
+     *
      * <code>bool has_more_results = 2;</code>
      * @return The hasMoreResults.
      */
@@ -3865,6 +4241,10 @@ public final class Templates {
     public static final int CONTINUATION_TOKEN_FIELD_NUMBER = 3;
     private volatile java.lang.Object continuationToken_;
     /**
+     * <pre>
+     * Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
+     * </pre>
+     *
      * <code>string continuation_token = 3;</code>
      * @return The continuationToken.
      */
@@ -3882,6 +4262,10 @@ public final class Templates {
       }
     }
     /**
+     * <pre>
+     * Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
+     * </pre>
+     *
      * <code>string continuation_token = 3;</code>
      * @return The bytes for continuationToken.
      */
@@ -4080,6 +4464,10 @@ public final class Templates {
       return builder;
     }
     /**
+     * <pre>
+     * Response to `ListCredentialTemplatesRequest` 
+     * </pre>
+     *
      * Protobuf type {@code services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse}
      */
     public static final class Builder extends
@@ -4290,6 +4678,10 @@ public final class Templates {
           trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder> templatesBuilder_;
 
       /**
+       * <pre>
+       * Templates found by query
+       * </pre>
+       *
        * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
        */
       public java.util.List<trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData> getTemplatesList() {
@@ -4300,6 +4692,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * Templates found by query
+       * </pre>
+       *
        * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
        */
       public int getTemplatesCount() {
@@ -4310,6 +4706,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * Templates found by query
+       * </pre>
+       *
        * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
        */
       public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData getTemplates(int index) {
@@ -4320,6 +4720,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * Templates found by query
+       * </pre>
+       *
        * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
        */
       public Builder setTemplates(
@@ -4337,6 +4741,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Templates found by query
+       * </pre>
+       *
        * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
        */
       public Builder setTemplates(
@@ -4351,6 +4759,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Templates found by query
+       * </pre>
+       *
        * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
        */
       public Builder addTemplates(trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData value) {
@@ -4367,6 +4779,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Templates found by query
+       * </pre>
+       *
        * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
        */
       public Builder addTemplates(
@@ -4384,6 +4800,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Templates found by query
+       * </pre>
+       *
        * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
        */
       public Builder addTemplates(
@@ -4398,6 +4818,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Templates found by query
+       * </pre>
+       *
        * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
        */
       public Builder addTemplates(
@@ -4412,6 +4836,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Templates found by query
+       * </pre>
+       *
        * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
        */
       public Builder addAllTemplates(
@@ -4427,6 +4855,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Templates found by query
+       * </pre>
+       *
        * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
        */
       public Builder clearTemplates() {
@@ -4440,6 +4872,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Templates found by query
+       * </pre>
+       *
        * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
        */
       public Builder removeTemplates(int index) {
@@ -4453,6 +4889,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Templates found by query
+       * </pre>
+       *
        * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
        */
       public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder getTemplatesBuilder(
@@ -4460,6 +4900,10 @@ public final class Templates {
         return getTemplatesFieldBuilder().getBuilder(index);
       }
       /**
+       * <pre>
+       * Templates found by query
+       * </pre>
+       *
        * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
        */
       public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder getTemplatesOrBuilder(
@@ -4470,6 +4914,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * Templates found by query
+       * </pre>
+       *
        * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
        */
       public java.util.List<? extends trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder> 
@@ -4481,6 +4929,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * Templates found by query
+       * </pre>
+       *
        * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
        */
       public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder addTemplatesBuilder() {
@@ -4488,6 +4940,10 @@ public final class Templates {
             trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.getDefaultInstance());
       }
       /**
+       * <pre>
+       * Templates found by query
+       * </pre>
+       *
        * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
        */
       public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder addTemplatesBuilder(
@@ -4496,6 +4952,10 @@ public final class Templates {
             index, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.getDefaultInstance());
       }
       /**
+       * <pre>
+       * Templates found by query
+       * </pre>
+       *
        * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
        */
       public java.util.List<trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder> 
@@ -4519,6 +4979,10 @@ public final class Templates {
 
       private boolean hasMoreResults_ ;
       /**
+       * <pre>
+       * Whether more results are available for this query via `continuation_token`
+       * </pre>
+       *
        * <code>bool has_more_results = 2;</code>
        * @return The hasMoreResults.
        */
@@ -4527,6 +4991,10 @@ public final class Templates {
         return hasMoreResults_;
       }
       /**
+       * <pre>
+       * Whether more results are available for this query via `continuation_token`
+       * </pre>
+       *
        * <code>bool has_more_results = 2;</code>
        * @param value The hasMoreResults to set.
        * @return This builder for chaining.
@@ -4538,6 +5006,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Whether more results are available for this query via `continuation_token`
+       * </pre>
+       *
        * <code>bool has_more_results = 2;</code>
        * @return This builder for chaining.
        */
@@ -4550,6 +5022,10 @@ public final class Templates {
 
       private java.lang.Object continuationToken_ = "";
       /**
+       * <pre>
+       * Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
+       * </pre>
+       *
        * <code>string continuation_token = 3;</code>
        * @return The continuationToken.
        */
@@ -4566,6 +5042,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
+       * </pre>
+       *
        * <code>string continuation_token = 3;</code>
        * @return The bytes for continuationToken.
        */
@@ -4583,6 +5063,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
+       * </pre>
+       *
        * <code>string continuation_token = 3;</code>
        * @param value The continuationToken to set.
        * @return This builder for chaining.
@@ -4598,6 +5082,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
+       * </pre>
+       *
        * <code>string continuation_token = 3;</code>
        * @return This builder for chaining.
        */
@@ -4608,6 +5096,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
+       * </pre>
+       *
        * <code>string continuation_token = 3;</code>
        * @param value The bytes for continuationToken to set.
        * @return This builder for chaining.
@@ -4681,11 +5173,19 @@ public final class Templates {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * ID of template to delete
+     * </pre>
+     *
      * <code>string id = 1;</code>
      * @return The id.
      */
     java.lang.String getId();
     /**
+     * <pre>
+     * ID of template to delete
+     * </pre>
+     *
      * <code>string id = 1;</code>
      * @return The bytes for id.
      */
@@ -4693,6 +5193,10 @@ public final class Templates {
         getIdBytes();
   }
   /**
+   * <pre>
+   * Request to delete a template by ID
+   * </pre>
+   *
    * Protobuf type {@code services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest}
    */
   public static final class DeleteCredentialTemplateRequest extends
@@ -4755,6 +5259,8 @@ public final class Templates {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -4779,6 +5285,10 @@ public final class Templates {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
+     * <pre>
+     * ID of template to delete
+     * </pre>
+     *
      * <code>string id = 1;</code>
      * @return The id.
      */
@@ -4796,6 +5306,10 @@ public final class Templates {
       }
     }
     /**
+     * <pre>
+     * ID of template to delete
+     * </pre>
+     *
      * <code>string id = 1;</code>
      * @return The bytes for id.
      */
@@ -4969,6 +5483,10 @@ public final class Templates {
       return builder;
     }
     /**
+     * <pre>
+     * Request to delete a template by ID
+     * </pre>
+     *
      * Protobuf type {@code services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest}
      */
     public static final class Builder extends
@@ -5118,6 +5636,10 @@ public final class Templates {
 
       private java.lang.Object id_ = "";
       /**
+       * <pre>
+       * ID of template to delete
+       * </pre>
+       *
        * <code>string id = 1;</code>
        * @return The id.
        */
@@ -5134,6 +5656,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * ID of template to delete
+       * </pre>
+       *
        * <code>string id = 1;</code>
        * @return The bytes for id.
        */
@@ -5151,6 +5677,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * ID of template to delete
+       * </pre>
+       *
        * <code>string id = 1;</code>
        * @param value The id to set.
        * @return This builder for chaining.
@@ -5166,6 +5696,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * ID of template to delete
+       * </pre>
+       *
        * <code>string id = 1;</code>
        * @return This builder for chaining.
        */
@@ -5176,6 +5710,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * ID of template to delete
+       * </pre>
+       *
        * <code>string id = 1;</code>
        * @param value The bytes for id to set.
        * @return This builder for chaining.
@@ -5249,6 +5787,10 @@ public final class Templates {
       com.google.protobuf.MessageOrBuilder {
   }
   /**
+   * <pre>
+   * Response to `DeleteCredentialTemplateRequest`
+   * </pre>
+   *
    * Protobuf type {@code services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse}
    */
   public static final class DeleteCredentialTemplateResponse extends
@@ -5304,6 +5846,8 @@ public final class Templates {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -5470,6 +6014,10 @@ public final class Templates {
       return builder;
     }
     /**
+     * <pre>
+     * Response to `DeleteCredentialTemplateRequest`
+     * </pre>
+     *
      * Protobuf type {@code services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse}
      */
     public static final class Builder extends
@@ -5667,11 +6215,19 @@ public final class Templates {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * Name of new template
+     * </pre>
+     *
      * <code>string name = 1;</code>
      * @return The name.
      */
     java.lang.String getName();
     /**
+     * <pre>
+     * Name of new template
+     * </pre>
+     *
      * <code>string name = 1;</code>
      * @return The bytes for name.
      */
@@ -5679,10 +6235,18 @@ public final class Templates {
         getNameBytes();
 
     /**
+     * <pre>
+     * Fields which compose the template
+     * </pre>
+     *
      * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
      */
     int getFieldsCount();
     /**
+     * <pre>
+     * Fields which compose the template
+     * </pre>
+     *
      * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
      */
     boolean containsFields(
@@ -5694,18 +6258,32 @@ public final class Templates {
     java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
     getFields();
     /**
+     * <pre>
+     * Fields which compose the template
+     * </pre>
+     *
      * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
      */
     java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
     getFieldsMap();
     /**
+     * <pre>
+     * Fields which compose the template
+     * </pre>
+     *
      * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
      */
 
-    trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField getFieldsOrDefault(
+    /* nullable */
+trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField getFieldsOrDefault(
         java.lang.String key,
-        trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defaultValue);
+        /* nullable */
+trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defaultValue);
     /**
+     * <pre>
+     * Fields which compose the template
+     * </pre>
+     *
      * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
      */
 
@@ -5713,6 +6291,11 @@ public final class Templates {
         java.lang.String key);
 
     /**
+     * <pre>
+     * Whether credentials may be issued against this template which have fields
+     * not specified in `fields`
+     * </pre>
+     *
      * <code>bool allow_additional_fields = 3;</code>
      * @return The allowAdditionalFields.
      */
@@ -5720,7 +6303,7 @@ public final class Templates {
   }
   /**
    * <pre>
-   * Request to create new template
+   * Request to create a new template
    * </pre>
    *
    * Protobuf type {@code services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest}
@@ -5804,6 +6387,8 @@ public final class Templates {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -5840,6 +6425,10 @@ public final class Templates {
     public static final int NAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object name_;
     /**
+     * <pre>
+     * Name of new template
+     * </pre>
+     *
      * <code>string name = 1;</code>
      * @return The name.
      */
@@ -5857,6 +6446,10 @@ public final class Templates {
       }
     }
     /**
+     * <pre>
+     * Name of new template
+     * </pre>
+     *
      * <code>string name = 1;</code>
      * @return The bytes for name.
      */
@@ -5902,6 +6495,10 @@ public final class Templates {
       return internalGetFields().getMap().size();
     }
     /**
+     * <pre>
+     * Fields which compose the template
+     * </pre>
+     *
      * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
      */
 
@@ -5920,6 +6517,10 @@ public final class Templates {
       return getFieldsMap();
     }
     /**
+     * <pre>
+     * Fields which compose the template
+     * </pre>
+     *
      * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
      */
     @java.lang.Override
@@ -5928,6 +6529,10 @@ public final class Templates {
       return internalGetFields().getMap();
     }
     /**
+     * <pre>
+     * Fields which compose the template
+     * </pre>
+     *
      * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
      */
     @java.lang.Override
@@ -5941,6 +6546,10 @@ public final class Templates {
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
+     * <pre>
+     * Fields which compose the template
+     * </pre>
+     *
      * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
      */
     @java.lang.Override
@@ -5959,6 +6568,11 @@ public final class Templates {
     public static final int ALLOW_ADDITIONAL_FIELDS_FIELD_NUMBER = 3;
     private boolean allowAdditionalFields_;
     /**
+     * <pre>
+     * Whether credentials may be issued against this template which have fields
+     * not specified in `fields`
+     * </pre>
+     *
      * <code>bool allow_additional_fields = 3;</code>
      * @return The allowAdditionalFields.
      */
@@ -6157,7 +6771,7 @@ public final class Templates {
     }
     /**
      * <pre>
-     * Request to create new template
+     * Request to create a new template
      * </pre>
      *
      * Protobuf type {@code services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest}
@@ -6344,6 +6958,10 @@ public final class Templates {
 
       private java.lang.Object name_ = "";
       /**
+       * <pre>
+       * Name of new template
+       * </pre>
+       *
        * <code>string name = 1;</code>
        * @return The name.
        */
@@ -6360,6 +6978,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * Name of new template
+       * </pre>
+       *
        * <code>string name = 1;</code>
        * @return The bytes for name.
        */
@@ -6377,6 +6999,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * Name of new template
+       * </pre>
+       *
        * <code>string name = 1;</code>
        * @param value The name to set.
        * @return This builder for chaining.
@@ -6392,6 +7018,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Name of new template
+       * </pre>
+       *
        * <code>string name = 1;</code>
        * @return This builder for chaining.
        */
@@ -6402,6 +7032,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Name of new template
+       * </pre>
+       *
        * <code>string name = 1;</code>
        * @param value The bytes for name to set.
        * @return This builder for chaining.
@@ -6445,6 +7079,10 @@ public final class Templates {
         return internalGetFields().getMap().size();
       }
       /**
+       * <pre>
+       * Fields which compose the template
+       * </pre>
+       *
        * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
        */
 
@@ -6463,6 +7101,10 @@ public final class Templates {
         return getFieldsMap();
       }
       /**
+       * <pre>
+       * Fields which compose the template
+       * </pre>
+       *
        * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
        */
       @java.lang.Override
@@ -6471,6 +7113,10 @@ public final class Templates {
         return internalGetFields().getMap();
       }
       /**
+       * <pre>
+       * Fields which compose the template
+       * </pre>
+       *
        * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
        */
       @java.lang.Override
@@ -6484,6 +7130,10 @@ public final class Templates {
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
+       * <pre>
+       * Fields which compose the template
+       * </pre>
+       *
        * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
        */
       @java.lang.Override
@@ -6505,6 +7155,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Fields which compose the template
+       * </pre>
+       *
        * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
        */
 
@@ -6524,6 +7178,10 @@ public final class Templates {
         return internalGetMutableFields().getMutableMap();
       }
       /**
+       * <pre>
+       * Fields which compose the template
+       * </pre>
+       *
        * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
        */
       public Builder putFields(
@@ -6539,6 +7197,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Fields which compose the template
+       * </pre>
+       *
        * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
        */
 
@@ -6551,6 +7213,11 @@ public final class Templates {
 
       private boolean allowAdditionalFields_ ;
       /**
+       * <pre>
+       * Whether credentials may be issued against this template which have fields
+       * not specified in `fields`
+       * </pre>
+       *
        * <code>bool allow_additional_fields = 3;</code>
        * @return The allowAdditionalFields.
        */
@@ -6559,6 +7226,11 @@ public final class Templates {
         return allowAdditionalFields_;
       }
       /**
+       * <pre>
+       * Whether credentials may be issued against this template which have fields
+       * not specified in `fields`
+       * </pre>
+       *
        * <code>bool allow_additional_fields = 3;</code>
        * @param value The allowAdditionalFields to set.
        * @return This builder for chaining.
@@ -6570,6 +7242,11 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Whether credentials may be issued against this template which have fields
+       * not specified in `fields`
+       * </pre>
+       *
        * <code>bool allow_additional_fields = 3;</code>
        * @return This builder for chaining.
        */
@@ -6637,21 +7314,37 @@ public final class Templates {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * Created template
+     * </pre>
+     *
      * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
      * @return Whether the data field is set.
      */
     boolean hasData();
     /**
+     * <pre>
+     * Created template
+     * </pre>
+     *
      * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
      * @return The data.
      */
     trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData getData();
     /**
+     * <pre>
+     * Created template
+     * </pre>
+     *
      * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
      */
     trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder getDataOrBuilder();
   }
   /**
+   * <pre>
+   * Response to `CreateCredentialTemplateRequest`
+   * </pre>
+   *
    * Protobuf type {@code services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse}
    */
   public static final class CreateCredentialTemplateResponse extends
@@ -6720,6 +7413,8 @@ public final class Templates {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -6744,6 +7439,10 @@ public final class Templates {
     public static final int DATA_FIELD_NUMBER = 1;
     private trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData data_;
     /**
+     * <pre>
+     * Created template
+     * </pre>
+     *
      * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
      * @return Whether the data field is set.
      */
@@ -6752,6 +7451,10 @@ public final class Templates {
       return data_ != null;
     }
     /**
+     * <pre>
+     * Created template
+     * </pre>
+     *
      * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
      * @return The data.
      */
@@ -6760,6 +7463,10 @@ public final class Templates {
       return data_ == null ? trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.getDefaultInstance() : data_;
     }
     /**
+     * <pre>
+     * Created template
+     * </pre>
+     *
      * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
      */
     @java.lang.Override
@@ -6928,6 +7635,10 @@ public final class Templates {
       return builder;
     }
     /**
+     * <pre>
+     * Response to `CreateCredentialTemplateRequest`
+     * </pre>
+     *
      * Protobuf type {@code services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse}
      */
     public static final class Builder extends
@@ -7086,6 +7797,10 @@ public final class Templates {
       private com.google.protobuf.SingleFieldBuilderV3<
           trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder> dataBuilder_;
       /**
+       * <pre>
+       * Created template
+       * </pre>
+       *
        * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
        * @return Whether the data field is set.
        */
@@ -7093,6 +7808,10 @@ public final class Templates {
         return dataBuilder_ != null || data_ != null;
       }
       /**
+       * <pre>
+       * Created template
+       * </pre>
+       *
        * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
        * @return The data.
        */
@@ -7104,6 +7823,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * Created template
+       * </pre>
+       *
        * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
        */
       public Builder setData(trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData value) {
@@ -7120,6 +7843,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Created template
+       * </pre>
+       *
        * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
        */
       public Builder setData(
@@ -7134,6 +7861,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Created template
+       * </pre>
+       *
        * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
        */
       public Builder mergeData(trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData value) {
@@ -7152,6 +7883,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Created template
+       * </pre>
+       *
        * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
        */
       public Builder clearData() {
@@ -7166,6 +7901,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Created template
+       * </pre>
+       *
        * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
        */
       public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder getDataBuilder() {
@@ -7174,6 +7913,10 @@ public final class Templates {
         return getDataFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * Created template
+       * </pre>
+       *
        * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
        */
       public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder getDataOrBuilder() {
@@ -7185,6 +7928,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * Created template
+       * </pre>
+       *
        * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -7258,11 +8005,19 @@ public final class Templates {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * Human-readable description of the field
+     * </pre>
+     *
      * <code>string description = 2;</code>
      * @return The description.
      */
     java.lang.String getDescription();
     /**
+     * <pre>
+     * Human-readable description of the field
+     * </pre>
+     *
      * <code>string description = 2;</code>
      * @return The bytes for description.
      */
@@ -7270,23 +8025,39 @@ public final class Templates {
         getDescriptionBytes();
 
     /**
+     * <pre>
+     * Whether this field may be omitted when a credential is issued against the template
+     * </pre>
+     *
      * <code>bool optional = 3;</code>
      * @return The optional.
      */
     boolean getOptional();
 
     /**
+     * <pre>
+     * The type of the field
+     * </pre>
+     *
      * <code>.services.verifiablecredentials.templates.v1.FieldType type = 4;</code>
      * @return The enum numeric value on the wire for type.
      */
     int getTypeValue();
     /**
+     * <pre>
+     * The type of the field
+     * </pre>
+     *
      * <code>.services.verifiablecredentials.templates.v1.FieldType type = 4;</code>
      * @return The type.
      */
     trinsic.services.verifiablecredentials.templates.v1.Templates.FieldType getType();
   }
   /**
+   * <pre>
+   * A field defined in a template
+   * </pre>
+   *
    * Protobuf type {@code services.verifiablecredentials.templates.v1.TemplateField}
    */
   public static final class TemplateField extends
@@ -7361,6 +8132,8 @@ public final class Templates {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -7385,6 +8158,10 @@ public final class Templates {
     public static final int DESCRIPTION_FIELD_NUMBER = 2;
     private volatile java.lang.Object description_;
     /**
+     * <pre>
+     * Human-readable description of the field
+     * </pre>
+     *
      * <code>string description = 2;</code>
      * @return The description.
      */
@@ -7402,6 +8179,10 @@ public final class Templates {
       }
     }
     /**
+     * <pre>
+     * Human-readable description of the field
+     * </pre>
+     *
      * <code>string description = 2;</code>
      * @return The bytes for description.
      */
@@ -7423,6 +8204,10 @@ public final class Templates {
     public static final int OPTIONAL_FIELD_NUMBER = 3;
     private boolean optional_;
     /**
+     * <pre>
+     * Whether this field may be omitted when a credential is issued against the template
+     * </pre>
+     *
      * <code>bool optional = 3;</code>
      * @return The optional.
      */
@@ -7434,6 +8219,10 @@ public final class Templates {
     public static final int TYPE_FIELD_NUMBER = 4;
     private int type_;
     /**
+     * <pre>
+     * The type of the field
+     * </pre>
+     *
      * <code>.services.verifiablecredentials.templates.v1.FieldType type = 4;</code>
      * @return The enum numeric value on the wire for type.
      */
@@ -7441,6 +8230,10 @@ public final class Templates {
       return type_;
     }
     /**
+     * <pre>
+     * The type of the field
+     * </pre>
+     *
      * <code>.services.verifiablecredentials.templates.v1.FieldType type = 4;</code>
      * @return The type.
      */
@@ -7627,6 +8420,10 @@ public final class Templates {
       return builder;
     }
     /**
+     * <pre>
+     * A field defined in a template
+     * </pre>
+     *
      * Protobuf type {@code services.verifiablecredentials.templates.v1.TemplateField}
      */
     public static final class Builder extends
@@ -7788,6 +8585,10 @@ public final class Templates {
 
       private java.lang.Object description_ = "";
       /**
+       * <pre>
+       * Human-readable description of the field
+       * </pre>
+       *
        * <code>string description = 2;</code>
        * @return The description.
        */
@@ -7804,6 +8605,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * Human-readable description of the field
+       * </pre>
+       *
        * <code>string description = 2;</code>
        * @return The bytes for description.
        */
@@ -7821,6 +8626,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * Human-readable description of the field
+       * </pre>
+       *
        * <code>string description = 2;</code>
        * @param value The description to set.
        * @return This builder for chaining.
@@ -7836,6 +8645,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Human-readable description of the field
+       * </pre>
+       *
        * <code>string description = 2;</code>
        * @return This builder for chaining.
        */
@@ -7846,6 +8659,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Human-readable description of the field
+       * </pre>
+       *
        * <code>string description = 2;</code>
        * @param value The bytes for description to set.
        * @return This builder for chaining.
@@ -7864,6 +8681,10 @@ public final class Templates {
 
       private boolean optional_ ;
       /**
+       * <pre>
+       * Whether this field may be omitted when a credential is issued against the template
+       * </pre>
+       *
        * <code>bool optional = 3;</code>
        * @return The optional.
        */
@@ -7872,6 +8693,10 @@ public final class Templates {
         return optional_;
       }
       /**
+       * <pre>
+       * Whether this field may be omitted when a credential is issued against the template
+       * </pre>
+       *
        * <code>bool optional = 3;</code>
        * @param value The optional to set.
        * @return This builder for chaining.
@@ -7883,6 +8708,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Whether this field may be omitted when a credential is issued against the template
+       * </pre>
+       *
        * <code>bool optional = 3;</code>
        * @return This builder for chaining.
        */
@@ -7895,6 +8724,10 @@ public final class Templates {
 
       private int type_ = 0;
       /**
+       * <pre>
+       * The type of the field
+       * </pre>
+       *
        * <code>.services.verifiablecredentials.templates.v1.FieldType type = 4;</code>
        * @return The enum numeric value on the wire for type.
        */
@@ -7902,6 +8735,10 @@ public final class Templates {
         return type_;
       }
       /**
+       * <pre>
+       * The type of the field
+       * </pre>
+       *
        * <code>.services.verifiablecredentials.templates.v1.FieldType type = 4;</code>
        * @param value The enum numeric value on the wire for type to set.
        * @return This builder for chaining.
@@ -7913,6 +8750,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * The type of the field
+       * </pre>
+       *
        * <code>.services.verifiablecredentials.templates.v1.FieldType type = 4;</code>
        * @return The type.
        */
@@ -7923,6 +8764,10 @@ public final class Templates {
         return result == null ? trinsic.services.verifiablecredentials.templates.v1.Templates.FieldType.UNRECOGNIZED : result;
       }
       /**
+       * <pre>
+       * The type of the field
+       * </pre>
+       *
        * <code>.services.verifiablecredentials.templates.v1.FieldType type = 4;</code>
        * @param value The type to set.
        * @return This builder for chaining.
@@ -7937,6 +8782,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * The type of the field
+       * </pre>
+       *
        * <code>.services.verifiablecredentials.templates.v1.FieldType type = 4;</code>
        * @return This builder for chaining.
        */
@@ -8016,6 +8865,10 @@ public final class Templates {
         getIdBytes();
   }
   /**
+   * <pre>
+   * Unused
+   * </pre>
+   *
    * Protobuf type {@code services.verifiablecredentials.templates.v1.GetTemplateRequest}
    */
   public static final class GetTemplateRequest extends
@@ -8078,6 +8931,8 @@ public final class Templates {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -8292,6 +9147,10 @@ public final class Templates {
       return builder;
     }
     /**
+     * <pre>
+     * Unused
+     * </pre>
+     *
      * Protobuf type {@code services.verifiablecredentials.templates.v1.GetTemplateRequest}
      */
     public static final class Builder extends
@@ -8587,6 +9446,10 @@ public final class Templates {
     trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder getDataOrBuilder();
   }
   /**
+   * <pre>
+   * Unused
+   * </pre>
+   *
    * Protobuf type {@code services.verifiablecredentials.templates.v1.GetTemplateResponse}
    */
   public static final class GetTemplateResponse extends
@@ -8655,6 +9518,8 @@ public final class Templates {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -8863,6 +9728,10 @@ public final class Templates {
       return builder;
     }
     /**
+     * <pre>
+     * Unused
+     * </pre>
+     *
      * Protobuf type {@code services.verifiablecredentials.templates.v1.GetTemplateResponse}
      */
     public static final class Builder extends
@@ -9193,6 +10062,10 @@ public final class Templates {
       com.google.protobuf.MessageOrBuilder {
   }
   /**
+   * <pre>
+   * Unused
+   * </pre>
+   *
    * Protobuf type {@code services.verifiablecredentials.templates.v1.ListTemplatesRequest}
    */
   public static final class ListTemplatesRequest extends
@@ -9248,6 +10121,8 @@ public final class Templates {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -9414,6 +10289,10 @@ public final class Templates {
       return builder;
     }
     /**
+     * <pre>
+     * Unused
+     * </pre>
+     *
      * Protobuf type {@code services.verifiablecredentials.templates.v1.ListTemplatesRequest}
      */
     public static final class Builder extends
@@ -9635,6 +10514,10 @@ public final class Templates {
         int index);
   }
   /**
+   * <pre>
+   * Unused
+   * </pre>
+   *
    * Protobuf type {@code services.verifiablecredentials.templates.v1.ListTemplatesResponse}
    */
   public static final class ListTemplatesResponse extends
@@ -9701,6 +10584,8 @@ public final class Templates {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -9923,6 +10808,10 @@ public final class Templates {
       return builder;
     }
     /**
+     * <pre>
+     * Unused
+     * </pre>
+     *
      * Protobuf type {@code services.verifiablecredentials.templates.v1.ListTemplatesResponse}
      */
     public static final class Builder extends
@@ -10404,11 +11293,19 @@ public final class Templates {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * Template ID
+     * </pre>
+     *
      * <code>string id = 1 [json_name = "id"];</code>
      * @return The id.
      */
     java.lang.String getId();
     /**
+     * <pre>
+     * Template ID
+     * </pre>
+     *
      * <code>string id = 1 [json_name = "id"];</code>
      * @return The bytes for id.
      */
@@ -10416,11 +11313,19 @@ public final class Templates {
         getIdBytes();
 
     /**
+     * <pre>
+     * Template name
+     * </pre>
+     *
      * <code>string name = 2;</code>
      * @return The name.
      */
     java.lang.String getName();
     /**
+     * <pre>
+     * Template name
+     * </pre>
+     *
      * <code>string name = 2;</code>
      * @return The bytes for name.
      */
@@ -10428,16 +11333,28 @@ public final class Templates {
         getNameBytes();
 
     /**
+     * <pre>
+     * Template version number
+     * </pre>
+     *
      * <code>int32 version = 3;</code>
      * @return The version.
      */
     int getVersion();
 
     /**
+     * <pre>
+     * Fields defined for the template
+     * </pre>
+     *
      * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
      */
     int getFieldsCount();
     /**
+     * <pre>
+     * Fields defined for the template
+     * </pre>
+     *
      * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
      */
     boolean containsFields(
@@ -10449,18 +11366,32 @@ public final class Templates {
     java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
     getFields();
     /**
+     * <pre>
+     * Fields defined for the template
+     * </pre>
+     *
      * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
      */
     java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
     getFieldsMap();
     /**
+     * <pre>
+     * Fields defined for the template
+     * </pre>
+     *
      * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
      */
 
-    trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField getFieldsOrDefault(
+    /* nullable */
+trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField getFieldsOrDefault(
         java.lang.String key,
-        trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defaultValue);
+        /* nullable */
+trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defaultValue);
     /**
+     * <pre>
+     * Fields defined for the template
+     * </pre>
+     *
      * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
      */
 
@@ -10468,17 +11399,30 @@ public final class Templates {
         java.lang.String key);
 
     /**
+     * <pre>
+     * Whether credentials issued against this template may 
+     * contain fields not defined by template
+     * </pre>
+     *
      * <code>bool allow_additional_fields = 5;</code>
      * @return The allowAdditionalFields.
      */
     boolean getAllowAdditionalFields();
 
     /**
+     * <pre>
+     * URI pointing to template JSON schema document
+     * </pre>
+     *
      * <code>string schema_uri = 6;</code>
      * @return The schemaUri.
      */
     java.lang.String getSchemaUri();
     /**
+     * <pre>
+     * URI pointing to template JSON schema document
+     * </pre>
+     *
      * <code>string schema_uri = 6;</code>
      * @return The bytes for schemaUri.
      */
@@ -10486,11 +11430,19 @@ public final class Templates {
         getSchemaUriBytes();
 
     /**
+     * <pre>
+     * URI pointing to template JSON-LD context document
+     * </pre>
+     *
      * <code>string context_uri = 7;</code>
      * @return The contextUri.
      */
     java.lang.String getContextUri();
     /**
+     * <pre>
+     * URI pointing to template JSON-LD context document
+     * </pre>
+     *
      * <code>string context_uri = 7;</code>
      * @return The bytes for contextUri.
      */
@@ -10498,11 +11450,19 @@ public final class Templates {
         getContextUriBytes();
 
     /**
+     * <pre>
+     * ID of ecosystem in which template resides
+     * </pre>
+     *
      * <code>string ecosystem_id = 8 [json_name = "ecosystemId"];</code>
      * @return The ecosystemId.
      */
     java.lang.String getEcosystemId();
     /**
+     * <pre>
+     * ID of ecosystem in which template resides
+     * </pre>
+     *
      * <code>string ecosystem_id = 8 [json_name = "ecosystemId"];</code>
      * @return The bytes for ecosystemId.
      */
@@ -10510,11 +11470,19 @@ public final class Templates {
         getEcosystemIdBytes();
 
     /**
+     * <pre>
+     * Template type (`VerifiableCredential`)
+     * </pre>
+     *
      * <code>string type = 9 [json_name = "type"];</code>
      * @return The type.
      */
     java.lang.String getType();
     /**
+     * <pre>
+     * Template type (`VerifiableCredential`)
+     * </pre>
+     *
      * <code>string type = 9 [json_name = "type"];</code>
      * @return The bytes for type.
      */
@@ -10522,11 +11490,19 @@ public final class Templates {
         getTypeBytes();
 
     /**
+     * <pre>
+     * ID of template creator
+     * </pre>
+     *
      * <code>string created_by = 10 [json_name = "createdBy"];</code>
      * @return The createdBy.
      */
     java.lang.String getCreatedBy();
     /**
+     * <pre>
+     * ID of template creator
+     * </pre>
+     *
      * <code>string created_by = 10 [json_name = "createdBy"];</code>
      * @return The bytes for createdBy.
      */
@@ -10534,6 +11510,10 @@ public final class Templates {
         getCreatedByBytes();
   }
   /**
+   * <pre>
+   * Credential Template
+   * </pre>
+   *
    * Protobuf type {@code services.verifiablecredentials.templates.v1.TemplateData}
    */
   public static final class TemplateData extends
@@ -10662,6 +11642,8 @@ public final class Templates {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -10698,6 +11680,10 @@ public final class Templates {
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
+     * <pre>
+     * Template ID
+     * </pre>
+     *
      * <code>string id = 1 [json_name = "id"];</code>
      * @return The id.
      */
@@ -10715,6 +11701,10 @@ public final class Templates {
       }
     }
     /**
+     * <pre>
+     * Template ID
+     * </pre>
+     *
      * <code>string id = 1 [json_name = "id"];</code>
      * @return The bytes for id.
      */
@@ -10736,6 +11726,10 @@ public final class Templates {
     public static final int NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object name_;
     /**
+     * <pre>
+     * Template name
+     * </pre>
+     *
      * <code>string name = 2;</code>
      * @return The name.
      */
@@ -10753,6 +11747,10 @@ public final class Templates {
       }
     }
     /**
+     * <pre>
+     * Template name
+     * </pre>
+     *
      * <code>string name = 2;</code>
      * @return The bytes for name.
      */
@@ -10774,6 +11772,10 @@ public final class Templates {
     public static final int VERSION_FIELD_NUMBER = 3;
     private int version_;
     /**
+     * <pre>
+     * Template version number
+     * </pre>
+     *
      * <code>int32 version = 3;</code>
      * @return The version.
      */
@@ -10809,6 +11811,10 @@ public final class Templates {
       return internalGetFields().getMap().size();
     }
     /**
+     * <pre>
+     * Fields defined for the template
+     * </pre>
+     *
      * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
      */
 
@@ -10827,6 +11833,10 @@ public final class Templates {
       return getFieldsMap();
     }
     /**
+     * <pre>
+     * Fields defined for the template
+     * </pre>
+     *
      * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
      */
     @java.lang.Override
@@ -10835,6 +11845,10 @@ public final class Templates {
       return internalGetFields().getMap();
     }
     /**
+     * <pre>
+     * Fields defined for the template
+     * </pre>
+     *
      * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
      */
     @java.lang.Override
@@ -10848,6 +11862,10 @@ public final class Templates {
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
+     * <pre>
+     * Fields defined for the template
+     * </pre>
+     *
      * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
      */
     @java.lang.Override
@@ -10866,6 +11884,11 @@ public final class Templates {
     public static final int ALLOW_ADDITIONAL_FIELDS_FIELD_NUMBER = 5;
     private boolean allowAdditionalFields_;
     /**
+     * <pre>
+     * Whether credentials issued against this template may 
+     * contain fields not defined by template
+     * </pre>
+     *
      * <code>bool allow_additional_fields = 5;</code>
      * @return The allowAdditionalFields.
      */
@@ -10877,6 +11900,10 @@ public final class Templates {
     public static final int SCHEMA_URI_FIELD_NUMBER = 6;
     private volatile java.lang.Object schemaUri_;
     /**
+     * <pre>
+     * URI pointing to template JSON schema document
+     * </pre>
+     *
      * <code>string schema_uri = 6;</code>
      * @return The schemaUri.
      */
@@ -10894,6 +11921,10 @@ public final class Templates {
       }
     }
     /**
+     * <pre>
+     * URI pointing to template JSON schema document
+     * </pre>
+     *
      * <code>string schema_uri = 6;</code>
      * @return The bytes for schemaUri.
      */
@@ -10915,6 +11946,10 @@ public final class Templates {
     public static final int CONTEXT_URI_FIELD_NUMBER = 7;
     private volatile java.lang.Object contextUri_;
     /**
+     * <pre>
+     * URI pointing to template JSON-LD context document
+     * </pre>
+     *
      * <code>string context_uri = 7;</code>
      * @return The contextUri.
      */
@@ -10932,6 +11967,10 @@ public final class Templates {
       }
     }
     /**
+     * <pre>
+     * URI pointing to template JSON-LD context document
+     * </pre>
+     *
      * <code>string context_uri = 7;</code>
      * @return The bytes for contextUri.
      */
@@ -10953,6 +11992,10 @@ public final class Templates {
     public static final int ECOSYSTEM_ID_FIELD_NUMBER = 8;
     private volatile java.lang.Object ecosystemId_;
     /**
+     * <pre>
+     * ID of ecosystem in which template resides
+     * </pre>
+     *
      * <code>string ecosystem_id = 8 [json_name = "ecosystemId"];</code>
      * @return The ecosystemId.
      */
@@ -10970,6 +12013,10 @@ public final class Templates {
       }
     }
     /**
+     * <pre>
+     * ID of ecosystem in which template resides
+     * </pre>
+     *
      * <code>string ecosystem_id = 8 [json_name = "ecosystemId"];</code>
      * @return The bytes for ecosystemId.
      */
@@ -10991,6 +12038,10 @@ public final class Templates {
     public static final int TYPE_FIELD_NUMBER = 9;
     private volatile java.lang.Object type_;
     /**
+     * <pre>
+     * Template type (`VerifiableCredential`)
+     * </pre>
+     *
      * <code>string type = 9 [json_name = "type"];</code>
      * @return The type.
      */
@@ -11008,6 +12059,10 @@ public final class Templates {
       }
     }
     /**
+     * <pre>
+     * Template type (`VerifiableCredential`)
+     * </pre>
+     *
      * <code>string type = 9 [json_name = "type"];</code>
      * @return The bytes for type.
      */
@@ -11029,6 +12084,10 @@ public final class Templates {
     public static final int CREATED_BY_FIELD_NUMBER = 10;
     private volatile java.lang.Object createdBy_;
     /**
+     * <pre>
+     * ID of template creator
+     * </pre>
+     *
      * <code>string created_by = 10 [json_name = "createdBy"];</code>
      * @return The createdBy.
      */
@@ -11046,6 +12105,10 @@ public final class Templates {
       }
     }
     /**
+     * <pre>
+     * ID of template creator
+     * </pre>
+     *
      * <code>string created_by = 10 [json_name = "createdBy"];</code>
      * @return The bytes for createdBy.
      */
@@ -11324,6 +12387,10 @@ public final class Templates {
       return builder;
     }
     /**
+     * <pre>
+     * Credential Template
+     * </pre>
+     *
      * Protobuf type {@code services.verifiablecredentials.templates.v1.TemplateData}
      */
     public static final class Builder extends
@@ -11556,6 +12623,10 @@ public final class Templates {
 
       private java.lang.Object id_ = "";
       /**
+       * <pre>
+       * Template ID
+       * </pre>
+       *
        * <code>string id = 1 [json_name = "id"];</code>
        * @return The id.
        */
@@ -11572,6 +12643,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * Template ID
+       * </pre>
+       *
        * <code>string id = 1 [json_name = "id"];</code>
        * @return The bytes for id.
        */
@@ -11589,6 +12664,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * Template ID
+       * </pre>
+       *
        * <code>string id = 1 [json_name = "id"];</code>
        * @param value The id to set.
        * @return This builder for chaining.
@@ -11604,6 +12683,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Template ID
+       * </pre>
+       *
        * <code>string id = 1 [json_name = "id"];</code>
        * @return This builder for chaining.
        */
@@ -11614,6 +12697,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Template ID
+       * </pre>
+       *
        * <code>string id = 1 [json_name = "id"];</code>
        * @param value The bytes for id to set.
        * @return This builder for chaining.
@@ -11632,6 +12719,10 @@ public final class Templates {
 
       private java.lang.Object name_ = "";
       /**
+       * <pre>
+       * Template name
+       * </pre>
+       *
        * <code>string name = 2;</code>
        * @return The name.
        */
@@ -11648,6 +12739,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * Template name
+       * </pre>
+       *
        * <code>string name = 2;</code>
        * @return The bytes for name.
        */
@@ -11665,6 +12760,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * Template name
+       * </pre>
+       *
        * <code>string name = 2;</code>
        * @param value The name to set.
        * @return This builder for chaining.
@@ -11680,6 +12779,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Template name
+       * </pre>
+       *
        * <code>string name = 2;</code>
        * @return This builder for chaining.
        */
@@ -11690,6 +12793,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Template name
+       * </pre>
+       *
        * <code>string name = 2;</code>
        * @param value The bytes for name to set.
        * @return This builder for chaining.
@@ -11708,6 +12815,10 @@ public final class Templates {
 
       private int version_ ;
       /**
+       * <pre>
+       * Template version number
+       * </pre>
+       *
        * <code>int32 version = 3;</code>
        * @return The version.
        */
@@ -11716,6 +12827,10 @@ public final class Templates {
         return version_;
       }
       /**
+       * <pre>
+       * Template version number
+       * </pre>
+       *
        * <code>int32 version = 3;</code>
        * @param value The version to set.
        * @return This builder for chaining.
@@ -11727,6 +12842,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Template version number
+       * </pre>
+       *
        * <code>int32 version = 3;</code>
        * @return This builder for chaining.
        */
@@ -11764,6 +12883,10 @@ public final class Templates {
         return internalGetFields().getMap().size();
       }
       /**
+       * <pre>
+       * Fields defined for the template
+       * </pre>
+       *
        * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
        */
 
@@ -11782,6 +12905,10 @@ public final class Templates {
         return getFieldsMap();
       }
       /**
+       * <pre>
+       * Fields defined for the template
+       * </pre>
+       *
        * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
        */
       @java.lang.Override
@@ -11790,6 +12917,10 @@ public final class Templates {
         return internalGetFields().getMap();
       }
       /**
+       * <pre>
+       * Fields defined for the template
+       * </pre>
+       *
        * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
        */
       @java.lang.Override
@@ -11803,6 +12934,10 @@ public final class Templates {
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
+       * <pre>
+       * Fields defined for the template
+       * </pre>
+       *
        * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
        */
       @java.lang.Override
@@ -11824,6 +12959,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Fields defined for the template
+       * </pre>
+       *
        * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
        */
 
@@ -11843,6 +12982,10 @@ public final class Templates {
         return internalGetMutableFields().getMutableMap();
       }
       /**
+       * <pre>
+       * Fields defined for the template
+       * </pre>
+       *
        * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
        */
       public Builder putFields(
@@ -11858,6 +13001,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Fields defined for the template
+       * </pre>
+       *
        * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
        */
 
@@ -11870,6 +13017,11 @@ public final class Templates {
 
       private boolean allowAdditionalFields_ ;
       /**
+       * <pre>
+       * Whether credentials issued against this template may 
+       * contain fields not defined by template
+       * </pre>
+       *
        * <code>bool allow_additional_fields = 5;</code>
        * @return The allowAdditionalFields.
        */
@@ -11878,6 +13030,11 @@ public final class Templates {
         return allowAdditionalFields_;
       }
       /**
+       * <pre>
+       * Whether credentials issued against this template may 
+       * contain fields not defined by template
+       * </pre>
+       *
        * <code>bool allow_additional_fields = 5;</code>
        * @param value The allowAdditionalFields to set.
        * @return This builder for chaining.
@@ -11889,6 +13046,11 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Whether credentials issued against this template may 
+       * contain fields not defined by template
+       * </pre>
+       *
        * <code>bool allow_additional_fields = 5;</code>
        * @return This builder for chaining.
        */
@@ -11901,6 +13063,10 @@ public final class Templates {
 
       private java.lang.Object schemaUri_ = "";
       /**
+       * <pre>
+       * URI pointing to template JSON schema document
+       * </pre>
+       *
        * <code>string schema_uri = 6;</code>
        * @return The schemaUri.
        */
@@ -11917,6 +13083,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * URI pointing to template JSON schema document
+       * </pre>
+       *
        * <code>string schema_uri = 6;</code>
        * @return The bytes for schemaUri.
        */
@@ -11934,6 +13104,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * URI pointing to template JSON schema document
+       * </pre>
+       *
        * <code>string schema_uri = 6;</code>
        * @param value The schemaUri to set.
        * @return This builder for chaining.
@@ -11949,6 +13123,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * URI pointing to template JSON schema document
+       * </pre>
+       *
        * <code>string schema_uri = 6;</code>
        * @return This builder for chaining.
        */
@@ -11959,6 +13137,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * URI pointing to template JSON schema document
+       * </pre>
+       *
        * <code>string schema_uri = 6;</code>
        * @param value The bytes for schemaUri to set.
        * @return This builder for chaining.
@@ -11977,6 +13159,10 @@ public final class Templates {
 
       private java.lang.Object contextUri_ = "";
       /**
+       * <pre>
+       * URI pointing to template JSON-LD context document
+       * </pre>
+       *
        * <code>string context_uri = 7;</code>
        * @return The contextUri.
        */
@@ -11993,6 +13179,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * URI pointing to template JSON-LD context document
+       * </pre>
+       *
        * <code>string context_uri = 7;</code>
        * @return The bytes for contextUri.
        */
@@ -12010,6 +13200,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * URI pointing to template JSON-LD context document
+       * </pre>
+       *
        * <code>string context_uri = 7;</code>
        * @param value The contextUri to set.
        * @return This builder for chaining.
@@ -12025,6 +13219,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * URI pointing to template JSON-LD context document
+       * </pre>
+       *
        * <code>string context_uri = 7;</code>
        * @return This builder for chaining.
        */
@@ -12035,6 +13233,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * URI pointing to template JSON-LD context document
+       * </pre>
+       *
        * <code>string context_uri = 7;</code>
        * @param value The bytes for contextUri to set.
        * @return This builder for chaining.
@@ -12053,6 +13255,10 @@ public final class Templates {
 
       private java.lang.Object ecosystemId_ = "";
       /**
+       * <pre>
+       * ID of ecosystem in which template resides
+       * </pre>
+       *
        * <code>string ecosystem_id = 8 [json_name = "ecosystemId"];</code>
        * @return The ecosystemId.
        */
@@ -12069,6 +13275,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * ID of ecosystem in which template resides
+       * </pre>
+       *
        * <code>string ecosystem_id = 8 [json_name = "ecosystemId"];</code>
        * @return The bytes for ecosystemId.
        */
@@ -12086,6 +13296,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * ID of ecosystem in which template resides
+       * </pre>
+       *
        * <code>string ecosystem_id = 8 [json_name = "ecosystemId"];</code>
        * @param value The ecosystemId to set.
        * @return This builder for chaining.
@@ -12101,6 +13315,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * ID of ecosystem in which template resides
+       * </pre>
+       *
        * <code>string ecosystem_id = 8 [json_name = "ecosystemId"];</code>
        * @return This builder for chaining.
        */
@@ -12111,6 +13329,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * ID of ecosystem in which template resides
+       * </pre>
+       *
        * <code>string ecosystem_id = 8 [json_name = "ecosystemId"];</code>
        * @param value The bytes for ecosystemId to set.
        * @return This builder for chaining.
@@ -12129,6 +13351,10 @@ public final class Templates {
 
       private java.lang.Object type_ = "";
       /**
+       * <pre>
+       * Template type (`VerifiableCredential`)
+       * </pre>
+       *
        * <code>string type = 9 [json_name = "type"];</code>
        * @return The type.
        */
@@ -12145,6 +13371,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * Template type (`VerifiableCredential`)
+       * </pre>
+       *
        * <code>string type = 9 [json_name = "type"];</code>
        * @return The bytes for type.
        */
@@ -12162,6 +13392,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * Template type (`VerifiableCredential`)
+       * </pre>
+       *
        * <code>string type = 9 [json_name = "type"];</code>
        * @param value The type to set.
        * @return This builder for chaining.
@@ -12177,6 +13411,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Template type (`VerifiableCredential`)
+       * </pre>
+       *
        * <code>string type = 9 [json_name = "type"];</code>
        * @return This builder for chaining.
        */
@@ -12187,6 +13425,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * Template type (`VerifiableCredential`)
+       * </pre>
+       *
        * <code>string type = 9 [json_name = "type"];</code>
        * @param value The bytes for type to set.
        * @return This builder for chaining.
@@ -12205,6 +13447,10 @@ public final class Templates {
 
       private java.lang.Object createdBy_ = "";
       /**
+       * <pre>
+       * ID of template creator
+       * </pre>
+       *
        * <code>string created_by = 10 [json_name = "createdBy"];</code>
        * @return The createdBy.
        */
@@ -12221,6 +13467,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * ID of template creator
+       * </pre>
+       *
        * <code>string created_by = 10 [json_name = "createdBy"];</code>
        * @return The bytes for createdBy.
        */
@@ -12238,6 +13488,10 @@ public final class Templates {
         }
       }
       /**
+       * <pre>
+       * ID of template creator
+       * </pre>
+       *
        * <code>string created_by = 10 [json_name = "createdBy"];</code>
        * @param value The createdBy to set.
        * @return This builder for chaining.
@@ -12253,6 +13507,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * ID of template creator
+       * </pre>
+       *
        * <code>string created_by = 10 [json_name = "createdBy"];</code>
        * @return This builder for chaining.
        */
@@ -12263,6 +13521,10 @@ public final class Templates {
         return this;
       }
       /**
+       * <pre>
+       * ID of template creator
+       * </pre>
+       *
        * <code>string created_by = 10 [json_name = "createdBy"];</code>
        * @param value The bytes for createdBy to set.
        * @return This builder for chaining.
@@ -12432,84 +13694,88 @@ public final class Templates {
     java.lang.String[] descriptorData = {
       "\n<services/verifiable-credentials/templa" +
       "tes/v1/templates.proto\022+services.verifia" +
-      "blecredentials.templates.v1\"*\n\034GetCreden" +
-      "tialTemplateRequest\022\n\n\002id\030\001 \001(\t\"l\n\035GetCr" +
-      "edentialTemplateResponse\022K\n\010template\030\001 \001" +
-      "(\01329.services.verifiablecredentials.temp" +
-      "lates.v1.TemplateData\"M\n SearchCredentia" +
-      "lTemplatesRequest\022\r\n\005query\030\001 \001(\t\022\032\n\022cont" +
-      "inuation_token\030\002 \001(\t\"e\n!SearchCredential" +
-      "TemplatesResponse\022\022\n\nitems_json\030\001 \001(\t\022\020\n" +
-      "\010has_more\030\002 \001(\010\022\032\n\022continuation_token\030\004 " +
-      "\001(\t\"K\n\036ListCredentialTemplatesRequest\022\r\n" +
-      "\005query\030\001 \001(\t\022\032\n\022continuation_token\030\002 \001(\t" +
-      "\"\245\001\n\037ListCredentialTemplatesResponse\022L\n\t" +
-      "templates\030\001 \003(\01329.services.verifiablecre" +
-      "dentials.templates.v1.TemplateData\022\030\n\020ha" +
-      "s_more_results\030\002 \001(\010\022\032\n\022continuation_tok" +
-      "en\030\003 \001(\t\"-\n\037DeleteCredentialTemplateRequ" +
-      "est\022\n\n\002id\030\001 \001(\t\"\"\n DeleteCredentialTempl" +
-      "ateResponse\"\245\002\n\037CreateCredentialTemplate" +
-      "Request\022\014\n\004name\030\001 \001(\t\022h\n\006fields\030\002 \003(\0132X." +
-      "services.verifiablecredentials.templates" +
-      ".v1.CreateCredentialTemplateRequest.Fiel" +
-      "dsEntry\022\037\n\027allow_additional_fields\030\003 \001(\010" +
+      "blecredentials.templates.v1\032$services/op" +
+      "tions/field-options.proto\"*\n\034GetCredenti" +
+      "alTemplateRequest\022\n\n\002id\030\001 \001(\t\"l\n\035GetCred" +
+      "entialTemplateResponse\022K\n\010template\030\001 \001(\013" +
+      "29.services.verifiablecredentials.templa" +
+      "tes.v1.TemplateData\"S\n SearchCredentialT" +
+      "emplatesRequest\022\r\n\005query\030\001 \001(\t\022 \n\022contin" +
+      "uation_token\030\002 \001(\tB\004\200\246\035\001\"e\n!SearchCreden" +
+      "tialTemplatesResponse\022\022\n\nitems_json\030\001 \001(" +
+      "\t\022\020\n\010has_more\030\002 \001(\010\022\032\n\022continuation_toke" +
+      "n\030\004 \001(\t\"Q\n\036ListCredentialTemplatesReques" +
+      "t\022\r\n\005query\030\001 \001(\t\022 \n\022continuation_token\030\002" +
+      " \001(\tB\004\200\246\035\001\"\245\001\n\037ListCredentialTemplatesRe" +
+      "sponse\022L\n\ttemplates\030\001 \003(\01329.services.ver" +
+      "ifiablecredentials.templates.v1.Template" +
+      "Data\022\030\n\020has_more_results\030\002 \001(\010\022\032\n\022contin" +
+      "uation_token\030\003 \001(\t\"-\n\037DeleteCredentialTe" +
+      "mplateRequest\022\n\n\002id\030\001 \001(\t\"\"\n DeleteCrede" +
+      "ntialTemplateResponse\"\245\002\n\037CreateCredenti" +
+      "alTemplateRequest\022\014\n\004name\030\001 \001(\t\022h\n\006field" +
+      "s\030\002 \003(\0132X.services.verifiablecredentials" +
+      ".templates.v1.CreateCredentialTemplateRe" +
+      "quest.FieldsEntry\022\037\n\027allow_additional_fi" +
+      "elds\030\003 \001(\010\032i\n\013FieldsEntry\022\013\n\003key\030\001 \001(\t\022I" +
+      "\n\005value\030\002 \001(\0132:.services.verifiablecrede" +
+      "ntials.templates.v1.TemplateField:\0028\001\"k\n" +
+      " CreateCredentialTemplateResponse\022G\n\004dat" +
+      "a\030\001 \001(\01329.services.verifiablecredentials" +
+      ".templates.v1.TemplateData\"|\n\rTemplateFi" +
+      "eld\022\023\n\013description\030\002 \001(\t\022\020\n\010optional\030\003 \001" +
+      "(\010\022D\n\004type\030\004 \001(\01626.services.verifiablecr" +
+      "edentials.templates.v1.FieldType\" \n\022GetT" +
+      "emplateRequest\022\n\n\002id\030\001 \001(\t\"^\n\023GetTemplat" +
+      "eResponse\022G\n\004data\030\001 \001(\01329.services.verif" +
+      "iablecredentials.templates.v1.TemplateDa" +
+      "ta\"\026\n\024ListTemplatesRequest\"e\n\025ListTempla" +
+      "tesResponse\022L\n\ttemplates\030\001 \003(\01329.service" +
+      "s.verifiablecredentials.templates.v1.Tem" +
+      "plateData\"\237\003\n\014TemplateData\022\016\n\002id\030\001 \001(\tR\002" +
+      "id\022\014\n\004name\030\002 \001(\t\022\017\n\007version\030\003 \001(\005\022U\n\006fie" +
+      "lds\030\004 \003(\0132E.services.verifiablecredentia" +
+      "ls.templates.v1.TemplateData.FieldsEntry" +
+      "\022\037\n\027allow_additional_fields\030\005 \001(\010\022\022\n\nsch" +
+      "ema_uri\030\006 \001(\t\022\023\n\013context_uri\030\007 \001(\t\022!\n\014ec" +
+      "osystem_id\030\010 \001(\tR\013ecosystemId\022\022\n\004type\030\t " +
+      "\001(\tR\004type\022\035\n\ncreated_by\030\n \001(\tR\tcreatedBy" +
       "\032i\n\013FieldsEntry\022\013\n\003key\030\001 \001(\t\022I\n\005value\030\002 " +
       "\001(\0132:.services.verifiablecredentials.tem" +
-      "plates.v1.TemplateField:\0028\001\"k\n CreateCre" +
-      "dentialTemplateResponse\022G\n\004data\030\001 \001(\01329." +
-      "services.verifiablecredentials.templates" +
-      ".v1.TemplateData\"|\n\rTemplateField\022\023\n\013des" +
-      "cription\030\002 \001(\t\022\020\n\010optional\030\003 \001(\010\022D\n\004type" +
-      "\030\004 \001(\01626.services.verifiablecredentials." +
-      "templates.v1.FieldType\" \n\022GetTemplateReq" +
-      "uest\022\n\n\002id\030\001 \001(\t\"^\n\023GetTemplateResponse\022" +
-      "G\n\004data\030\001 \001(\01329.services.verifiablecrede" +
-      "ntials.templates.v1.TemplateData\"\026\n\024List" +
-      "TemplatesRequest\"e\n\025ListTemplatesRespons" +
-      "e\022L\n\ttemplates\030\001 \003(\01329.services.verifiab" +
-      "lecredentials.templates.v1.TemplateData\"" +
-      "\237\003\n\014TemplateData\022\016\n\002id\030\001 \001(\tR\002id\022\014\n\004name" +
-      "\030\002 \001(\t\022\017\n\007version\030\003 \001(\005\022U\n\006fields\030\004 \003(\0132" +
-      "E.services.verifiablecredentials.templat" +
-      "es.v1.TemplateData.FieldsEntry\022\037\n\027allow_" +
-      "additional_fields\030\005 \001(\010\022\022\n\nschema_uri\030\006 " +
-      "\001(\t\022\023\n\013context_uri\030\007 \001(\t\022!\n\014ecosystem_id" +
-      "\030\010 \001(\tR\013ecosystemId\022\022\n\004type\030\t \001(\tR\004type\022" +
-      "\035\n\ncreated_by\030\n \001(\tR\tcreatedBy\032i\n\013Fields" +
-      "Entry\022\013\n\003key\030\001 \001(\t\022I\n\005value\030\002 \001(\0132:.serv" +
-      "ices.verifiablecredentials.templates.v1." +
-      "TemplateField:\0028\001*;\n\tFieldType\022\n\n\006STRING" +
-      "\020\000\022\n\n\006NUMBER\020\001\022\010\n\004BOOL\020\002\022\014\n\010DATETIME\020\0042\322" +
-      "\006\n\023CredentialTemplates\022\245\001\n\006Create\022L.serv" +
-      "ices.verifiablecredentials.templates.v1." +
-      "CreateCredentialTemplateRequest\032M.servic" +
-      "es.verifiablecredentials.templates.v1.Cr" +
-      "eateCredentialTemplateResponse\022\234\001\n\003Get\022I" +
-      ".services.verifiablecredentials.template" +
-      "s.v1.GetCredentialTemplateRequest\032J.serv" +
-      "ices.verifiablecredentials.templates.v1." +
-      "GetCredentialTemplateResponse\022\241\001\n\004List\022K" +
-      ".services.verifiablecredentials.template" +
-      "s.v1.ListCredentialTemplatesRequest\032L.se" +
-      "rvices.verifiablecredentials.templates.v" +
-      "1.ListCredentialTemplatesResponse\022\247\001\n\006Se" +
-      "arch\022M.services.verifiablecredentials.te" +
-      "mplates.v1.SearchCredentialTemplatesRequ" +
-      "est\032N.services.verifiablecredentials.tem" +
-      "plates.v1.SearchCredentialTemplatesRespo" +
-      "nse\022\245\001\n\006Delete\022L.services.verifiablecred" +
-      "entials.templates.v1.DeleteCredentialTem" +
-      "plateRequest\032M.services.verifiablecreden" +
-      "tials.templates.v1.DeleteCredentialTempl" +
-      "ateResponseB\206\001\n3trinsic.services.verifia" +
-      "blecredentials.templates.v1Z\031github.com/" +
-      "trinsic-id/sdk\252\0023Trinsic.Services.Verifi" +
-      "ableCredentials.Templates.V1b\006proto3"
+      "plates.v1.TemplateField:\0028\001*;\n\tFieldType" +
+      "\022\n\n\006STRING\020\000\022\n\n\006NUMBER\020\001\022\010\n\004BOOL\020\002\022\014\n\010DA" +
+      "TETIME\020\0042\322\006\n\023CredentialTemplates\022\245\001\n\006Cre" +
+      "ate\022L.services.verifiablecredentials.tem" +
+      "plates.v1.CreateCredentialTemplateReques" +
+      "t\032M.services.verifiablecredentials.templ" +
+      "ates.v1.CreateCredentialTemplateResponse" +
+      "\022\234\001\n\003Get\022I.services.verifiablecredential" +
+      "s.templates.v1.GetCredentialTemplateRequ" +
+      "est\032J.services.verifiablecredentials.tem" +
+      "plates.v1.GetCredentialTemplateResponse\022" +
+      "\241\001\n\004List\022K.services.verifiablecredential" +
+      "s.templates.v1.ListCredentialTemplatesRe" +
+      "quest\032L.services.verifiablecredentials.t" +
+      "emplates.v1.ListCredentialTemplatesRespo" +
+      "nse\022\247\001\n\006Search\022M.services.verifiablecred" +
+      "entials.templates.v1.SearchCredentialTem" +
+      "platesRequest\032N.services.verifiablecrede" +
+      "ntials.templates.v1.SearchCredentialTemp" +
+      "latesResponse\022\245\001\n\006Delete\022L.services.veri" +
+      "fiablecredentials.templates.v1.DeleteCre" +
+      "dentialTemplateRequest\032M.services.verifi" +
+      "ablecredentials.templates.v1.DeleteCrede" +
+      "ntialTemplateResponseB\251\001\n3trinsic.servic" +
+      "es.verifiablecredentials.templates.v1Z<g" +
+      "ithub.com/trinsic-id/sdk/verifiablecrede" +
+      "ntials/templates/v1\252\0023Trinsic.Services.V" +
+      "erifiableCredentials.Templates.V1b\006proto" +
+      "3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          trinsic.services.protobuf.options.FieldOptions.getDescriptor(),
         });
     internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -12619,6 +13885,12 @@ public final class Templates {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_verifiablecredentials_templates_v1_TemplateData_FieldsEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
+    com.google.protobuf.ExtensionRegistry registry =
+        com.google.protobuf.ExtensionRegistry.newInstance();
+    registry.add(trinsic.services.protobuf.options.FieldOptions.optional);
+    com.google.protobuf.Descriptors.FileDescriptor
+        .internalUpdateFileDescriptor(descriptor, registry);
+    trinsic.services.protobuf.options.FieldOptions.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

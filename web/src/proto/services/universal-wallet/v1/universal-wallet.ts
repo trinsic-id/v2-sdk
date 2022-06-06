@@ -2,66 +2,73 @@
 import Long from "long";
 import * as _m0 from "protobufjs/minimal";
 
-/** Search request object */
+/** Request to search items in wallet */
 export interface SearchRequest {
+  /** SQL Query to execute against items in wallet */
   query: string;
+  /**
+   * Token provided by previous `SearchResponse`
+   * if more data is available for query
+   */
   continuationToken: string;
 }
 
-/** Search response object */
+/** Response to `SearchRequest` */
 export interface SearchResponse {
+  /** Array of query results, as JSON strings */
   items: string[];
+  /** Whether more results are available for this query via `continuation_token` */
   hasMore: boolean;
-  /** int32 count = 3; */
+  /** Token to fetch next set of results via `SearchRequest` */
   continuationToken: string;
 }
 
-/** Get item request object */
+/** Request to fetch an item from wallet */
 export interface GetItemRequest {
-  /** The item identifier */
+  /** ID of item in wallet */
   itemId: string;
 }
 
-/** Get item response object */
+/** Response to `GetItemRequest` */
 export interface GetItemResponse {
-  /** The item data represented as stringified JSON */
+  /** Item data as a JSON string */
   itemJson: string;
-  /** User set item type that described the content of this item */
+  /** Type of item specified when item was inserted into wallet */
   itemType: string;
 }
 
-/** Update item request object */
+/** Request to update item in wallet */
 export interface UpdateItemRequest {
-  /** The item identifier */
+  /** ID of item in wallet */
   itemId: string;
-  /** The item type that described the content of this item */
+  /** Item type (ex. "VerifiableCredential") */
   itemType: string;
 }
 
-/** Update item response object */
+/** Response to `UpdateItemRequest` */
 export interface UpdateItemResponse {}
 
-/** Insert item request */
+/** Request to insert a JSON document into a wallet */
 export interface InsertItemRequest {
-  /** the document to insert as stringified json */
+  /** Document to insert; must be stringified JSON */
   itemJson: string;
-  /** optional item type ex. "VerifiableCredential" */
+  /** Item type (ex. "VerifiableCredential") */
   itemType: string;
 }
 
-/** Insert item response */
+/** Response to `InsertItemRequest` */
 export interface InsertItemResponse {
-  /** The item identifier of the inserted record */
+  /** ID of item inserted into wallet */
   itemId: string;
 }
 
-/** Delete item request */
+/** Request to delete an item in a wallet */
 export interface DeleteItemRequest {
-  /** item identifier of the record to delete */
+  /** ID of item to delete */
   itemId: string;
 }
 
-/** Delete item response */
+/** Response to `DeleteItemRequest` */
 export interface DeleteItemResponse {}
 
 function createBaseSearchRequest(): SearchRequest {
@@ -661,7 +668,7 @@ export const UniversalWalletDefinition = {
       responseStream: false,
       options: {},
     },
-    /** Insert an item into the wallet */
+    /** Update an item in the wallet */
     updateItem: {
       name: "UpdateItem",
       requestType: UpdateItemRequest,

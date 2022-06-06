@@ -27,26 +27,25 @@ class ConfirmationMethod(betterproto.Enum):
 
 @dataclass(eq=False, repr=False)
 class SignInRequest(betterproto.Message):
-    """Request for creating new account"""
+    """Request for creating or signing into an account"""
 
     # Account registration details
     details: "AccountDetails" = betterproto.message_field(1)
-    # Invitation code associated with this registration This field is optional.
+    # Invitation code associated with this registration
     invitation_code: str = betterproto.string_field(2)
-    # EcosystemId to sign in. This field is optional and will be ignored if
-    # invitation_code is passed
+    # ID of Ecosystem to sign into.  Ignored if `invitation_code` is passed
     ecosystem_id: str = betterproto.string_field(3)
 
 
 @dataclass(eq=False, repr=False)
 class AccountDetails(betterproto.Message):
-    """Account Registration Details"""
+    """Account registration details"""
 
-    # Account name (optional)
+    # Account name
     name: str = betterproto.string_field(1)
-    # Email account (required)
+    # Email account
     email: str = betterproto.string_field(2)
-    # SMS number including country code (optional)
+    # SMS number including country code
     sms: str = betterproto.string_field(3)
 
 
@@ -101,21 +100,28 @@ class TokenProtection(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class InfoRequest(betterproto.Message):
+    """Request for information about the account used to make the request"""
+
     pass
 
 
 @dataclass(eq=False, repr=False)
 class InfoResponse(betterproto.Message):
+    """Information about the account used to make the request"""
+
     # The account details associated with the calling request context
     details: "AccountDetails" = betterproto.message_field(1)
-    # any ecosystems the account has access to
+    # Use `ecosystem_id` instead
     ecosystems: List["AccountEcosystem"] = betterproto.message_field(2)
-    # The wallet id associated with this account
+    # The wallet ID associated with this account
     wallet_id: str = betterproto.string_field(3)
-    # The device id associated with this account
+    # The device ID associated with this account session
     device_id: str = betterproto.string_field(4)
-    # The ecosystem id associated with this account
+    # The ecosystem ID within which this account resides
     ecosystem_id: str = betterproto.string_field(5)
+    # The public DID associated with this account. This DID is used as "issuer"
+    # when signing verifiable credentials
+    public_did: str = betterproto.string_field(6)
 
     def __post_init__(self) -> None:
         super().__post_init__()

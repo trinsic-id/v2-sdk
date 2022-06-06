@@ -17,7 +17,7 @@ Issues a credential from a valid JSON-LD document.
     === "TypeScript"
         <!--codeinclude-->
         ```typescript
-        [Issue Credential](../../../web/test/VaccineDemo.test.ts) inside_block:issueCredential
+        [Issue Credential](../../../web/test/CredentialService.spec.ts) inside_block:issueCredential
         ```
         <!--/codeinclude-->
 
@@ -31,7 +31,7 @@ Issues a credential from a valid JSON-LD document.
     === "Python"
         <!--codeinclude-->
         ```python
-        [Issue Credential](../../../python/samples/vaccine_demo.py) inside_block:issueCredential
+        [Issue Credential](../../../python/samples/credential_demo.py) inside_block:issueCredential
         ```
         <!--/codeinclude-->
 
@@ -45,7 +45,7 @@ Issues a credential from a valid JSON-LD document.
     === "Java"
         <!--codeinclude-->
         ```java
-        [CreateProof](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:issueCredentialSample
+        [CreateProof](../../../java/src/test/java/trinsic/CredentialsDemo.java) inside_block:issueCredentialSample
         ```
         <!--/codeinclude-->
 
@@ -76,7 +76,7 @@ Issues a credential from a previously defined template through [CreateCredential
     === "TypeScript"
         <!--codeinclude-->
         ```typescript
-        [Issue From Template](../../../web/test/CredentialTemplates.test.ts) inside_block:issueFromTemplate
+        [Issue From Template](../../../web/test/CredentialTemplateShared.ts) inside_block:issueFromTemplate
         ```
         <!--/codeinclude-->
 
@@ -228,7 +228,7 @@ The endpoint to create a proof requires two inputs:
     === "Python"
         <!--codeinclude-->
         ```python
-        [CreateProof](../../../python/samples/vaccine_demo.py) inside_block:createProof
+        [CreateProof](../../../python/samples/credential_demo.py) inside_block:createProof
         ```
         <!--/codeinclude-->
 
@@ -242,7 +242,7 @@ The endpoint to create a proof requires two inputs:
     === "Java"
         <!--codeinclude-->
         ```java
-        [CreateProof](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:createProof
+        [CreateProof](../../../java/src/test/java/trinsic/CredentialsDemo.java) inside_block:createProof
         ```
         <!--/codeinclude-->
 
@@ -292,7 +292,7 @@ This endpoint verifies if the submitted data contains a valid proof. The data to
     === "Java"
         <!--codeinclude-->
         ```java
-        [VerifyProof](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:verifyProof
+        [VerifyProof](../../../java/src/test/java/trinsic/CredentialsDemo.java) inside_block:verifyProof
         ```
         <!--/codeinclude-->
 
@@ -341,7 +341,7 @@ To send a document to another user, they must have created a wallet and [associa
     === "Python"
         <!--codeinclude-->
         ```python
-        [SendRequest](../../../python/samples/vaccine_demo.py) inside_block:sendCredential
+        [SendRequest](../../../python/samples/credential_demo.py) inside_block:sendCredential
         ```
         <!--/codeinclude-->
 
@@ -355,7 +355,7 @@ To send a document to another user, they must have created a wallet and [associa
     === "Java"
         <!--codeinclude-->
         ```java
-        [SendRequest](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:sendCredential
+        [SendRequest](../../../java/src/test/java/trinsic/CredentialsDemo.java) inside_block:sendCredential
         ```
         <!--/codeinclude-->
 

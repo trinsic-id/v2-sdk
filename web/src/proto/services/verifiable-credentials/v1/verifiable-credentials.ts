@@ -2,66 +2,95 @@
 import Long from "long";
 import * as _m0 from "protobufjs/minimal";
 
+/** Request to sign a JSON-LD Credential using public key tied to caller */
 export interface IssueRequest {
+  /** Valid JSON-LD Credential document to be signed, in string form */
   documentJson: string;
 }
 
+/** Response to `IssueRequest` */
 export interface IssueResponse {
+  /**
+   * Verifiable Credential document, signed with public key
+   * tied to caller of `IssueRequest`
+   */
   signedDocumentJson: string;
 }
 
+/** Request to create and sign a JSON-LD Verifiable Credential from a template using public key tied to caller */
 export interface IssueFromTemplateRequest {
+  /** ID of template to use */
   templateId: string;
+  /**
+   * JSON document string with keys corresponding to the fields of
+   * the template referenced by `template_id`
+   */
   valuesJson: string;
+  /**
+   * Governance framework ID to use with issuance of this credential.
+   * If specified, the issued credential will contain extended issuer
+   * metadata with membership info for the given ecosystem governance framework (EGF)
+   */
+  frameworkId: string;
 }
 
+/** Response to `IssueFromTemplateRequest` */
 export interface IssueFromTemplateResponse {
+  /**
+   * Verifiable Credential document, in JSON-LD form,
+   * constructed from the specified template and values; signed
+   * with public key tied to caller of `IssueFromTemplateRequest`
+   */
   documentJson: string;
 }
 
-/** Create Proof */
+/**
+ * Request to create a proof for a Verifiable Credential using public key tied to caller.
+ * Either `item_id` or `document_json` may be provided, not both.
+ */
 export interface CreateProofRequest {
   /**
-   * Optional document that describes which fields should be
-   * revealed in the generated proof. If specified, this document must be
-   * a valid JSON-LD frame.
-   * If this field is not specified, a default reveal document will be
-   * used and all fields in the signed document will be revealed
+   * A valid JSON-LD frame describing which fields should be
+   * revealed in the generated proof.
+   * If unspecified, all fields in the document will be revealed
    */
   revealDocumentJson: string;
-  /**
-   * The item identifier that contains a record with a verifiable
-   * credential to be used for generating the proof.
-   */
+  /** ID of wallet item stored in a Trinsic cloud wallet */
   itemId: string | undefined;
   /**
-   * A document that contains a valid verifiable credential with an
-   * unbound signature. The proof will be derived from this document
-   * directly. The document will not be stored in the wallet.
+   * A valid JSON-LD Verifiable Credential document string
+   * with an unbound signature. The proof will be derived from this
+   * document directly. The document will not be stored in the wallet.
    */
   documentJson: string | undefined;
 }
 
+/** Response to `CreateProofRequest` */
 export interface CreateProofResponse {
+  /** Valid JSON-LD proof for the specified credential */
   proofDocumentJson: string;
 }
 
-/** Verify Proof */
+/** Request to verify a proof */
 export interface VerifyProofRequest {
+  /** JSON-LD proof document string to verify */
   proofDocumentJson: string;
 }
 
+/** Response to `VerifyProofRequest` */
 export interface VerifyProofResponse {
-  /** Indicates if the proof is valid */
+  /** Whether or not all validations in `validation_results` passed */
   isValid: boolean;
-  /** @deprecated */
+  /**
+   * Use `validation_results` instead
+   *
+   * @deprecated
+   */
   validationMessages: string[];
   /**
-   * Validation messages that describe invalid verifications
-   * based on different factors, such as schema validation,
-   * proof verification, revocation registry membership, etc.
-   * If the proof is not valid, this field will contain detailed
-   * results where this verification failed.
+   * Results of each validation check performed,
+   * such as schema conformance, revocation status, signature, etc.
+   * Detailed results are provided for failed validations.
    */
   validationResults: { [key: string]: ValidationMessage };
 }
@@ -71,43 +100,49 @@ export interface VerifyProofResponse_ValidationResultsEntry {
   value: ValidationMessage | undefined;
 }
 
-/** validation message that contains results and error messages */
+/** Result of a validation check on a proof */
 export interface ValidationMessage {
-  /** the validation result */
+  /** Whether or not this validation check passed */
   isValid: boolean;
-  /** set of messages that contain validation results */
+  /** If validation failed, contains messages explaining why */
   messages: string[];
 }
 
+/** Request to send a document to another user's wallet */
 export interface SendRequest {
+  /** Email address of user to send item to */
   email: string | undefined;
+  /** DID of recipient (presently unsupported) */
   didUri: string | undefined;
+  /** DIDComm out-of-band invitation JSON (presently unsupported) */
   didcommInvitationJson: string | undefined;
+  /** JSON document to send to recipient */
   documentJson: string;
 }
 
+/** Response to `SendRequest` */
 export interface SendResponse {}
 
-/** request object to update the status of the revocation entry */
+/** Request to update a credential's revocation status */
 export interface UpdateStatusRequest {
-  /** the credential status id */
+  /** Credential Status ID to update */
   credentialStatusId: string;
-  /** indicates if the status is revoked */
+  /** New revocation status of credential */
   revoked: boolean;
 }
 
-/** response object for update of status of revocation entry */
+/** Response to `UpdateStatusRequest` */
 export interface UpdateStatusResponse {}
 
-/** request object to check the status of the revocation entry */
+/** Request to check a credential's revocation status */
 export interface CheckStatusRequest {
-  /** the credential status id */
+  /** Credential Status ID to check */
   credentialStatusId: string;
 }
 
-/** response object for checking the status of revocation entry */
+/** Response to `CheckStatusRequest` */
 export interface CheckStatusResponse {
-  /** indicates if the status is revoked */
+  /** The credential's revocation status */
   revoked: boolean;
 }
 
@@ -222,7 +257,7 @@ export const IssueResponse = {
 };
 
 function createBaseIssueFromTemplateRequest(): IssueFromTemplateRequest {
-  return { templateId: "", valuesJson: "" };
+  return { templateId: "", valuesJson: "", frameworkId: "" };
 }
 
 export const IssueFromTemplateRequest = {
@@ -235,6 +270,9 @@ export const IssueFromTemplateRequest = {
     }
     if (message.valuesJson !== "") {
       writer.uint32(18).string(message.valuesJson);
+    }
+    if (message.frameworkId !== "") {
+      writer.uint32(26).string(message.frameworkId);
     }
     return writer;
   },
@@ -255,6 +293,9 @@ export const IssueFromTemplateRequest = {
         case 2:
           message.valuesJson = reader.string();
           break;
+        case 3:
+          message.frameworkId = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -267,6 +308,7 @@ export const IssueFromTemplateRequest = {
     return {
       templateId: isSet(object.templateId) ? String(object.templateId) : "",
       valuesJson: isSet(object.valuesJson) ? String(object.valuesJson) : "",
+      frameworkId: isSet(object.frameworkId) ? String(object.frameworkId) : "",
     };
   },
 
@@ -274,6 +316,8 @@ export const IssueFromTemplateRequest = {
     const obj: any = {};
     message.templateId !== undefined && (obj.templateId = message.templateId);
     message.valuesJson !== undefined && (obj.valuesJson = message.valuesJson);
+    message.frameworkId !== undefined &&
+      (obj.frameworkId = message.frameworkId);
     return obj;
   },
 
@@ -283,6 +327,7 @@ export const IssueFromTemplateRequest = {
     const message = createBaseIssueFromTemplateRequest();
     message.templateId = object.templateId ?? "";
     message.valuesJson = object.valuesJson ?? "";
+    message.frameworkId = object.frameworkId ?? "";
     return message;
   },
 };

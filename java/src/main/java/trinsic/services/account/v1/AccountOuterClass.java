@@ -227,20 +227,18 @@ public final class AccountOuterClass {
     /**
      * <pre>
      * Invitation code associated with this registration
-     * This field is optional.
      * </pre>
      *
-     * <code>string invitation_code = 2;</code>
+     * <code>string invitation_code = 2 [(.services.options.optional) = true];</code>
      * @return The invitationCode.
      */
     java.lang.String getInvitationCode();
     /**
      * <pre>
      * Invitation code associated with this registration
-     * This field is optional.
      * </pre>
      *
-     * <code>string invitation_code = 2;</code>
+     * <code>string invitation_code = 2 [(.services.options.optional) = true];</code>
      * @return The bytes for invitationCode.
      */
     com.google.protobuf.ByteString
@@ -248,21 +246,21 @@ public final class AccountOuterClass {
 
     /**
      * <pre>
-     * EcosystemId to sign in. This field is optional
-     * and will be ignored if invitation_code is passed
+     * ID of Ecosystem to sign into. 
+     * Ignored if `invitation_code` is passed
      * </pre>
      *
-     * <code>string ecosystem_id = 3;</code>
+     * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
      * @return The ecosystemId.
      */
     java.lang.String getEcosystemId();
     /**
      * <pre>
-     * EcosystemId to sign in. This field is optional
-     * and will be ignored if invitation_code is passed
+     * ID of Ecosystem to sign into. 
+     * Ignored if `invitation_code` is passed
      * </pre>
      *
-     * <code>string ecosystem_id = 3;</code>
+     * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
      * @return The bytes for ecosystemId.
      */
     com.google.protobuf.ByteString
@@ -270,7 +268,7 @@ public final class AccountOuterClass {
   }
   /**
    * <pre>
-   * Request for creating new account
+   * Request for creating or signing into an account
    * </pre>
    *
    * Protobuf type {@code services.account.v1.SignInRequest}
@@ -355,6 +353,8 @@ public final class AccountOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -419,10 +419,9 @@ public final class AccountOuterClass {
     /**
      * <pre>
      * Invitation code associated with this registration
-     * This field is optional.
      * </pre>
      *
-     * <code>string invitation_code = 2;</code>
+     * <code>string invitation_code = 2 [(.services.options.optional) = true];</code>
      * @return The invitationCode.
      */
     @java.lang.Override
@@ -441,10 +440,9 @@ public final class AccountOuterClass {
     /**
      * <pre>
      * Invitation code associated with this registration
-     * This field is optional.
      * </pre>
      *
-     * <code>string invitation_code = 2;</code>
+     * <code>string invitation_code = 2 [(.services.options.optional) = true];</code>
      * @return The bytes for invitationCode.
      */
     @java.lang.Override
@@ -466,11 +464,11 @@ public final class AccountOuterClass {
     private volatile java.lang.Object ecosystemId_;
     /**
      * <pre>
-     * EcosystemId to sign in. This field is optional
-     * and will be ignored if invitation_code is passed
+     * ID of Ecosystem to sign into. 
+     * Ignored if `invitation_code` is passed
      * </pre>
      *
-     * <code>string ecosystem_id = 3;</code>
+     * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
      * @return The ecosystemId.
      */
     @java.lang.Override
@@ -488,11 +486,11 @@ public final class AccountOuterClass {
     }
     /**
      * <pre>
-     * EcosystemId to sign in. This field is optional
-     * and will be ignored if invitation_code is passed
+     * ID of Ecosystem to sign into. 
+     * Ignored if `invitation_code` is passed
      * </pre>
      *
-     * <code>string ecosystem_id = 3;</code>
+     * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
      * @return The bytes for ecosystemId.
      */
     @java.lang.Override
@@ -692,7 +690,7 @@ public final class AccountOuterClass {
     }
     /**
      * <pre>
-     * Request for creating new account
+     * Request for creating or signing into an account
      * </pre>
      *
      * Protobuf type {@code services.account.v1.SignInRequest}
@@ -1022,10 +1020,9 @@ public final class AccountOuterClass {
       /**
        * <pre>
        * Invitation code associated with this registration
-       * This field is optional.
        * </pre>
        *
-       * <code>string invitation_code = 2;</code>
+       * <code>string invitation_code = 2 [(.services.options.optional) = true];</code>
        * @return The invitationCode.
        */
       public java.lang.String getInvitationCode() {
@@ -1043,10 +1040,9 @@ public final class AccountOuterClass {
       /**
        * <pre>
        * Invitation code associated with this registration
-       * This field is optional.
        * </pre>
        *
-       * <code>string invitation_code = 2;</code>
+       * <code>string invitation_code = 2 [(.services.options.optional) = true];</code>
        * @return The bytes for invitationCode.
        */
       public com.google.protobuf.ByteString
@@ -1065,10 +1061,9 @@ public final class AccountOuterClass {
       /**
        * <pre>
        * Invitation code associated with this registration
-       * This field is optional.
        * </pre>
        *
-       * <code>string invitation_code = 2;</code>
+       * <code>string invitation_code = 2 [(.services.options.optional) = true];</code>
        * @param value The invitationCode to set.
        * @return This builder for chaining.
        */
@@ -1085,10 +1080,9 @@ public final class AccountOuterClass {
       /**
        * <pre>
        * Invitation code associated with this registration
-       * This field is optional.
        * </pre>
        *
-       * <code>string invitation_code = 2;</code>
+       * <code>string invitation_code = 2 [(.services.options.optional) = true];</code>
        * @return This builder for chaining.
        */
       public Builder clearInvitationCode() {
@@ -1100,10 +1094,9 @@ public final class AccountOuterClass {
       /**
        * <pre>
        * Invitation code associated with this registration
-       * This field is optional.
        * </pre>
        *
-       * <code>string invitation_code = 2;</code>
+       * <code>string invitation_code = 2 [(.services.options.optional) = true];</code>
        * @param value The bytes for invitationCode to set.
        * @return This builder for chaining.
        */
@@ -1122,11 +1115,11 @@ public final class AccountOuterClass {
       private java.lang.Object ecosystemId_ = "";
       /**
        * <pre>
-       * EcosystemId to sign in. This field is optional
-       * and will be ignored if invitation_code is passed
+       * ID of Ecosystem to sign into. 
+       * Ignored if `invitation_code` is passed
        * </pre>
        *
-       * <code>string ecosystem_id = 3;</code>
+       * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
        * @return The ecosystemId.
        */
       public java.lang.String getEcosystemId() {
@@ -1143,11 +1136,11 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * EcosystemId to sign in. This field is optional
-       * and will be ignored if invitation_code is passed
+       * ID of Ecosystem to sign into. 
+       * Ignored if `invitation_code` is passed
        * </pre>
        *
-       * <code>string ecosystem_id = 3;</code>
+       * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
        * @return The bytes for ecosystemId.
        */
       public com.google.protobuf.ByteString
@@ -1165,11 +1158,11 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * EcosystemId to sign in. This field is optional
-       * and will be ignored if invitation_code is passed
+       * ID of Ecosystem to sign into. 
+       * Ignored if `invitation_code` is passed
        * </pre>
        *
-       * <code>string ecosystem_id = 3;</code>
+       * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
        * @param value The ecosystemId to set.
        * @return This builder for chaining.
        */
@@ -1185,11 +1178,11 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * EcosystemId to sign in. This field is optional
-       * and will be ignored if invitation_code is passed
+       * ID of Ecosystem to sign into. 
+       * Ignored if `invitation_code` is passed
        * </pre>
        *
-       * <code>string ecosystem_id = 3;</code>
+       * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
        * @return This builder for chaining.
        */
       public Builder clearEcosystemId() {
@@ -1200,11 +1193,11 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * EcosystemId to sign in. This field is optional
-       * and will be ignored if invitation_code is passed
+       * ID of Ecosystem to sign into. 
+       * Ignored if `invitation_code` is passed
        * </pre>
        *
-       * <code>string ecosystem_id = 3;</code>
+       * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
        * @param value The bytes for ecosystemId to set.
        * @return This builder for chaining.
        */
@@ -1278,19 +1271,19 @@ public final class AccountOuterClass {
 
     /**
      * <pre>
-     * Account name (optional)
+     * Account name
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.services.options.optional) = true];</code>
      * @return The name.
      */
     java.lang.String getName();
     /**
      * <pre>
-     * Account name (optional)
+     * Account name
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.services.options.optional) = true];</code>
      * @return The bytes for name.
      */
     com.google.protobuf.ByteString
@@ -1298,7 +1291,7 @@ public final class AccountOuterClass {
 
     /**
      * <pre>
-     * Email account (required)
+     * Email account
      * </pre>
      *
      * <code>string email = 2;</code>
@@ -1307,7 +1300,7 @@ public final class AccountOuterClass {
     java.lang.String getEmail();
     /**
      * <pre>
-     * Email account (required)
+     * Email account
      * </pre>
      *
      * <code>string email = 2;</code>
@@ -1318,19 +1311,19 @@ public final class AccountOuterClass {
 
     /**
      * <pre>
-     * SMS number including country code (optional)
+     * SMS number including country code
      * </pre>
      *
-     * <code>string sms = 3;</code>
+     * <code>string sms = 3 [(.services.options.optional) = true];</code>
      * @return The sms.
      */
     java.lang.String getSms();
     /**
      * <pre>
-     * SMS number including country code (optional)
+     * SMS number including country code
      * </pre>
      *
-     * <code>string sms = 3;</code>
+     * <code>string sms = 3 [(.services.options.optional) = true];</code>
      * @return The bytes for sms.
      */
     com.google.protobuf.ByteString
@@ -1338,7 +1331,7 @@ public final class AccountOuterClass {
   }
   /**
    * <pre>
-   * Account Registration Details
+   * Account registration details
    * </pre>
    *
    * Protobuf type {@code services.account.v1.AccountDetails}
@@ -1417,6 +1410,8 @@ public final class AccountOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -1442,10 +1437,10 @@ public final class AccountOuterClass {
     private volatile java.lang.Object name_;
     /**
      * <pre>
-     * Account name (optional)
+     * Account name
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.services.options.optional) = true];</code>
      * @return The name.
      */
     @java.lang.Override
@@ -1463,10 +1458,10 @@ public final class AccountOuterClass {
     }
     /**
      * <pre>
-     * Account name (optional)
+     * Account name
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.services.options.optional) = true];</code>
      * @return The bytes for name.
      */
     @java.lang.Override
@@ -1488,7 +1483,7 @@ public final class AccountOuterClass {
     private volatile java.lang.Object email_;
     /**
      * <pre>
-     * Email account (required)
+     * Email account
      * </pre>
      *
      * <code>string email = 2;</code>
@@ -1509,7 +1504,7 @@ public final class AccountOuterClass {
     }
     /**
      * <pre>
-     * Email account (required)
+     * Email account
      * </pre>
      *
      * <code>string email = 2;</code>
@@ -1534,10 +1529,10 @@ public final class AccountOuterClass {
     private volatile java.lang.Object sms_;
     /**
      * <pre>
-     * SMS number including country code (optional)
+     * SMS number including country code
      * </pre>
      *
-     * <code>string sms = 3;</code>
+     * <code>string sms = 3 [(.services.options.optional) = true];</code>
      * @return The sms.
      */
     @java.lang.Override
@@ -1555,10 +1550,10 @@ public final class AccountOuterClass {
     }
     /**
      * <pre>
-     * SMS number including country code (optional)
+     * SMS number including country code
      * </pre>
      *
-     * <code>string sms = 3;</code>
+     * <code>string sms = 3 [(.services.options.optional) = true];</code>
      * @return The bytes for sms.
      */
     @java.lang.Override
@@ -1752,7 +1747,7 @@ public final class AccountOuterClass {
     }
     /**
      * <pre>
-     * Account Registration Details
+     * Account registration details
      * </pre>
      *
      * Protobuf type {@code services.account.v1.AccountDetails}
@@ -1919,10 +1914,10 @@ public final class AccountOuterClass {
       private java.lang.Object name_ = "";
       /**
        * <pre>
-       * Account name (optional)
+       * Account name
        * </pre>
        *
-       * <code>string name = 1;</code>
+       * <code>string name = 1 [(.services.options.optional) = true];</code>
        * @return The name.
        */
       public java.lang.String getName() {
@@ -1939,10 +1934,10 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * Account name (optional)
+       * Account name
        * </pre>
        *
-       * <code>string name = 1;</code>
+       * <code>string name = 1 [(.services.options.optional) = true];</code>
        * @return The bytes for name.
        */
       public com.google.protobuf.ByteString
@@ -1960,10 +1955,10 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * Account name (optional)
+       * Account name
        * </pre>
        *
-       * <code>string name = 1;</code>
+       * <code>string name = 1 [(.services.options.optional) = true];</code>
        * @param value The name to set.
        * @return This builder for chaining.
        */
@@ -1979,10 +1974,10 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * Account name (optional)
+       * Account name
        * </pre>
        *
-       * <code>string name = 1;</code>
+       * <code>string name = 1 [(.services.options.optional) = true];</code>
        * @return This builder for chaining.
        */
       public Builder clearName() {
@@ -1993,10 +1988,10 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * Account name (optional)
+       * Account name
        * </pre>
        *
-       * <code>string name = 1;</code>
+       * <code>string name = 1 [(.services.options.optional) = true];</code>
        * @param value The bytes for name to set.
        * @return This builder for chaining.
        */
@@ -2015,7 +2010,7 @@ public final class AccountOuterClass {
       private java.lang.Object email_ = "";
       /**
        * <pre>
-       * Email account (required)
+       * Email account
        * </pre>
        *
        * <code>string email = 2;</code>
@@ -2035,7 +2030,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * Email account (required)
+       * Email account
        * </pre>
        *
        * <code>string email = 2;</code>
@@ -2056,7 +2051,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * Email account (required)
+       * Email account
        * </pre>
        *
        * <code>string email = 2;</code>
@@ -2075,7 +2070,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * Email account (required)
+       * Email account
        * </pre>
        *
        * <code>string email = 2;</code>
@@ -2089,7 +2084,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * Email account (required)
+       * Email account
        * </pre>
        *
        * <code>string email = 2;</code>
@@ -2111,10 +2106,10 @@ public final class AccountOuterClass {
       private java.lang.Object sms_ = "";
       /**
        * <pre>
-       * SMS number including country code (optional)
+       * SMS number including country code
        * </pre>
        *
-       * <code>string sms = 3;</code>
+       * <code>string sms = 3 [(.services.options.optional) = true];</code>
        * @return The sms.
        */
       public java.lang.String getSms() {
@@ -2131,10 +2126,10 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * SMS number including country code (optional)
+       * SMS number including country code
        * </pre>
        *
-       * <code>string sms = 3;</code>
+       * <code>string sms = 3 [(.services.options.optional) = true];</code>
        * @return The bytes for sms.
        */
       public com.google.protobuf.ByteString
@@ -2152,10 +2147,10 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * SMS number including country code (optional)
+       * SMS number including country code
        * </pre>
        *
-       * <code>string sms = 3;</code>
+       * <code>string sms = 3 [(.services.options.optional) = true];</code>
        * @param value The sms to set.
        * @return This builder for chaining.
        */
@@ -2171,10 +2166,10 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * SMS number including country code (optional)
+       * SMS number including country code
        * </pre>
        *
-       * <code>string sms = 3;</code>
+       * <code>string sms = 3 [(.services.options.optional) = true];</code>
        * @return This builder for chaining.
        */
       public Builder clearSms() {
@@ -2185,10 +2180,10 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * SMS number including country code (optional)
+       * SMS number including country code
        * </pre>
        *
-       * <code>string sms = 3;</code>
+       * <code>string sms = 3 [(.services.options.optional) = true];</code>
        * @param value The bytes for sms to set.
        * @return This builder for chaining.
        */
@@ -2403,6 +2398,8 @@ public final class AccountOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -3335,6 +3332,8 @@ public final class AccountOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -4373,6 +4372,8 @@ public final class AccountOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -4937,6 +4938,10 @@ public final class AccountOuterClass {
       com.google.protobuf.MessageOrBuilder {
   }
   /**
+   * <pre>
+   * Request for information about the account used to make the request
+   * </pre>
+   *
    * Protobuf type {@code services.account.v1.InfoRequest}
    */
   public static final class InfoRequest extends
@@ -4992,6 +4997,8 @@ public final class AccountOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -5158,6 +5165,10 @@ public final class AccountOuterClass {
       return builder;
     }
     /**
+     * <pre>
+     * Request for information about the account used to make the request
+     * </pre>
+     *
      * Protobuf type {@code services.account.v1.InfoRequest}
      */
     public static final class Builder extends
@@ -5386,7 +5397,7 @@ public final class AccountOuterClass {
 
     /**
      * <pre>
-     * any ecosystems the account has access to
+     * Use `ecosystem_id` instead
      * </pre>
      *
      * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
@@ -5395,7 +5406,7 @@ public final class AccountOuterClass {
         getEcosystemsList();
     /**
      * <pre>
-     * any ecosystems the account has access to
+     * Use `ecosystem_id` instead
      * </pre>
      *
      * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
@@ -5403,7 +5414,7 @@ public final class AccountOuterClass {
     @java.lang.Deprecated trinsic.services.account.v1.AccountOuterClass.AccountEcosystem getEcosystems(int index);
     /**
      * <pre>
-     * any ecosystems the account has access to
+     * Use `ecosystem_id` instead
      * </pre>
      *
      * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
@@ -5411,7 +5422,7 @@ public final class AccountOuterClass {
     @java.lang.Deprecated int getEcosystemsCount();
     /**
      * <pre>
-     * any ecosystems the account has access to
+     * Use `ecosystem_id` instead
      * </pre>
      *
      * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
@@ -5420,7 +5431,7 @@ public final class AccountOuterClass {
         getEcosystemsOrBuilderList();
     /**
      * <pre>
-     * any ecosystems the account has access to
+     * Use `ecosystem_id` instead
      * </pre>
      *
      * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
@@ -5430,7 +5441,7 @@ public final class AccountOuterClass {
 
     /**
      * <pre>
-     * The wallet id associated with this account
+     * The wallet ID associated with this account
      * </pre>
      *
      * <code>string wallet_id = 3;</code>
@@ -5439,7 +5450,7 @@ public final class AccountOuterClass {
     java.lang.String getWalletId();
     /**
      * <pre>
-     * The wallet id associated with this account
+     * The wallet ID associated with this account
      * </pre>
      *
      * <code>string wallet_id = 3;</code>
@@ -5450,7 +5461,7 @@ public final class AccountOuterClass {
 
     /**
      * <pre>
-     * The device id associated with this account
+     * The device ID associated with this account session
      * </pre>
      *
      * <code>string device_id = 4;</code>
@@ -5459,7 +5470,7 @@ public final class AccountOuterClass {
     java.lang.String getDeviceId();
     /**
      * <pre>
-     * The device id associated with this account
+     * The device ID associated with this account session
      * </pre>
      *
      * <code>string device_id = 4;</code>
@@ -5470,7 +5481,7 @@ public final class AccountOuterClass {
 
     /**
      * <pre>
-     * The ecosystem id associated with this account
+     * The ecosystem ID within which this account resides
      * </pre>
      *
      * <code>string ecosystem_id = 5;</code>
@@ -5479,7 +5490,7 @@ public final class AccountOuterClass {
     java.lang.String getEcosystemId();
     /**
      * <pre>
-     * The ecosystem id associated with this account
+     * The ecosystem ID within which this account resides
      * </pre>
      *
      * <code>string ecosystem_id = 5;</code>
@@ -5487,8 +5498,34 @@ public final class AccountOuterClass {
      */
     com.google.protobuf.ByteString
         getEcosystemIdBytes();
+
+    /**
+     * <pre>
+     * The public DID associated with this account.
+     * This DID is used as "issuer" when signing verifiable credentials
+     * </pre>
+     *
+     * <code>string public_did = 6;</code>
+     * @return The publicDid.
+     */
+    java.lang.String getPublicDid();
+    /**
+     * <pre>
+     * The public DID associated with this account.
+     * This DID is used as "issuer" when signing verifiable credentials
+     * </pre>
+     *
+     * <code>string public_did = 6;</code>
+     * @return The bytes for publicDid.
+     */
+    com.google.protobuf.ByteString
+        getPublicDidBytes();
   }
   /**
+   * <pre>
+   * Information about the account used to make the request
+   * </pre>
+   *
    * Protobuf type {@code services.account.v1.InfoResponse}
    */
   public static final class InfoResponse extends
@@ -5505,6 +5542,7 @@ public final class AccountOuterClass {
       walletId_ = "";
       deviceId_ = "";
       ecosystemId_ = "";
+      publicDid_ = "";
     }
 
     @java.lang.Override
@@ -5578,6 +5616,12 @@ public final class AccountOuterClass {
               ecosystemId_ = s;
               break;
             }
+            case 50: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              publicDid_ = s;
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -5589,6 +5633,8 @@ public final class AccountOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -5658,7 +5704,7 @@ public final class AccountOuterClass {
     private java.util.List<trinsic.services.account.v1.AccountOuterClass.AccountEcosystem> ecosystems_;
     /**
      * <pre>
-     * any ecosystems the account has access to
+     * Use `ecosystem_id` instead
      * </pre>
      *
      * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
@@ -5669,7 +5715,7 @@ public final class AccountOuterClass {
     }
     /**
      * <pre>
-     * any ecosystems the account has access to
+     * Use `ecosystem_id` instead
      * </pre>
      *
      * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
@@ -5681,7 +5727,7 @@ public final class AccountOuterClass {
     }
     /**
      * <pre>
-     * any ecosystems the account has access to
+     * Use `ecosystem_id` instead
      * </pre>
      *
      * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
@@ -5692,7 +5738,7 @@ public final class AccountOuterClass {
     }
     /**
      * <pre>
-     * any ecosystems the account has access to
+     * Use `ecosystem_id` instead
      * </pre>
      *
      * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
@@ -5703,7 +5749,7 @@ public final class AccountOuterClass {
     }
     /**
      * <pre>
-     * any ecosystems the account has access to
+     * Use `ecosystem_id` instead
      * </pre>
      *
      * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
@@ -5718,7 +5764,7 @@ public final class AccountOuterClass {
     private volatile java.lang.Object walletId_;
     /**
      * <pre>
-     * The wallet id associated with this account
+     * The wallet ID associated with this account
      * </pre>
      *
      * <code>string wallet_id = 3;</code>
@@ -5739,7 +5785,7 @@ public final class AccountOuterClass {
     }
     /**
      * <pre>
-     * The wallet id associated with this account
+     * The wallet ID associated with this account
      * </pre>
      *
      * <code>string wallet_id = 3;</code>
@@ -5764,7 +5810,7 @@ public final class AccountOuterClass {
     private volatile java.lang.Object deviceId_;
     /**
      * <pre>
-     * The device id associated with this account
+     * The device ID associated with this account session
      * </pre>
      *
      * <code>string device_id = 4;</code>
@@ -5785,7 +5831,7 @@ public final class AccountOuterClass {
     }
     /**
      * <pre>
-     * The device id associated with this account
+     * The device ID associated with this account session
      * </pre>
      *
      * <code>string device_id = 4;</code>
@@ -5810,7 +5856,7 @@ public final class AccountOuterClass {
     private volatile java.lang.Object ecosystemId_;
     /**
      * <pre>
-     * The ecosystem id associated with this account
+     * The ecosystem ID within which this account resides
      * </pre>
      *
      * <code>string ecosystem_id = 5;</code>
@@ -5831,7 +5877,7 @@ public final class AccountOuterClass {
     }
     /**
      * <pre>
-     * The ecosystem id associated with this account
+     * The ecosystem ID within which this account resides
      * </pre>
      *
      * <code>string ecosystem_id = 5;</code>
@@ -5846,6 +5892,54 @@ public final class AccountOuterClass {
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         ecosystemId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int PUBLIC_DID_FIELD_NUMBER = 6;
+    private volatile java.lang.Object publicDid_;
+    /**
+     * <pre>
+     * The public DID associated with this account.
+     * This DID is used as "issuer" when signing verifiable credentials
+     * </pre>
+     *
+     * <code>string public_did = 6;</code>
+     * @return The publicDid.
+     */
+    @java.lang.Override
+    public java.lang.String getPublicDid() {
+      java.lang.Object ref = publicDid_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        publicDid_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * The public DID associated with this account.
+     * This DID is used as "issuer" when signing verifiable credentials
+     * </pre>
+     *
+     * <code>string public_did = 6;</code>
+     * @return The bytes for publicDid.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPublicDidBytes() {
+      java.lang.Object ref = publicDid_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        publicDid_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -5881,6 +5975,9 @@ public final class AccountOuterClass {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 5, ecosystemId_);
       }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(publicDid_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, publicDid_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -5906,6 +6003,9 @@ public final class AccountOuterClass {
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, ecosystemId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(publicDid_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, publicDid_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -5935,6 +6035,8 @@ public final class AccountOuterClass {
           .equals(other.getDeviceId())) return false;
       if (!getEcosystemId()
           .equals(other.getEcosystemId())) return false;
+      if (!getPublicDid()
+          .equals(other.getPublicDid())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -5960,6 +6062,8 @@ public final class AccountOuterClass {
       hash = (53 * hash) + getDeviceId().hashCode();
       hash = (37 * hash) + ECOSYSTEM_ID_FIELD_NUMBER;
       hash = (53 * hash) + getEcosystemId().hashCode();
+      hash = (37 * hash) + PUBLIC_DID_FIELD_NUMBER;
+      hash = (53 * hash) + getPublicDid().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -6056,6 +6160,10 @@ public final class AccountOuterClass {
       return builder;
     }
     /**
+     * <pre>
+     * Information about the account used to make the request
+     * </pre>
+     *
      * Protobuf type {@code services.account.v1.InfoResponse}
      */
     public static final class Builder extends
@@ -6112,6 +6220,8 @@ public final class AccountOuterClass {
 
         ecosystemId_ = "";
 
+        publicDid_ = "";
+
         return this;
       }
 
@@ -6156,6 +6266,7 @@ public final class AccountOuterClass {
         result.walletId_ = walletId_;
         result.deviceId_ = deviceId_;
         result.ecosystemId_ = ecosystemId_;
+        result.publicDid_ = publicDid_;
         onBuilt();
         return result;
       }
@@ -6243,6 +6354,10 @@ public final class AccountOuterClass {
         }
         if (!other.getEcosystemId().isEmpty()) {
           ecosystemId_ = other.ecosystemId_;
+          onChanged();
+        }
+        if (!other.getPublicDid().isEmpty()) {
+          publicDid_ = other.publicDid_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -6453,7 +6568,7 @@ public final class AccountOuterClass {
 
       /**
        * <pre>
-       * any ecosystems the account has access to
+       * Use `ecosystem_id` instead
        * </pre>
        *
        * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
@@ -6467,7 +6582,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * any ecosystems the account has access to
+       * Use `ecosystem_id` instead
        * </pre>
        *
        * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
@@ -6481,7 +6596,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * any ecosystems the account has access to
+       * Use `ecosystem_id` instead
        * </pre>
        *
        * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
@@ -6495,7 +6610,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * any ecosystems the account has access to
+       * Use `ecosystem_id` instead
        * </pre>
        *
        * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
@@ -6516,7 +6631,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * any ecosystems the account has access to
+       * Use `ecosystem_id` instead
        * </pre>
        *
        * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
@@ -6534,7 +6649,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * any ecosystems the account has access to
+       * Use `ecosystem_id` instead
        * </pre>
        *
        * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
@@ -6554,7 +6669,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * any ecosystems the account has access to
+       * Use `ecosystem_id` instead
        * </pre>
        *
        * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
@@ -6575,7 +6690,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * any ecosystems the account has access to
+       * Use `ecosystem_id` instead
        * </pre>
        *
        * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
@@ -6593,7 +6708,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * any ecosystems the account has access to
+       * Use `ecosystem_id` instead
        * </pre>
        *
        * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
@@ -6611,7 +6726,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * any ecosystems the account has access to
+       * Use `ecosystem_id` instead
        * </pre>
        *
        * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
@@ -6630,7 +6745,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * any ecosystems the account has access to
+       * Use `ecosystem_id` instead
        * </pre>
        *
        * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
@@ -6647,7 +6762,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * any ecosystems the account has access to
+       * Use `ecosystem_id` instead
        * </pre>
        *
        * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
@@ -6664,7 +6779,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * any ecosystems the account has access to
+       * Use `ecosystem_id` instead
        * </pre>
        *
        * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
@@ -6675,7 +6790,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * any ecosystems the account has access to
+       * Use `ecosystem_id` instead
        * </pre>
        *
        * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
@@ -6689,7 +6804,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * any ecosystems the account has access to
+       * Use `ecosystem_id` instead
        * </pre>
        *
        * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
@@ -6704,7 +6819,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * any ecosystems the account has access to
+       * Use `ecosystem_id` instead
        * </pre>
        *
        * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
@@ -6715,7 +6830,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * any ecosystems the account has access to
+       * Use `ecosystem_id` instead
        * </pre>
        *
        * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
@@ -6727,7 +6842,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * any ecosystems the account has access to
+       * Use `ecosystem_id` instead
        * </pre>
        *
        * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
@@ -6754,7 +6869,7 @@ public final class AccountOuterClass {
       private java.lang.Object walletId_ = "";
       /**
        * <pre>
-       * The wallet id associated with this account
+       * The wallet ID associated with this account
        * </pre>
        *
        * <code>string wallet_id = 3;</code>
@@ -6774,7 +6889,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * The wallet id associated with this account
+       * The wallet ID associated with this account
        * </pre>
        *
        * <code>string wallet_id = 3;</code>
@@ -6795,7 +6910,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * The wallet id associated with this account
+       * The wallet ID associated with this account
        * </pre>
        *
        * <code>string wallet_id = 3;</code>
@@ -6814,7 +6929,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * The wallet id associated with this account
+       * The wallet ID associated with this account
        * </pre>
        *
        * <code>string wallet_id = 3;</code>
@@ -6828,7 +6943,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * The wallet id associated with this account
+       * The wallet ID associated with this account
        * </pre>
        *
        * <code>string wallet_id = 3;</code>
@@ -6850,7 +6965,7 @@ public final class AccountOuterClass {
       private java.lang.Object deviceId_ = "";
       /**
        * <pre>
-       * The device id associated with this account
+       * The device ID associated with this account session
        * </pre>
        *
        * <code>string device_id = 4;</code>
@@ -6870,7 +6985,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * The device id associated with this account
+       * The device ID associated with this account session
        * </pre>
        *
        * <code>string device_id = 4;</code>
@@ -6891,7 +7006,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * The device id associated with this account
+       * The device ID associated with this account session
        * </pre>
        *
        * <code>string device_id = 4;</code>
@@ -6910,7 +7025,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * The device id associated with this account
+       * The device ID associated with this account session
        * </pre>
        *
        * <code>string device_id = 4;</code>
@@ -6924,7 +7039,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * The device id associated with this account
+       * The device ID associated with this account session
        * </pre>
        *
        * <code>string device_id = 4;</code>
@@ -6946,7 +7061,7 @@ public final class AccountOuterClass {
       private java.lang.Object ecosystemId_ = "";
       /**
        * <pre>
-       * The ecosystem id associated with this account
+       * The ecosystem ID within which this account resides
        * </pre>
        *
        * <code>string ecosystem_id = 5;</code>
@@ -6966,7 +7081,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * The ecosystem id associated with this account
+       * The ecosystem ID within which this account resides
        * </pre>
        *
        * <code>string ecosystem_id = 5;</code>
@@ -6987,7 +7102,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * The ecosystem id associated with this account
+       * The ecosystem ID within which this account resides
        * </pre>
        *
        * <code>string ecosystem_id = 5;</code>
@@ -7006,7 +7121,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * The ecosystem id associated with this account
+       * The ecosystem ID within which this account resides
        * </pre>
        *
        * <code>string ecosystem_id = 5;</code>
@@ -7020,7 +7135,7 @@ public final class AccountOuterClass {
       }
       /**
        * <pre>
-       * The ecosystem id associated with this account
+       * The ecosystem ID within which this account resides
        * </pre>
        *
        * <code>string ecosystem_id = 5;</code>
@@ -7035,6 +7150,107 @@ public final class AccountOuterClass {
   checkByteStringIsUtf8(value);
         
         ecosystemId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object publicDid_ = "";
+      /**
+       * <pre>
+       * The public DID associated with this account.
+       * This DID is used as "issuer" when signing verifiable credentials
+       * </pre>
+       *
+       * <code>string public_did = 6;</code>
+       * @return The publicDid.
+       */
+      public java.lang.String getPublicDid() {
+        java.lang.Object ref = publicDid_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          publicDid_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The public DID associated with this account.
+       * This DID is used as "issuer" when signing verifiable credentials
+       * </pre>
+       *
+       * <code>string public_did = 6;</code>
+       * @return The bytes for publicDid.
+       */
+      public com.google.protobuf.ByteString
+          getPublicDidBytes() {
+        java.lang.Object ref = publicDid_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          publicDid_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The public DID associated with this account.
+       * This DID is used as "issuer" when signing verifiable credentials
+       * </pre>
+       *
+       * <code>string public_did = 6;</code>
+       * @param value The publicDid to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPublicDid(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        publicDid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The public DID associated with this account.
+       * This DID is used as "issuer" when signing verifiable credentials
+       * </pre>
+       *
+       * <code>string public_did = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPublicDid() {
+        
+        publicDid_ = getDefaultInstance().getPublicDid();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The public DID associated with this account.
+       * This DID is used as "issuer" when signing verifiable credentials
+       * </pre>
+       *
+       * <code>string public_did = 6;</code>
+       * @param value The bytes for publicDid to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPublicDidBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        publicDid_ = value;
         onChanged();
         return this;
       }
@@ -7151,6 +7367,8 @@ public final class AccountOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -7569,6 +7787,8 @@ public final class AccountOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -7987,6 +8207,8 @@ public final class AccountOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -8405,6 +8627,8 @@ public final class AccountOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -8899,6 +9123,8 @@ public final class AccountOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -9851,48 +10077,51 @@ public final class AccountOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n!services/account/v1/account.proto\022\023ser" +
-      "vices.account.v1\"t\n\rSignInRequest\0224\n\007det" +
-      "ails\030\001 \001(\0132#.services.account.v1.Account" +
-      "Details\022\027\n\017invitation_code\030\002 \001(\t\022\024\n\014ecos" +
-      "ystem_id\030\003 \001(\t\":\n\016AccountDetails\022\014\n\004name" +
-      "\030\001 \001(\t\022\r\n\005email\030\002 \001(\t\022\013\n\003sms\030\003 \001(\t\"\214\001\n\016S" +
-      "ignInResponse\022D\n\023confirmation_method\030\003 \001" +
-      "(\0162\'.services.account.v1.ConfirmationMet" +
-      "hod\0224\n\007profile\030\004 \001(\0132#.services.account." +
-      "v1.AccountProfile\"\207\001\n\016AccountProfile\022\024\n\014" +
-      "profile_type\030\001 \001(\t\022\021\n\tauth_data\030\002 \001(\014\022\022\n" +
-      "\nauth_token\030\003 \001(\014\0228\n\nprotection\030\004 \001(\0132$." +
-      "services.account.v1.TokenProtection\"[\n\017T" +
-      "okenProtection\022\017\n\007enabled\030\001 \001(\010\0227\n\006metho" +
-      "d\030\002 \001(\0162\'.services.account.v1.Confirmati" +
-      "onMethod\"\r\n\013InfoRequest\"\277\001\n\014InfoResponse" +
-      "\0224\n\007details\030\001 \001(\0132#.services.account.v1." +
-      "AccountDetails\022=\n\necosystems\030\002 \003(\0132%.ser" +
-      "vices.account.v1.AccountEcosystemB\002\030\001\022\021\n" +
-      "\twallet_id\030\003 \001(\t\022\021\n\tdevice_id\030\004 \001(\t\022\024\n\014e" +
-      "cosystem_id\030\005 \001(\t\"\024\n\022ListDevicesRequest\"" +
-      "\025\n\023ListDevicesResponse\"\025\n\023RevokeDeviceRe" +
-      "quest\"\026\n\024RevokeDeviceResponse\"N\n\020Account" +
-      "Ecosystem\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013d" +
-      "escription\030\003 \001(\t\022\013\n\003uri\030\004 \001(\t*R\n\022Confirm" +
-      "ationMethod\022\010\n\004None\020\000\022\t\n\005Email\020\001\022\007\n\003Sms\020" +
-      "\002\022\023\n\017ConnectedDevice\020\003\022\t\n\005Other\020\n2\360\002\n\007Ac" +
-      "count\022Q\n\006SignIn\022\".services.account.v1.Si" +
-      "gnInRequest\032#.services.account.v1.SignIn" +
-      "Response\022K\n\004Info\022 .services.account.v1.I" +
-      "nfoRequest\032!.services.account.v1.InfoRes" +
-      "ponse\022`\n\013ListDevices\022\'.services.account." +
-      "v1.ListDevicesRequest\032(.services.account" +
-      ".v1.ListDevicesResponse\022c\n\014RevokeDevice\022" +
-      "(.services.account.v1.RevokeDeviceReques" +
-      "t\032).services.account.v1.RevokeDeviceResp" +
-      "onseBV\n\033trinsic.services.account.v1Z\031git" +
-      "hub.com/trinsic-id/sdk\252\002\033Trinsic.Service" +
-      "s.Account.V1b\006proto3"
+      "vices.account.v1\032$services/options/field" +
+      "-options.proto\"\200\001\n\rSignInRequest\0224\n\007deta" +
+      "ils\030\001 \001(\0132#.services.account.v1.AccountD" +
+      "etails\022\035\n\017invitation_code\030\002 \001(\tB\004\200\246\035\001\022\032\n" +
+      "\014ecosystem_id\030\003 \001(\tB\004\200\246\035\001\"F\n\016AccountDeta" +
+      "ils\022\022\n\004name\030\001 \001(\tB\004\200\246\035\001\022\r\n\005email\030\002 \001(\t\022\021" +
+      "\n\003sms\030\003 \001(\tB\004\200\246\035\001\"\214\001\n\016SignInResponse\022D\n\023" +
+      "confirmation_method\030\003 \001(\0162\'.services.acc" +
+      "ount.v1.ConfirmationMethod\0224\n\007profile\030\004 " +
+      "\001(\0132#.services.account.v1.AccountProfile" +
+      "\"\207\001\n\016AccountProfile\022\024\n\014profile_type\030\001 \001(" +
+      "\t\022\021\n\tauth_data\030\002 \001(\014\022\022\n\nauth_token\030\003 \001(\014" +
+      "\0228\n\nprotection\030\004 \001(\0132$.services.account." +
+      "v1.TokenProtection\"[\n\017TokenProtection\022\017\n" +
+      "\007enabled\030\001 \001(\010\0227\n\006method\030\002 \001(\0162\'.service" +
+      "s.account.v1.ConfirmationMethod\"\r\n\013InfoR" +
+      "equest\"\323\001\n\014InfoResponse\0224\n\007details\030\001 \001(\013" +
+      "2#.services.account.v1.AccountDetails\022=\n" +
+      "\necosystems\030\002 \003(\0132%.services.account.v1." +
+      "AccountEcosystemB\002\030\001\022\021\n\twallet_id\030\003 \001(\t\022" +
+      "\021\n\tdevice_id\030\004 \001(\t\022\024\n\014ecosystem_id\030\005 \001(\t" +
+      "\022\022\n\npublic_did\030\006 \001(\t\"\024\n\022ListDevicesReque" +
+      "st\"\025\n\023ListDevicesResponse\"\025\n\023RevokeDevic" +
+      "eRequest\"\026\n\024RevokeDeviceResponse\"N\n\020Acco" +
+      "untEcosystem\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\023" +
+      "\n\013description\030\003 \001(\t\022\013\n\003uri\030\004 \001(\t*R\n\022Conf" +
+      "irmationMethod\022\010\n\004None\020\000\022\t\n\005Email\020\001\022\007\n\003S" +
+      "ms\020\002\022\023\n\017ConnectedDevice\020\003\022\t\n\005Other\020\n2\360\002\n" +
+      "\007Account\022Q\n\006SignIn\022\".services.account.v1" +
+      ".SignInRequest\032#.services.account.v1.Sig" +
+      "nInResponse\022K\n\004Info\022 .services.account.v" +
+      "1.InfoRequest\032!.services.account.v1.Info" +
+      "Response\022`\n\013ListDevices\022\'.services.accou" +
+      "nt.v1.ListDevicesRequest\032(.services.acco" +
+      "unt.v1.ListDevicesResponse\022c\n\014RevokeDevi" +
+      "ce\022(.services.account.v1.RevokeDeviceReq" +
+      "uest\032).services.account.v1.RevokeDeviceR" +
+      "esponseBa\n\033trinsic.services.account.v1Z$" +
+      "github.com/trinsic-id/sdk/account/v1\252\002\033T" +
+      "rinsic.Services.Account.V1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          trinsic.services.protobuf.options.FieldOptions.getDescriptor(),
         });
     internal_static_services_account_v1_SignInRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -9935,7 +10164,7 @@ public final class AccountOuterClass {
     internal_static_services_account_v1_InfoResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_account_v1_InfoResponse_descriptor,
-        new java.lang.String[] { "Details", "Ecosystems", "WalletId", "DeviceId", "EcosystemId", });
+        new java.lang.String[] { "Details", "Ecosystems", "WalletId", "DeviceId", "EcosystemId", "PublicDid", });
     internal_static_services_account_v1_ListDevicesRequest_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_services_account_v1_ListDevicesRequest_fieldAccessorTable = new
@@ -9966,6 +10195,12 @@ public final class AccountOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_account_v1_AccountEcosystem_descriptor,
         new java.lang.String[] { "Id", "Name", "Description", "Uri", });
+    com.google.protobuf.ExtensionRegistry registry =
+        com.google.protobuf.ExtensionRegistry.newInstance();
+    registry.add(trinsic.services.protobuf.options.FieldOptions.optional);
+    com.google.protobuf.Descriptors.FileDescriptor
+        .internalUpdateFileDescriptor(descriptor, registry);
+    trinsic.services.protobuf.options.FieldOptions.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

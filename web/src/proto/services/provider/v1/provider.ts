@@ -50,14 +50,18 @@ export interface Invite {
 }
 
 export interface InviteRequest {
+  /** Type of participant being invited (individual/organization) */
   participant: ParticipantType;
+  /** Description of invitation */
   description: string;
+  /** Account details of invitee */
   details: AccountDetails | undefined;
 }
 
 export interface InviteRequest_DidCommInvitation {}
 
 export interface InviteResponse {
+  /** ID of created invitation */
   invitationId: string;
   /**
    * Invitation Code that must be passed with the account 'SignIn' request
@@ -73,11 +77,14 @@ export interface InviteResponse {
  * `Onboard` method call
  */
 export interface InvitationStatusRequest {
+  /** ID of invitation */
   invitationId: string;
 }
 
 export interface InvitationStatusResponse {
+  /** Status of invitation */
   status: InvitationStatusResponse_Status;
+  /** Human-readable string with details about invitation status */
   statusDetails: string;
 }
 
@@ -147,15 +154,9 @@ export interface CreateEcosystemRequest {
    * Allowed characters are lowercase letters, numbers, underscore and hyphen.
    */
   name: string;
-  /**
-   * Ecosystem description.
-   * This field is optional.
-   */
+  /** Ecosystem description */
   description: string;
-  /**
-   * External URL associated with your organization or ecosystem entity.
-   * This field is optional
-   */
+  /** External URL associated with your organization or ecosystem entity */
   uri: string;
   /** The account details of the owner of the ecosystem */
   details: AccountDetails | undefined;
@@ -168,13 +169,13 @@ export interface CreateEcosystemResponse {
   profile: AccountProfile | undefined;
   /**
    * Indicates if confirmation of account is required.
-   * This settings is configured globally by the server administrator.
+   * This setting is configured globally by the server administrator.
    */
   confirmationMethod: ConfirmationMethod;
 }
 
 export interface GenerateTokenRequest {
-  /** Optional description to identify this token */
+  /** Description to identify this token */
   description: string;
 }
 

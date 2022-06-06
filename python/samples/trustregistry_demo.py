@@ -1,16 +1,13 @@
 import asyncio
+import uuid
 
 from trinsic.account_service import AccountService
 from trinsic.proto.services.trustregistry.v1 import (
     RegistrationStatus,
-    RegisterIssuerRequest,
-    RegisterVerifierRequest,
-    CheckIssuerStatusRequest,
-    CheckVerifierStatusRequest,
-    UnregisterIssuerRequest,
-    UnregisterVerifierRequest,
     AddFrameworkRequest,
-    GovernanceFramework,
+    UnregisterMemberRequest,
+    GetMembershipStatusRequest,
+    RegisterMemberRequest,
 )
 from trinsic.trinsic_util import trinsic_config
 from trinsic.trustregistry_service import TrustRegistryService
@@ -24,64 +21,41 @@ async def trustregistry_demo():
 
     # data
     https_schema_org = "https://schema.org/Card"
-    https_example_com = "https://example.com"
+    https_example_com = f"https://example.com/{uuid.uuid4()}"
     did_example_test = "did:example:test"
+    framework_name = f"Example Framework: {uuid.uuid4()}"
 
     # registerGovernanceFramework() {
-    register_framework_response = await service.register_governance_framework(
+    register_framework_response = await service.add_framework(
         request=AddFrameworkRequest(
-            governance_framework=GovernanceFramework(
-                governance_framework_uri=https_example_com,
-                description="Demo framework",
-                trust_registry_uri=https_schema_org,
-            )
+            governance_framework_uri=https_example_com,
+            description="Demo framework",
+            name=framework_name,
         )
     )
     # }
 
     # registerIssuerSample() {
-    await service.register_issuer(
-        request=RegisterIssuerRequest(
+    await service.register_member(
+        request=RegisterMemberRequest(
             did_uri=did_example_test,
-            governance_framework_uri=https_example_com,
-            credential_type_uri=https_schema_org,
-        )
-    )
-    # }
-
-    # registerVerifierSample() {
-    await service.register_verifier(
-        request=RegisterVerifierRequest(
-            did_uri=did_example_test,
-            governance_framework_uri=https_example_com,
-            presentation_type_uri=https_schema_org,
+            framework_id=register_framework_response.id,
+            schema_uri=https_schema_org,
         )
     )
     # }
 
     # checkIssuerStatus() {
-    check_response = await service.check_issuer_status(
-        request=CheckIssuerStatusRequest(
+    check_response = await service.get_membership_status(
+        request=GetMembershipStatusRequest(
             did_uri=did_example_test,
             governance_framework_uri=https_example_com,
-            credential_type_uri=https_schema_org,
+            schema_uri=https_schema_org,
         )
     )
     # }
     issuer_status = check_response.status
     assert issuer_status == RegistrationStatus.CURRENT
-
-    # checkVerifierStatus() {
-    check_response = await service.check_verifier_status(
-        request=CheckVerifierStatusRequest(
-            did_uri=did_example_test,
-            governance_framework_uri=https_example_com,
-            presentation_type_uri=https_schema_org,
-        )
-    )
-    # }
-    verifier_status = check_response.status
-    assert verifier_status == RegistrationStatus.CURRENT
 
     # searchTrustRegistry() {
     search_result = await service.search_registry()
@@ -91,19 +65,10 @@ async def trustregistry_demo():
     assert len(search_result.items_json) > 0
 
     # unregisterIssuer() {
-    unregister_issuer_response = await service.unregister_issuer(
-        request=UnregisterIssuerRequest(
-            governance_framework_uri=https_example_com,
-            credential_type_uri=https_schema_org,
-            did_uri=did_example_test,
-        )
-    )
-    # }
-    # unregisterVerifier() {
-    unregister_verifier_response = await service.unregister_verifier(
-        request=UnregisterVerifierRequest(
-            governance_framework_uri=https_example_com,
-            presentation_type_uri=https_schema_org,
+    unregister_issuer_response = await service.unregister_member(
+        request=UnregisterMemberRequest(
+            framework_id=register_framework_response.id,
+            schema_uri=https_schema_org,
             did_uri=did_example_test,
         )
     )

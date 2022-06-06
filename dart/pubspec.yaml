@@ -1,0 +1,23 @@
+name: trinsic_dart
+description: Dart wrapper for the trinsic services SDK
+version: 0.1.0
+homepage: https://trinsic.id
+
+environment:
+  sdk: '>=2.16.2 <3.0.0'
+
+
+dependencies:
+  protobuf: ^2.0.0
+  grpc: ^3.0.2
+  uuid: ^3.0.6
+  okapi_dart:
+    git:
+      url: https://github.com/trinsic-id/okapi.git
+      path: dart
+
+dev_dependencies:
+  lints: any
+  test: ^1.16.0
+  path: any
+  coverage: ^1.3.2

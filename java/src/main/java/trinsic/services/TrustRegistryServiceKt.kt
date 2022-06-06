@@ -3,7 +3,7 @@ package trinsic.services
 import com.google.protobuf.InvalidProtocolBufferException
 import kotlinx.coroutines.flow.Flow
 import trinsic.okapi.DidException
-import trinsic.sdk.v1.Options
+import trinsic.sdk.options.v1.Options;
 import trinsic.services.trustregistry.v1.TrustRegistryGrpcKt
 import trinsic.services.trustregistry.v1.TrustRegistryOuterClass.*
 import java.net.MalformedURLException
@@ -16,9 +16,9 @@ class TrustRegistryServiceKt(
     var stub = TrustRegistryGrpcKt.TrustRegistryCoroutineStub(this.channel)
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
-    suspend fun registerGovernanceFramework(request: AddFrameworkRequest): AddFrameworkResponse {
+    suspend fun addFramework(request: AddFrameworkRequest): AddFrameworkResponse {
         try {
-            val url = URL(request.governanceFramework.governanceFrameworkUri)
+            URL(request.governanceFrameworkUri)
         } catch (e: MalformedURLException) {
             throw IllegalArgumentException("invalid uri string", e)
         }
@@ -31,7 +31,7 @@ class TrustRegistryServiceKt(
         ExecutionException::class,
         InterruptedException::class
     )
-    suspend fun removeGovernanceFramework(request: RemoveFrameworkRequest): RemoveFrameworkResponse {
+    suspend fun removeFramework(request: RemoveFrameworkRequest): RemoveFrameworkResponse {
         return withMetadata(stub, request).removeFramework(request)
     }
 
@@ -41,8 +41,8 @@ class TrustRegistryServiceKt(
         ExecutionException::class,
         InterruptedException::class
     )
-    suspend fun registerIssuer(request: RegisterIssuerRequest): RegisterIssuerResponse {
-        return withMetadata(stub, request).registerIssuer(request)
+    suspend fun registerMember(request: RegisterMemberRequest): RegisterMemberResponse {
+        return withMetadata(stub, request).registerMember(request)
     }
 
     @Throws(
@@ -51,38 +51,13 @@ class TrustRegistryServiceKt(
         ExecutionException::class,
         InterruptedException::class
     )
-    suspend fun unregisterIssuer(request: UnregisterIssuerRequest): UnregisterIssuerResponse {
-        return withMetadata(stub, request).unregisterIssuer(request)
-    }
-
-    @Throws(
-        InvalidProtocolBufferException::class,
-        DidException::class,
-        ExecutionException::class,
-        InterruptedException::class
-    )
-    suspend fun registerVerifier(request: RegisterVerifierRequest): RegisterVerifierResponse {
-        return withMetadata(stub, request).registerVerifier(request)
-    }
-
-    @Throws(
-        InvalidProtocolBufferException::class,
-        DidException::class,
-        ExecutionException::class,
-        InterruptedException::class
-    )
-    suspend fun unregisterVerifier(request: UnregisterVerifierRequest): UnregisterVerifierResponse {
-        return withMetadata(stub, request).unregisterVerifier(request)
+    suspend fun unregisterMember(request: UnregisterMemberRequest): UnregisterMemberResponse {
+        return withMetadata(stub, request).unregisterMember(request)
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
-    suspend fun checkIssuerStatus(request: CheckIssuerStatusRequest): CheckIssuerStatusResponse {
-        return withMetadata(stub, request).checkIssuerStatus(request)
-    }
-
-    @Throws(InvalidProtocolBufferException::class, DidException::class)
-    suspend fun checkVerifierStatus(request: CheckVerifierStatusRequest): CheckVerifierStatusResponse {
-        return withMetadata(stub, request).checkVerifierStatus(request)
+    suspend fun getMembershipStatus(request: GetMembershipStatusRequest): GetMembershipStatusResponse {
+        return withMetadata(stub, request).getMembershipStatus(request)
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
@@ -92,10 +67,10 @@ class TrustRegistryServiceKt(
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
     suspend fun searchRegistry(request: SearchRegistryRequest): SearchRegistryResponse {
-        var request = request
-        if (request.query.isBlank()) request =
-            SearchRegistryRequest.newBuilder(request).setQuery("SELECT * FROM c OFFSET 0 LIMIT 100").build()
-        return withMetadata(stub, request).searchRegistry(request)
+        var request2 = request
+        if (request2.query.isBlank()) request2 =
+            SearchRegistryRequest.newBuilder(request2).setQuery("SELECT * FROM c OFFSET 0 LIMIT 100").build()
+        return withMetadata(stub, request2).searchRegistry(request2)
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)

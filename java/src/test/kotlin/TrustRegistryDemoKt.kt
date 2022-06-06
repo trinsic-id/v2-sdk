@@ -3,7 +3,7 @@ import trinsic.TrinsicUtilities
 import trinsic.okapi.DidException
 import trinsic.services.AccountServiceKt
 import trinsic.services.TrustRegistryServiceKt
-import trinsic.services.trustregistry.v1.TrustRegistryOuterClass
+import trinsic.services.trustregistry.v1.TrustRegistryOuterClass.*
 import java.io.IOException
 import java.util.concurrent.ExecutionException
 
@@ -18,26 +18,32 @@ suspend fun runTrustRegistryDemo() {
     val accountService = AccountServiceKt(TrinsicUtilities.getTrinsicServiceOptions())
     val account = accountService.signIn()
     val service = TrustRegistryServiceKt(TrinsicUtilities.getTrinsicServiceOptions(account))
-    service.registerIssuer(
-        TrustRegistryOuterClass.RegisterIssuerRequest.newBuilder().setDidUri("did:example:test")
-            .setGovernanceFrameworkUri("https://example.com").setCredentialTypeUri("https://schema.org/Card").build()
+
+    val didUri = "did:example:test"
+    val frameworkUri = "https://example.com"
+    val typeUri = "https://schema.org/Card"
+
+    val frameworkResponse = service.addFramework(
+        AddFrameworkRequest.newBuilder().setGovernanceFrameworkUri(frameworkUri).build()
     )
-    service.registerVerifier(
-        TrustRegistryOuterClass.RegisterVerifierRequest.newBuilder().setDidUri("did:example:test")
-            .setGovernanceFrameworkUri("https://example.com").setPresentationTypeUri("https://schema.org/Card").build()
+    service.registerMember(
+        RegisterMemberRequest.newBuilder().setDidUri(didUri).setFrameworkId(frameworkResponse.id).setSchemaUri(typeUri)
+            .build()
     )
-    val issuerStatus = service.checkIssuerStatus(
-        TrustRegistryOuterClass.CheckIssuerStatusRequest.newBuilder().setDidUri("did:example:test")
-            .setGovernanceFrameworkUri("https://example.com").setCredentialTypeUri("https://schema.org/Card").build()
+
+    val issuerStatus = service.getMembershipStatus(
+        GetMembershipStatusRequest.newBuilder().setDidUri(didUri).setGovernanceFrameworkUri(frameworkUri)
+            .setSchemaUri(typeUri).build()
     )
-    Assertions.assertEquals(TrustRegistryOuterClass.RegistrationStatus.CURRENT, issuerStatus.status)
-    val verifierStatus = service.checkIssuerStatus(
-        TrustRegistryOuterClass.CheckIssuerStatusRequest.newBuilder().setDidUri("did:example:test")
-            .setGovernanceFrameworkUri("https://example.com").setCredentialTypeUri("https://schema.org/Card").build()
-    )
-    Assertions.assertEquals(TrustRegistryOuterClass.RegistrationStatus.CURRENT, verifierStatus.status)
+    Assertions.assertEquals(RegistrationStatus.CURRENT, issuerStatus.status)
+
     val searchResult = service.searchRegistry()
     Assertions.assertNotNull(searchResult)
     Assertions.assertNotNull(searchResult.itemsJson)
     Assertions.assertTrue(searchResult.itemsJson.isNotEmpty())
+
+    service.unregisterMember(
+        UnregisterMemberRequest.newBuilder().setFrameworkId(frameworkResponse.id).setDidUri(didUri)
+            .setSchemaUri(typeUri).build()
+    )
 }

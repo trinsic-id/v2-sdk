@@ -46,7 +46,7 @@ Then you can supply it to the SDKs:
 === "Python"
     <!--codeinclude-->
     ```python
-    [Insert Item Wallet](../../../python/samples/vaccine_demo.py) inside_block:insertItemWallet
+    [Insert Item Wallet](../../../python/samples/wallet_demo.py) inside_block:insertItemWallet
     ```
     <!--/codeinclude-->
 
@@ -60,7 +60,7 @@ Then you can supply it to the SDKs:
 === "Java"
     <!--codeinclude-->
     ```java
-    [RegisterIssuer](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:insertItemWallet
+    [RegisterIssuer](../../../java/src/test/java/trinsic/WalletsDemo.java) inside_block:insertItemWallet
     ```
     <!--/codeinclude-->
 
@@ -101,7 +101,7 @@ The default query used in the commands below returns the first 100 items in the 
 === "Python"
     <!--codeinclude-->
     ```python
-    [Insert Item Wallet](../../../python/samples/vaccine_demo.py) inside_block:searchWalletBasic
+    [Insert Item Wallet](../../../python/samples/wallet_demo.py) inside_block:searchWalletBasic
     ```
     <!--/codeinclude-->
 
@@ -115,7 +115,7 @@ The default query used in the commands below returns the first 100 items in the 
 === "Java"
     <!--codeinclude-->
     ```java
-    [RegisterIssuer](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:searchWalletBasic
+    [RegisterIssuer](../../../java/src/test/java/trinsic/WalletsDemo.java) inside_block:searchWalletBasic
     ```
     <!--/codeinclude-->
 
@@ -153,7 +153,7 @@ To pass custom query to the search function, use the query parameter or the avai
 === "Python"
     <!--codeinclude-->
     ```python
-    [Insert Item Wallet](../../../python/samples/vaccine_demo.py) inside_block:searchWalletSQL
+    [Insert Item Wallet](../../../python/samples/wallet_demo.py) inside_block:searchWalletSQL
     ```
     <!--/codeinclude-->
 
@@ -167,7 +167,7 @@ To pass custom query to the search function, use the query parameter or the avai
 === "Java"
     <!--codeinclude-->
     ```java
-    [RegisterIssuer](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:searchWalletSQL
+    [RegisterIssuer](../../../java/src/test/java/trinsic/WalletsDemo.java) inside_block:searchWalletSQL
     ```
     <!--/codeinclude-->
 

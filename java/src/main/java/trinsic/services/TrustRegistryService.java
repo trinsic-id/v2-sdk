@@ -3,7 +3,7 @@ package trinsic.services;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.InvalidProtocolBufferException;
 import trinsic.okapi.DidException;
-import trinsic.sdk.v1.Options;
+import trinsic.sdk.options.v1.Options;
 import trinsic.services.trustregistry.v1.TrustRegistryGrpc;
 import trinsic.services.trustregistry.v1.TrustRegistryOuterClass;
 
@@ -25,41 +25,29 @@ public class TrustRegistryService extends ServiceBase {
         this.stub2 = TrustRegistryGrpc.newBlockingStub(this.getChannel());
     }
 
-    public ListenableFuture<TrustRegistryOuterClass.AddFrameworkResponse> registerGovernanceFramework(TrustRegistryOuterClass.AddFrameworkRequest request) throws InvalidProtocolBufferException, DidException {
+    public ListenableFuture<TrustRegistryOuterClass.AddFrameworkResponse> addFramework(TrustRegistryOuterClass.AddFrameworkRequest request) throws InvalidProtocolBufferException, DidException {
         try {
-            new URL(request.getGovernanceFramework().getGovernanceFrameworkUri());
+            new URL(request.getGovernanceFrameworkUri());
         } catch (MalformedURLException e) {
             throw new IllegalArgumentException("invalid uri string", e);
         }
         return withMetadata(stub, request).addFramework(request);
     }
 
-    public TrustRegistryOuterClass.RemoveFrameworkResponse removeGovernanceFramework(TrustRegistryOuterClass.RemoveFrameworkRequest request) throws InvalidProtocolBufferException, DidException, ExecutionException, InterruptedException {
+    public TrustRegistryOuterClass.RemoveFrameworkResponse removeFramework(TrustRegistryOuterClass.RemoveFrameworkRequest request) throws InvalidProtocolBufferException, DidException, ExecutionException, InterruptedException {
         return withMetadata(stub, request).removeFramework(request).get();
     }
 
-    public TrustRegistryOuterClass.RegisterIssuerResponse registerIssuer(TrustRegistryOuterClass.RegisterIssuerRequest request) throws InvalidProtocolBufferException, DidException, ExecutionException, InterruptedException {
-        return withMetadata(stub, request).registerIssuer(request).get();
+    public TrustRegistryOuterClass.RegisterMemberResponse registerMember(TrustRegistryOuterClass.RegisterMemberRequest request) throws InvalidProtocolBufferException, DidException, ExecutionException, InterruptedException {
+        return withMetadata(stub, request).registerMember(request).get();
     }
 
-    public TrustRegistryOuterClass.UnregisterIssuerResponse unregisterIssuer(TrustRegistryOuterClass.UnregisterIssuerRequest request) throws InvalidProtocolBufferException, DidException, ExecutionException, InterruptedException {
-        return withMetadata(stub, request).unregisterIssuer(request).get();
+    public TrustRegistryOuterClass.UnregisterMemberResponse unregisterIssuer(TrustRegistryOuterClass.UnregisterMemberRequest request) throws InvalidProtocolBufferException, DidException, ExecutionException, InterruptedException {
+        return withMetadata(stub, request).unregisterMember(request).get();
     }
 
-    public TrustRegistryOuterClass.RegisterVerifierResponse registerVerifier(TrustRegistryOuterClass.RegisterVerifierRequest request) throws InvalidProtocolBufferException, DidException, ExecutionException, InterruptedException {
-        return withMetadata(stub, request).registerVerifier(request).get();
-    }
-
-    public TrustRegistryOuterClass.UnregisterVerifierResponse unregisterVerifier(TrustRegistryOuterClass.UnregisterVerifierRequest request) throws InvalidProtocolBufferException, DidException, ExecutionException, InterruptedException {
-        return withMetadata(stub, request).unregisterVerifier(request).get();
-    }
-
-    public ListenableFuture<TrustRegistryOuterClass.CheckIssuerStatusResponse> checkIssuerStatus(TrustRegistryOuterClass.CheckIssuerStatusRequest request) throws InvalidProtocolBufferException, DidException {
-        return withMetadata(stub, request).checkIssuerStatus(request);
-    }
-
-    public ListenableFuture<TrustRegistryOuterClass.CheckVerifierStatusResponse> checkVerifierStatus(TrustRegistryOuterClass.CheckVerifierStatusRequest request) throws InvalidProtocolBufferException, DidException {
-        return withMetadata(stub, request).checkVerifierStatus(request);
+    public ListenableFuture<TrustRegistryOuterClass.GetMembershipStatusResponse> checkIssuerStatus(TrustRegistryOuterClass.GetMembershipStatusRequest request) throws InvalidProtocolBufferException, DidException {
+        return withMetadata(stub, request).getMembershipStatus(request);
     }
 
     public ListenableFuture<TrustRegistryOuterClass.SearchRegistryResponse> searchRegistry() throws InvalidProtocolBufferException, DidException {

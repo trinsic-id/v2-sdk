@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import trinsic.okapi.DidException;
 import trinsic.okapi.Oberon;
 import trinsic.okapi.security.v1.Security;
-import trinsic.sdk.v1.Options;
+import trinsic.sdk.options.v1.Options;
 import trinsic.services.account.v1.AccountGrpc;
 import trinsic.services.account.v1.AccountOuterClass;
 

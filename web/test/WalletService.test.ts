@@ -17,9 +17,8 @@ import {
 } from "./TestData";
 
 
-import {getTestServerOptions} from "./env";
-
-
+import {getTestServerOptions, setTestTimeout} from "./env";
+import {v4 as uuid} from "uuid";
 
 const options = getTestServerOptions();
 const allison = getTestServerOptions();
@@ -27,6 +26,7 @@ const clinic = getTestServerOptions();
 const airline = getTestServerOptions();
 
 describe("WalletService Unit Tests", () => {
+  setTestTimeout()
   beforeAll(async () => {
     let service = new AccountService(options);
     allison.authToken = await service.signIn();
@@ -67,7 +67,7 @@ describe("WalletService Unit Tests", () => {
 
     expect(insertItemResponse).not.toBeNull();
     expect(insertItemResponse.itemId).not.toBe("");
-    console.log("Item id=", insertItemResponse.itemId);
+    // console.log("Item id=", insertItemResponse.itemId);
 
     // Delay half a second for race condition fixes?
     await new Promise((res) => setTimeout(res, 1000));
@@ -101,7 +101,7 @@ describe("WalletService Unit Tests", () => {
     });
     // }
 
-    expect(verifyResponse.isValid).toBeTrue();
+    expect(verifyResponse.isValid).toBeTruthy();
   });
 
   it("Demo: template management and credential issuance from template", async () => {
@@ -110,7 +110,7 @@ describe("WalletService Unit Tests", () => {
 
     // create example template
     let templateRequest = CreateCredentialTemplateRequest.fromPartial({
-      name: "My Example Credential",
+      name: `My Example Credential-${uuid()}`,
       allowAdditionalFields: false,
       fields: {
         firstName: TemplateField.fromPartial({ description: "Given name" }),
@@ -147,7 +147,7 @@ describe("WalletService Unit Tests", () => {
     let jsonDocument = JSON.parse(issueResponse.documentJson);
 
     expect(jsonDocument).not.toBeNull();
-    expect(jsonDocument.hasOwnProperty("id")).toBeTrue();
-    expect(jsonDocument.hasOwnProperty("credentialSubject")).toBeTrue();
+    expect(jsonDocument.hasOwnProperty("id")).toBeTruthy();
+    expect(jsonDocument.hasOwnProperty("credentialSubject")).toBeTruthy();
   });
 });

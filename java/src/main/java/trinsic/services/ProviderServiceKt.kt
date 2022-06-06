@@ -3,7 +3,7 @@ package trinsic.services
 import com.google.protobuf.InvalidProtocolBufferException
 import io.grpc.Channel
 import trinsic.okapi.DidException
-import trinsic.sdk.v1.Options
+import trinsic.sdk.options.v1.Options;
 import trinsic.services.account.v1.AccountOuterClass
 import trinsic.services.common.v1.Common
 import trinsic.services.common.v1.ProviderGrpcKt

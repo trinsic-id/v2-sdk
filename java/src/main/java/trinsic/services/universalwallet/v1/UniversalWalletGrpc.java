@@ -5,7 +5,7 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 /**
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 1.44.1)",
+    value = "by gRPC proto compiler (version 1.46.0)",
     comments = "Source: services/universal-wallet/v1/universal-wallet.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class UniversalWalletGrpc {
@@ -250,7 +250,7 @@ public final class UniversalWalletGrpc {
 
     /**
      * <pre>
-     * Insert an item into the wallet
+     * Update an item in the wallet
      * </pre>
      */
     public void updateItem(trinsic.services.universalwallet.v1.UniversalWalletOuterClass.UpdateItemRequest request,
@@ -358,7 +358,7 @@ public final class UniversalWalletGrpc {
 
     /**
      * <pre>
-     * Insert an item into the wallet
+     * Update an item in the wallet
      * </pre>
      */
     public void updateItem(trinsic.services.universalwallet.v1.UniversalWalletOuterClass.UpdateItemRequest request,
@@ -425,7 +425,7 @@ public final class UniversalWalletGrpc {
 
     /**
      * <pre>
-     * Insert an item into the wallet
+     * Update an item in the wallet
      * </pre>
      */
     public trinsic.services.universalwallet.v1.UniversalWalletOuterClass.UpdateItemResponse updateItem(trinsic.services.universalwallet.v1.UniversalWalletOuterClass.UpdateItemRequest request) {
@@ -493,7 +493,7 @@ public final class UniversalWalletGrpc {
 
     /**
      * <pre>
-     * Insert an item into the wallet
+     * Update an item in the wallet
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<trinsic.services.universalwallet.v1.UniversalWalletOuterClass.UpdateItemResponse> updateItem(

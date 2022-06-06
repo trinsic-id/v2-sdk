@@ -55,12 +55,10 @@ jobs:
       - name: Build and Test Golang
         run: |
           go version
-          go install golang.org/x/lint/golint@latest
-          go install github.com/jstemmer/go-junit-report@latest
           python ../../devops/build_sdks.py --language=golang
           go build
-          golint
-          go test -v | go-junit-report > test_output.xml
+          go get .out
+          go test -v -race -covermode atomic -coverprofile coverage.out
         shell: pwsh
         working-directory: go/services
         env:
@@ -71,26 +69,9 @@ jobs:
           TEST_SERVER_ENDPOINT: ${{ secrets.TEST_SERVER_ENDPOINT }}
           TEST_SERVER_PORT: ${{ secrets.TEST_SERVER_PORT }}
           TEST_SERVER_USE_TLS: ${{ secrets.TEST_SERVER_USE_TLS }}
-      - name: Upload Unit Test Results - Golang
-        if: always()
-        uses: actions/upload-artifact@v2
+      - name: "Upload coverage to Codecov"
+        uses: codecov/codecov-action@v2
         with:
-          name: Golang Unit Test Results (${{ matrix.os-artifact[0] }})
-          path: 'go/services/test_output*.xml'
-
-  publish-test-results-golang:
-    name: Publish Test Results
-    needs: build-and-test-golang
-    runs-on: ubuntu-latest
-    if: always()
-
-    steps:
-      - name: Download Artifacts
-        uses: actions/download-artifact@v2
-        with:
-          path: golang_artifacts
-      - name: Publish Test Report - Golang
-        uses: EnricoMi/publish-unit-test-result-action@v1.23
-        with:
-          files: 'golang_artifacts/**/*.xml'
-          check_name: Golang Test Report
+          fail_ci_if_error: true
+          directory: go/services
+          token: ${{ secrets.CODECOV_TOKEN }}

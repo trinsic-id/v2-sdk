@@ -10,7 +10,7 @@ $OUTPUT_DIR = $OutDir
 $PROTO_DIR = Resolve-Path "$PSScriptRoot/../proto"
 Write-Output $PROTO_DIR
 
-if ((Get-Command "$PROTOC" -ErrorAction SilentlyContinue) -eq $null)
+if ($null -eq (Get-Command "$PROTOC" -ErrorAction SilentlyContinue))
 {
     Write-Host "Unable to find $PROTOC in your PATH"
     Return

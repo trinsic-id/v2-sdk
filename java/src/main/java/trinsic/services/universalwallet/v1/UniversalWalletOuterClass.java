@@ -19,11 +19,19 @@ public final class UniversalWalletOuterClass {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * SQL Query to execute against items in wallet
+     * </pre>
+     *
      * <code>string query = 1;</code>
      * @return The query.
      */
     java.lang.String getQuery();
     /**
+     * <pre>
+     * SQL Query to execute against items in wallet
+     * </pre>
+     *
      * <code>string query = 1;</code>
      * @return The bytes for query.
      */
@@ -31,12 +39,22 @@ public final class UniversalWalletOuterClass {
         getQueryBytes();
 
     /**
-     * <code>string continuation_token = 2;</code>
+     * <pre>
+     * Token provided by previous `SearchResponse`
+     * if more data is available for query
+     * </pre>
+     *
+     * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
      * @return The continuationToken.
      */
     java.lang.String getContinuationToken();
     /**
-     * <code>string continuation_token = 2;</code>
+     * <pre>
+     * Token provided by previous `SearchResponse`
+     * if more data is available for query
+     * </pre>
+     *
+     * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
      * @return The bytes for continuationToken.
      */
     com.google.protobuf.ByteString
@@ -44,7 +62,7 @@ public final class UniversalWalletOuterClass {
   }
   /**
    * <pre>
-   * Search request object
+   * Request to search items in wallet
    * </pre>
    *
    * Protobuf type {@code services.universalwallet.v1.SearchRequest}
@@ -116,6 +134,8 @@ public final class UniversalWalletOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -140,6 +160,10 @@ public final class UniversalWalletOuterClass {
     public static final int QUERY_FIELD_NUMBER = 1;
     private volatile java.lang.Object query_;
     /**
+     * <pre>
+     * SQL Query to execute against items in wallet
+     * </pre>
+     *
      * <code>string query = 1;</code>
      * @return The query.
      */
@@ -157,6 +181,10 @@ public final class UniversalWalletOuterClass {
       }
     }
     /**
+     * <pre>
+     * SQL Query to execute against items in wallet
+     * </pre>
+     *
      * <code>string query = 1;</code>
      * @return The bytes for query.
      */
@@ -178,7 +206,12 @@ public final class UniversalWalletOuterClass {
     public static final int CONTINUATION_TOKEN_FIELD_NUMBER = 2;
     private volatile java.lang.Object continuationToken_;
     /**
-     * <code>string continuation_token = 2;</code>
+     * <pre>
+     * Token provided by previous `SearchResponse`
+     * if more data is available for query
+     * </pre>
+     *
+     * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
      * @return The continuationToken.
      */
     @java.lang.Override
@@ -195,7 +228,12 @@ public final class UniversalWalletOuterClass {
       }
     }
     /**
-     * <code>string continuation_token = 2;</code>
+     * <pre>
+     * Token provided by previous `SearchResponse`
+     * if more data is available for query
+     * </pre>
+     *
+     * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
      * @return The bytes for continuationToken.
      */
     @java.lang.Override
@@ -379,7 +417,7 @@ public final class UniversalWalletOuterClass {
     }
     /**
      * <pre>
-     * Search request object
+     * Request to search items in wallet
      * </pre>
      *
      * Protobuf type {@code services.universalwallet.v1.SearchRequest}
@@ -538,6 +576,10 @@ public final class UniversalWalletOuterClass {
 
       private java.lang.Object query_ = "";
       /**
+       * <pre>
+       * SQL Query to execute against items in wallet
+       * </pre>
+       *
        * <code>string query = 1;</code>
        * @return The query.
        */
@@ -554,6 +596,10 @@ public final class UniversalWalletOuterClass {
         }
       }
       /**
+       * <pre>
+       * SQL Query to execute against items in wallet
+       * </pre>
+       *
        * <code>string query = 1;</code>
        * @return The bytes for query.
        */
@@ -571,6 +617,10 @@ public final class UniversalWalletOuterClass {
         }
       }
       /**
+       * <pre>
+       * SQL Query to execute against items in wallet
+       * </pre>
+       *
        * <code>string query = 1;</code>
        * @param value The query to set.
        * @return This builder for chaining.
@@ -586,6 +636,10 @@ public final class UniversalWalletOuterClass {
         return this;
       }
       /**
+       * <pre>
+       * SQL Query to execute against items in wallet
+       * </pre>
+       *
        * <code>string query = 1;</code>
        * @return This builder for chaining.
        */
@@ -596,6 +650,10 @@ public final class UniversalWalletOuterClass {
         return this;
       }
       /**
+       * <pre>
+       * SQL Query to execute against items in wallet
+       * </pre>
+       *
        * <code>string query = 1;</code>
        * @param value The bytes for query to set.
        * @return This builder for chaining.
@@ -614,7 +672,12 @@ public final class UniversalWalletOuterClass {
 
       private java.lang.Object continuationToken_ = "";
       /**
-       * <code>string continuation_token = 2;</code>
+       * <pre>
+       * Token provided by previous `SearchResponse`
+       * if more data is available for query
+       * </pre>
+       *
+       * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
        * @return The continuationToken.
        */
       public java.lang.String getContinuationToken() {
@@ -630,7 +693,12 @@ public final class UniversalWalletOuterClass {
         }
       }
       /**
-       * <code>string continuation_token = 2;</code>
+       * <pre>
+       * Token provided by previous `SearchResponse`
+       * if more data is available for query
+       * </pre>
+       *
+       * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
        * @return The bytes for continuationToken.
        */
       public com.google.protobuf.ByteString
@@ -647,7 +715,12 @@ public final class UniversalWalletOuterClass {
         }
       }
       /**
-       * <code>string continuation_token = 2;</code>
+       * <pre>
+       * Token provided by previous `SearchResponse`
+       * if more data is available for query
+       * </pre>
+       *
+       * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
        * @param value The continuationToken to set.
        * @return This builder for chaining.
        */
@@ -662,7 +735,12 @@ public final class UniversalWalletOuterClass {
         return this;
       }
       /**
-       * <code>string continuation_token = 2;</code>
+       * <pre>
+       * Token provided by previous `SearchResponse`
+       * if more data is available for query
+       * </pre>
+       *
+       * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
        * @return This builder for chaining.
        */
       public Builder clearContinuationToken() {
@@ -672,7 +750,12 @@ public final class UniversalWalletOuterClass {
         return this;
       }
       /**
-       * <code>string continuation_token = 2;</code>
+       * <pre>
+       * Token provided by previous `SearchResponse`
+       * if more data is available for query
+       * </pre>
+       *
+       * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
        * @param value The bytes for continuationToken to set.
        * @return This builder for chaining.
        */
@@ -745,23 +828,39 @@ public final class UniversalWalletOuterClass {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * Array of query results, as JSON strings
+     * </pre>
+     *
      * <code>repeated string items = 1;</code>
      * @return A list containing the items.
      */
     java.util.List<java.lang.String>
         getItemsList();
     /**
+     * <pre>
+     * Array of query results, as JSON strings
+     * </pre>
+     *
      * <code>repeated string items = 1;</code>
      * @return The count of items.
      */
     int getItemsCount();
     /**
+     * <pre>
+     * Array of query results, as JSON strings
+     * </pre>
+     *
      * <code>repeated string items = 1;</code>
      * @param index The index of the element to return.
      * @return The items at the given index.
      */
     java.lang.String getItems(int index);
     /**
+     * <pre>
+     * Array of query results, as JSON strings
+     * </pre>
+     *
      * <code>repeated string items = 1;</code>
      * @param index The index of the value to return.
      * @return The bytes of the items at the given index.
@@ -770,6 +869,10 @@ public final class UniversalWalletOuterClass {
         getItemsBytes(int index);
 
     /**
+     * <pre>
+     * Whether more results are available for this query via `continuation_token`
+     * </pre>
+     *
      * <code>bool has_more = 2;</code>
      * @return The hasMore.
      */
@@ -777,7 +880,7 @@ public final class UniversalWalletOuterClass {
 
     /**
      * <pre>
-     * int32 count = 3;
+     * Token to fetch next set of results via `SearchRequest`
      * </pre>
      *
      * <code>string continuation_token = 4;</code>
@@ -786,7 +889,7 @@ public final class UniversalWalletOuterClass {
     java.lang.String getContinuationToken();
     /**
      * <pre>
-     * int32 count = 3;
+     * Token to fetch next set of results via `SearchRequest`
      * </pre>
      *
      * <code>string continuation_token = 4;</code>
@@ -797,7 +900,7 @@ public final class UniversalWalletOuterClass {
   }
   /**
    * <pre>
-   * Search response object
+   * Response to `SearchRequest`
    * </pre>
    *
    * Protobuf type {@code services.universalwallet.v1.SearchResponse}
@@ -878,6 +981,8 @@ public final class UniversalWalletOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -905,6 +1010,10 @@ public final class UniversalWalletOuterClass {
     public static final int ITEMS_FIELD_NUMBER = 1;
     private com.google.protobuf.LazyStringList items_;
     /**
+     * <pre>
+     * Array of query results, as JSON strings
+     * </pre>
+     *
      * <code>repeated string items = 1;</code>
      * @return A list containing the items.
      */
@@ -913,6 +1022,10 @@ public final class UniversalWalletOuterClass {
       return items_;
     }
     /**
+     * <pre>
+     * Array of query results, as JSON strings
+     * </pre>
+     *
      * <code>repeated string items = 1;</code>
      * @return The count of items.
      */
@@ -920,6 +1033,10 @@ public final class UniversalWalletOuterClass {
       return items_.size();
     }
     /**
+     * <pre>
+     * Array of query results, as JSON strings
+     * </pre>
+     *
      * <code>repeated string items = 1;</code>
      * @param index The index of the element to return.
      * @return The items at the given index.
@@ -928,6 +1045,10 @@ public final class UniversalWalletOuterClass {
       return items_.get(index);
     }
     /**
+     * <pre>
+     * Array of query results, as JSON strings
+     * </pre>
+     *
      * <code>repeated string items = 1;</code>
      * @param index The index of the value to return.
      * @return The bytes of the items at the given index.
@@ -940,6 +1061,10 @@ public final class UniversalWalletOuterClass {
     public static final int HAS_MORE_FIELD_NUMBER = 2;
     private boolean hasMore_;
     /**
+     * <pre>
+     * Whether more results are available for this query via `continuation_token`
+     * </pre>
+     *
      * <code>bool has_more = 2;</code>
      * @return The hasMore.
      */
@@ -952,7 +1077,7 @@ public final class UniversalWalletOuterClass {
     private volatile java.lang.Object continuationToken_;
     /**
      * <pre>
-     * int32 count = 3;
+     * Token to fetch next set of results via `SearchRequest`
      * </pre>
      *
      * <code>string continuation_token = 4;</code>
@@ -973,7 +1098,7 @@ public final class UniversalWalletOuterClass {
     }
     /**
      * <pre>
-     * int32 count = 3;
+     * Token to fetch next set of results via `SearchRequest`
      * </pre>
      *
      * <code>string continuation_token = 4;</code>
@@ -1179,7 +1304,7 @@ public final class UniversalWalletOuterClass {
     }
     /**
      * <pre>
-     * Search response object
+     * Response to `SearchRequest`
      * </pre>
      *
      * Protobuf type {@code services.universalwallet.v1.SearchResponse}
@@ -1362,6 +1487,10 @@ public final class UniversalWalletOuterClass {
          }
       }
       /**
+       * <pre>
+       * Array of query results, as JSON strings
+       * </pre>
+       *
        * <code>repeated string items = 1;</code>
        * @return A list containing the items.
        */
@@ -1370,6 +1499,10 @@ public final class UniversalWalletOuterClass {
         return items_.getUnmodifiableView();
       }
       /**
+       * <pre>
+       * Array of query results, as JSON strings
+       * </pre>
+       *
        * <code>repeated string items = 1;</code>
        * @return The count of items.
        */
@@ -1377,6 +1510,10 @@ public final class UniversalWalletOuterClass {
         return items_.size();
       }
       /**
+       * <pre>
+       * Array of query results, as JSON strings
+       * </pre>
+       *
        * <code>repeated string items = 1;</code>
        * @param index The index of the element to return.
        * @return The items at the given index.
@@ -1385,6 +1522,10 @@ public final class UniversalWalletOuterClass {
         return items_.get(index);
       }
       /**
+       * <pre>
+       * Array of query results, as JSON strings
+       * </pre>
+       *
        * <code>repeated string items = 1;</code>
        * @param index The index of the value to return.
        * @return The bytes of the items at the given index.
@@ -1394,6 +1535,10 @@ public final class UniversalWalletOuterClass {
         return items_.getByteString(index);
       }
       /**
+       * <pre>
+       * Array of query results, as JSON strings
+       * </pre>
+       *
        * <code>repeated string items = 1;</code>
        * @param index The index to set the value at.
        * @param value The items to set.
@@ -1410,6 +1555,10 @@ public final class UniversalWalletOuterClass {
         return this;
       }
       /**
+       * <pre>
+       * Array of query results, as JSON strings
+       * </pre>
+       *
        * <code>repeated string items = 1;</code>
        * @param value The items to add.
        * @return This builder for chaining.
@@ -1425,6 +1574,10 @@ public final class UniversalWalletOuterClass {
         return this;
       }
       /**
+       * <pre>
+       * Array of query results, as JSON strings
+       * </pre>
+       *
        * <code>repeated string items = 1;</code>
        * @param values The items to add.
        * @return This builder for chaining.
@@ -1438,6 +1591,10 @@ public final class UniversalWalletOuterClass {
         return this;
       }
       /**
+       * <pre>
+       * Array of query results, as JSON strings
+       * </pre>
+       *
        * <code>repeated string items = 1;</code>
        * @return This builder for chaining.
        */
@@ -1448,6 +1605,10 @@ public final class UniversalWalletOuterClass {
         return this;
       }
       /**
+       * <pre>
+       * Array of query results, as JSON strings
+       * </pre>
+       *
        * <code>repeated string items = 1;</code>
        * @param value The bytes of the items to add.
        * @return This builder for chaining.
@@ -1466,6 +1627,10 @@ public final class UniversalWalletOuterClass {
 
       private boolean hasMore_ ;
       /**
+       * <pre>
+       * Whether more results are available for this query via `continuation_token`
+       * </pre>
+       *
        * <code>bool has_more = 2;</code>
        * @return The hasMore.
        */
@@ -1474,6 +1639,10 @@ public final class UniversalWalletOuterClass {
         return hasMore_;
       }
       /**
+       * <pre>
+       * Whether more results are available for this query via `continuation_token`
+       * </pre>
+       *
        * <code>bool has_more = 2;</code>
        * @param value The hasMore to set.
        * @return This builder for chaining.
@@ -1485,6 +1654,10 @@ public final class UniversalWalletOuterClass {
         return this;
       }
       /**
+       * <pre>
+       * Whether more results are available for this query via `continuation_token`
+       * </pre>
+       *
        * <code>bool has_more = 2;</code>
        * @return This builder for chaining.
        */
@@ -1498,7 +1671,7 @@ public final class UniversalWalletOuterClass {
       private java.lang.Object continuationToken_ = "";
       /**
        * <pre>
-       * int32 count = 3;
+       * Token to fetch next set of results via `SearchRequest`
        * </pre>
        *
        * <code>string continuation_token = 4;</code>
@@ -1518,7 +1691,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * int32 count = 3;
+       * Token to fetch next set of results via `SearchRequest`
        * </pre>
        *
        * <code>string continuation_token = 4;</code>
@@ -1539,7 +1712,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * int32 count = 3;
+       * Token to fetch next set of results via `SearchRequest`
        * </pre>
        *
        * <code>string continuation_token = 4;</code>
@@ -1558,7 +1731,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * int32 count = 3;
+       * Token to fetch next set of results via `SearchRequest`
        * </pre>
        *
        * <code>string continuation_token = 4;</code>
@@ -1572,7 +1745,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * int32 count = 3;
+       * Token to fetch next set of results via `SearchRequest`
        * </pre>
        *
        * <code>string continuation_token = 4;</code>
@@ -1649,7 +1822,7 @@ public final class UniversalWalletOuterClass {
 
     /**
      * <pre>
-     * The item identifier
+     * ID of item in wallet
      * </pre>
      *
      * <code>string item_id = 1;</code>
@@ -1658,7 +1831,7 @@ public final class UniversalWalletOuterClass {
     java.lang.String getItemId();
     /**
      * <pre>
-     * The item identifier
+     * ID of item in wallet
      * </pre>
      *
      * <code>string item_id = 1;</code>
@@ -1669,7 +1842,7 @@ public final class UniversalWalletOuterClass {
   }
   /**
    * <pre>
-   * Get item request object
+   * Request to fetch an item from wallet
    * </pre>
    *
    * Protobuf type {@code services.universalwallet.v1.GetItemRequest}
@@ -1734,6 +1907,8 @@ public final class UniversalWalletOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -1759,7 +1934,7 @@ public final class UniversalWalletOuterClass {
     private volatile java.lang.Object itemId_;
     /**
      * <pre>
-     * The item identifier
+     * ID of item in wallet
      * </pre>
      *
      * <code>string item_id = 1;</code>
@@ -1780,7 +1955,7 @@ public final class UniversalWalletOuterClass {
     }
     /**
      * <pre>
-     * The item identifier
+     * ID of item in wallet
      * </pre>
      *
      * <code>string item_id = 1;</code>
@@ -1957,7 +2132,7 @@ public final class UniversalWalletOuterClass {
     }
     /**
      * <pre>
-     * Get item request object
+     * Request to fetch an item from wallet
      * </pre>
      *
      * Protobuf type {@code services.universalwallet.v1.GetItemRequest}
@@ -2110,7 +2285,7 @@ public final class UniversalWalletOuterClass {
       private java.lang.Object itemId_ = "";
       /**
        * <pre>
-       * The item identifier
+       * ID of item in wallet
        * </pre>
        *
        * <code>string item_id = 1;</code>
@@ -2130,7 +2305,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * The item identifier
+       * ID of item in wallet
        * </pre>
        *
        * <code>string item_id = 1;</code>
@@ -2151,7 +2326,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * The item identifier
+       * ID of item in wallet
        * </pre>
        *
        * <code>string item_id = 1;</code>
@@ -2170,7 +2345,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * The item identifier
+       * ID of item in wallet
        * </pre>
        *
        * <code>string item_id = 1;</code>
@@ -2184,7 +2359,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * The item identifier
+       * ID of item in wallet
        * </pre>
        *
        * <code>string item_id = 1;</code>
@@ -2261,7 +2436,7 @@ public final class UniversalWalletOuterClass {
 
     /**
      * <pre>
-     * The item data represented as stringified JSON
+     * Item data as a JSON string
      * </pre>
      *
      * <code>string item_json = 1;</code>
@@ -2270,7 +2445,7 @@ public final class UniversalWalletOuterClass {
     java.lang.String getItemJson();
     /**
      * <pre>
-     * The item data represented as stringified JSON
+     * Item data as a JSON string
      * </pre>
      *
      * <code>string item_json = 1;</code>
@@ -2281,7 +2456,7 @@ public final class UniversalWalletOuterClass {
 
     /**
      * <pre>
-     * User set item type that described the content of this item
+     * Type of item specified when item was inserted into wallet
      * </pre>
      *
      * <code>string item_type = 2;</code>
@@ -2290,7 +2465,7 @@ public final class UniversalWalletOuterClass {
     java.lang.String getItemType();
     /**
      * <pre>
-     * User set item type that described the content of this item
+     * Type of item specified when item was inserted into wallet
      * </pre>
      *
      * <code>string item_type = 2;</code>
@@ -2301,7 +2476,7 @@ public final class UniversalWalletOuterClass {
   }
   /**
    * <pre>
-   * Get item response object
+   * Response to `GetItemRequest`
    * </pre>
    *
    * Protobuf type {@code services.universalwallet.v1.GetItemResponse}
@@ -2373,6 +2548,8 @@ public final class UniversalWalletOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -2398,7 +2575,7 @@ public final class UniversalWalletOuterClass {
     private volatile java.lang.Object itemJson_;
     /**
      * <pre>
-     * The item data represented as stringified JSON
+     * Item data as a JSON string
      * </pre>
      *
      * <code>string item_json = 1;</code>
@@ -2419,7 +2596,7 @@ public final class UniversalWalletOuterClass {
     }
     /**
      * <pre>
-     * The item data represented as stringified JSON
+     * Item data as a JSON string
      * </pre>
      *
      * <code>string item_json = 1;</code>
@@ -2444,7 +2621,7 @@ public final class UniversalWalletOuterClass {
     private volatile java.lang.Object itemType_;
     /**
      * <pre>
-     * User set item type that described the content of this item
+     * Type of item specified when item was inserted into wallet
      * </pre>
      *
      * <code>string item_type = 2;</code>
@@ -2465,7 +2642,7 @@ public final class UniversalWalletOuterClass {
     }
     /**
      * <pre>
-     * User set item type that described the content of this item
+     * Type of item specified when item was inserted into wallet
      * </pre>
      *
      * <code>string item_type = 2;</code>
@@ -2652,7 +2829,7 @@ public final class UniversalWalletOuterClass {
     }
     /**
      * <pre>
-     * Get item response object
+     * Response to `GetItemRequest`
      * </pre>
      *
      * Protobuf type {@code services.universalwallet.v1.GetItemResponse}
@@ -2812,7 +2989,7 @@ public final class UniversalWalletOuterClass {
       private java.lang.Object itemJson_ = "";
       /**
        * <pre>
-       * The item data represented as stringified JSON
+       * Item data as a JSON string
        * </pre>
        *
        * <code>string item_json = 1;</code>
@@ -2832,7 +3009,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * The item data represented as stringified JSON
+       * Item data as a JSON string
        * </pre>
        *
        * <code>string item_json = 1;</code>
@@ -2853,7 +3030,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * The item data represented as stringified JSON
+       * Item data as a JSON string
        * </pre>
        *
        * <code>string item_json = 1;</code>
@@ -2872,7 +3049,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * The item data represented as stringified JSON
+       * Item data as a JSON string
        * </pre>
        *
        * <code>string item_json = 1;</code>
@@ -2886,7 +3063,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * The item data represented as stringified JSON
+       * Item data as a JSON string
        * </pre>
        *
        * <code>string item_json = 1;</code>
@@ -2908,7 +3085,7 @@ public final class UniversalWalletOuterClass {
       private java.lang.Object itemType_ = "";
       /**
        * <pre>
-       * User set item type that described the content of this item
+       * Type of item specified when item was inserted into wallet
        * </pre>
        *
        * <code>string item_type = 2;</code>
@@ -2928,7 +3105,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * User set item type that described the content of this item
+       * Type of item specified when item was inserted into wallet
        * </pre>
        *
        * <code>string item_type = 2;</code>
@@ -2949,7 +3126,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * User set item type that described the content of this item
+       * Type of item specified when item was inserted into wallet
        * </pre>
        *
        * <code>string item_type = 2;</code>
@@ -2968,7 +3145,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * User set item type that described the content of this item
+       * Type of item specified when item was inserted into wallet
        * </pre>
        *
        * <code>string item_type = 2;</code>
@@ -2982,7 +3159,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * User set item type that described the content of this item
+       * Type of item specified when item was inserted into wallet
        * </pre>
        *
        * <code>string item_type = 2;</code>
@@ -3059,7 +3236,7 @@ public final class UniversalWalletOuterClass {
 
     /**
      * <pre>
-     * The item identifier
+     * ID of item in wallet
      * </pre>
      *
      * <code>string item_id = 1;</code>
@@ -3068,7 +3245,7 @@ public final class UniversalWalletOuterClass {
     java.lang.String getItemId();
     /**
      * <pre>
-     * The item identifier
+     * ID of item in wallet
      * </pre>
      *
      * <code>string item_id = 1;</code>
@@ -3079,19 +3256,19 @@ public final class UniversalWalletOuterClass {
 
     /**
      * <pre>
-     * The item type that described the content of this item
+     * Item type (ex. "VerifiableCredential")
      * </pre>
      *
-     * <code>string item_type = 2;</code>
+     * <code>string item_type = 2 [(.services.options.optional) = true];</code>
      * @return The itemType.
      */
     java.lang.String getItemType();
     /**
      * <pre>
-     * The item type that described the content of this item
+     * Item type (ex. "VerifiableCredential")
      * </pre>
      *
-     * <code>string item_type = 2;</code>
+     * <code>string item_type = 2 [(.services.options.optional) = true];</code>
      * @return The bytes for itemType.
      */
     com.google.protobuf.ByteString
@@ -3099,7 +3276,7 @@ public final class UniversalWalletOuterClass {
   }
   /**
    * <pre>
-   * Update item request object
+   * Request to update item in wallet
    * </pre>
    *
    * Protobuf type {@code services.universalwallet.v1.UpdateItemRequest}
@@ -3171,6 +3348,8 @@ public final class UniversalWalletOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -3196,7 +3375,7 @@ public final class UniversalWalletOuterClass {
     private volatile java.lang.Object itemId_;
     /**
      * <pre>
-     * The item identifier
+     * ID of item in wallet
      * </pre>
      *
      * <code>string item_id = 1;</code>
@@ -3217,7 +3396,7 @@ public final class UniversalWalletOuterClass {
     }
     /**
      * <pre>
-     * The item identifier
+     * ID of item in wallet
      * </pre>
      *
      * <code>string item_id = 1;</code>
@@ -3242,10 +3421,10 @@ public final class UniversalWalletOuterClass {
     private volatile java.lang.Object itemType_;
     /**
      * <pre>
-     * The item type that described the content of this item
+     * Item type (ex. "VerifiableCredential")
      * </pre>
      *
-     * <code>string item_type = 2;</code>
+     * <code>string item_type = 2 [(.services.options.optional) = true];</code>
      * @return The itemType.
      */
     @java.lang.Override
@@ -3263,10 +3442,10 @@ public final class UniversalWalletOuterClass {
     }
     /**
      * <pre>
-     * The item type that described the content of this item
+     * Item type (ex. "VerifiableCredential")
      * </pre>
      *
-     * <code>string item_type = 2;</code>
+     * <code>string item_type = 2 [(.services.options.optional) = true];</code>
      * @return The bytes for itemType.
      */
     @java.lang.Override
@@ -3450,7 +3629,7 @@ public final class UniversalWalletOuterClass {
     }
     /**
      * <pre>
-     * Update item request object
+     * Request to update item in wallet
      * </pre>
      *
      * Protobuf type {@code services.universalwallet.v1.UpdateItemRequest}
@@ -3610,7 +3789,7 @@ public final class UniversalWalletOuterClass {
       private java.lang.Object itemId_ = "";
       /**
        * <pre>
-       * The item identifier
+       * ID of item in wallet
        * </pre>
        *
        * <code>string item_id = 1;</code>
@@ -3630,7 +3809,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * The item identifier
+       * ID of item in wallet
        * </pre>
        *
        * <code>string item_id = 1;</code>
@@ -3651,7 +3830,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * The item identifier
+       * ID of item in wallet
        * </pre>
        *
        * <code>string item_id = 1;</code>
@@ -3670,7 +3849,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * The item identifier
+       * ID of item in wallet
        * </pre>
        *
        * <code>string item_id = 1;</code>
@@ -3684,7 +3863,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * The item identifier
+       * ID of item in wallet
        * </pre>
        *
        * <code>string item_id = 1;</code>
@@ -3706,10 +3885,10 @@ public final class UniversalWalletOuterClass {
       private java.lang.Object itemType_ = "";
       /**
        * <pre>
-       * The item type that described the content of this item
+       * Item type (ex. "VerifiableCredential")
        * </pre>
        *
-       * <code>string item_type = 2;</code>
+       * <code>string item_type = 2 [(.services.options.optional) = true];</code>
        * @return The itemType.
        */
       public java.lang.String getItemType() {
@@ -3726,10 +3905,10 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * The item type that described the content of this item
+       * Item type (ex. "VerifiableCredential")
        * </pre>
        *
-       * <code>string item_type = 2;</code>
+       * <code>string item_type = 2 [(.services.options.optional) = true];</code>
        * @return The bytes for itemType.
        */
       public com.google.protobuf.ByteString
@@ -3747,10 +3926,10 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * The item type that described the content of this item
+       * Item type (ex. "VerifiableCredential")
        * </pre>
        *
-       * <code>string item_type = 2;</code>
+       * <code>string item_type = 2 [(.services.options.optional) = true];</code>
        * @param value The itemType to set.
        * @return This builder for chaining.
        */
@@ -3766,10 +3945,10 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * The item type that described the content of this item
+       * Item type (ex. "VerifiableCredential")
        * </pre>
        *
-       * <code>string item_type = 2;</code>
+       * <code>string item_type = 2 [(.services.options.optional) = true];</code>
        * @return This builder for chaining.
        */
       public Builder clearItemType() {
@@ -3780,10 +3959,10 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * The item type that described the content of this item
+       * Item type (ex. "VerifiableCredential")
        * </pre>
        *
-       * <code>string item_type = 2;</code>
+       * <code>string item_type = 2 [(.services.options.optional) = true];</code>
        * @param value The bytes for itemType to set.
        * @return This builder for chaining.
        */
@@ -3857,7 +4036,7 @@ public final class UniversalWalletOuterClass {
   }
   /**
    * <pre>
-   * Update item response object
+   * Response to `UpdateItemRequest`
    * </pre>
    *
    * Protobuf type {@code services.universalwallet.v1.UpdateItemResponse}
@@ -3915,6 +4094,8 @@ public final class UniversalWalletOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -4082,7 +4263,7 @@ public final class UniversalWalletOuterClass {
     }
     /**
      * <pre>
-     * Update item response object
+     * Response to `UpdateItemRequest`
      * </pre>
      *
      * Protobuf type {@code services.universalwallet.v1.UpdateItemResponse}
@@ -4283,7 +4464,7 @@ public final class UniversalWalletOuterClass {
 
     /**
      * <pre>
-     * the document to insert as stringified json
+     * Document to insert; must be stringified JSON
      * </pre>
      *
      * <code>string item_json = 1;</code>
@@ -4292,7 +4473,7 @@ public final class UniversalWalletOuterClass {
     java.lang.String getItemJson();
     /**
      * <pre>
-     * the document to insert as stringified json
+     * Document to insert; must be stringified JSON
      * </pre>
      *
      * <code>string item_json = 1;</code>
@@ -4303,19 +4484,19 @@ public final class UniversalWalletOuterClass {
 
     /**
      * <pre>
-     * optional item type ex. "VerifiableCredential"
+     * Item type (ex. "VerifiableCredential")
      * </pre>
      *
-     * <code>string item_type = 2;</code>
+     * <code>string item_type = 2 [(.services.options.optional) = true];</code>
      * @return The itemType.
      */
     java.lang.String getItemType();
     /**
      * <pre>
-     * optional item type ex. "VerifiableCredential"
+     * Item type (ex. "VerifiableCredential")
      * </pre>
      *
-     * <code>string item_type = 2;</code>
+     * <code>string item_type = 2 [(.services.options.optional) = true];</code>
      * @return The bytes for itemType.
      */
     com.google.protobuf.ByteString
@@ -4323,7 +4504,7 @@ public final class UniversalWalletOuterClass {
   }
   /**
    * <pre>
-   * Insert item request
+   * Request to insert a JSON document into a wallet
    * </pre>
    *
    * Protobuf type {@code services.universalwallet.v1.InsertItemRequest}
@@ -4395,6 +4576,8 @@ public final class UniversalWalletOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -4420,7 +4603,7 @@ public final class UniversalWalletOuterClass {
     private volatile java.lang.Object itemJson_;
     /**
      * <pre>
-     * the document to insert as stringified json
+     * Document to insert; must be stringified JSON
      * </pre>
      *
      * <code>string item_json = 1;</code>
@@ -4441,7 +4624,7 @@ public final class UniversalWalletOuterClass {
     }
     /**
      * <pre>
-     * the document to insert as stringified json
+     * Document to insert; must be stringified JSON
      * </pre>
      *
      * <code>string item_json = 1;</code>
@@ -4466,10 +4649,10 @@ public final class UniversalWalletOuterClass {
     private volatile java.lang.Object itemType_;
     /**
      * <pre>
-     * optional item type ex. "VerifiableCredential"
+     * Item type (ex. "VerifiableCredential")
      * </pre>
      *
-     * <code>string item_type = 2;</code>
+     * <code>string item_type = 2 [(.services.options.optional) = true];</code>
      * @return The itemType.
      */
     @java.lang.Override
@@ -4487,10 +4670,10 @@ public final class UniversalWalletOuterClass {
     }
     /**
      * <pre>
-     * optional item type ex. "VerifiableCredential"
+     * Item type (ex. "VerifiableCredential")
      * </pre>
      *
-     * <code>string item_type = 2;</code>
+     * <code>string item_type = 2 [(.services.options.optional) = true];</code>
      * @return The bytes for itemType.
      */
     @java.lang.Override
@@ -4674,7 +4857,7 @@ public final class UniversalWalletOuterClass {
     }
     /**
      * <pre>
-     * Insert item request
+     * Request to insert a JSON document into a wallet
      * </pre>
      *
      * Protobuf type {@code services.universalwallet.v1.InsertItemRequest}
@@ -4834,7 +5017,7 @@ public final class UniversalWalletOuterClass {
       private java.lang.Object itemJson_ = "";
       /**
        * <pre>
-       * the document to insert as stringified json
+       * Document to insert; must be stringified JSON
        * </pre>
        *
        * <code>string item_json = 1;</code>
@@ -4854,7 +5037,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * the document to insert as stringified json
+       * Document to insert; must be stringified JSON
        * </pre>
        *
        * <code>string item_json = 1;</code>
@@ -4875,7 +5058,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * the document to insert as stringified json
+       * Document to insert; must be stringified JSON
        * </pre>
        *
        * <code>string item_json = 1;</code>
@@ -4894,7 +5077,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * the document to insert as stringified json
+       * Document to insert; must be stringified JSON
        * </pre>
        *
        * <code>string item_json = 1;</code>
@@ -4908,7 +5091,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * the document to insert as stringified json
+       * Document to insert; must be stringified JSON
        * </pre>
        *
        * <code>string item_json = 1;</code>
@@ -4930,10 +5113,10 @@ public final class UniversalWalletOuterClass {
       private java.lang.Object itemType_ = "";
       /**
        * <pre>
-       * optional item type ex. "VerifiableCredential"
+       * Item type (ex. "VerifiableCredential")
        * </pre>
        *
-       * <code>string item_type = 2;</code>
+       * <code>string item_type = 2 [(.services.options.optional) = true];</code>
        * @return The itemType.
        */
       public java.lang.String getItemType() {
@@ -4950,10 +5133,10 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * optional item type ex. "VerifiableCredential"
+       * Item type (ex. "VerifiableCredential")
        * </pre>
        *
-       * <code>string item_type = 2;</code>
+       * <code>string item_type = 2 [(.services.options.optional) = true];</code>
        * @return The bytes for itemType.
        */
       public com.google.protobuf.ByteString
@@ -4971,10 +5154,10 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * optional item type ex. "VerifiableCredential"
+       * Item type (ex. "VerifiableCredential")
        * </pre>
        *
-       * <code>string item_type = 2;</code>
+       * <code>string item_type = 2 [(.services.options.optional) = true];</code>
        * @param value The itemType to set.
        * @return This builder for chaining.
        */
@@ -4990,10 +5173,10 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * optional item type ex. "VerifiableCredential"
+       * Item type (ex. "VerifiableCredential")
        * </pre>
        *
-       * <code>string item_type = 2;</code>
+       * <code>string item_type = 2 [(.services.options.optional) = true];</code>
        * @return This builder for chaining.
        */
       public Builder clearItemType() {
@@ -5004,10 +5187,10 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * optional item type ex. "VerifiableCredential"
+       * Item type (ex. "VerifiableCredential")
        * </pre>
        *
-       * <code>string item_type = 2;</code>
+       * <code>string item_type = 2 [(.services.options.optional) = true];</code>
        * @param value The bytes for itemType to set.
        * @return This builder for chaining.
        */
@@ -5081,7 +5264,7 @@ public final class UniversalWalletOuterClass {
 
     /**
      * <pre>
-     * The item identifier of the inserted record
+     * ID of item inserted into wallet
      * </pre>
      *
      * <code>string item_id = 2;</code>
@@ -5090,7 +5273,7 @@ public final class UniversalWalletOuterClass {
     java.lang.String getItemId();
     /**
      * <pre>
-     * The item identifier of the inserted record
+     * ID of item inserted into wallet
      * </pre>
      *
      * <code>string item_id = 2;</code>
@@ -5101,7 +5284,7 @@ public final class UniversalWalletOuterClass {
   }
   /**
    * <pre>
-   * Insert item response
+   * Response to `InsertItemRequest`
    * </pre>
    *
    * Protobuf type {@code services.universalwallet.v1.InsertItemResponse}
@@ -5166,6 +5349,8 @@ public final class UniversalWalletOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -5191,7 +5376,7 @@ public final class UniversalWalletOuterClass {
     private volatile java.lang.Object itemId_;
     /**
      * <pre>
-     * The item identifier of the inserted record
+     * ID of item inserted into wallet
      * </pre>
      *
      * <code>string item_id = 2;</code>
@@ -5212,7 +5397,7 @@ public final class UniversalWalletOuterClass {
     }
     /**
      * <pre>
-     * The item identifier of the inserted record
+     * ID of item inserted into wallet
      * </pre>
      *
      * <code>string item_id = 2;</code>
@@ -5389,7 +5574,7 @@ public final class UniversalWalletOuterClass {
     }
     /**
      * <pre>
-     * Insert item response
+     * Response to `InsertItemRequest`
      * </pre>
      *
      * Protobuf type {@code services.universalwallet.v1.InsertItemResponse}
@@ -5542,7 +5727,7 @@ public final class UniversalWalletOuterClass {
       private java.lang.Object itemId_ = "";
       /**
        * <pre>
-       * The item identifier of the inserted record
+       * ID of item inserted into wallet
        * </pre>
        *
        * <code>string item_id = 2;</code>
@@ -5562,7 +5747,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * The item identifier of the inserted record
+       * ID of item inserted into wallet
        * </pre>
        *
        * <code>string item_id = 2;</code>
@@ -5583,7 +5768,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * The item identifier of the inserted record
+       * ID of item inserted into wallet
        * </pre>
        *
        * <code>string item_id = 2;</code>
@@ -5602,7 +5787,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * The item identifier of the inserted record
+       * ID of item inserted into wallet
        * </pre>
        *
        * <code>string item_id = 2;</code>
@@ -5616,7 +5801,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * The item identifier of the inserted record
+       * ID of item inserted into wallet
        * </pre>
        *
        * <code>string item_id = 2;</code>
@@ -5693,7 +5878,7 @@ public final class UniversalWalletOuterClass {
 
     /**
      * <pre>
-     * item identifier of the record to delete
+     * ID of item to delete
      * </pre>
      *
      * <code>string item_id = 1;</code>
@@ -5702,7 +5887,7 @@ public final class UniversalWalletOuterClass {
     java.lang.String getItemId();
     /**
      * <pre>
-     * item identifier of the record to delete
+     * ID of item to delete
      * </pre>
      *
      * <code>string item_id = 1;</code>
@@ -5713,7 +5898,7 @@ public final class UniversalWalletOuterClass {
   }
   /**
    * <pre>
-   * Delete item request
+   * Request to delete an item in a wallet
    * </pre>
    *
    * Protobuf type {@code services.universalwallet.v1.DeleteItemRequest}
@@ -5778,6 +5963,8 @@ public final class UniversalWalletOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -5803,7 +5990,7 @@ public final class UniversalWalletOuterClass {
     private volatile java.lang.Object itemId_;
     /**
      * <pre>
-     * item identifier of the record to delete
+     * ID of item to delete
      * </pre>
      *
      * <code>string item_id = 1;</code>
@@ -5824,7 +6011,7 @@ public final class UniversalWalletOuterClass {
     }
     /**
      * <pre>
-     * item identifier of the record to delete
+     * ID of item to delete
      * </pre>
      *
      * <code>string item_id = 1;</code>
@@ -6001,7 +6188,7 @@ public final class UniversalWalletOuterClass {
     }
     /**
      * <pre>
-     * Delete item request
+     * Request to delete an item in a wallet
      * </pre>
      *
      * Protobuf type {@code services.universalwallet.v1.DeleteItemRequest}
@@ -6154,7 +6341,7 @@ public final class UniversalWalletOuterClass {
       private java.lang.Object itemId_ = "";
       /**
        * <pre>
-       * item identifier of the record to delete
+       * ID of item to delete
        * </pre>
        *
        * <code>string item_id = 1;</code>
@@ -6174,7 +6361,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * item identifier of the record to delete
+       * ID of item to delete
        * </pre>
        *
        * <code>string item_id = 1;</code>
@@ -6195,7 +6382,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * item identifier of the record to delete
+       * ID of item to delete
        * </pre>
        *
        * <code>string item_id = 1;</code>
@@ -6214,7 +6401,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * item identifier of the record to delete
+       * ID of item to delete
        * </pre>
        *
        * <code>string item_id = 1;</code>
@@ -6228,7 +6415,7 @@ public final class UniversalWalletOuterClass {
       }
       /**
        * <pre>
-       * item identifier of the record to delete
+       * ID of item to delete
        * </pre>
        *
        * <code>string item_id = 1;</code>
@@ -6305,7 +6492,7 @@ public final class UniversalWalletOuterClass {
   }
   /**
    * <pre>
-   * Delete item response
+   * Response to `DeleteItemRequest`
    * </pre>
    *
    * Protobuf type {@code services.universalwallet.v1.DeleteItemResponse}
@@ -6363,6 +6550,8 @@ public final class UniversalWalletOuterClass {
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
@@ -6530,7 +6719,7 @@ public final class UniversalWalletOuterClass {
     }
     /**
      * <pre>
-     * Delete item response
+     * Response to `DeleteItemRequest`
      * </pre>
      *
      * Protobuf type {@code services.universalwallet.v1.DeleteItemResponse}
@@ -6786,39 +6975,42 @@ public final class UniversalWalletOuterClass {
     java.lang.String[] descriptorData = {
       "\n3services/universal-wallet/v1/universal" +
       "-wallet.proto\022\033services.universalwallet." +
-      "v1\":\n\rSearchRequest\022\r\n\005query\030\001 \001(\t\022\032\n\022co" +
-      "ntinuation_token\030\002 \001(\t\"M\n\016SearchResponse" +
-      "\022\r\n\005items\030\001 \003(\t\022\020\n\010has_more\030\002 \001(\010\022\032\n\022con" +
-      "tinuation_token\030\004 \001(\t\"!\n\016GetItemRequest\022" +
-      "\017\n\007item_id\030\001 \001(\t\"7\n\017GetItemResponse\022\021\n\ti" +
-      "tem_json\030\001 \001(\t\022\021\n\titem_type\030\002 \001(\t\"7\n\021Upd" +
-      "ateItemRequest\022\017\n\007item_id\030\001 \001(\t\022\021\n\titem_" +
-      "type\030\002 \001(\t\"\024\n\022UpdateItemResponse\"9\n\021Inse" +
-      "rtItemRequest\022\021\n\titem_json\030\001 \001(\t\022\021\n\titem" +
-      "_type\030\002 \001(\t\"%\n\022InsertItemResponse\022\017\n\007ite" +
-      "m_id\030\002 \001(\t\"$\n\021DeleteItemRequest\022\017\n\007item_" +
-      "id\030\001 \001(\t\"\024\n\022DeleteItemResponse2\247\004\n\017Unive" +
-      "rsalWallet\022d\n\007GetItem\022+.services.univers" +
-      "alwallet.v1.GetItemRequest\032,.services.un" +
-      "iversalwallet.v1.GetItemResponse\022a\n\006Sear" +
-      "ch\022*.services.universalwallet.v1.SearchR" +
-      "equest\032+.services.universalwallet.v1.Sea" +
-      "rchResponse\022m\n\nInsertItem\022..services.uni" +
-      "versalwallet.v1.InsertItemRequest\032/.serv" +
-      "ices.universalwallet.v1.InsertItemRespon" +
-      "se\022m\n\nUpdateItem\022..services.universalwal" +
-      "let.v1.UpdateItemRequest\032/.services.univ" +
-      "ersalwallet.v1.UpdateItemResponse\022m\n\nDel" +
-      "eteItem\022..services.universalwallet.v1.De" +
-      "leteItemRequest\032/.services.universalwall" +
-      "et.v1.DeleteItemResponseBf\n#trinsic.serv" +
-      "ices.universalwallet.v1Z\031github.com/trin" +
-      "sic-id/sdk\252\002#Trinsic.Services.UniversalW" +
-      "allet.V1b\006proto3"
+      "v1\032$services/options/field-options.proto" +
+      "\"@\n\rSearchRequest\022\r\n\005query\030\001 \001(\t\022 \n\022cont" +
+      "inuation_token\030\002 \001(\tB\004\200\246\035\001\"M\n\016SearchResp" +
+      "onse\022\r\n\005items\030\001 \003(\t\022\020\n\010has_more\030\002 \001(\010\022\032\n" +
+      "\022continuation_token\030\004 \001(\t\"!\n\016GetItemRequ" +
+      "est\022\017\n\007item_id\030\001 \001(\t\"7\n\017GetItemResponse\022" +
+      "\021\n\titem_json\030\001 \001(\t\022\021\n\titem_type\030\002 \001(\t\"=\n" +
+      "\021UpdateItemRequest\022\017\n\007item_id\030\001 \001(\t\022\027\n\ti" +
+      "tem_type\030\002 \001(\tB\004\200\246\035\001\"\024\n\022UpdateItemRespon" +
+      "se\"?\n\021InsertItemRequest\022\021\n\titem_json\030\001 \001" +
+      "(\t\022\027\n\titem_type\030\002 \001(\tB\004\200\246\035\001\"%\n\022InsertIte" +
+      "mResponse\022\017\n\007item_id\030\002 \001(\t\"$\n\021DeleteItem" +
+      "Request\022\017\n\007item_id\030\001 \001(\t\"\024\n\022DeleteItemRe" +
+      "sponse2\247\004\n\017UniversalWallet\022d\n\007GetItem\022+." +
+      "services.universalwallet.v1.GetItemReque" +
+      "st\032,.services.universalwallet.v1.GetItem" +
+      "Response\022a\n\006Search\022*.services.universalw" +
+      "allet.v1.SearchRequest\032+.services.univer" +
+      "salwallet.v1.SearchResponse\022m\n\nInsertIte" +
+      "m\022..services.universalwallet.v1.InsertIt" +
+      "emRequest\032/.services.universalwallet.v1." +
+      "InsertItemResponse\022m\n\nUpdateItem\022..servi" +
+      "ces.universalwallet.v1.UpdateItemRequest" +
+      "\032/.services.universalwallet.v1.UpdateIte" +
+      "mResponse\022m\n\nDeleteItem\022..services.unive" +
+      "rsalwallet.v1.DeleteItemRequest\032/.servic" +
+      "es.universalwallet.v1.DeleteItemResponse" +
+      "By\n#trinsic.services.universalwallet.v1Z" +
+      ",github.com/trinsic-id/sdk/universalwall" +
+      "et/v1\252\002#Trinsic.Services.UniversalWallet" +
+      ".V1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          trinsic.services.protobuf.options.FieldOptions.getDescriptor(),
         });
     internal_static_services_universalwallet_v1_SearchRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -6880,6 +7072,12 @@ public final class UniversalWalletOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_services_universalwallet_v1_DeleteItemResponse_descriptor,
         new java.lang.String[] { });
+    com.google.protobuf.ExtensionRegistry registry =
+        com.google.protobuf.ExtensionRegistry.newInstance();
+    registry.add(trinsic.services.protobuf.options.FieldOptions.optional);
+    com.google.protobuf.Descriptors.FileDescriptor
+        .internalUpdateFileDescriptor(descriptor, registry);
+    trinsic.services.protobuf.options.FieldOptions.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

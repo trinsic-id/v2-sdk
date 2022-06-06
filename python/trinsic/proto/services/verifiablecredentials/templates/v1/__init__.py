@@ -10,6 +10,8 @@ import grpclib
 
 
 class FieldType(betterproto.Enum):
+    """Valid types for credential fields"""
+
     STRING = 0
     NUMBER = 1
     BOOL = 2
@@ -18,107 +20,172 @@ class FieldType(betterproto.Enum):
 
 @dataclass(eq=False, repr=False)
 class GetCredentialTemplateRequest(betterproto.Message):
+    """Request to fetch a template by ID"""
+
+    # ID of template to fetch
     id: str = betterproto.string_field(1)
 
 
 @dataclass(eq=False, repr=False)
 class GetCredentialTemplateResponse(betterproto.Message):
+    """Response to `GetCredentialTemplateRequest`"""
+
+    # Template fetched by ID
     template: "TemplateData" = betterproto.message_field(1)
 
 
 @dataclass(eq=False, repr=False)
 class SearchCredentialTemplatesRequest(betterproto.Message):
+    """Request to search templates using a SQL query"""
+
+    # SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
     query: str = betterproto.string_field(1)
+    # Token provided by previous `SearchCredentialTemplatesResponse` if more data
+    # is available for query
     continuation_token: str = betterproto.string_field(2)
 
 
 @dataclass(eq=False, repr=False)
 class SearchCredentialTemplatesResponse(betterproto.Message):
+    """Response to `SearchCredentialTemplatesRequest`"""
+
+    # Raw JSON data returned from query
     items_json: str = betterproto.string_field(1)
+    # Whether more results are available for this query via `continuation_token`
     has_more: bool = betterproto.bool_field(2)
-    # int32 count = 3; - not populated nor valid
+    # Count of items in `items_json` int32 count = 3; unpopulated and unused
+    # Token to fetch next set of results via `SearchCredentialTemplatesRequest`
     continuation_token: str = betterproto.string_field(4)
 
 
 @dataclass(eq=False, repr=False)
 class ListCredentialTemplatesRequest(betterproto.Message):
+    """Request to list templates using a SQL query"""
+
+    # SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
     query: str = betterproto.string_field(1)
+    # Token provided by previous `ListCredentialTemplatesResponse` if more data
+    # is available for query
     continuation_token: str = betterproto.string_field(2)
 
 
 @dataclass(eq=False, repr=False)
 class ListCredentialTemplatesResponse(betterproto.Message):
+    """Response to `ListCredentialTemplatesRequest`"""
+
+    # Templates found by query
     templates: List["TemplateData"] = betterproto.message_field(1)
+    # Whether more results are available for this query via `continuation_token`
     has_more_results: bool = betterproto.bool_field(2)
+    # Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
     continuation_token: str = betterproto.string_field(3)
 
 
 @dataclass(eq=False, repr=False)
 class DeleteCredentialTemplateRequest(betterproto.Message):
+    """Request to delete a template by ID"""
+
+    # ID of template to delete
     id: str = betterproto.string_field(1)
 
 
 @dataclass(eq=False, repr=False)
 class DeleteCredentialTemplateResponse(betterproto.Message):
+    """Response to `DeleteCredentialTemplateRequest`"""
+
     pass
 
 
 @dataclass(eq=False, repr=False)
 class CreateCredentialTemplateRequest(betterproto.Message):
-    """Request to create new template"""
+    """Request to create a new template"""
 
+    # Name of new template
     name: str = betterproto.string_field(1)
+    # Fields which compose the template
     fields: Dict[str, "TemplateField"] = betterproto.map_field(
         2, betterproto.TYPE_STRING, betterproto.TYPE_MESSAGE
     )
+    # Whether credentials may be issued against this template which have fields
+    # not specified in `fields`
     allow_additional_fields: bool = betterproto.bool_field(3)
 
 
 @dataclass(eq=False, repr=False)
 class CreateCredentialTemplateResponse(betterproto.Message):
+    """Response to `CreateCredentialTemplateRequest`"""
+
+    # Created template
     data: "TemplateData" = betterproto.message_field(1)
 
 
 @dataclass(eq=False, repr=False)
 class TemplateField(betterproto.Message):
+    """A field defined in a template"""
+
+    # Human-readable description of the field
     description: str = betterproto.string_field(2)
+    # Whether this field may be omitted when a credential is issued against the
+    # template
     optional: bool = betterproto.bool_field(3)
+    # The type of the field
     type: "FieldType" = betterproto.enum_field(4)
 
 
 @dataclass(eq=False, repr=False)
 class GetTemplateRequest(betterproto.Message):
+    """Unused"""
+
     id: str = betterproto.string_field(1)
 
 
 @dataclass(eq=False, repr=False)
 class GetTemplateResponse(betterproto.Message):
+    """Unused"""
+
     data: "TemplateData" = betterproto.message_field(1)
 
 
 @dataclass(eq=False, repr=False)
 class ListTemplatesRequest(betterproto.Message):
+    """Unused"""
+
     pass
 
 
 @dataclass(eq=False, repr=False)
 class ListTemplatesResponse(betterproto.Message):
+    """Unused"""
+
     templates: List["TemplateData"] = betterproto.message_field(1)
 
 
 @dataclass(eq=False, repr=False)
 class TemplateData(betterproto.Message):
+    """Credential Template"""
+
+    # Template ID
     id: str = betterproto.string_field(1)
+    # Template name
     name: str = betterproto.string_field(2)
+    # Template version number
     version: int = betterproto.int32_field(3)
+    # Fields defined for the template
     fields: Dict[str, "TemplateField"] = betterproto.map_field(
         4, betterproto.TYPE_STRING, betterproto.TYPE_MESSAGE
     )
+    # Whether credentials issued against this template may  contain fields not
+    # defined by template
     allow_additional_fields: bool = betterproto.bool_field(5)
+    # URI pointing to template JSON schema document
     schema_uri: str = betterproto.string_field(6)
+    # URI pointing to template JSON-LD context document
     context_uri: str = betterproto.string_field(7)
+    # ID of ecosystem in which template resides
     ecosystem_id: str = betterproto.string_field(8)
+    # Template type (`VerifiableCredential`)
     type: str = betterproto.string_field(9)
+    # ID of template creator
     created_by: str = betterproto.string_field(10)
 
 

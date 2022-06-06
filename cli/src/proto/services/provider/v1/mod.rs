@@ -13,10 +13,13 @@ pub struct Invite {
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct InviteRequest {
+    /// Type of participant being invited (individual/organization)
     #[prost(enumeration = "ParticipantType", tag = "1")]
     pub participant: i32,
+    /// Description of invitation
     #[prost(string, tag = "2")]
     pub description: ::prost::alloc::string::String,
+    /// Account details of invitee
     #[prost(message, optional, tag = "3")]
     pub details: ::core::option::Option<super::super::account::v1::AccountDetails>,
 }
@@ -27,6 +30,7 @@ pub mod invite_request {
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct InviteResponse {
+    /// ID of created invitation
     #[prost(string, tag = "10")]
     pub invitation_id: ::prost::alloc::string::String,
     /// Invitation Code that must be passed with the account 'SignIn' request
@@ -40,31 +44,22 @@ pub struct InviteResponse {
 /// `Onboard` method call
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct InvitationStatusRequest {
+    /// ID of invitation
     #[prost(string, tag = "1")]
     pub invitation_id: ::prost::alloc::string::String,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct InvitationStatusResponse {
+    /// Status of invitation
     #[prost(enumeration = "invitation_status_response::Status", tag = "1")]
     pub status: i32,
+    /// Human-readable string with details about invitation status
     #[prost(string, tag = "2")]
     pub status_details: ::prost::alloc::string::String,
 }
 /// Nested message and enum types in `InvitationStatusResponse`.
 pub mod invitation_status_response {
-    #[derive(
-        ::serde::Serialize,
-        ::serde::Deserialize,
-        Clone,
-        Copy,
-        Debug,
-        PartialEq,
-        Eq,
-        Hash,
-        PartialOrd,
-        Ord,
-        ::prost::Enumeration,
-    )]
+    #[derive(::serde::Serialize, ::serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
     #[repr(i32)]
     pub enum Status {
         /// Onboarding resulted in error
@@ -95,12 +90,10 @@ pub struct CreateEcosystemRequest {
     /// Allowed characters are lowercase letters, numbers, underscore and hyphen.
     #[prost(string, tag = "1")]
     pub name: ::prost::alloc::string::String,
-    /// Ecosystem description.
-    /// This field is optional.
+    /// Ecosystem description
     #[prost(string, tag = "2")]
     pub description: ::prost::alloc::string::String,
-    /// External URL associated with your organization or ecosystem entity.
-    /// This field is optional
+    /// External URL associated with your organization or ecosystem entity
     #[prost(string, tag = "3")]
     pub uri: ::prost::alloc::string::String,
     /// The account details of the owner of the ecosystem
@@ -116,16 +109,13 @@ pub struct CreateEcosystemResponse {
     #[prost(message, optional, tag = "2")]
     pub profile: ::core::option::Option<super::super::account::v1::AccountProfile>,
     /// Indicates if confirmation of account is required.
-    /// This settings is configured globally by the server administrator.
-    #[prost(
-        enumeration = "super::super::account::v1::ConfirmationMethod",
-        tag = "3"
-    )]
+    /// This setting is configured globally by the server administrator.
+    #[prost(enumeration = "super::super::account::v1::ConfirmationMethod", tag = "3")]
     pub confirmation_method: i32,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct GenerateTokenRequest {
-    /// Optional description to identify this token
+    /// Description to identify this token
     #[prost(string, tag = "1")]
     pub description: ::prost::alloc::string::String,
 }
@@ -145,19 +135,7 @@ pub struct GetOberonKeyResponse {
     #[prost(string, tag = "1")]
     pub key: ::prost::alloc::string::String,
 }
-#[derive(
-    ::serde::Serialize,
-    ::serde::Deserialize,
-    Clone,
-    Copy,
-    Debug,
-    PartialEq,
-    Eq,
-    Hash,
-    PartialOrd,
-    Ord,
-    ::prost::Enumeration,
-)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ParticipantType {
     Individual = 0,
@@ -193,20 +171,14 @@ pub mod provider_client {
             let inner = tonic::client::Grpc::new(inner);
             Self { inner }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> ProviderClient<InterceptedService<T, F>>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> ProviderClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
             T: tonic::codegen::Service<
                 http::Request<tonic::body::BoxBody>,
-                Response = http::Response<
-                    <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
-                >,
+                Response = http::Response<<T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody>,
             >,
-            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
-                Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error: Into<StdError> + Send + Sync,
         {
             ProviderClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -228,16 +200,12 @@ pub mod provider_client {
             &mut self,
             request: impl tonic::IntoRequest<super::CreateEcosystemRequest>,
         ) -> Result<tonic::Response<super::CreateEcosystemResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.provider.v1.Provider/CreateEcosystem",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/CreateEcosystem");
             self.inner.unary(request.into_request(), path, codec).await
         }
         #[doc = " Generates an unprotected authentication token that can be used to"]
@@ -246,16 +214,12 @@ pub mod provider_client {
             &mut self,
             request: impl tonic::IntoRequest<super::GenerateTokenRequest>,
         ) -> Result<tonic::Response<super::GenerateTokenResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.provider.v1.Provider/GenerateToken",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/GenerateToken");
             self.inner.unary(request.into_request(), path, codec).await
         }
         #[doc = " Invite a user to the ecosystem"]
@@ -263,15 +227,12 @@ pub mod provider_client {
             &mut self,
             request: impl tonic::IntoRequest<super::InviteRequest>,
         ) -> Result<tonic::Response<super::InviteResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path =
-                http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/Invite");
+            let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/Invite");
             self.inner.unary(request.into_request(), path, codec).await
         }
         #[doc = " Check the invitation status"]
@@ -279,16 +240,12 @@ pub mod provider_client {
             &mut self,
             request: impl tonic::IntoRequest<super::InvitationStatusRequest>,
         ) -> Result<tonic::Response<super::InvitationStatusResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static(
-                "/services.provider.v1.Provider/InvitationStatus",
-            );
+            let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/InvitationStatus");
             self.inner.unary(request.into_request(), path, codec).await
         }
         #[doc = " Returns the public key being used to create/verify oberon tokens"]
@@ -296,15 +253,12 @@ pub mod provider_client {
             &mut self,
             request: impl tonic::IntoRequest<super::GetOberonKeyRequest>,
         ) -> Result<tonic::Response<super::GetOberonKeyResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path =
-                http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/GetOberonKey");
+            let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/GetOberonKey");
             self.inner.unary(request.into_request(), path, codec).await
         }
     }

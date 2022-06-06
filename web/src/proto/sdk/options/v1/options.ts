@@ -2,17 +2,17 @@
 import Long from "long";
 import * as _m0 from "protobufjs/minimal";
 
-/** service options */
+/** Configuration for Trinsic SDK Services */
 export interface ServiceOptions {
-  /** service endpoint */
+  /** Trinsic API endpoint; defaults to `prod.trinsic.cloud` */
   serverEndpoint: string;
-  /** service port */
+  /** Trinsic API port; defaults to `443` */
   serverPort: number;
-  /** indicates if tls is used */
+  /** Whether TLS is enabled between SDK and Trinsic API; defaults to `true` */
   serverUseTls: boolean;
-  /** default auth token for oberon security scheme */
+  /** Authentication token for SDK calls; defaults to empty string (unauthenticated) */
   authToken: string;
-  /** ecosystem to use with endpoints that require it */
+  /** Default ecosystem ID to use for various SDK calls; defaults to `default` */
   defaultEcosystem: string;
 }
 

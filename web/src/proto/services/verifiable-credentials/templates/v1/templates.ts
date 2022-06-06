@@ -2,6 +2,7 @@
 import Long from "long";
 import * as _m0 from "protobufjs/minimal";
 
+/** Valid types for credential fields */
 export enum FieldType {
   STRING = 0,
   NUMBER = 1,
@@ -46,49 +47,83 @@ export function fieldTypeToJSON(object: FieldType): string {
   }
 }
 
+/** Request to fetch a template by ID */
 export interface GetCredentialTemplateRequest {
+  /** ID of template to fetch */
   id: string;
 }
 
+/** Response to `GetCredentialTemplateRequest` */
 export interface GetCredentialTemplateResponse {
+  /** Template fetched by ID */
   template: TemplateData | undefined;
 }
 
+/** Request to search templates using a SQL query */
 export interface SearchCredentialTemplatesRequest {
-  /** SELECT * FROM c WHERE c.name = 'Diploma' */
+  /** SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'` */
   query: string;
+  /**
+   * Token provided by previous `SearchCredentialTemplatesResponse`
+   * if more data is available for query
+   */
   continuationToken: string;
 }
 
+/** Response to `SearchCredentialTemplatesRequest` */
 export interface SearchCredentialTemplatesResponse {
+  /** Raw JSON data returned from query */
   itemsJson: string;
+  /** Whether more results are available for this query via `continuation_token` */
   hasMore: boolean;
-  count: number;
+  /**
+   * Count of items in `items_json`
+   * int32 count = 3; unpopulated and unused
+   * Token to fetch next set of results via `SearchCredentialTemplatesRequest`
+   */
   continuationToken: string;
 }
 
+/** Request to list templates using a SQL query */
 export interface ListCredentialTemplatesRequest {
-  /** SELECT * FROM c WHERE c.name = 'Diploma' */
+  /** SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'` */
   query: string;
+  /**
+   * Token provided by previous `ListCredentialTemplatesResponse`
+   * if more data is available for query
+   */
   continuationToken: string;
 }
 
+/** Response to `ListCredentialTemplatesRequest` */
 export interface ListCredentialTemplatesResponse {
+  /** Templates found by query */
   templates: TemplateData[];
+  /** Whether more results are available for this query via `continuation_token` */
   hasMoreResults: boolean;
+  /** Token to fetch next set of resuts via `ListCredentialTemplatesRequest` */
   continuationToken: string;
 }
 
+/** Request to delete a template by ID */
 export interface DeleteCredentialTemplateRequest {
+  /** ID of template to delete */
   id: string;
 }
 
+/** Response to `DeleteCredentialTemplateRequest` */
 export interface DeleteCredentialTemplateResponse {}
 
-/** Request to create new template */
+/** Request to create a new template */
 export interface CreateCredentialTemplateRequest {
+  /** Name of new template */
   name: string;
+  /** Fields which compose the template */
   fields: { [key: string]: TemplateField };
+  /**
+   * Whether credentials may be issued against this template which have fields
+   * not specified in `fields`
+   */
   allowAdditionalFields: boolean;
 }
 
@@ -97,40 +132,64 @@ export interface CreateCredentialTemplateRequest_FieldsEntry {
   value: TemplateField | undefined;
 }
 
+/** Response to `CreateCredentialTemplateRequest` */
 export interface CreateCredentialTemplateResponse {
+  /** Created template */
   data: TemplateData | undefined;
 }
 
+/** A field defined in a template */
 export interface TemplateField {
+  /** Human-readable description of the field */
   description: string;
+  /** Whether this field may be omitted when a credential is issued against the template */
   optional: boolean;
+  /** The type of the field */
   type: FieldType;
 }
 
+/** Unused */
 export interface GetTemplateRequest {
   id: string;
 }
 
+/** Unused */
 export interface GetTemplateResponse {
   data: TemplateData | undefined;
 }
 
+/** Unused */
 export interface ListTemplatesRequest {}
 
+/** Unused */
 export interface ListTemplatesResponse {
   templates: TemplateData[];
 }
 
+/** Credential Template */
 export interface TemplateData {
+  /** Template ID */
   id: string;
+  /** Template name */
   name: string;
+  /** Template version number */
   version: number;
+  /** Fields defined for the template */
   fields: { [key: string]: TemplateField };
+  /**
+   * Whether credentials issued against this template may
+   * contain fields not defined by template
+   */
   allowAdditionalFields: boolean;
+  /** URI pointing to template JSON schema document */
   schemaUri: string;
+  /** URI pointing to template JSON-LD context document */
   contextUri: string;
+  /** ID of ecosystem in which template resides */
   ecosystemId: string;
+  /** Template type (`VerifiableCredential`) */
   type: string;
+  /** ID of template creator */
   createdBy: string;
 }
 
@@ -331,7 +390,7 @@ export const SearchCredentialTemplatesRequest = {
 };
 
 function createBaseSearchCredentialTemplatesResponse(): SearchCredentialTemplatesResponse {
-  return { itemsJson: "", hasMore: false, count: 0, continuationToken: "" };
+  return { itemsJson: "", hasMore: false, continuationToken: "" };
 }
 
 export const SearchCredentialTemplatesResponse = {
@@ -344,9 +403,6 @@ export const SearchCredentialTemplatesResponse = {
     }
     if (message.hasMore === true) {
       writer.uint32(16).bool(message.hasMore);
-    }
-    if (message.count !== 0) {
-      writer.uint32(24).int32(message.count);
     }
     if (message.continuationToken !== "") {
       writer.uint32(34).string(message.continuationToken);
@@ -370,9 +426,6 @@ export const SearchCredentialTemplatesResponse = {
         case 2:
           message.hasMore = reader.bool();
           break;
-        case 3:
-          message.count = reader.int32();
-          break;
         case 4:
           message.continuationToken = reader.string();
           break;
@@ -388,7 +441,6 @@ export const SearchCredentialTemplatesResponse = {
     return {
       itemsJson: isSet(object.itemsJson) ? String(object.itemsJson) : "",
       hasMore: isSet(object.hasMore) ? Boolean(object.hasMore) : false,
-      count: isSet(object.count) ? Number(object.count) : 0,
       continuationToken: isSet(object.continuationToken)
         ? String(object.continuationToken)
         : "",
@@ -399,7 +451,6 @@ export const SearchCredentialTemplatesResponse = {
     const obj: any = {};
     message.itemsJson !== undefined && (obj.itemsJson = message.itemsJson);
     message.hasMore !== undefined && (obj.hasMore = message.hasMore);
-    message.count !== undefined && (obj.count = Math.round(message.count));
     message.continuationToken !== undefined &&
       (obj.continuationToken = message.continuationToken);
     return obj;
@@ -411,7 +462,6 @@ export const SearchCredentialTemplatesResponse = {
     const message = createBaseSearchCredentialTemplatesResponse();
     message.itemsJson = object.itemsJson ?? "";
     message.hasMore = object.hasMore ?? false;
-    message.count = object.count ?? 0;
     message.continuationToken = object.continuationToken ?? "";
     return message;
   },

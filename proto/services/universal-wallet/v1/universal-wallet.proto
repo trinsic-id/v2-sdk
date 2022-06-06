@@ -2,76 +2,88 @@ syntax = "proto3";
 package services.universalwallet.v1;
 
 option csharp_namespace = "Trinsic.Services.UniversalWallet.V1";
-option go_package = "github.com/trinsic-id/sdk";
+option go_package = "github.com/trinsic-id/sdk/universalwallet/v1";
 option java_package = "trinsic.services.universalwallet.v1";
 
-// Search request object
+import "services/options/field-options.proto";
+
+// Search
+
+// Request to search items in wallet
 message SearchRequest {
+    // SQL Query to execute against items in wallet
     string query = 1;
-    string continuation_token = 2;
+    // Token provided by previous `SearchResponse`
+    // if more data is available for query
+    string continuation_token = 2 [(options.optional)=true];
 }
 
-// Search response object
+// Response to `SearchRequest`
 message SearchResponse {
+    // Array of query results, as JSON strings
     repeated string items = 1;
+    // Whether more results are available for this query via `continuation_token`
     bool has_more = 2;
+
     // int32 count = 3;
+
+    // Token to fetch next set of results via `SearchRequest`
     string continuation_token = 4;
 }
 
 // Get Item
 
-// Get item request object
+// Request to fetch an item from wallet
 message GetItemRequest {
-    // The item identifier
+    // ID of item in wallet
     string item_id = 1;
 }
 
-// Get item response object
+// Response to `GetItemRequest`
 message GetItemResponse {
-    // The item data represented as stringified JSON
+    // Item data as a JSON string
     string item_json = 1;
-    // User set item type that described the content of this item
+    // Type of item specified when item was inserted into wallet
     string item_type = 2;
 }
 
 // Update Item
 
-// Update item request object
+// Request to update item in wallet
 message UpdateItemRequest {
-    // The item identifier
+    // ID of item in wallet
     string item_id = 1;
-    // The item type that described the content of this item
-    string item_type = 2;
+    // Item type (ex. "VerifiableCredential")
+    string item_type = 2 [(options.optional)=true];
 }
 
-// Update item response object
+// Response to `UpdateItemRequest`
 message UpdateItemResponse {
 }
 
 // InsertItem
 
-// Insert item request
+// Request to insert a JSON document into a wallet
 message InsertItemRequest {
-    // the document to insert as stringified json
+    // Document to insert; must be stringified JSON
     string item_json = 1;
-    // optional item type ex. "VerifiableCredential"
-    string item_type = 2;
+    // Item type (ex. "VerifiableCredential")
+    string item_type = 2 [(options.optional)=true];
 }
 
-// Insert item response
+// Response to `InsertItemRequest`
 message InsertItemResponse {
-    // The item identifier of the inserted record
+    // ID of item inserted into wallet
     string item_id = 2;
 }
 
-// Delete item request
+// Request to delete an item in a wallet
 message DeleteItemRequest {
-    // item identifier of the record to delete
+    // ID of item to delete
     string item_id = 1;
 }
 
-// Delete item response
+// Response to `DeleteItemRequest`
 message DeleteItemResponse {
 }
 
@@ -82,7 +94,7 @@ service UniversalWallet {
     rpc Search(SearchRequest) returns (SearchResponse);
     // Insert an item into the wallet
     rpc InsertItem(InsertItemRequest) returns (InsertItemResponse);
-    // Insert an item into the wallet
+    // Update an item in the wallet
     rpc UpdateItem(UpdateItemRequest) returns (UpdateItemResponse);
     // Delete an item from the wallet permanently
     rpc DeleteItem(DeleteItemRequest) returns (DeleteItemResponse);

@@ -1,28 +1,27 @@
-/// Request for creating new account
+/// Request for creating or signing into an account
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct SignInRequest {
     /// Account registration details
     #[prost(message, optional, tag = "1")]
     pub details: ::core::option::Option<AccountDetails>,
     /// Invitation code associated with this registration
-    /// This field is optional.
     #[prost(string, tag = "2")]
     pub invitation_code: ::prost::alloc::string::String,
-    /// EcosystemId to sign in. This field is optional
-    /// and will be ignored if invitation_code is passed
+    /// ID of Ecosystem to sign into.
+    /// Ignored if `invitation_code` is passed
     #[prost(string, tag = "3")]
     pub ecosystem_id: ::prost::alloc::string::String,
 }
-/// Account Registration Details
+/// Account registration details
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct AccountDetails {
-    /// Account name (optional)
+    /// Account name
     #[prost(string, tag = "1")]
     pub name: ::prost::alloc::string::String,
-    /// Email account (required)
+    /// Email account
     #[prost(string, tag = "2")]
     pub email: ::prost::alloc::string::String,
-    /// SMS number including country code (optional)
+    /// SMS number including country code
     #[prost(string, tag = "3")]
     pub sms: ::prost::alloc::string::String,
 }
@@ -75,27 +74,33 @@ pub struct TokenProtection {
     #[prost(enumeration = "ConfirmationMethod", tag = "2")]
     pub method: i32,
 }
+/// Request for information about the account used to make the request
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct InfoRequest {}
+/// Information about the account used to make the request
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct InfoResponse {
     /// The account details associated with
     /// the calling request context
     #[prost(message, optional, tag = "1")]
     pub details: ::core::option::Option<AccountDetails>,
-    /// any ecosystems the account has access to
+    /// Use `ecosystem_id` instead
     #[deprecated]
     #[prost(message, repeated, tag = "2")]
     pub ecosystems: ::prost::alloc::vec::Vec<AccountEcosystem>,
-    /// The wallet id associated with this account
+    /// The wallet ID associated with this account
     #[prost(string, tag = "3")]
     pub wallet_id: ::prost::alloc::string::String,
-    /// The device id associated with this account
+    /// The device ID associated with this account session
     #[prost(string, tag = "4")]
     pub device_id: ::prost::alloc::string::String,
-    /// The ecosystem id associated with this account
+    /// The ecosystem ID within which this account resides
     #[prost(string, tag = "5")]
     pub ecosystem_id: ::prost::alloc::string::String,
+    /// The public DID associated with this account.
+    /// This DID is used as "issuer" when signing verifiable credentials
+    #[prost(string, tag = "6")]
+    pub public_did: ::prost::alloc::string::String,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct ListDevicesRequest {}
@@ -117,19 +122,7 @@ pub struct AccountEcosystem {
     pub uri: ::prost::alloc::string::String,
 }
 /// Confirmation method type for two-factor workflows
-#[derive(
-    ::serde::Serialize,
-    ::serde::Deserialize,
-    Clone,
-    Copy,
-    Debug,
-    PartialEq,
-    Eq,
-    Hash,
-    PartialOrd,
-    Ord,
-    ::prost::Enumeration,
-)]
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ConfirmationMethod {
     /// No confirmation required
@@ -173,20 +166,14 @@ pub mod account_client {
             let inner = tonic::client::Grpc::new(inner);
             Self { inner }
         }
-        pub fn with_interceptor<F>(
-            inner: T,
-            interceptor: F,
-        ) -> AccountClient<InterceptedService<T, F>>
+        pub fn with_interceptor<F>(inner: T, interceptor: F) -> AccountClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
             T: tonic::codegen::Service<
                 http::Request<tonic::body::BoxBody>,
-                Response = http::Response<
-                    <T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody,
-                >,
+                Response = http::Response<<T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody>,
             >,
-            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error:
-                Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error: Into<StdError> + Send + Sync,
         {
             AccountClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -208,12 +195,10 @@ pub mod account_client {
             &mut self,
             request: impl tonic::IntoRequest<super::SignInRequest>,
         ) -> Result<tonic::Response<super::SignInResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/services.account.v1.Account/SignIn");
             self.inner.unary(request.into_request(), path, codec).await
@@ -223,12 +208,10 @@ pub mod account_client {
             &mut self,
             request: impl tonic::IntoRequest<super::InfoRequest>,
         ) -> Result<tonic::Response<super::InfoResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/services.account.v1.Account/Info");
             self.inner.unary(request.into_request(), path, codec).await
@@ -238,15 +221,12 @@ pub mod account_client {
             &mut self,
             request: impl tonic::IntoRequest<super::ListDevicesRequest>,
         ) -> Result<tonic::Response<super::ListDevicesResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path =
-                http::uri::PathAndQuery::from_static("/services.account.v1.Account/ListDevices");
+            let path = http::uri::PathAndQuery::from_static("/services.account.v1.Account/ListDevices");
             self.inner.unary(request.into_request(), path, codec).await
         }
         #[doc = " Revoke device access to the account's cloud wallet"]
@@ -254,15 +234,12 @@ pub mod account_client {
             &mut self,
             request: impl tonic::IntoRequest<super::RevokeDeviceRequest>,
         ) -> Result<tonic::Response<super::RevokeDeviceResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(
-                    tonic::Code::Unknown,
-                    format!("Service was not ready: {}", e.into()),
-                )
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path =
-                http::uri::PathAndQuery::from_static("/services.account.v1.Account/RevokeDevice");
+            let path = http::uri::PathAndQuery::from_static("/services.account.v1.Account/RevokeDevice");
             self.inner.unary(request.into_request(), path, codec).await
         }
     }

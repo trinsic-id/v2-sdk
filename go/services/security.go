@@ -3,17 +3,19 @@ package services
 import (
 	"encoding/base64"
 	"fmt"
+	account "github.com/trinsic-id/sdk/go/proto/account/v1"
+	commonV1 "github.com/trinsic-id/sdk/go/proto/common/v1"
 	"time"
 
 	"github.com/trinsic-id/okapi/go/okapi"
 	"github.com/trinsic-id/okapi/go/okapiproto"
-	sdk "github.com/trinsic-id/sdk/go/proto"
+
 	"google.golang.org/protobuf/proto"
 )
 
 // SecurityProvider defines the required functionality to provide authentication to the api
 type SecurityProvider interface {
-	GetAuthHeader(profile *sdk.AccountProfile, message proto.Message) (string, error)
+	GetAuthHeader(profile *account.AccountProfile, message proto.Message) (string, error)
 }
 
 // OberonSecurityProvider implements the SecurityProvider interface and provides oberon token functionality
@@ -21,7 +23,7 @@ type OberonSecurityProvider struct {
 }
 
 // GetAuthHeader returns an authentication header with a correctly formatted oberon token
-func (o OberonSecurityProvider) GetAuthHeader(profile *sdk.AccountProfile, message proto.Message) (string, error) {
+func (o OberonSecurityProvider) GetAuthHeader(profile *account.AccountProfile, message proto.Message) (string, error) {
 	if profile != nil && profile.Protection.Enabled {
 		return "", fmt.Errorf("the token must be unprotected before use")
 	}
@@ -36,7 +38,7 @@ func (o OberonSecurityProvider) GetAuthHeader(profile *sdk.AccountProfile, messa
 		return "", err
 	}
 	requestHash := hashResult.Digest
-	nonce := &sdk.Nonce{
+	nonce := &commonV1.Nonce{
 		Timestamp:   time.Now().UnixMilli(),
 		RequestHash: requestHash[:],
 	}

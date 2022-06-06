@@ -3,7 +3,7 @@ package trinsic.services;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.InvalidProtocolBufferException;
 import trinsic.okapi.DidException;
-import trinsic.sdk.v1.Options;
+import trinsic.sdk.options.v1.Options;
 import trinsic.services.universalwallet.v1.UniversalWalletGrpc;
 import trinsic.services.universalwallet.v1.UniversalWalletOuterClass;
 
@@ -15,6 +15,10 @@ public class WalletService extends ServiceBase {
     public WalletService(Options.ServiceOptions options) {
         super(options);
         this.stub = UniversalWalletGrpc.newFutureStub(this.getChannel());
+    }
+
+    public ListenableFuture<UniversalWalletOuterClass.SearchResponse> search() throws InvalidProtocolBufferException, DidException {
+        return search(UniversalWalletOuterClass.SearchRequest.getDefaultInstance());
     }
 
     public ListenableFuture<UniversalWalletOuterClass.SearchResponse> search(UniversalWalletOuterClass.SearchRequest request) throws InvalidProtocolBufferException, DidException {

@@ -3,8 +3,7 @@ package services
 import (
 	"context"
 	"errors"
-
-	sdk "github.com/trinsic-id/sdk/go/proto"
+	provider "github.com/trinsic-id/sdk/go/proto/provider/v1"
 )
 
 // NewProviderService returns a provider servcie with the base service configured
@@ -16,7 +15,7 @@ func NewProviderService(options *Options) (ProviderService, error) {
 	}
 	service := &providerBase{
 		Service: base,
-		client:  sdk.NewProviderClient(base.GetChannel()),
+		client:  provider.NewProviderClient(base.GetChannel()),
 	}
 
 	return service, nil
@@ -26,21 +25,21 @@ func NewProviderService(options *Options) (ProviderService, error) {
 type ProviderService interface {
 	Service
 	// InviteParticipant to the ecosystem
-	InviteParticipant(userContext context.Context, request *sdk.InviteRequest) (*sdk.InviteResponse, error)
+	InviteParticipant(userContext context.Context, request *provider.InviteRequest) (*provider.InviteResponse, error)
 	// InvitationStatus returns the status of the invitation
-	InvitationStatus(userContext context.Context, request *sdk.InvitationStatusRequest) (*sdk.InvitationStatusResponse, error)
+	InvitationStatus(userContext context.Context, request *provider.InvitationStatusRequest) (*provider.InvitationStatusResponse, error)
 	// CreateEcosystem creates a new ecosystem
-	CreateEcosystem(ctx context.Context, request *sdk.CreateEcosystemRequest) (*sdk.CreateEcosystemResponse, error)
+	CreateEcosystem(ctx context.Context, request *provider.CreateEcosystemRequest) (*provider.CreateEcosystemResponse, error)
 	// GenerateToken returns an authToken that can be used for interacting with the ecosystem
 	GenerateToken(ctx context.Context, description string) (string, error)
 }
 
 type providerBase struct {
 	Service
-	client sdk.ProviderClient
+	client provider.ProviderClient
 }
 
-func (p *providerBase) InviteParticipant(ctx context.Context, request *sdk.InviteRequest) (*sdk.InviteResponse, error) {
+func (p *providerBase) InviteParticipant(ctx context.Context, request *provider.InviteRequest) (*provider.InviteResponse, error) {
 	if request == nil || request.Details == nil || len(request.Details.Email) == 0 {
 		return nil, errors.New("must provide email to invite")
 	}
@@ -58,7 +57,7 @@ func (p *providerBase) InviteParticipant(ctx context.Context, request *sdk.Invit
 	return response, nil
 }
 
-func (p *providerBase) InvitationStatus(ctx context.Context, request *sdk.InvitationStatusRequest) (*sdk.InvitationStatusResponse, error) {
+func (p *providerBase) InvitationStatus(ctx context.Context, request *provider.InvitationStatusRequest) (*provider.InvitationStatusResponse, error) {
 	md, err := p.GetMetadataContext(ctx, request)
 	if err != nil {
 		return nil, err
@@ -72,7 +71,10 @@ func (p *providerBase) InvitationStatus(ctx context.Context, request *sdk.Invita
 	return response, nil
 }
 
-func (p *providerBase) CreateEcosystem(ctx context.Context, request *sdk.CreateEcosystemRequest) (*sdk.CreateEcosystemResponse, error) {
+func (p *providerBase) CreateEcosystem(ctx context.Context, request *provider.CreateEcosystemRequest) (*provider.CreateEcosystemResponse, error) {
+	if request == nil {
+		request = &provider.CreateEcosystemRequest{}
+	}
 	resp, err := p.client.CreateEcosystem(ctx, request)
 	if err != nil {
 		return nil, err
@@ -82,7 +84,7 @@ func (p *providerBase) CreateEcosystem(ctx context.Context, request *sdk.CreateE
 }
 
 func (p *providerBase) GenerateToken(ctx context.Context, description string) (string, error) {
-	req := &sdk.GenerateTokenRequest{Description: description}
+	req := &provider.GenerateTokenRequest{Description: description}
 
 	md, err := p.GetMetadataContext(ctx, req)
 	if err != nil {

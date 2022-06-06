@@ -8,7 +8,7 @@ import io.grpc.Metadata;
 import io.grpc.stub.MetadataUtils;
 import trinsic.TrinsicUtilities;
 import trinsic.okapi.DidException;
-import trinsic.sdk.v1.Options;
+import trinsic.sdk.options.v1.Options;
 import trinsic.security.ISecurityProvider;
 import trinsic.security.OberonSecurityProvider;
 import trinsic.services.account.v1.AccountOuterClass;
@@ -45,6 +45,10 @@ public abstract class ServiceBase {
 
     public void setProfile(String base64ProfileToken) {
         this.options = Options.ServiceOptions.newBuilder().mergeFrom(this.options).setAuthToken(base64ProfileToken).build();
+    }
+
+    public void setDefaultEcosystem(String ecosystemId) {
+        this.options = Options.ServiceOptions.newBuilder().mergeFrom(this.options).setDefaultEcosystem(ecosystemId).build();
     }
 
     public Options.ServiceOptions getOptions() {
