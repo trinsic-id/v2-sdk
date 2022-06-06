@@ -6,55 +6,48 @@ The Provider Service helps ecosystem providers with data management and onboardi
 
 Creates a new provider ecosystem
 
-=== "Trinsic CLI"
-    ```bash
-    trinsic provider create-ecosystem --name <ECOSYSTEM_NAME> --email <OWNER_EMAIL>
-    ```
 
-When using one of the SDKs, you must supply a [Create Ecosystem Request](../proto/index.md#createecosystemrequest) object.
+{{proto_sample_start()}}
+    === "Trinsic CLI"
+        ```bash
+        trinsic provider create-ecosystem --name <ECOSYSTEM_NAME> --email <OWNER_EMAIL>
+        ```
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [CreateEcosystem](../../../web/test/ProviderService.test.ts) inside_block:createEcosystem
+        ```
+        <!--/codeinclude-->
 
-{{ proto_obj('services.provider.v1.CreateEcosystemRequest') }}
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [CreateEcosystem](../../../dotnet/Tests/Tests.cs) inside_block:createEcosystem
+        ```
+        <!--/codeinclude-->
 
-Then you can supply it to SDK:
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [CreateEcosystem](../../../python/samples/ecosystem_demo.py) inside_block:createEcosystem
+        ```
+        <!--/codeinclude-->
 
-=== "TypeScript"
-    <!--codeinclude-->
-    ```typescript
-    [CreateEcosystem](../../../web/test/ProviderService.test.ts) inside_block:createEcosystem
-    ```
-    <!--/codeinclude-->
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [CreateEcosystem](../../../go/services/services_test.go) inside_block:createEcosystem
+        ```
+        <!--/codeinclude-->
 
-=== "C#"
-    <!--codeinclude-->
-    ```csharp
-    [CreateEcosystem](../../../dotnet/Tests/Tests.cs) inside_block:createEcosystem
-    ```
-    <!--/codeinclude-->
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [CreateEcosystem](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:createEcosystem
+        ```
+        <!--/codeinclude-->
 
-=== "Python"
-    <!--codeinclude-->
-    ```python
-    [CreateEcosystem](../../../python/samples/ecosystem_demo.py) inside_block:createEcosystem
-    ```
-    <!--/codeinclude-->
-
-=== "Go"
-    <!--codeinclude-->
-    ```golang
-    [CreateEcosystem](../../../go/services/services_test.go) inside_block:createEcosystem
-    ```
-    <!--/codeinclude-->
-
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    [CreateEcosystem](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:createEcosystem
-    ```
-    <!--/codeinclude-->
-
-The response model is of type [Create Ecosystem Response](../proto/index.md#createecosystemresponse):
-
-{{ proto_obj('services.provider.v1.CreateEcosystemResponse') }}
+{{ proto_method_tabs("services.provider.v1.Provider.CreateEcosystem") }}
 
 <!-- 
 // This call is not yet implemented
@@ -80,65 +73,58 @@ When users accept this invitation, they should do so using the service methods a
 
 In Trinsic Ecosystems, participants can be Individuals or Organizations. This distinction is important, as providers have the ability to apply restrictions on what functionalities can be invoked by these participants. Additionally, Organizations have the ability to write their DID Document to a public ledger. Currently, the supported ledger is Sovrin, with ION and Element still in development.
 
-=== "Trinsic CLI"
-    ```bash
-    trinsic provider invite --organization --method-email admin@faber.edu
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic provider invite --organization --method-email admin@faber.edu
 
-    trinsic provider invite --person --method-email alice@faber.edu
-    ```
+        trinsic provider invite --person --method-email alice@faber.edu
+        ```
 
-When using one of the SDKs, you must supply an [Invite Request](../proto/index.md#inviterequest) object. This object follows the model below:
+    === "TypeScript"
+        ```typescript
+        import { ProviderService, ParticipantType } from "@trinsic/trinsic";
 
-{{ proto_obj('services.provider.v1.InviteRequest') }}
+        const providerService = new ProviderService();
 
-Then you can supply it to SDK:
+        let inviteRequest = new InviteRequest();
+        inviteRequest.setParticipant(ParticipantType.PARTICIPANT_TYPE_ORGANIZATION);
+        inviteRequest.setEmail("admin@faber.edu");
 
-=== "TypeScript"
-    ```typescript
-    import { ProviderService, ParticipantType } from "@trinsic/trinsic";
+        const inviteResponse = await providerService.inviteParticipant(inviteRequest);
 
-    const providerService = new ProviderService();
+        console.log(inviteResponse.getInvitationId());
+        ```
 
-    let inviteRequest = new InviteRequest();
-    inviteRequest.setParticipant(ParticipantType.PARTICIPANT_TYPE_ORGANIZATION);
-    inviteRequest.setEmail("admin@faber.edu");
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [InviteRequest](../../../dotnet/Tests/Tests.cs) inside_block:inviteParticipant
+        ```
+        <!--/codeinclude-->
 
-    const inviteResponse = await providerService.inviteParticipant(inviteRequest);
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [InviteRequest](../../../python/samples/ecosystem_demo.py) inside_block:inviteParticipant
+        ```
+        <!--/codeinclude-->
 
-    console.log(inviteResponse.getInvitationId());
-    ```
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [InviteRequest](../../../go/services/services_test.go) inside_block:inviteParticipant
+        ```
+        <!--/codeinclude-->
 
-=== "C#"
-    <!--codeinclude-->
-    ```csharp
-    [InviteRequest](../../../dotnet/Tests/Tests.cs) inside_block:inviteParticipant
-    ```
-    <!--/codeinclude-->
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [InviteRequest](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:inviteParticipant
+        ```
+        <!--/codeinclude-->
 
-=== "Python"
-    <!--codeinclude-->
-    ```python
-    [InviteRequest](../../../python/samples/ecosystem_demo.py) inside_block:inviteParticipant
-    ```
-    <!--/codeinclude-->
-
-=== "Go"
-    <!--codeinclude-->
-    ```golang
-    [InviteRequest](../../../go/services/services_test.go) inside_block:inviteParticipant
-    ```
-    <!--/codeinclude-->
-
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    [InviteRequest](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:inviteParticipant
-    ```
-    <!--/codeinclude-->
-
-The response model is of type [Invite Response](../proto/index.md#inviteresponse):
-
-{{ proto_obj('services.provider.v1.InviteResponse') }}
+{{ proto_method_tabs("services.provider.v1.Provider.Invite") }}
 
 The `invitation_code` in the response contains is security code that users must supply when creating their wallet. If the email method is used during onboarding, participants will receive this code in their email.
 
@@ -146,56 +132,49 @@ The `invitation_code` in the response contains is security code that users must 
 
 User invitation status can be checked with the provided `invitation id`. It returns an `InvitationStatusResponse` object.
 
-=== "Trinsic CLI"
-    ```bash
-    trinsic provider invitation_status <INVITATION_ID>
-    ```
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic provider invitation_status <INVITATION_ID>
+        ```
 
-When using one of the SDKs, you must supply an [Invitation Status Request](../proto/index.md#invitationstatusrequest) object. This object follows the model below:
+    === "TypeScript"
+        ```typescript
+        import { ProviderService, ParticipantType } from "@trinsic/trinsic";
 
-{{ proto_obj('services.provider.v1.InvitationStatusRequest') }}
+        const providerService = new ProviderService();
 
-Then you can supply it to SDK:
+        const inviteResponse = await providerService.invitationStatus("INVITATION ID");
 
-=== "TypeScript"
-    ```typescript
-    import { ProviderService, ParticipantType } from "@trinsic/trinsic";
+        console.log(inviteResponse.getInvitationId());
+        ```
 
-    const providerService = new ProviderService();
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [InvitationStatus](../../../dotnet/Tests/Tests.cs) inside_block:invitationStatus
+        ```
+        <!--/codeinclude-->
 
-    const inviteResponse = await providerService.invitationStatus("INVITATION ID");
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [InvitationStatus](../../../python/samples/ecosystem_demo.py) inside_block:invitationStatus
+        ```
+        <!--/codeinclude-->
 
-    console.log(inviteResponse.getInvitationId());
-    ```
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [InvitationStatus](../../../go/services/services_test.go) inside_block:invitationStatus
+        ```
+        <!--/codeinclude-->
 
-=== "C#"
-    <!--codeinclude-->
-    ```csharp
-    [InvitationStatus](../../../dotnet/Tests/Tests.cs) inside_block:invitationStatus
-    ```
-    <!--/codeinclude-->
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [InvitationStatus](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:invitationStatus
+        ```
+        <!--/codeinclude-->
 
-=== "Python"
-    <!--codeinclude-->
-    ```python
-    [InvitationStatus](../../../python/samples/ecosystem_demo.py) inside_block:invitationStatus
-    ```
-    <!--/codeinclude-->
-
-=== "Go"
-    <!--codeinclude-->
-    ```golang
-    [InvitationStatus](../../../go/services/services_test.go) inside_block:invitationStatus
-    ```
-    <!--/codeinclude-->
-
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    [InvitationStatus](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:invitationStatus
-    ```
-    <!--/codeinclude-->
-
-The response model is of type [Invitation Status Response](../proto/index.md#invitationstatusresponse):
-
-{{ proto_obj('services.provider.v1.InvitationStatusResponse') }}
+{{ proto_method_tabs("services.provider.v1.Provider.InvitationStatus") }}
