@@ -169,7 +169,6 @@ input {
   * So we create a <div class="center-next-tabs"/> immediately preceeding the tab declaration,
   * then use a sibling selector to style the immediately preceding tabs.
   **/
-
 .center-next-tabs {
     display: none;
 }
@@ -182,3 +181,9 @@ input {
 .center-next-tabs+.tabbed-set p:first-child {
     display: none;
 }
+
+/* For sub-tabs of the Sample/Request/Response tabs (ie, the language tabs),
+   make their font smaller. */
+.center-next-tabs+.tabbed-set .tabbed-set .tabbed-labels label{
+    font-size: 0.5rem;  
+}   
