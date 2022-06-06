@@ -88,10 +88,10 @@ message TokenProtection {
 }
 
 // Request for information about the account used to make the request
-message InfoRequest {}
+message AccountInfoRequest {}
 
 // Information about the account used to make the request
-message InfoResponse {
+message AccountInfoResponse {
     // The account details associated with
     // the calling request context
     AccountDetails details = 1;
@@ -169,7 +169,7 @@ service Account {
     rpc LoginConfirm        (LoginConfirmRequest)       returns (LoginConfirmResponse);
 
     // Get account information
-    rpc Info                (InfoRequest)               returns (InfoResponse);
+    rpc Info                (AccountInfoRequest)        returns (AccountInfoResponse);
     // List all connected devices
     rpc ListDevices         (ListDevicesRequest)        returns (ListDevicesResponse);
     // Revoke device access to the account's cloud wallet
