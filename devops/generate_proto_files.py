@@ -171,12 +171,13 @@ def update_java():
 def update_markdown():
     lang_path = get_language_dir('docs')
     lang_proto_path = join(lang_path, 'reference', 'proto')
+    lang_json_path = join(lang_path, '_static')
     template_path = md_template_path()
 
     run_protoc({'doc_out': lang_proto_path}, {'doc_opt': f"{template_path},index.md"}, get_proto_files())
 
     run_protoc(
-        {"json_out": lang_proto_path},
+        {"json_out": lang_json_path},
         {"json_opt": "proto.json"},
         get_proto_files(),
     )
