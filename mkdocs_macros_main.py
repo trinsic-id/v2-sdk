@@ -102,26 +102,30 @@ def print_message(messageName: str, context: str = None):
     Generates the HTML for a protobuf message's documentation
     """
 
-    # Fetch the protobuf message by name
-    entity = get_entity(messageName)
+    try:
+        # Fetch the protobuf message by name
+        entity = get_entity(messageName)
 
-    # Replace newlines in the comments of the message with spaces
-    message_desc = entity['description'].replace("\n", " ").replace("\r", " ")
+        # Replace newlines in the comments of the message with spaces
+        message_desc = entity['description'].replace("\n", " ").replace("\r", " ")
 
-    ret = (
-        f"<div class='proto-obj-container' data-proto-name='{entity['full_name']}'>"
-        f"<div class='proto-obj-name'><a name='{entity['full_name']}' href='/reference/proto#{entity['full_name']}'>{entity['name']}</a></div>"
-        f"<div class='proto-obj-description'>{message_desc}</div>"
-    )
+        ret = (
+            f"<div class='proto-obj-container' data-proto-name='{entity['full_name']}'>"
+            f"<div class='proto-obj-name'><a name='{entity['full_name']}' href='/reference/proto#{entity['full_name']}'>{entity['name']}</a></div>"
+            f"<div class='proto-obj-description'>{message_desc}</div>"
+        )
 
-    if len(entity["fields"]) > 0:
-        ret += print_message_fields(messageName, context)
-    else:
-        ret += "<i style='display:block; font-size: 0.65rem; margin-top: 0.5rem'>This message has no fields</i>"
+        if len(entity["fields"]) > 0:
+            ret += print_message_fields(messageName, context)
+        else:
+            ret += "<i style='display:block; font-size: 0.65rem; margin-top: 0.5rem'>This message has no fields</i>"
 
-    ret += "</div>"
+        ret += "</div>"
 
-    return ret
+        return ret
+    except Exception as e:
+        return f"Cannot print proto message: {e}"
+
 
 def print_message_fields(messageName: str, context: str = None):
     """
@@ -227,8 +231,12 @@ def get_index_entry(name: str):
     """
 
     proto_json = get_proto_json()
+    index = proto_json["index"]
 
-    return proto_json["index"][name]
+    if name not in index:
+        raise Exception(f"Cannot find protobuf object with name {name}")
+
+    return index[name]
 
 def get_entity(name: str):
     """
