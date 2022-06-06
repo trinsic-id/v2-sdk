@@ -60,7 +60,17 @@ The output of this method will be a signed JSON document using BBS+ Signature Su
 
 ## Issue Credential from Template
 
-Issues a credential from a previously defined template through [CreateCredential](./template-service.md#create-credential-template) call.
+Issues a credential from a previously defined template through [CreateCredential](./template-service.md#create-credential-template) call. 
+
+This call takes in a JSON key/value string which maps to the fields on the specified template. For example:
+
+```json
+{
+    "field1": "value1",
+    "field2": "value2",
+    ...
+}
+```
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
