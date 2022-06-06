@@ -3,12 +3,13 @@ package services
 import (
 	"encoding/base64"
 	"fmt"
-	account "github.com/trinsic-id/sdk/go/proto/account/v1"
-	commonV1 "github.com/trinsic-id/sdk/go/proto/common/v1"
+
 	"time"
 
 	"github.com/trinsic-id/okapi/go/okapi"
 	"github.com/trinsic-id/okapi/go/okapiproto"
+	"github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
+	"github.com/trinsic-id/sdk/go/proto/services/common/v1/common"
 
 	"google.golang.org/protobuf/proto"
 )
@@ -38,7 +39,7 @@ func (o OberonSecurityProvider) GetAuthHeader(profile *account.AccountProfile, m
 		return "", err
 	}
 	requestHash := hashResult.Digest
-	nonce := &commonV1.Nonce{
+	nonce := &common.Nonce{
 		Timestamp:   time.Now().UnixMilli(),
 		RequestHash: requestHash[:],
 	}

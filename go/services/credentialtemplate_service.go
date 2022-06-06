@@ -2,7 +2,8 @@ package services
 
 import (
 	"context"
-	template "github.com/trinsic-id/sdk/go/proto/verifiablecredentials/templates/v1"
+
+	"github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/templates/v1/template"
 )
 
 // NewCredentialTemplateService returns a credential template servcie with the base service configured

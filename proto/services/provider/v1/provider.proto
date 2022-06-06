@@ -3,7 +3,7 @@ syntax = "proto3";
 package services.provider.v1;
 
 option csharp_namespace = "Trinsic.Services.Provider.V1";
-option go_package = "github.com/trinsic-id/sdk/provider/v1";
+option go_package = "services/provider/v1/provider";
 option java_package = "trinsic.services.common.v1";
 
 import "services/account/v1/account.proto";
@@ -75,10 +75,34 @@ message InvitationStatusResponse {
 }
 
 message Ecosystem {
+    // URN of the ecosystem
     string id = 1;
+
+    // Globally unique name for the ecosystem
     string name = 2;
+
+    // Ecosystem description
     string description = 3;
+
+    // External URL associated with the organization or ecosystem entity
     string uri = 4;
+
+    // Configured webhooks, if any
+    repeated WebhookConfig webhooks = 5;
+}
+
+message WebhookConfig {
+    // UUID of the webhook
+    string id = 1;
+
+    // Destination to post webhook calls to
+    string destination_url = 2;
+
+    // Events the webhook is subscribed to
+    repeated string events = 4;
+
+    // Whether we are able to sucessfully send events to the webhook
+    string status = 5;
 }
 
 message CreateEcosystemRequest {
@@ -104,6 +128,71 @@ message CreateEcosystemResponse {
     services.account.v1.ConfirmationMethod confirmation_method = 3;
 }
 
+// Request to update an ecosystem
+message UpdateEcosystemRequest {
+    // ID of the ecosystem to update
+    string ecosystem_id = 1;
+
+    // Description of the ecosystem
+    string description = 2;
+
+    // External URL associated with the organization or ecosystem entity
+    string uri = 3;
+}
+
+// Response to `UpdateEcosystemRequest`
+message UpdateEcosystemResponse {
+    Ecosystem Ecosystem = 1;
+}
+
+// Request to add a webhook to an ecosystem
+message AddWebhookRequest {
+     // ID of ecosystem to add webhook to
+    string ecosystem_id = 1;
+    
+    // Destination to post webhook calls to
+    string destination_url = 2;
+
+    // HMAC secret for webhook validation
+    string secret = 3;
+
+    // Events to subscribe to. Default is "*" (all events)
+    repeated string events = 4;
+}
+
+// Response to `AddWebhookRequest`
+message AddWebhookResponse {
+     // Ecosystem with new webhook
+    Ecosystem ecosystem = 1;
+}
+
+// Request to delete a webhook from an ecosystem
+message DeleteWebhookRequest {
+    // ID of ecosystem from which to delete webhook
+    string ecosystem_id = 1;
+    
+    // ID of webhook to delete
+    string webhook_id = 2;
+}
+
+// Response to `DeleteWebhookRequest`
+message DeleteWebhookResponse {
+     // Ecosystem after removal of webhook
+    Ecosystem ecosystem = 1;
+}
+
+// Request to fetch information about an ecosystem
+message InfoRequest {
+    // ID of ecosystem to fetch information about
+    string ecosystem_id = 1;
+}
+
+// Response to `InfoRequest`
+message InfoResponse {
+    // Ecosystem corresponding to requested `ecosystem_id`
+    Ecosystem ecosystem = 1;
+}
+
 message GenerateTokenRequest {
     // Description to identify this token
     string description = 1 [(options.optional)=true];
@@ -123,10 +212,32 @@ message GetOberonKeyResponse {
     string key = 1; // Oberon Public Key as RAW base64 URL encoded string
 }
 
+// generates an events token bound to the provided ed25519 pk
+message GetEventTokenRequest{
+    bytes pk = 1; // 
+}
+
+// response message containing a token (JWT) that can be used
+// to connect directly to the message streaming architecture
+message GetEventTokenResponse{
+    string token = 1; // a JWT bound to the PK provided in the request
+}
 
 service Provider {
     // Create new ecosystem and assign the authenticated user as owner
     rpc CreateEcosystem(CreateEcosystemRequest) returns (CreateEcosystemResponse);
+    
+    // Update an existing ecosystem
+    rpc UpdateEcosystem(UpdateEcosystemRequest) returns (UpdateEcosystemResponse);
+
+    // Add a webhook endpoint to the ecosystem
+    rpc AddWebhook(AddWebhookRequest) returns (AddWebhookResponse);
+
+    // Delete a webhook endpoint from the ecosystem
+    rpc DeleteWebhook(DeleteWebhookRequest) returns (DeleteWebhookResponse);
+
+    // Get ecosystem information
+    rpc Info(InfoRequest) returns (InfoResponse);
 
     // Generates an unprotected authentication token that can be used to
     // configure server side applications
@@ -140,4 +251,7 @@ service Provider {
 
     // Returns the public key being used to create/verify oberon tokens
     rpc GetOberonKey(GetOberonKeyRequest) returns (GetOberonKeyResponse);
+
+    // Generate a signed token (JWT) that can be used to connect to the message bus
+    rpc GetEventToken(GetEventTokenRequest) returns (GetEventTokenResponse);
 }
