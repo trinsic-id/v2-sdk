@@ -17,7 +17,13 @@ from build_sdks import update_line, clean_dir, get_language_dir
 
 
 def protoc_plugin_versions(key: str = None) -> Union[str, Dict[str, str]]:
-    version_dict = {"java": "1.46.0", "kotlin": "1.2.1", "mkdocs": "v1.5.0", "java-format": "v1.15.0"}
+    version_dict = {
+        "java": "1.46.0",
+        "kotlin": "1.2.1",
+        "mkdocs": "v1.5.0",
+        "java-format": "v1.15.0",
+        "kotlin-format": "0.37",
+    }
     if key:
         return version_dict[key]
     else:
@@ -53,7 +59,11 @@ def kotlin_plugin() -> str:
 
 
 def java_format_plugin() -> str:
-    return abspath(join(plugin_path(),'google-java-format.jar'))
+    return abspath(join(plugin_path(), "google-java-format.jar"))
+
+
+def kotlin_format_plugin() -> str:
+    return abspath(join(plugin_path(), "kotlin-format.jar"))
 
 
 def download_protoc_plugins() -> None:
@@ -62,7 +72,8 @@ def download_protoc_plugins() -> None:
 
     java_plugin_version = protoc_plugin_versions("java")
     kotlin_plugin_version = protoc_plugin_versions("kotlin")
-    java_format_plugin_version = protoc_plugin_versions("java-format")
+    java_format_version = protoc_plugin_versions("java-format")
+    kotlin_format_version = protoc_plugin_versions("kotlin-format")
     urllib.request.urlretrieve(
         f"https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/{java_plugin_version}/protoc-gen-grpc-java-{java_plugin_version}-{system().lower()}-x86_64.exe",
         java_plugin(),
@@ -71,8 +82,15 @@ def download_protoc_plugins() -> None:
         f"https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-kotlin/{kotlin_plugin_version}/protoc-gen-grpc-kotlin-{kotlin_plugin_version}-jdk7.jar",
         kotlin_jar,
     )
-    urllib.request.urlretrieve(f"https://github.com/google/google-java-format/releases/download/{java_format_plugin_version}/google-java-format-{java_format_plugin_version.replace('v','')}-all-deps.jar",
-                               java_format_plugin())
+    urllib.request.urlretrieve(
+        f"https://github.com/google/google-java-format/releases/download/{java_format_version}/google-java-format-{java_format_version.replace('v','')}-all-deps.jar",
+        java_format_plugin(),
+    )
+
+    urllib.request.urlretrieve(
+        f"https://search.maven.org/remotecontent?filepath=com/facebook/ktfmt/{kotlin_format_version}/ktfmt-{kotlin_format_version}-jar-with-dependencies.jar",
+        kotlin_format_plugin(),
+    )
 
     with open(kotlin_plugin(), "w") as fid:
         if system().lower() == "windows":
@@ -181,7 +199,7 @@ def update_ruby():
     # Ruby type specifications
     run_protoc({"rbi_out": f"grpc=true:{lang_proto_path}"}, {}, get_proto_files())
 
-    subprocess.Popen(args='rubocop -A', cwd=language_path, shell=True).wait()
+    subprocess.Popen(args="rubocop -A", cwd=language_path, shell=True).wait()
 
 
 def update_java():
@@ -210,8 +228,19 @@ def update_java():
     # remove okapi pbmse
     clean_dir(join(lang_proto_path, "trinsic", "okapi"))
 
-    subprocess.Popen(args=f'java -version', cwd=language_path, shell=True).wait()
-    subprocess.Popen(args=f'java -jar {java_format_plugin()} .', cwd=language_path, shell=True).wait()
+    java_files = glob.glob(join(language_path, "**/*.java"), recursive=True)
+    subprocess.Popen(
+        args=f'java -jar {java_format_plugin()} --replace {" ".join(java_files)}',
+        cwd=language_path,
+        shell=True,
+    ).wait()
+
+    kotlin_files = glob.glob(join(language_path, "**/*.kt"), recursive=True)
+    subprocess.Popen(
+        args=f'java -jar {kotlin_format_plugin()} {" ".join(kotlin_files)}',
+        cwd=language_path,
+        shell=True,
+    ).wait()
 
 
 def update_markdown():
@@ -240,7 +269,7 @@ def update_python():
         {"python_betterproto_out": python_proto_path}, {}, proto_files=get_proto_files()
     )
 
-    subprocess.Popen(args='black .', cwd=get_language_dir("python"), shell=True).wait()
+    subprocess.Popen(args="black .", cwd=get_language_dir("python"), shell=True).wait()
 
 
 def update_dart():
@@ -255,7 +284,7 @@ def update_dart():
         get_proto_files(dir_name="c:/bin/google"),
         proto_path="c:/bin",
     )
-    subprocess.Popen(args='dart format .', cwd=language_path, shell=True).wait()
+    subprocess.Popen(args="dart format .", cwd=language_path, shell=True).wait()
 
 
 def parse_arguments():

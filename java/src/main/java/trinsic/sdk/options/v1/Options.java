@@ -5,115 +5,138 @@ package trinsic.sdk.options.v1;
 
 public final class Options {
   private Options() {}
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
+
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {}
+
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions((com.google.protobuf.ExtensionRegistryLite) registry);
   }
 
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
-  }
-  public interface ServiceOptionsOrBuilder extends
+  public interface ServiceOptionsOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:sdk.options.v1.ServiceOptions)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     *
+     *
      * <pre>
      * Trinsic API endpoint; defaults to `prod.trinsic.cloud`
      * </pre>
      *
      * <code>string server_endpoint = 1;</code>
+     *
      * @return The serverEndpoint.
      */
     java.lang.String getServerEndpoint();
     /**
+     *
+     *
      * <pre>
      * Trinsic API endpoint; defaults to `prod.trinsic.cloud`
      * </pre>
      *
      * <code>string server_endpoint = 1;</code>
+     *
      * @return The bytes for serverEndpoint.
      */
-    com.google.protobuf.ByteString
-        getServerEndpointBytes();
+    com.google.protobuf.ByteString getServerEndpointBytes();
 
     /**
+     *
+     *
      * <pre>
      * Trinsic API port; defaults to `443`
      * </pre>
      *
      * <code>int32 server_port = 2;</code>
+     *
      * @return The serverPort.
      */
     int getServerPort();
 
     /**
+     *
+     *
      * <pre>
      * Whether TLS is enabled between SDK and Trinsic API; defaults to `true`
      * </pre>
      *
      * <code>bool server_use_tls = 3;</code>
+     *
      * @return The serverUseTls.
      */
     boolean getServerUseTls();
 
     /**
+     *
+     *
      * <pre>
      * Authentication token for SDK calls; defaults to empty string (unauthenticated)
      * </pre>
      *
      * <code>string auth_token = 4;</code>
+     *
      * @return The authToken.
      */
     java.lang.String getAuthToken();
     /**
+     *
+     *
      * <pre>
      * Authentication token for SDK calls; defaults to empty string (unauthenticated)
      * </pre>
      *
      * <code>string auth_token = 4;</code>
+     *
      * @return The bytes for authToken.
      */
-    com.google.protobuf.ByteString
-        getAuthTokenBytes();
+    com.google.protobuf.ByteString getAuthTokenBytes();
 
     /**
+     *
+     *
      * <pre>
      * Default ecosystem ID to use for various SDK calls; defaults to `default`
      * </pre>
      *
      * <code>string default_ecosystem = 5;</code>
+     *
      * @return The defaultEcosystem.
      */
     java.lang.String getDefaultEcosystem();
     /**
+     *
+     *
      * <pre>
      * Default ecosystem ID to use for various SDK calls; defaults to `default`
      * </pre>
      *
      * <code>string default_ecosystem = 5;</code>
+     *
      * @return The bytes for defaultEcosystem.
      */
-    com.google.protobuf.ByteString
-        getDefaultEcosystemBytes();
+    com.google.protobuf.ByteString getDefaultEcosystemBytes();
   }
   /**
+   *
+   *
    * <pre>
    * Configuration for Trinsic SDK Services
    * </pre>
    *
    * Protobuf type {@code sdk.options.v1.ServiceOptions}
    */
-  public static final class ServiceOptions extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class ServiceOptions extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:sdk.options.v1.ServiceOptions)
       ServiceOptionsOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use ServiceOptions.newBuilder() to construct.
     private ServiceOptions(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private ServiceOptions() {
       serverEndpoint_ = "";
       authToken_ = "";
@@ -122,16 +145,15 @@ public final class Options {
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new ServiceOptions();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private ServiceOptions(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -150,41 +172,44 @@ public final class Options {
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 10:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
 
-              serverEndpoint_ = s;
-              break;
-            }
-            case 16: {
-
-              serverPort_ = input.readInt32();
-              break;
-            }
-            case 24: {
-
-              serverUseTls_ = input.readBool();
-              break;
-            }
-            case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              authToken_ = s;
-              break;
-            }
-            case 42: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              defaultEcosystem_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+                serverEndpoint_ = s;
+                break;
               }
-              break;
-            }
+            case 16:
+              {
+                serverPort_ = input.readInt32();
+                break;
+              }
+            case 24:
+              {
+                serverUseTls_ = input.readBool();
+                break;
+              }
+            case 34:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                authToken_ = s;
+                break;
+              }
+            case 42:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                defaultEcosystem_ = s;
+                break;
+              }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -192,34 +217,39 @@ public final class Options {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.sdk.options.v1.Options.internal_static_sdk_options_v1_ServiceOptions_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.sdk.options.v1.Options
+          .internal_static_sdk_options_v1_ServiceOptions_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.sdk.options.v1.Options.internal_static_sdk_options_v1_ServiceOptions_fieldAccessorTable
+      return trinsic.sdk.options.v1.Options
+          .internal_static_sdk_options_v1_ServiceOptions_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.sdk.options.v1.Options.ServiceOptions.class, trinsic.sdk.options.v1.Options.ServiceOptions.Builder.class);
+              trinsic.sdk.options.v1.Options.ServiceOptions.class,
+              trinsic.sdk.options.v1.Options.ServiceOptions.Builder.class);
     }
 
     public static final int SERVER_ENDPOINT_FIELD_NUMBER = 1;
     private volatile java.lang.Object serverEndpoint_;
     /**
+     *
+     *
      * <pre>
      * Trinsic API endpoint; defaults to `prod.trinsic.cloud`
      * </pre>
      *
      * <code>string server_endpoint = 1;</code>
+     *
      * @return The serverEndpoint.
      */
     @java.lang.Override
@@ -228,29 +258,29 @@ public final class Options {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         serverEndpoint_ = s;
         return s;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Trinsic API endpoint; defaults to `prod.trinsic.cloud`
      * </pre>
      *
      * <code>string server_endpoint = 1;</code>
+     *
      * @return The bytes for serverEndpoint.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getServerEndpointBytes() {
+    public com.google.protobuf.ByteString getServerEndpointBytes() {
       java.lang.Object ref = serverEndpoint_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         serverEndpoint_ = b;
         return b;
       } else {
@@ -261,11 +291,14 @@ public final class Options {
     public static final int SERVER_PORT_FIELD_NUMBER = 2;
     private int serverPort_;
     /**
+     *
+     *
      * <pre>
      * Trinsic API port; defaults to `443`
      * </pre>
      *
      * <code>int32 server_port = 2;</code>
+     *
      * @return The serverPort.
      */
     @java.lang.Override
@@ -276,11 +309,14 @@ public final class Options {
     public static final int SERVER_USE_TLS_FIELD_NUMBER = 3;
     private boolean serverUseTls_;
     /**
+     *
+     *
      * <pre>
      * Whether TLS is enabled between SDK and Trinsic API; defaults to `true`
      * </pre>
      *
      * <code>bool server_use_tls = 3;</code>
+     *
      * @return The serverUseTls.
      */
     @java.lang.Override
@@ -291,11 +327,14 @@ public final class Options {
     public static final int AUTH_TOKEN_FIELD_NUMBER = 4;
     private volatile java.lang.Object authToken_;
     /**
+     *
+     *
      * <pre>
      * Authentication token for SDK calls; defaults to empty string (unauthenticated)
      * </pre>
      *
      * <code>string auth_token = 4;</code>
+     *
      * @return The authToken.
      */
     @java.lang.Override
@@ -304,29 +343,29 @@ public final class Options {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         authToken_ = s;
         return s;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Authentication token for SDK calls; defaults to empty string (unauthenticated)
      * </pre>
      *
      * <code>string auth_token = 4;</code>
+     *
      * @return The bytes for authToken.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getAuthTokenBytes() {
+    public com.google.protobuf.ByteString getAuthTokenBytes() {
       java.lang.Object ref = authToken_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         authToken_ = b;
         return b;
       } else {
@@ -337,11 +376,14 @@ public final class Options {
     public static final int DEFAULT_ECOSYSTEM_FIELD_NUMBER = 5;
     private volatile java.lang.Object defaultEcosystem_;
     /**
+     *
+     *
      * <pre>
      * Default ecosystem ID to use for various SDK calls; defaults to `default`
      * </pre>
      *
      * <code>string default_ecosystem = 5;</code>
+     *
      * @return The defaultEcosystem.
      */
     @java.lang.Override
@@ -350,29 +392,29 @@ public final class Options {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         defaultEcosystem_ = s;
         return s;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Default ecosystem ID to use for various SDK calls; defaults to `default`
      * </pre>
      *
      * <code>string default_ecosystem = 5;</code>
+     *
      * @return The bytes for defaultEcosystem.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getDefaultEcosystemBytes() {
+    public com.google.protobuf.ByteString getDefaultEcosystemBytes() {
       java.lang.Object ref = defaultEcosystem_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         defaultEcosystem_ = b;
         return b;
       } else {
@@ -381,6 +423,7 @@ public final class Options {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -392,8 +435,7 @@ public final class Options {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(serverEndpoint_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, serverEndpoint_);
       }
@@ -422,12 +464,10 @@ public final class Options {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, serverEndpoint_);
       }
       if (serverPort_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, serverPort_);
+        size += com.google.protobuf.CodedOutputStream.computeInt32Size(2, serverPort_);
       }
       if (serverUseTls_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(3, serverUseTls_);
+        size += com.google.protobuf.CodedOutputStream.computeBoolSize(3, serverUseTls_);
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(authToken_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, authToken_);
@@ -443,23 +483,19 @@ public final class Options {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
       if (!(obj instanceof trinsic.sdk.options.v1.Options.ServiceOptions)) {
         return super.equals(obj);
       }
-      trinsic.sdk.options.v1.Options.ServiceOptions other = (trinsic.sdk.options.v1.Options.ServiceOptions) obj;
+      trinsic.sdk.options.v1.Options.ServiceOptions other =
+          (trinsic.sdk.options.v1.Options.ServiceOptions) obj;
 
-      if (!getServerEndpoint()
-          .equals(other.getServerEndpoint())) return false;
-      if (getServerPort()
-          != other.getServerPort()) return false;
-      if (getServerUseTls()
-          != other.getServerUseTls()) return false;
-      if (!getAuthToken()
-          .equals(other.getAuthToken())) return false;
-      if (!getDefaultEcosystem()
-          .equals(other.getDefaultEcosystem())) return false;
+      if (!getServerEndpoint().equals(other.getServerEndpoint())) return false;
+      if (getServerPort() != other.getServerPort()) return false;
+      if (getServerUseTls() != other.getServerUseTls()) return false;
+      if (!getAuthToken().equals(other.getAuthToken())) return false;
+      if (!getDefaultEcosystem().equals(other.getDefaultEcosystem())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -476,8 +512,7 @@ public final class Options {
       hash = (37 * hash) + SERVER_PORT_FIELD_NUMBER;
       hash = (53 * hash) + getServerPort();
       hash = (37 * hash) + SERVER_USE_TLS_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getServerUseTls());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getServerUseTls());
       hash = (37 * hash) + AUTH_TOKEN_FIELD_NUMBER;
       hash = (53 * hash) + getAuthToken().hashCode();
       hash = (37 * hash) + DEFAULT_ECOSYSTEM_FIELD_NUMBER;
@@ -487,88 +522,94 @@ public final class Options {
       return hash;
     }
 
-    public static trinsic.sdk.options.v1.Options.ServiceOptions parseFrom(
-        java.nio.ByteBuffer data)
+    public static trinsic.sdk.options.v1.Options.ServiceOptions parseFrom(java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.sdk.options.v1.Options.ServiceOptions parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.sdk.options.v1.Options.ServiceOptions parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.sdk.options.v1.Options.ServiceOptions parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.sdk.options.v1.Options.ServiceOptions parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
+
     public static trinsic.sdk.options.v1.Options.ServiceOptions parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
+
     public static trinsic.sdk.options.v1.Options.ServiceOptions parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.sdk.options.v1.Options.ServiceOptions parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.sdk.options.v1.Options.ServiceOptions parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
+
     public static trinsic.sdk.options.v1.Options.ServiceOptions parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
+
+    public static trinsic.sdk.options.v1.Options.ServiceOptions parseDelimitedFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
     public static trinsic.sdk.options.v1.Options.ServiceOptions parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
+
     public static trinsic.sdk.options.v1.Options.ServiceOptions parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
+
     public static Builder newBuilder(trinsic.sdk.options.v1.Options.ServiceOptions prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -578,27 +619,32 @@ public final class Options {
       return builder;
     }
     /**
+     *
+     *
      * <pre>
      * Configuration for Trinsic SDK Services
      * </pre>
      *
      * Protobuf type {@code sdk.options.v1.ServiceOptions}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:sdk.options.v1.ServiceOptions)
         trinsic.sdk.options.v1.Options.ServiceOptionsOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.sdk.options.v1.Options.internal_static_sdk_options_v1_ServiceOptions_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.sdk.options.v1.Options
+            .internal_static_sdk_options_v1_ServiceOptions_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.sdk.options.v1.Options.internal_static_sdk_options_v1_ServiceOptions_fieldAccessorTable
+        return trinsic.sdk.options.v1.Options
+            .internal_static_sdk_options_v1_ServiceOptions_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.sdk.options.v1.Options.ServiceOptions.class, trinsic.sdk.options.v1.Options.ServiceOptions.Builder.class);
+                trinsic.sdk.options.v1.Options.ServiceOptions.class,
+                trinsic.sdk.options.v1.Options.ServiceOptions.Builder.class);
       }
 
       // Construct using trinsic.sdk.options.v1.Options.ServiceOptions.newBuilder()
@@ -606,16 +652,15 @@ public final class Options {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -633,9 +678,9 @@ public final class Options {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.sdk.options.v1.Options.internal_static_sdk_options_v1_ServiceOptions_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.sdk.options.v1.Options
+            .internal_static_sdk_options_v1_ServiceOptions_descriptor;
       }
 
       @java.lang.Override
@@ -654,7 +699,8 @@ public final class Options {
 
       @java.lang.Override
       public trinsic.sdk.options.v1.Options.ServiceOptions buildPartial() {
-        trinsic.sdk.options.v1.Options.ServiceOptions result = new trinsic.sdk.options.v1.Options.ServiceOptions(this);
+        trinsic.sdk.options.v1.Options.ServiceOptions result =
+            new trinsic.sdk.options.v1.Options.ServiceOptions(this);
         result.serverEndpoint_ = serverEndpoint_;
         result.serverPort_ = serverPort_;
         result.serverUseTls_ = serverUseTls_;
@@ -668,38 +714,41 @@ public final class Options {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.sdk.options.v1.Options.ServiceOptions) {
-          return mergeFrom((trinsic.sdk.options.v1.Options.ServiceOptions)other);
+          return mergeFrom((trinsic.sdk.options.v1.Options.ServiceOptions) other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -707,7 +756,8 @@ public final class Options {
       }
 
       public Builder mergeFrom(trinsic.sdk.options.v1.Options.ServiceOptions other) {
-        if (other == trinsic.sdk.options.v1.Options.ServiceOptions.getDefaultInstance()) return this;
+        if (other == trinsic.sdk.options.v1.Options.ServiceOptions.getDefaultInstance())
+          return this;
         if (!other.getServerEndpoint().isEmpty()) {
           serverEndpoint_ = other.serverEndpoint_;
           onChanged();
@@ -757,18 +807,20 @@ public final class Options {
 
       private java.lang.Object serverEndpoint_ = "";
       /**
+       *
+       *
        * <pre>
        * Trinsic API endpoint; defaults to `prod.trinsic.cloud`
        * </pre>
        *
        * <code>string server_endpoint = 1;</code>
+       *
        * @return The serverEndpoint.
        */
       public java.lang.String getServerEndpoint() {
         java.lang.Object ref = serverEndpoint_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           serverEndpoint_ = s;
           return s;
@@ -777,20 +829,21 @@ public final class Options {
         }
       }
       /**
+       *
+       *
        * <pre>
        * Trinsic API endpoint; defaults to `prod.trinsic.cloud`
        * </pre>
        *
        * <code>string server_endpoint = 1;</code>
+       *
        * @return The bytes for serverEndpoint.
        */
-      public com.google.protobuf.ByteString
-          getServerEndpointBytes() {
+      public com.google.protobuf.ByteString getServerEndpointBytes() {
         java.lang.Object ref = serverEndpoint_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           serverEndpoint_ = b;
           return b;
         } else {
@@ -798,66 +851,76 @@ public final class Options {
         }
       }
       /**
+       *
+       *
        * <pre>
        * Trinsic API endpoint; defaults to `prod.trinsic.cloud`
        * </pre>
        *
        * <code>string server_endpoint = 1;</code>
+       *
        * @param value The serverEndpoint to set.
        * @return This builder for chaining.
        */
-      public Builder setServerEndpoint(
-          java.lang.String value) {
+      public Builder setServerEndpoint(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         serverEndpoint_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Trinsic API endpoint; defaults to `prod.trinsic.cloud`
        * </pre>
        *
        * <code>string server_endpoint = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearServerEndpoint() {
-        
+
         serverEndpoint_ = getDefaultInstance().getServerEndpoint();
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Trinsic API endpoint; defaults to `prod.trinsic.cloud`
        * </pre>
        *
        * <code>string server_endpoint = 1;</code>
+       *
        * @param value The bytes for serverEndpoint to set.
        * @return This builder for chaining.
        */
-      public Builder setServerEndpointBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setServerEndpointBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         serverEndpoint_ = value;
         onChanged();
         return this;
       }
 
-      private int serverPort_ ;
+      private int serverPort_;
       /**
+       *
+       *
        * <pre>
        * Trinsic API port; defaults to `443`
        * </pre>
        *
        * <code>int32 server_port = 2;</code>
+       *
        * @return The serverPort.
        */
       @java.lang.Override
@@ -865,42 +928,51 @@ public final class Options {
         return serverPort_;
       }
       /**
+       *
+       *
        * <pre>
        * Trinsic API port; defaults to `443`
        * </pre>
        *
        * <code>int32 server_port = 2;</code>
+       *
        * @param value The serverPort to set.
        * @return This builder for chaining.
        */
       public Builder setServerPort(int value) {
-        
+
         serverPort_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Trinsic API port; defaults to `443`
        * </pre>
        *
        * <code>int32 server_port = 2;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearServerPort() {
-        
+
         serverPort_ = 0;
         onChanged();
         return this;
       }
 
-      private boolean serverUseTls_ ;
+      private boolean serverUseTls_;
       /**
+       *
+       *
        * <pre>
        * Whether TLS is enabled between SDK and Trinsic API; defaults to `true`
        * </pre>
        *
        * <code>bool server_use_tls = 3;</code>
+       *
        * @return The serverUseTls.
        */
       @java.lang.Override
@@ -908,30 +980,36 @@ public final class Options {
         return serverUseTls_;
       }
       /**
+       *
+       *
        * <pre>
        * Whether TLS is enabled between SDK and Trinsic API; defaults to `true`
        * </pre>
        *
        * <code>bool server_use_tls = 3;</code>
+       *
        * @param value The serverUseTls to set.
        * @return This builder for chaining.
        */
       public Builder setServerUseTls(boolean value) {
-        
+
         serverUseTls_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Whether TLS is enabled between SDK and Trinsic API; defaults to `true`
        * </pre>
        *
        * <code>bool server_use_tls = 3;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearServerUseTls() {
-        
+
         serverUseTls_ = false;
         onChanged();
         return this;
@@ -939,18 +1017,20 @@ public final class Options {
 
       private java.lang.Object authToken_ = "";
       /**
+       *
+       *
        * <pre>
        * Authentication token for SDK calls; defaults to empty string (unauthenticated)
        * </pre>
        *
        * <code>string auth_token = 4;</code>
+       *
        * @return The authToken.
        */
       public java.lang.String getAuthToken() {
         java.lang.Object ref = authToken_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           authToken_ = s;
           return s;
@@ -959,20 +1039,21 @@ public final class Options {
         }
       }
       /**
+       *
+       *
        * <pre>
        * Authentication token for SDK calls; defaults to empty string (unauthenticated)
        * </pre>
        *
        * <code>string auth_token = 4;</code>
+       *
        * @return The bytes for authToken.
        */
-      public com.google.protobuf.ByteString
-          getAuthTokenBytes() {
+      public com.google.protobuf.ByteString getAuthTokenBytes() {
         java.lang.Object ref = authToken_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           authToken_ = b;
           return b;
         } else {
@@ -980,54 +1061,61 @@ public final class Options {
         }
       }
       /**
+       *
+       *
        * <pre>
        * Authentication token for SDK calls; defaults to empty string (unauthenticated)
        * </pre>
        *
        * <code>string auth_token = 4;</code>
+       *
        * @param value The authToken to set.
        * @return This builder for chaining.
        */
-      public Builder setAuthToken(
-          java.lang.String value) {
+      public Builder setAuthToken(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         authToken_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Authentication token for SDK calls; defaults to empty string (unauthenticated)
        * </pre>
        *
        * <code>string auth_token = 4;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearAuthToken() {
-        
+
         authToken_ = getDefaultInstance().getAuthToken();
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Authentication token for SDK calls; defaults to empty string (unauthenticated)
        * </pre>
        *
        * <code>string auth_token = 4;</code>
+       *
        * @param value The bytes for authToken to set.
        * @return This builder for chaining.
        */
-      public Builder setAuthTokenBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setAuthTokenBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         authToken_ = value;
         onChanged();
         return this;
@@ -1035,18 +1123,20 @@ public final class Options {
 
       private java.lang.Object defaultEcosystem_ = "";
       /**
+       *
+       *
        * <pre>
        * Default ecosystem ID to use for various SDK calls; defaults to `default`
        * </pre>
        *
        * <code>string default_ecosystem = 5;</code>
+       *
        * @return The defaultEcosystem.
        */
       public java.lang.String getDefaultEcosystem() {
         java.lang.Object ref = defaultEcosystem_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           defaultEcosystem_ = s;
           return s;
@@ -1055,20 +1145,21 @@ public final class Options {
         }
       }
       /**
+       *
+       *
        * <pre>
        * Default ecosystem ID to use for various SDK calls; defaults to `default`
        * </pre>
        *
        * <code>string default_ecosystem = 5;</code>
+       *
        * @return The bytes for defaultEcosystem.
        */
-      public com.google.protobuf.ByteString
-          getDefaultEcosystemBytes() {
+      public com.google.protobuf.ByteString getDefaultEcosystemBytes() {
         java.lang.Object ref = defaultEcosystem_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           defaultEcosystem_ = b;
           return b;
         } else {
@@ -1076,58 +1167,66 @@ public final class Options {
         }
       }
       /**
+       *
+       *
        * <pre>
        * Default ecosystem ID to use for various SDK calls; defaults to `default`
        * </pre>
        *
        * <code>string default_ecosystem = 5;</code>
+       *
        * @param value The defaultEcosystem to set.
        * @return This builder for chaining.
        */
-      public Builder setDefaultEcosystem(
-          java.lang.String value) {
+      public Builder setDefaultEcosystem(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         defaultEcosystem_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Default ecosystem ID to use for various SDK calls; defaults to `default`
        * </pre>
        *
        * <code>string default_ecosystem = 5;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearDefaultEcosystem() {
-        
+
         defaultEcosystem_ = getDefaultInstance().getDefaultEcosystem();
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Default ecosystem ID to use for various SDK calls; defaults to `default`
        * </pre>
        *
        * <code>string default_ecosystem = 5;</code>
+       *
        * @param value The bytes for defaultEcosystem to set.
        * @return This builder for chaining.
        */
-      public Builder setDefaultEcosystemBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setDefaultEcosystemBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         defaultEcosystem_ = value;
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1140,12 +1239,12 @@ public final class Options {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:sdk.options.v1.ServiceOptions)
     }
 
     // @@protoc_insertion_point(class_scope:sdk.options.v1.ServiceOptions)
     private static final trinsic.sdk.options.v1.Options.ServiceOptions DEFAULT_INSTANCE;
+
     static {
       DEFAULT_INSTANCE = new trinsic.sdk.options.v1.Options.ServiceOptions();
     }
@@ -1154,16 +1253,16 @@ public final class Options {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ServiceOptions>
-        PARSER = new com.google.protobuf.AbstractParser<ServiceOptions>() {
-      @java.lang.Override
-      public ServiceOptions parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ServiceOptions(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<ServiceOptions> PARSER =
+        new com.google.protobuf.AbstractParser<ServiceOptions>() {
+          @java.lang.Override
+          public ServiceOptions parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new ServiceOptions(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<ServiceOptions> parser() {
       return PARSER;
@@ -1178,41 +1277,40 @@ public final class Options {
     public trinsic.sdk.options.v1.Options.ServiceOptions getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_sdk_options_v1_ServiceOptions_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_sdk_options_v1_ServiceOptions_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_sdk_options_v1_ServiceOptions_fieldAccessorTable;
 
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
+  public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
+
+  private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
+
   static {
     java.lang.String[] descriptorData = {
-      "\n\034sdk/options/v1/options.proto\022\016sdk.opti" +
-      "ons.v1\"\205\001\n\016ServiceOptions\022\027\n\017server_endp" +
-      "oint\030\001 \001(\t\022\023\n\013server_port\030\002 \001(\005\022\026\n\016serve" +
-      "r_use_tls\030\003 \001(\010\022\022\n\nauth_token\030\004 \001(\t\022\031\n\021d" +
-      "efault_ecosystem\030\005 \001(\tBW\n\026trinsic.sdk.op" +
-      "tions.v1Z$github.com/trinsic-id/sdk/opti" +
-      "ons/v1\252\002\026Trinsic.Sdk.Options.V1b\006proto3"
+      "\n\034sdk/options/v1/options.proto\022\016sdk.opti"
+          + "ons.v1\"\205\001\n\016ServiceOptions\022\027\n\017server_endp"
+          + "oint\030\001 \001(\t\022\023\n\013server_port\030\002 \001(\005\022\026\n\016serve"
+          + "r_use_tls\030\003 \001(\010\022\022\n\nauth_token\030\004 \001(\t\022\031\n\021d"
+          + "efault_ecosystem\030\005 \001(\tBW\n\026trinsic.sdk.op"
+          + "tions.v1Z$github.com/trinsic-id/sdk/opti"
+          + "ons/v1\252\002\026Trinsic.Sdk.Options.V1b\006proto3"
     };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-        });
+    descriptor =
+        com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
+            descriptorData, new com.google.protobuf.Descriptors.FileDescriptor[] {});
     internal_static_sdk_options_v1_ServiceOptions_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_sdk_options_v1_ServiceOptions_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_sdk_options_v1_ServiceOptions_descriptor,
-        new java.lang.String[] { "ServerEndpoint", "ServerPort", "ServerUseTls", "AuthToken", "DefaultEcosystem", });
+        getDescriptor().getMessageTypes().get(0);
+    internal_static_sdk_options_v1_ServiceOptions_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_sdk_options_v1_ServiceOptions_descriptor,
+            new java.lang.String[] {
+              "ServerEndpoint", "ServerPort", "ServerUseTls", "AuthToken", "DefaultEcosystem",
+            });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
