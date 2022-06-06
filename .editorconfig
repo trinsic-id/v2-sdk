@@ -1,0 +1,52 @@
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+indent_style = space
+charset = utf-8
+
+[*.cs]
+trim_trailing_whitespace = true
+indent_size = 4
+insert_final_newline = true
+
+# CS1701: Assuming assembly reference matches identity
+dotnet_diagnostic.CS1701.severity = silent
+
+# CS1702: Assuming assembly reference matches identity
+dotnet_diagnostic.CS1702.severity = silent
+
+#IDE1006	Naming rule violation: Missing suffix: 'Async'
+
+dotnet_diagnostic.IDE1006.severity = silent
+
+[*.proto]
+trim_trailing_whitespace = true
+indent_size = 4
+insert_final_newline = true
+
+[*.rs]
+max_line_length = 120
+
+[*.{cs,vb}]
+dotnet_naming_rule.private_members_with_underscore.symbols  = private_fields
+dotnet_naming_rule.private_members_with_underscore.style    = prefix_underscore
+dotnet_naming_rule.private_members_with_underscore.severity = suggestion
+
+dotnet_naming_symbols.private_fields.applicable_kinds           = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private
+dotnet_naming_symbols.private_fields.required_modifiers         = readonly
+
+dotnet_naming_style.prefix_underscore.capitalization = camel_case
+dotnet_naming_style.prefix_underscore.required_prefix = _
+
+# Async methods should have "Async" suffix
+dotnet_naming_rule.async_methods_end_in_async.symbols = any_async_methods
+dotnet_naming_rule.async_methods_end_in_async.style = end_in_async
+dotnet_naming_rule.async_methods_end_in_async.severity = warning
+
+dotnet_naming_symbols.any_async_methods.applicable_kinds = method
+dotnet_naming_symbols.any_async_methods.applicable_accessibilities = *
+dotnet_naming_symbols.any_async_methods.required_modifiers = async
+
+dotnet_naming_style.end_in_async.required_suffix = Async
+dotnet_naming_style.end_in_async.capitalization = pascal_case
