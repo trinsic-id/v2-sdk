@@ -46,29 +46,91 @@ public final class AccountGrpc {
     return getSignInMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<trinsic.services.account.v1.AccountOuterClass.InfoRequest,
-      trinsic.services.account.v1.AccountOuterClass.InfoResponse> getInfoMethod;
+  private static volatile io.grpc.MethodDescriptor<trinsic.services.account.v1.AccountOuterClass.LoginRequest,
+      trinsic.services.account.v1.AccountOuterClass.LoginResponse> getLoginMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "Login",
+      requestType = trinsic.services.account.v1.AccountOuterClass.LoginRequest.class,
+      responseType = trinsic.services.account.v1.AccountOuterClass.LoginResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<trinsic.services.account.v1.AccountOuterClass.LoginRequest,
+      trinsic.services.account.v1.AccountOuterClass.LoginResponse> getLoginMethod() {
+    io.grpc.MethodDescriptor<trinsic.services.account.v1.AccountOuterClass.LoginRequest, trinsic.services.account.v1.AccountOuterClass.LoginResponse> getLoginMethod;
+    if ((getLoginMethod = AccountGrpc.getLoginMethod) == null) {
+      synchronized (AccountGrpc.class) {
+        if ((getLoginMethod = AccountGrpc.getLoginMethod) == null) {
+          AccountGrpc.getLoginMethod = getLoginMethod =
+              io.grpc.MethodDescriptor.<trinsic.services.account.v1.AccountOuterClass.LoginRequest, trinsic.services.account.v1.AccountOuterClass.LoginResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Login"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  trinsic.services.account.v1.AccountOuterClass.LoginRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  trinsic.services.account.v1.AccountOuterClass.LoginResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new AccountMethodDescriptorSupplier("Login"))
+              .build();
+        }
+      }
+    }
+    return getLoginMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<trinsic.services.account.v1.AccountOuterClass.LoginConfirmRequest,
+      trinsic.services.account.v1.AccountOuterClass.LoginConfirmResponse> getLoginConfirmMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "LoginConfirm",
+      requestType = trinsic.services.account.v1.AccountOuterClass.LoginConfirmRequest.class,
+      responseType = trinsic.services.account.v1.AccountOuterClass.LoginConfirmResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<trinsic.services.account.v1.AccountOuterClass.LoginConfirmRequest,
+      trinsic.services.account.v1.AccountOuterClass.LoginConfirmResponse> getLoginConfirmMethod() {
+    io.grpc.MethodDescriptor<trinsic.services.account.v1.AccountOuterClass.LoginConfirmRequest, trinsic.services.account.v1.AccountOuterClass.LoginConfirmResponse> getLoginConfirmMethod;
+    if ((getLoginConfirmMethod = AccountGrpc.getLoginConfirmMethod) == null) {
+      synchronized (AccountGrpc.class) {
+        if ((getLoginConfirmMethod = AccountGrpc.getLoginConfirmMethod) == null) {
+          AccountGrpc.getLoginConfirmMethod = getLoginConfirmMethod =
+              io.grpc.MethodDescriptor.<trinsic.services.account.v1.AccountOuterClass.LoginConfirmRequest, trinsic.services.account.v1.AccountOuterClass.LoginConfirmResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "LoginConfirm"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  trinsic.services.account.v1.AccountOuterClass.LoginConfirmRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  trinsic.services.account.v1.AccountOuterClass.LoginConfirmResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new AccountMethodDescriptorSupplier("LoginConfirm"))
+              .build();
+        }
+      }
+    }
+    return getLoginConfirmMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<trinsic.services.account.v1.AccountOuterClass.AccountInfoRequest,
+      trinsic.services.account.v1.AccountOuterClass.AccountInfoResponse> getInfoMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Info",
-      requestType = trinsic.services.account.v1.AccountOuterClass.InfoRequest.class,
-      responseType = trinsic.services.account.v1.AccountOuterClass.InfoResponse.class,
+      requestType = trinsic.services.account.v1.AccountOuterClass.AccountInfoRequest.class,
+      responseType = trinsic.services.account.v1.AccountOuterClass.AccountInfoResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<trinsic.services.account.v1.AccountOuterClass.InfoRequest,
-      trinsic.services.account.v1.AccountOuterClass.InfoResponse> getInfoMethod() {
-    io.grpc.MethodDescriptor<trinsic.services.account.v1.AccountOuterClass.InfoRequest, trinsic.services.account.v1.AccountOuterClass.InfoResponse> getInfoMethod;
+  public static io.grpc.MethodDescriptor<trinsic.services.account.v1.AccountOuterClass.AccountInfoRequest,
+      trinsic.services.account.v1.AccountOuterClass.AccountInfoResponse> getInfoMethod() {
+    io.grpc.MethodDescriptor<trinsic.services.account.v1.AccountOuterClass.AccountInfoRequest, trinsic.services.account.v1.AccountOuterClass.AccountInfoResponse> getInfoMethod;
     if ((getInfoMethod = AccountGrpc.getInfoMethod) == null) {
       synchronized (AccountGrpc.class) {
         if ((getInfoMethod = AccountGrpc.getInfoMethod) == null) {
           AccountGrpc.getInfoMethod = getInfoMethod =
-              io.grpc.MethodDescriptor.<trinsic.services.account.v1.AccountOuterClass.InfoRequest, trinsic.services.account.v1.AccountOuterClass.InfoResponse>newBuilder()
+              io.grpc.MethodDescriptor.<trinsic.services.account.v1.AccountOuterClass.AccountInfoRequest, trinsic.services.account.v1.AccountOuterClass.AccountInfoResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Info"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.account.v1.AccountOuterClass.InfoRequest.getDefaultInstance()))
+                  trinsic.services.account.v1.AccountOuterClass.AccountInfoRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.account.v1.AccountOuterClass.InfoResponse.getDefaultInstance()))
+                  trinsic.services.account.v1.AccountOuterClass.AccountInfoResponse.getDefaultInstance()))
               .setSchemaDescriptor(new AccountMethodDescriptorSupplier("Info"))
               .build();
         }
@@ -199,11 +261,31 @@ public final class AccountGrpc {
 
     /**
      * <pre>
+     * Login to account. If account doesn't exist, new will be created
+     * </pre>
+     */
+    public void login(trinsic.services.account.v1.AccountOuterClass.LoginRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.account.v1.AccountOuterClass.LoginResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getLoginMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Confirm login step by responding to the challenge request
+     * </pre>
+     */
+    public void loginConfirm(trinsic.services.account.v1.AccountOuterClass.LoginConfirmRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.account.v1.AccountOuterClass.LoginConfirmResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getLoginConfirmMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
      * Get account information
      * </pre>
      */
-    public void info(trinsic.services.account.v1.AccountOuterClass.InfoRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.account.v1.AccountOuterClass.InfoResponse> responseObserver) {
+    public void info(trinsic.services.account.v1.AccountOuterClass.AccountInfoRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.account.v1.AccountOuterClass.AccountInfoResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getInfoMethod(), responseObserver);
     }
 
@@ -237,11 +319,25 @@ public final class AccountGrpc {
                 trinsic.services.account.v1.AccountOuterClass.SignInResponse>(
                   this, METHODID_SIGN_IN)))
           .addMethod(
+            getLoginMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                trinsic.services.account.v1.AccountOuterClass.LoginRequest,
+                trinsic.services.account.v1.AccountOuterClass.LoginResponse>(
+                  this, METHODID_LOGIN)))
+          .addMethod(
+            getLoginConfirmMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                trinsic.services.account.v1.AccountOuterClass.LoginConfirmRequest,
+                trinsic.services.account.v1.AccountOuterClass.LoginConfirmResponse>(
+                  this, METHODID_LOGIN_CONFIRM)))
+          .addMethod(
             getInfoMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                trinsic.services.account.v1.AccountOuterClass.InfoRequest,
-                trinsic.services.account.v1.AccountOuterClass.InfoResponse>(
+                trinsic.services.account.v1.AccountOuterClass.AccountInfoRequest,
+                trinsic.services.account.v1.AccountOuterClass.AccountInfoResponse>(
                   this, METHODID_INFO)))
           .addMethod(
             getListDevicesMethod(),
@@ -288,11 +384,33 @@ public final class AccountGrpc {
 
     /**
      * <pre>
+     * Login to account. If account doesn't exist, new will be created
+     * </pre>
+     */
+    public void login(trinsic.services.account.v1.AccountOuterClass.LoginRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.account.v1.AccountOuterClass.LoginResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getLoginMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Confirm login step by responding to the challenge request
+     * </pre>
+     */
+    public void loginConfirm(trinsic.services.account.v1.AccountOuterClass.LoginConfirmRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.account.v1.AccountOuterClass.LoginConfirmResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getLoginConfirmMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
      * Get account information
      * </pre>
      */
-    public void info(trinsic.services.account.v1.AccountOuterClass.InfoRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.account.v1.AccountOuterClass.InfoResponse> responseObserver) {
+    public void info(trinsic.services.account.v1.AccountOuterClass.AccountInfoRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.account.v1.AccountOuterClass.AccountInfoResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getInfoMethod(), getCallOptions()), request, responseObserver);
     }
@@ -346,10 +464,30 @@ public final class AccountGrpc {
 
     /**
      * <pre>
+     * Login to account. If account doesn't exist, new will be created
+     * </pre>
+     */
+    public trinsic.services.account.v1.AccountOuterClass.LoginResponse login(trinsic.services.account.v1.AccountOuterClass.LoginRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getLoginMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Confirm login step by responding to the challenge request
+     * </pre>
+     */
+    public trinsic.services.account.v1.AccountOuterClass.LoginConfirmResponse loginConfirm(trinsic.services.account.v1.AccountOuterClass.LoginConfirmRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getLoginConfirmMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
      * Get account information
      * </pre>
      */
-    public trinsic.services.account.v1.AccountOuterClass.InfoResponse info(trinsic.services.account.v1.AccountOuterClass.InfoRequest request) {
+    public trinsic.services.account.v1.AccountOuterClass.AccountInfoResponse info(trinsic.services.account.v1.AccountOuterClass.AccountInfoRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getInfoMethod(), getCallOptions(), request);
     }
@@ -402,11 +540,33 @@ public final class AccountGrpc {
 
     /**
      * <pre>
+     * Login to account. If account doesn't exist, new will be created
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.account.v1.AccountOuterClass.LoginResponse> login(
+        trinsic.services.account.v1.AccountOuterClass.LoginRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getLoginMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * Confirm login step by responding to the challenge request
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.account.v1.AccountOuterClass.LoginConfirmResponse> loginConfirm(
+        trinsic.services.account.v1.AccountOuterClass.LoginConfirmRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getLoginConfirmMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
      * Get account information
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.account.v1.AccountOuterClass.InfoResponse> info(
-        trinsic.services.account.v1.AccountOuterClass.InfoRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.account.v1.AccountOuterClass.AccountInfoResponse> info(
+        trinsic.services.account.v1.AccountOuterClass.AccountInfoRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getInfoMethod(), getCallOptions()), request);
     }
@@ -435,9 +595,11 @@ public final class AccountGrpc {
   }
 
   private static final int METHODID_SIGN_IN = 0;
-  private static final int METHODID_INFO = 1;
-  private static final int METHODID_LIST_DEVICES = 2;
-  private static final int METHODID_REVOKE_DEVICE = 3;
+  private static final int METHODID_LOGIN = 1;
+  private static final int METHODID_LOGIN_CONFIRM = 2;
+  private static final int METHODID_INFO = 3;
+  private static final int METHODID_LIST_DEVICES = 4;
+  private static final int METHODID_REVOKE_DEVICE = 5;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -460,9 +622,17 @@ public final class AccountGrpc {
           serviceImpl.signIn((trinsic.services.account.v1.AccountOuterClass.SignInRequest) request,
               (io.grpc.stub.StreamObserver<trinsic.services.account.v1.AccountOuterClass.SignInResponse>) responseObserver);
           break;
+        case METHODID_LOGIN:
+          serviceImpl.login((trinsic.services.account.v1.AccountOuterClass.LoginRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.account.v1.AccountOuterClass.LoginResponse>) responseObserver);
+          break;
+        case METHODID_LOGIN_CONFIRM:
+          serviceImpl.loginConfirm((trinsic.services.account.v1.AccountOuterClass.LoginConfirmRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.account.v1.AccountOuterClass.LoginConfirmResponse>) responseObserver);
+          break;
         case METHODID_INFO:
-          serviceImpl.info((trinsic.services.account.v1.AccountOuterClass.InfoRequest) request,
-              (io.grpc.stub.StreamObserver<trinsic.services.account.v1.AccountOuterClass.InfoResponse>) responseObserver);
+          serviceImpl.info((trinsic.services.account.v1.AccountOuterClass.AccountInfoRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.account.v1.AccountOuterClass.AccountInfoResponse>) responseObserver);
           break;
         case METHODID_LIST_DEVICES:
           serviceImpl.listDevices((trinsic.services.account.v1.AccountOuterClass.ListDevicesRequest) request,
@@ -534,6 +704,8 @@ public final class AccountGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new AccountFileDescriptorSupplier())
               .addMethod(getSignInMethod())
+              .addMethod(getLoginMethod())
+              .addMethod(getLoginConfirmMethod())
               .addMethod(getInfoMethod())
               .addMethod(getListDevicesMethod())
               .addMethod(getRevokeDeviceMethod())

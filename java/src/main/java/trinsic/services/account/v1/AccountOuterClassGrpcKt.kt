@@ -40,7 +40,17 @@ object AccountGrpcKt {
     @JvmStatic
     get() = AccountGrpc.getSignInMethod()
 
-  val infoMethod: MethodDescriptor<AccountOuterClass.InfoRequest, AccountOuterClass.InfoResponse>
+  val loginMethod: MethodDescriptor<AccountOuterClass.LoginRequest, AccountOuterClass.LoginResponse>
+    @JvmStatic
+    get() = AccountGrpc.getLoginMethod()
+
+  val loginConfirmMethod: MethodDescriptor<AccountOuterClass.LoginConfirmRequest,
+      AccountOuterClass.LoginConfirmResponse>
+    @JvmStatic
+    get() = AccountGrpc.getLoginConfirmMethod()
+
+  val infoMethod: MethodDescriptor<AccountOuterClass.AccountInfoRequest,
+      AccountOuterClass.AccountInfoResponse>
     @JvmStatic
     get() = AccountGrpc.getInfoMethod()
 
@@ -97,8 +107,48 @@ object AccountGrpcKt {
      *
      * @return The single response from the server.
      */
-    suspend fun info(request: AccountOuterClass.InfoRequest, headers: Metadata = Metadata()):
-        AccountOuterClass.InfoResponse = unaryRpc(
+    suspend fun login(request: AccountOuterClass.LoginRequest, headers: Metadata = Metadata()):
+        AccountOuterClass.LoginResponse = unaryRpc(
+      channel,
+      AccountGrpc.getLoginMethod(),
+      request,
+      callOptions,
+      headers
+    )
+    /**
+     * Executes this RPC and returns the response message, suspending until the RPC completes
+     * with [`Status.OK`][Status].  If the RPC completes with another status, a corresponding
+     * [StatusException] is thrown.  If this coroutine is cancelled, the RPC is also cancelled
+     * with the corresponding exception as a cause.
+     *
+     * @param request The request message to send to the server.
+     *
+     * @param headers Metadata to attach to the request.  Most users will not need this.
+     *
+     * @return The single response from the server.
+     */
+    suspend fun loginConfirm(request: AccountOuterClass.LoginConfirmRequest, headers: Metadata =
+        Metadata()): AccountOuterClass.LoginConfirmResponse = unaryRpc(
+      channel,
+      AccountGrpc.getLoginConfirmMethod(),
+      request,
+      callOptions,
+      headers
+    )
+    /**
+     * Executes this RPC and returns the response message, suspending until the RPC completes
+     * with [`Status.OK`][Status].  If the RPC completes with another status, a corresponding
+     * [StatusException] is thrown.  If this coroutine is cancelled, the RPC is also cancelled
+     * with the corresponding exception as a cause.
+     *
+     * @param request The request message to send to the server.
+     *
+     * @param headers Metadata to attach to the request.  Most users will not need this.
+     *
+     * @return The single response from the server.
+     */
+    suspend fun info(request: AccountOuterClass.AccountInfoRequest, headers: Metadata = Metadata()):
+        AccountOuterClass.AccountInfoResponse = unaryRpc(
       channel,
       AccountGrpc.getInfoMethod(),
       request,
@@ -168,6 +218,36 @@ object AccountGrpcKt {
         StatusException(UNIMPLEMENTED.withDescription("Method services.account.v1.Account.SignIn is unimplemented"))
 
     /**
+     * Returns the response to an RPC for services.account.v1.Account.Login.
+     *
+     * If this method fails with a [StatusException], the RPC will fail with the corresponding
+     * [Status].  If this method fails with a [java.util.concurrent.CancellationException], the RPC
+     * will fail
+     * with status `Status.CANCELLED`.  If this method fails for any other reason, the RPC will
+     * fail with `Status.UNKNOWN` with the exception as a cause.
+     *
+     * @param request The request from the client.
+     */
+    open suspend fun login(request: AccountOuterClass.LoginRequest): AccountOuterClass.LoginResponse
+        = throw
+        StatusException(UNIMPLEMENTED.withDescription("Method services.account.v1.Account.Login is unimplemented"))
+
+    /**
+     * Returns the response to an RPC for services.account.v1.Account.LoginConfirm.
+     *
+     * If this method fails with a [StatusException], the RPC will fail with the corresponding
+     * [Status].  If this method fails with a [java.util.concurrent.CancellationException], the RPC
+     * will fail
+     * with status `Status.CANCELLED`.  If this method fails for any other reason, the RPC will
+     * fail with `Status.UNKNOWN` with the exception as a cause.
+     *
+     * @param request The request from the client.
+     */
+    open suspend fun loginConfirm(request: AccountOuterClass.LoginConfirmRequest):
+        AccountOuterClass.LoginConfirmResponse = throw
+        StatusException(UNIMPLEMENTED.withDescription("Method services.account.v1.Account.LoginConfirm is unimplemented"))
+
+    /**
      * Returns the response to an RPC for services.account.v1.Account.Info.
      *
      * If this method fails with a [StatusException], the RPC will fail with the corresponding
@@ -178,8 +258,8 @@ object AccountGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun info(request: AccountOuterClass.InfoRequest): AccountOuterClass.InfoResponse =
-        throw
+    open suspend fun info(request: AccountOuterClass.AccountInfoRequest):
+        AccountOuterClass.AccountInfoResponse = throw
         StatusException(UNIMPLEMENTED.withDescription("Method services.account.v1.Account.Info is unimplemented"))
 
     /**
@@ -217,6 +297,16 @@ object AccountGrpcKt {
       context = this.context,
       descriptor = AccountGrpc.getSignInMethod(),
       implementation = ::signIn
+    ))
+      .addMethod(unaryServerMethodDefinition(
+      context = this.context,
+      descriptor = AccountGrpc.getLoginMethod(),
+      implementation = ::login
+    ))
+      .addMethod(unaryServerMethodDefinition(
+      context = this.context,
+      descriptor = AccountGrpc.getLoginConfirmMethod(),
+      implementation = ::loginConfirm
     ))
       .addMethod(unaryServerMethodDefinition(
       context = this.context,

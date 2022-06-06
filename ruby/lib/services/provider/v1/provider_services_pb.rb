@@ -20,6 +20,16 @@ module Services
           # Create new ecosystem and assign the authenticated user as owner
           rpc :CreateEcosystem, ::Services::Provider::V1::CreateEcosystemRequest,
               ::Services::Provider::V1::CreateEcosystemResponse
+          # Update an existing ecosystem
+          rpc :UpdateEcosystem, ::Services::Provider::V1::UpdateEcosystemRequest,
+              ::Services::Provider::V1::UpdateEcosystemResponse
+          # Add a webhook endpoint to the ecosystem
+          rpc :AddWebhook, ::Services::Provider::V1::AddWebhookRequest, ::Services::Provider::V1::AddWebhookResponse
+          # Delete a webhook endpoint from the ecosystem
+          rpc :DeleteWebhook, ::Services::Provider::V1::DeleteWebhookRequest,
+              ::Services::Provider::V1::DeleteWebhookResponse
+          # Get ecosystem information
+          rpc :Info, ::Services::Provider::V1::EcosystemInfoRequest, ::Services::Provider::V1::EcosystemInfoResponse
           # Generates an unprotected authentication token that can be used to
           # configure server side applications
           rpc :GenerateToken, ::Services::Provider::V1::GenerateTokenRequest,
@@ -32,6 +42,9 @@ module Services
           # Returns the public key being used to create/verify oberon tokens
           rpc :GetOberonKey, ::Services::Provider::V1::GetOberonKeyRequest,
               ::Services::Provider::V1::GetOberonKeyResponse
+          # Generate a signed token (JWT) that can be used to connect to the message bus
+          rpc :GetEventToken, ::Services::Provider::V1::GetEventTokenRequest,
+              ::Services::Provider::V1::GetEventTokenResponse
         end
 
         Stub = Service.rpc_stub_class

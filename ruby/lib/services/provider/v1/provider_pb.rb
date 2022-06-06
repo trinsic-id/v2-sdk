@@ -45,6 +45,12 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :name, :string, 2
       optional :description, :string, 3
       optional :uri, :string, 4
+      repeated :webhooks, :message, 5, 'services.provider.v1.WebhookConfig'
+    end
+    add_message 'services.provider.v1.WebhookConfig' do
+      optional :id, :string, 1
+      optional :destination_url, :string, 2
+      repeated :events, :string, 4
     end
     add_message 'services.provider.v1.CreateEcosystemRequest' do
       optional :name, :string, 1
@@ -57,6 +63,36 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :profile, :message, 2, 'services.account.v1.AccountProfile'
       optional :confirmation_method, :enum, 3, 'services.account.v1.ConfirmationMethod'
     end
+    add_message 'services.provider.v1.UpdateEcosystemRequest' do
+      optional :ecosystem_id, :string, 1
+      optional :description, :string, 2
+      optional :uri, :string, 3
+    end
+    add_message 'services.provider.v1.UpdateEcosystemResponse' do
+      optional :Ecosystem, :message, 1, 'services.provider.v1.Ecosystem'
+    end
+    add_message 'services.provider.v1.AddWebhookRequest' do
+      optional :ecosystem_id, :string, 1
+      optional :destination_url, :string, 2
+      optional :secret, :string, 3
+      repeated :events, :string, 4
+    end
+    add_message 'services.provider.v1.AddWebhookResponse' do
+      optional :ecosystem, :message, 1, 'services.provider.v1.Ecosystem'
+    end
+    add_message 'services.provider.v1.DeleteWebhookRequest' do
+      optional :ecosystem_id, :string, 1
+      optional :webhook_id, :string, 2
+    end
+    add_message 'services.provider.v1.DeleteWebhookResponse' do
+      optional :ecosystem, :message, 1, 'services.provider.v1.Ecosystem'
+    end
+    add_message 'services.provider.v1.EcosystemInfoRequest' do
+      optional :ecosystem_id, :string, 1
+    end
+    add_message 'services.provider.v1.EcosystemInfoResponse' do
+      optional :ecosystem, :message, 1, 'services.provider.v1.Ecosystem'
+    end
     add_message 'services.provider.v1.GenerateTokenRequest' do
       optional :description, :string, 1
     end
@@ -67,6 +103,12 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_message 'services.provider.v1.GetOberonKeyResponse' do
       optional :key, :string, 1
+    end
+    add_message 'services.provider.v1.GetEventTokenRequest' do
+      optional :pk, :bytes, 1
+    end
+    add_message 'services.provider.v1.GetEventTokenResponse' do
+      optional :token, :string, 1
     end
     add_enum 'services.provider.v1.ParticipantType' do
       value :participant_type_individual, 0
@@ -86,12 +128,23 @@ module Services
       InvitationStatusResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.provider.v1.InvitationStatusResponse').msgclass
       InvitationStatusResponse::Status = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.provider.v1.InvitationStatusResponse.Status').enummodule
       Ecosystem = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.provider.v1.Ecosystem').msgclass
+      WebhookConfig = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.provider.v1.WebhookConfig').msgclass
       CreateEcosystemRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.provider.v1.CreateEcosystemRequest').msgclass
       CreateEcosystemResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.provider.v1.CreateEcosystemResponse').msgclass
+      UpdateEcosystemRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.provider.v1.UpdateEcosystemRequest').msgclass
+      UpdateEcosystemResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.provider.v1.UpdateEcosystemResponse').msgclass
+      AddWebhookRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.provider.v1.AddWebhookRequest').msgclass
+      AddWebhookResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.provider.v1.AddWebhookResponse').msgclass
+      DeleteWebhookRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.provider.v1.DeleteWebhookRequest').msgclass
+      DeleteWebhookResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.provider.v1.DeleteWebhookResponse').msgclass
+      EcosystemInfoRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.provider.v1.EcosystemInfoRequest').msgclass
+      EcosystemInfoResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.provider.v1.EcosystemInfoResponse').msgclass
       GenerateTokenRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.provider.v1.GenerateTokenRequest').msgclass
       GenerateTokenResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.provider.v1.GenerateTokenResponse').msgclass
       GetOberonKeyRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.provider.v1.GetOberonKeyRequest').msgclass
       GetOberonKeyResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.provider.v1.GetOberonKeyResponse').msgclass
+      GetEventTokenRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.provider.v1.GetEventTokenRequest').msgclass
+      GetEventTokenResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.provider.v1.GetEventTokenResponse').msgclass
       ParticipantType = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.provider.v1.ParticipantType').enummodule
     end
   end
