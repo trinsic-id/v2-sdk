@@ -17,7 +17,7 @@ from build_sdks import update_line, clean_dir, get_language_dir
 
 
 def protoc_plugin_versions(key: str = None) -> Union[str, Dict[str, str]]:
-    version_dict = {"java": "1.46.0", "kotlin": "1.2.1", "mkdocs": "v1.5.0"}
+    version_dict = {"java": "1.46.0", "kotlin": "1.2.1", "mkdocs": "v1.5.0", "java-format": "v1.15.0"}
     if key:
         return version_dict[key]
     else:
@@ -52,12 +52,17 @@ def kotlin_plugin() -> str:
     )
 
 
+def java_format_plugin() -> str:
+    return abspath(join(plugin_path(),'google-java-format.jar'))
+
+
 def download_protoc_plugins() -> None:
     clean_dir(plugin_path())
     kotlin_jar = join(plugin_path(), "protoc-gen-grpc-kotlin.jar")
 
     java_plugin_version = protoc_plugin_versions("java")
     kotlin_plugin_version = protoc_plugin_versions("kotlin")
+    java_format_plugin_version = protoc_plugin_versions("java-format")
     urllib.request.urlretrieve(
         f"https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/{java_plugin_version}/protoc-gen-grpc-java-{java_plugin_version}-{system().lower()}-x86_64.exe",
         java_plugin(),
@@ -66,6 +71,8 @@ def download_protoc_plugins() -> None:
         f"https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-kotlin/{kotlin_plugin_version}/protoc-gen-grpc-kotlin-{kotlin_plugin_version}-jdk7.jar",
         kotlin_jar,
     )
+    urllib.request.urlretrieve(f"https://github.com/google/google-java-format/releases/download/{java_format_plugin_version}/google-java-format-{java_format_plugin_version.replace('v','')}-all-deps.jar",
+                               java_format_plugin())
 
     with open(kotlin_plugin(), "w") as fid:
         if system().lower() == "windows":
@@ -178,8 +185,8 @@ def update_ruby():
 
 
 def update_java():
-    java_path = get_language_dir("java")
-    lang_proto_path = join(java_path, "src", "main", "java")
+    language_path = get_language_dir("java")
+    lang_proto_path = join(language_path, "src", "main", "java")
     java_services = join(lang_proto_path, "trinsic", "services")
     for subdir in os.listdir(java_services):
         java_subdir = join(java_services, subdir)
@@ -202,6 +209,9 @@ def update_java():
     )
     # remove okapi pbmse
     clean_dir(join(lang_proto_path, "trinsic", "okapi"))
+
+    subprocess.Popen(args=f'java -version', cwd=language_path, shell=True).wait()
+    subprocess.Popen(args=f'java -jar {java_format_plugin()} .', cwd=language_path, shell=True).wait()
 
 
 def update_markdown():
