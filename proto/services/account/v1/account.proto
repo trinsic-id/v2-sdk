@@ -124,6 +124,16 @@ message AccountEcosystem {
     string uri = 4;
 }
 
+// Authorize ecosystem to receive wallet envents
+message AuthorizeWebhookRequest {
+    // Events to authorize access to. Default is "*" (all events)
+    repeated string events = 1;
+}
+
+// Response to `AuthorizeWebhookRequest`
+message AuthorizeWebhookResponse {
+}
+
 // Login
 
 message LoginRequest {
@@ -179,5 +189,5 @@ service Account {
     rpc RevokeDevice        (RevokeDeviceRequest)       returns (RevokeDeviceResponse);
 
     // Authorize Ecosystem to receive webhook events
-    rpc AuthorizeWebhook(AuthorizeWebhookRequest) returns (AuthorizeWebhookResponse);
+    rpc AuthorizeWebhook(AuthorizeWebhookRequest)       returns (AuthorizeWebhookResponse);
 }

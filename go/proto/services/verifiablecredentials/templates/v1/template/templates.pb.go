@@ -7,10 +7,10 @@
 package template
 
 import (
+	_ "github.com/trinsic-id/sdk/go/proto/services/options"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
-_ "github.com/trinsic-id/sdk/go/proto/services/options"
 	sync "sync"
 )
 

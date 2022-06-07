@@ -7,11 +7,10 @@
 package account
 
 import (
-_ "github.com/trinsic-id/sdk/go/proto/protobuf/options"
+	_ "github.com/trinsic-id/sdk/go/proto/services/options"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
-_ "github.com/trinsic-id/sdk/go/proto/services/options"
 	sync "sync"
 )
 
@@ -563,7 +562,7 @@ func (x *AccountInfoResponse) GetPublicDid() string {
 	return ""
 }
 
-func (x *InfoResponse) GetAuthorizedWebhooks() []string {
+func (x *AccountInfoResponse) GetAuthorizedWebhooks() []string {
 	if x != nil {
 		return x.AuthorizedWebhooks
 	}
@@ -793,6 +792,94 @@ func (x *AccountEcosystem) GetUri() string {
 	return ""
 }
 
+// Authorize ecosystem to receive wallet envents
+type AuthorizeWebhookRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// Events to authorize access to. Default is "*" (all events)
+	Events []string `protobuf:"bytes,1,rep,name=events,proto3" json:"events,omitempty"`
+}
+
+func (x *AuthorizeWebhookRequest) Reset() {
+	*x = AuthorizeWebhookRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_services_account_v1_account_proto_msgTypes[12]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *AuthorizeWebhookRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AuthorizeWebhookRequest) ProtoMessage() {}
+
+func (x *AuthorizeWebhookRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_services_account_v1_account_proto_msgTypes[12]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AuthorizeWebhookRequest.ProtoReflect.Descriptor instead.
+func (*AuthorizeWebhookRequest) Descriptor() ([]byte, []int) {
+	return file_services_account_v1_account_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *AuthorizeWebhookRequest) GetEvents() []string {
+	if x != nil {
+		return x.Events
+	}
+	return nil
+}
+
+// Response to `AuthorizeWebhookRequest`
+type AuthorizeWebhookResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *AuthorizeWebhookResponse) Reset() {
+	*x = AuthorizeWebhookResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_services_account_v1_account_proto_msgTypes[13]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *AuthorizeWebhookResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AuthorizeWebhookResponse) ProtoMessage() {}
+
+func (x *AuthorizeWebhookResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_services_account_v1_account_proto_msgTypes[13]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AuthorizeWebhookResponse.ProtoReflect.Descriptor instead.
+func (*AuthorizeWebhookResponse) Descriptor() ([]byte, []int) {
+	return file_services_account_v1_account_proto_rawDescGZIP(), []int{13}
+}
+
 type LoginRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -810,7 +897,7 @@ type LoginRequest struct {
 func (x *LoginRequest) Reset() {
 	*x = LoginRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_services_account_v1_account_proto_msgTypes[12]
+		mi := &file_services_account_v1_account_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -823,7 +910,7 @@ func (x *LoginRequest) String() string {
 func (*LoginRequest) ProtoMessage() {}
 
 func (x *LoginRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_services_account_v1_account_proto_msgTypes[12]
+	mi := &file_services_account_v1_account_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -836,7 +923,7 @@ func (x *LoginRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginRequest.ProtoReflect.Descriptor instead.
 func (*LoginRequest) Descriptor() ([]byte, []int) {
-	return file_services_account_v1_account_proto_rawDescGZIP(), []int{12}
+	return file_services_account_v1_account_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *LoginRequest) GetEmail() string {
@@ -874,7 +961,7 @@ type LoginResponse struct {
 func (x *LoginResponse) Reset() {
 	*x = LoginResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_services_account_v1_account_proto_msgTypes[13]
+		mi := &file_services_account_v1_account_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -887,7 +974,7 @@ func (x *LoginResponse) String() string {
 func (*LoginResponse) ProtoMessage() {}
 
 func (x *LoginResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_services_account_v1_account_proto_msgTypes[13]
+	mi := &file_services_account_v1_account_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -900,7 +987,7 @@ func (x *LoginResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginResponse.ProtoReflect.Descriptor instead.
 func (*LoginResponse) Descriptor() ([]byte, []int) {
-	return file_services_account_v1_account_proto_rawDescGZIP(), []int{13}
+	return file_services_account_v1_account_proto_rawDescGZIP(), []int{15}
 }
 
 func (m *LoginResponse) GetResponse() isLoginResponse_Response {
@@ -960,7 +1047,7 @@ type LoginConfirmRequest struct {
 func (x *LoginConfirmRequest) Reset() {
 	*x = LoginConfirmRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_services_account_v1_account_proto_msgTypes[14]
+		mi := &file_services_account_v1_account_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -973,7 +1060,7 @@ func (x *LoginConfirmRequest) String() string {
 func (*LoginConfirmRequest) ProtoMessage() {}
 
 func (x *LoginConfirmRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_services_account_v1_account_proto_msgTypes[14]
+	mi := &file_services_account_v1_account_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -986,7 +1073,7 @@ func (x *LoginConfirmRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginConfirmRequest.ProtoReflect.Descriptor instead.
 func (*LoginConfirmRequest) Descriptor() ([]byte, []int) {
-	return file_services_account_v1_account_proto_rawDescGZIP(), []int{14}
+	return file_services_account_v1_account_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *LoginConfirmRequest) GetChallenge() []byte {
@@ -1016,7 +1103,7 @@ type LoginConfirmResponse struct {
 func (x *LoginConfirmResponse) Reset() {
 	*x = LoginConfirmResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_services_account_v1_account_proto_msgTypes[15]
+		mi := &file_services_account_v1_account_proto_msgTypes[17]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1029,7 +1116,7 @@ func (x *LoginConfirmResponse) String() string {
 func (*LoginConfirmResponse) ProtoMessage() {}
 
 func (x *LoginConfirmResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_services_account_v1_account_proto_msgTypes[15]
+	mi := &file_services_account_v1_account_proto_msgTypes[17]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1042,7 +1129,7 @@ func (x *LoginConfirmResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginConfirmResponse.ProtoReflect.Descriptor instead.
 func (*LoginConfirmResponse) Descriptor() ([]byte, []int) {
-	return file_services_account_v1_account_proto_rawDescGZIP(), []int{15}
+	return file_services_account_v1_account_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *LoginConfirmResponse) GetProfile() *AccountProfile {
@@ -1107,7 +1194,7 @@ var file_services_account_v1_account_proto_rawDesc = []byte{
 	0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x72, 0x6d,
 	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x65, 0x74, 0x68, 0x6f, 0x64, 0x52, 0x06, 0x6d, 0x65, 0x74,
 	0x68, 0x6f, 0x64, 0x22, 0x14, 0x0a, 0x12, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x49, 0x6e,
-	0x66, 0x6f, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x9b, 0x02, 0x0a, 0x13, 0x41, 0x63,
+	0x66, 0x6f, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0xcc, 0x02, 0x0a, 0x13, 0x41, 0x63,
 	0x63, 0x6f, 0x75, 0x6e, 0x74, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
 	0x65, 0x12, 0x3d, 0x0a, 0x07, 0x64, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x73, 0x18, 0x01, 0x20, 0x01,
 	0x28, 0x0b, 0x32, 0x23, 0x2e, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2e, 0x61, 0x63,
@@ -1125,19 +1212,27 @@ var file_services_account_v1_account_proto_rawDesc = []byte{
 	0x65, 0x6d, 0x5f, 0x69, 0x64, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x65, 0x63, 0x6f,
 	0x73, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x49, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x70, 0x75, 0x62, 0x6c,
 	0x69, 0x63, 0x5f, 0x64, 0x69, 0x64, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x70, 0x75,
-	0x62, 0x6c, 0x69, 0x63, 0x44, 0x69, 0x64, 0x22, 0x14, 0x0a, 0x12, 0x4c, 0x69, 0x73, 0x74, 0x44,
-	0x65, 0x76, 0x69, 0x63, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x15, 0x0a,
-	0x13, 0x4c, 0x69, 0x73, 0x74, 0x44, 0x65, 0x76, 0x69, 0x63, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70,
-	0x6f, 0x6e, 0x73, 0x65, 0x22, 0x15, 0x0a, 0x13, 0x52, 0x65, 0x76, 0x6f, 0x6b, 0x65, 0x44, 0x65,
-	0x76, 0x69, 0x63, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x16, 0x0a, 0x14, 0x52,
-	0x65, 0x76, 0x6f, 0x6b, 0x65, 0x44, 0x65, 0x76, 0x69, 0x63, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f,
-	0x6e, 0x73, 0x65, 0x22, 0x6a, 0x0a, 0x10, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x45, 0x63,
-	0x6f, 0x73, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18,
-	0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x20, 0x0a, 0x0b, 0x64,
-	0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x10, 0x0a,
-	0x03, 0x75, 0x72, 0x69, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x75, 0x72, 0x69, 0x22,
+	0x62, 0x6c, 0x69, 0x63, 0x44, 0x69, 0x64, 0x12, 0x2f, 0x0a, 0x13, 0x61, 0x75, 0x74, 0x68, 0x6f,
+	0x72, 0x69, 0x7a, 0x65, 0x64, 0x5f, 0x77, 0x65, 0x62, 0x68, 0x6f, 0x6f, 0x6b, 0x73, 0x18, 0x07,
+	0x20, 0x03, 0x28, 0x09, 0x52, 0x12, 0x61, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x69, 0x7a, 0x65, 0x64,
+	0x57, 0x65, 0x62, 0x68, 0x6f, 0x6f, 0x6b, 0x73, 0x22, 0x14, 0x0a, 0x12, 0x4c, 0x69, 0x73, 0x74,
+	0x44, 0x65, 0x76, 0x69, 0x63, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x15,
+	0x0a, 0x13, 0x4c, 0x69, 0x73, 0x74, 0x44, 0x65, 0x76, 0x69, 0x63, 0x65, 0x73, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x15, 0x0a, 0x13, 0x52, 0x65, 0x76, 0x6f, 0x6b, 0x65, 0x44,
+	0x65, 0x76, 0x69, 0x63, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x16, 0x0a, 0x14,
+	0x52, 0x65, 0x76, 0x6f, 0x6b, 0x65, 0x44, 0x65, 0x76, 0x69, 0x63, 0x65, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x22, 0x6a, 0x0a, 0x10, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x45,
+	0x63, 0x6f, 0x73, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x20, 0x0a, 0x0b,
+	0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x10,
+	0x0a, 0x03, 0x75, 0x72, 0x69, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x75, 0x72, 0x69,
+	0x22, 0x31, 0x0a, 0x17, 0x41, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x69, 0x7a, 0x65, 0x57, 0x65, 0x62,
+	0x68, 0x6f, 0x6f, 0x6b, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x16, 0x0a, 0x06, 0x65,
+	0x76, 0x65, 0x6e, 0x74, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x06, 0x65, 0x76, 0x65,
+	0x6e, 0x74, 0x73, 0x22, 0x1a, 0x0a, 0x18, 0x41, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x69, 0x7a, 0x65,
+	0x57, 0x65, 0x62, 0x68, 0x6f, 0x6f, 0x6b, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
 	0x82, 0x01, 0x0a, 0x0c, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
 	0x12, 0x1a, 0x0a, 0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42,
 	0x04, 0x80, 0xa6, 0x1d, 0x01, 0x52, 0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x12, 0x2d, 0x0a, 0x0f,
@@ -1171,7 +1266,7 @@ var file_services_account_v1_account_proto_rawDesc = []byte{
 	0x0a, 0x04, 0x4e, 0x6f, 0x6e, 0x65, 0x10, 0x00, 0x12, 0x09, 0x0a, 0x05, 0x45, 0x6d, 0x61, 0x69,
 	0x6c, 0x10, 0x01, 0x12, 0x07, 0x0a, 0x03, 0x53, 0x6d, 0x73, 0x10, 0x02, 0x12, 0x13, 0x0a, 0x0f,
 	0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x65, 0x64, 0x44, 0x65, 0x76, 0x69, 0x63, 0x65, 0x10,
-	0x03, 0x12, 0x09, 0x0a, 0x05, 0x4f, 0x74, 0x68, 0x65, 0x72, 0x10, 0x0a, 0x32, 0xb3, 0x04, 0x0a,
+	0x03, 0x12, 0x09, 0x0a, 0x05, 0x4f, 0x74, 0x68, 0x65, 0x72, 0x10, 0x0a, 0x32, 0xa4, 0x05, 0x0a,
 	0x07, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x51, 0x0a, 0x06, 0x53, 0x69, 0x67, 0x6e,
 	0x49, 0x6e, 0x12, 0x22, 0x2e, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2e, 0x61, 0x63,
 	0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x53, 0x69, 0x67, 0x6e, 0x49, 0x6e, 0x52,
@@ -1207,13 +1302,20 @@ var file_services_account_v1_account_proto_rawDesc = []byte{
 	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x29, 0x2e, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63,
 	0x65, 0x73, 0x2e, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x65,
 	0x76, 0x6f, 0x6b, 0x65, 0x44, 0x65, 0x76, 0x69, 0x63, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
-	0x73, 0x65, 0x42, 0x61, 0x0a, 0x1b, 0x74, 0x72, 0x69, 0x6e, 0x73, 0x69, 0x63, 0x2e, 0x73, 0x65,
-	0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2e, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2e, 0x76,
-	0x31, 0x5a, 0x24, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x74, 0x72,
-	0x69, 0x6e, 0x73, 0x69, 0x63, 0x2d, 0x69, 0x64, 0x2f, 0x73, 0x64, 0x6b, 0x2f, 0x61, 0x63, 0x63,
-	0x6f, 0x75, 0x6e, 0x74, 0x2f, 0x76, 0x31, 0xaa, 0x02, 0x1b, 0x54, 0x72, 0x69, 0x6e, 0x73, 0x69,
-	0x63, 0x2e, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2e, 0x41, 0x63, 0x63, 0x6f, 0x75,
-	0x6e, 0x74, 0x2e, 0x56, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x73, 0x65, 0x12, 0x6f, 0x0a, 0x10, 0x41, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x69, 0x7a, 0x65, 0x57,
+	0x65, 0x62, 0x68, 0x6f, 0x6f, 0x6b, 0x12, 0x2c, 0x2e, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
+	0x73, 0x2e, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x75, 0x74,
+	0x68, 0x6f, 0x72, 0x69, 0x7a, 0x65, 0x57, 0x65, 0x62, 0x68, 0x6f, 0x6f, 0x6b, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x2d, 0x2e, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2e,
+	0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x75, 0x74, 0x68, 0x6f,
+	0x72, 0x69, 0x7a, 0x65, 0x57, 0x65, 0x62, 0x68, 0x6f, 0x6f, 0x6b, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x42, 0x58, 0x0a, 0x1b, 0x74, 0x72, 0x69, 0x6e, 0x73, 0x69, 0x63, 0x2e, 0x73,
+	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2e, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2e,
+	0x76, 0x31, 0x5a, 0x1b, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2f, 0x61, 0x63, 0x63,
+	0x6f, 0x75, 0x6e, 0x74, 0x2f, 0x76, 0x31, 0x2f, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0xaa,
+	0x02, 0x1b, 0x54, 0x72, 0x69, 0x6e, 0x73, 0x69, 0x63, 0x2e, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
+	0x65, 0x73, 0x2e, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2e, 0x56, 0x31, 0x62, 0x06, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1229,25 +1331,27 @@ func file_services_account_v1_account_proto_rawDescGZIP() []byte {
 }
 
 var file_services_account_v1_account_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_services_account_v1_account_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_services_account_v1_account_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
 var file_services_account_v1_account_proto_goTypes = []interface{}{
-	(ConfirmationMethod)(0),      // 0: services.account.v1.ConfirmationMethod
-	(*SignInRequest)(nil),        // 1: services.account.v1.SignInRequest
-	(*AccountDetails)(nil),       // 2: services.account.v1.AccountDetails
-	(*SignInResponse)(nil),       // 3: services.account.v1.SignInResponse
-	(*AccountProfile)(nil),       // 4: services.account.v1.AccountProfile
-	(*TokenProtection)(nil),      // 5: services.account.v1.TokenProtection
-	(*AccountInfoRequest)(nil),   // 6: services.account.v1.AccountInfoRequest
-	(*AccountInfoResponse)(nil),  // 7: services.account.v1.AccountInfoResponse
-	(*ListDevicesRequest)(nil),   // 8: services.account.v1.ListDevicesRequest
-	(*ListDevicesResponse)(nil),  // 9: services.account.v1.ListDevicesResponse
-	(*RevokeDeviceRequest)(nil),  // 10: services.account.v1.RevokeDeviceRequest
-	(*RevokeDeviceResponse)(nil), // 11: services.account.v1.RevokeDeviceResponse
-	(*AccountEcosystem)(nil),     // 12: services.account.v1.AccountEcosystem
-	(*LoginRequest)(nil),         // 13: services.account.v1.LoginRequest
-	(*LoginResponse)(nil),        // 14: services.account.v1.LoginResponse
-	(*LoginConfirmRequest)(nil),  // 15: services.account.v1.LoginConfirmRequest
-	(*LoginConfirmResponse)(nil), // 16: services.account.v1.LoginConfirmResponse
+	(ConfirmationMethod)(0),          // 0: services.account.v1.ConfirmationMethod
+	(*SignInRequest)(nil),            // 1: services.account.v1.SignInRequest
+	(*AccountDetails)(nil),           // 2: services.account.v1.AccountDetails
+	(*SignInResponse)(nil),           // 3: services.account.v1.SignInResponse
+	(*AccountProfile)(nil),           // 4: services.account.v1.AccountProfile
+	(*TokenProtection)(nil),          // 5: services.account.v1.TokenProtection
+	(*AccountInfoRequest)(nil),       // 6: services.account.v1.AccountInfoRequest
+	(*AccountInfoResponse)(nil),      // 7: services.account.v1.AccountInfoResponse
+	(*ListDevicesRequest)(nil),       // 8: services.account.v1.ListDevicesRequest
+	(*ListDevicesResponse)(nil),      // 9: services.account.v1.ListDevicesResponse
+	(*RevokeDeviceRequest)(nil),      // 10: services.account.v1.RevokeDeviceRequest
+	(*RevokeDeviceResponse)(nil),     // 11: services.account.v1.RevokeDeviceResponse
+	(*AccountEcosystem)(nil),         // 12: services.account.v1.AccountEcosystem
+	(*AuthorizeWebhookRequest)(nil),  // 13: services.account.v1.AuthorizeWebhookRequest
+	(*AuthorizeWebhookResponse)(nil), // 14: services.account.v1.AuthorizeWebhookResponse
+	(*LoginRequest)(nil),             // 15: services.account.v1.LoginRequest
+	(*LoginResponse)(nil),            // 16: services.account.v1.LoginResponse
+	(*LoginConfirmRequest)(nil),      // 17: services.account.v1.LoginConfirmRequest
+	(*LoginConfirmResponse)(nil),     // 18: services.account.v1.LoginConfirmResponse
 }
 var file_services_account_v1_account_proto_depIdxs = []int32{
 	2,  // 0: services.account.v1.SignInRequest.details:type_name -> services.account.v1.AccountDetails
@@ -1260,19 +1364,21 @@ var file_services_account_v1_account_proto_depIdxs = []int32{
 	4,  // 7: services.account.v1.LoginResponse.profile:type_name -> services.account.v1.AccountProfile
 	4,  // 8: services.account.v1.LoginConfirmResponse.profile:type_name -> services.account.v1.AccountProfile
 	1,  // 9: services.account.v1.Account.SignIn:input_type -> services.account.v1.SignInRequest
-	13, // 10: services.account.v1.Account.Login:input_type -> services.account.v1.LoginRequest
-	15, // 11: services.account.v1.Account.LoginConfirm:input_type -> services.account.v1.LoginConfirmRequest
+	15, // 10: services.account.v1.Account.Login:input_type -> services.account.v1.LoginRequest
+	17, // 11: services.account.v1.Account.LoginConfirm:input_type -> services.account.v1.LoginConfirmRequest
 	6,  // 12: services.account.v1.Account.Info:input_type -> services.account.v1.AccountInfoRequest
 	8,  // 13: services.account.v1.Account.ListDevices:input_type -> services.account.v1.ListDevicesRequest
 	10, // 14: services.account.v1.Account.RevokeDevice:input_type -> services.account.v1.RevokeDeviceRequest
-	3,  // 15: services.account.v1.Account.SignIn:output_type -> services.account.v1.SignInResponse
-	14, // 16: services.account.v1.Account.Login:output_type -> services.account.v1.LoginResponse
-	16, // 17: services.account.v1.Account.LoginConfirm:output_type -> services.account.v1.LoginConfirmResponse
-	7,  // 18: services.account.v1.Account.Info:output_type -> services.account.v1.AccountInfoResponse
-	9,  // 19: services.account.v1.Account.ListDevices:output_type -> services.account.v1.ListDevicesResponse
-	11, // 20: services.account.v1.Account.RevokeDevice:output_type -> services.account.v1.RevokeDeviceResponse
-	15, // [15:21] is the sub-list for method output_type
-	9,  // [9:15] is the sub-list for method input_type
+	13, // 15: services.account.v1.Account.AuthorizeWebhook:input_type -> services.account.v1.AuthorizeWebhookRequest
+	3,  // 16: services.account.v1.Account.SignIn:output_type -> services.account.v1.SignInResponse
+	16, // 17: services.account.v1.Account.Login:output_type -> services.account.v1.LoginResponse
+	18, // 18: services.account.v1.Account.LoginConfirm:output_type -> services.account.v1.LoginConfirmResponse
+	7,  // 19: services.account.v1.Account.Info:output_type -> services.account.v1.AccountInfoResponse
+	9,  // 20: services.account.v1.Account.ListDevices:output_type -> services.account.v1.ListDevicesResponse
+	11, // 21: services.account.v1.Account.RevokeDevice:output_type -> services.account.v1.RevokeDeviceResponse
+	14, // 22: services.account.v1.Account.AuthorizeWebhook:output_type -> services.account.v1.AuthorizeWebhookResponse
+	16, // [16:23] is the sub-list for method output_type
+	9,  // [9:16] is the sub-list for method input_type
 	9,  // [9:9] is the sub-list for extension type_name
 	9,  // [9:9] is the sub-list for extension extendee
 	0,  // [0:9] is the sub-list for field type_name
@@ -1429,7 +1535,7 @@ func file_services_account_v1_account_proto_init() {
 			}
 		}
 		file_services_account_v1_account_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LoginRequest); i {
+			switch v := v.(*AuthorizeWebhookRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1441,7 +1547,7 @@ func file_services_account_v1_account_proto_init() {
 			}
 		}
 		file_services_account_v1_account_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LoginResponse); i {
+			switch v := v.(*AuthorizeWebhookResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1453,7 +1559,7 @@ func file_services_account_v1_account_proto_init() {
 			}
 		}
 		file_services_account_v1_account_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LoginConfirmRequest); i {
+			switch v := v.(*LoginRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1465,6 +1571,30 @@ func file_services_account_v1_account_proto_init() {
 			}
 		}
 		file_services_account_v1_account_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*LoginResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_services_account_v1_account_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*LoginConfirmRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_services_account_v1_account_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*LoginConfirmResponse); i {
 			case 0:
 				return &v.state
@@ -1477,7 +1607,7 @@ func file_services_account_v1_account_proto_init() {
 			}
 		}
 	}
-	file_services_account_v1_account_proto_msgTypes[13].OneofWrappers = []interface{}{
+	file_services_account_v1_account_proto_msgTypes[15].OneofWrappers = []interface{}{
 		(*LoginResponse_Challenge)(nil),
 		(*LoginResponse_Profile)(nil),
 	}
@@ -1487,7 +1617,7 @@ func file_services_account_v1_account_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_services_account_v1_account_proto_rawDesc,
 			NumEnums:      1,
-			NumMessages:   12,
+			NumMessages:   18,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
