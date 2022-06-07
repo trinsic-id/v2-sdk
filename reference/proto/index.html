@@ -2154,6 +2154,24 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#authorizewebhookrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      AuthorizeWebhookRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authorizewebhookresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      AuthorizeWebhookResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#listdevicesrequest" class="md-nav__link">
     <span class="md-ellipsis">
       ListDevicesRequest
@@ -3898,6 +3916,24 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#authorizewebhookrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      AuthorizeWebhookRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authorizewebhookresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      AuthorizeWebhookResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#listdevicesrequest" class="md-nav__link">
     <span class="md-ellipsis">
       ListDevicesRequest
@@ -5318,7 +5354,7 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 <td>Delete a webhook endpoint from the ecosystem</td>
 </tr>
 <tr>
-<td>Info</td>
+<td>EcosystemInfo</td>
 <td><a href="/reference/proto#services-provider-v1-EcosystemInfoRequest">EcosystemInfoRequest</a></td>
 <td><a href="/reference/proto#services-provider-v1-EcosystemInfoResponse">EcosystemInfoResponse</a></td>
 <td>Get ecosystem information</td>
@@ -5896,6 +5932,11 @@ The reference_id passed is the response from the
 <td>events</td>
 <td><a href="/reference/proto#string">string</a>[]</td>
 <td>Events the webhook is subscribed to</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Whether we are able to sucessfully send events to the webhook</td>
 </tr>
 </tbody>
 </table>
@@ -6608,6 +6649,12 @@ The reference_id passed is the response from the
 <td><a href="/reference/proto#services-account-v1-RevokeDeviceResponse">RevokeDeviceResponse</a></td>
 <td>Revoke device access to the account's cloud wallet</td>
 </tr>
+<tr>
+<td>AuthorizeWebhook</td>
+<td><a href="/reference/proto#services-account-v1-AuthorizeWebhookRequest">AuthorizeWebhookRequest</a></td>
+<td><a href="/reference/proto#services-account-v1-AuthorizeWebhookResponse">AuthorizeWebhookResponse</a></td>
+<td>Authorize Ecosystem to receive webhook events</td>
+</tr>
 </tbody>
 </table>
 <!-- end services -->
@@ -6719,6 +6766,11 @@ The reference_id passed is the response from the
 <td><a href="/reference/proto#string">string</a></td>
 <td>The public DID associated with this account. This DID is used as "issuer" when signing verifiable credentials</td>
 </tr>
+<tr>
+<td>authorized_webhooks</td>
+<td><a href="/reference/proto#string">string</a>[]</td>
+<td>Webhook events if any this wallet has authorized</td>
+</tr>
 </tbody>
 </table>
 <p><a name="services-account-v1-AccountProfile"></a></p>
@@ -6756,6 +6808,28 @@ This information should be stored securely</p>
 </tr>
 </tbody>
 </table>
+<p><a name="services-account-v1-AuthorizeWebhookRequest"></a></p>
+<h3 id="authorizewebhookrequest">AuthorizeWebhookRequest<a class="headerlink" href="#authorizewebhookrequest" title="Permanent link">&para;</a></h3>
+<p>Authorize ecosystem to receive wallet events</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>events</td>
+<td><a href="/reference/proto#string">string</a>[]</td>
+<td>Events to authorize access to. Default is "*" (all events)</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-account-v1-AuthorizeWebhookResponse"></a></p>
+<h3 id="authorizewebhookresponse">AuthorizeWebhookResponse<a class="headerlink" href="#authorizewebhookresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>AuthorizeWebhookRequest</code></p>
 <p><a name="services-account-v1-ListDevicesRequest"></a></p>
 <h3 id="listdevicesrequest">ListDevicesRequest<a class="headerlink" href="#listdevicesrequest" title="Permanent link">&para;</a></h3>
 <p><a name="services-account-v1-ListDevicesResponse"></a></p>
@@ -6881,7 +6955,7 @@ This information should be stored securely</p>
 <tr>
 <td>ecosystem_id</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>ID of Ecosystem to sign into. Ignored if <code>invitation_code</code> is passed</td>
+<td>ID of Ecosystem to use Ignored if <code>invitation_code</code> is passed</td>
 </tr>
 </tbody>
 </table>

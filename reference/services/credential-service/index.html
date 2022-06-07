@@ -1826,16 +1826,16 @@
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="s">&quot;context&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="s">&quot;fmt&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nx">account</span><span class="w"> </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/account/v1&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nx">options</span><span class="w"> </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/options/v1&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nx">provider</span><span class="w"> </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/provider/v1&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nx">trustregistry</span><span class="w"> </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/trustregistry/v1&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="s">&quot;path/filepath&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="s">&quot;runtime&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="s">&quot;testing&quot;</span><span class="w"></span>
 
 <span class="w">    </span><span class="s">&quot;github.com/google/uuid&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/assert&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/sdk/options/v1/options&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/services/account/v1/account&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/services/provider/v1/provider&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/services/trustregistry/v1/trustregistry&quot;</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 
 <span class="c1">// pathData() {</span><span class="w"></span>
@@ -2307,16 +2307,16 @@ trinsic vc update-status --unrevoked --credential-status-id &lt;ID&gt;
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="s">&quot;context&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="s">&quot;fmt&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nx">account</span><span class="w"> </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/account/v1&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nx">options</span><span class="w"> </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/options/v1&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nx">provider</span><span class="w"> </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/provider/v1&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nx">trustregistry</span><span class="w"> </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/trustregistry/v1&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="s">&quot;path/filepath&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="s">&quot;runtime&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="s">&quot;testing&quot;</span><span class="w"></span>
 
 <span class="w">    </span><span class="s">&quot;github.com/google/uuid&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/assert&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/sdk/options/v1/options&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/services/account/v1/account&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/services/provider/v1/provider&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/services/trustregistry/v1/trustregistry&quot;</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 
 <span class="c1">// pathData() {</span><span class="w"></span>
@@ -2765,16 +2765,16 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="s">&quot;context&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="s">&quot;fmt&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nx">account</span><span class="w"> </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/account/v1&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nx">options</span><span class="w"> </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/options/v1&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nx">provider</span><span class="w"> </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/provider/v1&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nx">trustregistry</span><span class="w"> </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/trustregistry/v1&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="s">&quot;path/filepath&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="s">&quot;runtime&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="s">&quot;testing&quot;</span><span class="w"></span>
 
 <span class="w">    </span><span class="s">&quot;github.com/google/uuid&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/assert&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/sdk/options/v1/options&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/services/account/v1/account&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/services/provider/v1/provider&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/services/trustregistry/v1/trustregistry&quot;</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 
 <span class="c1">// pathData() {</span><span class="w"></span>
@@ -3059,16 +3059,16 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="s">&quot;context&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="s">&quot;fmt&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nx">account</span><span class="w"> </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/account/v1&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nx">options</span><span class="w"> </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/options/v1&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nx">provider</span><span class="w"> </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/provider/v1&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nx">trustregistry</span><span class="w"> </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/trustregistry/v1&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="s">&quot;path/filepath&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="s">&quot;runtime&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="s">&quot;testing&quot;</span><span class="w"></span>
 
 <span class="w">    </span><span class="s">&quot;github.com/google/uuid&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/assert&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/sdk/options/v1/options&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/services/account/v1/account&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/services/provider/v1/provider&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;github.com/trinsic-id/sdk/go/proto/services/trustregistry/v1/trustregistry&quot;</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 
 <span class="c1">// pathData() {</span><span class="w"></span>
