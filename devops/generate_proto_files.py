@@ -42,7 +42,7 @@ def md_template_path() -> str:
     passing in an absolute path on Windows causes `protoc-gen-markdown` to explode.
     """
 
-    return relpath(abspath(join(dirname(__file__), 'resources/markdown.tmpl')))
+    return relpath(abspath(join(dirname(__file__), "resources/markdown.tmpl")))
 
 
 def java_plugin() -> str:
@@ -83,7 +83,7 @@ def download_protoc_plugins() -> None:
         kotlin_jar,
     )
     urllib.request.urlretrieve(
-        f"https://github.com/google/google-java-format/releases/download/{java_format_version}/google-java-format-{java_format_version.replace('v','')}-all-deps.jar",
+        f"https://github.com/google/google-java-format/releases/download/{java_format_version}/google-java-format-{java_format_version.replace('v', '')}-all-deps.jar",
         java_format_plugin(),
     )
 
@@ -101,6 +101,16 @@ def download_protoc_plugins() -> None:
     if system().lower() == "linux":
         os.system(f"chmod +x {java_plugin()}")
         os.system(f"chmod +x {kotlin_plugin()}")
+
+    # Install go plugins
+    subprocess.Popen(
+        "go install github.com/trinsic-id/protoc-gen-json@latest", shell=True
+    ).wait()
+    subprocess.Popen(
+        "go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest",
+        shell=True,
+    ).wait()
+    subprocess.Popen("dart pub global activate protoc_plugin", shell=True).wait()
 
 
 def get_proto_files(dir_name: str = None) -> List[str]:
@@ -125,6 +135,7 @@ def join_args(args: Union[str, List[str], Dict[str, str]]) -> List[str]:
 
 
 def run_protoc(
+    *,
     language_options: Dict[str, str] = None,
     custom_options: Union[List[str], Dict[str, str]] = None,
     proto_files: Union[List[str], str] = None,
@@ -160,12 +171,8 @@ def update_golang():
     go_proto_path = join(language_path, "proto")
     clean_dir(go_proto_path)
     run_protoc(
-        {"go_out": go_proto_path, "go-grpc_out": go_proto_path},
-        {
-            # "go_opt": "module=github.com/trinsic-id/sdk",
-            # "go-grpc_opt": "module=github.com/trinsic-id/sdk",
-        },
-        get_proto_files(),
+        language_options={"go_out": go_proto_path, "go-grpc_out": go_proto_path},
+        proto_files=get_proto_files(),
     )
     # Remove okapi proto folder
     clean_dir(join(go_proto_path, "go"))
@@ -178,7 +185,9 @@ def update_golang():
     for file_name in glob.glob(join(go_proto_path, "**", "*.go"), recursive=True):
         update_line(file_name, replace_pairs)
 
-    subprocess.Popen(args="go fmt github.com/trinsic-id/sdk/...", cwd=language_path, shell=True).wait()
+    subprocess.Popen(
+        args="go fmt github.com/trinsic-id/sdk/...", cwd=language_path, shell=True
+    ).wait()
 
 
 def update_ruby():
@@ -193,9 +202,8 @@ def update_ruby():
     clean_dir(join(lang_proto_path, "sdk"))
     clean_dir(join(lang_proto_path, "pbmse"))
     run_protoc(
-        {"ruby_out": lang_proto_path, "grpc_out": lang_proto_path},
-        {},
-        get_proto_files(),
+        language_options={"ruby_out": lang_proto_path, "grpc_out": lang_proto_path},
+        proto_files=get_proto_files(),
         protoc_executable="grpc_tools_ruby_protoc",
     )
     # Ruby type specifications
@@ -216,15 +224,16 @@ def update_java():
     clean_dir(join(lang_proto_path, "trinsic", "pbmse"))
 
     run_protoc(
-        {"java_out": lang_proto_path, "grpc-java_out": lang_proto_path},
-        {},
-        get_proto_files(),
+        language_options={
+            "java_out": lang_proto_path,
+            "grpc-java_out": lang_proto_path,
+        },
+        proto_files=get_proto_files(),
         plugin=f"protoc-gen-grpc-java={java_plugin()}",
     )
     run_protoc(
-        {"grpc-kotlin_out": lang_proto_path},
-        {},
-        get_proto_files(),
+        language_options={"grpc-kotlin_out": lang_proto_path},
+        proto_files=get_proto_files(),
         plugin=f"protoc-gen-grpc-kotlin={kotlin_plugin()}",
     )
     # remove okapi pbmse
@@ -246,21 +255,21 @@ def update_java():
 
 
 def update_markdown():
-    lang_path = get_language_dir('docs')
-    lang_proto_path = join(lang_path, 'reference', 'proto')
-    lang_json_path = join(lang_path, '_static')
+    lang_path = get_language_dir("docs")
+    lang_proto_path = join(lang_path, "reference", "proto")
+    lang_json_path = join(lang_path, "_static")
     template_path = md_template_path()
 
     run_protoc(
-        {"doc_out": lang_proto_path},
-        {"doc_opt": f"{template_path},index.md"},
-        get_proto_files(),
+        language_options={"doc_out": lang_proto_path},
+        custom_options={"doc_opt": f"{template_path},index.md"},
+        proto_files=get_proto_files(),
     )
 
     run_protoc(
-        {"json_out": lang_json_path},
-        {"json_opt": "proto.json"},
-        get_proto_files(),
+        language_options={"json_out": lang_json_path},
+        custom_options={"json_opt": "proto.json"},
+        proto_files=get_proto_files(),
     )
 
 
@@ -306,6 +315,13 @@ def update_typescript():
     ).wait()
 
 
+def update_none() -> None:
+    """
+    This is here so you can specify no language to update - eg just download plugins
+    """
+    pass
+
+
 def parse_arguments():
     parser = argparse.ArgumentParser(
         description="Compile proto files for each SDK language and documentation"
@@ -315,10 +331,12 @@ def parse_arguments():
         help="Comma-separated languages to build (all/golang/ruby/python/java/docs)",
         default="all",
     )
-    parser.add_argument("--download-plugins",
-                        help="Download and install required plugins",
-                        action="store_true",
-                        default=False)
+    parser.add_argument(
+        "--download-plugins",
+        help="Download and install required plugins",
+        action="store_true",
+        default=False,
+    )
     return parser.parse_args()
 
 
@@ -341,6 +359,7 @@ def main():
         "docs": update_markdown,
         "dart": update_dart,
         "typescript": update_typescript,
+        "none": update_none,
     }
 
     # If "all" is specified, set the array of languages to build to the list of all languages we _can_ build.
@@ -355,7 +374,7 @@ def main():
 
     # Execute specified languages
     for lang in langs_to_build:
-        if not lang in lang_funcs:
+        if lang not in lang_funcs:
             raise Exception(f"Language {lang} is not a valid compilation language.")
 
         lang_funcs[lang]()
