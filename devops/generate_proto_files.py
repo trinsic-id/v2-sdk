@@ -315,17 +315,22 @@ def parse_arguments():
         help="Comma-separated languages to build (all/golang/ruby/python/java/docs)",
         default="all",
     )
+    parser.add_argument("--download-plugins",
+                        help="Download and install required plugins",
+                        action="store_true",
+                        default=False)
     return parser.parse_args()
 
 
 def main():
     logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
     logging.getLogger().setLevel(logging.INFO)
-    download_protoc_plugins()
-
     # Get command line arguments
     args = parse_arguments()
     langs_to_build = [lang.lower() for lang in (args.language + ",").split(",")]
+
+    if args.download_plugins:
+        download_protoc_plugins()
 
     # Mapping of (language -> compilation function)
     lang_funcs = {
