@@ -35,6 +35,8 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@v1
       - name: Install Protoc
         uses: arduino/setup-protoc@v1
       - name: Install protobuf plugins
