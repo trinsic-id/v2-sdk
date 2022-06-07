@@ -63,6 +63,7 @@ Configuration for Trinsic SDK Services
 | Info | [AccountInfoRequest](/reference/proto#services-account-v1-AccountInfoRequest) | [AccountInfoResponse](/reference/proto#services-account-v1-AccountInfoResponse) | Get account information |
 | ListDevices | [ListDevicesRequest](/reference/proto#services-account-v1-ListDevicesRequest) | [ListDevicesResponse](/reference/proto#services-account-v1-ListDevicesResponse) | List all connected devices |
 | RevokeDevice | [RevokeDeviceRequest](/reference/proto#services-account-v1-RevokeDeviceRequest) | [RevokeDeviceResponse](/reference/proto#services-account-v1-RevokeDeviceResponse) | Revoke device access to the account's cloud wallet |
+| AuthorizeWebhook | [AuthorizeWebhookRequest](/reference/proto#services-account-v1-AuthorizeWebhookRequest) | [AuthorizeWebhookResponse](/reference/proto#services-account-v1-AuthorizeWebhookResponse) | Authorize Ecosystem to receive webhook events |
 
  <!-- end services -->
 
@@ -126,6 +127,7 @@ Information about the account used to make the request
 | device_id | [string](/reference/proto#string) | The device ID associated with this account session |
 | ecosystem_id | [string](/reference/proto#string) | The ecosystem ID within which this account resides |
 | public_did | [string](/reference/proto#string) | The public DID associated with this account. This DID is used as "issuer" when signing verifiable credentials |
+| authorized_webhooks | [string](/reference/proto#string)[] | Webhook events if any this wallet has authorized |
 
 
 
@@ -145,6 +147,31 @@ This information should be stored securely
 | auth_data | [bytes](/reference/proto#bytes) | Auth data containg information about the current device access |
 | auth_token | [bytes](/reference/proto#bytes) | Secure token issued by server used to generate zero-knowledge proofs |
 | protection | [TokenProtection](/reference/proto#services-account-v1-TokenProtection) | Token security information about the token. If token protection is enabled, implementations must supply protection secret before using the token for authentication. |
+
+
+
+
+
+
+<a name="services-account-v1-AuthorizeWebhookRequest"></a>
+
+### AuthorizeWebhookRequest
+Authorize ecosystem to receive wallet envents
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| events | [string](/reference/proto#string)[] | Events to authorize access to. Default is "*" (all events) |
+
+
+
+
+
+
+<a name="services-account-v1-AuthorizeWebhookResponse"></a>
+
+### AuthorizeWebhookResponse
+Response to `AuthorizeWebhookRequest`
 
 
 
@@ -846,6 +873,7 @@ Response to `UpdateEcosystemRequest`
 | id | [string](/reference/proto#string) | UUID of the webhook |
 | destination_url | [string](/reference/proto#string) | Destination to post webhook calls to |
 | events | [string](/reference/proto#string)[] | Events the webhook is subscribed to |
+| status | [string](/reference/proto#string) | Whether we are able to sucessfully send events to the webhook |
 
 
 

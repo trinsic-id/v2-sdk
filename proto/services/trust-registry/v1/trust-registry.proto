@@ -3,7 +3,7 @@ package services.trustregistry.v1;
 
 option csharp_namespace = "Trinsic.Services.TrustRegistry.V1";
 option java_package = "trinsic.services.trustregistry.v1";
-option go_package = "github.com/trinsic-id/sdk/trustregistry/v1";
+option go_package = "services/trustregistry/v1/trustregistry";
 
 // Register new ecosystem governance framework
 message AddFrameworkRequest {

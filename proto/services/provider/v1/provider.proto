@@ -3,7 +3,7 @@ syntax = "proto3";
 package services.provider.v1;
 
 option csharp_namespace = "Trinsic.Services.Provider.V1";
-option go_package = "github.com/trinsic-id/sdk/provider/v1";
+option go_package = "services/provider/v1/provider";
 option java_package = "trinsic.services.common.v1";
 
 import "services/account/v1/account.proto";
@@ -100,6 +100,9 @@ message WebhookConfig {
 
     // Events the webhook is subscribed to
     repeated string events = 4;
+
+    // Whether we are able to sucessfully send events to the webhook
+    string status = 5;
 }
 
 message CreateEcosystemRequest {
@@ -234,7 +237,7 @@ service Provider {
     rpc DeleteWebhook(DeleteWebhookRequest) returns (DeleteWebhookResponse);
 
     // Get ecosystem information
-    rpc Info(EcosystemInfoRequest) returns (EcosystemInfoResponse);
+    rpc EcosystemInfo(EcosystemInfoRequest) returns (EcosystemInfoResponse);
 
     // Generates an unprotected authentication token that can be used to
     // configure server side applications

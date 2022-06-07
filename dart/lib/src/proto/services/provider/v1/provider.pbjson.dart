@@ -180,12 +180,13 @@ const WebhookConfig$json = const {
       '10': 'destinationUrl'
     },
     const {'1': 'events', '3': 4, '4': 3, '5': 9, '10': 'events'},
+    const {'1': 'status', '3': 5, '4': 1, '5': 9, '10': 'status'},
   ],
 };
 
 /// Descriptor for `WebhookConfig`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List webhookConfigDescriptor = $convert.base64Decode(
-    'Cg1XZWJob29rQ29uZmlnEg4KAmlkGAEgASgJUgJpZBInCg9kZXN0aW5hdGlvbl91cmwYAiABKAlSDmRlc3RpbmF0aW9uVXJsEhYKBmV2ZW50cxgEIAMoCVIGZXZlbnRz');
+    'Cg1XZWJob29rQ29uZmlnEg4KAmlkGAEgASgJUgJpZBInCg9kZXN0aW5hdGlvbl91cmwYAiABKAlSDmRlc3RpbmF0aW9uVXJsEhYKBmV2ZW50cxgEIAMoCVIGZXZlbnRzEhYKBnN0YXR1cxgFIAEoCVIGc3RhdHVz');
 @$core.Deprecated('Use createEcosystemRequestDescriptor instead')
 const CreateEcosystemRequest$json = const {
   '1': 'CreateEcosystemRequest',

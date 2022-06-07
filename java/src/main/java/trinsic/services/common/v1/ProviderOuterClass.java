@@ -7411,6 +7411,31 @@ public final class ProviderOuterClass {
      * @return The bytes of the events at the given index.
      */
     com.google.protobuf.ByteString getEventsBytes(int index);
+
+    /**
+     *
+     *
+     * <pre>
+     * Whether we are able to sucessfully send events to the webhook
+     * </pre>
+     *
+     * <code>string status = 5;</code>
+     *
+     * @return The status.
+     */
+    java.lang.String getStatus();
+    /**
+     *
+     *
+     * <pre>
+     * Whether we are able to sucessfully send events to the webhook
+     * </pre>
+     *
+     * <code>string status = 5;</code>
+     *
+     * @return The bytes for status.
+     */
+    com.google.protobuf.ByteString getStatusBytes();
   }
   /** Protobuf type {@code services.provider.v1.WebhookConfig} */
   public static final class WebhookConfig extends com.google.protobuf.GeneratedMessageV3
@@ -7427,6 +7452,7 @@ public final class ProviderOuterClass {
       id_ = "";
       destinationUrl_ = "";
       events_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      status_ = "";
     }
 
     @java.lang.Override
@@ -7481,6 +7507,13 @@ public final class ProviderOuterClass {
                   mutable_bitField0_ |= 0x00000001;
                 }
                 events_.add(s);
+                break;
+              }
+            case 42:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                status_ = s;
                 break;
               }
             default:
@@ -7681,6 +7714,55 @@ public final class ProviderOuterClass {
       return events_.getByteString(index);
     }
 
+    public static final int STATUS_FIELD_NUMBER = 5;
+    private volatile java.lang.Object status_;
+    /**
+     *
+     *
+     * <pre>
+     * Whether we are able to sucessfully send events to the webhook
+     * </pre>
+     *
+     * <code>string status = 5;</code>
+     *
+     * @return The status.
+     */
+    @java.lang.Override
+    public java.lang.String getStatus() {
+      java.lang.Object ref = status_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        status_ = s;
+        return s;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Whether we are able to sucessfully send events to the webhook
+     * </pre>
+     *
+     * <code>string status = 5;</code>
+     *
+     * @return The bytes for status.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getStatusBytes() {
+      java.lang.Object ref = status_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        status_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
 
     @java.lang.Override
@@ -7703,6 +7785,9 @@ public final class ProviderOuterClass {
       }
       for (int i = 0; i < events_.size(); i++) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, events_.getRaw(i));
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(status_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, status_);
       }
       unknownFields.writeTo(output);
     }
@@ -7727,6 +7812,9 @@ public final class ProviderOuterClass {
         size += dataSize;
         size += 1 * getEventsList().size();
       }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(status_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, status_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -7746,6 +7834,7 @@ public final class ProviderOuterClass {
       if (!getId().equals(other.getId())) return false;
       if (!getDestinationUrl().equals(other.getDestinationUrl())) return false;
       if (!getEventsList().equals(other.getEventsList())) return false;
+      if (!getStatus().equals(other.getStatus())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -7765,6 +7854,8 @@ public final class ProviderOuterClass {
         hash = (37 * hash) + EVENTS_FIELD_NUMBER;
         hash = (53 * hash) + getEventsList().hashCode();
       }
+      hash = (37 * hash) + STATUS_FIELD_NUMBER;
+      hash = (53 * hash) + getStatus().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -7911,6 +8002,8 @@ public final class ProviderOuterClass {
 
         events_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000001);
+        status_ = "";
+
         return this;
       }
 
@@ -7947,6 +8040,7 @@ public final class ProviderOuterClass {
           bitField0_ = (bitField0_ & ~0x00000001);
         }
         result.events_ = events_;
+        result.status_ = status_;
         onBuilt();
         return result;
       }
@@ -8016,6 +8110,10 @@ public final class ProviderOuterClass {
             ensureEventsIsMutable();
             events_.addAll(other.events_);
           }
+          onChanged();
+        }
+        if (!other.getStatus().isEmpty()) {
+          status_ = other.status_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -8427,6 +8525,112 @@ public final class ProviderOuterClass {
         checkByteStringIsUtf8(value);
         ensureEventsIsMutable();
         events_.add(value);
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object status_ = "";
+      /**
+       *
+       *
+       * <pre>
+       * Whether we are able to sucessfully send events to the webhook
+       * </pre>
+       *
+       * <code>string status = 5;</code>
+       *
+       * @return The status.
+       */
+      public java.lang.String getStatus() {
+        java.lang.Object ref = status_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          status_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       *
+       *
+       * <pre>
+       * Whether we are able to sucessfully send events to the webhook
+       * </pre>
+       *
+       * <code>string status = 5;</code>
+       *
+       * @return The bytes for status.
+       */
+      public com.google.protobuf.ByteString getStatusBytes() {
+        java.lang.Object ref = status_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+          status_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       *
+       *
+       * <pre>
+       * Whether we are able to sucessfully send events to the webhook
+       * </pre>
+       *
+       * <code>string status = 5;</code>
+       *
+       * @param value The status to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatus(java.lang.String value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+
+        status_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       *
+       *
+       * <pre>
+       * Whether we are able to sucessfully send events to the webhook
+       * </pre>
+       *
+       * <code>string status = 5;</code>
+       *
+       * @return This builder for chaining.
+       */
+      public Builder clearStatus() {
+
+        status_ = getDefaultInstance().getStatus();
+        onChanged();
+        return this;
+      }
+      /**
+       *
+       *
+       * <pre>
+       * Whether we are able to sucessfully send events to the webhook
+       * </pre>
+       *
+       * <code>string status = 5;</code>
+       *
+       * @param value The bytes for status to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatusBytes(com.google.protobuf.ByteString value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
+        status_ = value;
         onChanged();
         return this;
       }
@@ -22099,11 +22303,12 @@ public final class ProviderOuterClass {
           + "\004name\030\002 \001(\t\022\023\n"
           + "\013description\030\003 \001(\t\022\013\n"
           + "\003uri\030\004 \001(\t\0225\n"
-          + "\010webhooks\030\005 \003(\0132#.services.provider.v1.WebhookConfig\"D\n\r"
+          + "\010webhooks\030\005 \003(\0132#.services.provider.v1.WebhookConfig\"T\n\r"
           + "WebhookConfig\022\n\n"
           + "\002id\030\001 \001(\t\022\027\n"
           + "\017destination_url\030\002 \001(\t\022\016\n"
-          + "\006events\030\004 \003(\t\"\212\001\n"
+          + "\006events\030\004 \003(\t\022\016\n"
+          + "\006status\030\005 \001(\t\"\212\001\n"
           + "\026CreateEcosystemRequest\022\014\n"
           + "\004name\030\001 \001(\t\022\031\n"
           + "\013description\030\002 \001(\tB\004\200\246\035\001\022\021\n"
@@ -22151,28 +22356,28 @@ public final class ProviderOuterClass {
           + "\033participant_type_individual\020\000\022!\n"
           + "\035participant_type_organization\020\0012\231\010\n"
           + "\010Provider\022n\n"
-          + "\017CreateEcosystem\022,.services.provider.v1.CreateEcosys"
-          + "temRequest\032-.services.provider.v1.CreateEcosystemResponse\022n\n"
-          + "\017UpdateEcosystem\022,.services.provider.v1.UpdateEcosystemReque"
-          + "st\032-.services.provider.v1.UpdateEcosystemResponse\022_\n\n"
-          + "AddWebhook\022\'.services.provi"
-          + "der.v1.AddWebhookRequest\032(.services.provider.v1.AddWebhookResponse\022h\n\r"
-          + "DeleteWebhook\022*.services.provider.v1.DeleteWebhook"
-          + "Request\032+.services.provider.v1.DeleteWebhookResponse\022_\n"
-          + "\004Info\022*.services.provider"
-          + ".v1.EcosystemInfoRequest\032+.services.provider.v1.EcosystemInfoResponse\022h\n\r"
-          + "GenerateToken\022*.services.provider.v1.GenerateTo"
-          + "kenRequest\032+.services.provider.v1.GenerateTokenResponse\022S\n"
-          + "\006Invite\022#.services.pro"
-          + "vider.v1.InviteRequest\032$.services.provider.v1.InviteResponse\022q\n"
-          + "\020InvitationStatus\022-.services.provider.v1.InvitationStatus"
-          + "Request\032..services.provider.v1.InvitationStatusResponse\022e\n"
-          + "\014GetOberonKey\022).services.provider.v1.GetOberonKeyRequest\032*.ser"
-          + "vices.provider.v1.GetOberonKeyResponse\022h\n\r"
-          + "GetEventToken\022*.services.provider.v1.G"
-          + "etEventTokenRequest\032+.services.provider.v1.GetEventTokenResponseBb\n"
-          + "\032trinsic.services.common.v1Z%github.com/trinsic-id/sd"
-          + "k/provider/v1\252\002\034Trinsic.Services.Provider.V1b\006proto3"
+          + "\017CreateEcosystem\022,.services.provider"
+          + ".v1.CreateEcosystemRequest\032-.services.provider.v1.CreateEcosystemResponse\022n\n"
+          + "\017UpdateEcosystem\022,.services.provider.v1.Upda"
+          + "teEcosystemRequest\032-.services.provider.v1.UpdateEcosystemResponse\022_\n\n"
+          + "AddWebhook\022\'.services.provider.v1.AddWebhookRequest"
+          + "\032(.services.provider.v1.AddWebhookResponse\022h\n\r"
+          + "DeleteWebhook\022*.services.provider."
+          + "v1.DeleteWebhookRequest\032+.services.provider.v1.DeleteWebhookResponse\022_\n"
+          + "\004Info\022*.services.provider.v1.EcosystemInfoRequest"
+          + "\032+.services.provider.v1.EcosystemInfoResponse\022h\n\r"
+          + "GenerateToken\022*.services.provid"
+          + "er.v1.GenerateTokenRequest\032+.services.provider.v1.GenerateTokenResponse\022S\n"
+          + "\006Invit"
+          + "e\022#.services.provider.v1.InviteRequest\032$.services.provider.v1.InviteResponse\022q\n"
+          + "\020InvitationStatus\022-.services.provider.v1."
+          + "InvitationStatusRequest\032..services.provider.v1.InvitationStatusResponse\022e\n"
+          + "\014GetOberonKey\022).services.provider.v1.GetOberon"
+          + "KeyRequest\032*.services.provider.v1.GetOberonKeyResponse\022h\n\r"
+          + "GetEventToken\022*.services.provider.v1.GetEventTokenRequest\032+.se"
+          + "rvices.provider.v1.GetEventTokenResponseBZ\n"
+          + "\032trinsic.services.common.v1Z\035services"
+          + "/provider/v1/provider\252\002\034Trinsic.Services.Provider.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -22241,7 +22446,7 @@ public final class ProviderOuterClass {
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_WebhookConfig_descriptor,
             new java.lang.String[] {
-              "Id", "DestinationUrl", "Events",
+              "Id", "DestinationUrl", "Events", "Status",
             });
     internal_static_services_provider_v1_CreateEcosystemRequest_descriptor =
         getDescriptor().getMessageTypes().get(7);

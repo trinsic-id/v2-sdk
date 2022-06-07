@@ -2,7 +2,8 @@ package services
 
 import (
 	"context"
-	credential "github.com/trinsic-id/sdk/go/proto/verifiablecredentials/v1"
+
+	"github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/v1/credential"
 )
 
 // NewCredentialService returns a credential service with the base service configured

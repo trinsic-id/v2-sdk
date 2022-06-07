@@ -2,7 +2,8 @@ package services
 
 import (
 	"context"
-	wallet "github.com/trinsic-id/sdk/go/proto/universalwallet/v1"
+
+	"github.com/trinsic-id/sdk/go/proto/services/universalwallet/v1/wallet"
 )
 
 // NewWalletService returns a wallet service with the base service configured

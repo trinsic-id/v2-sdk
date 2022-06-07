@@ -3,7 +3,8 @@ package services
 import (
 	"context"
 	"errors"
-	provider "github.com/trinsic-id/sdk/go/proto/provider/v1"
+
+	"github.com/trinsic-id/sdk/go/proto/services/provider/v1/provider"
 )
 
 // NewProviderService returns a provider servcie with the base service configured

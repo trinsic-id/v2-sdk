@@ -16015,10 +16015,10 @@ public final class Templates {
           + "ntials.templates.v1.SearchCredentialTemplatesResponse\022\245\001\n"
           + "\006Delete\022L.services.verifiablecredentials.templates.v1.DeleteCre"
           + "dentialTemplateRequest\032M.services.verifi"
-          + "ablecredentials.templates.v1.DeleteCredentialTemplateResponseB\251\001\n"
-          + "3trinsic.services.verifiablecredentials.templates.v1Z<g"
-          + "ithub.com/trinsic-id/sdk/verifiablecredentials/templates/v1\252\0023Trinsic.Services.V"
-          + "erifiableCredentials.Templates.V1b\006proto3"
+          + "ablecredentials.templates.v1.DeleteCredentialTemplateResponseB\241\001\n"
+          + "3trinsic.services.verifiablecredentials.templates.v1Z4s"
+          + "ervices/verifiablecredentials/templates/v1/template\252\0023Trinsic.Services.Verifiabl"
+          + "eCredentials.Templates.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(

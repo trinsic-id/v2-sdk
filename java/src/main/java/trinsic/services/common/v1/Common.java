@@ -1662,9 +1662,9 @@ public final class Common {
           + "WALLET_EXISTS\020\013\022\022\n"
           + "\016ITEM_NOT_FOUND\020\024\022\030\n"
           + "\023SERIALIZATION_ERROR\020\310\001\022\021\n\r"
-          + "UNKNOWN_ERROR\020dB^\n"
-          + "\032trinsic.services.common.v1Z#github.com/trinsic"
-          + "-id/sdk/common/v1\252\002\032Trinsic.Services.Common.V1b\006proto3"
+          + "UNKNOWN_ERROR\020dBT\n"
+          + "\032trinsic.services.common.v1Z\031services/common/v1"
+          + "/common\252\002\032Trinsic.Services.Common.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(

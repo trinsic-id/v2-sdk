@@ -1,6 +1,6 @@
 package services
 
-import account "github.com/trinsic-id/sdk/go/proto/account/v1"
+import "github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
 
 // ProfileProvider defines the interface for interacting with stored profiles
 type ProfileProvider interface {

@@ -122,6 +122,8 @@ class AccountInfoResponse(betterproto.Message):
     # The public DID associated with this account. This DID is used as "issuer"
     # when signing verifiable credentials
     public_did: str = betterproto.string_field(6)
+    # Webhook events if any this wallet has authorized
+    authorized_webhooks: List[str] = betterproto.string_field(7)
 
     def __post_init__(self) -> None:
         super().__post_init__()
@@ -157,6 +159,21 @@ class AccountEcosystem(betterproto.Message):
     name: str = betterproto.string_field(2)
     description: str = betterproto.string_field(3)
     uri: str = betterproto.string_field(4)
+
+
+@dataclass(eq=False, repr=False)
+class AuthorizeWebhookRequest(betterproto.Message):
+    """Authorize ecosystem to receive wallet envents"""
+
+    # Events to authorize access to. Default is "*" (all events)
+    events: List[str] = betterproto.string_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class AuthorizeWebhookResponse(betterproto.Message):
+    """Response to `AuthorizeWebhookRequest`"""
+
+    pass
 
 
 @dataclass(eq=False, repr=False)
@@ -240,6 +257,15 @@ class AccountStub(betterproto.ServiceStub):
             RevokeDeviceResponse,
         )
 
+    async def authorize_webhook(
+        self, authorize_webhook_request: "AuthorizeWebhookRequest"
+    ) -> "AuthorizeWebhookResponse":
+        return await self._unary_unary(
+            "/services.account.v1.Account/AuthorizeWebhook",
+            authorize_webhook_request,
+            AuthorizeWebhookResponse,
+        )
+
 
 class AccountBase(ServiceBase):
     async def sign_in(self, sign_in_request: "SignInRequest") -> "SignInResponse":
@@ -266,6 +292,11 @@ class AccountBase(ServiceBase):
     async def revoke_device(
         self, revoke_device_request: "RevokeDeviceRequest"
     ) -> "RevokeDeviceResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def authorize_webhook(
+        self, authorize_webhook_request: "AuthorizeWebhookRequest"
+    ) -> "AuthorizeWebhookResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def __rpc_sign_in(self, stream: grpclib.server.Stream) -> None:
@@ -296,6 +327,11 @@ class AccountBase(ServiceBase):
     async def __rpc_revoke_device(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.revoke_device(request)
+        await stream.send_message(response)
+
+    async def __rpc_authorize_webhook(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.authorize_webhook(request)
         await stream.send_message(response)
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
@@ -335,5 +371,11 @@ class AccountBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 RevokeDeviceRequest,
                 RevokeDeviceResponse,
+            ),
+            "/services.account.v1.Account/AuthorizeWebhook": grpclib.const.Handler(
+                self.__rpc_authorize_webhook,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                AuthorizeWebhookRequest,
+                AuthorizeWebhookResponse,
             ),
         }

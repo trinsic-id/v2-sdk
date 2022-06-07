@@ -563,13 +563,15 @@ class Services::Provider::V1::WebhookConfig
     params(
       id: T.nilable(String),
       destination_url: T.nilable(String),
-      events: T.nilable(T::Array[String])
+      events: T.nilable(T::Array[String]),
+      status: T.nilable(String)
     ).void
   end
   def initialize(
     id: "",
     destination_url: "",
-    events: []
+    events: [],
+    status: ""
   )
   end
 
@@ -607,6 +609,18 @@ class Services::Provider::V1::WebhookConfig
 
   sig { void }
   def clear_events
+  end
+
+  sig { returns(String) }
+  def status
+  end
+
+  sig { params(value: String).void }
+  def status=(value)
+  end
+
+  sig { void }
+  def clear_status
   end
 
   sig { params(field: String).returns(T.untyped) }

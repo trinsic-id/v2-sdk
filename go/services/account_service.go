@@ -6,10 +6,9 @@ import (
 
 	"github.com/trinsic-id/okapi/go/okapi"
 	"github.com/trinsic-id/okapi/go/okapiproto"
+	"github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
 
 	"google.golang.org/protobuf/proto"
-
-	account "github.com/trinsic-id/sdk/go/proto/account/v1"
 )
 
 // NewAccountService returns an account servcie with the base service configured

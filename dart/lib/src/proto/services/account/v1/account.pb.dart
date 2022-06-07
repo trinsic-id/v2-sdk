@@ -641,6 +641,11 @@ class AccountInfoResponse extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'publicDid')
+    ..pPS(
+        7,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'authorizedWebhooks')
     ..hasRequiredFields = false;
 
   AccountInfoResponse._() : super();
@@ -652,6 +657,7 @@ class AccountInfoResponse extends $pb.GeneratedMessage {
     $core.String? deviceId,
     $core.String? ecosystemId,
     $core.String? publicDid,
+    $core.Iterable<$core.String>? authorizedWebhooks,
   }) {
     final _result = create();
     if (details != null) {
@@ -672,6 +678,9 @@ class AccountInfoResponse extends $pb.GeneratedMessage {
     }
     if (publicDid != null) {
       _result.publicDid = publicDid;
+    }
+    if (authorizedWebhooks != null) {
+      _result.authorizedWebhooks.addAll(authorizedWebhooks);
     }
     return _result;
   }
@@ -767,6 +776,9 @@ class AccountInfoResponse extends $pb.GeneratedMessage {
   $core.bool hasPublicDid() => $_has(5);
   @$pb.TagNumber(6)
   void clearPublicDid() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.List<$core.String> get authorizedWebhooks => $_getList(6);
 }
 
 class ListDevicesRequest extends $pb.GeneratedMessage {
@@ -1066,6 +1078,110 @@ class AccountEcosystem extends $pb.GeneratedMessage {
   $core.bool hasUri() => $_has(3);
   @$pb.TagNumber(4)
   void clearUri() => clearField(4);
+}
+
+class AuthorizeWebhookRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'AuthorizeWebhookRequest',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.account.v1'),
+      createEmptyInstance: create)
+    ..pPS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'events')
+    ..hasRequiredFields = false;
+
+  AuthorizeWebhookRequest._() : super();
+  factory AuthorizeWebhookRequest({
+    $core.Iterable<$core.String>? events,
+  }) {
+    final _result = create();
+    if (events != null) {
+      _result.events.addAll(events);
+    }
+    return _result;
+  }
+  factory AuthorizeWebhookRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory AuthorizeWebhookRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  AuthorizeWebhookRequest clone() =>
+      AuthorizeWebhookRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  AuthorizeWebhookRequest copyWith(
+          void Function(AuthorizeWebhookRequest) updates) =>
+      super.copyWith((message) => updates(message as AuthorizeWebhookRequest))
+          as AuthorizeWebhookRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static AuthorizeWebhookRequest create() => AuthorizeWebhookRequest._();
+  AuthorizeWebhookRequest createEmptyInstance() => create();
+  static $pb.PbList<AuthorizeWebhookRequest> createRepeated() =>
+      $pb.PbList<AuthorizeWebhookRequest>();
+  @$core.pragma('dart2js:noInline')
+  static AuthorizeWebhookRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<AuthorizeWebhookRequest>(create);
+  static AuthorizeWebhookRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<$core.String> get events => $_getList(0);
+}
+
+class AuthorizeWebhookResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'AuthorizeWebhookResponse',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.account.v1'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  AuthorizeWebhookResponse._() : super();
+  factory AuthorizeWebhookResponse() => create();
+  factory AuthorizeWebhookResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory AuthorizeWebhookResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  AuthorizeWebhookResponse clone() =>
+      AuthorizeWebhookResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  AuthorizeWebhookResponse copyWith(
+          void Function(AuthorizeWebhookResponse) updates) =>
+      super.copyWith((message) => updates(message as AuthorizeWebhookResponse))
+          as AuthorizeWebhookResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static AuthorizeWebhookResponse create() => AuthorizeWebhookResponse._();
+  AuthorizeWebhookResponse createEmptyInstance() => create();
+  static $pb.PbList<AuthorizeWebhookResponse> createRepeated() =>
+      $pb.PbList<AuthorizeWebhookResponse>();
+  @$core.pragma('dart2js:noInline')
+  static AuthorizeWebhookResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<AuthorizeWebhookResponse>(create);
+  static AuthorizeWebhookResponse? _defaultInstance;
 }
 
 class LoginRequest extends $pb.GeneratedMessage {

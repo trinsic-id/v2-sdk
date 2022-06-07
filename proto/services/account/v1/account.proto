@@ -2,7 +2,7 @@ syntax = "proto3";
 package services.account.v1;
 
 option csharp_namespace = "Trinsic.Services.Account.V1";
-option go_package = "github.com/trinsic-id/sdk/account/v1";
+option go_package = "services/account/v1/account";
 option java_package = "trinsic.services.account.v1";
 
 import "services/options/field-options.proto";
@@ -15,7 +15,7 @@ message SignInRequest {
     // Invitation code associated with this registration
     string invitation_code = 2 [(options.optional)=true];
 
-    // ID of Ecosystem to sign into. 
+    // ID of Ecosystem to use
     // Ignored if `invitation_code` is passed
     string ecosystem_id = 3 [(options.optional)=true];
 }
@@ -75,7 +75,7 @@ message AccountProfile {
     // If token protection is enabled, implementations must supply
     // protection secret before using the token for authentication.
     TokenProtection protection = 4;
-    
+
 }
 
 // Token protection info
@@ -106,6 +106,9 @@ message AccountInfoResponse {
     // The public DID associated with this account.
     // This DID is used as "issuer" when signing verifiable credentials
     string public_did = 6;
+
+    // Webhook events if any this wallet has authorized
+    repeated string authorized_webhooks = 7;
 }
 
 message ListDevicesRequest {}
@@ -158,6 +161,16 @@ message LoginConfirmResponse {
     AccountProfile profile = 1;
 }
 
+// Authorize ecosystem to receive wallet events
+message AuthorizeWebhookRequest {
+    // Events to authorize access to. Default is "*" (all events)
+    repeated string events = 1;
+}
+
+// Response to `AuthorizeWebhookRequest`
+message AuthorizeWebhookResponse {
+}
+
 service Account {
     // Sign in to an already existing account
     rpc SignIn              (SignInRequest)             returns (SignInResponse);
@@ -174,4 +187,7 @@ service Account {
     rpc ListDevices         (ListDevicesRequest)        returns (ListDevicesResponse);
     // Revoke device access to the account's cloud wallet
     rpc RevokeDevice        (RevokeDeviceRequest)       returns (RevokeDeviceResponse);
+
+    // Authorize Ecosystem to receive webhook events
+    rpc AuthorizeWebhook(AuthorizeWebhookRequest) returns (AuthorizeWebhookResponse);
 }

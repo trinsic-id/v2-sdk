@@ -7794,9 +7794,9 @@ public final class UniversalWalletOuterClass {
           + "UpdateItem\022..services.universalwallet.v1.UpdateItemRequest"
           + "\032/.services.universalwallet.v1.UpdateItemResponse\022m\n\n"
           + "DeleteItem\022..services.universalwallet.v1.DeleteItemRequest\032/.servic"
-          + "es.universalwallet.v1.DeleteItemResponseBy\n"
-          + "#trinsic.services.universalwallet.v1Z,github.com/trinsic-id/sdk/universalwall"
-          + "et/v1\252\002#Trinsic.Services.UniversalWallet.V1b\006proto3"
+          + "es.universalwallet.v1.DeleteItemResponseBo\n"
+          + "#trinsic.services.universalwallet.v1Z\"services/universalwallet/v1/wallet\252\002#Tr"
+          + "insic.Services.UniversalWallet.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
