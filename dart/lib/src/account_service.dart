@@ -67,8 +67,8 @@ class AccountService extends ServiceBase {
     return Base64Encoder.urlSafe().convert(protectedProfile.writeToBuffer());
   }
 
-  Future<InfoResponse> getInfo() async {
-    return await client.info(InfoRequest());
+  Future<AccountInfoResponse> getInfo() async {
+    return await client.info(AccountInfoRequest());
   }
 
   Future<ListDevicesResponse> listDevices(ListDevicesRequest request) async {
