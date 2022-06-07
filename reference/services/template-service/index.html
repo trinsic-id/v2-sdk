@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.8c78faf4.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.83929f28.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
@@ -1758,52 +1758,16 @@
 <p>These credential templates can be shared between issuers in an ecosystem. </p>
 <h2 id="create-template">Create Template<a class="headerlink" href="#create-template" title="Permanent link">&para;</a></h2>
 <p>Creates a new credential template. Once created, the template is saved in JSON-LD format that can be used to issue and verify credentials.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Trinsic CLI</label></div>
+<div class='proto-method-tabs-marker'></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_1_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_1_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="2:6"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><input id="__tabbed_2_6" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Trinsic CLI</label><label for="__tabbed_2_2">TypeScript</label><label for="__tabbed_2_3">C#</label><label for="__tabbed_2_4">Python</label><label for="__tabbed_2_5">Go</label><label for="__tabbed_2_6">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic template create --name <span class="s1">&#39;My Credential&#39;</span> --fields-data <span class="s1">&#39;{\&quot;field1\&quot;:{}}&#39;</span>
 </code></pre></div>
 </div>
-</div>
-</div>
-<p>When using one of the SDKs, you must supply a <a href="../../proto/#createcredentialtemplaterequest">Create Credential Template Request</a> object. This object follows the model below:</p>
-<div class="proto-obj-container">
-<p><div class='proto-obj-header' markdown><a href="/reference/proto#createcredentialtemplaterequest">CreateCredentialTemplateRequest</a></p>
-</div>
-<div class="proto-obj-contents">
-<p>Request to create a new template</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>name</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Name of new template</td>
-</tr>
-<tr>
-<td>fields</td>
-<td><a href="/reference/proto#services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest-FieldsEntry">CreateCredentialTemplateRequest.FieldsEntry</a>[]</td>
-<td>Fields which compose the template</td>
-</tr>
-<tr>
-<td>allow_additional_fields</td>
-<td><a href="/reference/proto#bool">bool</a></td>
-<td>Whether credentials may be issued against this template which have fields not specified in <code>fields</code></td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest-FieldsEntry"></a></p>
-</div>
-</div>
-<p>Then you can supply it to SDK:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:5"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">TypeScript</label><label for="__tabbed_2_2">C#</label><label for="__tabbed_2_3">Python</label><label for="__tabbed_2_4">Go</label><label for="__tabbed_2_5">Java</label></div>
-<div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">credentialTemplateName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`My First Credential Template-</span><span class="si">${</span><span class="nx">uuid</span><span class="p">()</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span><span class="w"></span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">nameField</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">TemplateField</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
@@ -1888,69 +1852,27 @@
 </div>
 </div>
 </div>
-<p>The response model is of type <a href="../../proto/#createcredentialtemplateresponse">Create Credential Template Response</a>:</p>
-<div class="proto-obj-container">
-<p><div class='proto-obj-header' markdown><a href="/reference/proto#createcredentialtemplateresponse">CreateCredentialTemplateResponse</a></p>
 </div>
-<div class="proto-obj-contents">
-<p>Response to <code>CreateCredentialTemplateRequest</code></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>data</td>
-<td><a href="/reference/proto#services-verifiablecredentials-templates-v1-TemplateData">TemplateData</a></td>
-<td>Created template</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-verifiablecredentials-templates-v1-DeleteCredentialTemplateRequest"></a></p>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest'><div class='proto-obj-name'><a name='services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest' href='/reference/proto#services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest'>CreateCredentialTemplateRequest</a></div><div class='proto-obj-description'>Request to create a new template</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>name</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Name of new template</div></div><div class='proto-field'><div class='proto-field-name'>fields</div> <div class='proto-field-type'><a href='/reference/proto#services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest.FieldsEntry'>FieldsEntry</a>[]</div><div class='proto-field-description'>Fields which compose the template</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>fields.</span>key</div> <div class='proto-field-type'>string</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>fields.</span>value</div> <div class='proto-field-type'><a href='/reference/proto#services.verifiablecredentials.templates.v1.TemplateField'>TemplateField</a></div><div class='proto-field-description'></div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>fields.value.</span>description</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Human-readable description of the field</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>fields.value.</span>optional</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>Whether this field may be omitted when a credential is issued against the template</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>fields.value.</span>type</div> <div class='proto-field-type'><a href='/reference/proto#services.verifiablecredentials.templates.v1.FieldType'>FieldType</a></div><div class='proto-field-description'>The type of the field</div><div class='proto-field-expand-btn' data-sub-type='enum' onclick='expandSubField(this);'>Show enum values</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>FieldType.</span>STRING</div> <div class='proto-field-type'> = 0</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>FieldType.</span>NUMBER</div> <div class='proto-field-type'> = 1</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>FieldType.</span>BOOL</div> <div class='proto-field-type'> = 2</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>FieldType.</span>DATETIME</div> <div class='proto-field-type'> = 4</div><div class='proto-field-description'></div></div></div></div></div></div></div></div></div></div></div><div class='proto-field'><div class='proto-field-name'>allow_additional_fields</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>Whether credentials may be issued against this template which have fields not specified in <code>fields</code></div></div></div></div></p>
 </div>
-<p></div> </p>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse'><div class='proto-obj-name'><a name='services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse' href='/reference/proto#services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse'>CreateCredentialTemplateResponse</a></div><div class='proto-obj-description'>Response to <code>CreateCredentialTemplateRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>data</div> <div class='proto-field-type'><a href='/reference/proto#services.verifiablecredentials.templates.v1.TemplateData'>TemplateData</a></div><div class='proto-field-description'>Created template</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>data.</span>id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Template ID</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>data.</span>name</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Template name</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>data.</span>version</div> <div class='proto-field-type'>int32</div><div class='proto-field-description'>Template version number</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>data.</span>fields</div> <div class='proto-field-type'><a href='/reference/proto#services.verifiablecredentials.templates.v1.TemplateData.FieldsEntry'>FieldsEntry</a>[]</div><div class='proto-field-description'>Fields defined for the template</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>data.fields.</span>key</div> <div class='proto-field-type'>string</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>data.fields.</span>value</div> <div class='proto-field-type'><a href='/reference/proto#services.verifiablecredentials.templates.v1.TemplateField'>TemplateField</a></div><div class='proto-field-description'></div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>data.fields.value.</span>description</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Human-readable description of the field</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>data.fields.value.</span>optional</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>Whether this field may be omitted when a credential is issued against the template</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>data.fields.value.</span>type</div> <div class='proto-field-type'><a href='/reference/proto#services.verifiablecredentials.templates.v1.FieldType'>FieldType</a></div><div class='proto-field-description'>The type of the field</div><div class='proto-field-expand-btn' data-sub-type='enum' onclick='expandSubField(this);'>Show enum values</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>FieldType.</span>STRING</div> <div class='proto-field-type'> = 0</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>FieldType.</span>NUMBER</div> <div class='proto-field-type'> = 1</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>FieldType.</span>BOOL</div> <div class='proto-field-type'> = 2</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>FieldType.</span>DATETIME</div> <div class='proto-field-type'> = 4</div><div class='proto-field-description'></div></div></div></div></div></div></div></div></div></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>data.</span>allow_additional_fields</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>Whether credentials issued against this template may  contain fields not defined by template</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>data.</span>schema_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URI pointing to template JSON schema document</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>data.</span>context_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URI pointing to template JSON-LD context document</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>data.</span>ecosystem_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of ecosystem in which template resides</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>data.</span>type</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Template type (<code>VerifiableCredential</code>)</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>data.</span>created_by</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of template creator</div></div></div></div></div></div></div></p>
+</div>
+</div>
+</div>
 <h2 id="get">Get<a class="headerlink" href="#get" title="Permanent link">&para;</a></h2>
 <p>Get the specified credential template through the supplied template/definition ID.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Trinsic CLI</label></div>
+<div class='proto-method-tabs-marker'></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_3_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_3_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="4:5"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Trinsic CLI</label><label for="__tabbed_4_2">C#</label><label for="__tabbed_4_3">Python</label><label for="__tabbed_4_4">Go</label><label for="__tabbed_4_5">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic template get --id &lt;TEMPLATE_ID&gt;
 </code></pre></div>
 </div>
-</div>
-</div>
-<p>When using one of the SDKs, you must supply a <a href="../../proto/#getcredentialtemplaterequest">Get Credential Template Request</a> object. This object follows the model below:</p>
-<div class="proto-obj-container">
-<p><div class='proto-obj-header' markdown><a href="/reference/proto#getcredentialtemplaterequest">GetCredentialTemplateRequest</a></p>
-</div>
-<div class="proto-obj-contents">
-<p>Request to fetch a template by ID</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>ID of template to fetch</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-verifiablecredentials-templates-v1-GetCredentialTemplateResponse"></a></p>
-</div>
-</div>
-<p>Then you can supply it to SDK:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:4"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">C#</label><label for="__tabbed_4_2">Python</label><label for="__tabbed_4_3">Go</label><label for="__tabbed_4_4">Java</label></div>
-<div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">getTemplateResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">templateService</span><span class="p">.</span><span class="n">GetAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">Id</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">template</span><span class="p">.</span><span class="n">Data</span><span class="p">.</span><span class="n">Id</span><span class="p">});</span><span class="w"></span>
 </code></pre></div>
@@ -1974,29 +1896,13 @@
 </div>
 </div>
 </div>
-<p>The response model is of type <a href="../../proto/#getcredentialtemplateresponse">Get Credential Template Response</a>:</p>
-<div class="proto-obj-container">
-<p><div class='proto-obj-header' markdown><a href="/reference/proto#getcredentialtemplateresponse">GetCredentialTemplateResponse</a></p>
 </div>
-<div class="proto-obj-contents">
-<p>Response to <code>GetCredentialTemplateRequest</code></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>template</td>
-<td><a href="/reference/proto#services-verifiablecredentials-templates-v1-TemplateData">TemplateData</a></td>
-<td>Template fetched by ID</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-verifiablecredentials-templates-v1-GetTemplateRequest"></a></p>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest'><div class='proto-obj-name'><a name='services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest' href='/reference/proto#services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest'>GetCredentialTemplateRequest</a></div><div class='proto-obj-description'>Request to fetch a template by ID</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of template to fetch</div></div></div></div></p>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse'><div class='proto-obj-name'><a name='services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse' href='/reference/proto#services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse'>GetCredentialTemplateResponse</a></div><div class='proto-obj-description'>Response to <code>GetCredentialTemplateRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>template</div> <div class='proto-field-type'><a href='/reference/proto#services.verifiablecredentials.templates.v1.TemplateData'>TemplateData</a></div><div class='proto-field-description'>Template fetched by ID</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>template.</span>id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Template ID</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>template.</span>name</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Template name</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>template.</span>version</div> <div class='proto-field-type'>int32</div><div class='proto-field-description'>Template version number</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>template.</span>fields</div> <div class='proto-field-type'><a href='/reference/proto#services.verifiablecredentials.templates.v1.TemplateData.FieldsEntry'>FieldsEntry</a>[]</div><div class='proto-field-description'>Fields defined for the template</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>template.fields.</span>key</div> <div class='proto-field-type'>string</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>template.fields.</span>value</div> <div class='proto-field-type'><a href='/reference/proto#services.verifiablecredentials.templates.v1.TemplateField'>TemplateField</a></div><div class='proto-field-description'></div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>template.fields.value.</span>description</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Human-readable description of the field</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>template.fields.value.</span>optional</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>Whether this field may be omitted when a credential is issued against the template</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>template.fields.value.</span>type</div> <div class='proto-field-type'><a href='/reference/proto#services.verifiablecredentials.templates.v1.FieldType'>FieldType</a></div><div class='proto-field-description'>The type of the field</div><div class='proto-field-expand-btn' data-sub-type='enum' onclick='expandSubField(this);'>Show enum values</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>FieldType.</span>STRING</div> <div class='proto-field-type'> = 0</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>FieldType.</span>NUMBER</div> <div class='proto-field-type'> = 1</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>FieldType.</span>BOOL</div> <div class='proto-field-type'> = 2</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>FieldType.</span>DATETIME</div> <div class='proto-field-type'> = 4</div><div class='proto-field-description'></div></div></div></div></div></div></div></div></div></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>template.</span>allow_additional_fields</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>Whether credentials issued against this template may  contain fields not defined by template</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>template.</span>schema_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URI pointing to template JSON schema document</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>template.</span>context_uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URI pointing to template JSON-LD context document</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>template.</span>ecosystem_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of ecosystem in which template resides</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>template.</span>type</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Template type (<code>VerifiableCredential</code>)</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>template.</span>created_by</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of template creator</div></div></div></div></div></div></div></p>
+</div>
 </div>
 </div>
 <h2 id="search-query">Search / Query<a class="headerlink" href="#search-query" title="Permanent link">&para;</a></h2>
@@ -2050,42 +1956,16 @@ This approach allows us to give developers full control over how data is retriev
 </div>
 <h2 id="delete">Delete<a class="headerlink" href="#delete" title="Permanent link">&para;</a></h2>
 <p>Deletes a credential template.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Trinsic CLI</label></div>
+<div class='proto-method-tabs-marker'></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:3"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_7_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_7_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="8:5"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><input id="__tabbed_8_4" name="__tabbed_8" type="radio" /><input id="__tabbed_8_5" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Trinsic CLI</label><label for="__tabbed_8_2">C#</label><label for="__tabbed_8_3">Python</label><label for="__tabbed_8_4">Go</label><label for="__tabbed_8_5">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic tamplate delete --id &lt;TEMPLATE_ID&gt;
 </code></pre></div>
 </div>
-</div>
-</div>
-<p>When using one of the SDKs, you must supply a <a href="../../proto/#deletecredentialtemplaterequest">Delete Credential Template Request</a> object. This object follows the model below:</p>
-<div class="proto-obj-container">
-<p><div class='proto-obj-header' markdown><a href="/reference/proto#deletecredentialtemplaterequest">DeleteCredentialTemplateRequest</a></p>
-</div>
-<div class="proto-obj-contents">
-<p>Request to delete a template by ID</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>ID of template to delete</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-verifiablecredentials-templates-v1-DeleteCredentialTemplateResponse"></a></p>
-</div>
-</div>
-<p>Then you can supply it to SDK:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:4"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><input id="__tabbed_8_4" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">C#</label><label for="__tabbed_8_2">Python</label><label for="__tabbed_8_3">Go</label><label for="__tabbed_8_4">Java</label></div>
-<div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">deleteTemplateResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">templateService</span><span class="p">.</span><span class="n">DeleteAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">Id</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">template</span><span class="p">.</span><span class="n">Data</span><span class="p">.</span><span class="n">Id</span><span class="p">});</span><span class="w"></span>
 </code></pre></div>
@@ -2109,6 +1989,15 @@ This approach allows us to give developers full control over how data is retriev
 </div>
 </div>
 </div>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest'><div class='proto-obj-name'><a name='services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest' href='/reference/proto#services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest'>DeleteCredentialTemplateRequest</a></div><div class='proto-obj-description'>Request to delete a template by ID</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of template to delete</div></div></div></div></p>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse'><div class='proto-obj-name'><a name='services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse' href='/reference/proto#services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse'>DeleteCredentialTemplateResponse</a></div><div class='proto-obj-description'>Response to <code>DeleteCredentialTemplateRequest</code></div><i style='display:block; font-size: 0.65rem; margin-top: 0.5rem'>This message has no fields</i></div></p>
+</div>
+</div>
+</div>
 
 
 
@@ -2118,7 +2007,7 @@ This approach allows us to give developers full control over how data is retriev
   
     <div class="md-source-date">
       <small>
-          Authors: <span class='git-page-authors git-authors'><a href='mailto:polygonguru@gmail.com'>Scott Phillips</a>, <a href='mailto:michaeldavisboyd@gmail.com'>Michael Boyd</a></span>
+          Authors: <span class='git-page-authors git-authors'><a href='mailto:josh@trinsic.id'>Joshua Coffey</a>, <a href='mailto:polygonguru@gmail.com'>Scott Phillips</a>, <a href='mailto:michaeldavisboyd@gmail.com'>Michael Boyd</a></span>
       </small>
     </div>
   
