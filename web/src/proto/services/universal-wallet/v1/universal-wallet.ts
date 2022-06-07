@@ -637,6 +637,7 @@ export const DeleteItemResponse = {
   },
 };
 
+export type UniversalWalletDefinition = typeof UniversalWalletDefinition;
 export const UniversalWalletDefinition = {
   name: "UniversalWallet",
   fullName: "services.universalwallet.v1.UniversalWallet",

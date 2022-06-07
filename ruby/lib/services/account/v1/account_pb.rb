@@ -32,9 +32,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :enabled, :bool, 1
       optional :method, :enum, 2, 'services.account.v1.ConfirmationMethod'
     end
-    add_message 'services.account.v1.InfoRequest' do
+    add_message 'services.account.v1.AccountInfoRequest' do
     end
-    add_message 'services.account.v1.InfoResponse' do
+    add_message 'services.account.v1.AccountInfoResponse' do
       optional :details, :message, 1, 'services.account.v1.AccountDetails'
       repeated :ecosystems, :message, 2, 'services.account.v1.AccountEcosystem'
       optional :wallet_id, :string, 3
@@ -56,6 +56,24 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :description, :string, 3
       optional :uri, :string, 4
     end
+    add_message 'services.account.v1.LoginRequest' do
+      optional :email, :string, 1
+      optional :invitation_code, :string, 2
+      optional :ecosystem_id, :string, 3
+    end
+    add_message 'services.account.v1.LoginResponse' do
+      oneof :response do
+        optional :challenge, :bytes, 1
+        optional :profile, :message, 2, 'services.account.v1.AccountProfile'
+      end
+    end
+    add_message 'services.account.v1.LoginConfirmRequest' do
+      optional :challenge, :bytes, 1
+      optional :confirmation_code_hashed, :bytes, 2
+    end
+    add_message 'services.account.v1.LoginConfirmResponse' do
+      optional :profile, :message, 1, 'services.account.v1.AccountProfile'
+    end
     add_enum 'services.account.v1.ConfirmationMethod' do
       value :None, 0
       value :Email, 1
@@ -74,13 +92,17 @@ module Services
       SignInResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.SignInResponse').msgclass
       AccountProfile = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.AccountProfile').msgclass
       TokenProtection = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.TokenProtection').msgclass
-      InfoRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.InfoRequest').msgclass
-      InfoResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.InfoResponse').msgclass
+      AccountInfoRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.AccountInfoRequest').msgclass
+      AccountInfoResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.AccountInfoResponse').msgclass
       ListDevicesRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.ListDevicesRequest').msgclass
       ListDevicesResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.ListDevicesResponse').msgclass
       RevokeDeviceRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.RevokeDeviceRequest').msgclass
       RevokeDeviceResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.RevokeDeviceResponse').msgclass
       AccountEcosystem = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.AccountEcosystem').msgclass
+      LoginRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.LoginRequest').msgclass
+      LoginResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.LoginResponse').msgclass
+      LoginConfirmRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.LoginConfirmRequest').msgclass
+      LoginConfirmResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.LoginConfirmResponse').msgclass
       ConfirmationMethod = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.ConfirmationMethod').enummodule
     end
   end

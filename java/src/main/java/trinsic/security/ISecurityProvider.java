@@ -6,5 +6,6 @@ import trinsic.okapi.DidException;
 import trinsic.services.account.v1.AccountOuterClass;
 
 public interface ISecurityProvider {
-    String GetAuthHeader(AccountOuterClass.AccountProfile accountProfile, Message message) throws InvalidProtocolBufferException, DidException;
+  String GetAuthHeader(AccountOuterClass.AccountProfile accountProfile, Message message)
+      throws InvalidProtocolBufferException, DidException;
 }

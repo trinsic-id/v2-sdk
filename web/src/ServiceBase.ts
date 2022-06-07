@@ -1,8 +1,5 @@
 import { AccountProfile, Nonce, ServiceOptions } from "./proto";
-import {
-  Hashing,
-  Oberon,
-} from "@trinsic/okapi";
+import { Hashing, Oberon } from "@trinsic/okapi";
 import { Metadata } from "nice-grpc-common";
 import { fromUint8Array, toUint8Array } from "js-base64";
 import { grpc } from "@improbable-eng/grpc-web";
