@@ -44,6 +44,8 @@ jobs:
         uses: arduino/setup-protoc@v1
       - name: Configure git credentials
         uses: OleksiyRudenko/gha-git-credentials@v2
+        with:
+          token: '${{ secrets.GITHUB_TOKEN }}'
       - name: Install protobuf plugins
         run: |
           pip install -r ./devops/requirements.txt
