@@ -10,7 +10,7 @@ import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
-	_ "services/options"
+_ "github.com/trinsic-id/sdk/go/proto/services/options"
 	sync "sync"
 )
 

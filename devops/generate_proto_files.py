@@ -6,7 +6,6 @@ import glob
 import itertools
 import logging
 import os
-import subprocess
 import sys
 import urllib.request
 from os.path import abspath, relpath, join, dirname
@@ -137,8 +136,8 @@ def update_golang():
     run_protoc(
         {"go_out": go_proto_path, "go-grpc_out": go_proto_path},
         {
-            "go_opt": "module=github.com/trinsic-id/sdk",
-            "go-grpc_opt": "module=github.com/trinsic-id/sdk",
+            # "go_opt": "module=github.com/trinsic-id/sdk",
+            # "go-grpc_opt": "module=github.com/trinsic-id/sdk",
         },
         get_proto_files(),
     )
@@ -147,8 +146,8 @@ def update_golang():
     # find and replace the sdk proto with okapi proto
     replace_pairs = {
         'okapiproto "github.com/trinsic-id/sdk/go/okapiproto"': 'okapiproto "github.com/trinsic-id/okapi/go/okapiproto"',
-        '_ "github.com/trinsic-id/sdk/protobuf/options"': '_ "github.com/trinsic-id/sdk/go/proto/protobuf/options"',
-        'v1 "github.com/trinsic-id/sdk/account/v1"': 'v1 "github.com/trinsic-id/sdk/go/proto/account/v1"',
+        '_ "services/options"': '_ "github.com/trinsic-id/sdk/go/proto/services/options"',
+        'account "services/account/v1/account"': 'account "github.com/trinsic-id/sdk/go/proto/services/account/v1/account"',
     }
     for file_name in glob.glob(join(go_proto_path, "**", "*.go"), recursive=True):
         update_line(file_name, replace_pairs)
@@ -258,7 +257,7 @@ def parse_arguments():
 def main():
     logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
     logging.getLogger().setLevel(logging.INFO)
-    download_protoc_plugins()
+    # download_protoc_plugins()
 
     # Get command line arguments
     args = parse_arguments()

@@ -10,8 +10,8 @@ import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
-	account "github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
-	_ "github.com/trinsic-id/sdk/go/proto/services/options"
+account "github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
+_ "github.com/trinsic-id/sdk/go/proto/services/options"
 	sync "sync"
 )
 
