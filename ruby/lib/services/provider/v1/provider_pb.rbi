@@ -2,10 +2,6 @@
 # source: services/provider/v1/provider.proto
 # typed: strict
 
-module Services; end
-module Services::Provider; end
-module Services::Provider::V1; end
-
 class Services::Provider::V1::Invite
   include Google::Protobuf
   include Google::Protobuf::MessageExts
@@ -1529,6 +1525,9 @@ class Services::Provider::V1::GetOberonKeyRequest
   def self.descriptor
   end
 
+  sig {void}
+  def initialize; end
+
   sig { params(field: String).returns(T.untyped) }
   def [](field)
   end
@@ -1746,6 +1745,9 @@ class Services::Provider::V1::InviteRequest::DidCommInvitation
   sig { returns(Google::Protobuf::Descriptor) }
   def self.descriptor
   end
+
+  sig {void}
+  def initialize; end
 
   sig { params(field: String).returns(T.untyped) }
   def [](field)

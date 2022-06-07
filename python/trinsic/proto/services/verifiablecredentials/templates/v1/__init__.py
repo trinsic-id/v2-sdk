@@ -2,11 +2,21 @@
 # sources: services/verifiable-credentials/templates/v1/templates.proto
 # plugin: python-betterproto
 from dataclasses import dataclass
-from typing import Dict, List
+from typing import (
+    TYPE_CHECKING,
+    Dict,
+    List,
+    Optional,
+)
 
 import betterproto
-from betterproto.grpc.grpclib_server import ServiceBase
 import grpclib
+from betterproto.grpc.grpclib_server import ServiceBase
+
+
+if TYPE_CHECKING:
+    from betterproto.grpc.grpclib_client import MetadataLike
+    from grpclib.metadata import Deadline
 
 
 class FieldType(betterproto.Enum):
@@ -22,71 +32,93 @@ class FieldType(betterproto.Enum):
 class GetCredentialTemplateRequest(betterproto.Message):
     """Request to fetch a template by ID"""
 
-    # ID of template to fetch
     id: str = betterproto.string_field(1)
+    """ID of template to fetch"""
 
 
 @dataclass(eq=False, repr=False)
 class GetCredentialTemplateResponse(betterproto.Message):
     """Response to `GetCredentialTemplateRequest`"""
 
-    # Template fetched by ID
     template: "TemplateData" = betterproto.message_field(1)
+    """Template fetched by ID"""
 
 
 @dataclass(eq=False, repr=False)
 class SearchCredentialTemplatesRequest(betterproto.Message):
     """Request to search templates using a SQL query"""
 
-    # SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
     query: str = betterproto.string_field(1)
-    # Token provided by previous `SearchCredentialTemplatesResponse` if more data
-    # is available for query
+    """
+    SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
+    """
+
     continuation_token: str = betterproto.string_field(2)
+    """
+    Token provided by previous `SearchCredentialTemplatesResponse` if more data
+    is available for query
+    """
 
 
 @dataclass(eq=False, repr=False)
 class SearchCredentialTemplatesResponse(betterproto.Message):
     """Response to `SearchCredentialTemplatesRequest`"""
 
-    # Raw JSON data returned from query
     items_json: str = betterproto.string_field(1)
-    # Whether more results are available for this query via `continuation_token`
+    """Raw JSON data returned from query"""
+
     has_more: bool = betterproto.bool_field(2)
-    # Count of items in `items_json` int32 count = 3; unpopulated and unused
-    # Token to fetch next set of results via `SearchCredentialTemplatesRequest`
+    """
+    Whether more results are available for this query via `continuation_token`
+    """
+
     continuation_token: str = betterproto.string_field(4)
+    """
+    Count of items in `items_json` int32 count = 3; unpopulated and unused
+    Token to fetch next set of results via `SearchCredentialTemplatesRequest`
+    """
 
 
 @dataclass(eq=False, repr=False)
 class ListCredentialTemplatesRequest(betterproto.Message):
     """Request to list templates using a SQL query"""
 
-    # SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
     query: str = betterproto.string_field(1)
-    # Token provided by previous `ListCredentialTemplatesResponse` if more data
-    # is available for query
+    """
+    SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
+    """
+
     continuation_token: str = betterproto.string_field(2)
+    """
+    Token provided by previous `ListCredentialTemplatesResponse` if more data
+    is available for query
+    """
 
 
 @dataclass(eq=False, repr=False)
 class ListCredentialTemplatesResponse(betterproto.Message):
     """Response to `ListCredentialTemplatesRequest`"""
 
-    # Templates found by query
     templates: List["TemplateData"] = betterproto.message_field(1)
-    # Whether more results are available for this query via `continuation_token`
+    """Templates found by query"""
+
     has_more_results: bool = betterproto.bool_field(2)
-    # Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
+    """
+    Whether more results are available for this query via `continuation_token`
+    """
+
     continuation_token: str = betterproto.string_field(3)
+    """
+    Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
+    """
 
 
 @dataclass(eq=False, repr=False)
 class DeleteCredentialTemplateRequest(betterproto.Message):
     """Request to delete a template by ID"""
 
-    # ID of template to delete
     id: str = betterproto.string_field(1)
+    """ID of template to delete"""
 
 
 @dataclass(eq=False, repr=False)
@@ -100,36 +132,44 @@ class DeleteCredentialTemplateResponse(betterproto.Message):
 class CreateCredentialTemplateRequest(betterproto.Message):
     """Request to create a new template"""
 
-    # Name of new template
     name: str = betterproto.string_field(1)
-    # Fields which compose the template
+    """Name of new template"""
+
     fields: Dict[str, "TemplateField"] = betterproto.map_field(
         2, betterproto.TYPE_STRING, betterproto.TYPE_MESSAGE
     )
-    # Whether credentials may be issued against this template which have fields
-    # not specified in `fields`
+    """Fields which compose the template"""
+
     allow_additional_fields: bool = betterproto.bool_field(3)
+    """
+    Whether credentials may be issued against this template which have fields
+    not specified in `fields`
+    """
 
 
 @dataclass(eq=False, repr=False)
 class CreateCredentialTemplateResponse(betterproto.Message):
     """Response to `CreateCredentialTemplateRequest`"""
 
-    # Created template
     data: "TemplateData" = betterproto.message_field(1)
+    """Created template"""
 
 
 @dataclass(eq=False, repr=False)
 class TemplateField(betterproto.Message):
     """A field defined in a template"""
 
-    # Human-readable description of the field
     description: str = betterproto.string_field(2)
-    # Whether this field may be omitted when a credential is issued against the
-    # template
+    """Human-readable description of the field"""
+
     optional: bool = betterproto.bool_field(3)
-    # The type of the field
+    """
+    Whether this field may be omitted when a credential is issued against the
+    template
+    """
+
     type: "FieldType" = betterproto.enum_field(4)
+    """The type of the field"""
 
 
 @dataclass(eq=False, repr=False)
@@ -164,75 +204,121 @@ class ListTemplatesResponse(betterproto.Message):
 class TemplateData(betterproto.Message):
     """Credential Template"""
 
-    # Template ID
     id: str = betterproto.string_field(1)
-    # Template name
+    """Template ID"""
+
     name: str = betterproto.string_field(2)
-    # Template version number
+    """Template name"""
+
     version: int = betterproto.int32_field(3)
-    # Fields defined for the template
+    """Template version number"""
+
     fields: Dict[str, "TemplateField"] = betterproto.map_field(
         4, betterproto.TYPE_STRING, betterproto.TYPE_MESSAGE
     )
-    # Whether credentials issued against this template may  contain fields not
-    # defined by template
+    """Fields defined for the template"""
+
     allow_additional_fields: bool = betterproto.bool_field(5)
-    # URI pointing to template JSON schema document
+    """
+    Whether credentials issued against this template may  contain fields not
+    defined by template
+    """
+
     schema_uri: str = betterproto.string_field(6)
-    # URI pointing to template JSON-LD context document
+    """URI pointing to template JSON schema document"""
+
     context_uri: str = betterproto.string_field(7)
-    # ID of ecosystem in which template resides
+    """URI pointing to template JSON-LD context document"""
+
     ecosystem_id: str = betterproto.string_field(8)
-    # Template type (`VerifiableCredential`)
+    """ID of ecosystem in which template resides"""
+
     type: str = betterproto.string_field(9)
-    # ID of template creator
+    """Template type (`VerifiableCredential`)"""
+
     created_by: str = betterproto.string_field(10)
+    """ID of template creator"""
 
 
 class CredentialTemplatesStub(betterproto.ServiceStub):
     async def create(
-        self, create_credential_template_request: "CreateCredentialTemplateRequest"
+        self,
+        create_credential_template_request: "CreateCredentialTemplateRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "CreateCredentialTemplateResponse":
         return await self._unary_unary(
             "/services.verifiablecredentials.templates.v1.CredentialTemplates/Create",
             create_credential_template_request,
             CreateCredentialTemplateResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def get(
-        self, get_credential_template_request: "GetCredentialTemplateRequest"
+        self,
+        get_credential_template_request: "GetCredentialTemplateRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "GetCredentialTemplateResponse":
         return await self._unary_unary(
             "/services.verifiablecredentials.templates.v1.CredentialTemplates/Get",
             get_credential_template_request,
             GetCredentialTemplateResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def list(
-        self, list_credential_templates_request: "ListCredentialTemplatesRequest"
+        self,
+        list_credential_templates_request: "ListCredentialTemplatesRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "ListCredentialTemplatesResponse":
         return await self._unary_unary(
             "/services.verifiablecredentials.templates.v1.CredentialTemplates/List",
             list_credential_templates_request,
             ListCredentialTemplatesResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def search(
-        self, search_credential_templates_request: "SearchCredentialTemplatesRequest"
+        self,
+        search_credential_templates_request: "SearchCredentialTemplatesRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "SearchCredentialTemplatesResponse":
         return await self._unary_unary(
             "/services.verifiablecredentials.templates.v1.CredentialTemplates/Search",
             search_credential_templates_request,
             SearchCredentialTemplatesResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def delete(
-        self, delete_credential_template_request: "DeleteCredentialTemplateRequest"
+        self,
+        delete_credential_template_request: "DeleteCredentialTemplateRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "DeleteCredentialTemplateResponse":
         return await self._unary_unary(
             "/services.verifiablecredentials.templates.v1.CredentialTemplates/Delete",
             delete_credential_template_request,
             DeleteCredentialTemplateResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
 

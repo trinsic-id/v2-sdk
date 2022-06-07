@@ -2,11 +2,21 @@
 # sources: services/trust-registry/v1/trust-registry.proto
 # plugin: python-betterproto
 from dataclasses import dataclass
-from typing import AsyncIterator, Dict
+from typing import (
+    TYPE_CHECKING,
+    AsyncIterator,
+    Dict,
+    Optional,
+)
 
 import betterproto
-from betterproto.grpc.grpclib_server import ServiceBase
 import grpclib
+from betterproto.grpc.grpclib_server import ServiceBase
+
+
+if TYPE_CHECKING:
+    from betterproto.grpc.grpclib_client import MetadataLike
+    from grpclib.metadata import Deadline
 
 
 class RegistrationStatus(betterproto.Enum):
@@ -28,8 +38,9 @@ class AddFrameworkRequest(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class AddFrameworkResponse(betterproto.Message):
-    # Unique framework identifier
     id: str = betterproto.string_field(1)
+    """Unique framework identifier"""
+
     governing_authority: str = betterproto.string_field(2)
     trust_registry: str = betterproto.string_field(3)
 
@@ -72,8 +83,8 @@ class RegisterMemberRequest(betterproto.Message):
     schema_uri: str = betterproto.string_field(10)
     valid_from_utc: int = betterproto.uint64_field(11)
     valid_until_utc: int = betterproto.uint64_field(12)
-    # the id of the governance framework
     framework_id: str = betterproto.string_field(30)
+    """the id of the governance framework"""
 
 
 @dataclass(eq=False, repr=False)
@@ -123,66 +134,115 @@ class FetchDataResponse(betterproto.Message):
 
 class TrustRegistryStub(betterproto.ServiceStub):
     async def add_framework(
-        self, add_framework_request: "AddFrameworkRequest"
+        self,
+        add_framework_request: "AddFrameworkRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "AddFrameworkResponse":
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/AddFramework",
             add_framework_request,
             AddFrameworkResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def remove_framework(
-        self, remove_framework_request: "RemoveFrameworkRequest"
+        self,
+        remove_framework_request: "RemoveFrameworkRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "RemoveFrameworkResponse":
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/RemoveFramework",
             remove_framework_request,
             RemoveFrameworkResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def search_registry(
-        self, search_registry_request: "SearchRegistryRequest"
+        self,
+        search_registry_request: "SearchRegistryRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "SearchRegistryResponse":
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/SearchRegistry",
             search_registry_request,
             SearchRegistryResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def register_member(
-        self, register_member_request: "RegisterMemberRequest"
+        self,
+        register_member_request: "RegisterMemberRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "RegisterMemberResponse":
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/RegisterMember",
             register_member_request,
             RegisterMemberResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def unregister_member(
-        self, unregister_member_request: "UnregisterMemberRequest"
+        self,
+        unregister_member_request: "UnregisterMemberRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "UnregisterMemberResponse":
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/UnregisterMember",
             unregister_member_request,
             UnregisterMemberResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def get_membership_status(
-        self, get_membership_status_request: "GetMembershipStatusRequest"
+        self,
+        get_membership_status_request: "GetMembershipStatusRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "GetMembershipStatusResponse":
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/GetMembershipStatus",
             get_membership_status_request,
             GetMembershipStatusResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def fetch_data(
-        self, fetch_data_request: "FetchDataRequest"
+        self,
+        fetch_data_request: "FetchDataRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> AsyncIterator["FetchDataResponse"]:
         async for response in self._unary_stream(
             "/services.trustregistry.v1.TrustRegistry/FetchData",
             fetch_data_request,
             FetchDataResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         ):
             yield response
 

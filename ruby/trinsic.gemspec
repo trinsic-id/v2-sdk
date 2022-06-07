@@ -38,4 +38,5 @@ Gem::Specification.new do |spec|
   # spec.add_development_dependency 'rbs', '~> 1.6'
   spec.add_development_dependency 'simplecov', '~> 0.21'
   spec.add_development_dependency 'simplecov-cobertura', '~> 1.4'
+  spec.metadata['rubygems_mfa_required'] = 'true'
 end
