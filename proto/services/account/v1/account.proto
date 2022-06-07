@@ -88,10 +88,10 @@ message TokenProtection {
 }
 
 // Request for information about the account used to make the request
-message InfoRequest {}
+message AccountInfoRequest {}
 
 // Information about the account used to make the request
-message InfoResponse {
+message AccountInfoResponse {
     // The account details associated with
     // the calling request context
     AccountDetails details = 1;
@@ -124,24 +124,55 @@ message AccountEcosystem {
     string uri = 4;
 }
 
-// Authorize ecosystem to receive wallet envents
-message AuthorizeWebhookRequest {
-    // Events to authorize access to. Default is "*" (all events)
-    repeated string events = 1;
+// Login
+
+message LoginRequest {
+    // Email account to associate with the login request
+    string email = 1  [(options.optional) = true];
+    // Invitation code associated with this registration
+    string invitation_code = 2 [(options.optional) = true];
+    // ID of Ecosystem to sign into.
+    // Ignored if `invitation_code` is passed
+    string ecosystem_id = 3 [(options.optional) = true];
 }
 
-// Response to `AuthorizeWebhookRequest`
-message AuthorizeWebhookResponse {
+message LoginResponse{
+    oneof response {
+        // Challenge response. Random byte sequence unique
+        // for this login request
+        bytes challenge = 1;
+        // Profile response. The login isn't challenged and
+        // the token is returned in this call. Does not require
+        // confirmation step
+        AccountProfile profile = 2;
+    }
 }
 
+message LoginConfirmRequest {
+    // Login challenge received during the Login call
+    bytes challenge = 1;
+    // Confirmation code received in email or SMS
+    // hashed using Blake3
+    bytes confirmation_code_hashed = 2;
+}
+message LoginConfirmResponse {
+    // Profile response. This profile may be protected and
+    // require unblinding/unprotection using the raw hashed code
+    AccountProfile profile = 1;
+}
 
 service Account {
     // Sign in to an already existing account
     rpc SignIn              (SignInRequest)             returns (SignInResponse);
-    // rpc SIgnInConfirm       (SignInConfirmRequest)      returns (SignInConfirmResponse);
+
+    // Login to account. If account doesn't exist, new will be created
+    rpc Login               (LoginRequest)              returns (LoginResponse);
+
+    // Confirm login step by responding to the challenge request
+    rpc LoginConfirm        (LoginConfirmRequest)       returns (LoginConfirmResponse);
 
     // Get account information
-    rpc Info                (InfoRequest)               returns (InfoResponse);
+    rpc Info                (AccountInfoRequest)        returns (AccountInfoResponse);
     // List all connected devices
     rpc ListDevices         (ListDevicesRequest)        returns (ListDevicesResponse);
     // Revoke device access to the account's cloud wallet

@@ -28,8 +28,24 @@ module Services::Account::V1::Account
 
     sig do
       params(
-        request: Services::Account::V1::InfoRequest
-      ).returns(Services::Account::V1::InfoResponse)
+        request: Services::Account::V1::LoginRequest
+      ).returns(Services::Account::V1::LoginResponse)
+    end
+    def login(request)
+    end
+
+    sig do
+      params(
+        request: Services::Account::V1::LoginConfirmRequest
+      ).returns(Services::Account::V1::LoginConfirmResponse)
+    end
+    def login_confirm(request)
+    end
+
+    sig do
+      params(
+        request: Services::Account::V1::AccountInfoRequest
+      ).returns(Services::Account::V1::AccountInfoResponse)
     end
     def info(request)
     end

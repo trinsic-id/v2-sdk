@@ -182,13 +182,13 @@ message DeleteWebhookResponse {
 }
 
 // Request to fetch information about an ecosystem
-message InfoRequest {
+message EcosystemInfoRequest {
     // ID of ecosystem to fetch information about
     string ecosystem_id = 1;
 }
 
 // Response to `InfoRequest`
-message InfoResponse {
+message EcosystemInfoResponse {
     // Ecosystem corresponding to requested `ecosystem_id`
     Ecosystem ecosystem = 1;
 }
@@ -237,7 +237,7 @@ service Provider {
     rpc DeleteWebhook(DeleteWebhookRequest) returns (DeleteWebhookResponse);
 
     // Get ecosystem information
-    rpc Info(InfoRequest) returns (InfoResponse);
+    rpc Info(EcosystemInfoRequest) returns (EcosystemInfoResponse);
 
     // Generates an unprotected authentication token that can be used to
     // configure server side applications

@@ -7,10 +7,10 @@ import {
   InviteRequest,
   InviteResponse,
   ProviderDefinition,
-  ServiceOptions
+  ServiceOptions,
 } from "./proto";
 
-import type {Client as BrowserClient} from "nice-grpc-web";
+import type { Client as BrowserClient } from "nice-grpc-web";
 
 export class ProviderService extends ServiceBase {
   client: BrowserClient<typeof ProviderDefinition>;
@@ -18,9 +18,7 @@ export class ProviderService extends ServiceBase {
   constructor(options?: ServiceOptions) {
     super(options);
 
-    this.client = this.createClient(
-      ProviderDefinition
-    );
+    this.client = this.createClient(ProviderDefinition);
   }
 
   public async inviteParticipant(

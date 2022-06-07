@@ -37,7 +37,7 @@ type AccountService interface {
 	// Protect will apply the given security code blind to the provided token
 	Protect(authtoken, securityCode string) (string, error)
 	// GetInfo returns details about the wallet associated with the account token
-	GetInfo(userContext context.Context) (*account.InfoResponse, error)
+	GetInfo(userContext context.Context) (*account.AccountInfoResponse, error)
 	// ListDevices returns a list of devices that are associated with the cloud wallet
 	ListDevices(userContext context.Context, request *account.ListDevicesRequest) (*account.ListDevicesResponse, error)
 	// RevokeDevice removes access to the cloud wallet for the provided device
@@ -134,8 +134,8 @@ func (a *accountBase) Protect(authtoken, securityCode string) (string, error) {
 }
 
 // GetInfo associated with a given wallet
-func (a *accountBase) GetInfo(userContext context.Context) (*account.InfoResponse, error) {
-	request := &account.InfoRequest{}
+func (a *accountBase) GetInfo(userContext context.Context) (*account.AccountInfoResponse, error) {
+	request := &account.AccountInfoRequest{}
 	md, err := a.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err

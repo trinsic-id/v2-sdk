@@ -6,7 +6,7 @@ use crate::{
     error::Error,
     grpc_channel, grpc_client, grpc_client_with_auth,
     proto::services::account::v1::{
-        account_client::AccountClient, AccountDetails, AccountProfile, ConfirmationMethod, InfoRequest, SignInRequest, TokenProtection,
+        account_client::AccountClient, AccountDetails, AccountInfoRequest, AccountProfile, ConfirmationMethod, SignInRequest, TokenProtection,
     },
 };
 use base64::URL_SAFE_NO_PAD;
@@ -88,7 +88,7 @@ async fn sign_in(args: &SignInArgs, config: CliConfig) -> Result<Output, Error> 
 async fn info(_args: &InfoArgs, config: CliConfig) -> Result<Output, Error> {
     let mut client = grpc_client_with_auth!(AccountClient<Channel>, config.to_owned());
 
-    let request = tonic::Request::new(InfoRequest {});
+    let request = tonic::Request::new(AccountInfoRequest {});
 
     let response = client.info(request).await?.into_inner();
 

@@ -14,7 +14,7 @@ import {
   ServiceOptions,
 } from "./proto";
 
-import type {Client as BrowserClient} from "nice-grpc-web";
+import type { Client as BrowserClient } from "nice-grpc-web";
 
 export class TemplateService extends ServiceBase {
   client: BrowserClient<typeof CredentialTemplatesDefinition>;
@@ -22,7 +22,7 @@ export class TemplateService extends ServiceBase {
   constructor(options?: ServiceOptions) {
     super(options);
 
-    this.client = this.createClient(CredentialTemplatesDefinition)
+    this.client = this.createClient(CredentialTemplatesDefinition);
   }
 
   public async createCredentialTemplate(

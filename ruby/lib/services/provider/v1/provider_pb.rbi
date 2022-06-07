@@ -448,14 +448,16 @@ class Services::Provider::V1::Ecosystem
       id: T.nilable(String),
       name: T.nilable(String),
       description: T.nilable(String),
-      uri: T.nilable(String)
+      uri: T.nilable(String),
+      webhooks: T.nilable(T::Array[T.nilable(Services::Provider::V1::WebhookConfig)])
     ).void
   end
   def initialize(
     id: "",
     name: "",
     description: "",
-    uri: ""
+    uri: "",
+    webhooks: []
   )
   end
 
@@ -505,6 +507,106 @@ class Services::Provider::V1::Ecosystem
 
   sig { void }
   def clear_uri
+  end
+
+  sig { returns(T::Array[T.nilable(Services::Provider::V1::WebhookConfig)]) }
+  def webhooks
+  end
+
+  sig { params(value: Google::Protobuf::RepeatedField).void }
+  def webhooks=(value)
+  end
+
+  sig { void }
+  def clear_webhooks
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::WebhookConfig
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::WebhookConfig) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::WebhookConfig).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::WebhookConfig) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::WebhookConfig, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      id: T.nilable(String),
+      destination_url: T.nilable(String),
+      events: T.nilable(T::Array[String])
+    ).void
+  end
+  def initialize(
+    id: "",
+    destination_url: "",
+    events: []
+  )
+  end
+
+  sig { returns(String) }
+  def id
+  end
+
+  sig { params(value: String).void }
+  def id=(value)
+  end
+
+  sig { void }
+  def clear_id
+  end
+
+  sig { returns(String) }
+  def destination_url
+  end
+
+  sig { params(value: String).void }
+  def destination_url=(value)
+  end
+
+  sig { void }
+  def clear_destination_url
+  end
+
+  sig { returns(T::Array[String]) }
+  def events
+  end
+
+  sig { params(value: Google::Protobuf::RepeatedField).void }
+  def events=(value)
+  end
+
+  sig { void }
+  def clear_events
   end
 
   sig { params(field: String).returns(T.untyped) }
@@ -695,6 +797,564 @@ class Services::Provider::V1::CreateEcosystemResponse
 
   sig { void }
   def clear_confirmation_method
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::UpdateEcosystemRequest
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::UpdateEcosystemRequest) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::UpdateEcosystemRequest).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::UpdateEcosystemRequest) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::UpdateEcosystemRequest, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      ecosystem_id: T.nilable(String),
+      description: T.nilable(String),
+      uri: T.nilable(String)
+    ).void
+  end
+  def initialize(
+    ecosystem_id: "",
+    description: "",
+    uri: ""
+  )
+  end
+
+  sig { returns(String) }
+  def ecosystem_id
+  end
+
+  sig { params(value: String).void }
+  def ecosystem_id=(value)
+  end
+
+  sig { void }
+  def clear_ecosystem_id
+  end
+
+  sig { returns(String) }
+  def description
+  end
+
+  sig { params(value: String).void }
+  def description=(value)
+  end
+
+  sig { void }
+  def clear_description
+  end
+
+  sig { returns(String) }
+  def uri
+  end
+
+  sig { params(value: String).void }
+  def uri=(value)
+  end
+
+  sig { void }
+  def clear_uri
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::UpdateEcosystemResponse
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::UpdateEcosystemResponse) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::UpdateEcosystemResponse).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::UpdateEcosystemResponse) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::UpdateEcosystemResponse, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  # Constants of the form Constant_1 are invalid. We've declined to type this as a result, taking a hash instead.
+  sig { params(args: T::Hash[T.untyped, T.untyped]).void }
+  def initialize(args); end
+
+  sig { returns(T.nilable(Services::Provider::V1::Ecosystem)) }
+  def Ecosystem
+  end
+
+  sig { params(value: T.nilable(Services::Provider::V1::Ecosystem)).void }
+  def Ecosystem=(value)
+  end
+
+  sig { void }
+  def clear_Ecosystem
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::AddWebhookRequest
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::AddWebhookRequest) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::AddWebhookRequest).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::AddWebhookRequest) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::AddWebhookRequest, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      ecosystem_id: T.nilable(String),
+      destination_url: T.nilable(String),
+      secret: T.nilable(String),
+      events: T.nilable(T::Array[String])
+    ).void
+  end
+  def initialize(
+    ecosystem_id: "",
+    destination_url: "",
+    secret: "",
+    events: []
+  )
+  end
+
+  sig { returns(String) }
+  def ecosystem_id
+  end
+
+  sig { params(value: String).void }
+  def ecosystem_id=(value)
+  end
+
+  sig { void }
+  def clear_ecosystem_id
+  end
+
+  sig { returns(String) }
+  def destination_url
+  end
+
+  sig { params(value: String).void }
+  def destination_url=(value)
+  end
+
+  sig { void }
+  def clear_destination_url
+  end
+
+  sig { returns(String) }
+  def secret
+  end
+
+  sig { params(value: String).void }
+  def secret=(value)
+  end
+
+  sig { void }
+  def clear_secret
+  end
+
+  sig { returns(T::Array[String]) }
+  def events
+  end
+
+  sig { params(value: Google::Protobuf::RepeatedField).void }
+  def events=(value)
+  end
+
+  sig { void }
+  def clear_events
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::AddWebhookResponse
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::AddWebhookResponse) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::AddWebhookResponse).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::AddWebhookResponse) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::AddWebhookResponse, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      ecosystem: T.nilable(Services::Provider::V1::Ecosystem)
+    ).void
+  end
+  def initialize(
+    ecosystem: nil
+  )
+  end
+
+  sig { returns(T.nilable(Services::Provider::V1::Ecosystem)) }
+  def ecosystem
+  end
+
+  sig { params(value: T.nilable(Services::Provider::V1::Ecosystem)).void }
+  def ecosystem=(value)
+  end
+
+  sig { void }
+  def clear_ecosystem
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::DeleteWebhookRequest
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::DeleteWebhookRequest) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::DeleteWebhookRequest).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::DeleteWebhookRequest) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::DeleteWebhookRequest, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      ecosystem_id: T.nilable(String),
+      webhook_id: T.nilable(String)
+    ).void
+  end
+  def initialize(
+    ecosystem_id: "",
+    webhook_id: ""
+  )
+  end
+
+  sig { returns(String) }
+  def ecosystem_id
+  end
+
+  sig { params(value: String).void }
+  def ecosystem_id=(value)
+  end
+
+  sig { void }
+  def clear_ecosystem_id
+  end
+
+  sig { returns(String) }
+  def webhook_id
+  end
+
+  sig { params(value: String).void }
+  def webhook_id=(value)
+  end
+
+  sig { void }
+  def clear_webhook_id
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::DeleteWebhookResponse
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::DeleteWebhookResponse) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::DeleteWebhookResponse).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::DeleteWebhookResponse) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::DeleteWebhookResponse, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      ecosystem: T.nilable(Services::Provider::V1::Ecosystem)
+    ).void
+  end
+  def initialize(
+    ecosystem: nil
+  )
+  end
+
+  sig { returns(T.nilable(Services::Provider::V1::Ecosystem)) }
+  def ecosystem
+  end
+
+  sig { params(value: T.nilable(Services::Provider::V1::Ecosystem)).void }
+  def ecosystem=(value)
+  end
+
+  sig { void }
+  def clear_ecosystem
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::EcosystemInfoRequest
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::EcosystemInfoRequest) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::EcosystemInfoRequest).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::EcosystemInfoRequest) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::EcosystemInfoRequest, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      ecosystem_id: T.nilable(String)
+    ).void
+  end
+  def initialize(
+    ecosystem_id: ""
+  )
+  end
+
+  sig { returns(String) }
+  def ecosystem_id
+  end
+
+  sig { params(value: String).void }
+  def ecosystem_id=(value)
+  end
+
+  sig { void }
+  def clear_ecosystem_id
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::EcosystemInfoResponse
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::EcosystemInfoResponse) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::EcosystemInfoResponse).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::EcosystemInfoResponse) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::EcosystemInfoResponse, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      ecosystem: T.nilable(Services::Provider::V1::Ecosystem)
+    ).void
+  end
+  def initialize(
+    ecosystem: nil
+  )
+  end
+
+  sig { returns(T.nilable(Services::Provider::V1::Ecosystem)) }
+  def ecosystem
+  end
+
+  sig { params(value: T.nilable(Services::Provider::V1::Ecosystem)).void }
+  def ecosystem=(value)
+  end
+
+  sig { void }
+  def clear_ecosystem
   end
 
   sig { params(field: String).returns(T.untyped) }
@@ -913,6 +1573,126 @@ class Services::Provider::V1::GetOberonKeyResponse
 
   sig { void }
   def clear_key
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::GetEventTokenRequest
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::GetEventTokenRequest) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::GetEventTokenRequest).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::GetEventTokenRequest) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::GetEventTokenRequest, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      pk: T.nilable(String)
+    ).void
+  end
+  def initialize(
+    pk: ""
+  )
+  end
+
+  sig { returns(String) }
+  def pk
+  end
+
+  sig { params(value: String).void }
+  def pk=(value)
+  end
+
+  sig { void }
+  def clear_pk
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::GetEventTokenResponse
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::GetEventTokenResponse) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::GetEventTokenResponse).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::GetEventTokenResponse) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::GetEventTokenResponse, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      token: T.nilable(String)
+    ).void
+  end
+  def initialize(
+    token: ""
+  )
+  end
+
+  sig { returns(String) }
+  def token
+  end
+
+  sig { params(value: String).void }
+  def token=(value)
+  end
+
+  sig { void }
+  def clear_token
   end
 
   sig { params(field: String).returns(T.untyped) }
