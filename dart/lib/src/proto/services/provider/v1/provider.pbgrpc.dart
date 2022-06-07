@@ -38,9 +38,9 @@ class ProviderClient extends $grpc.Client {
           ($2.DeleteWebhookRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $2.DeleteWebhookResponse.fromBuffer(value));
-  static final _$info =
+  static final _$ecosystemInfo =
       $grpc.ClientMethod<$2.EcosystemInfoRequest, $2.EcosystemInfoResponse>(
-          '/services.provider.v1.Provider/Info',
+          '/services.provider.v1.Provider/EcosystemInfo',
           ($2.EcosystemInfoRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $2.EcosystemInfoResponse.fromBuffer(value));
@@ -103,10 +103,10 @@ class ProviderClient extends $grpc.Client {
     return $createUnaryCall(_$deleteWebhook, request, options: options);
   }
 
-  $grpc.ResponseFuture<$2.EcosystemInfoResponse> info(
+  $grpc.ResponseFuture<$2.EcosystemInfoResponse> ecosystemInfo(
       $2.EcosystemInfoRequest request,
       {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$info, request, options: options);
+    return $createUnaryCall(_$ecosystemInfo, request, options: options);
   }
 
   $grpc.ResponseFuture<$2.GenerateTokenResponse> generateToken(
@@ -179,8 +179,8 @@ abstract class ProviderServiceBase extends $grpc.Service {
             ($2.DeleteWebhookResponse value) => value.writeToBuffer()));
     $addMethod(
         $grpc.ServiceMethod<$2.EcosystemInfoRequest, $2.EcosystemInfoResponse>(
-            'Info',
-            info_Pre,
+            'EcosystemInfo',
+            ecosystemInfo_Pre,
             false,
             false,
             ($core.List<$core.int> value) =>
@@ -254,9 +254,10 @@ abstract class ProviderServiceBase extends $grpc.Service {
     return deleteWebhook(call, await request);
   }
 
-  $async.Future<$2.EcosystemInfoResponse> info_Pre($grpc.ServiceCall call,
+  $async.Future<$2.EcosystemInfoResponse> ecosystemInfo_Pre(
+      $grpc.ServiceCall call,
       $async.Future<$2.EcosystemInfoRequest> request) async {
-    return info(call, await request);
+    return ecosystemInfo(call, await request);
   }
 
   $async.Future<$2.GenerateTokenResponse> generateToken_Pre(
@@ -296,7 +297,7 @@ abstract class ProviderServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $2.AddWebhookRequest request);
   $async.Future<$2.DeleteWebhookResponse> deleteWebhook(
       $grpc.ServiceCall call, $2.DeleteWebhookRequest request);
-  $async.Future<$2.EcosystemInfoResponse> info(
+  $async.Future<$2.EcosystemInfoResponse> ecosystemInfo(
       $grpc.ServiceCall call, $2.EcosystemInfoRequest request);
   $async.Future<$2.GenerateTokenResponse> generateToken(
       $grpc.ServiceCall call, $2.GenerateTokenRequest request);

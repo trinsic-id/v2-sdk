@@ -55,7 +55,7 @@ module Services::Provider::V1::Provider
         request: Services::Provider::V1::EcosystemInfoRequest
       ).returns(Services::Provider::V1::EcosystemInfoResponse)
     end
-    def info(request)
+    def ecosystem_info(request)
     end
 
     sig do

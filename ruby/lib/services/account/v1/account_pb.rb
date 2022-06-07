@@ -57,11 +57,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :description, :string, 3
       optional :uri, :string, 4
     end
-    add_message 'services.account.v1.AuthorizeWebhookRequest' do
-      repeated :events, :string, 1
-    end
-    add_message 'services.account.v1.AuthorizeWebhookResponse' do
-    end
     add_message 'services.account.v1.LoginRequest' do
       optional :email, :string, 1
       optional :invitation_code, :string, 2
@@ -79,6 +74,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_message 'services.account.v1.LoginConfirmResponse' do
       optional :profile, :message, 1, 'services.account.v1.AccountProfile'
+    end
+    add_message 'services.account.v1.AuthorizeWebhookRequest' do
+      repeated :events, :string, 1
+    end
+    add_message 'services.account.v1.AuthorizeWebhookResponse' do
     end
     add_enum 'services.account.v1.ConfirmationMethod' do
       value :None, 0
@@ -105,12 +105,12 @@ module Services
       RevokeDeviceRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.RevokeDeviceRequest').msgclass
       RevokeDeviceResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.RevokeDeviceResponse').msgclass
       AccountEcosystem = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.AccountEcosystem').msgclass
-      AuthorizeWebhookRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.AuthorizeWebhookRequest').msgclass
-      AuthorizeWebhookResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.AuthorizeWebhookResponse').msgclass
       LoginRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.LoginRequest').msgclass
       LoginResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.LoginResponse').msgclass
       LoginConfirmRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.LoginConfirmRequest').msgclass
       LoginConfirmResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.LoginConfirmResponse').msgclass
+      AuthorizeWebhookRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.AuthorizeWebhookRequest').msgclass
+      AuthorizeWebhookResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.AuthorizeWebhookResponse').msgclass
       ConfirmationMethod = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.ConfirmationMethod').enummodule
     end
   end

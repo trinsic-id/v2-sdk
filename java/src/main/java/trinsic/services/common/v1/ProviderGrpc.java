@@ -201,32 +201,32 @@ public final class ProviderGrpc {
   private static volatile io.grpc.MethodDescriptor<
           trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoRequest,
           trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoResponse>
-      getInfoMethod;
+      getEcosystemInfoMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "Info",
+      fullMethodName = SERVICE_NAME + '/' + "EcosystemInfo",
       requestType = trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoRequest.class,
       responseType = trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<
           trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoRequest,
           trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoResponse>
-      getInfoMethod() {
+      getEcosystemInfoMethod() {
     io.grpc.MethodDescriptor<
             trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoRequest,
             trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoResponse>
-        getInfoMethod;
-    if ((getInfoMethod = ProviderGrpc.getInfoMethod) == null) {
+        getEcosystemInfoMethod;
+    if ((getEcosystemInfoMethod = ProviderGrpc.getEcosystemInfoMethod) == null) {
       synchronized (ProviderGrpc.class) {
-        if ((getInfoMethod = ProviderGrpc.getInfoMethod) == null) {
-          ProviderGrpc.getInfoMethod =
-              getInfoMethod =
+        if ((getEcosystemInfoMethod = ProviderGrpc.getEcosystemInfoMethod) == null) {
+          ProviderGrpc.getEcosystemInfoMethod =
+              getEcosystemInfoMethod =
                   io.grpc.MethodDescriptor
                       .<trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoRequest,
                           trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoResponse>
                           newBuilder()
                       .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                      .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Info"))
+                      .setFullMethodName(generateFullMethodName(SERVICE_NAME, "EcosystemInfo"))
                       .setSampledToLocalTracing(true)
                       .setRequestMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
@@ -236,12 +236,12 @@ public final class ProviderGrpc {
                           io.grpc.protobuf.ProtoUtils.marshaller(
                               trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoResponse
                                   .getDefaultInstance()))
-                      .setSchemaDescriptor(new ProviderMethodDescriptorSupplier("Info"))
+                      .setSchemaDescriptor(new ProviderMethodDescriptorSupplier("EcosystemInfo"))
                       .build();
         }
       }
     }
-    return getInfoMethod;
+    return getEcosystemInfoMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<
@@ -587,12 +587,13 @@ public final class ProviderGrpc {
      * Get ecosystem information
      * </pre>
      */
-    public void info(
+    public void ecosystemInfo(
         trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoRequest request,
         io.grpc.stub.StreamObserver<
                 trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoResponse>
             responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getInfoMethod(), responseObserver);
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
+          getEcosystemInfoMethod(), responseObserver);
     }
 
     /**
@@ -706,12 +707,12 @@ public final class ProviderGrpc {
                       trinsic.services.common.v1.ProviderOuterClass.DeleteWebhookResponse>(
                       this, METHODID_DELETE_WEBHOOK)))
           .addMethod(
-              getInfoMethod(),
+              getEcosystemInfoMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
                   new MethodHandlers<
                       trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoRequest,
                       trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoResponse>(
-                      this, METHODID_INFO)))
+                      this, METHODID_ECOSYSTEM_INFO)))
           .addMethod(
               getGenerateTokenMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -839,13 +840,15 @@ public final class ProviderGrpc {
      * Get ecosystem information
      * </pre>
      */
-    public void info(
+    public void ecosystemInfo(
         trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoRequest request,
         io.grpc.stub.StreamObserver<
                 trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoResponse>
             responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getInfoMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getEcosystemInfoMethod(), getCallOptions()),
+          request,
+          responseObserver);
     }
 
     /**
@@ -1008,10 +1011,10 @@ public final class ProviderGrpc {
      * Get ecosystem information
      * </pre>
      */
-    public trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoResponse info(
+    public trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoResponse ecosystemInfo(
         trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getInfoMethod(), getCallOptions(), request);
+          getChannel(), getEcosystemInfoMethod(), getCallOptions(), request);
     }
 
     /**
@@ -1160,9 +1163,9 @@ public final class ProviderGrpc {
      */
     public com.google.common.util.concurrent.ListenableFuture<
             trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoResponse>
-        info(trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoRequest request) {
+        ecosystemInfo(trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getInfoMethod(), getCallOptions()), request);
+          getChannel().newCall(getEcosystemInfoMethod(), getCallOptions()), request);
     }
 
     /**
@@ -1242,7 +1245,7 @@ public final class ProviderGrpc {
   private static final int METHODID_UPDATE_ECOSYSTEM = 1;
   private static final int METHODID_ADD_WEBHOOK = 2;
   private static final int METHODID_DELETE_WEBHOOK = 3;
-  private static final int METHODID_INFO = 4;
+  private static final int METHODID_ECOSYSTEM_INFO = 4;
   private static final int METHODID_GENERATE_TOKEN = 5;
   private static final int METHODID_INVITE = 6;
   private static final int METHODID_INVITATION_STATUS = 7;
@@ -1294,8 +1297,8 @@ public final class ProviderGrpc {
                       trinsic.services.common.v1.ProviderOuterClass.DeleteWebhookResponse>)
                   responseObserver);
           break;
-        case METHODID_INFO:
-          serviceImpl.info(
+        case METHODID_ECOSYSTEM_INFO:
+          serviceImpl.ecosystemInfo(
               (trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoRequest) request,
               (io.grpc.stub.StreamObserver<
                       trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoResponse>)
@@ -1402,7 +1405,7 @@ public final class ProviderGrpc {
                       .addMethod(getUpdateEcosystemMethod())
                       .addMethod(getAddWebhookMethod())
                       .addMethod(getDeleteWebhookMethod())
-                      .addMethod(getInfoMethod())
+                      .addMethod(getEcosystemInfoMethod())
                       .addMethod(getGenerateTokenMethod())
                       .addMethod(getInviteMethod())
                       .addMethod(getInvitationStatusMethod())
