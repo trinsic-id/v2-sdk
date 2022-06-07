@@ -54,13 +54,15 @@ jobs:
       - name: Compile proto files
         run: |
           python ./devops/generate_proto_files.py --language=all
-          git checkout -b "${{ github.ref_name }}-generated-protos"
+          git checkout -b "${{ github.head_ref }}-generated-protos"
           git add .
           git commit -m "Generated code from proto files"
+          git push --set-upstream origin "${{ github.head_ref }}-generated-protos"
+          gh pr --create --base ${{ github.head_ref }}
       - name: Create Pull Request
         uses: repo-sync/pull-request@v2
         with:
-          destination_branch: ${{ github.ref_name }}
+          destination_branch: ${{ github.github.event.pull_request.head.ref }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          pr_title: "Updated proto generated files for ${{ github.ref_name }}"
+          pr_title: "Updated proto generated files for ${{ github.head_ref }}"
           pr_label: "auto-pr"
