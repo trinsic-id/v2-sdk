@@ -3,8 +3,8 @@ import {
   AccountDefinition,
   AccountProfile,
   ConfirmationMethod,
-  InfoRequest,
-  InfoResponse,
+  AccountInfoRequest,
+  AccountInfoResponse,
   ListDevicesRequest,
   ListDevicesResponse,
   RevokeDeviceRequest,
@@ -13,11 +13,7 @@ import {
   SignInRequest,
   TokenProtection,
 } from "./proto";
-import {
-  BlindOberonTokenRequest,
-  Oberon,
-  UnBlindOberonTokenRequest,
-} from "@trinsic/okapi";
+import { Oberon } from "@trinsic/okapi";
 import base64url from "base64url";
 
 import type { Client as BrowserClient } from "nice-grpc-web";
@@ -111,11 +107,13 @@ export class AccountService extends ServiceBase {
     return authToken;
   }
 
-  public async info(): Promise<InfoResponse> {
-    const request = InfoRequest.fromPartial({});
+  public async info(): Promise<AccountInfoResponse> {
+    const request = AccountInfoRequest.fromPartial({});
 
     return this.client.info(request, {
-      metadata: await this.getMetadata(InfoRequest.encode(request).finish()),
+      metadata: await this.getMetadata(
+        AccountInfoRequest.encode(request).finish()
+      ),
     });
   }
 

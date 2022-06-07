@@ -51,8 +51,9 @@ export function registrationStatusToJSON(object: RegistrationStatus): string {
       return "REVOKED";
     case RegistrationStatus.NOT_FOUND:
       return "NOT_FOUND";
+    case RegistrationStatus.UNRECOGNIZED:
     default:
-      return "UNKNOWN";
+      return "UNRECOGNIZED";
   }
 }
 
@@ -1233,6 +1234,7 @@ export const FetchDataResponse = {
   },
 };
 
+export type TrustRegistryDefinition = typeof TrustRegistryDefinition;
 export const TrustRegistryDefinition = {
   name: "TrustRegistry",
   fullName: "services.trustregistry.v1.TrustRegistry",
