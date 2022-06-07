@@ -103,13 +103,15 @@ def download_protoc_plugins() -> None:
         os.system(f"chmod +x {kotlin_plugin()}")
 
     # Install go plugins
-    subprocess.Popen(
-        "go install github.com/trinsic-id/protoc-gen-json@latest", shell=True
-    ).wait()
-    subprocess.Popen(
+    go_plugins = [
+        "go install github.com/trinsic-id/protoc-gen-json@latest",
         "go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest",
-        shell=True,
-    ).wait()
+        "go install google.golang.org/protobuf/cmd/protoc-gen-go@latest"
+        "go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest",
+    ]
+    for go_install_cmd in go_plugins:
+        subprocess.Popen(go_install_cmd, shell=True).wait()
+
     subprocess.Popen("dart pub global activate protoc_plugin", shell=True).wait()
 
 
@@ -207,7 +209,10 @@ def update_ruby():
         protoc_executable="grpc_tools_ruby_protoc",
     )
     # Ruby type specifications
-    run_protoc({"rbi_out": f"grpc=true:{lang_proto_path}"}, {}, get_proto_files())
+    run_protoc(
+        language_options={"rbi_out": f"grpc=true:{lang_proto_path}"},
+        proto_files=get_proto_files(),
+    )
 
     subprocess.Popen(args="rubocop -A", cwd=language_path, shell=True).wait()
 
