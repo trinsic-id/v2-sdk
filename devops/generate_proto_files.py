@@ -306,11 +306,6 @@ def update_dart():
         language_options={"dart_out": f"grpc:{language_proto_path}"},
         proto_files=get_proto_files(),
     )
-    run_protoc(
-        language_options={"dart_out": language_proto_path},
-        proto_files=get_proto_files(dir_name="c:/bin/google"),
-        proto_path="c:/bin",
-    )
     subprocess.Popen(args="dart format .", cwd=language_path, shell=True).wait()
 
 
