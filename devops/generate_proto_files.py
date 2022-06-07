@@ -290,7 +290,8 @@ def update_python():
     # Inject an empty python code file path to mimic the first argument.
     # plugin_file = r"C:\work\sdk\devops\venv\Lib\site-packages\betterproto\plugin\plugin.bat"
     run_protoc(
-        {"python_betterproto_out": python_proto_path}, {}, proto_files=get_proto_files()
+        language_options={"python_betterproto_out": python_proto_path},
+        proto_files=get_proto_files(),
     )
 
     subprocess.Popen(args="black .", cwd=get_language_dir("python"), shell=True).wait()
@@ -301,11 +302,13 @@ def update_dart():
     language_proto_path = join(language_path, "lib", "src", "proto")
     clean_dir(language_proto_path)
     # https://github.com/google/protobuf.dart/tree/master/protoc_plugin#how-to-build-and-use
-    run_protoc({"dart_out": f"grpc:{language_proto_path}"}, {}, get_proto_files())
     run_protoc(
-        {"dart_out": language_proto_path},
-        {},
-        get_proto_files(dir_name="c:/bin/google"),
+        language_options={"dart_out": f"grpc:{language_proto_path}"},
+        proto_files=get_proto_files(),
+    )
+    run_protoc(
+        language_options={"dart_out": language_proto_path},
+        proto_files=get_proto_files(dir_name="c:/bin/google"),
         proto_path="c:/bin",
     )
     subprocess.Popen(args="dart format .", cwd=language_path, shell=True).wait()
