@@ -15,7 +15,7 @@ message SignInRequest {
     // Invitation code associated with this registration
     string invitation_code = 2 [(options.optional)=true];
 
-    // ID of Ecosystem to sign into. 
+    // ID of Ecosystem to use
     // Ignored if `invitation_code` is passed
     string ecosystem_id = 3 [(options.optional)=true];
 }
@@ -75,7 +75,7 @@ message AccountProfile {
     // If token protection is enabled, implementations must supply
     // protection secret before using the token for authentication.
     TokenProtection protection = 4;
-    
+
 }
 
 // Token protection info
@@ -124,16 +124,6 @@ message AccountEcosystem {
     string uri = 4;
 }
 
-// Authorize ecosystem to receive wallet envents
-message AuthorizeWebhookRequest {
-    // Events to authorize access to. Default is "*" (all events)
-    repeated string events = 1;
-}
-
-// Response to `AuthorizeWebhookRequest`
-message AuthorizeWebhookResponse {
-}
-
 // Login
 
 message LoginRequest {
@@ -171,6 +161,16 @@ message LoginConfirmResponse {
     AccountProfile profile = 1;
 }
 
+// Authorize ecosystem to receive wallet envents
+message AuthorizeWebhookRequest {
+    // Events to authorize access to. Default is "*" (all events)
+    repeated string events = 1;
+}
+
+// Response to `AuthorizeWebhookRequest`
+message AuthorizeWebhookResponse {
+}
+
 service Account {
     // Sign in to an already existing account
     rpc SignIn              (SignInRequest)             returns (SignInResponse);
@@ -189,5 +189,5 @@ service Account {
     rpc RevokeDevice        (RevokeDeviceRequest)       returns (RevokeDeviceResponse);
 
     // Authorize Ecosystem to receive webhook events
-    rpc AuthorizeWebhook(AuthorizeWebhookRequest)       returns (AuthorizeWebhookResponse);
+    rpc AuthorizeWebhook(AuthorizeWebhookRequest) returns (AuthorizeWebhookResponse);
 }
