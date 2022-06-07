@@ -27,7 +27,7 @@ type ProviderClient interface {
 	// Delete a webhook endpoint from the ecosystem
 	DeleteWebhook(ctx context.Context, in *DeleteWebhookRequest, opts ...grpc.CallOption) (*DeleteWebhookResponse, error)
 	// Get ecosystem information
-	Info(ctx context.Context, in *EcosystemInfoRequest, opts ...grpc.CallOption) (*EcosystemInfoResponse, error)
+	EcosystemInfo(ctx context.Context, in *EcosystemInfoRequest, opts ...grpc.CallOption) (*EcosystemInfoResponse, error)
 	// Generates an unprotected authentication token that can be used to
 	// configure server side applications
 	GenerateToken(ctx context.Context, in *GenerateTokenRequest, opts ...grpc.CallOption) (*GenerateTokenResponse, error)
@@ -85,9 +85,9 @@ func (c *providerClient) DeleteWebhook(ctx context.Context, in *DeleteWebhookReq
 	return out, nil
 }
 
-func (c *providerClient) Info(ctx context.Context, in *EcosystemInfoRequest, opts ...grpc.CallOption) (*EcosystemInfoResponse, error) {
+func (c *providerClient) EcosystemInfo(ctx context.Context, in *EcosystemInfoRequest, opts ...grpc.CallOption) (*EcosystemInfoResponse, error) {
 	out := new(EcosystemInfoResponse)
-	err := c.cc.Invoke(ctx, "/services.provider.v1.Provider/Info", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/services.provider.v1.Provider/EcosystemInfo", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -152,7 +152,7 @@ type ProviderServer interface {
 	// Delete a webhook endpoint from the ecosystem
 	DeleteWebhook(context.Context, *DeleteWebhookRequest) (*DeleteWebhookResponse, error)
 	// Get ecosystem information
-	Info(context.Context, *EcosystemInfoRequest) (*EcosystemInfoResponse, error)
+	EcosystemInfo(context.Context, *EcosystemInfoRequest) (*EcosystemInfoResponse, error)
 	// Generates an unprotected authentication token that can be used to
 	// configure server side applications
 	GenerateToken(context.Context, *GenerateTokenRequest) (*GenerateTokenResponse, error)
@@ -183,8 +183,8 @@ func (UnimplementedProviderServer) AddWebhook(context.Context, *AddWebhookReques
 func (UnimplementedProviderServer) DeleteWebhook(context.Context, *DeleteWebhookRequest) (*DeleteWebhookResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteWebhook not implemented")
 }
-func (UnimplementedProviderServer) Info(context.Context, *EcosystemInfoRequest) (*EcosystemInfoResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Info not implemented")
+func (UnimplementedProviderServer) EcosystemInfo(context.Context, *EcosystemInfoRequest) (*EcosystemInfoResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method EcosystemInfo not implemented")
 }
 func (UnimplementedProviderServer) GenerateToken(context.Context, *GenerateTokenRequest) (*GenerateTokenResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GenerateToken not implemented")
@@ -286,20 +286,20 @@ func _Provider_DeleteWebhook_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Provider_Info_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Provider_EcosystemInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(EcosystemInfoRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProviderServer).Info(ctx, in)
+		return srv.(ProviderServer).EcosystemInfo(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/services.provider.v1.Provider/Info",
+		FullMethod: "/services.provider.v1.Provider/EcosystemInfo",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProviderServer).Info(ctx, req.(*EcosystemInfoRequest))
+		return srv.(ProviderServer).EcosystemInfo(ctx, req.(*EcosystemInfoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -418,8 +418,8 @@ var Provider_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Provider_DeleteWebhook_Handler,
 		},
 		{
-			MethodName: "Info",
-			Handler:    _Provider_Info_Handler,
+			MethodName: "EcosystemInfo",
+			Handler:    _Provider_EcosystemInfo_Handler,
 		},
 		{
 			MethodName: "GenerateToken",
