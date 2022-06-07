@@ -1802,7 +1802,14 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="na">createEcosystem</span><span class="p">(</span><span class="n">ProviderOuterClass</span><span class="p">.</span><span class="na">CreateEcosystemRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setDescription</span><span class="p">(</span><span class="s">&quot;My ecosystem&quot;</span><span class="p">).</span><span class="na">setUri</span><span class="p">(</span><span class="s">&quot;https://example.com&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="n">service</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">createEcosystem</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">ProviderOuterClass</span><span class="p">.</span><span class="na">CreateEcosystemRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">setDescription</span><span class="p">(</span><span class="s">&quot;My ecosystem&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">setUri</span><span class="p">(</span><span class="s">&quot;https://example.com&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>
@@ -1838,7 +1845,7 @@
 </tr>
 </tbody>
 </table>
-<p><a name="services-provider-v1-Ecosystem"></a></p>
+<p><a name="services-provider-v1-DeleteWebhookRequest"></a></p>
 </div>
 </div>
 <!-- 
@@ -1949,7 +1956,18 @@ trinsic provider invite --person --method-email alice@faber.edu
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">inviteResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="na">inviteParticipant</span><span class="p">(</span><span class="n">ProviderOuterClass</span><span class="p">.</span><span class="na">InviteRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setParticipant</span><span class="p">(</span><span class="n">ProviderOuterClass</span><span class="p">.</span><span class="na">ParticipantType</span><span class="p">.</span><span class="na">participant_type_individual</span><span class="p">).</span><span class="na">setDetails</span><span class="p">(</span><span class="n">AccountOuterClass</span><span class="p">.</span><span class="na">AccountDetails</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setEmail</span><span class="p">(</span><span class="s">&quot;example@trinsic.id&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">inviteResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="n">service</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">inviteParticipant</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">ProviderOuterClass</span><span class="p">.</span><span class="na">InviteRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">setParticipant</span><span class="p">(</span><span class="w"></span>
+<span class="w">                    </span><span class="n">ProviderOuterClass</span><span class="p">.</span><span class="na">ParticipantType</span><span class="p">.</span><span class="na">participant_type_individual</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">setDetails</span><span class="p">(</span><span class="w"></span>
+<span class="w">                    </span><span class="n">AccountOuterClass</span><span class="p">.</span><span class="na">AccountDetails</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="w">                        </span><span class="p">.</span><span class="na">setEmail</span><span class="p">(</span><span class="s">&quot;example@trinsic.id&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">                        </span><span class="p">.</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>
@@ -1980,8 +1998,7 @@ trinsic provider invite --person --method-email alice@faber.edu
 </tr>
 </tbody>
 </table>
-<!-- end messages -->
-<p><a name="services-provider-v1-InvitationStatusResponse-Status"></a></p>
+<p><a name="services-provider-v1-UpdateEcosystemRequest"></a></p>
 </div>
 </div>
 <p>The <code>invitation_code</code> in the response contains is security code that users must supply when creating their wallet. If the email method is used during onboarding, participants will receive this code in their email.</p>
@@ -2051,7 +2068,13 @@ The reference_id passed is the response from the
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">invitationStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="na">invitationStatus</span><span class="p">(</span><span class="n">ProviderOuterClass</span><span class="p">.</span><span class="na">InvitationStatusRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setInvitationId</span><span class="p">(</span><span class="n">inviteResponse</span><span class="p">.</span><span class="na">getInvitationId</span><span class="p">()).</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">invitationStatus</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="n">service</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">invitationStatus</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">ProviderOuterClass</span><span class="p">.</span><span class="na">InvitationStatusRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">setInvitationId</span><span class="p">(</span><span class="n">inviteResponse</span><span class="p">.</span><span class="na">getInvitationId</span><span class="p">())</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>

@@ -2078,13 +2078,14 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">insertResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">walletService</span><span class="p">.</span><span class="na">insertItem</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="n">UniversalWalletOuterClass</span><span class="p">.</span><span class="na">InsertItemRequest</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">insertResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="n">walletService</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">insertItem</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">UniversalWalletOuterClass</span><span class="p">.</span><span class="na">InsertItemRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
 <span class="w">                </span><span class="p">.</span><span class="na">setItemJson</span><span class="p">(</span><span class="n">credentialJson</span><span class="p">)</span><span class="w"></span>
 <span class="w">                </span><span class="p">.</span><span class="na">setItemType</span><span class="p">(</span><span class="s">&quot;VerifiableCredential&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">()</span><span class="w"></span>
-<span class="p">).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>
@@ -2642,12 +2643,15 @@ This approach allows us to give developers full control over how data is retriev
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">walletItems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">walletService</span><span class="p">.</span><span class="na">search</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="n">UniversalWalletOuterClass</span><span class="p">.</span><span class="na">SearchRequest</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">setQuery</span><span class="p">(</span><span class="s">&quot;SELECT c.id, c.type, c.data FROM c WHERE c.type = &#39;VerifiableCredential&#39;&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">()</span><span class="w"></span>
-<span class="p">).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">walletItems</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="n">walletService</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">search</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">UniversalWalletOuterClass</span><span class="p">.</span><span class="na">SearchRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">setQuery</span><span class="p">(</span><span class="w"></span>
+<span class="w">                    </span><span class="s">&quot;SELECT c.id, c.type, c.data FROM c WHERE c.type =&quot;</span><span class="w"></span>
+<span class="w">                        </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; &#39;VerifiableCredential&#39;&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block"></div>

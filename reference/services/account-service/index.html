@@ -1874,7 +1874,7 @@
 <p><div class='proto-obj-header' markdown><a href="/reference/proto#inforesponse">InfoResponse</a></p>
 </div>
 <div class="proto-obj-contents">
-<p>Information about the account used to make the request</p>
+<p>Response to <code>InfoRequest</code></p>
 <table>
 <thead>
 <tr>
@@ -1885,38 +1885,13 @@
 </thead>
 <tbody>
 <tr>
-<td>details</td>
-<td><a href="/reference/proto#services-account-v1-AccountDetails">AccountDetails</a></td>
-<td>The account details associated with the calling request context</td>
-</tr>
-<tr>
-<td>ecosystems</td>
-<td><a href="/reference/proto#services-account-v1-AccountEcosystem">AccountEcosystem</a>[]</td>
-<td><strong>Deprecated.</strong> Use <code>ecosystem_id</code> instead</td>
-</tr>
-<tr>
-<td>wallet_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>The wallet ID associated with this account</td>
-</tr>
-<tr>
-<td>device_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>The device ID associated with this account session</td>
-</tr>
-<tr>
-<td>ecosystem_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>The ecosystem ID within which this account resides</td>
-</tr>
-<tr>
-<td>public_did</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>The public DID associated with this account. This DID is used as "issuer" when signing verifiable credentials</td>
+<td>ecosystem</td>
+<td><a href="/reference/proto#services-provider-v1-Ecosystem">Ecosystem</a></td>
+<td>Ecosystem corresponding to requested <code>ecosystem_id</code></td>
 </tr>
 </tbody>
 </table>
-<p><a name="services-account-v1-ListDevicesRequest"></a></p>
+<p><a name="services-provider-v1-GenerateTokenRequest"></a></p>
 </div>
 </div>
 <h3 id="protect-account-profile">Protect Account Profile<a class="headerlink" href="#protect-account-profile" title="Permanent link">&para;</a></h3>

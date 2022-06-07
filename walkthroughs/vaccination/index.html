@@ -1925,7 +1925,9 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">ecosystem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">providerService</span><span class="p">.</span><span class="nx">createEcosystem</span><span class="p">(</span><span class="nx">CreateEcosystemRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({}));</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">ecosystem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">providerService</span><span class="p">.</span><span class="nx">createEcosystem</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="nx">CreateEcosystemRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({})</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">ecosystemId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ecosystem</span><span class="p">.</span><span class="nx">ecosystem</span><span class="o">!</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 </div>
@@ -1942,9 +1944,10 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">ecosystemResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">providerService</span><span class="p">.</span><span class="na">createEcosystem</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="n">ProviderOuterClass</span><span class="p">.</span><span class="na">CreateEcosystemRequest</span><span class="p">.</span><span class="na">getDefaultInstance</span><span class="p">()</span><span class="w"></span>
-<span class="p">).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">ecosystemResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="n">providerService</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">createEcosystem</span><span class="p">(</span><span class="n">ProviderOuterClass</span><span class="p">.</span><span class="na">CreateEcosystemRequest</span><span class="p">.</span><span class="na">getDefaultInstance</span><span class="p">())</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 
 <span class="kd">var</span><span class="w"> </span><span class="n">ecosystemId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ecosystemResponse</span><span class="p">.</span><span class="na">getEcosystem</span><span class="p">().</span><span class="na">getId</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
@@ -2156,22 +2159,22 @@ trinsic account login --name <span class="s2">&quot;Vaccination Clinic&quot;</sp
 <div class="highlight"><pre><span></span><code><span class="c1">//Define all fields</span><span class="w"></span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">firstNameField</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">TemplateField</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
 <span class="w">  </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;First name of vaccine recipient&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="nx">FieldType</span><span class="p">.</span><span class="nx">STRING</span><span class="w"></span>
+<span class="w">  </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="nx">FieldType</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span><span class="w"></span>
 <span class="p">});</span><span class="w"></span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">lastNameField</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">TemplateField</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
 <span class="w">  </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="nx">FieldType</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Last name of vaccine recipient&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Last name of vaccine recipient&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="p">});</span><span class="w"></span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">batchNumberField</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">TemplateField</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
 <span class="w">  </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="nx">FieldType</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Batch number of vaccine&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Batch number of vaccine&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="p">});</span><span class="w"></span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">countryOfVaccinationField</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">TemplateField</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
 <span class="w">  </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="nx">FieldType</span><span class="p">.</span><span class="nx">STRING</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Country in which the subject was vaccinated&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Country in which the subject was vaccinated&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="p">});</span><span class="w"></span>
 
 <span class="c1">//Create request</span><span class="w"></span>
@@ -2216,10 +2219,16 @@ trinsic account login --name <span class="s2">&quot;Vaccination Clinic&quot;</sp
         <span class="n">name</span><span class="o">=</span><span class="s2">&quot;VaccinationCertificate&quot;</span><span class="p">,</span>
         <span class="n">allow_additional_fields</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">fields</span><span class="o">=</span><span class="p">{</span>
-            <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="n">TemplateField</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;First name of vaccine recipient&quot;</span><span class="p">),</span>
+            <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="n">TemplateField</span><span class="p">(</span>
+                <span class="n">description</span><span class="o">=</span><span class="s2">&quot;First name of vaccine recipient&quot;</span>
+            <span class="p">),</span>
             <span class="s2">&quot;lastName&quot;</span><span class="p">:</span> <span class="n">TemplateField</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Last name of vaccine recipient&quot;</span><span class="p">),</span>
-            <span class="s2">&quot;batchNumber&quot;</span><span class="p">:</span> <span class="n">TemplateField</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Batch number of vaccine&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">FieldType</span><span class="o">.</span><span class="n">STRING</span><span class="p">),</span>
-            <span class="s2">&quot;countryOfVaccination&quot;</span><span class="p">:</span> <span class="n">TemplateField</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Country in which the subject was vaccinated&quot;</span><span class="p">),</span>
+            <span class="s2">&quot;batchNumber&quot;</span><span class="p">:</span> <span class="n">TemplateField</span><span class="p">(</span>
+                <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Batch number of vaccine&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">FieldType</span><span class="o">.</span><span class="n">STRING</span>
+            <span class="p">),</span>
+            <span class="s2">&quot;countryOfVaccination&quot;</span><span class="p">:</span> <span class="n">TemplateField</span><span class="p">(</span>
+                <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Country in which the subject was vaccinated&quot;</span>
+            <span class="p">),</span>
         <span class="p">},</span>
     <span class="p">)</span>
 <span class="p">)</span>
@@ -2228,34 +2237,42 @@ trinsic account login --name <span class="s2">&quot;Vaccination Clinic&quot;</sp
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1">//Set active profile to &#39;clinic&#39;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Set active profile to &#39;clinic&#39;</span><span class="w"></span>
 <span class="n">templateService</span><span class="p">.</span><span class="na">setProfile</span><span class="p">(</span><span class="n">clinic</span><span class="p">);</span><span class="w"></span>
 
-<span class="c1">//Define fields for template</span><span class="w"></span>
+<span class="c1">// Define fields for template</span><span class="w"></span>
 <span class="kd">var</span><span class="w"> </span><span class="n">fields</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Templates</span><span class="p">.</span><span class="na">TemplateField</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
-<span class="n">fields</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;firstName&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Templates</span><span class="p">.</span><span class="na">TemplateField</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="n">fields</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;firstName&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Templates</span><span class="p">.</span><span class="na">TemplateField</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">setDescription</span><span class="p">(</span><span class="s">&quot;First name of vaccine recipient&quot;</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">());</span><span class="w"></span>
-<span class="n">fields</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;lastName&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Templates</span><span class="p">.</span><span class="na">TemplateField</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="n">fields</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;lastName&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Templates</span><span class="p">.</span><span class="na">TemplateField</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">setDescription</span><span class="p">(</span><span class="s">&quot;Last name of vaccine recipient&quot;</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">());</span><span class="w"></span>
-<span class="n">fields</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;batchNumber&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Templates</span><span class="p">.</span><span class="na">TemplateField</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="n">fields</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;batchNumber&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Templates</span><span class="p">.</span><span class="na">TemplateField</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">setType</span><span class="p">(</span><span class="n">Templates</span><span class="p">.</span><span class="na">FieldType</span><span class="p">.</span><span class="na">STRING</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">setDescription</span><span class="p">(</span><span class="s">&quot;Batch number of vaccine&quot;</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">());</span><span class="w"></span>
-<span class="n">fields</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;countryOfVaccination&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Templates</span><span class="p">.</span><span class="na">TemplateField</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="n">fields</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;countryOfVaccination&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Templates</span><span class="p">.</span><span class="na">TemplateField</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">setDescription</span><span class="p">(</span><span class="s">&quot;Country in which the subject was vaccinated&quot;</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">());</span><span class="w"></span>
 
-<span class="c1">//Create template request</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="n">templateRequest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Templates</span><span class="p">.</span><span class="na">CreateCredentialTemplateRequest</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="c1">// Create template request</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="n">templateRequest</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="n">Templates</span><span class="p">.</span><span class="na">CreateCredentialTemplateRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">&quot;VaccinationCertificate&quot;</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">setAllowAdditionalFields</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">putAllFields</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">();</span><span class="w"></span>
 
-<span class="c1">//Execute template creation</span><span class="w"></span>
+<span class="c1">// Execute template creation</span><span class="w"></span>
 <span class="kd">var</span><span class="w"> </span><span class="n">template</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">templateService</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="n">templateRequest</span><span class="p">).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 <span class="kd">var</span><span class="w"> </span><span class="n">templateId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">template</span><span class="p">.</span><span class="na">getData</span><span class="p">().</span><span class="na">getId</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
@@ -2332,16 +2349,19 @@ trinsic vc issue-from-template --template-id <span class="o">{</span>TEMPLATE_ID
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// Prepare the credential values JSON document</span><span class="w"></span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">credentialValues</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;firstName&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Allison&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;lastName&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Allisonne&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;batchNumber&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;123454321&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">&quot;countryOfVaccination&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;US&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="nx">firstName</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Allison&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nx">lastName</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Allisonne&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nx">batchNumber</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;123454321&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nx">countryOfVaccination</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;US&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="p">});</span><span class="w"></span>
 
 <span class="c1">// Sign a credential as the clinic and send it to Allison</span><span class="w"></span>
 <span class="nx">credentialService</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">authToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clinic</span><span class="p">;</span><span class="w"></span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">issueResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">issueFromTemplate</span><span class="p">(</span><span class="w"></span>
-<span class="w">  </span><span class="nx">IssueFromTemplateRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"> </span><span class="nx">templateId</span><span class="o">:</span><span class="w"> </span><span class="kt">template.id</span><span class="p">,</span><span class="w"> </span><span class="nx">valuesJson</span><span class="o">:</span><span class="w"> </span><span class="kt">credentialValues</span><span class="w"> </span><span class="p">})</span><span class="w"></span>
+<span class="w">  </span><span class="nx">IssueFromTemplateRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
+<span class="w">    </span><span class="nx">templateId</span><span class="o">:</span><span class="w"> </span><span class="kt">template.id</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">valuesJson</span><span class="o">:</span><span class="w"> </span><span class="kt">credentialValues</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="p">})</span><span class="w"></span>
 <span class="p">);</span><span class="w"></span>
 </code></pre></div>
 </div>
@@ -2393,23 +2413,25 @@ trinsic vc issue-from-template --template-id <span class="o">{</span>TEMPLATE_ID
 <span class="c1">// with the clinic&#39;s signing keys</span><span class="w"></span>
 <span class="n">credentialService</span><span class="p">.</span><span class="na">setProfile</span><span class="p">(</span><span class="n">clinic</span><span class="p">);</span><span class="w"></span>
 
-<span class="c1">//Prepare credential values</span><span class="w"></span>
+<span class="c1">// Prepare credential values</span><span class="w"></span>
 <span class="kd">var</span><span class="w"> </span><span class="n">valuesMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
 <span class="n">valuesMap</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;firstName&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Allison&quot;</span><span class="p">);</span><span class="w"></span>
 <span class="n">valuesMap</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;lastName&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Allissonne&quot;</span><span class="p">);</span><span class="w"></span>
 <span class="n">valuesMap</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;batchNumber&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;123454321&quot;</span><span class="p">);</span><span class="w"></span>
 <span class="n">valuesMap</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;countryOfVaccination&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;US&quot;</span><span class="p">);</span><span class="w"></span>
 
-<span class="c1">//Serialize values to JSON</span><span class="w"></span>
+<span class="c1">// Serialize values to JSON</span><span class="w"></span>
 <span class="kd">var</span><span class="w"> </span><span class="n">valuesJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Gson</span><span class="p">().</span><span class="na">toJson</span><span class="p">(</span><span class="n">valuesMap</span><span class="p">);</span><span class="w"></span>
 
-<span class="c1">//Issue credential</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="n">issueResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">credentialService</span><span class="p">.</span><span class="na">issueCredentialFromTemplate</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">IssueFromTemplateRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="c1">// Issue credential</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="n">issueResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="n">credentialService</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">issueCredentialFromTemplate</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">IssueFromTemplateRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
 <span class="w">                </span><span class="p">.</span><span class="na">setTemplateId</span><span class="p">(</span><span class="n">templateId</span><span class="p">)</span><span class="w"></span>
 <span class="w">                </span><span class="p">.</span><span class="na">setValuesJson</span><span class="p">(</span><span class="n">valuesJson</span><span class="p">)</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">()</span><span class="w"></span>
-<span class="p">).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 
 <span class="kd">var</span><span class="w"> </span><span class="n">credential</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">issueResponse</span><span class="p">.</span><span class="na">getDocumentJson</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
@@ -2518,12 +2540,13 @@ trinsic wallet insert-item --item credential.json
 <span class="n">walletService</span><span class="p">.</span><span class="na">setProfile</span><span class="p">(</span><span class="n">allison</span><span class="p">);</span><span class="w"></span>
 
 <span class="c1">// Allison stores the credential in her cloud wallet.</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="n">insertItemResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">walletService</span><span class="p">.</span><span class="na">insertItem</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="n">UniversalWalletOuterClass</span><span class="p">.</span><span class="na">InsertItemRequest</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="n">insertItemResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="n">walletService</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">insertItem</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">UniversalWalletOuterClass</span><span class="p">.</span><span class="na">InsertItemRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
 <span class="w">                </span><span class="p">.</span><span class="na">setItemJson</span><span class="p">(</span><span class="n">credential</span><span class="p">)</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">()</span><span class="w"></span>
-<span class="p">).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 
 <span class="kd">final</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="n">itemId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">insertItemResponse</span><span class="p">.</span><span class="na">getItemId</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
@@ -2569,7 +2592,7 @@ trinsic vc create-proof --item-id <span class="s2">&quot;{ITEM_ID}&quot;</span> 
 <span class="nx">credentialService</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">authToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allison</span><span class="p">;</span><span class="w"></span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">proofResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">createProof</span><span class="p">(</span><span class="w"></span>
 <span class="w">  </span><span class="nx">CreateProofRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
-<span class="w">    </span><span class="nx">itemId</span><span class="o">:</span><span class="w"> </span><span class="kt">insertResponse.itemId</span><span class="w"></span>
+<span class="w">    </span><span class="nx">itemId</span><span class="o">:</span><span class="w"> </span><span class="kt">insertResponse.itemId</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="p">})</span><span class="w"></span>
 <span class="p">);</span><span class="w"></span>
 </code></pre></div>
@@ -2602,12 +2625,11 @@ trinsic vc create-proof --item-id <span class="s2">&quot;{ITEM_ID}&quot;</span> 
 <span class="n">credentialService</span><span class="p">.</span><span class="na">setProfile</span><span class="p">(</span><span class="n">allison</span><span class="p">);</span><span class="w"></span>
 
 <span class="c1">// Allison shares the credential with the venue</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="n">createProofResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">credentialService</span><span class="p">.</span><span class="na">createProof</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">CreateProofRequest</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">setItemId</span><span class="p">(</span><span class="n">itemId</span><span class="p">)</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">()</span><span class="w"></span>
-<span class="p">).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="n">createProofResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="n">credentialService</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">createProof</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">CreateProofRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setItemId</span><span class="p">(</span><span class="n">itemId</span><span class="p">).</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 
 <span class="kd">var</span><span class="w"> </span><span class="n">credentialProof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createProofResponse</span><span class="p">.</span><span class="na">getProofDocumentJson</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
@@ -2687,12 +2709,13 @@ trinsic vc verify-proof --proof-document proof.json
 <div class="highlight"><pre><span></span><code><span class="n">credentialService</span><span class="p">.</span><span class="na">setProfile</span><span class="p">(</span><span class="n">airline</span><span class="p">);</span><span class="w"></span>
 
 <span class="c1">// Verify that Allison has provided a valid proof</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="n">verifyProofResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">credentialService</span><span class="p">.</span><span class="na">verifyProof</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">VerifyProofRequest</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="n">verifyProofResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="n">credentialService</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">verifyProof</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">VerifyProofRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
 <span class="w">                </span><span class="p">.</span><span class="na">setProofDocumentJson</span><span class="p">(</span><span class="n">credentialProof</span><span class="p">)</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">()</span><span class="w"></span>
-<span class="p">).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 
 <span class="kt">boolean</span><span class="w"> </span><span class="n">isValid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">verifyProofResponse</span><span class="p">.</span><span class="na">getIsValid</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
