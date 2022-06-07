@@ -52,10 +52,10 @@ jobs:
       - name: Install protobuf plugins
         run: |
           pip install -r ./devops/requirements.txt
+          python ./devops/generate_proto_files.py --download-plugins --language=none
           echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
       - name: Compile proto files
         run: |
-          git checkout -b update-protobuf-generated-files
-          python ./devops/generate_proto_files.py
+          python ./devops/generate_proto_files.py --language=all
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4.0.4
