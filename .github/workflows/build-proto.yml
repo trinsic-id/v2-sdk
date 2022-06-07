@@ -50,11 +50,11 @@ jobs:
       - name: Compile proto files
         run: |
           python ./devops/generate_proto_files.py --language=all
-          git checkout -b "${{ github.head_ref }}-generated-protos"
+          git checkout -b "${{ github.ref_name }}-generated-protos"
       - name: Create Pull Request
         uses: repo-sync/pull-request@v2
         with:
-          destination_branch: ${{ github.head_ref }}
+          destination_branch: ${{ github.ref_name }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          pr_title: "Updated proto generated files for ${{ github.head_ref }}"
+          pr_title: "Updated proto generated files for ${{ github.ref_name }}"
           pr_label: "auto-pr"
