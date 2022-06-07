@@ -105,7 +105,7 @@ def download_protoc_plugins() -> None:
     # Install go plugins
     install_cmds = [
         "dart pub global activate protoc_plugin",
-        "gem install grpc-tools",
+        "gem install grpc-tools rubocop",
         "go install github.com/trinsic-id/protoc-gen-json@latest",
         "go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest",
         "go install github.com/coinbase/protoc-gen-rbi@latest",
