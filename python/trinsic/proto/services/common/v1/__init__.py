@@ -18,12 +18,14 @@ class ResponseStatus(betterproto.Enum):
 
 @dataclass(eq=False, repr=False)
 class ServerConfig(betterproto.Message):
-    # service endpoint
     endpoint: str = betterproto.string_field(1)
-    # service port
+    """service endpoint"""
+
     port: int = betterproto.int32_field(2)
-    # indicates if tls is used
+    """service port"""
+
     use_tls: bool = betterproto.bool_field(3)
+    """indicates if tls is used"""
 
 
 @dataclass(eq=False, repr=False)

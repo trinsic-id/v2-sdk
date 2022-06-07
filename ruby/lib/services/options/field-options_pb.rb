@@ -3,6 +3,8 @@
 
 require 'google/protobuf'
 
+require 'google/protobuf/descriptor_pb'
+
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("services/options/field-options.proto", :syntax => :proto3) do
   end

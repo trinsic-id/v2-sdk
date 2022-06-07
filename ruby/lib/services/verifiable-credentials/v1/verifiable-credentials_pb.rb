@@ -4,6 +4,7 @@
 require 'google/protobuf'
 
 require 'services/options/field-options_pb'
+
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("services/verifiable-credentials/v1/verifiable-credentials.proto", :syntax => :proto3) do
     add_message "services.verifiablecredentials.v1.IssueRequest" do
