@@ -49,3 +49,5 @@ jobs:
           python ./devops/generate_proto_files.py --language=all
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4.0.4
+        with:
+          base: ${{ github.ref_name }}
