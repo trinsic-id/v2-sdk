@@ -229,26 +229,6 @@ const AccountEcosystem$json = const {
 /// Descriptor for `AccountEcosystem`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List accountEcosystemDescriptor = $convert.base64Decode(
     'ChBBY2NvdW50RWNvc3lzdGVtEg4KAmlkGAEgASgJUgJpZBISCgRuYW1lGAIgASgJUgRuYW1lEiAKC2Rlc2NyaXB0aW9uGAMgASgJUgtkZXNjcmlwdGlvbhIQCgN1cmkYBCABKAlSA3VyaQ==');
-@$core.Deprecated('Use authorizeWebhookRequestDescriptor instead')
-const AuthorizeWebhookRequest$json = const {
-  '1': 'AuthorizeWebhookRequest',
-  '2': const [
-    const {'1': 'events', '3': 1, '4': 3, '5': 9, '10': 'events'},
-  ],
-};
-
-/// Descriptor for `AuthorizeWebhookRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List authorizeWebhookRequestDescriptor =
-    $convert.base64Decode(
-        'ChdBdXRob3JpemVXZWJob29rUmVxdWVzdBIWCgZldmVudHMYASADKAlSBmV2ZW50cw==');
-@$core.Deprecated('Use authorizeWebhookResponseDescriptor instead')
-const AuthorizeWebhookResponse$json = const {
-  '1': 'AuthorizeWebhookResponse',
-};
-
-/// Descriptor for `AuthorizeWebhookResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List authorizeWebhookResponseDescriptor =
-    $convert.base64Decode('ChhBdXRob3JpemVXZWJob29rUmVzcG9uc2U=');
 @$core.Deprecated('Use loginRequestDescriptor instead')
 const LoginRequest$json = const {
   '1': 'LoginRequest',
@@ -342,3 +322,23 @@ const LoginConfirmResponse$json = const {
 /// Descriptor for `LoginConfirmResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List loginConfirmResponseDescriptor = $convert.base64Decode(
     'ChRMb2dpbkNvbmZpcm1SZXNwb25zZRI9Cgdwcm9maWxlGAEgASgLMiMuc2VydmljZXMuYWNjb3VudC52MS5BY2NvdW50UHJvZmlsZVIHcHJvZmlsZQ==');
+@$core.Deprecated('Use authorizeWebhookRequestDescriptor instead')
+const AuthorizeWebhookRequest$json = const {
+  '1': 'AuthorizeWebhookRequest',
+  '2': const [
+    const {'1': 'events', '3': 1, '4': 3, '5': 9, '10': 'events'},
+  ],
+};
+
+/// Descriptor for `AuthorizeWebhookRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List authorizeWebhookRequestDescriptor =
+    $convert.base64Decode(
+        'ChdBdXRob3JpemVXZWJob29rUmVxdWVzdBIWCgZldmVudHMYASADKAlSBmV2ZW50cw==');
+@$core.Deprecated('Use authorizeWebhookResponseDescriptor instead')
+const AuthorizeWebhookResponse$json = const {
+  '1': 'AuthorizeWebhookResponse',
+};
+
+/// Descriptor for `AuthorizeWebhookResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List authorizeWebhookResponseDescriptor =
+    $convert.base64Decode('ChhBdXRob3JpemVXZWJob29rUmVzcG9uc2U=');

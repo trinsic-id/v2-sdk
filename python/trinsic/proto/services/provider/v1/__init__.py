@@ -279,11 +279,11 @@ class ProviderStub(betterproto.ServiceStub):
             DeleteWebhookResponse,
         )
 
-    async def info(
+    async def ecosystem_info(
         self, ecosystem_info_request: "EcosystemInfoRequest"
     ) -> "EcosystemInfoResponse":
         return await self._unary_unary(
-            "/services.provider.v1.Provider/Info",
+            "/services.provider.v1.Provider/EcosystemInfo",
             ecosystem_info_request,
             EcosystemInfoResponse,
         )
@@ -351,7 +351,7 @@ class ProviderBase(ServiceBase):
     ) -> "DeleteWebhookResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def info(
+    async def ecosystem_info(
         self, ecosystem_info_request: "EcosystemInfoRequest"
     ) -> "EcosystemInfoResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
@@ -399,9 +399,9 @@ class ProviderBase(ServiceBase):
         response = await self.delete_webhook(request)
         await stream.send_message(response)
 
-    async def __rpc_info(self, stream: grpclib.server.Stream) -> None:
+    async def __rpc_ecosystem_info(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
-        response = await self.info(request)
+        response = await self.ecosystem_info(request)
         await stream.send_message(response)
 
     async def __rpc_generate_token(self, stream: grpclib.server.Stream) -> None:
@@ -455,8 +455,8 @@ class ProviderBase(ServiceBase):
                 DeleteWebhookRequest,
                 DeleteWebhookResponse,
             ),
-            "/services.provider.v1.Provider/Info": grpclib.const.Handler(
-                self.__rpc_info,
+            "/services.provider.v1.Provider/EcosystemInfo": grpclib.const.Handler(
+                self.__rpc_ecosystem_info,
                 grpclib.const.Cardinality.UNARY_UNARY,
                 EcosystemInfoRequest,
                 EcosystemInfoResponse,

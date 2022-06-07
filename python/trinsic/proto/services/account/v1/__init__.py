@@ -33,7 +33,7 @@ class SignInRequest(betterproto.Message):
     details: "AccountDetails" = betterproto.message_field(1)
     # Invitation code associated with this registration
     invitation_code: str = betterproto.string_field(2)
-    # ID of Ecosystem to sign into.  Ignored if `invitation_code` is passed
+    # ID of Ecosystem to use Ignored if `invitation_code` is passed
     ecosystem_id: str = betterproto.string_field(3)
 
 
@@ -162,21 +162,6 @@ class AccountEcosystem(betterproto.Message):
 
 
 @dataclass(eq=False, repr=False)
-class AuthorizeWebhookRequest(betterproto.Message):
-    """Authorize ecosystem to receive wallet envents"""
-
-    # Events to authorize access to. Default is "*" (all events)
-    events: List[str] = betterproto.string_field(1)
-
-
-@dataclass(eq=False, repr=False)
-class AuthorizeWebhookResponse(betterproto.Message):
-    """Response to `AuthorizeWebhookRequest`"""
-
-    pass
-
-
-@dataclass(eq=False, repr=False)
 class LoginRequest(betterproto.Message):
     # Email account to associate with the login request
     email: str = betterproto.string_field(1)
@@ -208,6 +193,21 @@ class LoginConfirmResponse(betterproto.Message):
     # Profile response. This profile may be protected and require
     # unblinding/unprotection using the raw hashed code
     profile: "AccountProfile" = betterproto.message_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class AuthorizeWebhookRequest(betterproto.Message):
+    """Authorize ecosystem to receive wallet events"""
+
+    # Events to authorize access to. Default is "*" (all events)
+    events: List[str] = betterproto.string_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class AuthorizeWebhookResponse(betterproto.Message):
+    """Response to `AuthorizeWebhookRequest`"""
+
+    pass
 
 
 class AccountStub(betterproto.ServiceStub):

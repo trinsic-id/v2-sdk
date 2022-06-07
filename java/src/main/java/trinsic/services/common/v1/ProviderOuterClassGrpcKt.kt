@@ -50,10 +50,10 @@ object ProviderGrpcKt {
           ProviderOuterClass.DeleteWebhookRequest, ProviderOuterClass.DeleteWebhookResponse>
     @JvmStatic get() = ProviderGrpc.getDeleteWebhookMethod()
 
-  val infoMethod:
+  val ecosystemInfoMethod:
       MethodDescriptor<
           ProviderOuterClass.EcosystemInfoRequest, ProviderOuterClass.EcosystemInfoResponse>
-    @JvmStatic get() = ProviderGrpc.getInfoMethod()
+    @JvmStatic get() = ProviderGrpc.getEcosystemInfoMethod()
 
   val generateTokenMethod:
       MethodDescriptor<
@@ -170,11 +170,11 @@ object ProviderGrpcKt {
      *
      * @return The single response from the server.
      */
-    suspend fun info(
+    suspend fun ecosystemInfo(
         request: ProviderOuterClass.EcosystemInfoRequest,
         headers: Metadata = Metadata()
     ): ProviderOuterClass.EcosystemInfoResponse =
-        unaryRpc(channel, ProviderGrpc.getInfoMethod(), request, callOptions, headers)
+        unaryRpc(channel, ProviderGrpc.getEcosystemInfoMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
      * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
@@ -338,7 +338,7 @@ object ProviderGrpcKt {
                 "Method services.provider.v1.Provider.DeleteWebhook is unimplemented"))
 
     /**
-     * Returns the response to an RPC for services.provider.v1.Provider.Info.
+     * Returns the response to an RPC for services.provider.v1.Provider.EcosystemInfo.
      *
      * If this method fails with a [StatusException], the RPC will fail with the corresponding
      * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
@@ -347,12 +347,12 @@ object ProviderGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun info(
+    open suspend fun ecosystemInfo(
         request: ProviderOuterClass.EcosystemInfoRequest
     ): ProviderOuterClass.EcosystemInfoResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
-                "Method services.provider.v1.Provider.Info is unimplemented"))
+                "Method services.provider.v1.Provider.EcosystemInfo is unimplemented"))
 
     /**
      * Returns the response to an RPC for services.provider.v1.Provider.GenerateToken.
@@ -464,8 +464,8 @@ object ProviderGrpcKt {
             .addMethod(
                 unaryServerMethodDefinition(
                     context = this.context,
-                    descriptor = ProviderGrpc.getInfoMethod(),
-                    implementation = ::info))
+                    descriptor = ProviderGrpc.getEcosystemInfoMethod(),
+                    implementation = ::ecosystemInfo))
             .addMethod(
                 unaryServerMethodDefinition(
                     context = this.context,

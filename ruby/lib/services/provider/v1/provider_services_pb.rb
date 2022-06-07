@@ -29,7 +29,8 @@ module Services
           rpc :DeleteWebhook, ::Services::Provider::V1::DeleteWebhookRequest,
               ::Services::Provider::V1::DeleteWebhookResponse
           # Get ecosystem information
-          rpc :Info, ::Services::Provider::V1::EcosystemInfoRequest, ::Services::Provider::V1::EcosystemInfoResponse
+          rpc :EcosystemInfo, ::Services::Provider::V1::EcosystemInfoRequest,
+              ::Services::Provider::V1::EcosystemInfoResponse
           # Generates an unprotected authentication token that can be used to
           # configure server side applications
           rpc :GenerateToken, ::Services::Provider::V1::GenerateTokenRequest,
