@@ -20,10 +20,6 @@ jobs:
         with:
           input: 'proto'
           buf_token: ${{ secrets.BUF_BUILD_TOKEN }}
-      - uses: bufbuild/buf-push-action@v1
-        with:
-          input: 'proto/internal'
-          buf_token: ${{ secrets.BUF_BUILD_TOKEN }}
 
   compile_proto:
     runs-on: ubuntu-latest
@@ -34,13 +30,18 @@ jobs:
         with:
           python-version: 3.9
       - name: Set up Ruby
-        uses: ruby/setup-ruby@v1.76.0
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.0
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
-          go-version: ^1.16
+          go-version: ^1.17
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
       - name: Install Protoc
         uses: arduino/setup-protoc@v1
       - name: Install protobuf plugins
