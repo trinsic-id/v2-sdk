@@ -65,5 +65,13 @@ module Services::Account::V1::Account
     end
     def revoke_device(request)
     end
+
+    sig do
+      params(
+        request: Services::Account::V1::AuthorizeWebhookRequest
+      ).returns(Services::Account::V1::AuthorizeWebhookResponse)
+    end
+    def authorize_webhook(request)
+    end
   end
 end

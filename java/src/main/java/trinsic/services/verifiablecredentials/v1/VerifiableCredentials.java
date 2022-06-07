@@ -13240,12 +13240,11 @@ public final class VerifiableCredentials {
           + "ces.verifiablecredentials.v1.VerifyProof"
           + "Response\022g\n\004Send\022..services.verifiablecr"
           + "edentials.v1.SendRequest\032/.services.veri"
-          + "fiablecredentials.v1.SendResponseB\235\001\n)tr"
+          + "fiablecredentials.v1.SendResponseB\227\001\n)tr"
           + "insic.services.verifiablecredentials.v1Z"
-          + "2github.com/trinsic-id/sdk/verifiablecre"
-          + "dentials/v1\242\002\017TrinsicServices\252\002)Trinsic."
-          + "Services.VerifiableCredentials.V1b\006proto"
-          + "3"
+          + ",services/verifiablecredentials/v1/crede"
+          + "ntial\242\002\017TrinsicServices\252\002)Trinsic.Servic"
+          + "es.VerifiableCredentials.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(

@@ -6168,6 +6168,57 @@ public final class AccountOuterClass {
      * @return The bytes for publicDid.
      */
     com.google.protobuf.ByteString getPublicDidBytes();
+
+    /**
+     *
+     *
+     * <pre>
+     * Webhook events if any this wallet has authorized
+     * </pre>
+     *
+     * <code>repeated string authorized_webhooks = 7;</code>
+     *
+     * @return A list containing the authorizedWebhooks.
+     */
+    java.util.List<java.lang.String> getAuthorizedWebhooksList();
+    /**
+     *
+     *
+     * <pre>
+     * Webhook events if any this wallet has authorized
+     * </pre>
+     *
+     * <code>repeated string authorized_webhooks = 7;</code>
+     *
+     * @return The count of authorizedWebhooks.
+     */
+    int getAuthorizedWebhooksCount();
+    /**
+     *
+     *
+     * <pre>
+     * Webhook events if any this wallet has authorized
+     * </pre>
+     *
+     * <code>repeated string authorized_webhooks = 7;</code>
+     *
+     * @param index The index of the element to return.
+     * @return The authorizedWebhooks at the given index.
+     */
+    java.lang.String getAuthorizedWebhooks(int index);
+    /**
+     *
+     *
+     * <pre>
+     * Webhook events if any this wallet has authorized
+     * </pre>
+     *
+     * <code>repeated string authorized_webhooks = 7;</code>
+     *
+     * @param index The index of the value to return.
+     * @return The bytes of the authorizedWebhooks at the given index.
+     */
+    com.google.protobuf.ByteString getAuthorizedWebhooksBytes(int index);
   }
   /**
    *
@@ -6194,6 +6245,7 @@ public final class AccountOuterClass {
       deviceId_ = "";
       ecosystemId_ = "";
       publicDid_ = "";
+      authorizedWebhooks_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     }
 
     @java.lang.Override
@@ -6286,6 +6338,16 @@ public final class AccountOuterClass {
                 publicDid_ = s;
                 break;
               }
+            case 58:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+                if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+                  authorizedWebhooks_ = new com.google.protobuf.LazyStringArrayList();
+                  mutable_bitField0_ |= 0x00000002;
+                }
+                authorizedWebhooks_.add(s);
+                break;
+              }
             default:
               {
                 if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
@@ -6304,6 +6366,9 @@ public final class AccountOuterClass {
       } finally {
         if (((mutable_bitField0_ & 0x00000001) != 0)) {
           ecosystems_ = java.util.Collections.unmodifiableList(ecosystems_);
+        }
+        if (((mutable_bitField0_ & 0x00000002) != 0)) {
+          authorizedWebhooks_ = authorizedWebhooks_.getUnmodifiableView();
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -6658,6 +6723,67 @@ public final class AccountOuterClass {
       }
     }
 
+    public static final int AUTHORIZED_WEBHOOKS_FIELD_NUMBER = 7;
+    private com.google.protobuf.LazyStringList authorizedWebhooks_;
+    /**
+     *
+     *
+     * <pre>
+     * Webhook events if any this wallet has authorized
+     * </pre>
+     *
+     * <code>repeated string authorized_webhooks = 7;</code>
+     *
+     * @return A list containing the authorizedWebhooks.
+     */
+    public com.google.protobuf.ProtocolStringList getAuthorizedWebhooksList() {
+      return authorizedWebhooks_;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Webhook events if any this wallet has authorized
+     * </pre>
+     *
+     * <code>repeated string authorized_webhooks = 7;</code>
+     *
+     * @return The count of authorizedWebhooks.
+     */
+    public int getAuthorizedWebhooksCount() {
+      return authorizedWebhooks_.size();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Webhook events if any this wallet has authorized
+     * </pre>
+     *
+     * <code>repeated string authorized_webhooks = 7;</code>
+     *
+     * @param index The index of the element to return.
+     * @return The authorizedWebhooks at the given index.
+     */
+    public java.lang.String getAuthorizedWebhooks(int index) {
+      return authorizedWebhooks_.get(index);
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Webhook events if any this wallet has authorized
+     * </pre>
+     *
+     * <code>repeated string authorized_webhooks = 7;</code>
+     *
+     * @param index The index of the value to return.
+     * @return The bytes of the authorizedWebhooks at the given index.
+     */
+    public com.google.protobuf.ByteString getAuthorizedWebhooksBytes(int index) {
+      return authorizedWebhooks_.getByteString(index);
+    }
+
     private byte memoizedIsInitialized = -1;
 
     @java.lang.Override
@@ -6690,6 +6816,10 @@ public final class AccountOuterClass {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(publicDid_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 6, publicDid_);
       }
+      for (int i = 0; i < authorizedWebhooks_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(
+            output, 7, authorizedWebhooks_.getRaw(i));
+      }
       unknownFields.writeTo(output);
     }
 
@@ -6717,6 +6847,14 @@ public final class AccountOuterClass {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(publicDid_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, publicDid_);
       }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < authorizedWebhooks_.size(); i++) {
+          dataSize += computeStringSizeNoTag(authorizedWebhooks_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getAuthorizedWebhooksList().size();
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -6742,6 +6880,7 @@ public final class AccountOuterClass {
       if (!getDeviceId().equals(other.getDeviceId())) return false;
       if (!getEcosystemId().equals(other.getEcosystemId())) return false;
       if (!getPublicDid().equals(other.getPublicDid())) return false;
+      if (!getAuthorizedWebhooksList().equals(other.getAuthorizedWebhooksList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -6769,6 +6908,10 @@ public final class AccountOuterClass {
       hash = (53 * hash) + getEcosystemId().hashCode();
       hash = (37 * hash) + PUBLIC_DID_FIELD_NUMBER;
       hash = (53 * hash) + getPublicDid().hashCode();
+      if (getAuthorizedWebhooksCount() > 0) {
+        hash = (37 * hash) + AUTHORIZED_WEBHOOKS_FIELD_NUMBER;
+        hash = (53 * hash) + getAuthorizedWebhooksList().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -6941,6 +7084,8 @@ public final class AccountOuterClass {
 
         publicDid_ = "";
 
+        authorizedWebhooks_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -6989,6 +7134,11 @@ public final class AccountOuterClass {
         result.deviceId_ = deviceId_;
         result.ecosystemId_ = ecosystemId_;
         result.publicDid_ = publicDid_;
+        if (((bitField0_ & 0x00000002) != 0)) {
+          authorizedWebhooks_ = authorizedWebhooks_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        }
+        result.authorizedWebhooks_ = authorizedWebhooks_;
         onBuilt();
         return result;
       }
@@ -7088,6 +7238,16 @@ public final class AccountOuterClass {
         }
         if (!other.getPublicDid().isEmpty()) {
           publicDid_ = other.publicDid_;
+          onChanged();
+        }
+        if (!other.authorizedWebhooks_.isEmpty()) {
+          if (authorizedWebhooks_.isEmpty()) {
+            authorizedWebhooks_ = other.authorizedWebhooks_;
+            bitField0_ = (bitField0_ & ~0x00000002);
+          } else {
+            ensureAuthorizedWebhooksIsMutable();
+            authorizedWebhooks_.addAll(other.authorizedWebhooks_);
+          }
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -8154,6 +8314,174 @@ public final class AccountOuterClass {
         checkByteStringIsUtf8(value);
 
         publicDid_ = value;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.LazyStringList authorizedWebhooks_ =
+          com.google.protobuf.LazyStringArrayList.EMPTY;
+
+      private void ensureAuthorizedWebhooksIsMutable() {
+        if (!((bitField0_ & 0x00000002) != 0)) {
+          authorizedWebhooks_ = new com.google.protobuf.LazyStringArrayList(authorizedWebhooks_);
+          bitField0_ |= 0x00000002;
+        }
+      }
+      /**
+       *
+       *
+       * <pre>
+       * Webhook events if any this wallet has authorized
+       * </pre>
+       *
+       * <code>repeated string authorized_webhooks = 7;</code>
+       *
+       * @return A list containing the authorizedWebhooks.
+       */
+      public com.google.protobuf.ProtocolStringList getAuthorizedWebhooksList() {
+        return authorizedWebhooks_.getUnmodifiableView();
+      }
+      /**
+       *
+       *
+       * <pre>
+       * Webhook events if any this wallet has authorized
+       * </pre>
+       *
+       * <code>repeated string authorized_webhooks = 7;</code>
+       *
+       * @return The count of authorizedWebhooks.
+       */
+      public int getAuthorizedWebhooksCount() {
+        return authorizedWebhooks_.size();
+      }
+      /**
+       *
+       *
+       * <pre>
+       * Webhook events if any this wallet has authorized
+       * </pre>
+       *
+       * <code>repeated string authorized_webhooks = 7;</code>
+       *
+       * @param index The index of the element to return.
+       * @return The authorizedWebhooks at the given index.
+       */
+      public java.lang.String getAuthorizedWebhooks(int index) {
+        return authorizedWebhooks_.get(index);
+      }
+      /**
+       *
+       *
+       * <pre>
+       * Webhook events if any this wallet has authorized
+       * </pre>
+       *
+       * <code>repeated string authorized_webhooks = 7;</code>
+       *
+       * @param index The index of the value to return.
+       * @return The bytes of the authorizedWebhooks at the given index.
+       */
+      public com.google.protobuf.ByteString getAuthorizedWebhooksBytes(int index) {
+        return authorizedWebhooks_.getByteString(index);
+      }
+      /**
+       *
+       *
+       * <pre>
+       * Webhook events if any this wallet has authorized
+       * </pre>
+       *
+       * <code>repeated string authorized_webhooks = 7;</code>
+       *
+       * @param index The index to set the value at.
+       * @param value The authorizedWebhooks to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAuthorizedWebhooks(int index, java.lang.String value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureAuthorizedWebhooksIsMutable();
+        authorizedWebhooks_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       *
+       *
+       * <pre>
+       * Webhook events if any this wallet has authorized
+       * </pre>
+       *
+       * <code>repeated string authorized_webhooks = 7;</code>
+       *
+       * @param value The authorizedWebhooks to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAuthorizedWebhooks(java.lang.String value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureAuthorizedWebhooksIsMutable();
+        authorizedWebhooks_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       *
+       *
+       * <pre>
+       * Webhook events if any this wallet has authorized
+       * </pre>
+       *
+       * <code>repeated string authorized_webhooks = 7;</code>
+       *
+       * @param values The authorizedWebhooks to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllAuthorizedWebhooks(java.lang.Iterable<java.lang.String> values) {
+        ensureAuthorizedWebhooksIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, authorizedWebhooks_);
+        onChanged();
+        return this;
+      }
+      /**
+       *
+       *
+       * <pre>
+       * Webhook events if any this wallet has authorized
+       * </pre>
+       *
+       * <code>repeated string authorized_webhooks = 7;</code>
+       *
+       * @return This builder for chaining.
+       */
+      public Builder clearAuthorizedWebhooks() {
+        authorizedWebhooks_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       *
+       *
+       * <pre>
+       * Webhook events if any this wallet has authorized
+       * </pre>
+       *
+       * <code>repeated string authorized_webhooks = 7;</code>
+       *
+       * @param value The bytes of the authorizedWebhooks to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAuthorizedWebhooksBytes(com.google.protobuf.ByteString value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+        ensureAuthorizedWebhooksIsMutable();
+        authorizedWebhooks_.add(value);
         onChanged();
         return this;
       }
@@ -11026,6 +11354,1268 @@ public final class AccountOuterClass {
 
     @java.lang.Override
     public trinsic.services.account.v1.AccountOuterClass.AccountEcosystem
+        getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+  }
+
+  public interface AuthorizeWebhookRequestOrBuilder
+      extends
+      // @@protoc_insertion_point(interface_extends:services.account.v1.AuthorizeWebhookRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     *
+     *
+     * <pre>
+     * Events to authorize access to. Default is "*" (all events)
+     * </pre>
+     *
+     * <code>repeated string events = 1;</code>
+     *
+     * @return A list containing the events.
+     */
+    java.util.List<java.lang.String> getEventsList();
+    /**
+     *
+     *
+     * <pre>
+     * Events to authorize access to. Default is "*" (all events)
+     * </pre>
+     *
+     * <code>repeated string events = 1;</code>
+     *
+     * @return The count of events.
+     */
+    int getEventsCount();
+    /**
+     *
+     *
+     * <pre>
+     * Events to authorize access to. Default is "*" (all events)
+     * </pre>
+     *
+     * <code>repeated string events = 1;</code>
+     *
+     * @param index The index of the element to return.
+     * @return The events at the given index.
+     */
+    java.lang.String getEvents(int index);
+    /**
+     *
+     *
+     * <pre>
+     * Events to authorize access to. Default is "*" (all events)
+     * </pre>
+     *
+     * <code>repeated string events = 1;</code>
+     *
+     * @param index The index of the value to return.
+     * @return The bytes of the events at the given index.
+     */
+    com.google.protobuf.ByteString getEventsBytes(int index);
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Authorize ecosystem to receive wallet envents
+   * </pre>
+   *
+   * Protobuf type {@code services.account.v1.AuthorizeWebhookRequest}
+   */
+  public static final class AuthorizeWebhookRequest extends com.google.protobuf.GeneratedMessageV3
+      implements
+      // @@protoc_insertion_point(message_implements:services.account.v1.AuthorizeWebhookRequest)
+      AuthorizeWebhookRequestOrBuilder {
+    private static final long serialVersionUID = 0L;
+    // Use AuthorizeWebhookRequest.newBuilder() to construct.
+    private AuthorizeWebhookRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+
+    private AuthorizeWebhookRequest() {
+      events_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+      return new AuthorizeWebhookRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+      return this.unknownFields;
+    }
+
+    private AuthorizeWebhookRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                  events_ = new com.google.protobuf.LazyStringArrayList();
+                  mutable_bitField0_ |= 0x00000001;
+                }
+                events_.add(s);
+                break;
+              }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          events_ = events_.getUnmodifiableView();
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.services.account.v1.AccountOuterClass
+          .internal_static_services_account_v1_AuthorizeWebhookRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return trinsic.services.account.v1.AccountOuterClass
+          .internal_static_services_account_v1_AuthorizeWebhookRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest.class,
+              trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest.Builder.class);
+    }
+
+    public static final int EVENTS_FIELD_NUMBER = 1;
+    private com.google.protobuf.LazyStringList events_;
+    /**
+     *
+     *
+     * <pre>
+     * Events to authorize access to. Default is "*" (all events)
+     * </pre>
+     *
+     * <code>repeated string events = 1;</code>
+     *
+     * @return A list containing the events.
+     */
+    public com.google.protobuf.ProtocolStringList getEventsList() {
+      return events_;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Events to authorize access to. Default is "*" (all events)
+     * </pre>
+     *
+     * <code>repeated string events = 1;</code>
+     *
+     * @return The count of events.
+     */
+    public int getEventsCount() {
+      return events_.size();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Events to authorize access to. Default is "*" (all events)
+     * </pre>
+     *
+     * <code>repeated string events = 1;</code>
+     *
+     * @param index The index of the element to return.
+     * @return The events at the given index.
+     */
+    public java.lang.String getEvents(int index) {
+      return events_.get(index);
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Events to authorize access to. Default is "*" (all events)
+     * </pre>
+     *
+     * <code>repeated string events = 1;</code>
+     *
+     * @param index The index of the value to return.
+     * @return The bytes of the events at the given index.
+     */
+    public com.google.protobuf.ByteString getEventsBytes(int index) {
+      return events_.getByteString(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+      for (int i = 0; i < events_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, events_.getRaw(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      {
+        int dataSize = 0;
+        for (int i = 0; i < events_.size(); i++) {
+          dataSize += computeStringSizeNoTag(events_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getEventsList().size();
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+        return true;
+      }
+      if (!(obj instanceof trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest)) {
+        return super.equals(obj);
+      }
+      trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest other =
+          (trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest) obj;
+
+      if (!getEventsList().equals(other.getEventsList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getEventsCount() > 0) {
+        hash = (37 * hash) + EVENTS_FIELD_NUMBER;
+        hash = (53 * hash) + getEventsList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest parseFrom(
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+
+    public static trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest parseFrom(
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+
+    public static trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+
+    public static trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+
+    public static trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest parseFrom(
+        byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+
+    public static trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest parseFrom(
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+
+    public static trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest parseFrom(
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+    }
+
+    public static trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
+    public static trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest
+        parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest
+        parseDelimitedFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
+    public static trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest parseFrom(
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+    }
+
+    public static trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+
+    public static Builder newBuilder(
+        trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Authorize ecosystem to receive wallet envents
+     * </pre>
+     *
+     * Protobuf type {@code services.account.v1.AuthorizeWebhookRequest}
+     */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
+        // @@protoc_insertion_point(builder_implements:services.account.v1.AuthorizeWebhookRequest)
+        trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.services.account.v1.AccountOuterClass
+            .internal_static_services_account_v1_AuthorizeWebhookRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return trinsic.services.account.v1.AccountOuterClass
+            .internal_static_services_account_v1_AuthorizeWebhookRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest.class,
+                trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest.Builder
+                    .class);
+      }
+
+      // Construct using
+      // trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
+      }
+
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        events_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.services.account.v1.AccountOuterClass
+            .internal_static_services_account_v1_AuthorizeWebhookRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest
+          getDefaultInstanceForType() {
+        return trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest
+            .getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest build() {
+        trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest result =
+            buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest buildPartial() {
+        trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest result =
+            new trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest(this);
+        int from_bitField0_ = bitField0_;
+        if (((bitField0_ & 0x00000001) != 0)) {
+          events_ = events_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.events_ = events_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        return super.setField(field, value);
+      }
+
+      @java.lang.Override
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+
+      @java.lang.Override
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index,
+          java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other
+            instanceof trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest) {
+          return mergeFrom(
+              (trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest) other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(
+          trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest other) {
+        if (other
+            == trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest
+                .getDefaultInstance()) return this;
+        if (!other.events_.isEmpty()) {
+          if (events_.isEmpty()) {
+            events_ = other.events_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureEventsIsMutable();
+            events_.addAll(other.events_);
+          }
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage =
+              (trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest)
+                  e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int bitField0_;
+
+      private com.google.protobuf.LazyStringList events_ =
+          com.google.protobuf.LazyStringArrayList.EMPTY;
+
+      private void ensureEventsIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          events_ = new com.google.protobuf.LazyStringArrayList(events_);
+          bitField0_ |= 0x00000001;
+        }
+      }
+      /**
+       *
+       *
+       * <pre>
+       * Events to authorize access to. Default is "*" (all events)
+       * </pre>
+       *
+       * <code>repeated string events = 1;</code>
+       *
+       * @return A list containing the events.
+       */
+      public com.google.protobuf.ProtocolStringList getEventsList() {
+        return events_.getUnmodifiableView();
+      }
+      /**
+       *
+       *
+       * <pre>
+       * Events to authorize access to. Default is "*" (all events)
+       * </pre>
+       *
+       * <code>repeated string events = 1;</code>
+       *
+       * @return The count of events.
+       */
+      public int getEventsCount() {
+        return events_.size();
+      }
+      /**
+       *
+       *
+       * <pre>
+       * Events to authorize access to. Default is "*" (all events)
+       * </pre>
+       *
+       * <code>repeated string events = 1;</code>
+       *
+       * @param index The index of the element to return.
+       * @return The events at the given index.
+       */
+      public java.lang.String getEvents(int index) {
+        return events_.get(index);
+      }
+      /**
+       *
+       *
+       * <pre>
+       * Events to authorize access to. Default is "*" (all events)
+       * </pre>
+       *
+       * <code>repeated string events = 1;</code>
+       *
+       * @param index The index of the value to return.
+       * @return The bytes of the events at the given index.
+       */
+      public com.google.protobuf.ByteString getEventsBytes(int index) {
+        return events_.getByteString(index);
+      }
+      /**
+       *
+       *
+       * <pre>
+       * Events to authorize access to. Default is "*" (all events)
+       * </pre>
+       *
+       * <code>repeated string events = 1;</code>
+       *
+       * @param index The index to set the value at.
+       * @param value The events to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEvents(int index, java.lang.String value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureEventsIsMutable();
+        events_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       *
+       *
+       * <pre>
+       * Events to authorize access to. Default is "*" (all events)
+       * </pre>
+       *
+       * <code>repeated string events = 1;</code>
+       *
+       * @param value The events to add.
+       * @return This builder for chaining.
+       */
+      public Builder addEvents(java.lang.String value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureEventsIsMutable();
+        events_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       *
+       *
+       * <pre>
+       * Events to authorize access to. Default is "*" (all events)
+       * </pre>
+       *
+       * <code>repeated string events = 1;</code>
+       *
+       * @param values The events to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllEvents(java.lang.Iterable<java.lang.String> values) {
+        ensureEventsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, events_);
+        onChanged();
+        return this;
+      }
+      /**
+       *
+       *
+       * <pre>
+       * Events to authorize access to. Default is "*" (all events)
+       * </pre>
+       *
+       * <code>repeated string events = 1;</code>
+       *
+       * @return This builder for chaining.
+       */
+      public Builder clearEvents() {
+        events_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       *
+       *
+       * <pre>
+       * Events to authorize access to. Default is "*" (all events)
+       * </pre>
+       *
+       * <code>repeated string events = 1;</code>
+       *
+       * @param value The bytes of the events to add.
+       * @return This builder for chaining.
+       */
+      public Builder addEventsBytes(com.google.protobuf.ByteString value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+        ensureEventsIsMutable();
+        events_.add(value);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+      // @@protoc_insertion_point(builder_scope:services.account.v1.AuthorizeWebhookRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:services.account.v1.AuthorizeWebhookRequest)
+    private static final trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest
+        DEFAULT_INSTANCE;
+
+    static {
+      DEFAULT_INSTANCE =
+          new trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest();
+    }
+
+    public static trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest
+        getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<AuthorizeWebhookRequest> PARSER =
+        new com.google.protobuf.AbstractParser<AuthorizeWebhookRequest>() {
+          @java.lang.Override
+          public AuthorizeWebhookRequest parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new AuthorizeWebhookRequest(input, extensionRegistry);
+          }
+        };
+
+    public static com.google.protobuf.Parser<AuthorizeWebhookRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AuthorizeWebhookRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookRequest
+        getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+  }
+
+  public interface AuthorizeWebhookResponseOrBuilder
+      extends
+      // @@protoc_insertion_point(interface_extends:services.account.v1.AuthorizeWebhookResponse)
+      com.google.protobuf.MessageOrBuilder {}
+  /**
+   *
+   *
+   * <pre>
+   * Response to `AuthorizeWebhookRequest`
+   * </pre>
+   *
+   * Protobuf type {@code services.account.v1.AuthorizeWebhookResponse}
+   */
+  public static final class AuthorizeWebhookResponse extends com.google.protobuf.GeneratedMessageV3
+      implements
+      // @@protoc_insertion_point(message_implements:services.account.v1.AuthorizeWebhookResponse)
+      AuthorizeWebhookResponseOrBuilder {
+    private static final long serialVersionUID = 0L;
+    // Use AuthorizeWebhookResponse.newBuilder() to construct.
+    private AuthorizeWebhookResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+
+    private AuthorizeWebhookResponse() {}
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+      return new AuthorizeWebhookResponse();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+      return this.unknownFields;
+    }
+
+    private AuthorizeWebhookResponse(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.services.account.v1.AccountOuterClass
+          .internal_static_services_account_v1_AuthorizeWebhookResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return trinsic.services.account.v1.AccountOuterClass
+          .internal_static_services_account_v1_AuthorizeWebhookResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse.class,
+              trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse.Builder.class);
+    }
+
+    private byte memoizedIsInitialized = -1;
+
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+        return true;
+      }
+      if (!(obj
+          instanceof trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse)) {
+        return super.equals(obj);
+      }
+      trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse other =
+          (trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse) obj;
+
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse parseFrom(
+        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+
+    public static trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse parseFrom(
+        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+
+    public static trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+
+    public static trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+
+    public static trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse parseFrom(
+        byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+
+    public static trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse parseFrom(
+        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+
+    public static trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse parseFrom(
+        java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+    }
+
+    public static trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse parseFrom(
+        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
+    public static trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse
+        parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse
+        parseDelimitedFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
+    public static trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse parseFrom(
+        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+    }
+
+    public static trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+
+    public static Builder newBuilder(
+        trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Response to `AuthorizeWebhookRequest`
+     * </pre>
+     *
+     * Protobuf type {@code services.account.v1.AuthorizeWebhookResponse}
+     */
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
+        // @@protoc_insertion_point(builder_implements:services.account.v1.AuthorizeWebhookResponse)
+        trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.services.account.v1.AccountOuterClass
+            .internal_static_services_account_v1_AuthorizeWebhookResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return trinsic.services.account.v1.AccountOuterClass
+            .internal_static_services_account_v1_AuthorizeWebhookResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse.class,
+                trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse.Builder
+                    .class);
+      }
+
+      // Construct using
+      // trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
+      }
+
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.services.account.v1.AccountOuterClass
+            .internal_static_services_account_v1_AuthorizeWebhookResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse
+          getDefaultInstanceForType() {
+        return trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse
+            .getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse build() {
+        trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse result =
+            buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse buildPartial() {
+        trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse result =
+            new trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse(this);
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        return super.setField(field, value);
+      }
+
+      @java.lang.Override
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+
+      @java.lang.Override
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index,
+          java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other
+            instanceof trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse) {
+          return mergeFrom(
+              (trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse) other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(
+          trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse other) {
+        if (other
+            == trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse
+                .getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage =
+              (trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse)
+                  e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+      // @@protoc_insertion_point(builder_scope:services.account.v1.AuthorizeWebhookResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:services.account.v1.AuthorizeWebhookResponse)
+    private static final trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse
+        DEFAULT_INSTANCE;
+
+    static {
+      DEFAULT_INSTANCE =
+          new trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse();
+    }
+
+    public static trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse
+        getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<AuthorizeWebhookResponse> PARSER =
+        new com.google.protobuf.AbstractParser<AuthorizeWebhookResponse>() {
+          @java.lang.Override
+          public AuthorizeWebhookResponse parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new AuthorizeWebhookResponse(input, extensionRegistry);
+          }
+        };
+
+    public static com.google.protobuf.Parser<AuthorizeWebhookResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AuthorizeWebhookResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public trinsic.services.account.v1.AccountOuterClass.AuthorizeWebhookResponse
         getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
@@ -14657,6 +16247,14 @@ public final class AccountOuterClass {
   private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_account_v1_AccountEcosystem_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_account_v1_AuthorizeWebhookRequest_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_account_v1_AuthorizeWebhookRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_account_v1_AuthorizeWebhookResponse_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_account_v1_AuthorizeWebhookResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
       internal_static_services_account_v1_LoginRequest_descriptor;
   private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_account_v1_LoginRequest_fieldAccessorTable;
@@ -14704,7 +16302,7 @@ public final class AccountOuterClass {
           + "\017TokenProtection\022\017\n"
           + "\007enabled\030\001 \001(\010\0227\n"
           + "\006method\030\002 \001(\0162\'.services.account.v1.ConfirmationMethod\"\024\n"
-          + "\022AccountInfoRequest\"\332\001\n"
+          + "\022AccountInfoRequest\"\367\001\n"
           + "\023AccountInfoResponse\0224\n"
           + "\007details\030\001 \001(\0132#.services.account.v1.AccountDetails\022=\n\n"
           + "ecosystems\030\002"
@@ -14712,7 +16310,8 @@ public final class AccountOuterClass {
           + "\twallet_id\030\003 \001(\t\022\021\n"
           + "\tdevice_id\030\004 \001(\t\022\024\n"
           + "\014ecosystem_id\030\005 \001(\t\022\022\n\n"
-          + "public_did\030\006 \001(\t\"\024\n"
+          + "public_did\030\006 \001(\t\022\033\n"
+          + "\023authorized_webhooks\030\007 \003(\t\"\024\n"
           + "\022ListDevicesRequest\"\025\n"
           + "\023ListDevicesResponse\"\025\n"
           + "\023RevokeDeviceRequest\"\026\n"
@@ -14721,7 +16320,10 @@ public final class AccountOuterClass {
           + "\002id\030\001 \001(\t\022\014\n"
           + "\004name\030\002 \001(\t\022\023\n"
           + "\013description\030\003 \001(\t\022\013\n"
-          + "\003uri\030\004 \001(\t\"^\n"
+          + "\003uri\030\004 \001(\t\")\n"
+          + "\027AuthorizeWebhookRequest\022\016\n"
+          + "\006events\030\001 \003(\t\"\032\n"
+          + "\030AuthorizeWebhookResponse\"^\n"
           + "\014LoginRequest\022\023\n"
           + "\005email\030\001 \001(\tB\004\200\246\035\001\022\035\n"
           + "\017invitation_code\030\002 \001(\tB\004\200\246\035\001\022\032\n"
@@ -14741,22 +16343,24 @@ public final class AccountOuterClass {
           + "\003Sms\020\002\022\023\n"
           + "\017ConnectedDevice\020\003\022\t\n"
           + "\005Other\020\n"
-          + "2\263\004\n"
+          + "2\244\005\n"
           + "\007Account\022Q\n"
-          + "\006SignIn\022\".services."
-          + "account.v1.SignInRequest\032#.services.account.v1.SignInResponse\022N\n"
-          + "\005Login\022!.service"
-          + "s.account.v1.LoginRequest\032\".services.account.v1.LoginResponse\022c\n"
-          + "\014LoginConfirm\022(.services.account.v1.LoginConfirmRequest\032"
-          + ").services.account.v1.LoginConfirmResponse\022Y\n"
-          + "\004Info\022\'.services.account.v1.Account"
-          + "InfoRequest\032(.services.account.v1.AccountInfoResponse\022`\n"
-          + "\013ListDevices\022\'.services."
-          + "account.v1.ListDevicesRequest\032(.services.account.v1.ListDevicesResponse\022c\n"
-          + "\014RevokeDevice\022(.services.account.v1.RevokeDevi"
-          + "ceRequest\032).services.account.v1.RevokeDeviceResponseBa\n"
-          + "\033trinsic.services.account.v1Z$github.com/trinsic-id/sdk/account/v"
-          + "1\252\002\033Trinsic.Services.Account.V1b\006proto3"
+          + "\006SignIn\022\".services.account.v1.SignInReq"
+          + "uest\032#.services.account.v1.SignInResponse\022N\n"
+          + "\005Login\022!.services.account.v1.LoginRe"
+          + "quest\032\".services.account.v1.LoginResponse\022c\n"
+          + "\014LoginConfirm\022(.services.account.v1."
+          + "LoginConfirmRequest\032).services.account.v1.LoginConfirmResponse\022Y\n"
+          + "\004Info\022\'.service"
+          + "s.account.v1.AccountInfoRequest\032(.services.account.v1.AccountInfoResponse\022`\n"
+          + "\013ListDevices\022\'.services.account.v1.ListDevic"
+          + "esRequest\032(.services.account.v1.ListDevicesResponse\022c\n"
+          + "\014RevokeDevice\022(.services.a"
+          + "ccount.v1.RevokeDeviceRequest\032).services.account.v1.RevokeDeviceResponse\022o\n"
+          + "\020AuthorizeWebhook\022,.services.account.v1.Autho"
+          + "rizeWebhookRequest\032-.services.account.v1.AuthorizeWebhookResponseBX\n"
+          + "\033trinsic.services.account.v1Z\033services/account/v1/ac"
+          + "count\252\002\033Trinsic.Services.Account.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -14816,7 +16420,13 @@ public final class AccountOuterClass {
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_account_v1_AccountInfoResponse_descriptor,
             new java.lang.String[] {
-              "Details", "Ecosystems", "WalletId", "DeviceId", "EcosystemId", "PublicDid",
+              "Details",
+              "Ecosystems",
+              "WalletId",
+              "DeviceId",
+              "EcosystemId",
+              "PublicDid",
+              "AuthorizedWebhooks",
             });
     internal_static_services_account_v1_ListDevicesRequest_descriptor =
         getDescriptor().getMessageTypes().get(7);
@@ -14850,8 +16460,22 @@ public final class AccountOuterClass {
             new java.lang.String[] {
               "Id", "Name", "Description", "Uri",
             });
-    internal_static_services_account_v1_LoginRequest_descriptor =
+    internal_static_services_account_v1_AuthorizeWebhookRequest_descriptor =
         getDescriptor().getMessageTypes().get(12);
+    internal_static_services_account_v1_AuthorizeWebhookRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_account_v1_AuthorizeWebhookRequest_descriptor,
+            new java.lang.String[] {
+              "Events",
+            });
+    internal_static_services_account_v1_AuthorizeWebhookResponse_descriptor =
+        getDescriptor().getMessageTypes().get(13);
+    internal_static_services_account_v1_AuthorizeWebhookResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_account_v1_AuthorizeWebhookResponse_descriptor,
+            new java.lang.String[] {});
+    internal_static_services_account_v1_LoginRequest_descriptor =
+        getDescriptor().getMessageTypes().get(14);
     internal_static_services_account_v1_LoginRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_account_v1_LoginRequest_descriptor,
@@ -14859,7 +16483,7 @@ public final class AccountOuterClass {
               "Email", "InvitationCode", "EcosystemId",
             });
     internal_static_services_account_v1_LoginResponse_descriptor =
-        getDescriptor().getMessageTypes().get(13);
+        getDescriptor().getMessageTypes().get(15);
     internal_static_services_account_v1_LoginResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_account_v1_LoginResponse_descriptor,
@@ -14867,7 +16491,7 @@ public final class AccountOuterClass {
               "Challenge", "Profile", "Response",
             });
     internal_static_services_account_v1_LoginConfirmRequest_descriptor =
-        getDescriptor().getMessageTypes().get(14);
+        getDescriptor().getMessageTypes().get(16);
     internal_static_services_account_v1_LoginConfirmRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_account_v1_LoginConfirmRequest_descriptor,
@@ -14875,7 +16499,7 @@ public final class AccountOuterClass {
               "Challenge", "ConfirmationCodeHashed",
             });
     internal_static_services_account_v1_LoginConfirmResponse_descriptor =
-        getDescriptor().getMessageTypes().get(15);
+        getDescriptor().getMessageTypes().get(17);
     internal_static_services_account_v1_LoginConfirmResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_account_v1_LoginConfirmResponse_descriptor,

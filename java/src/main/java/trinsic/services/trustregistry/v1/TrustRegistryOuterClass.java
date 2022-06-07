@@ -13423,9 +13423,9 @@ public final class TrustRegistryOuterClass {
           + "GetMembershipStatusRequest\0326.services.tr"
           + "ustregistry.v1.GetMembershipStatusResponse\022h\n"
           + "\tFetchData\022+.services.trustregistry"
-          + ".v1.FetchDataRequest\032,.services.trustregistry.v1.FetchDataResponse0\001Bs\n"
-          + "!trinsic.services.trustregistry.v1Z*github.com/tr"
-          + "insic-id/sdk/trustregistry/v1\252\002!Trinsic.Services.TrustRegistry.V1b\006proto3"
+          + ".v1.FetchDataRequest\032,.services.trustregistry.v1.FetchDataResponse0\001Bp\n"
+          + "!trinsic.services.trustregistry.v1Z\'services/trus"
+          + "tregistry/v1/trustregistry\252\002!Trinsic.Services.TrustRegistry.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(

@@ -748,6 +748,11 @@ class WebhookConfig extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'events')
+    ..aOS(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'status')
     ..hasRequiredFields = false;
 
   WebhookConfig._() : super();
@@ -755,6 +760,7 @@ class WebhookConfig extends $pb.GeneratedMessage {
     $core.String? id,
     $core.String? destinationUrl,
     $core.Iterable<$core.String>? events,
+    $core.String? status,
   }) {
     final _result = create();
     if (id != null) {
@@ -765,6 +771,9 @@ class WebhookConfig extends $pb.GeneratedMessage {
     }
     if (events != null) {
       _result.events.addAll(events);
+    }
+    if (status != null) {
+      _result.status = status;
     }
     return _result;
   }
@@ -821,6 +830,18 @@ class WebhookConfig extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(4)
   $core.List<$core.String> get events => $_getList(2);
+
+  @$pb.TagNumber(5)
+  $core.String get status => $_getSZ(3);
+  @$pb.TagNumber(5)
+  set status($core.String v) {
+    $_setString(3, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasStatus() => $_has(3);
+  @$pb.TagNumber(5)
+  void clearStatus() => clearField(5);
 }
 
 class CreateEcosystemRequest extends $pb.GeneratedMessage {

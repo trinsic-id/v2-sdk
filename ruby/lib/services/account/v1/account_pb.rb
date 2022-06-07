@@ -41,6 +41,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :device_id, :string, 4
       optional :ecosystem_id, :string, 5
       optional :public_did, :string, 6
+      repeated :authorized_webhooks, :string, 7
     end
     add_message 'services.account.v1.ListDevicesRequest' do
     end
@@ -55,6 +56,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :name, :string, 2
       optional :description, :string, 3
       optional :uri, :string, 4
+    end
+    add_message 'services.account.v1.AuthorizeWebhookRequest' do
+      repeated :events, :string, 1
+    end
+    add_message 'services.account.v1.AuthorizeWebhookResponse' do
     end
     add_message 'services.account.v1.LoginRequest' do
       optional :email, :string, 1
@@ -99,6 +105,8 @@ module Services
       RevokeDeviceRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.RevokeDeviceRequest').msgclass
       RevokeDeviceResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.RevokeDeviceResponse').msgclass
       AccountEcosystem = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.AccountEcosystem').msgclass
+      AuthorizeWebhookRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.AuthorizeWebhookRequest').msgclass
+      AuthorizeWebhookResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.AuthorizeWebhookResponse').msgclass
       LoginRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.LoginRequest').msgclass
       LoginResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.LoginResponse').msgclass
       LoginConfirmRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup('services.account.v1.LoginConfirmRequest').msgclass

@@ -95,6 +95,8 @@ class WebhookConfig(betterproto.Message):
     destination_url: str = betterproto.string_field(2)
     # Events the webhook is subscribed to
     events: List[str] = betterproto.string_field(4)
+    # Whether we are able to sucessfully send events to the webhook
+    status: str = betterproto.string_field(5)
 
 
 @dataclass(eq=False, repr=False)

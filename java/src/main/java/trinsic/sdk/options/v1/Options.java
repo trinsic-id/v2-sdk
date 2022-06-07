@@ -1296,9 +1296,9 @@ public final class Options {
           + "ons.v1\"\205\001\n\016ServiceOptions\022\027\n\017server_endp"
           + "oint\030\001 \001(\t\022\023\n\013server_port\030\002 \001(\005\022\026\n\016serve"
           + "r_use_tls\030\003 \001(\010\022\022\n\nauth_token\030\004 \001(\t\022\031\n\021d"
-          + "efault_ecosystem\030\005 \001(\tBW\n\026trinsic.sdk.op"
-          + "tions.v1Z$github.com/trinsic-id/sdk/opti"
-          + "ons/v1\252\002\026Trinsic.Sdk.Options.V1b\006proto3"
+          + "efault_ecosystem\030\005 \001(\tBI\n\026trinsic.sdk.op"
+          + "tions.v1Z\026sdk/options/v1/options\252\002\026Trins"
+          + "ic.Sdk.Options.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(

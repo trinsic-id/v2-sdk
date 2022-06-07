@@ -29,6 +29,9 @@ module Services
           rpc :ListDevices, ::Services::Account::V1::ListDevicesRequest, ::Services::Account::V1::ListDevicesResponse
           # Revoke device access to the account's cloud wallet
           rpc :RevokeDevice, ::Services::Account::V1::RevokeDeviceRequest, ::Services::Account::V1::RevokeDeviceResponse
+          # Authorize Ecosystem to receive webhook events
+          rpc :AuthorizeWebhook, ::Services::Account::V1::AuthorizeWebhookRequest,
+              ::Services::Account::V1::AuthorizeWebhookResponse
         end
 
         Stub = Service.rpc_stub_class

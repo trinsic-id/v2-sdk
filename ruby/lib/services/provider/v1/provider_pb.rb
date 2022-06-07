@@ -51,6 +51,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :id, :string, 1
       optional :destination_url, :string, 2
       repeated :events, :string, 4
+      optional :status, :string, 5
     end
     add_message 'services.provider.v1.CreateEcosystemRequest' do
       optional :name, :string, 1
