@@ -58,4 +58,5 @@ jobs:
           git add .
           git commit -m "Generated code from proto files"
           git push --set-upstream origin "${{ github.head_ref }}-generated-protos"
+          echo ${{ secrets.GITHUB_TOKEN }} | gh auth login --with-token
           gh pr create --base ${{ github.head_ref }}
