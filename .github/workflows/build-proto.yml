@@ -51,6 +51,8 @@ jobs:
         run: |
           python ./devops/generate_proto_files.py --language=all
           git checkout -b "${{ github.ref_name }}-generated-protos"
+          git add .
+          git commit -m "Generated code from proto files"
       - name: Create Pull Request
         uses: repo-sync/pull-request@v2
         with:
