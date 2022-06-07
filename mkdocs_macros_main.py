@@ -43,7 +43,7 @@ def define_env(env):
         """
         Generates the "Sample" tab header, along with its prefix centering div.
         """
-        ret = "<div class='center-next-tabs'></div>\n"
+        ret = "<div class='proto-method-tabs-marker'></div>\n"
         ret += '=== ":material-code-tags: Sample"'
 
         return ret

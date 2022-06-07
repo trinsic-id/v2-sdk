@@ -166,24 +166,29 @@ input {
   * for protobuf method documentation, we want those tabs to be centered.
   *
   * We have basically no control over the styling of specific tabhosts, but we do have CSS.
-  * So we create a <div class="center-next-tabs"/> immediately preceeding the tab declaration,
+  * So we create a <div class="proto-method-tabs-marker"/> immediately preceeding the tab declaration,
   * then use a sibling selector to style the immediately preceding tabs.
   **/
-.center-next-tabs {
+.proto-method-tabs-marker {
     display: none;
 }
 
-/* Center any tabs immediately following a .center-next-tabs */
-.center-next-tabs+.tabbed-set {
+/* Center any tabs immediately following a .proto-method-tabs-marker */
+.proto-method-tabs-marker+.tabbed-set {
     align-items: center;
 }
 /* For some reason a mystery <p/> is being generated, adding padding... get rid of it. */
-.center-next-tabs+.tabbed-set p:first-child {
+.proto-method-tabs-marker+.tabbed-set p:first-child {
     display: none;
 }
 
 /* For sub-tabs of the Sample/Request/Response tabs (ie, the language tabs),
    make their font smaller. */
-.center-next-tabs+.tabbed-set .tabbed-set .tabbed-labels label{
+.proto-method-tabs-marker+.tabbed-set .tabbed-set .tabbed-labels label{
     font-size: 0.5rem;  
 }   
+
+/* Make the Sample / Request / Response tab labels larger */
+.proto-method-tabs-marker+.tabbed-set > .tabbed-labels > label {
+    font-size: 0.7rem;
+}
