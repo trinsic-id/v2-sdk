@@ -41,7 +41,7 @@ input {
 
 
 /***********************************************************
- * Protobuf Object Inclusion Macro Styles  ( proto_obj() )
+ * Protobuf Object Inclusion Macro Styles  ( proto_message() )
  ***********************************************************/
 
 .proto-obj-container {

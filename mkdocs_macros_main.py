@@ -60,8 +60,8 @@ def define_env(env):
         
         # The content of the Request and Response tabs is just
         # the rendered input / output types.
-        request_html = proto_obj(method["input_type"])
-        response_html = proto_obj(method["output_type"])
+        request_html = proto_message(method["input_type"])
+        response_html = proto_message(method["output_type"])
 
         ret = ""
         ret += '=== ":material-call-made: Request" \n'
@@ -72,7 +72,7 @@ def define_env(env):
         return str(ret)
 
     @env.macro
-    def proto_obj(str: str):
+    def proto_message(str: str):
         """
         Generates the documentation for a specific protobuf message.
         """

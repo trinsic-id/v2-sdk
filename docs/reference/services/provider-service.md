@@ -57,11 +57,11 @@ Lists all available ecosystem for the current authentication context.
 
 When using one of the SDKs, you must supply an [List Ecosystem Request](../proto/index.md#listecosystemrequest) object. This object follows the model below:
 
-{{ proto_obj('services.provider.v1.ListEcosystemRequest') }}
+{{ proto_message('services.provider.v1.ListEcosystemRequest') }}
 
 The response model is of type [List Ecosystem Response](../proto/index.md#listecosystemresponse):
 
-{{ proto_obj('services.provider.v1.ListEcosystemResponse') }} 
+{{ proto_message('services.provider.v1.ListEcosystemResponse') }} 
 -->
 
 ## Onboarding
