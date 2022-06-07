@@ -12,11 +12,11 @@ from trinsic.proto.services.account.v1 import (
     AccountProfile,
     AccountStub,
     ConfirmationMethod,
-    InfoResponse,
+    AccountInfoResponse,
     ListDevicesResponse,
     RevokeDeviceResponse,
     SignInRequest,
-    InfoRequest,
+    AccountInfoRequest,
     ListDevicesRequest,
     RevokeDeviceRequest,
 )
@@ -103,13 +103,13 @@ class AccountService(ServiceBase):
         profile.protection.method = ConfirmationMethod.Other
         return base64.urlsafe_b64encode(bytes(profile)).decode("utf-8")
 
-    async def get_info(self) -> InfoResponse:
+    async def get_info(self) -> AccountInfoResponse:
         """
         Return the details about the currently active account.
         Returns:
             The `InfoResponse`
         """
-        return await self.client.info(info_request=InfoRequest())
+        return await self.client.info(account_info_request=AccountInfoRequest())
 
     async def list_devices(self, *, request: ListDevicesRequest) -> ListDevicesResponse:
         return await self.client.list_devices(list_devices_request=request)

@@ -156,8 +156,8 @@ def run_protoc(
 
 
 def update_golang():
-    go_path = get_language_dir("go")
-    go_proto_path = join(go_path, "proto")
+    language_path = get_language_dir("go")
+    go_proto_path = join(language_path, "proto")
     clean_dir(go_proto_path)
     run_protoc(
         {"go_out": go_proto_path, "go-grpc_out": go_proto_path},
@@ -177,6 +177,8 @@ def update_golang():
     }
     for file_name in glob.glob(join(go_proto_path, "**", "*.go"), recursive=True):
         update_line(file_name, replace_pairs)
+
+    subprocess.Popen(args="go fmt github.com/trinsic-id/sdk/...", cwd=language_path, shell=True).wait()
 
 
 def update_ruby():

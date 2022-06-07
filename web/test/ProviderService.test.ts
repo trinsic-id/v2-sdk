@@ -4,11 +4,12 @@ import {
   ProviderService,
 } from "../src";
 
-import { getTestServerOptions } from "./env";
+import { getTestServerOptions, setTestTimeout } from "./env";
 
 const options = getTestServerOptions();
 
 describe("ProviderService Unit Tests", () => {
+  setTestTimeout();
   beforeAll(async () => {
     let service = new AccountService(options);
     let authToken = await service.signIn();

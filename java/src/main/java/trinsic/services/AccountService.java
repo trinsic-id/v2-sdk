@@ -98,9 +98,9 @@ public class AccountService extends ServiceBase {
     return Base64.getUrlEncoder().encodeToString(profile.toByteArray());
   }
 
-  public ListenableFuture<AccountOuterClass.InfoResponse> getInfo()
+  public ListenableFuture<AccountOuterClass.AccountInfoResponse> getInfo()
       throws InvalidProtocolBufferException, DidException {
-    var request = AccountOuterClass.InfoRequest.newBuilder().build();
+    var request = AccountOuterClass.AccountInfoRequest.newBuilder().build();
     return withMetadata(stub, request).info(request);
   }
 

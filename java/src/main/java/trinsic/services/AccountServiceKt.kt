@@ -78,8 +78,8 @@ class AccountServiceKt(options: Options.ServiceOptions?) : ServiceBase(options) 
     }
   }
 
-  suspend fun getInfo(): InfoResponse {
-    val request = InfoRequest.newBuilder().build()
+  suspend fun getInfo(): AccountInfoResponse {
+    val request = AccountInfoRequest.newBuilder().build()
     return withMetadata(stub, request).info(request)
   }
 
