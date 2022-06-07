@@ -19,8 +19,8 @@ Future runTrustRegistryDemo() async {
   print("services created: $frameworkName  $httpsExampleCom");
 
   // registerGovernanceFramework() {
-  var registerFrameworkResponse = await trustRegistryService
-      .addFramework(AddFrameworkRequest(
+  var registerFrameworkResponse = await trustRegistryService.addFramework(
+      AddFrameworkRequest(
           description: "Demo framework",
           name: frameworkName,
           governanceFrameworkUri: httpsExampleCom));
@@ -29,10 +29,11 @@ Future runTrustRegistryDemo() async {
   print("Framework registered: $registerFrameworkResponse");
 
   // registerIssuerSample() {
-  var registerMemberResponse = await trustRegistryService.registerMember(RegisterMemberRequest(
-      didUri: didExampleTest,
-      frameworkId: registerFrameworkResponse.id,
-      schemaUri: httpsSchemaOrg));
+  var registerMemberResponse = await trustRegistryService.registerMember(
+      RegisterMemberRequest(
+          didUri: didExampleTest,
+          frameworkId: registerFrameworkResponse.id,
+          schemaUri: httpsSchemaOrg));
   // }
 
   print("Member registered: $registerMemberResponse");

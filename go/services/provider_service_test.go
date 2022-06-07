@@ -2,10 +2,11 @@ package services
 
 import (
 	"context"
-	provider "github.com/trinsic-id/sdk/go/proto/provider/v1"
+
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/trinsic-id/sdk/go/proto/services/provider/v1/provider"
 )
 
 func TestProviderBase_InviteParticipant(t *testing.T) {

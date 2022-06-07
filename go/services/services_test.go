@@ -3,16 +3,16 @@ package services
 import (
 	"context"
 	"fmt"
-	account "github.com/trinsic-id/sdk/go/proto/account/v1"
-	options "github.com/trinsic-id/sdk/go/proto/options/v1"
-	provider "github.com/trinsic-id/sdk/go/proto/provider/v1"
-	trustregistry "github.com/trinsic-id/sdk/go/proto/trustregistry/v1"
 	"path/filepath"
 	"runtime"
 	"testing"
 
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
+	"github.com/trinsic-id/sdk/go/proto/sdk/options/v1/options"
+	"github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
+	"github.com/trinsic-id/sdk/go/proto/services/provider/v1/provider"
+	"github.com/trinsic-id/sdk/go/proto/services/trustregistry/v1/trustregistry"
 )
 
 // pathData() {

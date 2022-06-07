@@ -3,7 +3,7 @@ package services
 import (
 	"context"
 
-	"github.com/trinsic-id/sdk/go/proto/verifiablecredentials/templates/v1"
+	"github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/templates/v1/template"
 )
 
 // NewCredentialTemplateService returns a credential template servcie with the base service configured
@@ -15,7 +15,7 @@ func NewCredentialTemplateService(options *Options) (CredentialTemplateService, 
 	}
 	service := &credentialTemplateBase{
 		Service: base,
-		client:  templates.NewCredentialTemplatesClient(base.GetChannel()),
+		client:  template.NewCredentialTemplatesClient(base.GetChannel()),
 	}
 
 	return service, nil
@@ -25,23 +25,23 @@ func NewCredentialTemplateService(options *Options) (CredentialTemplateService, 
 type CredentialTemplateService interface {
 	Service
 	// Create a credential template
-	Create(userContext context.Context, request *templates.CreateCredentialTemplateRequest) (*templates.CreateCredentialTemplateResponse, error)
+	Create(userContext context.Context, request *template.CreateCredentialTemplateRequest) (*template.CreateCredentialTemplateResponse, error)
 	// Get a specific credential template
-	Get(userContext context.Context, request *templates.GetCredentialTemplateRequest) (*templates.GetCredentialTemplateResponse, error)
+	Get(userContext context.Context, request *template.GetCredentialTemplateRequest) (*template.GetCredentialTemplateResponse, error)
 	// List available credential templates
-	List(userContext context.Context, request *templates.ListCredentialTemplatesRequest) (*templates.ListCredentialTemplatesResponse, error)
+	List(userContext context.Context, request *template.ListCredentialTemplatesRequest) (*template.ListCredentialTemplatesResponse, error)
 	// Search for a template
-	Search(userContext context.Context, request *templates.SearchCredentialTemplatesRequest) (*templates.SearchCredentialTemplatesResponse, error)
+	Search(userContext context.Context, request *template.SearchCredentialTemplatesRequest) (*template.SearchCredentialTemplatesResponse, error)
 	// Delete a template
-	Delete(userContext context.Context, request *templates.DeleteCredentialTemplateRequest) (*templates.DeleteCredentialTemplateResponse, error)
+	Delete(userContext context.Context, request *template.DeleteCredentialTemplateRequest) (*template.DeleteCredentialTemplateResponse, error)
 }
 
 type credentialTemplateBase struct {
 	Service
-	client templates.CredentialTemplatesClient
+	client template.CredentialTemplatesClient
 }
 
-func (c *credentialTemplateBase) Create(userContext context.Context, request *templates.CreateCredentialTemplateRequest) (*templates.CreateCredentialTemplateResponse, error) {
+func (c *credentialTemplateBase) Create(userContext context.Context, request *template.CreateCredentialTemplateRequest) (*template.CreateCredentialTemplateResponse, error) {
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -53,7 +53,7 @@ func (c *credentialTemplateBase) Create(userContext context.Context, request *te
 	return response, nil
 }
 
-func (c *credentialTemplateBase) Get(userContext context.Context, request *templates.GetCredentialTemplateRequest) (*templates.GetCredentialTemplateResponse, error) {
+func (c *credentialTemplateBase) Get(userContext context.Context, request *template.GetCredentialTemplateRequest) (*template.GetCredentialTemplateResponse, error) {
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -65,7 +65,7 @@ func (c *credentialTemplateBase) Get(userContext context.Context, request *templ
 	return response, nil
 }
 
-func (c *credentialTemplateBase) List(userContext context.Context, request *templates.ListCredentialTemplatesRequest) (*templates.ListCredentialTemplatesResponse, error) {
+func (c *credentialTemplateBase) List(userContext context.Context, request *template.ListCredentialTemplatesRequest) (*template.ListCredentialTemplatesResponse, error) {
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -77,7 +77,7 @@ func (c *credentialTemplateBase) List(userContext context.Context, request *temp
 	return response, nil
 }
 
-func (c *credentialTemplateBase) Search(userContext context.Context, request *templates.SearchCredentialTemplatesRequest) (*templates.SearchCredentialTemplatesResponse, error) {
+func (c *credentialTemplateBase) Search(userContext context.Context, request *template.SearchCredentialTemplatesRequest) (*template.SearchCredentialTemplatesResponse, error) {
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -89,7 +89,7 @@ func (c *credentialTemplateBase) Search(userContext context.Context, request *te
 	return response, nil
 }
 
-func (c *credentialTemplateBase) Delete(userContext context.Context, request *templates.DeleteCredentialTemplateRequest) (*templates.DeleteCredentialTemplateResponse, error) {
+func (c *credentialTemplateBase) Delete(userContext context.Context, request *template.DeleteCredentialTemplateRequest) (*template.DeleteCredentialTemplateResponse, error) {
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err

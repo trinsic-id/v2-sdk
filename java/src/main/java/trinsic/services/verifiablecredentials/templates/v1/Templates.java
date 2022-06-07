@@ -5,60 +5,41 @@ package trinsic.services.verifiablecredentials.templates.v1;
 
 public final class Templates {
   private Templates() {}
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
-  }
 
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {}
+
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions((com.google.protobuf.ExtensionRegistryLite) registry);
   }
   /**
+   *
+   *
    * <pre>
    * Valid types for credential fields
    * </pre>
    *
    * Protobuf enum {@code services.verifiablecredentials.templates.v1.FieldType}
    */
-  public enum FieldType
-      implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>STRING = 0;</code>
-     */
+  public enum FieldType implements com.google.protobuf.ProtocolMessageEnum {
+    /** <code>STRING = 0;</code> */
     STRING(0),
-    /**
-     * <code>NUMBER = 1;</code>
-     */
+    /** <code>NUMBER = 1;</code> */
     NUMBER(1),
-    /**
-     * <code>BOOL = 2;</code>
-     */
+    /** <code>BOOL = 2;</code> */
     BOOL(2),
-    /**
-     * <code>DATETIME = 4;</code>
-     */
+    /** <code>DATETIME = 4;</code> */
     DATETIME(4),
     UNRECOGNIZED(-1),
     ;
 
-    /**
-     * <code>STRING = 0;</code>
-     */
+    /** <code>STRING = 0;</code> */
     public static final int STRING_VALUE = 0;
-    /**
-     * <code>NUMBER = 1;</code>
-     */
+    /** <code>NUMBER = 1;</code> */
     public static final int NUMBER_VALUE = 1;
-    /**
-     * <code>BOOL = 2;</code>
-     */
+    /** <code>BOOL = 2;</code> */
     public static final int BOOL_VALUE = 2;
-    /**
-     * <code>DATETIME = 4;</code>
-     */
+    /** <code>DATETIME = 4;</code> */
     public static final int DATETIME_VALUE = 4;
-
 
     public final int getNumber() {
       if (this == UNRECOGNIZED) {
@@ -84,50 +65,53 @@ public final class Templates {
      */
     public static FieldType forNumber(int value) {
       switch (value) {
-        case 0: return STRING;
-        case 1: return NUMBER;
-        case 2: return BOOL;
-        case 4: return DATETIME;
-        default: return null;
+        case 0:
+          return STRING;
+        case 1:
+          return NUMBER;
+        case 2:
+          return BOOL;
+        case 4:
+          return DATETIME;
+        default:
+          return null;
       }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<FieldType>
-        internalGetValueMap() {
+    public static com.google.protobuf.Internal.EnumLiteMap<FieldType> internalGetValueMap() {
       return internalValueMap;
     }
-    private static final com.google.protobuf.Internal.EnumLiteMap<
-        FieldType> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<FieldType>() {
-            public FieldType findValueByNumber(int number) {
-              return FieldType.forNumber(number);
-            }
-          };
 
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
+    private static final com.google.protobuf.Internal.EnumLiteMap<FieldType> internalValueMap =
+        new com.google.protobuf.Internal.EnumLiteMap<FieldType>() {
+          public FieldType findValueByNumber(int number) {
+            return FieldType.forNumber(number);
+          }
+        };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor getValueDescriptor() {
       if (this == UNRECOGNIZED) {
         throw new java.lang.IllegalStateException(
             "Can't get the descriptor of an unrecognized enum value.");
       }
       return getDescriptor().getValues().get(ordinal());
     }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
+
+    public final com.google.protobuf.Descriptors.EnumDescriptor getDescriptorForType() {
       return getDescriptor();
     }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.getDescriptor().getEnumTypes().get(0);
+
+    public static final com.google.protobuf.Descriptors.EnumDescriptor getDescriptor() {
+      return trinsic.services.verifiablecredentials.templates.v1.Templates.getDescriptor()
+          .getEnumTypes()
+          .get(0);
     }
 
     private static final FieldType[] VALUES = values();
 
-    public static FieldType valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+    public static FieldType valueOf(com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
+        throw new java.lang.IllegalArgumentException("EnumValueDescriptor is not for this type.");
       }
       if (desc.getIndex() == -1) {
         return UNRECOGNIZED;
@@ -144,62 +128,72 @@ public final class Templates {
     // @@protoc_insertion_point(enum_scope:services.verifiablecredentials.templates.v1.FieldType)
   }
 
-  public interface GetCredentialTemplateRequestOrBuilder extends
+  public interface GetCredentialTemplateRequestOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     *
+     *
      * <pre>
      * ID of template to fetch
      * </pre>
      *
      * <code>string id = 1;</code>
+     *
      * @return The id.
      */
     java.lang.String getId();
     /**
+     *
+     *
      * <pre>
      * ID of template to fetch
      * </pre>
      *
      * <code>string id = 1;</code>
+     *
      * @return The bytes for id.
      */
-    com.google.protobuf.ByteString
-        getIdBytes();
+    com.google.protobuf.ByteString getIdBytes();
   }
   /**
+   *
+   *
    * <pre>
    * Request to fetch a template by ID
    * </pre>
    *
    * Protobuf type {@code services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest}
    */
-  public static final class GetCredentialTemplateRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class GetCredentialTemplateRequest
+      extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest)
       GetCredentialTemplateRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use GetCredentialTemplateRequest.newBuilder() to construct.
-    private GetCredentialTemplateRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private GetCredentialTemplateRequest(
+        com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private GetCredentialTemplateRequest() {
       id_ = "";
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new GetCredentialTemplateRequest();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private GetCredentialTemplateRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -218,19 +212,20 @@ public final class Templates {
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 10:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
 
-              id_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+                id_ = s;
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -238,34 +233,41 @@ public final class Templates {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateRequest_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateRequest_fieldAccessorTable
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest.class, trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest.Builder.class);
+              trinsic.services.verifiablecredentials.templates.v1.Templates
+                  .GetCredentialTemplateRequest.class,
+              trinsic.services.verifiablecredentials.templates.v1.Templates
+                  .GetCredentialTemplateRequest.Builder.class);
     }
 
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
+     *
+     *
      * <pre>
      * ID of template to fetch
      * </pre>
      *
      * <code>string id = 1;</code>
+     *
      * @return The id.
      */
     @java.lang.Override
@@ -274,29 +276,29 @@ public final class Templates {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         id_ = s;
         return s;
       }
     }
     /**
+     *
+     *
      * <pre>
      * ID of template to fetch
      * </pre>
      *
      * <code>string id = 1;</code>
+     *
      * @return The bytes for id.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getIdBytes() {
+    public com.google.protobuf.ByteString getIdBytes() {
       java.lang.Object ref = id_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         id_ = b;
         return b;
       } else {
@@ -305,6 +307,7 @@ public final class Templates {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -316,8 +319,7 @@ public final class Templates {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
@@ -341,15 +343,21 @@ public final class Templates {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest)) {
+      if (!(obj
+          instanceof
+          trinsic.services.verifiablecredentials.templates.v1.Templates
+              .GetCredentialTemplateRequest)) {
         return super.equals(obj);
       }
-      trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest other = (trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest) obj;
+      trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest
+          other =
+              (trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .GetCredentialTemplateRequest)
+                  obj;
 
-      if (!getId()
-          .equals(other.getId())) return false;
+      if (!getId().equals(other.getId())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -368,88 +376,114 @@ public final class Templates {
       return hash;
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateRequest
+        parseFrom(java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateRequest
+        parseFrom(
+            java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateRequest
+        parseFrom(com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateRequest
+        parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateRequest
+        parseFrom(byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateRequest
+        parseFrom(byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateRequest
+        parseFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateRequest
+        parseFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateRequest
+        parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateRequest
+        parseDelimitedFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateRequest
+        parseFrom(com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateRequest
+        parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest prototype) {
+
+    public static Builder newBuilder(
+        trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest
+            prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -459,44 +493,53 @@ public final class Templates {
       return builder;
     }
     /**
+     *
+     *
      * <pre>
      * Request to fetch a template by ID
      * </pre>
      *
-     * Protobuf type {@code services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest}
+     * Protobuf type {@code
+     * services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest)
-        trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateRequest_descriptor;
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateRequest_fieldAccessorTable
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest.class, trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest.Builder.class);
+                trinsic.services.verifiablecredentials.templates.v1.Templates
+                    .GetCredentialTemplateRequest.class,
+                trinsic.services.verifiablecredentials.templates.v1.Templates
+                    .GetCredentialTemplateRequest.Builder.class);
       }
 
-      // Construct using trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest.newBuilder()
+      // Construct using
+      // trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -506,19 +549,25 @@ public final class Templates {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateRequest_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateRequest_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest getDefaultInstanceForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest.getDefaultInstance();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates
+              .GetCredentialTemplateRequest
+          getDefaultInstanceForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest build() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest result = buildPartial();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates
+              .GetCredentialTemplateRequest
+          build() {
+        trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest
+            result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -526,8 +575,13 @@ public final class Templates {
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest buildPartial() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest result = new trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest(this);
+      public trinsic.services.verifiablecredentials.templates.v1.Templates
+              .GetCredentialTemplateRequest
+          buildPartial() {
+        trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest
+            result =
+                new trinsic.services.verifiablecredentials.templates.v1.Templates
+                    .GetCredentialTemplateRequest(this);
         result.id_ = id_;
         onBuilt();
         return result;
@@ -537,46 +591,59 @@ public final class Templates {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest) {
-          return mergeFrom((trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest)other);
+        if (other
+            instanceof
+            trinsic.services.verifiablecredentials.templates.v1.Templates
+                .GetCredentialTemplateRequest) {
+          return mergeFrom(
+              (trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .GetCredentialTemplateRequest)
+                  other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest other) {
-        if (other == trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(
+          trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest
+              other) {
+        if (other
+            == trinsic.services.verifiablecredentials.templates.v1.Templates
+                .GetCredentialTemplateRequest.getDefaultInstance()) return this;
         if (!other.getId().isEmpty()) {
           id_ = other.id_;
           onChanged();
@@ -596,11 +663,15 @@ public final class Templates {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest parsedMessage = null;
+        trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest
+            parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .GetCredentialTemplateRequest)
+                  e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -612,18 +683,20 @@ public final class Templates {
 
       private java.lang.Object id_ = "";
       /**
+       *
+       *
        * <pre>
        * ID of template to fetch
        * </pre>
        *
        * <code>string id = 1;</code>
+       *
        * @return The id.
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           id_ = s;
           return s;
@@ -632,20 +705,21 @@ public final class Templates {
         }
       }
       /**
+       *
+       *
        * <pre>
        * ID of template to fetch
        * </pre>
        *
        * <code>string id = 1;</code>
+       *
        * @return The bytes for id.
        */
-      public com.google.protobuf.ByteString
-          getIdBytes() {
+      public com.google.protobuf.ByteString getIdBytes() {
         java.lang.Object ref = id_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           id_ = b;
           return b;
         } else {
@@ -653,58 +727,66 @@ public final class Templates {
         }
       }
       /**
+       *
+       *
        * <pre>
        * ID of template to fetch
        * </pre>
        *
        * <code>string id = 1;</code>
+       *
        * @param value The id to set.
        * @return This builder for chaining.
        */
-      public Builder setId(
-          java.lang.String value) {
+      public Builder setId(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         id_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * ID of template to fetch
        * </pre>
        *
        * <code>string id = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearId() {
-        
+
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * ID of template to fetch
        * </pre>
        *
        * <code>string id = 1;</code>
+       *
        * @param value The bytes for id to set.
        * @return This builder for chaining.
        */
-      public Builder setIdBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setIdBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         id_ = value;
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -717,30 +799,36 @@ public final class Templates {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest)
     }
 
     // @@protoc_insertion_point(class_scope:services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest)
-    private static final trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest DEFAULT_INSTANCE;
+    private static final trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateRequest
+        DEFAULT_INSTANCE;
+
     static {
-      DEFAULT_INSTANCE = new trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest();
+      DEFAULT_INSTANCE =
+          new trinsic.services.verifiablecredentials.templates.v1.Templates
+              .GetCredentialTemplateRequest();
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest getDefaultInstance() {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateRequest
+        getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<GetCredentialTemplateRequest>
-        PARSER = new com.google.protobuf.AbstractParser<GetCredentialTemplateRequest>() {
-      @java.lang.Override
-      public GetCredentialTemplateRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GetCredentialTemplateRequest(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<GetCredentialTemplateRequest> PARSER =
+        new com.google.protobuf.AbstractParser<GetCredentialTemplateRequest>() {
+          @java.lang.Override
+          public GetCredentialTemplateRequest parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new GetCredentialTemplateRequest(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<GetCredentialTemplateRequest> parser() {
       return PARSER;
@@ -752,74 +840,88 @@ public final class Templates {
     }
 
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateRequest getDefaultInstanceForType() {
+    public trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateRequest
+        getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface GetCredentialTemplateResponseOrBuilder extends
+  public interface GetCredentialTemplateResponseOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     *
+     *
      * <pre>
      * Template fetched by ID
      * </pre>
      *
      * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
+     *
      * @return Whether the template field is set.
      */
     boolean hasTemplate();
     /**
+     *
+     *
      * <pre>
      * Template fetched by ID
      * </pre>
      *
      * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
+     *
      * @return The template.
      */
     trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData getTemplate();
     /**
+     *
+     *
      * <pre>
      * Template fetched by ID
      * </pre>
      *
      * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
      */
-    trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder getTemplateOrBuilder();
+    trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder
+        getTemplateOrBuilder();
   }
   /**
+   *
+   *
    * <pre>
    * Response to `GetCredentialTemplateRequest`
    * </pre>
    *
    * Protobuf type {@code services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse}
    */
-  public static final class GetCredentialTemplateResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class GetCredentialTemplateResponse
+      extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse)
       GetCredentialTemplateResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use GetCredentialTemplateResponse.newBuilder() to construct.
-    private GetCredentialTemplateResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private GetCredentialTemplateResponse(
+        com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private GetCredentialTemplateResponse() {
-    }
+
+    private GetCredentialTemplateResponse() {}
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new GetCredentialTemplateResponse();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private GetCredentialTemplateResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -838,26 +940,32 @@ public final class Templates {
             case 0:
               done = true;
               break;
-            case 10: {
-              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder subBuilder = null;
-              if (template_ != null) {
-                subBuilder = template_.toBuilder();
-              }
-              template_ = input.readMessage(trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(template_);
-                template_ = subBuilder.buildPartial();
-              }
+            case 10:
+              {
+                trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder
+                    subBuilder = null;
+                if (template_ != null) {
+                  subBuilder = template_.toBuilder();
+                }
+                template_ =
+                    input.readMessage(
+                        trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+                            .parser(),
+                        extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(template_);
+                  template_ = subBuilder.buildPartial();
+                }
 
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -865,34 +973,41 @@ public final class Templates {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateResponse_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateResponse_fieldAccessorTable
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse.class, trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse.Builder.class);
+              trinsic.services.verifiablecredentials.templates.v1.Templates
+                  .GetCredentialTemplateResponse.class,
+              trinsic.services.verifiablecredentials.templates.v1.Templates
+                  .GetCredentialTemplateResponse.Builder.class);
     }
 
     public static final int TEMPLATE_FIELD_NUMBER = 1;
     private trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData template_;
     /**
+     *
+     *
      * <pre>
      * Template fetched by ID
      * </pre>
      *
      * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
+     *
      * @return Whether the template field is set.
      */
     @java.lang.Override
@@ -900,18 +1015,27 @@ public final class Templates {
       return template_ != null;
     }
     /**
+     *
+     *
      * <pre>
      * Template fetched by ID
      * </pre>
      *
      * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
+     *
      * @return The template.
      */
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData getTemplate() {
-      return template_ == null ? trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.getDefaultInstance() : template_;
+    public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+        getTemplate() {
+      return template_ == null
+          ? trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+              .getDefaultInstance()
+          : template_;
     }
     /**
+     *
+     *
      * <pre>
      * Template fetched by ID
      * </pre>
@@ -919,11 +1043,13 @@ public final class Templates {
      * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
      */
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder getTemplateOrBuilder() {
+    public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder
+        getTemplateOrBuilder() {
       return getTemplate();
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -935,8 +1061,7 @@ public final class Templates {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (template_ != null) {
         output.writeMessage(1, getTemplate());
       }
@@ -950,8 +1075,7 @@ public final class Templates {
 
       size = 0;
       if (template_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getTemplate());
+        size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getTemplate());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -961,17 +1085,23 @@ public final class Templates {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse)) {
+      if (!(obj
+          instanceof
+          trinsic.services.verifiablecredentials.templates.v1.Templates
+              .GetCredentialTemplateResponse)) {
         return super.equals(obj);
       }
-      trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse other = (trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse) obj;
+      trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse
+          other =
+              (trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .GetCredentialTemplateResponse)
+                  obj;
 
       if (hasTemplate() != other.hasTemplate()) return false;
       if (hasTemplate()) {
-        if (!getTemplate()
-            .equals(other.getTemplate())) return false;
+        if (!getTemplate().equals(other.getTemplate())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -993,88 +1123,114 @@ public final class Templates {
       return hash;
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateResponse
+        parseFrom(java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateResponse
+        parseFrom(
+            java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateResponse
+        parseFrom(com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateResponse
+        parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateResponse
+        parseFrom(byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateResponse
+        parseFrom(byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateResponse
+        parseFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateResponse
+        parseFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateResponse
+        parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateResponse
+        parseDelimitedFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateResponse
+        parseFrom(com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateResponse
+        parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse prototype) {
+
+    public static Builder newBuilder(
+        trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse
+            prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -1084,44 +1240,53 @@ public final class Templates {
       return builder;
     }
     /**
+     *
+     *
      * <pre>
      * Response to `GetCredentialTemplateRequest`
      * </pre>
      *
-     * Protobuf type {@code services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse}
+     * Protobuf type {@code
+     * services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse)
-        trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateResponse_descriptor;
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateResponse_fieldAccessorTable
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse.class, trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse.Builder.class);
+                trinsic.services.verifiablecredentials.templates.v1.Templates
+                    .GetCredentialTemplateResponse.class,
+                trinsic.services.verifiablecredentials.templates.v1.Templates
+                    .GetCredentialTemplateResponse.Builder.class);
       }
 
-      // Construct using trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse.newBuilder()
+      // Construct using
+      // trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -1135,19 +1300,25 @@ public final class Templates {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateResponse_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateResponse_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse getDefaultInstanceForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse.getDefaultInstance();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates
+              .GetCredentialTemplateResponse
+          getDefaultInstanceForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse build() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse result = buildPartial();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates
+              .GetCredentialTemplateResponse
+          build() {
+        trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse
+            result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1155,8 +1326,13 @@ public final class Templates {
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse buildPartial() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse result = new trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse(this);
+      public trinsic.services.verifiablecredentials.templates.v1.Templates
+              .GetCredentialTemplateResponse
+          buildPartial() {
+        trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse
+            result =
+                new trinsic.services.verifiablecredentials.templates.v1.Templates
+                    .GetCredentialTemplateResponse(this);
         if (templateBuilder_ == null) {
           result.template_ = template_;
         } else {
@@ -1170,46 +1346,60 @@ public final class Templates {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse) {
-          return mergeFrom((trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse)other);
+        if (other
+            instanceof
+            trinsic.services.verifiablecredentials.templates.v1.Templates
+                .GetCredentialTemplateResponse) {
+          return mergeFrom(
+              (trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .GetCredentialTemplateResponse)
+                  other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse other) {
-        if (other == trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(
+          trinsic.services.verifiablecredentials.templates.v1.Templates
+                  .GetCredentialTemplateResponse
+              other) {
+        if (other
+            == trinsic.services.verifiablecredentials.templates.v1.Templates
+                .GetCredentialTemplateResponse.getDefaultInstance()) return this;
         if (other.hasTemplate()) {
           mergeTemplate(other.getTemplate());
         }
@@ -1228,11 +1418,15 @@ public final class Templates {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse parsedMessage = null;
+        trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse
+            parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .GetCredentialTemplateResponse)
+                  e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1244,41 +1438,57 @@ public final class Templates {
 
       private trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData template_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder> templateBuilder_;
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder>
+          templateBuilder_;
       /**
+       *
+       *
        * <pre>
        * Template fetched by ID
        * </pre>
        *
        * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
+       *
        * @return Whether the template field is set.
        */
       public boolean hasTemplate() {
         return templateBuilder_ != null || template_ != null;
       }
       /**
+       *
+       *
        * <pre>
        * Template fetched by ID
        * </pre>
        *
        * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
+       *
        * @return The template.
        */
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData getTemplate() {
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+          getTemplate() {
         if (templateBuilder_ == null) {
-          return template_ == null ? trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.getDefaultInstance() : template_;
+          return template_ == null
+              ? trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+                  .getDefaultInstance()
+              : template_;
         } else {
           return templateBuilder_.getMessage();
         }
       }
       /**
+       *
+       *
        * <pre>
        * Template fetched by ID
        * </pre>
        *
        * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
        */
-      public Builder setTemplate(trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData value) {
+      public Builder setTemplate(
+          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData value) {
         if (templateBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1292,6 +1502,8 @@ public final class Templates {
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Template fetched by ID
        * </pre>
@@ -1299,7 +1511,8 @@ public final class Templates {
        * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
        */
       public Builder setTemplate(
-          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder builderForValue) {
+          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder
+              builderForValue) {
         if (templateBuilder_ == null) {
           template_ = builderForValue.build();
           onChanged();
@@ -1310,17 +1523,23 @@ public final class Templates {
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Template fetched by ID
        * </pre>
        *
        * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
        */
-      public Builder mergeTemplate(trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData value) {
+      public Builder mergeTemplate(
+          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData value) {
         if (templateBuilder_ == null) {
           if (template_ != null) {
             template_ =
-              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.newBuilder(template_).mergeFrom(value).buildPartial();
+                trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+                    .newBuilder(template_)
+                    .mergeFrom(value)
+                    .buildPartial();
           } else {
             template_ = value;
           }
@@ -1332,6 +1551,8 @@ public final class Templates {
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Template fetched by ID
        * </pre>
@@ -1350,33 +1571,43 @@ public final class Templates {
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Template fetched by ID
        * </pre>
        *
        * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
        */
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder getTemplateBuilder() {
-        
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder
+          getTemplateBuilder() {
+
         onChanged();
         return getTemplateFieldBuilder().getBuilder();
       }
       /**
+       *
+       *
        * <pre>
        * Template fetched by ID
        * </pre>
        *
        * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
        */
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder getTemplateOrBuilder() {
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder
+          getTemplateOrBuilder() {
         if (templateBuilder_ != null) {
           return templateBuilder_.getMessageOrBuilder();
         } else {
-          return template_ == null ?
-              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.getDefaultInstance() : template_;
+          return template_ == null
+              ? trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+                  .getDefaultInstance()
+              : template_;
         }
       }
       /**
+       *
+       *
        * <pre>
        * Template fetched by ID
        * </pre>
@@ -1384,18 +1615,23 @@ public final class Templates {
        * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder> 
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder>
           getTemplateFieldBuilder() {
         if (templateBuilder_ == null) {
-          templateBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder>(
-                  getTemplate(),
-                  getParentForChildren(),
-                  isClean());
+          templateBuilder_ =
+              new com.google.protobuf.SingleFieldBuilderV3<
+                  trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData,
+                  trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+                      .Builder,
+                  trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .TemplateDataOrBuilder>(getTemplate(), getParentForChildren(), isClean());
           template_ = null;
         }
         return templateBuilder_;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1408,30 +1644,36 @@ public final class Templates {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse)
     }
 
     // @@protoc_insertion_point(class_scope:services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse)
-    private static final trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse DEFAULT_INSTANCE;
+    private static final trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateResponse
+        DEFAULT_INSTANCE;
+
     static {
-      DEFAULT_INSTANCE = new trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse();
+      DEFAULT_INSTANCE =
+          new trinsic.services.verifiablecredentials.templates.v1.Templates
+              .GetCredentialTemplateResponse();
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse getDefaultInstance() {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateResponse
+        getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<GetCredentialTemplateResponse>
-        PARSER = new com.google.protobuf.AbstractParser<GetCredentialTemplateResponse>() {
-      @java.lang.Override
-      public GetCredentialTemplateResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GetCredentialTemplateResponse(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<GetCredentialTemplateResponse> PARSER =
+        new com.google.protobuf.AbstractParser<GetCredentialTemplateResponse>() {
+          @java.lang.Override
+          public GetCredentialTemplateResponse parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new GetCredentialTemplateResponse(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<GetCredentialTemplateResponse> parser() {
       return PARSER;
@@ -1443,74 +1685,92 @@ public final class Templates {
     }
 
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.Templates.GetCredentialTemplateResponse getDefaultInstanceForType() {
+    public trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetCredentialTemplateResponse
+        getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface SearchCredentialTemplatesRequestOrBuilder extends
+  public interface SearchCredentialTemplatesRequestOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     *
+     *
      * <pre>
      * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
      * </pre>
      *
      * <code>string query = 1;</code>
+     *
      * @return The query.
      */
     java.lang.String getQuery();
     /**
+     *
+     *
      * <pre>
      * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
      * </pre>
      *
      * <code>string query = 1;</code>
+     *
      * @return The bytes for query.
      */
-    com.google.protobuf.ByteString
-        getQueryBytes();
+    com.google.protobuf.ByteString getQueryBytes();
 
     /**
+     *
+     *
      * <pre>
      * Token provided by previous `SearchCredentialTemplatesResponse`
      * if more data is available for query
      * </pre>
      *
      * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
+     *
      * @return The continuationToken.
      */
     java.lang.String getContinuationToken();
     /**
+     *
+     *
      * <pre>
      * Token provided by previous `SearchCredentialTemplatesResponse`
      * if more data is available for query
      * </pre>
      *
      * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
+     *
      * @return The bytes for continuationToken.
      */
-    com.google.protobuf.ByteString
-        getContinuationTokenBytes();
+    com.google.protobuf.ByteString getContinuationTokenBytes();
   }
   /**
+   *
+   *
    * <pre>
    * Request to search templates using a SQL query
    * </pre>
    *
-   * Protobuf type {@code services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest}
+   * Protobuf type {@code
+   * services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest}
    */
-  public static final class SearchCredentialTemplatesRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class SearchCredentialTemplatesRequest
+      extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest)
       SearchCredentialTemplatesRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use SearchCredentialTemplatesRequest.newBuilder() to construct.
-    private SearchCredentialTemplatesRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private SearchCredentialTemplatesRequest(
+        com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private SearchCredentialTemplatesRequest() {
       query_ = "";
       continuationToken_ = "";
@@ -1518,16 +1778,15 @@ public final class Templates {
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new SearchCredentialTemplatesRequest();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private SearchCredentialTemplatesRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1546,25 +1805,27 @@ public final class Templates {
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 10:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
 
-              query_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              continuationToken_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+                query_ = s;
+                break;
               }
-              break;
-            }
+            case 18:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                continuationToken_ = s;
+                break;
+              }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1572,34 +1833,41 @@ public final class Templates {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesRequest_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesRequest_fieldAccessorTable
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest.class, trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest.Builder.class);
+              trinsic.services.verifiablecredentials.templates.v1.Templates
+                  .SearchCredentialTemplatesRequest.class,
+              trinsic.services.verifiablecredentials.templates.v1.Templates
+                  .SearchCredentialTemplatesRequest.Builder.class);
     }
 
     public static final int QUERY_FIELD_NUMBER = 1;
     private volatile java.lang.Object query_;
     /**
+     *
+     *
      * <pre>
      * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
      * </pre>
      *
      * <code>string query = 1;</code>
+     *
      * @return The query.
      */
     @java.lang.Override
@@ -1608,29 +1876,29 @@ public final class Templates {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         query_ = s;
         return s;
       }
     }
     /**
+     *
+     *
      * <pre>
      * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
      * </pre>
      *
      * <code>string query = 1;</code>
+     *
      * @return The bytes for query.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getQueryBytes() {
+    public com.google.protobuf.ByteString getQueryBytes() {
       java.lang.Object ref = query_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         query_ = b;
         return b;
       } else {
@@ -1641,12 +1909,15 @@ public final class Templates {
     public static final int CONTINUATION_TOKEN_FIELD_NUMBER = 2;
     private volatile java.lang.Object continuationToken_;
     /**
+     *
+     *
      * <pre>
      * Token provided by previous `SearchCredentialTemplatesResponse`
      * if more data is available for query
      * </pre>
      *
      * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
+     *
      * @return The continuationToken.
      */
     @java.lang.Override
@@ -1655,30 +1926,30 @@ public final class Templates {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         continuationToken_ = s;
         return s;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Token provided by previous `SearchCredentialTemplatesResponse`
      * if more data is available for query
      * </pre>
      *
      * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
+     *
      * @return The bytes for continuationToken.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getContinuationTokenBytes() {
+    public com.google.protobuf.ByteString getContinuationTokenBytes() {
       java.lang.Object ref = continuationToken_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         continuationToken_ = b;
         return b;
       } else {
@@ -1687,6 +1958,7 @@ public final class Templates {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -1698,8 +1970,7 @@ public final class Templates {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(query_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, query_);
       }
@@ -1729,17 +2000,22 @@ public final class Templates {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest)) {
+      if (!(obj
+          instanceof
+          trinsic.services.verifiablecredentials.templates.v1.Templates
+              .SearchCredentialTemplatesRequest)) {
         return super.equals(obj);
       }
-      trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest other = (trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest) obj;
+      trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest
+          other =
+              (trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .SearchCredentialTemplatesRequest)
+                  obj;
 
-      if (!getQuery()
-          .equals(other.getQuery())) return false;
-      if (!getContinuationToken()
-          .equals(other.getContinuationToken())) return false;
+      if (!getQuery().equals(other.getQuery())) return false;
+      if (!getContinuationToken().equals(other.getContinuationToken())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1760,88 +2036,115 @@ public final class Templates {
       return hash;
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesRequest
+        parseFrom(java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesRequest
+        parseFrom(
+            java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesRequest
+        parseFrom(com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesRequest
+        parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesRequest
+        parseFrom(byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesRequest
+        parseFrom(byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesRequest
+        parseFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesRequest
+        parseFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesRequest
+        parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesRequest
+        parseDelimitedFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesRequest
+        parseFrom(com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesRequest
+        parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest prototype) {
+
+    public static Builder newBuilder(
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+                .SearchCredentialTemplatesRequest
+            prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -1851,44 +2154,53 @@ public final class Templates {
       return builder;
     }
     /**
+     *
+     *
      * <pre>
      * Request to search templates using a SQL query
      * </pre>
      *
-     * Protobuf type {@code services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest}
+     * Protobuf type {@code
+     * services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest)
-        trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesRequest_descriptor;
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesRequest_fieldAccessorTable
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest.class, trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest.Builder.class);
+                trinsic.services.verifiablecredentials.templates.v1.Templates
+                    .SearchCredentialTemplatesRequest.class,
+                trinsic.services.verifiablecredentials.templates.v1.Templates
+                    .SearchCredentialTemplatesRequest.Builder.class);
       }
 
-      // Construct using trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest.newBuilder()
+      // Construct using
+      // trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -1900,19 +2212,26 @@ public final class Templates {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesRequest_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesRequest_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest getDefaultInstanceForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest.getDefaultInstance();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates
+              .SearchCredentialTemplatesRequest
+          getDefaultInstanceForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest build() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest result = buildPartial();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates
+              .SearchCredentialTemplatesRequest
+          build() {
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+                .SearchCredentialTemplatesRequest
+            result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1920,8 +2239,14 @@ public final class Templates {
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest buildPartial() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest result = new trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest(this);
+      public trinsic.services.verifiablecredentials.templates.v1.Templates
+              .SearchCredentialTemplatesRequest
+          buildPartial() {
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+                .SearchCredentialTemplatesRequest
+            result =
+                new trinsic.services.verifiablecredentials.templates.v1.Templates
+                    .SearchCredentialTemplatesRequest(this);
         result.query_ = query_;
         result.continuationToken_ = continuationToken_;
         onBuilt();
@@ -1932,46 +2257,60 @@ public final class Templates {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest) {
-          return mergeFrom((trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest)other);
+        if (other
+            instanceof
+            trinsic.services.verifiablecredentials.templates.v1.Templates
+                .SearchCredentialTemplatesRequest) {
+          return mergeFrom(
+              (trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .SearchCredentialTemplatesRequest)
+                  other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest other) {
-        if (other == trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(
+          trinsic.services.verifiablecredentials.templates.v1.Templates
+                  .SearchCredentialTemplatesRequest
+              other) {
+        if (other
+            == trinsic.services.verifiablecredentials.templates.v1.Templates
+                .SearchCredentialTemplatesRequest.getDefaultInstance()) return this;
         if (!other.getQuery().isEmpty()) {
           query_ = other.query_;
           onChanged();
@@ -1995,11 +2334,16 @@ public final class Templates {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest parsedMessage = null;
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+                .SearchCredentialTemplatesRequest
+            parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .SearchCredentialTemplatesRequest)
+                  e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2011,18 +2355,20 @@ public final class Templates {
 
       private java.lang.Object query_ = "";
       /**
+       *
+       *
        * <pre>
        * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
        * </pre>
        *
        * <code>string query = 1;</code>
+       *
        * @return The query.
        */
       public java.lang.String getQuery() {
         java.lang.Object ref = query_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           query_ = s;
           return s;
@@ -2031,20 +2377,21 @@ public final class Templates {
         }
       }
       /**
+       *
+       *
        * <pre>
        * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
        * </pre>
        *
        * <code>string query = 1;</code>
+       *
        * @return The bytes for query.
        */
-      public com.google.protobuf.ByteString
-          getQueryBytes() {
+      public com.google.protobuf.ByteString getQueryBytes() {
         java.lang.Object ref = query_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           query_ = b;
           return b;
         } else {
@@ -2052,54 +2399,61 @@ public final class Templates {
         }
       }
       /**
+       *
+       *
        * <pre>
        * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
        * </pre>
        *
        * <code>string query = 1;</code>
+       *
        * @param value The query to set.
        * @return This builder for chaining.
        */
-      public Builder setQuery(
-          java.lang.String value) {
+      public Builder setQuery(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         query_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
        * </pre>
        *
        * <code>string query = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearQuery() {
-        
+
         query_ = getDefaultInstance().getQuery();
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
        * </pre>
        *
        * <code>string query = 1;</code>
+       *
        * @param value The bytes for query to set.
        * @return This builder for chaining.
        */
-      public Builder setQueryBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setQueryBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         query_ = value;
         onChanged();
         return this;
@@ -2107,19 +2461,21 @@ public final class Templates {
 
       private java.lang.Object continuationToken_ = "";
       /**
+       *
+       *
        * <pre>
        * Token provided by previous `SearchCredentialTemplatesResponse`
        * if more data is available for query
        * </pre>
        *
        * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
+       *
        * @return The continuationToken.
        */
       public java.lang.String getContinuationToken() {
         java.lang.Object ref = continuationToken_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           continuationToken_ = s;
           return s;
@@ -2128,21 +2484,22 @@ public final class Templates {
         }
       }
       /**
+       *
+       *
        * <pre>
        * Token provided by previous `SearchCredentialTemplatesResponse`
        * if more data is available for query
        * </pre>
        *
        * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
+       *
        * @return The bytes for continuationToken.
        */
-      public com.google.protobuf.ByteString
-          getContinuationTokenBytes() {
+      public com.google.protobuf.ByteString getContinuationTokenBytes() {
         java.lang.Object ref = continuationToken_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           continuationToken_ = b;
           return b;
         } else {
@@ -2150,61 +2507,69 @@ public final class Templates {
         }
       }
       /**
+       *
+       *
        * <pre>
        * Token provided by previous `SearchCredentialTemplatesResponse`
        * if more data is available for query
        * </pre>
        *
        * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
+       *
        * @param value The continuationToken to set.
        * @return This builder for chaining.
        */
-      public Builder setContinuationToken(
-          java.lang.String value) {
+      public Builder setContinuationToken(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         continuationToken_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Token provided by previous `SearchCredentialTemplatesResponse`
        * if more data is available for query
        * </pre>
        *
        * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearContinuationToken() {
-        
+
         continuationToken_ = getDefaultInstance().getContinuationToken();
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Token provided by previous `SearchCredentialTemplatesResponse`
        * if more data is available for query
        * </pre>
        *
        * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
+       *
        * @param value The bytes for continuationToken to set.
        * @return This builder for chaining.
        */
-      public Builder setContinuationTokenBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setContinuationTokenBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         continuationToken_ = value;
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -2217,30 +2582,36 @@ public final class Templates {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest)
     }
 
     // @@protoc_insertion_point(class_scope:services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest)
-    private static final trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest DEFAULT_INSTANCE;
+    private static final trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesRequest
+        DEFAULT_INSTANCE;
+
     static {
-      DEFAULT_INSTANCE = new trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest();
+      DEFAULT_INSTANCE =
+          new trinsic.services.verifiablecredentials.templates.v1.Templates
+              .SearchCredentialTemplatesRequest();
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest getDefaultInstance() {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesRequest
+        getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<SearchCredentialTemplatesRequest>
-        PARSER = new com.google.protobuf.AbstractParser<SearchCredentialTemplatesRequest>() {
-      @java.lang.Override
-      public SearchCredentialTemplatesRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SearchCredentialTemplatesRequest(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<SearchCredentialTemplatesRequest> PARSER =
+        new com.google.protobuf.AbstractParser<SearchCredentialTemplatesRequest>() {
+          @java.lang.Override
+          public SearchCredentialTemplatesRequest parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new SearchCredentialTemplatesRequest(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<SearchCredentialTemplatesRequest> parser() {
       return PARSER;
@@ -2252,47 +2623,59 @@ public final class Templates {
     }
 
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesRequest getDefaultInstanceForType() {
+    public trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesRequest
+        getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface SearchCredentialTemplatesResponseOrBuilder extends
+  public interface SearchCredentialTemplatesResponseOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     *
+     *
      * <pre>
      * Raw JSON data returned from query
      * </pre>
      *
      * <code>string items_json = 1;</code>
+     *
      * @return The itemsJson.
      */
     java.lang.String getItemsJson();
     /**
+     *
+     *
      * <pre>
      * Raw JSON data returned from query
      * </pre>
      *
      * <code>string items_json = 1;</code>
+     *
      * @return The bytes for itemsJson.
      */
-    com.google.protobuf.ByteString
-        getItemsJsonBytes();
+    com.google.protobuf.ByteString getItemsJsonBytes();
 
     /**
+     *
+     *
      * <pre>
      * Whether more results are available for this query via `continuation_token`
      * </pre>
      *
      * <code>bool has_more = 2;</code>
+     *
      * @return The hasMore.
      */
     boolean getHasMore();
 
     /**
+     *
+     *
      * <pre>
      * Count of items in `items_json`
      * int32 count = 3; unpopulated and unused
@@ -2300,10 +2683,13 @@ public final class Templates {
      * </pre>
      *
      * <code>string continuation_token = 4;</code>
+     *
      * @return The continuationToken.
      */
     java.lang.String getContinuationToken();
     /**
+     *
+     *
      * <pre>
      * Count of items in `items_json`
      * int32 count = 3; unpopulated and unused
@@ -2311,27 +2697,33 @@ public final class Templates {
      * </pre>
      *
      * <code>string continuation_token = 4;</code>
+     *
      * @return The bytes for continuationToken.
      */
-    com.google.protobuf.ByteString
-        getContinuationTokenBytes();
+    com.google.protobuf.ByteString getContinuationTokenBytes();
   }
   /**
+   *
+   *
    * <pre>
    * Response to `SearchCredentialTemplatesRequest`
    * </pre>
    *
-   * Protobuf type {@code services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse}
+   * Protobuf type {@code
+   * services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse}
    */
-  public static final class SearchCredentialTemplatesResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class SearchCredentialTemplatesResponse
+      extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse)
       SearchCredentialTemplatesResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use SearchCredentialTemplatesResponse.newBuilder() to construct.
-    private SearchCredentialTemplatesResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private SearchCredentialTemplatesResponse(
+        com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private SearchCredentialTemplatesResponse() {
       itemsJson_ = "";
       continuationToken_ = "";
@@ -2339,16 +2731,15 @@ public final class Templates {
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new SearchCredentialTemplatesResponse();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private SearchCredentialTemplatesResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2367,30 +2758,32 @@ public final class Templates {
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 10:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
 
-              itemsJson_ = s;
-              break;
-            }
-            case 16: {
-
-              hasMore_ = input.readBool();
-              break;
-            }
-            case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              continuationToken_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+                itemsJson_ = s;
+                break;
               }
-              break;
-            }
+            case 16:
+              {
+                hasMore_ = input.readBool();
+                break;
+              }
+            case 34:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                continuationToken_ = s;
+                break;
+              }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -2398,34 +2791,41 @@ public final class Templates {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesResponse_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesResponse_fieldAccessorTable
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse.class, trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse.Builder.class);
+              trinsic.services.verifiablecredentials.templates.v1.Templates
+                  .SearchCredentialTemplatesResponse.class,
+              trinsic.services.verifiablecredentials.templates.v1.Templates
+                  .SearchCredentialTemplatesResponse.Builder.class);
     }
 
     public static final int ITEMS_JSON_FIELD_NUMBER = 1;
     private volatile java.lang.Object itemsJson_;
     /**
+     *
+     *
      * <pre>
      * Raw JSON data returned from query
      * </pre>
      *
      * <code>string items_json = 1;</code>
+     *
      * @return The itemsJson.
      */
     @java.lang.Override
@@ -2434,29 +2834,29 @@ public final class Templates {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         itemsJson_ = s;
         return s;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Raw JSON data returned from query
      * </pre>
      *
      * <code>string items_json = 1;</code>
+     *
      * @return The bytes for itemsJson.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getItemsJsonBytes() {
+    public com.google.protobuf.ByteString getItemsJsonBytes() {
       java.lang.Object ref = itemsJson_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         itemsJson_ = b;
         return b;
       } else {
@@ -2467,11 +2867,14 @@ public final class Templates {
     public static final int HAS_MORE_FIELD_NUMBER = 2;
     private boolean hasMore_;
     /**
+     *
+     *
      * <pre>
      * Whether more results are available for this query via `continuation_token`
      * </pre>
      *
      * <code>bool has_more = 2;</code>
+     *
      * @return The hasMore.
      */
     @java.lang.Override
@@ -2482,6 +2885,8 @@ public final class Templates {
     public static final int CONTINUATION_TOKEN_FIELD_NUMBER = 4;
     private volatile java.lang.Object continuationToken_;
     /**
+     *
+     *
      * <pre>
      * Count of items in `items_json`
      * int32 count = 3; unpopulated and unused
@@ -2489,6 +2894,7 @@ public final class Templates {
      * </pre>
      *
      * <code>string continuation_token = 4;</code>
+     *
      * @return The continuationToken.
      */
     @java.lang.Override
@@ -2497,14 +2903,15 @@ public final class Templates {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         continuationToken_ = s;
         return s;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Count of items in `items_json`
      * int32 count = 3; unpopulated and unused
@@ -2512,16 +2919,15 @@ public final class Templates {
      * </pre>
      *
      * <code>string continuation_token = 4;</code>
+     *
      * @return The bytes for continuationToken.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getContinuationTokenBytes() {
+    public com.google.protobuf.ByteString getContinuationTokenBytes() {
       java.lang.Object ref = continuationToken_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         continuationToken_ = b;
         return b;
       } else {
@@ -2530,6 +2936,7 @@ public final class Templates {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -2541,8 +2948,7 @@ public final class Templates {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(itemsJson_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, itemsJson_);
       }
@@ -2565,8 +2971,7 @@ public final class Templates {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, itemsJson_);
       }
       if (hasMore_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(2, hasMore_);
+        size += com.google.protobuf.CodedOutputStream.computeBoolSize(2, hasMore_);
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(continuationToken_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, continuationToken_);
@@ -2579,19 +2984,24 @@ public final class Templates {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse)) {
+      if (!(obj
+          instanceof
+          trinsic.services.verifiablecredentials.templates.v1.Templates
+              .SearchCredentialTemplatesResponse)) {
         return super.equals(obj);
       }
-      trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse other = (trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse) obj;
+      trinsic.services.verifiablecredentials.templates.v1.Templates
+              .SearchCredentialTemplatesResponse
+          other =
+              (trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .SearchCredentialTemplatesResponse)
+                  obj;
 
-      if (!getItemsJson()
-          .equals(other.getItemsJson())) return false;
-      if (getHasMore()
-          != other.getHasMore()) return false;
-      if (!getContinuationToken()
-          .equals(other.getContinuationToken())) return false;
+      if (!getItemsJson().equals(other.getItemsJson())) return false;
+      if (getHasMore() != other.getHasMore()) return false;
+      if (!getContinuationToken().equals(other.getContinuationToken())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2606,8 +3016,7 @@ public final class Templates {
       hash = (37 * hash) + ITEMS_JSON_FIELD_NUMBER;
       hash = (53 * hash) + getItemsJson().hashCode();
       hash = (37 * hash) + HAS_MORE_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getHasMore());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getHasMore());
       hash = (37 * hash) + CONTINUATION_TOKEN_FIELD_NUMBER;
       hash = (53 * hash) + getContinuationToken().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -2615,88 +3024,115 @@ public final class Templates {
       return hash;
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesResponse
+        parseFrom(java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesResponse
+        parseFrom(
+            java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesResponse
+        parseFrom(com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesResponse
+        parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesResponse
+        parseFrom(byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesResponse
+        parseFrom(byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesResponse
+        parseFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesResponse
+        parseFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesResponse
+        parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesResponse
+        parseDelimitedFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesResponse
+        parseFrom(com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesResponse
+        parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse prototype) {
+
+    public static Builder newBuilder(
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+                .SearchCredentialTemplatesResponse
+            prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -2706,44 +3142,53 @@ public final class Templates {
       return builder;
     }
     /**
+     *
+     *
      * <pre>
      * Response to `SearchCredentialTemplatesRequest`
      * </pre>
      *
-     * Protobuf type {@code services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse}
+     * Protobuf type {@code
+     * services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse)
-        trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesResponse_descriptor;
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesResponse_fieldAccessorTable
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse.class, trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse.Builder.class);
+                trinsic.services.verifiablecredentials.templates.v1.Templates
+                    .SearchCredentialTemplatesResponse.class,
+                trinsic.services.verifiablecredentials.templates.v1.Templates
+                    .SearchCredentialTemplatesResponse.Builder.class);
       }
 
-      // Construct using trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse.newBuilder()
+      // Construct using
+      // trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -2757,19 +3202,26 @@ public final class Templates {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesResponse_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesResponse_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse getDefaultInstanceForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse.getDefaultInstance();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates
+              .SearchCredentialTemplatesResponse
+          getDefaultInstanceForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse build() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse result = buildPartial();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates
+              .SearchCredentialTemplatesResponse
+          build() {
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+                .SearchCredentialTemplatesResponse
+            result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -2777,8 +3229,14 @@ public final class Templates {
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse buildPartial() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse result = new trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse(this);
+      public trinsic.services.verifiablecredentials.templates.v1.Templates
+              .SearchCredentialTemplatesResponse
+          buildPartial() {
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+                .SearchCredentialTemplatesResponse
+            result =
+                new trinsic.services.verifiablecredentials.templates.v1.Templates
+                    .SearchCredentialTemplatesResponse(this);
         result.itemsJson_ = itemsJson_;
         result.hasMore_ = hasMore_;
         result.continuationToken_ = continuationToken_;
@@ -2790,46 +3248,60 @@ public final class Templates {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse) {
-          return mergeFrom((trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse)other);
+        if (other
+            instanceof
+            trinsic.services.verifiablecredentials.templates.v1.Templates
+                .SearchCredentialTemplatesResponse) {
+          return mergeFrom(
+              (trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .SearchCredentialTemplatesResponse)
+                  other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse other) {
-        if (other == trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(
+          trinsic.services.verifiablecredentials.templates.v1.Templates
+                  .SearchCredentialTemplatesResponse
+              other) {
+        if (other
+            == trinsic.services.verifiablecredentials.templates.v1.Templates
+                .SearchCredentialTemplatesResponse.getDefaultInstance()) return this;
         if (!other.getItemsJson().isEmpty()) {
           itemsJson_ = other.itemsJson_;
           onChanged();
@@ -2856,11 +3328,16 @@ public final class Templates {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse parsedMessage = null;
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+                .SearchCredentialTemplatesResponse
+            parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .SearchCredentialTemplatesResponse)
+                  e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2872,18 +3349,20 @@ public final class Templates {
 
       private java.lang.Object itemsJson_ = "";
       /**
+       *
+       *
        * <pre>
        * Raw JSON data returned from query
        * </pre>
        *
        * <code>string items_json = 1;</code>
+       *
        * @return The itemsJson.
        */
       public java.lang.String getItemsJson() {
         java.lang.Object ref = itemsJson_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           itemsJson_ = s;
           return s;
@@ -2892,20 +3371,21 @@ public final class Templates {
         }
       }
       /**
+       *
+       *
        * <pre>
        * Raw JSON data returned from query
        * </pre>
        *
        * <code>string items_json = 1;</code>
+       *
        * @return The bytes for itemsJson.
        */
-      public com.google.protobuf.ByteString
-          getItemsJsonBytes() {
+      public com.google.protobuf.ByteString getItemsJsonBytes() {
         java.lang.Object ref = itemsJson_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           itemsJson_ = b;
           return b;
         } else {
@@ -2913,66 +3393,76 @@ public final class Templates {
         }
       }
       /**
+       *
+       *
        * <pre>
        * Raw JSON data returned from query
        * </pre>
        *
        * <code>string items_json = 1;</code>
+       *
        * @param value The itemsJson to set.
        * @return This builder for chaining.
        */
-      public Builder setItemsJson(
-          java.lang.String value) {
+      public Builder setItemsJson(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         itemsJson_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Raw JSON data returned from query
        * </pre>
        *
        * <code>string items_json = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearItemsJson() {
-        
+
         itemsJson_ = getDefaultInstance().getItemsJson();
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Raw JSON data returned from query
        * </pre>
        *
        * <code>string items_json = 1;</code>
+       *
        * @param value The bytes for itemsJson to set.
        * @return This builder for chaining.
        */
-      public Builder setItemsJsonBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setItemsJsonBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         itemsJson_ = value;
         onChanged();
         return this;
       }
 
-      private boolean hasMore_ ;
+      private boolean hasMore_;
       /**
+       *
+       *
        * <pre>
        * Whether more results are available for this query via `continuation_token`
        * </pre>
        *
        * <code>bool has_more = 2;</code>
+       *
        * @return The hasMore.
        */
       @java.lang.Override
@@ -2980,30 +3470,36 @@ public final class Templates {
         return hasMore_;
       }
       /**
+       *
+       *
        * <pre>
        * Whether more results are available for this query via `continuation_token`
        * </pre>
        *
        * <code>bool has_more = 2;</code>
+       *
        * @param value The hasMore to set.
        * @return This builder for chaining.
        */
       public Builder setHasMore(boolean value) {
-        
+
         hasMore_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Whether more results are available for this query via `continuation_token`
        * </pre>
        *
        * <code>bool has_more = 2;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearHasMore() {
-        
+
         hasMore_ = false;
         onChanged();
         return this;
@@ -3011,6 +3507,8 @@ public final class Templates {
 
       private java.lang.Object continuationToken_ = "";
       /**
+       *
+       *
        * <pre>
        * Count of items in `items_json`
        * int32 count = 3; unpopulated and unused
@@ -3018,13 +3516,13 @@ public final class Templates {
        * </pre>
        *
        * <code>string continuation_token = 4;</code>
+       *
        * @return The continuationToken.
        */
       public java.lang.String getContinuationToken() {
         java.lang.Object ref = continuationToken_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           continuationToken_ = s;
           return s;
@@ -3033,6 +3531,8 @@ public final class Templates {
         }
       }
       /**
+       *
+       *
        * <pre>
        * Count of items in `items_json`
        * int32 count = 3; unpopulated and unused
@@ -3040,15 +3540,14 @@ public final class Templates {
        * </pre>
        *
        * <code>string continuation_token = 4;</code>
+       *
        * @return The bytes for continuationToken.
        */
-      public com.google.protobuf.ByteString
-          getContinuationTokenBytes() {
+      public com.google.protobuf.ByteString getContinuationTokenBytes() {
         java.lang.Object ref = continuationToken_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           continuationToken_ = b;
           return b;
         } else {
@@ -3056,6 +3555,8 @@ public final class Templates {
         }
       }
       /**
+       *
+       *
        * <pre>
        * Count of items in `items_json`
        * int32 count = 3; unpopulated and unused
@@ -3063,20 +3564,22 @@ public final class Templates {
        * </pre>
        *
        * <code>string continuation_token = 4;</code>
+       *
        * @param value The continuationToken to set.
        * @return This builder for chaining.
        */
-      public Builder setContinuationToken(
-          java.lang.String value) {
+      public Builder setContinuationToken(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         continuationToken_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Count of items in `items_json`
        * int32 count = 3; unpopulated and unused
@@ -3084,15 +3587,18 @@ public final class Templates {
        * </pre>
        *
        * <code>string continuation_token = 4;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearContinuationToken() {
-        
+
         continuationToken_ = getDefaultInstance().getContinuationToken();
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Count of items in `items_json`
        * int32 count = 3; unpopulated and unused
@@ -3100,20 +3606,21 @@ public final class Templates {
        * </pre>
        *
        * <code>string continuation_token = 4;</code>
+       *
        * @param value The bytes for continuationToken to set.
        * @return This builder for chaining.
        */
-      public Builder setContinuationTokenBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setContinuationTokenBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         continuationToken_ = value;
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -3126,30 +3633,36 @@ public final class Templates {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse)
     }
 
     // @@protoc_insertion_point(class_scope:services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse)
-    private static final trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse DEFAULT_INSTANCE;
+    private static final trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesResponse
+        DEFAULT_INSTANCE;
+
     static {
-      DEFAULT_INSTANCE = new trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse();
+      DEFAULT_INSTANCE =
+          new trinsic.services.verifiablecredentials.templates.v1.Templates
+              .SearchCredentialTemplatesResponse();
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse getDefaultInstance() {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesResponse
+        getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<SearchCredentialTemplatesResponse>
-        PARSER = new com.google.protobuf.AbstractParser<SearchCredentialTemplatesResponse>() {
-      @java.lang.Override
-      public SearchCredentialTemplatesResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SearchCredentialTemplatesResponse(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<SearchCredentialTemplatesResponse> PARSER =
+        new com.google.protobuf.AbstractParser<SearchCredentialTemplatesResponse>() {
+          @java.lang.Override
+          public SearchCredentialTemplatesResponse parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new SearchCredentialTemplatesResponse(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<SearchCredentialTemplatesResponse> parser() {
       return PARSER;
@@ -3161,74 +3674,92 @@ public final class Templates {
     }
 
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.Templates.SearchCredentialTemplatesResponse getDefaultInstanceForType() {
+    public trinsic.services.verifiablecredentials.templates.v1.Templates
+            .SearchCredentialTemplatesResponse
+        getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface ListCredentialTemplatesRequestOrBuilder extends
+  public interface ListCredentialTemplatesRequestOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     *
+     *
      * <pre>
      * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
      * </pre>
      *
      * <code>string query = 1;</code>
+     *
      * @return The query.
      */
     java.lang.String getQuery();
     /**
+     *
+     *
      * <pre>
      * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
      * </pre>
      *
      * <code>string query = 1;</code>
+     *
      * @return The bytes for query.
      */
-    com.google.protobuf.ByteString
-        getQueryBytes();
+    com.google.protobuf.ByteString getQueryBytes();
 
     /**
+     *
+     *
      * <pre>
      * Token provided by previous `ListCredentialTemplatesResponse`
      * if more data is available for query
      * </pre>
      *
      * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
+     *
      * @return The continuationToken.
      */
     java.lang.String getContinuationToken();
     /**
+     *
+     *
      * <pre>
      * Token provided by previous `ListCredentialTemplatesResponse`
      * if more data is available for query
      * </pre>
      *
      * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
+     *
      * @return The bytes for continuationToken.
      */
-    com.google.protobuf.ByteString
-        getContinuationTokenBytes();
+    com.google.protobuf.ByteString getContinuationTokenBytes();
   }
   /**
+   *
+   *
    * <pre>
    * Request to list templates using a SQL query
    * </pre>
    *
-   * Protobuf type {@code services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest}
+   * Protobuf type {@code
+   * services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest}
    */
-  public static final class ListCredentialTemplatesRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class ListCredentialTemplatesRequest
+      extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest)
       ListCredentialTemplatesRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use ListCredentialTemplatesRequest.newBuilder() to construct.
-    private ListCredentialTemplatesRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private ListCredentialTemplatesRequest(
+        com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private ListCredentialTemplatesRequest() {
       query_ = "";
       continuationToken_ = "";
@@ -3236,16 +3767,15 @@ public final class Templates {
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new ListCredentialTemplatesRequest();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private ListCredentialTemplatesRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -3264,25 +3794,27 @@ public final class Templates {
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 10:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
 
-              query_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              continuationToken_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+                query_ = s;
+                break;
               }
-              break;
-            }
+            case 18:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                continuationToken_ = s;
+                break;
+              }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -3290,34 +3822,41 @@ public final class Templates {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesRequest_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesRequest_fieldAccessorTable
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest.class, trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest.Builder.class);
+              trinsic.services.verifiablecredentials.templates.v1.Templates
+                  .ListCredentialTemplatesRequest.class,
+              trinsic.services.verifiablecredentials.templates.v1.Templates
+                  .ListCredentialTemplatesRequest.Builder.class);
     }
 
     public static final int QUERY_FIELD_NUMBER = 1;
     private volatile java.lang.Object query_;
     /**
+     *
+     *
      * <pre>
      * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
      * </pre>
      *
      * <code>string query = 1;</code>
+     *
      * @return The query.
      */
     @java.lang.Override
@@ -3326,29 +3865,29 @@ public final class Templates {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         query_ = s;
         return s;
       }
     }
     /**
+     *
+     *
      * <pre>
      * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
      * </pre>
      *
      * <code>string query = 1;</code>
+     *
      * @return The bytes for query.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getQueryBytes() {
+    public com.google.protobuf.ByteString getQueryBytes() {
       java.lang.Object ref = query_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         query_ = b;
         return b;
       } else {
@@ -3359,12 +3898,15 @@ public final class Templates {
     public static final int CONTINUATION_TOKEN_FIELD_NUMBER = 2;
     private volatile java.lang.Object continuationToken_;
     /**
+     *
+     *
      * <pre>
      * Token provided by previous `ListCredentialTemplatesResponse`
      * if more data is available for query
      * </pre>
      *
      * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
+     *
      * @return The continuationToken.
      */
     @java.lang.Override
@@ -3373,30 +3915,30 @@ public final class Templates {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         continuationToken_ = s;
         return s;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Token provided by previous `ListCredentialTemplatesResponse`
      * if more data is available for query
      * </pre>
      *
      * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
+     *
      * @return The bytes for continuationToken.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getContinuationTokenBytes() {
+    public com.google.protobuf.ByteString getContinuationTokenBytes() {
       java.lang.Object ref = continuationToken_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         continuationToken_ = b;
         return b;
       } else {
@@ -3405,6 +3947,7 @@ public final class Templates {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -3416,8 +3959,7 @@ public final class Templates {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(query_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, query_);
       }
@@ -3447,17 +3989,22 @@ public final class Templates {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest)) {
+      if (!(obj
+          instanceof
+          trinsic.services.verifiablecredentials.templates.v1.Templates
+              .ListCredentialTemplatesRequest)) {
         return super.equals(obj);
       }
-      trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest other = (trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest) obj;
+      trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest
+          other =
+              (trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .ListCredentialTemplatesRequest)
+                  obj;
 
-      if (!getQuery()
-          .equals(other.getQuery())) return false;
-      if (!getContinuationToken()
-          .equals(other.getContinuationToken())) return false;
+      if (!getQuery().equals(other.getQuery())) return false;
+      if (!getContinuationToken().equals(other.getContinuationToken())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3478,88 +4025,114 @@ public final class Templates {
       return hash;
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesRequest
+        parseFrom(java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesRequest
+        parseFrom(
+            java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesRequest
+        parseFrom(com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesRequest
+        parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesRequest
+        parseFrom(byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesRequest
+        parseFrom(byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesRequest
+        parseFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesRequest
+        parseFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesRequest
+        parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesRequest
+        parseDelimitedFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesRequest
+        parseFrom(com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesRequest
+        parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest prototype) {
+
+    public static Builder newBuilder(
+        trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest
+            prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -3569,44 +4142,53 @@ public final class Templates {
       return builder;
     }
     /**
+     *
+     *
      * <pre>
      * Request to list templates using a SQL query
      * </pre>
      *
-     * Protobuf type {@code services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest}
+     * Protobuf type {@code
+     * services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest)
-        trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesRequest_descriptor;
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesRequest_fieldAccessorTable
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest.class, trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest.Builder.class);
+                trinsic.services.verifiablecredentials.templates.v1.Templates
+                    .ListCredentialTemplatesRequest.class,
+                trinsic.services.verifiablecredentials.templates.v1.Templates
+                    .ListCredentialTemplatesRequest.Builder.class);
       }
 
-      // Construct using trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest.newBuilder()
+      // Construct using
+      // trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -3618,19 +4200,25 @@ public final class Templates {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesRequest_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesRequest_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest getDefaultInstanceForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest.getDefaultInstance();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates
+              .ListCredentialTemplatesRequest
+          getDefaultInstanceForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest build() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest result = buildPartial();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates
+              .ListCredentialTemplatesRequest
+          build() {
+        trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest
+            result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -3638,8 +4226,13 @@ public final class Templates {
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest buildPartial() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest result = new trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest(this);
+      public trinsic.services.verifiablecredentials.templates.v1.Templates
+              .ListCredentialTemplatesRequest
+          buildPartial() {
+        trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest
+            result =
+                new trinsic.services.verifiablecredentials.templates.v1.Templates
+                    .ListCredentialTemplatesRequest(this);
         result.query_ = query_;
         result.continuationToken_ = continuationToken_;
         onBuilt();
@@ -3650,46 +4243,60 @@ public final class Templates {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest) {
-          return mergeFrom((trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest)other);
+        if (other
+            instanceof
+            trinsic.services.verifiablecredentials.templates.v1.Templates
+                .ListCredentialTemplatesRequest) {
+          return mergeFrom(
+              (trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .ListCredentialTemplatesRequest)
+                  other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest other) {
-        if (other == trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(
+          trinsic.services.verifiablecredentials.templates.v1.Templates
+                  .ListCredentialTemplatesRequest
+              other) {
+        if (other
+            == trinsic.services.verifiablecredentials.templates.v1.Templates
+                .ListCredentialTemplatesRequest.getDefaultInstance()) return this;
         if (!other.getQuery().isEmpty()) {
           query_ = other.query_;
           onChanged();
@@ -3713,11 +4320,15 @@ public final class Templates {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest parsedMessage = null;
+        trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest
+            parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .ListCredentialTemplatesRequest)
+                  e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -3729,18 +4340,20 @@ public final class Templates {
 
       private java.lang.Object query_ = "";
       /**
+       *
+       *
        * <pre>
        * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
        * </pre>
        *
        * <code>string query = 1;</code>
+       *
        * @return The query.
        */
       public java.lang.String getQuery() {
         java.lang.Object ref = query_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           query_ = s;
           return s;
@@ -3749,20 +4362,21 @@ public final class Templates {
         }
       }
       /**
+       *
+       *
        * <pre>
        * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
        * </pre>
        *
        * <code>string query = 1;</code>
+       *
        * @return The bytes for query.
        */
-      public com.google.protobuf.ByteString
-          getQueryBytes() {
+      public com.google.protobuf.ByteString getQueryBytes() {
         java.lang.Object ref = query_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           query_ = b;
           return b;
         } else {
@@ -3770,54 +4384,61 @@ public final class Templates {
         }
       }
       /**
+       *
+       *
        * <pre>
        * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
        * </pre>
        *
        * <code>string query = 1;</code>
+       *
        * @param value The query to set.
        * @return This builder for chaining.
        */
-      public Builder setQuery(
-          java.lang.String value) {
+      public Builder setQuery(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         query_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
        * </pre>
        *
        * <code>string query = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearQuery() {
-        
+
         query_ = getDefaultInstance().getQuery();
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
        * </pre>
        *
        * <code>string query = 1;</code>
+       *
        * @param value The bytes for query to set.
        * @return This builder for chaining.
        */
-      public Builder setQueryBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setQueryBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         query_ = value;
         onChanged();
         return this;
@@ -3825,19 +4446,21 @@ public final class Templates {
 
       private java.lang.Object continuationToken_ = "";
       /**
+       *
+       *
        * <pre>
        * Token provided by previous `ListCredentialTemplatesResponse`
        * if more data is available for query
        * </pre>
        *
        * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
+       *
        * @return The continuationToken.
        */
       public java.lang.String getContinuationToken() {
         java.lang.Object ref = continuationToken_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           continuationToken_ = s;
           return s;
@@ -3846,21 +4469,22 @@ public final class Templates {
         }
       }
       /**
+       *
+       *
        * <pre>
        * Token provided by previous `ListCredentialTemplatesResponse`
        * if more data is available for query
        * </pre>
        *
        * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
+       *
        * @return The bytes for continuationToken.
        */
-      public com.google.protobuf.ByteString
-          getContinuationTokenBytes() {
+      public com.google.protobuf.ByteString getContinuationTokenBytes() {
         java.lang.Object ref = continuationToken_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           continuationToken_ = b;
           return b;
         } else {
@@ -3868,61 +4492,69 @@ public final class Templates {
         }
       }
       /**
+       *
+       *
        * <pre>
        * Token provided by previous `ListCredentialTemplatesResponse`
        * if more data is available for query
        * </pre>
        *
        * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
+       *
        * @param value The continuationToken to set.
        * @return This builder for chaining.
        */
-      public Builder setContinuationToken(
-          java.lang.String value) {
+      public Builder setContinuationToken(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         continuationToken_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Token provided by previous `ListCredentialTemplatesResponse`
        * if more data is available for query
        * </pre>
        *
        * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearContinuationToken() {
-        
+
         continuationToken_ = getDefaultInstance().getContinuationToken();
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Token provided by previous `ListCredentialTemplatesResponse`
        * if more data is available for query
        * </pre>
        *
        * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
+       *
        * @param value The bytes for continuationToken to set.
        * @return This builder for chaining.
        */
-      public Builder setContinuationTokenBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setContinuationTokenBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         continuationToken_ = value;
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -3935,30 +4567,36 @@ public final class Templates {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest)
     }
 
     // @@protoc_insertion_point(class_scope:services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest)
-    private static final trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest DEFAULT_INSTANCE;
+    private static final trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesRequest
+        DEFAULT_INSTANCE;
+
     static {
-      DEFAULT_INSTANCE = new trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest();
+      DEFAULT_INSTANCE =
+          new trinsic.services.verifiablecredentials.templates.v1.Templates
+              .ListCredentialTemplatesRequest();
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest getDefaultInstance() {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesRequest
+        getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ListCredentialTemplatesRequest>
-        PARSER = new com.google.protobuf.AbstractParser<ListCredentialTemplatesRequest>() {
-      @java.lang.Override
-      public ListCredentialTemplatesRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ListCredentialTemplatesRequest(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<ListCredentialTemplatesRequest> PARSER =
+        new com.google.protobuf.AbstractParser<ListCredentialTemplatesRequest>() {
+          @java.lang.Override
+          public ListCredentialTemplatesRequest parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new ListCredentialTemplatesRequest(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<ListCredentialTemplatesRequest> parser() {
       return PARSER;
@@ -3970,106 +4608,140 @@ public final class Templates {
     }
 
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesRequest getDefaultInstanceForType() {
+    public trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesRequest
+        getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface ListCredentialTemplatesResponseOrBuilder extends
+  public interface ListCredentialTemplatesResponseOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     *
+     *
      * <pre>
      * Templates found by query
      * </pre>
      *
-     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+     * </code>
      */
-    java.util.List<trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData> 
+    java.util.List<trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData>
         getTemplatesList();
     /**
+     *
+     *
      * <pre>
      * Templates found by query
      * </pre>
      *
-     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+     * </code>
      */
-    trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData getTemplates(int index);
+    trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData getTemplates(
+        int index);
     /**
+     *
+     *
      * <pre>
      * Templates found by query
      * </pre>
      *
-     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+     * </code>
      */
     int getTemplatesCount();
     /**
+     *
+     *
      * <pre>
      * Templates found by query
      * </pre>
      *
-     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+     * </code>
      */
-    java.util.List<? extends trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder> 
+    java.util.List<
+            ? extends
+                trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder>
         getTemplatesOrBuilderList();
     /**
+     *
+     *
      * <pre>
      * Templates found by query
      * </pre>
      *
-     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+     * </code>
      */
-    trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder getTemplatesOrBuilder(
-        int index);
+    trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder
+        getTemplatesOrBuilder(int index);
 
     /**
+     *
+     *
      * <pre>
      * Whether more results are available for this query via `continuation_token`
      * </pre>
      *
      * <code>bool has_more_results = 2;</code>
+     *
      * @return The hasMoreResults.
      */
     boolean getHasMoreResults();
 
     /**
+     *
+     *
      * <pre>
      * Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
      * </pre>
      *
      * <code>string continuation_token = 3;</code>
+     *
      * @return The continuationToken.
      */
     java.lang.String getContinuationToken();
     /**
+     *
+     *
      * <pre>
      * Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
      * </pre>
      *
      * <code>string continuation_token = 3;</code>
+     *
      * @return The bytes for continuationToken.
      */
-    com.google.protobuf.ByteString
-        getContinuationTokenBytes();
+    com.google.protobuf.ByteString getContinuationTokenBytes();
   }
   /**
+   *
+   *
    * <pre>
-   * Response to `ListCredentialTemplatesRequest` 
+   * Response to `ListCredentialTemplatesRequest`
    * </pre>
    *
-   * Protobuf type {@code services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse}
+   * Protobuf type {@code
+   * services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse}
    */
-  public static final class ListCredentialTemplatesResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class ListCredentialTemplatesResponse
+      extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse)
       ListCredentialTemplatesResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use ListCredentialTemplatesResponse.newBuilder() to construct.
-    private ListCredentialTemplatesResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private ListCredentialTemplatesResponse(
+        com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private ListCredentialTemplatesResponse() {
       templates_ = java.util.Collections.emptyList();
       continuationToken_ = "";
@@ -4077,16 +4749,15 @@ public final class Templates {
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new ListCredentialTemplatesResponse();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private ListCredentialTemplatesResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -4106,33 +4777,41 @@ public final class Templates {
             case 0:
               done = true;
               break;
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                templates_ = new java.util.ArrayList<trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData>();
-                mutable_bitField0_ |= 0x00000001;
+            case 10:
+              {
+                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                  templates_ =
+                      new java.util.ArrayList<
+                          trinsic.services.verifiablecredentials.templates.v1.Templates
+                              .TemplateData>();
+                  mutable_bitField0_ |= 0x00000001;
+                }
+                templates_.add(
+                    input.readMessage(
+                        trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+                            .parser(),
+                        extensionRegistry));
+                break;
               }
-              templates_.add(
-                  input.readMessage(trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.parser(), extensionRegistry));
-              break;
-            }
-            case 16: {
-
-              hasMoreResults_ = input.readBool();
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              continuationToken_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 16:
+              {
+                hasMoreResults_ = input.readBool();
+                break;
               }
-              break;
-            }
+            case 26:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                continuationToken_ = s;
+                break;
+              }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -4140,8 +4819,7 @@ public final class Templates {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) != 0)) {
           templates_ = java.util.Collections.unmodifiableList(templates_);
@@ -4150,87 +4828,117 @@ public final class Templates {
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesResponse_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesResponse_fieldAccessorTable
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse.class, trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse.Builder.class);
+              trinsic.services.verifiablecredentials.templates.v1.Templates
+                  .ListCredentialTemplatesResponse.class,
+              trinsic.services.verifiablecredentials.templates.v1.Templates
+                  .ListCredentialTemplatesResponse.Builder.class);
     }
 
     public static final int TEMPLATES_FIELD_NUMBER = 1;
-    private java.util.List<trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData> templates_;
+    private java.util.List<
+            trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData>
+        templates_;
     /**
+     *
+     *
      * <pre>
      * Templates found by query
      * </pre>
      *
-     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+     * </code>
      */
     @java.lang.Override
-    public java.util.List<trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData> getTemplatesList() {
+    public java.util.List<
+            trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData>
+        getTemplatesList() {
       return templates_;
     }
     /**
+     *
+     *
      * <pre>
      * Templates found by query
      * </pre>
      *
-     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+     * </code>
      */
     @java.lang.Override
-    public java.util.List<? extends trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder> 
+    public java.util.List<
+            ? extends
+                trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder>
         getTemplatesOrBuilderList() {
       return templates_;
     }
     /**
+     *
+     *
      * <pre>
      * Templates found by query
      * </pre>
      *
-     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+     * </code>
      */
     @java.lang.Override
     public int getTemplatesCount() {
       return templates_.size();
     }
     /**
+     *
+     *
      * <pre>
      * Templates found by query
      * </pre>
      *
-     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+     * </code>
      */
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData getTemplates(int index) {
+    public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData getTemplates(
+        int index) {
       return templates_.get(index);
     }
     /**
+     *
+     *
      * <pre>
      * Templates found by query
      * </pre>
      *
-     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+     * </code>
      */
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder getTemplatesOrBuilder(
-        int index) {
+    public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder
+        getTemplatesOrBuilder(int index) {
       return templates_.get(index);
     }
 
     public static final int HAS_MORE_RESULTS_FIELD_NUMBER = 2;
     private boolean hasMoreResults_;
     /**
+     *
+     *
      * <pre>
      * Whether more results are available for this query via `continuation_token`
      * </pre>
      *
      * <code>bool has_more_results = 2;</code>
+     *
      * @return The hasMoreResults.
      */
     @java.lang.Override
@@ -4241,11 +4949,14 @@ public final class Templates {
     public static final int CONTINUATION_TOKEN_FIELD_NUMBER = 3;
     private volatile java.lang.Object continuationToken_;
     /**
+     *
+     *
      * <pre>
      * Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
      * </pre>
      *
      * <code>string continuation_token = 3;</code>
+     *
      * @return The continuationToken.
      */
     @java.lang.Override
@@ -4254,29 +4965,29 @@ public final class Templates {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         continuationToken_ = s;
         return s;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
      * </pre>
      *
      * <code>string continuation_token = 3;</code>
+     *
      * @return The bytes for continuationToken.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getContinuationTokenBytes() {
+    public com.google.protobuf.ByteString getContinuationTokenBytes() {
       java.lang.Object ref = continuationToken_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         continuationToken_ = b;
         return b;
       } else {
@@ -4285,6 +4996,7 @@ public final class Templates {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -4296,8 +5008,7 @@ public final class Templates {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       for (int i = 0; i < templates_.size(); i++) {
         output.writeMessage(1, templates_.get(i));
       }
@@ -4317,12 +5028,10 @@ public final class Templates {
 
       size = 0;
       for (int i = 0; i < templates_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, templates_.get(i));
+        size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, templates_.get(i));
       }
       if (hasMoreResults_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(2, hasMoreResults_);
+        size += com.google.protobuf.CodedOutputStream.computeBoolSize(2, hasMoreResults_);
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(continuationToken_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, continuationToken_);
@@ -4335,19 +5044,23 @@ public final class Templates {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse)) {
+      if (!(obj
+          instanceof
+          trinsic.services.verifiablecredentials.templates.v1.Templates
+              .ListCredentialTemplatesResponse)) {
         return super.equals(obj);
       }
-      trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse other = (trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse) obj;
+      trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse
+          other =
+              (trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .ListCredentialTemplatesResponse)
+                  obj;
 
-      if (!getTemplatesList()
-          .equals(other.getTemplatesList())) return false;
-      if (getHasMoreResults()
-          != other.getHasMoreResults()) return false;
-      if (!getContinuationToken()
-          .equals(other.getContinuationToken())) return false;
+      if (!getTemplatesList().equals(other.getTemplatesList())) return false;
+      if (getHasMoreResults() != other.getHasMoreResults()) return false;
+      if (!getContinuationToken().equals(other.getContinuationToken())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -4364,8 +5077,7 @@ public final class Templates {
         hash = (53 * hash) + getTemplatesList().hashCode();
       }
       hash = (37 * hash) + HAS_MORE_RESULTS_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getHasMoreResults());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getHasMoreResults());
       hash = (37 * hash) + CONTINUATION_TOKEN_FIELD_NUMBER;
       hash = (53 * hash) + getContinuationToken().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -4373,88 +5085,115 @@ public final class Templates {
       return hash;
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesResponse
+        parseFrom(java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesResponse
+        parseFrom(
+            java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesResponse
+        parseFrom(com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesResponse
+        parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesResponse
+        parseFrom(byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesResponse
+        parseFrom(byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesResponse
+        parseFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesResponse
+        parseFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesResponse
+        parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesResponse
+        parseDelimitedFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesResponse
+        parseFrom(com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesResponse
+        parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse prototype) {
+
+    public static Builder newBuilder(
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+                .ListCredentialTemplatesResponse
+            prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -4464,45 +5203,55 @@ public final class Templates {
       return builder;
     }
     /**
+     *
+     *
      * <pre>
-     * Response to `ListCredentialTemplatesRequest` 
+     * Response to `ListCredentialTemplatesRequest`
      * </pre>
      *
-     * Protobuf type {@code services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse}
+     * Protobuf type {@code
+     * services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse)
-        trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesResponse_descriptor;
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesResponse_fieldAccessorTable
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse.class, trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse.Builder.class);
+                trinsic.services.verifiablecredentials.templates.v1.Templates
+                    .ListCredentialTemplatesResponse.class,
+                trinsic.services.verifiablecredentials.templates.v1.Templates
+                    .ListCredentialTemplatesResponse.Builder.class);
       }
 
-      // Construct using trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse.newBuilder()
+      // Construct using
+      // trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
           getTemplatesFieldBuilder();
         }
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -4520,19 +5269,26 @@ public final class Templates {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesResponse_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesResponse_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse getDefaultInstanceForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse.getDefaultInstance();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates
+              .ListCredentialTemplatesResponse
+          getDefaultInstanceForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse build() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse result = buildPartial();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates
+              .ListCredentialTemplatesResponse
+          build() {
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+                .ListCredentialTemplatesResponse
+            result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -4540,8 +5296,14 @@ public final class Templates {
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse buildPartial() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse result = new trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse(this);
+      public trinsic.services.verifiablecredentials.templates.v1.Templates
+              .ListCredentialTemplatesResponse
+          buildPartial() {
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+                .ListCredentialTemplatesResponse
+            result =
+                new trinsic.services.verifiablecredentials.templates.v1.Templates
+                    .ListCredentialTemplatesResponse(this);
         int from_bitField0_ = bitField0_;
         if (templatesBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
@@ -4562,46 +5324,60 @@ public final class Templates {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse) {
-          return mergeFrom((trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse)other);
+        if (other
+            instanceof
+            trinsic.services.verifiablecredentials.templates.v1.Templates
+                .ListCredentialTemplatesResponse) {
+          return mergeFrom(
+              (trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .ListCredentialTemplatesResponse)
+                  other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse other) {
-        if (other == trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(
+          trinsic.services.verifiablecredentials.templates.v1.Templates
+                  .ListCredentialTemplatesResponse
+              other) {
+        if (other
+            == trinsic.services.verifiablecredentials.templates.v1.Templates
+                .ListCredentialTemplatesResponse.getDefaultInstance()) return this;
         if (templatesBuilder_ == null) {
           if (!other.templates_.isEmpty()) {
             if (templates_.isEmpty()) {
@@ -4620,9 +5396,10 @@ public final class Templates {
               templatesBuilder_ = null;
               templates_ = other.templates_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              templatesBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getTemplatesFieldBuilder() : null;
+              templatesBuilder_ =
+                  com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
+                      ? getTemplatesFieldBuilder()
+                      : null;
             } else {
               templatesBuilder_.addAllMessages(other.templates_);
             }
@@ -4650,11 +5427,16 @@ public final class Templates {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse parsedMessage = null;
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+                .ListCredentialTemplatesResponse
+            parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .ListCredentialTemplatesResponse)
+                  e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -4663,28 +5445,42 @@ public final class Templates {
         }
         return this;
       }
+
       private int bitField0_;
 
-      private java.util.List<trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData> templates_ =
-        java.util.Collections.emptyList();
+      private java.util.List<
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData>
+          templates_ = java.util.Collections.emptyList();
+
       private void ensureTemplatesIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
-          templates_ = new java.util.ArrayList<trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData>(templates_);
+          templates_ =
+              new java.util.ArrayList<
+                  trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData>(
+                  templates_);
           bitField0_ |= 0x00000001;
-         }
+        }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder> templatesBuilder_;
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder>
+          templatesBuilder_;
 
       /**
+       *
+       *
        * <pre>
        * Templates found by query
        * </pre>
        *
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
-      public java.util.List<trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData> getTemplatesList() {
+      public java.util.List<
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData>
+          getTemplatesList() {
         if (templatesBuilder_ == null) {
           return java.util.Collections.unmodifiableList(templates_);
         } else {
@@ -4692,11 +5488,14 @@ public final class Templates {
         }
       }
       /**
+       *
+       *
        * <pre>
        * Templates found by query
        * </pre>
        *
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
       public int getTemplatesCount() {
         if (templatesBuilder_ == null) {
@@ -4706,13 +5505,17 @@ public final class Templates {
         }
       }
       /**
+       *
+       *
        * <pre>
        * Templates found by query
        * </pre>
        *
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData getTemplates(int index) {
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+          getTemplates(int index) {
         if (templatesBuilder_ == null) {
           return templates_.get(index);
         } else {
@@ -4720,14 +5523,18 @@ public final class Templates {
         }
       }
       /**
+       *
+       *
        * <pre>
        * Templates found by query
        * </pre>
        *
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
       public Builder setTemplates(
-          int index, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData value) {
+          int index,
+          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData value) {
         if (templatesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4741,14 +5548,19 @@ public final class Templates {
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Templates found by query
        * </pre>
        *
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
       public Builder setTemplates(
-          int index, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder builderForValue) {
+          int index,
+          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder
+              builderForValue) {
         if (templatesBuilder_ == null) {
           ensureTemplatesIsMutable();
           templates_.set(index, builderForValue.build());
@@ -4759,13 +5571,17 @@ public final class Templates {
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Templates found by query
        * </pre>
        *
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
-      public Builder addTemplates(trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData value) {
+      public Builder addTemplates(
+          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData value) {
         if (templatesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4779,14 +5595,18 @@ public final class Templates {
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Templates found by query
        * </pre>
        *
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
       public Builder addTemplates(
-          int index, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData value) {
+          int index,
+          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData value) {
         if (templatesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4800,14 +5620,18 @@ public final class Templates {
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Templates found by query
        * </pre>
        *
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
       public Builder addTemplates(
-          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder builderForValue) {
+          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder
+              builderForValue) {
         if (templatesBuilder_ == null) {
           ensureTemplatesIsMutable();
           templates_.add(builderForValue.build());
@@ -4818,14 +5642,19 @@ public final class Templates {
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Templates found by query
        * </pre>
        *
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
       public Builder addTemplates(
-          int index, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder builderForValue) {
+          int index,
+          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder
+              builderForValue) {
         if (templatesBuilder_ == null) {
           ensureTemplatesIsMutable();
           templates_.add(index, builderForValue.build());
@@ -4836,18 +5665,23 @@ public final class Templates {
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Templates found by query
        * </pre>
        *
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
       public Builder addAllTemplates(
-          java.lang.Iterable<? extends trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData> values) {
+          java.lang.Iterable<
+                  ? extends
+                      trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData>
+              values) {
         if (templatesBuilder_ == null) {
           ensureTemplatesIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, templates_);
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(values, templates_);
           onChanged();
         } else {
           templatesBuilder_.addAllMessages(values);
@@ -4855,11 +5689,14 @@ public final class Templates {
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Templates found by query
        * </pre>
        *
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
       public Builder clearTemplates() {
         if (templatesBuilder_ == null) {
@@ -4872,11 +5709,14 @@ public final class Templates {
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Templates found by query
        * </pre>
        *
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
       public Builder removeTemplates(int index) {
         if (templatesBuilder_ == null) {
@@ -4889,39 +5729,52 @@ public final class Templates {
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Templates found by query
        * </pre>
        *
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder getTemplatesBuilder(
-          int index) {
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder
+          getTemplatesBuilder(int index) {
         return getTemplatesFieldBuilder().getBuilder(index);
       }
       /**
+       *
+       *
        * <pre>
        * Templates found by query
        * </pre>
        *
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder getTemplatesOrBuilder(
-          int index) {
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder
+          getTemplatesOrBuilder(int index) {
         if (templatesBuilder_ == null) {
-          return templates_.get(index);  } else {
+          return templates_.get(index);
+        } else {
           return templatesBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
+       *
+       *
        * <pre>
        * Templates found by query
        * </pre>
        *
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
-      public java.util.List<? extends trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder> 
-           getTemplatesOrBuilderList() {
+      public java.util.List<
+              ? extends
+                  trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .TemplateDataOrBuilder>
+          getTemplatesOrBuilderList() {
         if (templatesBuilder_ != null) {
           return templatesBuilder_.getMessageOrBuilderList();
         } else {
@@ -4929,61 +5782,85 @@ public final class Templates {
         }
       }
       /**
+       *
+       *
        * <pre>
        * Templates found by query
        * </pre>
        *
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder addTemplatesBuilder() {
-        return getTemplatesFieldBuilder().addBuilder(
-            trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.getDefaultInstance());
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder
+          addTemplatesBuilder() {
+        return getTemplatesFieldBuilder()
+            .addBuilder(
+                trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+                    .getDefaultInstance());
       }
       /**
+       *
+       *
        * <pre>
        * Templates found by query
        * </pre>
        *
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder addTemplatesBuilder(
-          int index) {
-        return getTemplatesFieldBuilder().addBuilder(
-            index, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.getDefaultInstance());
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder
+          addTemplatesBuilder(int index) {
+        return getTemplatesFieldBuilder()
+            .addBuilder(
+                index,
+                trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+                    .getDefaultInstance());
       }
       /**
+       *
+       *
        * <pre>
        * Templates found by query
        * </pre>
        *
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
-      public java.util.List<trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder> 
-           getTemplatesBuilderList() {
+      public java.util.List<
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder>
+          getTemplatesBuilderList() {
         return getTemplatesFieldBuilder().getBuilderList();
       }
+
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder> 
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder>
           getTemplatesFieldBuilder() {
         if (templatesBuilder_ == null) {
-          templatesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder>(
-                  templates_,
-                  ((bitField0_ & 0x00000001) != 0),
-                  getParentForChildren(),
-                  isClean());
+          templatesBuilder_ =
+              new com.google.protobuf.RepeatedFieldBuilderV3<
+                  trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData,
+                  trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+                      .Builder,
+                  trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .TemplateDataOrBuilder>(
+                  templates_, ((bitField0_ & 0x00000001) != 0), getParentForChildren(), isClean());
           templates_ = null;
         }
         return templatesBuilder_;
       }
 
-      private boolean hasMoreResults_ ;
+      private boolean hasMoreResults_;
       /**
+       *
+       *
        * <pre>
        * Whether more results are available for this query via `continuation_token`
        * </pre>
        *
        * <code>bool has_more_results = 2;</code>
+       *
        * @return The hasMoreResults.
        */
       @java.lang.Override
@@ -4991,30 +5868,36 @@ public final class Templates {
         return hasMoreResults_;
       }
       /**
+       *
+       *
        * <pre>
        * Whether more results are available for this query via `continuation_token`
        * </pre>
        *
        * <code>bool has_more_results = 2;</code>
+       *
        * @param value The hasMoreResults to set.
        * @return This builder for chaining.
        */
       public Builder setHasMoreResults(boolean value) {
-        
+
         hasMoreResults_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Whether more results are available for this query via `continuation_token`
        * </pre>
        *
        * <code>bool has_more_results = 2;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearHasMoreResults() {
-        
+
         hasMoreResults_ = false;
         onChanged();
         return this;
@@ -5022,18 +5905,20 @@ public final class Templates {
 
       private java.lang.Object continuationToken_ = "";
       /**
+       *
+       *
        * <pre>
        * Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
        * </pre>
        *
        * <code>string continuation_token = 3;</code>
+       *
        * @return The continuationToken.
        */
       public java.lang.String getContinuationToken() {
         java.lang.Object ref = continuationToken_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           continuationToken_ = s;
           return s;
@@ -5042,20 +5927,21 @@ public final class Templates {
         }
       }
       /**
+       *
+       *
        * <pre>
        * Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
        * </pre>
        *
        * <code>string continuation_token = 3;</code>
+       *
        * @return The bytes for continuationToken.
        */
-      public com.google.protobuf.ByteString
-          getContinuationTokenBytes() {
+      public com.google.protobuf.ByteString getContinuationTokenBytes() {
         java.lang.Object ref = continuationToken_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           continuationToken_ = b;
           return b;
         } else {
@@ -5063,58 +5949,66 @@ public final class Templates {
         }
       }
       /**
+       *
+       *
        * <pre>
        * Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
        * </pre>
        *
        * <code>string continuation_token = 3;</code>
+       *
        * @param value The continuationToken to set.
        * @return This builder for chaining.
        */
-      public Builder setContinuationToken(
-          java.lang.String value) {
+      public Builder setContinuationToken(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         continuationToken_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
        * </pre>
        *
        * <code>string continuation_token = 3;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearContinuationToken() {
-        
+
         continuationToken_ = getDefaultInstance().getContinuationToken();
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
        * </pre>
        *
        * <code>string continuation_token = 3;</code>
+       *
        * @param value The bytes for continuationToken to set.
        * @return This builder for chaining.
        */
-      public Builder setContinuationTokenBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setContinuationTokenBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         continuationToken_ = value;
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -5127,30 +6021,36 @@ public final class Templates {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse)
     }
 
     // @@protoc_insertion_point(class_scope:services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse)
-    private static final trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse DEFAULT_INSTANCE;
+    private static final trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesResponse
+        DEFAULT_INSTANCE;
+
     static {
-      DEFAULT_INSTANCE = new trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse();
+      DEFAULT_INSTANCE =
+          new trinsic.services.verifiablecredentials.templates.v1.Templates
+              .ListCredentialTemplatesResponse();
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse getDefaultInstance() {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesResponse
+        getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ListCredentialTemplatesResponse>
-        PARSER = new com.google.protobuf.AbstractParser<ListCredentialTemplatesResponse>() {
-      @java.lang.Override
-      public ListCredentialTemplatesResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ListCredentialTemplatesResponse(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<ListCredentialTemplatesResponse> PARSER =
+        new com.google.protobuf.AbstractParser<ListCredentialTemplatesResponse>() {
+          @java.lang.Override
+          public ListCredentialTemplatesResponse parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new ListCredentialTemplatesResponse(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<ListCredentialTemplatesResponse> parser() {
       return PARSER;
@@ -5162,68 +6062,80 @@ public final class Templates {
     }
 
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.Templates.ListCredentialTemplatesResponse getDefaultInstanceForType() {
+    public trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListCredentialTemplatesResponse
+        getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface DeleteCredentialTemplateRequestOrBuilder extends
+  public interface DeleteCredentialTemplateRequestOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     *
+     *
      * <pre>
      * ID of template to delete
      * </pre>
      *
      * <code>string id = 1;</code>
+     *
      * @return The id.
      */
     java.lang.String getId();
     /**
+     *
+     *
      * <pre>
      * ID of template to delete
      * </pre>
      *
      * <code>string id = 1;</code>
+     *
      * @return The bytes for id.
      */
-    com.google.protobuf.ByteString
-        getIdBytes();
+    com.google.protobuf.ByteString getIdBytes();
   }
   /**
+   *
+   *
    * <pre>
    * Request to delete a template by ID
    * </pre>
    *
-   * Protobuf type {@code services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest}
+   * Protobuf type {@code
+   * services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest}
    */
-  public static final class DeleteCredentialTemplateRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class DeleteCredentialTemplateRequest
+      extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest)
       DeleteCredentialTemplateRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use DeleteCredentialTemplateRequest.newBuilder() to construct.
-    private DeleteCredentialTemplateRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private DeleteCredentialTemplateRequest(
+        com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private DeleteCredentialTemplateRequest() {
       id_ = "";
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new DeleteCredentialTemplateRequest();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private DeleteCredentialTemplateRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -5242,19 +6154,20 @@ public final class Templates {
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 10:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
 
-              id_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+                id_ = s;
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -5262,34 +6175,41 @@ public final class Templates {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateRequest_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateRequest_fieldAccessorTable
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest.class, trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest.Builder.class);
+              trinsic.services.verifiablecredentials.templates.v1.Templates
+                  .DeleteCredentialTemplateRequest.class,
+              trinsic.services.verifiablecredentials.templates.v1.Templates
+                  .DeleteCredentialTemplateRequest.Builder.class);
     }
 
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
+     *
+     *
      * <pre>
      * ID of template to delete
      * </pre>
      *
      * <code>string id = 1;</code>
+     *
      * @return The id.
      */
     @java.lang.Override
@@ -5298,29 +6218,29 @@ public final class Templates {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         id_ = s;
         return s;
       }
     }
     /**
+     *
+     *
      * <pre>
      * ID of template to delete
      * </pre>
      *
      * <code>string id = 1;</code>
+     *
      * @return The bytes for id.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getIdBytes() {
+    public com.google.protobuf.ByteString getIdBytes() {
       java.lang.Object ref = id_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         id_ = b;
         return b;
       } else {
@@ -5329,6 +6249,7 @@ public final class Templates {
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -5340,8 +6261,7 @@ public final class Templates {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
@@ -5365,15 +6285,21 @@ public final class Templates {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest)) {
+      if (!(obj
+          instanceof
+          trinsic.services.verifiablecredentials.templates.v1.Templates
+              .DeleteCredentialTemplateRequest)) {
         return super.equals(obj);
       }
-      trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest other = (trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest) obj;
+      trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest
+          other =
+              (trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .DeleteCredentialTemplateRequest)
+                  obj;
 
-      if (!getId()
-          .equals(other.getId())) return false;
+      if (!getId().equals(other.getId())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -5392,88 +6318,115 @@ public final class Templates {
       return hash;
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateRequest
+        parseFrom(java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateRequest
+        parseFrom(
+            java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateRequest
+        parseFrom(com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateRequest
+        parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateRequest
+        parseFrom(byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateRequest
+        parseFrom(byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateRequest
+        parseFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateRequest
+        parseFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateRequest
+        parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateRequest
+        parseDelimitedFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateRequest
+        parseFrom(com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateRequest
+        parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest prototype) {
+
+    public static Builder newBuilder(
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+                .DeleteCredentialTemplateRequest
+            prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -5483,44 +6436,53 @@ public final class Templates {
       return builder;
     }
     /**
+     *
+     *
      * <pre>
      * Request to delete a template by ID
      * </pre>
      *
-     * Protobuf type {@code services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest}
+     * Protobuf type {@code
+     * services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest)
-        trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateRequest_descriptor;
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateRequest_fieldAccessorTable
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest.class, trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest.Builder.class);
+                trinsic.services.verifiablecredentials.templates.v1.Templates
+                    .DeleteCredentialTemplateRequest.class,
+                trinsic.services.verifiablecredentials.templates.v1.Templates
+                    .DeleteCredentialTemplateRequest.Builder.class);
       }
 
-      // Construct using trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest.newBuilder()
+      // Construct using
+      // trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -5530,19 +6492,26 @@ public final class Templates {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateRequest_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateRequest_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest getDefaultInstanceForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest.getDefaultInstance();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates
+              .DeleteCredentialTemplateRequest
+          getDefaultInstanceForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest build() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest result = buildPartial();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates
+              .DeleteCredentialTemplateRequest
+          build() {
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+                .DeleteCredentialTemplateRequest
+            result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -5550,8 +6519,14 @@ public final class Templates {
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest buildPartial() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest result = new trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest(this);
+      public trinsic.services.verifiablecredentials.templates.v1.Templates
+              .DeleteCredentialTemplateRequest
+          buildPartial() {
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+                .DeleteCredentialTemplateRequest
+            result =
+                new trinsic.services.verifiablecredentials.templates.v1.Templates
+                    .DeleteCredentialTemplateRequest(this);
         result.id_ = id_;
         onBuilt();
         return result;
@@ -5561,46 +6536,60 @@ public final class Templates {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest) {
-          return mergeFrom((trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest)other);
+        if (other
+            instanceof
+            trinsic.services.verifiablecredentials.templates.v1.Templates
+                .DeleteCredentialTemplateRequest) {
+          return mergeFrom(
+              (trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .DeleteCredentialTemplateRequest)
+                  other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest other) {
-        if (other == trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(
+          trinsic.services.verifiablecredentials.templates.v1.Templates
+                  .DeleteCredentialTemplateRequest
+              other) {
+        if (other
+            == trinsic.services.verifiablecredentials.templates.v1.Templates
+                .DeleteCredentialTemplateRequest.getDefaultInstance()) return this;
         if (!other.getId().isEmpty()) {
           id_ = other.id_;
           onChanged();
@@ -5620,11 +6609,16 @@ public final class Templates {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest parsedMessage = null;
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+                .DeleteCredentialTemplateRequest
+            parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .DeleteCredentialTemplateRequest)
+                  e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -5636,18 +6630,20 @@ public final class Templates {
 
       private java.lang.Object id_ = "";
       /**
+       *
+       *
        * <pre>
        * ID of template to delete
        * </pre>
        *
        * <code>string id = 1;</code>
+       *
        * @return The id.
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           id_ = s;
           return s;
@@ -5656,20 +6652,21 @@ public final class Templates {
         }
       }
       /**
+       *
+       *
        * <pre>
        * ID of template to delete
        * </pre>
        *
        * <code>string id = 1;</code>
+       *
        * @return The bytes for id.
        */
-      public com.google.protobuf.ByteString
-          getIdBytes() {
+      public com.google.protobuf.ByteString getIdBytes() {
         java.lang.Object ref = id_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           id_ = b;
           return b;
         } else {
@@ -5677,58 +6674,66 @@ public final class Templates {
         }
       }
       /**
+       *
+       *
        * <pre>
        * ID of template to delete
        * </pre>
        *
        * <code>string id = 1;</code>
+       *
        * @param value The id to set.
        * @return This builder for chaining.
        */
-      public Builder setId(
-          java.lang.String value) {
+      public Builder setId(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         id_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * ID of template to delete
        * </pre>
        *
        * <code>string id = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearId() {
-        
+
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * ID of template to delete
        * </pre>
        *
        * <code>string id = 1;</code>
+       *
        * @param value The bytes for id to set.
        * @return This builder for chaining.
        */
-      public Builder setIdBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setIdBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         id_ = value;
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -5741,30 +6746,36 @@ public final class Templates {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest)
     }
 
     // @@protoc_insertion_point(class_scope:services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest)
-    private static final trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest DEFAULT_INSTANCE;
+    private static final trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateRequest
+        DEFAULT_INSTANCE;
+
     static {
-      DEFAULT_INSTANCE = new trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest();
+      DEFAULT_INSTANCE =
+          new trinsic.services.verifiablecredentials.templates.v1.Templates
+              .DeleteCredentialTemplateRequest();
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest getDefaultInstance() {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateRequest
+        getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<DeleteCredentialTemplateRequest>
-        PARSER = new com.google.protobuf.AbstractParser<DeleteCredentialTemplateRequest>() {
-      @java.lang.Override
-      public DeleteCredentialTemplateRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new DeleteCredentialTemplateRequest(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<DeleteCredentialTemplateRequest> PARSER =
+        new com.google.protobuf.AbstractParser<DeleteCredentialTemplateRequest>() {
+          @java.lang.Override
+          public DeleteCredentialTemplateRequest parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new DeleteCredentialTemplateRequest(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<DeleteCredentialTemplateRequest> parser() {
       return PARSER;
@@ -5776,47 +6787,52 @@ public final class Templates {
     }
 
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateRequest getDefaultInstanceForType() {
+    public trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateRequest
+        getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface DeleteCredentialTemplateResponseOrBuilder extends
+  public interface DeleteCredentialTemplateResponseOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse)
-      com.google.protobuf.MessageOrBuilder {
-  }
+      com.google.protobuf.MessageOrBuilder {}
   /**
+   *
+   *
    * <pre>
    * Response to `DeleteCredentialTemplateRequest`
    * </pre>
    *
-   * Protobuf type {@code services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse}
+   * Protobuf type {@code
+   * services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse}
    */
-  public static final class DeleteCredentialTemplateResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class DeleteCredentialTemplateResponse
+      extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse)
       DeleteCredentialTemplateResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use DeleteCredentialTemplateResponse.newBuilder() to construct.
-    private DeleteCredentialTemplateResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private DeleteCredentialTemplateResponse(
+        com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private DeleteCredentialTemplateResponse() {
-    }
+
+    private DeleteCredentialTemplateResponse() {}
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new DeleteCredentialTemplateResponse();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private DeleteCredentialTemplateResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -5835,13 +6851,13 @@ public final class Templates {
             case 0:
               done = true;
               break;
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
               }
-              break;
-            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -5849,27 +6865,32 @@ public final class Templates {
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateResponse_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateResponse_fieldAccessorTable
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse.class, trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse.Builder.class);
+              trinsic.services.verifiablecredentials.templates.v1.Templates
+                  .DeleteCredentialTemplateResponse.class,
+              trinsic.services.verifiablecredentials.templates.v1.Templates
+                  .DeleteCredentialTemplateResponse.Builder.class);
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -5881,8 +6902,7 @@ public final class Templates {
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       unknownFields.writeTo(output);
     }
 
@@ -5900,12 +6920,19 @@ public final class Templates {
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse)) {
+      if (!(obj
+          instanceof
+          trinsic.services.verifiablecredentials.templates.v1.Templates
+              .DeleteCredentialTemplateResponse)) {
         return super.equals(obj);
       }
-      trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse other = (trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse) obj;
+      trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse
+          other =
+              (trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .DeleteCredentialTemplateResponse)
+                  obj;
 
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -5923,88 +6950,115 @@ public final class Templates {
       return hash;
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateResponse
+        parseFrom(java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateResponse
+        parseFrom(
+            java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateResponse
+        parseFrom(com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateResponse
+        parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateResponse
+        parseFrom(byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateResponse
+        parseFrom(byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateResponse
+        parseFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateResponse
+        parseFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateResponse
+        parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateResponse
+        parseDelimitedFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateResponse
+        parseFrom(com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateResponse
+        parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse prototype) {
+
+    public static Builder newBuilder(
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+                .DeleteCredentialTemplateResponse
+            prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -6014,44 +7068,53 @@ public final class Templates {
       return builder;
     }
     /**
+     *
+     *
      * <pre>
      * Response to `DeleteCredentialTemplateRequest`
      * </pre>
      *
-     * Protobuf type {@code services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse}
+     * Protobuf type {@code
+     * services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse)
-        trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateResponse_descriptor;
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateResponse_fieldAccessorTable
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse.class, trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse.Builder.class);
+                trinsic.services.verifiablecredentials.templates.v1.Templates
+                    .DeleteCredentialTemplateResponse.class,
+                trinsic.services.verifiablecredentials.templates.v1.Templates
+                    .DeleteCredentialTemplateResponse.Builder.class);
       }
 
-      // Construct using trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse.newBuilder()
+      // Construct using
+      // trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -6059,19 +7122,26 @@ public final class Templates {
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateResponse_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateResponse_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse getDefaultInstanceForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse.getDefaultInstance();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates
+              .DeleteCredentialTemplateResponse
+          getDefaultInstanceForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse build() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse result = buildPartial();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates
+              .DeleteCredentialTemplateResponse
+          build() {
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+                .DeleteCredentialTemplateResponse
+            result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -6079,8 +7149,14 @@ public final class Templates {
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse buildPartial() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse result = new trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse(this);
+      public trinsic.services.verifiablecredentials.templates.v1.Templates
+              .DeleteCredentialTemplateResponse
+          buildPartial() {
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+                .DeleteCredentialTemplateResponse
+            result =
+                new trinsic.services.verifiablecredentials.templates.v1.Templates
+                    .DeleteCredentialTemplateResponse(this);
         onBuilt();
         return result;
       }
@@ -6089,46 +7165,60 @@ public final class Templates {
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse) {
-          return mergeFrom((trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse)other);
+        if (other
+            instanceof
+            trinsic.services.verifiablecredentials.templates.v1.Templates
+                .DeleteCredentialTemplateResponse) {
+          return mergeFrom(
+              (trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .DeleteCredentialTemplateResponse)
+                  other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse other) {
-        if (other == trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(
+          trinsic.services.verifiablecredentials.templates.v1.Templates
+                  .DeleteCredentialTemplateResponse
+              other) {
+        if (other
+            == trinsic.services.verifiablecredentials.templates.v1.Templates
+                .DeleteCredentialTemplateResponse.getDefaultInstance()) return this;
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -6144,11 +7234,16 @@ public final class Templates {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse parsedMessage = null;
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+                .DeleteCredentialTemplateResponse
+            parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .DeleteCredentialTemplateResponse)
+                  e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -6157,6 +7252,7 @@ public final class Templates {
         }
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -6169,30 +7265,36 @@ public final class Templates {
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse)
     }
 
     // @@protoc_insertion_point(class_scope:services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse)
-    private static final trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse DEFAULT_INSTANCE;
+    private static final trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateResponse
+        DEFAULT_INSTANCE;
+
     static {
-      DEFAULT_INSTANCE = new trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse();
+      DEFAULT_INSTANCE =
+          new trinsic.services.verifiablecredentials.templates.v1.Templates
+              .DeleteCredentialTemplateResponse();
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse getDefaultInstance() {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateResponse
+        getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<DeleteCredentialTemplateResponse>
-        PARSER = new com.google.protobuf.AbstractParser<DeleteCredentialTemplateResponse>() {
-      @java.lang.Override
-      public DeleteCredentialTemplateResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new DeleteCredentialTemplateResponse(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<DeleteCredentialTemplateResponse> PARSER =
+        new com.google.protobuf.AbstractParser<DeleteCredentialTemplateResponse>() {
+          @java.lang.Override
+          public DeleteCredentialTemplateResponse parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new DeleteCredentialTemplateResponse(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<DeleteCredentialTemplateResponse> parser() {
       return PARSER;
@@ -6204,135 +7306,170 @@ public final class Templates {
     }
 
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.Templates.DeleteCredentialTemplateResponse getDefaultInstanceForType() {
+    public trinsic.services.verifiablecredentials.templates.v1.Templates
+            .DeleteCredentialTemplateResponse
+        getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface CreateCredentialTemplateRequestOrBuilder extends
+  public interface CreateCredentialTemplateRequestOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     *
+     *
      * <pre>
      * Name of new template
      * </pre>
      *
      * <code>string name = 1;</code>
+     *
      * @return The name.
      */
     java.lang.String getName();
     /**
+     *
+     *
      * <pre>
      * Name of new template
      * </pre>
      *
      * <code>string name = 1;</code>
+     *
      * @return The bytes for name.
      */
-    com.google.protobuf.ByteString
-        getNameBytes();
+    com.google.protobuf.ByteString getNameBytes();
 
     /**
+     *
+     *
      * <pre>
      * Fields which compose the template
      * </pre>
      *
-     * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
+     * <code>
+     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
+     * </code>
      */
     int getFieldsCount();
     /**
+     *
+     *
      * <pre>
      * Fields which compose the template
      * </pre>
      *
-     * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
+     * <code>
+     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
+     * </code>
      */
-    boolean containsFields(
-        java.lang.String key);
-    /**
-     * Use {@link #getFieldsMap()} instead.
-     */
+    boolean containsFields(java.lang.String key);
+    /** Use {@link #getFieldsMap()} instead. */
     @java.lang.Deprecated
-    java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
-    getFields();
+    java.util.Map<
+            java.lang.String,
+            trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+        getFields();
     /**
+     *
+     *
      * <pre>
      * Fields which compose the template
      * </pre>
      *
-     * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
+     * <code>
+     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
+     * </code>
      */
-    java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
-    getFieldsMap();
+    java.util.Map<
+            java.lang.String,
+            trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+        getFieldsMap();
     /**
+     *
+     *
      * <pre>
      * Fields which compose the template
      * </pre>
      *
-     * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
+     * <code>
+     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
+     * </code>
      */
 
     /* nullable */
-trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField getFieldsOrDefault(
+    trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField getFieldsOrDefault(
         java.lang.String key,
         /* nullable */
-trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defaultValue);
+        trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defaultValue);
     /**
+     *
+     *
      * <pre>
      * Fields which compose the template
      * </pre>
      *
-     * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
+     * <code>
+     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
+     * </code>
      */
-
     trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField getFieldsOrThrow(
         java.lang.String key);
 
     /**
+     *
+     *
      * <pre>
      * Whether credentials may be issued against this template which have fields
      * not specified in `fields`
      * </pre>
      *
      * <code>bool allow_additional_fields = 3;</code>
+     *
      * @return The allowAdditionalFields.
      */
     boolean getAllowAdditionalFields();
   }
   /**
+   *
+   *
    * <pre>
    * Request to create a new template
    * </pre>
    *
-   * Protobuf type {@code services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest}
+   * Protobuf type {@code
+   * services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest}
    */
-  public static final class CreateCredentialTemplateRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class CreateCredentialTemplateRequest
+      extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest)
       CreateCredentialTemplateRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use CreateCredentialTemplateRequest.newBuilder() to construct.
-    private CreateCredentialTemplateRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private CreateCredentialTemplateRequest(
+        com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private CreateCredentialTemplateRequest() {
       name_ = "";
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new CreateCredentialTemplateRequest();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private CreateCredentialTemplateRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -6352,37 +7489,43 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 10:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
 
-              name_ = s;
-              break;
-            }
-            case 18: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                fields_ = com.google.protobuf.MapField.newMapField(
-                    FieldsDefaultEntryHolder.defaultEntry);
-                mutable_bitField0_ |= 0x00000001;
+                name_ = s;
+                break;
               }
-              com.google.protobuf.MapEntry<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
-              fields__ = input.readMessage(
-                  FieldsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-              fields_.getMutableMap().put(
-                  fields__.getKey(), fields__.getValue());
-              break;
-            }
-            case 24: {
-
-              allowAdditionalFields_ = input.readBool();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            case 18:
+              {
+                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                  fields_ =
+                      com.google.protobuf.MapField.newMapField(
+                          FieldsDefaultEntryHolder.defaultEntry);
+                  mutable_bitField0_ |= 0x00000001;
+                }
+                com.google.protobuf.MapEntry<
+                        java.lang.String,
+                        trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+                    fields__ =
+                        input.readMessage(
+                            FieldsDefaultEntryHolder.defaultEntry.getParserForType(),
+                            extensionRegistry);
+                fields_.getMutableMap().put(fields__.getKey(), fields__.getValue());
+                break;
               }
-              break;
-            }
+            case 24:
+              {
+                allowAdditionalFields_ = input.readBool();
+                break;
+              }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -6390,46 +7533,52 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
     @java.lang.Override
-    protected com.google.protobuf.MapField internalGetMapField(
-        int number) {
+    protected com.google.protobuf.MapField internalGetMapField(int number) {
       switch (number) {
         case 2:
           return internalGetFields();
         default:
-          throw new RuntimeException(
-              "Invalid map field number: " + number);
+          throw new RuntimeException("Invalid map field number: " + number);
       }
     }
+
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_fieldAccessorTable
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest.class, trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest.Builder.class);
+              trinsic.services.verifiablecredentials.templates.v1.Templates
+                  .CreateCredentialTemplateRequest.class,
+              trinsic.services.verifiablecredentials.templates.v1.Templates
+                  .CreateCredentialTemplateRequest.Builder.class);
     }
 
     public static final int NAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object name_;
     /**
+     *
+     *
      * <pre>
      * Name of new template
      * </pre>
      *
      * <code>string name = 1;</code>
+     *
      * @return The name.
      */
     @java.lang.Override
@@ -6438,29 +7587,29 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         name_ = s;
         return s;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Name of new template
      * </pre>
      *
      * <code>string name = 1;</code>
+     *
      * @return The bytes for name.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getNameBytes() {
+    public com.google.protobuf.ByteString getNameBytes() {
       java.lang.Object ref = name_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         name_ = b;
         return b;
       } else {
@@ -6469,24 +7618,36 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     }
 
     public static final int FIELDS_FIELD_NUMBER = 2;
+
     private static final class FieldsDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
-          java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField> defaultEntry =
+              java.lang.String,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+          defaultEntry =
               com.google.protobuf.MapEntry
-              .<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>newDefaultInstance(
-                  trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_FieldsEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.STRING,
-                  "",
-                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
-                  trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField.getDefaultInstance());
+                  .<java.lang.String,
+                      trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+                      newDefaultInstance(
+                          trinsic.services.verifiablecredentials.templates.v1.Templates
+                              .internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_FieldsEntry_descriptor,
+                          com.google.protobuf.WireFormat.FieldType.STRING,
+                          "",
+                          com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                          trinsic.services.verifiablecredentials.templates.v1.Templates
+                              .TemplateField.getDefaultInstance());
     }
+
     private com.google.protobuf.MapField<
-        java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField> fields_;
-    private com.google.protobuf.MapField<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
-    internalGetFields() {
+            java.lang.String,
+            trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+        fields_;
+
+    private com.google.protobuf.MapField<
+            java.lang.String,
+            trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+        internalGetFields() {
       if (fields_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
-            FieldsDefaultEntryHolder.defaultEntry);
+        return com.google.protobuf.MapField.emptyMapField(FieldsDefaultEntryHolder.defaultEntry);
       }
       return fields_;
     }
@@ -6495,70 +7656,97 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       return internalGetFields().getMap().size();
     }
     /**
+     *
+     *
      * <pre>
      * Fields which compose the template
      * </pre>
      *
-     * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
+     * <code>
+     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
+     * </code>
      */
-
     @java.lang.Override
-    public boolean containsFields(
-        java.lang.String key) {
-      if (key == null) { throw new NullPointerException("map key"); }
+    public boolean containsFields(java.lang.String key) {
+      if (key == null) {
+        throw new NullPointerException("map key");
+      }
       return internalGetFields().getMap().containsKey(key);
     }
-    /**
-     * Use {@link #getFieldsMap()} instead.
-     */
+    /** Use {@link #getFieldsMap()} instead. */
     @java.lang.Override
     @java.lang.Deprecated
-    public java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField> getFields() {
+    public java.util.Map<
+            java.lang.String,
+            trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+        getFields() {
       return getFieldsMap();
     }
     /**
+     *
+     *
      * <pre>
      * Fields which compose the template
      * </pre>
      *
-     * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
+     * <code>
+     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
+     * </code>
      */
     @java.lang.Override
-
-    public java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField> getFieldsMap() {
+    public java.util.Map<
+            java.lang.String,
+            trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+        getFieldsMap() {
       return internalGetFields().getMap();
     }
     /**
+     *
+     *
      * <pre>
      * Fields which compose the template
      * </pre>
      *
-     * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
+     * <code>
+     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
+     * </code>
      */
     @java.lang.Override
-
-    public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField getFieldsOrDefault(
-        java.lang.String key,
-        trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defaultValue) {
-      if (key == null) { throw new NullPointerException("map key"); }
-      java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField> map =
-          internalGetFields().getMap();
+    public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+        getFieldsOrDefault(
+            java.lang.String key,
+            trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+                defaultValue) {
+      if (key == null) {
+        throw new NullPointerException("map key");
+      }
+      java.util.Map<
+              java.lang.String,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+          map = internalGetFields().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
+     *
+     *
      * <pre>
      * Fields which compose the template
      * </pre>
      *
-     * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
+     * <code>
+     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
+     * </code>
      */
     @java.lang.Override
-
-    public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField getFieldsOrThrow(
-        java.lang.String key) {
-      if (key == null) { throw new NullPointerException("map key"); }
-      java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField> map =
-          internalGetFields().getMap();
+    public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+        getFieldsOrThrow(java.lang.String key) {
+      if (key == null) {
+        throw new NullPointerException("map key");
+      }
+      java.util.Map<
+              java.lang.String,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+          map = internalGetFields().getMap();
       if (!map.containsKey(key)) {
         throw new java.lang.IllegalArgumentException();
       }
@@ -6568,12 +7756,15 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     public static final int ALLOW_ADDITIONAL_FIELDS_FIELD_NUMBER = 3;
     private boolean allowAdditionalFields_;
     /**
+     *
+     *
      * <pre>
      * Whether credentials may be issued against this template which have fields
      * not specified in `fields`
      * </pre>
      *
      * <code>bool allow_additional_fields = 3;</code>
+     *
      * @return The allowAdditionalFields.
      */
     @java.lang.Override
@@ -6582,6 +7773,7 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -6593,17 +7785,12 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
       }
-      com.google.protobuf.GeneratedMessageV3
-        .serializeStringMapTo(
-          output,
-          internalGetFields(),
-          FieldsDefaultEntryHolder.defaultEntry,
-          2);
+      com.google.protobuf.GeneratedMessageV3.serializeStringMapTo(
+          output, internalGetFields(), FieldsDefaultEntryHolder.defaultEntry, 2);
       if (allowAdditionalFields_ != false) {
         output.writeBool(3, allowAdditionalFields_);
       }
@@ -6619,19 +7806,23 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
       }
-      for (java.util.Map.Entry<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField> entry
-           : internalGetFields().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
-        fields__ = FieldsDefaultEntryHolder.defaultEntry.newBuilderForType()
-            .setKey(entry.getKey())
-            .setValue(entry.getValue())
-            .build();
-        size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(2, fields__);
+      for (java.util.Map.Entry<
+              java.lang.String,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+          entry : internalGetFields().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<
+                java.lang.String,
+                trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+            fields__ =
+                FieldsDefaultEntryHolder.defaultEntry
+                    .newBuilderForType()
+                    .setKey(entry.getKey())
+                    .setValue(entry.getValue())
+                    .build();
+        size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, fields__);
       }
       if (allowAdditionalFields_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(3, allowAdditionalFields_);
+        size += com.google.protobuf.CodedOutputStream.computeBoolSize(3, allowAdditionalFields_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -6641,19 +7832,23 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest)) {
+      if (!(obj
+          instanceof
+          trinsic.services.verifiablecredentials.templates.v1.Templates
+              .CreateCredentialTemplateRequest)) {
         return super.equals(obj);
       }
-      trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest other = (trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest) obj;
+      trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest
+          other =
+              (trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .CreateCredentialTemplateRequest)
+                  obj;
 
-      if (!getName()
-          .equals(other.getName())) return false;
-      if (!internalGetFields().equals(
-          other.internalGetFields())) return false;
-      if (getAllowAdditionalFields()
-          != other.getAllowAdditionalFields()) return false;
+      if (!getName().equals(other.getName())) return false;
+      if (!internalGetFields().equals(other.internalGetFields())) return false;
+      if (getAllowAdditionalFields() != other.getAllowAdditionalFields()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -6672,95 +7867,121 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         hash = (53 * hash) + internalGetFields().hashCode();
       }
       hash = (37 * hash) + ALLOW_ADDITIONAL_FIELDS_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getAllowAdditionalFields());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getAllowAdditionalFields());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateRequest
+        parseFrom(java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateRequest
+        parseFrom(
+            java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateRequest
+        parseFrom(com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateRequest
+        parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateRequest
+        parseFrom(byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateRequest
+        parseFrom(byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateRequest
+        parseFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateRequest
+        parseFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateRequest
+        parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateRequest
+        parseDelimitedFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateRequest
+        parseFrom(com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateRequest
+        parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest prototype) {
+
+    public static Builder newBuilder(
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+                .CreateCredentialTemplateRequest
+            prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -6770,66 +7991,73 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       return builder;
     }
     /**
+     *
+     *
      * <pre>
      * Request to create a new template
      * </pre>
      *
-     * Protobuf type {@code services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest}
+     * Protobuf type {@code
+     * services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest)
-        trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_descriptor;
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_descriptor;
       }
 
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
-          int number) {
+      protected com.google.protobuf.MapField internalGetMapField(int number) {
         switch (number) {
           case 2:
             return internalGetFields();
           default:
-            throw new RuntimeException(
-                "Invalid map field number: " + number);
+            throw new RuntimeException("Invalid map field number: " + number);
         }
       }
+
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
-          int number) {
+      protected com.google.protobuf.MapField internalGetMutableMapField(int number) {
         switch (number) {
           case 2:
             return internalGetMutableFields();
           default:
-            throw new RuntimeException(
-                "Invalid map field number: " + number);
+            throw new RuntimeException("Invalid map field number: " + number);
         }
       }
+
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_fieldAccessorTable
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest.class, trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest.Builder.class);
+                trinsic.services.verifiablecredentials.templates.v1.Templates
+                    .CreateCredentialTemplateRequest.class,
+                trinsic.services.verifiablecredentials.templates.v1.Templates
+                    .CreateCredentialTemplateRequest.Builder.class);
       }
 
-      // Construct using trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest.newBuilder()
+      // Construct using
+      // trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -6842,19 +8070,26 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest getDefaultInstanceForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest.getDefaultInstance();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates
+              .CreateCredentialTemplateRequest
+          getDefaultInstanceForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest build() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest result = buildPartial();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates
+              .CreateCredentialTemplateRequest
+          build() {
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+                .CreateCredentialTemplateRequest
+            result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -6862,8 +8097,14 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest buildPartial() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest result = new trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest(this);
+      public trinsic.services.verifiablecredentials.templates.v1.Templates
+              .CreateCredentialTemplateRequest
+          buildPartial() {
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+                .CreateCredentialTemplateRequest
+            result =
+                new trinsic.services.verifiablecredentials.templates.v1.Templates
+                    .CreateCredentialTemplateRequest(this);
         int from_bitField0_ = bitField0_;
         result.name_ = name_;
         result.fields_ = internalGetFields();
@@ -6877,52 +8118,65 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest) {
-          return mergeFrom((trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest)other);
+        if (other
+            instanceof
+            trinsic.services.verifiablecredentials.templates.v1.Templates
+                .CreateCredentialTemplateRequest) {
+          return mergeFrom(
+              (trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .CreateCredentialTemplateRequest)
+                  other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest other) {
-        if (other == trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(
+          trinsic.services.verifiablecredentials.templates.v1.Templates
+                  .CreateCredentialTemplateRequest
+              other) {
+        if (other
+            == trinsic.services.verifiablecredentials.templates.v1.Templates
+                .CreateCredentialTemplateRequest.getDefaultInstance()) return this;
         if (!other.getName().isEmpty()) {
           name_ = other.name_;
           onChanged();
         }
-        internalGetMutableFields().mergeFrom(
-            other.internalGetFields());
+        internalGetMutableFields().mergeFrom(other.internalGetFields());
         if (other.getAllowAdditionalFields() != false) {
           setAllowAdditionalFields(other.getAllowAdditionalFields());
         }
@@ -6941,11 +8195,16 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest parsedMessage = null;
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+                .CreateCredentialTemplateRequest
+            parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .CreateCredentialTemplateRequest)
+                  e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -6954,22 +8213,25 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         }
         return this;
       }
+
       private int bitField0_;
 
       private java.lang.Object name_ = "";
       /**
+       *
+       *
        * <pre>
        * Name of new template
        * </pre>
        *
        * <code>string name = 1;</code>
+       *
        * @return The name.
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           name_ = s;
           return s;
@@ -6978,20 +8240,21 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         }
       }
       /**
+       *
+       *
        * <pre>
        * Name of new template
        * </pre>
        *
        * <code>string name = 1;</code>
+       *
        * @return The bytes for name.
        */
-      public com.google.protobuf.ByteString
-          getNameBytes() {
+      public com.google.protobuf.ByteString getNameBytes() {
         java.lang.Object ref = name_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           name_ = b;
           return b;
         } else {
@@ -6999,75 +8262,89 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         }
       }
       /**
+       *
+       *
        * <pre>
        * Name of new template
        * </pre>
        *
        * <code>string name = 1;</code>
+       *
        * @param value The name to set.
        * @return This builder for chaining.
        */
-      public Builder setName(
-          java.lang.String value) {
+      public Builder setName(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         name_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Name of new template
        * </pre>
        *
        * <code>string name = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearName() {
-        
+
         name_ = getDefaultInstance().getName();
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Name of new template
        * </pre>
        *
        * <code>string name = 1;</code>
+       *
        * @param value The bytes for name to set.
        * @return This builder for chaining.
        */
-      public Builder setNameBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setNameBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         name_ = value;
         onChanged();
         return this;
       }
 
       private com.google.protobuf.MapField<
-          java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField> fields_;
-      private com.google.protobuf.MapField<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
-      internalGetFields() {
+              java.lang.String,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+          fields_;
+
+      private com.google.protobuf.MapField<
+              java.lang.String,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+          internalGetFields() {
         if (fields_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
-              FieldsDefaultEntryHolder.defaultEntry);
+          return com.google.protobuf.MapField.emptyMapField(FieldsDefaultEntryHolder.defaultEntry);
         }
         return fields_;
       }
-      private com.google.protobuf.MapField<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
-      internalGetMutableFields() {
-        onChanged();;
+
+      private com.google.protobuf.MapField<
+              java.lang.String,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+          internalGetMutableFields() {
+        onChanged();
+        ;
         if (fields_ == null) {
-          fields_ = com.google.protobuf.MapField.newMapField(
-              FieldsDefaultEntryHolder.defaultEntry);
+          fields_ = com.google.protobuf.MapField.newMapField(FieldsDefaultEntryHolder.defaultEntry);
         }
         if (!fields_.isMutable()) {
           fields_ = fields_.copy();
@@ -7079,70 +8356,97 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         return internalGetFields().getMap().size();
       }
       /**
+       *
+       *
        * <pre>
        * Fields which compose the template
        * </pre>
        *
-       * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
+       * <code>
+       * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
+       * </code>
        */
-
       @java.lang.Override
-      public boolean containsFields(
-          java.lang.String key) {
-        if (key == null) { throw new NullPointerException("map key"); }
+      public boolean containsFields(java.lang.String key) {
+        if (key == null) {
+          throw new NullPointerException("map key");
+        }
         return internalGetFields().getMap().containsKey(key);
       }
-      /**
-       * Use {@link #getFieldsMap()} instead.
-       */
+      /** Use {@link #getFieldsMap()} instead. */
       @java.lang.Override
       @java.lang.Deprecated
-      public java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField> getFields() {
+      public java.util.Map<
+              java.lang.String,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+          getFields() {
         return getFieldsMap();
       }
       /**
+       *
+       *
        * <pre>
        * Fields which compose the template
        * </pre>
        *
-       * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
+       * <code>
+       * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
+       * </code>
        */
       @java.lang.Override
-
-      public java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField> getFieldsMap() {
+      public java.util.Map<
+              java.lang.String,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+          getFieldsMap() {
         return internalGetFields().getMap();
       }
       /**
+       *
+       *
        * <pre>
        * Fields which compose the template
        * </pre>
        *
-       * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
+       * <code>
+       * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
+       * </code>
        */
       @java.lang.Override
-
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField getFieldsOrDefault(
-          java.lang.String key,
-          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defaultValue) {
-        if (key == null) { throw new NullPointerException("map key"); }
-        java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField> map =
-            internalGetFields().getMap();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+          getFieldsOrDefault(
+              java.lang.String key,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+                  defaultValue) {
+        if (key == null) {
+          throw new NullPointerException("map key");
+        }
+        java.util.Map<
+                java.lang.String,
+                trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+            map = internalGetFields().getMap();
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
+       *
+       *
        * <pre>
        * Fields which compose the template
        * </pre>
        *
-       * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
+       * <code>
+       * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
+       * </code>
        */
       @java.lang.Override
-
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField getFieldsOrThrow(
-          java.lang.String key) {
-        if (key == null) { throw new NullPointerException("map key"); }
-        java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField> map =
-            internalGetFields().getMap();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+          getFieldsOrThrow(java.lang.String key) {
+        if (key == null) {
+          throw new NullPointerException("map key");
+        }
+        java.util.Map<
+                java.lang.String,
+                trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+            map = internalGetFields().getMap();
         if (!map.containsKey(key)) {
           throw new java.lang.IllegalArgumentException();
         }
@@ -7150,75 +8454,90 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       }
 
       public Builder clearFields() {
-        internalGetMutableFields().getMutableMap()
-            .clear();
+        internalGetMutableFields().getMutableMap().clear();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Fields which compose the template
        * </pre>
        *
-       * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
+       * <code>
+       * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
+       * </code>
        */
-
-      public Builder removeFields(
-          java.lang.String key) {
-        if (key == null) { throw new NullPointerException("map key"); }
-        internalGetMutableFields().getMutableMap()
-            .remove(key);
+      public Builder removeFields(java.lang.String key) {
+        if (key == null) {
+          throw new NullPointerException("map key");
+        }
+        internalGetMutableFields().getMutableMap().remove(key);
         return this;
       }
-      /**
-       * Use alternate mutation accessors instead.
-       */
+      /** Use alternate mutation accessors instead. */
       @java.lang.Deprecated
-      public java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
-      getMutableFields() {
+      public java.util.Map<
+              java.lang.String,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+          getMutableFields() {
         return internalGetMutableFields().getMutableMap();
       }
       /**
+       *
+       *
        * <pre>
        * Fields which compose the template
        * </pre>
        *
-       * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
+       * <code>
+       * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
+       * </code>
        */
       public Builder putFields(
           java.lang.String key,
           trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField value) {
-        if (key == null) { throw new NullPointerException("map key"); }
+        if (key == null) {
+          throw new NullPointerException("map key");
+        }
         if (value == null) {
-  throw new NullPointerException("map value");
-}
+          throw new NullPointerException("map value");
+        }
 
-        internalGetMutableFields().getMutableMap()
-            .put(key, value);
+        internalGetMutableFields().getMutableMap().put(key, value);
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Fields which compose the template
        * </pre>
        *
-       * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
+       * <code>
+       * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
+       * </code>
        */
-
       public Builder putAllFields(
-          java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField> values) {
-        internalGetMutableFields().getMutableMap()
-            .putAll(values);
+          java.util.Map<
+                  java.lang.String,
+                  trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+              values) {
+        internalGetMutableFields().getMutableMap().putAll(values);
         return this;
       }
 
-      private boolean allowAdditionalFields_ ;
+      private boolean allowAdditionalFields_;
       /**
+       *
+       *
        * <pre>
        * Whether credentials may be issued against this template which have fields
        * not specified in `fields`
        * </pre>
        *
        * <code>bool allow_additional_fields = 3;</code>
+       *
        * @return The allowAdditionalFields.
        */
       @java.lang.Override
@@ -7226,36 +8545,43 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         return allowAdditionalFields_;
       }
       /**
+       *
+       *
        * <pre>
        * Whether credentials may be issued against this template which have fields
        * not specified in `fields`
        * </pre>
        *
        * <code>bool allow_additional_fields = 3;</code>
+       *
        * @param value The allowAdditionalFields to set.
        * @return This builder for chaining.
        */
       public Builder setAllowAdditionalFields(boolean value) {
-        
+
         allowAdditionalFields_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Whether credentials may be issued against this template which have fields
        * not specified in `fields`
        * </pre>
        *
        * <code>bool allow_additional_fields = 3;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearAllowAdditionalFields() {
-        
+
         allowAdditionalFields_ = false;
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -7268,30 +8594,36 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest)
     }
 
     // @@protoc_insertion_point(class_scope:services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest)
-    private static final trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest DEFAULT_INSTANCE;
+    private static final trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateRequest
+        DEFAULT_INSTANCE;
+
     static {
-      DEFAULT_INSTANCE = new trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest();
+      DEFAULT_INSTANCE =
+          new trinsic.services.verifiablecredentials.templates.v1.Templates
+              .CreateCredentialTemplateRequest();
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest getDefaultInstance() {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateRequest
+        getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<CreateCredentialTemplateRequest>
-        PARSER = new com.google.protobuf.AbstractParser<CreateCredentialTemplateRequest>() {
-      @java.lang.Override
-      public CreateCredentialTemplateRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CreateCredentialTemplateRequest(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<CreateCredentialTemplateRequest> PARSER =
+        new com.google.protobuf.AbstractParser<CreateCredentialTemplateRequest>() {
+          @java.lang.Override
+          public CreateCredentialTemplateRequest parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new CreateCredentialTemplateRequest(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<CreateCredentialTemplateRequest> parser() {
       return PARSER;
@@ -7303,74 +8635,89 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     }
 
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateRequest getDefaultInstanceForType() {
+    public trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateRequest
+        getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface CreateCredentialTemplateResponseOrBuilder extends
+  public interface CreateCredentialTemplateResponseOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     *
+     *
      * <pre>
      * Created template
      * </pre>
      *
      * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
+     *
      * @return Whether the data field is set.
      */
     boolean hasData();
     /**
+     *
+     *
      * <pre>
      * Created template
      * </pre>
      *
      * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
+     *
      * @return The data.
      */
     trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData getData();
     /**
+     *
+     *
      * <pre>
      * Created template
      * </pre>
      *
      * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
      */
-    trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder getDataOrBuilder();
+    trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder
+        getDataOrBuilder();
   }
   /**
+   *
+   *
    * <pre>
    * Response to `CreateCredentialTemplateRequest`
    * </pre>
    *
-   * Protobuf type {@code services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse}
+   * Protobuf type {@code
+   * services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse}
    */
-  public static final class CreateCredentialTemplateResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class CreateCredentialTemplateResponse
+      extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse)
       CreateCredentialTemplateResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use CreateCredentialTemplateResponse.newBuilder() to construct.
-    private CreateCredentialTemplateResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    private CreateCredentialTemplateResponse(
+        com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private CreateCredentialTemplateResponse() {
-    }
+
+    private CreateCredentialTemplateResponse() {}
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new CreateCredentialTemplateResponse();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private CreateCredentialTemplateResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -7389,26 +8736,32 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
             case 0:
               done = true;
               break;
-            case 10: {
-              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder subBuilder = null;
-              if (data_ != null) {
-                subBuilder = data_.toBuilder();
-              }
-              data_ = input.readMessage(trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(data_);
-                data_ = subBuilder.buildPartial();
-              }
+            case 10:
+              {
+                trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder
+                    subBuilder = null;
+                if (data_ != null) {
+                  subBuilder = data_.toBuilder();
+                }
+                data_ =
+                    input.readMessage(
+                        trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+                            .parser(),
+                        extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(data_);
+                  data_ = subBuilder.buildPartial();
+                }
 
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -7416,34 +8769,41 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateResponse_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateResponse_fieldAccessorTable
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse.class, trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse.Builder.class);
+              trinsic.services.verifiablecredentials.templates.v1.Templates
+                  .CreateCredentialTemplateResponse.class,
+              trinsic.services.verifiablecredentials.templates.v1.Templates
+                  .CreateCredentialTemplateResponse.Builder.class);
     }
 
     public static final int DATA_FIELD_NUMBER = 1;
     private trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData data_;
     /**
+     *
+     *
      * <pre>
      * Created template
      * </pre>
      *
      * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
+     *
      * @return Whether the data field is set.
      */
     @java.lang.Override
@@ -7451,18 +8811,26 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       return data_ != null;
     }
     /**
+     *
+     *
      * <pre>
      * Created template
      * </pre>
      *
      * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
+     *
      * @return The data.
      */
     @java.lang.Override
     public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData getData() {
-      return data_ == null ? trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.getDefaultInstance() : data_;
+      return data_ == null
+          ? trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+              .getDefaultInstance()
+          : data_;
     }
     /**
+     *
+     *
      * <pre>
      * Created template
      * </pre>
@@ -7470,11 +8838,13 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
      * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
      */
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder getDataOrBuilder() {
+    public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder
+        getDataOrBuilder() {
       return getData();
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -7486,8 +8856,7 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (data_ != null) {
         output.writeMessage(1, getData());
       }
@@ -7501,8 +8870,7 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
 
       size = 0;
       if (data_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getData());
+        size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getData());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -7512,17 +8880,23 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse)) {
+      if (!(obj
+          instanceof
+          trinsic.services.verifiablecredentials.templates.v1.Templates
+              .CreateCredentialTemplateResponse)) {
         return super.equals(obj);
       }
-      trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse other = (trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse) obj;
+      trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse
+          other =
+              (trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .CreateCredentialTemplateResponse)
+                  obj;
 
       if (hasData() != other.hasData()) return false;
       if (hasData()) {
-        if (!getData()
-            .equals(other.getData())) return false;
+        if (!getData().equals(other.getData())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -7544,88 +8918,115 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       return hash;
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateResponse
+        parseFrom(java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateResponse
+        parseFrom(
+            java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateResponse
+        parseFrom(com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateResponse
+        parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateResponse
+        parseFrom(byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateResponse
+        parseFrom(byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateResponse
+        parseFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateResponse
+        parseFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateResponse
+        parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateResponse
+        parseDelimitedFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateResponse
+        parseFrom(com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateResponse
+        parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse prototype) {
+
+    public static Builder newBuilder(
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+                .CreateCredentialTemplateResponse
+            prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -7635,44 +9036,53 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       return builder;
     }
     /**
+     *
+     *
      * <pre>
      * Response to `CreateCredentialTemplateRequest`
      * </pre>
      *
-     * Protobuf type {@code services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse}
+     * Protobuf type {@code
+     * services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse)
-        trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateResponse_descriptor;
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateResponse_fieldAccessorTable
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse.class, trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse.Builder.class);
+                trinsic.services.verifiablecredentials.templates.v1.Templates
+                    .CreateCredentialTemplateResponse.class,
+                trinsic.services.verifiablecredentials.templates.v1.Templates
+                    .CreateCredentialTemplateResponse.Builder.class);
       }
 
-      // Construct using trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse.newBuilder()
+      // Construct using
+      // trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -7686,19 +9096,26 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateResponse_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateResponse_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse getDefaultInstanceForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse.getDefaultInstance();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates
+              .CreateCredentialTemplateResponse
+          getDefaultInstanceForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse build() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse result = buildPartial();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates
+              .CreateCredentialTemplateResponse
+          build() {
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+                .CreateCredentialTemplateResponse
+            result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -7706,8 +9123,14 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse buildPartial() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse result = new trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse(this);
+      public trinsic.services.verifiablecredentials.templates.v1.Templates
+              .CreateCredentialTemplateResponse
+          buildPartial() {
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+                .CreateCredentialTemplateResponse
+            result =
+                new trinsic.services.verifiablecredentials.templates.v1.Templates
+                    .CreateCredentialTemplateResponse(this);
         if (dataBuilder_ == null) {
           result.data_ = data_;
         } else {
@@ -7721,46 +9144,60 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse) {
-          return mergeFrom((trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse)other);
+        if (other
+            instanceof
+            trinsic.services.verifiablecredentials.templates.v1.Templates
+                .CreateCredentialTemplateResponse) {
+          return mergeFrom(
+              (trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .CreateCredentialTemplateResponse)
+                  other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse other) {
-        if (other == trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(
+          trinsic.services.verifiablecredentials.templates.v1.Templates
+                  .CreateCredentialTemplateResponse
+              other) {
+        if (other
+            == trinsic.services.verifiablecredentials.templates.v1.Templates
+                .CreateCredentialTemplateResponse.getDefaultInstance()) return this;
         if (other.hasData()) {
           mergeData(other.getData());
         }
@@ -7779,11 +9216,16 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse parsedMessage = null;
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+                .CreateCredentialTemplateResponse
+            parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .CreateCredentialTemplateResponse)
+                  e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -7795,41 +9237,56 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
 
       private trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData data_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder> dataBuilder_;
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder>
+          dataBuilder_;
       /**
+       *
+       *
        * <pre>
        * Created template
        * </pre>
        *
        * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
+       *
        * @return Whether the data field is set.
        */
       public boolean hasData() {
         return dataBuilder_ != null || data_ != null;
       }
       /**
+       *
+       *
        * <pre>
        * Created template
        * </pre>
        *
        * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
+       *
        * @return The data.
        */
       public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData getData() {
         if (dataBuilder_ == null) {
-          return data_ == null ? trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.getDefaultInstance() : data_;
+          return data_ == null
+              ? trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+                  .getDefaultInstance()
+              : data_;
         } else {
           return dataBuilder_.getMessage();
         }
       }
       /**
+       *
+       *
        * <pre>
        * Created template
        * </pre>
        *
        * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
        */
-      public Builder setData(trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData value) {
+      public Builder setData(
+          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData value) {
         if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -7843,6 +9300,8 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Created template
        * </pre>
@@ -7850,7 +9309,8 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
        * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
        */
       public Builder setData(
-          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder builderForValue) {
+          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder
+              builderForValue) {
         if (dataBuilder_ == null) {
           data_ = builderForValue.build();
           onChanged();
@@ -7861,17 +9321,23 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Created template
        * </pre>
        *
        * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
        */
-      public Builder mergeData(trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData value) {
+      public Builder mergeData(
+          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData value) {
         if (dataBuilder_ == null) {
           if (data_ != null) {
             data_ =
-              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.newBuilder(data_).mergeFrom(value).buildPartial();
+                trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+                    .newBuilder(data_)
+                    .mergeFrom(value)
+                    .buildPartial();
           } else {
             data_ = value;
           }
@@ -7883,6 +9349,8 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Created template
        * </pre>
@@ -7901,33 +9369,43 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Created template
        * </pre>
        *
        * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
        */
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder getDataBuilder() {
-        
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder
+          getDataBuilder() {
+
         onChanged();
         return getDataFieldBuilder().getBuilder();
       }
       /**
+       *
+       *
        * <pre>
        * Created template
        * </pre>
        *
        * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
        */
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder getDataOrBuilder() {
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder
+          getDataOrBuilder() {
         if (dataBuilder_ != null) {
           return dataBuilder_.getMessageOrBuilder();
         } else {
-          return data_ == null ?
-              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.getDefaultInstance() : data_;
+          return data_ == null
+              ? trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+                  .getDefaultInstance()
+              : data_;
         }
       }
       /**
+       *
+       *
        * <pre>
        * Created template
        * </pre>
@@ -7935,18 +9413,23 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
        * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder> 
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder>
           getDataFieldBuilder() {
         if (dataBuilder_ == null) {
-          dataBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder>(
-                  getData(),
-                  getParentForChildren(),
-                  isClean());
+          dataBuilder_ =
+              new com.google.protobuf.SingleFieldBuilderV3<
+                  trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData,
+                  trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+                      .Builder,
+                  trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .TemplateDataOrBuilder>(getData(), getParentForChildren(), isClean());
           data_ = null;
         }
         return dataBuilder_;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -7959,30 +9442,36 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse)
     }
 
     // @@protoc_insertion_point(class_scope:services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse)
-    private static final trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse DEFAULT_INSTANCE;
+    private static final trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateResponse
+        DEFAULT_INSTANCE;
+
     static {
-      DEFAULT_INSTANCE = new trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse();
+      DEFAULT_INSTANCE =
+          new trinsic.services.verifiablecredentials.templates.v1.Templates
+              .CreateCredentialTemplateResponse();
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse getDefaultInstance() {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateResponse
+        getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<CreateCredentialTemplateResponse>
-        PARSER = new com.google.protobuf.AbstractParser<CreateCredentialTemplateResponse>() {
-      @java.lang.Override
-      public CreateCredentialTemplateResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CreateCredentialTemplateResponse(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<CreateCredentialTemplateResponse> PARSER =
+        new com.google.protobuf.AbstractParser<CreateCredentialTemplateResponse>() {
+          @java.lang.Override
+          public CreateCredentialTemplateResponse parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new CreateCredentialTemplateResponse(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<CreateCredentialTemplateResponse> parser() {
       return PARSER;
@@ -7994,81 +9483,100 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     }
 
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.Templates.CreateCredentialTemplateResponse getDefaultInstanceForType() {
+    public trinsic.services.verifiablecredentials.templates.v1.Templates
+            .CreateCredentialTemplateResponse
+        getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface TemplateFieldOrBuilder extends
+  public interface TemplateFieldOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.templates.v1.TemplateField)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     *
+     *
      * <pre>
      * Human-readable description of the field
      * </pre>
      *
      * <code>string description = 2;</code>
+     *
      * @return The description.
      */
     java.lang.String getDescription();
     /**
+     *
+     *
      * <pre>
      * Human-readable description of the field
      * </pre>
      *
      * <code>string description = 2;</code>
+     *
      * @return The bytes for description.
      */
-    com.google.protobuf.ByteString
-        getDescriptionBytes();
+    com.google.protobuf.ByteString getDescriptionBytes();
 
     /**
+     *
+     *
      * <pre>
      * Whether this field may be omitted when a credential is issued against the template
      * </pre>
      *
      * <code>bool optional = 3;</code>
+     *
      * @return The optional.
      */
     boolean getOptional();
 
     /**
+     *
+     *
      * <pre>
      * The type of the field
      * </pre>
      *
      * <code>.services.verifiablecredentials.templates.v1.FieldType type = 4;</code>
+     *
      * @return The enum numeric value on the wire for type.
      */
     int getTypeValue();
     /**
+     *
+     *
      * <pre>
      * The type of the field
      * </pre>
      *
      * <code>.services.verifiablecredentials.templates.v1.FieldType type = 4;</code>
+     *
      * @return The type.
      */
     trinsic.services.verifiablecredentials.templates.v1.Templates.FieldType getType();
   }
   /**
+   *
+   *
    * <pre>
    * A field defined in a template
    * </pre>
    *
    * Protobuf type {@code services.verifiablecredentials.templates.v1.TemplateField}
    */
-  public static final class TemplateField extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class TemplateField extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:services.verifiablecredentials.templates.v1.TemplateField)
       TemplateFieldOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use TemplateField.newBuilder() to construct.
     private TemplateField(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private TemplateField() {
       description_ = "";
       type_ = 0;
@@ -8076,16 +9584,15 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new TemplateField();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private TemplateField(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -8104,30 +9611,32 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
             case 0:
               done = true;
               break;
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 18:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
 
-              description_ = s;
-              break;
-            }
-            case 24: {
-
-              optional_ = input.readBool();
-              break;
-            }
-            case 32: {
-              int rawValue = input.readEnum();
-
-              type_ = rawValue;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+                description_ = s;
+                break;
               }
-              break;
-            }
+            case 24:
+              {
+                optional_ = input.readBool();
+                break;
+              }
+            case 32:
+              {
+                int rawValue = input.readEnum();
+
+                type_ = rawValue;
+                break;
+              }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -8135,34 +9644,40 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_TemplateField_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_TemplateField_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_TemplateField_fieldAccessorTable
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_TemplateField_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField.class, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField.Builder.class);
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField.class,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField.Builder
+                  .class);
     }
 
     public static final int DESCRIPTION_FIELD_NUMBER = 2;
     private volatile java.lang.Object description_;
     /**
+     *
+     *
      * <pre>
      * Human-readable description of the field
      * </pre>
      *
      * <code>string description = 2;</code>
+     *
      * @return The description.
      */
     @java.lang.Override
@@ -8171,29 +9686,29 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         description_ = s;
         return s;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Human-readable description of the field
      * </pre>
      *
      * <code>string description = 2;</code>
+     *
      * @return The bytes for description.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getDescriptionBytes() {
+    public com.google.protobuf.ByteString getDescriptionBytes() {
       java.lang.Object ref = description_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         description_ = b;
         return b;
       } else {
@@ -8204,11 +9719,14 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     public static final int OPTIONAL_FIELD_NUMBER = 3;
     private boolean optional_;
     /**
+     *
+     *
      * <pre>
      * Whether this field may be omitted when a credential is issued against the template
      * </pre>
      *
      * <code>bool optional = 3;</code>
+     *
      * @return The optional.
      */
     @java.lang.Override
@@ -8219,31 +9737,43 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     public static final int TYPE_FIELD_NUMBER = 4;
     private int type_;
     /**
+     *
+     *
      * <pre>
      * The type of the field
      * </pre>
      *
      * <code>.services.verifiablecredentials.templates.v1.FieldType type = 4;</code>
+     *
      * @return The enum numeric value on the wire for type.
      */
-    @java.lang.Override public int getTypeValue() {
+    @java.lang.Override
+    public int getTypeValue() {
       return type_;
     }
     /**
+     *
+     *
      * <pre>
      * The type of the field
      * </pre>
      *
      * <code>.services.verifiablecredentials.templates.v1.FieldType type = 4;</code>
+     *
      * @return The type.
      */
-    @java.lang.Override public trinsic.services.verifiablecredentials.templates.v1.Templates.FieldType getType() {
+    @java.lang.Override
+    public trinsic.services.verifiablecredentials.templates.v1.Templates.FieldType getType() {
       @SuppressWarnings("deprecation")
-      trinsic.services.verifiablecredentials.templates.v1.Templates.FieldType result = trinsic.services.verifiablecredentials.templates.v1.Templates.FieldType.valueOf(type_);
-      return result == null ? trinsic.services.verifiablecredentials.templates.v1.Templates.FieldType.UNRECOGNIZED : result;
+      trinsic.services.verifiablecredentials.templates.v1.Templates.FieldType result =
+          trinsic.services.verifiablecredentials.templates.v1.Templates.FieldType.valueOf(type_);
+      return result == null
+          ? trinsic.services.verifiablecredentials.templates.v1.Templates.FieldType.UNRECOGNIZED
+          : result;
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -8255,15 +9785,16 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, description_);
       }
       if (optional_ != false) {
         output.writeBool(3, optional_);
       }
-      if (type_ != trinsic.services.verifiablecredentials.templates.v1.Templates.FieldType.STRING.getNumber()) {
+      if (type_
+          != trinsic.services.verifiablecredentials.templates.v1.Templates.FieldType.STRING
+              .getNumber()) {
         output.writeEnum(4, type_);
       }
       unknownFields.writeTo(output);
@@ -8279,12 +9810,12 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, description_);
       }
       if (optional_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(3, optional_);
+        size += com.google.protobuf.CodedOutputStream.computeBoolSize(3, optional_);
       }
-      if (type_ != trinsic.services.verifiablecredentials.templates.v1.Templates.FieldType.STRING.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(4, type_);
+      if (type_
+          != trinsic.services.verifiablecredentials.templates.v1.Templates.FieldType.STRING
+              .getNumber()) {
+        size += com.google.protobuf.CodedOutputStream.computeEnumSize(4, type_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -8294,17 +9825,17 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField)) {
+      if (!(obj
+          instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField)) {
         return super.equals(obj);
       }
-      trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField other = (trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField) obj;
+      trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField other =
+          (trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField) obj;
 
-      if (!getDescription()
-          .equals(other.getDescription())) return false;
-      if (getOptional()
-          != other.getOptional()) return false;
+      if (!getDescription().equals(other.getDescription())) return false;
+      if (getOptional() != other.getOptional()) return false;
       if (type_ != other.type_) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -8320,8 +9851,7 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
       hash = (53 * hash) + getDescription().hashCode();
       hash = (37 * hash) + OPTIONAL_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getOptional());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getOptional());
       hash = (37 * hash) + TYPE_FIELD_NUMBER;
       hash = (53 * hash) + type_;
       hash = (29 * hash) + unknownFields.hashCode();
@@ -8329,88 +9859,101 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       return hash;
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+        parseFrom(java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+        parseFrom(
+            java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+        parseFrom(com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+        parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+        parseFrom(byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+        parseFrom(byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+        parseFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+        parseFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+        parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+        parseDelimitedFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+        parseFrom(com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+        parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField prototype) {
+
+    public static Builder newBuilder(
+        trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -8420,44 +9963,50 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       return builder;
     }
     /**
+     *
+     *
      * <pre>
      * A field defined in a template
      * </pre>
      *
      * Protobuf type {@code services.verifiablecredentials.templates.v1.TemplateField}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:services.verifiablecredentials.templates.v1.TemplateField)
         trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateFieldOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_TemplateField_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_TemplateField_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_TemplateField_fieldAccessorTable
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_TemplateField_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField.class, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField.Builder.class);
+                trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField.class,
+                trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField.Builder
+                    .class);
       }
 
-      // Construct using trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField.newBuilder()
+      // Construct using
+      // trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -8471,19 +10020,22 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_TemplateField_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_TemplateField_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField getDefaultInstanceForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField.getDefaultInstance();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+          getDefaultInstanceForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+            .getDefaultInstance();
       }
 
       @java.lang.Override
       public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField build() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField result = buildPartial();
+        trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField result =
+            buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -8491,8 +10043,10 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField buildPartial() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField result = new trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField(this);
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+          buildPartial() {
+        trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField result =
+            new trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField(this);
         result.description_ = description_;
         result.optional_ = optional_;
         result.type_ = type_;
@@ -8504,46 +10058,55 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField) {
-          return mergeFrom((trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField)other);
+        if (other
+            instanceof
+            trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField) {
+          return mergeFrom(
+              (trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField) other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField other) {
-        if (other == trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField.getDefaultInstance()) return this;
+      public Builder mergeFrom(
+          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField other) {
+        if (other
+            == trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+                .getDefaultInstance()) return this;
         if (!other.getDescription().isEmpty()) {
           description_ = other.description_;
           onChanged();
@@ -8569,11 +10132,14 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField parsedMessage = null;
+        trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField parsedMessage =
+            null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField)
+                  e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -8585,18 +10151,20 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
 
       private java.lang.Object description_ = "";
       /**
+       *
+       *
        * <pre>
        * Human-readable description of the field
        * </pre>
        *
        * <code>string description = 2;</code>
+       *
        * @return The description.
        */
       public java.lang.String getDescription() {
         java.lang.Object ref = description_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           description_ = s;
           return s;
@@ -8605,20 +10173,21 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         }
       }
       /**
+       *
+       *
        * <pre>
        * Human-readable description of the field
        * </pre>
        *
        * <code>string description = 2;</code>
+       *
        * @return The bytes for description.
        */
-      public com.google.protobuf.ByteString
-          getDescriptionBytes() {
+      public com.google.protobuf.ByteString getDescriptionBytes() {
         java.lang.Object ref = description_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           description_ = b;
           return b;
         } else {
@@ -8626,66 +10195,76 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         }
       }
       /**
+       *
+       *
        * <pre>
        * Human-readable description of the field
        * </pre>
        *
        * <code>string description = 2;</code>
+       *
        * @param value The description to set.
        * @return This builder for chaining.
        */
-      public Builder setDescription(
-          java.lang.String value) {
+      public Builder setDescription(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         description_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Human-readable description of the field
        * </pre>
        *
        * <code>string description = 2;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearDescription() {
-        
+
         description_ = getDefaultInstance().getDescription();
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Human-readable description of the field
        * </pre>
        *
        * <code>string description = 2;</code>
+       *
        * @param value The bytes for description to set.
        * @return This builder for chaining.
        */
-      public Builder setDescriptionBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setDescriptionBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         description_ = value;
         onChanged();
         return this;
       }
 
-      private boolean optional_ ;
+      private boolean optional_;
       /**
+       *
+       *
        * <pre>
        * Whether this field may be omitted when a credential is issued against the template
        * </pre>
        *
        * <code>bool optional = 3;</code>
+       *
        * @return The optional.
        */
       @java.lang.Override
@@ -8693,30 +10272,36 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         return optional_;
       }
       /**
+       *
+       *
        * <pre>
        * Whether this field may be omitted when a credential is issued against the template
        * </pre>
        *
        * <code>bool optional = 3;</code>
+       *
        * @param value The optional to set.
        * @return This builder for chaining.
        */
       public Builder setOptional(boolean value) {
-        
+
         optional_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Whether this field may be omitted when a credential is issued against the template
        * </pre>
        *
        * <code>bool optional = 3;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearOptional() {
-        
+
         optional_ = false;
         onChanged();
         return this;
@@ -8724,77 +10309,98 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
 
       private int type_ = 0;
       /**
+       *
+       *
        * <pre>
        * The type of the field
        * </pre>
        *
        * <code>.services.verifiablecredentials.templates.v1.FieldType type = 4;</code>
+       *
        * @return The enum numeric value on the wire for type.
        */
-      @java.lang.Override public int getTypeValue() {
+      @java.lang.Override
+      public int getTypeValue() {
         return type_;
       }
       /**
+       *
+       *
        * <pre>
        * The type of the field
        * </pre>
        *
        * <code>.services.verifiablecredentials.templates.v1.FieldType type = 4;</code>
+       *
        * @param value The enum numeric value on the wire for type to set.
        * @return This builder for chaining.
        */
       public Builder setTypeValue(int value) {
-        
+
         type_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * The type of the field
        * </pre>
        *
        * <code>.services.verifiablecredentials.templates.v1.FieldType type = 4;</code>
+       *
        * @return The type.
        */
       @java.lang.Override
       public trinsic.services.verifiablecredentials.templates.v1.Templates.FieldType getType() {
         @SuppressWarnings("deprecation")
-        trinsic.services.verifiablecredentials.templates.v1.Templates.FieldType result = trinsic.services.verifiablecredentials.templates.v1.Templates.FieldType.valueOf(type_);
-        return result == null ? trinsic.services.verifiablecredentials.templates.v1.Templates.FieldType.UNRECOGNIZED : result;
+        trinsic.services.verifiablecredentials.templates.v1.Templates.FieldType result =
+            trinsic.services.verifiablecredentials.templates.v1.Templates.FieldType.valueOf(type_);
+        return result == null
+            ? trinsic.services.verifiablecredentials.templates.v1.Templates.FieldType.UNRECOGNIZED
+            : result;
       }
       /**
+       *
+       *
        * <pre>
        * The type of the field
        * </pre>
        *
        * <code>.services.verifiablecredentials.templates.v1.FieldType type = 4;</code>
+       *
        * @param value The type to set.
        * @return This builder for chaining.
        */
-      public Builder setType(trinsic.services.verifiablecredentials.templates.v1.Templates.FieldType value) {
+      public Builder setType(
+          trinsic.services.verifiablecredentials.templates.v1.Templates.FieldType value) {
         if (value == null) {
           throw new NullPointerException();
         }
-        
+
         type_ = value.getNumber();
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * The type of the field
        * </pre>
        *
        * <code>.services.verifiablecredentials.templates.v1.FieldType type = 4;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearType() {
-        
+
         type_ = 0;
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -8807,30 +10413,33 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:services.verifiablecredentials.templates.v1.TemplateField)
     }
 
     // @@protoc_insertion_point(class_scope:services.verifiablecredentials.templates.v1.TemplateField)
-    private static final trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField DEFAULT_INSTANCE;
+    private static final trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+        DEFAULT_INSTANCE;
+
     static {
-      DEFAULT_INSTANCE = new trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField();
+      DEFAULT_INSTANCE =
+          new trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField();
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField getDefaultInstance() {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+        getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<TemplateField>
-        PARSER = new com.google.protobuf.AbstractParser<TemplateField>() {
-      @java.lang.Override
-      public TemplateField parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new TemplateField(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<TemplateField> PARSER =
+        new com.google.protobuf.AbstractParser<TemplateField>() {
+          @java.lang.Override
+          public TemplateField parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new TemplateField(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<TemplateField> parser() {
       return PARSER;
@@ -8842,60 +10451,64 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     }
 
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField getDefaultInstanceForType() {
+    public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+        getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface GetTemplateRequestOrBuilder extends
+  public interface GetTemplateRequestOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.templates.v1.GetTemplateRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>string id = 1;</code>
+     *
      * @return The id.
      */
     java.lang.String getId();
     /**
      * <code>string id = 1;</code>
+     *
      * @return The bytes for id.
      */
-    com.google.protobuf.ByteString
-        getIdBytes();
+    com.google.protobuf.ByteString getIdBytes();
   }
   /**
+   *
+   *
    * <pre>
    * Unused
    * </pre>
    *
    * Protobuf type {@code services.verifiablecredentials.templates.v1.GetTemplateRequest}
    */
-  public static final class GetTemplateRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class GetTemplateRequest extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:services.verifiablecredentials.templates.v1.GetTemplateRequest)
       GetTemplateRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use GetTemplateRequest.newBuilder() to construct.
     private GetTemplateRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private GetTemplateRequest() {
       id_ = "";
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new GetTemplateRequest();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private GetTemplateRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -8914,19 +10527,20 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 10:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
 
-              id_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+                id_ = s;
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -8934,30 +10548,35 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_GetTemplateRequest_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_GetTemplateRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_GetTemplateRequest_fieldAccessorTable
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_GetTemplateRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest.class, trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest.Builder.class);
+              trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest
+                  .class,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest
+                  .Builder.class);
     }
 
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
      * <code>string id = 1;</code>
+     *
      * @return The id.
      */
     @java.lang.Override
@@ -8966,8 +10585,7 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         id_ = s;
         return s;
@@ -8975,16 +10593,15 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     }
     /**
      * <code>string id = 1;</code>
+     *
      * @return The bytes for id.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getIdBytes() {
+    public com.google.protobuf.ByteString getIdBytes() {
       java.lang.Object ref = id_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         id_ = b;
         return b;
       } else {
@@ -8993,6 +10610,7 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -9004,8 +10622,7 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
@@ -9029,15 +10646,17 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest)) {
+      if (!(obj
+          instanceof
+          trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest)) {
         return super.equals(obj);
       }
-      trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest other = (trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest) obj;
+      trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest other =
+          (trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest) obj;
 
-      if (!getId()
-          .equals(other.getId())) return false;
+      if (!getId().equals(other.getId())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -9056,88 +10675,102 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       return hash;
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest
+        parseFrom(java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest
+        parseFrom(
+            java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest
+        parseFrom(com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest
+        parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest
+        parseFrom(byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest
+        parseFrom(byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest
+        parseFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest
+        parseFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest
+        parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest
+        parseDelimitedFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest
+        parseFrom(com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest
+        parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest prototype) {
+
+    public static Builder newBuilder(
+        trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest
+            prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -9147,44 +10780,51 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       return builder;
     }
     /**
+     *
+     *
      * <pre>
      * Unused
      * </pre>
      *
      * Protobuf type {@code services.verifiablecredentials.templates.v1.GetTemplateRequest}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:services.verifiablecredentials.templates.v1.GetTemplateRequest)
         trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_GetTemplateRequest_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_GetTemplateRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_GetTemplateRequest_fieldAccessorTable
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_GetTemplateRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest.class, trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest.Builder.class);
+                trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest
+                    .class,
+                trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest
+                    .Builder.class);
       }
 
-      // Construct using trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest.newBuilder()
+      // Construct using
+      // trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -9194,19 +10834,23 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_GetTemplateRequest_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_GetTemplateRequest_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest getDefaultInstanceForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest.getDefaultInstance();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest
+          getDefaultInstanceForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest
+            .getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest build() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest result = buildPartial();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest
+          build() {
+        trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest result =
+            buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -9214,8 +10858,11 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest buildPartial() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest result = new trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest(this);
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest
+          buildPartial() {
+        trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest result =
+            new trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest(
+                this);
         result.id_ = id_;
         onBuilt();
         return result;
@@ -9225,46 +10872,56 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest) {
-          return mergeFrom((trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest)other);
+        if (other
+            instanceof
+            trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest) {
+          return mergeFrom(
+              (trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest)
+                  other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest other) {
-        if (other == trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(
+          trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest other) {
+        if (other
+            == trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest
+                .getDefaultInstance()) return this;
         if (!other.getId().isEmpty()) {
           id_ = other.id_;
           onChanged();
@@ -9284,11 +10941,14 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest parsedMessage = null;
+        trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest
+            parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest)
+                  e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -9301,13 +10961,13 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       private java.lang.Object id_ = "";
       /**
        * <code>string id = 1;</code>
+       *
        * @return The id.
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           id_ = s;
           return s;
@@ -9317,15 +10977,14 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       }
       /**
        * <code>string id = 1;</code>
+       *
        * @return The bytes for id.
        */
-      public com.google.protobuf.ByteString
-          getIdBytes() {
+      public com.google.protobuf.ByteString getIdBytes() {
         java.lang.Object ref = id_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           id_ = b;
           return b;
         } else {
@@ -9334,45 +10993,47 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       }
       /**
        * <code>string id = 1;</code>
+       *
        * @param value The id to set.
        * @return This builder for chaining.
        */
-      public Builder setId(
-          java.lang.String value) {
+      public Builder setId(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         id_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>string id = 1;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearId() {
-        
+
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
       }
       /**
        * <code>string id = 1;</code>
+       *
        * @param value The bytes for id to set.
        * @return This builder for chaining.
        */
-      public Builder setIdBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setIdBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         id_ = value;
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -9385,30 +11046,34 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:services.verifiablecredentials.templates.v1.GetTemplateRequest)
     }
 
     // @@protoc_insertion_point(class_scope:services.verifiablecredentials.templates.v1.GetTemplateRequest)
-    private static final trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest DEFAULT_INSTANCE;
+    private static final trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetTemplateRequest
+        DEFAULT_INSTANCE;
+
     static {
-      DEFAULT_INSTANCE = new trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest();
+      DEFAULT_INSTANCE =
+          new trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest();
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest getDefaultInstance() {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest
+        getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<GetTemplateRequest>
-        PARSER = new com.google.protobuf.AbstractParser<GetTemplateRequest>() {
-      @java.lang.Override
-      public GetTemplateRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GetTemplateRequest(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<GetTemplateRequest> PARSER =
+        new com.google.protobuf.AbstractParser<GetTemplateRequest>() {
+          @java.lang.Override
+          public GetTemplateRequest parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new GetTemplateRequest(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<GetTemplateRequest> parser() {
       return PARSER;
@@ -9420,62 +11085,65 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     }
 
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest getDefaultInstanceForType() {
+    public trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateRequest
+        getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface GetTemplateResponseOrBuilder extends
+  public interface GetTemplateResponseOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.templates.v1.GetTemplateResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
+     *
      * @return Whether the data field is set.
      */
     boolean hasData();
     /**
      * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
+     *
      * @return The data.
      */
     trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData getData();
-    /**
-     * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
-     */
-    trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder getDataOrBuilder();
+    /** <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code> */
+    trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder
+        getDataOrBuilder();
   }
   /**
+   *
+   *
    * <pre>
    * Unused
    * </pre>
    *
    * Protobuf type {@code services.verifiablecredentials.templates.v1.GetTemplateResponse}
    */
-  public static final class GetTemplateResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class GetTemplateResponse extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:services.verifiablecredentials.templates.v1.GetTemplateResponse)
       GetTemplateResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use GetTemplateResponse.newBuilder() to construct.
     private GetTemplateResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private GetTemplateResponse() {
-    }
+
+    private GetTemplateResponse() {}
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new GetTemplateResponse();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private GetTemplateResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -9494,26 +11162,32 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
             case 0:
               done = true;
               break;
-            case 10: {
-              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder subBuilder = null;
-              if (data_ != null) {
-                subBuilder = data_.toBuilder();
-              }
-              data_ = input.readMessage(trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(data_);
-                data_ = subBuilder.buildPartial();
-              }
+            case 10:
+              {
+                trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder
+                    subBuilder = null;
+                if (data_ != null) {
+                  subBuilder = data_.toBuilder();
+                }
+                data_ =
+                    input.readMessage(
+                        trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+                            .parser(),
+                        extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(data_);
+                  data_ = subBuilder.buildPartial();
+                }
 
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+                break;
               }
-              break;
-            }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -9521,30 +11195,35 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_GetTemplateResponse_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_GetTemplateResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_GetTemplateResponse_fieldAccessorTable
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_GetTemplateResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse.class, trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse.Builder.class);
+              trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse
+                  .class,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse
+                  .Builder.class);
     }
 
     public static final int DATA_FIELD_NUMBER = 1;
     private trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData data_;
     /**
      * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
+     *
      * @return Whether the data field is set.
      */
     @java.lang.Override
@@ -9553,21 +11232,25 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     }
     /**
      * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
+     *
      * @return The data.
      */
     @java.lang.Override
     public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData getData() {
-      return data_ == null ? trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.getDefaultInstance() : data_;
+      return data_ == null
+          ? trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+              .getDefaultInstance()
+          : data_;
     }
-    /**
-     * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
-     */
+    /** <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code> */
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder getDataOrBuilder() {
+    public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder
+        getDataOrBuilder() {
       return getData();
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -9579,8 +11262,7 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (data_ != null) {
         output.writeMessage(1, getData());
       }
@@ -9594,8 +11276,7 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
 
       size = 0;
       if (data_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getData());
+        size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getData());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -9605,17 +11286,19 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse)) {
+      if (!(obj
+          instanceof
+          trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse)) {
         return super.equals(obj);
       }
-      trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse other = (trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse) obj;
+      trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse other =
+          (trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse) obj;
 
       if (hasData() != other.hasData()) return false;
       if (hasData()) {
-        if (!getData()
-            .equals(other.getData())) return false;
+        if (!getData().equals(other.getData())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -9637,88 +11320,102 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       return hash;
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse
+        parseFrom(java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse
+        parseFrom(
+            java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse
+        parseFrom(com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse
+        parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse
+        parseFrom(byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse
+        parseFrom(byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse
+        parseFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse
+        parseFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse
+        parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse
+        parseDelimitedFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse
+        parseFrom(com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse
+        parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse prototype) {
+
+    public static Builder newBuilder(
+        trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse
+            prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -9728,44 +11425,51 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       return builder;
     }
     /**
+     *
+     *
      * <pre>
      * Unused
      * </pre>
      *
      * Protobuf type {@code services.verifiablecredentials.templates.v1.GetTemplateResponse}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:services.verifiablecredentials.templates.v1.GetTemplateResponse)
         trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_GetTemplateResponse_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_GetTemplateResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_GetTemplateResponse_fieldAccessorTable
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_GetTemplateResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse.class, trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse.Builder.class);
+                trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse
+                    .class,
+                trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse
+                    .Builder.class);
       }
 
-      // Construct using trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse.newBuilder()
+      // Construct using
+      // trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -9779,19 +11483,23 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_GetTemplateResponse_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_GetTemplateResponse_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse getDefaultInstanceForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse.getDefaultInstance();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse
+          getDefaultInstanceForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse
+            .getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse build() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse result = buildPartial();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse
+          build() {
+        trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse result =
+            buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -9799,8 +11507,11 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse buildPartial() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse result = new trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse(this);
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse
+          buildPartial() {
+        trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse result =
+            new trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse(
+                this);
         if (dataBuilder_ == null) {
           result.data_ = data_;
         } else {
@@ -9814,46 +11525,56 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse) {
-          return mergeFrom((trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse)other);
+        if (other
+            instanceof
+            trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse) {
+          return mergeFrom(
+              (trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse)
+                  other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse other) {
-        if (other == trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(
+          trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse other) {
+        if (other
+            == trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse
+                .getDefaultInstance()) return this;
         if (other.hasData()) {
           mergeData(other.getData());
         }
@@ -9872,11 +11593,14 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse parsedMessage = null;
+        trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse
+            parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse)
+                  e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -9888,9 +11612,13 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
 
       private trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData data_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder> dataBuilder_;
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder>
+          dataBuilder_;
       /**
        * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
+       *
        * @return Whether the data field is set.
        */
       public boolean hasData() {
@@ -9898,19 +11626,22 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       }
       /**
        * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
+       *
        * @return The data.
        */
       public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData getData() {
         if (dataBuilder_ == null) {
-          return data_ == null ? trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.getDefaultInstance() : data_;
+          return data_ == null
+              ? trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+                  .getDefaultInstance()
+              : data_;
         } else {
           return dataBuilder_.getMessage();
         }
       }
-      /**
-       * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
-       */
-      public Builder setData(trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData value) {
+      /** <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code> */
+      public Builder setData(
+          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData value) {
         if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -9923,11 +11654,10 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
 
         return this;
       }
-      /**
-       * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
-       */
+      /** <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code> */
       public Builder setData(
-          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder builderForValue) {
+          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder
+              builderForValue) {
         if (dataBuilder_ == null) {
           data_ = builderForValue.build();
           onChanged();
@@ -9937,14 +11667,16 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
 
         return this;
       }
-      /**
-       * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
-       */
-      public Builder mergeData(trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData value) {
+      /** <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code> */
+      public Builder mergeData(
+          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData value) {
         if (dataBuilder_ == null) {
           if (data_ != null) {
             data_ =
-              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.newBuilder(data_).mergeFrom(value).buildPartial();
+                trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+                    .newBuilder(data_)
+                    .mergeFrom(value)
+                    .buildPartial();
           } else {
             data_ = value;
           }
@@ -9955,9 +11687,7 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
 
         return this;
       }
-      /**
-       * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
-       */
+      /** <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code> */
       public Builder clearData() {
         if (dataBuilder_ == null) {
           data_ = null;
@@ -9969,41 +11699,44 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
 
         return this;
       }
-      /**
-       * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
-       */
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder getDataBuilder() {
-        
+      /** <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code> */
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder
+          getDataBuilder() {
+
         onChanged();
         return getDataFieldBuilder().getBuilder();
       }
-      /**
-       * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
-       */
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder getDataOrBuilder() {
+      /** <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code> */
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder
+          getDataOrBuilder() {
         if (dataBuilder_ != null) {
           return dataBuilder_.getMessageOrBuilder();
         } else {
-          return data_ == null ?
-              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.getDefaultInstance() : data_;
+          return data_ == null
+              ? trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+                  .getDefaultInstance()
+              : data_;
         }
       }
-      /**
-       * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
-       */
+      /** <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code> */
       private com.google.protobuf.SingleFieldBuilderV3<
-          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder> 
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder>
           getDataFieldBuilder() {
         if (dataBuilder_ == null) {
-          dataBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder>(
-                  getData(),
-                  getParentForChildren(),
-                  isClean());
+          dataBuilder_ =
+              new com.google.protobuf.SingleFieldBuilderV3<
+                  trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData,
+                  trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+                      .Builder,
+                  trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .TemplateDataOrBuilder>(getData(), getParentForChildren(), isClean());
           data_ = null;
         }
         return dataBuilder_;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -10016,30 +11749,34 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:services.verifiablecredentials.templates.v1.GetTemplateResponse)
     }
 
     // @@protoc_insertion_point(class_scope:services.verifiablecredentials.templates.v1.GetTemplateResponse)
-    private static final trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse DEFAULT_INSTANCE;
+    private static final trinsic.services.verifiablecredentials.templates.v1.Templates
+            .GetTemplateResponse
+        DEFAULT_INSTANCE;
+
     static {
-      DEFAULT_INSTANCE = new trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse();
+      DEFAULT_INSTANCE =
+          new trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse();
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse getDefaultInstance() {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse
+        getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<GetTemplateResponse>
-        PARSER = new com.google.protobuf.AbstractParser<GetTemplateResponse>() {
-      @java.lang.Override
-      public GetTemplateResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GetTemplateResponse(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<GetTemplateResponse> PARSER =
+        new com.google.protobuf.AbstractParser<GetTemplateResponse>() {
+          @java.lang.Override
+          public GetTemplateResponse parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new GetTemplateResponse(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<GetTemplateResponse> parser() {
       return PARSER;
@@ -10051,47 +11788,48 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     }
 
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse getDefaultInstanceForType() {
+    public trinsic.services.verifiablecredentials.templates.v1.Templates.GetTemplateResponse
+        getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface ListTemplatesRequestOrBuilder extends
+  public interface ListTemplatesRequestOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.templates.v1.ListTemplatesRequest)
-      com.google.protobuf.MessageOrBuilder {
-  }
+      com.google.protobuf.MessageOrBuilder {}
   /**
+   *
+   *
    * <pre>
    * Unused
    * </pre>
    *
    * Protobuf type {@code services.verifiablecredentials.templates.v1.ListTemplatesRequest}
    */
-  public static final class ListTemplatesRequest extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class ListTemplatesRequest extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:services.verifiablecredentials.templates.v1.ListTemplatesRequest)
       ListTemplatesRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use ListTemplatesRequest.newBuilder() to construct.
     private ListTemplatesRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ListTemplatesRequest() {
-    }
+
+    private ListTemplatesRequest() {}
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new ListTemplatesRequest();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private ListTemplatesRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -10110,13 +11848,13 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
             case 0:
               done = true;
               break;
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
               }
-              break;
-            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -10124,27 +11862,32 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_ListTemplatesRequest_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_ListTemplatesRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_ListTemplatesRequest_fieldAccessorTable
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_ListTemplatesRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest.class, trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest.Builder.class);
+              trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest
+                  .class,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest
+                  .Builder.class);
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -10156,8 +11899,7 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       unknownFields.writeTo(output);
     }
 
@@ -10175,12 +11917,15 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest)) {
+      if (!(obj
+          instanceof
+          trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest)) {
         return super.equals(obj);
       }
-      trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest other = (trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest) obj;
+      trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest other =
+          (trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest) obj;
 
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -10198,88 +11943,102 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       return hash;
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest
+        parseFrom(java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest
+        parseFrom(
+            java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest
+        parseFrom(com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest
+        parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest
+        parseFrom(byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest
+        parseFrom(byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest
+        parseFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest
+        parseFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest
+        parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest
+        parseDelimitedFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest
+        parseFrom(com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest
+        parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest prototype) {
+
+    public static Builder newBuilder(
+        trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest
+            prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -10289,44 +12048,52 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       return builder;
     }
     /**
+     *
+     *
      * <pre>
      * Unused
      * </pre>
      *
      * Protobuf type {@code services.verifiablecredentials.templates.v1.ListTemplatesRequest}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:services.verifiablecredentials.templates.v1.ListTemplatesRequest)
-        trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_ListTemplatesRequest_descriptor;
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListTemplatesRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_ListTemplatesRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_ListTemplatesRequest_fieldAccessorTable
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_ListTemplatesRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest.class, trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest.Builder.class);
+                trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest
+                    .class,
+                trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest
+                    .Builder.class);
       }
 
-      // Construct using trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest.newBuilder()
+      // Construct using
+      // trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -10334,19 +12101,23 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_ListTemplatesRequest_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_ListTemplatesRequest_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest getDefaultInstanceForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest.getDefaultInstance();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest
+          getDefaultInstanceForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest
+            .getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest build() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest result = buildPartial();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest
+          build() {
+        trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest result =
+            buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -10354,8 +12125,11 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest buildPartial() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest result = new trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest(this);
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest
+          buildPartial() {
+        trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest result =
+            new trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest(
+                this);
         onBuilt();
         return result;
       }
@@ -10364,46 +12138,57 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest) {
-          return mergeFrom((trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest)other);
+        if (other
+            instanceof
+            trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest) {
+          return mergeFrom(
+              (trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest)
+                  other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest other) {
-        if (other == trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(
+          trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest
+              other) {
+        if (other
+            == trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest
+                .getDefaultInstance()) return this;
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -10419,11 +12204,14 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest parsedMessage = null;
+        trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest
+            parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest)
+                  e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -10432,6 +12220,7 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         }
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -10444,30 +12233,34 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:services.verifiablecredentials.templates.v1.ListTemplatesRequest)
     }
 
     // @@protoc_insertion_point(class_scope:services.verifiablecredentials.templates.v1.ListTemplatesRequest)
-    private static final trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest DEFAULT_INSTANCE;
+    private static final trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListTemplatesRequest
+        DEFAULT_INSTANCE;
+
     static {
-      DEFAULT_INSTANCE = new trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest();
+      DEFAULT_INSTANCE =
+          new trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest();
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest getDefaultInstance() {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest
+        getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ListTemplatesRequest>
-        PARSER = new com.google.protobuf.AbstractParser<ListTemplatesRequest>() {
-      @java.lang.Override
-      public ListTemplatesRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ListTemplatesRequest(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<ListTemplatesRequest> PARSER =
+        new com.google.protobuf.AbstractParser<ListTemplatesRequest>() {
+          @java.lang.Override
+          public ListTemplatesRequest parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new ListTemplatesRequest(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<ListTemplatesRequest> parser() {
       return PARSER;
@@ -10479,72 +12272,83 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     }
 
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest getDefaultInstanceForType() {
+    public trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesRequest
+        getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface ListTemplatesResponseOrBuilder extends
+  public interface ListTemplatesResponseOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.templates.v1.ListTemplatesResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+     * </code>
      */
-    java.util.List<trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData> 
+    java.util.List<trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData>
         getTemplatesList();
     /**
-     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+     * </code>
      */
-    trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData getTemplates(int index);
+    trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData getTemplates(
+        int index);
     /**
-     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+     * </code>
      */
     int getTemplatesCount();
     /**
-     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+     * </code>
      */
-    java.util.List<? extends trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder> 
+    java.util.List<
+            ? extends
+                trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder>
         getTemplatesOrBuilderList();
     /**
-     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+     * </code>
      */
-    trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder getTemplatesOrBuilder(
-        int index);
+    trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder
+        getTemplatesOrBuilder(int index);
   }
   /**
+   *
+   *
    * <pre>
    * Unused
    * </pre>
    *
    * Protobuf type {@code services.verifiablecredentials.templates.v1.ListTemplatesResponse}
    */
-  public static final class ListTemplatesResponse extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class ListTemplatesResponse extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:services.verifiablecredentials.templates.v1.ListTemplatesResponse)
       ListTemplatesResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use ListTemplatesResponse.newBuilder() to construct.
     private ListTemplatesResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private ListTemplatesResponse() {
       templates_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new ListTemplatesResponse();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private ListTemplatesResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -10564,22 +12368,29 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
             case 0:
               done = true;
               break;
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                templates_ = new java.util.ArrayList<trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData>();
-                mutable_bitField0_ |= 0x00000001;
+            case 10:
+              {
+                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                  templates_ =
+                      new java.util.ArrayList<
+                          trinsic.services.verifiablecredentials.templates.v1.Templates
+                              .TemplateData>();
+                  mutable_bitField0_ |= 0x00000001;
+                }
+                templates_.add(
+                    input.readMessage(
+                        trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+                            .parser(),
+                        extensionRegistry));
+                break;
               }
-              templates_.add(
-                  input.readMessage(trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.parser(), extensionRegistry));
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
               }
-              break;
-            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -10587,8 +12398,7 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) != 0)) {
           templates_ = java.util.Collections.unmodifiableList(templates_);
@@ -10597,60 +12407,78 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_ListTemplatesResponse_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_ListTemplatesResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_ListTemplatesResponse_fieldAccessorTable
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_ListTemplatesResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse.class, trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse.Builder.class);
+              trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse
+                  .class,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse
+                  .Builder.class);
     }
 
     public static final int TEMPLATES_FIELD_NUMBER = 1;
-    private java.util.List<trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData> templates_;
+    private java.util.List<
+            trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData>
+        templates_;
     /**
-     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+     * </code>
      */
     @java.lang.Override
-    public java.util.List<trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData> getTemplatesList() {
+    public java.util.List<
+            trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData>
+        getTemplatesList() {
       return templates_;
     }
     /**
-     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+     * </code>
      */
     @java.lang.Override
-    public java.util.List<? extends trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder> 
+    public java.util.List<
+            ? extends
+                trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder>
         getTemplatesOrBuilderList() {
       return templates_;
     }
     /**
-     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+     * </code>
      */
     @java.lang.Override
     public int getTemplatesCount() {
       return templates_.size();
     }
     /**
-     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+     * </code>
      */
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData getTemplates(int index) {
+    public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData getTemplates(
+        int index) {
       return templates_.get(index);
     }
     /**
-     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+     * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+     * </code>
      */
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder getTemplatesOrBuilder(
-        int index) {
+    public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder
+        getTemplatesOrBuilder(int index) {
       return templates_.get(index);
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -10662,8 +12490,7 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       for (int i = 0; i < templates_.size(); i++) {
         output.writeMessage(1, templates_.get(i));
       }
@@ -10677,8 +12504,7 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
 
       size = 0;
       for (int i = 0; i < templates_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, templates_.get(i));
+        size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, templates_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -10688,15 +12514,17 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse)) {
+      if (!(obj
+          instanceof
+          trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse)) {
         return super.equals(obj);
       }
-      trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse other = (trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse) obj;
+      trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse other =
+          (trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse) obj;
 
-      if (!getTemplatesList()
-          .equals(other.getTemplatesList())) return false;
+      if (!getTemplatesList().equals(other.getTemplatesList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -10717,88 +12545,114 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       return hash;
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListTemplatesResponse
+        parseFrom(java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListTemplatesResponse
+        parseFrom(
+            java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListTemplatesResponse
+        parseFrom(com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListTemplatesResponse
+        parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListTemplatesResponse
+        parseFrom(byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListTemplatesResponse
+        parseFrom(byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListTemplatesResponse
+        parseFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListTemplatesResponse
+        parseFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListTemplatesResponse
+        parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListTemplatesResponse
+        parseDelimitedFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListTemplatesResponse
+        parseFrom(com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListTemplatesResponse
+        parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse prototype) {
+
+    public static Builder newBuilder(
+        trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse
+            prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -10808,45 +12662,54 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       return builder;
     }
     /**
+     *
+     *
      * <pre>
      * Unused
      * </pre>
      *
      * Protobuf type {@code services.verifiablecredentials.templates.v1.ListTemplatesResponse}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:services.verifiablecredentials.templates.v1.ListTemplatesResponse)
-        trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponseOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_ListTemplatesResponse_descriptor;
+        trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListTemplatesResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_ListTemplatesResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_ListTemplatesResponse_fieldAccessorTable
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_ListTemplatesResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse.class, trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse.Builder.class);
+                trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse
+                    .class,
+                trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse
+                    .Builder.class);
       }
 
-      // Construct using trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse.newBuilder()
+      // Construct using
+      // trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
           getTemplatesFieldBuilder();
         }
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -10860,19 +12723,23 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_ListTemplatesResponse_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_ListTemplatesResponse_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse getDefaultInstanceForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse.getDefaultInstance();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse
+          getDefaultInstanceForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse
+            .getDefaultInstance();
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse build() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse result = buildPartial();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse
+          build() {
+        trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse result =
+            buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -10880,8 +12747,11 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse buildPartial() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse result = new trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse(this);
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse
+          buildPartial() {
+        trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse result =
+            new trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse(
+                this);
         int from_bitField0_ = bitField0_;
         if (templatesBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
@@ -10900,46 +12770,57 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse) {
-          return mergeFrom((trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse)other);
+        if (other
+            instanceof
+            trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse) {
+          return mergeFrom(
+              (trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse)
+                  other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse other) {
-        if (other == trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(
+          trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse
+              other) {
+        if (other
+            == trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse
+                .getDefaultInstance()) return this;
         if (templatesBuilder_ == null) {
           if (!other.templates_.isEmpty()) {
             if (templates_.isEmpty()) {
@@ -10958,9 +12839,10 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
               templatesBuilder_ = null;
               templates_ = other.templates_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              templatesBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getTemplatesFieldBuilder() : null;
+              templatesBuilder_ =
+                  com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
+                      ? getTemplatesFieldBuilder()
+                      : null;
             } else {
               templatesBuilder_.addAllMessages(other.templates_);
             }
@@ -10981,11 +12863,14 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse parsedMessage = null;
+        trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse
+            parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse)
+                  e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -10994,24 +12879,36 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         }
         return this;
       }
+
       private int bitField0_;
 
-      private java.util.List<trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData> templates_ =
-        java.util.Collections.emptyList();
+      private java.util.List<
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData>
+          templates_ = java.util.Collections.emptyList();
+
       private void ensureTemplatesIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
-          templates_ = new java.util.ArrayList<trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData>(templates_);
+          templates_ =
+              new java.util.ArrayList<
+                  trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData>(
+                  templates_);
           bitField0_ |= 0x00000001;
-         }
+        }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder> templatesBuilder_;
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder>
+          templatesBuilder_;
 
       /**
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
-      public java.util.List<trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData> getTemplatesList() {
+      public java.util.List<
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData>
+          getTemplatesList() {
         if (templatesBuilder_ == null) {
           return java.util.Collections.unmodifiableList(templates_);
         } else {
@@ -11019,7 +12916,8 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         }
       }
       /**
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
       public int getTemplatesCount() {
         if (templatesBuilder_ == null) {
@@ -11029,9 +12927,11 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         }
       }
       /**
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData getTemplates(int index) {
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+          getTemplates(int index) {
         if (templatesBuilder_ == null) {
           return templates_.get(index);
         } else {
@@ -11039,10 +12939,12 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         }
       }
       /**
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
       public Builder setTemplates(
-          int index, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData value) {
+          int index,
+          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData value) {
         if (templatesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -11056,10 +12958,13 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         return this;
       }
       /**
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
       public Builder setTemplates(
-          int index, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder builderForValue) {
+          int index,
+          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder
+              builderForValue) {
         if (templatesBuilder_ == null) {
           ensureTemplatesIsMutable();
           templates_.set(index, builderForValue.build());
@@ -11070,9 +12975,11 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         return this;
       }
       /**
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
-      public Builder addTemplates(trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData value) {
+      public Builder addTemplates(
+          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData value) {
         if (templatesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -11086,10 +12993,12 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         return this;
       }
       /**
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
       public Builder addTemplates(
-          int index, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData value) {
+          int index,
+          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData value) {
         if (templatesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -11103,10 +13012,12 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         return this;
       }
       /**
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
       public Builder addTemplates(
-          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder builderForValue) {
+          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder
+              builderForValue) {
         if (templatesBuilder_ == null) {
           ensureTemplatesIsMutable();
           templates_.add(builderForValue.build());
@@ -11117,10 +13028,13 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         return this;
       }
       /**
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
       public Builder addTemplates(
-          int index, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder builderForValue) {
+          int index,
+          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder
+              builderForValue) {
         if (templatesBuilder_ == null) {
           ensureTemplatesIsMutable();
           templates_.add(index, builderForValue.build());
@@ -11131,14 +13045,17 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         return this;
       }
       /**
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
       public Builder addAllTemplates(
-          java.lang.Iterable<? extends trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData> values) {
+          java.lang.Iterable<
+                  ? extends
+                      trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData>
+              values) {
         if (templatesBuilder_ == null) {
           ensureTemplatesIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, templates_);
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(values, templates_);
           onChanged();
         } else {
           templatesBuilder_.addAllMessages(values);
@@ -11146,7 +13063,8 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         return this;
       }
       /**
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
       public Builder clearTemplates() {
         if (templatesBuilder_ == null) {
@@ -11159,7 +13077,8 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         return this;
       }
       /**
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
       public Builder removeTemplates(int index) {
         if (templatesBuilder_ == null) {
@@ -11172,27 +13091,34 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         return this;
       }
       /**
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder getTemplatesBuilder(
-          int index) {
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder
+          getTemplatesBuilder(int index) {
         return getTemplatesFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder getTemplatesOrBuilder(
-          int index) {
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder
+          getTemplatesOrBuilder(int index) {
         if (templatesBuilder_ == null) {
-          return templates_.get(index);  } else {
+          return templates_.get(index);
+        } else {
           return templatesBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
-      public java.util.List<? extends trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder> 
-           getTemplatesOrBuilderList() {
+      public java.util.List<
+              ? extends
+                  trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .TemplateDataOrBuilder>
+          getTemplatesOrBuilderList() {
         if (templatesBuilder_ != null) {
           return templatesBuilder_.getMessageOrBuilderList();
         } else {
@@ -11200,41 +13126,57 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         }
       }
       /**
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder addTemplatesBuilder() {
-        return getTemplatesFieldBuilder().addBuilder(
-            trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.getDefaultInstance());
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder
+          addTemplatesBuilder() {
+        return getTemplatesFieldBuilder()
+            .addBuilder(
+                trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+                    .getDefaultInstance());
       }
       /**
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder addTemplatesBuilder(
-          int index) {
-        return getTemplatesFieldBuilder().addBuilder(
-            index, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.getDefaultInstance());
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder
+          addTemplatesBuilder(int index) {
+        return getTemplatesFieldBuilder()
+            .addBuilder(
+                index,
+                trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+                    .getDefaultInstance());
       }
       /**
-       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
+       * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;
+       * </code>
        */
-      public java.util.List<trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder> 
-           getTemplatesBuilderList() {
+      public java.util.List<
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder>
+          getTemplatesBuilderList() {
         return getTemplatesFieldBuilder().getBuilderList();
       }
+
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder> 
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder>
           getTemplatesFieldBuilder() {
         if (templatesBuilder_ == null) {
-          templatesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder>(
-                  templates_,
-                  ((bitField0_ & 0x00000001) != 0),
-                  getParentForChildren(),
-                  isClean());
+          templatesBuilder_ =
+              new com.google.protobuf.RepeatedFieldBuilderV3<
+                  trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData,
+                  trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+                      .Builder,
+                  trinsic.services.verifiablecredentials.templates.v1.Templates
+                      .TemplateDataOrBuilder>(
+                  templates_, ((bitField0_ & 0x00000001) != 0), getParentForChildren(), isClean());
           templates_ = null;
         }
         return templatesBuilder_;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -11247,30 +13189,35 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:services.verifiablecredentials.templates.v1.ListTemplatesResponse)
     }
 
     // @@protoc_insertion_point(class_scope:services.verifiablecredentials.templates.v1.ListTemplatesResponse)
-    private static final trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse DEFAULT_INSTANCE;
+    private static final trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListTemplatesResponse
+        DEFAULT_INSTANCE;
+
     static {
-      DEFAULT_INSTANCE = new trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse();
+      DEFAULT_INSTANCE =
+          new trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse();
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse getDefaultInstance() {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates
+            .ListTemplatesResponse
+        getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<ListTemplatesResponse>
-        PARSER = new com.google.protobuf.AbstractParser<ListTemplatesResponse>() {
-      @java.lang.Override
-      public ListTemplatesResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ListTemplatesResponse(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<ListTemplatesResponse> PARSER =
+        new com.google.protobuf.AbstractParser<ListTemplatesResponse>() {
+          @java.lang.Override
+          public ListTemplatesResponse parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new ListTemplatesResponse(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<ListTemplatesResponse> parser() {
       return PARSER;
@@ -11282,249 +13229,314 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     }
 
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse getDefaultInstanceForType() {
+    public trinsic.services.verifiablecredentials.templates.v1.Templates.ListTemplatesResponse
+        getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
-  public interface TemplateDataOrBuilder extends
+  public interface TemplateDataOrBuilder
+      extends
       // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.templates.v1.TemplateData)
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     *
+     *
      * <pre>
      * Template ID
      * </pre>
      *
      * <code>string id = 1 [json_name = "id"];</code>
+     *
      * @return The id.
      */
     java.lang.String getId();
     /**
+     *
+     *
      * <pre>
      * Template ID
      * </pre>
      *
      * <code>string id = 1 [json_name = "id"];</code>
+     *
      * @return The bytes for id.
      */
-    com.google.protobuf.ByteString
-        getIdBytes();
+    com.google.protobuf.ByteString getIdBytes();
 
     /**
+     *
+     *
      * <pre>
      * Template name
      * </pre>
      *
      * <code>string name = 2;</code>
+     *
      * @return The name.
      */
     java.lang.String getName();
     /**
+     *
+     *
      * <pre>
      * Template name
      * </pre>
      *
      * <code>string name = 2;</code>
+     *
      * @return The bytes for name.
      */
-    com.google.protobuf.ByteString
-        getNameBytes();
+    com.google.protobuf.ByteString getNameBytes();
 
     /**
+     *
+     *
      * <pre>
      * Template version number
      * </pre>
      *
      * <code>int32 version = 3;</code>
+     *
      * @return The version.
      */
     int getVersion();
 
     /**
+     *
+     *
      * <pre>
      * Fields defined for the template
      * </pre>
      *
-     * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
+     * <code>
+     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;
+     * </code>
      */
     int getFieldsCount();
     /**
+     *
+     *
      * <pre>
      * Fields defined for the template
      * </pre>
      *
-     * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
+     * <code>
+     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;
+     * </code>
      */
-    boolean containsFields(
-        java.lang.String key);
-    /**
-     * Use {@link #getFieldsMap()} instead.
-     */
+    boolean containsFields(java.lang.String key);
+    /** Use {@link #getFieldsMap()} instead. */
     @java.lang.Deprecated
-    java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
-    getFields();
+    java.util.Map<
+            java.lang.String,
+            trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+        getFields();
     /**
+     *
+     *
      * <pre>
      * Fields defined for the template
      * </pre>
      *
-     * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
+     * <code>
+     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;
+     * </code>
      */
-    java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
-    getFieldsMap();
+    java.util.Map<
+            java.lang.String,
+            trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+        getFieldsMap();
     /**
+     *
+     *
      * <pre>
      * Fields defined for the template
      * </pre>
      *
-     * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
+     * <code>
+     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;
+     * </code>
      */
 
     /* nullable */
-trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField getFieldsOrDefault(
+    trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField getFieldsOrDefault(
         java.lang.String key,
         /* nullable */
-trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defaultValue);
+        trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defaultValue);
     /**
+     *
+     *
      * <pre>
      * Fields defined for the template
      * </pre>
      *
-     * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
+     * <code>
+     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;
+     * </code>
      */
-
     trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField getFieldsOrThrow(
         java.lang.String key);
 
     /**
+     *
+     *
      * <pre>
-     * Whether credentials issued against this template may 
+     * Whether credentials issued against this template may
      * contain fields not defined by template
      * </pre>
      *
      * <code>bool allow_additional_fields = 5;</code>
+     *
      * @return The allowAdditionalFields.
      */
     boolean getAllowAdditionalFields();
 
     /**
+     *
+     *
      * <pre>
      * URI pointing to template JSON schema document
      * </pre>
      *
      * <code>string schema_uri = 6;</code>
+     *
      * @return The schemaUri.
      */
     java.lang.String getSchemaUri();
     /**
+     *
+     *
      * <pre>
      * URI pointing to template JSON schema document
      * </pre>
      *
      * <code>string schema_uri = 6;</code>
+     *
      * @return The bytes for schemaUri.
      */
-    com.google.protobuf.ByteString
-        getSchemaUriBytes();
+    com.google.protobuf.ByteString getSchemaUriBytes();
 
     /**
+     *
+     *
      * <pre>
      * URI pointing to template JSON-LD context document
      * </pre>
      *
      * <code>string context_uri = 7;</code>
+     *
      * @return The contextUri.
      */
     java.lang.String getContextUri();
     /**
+     *
+     *
      * <pre>
      * URI pointing to template JSON-LD context document
      * </pre>
      *
      * <code>string context_uri = 7;</code>
+     *
      * @return The bytes for contextUri.
      */
-    com.google.protobuf.ByteString
-        getContextUriBytes();
+    com.google.protobuf.ByteString getContextUriBytes();
 
     /**
+     *
+     *
      * <pre>
      * ID of ecosystem in which template resides
      * </pre>
      *
      * <code>string ecosystem_id = 8 [json_name = "ecosystemId"];</code>
+     *
      * @return The ecosystemId.
      */
     java.lang.String getEcosystemId();
     /**
+     *
+     *
      * <pre>
      * ID of ecosystem in which template resides
      * </pre>
      *
      * <code>string ecosystem_id = 8 [json_name = "ecosystemId"];</code>
+     *
      * @return The bytes for ecosystemId.
      */
-    com.google.protobuf.ByteString
-        getEcosystemIdBytes();
+    com.google.protobuf.ByteString getEcosystemIdBytes();
 
     /**
+     *
+     *
      * <pre>
      * Template type (`VerifiableCredential`)
      * </pre>
      *
      * <code>string type = 9 [json_name = "type"];</code>
+     *
      * @return The type.
      */
     java.lang.String getType();
     /**
+     *
+     *
      * <pre>
      * Template type (`VerifiableCredential`)
      * </pre>
      *
      * <code>string type = 9 [json_name = "type"];</code>
+     *
      * @return The bytes for type.
      */
-    com.google.protobuf.ByteString
-        getTypeBytes();
+    com.google.protobuf.ByteString getTypeBytes();
 
     /**
+     *
+     *
      * <pre>
      * ID of template creator
      * </pre>
      *
      * <code>string created_by = 10 [json_name = "createdBy"];</code>
+     *
      * @return The createdBy.
      */
     java.lang.String getCreatedBy();
     /**
+     *
+     *
      * <pre>
      * ID of template creator
      * </pre>
      *
      * <code>string created_by = 10 [json_name = "createdBy"];</code>
+     *
      * @return The bytes for createdBy.
      */
-    com.google.protobuf.ByteString
-        getCreatedByBytes();
+    com.google.protobuf.ByteString getCreatedByBytes();
   }
   /**
+   *
+   *
    * <pre>
    * Credential Template
    * </pre>
    *
    * Protobuf type {@code services.verifiablecredentials.templates.v1.TemplateData}
    */
-  public static final class TemplateData extends
-      com.google.protobuf.GeneratedMessageV3 implements
+  public static final class TemplateData extends com.google.protobuf.GeneratedMessageV3
+      implements
       // @@protoc_insertion_point(message_implements:services.verifiablecredentials.templates.v1.TemplateData)
       TemplateDataOrBuilder {
-  private static final long serialVersionUID = 0L;
+    private static final long serialVersionUID = 0L;
     // Use TemplateData.newBuilder() to construct.
     private TemplateData(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
+
     private TemplateData() {
       id_ = "";
       name_ = "";
@@ -11537,16 +13549,15 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
       return new TemplateData();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
       return this.unknownFields;
     }
+
     private TemplateData(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -11566,78 +13577,90 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 10:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
 
-              id_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              name_ = s;
-              break;
-            }
-            case 24: {
-
-              version_ = input.readInt32();
-              break;
-            }
-            case 34: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                fields_ = com.google.protobuf.MapField.newMapField(
-                    FieldsDefaultEntryHolder.defaultEntry);
-                mutable_bitField0_ |= 0x00000001;
+                id_ = s;
+                break;
               }
-              com.google.protobuf.MapEntry<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
-              fields__ = input.readMessage(
-                  FieldsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-              fields_.getMutableMap().put(
-                  fields__.getKey(), fields__.getValue());
-              break;
-            }
-            case 40: {
+            case 18:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
 
-              allowAdditionalFields_ = input.readBool();
-              break;
-            }
-            case 50: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              schemaUri_ = s;
-              break;
-            }
-            case 58: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              contextUri_ = s;
-              break;
-            }
-            case 66: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              ecosystemId_ = s;
-              break;
-            }
-            case 74: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              type_ = s;
-              break;
-            }
-            case 82: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              createdBy_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
+                name_ = s;
+                break;
               }
-              break;
-            }
+            case 24:
+              {
+                version_ = input.readInt32();
+                break;
+              }
+            case 34:
+              {
+                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                  fields_ =
+                      com.google.protobuf.MapField.newMapField(
+                          FieldsDefaultEntryHolder.defaultEntry);
+                  mutable_bitField0_ |= 0x00000001;
+                }
+                com.google.protobuf.MapEntry<
+                        java.lang.String,
+                        trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+                    fields__ =
+                        input.readMessage(
+                            FieldsDefaultEntryHolder.defaultEntry.getParserForType(),
+                            extensionRegistry);
+                fields_.getMutableMap().put(fields__.getKey(), fields__.getValue());
+                break;
+              }
+            case 40:
+              {
+                allowAdditionalFields_ = input.readBool();
+                break;
+              }
+            case 50:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                schemaUri_ = s;
+                break;
+              }
+            case 58:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                contextUri_ = s;
+                break;
+              }
+            case 66:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                ecosystemId_ = s;
+                break;
+              }
+            case 74:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                type_ = s;
+                break;
+              }
+            case 82:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                createdBy_ = s;
+                break;
+              }
+            default:
+              {
+                if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -11645,46 +13668,51 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       } catch (com.google.protobuf.UninitializedMessageException e) {
         throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_TemplateData_descriptor;
+
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_TemplateData_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
     @java.lang.Override
-    protected com.google.protobuf.MapField internalGetMapField(
-        int number) {
+    protected com.google.protobuf.MapField internalGetMapField(int number) {
       switch (number) {
         case 4:
           return internalGetFields();
         default:
-          throw new RuntimeException(
-              "Invalid map field number: " + number);
+          throw new RuntimeException("Invalid map field number: " + number);
       }
     }
+
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_TemplateData_fieldAccessorTable
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_TemplateData_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.class, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder.class);
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.class,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder
+                  .class);
     }
 
     public static final int ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object id_;
     /**
+     *
+     *
      * <pre>
      * Template ID
      * </pre>
      *
      * <code>string id = 1 [json_name = "id"];</code>
+     *
      * @return The id.
      */
     @java.lang.Override
@@ -11693,29 +13721,29 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         id_ = s;
         return s;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Template ID
      * </pre>
      *
      * <code>string id = 1 [json_name = "id"];</code>
+     *
      * @return The bytes for id.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getIdBytes() {
+    public com.google.protobuf.ByteString getIdBytes() {
       java.lang.Object ref = id_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         id_ = b;
         return b;
       } else {
@@ -11726,11 +13754,14 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     public static final int NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object name_;
     /**
+     *
+     *
      * <pre>
      * Template name
      * </pre>
      *
      * <code>string name = 2;</code>
+     *
      * @return The name.
      */
     @java.lang.Override
@@ -11739,29 +13770,29 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         name_ = s;
         return s;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Template name
      * </pre>
      *
      * <code>string name = 2;</code>
+     *
      * @return The bytes for name.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getNameBytes() {
+    public com.google.protobuf.ByteString getNameBytes() {
       java.lang.Object ref = name_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         name_ = b;
         return b;
       } else {
@@ -11772,11 +13803,14 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     public static final int VERSION_FIELD_NUMBER = 3;
     private int version_;
     /**
+     *
+     *
      * <pre>
      * Template version number
      * </pre>
      *
      * <code>int32 version = 3;</code>
+     *
      * @return The version.
      */
     @java.lang.Override
@@ -11785,24 +13819,36 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     }
 
     public static final int FIELDS_FIELD_NUMBER = 4;
+
     private static final class FieldsDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
-          java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField> defaultEntry =
+              java.lang.String,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+          defaultEntry =
               com.google.protobuf.MapEntry
-              .<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>newDefaultInstance(
-                  trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_TemplateData_FieldsEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.STRING,
-                  "",
-                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
-                  trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField.getDefaultInstance());
+                  .<java.lang.String,
+                      trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+                      newDefaultInstance(
+                          trinsic.services.verifiablecredentials.templates.v1.Templates
+                              .internal_static_services_verifiablecredentials_templates_v1_TemplateData_FieldsEntry_descriptor,
+                          com.google.protobuf.WireFormat.FieldType.STRING,
+                          "",
+                          com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                          trinsic.services.verifiablecredentials.templates.v1.Templates
+                              .TemplateField.getDefaultInstance());
     }
+
     private com.google.protobuf.MapField<
-        java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField> fields_;
-    private com.google.protobuf.MapField<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
-    internalGetFields() {
+            java.lang.String,
+            trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+        fields_;
+
+    private com.google.protobuf.MapField<
+            java.lang.String,
+            trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+        internalGetFields() {
       if (fields_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
-            FieldsDefaultEntryHolder.defaultEntry);
+        return com.google.protobuf.MapField.emptyMapField(FieldsDefaultEntryHolder.defaultEntry);
       }
       return fields_;
     }
@@ -11811,70 +13857,97 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       return internalGetFields().getMap().size();
     }
     /**
+     *
+     *
      * <pre>
      * Fields defined for the template
      * </pre>
      *
-     * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
+     * <code>
+     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;
+     * </code>
      */
-
     @java.lang.Override
-    public boolean containsFields(
-        java.lang.String key) {
-      if (key == null) { throw new NullPointerException("map key"); }
+    public boolean containsFields(java.lang.String key) {
+      if (key == null) {
+        throw new NullPointerException("map key");
+      }
       return internalGetFields().getMap().containsKey(key);
     }
-    /**
-     * Use {@link #getFieldsMap()} instead.
-     */
+    /** Use {@link #getFieldsMap()} instead. */
     @java.lang.Override
     @java.lang.Deprecated
-    public java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField> getFields() {
+    public java.util.Map<
+            java.lang.String,
+            trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+        getFields() {
       return getFieldsMap();
     }
     /**
+     *
+     *
      * <pre>
      * Fields defined for the template
      * </pre>
      *
-     * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
+     * <code>
+     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;
+     * </code>
      */
     @java.lang.Override
-
-    public java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField> getFieldsMap() {
+    public java.util.Map<
+            java.lang.String,
+            trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+        getFieldsMap() {
       return internalGetFields().getMap();
     }
     /**
+     *
+     *
      * <pre>
      * Fields defined for the template
      * </pre>
      *
-     * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
+     * <code>
+     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;
+     * </code>
      */
     @java.lang.Override
-
-    public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField getFieldsOrDefault(
-        java.lang.String key,
-        trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defaultValue) {
-      if (key == null) { throw new NullPointerException("map key"); }
-      java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField> map =
-          internalGetFields().getMap();
+    public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+        getFieldsOrDefault(
+            java.lang.String key,
+            trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+                defaultValue) {
+      if (key == null) {
+        throw new NullPointerException("map key");
+      }
+      java.util.Map<
+              java.lang.String,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+          map = internalGetFields().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
+     *
+     *
      * <pre>
      * Fields defined for the template
      * </pre>
      *
-     * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
+     * <code>
+     * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;
+     * </code>
      */
     @java.lang.Override
-
-    public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField getFieldsOrThrow(
-        java.lang.String key) {
-      if (key == null) { throw new NullPointerException("map key"); }
-      java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField> map =
-          internalGetFields().getMap();
+    public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+        getFieldsOrThrow(java.lang.String key) {
+      if (key == null) {
+        throw new NullPointerException("map key");
+      }
+      java.util.Map<
+              java.lang.String,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+          map = internalGetFields().getMap();
       if (!map.containsKey(key)) {
         throw new java.lang.IllegalArgumentException();
       }
@@ -11884,12 +13957,15 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     public static final int ALLOW_ADDITIONAL_FIELDS_FIELD_NUMBER = 5;
     private boolean allowAdditionalFields_;
     /**
+     *
+     *
      * <pre>
-     * Whether credentials issued against this template may 
+     * Whether credentials issued against this template may
      * contain fields not defined by template
      * </pre>
      *
      * <code>bool allow_additional_fields = 5;</code>
+     *
      * @return The allowAdditionalFields.
      */
     @java.lang.Override
@@ -11900,11 +13976,14 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     public static final int SCHEMA_URI_FIELD_NUMBER = 6;
     private volatile java.lang.Object schemaUri_;
     /**
+     *
+     *
      * <pre>
      * URI pointing to template JSON schema document
      * </pre>
      *
      * <code>string schema_uri = 6;</code>
+     *
      * @return The schemaUri.
      */
     @java.lang.Override
@@ -11913,29 +13992,29 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         schemaUri_ = s;
         return s;
       }
     }
     /**
+     *
+     *
      * <pre>
      * URI pointing to template JSON schema document
      * </pre>
      *
      * <code>string schema_uri = 6;</code>
+     *
      * @return The bytes for schemaUri.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getSchemaUriBytes() {
+    public com.google.protobuf.ByteString getSchemaUriBytes() {
       java.lang.Object ref = schemaUri_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         schemaUri_ = b;
         return b;
       } else {
@@ -11946,11 +14025,14 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     public static final int CONTEXT_URI_FIELD_NUMBER = 7;
     private volatile java.lang.Object contextUri_;
     /**
+     *
+     *
      * <pre>
      * URI pointing to template JSON-LD context document
      * </pre>
      *
      * <code>string context_uri = 7;</code>
+     *
      * @return The contextUri.
      */
     @java.lang.Override
@@ -11959,29 +14041,29 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         contextUri_ = s;
         return s;
       }
     }
     /**
+     *
+     *
      * <pre>
      * URI pointing to template JSON-LD context document
      * </pre>
      *
      * <code>string context_uri = 7;</code>
+     *
      * @return The bytes for contextUri.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getContextUriBytes() {
+    public com.google.protobuf.ByteString getContextUriBytes() {
       java.lang.Object ref = contextUri_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         contextUri_ = b;
         return b;
       } else {
@@ -11992,11 +14074,14 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     public static final int ECOSYSTEM_ID_FIELD_NUMBER = 8;
     private volatile java.lang.Object ecosystemId_;
     /**
+     *
+     *
      * <pre>
      * ID of ecosystem in which template resides
      * </pre>
      *
      * <code>string ecosystem_id = 8 [json_name = "ecosystemId"];</code>
+     *
      * @return The ecosystemId.
      */
     @java.lang.Override
@@ -12005,29 +14090,29 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         ecosystemId_ = s;
         return s;
       }
     }
     /**
+     *
+     *
      * <pre>
      * ID of ecosystem in which template resides
      * </pre>
      *
      * <code>string ecosystem_id = 8 [json_name = "ecosystemId"];</code>
+     *
      * @return The bytes for ecosystemId.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getEcosystemIdBytes() {
+    public com.google.protobuf.ByteString getEcosystemIdBytes() {
       java.lang.Object ref = ecosystemId_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         ecosystemId_ = b;
         return b;
       } else {
@@ -12038,11 +14123,14 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     public static final int TYPE_FIELD_NUMBER = 9;
     private volatile java.lang.Object type_;
     /**
+     *
+     *
      * <pre>
      * Template type (`VerifiableCredential`)
      * </pre>
      *
      * <code>string type = 9 [json_name = "type"];</code>
+     *
      * @return The type.
      */
     @java.lang.Override
@@ -12051,29 +14139,29 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         type_ = s;
         return s;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Template type (`VerifiableCredential`)
      * </pre>
      *
      * <code>string type = 9 [json_name = "type"];</code>
+     *
      * @return The bytes for type.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getTypeBytes() {
+    public com.google.protobuf.ByteString getTypeBytes() {
       java.lang.Object ref = type_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         type_ = b;
         return b;
       } else {
@@ -12084,11 +14172,14 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     public static final int CREATED_BY_FIELD_NUMBER = 10;
     private volatile java.lang.Object createdBy_;
     /**
+     *
+     *
      * <pre>
      * ID of template creator
      * </pre>
      *
      * <code>string created_by = 10 [json_name = "createdBy"];</code>
+     *
      * @return The createdBy.
      */
     @java.lang.Override
@@ -12097,29 +14188,29 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         createdBy_ = s;
         return s;
       }
     }
     /**
+     *
+     *
      * <pre>
      * ID of template creator
      * </pre>
      *
      * <code>string created_by = 10 [json_name = "createdBy"];</code>
+     *
      * @return The bytes for createdBy.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getCreatedByBytes() {
+    public com.google.protobuf.ByteString getCreatedByBytes() {
       java.lang.Object ref = createdBy_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         createdBy_ = b;
         return b;
       } else {
@@ -12128,6 +14219,7 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     }
 
     private byte memoizedIsInitialized = -1;
+
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -12139,8 +14231,7 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
       }
@@ -12150,12 +14241,8 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       if (version_ != 0) {
         output.writeInt32(3, version_);
       }
-      com.google.protobuf.GeneratedMessageV3
-        .serializeStringMapTo(
-          output,
-          internalGetFields(),
-          FieldsDefaultEntryHolder.defaultEntry,
-          4);
+      com.google.protobuf.GeneratedMessageV3.serializeStringMapTo(
+          output, internalGetFields(), FieldsDefaultEntryHolder.defaultEntry, 4);
       if (allowAdditionalFields_ != false) {
         output.writeBool(5, allowAdditionalFields_);
       }
@@ -12190,22 +14277,25 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
       }
       if (version_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, version_);
+        size += com.google.protobuf.CodedOutputStream.computeInt32Size(3, version_);
       }
-      for (java.util.Map.Entry<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField> entry
-           : internalGetFields().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
-        fields__ = FieldsDefaultEntryHolder.defaultEntry.newBuilderForType()
-            .setKey(entry.getKey())
-            .setValue(entry.getValue())
-            .build();
-        size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(4, fields__);
+      for (java.util.Map.Entry<
+              java.lang.String,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+          entry : internalGetFields().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<
+                java.lang.String,
+                trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+            fields__ =
+                FieldsDefaultEntryHolder.defaultEntry
+                    .newBuilderForType()
+                    .setKey(entry.getKey())
+                    .setValue(entry.getValue())
+                    .build();
+        size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, fields__);
       }
       if (allowAdditionalFields_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(5, allowAdditionalFields_);
+        size += com.google.protobuf.CodedOutputStream.computeBoolSize(5, allowAdditionalFields_);
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(schemaUri_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, schemaUri_);
@@ -12230,33 +14320,25 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-       return true;
+        return true;
       }
-      if (!(obj instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData)) {
+      if (!(obj
+          instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData)) {
         return super.equals(obj);
       }
-      trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData other = (trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData) obj;
+      trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData other =
+          (trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData) obj;
 
-      if (!getId()
-          .equals(other.getId())) return false;
-      if (!getName()
-          .equals(other.getName())) return false;
-      if (getVersion()
-          != other.getVersion()) return false;
-      if (!internalGetFields().equals(
-          other.internalGetFields())) return false;
-      if (getAllowAdditionalFields()
-          != other.getAllowAdditionalFields()) return false;
-      if (!getSchemaUri()
-          .equals(other.getSchemaUri())) return false;
-      if (!getContextUri()
-          .equals(other.getContextUri())) return false;
-      if (!getEcosystemId()
-          .equals(other.getEcosystemId())) return false;
-      if (!getType()
-          .equals(other.getType())) return false;
-      if (!getCreatedBy()
-          .equals(other.getCreatedBy())) return false;
+      if (!getId().equals(other.getId())) return false;
+      if (!getName().equals(other.getName())) return false;
+      if (getVersion() != other.getVersion()) return false;
+      if (!internalGetFields().equals(other.internalGetFields())) return false;
+      if (getAllowAdditionalFields() != other.getAllowAdditionalFields()) return false;
+      if (!getSchemaUri().equals(other.getSchemaUri())) return false;
+      if (!getContextUri().equals(other.getContextUri())) return false;
+      if (!getEcosystemId().equals(other.getEcosystemId())) return false;
+      if (!getType().equals(other.getType())) return false;
+      if (!getCreatedBy().equals(other.getCreatedBy())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -12279,8 +14361,7 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         hash = (53 * hash) + internalGetFields().hashCode();
       }
       hash = (37 * hash) + ALLOW_ADDITIONAL_FIELDS_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getAllowAdditionalFields());
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getAllowAdditionalFields());
       hash = (37 * hash) + SCHEMA_URI_FIELD_NUMBER;
       hash = (53 * hash) + getSchemaUri().hashCode();
       hash = (37 * hash) + CONTEXT_URI_FIELD_NUMBER;
@@ -12296,88 +14377,101 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       return hash;
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+        parseFrom(java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+        parseFrom(
+            java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+        parseFrom(com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+        parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+        parseFrom(byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+        parseFrom(byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+        parseFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+        parseFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+        parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+        parseDelimitedFrom(
+            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+          PARSER, input, extensionRegistry);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+        parseFrom(com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
     }
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
+
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+        parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+          PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
+    public Builder newBuilderForType() {
+      return newBuilder();
+    }
+
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData prototype) {
+
+    public static Builder newBuilder(
+        trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
+
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -12387,66 +14481,70 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       return builder;
     }
     /**
+     *
+     *
      * <pre>
      * Credential Template
      * </pre>
      *
      * Protobuf type {@code services.verifiablecredentials.templates.v1.TemplateData}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+    public static final class Builder
+        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+        implements
         // @@protoc_insertion_point(builder_implements:services.verifiablecredentials.templates.v1.TemplateData)
         trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateDataOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_TemplateData_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_TemplateData_descriptor;
       }
 
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
-          int number) {
+      protected com.google.protobuf.MapField internalGetMapField(int number) {
         switch (number) {
           case 4:
             return internalGetFields();
           default:
-            throw new RuntimeException(
-                "Invalid map field number: " + number);
+            throw new RuntimeException("Invalid map field number: " + number);
         }
       }
+
       @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
-          int number) {
+      protected com.google.protobuf.MapField internalGetMutableMapField(int number) {
         switch (number) {
           case 4:
             return internalGetMutableFields();
           default:
-            throw new RuntimeException(
-                "Invalid map field number: " + number);
+            throw new RuntimeException("Invalid map field number: " + number);
         }
       }
+
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_TemplateData_fieldAccessorTable
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_TemplateData_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.class, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder.class);
+                trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.class,
+                trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.Builder
+                    .class);
       }
 
-      // Construct using trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.newBuilder()
+      // Construct using
+      // trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
+
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
+        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
       }
+
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -12473,19 +14571,22 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_TemplateData_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates
+            .internal_static_services_verifiablecredentials_templates_v1_TemplateData_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData getDefaultInstanceForType() {
-        return trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.getDefaultInstance();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+          getDefaultInstanceForType() {
+        return trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+            .getDefaultInstance();
       }
 
       @java.lang.Override
       public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData build() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData result = buildPartial();
+        trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData result =
+            buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -12493,8 +14594,10 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       }
 
       @java.lang.Override
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData buildPartial() {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData result = new trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData(this);
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+          buildPartial() {
+        trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData result =
+            new trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData(this);
         int from_bitField0_ = bitField0_;
         result.id_ = id_;
         result.name_ = name_;
@@ -12515,46 +14618,54 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       public Builder clone() {
         return super.clone();
       }
+
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.setField(field, value);
       }
+
       @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
+
       @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
+
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
+          int index,
+          java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
+
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
+
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData) {
-          return mergeFrom((trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData)other);
+        if (other
+            instanceof trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData) {
+          return mergeFrom(
+              (trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData) other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData other) {
-        if (other == trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData.getDefaultInstance()) return this;
+      public Builder mergeFrom(
+          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData other) {
+        if (other
+            == trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+                .getDefaultInstance()) return this;
         if (!other.getId().isEmpty()) {
           id_ = other.id_;
           onChanged();
@@ -12566,8 +14677,7 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         if (other.getVersion() != 0) {
           setVersion(other.getVersion());
         }
-        internalGetMutableFields().mergeFrom(
-            other.internalGetFields());
+        internalGetMutableFields().mergeFrom(other.internalGetFields());
         if (other.getAllowAdditionalFields() != false) {
           setAllowAdditionalFields(other.getAllowAdditionalFields());
         }
@@ -12606,11 +14716,14 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData parsedMessage = null;
+        trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData parsedMessage =
+            null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData) e.getUnfinishedMessage();
+          parsedMessage =
+              (trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData)
+                  e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -12619,22 +14732,25 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         }
         return this;
       }
+
       private int bitField0_;
 
       private java.lang.Object id_ = "";
       /**
+       *
+       *
        * <pre>
        * Template ID
        * </pre>
        *
        * <code>string id = 1 [json_name = "id"];</code>
+       *
        * @return The id.
        */
       public java.lang.String getId() {
         java.lang.Object ref = id_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           id_ = s;
           return s;
@@ -12643,20 +14759,21 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         }
       }
       /**
+       *
+       *
        * <pre>
        * Template ID
        * </pre>
        *
        * <code>string id = 1 [json_name = "id"];</code>
+       *
        * @return The bytes for id.
        */
-      public com.google.protobuf.ByteString
-          getIdBytes() {
+      public com.google.protobuf.ByteString getIdBytes() {
         java.lang.Object ref = id_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           id_ = b;
           return b;
         } else {
@@ -12664,54 +14781,61 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         }
       }
       /**
+       *
+       *
        * <pre>
        * Template ID
        * </pre>
        *
        * <code>string id = 1 [json_name = "id"];</code>
+       *
        * @param value The id to set.
        * @return This builder for chaining.
        */
-      public Builder setId(
-          java.lang.String value) {
+      public Builder setId(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         id_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Template ID
        * </pre>
        *
        * <code>string id = 1 [json_name = "id"];</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearId() {
-        
+
         id_ = getDefaultInstance().getId();
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Template ID
        * </pre>
        *
        * <code>string id = 1 [json_name = "id"];</code>
+       *
        * @param value The bytes for id to set.
        * @return This builder for chaining.
        */
-      public Builder setIdBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setIdBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         id_ = value;
         onChanged();
         return this;
@@ -12719,18 +14843,20 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
 
       private java.lang.Object name_ = "";
       /**
+       *
+       *
        * <pre>
        * Template name
        * </pre>
        *
        * <code>string name = 2;</code>
+       *
        * @return The name.
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           name_ = s;
           return s;
@@ -12739,20 +14865,21 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         }
       }
       /**
+       *
+       *
        * <pre>
        * Template name
        * </pre>
        *
        * <code>string name = 2;</code>
+       *
        * @return The bytes for name.
        */
-      public com.google.protobuf.ByteString
-          getNameBytes() {
+      public com.google.protobuf.ByteString getNameBytes() {
         java.lang.Object ref = name_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           name_ = b;
           return b;
         } else {
@@ -12760,66 +14887,76 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         }
       }
       /**
+       *
+       *
        * <pre>
        * Template name
        * </pre>
        *
        * <code>string name = 2;</code>
+       *
        * @param value The name to set.
        * @return This builder for chaining.
        */
-      public Builder setName(
-          java.lang.String value) {
+      public Builder setName(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         name_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Template name
        * </pre>
        *
        * <code>string name = 2;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearName() {
-        
+
         name_ = getDefaultInstance().getName();
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Template name
        * </pre>
        *
        * <code>string name = 2;</code>
+       *
        * @param value The bytes for name to set.
        * @return This builder for chaining.
        */
-      public Builder setNameBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setNameBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         name_ = value;
         onChanged();
         return this;
       }
 
-      private int version_ ;
+      private int version_;
       /**
+       *
+       *
        * <pre>
        * Template version number
        * </pre>
        *
        * <code>int32 version = 3;</code>
+       *
        * @return The version.
        */
       @java.lang.Override
@@ -12827,51 +14964,64 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         return version_;
       }
       /**
+       *
+       *
        * <pre>
        * Template version number
        * </pre>
        *
        * <code>int32 version = 3;</code>
+       *
        * @param value The version to set.
        * @return This builder for chaining.
        */
       public Builder setVersion(int value) {
-        
+
         version_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Template version number
        * </pre>
        *
        * <code>int32 version = 3;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearVersion() {
-        
+
         version_ = 0;
         onChanged();
         return this;
       }
 
       private com.google.protobuf.MapField<
-          java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField> fields_;
-      private com.google.protobuf.MapField<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
-      internalGetFields() {
+              java.lang.String,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+          fields_;
+
+      private com.google.protobuf.MapField<
+              java.lang.String,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+          internalGetFields() {
         if (fields_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
-              FieldsDefaultEntryHolder.defaultEntry);
+          return com.google.protobuf.MapField.emptyMapField(FieldsDefaultEntryHolder.defaultEntry);
         }
         return fields_;
       }
-      private com.google.protobuf.MapField<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
-      internalGetMutableFields() {
-        onChanged();;
+
+      private com.google.protobuf.MapField<
+              java.lang.String,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+          internalGetMutableFields() {
+        onChanged();
+        ;
         if (fields_ == null) {
-          fields_ = com.google.protobuf.MapField.newMapField(
-              FieldsDefaultEntryHolder.defaultEntry);
+          fields_ = com.google.protobuf.MapField.newMapField(FieldsDefaultEntryHolder.defaultEntry);
         }
         if (!fields_.isMutable()) {
           fields_ = fields_.copy();
@@ -12883,70 +15033,97 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         return internalGetFields().getMap().size();
       }
       /**
+       *
+       *
        * <pre>
        * Fields defined for the template
        * </pre>
        *
-       * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
+       * <code>
+       * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;
+       * </code>
        */
-
       @java.lang.Override
-      public boolean containsFields(
-          java.lang.String key) {
-        if (key == null) { throw new NullPointerException("map key"); }
+      public boolean containsFields(java.lang.String key) {
+        if (key == null) {
+          throw new NullPointerException("map key");
+        }
         return internalGetFields().getMap().containsKey(key);
       }
-      /**
-       * Use {@link #getFieldsMap()} instead.
-       */
+      /** Use {@link #getFieldsMap()} instead. */
       @java.lang.Override
       @java.lang.Deprecated
-      public java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField> getFields() {
+      public java.util.Map<
+              java.lang.String,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+          getFields() {
         return getFieldsMap();
       }
       /**
+       *
+       *
        * <pre>
        * Fields defined for the template
        * </pre>
        *
-       * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
+       * <code>
+       * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;
+       * </code>
        */
       @java.lang.Override
-
-      public java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField> getFieldsMap() {
+      public java.util.Map<
+              java.lang.String,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+          getFieldsMap() {
         return internalGetFields().getMap();
       }
       /**
+       *
+       *
        * <pre>
        * Fields defined for the template
        * </pre>
        *
-       * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
+       * <code>
+       * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;
+       * </code>
        */
       @java.lang.Override
-
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField getFieldsOrDefault(
-          java.lang.String key,
-          trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defaultValue) {
-        if (key == null) { throw new NullPointerException("map key"); }
-        java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField> map =
-            internalGetFields().getMap();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+          getFieldsOrDefault(
+              java.lang.String key,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+                  defaultValue) {
+        if (key == null) {
+          throw new NullPointerException("map key");
+        }
+        java.util.Map<
+                java.lang.String,
+                trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+            map = internalGetFields().getMap();
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
+       *
+       *
        * <pre>
        * Fields defined for the template
        * </pre>
        *
-       * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
+       * <code>
+       * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;
+       * </code>
        */
       @java.lang.Override
-
-      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField getFieldsOrThrow(
-          java.lang.String key) {
-        if (key == null) { throw new NullPointerException("map key"); }
-        java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField> map =
-            internalGetFields().getMap();
+      public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField
+          getFieldsOrThrow(java.lang.String key) {
+        if (key == null) {
+          throw new NullPointerException("map key");
+        }
+        java.util.Map<
+                java.lang.String,
+                trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+            map = internalGetFields().getMap();
         if (!map.containsKey(key)) {
           throw new java.lang.IllegalArgumentException();
         }
@@ -12954,75 +15131,90 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
       }
 
       public Builder clearFields() {
-        internalGetMutableFields().getMutableMap()
-            .clear();
+        internalGetMutableFields().getMutableMap().clear();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Fields defined for the template
        * </pre>
        *
-       * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
+       * <code>
+       * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;
+       * </code>
        */
-
-      public Builder removeFields(
-          java.lang.String key) {
-        if (key == null) { throw new NullPointerException("map key"); }
-        internalGetMutableFields().getMutableMap()
-            .remove(key);
+      public Builder removeFields(java.lang.String key) {
+        if (key == null) {
+          throw new NullPointerException("map key");
+        }
+        internalGetMutableFields().getMutableMap().remove(key);
         return this;
       }
-      /**
-       * Use alternate mutation accessors instead.
-       */
+      /** Use alternate mutation accessors instead. */
       @java.lang.Deprecated
-      public java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
-      getMutableFields() {
+      public java.util.Map<
+              java.lang.String,
+              trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+          getMutableFields() {
         return internalGetMutableFields().getMutableMap();
       }
       /**
+       *
+       *
        * <pre>
        * Fields defined for the template
        * </pre>
        *
-       * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
+       * <code>
+       * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;
+       * </code>
        */
       public Builder putFields(
           java.lang.String key,
           trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField value) {
-        if (key == null) { throw new NullPointerException("map key"); }
+        if (key == null) {
+          throw new NullPointerException("map key");
+        }
         if (value == null) {
-  throw new NullPointerException("map value");
-}
+          throw new NullPointerException("map value");
+        }
 
-        internalGetMutableFields().getMutableMap()
-            .put(key, value);
+        internalGetMutableFields().getMutableMap().put(key, value);
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Fields defined for the template
        * </pre>
        *
-       * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;</code>
+       * <code>
+       * map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 4;
+       * </code>
        */
-
       public Builder putAllFields(
-          java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField> values) {
-        internalGetMutableFields().getMutableMap()
-            .putAll(values);
+          java.util.Map<
+                  java.lang.String,
+                  trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField>
+              values) {
+        internalGetMutableFields().getMutableMap().putAll(values);
         return this;
       }
 
-      private boolean allowAdditionalFields_ ;
+      private boolean allowAdditionalFields_;
       /**
+       *
+       *
        * <pre>
-       * Whether credentials issued against this template may 
+       * Whether credentials issued against this template may
        * contain fields not defined by template
        * </pre>
        *
        * <code>bool allow_additional_fields = 5;</code>
+       *
        * @return The allowAdditionalFields.
        */
       @java.lang.Override
@@ -13030,32 +15222,38 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         return allowAdditionalFields_;
       }
       /**
+       *
+       *
        * <pre>
-       * Whether credentials issued against this template may 
+       * Whether credentials issued against this template may
        * contain fields not defined by template
        * </pre>
        *
        * <code>bool allow_additional_fields = 5;</code>
+       *
        * @param value The allowAdditionalFields to set.
        * @return This builder for chaining.
        */
       public Builder setAllowAdditionalFields(boolean value) {
-        
+
         allowAdditionalFields_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
-       * Whether credentials issued against this template may 
+       * Whether credentials issued against this template may
        * contain fields not defined by template
        * </pre>
        *
        * <code>bool allow_additional_fields = 5;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearAllowAdditionalFields() {
-        
+
         allowAdditionalFields_ = false;
         onChanged();
         return this;
@@ -13063,18 +15261,20 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
 
       private java.lang.Object schemaUri_ = "";
       /**
+       *
+       *
        * <pre>
        * URI pointing to template JSON schema document
        * </pre>
        *
        * <code>string schema_uri = 6;</code>
+       *
        * @return The schemaUri.
        */
       public java.lang.String getSchemaUri() {
         java.lang.Object ref = schemaUri_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           schemaUri_ = s;
           return s;
@@ -13083,20 +15283,21 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         }
       }
       /**
+       *
+       *
        * <pre>
        * URI pointing to template JSON schema document
        * </pre>
        *
        * <code>string schema_uri = 6;</code>
+       *
        * @return The bytes for schemaUri.
        */
-      public com.google.protobuf.ByteString
-          getSchemaUriBytes() {
+      public com.google.protobuf.ByteString getSchemaUriBytes() {
         java.lang.Object ref = schemaUri_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           schemaUri_ = b;
           return b;
         } else {
@@ -13104,54 +15305,61 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         }
       }
       /**
+       *
+       *
        * <pre>
        * URI pointing to template JSON schema document
        * </pre>
        *
        * <code>string schema_uri = 6;</code>
+       *
        * @param value The schemaUri to set.
        * @return This builder for chaining.
        */
-      public Builder setSchemaUri(
-          java.lang.String value) {
+      public Builder setSchemaUri(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         schemaUri_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * URI pointing to template JSON schema document
        * </pre>
        *
        * <code>string schema_uri = 6;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearSchemaUri() {
-        
+
         schemaUri_ = getDefaultInstance().getSchemaUri();
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * URI pointing to template JSON schema document
        * </pre>
        *
        * <code>string schema_uri = 6;</code>
+       *
        * @param value The bytes for schemaUri to set.
        * @return This builder for chaining.
        */
-      public Builder setSchemaUriBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setSchemaUriBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         schemaUri_ = value;
         onChanged();
         return this;
@@ -13159,18 +15367,20 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
 
       private java.lang.Object contextUri_ = "";
       /**
+       *
+       *
        * <pre>
        * URI pointing to template JSON-LD context document
        * </pre>
        *
        * <code>string context_uri = 7;</code>
+       *
        * @return The contextUri.
        */
       public java.lang.String getContextUri() {
         java.lang.Object ref = contextUri_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           contextUri_ = s;
           return s;
@@ -13179,20 +15389,21 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         }
       }
       /**
+       *
+       *
        * <pre>
        * URI pointing to template JSON-LD context document
        * </pre>
        *
        * <code>string context_uri = 7;</code>
+       *
        * @return The bytes for contextUri.
        */
-      public com.google.protobuf.ByteString
-          getContextUriBytes() {
+      public com.google.protobuf.ByteString getContextUriBytes() {
         java.lang.Object ref = contextUri_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           contextUri_ = b;
           return b;
         } else {
@@ -13200,54 +15411,61 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         }
       }
       /**
+       *
+       *
        * <pre>
        * URI pointing to template JSON-LD context document
        * </pre>
        *
        * <code>string context_uri = 7;</code>
+       *
        * @param value The contextUri to set.
        * @return This builder for chaining.
        */
-      public Builder setContextUri(
-          java.lang.String value) {
+      public Builder setContextUri(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         contextUri_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * URI pointing to template JSON-LD context document
        * </pre>
        *
        * <code>string context_uri = 7;</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearContextUri() {
-        
+
         contextUri_ = getDefaultInstance().getContextUri();
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * URI pointing to template JSON-LD context document
        * </pre>
        *
        * <code>string context_uri = 7;</code>
+       *
        * @param value The bytes for contextUri to set.
        * @return This builder for chaining.
        */
-      public Builder setContextUriBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setContextUriBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         contextUri_ = value;
         onChanged();
         return this;
@@ -13255,18 +15473,20 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
 
       private java.lang.Object ecosystemId_ = "";
       /**
+       *
+       *
        * <pre>
        * ID of ecosystem in which template resides
        * </pre>
        *
        * <code>string ecosystem_id = 8 [json_name = "ecosystemId"];</code>
+       *
        * @return The ecosystemId.
        */
       public java.lang.String getEcosystemId() {
         java.lang.Object ref = ecosystemId_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           ecosystemId_ = s;
           return s;
@@ -13275,20 +15495,21 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         }
       }
       /**
+       *
+       *
        * <pre>
        * ID of ecosystem in which template resides
        * </pre>
        *
        * <code>string ecosystem_id = 8 [json_name = "ecosystemId"];</code>
+       *
        * @return The bytes for ecosystemId.
        */
-      public com.google.protobuf.ByteString
-          getEcosystemIdBytes() {
+      public com.google.protobuf.ByteString getEcosystemIdBytes() {
         java.lang.Object ref = ecosystemId_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           ecosystemId_ = b;
           return b;
         } else {
@@ -13296,54 +15517,61 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         }
       }
       /**
+       *
+       *
        * <pre>
        * ID of ecosystem in which template resides
        * </pre>
        *
        * <code>string ecosystem_id = 8 [json_name = "ecosystemId"];</code>
+       *
        * @param value The ecosystemId to set.
        * @return This builder for chaining.
        */
-      public Builder setEcosystemId(
-          java.lang.String value) {
+      public Builder setEcosystemId(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         ecosystemId_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * ID of ecosystem in which template resides
        * </pre>
        *
        * <code>string ecosystem_id = 8 [json_name = "ecosystemId"];</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearEcosystemId() {
-        
+
         ecosystemId_ = getDefaultInstance().getEcosystemId();
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * ID of ecosystem in which template resides
        * </pre>
        *
        * <code>string ecosystem_id = 8 [json_name = "ecosystemId"];</code>
+       *
        * @param value The bytes for ecosystemId to set.
        * @return This builder for chaining.
        */
-      public Builder setEcosystemIdBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setEcosystemIdBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         ecosystemId_ = value;
         onChanged();
         return this;
@@ -13351,18 +15579,20 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
 
       private java.lang.Object type_ = "";
       /**
+       *
+       *
        * <pre>
        * Template type (`VerifiableCredential`)
        * </pre>
        *
        * <code>string type = 9 [json_name = "type"];</code>
+       *
        * @return The type.
        */
       public java.lang.String getType() {
         java.lang.Object ref = type_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           type_ = s;
           return s;
@@ -13371,20 +15601,21 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         }
       }
       /**
+       *
+       *
        * <pre>
        * Template type (`VerifiableCredential`)
        * </pre>
        *
        * <code>string type = 9 [json_name = "type"];</code>
+       *
        * @return The bytes for type.
        */
-      public com.google.protobuf.ByteString
-          getTypeBytes() {
+      public com.google.protobuf.ByteString getTypeBytes() {
         java.lang.Object ref = type_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           type_ = b;
           return b;
         } else {
@@ -13392,54 +15623,61 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         }
       }
       /**
+       *
+       *
        * <pre>
        * Template type (`VerifiableCredential`)
        * </pre>
        *
        * <code>string type = 9 [json_name = "type"];</code>
+       *
        * @param value The type to set.
        * @return This builder for chaining.
        */
-      public Builder setType(
-          java.lang.String value) {
+      public Builder setType(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         type_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Template type (`VerifiableCredential`)
        * </pre>
        *
        * <code>string type = 9 [json_name = "type"];</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearType() {
-        
+
         type_ = getDefaultInstance().getType();
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * Template type (`VerifiableCredential`)
        * </pre>
        *
        * <code>string type = 9 [json_name = "type"];</code>
+       *
        * @param value The bytes for type to set.
        * @return This builder for chaining.
        */
-      public Builder setTypeBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setTypeBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         type_ = value;
         onChanged();
         return this;
@@ -13447,18 +15685,20 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
 
       private java.lang.Object createdBy_ = "";
       /**
+       *
+       *
        * <pre>
        * ID of template creator
        * </pre>
        *
        * <code>string created_by = 10 [json_name = "createdBy"];</code>
+       *
        * @return The createdBy.
        */
       public java.lang.String getCreatedBy() {
         java.lang.Object ref = createdBy_;
         if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
+          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           createdBy_ = s;
           return s;
@@ -13467,20 +15707,21 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         }
       }
       /**
+       *
+       *
        * <pre>
        * ID of template creator
        * </pre>
        *
        * <code>string created_by = 10 [json_name = "createdBy"];</code>
+       *
        * @return The bytes for createdBy.
        */
-      public com.google.protobuf.ByteString
-          getCreatedByBytes() {
+      public com.google.protobuf.ByteString getCreatedByBytes() {
         java.lang.Object ref = createdBy_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
+          com.google.protobuf.ByteString b =
+              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
           createdBy_ = b;
           return b;
         } else {
@@ -13488,58 +15729,66 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         }
       }
       /**
+       *
+       *
        * <pre>
        * ID of template creator
        * </pre>
        *
        * <code>string created_by = 10 [json_name = "createdBy"];</code>
+       *
        * @param value The createdBy to set.
        * @return This builder for chaining.
        */
-      public Builder setCreatedBy(
-          java.lang.String value) {
+      public Builder setCreatedBy(java.lang.String value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  
+          throw new NullPointerException();
+        }
+
         createdBy_ = value;
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * ID of template creator
        * </pre>
        *
        * <code>string created_by = 10 [json_name = "createdBy"];</code>
+       *
        * @return This builder for chaining.
        */
       public Builder clearCreatedBy() {
-        
+
         createdBy_ = getDefaultInstance().getCreatedBy();
         onChanged();
         return this;
       }
       /**
+       *
+       *
        * <pre>
        * ID of template creator
        * </pre>
        *
        * <code>string created_by = 10 [json_name = "createdBy"];</code>
+       *
        * @param value The bytes for createdBy to set.
        * @return This builder for chaining.
        */
-      public Builder setCreatedByBytes(
-          com.google.protobuf.ByteString value) {
+      public Builder setCreatedByBytes(com.google.protobuf.ByteString value) {
         if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
+          throw new NullPointerException();
+        }
+        checkByteStringIsUtf8(value);
+
         createdBy_ = value;
         onChanged();
         return this;
       }
+
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -13552,30 +15801,33 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
         return super.mergeUnknownFields(unknownFields);
       }
 
-
       // @@protoc_insertion_point(builder_scope:services.verifiablecredentials.templates.v1.TemplateData)
     }
 
     // @@protoc_insertion_point(class_scope:services.verifiablecredentials.templates.v1.TemplateData)
-    private static final trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData DEFAULT_INSTANCE;
+    private static final trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+        DEFAULT_INSTANCE;
+
     static {
-      DEFAULT_INSTANCE = new trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData();
+      DEFAULT_INSTANCE =
+          new trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData();
     }
 
-    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData getDefaultInstance() {
+    public static trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+        getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<TemplateData>
-        PARSER = new com.google.protobuf.AbstractParser<TemplateData>() {
-      @java.lang.Override
-      public TemplateData parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new TemplateData(input, extensionRegistry);
-      }
-    };
+    private static final com.google.protobuf.Parser<TemplateData> PARSER =
+        new com.google.protobuf.AbstractParser<TemplateData>() {
+          @java.lang.Override
+          public TemplateData parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new TemplateData(input, extensionRegistry);
+          }
+        };
 
     public static com.google.protobuf.Parser<TemplateData> parser() {
       return PARSER;
@@ -13587,309 +15839,351 @@ trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateField defa
     }
 
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData getDefaultInstanceForType() {
+    public trinsic.services.verifiablecredentials.templates.v1.Templates.TemplateData
+        getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
-
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateRequest_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateResponse_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesRequest_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesResponse_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesRequest_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesResponse_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateRequest_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateResponse_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_FieldsEntry_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_FieldsEntry_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_FieldsEntry_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateResponse_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_templates_v1_TemplateField_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_TemplateField_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_templates_v1_TemplateField_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_templates_v1_GetTemplateRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_GetTemplateRequest_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_templates_v1_GetTemplateRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_templates_v1_GetTemplateResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_GetTemplateResponse_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_templates_v1_GetTemplateResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_templates_v1_ListTemplatesRequest_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_ListTemplatesRequest_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_templates_v1_ListTemplatesRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_templates_v1_ListTemplatesResponse_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_ListTemplatesResponse_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_templates_v1_ListTemplatesResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_templates_v1_TemplateData_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_TemplateData_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_templates_v1_TemplateData_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_templates_v1_TemplateData_FieldsEntry_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_templates_v1_TemplateData_FieldsEntry_descriptor;
+  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_templates_v1_TemplateData_FieldsEntry_fieldAccessorTable;
 
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
+  public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
+
+  private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
+
   static {
     java.lang.String[] descriptorData = {
-      "\n<services/verifiable-credentials/templa" +
-      "tes/v1/templates.proto\022+services.verifia" +
-      "blecredentials.templates.v1\032$services/op" +
-      "tions/field-options.proto\"*\n\034GetCredenti" +
-      "alTemplateRequest\022\n\n\002id\030\001 \001(\t\"l\n\035GetCred" +
-      "entialTemplateResponse\022K\n\010template\030\001 \001(\013" +
-      "29.services.verifiablecredentials.templa" +
-      "tes.v1.TemplateData\"S\n SearchCredentialT" +
-      "emplatesRequest\022\r\n\005query\030\001 \001(\t\022 \n\022contin" +
-      "uation_token\030\002 \001(\tB\004\200\246\035\001\"e\n!SearchCreden" +
-      "tialTemplatesResponse\022\022\n\nitems_json\030\001 \001(" +
-      "\t\022\020\n\010has_more\030\002 \001(\010\022\032\n\022continuation_toke" +
-      "n\030\004 \001(\t\"Q\n\036ListCredentialTemplatesReques" +
-      "t\022\r\n\005query\030\001 \001(\t\022 \n\022continuation_token\030\002" +
-      " \001(\tB\004\200\246\035\001\"\245\001\n\037ListCredentialTemplatesRe" +
-      "sponse\022L\n\ttemplates\030\001 \003(\01329.services.ver" +
-      "ifiablecredentials.templates.v1.Template" +
-      "Data\022\030\n\020has_more_results\030\002 \001(\010\022\032\n\022contin" +
-      "uation_token\030\003 \001(\t\"-\n\037DeleteCredentialTe" +
-      "mplateRequest\022\n\n\002id\030\001 \001(\t\"\"\n DeleteCrede" +
-      "ntialTemplateResponse\"\245\002\n\037CreateCredenti" +
-      "alTemplateRequest\022\014\n\004name\030\001 \001(\t\022h\n\006field" +
-      "s\030\002 \003(\0132X.services.verifiablecredentials" +
-      ".templates.v1.CreateCredentialTemplateRe" +
-      "quest.FieldsEntry\022\037\n\027allow_additional_fi" +
-      "elds\030\003 \001(\010\032i\n\013FieldsEntry\022\013\n\003key\030\001 \001(\t\022I" +
-      "\n\005value\030\002 \001(\0132:.services.verifiablecrede" +
-      "ntials.templates.v1.TemplateField:\0028\001\"k\n" +
-      " CreateCredentialTemplateResponse\022G\n\004dat" +
-      "a\030\001 \001(\01329.services.verifiablecredentials" +
-      ".templates.v1.TemplateData\"|\n\rTemplateFi" +
-      "eld\022\023\n\013description\030\002 \001(\t\022\020\n\010optional\030\003 \001" +
-      "(\010\022D\n\004type\030\004 \001(\01626.services.verifiablecr" +
-      "edentials.templates.v1.FieldType\" \n\022GetT" +
-      "emplateRequest\022\n\n\002id\030\001 \001(\t\"^\n\023GetTemplat" +
-      "eResponse\022G\n\004data\030\001 \001(\01329.services.verif" +
-      "iablecredentials.templates.v1.TemplateDa" +
-      "ta\"\026\n\024ListTemplatesRequest\"e\n\025ListTempla" +
-      "tesResponse\022L\n\ttemplates\030\001 \003(\01329.service" +
-      "s.verifiablecredentials.templates.v1.Tem" +
-      "plateData\"\237\003\n\014TemplateData\022\016\n\002id\030\001 \001(\tR\002" +
-      "id\022\014\n\004name\030\002 \001(\t\022\017\n\007version\030\003 \001(\005\022U\n\006fie" +
-      "lds\030\004 \003(\0132E.services.verifiablecredentia" +
-      "ls.templates.v1.TemplateData.FieldsEntry" +
-      "\022\037\n\027allow_additional_fields\030\005 \001(\010\022\022\n\nsch" +
-      "ema_uri\030\006 \001(\t\022\023\n\013context_uri\030\007 \001(\t\022!\n\014ec" +
-      "osystem_id\030\010 \001(\tR\013ecosystemId\022\022\n\004type\030\t " +
-      "\001(\tR\004type\022\035\n\ncreated_by\030\n \001(\tR\tcreatedBy" +
-      "\032i\n\013FieldsEntry\022\013\n\003key\030\001 \001(\t\022I\n\005value\030\002 " +
-      "\001(\0132:.services.verifiablecredentials.tem" +
-      "plates.v1.TemplateField:\0028\001*;\n\tFieldType" +
-      "\022\n\n\006STRING\020\000\022\n\n\006NUMBER\020\001\022\010\n\004BOOL\020\002\022\014\n\010DA" +
-      "TETIME\020\0042\322\006\n\023CredentialTemplates\022\245\001\n\006Cre" +
-      "ate\022L.services.verifiablecredentials.tem" +
-      "plates.v1.CreateCredentialTemplateReques" +
-      "t\032M.services.verifiablecredentials.templ" +
-      "ates.v1.CreateCredentialTemplateResponse" +
-      "\022\234\001\n\003Get\022I.services.verifiablecredential" +
-      "s.templates.v1.GetCredentialTemplateRequ" +
-      "est\032J.services.verifiablecredentials.tem" +
-      "plates.v1.GetCredentialTemplateResponse\022" +
-      "\241\001\n\004List\022K.services.verifiablecredential" +
-      "s.templates.v1.ListCredentialTemplatesRe" +
-      "quest\032L.services.verifiablecredentials.t" +
-      "emplates.v1.ListCredentialTemplatesRespo" +
-      "nse\022\247\001\n\006Search\022M.services.verifiablecred" +
-      "entials.templates.v1.SearchCredentialTem" +
-      "platesRequest\032N.services.verifiablecrede" +
-      "ntials.templates.v1.SearchCredentialTemp" +
-      "latesResponse\022\245\001\n\006Delete\022L.services.veri" +
-      "fiablecredentials.templates.v1.DeleteCre" +
-      "dentialTemplateRequest\032M.services.verifi" +
-      "ablecredentials.templates.v1.DeleteCrede" +
-      "ntialTemplateResponseB\251\001\n3trinsic.servic" +
-      "es.verifiablecredentials.templates.v1Z<g" +
-      "ithub.com/trinsic-id/sdk/verifiablecrede" +
-      "ntials/templates/v1\252\0023Trinsic.Services.V" +
-      "erifiableCredentials.Templates.V1b\006proto" +
-      "3"
+      "\n"
+          + "<services/verifiable-credentials/templates/v1/templates.proto\022+services.verifia"
+          + "blecredentials.templates.v1\032$services/options/field-options.proto\"*\n"
+          + "\034GetCredentialTemplateRequest\022\n\n"
+          + "\002id\030\001 \001(\t\"l\n"
+          + "\035GetCredentialTemplateResponse\022K\n"
+          + "\010template\030\001 \001(\013"
+          + "29.services.verifiablecredentials.templates.v1.TemplateData\"S\n"
+          + " SearchCredentialTemplatesRequest\022\r\n"
+          + "\005query\030\001 \001(\t\022 \n"
+          + "\022continuation_token\030\002 \001(\tB\004\200\246\035\001\"e\n"
+          + "!SearchCredentialTemplatesResponse\022\022\n\n"
+          + "items_json\030\001 \001(\t\022\020\n"
+          + "\010has_more\030\002 \001(\010\022\032\n"
+          + "\022continuation_token\030\004 \001(\t\"Q\n"
+          + "\036ListCredentialTemplatesRequest\022\r\n"
+          + "\005query\030\001 \001(\t\022 \n"
+          + "\022continuation_token\030\002 \001(\tB\004\200\246\035\001\"\245\001\n"
+          + "\037ListCredentialTemplatesResponse\022L\n"
+          + "\ttemplates\030\001 \003(\01329.services.ver"
+          + "ifiablecredentials.templates.v1.TemplateData\022\030\n"
+          + "\020has_more_results\030\002 \001(\010\022\032\n"
+          + "\022continuation_token\030\003 \001(\t\"-\n"
+          + "\037DeleteCredentialTemplateRequest\022\n\n"
+          + "\002id\030\001 \001(\t\"\"\n"
+          + " DeleteCredentialTemplateResponse\"\245\002\n"
+          + "\037CreateCredentialTemplateRequest\022\014\n"
+          + "\004name\030\001 \001(\t\022h\n"
+          + "\006fields\030\002 \003(\0132X.services.verifiablecredentials"
+          + ".templates.v1.CreateCredentialTemplateRequest.FieldsEntry\022\037\n"
+          + "\027allow_additional_fields\030\003 \001(\010\032i\n"
+          + "\013FieldsEntry\022\013\n"
+          + "\003key\030\001 \001(\t\022I\n"
+          + "\005value\030\002"
+          + " \001(\0132:.services.verifiablecredentials.templates.v1.TemplateField:\0028\001\"k\n"
+          + " CreateCredentialTemplateResponse\022G\n"
+          + "\004data\030\001"
+          + " \001(\01329.services.verifiablecredentials.templates.v1.TemplateData\"|\n\r"
+          + "TemplateField\022\023\n"
+          + "\013description\030\002 \001(\t\022\020\n"
+          + "\010optional\030\003 \001(\010\022D\n"
+          + "\004type\030\004 \001(\01626.services.verifiablecredentials.templates.v1.FieldType\""
+          + " \n"
+          + "\022GetTemplateRequest\022\n\n"
+          + "\002id\030\001 \001(\t\"^\n"
+          + "\023GetTemplateResponse\022G\n"
+          + "\004data\030\001 \001(\01329.services.verif"
+          + "iablecredentials.templates.v1.TemplateData\"\026\n"
+          + "\024ListTemplatesRequest\"e\n"
+          + "\025ListTemplatesResponse\022L\n"
+          + "\ttemplates\030\001 \003(\01329.service"
+          + "s.verifiablecredentials.templates.v1.TemplateData\"\237\003\n"
+          + "\014TemplateData\022\016\n"
+          + "\002id\030\001 \001(\tR\002id\022\014\n"
+          + "\004name\030\002 \001(\t\022\017\n"
+          + "\007version\030\003 \001(\005\022U\n"
+          + "\006fields\030\004 \003(\0132E.services.verifiablecredentia"
+          + "ls.templates.v1.TemplateData.FieldsEntry\022\037\n"
+          + "\027allow_additional_fields\030\005 \001(\010\022\022\n\n"
+          + "schema_uri\030\006 \001(\t\022\023\n"
+          + "\013context_uri\030\007 \001(\t\022!\n"
+          + "\014ecosystem_id\030\010 \001(\tR\013ecosystemId\022\022\n"
+          + "\004type\030\t \001(\tR\004type\022\035\n\n"
+          + "created_by\030\n"
+          + " \001(\tR\tcreatedBy\032i\n"
+          + "\013FieldsEntry\022\013\n"
+          + "\003key\030\001 \001(\t\022I\n"
+          + "\005value\030\002 "
+          + "\001(\0132:.services.verifiablecredentials.templates.v1.TemplateField:\0028\001*;\n"
+          + "\tFieldType\022\n\n"
+          + "\006STRING\020\000\022\n\n"
+          + "\006NUMBER\020\001\022\010\n"
+          + "\004BOOL\020\002\022\014\n"
+          + "\010DATETIME\020\0042\322\006\n"
+          + "\023CredentialTemplates\022\245\001\n"
+          + "\006Create\022L.services.verifiablecredentials.tem"
+          + "plates.v1.CreateCredentialTemplateRequest\032M.services.verifiablecredentials.templ"
+          + "ates.v1.CreateCredentialTemplateResponse\022\234\001\n"
+          + "\003Get\022I.services.verifiablecredentials.templates.v1.GetCredentialTemplateRequ"
+          + "est\032J.services.verifiablecredentials.tem"
+          + "plates.v1.GetCredentialTemplateResponse\022\241\001\n"
+          + "\004List\022K.services.verifiablecredentials.templates.v1.ListCredentialTemplatesRe"
+          + "quest\032L.services.verifiablecredentials.t"
+          + "emplates.v1.ListCredentialTemplatesResponse\022\247\001\n"
+          + "\006Search\022M.services.verifiablecredentials.templates.v1.SearchCredentialTem"
+          + "platesRequest\032N.services.verifiablecrede"
+          + "ntials.templates.v1.SearchCredentialTemplatesResponse\022\245\001\n"
+          + "\006Delete\022L.services.verifiablecredentials.templates.v1.DeleteCre"
+          + "dentialTemplateRequest\032M.services.verifi"
+          + "ablecredentials.templates.v1.DeleteCredentialTemplateResponseB\241\001\n"
+          + "3trinsic.services.verifiablecredentials.templates.v1Z4s"
+          + "ervices/verifiablecredentials/templates/v1/template\252\0023Trinsic.Services.Verifiabl"
+          + "eCredentials.Templates.V1b\006proto3"
     };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-          trinsic.services.protobuf.options.FieldOptions.getDescriptor(),
-        });
+    descriptor =
+        com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
+            descriptorData,
+            new com.google.protobuf.Descriptors.FileDescriptor[] {
+              trinsic.services.protobuf.options.FieldOptions.getDescriptor(),
+            });
     internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateRequest_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateRequest_descriptor,
-        new java.lang.String[] { "Id", });
+        getDescriptor().getMessageTypes().get(0);
+    internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateRequest_descriptor,
+            new java.lang.String[] {
+              "Id",
+            });
     internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateResponse_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateResponse_descriptor,
-        new java.lang.String[] { "Template", });
+        getDescriptor().getMessageTypes().get(1);
+    internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_GetCredentialTemplateResponse_descriptor,
+            new java.lang.String[] {
+              "Template",
+            });
     internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesRequest_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesRequest_descriptor,
-        new java.lang.String[] { "Query", "ContinuationToken", });
+        getDescriptor().getMessageTypes().get(2);
+    internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesRequest_descriptor,
+            new java.lang.String[] {
+              "Query", "ContinuationToken",
+            });
     internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesResponse_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesResponse_descriptor,
-        new java.lang.String[] { "ItemsJson", "HasMore", "ContinuationToken", });
+        getDescriptor().getMessageTypes().get(3);
+    internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesResponse_descriptor,
+            new java.lang.String[] {
+              "ItemsJson", "HasMore", "ContinuationToken",
+            });
     internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesRequest_descriptor =
-      getDescriptor().getMessageTypes().get(4);
-    internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesRequest_descriptor,
-        new java.lang.String[] { "Query", "ContinuationToken", });
+        getDescriptor().getMessageTypes().get(4);
+    internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesRequest_descriptor,
+            new java.lang.String[] {
+              "Query", "ContinuationToken",
+            });
     internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesResponse_descriptor =
-      getDescriptor().getMessageTypes().get(5);
-    internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesResponse_descriptor,
-        new java.lang.String[] { "Templates", "HasMoreResults", "ContinuationToken", });
+        getDescriptor().getMessageTypes().get(5);
+    internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_ListCredentialTemplatesResponse_descriptor,
+            new java.lang.String[] {
+              "Templates", "HasMoreResults", "ContinuationToken",
+            });
     internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateRequest_descriptor =
-      getDescriptor().getMessageTypes().get(6);
-    internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateRequest_descriptor,
-        new java.lang.String[] { "Id", });
+        getDescriptor().getMessageTypes().get(6);
+    internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateRequest_descriptor,
+            new java.lang.String[] {
+              "Id",
+            });
     internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateResponse_descriptor =
-      getDescriptor().getMessageTypes().get(7);
-    internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateResponse_descriptor,
-        new java.lang.String[] { });
+        getDescriptor().getMessageTypes().get(7);
+    internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_DeleteCredentialTemplateResponse_descriptor,
+            new java.lang.String[] {});
     internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_descriptor =
-      getDescriptor().getMessageTypes().get(8);
-    internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_descriptor,
-        new java.lang.String[] { "Name", "Fields", "AllowAdditionalFields", });
+        getDescriptor().getMessageTypes().get(8);
+    internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_descriptor,
+            new java.lang.String[] {
+              "Name", "Fields", "AllowAdditionalFields",
+            });
     internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_FieldsEntry_descriptor =
-      internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_descriptor.getNestedTypes().get(0);
-    internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_FieldsEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_FieldsEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
+        internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_descriptor
+            .getNestedTypes()
+            .get(0);
+    internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_FieldsEntry_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateRequest_FieldsEntry_descriptor,
+            new java.lang.String[] {
+              "Key", "Value",
+            });
     internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateResponse_descriptor =
-      getDescriptor().getMessageTypes().get(9);
-    internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateResponse_descriptor,
-        new java.lang.String[] { "Data", });
+        getDescriptor().getMessageTypes().get(9);
+    internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_CreateCredentialTemplateResponse_descriptor,
+            new java.lang.String[] {
+              "Data",
+            });
     internal_static_services_verifiablecredentials_templates_v1_TemplateField_descriptor =
-      getDescriptor().getMessageTypes().get(10);
-    internal_static_services_verifiablecredentials_templates_v1_TemplateField_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_templates_v1_TemplateField_descriptor,
-        new java.lang.String[] { "Description", "Optional", "Type", });
+        getDescriptor().getMessageTypes().get(10);
+    internal_static_services_verifiablecredentials_templates_v1_TemplateField_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_TemplateField_descriptor,
+            new java.lang.String[] {
+              "Description", "Optional", "Type",
+            });
     internal_static_services_verifiablecredentials_templates_v1_GetTemplateRequest_descriptor =
-      getDescriptor().getMessageTypes().get(11);
-    internal_static_services_verifiablecredentials_templates_v1_GetTemplateRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_templates_v1_GetTemplateRequest_descriptor,
-        new java.lang.String[] { "Id", });
+        getDescriptor().getMessageTypes().get(11);
+    internal_static_services_verifiablecredentials_templates_v1_GetTemplateRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_GetTemplateRequest_descriptor,
+            new java.lang.String[] {
+              "Id",
+            });
     internal_static_services_verifiablecredentials_templates_v1_GetTemplateResponse_descriptor =
-      getDescriptor().getMessageTypes().get(12);
-    internal_static_services_verifiablecredentials_templates_v1_GetTemplateResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_templates_v1_GetTemplateResponse_descriptor,
-        new java.lang.String[] { "Data", });
+        getDescriptor().getMessageTypes().get(12);
+    internal_static_services_verifiablecredentials_templates_v1_GetTemplateResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_GetTemplateResponse_descriptor,
+            new java.lang.String[] {
+              "Data",
+            });
     internal_static_services_verifiablecredentials_templates_v1_ListTemplatesRequest_descriptor =
-      getDescriptor().getMessageTypes().get(13);
-    internal_static_services_verifiablecredentials_templates_v1_ListTemplatesRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_templates_v1_ListTemplatesRequest_descriptor,
-        new java.lang.String[] { });
+        getDescriptor().getMessageTypes().get(13);
+    internal_static_services_verifiablecredentials_templates_v1_ListTemplatesRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_ListTemplatesRequest_descriptor,
+            new java.lang.String[] {});
     internal_static_services_verifiablecredentials_templates_v1_ListTemplatesResponse_descriptor =
-      getDescriptor().getMessageTypes().get(14);
-    internal_static_services_verifiablecredentials_templates_v1_ListTemplatesResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_templates_v1_ListTemplatesResponse_descriptor,
-        new java.lang.String[] { "Templates", });
+        getDescriptor().getMessageTypes().get(14);
+    internal_static_services_verifiablecredentials_templates_v1_ListTemplatesResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_ListTemplatesResponse_descriptor,
+            new java.lang.String[] {
+              "Templates",
+            });
     internal_static_services_verifiablecredentials_templates_v1_TemplateData_descriptor =
-      getDescriptor().getMessageTypes().get(15);
-    internal_static_services_verifiablecredentials_templates_v1_TemplateData_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_templates_v1_TemplateData_descriptor,
-        new java.lang.String[] { "Id", "Name", "Version", "Fields", "AllowAdditionalFields", "SchemaUri", "ContextUri", "EcosystemId", "Type", "CreatedBy", });
+        getDescriptor().getMessageTypes().get(15);
+    internal_static_services_verifiablecredentials_templates_v1_TemplateData_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_TemplateData_descriptor,
+            new java.lang.String[] {
+              "Id",
+              "Name",
+              "Version",
+              "Fields",
+              "AllowAdditionalFields",
+              "SchemaUri",
+              "ContextUri",
+              "EcosystemId",
+              "Type",
+              "CreatedBy",
+            });
     internal_static_services_verifiablecredentials_templates_v1_TemplateData_FieldsEntry_descriptor =
-      internal_static_services_verifiablecredentials_templates_v1_TemplateData_descriptor.getNestedTypes().get(0);
-    internal_static_services_verifiablecredentials_templates_v1_TemplateData_FieldsEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_templates_v1_TemplateData_FieldsEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
+        internal_static_services_verifiablecredentials_templates_v1_TemplateData_descriptor
+            .getNestedTypes()
+            .get(0);
+    internal_static_services_verifiablecredentials_templates_v1_TemplateData_FieldsEntry_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_templates_v1_TemplateData_FieldsEntry_descriptor,
+            new java.lang.String[] {
+              "Key", "Value",
+            });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(trinsic.services.protobuf.options.FieldOptions.optional);
-    com.google.protobuf.Descriptors.FileDescriptor
-        .internalUpdateFileDescriptor(descriptor, registry);
+    com.google.protobuf.Descriptors.FileDescriptor.internalUpdateFileDescriptor(
+        descriptor, registry);
     trinsic.services.protobuf.options.FieldOptions.getDescriptor();
   }
 

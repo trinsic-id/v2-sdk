@@ -1,12 +1,20 @@
 buildscript {
     repositories {
+        mavenLocal()
         mavenCentral()
+
+        maven { url "https://repo1.maven.org/maven2/" }
     }
 }
 plugins {
     id 'java'
     id 'maven-publish'
     id 'org.jetbrains.kotlin.jvm' version '1.6.10'
+    id 'jacoco'
+}
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
 }
 
 // Gradle doesn't allow these at the top of the file - go figure?
@@ -42,27 +50,36 @@ dependencies {
     
     implementation 'org.jetbrains:annotations:23.0.0'
     implementation group: 'com.google.protobuf', name: 'protobuf-java', version: '3.19.2'
-    implementation 'com.google.protobuf:protobuf-java-util:3.19.4'
+    implementation 'com.google.protobuf:protobuf-java-util:3.20.1'
     implementation group: 'net.java.dev.jna', name: 'jna', version: '5.8.0'
     implementation 'io.grpc:grpc-kotlin-stub:1.2.1'
-    implementation 'io.grpc:grpc-protobuf:1.44.1'
-    implementation 'com.google.protobuf:protobuf-kotlin:3.19.4'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0'
+    implementation 'io.grpc:grpc-protobuf:1.46.0'
+    implementation 'com.google.protobuf:protobuf-kotlin:3.20.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
     testImplementation 'org.junit.jupiter:junit-jupiter-params:5.8.2'
 
     implementation 'io.leonard:base58:0.0.2'
-    implementation 'io.grpc:grpc-netty-shaded:1.44.1'
-    implementation 'io.grpc:grpc-protobuf:1.44.1'
+    implementation 'io.grpc:grpc-netty-shaded:1.46.0'
+    implementation 'io.grpc:grpc-protobuf:1.46.0'
     // This has to match the version of protoc-gen-grpc-java used in `sdk/devops/generate_proto_files.py`
-    implementation 'io.grpc:grpc-stub:1.44.1'
+    implementation 'io.grpc:grpc-stub:1.46.0'
     implementation urlFile('https://github.com/trinsic-id/okapi/releases/download/v1.6.0/trinsic-okapi-1.6.0.jar', 'trinsic-okapi-1.6.0')
 }
 
 test {
     useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = true
+    }
+    executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
 }
 
 jar {
@@ -73,7 +90,7 @@ jar {
 
 compileKotlin {
     compileKotlin.destinationDirectory = compileJava.destinationDirectory
-    kotlinOptions.jvmTarget = targetCompatibility
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_11
 }
 
 repositories {

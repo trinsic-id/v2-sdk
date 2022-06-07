@@ -16,9 +16,8 @@ import {
   getVaccineCertUnsignedJSON,
 } from "./TestData";
 
-
-import {getTestServerOptions, setTestTimeout} from "./env";
-import {v4 as uuid} from "uuid";
+import { getTestServerOptions, setTestTimeout } from "./env";
+import { v4 as uuid } from "uuid";
 
 const options = getTestServerOptions();
 const allison = getTestServerOptions();
@@ -26,7 +25,7 @@ const clinic = getTestServerOptions();
 const airline = getTestServerOptions();
 
 describe("WalletService Unit Tests", () => {
-  setTestTimeout()
+  setTestTimeout();
   beforeAll(async () => {
     let service = new AccountService(options);
     allison.authToken = await service.signIn();

@@ -5,8 +5,7 @@ import (
 	"strconv"
 	"strings"
 
-	options "github.com/trinsic-id/sdk/go/proto/options/v1"
-
+	"github.com/trinsic-id/sdk/go/proto/sdk/options/v1/options"
 	"google.golang.org/grpc"
 )
 
