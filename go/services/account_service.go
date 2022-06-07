@@ -11,7 +11,7 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-// NewAccountService returns an account servcie with the base service configured
+// NewAccountService returns an account service with the base service configured
 // using the provided options
 func NewAccountService(options *Options) (AccountService, error) {
 	base, err := NewServiceBase(options)

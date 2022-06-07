@@ -8,7 +8,7 @@ import (
 	"github.com/trinsic-id/sdk/go/proto/services/trustregistry/v1/trustregistry"
 )
 
-// NewTrustRegistryService returns a trust registry servcie with the base service configured
+// NewTrustRegistryService returns a trust registry service with the base service configured
 // using the provided options
 func NewTrustRegistryService(options *Options) (TrustRegistryService, error) {
 	base, err := NewServiceBase(options)
