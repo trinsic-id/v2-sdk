@@ -1,12 +1,12 @@
 package services
 
 import (
-	account "github.com/trinsic-id/sdk/go/proto/account/v1"
-	provider "github.com/trinsic-id/sdk/go/proto/provider/v1"
-	trustregistry "github.com/trinsic-id/sdk/go/proto/trustregistry/v1"
-	wallet "github.com/trinsic-id/sdk/go/proto/universalwallet/v1"
-	template "github.com/trinsic-id/sdk/go/proto/verifiablecredentials/templates/v1"
-	credential "github.com/trinsic-id/sdk/go/proto/verifiablecredentials/v1"
+	"github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
+	"github.com/trinsic-id/sdk/go/proto/services/provider/v1/provider"
+	"github.com/trinsic-id/sdk/go/proto/services/trustregistry/v1/trustregistry"
+	"github.com/trinsic-id/sdk/go/proto/services/universalwallet/v1/wallet"
+	"github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/templates/v1/template"
+	"github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/v1/credential"
 )
 
 type Trinsic struct {
