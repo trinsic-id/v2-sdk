@@ -5,6 +5,9 @@ We're using [mkdocs](https://www.mkdocs.org/) with [`mkdocs-material`](https://s
 ### Dependencies
 
 - the gitpod environment is already set up with everything need to generate the documentation site.
+- Install the necessary `protoc` plugins and make them available on your PATH
+  - `go install github.com/trinsic-id/protoc-gen-json@latest`
+  - `go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest`
 - Install the requirements using `pip install -r requirements.txt`
 - Install the python SDK requirements (required for `mkdocstrings` which uses introspection) using `pip install -r python/requirements.txt`
 - https://www.mkdocs.org/#installation
@@ -36,19 +39,88 @@ Usage: `{{ include_section(file_name: str, section_name: str, include_heading: b
 - `section_name` is the name of the section you wish to include
 - `include_heading` controls whether or not to include the heading itself
 
-#### `proto_obj`
+#### Protobuf-Related Macros (`proto_sample_start`, `proto_method_tabs`, `proto_message`, `proto_enum`)
 
-This macro allows you to inject the documentation for any protobuf message or service that is documented in `reference/proto/index.md`.
+These macros provide functionality for auto-documentation for our protobuf objects.
 
-Usage: `{{ proto_obj(obj: str, header_text: str=None) }}`
+**Note**: All these macros work off of the output of `protoc-gen-json`. [Read its docs](https://github.com/trinsic-id/protoc-gen-json) for more info.
 
-- `obj` is the name of the protobuf message or service
-    - For example, `ServiceOptions`
-- `header_text`, if specified, overrides the text of the header with whatever you specify
-    - If unspecified, the name of the message is used (same as the value of `obj`)
+##### `proto_sample_start` / `proto_method_tabs`
+
+These two macros are designed to be used in a very specific way.
+
+`proto_sample_start()` is used to generate the `Sample` tab header, as well as the preceding `<div>` we use to target the generated tab structure for custom CSS.
+
+Immediately following `proto_sample_start()` should be a set of tabs, **indented one level**, one for each language, containing sample code for the method you are documenting.
 
 
-Example: `{{ proto_obj('SignInRequest') }}`
+`proto_method_tabs()` should be used _after_ the sample code tabs, and is used to generate the `Request` and `Response` tabs for a specific protobuf method.
+
+
+**Example:**
+```markdown
+{{ proto_sample_start() }}
+    === "Trinsic CLI" 
+        ```bash
+        trinsic account login --email <PROFILE_EMAIL> --name <PROFILE_NAME>
+        ```
+
+    === "TypeScript"
+        ```typescript
+        const allison = (await accountService.signIn()).getProfile();
+        ```
+
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:accountServiceSignIn
+        ```
+        <!--/codeinclude-->
+
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [Insert Item Wallet](../../../python/tests/test_trinsic_services.py) inside_block:accountServiceSignIn
+        ```
+        <!--/codeinclude-->
+
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [CreateEcosystem](../../../go/services/account_service_test.go) inside_block:accountServiceSignIn
+        ```
+        <!--/codeinclude-->
+
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [CreateEcosystem](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:accountServiceSignIn
+        ```
+        <!--/codeinclude-->
+
+    === "Ruby"
+        ```ruby
+        allison = account_service.sign_in(nil).profile
+        ```
+
+{{ proto_method_tabs("services.account.v1.Account.SignIn") }}
+```
+
+Produces:
+
+<img src="https://user-images.githubusercontent.com/1294419/172242784-139f45b7-d662-4c71-82c9-7783f7b3886b.gif" width="550"/>
+
+
+#### `proto_message` / `proto_enum`
+
+These macros are used to generate the documentation for a protobuf message or enum, respectively.
+
+They take, as their only argument, the *Fully-Qualified Name* of the message or enum.
+
+Example:
+
+`{{ proto_message('sdk.options.v1.ServiceOptions') }}`
+
 
 ### Build and deploy
 
