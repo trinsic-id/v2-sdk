@@ -50,6 +50,9 @@ jobs:
         run: |
           python ./devops/generate_proto_files.py --language=all
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4.0.4
+        uses: repo-sync/pull-request@v2
         with:
-          base: ${{ github.ref_name }}
+          destination_branch: ${{ github.ref }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          pr_title: "Updated proto generated files for ${{ github.ref }}"
+          pr_label: "auto-pr"
