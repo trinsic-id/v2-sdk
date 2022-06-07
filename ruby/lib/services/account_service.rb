@@ -45,7 +45,7 @@ module Trinsic
     end
 
     def get_info
-      request = Account_V1::InfoRequest.new
+      request = Account_V1::AccountInfoRequest.new
       @client.info(request, metadata: metadata(request))
     end
 

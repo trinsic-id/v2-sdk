@@ -20,8 +20,12 @@ const _ = grpc.SupportPackageIsVersion7
 type AccountClient interface {
 	// Sign in to an already existing account
 	SignIn(ctx context.Context, in *SignInRequest, opts ...grpc.CallOption) (*SignInResponse, error)
+	// Login to account. If account doesn't exist, new will be created
+	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
+	// Confirm login step by responding to the challenge request
+	LoginConfirm(ctx context.Context, in *LoginConfirmRequest, opts ...grpc.CallOption) (*LoginConfirmResponse, error)
 	// Get account information
-	Info(ctx context.Context, in *InfoRequest, opts ...grpc.CallOption) (*InfoResponse, error)
+	Info(ctx context.Context, in *AccountInfoRequest, opts ...grpc.CallOption) (*AccountInfoResponse, error)
 	// List all connected devices
 	ListDevices(ctx context.Context, in *ListDevicesRequest, opts ...grpc.CallOption) (*ListDevicesResponse, error)
 	// Revoke device access to the account's cloud wallet
@@ -45,8 +49,26 @@ func (c *accountClient) SignIn(ctx context.Context, in *SignInRequest, opts ...g
 	return out, nil
 }
 
-func (c *accountClient) Info(ctx context.Context, in *InfoRequest, opts ...grpc.CallOption) (*InfoResponse, error) {
-	out := new(InfoResponse)
+func (c *accountClient) Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error) {
+	out := new(LoginResponse)
+	err := c.cc.Invoke(ctx, "/services.account.v1.Account/Login", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *accountClient) LoginConfirm(ctx context.Context, in *LoginConfirmRequest, opts ...grpc.CallOption) (*LoginConfirmResponse, error) {
+	out := new(LoginConfirmResponse)
+	err := c.cc.Invoke(ctx, "/services.account.v1.Account/LoginConfirm", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *accountClient) Info(ctx context.Context, in *AccountInfoRequest, opts ...grpc.CallOption) (*AccountInfoResponse, error) {
+	out := new(AccountInfoResponse)
 	err := c.cc.Invoke(ctx, "/services.account.v1.Account/Info", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -78,8 +100,12 @@ func (c *accountClient) RevokeDevice(ctx context.Context, in *RevokeDeviceReques
 type AccountServer interface {
 	// Sign in to an already existing account
 	SignIn(context.Context, *SignInRequest) (*SignInResponse, error)
+	// Login to account. If account doesn't exist, new will be created
+	Login(context.Context, *LoginRequest) (*LoginResponse, error)
+	// Confirm login step by responding to the challenge request
+	LoginConfirm(context.Context, *LoginConfirmRequest) (*LoginConfirmResponse, error)
 	// Get account information
-	Info(context.Context, *InfoRequest) (*InfoResponse, error)
+	Info(context.Context, *AccountInfoRequest) (*AccountInfoResponse, error)
 	// List all connected devices
 	ListDevices(context.Context, *ListDevicesRequest) (*ListDevicesResponse, error)
 	// Revoke device access to the account's cloud wallet
@@ -94,7 +120,13 @@ type UnimplementedAccountServer struct {
 func (UnimplementedAccountServer) SignIn(context.Context, *SignInRequest) (*SignInResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SignIn not implemented")
 }
-func (UnimplementedAccountServer) Info(context.Context, *InfoRequest) (*InfoResponse, error) {
+func (UnimplementedAccountServer) Login(context.Context, *LoginRequest) (*LoginResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
+}
+func (UnimplementedAccountServer) LoginConfirm(context.Context, *LoginConfirmRequest) (*LoginConfirmResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method LoginConfirm not implemented")
+}
+func (UnimplementedAccountServer) Info(context.Context, *AccountInfoRequest) (*AccountInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Info not implemented")
 }
 func (UnimplementedAccountServer) ListDevices(context.Context, *ListDevicesRequest) (*ListDevicesResponse, error) {
@@ -134,8 +166,44 @@ func _Account_SignIn_Handler(srv interface{}, ctx context.Context, dec func(inte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Account_Login_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LoginRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccountServer).Login(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/services.account.v1.Account/Login",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccountServer).Login(ctx, req.(*LoginRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Account_LoginConfirm_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LoginConfirmRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AccountServer).LoginConfirm(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/services.account.v1.Account/LoginConfirm",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AccountServer).LoginConfirm(ctx, req.(*LoginConfirmRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Account_Info_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(InfoRequest)
+	in := new(AccountInfoRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -147,7 +215,7 @@ func _Account_Info_Handler(srv interface{}, ctx context.Context, dec func(interf
 		FullMethod: "/services.account.v1.Account/Info",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccountServer).Info(ctx, req.(*InfoRequest))
+		return srv.(AccountServer).Info(ctx, req.(*AccountInfoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -198,6 +266,14 @@ var Account_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SignIn",
 			Handler:    _Account_SignIn_Handler,
+		},
+		{
+			MethodName: "Login",
+			Handler:    _Account_Login_Handler,
+		},
+		{
+			MethodName: "LoginConfirm",
+			Handler:    _Account_LoginConfirm_Handler,
 		},
 		{
 			MethodName: "Info",

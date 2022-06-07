@@ -610,6 +610,13 @@ class Ecosystem extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'uri')
+    ..pc<WebhookConfig>(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'webhooks',
+        $pb.PbFieldType.PM,
+        subBuilder: WebhookConfig.create)
     ..hasRequiredFields = false;
 
   Ecosystem._() : super();
@@ -618,6 +625,7 @@ class Ecosystem extends $pb.GeneratedMessage {
     $core.String? name,
     $core.String? description,
     $core.String? uri,
+    $core.Iterable<WebhookConfig>? webhooks,
   }) {
     final _result = create();
     if (id != null) {
@@ -631,6 +639,9 @@ class Ecosystem extends $pb.GeneratedMessage {
     }
     if (uri != null) {
       _result.uri = uri;
+    }
+    if (webhooks != null) {
+      _result.webhooks.addAll(webhooks);
     }
     return _result;
   }
@@ -707,6 +718,109 @@ class Ecosystem extends $pb.GeneratedMessage {
   $core.bool hasUri() => $_has(3);
   @$pb.TagNumber(4)
   void clearUri() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.List<WebhookConfig> get webhooks => $_getList(4);
+}
+
+class WebhookConfig extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'WebhookConfig',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'id')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'destinationUrl')
+    ..pPS(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'events')
+    ..hasRequiredFields = false;
+
+  WebhookConfig._() : super();
+  factory WebhookConfig({
+    $core.String? id,
+    $core.String? destinationUrl,
+    $core.Iterable<$core.String>? events,
+  }) {
+    final _result = create();
+    if (id != null) {
+      _result.id = id;
+    }
+    if (destinationUrl != null) {
+      _result.destinationUrl = destinationUrl;
+    }
+    if (events != null) {
+      _result.events.addAll(events);
+    }
+    return _result;
+  }
+  factory WebhookConfig.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory WebhookConfig.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  WebhookConfig clone() => WebhookConfig()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  WebhookConfig copyWith(void Function(WebhookConfig) updates) =>
+      super.copyWith((message) => updates(message as WebhookConfig))
+          as WebhookConfig; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static WebhookConfig create() => WebhookConfig._();
+  WebhookConfig createEmptyInstance() => create();
+  static $pb.PbList<WebhookConfig> createRepeated() =>
+      $pb.PbList<WebhookConfig>();
+  @$core.pragma('dart2js:noInline')
+  static WebhookConfig getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<WebhookConfig>(create);
+  static WebhookConfig? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get destinationUrl => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set destinationUrl($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasDestinationUrl() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearDestinationUrl() => clearField(2);
+
+  @$pb.TagNumber(4)
+  $core.List<$core.String> get events => $_getList(2);
 }
 
 class CreateEcosystemRequest extends $pb.GeneratedMessage {
@@ -965,6 +1079,682 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
   void clearConfirmationMethod() => clearField(3);
 }
 
+class UpdateEcosystemRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'UpdateEcosystemRequest',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'ecosystemId')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'description')
+    ..aOS(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'uri')
+    ..hasRequiredFields = false;
+
+  UpdateEcosystemRequest._() : super();
+  factory UpdateEcosystemRequest({
+    $core.String? ecosystemId,
+    $core.String? description,
+    $core.String? uri,
+  }) {
+    final _result = create();
+    if (ecosystemId != null) {
+      _result.ecosystemId = ecosystemId;
+    }
+    if (description != null) {
+      _result.description = description;
+    }
+    if (uri != null) {
+      _result.uri = uri;
+    }
+    return _result;
+  }
+  factory UpdateEcosystemRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory UpdateEcosystemRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  UpdateEcosystemRequest clone() =>
+      UpdateEcosystemRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  UpdateEcosystemRequest copyWith(
+          void Function(UpdateEcosystemRequest) updates) =>
+      super.copyWith((message) => updates(message as UpdateEcosystemRequest))
+          as UpdateEcosystemRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static UpdateEcosystemRequest create() => UpdateEcosystemRequest._();
+  UpdateEcosystemRequest createEmptyInstance() => create();
+  static $pb.PbList<UpdateEcosystemRequest> createRepeated() =>
+      $pb.PbList<UpdateEcosystemRequest>();
+  @$core.pragma('dart2js:noInline')
+  static UpdateEcosystemRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<UpdateEcosystemRequest>(create);
+  static UpdateEcosystemRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get ecosystemId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set ecosystemId($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasEcosystemId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearEcosystemId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get description => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set description($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasDescription() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearDescription() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get uri => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set uri($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasUri() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearUri() => clearField(3);
+}
+
+class UpdateEcosystemResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'UpdateEcosystemResponse',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..aOM<Ecosystem>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'Ecosystem',
+        protoName: 'Ecosystem',
+        subBuilder: Ecosystem.create)
+    ..hasRequiredFields = false;
+
+  UpdateEcosystemResponse._() : super();
+  factory UpdateEcosystemResponse({
+    Ecosystem? ecosystem,
+  }) {
+    final _result = create();
+    if (ecosystem != null) {
+      _result.ecosystem = ecosystem;
+    }
+    return _result;
+  }
+  factory UpdateEcosystemResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory UpdateEcosystemResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  UpdateEcosystemResponse clone() =>
+      UpdateEcosystemResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  UpdateEcosystemResponse copyWith(
+          void Function(UpdateEcosystemResponse) updates) =>
+      super.copyWith((message) => updates(message as UpdateEcosystemResponse))
+          as UpdateEcosystemResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static UpdateEcosystemResponse create() => UpdateEcosystemResponse._();
+  UpdateEcosystemResponse createEmptyInstance() => create();
+  static $pb.PbList<UpdateEcosystemResponse> createRepeated() =>
+      $pb.PbList<UpdateEcosystemResponse>();
+  @$core.pragma('dart2js:noInline')
+  static UpdateEcosystemResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<UpdateEcosystemResponse>(create);
+  static UpdateEcosystemResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  Ecosystem get ecosystem => $_getN(0);
+  @$pb.TagNumber(1)
+  set ecosystem(Ecosystem v) {
+    setField(1, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasEcosystem() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearEcosystem() => clearField(1);
+  @$pb.TagNumber(1)
+  Ecosystem ensureEcosystem() => $_ensure(0);
+}
+
+class AddWebhookRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'AddWebhookRequest',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'ecosystemId')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'destinationUrl')
+    ..aOS(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'secret')
+    ..pPS(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'events')
+    ..hasRequiredFields = false;
+
+  AddWebhookRequest._() : super();
+  factory AddWebhookRequest({
+    $core.String? ecosystemId,
+    $core.String? destinationUrl,
+    $core.String? secret,
+    $core.Iterable<$core.String>? events,
+  }) {
+    final _result = create();
+    if (ecosystemId != null) {
+      _result.ecosystemId = ecosystemId;
+    }
+    if (destinationUrl != null) {
+      _result.destinationUrl = destinationUrl;
+    }
+    if (secret != null) {
+      _result.secret = secret;
+    }
+    if (events != null) {
+      _result.events.addAll(events);
+    }
+    return _result;
+  }
+  factory AddWebhookRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory AddWebhookRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  AddWebhookRequest clone() => AddWebhookRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  AddWebhookRequest copyWith(void Function(AddWebhookRequest) updates) =>
+      super.copyWith((message) => updates(message as AddWebhookRequest))
+          as AddWebhookRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static AddWebhookRequest create() => AddWebhookRequest._();
+  AddWebhookRequest createEmptyInstance() => create();
+  static $pb.PbList<AddWebhookRequest> createRepeated() =>
+      $pb.PbList<AddWebhookRequest>();
+  @$core.pragma('dart2js:noInline')
+  static AddWebhookRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<AddWebhookRequest>(create);
+  static AddWebhookRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get ecosystemId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set ecosystemId($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasEcosystemId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearEcosystemId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get destinationUrl => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set destinationUrl($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasDestinationUrl() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearDestinationUrl() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get secret => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set secret($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasSecret() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearSecret() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.List<$core.String> get events => $_getList(3);
+}
+
+class AddWebhookResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'AddWebhookResponse',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..aOM<Ecosystem>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'ecosystem',
+        subBuilder: Ecosystem.create)
+    ..hasRequiredFields = false;
+
+  AddWebhookResponse._() : super();
+  factory AddWebhookResponse({
+    Ecosystem? ecosystem,
+  }) {
+    final _result = create();
+    if (ecosystem != null) {
+      _result.ecosystem = ecosystem;
+    }
+    return _result;
+  }
+  factory AddWebhookResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory AddWebhookResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  AddWebhookResponse clone() => AddWebhookResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  AddWebhookResponse copyWith(void Function(AddWebhookResponse) updates) =>
+      super.copyWith((message) => updates(message as AddWebhookResponse))
+          as AddWebhookResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static AddWebhookResponse create() => AddWebhookResponse._();
+  AddWebhookResponse createEmptyInstance() => create();
+  static $pb.PbList<AddWebhookResponse> createRepeated() =>
+      $pb.PbList<AddWebhookResponse>();
+  @$core.pragma('dart2js:noInline')
+  static AddWebhookResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<AddWebhookResponse>(create);
+  static AddWebhookResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  Ecosystem get ecosystem => $_getN(0);
+  @$pb.TagNumber(1)
+  set ecosystem(Ecosystem v) {
+    setField(1, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasEcosystem() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearEcosystem() => clearField(1);
+  @$pb.TagNumber(1)
+  Ecosystem ensureEcosystem() => $_ensure(0);
+}
+
+class DeleteWebhookRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'DeleteWebhookRequest',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'ecosystemId')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'webhookId')
+    ..hasRequiredFields = false;
+
+  DeleteWebhookRequest._() : super();
+  factory DeleteWebhookRequest({
+    $core.String? ecosystemId,
+    $core.String? webhookId,
+  }) {
+    final _result = create();
+    if (ecosystemId != null) {
+      _result.ecosystemId = ecosystemId;
+    }
+    if (webhookId != null) {
+      _result.webhookId = webhookId;
+    }
+    return _result;
+  }
+  factory DeleteWebhookRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory DeleteWebhookRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  DeleteWebhookRequest clone() =>
+      DeleteWebhookRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  DeleteWebhookRequest copyWith(void Function(DeleteWebhookRequest) updates) =>
+      super.copyWith((message) => updates(message as DeleteWebhookRequest))
+          as DeleteWebhookRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static DeleteWebhookRequest create() => DeleteWebhookRequest._();
+  DeleteWebhookRequest createEmptyInstance() => create();
+  static $pb.PbList<DeleteWebhookRequest> createRepeated() =>
+      $pb.PbList<DeleteWebhookRequest>();
+  @$core.pragma('dart2js:noInline')
+  static DeleteWebhookRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<DeleteWebhookRequest>(create);
+  static DeleteWebhookRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get ecosystemId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set ecosystemId($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasEcosystemId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearEcosystemId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get webhookId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set webhookId($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasWebhookId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearWebhookId() => clearField(2);
+}
+
+class DeleteWebhookResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'DeleteWebhookResponse',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..aOM<Ecosystem>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'ecosystem',
+        subBuilder: Ecosystem.create)
+    ..hasRequiredFields = false;
+
+  DeleteWebhookResponse._() : super();
+  factory DeleteWebhookResponse({
+    Ecosystem? ecosystem,
+  }) {
+    final _result = create();
+    if (ecosystem != null) {
+      _result.ecosystem = ecosystem;
+    }
+    return _result;
+  }
+  factory DeleteWebhookResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory DeleteWebhookResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  DeleteWebhookResponse clone() =>
+      DeleteWebhookResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  DeleteWebhookResponse copyWith(
+          void Function(DeleteWebhookResponse) updates) =>
+      super.copyWith((message) => updates(message as DeleteWebhookResponse))
+          as DeleteWebhookResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static DeleteWebhookResponse create() => DeleteWebhookResponse._();
+  DeleteWebhookResponse createEmptyInstance() => create();
+  static $pb.PbList<DeleteWebhookResponse> createRepeated() =>
+      $pb.PbList<DeleteWebhookResponse>();
+  @$core.pragma('dart2js:noInline')
+  static DeleteWebhookResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<DeleteWebhookResponse>(create);
+  static DeleteWebhookResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  Ecosystem get ecosystem => $_getN(0);
+  @$pb.TagNumber(1)
+  set ecosystem(Ecosystem v) {
+    setField(1, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasEcosystem() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearEcosystem() => clearField(1);
+  @$pb.TagNumber(1)
+  Ecosystem ensureEcosystem() => $_ensure(0);
+}
+
+class EcosystemInfoRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'EcosystemInfoRequest',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'ecosystemId')
+    ..hasRequiredFields = false;
+
+  EcosystemInfoRequest._() : super();
+  factory EcosystemInfoRequest({
+    $core.String? ecosystemId,
+  }) {
+    final _result = create();
+    if (ecosystemId != null) {
+      _result.ecosystemId = ecosystemId;
+    }
+    return _result;
+  }
+  factory EcosystemInfoRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory EcosystemInfoRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  EcosystemInfoRequest clone() =>
+      EcosystemInfoRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  EcosystemInfoRequest copyWith(void Function(EcosystemInfoRequest) updates) =>
+      super.copyWith((message) => updates(message as EcosystemInfoRequest))
+          as EcosystemInfoRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static EcosystemInfoRequest create() => EcosystemInfoRequest._();
+  EcosystemInfoRequest createEmptyInstance() => create();
+  static $pb.PbList<EcosystemInfoRequest> createRepeated() =>
+      $pb.PbList<EcosystemInfoRequest>();
+  @$core.pragma('dart2js:noInline')
+  static EcosystemInfoRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<EcosystemInfoRequest>(create);
+  static EcosystemInfoRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get ecosystemId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set ecosystemId($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasEcosystemId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearEcosystemId() => clearField(1);
+}
+
+class EcosystemInfoResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'EcosystemInfoResponse',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..aOM<Ecosystem>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'ecosystem',
+        subBuilder: Ecosystem.create)
+    ..hasRequiredFields = false;
+
+  EcosystemInfoResponse._() : super();
+  factory EcosystemInfoResponse({
+    Ecosystem? ecosystem,
+  }) {
+    final _result = create();
+    if (ecosystem != null) {
+      _result.ecosystem = ecosystem;
+    }
+    return _result;
+  }
+  factory EcosystemInfoResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory EcosystemInfoResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  EcosystemInfoResponse clone() =>
+      EcosystemInfoResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  EcosystemInfoResponse copyWith(
+          void Function(EcosystemInfoResponse) updates) =>
+      super.copyWith((message) => updates(message as EcosystemInfoResponse))
+          as EcosystemInfoResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static EcosystemInfoResponse create() => EcosystemInfoResponse._();
+  EcosystemInfoResponse createEmptyInstance() => create();
+  static $pb.PbList<EcosystemInfoResponse> createRepeated() =>
+      $pb.PbList<EcosystemInfoResponse>();
+  @$core.pragma('dart2js:noInline')
+  static EcosystemInfoResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<EcosystemInfoResponse>(create);
+  static EcosystemInfoResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  Ecosystem get ecosystem => $_getN(0);
+  @$pb.TagNumber(1)
+  set ecosystem(Ecosystem v) {
+    setField(1, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasEcosystem() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearEcosystem() => clearField(1);
+  @$pb.TagNumber(1)
+  Ecosystem ensureEcosystem() => $_ensure(0);
+}
+
 class GenerateTokenRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')
@@ -1213,4 +2003,142 @@ class GetOberonKeyResponse extends $pb.GeneratedMessage {
   $core.bool hasKey() => $_has(0);
   @$pb.TagNumber(1)
   void clearKey() => clearField(1);
+}
+
+class GetEventTokenRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'GetEventTokenRequest',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..a<$core.List<$core.int>>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'pk',
+        $pb.PbFieldType.OY)
+    ..hasRequiredFields = false;
+
+  GetEventTokenRequest._() : super();
+  factory GetEventTokenRequest({
+    $core.List<$core.int>? pk,
+  }) {
+    final _result = create();
+    if (pk != null) {
+      _result.pk = pk;
+    }
+    return _result;
+  }
+  factory GetEventTokenRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory GetEventTokenRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  GetEventTokenRequest clone() =>
+      GetEventTokenRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  GetEventTokenRequest copyWith(void Function(GetEventTokenRequest) updates) =>
+      super.copyWith((message) => updates(message as GetEventTokenRequest))
+          as GetEventTokenRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetEventTokenRequest create() => GetEventTokenRequest._();
+  GetEventTokenRequest createEmptyInstance() => create();
+  static $pb.PbList<GetEventTokenRequest> createRepeated() =>
+      $pb.PbList<GetEventTokenRequest>();
+  @$core.pragma('dart2js:noInline')
+  static GetEventTokenRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<GetEventTokenRequest>(create);
+  static GetEventTokenRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<$core.int> get pk => $_getN(0);
+  @$pb.TagNumber(1)
+  set pk($core.List<$core.int> v) {
+    $_setBytes(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasPk() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearPk() => clearField(1);
+}
+
+class GetEventTokenResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'GetEventTokenResponse',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'token')
+    ..hasRequiredFields = false;
+
+  GetEventTokenResponse._() : super();
+  factory GetEventTokenResponse({
+    $core.String? token,
+  }) {
+    final _result = create();
+    if (token != null) {
+      _result.token = token;
+    }
+    return _result;
+  }
+  factory GetEventTokenResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory GetEventTokenResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  GetEventTokenResponse clone() =>
+      GetEventTokenResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  GetEventTokenResponse copyWith(
+          void Function(GetEventTokenResponse) updates) =>
+      super.copyWith((message) => updates(message as GetEventTokenResponse))
+          as GetEventTokenResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetEventTokenResponse create() => GetEventTokenResponse._();
+  GetEventTokenResponse createEmptyInstance() => create();
+  static $pb.PbList<GetEventTokenResponse> createRepeated() =>
+      $pb.PbList<GetEventTokenResponse>();
+  @$core.pragma('dart2js:noInline')
+  static GetEventTokenResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<GetEventTokenResponse>(create);
+  static GetEventTokenResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get token => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set token($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasToken() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearToken() => clearField(1);
 }

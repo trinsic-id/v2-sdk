@@ -76,10 +76,10 @@ pub struct TokenProtection {
 }
 /// Request for information about the account used to make the request
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
-pub struct InfoRequest {}
+pub struct AccountInfoRequest {}
 /// Information about the account used to make the request
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
-pub struct InfoResponse {
+pub struct AccountInfoResponse {
     /// The account details associated with
     /// the calling request context
     #[prost(message, optional, tag = "1")]
@@ -120,6 +120,58 @@ pub struct AccountEcosystem {
     pub description: ::prost::alloc::string::String,
     #[prost(string, tag = "4")]
     pub uri: ::prost::alloc::string::String,
+}
+// Login
+
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct LoginRequest {
+    /// Email account to associate with the login request
+    #[prost(string, tag = "1")]
+    pub email: ::prost::alloc::string::String,
+    /// Invitation code associated with this registration
+    #[prost(string, tag = "2")]
+    pub invitation_code: ::prost::alloc::string::String,
+    /// ID of Ecosystem to sign into.
+    /// Ignored if `invitation_code` is passed
+    #[prost(string, tag = "3")]
+    pub ecosystem_id: ::prost::alloc::string::String,
+}
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct LoginResponse {
+    #[prost(oneof = "login_response::Response", tags = "1, 2")]
+    pub response: ::core::option::Option<login_response::Response>,
+}
+/// Nested message and enum types in `LoginResponse`.
+pub mod login_response {
+    #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Oneof)]
+    pub enum Response {
+        /// Challenge response. Random byte sequence unique
+        /// for this login request
+        #[prost(bytes, tag = "1")]
+        Challenge(::prost::alloc::vec::Vec<u8>),
+        /// Profile response. The login isn't challenged and
+        /// the token is returned in this call. Does not require
+        /// confirmation step
+        #[prost(message, tag = "2")]
+        Profile(super::AccountProfile),
+    }
+}
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct LoginConfirmRequest {
+    /// Login challenge received during the Login call
+    #[prost(bytes = "vec", tag = "1")]
+    pub challenge: ::prost::alloc::vec::Vec<u8>,
+    /// Confirmation code received in email or SMS
+    /// hashed using Blake3
+    #[prost(bytes = "vec", tag = "2")]
+    pub confirmation_code_hashed: ::prost::alloc::vec::Vec<u8>,
+}
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct LoginConfirmResponse {
+    /// Profile response. This profile may be protected and
+    /// require unblinding/unprotection using the raw hashed code
+    #[prost(message, optional, tag = "1")]
+    pub profile: ::core::option::Option<AccountProfile>,
 }
 /// Confirmation method type for two-factor workflows
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
@@ -203,11 +255,37 @@ pub mod account_client {
             let path = http::uri::PathAndQuery::from_static("/services.account.v1.Account/SignIn");
             self.inner.unary(request.into_request(), path, codec).await
         }
+        #[doc = " Login to account. If account doesn't exist, new will be created"]
+        pub async fn login(
+            &mut self,
+            request: impl tonic::IntoRequest<super::LoginRequest>,
+        ) -> Result<tonic::Response<super::LoginResponse>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static("/services.account.v1.Account/Login");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        #[doc = " Confirm login step by responding to the challenge request"]
+        pub async fn login_confirm(
+            &mut self,
+            request: impl tonic::IntoRequest<super::LoginConfirmRequest>,
+        ) -> Result<tonic::Response<super::LoginConfirmResponse>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static("/services.account.v1.Account/LoginConfirm");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
         #[doc = " Get account information"]
         pub async fn info(
             &mut self,
-            request: impl tonic::IntoRequest<super::InfoRequest>,
-        ) -> Result<tonic::Response<super::InfoResponse>, tonic::Status> {
+            request: impl tonic::IntoRequest<super::AccountInfoRequest>,
+        ) -> Result<tonic::Response<super::AccountInfoResponse>, tonic::Status> {
             self.inner
                 .ready()
                 .await

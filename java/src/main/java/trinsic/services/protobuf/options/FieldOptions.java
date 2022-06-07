@@ -5,18 +5,19 @@ package trinsic.services.protobuf.options;
 
 public final class FieldOptions {
   private FieldOptions() {}
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
+
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {
     registry.add(trinsic.services.protobuf.options.FieldOptions.optional);
   }
 
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions((com.google.protobuf.ExtensionRegistryLite) registry);
   }
+
   public static final int OPTIONAL_FIELD_NUMBER = 60000;
   /**
+   *
+   *
    * <pre>
    * Whether field is optional in Trinsic's backend.
    * This is not the same as an `optional` protobuf label;
@@ -25,35 +26,34 @@ public final class FieldOptions {
    *
    * <code>extend .google.protobuf.FieldOptions { ... }</code>
    */
-  public static final
-    com.google.protobuf.GeneratedMessage.GeneratedExtension<
-      com.google.protobuf.DescriptorProtos.FieldOptions,
-      java.lang.Boolean> optional = com.google.protobuf.GeneratedMessage
-          .newFileScopedGeneratedExtension(
-        java.lang.Boolean.class,
-        null);
+  public static final com.google.protobuf.GeneratedMessage.GeneratedExtension<
+          com.google.protobuf.DescriptorProtos.FieldOptions, java.lang.Boolean>
+      optional =
+          com.google.protobuf.GeneratedMessage.newFileScopedGeneratedExtension(
+              java.lang.Boolean.class, null);
 
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
+  public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
+
+  private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
+
   static {
     java.lang.String[] descriptorData = {
-      "\n$services/options/field-options.proto\022\020" +
-      "services.options\032 google/protobuf/descri" +
-      "ptor.proto:4\n\010optional\022\035.google.protobuf" +
-      ".FieldOptions\030\340\324\003 \001(\010\210\001\001Bs\n!trinsic.serv" +
-      "ices.protobuf.optionsZ*github.com/trinsi" +
-      "c-id/sdk/protobuf/options\252\002!Trinsic.Serv" +
-      "ices.Protobuf.Optionsb\006proto3"
+      "\n$services/options/field-options.proto\022\020"
+          + "services.options\032 google/protobuf/descri"
+          + "ptor.proto:4\n\010optional\022\035.google.protobuf"
+          + ".FieldOptions\030\340\324\003 \001(\010\210\001\001Bs\n!trinsic.serv"
+          + "ices.protobuf.optionsZ*github.com/trinsi"
+          + "c-id/sdk/protobuf/options\252\002!Trinsic.Serv"
+          + "ices.Protobuf.Optionsb\006proto3"
     };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-          com.google.protobuf.DescriptorProtos.getDescriptor(),
-        });
+    descriptor =
+        com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
+            descriptorData,
+            new com.google.protobuf.Descriptors.FileDescriptor[] {
+              com.google.protobuf.DescriptorProtos.getDescriptor(),
+            });
     optional.internalInit(descriptor.getExtensions().get(0));
     com.google.protobuf.DescriptorProtos.getDescriptor();
   }

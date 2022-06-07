@@ -20,6 +20,30 @@ class ProviderClient extends $grpc.Client {
           ($2.CreateEcosystemRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $2.CreateEcosystemResponse.fromBuffer(value));
+  static final _$updateEcosystem =
+      $grpc.ClientMethod<$2.UpdateEcosystemRequest, $2.UpdateEcosystemResponse>(
+          '/services.provider.v1.Provider/UpdateEcosystem',
+          ($2.UpdateEcosystemRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $2.UpdateEcosystemResponse.fromBuffer(value));
+  static final _$addWebhook =
+      $grpc.ClientMethod<$2.AddWebhookRequest, $2.AddWebhookResponse>(
+          '/services.provider.v1.Provider/AddWebhook',
+          ($2.AddWebhookRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $2.AddWebhookResponse.fromBuffer(value));
+  static final _$deleteWebhook =
+      $grpc.ClientMethod<$2.DeleteWebhookRequest, $2.DeleteWebhookResponse>(
+          '/services.provider.v1.Provider/DeleteWebhook',
+          ($2.DeleteWebhookRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $2.DeleteWebhookResponse.fromBuffer(value));
+  static final _$info =
+      $grpc.ClientMethod<$2.EcosystemInfoRequest, $2.EcosystemInfoResponse>(
+          '/services.provider.v1.Provider/Info',
+          ($2.EcosystemInfoRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $2.EcosystemInfoResponse.fromBuffer(value));
   static final _$generateToken =
       $grpc.ClientMethod<$2.GenerateTokenRequest, $2.GenerateTokenResponse>(
           '/services.provider.v1.Provider/GenerateToken',
@@ -43,6 +67,12 @@ class ProviderClient extends $grpc.Client {
           ($2.GetOberonKeyRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $2.GetOberonKeyResponse.fromBuffer(value));
+  static final _$getEventToken =
+      $grpc.ClientMethod<$2.GetEventTokenRequest, $2.GetEventTokenResponse>(
+          '/services.provider.v1.Provider/GetEventToken',
+          ($2.GetEventTokenRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $2.GetEventTokenResponse.fromBuffer(value));
 
   ProviderClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -53,6 +83,30 @@ class ProviderClient extends $grpc.Client {
       $2.CreateEcosystemRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$createEcosystem, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$2.UpdateEcosystemResponse> updateEcosystem(
+      $2.UpdateEcosystemRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$updateEcosystem, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$2.AddWebhookResponse> addWebhook(
+      $2.AddWebhookRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$addWebhook, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$2.DeleteWebhookResponse> deleteWebhook(
+      $2.DeleteWebhookRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$deleteWebhook, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$2.EcosystemInfoResponse> info(
+      $2.EcosystemInfoRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$info, request, options: options);
   }
 
   $grpc.ResponseFuture<$2.GenerateTokenResponse> generateToken(
@@ -77,6 +131,12 @@ class ProviderClient extends $grpc.Client {
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getOberonKey, request, options: options);
   }
+
+  $grpc.ResponseFuture<$2.GetEventTokenResponse> getEventToken(
+      $2.GetEventTokenRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getEventToken, request, options: options);
+  }
 }
 
 abstract class ProviderServiceBase extends $grpc.Service {
@@ -92,6 +152,40 @@ abstract class ProviderServiceBase extends $grpc.Service {
         ($core.List<$core.int> value) =>
             $2.CreateEcosystemRequest.fromBuffer(value),
         ($2.CreateEcosystemResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.UpdateEcosystemRequest,
+            $2.UpdateEcosystemResponse>(
+        'UpdateEcosystem',
+        updateEcosystem_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) =>
+            $2.UpdateEcosystemRequest.fromBuffer(value),
+        ($2.UpdateEcosystemResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$2.AddWebhookRequest, $2.AddWebhookResponse>(
+        'AddWebhook',
+        addWebhook_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $2.AddWebhookRequest.fromBuffer(value),
+        ($2.AddWebhookResponse value) => value.writeToBuffer()));
+    $addMethod(
+        $grpc.ServiceMethod<$2.DeleteWebhookRequest, $2.DeleteWebhookResponse>(
+            'DeleteWebhook',
+            deleteWebhook_Pre,
+            false,
+            false,
+            ($core.List<$core.int> value) =>
+                $2.DeleteWebhookRequest.fromBuffer(value),
+            ($2.DeleteWebhookResponse value) => value.writeToBuffer()));
+    $addMethod(
+        $grpc.ServiceMethod<$2.EcosystemInfoRequest, $2.EcosystemInfoResponse>(
+            'Info',
+            info_Pre,
+            false,
+            false,
+            ($core.List<$core.int> value) =>
+                $2.EcosystemInfoRequest.fromBuffer(value),
+            ($2.EcosystemInfoResponse value) => value.writeToBuffer()));
     $addMethod(
         $grpc.ServiceMethod<$2.GenerateTokenRequest, $2.GenerateTokenResponse>(
             'GenerateToken',
@@ -126,12 +220,43 @@ abstract class ProviderServiceBase extends $grpc.Service {
             ($core.List<$core.int> value) =>
                 $2.GetOberonKeyRequest.fromBuffer(value),
             ($2.GetOberonKeyResponse value) => value.writeToBuffer()));
+    $addMethod(
+        $grpc.ServiceMethod<$2.GetEventTokenRequest, $2.GetEventTokenResponse>(
+            'GetEventToken',
+            getEventToken_Pre,
+            false,
+            false,
+            ($core.List<$core.int> value) =>
+                $2.GetEventTokenRequest.fromBuffer(value),
+            ($2.GetEventTokenResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$2.CreateEcosystemResponse> createEcosystem_Pre(
       $grpc.ServiceCall call,
       $async.Future<$2.CreateEcosystemRequest> request) async {
     return createEcosystem(call, await request);
+  }
+
+  $async.Future<$2.UpdateEcosystemResponse> updateEcosystem_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$2.UpdateEcosystemRequest> request) async {
+    return updateEcosystem(call, await request);
+  }
+
+  $async.Future<$2.AddWebhookResponse> addWebhook_Pre($grpc.ServiceCall call,
+      $async.Future<$2.AddWebhookRequest> request) async {
+    return addWebhook(call, await request);
+  }
+
+  $async.Future<$2.DeleteWebhookResponse> deleteWebhook_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$2.DeleteWebhookRequest> request) async {
+    return deleteWebhook(call, await request);
+  }
+
+  $async.Future<$2.EcosystemInfoResponse> info_Pre($grpc.ServiceCall call,
+      $async.Future<$2.EcosystemInfoRequest> request) async {
+    return info(call, await request);
   }
 
   $async.Future<$2.GenerateTokenResponse> generateToken_Pre(
@@ -157,8 +282,22 @@ abstract class ProviderServiceBase extends $grpc.Service {
     return getOberonKey(call, await request);
   }
 
+  $async.Future<$2.GetEventTokenResponse> getEventToken_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$2.GetEventTokenRequest> request) async {
+    return getEventToken(call, await request);
+  }
+
   $async.Future<$2.CreateEcosystemResponse> createEcosystem(
       $grpc.ServiceCall call, $2.CreateEcosystemRequest request);
+  $async.Future<$2.UpdateEcosystemResponse> updateEcosystem(
+      $grpc.ServiceCall call, $2.UpdateEcosystemRequest request);
+  $async.Future<$2.AddWebhookResponse> addWebhook(
+      $grpc.ServiceCall call, $2.AddWebhookRequest request);
+  $async.Future<$2.DeleteWebhookResponse> deleteWebhook(
+      $grpc.ServiceCall call, $2.DeleteWebhookRequest request);
+  $async.Future<$2.EcosystemInfoResponse> info(
+      $grpc.ServiceCall call, $2.EcosystemInfoRequest request);
   $async.Future<$2.GenerateTokenResponse> generateToken(
       $grpc.ServiceCall call, $2.GenerateTokenRequest request);
   $async.Future<$2.InviteResponse> invite(
@@ -167,4 +306,6 @@ abstract class ProviderServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $2.InvitationStatusRequest request);
   $async.Future<$2.GetOberonKeyResponse> getOberonKey(
       $grpc.ServiceCall call, $2.GetOberonKeyRequest request);
+  $async.Future<$2.GetEventTokenResponse> getEventToken(
+      $grpc.ServiceCall call, $2.GetEventTokenRequest request);
 }

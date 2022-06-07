@@ -53,8 +53,9 @@ export function responseStatusToJSON(object: ResponseStatus): string {
       return "SERIALIZATION_ERROR";
     case ResponseStatus.UNKNOWN_ERROR:
       return "UNKNOWN_ERROR";
+    case ResponseStatus.UNRECOGNIZED:
     default:
-      return "UNKNOWN";
+      return "UNRECOGNIZED";
   }
 }
 
