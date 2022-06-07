@@ -5,6 +5,7 @@ on:
       - main
     paths:
       - "proto/**"
+      - "devops/*.py"
   workflow_dispatch:
 
 jobs:
@@ -44,21 +45,11 @@ jobs:
         uses: arduino/setup-protoc@v1
       - name: Install protobuf plugins
         run: |
-          gem install grpc-tools
-          go install github.com/coinbase/protoc-gen-rbi@latest
-          go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest
-          go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
-          go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
           pip install -r ./devops/requirements.txt
           echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
       - name: Compile proto files
         run: |
           git checkout -b update-protobuf-generated-files
           python ./devops/generate_proto_files.py
-      - name: Create pull request
-        uses: repo-sync/pull-request@v2.6.1
-        with:
-          destination_branch: "main"
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          pr_label: "auto-pr"
-          pr_title: "Update Generated Protobuf Files"
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4.0.4

@@ -103,16 +103,17 @@ def download_protoc_plugins() -> None:
         os.system(f"chmod +x {kotlin_plugin()}")
 
     # Install go plugins
-    go_plugins = [
+    install_cmds = [
+        "dart pub global activate protoc_plugin",
+        "gem install grpc-tools",
         "go install github.com/trinsic-id/protoc-gen-json@latest",
         "go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest",
-        "go install google.golang.org/protobuf/cmd/protoc-gen-go@latest"
+        "go install github.com/coinbase/protoc-gen-rbi@latest",
+        "go install google.golang.org/protobuf/cmd/protoc-gen-go@latest",
         "go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest",
     ]
-    for go_install_cmd in go_plugins:
-        subprocess.Popen(go_install_cmd, shell=True).wait()
-
-    subprocess.Popen("dart pub global activate protoc_plugin", shell=True).wait()
+    for install_cmd in install_cmds:
+        subprocess.Popen(install_cmd, shell=True).wait()
 
 
 def get_proto_files(dir_name: str = None) -> List[str]:
