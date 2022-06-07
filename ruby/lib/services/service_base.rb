@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Trinsic
+  # Base functionality of all services
   class ServiceBase
     def initialize(service_options)
       @service_options = service_options || trinsic_server
@@ -33,7 +34,7 @@ module Trinsic
       @service_options.default_ecosystem
     end
 
-    def get_url
+    def url_string
       "#{@service_options.server_endpoint}:#{@service_options.server_port}"
     end
   end

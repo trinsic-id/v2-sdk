@@ -17,6 +17,7 @@ require 'services/common/v1/common_pb'
 require 'sdk/options/v1/options_pb'
 require 'security'
 
+# Module for all Trinsic servers
 module Trinsic
   Common_V1 = Services::Common::V1
   Account_V1 = Services::Account::V1
@@ -34,7 +35,8 @@ module Trinsic
     server_authtoken = auth_token || ''
     server_default_ecosystem = ecosystem_id || ENV['TEST_SERVER_ECOSYSTEM'] || 'default'
     Options_V1::ServiceOptions.new(server_endpoint: server_endpoint, server_port: server_port.to_i,
-                                   server_use_tls: server_use_tls.downcase != 'false', auth_token: server_authtoken, default_ecosystem: server_default_ecosystem)
+                                   server_use_tls: server_use_tls.downcase != 'false', auth_token: server_authtoken,
+                                   default_ecosystem: server_default_ecosystem)
   end
 
   class Error < StandardError; end
