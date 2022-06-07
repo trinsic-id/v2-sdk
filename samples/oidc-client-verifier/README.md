@@ -1,19 +1,21 @@
 # OIDC Client Verifier Sample
 
-This is a (very WIP) sample that demonstrates the usage of Trinsic's OIDC endpoint to verify a user's credentials in the client.
-
-Simplicity is an important factor; this uses bare HTML and vanilla JavaScript.
+This is a simple example which demonstrates the usage of Trinsic's OIDC endpoint to verify a user's credentials in the client.
 
 ## Usage
 
 This sample uses `parcel` as a barebones webserver.
-
+  
 On first run, issue `npm install`.
 
 To host the webserver and access the sample, execute `npm start`.
 
-## OIDC Endpoint
+## Configuration
 
-At the moment, this sample operates off of an OIDC endpoint that is running locally -- found in the private Trinsic `server` repository.
+You will need to modify the following constants in `src/js/app.js`:
 
-Once the OIDC service has been deployed, this requirement will be removed.
+- `TRINSIC_ECOSYSTEM`
+  - Set this to the name of the ecosystem from which you wish to fetch credentials
+- `TRINSIC_SCHEMAS`
+  - Populate this array with schema URLs; only Credentials which use one of these schemas may be fetched.
+  - If using Trinsic Templates, this corresponds to the `schema_uri` value of a template

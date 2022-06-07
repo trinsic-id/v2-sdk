@@ -20,7 +20,7 @@ function handleCallback() {
 
     client.processSigninResponse(url).then(function (response) {
         console.log("Credential Response", response);
-        setHeader("Welcome, Gym Member!");
+        setHeader("Success");
 
         document.getElementById("oidc-raw").innerText = JSON.stringify(response, null, 2);
         document.getElementById("oidc-vp").innerText = JSON.stringify(response.vp_token, null, 2);
