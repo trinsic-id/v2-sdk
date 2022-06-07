@@ -237,7 +237,7 @@ service Provider {
     rpc DeleteWebhook(DeleteWebhookRequest) returns (DeleteWebhookResponse);
 
     // Get ecosystem information
-    rpc Info(EcosystemInfoRequest) returns (EcosystemInfoResponse);
+    rpc EcosystemInfo(EcosystemInfoRequest) returns (EcosystemInfoResponse);
 
     // Generates an unprotected authentication token that can be used to
     // configure server side applications
