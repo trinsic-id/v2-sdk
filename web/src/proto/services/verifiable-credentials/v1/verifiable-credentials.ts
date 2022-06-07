@@ -1174,6 +1174,8 @@ export const CheckStatusResponse = {
   },
 };
 
+export type VerifiableCredentialDefinition =
+  typeof VerifiableCredentialDefinition;
 export const VerifiableCredentialDefinition = {
   name: "VerifiableCredential",
   fullName: "services.verifiablecredentials.v1.VerifiableCredential",

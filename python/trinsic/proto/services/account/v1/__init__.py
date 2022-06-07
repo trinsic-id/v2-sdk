@@ -33,7 +33,7 @@ class SignInRequest(betterproto.Message):
     details: "AccountDetails" = betterproto.message_field(1)
     # Invitation code associated with this registration
     invitation_code: str = betterproto.string_field(2)
-    # ID of Ecosystem to sign into.  Ignored if `invitation_code` is passed
+    # ID of Ecosystem to use Ignored if `invitation_code` is passed
     ecosystem_id: str = betterproto.string_field(3)
 
 
@@ -99,14 +99,14 @@ class TokenProtection(betterproto.Message):
 
 
 @dataclass(eq=False, repr=False)
-class InfoRequest(betterproto.Message):
+class AccountInfoRequest(betterproto.Message):
     """Request for information about the account used to make the request"""
 
     pass
 
 
 @dataclass(eq=False, repr=False)
-class InfoResponse(betterproto.Message):
+class AccountInfoResponse(betterproto.Message):
     """Information about the account used to make the request"""
 
     # The account details associated with the calling request context
@@ -122,11 +122,15 @@ class InfoResponse(betterproto.Message):
     # The public DID associated with this account. This DID is used as "issuer"
     # when signing verifiable credentials
     public_did: str = betterproto.string_field(6)
+    # Webhook events if any this wallet has authorized
+    authorized_webhooks: List[str] = betterproto.string_field(7)
 
     def __post_init__(self) -> None:
         super().__post_init__()
         if self.ecosystems:
-            warnings.warn("InfoResponse.ecosystems is deprecated", DeprecationWarning)
+            warnings.warn(
+                "AccountInfoResponse.ecosystems is deprecated", DeprecationWarning
+            )
 
 
 @dataclass(eq=False, repr=False)
@@ -157,15 +161,82 @@ class AccountEcosystem(betterproto.Message):
     uri: str = betterproto.string_field(4)
 
 
+@dataclass(eq=False, repr=False)
+class LoginRequest(betterproto.Message):
+    # Email account to associate with the login request
+    email: str = betterproto.string_field(1)
+    # Invitation code associated with this registration
+    invitation_code: str = betterproto.string_field(2)
+    # ID of Ecosystem to sign into. Ignored if `invitation_code` is passed
+    ecosystem_id: str = betterproto.string_field(3)
+
+
+@dataclass(eq=False, repr=False)
+class LoginResponse(betterproto.Message):
+    # Challenge response. Random byte sequence unique for this login request
+    challenge: bytes = betterproto.bytes_field(1, group="response")
+    # Profile response. The login isn't challenged and the token is returned in
+    # this call. Does not require confirmation step
+    profile: "AccountProfile" = betterproto.message_field(2, group="response")
+
+
+@dataclass(eq=False, repr=False)
+class LoginConfirmRequest(betterproto.Message):
+    # Login challenge received during the Login call
+    challenge: bytes = betterproto.bytes_field(1)
+    # Confirmation code received in email or SMS hashed using Blake3
+    confirmation_code_hashed: bytes = betterproto.bytes_field(2)
+
+
+@dataclass(eq=False, repr=False)
+class LoginConfirmResponse(betterproto.Message):
+    # Profile response. This profile may be protected and require
+    # unblinding/unprotection using the raw hashed code
+    profile: "AccountProfile" = betterproto.message_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class AuthorizeWebhookRequest(betterproto.Message):
+    """Authorize ecosystem to receive wallet events"""
+
+    # Events to authorize access to. Default is "*" (all events)
+    events: List[str] = betterproto.string_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class AuthorizeWebhookResponse(betterproto.Message):
+    """Response to `AuthorizeWebhookRequest`"""
+
+    pass
+
+
 class AccountStub(betterproto.ServiceStub):
     async def sign_in(self, sign_in_request: "SignInRequest") -> "SignInResponse":
         return await self._unary_unary(
             "/services.account.v1.Account/SignIn", sign_in_request, SignInResponse
         )
 
-    async def info(self, info_request: "InfoRequest") -> "InfoResponse":
+    async def login(self, login_request: "LoginRequest") -> "LoginResponse":
         return await self._unary_unary(
-            "/services.account.v1.Account/Info", info_request, InfoResponse
+            "/services.account.v1.Account/Login", login_request, LoginResponse
+        )
+
+    async def login_confirm(
+        self, login_confirm_request: "LoginConfirmRequest"
+    ) -> "LoginConfirmResponse":
+        return await self._unary_unary(
+            "/services.account.v1.Account/LoginConfirm",
+            login_confirm_request,
+            LoginConfirmResponse,
+        )
+
+    async def info(
+        self, account_info_request: "AccountInfoRequest"
+    ) -> "AccountInfoResponse":
+        return await self._unary_unary(
+            "/services.account.v1.Account/Info",
+            account_info_request,
+            AccountInfoResponse,
         )
 
     async def list_devices(
@@ -186,12 +257,31 @@ class AccountStub(betterproto.ServiceStub):
             RevokeDeviceResponse,
         )
 
+    async def authorize_webhook(
+        self, authorize_webhook_request: "AuthorizeWebhookRequest"
+    ) -> "AuthorizeWebhookResponse":
+        return await self._unary_unary(
+            "/services.account.v1.Account/AuthorizeWebhook",
+            authorize_webhook_request,
+            AuthorizeWebhookResponse,
+        )
+
 
 class AccountBase(ServiceBase):
     async def sign_in(self, sign_in_request: "SignInRequest") -> "SignInResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def info(self, info_request: "InfoRequest") -> "InfoResponse":
+    async def login(self, login_request: "LoginRequest") -> "LoginResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def login_confirm(
+        self, login_confirm_request: "LoginConfirmRequest"
+    ) -> "LoginConfirmResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def info(
+        self, account_info_request: "AccountInfoRequest"
+    ) -> "AccountInfoResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def list_devices(
@@ -204,9 +294,24 @@ class AccountBase(ServiceBase):
     ) -> "RevokeDeviceResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
+    async def authorize_webhook(
+        self, authorize_webhook_request: "AuthorizeWebhookRequest"
+    ) -> "AuthorizeWebhookResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
     async def __rpc_sign_in(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.sign_in(request)
+        await stream.send_message(response)
+
+    async def __rpc_login(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.login(request)
+        await stream.send_message(response)
+
+    async def __rpc_login_confirm(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.login_confirm(request)
         await stream.send_message(response)
 
     async def __rpc_info(self, stream: grpclib.server.Stream) -> None:
@@ -224,6 +329,11 @@ class AccountBase(ServiceBase):
         response = await self.revoke_device(request)
         await stream.send_message(response)
 
+    async def __rpc_authorize_webhook(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.authorize_webhook(request)
+        await stream.send_message(response)
+
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
         return {
             "/services.account.v1.Account/SignIn": grpclib.const.Handler(
@@ -232,11 +342,23 @@ class AccountBase(ServiceBase):
                 SignInRequest,
                 SignInResponse,
             ),
+            "/services.account.v1.Account/Login": grpclib.const.Handler(
+                self.__rpc_login,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                LoginRequest,
+                LoginResponse,
+            ),
+            "/services.account.v1.Account/LoginConfirm": grpclib.const.Handler(
+                self.__rpc_login_confirm,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                LoginConfirmRequest,
+                LoginConfirmResponse,
+            ),
             "/services.account.v1.Account/Info": grpclib.const.Handler(
                 self.__rpc_info,
                 grpclib.const.Cardinality.UNARY_UNARY,
-                InfoRequest,
-                InfoResponse,
+                AccountInfoRequest,
+                AccountInfoResponse,
             ),
             "/services.account.v1.Account/ListDevices": grpclib.const.Handler(
                 self.__rpc_list_devices,
@@ -249,5 +371,11 @@ class AccountBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 RevokeDeviceRequest,
                 RevokeDeviceResponse,
+            ),
+            "/services.account.v1.Account/AuthorizeWebhook": grpclib.const.Handler(
+                self.__rpc_authorize_webhook,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                AuthorizeWebhookRequest,
+                AuthorizeWebhookResponse,
             ),
         }

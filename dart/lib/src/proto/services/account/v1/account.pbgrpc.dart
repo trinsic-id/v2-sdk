@@ -19,10 +19,22 @@ class AccountClient extends $grpc.Client {
           '/services.account.v1.Account/SignIn',
           ($0.SignInRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $0.SignInResponse.fromBuffer(value));
-  static final _$info = $grpc.ClientMethod<$0.InfoRequest, $0.InfoResponse>(
-      '/services.account.v1.Account/Info',
-      ($0.InfoRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.InfoResponse.fromBuffer(value));
+  static final _$login = $grpc.ClientMethod<$0.LoginRequest, $0.LoginResponse>(
+      '/services.account.v1.Account/Login',
+      ($0.LoginRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.LoginResponse.fromBuffer(value));
+  static final _$loginConfirm =
+      $grpc.ClientMethod<$0.LoginConfirmRequest, $0.LoginConfirmResponse>(
+          '/services.account.v1.Account/LoginConfirm',
+          ($0.LoginConfirmRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $0.LoginConfirmResponse.fromBuffer(value));
+  static final _$info =
+      $grpc.ClientMethod<$0.AccountInfoRequest, $0.AccountInfoResponse>(
+          '/services.account.v1.Account/Info',
+          ($0.AccountInfoRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $0.AccountInfoResponse.fromBuffer(value));
   static final _$listDevices =
       $grpc.ClientMethod<$0.ListDevicesRequest, $0.ListDevicesResponse>(
           '/services.account.v1.Account/ListDevices',
@@ -35,6 +47,12 @@ class AccountClient extends $grpc.Client {
           ($0.RevokeDeviceRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $0.RevokeDeviceResponse.fromBuffer(value));
+  static final _$authorizeWebhook = $grpc.ClientMethod<
+          $0.AuthorizeWebhookRequest, $0.AuthorizeWebhookResponse>(
+      '/services.account.v1.Account/AuthorizeWebhook',
+      ($0.AuthorizeWebhookRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) =>
+          $0.AuthorizeWebhookResponse.fromBuffer(value));
 
   AccountClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -46,7 +64,19 @@ class AccountClient extends $grpc.Client {
     return $createUnaryCall(_$signIn, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.InfoResponse> info($0.InfoRequest request,
+  $grpc.ResponseFuture<$0.LoginResponse> login($0.LoginRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$login, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.LoginConfirmResponse> loginConfirm(
+      $0.LoginConfirmRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$loginConfirm, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.AccountInfoResponse> info(
+      $0.AccountInfoRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$info, request, options: options);
   }
@@ -62,6 +92,12 @@ class AccountClient extends $grpc.Client {
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$revokeDevice, request, options: options);
   }
+
+  $grpc.ResponseFuture<$0.AuthorizeWebhookResponse> authorizeWebhook(
+      $0.AuthorizeWebhookRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$authorizeWebhook, request, options: options);
+  }
 }
 
 abstract class AccountServiceBase extends $grpc.Service {
@@ -75,13 +111,31 @@ abstract class AccountServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.SignInRequest.fromBuffer(value),
         ($0.SignInResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.InfoRequest, $0.InfoResponse>(
-        'Info',
-        info_Pre,
+    $addMethod($grpc.ServiceMethod<$0.LoginRequest, $0.LoginResponse>(
+        'Login',
+        login_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.InfoRequest.fromBuffer(value),
-        ($0.InfoResponse value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $0.LoginRequest.fromBuffer(value),
+        ($0.LoginResponse value) => value.writeToBuffer()));
+    $addMethod(
+        $grpc.ServiceMethod<$0.LoginConfirmRequest, $0.LoginConfirmResponse>(
+            'LoginConfirm',
+            loginConfirm_Pre,
+            false,
+            false,
+            ($core.List<$core.int> value) =>
+                $0.LoginConfirmRequest.fromBuffer(value),
+            ($0.LoginConfirmResponse value) => value.writeToBuffer()));
+    $addMethod(
+        $grpc.ServiceMethod<$0.AccountInfoRequest, $0.AccountInfoResponse>(
+            'Info',
+            info_Pre,
+            false,
+            false,
+            ($core.List<$core.int> value) =>
+                $0.AccountInfoRequest.fromBuffer(value),
+            ($0.AccountInfoResponse value) => value.writeToBuffer()));
     $addMethod(
         $grpc.ServiceMethod<$0.ListDevicesRequest, $0.ListDevicesResponse>(
             'ListDevices',
@@ -100,6 +154,15 @@ abstract class AccountServiceBase extends $grpc.Service {
             ($core.List<$core.int> value) =>
                 $0.RevokeDeviceRequest.fromBuffer(value),
             ($0.RevokeDeviceResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.AuthorizeWebhookRequest,
+            $0.AuthorizeWebhookResponse>(
+        'AuthorizeWebhook',
+        authorizeWebhook_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) =>
+            $0.AuthorizeWebhookRequest.fromBuffer(value),
+        ($0.AuthorizeWebhookResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.SignInResponse> signIn_Pre(
@@ -107,8 +170,19 @@ abstract class AccountServiceBase extends $grpc.Service {
     return signIn(call, await request);
   }
 
-  $async.Future<$0.InfoResponse> info_Pre(
-      $grpc.ServiceCall call, $async.Future<$0.InfoRequest> request) async {
+  $async.Future<$0.LoginResponse> login_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.LoginRequest> request) async {
+    return login(call, await request);
+  }
+
+  $async.Future<$0.LoginConfirmResponse> loginConfirm_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$0.LoginConfirmRequest> request) async {
+    return loginConfirm(call, await request);
+  }
+
+  $async.Future<$0.AccountInfoResponse> info_Pre($grpc.ServiceCall call,
+      $async.Future<$0.AccountInfoRequest> request) async {
     return info(call, await request);
   }
 
@@ -123,12 +197,24 @@ abstract class AccountServiceBase extends $grpc.Service {
     return revokeDevice(call, await request);
   }
 
+  $async.Future<$0.AuthorizeWebhookResponse> authorizeWebhook_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$0.AuthorizeWebhookRequest> request) async {
+    return authorizeWebhook(call, await request);
+  }
+
   $async.Future<$0.SignInResponse> signIn(
       $grpc.ServiceCall call, $0.SignInRequest request);
-  $async.Future<$0.InfoResponse> info(
-      $grpc.ServiceCall call, $0.InfoRequest request);
+  $async.Future<$0.LoginResponse> login(
+      $grpc.ServiceCall call, $0.LoginRequest request);
+  $async.Future<$0.LoginConfirmResponse> loginConfirm(
+      $grpc.ServiceCall call, $0.LoginConfirmRequest request);
+  $async.Future<$0.AccountInfoResponse> info(
+      $grpc.ServiceCall call, $0.AccountInfoRequest request);
   $async.Future<$0.ListDevicesResponse> listDevices(
       $grpc.ServiceCall call, $0.ListDevicesRequest request);
   $async.Future<$0.RevokeDeviceResponse> revokeDevice(
       $grpc.ServiceCall call, $0.RevokeDeviceRequest request);
+  $async.Future<$0.AuthorizeWebhookResponse> authorizeWebhook(
+      $grpc.ServiceCall call, $0.AuthorizeWebhookRequest request);
 }

@@ -2,7 +2,7 @@
 # sources: services/provider/v1/provider.proto
 # plugin: python-betterproto
 from dataclasses import dataclass
-from typing import Dict
+from typing import Dict, List
 
 import betterproto
 from betterproto.grpc.grpclib_server import ServiceBase
@@ -75,10 +75,28 @@ class InvitationStatusResponse(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class Ecosystem(betterproto.Message):
+    # URN of the ecosystem
     id: str = betterproto.string_field(1)
+    # Globally unique name for the ecosystem
     name: str = betterproto.string_field(2)
+    # Ecosystem description
     description: str = betterproto.string_field(3)
+    # External URL associated with the organization or ecosystem entity
     uri: str = betterproto.string_field(4)
+    # Configured webhooks, if any
+    webhooks: List["WebhookConfig"] = betterproto.message_field(5)
+
+
+@dataclass(eq=False, repr=False)
+class WebhookConfig(betterproto.Message):
+    # UUID of the webhook
+    id: str = betterproto.string_field(1)
+    # Destination to post webhook calls to
+    destination_url: str = betterproto.string_field(2)
+    # Events the webhook is subscribed to
+    events: List[str] = betterproto.string_field(4)
+    # Whether we are able to sucessfully send events to the webhook
+    status: str = betterproto.string_field(5)
 
 
 @dataclass(eq=False, repr=False)
@@ -107,6 +125,81 @@ class CreateEcosystemResponse(betterproto.Message):
 
 
 @dataclass(eq=False, repr=False)
+class UpdateEcosystemRequest(betterproto.Message):
+    """Request to update an ecosystem"""
+
+    # ID of the ecosystem to update
+    ecosystem_id: str = betterproto.string_field(1)
+    # Description of the ecosystem
+    description: str = betterproto.string_field(2)
+    # External URL associated with the organization or ecosystem entity
+    uri: str = betterproto.string_field(3)
+
+
+@dataclass(eq=False, repr=False)
+class UpdateEcosystemResponse(betterproto.Message):
+    """Response to `UpdateEcosystemRequest`"""
+
+    ecosystem: "Ecosystem" = betterproto.message_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class AddWebhookRequest(betterproto.Message):
+    """Request to add a webhook to an ecosystem"""
+
+    # ID of ecosystem to add webhook to
+    ecosystem_id: str = betterproto.string_field(1)
+    # Destination to post webhook calls to
+    destination_url: str = betterproto.string_field(2)
+    # HMAC secret for webhook validation
+    secret: str = betterproto.string_field(3)
+    # Events to subscribe to. Default is "*" (all events)
+    events: List[str] = betterproto.string_field(4)
+
+
+@dataclass(eq=False, repr=False)
+class AddWebhookResponse(betterproto.Message):
+    """Response to `AddWebhookRequest`"""
+
+    # Ecosystem with new webhook
+    ecosystem: "Ecosystem" = betterproto.message_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class DeleteWebhookRequest(betterproto.Message):
+    """Request to delete a webhook from an ecosystem"""
+
+    # ID of ecosystem from which to delete webhook
+    ecosystem_id: str = betterproto.string_field(1)
+    # ID of webhook to delete
+    webhook_id: str = betterproto.string_field(2)
+
+
+@dataclass(eq=False, repr=False)
+class DeleteWebhookResponse(betterproto.Message):
+    """Response to `DeleteWebhookRequest`"""
+
+    # Ecosystem after removal of webhook
+    ecosystem: "Ecosystem" = betterproto.message_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class EcosystemInfoRequest(betterproto.Message):
+    """Request to fetch information about an ecosystem"""
+
+    # ID of ecosystem to fetch information about
+    ecosystem_id: str = betterproto.string_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class EcosystemInfoResponse(betterproto.Message):
+    """Response to `InfoRequest`"""
+
+    # Ecosystem corresponding to requested `ecosystem_id`
+    ecosystem: "Ecosystem" = betterproto.message_field(1)
+
+
+@dataclass(eq=False, repr=False)
 class GenerateTokenRequest(betterproto.Message):
     # Description to identify this token
     description: str = betterproto.string_field(1)
@@ -132,6 +225,23 @@ class GetOberonKeyResponse(betterproto.Message):
     key: str = betterproto.string_field(1)
 
 
+@dataclass(eq=False, repr=False)
+class GetEventTokenRequest(betterproto.Message):
+    """generates an events token bound to the provided ed25519 pk"""
+
+    pk: bytes = betterproto.bytes_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class GetEventTokenResponse(betterproto.Message):
+    """
+    response message containing a token (JWT) that can be used to connect
+    directly to the message streaming architecture
+    """
+
+    token: str = betterproto.string_field(1)
+
+
 class ProviderStub(betterproto.ServiceStub):
     async def create_ecosystem(
         self, create_ecosystem_request: "CreateEcosystemRequest"
@@ -140,6 +250,42 @@ class ProviderStub(betterproto.ServiceStub):
             "/services.provider.v1.Provider/CreateEcosystem",
             create_ecosystem_request,
             CreateEcosystemResponse,
+        )
+
+    async def update_ecosystem(
+        self, update_ecosystem_request: "UpdateEcosystemRequest"
+    ) -> "UpdateEcosystemResponse":
+        return await self._unary_unary(
+            "/services.provider.v1.Provider/UpdateEcosystem",
+            update_ecosystem_request,
+            UpdateEcosystemResponse,
+        )
+
+    async def add_webhook(
+        self, add_webhook_request: "AddWebhookRequest"
+    ) -> "AddWebhookResponse":
+        return await self._unary_unary(
+            "/services.provider.v1.Provider/AddWebhook",
+            add_webhook_request,
+            AddWebhookResponse,
+        )
+
+    async def delete_webhook(
+        self, delete_webhook_request: "DeleteWebhookRequest"
+    ) -> "DeleteWebhookResponse":
+        return await self._unary_unary(
+            "/services.provider.v1.Provider/DeleteWebhook",
+            delete_webhook_request,
+            DeleteWebhookResponse,
+        )
+
+    async def ecosystem_info(
+        self, ecosystem_info_request: "EcosystemInfoRequest"
+    ) -> "EcosystemInfoResponse":
+        return await self._unary_unary(
+            "/services.provider.v1.Provider/EcosystemInfo",
+            ecosystem_info_request,
+            EcosystemInfoResponse,
         )
 
     async def generate_token(
@@ -174,11 +320,40 @@ class ProviderStub(betterproto.ServiceStub):
             GetOberonKeyResponse,
         )
 
+    async def get_event_token(
+        self, get_event_token_request: "GetEventTokenRequest"
+    ) -> "GetEventTokenResponse":
+        return await self._unary_unary(
+            "/services.provider.v1.Provider/GetEventToken",
+            get_event_token_request,
+            GetEventTokenResponse,
+        )
+
 
 class ProviderBase(ServiceBase):
     async def create_ecosystem(
         self, create_ecosystem_request: "CreateEcosystemRequest"
     ) -> "CreateEcosystemResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def update_ecosystem(
+        self, update_ecosystem_request: "UpdateEcosystemRequest"
+    ) -> "UpdateEcosystemResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def add_webhook(
+        self, add_webhook_request: "AddWebhookRequest"
+    ) -> "AddWebhookResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def delete_webhook(
+        self, delete_webhook_request: "DeleteWebhookRequest"
+    ) -> "DeleteWebhookResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def ecosystem_info(
+        self, ecosystem_info_request: "EcosystemInfoRequest"
+    ) -> "EcosystemInfoResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def generate_token(
@@ -199,9 +374,34 @@ class ProviderBase(ServiceBase):
     ) -> "GetOberonKeyResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
+    async def get_event_token(
+        self, get_event_token_request: "GetEventTokenRequest"
+    ) -> "GetEventTokenResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
     async def __rpc_create_ecosystem(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.create_ecosystem(request)
+        await stream.send_message(response)
+
+    async def __rpc_update_ecosystem(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.update_ecosystem(request)
+        await stream.send_message(response)
+
+    async def __rpc_add_webhook(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.add_webhook(request)
+        await stream.send_message(response)
+
+    async def __rpc_delete_webhook(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.delete_webhook(request)
+        await stream.send_message(response)
+
+    async def __rpc_ecosystem_info(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.ecosystem_info(request)
         await stream.send_message(response)
 
     async def __rpc_generate_token(self, stream: grpclib.server.Stream) -> None:
@@ -224,6 +424,11 @@ class ProviderBase(ServiceBase):
         response = await self.get_oberon_key(request)
         await stream.send_message(response)
 
+    async def __rpc_get_event_token(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.get_event_token(request)
+        await stream.send_message(response)
+
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
         return {
             "/services.provider.v1.Provider/CreateEcosystem": grpclib.const.Handler(
@@ -231,6 +436,30 @@ class ProviderBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 CreateEcosystemRequest,
                 CreateEcosystemResponse,
+            ),
+            "/services.provider.v1.Provider/UpdateEcosystem": grpclib.const.Handler(
+                self.__rpc_update_ecosystem,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                UpdateEcosystemRequest,
+                UpdateEcosystemResponse,
+            ),
+            "/services.provider.v1.Provider/AddWebhook": grpclib.const.Handler(
+                self.__rpc_add_webhook,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                AddWebhookRequest,
+                AddWebhookResponse,
+            ),
+            "/services.provider.v1.Provider/DeleteWebhook": grpclib.const.Handler(
+                self.__rpc_delete_webhook,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                DeleteWebhookRequest,
+                DeleteWebhookResponse,
+            ),
+            "/services.provider.v1.Provider/EcosystemInfo": grpclib.const.Handler(
+                self.__rpc_ecosystem_info,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                EcosystemInfoRequest,
+                EcosystemInfoResponse,
             ),
             "/services.provider.v1.Provider/GenerateToken": grpclib.const.Handler(
                 self.__rpc_generate_token,
@@ -255,6 +484,12 @@ class ProviderBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 GetOberonKeyRequest,
                 GetOberonKeyResponse,
+            ),
+            "/services.provider.v1.Provider/GetEventToken": grpclib.const.Handler(
+                self.__rpc_get_event_token,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                GetEventTokenRequest,
+                GetEventTokenResponse,
             ),
         }
 

@@ -6,65 +6,63 @@ The Credential service supports signing data using [BBS+ Signatures <small>:mate
 
 ## Issue Credential
 
-Issues a credential from a valid JSON-LD document. You can learn more about how creating these documents, and about VC data models in general, from W3C: [VC Data Model v1.1](https://www.w3.org/TR/vc-data-model/). 
+Issues a credential from a valid JSON-LD document.
 
-**`IssueCredential` requires a valid JSON-LD document to be provided**. Do not confuse this operation with [Issue Credential From Template](./credential-service.md#issue-credential-from-template).
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic vc issue --document <JSONLD_FILE> --out <OUTPUT_FILE>
+        ```
 
-=== "Trinsic CLI"
-    ```bash
-    trinsic vc issue --document <JSONLD_FILE> --out <OUTPUT_FILE>
-    ```
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [Issue Credential](../../../web/test/CredentialService.spec.ts) inside_block:issueCredential
+        ```
+        <!--/codeinclude-->
 
-When using one of the SDKs, you must supply an [Issue Request](../proto/index.md#issuerequest) object. This object follows the model below:
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [Issue Credential](../../../dotnet/Tests/Tests.cs) inside_block:issueCredentialSample
+        ```
+        <!--/codeinclude-->
 
-{{ proto_obj('IssueRequest') }}
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [Issue Credential](../../../python/samples/credential_demo.py) inside_block:issueCredential
+        ```
+        <!--/codeinclude-->
 
-Then you can supply it to SDK:
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [VerifyProof](../../../go/services/services_test.go) inside_block:issueCredentialSample
+        ```
+        <!--/codeinclude-->
 
-=== "TypeScript"
-    <!--codeinclude-->
-    ```typescript
-    [Issue Credential](../../../web/test/CredentialService.spec.ts) inside_block:issueCredential
-    ```
-    <!--/codeinclude-->
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [CreateProof](../../../java/src/test/java/trinsic/CredentialsDemo.java) inside_block:issueCredentialSample
+        ```
+        <!--/codeinclude-->
 
-=== "C#"
-    <!--codeinclude-->
-    ```csharp
-    [Issue Credential](../../../dotnet/Tests/Tests.cs) inside_block:issueCredentialSample
-    ```
-    <!--/codeinclude-->
+{{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.Issue") }}
 
-=== "Python"
-    <!--codeinclude-->
-    ```python
-    [Issue Credential](../../../python/samples/credential_demo.py) inside_block:issueCredential
-    ```
-    <!--/codeinclude-->
+The output of this method will be a signed JSON document using BBS+ Signature Suite 2020. This document is not automatically stored in the wallet when issued.
 
-=== "Go"
-    <!--codeinclude-->
-    ```golang
-    [VerifyProof](../../../go/services/services_test.go) inside_block:issueCredentialSample
-    ```
-    <!--/codeinclude-->
+!!! warning
+    **`IssueCredential` requires a valid JSON-LD document to be provided**. Do not confuse this operation with [Issue Credential From Template](./credential-service.md#issue-credential-from-template).
 
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    [CreateProof](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:issueCredentialSample
-    ```
-    <!--/codeinclude-->
-
-The output of this method will be a signed JSON document using BBS+ Signature Suite 2020. This document is not automatically stored in the wallet when issued. You need to call the [insert record](#insert-record) separately if you'd like to store a copy of this document.
-
-The response model is of type [Issue Response](../proto/index.md#issueresponse):
-
-{{ proto_obj('IssueResponse') }}
+    You can learn more about how to create these documents, and about VC data models in general, from W3C: [VC Data Model v1.1](https://www.w3.org/TR/vc-data-model/). 
 
 ## Issue Credential from Template
 
-Issues a credential from a previously defined template through [CreateCredential](./template-service.md#create-credential-template) call. The template is specified by passing a JSON document that matches the structure of the template. For example:
+Issues a credential from a previously defined template through [CreateCredential](./template-service.md#create-credential-template) call. 
+
+This call takes in a JSON key/value string which maps to the fields on the specified template. For example:
 
 ```json
 {
@@ -74,162 +72,140 @@ Issues a credential from a previously defined template through [CreateCredential
 }
 ```
 
-Do not confuse this operation with [Issue Credential](./credential-service.md#issue-credential) where JSON-LD document is required..
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic vc issue-from-template [OPTIONS] --template-id <ID>
 
-=== "Trinsic CLI"
-    ```bash
-    trinsic vc issue-from-template [OPTIONS] --template-id <ID>
+        # OPTIONS
+        # --out <OUTPUT_FILE>     (Optional) Output file to store the issued credential
+        # --values-data <JSON>    The JSON values of the credential subject
+        # --values-file <FILE>    The file with JSON values of the credential subject
+        ```
 
-    # OPTIONS
-    # --out <OUTPUT_FILE>     (Optional) Output file to store the issued credential
-    # --values-data <JSON>    The JSON values of the credential subject
-    # --values-file <FILE>    The file with JSON values of the credential subject
-    ```
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [Issue From Template](../../../web/test/CredentialTemplateShared.ts) inside_block:issueFromTemplate
+        ```
+        <!--/codeinclude-->
 
-When using one of the SDKs, you must supply an [Issue From Template Request](../proto/index.md#issuefromtemplaterequest) object. This object follows the model below:
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [Issue From Template](../../../dotnet/Tests/Tests.cs) inside_block:issueFromTemplate
+        ```
+        <!--/codeinclude-->
 
-{{ proto_obj('IssueFromTemplateRequest') }}
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [Issue From Template](../../../python/samples/templates_demo.py) inside_block:issueFromTemplate
+        ```
+        <!--/codeinclude-->
 
-Then you can supply it to SDK:
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [Issue From Template](../../../go/services/credentialtemplate_service_test.go) inside_block:issueFromTemplate
+        ```
+        <!--/codeinclude-->
 
-=== "TypeScript"
-    <!--codeinclude-->
-    ```typescript
-    [Issue From Template](../../../web/test/CredentialTemplateShared.ts) inside_block:issueFromTemplate
-    ```
-    <!--/codeinclude-->
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [IssueFromTemplate](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:issueFromTemplate
+        ```
+        <!--/codeinclude-->
 
-=== "C#"
-    <!--codeinclude-->
-    ```csharp
-    [Issue From Template](../../../dotnet/Tests/Tests.cs) inside_block:issueFromTemplate
-    ```
-    <!--/codeinclude-->
+{{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.IssueFromTemplate") }}
 
-=== "Python"
-    <!--codeinclude-->
-    ```python
-    [Issue From Template](../../../python/samples/templates_demo.py) inside_block:issueFromTemplate
-    ```
-    <!--/codeinclude-->
-
-=== "Go"
-    <!--codeinclude-->
-    ```golang
-    [Issue From Template](../../../go/services/credentialtemplate_service_test.go) inside_block:issueFromTemplate
-    ```
-    <!--/codeinclude-->
-
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    [IssueFromTemplate](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:issueFromTemplate
-    ```
-    <!--/codeinclude-->
-
-The output of this method will be a signed JSON document using BBS+ Signature Suite 2020. This document is not automatically stored in the wallet when issued. You need to call the [insert record](#insert-record) separately if you'd like to store a copy of this document.
-
-The response model is of type [Issue From Template Response](../proto/index.md#issuefromtemplateresponse):
-
-{{ proto_obj('IssueFromTemplateResponse') }}
+The output of this method will be a signed JSON document using BBS+ Signature Suite 2020. This document is not automatically stored in the wallet when issued.
 
 ## Check Revocation Status
 
 Get the credential status (revocation) of a previously issued credential. You must supply the credential id to this call.
 
-=== "Trinsic CLI"
-    ```bash
-    trinsic vc get-status --credential-status-id <ID>
-    ```
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic vc get-status --credential-status-id <ID>
+        ```
 
-When using one of the SDKs, you must supply an [Check Status Request](../proto/index.md#checkstatusrequest) object. This object follows the model below:
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [Check Revocation Status](../../../dotnet/Tests/Tests.cs) inside_block:checkCredentialStatus
+        ```
+        <!--/codeinclude-->
 
-{{ proto_obj('CheckStatusRequest') }}
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [Check Revocation Status](../../../python/samples/templates_demo.py) inside_block:checkCredentialStatus
+        ```
+        <!--/codeinclude-->
 
-Then you can supply it to SDK:
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [Check Revocation Status](../../../go/services/credentialtemplate_service_test.go) inside_block:checkCredentialStatus
+        ```
+        <!--/codeinclude-->
 
-=== "C#"
-    <!--codeinclude-->
-    ```csharp
-    [Check Revocation Status](../../../dotnet/Tests/Tests.cs) inside_block:checkCredentialStatus
-    ```
-    <!--/codeinclude-->
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [Check Revocation Status](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:checkCredentialStatus
+        ```
+        <!--/codeinclude-->
 
-=== "Python"
-    <!--codeinclude-->
-    ```python
-    [Check Revocation Status](../../../python/samples/templates_demo.py) inside_block:checkCredentialStatus
-    ```
-    <!--/codeinclude-->
-
-=== "Go"
-    <!--codeinclude-->
-    ```golang
-    [Check Revocation Status](../../../go/services/credentialtemplate_service_test.go) inside_block:checkCredentialStatus
-    ```
-    <!--/codeinclude-->
-
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    [Check Revocation Status](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:checkCredentialStatus
-    ```
-    <!--/codeinclude-->
-
-The response model is of type [Check Status Response](../proto/index.md#checkstatusresponse):
-
-{{ proto_obj('CheckStatusResponse') }}
+{{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.CheckStatus") }}
 
 ## Update Revocation Status
 
 Update the credential status (revocation) of a previously issued credential. You must supply the credential id to this call.
 
-=== "Trinsic CLI"
-    ```bash
-    # Revoke a credential
-    trinsic vc update-status --revoked --credential-status-id <ID>
 
-    # Unrevoke a credential
-    trinsic vc update-status --unrevoked --credential-status-id <ID>
-    ```
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        # Revoke a credential
+        trinsic vc update-status --revoked --credential-status-id <ID>
 
-When using one of the SDKs, you must supply an [Update Status Request](../proto/index.md#updatestatusrequest) object. This object follows the model below:
+        # Unrevoke a credential
+        trinsic vc update-status --unrevoked --credential-status-id <ID>
+        ```
 
-{{ proto_obj('UpdateStatusRequest') }}
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [Update Revocation Status](../../../dotnet/Tests/Tests.cs) inside_block:updateCredentialStatus
+        ```
+        <!--/codeinclude-->
 
-Then you can supply it to SDK:
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [Update Revocation Status](../../../python/samples/templates_demo.py) inside_block:updateCredentialStatus
+        ```
+        <!--/codeinclude-->
 
-=== "C#"
-    <!--codeinclude-->
-    ```csharp
-    [Update Revocation Status](../../../dotnet/Tests/Tests.cs) inside_block:updateCredentialStatus
-    ```
-    <!--/codeinclude-->
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [Update Revocation Status](../../../go/services/credentialtemplate_service_test.go) inside_block:updateCredentialStatus
+        ```
+        <!--/codeinclude-->
 
-=== "Python"
-    <!--codeinclude-->
-    ```python
-    [Update Revocation Status](../../../python/samples/templates_demo.py) inside_block:updateCredentialStatus
-    ```
-    <!--/codeinclude-->
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [Update Revocation Status](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:updateCredentialStatus
+        ```
+        <!--/codeinclude-->
 
-=== "Go"
-    <!--codeinclude-->
-    ```golang
-    [Update Revocation Status](../../../go/services/credentialtemplate_service_test.go) inside_block:updateCredentialStatus
-    ```
-    <!--/codeinclude-->
-
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    [Update Revocation Status](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:updateCredentialStatus
-    ```
-    <!--/codeinclude-->
-
-The response model is of type [Update Status Response](../proto/index.md#updatestatusresponse):
-
-{{ proto_obj('UpdateStatusResponse') }}
+{{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.UpdateStatus") }}
 
 ## Create Proof
 Wallets allow data to be shared between parties in a secure manner, using a technique called [Zero Knowledge Proofs](/faq/#what-are-zero-knowledge-proofs). Trinsic Ecosystems uses the BBS+ Signature Proof scheme to allow data to be selectively disclosed to the requesting party. This allows users to share only the requested subset of data, instead the entire document.
@@ -239,117 +215,105 @@ The endpoint to create a proof requires two inputs:
 - document in the wallet that is signed with the correct signature
 - JSONLD frame that describes the data to be disclosed
 
-=== "Trinsic CLI"
-    ```bash
-    trinsic vc create-proof --document-id <STRING> --out <OUTPUT_FILE> --reveal-document <JSONLD_FRAME_FILE>
-    ```
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic vc create-proof --document-id <STRING> --out <OUTPUT_FILE> --reveal-document <JSONLD_FRAME_FILE>
+        ```
 
-When using one of the SDKs, you must supply an [Create Proof Request](../proto/index.md#createproofrequest) object. This object follows the model below:
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [CreateProof](../../../web/test/WalletService.test.ts) inside_block:createProof
+        ```
+        <!--/codeinclude-->
 
-{{ proto_obj('CreateProofRequest') }}
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:createProof
+        ```
+        <!--/codeinclude-->
 
-Then you can supply it to SDK:
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [CreateProof](../../../python/samples/credential_demo.py) inside_block:createProof
+        ```
+        <!--/codeinclude-->
 
-=== "TypeScript"
-    <!--codeinclude-->
-    ```typescript
-    [CreateProof](../../../web/test/WalletService.test.ts) inside_block:createProof
-    ```
-    <!--/codeinclude-->
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [CreateProof](../../../go/services/services_test.go) inside_block:createProof
+        ```
+        <!--/codeinclude-->
 
-=== "C#"
-    <!--codeinclude-->
-    ```csharp
-    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:createProof
-    ```
-    <!--/codeinclude-->
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [CreateProof](../../../java/src/test/java/trinsic/CredentialsDemo.java) inside_block:createProof
+        ```
+        <!--/codeinclude-->
 
-=== "Python"
-    <!--codeinclude-->
-    ```python
-    [CreateProof](../../../python/samples/credential_demo.py) inside_block:createProof
-    ```
-    <!--/codeinclude-->
+{{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.CreateProof") }}
 
-=== "Go"
-    <!--codeinclude-->
-    ```golang
-    [CreateProof](../../../go/services/services_test.go) inside_block:createProof
-    ```
-    <!--/codeinclude-->
-
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    [CreateProof](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:createProof
-    ```
-    <!--/codeinclude-->
-
-The response model is of type [Create Proof Response](../proto/index.md#createproofresponse):
-
-{{ proto_obj('CreateProofResponse') }}
 
 ## Verify Proof
 
 This endpoint verifies if the submitted data contains a valid proof. The data to be verified must contain a Linked Data Proof with BBS+ signature scheme.
 
-=== "Trinsic CLI"
-    ```bash
-    # The JSONLD_FILE refers to the proof document obtained from a CreateProofResponse
-    trinsic vc issuer verify-proof --proof-document <JSONLD_FILE>
-    ```
 
-When using one of the SDKs, you must supply an [Verify Proof Request](../proto/index.md#verifyproofrequest) object. This object follows the model below:
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        # The JSONLD_FILE refers to the proof document obtained from a CreateProofResponse
+        trinsic vc issuer verify-proof --proof-document <JSONLD_FILE>
+        ```
 
-{{ proto_obj('VerifyProofRequest') }}
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [VerifyProof](../../../web/test/WalletService.test.ts) inside_block:verifyProof
+        ```
+        <!--/codeinclude-->
 
-Then you can supply it to SDK:
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [VerifyProof](../../../dotnet/Tests/Tests.cs) inside_block:verifyProof
+        ```
+        <!--/codeinclude-->
 
-=== "TypeScript"
-    <!--codeinclude-->
-    ```typescript
-    [VerifyProof](../../../web/test/WalletService.test.ts) inside_block:verifyProof
-    ```
-    <!--/codeinclude-->
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [VerifyProof](../../../python/samples/vaccine_demo.py) inside_block:verifyProof
+        ```
+        <!--/codeinclude-->
 
-=== "C#"
-    <!--codeinclude-->
-    ```csharp
-    [VerifyProof](../../../dotnet/Tests/Tests.cs) inside_block:verifyProof
-    ```
-    <!--/codeinclude-->
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [VerifyProof](../../../go/services/services_test.go) inside_block:verifyProof
+        ```
+        <!--/codeinclude-->
 
-=== "Python"
-    <!--codeinclude-->
-    ```python
-    [VerifyProof](../../../python/samples/credential_demo.py) inside_block:verifyProof
-    ```
-    <!--/codeinclude-->
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [VerifyProof](../../../java/src/test/java/trinsic/CredentialsDemo.java) inside_block:verifyProof
+        ```
+        <!--/codeinclude-->
 
-=== "Go"
-    <!--codeinclude-->
-    ```golang
-    [VerifyProof](../../../go/services/services_test.go) inside_block:verifyProof
-    ```
-    <!--/codeinclude-->
+    === "Ruby"
+        <!--codeinclude-->
+        ```ruby
+        
+        ```
+        <!--/codeinclude-->
 
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    [VerifyProof](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:verifyProof
-    ```
-    <!--/codeinclude-->
-
-=== "Ruby"
-    <!--codeinclude-->
-    ```ruby
-    
-    ```
-    <!--/codeinclude-->
-
-The response model is of type [Verify Proof Response](../proto/index.md#verifyproofresponse):
-
-{{ proto_obj('VerifyProofResponse') }}
+{{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.VerifyProof") }}
 
 ## Exchange Credentials
 
@@ -365,51 +329,44 @@ Exchanging data securely is one of the fundamental functions of digital identity
 
 To send a document to another user, they must have created a wallet and [associated their email address](#create-wallet-with-provider-invitation) with that wallet.
 
-=== "Trinsic CLI"
-    ```bash
-    trinsic vc send --email <EMAIL_ADDRESS> --item <FILE>
-    ```
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic vc send --email <EMAIL_ADDRESS> --item <FILE>
+        ```
 
-When using one of the SDKs, you must supply an [Send Request](../proto/index.md#sendrequest) object. This object follows the model below:
+    === "TypeScript"
 
-{{ proto_obj('SendRequest') }}
+        ```typescript
+        await credentialService.send(document, "admin@example.com");
+        ```
 
-Then you can supply it to SDK:
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [SendRequest](../../../dotnet/Tests/Tests.cs) inside_block:sendCredential
+        ```
+        <!--/codeinclude-->
 
-=== "TypeScript"
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [SendRequest](../../../python/samples/credential_demo.py) inside_block:sendCredential
+        ```
+        <!--/codeinclude-->
 
-    ```typescript
-    await credentialService.send(document, "admin@example.com");
-    ```
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [SendRequest](../../../go/services/services_test.go) inside_block:sendCredential
+        ```
+        <!--/codeinclude-->
 
-=== "C#"
-    <!--codeinclude-->
-    ```csharp
-    [SendRequest](../../../dotnet/Tests/Tests.cs) inside_block:sendCredential
-    ```
-    <!--/codeinclude-->
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [SendRequest](../../../java/src/test/java/trinsic/CredentialsDemo.java) inside_block:sendCredential
+        ```
+        <!--/codeinclude-->
 
-=== "Python"
-    <!--codeinclude-->
-    ```python
-    [SendRequest](../../../python/samples/credential_demo.py) inside_block:sendCredential
-    ```
-    <!--/codeinclude-->
-
-=== "Go"
-    <!--codeinclude-->
-    ```golang
-    [SendRequest](../../../go/services/services_test.go) inside_block:sendCredential
-    ```
-    <!--/codeinclude-->
-
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    [SendRequest](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:sendCredential
-    ```
-    <!--/codeinclude-->
-
-The response model is of type [Send Response](../proto/index.md#sendresponse):
-
-{{ proto_obj('SendResponse') }}
+{{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.Send") }}

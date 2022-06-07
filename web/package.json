@@ -4,6 +4,9 @@
   "description": "Node and Browser wrapper for the Trinsic services",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "files": [
+    "lib/*"
+  ],
   "scripts": {
     "build": "npm run build:proto && npm run build:typescript",
     "build:proto": "pwsh Generate-Proto.ps1",
@@ -31,7 +34,7 @@
   "license": "ISC",
   "dependencies": {
     "@improbable-eng/grpc-web-node-http-transport": "^0.15.0",
-    "@trinsic/okapi": "1.6.0-rc2",
+    "@trinsic/okapi": "1.6.0",
     "assert": "^2.0.0",
     "base64url": "^3.0.1",
     "browserify-fs": "^1.0.0",
@@ -52,18 +55,18 @@
     "url": "^0.11.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.12",
-    "@babel/plugin-transform-modules-commonjs": "^7.17.12",
+    "@babel/core": "^7.18.2",
+    "@babel/plugin-transform-modules-commonjs": "^7.18.2",
     "@types/google-protobuf": "^3.15.6",
     "@types/jasmine": "^4.0.3",
-    "@types/jest": "^27.5.1",
+    "@types/jest": "^28.1.1",
     "@types/karma": "^6.3.3",
     "@types/karma-webpack": "^2.0.11",
-    "@types/node": "^17.0.33",
+    "@types/node": "^17.0.40",
     "@types/uuid": "^8.3.4",
     "babel-jest": "^28.1.0",
     "babel-plugin-dynamic-import-node": "^2.3.3",
-    "chromedriver": "^101.0.0",
+    "chromedriver": "^102.0.0",
     "copyfiles": "^2.4.1",
     "dotenv": "^16.0.1",
     "esm": "^3.2.25",
@@ -75,17 +78,17 @@
     "karma": "^6.3.20",
     "karma-chrome-launcher": "^3.1.1",
     "karma-jasmine": "^5.0.1",
-    "karma-jasmine-html-reporter": "^1.7.0",
+    "karma-jasmine-html-reporter": "^2.0.0",
     "karma-sourcemap-loader": "^0.3.8",
     "karma-typescript": "^5.5.3",
     "karma-webpack": "^5.0.0",
-    "ts-jest": "^28.0.2",
+    "ts-jest": "^28.0.4",
     "ts-loader": "^9.3.0",
-    "ts-node": "^10.7.0",
-    "ts-proto": "^1.112.1",
-    "typescript": "^4.6.4",
+    "ts-node": "^10.8.1",
+    "ts-proto": "^1.115.4",
+    "typescript": "^4.7.3",
     "uuid": "^8.3.2",
-    "webpack": "^5.72.1",
+    "webpack": "^5.73.0",
     "webpack-cli": "^4.9.2"
   }
 }

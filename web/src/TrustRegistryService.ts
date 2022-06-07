@@ -18,7 +18,7 @@ import {
   UnregisterMemberResponse,
 } from "./proto";
 
-import type {Client as BrowserClient} from "nice-grpc-web";
+import type { Client as BrowserClient } from "nice-grpc-web";
 
 export class TrustRegistryService extends ServiceBase {
   client: BrowserClient<typeof TrustRegistryDefinition>;
@@ -26,9 +26,7 @@ export class TrustRegistryService extends ServiceBase {
   constructor(options?: ServiceOptions) {
     super(options);
 
-    this.client = this.createClient(
-      TrustRegistryDefinition
-    );
+    this.client = this.createClient(TrustRegistryDefinition);
   }
 
   public async registerMember(
@@ -36,7 +34,7 @@ export class TrustRegistryService extends ServiceBase {
   ): Promise<RegisterMemberResponse> {
     return this.client.registerMember(request, {
       metadata: await this.getMetadata(
-          RegisterMemberRequest.encode(request).finish()
+        RegisterMemberRequest.encode(request).finish()
       ),
     });
   }
@@ -46,7 +44,7 @@ export class TrustRegistryService extends ServiceBase {
   ): Promise<UnregisterMemberResponse> {
     return this.client.unregisterMember(request, {
       metadata: await this.getMetadata(
-          UnregisterMemberRequest.encode(request).finish()
+        UnregisterMemberRequest.encode(request).finish()
       ),
     });
   }
@@ -56,13 +54,15 @@ export class TrustRegistryService extends ServiceBase {
   ): Promise<GetMembershipStatusResponse> {
     return this.client.getMembershipStatus(request, {
       metadata: await this.getMetadata(
-          GetMembershipStatusRequest.encode(request).finish()
+        GetMembershipStatusRequest.encode(request).finish()
       ),
     });
   }
 
   public async searchRegistry(
-    request: SearchRegistryRequest = SearchRegistryRequest.fromPartial({query: "SELECT * FROM c OFFSET 0 LIMIT 100"})
+    request: SearchRegistryRequest = SearchRegistryRequest.fromPartial({
+      query: "SELECT * FROM c OFFSET 0 LIMIT 100",
+    })
   ): Promise<SearchRegistryResponse> {
     return this.client.searchRegistry(request, {
       metadata: await this.getMetadata(
@@ -71,7 +71,7 @@ export class TrustRegistryService extends ServiceBase {
     });
   }
 
-  public async addGovernanceFramework(
+  public async addFramework(
     request: AddFrameworkRequest
   ): Promise<AddFrameworkResponse> {
     return this.client.addFramework(request, {
@@ -81,7 +81,7 @@ export class TrustRegistryService extends ServiceBase {
     });
   }
 
-  public async removeGovernanceFramework(
+  public async removeFramework(
     request: RemoveFrameworkRequest
   ): Promise<RemoveFrameworkResponse> {
     return this.client.removeFramework(request, {

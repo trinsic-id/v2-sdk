@@ -21,7 +21,7 @@ describe("TrustRegistryService Unit Tests", () => {
   it("add governance framework", async () => {
     let trustRegistryService = new TrustRegistryService(options);
 
-    let response = await trustRegistryService.addGovernanceFramework(
+    let response = await trustRegistryService.addFramework(
       AddFrameworkRequest.fromPartial({
         governanceFrameworkUri: `urn:egf:${uuid()}`,
         name: `Test Governance Framework - ${uuid()}`,
@@ -34,13 +34,13 @@ describe("TrustRegistryService Unit Tests", () => {
     let trustRegistryService = new TrustRegistryService(options);
 
     try {
-        await trustRegistryService.addGovernanceFramework(
-            AddFrameworkRequest.fromPartial({})
-        );
-        // This is a failure case since jest doesn't have expect().toThrow()
-        expect(false).toBeTruthy()
-    }catch (e) {
-        // This is expected, pass
+      await trustRegistryService.addFramework(
+        AddFrameworkRequest.fromPartial({})
+      );
+      // This is a failure case since jest doesn't have expect().toThrow()
+      expect(false).toBeTruthy();
+    } catch (e) {
+      // This is expected, pass
     }
   });
 
@@ -51,7 +51,7 @@ describe("TrustRegistryService Unit Tests", () => {
     const frameworkUri = `urn:egf:${uuid()}`;
     const schemaUri = "https://schema.org/Card";
 
-    let frameworkResponse = await trustRegistryService.addGovernanceFramework(
+    let frameworkResponse = await trustRegistryService.addFramework(
       AddFrameworkRequest.fromPartial({
         governanceFrameworkUri: frameworkUri,
         name: `Test Governance Framework - ${uuid()}`,

@@ -57,12 +57,13 @@ Configuration for Trinsic SDK Services
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| SignIn | [SignInRequest](/reference/proto#services-account-v1-SignInRequest) | [SignInResponse](/reference/proto#services-account-v1-SignInResponse) | Sign in to an already existing account
-
-rpc SIgnInConfirm (SignInConfirmRequest) returns (SignInConfirmResponse); |
-| Info | [InfoRequest](/reference/proto#services-account-v1-InfoRequest) | [InfoResponse](/reference/proto#services-account-v1-InfoResponse) | Get account information |
+| SignIn | [SignInRequest](/reference/proto#services-account-v1-SignInRequest) | [SignInResponse](/reference/proto#services-account-v1-SignInResponse) | Sign in to an already existing account |
+| Login | [LoginRequest](/reference/proto#services-account-v1-LoginRequest) | [LoginResponse](/reference/proto#services-account-v1-LoginResponse) | Login to account. If account doesn't exist, new will be created |
+| LoginConfirm | [LoginConfirmRequest](/reference/proto#services-account-v1-LoginConfirmRequest) | [LoginConfirmResponse](/reference/proto#services-account-v1-LoginConfirmResponse) | Confirm login step by responding to the challenge request |
+| Info | [AccountInfoRequest](/reference/proto#services-account-v1-AccountInfoRequest) | [AccountInfoResponse](/reference/proto#services-account-v1-AccountInfoResponse) | Get account information |
 | ListDevices | [ListDevicesRequest](/reference/proto#services-account-v1-ListDevicesRequest) | [ListDevicesResponse](/reference/proto#services-account-v1-ListDevicesResponse) | List all connected devices |
 | RevokeDevice | [RevokeDeviceRequest](/reference/proto#services-account-v1-RevokeDeviceRequest) | [RevokeDeviceResponse](/reference/proto#services-account-v1-RevokeDeviceResponse) | Revoke device access to the account's cloud wallet |
+| AuthorizeWebhook | [AuthorizeWebhookRequest](/reference/proto#services-account-v1-AuthorizeWebhookRequest) | [AuthorizeWebhookResponse](/reference/proto#services-account-v1-AuthorizeWebhookResponse) | Authorize Ecosystem to receive webhook events |
 
  <!-- end services -->
 
@@ -102,6 +103,37 @@ Account registration details
 
 
 
+<a name="services-account-v1-AccountInfoRequest"></a>
+
+### AccountInfoRequest
+Request for information about the account used to make the request
+
+
+
+
+
+
+<a name="services-account-v1-AccountInfoResponse"></a>
+
+### AccountInfoResponse
+Information about the account used to make the request
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| details | [AccountDetails](/reference/proto#services-account-v1-AccountDetails) | The account details associated with the calling request context |
+| ecosystems | [AccountEcosystem](/reference/proto#services-account-v1-AccountEcosystem)[] | **Deprecated.** Use `ecosystem_id` instead |
+| wallet_id | [string](/reference/proto#string) | The wallet ID associated with this account |
+| device_id | [string](/reference/proto#string) | The device ID associated with this account session |
+| ecosystem_id | [string](/reference/proto#string) | The ecosystem ID within which this account resides |
+| public_did | [string](/reference/proto#string) | The public DID associated with this account. This DID is used as "issuer" when signing verifiable credentials |
+| authorized_webhooks | [string](/reference/proto#string)[] | Webhook events if any this wallet has authorized |
+
+
+
+
+
+
 <a name="services-account-v1-AccountProfile"></a>
 
 ### AccountProfile
@@ -121,30 +153,25 @@ This information should be stored securely
 
 
 
-<a name="services-account-v1-InfoRequest"></a>
+<a name="services-account-v1-AuthorizeWebhookRequest"></a>
 
-### InfoRequest
-Request for information about the account used to make the request
-
-
-
-
-
-
-<a name="services-account-v1-InfoResponse"></a>
-
-### InfoResponse
-Information about the account used to make the request
+### AuthorizeWebhookRequest
+Authorize ecosystem to receive wallet events
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| details | [AccountDetails](/reference/proto#services-account-v1-AccountDetails) | The account details associated with the calling request context |
-| ecosystems | [AccountEcosystem](/reference/proto#services-account-v1-AccountEcosystem)[] | **Deprecated.** Use `ecosystem_id` instead |
-| wallet_id | [string](/reference/proto#string) | The wallet ID associated with this account |
-| device_id | [string](/reference/proto#string) | The device ID associated with this account session |
-| ecosystem_id | [string](/reference/proto#string) | The ecosystem ID within which this account resides |
-| public_did | [string](/reference/proto#string) | The public DID associated with this account. This DID is used as "issuer" when signing verifiable credentials |
+| events | [string](/reference/proto#string)[] | Events to authorize access to. Default is "*" (all events) |
+
+
+
+
+
+
+<a name="services-account-v1-AuthorizeWebhookResponse"></a>
+
+### AuthorizeWebhookResponse
+Response to `AuthorizeWebhookRequest`
 
 
 
@@ -165,6 +192,70 @@ Information about the account used to make the request
 
 ### ListDevicesResponse
 
+
+
+
+
+
+
+<a name="services-account-v1-LoginConfirmRequest"></a>
+
+### LoginConfirmRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| challenge | [bytes](/reference/proto#bytes) | Login challenge received during the Login call |
+| confirmation_code_hashed | [bytes](/reference/proto#bytes) | Confirmation code received in email or SMS hashed using Blake3 |
+
+
+
+
+
+
+<a name="services-account-v1-LoginConfirmResponse"></a>
+
+### LoginConfirmResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| profile | [AccountProfile](/reference/proto#services-account-v1-AccountProfile) | Profile response. This profile may be protected and require unblinding/unprotection using the raw hashed code |
+
+
+
+
+
+
+<a name="services-account-v1-LoginRequest"></a>
+
+### LoginRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| email | [string](/reference/proto#string) | Email account to associate with the login request |
+| invitation_code | [string](/reference/proto#string) | Invitation code associated with this registration |
+| ecosystem_id | [string](/reference/proto#string) | ID of Ecosystem to sign into. Ignored if `invitation_code` is passed |
+
+
+
+
+
+
+<a name="services-account-v1-LoginResponse"></a>
+
+### LoginResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| challenge | [bytes](/reference/proto#bytes) | Challenge response. Random byte sequence unique for this login request |
+| profile | [AccountProfile](/reference/proto#services-account-v1-AccountProfile) | Profile response. The login isn't challenged and the token is returned in this call. Does not require confirmation step |
 
 
 
@@ -201,7 +292,7 @@ Request for creating or signing into an account
 | ----- | ---- | ----------- |
 | details | [AccountDetails](/reference/proto#services-account-v1-AccountDetails) | Account registration details |
 | invitation_code | [string](/reference/proto#string) | Invitation code associated with this registration |
-| ecosystem_id | [string](/reference/proto#string) | ID of Ecosystem to sign into. Ignored if `invitation_code` is passed |
+| ecosystem_id | [string](/reference/proto#string) | ID of Ecosystem to use Ignored if `invitation_code` is passed |
 
 
 
@@ -396,12 +487,50 @@ Nonce used to generate an oberon proof
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | CreateEcosystem | [CreateEcosystemRequest](/reference/proto#services-provider-v1-CreateEcosystemRequest) | [CreateEcosystemResponse](/reference/proto#services-provider-v1-CreateEcosystemResponse) | Create new ecosystem and assign the authenticated user as owner |
+| UpdateEcosystem | [UpdateEcosystemRequest](/reference/proto#services-provider-v1-UpdateEcosystemRequest) | [UpdateEcosystemResponse](/reference/proto#services-provider-v1-UpdateEcosystemResponse) | Update an existing ecosystem |
+| AddWebhook | [AddWebhookRequest](/reference/proto#services-provider-v1-AddWebhookRequest) | [AddWebhookResponse](/reference/proto#services-provider-v1-AddWebhookResponse) | Add a webhook endpoint to the ecosystem |
+| DeleteWebhook | [DeleteWebhookRequest](/reference/proto#services-provider-v1-DeleteWebhookRequest) | [DeleteWebhookResponse](/reference/proto#services-provider-v1-DeleteWebhookResponse) | Delete a webhook endpoint from the ecosystem |
+| EcosystemInfo | [EcosystemInfoRequest](/reference/proto#services-provider-v1-EcosystemInfoRequest) | [EcosystemInfoResponse](/reference/proto#services-provider-v1-EcosystemInfoResponse) | Get ecosystem information |
 | GenerateToken | [GenerateTokenRequest](/reference/proto#services-provider-v1-GenerateTokenRequest) | [GenerateTokenResponse](/reference/proto#services-provider-v1-GenerateTokenResponse) | Generates an unprotected authentication token that can be used to configure server side applications |
 | Invite | [InviteRequest](/reference/proto#services-provider-v1-InviteRequest) | [InviteResponse](/reference/proto#services-provider-v1-InviteResponse) | Invite a user to the ecosystem |
 | InvitationStatus | [InvitationStatusRequest](/reference/proto#services-provider-v1-InvitationStatusRequest) | [InvitationStatusResponse](/reference/proto#services-provider-v1-InvitationStatusResponse) | Check the invitation status |
 | GetOberonKey | [GetOberonKeyRequest](/reference/proto#services-provider-v1-GetOberonKeyRequest) | [GetOberonKeyResponse](/reference/proto#services-provider-v1-GetOberonKeyResponse) | Returns the public key being used to create/verify oberon tokens |
+| GetEventToken | [GetEventTokenRequest](/reference/proto#services-provider-v1-GetEventTokenRequest) | [GetEventTokenResponse](/reference/proto#services-provider-v1-GetEventTokenResponse) | Generate a signed token (JWT) that can be used to connect to the message bus |
 
  <!-- end services -->
+
+
+<a name="services-provider-v1-AddWebhookRequest"></a>
+
+### AddWebhookRequest
+Request to add a webhook to an ecosystem
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| ecosystem_id | [string](/reference/proto#string) | ID of ecosystem to add webhook to |
+| destination_url | [string](/reference/proto#string) | Destination to post webhook calls to |
+| secret | [string](/reference/proto#string) | HMAC secret for webhook validation |
+| events | [string](/reference/proto#string)[] | Events to subscribe to. Default is "*" (all events) |
+
+
+
+
+
+
+<a name="services-provider-v1-AddWebhookResponse"></a>
+
+### AddWebhookResponse
+Response to `AddWebhookRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| ecosystem | [Ecosystem](/reference/proto#services-provider-v1-Ecosystem) | Ecosystem with new webhook |
+
+
+
+
 
 
 <a name="services-provider-v1-CreateEcosystemRequest"></a>
@@ -439,6 +568,37 @@ Nonce used to generate an oberon proof
 
 
 
+<a name="services-provider-v1-DeleteWebhookRequest"></a>
+
+### DeleteWebhookRequest
+Request to delete a webhook from an ecosystem
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| ecosystem_id | [string](/reference/proto#string) | ID of ecosystem from which to delete webhook |
+| webhook_id | [string](/reference/proto#string) | ID of webhook to delete |
+
+
+
+
+
+
+<a name="services-provider-v1-DeleteWebhookResponse"></a>
+
+### DeleteWebhookResponse
+Response to `DeleteWebhookRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| ecosystem | [Ecosystem](/reference/proto#services-provider-v1-Ecosystem) | Ecosystem after removal of webhook |
+
+
+
+
+
+
 <a name="services-provider-v1-Ecosystem"></a>
 
 ### Ecosystem
@@ -447,10 +607,41 @@ Nonce used to generate an oberon proof
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) |  |
-| name | [string](/reference/proto#string) |  |
-| description | [string](/reference/proto#string) |  |
-| uri | [string](/reference/proto#string) |  |
+| id | [string](/reference/proto#string) | URN of the ecosystem |
+| name | [string](/reference/proto#string) | Globally unique name for the ecosystem |
+| description | [string](/reference/proto#string) | Ecosystem description |
+| uri | [string](/reference/proto#string) | External URL associated with the organization or ecosystem entity |
+| webhooks | [WebhookConfig](/reference/proto#services-provider-v1-WebhookConfig)[] | Configured webhooks, if any |
+
+
+
+
+
+
+<a name="services-provider-v1-EcosystemInfoRequest"></a>
+
+### EcosystemInfoRequest
+Request to fetch information about an ecosystem
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| ecosystem_id | [string](/reference/proto#string) | ID of ecosystem to fetch information about |
+
+
+
+
+
+
+<a name="services-provider-v1-EcosystemInfoResponse"></a>
+
+### EcosystemInfoResponse
+Response to `InfoRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| ecosystem | [Ecosystem](/reference/proto#services-provider-v1-Ecosystem) | Ecosystem corresponding to requested `ecosystem_id` |
 
 
 
@@ -481,6 +672,37 @@ Nonce used to generate an oberon proof
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | profile | [services.account.v1.AccountProfile](/reference/proto#services-account-v1-AccountProfile) | Account authentication profile that contains unprotected token |
+
+
+
+
+
+
+<a name="services-provider-v1-GetEventTokenRequest"></a>
+
+### GetEventTokenRequest
+generates an events token bound to the provided ed25519 pk
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| pk | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="services-provider-v1-GetEventTokenResponse"></a>
+
+### GetEventTokenResponse
+response message containing a token (JWT) that can be used
+to connect directly to the message streaming architecture
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| token | [string](/reference/proto#string) | a JWT bound to the PK provided in the request |
 
 
 
@@ -602,6 +824,56 @@ The reference_id passed is the response from the
 | ----- | ---- | ----------- |
 | invitation_id | [string](/reference/proto#string) | ID of created invitation |
 | invitation_code | [string](/reference/proto#string) | Invitation Code that must be passed with the account 'SignIn' request to correlate this user with the invitation sent. |
+
+
+
+
+
+
+<a name="services-provider-v1-UpdateEcosystemRequest"></a>
+
+### UpdateEcosystemRequest
+Request to update an ecosystem
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| ecosystem_id | [string](/reference/proto#string) | ID of the ecosystem to update |
+| description | [string](/reference/proto#string) | Description of the ecosystem |
+| uri | [string](/reference/proto#string) | External URL associated with the organization or ecosystem entity |
+
+
+
+
+
+
+<a name="services-provider-v1-UpdateEcosystemResponse"></a>
+
+### UpdateEcosystemResponse
+Response to `UpdateEcosystemRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| Ecosystem | [Ecosystem](/reference/proto#services-provider-v1-Ecosystem) |  |
+
+
+
+
+
+
+<a name="services-provider-v1-WebhookConfig"></a>
+
+### WebhookConfig
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | UUID of the webhook |
+| destination_url | [string](/reference/proto#string) | Destination to post webhook calls to |
+| events | [string](/reference/proto#string)[] | Events the webhook is subscribed to |
+| status | [string](/reference/proto#string) | Whether we are able to sucessfully send events to the webhook |
 
 
 

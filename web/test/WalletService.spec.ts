@@ -12,7 +12,7 @@ import {
   TemplateService,
   WalletService,
 } from "../src";
-import {getTestServerOptions, set20SecTimeout} from "./env";
+import { getTestServerOptions, setTestTimeout } from "./env";
 import { v4 as uuid } from "uuid";
 
 let options = getTestServerOptions();
@@ -24,7 +24,7 @@ let credentialService: CredentialService;
 let templateService: TemplateService;
 
 describe("wallet service tests", () => {
-  set20SecTimeout()
+  setTestTimeout();
   beforeAll(async () => {
     accountService = new AccountService(options);
     options.authToken = await accountService.signIn();

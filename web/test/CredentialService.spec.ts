@@ -1,13 +1,18 @@
-import { AccountService, CredentialService, IssueRequest, IssueResponse, ServiceOptions } from "../src";
+import {
+  AccountService,
+  CredentialService,
+  IssueRequest,
+  IssueResponse,
+  ServiceOptions,
+} from "../src";
 // @ts-ignore
 import vaccineCertUnsigned from "./data/vaccination-certificate-unsigned.json";
-import {getTestServerOptions, set20SecTimeout} from "./env";
-
+import { getTestServerOptions, setTestTimeout } from "./env";
 
 let options: ServiceOptions = getTestServerOptions();
 
 describe("CredentialService Unit Tests", () => {
-  set20SecTimeout()
+  setTestTimeout();
   beforeAll(async () => {
     let service = new AccountService(options);
     options.authToken = await service.signIn();
@@ -21,12 +26,14 @@ describe("CredentialService Unit Tests", () => {
     let info = await accountService.info();
 
     //Set issuer DID of credential
-    let vaccineCert = Object.assign({}, vaccineCertUnsigned, {issuer: info.publicDid});
+    let vaccineCert = Object.assign({}, vaccineCertUnsigned, {
+      issuer: info.publicDid,
+    });
     let credentialJSON = JSON.stringify(vaccineCert);
 
     // issueCredential() {
     const issueResponse = await credentialService.issueCredential(
-        IssueRequest.fromPartial({ documentJson: credentialJSON })
+      IssueRequest.fromPartial({ documentJson: credentialJSON })
     );
     // }
 

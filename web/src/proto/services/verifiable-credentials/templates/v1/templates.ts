@@ -42,8 +42,9 @@ export function fieldTypeToJSON(object: FieldType): string {
       return "BOOL";
     case FieldType.DATETIME:
       return "DATETIME";
+    case FieldType.UNRECOGNIZED:
     default:
-      return "UNKNOWN";
+      return "UNRECOGNIZED";
   }
 }
 
@@ -1512,6 +1513,8 @@ export const TemplateData_FieldsEntry = {
   },
 };
 
+export type CredentialTemplatesDefinition =
+  typeof CredentialTemplatesDefinition;
 export const CredentialTemplatesDefinition = {
   name: "CredentialTemplates",
   fullName: "services.verifiablecredentials.templates.v1.CredentialTemplates",

@@ -11,6 +11,7 @@ assignees: fundthmcalculus
 
 Languages:
 - [ ] .NET
+- [ ] CLI
 - [ ] Go
 - [ ] Java
 - [ ] Dart

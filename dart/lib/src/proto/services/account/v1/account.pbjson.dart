@@ -137,17 +137,17 @@ const TokenProtection$json = const {
 /// Descriptor for `TokenProtection`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List tokenProtectionDescriptor = $convert.base64Decode(
     'Cg9Ub2tlblByb3RlY3Rpb24SGAoHZW5hYmxlZBgBIAEoCFIHZW5hYmxlZBI/CgZtZXRob2QYAiABKA4yJy5zZXJ2aWNlcy5hY2NvdW50LnYxLkNvbmZpcm1hdGlvbk1ldGhvZFIGbWV0aG9k');
-@$core.Deprecated('Use infoRequestDescriptor instead')
-const InfoRequest$json = const {
-  '1': 'InfoRequest',
+@$core.Deprecated('Use accountInfoRequestDescriptor instead')
+const AccountInfoRequest$json = const {
+  '1': 'AccountInfoRequest',
 };
 
-/// Descriptor for `InfoRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List infoRequestDescriptor =
-    $convert.base64Decode('CgtJbmZvUmVxdWVzdA==');
-@$core.Deprecated('Use infoResponseDescriptor instead')
-const InfoResponse$json = const {
-  '1': 'InfoResponse',
+/// Descriptor for `AccountInfoRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List accountInfoRequestDescriptor =
+    $convert.base64Decode('ChJBY2NvdW50SW5mb1JlcXVlc3Q=');
+@$core.Deprecated('Use accountInfoResponseDescriptor instead')
+const AccountInfoResponse$json = const {
+  '1': 'AccountInfoResponse',
   '2': const [
     const {
       '1': 'details',
@@ -170,12 +170,19 @@ const InfoResponse$json = const {
     const {'1': 'device_id', '3': 4, '4': 1, '5': 9, '10': 'deviceId'},
     const {'1': 'ecosystem_id', '3': 5, '4': 1, '5': 9, '10': 'ecosystemId'},
     const {'1': 'public_did', '3': 6, '4': 1, '5': 9, '10': 'publicDid'},
+    const {
+      '1': 'authorized_webhooks',
+      '3': 7,
+      '4': 3,
+      '5': 9,
+      '10': 'authorizedWebhooks'
+    },
   ],
 };
 
-/// Descriptor for `InfoResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List infoResponseDescriptor = $convert.base64Decode(
-    'CgxJbmZvUmVzcG9uc2USPQoHZGV0YWlscxgBIAEoCzIjLnNlcnZpY2VzLmFjY291bnQudjEuQWNjb3VudERldGFpbHNSB2RldGFpbHMSSQoKZWNvc3lzdGVtcxgCIAMoCzIlLnNlcnZpY2VzLmFjY291bnQudjEuQWNjb3VudEVjb3N5c3RlbUICGAFSCmVjb3N5c3RlbXMSGwoJd2FsbGV0X2lkGAMgASgJUgh3YWxsZXRJZBIbCglkZXZpY2VfaWQYBCABKAlSCGRldmljZUlkEiEKDGVjb3N5c3RlbV9pZBgFIAEoCVILZWNvc3lzdGVtSWQSHQoKcHVibGljX2RpZBgGIAEoCVIJcHVibGljRGlk');
+/// Descriptor for `AccountInfoResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List accountInfoResponseDescriptor = $convert.base64Decode(
+    'ChNBY2NvdW50SW5mb1Jlc3BvbnNlEj0KB2RldGFpbHMYASABKAsyIy5zZXJ2aWNlcy5hY2NvdW50LnYxLkFjY291bnREZXRhaWxzUgdkZXRhaWxzEkkKCmVjb3N5c3RlbXMYAiADKAsyJS5zZXJ2aWNlcy5hY2NvdW50LnYxLkFjY291bnRFY29zeXN0ZW1CAhgBUgplY29zeXN0ZW1zEhsKCXdhbGxldF9pZBgDIAEoCVIId2FsbGV0SWQSGwoJZGV2aWNlX2lkGAQgASgJUghkZXZpY2VJZBIhCgxlY29zeXN0ZW1faWQYBSABKAlSC2Vjb3N5c3RlbUlkEh0KCnB1YmxpY19kaWQYBiABKAlSCXB1YmxpY0RpZBIvChNhdXRob3JpemVkX3dlYmhvb2tzGAcgAygJUhJhdXRob3JpemVkV2ViaG9va3M=');
 @$core.Deprecated('Use listDevicesRequestDescriptor instead')
 const ListDevicesRequest$json = const {
   '1': 'ListDevicesRequest',
@@ -222,3 +229,116 @@ const AccountEcosystem$json = const {
 /// Descriptor for `AccountEcosystem`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List accountEcosystemDescriptor = $convert.base64Decode(
     'ChBBY2NvdW50RWNvc3lzdGVtEg4KAmlkGAEgASgJUgJpZBISCgRuYW1lGAIgASgJUgRuYW1lEiAKC2Rlc2NyaXB0aW9uGAMgASgJUgtkZXNjcmlwdGlvbhIQCgN1cmkYBCABKAlSA3VyaQ==');
+@$core.Deprecated('Use loginRequestDescriptor instead')
+const LoginRequest$json = const {
+  '1': 'LoginRequest',
+  '2': const [
+    const {'1': 'email', '3': 1, '4': 1, '5': 9, '8': const {}, '10': 'email'},
+    const {
+      '1': 'invitation_code',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '8': const {},
+      '10': 'invitationCode'
+    },
+    const {
+      '1': 'ecosystem_id',
+      '3': 3,
+      '4': 1,
+      '5': 9,
+      '8': const {},
+      '10': 'ecosystemId'
+    },
+  ],
+};
+
+/// Descriptor for `LoginRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List loginRequestDescriptor = $convert.base64Decode(
+    'CgxMb2dpblJlcXVlc3QSGgoFZW1haWwYASABKAlCBICmHQFSBWVtYWlsEi0KD2ludml0YXRpb25fY29kZRgCIAEoCUIEgKYdAVIOaW52aXRhdGlvbkNvZGUSJwoMZWNvc3lzdGVtX2lkGAMgASgJQgSAph0BUgtlY29zeXN0ZW1JZA==');
+@$core.Deprecated('Use loginResponseDescriptor instead')
+const LoginResponse$json = const {
+  '1': 'LoginResponse',
+  '2': const [
+    const {
+      '1': 'challenge',
+      '3': 1,
+      '4': 1,
+      '5': 12,
+      '9': 0,
+      '10': 'challenge'
+    },
+    const {
+      '1': 'profile',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.services.account.v1.AccountProfile',
+      '9': 0,
+      '10': 'profile'
+    },
+  ],
+  '8': const [
+    const {'1': 'response'},
+  ],
+};
+
+/// Descriptor for `LoginResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List loginResponseDescriptor = $convert.base64Decode(
+    'Cg1Mb2dpblJlc3BvbnNlEh4KCWNoYWxsZW5nZRgBIAEoDEgAUgljaGFsbGVuZ2USPwoHcHJvZmlsZRgCIAEoCzIjLnNlcnZpY2VzLmFjY291bnQudjEuQWNjb3VudFByb2ZpbGVIAFIHcHJvZmlsZUIKCghyZXNwb25zZQ==');
+@$core.Deprecated('Use loginConfirmRequestDescriptor instead')
+const LoginConfirmRequest$json = const {
+  '1': 'LoginConfirmRequest',
+  '2': const [
+    const {'1': 'challenge', '3': 1, '4': 1, '5': 12, '10': 'challenge'},
+    const {
+      '1': 'confirmation_code_hashed',
+      '3': 2,
+      '4': 1,
+      '5': 12,
+      '10': 'confirmationCodeHashed'
+    },
+  ],
+};
+
+/// Descriptor for `LoginConfirmRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List loginConfirmRequestDescriptor = $convert.base64Decode(
+    'ChNMb2dpbkNvbmZpcm1SZXF1ZXN0EhwKCWNoYWxsZW5nZRgBIAEoDFIJY2hhbGxlbmdlEjgKGGNvbmZpcm1hdGlvbl9jb2RlX2hhc2hlZBgCIAEoDFIWY29uZmlybWF0aW9uQ29kZUhhc2hlZA==');
+@$core.Deprecated('Use loginConfirmResponseDescriptor instead')
+const LoginConfirmResponse$json = const {
+  '1': 'LoginConfirmResponse',
+  '2': const [
+    const {
+      '1': 'profile',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.services.account.v1.AccountProfile',
+      '10': 'profile'
+    },
+  ],
+};
+
+/// Descriptor for `LoginConfirmResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List loginConfirmResponseDescriptor = $convert.base64Decode(
+    'ChRMb2dpbkNvbmZpcm1SZXNwb25zZRI9Cgdwcm9maWxlGAEgASgLMiMuc2VydmljZXMuYWNjb3VudC52MS5BY2NvdW50UHJvZmlsZVIHcHJvZmlsZQ==');
+@$core.Deprecated('Use authorizeWebhookRequestDescriptor instead')
+const AuthorizeWebhookRequest$json = const {
+  '1': 'AuthorizeWebhookRequest',
+  '2': const [
+    const {'1': 'events', '3': 1, '4': 3, '5': 9, '10': 'events'},
+  ],
+};
+
+/// Descriptor for `AuthorizeWebhookRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List authorizeWebhookRequestDescriptor =
+    $convert.base64Decode(
+        'ChdBdXRob3JpemVXZWJob29rUmVxdWVzdBIWCgZldmVudHMYASADKAlSBmV2ZW50cw==');
+@$core.Deprecated('Use authorizeWebhookResponseDescriptor instead')
+const AuthorizeWebhookResponse$json = const {
+  '1': 'AuthorizeWebhookResponse',
+};
+
+/// Descriptor for `AuthorizeWebhookResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List authorizeWebhookResponseDescriptor =
+    $convert.base64Decode('ChhBdXRob3JpemVXZWJob29rUmVzcG9uc2U=');

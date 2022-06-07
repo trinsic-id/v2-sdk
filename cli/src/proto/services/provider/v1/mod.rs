@@ -74,14 +74,33 @@ pub mod invitation_status_response {
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct Ecosystem {
+    /// URN of the ecosystem
     #[prost(string, tag = "1")]
     pub id: ::prost::alloc::string::String,
+    /// Globally unique name for the ecosystem
     #[prost(string, tag = "2")]
     pub name: ::prost::alloc::string::String,
+    /// Ecosystem description
     #[prost(string, tag = "3")]
     pub description: ::prost::alloc::string::String,
+    /// External URL associated with the organization or ecosystem entity
     #[prost(string, tag = "4")]
     pub uri: ::prost::alloc::string::String,
+    /// Configured webhooks, if any
+    #[prost(message, repeated, tag = "5")]
+    pub webhooks: ::prost::alloc::vec::Vec<WebhookConfig>,
+}
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct WebhookConfig {
+    /// UUID of the webhook
+    #[prost(string, tag = "1")]
+    pub id: ::prost::alloc::string::String,
+    /// Destination to post webhook calls to
+    #[prost(string, tag = "2")]
+    pub destination_url: ::prost::alloc::string::String,
+    /// Events the webhook is subscribed to
+    #[prost(string, repeated, tag = "4")]
+    pub events: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct CreateEcosystemRequest {
@@ -113,6 +132,79 @@ pub struct CreateEcosystemResponse {
     #[prost(enumeration = "super::super::account::v1::ConfirmationMethod", tag = "3")]
     pub confirmation_method: i32,
 }
+/// Request to update an ecosystem
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct UpdateEcosystemRequest {
+    /// ID of the ecosystem to update
+    #[prost(string, tag = "1")]
+    pub ecosystem_id: ::prost::alloc::string::String,
+    /// Description of the ecosystem
+    #[prost(string, tag = "2")]
+    pub description: ::prost::alloc::string::String,
+    /// External URL associated with the organization or ecosystem entity
+    #[prost(string, tag = "3")]
+    pub uri: ::prost::alloc::string::String,
+}
+/// Response to `UpdateEcosystemRequest`
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct UpdateEcosystemResponse {
+    #[prost(message, optional, tag = "1")]
+    pub ecosystem: ::core::option::Option<Ecosystem>,
+}
+/// Request to add a webhook to an ecosystem
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct AddWebhookRequest {
+    /// ID of ecosystem to add webhook to
+    #[prost(string, tag = "1")]
+    pub ecosystem_id: ::prost::alloc::string::String,
+    /// Destination to post webhook calls to
+    #[prost(string, tag = "2")]
+    pub destination_url: ::prost::alloc::string::String,
+    /// HMAC secret for webhook validation
+    #[prost(string, tag = "3")]
+    pub secret: ::prost::alloc::string::String,
+    /// Events to subscribe to. Default is "*" (all events)
+    #[prost(string, repeated, tag = "4")]
+    pub events: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+}
+/// Response to `AddWebhookRequest`
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct AddWebhookResponse {
+    /// Ecosystem with new webhook
+    #[prost(message, optional, tag = "1")]
+    pub ecosystem: ::core::option::Option<Ecosystem>,
+}
+/// Request to delete a webhook from an ecosystem
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct DeleteWebhookRequest {
+    /// ID of ecosystem from which to delete webhook
+    #[prost(string, tag = "1")]
+    pub ecosystem_id: ::prost::alloc::string::String,
+    /// ID of webhook to delete
+    #[prost(string, tag = "2")]
+    pub webhook_id: ::prost::alloc::string::String,
+}
+/// Response to `DeleteWebhookRequest`
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct DeleteWebhookResponse {
+    /// Ecosystem after removal of webhook
+    #[prost(message, optional, tag = "1")]
+    pub ecosystem: ::core::option::Option<Ecosystem>,
+}
+/// Request to fetch information about an ecosystem
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct EcosystemInfoRequest {
+    /// ID of ecosystem to fetch information about
+    #[prost(string, tag = "1")]
+    pub ecosystem_id: ::prost::alloc::string::String,
+}
+/// Response to `InfoRequest`
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct EcosystemInfoResponse {
+    /// Ecosystem corresponding to requested `ecosystem_id`
+    #[prost(message, optional, tag = "1")]
+    pub ecosystem: ::core::option::Option<Ecosystem>,
+}
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct GenerateTokenRequest {
     /// Description to identify this token
@@ -134,6 +226,21 @@ pub struct GetOberonKeyResponse {
     /// Oberon Public Key as RAW base64 URL encoded string
     #[prost(string, tag = "1")]
     pub key: ::prost::alloc::string::String,
+}
+/// generates an events token bound to the provided ed25519 pk
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct GetEventTokenRequest {
+    ///
+    #[prost(bytes = "vec", tag = "1")]
+    pub pk: ::prost::alloc::vec::Vec<u8>,
+}
+/// response message containing a token (JWT) that can be used
+/// to connect directly to the message streaming architecture
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct GetEventTokenResponse {
+    /// a JWT bound to the PK provided in the request
+    #[prost(string, tag = "1")]
+    pub token: ::prost::alloc::string::String,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
@@ -208,6 +315,58 @@ pub mod provider_client {
             let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/CreateEcosystem");
             self.inner.unary(request.into_request(), path, codec).await
         }
+        #[doc = " Update an existing ecosystem"]
+        pub async fn update_ecosystem(
+            &mut self,
+            request: impl tonic::IntoRequest<super::UpdateEcosystemRequest>,
+        ) -> Result<tonic::Response<super::UpdateEcosystemResponse>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/UpdateEcosystem");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        #[doc = " Add a webhook endpoint to the ecosystem"]
+        pub async fn add_webhook(
+            &mut self,
+            request: impl tonic::IntoRequest<super::AddWebhookRequest>,
+        ) -> Result<tonic::Response<super::AddWebhookResponse>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/AddWebhook");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        #[doc = " Delete a webhook endpoint from the ecosystem"]
+        pub async fn delete_webhook(
+            &mut self,
+            request: impl tonic::IntoRequest<super::DeleteWebhookRequest>,
+        ) -> Result<tonic::Response<super::DeleteWebhookResponse>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/DeleteWebhook");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        #[doc = " Get ecosystem information"]
+        pub async fn info(
+            &mut self,
+            request: impl tonic::IntoRequest<super::EcosystemInfoRequest>,
+        ) -> Result<tonic::Response<super::EcosystemInfoResponse>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/Info");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
         #[doc = " Generates an unprotected authentication token that can be used to"]
         #[doc = " configure server side applications"]
         pub async fn generate_token(
@@ -259,6 +418,19 @@ pub mod provider_client {
                 .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/GetOberonKey");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        #[doc = " Generate a signed token (JWT) that can be used to connect to the message bus"]
+        pub async fn get_event_token(
+            &mut self,
+            request: impl tonic::IntoRequest<super::GetEventTokenRequest>,
+        ) -> Result<tonic::Response<super::GetEventTokenResponse>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/GetEventToken");
             self.inner.unary(request.into_request(), path, codec).await
         }
     }

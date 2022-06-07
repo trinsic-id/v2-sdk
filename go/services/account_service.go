@@ -6,10 +6,9 @@ import (
 
 	"github.com/trinsic-id/okapi/go/okapi"
 	"github.com/trinsic-id/okapi/go/okapiproto"
+	"github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
 
 	"google.golang.org/protobuf/proto"
-
-	account "github.com/trinsic-id/sdk/go/proto/account/v1"
 )
 
 // NewAccountService returns an account service with the base service configured
@@ -38,7 +37,7 @@ type AccountService interface {
 	// Protect will apply the given security code blind to the provided token
 	Protect(authtoken, securityCode string) (string, error)
 	// GetInfo returns details about the wallet associated with the account token
-	GetInfo(userContext context.Context) (*account.InfoResponse, error)
+	GetInfo(userContext context.Context) (*account.AccountInfoResponse, error)
 	// ListDevices returns a list of devices that are associated with the cloud wallet
 	ListDevices(userContext context.Context, request *account.ListDevicesRequest) (*account.ListDevicesResponse, error)
 	// RevokeDevice removes access to the cloud wallet for the provided device
@@ -91,7 +90,7 @@ func (a *accountBase) Unprotect(authtoken, securityCode string) (string, error) 
 		Blinding: append([][]byte{}, []byte(securityCode)),
 	}
 
-	response, err := okapi.Oberon().UnblindToken(request)
+	response, err := okapi.Oberon().UnBlindToken(request)
 	if err != nil {
 		return "", err
 	}
@@ -135,8 +134,8 @@ func (a *accountBase) Protect(authtoken, securityCode string) (string, error) {
 }
 
 // GetInfo associated with a given wallet
-func (a *accountBase) GetInfo(userContext context.Context) (*account.InfoResponse, error) {
-	request := &account.InfoRequest{}
+func (a *accountBase) GetInfo(userContext context.Context) (*account.AccountInfoResponse, error) {
+	request := &account.AccountInfoRequest{}
 	md, err := a.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err

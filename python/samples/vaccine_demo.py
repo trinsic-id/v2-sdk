@@ -1,38 +1,31 @@
 import asyncio
 import json
-from os.path import abspath, join, dirname
 
 from trinsic.account_service import AccountService
-from trinsic.credentials_service import CredentialsService
-from trinsic.provider_service import ProviderService
+from trinsic.credential_service import CredentialService
 from trinsic.credentialtemplates_service import TemplateService
-from trinsic.wallet_service import WalletService
-
-from trinsic.proto.services.account.v1 import SignInRequest
-from trinsic.proto.services.universalwallet.v1 import InsertItemRequest, SearchRequest
+from trinsic.proto.services.universalwallet.v1 import InsertItemRequest
+from trinsic.proto.services.verifiablecredentials.templates.v1 import (
+    CreateCredentialTemplateRequest,
+    TemplateData,
+    TemplateField,
+    FieldType,
+)
 from trinsic.proto.services.verifiablecredentials.v1 import (
-    IssueRequest,
     IssueFromTemplateRequest,
     CreateProofRequest,
     VerifyProofRequest,
     SendRequest,
 )
-from trinsic.proto.services.verifiablecredentials.templates.v1 import (
-    CreateCredentialTemplateRequest,
-    CreateCredentialTemplateResponse,
-    TemplateData,
-    TemplateField,
-)
-
+from trinsic.provider_service import ProviderService
 from trinsic.trinsic_util import trinsic_config
+from trinsic.wallet_service import WalletService
 
 
 async def vaccine_demo():
     config = trinsic_config()
 
     account_service = AccountService(server_config=config)
-    account = await account_service.sign_in()
-
     provider_service = ProviderService(server_config=config)
 
     # createEcosystem() {
@@ -47,7 +40,7 @@ async def vaccine_demo():
     config.default_ecosystem = ecosystem_id
 
     wallet_service = WalletService(server_config=config)
-    credential_service = CredentialsService(server_config=config)
+    credential_service = CredentialService(server_config=config)
     template_service = TemplateService(server_config=config)
 
     # setupActors() {
@@ -98,7 +91,7 @@ async def vaccine_demo():
         pass
 
     # storeCredential() {
-    # Alice stores the credential in her cloud wallet
+    # Allison stores the credential in her cloud wallet
     wallet_service.service_options.auth_token = allison
 
     insert_response = await wallet_service.insert_item(
@@ -110,7 +103,7 @@ async def vaccine_demo():
     print(f"item id = {item_id}")
 
     # shareCredential() {
-    # Allison shares the credential with the venue
+    # Allison shares the credential with the airline
     credential_service.service_options.auth_token = allison
 
     proof_response = await credential_service.create_proof(
@@ -156,10 +149,16 @@ async def do_template(template_service: TemplateService) -> TemplateData:
             name="VaccinationCertificate",
             allow_additional_fields=False,
             fields={
-                "firstName": TemplateField(description="Given name"),
-                "lastName": TemplateField(),
-                "batchNumber": TemplateField(description=""),
-                "countryOfVaccination": TemplateField(description=""),
+                "firstName": TemplateField(
+                    description="First name of vaccine recipient"
+                ),
+                "lastName": TemplateField(description="Last name of vaccine recipient"),
+                "batchNumber": TemplateField(
+                    description="Batch number of vaccine", type=FieldType.STRING
+                ),
+                "countryOfVaccination": TemplateField(
+                    description="Country in which the subject was vaccinated"
+                ),
             },
         )
     )
@@ -167,9 +166,7 @@ async def do_template(template_service: TemplateService) -> TemplateData:
     template_id = template.data.id
     # }
 
-    assert template is not None
-    assert template.data is not None
-    assert template.data.id is not None
+    assert template_id is not None
     assert template.data.schema_uri is not None
 
     return template.data

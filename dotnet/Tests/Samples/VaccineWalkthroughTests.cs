@@ -76,7 +76,7 @@ public class VaccineWalkthroughTests
 
         templateRequest.Fields.Add("firstName", new() { Description = "First name of vaccine recipient" });
         templateRequest.Fields.Add("lastName", new() { Description = "Last name of vaccine recipient" });
-        templateRequest.Fields.Add("batchNumber", new() { Description = "Batch number of vaccine" });
+        templateRequest.Fields.Add("batchNumber", new() { Description = "Batch number of vaccine", Type = FieldType.String });
         templateRequest.Fields.Add("countryOfVaccination", new() { Description = "Country in which the subject was vaccinated" });
 
         // Create template
@@ -89,7 +89,7 @@ public class VaccineWalkthroughTests
 
 
         // issueCredential() {
-        var credentialService = new CredentialsService(_options);
+        var credentialService = new CredentialService(_options);
 
         // Set active profile to 'clinic' so we can issue credential signed
         // with the clinic's signing keys

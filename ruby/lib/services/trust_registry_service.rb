@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 require 'services/service_base'
 require 'json'
 require 'uri'
 
 module Trinsic
   class TrustRegistryService < ServiceBase
-
     def initialize(service_options = nil)
       super(service_options)
       if @service_options.server_use_tls
@@ -15,7 +16,7 @@ module Trinsic
       end
     end
 
-    def add_governance_framework(request)
+    def add_framework(request)
       # verify uri
       uri = URI(request.governance_framework_uri)
       raise 'Invalid governance framework uri' unless uri.scheme
@@ -23,7 +24,7 @@ module Trinsic
       @client.add_framework(request, metadata: metadata(request))
     end
 
-    def remove_governance_framework(request)
+    def remove_framework(request)
       @client.remove_framework(request, metadata: metadata(request))
     end
 
@@ -41,7 +42,7 @@ module Trinsic
 
     def search_registry(request = nil)
       request ||= TrustRegistry_V1::SearchRegistryRequest.new
-      request.query = request.query.empty? ? "SELECT * FROM c OFFSET 0 LIMIT 100" : request.query
+      request.query = request.query.empty? ? 'SELECT * FROM c OFFSET 0 LIMIT 100' : request.query
       @client.search_registry(request, metadata: metadata(request))
     end
 

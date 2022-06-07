@@ -12,8 +12,7 @@ import {
   UniversalWalletDefinition,
 } from "./proto";
 
-import type {Client as BrowserClient} from "nice-grpc-web";
-
+import type { Client as BrowserClient } from "nice-grpc-web";
 
 export class WalletService extends ServiceBase {
   client: BrowserClient<typeof UniversalWalletDefinition>;

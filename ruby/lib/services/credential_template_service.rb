@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require 'services/service_base'
 
 module Trinsic
   class CredentialTemplateService < ServiceBase
-
     def initialize(service_options = nil)
       super(service_options)
       if @service_options.server_use_tls

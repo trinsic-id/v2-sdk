@@ -1,12 +1,18 @@
 # Trinsic SDK
 
-[![.NET](https://github.com/trinsic-id/sdk/actions/workflows/build-dotnet.yml/badge.svg)](https://github.com/trinsic-id/sdk/actions/workflows/build-dotnet.yml)
-[![Go](https://github.com/trinsic-id/sdk/actions/workflows/build-golang.yml/badge.svg)](https://github.com/trinsic-id/sdk/actions/workflows/build-golang.yml)
-[![Java](https://github.com/trinsic-id/sdk/actions/workflows/build-java.yml/badge.svg)](https://github.com/trinsic-id/sdk/actions/workflows/build-java.yml)
-[![Python](https://github.com/trinsic-id/sdk/actions/workflows/build-python.yml/badge.svg)](https://github.com/trinsic-id/sdk/actions/workflows/build-python.yml)
-[![Ruby](https://github.com/trinsic-id/sdk/actions/workflows/build-ruby.yml/badge.svg)](https://github.com/trinsic-id/sdk/actions/workflows/build-ruby.yml)
-[![Rust](https://github.com/trinsic-id/sdk/actions/workflows/build-rust.yml/badge.svg)](https://github.com/trinsic-id/sdk/actions/workflows/build-rust.yml)
-[![TypeScript](https://github.com/trinsic-id/sdk/actions/workflows/build-typescript.yml/badge.svg)](https://github.com/trinsic-id/sdk/actions/workflows/build-typescript.yml)
+Build Status
+
+[![.NET](https://github.com/trinsic-id/sdk/actions/workflows/build-dotnet.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/build-dotnet.yml)
+[![Go](https://github.com/trinsic-id/sdk/actions/workflows/build-golang.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/build-golang.yml)
+[![Java](https://github.com/trinsic-id/sdk/actions/workflows/build-java.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/build-java.yml)
+[![Python](https://github.com/trinsic-id/sdk/actions/workflows/build-python.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/build-python.yml)
+[![Ruby](https://github.com/trinsic-id/sdk/actions/workflows/build-ruby.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/build-ruby.yml)
+[![Rust](https://github.com/trinsic-id/sdk/actions/workflows/build-rust.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/build-rust.yml)
+[![TypeScript](https://github.com/trinsic-id/sdk/actions/workflows/build-typescript.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/build-typescript.yml)
+
+Test Coverage
+
+[![codecov](https://codecov.io/gh/trinsic-id/sdk/branch/main/graph/badge.svg?token=DB0RIHWA6A)](https://codecov.io/gh/trinsic-id/sdk)
 
 Library is available for use with different languages
 

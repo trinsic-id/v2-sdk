@@ -2,10 +2,12 @@ package services
 
 import (
 	"context"
-	account "github.com/trinsic-id/sdk/go/proto/account/v1"
-	options "github.com/trinsic-id/sdk/go/proto/options/v1"
+
 	"strings"
 	"testing"
+
+	"github.com/trinsic-id/sdk/go/proto/sdk/options/v1/options"
+	"github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
 
 	"github.com/stretchr/testify/assert"
 

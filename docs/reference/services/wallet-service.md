@@ -18,55 +18,50 @@ Wallets can be created directly by the user or through an invitation by the ecos
 
 Trinsic supports the ability to insert verifiable credentials into a wallet simply using JSON data.
 
-=== "Trinsic CLI"
-    ```bash
-    trinsic wallet insert-item --item <INPUT_JSON_FILE>
-    ```
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic wallet insert-item --item <INPUT_JSON_FILE>
+        ```
 
-When using an SDK to perform this operation, you will need to supply an [Insert Item Request](../proto/#insertitemrequest) object that follows the structure below:
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [VerifyProof](../../../web/test/WalletService.test.ts) inside_block:insertItemWallet
+        ```
+        <!--/codeinclude-->
 
-{{ proto_obj('InsertItemRequest') }}
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:insertItemWallet
+        ```
+        <!--/codeinclude-->
 
-Then you can supply it to the SDKs:
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [Insert Item Wallet](../../../python/samples/wallet_demo.py) inside_block:insertItemWallet
+        ```
+        <!--/codeinclude-->
 
-=== "TypeScript"
-    <!--codeinclude-->
-    ```typescript
-    [VerifyProof](../../../web/test/WalletService.test.ts) inside_block:insertItemWallet
-    ```
-    <!--/codeinclude-->
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [RegisterIssuer](../../../go/services/services_test.go) inside_block:insertItemWallet
+        ```
+        <!--/codeinclude-->
 
-=== "C#"
-    <!--codeinclude-->
-    ```csharp
-    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:insertItemWallet
-    ```
-    <!--/codeinclude-->
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [RegisterIssuer](../../../java/src/test/java/trinsic/WalletsDemo.java) inside_block:insertItemWallet
+        ```
+        <!--/codeinclude-->
 
-=== "Python"
-    <!--codeinclude-->
-    ```python
-    [Insert Item Wallet](../../../python/samples/wallet_demo.py) inside_block:insertItemWallet
-    ```
-    <!--/codeinclude-->
+{{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.InsertItem") }}
 
-=== "Go"
-    <!--codeinclude-->
-    ```golang
-    [RegisterIssuer](../../../go/services/services_test.go) inside_block:insertItemWallet
-    ```
-    <!--/codeinclude-->
-
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    [RegisterIssuer](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:insertItemWallet
-    ```
-    <!--/codeinclude-->
-
-The output of this method will be a unique `itemId` that can be used as input where required. The response model looks like this:
-
-{{ proto_obj('InsertItemResponse') }}
+The output of this method will be a unique `itemId` that can be used as input where required.
 
 ## Search / Query
 
@@ -79,52 +74,55 @@ This approach allows us to give developers full control over how data is retriev
 
 The default query used in the commands below returns the first 100 items in the wallet result set. The query is `SELECT * FROM c OFFSET 0 LIMIT 100`.
 
-=== "Trinsic CLI"
-    ```bash
-    trinsic wallet search
-    ```
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic wallet search
+        ```
 
-=== "TypeScript"
-    <!--codeinclude-->
-    ```typescript
-    [SearchWallet](../../../web/test/WalletService.test.ts) inside_block:searchWalletBasic
-    ```
-    <!--/codeinclude-->
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [SearchWallet](../../../web/test/WalletService.test.ts) inside_block:searchWalletBasic
+        ```
+        <!--/codeinclude-->
 
-=== "C#"
-    <!--codeinclude-->
-    ```csharp
-    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:searchWalletBasic
-    ```
-    <!--/codeinclude-->
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:searchWalletBasic
+        ```
+        <!--/codeinclude-->
 
-=== "Python"
-    <!--codeinclude-->
-    ```python
-    [Insert Item Wallet](../../../python/samples/wallet_demo.py) inside_block:searchWalletBasic
-    ```
-    <!--/codeinclude-->
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [Insert Item Wallet](../../../python/samples/wallet_demo.py) inside_block:searchWalletBasic
+        ```
+        <!--/codeinclude-->
 
-=== "Go"
-    <!--codeinclude-->
-    ```golang
-    [RegisterIssuer](../../../go/services/services_test.go) inside_block:searchWalletBasic
-    ```
-    <!--/codeinclude-->
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [RegisterIssuer](../../../go/services/services_test.go) inside_block:searchWalletBasic
+        ```
+        <!--/codeinclude-->
 
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    [RegisterIssuer](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:searchWalletBasic
-    ```
-    <!--/codeinclude-->
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [RegisterIssuer](../../../java/src/test/java/trinsic/WalletsDemo.java) inside_block:searchWalletBasic
+        ```
+        <!--/codeinclude-->
 
-=== "Ruby"
-    <!--codeinclude-->
-    ```ruby
+    === "Ruby"
+        <!--codeinclude-->
+        ```ruby
+        
+        ```
+        <!--/codeinclude-->
     
-    ```
-    <!--/codeinclude-->
+{{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.Search") }}
 
 ### SQL Search
 
@@ -167,7 +165,7 @@ To pass custom query to the search function, use the query parameter or the avai
 === "Java"
     <!--codeinclude-->
     ```java
-    [RegisterIssuer](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:searchWalletSQL
+    [RegisterIssuer](../../../java/src/test/java/trinsic/WalletsDemo.java) inside_block:searchWalletSQL
     ```
     <!--/codeinclude-->
 
