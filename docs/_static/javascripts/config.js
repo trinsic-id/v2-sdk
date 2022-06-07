@@ -4,7 +4,18 @@ document$.subscribe(() => {
 
 
 function expandSubField(btn) {
-  console.log(btn);
+  const MESSAGES = {
+    "message": "child attributes",
+    "enum": "enum values"
+  }
+
+  const type = btn.getAttribute("data-sub-type");
+
+  if(!type) {
+    return;
+  }
+
+  const typeMessage = MESSAGES[type];
   
   let expandContainer = btn.parentElement.querySelector(".proto-field-sub-child");
   if(!expandContainer) {
@@ -14,9 +25,9 @@ function expandSubField(btn) {
 
   if(expandContainer.classList.contains("hidden")) {
     expandContainer.classList.remove("hidden");
-    btn.innerText = "Hide child attributes";
+    btn.innerText = "Hide " + typeMessage;
   } else {
     expandContainer.classList.add("hidden");
-    btn.innerText = "Show child attributes";
+    btn.innerText = "Show " + typeMessage;
   }
 }

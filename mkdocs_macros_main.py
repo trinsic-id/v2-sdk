@@ -72,12 +72,20 @@ def define_env(env):
         return str(ret)
 
     @env.macro
-    def proto_message(str: str):
+    def proto_message(name: str):
         """
         Generates the documentation for a specific protobuf message.
         """
         
-        return print_message(str).replace("\n","").replace("\r","")
+        return print_message(name).replace("\n","").replace("\r","")
+
+    @env.macro
+    def proto_enum(name: str):
+        """
+        Generates the documentation for a specific protobuf enum.
+        """
+
+        return print_enum(name).replace("\n", "").replace("\r", "")
 
     @env.macro
     def all_proto_objs():
@@ -96,6 +104,68 @@ def define_env(env):
 
 
 ###### Helper methods below
+
+def print_enum(enumName: str):
+    """
+    Generates the HTML for a protobuf enum's documentation
+    """
+
+    try:
+        # Fetch the protobuf enum by name
+        entity = get_entity(enumName)
+
+        # Replace newlines in the comments of the enum with spaces
+        enum_desc = entity['description'].replace("\n", " ").replace("\r", " ")
+
+        ret = (
+            f"<div class='proto-obj-container' data-proto-name='{entity['full_name']}'>"
+            f"<div class='proto-obj-name'><a name='{entity['full_name']}' href='/reference/proto#{entity['full_name']}'>{entity['name']}</a></div>"
+            f"<div class='proto-obj-description'>{enum_desc}</div>"
+        )
+
+        if len(entity["values"]) > 0:
+            ret += print_enum_values(enumName)
+        else:
+            ret += "<i style='display:block; font-size: 0.65rem; margin-top: 0.5rem'>This enum has no values (how?)</i>"
+
+        ret += "</div>"
+
+        return ret
+    except Exception as e:
+        return f"Cannot print proto message: {e}"
+
+def print_enum_values(enumName: str):
+    """
+    Generates the HTML for just a protobuf enum's values.
+    Does not include the enum name or description.
+    """
+
+    # Fetch message
+    entity = get_entity(enumName)
+
+    enumShortName = entity["name"]
+
+    fields = "<div class='proto-obj-fields'>"
+
+    # Print each field in order
+    for valName in entity["values"]:
+        # Get value by name
+        value = get_entity(valName)
+
+        # Replace newlines in the value's comments with spaces
+        value_desc = value["description"].replace("\n", " ").replace("\r", " ")
+
+        fields += (
+            "<div class='proto-field'>"
+                f"<div class='proto-field-name'><span class='proto-obj-subtype-context'>{enumShortName}.</span>{value['name']}</div> "
+                f"<div class='proto-field-type'> = {value['value']}</div>"
+                f"<div class='proto-field-description'>{value_desc}</div>"
+            "</div>"
+        )
+
+    fields += "</div>"
+
+    return fields
 
 def print_message(messageName: str, context: str = None):
     """
@@ -196,6 +266,9 @@ def print_field(fieldName, context: str = None):
         # Get entry in protoc-gen-json index of types.
         field_type_index = get_index_entry(field["full_type"])
 
+        sub_content = None
+        sub_content_msg = ""
+
         # If `full_type` points to a Message, document it as a message
         if field_type_index["type"] == "message":
             # Add the current field name to `context`
@@ -206,12 +279,16 @@ def print_field(fieldName, context: str = None):
             
             # Embed just the sub-type's fields, not its name or description
             sub_content = print_message_fields(field["full_type"], context)
+            sub_content_msg = "Show child attributes"
+        elif field_type_index["type"] == "enum":
+            sub_content = print_enum_values(field["full_type"])
+            sub_content_msg = "Show enum values"
 
+        if sub_content is not None:
             ret += (
-                f"<div class='proto-field-expand-btn' onclick='expandSubField(this);'>Show child attributes</div>"
+                f"<div class='proto-field-expand-btn' data-sub-type='{field_type_index['type']}' onclick='expandSubField(this);'>{sub_content_msg}</div>"
                 f"<div class='proto-field-sub-child hidden'>{sub_content}</div>"
             )
-
 
     ret += "</div>"
     return ret
