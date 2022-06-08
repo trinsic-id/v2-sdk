@@ -4454,7 +4454,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Trinsic API endpoint. Defaults to `prod.trinsic.cloud`"
+      "description": "Trinsic API endpoint; defaults to `prod.trinsic.cloud`"
     },
     "sdk.options.v1.ServiceOptions.server_port": {
       "name": "server_port",

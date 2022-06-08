@@ -12,7 +12,7 @@ class ServiceOptions(betterproto.Message):
     """Configuration for Trinsic SDK Services"""
 
     server_endpoint: str = betterproto.string_field(1)
-    """Trinsic API endpoint. Defaults to `prod.trinsic.cloud`"""
+    """Trinsic API endpoint; defaults to `prod.trinsic.cloud`"""
 
     server_port: int = betterproto.int32_field(2)
     """Trinsic API port; defaults to `443`"""
