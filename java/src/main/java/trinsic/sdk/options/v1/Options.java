@@ -21,7 +21,7 @@ public final class Options {
      *
      *
      * <pre>
-     * Trinsic API endpoint. Defaults to `prod.trinsic.cloud`
+     * Trinsic API endpoint; defaults to `prod.trinsic.cloud`
      * </pre>
      *
      * <code>string server_endpoint = 1;</code>
@@ -33,7 +33,7 @@ public final class Options {
      *
      *
      * <pre>
-     * Trinsic API endpoint. Defaults to `prod.trinsic.cloud`
+     * Trinsic API endpoint; defaults to `prod.trinsic.cloud`
      * </pre>
      *
      * <code>string server_endpoint = 1;</code>
@@ -245,7 +245,7 @@ public final class Options {
      *
      *
      * <pre>
-     * Trinsic API endpoint. Defaults to `prod.trinsic.cloud`
+     * Trinsic API endpoint; defaults to `prod.trinsic.cloud`
      * </pre>
      *
      * <code>string server_endpoint = 1;</code>
@@ -268,7 +268,7 @@ public final class Options {
      *
      *
      * <pre>
-     * Trinsic API endpoint. Defaults to `prod.trinsic.cloud`
+     * Trinsic API endpoint; defaults to `prod.trinsic.cloud`
      * </pre>
      *
      * <code>string server_endpoint = 1;</code>
@@ -810,7 +810,7 @@ public final class Options {
        *
        *
        * <pre>
-       * Trinsic API endpoint. Defaults to `prod.trinsic.cloud`
+       * Trinsic API endpoint; defaults to `prod.trinsic.cloud`
        * </pre>
        *
        * <code>string server_endpoint = 1;</code>
@@ -832,7 +832,7 @@ public final class Options {
        *
        *
        * <pre>
-       * Trinsic API endpoint. Defaults to `prod.trinsic.cloud`
+       * Trinsic API endpoint; defaults to `prod.trinsic.cloud`
        * </pre>
        *
        * <code>string server_endpoint = 1;</code>
@@ -854,7 +854,7 @@ public final class Options {
        *
        *
        * <pre>
-       * Trinsic API endpoint. Defaults to `prod.trinsic.cloud`
+       * Trinsic API endpoint; defaults to `prod.trinsic.cloud`
        * </pre>
        *
        * <code>string server_endpoint = 1;</code>
@@ -875,7 +875,7 @@ public final class Options {
        *
        *
        * <pre>
-       * Trinsic API endpoint. Defaults to `prod.trinsic.cloud`
+       * Trinsic API endpoint; defaults to `prod.trinsic.cloud`
        * </pre>
        *
        * <code>string server_endpoint = 1;</code>
@@ -892,7 +892,7 @@ public final class Options {
        *
        *
        * <pre>
-       * Trinsic API endpoint. Defaults to `prod.trinsic.cloud`
+       * Trinsic API endpoint; defaults to `prod.trinsic.cloud`
        * </pre>
        *
        * <code>string server_endpoint = 1;</code>
