@@ -162,6 +162,8 @@ export interface WebhookConfig {
   destinationUrl: string;
   /** Events the webhook is subscribed to */
   events: string[];
+  /** Whether we are able to sucessfully send events to the webhook */
+  status: string;
 }
 
 export interface CreateEcosystemRequest {
@@ -799,7 +801,7 @@ export const Ecosystem = {
 };
 
 function createBaseWebhookConfig(): WebhookConfig {
-  return { id: "", destinationUrl: "", events: [] };
+  return { id: "", destinationUrl: "", events: [], status: "" };
 }
 
 export const WebhookConfig = {
@@ -815,6 +817,9 @@ export const WebhookConfig = {
     }
     for (const v of message.events) {
       writer.uint32(34).string(v!);
+    }
+    if (message.status !== "") {
+      writer.uint32(42).string(message.status);
     }
     return writer;
   },
@@ -835,6 +840,9 @@ export const WebhookConfig = {
         case 4:
           message.events.push(reader.string());
           break;
+        case 5:
+          message.status = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -852,6 +860,7 @@ export const WebhookConfig = {
       events: Array.isArray(object?.events)
         ? object.events.map((e: any) => String(e))
         : [],
+      status: isSet(object.status) ? String(object.status) : "",
     };
   },
 
@@ -865,6 +874,7 @@ export const WebhookConfig = {
     } else {
       obj.events = [];
     }
+    message.status !== undefined && (obj.status = message.status);
     return obj;
   },
 
@@ -873,6 +883,7 @@ export const WebhookConfig = {
     message.id = object.id ?? "";
     message.destinationUrl = object.destinationUrl ?? "";
     message.events = object.events?.map((e) => e) || [];
+    message.status = object.status ?? "";
     return message;
   },
 };
@@ -1983,8 +1994,8 @@ export const ProviderDefinition = {
       options: {},
     },
     /** Get ecosystem information */
-    info: {
-      name: "Info",
+    ecosystemInfo: {
+      name: "EcosystemInfo",
       requestType: EcosystemInfoRequest,
       requestStream: false,
       responseType: EcosystemInfoResponse,
