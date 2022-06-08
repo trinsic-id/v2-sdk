@@ -311,12 +311,14 @@ def update_dart():
 
 def update_typescript():
     language_path = get_language_dir("web")
+    install_cmds = [
+        "npm install",
+        "pwsh ./Generate-Proto.ps1",
+        "prettier --write **/*.ts",
+    ]
 
-    subprocess.Popen(
-        args=f"prettier --write **/*.ts",
-        cwd=language_path,
-        shell=True,
-    ).wait()
+    for install_cmd in install_cmds:
+        subprocess.Popen(install_cmd, cwd=language_path, shell=True).wait()
 
 
 def update_none() -> None:

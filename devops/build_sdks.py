@@ -63,6 +63,12 @@ def clean_dir(language_dir: str) -> None:
     os.mkdir(language_dir)
 
 
+def remove_subdirs(base_dir: str) -> None:
+    sub_dirs = [f.path for f in os.scandir(base_dir) if f.is_dir()]
+    for folder in sub_dirs:
+        clean_dir(folder)
+
+
 def update_line(file_name: str, replace_lines: Dict[str, str]) -> None:
     with open(file_name, "r") as fid:
         file_lines = fid.readlines()
