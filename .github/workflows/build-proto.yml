@@ -55,9 +55,8 @@ jobs:
         run: |
           python ./devops/generate_proto_files.py --language=all
           git checkout -b "${{ github.head_ref }}-generated-protos"
-
-          if [ -n "$(git status --porcelain)" ]; then
-            git add .
+          git add .
+          if [ $(git diff --exit-code) -eq 1 ]; then
             git commit -m "Generated code from proto files"
             git push --set-upstream origin "${{ github.head_ref }}-generated-protos"
             echo ${{ secrets.GITHUB_TOKEN }} | gh auth login --with-token
