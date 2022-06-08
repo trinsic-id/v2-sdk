@@ -177,10 +177,6 @@ input {
 .proto-method-tabs-marker+.tabbed-set {
     align-items: center;
 }
-/* For some reason a mystery <p/> is being generated, adding padding... get rid of it. */
-.proto-method-tabs-marker+.tabbed-set p:first-child {
-    display: none;
-}
 
 /* For sub-tabs of the Sample/Request/Response tabs (ie, the language tabs),
    make their font smaller. */

@@ -1,15 +1,20 @@
 
 # Template Service
 
-Credential Templates are JSON templates that help issuers save context when issuing credentials. 
+The Template Service allows you to manage and search [Credential Templates](/learn/templates).
 
-When issuing a credential through Trinsic, it's as simple as adding the attributes to the credential template and then issuing it. 
 
-These credential templates can be shared between issuers in an ecosystem. 
+!!! info "Templates are optional"
+    Templates are designed to be a helpful abstraction over the complexities of producing valid [JSON-LD Verifiable Credentials](https://www.w3.org/TR/vc-data-model/).
+
+    You aren't required to use templates; if you produce valid JSON-LD VCs yourself, they can be issued through Trinsic.
+
 
 ## Create Template
 
-Creates a new credential template. Once created, the template is saved in JSON-LD format that can be used to issue and verify credentials.
+Creates a new credential template.
+
+In the background, Trinsic will also generate and save a valid JSON-LD Context and schema for your template.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
@@ -54,9 +59,9 @@ Creates a new credential template. Once created, the template is saved in JSON-L
 
 {{ proto_method_tabs("services.verifiablecredentials.templates.v1.CredentialTemplates.Create") }}
 
-## Get
+## Get Template
 
-Get the specified credential template through the supplied template/definition ID.
+Fetches a template definition by `id`.
 
 {{ proto_sample_start() }}
 
@@ -95,63 +100,9 @@ Get the specified credential template through the supplied template/definition I
 
 {{ proto_method_tabs("services.verifiablecredentials.templates.v1.CredentialTemplates.Get") }}
 
-## Search / Query
+## Delete Template
 
-Querying template data in our SDK is enabled through the use of familiar SQL syntax. All data is stored in JSON-LD format, so it can be easily searched.
-This approach allows us to give developers full control over how data is retrieved. In addition to customizable sorting, paging and filtering, developers have the ability to construct projections, combine result sets, and even run user-defined functions over their queries.
-
-Template searching works very similarly to Wallet searching. Please refer to [Wallet Service > Search / Query](./wallet-service.md#search--query) for more information.
-
-### Basic Search
-
-The default query used in the commands below returns the first 100 items in the template result set. The query is `SELECT * FROM c OFFSET 0 LIMIT 100`.
-
-=== "Trinsic CLI"
-    ```bash
-    trinsic template search
-    ```
-
-### SQL Search
-
-To pass custom query to the search function, use the query parameter or the available overload.
-
-=== "Trinsic CLI"
-    ```bash
-    trinsic wallet search \
-        --query "SELECT * FROM c"
-    ```
-
-=== "C#"
-    <!--codeinclude-->
-    ```csharp
-    [CreateTemplate](../../../dotnet/Tests/Tests.cs) inside_block:searchCredentialTemplate
-    ```
-    <!--/codeinclude-->
-
-=== "Python"
-    <!--codeinclude-->
-    ```python
-    [CreateTemplate](../../../python/samples/templates_demo.py) inside_block:searchCredentialTemplate
-    ```
-    <!--/codeinclude-->
-
-=== "Go"
-    <!--codeinclude-->
-    ```golang
-    [Issue From Template](../../../go/services/credentialtemplate_service_test.go) inside_block:searchCredentialTemplate
-    ```
-    <!--/codeinclude-->
-
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    [IssueFromTemplate](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:searchCredentialTemplate
-    ```
-    <!--/codeinclude-->
-
-## Delete
-
-Deletes a credential template.
+Deletes a credential template by `id`.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
@@ -188,3 +139,78 @@ Deletes a credential template.
         <!--/codeinclude-->
 
 {{ proto_method_tabs("services.verifiablecredentials.templates.v1.CredentialTemplates.Delete") }}
+
+## Search Templates
+
+Searches all templates defined in the current ecosystem, and a `continuation_token` to paginate large result sets.
+
+If no `query` is specified, this call by default returns the first 100 templates.
+
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic wallet search \
+            --query "SELECT * FROM c"
+        ```
+
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [CreateTemplate](../../../dotnet/Tests/Tests.cs) inside_block:searchCredentialTemplate
+        ```
+        <!--/codeinclude-->
+
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [CreateTemplate](../../../python/samples/templates_demo.py) inside_block:searchCredentialTemplate
+        ```
+        <!--/codeinclude-->
+
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [Issue From Template](../../../go/services/credentialtemplate_service_test.go) inside_block:searchCredentialTemplate
+        ```
+        <!--/codeinclude-->
+
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [IssueFromTemplate](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:searchCredentialTemplate
+        ```
+        <!--/codeinclude-->
+
+{{ proto_method_tabs("services.verifiablecredentials.templates.v1.CredentialTemplates.Search") }}
+
+### Advanced Search
+
+The Search endpoint supports SQL queries through the `query` parameter.
+
+This allows for arbitrary query predicates, as well as more advanced functionality -- such as modifying the output format.
+
+#### Schema
+
+Any table name may be used in your query (we use `c` here) -- it doesn't matter what it is.
+
+
+| Name        | Type   | Description                                                                  |
+| ----------- | ------ | ---------------------------------------------------------------------------- |
+| id          | string | Corresponds to the `id` returned when template was created                   |
+| type        | string | Always `VerifiableCredential`                                                |
+| ecosystemId | string | ID of ecosystem in which template resides                                    |
+| createdBy   | string | ID of account which defined the template                                     |
+| name        | string | Name provided during template creation                                       |
+| schemaUri   | string | HTTPS URL pointing to JSON Schema generated by Trinsic for this template     |
+| contextUri  | string | HTTPS URL pointing to JSON-LD Context generated by Trinsic for this template |
+| version     | int    | Version of template; increments whenever template is modified.               |
+| fields      | object | JSON Object representing the template's fields                               |
+
+
+Note that `fields` is an object, not a string; thus, any of its sub-fields may be queried against.
+
+!!! info "More Info"
+
+    This endpoint works very similarly to querying Wallet items; please see [Wallet Service > Search](/reference/services/wallet-service/#advanced-search) for more information.
+
+

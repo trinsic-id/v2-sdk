@@ -1,22 +1,25 @@
 # Wallet Service
 
-The wallet service is the main interface for interacting with a cloud wallet. The service endpoints are designed to closely match the recommendations of the [Universal Wallet 2020 <small>:material-open-in-new:</small>](https://w3c-ccg.github.io/universal-wallet-interop-spec/){target=_blank} specification by W3C Community Credentials Group. The service exposes a gRPC interface and a set of data contracts as described in the specification. Our intention with this design is to bring it closer to interoperability as more implementations of this wallet appear in production.
+The wallet service is the main interface for interacting with a cloud wallet. 
 
 !!! question "Wallets vs Accounts"
     Wallets and accounts are related and often interchangeable -- each account has an associated wallet, and operations on a wallet are performed using an account's access token.
 
     Every account has exactly one wallet. 
 
+!!! info "Wallet Standard"
+    This service is designed to follow the recommendations of the [Universal Wallet 2020 <small>:material-open-in-new:</small>](https://w3c-ccg.github.io/universal-wallet-interop-spec/){target=_blank} specification by the W3C Community Credentials Group.
+
 
 ## Create Wallet
 
-Wallets can be created directly by the user or through an invitation by the ecosystem provider. Depending on the ecosystem settings, direct wallet creation may not be enabled for your provider. The wallet is created automatically upon user signin. For more information on that, see the link below:
+A wallet is created whenever an account is created.
 
-- [Account Sign In](./account-service.md#sign-in)
+Therefore, to create a wallet, you'll need to [create a new account](./account-service.md#sign-in).
 
 ## Insert Item
 
-Trinsic supports the ability to insert verifiable credentials into a wallet simply using JSON data.
+Stores a credential (or any other JSON object) in a wallet.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
@@ -61,18 +64,21 @@ Trinsic supports the ability to insert verifiable credentials into a wallet simp
 
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.InsertItem") }}
 
-The output of this method will be a unique `itemId` that can be used as input where required.
+!!! question "What can be stored in a wallet?"
+    
+    Wallets are mainly intended to hold [Verifiable Credentials](/learn/credentials){target=_blank}, but can technically
+    store any JSON blob.
 
-## Search / Query
+    If you store a Verifiable Credential in a Wallet, ensure that its `item_type` is `VerifiableCredential`.
 
-Querying wallet data in our SDK is enabled through the use of familiar SQL syntax. All data is stored in JSON-LD format, so it can be easily searched.
-This approach allows us to give developers full control over how data is retrieved. In addition to customizable sorting, paging and filtering, developers have the ability to construct projections, combine result sets, and even run user-defined functions over their queries.
+    Otherwise, ensure its `item_type` is _not_ `VerifiableCredential`.
 
-> This endpoint will support querying using [Verifiable Presentation Request Spec <small>:material-open-in-new:</small>](https://w3c-ccg.github.io/vp-request-spec/){target=_blank}. This feature is still in development.
 
-### Basic Search
+## Search Wallet
 
-The default query used in the commands below returns the first 100 items in the wallet result set. The query is `SELECT * FROM c OFFSET 0 LIMIT 100`.
+Searches a wallet, returning all matching items, and a `continuation_token` to paginate large result sets.
+
+If no `query` is specified, this call by default returns the first 100 items in the wallet.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
@@ -124,59 +130,39 @@ The default query used in the commands below returns the first 100 items in the 
     
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.Search") }}
 
-### SQL Search
 
-To pass custom query to the search function, use the query parameter or the available overload.
+!!! info "Verifiable Presentation Request Spec"
+    In the future, this endpoint will support the [Verifiable Presentation Request Spec <small>:material-open-in-new:</small>](https://w3c-ccg.github.io/vp-request-spec/){target=_blank}.
 
-=== "Trinsic CLI"
-    ```bash
-    trinsic wallet search \
-        --query "SELECT * FROM c WHERE c.type = 'VerifiableCredential'"
-    ```
+### Advanced Search
 
-=== "TypeScript"
-    <!--codeinclude-->
-    ```typescript
-    [VerifyProof](../../../web/test/WalletService.test.ts) inside_block:searchWalletSQL
-    ```
-    <!--/codeinclude-->
+The Search endpoint supports SQL queries through the `query` parameter.
 
-=== "C#"
-    <!--codeinclude-->
-    ```csharp
-    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:searchWalletSQL
-    ```
-    <!--/codeinclude-->
+This allows for arbitrary query predicates, as well as more advanced functionality -- such as modifying the output format.
 
-=== "Python"
-    <!--codeinclude-->
-    ```python
-    [Insert Item Wallet](../../../python/samples/wallet_demo.py) inside_block:searchWalletSQL
-    ```
-    <!--/codeinclude-->
+#### Schema
 
-=== "Go"
-    <!--codeinclude-->
-    ```golang
-    [RegisterIssuer](../../../go/services/services_test.go) inside_block:searchWalletSQL
-    ```
-    <!--/codeinclude-->
+Any table name may be used in your query (we use `c` here) -- it doesn't matter what it is.
 
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    [RegisterIssuer](../../../java/src/test/java/trinsic/WalletsDemo.java) inside_block:searchWalletSQL
-    ```
-    <!--/codeinclude-->
 
-=== "Ruby"
-    <!--codeinclude-->
-    ```ruby
-    
-    ```
-    <!--/codeinclude-->
+| Name | Type   | Description                                                               |
+| ---- | ------ | ------------------------------------------------------------------------- |
+| id   | string | Corresponds to the `item_id` returned when item was inserted into wallet  |
+| type | string | Specified via `item_type` when item was inserted into wallet              |
+| data | object | The JSON object passed via `item_json` when item was inserted into wallet |
 
-### Common SQL Queries
+
+Note that `data` is an object, not a string; thus, any of its sub-fields may be queried against.
+
+For example, `SELECT * FROM c WHERE c.data.someField = 'Hello, World!'` would match against the following JSON object inserted via [InsertItem](#insert-item):
+
+```json
+{ 
+    "someField": "Hello, World!"
+}
+```
+
+#### Common SQL Queries
 
 #### Paging
 
