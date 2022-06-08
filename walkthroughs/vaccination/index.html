@@ -2462,8 +2462,8 @@ trinsic vc issue-from-template --template-id <span class="o">{</span>TEMPLATE_ID
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Prepares values for credential</span>
-<span class="n">values</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">generate</span><span class="p">({</span> <span class="s2">&quot;firstName&quot;</span><span class="p">:</span> <span class="s1">&#39;Allison&#39;</span><span class="p">,</span> <span class="s2">&quot;lastName&quot;</span><span class="p">:</span> <span class="s1">&#39;Allisonne&#39;</span><span class="p">,</span> <span class="s2">&quot;batchNumber&quot;</span><span class="p">:</span> <span class="s1">&#39;123454321&#39;</span><span class="p">,</span>
-                         <span class="s2">&quot;countryOfVaccination&quot;</span><span class="p">:</span> <span class="s1">&#39;US&#39;</span> <span class="p">})</span>
+<span class="n">values</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">generate</span><span class="p">({</span> <span class="ss">firstName</span><span class="p">:</span> <span class="s1">&#39;Allison&#39;</span><span class="p">,</span> <span class="ss">lastName</span><span class="p">:</span> <span class="s1">&#39;Allisonne&#39;</span><span class="p">,</span> <span class="ss">batchNumber</span><span class="p">:</span> <span class="s1">&#39;123454321&#39;</span><span class="p">,</span>
+                         <span class="ss">countryOfVaccination</span><span class="p">:</span> <span class="s1">&#39;US&#39;</span> <span class="p">})</span>
 
 <span class="c1"># Issue credential</span>
 <span class="n">issue_response</span> <span class="o">=</span> <span class="n">credential_service</span><span class="o">.</span><span class="n">issue_from_template</span><span class="p">(</span><span class="no">Trinsic</span><span class="o">::</span><span class="no">Credentials_V1</span><span class="o">::</span><span class="no">IssueFromTemplateRequest</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
@@ -2731,7 +2731,9 @@ trinsic vc verify-proof --proof-document proof.json
 <div class="highlight"><pre><span></span><code><span class="c1"># The airline verifies the credential</span>
 <span class="n">credential_service</span><span class="o">.</span><span class="n">auth_token</span> <span class="o">=</span> <span class="n">airline</span>
 
-<span class="n">verify_result</span> <span class="o">=</span> <span class="n">credential_service</span><span class="o">.</span><span class="n">verify_proof</span><span class="p">(</span><span class="no">Trinsic</span><span class="o">::</span><span class="no">Credentials_V1</span><span class="o">::</span><span class="no">VerifyProofRequest</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">proof_document_json</span><span class="p">:</span> <span class="n">credential_proof</span><span class="p">))</span>
+<span class="n">verify_result</span> <span class="o">=</span> <span class="n">credential_service</span><span class="o">.</span><span class="n">verify_proof</span><span class="p">(</span>
+  <span class="no">Trinsic</span><span class="o">::</span><span class="no">Credentials_V1</span><span class="o">::</span><span class="no">VerifyProofRequest</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">proof_document_json</span><span class="p">:</span> <span class="n">credential_proof</span><span class="p">)</span>
+<span class="p">)</span>
 
 <span class="n">valid</span> <span class="o">=</span> <span class="n">verify_result</span><span class="o">.</span><span class="n">is_valid</span>
 </code></pre></div>
@@ -2784,7 +2786,7 @@ trinsic vc verify-proof --proof-document proof.json
   
     <div class="md-source-date">
       <small>
-          Authors: <span class='git-page-authors git-authors'><a href='mailto:josh@trinsic.id'>Joshua Coffey</a>, <a href='mailto:polygonguru@gmail.com'>Scott Phillips</a>, <a href='mailto:michaeldavisboyd@gmail.com'>Michael Boyd</a></span>
+          Authors: <span class='git-page-authors git-authors'><a href='mailto:polygonguru@gmail.com'>Scott Phillips</a>, <a href='mailto:josh@trinsic.id'>Joshua Coffey</a>, <a href='mailto:michaeldavisboyd@gmail.com'>Michael Boyd</a></span>
       </small>
     </div>
   
