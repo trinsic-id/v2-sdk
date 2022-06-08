@@ -58,7 +58,7 @@ jobs:
       - name: Commit Changes
         run: |
           if git diff --exit-code; then
-            return;
+            exit 0;
           fi
           git checkout -b "${{ github.head_ref }}-generated-protos"
           git add .
