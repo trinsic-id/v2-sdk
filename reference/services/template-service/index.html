@@ -1025,37 +1025,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#get" class="md-nav__link">
+  <a href="#get-template" class="md-nav__link">
     <span class="md-ellipsis">
-      Get
+      Get Template
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#search-query" class="md-nav__link">
+  <a href="#delete-template" class="md-nav__link">
     <span class="md-ellipsis">
-      Search / Query
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Search / Query">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#basic-search" class="md-nav__link">
-    <span class="md-ellipsis">
-      Basic Search
+      Delete Template
     </span>
   </a>
   
 </li>
+      
+        <li class="md-nav__item">
+  <a href="#search-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Search Templates
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Search Templates">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sql-search" class="md-nav__link">
+  <a href="#advanced-search" class="md-nav__link">
     <span class="md-ellipsis">
-      SQL Search
+      Advanced Search
     </span>
   </a>
   
@@ -1063,15 +1063,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#delete" class="md-nav__link">
-    <span class="md-ellipsis">
-      Delete
-    </span>
-  </a>
   
 </li>
       
@@ -1683,37 +1674,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#get" class="md-nav__link">
+  <a href="#get-template" class="md-nav__link">
     <span class="md-ellipsis">
-      Get
+      Get Template
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#search-query" class="md-nav__link">
+  <a href="#delete-template" class="md-nav__link">
     <span class="md-ellipsis">
-      Search / Query
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Search / Query">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#basic-search" class="md-nav__link">
-    <span class="md-ellipsis">
-      Basic Search
+      Delete Template
     </span>
   </a>
   
 </li>
+      
+        <li class="md-nav__item">
+  <a href="#search-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Search Templates
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Search Templates">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sql-search" class="md-nav__link">
+  <a href="#advanced-search" class="md-nav__link">
     <span class="md-ellipsis">
-      SQL Search
+      Advanced Search
     </span>
   </a>
   
@@ -1721,15 +1712,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#delete" class="md-nav__link">
-    <span class="md-ellipsis">
-      Delete
-    </span>
-  </a>
   
 </li>
       
@@ -1753,11 +1735,15 @@
 
 
 <h1 id="template-service">Template Service<a class="headerlink" href="#template-service" title="Permanent link">&para;</a></h1>
-<p>Credential Templates are JSON templates that help issuers save context when issuing credentials. </p>
-<p>When issuing a credential through Trinsic, it's as simple as adding the attributes to the credential template and then issuing it. </p>
-<p>These credential templates can be shared between issuers in an ecosystem. </p>
+<p>The Template Service allows you to manage and search <a href="/learn/templates">Credential Templates</a>.</p>
+<div class="admonition info">
+<p class="admonition-title">Templates are optional</p>
+<p>Templates are designed to be a helpful abstraction over the complexities of producing valid <a href="https://www.w3.org/TR/vc-data-model/">JSON-LD Verifiable Credentials</a>.</p>
+<p>You aren't required to use templates; if you produce valid JSON-LD VCs yourself, they can be issued through Trinsic.</p>
+</div>
 <h2 id="create-template">Create Template<a class="headerlink" href="#create-template" title="Permanent link">&para;</a></h2>
-<p>Creates a new credential template. Once created, the template is saved in JSON-LD format that can be used to issue and verify credentials.</p>
+<p>Creates a new credential template.</p>
+<p>In the background, Trinsic will also generate and save a valid JSON-LD Context and schema for your template.</p>
 <div class='proto-method-tabs-marker'></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_1_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_1_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
 <div class="tabbed-content">
@@ -1861,8 +1847,8 @@
 </div>
 </div>
 </div>
-<h2 id="get">Get<a class="headerlink" href="#get" title="Permanent link">&para;</a></h2>
-<p>Get the specified credential template through the supplied template/definition ID.</p>
+<h2 id="get-template">Get Template<a class="headerlink" href="#get-template" title="Permanent link">&para;</a></h2>
+<p>Fetches a template definition by <code>id</code>.</p>
 <div class='proto-method-tabs-marker'></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_3_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_3_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
 <div class="tabbed-content">
@@ -1905,62 +1891,13 @@
 </div>
 </div>
 </div>
-<h2 id="search-query">Search / Query<a class="headerlink" href="#search-query" title="Permanent link">&para;</a></h2>
-<p>Querying template data in our SDK is enabled through the use of familiar SQL syntax. All data is stored in JSON-LD format, so it can be easily searched.
-This approach allows us to give developers full control over how data is retrieved. In addition to customizable sorting, paging and filtering, developers have the ability to construct projections, combine result sets, and even run user-defined functions over their queries.</p>
-<p>Template searching works very similarly to Wallet searching. Please refer to <a href="../wallet-service/#search--query">Wallet Service &gt; Search / Query</a> for more information.</p>
-<h3 id="basic-search">Basic Search<a class="headerlink" href="#basic-search" title="Permanent link">&para;</a></h3>
-<p>The default query used in the commands below returns the first 100 items in the template result set. The query is <code>SELECT * FROM c OFFSET 0 LIMIT 100</code>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Trinsic CLI</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic template search
-</code></pre></div>
-</div>
-</div>
-</div>
-<h3 id="sql-search">SQL Search<a class="headerlink" href="#sql-search" title="Permanent link">&para;</a></h3>
-<p>To pass custom query to the search function, use the query parameter or the available overload.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:5"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Trinsic CLI</label><label for="__tabbed_6_2">C#</label><label for="__tabbed_6_3">Python</label><label for="__tabbed_6_4">Go</label><label for="__tabbed_6_5">Java</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic wallet search <span class="se">\</span>
-    --query <span class="s2">&quot;SELECT * FROM c&quot;</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">searchTemplateResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">templateService</span><span class="p">.</span><span class="n">SearchAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">Query</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;SELECT * FROM c&quot;</span><span class="p">});</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">search_template_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">template_service</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
-    <span class="n">request</span><span class="o">=</span><span class="n">SearchCredentialTemplatesRequest</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s2">&quot;SELECT * FROM c&quot;</span><span class="p">)</span>
-<span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">searchResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">templateService</span><span class="p">.</span><span class="nx">Search</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">template</span><span class="p">.</span><span class="nx">SearchCredentialTemplatesRequest</span><span class="p">{</span><span class="nx">Query</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;SELECT * FROM c&quot;</span><span class="p">})</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">searchResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">    </span><span class="n">templateService</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">search</span><span class="p">(</span><span class="w"></span>
-<span class="w">            </span><span class="n">Templates</span><span class="p">.</span><span class="na">SearchCredentialTemplatesRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">setQuery</span><span class="p">(</span><span class="s">&quot;SELECT * FROM c WHERE c.id = &#39;&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;&#39;&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<h2 id="delete">Delete<a class="headerlink" href="#delete" title="Permanent link">&para;</a></h2>
-<p>Deletes a credential template.</p>
+<h2 id="delete-template">Delete Template<a class="headerlink" href="#delete-template" title="Permanent link">&para;</a></h2>
+<p>Deletes a credential template by <code>id</code>.</p>
 <div class='proto-method-tabs-marker'></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:3"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_7_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_7_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_5_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_5_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="8:5"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><input id="__tabbed_8_4" name="__tabbed_8" type="radio" /><input id="__tabbed_8_5" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Trinsic CLI</label><label for="__tabbed_8_2">C#</label><label for="__tabbed_8_3">Python</label><label for="__tabbed_8_4">Go</label><label for="__tabbed_8_5">Java</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:5"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Trinsic CLI</label><label for="__tabbed_6_2">C#</label><label for="__tabbed_6_3">Python</label><label for="__tabbed_6_4">Go</label><label for="__tabbed_6_5">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic tamplate delete --id &lt;TEMPLATE_ID&gt;
@@ -1997,6 +1934,121 @@ This approach allows us to give developers full control over how data is retriev
 <p><div class='proto-obj-container' data-proto-name='services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse'><div class='proto-obj-name'><a name='services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse' href='/reference/proto#services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse'>DeleteCredentialTemplateResponse</a></div><div class='proto-obj-description'>Response to <code>DeleteCredentialTemplateRequest</code></div><i style='display:block; font-size: 0.65rem; margin-top: 0.5rem'>This message has no fields</i></div></p>
 </div>
 </div>
+</div>
+<h2 id="search-templates">Search Templates<a class="headerlink" href="#search-templates" title="Permanent link">&para;</a></h2>
+<p>Searches all templates defined in the current ecosystem, and a <code>continuation_token</code> to paginate large result sets.</p>
+<p>If no <code>query</code> is specified, this call by default returns the first 100 templates.</p>
+<div class='proto-method-tabs-marker'></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:3"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_7_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_7_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="8:5"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><input id="__tabbed_8_4" name="__tabbed_8" type="radio" /><input id="__tabbed_8_5" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Trinsic CLI</label><label for="__tabbed_8_2">C#</label><label for="__tabbed_8_3">Python</label><label for="__tabbed_8_4">Go</label><label for="__tabbed_8_5">Java</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>trinsic wallet search <span class="se">\</span>
+    --query <span class="s2">&quot;SELECT * FROM c&quot;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">searchTemplateResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">templateService</span><span class="p">.</span><span class="n">SearchAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">Query</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;SELECT * FROM c&quot;</span><span class="p">});</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">search_template_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">template_service</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
+    <span class="n">request</span><span class="o">=</span><span class="n">SearchCredentialTemplatesRequest</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s2">&quot;SELECT * FROM c&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nx">searchResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">templateService</span><span class="p">.</span><span class="nx">Search</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">template</span><span class="p">.</span><span class="nx">SearchCredentialTemplatesRequest</span><span class="p">{</span><span class="nx">Query</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;SELECT * FROM c&quot;</span><span class="p">})</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">searchResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="n">templateService</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">search</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">Templates</span><span class="p">.</span><span class="na">SearchCredentialTemplatesRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">setQuery</span><span class="p">(</span><span class="s">&quot;SELECT * FROM c WHERE c.id = &#39;&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;&#39;&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest'><div class='proto-obj-name'><a name='services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest' href='/reference/proto#services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest'>SearchCredentialTemplatesRequest</a></div><div class='proto-obj-description'>Request to search templates using a SQL query</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>query</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>SQL query to execute. Example: <code>SELECT * FROM c WHERE c.name = 'Diploma'</code></div></div><div class='proto-field'><div class='proto-field-name'>continuation_token</div> <div class='proto-field-type'>optional string</div><div class='proto-field-description'>Token provided by previous <code>SearchCredentialTemplatesResponse</code> if more data is available for query</div></div></div></div></p>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse'><div class='proto-obj-name'><a name='services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse' href='/reference/proto#services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse'>SearchCredentialTemplatesResponse</a></div><div class='proto-obj-description'>Response to <code>SearchCredentialTemplatesRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>items_json</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Raw JSON data returned from query</div></div><div class='proto-field'><div class='proto-field-name'>has_more</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>Whether more results are available for this query via <code>continuation_token</code></div></div><div class='proto-field'><div class='proto-field-name'>continuation_token</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Count of items in <code>items_json</code> int32 count = 3; unpopulated and unused Token to fetch next set of results via <code>SearchCredentialTemplatesRequest</code></div></div></div></div></p>
+</div>
+</div>
+</div>
+<h3 id="advanced-search">Advanced Search<a class="headerlink" href="#advanced-search" title="Permanent link">&para;</a></h3>
+<p>The Search endpoint supports SQL queries through the <code>query</code> parameter.</p>
+<p>This allows for arbitrary query predicates, as well as more advanced functionality -- such as modifying the output format.</p>
+<h4 id="schema">Schema<a class="headerlink" href="#schema" title="Permanent link">&para;</a></h4>
+<p>Any table name may be used in your query (we use <code>c</code> here) -- it doesn't matter what it is.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>Corresponds to the <code>id</code> returned when template was created</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Always <code>VerifiableCredential</code></td>
+</tr>
+<tr>
+<td>ecosystemId</td>
+<td>string</td>
+<td>ID of ecosystem in which template resides</td>
+</tr>
+<tr>
+<td>createdBy</td>
+<td>string</td>
+<td>ID of account which defined the template</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Name provided during template creation</td>
+</tr>
+<tr>
+<td>schemaUri</td>
+<td>string</td>
+<td>HTTPS URL pointing to JSON Schema generated by Trinsic for this template</td>
+</tr>
+<tr>
+<td>contextUri</td>
+<td>string</td>
+<td>HTTPS URL pointing to JSON-LD Context generated by Trinsic for this template</td>
+</tr>
+<tr>
+<td>version</td>
+<td>int</td>
+<td>Version of template; increments whenever template is modified.</td>
+</tr>
+<tr>
+<td>fields</td>
+<td>object</td>
+<td>JSON Object representing the template's fields</td>
+</tr>
+</tbody>
+</table>
+<p>Note that <code>fields</code> is an object, not a string; thus, any of its sub-fields may be queried against.</p>
+<div class="admonition info">
+<p class="admonition-title">More Info</p>
+<p>This endpoint works very similarly to querying Wallet items; please see <a href="/reference/services/wallet-service/#advanced-search">Wallet Service &gt; Search</a> for more information.</p>
 </div>
 
 
