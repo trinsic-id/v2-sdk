@@ -54,13 +54,15 @@ jobs:
       - name: Compile proto files
         run: |
           python ./devops/generate_proto_files.py --language=all
+
+      - name: Commit Changes
+        run: |
+          if git diff --exit-code; then
+            return;
+          fi
           git checkout -b "${{ github.head_ref }}-generated-protos"
           git add .
-          if ! git diff --exit-code; then
-            git commit -m "Generated code from proto files"
-            git push --set-upstream origin "${{ github.head_ref }}-generated-protos"
-            echo ${{ secrets.GITHUB_TOKEN }} | gh auth login --with-token
-            gh pr create --base ${{ github.head_ref }} --title "Generated Protos for ${{ github.head_ref }}" --body "Generated files from proto"
-          else
-            echo "no changes to commit - exiting";
-          fi
+          git commit -m "Generated code from proto files"
+          git push --set-upstream origin "${{ github.head_ref }}-generated-protos"
+          echo ${{ secrets.GITHUB_TOKEN }} | gh auth login --with-token
+          gh pr create --base ${{ github.head_ref }} --title "Generated Protos for ${{ github.head_ref }}" --body "Generated files from proto"
