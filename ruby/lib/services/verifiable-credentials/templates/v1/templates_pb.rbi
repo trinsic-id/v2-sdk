@@ -2,11 +2,6 @@
 # source: services/verifiable-credentials/templates/v1/templates.proto
 # typed: strict
 
-module Services; end
-module Services::Verifiablecredentials; end
-module Services::Verifiablecredentials::Templates; end
-module Services::Verifiablecredentials::Templates::V1; end
-
 class Services::Verifiablecredentials::Templates::V1::GetCredentialTemplateRequest
   include Google::Protobuf
   include Google::Protobuf::MessageExts
@@ -536,6 +531,9 @@ class Services::Verifiablecredentials::Templates::V1::DeleteCredentialTemplateRe
   def self.descriptor
   end
 
+  sig {void}
+  def initialize; end
+
   sig { params(field: String).returns(T.untyped) }
   def [](field)
   end
@@ -929,6 +927,9 @@ class Services::Verifiablecredentials::Templates::V1::ListTemplatesRequest
   sig { returns(Google::Protobuf::Descriptor) }
   def self.descriptor
   end
+
+  sig {void}
+  def initialize; end
 
   sig { params(field: String).returns(T.untyped) }
   def [](field)

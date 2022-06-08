@@ -3,14 +3,15 @@
 require 'services/service_base'
 
 module Trinsic
+  # Wallet Service wrapper
   class WalletService < ServiceBase
     def initialize(service_options = nil)
       super(service_options)
       if @service_options.server_use_tls
         channel_creds = GRPC::Core::ChannelCredentials.new
-        @client = Wallet_V1::UniversalWallet::Stub.new(get_url, channel_creds)
+        @client = Wallet_V1::UniversalWallet::Stub.new(url_string, channel_creds)
       else
-        @client = Wallet_V1::UniversalWallet::Stub.new(get_url, :this_channel_is_insecure)
+        @client = Wallet_V1::UniversalWallet::Stub.new(url_string, :this_channel_is_insecure)
       end
     end
 

@@ -15,6 +15,7 @@ module Trinsic
     end
   end
 
+  # Oberon security
   class OberonSecurityProvider
     include ISecurityProvider
 
@@ -22,6 +23,8 @@ module Trinsic
       Base64.urlsafe_encode64(Google::Protobuf.encode(message))
     end
 
+    # rubocop:disable Metrics/MethodLength
+    # rubocop:disable Metrics/AbcSize
     def get_auth_header(account_profile, message)
       raise 'The token must be unprotected before use' if account_profile.protection.enabled
 
@@ -36,7 +39,10 @@ module Trinsic
       proof = Okapi::Oberon.create_proof(request)
 
       # Convert to base-64
-      "Oberon ver=1,proof=#{Base64.urlsafe_encode64(proof.proof)},data=#{Base64.urlsafe_encode64(account_profile.auth_data)},nonce=#{base64_binary_encode(nonce)}"
+      "Oberon ver=1,proof=#{Base64.urlsafe_encode64(proof.proof)},data=#{
+Base64.urlsafe_encode64(account_profile.auth_data)},nonce=#{base64_binary_encode(nonce)}"
     end
+    # rubocop:enable Metrics/MethodLength Metrics/AbcSize
+    # rubocop:enable Metrics/AbcSize
   end
 end

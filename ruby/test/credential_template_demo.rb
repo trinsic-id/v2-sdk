@@ -7,6 +7,7 @@ require 'services/credential_template_service'
 require 'json'
 require 'securerandom'
 
+# rubocop:disable Metrics/MethodLength Metrics/AbcSize Metrics/CyclomaticComplexity
 def credential_template_demo_run
   account_service = Trinsic::AccountService.new(Trinsic.trinsic_server)
   account = account_service.sign_in
@@ -29,7 +30,7 @@ def credential_template_demo_run
   raise 'template data schema uri should not be nil' if template.data.schema_uri.nil?
 
   # issue credential from this template
-  values = JSON.generate({ 'firstName': 'Jane', 'lastName': 'Doe', 'age': 42 })
+  values = JSON.generate({ firstName: 'Jane', lastName: 'Doe', age: 42 })
   credential_json = credential_service.issue_from_template(Trinsic::Credentials_V1::IssueFromTemplateRequest.new(
                                                              template_id: template.data.id, values_json: values
                                                            ))
@@ -40,5 +41,6 @@ def credential_template_demo_run
   raise 'json document has `id` key' unless json_document.key?('id')
   raise 'json document has `credentialSubject` key' unless json_document.key?('credentialSubject')
 end
+# rubocop:enable Metrics/MethodLength
 
 credential_template_demo_run

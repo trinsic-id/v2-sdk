@@ -15,14 +15,8 @@ def ecosystem_demo_run
                                            ))
   raise 'ecosystem should be created' if actual_create.ecosystem.nil?
   raise 'ecosystem id should exist' if actual_create.ecosystem.id.nil?
-  unless actual_create.ecosystem.id.start_with?('urn:trinsic:ecosystems:')
-    raise "expected urn prefix='urn:trinsic:ecosystems:'"
-  end
+  return if actual_create.ecosystem.id.start_with?('urn:trinsic:ecosystems:')
 
-  # test list ecosystems
-  # actual_list = service.list_ecosystems
-  # assert(actual_list.nil? == false)
-  # assert(actual_list.length > 0)
+  raise "expected urn prefix='urn:trinsic:ecosystems:'"
 end
-
 ecosystem_demo_run

@@ -2,10 +2,6 @@
 # source: services/trust-registry/v1/trust-registry.proto
 # typed: strict
 
-module Services; end
-module Services::Trustregistry; end
-module Services::Trustregistry::V1; end
-
 class Services::Trustregistry::V1::AddFrameworkRequest
   include Google::Protobuf
   include Google::Protobuf::MessageExts
@@ -266,6 +262,9 @@ class Services::Trustregistry::V1::RemoveFrameworkResponse
   sig { returns(Google::Protobuf::Descriptor) }
   def self.descriptor
   end
+
+  sig {void}
+  def initialize; end
 
   sig { params(field: String).returns(T.untyped) }
   def [](field)
@@ -703,6 +702,9 @@ class Services::Trustregistry::V1::RegisterMemberResponse
   def self.descriptor
   end
 
+  sig {void}
+  def initialize; end
+
   sig { params(field: String).returns(T.untyped) }
   def [](field)
   end
@@ -860,6 +862,9 @@ class Services::Trustregistry::V1::UnregisterMemberResponse
   sig { returns(Google::Protobuf::Descriptor) }
   def self.descriptor
   end
+
+  sig {void}
+  def initialize; end
 
   sig { params(field: String).returns(T.untyped) }
   def [](field)

@@ -2,10 +2,6 @@
 # source: services/account/v1/account.proto
 # typed: strict
 
-module Services; end
-module Services::Account; end
-module Services::Account::V1; end
-
 class Services::Account::V1::SignInRequest
   include Google::Protobuf
   include Google::Protobuf::MessageExts
@@ -457,6 +453,9 @@ class Services::Account::V1::AccountInfoRequest
   def self.descriptor
   end
 
+  sig {void}
+  def initialize; end
+
   sig { params(field: String).returns(T.untyped) }
   def [](field)
   end
@@ -639,6 +638,9 @@ class Services::Account::V1::ListDevicesRequest
   def self.descriptor
   end
 
+  sig {void}
+  def initialize; end
+
   sig { params(field: String).returns(T.untyped) }
   def [](field)
   end
@@ -676,6 +678,9 @@ class Services::Account::V1::ListDevicesResponse
   sig { returns(Google::Protobuf::Descriptor) }
   def self.descriptor
   end
+
+  sig {void}
+  def initialize; end
 
   sig { params(field: String).returns(T.untyped) }
   def [](field)
@@ -715,6 +720,9 @@ class Services::Account::V1::RevokeDeviceRequest
   def self.descriptor
   end
 
+  sig {void}
+  def initialize; end
+
   sig { params(field: String).returns(T.untyped) }
   def [](field)
   end
@@ -752,6 +760,9 @@ class Services::Account::V1::RevokeDeviceResponse
   sig { returns(Google::Protobuf::Descriptor) }
   def self.descriptor
   end
+
+  sig {void}
+  def initialize; end
 
   sig { params(field: String).returns(T.untyped) }
   def [](field)
@@ -1252,6 +1263,9 @@ class Services::Account::V1::AuthorizeWebhookResponse
   sig { returns(Google::Protobuf::Descriptor) }
   def self.descriptor
   end
+
+  sig {void}
+  def initialize; end
 
   sig { params(field: String).returns(T.untyped) }
   def [](field)

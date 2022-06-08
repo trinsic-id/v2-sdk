@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description   = 'Ruby language wrapper for the Trinsic services. Documentation site is here: https://docs-v2.trinsic.id/'
   spec.homepage      = 'https://github.com/trinsic-id/sdk'
   spec.license       = 'MIT'
-  spec.required_ruby_version = Gem::Requirement.new('>= 2.5.0')
+  spec.required_ruby_version = Gem::Requirement.new('>= 2.6.0')
 
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = 'https://github.com/trinsic-id/sdk/ruby'
@@ -38,4 +38,5 @@ Gem::Specification.new do |spec|
   # spec.add_development_dependency 'rbs', '~> 1.6'
   spec.add_development_dependency 'simplecov', '~> 0.21'
   spec.add_development_dependency 'simplecov-cobertura', '~> 1.4'
+  spec.metadata['rubygems_mfa_required'] = 'true'
 end

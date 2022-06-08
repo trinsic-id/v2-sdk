@@ -2,62 +2,81 @@
 # sources: services/universal-wallet/v1/universal-wallet.proto
 # plugin: python-betterproto
 from dataclasses import dataclass
-from typing import Dict, List
+from typing import (
+    TYPE_CHECKING,
+    Dict,
+    List,
+    Optional,
+)
 
 import betterproto
-from betterproto.grpc.grpclib_server import ServiceBase
 import grpclib
+from betterproto.grpc.grpclib_server import ServiceBase
+
+
+if TYPE_CHECKING:
+    from betterproto.grpc.grpclib_client import MetadataLike
+    from grpclib.metadata import Deadline
 
 
 @dataclass(eq=False, repr=False)
 class SearchRequest(betterproto.Message):
     """Request to search items in wallet"""
 
-    # SQL Query to execute against items in wallet
     query: str = betterproto.string_field(1)
-    # Token provided by previous `SearchResponse` if more data is available for
-    # query
+    """SQL Query to execute against items in wallet"""
+
     continuation_token: str = betterproto.string_field(2)
+    """
+    Token provided by previous `SearchResponse` if more data is available for
+    query
+    """
 
 
 @dataclass(eq=False, repr=False)
 class SearchResponse(betterproto.Message):
     """Response to `SearchRequest`"""
 
-    # Array of query results, as JSON strings
     items: List[str] = betterproto.string_field(1)
-    # Whether more results are available for this query via `continuation_token`
+    """Array of query results, as JSON strings"""
+
     has_more: bool = betterproto.bool_field(2)
-    # Token to fetch next set of results via `SearchRequest`
+    """
+    Whether more results are available for this query via `continuation_token`
+    """
+
     continuation_token: str = betterproto.string_field(4)
+    """Token to fetch next set of results via `SearchRequest`"""
 
 
 @dataclass(eq=False, repr=False)
 class GetItemRequest(betterproto.Message):
     """Request to fetch an item from wallet"""
 
-    # ID of item in wallet
     item_id: str = betterproto.string_field(1)
+    """ID of item in wallet"""
 
 
 @dataclass(eq=False, repr=False)
 class GetItemResponse(betterproto.Message):
     """Response to `GetItemRequest`"""
 
-    # Item data as a JSON string
     item_json: str = betterproto.string_field(1)
-    # Type of item specified when item was inserted into wallet
+    """Item data as a JSON string"""
+
     item_type: str = betterproto.string_field(2)
+    """Type of item specified when item was inserted into wallet"""
 
 
 @dataclass(eq=False, repr=False)
 class UpdateItemRequest(betterproto.Message):
     """Request to update item in wallet"""
 
-    # ID of item in wallet
     item_id: str = betterproto.string_field(1)
-    # Item type (ex. "VerifiableCredential")
+    """ID of item in wallet"""
+
     item_type: str = betterproto.string_field(2)
+    """Item type (ex. "VerifiableCredential")"""
 
 
 @dataclass(eq=False, repr=False)
@@ -71,26 +90,27 @@ class UpdateItemResponse(betterproto.Message):
 class InsertItemRequest(betterproto.Message):
     """Request to insert a JSON document into a wallet"""
 
-    # Document to insert; must be stringified JSON
     item_json: str = betterproto.string_field(1)
-    # Item type (ex. "VerifiableCredential")
+    """Document to insert; must be stringified JSON"""
+
     item_type: str = betterproto.string_field(2)
+    """Item type (ex. "VerifiableCredential")"""
 
 
 @dataclass(eq=False, repr=False)
 class InsertItemResponse(betterproto.Message):
     """Response to `InsertItemRequest`"""
 
-    # ID of item inserted into wallet
     item_id: str = betterproto.string_field(2)
+    """ID of item inserted into wallet"""
 
 
 @dataclass(eq=False, repr=False)
 class DeleteItemRequest(betterproto.Message):
     """Request to delete an item in a wallet"""
 
-    # ID of item to delete
     item_id: str = betterproto.string_field(1)
+    """ID of item to delete"""
 
 
 @dataclass(eq=False, repr=False)
@@ -101,45 +121,84 @@ class DeleteItemResponse(betterproto.Message):
 
 
 class UniversalWalletStub(betterproto.ServiceStub):
-    async def get_item(self, get_item_request: "GetItemRequest") -> "GetItemResponse":
+    async def get_item(
+        self,
+        get_item_request: "GetItemRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "GetItemResponse":
         return await self._unary_unary(
             "/services.universalwallet.v1.UniversalWallet/GetItem",
             get_item_request,
             GetItemResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
-    async def search(self, search_request: "SearchRequest") -> "SearchResponse":
+    async def search(
+        self,
+        search_request: "SearchRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "SearchResponse":
         return await self._unary_unary(
             "/services.universalwallet.v1.UniversalWallet/Search",
             search_request,
             SearchResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def insert_item(
-        self, insert_item_request: "InsertItemRequest"
+        self,
+        insert_item_request: "InsertItemRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "InsertItemResponse":
         return await self._unary_unary(
             "/services.universalwallet.v1.UniversalWallet/InsertItem",
             insert_item_request,
             InsertItemResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def update_item(
-        self, update_item_request: "UpdateItemRequest"
+        self,
+        update_item_request: "UpdateItemRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "UpdateItemResponse":
         return await self._unary_unary(
             "/services.universalwallet.v1.UniversalWallet/UpdateItem",
             update_item_request,
             UpdateItemResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def delete_item(
-        self, delete_item_request: "DeleteItemRequest"
+        self,
+        delete_item_request: "DeleteItemRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "DeleteItemResponse":
         return await self._unary_unary(
             "/services.universalwallet.v1.UniversalWallet/DeleteItem",
             delete_item_request,
             DeleteItemResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
 

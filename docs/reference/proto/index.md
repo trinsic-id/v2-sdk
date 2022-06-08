@@ -25,7 +25,7 @@ Configuration for Trinsic SDK Services
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| server_endpoint | [string](/reference/proto#string) | Trinsic API endpoint; defaults to `prod.trinsic.cloud` |
+| server_endpoint | [string](/reference/proto#string) | Trinsic API endpoint. Defaults to `prod.trinsic.cloud` |
 | server_port | [int32](/reference/proto#int32) | Trinsic API port; defaults to `443` |
 | server_use_tls | [bool](/reference/proto#bool) | Whether TLS is enabled between SDK and Trinsic API; defaults to `true` |
 | auth_token | [string](/reference/proto#string) | Authentication token for SDK calls; defaults to empty string (unauthenticated) |
@@ -43,312 +43,274 @@ Configuration for Trinsic SDK Services
 
 
 
-<a name="services_account_v1_account-proto"></a>
+<a name="services_verifiable-credentials_v1_verifiable-credentials-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## services/account/v1/account.proto
+## services/verifiable-credentials/v1/verifiable-credentials.proto
 
 
 
-<a name="services-account-v1-Account"></a>
+<a name="services-verifiablecredentials-v1-VerifiableCredential"></a>
 
-### Service - Account
+### Service - VerifiableCredential
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| SignIn | [SignInRequest](/reference/proto#services-account-v1-SignInRequest) | [SignInResponse](/reference/proto#services-account-v1-SignInResponse) | Sign in to an already existing account |
-| Login | [LoginRequest](/reference/proto#services-account-v1-LoginRequest) | [LoginResponse](/reference/proto#services-account-v1-LoginResponse) | Login to account. If account doesn't exist, new will be created |
-| LoginConfirm | [LoginConfirmRequest](/reference/proto#services-account-v1-LoginConfirmRequest) | [LoginConfirmResponse](/reference/proto#services-account-v1-LoginConfirmResponse) | Confirm login step by responding to the challenge request |
-| Info | [AccountInfoRequest](/reference/proto#services-account-v1-AccountInfoRequest) | [AccountInfoResponse](/reference/proto#services-account-v1-AccountInfoResponse) | Get account information |
-| ListDevices | [ListDevicesRequest](/reference/proto#services-account-v1-ListDevicesRequest) | [ListDevicesResponse](/reference/proto#services-account-v1-ListDevicesResponse) | List all connected devices |
-| RevokeDevice | [RevokeDeviceRequest](/reference/proto#services-account-v1-RevokeDeviceRequest) | [RevokeDeviceResponse](/reference/proto#services-account-v1-RevokeDeviceResponse) | Revoke device access to the account's cloud wallet |
-| AuthorizeWebhook | [AuthorizeWebhookRequest](/reference/proto#services-account-v1-AuthorizeWebhookRequest) | [AuthorizeWebhookResponse](/reference/proto#services-account-v1-AuthorizeWebhookResponse) | Authorize Ecosystem to receive webhook events |
+| Issue | [IssueRequest](/reference/proto#services-verifiablecredentials-v1-IssueRequest) | [IssueResponse](/reference/proto#services-verifiablecredentials-v1-IssueResponse) | Sign and issue a verifiable credential from a submitted document. The document must be a valid JSON-LD document. |
+| IssueFromTemplate | [IssueFromTemplateRequest](/reference/proto#services-verifiablecredentials-v1-IssueFromTemplateRequest) | [IssueFromTemplateResponse](/reference/proto#services-verifiablecredentials-v1-IssueFromTemplateResponse) | Sign and issue a verifiable credential from a pre-defined template. This process will also add schema validation and revocation registry entry in the credential. |
+| CheckStatus | [CheckStatusRequest](/reference/proto#services-verifiablecredentials-v1-CheckStatusRequest) | [CheckStatusResponse](/reference/proto#services-verifiablecredentials-v1-CheckStatusResponse) | Check credential status in the revocation registry |
+| UpdateStatus | [UpdateStatusRequest](/reference/proto#services-verifiablecredentials-v1-UpdateStatusRequest) | [UpdateStatusResponse](/reference/proto#services-verifiablecredentials-v1-UpdateStatusResponse) | Update credential status by setting the revocation value |
+| CreateProof | [CreateProofRequest](/reference/proto#services-verifiablecredentials-v1-CreateProofRequest) | [CreateProofResponse](/reference/proto#services-verifiablecredentials-v1-CreateProofResponse) | Create a proof from a signed document that is a valid verifiable credential and contains a signature from which a proof can be derived. |
+| VerifyProof | [VerifyProofRequest](/reference/proto#services-verifiablecredentials-v1-VerifyProofRequest) | [VerifyProofResponse](/reference/proto#services-verifiablecredentials-v1-VerifyProofResponse) | Verifies a proof by checking the signature value, and if possible schema validation, revocation status, and issuer status against a trust registry |
+| Send | [SendRequest](/reference/proto#services-verifiablecredentials-v1-SendRequest) | [SendResponse](/reference/proto#services-verifiablecredentials-v1-SendResponse) | Sends a document directly to a user's email within the given ecosystem |
 
  <!-- end services -->
 
 
-<a name="services-account-v1-AccountDetails"></a>
+<a name="services-verifiablecredentials-v1-CheckStatusRequest"></a>
 
-### AccountDetails
-Account registration details
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| name | [string](/reference/proto#string) | Account name |
-| email | [string](/reference/proto#string) | Email account |
-| sms | [string](/reference/proto#string) | SMS number including country code |
-
-
-
-
-
-
-<a name="services-account-v1-AccountEcosystem"></a>
-
-### AccountEcosystem
-
+### CheckStatusRequest
+Request to check a credential's revocation status
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) |  |
-| name | [string](/reference/proto#string) |  |
-| description | [string](/reference/proto#string) |  |
-| uri | [string](/reference/proto#string) |  |
+| credential_status_id | [string](/reference/proto#string) | Credential Status ID to check |
 
 
 
 
 
 
-<a name="services-account-v1-AccountInfoRequest"></a>
+<a name="services-verifiablecredentials-v1-CheckStatusResponse"></a>
 
-### AccountInfoRequest
-Request for information about the account used to make the request
-
-
-
-
-
-
-<a name="services-account-v1-AccountInfoResponse"></a>
-
-### AccountInfoResponse
-Information about the account used to make the request
+### CheckStatusResponse
+Response to `CheckStatusRequest`
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| details | [AccountDetails](/reference/proto#services-account-v1-AccountDetails) | The account details associated with the calling request context |
-| ecosystems | [AccountEcosystem](/reference/proto#services-account-v1-AccountEcosystem)[] | **Deprecated.** Use `ecosystem_id` instead |
-| wallet_id | [string](/reference/proto#string) | The wallet ID associated with this account |
-| device_id | [string](/reference/proto#string) | The device ID associated with this account session |
-| ecosystem_id | [string](/reference/proto#string) | The ecosystem ID within which this account resides |
-| public_did | [string](/reference/proto#string) | The public DID associated with this account. This DID is used as "issuer" when signing verifiable credentials |
-| authorized_webhooks | [string](/reference/proto#string)[] | Webhook events if any this wallet has authorized |
+| revoked | [bool](/reference/proto#bool) | The credential's revocation status |
 
 
 
 
 
 
-<a name="services-account-v1-AccountProfile"></a>
+<a name="services-verifiablecredentials-v1-CreateProofRequest"></a>
 
-### AccountProfile
-Device profile containing sensitive authentication data.
-This information should be stored securely
+### CreateProofRequest
+Request to create a proof for a Verifiable Credential using public key tied to caller.
+Either `item_id` or `document_json` may be provided, not both.
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| profile_type | [string](/reference/proto#string) | The type of profile, used to differentiate between protocol schemes or versions |
-| auth_data | [bytes](/reference/proto#bytes) | Auth data containg information about the current device access |
-| auth_token | [bytes](/reference/proto#bytes) | Secure token issued by server used to generate zero-knowledge proofs |
-| protection | [TokenProtection](/reference/proto#services-account-v1-TokenProtection) | Token security information about the token. If token protection is enabled, implementations must supply protection secret before using the token for authentication. |
+| reveal_document_json | [string](/reference/proto#string) | A valid JSON-LD frame describing which fields should be revealed in the generated proof. If unspecified, all fields in the document will be revealed |
+| item_id | [string](/reference/proto#string) | ID of wallet item stored in a Trinsic cloud wallet |
+| document_json | [string](/reference/proto#string) | A valid JSON-LD Verifiable Credential document string with an unbound signature. The proof will be derived from this document directly. The document will not be stored in the wallet. |
 
 
 
 
 
 
-<a name="services-account-v1-AuthorizeWebhookRequest"></a>
+<a name="services-verifiablecredentials-v1-CreateProofResponse"></a>
 
-### AuthorizeWebhookRequest
-Authorize ecosystem to receive wallet events
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| events | [string](/reference/proto#string)[] | Events to authorize access to. Default is "*" (all events) |
-
-
-
-
-
-
-<a name="services-account-v1-AuthorizeWebhookResponse"></a>
-
-### AuthorizeWebhookResponse
-Response to `AuthorizeWebhookRequest`
-
-
-
-
-
-
-<a name="services-account-v1-ListDevicesRequest"></a>
-
-### ListDevicesRequest
-
-
-
-
-
-
-
-<a name="services-account-v1-ListDevicesResponse"></a>
-
-### ListDevicesResponse
-
-
-
-
-
-
-
-<a name="services-account-v1-LoginConfirmRequest"></a>
-
-### LoginConfirmRequest
-
+### CreateProofResponse
+Response to `CreateProofRequest`
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| challenge | [bytes](/reference/proto#bytes) | Login challenge received during the Login call |
-| confirmation_code_hashed | [bytes](/reference/proto#bytes) | Confirmation code received in email or SMS hashed using Blake3 |
+| proof_document_json | [string](/reference/proto#string) | Valid JSON-LD proof for the specified credential |
 
 
 
 
 
 
-<a name="services-account-v1-LoginConfirmResponse"></a>
+<a name="services-verifiablecredentials-v1-IssueFromTemplateRequest"></a>
 
-### LoginConfirmResponse
+### IssueFromTemplateRequest
+Request to create and sign a JSON-LD Verifiable Credential from a template using public key tied to caller
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| template_id | [string](/reference/proto#string) | ID of template to use |
+| values_json | [string](/reference/proto#string) | JSON document string with keys corresponding to the fields of the template referenced by `template_id` |
+| framework_id | [string](/reference/proto#string) | Governance framework ID to use with issuance of this credential. If specified, the issued credential will contain extended issuer metadata with membership info for the given ecosystem governance framework (EGF) |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-IssueFromTemplateResponse"></a>
+
+### IssueFromTemplateResponse
+Response to `IssueFromTemplateRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| document_json | [string](/reference/proto#string) | Verifiable Credential document, in JSON-LD form, constructed from the specified template and values; signed with public key tied to caller of `IssueFromTemplateRequest` |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-IssueRequest"></a>
+
+### IssueRequest
+Request to sign a JSON-LD Credential using public key tied to caller
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| document_json | [string](/reference/proto#string) | Valid JSON-LD Credential document to be signed, in string form |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-IssueResponse"></a>
+
+### IssueResponse
+Response to `IssueRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| signed_document_json | [string](/reference/proto#string) | Verifiable Credential document, signed with public key tied to caller of `IssueRequest` |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-SendRequest"></a>
+
+### SendRequest
+Request to send a document to another user's wallet
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| email | [string](/reference/proto#string) | Email address of user to send item to |
+| did_uri | [string](/reference/proto#string) | DID of recipient (presently unsupported) |
+| didcomm_invitation_json | [string](/reference/proto#string) | DIDComm out-of-band invitation JSON (presently unsupported) |
+| document_json | [string](/reference/proto#string) | JSON document to send to recipient |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-SendResponse"></a>
+
+### SendResponse
+Response to `SendRequest`
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-UpdateStatusRequest"></a>
+
+### UpdateStatusRequest
+Request to update a credential's revocation status
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| credential_status_id | [string](/reference/proto#string) | Credential Status ID to update |
+| revoked | [bool](/reference/proto#bool) | New revocation status of credential |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-UpdateStatusResponse"></a>
+
+### UpdateStatusResponse
+Response to `UpdateStatusRequest`
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-ValidationMessage"></a>
+
+### ValidationMessage
+Result of a validation check on a proof
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| is_valid | [bool](/reference/proto#bool) | Whether or not this validation check passed |
+| messages | [string](/reference/proto#string)[] | If validation failed, contains messages explaining why |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-VerifyProofRequest"></a>
+
+### VerifyProofRequest
+Request to verify a proof
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| proof_document_json | [string](/reference/proto#string) | JSON-LD proof document string to verify |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-VerifyProofResponse"></a>
+
+### VerifyProofResponse
+Response to `VerifyProofRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| is_valid | [bool](/reference/proto#bool) | Whether or not all validations in `validation_results` passed |
+| validation_messages | [string](/reference/proto#string)[] | **Deprecated.** Use `validation_results` instead |
+| validation_results | [VerifyProofResponse.ValidationResultsEntry](/reference/proto#services-verifiablecredentials-v1-VerifyProofResponse-ValidationResultsEntry)[] | Results of each validation check performed, such as schema conformance, revocation status, signature, etc. Detailed results are provided for failed validations. |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-v1-VerifyProofResponse-ValidationResultsEntry"></a>
+
+### VerifyProofResponse.ValidationResultsEntry
 
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| profile | [AccountProfile](/reference/proto#services-account-v1-AccountProfile) | Profile response. This profile may be protected and require unblinding/unprotection using the raw hashed code |
-
-
-
-
-
-
-<a name="services-account-v1-LoginRequest"></a>
-
-### LoginRequest
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| email | [string](/reference/proto#string) | Email account to associate with the login request |
-| invitation_code | [string](/reference/proto#string) | Invitation code associated with this registration |
-| ecosystem_id | [string](/reference/proto#string) | ID of Ecosystem to sign into. Ignored if `invitation_code` is passed |
-
-
-
-
-
-
-<a name="services-account-v1-LoginResponse"></a>
-
-### LoginResponse
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| challenge | [bytes](/reference/proto#bytes) | Challenge response. Random byte sequence unique for this login request |
-| profile | [AccountProfile](/reference/proto#services-account-v1-AccountProfile) | Profile response. The login isn't challenged and the token is returned in this call. Does not require confirmation step |
-
-
-
-
-
-
-<a name="services-account-v1-RevokeDeviceRequest"></a>
-
-### RevokeDeviceRequest
-
-
-
-
-
-
-
-<a name="services-account-v1-RevokeDeviceResponse"></a>
-
-### RevokeDeviceResponse
-
-
-
-
-
-
-
-<a name="services-account-v1-SignInRequest"></a>
-
-### SignInRequest
-Request for creating or signing into an account
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| details | [AccountDetails](/reference/proto#services-account-v1-AccountDetails) | Account registration details |
-| invitation_code | [string](/reference/proto#string) | Invitation code associated with this registration |
-| ecosystem_id | [string](/reference/proto#string) | ID of Ecosystem to use Ignored if `invitation_code` is passed |
-
-
-
-
-
-
-<a name="services-account-v1-SignInResponse"></a>
-
-### SignInResponse
-Response for creating new account
-This object will indicate if a confirmation code
-was sent to one of the users two-factor methods
-like email, SMS, etc.
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| confirmation_method | [ConfirmationMethod](/reference/proto#services-account-v1-ConfirmationMethod) | Indicates if confirmation of account is required. This settings is configured globally by the server administrator. |
-| profile | [AccountProfile](/reference/proto#services-account-v1-AccountProfile) | Contains authentication data for use with the current device. This object must be stored in a secure place. It can also be protected with a PIN, but this is optional. See the docs at https://docs.trinsic.id for more information on working with authentication data. |
-
-
-
-
-
-
-<a name="services-account-v1-TokenProtection"></a>
-
-### TokenProtection
-Token protection info
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| enabled | [bool](/reference/proto#bool) | Indicates if token is protected using a PIN, security code, HSM secret, etc. |
-| method | [ConfirmationMethod](/reference/proto#services-account-v1-ConfirmationMethod) | The method used to protect the token |
+| key | [string](/reference/proto#string) |  |
+| value | [ValidationMessage](/reference/proto#services-verifiablecredentials-v1-ValidationMessage) |  |
 
 
 
 
 
  <!-- end messages -->
-
-
-<a name="services-account-v1-ConfirmationMethod"></a>
-
-### ConfirmationMethod
-Confirmation method type for two-factor workflows
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| None | 0 | No confirmation required |
-| Email | 1 | Email confirmation required |
-| Sms | 2 | SMS confirmation required |
-| ConnectedDevice | 3 | Confirmation from a connected device is required |
-| Other | 10 | Indicates third-party method of confirmation is required |
-
 
  <!-- end enums -->
 
@@ -356,42 +318,304 @@ Confirmation method type for two-factor workflows
 
 
 
-<a name="services_common_v1_common-proto"></a>
+<a name="services_verifiable-credentials_templates_v1_templates-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## services/common/v1/common.proto
+## services/verifiable-credentials/templates/v1/templates.proto
 
+
+
+<a name="services-verifiablecredentials-templates-v1-CredentialTemplates"></a>
+
+### Service - CredentialTemplates
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| Create | [CreateCredentialTemplateRequest](/reference/proto#services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest) | [CreateCredentialTemplateResponse](/reference/proto#services-verifiablecredentials-templates-v1-CreateCredentialTemplateResponse) |  |
+| Get | [GetCredentialTemplateRequest](/reference/proto#services-verifiablecredentials-templates-v1-GetCredentialTemplateRequest) | [GetCredentialTemplateResponse](/reference/proto#services-verifiablecredentials-templates-v1-GetCredentialTemplateResponse) |  |
+| List | [ListCredentialTemplatesRequest](/reference/proto#services-verifiablecredentials-templates-v1-ListCredentialTemplatesRequest) | [ListCredentialTemplatesResponse](/reference/proto#services-verifiablecredentials-templates-v1-ListCredentialTemplatesResponse) |  |
+| Search | [SearchCredentialTemplatesRequest](/reference/proto#services-verifiablecredentials-templates-v1-SearchCredentialTemplatesRequest) | [SearchCredentialTemplatesResponse](/reference/proto#services-verifiablecredentials-templates-v1-SearchCredentialTemplatesResponse) |  |
+| Delete | [DeleteCredentialTemplateRequest](/reference/proto#services-verifiablecredentials-templates-v1-DeleteCredentialTemplateRequest) | [DeleteCredentialTemplateResponse](/reference/proto#services-verifiablecredentials-templates-v1-DeleteCredentialTemplateResponse) |  |
 
  <!-- end services -->
 
 
-<a name="services-common-v1-Nonce"></a>
+<a name="services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest"></a>
 
-### Nonce
-Nonce used to generate an oberon proof
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| timestamp | [int64](/reference/proto#int64) | UTC unix millisecond timestamp the request was made |
-| request_hash | [bytes](/reference/proto#bytes) | blake3256 hash of the request body |
-
-
-
-
-
-
-<a name="services-common-v1-ServerConfig"></a>
-
-### ServerConfig
-
+### CreateCredentialTemplateRequest
+Request to create a new template
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| endpoint | [string](/reference/proto#string) | service endpoint |
-| port | [int32](/reference/proto#int32) | service port |
-| use_tls | [bool](/reference/proto#bool) | indicates if tls is used |
+| name | [string](/reference/proto#string) | Name of new template |
+| fields | [CreateCredentialTemplateRequest.FieldsEntry](/reference/proto#services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest-FieldsEntry)[] | Fields which compose the template |
+| allow_additional_fields | [bool](/reference/proto#bool) | Whether credentials may be issued against this template which have fields not specified in `fields` |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest-FieldsEntry"></a>
+
+### CreateCredentialTemplateRequest.FieldsEntry
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [string](/reference/proto#string) |  |
+| value | [TemplateField](/reference/proto#services-verifiablecredentials-templates-v1-TemplateField) |  |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-CreateCredentialTemplateResponse"></a>
+
+### CreateCredentialTemplateResponse
+Response to `CreateCredentialTemplateRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| data | [TemplateData](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData) | Created template |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-DeleteCredentialTemplateRequest"></a>
+
+### DeleteCredentialTemplateRequest
+Request to delete a template by ID
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | ID of template to delete |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-DeleteCredentialTemplateResponse"></a>
+
+### DeleteCredentialTemplateResponse
+Response to `DeleteCredentialTemplateRequest`
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-GetCredentialTemplateRequest"></a>
+
+### GetCredentialTemplateRequest
+Request to fetch a template by ID
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | ID of template to fetch |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-GetCredentialTemplateResponse"></a>
+
+### GetCredentialTemplateResponse
+Response to `GetCredentialTemplateRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| template | [TemplateData](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData) | Template fetched by ID |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-GetTemplateRequest"></a>
+
+### GetTemplateRequest
+Unused
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) |  |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-GetTemplateResponse"></a>
+
+### GetTemplateResponse
+Unused
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| data | [TemplateData](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData) |  |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-ListCredentialTemplatesRequest"></a>
+
+### ListCredentialTemplatesRequest
+Request to list templates using a SQL query
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| query | [string](/reference/proto#string) | SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'` |
+| continuation_token | [string](/reference/proto#string) | Token provided by previous `ListCredentialTemplatesResponse` if more data is available for query |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-ListCredentialTemplatesResponse"></a>
+
+### ListCredentialTemplatesResponse
+Response to `ListCredentialTemplatesRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| templates | [TemplateData](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData)[] | Templates found by query |
+| has_more_results | [bool](/reference/proto#bool) | Whether more results are available for this query via `continuation_token` |
+| continuation_token | [string](/reference/proto#string) | Token to fetch next set of resuts via `ListCredentialTemplatesRequest` |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-ListTemplatesRequest"></a>
+
+### ListTemplatesRequest
+Unused
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-ListTemplatesResponse"></a>
+
+### ListTemplatesResponse
+Unused
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| templates | [TemplateData](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData)[] |  |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-SearchCredentialTemplatesRequest"></a>
+
+### SearchCredentialTemplatesRequest
+Request to search templates using a SQL query
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| query | [string](/reference/proto#string) | SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'` |
+| continuation_token | [string](/reference/proto#string) | Token provided by previous `SearchCredentialTemplatesResponse` if more data is available for query |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-SearchCredentialTemplatesResponse"></a>
+
+### SearchCredentialTemplatesResponse
+Response to `SearchCredentialTemplatesRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| items_json | [string](/reference/proto#string) | Raw JSON data returned from query |
+| has_more | [bool](/reference/proto#bool) | Whether more results are available for this query via `continuation_token` |
+| continuation_token | [string](/reference/proto#string) | Count of items in `items_json` int32 count = 3; unpopulated and unused Token to fetch next set of results via `SearchCredentialTemplatesRequest` |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-TemplateData"></a>
+
+### TemplateData
+Credential Template
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | Template ID |
+| name | [string](/reference/proto#string) | Template name |
+| version | [int32](/reference/proto#int32) | Template version number |
+| fields | [TemplateData.FieldsEntry](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData-FieldsEntry)[] | Fields defined for the template |
+| allow_additional_fields | [bool](/reference/proto#bool) | Whether credentials issued against this template may contain fields not defined by template |
+| schema_uri | [string](/reference/proto#string) | URI pointing to template JSON schema document |
+| context_uri | [string](/reference/proto#string) | URI pointing to template JSON-LD context document |
+| ecosystem_id | [string](/reference/proto#string) | ID of ecosystem in which template resides |
+| type | [string](/reference/proto#string) | Template type (`VerifiableCredential`) |
+| created_by | [string](/reference/proto#string) | ID of template creator |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-TemplateData-FieldsEntry"></a>
+
+### TemplateData.FieldsEntry
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| key | [string](/reference/proto#string) |  |
+| value | [TemplateField](/reference/proto#services-verifiablecredentials-templates-v1-TemplateField) |  |
+
+
+
+
+
+
+<a name="services-verifiablecredentials-templates-v1-TemplateField"></a>
+
+### TemplateField
+A field defined in a template
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| description | [string](/reference/proto#string) | Human-readable description of the field |
+| optional | [bool](/reference/proto#bool) | Whether this field may be omitted when a credential is issued against the template |
+| type | [FieldType](/reference/proto#services-verifiablecredentials-templates-v1-FieldType) | The type of the field |
 
 
 
@@ -400,19 +624,17 @@ Nonce used to generate an oberon proof
  <!-- end messages -->
 
 
-<a name="services-common-v1-ResponseStatus"></a>
+<a name="services-verifiablecredentials-templates-v1-FieldType"></a>
 
-### ResponseStatus
-
+### FieldType
+Valid types for credential fields
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| SUCCESS | 0 |  |
-| WALLET_ACCESS_DENIED | 10 |  |
-| WALLET_EXISTS | 11 |  |
-| ITEM_NOT_FOUND | 20 |  |
-| SERIALIZATION_ERROR | 200 |  |
-| UNKNOWN_ERROR | 100 |  |
+| STRING | 0 |  |
+| NUMBER | 1 |  |
+| BOOL | 2 |  |
+| DATETIME | 4 |  |
 
 
  <!-- end enums -->
@@ -448,25 +670,177 @@ Nonce used to generate an oberon proof
 
 
 
-<a name="services_options_field-options-proto"></a>
+<a name="services_universal-wallet_v1_universal-wallet-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## services/options/field-options.proto
+## services/universal-wallet/v1/universal-wallet.proto
 
+
+
+<a name="services-universalwallet-v1-UniversalWallet"></a>
+
+### Service - UniversalWallet
+
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| GetItem | [GetItemRequest](/reference/proto#services-universalwallet-v1-GetItemRequest) | [GetItemResponse](/reference/proto#services-universalwallet-v1-GetItemResponse) | Retrieve an item from the wallet with a given item identifier |
+| Search | [SearchRequest](/reference/proto#services-universalwallet-v1-SearchRequest) | [SearchResponse](/reference/proto#services-universalwallet-v1-SearchResponse) | Search the wallet using a SQL-like syntax |
+| InsertItem | [InsertItemRequest](/reference/proto#services-universalwallet-v1-InsertItemRequest) | [InsertItemResponse](/reference/proto#services-universalwallet-v1-InsertItemResponse) | Insert an item into the wallet |
+| UpdateItem | [UpdateItemRequest](/reference/proto#services-universalwallet-v1-UpdateItemRequest) | [UpdateItemResponse](/reference/proto#services-universalwallet-v1-UpdateItemResponse) | Update an item in the wallet |
+| DeleteItem | [DeleteItemRequest](/reference/proto#services-universalwallet-v1-DeleteItemRequest) | [DeleteItemResponse](/reference/proto#services-universalwallet-v1-DeleteItemResponse) | Delete an item from the wallet permanently |
 
  <!-- end services -->
+
+
+<a name="services-universalwallet-v1-DeleteItemRequest"></a>
+
+### DeleteItemRequest
+Request to delete an item in a wallet
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| item_id | [string](/reference/proto#string) | ID of item to delete |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-DeleteItemResponse"></a>
+
+### DeleteItemResponse
+Response to `DeleteItemRequest`
+
+
+
+
+
+
+<a name="services-universalwallet-v1-GetItemRequest"></a>
+
+### GetItemRequest
+Request to fetch an item from wallet
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| item_id | [string](/reference/proto#string) | ID of item in wallet |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-GetItemResponse"></a>
+
+### GetItemResponse
+Response to `GetItemRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| item_json | [string](/reference/proto#string) | Item data as a JSON string |
+| item_type | [string](/reference/proto#string) | Type of item specified when item was inserted into wallet |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-InsertItemRequest"></a>
+
+### InsertItemRequest
+Request to insert a JSON document into a wallet
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| item_json | [string](/reference/proto#string) | Document to insert; must be stringified JSON |
+| item_type | [string](/reference/proto#string) | Item type (ex. "VerifiableCredential") |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-InsertItemResponse"></a>
+
+### InsertItemResponse
+Response to `InsertItemRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| item_id | [string](/reference/proto#string) | ID of item inserted into wallet |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-SearchRequest"></a>
+
+### SearchRequest
+Request to search items in wallet
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| query | [string](/reference/proto#string) | SQL Query to execute against items in wallet |
+| continuation_token | [string](/reference/proto#string) | Token provided by previous `SearchResponse` if more data is available for query |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-SearchResponse"></a>
+
+### SearchResponse
+Response to `SearchRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| items | [string](/reference/proto#string)[] | Array of query results, as JSON strings |
+| has_more | [bool](/reference/proto#bool) | Whether more results are available for this query via `continuation_token` |
+| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `SearchRequest` |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-UpdateItemRequest"></a>
+
+### UpdateItemRequest
+Request to update item in wallet
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| item_id | [string](/reference/proto#string) | ID of item in wallet |
+| item_type | [string](/reference/proto#string) | Item type (ex. "VerifiableCredential") |
+
+
+
+
+
+
+<a name="services-universalwallet-v1-UpdateItemResponse"></a>
+
+### UpdateItemResponse
+Response to `UpdateItemRequest`
+
+
+
+
 
  <!-- end messages -->
 
  <!-- end enums -->
-
-
-<a name="services_options_field-options-proto-extensions"></a>
-
-### File-level Extensions
-| Extension | Type | Base | Number | Description |
-| --------- | ---- | ---- | ------ | ----------- |
-| optional | bool | .google.protobuf.FieldOptions | 60000 | Whether field is optional in Trinsic's backend. This is not the same as an `optional` protobuf label; it only impacts documentation generation for the field. |
 
  <!-- end HasExtensions -->
 
@@ -913,6 +1287,95 @@ Response to `UpdateEcosystemRequest`
 
 
 
+<a name="services_common_v1_common-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## services/common/v1/common.proto
+
+
+ <!-- end services -->
+
+
+<a name="services-common-v1-Nonce"></a>
+
+### Nonce
+Nonce used to generate an oberon proof
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| timestamp | [int64](/reference/proto#int64) | UTC unix millisecond timestamp the request was made |
+| request_hash | [bytes](/reference/proto#bytes) | blake3256 hash of the request body |
+
+
+
+
+
+
+<a name="services-common-v1-ServerConfig"></a>
+
+### ServerConfig
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| endpoint | [string](/reference/proto#string) | service endpoint |
+| port | [int32](/reference/proto#int32) | service port |
+| use_tls | [bool](/reference/proto#bool) | indicates if tls is used |
+
+
+
+
+
+ <!-- end messages -->
+
+
+<a name="services-common-v1-ResponseStatus"></a>
+
+### ResponseStatus
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| SUCCESS | 0 |  |
+| WALLET_ACCESS_DENIED | 10 |  |
+| WALLET_EXISTS | 11 |  |
+| ITEM_NOT_FOUND | 20 |  |
+| SERIALIZATION_ERROR | 200 |  |
+| UNKNOWN_ERROR | 100 |  |
+
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="services_options_field-options-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## services/options/field-options.proto
+
+
+ <!-- end services -->
+
+ <!-- end messages -->
+
+ <!-- end enums -->
+
+
+<a name="services_options_field-options-proto-extensions"></a>
+
+### File-level Extensions
+| Extension | Type | Base | Number | Description |
+| --------- | ---- | ---- | ------ | ----------- |
+| optional | bool | .google.protobuf.FieldOptions | 60000 | Whether field is optional in Trinsic's backend. This is not the same as an `optional` protobuf label; it only impacts documentation generation for the field. |
+
+ <!-- end HasExtensions -->
+
+
+
 <a name="services_trust-registry_v1_trust-registry-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
@@ -1195,480 +1658,291 @@ Register new ecosystem governance framework
 
 
 
-<a name="services_universal-wallet_v1_universal-wallet-proto"></a>
+<a name="services_account_v1_account-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## services/universal-wallet/v1/universal-wallet.proto
+## services/account/v1/account.proto
 
 
 
-<a name="services-universalwallet-v1-UniversalWallet"></a>
+<a name="services-account-v1-Account"></a>
 
-### Service - UniversalWallet
+### Service - Account
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| GetItem | [GetItemRequest](/reference/proto#services-universalwallet-v1-GetItemRequest) | [GetItemResponse](/reference/proto#services-universalwallet-v1-GetItemResponse) | Retrieve an item from the wallet with a given item identifier |
-| Search | [SearchRequest](/reference/proto#services-universalwallet-v1-SearchRequest) | [SearchResponse](/reference/proto#services-universalwallet-v1-SearchResponse) | Search the wallet using a SQL-like syntax |
-| InsertItem | [InsertItemRequest](/reference/proto#services-universalwallet-v1-InsertItemRequest) | [InsertItemResponse](/reference/proto#services-universalwallet-v1-InsertItemResponse) | Insert an item into the wallet |
-| UpdateItem | [UpdateItemRequest](/reference/proto#services-universalwallet-v1-UpdateItemRequest) | [UpdateItemResponse](/reference/proto#services-universalwallet-v1-UpdateItemResponse) | Update an item in the wallet |
-| DeleteItem | [DeleteItemRequest](/reference/proto#services-universalwallet-v1-DeleteItemRequest) | [DeleteItemResponse](/reference/proto#services-universalwallet-v1-DeleteItemResponse) | Delete an item from the wallet permanently |
+| SignIn | [SignInRequest](/reference/proto#services-account-v1-SignInRequest) | [SignInResponse](/reference/proto#services-account-v1-SignInResponse) | Sign in to an already existing account |
+| Login | [LoginRequest](/reference/proto#services-account-v1-LoginRequest) | [LoginResponse](/reference/proto#services-account-v1-LoginResponse) | Login to account. If account doesn't exist, new will be created |
+| LoginConfirm | [LoginConfirmRequest](/reference/proto#services-account-v1-LoginConfirmRequest) | [LoginConfirmResponse](/reference/proto#services-account-v1-LoginConfirmResponse) | Confirm login step by responding to the challenge request |
+| Info | [AccountInfoRequest](/reference/proto#services-account-v1-AccountInfoRequest) | [AccountInfoResponse](/reference/proto#services-account-v1-AccountInfoResponse) | Get account information |
+| ListDevices | [ListDevicesRequest](/reference/proto#services-account-v1-ListDevicesRequest) | [ListDevicesResponse](/reference/proto#services-account-v1-ListDevicesResponse) | List all connected devices |
+| RevokeDevice | [RevokeDeviceRequest](/reference/proto#services-account-v1-RevokeDeviceRequest) | [RevokeDeviceResponse](/reference/proto#services-account-v1-RevokeDeviceResponse) | Revoke device access to the account's cloud wallet |
+| AuthorizeWebhook | [AuthorizeWebhookRequest](/reference/proto#services-account-v1-AuthorizeWebhookRequest) | [AuthorizeWebhookResponse](/reference/proto#services-account-v1-AuthorizeWebhookResponse) | Authorize Ecosystem to receive webhook events |
 
  <!-- end services -->
 
 
-<a name="services-universalwallet-v1-DeleteItemRequest"></a>
+<a name="services-account-v1-AccountDetails"></a>
 
-### DeleteItemRequest
-Request to delete an item in a wallet
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| item_id | [string](/reference/proto#string) | ID of item to delete |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-DeleteItemResponse"></a>
-
-### DeleteItemResponse
-Response to `DeleteItemRequest`
-
-
-
-
-
-
-<a name="services-universalwallet-v1-GetItemRequest"></a>
-
-### GetItemRequest
-Request to fetch an item from wallet
+### AccountDetails
+Account registration details
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| item_id | [string](/reference/proto#string) | ID of item in wallet |
+| name | [string](/reference/proto#string) | Account name |
+| email | [string](/reference/proto#string) | Email account |
+| sms | [string](/reference/proto#string) | SMS number including country code |
 
 
 
 
 
 
-<a name="services-universalwallet-v1-GetItemResponse"></a>
+<a name="services-account-v1-AccountEcosystem"></a>
 
-### GetItemResponse
-Response to `GetItemRequest`
+### AccountEcosystem
 
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| item_json | [string](/reference/proto#string) | Item data as a JSON string |
-| item_type | [string](/reference/proto#string) | Type of item specified when item was inserted into wallet |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-InsertItemRequest"></a>
-
-### InsertItemRequest
-Request to insert a JSON document into a wallet
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| item_json | [string](/reference/proto#string) | Document to insert; must be stringified JSON |
-| item_type | [string](/reference/proto#string) | Item type (ex. "VerifiableCredential") |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-InsertItemResponse"></a>
-
-### InsertItemResponse
-Response to `InsertItemRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| item_id | [string](/reference/proto#string) | ID of item inserted into wallet |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-SearchRequest"></a>
-
-### SearchRequest
-Request to search items in wallet
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| query | [string](/reference/proto#string) | SQL Query to execute against items in wallet |
-| continuation_token | [string](/reference/proto#string) | Token provided by previous `SearchResponse` if more data is available for query |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-SearchResponse"></a>
-
-### SearchResponse
-Response to `SearchRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| items | [string](/reference/proto#string)[] | Array of query results, as JSON strings |
-| has_more | [bool](/reference/proto#bool) | Whether more results are available for this query via `continuation_token` |
-| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `SearchRequest` |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-UpdateItemRequest"></a>
-
-### UpdateItemRequest
-Request to update item in wallet
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| item_id | [string](/reference/proto#string) | ID of item in wallet |
-| item_type | [string](/reference/proto#string) | Item type (ex. "VerifiableCredential") |
-
-
-
-
-
-
-<a name="services-universalwallet-v1-UpdateItemResponse"></a>
-
-### UpdateItemResponse
-Response to `UpdateItemRequest`
-
-
-
-
-
- <!-- end messages -->
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-
-<a name="services_verifiable-credentials_templates_v1_templates-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## services/verifiable-credentials/templates/v1/templates.proto
-
-
-
-<a name="services-verifiablecredentials-templates-v1-CredentialTemplates"></a>
-
-### Service - CredentialTemplates
-
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| Create | [CreateCredentialTemplateRequest](/reference/proto#services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest) | [CreateCredentialTemplateResponse](/reference/proto#services-verifiablecredentials-templates-v1-CreateCredentialTemplateResponse) |  |
-| Get | [GetCredentialTemplateRequest](/reference/proto#services-verifiablecredentials-templates-v1-GetCredentialTemplateRequest) | [GetCredentialTemplateResponse](/reference/proto#services-verifiablecredentials-templates-v1-GetCredentialTemplateResponse) |  |
-| List | [ListCredentialTemplatesRequest](/reference/proto#services-verifiablecredentials-templates-v1-ListCredentialTemplatesRequest) | [ListCredentialTemplatesResponse](/reference/proto#services-verifiablecredentials-templates-v1-ListCredentialTemplatesResponse) |  |
-| Search | [SearchCredentialTemplatesRequest](/reference/proto#services-verifiablecredentials-templates-v1-SearchCredentialTemplatesRequest) | [SearchCredentialTemplatesResponse](/reference/proto#services-verifiablecredentials-templates-v1-SearchCredentialTemplatesResponse) |  |
-| Delete | [DeleteCredentialTemplateRequest](/reference/proto#services-verifiablecredentials-templates-v1-DeleteCredentialTemplateRequest) | [DeleteCredentialTemplateResponse](/reference/proto#services-verifiablecredentials-templates-v1-DeleteCredentialTemplateResponse) |  |
-
- <!-- end services -->
-
-
-<a name="services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest"></a>
-
-### CreateCredentialTemplateRequest
-Request to create a new template
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| name | [string](/reference/proto#string) | Name of new template |
-| fields | [CreateCredentialTemplateRequest.FieldsEntry](/reference/proto#services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest-FieldsEntry)[] | Fields which compose the template |
-| allow_additional_fields | [bool](/reference/proto#bool) | Whether credentials may be issued against this template which have fields not specified in `fields` |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest-FieldsEntry"></a>
-
-### CreateCredentialTemplateRequest.FieldsEntry
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| key | [string](/reference/proto#string) |  |
-| value | [TemplateField](/reference/proto#services-verifiablecredentials-templates-v1-TemplateField) |  |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-CreateCredentialTemplateResponse"></a>
-
-### CreateCredentialTemplateResponse
-Response to `CreateCredentialTemplateRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| data | [TemplateData](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData) | Created template |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-DeleteCredentialTemplateRequest"></a>
-
-### DeleteCredentialTemplateRequest
-Request to delete a template by ID
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | ID of template to delete |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-DeleteCredentialTemplateResponse"></a>
-
-### DeleteCredentialTemplateResponse
-Response to `DeleteCredentialTemplateRequest`
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-GetCredentialTemplateRequest"></a>
-
-### GetCredentialTemplateRequest
-Request to fetch a template by ID
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | ID of template to fetch |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-GetCredentialTemplateResponse"></a>
-
-### GetCredentialTemplateResponse
-Response to `GetCredentialTemplateRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| template | [TemplateData](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData) | Template fetched by ID |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-GetTemplateRequest"></a>
-
-### GetTemplateRequest
-Unused
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | id | [string](/reference/proto#string) |  |
+| name | [string](/reference/proto#string) |  |
+| description | [string](/reference/proto#string) |  |
+| uri | [string](/reference/proto#string) |  |
 
 
 
 
 
 
-<a name="services-verifiablecredentials-templates-v1-GetTemplateResponse"></a>
+<a name="services-account-v1-AccountInfoRequest"></a>
 
-### GetTemplateResponse
-Unused
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| data | [TemplateData](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData) |  |
+### AccountInfoRequest
+Request for information about the account used to make the request
 
 
 
 
 
 
-<a name="services-verifiablecredentials-templates-v1-ListCredentialTemplatesRequest"></a>
+<a name="services-account-v1-AccountInfoResponse"></a>
 
-### ListCredentialTemplatesRequest
-Request to list templates using a SQL query
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| query | [string](/reference/proto#string) | SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'` |
-| continuation_token | [string](/reference/proto#string) | Token provided by previous `ListCredentialTemplatesResponse` if more data is available for query |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-ListCredentialTemplatesResponse"></a>
-
-### ListCredentialTemplatesResponse
-Response to `ListCredentialTemplatesRequest`
+### AccountInfoResponse
+Information about the account used to make the request
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| templates | [TemplateData](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData)[] | Templates found by query |
-| has_more_results | [bool](/reference/proto#bool) | Whether more results are available for this query via `continuation_token` |
-| continuation_token | [string](/reference/proto#string) | Token to fetch next set of resuts via `ListCredentialTemplatesRequest` |
+| details | [AccountDetails](/reference/proto#services-account-v1-AccountDetails) | The account details associated with the calling request context |
+| ecosystems | [AccountEcosystem](/reference/proto#services-account-v1-AccountEcosystem)[] | **Deprecated.** Use `ecosystem_id` instead |
+| wallet_id | [string](/reference/proto#string) | The wallet ID associated with this account |
+| device_id | [string](/reference/proto#string) | The device ID associated with this account session |
+| ecosystem_id | [string](/reference/proto#string) | The ecosystem ID within which this account resides |
+| public_did | [string](/reference/proto#string) | The public DID associated with this account. This DID is used as "issuer" when signing verifiable credentials |
+| authorized_webhooks | [string](/reference/proto#string)[] | Webhook events if any this wallet has authorized |
 
 
 
 
 
 
-<a name="services-verifiablecredentials-templates-v1-ListTemplatesRequest"></a>
+<a name="services-account-v1-AccountProfile"></a>
 
-### ListTemplatesRequest
-Unused
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-ListTemplatesResponse"></a>
-
-### ListTemplatesResponse
-Unused
+### AccountProfile
+Device profile containing sensitive authentication data.
+This information should be stored securely
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| templates | [TemplateData](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData)[] |  |
+| profile_type | [string](/reference/proto#string) | The type of profile, used to differentiate between protocol schemes or versions |
+| auth_data | [bytes](/reference/proto#bytes) | Auth data containg information about the current device access |
+| auth_token | [bytes](/reference/proto#bytes) | Secure token issued by server used to generate zero-knowledge proofs |
+| protection | [TokenProtection](/reference/proto#services-account-v1-TokenProtection) | Token security information about the token. If token protection is enabled, implementations must supply protection secret before using the token for authentication. |
 
 
 
 
 
 
-<a name="services-verifiablecredentials-templates-v1-SearchCredentialTemplatesRequest"></a>
+<a name="services-account-v1-AuthorizeWebhookRequest"></a>
 
-### SearchCredentialTemplatesRequest
-Request to search templates using a SQL query
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| query | [string](/reference/proto#string) | SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'` |
-| continuation_token | [string](/reference/proto#string) | Token provided by previous `SearchCredentialTemplatesResponse` if more data is available for query |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-templates-v1-SearchCredentialTemplatesResponse"></a>
-
-### SearchCredentialTemplatesResponse
-Response to `SearchCredentialTemplatesRequest`
+### AuthorizeWebhookRequest
+Authorize ecosystem to receive wallet events
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| items_json | [string](/reference/proto#string) | Raw JSON data returned from query |
-| has_more | [bool](/reference/proto#bool) | Whether more results are available for this query via `continuation_token` |
-| continuation_token | [string](/reference/proto#string) | Count of items in `items_json` int32 count = 3; unpopulated and unused Token to fetch next set of results via `SearchCredentialTemplatesRequest` |
+| events | [string](/reference/proto#string)[] | Events to authorize access to. Default is "*" (all events) |
 
 
 
 
 
 
-<a name="services-verifiablecredentials-templates-v1-TemplateData"></a>
+<a name="services-account-v1-AuthorizeWebhookResponse"></a>
 
-### TemplateData
-Credential Template
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| id | [string](/reference/proto#string) | Template ID |
-| name | [string](/reference/proto#string) | Template name |
-| version | [int32](/reference/proto#int32) | Template version number |
-| fields | [TemplateData.FieldsEntry](/reference/proto#services-verifiablecredentials-templates-v1-TemplateData-FieldsEntry)[] | Fields defined for the template |
-| allow_additional_fields | [bool](/reference/proto#bool) | Whether credentials issued against this template may contain fields not defined by template |
-| schema_uri | [string](/reference/proto#string) | URI pointing to template JSON schema document |
-| context_uri | [string](/reference/proto#string) | URI pointing to template JSON-LD context document |
-| ecosystem_id | [string](/reference/proto#string) | ID of ecosystem in which template resides |
-| type | [string](/reference/proto#string) | Template type (`VerifiableCredential`) |
-| created_by | [string](/reference/proto#string) | ID of template creator |
+### AuthorizeWebhookResponse
+Response to `AuthorizeWebhookRequest`
 
 
 
 
 
 
-<a name="services-verifiablecredentials-templates-v1-TemplateData-FieldsEntry"></a>
+<a name="services-account-v1-ListDevicesRequest"></a>
 
-### TemplateData.FieldsEntry
+### ListDevicesRequest
+
+
+
+
+
+
+
+<a name="services-account-v1-ListDevicesResponse"></a>
+
+### ListDevicesResponse
+
+
+
+
+
+
+
+<a name="services-account-v1-LoginConfirmRequest"></a>
+
+### LoginConfirmRequest
 
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| key | [string](/reference/proto#string) |  |
-| value | [TemplateField](/reference/proto#services-verifiablecredentials-templates-v1-TemplateField) |  |
+| challenge | [bytes](/reference/proto#bytes) | Login challenge received during the Login call |
+| confirmation_code_hashed | [bytes](/reference/proto#bytes) | Confirmation code received in email or SMS hashed using Blake3 |
 
 
 
 
 
 
-<a name="services-verifiablecredentials-templates-v1-TemplateField"></a>
+<a name="services-account-v1-LoginConfirmResponse"></a>
 
-### TemplateField
-A field defined in a template
+### LoginConfirmResponse
+
 
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| description | [string](/reference/proto#string) | Human-readable description of the field |
-| optional | [bool](/reference/proto#bool) | Whether this field may be omitted when a credential is issued against the template |
-| type | [FieldType](/reference/proto#services-verifiablecredentials-templates-v1-FieldType) | The type of the field |
+| profile | [AccountProfile](/reference/proto#services-account-v1-AccountProfile) | Profile response. This profile may be protected and require unblinding/unprotection using the raw hashed code |
+
+
+
+
+
+
+<a name="services-account-v1-LoginRequest"></a>
+
+### LoginRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| email | [string](/reference/proto#string) | Email account to associate with the login request |
+| invitation_code | [string](/reference/proto#string) | Invitation code associated with this registration |
+| ecosystem_id | [string](/reference/proto#string) | ID of Ecosystem to sign into. Ignored if `invitation_code` is passed |
+
+
+
+
+
+
+<a name="services-account-v1-LoginResponse"></a>
+
+### LoginResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| challenge | [bytes](/reference/proto#bytes) | Challenge response. Random byte sequence unique for this login request |
+| profile | [AccountProfile](/reference/proto#services-account-v1-AccountProfile) | Profile response. The login isn't challenged and the token is returned in this call. Does not require confirmation step |
+
+
+
+
+
+
+<a name="services-account-v1-RevokeDeviceRequest"></a>
+
+### RevokeDeviceRequest
+
+
+
+
+
+
+
+<a name="services-account-v1-RevokeDeviceResponse"></a>
+
+### RevokeDeviceResponse
+
+
+
+
+
+
+
+<a name="services-account-v1-SignInRequest"></a>
+
+### SignInRequest
+Request for creating or signing into an account
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| details | [AccountDetails](/reference/proto#services-account-v1-AccountDetails) | Account registration details |
+| invitation_code | [string](/reference/proto#string) | Invitation code associated with this registration |
+| ecosystem_id | [string](/reference/proto#string) | ID of Ecosystem to use Ignored if `invitation_code` is passed |
+
+
+
+
+
+
+<a name="services-account-v1-SignInResponse"></a>
+
+### SignInResponse
+Response for creating new account
+This object will indicate if a confirmation code
+was sent to one of the users two-factor methods
+like email, SMS, etc.
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| confirmation_method | [ConfirmationMethod](/reference/proto#services-account-v1-ConfirmationMethod) | Indicates if confirmation of account is required. This settings is configured globally by the server administrator. |
+| profile | [AccountProfile](/reference/proto#services-account-v1-AccountProfile) | Contains authentication data for use with the current device. This object must be stored in a secure place. It can also be protected with a PIN, but this is optional. See the docs at https://docs.trinsic.id for more information on working with authentication data. |
+
+
+
+
+
+
+<a name="services-account-v1-TokenProtection"></a>
+
+### TokenProtection
+Token protection info
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| enabled | [bool](/reference/proto#bool) | Indicates if token is protected using a PIN, security code, HSM secret, etc. |
+| method | [ConfirmationMethod](/reference/proto#services-account-v1-ConfirmationMethod) | The method used to protect the token |
 
 
 
@@ -1677,293 +1951,19 @@ A field defined in a template
  <!-- end messages -->
 
 
-<a name="services-verifiablecredentials-templates-v1-FieldType"></a>
+<a name="services-account-v1-ConfirmationMethod"></a>
 
-### FieldType
-Valid types for credential fields
+### ConfirmationMethod
+Confirmation method type for two-factor workflows
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| STRING | 0 |  |
-| NUMBER | 1 |  |
-| BOOL | 2 |  |
-| DATETIME | 4 |  |
+| None | 0 | No confirmation required |
+| Email | 1 | Email confirmation required |
+| Sms | 2 | SMS confirmation required |
+| ConnectedDevice | 3 | Confirmation from a connected device is required |
+| Other | 10 | Indicates third-party method of confirmation is required |
 
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-
-<a name="services_verifiable-credentials_v1_verifiable-credentials-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## services/verifiable-credentials/v1/verifiable-credentials.proto
-
-
-
-<a name="services-verifiablecredentials-v1-VerifiableCredential"></a>
-
-### Service - VerifiableCredential
-
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| Issue | [IssueRequest](/reference/proto#services-verifiablecredentials-v1-IssueRequest) | [IssueResponse](/reference/proto#services-verifiablecredentials-v1-IssueResponse) | Sign and issue a verifiable credential from a submitted document. The document must be a valid JSON-LD document. |
-| IssueFromTemplate | [IssueFromTemplateRequest](/reference/proto#services-verifiablecredentials-v1-IssueFromTemplateRequest) | [IssueFromTemplateResponse](/reference/proto#services-verifiablecredentials-v1-IssueFromTemplateResponse) | Sign and issue a verifiable credential from a pre-defined template. This process will also add schema validation and revocation registry entry in the credential. |
-| CheckStatus | [CheckStatusRequest](/reference/proto#services-verifiablecredentials-v1-CheckStatusRequest) | [CheckStatusResponse](/reference/proto#services-verifiablecredentials-v1-CheckStatusResponse) | Check credential status in the revocation registry |
-| UpdateStatus | [UpdateStatusRequest](/reference/proto#services-verifiablecredentials-v1-UpdateStatusRequest) | [UpdateStatusResponse](/reference/proto#services-verifiablecredentials-v1-UpdateStatusResponse) | Update credential status by setting the revocation value |
-| CreateProof | [CreateProofRequest](/reference/proto#services-verifiablecredentials-v1-CreateProofRequest) | [CreateProofResponse](/reference/proto#services-verifiablecredentials-v1-CreateProofResponse) | Create a proof from a signed document that is a valid verifiable credential and contains a signature from which a proof can be derived. |
-| VerifyProof | [VerifyProofRequest](/reference/proto#services-verifiablecredentials-v1-VerifyProofRequest) | [VerifyProofResponse](/reference/proto#services-verifiablecredentials-v1-VerifyProofResponse) | Verifies a proof by checking the signature value, and if possible schema validation, revocation status, and issuer status against a trust registry |
-| Send | [SendRequest](/reference/proto#services-verifiablecredentials-v1-SendRequest) | [SendResponse](/reference/proto#services-verifiablecredentials-v1-SendResponse) | Sends a document directly to a user's email within the given ecosystem |
-
- <!-- end services -->
-
-
-<a name="services-verifiablecredentials-v1-CheckStatusRequest"></a>
-
-### CheckStatusRequest
-Request to check a credential's revocation status
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| credential_status_id | [string](/reference/proto#string) | Credential Status ID to check |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-CheckStatusResponse"></a>
-
-### CheckStatusResponse
-Response to `CheckStatusRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| revoked | [bool](/reference/proto#bool) | The credential's revocation status |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-CreateProofRequest"></a>
-
-### CreateProofRequest
-Request to create a proof for a Verifiable Credential using public key tied to caller.
-Either `item_id` or `document_json` may be provided, not both.
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| reveal_document_json | [string](/reference/proto#string) | A valid JSON-LD frame describing which fields should be revealed in the generated proof. If unspecified, all fields in the document will be revealed |
-| item_id | [string](/reference/proto#string) | ID of wallet item stored in a Trinsic cloud wallet |
-| document_json | [string](/reference/proto#string) | A valid JSON-LD Verifiable Credential document string with an unbound signature. The proof will be derived from this document directly. The document will not be stored in the wallet. |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-CreateProofResponse"></a>
-
-### CreateProofResponse
-Response to `CreateProofRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| proof_document_json | [string](/reference/proto#string) | Valid JSON-LD proof for the specified credential |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-IssueFromTemplateRequest"></a>
-
-### IssueFromTemplateRequest
-Request to create and sign a JSON-LD Verifiable Credential from a template using public key tied to caller
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| template_id | [string](/reference/proto#string) | ID of template to use |
-| values_json | [string](/reference/proto#string) | JSON document string with keys corresponding to the fields of the template referenced by `template_id` |
-| framework_id | [string](/reference/proto#string) | Governance framework ID to use with issuance of this credential. If specified, the issued credential will contain extended issuer metadata with membership info for the given ecosystem governance framework (EGF) |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-IssueFromTemplateResponse"></a>
-
-### IssueFromTemplateResponse
-Response to `IssueFromTemplateRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| document_json | [string](/reference/proto#string) | Verifiable Credential document, in JSON-LD form, constructed from the specified template and values; signed with public key tied to caller of `IssueFromTemplateRequest` |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-IssueRequest"></a>
-
-### IssueRequest
-Request to sign a JSON-LD Credential using public key tied to caller
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| document_json | [string](/reference/proto#string) | Valid JSON-LD Credential document to be signed, in string form |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-IssueResponse"></a>
-
-### IssueResponse
-Response to `IssueRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| signed_document_json | [string](/reference/proto#string) | Verifiable Credential document, signed with public key tied to caller of `IssueRequest` |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-SendRequest"></a>
-
-### SendRequest
-Request to send a document to another user's wallet
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| email | [string](/reference/proto#string) | Email address of user to send item to |
-| did_uri | [string](/reference/proto#string) | DID of recipient (presently unsupported) |
-| didcomm_invitation_json | [string](/reference/proto#string) | DIDComm out-of-band invitation JSON (presently unsupported) |
-| document_json | [string](/reference/proto#string) | JSON document to send to recipient |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-SendResponse"></a>
-
-### SendResponse
-Response to `SendRequest`
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-UpdateStatusRequest"></a>
-
-### UpdateStatusRequest
-Request to update a credential's revocation status
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| credential_status_id | [string](/reference/proto#string) | Credential Status ID to update |
-| revoked | [bool](/reference/proto#bool) | New revocation status of credential |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-UpdateStatusResponse"></a>
-
-### UpdateStatusResponse
-Response to `UpdateStatusRequest`
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-ValidationMessage"></a>
-
-### ValidationMessage
-Result of a validation check on a proof
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| is_valid | [bool](/reference/proto#bool) | Whether or not this validation check passed |
-| messages | [string](/reference/proto#string)[] | If validation failed, contains messages explaining why |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-VerifyProofRequest"></a>
-
-### VerifyProofRequest
-Request to verify a proof
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| proof_document_json | [string](/reference/proto#string) | JSON-LD proof document string to verify |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-VerifyProofResponse"></a>
-
-### VerifyProofResponse
-Response to `VerifyProofRequest`
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| is_valid | [bool](/reference/proto#bool) | Whether or not all validations in `validation_results` passed |
-| validation_messages | [string](/reference/proto#string)[] | **Deprecated.** Use `validation_results` instead |
-| validation_results | [VerifyProofResponse.ValidationResultsEntry](/reference/proto#services-verifiablecredentials-v1-VerifyProofResponse-ValidationResultsEntry)[] | Results of each validation check performed, such as schema conformance, revocation status, signature, etc. Detailed results are provided for failed validations. |
-
-
-
-
-
-
-<a name="services-verifiablecredentials-v1-VerifyProofResponse-ValidationResultsEntry"></a>
-
-### VerifyProofResponse.ValidationResultsEntry
-
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| key | [string](/reference/proto#string) |  |
-| value | [ValidationMessage](/reference/proto#services-verifiablecredentials-v1-ValidationMessage) |  |
-
-
-
-
-
- <!-- end messages -->
 
  <!-- end enums -->
 

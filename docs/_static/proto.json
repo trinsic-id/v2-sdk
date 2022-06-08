@@ -42,6 +42,12 @@
       "file": "services/account/v1/account.proto",
       "parent": ""
     },
+    "services.account.v1.Account.AuthorizeWebhook": {
+      "type": "methodProto",
+      "collection": "methods",
+      "file": "services/account/v1/account.proto",
+      "parent": ""
+    },
     "services.account.v1.Account.Info": {
       "type": "methodProto",
       "collection": "methods",
@@ -49,6 +55,18 @@
       "parent": ""
     },
     "services.account.v1.Account.ListDevices": {
+      "type": "methodProto",
+      "collection": "methods",
+      "file": "services/account/v1/account.proto",
+      "parent": ""
+    },
+    "services.account.v1.Account.Login": {
+      "type": "methodProto",
+      "collection": "methods",
+      "file": "services/account/v1/account.proto",
+      "parent": ""
+    },
+    "services.account.v1.Account.LoginConfirm": {
       "type": "methodProto",
       "collection": "methods",
       "file": "services/account/v1/account.proto",
@@ -120,6 +138,60 @@
       "file": "services/account/v1/account.proto",
       "parent": "services.account.v1.AccountEcosystem"
     },
+    "services.account.v1.AccountInfoRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/account/v1/account.proto",
+      "parent": ""
+    },
+    "services.account.v1.AccountInfoResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/account/v1/account.proto",
+      "parent": ""
+    },
+    "services.account.v1.AccountInfoResponse.authorized_webhooks": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/account/v1/account.proto",
+      "parent": "services.account.v1.AccountInfoResponse"
+    },
+    "services.account.v1.AccountInfoResponse.details": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/account/v1/account.proto",
+      "parent": "services.account.v1.AccountInfoResponse"
+    },
+    "services.account.v1.AccountInfoResponse.device_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/account/v1/account.proto",
+      "parent": "services.account.v1.AccountInfoResponse"
+    },
+    "services.account.v1.AccountInfoResponse.ecosystem_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/account/v1/account.proto",
+      "parent": "services.account.v1.AccountInfoResponse"
+    },
+    "services.account.v1.AccountInfoResponse.ecosystems": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/account/v1/account.proto",
+      "parent": "services.account.v1.AccountInfoResponse"
+    },
+    "services.account.v1.AccountInfoResponse.public_did": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/account/v1/account.proto",
+      "parent": "services.account.v1.AccountInfoResponse"
+    },
+    "services.account.v1.AccountInfoResponse.wallet_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/account/v1/account.proto",
+      "parent": "services.account.v1.AccountInfoResponse"
+    },
     "services.account.v1.AccountProfile": {
       "type": "message",
       "collection": "messages",
@@ -149,6 +221,24 @@
       "collection": "fields",
       "file": "services/account/v1/account.proto",
       "parent": "services.account.v1.AccountProfile"
+    },
+    "services.account.v1.AuthorizeWebhookRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/account/v1/account.proto",
+      "parent": ""
+    },
+    "services.account.v1.AuthorizeWebhookRequest.events": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/account/v1/account.proto",
+      "parent": "services.account.v1.AuthorizeWebhookRequest"
+    },
+    "services.account.v1.AuthorizeWebhookResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/account/v1/account.proto",
+      "parent": ""
     },
     "services.account.v1.ConfirmationMethod": {
       "type": "enum",
@@ -186,54 +276,6 @@
       "file": "services/account/v1/account.proto",
       "parent": "services.account.v1.ConfirmationMethod"
     },
-    "services.account.v1.InfoRequest": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
-    "services.account.v1.InfoResponse": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/account/v1/account.proto",
-      "parent": ""
-    },
-    "services.account.v1.InfoResponse.details": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.InfoResponse"
-    },
-    "services.account.v1.InfoResponse.device_id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.InfoResponse"
-    },
-    "services.account.v1.InfoResponse.ecosystem_id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.InfoResponse"
-    },
-    "services.account.v1.InfoResponse.ecosystems": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.InfoResponse"
-    },
-    "services.account.v1.InfoResponse.public_did": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.InfoResponse"
-    },
-    "services.account.v1.InfoResponse.wallet_id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/account/v1/account.proto",
-      "parent": "services.account.v1.InfoResponse"
-    },
     "services.account.v1.ListDevicesRequest": {
       "type": "message",
       "collection": "messages",
@@ -245,6 +287,78 @@
       "collection": "messages",
       "file": "services/account/v1/account.proto",
       "parent": ""
+    },
+    "services.account.v1.LoginConfirmRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/account/v1/account.proto",
+      "parent": ""
+    },
+    "services.account.v1.LoginConfirmRequest.challenge": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/account/v1/account.proto",
+      "parent": "services.account.v1.LoginConfirmRequest"
+    },
+    "services.account.v1.LoginConfirmRequest.confirmation_code_hashed": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/account/v1/account.proto",
+      "parent": "services.account.v1.LoginConfirmRequest"
+    },
+    "services.account.v1.LoginConfirmResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/account/v1/account.proto",
+      "parent": ""
+    },
+    "services.account.v1.LoginConfirmResponse.profile": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/account/v1/account.proto",
+      "parent": "services.account.v1.LoginConfirmResponse"
+    },
+    "services.account.v1.LoginRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/account/v1/account.proto",
+      "parent": ""
+    },
+    "services.account.v1.LoginRequest.ecosystem_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/account/v1/account.proto",
+      "parent": "services.account.v1.LoginRequest"
+    },
+    "services.account.v1.LoginRequest.email": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/account/v1/account.proto",
+      "parent": "services.account.v1.LoginRequest"
+    },
+    "services.account.v1.LoginRequest.invitation_code": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/account/v1/account.proto",
+      "parent": "services.account.v1.LoginRequest"
+    },
+    "services.account.v1.LoginResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/account/v1/account.proto",
+      "parent": ""
+    },
+    "services.account.v1.LoginResponse.challenge": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/account/v1/account.proto",
+      "parent": "services.account.v1.LoginResponse"
+    },
+    "services.account.v1.LoginResponse.profile": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/account/v1/account.proto",
+      "parent": "services.account.v1.LoginResponse"
     },
     "services.account.v1.RevokeDeviceRequest": {
       "type": "message",
@@ -420,6 +534,48 @@
       "file": "services/debug/v1/debug.proto",
       "parent": ""
     },
+    "services.provider.v1.AddWebhookRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.AddWebhookRequest.destination_url": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.AddWebhookRequest"
+    },
+    "services.provider.v1.AddWebhookRequest.ecosystem_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.AddWebhookRequest"
+    },
+    "services.provider.v1.AddWebhookRequest.events": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.AddWebhookRequest"
+    },
+    "services.provider.v1.AddWebhookRequest.secret": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.AddWebhookRequest"
+    },
+    "services.provider.v1.AddWebhookResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.AddWebhookResponse.ecosystem": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.AddWebhookResponse"
+    },
     "services.provider.v1.CreateEcosystemRequest": {
       "type": "message",
       "collection": "messages",
@@ -474,6 +630,36 @@
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.CreateEcosystemResponse"
     },
+    "services.provider.v1.DeleteWebhookRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.DeleteWebhookRequest.ecosystem_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.DeleteWebhookRequest"
+    },
+    "services.provider.v1.DeleteWebhookRequest.webhook_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.DeleteWebhookRequest"
+    },
+    "services.provider.v1.DeleteWebhookResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.DeleteWebhookResponse.ecosystem": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.DeleteWebhookResponse"
+    },
     "services.provider.v1.Ecosystem": {
       "type": "message",
       "collection": "messages",
@@ -504,6 +690,36 @@
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.Ecosystem"
     },
+    "services.provider.v1.Ecosystem.webhooks": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.Ecosystem"
+    },
+    "services.provider.v1.EcosystemInfoRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.EcosystemInfoRequest.ecosystem_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.EcosystemInfoRequest"
+    },
+    "services.provider.v1.EcosystemInfoResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.EcosystemInfoResponse.ecosystem": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.EcosystemInfoResponse"
+    },
     "services.provider.v1.GenerateTokenRequest": {
       "type": "message",
       "collection": "messages",
@@ -527,6 +743,30 @@
       "collection": "fields",
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.GenerateTokenResponse"
+    },
+    "services.provider.v1.GetEventTokenRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.GetEventTokenRequest.pk": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.GetEventTokenRequest"
+    },
+    "services.provider.v1.GetEventTokenResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.GetEventTokenResponse.token": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.GetEventTokenResponse"
     },
     "services.provider.v1.GetOberonKeyRequest": {
       "type": "message",
@@ -714,13 +954,37 @@
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
+    "services.provider.v1.Provider.AddWebhook": {
+      "type": "methodProto",
+      "collection": "methods",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
     "services.provider.v1.Provider.CreateEcosystem": {
       "type": "methodProto",
       "collection": "methods",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
+    "services.provider.v1.Provider.DeleteWebhook": {
+      "type": "methodProto",
+      "collection": "methods",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.Provider.EcosystemInfo": {
+      "type": "methodProto",
+      "collection": "methods",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
     "services.provider.v1.Provider.GenerateToken": {
+      "type": "methodProto",
+      "collection": "methods",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.Provider.GetEventToken": {
       "type": "methodProto",
       "collection": "methods",
       "file": "services/provider/v1/provider.proto",
@@ -743,6 +1007,78 @@
       "collection": "methods",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
+    },
+    "services.provider.v1.Provider.UpdateEcosystem": {
+      "type": "methodProto",
+      "collection": "methods",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.UpdateEcosystemRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.UpdateEcosystemRequest.description": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.UpdateEcosystemRequest"
+    },
+    "services.provider.v1.UpdateEcosystemRequest.ecosystem_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.UpdateEcosystemRequest"
+    },
+    "services.provider.v1.UpdateEcosystemRequest.uri": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.UpdateEcosystemRequest"
+    },
+    "services.provider.v1.UpdateEcosystemResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.UpdateEcosystemResponse.Ecosystem": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.UpdateEcosystemResponse"
+    },
+    "services.provider.v1.WebhookConfig": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.WebhookConfig.destination_url": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.WebhookConfig"
+    },
+    "services.provider.v1.WebhookConfig.events": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.WebhookConfig"
+    },
+    "services.provider.v1.WebhookConfig.id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.WebhookConfig"
+    },
+    "services.provider.v1.WebhookConfig.status": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.WebhookConfig"
     },
     "services.trustregistry.v1.AddFrameworkRequest": {
       "type": "message",
@@ -2046,9 +2382,12 @@
       ],
       "methods": [
         "services.account.v1.Account.SignIn",
+        "services.account.v1.Account.Login",
+        "services.account.v1.Account.LoginConfirm",
         "services.account.v1.Account.Info",
         "services.account.v1.Account.ListDevices",
-        "services.account.v1.Account.RevokeDevice"
+        "services.account.v1.Account.RevokeDevice",
+        "services.account.v1.Account.AuthorizeWebhook"
       ],
       "messages": [
         "services.account.v1.SignInRequest",
@@ -2056,13 +2395,19 @@
         "services.account.v1.SignInResponse",
         "services.account.v1.AccountProfile",
         "services.account.v1.TokenProtection",
-        "services.account.v1.InfoRequest",
-        "services.account.v1.InfoResponse",
+        "services.account.v1.AccountInfoRequest",
+        "services.account.v1.AccountInfoResponse",
         "services.account.v1.ListDevicesRequest",
         "services.account.v1.ListDevicesResponse",
         "services.account.v1.RevokeDeviceRequest",
         "services.account.v1.RevokeDeviceResponse",
-        "services.account.v1.AccountEcosystem"
+        "services.account.v1.AccountEcosystem",
+        "services.account.v1.LoginRequest",
+        "services.account.v1.LoginResponse",
+        "services.account.v1.LoginConfirmRequest",
+        "services.account.v1.LoginConfirmResponse",
+        "services.account.v1.AuthorizeWebhookRequest",
+        "services.account.v1.AuthorizeWebhookResponse"
       ],
       "fields": [
         "services.account.v1.SignInRequest.details",
@@ -2079,16 +2424,26 @@
         "services.account.v1.AccountProfile.protection",
         "services.account.v1.TokenProtection.enabled",
         "services.account.v1.TokenProtection.method",
-        "services.account.v1.InfoResponse.details",
-        "services.account.v1.InfoResponse.ecosystems",
-        "services.account.v1.InfoResponse.wallet_id",
-        "services.account.v1.InfoResponse.device_id",
-        "services.account.v1.InfoResponse.ecosystem_id",
-        "services.account.v1.InfoResponse.public_did",
+        "services.account.v1.AccountInfoResponse.details",
+        "services.account.v1.AccountInfoResponse.ecosystems",
+        "services.account.v1.AccountInfoResponse.wallet_id",
+        "services.account.v1.AccountInfoResponse.device_id",
+        "services.account.v1.AccountInfoResponse.ecosystem_id",
+        "services.account.v1.AccountInfoResponse.public_did",
+        "services.account.v1.AccountInfoResponse.authorized_webhooks",
         "services.account.v1.AccountEcosystem.id",
         "services.account.v1.AccountEcosystem.name",
         "services.account.v1.AccountEcosystem.description",
-        "services.account.v1.AccountEcosystem.uri"
+        "services.account.v1.AccountEcosystem.uri",
+        "services.account.v1.LoginRequest.email",
+        "services.account.v1.LoginRequest.invitation_code",
+        "services.account.v1.LoginRequest.ecosystem_id",
+        "services.account.v1.LoginResponse.challenge",
+        "services.account.v1.LoginResponse.profile",
+        "services.account.v1.LoginConfirmRequest.challenge",
+        "services.account.v1.LoginConfirmRequest.confirmation_code_hashed",
+        "services.account.v1.LoginConfirmResponse.profile",
+        "services.account.v1.AuthorizeWebhookRequest.events"
       ],
       "enums": [
         "services.account.v1.ConfirmationMethod"
@@ -2166,10 +2521,15 @@
       ],
       "methods": [
         "services.provider.v1.Provider.CreateEcosystem",
+        "services.provider.v1.Provider.UpdateEcosystem",
+        "services.provider.v1.Provider.AddWebhook",
+        "services.provider.v1.Provider.DeleteWebhook",
+        "services.provider.v1.Provider.EcosystemInfo",
         "services.provider.v1.Provider.GenerateToken",
         "services.provider.v1.Provider.Invite",
         "services.provider.v1.Provider.InvitationStatus",
-        "services.provider.v1.Provider.GetOberonKey"
+        "services.provider.v1.Provider.GetOberonKey",
+        "services.provider.v1.Provider.GetEventToken"
       ],
       "messages": [
         "services.provider.v1.Invite",
@@ -2179,12 +2539,23 @@
         "services.provider.v1.InvitationStatusRequest",
         "services.provider.v1.InvitationStatusResponse",
         "services.provider.v1.Ecosystem",
+        "services.provider.v1.WebhookConfig",
         "services.provider.v1.CreateEcosystemRequest",
         "services.provider.v1.CreateEcosystemResponse",
+        "services.provider.v1.UpdateEcosystemRequest",
+        "services.provider.v1.UpdateEcosystemResponse",
+        "services.provider.v1.AddWebhookRequest",
+        "services.provider.v1.AddWebhookResponse",
+        "services.provider.v1.DeleteWebhookRequest",
+        "services.provider.v1.DeleteWebhookResponse",
+        "services.provider.v1.EcosystemInfoRequest",
+        "services.provider.v1.EcosystemInfoResponse",
         "services.provider.v1.GenerateTokenRequest",
         "services.provider.v1.GenerateTokenResponse",
         "services.provider.v1.GetOberonKeyRequest",
-        "services.provider.v1.GetOberonKeyResponse"
+        "services.provider.v1.GetOberonKeyResponse",
+        "services.provider.v1.GetEventTokenRequest",
+        "services.provider.v1.GetEventTokenResponse"
       ],
       "fields": [
         "services.provider.v1.Invite.id",
@@ -2204,6 +2575,11 @@
         "services.provider.v1.Ecosystem.name",
         "services.provider.v1.Ecosystem.description",
         "services.provider.v1.Ecosystem.uri",
+        "services.provider.v1.Ecosystem.webhooks",
+        "services.provider.v1.WebhookConfig.id",
+        "services.provider.v1.WebhookConfig.destination_url",
+        "services.provider.v1.WebhookConfig.events",
+        "services.provider.v1.WebhookConfig.status",
         "services.provider.v1.CreateEcosystemRequest.name",
         "services.provider.v1.CreateEcosystemRequest.description",
         "services.provider.v1.CreateEcosystemRequest.uri",
@@ -2211,9 +2587,25 @@
         "services.provider.v1.CreateEcosystemResponse.ecosystem",
         "services.provider.v1.CreateEcosystemResponse.profile",
         "services.provider.v1.CreateEcosystemResponse.confirmation_method",
+        "services.provider.v1.UpdateEcosystemRequest.ecosystem_id",
+        "services.provider.v1.UpdateEcosystemRequest.description",
+        "services.provider.v1.UpdateEcosystemRequest.uri",
+        "services.provider.v1.UpdateEcosystemResponse.Ecosystem",
+        "services.provider.v1.AddWebhookRequest.ecosystem_id",
+        "services.provider.v1.AddWebhookRequest.destination_url",
+        "services.provider.v1.AddWebhookRequest.secret",
+        "services.provider.v1.AddWebhookRequest.events",
+        "services.provider.v1.AddWebhookResponse.ecosystem",
+        "services.provider.v1.DeleteWebhookRequest.ecosystem_id",
+        "services.provider.v1.DeleteWebhookRequest.webhook_id",
+        "services.provider.v1.DeleteWebhookResponse.ecosystem",
+        "services.provider.v1.EcosystemInfoRequest.ecosystem_id",
+        "services.provider.v1.EcosystemInfoResponse.ecosystem",
         "services.provider.v1.GenerateTokenRequest.description",
         "services.provider.v1.GenerateTokenResponse.profile",
-        "services.provider.v1.GetOberonKeyResponse.key"
+        "services.provider.v1.GetOberonKeyResponse.key",
+        "services.provider.v1.GetEventTokenRequest.pk",
+        "services.provider.v1.GetEventTokenResponse.token"
       ],
       "enums": [
         "services.provider.v1.InvitationStatusResponse.Status",
@@ -2512,9 +2904,12 @@
       "description": "",
       "methods": [
         "services.account.v1.Account.SignIn",
+        "services.account.v1.Account.Login",
+        "services.account.v1.Account.LoginConfirm",
         "services.account.v1.Account.Info",
         "services.account.v1.Account.ListDevices",
-        "services.account.v1.Account.RevokeDevice"
+        "services.account.v1.Account.RevokeDevice",
+        "services.account.v1.Account.AuthorizeWebhook"
       ]
     },
     "services.debug.v1.Debugging": {
@@ -2532,10 +2927,15 @@
       "description": "",
       "methods": [
         "services.provider.v1.Provider.CreateEcosystem",
+        "services.provider.v1.Provider.UpdateEcosystem",
+        "services.provider.v1.Provider.AddWebhook",
+        "services.provider.v1.Provider.DeleteWebhook",
+        "services.provider.v1.Provider.EcosystemInfo",
         "services.provider.v1.Provider.GenerateToken",
         "services.provider.v1.Provider.Invite",
         "services.provider.v1.Provider.InvitationStatus",
-        "services.provider.v1.Provider.GetOberonKey"
+        "services.provider.v1.Provider.GetOberonKey",
+        "services.provider.v1.Provider.GetEventToken"
       ]
     },
     "services.trustregistry.v1.TrustRegistry": {
@@ -2592,11 +2992,18 @@
     }
   },
   "methods": {
+    "services.account.v1.Account.AuthorizeWebhook": {
+      "name": "AuthorizeWebhook",
+      "full_name": "services.account.v1.Account.AuthorizeWebhook",
+      "input_type": "services.account.v1.AuthorizeWebhookRequest",
+      "output_type": "services.account.v1.AuthorizeWebhookResponse",
+      "description": "Authorize Ecosystem to receive webhook events"
+    },
     "services.account.v1.Account.Info": {
       "name": "Info",
       "full_name": "services.account.v1.Account.Info",
-      "input_type": "services.account.v1.InfoRequest",
-      "output_type": "services.account.v1.InfoResponse",
+      "input_type": "services.account.v1.AccountInfoRequest",
+      "output_type": "services.account.v1.AccountInfoResponse",
       "description": "Get account information"
     },
     "services.account.v1.Account.ListDevices": {
@@ -2605,6 +3012,20 @@
       "input_type": "services.account.v1.ListDevicesRequest",
       "output_type": "services.account.v1.ListDevicesResponse",
       "description": "List all connected devices"
+    },
+    "services.account.v1.Account.Login": {
+      "name": "Login",
+      "full_name": "services.account.v1.Account.Login",
+      "input_type": "services.account.v1.LoginRequest",
+      "output_type": "services.account.v1.LoginResponse",
+      "description": "Login to account. If account doesn't exist, new will be created"
+    },
+    "services.account.v1.Account.LoginConfirm": {
+      "name": "LoginConfirm",
+      "full_name": "services.account.v1.Account.LoginConfirm",
+      "input_type": "services.account.v1.LoginConfirmRequest",
+      "output_type": "services.account.v1.LoginConfirmResponse",
+      "description": "Confirm login step by responding to the challenge request"
     },
     "services.account.v1.Account.RevokeDevice": {
       "name": "RevokeDevice",
@@ -2618,7 +3039,7 @@
       "full_name": "services.account.v1.Account.SignIn",
       "input_type": "services.account.v1.SignInRequest",
       "output_type": "services.account.v1.SignInResponse",
-      "description": "Sign in to an already existing account\n\nrpc SIgnInConfirm       (SignInConfirmRequest)      returns (SignInConfirmResponse);"
+      "description": "Sign in to an already existing account"
     },
     "services.debug.v1.Debugging.CallEmpty": {
       "name": "CallEmpty",
@@ -2634,6 +3055,13 @@
       "output_type": "google.protobuf.Empty",
       "description": ""
     },
+    "services.provider.v1.Provider.AddWebhook": {
+      "name": "AddWebhook",
+      "full_name": "services.provider.v1.Provider.AddWebhook",
+      "input_type": "services.provider.v1.AddWebhookRequest",
+      "output_type": "services.provider.v1.AddWebhookResponse",
+      "description": "Add a webhook endpoint to the ecosystem"
+    },
     "services.provider.v1.Provider.CreateEcosystem": {
       "name": "CreateEcosystem",
       "full_name": "services.provider.v1.Provider.CreateEcosystem",
@@ -2641,12 +3069,33 @@
       "output_type": "services.provider.v1.CreateEcosystemResponse",
       "description": "Create new ecosystem and assign the authenticated user as owner"
     },
+    "services.provider.v1.Provider.DeleteWebhook": {
+      "name": "DeleteWebhook",
+      "full_name": "services.provider.v1.Provider.DeleteWebhook",
+      "input_type": "services.provider.v1.DeleteWebhookRequest",
+      "output_type": "services.provider.v1.DeleteWebhookResponse",
+      "description": "Delete a webhook endpoint from the ecosystem"
+    },
+    "services.provider.v1.Provider.EcosystemInfo": {
+      "name": "EcosystemInfo",
+      "full_name": "services.provider.v1.Provider.EcosystemInfo",
+      "input_type": "services.provider.v1.EcosystemInfoRequest",
+      "output_type": "services.provider.v1.EcosystemInfoResponse",
+      "description": "Get ecosystem information"
+    },
     "services.provider.v1.Provider.GenerateToken": {
       "name": "GenerateToken",
       "full_name": "services.provider.v1.Provider.GenerateToken",
       "input_type": "services.provider.v1.GenerateTokenRequest",
       "output_type": "services.provider.v1.GenerateTokenResponse",
       "description": "Generates an unprotected authentication token that can be used to\nconfigure server side applications"
+    },
+    "services.provider.v1.Provider.GetEventToken": {
+      "name": "GetEventToken",
+      "full_name": "services.provider.v1.Provider.GetEventToken",
+      "input_type": "services.provider.v1.GetEventTokenRequest",
+      "output_type": "services.provider.v1.GetEventTokenResponse",
+      "description": "Generate a signed token (JWT) that can be used to connect to the message bus"
     },
     "services.provider.v1.Provider.GetOberonKey": {
       "name": "GetOberonKey",
@@ -2668,6 +3117,13 @@
       "input_type": "services.provider.v1.InviteRequest",
       "output_type": "services.provider.v1.InviteResponse",
       "description": "Invite a user to the ecosystem"
+    },
+    "services.provider.v1.Provider.UpdateEcosystem": {
+      "name": "UpdateEcosystem",
+      "full_name": "services.provider.v1.Provider.UpdateEcosystem",
+      "input_type": "services.provider.v1.UpdateEcosystemRequest",
+      "output_type": "services.provider.v1.UpdateEcosystemResponse",
+      "description": "Update an existing ecosystem"
     },
     "services.trustregistry.v1.TrustRegistry.AddFramework": {
       "name": "AddFramework",
@@ -2878,6 +3334,30 @@
       "messages": [],
       "enums": []
     },
+    "services.account.v1.AccountInfoRequest": {
+      "name": "AccountInfoRequest",
+      "full_name": "services.account.v1.AccountInfoRequest",
+      "description": "Request for information about the account used to make the request",
+      "fields": [],
+      "messages": [],
+      "enums": []
+    },
+    "services.account.v1.AccountInfoResponse": {
+      "name": "AccountInfoResponse",
+      "full_name": "services.account.v1.AccountInfoResponse",
+      "description": "Information about the account used to make the request",
+      "fields": [
+        "services.account.v1.AccountInfoResponse.details",
+        "services.account.v1.AccountInfoResponse.ecosystems",
+        "services.account.v1.AccountInfoResponse.wallet_id",
+        "services.account.v1.AccountInfoResponse.device_id",
+        "services.account.v1.AccountInfoResponse.ecosystem_id",
+        "services.account.v1.AccountInfoResponse.public_did",
+        "services.account.v1.AccountInfoResponse.authorized_webhooks"
+      ],
+      "messages": [],
+      "enums": []
+    },
     "services.account.v1.AccountProfile": {
       "name": "AccountProfile",
       "full_name": "services.account.v1.AccountProfile",
@@ -2891,26 +3371,21 @@
       "messages": [],
       "enums": []
     },
-    "services.account.v1.InfoRequest": {
-      "name": "InfoRequest",
-      "full_name": "services.account.v1.InfoRequest",
-      "description": "Request for information about the account used to make the request",
-      "fields": [],
+    "services.account.v1.AuthorizeWebhookRequest": {
+      "name": "AuthorizeWebhookRequest",
+      "full_name": "services.account.v1.AuthorizeWebhookRequest",
+      "description": "Authorize ecosystem to receive wallet events",
+      "fields": [
+        "services.account.v1.AuthorizeWebhookRequest.events"
+      ],
       "messages": [],
       "enums": []
     },
-    "services.account.v1.InfoResponse": {
-      "name": "InfoResponse",
-      "full_name": "services.account.v1.InfoResponse",
-      "description": "Information about the account used to make the request",
-      "fields": [
-        "services.account.v1.InfoResponse.details",
-        "services.account.v1.InfoResponse.ecosystems",
-        "services.account.v1.InfoResponse.wallet_id",
-        "services.account.v1.InfoResponse.device_id",
-        "services.account.v1.InfoResponse.ecosystem_id",
-        "services.account.v1.InfoResponse.public_did"
-      ],
+    "services.account.v1.AuthorizeWebhookResponse": {
+      "name": "AuthorizeWebhookResponse",
+      "full_name": "services.account.v1.AuthorizeWebhookResponse",
+      "description": "Response to `AuthorizeWebhookRequest`",
+      "fields": [],
       "messages": [],
       "enums": []
     },
@@ -2927,6 +3402,50 @@
       "full_name": "services.account.v1.ListDevicesResponse",
       "description": "",
       "fields": [],
+      "messages": [],
+      "enums": []
+    },
+    "services.account.v1.LoginConfirmRequest": {
+      "name": "LoginConfirmRequest",
+      "full_name": "services.account.v1.LoginConfirmRequest",
+      "description": "",
+      "fields": [
+        "services.account.v1.LoginConfirmRequest.challenge",
+        "services.account.v1.LoginConfirmRequest.confirmation_code_hashed"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.account.v1.LoginConfirmResponse": {
+      "name": "LoginConfirmResponse",
+      "full_name": "services.account.v1.LoginConfirmResponse",
+      "description": "",
+      "fields": [
+        "services.account.v1.LoginConfirmResponse.profile"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.account.v1.LoginRequest": {
+      "name": "LoginRequest",
+      "full_name": "services.account.v1.LoginRequest",
+      "description": "",
+      "fields": [
+        "services.account.v1.LoginRequest.email",
+        "services.account.v1.LoginRequest.invitation_code",
+        "services.account.v1.LoginRequest.ecosystem_id"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.account.v1.LoginResponse": {
+      "name": "LoginResponse",
+      "full_name": "services.account.v1.LoginResponse",
+      "description": "",
+      "fields": [
+        "services.account.v1.LoginResponse.challenge",
+        "services.account.v1.LoginResponse.profile"
+      ],
       "messages": [],
       "enums": []
     },
@@ -3003,6 +3522,29 @@
       "messages": [],
       "enums": []
     },
+    "services.provider.v1.AddWebhookRequest": {
+      "name": "AddWebhookRequest",
+      "full_name": "services.provider.v1.AddWebhookRequest",
+      "description": "Request to add a webhook to an ecosystem",
+      "fields": [
+        "services.provider.v1.AddWebhookRequest.ecosystem_id",
+        "services.provider.v1.AddWebhookRequest.destination_url",
+        "services.provider.v1.AddWebhookRequest.secret",
+        "services.provider.v1.AddWebhookRequest.events"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.provider.v1.AddWebhookResponse": {
+      "name": "AddWebhookResponse",
+      "full_name": "services.provider.v1.AddWebhookResponse",
+      "description": "Response to `AddWebhookRequest`",
+      "fields": [
+        "services.provider.v1.AddWebhookResponse.ecosystem"
+      ],
+      "messages": [],
+      "enums": []
+    },
     "services.provider.v1.CreateEcosystemRequest": {
       "name": "CreateEcosystemRequest",
       "full_name": "services.provider.v1.CreateEcosystemRequest",
@@ -3028,6 +3570,27 @@
       "messages": [],
       "enums": []
     },
+    "services.provider.v1.DeleteWebhookRequest": {
+      "name": "DeleteWebhookRequest",
+      "full_name": "services.provider.v1.DeleteWebhookRequest",
+      "description": "Request to delete a webhook from an ecosystem",
+      "fields": [
+        "services.provider.v1.DeleteWebhookRequest.ecosystem_id",
+        "services.provider.v1.DeleteWebhookRequest.webhook_id"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.provider.v1.DeleteWebhookResponse": {
+      "name": "DeleteWebhookResponse",
+      "full_name": "services.provider.v1.DeleteWebhookResponse",
+      "description": "Response to `DeleteWebhookRequest`",
+      "fields": [
+        "services.provider.v1.DeleteWebhookResponse.ecosystem"
+      ],
+      "messages": [],
+      "enums": []
+    },
     "services.provider.v1.Ecosystem": {
       "name": "Ecosystem",
       "full_name": "services.provider.v1.Ecosystem",
@@ -3036,7 +3599,28 @@
         "services.provider.v1.Ecosystem.id",
         "services.provider.v1.Ecosystem.name",
         "services.provider.v1.Ecosystem.description",
-        "services.provider.v1.Ecosystem.uri"
+        "services.provider.v1.Ecosystem.uri",
+        "services.provider.v1.Ecosystem.webhooks"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.provider.v1.EcosystemInfoRequest": {
+      "name": "EcosystemInfoRequest",
+      "full_name": "services.provider.v1.EcosystemInfoRequest",
+      "description": "Request to fetch information about an ecosystem",
+      "fields": [
+        "services.provider.v1.EcosystemInfoRequest.ecosystem_id"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.provider.v1.EcosystemInfoResponse": {
+      "name": "EcosystemInfoResponse",
+      "full_name": "services.provider.v1.EcosystemInfoResponse",
+      "description": "Response to `InfoRequest`",
+      "fields": [
+        "services.provider.v1.EcosystemInfoResponse.ecosystem"
       ],
       "messages": [],
       "enums": []
@@ -3057,6 +3641,26 @@
       "description": "",
       "fields": [
         "services.provider.v1.GenerateTokenResponse.profile"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.provider.v1.GetEventTokenRequest": {
+      "name": "GetEventTokenRequest",
+      "full_name": "services.provider.v1.GetEventTokenRequest",
+      "description": "generates an events token bound to the provided ed25519 pk",
+      "fields": [
+        "services.provider.v1.GetEventTokenRequest.pk"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.provider.v1.GetEventTokenResponse": {
+      "name": "GetEventTokenResponse",
+      "full_name": "services.provider.v1.GetEventTokenResponse",
+      "description": "response message containing a token (JWT) that can be used\nto connect directly to the message streaming architecture",
+      "fields": [
+        "services.provider.v1.GetEventTokenResponse.token"
       ],
       "messages": [],
       "enums": []
@@ -3145,6 +3749,41 @@
       "fields": [
         "services.provider.v1.InviteResponse.invitation_id",
         "services.provider.v1.InviteResponse.invitation_code"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.provider.v1.UpdateEcosystemRequest": {
+      "name": "UpdateEcosystemRequest",
+      "full_name": "services.provider.v1.UpdateEcosystemRequest",
+      "description": "Request to update an ecosystem",
+      "fields": [
+        "services.provider.v1.UpdateEcosystemRequest.ecosystem_id",
+        "services.provider.v1.UpdateEcosystemRequest.description",
+        "services.provider.v1.UpdateEcosystemRequest.uri"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.provider.v1.UpdateEcosystemResponse": {
+      "name": "UpdateEcosystemResponse",
+      "full_name": "services.provider.v1.UpdateEcosystemResponse",
+      "description": "Response to `UpdateEcosystemRequest`",
+      "fields": [
+        "services.provider.v1.UpdateEcosystemResponse.Ecosystem"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.provider.v1.WebhookConfig": {
+      "name": "WebhookConfig",
+      "full_name": "services.provider.v1.WebhookConfig",
+      "description": "",
+      "fields": [
+        "services.provider.v1.WebhookConfig.id",
+        "services.provider.v1.WebhookConfig.destination_url",
+        "services.provider.v1.WebhookConfig.events",
+        "services.provider.v1.WebhookConfig.status"
       ],
       "messages": [],
       "enums": []
@@ -3815,7 +4454,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Trinsic API endpoint; defaults to `prod.trinsic.cloud`"
+      "description": "Trinsic API endpoint. Defaults to `prod.trinsic.cloud`"
     },
     "sdk.options.v1.ServiceOptions.server_port": {
       "name": "server_port",
@@ -3895,6 +4534,62 @@
       "full_type": "string",
       "description": ""
     },
+    "services.account.v1.AccountInfoResponse.authorized_webhooks": {
+      "name": "authorized_webhooks",
+      "full_name": "services.account.v1.AccountInfoResponse.authorized_webhooks",
+      "label": "LABEL_REPEATED",
+      "type": "string",
+      "full_type": "string",
+      "description": "Webhook events if any this wallet has authorized"
+    },
+    "services.account.v1.AccountInfoResponse.details": {
+      "name": "details",
+      "full_name": "services.account.v1.AccountInfoResponse.details",
+      "label": "LABEL_OPTIONAL",
+      "type": "AccountDetails",
+      "full_type": "services.account.v1.AccountDetails",
+      "description": "The account details associated with\nthe calling request context"
+    },
+    "services.account.v1.AccountInfoResponse.device_id": {
+      "name": "device_id",
+      "full_name": "services.account.v1.AccountInfoResponse.device_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The device ID associated with this account session"
+    },
+    "services.account.v1.AccountInfoResponse.ecosystem_id": {
+      "name": "ecosystem_id",
+      "full_name": "services.account.v1.AccountInfoResponse.ecosystem_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The ecosystem ID within which this account resides"
+    },
+    "services.account.v1.AccountInfoResponse.ecosystems": {
+      "name": "ecosystems",
+      "full_name": "services.account.v1.AccountInfoResponse.ecosystems",
+      "label": "LABEL_REPEATED",
+      "type": "AccountEcosystem",
+      "full_type": "services.account.v1.AccountEcosystem",
+      "description": "Use `ecosystem_id` instead"
+    },
+    "services.account.v1.AccountInfoResponse.public_did": {
+      "name": "public_did",
+      "full_name": "services.account.v1.AccountInfoResponse.public_did",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The public DID associated with this account.\nThis DID is used as \"issuer\" when signing verifiable credentials"
+    },
+    "services.account.v1.AccountInfoResponse.wallet_id": {
+      "name": "wallet_id",
+      "full_name": "services.account.v1.AccountInfoResponse.wallet_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "The wallet ID associated with this account"
+    },
     "services.account.v1.AccountProfile.auth_data": {
       "name": "auth_data",
       "full_name": "services.account.v1.AccountProfile.auth_data",
@@ -3927,53 +4622,86 @@
       "full_type": "services.account.v1.TokenProtection",
       "description": "Token security information about the token.\nIf token protection is enabled, implementations must supply\nprotection secret before using the token for authentication."
     },
-    "services.account.v1.InfoResponse.details": {
-      "name": "details",
-      "full_name": "services.account.v1.InfoResponse.details",
-      "label": "LABEL_OPTIONAL",
-      "type": "AccountDetails",
-      "full_type": "services.account.v1.AccountDetails",
-      "description": "The account details associated with\nthe calling request context"
-    },
-    "services.account.v1.InfoResponse.device_id": {
-      "name": "device_id",
-      "full_name": "services.account.v1.InfoResponse.device_id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "The device ID associated with this account session"
-    },
-    "services.account.v1.InfoResponse.ecosystem_id": {
-      "name": "ecosystem_id",
-      "full_name": "services.account.v1.InfoResponse.ecosystem_id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "The ecosystem ID within which this account resides"
-    },
-    "services.account.v1.InfoResponse.ecosystems": {
-      "name": "ecosystems",
-      "full_name": "services.account.v1.InfoResponse.ecosystems",
+    "services.account.v1.AuthorizeWebhookRequest.events": {
+      "name": "events",
+      "full_name": "services.account.v1.AuthorizeWebhookRequest.events",
       "label": "LABEL_REPEATED",
-      "type": "AccountEcosystem",
-      "full_type": "services.account.v1.AccountEcosystem",
-      "description": "Use `ecosystem_id` instead"
+      "type": "string",
+      "full_type": "string",
+      "description": "Events to authorize access to. Default is \"*\" (all events)"
     },
-    "services.account.v1.InfoResponse.public_did": {
-      "name": "public_did",
-      "full_name": "services.account.v1.InfoResponse.public_did",
+    "services.account.v1.LoginConfirmRequest.challenge": {
+      "name": "challenge",
+      "full_name": "services.account.v1.LoginConfirmRequest.challenge",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": "Login challenge received during the Login call"
+    },
+    "services.account.v1.LoginConfirmRequest.confirmation_code_hashed": {
+      "name": "confirmation_code_hashed",
+      "full_name": "services.account.v1.LoginConfirmRequest.confirmation_code_hashed",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": "Confirmation code received in email or SMS\nhashed using Blake3"
+    },
+    "services.account.v1.LoginConfirmResponse.profile": {
+      "name": "profile",
+      "full_name": "services.account.v1.LoginConfirmResponse.profile",
+      "label": "LABEL_OPTIONAL",
+      "type": "AccountProfile",
+      "full_type": "services.account.v1.AccountProfile",
+      "description": "Profile response. This profile may be protected and\nrequire unblinding/unprotection using the raw hashed code"
+    },
+    "services.account.v1.LoginRequest.ecosystem_id": {
+      "name": "ecosystem_id",
+      "full_name": "services.account.v1.LoginRequest.ecosystem_id",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "The public DID associated with this account.\nThis DID is used as \"issuer\" when signing verifiable credentials"
+      "description": "ID of Ecosystem to sign into.\nIgnored if `invitation_code` is passed",
+      "options": {
+        "services.options.optional": true
+      }
     },
-    "services.account.v1.InfoResponse.wallet_id": {
-      "name": "wallet_id",
-      "full_name": "services.account.v1.InfoResponse.wallet_id",
+    "services.account.v1.LoginRequest.email": {
+      "name": "email",
+      "full_name": "services.account.v1.LoginRequest.email",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "The wallet ID associated with this account"
+      "description": "Email account to associate with the login request",
+      "options": {
+        "services.options.optional": true
+      }
+    },
+    "services.account.v1.LoginRequest.invitation_code": {
+      "name": "invitation_code",
+      "full_name": "services.account.v1.LoginRequest.invitation_code",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Invitation code associated with this registration",
+      "options": {
+        "services.options.optional": true
+      }
+    },
+    "services.account.v1.LoginResponse.challenge": {
+      "name": "challenge",
+      "full_name": "services.account.v1.LoginResponse.challenge",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": "Challenge response. Random byte sequence unique\nfor this login request"
+    },
+    "services.account.v1.LoginResponse.profile": {
+      "name": "profile",
+      "full_name": "services.account.v1.LoginResponse.profile",
+      "label": "LABEL_OPTIONAL",
+      "type": "AccountProfile",
+      "full_type": "services.account.v1.AccountProfile",
+      "description": "Profile response. The login isn't challenged and\nthe token is returned in this call. Does not require\nconfirmation step"
     },
     "services.account.v1.SignInRequest.details": {
       "name": "details",
@@ -3989,7 +4717,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "ID of Ecosystem to sign into. \nIgnored if `invitation_code` is passed",
+      "description": "ID of Ecosystem to use\nIgnored if `invitation_code` is passed",
       "options": {
         "services.options.optional": true
       }
@@ -4077,6 +4805,46 @@
       "full_type": "bool",
       "description": "indicates if tls is used"
     },
+    "services.provider.v1.AddWebhookRequest.destination_url": {
+      "name": "destination_url",
+      "full_name": "services.provider.v1.AddWebhookRequest.destination_url",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Destination to post webhook calls to"
+    },
+    "services.provider.v1.AddWebhookRequest.ecosystem_id": {
+      "name": "ecosystem_id",
+      "full_name": "services.provider.v1.AddWebhookRequest.ecosystem_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "ID of ecosystem to add webhook to"
+    },
+    "services.provider.v1.AddWebhookRequest.events": {
+      "name": "events",
+      "full_name": "services.provider.v1.AddWebhookRequest.events",
+      "label": "LABEL_REPEATED",
+      "type": "string",
+      "full_type": "string",
+      "description": "Events to subscribe to. Default is \"*\" (all events)"
+    },
+    "services.provider.v1.AddWebhookRequest.secret": {
+      "name": "secret",
+      "full_name": "services.provider.v1.AddWebhookRequest.secret",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "HMAC secret for webhook validation"
+    },
+    "services.provider.v1.AddWebhookResponse.ecosystem": {
+      "name": "ecosystem",
+      "full_name": "services.provider.v1.AddWebhookResponse.ecosystem",
+      "label": "LABEL_OPTIONAL",
+      "type": "Ecosystem",
+      "full_type": "services.provider.v1.Ecosystem",
+      "description": "Ecosystem with new webhook"
+    },
     "services.provider.v1.CreateEcosystemRequest.description": {
       "name": "description",
       "full_name": "services.provider.v1.CreateEcosystemRequest.description",
@@ -4139,13 +4907,37 @@
       "full_type": "services.account.v1.AccountProfile",
       "description": "Account profile for auth of the owner of the ecosystem"
     },
+    "services.provider.v1.DeleteWebhookRequest.ecosystem_id": {
+      "name": "ecosystem_id",
+      "full_name": "services.provider.v1.DeleteWebhookRequest.ecosystem_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "ID of ecosystem from which to delete webhook"
+    },
+    "services.provider.v1.DeleteWebhookRequest.webhook_id": {
+      "name": "webhook_id",
+      "full_name": "services.provider.v1.DeleteWebhookRequest.webhook_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "ID of webhook to delete"
+    },
+    "services.provider.v1.DeleteWebhookResponse.ecosystem": {
+      "name": "ecosystem",
+      "full_name": "services.provider.v1.DeleteWebhookResponse.ecosystem",
+      "label": "LABEL_OPTIONAL",
+      "type": "Ecosystem",
+      "full_type": "services.provider.v1.Ecosystem",
+      "description": "Ecosystem after removal of webhook"
+    },
     "services.provider.v1.Ecosystem.description": {
       "name": "description",
       "full_name": "services.provider.v1.Ecosystem.description",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "Ecosystem description"
     },
     "services.provider.v1.Ecosystem.id": {
       "name": "id",
@@ -4153,7 +4945,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "URN of the ecosystem"
     },
     "services.provider.v1.Ecosystem.name": {
       "name": "name",
@@ -4161,7 +4953,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "Globally unique name for the ecosystem"
     },
     "services.provider.v1.Ecosystem.uri": {
       "name": "uri",
@@ -4169,7 +4961,31 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "External URL associated with the organization or ecosystem entity"
+    },
+    "services.provider.v1.Ecosystem.webhooks": {
+      "name": "webhooks",
+      "full_name": "services.provider.v1.Ecosystem.webhooks",
+      "label": "LABEL_REPEATED",
+      "type": "WebhookConfig",
+      "full_type": "services.provider.v1.WebhookConfig",
+      "description": "Configured webhooks, if any"
+    },
+    "services.provider.v1.EcosystemInfoRequest.ecosystem_id": {
+      "name": "ecosystem_id",
+      "full_name": "services.provider.v1.EcosystemInfoRequest.ecosystem_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "ID of ecosystem to fetch information about"
+    },
+    "services.provider.v1.EcosystemInfoResponse.ecosystem": {
+      "name": "ecosystem",
+      "full_name": "services.provider.v1.EcosystemInfoResponse.ecosystem",
+      "label": "LABEL_OPTIONAL",
+      "type": "Ecosystem",
+      "full_type": "services.provider.v1.Ecosystem",
+      "description": "Ecosystem corresponding to requested `ecosystem_id`"
     },
     "services.provider.v1.GenerateTokenRequest.description": {
       "name": "description",
@@ -4189,6 +5005,22 @@
       "type": "AccountProfile",
       "full_type": "services.account.v1.AccountProfile",
       "description": "Account authentication profile that contains unprotected token"
+    },
+    "services.provider.v1.GetEventTokenRequest.pk": {
+      "name": "pk",
+      "full_name": "services.provider.v1.GetEventTokenRequest.pk",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": ""
+    },
+    "services.provider.v1.GetEventTokenResponse.token": {
+      "name": "token",
+      "full_name": "services.provider.v1.GetEventTokenResponse.token",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "a JWT bound to the PK provided in the request"
     },
     "services.provider.v1.GetOberonKeyResponse.key": {
       "name": "key",
@@ -4307,6 +5139,70 @@
       "type": "string",
       "full_type": "string",
       "description": "ID of created invitation"
+    },
+    "services.provider.v1.UpdateEcosystemRequest.description": {
+      "name": "description",
+      "full_name": "services.provider.v1.UpdateEcosystemRequest.description",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Description of the ecosystem"
+    },
+    "services.provider.v1.UpdateEcosystemRequest.ecosystem_id": {
+      "name": "ecosystem_id",
+      "full_name": "services.provider.v1.UpdateEcosystemRequest.ecosystem_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "ID of the ecosystem to update"
+    },
+    "services.provider.v1.UpdateEcosystemRequest.uri": {
+      "name": "uri",
+      "full_name": "services.provider.v1.UpdateEcosystemRequest.uri",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "External URL associated with the organization or ecosystem entity"
+    },
+    "services.provider.v1.UpdateEcosystemResponse.Ecosystem": {
+      "name": "Ecosystem",
+      "full_name": "services.provider.v1.UpdateEcosystemResponse.Ecosystem",
+      "label": "LABEL_OPTIONAL",
+      "type": "Ecosystem",
+      "full_type": "services.provider.v1.Ecosystem",
+      "description": ""
+    },
+    "services.provider.v1.WebhookConfig.destination_url": {
+      "name": "destination_url",
+      "full_name": "services.provider.v1.WebhookConfig.destination_url",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Destination to post webhook calls to"
+    },
+    "services.provider.v1.WebhookConfig.events": {
+      "name": "events",
+      "full_name": "services.provider.v1.WebhookConfig.events",
+      "label": "LABEL_REPEATED",
+      "type": "string",
+      "full_type": "string",
+      "description": "Events the webhook is subscribed to"
+    },
+    "services.provider.v1.WebhookConfig.id": {
+      "name": "id",
+      "full_name": "services.provider.v1.WebhookConfig.id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "UUID of the webhook"
+    },
+    "services.provider.v1.WebhookConfig.status": {
+      "name": "status",
+      "full_name": "services.provider.v1.WebhookConfig.status",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Whether we are able to sucessfully send events to the webhook"
     },
     "services.trustregistry.v1.AddFrameworkRequest.description": {
       "name": "description",

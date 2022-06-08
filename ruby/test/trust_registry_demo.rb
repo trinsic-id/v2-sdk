@@ -5,6 +5,7 @@ require 'services/account_service'
 require 'services/trust_registry_service'
 require 'securerandom'
 
+# rubocop:disable Metrics/MethodLength
 def trust_registry_demo_run
   account_service = Trinsic::AccountService.new(Trinsic.trinsic_server)
   account = account_service.sign_in(nil)
@@ -33,5 +34,6 @@ def trust_registry_demo_run
   raise 'Search result should exist' if search_result.nil?
   raise 'Search result should not be empty' unless JSON.parse(search_result.items_json).length.positive?
 end
+# rubocop:enable Metrics/MethodLength
 
 trust_registry_demo_run

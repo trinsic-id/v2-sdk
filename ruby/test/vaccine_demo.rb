@@ -9,6 +9,7 @@ require 'services/credential_template_service'
 require 'services/wallet_service'
 require 'json'
 
+# rubocop:disable Metrics/MethodLength
 def do_template(template_service)
   # createTemplate() {
   request = Trinsic::Template_V1::CreateCredentialTemplateRequest.new(name: 'VaccinationCertificate',
@@ -61,7 +62,7 @@ def vaccine_demo_run
   # }
 
   account_service.auth_token = clinic
-  info = account_service.get_info
+  info = account_service.info
   puts("account info #{info}")
 
   # Create a template
@@ -72,8 +73,8 @@ def vaccine_demo_run
 
   # issueCredential() {
   # Prepares values for credential
-  values = JSON.generate({ "firstName": 'Allison', "lastName": 'Allisonne', "batchNumber": '123454321',
-                           "countryOfVaccination": 'US' })
+  values = JSON.generate({ firstName: 'Allison', lastName: 'Allisonne', batchNumber: '123454321',
+                           countryOfVaccination: 'US' })
 
   # Issue credential
   issue_response = credential_service.issue_from_template(Trinsic::Credentials_V1::IssueFromTemplateRequest.new(
@@ -84,14 +85,17 @@ def vaccine_demo_run
 
   puts("Credential: #{credential}")
 
+  # rubocop:disable Lint/RescueException
   begin
     # sendCredential() {
     send_response = credential_service.send(Trinsic::Credentials_V1::SendRequest.new(document_json: credential,
                                                                                      email: 'example@trinsic.id'))
     # }
+    puts(send_response)
   rescue Exception
     # this is expected since the email doesn't exist
   end
+  # rubocop:enable Lint/RescueException
 
   # storeCredential() {
   # Allison stores the credential in her cloud wallet
@@ -114,7 +118,9 @@ def vaccine_demo_run
   # The airline verifies the credential
   credential_service.auth_token = airline
 
-  verify_result = credential_service.verify_proof(Trinsic::Credentials_V1::VerifyProofRequest.new(proof_document_json: credential_proof))
+  verify_result = credential_service.verify_proof(
+    Trinsic::Credentials_V1::VerifyProofRequest.new(proof_document_json: credential_proof)
+  )
 
   valid = verify_result.is_valid
   # }
@@ -130,5 +136,6 @@ def vaccine_demo_run
   # assert credential_status.revoked is True
   # }
 end
+# rubocop:enable Metrics/MethodLength
 
 vaccine_demo_run

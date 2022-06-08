@@ -2,10 +2,6 @@
 # source: services/verifiable-credentials/v1/verifiable-credentials.proto
 # typed: strict
 
-module Services; end
-module Services::Verifiablecredentials; end
-module Services::Verifiablecredentials::V1; end
-
 class Services::Verifiablecredentials::V1::IssueRequest
   include Google::Protobuf
   include Google::Protobuf::MessageExts
@@ -779,6 +775,9 @@ class Services::Verifiablecredentials::V1::SendResponse
   def self.descriptor
   end
 
+  sig {void}
+  def initialize; end
+
   sig { params(field: String).returns(T.untyped) }
   def [](field)
   end
@@ -890,6 +889,9 @@ class Services::Verifiablecredentials::V1::UpdateStatusResponse
   sig { returns(Google::Protobuf::Descriptor) }
   def self.descriptor
   end
+
+  sig {void}
+  def initialize; end
 
   sig { params(field: String).returns(T.untyped) }
   def [](field)
