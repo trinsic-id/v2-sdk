@@ -12,6 +12,12 @@ import {
   ServiceOptions,
   SignInRequest,
   TokenProtection,
+  LoginRequest,
+  LoginResponse,
+  LoginConfirmRequest,
+  LoginConfirmResponse,
+  AuthorizeWebhookRequest,
+  AuthorizeWebhookResponse,
 } from "./proto";
 import { Oberon } from "@trinsic/okapi";
 import base64url from "base64url";
@@ -107,6 +113,24 @@ export class AccountService extends ServiceBase {
     return authToken;
   }
 
+  public async login(request: LoginRequest): Promise<LoginResponse> {
+    return this.client.login(request, {
+      metadata: await this.getMetadata(
+        ListDevicesRequest.encode(request).finish()
+      ),
+    });
+  }
+
+  public async loginConfirm(
+    request: LoginConfirmRequest
+  ): Promise<LoginConfirmResponse> {
+    return this.client.loginConfirm(request, {
+      metadata: await this.getMetadata(
+        ListDevicesRequest.encode(request).finish()
+      ),
+    });
+  }
+
   public async info(): Promise<AccountInfoResponse> {
     const request = AccountInfoRequest.fromPartial({});
 
@@ -133,6 +157,16 @@ export class AccountService extends ServiceBase {
     return this.client.revokeDevice(request, {
       metadata: await this.getMetadata(
         RevokeDeviceRequest.encode(request).finish()
+      ),
+    });
+  }
+
+  public async authorizeWebhook(
+    request: AuthorizeWebhookRequest
+  ): Promise<AuthorizeWebhookResponse> {
+    return this.client.authorizeWebhook(request, {
+      metadata: await this.getMetadata(
+        ListDevicesRequest.encode(request).finish()
       ),
     });
   }
