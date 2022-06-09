@@ -1,25 +1,17 @@
-# Trust Registry
+# Trust Registry Service
 
-In many real-world credential exchange scenarios, a credential holder or verifier has the question “How do I know the issuer of this credential is trustworthy?”
+The Trust Registry Service exposes functionality for managing [Trust Registries](/learn/trust-registries) -- lists of authorized issuers for the various credential types within an ecosystem.
 
-Credential holders may also be uneasy about sharing information with a verifier if trust in the verifier has not been established.
+!!! warning "Under Construction"
+    This section -- and the underlying API -- is under active development.
 
-These problems can be solved by having a trusted third party vouch for the trustworthiness of a credential exchange participant.
+    We are working to define exactly how Trust Registries will be implemented within our platform; this page and API may change as we do so.
 
-A trust registry is a list of authorized issuers and verifiers in the ecosystem and the types of credentials and passes they are authorized to issue and verify.
+---
 
-<diagram/>
+## Create Governance Framework
 
-## Specification
-The Trust over IP Foundation has a specification for an interoperable trust registry. 
-This defines an API interface so that trust registries can be queried in the same way.
-Our implementation is based off of this [trust registry spec](https://github.com/trustoverip/tswg-trust-registry-tf).
-
-## API Reference
-
-### Create a Ecosystem Governance Framework
-
-An ecosystem governance framework is useful because it provides a good basis for verifying issuers and verifiers. It's a json-ld document that lists the issuers and verifiers. These issuers and verifiers are identified by a decentralized identifier. The governance framework is signified by an identifier as well. This can be used to represent the governance framework outside in the credential that it comes in. 
+Creates a Governance Framework and attaches it to the current ecosystem.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
@@ -57,10 +49,11 @@ An ecosystem governance framework is useful because it provides a good basis for
 
 {{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.AddFramework") }}
 
+---
 
-### Register Issuers
-Each entity on the governance framework, whether an issuer or a verifier, is represented by a decentralized identifier. These entities are registered to either issue or verify specific credential types. A credential type is represented as a fully qualified `type` URI, of the kind found in a JSON-LD Verifiable Credential.
-Finally, each entity must be registered on a specific governance framework. 
+## Register Issuer
+
+Registers an authorized issuer for a specific credential type (identified by its `schema_uri`).
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
@@ -101,9 +94,12 @@ Finally, each entity must be registered on a specific governance framework.
 
 {{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.RegisterMember") }}
 
+---
 
-### Unregister Issuers
-To unregister an issuer, include the credential type, the did, and the ecosystem governance framework. The credential type will be unregistered from that issuer.
+## Unregister Issuer
+
+Unregisters an issuer for a specific credential type (identified by its `schema_uri`).
+
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
@@ -144,10 +140,10 @@ To unregister an issuer, include the credential type, the did, and the ecosystem
 
 {{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.UnregisterMember") }}
 
+---
 
-
-### Check Issuer Status
-Check the status of an issuer for a credential type within a given governance framework. Returns all historical data for the given input parameter.
+## Check Issuer Status
+Check the status of an issuer for a specific credential type.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
@@ -188,8 +184,10 @@ Check the status of an issuer for a credential type within a given governance fr
 
 {{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.GetMembershipStatus") }}
 
-### Search
-Search the registry for authoritative issuer and verifiers using a custom query in a SQL format.
+---
+
+## Search
+Search the registry for registered issuers using a SQL query.
 
 {{ proto_sample_start() }}
 
@@ -228,7 +226,9 @@ Search the registry for authoritative issuer and verifiers using a custom query 
     
 {{ proto_method_tabs("services.trustregistry.v1.TrustRegistry.SearchRegistry") }}
 
-### Cache Offline Registry File
+---
+
+## Cache Offline Registry File
 
 === "Trinsic CLI"
     ```bash
