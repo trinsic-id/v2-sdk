@@ -2,10 +2,12 @@
 
 The Provider Service helps ecosystem providers with data management and onboarding. This service requires a security profile with administrative authorization access. This can be obtained during the deployment of your ecosystem infrastructure.
 
+
+---
+
 ## Create Ecosystem
 
 Creates a new provider ecosystem
-
 
 {{proto_sample_start()}}
     === "Trinsic CLI"
@@ -64,9 +66,10 @@ The response model is of type [List Ecosystem Response](../proto/index.md#listec
 {{ proto_message('services.provider.v1.ListEcosystemResponse') }} 
 -->
 
-## Onboarding
 
-### Invite Participant
+---
+
+## Invite Participant
 
 Users can be added as participants in an ecosystem by sending an invitation and a security code. This code can be sent directly to the invitee using existing platforms or via email, SMS, etc.
 When users accept this invitation, they should do so using the service methods as described in [creating wallet with provider invitation](/reference/services/wallet-service/#create-wallet-with-provider-invitation)
@@ -128,7 +131,9 @@ In Trinsic Ecosystems, participants can be Individuals or Organizations. This di
 
 The `invitation_code` in the response contains is security code that users must supply when creating their wallet. If the email method is used during onboarding, participants will receive this code in their email.
 
-### Check Invitation Status
+---
+
+## Check Invitation Status
 
 User invitation status can be checked with the provided `invitation id`. It returns an `InvitationStatusResponse` object.
 
