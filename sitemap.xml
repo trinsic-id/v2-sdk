@@ -61,6 +61,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs-v2.trinsic.id/learn/</loc>
+         <lastmod>2022-06-09</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs-v2.trinsic.id/learn/credentials/</loc>
          <lastmod>2022-06-09</lastmod>
          <changefreq>daily</changefreq>
@@ -107,6 +112,11 @@
     </url>
     <url>
          <loc>https://docs-v2.trinsic.id/reference/</loc>
+         <lastmod>2022-06-09</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs-v2.trinsic.id/reference/other/openid/</loc>
          <lastmod>2022-06-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
