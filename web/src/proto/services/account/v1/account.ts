@@ -66,7 +66,7 @@ export interface SignInRequest {
   /** Invitation code associated with this registration */
   invitationCode: string;
   /**
-   * ID of Ecosystem to sign into.
+   * ID of Ecosystem to use
    * Ignored if `invitation_code` is passed
    */
   ecosystemId: string;
@@ -164,6 +164,8 @@ export interface AccountInfoResponse {
    * This DID is used as "issuer" when signing verifiable credentials
    */
   publicDid: string;
+  /** Webhook events if any this wallet has authorized */
+  authorizedWebhooks: string[];
 }
 
 export interface ListDevicesRequest {}
@@ -224,6 +226,15 @@ export interface LoginConfirmResponse {
    */
   profile: AccountProfile | undefined;
 }
+
+/** Authorize ecosystem to receive wallet events */
+export interface AuthorizeWebhookRequest {
+  /** Events to authorize access to. Default is "*" (all events) */
+  events: string[];
+}
+
+/** Response to `AuthorizeWebhookRequest` */
+export interface AuthorizeWebhookResponse {}
 
 function createBaseSignInRequest(): SignInRequest {
   return { details: undefined, invitationCode: "", ecosystemId: "" };
@@ -671,6 +682,7 @@ function createBaseAccountInfoResponse(): AccountInfoResponse {
     deviceId: "",
     ecosystemId: "",
     publicDid: "",
+    authorizedWebhooks: [],
   };
 }
 
@@ -696,6 +708,9 @@ export const AccountInfoResponse = {
     }
     if (message.publicDid !== "") {
       writer.uint32(50).string(message.publicDid);
+    }
+    for (const v of message.authorizedWebhooks) {
+      writer.uint32(58).string(v!);
     }
     return writer;
   },
@@ -727,6 +742,9 @@ export const AccountInfoResponse = {
         case 6:
           message.publicDid = reader.string();
           break;
+        case 7:
+          message.authorizedWebhooks.push(reader.string());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -747,6 +765,9 @@ export const AccountInfoResponse = {
       deviceId: isSet(object.deviceId) ? String(object.deviceId) : "",
       ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
       publicDid: isSet(object.publicDid) ? String(object.publicDid) : "",
+      authorizedWebhooks: Array.isArray(object?.authorizedWebhooks)
+        ? object.authorizedWebhooks.map((e: any) => String(e))
+        : [],
     };
   },
 
@@ -768,6 +789,11 @@ export const AccountInfoResponse = {
     message.ecosystemId !== undefined &&
       (obj.ecosystemId = message.ecosystemId);
     message.publicDid !== undefined && (obj.publicDid = message.publicDid);
+    if (message.authorizedWebhooks) {
+      obj.authorizedWebhooks = message.authorizedWebhooks.map((e) => e);
+    } else {
+      obj.authorizedWebhooks = [];
+    }
     return obj;
   },
 
@@ -783,6 +809,7 @@ export const AccountInfoResponse = {
     message.deviceId = object.deviceId ?? "";
     message.ecosystemId = object.ecosystemId ?? "";
     message.publicDid = object.publicDid ?? "";
+    message.authorizedWebhooks = object.authorizedWebhooks?.map((e) => e) || [];
     return message;
   },
 };
@@ -1327,6 +1354,116 @@ export const LoginConfirmResponse = {
   },
 };
 
+function createBaseAuthorizeWebhookRequest(): AuthorizeWebhookRequest {
+  return { events: [] };
+}
+
+export const AuthorizeWebhookRequest = {
+  encode(
+    message: AuthorizeWebhookRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    for (const v of message.events) {
+      writer.uint32(10).string(v!);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): AuthorizeWebhookRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseAuthorizeWebhookRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.events.push(reader.string());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): AuthorizeWebhookRequest {
+    return {
+      events: Array.isArray(object?.events)
+        ? object.events.map((e: any) => String(e))
+        : [],
+    };
+  },
+
+  toJSON(message: AuthorizeWebhookRequest): unknown {
+    const obj: any = {};
+    if (message.events) {
+      obj.events = message.events.map((e) => e);
+    } else {
+      obj.events = [];
+    }
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<AuthorizeWebhookRequest>
+  ): AuthorizeWebhookRequest {
+    const message = createBaseAuthorizeWebhookRequest();
+    message.events = object.events?.map((e) => e) || [];
+    return message;
+  },
+};
+
+function createBaseAuthorizeWebhookResponse(): AuthorizeWebhookResponse {
+  return {};
+}
+
+export const AuthorizeWebhookResponse = {
+  encode(
+    _: AuthorizeWebhookResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): AuthorizeWebhookResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseAuthorizeWebhookResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): AuthorizeWebhookResponse {
+    return {};
+  },
+
+  toJSON(_: AuthorizeWebhookResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<AuthorizeWebhookResponse>
+  ): AuthorizeWebhookResponse {
+    const message = createBaseAuthorizeWebhookResponse();
+    return message;
+  },
+};
+
 export type AccountDefinition = typeof AccountDefinition;
 export const AccountDefinition = {
   name: "Account",
@@ -1383,6 +1520,15 @@ export const AccountDefinition = {
       requestType: RevokeDeviceRequest,
       requestStream: false,
       responseType: RevokeDeviceResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** Authorize Ecosystem to receive webhook events */
+    authorizeWebhook: {
+      name: "AuthorizeWebhook",
+      requestType: AuthorizeWebhookRequest,
+      requestStream: false,
+      responseType: AuthorizeWebhookResponse,
       responseStream: false,
       options: {},
     },

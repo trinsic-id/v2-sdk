@@ -4,7 +4,7 @@ import * as _m0 from "protobufjs/minimal";
 
 /** Configuration for Trinsic SDK Services */
 export interface ServiceOptions {
-  /** Trinsic API endpoint; defaults to `prod.trinsic.cloud` */
+  /** Trinsic API endpoint. Defaults to `prod.trinsic.cloud` */
   serverEndpoint: string;
   /** Trinsic API port; defaults to `443` */
   serverPort: number;
