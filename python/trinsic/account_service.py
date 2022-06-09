@@ -8,18 +8,8 @@ from trinsicokapi.proto.okapi.security.v1 import (
 )
 
 from trinsic.proto.sdk.options.v1 import ServiceOptions
-from trinsic.proto.services.account.v1 import (
-    AccountProfile,
-    AccountStub,
-    ConfirmationMethod,
-    AccountInfoResponse,
-    ListDevicesResponse,
-    RevokeDeviceResponse,
-    SignInRequest,
-    AccountInfoRequest,
-    ListDevicesRequest,
-    RevokeDeviceRequest,
-)
+from trinsic.proto.services.account.v1 import *
+from trinsic.proto.services.account.v1 import LoginConfirmResponse, LoginResponse
 from trinsic.service_base import ServiceBase
 
 
@@ -103,6 +93,12 @@ class AccountService(ServiceBase):
         profile.protection.method = ConfirmationMethod.Other
         return base64.urlsafe_b64encode(bytes(profile)).decode("utf-8")
 
+    async def login(self, *, request: LoginRequest) -> LoginResponse:
+        return await self.client.login(request)
+
+    async def login_confirm(self, *, request: LoginConfirmRequest) -> LoginConfirmResponse:
+        return await self.client.login_confirm(request)
+
     async def get_info(self) -> AccountInfoResponse:
         """
         Return the details about the currently active account.
@@ -118,3 +114,6 @@ class AccountService(ServiceBase):
         self, *, request: RevokeDeviceRequest
     ) -> RevokeDeviceResponse:
         return await self.client.revoke_device(revoke_device_request=request)
+
+    async def authorize_webhook(self, *, request: AuthorizeWebhookRequest) -> AuthorizeWebhookResponse:
+        return await self.client.authorize_webhook(authorize_webhook_request=request)

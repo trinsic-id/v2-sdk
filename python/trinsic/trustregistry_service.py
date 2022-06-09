@@ -29,6 +29,7 @@ class TrustRegistryService(ServiceBase):
 
     def __init__(
         self,
+        *,
         server_config: ServiceOptions = None,
     ):
         super().__init__(server_config)

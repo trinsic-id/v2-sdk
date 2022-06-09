@@ -1,14 +1,7 @@
 from trinsic.proto.sdk.options.v1 import ServiceOptions
-from trinsic.proto.services.provider.v1 import (
-    ProviderStub,
-    ParticipantType,
-    InviteResponse,
-    InvitationStatusResponse,
-    CreateEcosystemResponse,
-    InviteRequest,
-    InvitationStatusRequest,
-    CreateEcosystemRequest,
-)
+from trinsic.proto.services.provider.v1 import *
+from trinsic.proto.services.provider.v1 import GetOberonKeyResponse, GetEventTokenResponse, AddWebhookResponse, \
+    DeleteWebhookResponse, EcosystemInfoResponse, GenerateTokenResponse
 from trinsic.service_base import ServiceBase
 
 
@@ -19,6 +12,7 @@ class ProviderService(ServiceBase):
 
     def __init__(
         self,
+        *,
         server_config: ServiceOptions = None,
     ):
         """
@@ -28,45 +22,6 @@ class ProviderService(ServiceBase):
         """
         super().__init__(server_config)
         self.client: ProviderStub = self.stub_with_metadata(ProviderStub)
-
-    async def invite_participant(self, *, request: InviteRequest) -> InviteResponse:
-        """
-        [Invite a new participant to the provider ecosystem](/reference/services/provider-service/#invite-participants)
-        Args:
-            participant: [ParticipantType](/reference/proto/#participanttype)
-            description:
-            email:
-            phone:
-            didcomm_invitation: [InviteRequestDidCommInvitation](/reference/proto/#inviterequestdidcomminvitation)
-        Returns:
-            [InviteResponse](/reference/proto/#inviteresponse)
-        """
-
-        return await self.client.invite(invite_request=request)
-
-    # async def accept_invite(
-    #     self, invite_id: str = None, code: str = None
-    # ) -> AcceptInviteResponse:
-    #     return await self.client.accept_invite(id=invite_id, code=code)
-
-    async def invitation_status(
-        self, *, request: InvitationStatusRequest
-    ) -> InvitationStatusResponse:
-        """
-        [Check invitation status](/reference/services/provider-service/#check-invitation-status)
-        Args:
-            request:
-        Returns:
-            [InvitationStatusResponse](/reference/proto/#invitationstatusresponsestatus)
-        """
-        if (
-            not request
-            or not request.invitation_id
-            or not request.invitation_id.strip()
-        ):
-            raise ValueError("Onboarding reference ID must be set.")
-
-        return await self.client.invitation_status(invitation_status_request=request)
 
     async def create_ecosystem(
         self, *, request: CreateEcosystemRequest = None
@@ -80,4 +35,40 @@ class ProviderService(ServiceBase):
             [CreateEcosystemResponse](/reference/proto/#createecosystemresponse)
         """
         request = request or CreateEcosystemRequest()
-        return await self.client.create_ecosystem(create_ecosystem_request=request)
+        return await self.client.create_ecosystem(request)
+
+    async def update_ecosystem(self, *, request: UpdateEcosystemRequest) -> UpdateEcosystemResponse:
+        return await self.client.update_ecosystem(request)
+
+    async def add_webhook(self, *, request: AddWebhookRequest) -> AddWebhookResponse:
+        return await self.client.add_webhook(request)
+
+    async def delete_webhook(self, *, request: DeleteWebhookRequest) -> DeleteWebhookResponse:
+        return await self.client.delete_webhook(request)
+
+    async def ecosystem_info(self, *, request: EcosystemInfoRequest) -> EcosystemInfoResponse:
+        return await self.client.ecosystem_info(request)
+
+    async def generate_token(self, *, request: GenerateTokenRequest) -> GenerateTokenResponse:
+        return await self.client.generate_token(request)
+
+    async def invite(self, *, request: InviteRequest) -> InviteResponse:
+        return await self.client.invite(invite_request=request)
+
+    async def invitation_status(
+        self, *, request: InvitationStatusRequest
+    ) -> InvitationStatusResponse:
+        if (
+            not request
+            or not request.invitation_id
+            or not request.invitation_id.strip()
+        ):
+            raise ValueError("Onboarding reference ID must be set.")
+
+        return await self.client.invitation_status(invitation_status_request=request)
+
+    async def get_oberon_key(self, *, request: GetOberonKeyRequest) -> GetOberonKeyResponse:
+        return await self.client.get_oberon_key(request)
+
+    async def get_event_token(self, *, request: GetEventTokenRequest) -> GetEventTokenResponse:
+        return await self.client.get_event_token(request)
