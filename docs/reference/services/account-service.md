@@ -14,7 +14,9 @@ The Account Service allows you to create and sign in to accounts.
 
     These are effectively API keys; they should be kept safe and never published.
 
-### Sign In
+---
+
+## Sign In
 
 Sign in to an existing account, or create a new one.
 
@@ -75,7 +77,10 @@ This operation, if successful, returns an authentication token string.
 
     In the future, we will provide an SDK call to determine if an authentication token is protected.
 
-### Get Account Info
+
+---
+
+## Get Account Info
 
 Returns the account information (name, email address, phone number, etc.) used to create the currently-active account profile.
 
@@ -131,8 +136,9 @@ Returns the account information (name, email address, phone number, etc.) used t
 
     When using the SDK, this will return information for the authentication token stored in the `AccountService` instance's `ServiceOptions.AuthToken` field, which will be the account most recently logged in to, unless you have manually set this value yourself.
 
+---
 
-### Protect Account Profile
+## Protect Account Profile
 Protects the specified account profile with a security code. It is not possible to execute this call using the CLI.
 
 === "TypeScript"
@@ -182,8 +188,9 @@ Protects the specified account profile with a security code. It is not possible 
 
     Specifically, Trinsic is using Oberon to handle access tokens; protection and unprotection is handled using the blinding/unblinding features of Oberon.
 
+---
 
-### Unprotect Account Profile
+## Unprotect Account Profile
 Unprotects the specified account profile using the given code. It is not possible to execute this call using the CLI.
 
 The profile must have been previously protected using the same code that is being used to unprotect it. Profiles can be protected using any arbitrary code via the [Protect](#protect-account-profile) method.
