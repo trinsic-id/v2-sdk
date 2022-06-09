@@ -3,9 +3,8 @@ use crate::{
     grpc_client_with_auth,
     parser::vc::{IssueFromTemplateArgs, UpdateStatusArgs},
     proto::services::verifiablecredentials::v1::{
-        create_proof_request::Proof, verifiable_credential_client::VerifiableCredentialClient,
-        CheckStatusRequest, CreateProofRequest, IssueFromTemplateRequest, IssueRequest,
-        UpdateStatusRequest, VerifyProofRequest,
+        create_proof_request::Proof, verifiable_credential_client::VerifiableCredentialClient, CheckStatusRequest, CreateProofRequest,
+        IssueFromTemplateRequest, IssueRequest, UpdateStatusRequest, VerifyProofRequest,
     },
     utils::{prettify_json, read_file, write_file},
     *,
@@ -38,34 +37,24 @@ async fn issue(args: &IssueArgs, config: CliConfig) -> Result<Output, Error> {
     let response = client.issue(request).await?.into_inner();
 
     match &args.out {
-        Some(file) => write_file(
-            file,
-            &prettify_json(&response.signed_document_json)?.as_bytes(),
-        )?,
+        Some(file) => write_file(file, &prettify_json(&response.signed_document_json)?.as_bytes())?,
         None => (),
     }
 
     let mut output = Output::default();
-    output.insert(
-        "signed document".into(),
-        prettify_json(&response.signed_document_json)?,
-    );
+    output.insert("signed document".into(), prettify_json(&response.signed_document_json)?);
     Ok(output)
 }
 
 #[tokio::main]
-async fn issue_from_template(
-    args: &IssueFromTemplateArgs,
-    config: CliConfig,
-) -> Result<Output, Error> {
+async fn issue_from_template(args: &IssueFromTemplateArgs, config: CliConfig) -> Result<Output, Error> {
     let values = match &args.values_json {
         Some(x) => x.to_owned(),
         None => match &args.values_file {
             Some(x) => read_file(x)?,
             None => {
                 return Err(Error::InvalidArgument(
-                    "you must specify input values as argument or specify an input file"
-                        .to_string(),
+                    "you must specify input values as argument or specify an input file".to_string(),
                 ))
             }
         },
@@ -76,6 +65,8 @@ async fn issue_from_template(
     let request = tonic::Request::new(IssueFromTemplateRequest {
         template_id: args.template_id.clone(),
         values_json: values,
+        framework_id: args.framework_id.clone().unwrap_or_default(),
+        ..Default::default()
     });
 
     let response = client.issue_from_template(request).await?.into_inner();
@@ -86,10 +77,7 @@ async fn issue_from_template(
     }
 
     let mut output = Output::default();
-    output.insert(
-        "signed document".into(),
-        prettify_json(&response.document_json)?,
-    );
+    output.insert("signed document".into(), prettify_json(&response.document_json)?);
     Ok(output)
 }
 
@@ -138,12 +126,7 @@ async fn create_proof(args: &CreateProofArgs, config: CliConfig) -> Result<Outpu
     let request = tonic::Request::new(CreateProofRequest {
         reveal_document_json,
         proof: Some(if document_json.is_empty() {
-            Proof::ItemId(
-                args.item_id
-                    .as_ref()
-                    .ok_or(Error::MissingArguments)?
-                    .clone(),
-            )
+            Proof::ItemId(args.item_id.as_ref().ok_or(Error::MissingArguments)?.clone())
         } else {
             Proof::DocumentJson(document_json)
         }),
@@ -152,18 +135,12 @@ async fn create_proof(args: &CreateProofArgs, config: CliConfig) -> Result<Outpu
     let response = client.create_proof(request).await?.into_inner();
 
     match &args.out {
-        Some(file) => write_file(
-            file,
-            prettify_json(&response.proof_document_json)?.as_bytes(),
-        )?,
+        Some(file) => write_file(file, prettify_json(&response.proof_document_json)?.as_bytes())?,
         None => (),
     }
 
     let mut output = Output::default();
-    output.insert(
-        "proof document".into(),
-        prettify_json(&response.proof_document_json)?,
-    );
+    output.insert("proof document".into(), prettify_json(&response.proof_document_json)?);
     Ok(output)
 }
 
@@ -173,9 +150,7 @@ async fn verify_proof(args: &VerifyProofArgs, config: CliConfig) -> Result<Outpu
 
     let mut client = grpc_client_with_auth!(VerifiableCredentialClient<Channel>, config);
 
-    let request = tonic::Request::new(VerifyProofRequest {
-        proof_document_json,
-    });
+    let request = tonic::Request::new(VerifyProofRequest { proof_document_json });
 
     let response = client.verify_proof(request).await?.into_inner();
 

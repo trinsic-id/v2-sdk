@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 require 'services/service_base'
 
 module Trinsic
+  # Credential Service wrapper
   class CredentialService < ServiceBase
-
     def initialize(service_options = nil)
       super(service_options)
       if @service_options.server_use_tls
         channel_creds = GRPC::Core::ChannelCredentials.new
-        @client = Credentials_V1::VerifiableCredential::Stub.new(get_url, channel_creds)
+        @client = Credentials_V1::VerifiableCredential::Stub.new(url_string, channel_creds)
       else
-        @client = Credentials_V1::VerifiableCredential::Stub.new(get_url, :this_channel_is_insecure)
+        @client = Credentials_V1::VerifiableCredential::Stub.new(url_string, :this_channel_is_insecure)
       end
     end
 
@@ -22,8 +24,7 @@ module Trinsic
       @client.issue_from_template(request, metadata: metadata(request))
     end
 
-    def send_document(request)
-      # request = Credentials_V1::SendRequest.new(email: email, document: Common_V1::JsonPayload.new(json_string: JSON.generate(document)))
+    def send(request)
       @client.send(request, metadata: metadata(request))
     end
 

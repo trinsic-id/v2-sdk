@@ -1,16 +1,17 @@
 import { AccountService } from "../src";
 
-import {getTestServerOptions} from "./env";
+import { getTestServerOptions, setTestTimeout } from "./env";
 
 const options = getTestServerOptions();
 
 async function printGetInfo(service: AccountService, profile: string) {
   service.options.authToken = profile;
   const info = await service.info();
-  console.log("account info=", info);
+  // console.log("account info=", info);
 }
 
 describe("AccountService Unit Tests", () => {
+  setTestTimeout();
   it("protect/unprotect account profile", async () => {
     let service = new AccountService(options);
     let myProfile = await service.signIn();

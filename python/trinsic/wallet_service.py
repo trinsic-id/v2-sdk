@@ -36,7 +36,9 @@ class WalletService(ServiceBase):
             The search response object information
         """
         request = request or SearchRequest()
-        request.query = request.query or "SELECT c.id, c.type, c.data FROM c"
+        request.query = (
+            request.query or "SELECT c.id, c.type, c.data FROM c OFFSET 0 LIMIT 100"
+        )
         return await self.client.search(search_request=request)
 
     async def insert_item(self, *, request: InsertItemRequest) -> InsertItemResponse:

@@ -1,208 +1,216 @@
 
 # Template Service
 
-Credential Templates are JSON templates that help issuers save context when issuing credentials. 
+The Template Service allows you to manage and search [Credential Templates](/learn/templates).
 
-When issuing a credential through Trinsic, it's as simple as adding the attributes to the credential template and then issuing it. 
 
-These credential templates can be shared between issuers in an ecosystem. 
+!!! info "Templates are optional"
+    Templates are designed to be a helpful abstraction over the complexities of producing valid [JSON-LD Verifiable Credentials](https://www.w3.org/TR/vc-data-model/).
+
+    You aren't required to use templates; if you produce valid JSON-LD VCs yourself, they can be issued through Trinsic.
+
 
 ## Create Template
 
-Creates a new credential template. Once created, the template is saved in JSON-LD format that can be used to issue and verify credentials.
+Creates a new credential template.
 
-=== "Trinsic CLI"
-    ```bash
-    trinsic template create --name 'My Credential' --fields-data '{\"field1\":{}}'
-    ```
+In the background, Trinsic will also generate and save a valid JSON-LD Context and schema for your template.
 
-When using one of the SDKs, you must supply a [Create Credential Template Request](../proto/index.md#createcredentialtemplaterequest) object. This object follows the model below:
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic template create --name 'My Credential' --fields-data '{\"field1\":{}}'
+        ```
 
-{{ proto_obj('CreateCredentialTemplateRequest') }}
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [CreateTemplate](../../../web/test/CredentialTemplateShared.ts) inside_block:defineTemplate
+        ```
+        <!--/codeinclude-->
 
-Then you can supply it to SDK:
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [CreateTemplate](../../../dotnet/Tests/Tests.cs) inside_block:createTemplate
+        ```
+        <!--/codeinclude-->
 
-=== "TypeScript"
-    <!--codeinclude-->
-    ```typescript
-    [CreateTemplate](../../../web/test/CredentialTemplates.test.ts) inside_block:defineTemplate
-    ```
-    <!--/codeinclude-->
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [CreateTemplate](../../../python/samples/templates_demo.py) inside_block:createTemplate
+        ```
+        <!--/codeinclude-->
 
-=== "C#"
-    <!--codeinclude-->
-    ```csharp
-    [CreateTemplate](../../../dotnet/Tests/Tests.cs) inside_block:createTemplate
-    ```
-    <!--/codeinclude-->
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [CreateTemplate](../../../go/services/credentialtemplate_service_test.go) inside_block:createTemplate
+        ```
+        <!--/codeinclude-->
 
-=== "Python"
-    <!--codeinclude-->
-    ```python
-    [CreateTemplate](../../../python/samples/templates_demo.py) inside_block:createTemplate
-    ```
-    <!--/codeinclude-->
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [CreateTemplate](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:createTemplate
+        ```
+        <!--/codeinclude-->
 
-=== "Go"
-    <!--codeinclude-->
-    ```golang
-    [CreateTemplate](../../../go/services/credentialtemplate_service_test.go) inside_block:createTemplate
-    ```
-    <!--/codeinclude-->
+{{ proto_method_tabs("services.verifiablecredentials.templates.v1.CredentialTemplates.Create") }}
 
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    [CreateTemplate](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:createTemplate
-    ```
-    <!--/codeinclude-->
+## Get Template
 
-The response model is of type [Create Credential Template Response](../proto/index.md#createcredentialtemplateresponse):
+Fetches a template definition by `id`.
 
-{{ proto_obj('CreateCredentialTemplateResponse') }} 
+{{ proto_sample_start() }}
 
-## Get
+    === "Trinsic CLI"
+        ```bash
+        trinsic template get --id <TEMPLATE_ID>
+        ```
 
-Get the specified credential template through the supplied template/definition ID.
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [CreateTemplate](../../../dotnet/Tests/Tests.cs) inside_block:getCredentialTemplate
+        ```
+        <!--/codeinclude-->
 
-=== "Trinsic CLI"
-    ```bash
-    trinsic template get --id <TEMPLATE_ID>
-    ```
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [CreateTemplate](../../../python/samples/templates_demo.py) inside_block:getCredentialTemplate
+        ```
+        <!--/codeinclude-->
 
-When using one of the SDKs, you must supply a [Get Credential Template Request](../proto/index.md#getcredentialtemplaterequest) object. This object follows the model below:
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [Issue From Template](../../../go/services/credentialtemplate_service_test.go) inside_block:getCredentialTemplate
+        ```
+        <!--/codeinclude-->
 
-{{ proto_obj('GetCredentialTemplateRequest') }}
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [IssueFromTemplate](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:getCredentialTemplate
+        ```
+        <!--/codeinclude-->
 
-Then you can supply it to SDK:
+{{ proto_method_tabs("services.verifiablecredentials.templates.v1.CredentialTemplates.Get") }}
 
-=== "C#"
-    <!--codeinclude-->
-    ```csharp
-    [CreateTemplate](../../../dotnet/Tests/Tests.cs) inside_block:getCredentialTemplate
-    ```
-    <!--/codeinclude-->
+## Delete Template
 
-=== "Python"
-    <!--codeinclude-->
-    ```python
-    [CreateTemplate](../../../python/samples/templates_demo.py) inside_block:getCredentialTemplate
-    ```
-    <!--/codeinclude-->
+Deletes a credential template by `id`.
 
-=== "Go"
-    <!--codeinclude-->
-    ```golang
-    [Issue From Template](../../../go/services/credentialtemplate_service_test.go) inside_block:getCredentialTemplate
-    ```
-    <!--/codeinclude-->
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic tamplate delete --id <TEMPLATE_ID>
+        ```
 
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    [IssueFromTemplate](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:getCredentialTemplate
-    ```
-    <!--/codeinclude-->
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [CreateTemplate](../../../dotnet/Tests/Tests.cs) inside_block:deleteCredentialTemplate
+        ```
+        <!--/codeinclude-->
 
-The response model is of type [Get Credential Template Response](../proto/index.md#getcredentialtemplateresponse):
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [CreateTemplate](../../../python/samples/templates_demo.py) inside_block:deleteCredentialTemplate
+        ```
+        <!--/codeinclude-->
 
-{{ proto_obj('GetCredentialTemplateResponse') }}
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [Issue From Template](../../../go/services/credentialtemplate_service_test.go) inside_block:deleteCredentialTemplate
+        ```
+        <!--/codeinclude-->
 
-## Search / Query
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [IssueFromTemplate](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:deleteCredentialTemplate
+        ```
+        <!--/codeinclude-->
 
-Querying template data in our SDK is enabled through the use of familiar SQL syntax. All data is stored in JSON-LD format, so it can be easily searched.
-This approach allows us to give developers full control over how data is retrieved. In addition to customizable sorting, paging and filtering, developers have the ability to construct projections, combine result sets, and even run user-defined functions over their queries.
+{{ proto_method_tabs("services.verifiablecredentials.templates.v1.CredentialTemplates.Delete") }}
 
-> This endpoint will support querying using [Verifiable Presentation Request Spec <small>:material-open-in-new:</small>](https://w3c-ccg.github.io/vp-request-spec/){target=_blank}. This feature is still in development.
+## Search Templates
 
-Template searching works very similarly to Wallet searching. Please refer to [Wallet Service > Search / Query](./wallet-service.md#search--query) for more information.
+Searches all templates defined in the current ecosystem, and a `continuation_token` to paginate large result sets.
 
-### Basic Search
+If no `query` is specified, this call by default returns the first 100 templates.
 
-The default query used in the commands below returns a full wallet result set. The query is `SELECT * FROM c`.
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic wallet search \
+            --query "SELECT * FROM c"
+        ```
 
-=== "Trinsic CLI"
-    ```bash
-    trinsic template search
-    ```
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [CreateTemplate](../../../dotnet/Tests/Tests.cs) inside_block:searchCredentialTemplate
+        ```
+        <!--/codeinclude-->
 
-### SQL Search
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [CreateTemplate](../../../python/samples/templates_demo.py) inside_block:searchCredentialTemplate
+        ```
+        <!--/codeinclude-->
 
-To pass custom query to the search function, use the query parameter or the available overload.
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [Issue From Template](../../../go/services/credentialtemplate_service_test.go) inside_block:searchCredentialTemplate
+        ```
+        <!--/codeinclude-->
 
-=== "Trinsic CLI"
-    ```bash
-    trinsic wallet search \
-        --query "SELECT * FROM c"
-    ```
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [IssueFromTemplate](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:searchCredentialTemplate
+        ```
+        <!--/codeinclude-->
 
-=== "C#"
-    <!--codeinclude-->
-    ```csharp
-    [CreateTemplate](../../../dotnet/Tests/Tests.cs) inside_block:searchCredentialTemplate
-    ```
-    <!--/codeinclude-->
+{{ proto_method_tabs("services.verifiablecredentials.templates.v1.CredentialTemplates.Search") }}
 
-=== "Python"
-    <!--codeinclude-->
-    ```python
-    [CreateTemplate](../../../python/samples/templates_demo.py) inside_block:searchCredentialTemplate
-    ```
-    <!--/codeinclude-->
+### Advanced Search
 
-=== "Go"
-    <!--codeinclude-->
-    ```golang
-    [Issue From Template](../../../go/services/credentialtemplate_service_test.go) inside_block:searchCredentialTemplate
-    ```
-    <!--/codeinclude-->
+The Search endpoint supports SQL queries through the `query` parameter.
 
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    [IssueFromTemplate](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:searchCredentialTemplate
-    ```
-    <!--/codeinclude-->
+This allows for arbitrary query predicates, as well as more advanced functionality -- such as modifying the output format.
 
-## Delete
+#### Schema
 
-Deletes a credential template.
+Any table name may be used in your query (we use `c` here) -- it doesn't matter what it is.
 
-=== "Trinsic CLI"
-    ```bash
-    trinsic tamplate delete --id <TEMPLATE_ID>
-    ```
 
-When using one of the SDKs, you must supply a [Delete Credential Template Request](../proto/index.md#deletecredentialtemplaterequest) object. This object follows the model below:
+| Name        | Type   | Description                                                                  |
+| ----------- | ------ | ---------------------------------------------------------------------------- |
+| id          | string | Corresponds to the `id` returned when template was created                   |
+| type        | string | Always `VerifiableCredential`                                                |
+| ecosystemId | string | ID of ecosystem in which template resides                                    |
+| createdBy   | string | ID of account which defined the template                                     |
+| name        | string | Name provided during template creation                                       |
+| schemaUri   | string | HTTPS URL pointing to JSON Schema generated by Trinsic for this template     |
+| contextUri  | string | HTTPS URL pointing to JSON-LD Context generated by Trinsic for this template |
+| version     | int    | Version of template; increments whenever template is modified.               |
+| fields      | object | JSON Object representing the template's fields                               |
 
-{{ proto_obj('DeleteCredentialTemplateRequest') }}
 
-Then you can supply it to SDK:
+Note that `fields` is an object, not a string; thus, any of its sub-fields may be queried against.
 
-=== "C#"
-    <!--codeinclude-->
-    ```csharp
-    [CreateTemplate](../../../dotnet/Tests/Tests.cs) inside_block:deleteCredentialTemplate
-    ```
-    <!--/codeinclude-->
+!!! info "More Info"
 
-=== "Python"
-    <!--codeinclude-->
-    ```python
-    [CreateTemplate](../../../python/samples/templates_demo.py) inside_block:deleteCredentialTemplate
-    ```
-    <!--/codeinclude-->
+    This endpoint works very similarly to querying Wallet items; please see [Wallet Service > Search](/reference/services/wallet-service/#advanced-search) for more information.
 
-=== "Go"
-    <!--codeinclude-->
-    ```golang
-    [Issue From Template](../../../go/services/credentialtemplate_service_test.go) inside_block:deleteCredentialTemplate
-    ```
-    <!--/codeinclude-->
 
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    [IssueFromTemplate](../../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:deleteCredentialTemplate
-    ```
-    <!--/codeinclude-->

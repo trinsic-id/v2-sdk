@@ -42,7 +42,7 @@ public static class ServiceCollectionExtensions
         services.AddSingleton<ProviderService>(provider =>
             new(provider.GetRequiredService<ITokenProvider>(),
                 provider.GetRequiredService<IOptions<ServiceOptions>>()));
-        services.AddSingleton<CredentialsService>(provider =>
+        services.AddSingleton<CredentialService>(provider =>
             new(provider.GetRequiredService<ITokenProvider>(),
                 provider.GetRequiredService<IOptions<ServiceOptions>>()));
         services.AddSingleton<WalletService>(provider =>

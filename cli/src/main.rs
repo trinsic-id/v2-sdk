@@ -11,7 +11,7 @@ extern crate clap;
 use crate::error::Error;
 use clap::{App, AppSettings};
 use colored::Colorize;
-use parser::template;
+use parser::{template, trustregistry};
 use prost::{DecodeError, Message};
 use serde::Serialize;
 use services::config::CliConfig;
@@ -54,7 +54,8 @@ fn main() {
     let yaml = load_yaml!("cli.yaml");
     let app = App::from_yaml(yaml)
         .setting(AppSettings::SubcommandRequiredElseHelp)
-        .subcommand(template::subcommand());
+        .subcommand(template::subcommand())
+        .subcommand(trustregistry::subcommand());
     let matches = app.get_matches();
 
     let config = CliConfig::from(&matches);
@@ -74,7 +75,7 @@ fn main() {
                     Error::SerializationError => {
                         println!("{}", format!("serialization error").red())
                     }
-                    Error::UnknownCommand => unimplemented!("should not be hit"),
+                    Error::UnknownCommand => println!("{}: {}", "error".red().bold(), "unknown command or feature not implemented".bold()),
                     Error::APIError { code, message } => {
                         println!(
                             "{}: {}: {}",
@@ -83,18 +84,15 @@ fn main() {
                             format!("{}", message.to_lowercase())
                         );
                     }
-                    Error::MissingArguments => println!(
-                        "{}: {}",
-                        "error".red().bold(),
-                        "missing command arguments".bold()
-                    ),
-                    Error::InvalidArgument(x) => println!(
-                        "{}: {}: {}",
-                        "error".red().bold(),
-                        "invalid argument".bold(),
-                        x
-                    ),
-                    Error::ConnectionError => println!("{}", format!("connection error").red()),
+                    Error::MissingArguments => {
+                        println!("{}: {}", "error".red().bold(), "missing command arguments".bold())
+                    }
+                    Error::InvalidArgument(x) => {
+                        println!("{}: {}: {}", "error".red().bold(), "invalid argument".bold(), x)
+                    }
+                    Error::ConnectionError => {
+                        println!("{}", format!("connection error").red())
+                    }
                 };
             }
         },
@@ -106,10 +104,7 @@ fn main() {
                 format!("{}", err)
             );
             println!();
-            println!(
-                "{}",
-                format!("For more information try {}", format!("--help").green()).italic()
-            );
+            println!("{}", format!("For more information try {}", format!("--help").green()).italic());
         }
     }
 }
@@ -122,12 +117,7 @@ mod test {
     fn run_custom_command() {
         let yaml = load_yaml!("cli.yaml");
         let _matches = App::from_yaml(yaml)
-            .get_matches_from_safe(vec![
-                "trinsic",
-                "config",
-                "--server-endpoint",
-                "example.com",
-            ])
+            .get_matches_from_safe(vec!["trinsic", "config", "--server-endpoint", "example.com"])
             .unwrap();
 
         // process(yaml, matches)

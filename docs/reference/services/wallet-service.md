@@ -1,184 +1,168 @@
 # Wallet Service
 
-The wallet service is the main interface for interacting with a cloud wallet. The service endpoints are designed to closely match the recommendations of the [Universal Wallet 2020 <small>:material-open-in-new:</small>](https://w3c-ccg.github.io/universal-wallet-interop-spec/){target=_blank} specification by W3C Community Credentials Group. The service exposes a gRPC interface and a set of data contracts as described in the specification. Our intention with this design is to bring it closer to interoperability as more implementations of this wallet appear in production.
+The wallet service is the main interface for interacting with a cloud wallet. 
 
 !!! question "Wallets vs Accounts"
     Wallets and accounts are related and often interchangeable -- each account has an associated wallet, and operations on a wallet are performed using an account's access token.
 
     Every account has exactly one wallet. 
 
+!!! info "Wallet Standard"
+    This service is designed to follow the recommendations of the [Universal Wallet 2020 <small>:material-open-in-new:</small>](https://w3c-ccg.github.io/universal-wallet-interop-spec/){target=_blank} specification by the W3C Community Credentials Group.
+
 
 ## Create Wallet
 
-Wallets can be created directly by the user or through an invitation by the ecosystem provider. Depending on the ecosystem settings, direct wallet creation may not be enabled for your provider. The wallet is created automatically upon user signin. For more information on that, see the link below:
+A wallet is created whenever an account is created.
 
-- [Account Sign In](./account-service.md#sign-in)
+Therefore, to create a wallet, you'll need to [create a new account](./account-service.md#sign-in).
 
 ## Insert Item
 
-Trinsic supports the ability to insert verifiable credentials into a wallet simply using JSON data.
+Stores a credential (or any other JSON object) in a wallet.
 
-=== "Trinsic CLI"
-    ```bash
-    trinsic wallet insert-item --item <INPUT_JSON_FILE>
-    ```
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic wallet insert-item --item <INPUT_JSON_FILE>
+        ```
 
-When using an SDK to perform this operation, you will need to supply an [Insert Item Request](../proto/#insertitemrequest) object that follows the structure below:
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [VerifyProof](../../../web/test/WalletService.test.ts) inside_block:insertItemWallet
+        ```
+        <!--/codeinclude-->
 
-{{ proto_obj('InsertItemRequest') }}
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:insertItemWallet
+        ```
+        <!--/codeinclude-->
 
-Then you can supply it to the SDKs:
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [Insert Item Wallet](../../../python/samples/wallet_demo.py) inside_block:insertItemWallet
+        ```
+        <!--/codeinclude-->
 
-=== "TypeScript"
-    <!--codeinclude-->
-    ```typescript
-    [VerifyProof](../../../web/test/WalletService.test.ts) inside_block:insertItemWallet
-    ```
-    <!--/codeinclude-->
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [RegisterIssuer](../../../go/services/services_test.go) inside_block:insertItemWallet
+        ```
+        <!--/codeinclude-->
 
-=== "C#"
-    <!--codeinclude-->
-    ```csharp
-    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:insertItemWallet
-    ```
-    <!--/codeinclude-->
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [RegisterIssuer](../../../java/src/test/java/trinsic/WalletsDemo.java) inside_block:insertItemWallet
+        ```
+        <!--/codeinclude-->
 
-=== "Python"
-    <!--codeinclude-->
-    ```python
-    [Insert Item Wallet](../../../python/samples/vaccine_demo.py) inside_block:insertItemWallet
-    ```
-    <!--/codeinclude-->
+{{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.InsertItem") }}
 
-=== "Go"
-    <!--codeinclude-->
-    ```golang
-    [RegisterIssuer](../../../go/services/services_test.go) inside_block:insertItemWallet
-    ```
-    <!--/codeinclude-->
-
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    [RegisterIssuer](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:insertItemWallet
-    ```
-    <!--/codeinclude-->
-
-The output of this method will be a unique `itemId` that can be used as input where required. The response model looks like this:
-
-{{ proto_obj('InsertItemResponse') }}
-
-## Search / Query
-
-Querying wallet data in our SDK is enabled through the use of familiar SQL syntax. All data is stored in JSON-LD format, so it can be easily searched.
-This approach allows us to give developers full control over how data is retrieved. In addition to customizable sorting, paging and filtering, developers have the ability to construct projections, combine result sets, and even run user-defined functions over their queries.
-
-> This endpoint will support querying using [Verifiable Presentation Request Spec <small>:material-open-in-new:</small>](https://w3c-ccg.github.io/vp-request-spec/){target=_blank}. This feature is still in development.
-
-### Basic Search
-
-The default query used in the commands below returns a full wallet result set. The query is `SELECT * FROM c`.
-
-=== "Trinsic CLI"
-    ```bash
-    trinsic wallet search
-    ```
-
-=== "TypeScript"
-    <!--codeinclude-->
-    ```typescript
-    [SearchWallet](../../../web/test/WalletService.test.ts) inside_block:searchWallet
-    ```
-    <!--/codeinclude-->
-
-=== "C#"
-    <!--codeinclude-->
-    ```csharp
-    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:searchWallet
-    ```
-    <!--/codeinclude-->
-
-=== "Python"
-    <!--codeinclude-->
-    ```python
-    [Insert Item Wallet](../../../python/samples/vaccine_demo.py) inside_block:searchWallet
-    ```
-    <!--/codeinclude-->
-
-=== "Go"
-    <!--codeinclude-->
-    ```golang
-    [RegisterIssuer](../../../go/services/services_test.go) inside_block:searchWallet
-    ```
-    <!--/codeinclude-->
-
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    [RegisterIssuer](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:searchWallet
-    ```
-    <!--/codeinclude-->
-
-=== "Ruby"
-    <!--codeinclude-->
-    ```ruby
+!!! question "What can be stored in a wallet?"
     
-    ```
-    <!--/codeinclude-->
+    Wallets are mainly intended to hold [Verifiable Credentials](/learn/credentials){target=_blank}, but can technically
+    store any JSON blob.
 
-### SQL Search
+    If you store a Verifiable Credential in a Wallet, ensure that its `item_type` is `VerifiableCredential`.
 
-To pass custom query to the search function, use the query parameter or the available overload.
+    Otherwise, ensure its `item_type` is _not_ `VerifiableCredential`.
 
-=== "Trinsic CLI"
-    ```bash
-    trinsic wallet search \
-        --query "SELECT * FROM c WHERE c.type = 'VerifiableCredential'"
-    ```
 
-=== "TypeScript"
-    <!--codeinclude-->
-    ```typescript
-    [VerifyProof](../../../web/test/WalletService.test.ts) inside_block:searchWalletSQL
-    ```
-    <!--/codeinclude-->
+## Search Wallet
 
-=== "C#"
-    <!--codeinclude-->
-    ```csharp
-    [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:searchWalletSQL
-    ```
-    <!--/codeinclude-->
+Searches a wallet, returning all matching items, and a `continuation_token` to paginate large result sets.
 
-=== "Python"
-    <!--codeinclude-->
-    ```python
-    [Insert Item Wallet](../../../python/samples/vaccine_demo.py) inside_block:searchWalletSQL
-    ```
-    <!--/codeinclude-->
+If no `query` is specified, this call by default returns the first 100 items in the wallet.
 
-=== "Go"
-    <!--codeinclude-->
-    ```golang
-    [RegisterIssuer](../../../go/services/services_test.go) inside_block:searchWalletSQL
-    ```
-    <!--/codeinclude-->
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic wallet search
+        ```
 
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    [RegisterIssuer](../../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:searchWalletSQL
-    ```
-    <!--/codeinclude-->
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [SearchWallet](../../../web/test/WalletService.test.ts) inside_block:searchWalletBasic
+        ```
+        <!--/codeinclude-->
 
-=== "Ruby"
-    <!--codeinclude-->
-    ```ruby
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:searchWalletBasic
+        ```
+        <!--/codeinclude-->
+
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [Insert Item Wallet](../../../python/samples/wallet_demo.py) inside_block:searchWalletBasic
+        ```
+        <!--/codeinclude-->
+
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [RegisterIssuer](../../../go/services/services_test.go) inside_block:searchWalletBasic
+        ```
+        <!--/codeinclude-->
+
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [RegisterIssuer](../../../java/src/test/java/trinsic/WalletsDemo.java) inside_block:searchWalletBasic
+        ```
+        <!--/codeinclude-->
+
+    === "Ruby"
+        <!--codeinclude-->
+        ```ruby
+        
+        ```
+        <!--/codeinclude-->
     
-    ```
-    <!--/codeinclude-->
+{{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.Search") }}
 
-### Common SQL Queries
+
+!!! info "Verifiable Presentation Request Spec"
+    In the future, this endpoint will support the [Verifiable Presentation Request Spec <small>:material-open-in-new:</small>](https://w3c-ccg.github.io/vp-request-spec/){target=_blank}.
+
+### Advanced Search
+
+The Search endpoint supports SQL queries through the `query` parameter.
+
+This allows for arbitrary query predicates, as well as more advanced functionality -- such as modifying the output format.
+
+#### Schema
+
+Any table name may be used in your query (we use `c` here) -- it doesn't matter what it is.
+
+
+| Name | Type   | Description                                                               |
+| ---- | ------ | ------------------------------------------------------------------------- |
+| id   | string | Corresponds to the `item_id` returned when item was inserted into wallet  |
+| type | string | Specified via `item_type` when item was inserted into wallet              |
+| data | object | The JSON object passed via `item_json` when item was inserted into wallet |
+
+
+Note that `data` is an object, not a string; thus, any of its sub-fields may be queried against.
+
+For example, `SELECT * FROM c WHERE c.data.someField = 'Hello, World!'` would match against the following JSON object inserted via [InsertItem](#insert-item):
+
+```json
+{ 
+    "someField": "Hello, World!"
+}
+```
+
+#### Common SQL Queries
 
 #### Paging
 

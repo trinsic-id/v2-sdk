@@ -1,23 +1,27 @@
+# frozen_string_literal: true
+
 require 'services/service_base'
 require 'json'
+require 'uri'
 
 module Trinsic
+  # Trust Registry Service wrapper
   class TrustRegistryService < ServiceBase
-
     def initialize(service_options = nil)
       super(service_options)
       if @service_options.server_use_tls
         channel_creds = GRPC::Core::ChannelCredentials.new
-        @client = TrustRegistry_V1::TrustRegistry::Stub.new(get_url, channel_creds)
+        @client = TrustRegistry_V1::TrustRegistry::Stub.new(url_string, channel_creds)
       else
-        @client = TrustRegistry_V1::TrustRegistry::Stub.new(get_url, :this_channel_is_insecure)
+        @client = TrustRegistry_V1::TrustRegistry::Stub.new(url_string, :this_channel_is_insecure)
       end
     end
 
-    def register_governance_framework(request)
-      # TODO - verify uri
-      # request = TrustRegistry_V1::AddFrameworkRequest.new(governance_framework: governance_framework,
-      #                                                     description: description)
+    def add_framework(request)
+      # verify uri
+      uri = URI(request.governance_framework_uri)
+      raise 'Invalid governance framework uri' unless uri.scheme
+
       @client.add_framework(request, metadata: metadata(request))
     end
 
@@ -25,38 +29,22 @@ module Trinsic
       @client.remove_framework(request, metadata: metadata(request))
     end
 
-    def register_issuer(request)
-      @client.register_issuer(request, metadata: metadata(request))
+    def register_member(request)
+      @client.register_member(request, metadata: metadata(request))
     end
 
-    def register_verifier(request)
-      @client.register_verifier(request, metadata: metadata(request))
+    def unregister_member(request)
+      @client.unregister_member(request, metadata: metadata(request))
     end
 
-    def unregister_issuer(request)
-      @client.unregister_issuer(request, metadata: metadata(request))
-    end
-
-    def unregister_verifier(request)
-      @client.unregister_verifier(request, metadata: metadata(request))
-    end
-
-    def check_issuer_status(request)
-      response = @client.check_issuer_status(request, metadata: metadata(request))
-      response.status
-    end
-
-    def check_verifier_status(request)
-      response = @client.check_verifier_status(request, metadata: metadata(request))
-      response.status
+    def get_membership_status(request)
+      @client.get_membership_status(request, metadata: metadata(request))
     end
 
     def search_registry(request = nil)
-      # request = TrustRegistry_V1::SearchRegistryRequest.new(query: query)
       request ||= TrustRegistry_V1::SearchRegistryRequest.new
-      request.query = request.query.empty? ? "SELECT * FROM c" : request.query
+      request.query = request.query.empty? ? 'SELECT * FROM c OFFSET 0 LIMIT 100' : request.query
       @client.search_registry(request, metadata: metadata(request))
-      # JSON.parse(response.items_json)
     end
 
     def fetch_data(request)

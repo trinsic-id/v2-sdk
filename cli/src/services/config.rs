@@ -119,12 +119,7 @@ impl CliConfig {
     pub fn save(&self) -> Result<(), Error> {
         let config_file = data_path()?.join(CONFIG_FILENAME);
 
-        let mut file = OpenOptions::new()
-            .create(true)
-            .truncate(true)
-            .read(true)
-            .write(true)
-            .open(config_file)?;
+        let mut file = OpenOptions::new().create(true).truncate(true).read(true).write(true).open(config_file)?;
 
         let buffer = toml::to_vec(self)?;
         file.write_all(&buffer)?;
@@ -135,10 +130,7 @@ impl CliConfig {
 }
 
 impl Interceptor for CliConfig {
-    fn call(
-        &mut self,
-        mut request: tonic::Request<()>,
-    ) -> Result<tonic::Request<()>, tonic::Status> {
+    fn call(&mut self, mut request: tonic::Request<()>) -> Result<tonic::Request<()>, tonic::Status> {
         if self.options.auth_token.is_empty() {
             return Err(tonic::Status::invalid_argument("missing auth token"));
         }
@@ -146,19 +138,14 @@ impl Interceptor for CliConfig {
         // read the currently configured profile
         let profile_data = base64::decode_config(&self.options.auth_token, base64::URL_SAFE)
             .map_err(|_| tonic::Status::internal("unable to deserialize auth token"))?;
-        let profile: AccountProfile = AccountProfile::from_vec(&profile_data)
-            .map_err(|_| tonic::Status::internal("unable to deserialize auth token"))?;
+        let profile: AccountProfile =
+            AccountProfile::from_vec(&profile_data).map_err(|_| tonic::Status::internal("unable to deserialize auth token"))?;
 
         // generate nonce by combining the current unix epoch timestamp
         // and a hash of the request payload
         let nonce = Nonce {
-            timestamp: SystemTime::now()
-                .duration_since(UNIX_EPOCH)
-                .unwrap()
-                .as_millis() as i64,
-            request_hash: blake3::hash(&request.get_ref().encode_to_vec())
-                .as_bytes()
-                .to_vec(),
+            timestamp: SystemTime::now().duration_since(UNIX_EPOCH).unwrap().as_millis() as i64,
+            request_hash: blake3::hash(&request.get_ref().encode_to_vec()).as_bytes().to_vec(),
         };
 
         // generate proof of knowledge using the stored token and the generated nonce
@@ -184,9 +171,7 @@ impl Interceptor for CliConfig {
         }
 
         // append auhtorization header
-        request
-            .metadata_mut()
-            .insert("authorization", header.parse().unwrap());
+        request.metadata_mut().insert("authorization", header.parse().unwrap());
         Ok(request)
     }
 }

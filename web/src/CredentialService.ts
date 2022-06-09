@@ -1,6 +1,5 @@
 import ServiceBase from "./ServiceBase";
 import {
-  AccountDefinition,
   CheckStatusRequest,
   CheckStatusResponse,
   CreateProofRequest,
@@ -19,7 +18,7 @@ import {
   VerifyProofResponse,
 } from "./proto";
 
-import type {Client as BrowserClient} from "nice-grpc-web";
+import type { Client as BrowserClient } from "nice-grpc-web";
 
 export class CredentialService extends ServiceBase {
   client: BrowserClient<typeof VerifiableCredentialDefinition>;
@@ -27,9 +26,7 @@ export class CredentialService extends ServiceBase {
   constructor(options?: ServiceOptions) {
     super(options);
 
-    this.client = this.createClient(
-      VerifiableCredentialDefinition
-    );
+    this.client = this.createClient(VerifiableCredentialDefinition);
   }
 
   public async issueCredential(request: IssueRequest): Promise<IssueResponse> {

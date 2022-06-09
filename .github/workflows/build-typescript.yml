@@ -23,10 +23,11 @@ on:
 jobs:
   build_test:
     name: Test
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
         target: [ "web" ]
         node-version: [ 14, 16 ]
         node-http-protocol: ["true", "false"]
@@ -36,6 +37,8 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: arduino/setup-protoc@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/setup-node@v3
         name: Setup Node v${{ matrix.node-version }}
         with:
@@ -51,3 +54,9 @@ jobs:
           TEST_SERVER_USE_TLS: ${{ secrets.TEST_SERVER_USE_TLS }}
           TEST_SERVER_NODE_PROTOCOL: ${{ matrix.node-http-protocol }}
         shell: pwsh
+      - name: "Upload coverage to Codecov"
+        uses: codecov/codecov-action@v2
+        with:
+          fail_ci_if_error: true
+          directory: web
+          token: ${{ secrets.CODECOV_TOKEN }}

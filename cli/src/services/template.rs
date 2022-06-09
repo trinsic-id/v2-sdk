@@ -3,9 +3,8 @@ use crate::{
     grpc_channel, grpc_client_with_auth,
     parser::template::*,
     proto::services::verifiablecredentials::templates::v1::{
-        credential_templates_client::CredentialTemplatesClient, CreateCredentialTemplateRequest,
-        DeleteCredentialTemplateRequest, GetCredentialTemplateRequest,
-        ListCredentialTemplatesRequest, SearchCredentialTemplatesRequest,
+        credential_templates_client::CredentialTemplatesClient, CreateCredentialTemplateRequest, DeleteCredentialTemplateRequest,
+        GetCredentialTemplateRequest, ListCredentialTemplatesRequest, SearchCredentialTemplatesRequest,
     },
     services::CliConfig,
     utils::{prettify_json, read_file},
@@ -35,11 +34,7 @@ async fn create(args: &CreateTemplateArgs, config: &CliConfig) -> Result<Output,
         Some(data) => serde_json::from_str(&data),
         None => match &args.fields_file {
             Some(file) => serde_json::from_str(&read_file(file)?),
-            None => {
-                return Err(Error::InvalidArgument(
-                    "you must specify input fields file".to_string(),
-                ))
-            }
+            None => return Err(Error::InvalidArgument("you must specify input fields file".to_string())),
         },
     };
 
@@ -61,9 +56,7 @@ async fn create(args: &CreateTemplateArgs, config: &CliConfig) -> Result<Output,
 async fn get(args: &GetTemplateArgs, config: &CliConfig) -> Result<Output, Error> {
     let mut client = grpc_client_with_auth!(CredentialTemplatesClient<Channel>, config.to_owned());
 
-    let request = tonic::Request::new(GetCredentialTemplateRequest {
-        id: args.id.clone(),
-    });
+    let request = tonic::Request::new(GetCredentialTemplateRequest { id: args.id.clone() });
 
     let response = client.get(request).await?.into_inner();
 
@@ -110,9 +103,7 @@ async fn search(args: &SearchTemplatesArgs, config: &CliConfig) -> Result<Output
 async fn delete(args: &DeleteTemplateArgs, config: &CliConfig) -> Result<Output, Error> {
     let mut client = grpc_client_with_auth!(CredentialTemplatesClient<Channel>, config.to_owned());
 
-    let request = tonic::Request::new(DeleteCredentialTemplateRequest {
-        id: args.id.clone(),
-    });
+    let request = tonic::Request::new(DeleteCredentialTemplateRequest { id: args.id.clone() });
 
     let _response = client.delete(request).await?.into_inner();
 

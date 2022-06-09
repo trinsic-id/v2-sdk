@@ -1,21 +1,23 @@
+# frozen_string_literal: true
+
 require 'services/service_base'
 
 module Trinsic
+  # Provider Service wrapper
   class ProviderService < ServiceBase
-
     def initialize(service_options = nil)
       super(service_options)
       if @service_options.server_use_tls
         channel_creds = GRPC::Core::ChannelCredentials.new
-        @client = Provider_V1::Provider::Stub.new(get_url, channel_creds)
+        @client = Provider_V1::Provider::Stub.new(url_string, channel_creds)
       else
-        @client = Provider_V1::Provider::Stub.new(get_url, :this_channel_is_insecure)
+        @client = Provider_V1::Provider::Stub.new(url_string, :this_channel_is_insecure)
       end
     end
 
     def invite_participant(request)
       # Ensure a field has been set
-      raise('Contact method must be set') if request.email.nil? and request.phone.nil? and request.didcomm_invitation.nil?
+      raise('Contact method must be set') if request.email.nil? && request.phone.nil? && request.didcomm_invitation.nil?
 
       @client.invite(request, metadata: metadata(request))
     end
@@ -31,8 +33,9 @@ module Trinsic
       @client.invitation_status(request, metadata: metadata(request))
     end
 
-    def create_ecosystem(request)
-      @client.create_ecosystem(request, metadata: metadata(request))
+    def create_ecosystem(request = nil)
+      request ||= Provider_V1::CreateEcosystemRequest.new
+      @client.create_ecosystem(request)
     end
 
     # def list_ecosystems(request = nil)

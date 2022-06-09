@@ -7,27 +7,23 @@ from samples.provider_demo import provider_demo
 from samples.templates_demo import templates_demo
 from samples.trustregistry_demo import trustregistry_demo
 from samples.vaccine_demo import vaccine_demo
+from trinsic.account_service import AccountService
 from trinsic.proto.services.common.v1 import ResponseStatus
 from trinsic.proto.services.provider.v1 import InviteRequest, InvitationStatusRequest
 from trinsic.proto.services.trustregistry.v1 import (
     AddFrameworkRequest,
-    GovernanceFramework,
 )
-from trinsic.account_service import AccountService
 from trinsic.provider_service import ProviderService
 from trinsic.service_base import ResponseStatusException
 from trinsic.trinsic_util import trinsic_config
 from trinsic.trustregistry_service import TrustRegistryService
 
 
-# Due to some issues with python and async io test cases, we have to run each sample in a separate asyncio event loop.
-
-
 class TestServices(unittest.IsolatedAsyncioTestCase):
-    def __init__(self, method_name='runTest'):
+    def __init__(self, method_name="runTest"):
         super().__init__(methodName=method_name)
         # https://stackoverflow.com/questions/45600579/asyncio-event-loop-is-closed-when-getting-loop
-        if platform.system() == 'Windows':
+        if platform.system() == "Windows":
             asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
     def test_python_platform(self):
@@ -74,11 +70,9 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
     async def test_trustregistryservice_input_validation(self):
         cred_service = TrustRegistryService(server_config=trinsic_config())
         with self.assertRaises(ValueError) as ve:
-            await cred_service.register_governance_framework(
+            await cred_service.add_framework(
                 request=AddFrameworkRequest(
-                    governance_framework=GovernanceFramework(
-                        governance_framework_uri="", description="invalid framework"
-                    )
+                    governance_framework_uri="", description="invalid framework"
                 )
             )
 
@@ -96,13 +90,12 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
         my_protected_profile = account_service.protect(
             profile=my_profile, security_code=code
         )
-        with self.assertRaises(Exception) as ve:
-            await self.print_get_info(account_service, my_protected_profile)
-
         my_unprotected_profile = account_service.unprotect(
             profile=my_protected_profile, security_code=code
         )
         # }
+        with self.assertRaises(Exception) as ve:
+            await self.print_get_info(account_service, my_protected_profile)
         await self.print_get_info(account_service, my_unprotected_profile)
 
     @staticmethod

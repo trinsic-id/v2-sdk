@@ -51,7 +51,7 @@ class TemplateService(ServiceBase):
     async def search(
         self, *, request: SearchCredentialTemplatesRequest
     ) -> SearchCredentialTemplatesResponse:
-        request.query = request.query or "SELECT * from c"
+        request.query = request.query or "SELECT * from c OFFSET 0 LIMIT 100"
         return await self.client.search(search_credential_templates_request=request)
 
     async def delete(

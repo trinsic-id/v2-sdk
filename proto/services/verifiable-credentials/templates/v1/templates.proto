@@ -1,63 +1,106 @@
 syntax = "proto3";
 
 package services.verifiablecredentials.templates.v1;
+
+import "services/options/field-options.proto";
+
 option csharp_namespace = "Trinsic.Services.VerifiableCredentials.Templates.V1";
 option java_package = "trinsic.services.verifiablecredentials.templates.v1";
-option go_package = "github.com/trinsic-id/sdk";
+option go_package = "services/verifiablecredentials/templates/v1/template";
 
+
+
+// Request to fetch a template by ID
 message GetCredentialTemplateRequest {
+  // ID of template to fetch
   string id = 1;
 }
 
+// Response to `GetCredentialTemplateRequest`
 message GetCredentialTemplateResponse {
+  // Template fetched by ID
   TemplateData template = 1;
 }
 
+// Request to search templates using a SQL query
 message SearchCredentialTemplatesRequest {
-  string query = 1; // SELECT * FROM c WHERE c.name = 'Diploma'
-  string continuation_token = 2;
+  // SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
+  string query = 1;
+
+  // Token provided by previous `SearchCredentialTemplatesResponse`
+  // if more data is available for query
+  string continuation_token = 2 [(options.optional)=true];
 }
 
+// Response to `SearchCredentialTemplatesRequest`
 message SearchCredentialTemplatesResponse {
+  // Raw JSON data returned from query
   string items_json = 1;
+  // Whether more results are available for this query via `continuation_token`
   bool has_more = 2;
-  int32 count = 3;
+  // Count of items in `items_json`
+  // int32 count = 3; unpopulated and unused
+  // Token to fetch next set of results via `SearchCredentialTemplatesRequest`
   string continuation_token = 4;
 }
 
+// Request to list templates using a SQL query
 message ListCredentialTemplatesRequest {
-  string query = 1; // SELECT * FROM c WHERE c.name = 'Diploma'
-  string continuation_token = 2;
+  // SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
+  string query = 1;
+
+  // Token provided by previous `ListCredentialTemplatesResponse`
+  // if more data is available for query
+  string continuation_token = 2 [(options.optional)=true];
 }
 
+// Response to `ListCredentialTemplatesRequest` 
 message ListCredentialTemplatesResponse {
+  // Templates found by query
   repeated TemplateData templates = 1;
+  // Whether more results are available for this query via `continuation_token`
   bool has_more_results = 2;
+  // Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
   string continuation_token = 3;
 }
 
+// Request to delete a template by ID
 message DeleteCredentialTemplateRequest {
+  // ID of template to delete
   string id = 1;
 }
 
+// Response to `DeleteCredentialTemplateRequest`
 message DeleteCredentialTemplateResponse {}
 
-// Request to create new template
+// Request to create a new template
 message CreateCredentialTemplateRequest {
+  // Name of new template
   string name = 1;
+  // Fields which compose the template
   map<string, TemplateField> fields = 2;
+  // Whether credentials may be issued against this template which have fields
+  // not specified in `fields`
   bool allow_additional_fields = 3;
 }
+
+// Response to `CreateCredentialTemplateRequest`
 message CreateCredentialTemplateResponse {
+  // Created template
   TemplateData data = 1;
 }
 
+// A field defined in a template
 message TemplateField {
+  // Human-readable description of the field
   string description = 2;
+  // Whether this field may be omitted when a credential is issued against the template
   bool optional = 3;
+  // The type of the field
   FieldType type = 4;
 }
 
+// Valid types for credential fields
 enum FieldType {
   STRING = 0;
   NUMBER = 1;
@@ -65,27 +108,43 @@ enum FieldType {
   DATETIME = 4;
 }
 
+// Unused
 message GetTemplateRequest {
   string id = 1;
 }
+// Unused
 message GetTemplateResponse {
   TemplateData data = 1;
 }
+// Unused
 message ListTemplatesRequest {}
+// Unused
 message ListTemplatesResponse {
   repeated TemplateData templates = 1;
 }
 
+// Credential Template
 message TemplateData {
+  // Template ID
   string id = 1           [json_name="id"];
+  // Template name
   string name = 2;
+  // Template version number
   int32 version = 3;
+  // Fields defined for the template
   map<string, TemplateField> fields = 4;
+  // Whether credentials issued against this template may 
+  // contain fields not defined by template
   bool allow_additional_fields = 5;
+  // URI pointing to template JSON schema document
   string schema_uri = 6;
+  // URI pointing to template JSON-LD context document
   string context_uri = 7;
+  // ID of ecosystem in which template resides
   string ecosystem_id = 8 [json_name="ecosystemId"];
+  // Template type (`VerifiableCredential`)
   string type = 9         [json_name="type"];
+  // ID of template creator
   string created_by = 10  [json_name="createdBy"];
 }
 

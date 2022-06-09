@@ -15,17 +15,13 @@ Add the required dependencies from [Nuget.org <small>:material-open-in-new:</sma
     ```
 === ".NET CLI"
     ```bash
-    dotnet add package Trinsic --prerelease
-    dotnet add package Okapi.Net --prerelease
+    dotnet add package Trinsic
     ```
 === "PackageReference"
     ```
     <PackageReference Include="Trinsic" />
-    <PackageReference Include="Okapi.Net" />
     ```
-
-
-    This will not be required in future version and only package `Trinsic` can be used.
+    
 
 ## Configuration
 

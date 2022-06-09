@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'version'
 require 'grpc'
 require 'okapi'
@@ -15,8 +17,8 @@ require 'services/common/v1/common_pb'
 require 'sdk/options/v1/options_pb'
 require 'security'
 
+# Module for all Trinsic servers
 module Trinsic
-
   Common_V1 = Services::Common::V1
   Account_V1 = Services::Account::V1
   Credentials_V1 = Services::Verifiablecredentials::V1
@@ -26,13 +28,15 @@ module Trinsic
   TrustRegistry_V1 = Services::Trustregistry::V1
   Wallet_V1 = Services::Universalwallet::V1
 
-  def self.trinsic_server(auth_token = nil)
-    server_endpoint = ENV['TEST_SERVER_ENDPOINT'] || 'prod.trinsic.cloud'
-    server_port = ENV['TEST_SERVER_PORT'] || '443'
-    server_use_tls = ENV['TEST_SERVER_USE_TLS'] || 'true'
+  def self.trinsic_server(auth_token = nil, ecosystem_id = nil)
+    server_endpoint = ENV.fetch('TEST_SERVER_ENDPOINT', 'prod.trinsic.cloud')
+    server_port = ENV.fetch('TEST_SERVER_PORT', '443')
+    server_use_tls = ENV.fetch('TEST_SERVER_USE_TLS', 'true')
     server_authtoken = auth_token || ''
-    server_default_ecosystem = ENV['TEST_SERVER_ECOSYSTEM'] || 'default'
-    Options_V1::ServiceOptions.new(server_endpoint: server_endpoint, server_port: server_port.to_i, server_use_tls: server_use_tls.downcase != 'false', auth_token: server_authtoken, default_ecosystem: server_default_ecosystem)
+    server_default_ecosystem = ecosystem_id || ENV.fetch('TEST_SERVER_ECOSYSTEM', 'default')
+    Options_V1::ServiceOptions.new(server_endpoint: server_endpoint, server_port: server_port.to_i,
+                                   server_use_tls: server_use_tls.downcase != 'false', auth_token: server_authtoken,
+                                   default_ecosystem: server_default_ecosystem)
   end
 
   class Error < StandardError; end

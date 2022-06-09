@@ -2,30 +2,33 @@ syntax = "proto3";
 package services.account.v1;
 
 option csharp_namespace = "Trinsic.Services.Account.V1";
-option go_package = "github.com/trinsic-id/sdk";
+option go_package = "services/account/v1/account";
 option java_package = "trinsic.services.account.v1";
 
-// Request for creating new account
+import "services/options/field-options.proto";
+
+// Request for creating or signing into an account
 message SignInRequest {
     // Account registration details
     AccountDetails details = 1;
+
     // Invitation code associated with this registration
-    // This field is optional.
-    string invitation_code = 2;
-    // EcosystemId to sign in. This field is optional
-    // and will be ignored if invitation_code is passed
-    string ecosystem_id = 3;
+    string invitation_code = 2 [(options.optional)=true];
+
+    // ID of Ecosystem to use
+    // Ignored if `invitation_code` is passed
+    string ecosystem_id = 3 [(options.optional)=true];
 }
 
-// Account Registration Details
+// Account registration details
 message AccountDetails
 {
-    // Account name (optional)
-    string name = 1;
-    // Email account (required)
+    // Account name
+    string name = 1 [(options.optional)=true];
+    // Email account
     string email = 2;
-    // SMS number including country code (optional)
-    string sms = 3;
+    // SMS number including country code
+    string sms = 3 [(options.optional)=true];
 }
 
 // Response for creating new account
@@ -72,7 +75,7 @@ message AccountProfile {
     // If token protection is enabled, implementations must supply
     // protection secret before using the token for authentication.
     TokenProtection protection = 4;
-    
+
 }
 
 // Token protection info
@@ -84,19 +87,28 @@ message TokenProtection {
     ConfirmationMethod method = 2;
 }
 
-message InfoRequest {}
-message InfoResponse {
+// Request for information about the account used to make the request
+message AccountInfoRequest {}
+
+// Information about the account used to make the request
+message AccountInfoResponse {
     // The account details associated with
     // the calling request context
     AccountDetails details = 1;
-    // any ecosystems the account has access to
+    // Use `ecosystem_id` instead
     repeated AccountEcosystem ecosystems = 2 [deprecated = true];
-    // The wallet id associated with this account
+    // The wallet ID associated with this account
     string wallet_id = 3;
-    // The device id associated with this account
+    // The device ID associated with this account session
     string device_id = 4;
-    // The ecosystem id associated with this account
+    // The ecosystem ID within which this account resides
     string ecosystem_id = 5;
+    // The public DID associated with this account.
+    // This DID is used as "issuer" when signing verifiable credentials
+    string public_did = 6;
+
+    // Webhook events if any this wallet has authorized
+    repeated string authorized_webhooks = 7;
 }
 
 message ListDevicesRequest {}
@@ -112,15 +124,70 @@ message AccountEcosystem {
     string uri = 4;
 }
 
+// Login
+
+message LoginRequest {
+    // Email account to associate with the login request
+    string email = 1  [(options.optional) = true];
+    // Invitation code associated with this registration
+    string invitation_code = 2 [(options.optional) = true];
+    // ID of Ecosystem to sign into.
+    // Ignored if `invitation_code` is passed
+    string ecosystem_id = 3 [(options.optional) = true];
+}
+
+message LoginResponse{
+    oneof response {
+        // Challenge response. Random byte sequence unique
+        // for this login request
+        bytes challenge = 1;
+        // Profile response. The login isn't challenged and
+        // the token is returned in this call. Does not require
+        // confirmation step
+        AccountProfile profile = 2;
+    }
+}
+
+message LoginConfirmRequest {
+    // Login challenge received during the Login call
+    bytes challenge = 1;
+    // Confirmation code received in email or SMS
+    // hashed using Blake3
+    bytes confirmation_code_hashed = 2;
+}
+message LoginConfirmResponse {
+    // Profile response. This profile may be protected and
+    // require unblinding/unprotection using the raw hashed code
+    AccountProfile profile = 1;
+}
+
+// Authorize ecosystem to receive wallet events
+message AuthorizeWebhookRequest {
+    // Events to authorize access to. Default is "*" (all events)
+    repeated string events = 1;
+}
+
+// Response to `AuthorizeWebhookRequest`
+message AuthorizeWebhookResponse {
+}
+
 service Account {
     // Sign in to an already existing account
     rpc SignIn              (SignInRequest)             returns (SignInResponse);
-    // rpc SIgnInConfirm       (SignInConfirmRequest)      returns (SignInConfirmResponse);
+
+    // Login to account. If account doesn't exist, new will be created
+    rpc Login               (LoginRequest)              returns (LoginResponse);
+
+    // Confirm login step by responding to the challenge request
+    rpc LoginConfirm        (LoginConfirmRequest)       returns (LoginConfirmResponse);
 
     // Get account information
-    rpc Info                (InfoRequest)               returns (InfoResponse);
+    rpc Info                (AccountInfoRequest)        returns (AccountInfoResponse);
     // List all connected devices
     rpc ListDevices         (ListDevicesRequest)        returns (ListDevicesResponse);
     // Revoke device access to the account's cloud wallet
     rpc RevokeDevice        (RevokeDeviceRequest)       returns (RevokeDeviceResponse);
+
+    // Authorize Ecosystem to receive webhook events
+    rpc AuthorizeWebhook(AuthorizeWebhookRequest) returns (AuthorizeWebhookResponse);
 }

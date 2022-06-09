@@ -3,6 +3,8 @@
 
 require 'google/protobuf'
 
+require 'services/options/field-options_pb'
+
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("services/verifiable-credentials/templates/v1/templates.proto", :syntax => :proto3) do
     add_message "services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest" do
@@ -18,7 +20,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse" do
       optional :items_json, :string, 1
       optional :has_more, :bool, 2
-      optional :count, :int32, 3
       optional :continuation_token, :string, 4
     end
     add_message "services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest" do

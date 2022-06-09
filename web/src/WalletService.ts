@@ -12,8 +12,7 @@ import {
   UniversalWalletDefinition,
 } from "./proto";
 
-import type {Client as BrowserClient} from "nice-grpc-web";
-
+import type { Client as BrowserClient } from "nice-grpc-web";
 
 export class WalletService extends ServiceBase {
   client: BrowserClient<typeof UniversalWalletDefinition>;
@@ -26,7 +25,7 @@ export class WalletService extends ServiceBase {
 
   public async search(
     request: SearchRequest = SearchRequest.fromPartial({
-      query: "SELECT * FROM c",
+      query: "SELECT c.id, c.type, c.data FROM c OFFSET 0 LIMIT 100",
     })
   ): Promise<SearchResponse> {
     return this.client.search(request, {

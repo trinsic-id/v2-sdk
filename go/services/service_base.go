@@ -5,9 +5,14 @@ import (
 	"crypto/x509"
 	"errors"
 	"fmt"
+	"github.com/trinsic-id/sdk/go/proto/sdk/options/v1/options"
+	"github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
+
 	"runtime"
 
-	sdk "github.com/trinsic-id/sdk/go/proto"
+	//"github.com/trinsic-id/sdk/go/proto/sdk/options/v1/options"
+	//"github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
+
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/metadata"
@@ -38,13 +43,15 @@ type Service interface {
 	// SetToken assigns the given auth token to the service. This token will be used for
 	// make all api calls
 	SetToken(token string)
+	// SetEcosystemId assigns the given ecosystem ID to the service.
+	SetEcosystemId(ecosystemId string)
 	// GetToken returns the auth token currently assigned to this service or an empty string
 	// if none is set
 	GetToken() string
 	// GetProfile returns the account profile associated with this service, or null if none
-	GetProfile() *sdk.AccountProfile
+	GetProfile() *account.AccountProfile
 	// GetServiceOptions returns the set of ServiceOptions the service is using
-	GetServiceOptions() *sdk.ServiceOptions
+	GetServiceOptions() *options.ServiceOptions
 	// GetChannel returns the grpc client connect
 	GetChannel() *grpc.ClientConn
 }
@@ -63,11 +70,15 @@ func (s *serviceBase) SetToken(authtoken string) {
 	s.options.ServiceOptions.AuthToken = authtoken
 }
 
+func (s *serviceBase) SetEcosystemId(ecosystemId string) {
+	s.options.ServiceOptions.DefaultEcosystem = ecosystemId
+}
+
 func (s *serviceBase) GetToken() string {
 	return s.options.ServiceOptions.AuthToken
 }
 
-func (s *serviceBase) GetProfile() *sdk.AccountProfile {
+func (s *serviceBase) GetProfile() *account.AccountProfile {
 	if s.options != nil && len(s.options.ServiceOptions.AuthToken) != 0 {
 		profile, _ := ProfileFromToken(s.options.ServiceOptions.AuthToken)
 		return profile
@@ -76,7 +87,7 @@ func (s *serviceBase) GetProfile() *sdk.AccountProfile {
 	return nil
 }
 
-func (s *serviceBase) GetServiceOptions() *sdk.ServiceOptions {
+func (s *serviceBase) GetServiceOptions() *options.ServiceOptions {
 	return s.options.ServiceOptions
 }
 
@@ -121,7 +132,7 @@ func (s *serviceBase) BuildMetadata(message proto.Message) (metadata.MD, error) 
 
 // NewServiceConnection returns a grpc client connection to the target
 // provided in the options (ServerEndpoint, ServerPort, and ServerUseTLS)
-func NewServiceConnection(options *sdk.ServiceOptions, grpcDialOptions ...grpc.DialOption) (*grpc.ClientConn, error) {
+func NewServiceConnection(options *options.ServiceOptions, grpcDialOptions ...grpc.DialOption) (*grpc.ClientConn, error) {
 	var dialOptions []grpc.DialOption
 
 	if !options.ServerUseTls {

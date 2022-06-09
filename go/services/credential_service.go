@@ -2,7 +2,8 @@ package services
 
 import (
 	"context"
-	sdk "github.com/trinsic-id/sdk/go/proto"
+
+	"github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/v1/credential"
 )
 
 // NewCredentialService returns a credential service with the base service configured
@@ -14,7 +15,7 @@ func NewCredentialService(options *Options) (CredentialService, error) {
 	}
 	service := &credentialBase{
 		Service: base,
-		client:  sdk.NewVerifiableCredentialClient(base.GetChannel()),
+		client:  credential.NewVerifiableCredentialClient(base.GetChannel()),
 	}
 
 	return service, nil
@@ -24,27 +25,27 @@ func NewCredentialService(options *Options) (CredentialService, error) {
 type CredentialService interface {
 	Service
 	// IssueCredential using a document json
-	IssueCredential(userContext context.Context, request *sdk.IssueRequest) (*sdk.IssueResponse, error)
+	IssueCredential(userContext context.Context, request *credential.IssueRequest) (*credential.IssueResponse, error)
 	// IssueFromTemplate issues a credential using a template
-	IssueFromTemplate(userContext context.Context, request *sdk.IssueFromTemplateRequest) (*sdk.IssueFromTemplateResponse, error)
+	IssueFromTemplate(userContext context.Context, request *credential.IssueFromTemplateRequest) (*credential.IssueFromTemplateResponse, error)
 	// CheckStatus of the credential
-	CheckStatus(userContext context.Context, request *sdk.CheckStatusRequest) (*sdk.CheckStatusResponse, error)
+	CheckStatus(userContext context.Context, request *credential.CheckStatusRequest) (*credential.CheckStatusResponse, error)
 	// UpdateStatus of the credential (i.e. revoke)
-	UpdateStatus(userContext context.Context, request *sdk.UpdateStatusRequest) (*sdk.UpdateStatusResponse, error)
+	UpdateStatus(userContext context.Context, request *credential.UpdateStatusRequest) (*credential.UpdateStatusResponse, error)
 	// CreateProof using either a credential in a cloud wallet or based on the json document provided
-	CreateProof(userContext context.Context, request *sdk.CreateProofRequest) (*sdk.CreateProofResponse, error)
+	CreateProof(userContext context.Context, request *credential.CreateProofRequest) (*credential.CreateProofResponse, error)
 	// VerifyProof presentation
-	VerifyProof(userContext context.Context, request *sdk.VerifyProofRequest) (bool, error)
+	VerifyProof(userContext context.Context, request *credential.VerifyProofRequest) (*credential.VerifyProofResponse, error)
 	// Send a credential to another use's wallet
-	Send(userContext context.Context, request *sdk.SendRequest) error
+	Send(userContext context.Context, request *credential.SendRequest) (*credential.SendResponse, error)
 }
 
 type credentialBase struct {
 	Service
-	client sdk.VerifiableCredentialClient
+	client credential.VerifiableCredentialClient
 }
 
-func (c *credentialBase) IssueCredential(userContext context.Context, request *sdk.IssueRequest) (*sdk.IssueResponse, error) {
+func (c *credentialBase) IssueCredential(userContext context.Context, request *credential.IssueRequest) (*credential.IssueResponse, error) {
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -58,7 +59,7 @@ func (c *credentialBase) IssueCredential(userContext context.Context, request *s
 	return response, nil
 }
 
-func (c *credentialBase) IssueFromTemplate(userContext context.Context, request *sdk.IssueFromTemplateRequest) (*sdk.IssueFromTemplateResponse, error) {
+func (c *credentialBase) IssueFromTemplate(userContext context.Context, request *credential.IssueFromTemplateRequest) (*credential.IssueFromTemplateResponse, error) {
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -72,7 +73,7 @@ func (c *credentialBase) IssueFromTemplate(userContext context.Context, request 
 	return response, nil
 }
 
-func (c *credentialBase) CreateProof(userContext context.Context, request *sdk.CreateProofRequest) (*sdk.CreateProofResponse, error) {
+func (c *credentialBase) CreateProof(userContext context.Context, request *credential.CreateProofRequest) (*credential.CreateProofResponse, error) {
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -86,21 +87,21 @@ func (c *credentialBase) CreateProof(userContext context.Context, request *sdk.C
 	return response, nil
 }
 
-func (c *credentialBase) VerifyProof(userContext context.Context, request *sdk.VerifyProofRequest) (bool, error) {
+func (c *credentialBase) VerifyProof(userContext context.Context, request *credential.VerifyProofRequest) (*credential.VerifyProofResponse, error) {
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
-		return false, err
+		return nil, err
 	}
 
 	proof, err := c.client.VerifyProof(md, request)
 	if err != nil {
-		return false, err
+		return nil, err
 	}
 
-	return proof.IsValid, nil
+	return proof, nil
 }
 
-func (c *credentialBase) CheckStatus(userContext context.Context, request *sdk.CheckStatusRequest) (*sdk.CheckStatusResponse, error) {
+func (c *credentialBase) CheckStatus(userContext context.Context, request *credential.CheckStatusRequest) (*credential.CheckStatusResponse, error) {
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -112,7 +113,7 @@ func (c *credentialBase) CheckStatus(userContext context.Context, request *sdk.C
 	return response, nil
 }
 
-func (c *credentialBase) UpdateStatus(userContext context.Context, request *sdk.UpdateStatusRequest) (*sdk.UpdateStatusResponse, error) {
+func (c *credentialBase) UpdateStatus(userContext context.Context, request *credential.UpdateStatusRequest) (*credential.UpdateStatusResponse, error) {
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -124,16 +125,16 @@ func (c *credentialBase) UpdateStatus(userContext context.Context, request *sdk.
 	return response, err
 }
 
-func (c *credentialBase) Send(userContext context.Context, request *sdk.SendRequest) error {
+func (c *credentialBase) Send(userContext context.Context, request *credential.SendRequest) (*credential.SendResponse, error) {
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
-	_, err = c.client.Send(md, request)
+	response, err := c.client.Send(md, request)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
-	return nil
+	return response, nil
 }

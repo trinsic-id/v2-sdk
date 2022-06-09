@@ -1,121 +1,223 @@
-# Walkthrough
+# Walkthrough: Build a Vaccine Card
 
-This walkthrough will show how a vaccination card can be issued, held, and proven using verifiable credentials with the Trinsic CLI. Feel free to follow along in a terminal using the CLI. We'll cover each part of Trinsic's platform during the tutorial. 
+This walkthrough demonstrates how a vaccination card can be issued, held, and shared using Verifiable Credentials with Trinsic.
+
 ## Meet Allison
 
-In this walkthrough we'll explore a scenario where Allison gets her vaccination certificate. She then uses this certificate to board an airline that requires proof of vaccination.
+We'll follow Allison as she obtains a vaccine certificate, stores it in her digital wallet, and presents it to board an airplane.
 
-<!-- ```mermaid
-journey
-    section Issuance
-      Obtain cert.: 3: Allison, Clinic
-      Store in wallet: 3: Allison
-    section Verification
-      Request cert.: 3: Allison, Airline
-      Share: 3: Allison
-      Verify: 5: Airline
-``` -->
+In most credential exchange scenarios, there are three primary roles: Issuer, Holder, and Verifier.
 
-In most credential exchange scenarios there are three primary roles - Issuer, Holder, and Verifier.
+**Holder**: Stores credentials received from issuers, and presents them to verifiers. *(Said credentials are often, but not always, attesting information about the holder)*
 
-**Holder**: Stores issued credentials from an issuer. Most often this is the credential subject. Also generates passes to share with verifiers.
+**Issuer**: Signs and issues credentials which attest information about a credential subject.
 
-**Issuer**: Responsible for issuing signed credentials that attest information about a credential subject
-
-**Verifier**: Verifies passes presented from holders.
+**Verifier**: Verifies credentials presented by holders.
 
 
-In this case, Allison will be the holder, a vaccination clinic will be an issuer, and an airline will be the verifier. 
-```
-walkthrough
-|- allison - Holder
-|- clinic - Issuer
-|- airline - Verifier
-```
+In this case, Allison will be the *holder*, a vaccination clinic will be the *issuer*, and an airline will be the *verifier*. 
+
 
 ## Our SDKs
-This tutorial is meant to share the concepts of verifiable credentials. So feel free to sit back and read through this without running any code. However, you can also follow along using one of our SDKs. 
 
-We've set up some environments to use on Repl.it. If your language of choice isn't supported on repl.it, you can also run locally by installing the SDK of your choice.
+You can follow along using one of our SDKs, or use the Trinsic CLI, which implements full platform functionality.
 
 === "Trinsic CLI"
     
-    - <a href="/cli/" target="_blank">Installation instructions</a> for the Trinsic CLI.
+    [Click here](/cli/){target=_blank} for installation instructions for the Trinsic CLI.
 
-    Once the CLI is installed, clone our CLI example repository on Github to download the credential data for this walkthrough.
-    
-    ```
-    git clone https://github.com/trinsic-id/cli-example && cd cli-example
-    ```
-
-    If you don't want to install locally, we also have a replit environment for you to use. In a new tab, you can open our <!--[demo environment](./demo.md)--> to use the CLI. This demo environment works best when run side-by-side the following walkthrough using two tabs in your browser.
+    <!-- If you don't want to install locally, we also have a replit environment for you to use. In a new tab, you can open our [demo environment](./demo.md) to use the CLI. This demo environment works best when run side-by-side the following walkthrough using two tabs in your browser. -->
 
    
 
-=== "TypeScript"
-    <a href="/web/" target="_blank">Installation instructions</a> for the Node/Browser SDk.
+=== "Typescript"
+    [Click here](/web/){target=_blank} for installation instructions for the Node/Browser SDK.
 
 === "C#"
-    Let's create a new .NET console app that we will use to add our sample code
-
-    ```bash
-    dotnet new console -n TrinsicSample && cd TrinsicSample
-    ```
-
-    Now we'll follow the <a href="/dotnet/" target="_blank">installation instructions</a> for Dotnet.
-
+    [Click here](/dotnet/){target=_blank} for installation instructions for the .NET SDK.
 
 === "Python"
-
-    - <a href="/python/" target="_blank">Installation instructions</a> for Python.
-
+    [Click here](/python/){target=_blank} for installation instructions for the Python SDK.
 
 === "Java"
-    - <a href="/java/" target="_blank">Installation instructions</a> for Java.
+    [Click here](/java/){target=_blank} for installation instructions for the Java SDK.
 
-    In this project, we'll be following along the [`java/src/test/java/trinsic/VaccineDemo.java`](https://github.com/trinsic-id/sdk/blob/main/java/src/test/java/trinsic/VaccineDemo.java) in our [SDK repository](https://github.com/trinsic-id/sdk)
-
-=== "Ruby"
-    - [Install Instructions](../ruby/index.md) 
-    
 === "Go"
-    - [Install Instructions](../go/index.md)
+    [Click here](/go/){target=_blank} for installation instructions for the Go SDK.
    
+=== "Ruby"
+    [Click here](/ruby/){target=_blank} for installation instructions for the Ruby   SDK.
 
 ---
 
-## Creating Accounts
+## Create an Ecosystem
 
-We'll start by creating a Trinsic Wallet for each participant in this credential exchange. Wallets can be created by anyone, for anyone. In this scenario, we'll have three wallets. Allison will be the credential holder, the Airline will be the verifier, and the vaccination clinic will be the issuer.
-
-When a new Trinsic account is created, a cloud wallet is created on our platform and an authentication key is generated by our SDK locally. Each person is the sole owner of their cloud wallet. They're meant to be easy to create so that you can create a cloud wallet for an end-user in your UX with very little friction. 
-
+The first step is to create an [ecosystem](/learn/ecosystems/), within which everything else (wallets, templates, and credentials) will live.
 
 === "Trinsic CLI"
-    The CLI offers an interactive way of creating wallets. For demo purposes, we'll create all three on the same machine. However, this demo could be done with all three wallets created on three separate machines.
+    ```
+    trinsic provider create-ecosystem
+    ```
     
-    When creating a wallet in the CLI, the wallet will store a private authentication token for the wallet in ~/.trinsic. If using the CLI with a real-world wallet, store this authentication token somewhere securely. 
+=== "Typescript"
+    <!--codeinclude-->
+    ```javascript
+    [Create Ecosystem](../../web/test/VaccineDemoShared.ts) inside_block:createEcosystem
+    ```
+    <!--/codeinclude-->
+
+=== "C#"
+    <!--codeinclude-->
+    ```csharp
+    [Create Ecosystem](../../dotnet/Tests/Samples/VaccineWalkthroughTests.cs) inside_block:createEcosystem
+    ```
+    <!--/codeinclude-->
+
+=== "Python"
+    <!--codeinclude-->
+    ```python
+    [Create Ecosystem](../../python/samples/vaccine_demo.py) inside_block:createEcosystem
+    ```
+    <!--/codeinclude-->
+
+=== "Java"
+    <!--codeinclude-->
+    ```java
+    [Create Ecosystem](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:createEcosystem
+    ```
+    <!--/codeinclude-->
+
+=== "Go"
+    <!--codeinclude-->
+    ```go
+    [Create Ecosystem](../../go/examples/vaccine_test.go) inside_block:createEcosystem
+    ```
+    <!--/codeinclude-->
+
+=== "Ruby"
+    <!--codeinclude-->
+    ```ruby
+    [Create Ecosystem](../../ruby/test/vaccine_demo.rb) inside_block:createEcosystem
+    ```
+    <!--/codeinclude-->
+
+The response to this call contains the name and ID of your newly-created ecosystem; copy either of these down.
+
+### Configure SDK for Created Ecosystem
+
+Once we've created our ecosystem, we need to configure our SDK client (or CLI) to use it as the default ecosystem for all service calls in the rest of the walkthrough.
+
+=== "Trinsic CLI"
+    ```
+    trinsic config --default-ecosystem "{ECOSYSTEM_NAME_OR_ID}"
+    ```
+    
+=== "Typescript"
+    ```typescript
+    // Either configure defaultEcosystem during instantiation of an SDK service...
+    const options = ServiceOptions.fromPartial({
+        defaultEcosystem: "{ECOSYSTEM_NAME_OR_ID}"
+    });
+
+    const providerService = new ProviderService(options); 
+
+    //...or after instantiation
+    providerService.options.defaultEcosystem = "{ECOSYSTEM_NAME_OR_ID}";
+    ```
+
+=== "C#"
+    ```csharp
+    // Either configure DefaultEcosystem during instantiation of an SDK service...
+    var providerService = new ProviderService(new()
+    {
+        DefaultEcosystem = "{ECOSYSTEM_NAME_OR_ID}"
+    });
+
+    //...or after instantiation
+    providerService.Options.DefaultEcosystem = "{ECOSYSTEM_NAME_OR_ID}";
+    ```
+
+=== "Python"
+    ```python
+    from trinsic.trinsic_util import trinsic_config
+
+    # Either configure default_ecosystem during instantiation of an SDK service...
+    config = trinsic_config()
+    config.default_ecosystem = "{ECOSYSTEM_NAME_OR_ID}"
+    provider_service = ProviderService(server_config=config)
+
+    # ...or after instantiation
+    provider_service.service_options.default_ecosystem = "{ECOSYSTEM_NAME_OR_ID}"
+    ```
+
+=== "Java"
+    ```java
+    var options = TrinsicUtilities.getTrinsicServiceOptions();
+    options = options
+              .toBuilder()
+              .setDefaultEcosystem("ECOSYSTEM_ID_OR_NAME")
+              .build();
+    var accountService = new AccountService(options);
+    ```
+
+=== "Go"
+    ```go
+    ///Either configure DefaultEcosystem during instantiation of an SDK service...
+    opts, _ := sdk.NewServiceOptions()
+    providerService, _ := sdk.NewProviderService(opts)
+
+    //...or after instantiation
+    providerService.options.ServiceOptions.DefaultEcosystem = "{ECOSYSTEM_NAME_OR_ID}"
+
+    ```
+
+!!! info "Further Reading: Ecosystems"
+
+    - Learn more about [Ecosystems](/learn/ecosystems){target=_blank}
+    - Browse the [Provider API reference](/reference/services/provider-service/){target=_blank}
+
+## Create Accounts
+
+We need to create Trinsic accounts for the participants in this credential exchange. Accounts and wallets can be considered interchangeably; all accounts have exactly one associated wallet.
+
+Accounts can be created with a single call; they're designed to minimize onboarding friction for your users.
+
+The clinic's account will **issue** the credential, Allison's account will **hold** it, and the airline's account will **verify** its contents.
+
+=== "Trinsic CLI"
+    The CLI makes it easy to create wallets. For demo purposes, we'll create all three on the same machine.
+    
+    When using the CLI, the authentication token of the most recently used account is saved in `~/.trinsic`. In a real-world scenario, you should back this token up securely.
+
     ```bash
-    trinsic account login --description "Allison's Wallet" --alias allison && \
-    trinsic account login --description "Airline's wallet" --alias airline && \
-    trinsic account login --description "Vaccination Clinic" --alias clinic
+    trinsic account login --name "Allison"
+    # Save auth token in `allison.txt` before continuing
+
+    trinsic account login --name "Airline"
+    # Save auth token in `airline.txt` before continuing
+
+    trinsic account login --name "Vaccination Clinic"
+    # Save auth token in `clinic.txt` before continuing
     ```
 
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Setup Wallets](../../web/test/VaccineDemo.test.ts) inside_block:setupActors
+    [Setup Wallets](../../web/test/VaccineDemoShared.ts) inside_block:setupActors
     ```
     <!--/codeinclude-->
+
+    If you would like to save the account for future use, simply write the auth token to storage. Take care to store it in a secure location.
 
 
 === "C#"
     <!--codeinclude-->
     ```csharp
-    [Setup Wallets](../../dotnet/Tests/Tests.cs) inside_block:setupActors
+    [Setup Wallets](../../dotnet/Tests/Samples/VaccineWalkthroughTests.cs) inside_block:setupActors
     ```
     <!--/codeinclude-->
 
+    If you would like to save an account for future use, simply write the auth token to storage. Take care to store it in a secure location.
 
 === "Python"
     <!--codeinclude-->
@@ -124,6 +226,7 @@ When a new Trinsic account is created, a cloud wallet is created on our platform
     ```
     <!--/codeinclude-->
 
+    If you would like to save an account for future use, simply write the auth token to storage. Take care to store it in a secure location.
 
 === "Java"
     <!--codeinclude-->
@@ -132,158 +235,176 @@ When a new Trinsic account is created, a cloud wallet is created on our platform
     ```
     <!--/codeinclude-->
 
+    If you would like to save an account for future use, simply write the auth token to storage. Take care to store it in a secure location.
     
 === "Go"
     <!--codeinclude-->
     ```go
-    [Setup Wallets](../../go/services/services_test.go) inside_block:setupActors
+    [Setup Wallets](../../go/examples/vaccine_test.go) inside_block:setupActors
     ```
     <!--/codeinclude-->
 
-If you would like to save the profile for future use, you can simply export the serialized profile to a local storage. Please note that the profiles contain sensitive key data, so they should be stored in a secure enclave.
+    If you would like to save an account for future use, simply write the auth token to storage. Take care to store it in a secure location.
 
-<!-- === "Typescript" 
-    
-    ```javascript
-    [Setup Wallets](../../web/test/VaccineDemo.test.ts) inside_block:storeAndRecallProfile
-    ```
-     
--->
-
-
-=== "C#"
+=== "Ruby"
     <!--codeinclude-->
-    ```csharp
-    [Save and Load Profile](../../dotnet/Tests/Tests.cs) inside_block:storeAndRecallProfile
+    ```ruby
+    [Create Ecosystem](../../ruby/test/vaccine_demo.rb) inside_block:setupActors
     ```
     <!--/codeinclude-->
 
+!!! info "Production Usage"
+    In this example, we've created *anonymous* accounts; the only way to access them is by saving the authentication token generated on account creation.
 
-=== "Python"    
-    <!--codeinclude-->
-    ```python
-    [Save and Load Profile](../../python/samples/vaccine_demo.py) inside_block:storeAndRecallProfile
-    ```
-    <!--/codeinclude-->
+    In a production scenario, you may want to [create accounts tied to a user's email address](/reference/services/account-service/#sign-in){target=_blank} or phone number. This allows users to securely access their Trinsic cloud wallets at any time.
 
-=== "Java"
-    <!--codeinclude-->
-    ```java
-    [Save and Load Profile](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:storeAndRecallProfile
-    ```
-    <!--/codeinclude-->
+    Note that accounts are tied to their ecosystem. If you create an account tied to `bob@example.com` in the `example1` ecosystem, it will not be visible in any other ecosystem. The same email address can be used to create accounts in multiple ecosystems.
 
-=== "Go"
-    <!--codeinclude-->
-    ```go
-    [Save and Load Profile](../../go/services/services_test.go) inside_block:storeAndRecallProfile
-    ```
-    <!--/codeinclude-->
-
-
-!!! note
-    References: 
-
-    - Manage access to cloud wallets with the [Account Service](../reference/services/account-service.md#login)
-    - Learn more about [Wallets](../learn/wallets.md)
-    - Read more about [security profiles](../reference/index.md#authorization) and authentication.
+!!! abstract "Further Reading: Accounts and Wallets"
+    - Learn more about [Wallets](../learn/wallets.md){target=_blank}
+    - Browse the [Account API reference](/reference/services/account-service/){target=_blank}
+    - Read about [authentication tokens and security](/learn/security/){target=_blank}
 
 ---
 
 ## Define a Template
 
+Before we can issue a credential, we need to create a [Template](/learn/templates/){target=_blank} for it. 
+
+Templates are simply a list of the fields that a credential can have.
+
 === "Trinsic CLI"
+    First, prepare a JSON file which describes your template:
+
+    === "templateData.json"
+    ```json
+    {
+        "firstName": {
+            "type": "string",
+            "description": "First name of vaccine recipient"
+        },
+        "lastName": {
+            "type": "string",
+            "description": "Last name of vaccine recipient"
+        },
+        "batchNumber":{
+            "type": "string",
+            "description": "Batch number of vaccine"
+        },
+        "countryOfVaccination":{
+            "type": "string",
+            "description": "Country in which the subject was vaccinated"
+        }
+    }
+    ```
+
+    Then create the template:
+
+    ```bash
+    trinsic template create -n "VaccinationCertificate" --fields-file templateData.json 
+    ```
+
+    The output of this command will include a template ID; copy this down for later use.
 
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Define Template](../../web/test/CredentialTemplates.test.ts) inside_block:defineTemplate
-    [Create Template](../../web/test/CredentialTemplates.test.ts) inside_block:createTemplate
+    [Define Template](../../web/test/VaccineDemoShared.ts) inside_block:createTemplate
     ```
     <!--/codeinclude-->
 
 === "C#"
     <!--codeinclude-->
     ```csharp
-    [Create Template](../../dotnet/Tests/Tests.cs) inside_block:createTemplate
+    [Create Template](../../dotnet/Tests/Samples/VaccineWalkthroughTests.cs) inside_block:createTemplate
     ```
     <!--/codeinclude-->
 
 === "Python"
     <!--codeinclude-->
     ```python
-    [Create Template](../../python/samples/templates_demo.py) inside_block:createTemplate
+    [Create Template](../../python/samples/vaccine_demo.py) inside_block:createTemplate
     ```
     <!--/codeinclude-->
 
 === "Java"
     <!--codeinclude-->
     ```java
-    [Create Template](../../java/src/test/java/trinsic/TemplatesDemo.java) inside_block:createTemplate
+    [Create Template](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:createTemplate
     ```
     <!--/codeinclude-->
 
 === "Go"
     <!--codeinclude-->
     ```go
-    [Create Template](../../go/services/credentialtemplate_service_test.go) inside_block:createTemplate
+    [Create Template](../../go/examples/vaccine_test.go) inside_block:createTemplate
     ```
     <!--/codeinclude-->
 
+=== "Ruby"
+    <!--codeinclude-->
+    ```ruby
+    [Create Ecosystem](../../ruby/test/vaccine_demo.rb) inside_block:createTemplate
+    ```
+    <!--/codeinclude-->
 
-## Create an Ecosystem
+!!! info "Templates are Optional"
 
-=== "Trinsic CLI"
+    Templates are an optional helpful abstraction which removes the need to work directly with complex data formats such as JSON-LD.
 
-=== "Typescript"
+    When a template is used to issue a credential, the result is a valid, interoperable JSON-LD Verifiable Credential.
 
-=== "C#"
+    Trinsic's SDKs support issuing JSON-LD credentials that you create yourself, should you choose not to use templates.
 
-=== "Python"
+!!! abstract "Further Reading: Templates"
 
-=== "Java"
+    - Learn more about [Templates](/learn/templates){target=_blank}
+    - Browse the [Template API reference](/reference/services/template-service/){target=_blank}
+
+---
 
 ## Issue a Credential
-Upon receiving her vaccine, Allison also receives a digital certificate from the clinic. This certificate is digitally signed by the clinic, acting as an issuer.
-The certificate is in a JSON form, and for this example, we will use the following JSON. Add this file to your project named `vaccination-certificate-unsigned.jsonld`.
+Upon receiving her vaccine, the clinic issues Allison a Verifiable Credential, which proves that she was given the vaccine by the clinic.
 
-=== "vaccination-certificate-unsigned.jsonld"
-```json
-----8<---- "devops/testdata/vaccination-certificate-unsigned.jsonld"
-```
+A credential is a JSON document that has been cryptographically signed; this signature enables verifiers to trust that the data comes a trusted source, and has not been tampered with.
 
-Behind the scenes, each credential is a JSON document that is signed with a special digital signature to make each piece of data in the credential separately verifiable.
-
-Signatures are a way to make sure that credentials are not forged or tampered with between getting issued and verified. They also are how a verifier can know that the credential was issued by who the credential says it was issued by.
-
-To issue this credential we'll specify links to the json files, set the active profile to the clinic, and call the issuance endpoint:
+To issue a vaccine certificate, we'll use the template we created in the last step.
 
 === "Trinsic CLI"
-    ```bash
-    trinsic  --profile clinic issuer issue --document data/vaccination-certificate-unsigned.json --out vaccination-certificate-signed.json
+
+    First, prepare a file named `values.json` with the following content:
+    === "values.json"
+    ```json
+    {
+        "firstName": "Allison",
+        "lastName": "Allisonne",
+        "batchNumber": "123454321",
+        "countryOfVaccination": "US"
+    }
     ```
+
+    Then issue the credential:
+
+    ```bash
+    trinsic config --auth-token $(cat clinic.txt)
+    trinsic vc issue-from-template --template-id {TEMPLATE_ID} --values-file values.json --out credential.json
+    ```
+
+    The output of this command will contain a signed JSON document, which has been saved to `credential.json`.
 
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Setup Wallets](../../web/test/VaccineDemo.test.ts) inside_block:issueCredential
+    [Setup Wallets](../../web/test/VaccineDemoShared.ts) inside_block:issueCredential
     ```
     <!--/codeinclude-->
 
 === "C#"
     <!--codeinclude-->
-    [C#](../../dotnet/Tests/Tests.cs) inside_block:issueCredential
+    [C#](../../dotnet/Tests/Samples/VaccineWalkthroughTests.cs) inside_block:issueCredential
     <!--/codeinclude-->
 
 === "Python"
-    We specify links to the jsonld files:
-    <!--codeinclude-->
-    ```python
-    [Data Paths](../../python/samples/vaccine_demo.py) inside_block:pathData
-    ```
-    <!--/codeinclude-->
-
-    Let's set the active profile to the clinic, and call the issuance endpoint
     <!--codeinclude-->
     ```python
     [Issue Credential](../../python/samples/vaccine_demo.py) inside_block:issueCredential
@@ -292,14 +413,6 @@ To issue this credential we'll specify links to the json files, set the active p
 
 
 === "Java"
-    We specify links to the jsonld files:
-    <!--codeinclude-->
-    ```java
-    [Data Paths](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:pathData
-    ```
-    <!--/codeinclude-->
-
-    Let's set the active profile to the clinic, and call the issuance endpoint
     <!--codeinclude-->
     ```java
     [Issue Credential](../../java/src/test/java/trinsic/VaccineDemo.java) inside_block:issueCredential
@@ -309,62 +422,64 @@ To issue this credential we'll specify links to the json files, set the active p
 === "Go"
     <!--codeinclude-->
     ```go
-    [Data Paths](../../go/services/services_test.go) inside_block:pathData
+    [Issue Credential](../../go/examples/vaccine_test.go) inside_block:issueCredential
     ```
     <!--/codeinclude-->
+
+=== "Ruby"
     <!--codeinclude-->
-    ```go
-    [Issue Credential](../../go/services/services_test.go) inside_block:issueCredential
+    ```ruby
+    [Create Ecosystem](../../ruby/test/vaccine_demo.rb) inside_block:issueCredential
     ```
     <!--/codeinclude-->
 
 
 
-!!! info
-    Reference: 
-    
-    - Learn more about how to [issue a credential](../reference/services/wallet-service.md#issue-credential)
-    - Learn more about [verifiable credentials](../learn/credentials.md)
+!!! abstract "Further Reading: Issuance and Credentials"
+
+    - Learn more about [Verifiable Credentials](/learn/credentials/){target=_blank}
+    - Browse the [Credential API reference](/reference/services/credential-service/){target=_blank}
 
 
 ---
+
 ## Send Credential to Allison
 
-At this point, the clinic can send the signed credential to Allison using any available methods. These methods can include any message exchange protocol, or a custom transport. In this case, we'll assume that the credential was delivered to Allison in an offline environment.
+Now that the clinic has a signed credential, it must be securely transmitted to Allison, so she can store it in her wallet.
 
-Sending credentials securely is an important part of maintaining the privacy of a credential holder. At this point we do not have a standard way of sending credentials to a wallet. There are a couple of options available. 
+Because it's just a JSON string, it could be delivered in many ways -- for example, in the response to an HTTPS request which triggered the issuance process.
 
-First, if you've onboarded two wallets on the Trinsic platform there is a way to send credentials to a wallet via the wallet's email address. This method is a temporary fix. We recommend using a secure channel of communication within your application for sending and receiving credentials. Sending via https or another encrypted messaging protocol is critical to ensure the personal information inside the credential is not accidentally leaked. As Trinsic's platform develops, we will embed an encrypted messaging protocol called DIDComm (decentralized identifier communication) to exchange credentials between any wallet.
+!!! info "Send via Trinsic"
+    In the future, we will offer the ability to send a credential directly to a Trinsic user's wallet.
 
-!!! info
-    Dive Deeper: 
-
-    - Learn more about how to [exchange credentials](../reference/services/credential-service.md#exchange-credentials)
+    [Click here](../reference/services/credential-service.md#exchange-credentials) to learn more about this feature.
     
 
 ---
 
 ## Store Credential in Wallet
-Once Allison receives the credential, she or her wallet application can store it within her wallet. She can use any device that she's authorized to use with her wallet. Storing credentials securely is also important to maintaining Allison's privacy. 
+
+Once Allison receives the credential, it must be stored in her wallet.
 
 
 === "Trinsic CLI"
 
     ```bash
-    trinsic --profile allison wallet insert-item --item vaccination-certificate-signed.json
+    trinsic config --auth-token $(cat allison.txt)
+    trinsic wallet insert-item --item credential.json
     ```
 
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Store Credential](../../web/test/VaccineDemo.test.ts) inside_block:storeCredential
+    [Store Credential](../../web/test/VaccineDemoShared.ts) inside_block:storeCredential
     ```
     <!--/codeinclude-->
 
 === "C#"
     <!--codeinclude-->
     ```csharp
-    [Store Credential](../../dotnet/Tests/Tests.cs) inside_block:storeCredential
+    [Store Credential](../../dotnet/Tests/Samples/VaccineWalkthroughTests.cs) inside_block:storeCredential
     ```
     <!--/codeinclude-->
 
@@ -385,57 +500,49 @@ Once Allison receives the credential, she or her wallet application can store it
 === "Go"
     <!--codeinclude-->
     ```go
-    [Store Credential](../../go/services/services_test.go) inside_block:storeCredential
+    [Store Credential](../../go/examples/vaccine_test.go) inside_block:storeCredential
+    ```
+    <!--/codeinclude-->
+
+=== "Ruby"
+    <!--codeinclude-->
+    ```ruby
+    [Create Ecosystem](../../ruby/test/vaccine_demo.rb) inside_block:storeCredential
     ```
     <!--/codeinclude-->
 
 
-Note down the response `item_id` printed to the console for the next step.
+The response to this call contains an Item ID; copy this down.
 
-!!! info
-    Reference: [Insert Record](../reference/services/wallet-service.md#insert-item)
+!!! abstract "Further Reading: Wallets"
+    - Learn more about [Wallets](/learn/wallets/){target=_blank}
+    - Browse the [Wallet API reference](/reference/services/wallet-service/){target=_blank}
 
 
 ---
 
 ## Create a Proof of Vaccination
-Before boarding an airplane, Allison must show a proof of vaccination. The request for this proof also comes in a form of JSON, in this case a JSON-LD frame.
+Before boarding, the airline requests proof of vaccination from Allison. Specifically, they want to see proof that she holds a `VaccinationCertificate` credential.
 
-This request can be communicated using any exchange protocol. Again, we'll assume this was done offline.
-
-Let's save this request in a file named `vaccination-certificate-frame.jsonld`
-
-=== "vaccination-certificate-frame.jsonld"
-```json
-----8<---- "devops/testdata/vaccination-certificate-frame.jsonld"
-```
-
-This request asks Allison to provide proof of valid vaccination certificate, including the `issuer`, `batchNumber`and `countryOfVaccination` fields.
-
-Allison can use the [Create Proof](../reference/services/wallet-service/#create-proof) functions to build a proof that will share only the requested fields.
-
-Now let's create a proof for Allison. She may choose to generate this proof before going to the airport, or might generate it right as she boards.
-
-
+Let's use the [CreateProof](../../reference/services/credential-service/#create-proof) call to build a proof for Allison's held credential.
 
 === "Trinsic CLI"
-    Replace the `<item_id>` in the generate proof command below with the output from the `insert_item` above.
-
     ```bash
-    trinsic --profile allison issuer create-proof --document-id "<item-id>" --out vaccination-certificate-partial-proof.json --reveal-document data/vaccination-certificate-frame.json
+    trinsic config --auth-token $(cat allison.txt)
+    trinsic vc create-proof --item-id "{ITEM_ID}" --out proof.json
     ```
 
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Share Credential](../../web/test/VaccineDemo.test.ts) inside_block:shareCredential
+    [Share Credential](../../web/test/VaccineDemoShared.ts) inside_block:shareCredential
     ```
     <!--/codeinclude-->
 
 === "C#"
     <!--codeinclude-->
     ```csharp
-    [Share Credential](../../dotnet/Tests/Tests.cs) inside_block:shareCredential
+    [Share Credential](../../dotnet/Tests/Samples/VaccineWalkthroughTests.cs) inside_block:shareCredential
     ```
     <!--/codeinclude-->
 
@@ -457,38 +564,56 @@ Now let's create a proof for Allison. She may choose to generate this proof befo
 === "Go"
     <!--codeinclude-->
     ```go
-    [Share Credential](../../go/services/services_test.go) inside_block:shareCredential
+    [Share Credential](../../go/examples/vaccine_test.go) inside_block:shareCredential
     ```
     <!--/codeinclude-->
 
-Take a look at the proof. Notice how only the attributes included in the `frame` are included with the proof.
+=== "Ruby"
+    <!--codeinclude-->
+    ```ruby
+    [Create Ecosystem](../../ruby/test/vaccine_demo.rb) inside_block:shareCredential
+    ```
+    <!--/codeinclude-->
 
 Allison sends this proof to the airline for them to verify.
 
-!!! info
-    Reference: [Create Proof](../reference/services/wallet-service.md#create-proof)
+!!! info "Partial Proofs"
+
+    In this example, the proof is being created over the entire credential; all of its fields are revealed to the verifier.
+
+    It is possible for the airline to send Allison a *frame* which requests only certain fields of the credential. The airline would not be able to see other fields of the credential, but cryptographic guarantees would still hold over the revealed fields.
+
+    See the [CreateProof](../../reference/services/credential-service/#create-proof) reference for more information.
+
+!!! note "OpenID Connect for Presentation"
+
+    Trinsic offers an [OpenID Connect service](/reference/other/openid/){target=_blank} as an alternative flow for the exchange of a credential between a holder and a verifier.
+
+    In this flow, a holder simply clicks a link (or scans a QR code), logs into their Trinsic cloud wallet, and selects a credential to share. 
+
 
 ---
 
 ## Verify Proof
-Once the airline receives the proof, they can now verify it to ensure its authenticity. Because Allison sent a proof of her vaccination credential and not the credential itself, the airline only receives its required information.
+Once the airline receives the proof, they can use the [VerifyProof](../reference/services/credential-service.md#verify-proof){target=_blank} call to ensure its authenticity.
 
 === "Trinsic CLI"
     ```bash
-    trinsic --profile airline issuer verify-proof --proof-document vaccination-certificate-partial-proof.json
+    trinsic config --auth-token $(cat airline.txt)
+    trinsic vc verify-proof --proof-document proof.json
     ```
 
 === "Typescript"
     <!--codeinclude-->
     ```javascript
-    [Verify Credential](../../web/test/VaccineDemo.test.ts) inside_block:verifyCredential
+    [Verify Credential](../../web/test/VaccineDemoShared.ts) inside_block:verifyCredential
     ```
     <!--/codeinclude-->
 
 === "C#"
     <!--codeinclude-->
     ```csharp
-    [Verify Credential](../../dotnet/Tests/Tests.cs) inside_block:verifyCredential
+    [Verify Credential](../../dotnet/Tests/Samples/VaccineWalkthroughTests.cs) inside_block:verifyCredential
     ```
     <!--/codeinclude-->
 
@@ -511,72 +636,53 @@ Once the airline receives the proof, they can now verify it to ensure its authen
 === "Go"
     <!--codeinclude-->
     ```go
-    [Verify Credential](../../go/services/services_test.go) inside_block:verifyCredential
+    [Verify Credential](../../go/examples/vaccine_test.go) inside_block:verifyCredential
+    ```
+    <!--/codeinclude-->
+
+=== "Ruby"
+    <!--codeinclude-->
+    ```ruby
+    [Create Ecosystem](../../ruby/test/vaccine_demo.rb) inside_block:verifyCredential
     ```
     <!--/codeinclude-->
 
 
-Watch for the result of `true` to know that the credential successfully passed all of the verification processes.
+!!! info "Interoperability"
 
-!!! info
-    Reference: [Verify Proof](../reference/services/credential-service.md#verify-proof)
+    The Verifiable Credentials and Proofs that Trinsic's platform produces are based on open standards.
 
----
-
-<!-- ## Check Issuer Status
-
-
-=== "Trinsic CLI"
-
-
-=== "Typescript"
-
-
-=== "C#"
-
-
-=== "Python"
-   
-
-=== "Java" -->
+    Although we use the [VerifyProof](../reference/services/credential-service.md#verify-proof){target=_blank} call in this example, the proof could be verified using any standards-compliant software.
 
 ---
 
 ## Full Source Code
 
 === "Typescript"
-    [web](https://github.com/trinsic-id/sdk/tree/main/web/test/VaccineDemo.test.ts)    
+    This sample is available as [`VaccineDemoShared.ts`](https://github.com/trinsic-id/sdk/tree/main/web/test/VaccineDemoShared.ts) in our SDK repository.
 
 === "C#"
-    This sample is available in our [dotnet](https://github.com/trinsic-id/sdk/blob/main/dotnet/Tests/Tests.cs#L42) directory. 
-
-    <!-- TODO: include working replit embed -->
-
+    This sample is available as [`VaccineWalkthroughTests.cs`](https://github.com/trinsic-id/sdk/blob/main/dotnet/Tests/Samples/VaccineWalkthroughTests.cs) in our SDK repository.
 
 === "Python"
-    This sample is available as [`ecosystem_demo.py`](https://github.com/trinsic-id/sdk/blob/main/python/samples/ecosystem_demo.py)
+    This sample is available as [`vaccine_demo.py`](https://github.com/trinsic-id/sdk/blob/main/python/samples/vaccine_demo.py) in our SDK repository.
 
 === "Java"
-    This sample is available in the [Java](https://github.com/trinsic-id/sdk/tree/main/java/src/test/java) directory.
+    This sample is available as [`VaccineDemo.java`](https://github.com/trinsic-id/sdk/blob/main/java/src/test/java/trinsic/VaccineDemo.java) in our SDK repository.
 
-## Next Steps:
+=== "Go"
+    This sample is available as [`vaccine_test.go`](https://github.com/trinsic-id/sdk/blob/main/go/examples/vaccine_test.go) in our SDK repository.
+
+=== "Ruby"
+    This sample is available as [`vaccine_demo.rb`](https://github.com/trinsic-id/sdk/blob/main/ruby/test/vaccine_demo.rb) in our SDK repository.
+
+--- 
+
+## Next Steps
 
 Congratulations! If you've completed all the steps of this walkthrough, you've just created a mini ecosystem of issuers, verifiers, and holders all exchanging credentials. Depending on your goals, there are a couple of possible next steps to take. 
 
 
-- Try out a sample app
-- Learn more about wallets, credentials, templates, and ecosystems
-- Review the SDK Reference
-
-
-### Sample Applications
-We have language specific sample applications that you can run to understand how the Trinsic SDK works in a development environment. 
-
-=== "Typescript"
-    This sample is available in our [node directory](https://github.com/trinsic-id/sdk-examples/tree/main/web/basic)  
-=== "C#"
-    This sample is available in our [dotnet directory](https://github.com/trinsic-id/sdk/blob/main/dotnet/Tests/Tests.cs). 
-=== "Python"
-    This sample is available in the [python directory](https://github.com/trinsic-id/sdk/tree/main/python/samples/vaccine_demo.py).
-=== "Java"
-    This sample is available in our Github repo in the [java directory](https://github.com/trinsic-id/sdk/tree/main/java/src/test/java).
+- Try out a [sample app](https://github.com/trinsic-id/sdk-examples){target=_blank}
+- Browse the [Service Reference](/reference/){target=_blank}
+- [Read more](/learn/intro/){target=_blank} about the key concepts and technologies at play

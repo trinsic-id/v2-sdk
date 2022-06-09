@@ -95,7 +95,7 @@ subcommands:
                   value_name: SQL_QUERY
                   help: >-
                     (Optional) Search query to execute (Default is "SELECT *
-                    FROM c"). To see all available query options, please check
+                    FROM c OFFSET 0 LIMIT 100"). To see all available query options, please check
                     https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-select
                   takes_value: true
         - insert-item:
@@ -162,6 +162,12 @@ subcommands:
                   help: The template id to use for issuance
                   takes_value: true
                   required: true
+              - framework-id:
+                  long: framework-id
+                  value_name: FRAMEWORK_ID
+                  help: The ID of the governance framework to include in the VC issuer membership
+                  takes_value: true
+                  required: false
               - values-data:
                   long: values-data
                   value_name: JSON
@@ -292,193 +298,6 @@ subcommands:
                   required: false
         - invitation_status:
             about: Check invitation status
-  - trust-registry:
-      about: Trust Registry
-      subcommands:
-        - search:
-            about: |
-              Search the registry for authoritative issuer and verifiers
-              using a custom query in a SQL format
-            args:
-              - query:
-                  long: query
-                  value_name: SQL query
-                  help: |
-                    The SQL query to search the registry.
-                    Default value is "SELECT c.data, c.id, c.type FROM c".
-                  takes_value: true
-                  required: true
-        - check-issuer:
-            about: |
-              Check the status of an issuer for a credential type within
-              a given governance framework.
-              Returns all historical data for the given input parameters
-            args:
-              - did:
-                  long: did
-                  value_name: DID
-                  help: The DID identifier of the issuer
-                  takes_value: true
-                  required: true
-              - credential-type:
-                  long: credential-type
-                  value_name: URI
-                  help: The fully qualified credential type URI
-                  takes_value: true
-                  required: true
-              - egf:
-                  long: egf
-                  value_name: URI
-                  help: The URI of the Ecosystem Governance Framework
-                  takes_value: true
-                  required: true
-        - check-verifier:
-            about: |
-              Check the status of a verifier for a presentation type within
-              a given governance framework.
-              Returns all historical data for the given input parameters
-            args:
-              - did:
-                  long: did
-                  value_name: DID
-                  help: The DID identifier of the verifier
-                  takes_value: true
-                  required: true
-              - presentation-type:
-                  long: credential-type
-                  value_name: URI
-                  help: The fully qualified presentation type URI
-                  takes_value: true
-                  required: true
-              - egf:
-                  long: egf
-                  value_name: URI
-                  help: The URI of the Ecosystem Governance Framework
-                  takes_value: true
-                  required: true
-        - download:
-            about: |
-              Downloads an a copy of the trust registry for offline use.
-              The data will be formatted in JSON using the standardized
-              schema and vocabulary for all issuers and verifiers.
-        - register-egf:
-            about: Register an Ecosystem Governance Framework
-            args:
-              - uri:
-                  long: uri
-                  value_name: URI
-                  help: Sets the Ecosystem Governance Framework URI
-                  takes_value: true
-                  required: true
-              - description:
-                  long: description
-                  value_name: STRING
-                  help: EGF Description
-                  takes_value: true
-                  required: false
-        - unregister-egf:
-            about: Unregister an Ecosystem Governance Framework
-            args:
-              - uri:
-                  long: uri
-                  value_name: URI
-                  help: Sets the Ecosystem Governance Framework URI
-                  takes_value: true
-                  required: true
-        - register-issuer:
-            about: |
-              Register an Issuer DID as authoritative issuer for the
-              given ecosystem governance framework (EGF)
-            args:
-              - did:
-                  long: did
-                  value_name: DID
-                  help: The DID identifier of the issuer
-                  takes_value: true
-                  required: true
-              - credential-type:
-                  long: credential-type
-                  value_name: URI
-                  help: The fully qualified credential type URI
-                  takes_value: true
-                  required: true
-              - egf:
-                  long: egf
-                  value_name: URI
-                  help: The URI of the Ecosystem Governance Framework
-                  takes_value: true
-                  required: true
-        - register-verifier:
-            about: |
-              Register a Verifier DID as authoritative verifier for
-              the given presentatiom type under the given ecosystem
-              governance framework (EGF)
-            args:
-              - did:
-                  long: did
-                  value_name: DID
-                  help: The DID identifier of the verifier
-                  takes_value: true
-                  required: true
-              - presentation-type:
-                  long: presentation-type
-                  value_name: URI
-                  help: The fully qualified presentation type URI
-                  takes_value: true
-                  required: true
-              - egf:
-                  long: egf
-                  value_name: URI
-                  help: The URI of the Ecosystem Governance Framework
-                  takes_value: true
-                  required: true
-        - unregister-issuer:
-            about: |
-              Unegister an Issuer DID as authoritative issuer for the
-              given ecosystem governance framework (EGF)
-            args:
-              - did:
-                  long: did
-                  value_name: DID
-                  help: The DID identifier of the issuer
-                  takes_value: true
-                  required: true
-              - credential-type:
-                  long: credential-type
-                  value_name: URI
-                  help: The fully qualified credential type URI
-                  takes_value: true
-                  required: true
-              - egf:
-                  long: egf
-                  value_name: URI
-                  help: The URI of the Ecosystem Governance Framework
-                  takes_value: true
-                  required: true
-        - unregister-verifier:
-            about: |
-              Unregister a Verifier DID as authoritative verifier for
-              the given presentatiom type under the given ecosystem
-              governance framework (EGF)
-            args:
-              - did:
-                  long: did
-                  value_name: DID
-                  help: The DID identifier of the verifier
-                  takes_value: true
-                  required: true
-              - presentation-type:
-                  long: presentation-type
-                  value_name: URI
-                  help: The fully qualified presentation type URI
-                  takes_value: true
-                  required: true
-              - egf:
-                  long: egf
-                  value_name: URI
-                  help: The URI of the Ecosystem Governance Framework
-                  takes_value: true
-                  required: true
 args:
   - debug:
       long: debug

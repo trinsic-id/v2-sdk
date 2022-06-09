@@ -2,29 +2,23 @@ import ServiceBase from "./ServiceBase";
 import {
   AddFrameworkRequest,
   AddFrameworkResponse,
-  CheckIssuerStatusRequest,
-  CheckIssuerStatusResponse,
-  CheckVerifierStatusRequest,
-  CheckVerifierStatusResponse,
   FetchDataRequest,
   FetchDataResponse,
-  RegisterIssuerRequest,
-  RegisterIssuerResponse,
-  RegisterVerifierRequest,
-  RegisterVerifierResponse,
+  GetMembershipStatusRequest,
+  GetMembershipStatusResponse,
+  RegisterMemberRequest,
+  RegisterMemberResponse,
   RemoveFrameworkRequest,
   RemoveFrameworkResponse,
   SearchRegistryRequest,
   SearchRegistryResponse,
   ServiceOptions,
   TrustRegistryDefinition,
-  UnregisterIssuerRequest,
-  UnregisterIssuerResponse,
-  UnregisterVerifierRequest,
-  UnregisterVerifierResponse,
+  UnregisterMemberRequest,
+  UnregisterMemberResponse,
 } from "./proto";
 
-import type {Client as BrowserClient} from "nice-grpc-web";
+import type { Client as BrowserClient } from "nice-grpc-web";
 
 export class TrustRegistryService extends ServiceBase {
   client: BrowserClient<typeof TrustRegistryDefinition>;
@@ -32,73 +26,43 @@ export class TrustRegistryService extends ServiceBase {
   constructor(options?: ServiceOptions) {
     super(options);
 
-    this.client = this.createClient(
-      TrustRegistryDefinition
-    );
+    this.client = this.createClient(TrustRegistryDefinition);
   }
 
-  public async registerIssuer(
-    request: RegisterIssuerRequest
-  ): Promise<RegisterIssuerResponse> {
-    return this.client.registerIssuer(request, {
+  public async registerMember(
+    request: RegisterMemberRequest
+  ): Promise<RegisterMemberResponse> {
+    return this.client.registerMember(request, {
       metadata: await this.getMetadata(
-        RegisterIssuerRequest.encode(request).finish()
+        RegisterMemberRequest.encode(request).finish()
       ),
     });
   }
 
-  public async registerVerifier(
-    request: RegisterVerifierRequest
-  ): Promise<RegisterVerifierResponse> {
-    return this.client.registerVerifier(request, {
+  public async unregisterMember(
+    request: UnregisterMemberRequest
+  ): Promise<UnregisterMemberResponse> {
+    return this.client.unregisterMember(request, {
       metadata: await this.getMetadata(
-        RegisterVerifierRequest.encode(request).finish()
+        UnregisterMemberRequest.encode(request).finish()
       ),
     });
   }
 
-  public async unregisterIssuer(
-    request: UnregisterIssuerRequest
-  ): Promise<UnregisterIssuerResponse> {
-    return this.client.unregisterIssuer(request, {
+  public async getMembershipStatus(
+    request: GetMembershipStatusRequest
+  ): Promise<GetMembershipStatusResponse> {
+    return this.client.getMembershipStatus(request, {
       metadata: await this.getMetadata(
-        UnregisterIssuerRequest.encode(request).finish()
-      ),
-    });
-  }
-
-  public async unregisterVerifier(
-    request: UnregisterVerifierRequest
-  ): Promise<UnregisterVerifierResponse> {
-    return this.client.unregisterVerifier(request, {
-      metadata: await this.getMetadata(
-        UnregisterVerifierRequest.encode(request).finish()
-      ),
-    });
-  }
-
-  public async checkIssuerStatus(
-    request: CheckIssuerStatusRequest
-  ): Promise<CheckIssuerStatusResponse> {
-    return this.client.checkIssuerStatus(request, {
-      metadata: await this.getMetadata(
-        CheckIssuerStatusRequest.encode(request).finish()
-      ),
-    });
-  }
-
-  public async checkVerifierStatus(
-    request: CheckVerifierStatusRequest
-  ): Promise<CheckVerifierStatusResponse> {
-    return this.client.checkVerifierStatus(request, {
-      metadata: await this.getMetadata(
-        CheckVerifierStatusRequest.encode(request).finish()
+        GetMembershipStatusRequest.encode(request).finish()
       ),
     });
   }
 
   public async searchRegistry(
-    request: SearchRegistryRequest = SearchRegistryRequest.fromPartial({query: "SELECT * FROM c"})
+    request: SearchRegistryRequest = SearchRegistryRequest.fromPartial({
+      query: "SELECT * FROM c OFFSET 0 LIMIT 100",
+    })
   ): Promise<SearchRegistryResponse> {
     return this.client.searchRegistry(request, {
       metadata: await this.getMetadata(
@@ -107,7 +71,7 @@ export class TrustRegistryService extends ServiceBase {
     });
   }
 
-  public async addGovernanceFramework(
+  public async addFramework(
     request: AddFrameworkRequest
   ): Promise<AddFrameworkResponse> {
     return this.client.addFramework(request, {
@@ -117,7 +81,7 @@ export class TrustRegistryService extends ServiceBase {
     });
   }
 
-  public async removeGovernanceFramework(
+  public async removeFramework(
     request: RemoveFrameworkRequest
   ): Promise<RemoveFrameworkResponse> {
     return this.client.removeFramework(request, {

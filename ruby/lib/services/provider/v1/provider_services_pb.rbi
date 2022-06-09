@@ -28,6 +28,38 @@ module Services::Provider::V1::Provider
 
     sig do
       params(
+        request: Services::Provider::V1::UpdateEcosystemRequest
+      ).returns(Services::Provider::V1::UpdateEcosystemResponse)
+    end
+    def update_ecosystem(request)
+    end
+
+    sig do
+      params(
+        request: Services::Provider::V1::AddWebhookRequest
+      ).returns(Services::Provider::V1::AddWebhookResponse)
+    end
+    def add_webhook(request)
+    end
+
+    sig do
+      params(
+        request: Services::Provider::V1::DeleteWebhookRequest
+      ).returns(Services::Provider::V1::DeleteWebhookResponse)
+    end
+    def delete_webhook(request)
+    end
+
+    sig do
+      params(
+        request: Services::Provider::V1::EcosystemInfoRequest
+      ).returns(Services::Provider::V1::EcosystemInfoResponse)
+    end
+    def ecosystem_info(request)
+    end
+
+    sig do
+      params(
         request: Services::Provider::V1::GenerateTokenRequest
       ).returns(Services::Provider::V1::GenerateTokenResponse)
     end
@@ -56,6 +88,14 @@ module Services::Provider::V1::Provider
       ).returns(Services::Provider::V1::GetOberonKeyResponse)
     end
     def get_oberon_key(request)
+    end
+
+    sig do
+      params(
+        request: Services::Provider::V1::GetEventTokenRequest
+      ).returns(Services::Provider::V1::GetEventTokenResponse)
+    end
+    def get_event_token(request)
     end
   end
 end

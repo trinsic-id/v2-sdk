@@ -21,15 +21,10 @@ module Services
           rpc :RemoveFramework, ::Services::Trustregistry::V1::RemoveFrameworkRequest, ::Services::Trustregistry::V1::RemoveFrameworkResponse
           rpc :SearchRegistry, ::Services::Trustregistry::V1::SearchRegistryRequest, ::Services::Trustregistry::V1::SearchRegistryResponse
           # Registers an authoritative issuer with a credential template
-          rpc :RegisterIssuer, ::Services::Trustregistry::V1::RegisterIssuerRequest, ::Services::Trustregistry::V1::RegisterIssuerResponse
-          # Registers an authoritative verifier with a credential template
-          rpc :RegisterVerifier, ::Services::Trustregistry::V1::RegisterVerifierRequest, ::Services::Trustregistry::V1::RegisterVerifierResponse
+          rpc :RegisterMember, ::Services::Trustregistry::V1::RegisterMemberRequest, ::Services::Trustregistry::V1::RegisterMemberResponse
           # Removes an authoritative issuer with a credential template from the trust registry
-          rpc :UnregisterIssuer, ::Services::Trustregistry::V1::UnregisterIssuerRequest, ::Services::Trustregistry::V1::UnregisterIssuerResponse
-          # Removes an authoritative verifier with a presentation template from the trust registry
-          rpc :UnregisterVerifier, ::Services::Trustregistry::V1::UnregisterVerifierRequest, ::Services::Trustregistry::V1::UnregisterVerifierResponse
-          rpc :CheckIssuerStatus, ::Services::Trustregistry::V1::CheckIssuerStatusRequest, ::Services::Trustregistry::V1::CheckIssuerStatusResponse
-          rpc :CheckVerifierStatus, ::Services::Trustregistry::V1::CheckVerifierStatusRequest, ::Services::Trustregistry::V1::CheckVerifierStatusResponse
+          rpc :UnregisterMember, ::Services::Trustregistry::V1::UnregisterMemberRequest, ::Services::Trustregistry::V1::UnregisterMemberResponse
+          rpc :GetMembershipStatus, ::Services::Trustregistry::V1::GetMembershipStatusRequest, ::Services::Trustregistry::V1::GetMembershipStatusResponse
           rpc :FetchData, ::Services::Trustregistry::V1::FetchDataRequest, stream(::Services::Trustregistry::V1::FetchDataResponse)
         end
 

@@ -2,11 +2,6 @@
 # source: services/verifiable-credentials/templates/v1/templates.proto
 # typed: strict
 
-module Services; end
-module Services::Verifiablecredentials; end
-module Services::Verifiablecredentials::Templates; end
-module Services::Verifiablecredentials::Templates::V1; end
-
 class Services::Verifiablecredentials::Templates::V1::GetCredentialTemplateRequest
   include Google::Protobuf
   include Google::Protobuf::MessageExts
@@ -230,14 +225,12 @@ class Services::Verifiablecredentials::Templates::V1::SearchCredentialTemplatesR
     params(
       items_json: T.nilable(String),
       has_more: T.nilable(T::Boolean),
-      count: T.nilable(Integer),
       continuation_token: T.nilable(String)
     ).void
   end
   def initialize(
     items_json: "",
     has_more: false,
-    count: 0,
     continuation_token: ""
   )
   end
@@ -264,18 +257,6 @@ class Services::Verifiablecredentials::Templates::V1::SearchCredentialTemplatesR
 
   sig { void }
   def clear_has_more
-  end
-
-  sig { returns(Integer) }
-  def count
-  end
-
-  sig { params(value: Integer).void }
-  def count=(value)
-  end
-
-  sig { void }
-  def clear_count
   end
 
   sig { returns(String) }
@@ -549,6 +530,9 @@ class Services::Verifiablecredentials::Templates::V1::DeleteCredentialTemplateRe
   sig { returns(Google::Protobuf::Descriptor) }
   def self.descriptor
   end
+
+  sig {void}
+  def initialize; end
 
   sig { params(field: String).returns(T.untyped) }
   def [](field)
@@ -943,6 +927,9 @@ class Services::Verifiablecredentials::Templates::V1::ListTemplatesRequest
   sig { returns(Google::Protobuf::Descriptor) }
   def self.descriptor
   end
+
+  sig {void}
+  def initialize; end
 
   sig { params(field: String).returns(T.untyped) }
   def [](field)

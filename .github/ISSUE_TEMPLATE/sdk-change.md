@@ -11,10 +11,11 @@ assignees: fundthmcalculus
 
 Languages:
 - [ ] .NET
+- [ ] CLI
 - [ ] Go
 - [ ] Java
-- [ ] Node
+- [ ] Dart
 - [ ] Python
 - [ ] Ruby
 - [ ] Swift
-- [ ] Web
+- [ ] Typescript

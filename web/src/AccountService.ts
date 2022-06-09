@@ -3,8 +3,8 @@ import {
   AccountDefinition,
   AccountProfile,
   ConfirmationMethod,
-  InfoRequest,
-  InfoResponse,
+  AccountInfoRequest,
+  AccountInfoResponse,
   ListDevicesRequest,
   ListDevicesResponse,
   RevokeDeviceRequest,
@@ -13,14 +13,10 @@ import {
   SignInRequest,
   TokenProtection,
 } from "./proto";
-import {
-  BlindOberonTokenRequest,
-  Oberon,
-  UnBlindOberonTokenRequest,
-} from "@trinsic/okapi";
+import { Oberon } from "@trinsic/okapi";
 import base64url from "base64url";
 
-import type {Client as BrowserClient} from "nice-grpc-web";
+import type { Client as BrowserClient } from "nice-grpc-web";
 
 export class AccountService extends ServiceBase {
   client: BrowserClient<typeof AccountDefinition>;
@@ -28,9 +24,7 @@ export class AccountService extends ServiceBase {
   constructor(options?: ServiceOptions) {
     super(options);
 
-    this.client = this.createClient(
-      AccountDefinition
-    );
+    this.client = this.createClient(AccountDefinition);
   }
 
   /**
@@ -45,11 +39,11 @@ export class AccountService extends ServiceBase {
     securityCode = AccountService.convertToUtf8(securityCode);
     profile = AccountService.convertToProfile(profile);
     let cloned = AccountProfile.fromPartial(profile);
-    const request = new BlindOberonTokenRequest()
-      .setToken(cloned.authToken)
-      .setBlindingList([securityCode]);
-    const result = await Oberon.blindToken(request);
-    cloned.authToken = result.getToken_asU8();
+    const result = await Oberon.blindToken({
+      blinding: [securityCode],
+      token: cloned.authToken,
+    });
+    cloned.authToken = result.token;
     cloned.protection = TokenProtection.fromPartial({
       enabled: true,
       method: ConfirmationMethod.Other,
@@ -69,11 +63,11 @@ export class AccountService extends ServiceBase {
     securityCode = AccountService.convertToUtf8(securityCode);
     profile = AccountService.convertToProfile(profile);
     let cloned = AccountProfile.fromPartial(profile);
-    const request = new UnBlindOberonTokenRequest()
-      .setToken(cloned.authToken)
-      .setBlindingList([securityCode]);
-    const result = await Oberon.unblindToken(request);
-    cloned.authToken = result.getToken_asU8();
+    const result = await Oberon.unblindToken({
+      token: cloned.authToken,
+      blinding: [securityCode],
+    });
+    cloned.authToken = result.token;
     cloned.protection = TokenProtection.fromPartial({
       enabled: false,
       method: ConfirmationMethod.None,
@@ -113,11 +107,13 @@ export class AccountService extends ServiceBase {
     return authToken;
   }
 
-  public async info(): Promise<InfoResponse> {
-    const request = InfoRequest.fromPartial({});
+  public async info(): Promise<AccountInfoResponse> {
+    const request = AccountInfoRequest.fromPartial({});
 
     return this.client.info(request, {
-      metadata: await this.getMetadata(InfoRequest.encode(request).finish()),
+      metadata: await this.getMetadata(
+        AccountInfoRequest.encode(request).finish()
+      ),
     });
   }
 

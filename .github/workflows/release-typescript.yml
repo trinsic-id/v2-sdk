@@ -15,12 +15,9 @@ jobs:
     name: Publish
     runs-on: ubuntu-latest
     environment: npmjs.com
-    strategy:
-      matrix:
-        target: [ "node", "web" ]
     defaults:
       run:
-        working-directory: ${{ matrix.target }}
+        working-directory: "web"
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v2
@@ -28,28 +25,22 @@ jobs:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
       - uses: arduino/setup-protoc@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
       - uses: trinsic-id/set-version@v0.1
         id: setversion
         with:
           githubToken: ${{ secrets.API_GITHUB_TOKEN }}
           overrideVersion: ${{ github.event.inputs.packageVersion }}
+      - run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
       - run: |
-          curl -L https://github.com/grpc/grpc-web/releases/download/1.2.1/protoc-gen-grpc-web-1.2.1-linux-x86_64 --output protoc-gen-grpc-web
-          chmod +x protoc-gen-grpc-web
-          $env:PATH += ":$PWD"
-
           npm install
+          npm version ${{ steps.setversion.outputs.packageVersion }} --no-git-tag-version --yes
           npm run build
-          npm test
-        shell: pwsh
+          npm publish --no-git-tag-version --yes --no-verify-access
         env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           TEST_SERVER_ENDPOINT: ${{ secrets.TEST_SERVER_ENDPOINT }}
           TEST_SERVER_PORT: ${{ secrets.TEST_SERVER_PORT }}
           TEST_SERVER_USE_TLS: ${{ secrets.TEST_SERVER_USE_TLS }}
-      # - run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
-      - run: |
-          npm version ${{ steps.setversion.outputs.packageVersion }}
-          npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 

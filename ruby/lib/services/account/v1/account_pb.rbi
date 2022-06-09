@@ -2,10 +2,6 @@
 # source: services/account/v1/account.proto
 # typed: strict
 
-module Services; end
-module Services::Account; end
-module Services::Account::V1; end
-
 class Services::Account::V1::SignInRequest
   include Google::Protobuf
   include Google::Protobuf::MessageExts
@@ -432,30 +428,33 @@ class Services::Account::V1::TokenProtection
   end
 end
 
-class Services::Account::V1::InfoRequest
+class Services::Account::V1::AccountInfoRequest
   include Google::Protobuf
   include Google::Protobuf::MessageExts
   extend Google::Protobuf::MessageExts::ClassMethods
 
-  sig { params(str: String).returns(Services::Account::V1::InfoRequest) }
+  sig { params(str: String).returns(Services::Account::V1::AccountInfoRequest) }
   def self.decode(str)
   end
 
-  sig { params(msg: Services::Account::V1::InfoRequest).returns(String) }
+  sig { params(msg: Services::Account::V1::AccountInfoRequest).returns(String) }
   def self.encode(msg)
   end
 
-  sig { params(str: String, kw: T.untyped).returns(Services::Account::V1::InfoRequest) }
+  sig { params(str: String, kw: T.untyped).returns(Services::Account::V1::AccountInfoRequest) }
   def self.decode_json(str, **kw)
   end
 
-  sig { params(msg: Services::Account::V1::InfoRequest, kw: T.untyped).returns(String) }
+  sig { params(msg: Services::Account::V1::AccountInfoRequest, kw: T.untyped).returns(String) }
   def self.encode_json(msg, **kw)
   end
 
   sig { returns(Google::Protobuf::Descriptor) }
   def self.descriptor
   end
+
+  sig {void}
+  def initialize; end
 
   sig { params(field: String).returns(T.untyped) }
   def [](field)
@@ -470,24 +469,24 @@ class Services::Account::V1::InfoRequest
   end
 end
 
-class Services::Account::V1::InfoResponse
+class Services::Account::V1::AccountInfoResponse
   include Google::Protobuf
   include Google::Protobuf::MessageExts
   extend Google::Protobuf::MessageExts::ClassMethods
 
-  sig { params(str: String).returns(Services::Account::V1::InfoResponse) }
+  sig { params(str: String).returns(Services::Account::V1::AccountInfoResponse) }
   def self.decode(str)
   end
 
-  sig { params(msg: Services::Account::V1::InfoResponse).returns(String) }
+  sig { params(msg: Services::Account::V1::AccountInfoResponse).returns(String) }
   def self.encode(msg)
   end
 
-  sig { params(str: String, kw: T.untyped).returns(Services::Account::V1::InfoResponse) }
+  sig { params(str: String, kw: T.untyped).returns(Services::Account::V1::AccountInfoResponse) }
   def self.decode_json(str, **kw)
   end
 
-  sig { params(msg: Services::Account::V1::InfoResponse, kw: T.untyped).returns(String) }
+  sig { params(msg: Services::Account::V1::AccountInfoResponse, kw: T.untyped).returns(String) }
   def self.encode_json(msg, **kw)
   end
 
@@ -501,7 +500,9 @@ class Services::Account::V1::InfoResponse
       ecosystems: T.nilable(T::Array[T.nilable(Services::Account::V1::AccountEcosystem)]),
       wallet_id: T.nilable(String),
       device_id: T.nilable(String),
-      ecosystem_id: T.nilable(String)
+      ecosystem_id: T.nilable(String),
+      public_did: T.nilable(String),
+      authorized_webhooks: T.nilable(T::Array[String])
     ).void
   end
   def initialize(
@@ -509,7 +510,9 @@ class Services::Account::V1::InfoResponse
     ecosystems: [],
     wallet_id: "",
     device_id: "",
-    ecosystem_id: ""
+    ecosystem_id: "",
+    public_did: "",
+    authorized_webhooks: []
   )
   end
 
@@ -573,6 +576,30 @@ class Services::Account::V1::InfoResponse
   def clear_ecosystem_id
   end
 
+  sig { returns(String) }
+  def public_did
+  end
+
+  sig { params(value: String).void }
+  def public_did=(value)
+  end
+
+  sig { void }
+  def clear_public_did
+  end
+
+  sig { returns(T::Array[String]) }
+  def authorized_webhooks
+  end
+
+  sig { params(value: Google::Protobuf::RepeatedField).void }
+  def authorized_webhooks=(value)
+  end
+
+  sig { void }
+  def clear_authorized_webhooks
+  end
+
   sig { params(field: String).returns(T.untyped) }
   def [](field)
   end
@@ -610,6 +637,9 @@ class Services::Account::V1::ListDevicesRequest
   sig { returns(Google::Protobuf::Descriptor) }
   def self.descriptor
   end
+
+  sig {void}
+  def initialize; end
 
   sig { params(field: String).returns(T.untyped) }
   def [](field)
@@ -649,6 +679,9 @@ class Services::Account::V1::ListDevicesResponse
   def self.descriptor
   end
 
+  sig {void}
+  def initialize; end
+
   sig { params(field: String).returns(T.untyped) }
   def [](field)
   end
@@ -687,6 +720,9 @@ class Services::Account::V1::RevokeDeviceRequest
   def self.descriptor
   end
 
+  sig {void}
+  def initialize; end
+
   sig { params(field: String).returns(T.untyped) }
   def [](field)
   end
@@ -724,6 +760,9 @@ class Services::Account::V1::RevokeDeviceResponse
   sig { returns(Google::Protobuf::Descriptor) }
   def self.descriptor
   end
+
+  sig {void}
+  def initialize; end
 
   sig { params(field: String).returns(T.untyped) }
   def [](field)
@@ -826,6 +865,407 @@ class Services::Account::V1::AccountEcosystem
   sig { void }
   def clear_uri
   end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Account::V1::LoginRequest
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Account::V1::LoginRequest) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Account::V1::LoginRequest).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Account::V1::LoginRequest) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Account::V1::LoginRequest, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      email: T.nilable(String),
+      invitation_code: T.nilable(String),
+      ecosystem_id: T.nilable(String)
+    ).void
+  end
+  def initialize(
+    email: "",
+    invitation_code: "",
+    ecosystem_id: ""
+  )
+  end
+
+  sig { returns(String) }
+  def email
+  end
+
+  sig { params(value: String).void }
+  def email=(value)
+  end
+
+  sig { void }
+  def clear_email
+  end
+
+  sig { returns(String) }
+  def invitation_code
+  end
+
+  sig { params(value: String).void }
+  def invitation_code=(value)
+  end
+
+  sig { void }
+  def clear_invitation_code
+  end
+
+  sig { returns(String) }
+  def ecosystem_id
+  end
+
+  sig { params(value: String).void }
+  def ecosystem_id=(value)
+  end
+
+  sig { void }
+  def clear_ecosystem_id
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Account::V1::LoginResponse
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Account::V1::LoginResponse) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Account::V1::LoginResponse).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Account::V1::LoginResponse) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Account::V1::LoginResponse, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      challenge: T.nilable(String),
+      profile: T.nilable(Services::Account::V1::AccountProfile)
+    ).void
+  end
+  def initialize(
+    challenge: "",
+    profile: nil
+  )
+  end
+
+  sig { returns(String) }
+  def challenge
+  end
+
+  sig { params(value: String).void }
+  def challenge=(value)
+  end
+
+  sig { void }
+  def clear_challenge
+  end
+
+  sig { returns(T.nilable(Services::Account::V1::AccountProfile)) }
+  def profile
+  end
+
+  sig { params(value: T.nilable(Services::Account::V1::AccountProfile)).void }
+  def profile=(value)
+  end
+
+  sig { void }
+  def clear_profile
+  end
+
+  sig { returns(T.nilable(Symbol)) }
+  def response
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Account::V1::LoginConfirmRequest
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Account::V1::LoginConfirmRequest) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Account::V1::LoginConfirmRequest).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Account::V1::LoginConfirmRequest) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Account::V1::LoginConfirmRequest, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      challenge: T.nilable(String),
+      confirmation_code_hashed: T.nilable(String)
+    ).void
+  end
+  def initialize(
+    challenge: "",
+    confirmation_code_hashed: ""
+  )
+  end
+
+  sig { returns(String) }
+  def challenge
+  end
+
+  sig { params(value: String).void }
+  def challenge=(value)
+  end
+
+  sig { void }
+  def clear_challenge
+  end
+
+  sig { returns(String) }
+  def confirmation_code_hashed
+  end
+
+  sig { params(value: String).void }
+  def confirmation_code_hashed=(value)
+  end
+
+  sig { void }
+  def clear_confirmation_code_hashed
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Account::V1::LoginConfirmResponse
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Account::V1::LoginConfirmResponse) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Account::V1::LoginConfirmResponse).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Account::V1::LoginConfirmResponse) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Account::V1::LoginConfirmResponse, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      profile: T.nilable(Services::Account::V1::AccountProfile)
+    ).void
+  end
+  def initialize(
+    profile: nil
+  )
+  end
+
+  sig { returns(T.nilable(Services::Account::V1::AccountProfile)) }
+  def profile
+  end
+
+  sig { params(value: T.nilable(Services::Account::V1::AccountProfile)).void }
+  def profile=(value)
+  end
+
+  sig { void }
+  def clear_profile
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Account::V1::AuthorizeWebhookRequest
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Account::V1::AuthorizeWebhookRequest) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Account::V1::AuthorizeWebhookRequest).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Account::V1::AuthorizeWebhookRequest) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Account::V1::AuthorizeWebhookRequest, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      events: T.nilable(T::Array[String])
+    ).void
+  end
+  def initialize(
+    events: []
+  )
+  end
+
+  sig { returns(T::Array[String]) }
+  def events
+  end
+
+  sig { params(value: Google::Protobuf::RepeatedField).void }
+  def events=(value)
+  end
+
+  sig { void }
+  def clear_events
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Account::V1::AuthorizeWebhookResponse
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Account::V1::AuthorizeWebhookResponse) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Account::V1::AuthorizeWebhookResponse).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Account::V1::AuthorizeWebhookResponse) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Account::V1::AuthorizeWebhookResponse, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig {void}
+  def initialize; end
 
   sig { params(field: String).returns(T.untyped) }
   def [](field)

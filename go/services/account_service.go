@@ -6,11 +6,12 @@ import (
 
 	"github.com/trinsic-id/okapi/go/okapi"
 	"github.com/trinsic-id/okapi/go/okapiproto"
-	sdk "github.com/trinsic-id/sdk/go/proto"
+	"github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
+
 	"google.golang.org/protobuf/proto"
 )
 
-// NewAccountService returns an account servcie with the base service configured
+// NewAccountService returns an account service with the base service configured
 // using the provided options
 func NewAccountService(options *Options) (AccountService, error) {
 	base, err := NewServiceBase(options)
@@ -19,7 +20,7 @@ func NewAccountService(options *Options) (AccountService, error) {
 	}
 	service := &accountBase{
 		Service: base,
-		client:  sdk.NewAccountClient(base.GetChannel()),
+		client:  account.NewAccountClient(base.GetChannel()),
 	}
 
 	return service, nil
@@ -29,32 +30,32 @@ func NewAccountService(options *Options) (AccountService, error) {
 type AccountService interface {
 	Service
 	// SignIn returns an encoded auth token
-	SignIn(userContext context.Context, request *sdk.SignInRequest) (string, sdk.ConfirmationMethod, error)
+	SignIn(userContext context.Context, request *account.SignInRequest) (string, account.ConfirmationMethod, error)
 	// Unprotect takes an authtoken that has been protected using a pin code
 	// and returns an unlocked token
 	Unprotect(authtoken, securityCode string) (string, error)
 	// Protect will apply the given security code blind to the provided token
 	Protect(authtoken, securityCode string) (string, error)
 	// GetInfo returns details about the wallet associated with the account token
-	GetInfo(userContext context.Context) (*sdk.InfoResponse, error)
+	GetInfo(userContext context.Context) (*account.AccountInfoResponse, error)
 	// ListDevices returns a list of devices that are associated with the cloud wallet
-	ListDevices(userContext context.Context, request *sdk.ListDevicesRequest) (*sdk.ListDevicesResponse, error)
+	ListDevices(userContext context.Context, request *account.ListDevicesRequest) (*account.ListDevicesResponse, error)
 	// RevokeDevice removes access to the cloud wallet for the provided device
-	RevokeDevice(userContext context.Context, request *sdk.RevokeDeviceRequest) (*sdk.RevokeDeviceResponse, error)
+	RevokeDevice(userContext context.Context, request *account.RevokeDeviceRequest) (*account.RevokeDeviceResponse, error)
 }
 
 type accountBase struct {
 	Service
-	client sdk.AccountClient
+	client account.AccountClient
 }
 
 // SignIn to a given account
-func (a *accountBase) SignIn(userContext context.Context, request *sdk.SignInRequest) (string, sdk.ConfirmationMethod, error) {
+func (a *accountBase) SignIn(userContext context.Context, request *account.SignInRequest) (string, account.ConfirmationMethod, error) {
 	if request == nil {
-		request = &sdk.SignInRequest{}
+		request = &account.SignInRequest{}
 	}
 	if request.Details == nil {
-		request.Details = &sdk.AccountDetails{}
+		request.Details = &account.AccountDetails{}
 	}
 
 	if len(request.EcosystemId) == 0 {
@@ -63,12 +64,12 @@ func (a *accountBase) SignIn(userContext context.Context, request *sdk.SignInReq
 
 	resp, err := a.client.SignIn(userContext, request)
 	if err != nil {
-		return "", sdk.ConfirmationMethod_None, err
+		return "", account.ConfirmationMethod_None, err
 	}
 
 	tkn, err := ProfileToToken(resp.Profile)
 	if err != nil {
-		return "", sdk.ConfirmationMethod_None, err
+		return "", account.ConfirmationMethod_None, err
 	}
 
 	return tkn, resp.ConfirmationMethod, nil
@@ -89,15 +90,15 @@ func (a *accountBase) Unprotect(authtoken, securityCode string) (string, error) 
 		Blinding: append([][]byte{}, []byte(securityCode)),
 	}
 
-	response, err := okapi.Oberon().UnblindToken(request)
+	response, err := okapi.Oberon().UnBlindToken(request)
 	if err != nil {
 		return "", err
 	}
 
 	profile.AuthToken = response.Token
-	profile.Protection = &sdk.TokenProtection{
+	profile.Protection = &account.TokenProtection{
 		Enabled: false,
-		Method:  sdk.ConfirmationMethod_None,
+		Method:  account.ConfirmationMethod_None,
 	}
 
 	return ProfileToToken(profile)
@@ -124,17 +125,17 @@ func (a *accountBase) Protect(authtoken, securityCode string) (string, error) {
 	}
 
 	profile.AuthToken = response.Token
-	profile.Protection = &sdk.TokenProtection{
+	profile.Protection = &account.TokenProtection{
 		Enabled: true,
-		Method:  sdk.ConfirmationMethod_Other,
+		Method:  account.ConfirmationMethod_Other,
 	}
 
 	return ProfileToToken(profile)
 }
 
 // GetInfo associated with a given wallet
-func (a *accountBase) GetInfo(userContext context.Context) (*sdk.InfoResponse, error) {
-	request := &sdk.InfoRequest{}
+func (a *accountBase) GetInfo(userContext context.Context) (*account.AccountInfoResponse, error) {
+	request := &account.AccountInfoRequest{}
 	md, err := a.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -147,7 +148,7 @@ func (a *accountBase) GetInfo(userContext context.Context) (*sdk.InfoResponse, e
 }
 
 // ListDevices that can access the cloud wallet
-func (a *accountBase) ListDevices(userContext context.Context, request *sdk.ListDevicesRequest) (*sdk.ListDevicesResponse, error) {
+func (a *accountBase) ListDevices(userContext context.Context, request *account.ListDevicesRequest) (*account.ListDevicesResponse, error) {
 	md, err := a.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -160,7 +161,7 @@ func (a *accountBase) ListDevices(userContext context.Context, request *sdk.List
 }
 
 // RevokeDevice from the cloud wallet
-func (a *accountBase) RevokeDevice(userContext context.Context, request *sdk.RevokeDeviceRequest) (*sdk.RevokeDeviceResponse, error) {
+func (a *accountBase) RevokeDevice(userContext context.Context, request *account.RevokeDeviceRequest) (*account.RevokeDeviceResponse, error) {
 	md, err := a.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -173,7 +174,7 @@ func (a *accountBase) RevokeDevice(userContext context.Context, request *sdk.Rev
 }
 
 // ProfileToToken takes the proile and returns an encoded auth token
-func ProfileToToken(profile *sdk.AccountProfile) (string, error) {
+func ProfileToToken(profile *account.AccountProfile) (string, error) {
 	pbytes, err := proto.Marshal(profile)
 	if err != nil {
 		return "", err
@@ -183,13 +184,13 @@ func ProfileToToken(profile *sdk.AccountProfile) (string, error) {
 }
 
 // ProfileFromToken takes an encoded auth token and returns the account profile
-func ProfileFromToken(token string) (*sdk.AccountProfile, error) {
+func ProfileFromToken(token string) (*account.AccountProfile, error) {
 	tb, err := base64.RawURLEncoding.DecodeString(token)
 	if err != nil {
 		return nil, err
 	}
 
-	profile := &sdk.AccountProfile{}
+	profile := &account.AccountProfile{}
 
 	err = proto.Unmarshal(tb, profile)
 

@@ -11,7 +11,7 @@ import (
 )
 
 func loadWindowsCerts() []*x509.Certificate {
-	const CRYPT_E_NOT_FOUND = 0x80092004
+	const CryptENotFound = 0x80092004
 	// Copied from: https://github.com/golang/go/issues/16736#issuecomment-540373689
 	// Because golang team apparently doesn't believe that Windows deserves security.
 	ptr, err := syscall.UTF16PtrFromString("Root")
@@ -29,7 +29,7 @@ func loadWindowsCerts() []*x509.Certificate {
 		cert, err = syscall.CertEnumCertificatesInStore(storeHandle, cert)
 		if err != nil {
 			if errno, ok := err.(syscall.Errno); ok {
-				if errno == CRYPT_E_NOT_FOUND {
+				if errno == CryptENotFound {
 					break
 				}
 			}

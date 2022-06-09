@@ -2,13 +2,13 @@ syntax = "proto3";
 
 package sdk.options.v1;
 
-option go_package = "github.com/trinsic-id/sdk";
-option java_package = "trinsic.sdk.v1";
+option go_package = "sdk/options/v1/options";
+option java_package = "trinsic.sdk.options.v1";
 option csharp_namespace = "Trinsic.Sdk.Options.V1";
 
 // Configuration for Trinsic SDK Services
 message ServiceOptions {
-    // Trinsic API endpoint; defaults to `prod.trinsic.cloud`
+    // Trinsic API endpoint. Defaults to `prod.trinsic.cloud`
     string server_endpoint = 1;
     // Trinsic API port; defaults to `443`
     int32 server_port = 2;

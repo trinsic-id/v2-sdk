@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	sdk "github.com/trinsic-id/sdk/go/proto"
+	"github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
 )
 
 func TestProtectUnprotectProfile(t *testing.T) {
@@ -23,7 +23,7 @@ func TestProtectUnprotectProfile(t *testing.T) {
 	}
 	// }
 	// accountServiceSignIn() {
-	profile, _, err := accountService.SignIn(context.Background(), &sdk.SignInRequest{})
+	profile, _, err := accountService.SignIn(context.Background(), &account.SignInRequest{})
 	if !assert2.Nil(err) {
 		return
 	}

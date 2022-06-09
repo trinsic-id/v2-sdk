@@ -3,80 +3,141 @@
 # plugin: python-betterproto
 import warnings
 from dataclasses import dataclass
-from typing import Dict, List
+from typing import (
+    TYPE_CHECKING,
+    Dict,
+    List,
+    Optional,
+)
 
 import betterproto
-from betterproto.grpc.grpclib_server import ServiceBase
 import grpclib
+from betterproto.grpc.grpclib_server import ServiceBase
+
+
+if TYPE_CHECKING:
+    from betterproto.grpc.grpclib_client import MetadataLike
+    from grpclib.metadata import Deadline
 
 
 @dataclass(eq=False, repr=False)
 class IssueRequest(betterproto.Message):
+    """Request to sign a JSON-LD Credential using public key tied to caller"""
+
     document_json: str = betterproto.string_field(1)
+    """Valid JSON-LD Credential document to be signed, in string form"""
 
 
 @dataclass(eq=False, repr=False)
 class IssueResponse(betterproto.Message):
+    """Response to `IssueRequest`"""
+
     signed_document_json: str = betterproto.string_field(1)
+    """
+    Verifiable Credential document, signed with public key tied to caller of
+    `IssueRequest`
+    """
 
 
 @dataclass(eq=False, repr=False)
 class IssueFromTemplateRequest(betterproto.Message):
+    """
+    Request to create and sign a JSON-LD Verifiable Credential from a template
+    using public key tied to caller
+    """
+
     template_id: str = betterproto.string_field(1)
+    """ID of template to use"""
+
     values_json: str = betterproto.string_field(2)
+    """
+    JSON document string with keys corresponding to the fields of the template
+    referenced by `template_id`
+    """
+
+    framework_id: str = betterproto.string_field(3)
+    """
+    Governance framework ID to use with issuance of this credential. If
+    specified, the issued credential will contain extended issuer metadata with
+    membership info for the given ecosystem governance framework (EGF)
+    """
 
 
 @dataclass(eq=False, repr=False)
 class IssueFromTemplateResponse(betterproto.Message):
+    """Response to `IssueFromTemplateRequest`"""
+
     document_json: str = betterproto.string_field(1)
+    """
+    Verifiable Credential document, in JSON-LD form, constructed from the
+    specified template and values; signed with public key tied to caller of
+    `IssueFromTemplateRequest`
+    """
 
 
 @dataclass(eq=False, repr=False)
 class CreateProofRequest(betterproto.Message):
-    """Create Proof"""
+    """
+    Request to create a proof for a Verifiable Credential using public key tied
+    to caller. Either `item_id` or `document_json` may be provided, not both.
+    """
 
-    # Optional document that describes which fields should be revealed in the
-    # generated proof. If specified, this document must be a valid JSON-LD frame.
-    # If this field is not specified, a default reveal document will be used and
-    # all fields in the signed document will be revealed
     reveal_document_json: str = betterproto.string_field(1)
-    # The item identifier that contains a record with a verifiable credential to
-    # be used for generating the proof.
+    """
+    A valid JSON-LD frame describing which fields should be revealed in the
+    generated proof.  If unspecified, all fields in the document will be
+    revealed
+    """
+
     item_id: str = betterproto.string_field(2, group="proof")
-    # A document that contains a valid verifiable credential with an unbound
-    # signature. The proof will be derived from this document directly. The
-    # document will not be stored in the wallet.
+    """ID of wallet item stored in a Trinsic cloud wallet"""
+
     document_json: str = betterproto.string_field(3, group="proof")
+    """
+    A valid JSON-LD Verifiable Credential document string  with an unbound
+    signature. The proof will be derived from this document directly. The
+    document will not be stored in the wallet.
+    """
 
 
 @dataclass(eq=False, repr=False)
 class CreateProofResponse(betterproto.Message):
+    """Response to `CreateProofRequest`"""
+
     proof_document_json: str = betterproto.string_field(1)
+    """Valid JSON-LD proof for the specified credential"""
 
 
 @dataclass(eq=False, repr=False)
 class VerifyProofRequest(betterproto.Message):
-    """Verify Proof"""
+    """Request to verify a proof"""
 
     proof_document_json: str = betterproto.string_field(1)
+    """JSON-LD proof document string to verify"""
 
 
 @dataclass(eq=False, repr=False)
 class VerifyProofResponse(betterproto.Message):
-    # Indicates if the proof is valid
+    """Response to `VerifyProofRequest`"""
+
     is_valid: bool = betterproto.bool_field(1)
+    """Whether or not all validations in `validation_results` passed"""
+
     validation_messages: List[str] = betterproto.string_field(2)
-    # Validation messages that describe invalid verifications based on different
-    # factors, such as schema validation, proof verification, revocation registry
-    # membership, etc. If the proof is not valid, this field will contain
-    # detailed results where this verification failed.
+    """Use `validation_results` instead"""
+
     validation_results: Dict[str, "ValidationMessage"] = betterproto.map_field(
         3, betterproto.TYPE_STRING, betterproto.TYPE_MESSAGE
     )
+    """
+    Results of each validation check performed,  such as schema conformance,
+    revocation status, signature, etc. Detailed results are provided for failed
+    validations.
+    """
 
     def __post_init__(self) -> None:
         super().__post_init__()
-        if self.validation_messages:
+        if self.is_set("validation_messages"):
             warnings.warn(
                 "VerifyProofResponse.validation_messages is deprecated",
                 DeprecationWarning,
@@ -85,118 +146,184 @@ class VerifyProofResponse(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class ValidationMessage(betterproto.Message):
-    """validation message that contains results and error messages"""
+    """Result of a validation check on a proof"""
 
-    # the validation result
     is_valid: bool = betterproto.bool_field(1)
-    # set of messages that contain validation results
+    """Whether or not this validation check passed"""
+
     messages: List[str] = betterproto.string_field(2)
+    """If validation failed, contains messages explaining why"""
 
 
 @dataclass(eq=False, repr=False)
 class SendRequest(betterproto.Message):
+    """Request to send a document to another user's wallet"""
+
     email: str = betterproto.string_field(1, group="delivery_method")
+    """Email address of user to send item to"""
+
     did_uri: str = betterproto.string_field(2, group="delivery_method")
+    """DID of recipient (presently unsupported)"""
+
     didcomm_invitation_json: str = betterproto.string_field(3, group="delivery_method")
+    """DIDComm out-of-band invitation JSON (presently unsupported)"""
+
     document_json: str = betterproto.string_field(100)
+    """JSON document to send to recipient"""
 
 
 @dataclass(eq=False, repr=False)
 class SendResponse(betterproto.Message):
+    """Response to `SendRequest`"""
+
     pass
 
 
 @dataclass(eq=False, repr=False)
 class UpdateStatusRequest(betterproto.Message):
-    """request object to update the status of the revocation entry"""
+    """Request to update a credential's revocation status"""
 
-    # the credential status id
     credential_status_id: str = betterproto.string_field(1)
-    # indicates if the status is revoked
+    """Credential Status ID to update"""
+
     revoked: bool = betterproto.bool_field(2)
+    """New revocation status of credential"""
 
 
 @dataclass(eq=False, repr=False)
 class UpdateStatusResponse(betterproto.Message):
-    """response object for update of status of revocation entry"""
+    """Response to `UpdateStatusRequest`"""
 
     pass
 
 
 @dataclass(eq=False, repr=False)
 class CheckStatusRequest(betterproto.Message):
-    """request object to check the status of the revocation entry"""
+    """Request to check a credential's revocation status"""
 
-    # the credential status id
     credential_status_id: str = betterproto.string_field(1)
+    """Credential Status ID to check"""
 
 
 @dataclass(eq=False, repr=False)
 class CheckStatusResponse(betterproto.Message):
-    """response object for checking the status of revocation entry"""
+    """Response to `CheckStatusRequest`"""
 
-    # indicates if the status is revoked
     revoked: bool = betterproto.bool_field(1)
+    """The credential's revocation status"""
 
 
 class VerifiableCredentialStub(betterproto.ServiceStub):
-    async def issue(self, issue_request: "IssueRequest") -> "IssueResponse":
+    async def issue(
+        self,
+        issue_request: "IssueRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "IssueResponse":
         return await self._unary_unary(
             "/services.verifiablecredentials.v1.VerifiableCredential/Issue",
             issue_request,
             IssueResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def issue_from_template(
-        self, issue_from_template_request: "IssueFromTemplateRequest"
+        self,
+        issue_from_template_request: "IssueFromTemplateRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "IssueFromTemplateResponse":
         return await self._unary_unary(
             "/services.verifiablecredentials.v1.VerifiableCredential/IssueFromTemplate",
             issue_from_template_request,
             IssueFromTemplateResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def check_status(
-        self, check_status_request: "CheckStatusRequest"
+        self,
+        check_status_request: "CheckStatusRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "CheckStatusResponse":
         return await self._unary_unary(
             "/services.verifiablecredentials.v1.VerifiableCredential/CheckStatus",
             check_status_request,
             CheckStatusResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def update_status(
-        self, update_status_request: "UpdateStatusRequest"
+        self,
+        update_status_request: "UpdateStatusRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "UpdateStatusResponse":
         return await self._unary_unary(
             "/services.verifiablecredentials.v1.VerifiableCredential/UpdateStatus",
             update_status_request,
             UpdateStatusResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def create_proof(
-        self, create_proof_request: "CreateProofRequest"
+        self,
+        create_proof_request: "CreateProofRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "CreateProofResponse":
         return await self._unary_unary(
             "/services.verifiablecredentials.v1.VerifiableCredential/CreateProof",
             create_proof_request,
             CreateProofResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def verify_proof(
-        self, verify_proof_request: "VerifyProofRequest"
+        self,
+        verify_proof_request: "VerifyProofRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "VerifyProofResponse":
         return await self._unary_unary(
             "/services.verifiablecredentials.v1.VerifiableCredential/VerifyProof",
             verify_proof_request,
             VerifyProofResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
-    async def send(self, send_request: "SendRequest") -> "SendResponse":
+    async def send(
+        self,
+        send_request: "SendRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "SendResponse":
         return await self._unary_unary(
             "/services.verifiablecredentials.v1.VerifiableCredential/Send",
             send_request,
             SendResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
 

@@ -118,9 +118,9 @@ public class AccountService : ServiceBase
     /// Return the details about the currently active account
     /// </summary>
     /// <returns></returns>
-    public async Task<InfoResponse> GetInfoAsync() {
-        InfoRequest request = new();
-        var response = await Client.InfoAsync(request, await BuildMetadataAsync(request));
+    public async Task<AccountInfoResponse> GetInfoAsync() {
+        AccountInfoRequest request = new();
+        var response = await Client.InfoAsync(new(), await BuildMetadataAsync(request));
 
         return response;
     }
@@ -129,8 +129,8 @@ public class AccountService : ServiceBase
     /// Return the details about the currently active account
     /// </summary>
     /// <returns></returns>
-    public InfoResponse GetInfo() {
-        InfoRequest request = new();
+    public AccountInfoResponse GetInfo() {
+        AccountInfoRequest request = new();
         var response = Client.Info(request, BuildMetadata(request));
 
         return response;

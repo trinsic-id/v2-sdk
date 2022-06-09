@@ -3,51 +3,68 @@
 # plugin: python-betterproto
 import warnings
 from dataclasses import dataclass
-from typing import Dict, List
+from typing import (
+    TYPE_CHECKING,
+    Dict,
+    List,
+    Optional,
+)
 
 import betterproto
-from betterproto.grpc.grpclib_server import ServiceBase
 import grpclib
+from betterproto.grpc.grpclib_server import ServiceBase
+
+
+if TYPE_CHECKING:
+    from betterproto.grpc.grpclib_client import MetadataLike
+    from grpclib.metadata import Deadline
 
 
 class ConfirmationMethod(betterproto.Enum):
     """Confirmation method type for two-factor workflows"""
 
-    # No confirmation required
     None_ = 0
-    # Email confirmation required
+    """No confirmation required"""
+
     Email = 1
-    # SMS confirmation required
+    """Email confirmation required"""
+
     Sms = 2
-    # Confirmation from a connected device is required
+    """SMS confirmation required"""
+
     ConnectedDevice = 3
-    # Indicates third-party method of confirmation is required
+    """Confirmation from a connected device is required"""
+
     Other = 10
+    """Indicates third-party method of confirmation is required"""
 
 
 @dataclass(eq=False, repr=False)
 class SignInRequest(betterproto.Message):
-    """Request for creating new account"""
+    """Request for creating or signing into an account"""
 
-    # Account registration details
     details: "AccountDetails" = betterproto.message_field(1)
-    # Invitation code associated with this registration This field is optional.
+    """Account registration details"""
+
     invitation_code: str = betterproto.string_field(2)
-    # EcosystemId to sign in. This field is optional and will be ignored if
-    # invitation_code is passed
+    """Invitation code associated with this registration"""
+
     ecosystem_id: str = betterproto.string_field(3)
+    """ID of Ecosystem to use Ignored if `invitation_code` is passed"""
 
 
 @dataclass(eq=False, repr=False)
 class AccountDetails(betterproto.Message):
-    """Account Registration Details"""
+    """Account registration details"""
 
-    # Account name (optional)
     name: str = betterproto.string_field(1)
-    # Email account (required)
+    """Account name"""
+
     email: str = betterproto.string_field(2)
-    # SMS number including country code (optional)
+    """Email account"""
+
     sms: str = betterproto.string_field(3)
+    """SMS number including country code"""
 
 
 @dataclass(eq=False, repr=False)
@@ -58,14 +75,19 @@ class SignInResponse(betterproto.Message):
     email, SMS, etc.
     """
 
-    # Indicates if confirmation of account is required. This settings is
-    # configured globally by the server administrator.
     confirmation_method: "ConfirmationMethod" = betterproto.enum_field(3)
-    # Contains authentication data for use with the current device. This object
-    # must be stored in a secure place. It can also be protected with a PIN, but
-    # this is optional. See the docs at https://docs.trinsic.id for more
-    # information on working with authentication data.
+    """
+    Indicates if confirmation of account is required. This settings is
+    configured globally by the server administrator.
+    """
+
     profile: "AccountProfile" = betterproto.message_field(4)
+    """
+    Contains authentication data for use with the current device. This object
+    must be stored in a secure place. It can also be protected with a PIN, but
+    this is optional. See the docs at https://docs.trinsic.id for more
+    information on working with authentication data.
+    """
 
 
 @dataclass(eq=False, repr=False)
@@ -75,52 +97,81 @@ class AccountProfile(betterproto.Message):
     should be stored securely
     """
 
-    # The type of profile, used to differentiate between protocol schemes or
-    # versions
     profile_type: str = betterproto.string_field(1)
-    # Auth data containg information about the current device access
+    """
+    The type of profile, used to differentiate between protocol schemes or
+    versions
+    """
+
     auth_data: bytes = betterproto.bytes_field(2)
-    # Secure token issued by server used to generate zero-knowledge proofs
+    """Auth data containg information about the current device access"""
+
     auth_token: bytes = betterproto.bytes_field(3)
-    # Token security information about the token. If token protection is enabled,
-    # implementations must supply protection secret before using the token for
-    # authentication.
+    """Secure token issued by server used to generate zero-knowledge proofs"""
+
     protection: "TokenProtection" = betterproto.message_field(4)
+    """
+    Token security information about the token. If token protection is enabled,
+    implementations must supply protection secret before using the token for
+    authentication.
+    """
 
 
 @dataclass(eq=False, repr=False)
 class TokenProtection(betterproto.Message):
     """Token protection info"""
 
-    # Indicates if token is protected using a PIN, security code, HSM secret,
-    # etc.
     enabled: bool = betterproto.bool_field(1)
-    # The method used to protect the token
+    """
+    Indicates if token is protected using a PIN, security code, HSM secret,
+    etc.
+    """
+
     method: "ConfirmationMethod" = betterproto.enum_field(2)
+    """The method used to protect the token"""
 
 
 @dataclass(eq=False, repr=False)
-class InfoRequest(betterproto.Message):
+class AccountInfoRequest(betterproto.Message):
+    """Request for information about the account used to make the request"""
+
     pass
 
 
 @dataclass(eq=False, repr=False)
-class InfoResponse(betterproto.Message):
-    # The account details associated with the calling request context
+class AccountInfoResponse(betterproto.Message):
+    """Information about the account used to make the request"""
+
     details: "AccountDetails" = betterproto.message_field(1)
-    # any ecosystems the account has access to
+    """The account details associated with the calling request context"""
+
     ecosystems: List["AccountEcosystem"] = betterproto.message_field(2)
-    # The wallet id associated with this account
+    """Use `ecosystem_id` instead"""
+
     wallet_id: str = betterproto.string_field(3)
-    # The device id associated with this account
+    """The wallet ID associated with this account"""
+
     device_id: str = betterproto.string_field(4)
-    # The ecosystem id associated with this account
+    """The device ID associated with this account session"""
+
     ecosystem_id: str = betterproto.string_field(5)
+    """The ecosystem ID within which this account resides"""
+
+    public_did: str = betterproto.string_field(6)
+    """
+    The public DID associated with this account. This DID is used as "issuer"
+    when signing verifiable credentials
+    """
+
+    authorized_webhooks: List[str] = betterproto.string_field(7)
+    """Webhook events if any this wallet has authorized"""
 
     def __post_init__(self) -> None:
         super().__post_init__()
-        if self.ecosystems:
-            warnings.warn("InfoResponse.ecosystems is deprecated", DeprecationWarning)
+        if self.is_set("ecosystems"):
+            warnings.warn(
+                "AccountInfoResponse.ecosystems is deprecated", DeprecationWarning
+            )
 
 
 @dataclass(eq=False, repr=False)
@@ -151,33 +202,176 @@ class AccountEcosystem(betterproto.Message):
     uri: str = betterproto.string_field(4)
 
 
+@dataclass(eq=False, repr=False)
+class LoginRequest(betterproto.Message):
+    email: str = betterproto.string_field(1)
+    """Email account to associate with the login request"""
+
+    invitation_code: str = betterproto.string_field(2)
+    """Invitation code associated with this registration"""
+
+    ecosystem_id: str = betterproto.string_field(3)
+    """ID of Ecosystem to sign into. Ignored if `invitation_code` is passed"""
+
+
+@dataclass(eq=False, repr=False)
+class LoginResponse(betterproto.Message):
+    challenge: bytes = betterproto.bytes_field(1, group="response")
+    """
+    Challenge response. Random byte sequence unique for this login request
+    """
+
+    profile: "AccountProfile" = betterproto.message_field(2, group="response")
+    """
+    Profile response. The login isn't challenged and the token is returned in
+    this call. Does not require confirmation step
+    """
+
+
+@dataclass(eq=False, repr=False)
+class LoginConfirmRequest(betterproto.Message):
+    challenge: bytes = betterproto.bytes_field(1)
+    """Login challenge received during the Login call"""
+
+    confirmation_code_hashed: bytes = betterproto.bytes_field(2)
+    """Confirmation code received in email or SMS hashed using Blake3"""
+
+
+@dataclass(eq=False, repr=False)
+class LoginConfirmResponse(betterproto.Message):
+    profile: "AccountProfile" = betterproto.message_field(1)
+    """
+    Profile response. This profile may be protected and require
+    unblinding/unprotection using the raw hashed code
+    """
+
+
+@dataclass(eq=False, repr=False)
+class AuthorizeWebhookRequest(betterproto.Message):
+    """Authorize ecosystem to receive wallet events"""
+
+    events: List[str] = betterproto.string_field(1)
+    """Events to authorize access to. Default is "*" (all events)"""
+
+
+@dataclass(eq=False, repr=False)
+class AuthorizeWebhookResponse(betterproto.Message):
+    """Response to `AuthorizeWebhookRequest`"""
+
+    pass
+
+
 class AccountStub(betterproto.ServiceStub):
-    async def sign_in(self, sign_in_request: "SignInRequest") -> "SignInResponse":
+    async def sign_in(
+        self,
+        sign_in_request: "SignInRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "SignInResponse":
         return await self._unary_unary(
-            "/services.account.v1.Account/SignIn", sign_in_request, SignInResponse
+            "/services.account.v1.Account/SignIn",
+            sign_in_request,
+            SignInResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
-    async def info(self, info_request: "InfoRequest") -> "InfoResponse":
+    async def login(
+        self,
+        login_request: "LoginRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "LoginResponse":
         return await self._unary_unary(
-            "/services.account.v1.Account/Info", info_request, InfoResponse
+            "/services.account.v1.Account/Login",
+            login_request,
+            LoginResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
+    async def login_confirm(
+        self,
+        login_confirm_request: "LoginConfirmRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "LoginConfirmResponse":
+        return await self._unary_unary(
+            "/services.account.v1.Account/LoginConfirm",
+            login_confirm_request,
+            LoginConfirmResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
+    async def info(
+        self,
+        account_info_request: "AccountInfoRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "AccountInfoResponse":
+        return await self._unary_unary(
+            "/services.account.v1.Account/Info",
+            account_info_request,
+            AccountInfoResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def list_devices(
-        self, list_devices_request: "ListDevicesRequest"
+        self,
+        list_devices_request: "ListDevicesRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "ListDevicesResponse":
         return await self._unary_unary(
             "/services.account.v1.Account/ListDevices",
             list_devices_request,
             ListDevicesResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
     async def revoke_device(
-        self, revoke_device_request: "RevokeDeviceRequest"
+        self,
+        revoke_device_request: "RevokeDeviceRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
     ) -> "RevokeDeviceResponse":
         return await self._unary_unary(
             "/services.account.v1.Account/RevokeDevice",
             revoke_device_request,
             RevokeDeviceResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
+    async def authorize_webhook(
+        self,
+        authorize_webhook_request: "AuthorizeWebhookRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "AuthorizeWebhookResponse":
+        return await self._unary_unary(
+            "/services.account.v1.Account/AuthorizeWebhook",
+            authorize_webhook_request,
+            AuthorizeWebhookResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
         )
 
 
@@ -185,7 +379,17 @@ class AccountBase(ServiceBase):
     async def sign_in(self, sign_in_request: "SignInRequest") -> "SignInResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def info(self, info_request: "InfoRequest") -> "InfoResponse":
+    async def login(self, login_request: "LoginRequest") -> "LoginResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def login_confirm(
+        self, login_confirm_request: "LoginConfirmRequest"
+    ) -> "LoginConfirmResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def info(
+        self, account_info_request: "AccountInfoRequest"
+    ) -> "AccountInfoResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def list_devices(
@@ -198,9 +402,24 @@ class AccountBase(ServiceBase):
     ) -> "RevokeDeviceResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
+    async def authorize_webhook(
+        self, authorize_webhook_request: "AuthorizeWebhookRequest"
+    ) -> "AuthorizeWebhookResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
     async def __rpc_sign_in(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.sign_in(request)
+        await stream.send_message(response)
+
+    async def __rpc_login(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.login(request)
+        await stream.send_message(response)
+
+    async def __rpc_login_confirm(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.login_confirm(request)
         await stream.send_message(response)
 
     async def __rpc_info(self, stream: grpclib.server.Stream) -> None:
@@ -218,6 +437,11 @@ class AccountBase(ServiceBase):
         response = await self.revoke_device(request)
         await stream.send_message(response)
 
+    async def __rpc_authorize_webhook(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.authorize_webhook(request)
+        await stream.send_message(response)
+
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
         return {
             "/services.account.v1.Account/SignIn": grpclib.const.Handler(
@@ -226,11 +450,23 @@ class AccountBase(ServiceBase):
                 SignInRequest,
                 SignInResponse,
             ),
+            "/services.account.v1.Account/Login": grpclib.const.Handler(
+                self.__rpc_login,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                LoginRequest,
+                LoginResponse,
+            ),
+            "/services.account.v1.Account/LoginConfirm": grpclib.const.Handler(
+                self.__rpc_login_confirm,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                LoginConfirmRequest,
+                LoginConfirmResponse,
+            ),
             "/services.account.v1.Account/Info": grpclib.const.Handler(
                 self.__rpc_info,
                 grpclib.const.Cardinality.UNARY_UNARY,
-                InfoRequest,
-                InfoResponse,
+                AccountInfoRequest,
+                AccountInfoResponse,
             ),
             "/services.account.v1.Account/ListDevices": grpclib.const.Handler(
                 self.__rpc_list_devices,
@@ -243,5 +479,11 @@ class AccountBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 RevokeDeviceRequest,
                 RevokeDeviceResponse,
+            ),
+            "/services.account.v1.Account/AuthorizeWebhook": grpclib.const.Handler(
+                self.__rpc_authorize_webhook,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                AuthorizeWebhookRequest,
+                AuthorizeWebhookResponse,
             ),
         }

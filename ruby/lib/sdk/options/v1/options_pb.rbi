@@ -2,10 +2,6 @@
 # source: sdk/options/v1/options.proto
 # typed: strict
 
-module Sdk; end
-module Sdk::Options; end
-module Sdk::Options::V1; end
-
 class Sdk::Options::V1::ServiceOptions
   include Google::Protobuf
   include Google::Protobuf::MessageExts

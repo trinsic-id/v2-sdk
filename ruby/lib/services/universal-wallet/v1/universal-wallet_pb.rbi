@@ -2,10 +2,6 @@
 # source: services/universal-wallet/v1/universal-wallet.proto
 # typed: strict
 
-module Services; end
-module Services::Universalwallet; end
-module Services::Universalwallet::V1; end
-
 class Services::Universalwallet::V1::SearchRequest
   include Google::Protobuf
   include Google::Protobuf::MessageExts
@@ -401,6 +397,9 @@ class Services::Universalwallet::V1::UpdateItemResponse
   def self.descriptor
   end
 
+  sig {void}
+  def initialize; end
+
   sig { params(field: String).returns(T.untyped) }
   def [](field)
   end
@@ -632,6 +631,9 @@ class Services::Universalwallet::V1::DeleteItemResponse
   sig { returns(Google::Protobuf::Descriptor) }
   def self.descriptor
   end
+
+  sig {void}
+  def initialize; end
 
   sig { params(field: String).returns(T.untyped) }
   def [](field)

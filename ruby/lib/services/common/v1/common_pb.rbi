@@ -2,10 +2,6 @@
 # source: services/common/v1/common.proto
 # typed: strict
 
-module Services; end
-module Services::Common; end
-module Services::Common::V1; end
-
 class Services::Common::V1::ServerConfig
   include Google::Protobuf
   include Google::Protobuf::MessageExts

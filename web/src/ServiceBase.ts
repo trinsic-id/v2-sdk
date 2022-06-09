@@ -1,10 +1,5 @@
-import { AccountProfile, Nonce, ServiceOptions } from "./proto/";
-import {
-  Blake3HashRequest,
-  CreateOberonProofRequest,
-  Hashing,
-  Oberon,
-} from "@trinsic/okapi";
+import { AccountProfile, Nonce, ServiceOptions } from "./proto";
+import { Hashing, Oberon } from "@trinsic/okapi";
 import { Metadata } from "nice-grpc-common";
 import { fromUint8Array, toUint8Array } from "js-base64";
 import { grpc } from "@improbable-eng/grpc-web";
@@ -17,11 +12,10 @@ import type { CompatServiceDefinition as ClientServiceDefinition } from "nice-gr
 import type { Client as BrowserClient } from "nice-grpc-web";
 
 export default abstract class ServiceBase {
-  options: ServiceOptions;
-  address: string;
-
   // TODO - Maybe move this into the `ServiceOptions` structure or something? This is a global flag
   public static useNodeHttpTransport: boolean = false;
+  options: ServiceOptions;
+  address: string;
 
   protected constructor(
     options: ServiceOptions = ServiceOptions.fromPartial({})
@@ -37,6 +31,14 @@ export default abstract class ServiceBase {
     this.address = `${this.options.serverUseTls ? "https" : "http"}://${
       this.options.serverEndpoint
     }:${this.options.serverPort}`;
+  }
+
+  public static isNode(): boolean {
+    return (
+      typeof process !== "undefined" &&
+      typeof process.release !== "undefined" &&
+      process.release.name === "node"
+    );
   }
 
   async getMetadata(request: Uint8Array): Promise<Metadata> {
@@ -55,70 +57,56 @@ export default abstract class ServiceBase {
     let requestHash = new Uint8Array();
 
     if (requestData.length > 0) {
-      let hashResponse = await Hashing.blake3Hash(
-        new Blake3HashRequest().setData(requestData)
-      );
-      requestHash = hashResponse.getDigest_asU8();
+      let hashResponse = await Hashing.blake3Hash({ data: requestData });
+      requestHash = hashResponse.digest;
     }
     const timestamp = Date.now();
 
     let nonce: Nonce = { timestamp: timestamp, requestHash: requestHash };
 
-    let proof = await Oberon.createProof(
-      new CreateOberonProofRequest()
-        .setNonce(Nonce.encode(nonce).finish())
-        .setData(profile.authData)
-        .setToken(profile.authToken)
-    );
+    const nonceUint8 = Nonce.encode(nonce).finish();
+    let proof = await Oberon.createProof({
+      data: profile.authData,
+      nonce: nonceUint8,
+      token: profile.authToken,
+      blinding: [],
+    });
 
     const metadata = new Metadata();
     metadata.append(
       "authorization",
       `Oberon ` +
         `ver=1,` +
-        `proof=${fromUint8Array(proof.getProof_asU8(), true)},` +
+        `proof=${fromUint8Array(proof.proof, true)},` +
         `data=${fromUint8Array(profile.authData, true)},` +
-        `nonce=${fromUint8Array(Nonce.encode(nonce).finish(), true)}`
+        `nonce=${fromUint8Array(nonceUint8, true)}`
     );
 
     return metadata;
-  }
-
-  public static isNode(): boolean {
-    return (
-      typeof process !== "undefined" &&
-      typeof process.release !== "undefined" &&
-      process.release.name === "node"
-    );
   }
 
   protected transportFactory(): grpc.TransportFactory | undefined {
     // https://stackoverflow.com/questions/4224606/how-to-check-whether-a-script-is-running-under-node-js
     try {
       if (ServiceBase.isNode()) {
-        console.log("Node using http transport")
-        let impEng = require('@improbable-eng/grpc-web-node-http-transport')
+        let impEng = require("@improbable-eng/grpc-web-node-http-transport");
         return impEng.NodeHttpTransport();
       }
     } catch {}
     return undefined;
   }
 
-  protected createClient<
-    ClientService extends ClientServiceDefinition
-  >(
+  protected createClient<ClientService extends ClientServiceDefinition>(
     definition: ClientService
-  ):  BrowserClient<ClientService> {
+  ): BrowserClient<ClientService> {
     // ServerClient<ServerService> | BrowserClient<ClientService>
     if (!ServiceBase.isNode() || ServiceBase.useNodeHttpTransport) {
-      console.log('Running grpc-web...')
       let clientMod = require("nice-grpc-web");
       return clientMod.createClient(
         definition as ClientService,
         clientMod.createChannel(this.address, this.transportFactory())
       );
     } else {
-      console.log('Running node grpc-js...')
       let serverMod = require("nice-grpc");
       return serverMod.createClient(
         definition,

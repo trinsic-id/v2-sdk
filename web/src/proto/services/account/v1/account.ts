@@ -53,34 +53,32 @@ export function confirmationMethodToJSON(object: ConfirmationMethod): string {
       return "ConnectedDevice";
     case ConfirmationMethod.Other:
       return "Other";
+    case ConfirmationMethod.UNRECOGNIZED:
     default:
-      return "UNKNOWN";
+      return "UNRECOGNIZED";
   }
 }
 
-/** Request for creating new account */
+/** Request for creating or signing into an account */
 export interface SignInRequest {
   /** Account registration details */
   details: AccountDetails | undefined;
-  /**
-   * Invitation code associated with this registration
-   * This field is optional.
-   */
+  /** Invitation code associated with this registration */
   invitationCode: string;
   /**
-   * EcosystemId to sign in. This field is optional
-   * and will be ignored if invitation_code is passed
+   * ID of Ecosystem to use
+   * Ignored if `invitation_code` is passed
    */
   ecosystemId: string;
 }
 
-/** Account Registration Details */
+/** Account registration details */
 export interface AccountDetails {
-  /** Account name (optional) */
+  /** Account name */
   name: string;
-  /** Email account (required) */
+  /** Email account */
   email: string;
-  /** SMS number including country code (optional) */
+  /** SMS number including country code */
   sms: string;
 }
 
@@ -139,26 +137,35 @@ export interface TokenProtection {
   method: ConfirmationMethod;
 }
 
-export interface InfoRequest {}
+/** Request for information about the account used to make the request */
+export interface AccountInfoRequest {}
 
-export interface InfoResponse {
+/** Information about the account used to make the request */
+export interface AccountInfoResponse {
   /**
    * The account details associated with
    * the calling request context
    */
   details: AccountDetails | undefined;
   /**
-   * any ecosystems the account has access to
+   * Use `ecosystem_id` instead
    *
    * @deprecated
    */
   ecosystems: AccountEcosystem[];
-  /** The wallet id associated with this account */
+  /** The wallet ID associated with this account */
   walletId: string;
-  /** The device id associated with this account */
+  /** The device ID associated with this account session */
   deviceId: string;
-  /** The ecosystem id associated with this account */
+  /** The ecosystem ID within which this account resides */
   ecosystemId: string;
+  /**
+   * The public DID associated with this account.
+   * This DID is used as "issuer" when signing verifiable credentials
+   */
+  publicDid: string;
+  /** Webhook events if any this wallet has authorized */
+  authorizedWebhooks: string[];
 }
 
 export interface ListDevicesRequest {}
@@ -175,6 +182,59 @@ export interface AccountEcosystem {
   description: string;
   uri: string;
 }
+
+export interface LoginRequest {
+  /** Email account to associate with the login request */
+  email: string;
+  /** Invitation code associated with this registration */
+  invitationCode: string;
+  /**
+   * ID of Ecosystem to sign into.
+   * Ignored if `invitation_code` is passed
+   */
+  ecosystemId: string;
+}
+
+export interface LoginResponse {
+  /**
+   * Challenge response. Random byte sequence unique
+   * for this login request
+   */
+  challenge: Uint8Array | undefined;
+  /**
+   * Profile response. The login isn't challenged and
+   * the token is returned in this call. Does not require
+   * confirmation step
+   */
+  profile: AccountProfile | undefined;
+}
+
+export interface LoginConfirmRequest {
+  /** Login challenge received during the Login call */
+  challenge: Uint8Array;
+  /**
+   * Confirmation code received in email or SMS
+   * hashed using Blake3
+   */
+  confirmationCodeHashed: Uint8Array;
+}
+
+export interface LoginConfirmResponse {
+  /**
+   * Profile response. This profile may be protected and
+   * require unblinding/unprotection using the raw hashed code
+   */
+  profile: AccountProfile | undefined;
+}
+
+/** Authorize ecosystem to receive wallet events */
+export interface AuthorizeWebhookRequest {
+  /** Events to authorize access to. Default is "*" (all events) */
+  events: string[];
+}
+
+/** Response to `AuthorizeWebhookRequest` */
+export interface AuthorizeWebhookResponse {}
 
 function createBaseSignInRequest(): SignInRequest {
   return { details: undefined, invitationCode: "", ecosystemId: "" };
@@ -572,19 +632,22 @@ export const TokenProtection = {
   },
 };
 
-function createBaseInfoRequest(): InfoRequest {
+function createBaseAccountInfoRequest(): AccountInfoRequest {
   return {};
 }
 
-export const InfoRequest = {
-  encode(_: InfoRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+export const AccountInfoRequest = {
+  encode(
+    _: AccountInfoRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): InfoRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): AccountInfoRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseInfoRequest();
+    const message = createBaseAccountInfoRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -596,34 +659,36 @@ export const InfoRequest = {
     return message;
   },
 
-  fromJSON(_: any): InfoRequest {
+  fromJSON(_: any): AccountInfoRequest {
     return {};
   },
 
-  toJSON(_: InfoRequest): unknown {
+  toJSON(_: AccountInfoRequest): unknown {
     const obj: any = {};
     return obj;
   },
 
-  fromPartial(_: DeepPartial<InfoRequest>): InfoRequest {
-    const message = createBaseInfoRequest();
+  fromPartial(_: DeepPartial<AccountInfoRequest>): AccountInfoRequest {
+    const message = createBaseAccountInfoRequest();
     return message;
   },
 };
 
-function createBaseInfoResponse(): InfoResponse {
+function createBaseAccountInfoResponse(): AccountInfoResponse {
   return {
     details: undefined,
     ecosystems: [],
     walletId: "",
     deviceId: "",
     ecosystemId: "",
+    publicDid: "",
+    authorizedWebhooks: [],
   };
 }
 
-export const InfoResponse = {
+export const AccountInfoResponse = {
   encode(
-    message: InfoResponse,
+    message: AccountInfoResponse,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
     if (message.details !== undefined) {
@@ -641,13 +706,19 @@ export const InfoResponse = {
     if (message.ecosystemId !== "") {
       writer.uint32(42).string(message.ecosystemId);
     }
+    if (message.publicDid !== "") {
+      writer.uint32(50).string(message.publicDid);
+    }
+    for (const v of message.authorizedWebhooks) {
+      writer.uint32(58).string(v!);
+    }
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): InfoResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): AccountInfoResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseInfoResponse();
+    const message = createBaseAccountInfoResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -668,6 +739,12 @@ export const InfoResponse = {
         case 5:
           message.ecosystemId = reader.string();
           break;
+        case 6:
+          message.publicDid = reader.string();
+          break;
+        case 7:
+          message.authorizedWebhooks.push(reader.string());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -676,7 +753,7 @@ export const InfoResponse = {
     return message;
   },
 
-  fromJSON(object: any): InfoResponse {
+  fromJSON(object: any): AccountInfoResponse {
     return {
       details: isSet(object.details)
         ? AccountDetails.fromJSON(object.details)
@@ -687,10 +764,14 @@ export const InfoResponse = {
       walletId: isSet(object.walletId) ? String(object.walletId) : "",
       deviceId: isSet(object.deviceId) ? String(object.deviceId) : "",
       ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
+      publicDid: isSet(object.publicDid) ? String(object.publicDid) : "",
+      authorizedWebhooks: Array.isArray(object?.authorizedWebhooks)
+        ? object.authorizedWebhooks.map((e: any) => String(e))
+        : [],
     };
   },
 
-  toJSON(message: InfoResponse): unknown {
+  toJSON(message: AccountInfoResponse): unknown {
     const obj: any = {};
     message.details !== undefined &&
       (obj.details = message.details
@@ -707,11 +788,17 @@ export const InfoResponse = {
     message.deviceId !== undefined && (obj.deviceId = message.deviceId);
     message.ecosystemId !== undefined &&
       (obj.ecosystemId = message.ecosystemId);
+    message.publicDid !== undefined && (obj.publicDid = message.publicDid);
+    if (message.authorizedWebhooks) {
+      obj.authorizedWebhooks = message.authorizedWebhooks.map((e) => e);
+    } else {
+      obj.authorizedWebhooks = [];
+    }
     return obj;
   },
 
-  fromPartial(object: DeepPartial<InfoResponse>): InfoResponse {
-    const message = createBaseInfoResponse();
+  fromPartial(object: DeepPartial<AccountInfoResponse>): AccountInfoResponse {
+    const message = createBaseAccountInfoResponse();
     message.details =
       object.details !== undefined && object.details !== null
         ? AccountDetails.fromPartial(object.details)
@@ -721,6 +808,8 @@ export const InfoResponse = {
     message.walletId = object.walletId ?? "";
     message.deviceId = object.deviceId ?? "";
     message.ecosystemId = object.ecosystemId ?? "";
+    message.publicDid = object.publicDid ?? "";
+    message.authorizedWebhooks = object.authorizedWebhooks?.map((e) => e) || [];
     return message;
   },
 };
@@ -976,6 +1065,406 @@ export const AccountEcosystem = {
   },
 };
 
+function createBaseLoginRequest(): LoginRequest {
+  return { email: "", invitationCode: "", ecosystemId: "" };
+}
+
+export const LoginRequest = {
+  encode(
+    message: LoginRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.email !== "") {
+      writer.uint32(10).string(message.email);
+    }
+    if (message.invitationCode !== "") {
+      writer.uint32(18).string(message.invitationCode);
+    }
+    if (message.ecosystemId !== "") {
+      writer.uint32(26).string(message.ecosystemId);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): LoginRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseLoginRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.email = reader.string();
+          break;
+        case 2:
+          message.invitationCode = reader.string();
+          break;
+        case 3:
+          message.ecosystemId = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): LoginRequest {
+    return {
+      email: isSet(object.email) ? String(object.email) : "",
+      invitationCode: isSet(object.invitationCode)
+        ? String(object.invitationCode)
+        : "",
+      ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
+    };
+  },
+
+  toJSON(message: LoginRequest): unknown {
+    const obj: any = {};
+    message.email !== undefined && (obj.email = message.email);
+    message.invitationCode !== undefined &&
+      (obj.invitationCode = message.invitationCode);
+    message.ecosystemId !== undefined &&
+      (obj.ecosystemId = message.ecosystemId);
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<LoginRequest>): LoginRequest {
+    const message = createBaseLoginRequest();
+    message.email = object.email ?? "";
+    message.invitationCode = object.invitationCode ?? "";
+    message.ecosystemId = object.ecosystemId ?? "";
+    return message;
+  },
+};
+
+function createBaseLoginResponse(): LoginResponse {
+  return { challenge: undefined, profile: undefined };
+}
+
+export const LoginResponse = {
+  encode(
+    message: LoginResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.challenge !== undefined) {
+      writer.uint32(10).bytes(message.challenge);
+    }
+    if (message.profile !== undefined) {
+      AccountProfile.encode(message.profile, writer.uint32(18).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): LoginResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseLoginResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.challenge = reader.bytes();
+          break;
+        case 2:
+          message.profile = AccountProfile.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): LoginResponse {
+    return {
+      challenge: isSet(object.challenge)
+        ? bytesFromBase64(object.challenge)
+        : undefined,
+      profile: isSet(object.profile)
+        ? AccountProfile.fromJSON(object.profile)
+        : undefined,
+    };
+  },
+
+  toJSON(message: LoginResponse): unknown {
+    const obj: any = {};
+    message.challenge !== undefined &&
+      (obj.challenge =
+        message.challenge !== undefined
+          ? base64FromBytes(message.challenge)
+          : undefined);
+    message.profile !== undefined &&
+      (obj.profile = message.profile
+        ? AccountProfile.toJSON(message.profile)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<LoginResponse>): LoginResponse {
+    const message = createBaseLoginResponse();
+    message.challenge = object.challenge ?? undefined;
+    message.profile =
+      object.profile !== undefined && object.profile !== null
+        ? AccountProfile.fromPartial(object.profile)
+        : undefined;
+    return message;
+  },
+};
+
+function createBaseLoginConfirmRequest(): LoginConfirmRequest {
+  return {
+    challenge: new Uint8Array(),
+    confirmationCodeHashed: new Uint8Array(),
+  };
+}
+
+export const LoginConfirmRequest = {
+  encode(
+    message: LoginConfirmRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.challenge.length !== 0) {
+      writer.uint32(10).bytes(message.challenge);
+    }
+    if (message.confirmationCodeHashed.length !== 0) {
+      writer.uint32(18).bytes(message.confirmationCodeHashed);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): LoginConfirmRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseLoginConfirmRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.challenge = reader.bytes();
+          break;
+        case 2:
+          message.confirmationCodeHashed = reader.bytes();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): LoginConfirmRequest {
+    return {
+      challenge: isSet(object.challenge)
+        ? bytesFromBase64(object.challenge)
+        : new Uint8Array(),
+      confirmationCodeHashed: isSet(object.confirmationCodeHashed)
+        ? bytesFromBase64(object.confirmationCodeHashed)
+        : new Uint8Array(),
+    };
+  },
+
+  toJSON(message: LoginConfirmRequest): unknown {
+    const obj: any = {};
+    message.challenge !== undefined &&
+      (obj.challenge = base64FromBytes(
+        message.challenge !== undefined ? message.challenge : new Uint8Array()
+      ));
+    message.confirmationCodeHashed !== undefined &&
+      (obj.confirmationCodeHashed = base64FromBytes(
+        message.confirmationCodeHashed !== undefined
+          ? message.confirmationCodeHashed
+          : new Uint8Array()
+      ));
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<LoginConfirmRequest>): LoginConfirmRequest {
+    const message = createBaseLoginConfirmRequest();
+    message.challenge = object.challenge ?? new Uint8Array();
+    message.confirmationCodeHashed =
+      object.confirmationCodeHashed ?? new Uint8Array();
+    return message;
+  },
+};
+
+function createBaseLoginConfirmResponse(): LoginConfirmResponse {
+  return { profile: undefined };
+}
+
+export const LoginConfirmResponse = {
+  encode(
+    message: LoginConfirmResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.profile !== undefined) {
+      AccountProfile.encode(message.profile, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): LoginConfirmResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseLoginConfirmResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.profile = AccountProfile.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): LoginConfirmResponse {
+    return {
+      profile: isSet(object.profile)
+        ? AccountProfile.fromJSON(object.profile)
+        : undefined,
+    };
+  },
+
+  toJSON(message: LoginConfirmResponse): unknown {
+    const obj: any = {};
+    message.profile !== undefined &&
+      (obj.profile = message.profile
+        ? AccountProfile.toJSON(message.profile)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<LoginConfirmResponse>): LoginConfirmResponse {
+    const message = createBaseLoginConfirmResponse();
+    message.profile =
+      object.profile !== undefined && object.profile !== null
+        ? AccountProfile.fromPartial(object.profile)
+        : undefined;
+    return message;
+  },
+};
+
+function createBaseAuthorizeWebhookRequest(): AuthorizeWebhookRequest {
+  return { events: [] };
+}
+
+export const AuthorizeWebhookRequest = {
+  encode(
+    message: AuthorizeWebhookRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    for (const v of message.events) {
+      writer.uint32(10).string(v!);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): AuthorizeWebhookRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseAuthorizeWebhookRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.events.push(reader.string());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): AuthorizeWebhookRequest {
+    return {
+      events: Array.isArray(object?.events)
+        ? object.events.map((e: any) => String(e))
+        : [],
+    };
+  },
+
+  toJSON(message: AuthorizeWebhookRequest): unknown {
+    const obj: any = {};
+    if (message.events) {
+      obj.events = message.events.map((e) => e);
+    } else {
+      obj.events = [];
+    }
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<AuthorizeWebhookRequest>
+  ): AuthorizeWebhookRequest {
+    const message = createBaseAuthorizeWebhookRequest();
+    message.events = object.events?.map((e) => e) || [];
+    return message;
+  },
+};
+
+function createBaseAuthorizeWebhookResponse(): AuthorizeWebhookResponse {
+  return {};
+}
+
+export const AuthorizeWebhookResponse = {
+  encode(
+    _: AuthorizeWebhookResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): AuthorizeWebhookResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseAuthorizeWebhookResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): AuthorizeWebhookResponse {
+    return {};
+  },
+
+  toJSON(_: AuthorizeWebhookResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<AuthorizeWebhookResponse>
+  ): AuthorizeWebhookResponse {
+    const message = createBaseAuthorizeWebhookResponse();
+    return message;
+  },
+};
+
+export type AccountDefinition = typeof AccountDefinition;
 export const AccountDefinition = {
   name: "Account",
   fullName: "services.account.v1.Account",
@@ -989,12 +1478,30 @@ export const AccountDefinition = {
       responseStream: false,
       options: {},
     },
+    /** Login to account. If account doesn't exist, new will be created */
+    login: {
+      name: "Login",
+      requestType: LoginRequest,
+      requestStream: false,
+      responseType: LoginResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** Confirm login step by responding to the challenge request */
+    loginConfirm: {
+      name: "LoginConfirm",
+      requestType: LoginConfirmRequest,
+      requestStream: false,
+      responseType: LoginConfirmResponse,
+      responseStream: false,
+      options: {},
+    },
     /** Get account information */
     info: {
       name: "Info",
-      requestType: InfoRequest,
+      requestType: AccountInfoRequest,
       requestStream: false,
-      responseType: InfoResponse,
+      responseType: AccountInfoResponse,
       responseStream: false,
       options: {},
     },
@@ -1013,6 +1520,15 @@ export const AccountDefinition = {
       requestType: RevokeDeviceRequest,
       requestStream: false,
       responseType: RevokeDeviceResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** Authorize Ecosystem to receive webhook events */
+    authorizeWebhook: {
+      name: "AuthorizeWebhook",
+      requestType: AuthorizeWebhookRequest,
+      requestStream: false,
+      responseType: AuthorizeWebhookResponse,
       responseStream: false,
       options: {},
     },
