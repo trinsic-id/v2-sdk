@@ -67,6 +67,14 @@ class AccountService extends ServiceBase {
     return Base64Encoder.urlSafe().convert(protectedProfile.writeToBuffer());
   }
 
+  Future<LoginResponse> login(LoginRequest request) async {
+    return await client.login(request);
+  }
+
+  Future<LoginConfirmResponse> loginConfirm(LoginConfirmRequest request) async {
+    return await client.loginConfirm(request);
+  }
+
   Future<AccountInfoResponse> getInfo() async {
     return await client.info(AccountInfoRequest());
   }
@@ -77,5 +85,9 @@ class AccountService extends ServiceBase {
 
   Future<RevokeDeviceResponse> revokeDevice(RevokeDeviceRequest request) async {
     return await client.revokeDevice(request);
+  }
+
+  Future<AuthorizeWebhookResponse> authorizeWebhook(AuthorizeWebhookRequest request) async {
+    return await client.authorizeWebhook(request);
   }
 }

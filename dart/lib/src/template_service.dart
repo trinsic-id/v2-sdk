@@ -2,10 +2,10 @@ import 'package:trinsic_dart/src/proto/sdk/options/v1/options.pb.dart';
 import 'package:trinsic_dart/src/proto/services/verifiable-credentials/templates/v1/templates.pbgrpc.dart';
 import 'package:trinsic_dart/src/service_base.dart';
 
-class CredentialTemplateService extends ServiceBase {
+class TemplateService extends ServiceBase {
   late CredentialTemplatesClient client;
 
-  CredentialTemplateService(ServiceOptions? serverOptions)
+  TemplateService(ServiceOptions? serverOptions)
       : super(serverOptions) {
     client = CredentialTemplatesClient(super.channel,
         interceptors: [MetadataInterceptor(this)]);
