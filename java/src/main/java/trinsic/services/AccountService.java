@@ -4,8 +4,6 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
-import java.util.Base64;
-import java.util.concurrent.Executors;
 import org.jetbrains.annotations.NotNull;
 import trinsic.okapi.DidException;
 import trinsic.okapi.Oberon;
@@ -13,6 +11,9 @@ import trinsic.okapi.security.v1.Security;
 import trinsic.sdk.options.v1.Options;
 import trinsic.services.account.v1.AccountGrpc;
 import trinsic.services.account.v1.AccountOuterClass;
+
+import java.util.Base64;
+import java.util.concurrent.Executors;
 
 public class AccountService extends ServiceBase {
   private final AccountGrpc.AccountFutureStub stub;
@@ -98,6 +99,18 @@ public class AccountService extends ServiceBase {
     return Base64.getUrlEncoder().encodeToString(profile.toByteArray());
   }
 
+    public ListenableFuture<AccountOuterClass.LoginResponse> login(
+            AccountOuterClass.LoginRequest request)
+            throws InvalidProtocolBufferException, DidException {
+        return withMetadata(stub, request).login(request);
+    }
+
+    public ListenableFuture<AccountOuterClass.LoginConfirmResponse> loginConfirm(
+            AccountOuterClass.LoginConfirmRequest request)
+            throws InvalidProtocolBufferException, DidException {
+        return withMetadata(stub, request).loginConfirm(request);
+    }
+
   public ListenableFuture<AccountOuterClass.AccountInfoResponse> getInfo()
       throws InvalidProtocolBufferException, DidException {
     var request = AccountOuterClass.AccountInfoRequest.newBuilder().build();
@@ -115,4 +128,10 @@ public class AccountService extends ServiceBase {
       throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).revokeDevice(request);
   }
+
+    public ListenableFuture<AccountOuterClass.AuthorizeWebhookResponse> authorizeWebhook(
+            AccountOuterClass.AuthorizeWebhookRequest request)
+            throws InvalidProtocolBufferException, DidException {
+        return withMetadata(stub, request).authorizeWebhook(request);
+    }
 }
