@@ -2,17 +2,13 @@
 # sources: services/universal-wallet/v1/universal-wallet.proto
 # plugin: python-betterproto
 from dataclasses import dataclass
-from typing import (
-    TYPE_CHECKING,
-    Dict,
-    List,
-    Optional,
-)
+from typing import Dict, List, Optional
 
 import betterproto
-import grpclib
 from betterproto.grpc.grpclib_server import ServiceBase
+import grpclib
 
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from betterproto.grpc.grpclib_client import MetadataLike
