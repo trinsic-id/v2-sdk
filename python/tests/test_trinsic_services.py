@@ -63,7 +63,7 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
     async def test_providerservice_input_validation(self):
         cred_service = ProviderService(server_config=trinsic_config())
         with self.assertRaises(ValueError) as ve:
-            await cred_service.invite_participant(request=InviteRequest())
+            await cred_service.invite(request=InviteRequest())
         with self.assertRaises(ValueError) as ve:
             await cred_service.invitation_status(request=InvitationStatusRequest())
 

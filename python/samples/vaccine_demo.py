@@ -3,7 +3,7 @@ import json
 
 from trinsic.account_service import AccountService
 from trinsic.credential_service import CredentialService
-from trinsic.credentialtemplates_service import TemplateService
+from trinsic.template_service import TemplateService
 from trinsic.proto.services.universalwallet.v1 import InsertItemRequest
 from trinsic.proto.services.verifiablecredentials.templates.v1 import (
     CreateCredentialTemplateRequest,
