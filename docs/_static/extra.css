@@ -40,6 +40,12 @@ input {
 }
 
 
+/** Improve spacing of <hr/> between service page sections **/
+.md-typeset hr + h2,.md-typeset hr + h3 {
+    margin-top: 0em;
+}
+
+
 /***********************************************************
  * Protobuf Object Inclusion Macro Styles  ( proto_message() )
  ***********************************************************/

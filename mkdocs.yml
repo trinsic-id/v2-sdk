@@ -17,6 +17,7 @@ nav:
       - Wallets: learn/wallets.md
       - Templates: learn/templates.md
       - Credentials: learn/credentials.md
+      - Trust Registries: learn/trust-registries.md
       - Standards: learn/standards.md
     - Tutorials:
       - Build a Vaccine Card: walkthroughs/vaccination.md

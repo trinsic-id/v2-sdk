@@ -10,12 +10,15 @@ The wallet service is the main interface for interacting with a cloud wallet.
 !!! info "Wallet Standard"
     This service is designed to follow the recommendations of the [Universal Wallet 2020 <small>:material-open-in-new:</small>](https://w3c-ccg.github.io/universal-wallet-interop-spec/){target=_blank} specification by the W3C Community Credentials Group.
 
+---
 
 ## Create Wallet
 
 A wallet is created whenever an account is created.
 
 Therefore, to create a wallet, you'll need to [create a new account](./account-service.md#sign-in).
+
+---
 
 ## Insert Item
 
@@ -73,6 +76,7 @@ Stores a credential (or any other JSON object) in a wallet.
 
     Otherwise, ensure its `item_type` is _not_ `VerifiableCredential`.
 
+---
 
 ## Search Wallet
 

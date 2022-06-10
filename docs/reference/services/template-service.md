@@ -9,6 +9,7 @@ The Template Service allows you to manage and search [Credential Templates](/lea
 
     You aren't required to use templates; if you produce valid JSON-LD VCs yourself, they can be issued through Trinsic.
 
+---
 
 ## Create Template
 
@@ -59,6 +60,8 @@ In the background, Trinsic will also generate and save a valid JSON-LD Context a
 
 {{ proto_method_tabs("services.verifiablecredentials.templates.v1.CredentialTemplates.Create") }}
 
+---
+
 ## Get Template
 
 Fetches a template definition by `id`.
@@ -100,6 +103,8 @@ Fetches a template definition by `id`.
 
 {{ proto_method_tabs("services.verifiablecredentials.templates.v1.CredentialTemplates.Get") }}
 
+---
+
 ## Delete Template
 
 Deletes a credential template by `id`.
@@ -139,6 +144,8 @@ Deletes a credential template by `id`.
         <!--/codeinclude-->
 
 {{ proto_method_tabs("services.verifiablecredentials.templates.v1.CredentialTemplates.Delete") }}
+
+---
 
 ## Search Templates
 

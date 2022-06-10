@@ -1,12 +1,18 @@
 # Credential Service
 
-The Credentials Service gives you the ability to manage complex workflows related to DIDs (contacts/Connections) and VCs (credential issuance, Revocation, Verification, etc). This is probably the service you will most interact with because VC Issuance and verification are at the core of every SSI use case.
+The Credential Service exposes functionality for issuance, proof generation, verification, and revocation of [Verifiable Credentials](/learn/credentials){target=_blank}.
 
-The Credential service supports signing data using [BBS+ Signatures <small>:material-open-in-new:</small>](https://w3c-ccg.github.io/ldp-bbs2020/){target=_blank}. The data is signed with a key unique to the owner's wallet. This key is also used as linked secret, when it comes to proof derivation.
+
+!!! info "Signature Format" 
+    The Credential service currently supports [BBS+ Signatures <small>:material-open-in-new:</small>](https://w3c-ccg.github.io/ldp-bbs2020/){target=_blank}, which enable selective disclosure of credential fields during proof generation.
+
+    Credentials are signed, and proofs are created, using a key pair unique to the signing / holding wallet. This key pair is created and managed by Trinsic upon account creation.
+
+---
 
 ## Issue Credential
 
-Issues a credential from a valid JSON-LD document.
+Issues a credential from a valid JSON-LD document. Issued credentials are not automatically stored in any wallet.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
@@ -51,26 +57,18 @@ Issues a credential from a valid JSON-LD document.
 
 {{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.Issue") }}
 
-The output of this method will be a signed JSON document using BBS+ Signature Suite 2020. This document is not automatically stored in the wallet when issued.
-
 !!! warning
     **`IssueCredential` requires a valid JSON-LD document to be provided**. Do not confuse this operation with [Issue Credential From Template](./credential-service.md#issue-credential-from-template).
 
+    When provided a valid credential, this endpoint creates and appends the `proof` object, using a key pair tied to the issuing Trinsic account.
+
     You can learn more about how to create these documents, and about VC data models in general, from W3C: [VC Data Model v1.1](https://www.w3.org/TR/vc-data-model/). 
+
+---
 
 ## Issue Credential from Template
 
-Issues a credential from a previously defined template through [CreateCredential](./template-service.md#create-credential-template) call. 
-
-This call takes in a JSON key/value string which maps to the fields on the specified template. For example:
-
-```json
-{
-    "field1": "value1",
-    "field2": "value2",
-    ...
-}
-```
+Issues a credential from a [previously-defined template](/reference/services/template-service#create-template){target=_blank}.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
@@ -120,11 +118,13 @@ This call takes in a JSON key/value string which maps to the fields on the speci
 
 {{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.IssueFromTemplate") }}
 
-The output of this method will be a signed JSON document using BBS+ Signature Suite 2020. This document is not automatically stored in the wallet when issued.
+---
 
 ## Check Revocation Status
 
-Get the credential status (revocation) of a previously issued credential. You must supply the credential id to this call.
+Checks a credential's revocation status by its `credential_status_id`.
+
+A `credential_status_id` can be found in a credential's `credentialStatus.id` field, if present.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
@@ -162,10 +162,13 @@ Get the credential status (revocation) of a previously issued credential. You mu
 
 {{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.CheckStatus") }}
 
+---
+
 ## Update Revocation Status
 
-Update the credential status (revocation) of a previously issued credential. You must supply the credential id to this call.
+Updates the revocation status of a credential (revoke or unrevoke).
 
+A `credential_status_id` can be found in a credential's `credentialStatus.id` field, if present.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
@@ -207,13 +210,14 @@ Update the credential status (revocation) of a previously issued credential. You
 
 {{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.UpdateStatus") }}
 
+---
+
 ## Create Proof
-Wallets allow data to be shared between parties in a secure manner, using a technique called [Zero Knowledge Proofs](/faq/#what-are-zero-knowledge-proofs). Trinsic Ecosystems uses the BBS+ Signature Proof scheme to allow data to be selectively disclosed to the requesting party. This allows users to share only the requested subset of data, instead the entire document.
+Creates and signs a [proof](/) for a valid JSON-LD credential, using the BBS+ Signature Suite.
 
-The endpoint to create a proof requires two inputs:
+If the credential is stored in a Trinsic cloud wallet, pass its `item_id`; otherwise, pass the raw JSON-LD credential via `document_json`.
 
-- document in the wallet that is signed with the correct signature
-- JSONLD frame that describes the data to be disclosed
+If `reveal_document_json` is passed, a proof will be generated for only the fields specified.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
@@ -258,11 +262,18 @@ The endpoint to create a proof requires two inputs:
 
 {{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.CreateProof") }}
 
+!!! info "Selective Disclosure"
+    BBS+ Signatures support the ability to generate a proof for a subset of a credential's fields, instead of every field.
+
+    This enables increased user privacy: fields which aren't included in `reveal_document_json` will not be present in the generated proof.
+
+    We are working on documentation for the expected structure of `reveal_document_json` and will make it available soon.
+
+---
 
 ## Verify Proof
 
-This endpoint verifies if the submitted data contains a valid proof. The data to be verified must contain a Linked Data Proof with BBS+ signature scheme.
-
+Verifies a proof for validity and authenticity. Only supports BBS+ Signatures at present.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
@@ -315,19 +326,29 @@ This endpoint verifies if the submitted data contains a valid proof. The data to
 
 {{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.VerifyProof") }}
 
+???+ info "Validation Results"
+    The verification process performs a number of validations, each of which may fail independently of the others.
+
+    For example, a credential may be expired or revoked, but otherwise perfectly valid.
+
+    `validation_results` contains an entry for each of the following verification steps:
+
+    | Name                                                     | Description                                                                                                          |
+    | -------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+    | `SignatureVerification`{: style="word-break:keep-all"}   | Cryptographic signature validity of proof                                                                            |
+    | `CredentialStatus`{: style="word-break:keep-all"}        | *(if supported by credential)* Checks if credential has been revoked*                                                |
+    | `SchemaConformance`{: style="word-break:keep-all"}       | Ensures credential conforms with its schema                                                                          |
+    | `TrustRegistryMembership`{: style="word-break:keep-all"} | *(if relevant)* Verifies that credential issuer is an authorized member of the credential's governing Trust Registry |
+
+---
+
 ## Exchange Credentials
 
-Exchanging data securely is one of the fundamental functions of digital identity systems. There are many specifications with varying maturity that aim to provide interoperable and secure way of exchanging authentic data. We are commited to providing support for these methods.
+### Send via Email
 
-- [DIDComm Messaging <small>:material-open-in-new:</small>](https://identity.foundation/didcomm-messaging/spec/){target=_blank}
-- [Wallet And Credential Interactions <small>:material-open-in-new:</small>](https://identity.foundation/wallet-and-credential-interactions/){target=_blank}
-- [OpenID Connect Credential Provider <small>:material-open-in-new:</small>](https://mattrglobal.github.io/oidc-client-bound-assertions-spec/){target=_blank}
+Sends a credential to a user via email.
 
-> During this beta period, we are only supporting exchanging data between users by using their email addresses. The messages are routed securely to the destination wallet without leaving the secure network of the ecosystem backend. Our goal is to provide basic ability to share data without affecting the user experience. As interoperable exchange methods become available, we will add this functionality in the SDK.
-
-### Sending documents using Email as identifier
-
-To send a document to another user, they must have created a wallet and [associated their email address](#create-wallet-with-provider-invitation) with that wallet.
+The specified email address must be tied to an existing account in the same ecosystem.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
@@ -370,3 +391,15 @@ To send a document to another user, they must have created a wallet and [associa
         <!--/codeinclude-->
 
 {{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.Send") }}
+
+!!! info "Alternative Exchange Protocols"
+    During this beta period, credentials may only be sent to a wallet via email address or with the [InsertItem](/reference/services/wallet-service#insert-item) call.
+
+    
+    There are a number of ongoing industry efforts to standardize exchange protocols, such as:
+
+    - [DIDComm Messaging <small>:material-open-in-new:</small>](https://identity.foundation/didcomm-messaging/spec/){target=_blank}
+    - [Wallet And Credential Interactions <small>:material-open-in-new:</small>](https://identity.foundation/wallet-and-credential-interactions/){target=_blank}
+    - [OpenID Connect Credential Provider <small>:material-open-in-new:</small>](https://mattrglobal.github.io/oidc-client-bound-assertions-spec/){target=_blank}
+
+    We aim to provide support for these methods as they mature.
