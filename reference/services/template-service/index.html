@@ -138,6 +138,8 @@
     
       
     
+      
+    
     
       <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
@@ -717,6 +719,25 @@
   
   <span class="md-ellipsis">
     Credentials
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learn/trust-registries/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trust Registries
   </span>
 
       </a>
@@ -1741,6 +1762,7 @@
 <p>Templates are designed to be a helpful abstraction over the complexities of producing valid <a href="https://www.w3.org/TR/vc-data-model/">JSON-LD Verifiable Credentials</a>.</p>
 <p>You aren't required to use templates; if you produce valid JSON-LD VCs yourself, they can be issued through Trinsic.</p>
 </div>
+<hr />
 <h2 id="create-template">Create Template<a class="headerlink" href="#create-template" title="Permanent link">&para;</a></h2>
 <p>Creates a new credential template.</p>
 <p>In the background, Trinsic will also generate and save a valid JSON-LD Context and schema for your template.</p>
@@ -1847,6 +1869,7 @@
 </div>
 </div>
 </div>
+<hr />
 <h2 id="get-template">Get Template<a class="headerlink" href="#get-template" title="Permanent link">&para;</a></h2>
 <p>Fetches a template definition by <code>id</code>.</p>
 <div class='proto-method-tabs-marker'></div>
@@ -1891,6 +1914,7 @@
 </div>
 </div>
 </div>
+<hr />
 <h2 id="delete-template">Delete Template<a class="headerlink" href="#delete-template" title="Permanent link">&para;</a></h2>
 <p>Deletes a credential template by <code>id</code>.</p>
 <div class='proto-method-tabs-marker'></div>
@@ -1935,6 +1959,7 @@
 </div>
 </div>
 </div>
+<hr />
 <h2 id="search-templates">Search Templates<a class="headerlink" href="#search-templates" title="Permanent link">&para;</a></h2>
 <p>Searches all templates defined in the current ecosystem, and a <code>continuation_token</code> to paginate large result sets.</p>
 <p>If no <code>query</code> is specified, this call by default returns the first 100 templates.</p>

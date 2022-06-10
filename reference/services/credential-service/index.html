@@ -138,6 +138,8 @@
     
       
     
+      
+    
     
       <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
@@ -731,6 +733,25 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../learn/trust-registries/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trust Registries
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../learn/standards/" class="md-nav__link">
         
   
@@ -1042,9 +1063,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sending-documents-using-email-as-identifier" class="md-nav__link">
+  <a href="#send-via-email" class="md-nav__link">
     <span class="md-ellipsis">
-      Sending documents using Email as identifier
+      Send via Email
     </span>
   </a>
   
@@ -1756,9 +1777,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sending-documents-using-email-as-identifier" class="md-nav__link">
+  <a href="#send-via-email" class="md-nav__link">
     <span class="md-ellipsis">
-      Sending documents using Email as identifier
+      Send via Email
     </span>
   </a>
   
@@ -1789,10 +1810,15 @@
 
 
 <h1 id="credential-service">Credential Service<a class="headerlink" href="#credential-service" title="Permanent link">&para;</a></h1>
-<p>The Credentials Service gives you the ability to manage complex workflows related to DIDs (contacts/Connections) and VCs (credential issuance, Revocation, Verification, etc). This is probably the service you will most interact with because VC Issuance and verification are at the core of every SSI use case.</p>
-<p>The Credential service supports signing data using <a href="https://w3c-ccg.github.io/ldp-bbs2020/" target="_blank">BBS+ Signatures <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a>. The data is signed with a key unique to the owner's wallet. This key is also used as linked secret, when it comes to proof derivation.</p>
+<p>The Credential Service exposes functionality for issuance, proof generation, verification, and revocation of <a href="/learn/credentials" target="_blank">Verifiable Credentials</a>.</p>
+<div class="admonition info">
+<p class="admonition-title">Signature Format</p>
+<p>The Credential service currently supports <a href="https://w3c-ccg.github.io/ldp-bbs2020/" target="_blank">BBS+ Signatures <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a>, which enable selective disclosure of credential fields during proof generation.</p>
+<p>Credentials are signed, and proofs are created, using a key pair unique to the signing / holding wallet. This key pair is created and managed by Trinsic upon account creation.</p>
+</div>
+<hr />
 <h2 id="issue-credential">Issue Credential<a class="headerlink" href="#issue-credential" title="Permanent link">&para;</a></h2>
-<p>Issues a credential from a valid JSON-LD document.</p>
+<p>Issues a credential from a valid JSON-LD document. Issued credentials are not automatically stored in any wallet.</p>
 <div class='proto-method-tabs-marker'></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_1_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_1_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
 <div class="tabbed-content">
@@ -2075,21 +2101,15 @@
 </div>
 </div>
 </div>
-<p>The output of this method will be a signed JSON document using BBS+ Signature Suite 2020. This document is not automatically stored in the wallet when issued.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p><strong><code>IssueCredential</code> requires a valid JSON-LD document to be provided</strong>. Do not confuse this operation with <a href="./#issue-credential-from-template">Issue Credential From Template</a>.</p>
+<p>When provided a valid credential, this endpoint creates and appends the <code>proof</code> object, using a key pair tied to the issuing Trinsic account.</p>
 <p>You can learn more about how to create these documents, and about VC data models in general, from W3C: <a href="https://www.w3.org/TR/vc-data-model/">VC Data Model v1.1</a>. </p>
 </div>
+<hr />
 <h2 id="issue-credential-from-template">Issue Credential from Template<a class="headerlink" href="#issue-credential-from-template" title="Permanent link">&para;</a></h2>
-<p>Issues a credential from a previously defined template through <a href="../template-service/#create-credential-template">CreateCredential</a> call. </p>
-<p>This call takes in a JSON key/value string which maps to the fields on the specified template. For example:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;field1&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value1&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;field2&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value2&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="err">...</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<p>Issues a credential from a <a href="/reference/services/template-service#create-template" target="_blank">previously-defined template</a>.</p>
 <div class='proto-method-tabs-marker'></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_3_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_3_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
 <div class="tabbed-content">
@@ -2169,9 +2189,10 @@
 </div>
 </div>
 </div>
-<p>The output of this method will be a signed JSON document using BBS+ Signature Suite 2020. This document is not automatically stored in the wallet when issued.</p>
+<hr />
 <h2 id="check-revocation-status">Check Revocation Status<a class="headerlink" href="#check-revocation-status" title="Permanent link">&para;</a></h2>
-<p>Get the credential status (revocation) of a previously issued credential. You must supply the credential id to this call.</p>
+<p>Checks a credential's revocation status by its <code>credential_status_id</code>.</p>
+<p>A <code>credential_status_id</code> can be found in a credential's <code>credentialStatus.id</code> field, if present.</p>
 <div class='proto-method-tabs-marker'></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_5_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_5_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
 <div class="tabbed-content">
@@ -2214,8 +2235,10 @@
 </div>
 </div>
 </div>
+<hr />
 <h2 id="update-revocation-status">Update Revocation Status<a class="headerlink" href="#update-revocation-status" title="Permanent link">&para;</a></h2>
-<p>Update the credential status (revocation) of a previously issued credential. You must supply the credential id to this call.</p>
+<p>Updates the revocation status of a credential (revoke or unrevoke).</p>
+<p>A <code>credential_status_id</code> can be found in a credential's <code>credentialStatus.id</code> field, if present.</p>
 <div class='proto-method-tabs-marker'></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="7:3"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_7_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_7_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
 <div class="tabbed-content">
@@ -2260,13 +2283,11 @@ trinsic vc update-status --unrevoked --credential-status-id &lt;ID&gt;
 </div>
 </div>
 </div>
+<hr />
 <h2 id="create-proof">Create Proof<a class="headerlink" href="#create-proof" title="Permanent link">&para;</a></h2>
-<p>Wallets allow data to be shared between parties in a secure manner, using a technique called <a href="/faq/#what-are-zero-knowledge-proofs">Zero Knowledge Proofs</a>. Trinsic Ecosystems uses the BBS+ Signature Proof scheme to allow data to be selectively disclosed to the requesting party. This allows users to share only the requested subset of data, instead the entire document.</p>
-<p>The endpoint to create a proof requires two inputs:</p>
-<ul>
-<li>document in the wallet that is signed with the correct signature</li>
-<li>JSONLD frame that describes the data to be disclosed</li>
-</ul>
+<p>Creates and signs a <a href="/">proof</a> for a valid JSON-LD credential, using the BBS+ Signature Suite.</p>
+<p>If the credential is stored in a Trinsic cloud wallet, pass its <code>item_id</code>; otherwise, pass the raw JSON-LD credential via <code>document_json</code>.</p>
+<p>If <code>reveal_document_json</code> is passed, a proof will be generated for only the fields specified.</p>
 <div class='proto-method-tabs-marker'></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="9:3"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_9_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_9_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
 <div class="tabbed-content">
@@ -2557,8 +2578,15 @@ trinsic vc update-status --unrevoked --credential-status-id &lt;ID&gt;
 </div>
 </div>
 </div>
+<div class="admonition info">
+<p class="admonition-title">Selective Disclosure</p>
+<p>BBS+ Signatures support the ability to generate a proof for a subset of a credential's fields, instead of every field.</p>
+<p>This enables increased user privacy: fields which aren't included in <code>reveal_document_json</code> will not be present in the generated proof.</p>
+<p>We are working on documentation for the expected structure of <code>reveal_document_json</code> and will make it available soon.</p>
+</div>
+<hr />
 <h2 id="verify-proof">Verify Proof<a class="headerlink" href="#verify-proof" title="Permanent link">&para;</a></h2>
-<p>This endpoint verifies if the submitted data contains a valid proof. The data to be verified must contain a Linked Data Proof with BBS+ signature scheme.</p>
+<p>Verifies a proof for validity and authenticity. Only supports BBS+ Signatures at present.</p>
 <div class='proto-method-tabs-marker'></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="11:3"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><input id="__tabbed_11_3" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_11_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_11_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
 <div class="tabbed-content">
@@ -3015,18 +3043,43 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
 </div>
 </div>
 </div>
+<details class="info" open="open">
+<summary>Validation Results</summary>
+<p>The verification process performs a number of validations, each of which may fail independently of the others.</p>
+<p>For example, a credential may be expired or revoked, but otherwise perfectly valid.</p>
+<p><code>validation_results</code> contains an entry for each of the following verification steps:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code style="word-break:keep-all">SignatureVerification</code></td>
+<td>Cryptographic signature validity of proof</td>
+</tr>
+<tr>
+<td><code style="word-break:keep-all">CredentialStatus</code></td>
+<td><em>(if supported by credential)</em> Checks if credential has been revoked*</td>
+</tr>
+<tr>
+<td><code style="word-break:keep-all">SchemaConformance</code></td>
+<td>Ensures credential conforms with its schema</td>
+</tr>
+<tr>
+<td><code style="word-break:keep-all">TrustRegistryMembership</code></td>
+<td><em>(if relevant)</em> Verifies that credential issuer is an authorized member of the credential's governing Trust Registry</td>
+</tr>
+</tbody>
+</table>
+</details>
+<hr />
 <h2 id="exchange-credentials">Exchange Credentials<a class="headerlink" href="#exchange-credentials" title="Permanent link">&para;</a></h2>
-<p>Exchanging data securely is one of the fundamental functions of digital identity systems. There are many specifications with varying maturity that aim to provide interoperable and secure way of exchanging authentic data. We are commited to providing support for these methods.</p>
-<ul>
-<li><a href="https://identity.foundation/didcomm-messaging/spec/" target="_blank">DIDComm Messaging <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a></li>
-<li><a href="https://identity.foundation/wallet-and-credential-interactions/" target="_blank">Wallet And Credential Interactions <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a></li>
-<li><a href="https://mattrglobal.github.io/oidc-client-bound-assertions-spec/" target="_blank">OpenID Connect Credential Provider <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a></li>
-</ul>
-<blockquote>
-<p>During this beta period, we are only supporting exchanging data between users by using their email addresses. The messages are routed securely to the destination wallet without leaving the secure network of the ecosystem backend. Our goal is to provide basic ability to share data without affecting the user experience. As interoperable exchange methods become available, we will add this functionality in the SDK.</p>
-</blockquote>
-<h3 id="sending-documents-using-email-as-identifier">Sending documents using Email as identifier<a class="headerlink" href="#sending-documents-using-email-as-identifier" title="Permanent link">&para;</a></h3>
-<p>To send a document to another user, they must have created a wallet and <a href="#create-wallet-with-provider-invitation">associated their email address</a> with that wallet.</p>
+<h3 id="send-via-email">Send via Email<a class="headerlink" href="#send-via-email" title="Permanent link">&para;</a></h3>
+<p>Sends a credential to a user via email.</p>
+<p>The specified email address must be tied to an existing account in the same ecosystem.</p>
 <div class='proto-method-tabs-marker'></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="13:3"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><input id="__tabbed_13_3" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_13_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_13_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
 <div class="tabbed-content">
@@ -3303,6 +3356,17 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
 <p><div class='proto-obj-container' data-proto-name='services.verifiablecredentials.v1.SendResponse'><div class='proto-obj-name'><a name='services.verifiablecredentials.v1.SendResponse' href='/reference/proto#services.verifiablecredentials.v1.SendResponse'>SendResponse</a></div><div class='proto-obj-description'>Response to <code>SendRequest</code></div><i style='display:block; font-size: 0.65rem; margin-top: 0.5rem'>This message has no fields</i></div></p>
 </div>
 </div>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Alternative Exchange Protocols</p>
+<p>During this beta period, credentials may only be sent to a wallet via email address or with the <a href="/reference/services/wallet-service#insert-item">InsertItem</a> call.</p>
+<p>There are a number of ongoing industry efforts to standardize exchange protocols, such as:</p>
+<ul>
+<li><a href="https://identity.foundation/didcomm-messaging/spec/" target="_blank">DIDComm Messaging <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a></li>
+<li><a href="https://identity.foundation/wallet-and-credential-interactions/" target="_blank">Wallet And Credential Interactions <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a></li>
+<li><a href="https://mattrglobal.github.io/oidc-client-bound-assertions-spec/" target="_blank">OpenID Connect Credential Provider <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a></li>
+</ul>
+<p>We aim to provide support for these methods as they mature.</p>
 </div>
 
 

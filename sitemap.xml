@@ -96,6 +96,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs-v2.trinsic.id/learn/trust-registries/</loc>
+         <lastmod>2022-06-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs-v2.trinsic.id/learn/wallets/</loc>
          <lastmod>2022-06-10</lastmod>
          <changefreq>daily</changefreq>

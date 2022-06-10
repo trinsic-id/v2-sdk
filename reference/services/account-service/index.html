@@ -138,6 +138,8 @@
     
       
     
+      
+    
     
       <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
@@ -717,6 +719,25 @@
   
   <span class="md-ellipsis">
     Credentials
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learn/trust-registries/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trust Registries
   </span>
 
       </a>
@@ -1717,7 +1738,8 @@
 <p>This string is an encoded form of your account profile, as well as an access key to perform calls using the account.</p>
 <p>These are effectively API keys; they should be kept safe and never published.</p>
 </div>
-<h3 id="sign-in">Sign In<a class="headerlink" href="#sign-in" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="sign-in">Sign In<a class="headerlink" href="#sign-in" title="Permanent link">&para;</a></h2>
 <p>Sign in to an existing account, or create a new one.</p>
 <p>If no account details are passed to this method, an anonymous account will be created.</p>
 <div class='proto-method-tabs-marker'></div>
@@ -1775,7 +1797,8 @@
 <p>Trinsic will have sent a security code to the account's email address or phone number; this security code must be used with the <a href="#unprotect-account-profile">Unprotect</a> call to receive a usable authentication token.</p>
 <p>In the future, we will provide an SDK call to determine if an authentication token is protected.</p>
 </div>
-<h3 id="get-account-info">Get Account Info<a class="headerlink" href="#get-account-info" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="get-account-info">Get Account Info<a class="headerlink" href="#get-account-info" title="Permanent link">&para;</a></h2>
 <p>Returns the account information (name, email address, phone number, etc.) used to create the currently-active account profile.</p>
 <div class='proto-method-tabs-marker'></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_3_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_3_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
@@ -1828,7 +1851,8 @@
 <p>When using the CLI, this will return information for the account most recently logged in to.</p>
 <p>When using the SDK, this will return information for the authentication token stored in the <code>AccountService</code> instance's <code>ServiceOptions.AuthToken</code> field, which will be the account most recently logged in to, unless you have manually set this value yourself.</p>
 </div>
-<h3 id="protect-account-profile">Protect Account Profile<a class="headerlink" href="#protect-account-profile" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="protect-account-profile">Protect Account Profile<a class="headerlink" href="#protect-account-profile" title="Permanent link">&para;</a></h2>
 <p>Protects the specified account profile with a security code. It is not possible to execute this call using the CLI.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:6"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><input id="__tabbed_5_4" name="__tabbed_5" type="radio" /><input id="__tabbed_5_5" name="__tabbed_5" type="radio" /><input id="__tabbed_5_6" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">TypeScript</label><label for="__tabbed_5_2">C#</label><label for="__tabbed_5_3">Python</label><label for="__tabbed_5_4">Go</label><label for="__tabbed_5_5">Java</label><label for="__tabbed_5_6">Ruby</label></div>
 <div class="tabbed-content">
@@ -1883,7 +1907,8 @@
 <p>You will receive a protected account profile from Trinsic if you attempt to sign in to an account via email, SMS, or any other method which requires authentication. Trinsic will send a security code to the email or phone number associated with the account, which can be used to unprotect the account profile.</p>
 <p>Specifically, Trinsic is using Oberon to handle access tokens; protection and unprotection is handled using the blinding/unblinding features of Oberon.</p>
 </div>
-<h3 id="unprotect-account-profile">Unprotect Account Profile<a class="headerlink" href="#unprotect-account-profile" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="unprotect-account-profile">Unprotect Account Profile<a class="headerlink" href="#unprotect-account-profile" title="Permanent link">&para;</a></h2>
 <p>Unprotects the specified account profile using the given code. It is not possible to execute this call using the CLI.</p>
 <p>The profile must have been previously protected using the same code that is being used to unprotect it. Profiles can be protected using any arbitrary code via the <a href="#protect-account-profile">Protect</a> method.</p>
 <p>Most commonly, this method is used on a protected profile received from the <a href="#sign-in">Sign In</a> method. The code to unprotect it will have been sent to the account owner via email or SMS.</p>
