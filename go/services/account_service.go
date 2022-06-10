@@ -36,12 +36,15 @@ type AccountService interface {
 	Unprotect(authtoken, securityCode string) (string, error)
 	// Protect will apply the given security code blind to the provided token
 	Protect(authtoken, securityCode string) (string, error)
+	Login(userContext context.Context, request *account.LoginRequest) (*account.LoginResponse, error)
+	LoginConfirm(userContext context.Context, request *account.LoginConfirmRequest) (*account.LoginConfirmResponse, error)
 	// GetInfo returns details about the wallet associated with the account token
 	GetInfo(userContext context.Context) (*account.AccountInfoResponse, error)
 	// ListDevices returns a list of devices that are associated with the cloud wallet
 	ListDevices(userContext context.Context, request *account.ListDevicesRequest) (*account.ListDevicesResponse, error)
 	// RevokeDevice removes access to the cloud wallet for the provided device
 	RevokeDevice(userContext context.Context, request *account.RevokeDeviceRequest) (*account.RevokeDeviceResponse, error)
+	AuthorizeWebhook(userContext context.Context, request *account.AuthorizeWebhookRequest) (*account.AuthorizeWebhookResponse, error)
 }
 
 type accountBase struct {
@@ -133,6 +136,30 @@ func (a *accountBase) Protect(authtoken, securityCode string) (string, error) {
 	return ProfileToToken(profile)
 }
 
+func (a *accountBase) Login(userContext context.Context, request *account.LoginRequest) (*account.LoginResponse, error) {
+	md, err := a.GetMetadataContext(userContext, request)
+	if err != nil {
+		return nil, err
+	}
+	response, err := a.client.Login(md, request)
+	if err != nil {
+		return nil, err
+	}
+	return response, nil
+}
+
+func (a *accountBase) LoginConfirm(userContext context.Context, request *account.LoginConfirmRequest) (*account.LoginConfirmResponse, error) {
+	md, err := a.GetMetadataContext(userContext, request)
+	if err != nil {
+		return nil, err
+	}
+	response, err := a.client.LoginConfirm(md, request)
+	if err != nil {
+		return nil, err
+	}
+	return response, nil
+}
+
 // GetInfo associated with a given wallet
 func (a *accountBase) GetInfo(userContext context.Context) (*account.AccountInfoResponse, error) {
 	request := &account.AccountInfoRequest{}
@@ -167,6 +194,18 @@ func (a *accountBase) RevokeDevice(userContext context.Context, request *account
 		return nil, err
 	}
 	response, err := a.client.RevokeDevice(md, request)
+	if err != nil {
+		return nil, err
+	}
+	return response, nil
+}
+
+func (a *accountBase) AuthorizeWebhook(userContext context.Context, request *account.AuthorizeWebhookRequest) (*account.AuthorizeWebhookResponse, error) {
+	md, err := a.GetMetadataContext(userContext, request)
+	if err != nil {
+		return nil, err
+	}
+	response, err := a.client.AuthorizeWebhook(md, request)
 	if err != nil {
 		return nil, err
 	}

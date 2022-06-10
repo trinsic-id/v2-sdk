@@ -25,19 +25,126 @@ func NewProviderService(options *Options) (ProviderService, error) {
 // ProviderService wraps all the functions for interacting with providers (ecosystems)
 type ProviderService interface {
 	Service
+	// CreateEcosystem creates a new ecosystem
+	CreateEcosystem(ctx context.Context, request *provider.CreateEcosystemRequest) (*provider.CreateEcosystemResponse, error)
+	// UpdateEcosystem update an existing ecosystem
+	UpdateEcosystem(ctx context.Context, request *provider.UpdateEcosystemRequest) (*provider.UpdateEcosystemResponse, error)
+	AddWebhook(ctx context.Context, request *provider.AddWebhookRequest) (*provider.AddWebhookResponse, error)
+	DeleteWebhook(ctx context.Context, request *provider.DeleteWebhookRequest) (*provider.DeleteWebhookResponse, error)
+	EcosystemInfo(ctx context.Context, request *provider.EcosystemInfoRequest) (*provider.EcosystemInfoResponse, error)
+	// GenerateToken returns an authToken that can be used for interacting with the ecosystem
+	GenerateToken(ctx context.Context, request *provider.GenerateTokenRequest) (*provider.GenerateTokenResponse, error)
 	// InviteParticipant to the ecosystem
 	InviteParticipant(userContext context.Context, request *provider.InviteRequest) (*provider.InviteResponse, error)
 	// InvitationStatus returns the status of the invitation
 	InvitationStatus(userContext context.Context, request *provider.InvitationStatusRequest) (*provider.InvitationStatusResponse, error)
-	// CreateEcosystem creates a new ecosystem
-	CreateEcosystem(ctx context.Context, request *provider.CreateEcosystemRequest) (*provider.CreateEcosystemResponse, error)
 	// GenerateToken returns an authToken that can be used for interacting with the ecosystem
-	GenerateToken(ctx context.Context, description string) (string, error)
+	GetOberonKey(ctx context.Context, request *provider.GetOberonKeyRequest) (*provider.GetOberonKeyResponse, error)
+	// GenerateToken returns an authToken that can be used for interacting with the ecosystem
+	GetEventToken(ctx context.Context, request *provider.GetEventTokenRequest) (*provider.GetEventTokenResponse, error)
 }
 
 type providerBase struct {
 	Service
 	client provider.ProviderClient
+}
+
+func (p *providerBase) UpdateEcosystem(ctx context.Context, request *provider.UpdateEcosystemRequest) (*provider.UpdateEcosystemResponse, error) {
+	md, err := p.GetMetadataContext(ctx, request)
+	if err != nil {
+		return nil, err
+	}
+
+	response, err := p.client.UpdateEcosystem(md, request)
+	if err != nil {
+		return nil, err
+	}
+
+	return response, nil
+}
+
+func (p *providerBase) AddWebhook(ctx context.Context, request *provider.AddWebhookRequest) (*provider.AddWebhookResponse, error) {
+	md, err := p.GetMetadataContext(ctx, request)
+	if err != nil {
+		return nil, err
+	}
+
+	response, err := p.client.AddWebhook(md, request)
+	if err != nil {
+		return nil, err
+	}
+
+	return response, nil
+}
+
+func (p *providerBase) DeleteWebhook(ctx context.Context, request *provider.DeleteWebhookRequest) (*provider.DeleteWebhookResponse, error) {
+	md, err := p.GetMetadataContext(ctx, request)
+	if err != nil {
+		return nil, err
+	}
+
+	response, err := p.client.DeleteWebhook(md, request)
+	if err != nil {
+		return nil, err
+	}
+
+	return response, nil
+}
+
+func (p *providerBase) EcosystemInfo(ctx context.Context, request *provider.EcosystemInfoRequest) (*provider.EcosystemInfoResponse, error) {
+	md, err := p.GetMetadataContext(ctx, request)
+	if err != nil {
+		return nil, err
+	}
+
+	response, err := p.client.EcosystemInfo(md, request)
+	if err != nil {
+		return nil, err
+	}
+
+	return response, nil
+}
+
+func (p *providerBase) GenerateToken(ctx context.Context, request *provider.GenerateTokenRequest) (*provider.GenerateTokenResponse, error) {
+	md, err := p.GetMetadataContext(ctx, request)
+	if err != nil {
+		return nil, err
+	}
+
+	response, err := p.client.GenerateToken(md, request)
+	if err != nil {
+		return nil, err
+	}
+
+	return response, nil
+}
+
+func (p *providerBase) GetOberonKey(ctx context.Context, request *provider.GetOberonKeyRequest) (*provider.GetOberonKeyResponse, error) {
+	md, err := p.GetMetadataContext(ctx, request)
+	if err != nil {
+		return nil, err
+	}
+
+	response, err := p.client.GetOberonKey(md, request)
+	if err != nil {
+		return nil, err
+	}
+
+	return response, nil
+}
+
+func (p *providerBase) GetEventToken(ctx context.Context, request *provider.GetEventTokenRequest) (*provider.GetEventTokenResponse, error) {
+	md, err := p.GetMetadataContext(ctx, request)
+	if err != nil {
+		return nil, err
+	}
+
+	response, err := p.client.GetEventToken(md, request)
+	if err != nil {
+		return nil, err
+	}
+
+	return response, nil
 }
 
 func (p *providerBase) InviteParticipant(ctx context.Context, request *provider.InviteRequest) (*provider.InviteResponse, error) {
@@ -82,20 +189,4 @@ func (p *providerBase) CreateEcosystem(ctx context.Context, request *provider.Cr
 	}
 
 	return resp, nil
-}
-
-func (p *providerBase) GenerateToken(ctx context.Context, description string) (string, error) {
-	req := &provider.GenerateTokenRequest{Description: description}
-
-	md, err := p.GetMetadataContext(ctx, req)
-	if err != nil {
-		return "", nil
-	}
-
-	resp, err := p.client.GenerateToken(md, req)
-	if err != nil {
-		return "", err
-	}
-
-	return ProfileToToken(resp.Profile)
 }
