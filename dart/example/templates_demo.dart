@@ -10,7 +10,7 @@ Future runTemplatesDemo() async {
   var accountService = AccountService(trinsicConfig());
   var profile = await accountService.signIn();
   var templateService =
-      CredentialTemplateService(trinsicConfig(authToken: profile));
+      TemplateService(trinsicConfig(authToken: profile));
   var credentialService = CredentialService(trinsicConfig(authToken: profile));
 
   var uuid = Uuid();
