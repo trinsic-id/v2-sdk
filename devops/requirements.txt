@@ -1,4 +1,4 @@
-git+https://github.com/danielgtaylor/python-betterproto.git@master#egg=betterproto[compiler]
+git+https://github.com/danielgtaylor/python-betterproto.git@3ca092a72494f9225bcb124aab2d0675f9e8c125#egg=betterproto[compiler]
 grpcio-tools
 requests
 markupsafe==2.0.1

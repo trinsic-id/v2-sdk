@@ -7,7 +7,7 @@ on:
       - main
     paths:
       - "proto/**"
-      - "devops/*.py"
+      - "devops/*"
   pull_request:
     paths:
       - "proto/**"
@@ -63,6 +63,6 @@ jobs:
           git checkout -b "${{ github.head_ref }}-generated-protos"
           git add .
           git commit -m "Generated code from proto files"
-          git push --set-upstream origin "${{ github.head_ref }}-generated-protos"
+          git push --force --set-upstream origin "${{ github.head_ref }}-generated-protos"
           echo ${{ secrets.GITHUB_TOKEN }} | gh auth login --with-token
           gh pr create --base ${{ github.head_ref }} --title "Generated Protos for ${{ github.head_ref }}" --body "Generated files from proto"
