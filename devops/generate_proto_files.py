@@ -300,7 +300,8 @@ def update_python():
 def update_dart():
     language_path = get_language_dir("dart")
     language_proto_path = join(language_path, "lib", "src", "proto")
-    clean_dir(language_proto_path)
+    clean_dir(join(language_proto_path, "sdk"))
+    clean_dir(join(language_proto_path, "services"))
     # https://github.com/google/protobuf.dart/tree/master/protoc_plugin#how-to-build-and-use
     run_protoc(
         language_options={"dart_out": f"grpc:{language_proto_path}"},
