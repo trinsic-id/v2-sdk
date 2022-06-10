@@ -1026,6 +1026,42 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#update-ecosystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update Ecosystem
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-ecosystem-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Ecosystem Info
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-webhook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add Webhook
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-webhook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete Webhook
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1652,6 +1688,42 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#update-ecosystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update Ecosystem
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-ecosystem-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Ecosystem Info
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-webhook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add Webhook
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-webhook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete Webhook
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1672,7 +1744,7 @@
 
 
 <h1 id="provider-service">Provider Service<a class="headerlink" href="#provider-service" title="Permanent link">&para;</a></h1>
-<p>The Provider Service helps ecosystem providers with data management and onboarding. </p>
+<p>The Provider Service enables the creation and management of ecosystems and webhooks.</p>
 <div class="admonition warning">
 <p class="admonition-title">Named / Production Ecosystems</p>
 <p>During the beta period, anyone may create an ecosystem with any name. As we move toward general availability of the platform, we will restrict the creation of named / production ecosystems.</p>
@@ -1742,6 +1814,215 @@
 </div>
 <div class="tabbed-block">
 <p><div class='proto-obj-container' data-proto-name='services.provider.v1.CreateEcosystemResponse'><div class='proto-obj-name'><a name='services.provider.v1.CreateEcosystemResponse' href='/reference/proto#services.provider.v1.CreateEcosystemResponse'>CreateEcosystemResponse</a></div><div class='proto-obj-description'></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>ecosystem</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.Ecosystem'>Ecosystem</a></div><div class='proto-field-description'>Details of the created ecosystem</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URN of the ecosystem</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>name</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Globally unique name for the ecosystem</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>description</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Ecosystem description</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>External URL associated with the organization or ecosystem entity</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>webhooks</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.WebhookConfig'>WebhookConfig</a>[]</div><div class='proto-field-description'>Configured webhooks, if any</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.webhooks.</span>id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>UUID of the webhook</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.webhooks.</span>destination_url</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Destination to post webhook calls to</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.webhooks.</span>events</div> <div class='proto-field-type'>string[]</div><div class='proto-field-description'>Events the webhook is subscribed to</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.webhooks.</span>status</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Whether we are able to sucessfully send events to the webhook</div></div></div></div></div></div></div></div><div class='proto-field'><div class='proto-field-name'>profile</div> <div class='proto-field-type'><a href='/reference/proto#services.account.v1.AccountProfile'>AccountProfile</a></div><div class='proto-field-description'>Account profile for auth of the owner of the ecosystem</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.</span>profile_type</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>The type of profile, used to differentiate between protocol schemes or versions</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.</span>auth_data</div> <div class='proto-field-type'>bytes</div><div class='proto-field-description'>Auth data containg information about the current device access</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.</span>auth_token</div> <div class='proto-field-type'>bytes</div><div class='proto-field-description'>Secure token issued by server used to generate zero-knowledge proofs</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.</span>protection</div> <div class='proto-field-type'><a href='/reference/proto#services.account.v1.TokenProtection'>TokenProtection</a></div><div class='proto-field-description'>Token security information about the token. If token protection is enabled, implementations must supply protection secret before using the token for authentication.</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.protection.</span>enabled</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>Indicates if token is protected using a PIN, security code, HSM secret, etc.</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.protection.</span>method</div> <div class='proto-field-type'><a href='/reference/proto#services.account.v1.ConfirmationMethod'>ConfirmationMethod</a></div><div class='proto-field-description'>The method used to protect the token</div><div class='proto-field-expand-btn' data-sub-type='enum' onclick='expandSubField(this);'>Show enum values</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>None</div> <div class='proto-field-type'> = 0</div><div class='proto-field-description'>No confirmation required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>Email</div> <div class='proto-field-type'> = 1</div><div class='proto-field-description'>Email confirmation required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>Sms</div> <div class='proto-field-type'> = 2</div><div class='proto-field-description'>SMS confirmation required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>ConnectedDevice</div> <div class='proto-field-type'> = 3</div><div class='proto-field-description'>Confirmation from a connected device is required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>Other</div> <div class='proto-field-type'> = 10</div><div class='proto-field-description'>Indicates third-party method of confirmation is required</div></div></div></div></div></div></div></div></div></div></div><div class='proto-field'><div class='proto-field-name'>confirmation_method</div> <div class='proto-field-type'><a href='/reference/proto#services.account.v1.ConfirmationMethod'>ConfirmationMethod</a></div><div class='proto-field-description'>Indicates if confirmation of account is required. This setting is configured globally by the server administrator.</div><div class='proto-field-expand-btn' data-sub-type='enum' onclick='expandSubField(this);'>Show enum values</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>None</div> <div class='proto-field-type'> = 0</div><div class='proto-field-description'>No confirmation required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>Email</div> <div class='proto-field-type'> = 1</div><div class='proto-field-description'>Email confirmation required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>Sms</div> <div class='proto-field-type'> = 2</div><div class='proto-field-description'>SMS confirmation required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>ConnectedDevice</div> <div class='proto-field-type'> = 3</div><div class='proto-field-description'>Confirmation from a connected device is required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>Other</div> <div class='proto-field-type'> = 10</div><div class='proto-field-description'>Indicates third-party method of confirmation is required</div></div></div></div></div></div></div></p>
+</div>
+</div>
+</div>
+<hr />
+<h2 id="update-ecosystem">Update Ecosystem<a class="headerlink" href="#update-ecosystem" title="Permanent link">&para;</a></h2>
+<p>Updates an ecosystem's <code>description</code> or <code>uri</code>.</p>
+<div class='proto-method-tabs-marker'></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_3_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_3_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="4:6"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><input id="__tabbed_4_6" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Trinsic CLI</label><label for="__tabbed_4_2">TypeScript</label><label for="__tabbed_4_3">C#</label><label for="__tabbed_4_4">Python</label><label for="__tabbed_4_5">Go</label><label for="__tabbed_4_6">Java</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<blockquote>
+<p>Sample coming soon</p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<blockquote>
+<p>Sample coming soon</p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<blockquote>
+<p>Sample coming soon</p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<blockquote>
+<p>Sample coming soon</p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<blockquote>
+<p>Sample coming soon</p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<blockquote>
+<p>Sample coming soon</p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.provider.v1.UpdateEcosystemRequest'><div class='proto-obj-name'><a name='services.provider.v1.UpdateEcosystemRequest' href='/reference/proto#services.provider.v1.UpdateEcosystemRequest'>UpdateEcosystemRequest</a></div><div class='proto-obj-description'>Request to update an ecosystem</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>ecosystem_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of the ecosystem to update</div></div><div class='proto-field'><div class='proto-field-name'>description</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Description of the ecosystem</div></div><div class='proto-field'><div class='proto-field-name'>uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>External URL associated with the organization or ecosystem entity</div></div></div></div></p>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.provider.v1.UpdateEcosystemResponse'><div class='proto-obj-name'><a name='services.provider.v1.UpdateEcosystemResponse' href='/reference/proto#services.provider.v1.UpdateEcosystemResponse'>UpdateEcosystemResponse</a></div><div class='proto-obj-description'>Response to <code>UpdateEcosystemRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>Ecosystem</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.Ecosystem'>Ecosystem</a></div><div class='proto-field-description'></div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>Ecosystem.</span>id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URN of the ecosystem</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>Ecosystem.</span>name</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Globally unique name for the ecosystem</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>Ecosystem.</span>description</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Ecosystem description</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>Ecosystem.</span>uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>External URL associated with the organization or ecosystem entity</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>Ecosystem.</span>webhooks</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.WebhookConfig'>WebhookConfig</a>[]</div><div class='proto-field-description'>Configured webhooks, if any</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>Ecosystem.webhooks.</span>id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>UUID of the webhook</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>Ecosystem.webhooks.</span>destination_url</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Destination to post webhook calls to</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>Ecosystem.webhooks.</span>events</div> <div class='proto-field-type'>string[]</div><div class='proto-field-description'>Events the webhook is subscribed to</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>Ecosystem.webhooks.</span>status</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Whether we are able to sucessfully send events to the webhook</div></div></div></div></div></div></div></div></div></div></p>
+</div>
+</div>
+</div>
+<hr />
+<h2 id="get-ecosystem-info">Get Ecosystem Info<a class="headerlink" href="#get-ecosystem-info" title="Permanent link">&para;</a></h2>
+<p>Fetches information about an ecosystem.</p>
+<div class='proto-method-tabs-marker'></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_5_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_5_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="6:6"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><input id="__tabbed_6_6" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Trinsic CLI</label><label for="__tabbed_6_2">TypeScript</label><label for="__tabbed_6_3">C#</label><label for="__tabbed_6_4">Python</label><label for="__tabbed_6_5">Go</label><label for="__tabbed_6_6">Java</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<blockquote>
+<p>Sample coming soon</p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<blockquote>
+<p>Sample coming soon</p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<blockquote>
+<p>Sample coming soon</p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<blockquote>
+<p>Sample coming soon</p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<blockquote>
+<p>Sample coming soon</p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<blockquote>
+<p>Sample coming soon</p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.provider.v1.EcosystemInfoRequest'><div class='proto-obj-name'><a name='services.provider.v1.EcosystemInfoRequest' href='/reference/proto#services.provider.v1.EcosystemInfoRequest'>EcosystemInfoRequest</a></div><div class='proto-obj-description'>Request to fetch information about an ecosystem</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>ecosystem_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of ecosystem to fetch information about</div></div></div></div></p>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.provider.v1.EcosystemInfoResponse'><div class='proto-obj-name'><a name='services.provider.v1.EcosystemInfoResponse' href='/reference/proto#services.provider.v1.EcosystemInfoResponse'>EcosystemInfoResponse</a></div><div class='proto-obj-description'>Response to <code>InfoRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>ecosystem</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.Ecosystem'>Ecosystem</a></div><div class='proto-field-description'>Ecosystem corresponding to requested <code>ecosystem_id</code></div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URN of the ecosystem</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>name</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Globally unique name for the ecosystem</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>description</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Ecosystem description</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>External URL associated with the organization or ecosystem entity</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>webhooks</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.WebhookConfig'>WebhookConfig</a>[]</div><div class='proto-field-description'>Configured webhooks, if any</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.webhooks.</span>id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>UUID of the webhook</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.webhooks.</span>destination_url</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Destination to post webhook calls to</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.webhooks.</span>events</div> <div class='proto-field-type'>string[]</div><div class='proto-field-description'>Events the webhook is subscribed to</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.webhooks.</span>status</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Whether we are able to sucessfully send events to the webhook</div></div></div></div></div></div></div></div></div></div></p>
+</div>
+</div>
+</div>
+<hr />
+<h2 id="add-webhook">Add Webhook<a class="headerlink" href="#add-webhook" title="Permanent link">&para;</a></h2>
+<p>Adds a webhook to an ecosystem.</p>
+<div class='proto-method-tabs-marker'></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:3"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_7_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_7_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="8:6"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><input id="__tabbed_8_4" name="__tabbed_8" type="radio" /><input id="__tabbed_8_5" name="__tabbed_8" type="radio" /><input id="__tabbed_8_6" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Trinsic CLI</label><label for="__tabbed_8_2">TypeScript</label><label for="__tabbed_8_3">C#</label><label for="__tabbed_8_4">Python</label><label for="__tabbed_8_5">Go</label><label for="__tabbed_8_6">Java</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<blockquote>
+<p>Sample coming soon</p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<blockquote>
+<p>Sample coming soon</p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<blockquote>
+<p>Sample coming soon</p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<blockquote>
+<p>Sample coming soon</p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<blockquote>
+<p>Sample coming soon</p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<blockquote>
+<p>Sample coming soon</p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.provider.v1.AddWebhookRequest'><div class='proto-obj-name'><a name='services.provider.v1.AddWebhookRequest' href='/reference/proto#services.provider.v1.AddWebhookRequest'>AddWebhookRequest</a></div><div class='proto-obj-description'>Request to add a webhook to an ecosystem</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>ecosystem_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of ecosystem to add webhook to</div></div><div class='proto-field'><div class='proto-field-name'>destination_url</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Destination to post webhook calls to</div></div><div class='proto-field'><div class='proto-field-name'>secret</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>HMAC secret for webhook validation</div></div><div class='proto-field'><div class='proto-field-name'>events</div> <div class='proto-field-type'>string[]</div><div class='proto-field-description'>Events to subscribe to. Default is "*" (all events)</div></div></div></div></p>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.provider.v1.AddWebhookResponse'><div class='proto-obj-name'><a name='services.provider.v1.AddWebhookResponse' href='/reference/proto#services.provider.v1.AddWebhookResponse'>AddWebhookResponse</a></div><div class='proto-obj-description'>Response to <code>AddWebhookRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>ecosystem</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.Ecosystem'>Ecosystem</a></div><div class='proto-field-description'>Ecosystem with new webhook</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URN of the ecosystem</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>name</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Globally unique name for the ecosystem</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>description</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Ecosystem description</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>External URL associated with the organization or ecosystem entity</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>webhooks</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.WebhookConfig'>WebhookConfig</a>[]</div><div class='proto-field-description'>Configured webhooks, if any</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.webhooks.</span>id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>UUID of the webhook</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.webhooks.</span>destination_url</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Destination to post webhook calls to</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.webhooks.</span>events</div> <div class='proto-field-type'>string[]</div><div class='proto-field-description'>Events the webhook is subscribed to</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.webhooks.</span>status</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Whether we are able to sucessfully send events to the webhook</div></div></div></div></div></div></div></div></div></div></p>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Webhook Limits</p>
+<p>At present, an ecosystem can have no more than 10 webhooks.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Wallet Webhook Events</p>
+<p>In order to receive webhooks for events which occur on a wallet, an additional authorization step must be performed.</p>
+<p>See <a href="/reference/services/account-service#authorize-webhook">AuthorizeWebhook</a> for more info.</p>
+</div>
+<hr />
+<h2 id="delete-webhook">Delete Webhook<a class="headerlink" href="#delete-webhook" title="Permanent link">&para;</a></h2>
+<p>Deletes a webhook from an ecosystem.</p>
+<div class='proto-method-tabs-marker'></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:3"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_9_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_9_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="10:6"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><input id="__tabbed_10_4" name="__tabbed_10" type="radio" /><input id="__tabbed_10_5" name="__tabbed_10" type="radio" /><input id="__tabbed_10_6" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Trinsic CLI</label><label for="__tabbed_10_2">TypeScript</label><label for="__tabbed_10_3">C#</label><label for="__tabbed_10_4">Python</label><label for="__tabbed_10_5">Go</label><label for="__tabbed_10_6">Java</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<blockquote>
+<p>Sample coming soon</p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<blockquote>
+<p>Sample coming soon</p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<blockquote>
+<p>Sample coming soon</p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<blockquote>
+<p>Sample coming soon</p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<blockquote>
+<p>Sample coming soon</p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<blockquote>
+<p>Sample coming soon</p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.provider.v1.DeleteWebhookRequest'><div class='proto-obj-name'><a name='services.provider.v1.DeleteWebhookRequest' href='/reference/proto#services.provider.v1.DeleteWebhookRequest'>DeleteWebhookRequest</a></div><div class='proto-obj-description'>Request to delete a webhook from an ecosystem</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>ecosystem_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of ecosystem from which to delete webhook</div></div><div class='proto-field'><div class='proto-field-name'>webhook_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>ID of webhook to delete</div></div></div></div></p>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.provider.v1.DeleteWebhookResponse'><div class='proto-obj-name'><a name='services.provider.v1.DeleteWebhookResponse' href='/reference/proto#services.provider.v1.DeleteWebhookResponse'>DeleteWebhookResponse</a></div><div class='proto-obj-description'>Response to <code>DeleteWebhookRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>ecosystem</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.Ecosystem'>Ecosystem</a></div><div class='proto-field-description'>Ecosystem after removal of webhook</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URN of the ecosystem</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>name</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Globally unique name for the ecosystem</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>description</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Ecosystem description</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>External URL associated with the organization or ecosystem entity</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>webhooks</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.WebhookConfig'>WebhookConfig</a>[]</div><div class='proto-field-description'>Configured webhooks, if any</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.webhooks.</span>id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>UUID of the webhook</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.webhooks.</span>destination_url</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Destination to post webhook calls to</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.webhooks.</span>events</div> <div class='proto-field-type'>string[]</div><div class='proto-field-description'>Events the webhook is subscribed to</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.webhooks.</span>status</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Whether we are able to sucessfully send events to the webhook</div></div></div></div></div></div></div></div></div></div></p>
 </div>
 </div>
 </div>
