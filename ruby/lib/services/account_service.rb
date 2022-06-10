@@ -45,6 +45,14 @@ module Trinsic
       cloned
     end
 
+    def login(request)
+      @client.login(request, metadata: metadata(request))
+    end
+
+    def login_confirm(request)
+      @client.login_confirm(request, metadata: metadata(request))
+    end
+
     def info
       request = Account_V1::AccountInfoRequest.new
       @client.info(request, metadata: metadata(request))
@@ -56,6 +64,10 @@ module Trinsic
 
     def revoke_device(request)
       @client.revoke_device(request, metadata: metadata(request))
+    end
+
+    def authorize_webhook(request)
+      @client.authorize_webhook(request, metadata: metadata(request))
     end
   end
 end

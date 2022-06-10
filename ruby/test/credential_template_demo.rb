@@ -3,7 +3,7 @@
 require 'trinsic_services'
 require 'services/account_service'
 require 'services/credential_service'
-require 'services/credential_template_service'
+require 'services/template_service'
 require 'json'
 require 'securerandom'
 
@@ -12,7 +12,7 @@ def credential_template_demo_run
   account_service = Trinsic::AccountService.new(Trinsic.trinsic_server)
   account = account_service.sign_in
   credential_service = Trinsic::CredentialService.new(Trinsic.trinsic_server(account))
-  template_service = Trinsic::CredentialTemplateService.new(Trinsic.trinsic_server(account))
+  template_service = Trinsic::TemplateService.new(Trinsic.trinsic_server(account))
 
   # create example template
   template_request = Trinsic::Template_V1::CreateCredentialTemplateRequest.new(

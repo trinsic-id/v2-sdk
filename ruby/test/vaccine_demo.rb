@@ -5,7 +5,7 @@ require 'services/service_base'
 require 'services/account_service'
 require 'services/provider_service'
 require 'services/credential_service'
-require 'services/credential_template_service'
+require 'services/template_service'
 require 'services/wallet_service'
 require 'json'
 
@@ -52,7 +52,7 @@ def vaccine_demo_run
 
   wallet_service = Trinsic::WalletService.new(config)
   credential_service = Trinsic::CredentialService.new(config)
-  template_service = Trinsic::CredentialTemplateService.new(config)
+  template_service = Trinsic::TemplateService.new(config)
 
   # setupActors() {
   # Create an account for each participant in the scenario

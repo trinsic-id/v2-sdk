@@ -1,4 +1,4 @@
-git+https://github.com/danielgtaylor/python-betterproto.git@master#egg=betterproto
+git+https://github.com/danielgtaylor/python-betterproto.git@3ca092a72494f9225bcb124aab2d0675f9e8c125#egg=betterproto
 grpclib~=0.4.3rc2
 grpcio-tools
 trinsic-okapi~=1.6.0
