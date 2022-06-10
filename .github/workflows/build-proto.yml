@@ -7,7 +7,7 @@ on:
       - main
     paths:
       - "proto/**"
-      - "devops/*.py"
+      - "devops/*"
   pull_request:
     paths:
       - "proto/**"
