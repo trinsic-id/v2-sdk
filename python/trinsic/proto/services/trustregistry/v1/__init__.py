@@ -2,17 +2,13 @@
 # sources: services/trust-registry/v1/trust-registry.proto
 # plugin: python-betterproto
 from dataclasses import dataclass
-from typing import (
-    TYPE_CHECKING,
-    AsyncIterator,
-    Dict,
-    Optional,
-)
+from typing import AsyncIterator, Dict, Optional
 
 import betterproto
-import grpclib
 from betterproto.grpc.grpclib_server import ServiceBase
+import grpclib
 
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from betterproto.grpc.grpclib_client import MetadataLike

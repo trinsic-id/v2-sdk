@@ -2,19 +2,13 @@
 # sources: services/provider/v1/provider.proto
 # plugin: python-betterproto
 from dataclasses import dataclass
-from typing import (
-    TYPE_CHECKING,
-    Dict,
-    List,
-    Optional,
-)
+from typing import Dict, List, Optional
 
 import betterproto
-import grpclib
 from betterproto.grpc.grpclib_server import ServiceBase
+import grpclib
 
-from ...account import v1 as __account_v1__
-
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from betterproto.grpc.grpclib_client import MetadataLike
@@ -28,16 +22,9 @@ class ParticipantType(betterproto.Enum):
 
 class InvitationStatusResponseStatus(betterproto.Enum):
     Error = 0
-    """Onboarding resulted in error"""
-
     InvitationSent = 1
-    """The participant has been invited"""
-
     Completed = 2
-    """The participant has been onboarded"""
-
     Expired = 3
-    """The invite has expired"""
 
 
 @dataclass(eq=False, repr=False)
@@ -613,3 +600,6 @@ class ProviderBase(ServiceBase):
                 GetEventTokenResponse,
             ),
         }
+
+
+from ...account import v1 as __account_v1__
