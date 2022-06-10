@@ -30,6 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'concurrent-ruby', '~> 1.1.9'
   spec.add_dependency 'google-protobuf', '>= 3.17.3'
   spec.add_dependency 'grpc', '~>1.42'
+  spec.add_dependency 'memoist', '~> 0.16.2'
   spec.add_dependency 'trinsic-okapi', '>= 1.6.1'
 
   spec.add_development_dependency 'minitest', '~> 5.14'

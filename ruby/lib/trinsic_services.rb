@@ -16,6 +16,8 @@ require 'services/trust-registry/v1/trust-registry_services_pb'
 require 'services/common/v1/common_pb'
 require 'sdk/options/v1/options_pb'
 require 'security'
+require 'services/service_base'
+require 'memoist'
 
 # Module for all Trinsic servers
 module Trinsic
@@ -40,4 +42,40 @@ module Trinsic
   end
 
   class Error < StandardError; end
+
+  # Wrapper for trinsic services to simplify access
+  class TrinsicService < ServiceBase
+    extend Memoist
+
+    def initialize(service_options = nil)
+      super(service_options)
+    end
+
+    def account_service
+      AccountService(@service_options)
+    end
+
+    def credential_service
+      CredentialService(@service_options)
+    end
+
+    def provider_service
+      ProviderService(@service_options)
+    end
+
+    def template_service
+      TemplateService(@service_options)
+    end
+
+    def trust_registry_service
+      TrustRegistryService(@service_options)
+    end
+
+    def wallet_service
+      WalletService(@service_options)
+    end
+
+    memoize :account_service, :credential_service, :provider_service, :template_service, :trust_registry_service,
+            :wallet_service
+  end
 end

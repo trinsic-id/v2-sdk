@@ -15,15 +15,36 @@ module Trinsic
       end
     end
 
-    def invite_participant(request)
+    def create_ecosystem(request = nil)
+      request ||= Provider_V1::CreateEcosystemRequest.new
+      @client.create_ecosystem(request)
+    end
+
+    def update_ecosystem(request)
+      @client.update_ecosystem(request, metadata: metadata(request))
+    end
+
+    def add_webhook(request)
+      @client.add_webhook(request, metadata: metadata(request))
+    end
+
+    def delete_webhook(request)
+      @client.update_ecosystem(request, metadata: metadata(request))
+    end
+
+    def ecosystem_info(request)
+      @client.ecosystem_info(request, metadata: metadata(request))
+    end
+
+    def generate_token(request)
+      @client.generate_token(request, metadata: metadata(request))
+    end
+
+    def invite(request)
       # Ensure a field has been set
       raise('Contact method must be set') if request.email.nil? && request.phone.nil? && request.didcomm_invitation.nil?
 
       @client.invite(request, metadata: metadata(request))
-    end
-
-    def accept_invite(request)
-      @client.accept_invite(request, metadata: metadata(request))
     end
 
     def invitation_status(request)
@@ -33,17 +54,12 @@ module Trinsic
       @client.invitation_status(request, metadata: metadata(request))
     end
 
-    def create_ecosystem(request = nil)
-      request ||= Provider_V1::CreateEcosystemRequest.new
-      @client.create_ecosystem(request)
+    def get_oberon_key(request)
+      @client.generate_token(request, metadata: metadata(request))
     end
 
-    # def list_ecosystems(request = nil)
-    #   if request == nil
-    #     request = Provider_V1::ListEcosystemsRequest.new
-    #   end
-    #   response = @client.list_ecosystems(request, metadata: metadata(request))
-    #   response.ecosystem
-    # end
+    def get_event_token(request)
+      @client.generate_token(request, metadata: metadata(request))
+    end
   end
 end

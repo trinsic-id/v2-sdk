@@ -4,7 +4,7 @@ require 'services/service_base'
 
 module Trinsic
   # Credential Template Service wrapper
-  class CredentialTemplateService < ServiceBase
+  class TemplateService < ServiceBase
     def initialize(service_options = nil)
       super(service_options)
       if @service_options.server_use_tls
