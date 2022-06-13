@@ -174,6 +174,25 @@ public class AccountService : ServiceBase
     /// <summary>
     /// Finalizes login from a previous `LoginRequest`.
     /// </summary>
+    /// <param name="challenge">Challenge received from call to `Login`</param>
+    /// <param name="authCode">Plaintext authentication code sent to account email</param>
+    /// <returns>Auth token on success; null on failure</returns>
+    public async Task<string?> LoginConfirmAsync(ByteString challenge, string authCode) {
+        var hashed = Okapi.Hashing.Blake3.Hash(
+            new() {
+                Data = ByteString.CopyFromUtf8(authCode)
+            }
+        );
+
+        return await LoginConfirmAsync(new() {
+            Challenge = challenge,
+            ConfirmationCodeHashed = hashed.Digest
+        });
+    }
+
+    /// <summary>
+    /// Finalizes login from a previous `LoginRequest`.
+    /// </summary>
     /// <param name="request"></param>
     /// <returns>Auth token on success; null on failure</returns>
     public string? LoginConfirm(LoginConfirmRequest request) {
@@ -189,6 +208,25 @@ public class AccountService : ServiceBase
 
         TokenProvider.Save(token);
         return token;
+    }
+
+    /// <summary>
+    /// Finalizes login from a previous `LoginRequest`.
+    /// </summary>
+    /// <param name="challenge">Challenge received from call to `Login`</param>
+    /// <param name="authCode">Plaintext authentication code sent to account email</param>
+    /// <returns>Auth token on success; null on failure</returns>
+    public string? LoginConfirm(ByteString challenge, string authCode) {
+        var hashed = Okapi.Hashing.Blake3.Hash(
+            new() {
+                Data = ByteString.CopyFromUtf8(authCode)
+            }
+        );
+
+        return LoginConfirm(new() {
+            Challenge = challenge,
+            ConfirmationCodeHashed = hashed.Digest
+        });
     }
 
     /// <summary>
