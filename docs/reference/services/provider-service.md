@@ -58,6 +58,138 @@ Creates a new ecosystem, along with a root controlling account.
 
 {{ proto_method_tabs("services.provider.v1.Provider.CreateEcosystem") }}
 
+---
+
+## Update Ecosystem
+
+Updates an ecosystem's `description` or `uri`.
+
+{{proto_sample_start()}}
+    === "Trinsic CLI"
+        > Sample coming soon
+
+    === "TypeScript"
+        > Sample coming soon
+
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [UpdateEcosystem](../../../dotnet/Tests/Tests.cs) inside_block:updateEcosystem
+        ```
+        <!--/codeinclude-->
+
+    === "Python"
+        > Sample coming soon
+
+    === "Go"
+        > Sample coming soon
+
+    === "Java"
+        > Sample coming soon
+
+{{ proto_method_tabs("services.provider.v1.Provider.UpdateEcosystem") }}
+
+---
+
+## Get Ecosystem Info
+
+Fetches information about an ecosystem.
+
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        > Sample coming soon
+
+    === "TypeScript"
+        > Sample coming soon
+
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [EcosystemInfo](../../../dotnet/Tests/Tests.cs) inside_block:ecosystemInfo
+        ```
+        <!--/codeinclude-->
+
+    === "Python"
+        > Sample coming soon
+
+    === "Go"
+        > Sample coming soon
+
+    === "Java"
+        > Sample coming soon
+
+{{ proto_method_tabs("services.provider.v1.Provider.EcosystemInfo") }}
+
+---
+
+## Add Webhook
+
+Adds a webhook to an ecosystem.
+
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        > Sample coming soon
+
+    === "TypeScript"
+        > Sample coming soon
+
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [AddWebhook](../../../dotnet/Tests/Tests.cs) inside_block:addWebhook
+        ```
+        <!--/codeinclude-->
+
+    === "Python"
+        > Sample coming soon
+
+    === "Go"
+        > Sample coming soon
+
+    === "Java"
+        > Sample coming soon
+
+{{ proto_method_tabs("services.provider.v1.Provider.AddWebhook") }}
+
+!!! warning "Webhook Limits"
+    At present, an ecosystem can have no more than 10 webhooks.
+
+!!! tip "Wallet Webhook Events"
+    In order to receive webhooks for events which occur on a wallet, an additional authorization step must be performed.
+
+    See [AuthorizeWebhook](/reference/services/account-service#authorize-webhook) for more info.
+
+---
+
+## Delete Webhook
+
+Deletes a webhook from an ecosystem.
+
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        > Sample coming soon
+
+    === "TypeScript"
+        > Sample coming soon
+
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [DeleteWebhook](../../../dotnet/Tests/Tests.cs) inside_block:deleteWebhook
+        ```
+        <!--/codeinclude-->
+
+    === "Python"
+        > Sample coming soon
+
+    === "Go"
+        > Sample coming soon
+
+    === "Java"
+        > Sample coming soon
+
+{{ proto_method_tabs("services.provider.v1.Provider.DeleteWebhook") }}
+
 <!-- 
 // This call is not yet implemented
 ## List Ecosystems

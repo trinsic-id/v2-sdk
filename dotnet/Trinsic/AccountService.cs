@@ -155,18 +155,120 @@ public class AccountService : ServiceBase
     /// Finalizes login from a previous `LoginRequest`.
     /// </summary>
     /// <param name="request"></param>
-    /// <returns></returns>
-    public async Task<LoginConfirmResponse> LoginConfirmAsync(LoginConfirmRequest request) {
-        return await Client.LoginConfirmAsync(request);
+    /// <returns>Auth token on success; null on failure</returns>
+    public async Task<string?> LoginConfirmAsync(LoginConfirmRequest request) {
+        var response = await Client.LoginConfirmAsync(request);
+
+        // If profile is protected, or response is invalid, return null
+        if (response?.Profile?.Protection?.Enabled ?? true)
+        {
+            return null;
+        }
+
+        var token = Base64Url.Encode(response.Profile.ToByteArray());
+
+        await TokenProvider.SaveAsync(token);
+        return token;
+    }
+
+    /// <summary>
+    /// Finalizes login from a previous `LoginRequest`.
+    /// </summary>
+    /// <param name="challenge">Challenge received from call to `Login`</param>
+    /// <param name="authCode">Plaintext authentication code sent to account email</param>
+    /// <returns>Auth token on success; null on failure</returns>
+    public async Task<string?> LoginConfirmAsync(ByteString challenge, string authCode) {
+        var hashed = Okapi.Hashing.Blake3.Hash(
+            new() {
+                Data = ByteString.CopyFromUtf8(authCode)
+            }
+        );
+
+        return await LoginConfirmAsync(new() {
+            Challenge = challenge,
+            ConfirmationCodeHashed = hashed.Digest
+        });
     }
 
     /// <summary>
     /// Finalizes login from a previous `LoginRequest`.
     /// </summary>
     /// <param name="request"></param>
-    /// <returns></returns>
-    public LoginConfirmResponse LoginConfirm(LoginConfirmRequest request) {
-        return Client.LoginConfirm(request);
+    /// <returns>Auth token on success; null on failure</returns>
+    public string? LoginConfirm(LoginConfirmRequest request) {
+        var response = Client.LoginConfirm(request);
+
+        // If profile is protected, or response is invalid, return null
+        if (response?.Profile?.Protection?.Enabled ?? true)
+        {
+            return null;
+        }
+
+        var token = Base64Url.Encode(response.Profile.ToByteArray());
+
+        TokenProvider.Save(token);
+        return token;
+    }
+
+    /// <summary>
+    /// Finalizes login from a previous `LoginRequest`.
+    /// </summary>
+    /// <param name="challenge">Challenge received from call to `Login`</param>
+    /// <param name="authCode">Plaintext authentication code sent to account email</param>
+    /// <returns>Auth token on success; null on failure</returns>
+    public string? LoginConfirm(ByteString challenge, string authCode) {
+        var hashed = Okapi.Hashing.Blake3.Hash(
+            new() {
+                Data = ByteString.CopyFromUtf8(authCode)
+            }
+        );
+
+        return LoginConfirm(new() {
+            Challenge = challenge,
+            ConfirmationCodeHashed = hashed.Digest
+        });
+    }
+
+    /// <summary>
+    /// Creates an anonymous account in the current ecosystem
+    /// </summary>
+    /// <returns>Auth token for newly-created account; null on failure</returns>
+    public string? LoginAnonymous() {
+        var response = Login(new());
+
+        // `Profile` is returned on anonymous login only
+        if (response.ResponseCase != LoginResponse.ResponseOneofCase.Profile)
+            return null;
+
+        // If profile is protected, this is clearly not an anonymous login
+        if (response.Profile?.Protection?.Enabled ?? true)
+            return null;
+
+        var token = Base64Url.Encode(response.Profile.ToByteArray());
+        TokenProvider.Save(token);
+
+        return token;
+    }
+
+    /// <summary>
+    /// Creates an anonymous account in the current ecosystem
+    /// </summary>
+    /// <returns>Auth token for newly-created account; null on failure</returns>
+    public async Task<string?> LoginAnonymousAsync() {
+        var response = await LoginAsync(new());
+
+        // `Profile` is returned on anonymous login only
+        if (response.ResponseCase != LoginResponse.ResponseOneofCase.Profile)
+            return null;
+
+        // If profile is protected, this is clearly not an anonymous login
+        if (response.Profile?.Protection?.Enabled ?? true)
+            return null;
+
+        var token = Base64Url.Encode(response.Profile.ToByteArray());
+        await TokenProvider.SaveAsync(token);
+
+        return token;
     }
 
     /// <summary>
