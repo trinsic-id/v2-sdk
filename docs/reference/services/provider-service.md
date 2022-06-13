@@ -72,7 +72,11 @@ Updates an ecosystem's `description` or `uri`.
         > Sample coming soon
 
     === "C#"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```csharp
+        [UpdateEcosystem](../../../dotnet/Tests/Tests.cs) inside_block:updateEcosystem
+        ```
+        <!--/codeinclude-->
 
     === "Python"
         > Sample coming soon
@@ -99,7 +103,11 @@ Fetches information about an ecosystem.
         > Sample coming soon
 
     === "C#"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```csharp
+        [EcosystemInfo](../../../dotnet/Tests/Tests.cs) inside_block:ecosystemInfo
+        ```
+        <!--/codeinclude-->
 
     === "Python"
         > Sample coming soon
@@ -126,7 +134,11 @@ Adds a webhook to an ecosystem.
         > Sample coming soon
 
     === "C#"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```csharp
+        [AddWebhook](../../../dotnet/Tests/Tests.cs) inside_block:addWebhook
+        ```
+        <!--/codeinclude-->
 
     === "Python"
         > Sample coming soon
@@ -161,7 +173,11 @@ Deletes a webhook from an ecosystem.
         > Sample coming soon
 
     === "C#"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```csharp
+        [DeleteWebhook](../../../dotnet/Tests/Tests.cs) inside_block:deleteWebhook
+        ```
+        <!--/codeinclude-->
 
     === "Python"
         > Sample coming soon
