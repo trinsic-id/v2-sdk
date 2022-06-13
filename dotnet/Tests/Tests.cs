@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Trinsic;
 using Trinsic.Sdk.Options.V1;
+using Trinsic.Services.Account.V1;
 using Trinsic.Services.Common.V1;
 using Trinsic.Services.Provider.V1;
 using Trinsic.Services.TrustRegistry.V1;
@@ -235,32 +236,6 @@ public class Tests
         infoResult.Should().NotBeNull();
         //infoResult.Ecosystem.Should().Be(updateResult.Ecosystem); //TODO: UNCOMMENT WHEN updateEcosystem() TEST IS UN-CATCHED.
 
-        // test add webhook
-        // addWebhook() {
-        var addWebhookResponse = await trinsic.Provider.AddWebhookAsync(new() {
-            Secret = "my well-kept secret",
-            DestinationUrl = "https://example.com/webhooks/trinsic",
-            EcosystemId = ecosystemId
-        });
-        // }
-
-        addWebhookResponse.Should().NotBeNull();
-        addWebhookResponse.Ecosystem.Webhooks.Count().Should().Be(1);
-        addWebhookResponse.Ecosystem.Webhooks[0].DestinationUrl.Should().Be("https://example.com/webhooks/trinsic");
-
-        var webhookId = addWebhookResponse.Ecosystem.Webhooks[0].Id;
-
-        // test delete webhook
-        // deleteWebhook() {
-        var deleteWebhookResponse = await trinsic.Provider.DeleteWebhookAsync(new() {
-            EcosystemId = ecosystemId,
-            WebhookId = webhookId
-        });
-        // }
-
-        deleteWebhookResponse.Should().NotBeNull();
-        deleteWebhookResponse.Ecosystem.Webhooks.Count().Should().Be(0);
-
         try
         {
             // inviteParticipant() {
@@ -283,17 +258,87 @@ public class Tests
         } catch (Exception) { } // This is expected as a doc sample
     }
 
-    /** JOSH TODO:
-     * 2. Add tests and samples for above methods
-     * 3. Add documentation for Login(), LoginConfirm()
-     * 4. Fix all below tests to use single-service methodology DONE
-     * 5. Redo vaccine walkthrough with single service
-     */
-
-    /*[Fact]
+    [Fact]
     public async Task TestWebhooks() {
-        return;
-    }*/
+        var trinsic = new TrinsicService(_options);
+        var (ecosystem, authToken) = await trinsic.Provider.CreateEcosystemAsync(new());
+
+        var ecosystemId = ecosystem.Id;
+
+        trinsic.SetAuthToken(authToken).SetDefaultEcosystem(ecosystemId);
+
+        // addWebhook() {
+        var addWebhookResponse = await trinsic.Provider.AddWebhookAsync(new() {
+            EcosystemId = ecosystemId,
+            DestinationUrl = "https://example.com/webhooks/trinsic",
+            Secret = "my well-kept secret"
+        });
+        // }
+
+        addWebhookResponse.Should().NotBeNull();
+        addWebhookResponse.Ecosystem.Webhooks.Count().Should().Be(1);
+        addWebhookResponse.Ecosystem.Webhooks[0].DestinationUrl.Should().Be("https://example.com/webhooks/trinsic");
+
+        var webhookId = addWebhookResponse.Ecosystem.Webhooks[0].Id;
+
+        // test delete webhook
+        // deleteWebhook() {
+        var deleteWebhookResponse = await trinsic.Provider.DeleteWebhookAsync(new() {
+            EcosystemId = ecosystemId,
+            WebhookId = webhookId
+        });
+        // }
+
+        deleteWebhookResponse.Should().NotBeNull();
+        deleteWebhookResponse.Ecosystem.Webhooks.Count().Should().Be(0);
+
+        // authorizeWebhook() {
+        var request = new AuthorizeWebhookRequest();
+        request.Events.Add("*"); //Authorize all events
+
+        await trinsic.Account.AuthorizeWebhookAsync(request);
+        // }
+    }
+
+    [Fact]
+    public async Task TestLogin() {
+        var trinsic = new TrinsicService(_options);
+        var (ecosystem, _) = await trinsic.Provider.CreateEcosystemAsync(new());
+
+        var ecosystemId = ecosystem.Id;
+
+        trinsic.SetDefaultEcosystem(ecosystemId);
+
+        // loginRequest() {
+        var loginResponse = await trinsic.Account.LoginAsync(new() {
+            EcosystemId = ecosystemId,
+            Email = "bob@example.com"
+        });
+        // }
+
+        loginResponse.Should().NotBeNull();
+        loginResponse.ResponseCase.Should().Be(LoginResponse.ResponseOneofCase.Challenge);
+        loginResponse.Challenge.Should().NotBeNull();
+
+        {
+            var authCode = "1234";
+
+            // loginConfirm() {
+            string? authToken = await trinsic.Account.LoginConfirmAsync(loginResponse.Challenge, authCode);
+            // }
+
+            // Should fail as we aren't doing a proper auth
+            authToken.Should().BeNullOrEmpty();
+        }
+
+        {
+            // loginAnonymous() {
+            string? authToken = await trinsic.Account.LoginAnonymousAsync();
+            // }
+
+            authToken.Should().NotBeNullOrEmpty();
+        }
+    }
 
     [Fact]
     public async Task TestProtectUnprotectProfile() {
