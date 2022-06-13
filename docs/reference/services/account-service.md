@@ -155,6 +155,31 @@ Returns the account information (name, email address, phone number, etc.) used t
 
 ---
 
+## Authorize Webhook
+
+Authorizes the ecosystem provider to receive webhooks pertaining to this wallet.
+
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        > Sample coming soon
+    === "TypeScript"
+        > Sample coming soon
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [AuthorizeWebhook](../../../dotnet/Tests/Tests.cs) inside_block:authorizeWebhook
+        ```
+        <!--/codeinclude-->
+    === "Python"
+        > Sample coming soon
+    === "Go"
+        > Sample coming soon
+    === "Java"
+        > Sample coming soon
+{{ proto_method_tabs("services.account.v1.Account.AuthorizeWebhook") }}
+
+---
+
 ## Protect Account Profile
 Protects the specified account profile with a security code. It is not possible to execute this call using the CLI.
 
