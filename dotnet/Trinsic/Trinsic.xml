@@ -16,6 +16,8 @@
         </member>
         <member name="M:Trinsic.AccountService.SignInAsync(Trinsic.Services.Account.V1.SignInRequest)">
             <summary>
+            Deprecated. Use LoginAsync instead.
+            
             Perform a sign-in to obtain an account profile. If the <see cref="T:Trinsic.Services.Account.V1.AccountDetails" /> are
             specified, they will be used to associate
             </summary>
@@ -24,6 +26,8 @@
         </member>
         <member name="M:Trinsic.AccountService.SignIn(Trinsic.Services.Account.V1.SignInRequest)">
             <summary>
+            Deprecated. Use Login instead.
+            
             Perform a sign-in to obtain an account profile. If the <see cref="T:Trinsic.Services.Account.V1.AccountDetails" /> are
             specified, they will be used to associate
             </summary>
@@ -47,6 +51,34 @@
             <param name="authToken"></param>
             <param name="securityCode"></param>
         </member>
+        <member name="M:Trinsic.AccountService.LoginAsync(Trinsic.Services.Account.V1.LoginRequest)">
+            <summary>
+            Logs in to the specified account; a new account will be created if it does not exist.
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Trinsic.AccountService.Login(Trinsic.Services.Account.V1.LoginRequest)">
+            <summary>
+            Logs in to the specified account; a new account will be created if it does not exist.
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Trinsic.AccountService.LoginConfirmAsync(Trinsic.Services.Account.V1.LoginConfirmRequest)">
+            <summary>
+            Finalizes login from a previous `LoginRequest`.
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Trinsic.AccountService.LoginConfirm(Trinsic.Services.Account.V1.LoginConfirmRequest)">
+            <summary>
+            Finalizes login from a previous `LoginRequest`.
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
         <member name="M:Trinsic.AccountService.GetInfoAsync">
             <summary>
             Return the details about the currently active account
@@ -57,6 +89,22 @@
             <summary>
             Return the details about the currently active account
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Trinsic.AccountService.AuthorizeWebhookAsync(Trinsic.Services.Account.V1.AuthorizeWebhookRequest)">
+            <summary>
+            Authorizes provider of account's ecosystem to receive webhooks for
+            specified events regarding account.
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Trinsic.AccountService.AuthorizeWebhook(Trinsic.Services.Account.V1.AuthorizeWebhookRequest)">
+            <summary>
+            Authorizes provider of account's ecosystem to receive webhooks for
+            specified events regarding account.
+            </summary>
+            <param name="request"></param>
             <returns></returns>
         </member>
         <member name="M:Trinsic.CredentialService.IssueCredentialAsync(Trinsic.Services.VerifiableCredentials.V1.IssueRequest)">
@@ -223,6 +271,43 @@
             blake3256 hash of the request body
             </summary>
         </member>
+        <member name="P:Trinsic.Services.Common.V1.Common.Descriptor">
+            <summary>Service descriptor</summary>
+        </member>
+        <member name="T:Trinsic.Services.Common.V1.Common.CommonBase">
+            <summary>Base class for server-side implementations of Common</summary>
+        </member>
+        <member name="T:Trinsic.Services.Common.V1.Common.CommonClient">
+            <summary>Client for Common</summary>
+        </member>
+        <member name="M:Trinsic.Services.Common.V1.Common.CommonClient.#ctor(Grpc.Core.ChannelBase)">
+            <summary>Creates a new client for Common</summary>
+            <param name="channel">The channel to use to make remote calls.</param>
+        </member>
+        <member name="M:Trinsic.Services.Common.V1.Common.CommonClient.#ctor(Grpc.Core.CallInvoker)">
+            <summary>Creates a new client for Common that uses a custom <c>CallInvoker</c>.</summary>
+            <param name="callInvoker">The callInvoker to use to make remote calls.</param>
+        </member>
+        <member name="M:Trinsic.Services.Common.V1.Common.CommonClient.#ctor">
+            <summary>Protected parameterless constructor to allow creation of test doubles.</summary>
+        </member>
+        <member name="M:Trinsic.Services.Common.V1.Common.CommonClient.#ctor(Grpc.Core.ClientBase.ClientBaseConfiguration)">
+            <summary>Protected constructor to allow creation of configured clients.</summary>
+            <param name="configuration">The client configuration.</param>
+        </member>
+        <member name="M:Trinsic.Services.Common.V1.Common.CommonClient.NewInstance(Grpc.Core.ClientBase.ClientBaseConfiguration)">
+            <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
+        </member>
+        <member name="M:Trinsic.Services.Common.V1.Common.BindService(Trinsic.Services.Common.V1.Common.CommonBase)">
+            <summary>Creates service definition that can be registered with a server</summary>
+            <param name="serviceImpl">An object implementing the server-side handling logic.</param>
+        </member>
+        <member name="M:Trinsic.Services.Common.V1.Common.BindService(Grpc.Core.ServiceBinderBase,Trinsic.Services.Common.V1.Common.CommonBase)">
+            <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
+            Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
+            <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
+            <param name="serviceImpl">An object implementing the server-side handling logic.</param>
+        </member>
         <member name="T:Trinsic.Services.Account.V1.AccountReflection">
             <summary>Holder for reflection information generated from services/account/v1/account.proto</summary>
         </member>
@@ -285,7 +370,7 @@
         </member>
         <member name="P:Trinsic.Services.Account.V1.SignInRequest.EcosystemId">
             <summary>
-            ID of Ecosystem to sign into. 
+            ID of Ecosystem to use
             Ignored if `invitation_code` is passed
             </summary>
         </member>
@@ -470,6 +555,14 @@
             This DID is used as "issuer" when signing verifiable credentials
             </summary>
         </member>
+        <member name="F:Trinsic.Services.Account.V1.AccountInfoResponse.AuthorizedWebhooksFieldNumber">
+            <summary>Field number for the "authorized_webhooks" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Account.V1.AccountInfoResponse.AuthorizedWebhooks">
+            <summary>
+            Webhook events if any this wallet has authorized
+            </summary>
+        </member>
         <member name="F:Trinsic.Services.Account.V1.AccountEcosystem.IdFieldNumber">
             <summary>Field number for the "id" field.</summary>
         </member>
@@ -555,6 +648,24 @@
             require unblinding/unprotection using the raw hashed code
             </summary>
         </member>
+        <member name="T:Trinsic.Services.Account.V1.AuthorizeWebhookRequest">
+            <summary>
+            Authorize ecosystem to receive wallet events
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Account.V1.AuthorizeWebhookRequest.EventsFieldNumber">
+            <summary>Field number for the "events" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Account.V1.AuthorizeWebhookRequest.Events">
+            <summary>
+            Events to authorize access to. Default is "*" (all events)
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.Account.V1.AuthorizeWebhookResponse">
+            <summary>
+            Response to `AuthorizeWebhookRequest`
+            </summary>
+        </member>
         <member name="P:Trinsic.Services.Account.V1.Account.Descriptor">
             <summary>Service descriptor</summary>
         </member>
@@ -604,6 +715,14 @@
         <member name="M:Trinsic.Services.Account.V1.Account.AccountBase.RevokeDevice(Trinsic.Services.Account.V1.RevokeDeviceRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Revoke device access to the account's cloud wallet
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.Account.V1.Account.AccountBase.AuthorizeWebhook(Trinsic.Services.Account.V1.AuthorizeWebhookRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Authorize Ecosystem to receive webhook events
             </summary>
             <param name="request">The request received from the client.</param>
             <param name="context">The context of the server-side call handler being invoked.</param>
@@ -838,6 +957,42 @@
         <member name="M:Trinsic.Services.Account.V1.Account.AccountClient.RevokeDeviceAsync(Trinsic.Services.Account.V1.RevokeDeviceRequest,Grpc.Core.CallOptions)">
             <summary>
             Revoke device access to the account's cloud wallet
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Account.V1.Account.AccountClient.AuthorizeWebhook(Trinsic.Services.Account.V1.AuthorizeWebhookRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Authorize Ecosystem to receive webhook events
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Account.V1.Account.AccountClient.AuthorizeWebhook(Trinsic.Services.Account.V1.AuthorizeWebhookRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Authorize Ecosystem to receive webhook events
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Account.V1.Account.AccountClient.AuthorizeWebhookAsync(Trinsic.Services.Account.V1.AuthorizeWebhookRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Authorize Ecosystem to receive webhook events
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Account.V1.Account.AccountClient.AuthorizeWebhookAsync(Trinsic.Services.Account.V1.AuthorizeWebhookRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Authorize Ecosystem to receive webhook events
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="options">The options for the call.</param>
@@ -1097,6 +1252,14 @@
         <member name="P:Trinsic.Services.Provider.V1.WebhookConfig.Events">
             <summary>
             Events the webhook is subscribed to
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.WebhookConfig.StatusFieldNumber">
+            <summary>Field number for the "status" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.WebhookConfig.Status">
+            <summary>
+            Whether we are able to sucessfully send events to the webhook
             </summary>
         </member>
         <member name="F:Trinsic.Services.Provider.V1.CreateEcosystemRequest.NameFieldNumber">
@@ -1404,7 +1567,7 @@
             <param name="context">The context of the server-side call handler being invoked.</param>
             <returns>The response to send back to the client (wrapped by a task).</returns>
         </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.Info(Trinsic.Services.Provider.V1.EcosystemInfoRequest,Grpc.Core.ServerCallContext)">
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.EcosystemInfo(Trinsic.Services.Provider.V1.EcosystemInfoRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Get ecosystem information
             </summary>
@@ -1615,7 +1778,7 @@
             <param name="options">The options for the call.</param>
             <returns>The call object.</returns>
         </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.Info(Trinsic.Services.Provider.V1.EcosystemInfoRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.EcosystemInfo(Trinsic.Services.Provider.V1.EcosystemInfoRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
             <summary>
             Get ecosystem information
             </summary>
@@ -1625,7 +1788,7 @@
             <param name="cancellationToken">An optional token for canceling the call.</param>
             <returns>The response received from the server.</returns>
         </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.Info(Trinsic.Services.Provider.V1.EcosystemInfoRequest,Grpc.Core.CallOptions)">
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.EcosystemInfo(Trinsic.Services.Provider.V1.EcosystemInfoRequest,Grpc.Core.CallOptions)">
             <summary>
             Get ecosystem information
             </summary>
@@ -1633,7 +1796,7 @@
             <param name="options">The options for the call.</param>
             <returns>The response received from the server.</returns>
         </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.InfoAsync(Trinsic.Services.Provider.V1.EcosystemInfoRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.EcosystemInfoAsync(Trinsic.Services.Provider.V1.EcosystemInfoRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
             <summary>
             Get ecosystem information
             </summary>
@@ -1643,7 +1806,7 @@
             <param name="cancellationToken">An optional token for canceling the call.</param>
             <returns>The call object.</returns>
         </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.InfoAsync(Trinsic.Services.Provider.V1.EcosystemInfoRequest,Grpc.Core.CallOptions)">
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.EcosystemInfoAsync(Trinsic.Services.Provider.V1.EcosystemInfoRequest,Grpc.Core.CallOptions)">
             <summary>
             Get ecosystem information
             </summary>
@@ -3697,6 +3860,90 @@
             <param name="request"></param>
             <returns></returns>
         </member>
+        <member name="M:Trinsic.ProviderService.UpdateEcosystemAsync(Trinsic.Services.Provider.V1.UpdateEcosystemRequest)">
+            <summary>
+            Updates ecosystem ID and/or Description
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Trinsic.ProviderService.UpdateEcosystem(Trinsic.Services.Provider.V1.UpdateEcosystemRequest)">
+            <summary>
+            Updates ecosystem ID and/or Description
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Trinsic.ProviderService.EcosystemInfoAsync(Trinsic.Services.Provider.V1.EcosystemInfoRequest)">
+            <summary>
+            Fetches information about the given ecosystem
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Trinsic.ProviderService.EcosystemInfo(Trinsic.Services.Provider.V1.EcosystemInfoRequest)">
+            <summary>
+            Fetches information about the given ecosystem
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Trinsic.ProviderService.AddWebhookAsync(Trinsic.Services.Provider.V1.AddWebhookRequest)">
+            <summary>
+            Adds a webhook to the ecosystem
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Trinsic.ProviderService.AddWebhook(Trinsic.Services.Provider.V1.AddWebhookRequest)">
+            <summary>
+            Adds a webhook to the ecosystem
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Trinsic.ProviderService.DeleteWebhookAsync(Trinsic.Services.Provider.V1.DeleteWebhookRequest)">
+            <summary>
+            Deletes a webhook from the ecosystem
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Trinsic.ProviderService.DeleteWebhook(Trinsic.Services.Provider.V1.DeleteWebhookRequest)">
+            <summary>
+            Deletes a webhook from the ecosystem
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Trinsic.ProviderService.GetEventTokenAsync(Trinsic.Services.Provider.V1.GetEventTokenRequest)">
+            <summary>
+            Gets an event token for event streaming
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Trinsic.ProviderService.GetEventToken(Trinsic.Services.Provider.V1.GetEventTokenRequest)">
+            <summary>
+            Gets an event token for event streaming
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Trinsic.ProviderService.GetOberonKeyAsync(Trinsic.Services.Provider.V1.GetOberonKeyRequest)">
+            <summary>
+            Fetches the public key used to verify Oberon authentication tokens
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Trinsic.ProviderService.GetOberonKey(Trinsic.Services.Provider.V1.GetOberonKeyRequest)">
+            <summary>
+            Fetches the public key used to verify Oberon authentication tokens
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
         <member name="M:Trinsic.ProviderService.GenerateTokenAsync(Trinsic.Services.Provider.V1.GenerateTokenRequest)">
             <summary>
             Generates an unprotected authentication token that can be used
@@ -3719,6 +3966,11 @@
             </summary>
             <param name="data"></param>
             <returns></returns>
+        </member>
+        <member name="P:Trinsic.ServiceBase.Options">
+            <summary>
+            Gets the options set on this service.
+            </summary>
         </member>
         <member name="P:Trinsic.ServiceBase.Channel">
             <summary>
@@ -3784,6 +4036,55 @@
             <returns>
             The search response and continuation token, if available
             </returns>
+        </member>
+        <member name="T:Trinsic.TrinsicService">
+            <summary>
+            Trinsic Service
+            </summary>
+        </member>
+        <member name="P:Trinsic.TrinsicService.Account">
+            <summary>
+            Exposes Account Service functionality
+            </summary>
+        </member>
+        <member name="P:Trinsic.TrinsicService.Credential">
+            <summary>
+            Exposes Credential Service functionality
+            </summary>
+        </member>
+        <member name="P:Trinsic.TrinsicService.Template">
+            <summary>
+            Exposes Template Service functionality
+            </summary>
+        </member>
+        <member name="P:Trinsic.TrinsicService.Provider">
+            <summary>
+            Exposes Provider Service functionality
+            </summary>
+        </member>
+        <member name="P:Trinsic.TrinsicService.TrustRegistry">
+            <summary>
+            Exposes Trust Registry Service functionality
+            </summary>
+        </member>
+        <member name="P:Trinsic.TrinsicService.Wallet">
+            <summary>
+            Exposes Wallet Service functionality
+            </summary>
+        </member>
+        <member name="M:Trinsic.TrinsicService.SetDefaultEcosystem(System.String)">
+            <summary>
+            Sets the Default Ecosystem ID of this instance's ServiceOptions, and returns the instance for chaining.
+            </summary>
+            <param name="ecosystemId">The new ecosystem ID to use</param>
+            <returns></returns>
+        </member>
+        <member name="M:Trinsic.TrinsicService.SetAuthToken(System.String)">
+            <summary>
+            Sets the Auth Token of this instance's ServiceOptions, and returns the instance for chaining.
+            </summary>
+            <param name="authToken">The new auth token to use</param>
+            <returns></returns>
         </member>
         <member name="M:Trinsic.TrustRegistryService.AddFrameworkAsync(Trinsic.Services.TrustRegistry.V1.AddFrameworkRequest)">
             <summary>
@@ -3861,7 +4162,7 @@
         </member>
         <member name="P:Trinsic.Sdk.Options.V1.ServiceOptions.ServerEndpoint">
             <summary>
-            Trinsic API endpoint; defaults to `prod.trinsic.cloud`
+            Trinsic API endpoint. Defaults to `prod.trinsic.cloud`
             </summary>
         </member>
         <member name="F:Trinsic.Sdk.Options.V1.ServiceOptions.ServerPortFieldNumber">

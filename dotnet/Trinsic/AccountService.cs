@@ -38,6 +38,8 @@ public class AccountService : ServiceBase
     private Account.AccountClient Client { get; }
 
     /// <summary>
+    /// Deprecated. Use LoginAsync instead.
+    /// 
     /// Perform a sign-in to obtain an account profile. If the <see cref="AccountDetails" /> are
     /// specified, they will be used to associate
     /// </summary>
@@ -54,6 +56,8 @@ public class AccountService : ServiceBase
     }
 
     /// <summary>
+    /// Deprecated. Use Login instead.
+    /// 
     /// Perform a sign-in to obtain an account profile. If the <see cref="AccountDetails" /> are
     /// specified, they will be used to associate
     /// </summary>
@@ -79,7 +83,7 @@ public class AccountService : ServiceBase
     public static string Unprotect(string authToken, string securityCode) {
         var profile = AccountProfile.Parser.ParseFrom(Base64Url.DecodeBytes(authToken));
 
-        UnBlindOberonTokenRequest request = new() {Token = profile.AuthToken};
+        UnBlindOberonTokenRequest request = new() { Token = profile.AuthToken };
         request.Blinding.Add(ByteString.CopyFromUtf8(securityCode));
         var result = Oberon.UnblindToken(request);
 
@@ -101,7 +105,7 @@ public class AccountService : ServiceBase
     public static string Protect(string authToken, string securityCode) {
         var profile = AccountProfile.Parser.ParseFrom(Base64Url.DecodeBytes(authToken));
 
-        BlindOberonTokenRequest request = new() {Token = profile.AuthToken};
+        BlindOberonTokenRequest request = new() { Token = profile.AuthToken };
         request.Blinding.Add(ByteString.CopyFromUtf8(securityCode));
         var result = Oberon.BlindToken(request);
 
@@ -112,6 +116,57 @@ public class AccountService : ServiceBase
         };
 
         return Base64Url.Encode(profile.ToByteArray());
+    }
+
+    /// <summary>
+    /// Logs in to the specified account; a new account will be created if it does not exist.
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    public async Task<LoginResponse> LoginAsync(LoginRequest request) {
+        if (string.IsNullOrWhiteSpace(request.EcosystemId))
+            request.EcosystemId = Options.DefaultEcosystem;
+
+        var response = await Client.LoginAsync(request);
+
+        if (response.ResponseCase == LoginResponse.ResponseOneofCase.Profile)
+        {
+            await TokenProvider.SaveAsync(Base64Url.Encode(response.Profile.ToByteArray()));
+        }
+
+        return response;
+    }
+
+    /// <summary>
+    /// Logs in to the specified account; a new account will be created if it does not exist.
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    public LoginResponse Login(LoginRequest request) {
+        if (string.IsNullOrWhiteSpace(request.EcosystemId))
+            request.EcosystemId = Options.DefaultEcosystem;
+
+        var response = Client.Login(request);
+
+        return response;
+    }
+
+    /// <summary>
+    /// Finalizes login from a previous `LoginRequest`.
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    public async Task<LoginConfirmResponse> LoginConfirmAsync(LoginConfirmRequest request) {
+        return await Client.LoginConfirmAsync(request);
+    }
+
+    /// <summary>
+    /// Finalizes login from a previous `LoginRequest`.
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    public LoginConfirmResponse LoginConfirm(LoginConfirmRequest request) {
+        return Client.LoginConfirm(request);
     }
 
     /// <summary>
@@ -134,6 +189,26 @@ public class AccountService : ServiceBase
         var response = Client.Info(request, BuildMetadata(request));
 
         return response;
+    }
+
+    /// <summary>
+    /// Authorizes provider of account's ecosystem to receive webhooks for
+    /// specified events regarding account.
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    public async Task<AuthorizeWebhookResponse> AuthorizeWebhookAsync(AuthorizeWebhookRequest request) {
+        return await Client.AuthorizeWebhookAsync(request, await BuildMetadataAsync(request));
+    }
+
+    /// <summary>
+    /// Authorizes provider of account's ecosystem to receive webhooks for
+    /// specified events regarding account.
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    public AuthorizeWebhookResponse AuthorizeWebhook(AuthorizeWebhookRequest request) {
+        return Client.AuthorizeWebhook(request, BuildMetadata(request));
     }
 
     public async Task<ListDevicesResponse> ListDevicesAsync() {

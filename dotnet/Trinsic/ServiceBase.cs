@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics.CodeAnalysis;
 using Grpc.Core;
 using Google.Protobuf;
@@ -60,6 +60,9 @@ public abstract class ServiceBase
 
     private readonly ISecurityProvider _securityProvider = new OberonSecurityProvider();
 
+    /// <summary>
+    /// Gets the options set on this service.
+    /// </summary>
     public ServiceOptions Options { get; }
 
     /// <summary>

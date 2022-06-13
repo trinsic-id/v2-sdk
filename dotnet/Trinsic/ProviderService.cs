@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using Google.Protobuf;
 using Microsoft.Extensions.Options;
@@ -81,7 +81,8 @@ public class ProviderService : ServiceBase
 
         var authToken = Base64Url.Encode(response.Profile.ToByteArray());
 
-        if (!response.Profile.Protection?.Enabled ?? true) {
+        if (!response.Profile.Protection?.Enabled ?? true)
+        {
             Options.AuthToken = authToken;
             await TokenProvider.SaveAsync(authToken);
         }
@@ -99,12 +100,126 @@ public class ProviderService : ServiceBase
         var response = Client.CreateEcosystem(request);
         var authToken = Base64Url.Encode(response.Profile.ToByteArray());
 
-        if (!response.Profile.Protection?.Enabled ?? true) {
+        if (!response.Profile.Protection?.Enabled ?? true)
+        {
             Options.AuthToken = authToken;
             TokenProvider.Save(authToken);
         }
         return (response.Ecosystem, authToken);
     }
+
+    /// <summary>
+    /// Updates ecosystem ID and/or Description
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    public async Task<UpdateEcosystemResponse> UpdateEcosystemAsync(UpdateEcosystemRequest request) {
+        return await Client.UpdateEcosystemAsync(request, await BuildMetadataAsync(request));
+    }
+
+    /// <summary>
+    /// Updates ecosystem ID and/or Description
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    public UpdateEcosystemResponse UpdateEcosystem(UpdateEcosystemRequest request) {
+        return Client.UpdateEcosystem(request, BuildMetadata(request));
+    }
+
+    /// <summary>
+    /// Fetches information about the given ecosystem
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    public async Task<EcosystemInfoResponse> EcosystemInfoAsync(EcosystemInfoRequest? request = null) {
+        request ??= new() { EcosystemId = Options.DefaultEcosystem };
+
+        return await Client.EcosystemInfoAsync(request, await BuildMetadataAsync(request));
+    }
+
+    /// <summary>
+    /// Fetches information about the given ecosystem
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    public EcosystemInfoResponse EcosystemInfo(EcosystemInfoRequest? request = null) {
+        request ??= new() { EcosystemId = Options.DefaultEcosystem };
+
+        return Client.EcosystemInfo(request, BuildMetadata(request));
+    }
+
+    /// <summary>
+    /// Adds a webhook to the ecosystem
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    public async Task<AddWebhookResponse> AddWebhookAsync(AddWebhookRequest request) {
+        return await Client.AddWebhookAsync(request, await BuildMetadataAsync(request));
+    }
+
+    /// <summary>
+    /// Adds a webhook to the ecosystem
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    public AddWebhookResponse AddWebhook(AddWebhookRequest request) {
+        return Client.AddWebhook(request, BuildMetadata(request));
+    }
+
+    /// <summary>
+    /// Deletes a webhook from the ecosystem
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    public async Task<DeleteWebhookResponse> DeleteWebhookAsync(DeleteWebhookRequest request) {
+        return await Client.DeleteWebhookAsync(request, await BuildMetadataAsync(request));
+    }
+
+    /// <summary>
+    /// Deletes a webhook from the ecosystem
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    public DeleteWebhookResponse DeleteWebhook(DeleteWebhookRequest request) {
+        return Client.DeleteWebhook(request, BuildMetadata(request));
+    }
+
+    /// <summary>
+    /// Gets an event token for event streaming
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    public async Task<GetEventTokenResponse> GetEventTokenAsync(GetEventTokenRequest request) {
+        return await Client.GetEventTokenAsync(request, await BuildMetadataAsync(request));
+    }
+
+    /// <summary>
+    /// Gets an event token for event streaming
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    public GetEventTokenResponse GetEventToken(GetEventTokenRequest request) {
+        return Client.GetEventToken(request, BuildMetadata(request));
+    }
+
+    /// <summary>
+    /// Fetches the public key used to verify Oberon authentication tokens
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    public async Task<GetOberonKeyResponse> GetOberonKeyAsync(GetOberonKeyRequest request) {
+        return await Client.GetOberonKeyAsync(request, await BuildMetadataAsync(request));
+    }
+
+    /// <summary>
+    /// Fetches the public key used to verify Oberon authentication tokens
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    public GetOberonKeyResponse GetOberonKey(GetOberonKeyRequest request) {
+        return Client.GetOberonKey(request, BuildMetadata(request));
+    }
+
 
     /// <summary>
     /// Generates an unprotected authentication token that can be used
