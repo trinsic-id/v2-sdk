@@ -70,14 +70,42 @@
             Finalizes login from a previous `LoginRequest`.
             </summary>
             <param name="request"></param>
-            <returns></returns>
+            <returns>Auth token on success; null on failure</returns>
+        </member>
+        <member name="M:Trinsic.AccountService.LoginConfirmAsync(Google.Protobuf.ByteString,System.String)">
+            <summary>
+            Finalizes login from a previous `LoginRequest`.
+            </summary>
+            <param name="challenge">Challenge received from call to `Login`</param>
+            <param name="authCode">Plaintext authentication code sent to account email</param>
+            <returns>Auth token on success; null on failure</returns>
         </member>
         <member name="M:Trinsic.AccountService.LoginConfirm(Trinsic.Services.Account.V1.LoginConfirmRequest)">
             <summary>
             Finalizes login from a previous `LoginRequest`.
             </summary>
             <param name="request"></param>
-            <returns></returns>
+            <returns>Auth token on success; null on failure</returns>
+        </member>
+        <member name="M:Trinsic.AccountService.LoginConfirm(Google.Protobuf.ByteString,System.String)">
+            <summary>
+            Finalizes login from a previous `LoginRequest`.
+            </summary>
+            <param name="challenge">Challenge received from call to `Login`</param>
+            <param name="authCode">Plaintext authentication code sent to account email</param>
+            <returns>Auth token on success; null on failure</returns>
+        </member>
+        <member name="M:Trinsic.AccountService.LoginAnonymous">
+            <summary>
+            Creates an anonymous account in the current ecosystem
+            </summary>
+            <returns>Auth token for newly-created account; null on failure</returns>
+        </member>
+        <member name="M:Trinsic.AccountService.LoginAnonymousAsync">
+            <summary>
+            Creates an anonymous account in the current ecosystem
+            </summary>
+            <returns>Auth token for newly-created account; null on failure</returns>
         </member>
         <member name="M:Trinsic.AccountService.GetInfoAsync">
             <summary>
