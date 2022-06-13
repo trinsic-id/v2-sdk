@@ -234,30 +234,3 @@ Most commonly, this method is used on a protected profile received from the [Sig
     ```ruby
     account_profile = account_service.unprotect(protected_profile, '1234')
     ```
-
----
-
-## Authorize Webhook
-
-Authorizes the ecosystem provider to receive webhooks pertaining to this wallet.
-
-{{ proto_sample_start() }}
-    === "Trinsic CLI"
-        > Sample coming soon
-
-    === "TypeScript"
-        > Sample coming soon
-
-    === "C#"
-        > Sample coming soon
-
-    === "Python"
-        > Sample coming soon
-
-    === "Go"
-        > Sample coming soon
-
-    === "Java"
-        > Sample coming soon
-
-{{ proto_method_tabs("services.account.v1.Account.AuthorizeWebhook") }}
