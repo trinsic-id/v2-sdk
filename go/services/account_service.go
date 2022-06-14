@@ -3,6 +3,7 @@ package services
 import (
 	"context"
 	"encoding/base64"
+	"errors"
 
 	"github.com/trinsic-id/okapi/go/okapi"
 	"github.com/trinsic-id/okapi/go/okapiproto"
@@ -29,21 +30,36 @@ func NewAccountService(options *Options) (AccountService, error) {
 // AccountService wraps all the functions for interacting with accounts
 type AccountService interface {
 	Service
-	// SignIn returns an encoded auth token
+
+	// SignIn (DEPRECATED, USE Login) attempts to log in and returns an authentication token
 	SignIn(userContext context.Context, request *account.SignInRequest) (string, account.ConfirmationMethod, error)
+
 	// Unprotect takes an authtoken that has been protected using a pin code
 	// and returns an unlocked token
 	Unprotect(authtoken, securityCode string) (string, error)
+
 	// Protect will apply the given security code blind to the provided token
 	Protect(authtoken, securityCode string) (string, error)
+
+	// Login performs the first stage of login, which must be finalized with LoginConfirm
 	Login(userContext context.Context, request *account.LoginRequest) (*account.LoginResponse, error)
-	LoginConfirm(userContext context.Context, request *account.LoginConfirmRequest) (*account.LoginConfirmResponse, error)
+
+	// LoginConfirm finalizes login, using challenge received from Login(), and authCode sent to user email
+	LoginConfirm(userContext context.Context, challenge []byte, authCode string) (string, error)
+
+	// LoginAnonymous creates an anonymous account in the current ecosystem and returns an auth token
+	LoginAnonymous(userContext context.Context) (string, error)
+
 	// GetInfo returns details about the wallet associated with the account token
 	GetInfo(userContext context.Context) (*account.AccountInfoResponse, error)
+
 	// ListDevices returns a list of devices that are associated with the cloud wallet
 	ListDevices(userContext context.Context, request *account.ListDevicesRequest) (*account.ListDevicesResponse, error)
+
 	// RevokeDevice removes access to the cloud wallet for the provided device
 	RevokeDevice(userContext context.Context, request *account.RevokeDeviceRequest) (*account.RevokeDeviceResponse, error)
+
+	// AuthorizeWebhook authorizes provider of account's ecosystem to receive webhooks for events relating to this account
 	AuthorizeWebhook(userContext context.Context, request *account.AuthorizeWebhookRequest) (*account.AuthorizeWebhookResponse, error)
 }
 
@@ -145,19 +161,83 @@ func (a *accountBase) Login(userContext context.Context, request *account.LoginR
 	if err != nil {
 		return nil, err
 	}
+
 	return response, nil
 }
 
-func (a *accountBase) LoginConfirm(userContext context.Context, request *account.LoginConfirmRequest) (*account.LoginConfirmResponse, error) {
+func (a *accountBase) LoginConfirm(userContext context.Context, challenge []byte, authCode string) (string, error) {
+	// Hash the authcode
+	codeHash, err := okapi.Hashing().Blake3Hash(&okapiproto.Blake3HashRequest{Data: []byte(authCode)})
+	if err != nil {
+		return "", err
+	}
+
+	// Generate request
+	request := &account.LoginConfirmRequest{
+		Challenge:              challenge,
+		ConfirmationCodeHashed: codeHash.Digest,
+	}
+
+	// Generate metadata
 	md, err := a.GetMetadataContext(userContext, request)
 	if err != nil {
-		return nil, err
+		return "", err
 	}
+
+	// Send request
 	response, err := a.client.LoginConfirm(md, request)
 	if err != nil {
-		return nil, err
+		return "", err
 	}
-	return response, nil
+
+	// If profile isn't protected, something is wrong.
+	if !response.Profile.Protection.Enabled {
+		return "", errors.New("account information was not protected")
+	}
+
+	// Tokenize profile
+	authToken, err := ProfileToToken(response.Profile)
+	if err != nil {
+		return "", err
+	}
+
+	// Unprotect profile
+	authToken, err = a.Unprotect(authToken, authCode)
+	if err != nil {
+		return "", err
+	}
+
+	return authToken, nil
+}
+
+func (a *accountBase) LoginAnonymous(userContext context.Context) (string, error) {
+	// Create request
+	request := &account.LoginRequest{
+		Email:       "",
+		EcosystemId: a.GetServiceOptions().GetDefaultEcosystem(),
+	}
+
+	// Attempt login
+	response, err := a.Login(userContext, request)
+	if err != nil {
+		return "", err
+	}
+
+	// Interrogate results
+	if response.GetProfile() == nil {
+		return "", errors.New("no profile returned from Login()")
+	}
+	if response.GetProfile().Protection.Enabled {
+		return "", errors.New("protected profile returned from Login()")
+	}
+
+	// Tokenize and return profile
+	authToken, err := ProfileToToken(response.GetProfile())
+	if err != nil {
+		return "", err
+	}
+
+	return authToken, nil
 }
 
 // GetInfo associated with a given wallet
