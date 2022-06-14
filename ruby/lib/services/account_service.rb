@@ -48,7 +48,7 @@ module Trinsic
     def login(request = nil)
       request ||= Account::LoginRequest.new
       request.ecosystem_id = request.ecosystem_id.empty? ? @service_options.default_ecosystem : request.ecosystem_id
-      @client.login(request, metadata: metadata(request))
+      @client.login(request)
     end
 
     def login_confirm(challenge, auth_code)

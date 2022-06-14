@@ -1,25 +1,24 @@
 import ServiceBase from "./ServiceBase";
 import {
-  AccountDefinition,
-  AccountProfile,
-  ConfirmationMethod,
-  AccountInfoRequest,
-  AccountInfoResponse,
-  ListDevicesRequest,
-  ListDevicesResponse,
-  RevokeDeviceRequest,
-  RevokeDeviceResponse,
-  ServiceOptions,
-  SignInRequest,
-  TokenProtection,
-  LoginRequest,
-  LoginResponse,
-  LoginConfirmRequest,
-  LoginConfirmResponse,
-  AuthorizeWebhookRequest,
-  AuthorizeWebhookResponse,
+    AccountDefinition,
+    AccountProfile,
+    ConfirmationMethod,
+    AccountInfoRequest,
+    AccountInfoResponse,
+    ListDevicesRequest,
+    ListDevicesResponse,
+    RevokeDeviceRequest,
+    RevokeDeviceResponse,
+    ServiceOptions,
+    SignInRequest,
+    TokenProtection,
+    LoginRequest,
+    LoginResponse,
+    LoginConfirmResponse,
+    AuthorizeWebhookRequest,
+    AuthorizeWebhookResponse, LoginConfirmRequest,
 } from "./proto";
-import { Oberon } from "@trinsic/okapi";
+import { Oberon, Blake3HashRequest, Hashing } from "@trinsic/okapi";
 import base64url from "base64url";
 
 import type { Client as BrowserClient } from "nice-grpc-web";
@@ -101,7 +100,7 @@ export class AccountService extends ServiceBase {
   public async signIn(
     request: SignInRequest = SignInRequest.fromPartial({})
   ): Promise<string> {
-    request.ecosystemId = request.ecosystemId || this.options.defaultEcosystem;
+      request.ecosystemId ||= this.options.defaultEcosystem;
 
     let response = await this.client.signIn(request);
     const authToken = base64url(
@@ -113,22 +112,31 @@ export class AccountService extends ServiceBase {
     return authToken;
   }
 
-  public async login(request: LoginRequest): Promise<LoginResponse> {
-    return this.client.login(request, {
-      metadata: await this.getMetadata(
-        ListDevicesRequest.encode(request).finish()
-      ),
-    });
+  public async login(request: LoginRequest = LoginRequest.fromPartial({})): Promise<LoginResponse> {
+      request.ecosystemId ||= this.options.defaultEcosystem;
+    return this.client.login(request);
   }
 
   public async loginConfirm(
-    request: LoginConfirmRequest
-  ): Promise<LoginConfirmResponse> {
-    return this.client.loginConfirm(request, {
-      metadata: await this.getMetadata(
-        ListDevicesRequest.encode(request).finish()
-      ),
-    });
+    challenge: string | Uint8Array,
+    authCode: string | Uint8Array
+  ): Promise<string> {
+      challenge = AccountService.convertToUtf8(challenge);
+      authCode = AccountService.convertToUtf8(authCode);
+      let hashed = await Hashing.blake3Hash({data: authCode});
+
+      let response = await this.client.loginConfirm({challenge: challenge, confirmationCodeHashed: hashed.digest});
+      if (response.profile === undefined) {
+          return "";
+      }
+
+      let token = base64url(
+          Buffer.from(AccountProfile.encode(response.profile!).finish())
+      );
+      if (response.profile.protection?.enabled ?? false) {
+          token = await AccountService.unprotect(token, authCode);
+      }
+      return token;
   }
 
     public async loginAnonymous(): Promise<String> {
