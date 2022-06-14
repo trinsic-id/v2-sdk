@@ -154,26 +154,6 @@ public class AccountService : ServiceBase
     /// <summary>
     /// Finalizes login from a previous `LoginRequest`.
     /// </summary>
-    /// <param name="request"></param>
-    /// <returns>Auth token on success; null on failure</returns>
-    public async Task<string?> LoginConfirmAsync(LoginConfirmRequest request) {
-        var response = await Client.LoginConfirmAsync(request);
-
-        // If profile is protected, or response is invalid, return null
-        if (response?.Profile?.Protection?.Enabled ?? true)
-        {
-            return null;
-        }
-
-        var token = Base64Url.Encode(response.Profile.ToByteArray());
-
-        await TokenProvider.SaveAsync(token);
-        return token;
-    }
-
-    /// <summary>
-    /// Finalizes login from a previous `LoginRequest`.
-    /// </summary>
     /// <param name="challenge">Challenge received from call to `Login`</param>
     /// <param name="authCode">Plaintext authentication code sent to account email</param>
     /// <returns>Auth token on success; null on failure</returns>
@@ -184,29 +164,23 @@ public class AccountService : ServiceBase
             }
         );
 
-        return await LoginConfirmAsync(new() {
+        var request = new LoginConfirmRequest() {
             Challenge = challenge,
             ConfirmationCodeHashed = hashed.Digest
-        });
-    }
+        };
 
-    /// <summary>
-    /// Finalizes login from a previous `LoginRequest`.
-    /// </summary>
-    /// <param name="request"></param>
-    /// <returns>Auth token on success; null on failure</returns>
-    public string? LoginConfirm(LoginConfirmRequest request) {
-        var response = Client.LoginConfirm(request);
+        var response = await Client.LoginConfirmAsync(request);
 
-        // If profile is protected, or response is invalid, return null
-        if (response?.Profile?.Protection?.Enabled ?? true)
-        {
+        if (response?.Profile == null)
             return null;
-        }
 
         var token = Base64Url.Encode(response.Profile.ToByteArray());
 
-        TokenProvider.Save(token);
+        // If profile is protected (it should be), unprotect it
+        if (response.Profile.Protection?.Enabled ?? false)
+            token = Unprotect(token, authCode);
+
+        await TokenProvider.SaveAsync(token);
         return token;
     }
 
@@ -223,10 +197,24 @@ public class AccountService : ServiceBase
             }
         );
 
-        return LoginConfirm(new() {
+        var request = new LoginConfirmRequest() {
             Challenge = challenge,
             ConfirmationCodeHashed = hashed.Digest
-        });
+        };
+
+        var response = Client.LoginConfirm(request);
+
+        if (response?.Profile == null)
+            return null;
+
+        var token = Base64Url.Encode(response.Profile.ToByteArray());
+
+        // If profile is protected (it should be), unprotect it
+        if (response.Profile.Protection?.Enabled ?? false)
+            token = Unprotect(token, authCode);
+
+        TokenProvider.Save(token);
+        return token;
     }
 
     /// <summary>
