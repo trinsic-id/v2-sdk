@@ -11,9 +11,9 @@ module Trinsic
       super(service_options)
       if @service_options.server_use_tls
         channel_creds = GRPC::Core::ChannelCredentials.new
-        @client = TrustRegistry_V1::TrustRegistry::Stub.new(url_string, channel_creds)
+        @client = TrustRegistry::TrustRegistry::Stub.new(url_string, channel_creds)
       else
-        @client = TrustRegistry_V1::TrustRegistry::Stub.new(url_string, :this_channel_is_insecure)
+        @client = TrustRegistry::TrustRegistry::Stub.new(url_string, :this_channel_is_insecure)
       end
     end
 
@@ -42,7 +42,7 @@ module Trinsic
     end
 
     def search_registry(request = nil)
-      request ||= TrustRegistry_V1::SearchRegistryRequest.new
+      request ||= TrustRegistry::SearchRegistryRequest.new
       request.query = request.query.empty? ? 'SELECT * FROM c OFFSET 0 LIMIT 100' : request.query
       @client.search_registry(request, metadata: metadata(request))
     end
