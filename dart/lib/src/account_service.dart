@@ -75,6 +75,20 @@ class AccountService extends ServiceBase {
     return await client.loginConfirm(request);
   }
 
+  Future<String> loginAnonymous() async {
+    var request =
+        LoginRequest(email: "", ecosystemId: serviceOptions.defaultEcosystem);
+    var response = await login(request);
+
+    if (response.profile.protection.enabled) {
+      throw Exception("protected profile returned from login()");
+    }
+    // Tokenize and return
+    var authToken =
+        Base64Encoder.urlSafe().convert(response.profile.writeToBuffer());
+    return authToken;
+  }
+
   Future<AccountInfoResponse> getInfo() async {
     return await client.info(AccountInfoRequest());
   }
@@ -87,7 +101,8 @@ class AccountService extends ServiceBase {
     return await client.revokeDevice(request);
   }
 
-  Future<AuthorizeWebhookResponse> authorizeWebhook(AuthorizeWebhookRequest request) async {
+  Future<AuthorizeWebhookResponse> authorizeWebhook(
+      AuthorizeWebhookRequest request) async {
     return await client.authorizeWebhook(request);
   }
 }

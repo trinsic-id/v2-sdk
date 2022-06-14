@@ -131,6 +131,28 @@ export class AccountService extends ServiceBase {
     });
   }
 
+    public async loginAnonymous(): Promise<String> {
+        const request = LoginRequest.fromPartial({
+          ecosystemId: this.options.defaultEcosystem,
+          email: "",
+          invitationCode: "",
+        });
+        let response = await this.client.login(request, {
+          metadata: await this.getMetadata(
+            ListDevicesRequest.encode(request).finish()
+          ),
+        });
+        if (response.profile === undefined) {
+            throw new Error("undefined profile returned");
+        }
+        if (response.profile!.protection!.enabled) {
+            throw new Error("protected profile returned from login");
+        }
+        return base64url(
+            Buffer.from(AccountProfile.encode(response.profile!).finish())
+        );
+    }
+
   public async info(): Promise<AccountInfoResponse> {
     const request = AccountInfoRequest.fromPartial({});
 
