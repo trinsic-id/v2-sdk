@@ -3,6 +3,7 @@ package trinsic.services
 import com.google.protobuf.ByteString
 import com.google.protobuf.InvalidProtocolBufferException
 import trinsic.okapi.DidException
+import trinsic.okapi.Hashing
 import trinsic.okapi.Oberon
 import trinsic.okapi.security.v1.Security.BlindOberonTokenRequest
 import trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest
@@ -59,8 +60,35 @@ class AccountServiceKt(options: Options.ServiceOptions?) : ServiceBase(options) 
     }
 
     @Throws(InvalidProtocolBufferException::class, DidException::class)
-    suspend fun loginConfirm(request: LoginConfirmRequest): LoginConfirmResponse {
-        return withMetadata(stub, request).loginConfirm(request)
+    suspend fun loginConfirm(challenge: ByteString, authCode: String): String {
+        val hashed = Hashing.blake3_hash(
+                trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest
+                        .newBuilder()
+                        .setData(ByteString.copyFromUtf8(authCode))
+                        .build()
+        ).digest
+
+        val request = LoginConfirmRequest
+                .newBuilder()
+                .setChallenge(challenge)
+                .setConfirmationCodeHashed(hashed)
+                .build()
+
+        val response = withMetadata(stub, request).loginConfirm(request)
+        var authToken = Base64.getUrlEncoder().encodeToString(response.profile.toByteArray())
+
+        if(response.profile.protection.enabled) {
+            authToken = unprotect(authToken, authCode)
+        }
+
+        return authToken
+    }
+
+    @Throws(InvalidProtocolBufferException::class, DidException::class)
+    suspend fun loginAnonymous(): String {
+        val response = this.login(LoginRequest.getDefaultInstance())
+
+        return Base64.getUrlEncoder().encodeToString(response.profile.toByteArray())
     }
 
     suspend fun getInfo(): AccountInfoResponse {
