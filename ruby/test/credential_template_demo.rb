@@ -15,13 +15,13 @@ def credential_template_demo_run
   template_service = Trinsic::TemplateService.new(Trinsic.trinsic_server(account))
 
   # create example template
-  template_request = Trinsic::Template_V1::CreateCredentialTemplateRequest.new(
+  template_request = Trinsic::Template::CreateCredentialTemplateRequest.new(
     name: "My Example Credential: #{SecureRandom.uuid}", allow_additional_fields: false
   )
-  template_request.fields['firstName'] = Trinsic::Template_V1::TemplateField.new(description: 'Given name')
-  template_request.fields['lastName'] = Trinsic::Template_V1::TemplateField.new
+  template_request.fields['firstName'] = Trinsic::Template::TemplateField.new(description: 'Given name')
+  template_request.fields['lastName'] = Trinsic::Template::TemplateField.new
   template_request.fields['age'] =
-    Trinsic::Template_V1::TemplateField.new(type: Trinsic::Template_V1::FieldType::NUMBER, optional: true)
+    Trinsic::Template::TemplateField.new(type: Trinsic::Template::FieldType::NUMBER, optional: true)
   template = template_service.create(template_request)
 
   raise 'template should not be nil' if template.nil?
@@ -31,7 +31,7 @@ def credential_template_demo_run
 
   # issue credential from this template
   values = JSON.generate({ firstName: 'Jane', lastName: 'Doe', age: 42 })
-  credential_json = credential_service.issue_from_template(Trinsic::Credentials_V1::IssueFromTemplateRequest.new(
+  credential_json = credential_service.issue_from_template(Trinsic::Credentials::IssueFromTemplateRequest.new(
                                                              template_id: template.data.id, values_json: values
                                                            ))
   raise 'credential json document should not be nil' if credential_json.document_json.nil?

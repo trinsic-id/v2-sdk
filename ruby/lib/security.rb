@@ -32,7 +32,7 @@ module Trinsic
       unless request_hash.length.zero?
         request_hash = Okapi::Hashing.blake3_hash(Okapi::Hashing::V1::Blake3HashRequest.new(data: request_hash)).digest
       end
-      nonce = Trinsic::Common_V1::Nonce.new(timestamp: (Time.now.to_f * 1000).to_int, request_hash: request_hash)
+      nonce = Trinsic::Common::Nonce.new(timestamp: (Time.now.to_f * 1000).to_int, request_hash: request_hash)
       request = Okapi::Security::V1::CreateOberonProofRequest.new(token: account_profile.auth_token,
                                                                   data: account_profile.auth_data,
                                                                   nonce: Google::Protobuf.encode(nonce))
