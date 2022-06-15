@@ -248,7 +248,7 @@ class LoginConfirmResponse(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class AuthorizeWebhookRequest(betterproto.Message):
-    """Authorize ecosystem to receive wallet envents"""
+    """Authorize ecosystem to receive wallet events"""
 
     events: List[str] = betterproto.string_field(1)
     """Events to authorize access to. Default is "*" (all events)"""

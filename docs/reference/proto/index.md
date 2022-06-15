@@ -1763,7 +1763,7 @@ This information should be stored securely
 <a name="services-account-v1-AuthorizeWebhookRequest"></a>
 
 ### AuthorizeWebhookRequest
-Authorize ecosystem to receive wallet envents
+Authorize ecosystem to receive wallet events
 
 
 | Field | Type | Description |
