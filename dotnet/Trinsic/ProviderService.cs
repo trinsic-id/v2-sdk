@@ -77,7 +77,9 @@ public class ProviderService : ServiceBase
     public async Task<(Ecosystem ecosystem, string authToken)> CreateEcosystemAsync(CreateEcosystemRequest request) {
         request.Details ??= new();
 
-        var response = await Client.CreateEcosystemAsync(request);
+        var response = !string.IsNullOrWhiteSpace(request.Name) || !string.IsNullOrWhiteSpace(request.Details?.Email)
+            ? await Client.CreateEcosystemAsync(request, await BuildMetadataAsync(request))
+            : await Client.CreateEcosystemAsync(request);
 
         var authToken = Base64Url.Encode(response.Profile.ToByteArray());
 
@@ -97,7 +99,9 @@ public class ProviderService : ServiceBase
     public (Ecosystem ecosystem, string authToken) CreateEcosystem(CreateEcosystemRequest request) {
         request.Details ??= new();
 
-        var response = Client.CreateEcosystem(request);
+        var response = !string.IsNullOrWhiteSpace(request.Name) || !string.IsNullOrWhiteSpace(request.Details?.Email)
+            ? Client.CreateEcosystem(request, BuildMetadata(request))
+            : Client.CreateEcosystem(request);
         var authToken = Base64Url.Encode(response.Profile.ToByteArray());
 
         if (!response.Profile.Protection?.Enabled ?? true)
@@ -131,9 +135,7 @@ public class ProviderService : ServiceBase
     /// </summary>
     /// <param name="request"></param>
     /// <returns></returns>
-    public async Task<EcosystemInfoResponse> EcosystemInfoAsync(EcosystemInfoRequest? request = null) {
-        request ??= new() { EcosystemId = Options.DefaultEcosystem };
-
+    public async Task<EcosystemInfoResponse> EcosystemInfoAsync(EcosystemInfoRequest request) {
         return await Client.EcosystemInfoAsync(request, await BuildMetadataAsync(request));
     }
 
@@ -142,9 +144,7 @@ public class ProviderService : ServiceBase
     /// </summary>
     /// <param name="request"></param>
     /// <returns></returns>
-    public EcosystemInfoResponse EcosystemInfo(EcosystemInfoRequest? request = null) {
-        request ??= new() { EcosystemId = Options.DefaultEcosystem };
-
+    public EcosystemInfoResponse EcosystemInfo(EcosystemInfoRequest request) {
         return Client.EcosystemInfo(request, BuildMetadata(request));
     }
 
