@@ -14996,7 +14996,7 @@ public final class AccountOuterClass {
    *
    *
    * <pre>
-   * Authorize ecosystem to receive wallet envents
+   * Authorize ecosystem to receive wallet events
    * </pre>
    *
    * Protobuf type {@code services.account.v1.AuthorizeWebhookRequest}
@@ -15328,7 +15328,7 @@ public final class AccountOuterClass {
      *
      *
      * <pre>
-     * Authorize ecosystem to receive wallet envents
+     * Authorize ecosystem to receive wallet events
      * </pre>
      *
      * Protobuf type {@code services.account.v1.AuthorizeWebhookRequest}

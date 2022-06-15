@@ -1051,7 +1051,7 @@ func (x *LoginConfirmResponse) GetProfile() *AccountProfile {
 	return nil
 }
 
-// Authorize ecosystem to receive wallet envents
+// Authorize ecosystem to receive wallet events
 type AuthorizeWebhookRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

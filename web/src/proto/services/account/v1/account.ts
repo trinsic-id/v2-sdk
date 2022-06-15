@@ -227,7 +227,7 @@ export interface LoginConfirmResponse {
   profile: AccountProfile | undefined;
 }
 
-/** Authorize ecosystem to receive wallet envents */
+/** Authorize ecosystem to receive wallet events */
 export interface AuthorizeWebhookRequest {
   /** Events to authorize access to. Default is "*" (all events) */
   events: string[];

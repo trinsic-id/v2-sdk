@@ -3346,7 +3346,7 @@
     "services.account.v1.AuthorizeWebhookRequest": {
       "name": "AuthorizeWebhookRequest",
       "full_name": "services.account.v1.AuthorizeWebhookRequest",
-      "description": "Authorize ecosystem to receive wallet envents",
+      "description": "Authorize ecosystem to receive wallet events",
       "fields": [
         "services.account.v1.AuthorizeWebhookRequest.events"
       ],
