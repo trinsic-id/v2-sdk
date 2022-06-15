@@ -169,13 +169,10 @@ class CreateEcosystemResponse(betterproto.Message):
 class UpdateEcosystemRequest(betterproto.Message):
     """Request to update an ecosystem"""
 
-    ecosystem_id: str = betterproto.string_field(1)
-    """ID of the ecosystem to update"""
-
-    description: str = betterproto.string_field(2)
+    description: str = betterproto.string_field(1)
     """Description of the ecosystem"""
 
-    uri: str = betterproto.string_field(3)
+    uri: str = betterproto.string_field(2)
     """External URL associated with the organization or ecosystem entity"""
 
 
@@ -190,16 +187,13 @@ class UpdateEcosystemResponse(betterproto.Message):
 class AddWebhookRequest(betterproto.Message):
     """Request to add a webhook to an ecosystem"""
 
-    ecosystem_id: str = betterproto.string_field(1)
-    """ID of ecosystem to add webhook to"""
-
-    destination_url: str = betterproto.string_field(2)
+    destination_url: str = betterproto.string_field(1)
     """Destination to post webhook calls to"""
 
-    secret: str = betterproto.string_field(3)
+    secret: str = betterproto.string_field(2)
     """HMAC secret for webhook validation"""
 
-    events: List[str] = betterproto.string_field(4)
+    events: List[str] = betterproto.string_field(3)
     """Events to subscribe to. Default is "*" (all events)"""
 
 
@@ -215,10 +209,7 @@ class AddWebhookResponse(betterproto.Message):
 class DeleteWebhookRequest(betterproto.Message):
     """Request to delete a webhook from an ecosystem"""
 
-    ecosystem_id: str = betterproto.string_field(1)
-    """ID of ecosystem from which to delete webhook"""
-
-    webhook_id: str = betterproto.string_field(2)
+    webhook_id: str = betterproto.string_field(1)
     """ID of webhook to delete"""
 
 
@@ -234,8 +225,7 @@ class DeleteWebhookResponse(betterproto.Message):
 class EcosystemInfoRequest(betterproto.Message):
     """Request to fetch information about an ecosystem"""
 
-    ecosystem_id: str = betterproto.string_field(1)
-    """ID of ecosystem to fetch information about"""
+    pass
 
 
 @dataclass(eq=False, repr=False)

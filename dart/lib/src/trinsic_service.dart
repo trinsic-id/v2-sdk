@@ -10,9 +10,7 @@ class TrinsicService extends ServiceBase {
   TemplateService? _templateService;
   TrustRegistryService? _trustRegistryService;
   WalletService? _walletService;
-  TrinsicService(ServiceOptions? serverOptions)
-      : super(serverOptions) {
-  }
+  TrinsicService(ServiceOptions? serverOptions) : super(serverOptions) {}
 
   AccountService account() {
     _accountService ??= AccountService(serviceOptions);

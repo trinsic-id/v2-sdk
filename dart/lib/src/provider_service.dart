@@ -16,7 +16,8 @@ class ProviderService extends ServiceBase {
     return await client.createEcosystem(request);
   }
 
-  Future<UpdateEcosystemResponse> updateEcosystem(UpdateEcosystemRequest request) async {
+  Future<UpdateEcosystemResponse> updateEcosystem(
+      UpdateEcosystemRequest request) async {
     return await client.updateEcosystem(request);
   }
 
@@ -24,15 +25,18 @@ class ProviderService extends ServiceBase {
     return await client.addWebhook(request);
   }
 
-  Future<DeleteWebhookResponse> deleteWebhook(DeleteWebhookRequest request) async {
+  Future<DeleteWebhookResponse> deleteWebhook(
+      DeleteWebhookRequest request) async {
     return await client.deleteWebhook(request);
   }
 
-  Future<EcosystemInfoResponse> ecosystemInfo(EcosystemInfoRequest request) async {
+  Future<EcosystemInfoResponse> ecosystemInfo(
+      EcosystemInfoRequest request) async {
     return await client.ecosystemInfo(request);
   }
 
-  Future<GenerateTokenResponse> generateToken(GenerateTokenRequest request) async {
+  Future<GenerateTokenResponse> generateToken(
+      GenerateTokenRequest request) async {
     return await client.generateToken(request);
   }
 
@@ -49,7 +53,8 @@ class ProviderService extends ServiceBase {
     return await client.getOberonKey(request);
   }
 
-  Future<GetEventTokenResponse> getEventToken(GetEventTokenRequest request) async {
+  Future<GetEventTokenResponse> getEventToken(
+      GetEventTokenRequest request) async {
     return await client.getEventToken(request);
   }
 }
