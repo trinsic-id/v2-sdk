@@ -1,7 +1,7 @@
 /// Configuration for Trinsic SDK Services
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct ServiceOptions {
-    /// Trinsic API endpoint; defaults to `prod.trinsic.cloud`
+    /// Trinsic API endpoint. Defaults to `prod.trinsic.cloud`
     #[prost(string, tag = "1")]
     pub server_endpoint: ::prost::alloc::string::String,
     /// Trinsic API port; defaults to `443`
