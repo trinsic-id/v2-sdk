@@ -1,24 +1,24 @@
 import ServiceBase from "./ServiceBase";
 import {
-    AddWebhookRequest, AddWebhookResponse,
-    CreateEcosystemRequest,
-    CreateEcosystemResponse, DeleteWebhookRequest, DeleteWebhookResponse,
-    EcosystemInfoRequest,
-    EcosystemInfoResponse,
-    GenerateTokenRequest,
-    GenerateTokenResponse,
-    GetEventTokenRequest,
-    GetEventTokenResponse,
-    GetOberonKeyRequest,
-    GetOberonKeyResponse,
-    InvitationStatusRequest,
-    InvitationStatusResponse,
-    InviteRequest,
-    InviteResponse,
-    ProviderDefinition,
-    ServiceOptions,
-    UpdateEcosystemRequest,
-    UpdateEcosystemResponse,
+  AddWebhookRequest, AddWebhookResponse,
+  CreateEcosystemRequest,
+  CreateEcosystemResponse, DeleteWebhookRequest, DeleteWebhookResponse,
+  EcosystemInfoRequest,
+  EcosystemInfoResponse,
+  GenerateTokenRequest,
+  GenerateTokenResponse,
+  GetEventTokenRequest,
+  GetEventTokenResponse,
+  GetOberonKeyRequest,
+  GetOberonKeyResponse,
+  InvitationStatusRequest,
+  InvitationStatusResponse,
+  InviteRequest,
+  InviteResponse,
+  ProviderDefinition,
+  ServiceOptions,
+  UpdateEcosystemRequest,
+  UpdateEcosystemResponse,
 } from "./proto";
 
 import type { Client as BrowserClient } from "nice-grpc-web";
@@ -35,7 +35,13 @@ export class ProviderService extends ServiceBase {
   public async createEcosystem(
     request: CreateEcosystemRequest
   ): Promise<CreateEcosystemResponse> {
-    return this.client.createEcosystem(request);
+    return request.name?.trim() || request.details?.email?.trim()
+      ? this.client.createEcosystem(request, {
+        metadata: await this.getMetadata(
+          CreateEcosystemRequest.encode(request).finish()
+        ),
+      })
+      : this.client.createEcosystem(request);
   }
 
   public async updateEcosystem(
@@ -63,7 +69,7 @@ export class ProviderService extends ServiceBase {
   ): Promise<DeleteWebhookResponse> {
     return this.client.deleteWebhook(request, {
       metadata: await this.getMetadata(
-          DeleteWebhookRequest.encode(request).finish()
+        DeleteWebhookRequest.encode(request).finish()
       ),
     });
   }
