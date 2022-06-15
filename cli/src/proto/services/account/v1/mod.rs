@@ -7,7 +7,7 @@ pub struct SignInRequest {
     /// Invitation code associated with this registration
     #[prost(string, tag = "2")]
     pub invitation_code: ::prost::alloc::string::String,
-    /// ID of Ecosystem to sign into.
+    /// ID of Ecosystem to use
     /// Ignored if `invitation_code` is passed
     #[prost(string, tag = "3")]
     pub ecosystem_id: ::prost::alloc::string::String,
@@ -101,6 +101,9 @@ pub struct AccountInfoResponse {
     /// This DID is used as "issuer" when signing verifiable credentials
     #[prost(string, tag = "6")]
     pub public_did: ::prost::alloc::string::String,
+    /// Webhook events if any this wallet has authorized
+    #[prost(string, repeated, tag = "7")]
+    pub authorized_webhooks: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct ListDevicesRequest {}
@@ -173,6 +176,16 @@ pub struct LoginConfirmResponse {
     #[prost(message, optional, tag = "1")]
     pub profile: ::core::option::Option<AccountProfile>,
 }
+/// Authorize ecosystem to receive wallet envents
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct AuthorizeWebhookRequest {
+    /// Events to authorize access to. Default is "*" (all events)
+    #[prost(string, repeated, tag = "1")]
+    pub events: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+}
+/// Response to `AuthorizeWebhookRequest`
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct AuthorizeWebhookResponse {}
 /// Confirmation method type for two-factor workflows
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
@@ -318,6 +331,19 @@ pub mod account_client {
                 .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/services.account.v1.Account/RevokeDevice");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        #[doc = " Authorize Ecosystem to receive webhook events"]
+        pub async fn authorize_webhook(
+            &mut self,
+            request: impl tonic::IntoRequest<super::AuthorizeWebhookRequest>,
+        ) -> Result<tonic::Response<super::AuthorizeWebhookResponse>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static("/services.account.v1.Account/AuthorizeWebhook");
             self.inner.unary(request.into_request(), path, codec).await
         }
     }
