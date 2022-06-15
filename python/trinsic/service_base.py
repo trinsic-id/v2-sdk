@@ -17,7 +17,8 @@ from trinsic.trinsic_util import trinsic_config, create_channel
 
 _skip_routes = [
     "/services.account.v1.Account/SignIn",
-    "/services.provider.v1.Provider/CreateEcosystem",
+    "/services.account.v1.Account/LogIn",
+    "/services.account.v1.Account/LogInConfirm",
 ]
 
 
@@ -29,6 +30,12 @@ def _update_metadata(
 ) -> "_MetadataLike":
     if route in _skip_routes:
         return metadata
+    if route == "/services.provider.v1.Provider/CreateEcosystem":
+        if request.name or (request.details and request.details.email):
+            # This is authenticated to create a named ecosystem
+            pass
+        else:
+            return metadata
     metadata = metadata or {}
     new_metadata = service.build_metadata(request)
     metadata.update(new_metadata)

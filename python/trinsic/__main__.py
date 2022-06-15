@@ -5,7 +5,7 @@ from trinsic.account_service import AccountService
 
 async def demo():
     account_service = AccountService()
-    profile = await account_service.sign_in()
+    profile = await account_service.login_anonymous()
     assert profile is not None
     print("Package successfully installed. Sample profile below")
     print(profile)
