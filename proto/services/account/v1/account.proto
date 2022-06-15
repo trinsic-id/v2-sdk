@@ -161,7 +161,7 @@ message LoginConfirmResponse {
     AccountProfile profile = 1;
 }
 
-// Authorize ecosystem to receive wallet events
+// Authorize ecosystem to receive wallet envents
 message AuthorizeWebhookRequest {
     // Events to authorize access to. Default is "*" (all events)
     repeated string events = 1;
