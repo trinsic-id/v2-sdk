@@ -5,8 +5,7 @@ import 'package:trinsic_dart/src/service_base.dart';
 class TemplateService extends ServiceBase {
   late CredentialTemplatesClient client;
 
-  TemplateService(ServiceOptions? serverOptions)
-      : super(serverOptions) {
+  TemplateService(ServiceOptions? serverOptions) : super(serverOptions) {
     client = CredentialTemplatesClient(super.channel,
         interceptors: [MetadataInterceptor(this)]);
   }

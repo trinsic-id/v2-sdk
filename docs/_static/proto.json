@@ -546,12 +546,6 @@
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.AddWebhookRequest"
     },
-    "services.provider.v1.AddWebhookRequest.ecosystem_id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.AddWebhookRequest"
-    },
     "services.provider.v1.AddWebhookRequest.events": {
       "type": "field",
       "collection": "fields",
@@ -636,12 +630,6 @@
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
-    "services.provider.v1.DeleteWebhookRequest.ecosystem_id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.DeleteWebhookRequest"
-    },
     "services.provider.v1.DeleteWebhookRequest.webhook_id": {
       "type": "field",
       "collection": "fields",
@@ -701,12 +689,6 @@
       "collection": "messages",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
-    },
-    "services.provider.v1.EcosystemInfoRequest.ecosystem_id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.EcosystemInfoRequest"
     },
     "services.provider.v1.EcosystemInfoResponse": {
       "type": "message",
@@ -1021,12 +1003,6 @@
       "parent": ""
     },
     "services.provider.v1.UpdateEcosystemRequest.description": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.UpdateEcosystemRequest"
-    },
-    "services.provider.v1.UpdateEcosystemRequest.ecosystem_id": {
       "type": "field",
       "collection": "fields",
       "file": "services/provider/v1/provider.proto",
@@ -2587,19 +2563,15 @@
         "services.provider.v1.CreateEcosystemResponse.ecosystem",
         "services.provider.v1.CreateEcosystemResponse.profile",
         "services.provider.v1.CreateEcosystemResponse.confirmation_method",
-        "services.provider.v1.UpdateEcosystemRequest.ecosystem_id",
         "services.provider.v1.UpdateEcosystemRequest.description",
         "services.provider.v1.UpdateEcosystemRequest.uri",
         "services.provider.v1.UpdateEcosystemResponse.Ecosystem",
-        "services.provider.v1.AddWebhookRequest.ecosystem_id",
         "services.provider.v1.AddWebhookRequest.destination_url",
         "services.provider.v1.AddWebhookRequest.secret",
         "services.provider.v1.AddWebhookRequest.events",
         "services.provider.v1.AddWebhookResponse.ecosystem",
-        "services.provider.v1.DeleteWebhookRequest.ecosystem_id",
         "services.provider.v1.DeleteWebhookRequest.webhook_id",
         "services.provider.v1.DeleteWebhookResponse.ecosystem",
-        "services.provider.v1.EcosystemInfoRequest.ecosystem_id",
         "services.provider.v1.EcosystemInfoResponse.ecosystem",
         "services.provider.v1.GenerateTokenRequest.description",
         "services.provider.v1.GenerateTokenResponse.profile",
@@ -3374,7 +3346,7 @@
     "services.account.v1.AuthorizeWebhookRequest": {
       "name": "AuthorizeWebhookRequest",
       "full_name": "services.account.v1.AuthorizeWebhookRequest",
-      "description": "Authorize ecosystem to receive wallet events",
+      "description": "Authorize ecosystem to receive wallet envents",
       "fields": [
         "services.account.v1.AuthorizeWebhookRequest.events"
       ],
@@ -3527,7 +3499,6 @@
       "full_name": "services.provider.v1.AddWebhookRequest",
       "description": "Request to add a webhook to an ecosystem",
       "fields": [
-        "services.provider.v1.AddWebhookRequest.ecosystem_id",
         "services.provider.v1.AddWebhookRequest.destination_url",
         "services.provider.v1.AddWebhookRequest.secret",
         "services.provider.v1.AddWebhookRequest.events"
@@ -3575,7 +3546,6 @@
       "full_name": "services.provider.v1.DeleteWebhookRequest",
       "description": "Request to delete a webhook from an ecosystem",
       "fields": [
-        "services.provider.v1.DeleteWebhookRequest.ecosystem_id",
         "services.provider.v1.DeleteWebhookRequest.webhook_id"
       ],
       "messages": [],
@@ -3609,9 +3579,7 @@
       "name": "EcosystemInfoRequest",
       "full_name": "services.provider.v1.EcosystemInfoRequest",
       "description": "Request to fetch information about an ecosystem",
-      "fields": [
-        "services.provider.v1.EcosystemInfoRequest.ecosystem_id"
-      ],
+      "fields": [],
       "messages": [],
       "enums": []
     },
@@ -3758,7 +3726,6 @@
       "full_name": "services.provider.v1.UpdateEcosystemRequest",
       "description": "Request to update an ecosystem",
       "fields": [
-        "services.provider.v1.UpdateEcosystemRequest.ecosystem_id",
         "services.provider.v1.UpdateEcosystemRequest.description",
         "services.provider.v1.UpdateEcosystemRequest.uri"
       ],
@@ -4813,14 +4780,6 @@
       "full_type": "string",
       "description": "Destination to post webhook calls to"
     },
-    "services.provider.v1.AddWebhookRequest.ecosystem_id": {
-      "name": "ecosystem_id",
-      "full_name": "services.provider.v1.AddWebhookRequest.ecosystem_id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "ID of ecosystem to add webhook to"
-    },
     "services.provider.v1.AddWebhookRequest.events": {
       "name": "events",
       "full_name": "services.provider.v1.AddWebhookRequest.events",
@@ -4907,14 +4866,6 @@
       "full_type": "services.account.v1.AccountProfile",
       "description": "Account profile for auth of the owner of the ecosystem"
     },
-    "services.provider.v1.DeleteWebhookRequest.ecosystem_id": {
-      "name": "ecosystem_id",
-      "full_name": "services.provider.v1.DeleteWebhookRequest.ecosystem_id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "ID of ecosystem from which to delete webhook"
-    },
     "services.provider.v1.DeleteWebhookRequest.webhook_id": {
       "name": "webhook_id",
       "full_name": "services.provider.v1.DeleteWebhookRequest.webhook_id",
@@ -4970,14 +4921,6 @@
       "type": "WebhookConfig",
       "full_type": "services.provider.v1.WebhookConfig",
       "description": "Configured webhooks, if any"
-    },
-    "services.provider.v1.EcosystemInfoRequest.ecosystem_id": {
-      "name": "ecosystem_id",
-      "full_name": "services.provider.v1.EcosystemInfoRequest.ecosystem_id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "ID of ecosystem to fetch information about"
     },
     "services.provider.v1.EcosystemInfoResponse.ecosystem": {
       "name": "ecosystem",
@@ -5147,14 +5090,6 @@
       "type": "string",
       "full_type": "string",
       "description": "Description of the ecosystem"
-    },
-    "services.provider.v1.UpdateEcosystemRequest.ecosystem_id": {
-      "name": "ecosystem_id",
-      "full_name": "services.provider.v1.UpdateEcosystemRequest.ecosystem_id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "ID of the ecosystem to update"
     },
     "services.provider.v1.UpdateEcosystemRequest.uri": {
       "name": "uri",
