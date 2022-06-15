@@ -64,31 +64,27 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :confirmation_method, :enum, 3, "services.account.v1.ConfirmationMethod"
     end
     add_message "services.provider.v1.UpdateEcosystemRequest" do
-      optional :ecosystem_id, :string, 1
-      optional :description, :string, 2
-      optional :uri, :string, 3
+      optional :description, :string, 1
+      optional :uri, :string, 2
     end
     add_message "services.provider.v1.UpdateEcosystemResponse" do
       optional :Ecosystem, :message, 1, "services.provider.v1.Ecosystem"
     end
     add_message "services.provider.v1.AddWebhookRequest" do
-      optional :ecosystem_id, :string, 1
-      optional :destination_url, :string, 2
-      optional :secret, :string, 3
-      repeated :events, :string, 4
+      optional :destination_url, :string, 1
+      optional :secret, :string, 2
+      repeated :events, :string, 3
     end
     add_message "services.provider.v1.AddWebhookResponse" do
       optional :ecosystem, :message, 1, "services.provider.v1.Ecosystem"
     end
     add_message "services.provider.v1.DeleteWebhookRequest" do
-      optional :ecosystem_id, :string, 1
-      optional :webhook_id, :string, 2
+      optional :webhook_id, :string, 1
     end
     add_message "services.provider.v1.DeleteWebhookResponse" do
       optional :ecosystem, :message, 1, "services.provider.v1.Ecosystem"
     end
     add_message "services.provider.v1.EcosystemInfoRequest" do
-      optional :ecosystem_id, :string, 1
     end
     add_message "services.provider.v1.EcosystemInfoResponse" do
       optional :ecosystem, :message, 1, "services.provider.v1.Ecosystem"

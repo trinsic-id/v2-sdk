@@ -11,7 +11,11 @@ from trinsicokapi.proto.okapi.security.v1 import (
 
 from trinsic.proto.sdk.options.v1 import ServiceOptions
 from trinsic.proto.services.account.v1 import *
-from trinsic.proto.services.account.v1 import LoginConfirmRequest, LoginRequest, LoginResponse
+from trinsic.proto.services.account.v1 import (
+    LoginConfirmRequest,
+    LoginRequest,
+    LoginResponse,
+)
 from trinsic.service_base import ServiceBase
 
 
@@ -125,7 +129,9 @@ class AccountService(ServiceBase):
             request=Blake3HashRequest(data=auth_code.encode("utf-8"))
         ).digest
 
-        request = LoginConfirmRequest(challenge=challenge, confirmation_code_hashed=code_hash)
+        request = LoginConfirmRequest(
+            challenge=challenge, confirmation_code_hashed=code_hash
+        )
         response = await self.client.login_confirm(request)
 
         auth_token = base64.urlsafe_b64encode(bytes(response.profile)).decode("utf-8")
@@ -165,5 +171,7 @@ class AccountService(ServiceBase):
     ) -> RevokeDeviceResponse:
         return await self.client.revoke_device(revoke_device_request=request)
 
-    async def authorize_webhook(self, *, request: AuthorizeWebhookRequest) -> AuthorizeWebhookResponse:
+    async def authorize_webhook(
+        self, *, request: AuthorizeWebhookRequest
+    ) -> AuthorizeWebhookResponse:
         return await self.client.authorize_webhook(authorize_webhook_request=request)

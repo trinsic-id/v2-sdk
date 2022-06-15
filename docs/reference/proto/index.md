@@ -882,7 +882,6 @@ Request to add a webhook to an ecosystem
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| ecosystem_id | [string](/reference/proto#string) | ID of ecosystem to add webhook to |
 | destination_url | [string](/reference/proto#string) | Destination to post webhook calls to |
 | secret | [string](/reference/proto#string) | HMAC secret for webhook validation |
 | events | [string](/reference/proto#string)[] | Events to subscribe to. Default is "*" (all events) |
@@ -950,7 +949,6 @@ Request to delete a webhook from an ecosystem
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| ecosystem_id | [string](/reference/proto#string) | ID of ecosystem from which to delete webhook |
 | webhook_id | [string](/reference/proto#string) | ID of webhook to delete |
 
 
@@ -996,11 +994,6 @@ Response to `DeleteWebhookRequest`
 
 ### EcosystemInfoRequest
 Request to fetch information about an ecosystem
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| ecosystem_id | [string](/reference/proto#string) | ID of ecosystem to fetch information about |
 
 
 
@@ -1212,7 +1205,6 @@ Request to update an ecosystem
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| ecosystem_id | [string](/reference/proto#string) | ID of the ecosystem to update |
 | description | [string](/reference/proto#string) | Description of the ecosystem |
 | uri | [string](/reference/proto#string) | External URL associated with the organization or ecosystem entity |
 
@@ -1771,7 +1763,7 @@ This information should be stored securely
 <a name="services-account-v1-AuthorizeWebhookRequest"></a>
 
 ### AuthorizeWebhookRequest
-Authorize ecosystem to receive wallet events
+Authorize ecosystem to receive wallet envents
 
 
 | Field | Type | Description |

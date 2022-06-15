@@ -195,8 +195,6 @@ export interface CreateEcosystemResponse {
 
 /** Request to update an ecosystem */
 export interface UpdateEcosystemRequest {
-  /** ID of the ecosystem to update */
-  ecosystemId: string;
   /** Description of the ecosystem */
   description: string;
   /** External URL associated with the organization or ecosystem entity */
@@ -210,8 +208,6 @@ export interface UpdateEcosystemResponse {
 
 /** Request to add a webhook to an ecosystem */
 export interface AddWebhookRequest {
-  /** ID of ecosystem to add webhook to */
-  ecosystemId: string;
   /** Destination to post webhook calls to */
   destinationUrl: string;
   /** HMAC secret for webhook validation */
@@ -228,8 +224,6 @@ export interface AddWebhookResponse {
 
 /** Request to delete a webhook from an ecosystem */
 export interface DeleteWebhookRequest {
-  /** ID of ecosystem from which to delete webhook */
-  ecosystemId: string;
   /** ID of webhook to delete */
   webhookId: string;
 }
@@ -241,10 +235,7 @@ export interface DeleteWebhookResponse {
 }
 
 /** Request to fetch information about an ecosystem */
-export interface EcosystemInfoRequest {
-  /** ID of ecosystem to fetch information about */
-  ecosystemId: string;
-}
+export interface EcosystemInfoRequest {}
 
 /** Response to `InfoRequest` */
 export interface EcosystemInfoResponse {
@@ -1078,7 +1069,7 @@ export const CreateEcosystemResponse = {
 };
 
 function createBaseUpdateEcosystemRequest(): UpdateEcosystemRequest {
-  return { ecosystemId: "", description: "", uri: "" };
+  return { description: "", uri: "" };
 }
 
 export const UpdateEcosystemRequest = {
@@ -1086,14 +1077,11 @@ export const UpdateEcosystemRequest = {
     message: UpdateEcosystemRequest,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
-    if (message.ecosystemId !== "") {
-      writer.uint32(10).string(message.ecosystemId);
-    }
     if (message.description !== "") {
-      writer.uint32(18).string(message.description);
+      writer.uint32(10).string(message.description);
     }
     if (message.uri !== "") {
-      writer.uint32(26).string(message.uri);
+      writer.uint32(18).string(message.uri);
     }
     return writer;
   },
@@ -1109,12 +1097,9 @@ export const UpdateEcosystemRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.ecosystemId = reader.string();
-          break;
-        case 2:
           message.description = reader.string();
           break;
-        case 3:
+        case 2:
           message.uri = reader.string();
           break;
         default:
@@ -1127,7 +1112,6 @@ export const UpdateEcosystemRequest = {
 
   fromJSON(object: any): UpdateEcosystemRequest {
     return {
-      ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
       description: isSet(object.description) ? String(object.description) : "",
       uri: isSet(object.uri) ? String(object.uri) : "",
     };
@@ -1135,8 +1119,6 @@ export const UpdateEcosystemRequest = {
 
   toJSON(message: UpdateEcosystemRequest): unknown {
     const obj: any = {};
-    message.ecosystemId !== undefined &&
-      (obj.ecosystemId = message.ecosystemId);
     message.description !== undefined &&
       (obj.description = message.description);
     message.uri !== undefined && (obj.uri = message.uri);
@@ -1147,7 +1129,6 @@ export const UpdateEcosystemRequest = {
     object: DeepPartial<UpdateEcosystemRequest>
   ): UpdateEcosystemRequest {
     const message = createBaseUpdateEcosystemRequest();
-    message.ecosystemId = object.ecosystemId ?? "";
     message.description = object.description ?? "";
     message.uri = object.uri ?? "";
     return message;
@@ -1220,7 +1201,7 @@ export const UpdateEcosystemResponse = {
 };
 
 function createBaseAddWebhookRequest(): AddWebhookRequest {
-  return { ecosystemId: "", destinationUrl: "", secret: "", events: [] };
+  return { destinationUrl: "", secret: "", events: [] };
 }
 
 export const AddWebhookRequest = {
@@ -1228,17 +1209,14 @@ export const AddWebhookRequest = {
     message: AddWebhookRequest,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
-    if (message.ecosystemId !== "") {
-      writer.uint32(10).string(message.ecosystemId);
-    }
     if (message.destinationUrl !== "") {
-      writer.uint32(18).string(message.destinationUrl);
+      writer.uint32(10).string(message.destinationUrl);
     }
     if (message.secret !== "") {
-      writer.uint32(26).string(message.secret);
+      writer.uint32(18).string(message.secret);
     }
     for (const v of message.events) {
-      writer.uint32(34).string(v!);
+      writer.uint32(26).string(v!);
     }
     return writer;
   },
@@ -1251,15 +1229,12 @@ export const AddWebhookRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.ecosystemId = reader.string();
-          break;
-        case 2:
           message.destinationUrl = reader.string();
           break;
-        case 3:
+        case 2:
           message.secret = reader.string();
           break;
-        case 4:
+        case 3:
           message.events.push(reader.string());
           break;
         default:
@@ -1272,7 +1247,6 @@ export const AddWebhookRequest = {
 
   fromJSON(object: any): AddWebhookRequest {
     return {
-      ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
       destinationUrl: isSet(object.destinationUrl)
         ? String(object.destinationUrl)
         : "",
@@ -1285,8 +1259,6 @@ export const AddWebhookRequest = {
 
   toJSON(message: AddWebhookRequest): unknown {
     const obj: any = {};
-    message.ecosystemId !== undefined &&
-      (obj.ecosystemId = message.ecosystemId);
     message.destinationUrl !== undefined &&
       (obj.destinationUrl = message.destinationUrl);
     message.secret !== undefined && (obj.secret = message.secret);
@@ -1300,7 +1272,6 @@ export const AddWebhookRequest = {
 
   fromPartial(object: DeepPartial<AddWebhookRequest>): AddWebhookRequest {
     const message = createBaseAddWebhookRequest();
-    message.ecosystemId = object.ecosystemId ?? "";
     message.destinationUrl = object.destinationUrl ?? "";
     message.secret = object.secret ?? "";
     message.events = object.events?.map((e) => e) || [];
@@ -1369,7 +1340,7 @@ export const AddWebhookResponse = {
 };
 
 function createBaseDeleteWebhookRequest(): DeleteWebhookRequest {
-  return { ecosystemId: "", webhookId: "" };
+  return { webhookId: "" };
 }
 
 export const DeleteWebhookRequest = {
@@ -1377,11 +1348,8 @@ export const DeleteWebhookRequest = {
     message: DeleteWebhookRequest,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
-    if (message.ecosystemId !== "") {
-      writer.uint32(10).string(message.ecosystemId);
-    }
     if (message.webhookId !== "") {
-      writer.uint32(18).string(message.webhookId);
+      writer.uint32(10).string(message.webhookId);
     }
     return writer;
   },
@@ -1397,9 +1365,6 @@ export const DeleteWebhookRequest = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.ecosystemId = reader.string();
-          break;
-        case 2:
           message.webhookId = reader.string();
           break;
         default:
@@ -1412,22 +1377,18 @@ export const DeleteWebhookRequest = {
 
   fromJSON(object: any): DeleteWebhookRequest {
     return {
-      ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
       webhookId: isSet(object.webhookId) ? String(object.webhookId) : "",
     };
   },
 
   toJSON(message: DeleteWebhookRequest): unknown {
     const obj: any = {};
-    message.ecosystemId !== undefined &&
-      (obj.ecosystemId = message.ecosystemId);
     message.webhookId !== undefined && (obj.webhookId = message.webhookId);
     return obj;
   },
 
   fromPartial(object: DeepPartial<DeleteWebhookRequest>): DeleteWebhookRequest {
     const message = createBaseDeleteWebhookRequest();
-    message.ecosystemId = object.ecosystemId ?? "";
     message.webhookId = object.webhookId ?? "";
     return message;
   },
@@ -1499,17 +1460,14 @@ export const DeleteWebhookResponse = {
 };
 
 function createBaseEcosystemInfoRequest(): EcosystemInfoRequest {
-  return { ecosystemId: "" };
+  return {};
 }
 
 export const EcosystemInfoRequest = {
   encode(
-    message: EcosystemInfoRequest,
+    _: EcosystemInfoRequest,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
-    if (message.ecosystemId !== "") {
-      writer.uint32(10).string(message.ecosystemId);
-    }
     return writer;
   },
 
@@ -1523,9 +1481,6 @@ export const EcosystemInfoRequest = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1:
-          message.ecosystemId = reader.string();
-          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -1534,22 +1489,17 @@ export const EcosystemInfoRequest = {
     return message;
   },
 
-  fromJSON(object: any): EcosystemInfoRequest {
-    return {
-      ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
-    };
+  fromJSON(_: any): EcosystemInfoRequest {
+    return {};
   },
 
-  toJSON(message: EcosystemInfoRequest): unknown {
+  toJSON(_: EcosystemInfoRequest): unknown {
     const obj: any = {};
-    message.ecosystemId !== undefined &&
-      (obj.ecosystemId = message.ecosystemId);
     return obj;
   },
 
-  fromPartial(object: DeepPartial<EcosystemInfoRequest>): EcosystemInfoRequest {
+  fromPartial(_: DeepPartial<EcosystemInfoRequest>): EcosystemInfoRequest {
     const message = createBaseEcosystemInfoRequest();
-    message.ecosystemId = object.ecosystemId ?? "";
     return message;
   },
 };
