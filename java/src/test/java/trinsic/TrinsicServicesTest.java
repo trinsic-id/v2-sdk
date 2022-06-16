@@ -1,7 +1,5 @@
 package trinsic;
 
-import java.io.IOException;
-import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -9,6 +7,9 @@ import trinsic.okapi.DidException;
 import trinsic.services.AccountService;
 import trinsic.services.ProviderService;
 import trinsic.services.common.v1.ProviderOuterClass;
+
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 class TrinsicServicesTest {
 
@@ -41,7 +42,7 @@ class TrinsicServicesTest {
             .setParticipant(ProviderOuterClass.ParticipantType.participant_type_individual)
             .setDescription("I dunno")
             .build();
-    var response = providerService.inviteParticipant(invitation).get();
+    var response = providerService.invite(invitation).get();
     Assertions.assertNotNull(response);
 
     var status =
@@ -96,7 +97,7 @@ class TrinsicServicesTest {
     Assertions.assertThrows(
         IllegalArgumentException.class,
         () ->
-            providerService.inviteParticipant(
+            providerService.invite(
                 ProviderOuterClass.InviteRequest.newBuilder().build()));
     Assertions.assertThrows(
         IllegalArgumentException.class,

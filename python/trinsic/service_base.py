@@ -19,6 +19,7 @@ _skip_routes = [
     "/services.account.v1.Account/SignIn",
     "/services.account.v1.Account/LogIn",
     "/services.account.v1.Account/LogInConfirm",
+    "/services.provider.v1.Provider/CreateEcosystem",
 ]
 
 
@@ -28,15 +29,11 @@ def _update_metadata(
     metadata: "_MetadataLike",
     request: "_MessageLike",
 ) -> "_MetadataLike":
-    if route in _skip_routes:
-        return metadata
-    if route == "/services.provider.v1.Provider/CreateEcosystem":
-        if request.name or (request.details and request.details.email):
-            # This is authenticated to create a named ecosystem
-            pass
-        else:
-            return metadata
     metadata = metadata or {}
+    # Remove this key
+    authenticate_call = metadata.pop("authenticateCall", False)
+    if route in _skip_routes and not authenticate_call:
+        return metadata
     new_metadata = service.build_metadata(request)
     metadata.update(new_metadata)
     return metadata

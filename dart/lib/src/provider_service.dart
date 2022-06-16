@@ -14,8 +14,13 @@ class ProviderService extends ServiceBase {
   Future<CreateEcosystemResponse> createEcosystem(
       {CreateEcosystemRequest? request}) async {
     request = request ?? CreateEcosystemRequest();
-    var metadata = { 'authenticateCall': (request.name.isNotEmpty || request.details.email.isNotEmpty).toString() };
-      return await client.createEcosystem(request, options: CallOptions(metadata: metadata));
+    var metadata = {
+      'authenticateCall':
+          (request.name.isNotEmpty || request.details.email.isNotEmpty)
+              .toString()
+    };
+    return await client.createEcosystem(request,
+        options: CallOptions(metadata: metadata));
   }
 
   Future<UpdateEcosystemResponse> updateEcosystem(
