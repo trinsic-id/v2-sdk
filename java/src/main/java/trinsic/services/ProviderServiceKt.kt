@@ -11,32 +11,35 @@ class ProviderServiceKt(options: Options.ServiceOptions?) : ServiceBase(options)
 
   @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun createEcosystem(request: CreateEcosystemRequest): CreateEcosystemResponse {
-    return stub.createEcosystem(request)
+      if (request.name.isNullOrBlank() && request.details.email.isNullOrBlank()) {
+          return stub.createEcosystem(request)
+      }
+    return withMetadata(stub, request).createEcosystem(request)
   }
 
   @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun updateEcosystem(request: UpdateEcosystemRequest): UpdateEcosystemResponse {
-    return stub.updateEcosystem(request)
+    return withMetadata(stub, request).updateEcosystem(request)
   }
 
   @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun addWebhook(request: AddWebhookRequest): AddWebhookResponse {
-    return stub.addWebhook(request)
+    return withMetadata(stub, request).addWebhook(request)
   }
 
   @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun deleteWebhook(request: DeleteWebhookRequest): DeleteWebhookResponse {
-    return stub.deleteWebhook(request)
+    return withMetadata(stub, request).deleteWebhook(request)
   }
 
   @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun ecosystemInfo(request: EcosystemInfoRequest): EcosystemInfoResponse {
-    return stub.ecosystemInfo(request)
+    return withMetadata(stub, request).ecosystemInfo(request)
   }
 
   @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun generateToken(request: GenerateTokenRequest): GenerateTokenResponse {
-    return stub.generateToken(request)
+    return withMetadata(stub, request).generateToken(request)
   }
 
   @Throws(InvalidProtocolBufferException::class, DidException::class)
@@ -52,11 +55,11 @@ class ProviderServiceKt(options: Options.ServiceOptions?) : ServiceBase(options)
 
   @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun getOberonKey(request: GetOberonKeyRequest): GetOberonKeyResponse {
-    return stub.getOberonKey(request)
+    return withMetadata(stub, request).getOberonKey(request)
   }
 
   @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun getEventToken(request: GetEventTokenRequest): GetEventTokenResponse {
-    return stub.getEventToken(request)
+    return withMetadata(stub, request).getEventToken(request)
   }
 }
