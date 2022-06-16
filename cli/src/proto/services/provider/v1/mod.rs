@@ -101,6 +101,9 @@ pub struct WebhookConfig {
     /// Events the webhook is subscribed to
     #[prost(string, repeated, tag = "4")]
     pub events: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+    /// Whether we are able to sucessfully send events to the webhook
+    #[prost(string, tag = "5")]
+    pub status: ::prost::alloc::string::String,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct CreateEcosystemRequest {
@@ -135,14 +138,11 @@ pub struct CreateEcosystemResponse {
 /// Request to update an ecosystem
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct UpdateEcosystemRequest {
-    /// ID of the ecosystem to update
-    #[prost(string, tag = "1")]
-    pub ecosystem_id: ::prost::alloc::string::String,
     /// Description of the ecosystem
-    #[prost(string, tag = "2")]
+    #[prost(string, tag = "1")]
     pub description: ::prost::alloc::string::String,
     /// External URL associated with the organization or ecosystem entity
-    #[prost(string, tag = "3")]
+    #[prost(string, tag = "2")]
     pub uri: ::prost::alloc::string::String,
 }
 /// Response to `UpdateEcosystemRequest`
@@ -154,17 +154,14 @@ pub struct UpdateEcosystemResponse {
 /// Request to add a webhook to an ecosystem
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct AddWebhookRequest {
-    /// ID of ecosystem to add webhook to
-    #[prost(string, tag = "1")]
-    pub ecosystem_id: ::prost::alloc::string::String,
     /// Destination to post webhook calls to
-    #[prost(string, tag = "2")]
+    #[prost(string, tag = "1")]
     pub destination_url: ::prost::alloc::string::String,
     /// HMAC secret for webhook validation
-    #[prost(string, tag = "3")]
+    #[prost(string, tag = "2")]
     pub secret: ::prost::alloc::string::String,
     /// Events to subscribe to. Default is "*" (all events)
-    #[prost(string, repeated, tag = "4")]
+    #[prost(string, repeated, tag = "3")]
     pub events: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
 /// Response to `AddWebhookRequest`
@@ -177,11 +174,8 @@ pub struct AddWebhookResponse {
 /// Request to delete a webhook from an ecosystem
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct DeleteWebhookRequest {
-    /// ID of ecosystem from which to delete webhook
-    #[prost(string, tag = "1")]
-    pub ecosystem_id: ::prost::alloc::string::String,
     /// ID of webhook to delete
-    #[prost(string, tag = "2")]
+    #[prost(string, tag = "1")]
     pub webhook_id: ::prost::alloc::string::String,
 }
 /// Response to `DeleteWebhookRequest`
@@ -193,11 +187,7 @@ pub struct DeleteWebhookResponse {
 }
 /// Request to fetch information about an ecosystem
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
-pub struct EcosystemInfoRequest {
-    /// ID of ecosystem to fetch information about
-    #[prost(string, tag = "1")]
-    pub ecosystem_id: ::prost::alloc::string::String,
-}
+pub struct EcosystemInfoRequest {}
 /// Response to `InfoRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct EcosystemInfoResponse {
@@ -355,7 +345,7 @@ pub mod provider_client {
             self.inner.unary(request.into_request(), path, codec).await
         }
         #[doc = " Get ecosystem information"]
-        pub async fn info(
+        pub async fn ecosystem_info(
             &mut self,
             request: impl tonic::IntoRequest<super::EcosystemInfoRequest>,
         ) -> Result<tonic::Response<super::EcosystemInfoResponse>, tonic::Status> {
@@ -364,7 +354,7 @@ pub mod provider_client {
                 .await
                 .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/Info");
+            let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/EcosystemInfo");
             self.inner.unary(request.into_request(), path, codec).await
         }
         #[doc = " Generates an unprotected authentication token that can be used to"]

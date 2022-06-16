@@ -19,35 +19,39 @@ public class ProviderService extends ServiceBase {
     this.stub = ProviderGrpc.newFutureStub(this.getChannel());
   }
 
-    public ListenableFuture<ProviderOuterClass.CreateEcosystemResponse> createEcosystem(
-            ProviderOuterClass.CreateEcosystemRequest request)
-            throws InvalidProtocolBufferException, DidException {
-        return withMetadata(stub, request).createEcosystem(request);
+  public ListenableFuture<ProviderOuterClass.CreateEcosystemResponse> createEcosystem(
+      ProviderOuterClass.CreateEcosystemRequest request)
+      throws InvalidProtocolBufferException, DidException {
+    if (request.getName().isBlank() && request.getDetails().getEmail().isBlank()) {
+      return stub.createEcosystem(request);
+    } else {
+      return withMetadata(stub, request).createEcosystem(request);
     }
+  }
 
-    public ListenableFuture<ProviderOuterClass.UpdateEcosystemResponse> updateEcosystem(
-            ProviderOuterClass.UpdateEcosystemRequest request)
-            throws InvalidProtocolBufferException, DidException {
-        return withMetadata(stub, request).updateEcosystem(request);
-    }
+  public ListenableFuture<ProviderOuterClass.UpdateEcosystemResponse> updateEcosystem(
+      ProviderOuterClass.UpdateEcosystemRequest request)
+      throws InvalidProtocolBufferException, DidException {
+    return withMetadata(stub, request).updateEcosystem(request);
+  }
 
-    public ListenableFuture<ProviderOuterClass.AddWebhookResponse> addWebhook(
-            ProviderOuterClass.AddWebhookRequest request)
-            throws InvalidProtocolBufferException, DidException {
-        return withMetadata(stub, request).addWebhook(request);
-    }
+  public ListenableFuture<ProviderOuterClass.AddWebhookResponse> addWebhook(
+      ProviderOuterClass.AddWebhookRequest request)
+      throws InvalidProtocolBufferException, DidException {
+    return withMetadata(stub, request).addWebhook(request);
+  }
 
-    public ListenableFuture<ProviderOuterClass.DeleteWebhookResponse> deleteWebhook(
-            ProviderOuterClass.DeleteWebhookRequest request)
-            throws InvalidProtocolBufferException, DidException {
-        return withMetadata(stub, request).deleteWebhook(request);
-    }
+  public ListenableFuture<ProviderOuterClass.DeleteWebhookResponse> deleteWebhook(
+      ProviderOuterClass.DeleteWebhookRequest request)
+      throws InvalidProtocolBufferException, DidException {
+    return withMetadata(stub, request).deleteWebhook(request);
+  }
 
-    public ListenableFuture<ProviderOuterClass.EcosystemInfoResponse> ecosystemInfo(
-            ProviderOuterClass.EcosystemInfoRequest request)
-            throws InvalidProtocolBufferException, DidException {
-        return withMetadata(stub, request).ecosystemInfo(request);
-    }
+  public ListenableFuture<ProviderOuterClass.EcosystemInfoResponse> ecosystemInfo(
+      ProviderOuterClass.EcosystemInfoRequest request)
+      throws InvalidProtocolBufferException, DidException {
+    return withMetadata(stub, request).ecosystemInfo(request);
+  }
 
   public ListenableFuture<ProviderOuterClass.GenerateTokenResponse> generateToken(
       ProviderOuterClass.GenerateTokenRequest request)
@@ -55,11 +59,11 @@ public class ProviderService extends ServiceBase {
     return withMetadata(stub, request).generateToken(request);
   }
 
-    public ListenableFuture<ProviderOuterClass.InviteResponse> invite(
-            ProviderOuterClass.InviteRequest request)
-            throws InvalidProtocolBufferException, DidException {
-        return withMetadata(stub, request).invite(request);
-    }
+  public ListenableFuture<ProviderOuterClass.InviteResponse> invite(
+      ProviderOuterClass.InviteRequest request)
+      throws InvalidProtocolBufferException, DidException {
+    return withMetadata(stub, request).invite(request);
+  }
 
   public ListenableFuture<ProviderOuterClass.InvitationStatusResponse> invitationStatus(
       ProviderOuterClass.InvitationStatusRequest request)
@@ -70,15 +74,15 @@ public class ProviderService extends ServiceBase {
     return withMetadata(stub, request).invitationStatus(request);
   }
 
-    public ListenableFuture<ProviderOuterClass.GetOberonKeyResponse> getOberonKey(
-            ProviderOuterClass.GetOberonKeyRequest request)
-            throws InvalidProtocolBufferException, DidException {
-        return withMetadata(stub, request).getOberonKey(request);
-    }
+  public ListenableFuture<ProviderOuterClass.GetOberonKeyResponse> getOberonKey(
+      ProviderOuterClass.GetOberonKeyRequest request)
+      throws InvalidProtocolBufferException, DidException {
+    return withMetadata(stub, request).getOberonKey(request);
+  }
 
-    public ListenableFuture<ProviderOuterClass.GetEventTokenResponse> getEventToken(
-            ProviderOuterClass.GetEventTokenRequest request)
-            throws InvalidProtocolBufferException, DidException {
-        return withMetadata(stub, request).getEventToken(request);
-    }
+  public ListenableFuture<ProviderOuterClass.GetEventTokenResponse> getEventToken(
+      ProviderOuterClass.GetEventTokenRequest request)
+      throws InvalidProtocolBufferException, DidException {
+    return withMetadata(stub, request).getEventToken(request);
+  }
 }

@@ -37,7 +37,7 @@ enum ParticipantType {
 message InviteResponse {
     // ID of created invitation
     string invitation_id = 10;
-        
+
     // Invitation Code that must be passed with the account 'SignIn' request
     // to correlate this user with the invitation sent.
     string invitation_code = 11;
@@ -130,14 +130,10 @@ message CreateEcosystemResponse {
 
 // Request to update an ecosystem
 message UpdateEcosystemRequest {
-    // ID of the ecosystem to update
-    string ecosystem_id = 1;
-
     // Description of the ecosystem
-    string description = 2;
-
+    string description = 1;
     // External URL associated with the organization or ecosystem entity
-    string uri = 3;
+    string uri = 2;
 }
 
 // Response to `UpdateEcosystemRequest`
@@ -147,17 +143,14 @@ message UpdateEcosystemResponse {
 
 // Request to add a webhook to an ecosystem
 message AddWebhookRequest {
-     // ID of ecosystem to add webhook to
-    string ecosystem_id = 1;
-    
     // Destination to post webhook calls to
-    string destination_url = 2;
+    string destination_url = 1;
 
     // HMAC secret for webhook validation
-    string secret = 3;
+    string secret = 2;
 
     // Events to subscribe to. Default is "*" (all events)
-    repeated string events = 4;
+    repeated string events = 3;
 }
 
 // Response to `AddWebhookRequest`
@@ -168,11 +161,8 @@ message AddWebhookResponse {
 
 // Request to delete a webhook from an ecosystem
 message DeleteWebhookRequest {
-    // ID of ecosystem from which to delete webhook
-    string ecosystem_id = 1;
-    
     // ID of webhook to delete
-    string webhook_id = 2;
+    string webhook_id = 1;
 }
 
 // Response to `DeleteWebhookRequest`
@@ -182,10 +172,7 @@ message DeleteWebhookResponse {
 }
 
 // Request to fetch information about an ecosystem
-message EcosystemInfoRequest {
-    // ID of ecosystem to fetch information about
-    string ecosystem_id = 1;
-}
+message EcosystemInfoRequest {}
 
 // Response to `InfoRequest`
 message EcosystemInfoResponse {
@@ -214,7 +201,7 @@ message GetOberonKeyResponse {
 
 // generates an events token bound to the provided ed25519 pk
 message GetEventTokenRequest{
-    bytes pk = 1; // 
+    bytes pk = 1; //
 }
 
 // response message containing a token (JWT) that can be used
@@ -226,7 +213,7 @@ message GetEventTokenResponse{
 service Provider {
     // Create new ecosystem and assign the authenticated user as owner
     rpc CreateEcosystem(CreateEcosystemRequest) returns (CreateEcosystemResponse);
-    
+
     // Update an existing ecosystem
     rpc UpdateEcosystem(UpdateEcosystemRequest) returns (UpdateEcosystemResponse);
 

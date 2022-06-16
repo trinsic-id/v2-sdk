@@ -41,7 +41,7 @@ class TrinsicServicesTest {
             .setParticipant(ProviderOuterClass.ParticipantType.participant_type_individual)
             .setDescription("I dunno")
             .build();
-    var response = providerService.inviteParticipant(invitation).get();
+    var response = providerService.invite(invitation).get();
     Assertions.assertNotNull(response);
 
     var status =
@@ -95,9 +95,7 @@ class TrinsicServicesTest {
     var providerService = new ProviderService(TrinsicUtilities.getTrinsicServiceOptions());
     Assertions.assertThrows(
         IllegalArgumentException.class,
-        () ->
-            providerService.inviteParticipant(
-                ProviderOuterClass.InviteRequest.newBuilder().build()));
+        () -> providerService.invite(ProviderOuterClass.InviteRequest.newBuilder().build()));
     Assertions.assertThrows(
         IllegalArgumentException.class,
         () ->
