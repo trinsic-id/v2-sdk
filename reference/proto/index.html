@@ -14,7 +14,7 @@
         
       
       <link rel="icon" href="../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.5+insiders-4.18.1">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.6+insiders-4.18.2">
     
     
       
@@ -1118,6 +1118,807 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#servicescommonv1commonproto" class="md-nav__link">
+    <span class="md-ellipsis">
+      services/common/v1/common.proto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="services/common/v1/common.proto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nonce" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nonce
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serverconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      ServerConfig
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responsestatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      ResponseStatus
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesproviderv1providerproto" class="md-nav__link">
+    <span class="md-ellipsis">
+      services/provider/v1/provider.proto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="services/provider/v1/provider.proto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-provider" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service - Provider
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addwebhookrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      AddWebhookRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addwebhookresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      AddWebhookResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createecosystemrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      CreateEcosystemRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createecosystemresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      CreateEcosystemResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletewebhookrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      DeleteWebhookRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletewebhookresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      DeleteWebhookResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecosystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ecosystem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecosysteminforequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      EcosystemInfoRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecosysteminforesponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      EcosystemInfoResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generatetokenrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      GenerateTokenRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generatetokenresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      GenerateTokenResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geteventtokenrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetEventTokenRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geteventtokenresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetEventTokenResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getoberonkeyrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetOberonKeyRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getoberonkeyresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetOberonKeyResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invitationstatusrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      InvitationStatusRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invitationstatusresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      InvitationStatusResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Invite
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inviterequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      InviteRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inviterequestdidcomminvitation" class="md-nav__link">
+    <span class="md-ellipsis">
+      InviteRequest.DidCommInvitation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inviteresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      InviteResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updateecosystemrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      UpdateEcosystemRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updateecosystemresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      UpdateEcosystemResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#webhookconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      WebhookConfig
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invitationstatusresponsestatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      InvitationStatusResponse.Status
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#participanttype" class="md-nav__link">
+    <span class="md-ellipsis">
+      ParticipantType
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesoptionsfield-optionsproto" class="md-nav__link">
+    <span class="md-ellipsis">
+      services/options/field-options.proto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="services/options/field-options.proto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-level-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      File-level Extensions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicestrust-registryv1trust-registryproto" class="md-nav__link">
+    <span class="md-ellipsis">
+      services/trust-registry/v1/trust-registry.proto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="services/trust-registry/v1/trust-registry.proto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-trustregistry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service - TrustRegistry
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addframeworkrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      AddFrameworkRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addframeworkresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      AddFrameworkResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fetchdatarequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      FetchDataRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fetchdataresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      FetchDataResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getmembershipstatusrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetMembershipStatusRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getmembershipstatusresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetMembershipStatusResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#governanceframework" class="md-nav__link">
+    <span class="md-ellipsis">
+      GovernanceFramework
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registermemberrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      RegisterMemberRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registermemberresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      RegisterMemberResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removeframeworkrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      RemoveFrameworkRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removeframeworkresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      RemoveFrameworkResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#searchregistryrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      SearchRegistryRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#searchregistryresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      SearchRegistryResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unregistermemberrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      UnregisterMemberRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unregistermemberresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      UnregisterMemberResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registrationstatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      RegistrationStatus
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesuniversal-walletv1universal-walletproto" class="md-nav__link">
+    <span class="md-ellipsis">
+      services/universal-wallet/v1/universal-wallet.proto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="services/universal-wallet/v1/universal-wallet.proto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-universalwallet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service - UniversalWallet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deleteitemrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      DeleteItemRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deleteitemresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      DeleteItemResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getitemrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetItemRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getitemresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetItemResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#insertitemrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      InsertItemRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#insertitemresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      InsertItemResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#searchrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      SearchRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#searchresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      SearchResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updateitemrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      UpdateItemRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updateitemresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      UpdateItemResponse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesaccountv1accountproto" class="md-nav__link">
+    <span class="md-ellipsis">
+      services/account/v1/account.proto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="services/account/v1/account.proto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service - Account
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accountdetails" class="md-nav__link">
+    <span class="md-ellipsis">
+      AccountDetails
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accountecosystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      AccountEcosystem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accountinforequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      AccountInfoRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accountinforesponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      AccountInfoResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accountprofile" class="md-nav__link">
+    <span class="md-ellipsis">
+      AccountProfile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authorizewebhookrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      AuthorizeWebhookRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authorizewebhookresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      AuthorizeWebhookResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listdevicesrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      ListDevicesRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listdevicesresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      ListDevicesResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loginconfirmrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      LoginConfirmRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loginconfirmresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      LoginConfirmResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loginrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      LoginRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loginresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      LoginResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#revokedevicerequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      RevokeDeviceRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#revokedeviceresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      RevokeDeviceResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signinrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      SignInRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signinresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      SignInResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tokenprotection" class="md-nav__link">
+    <span class="md-ellipsis">
+      TokenProtection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#confirmationmethod" class="md-nav__link">
+    <span class="md-ellipsis">
+      ConfirmationMethod
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#servicesverifiable-credentialsv1verifiable-credentialsproto" class="md-nav__link">
     <span class="md-ellipsis">
       services/verifiable-credentials/v1/verifiable-credentials.proto
@@ -1494,807 +2295,6 @@
   <a href="#service-debugging" class="md-nav__link">
     <span class="md-ellipsis">
       Service - Debugging
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#servicesuniversal-walletv1universal-walletproto" class="md-nav__link">
-    <span class="md-ellipsis">
-      services/universal-wallet/v1/universal-wallet.proto
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="services/universal-wallet/v1/universal-wallet.proto">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#service-universalwallet" class="md-nav__link">
-    <span class="md-ellipsis">
-      Service - UniversalWallet
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deleteitemrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      DeleteItemRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deleteitemresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      DeleteItemResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#getitemrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      GetItemRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#getitemresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      GetItemResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#insertitemrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      InsertItemRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#insertitemresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      InsertItemResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#searchrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      SearchRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#searchresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      SearchResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#updateitemrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      UpdateItemRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#updateitemresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      UpdateItemResponse
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#servicesproviderv1providerproto" class="md-nav__link">
-    <span class="md-ellipsis">
-      services/provider/v1/provider.proto
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="services/provider/v1/provider.proto">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#service-provider" class="md-nav__link">
-    <span class="md-ellipsis">
-      Service - Provider
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#addwebhookrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      AddWebhookRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#addwebhookresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      AddWebhookResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#createecosystemrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      CreateEcosystemRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#createecosystemresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      CreateEcosystemResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deletewebhookrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      DeleteWebhookRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deletewebhookresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      DeleteWebhookResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ecosystem" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ecosystem
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ecosysteminforequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      EcosystemInfoRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ecosysteminforesponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      EcosystemInfoResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#generatetokenrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      GenerateTokenRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#generatetokenresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      GenerateTokenResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#geteventtokenrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      GetEventTokenRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#geteventtokenresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      GetEventTokenResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#getoberonkeyrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      GetOberonKeyRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#getoberonkeyresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      GetOberonKeyResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#invitationstatusrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      InvitationStatusRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#invitationstatusresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      InvitationStatusResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#invite" class="md-nav__link">
-    <span class="md-ellipsis">
-      Invite
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#inviterequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      InviteRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#inviterequestdidcomminvitation" class="md-nav__link">
-    <span class="md-ellipsis">
-      InviteRequest.DidCommInvitation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#inviteresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      InviteResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#updateecosystemrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      UpdateEcosystemRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#updateecosystemresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      UpdateEcosystemResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#webhookconfig" class="md-nav__link">
-    <span class="md-ellipsis">
-      WebhookConfig
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#invitationstatusresponsestatus" class="md-nav__link">
-    <span class="md-ellipsis">
-      InvitationStatusResponse.Status
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#participanttype" class="md-nav__link">
-    <span class="md-ellipsis">
-      ParticipantType
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#servicescommonv1commonproto" class="md-nav__link">
-    <span class="md-ellipsis">
-      services/common/v1/common.proto
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="services/common/v1/common.proto">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#nonce" class="md-nav__link">
-    <span class="md-ellipsis">
-      Nonce
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#serverconfig" class="md-nav__link">
-    <span class="md-ellipsis">
-      ServerConfig
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#responsestatus" class="md-nav__link">
-    <span class="md-ellipsis">
-      ResponseStatus
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#servicesoptionsfield-optionsproto" class="md-nav__link">
-    <span class="md-ellipsis">
-      services/options/field-options.proto
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="services/options/field-options.proto">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#file-level-extensions" class="md-nav__link">
-    <span class="md-ellipsis">
-      File-level Extensions
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#servicestrust-registryv1trust-registryproto" class="md-nav__link">
-    <span class="md-ellipsis">
-      services/trust-registry/v1/trust-registry.proto
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="services/trust-registry/v1/trust-registry.proto">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#service-trustregistry" class="md-nav__link">
-    <span class="md-ellipsis">
-      Service - TrustRegistry
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#addframeworkrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      AddFrameworkRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#addframeworkresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      AddFrameworkResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fetchdatarequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      FetchDataRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fetchdataresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      FetchDataResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#getmembershipstatusrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      GetMembershipStatusRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#getmembershipstatusresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      GetMembershipStatusResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#governanceframework" class="md-nav__link">
-    <span class="md-ellipsis">
-      GovernanceFramework
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#registermemberrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      RegisterMemberRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#registermemberresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      RegisterMemberResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#removeframeworkrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      RemoveFrameworkRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#removeframeworkresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      RemoveFrameworkResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#searchregistryrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      SearchRegistryRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#searchregistryresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      SearchRegistryResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#unregistermemberrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      UnregisterMemberRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#unregistermemberresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      UnregisterMemberResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#registrationstatus" class="md-nav__link">
-    <span class="md-ellipsis">
-      RegistrationStatus
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#servicesaccountv1accountproto" class="md-nav__link">
-    <span class="md-ellipsis">
-      services/account/v1/account.proto
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="services/account/v1/account.proto">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#service-account" class="md-nav__link">
-    <span class="md-ellipsis">
-      Service - Account
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#accountdetails" class="md-nav__link">
-    <span class="md-ellipsis">
-      AccountDetails
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#accountecosystem" class="md-nav__link">
-    <span class="md-ellipsis">
-      AccountEcosystem
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#accountinforequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      AccountInfoRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#accountinforesponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      AccountInfoResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#accountprofile" class="md-nav__link">
-    <span class="md-ellipsis">
-      AccountProfile
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#authorizewebhookrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      AuthorizeWebhookRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#authorizewebhookresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      AuthorizeWebhookResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#listdevicesrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      ListDevicesRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#listdevicesresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      ListDevicesResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#loginconfirmrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      LoginConfirmRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#loginconfirmresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      LoginConfirmResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#loginrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      LoginRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#loginresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      LoginResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#revokedevicerequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      RevokeDeviceRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#revokedeviceresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      RevokeDeviceResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#signinrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      SignInRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#signinresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      SignInResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tokenprotection" class="md-nav__link">
-    <span class="md-ellipsis">
-      TokenProtection
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#confirmationmethod" class="md-nav__link">
-    <span class="md-ellipsis">
-      ConfirmationMethod
     </span>
   </a>
   
@@ -2880,6 +2880,807 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#servicescommonv1commonproto" class="md-nav__link">
+    <span class="md-ellipsis">
+      services/common/v1/common.proto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="services/common/v1/common.proto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nonce" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nonce
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serverconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      ServerConfig
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responsestatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      ResponseStatus
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesproviderv1providerproto" class="md-nav__link">
+    <span class="md-ellipsis">
+      services/provider/v1/provider.proto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="services/provider/v1/provider.proto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-provider" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service - Provider
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addwebhookrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      AddWebhookRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addwebhookresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      AddWebhookResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createecosystemrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      CreateEcosystemRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createecosystemresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      CreateEcosystemResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletewebhookrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      DeleteWebhookRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletewebhookresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      DeleteWebhookResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecosystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ecosystem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecosysteminforequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      EcosystemInfoRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecosysteminforesponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      EcosystemInfoResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generatetokenrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      GenerateTokenRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generatetokenresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      GenerateTokenResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geteventtokenrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetEventTokenRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geteventtokenresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetEventTokenResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getoberonkeyrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetOberonKeyRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getoberonkeyresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetOberonKeyResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invitationstatusrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      InvitationStatusRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invitationstatusresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      InvitationStatusResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Invite
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inviterequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      InviteRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inviterequestdidcomminvitation" class="md-nav__link">
+    <span class="md-ellipsis">
+      InviteRequest.DidCommInvitation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inviteresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      InviteResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updateecosystemrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      UpdateEcosystemRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updateecosystemresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      UpdateEcosystemResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#webhookconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      WebhookConfig
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invitationstatusresponsestatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      InvitationStatusResponse.Status
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#participanttype" class="md-nav__link">
+    <span class="md-ellipsis">
+      ParticipantType
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesoptionsfield-optionsproto" class="md-nav__link">
+    <span class="md-ellipsis">
+      services/options/field-options.proto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="services/options/field-options.proto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-level-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      File-level Extensions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicestrust-registryv1trust-registryproto" class="md-nav__link">
+    <span class="md-ellipsis">
+      services/trust-registry/v1/trust-registry.proto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="services/trust-registry/v1/trust-registry.proto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-trustregistry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service - TrustRegistry
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addframeworkrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      AddFrameworkRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addframeworkresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      AddFrameworkResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fetchdatarequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      FetchDataRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fetchdataresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      FetchDataResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getmembershipstatusrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetMembershipStatusRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getmembershipstatusresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetMembershipStatusResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#governanceframework" class="md-nav__link">
+    <span class="md-ellipsis">
+      GovernanceFramework
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registermemberrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      RegisterMemberRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registermemberresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      RegisterMemberResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removeframeworkrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      RemoveFrameworkRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removeframeworkresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      RemoveFrameworkResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#searchregistryrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      SearchRegistryRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#searchregistryresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      SearchRegistryResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unregistermemberrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      UnregisterMemberRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unregistermemberresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      UnregisterMemberResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registrationstatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      RegistrationStatus
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesuniversal-walletv1universal-walletproto" class="md-nav__link">
+    <span class="md-ellipsis">
+      services/universal-wallet/v1/universal-wallet.proto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="services/universal-wallet/v1/universal-wallet.proto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-universalwallet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service - UniversalWallet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deleteitemrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      DeleteItemRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deleteitemresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      DeleteItemResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getitemrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetItemRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getitemresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetItemResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#insertitemrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      InsertItemRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#insertitemresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      InsertItemResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#searchrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      SearchRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#searchresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      SearchResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updateitemrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      UpdateItemRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updateitemresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      UpdateItemResponse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servicesaccountv1accountproto" class="md-nav__link">
+    <span class="md-ellipsis">
+      services/account/v1/account.proto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="services/account/v1/account.proto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service - Account
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accountdetails" class="md-nav__link">
+    <span class="md-ellipsis">
+      AccountDetails
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accountecosystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      AccountEcosystem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accountinforequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      AccountInfoRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accountinforesponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      AccountInfoResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accountprofile" class="md-nav__link">
+    <span class="md-ellipsis">
+      AccountProfile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authorizewebhookrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      AuthorizeWebhookRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authorizewebhookresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      AuthorizeWebhookResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listdevicesrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      ListDevicesRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listdevicesresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      ListDevicesResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loginconfirmrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      LoginConfirmRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loginconfirmresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      LoginConfirmResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loginrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      LoginRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loginresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      LoginResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#revokedevicerequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      RevokeDeviceRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#revokedeviceresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      RevokeDeviceResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signinrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      SignInRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signinresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      SignInResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tokenprotection" class="md-nav__link">
+    <span class="md-ellipsis">
+      TokenProtection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#confirmationmethod" class="md-nav__link">
+    <span class="md-ellipsis">
+      ConfirmationMethod
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#servicesverifiable-credentialsv1verifiable-credentialsproto" class="md-nav__link">
     <span class="md-ellipsis">
       services/verifiable-credentials/v1/verifiable-credentials.proto
@@ -3267,807 +4068,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#servicesuniversal-walletv1universal-walletproto" class="md-nav__link">
-    <span class="md-ellipsis">
-      services/universal-wallet/v1/universal-wallet.proto
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="services/universal-wallet/v1/universal-wallet.proto">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#service-universalwallet" class="md-nav__link">
-    <span class="md-ellipsis">
-      Service - UniversalWallet
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deleteitemrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      DeleteItemRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deleteitemresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      DeleteItemResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#getitemrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      GetItemRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#getitemresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      GetItemResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#insertitemrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      InsertItemRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#insertitemresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      InsertItemResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#searchrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      SearchRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#searchresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      SearchResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#updateitemrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      UpdateItemRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#updateitemresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      UpdateItemResponse
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#servicesproviderv1providerproto" class="md-nav__link">
-    <span class="md-ellipsis">
-      services/provider/v1/provider.proto
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="services/provider/v1/provider.proto">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#service-provider" class="md-nav__link">
-    <span class="md-ellipsis">
-      Service - Provider
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#addwebhookrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      AddWebhookRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#addwebhookresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      AddWebhookResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#createecosystemrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      CreateEcosystemRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#createecosystemresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      CreateEcosystemResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deletewebhookrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      DeleteWebhookRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deletewebhookresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      DeleteWebhookResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ecosystem" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ecosystem
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ecosysteminforequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      EcosystemInfoRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ecosysteminforesponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      EcosystemInfoResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#generatetokenrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      GenerateTokenRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#generatetokenresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      GenerateTokenResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#geteventtokenrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      GetEventTokenRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#geteventtokenresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      GetEventTokenResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#getoberonkeyrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      GetOberonKeyRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#getoberonkeyresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      GetOberonKeyResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#invitationstatusrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      InvitationStatusRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#invitationstatusresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      InvitationStatusResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#invite" class="md-nav__link">
-    <span class="md-ellipsis">
-      Invite
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#inviterequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      InviteRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#inviterequestdidcomminvitation" class="md-nav__link">
-    <span class="md-ellipsis">
-      InviteRequest.DidCommInvitation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#inviteresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      InviteResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#updateecosystemrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      UpdateEcosystemRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#updateecosystemresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      UpdateEcosystemResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#webhookconfig" class="md-nav__link">
-    <span class="md-ellipsis">
-      WebhookConfig
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#invitationstatusresponsestatus" class="md-nav__link">
-    <span class="md-ellipsis">
-      InvitationStatusResponse.Status
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#participanttype" class="md-nav__link">
-    <span class="md-ellipsis">
-      ParticipantType
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#servicescommonv1commonproto" class="md-nav__link">
-    <span class="md-ellipsis">
-      services/common/v1/common.proto
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="services/common/v1/common.proto">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#nonce" class="md-nav__link">
-    <span class="md-ellipsis">
-      Nonce
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#serverconfig" class="md-nav__link">
-    <span class="md-ellipsis">
-      ServerConfig
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#responsestatus" class="md-nav__link">
-    <span class="md-ellipsis">
-      ResponseStatus
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#servicesoptionsfield-optionsproto" class="md-nav__link">
-    <span class="md-ellipsis">
-      services/options/field-options.proto
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="services/options/field-options.proto">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#file-level-extensions" class="md-nav__link">
-    <span class="md-ellipsis">
-      File-level Extensions
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#servicestrust-registryv1trust-registryproto" class="md-nav__link">
-    <span class="md-ellipsis">
-      services/trust-registry/v1/trust-registry.proto
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="services/trust-registry/v1/trust-registry.proto">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#service-trustregistry" class="md-nav__link">
-    <span class="md-ellipsis">
-      Service - TrustRegistry
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#addframeworkrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      AddFrameworkRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#addframeworkresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      AddFrameworkResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fetchdatarequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      FetchDataRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fetchdataresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      FetchDataResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#getmembershipstatusrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      GetMembershipStatusRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#getmembershipstatusresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      GetMembershipStatusResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#governanceframework" class="md-nav__link">
-    <span class="md-ellipsis">
-      GovernanceFramework
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#registermemberrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      RegisterMemberRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#registermemberresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      RegisterMemberResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#removeframeworkrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      RemoveFrameworkRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#removeframeworkresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      RemoveFrameworkResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#searchregistryrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      SearchRegistryRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#searchregistryresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      SearchRegistryResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#unregistermemberrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      UnregisterMemberRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#unregistermemberresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      UnregisterMemberResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#registrationstatus" class="md-nav__link">
-    <span class="md-ellipsis">
-      RegistrationStatus
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#servicesaccountv1accountproto" class="md-nav__link">
-    <span class="md-ellipsis">
-      services/account/v1/account.proto
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="services/account/v1/account.proto">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#service-account" class="md-nav__link">
-    <span class="md-ellipsis">
-      Service - Account
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#accountdetails" class="md-nav__link">
-    <span class="md-ellipsis">
-      AccountDetails
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#accountecosystem" class="md-nav__link">
-    <span class="md-ellipsis">
-      AccountEcosystem
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#accountinforequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      AccountInfoRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#accountinforesponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      AccountInfoResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#accountprofile" class="md-nav__link">
-    <span class="md-ellipsis">
-      AccountProfile
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#authorizewebhookrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      AuthorizeWebhookRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#authorizewebhookresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      AuthorizeWebhookResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#listdevicesrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      ListDevicesRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#listdevicesresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      ListDevicesResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#loginconfirmrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      LoginConfirmRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#loginconfirmresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      LoginConfirmResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#loginrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      LoginRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#loginresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      LoginResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#revokedevicerequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      RevokeDeviceRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#revokedeviceresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      RevokeDeviceResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#signinrequest" class="md-nav__link">
-    <span class="md-ellipsis">
-      SignInRequest
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#signinresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      SignInResponse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tokenprotection" class="md-nav__link">
-    <span class="md-ellipsis">
-      TokenProtection
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#confirmationmethod" class="md-nav__link">
-    <span class="md-ellipsis">
-      ConfirmationMethod
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#scalar-value-types" class="md-nav__link">
     <span class="md-ellipsis">
       Scalar Value Types
@@ -4145,6 +4145,1961 @@
 </table>
 <!-- end messages -->
 
+<!-- end enums -->
+
+<!-- end HasExtensions -->
+
+<p><a name="services_common_v1_common-proto"></a></p>
+<p align="right"><a href="#top">Top</a></p>
+
+<h2 id="servicescommonv1commonproto">services/common/v1/common.proto<a class="headerlink" href="#servicescommonv1commonproto" title="Permanent link">&para;</a></h2>
+<!-- end services -->
+
+<p><a name="services-common-v1-Nonce"></a></p>
+<h3 id="nonce">Nonce<a class="headerlink" href="#nonce" title="Permanent link">&para;</a></h3>
+<p>Nonce used to generate an oberon proof</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>timestamp</td>
+<td><a href="/reference/proto#int64">int64</a></td>
+<td>UTC unix millisecond timestamp the request was made</td>
+</tr>
+<tr>
+<td>request_hash</td>
+<td><a href="/reference/proto#bytes">bytes</a></td>
+<td>blake3256 hash of the request body</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-common-v1-ServerConfig"></a></p>
+<h3 id="serverconfig">ServerConfig<a class="headerlink" href="#serverconfig" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>endpoint</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>service endpoint</td>
+</tr>
+<tr>
+<td>port</td>
+<td><a href="/reference/proto#int32">int32</a></td>
+<td>service port</td>
+</tr>
+<tr>
+<td>use_tls</td>
+<td><a href="/reference/proto#bool">bool</a></td>
+<td>indicates if tls is used</td>
+</tr>
+</tbody>
+</table>
+<!-- end messages -->
+
+<p><a name="services-common-v1-ResponseStatus"></a></p>
+<h3 id="responsestatus">ResponseStatus<a class="headerlink" href="#responsestatus" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SUCCESS</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>WALLET_ACCESS_DENIED</td>
+<td>10</td>
+<td></td>
+</tr>
+<tr>
+<td>WALLET_EXISTS</td>
+<td>11</td>
+<td></td>
+</tr>
+<tr>
+<td>ITEM_NOT_FOUND</td>
+<td>20</td>
+<td></td>
+</tr>
+<tr>
+<td>SERIALIZATION_ERROR</td>
+<td>200</td>
+<td></td>
+</tr>
+<tr>
+<td>UNKNOWN_ERROR</td>
+<td>100</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!-- end enums -->
+
+<!-- end HasExtensions -->
+
+<p><a name="services_provider_v1_provider-proto"></a></p>
+<p align="right"><a href="#top">Top</a></p>
+
+<h2 id="servicesproviderv1providerproto">services/provider/v1/provider.proto<a class="headerlink" href="#servicesproviderv1providerproto" title="Permanent link">&para;</a></h2>
+<p><a name="services-provider-v1-Provider"></a></p>
+<h3 id="service-provider">Service - Provider<a class="headerlink" href="#service-provider" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Method Name</th>
+<th>Request Type</th>
+<th>Response Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CreateEcosystem</td>
+<td><a href="/reference/proto#services-provider-v1-CreateEcosystemRequest">CreateEcosystemRequest</a></td>
+<td><a href="/reference/proto#services-provider-v1-CreateEcosystemResponse">CreateEcosystemResponse</a></td>
+<td>Create new ecosystem and assign the authenticated user as owner</td>
+</tr>
+<tr>
+<td>UpdateEcosystem</td>
+<td><a href="/reference/proto#services-provider-v1-UpdateEcosystemRequest">UpdateEcosystemRequest</a></td>
+<td><a href="/reference/proto#services-provider-v1-UpdateEcosystemResponse">UpdateEcosystemResponse</a></td>
+<td>Update an existing ecosystem</td>
+</tr>
+<tr>
+<td>AddWebhook</td>
+<td><a href="/reference/proto#services-provider-v1-AddWebhookRequest">AddWebhookRequest</a></td>
+<td><a href="/reference/proto#services-provider-v1-AddWebhookResponse">AddWebhookResponse</a></td>
+<td>Add a webhook endpoint to the ecosystem</td>
+</tr>
+<tr>
+<td>DeleteWebhook</td>
+<td><a href="/reference/proto#services-provider-v1-DeleteWebhookRequest">DeleteWebhookRequest</a></td>
+<td><a href="/reference/proto#services-provider-v1-DeleteWebhookResponse">DeleteWebhookResponse</a></td>
+<td>Delete a webhook endpoint from the ecosystem</td>
+</tr>
+<tr>
+<td>EcosystemInfo</td>
+<td><a href="/reference/proto#services-provider-v1-EcosystemInfoRequest">EcosystemInfoRequest</a></td>
+<td><a href="/reference/proto#services-provider-v1-EcosystemInfoResponse">EcosystemInfoResponse</a></td>
+<td>Get ecosystem information</td>
+</tr>
+<tr>
+<td>GenerateToken</td>
+<td><a href="/reference/proto#services-provider-v1-GenerateTokenRequest">GenerateTokenRequest</a></td>
+<td><a href="/reference/proto#services-provider-v1-GenerateTokenResponse">GenerateTokenResponse</a></td>
+<td>Generates an unprotected authentication token that can be used to configure server side applications</td>
+</tr>
+<tr>
+<td>Invite</td>
+<td><a href="/reference/proto#services-provider-v1-InviteRequest">InviteRequest</a></td>
+<td><a href="/reference/proto#services-provider-v1-InviteResponse">InviteResponse</a></td>
+<td>Invite a user to the ecosystem</td>
+</tr>
+<tr>
+<td>InvitationStatus</td>
+<td><a href="/reference/proto#services-provider-v1-InvitationStatusRequest">InvitationStatusRequest</a></td>
+<td><a href="/reference/proto#services-provider-v1-InvitationStatusResponse">InvitationStatusResponse</a></td>
+<td>Check the invitation status</td>
+</tr>
+<tr>
+<td>GetOberonKey</td>
+<td><a href="/reference/proto#services-provider-v1-GetOberonKeyRequest">GetOberonKeyRequest</a></td>
+<td><a href="/reference/proto#services-provider-v1-GetOberonKeyResponse">GetOberonKeyResponse</a></td>
+<td>Returns the public key being used to create/verify oberon tokens</td>
+</tr>
+<tr>
+<td>GetEventToken</td>
+<td><a href="/reference/proto#services-provider-v1-GetEventTokenRequest">GetEventTokenRequest</a></td>
+<td><a href="/reference/proto#services-provider-v1-GetEventTokenResponse">GetEventTokenResponse</a></td>
+<td>Generate a signed token (JWT) that can be used to connect to the message bus</td>
+</tr>
+</tbody>
+</table>
+<!-- end services -->
+
+<p><a name="services-provider-v1-AddWebhookRequest"></a></p>
+<h3 id="addwebhookrequest">AddWebhookRequest<a class="headerlink" href="#addwebhookrequest" title="Permanent link">&para;</a></h3>
+<p>Request to add a webhook to an ecosystem</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>destination_url</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Destination to post webhook calls to</td>
+</tr>
+<tr>
+<td>secret</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>HMAC secret for webhook validation</td>
+</tr>
+<tr>
+<td>events</td>
+<td><a href="/reference/proto#string">string</a>[]</td>
+<td>Events to subscribe to. Default is "*" (all events)</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-AddWebhookResponse"></a></p>
+<h3 id="addwebhookresponse">AddWebhookResponse<a class="headerlink" href="#addwebhookresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>AddWebhookRequest</code></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ecosystem</td>
+<td><a href="/reference/proto#services-provider-v1-Ecosystem">Ecosystem</a></td>
+<td>Ecosystem with new webhook</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-CreateEcosystemRequest"></a></p>
+<h3 id="createecosystemrequest">CreateEcosystemRequest<a class="headerlink" href="#createecosystemrequest" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Globally unique name for the Ecosystem. This name will be part of the ecosystem specific URLs and namespaces. Allowed characters are lowercase letters, numbers, underscore and hyphen.</td>
+</tr>
+<tr>
+<td>description</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Ecosystem description</td>
+</tr>
+<tr>
+<td>uri</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>External URL associated with your organization or ecosystem entity</td>
+</tr>
+<tr>
+<td>details</td>
+<td><a href="/reference/proto#services-account-v1-AccountDetails">services.account.v1.AccountDetails</a></td>
+<td>The account details of the owner of the ecosystem</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-CreateEcosystemResponse"></a></p>
+<h3 id="createecosystemresponse">CreateEcosystemResponse<a class="headerlink" href="#createecosystemresponse" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ecosystem</td>
+<td><a href="/reference/proto#services-provider-v1-Ecosystem">Ecosystem</a></td>
+<td>Details of the created ecosystem</td>
+</tr>
+<tr>
+<td>profile</td>
+<td><a href="/reference/proto#services-account-v1-AccountProfile">services.account.v1.AccountProfile</a></td>
+<td>Account profile for auth of the owner of the ecosystem</td>
+</tr>
+<tr>
+<td>confirmation_method</td>
+<td><a href="/reference/proto#services-account-v1-ConfirmationMethod">services.account.v1.ConfirmationMethod</a></td>
+<td>Indicates if confirmation of account is required. This setting is configured globally by the server administrator.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-DeleteWebhookRequest"></a></p>
+<h3 id="deletewebhookrequest">DeleteWebhookRequest<a class="headerlink" href="#deletewebhookrequest" title="Permanent link">&para;</a></h3>
+<p>Request to delete a webhook from an ecosystem</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>webhook_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>ID of webhook to delete</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-DeleteWebhookResponse"></a></p>
+<h3 id="deletewebhookresponse">DeleteWebhookResponse<a class="headerlink" href="#deletewebhookresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>DeleteWebhookRequest</code></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ecosystem</td>
+<td><a href="/reference/proto#services-provider-v1-Ecosystem">Ecosystem</a></td>
+<td>Ecosystem after removal of webhook</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-Ecosystem"></a></p>
+<h3 id="ecosystem">Ecosystem<a class="headerlink" href="#ecosystem" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>URN of the ecosystem</td>
+</tr>
+<tr>
+<td>name</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Globally unique name for the ecosystem</td>
+</tr>
+<tr>
+<td>description</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Ecosystem description</td>
+</tr>
+<tr>
+<td>uri</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>External URL associated with the organization or ecosystem entity</td>
+</tr>
+<tr>
+<td>webhooks</td>
+<td><a href="/reference/proto#services-provider-v1-WebhookConfig">WebhookConfig</a>[]</td>
+<td>Configured webhooks, if any</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-EcosystemInfoRequest"></a></p>
+<h3 id="ecosysteminforequest">EcosystemInfoRequest<a class="headerlink" href="#ecosysteminforequest" title="Permanent link">&para;</a></h3>
+<p>Request to fetch information about an ecosystem</p>
+<p><a name="services-provider-v1-EcosystemInfoResponse"></a></p>
+<h3 id="ecosysteminforesponse">EcosystemInfoResponse<a class="headerlink" href="#ecosysteminforesponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>InfoRequest</code></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ecosystem</td>
+<td><a href="/reference/proto#services-provider-v1-Ecosystem">Ecosystem</a></td>
+<td>Ecosystem corresponding to requested <code>ecosystem_id</code></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-GenerateTokenRequest"></a></p>
+<h3 id="generatetokenrequest">GenerateTokenRequest<a class="headerlink" href="#generatetokenrequest" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>description</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Description to identify this token</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-GenerateTokenResponse"></a></p>
+<h3 id="generatetokenresponse">GenerateTokenResponse<a class="headerlink" href="#generatetokenresponse" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>profile</td>
+<td><a href="/reference/proto#services-account-v1-AccountProfile">services.account.v1.AccountProfile</a></td>
+<td>Account authentication profile that contains unprotected token</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-GetEventTokenRequest"></a></p>
+<h3 id="geteventtokenrequest">GetEventTokenRequest<a class="headerlink" href="#geteventtokenrequest" title="Permanent link">&para;</a></h3>
+<p>generates an events token bound to the provided ed25519 pk</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pk</td>
+<td><a href="/reference/proto#bytes">bytes</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-GetEventTokenResponse"></a></p>
+<h3 id="geteventtokenresponse">GetEventTokenResponse<a class="headerlink" href="#geteventtokenresponse" title="Permanent link">&para;</a></h3>
+<p>response message containing a token (JWT) that can be used
+to connect directly to the message streaming architecture</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>token</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>a JWT bound to the PK provided in the request</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-GetOberonKeyRequest"></a></p>
+<h3 id="getoberonkeyrequest">GetOberonKeyRequest<a class="headerlink" href="#getoberonkeyrequest" title="Permanent link">&para;</a></h3>
+<p>request message for GetOberonKey</p>
+<p><a name="services-provider-v1-GetOberonKeyResponse"></a></p>
+<h3 id="getoberonkeyresponse">GetOberonKeyResponse<a class="headerlink" href="#getoberonkeyresponse" title="Permanent link">&para;</a></h3>
+<p>response message for GetOberonKey</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Oberon Public Key as RAW base64 URL encoded string</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-InvitationStatusRequest"></a></p>
+<h3 id="invitationstatusrequest">InvitationStatusRequest<a class="headerlink" href="#invitationstatusrequest" title="Permanent link">&para;</a></h3>
+<p>Request details for the status of onboarding
+an individual or organization.
+The reference_id passed is the response from the
+<code>Onboard</code> method call</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>invitation_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>ID of invitation</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-InvitationStatusResponse"></a></p>
+<h3 id="invitationstatusresponse">InvitationStatusResponse<a class="headerlink" href="#invitationstatusresponse" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status</td>
+<td><a href="/reference/proto#services-provider-v1-InvitationStatusResponse-Status">InvitationStatusResponse.Status</a></td>
+<td>Status of invitation</td>
+</tr>
+<tr>
+<td>status_details</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Human-readable string with details about invitation status</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-Invite"></a></p>
+<h3 id="invite">Invite<a class="headerlink" href="#invite" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>code</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>created</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>accepted</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>expires</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-InviteRequest"></a></p>
+<h3 id="inviterequest">InviteRequest<a class="headerlink" href="#inviterequest" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>participant</td>
+<td><a href="/reference/proto#services-provider-v1-ParticipantType">ParticipantType</a></td>
+<td>Type of participant being invited (individual/organization)</td>
+</tr>
+<tr>
+<td>description</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Description of invitation</td>
+</tr>
+<tr>
+<td>details</td>
+<td><a href="/reference/proto#services-account-v1-AccountDetails">services.account.v1.AccountDetails</a></td>
+<td>Account details of invitee</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-InviteRequest-DidCommInvitation"></a></p>
+<h3 id="inviterequestdidcomminvitation">InviteRequest.DidCommInvitation<a class="headerlink" href="#inviterequestdidcomminvitation" title="Permanent link">&para;</a></h3>
+<p><a name="services-provider-v1-InviteResponse"></a></p>
+<h3 id="inviteresponse">InviteResponse<a class="headerlink" href="#inviteresponse" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>invitation_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>ID of created invitation</td>
+</tr>
+<tr>
+<td>invitation_code</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Invitation Code that must be passed with the account 'SignIn' request to correlate this user with the invitation sent.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-UpdateEcosystemRequest"></a></p>
+<h3 id="updateecosystemrequest">UpdateEcosystemRequest<a class="headerlink" href="#updateecosystemrequest" title="Permanent link">&para;</a></h3>
+<p>Request to update an ecosystem</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>description</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Description of the ecosystem</td>
+</tr>
+<tr>
+<td>uri</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>External URL associated with the organization or ecosystem entity</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-UpdateEcosystemResponse"></a></p>
+<h3 id="updateecosystemresponse">UpdateEcosystemResponse<a class="headerlink" href="#updateecosystemresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>UpdateEcosystemRequest</code></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ecosystem</td>
+<td><a href="/reference/proto#services-provider-v1-Ecosystem">Ecosystem</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-WebhookConfig"></a></p>
+<h3 id="webhookconfig">WebhookConfig<a class="headerlink" href="#webhookconfig" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>UUID of the webhook</td>
+</tr>
+<tr>
+<td>destination_url</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Destination to post webhook calls to</td>
+</tr>
+<tr>
+<td>events</td>
+<td><a href="/reference/proto#string">string</a>[]</td>
+<td>Events the webhook is subscribed to</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Whether we are able to sucessfully send events to the webhook</td>
+</tr>
+</tbody>
+</table>
+<!-- end messages -->
+
+<p><a name="services-provider-v1-InvitationStatusResponse-Status"></a></p>
+<h3 id="invitationstatusresponsestatus">InvitationStatusResponse.Status<a class="headerlink" href="#invitationstatusresponsestatus" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Error</td>
+<td>0</td>
+<td>Onboarding resulted in error</td>
+</tr>
+<tr>
+<td>InvitationSent</td>
+<td>1</td>
+<td>The participant has been invited</td>
+</tr>
+<tr>
+<td>Completed</td>
+<td>2</td>
+<td>The participant has been onboarded</td>
+</tr>
+<tr>
+<td>Expired</td>
+<td>3</td>
+<td>The invite has expired</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-ParticipantType"></a></p>
+<h3 id="participanttype">ParticipantType<a class="headerlink" href="#participanttype" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>participant_type_individual</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>participant_type_organization</td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!-- end enums -->
+
+<!-- end HasExtensions -->
+
+<p><a name="services_options_field-options-proto"></a></p>
+<p align="right"><a href="#top">Top</a></p>
+
+<h2 id="servicesoptionsfield-optionsproto">services/options/field-options.proto<a class="headerlink" href="#servicesoptionsfield-optionsproto" title="Permanent link">&para;</a></h2>
+<!-- end services -->
+
+<!-- end messages -->
+
+<!-- end enums -->
+
+<p><a name="services_options_field-options-proto-extensions"></a></p>
+<h3 id="file-level-extensions">File-level Extensions<a class="headerlink" href="#file-level-extensions" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Extension</th>
+<th>Type</th>
+<th>Base</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>optional</td>
+<td>bool</td>
+<td>.google.protobuf.FieldOptions</td>
+<td>60000</td>
+<td>Whether field is optional in Trinsic's backend. This is not the same as an <code>optional</code> protobuf label; it only impacts documentation generation for the field.</td>
+</tr>
+</tbody>
+</table>
+<!-- end HasExtensions -->
+
+<p><a name="services_trust-registry_v1_trust-registry-proto"></a></p>
+<p align="right"><a href="#top">Top</a></p>
+
+<h2 id="servicestrust-registryv1trust-registryproto">services/trust-registry/v1/trust-registry.proto<a class="headerlink" href="#servicestrust-registryv1trust-registryproto" title="Permanent link">&para;</a></h2>
+<p><a name="services-trustregistry-v1-TrustRegistry"></a></p>
+<h3 id="service-trustregistry">Service - TrustRegistry<a class="headerlink" href="#service-trustregistry" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Method Name</th>
+<th>Request Type</th>
+<th>Response Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AddFramework</td>
+<td><a href="/reference/proto#services-trustregistry-v1-AddFrameworkRequest">AddFrameworkRequest</a></td>
+<td><a href="/reference/proto#services-trustregistry-v1-AddFrameworkResponse">AddFrameworkResponse</a></td>
+<td>Adds a trust registry defintion to the ecosystem</td>
+</tr>
+<tr>
+<td>RemoveFramework</td>
+<td><a href="/reference/proto#services-trustregistry-v1-RemoveFrameworkRequest">RemoveFrameworkRequest</a></td>
+<td><a href="/reference/proto#services-trustregistry-v1-RemoveFrameworkResponse">RemoveFrameworkResponse</a></td>
+<td></td>
+</tr>
+<tr>
+<td>SearchRegistry</td>
+<td><a href="/reference/proto#services-trustregistry-v1-SearchRegistryRequest">SearchRegistryRequest</a></td>
+<td><a href="/reference/proto#services-trustregistry-v1-SearchRegistryResponse">SearchRegistryResponse</a></td>
+<td></td>
+</tr>
+<tr>
+<td>RegisterMember</td>
+<td><a href="/reference/proto#services-trustregistry-v1-RegisterMemberRequest">RegisterMemberRequest</a></td>
+<td><a href="/reference/proto#services-trustregistry-v1-RegisterMemberResponse">RegisterMemberResponse</a></td>
+<td>Registers an authoritative issuer with a credential template</td>
+</tr>
+<tr>
+<td>UnregisterMember</td>
+<td><a href="/reference/proto#services-trustregistry-v1-UnregisterMemberRequest">UnregisterMemberRequest</a></td>
+<td><a href="/reference/proto#services-trustregistry-v1-UnregisterMemberResponse">UnregisterMemberResponse</a></td>
+<td>Removes an authoritative issuer with a credential template from the trust registry</td>
+</tr>
+<tr>
+<td>GetMembershipStatus</td>
+<td><a href="/reference/proto#services-trustregistry-v1-GetMembershipStatusRequest">GetMembershipStatusRequest</a></td>
+<td><a href="/reference/proto#services-trustregistry-v1-GetMembershipStatusResponse">GetMembershipStatusResponse</a></td>
+<td></td>
+</tr>
+<tr>
+<td>FetchData</td>
+<td><a href="/reference/proto#services-trustregistry-v1-FetchDataRequest">FetchDataRequest</a></td>
+<td><a href="/reference/proto#services-trustregistry-v1-FetchDataResponse">FetchDataResponse</a> stream</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!-- end services -->
+
+<p><a name="services-trustregistry-v1-AddFrameworkRequest"></a></p>
+<h3 id="addframeworkrequest">AddFrameworkRequest<a class="headerlink" href="#addframeworkrequest" title="Permanent link">&para;</a></h3>
+<p>Register new ecosystem governance framework</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>governance_framework_uri</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>name</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>description</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-trustregistry-v1-AddFrameworkResponse"></a></p>
+<h3 id="addframeworkresponse">AddFrameworkResponse<a class="headerlink" href="#addframeworkresponse" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Unique framework identifier</td>
+</tr>
+<tr>
+<td>governing_authority</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>trust_registry</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-trustregistry-v1-FetchDataRequest"></a></p>
+<h3 id="fetchdatarequest">FetchDataRequest<a class="headerlink" href="#fetchdatarequest" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>governance_framework_uri</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>query</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-trustregistry-v1-FetchDataResponse"></a></p>
+<h3 id="fetchdataresponse">FetchDataResponse<a class="headerlink" href="#fetchdataresponse" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>response_json</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>has_more_results</td>
+<td><a href="/reference/proto#bool">bool</a></td>
+<td></td>
+</tr>
+<tr>
+<td>continuation_token</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-trustregistry-v1-GetMembershipStatusRequest"></a></p>
+<h3 id="getmembershipstatusrequest">GetMembershipStatusRequest<a class="headerlink" href="#getmembershipstatusrequest" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>governance_framework_uri</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>did_uri</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>x509_cert</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>schema_uri</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-trustregistry-v1-GetMembershipStatusResponse"></a></p>
+<h3 id="getmembershipstatusresponse">GetMembershipStatusResponse<a class="headerlink" href="#getmembershipstatusresponse" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status</td>
+<td><a href="/reference/proto#services-trustregistry-v1-RegistrationStatus">RegistrationStatus</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-trustregistry-v1-GovernanceFramework"></a></p>
+<h3 id="governanceframework">GovernanceFramework<a class="headerlink" href="#governanceframework" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>governance_framework_uri</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>trust_registry_uri</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>description</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-trustregistry-v1-RegisterMemberRequest"></a></p>
+<h3 id="registermemberrequest">RegisterMemberRequest<a class="headerlink" href="#registermemberrequest" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>did_uri</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>wallet_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>email</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>schema_uri</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>valid_from_utc</td>
+<td><a href="/reference/proto#uint64">uint64</a></td>
+<td></td>
+</tr>
+<tr>
+<td>valid_until_utc</td>
+<td><a href="/reference/proto#uint64">uint64</a></td>
+<td></td>
+</tr>
+<tr>
+<td>framework_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>the id of the governance framework</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-trustregistry-v1-RegisterMemberResponse"></a></p>
+<h3 id="registermemberresponse">RegisterMemberResponse<a class="headerlink" href="#registermemberresponse" title="Permanent link">&para;</a></h3>
+<p><a name="services-trustregistry-v1-RemoveFrameworkRequest"></a></p>
+<h3 id="removeframeworkrequest">RemoveFrameworkRequest<a class="headerlink" href="#removeframeworkrequest" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-trustregistry-v1-RemoveFrameworkResponse"></a></p>
+<h3 id="removeframeworkresponse">RemoveFrameworkResponse<a class="headerlink" href="#removeframeworkresponse" title="Permanent link">&para;</a></h3>
+<p><a name="services-trustregistry-v1-SearchRegistryRequest"></a></p>
+<h3 id="searchregistryrequest">SearchRegistryRequest<a class="headerlink" href="#searchregistryrequest" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>query</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>SELECT c from c where c.type == 'GovernanceFramework'</td>
+</tr>
+<tr>
+<td>continuation_token</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-trustregistry-v1-SearchRegistryResponse"></a></p>
+<h3 id="searchregistryresponse">SearchRegistryResponse<a class="headerlink" href="#searchregistryresponse" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>items_json</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>has_more</td>
+<td><a href="/reference/proto#bool">bool</a></td>
+<td></td>
+</tr>
+<tr>
+<td>continuation_token</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-trustregistry-v1-UnregisterMemberRequest"></a></p>
+<h3 id="unregistermemberrequest">UnregisterMemberRequest<a class="headerlink" href="#unregistermemberrequest" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>did_uri</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>wallet_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>email</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>schema_uri</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>framework_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-trustregistry-v1-UnregisterMemberResponse"></a></p>
+<h3 id="unregistermemberresponse">UnregisterMemberResponse<a class="headerlink" href="#unregistermemberresponse" title="Permanent link">&para;</a></h3>
+<!-- end messages -->
+
+<p><a name="services-trustregistry-v1-RegistrationStatus"></a></p>
+<h3 id="registrationstatus">RegistrationStatus<a class="headerlink" href="#registrationstatus" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CURRENT</td>
+<td>0</td>
+<td>- the entity is currently authorized, as of time of the query.</td>
+</tr>
+<tr>
+<td>EXPIRED</td>
+<td>1</td>
+<td>- entity rights have expired.</td>
+</tr>
+<tr>
+<td>TERMINATED</td>
+<td>2</td>
+<td>- entity has voluntarily ceased Issuer role under the specific EGF.</td>
+</tr>
+<tr>
+<td>REVOKED</td>
+<td>3</td>
+<td>- entity authority under specific EGF was terminated by the governing authority.</td>
+</tr>
+<tr>
+<td>NOT_FOUND</td>
+<td>10</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!-- end enums -->
+
+<!-- end HasExtensions -->
+
+<p><a name="services_universal-wallet_v1_universal-wallet-proto"></a></p>
+<p align="right"><a href="#top">Top</a></p>
+
+<h2 id="servicesuniversal-walletv1universal-walletproto">services/universal-wallet/v1/universal-wallet.proto<a class="headerlink" href="#servicesuniversal-walletv1universal-walletproto" title="Permanent link">&para;</a></h2>
+<p><a name="services-universalwallet-v1-UniversalWallet"></a></p>
+<h3 id="service-universalwallet">Service - UniversalWallet<a class="headerlink" href="#service-universalwallet" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Method Name</th>
+<th>Request Type</th>
+<th>Response Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GetItem</td>
+<td><a href="/reference/proto#services-universalwallet-v1-GetItemRequest">GetItemRequest</a></td>
+<td><a href="/reference/proto#services-universalwallet-v1-GetItemResponse">GetItemResponse</a></td>
+<td>Retrieve an item from the wallet with a given item identifier</td>
+</tr>
+<tr>
+<td>Search</td>
+<td><a href="/reference/proto#services-universalwallet-v1-SearchRequest">SearchRequest</a></td>
+<td><a href="/reference/proto#services-universalwallet-v1-SearchResponse">SearchResponse</a></td>
+<td>Search the wallet using a SQL-like syntax</td>
+</tr>
+<tr>
+<td>InsertItem</td>
+<td><a href="/reference/proto#services-universalwallet-v1-InsertItemRequest">InsertItemRequest</a></td>
+<td><a href="/reference/proto#services-universalwallet-v1-InsertItemResponse">InsertItemResponse</a></td>
+<td>Insert an item into the wallet</td>
+</tr>
+<tr>
+<td>UpdateItem</td>
+<td><a href="/reference/proto#services-universalwallet-v1-UpdateItemRequest">UpdateItemRequest</a></td>
+<td><a href="/reference/proto#services-universalwallet-v1-UpdateItemResponse">UpdateItemResponse</a></td>
+<td>Update an item in the wallet</td>
+</tr>
+<tr>
+<td>DeleteItem</td>
+<td><a href="/reference/proto#services-universalwallet-v1-DeleteItemRequest">DeleteItemRequest</a></td>
+<td><a href="/reference/proto#services-universalwallet-v1-DeleteItemResponse">DeleteItemResponse</a></td>
+<td>Delete an item from the wallet permanently</td>
+</tr>
+</tbody>
+</table>
+<!-- end services -->
+
+<p><a name="services-universalwallet-v1-DeleteItemRequest"></a></p>
+<h3 id="deleteitemrequest">DeleteItemRequest<a class="headerlink" href="#deleteitemrequest" title="Permanent link">&para;</a></h3>
+<p>Request to delete an item in a wallet</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>item_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>ID of item to delete</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-universalwallet-v1-DeleteItemResponse"></a></p>
+<h3 id="deleteitemresponse">DeleteItemResponse<a class="headerlink" href="#deleteitemresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>DeleteItemRequest</code></p>
+<p><a name="services-universalwallet-v1-GetItemRequest"></a></p>
+<h3 id="getitemrequest">GetItemRequest<a class="headerlink" href="#getitemrequest" title="Permanent link">&para;</a></h3>
+<p>Request to fetch an item from wallet</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>item_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>ID of item in wallet</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-universalwallet-v1-GetItemResponse"></a></p>
+<h3 id="getitemresponse">GetItemResponse<a class="headerlink" href="#getitemresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>GetItemRequest</code></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>item_json</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Item data as a JSON string</td>
+</tr>
+<tr>
+<td>item_type</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Type of item specified when item was inserted into wallet</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-universalwallet-v1-InsertItemRequest"></a></p>
+<h3 id="insertitemrequest">InsertItemRequest<a class="headerlink" href="#insertitemrequest" title="Permanent link">&para;</a></h3>
+<p>Request to insert a JSON document into a wallet</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>item_json</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Document to insert; must be stringified JSON</td>
+</tr>
+<tr>
+<td>item_type</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Item type (ex. "VerifiableCredential")</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-universalwallet-v1-InsertItemResponse"></a></p>
+<h3 id="insertitemresponse">InsertItemResponse<a class="headerlink" href="#insertitemresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>InsertItemRequest</code></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>item_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>ID of item inserted into wallet</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-universalwallet-v1-SearchRequest"></a></p>
+<h3 id="searchrequest">SearchRequest<a class="headerlink" href="#searchrequest" title="Permanent link">&para;</a></h3>
+<p>Request to search items in wallet</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>query</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>SQL Query to execute against items in wallet</td>
+</tr>
+<tr>
+<td>continuation_token</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Token provided by previous <code>SearchResponse</code> if more data is available for query</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-universalwallet-v1-SearchResponse"></a></p>
+<h3 id="searchresponse">SearchResponse<a class="headerlink" href="#searchresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>SearchRequest</code></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>items</td>
+<td><a href="/reference/proto#string">string</a>[]</td>
+<td>Array of query results, as JSON strings</td>
+</tr>
+<tr>
+<td>has_more</td>
+<td><a href="/reference/proto#bool">bool</a></td>
+<td>Whether more results are available for this query via <code>continuation_token</code></td>
+</tr>
+<tr>
+<td>continuation_token</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Token to fetch next set of results via <code>SearchRequest</code></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-universalwallet-v1-UpdateItemRequest"></a></p>
+<h3 id="updateitemrequest">UpdateItemRequest<a class="headerlink" href="#updateitemrequest" title="Permanent link">&para;</a></h3>
+<p>Request to update item in wallet</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>item_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>ID of item in wallet</td>
+</tr>
+<tr>
+<td>item_type</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Item type (ex. "VerifiableCredential")</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-universalwallet-v1-UpdateItemResponse"></a></p>
+<h3 id="updateitemresponse">UpdateItemResponse<a class="headerlink" href="#updateitemresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>UpdateItemRequest</code></p>
+<!-- end messages -->
+
+<!-- end enums -->
+
+<!-- end HasExtensions -->
+
+<p><a name="services_account_v1_account-proto"></a></p>
+<p align="right"><a href="#top">Top</a></p>
+
+<h2 id="servicesaccountv1accountproto">services/account/v1/account.proto<a class="headerlink" href="#servicesaccountv1accountproto" title="Permanent link">&para;</a></h2>
+<p><a name="services-account-v1-Account"></a></p>
+<h3 id="service-account">Service - Account<a class="headerlink" href="#service-account" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Method Name</th>
+<th>Request Type</th>
+<th>Response Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SignIn</td>
+<td><a href="/reference/proto#services-account-v1-SignInRequest">SignInRequest</a></td>
+<td><a href="/reference/proto#services-account-v1-SignInResponse">SignInResponse</a></td>
+<td>Sign in to an already existing account</td>
+</tr>
+<tr>
+<td>Login</td>
+<td><a href="/reference/proto#services-account-v1-LoginRequest">LoginRequest</a></td>
+<td><a href="/reference/proto#services-account-v1-LoginResponse">LoginResponse</a></td>
+<td>Login to account. If account doesn't exist, new will be created</td>
+</tr>
+<tr>
+<td>LoginConfirm</td>
+<td><a href="/reference/proto#services-account-v1-LoginConfirmRequest">LoginConfirmRequest</a></td>
+<td><a href="/reference/proto#services-account-v1-LoginConfirmResponse">LoginConfirmResponse</a></td>
+<td>Confirm login step by responding to the challenge request</td>
+</tr>
+<tr>
+<td>Info</td>
+<td><a href="/reference/proto#services-account-v1-AccountInfoRequest">AccountInfoRequest</a></td>
+<td><a href="/reference/proto#services-account-v1-AccountInfoResponse">AccountInfoResponse</a></td>
+<td>Get account information</td>
+</tr>
+<tr>
+<td>ListDevices</td>
+<td><a href="/reference/proto#services-account-v1-ListDevicesRequest">ListDevicesRequest</a></td>
+<td><a href="/reference/proto#services-account-v1-ListDevicesResponse">ListDevicesResponse</a></td>
+<td>List all connected devices</td>
+</tr>
+<tr>
+<td>RevokeDevice</td>
+<td><a href="/reference/proto#services-account-v1-RevokeDeviceRequest">RevokeDeviceRequest</a></td>
+<td><a href="/reference/proto#services-account-v1-RevokeDeviceResponse">RevokeDeviceResponse</a></td>
+<td>Revoke device access to the account's cloud wallet</td>
+</tr>
+<tr>
+<td>AuthorizeWebhook</td>
+<td><a href="/reference/proto#services-account-v1-AuthorizeWebhookRequest">AuthorizeWebhookRequest</a></td>
+<td><a href="/reference/proto#services-account-v1-AuthorizeWebhookResponse">AuthorizeWebhookResponse</a></td>
+<td>Authorize Ecosystem to receive webhook events</td>
+</tr>
+</tbody>
+</table>
+<!-- end services -->
+
+<p><a name="services-account-v1-AccountDetails"></a></p>
+<h3 id="accountdetails">AccountDetails<a class="headerlink" href="#accountdetails" title="Permanent link">&para;</a></h3>
+<p>Account registration details</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Account name</td>
+</tr>
+<tr>
+<td>email</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Email account</td>
+</tr>
+<tr>
+<td>sms</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>SMS number including country code</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-account-v1-AccountEcosystem"></a></p>
+<h3 id="accountecosystem">AccountEcosystem<a class="headerlink" href="#accountecosystem" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>name</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>description</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+<tr>
+<td>uri</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-account-v1-AccountInfoRequest"></a></p>
+<h3 id="accountinforequest">AccountInfoRequest<a class="headerlink" href="#accountinforequest" title="Permanent link">&para;</a></h3>
+<p>Request for information about the account used to make the request</p>
+<p><a name="services-account-v1-AccountInfoResponse"></a></p>
+<h3 id="accountinforesponse">AccountInfoResponse<a class="headerlink" href="#accountinforesponse" title="Permanent link">&para;</a></h3>
+<p>Information about the account used to make the request</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>details</td>
+<td><a href="/reference/proto#services-account-v1-AccountDetails">AccountDetails</a></td>
+<td>The account details associated with the calling request context</td>
+</tr>
+<tr>
+<td>ecosystems</td>
+<td><a href="/reference/proto#services-account-v1-AccountEcosystem">AccountEcosystem</a>[]</td>
+<td><strong>Deprecated.</strong> Use <code>ecosystem_id</code> instead</td>
+</tr>
+<tr>
+<td>wallet_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>The wallet ID associated with this account</td>
+</tr>
+<tr>
+<td>device_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>The device ID associated with this account session</td>
+</tr>
+<tr>
+<td>ecosystem_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>The ecosystem ID within which this account resides</td>
+</tr>
+<tr>
+<td>public_did</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>The public DID associated with this account. This DID is used as "issuer" when signing verifiable credentials</td>
+</tr>
+<tr>
+<td>authorized_webhooks</td>
+<td><a href="/reference/proto#string">string</a>[]</td>
+<td>Webhook events if any this wallet has authorized</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-account-v1-AccountProfile"></a></p>
+<h3 id="accountprofile">AccountProfile<a class="headerlink" href="#accountprofile" title="Permanent link">&para;</a></h3>
+<p>Device profile containing sensitive authentication data.
+This information should be stored securely</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>profile_type</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>The type of profile, used to differentiate between protocol schemes or versions</td>
+</tr>
+<tr>
+<td>auth_data</td>
+<td><a href="/reference/proto#bytes">bytes</a></td>
+<td>Auth data containg information about the current device access</td>
+</tr>
+<tr>
+<td>auth_token</td>
+<td><a href="/reference/proto#bytes">bytes</a></td>
+<td>Secure token issued by server used to generate zero-knowledge proofs</td>
+</tr>
+<tr>
+<td>protection</td>
+<td><a href="/reference/proto#services-account-v1-TokenProtection">TokenProtection</a></td>
+<td>Token security information about the token. If token protection is enabled, implementations must supply protection secret before using the token for authentication.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-account-v1-AuthorizeWebhookRequest"></a></p>
+<h3 id="authorizewebhookrequest">AuthorizeWebhookRequest<a class="headerlink" href="#authorizewebhookrequest" title="Permanent link">&para;</a></h3>
+<p>Authorize ecosystem to receive wallet events</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>events</td>
+<td><a href="/reference/proto#string">string</a>[]</td>
+<td>Events to authorize access to. Default is "*" (all events)</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-account-v1-AuthorizeWebhookResponse"></a></p>
+<h3 id="authorizewebhookresponse">AuthorizeWebhookResponse<a class="headerlink" href="#authorizewebhookresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>AuthorizeWebhookRequest</code></p>
+<p><a name="services-account-v1-ListDevicesRequest"></a></p>
+<h3 id="listdevicesrequest">ListDevicesRequest<a class="headerlink" href="#listdevicesrequest" title="Permanent link">&para;</a></h3>
+<p><a name="services-account-v1-ListDevicesResponse"></a></p>
+<h3 id="listdevicesresponse">ListDevicesResponse<a class="headerlink" href="#listdevicesresponse" title="Permanent link">&para;</a></h3>
+<p><a name="services-account-v1-LoginConfirmRequest"></a></p>
+<h3 id="loginconfirmrequest">LoginConfirmRequest<a class="headerlink" href="#loginconfirmrequest" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>challenge</td>
+<td><a href="/reference/proto#bytes">bytes</a></td>
+<td>Login challenge received during the Login call</td>
+</tr>
+<tr>
+<td>confirmation_code_hashed</td>
+<td><a href="/reference/proto#bytes">bytes</a></td>
+<td>Confirmation code received in email or SMS hashed using Blake3</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-account-v1-LoginConfirmResponse"></a></p>
+<h3 id="loginconfirmresponse">LoginConfirmResponse<a class="headerlink" href="#loginconfirmresponse" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>profile</td>
+<td><a href="/reference/proto#services-account-v1-AccountProfile">AccountProfile</a></td>
+<td>Profile response. This profile may be protected and require unblinding/unprotection using the raw hashed code</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-account-v1-LoginRequest"></a></p>
+<h3 id="loginrequest">LoginRequest<a class="headerlink" href="#loginrequest" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>email</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Email account to associate with the login request</td>
+</tr>
+<tr>
+<td>invitation_code</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Invitation code associated with this registration</td>
+</tr>
+<tr>
+<td>ecosystem_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>ID of Ecosystem to sign into. Ignored if <code>invitation_code</code> is passed</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-account-v1-LoginResponse"></a></p>
+<h3 id="loginresponse">LoginResponse<a class="headerlink" href="#loginresponse" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>challenge</td>
+<td><a href="/reference/proto#bytes">bytes</a></td>
+<td>Challenge response. Random byte sequence unique for this login request</td>
+</tr>
+<tr>
+<td>profile</td>
+<td><a href="/reference/proto#services-account-v1-AccountProfile">AccountProfile</a></td>
+<td>Profile response. The login isn't challenged and the token is returned in this call. Does not require confirmation step</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-account-v1-RevokeDeviceRequest"></a></p>
+<h3 id="revokedevicerequest">RevokeDeviceRequest<a class="headerlink" href="#revokedevicerequest" title="Permanent link">&para;</a></h3>
+<p><a name="services-account-v1-RevokeDeviceResponse"></a></p>
+<h3 id="revokedeviceresponse">RevokeDeviceResponse<a class="headerlink" href="#revokedeviceresponse" title="Permanent link">&para;</a></h3>
+<p><a name="services-account-v1-SignInRequest"></a></p>
+<h3 id="signinrequest">SignInRequest<a class="headerlink" href="#signinrequest" title="Permanent link">&para;</a></h3>
+<p>Request for creating or signing into an account</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>details</td>
+<td><a href="/reference/proto#services-account-v1-AccountDetails">AccountDetails</a></td>
+<td>Account registration details</td>
+</tr>
+<tr>
+<td>invitation_code</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Invitation code associated with this registration</td>
+</tr>
+<tr>
+<td>ecosystem_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>ID of Ecosystem to use Ignored if <code>invitation_code</code> is passed</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-account-v1-SignInResponse"></a></p>
+<h3 id="signinresponse">SignInResponse<a class="headerlink" href="#signinresponse" title="Permanent link">&para;</a></h3>
+<p>Response for creating new account
+This object will indicate if a confirmation code
+was sent to one of the users two-factor methods
+like email, SMS, etc.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>confirmation_method</td>
+<td><a href="/reference/proto#services-account-v1-ConfirmationMethod">ConfirmationMethod</a></td>
+<td>Indicates if confirmation of account is required. This settings is configured globally by the server administrator.</td>
+</tr>
+<tr>
+<td>profile</td>
+<td><a href="/reference/proto#services-account-v1-AccountProfile">AccountProfile</a></td>
+<td>Contains authentication data for use with the current device. This object must be stored in a secure place. It can also be protected with a PIN, but this is optional. See the docs at https://docs.trinsic.id for more information on working with authentication data.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-account-v1-TokenProtection"></a></p>
+<h3 id="tokenprotection">TokenProtection<a class="headerlink" href="#tokenprotection" title="Permanent link">&para;</a></h3>
+<p>Token protection info</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enabled</td>
+<td><a href="/reference/proto#bool">bool</a></td>
+<td>Indicates if token is protected using a PIN, security code, HSM secret, etc.</td>
+</tr>
+<tr>
+<td>method</td>
+<td><a href="/reference/proto#services-account-v1-ConfirmationMethod">ConfirmationMethod</a></td>
+<td>The method used to protect the token</td>
+</tr>
+</tbody>
+</table>
+<!-- end messages -->
+
+<p><a name="services-account-v1-ConfirmationMethod"></a></p>
+<h3 id="confirmationmethod">ConfirmationMethod<a class="headerlink" href="#confirmationmethod" title="Permanent link">&para;</a></h3>
+<p>Confirmation method type for two-factor workflows</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None</td>
+<td>0</td>
+<td>No confirmation required</td>
+</tr>
+<tr>
+<td>Email</td>
+<td>1</td>
+<td>Email confirmation required</td>
+</tr>
+<tr>
+<td>Sms</td>
+<td>2</td>
+<td>SMS confirmation required</td>
+</tr>
+<tr>
+<td>ConnectedDevice</td>
+<td>3</td>
+<td>Confirmation from a connected device is required</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>10</td>
+<td>Indicates third-party method of confirmation is required</td>
+</tr>
+</tbody>
+</table>
 <!-- end enums -->
 
 <!-- end HasExtensions -->
@@ -5090,1992 +7045,6 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 
 <!-- end HasExtensions -->
 
-<p><a name="services_universal-wallet_v1_universal-wallet-proto"></a></p>
-<p align="right"><a href="#top">Top</a></p>
-
-<h2 id="servicesuniversal-walletv1universal-walletproto">services/universal-wallet/v1/universal-wallet.proto<a class="headerlink" href="#servicesuniversal-walletv1universal-walletproto" title="Permanent link">&para;</a></h2>
-<p><a name="services-universalwallet-v1-UniversalWallet"></a></p>
-<h3 id="service-universalwallet">Service - UniversalWallet<a class="headerlink" href="#service-universalwallet" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Method Name</th>
-<th>Request Type</th>
-<th>Response Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>GetItem</td>
-<td><a href="/reference/proto#services-universalwallet-v1-GetItemRequest">GetItemRequest</a></td>
-<td><a href="/reference/proto#services-universalwallet-v1-GetItemResponse">GetItemResponse</a></td>
-<td>Retrieve an item from the wallet with a given item identifier</td>
-</tr>
-<tr>
-<td>Search</td>
-<td><a href="/reference/proto#services-universalwallet-v1-SearchRequest">SearchRequest</a></td>
-<td><a href="/reference/proto#services-universalwallet-v1-SearchResponse">SearchResponse</a></td>
-<td>Search the wallet using a SQL-like syntax</td>
-</tr>
-<tr>
-<td>InsertItem</td>
-<td><a href="/reference/proto#services-universalwallet-v1-InsertItemRequest">InsertItemRequest</a></td>
-<td><a href="/reference/proto#services-universalwallet-v1-InsertItemResponse">InsertItemResponse</a></td>
-<td>Insert an item into the wallet</td>
-</tr>
-<tr>
-<td>UpdateItem</td>
-<td><a href="/reference/proto#services-universalwallet-v1-UpdateItemRequest">UpdateItemRequest</a></td>
-<td><a href="/reference/proto#services-universalwallet-v1-UpdateItemResponse">UpdateItemResponse</a></td>
-<td>Update an item in the wallet</td>
-</tr>
-<tr>
-<td>DeleteItem</td>
-<td><a href="/reference/proto#services-universalwallet-v1-DeleteItemRequest">DeleteItemRequest</a></td>
-<td><a href="/reference/proto#services-universalwallet-v1-DeleteItemResponse">DeleteItemResponse</a></td>
-<td>Delete an item from the wallet permanently</td>
-</tr>
-</tbody>
-</table>
-<!-- end services -->
-
-<p><a name="services-universalwallet-v1-DeleteItemRequest"></a></p>
-<h3 id="deleteitemrequest">DeleteItemRequest<a class="headerlink" href="#deleteitemrequest" title="Permanent link">&para;</a></h3>
-<p>Request to delete an item in a wallet</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>item_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>ID of item to delete</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-universalwallet-v1-DeleteItemResponse"></a></p>
-<h3 id="deleteitemresponse">DeleteItemResponse<a class="headerlink" href="#deleteitemresponse" title="Permanent link">&para;</a></h3>
-<p>Response to <code>DeleteItemRequest</code></p>
-<p><a name="services-universalwallet-v1-GetItemRequest"></a></p>
-<h3 id="getitemrequest">GetItemRequest<a class="headerlink" href="#getitemrequest" title="Permanent link">&para;</a></h3>
-<p>Request to fetch an item from wallet</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>item_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>ID of item in wallet</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-universalwallet-v1-GetItemResponse"></a></p>
-<h3 id="getitemresponse">GetItemResponse<a class="headerlink" href="#getitemresponse" title="Permanent link">&para;</a></h3>
-<p>Response to <code>GetItemRequest</code></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>item_json</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Item data as a JSON string</td>
-</tr>
-<tr>
-<td>item_type</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Type of item specified when item was inserted into wallet</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-universalwallet-v1-InsertItemRequest"></a></p>
-<h3 id="insertitemrequest">InsertItemRequest<a class="headerlink" href="#insertitemrequest" title="Permanent link">&para;</a></h3>
-<p>Request to insert a JSON document into a wallet</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>item_json</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Document to insert; must be stringified JSON</td>
-</tr>
-<tr>
-<td>item_type</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Item type (ex. "VerifiableCredential")</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-universalwallet-v1-InsertItemResponse"></a></p>
-<h3 id="insertitemresponse">InsertItemResponse<a class="headerlink" href="#insertitemresponse" title="Permanent link">&para;</a></h3>
-<p>Response to <code>InsertItemRequest</code></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>item_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>ID of item inserted into wallet</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-universalwallet-v1-SearchRequest"></a></p>
-<h3 id="searchrequest">SearchRequest<a class="headerlink" href="#searchrequest" title="Permanent link">&para;</a></h3>
-<p>Request to search items in wallet</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>query</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>SQL Query to execute against items in wallet</td>
-</tr>
-<tr>
-<td>continuation_token</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Token provided by previous <code>SearchResponse</code> if more data is available for query</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-universalwallet-v1-SearchResponse"></a></p>
-<h3 id="searchresponse">SearchResponse<a class="headerlink" href="#searchresponse" title="Permanent link">&para;</a></h3>
-<p>Response to <code>SearchRequest</code></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>items</td>
-<td><a href="/reference/proto#string">string</a>[]</td>
-<td>Array of query results, as JSON strings</td>
-</tr>
-<tr>
-<td>has_more</td>
-<td><a href="/reference/proto#bool">bool</a></td>
-<td>Whether more results are available for this query via <code>continuation_token</code></td>
-</tr>
-<tr>
-<td>continuation_token</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Token to fetch next set of results via <code>SearchRequest</code></td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-universalwallet-v1-UpdateItemRequest"></a></p>
-<h3 id="updateitemrequest">UpdateItemRequest<a class="headerlink" href="#updateitemrequest" title="Permanent link">&para;</a></h3>
-<p>Request to update item in wallet</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>item_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>ID of item in wallet</td>
-</tr>
-<tr>
-<td>item_type</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Item type (ex. "VerifiableCredential")</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-universalwallet-v1-UpdateItemResponse"></a></p>
-<h3 id="updateitemresponse">UpdateItemResponse<a class="headerlink" href="#updateitemresponse" title="Permanent link">&para;</a></h3>
-<p>Response to <code>UpdateItemRequest</code></p>
-<!-- end messages -->
-
-<!-- end enums -->
-
-<!-- end HasExtensions -->
-
-<p><a name="services_provider_v1_provider-proto"></a></p>
-<p align="right"><a href="#top">Top</a></p>
-
-<h2 id="servicesproviderv1providerproto">services/provider/v1/provider.proto<a class="headerlink" href="#servicesproviderv1providerproto" title="Permanent link">&para;</a></h2>
-<p><a name="services-provider-v1-Provider"></a></p>
-<h3 id="service-provider">Service - Provider<a class="headerlink" href="#service-provider" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Method Name</th>
-<th>Request Type</th>
-<th>Response Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CreateEcosystem</td>
-<td><a href="/reference/proto#services-provider-v1-CreateEcosystemRequest">CreateEcosystemRequest</a></td>
-<td><a href="/reference/proto#services-provider-v1-CreateEcosystemResponse">CreateEcosystemResponse</a></td>
-<td>Create new ecosystem and assign the authenticated user as owner</td>
-</tr>
-<tr>
-<td>UpdateEcosystem</td>
-<td><a href="/reference/proto#services-provider-v1-UpdateEcosystemRequest">UpdateEcosystemRequest</a></td>
-<td><a href="/reference/proto#services-provider-v1-UpdateEcosystemResponse">UpdateEcosystemResponse</a></td>
-<td>Update an existing ecosystem</td>
-</tr>
-<tr>
-<td>AddWebhook</td>
-<td><a href="/reference/proto#services-provider-v1-AddWebhookRequest">AddWebhookRequest</a></td>
-<td><a href="/reference/proto#services-provider-v1-AddWebhookResponse">AddWebhookResponse</a></td>
-<td>Add a webhook endpoint to the ecosystem</td>
-</tr>
-<tr>
-<td>DeleteWebhook</td>
-<td><a href="/reference/proto#services-provider-v1-DeleteWebhookRequest">DeleteWebhookRequest</a></td>
-<td><a href="/reference/proto#services-provider-v1-DeleteWebhookResponse">DeleteWebhookResponse</a></td>
-<td>Delete a webhook endpoint from the ecosystem</td>
-</tr>
-<tr>
-<td>EcosystemInfo</td>
-<td><a href="/reference/proto#services-provider-v1-EcosystemInfoRequest">EcosystemInfoRequest</a></td>
-<td><a href="/reference/proto#services-provider-v1-EcosystemInfoResponse">EcosystemInfoResponse</a></td>
-<td>Get ecosystem information</td>
-</tr>
-<tr>
-<td>GenerateToken</td>
-<td><a href="/reference/proto#services-provider-v1-GenerateTokenRequest">GenerateTokenRequest</a></td>
-<td><a href="/reference/proto#services-provider-v1-GenerateTokenResponse">GenerateTokenResponse</a></td>
-<td>Generates an unprotected authentication token that can be used to configure server side applications</td>
-</tr>
-<tr>
-<td>Invite</td>
-<td><a href="/reference/proto#services-provider-v1-InviteRequest">InviteRequest</a></td>
-<td><a href="/reference/proto#services-provider-v1-InviteResponse">InviteResponse</a></td>
-<td>Invite a user to the ecosystem</td>
-</tr>
-<tr>
-<td>InvitationStatus</td>
-<td><a href="/reference/proto#services-provider-v1-InvitationStatusRequest">InvitationStatusRequest</a></td>
-<td><a href="/reference/proto#services-provider-v1-InvitationStatusResponse">InvitationStatusResponse</a></td>
-<td>Check the invitation status</td>
-</tr>
-<tr>
-<td>GetOberonKey</td>
-<td><a href="/reference/proto#services-provider-v1-GetOberonKeyRequest">GetOberonKeyRequest</a></td>
-<td><a href="/reference/proto#services-provider-v1-GetOberonKeyResponse">GetOberonKeyResponse</a></td>
-<td>Returns the public key being used to create/verify oberon tokens</td>
-</tr>
-<tr>
-<td>GetEventToken</td>
-<td><a href="/reference/proto#services-provider-v1-GetEventTokenRequest">GetEventTokenRequest</a></td>
-<td><a href="/reference/proto#services-provider-v1-GetEventTokenResponse">GetEventTokenResponse</a></td>
-<td>Generate a signed token (JWT) that can be used to connect to the message bus</td>
-</tr>
-</tbody>
-</table>
-<!-- end services -->
-
-<p><a name="services-provider-v1-AddWebhookRequest"></a></p>
-<h3 id="addwebhookrequest">AddWebhookRequest<a class="headerlink" href="#addwebhookrequest" title="Permanent link">&para;</a></h3>
-<p>Request to add a webhook to an ecosystem</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ecosystem_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>ID of ecosystem to add webhook to</td>
-</tr>
-<tr>
-<td>destination_url</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Destination to post webhook calls to</td>
-</tr>
-<tr>
-<td>secret</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>HMAC secret for webhook validation</td>
-</tr>
-<tr>
-<td>events</td>
-<td><a href="/reference/proto#string">string</a>[]</td>
-<td>Events to subscribe to. Default is "*" (all events)</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-AddWebhookResponse"></a></p>
-<h3 id="addwebhookresponse">AddWebhookResponse<a class="headerlink" href="#addwebhookresponse" title="Permanent link">&para;</a></h3>
-<p>Response to <code>AddWebhookRequest</code></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ecosystem</td>
-<td><a href="/reference/proto#services-provider-v1-Ecosystem">Ecosystem</a></td>
-<td>Ecosystem with new webhook</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-CreateEcosystemRequest"></a></p>
-<h3 id="createecosystemrequest">CreateEcosystemRequest<a class="headerlink" href="#createecosystemrequest" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>name</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Globally unique name for the Ecosystem. This name will be part of the ecosystem specific URLs and namespaces. Allowed characters are lowercase letters, numbers, underscore and hyphen.</td>
-</tr>
-<tr>
-<td>description</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Ecosystem description</td>
-</tr>
-<tr>
-<td>uri</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>External URL associated with your organization or ecosystem entity</td>
-</tr>
-<tr>
-<td>details</td>
-<td><a href="/reference/proto#services-account-v1-AccountDetails">services.account.v1.AccountDetails</a></td>
-<td>The account details of the owner of the ecosystem</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-CreateEcosystemResponse"></a></p>
-<h3 id="createecosystemresponse">CreateEcosystemResponse<a class="headerlink" href="#createecosystemresponse" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ecosystem</td>
-<td><a href="/reference/proto#services-provider-v1-Ecosystem">Ecosystem</a></td>
-<td>Details of the created ecosystem</td>
-</tr>
-<tr>
-<td>profile</td>
-<td><a href="/reference/proto#services-account-v1-AccountProfile">services.account.v1.AccountProfile</a></td>
-<td>Account profile for auth of the owner of the ecosystem</td>
-</tr>
-<tr>
-<td>confirmation_method</td>
-<td><a href="/reference/proto#services-account-v1-ConfirmationMethod">services.account.v1.ConfirmationMethod</a></td>
-<td>Indicates if confirmation of account is required. This setting is configured globally by the server administrator.</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-DeleteWebhookRequest"></a></p>
-<h3 id="deletewebhookrequest">DeleteWebhookRequest<a class="headerlink" href="#deletewebhookrequest" title="Permanent link">&para;</a></h3>
-<p>Request to delete a webhook from an ecosystem</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ecosystem_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>ID of ecosystem from which to delete webhook</td>
-</tr>
-<tr>
-<td>webhook_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>ID of webhook to delete</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-DeleteWebhookResponse"></a></p>
-<h3 id="deletewebhookresponse">DeleteWebhookResponse<a class="headerlink" href="#deletewebhookresponse" title="Permanent link">&para;</a></h3>
-<p>Response to <code>DeleteWebhookRequest</code></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ecosystem</td>
-<td><a href="/reference/proto#services-provider-v1-Ecosystem">Ecosystem</a></td>
-<td>Ecosystem after removal of webhook</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-Ecosystem"></a></p>
-<h3 id="ecosystem">Ecosystem<a class="headerlink" href="#ecosystem" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>URN of the ecosystem</td>
-</tr>
-<tr>
-<td>name</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Globally unique name for the ecosystem</td>
-</tr>
-<tr>
-<td>description</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Ecosystem description</td>
-</tr>
-<tr>
-<td>uri</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>External URL associated with the organization or ecosystem entity</td>
-</tr>
-<tr>
-<td>webhooks</td>
-<td><a href="/reference/proto#services-provider-v1-WebhookConfig">WebhookConfig</a>[]</td>
-<td>Configured webhooks, if any</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-EcosystemInfoRequest"></a></p>
-<h3 id="ecosysteminforequest">EcosystemInfoRequest<a class="headerlink" href="#ecosysteminforequest" title="Permanent link">&para;</a></h3>
-<p>Request to fetch information about an ecosystem</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ecosystem_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>ID of ecosystem to fetch information about</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-EcosystemInfoResponse"></a></p>
-<h3 id="ecosysteminforesponse">EcosystemInfoResponse<a class="headerlink" href="#ecosysteminforesponse" title="Permanent link">&para;</a></h3>
-<p>Response to <code>InfoRequest</code></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ecosystem</td>
-<td><a href="/reference/proto#services-provider-v1-Ecosystem">Ecosystem</a></td>
-<td>Ecosystem corresponding to requested <code>ecosystem_id</code></td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-GenerateTokenRequest"></a></p>
-<h3 id="generatetokenrequest">GenerateTokenRequest<a class="headerlink" href="#generatetokenrequest" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>description</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Description to identify this token</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-GenerateTokenResponse"></a></p>
-<h3 id="generatetokenresponse">GenerateTokenResponse<a class="headerlink" href="#generatetokenresponse" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>profile</td>
-<td><a href="/reference/proto#services-account-v1-AccountProfile">services.account.v1.AccountProfile</a></td>
-<td>Account authentication profile that contains unprotected token</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-GetEventTokenRequest"></a></p>
-<h3 id="geteventtokenrequest">GetEventTokenRequest<a class="headerlink" href="#geteventtokenrequest" title="Permanent link">&para;</a></h3>
-<p>generates an events token bound to the provided ed25519 pk</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>pk</td>
-<td><a href="/reference/proto#bytes">bytes</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-GetEventTokenResponse"></a></p>
-<h3 id="geteventtokenresponse">GetEventTokenResponse<a class="headerlink" href="#geteventtokenresponse" title="Permanent link">&para;</a></h3>
-<p>response message containing a token (JWT) that can be used
-to connect directly to the message streaming architecture</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>token</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>a JWT bound to the PK provided in the request</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-GetOberonKeyRequest"></a></p>
-<h3 id="getoberonkeyrequest">GetOberonKeyRequest<a class="headerlink" href="#getoberonkeyrequest" title="Permanent link">&para;</a></h3>
-<p>request message for GetOberonKey</p>
-<p><a name="services-provider-v1-GetOberonKeyResponse"></a></p>
-<h3 id="getoberonkeyresponse">GetOberonKeyResponse<a class="headerlink" href="#getoberonkeyresponse" title="Permanent link">&para;</a></h3>
-<p>response message for GetOberonKey</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>key</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Oberon Public Key as RAW base64 URL encoded string</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-InvitationStatusRequest"></a></p>
-<h3 id="invitationstatusrequest">InvitationStatusRequest<a class="headerlink" href="#invitationstatusrequest" title="Permanent link">&para;</a></h3>
-<p>Request details for the status of onboarding
-an individual or organization.
-The reference_id passed is the response from the
-<code>Onboard</code> method call</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>invitation_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>ID of invitation</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-InvitationStatusResponse"></a></p>
-<h3 id="invitationstatusresponse">InvitationStatusResponse<a class="headerlink" href="#invitationstatusresponse" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>status</td>
-<td><a href="/reference/proto#services-provider-v1-InvitationStatusResponse-Status">InvitationStatusResponse.Status</a></td>
-<td>Status of invitation</td>
-</tr>
-<tr>
-<td>status_details</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Human-readable string with details about invitation status</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-Invite"></a></p>
-<h3 id="invite">Invite<a class="headerlink" href="#invite" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>code</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>created</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>accepted</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>expires</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-InviteRequest"></a></p>
-<h3 id="inviterequest">InviteRequest<a class="headerlink" href="#inviterequest" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>participant</td>
-<td><a href="/reference/proto#services-provider-v1-ParticipantType">ParticipantType</a></td>
-<td>Type of participant being invited (individual/organization)</td>
-</tr>
-<tr>
-<td>description</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Description of invitation</td>
-</tr>
-<tr>
-<td>details</td>
-<td><a href="/reference/proto#services-account-v1-AccountDetails">services.account.v1.AccountDetails</a></td>
-<td>Account details of invitee</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-InviteRequest-DidCommInvitation"></a></p>
-<h3 id="inviterequestdidcomminvitation">InviteRequest.DidCommInvitation<a class="headerlink" href="#inviterequestdidcomminvitation" title="Permanent link">&para;</a></h3>
-<p><a name="services-provider-v1-InviteResponse"></a></p>
-<h3 id="inviteresponse">InviteResponse<a class="headerlink" href="#inviteresponse" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>invitation_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>ID of created invitation</td>
-</tr>
-<tr>
-<td>invitation_code</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Invitation Code that must be passed with the account 'SignIn' request to correlate this user with the invitation sent.</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-UpdateEcosystemRequest"></a></p>
-<h3 id="updateecosystemrequest">UpdateEcosystemRequest<a class="headerlink" href="#updateecosystemrequest" title="Permanent link">&para;</a></h3>
-<p>Request to update an ecosystem</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ecosystem_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>ID of the ecosystem to update</td>
-</tr>
-<tr>
-<td>description</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Description of the ecosystem</td>
-</tr>
-<tr>
-<td>uri</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>External URL associated with the organization or ecosystem entity</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-UpdateEcosystemResponse"></a></p>
-<h3 id="updateecosystemresponse">UpdateEcosystemResponse<a class="headerlink" href="#updateecosystemresponse" title="Permanent link">&para;</a></h3>
-<p>Response to <code>UpdateEcosystemRequest</code></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Ecosystem</td>
-<td><a href="/reference/proto#services-provider-v1-Ecosystem">Ecosystem</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-WebhookConfig"></a></p>
-<h3 id="webhookconfig">WebhookConfig<a class="headerlink" href="#webhookconfig" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>UUID of the webhook</td>
-</tr>
-<tr>
-<td>destination_url</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Destination to post webhook calls to</td>
-</tr>
-<tr>
-<td>events</td>
-<td><a href="/reference/proto#string">string</a>[]</td>
-<td>Events the webhook is subscribed to</td>
-</tr>
-<tr>
-<td>status</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Whether we are able to sucessfully send events to the webhook</td>
-</tr>
-</tbody>
-</table>
-<!-- end messages -->
-
-<p><a name="services-provider-v1-InvitationStatusResponse-Status"></a></p>
-<h3 id="invitationstatusresponsestatus">InvitationStatusResponse.Status<a class="headerlink" href="#invitationstatusresponsestatus" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Number</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Error</td>
-<td>0</td>
-<td>Onboarding resulted in error</td>
-</tr>
-<tr>
-<td>InvitationSent</td>
-<td>1</td>
-<td>The participant has been invited</td>
-</tr>
-<tr>
-<td>Completed</td>
-<td>2</td>
-<td>The participant has been onboarded</td>
-</tr>
-<tr>
-<td>Expired</td>
-<td>3</td>
-<td>The invite has expired</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-provider-v1-ParticipantType"></a></p>
-<h3 id="participanttype">ParticipantType<a class="headerlink" href="#participanttype" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Number</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>participant_type_individual</td>
-<td>0</td>
-<td></td>
-</tr>
-<tr>
-<td>participant_type_organization</td>
-<td>1</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<!-- end enums -->
-
-<!-- end HasExtensions -->
-
-<p><a name="services_common_v1_common-proto"></a></p>
-<p align="right"><a href="#top">Top</a></p>
-
-<h2 id="servicescommonv1commonproto">services/common/v1/common.proto<a class="headerlink" href="#servicescommonv1commonproto" title="Permanent link">&para;</a></h2>
-<!-- end services -->
-
-<p><a name="services-common-v1-Nonce"></a></p>
-<h3 id="nonce">Nonce<a class="headerlink" href="#nonce" title="Permanent link">&para;</a></h3>
-<p>Nonce used to generate an oberon proof</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>timestamp</td>
-<td><a href="/reference/proto#int64">int64</a></td>
-<td>UTC unix millisecond timestamp the request was made</td>
-</tr>
-<tr>
-<td>request_hash</td>
-<td><a href="/reference/proto#bytes">bytes</a></td>
-<td>blake3256 hash of the request body</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-common-v1-ServerConfig"></a></p>
-<h3 id="serverconfig">ServerConfig<a class="headerlink" href="#serverconfig" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>endpoint</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>service endpoint</td>
-</tr>
-<tr>
-<td>port</td>
-<td><a href="/reference/proto#int32">int32</a></td>
-<td>service port</td>
-</tr>
-<tr>
-<td>use_tls</td>
-<td><a href="/reference/proto#bool">bool</a></td>
-<td>indicates if tls is used</td>
-</tr>
-</tbody>
-</table>
-<!-- end messages -->
-
-<p><a name="services-common-v1-ResponseStatus"></a></p>
-<h3 id="responsestatus">ResponseStatus<a class="headerlink" href="#responsestatus" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Number</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>SUCCESS</td>
-<td>0</td>
-<td></td>
-</tr>
-<tr>
-<td>WALLET_ACCESS_DENIED</td>
-<td>10</td>
-<td></td>
-</tr>
-<tr>
-<td>WALLET_EXISTS</td>
-<td>11</td>
-<td></td>
-</tr>
-<tr>
-<td>ITEM_NOT_FOUND</td>
-<td>20</td>
-<td></td>
-</tr>
-<tr>
-<td>SERIALIZATION_ERROR</td>
-<td>200</td>
-<td></td>
-</tr>
-<tr>
-<td>UNKNOWN_ERROR</td>
-<td>100</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<!-- end enums -->
-
-<!-- end HasExtensions -->
-
-<p><a name="services_options_field-options-proto"></a></p>
-<p align="right"><a href="#top">Top</a></p>
-
-<h2 id="servicesoptionsfield-optionsproto">services/options/field-options.proto<a class="headerlink" href="#servicesoptionsfield-optionsproto" title="Permanent link">&para;</a></h2>
-<!-- end services -->
-
-<!-- end messages -->
-
-<!-- end enums -->
-
-<p><a name="services_options_field-options-proto-extensions"></a></p>
-<h3 id="file-level-extensions">File-level Extensions<a class="headerlink" href="#file-level-extensions" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Extension</th>
-<th>Type</th>
-<th>Base</th>
-<th>Number</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>optional</td>
-<td>bool</td>
-<td>.google.protobuf.FieldOptions</td>
-<td>60000</td>
-<td>Whether field is optional in Trinsic's backend. This is not the same as an <code>optional</code> protobuf label; it only impacts documentation generation for the field.</td>
-</tr>
-</tbody>
-</table>
-<!-- end HasExtensions -->
-
-<p><a name="services_trust-registry_v1_trust-registry-proto"></a></p>
-<p align="right"><a href="#top">Top</a></p>
-
-<h2 id="servicestrust-registryv1trust-registryproto">services/trust-registry/v1/trust-registry.proto<a class="headerlink" href="#servicestrust-registryv1trust-registryproto" title="Permanent link">&para;</a></h2>
-<p><a name="services-trustregistry-v1-TrustRegistry"></a></p>
-<h3 id="service-trustregistry">Service - TrustRegistry<a class="headerlink" href="#service-trustregistry" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Method Name</th>
-<th>Request Type</th>
-<th>Response Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>AddFramework</td>
-<td><a href="/reference/proto#services-trustregistry-v1-AddFrameworkRequest">AddFrameworkRequest</a></td>
-<td><a href="/reference/proto#services-trustregistry-v1-AddFrameworkResponse">AddFrameworkResponse</a></td>
-<td>Adds a trust registry defintion to the ecosystem</td>
-</tr>
-<tr>
-<td>RemoveFramework</td>
-<td><a href="/reference/proto#services-trustregistry-v1-RemoveFrameworkRequest">RemoveFrameworkRequest</a></td>
-<td><a href="/reference/proto#services-trustregistry-v1-RemoveFrameworkResponse">RemoveFrameworkResponse</a></td>
-<td></td>
-</tr>
-<tr>
-<td>SearchRegistry</td>
-<td><a href="/reference/proto#services-trustregistry-v1-SearchRegistryRequest">SearchRegistryRequest</a></td>
-<td><a href="/reference/proto#services-trustregistry-v1-SearchRegistryResponse">SearchRegistryResponse</a></td>
-<td></td>
-</tr>
-<tr>
-<td>RegisterMember</td>
-<td><a href="/reference/proto#services-trustregistry-v1-RegisterMemberRequest">RegisterMemberRequest</a></td>
-<td><a href="/reference/proto#services-trustregistry-v1-RegisterMemberResponse">RegisterMemberResponse</a></td>
-<td>Registers an authoritative issuer with a credential template</td>
-</tr>
-<tr>
-<td>UnregisterMember</td>
-<td><a href="/reference/proto#services-trustregistry-v1-UnregisterMemberRequest">UnregisterMemberRequest</a></td>
-<td><a href="/reference/proto#services-trustregistry-v1-UnregisterMemberResponse">UnregisterMemberResponse</a></td>
-<td>Removes an authoritative issuer with a credential template from the trust registry</td>
-</tr>
-<tr>
-<td>GetMembershipStatus</td>
-<td><a href="/reference/proto#services-trustregistry-v1-GetMembershipStatusRequest">GetMembershipStatusRequest</a></td>
-<td><a href="/reference/proto#services-trustregistry-v1-GetMembershipStatusResponse">GetMembershipStatusResponse</a></td>
-<td></td>
-</tr>
-<tr>
-<td>FetchData</td>
-<td><a href="/reference/proto#services-trustregistry-v1-FetchDataRequest">FetchDataRequest</a></td>
-<td><a href="/reference/proto#services-trustregistry-v1-FetchDataResponse">FetchDataResponse</a> stream</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<!-- end services -->
-
-<p><a name="services-trustregistry-v1-AddFrameworkRequest"></a></p>
-<h3 id="addframeworkrequest">AddFrameworkRequest<a class="headerlink" href="#addframeworkrequest" title="Permanent link">&para;</a></h3>
-<p>Register new ecosystem governance framework</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>governance_framework_uri</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>name</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>description</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-trustregistry-v1-AddFrameworkResponse"></a></p>
-<h3 id="addframeworkresponse">AddFrameworkResponse<a class="headerlink" href="#addframeworkresponse" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Unique framework identifier</td>
-</tr>
-<tr>
-<td>governing_authority</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>trust_registry</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-trustregistry-v1-FetchDataRequest"></a></p>
-<h3 id="fetchdatarequest">FetchDataRequest<a class="headerlink" href="#fetchdatarequest" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>governance_framework_uri</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>query</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-trustregistry-v1-FetchDataResponse"></a></p>
-<h3 id="fetchdataresponse">FetchDataResponse<a class="headerlink" href="#fetchdataresponse" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>response_json</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>has_more_results</td>
-<td><a href="/reference/proto#bool">bool</a></td>
-<td></td>
-</tr>
-<tr>
-<td>continuation_token</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-trustregistry-v1-GetMembershipStatusRequest"></a></p>
-<h3 id="getmembershipstatusrequest">GetMembershipStatusRequest<a class="headerlink" href="#getmembershipstatusrequest" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>governance_framework_uri</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>did_uri</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>x509_cert</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>schema_uri</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-trustregistry-v1-GetMembershipStatusResponse"></a></p>
-<h3 id="getmembershipstatusresponse">GetMembershipStatusResponse<a class="headerlink" href="#getmembershipstatusresponse" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>status</td>
-<td><a href="/reference/proto#services-trustregistry-v1-RegistrationStatus">RegistrationStatus</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-trustregistry-v1-GovernanceFramework"></a></p>
-<h3 id="governanceframework">GovernanceFramework<a class="headerlink" href="#governanceframework" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>governance_framework_uri</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>trust_registry_uri</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>description</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-trustregistry-v1-RegisterMemberRequest"></a></p>
-<h3 id="registermemberrequest">RegisterMemberRequest<a class="headerlink" href="#registermemberrequest" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>did_uri</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>wallet_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>email</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>schema_uri</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>valid_from_utc</td>
-<td><a href="/reference/proto#uint64">uint64</a></td>
-<td></td>
-</tr>
-<tr>
-<td>valid_until_utc</td>
-<td><a href="/reference/proto#uint64">uint64</a></td>
-<td></td>
-</tr>
-<tr>
-<td>framework_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>the id of the governance framework</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-trustregistry-v1-RegisterMemberResponse"></a></p>
-<h3 id="registermemberresponse">RegisterMemberResponse<a class="headerlink" href="#registermemberresponse" title="Permanent link">&para;</a></h3>
-<p><a name="services-trustregistry-v1-RemoveFrameworkRequest"></a></p>
-<h3 id="removeframeworkrequest">RemoveFrameworkRequest<a class="headerlink" href="#removeframeworkrequest" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-trustregistry-v1-RemoveFrameworkResponse"></a></p>
-<h3 id="removeframeworkresponse">RemoveFrameworkResponse<a class="headerlink" href="#removeframeworkresponse" title="Permanent link">&para;</a></h3>
-<p><a name="services-trustregistry-v1-SearchRegistryRequest"></a></p>
-<h3 id="searchregistryrequest">SearchRegistryRequest<a class="headerlink" href="#searchregistryrequest" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>query</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>SELECT c from c where c.type == 'GovernanceFramework'</td>
-</tr>
-<tr>
-<td>continuation_token</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-trustregistry-v1-SearchRegistryResponse"></a></p>
-<h3 id="searchregistryresponse">SearchRegistryResponse<a class="headerlink" href="#searchregistryresponse" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>items_json</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>has_more</td>
-<td><a href="/reference/proto#bool">bool</a></td>
-<td></td>
-</tr>
-<tr>
-<td>continuation_token</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-trustregistry-v1-UnregisterMemberRequest"></a></p>
-<h3 id="unregistermemberrequest">UnregisterMemberRequest<a class="headerlink" href="#unregistermemberrequest" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>did_uri</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>wallet_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>email</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>schema_uri</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>framework_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-trustregistry-v1-UnregisterMemberResponse"></a></p>
-<h3 id="unregistermemberresponse">UnregisterMemberResponse<a class="headerlink" href="#unregistermemberresponse" title="Permanent link">&para;</a></h3>
-<!-- end messages -->
-
-<p><a name="services-trustregistry-v1-RegistrationStatus"></a></p>
-<h3 id="registrationstatus">RegistrationStatus<a class="headerlink" href="#registrationstatus" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Number</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CURRENT</td>
-<td>0</td>
-<td>- the entity is currently authorized, as of time of the query.</td>
-</tr>
-<tr>
-<td>EXPIRED</td>
-<td>1</td>
-<td>- entity rights have expired.</td>
-</tr>
-<tr>
-<td>TERMINATED</td>
-<td>2</td>
-<td>- entity has voluntarily ceased Issuer role under the specific EGF.</td>
-</tr>
-<tr>
-<td>REVOKED</td>
-<td>3</td>
-<td>- entity authority under specific EGF was terminated by the governing authority.</td>
-</tr>
-<tr>
-<td>NOT_FOUND</td>
-<td>10</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<!-- end enums -->
-
-<!-- end HasExtensions -->
-
-<p><a name="services_account_v1_account-proto"></a></p>
-<p align="right"><a href="#top">Top</a></p>
-
-<h2 id="servicesaccountv1accountproto">services/account/v1/account.proto<a class="headerlink" href="#servicesaccountv1accountproto" title="Permanent link">&para;</a></h2>
-<p><a name="services-account-v1-Account"></a></p>
-<h3 id="service-account">Service - Account<a class="headerlink" href="#service-account" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Method Name</th>
-<th>Request Type</th>
-<th>Response Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>SignIn</td>
-<td><a href="/reference/proto#services-account-v1-SignInRequest">SignInRequest</a></td>
-<td><a href="/reference/proto#services-account-v1-SignInResponse">SignInResponse</a></td>
-<td>Sign in to an already existing account</td>
-</tr>
-<tr>
-<td>Login</td>
-<td><a href="/reference/proto#services-account-v1-LoginRequest">LoginRequest</a></td>
-<td><a href="/reference/proto#services-account-v1-LoginResponse">LoginResponse</a></td>
-<td>Login to account. If account doesn't exist, new will be created</td>
-</tr>
-<tr>
-<td>LoginConfirm</td>
-<td><a href="/reference/proto#services-account-v1-LoginConfirmRequest">LoginConfirmRequest</a></td>
-<td><a href="/reference/proto#services-account-v1-LoginConfirmResponse">LoginConfirmResponse</a></td>
-<td>Confirm login step by responding to the challenge request</td>
-</tr>
-<tr>
-<td>Info</td>
-<td><a href="/reference/proto#services-account-v1-AccountInfoRequest">AccountInfoRequest</a></td>
-<td><a href="/reference/proto#services-account-v1-AccountInfoResponse">AccountInfoResponse</a></td>
-<td>Get account information</td>
-</tr>
-<tr>
-<td>ListDevices</td>
-<td><a href="/reference/proto#services-account-v1-ListDevicesRequest">ListDevicesRequest</a></td>
-<td><a href="/reference/proto#services-account-v1-ListDevicesResponse">ListDevicesResponse</a></td>
-<td>List all connected devices</td>
-</tr>
-<tr>
-<td>RevokeDevice</td>
-<td><a href="/reference/proto#services-account-v1-RevokeDeviceRequest">RevokeDeviceRequest</a></td>
-<td><a href="/reference/proto#services-account-v1-RevokeDeviceResponse">RevokeDeviceResponse</a></td>
-<td>Revoke device access to the account's cloud wallet</td>
-</tr>
-<tr>
-<td>AuthorizeWebhook</td>
-<td><a href="/reference/proto#services-account-v1-AuthorizeWebhookRequest">AuthorizeWebhookRequest</a></td>
-<td><a href="/reference/proto#services-account-v1-AuthorizeWebhookResponse">AuthorizeWebhookResponse</a></td>
-<td>Authorize Ecosystem to receive webhook events</td>
-</tr>
-</tbody>
-</table>
-<!-- end services -->
-
-<p><a name="services-account-v1-AccountDetails"></a></p>
-<h3 id="accountdetails">AccountDetails<a class="headerlink" href="#accountdetails" title="Permanent link">&para;</a></h3>
-<p>Account registration details</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>name</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Account name</td>
-</tr>
-<tr>
-<td>email</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Email account</td>
-</tr>
-<tr>
-<td>sms</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>SMS number including country code</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-account-v1-AccountEcosystem"></a></p>
-<h3 id="accountecosystem">AccountEcosystem<a class="headerlink" href="#accountecosystem" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>name</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>description</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>uri</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-account-v1-AccountInfoRequest"></a></p>
-<h3 id="accountinforequest">AccountInfoRequest<a class="headerlink" href="#accountinforequest" title="Permanent link">&para;</a></h3>
-<p>Request for information about the account used to make the request</p>
-<p><a name="services-account-v1-AccountInfoResponse"></a></p>
-<h3 id="accountinforesponse">AccountInfoResponse<a class="headerlink" href="#accountinforesponse" title="Permanent link">&para;</a></h3>
-<p>Information about the account used to make the request</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>details</td>
-<td><a href="/reference/proto#services-account-v1-AccountDetails">AccountDetails</a></td>
-<td>The account details associated with the calling request context</td>
-</tr>
-<tr>
-<td>ecosystems</td>
-<td><a href="/reference/proto#services-account-v1-AccountEcosystem">AccountEcosystem</a>[]</td>
-<td><strong>Deprecated.</strong> Use <code>ecosystem_id</code> instead</td>
-</tr>
-<tr>
-<td>wallet_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>The wallet ID associated with this account</td>
-</tr>
-<tr>
-<td>device_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>The device ID associated with this account session</td>
-</tr>
-<tr>
-<td>ecosystem_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>The ecosystem ID within which this account resides</td>
-</tr>
-<tr>
-<td>public_did</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>The public DID associated with this account. This DID is used as "issuer" when signing verifiable credentials</td>
-</tr>
-<tr>
-<td>authorized_webhooks</td>
-<td><a href="/reference/proto#string">string</a>[]</td>
-<td>Webhook events if any this wallet has authorized</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-account-v1-AccountProfile"></a></p>
-<h3 id="accountprofile">AccountProfile<a class="headerlink" href="#accountprofile" title="Permanent link">&para;</a></h3>
-<p>Device profile containing sensitive authentication data.
-This information should be stored securely</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>profile_type</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>The type of profile, used to differentiate between protocol schemes or versions</td>
-</tr>
-<tr>
-<td>auth_data</td>
-<td><a href="/reference/proto#bytes">bytes</a></td>
-<td>Auth data containg information about the current device access</td>
-</tr>
-<tr>
-<td>auth_token</td>
-<td><a href="/reference/proto#bytes">bytes</a></td>
-<td>Secure token issued by server used to generate zero-knowledge proofs</td>
-</tr>
-<tr>
-<td>protection</td>
-<td><a href="/reference/proto#services-account-v1-TokenProtection">TokenProtection</a></td>
-<td>Token security information about the token. If token protection is enabled, implementations must supply protection secret before using the token for authentication.</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-account-v1-AuthorizeWebhookRequest"></a></p>
-<h3 id="authorizewebhookrequest">AuthorizeWebhookRequest<a class="headerlink" href="#authorizewebhookrequest" title="Permanent link">&para;</a></h3>
-<p>Authorize ecosystem to receive wallet events</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>events</td>
-<td><a href="/reference/proto#string">string</a>[]</td>
-<td>Events to authorize access to. Default is "*" (all events)</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-account-v1-AuthorizeWebhookResponse"></a></p>
-<h3 id="authorizewebhookresponse">AuthorizeWebhookResponse<a class="headerlink" href="#authorizewebhookresponse" title="Permanent link">&para;</a></h3>
-<p>Response to <code>AuthorizeWebhookRequest</code></p>
-<p><a name="services-account-v1-ListDevicesRequest"></a></p>
-<h3 id="listdevicesrequest">ListDevicesRequest<a class="headerlink" href="#listdevicesrequest" title="Permanent link">&para;</a></h3>
-<p><a name="services-account-v1-ListDevicesResponse"></a></p>
-<h3 id="listdevicesresponse">ListDevicesResponse<a class="headerlink" href="#listdevicesresponse" title="Permanent link">&para;</a></h3>
-<p><a name="services-account-v1-LoginConfirmRequest"></a></p>
-<h3 id="loginconfirmrequest">LoginConfirmRequest<a class="headerlink" href="#loginconfirmrequest" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>challenge</td>
-<td><a href="/reference/proto#bytes">bytes</a></td>
-<td>Login challenge received during the Login call</td>
-</tr>
-<tr>
-<td>confirmation_code_hashed</td>
-<td><a href="/reference/proto#bytes">bytes</a></td>
-<td>Confirmation code received in email or SMS hashed using Blake3</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-account-v1-LoginConfirmResponse"></a></p>
-<h3 id="loginconfirmresponse">LoginConfirmResponse<a class="headerlink" href="#loginconfirmresponse" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>profile</td>
-<td><a href="/reference/proto#services-account-v1-AccountProfile">AccountProfile</a></td>
-<td>Profile response. This profile may be protected and require unblinding/unprotection using the raw hashed code</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-account-v1-LoginRequest"></a></p>
-<h3 id="loginrequest">LoginRequest<a class="headerlink" href="#loginrequest" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>email</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Email account to associate with the login request</td>
-</tr>
-<tr>
-<td>invitation_code</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Invitation code associated with this registration</td>
-</tr>
-<tr>
-<td>ecosystem_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>ID of Ecosystem to sign into. Ignored if <code>invitation_code</code> is passed</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-account-v1-LoginResponse"></a></p>
-<h3 id="loginresponse">LoginResponse<a class="headerlink" href="#loginresponse" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>challenge</td>
-<td><a href="/reference/proto#bytes">bytes</a></td>
-<td>Challenge response. Random byte sequence unique for this login request</td>
-</tr>
-<tr>
-<td>profile</td>
-<td><a href="/reference/proto#services-account-v1-AccountProfile">AccountProfile</a></td>
-<td>Profile response. The login isn't challenged and the token is returned in this call. Does not require confirmation step</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-account-v1-RevokeDeviceRequest"></a></p>
-<h3 id="revokedevicerequest">RevokeDeviceRequest<a class="headerlink" href="#revokedevicerequest" title="Permanent link">&para;</a></h3>
-<p><a name="services-account-v1-RevokeDeviceResponse"></a></p>
-<h3 id="revokedeviceresponse">RevokeDeviceResponse<a class="headerlink" href="#revokedeviceresponse" title="Permanent link">&para;</a></h3>
-<p><a name="services-account-v1-SignInRequest"></a></p>
-<h3 id="signinrequest">SignInRequest<a class="headerlink" href="#signinrequest" title="Permanent link">&para;</a></h3>
-<p>Request for creating or signing into an account</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>details</td>
-<td><a href="/reference/proto#services-account-v1-AccountDetails">AccountDetails</a></td>
-<td>Account registration details</td>
-</tr>
-<tr>
-<td>invitation_code</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>Invitation code associated with this registration</td>
-</tr>
-<tr>
-<td>ecosystem_id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>ID of Ecosystem to use Ignored if <code>invitation_code</code> is passed</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-account-v1-SignInResponse"></a></p>
-<h3 id="signinresponse">SignInResponse<a class="headerlink" href="#signinresponse" title="Permanent link">&para;</a></h3>
-<p>Response for creating new account
-This object will indicate if a confirmation code
-was sent to one of the users two-factor methods
-like email, SMS, etc.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>confirmation_method</td>
-<td><a href="/reference/proto#services-account-v1-ConfirmationMethod">ConfirmationMethod</a></td>
-<td>Indicates if confirmation of account is required. This settings is configured globally by the server administrator.</td>
-</tr>
-<tr>
-<td>profile</td>
-<td><a href="/reference/proto#services-account-v1-AccountProfile">AccountProfile</a></td>
-<td>Contains authentication data for use with the current device. This object must be stored in a secure place. It can also be protected with a PIN, but this is optional. See the docs at https://docs.trinsic.id for more information on working with authentication data.</td>
-</tr>
-</tbody>
-</table>
-<p><a name="services-account-v1-TokenProtection"></a></p>
-<h3 id="tokenprotection">TokenProtection<a class="headerlink" href="#tokenprotection" title="Permanent link">&para;</a></h3>
-<p>Token protection info</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>enabled</td>
-<td><a href="/reference/proto#bool">bool</a></td>
-<td>Indicates if token is protected using a PIN, security code, HSM secret, etc.</td>
-</tr>
-<tr>
-<td>method</td>
-<td><a href="/reference/proto#services-account-v1-ConfirmationMethod">ConfirmationMethod</a></td>
-<td>The method used to protect the token</td>
-</tr>
-</tbody>
-</table>
-<!-- end messages -->
-
-<p><a name="services-account-v1-ConfirmationMethod"></a></p>
-<h3 id="confirmationmethod">ConfirmationMethod<a class="headerlink" href="#confirmationmethod" title="Permanent link">&para;</a></h3>
-<p>Confirmation method type for two-factor workflows</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Number</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>None</td>
-<td>0</td>
-<td>No confirmation required</td>
-</tr>
-<tr>
-<td>Email</td>
-<td>1</td>
-<td>Email confirmation required</td>
-</tr>
-<tr>
-<td>Sms</td>
-<td>2</td>
-<td>SMS confirmation required</td>
-</tr>
-<tr>
-<td>ConnectedDevice</td>
-<td>3</td>
-<td>Confirmation from a connected device is required</td>
-</tr>
-<tr>
-<td>Other</td>
-<td>10</td>
-<td>Indicates third-party method of confirmation is required</td>
-</tr>
-</tbody>
-</table>
-<!-- end enums -->
-
-<!-- end HasExtensions -->
-
 <h2 id="scalar-value-types">Scalar Value Types<a class="headerlink" href="#scalar-value-types" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -7268,7 +7237,7 @@ like email, SMS, etc.</p>
   
     <div class="md-source-date">
       <small>
-          Authors: <span class='git-page-authors git-authors'><a href='mailto:polygonguru@gmail.com'>Scott Phillips</a>, <a href='mailto:josh@trinsic.id'>Joshua Coffey</a></span>
+          Authors: <span class='git-page-authors git-authors'><a href='mailto:josh@trinsic.id'>Joshua Coffey</a>, <a href='mailto:polygonguru@gmail.com'>Scott Phillips</a>, <a href='mailto:tomislav@trinsic.id'>Tomislav Markovski</a></span>
       </small>
     </div>
   
@@ -7340,7 +7309,7 @@ like email, SMS, etc.</p>
     <script id="__config" type="application/json">{"base": "../..", "features": ["content.tabs.link", "navigation.instant", "navigation.tracking", "announce.dismiss", "navigation.tabs"], "search": "../../assets/javascripts/workers/search.bb370e14.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.20d68964.min.js"></script>
+      <script src="../../assets/javascripts/bundle.73b969c1.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
       
