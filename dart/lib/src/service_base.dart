@@ -15,7 +15,9 @@ import 'package:trinsic_dart/src/trinsic_util.dart';
 class MetadataInterceptor extends ClientInterceptor {
   static const skipRoutes = [
     "/services.account.v1.Account/SignIn",
-    "/services.provider.v1.Provider/CreateEcosystem"
+    "/services.provider.v1.Provider/CreateEcosystem",
+    "/services.provider.v1.Provider/LogIn",
+    "/services.provider.v1.Provider/LogInConfirm",
   ];
   late ServiceBase serviceContext;
   MetadataInterceptor(ServiceBase base) {
@@ -29,7 +31,9 @@ class MetadataInterceptor extends ClientInterceptor {
   ResponseFuture<R> interceptUnary<Q, R>(
       ClientMethod<Q, R> method, Q request, CallOptions options, invoker) {
     FutureOr<void> _provider(Map<String, String> metadata, String uri) async {
-      if (!skipRoutes.any((element) => element == method.path)) {
+      var buildMetadata = true;
+      buildMetadata = !skipRoutes.any((element) => element == method.path) || options.metadata['authenticateCall']?.toLowerCase() != "false";
+      if (buildMetadata) {
         metadata['authorization'] =
             serviceContext.buildMetadata(request as $pb.GeneratedMessage);
       }
