@@ -101,6 +101,9 @@ pub struct WebhookConfig {
     /// Events the webhook is subscribed to
     #[prost(string, repeated, tag = "4")]
     pub events: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+    /// Whether we are able to sucessfully send events to the webhook
+    #[prost(string, tag = "5")]
+    pub status: ::prost::alloc::string::String,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct CreateEcosystemRequest {
@@ -355,7 +358,7 @@ pub mod provider_client {
             self.inner.unary(request.into_request(), path, codec).await
         }
         #[doc = " Get ecosystem information"]
-        pub async fn info(
+        pub async fn ecosystem_info(
             &mut self,
             request: impl tonic::IntoRequest<super::EcosystemInfoRequest>,
         ) -> Result<tonic::Response<super::EcosystemInfoResponse>, tonic::Status> {
@@ -364,7 +367,7 @@ pub mod provider_client {
                 .await
                 .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/Info");
+            let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/EcosystemInfo");
             self.inner.unary(request.into_request(), path, codec).await
         }
         #[doc = " Generates an unprotected authentication token that can be used to"]
