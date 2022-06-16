@@ -31,7 +31,9 @@ class MetadataInterceptor extends ClientInterceptor {
   ResponseFuture<R> interceptUnary<Q, R>(
       ClientMethod<Q, R> method, Q request, CallOptions options, invoker) {
     FutureOr<void> _provider(Map<String, String> metadata, String uri) async {
-      var authenticateCall = (options.metadata['authenticateCall']?.toLowerCase() ?? "false") != "false";
+      var authenticateCall =
+          (options.metadata['authenticateCall']?.toLowerCase() ?? "false") !=
+              "false";
       var buildMetadata = !skipRoutes.any((element) => element == method.path);
       buildMetadata = buildMetadata || authenticateCall;
       if (buildMetadata) {

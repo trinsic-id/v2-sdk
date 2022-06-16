@@ -11,9 +11,9 @@ class ProviderServiceKt(options: Options.ServiceOptions?) : ServiceBase(options)
 
   @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun createEcosystem(request: CreateEcosystemRequest): CreateEcosystemResponse {
-      if (request.name.isNullOrBlank() && request.details.email.isNullOrBlank()) {
-          return stub.createEcosystem(request)
-      }
+    if (request.name.isNullOrBlank() && request.details.email.isNullOrBlank()) {
+      return stub.createEcosystem(request)
+    }
     return withMetadata(stub, request).createEcosystem(request)
   }
 
