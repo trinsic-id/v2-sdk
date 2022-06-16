@@ -22,7 +22,11 @@ public class ProviderService extends ServiceBase {
   public ListenableFuture<ProviderOuterClass.CreateEcosystemResponse> createEcosystem(
       ProviderOuterClass.CreateEcosystemRequest request)
       throws InvalidProtocolBufferException, DidException {
-    return withMetadata(stub, request).createEcosystem(request);
+      if (request.getName().isBlank() && request.getDetails().getEmail().isBlank()) {
+          return stub.createEcosystem(request);
+      } else {
+          return withMetadata(stub, request).createEcosystem(request);
+      }
   }
 
   public ListenableFuture<ProviderOuterClass.UpdateEcosystemResponse> updateEcosystem(

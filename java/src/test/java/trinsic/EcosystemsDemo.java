@@ -1,13 +1,14 @@
 package trinsic;
 
-import java.io.IOException;
-import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.okapi.DidException;
 import trinsic.services.AccountService;
 import trinsic.services.ProviderService;
 import trinsic.services.account.v1.AccountOuterClass;
 import trinsic.services.common.v1.ProviderOuterClass;
+
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 public class EcosystemsDemo {
   public static void main(String[] args)
@@ -47,7 +48,7 @@ public class EcosystemsDemo {
       // inviteParticipant() {
       inviteResponse =
           service
-              .inviteParticipant(
+              .invite(
                   ProviderOuterClass.InviteRequest.newBuilder()
                       .setParticipant(
                           ProviderOuterClass.ParticipantType.participant_type_individual)

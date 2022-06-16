@@ -41,7 +41,11 @@ class ProviderService(ServiceBase):
             [CreateEcosystemResponse](/reference/proto/#createecosystemresponse)
         """
         request = request or CreateEcosystemRequest()
-        return await self.client.create_ecosystem(request)
+        # Authentication metadata interceptor is in `ServiceBase.py`
+        metadata = {
+            "authenticateCall": len(request.name) > 0 or (request.details and len(request.details.email) > 0)
+        }
+        return await self.client.create_ecosystem(request, metadata=metadata)
 
     async def update_ecosystem(
         self, *, request: UpdateEcosystemRequest
