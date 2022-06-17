@@ -52,22 +52,10 @@ subcommands:
               Create login credentials by signing into an existing account or
               creating a new one.
             args:
-              - name:
-                  long: name
-                  value_name: STRING
-                  help: (Optional) Description for new cloud wallet
-                  takes_value: true
-                  required: false
               - email:
                   long: email
                   value_name: STRING
                   help: (Optional) Email to associate with this account
-                  takes_value: true
-                  required: false
-              - sms:
-                  long: sms
-                  value_name: STRING
-                  help: (Optional) SMS to associate with this account
                   takes_value: true
                   required: false
               - invitation-code:

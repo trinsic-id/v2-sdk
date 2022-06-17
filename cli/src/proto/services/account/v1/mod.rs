@@ -176,7 +176,7 @@ pub struct LoginConfirmResponse {
     #[prost(message, optional, tag = "1")]
     pub profile: ::core::option::Option<AccountProfile>,
 }
-/// Authorize ecosystem to receive wallet envents
+/// Authorize ecosystem to receive wallet events
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct AuthorizeWebhookRequest {
     /// Events to authorize access to. Default is "*" (all events)
