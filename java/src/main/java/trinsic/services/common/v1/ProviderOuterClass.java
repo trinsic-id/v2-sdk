@@ -11375,35 +11375,10 @@ public final class ProviderOuterClass {
      *
      *
      * <pre>
-     * ID of the ecosystem to update
-     * </pre>
-     *
-     * <code>string ecosystem_id = 1;</code>
-     *
-     * @return The ecosystemId.
-     */
-    java.lang.String getEcosystemId();
-    /**
-     *
-     *
-     * <pre>
-     * ID of the ecosystem to update
-     * </pre>
-     *
-     * <code>string ecosystem_id = 1;</code>
-     *
-     * @return The bytes for ecosystemId.
-     */
-    com.google.protobuf.ByteString getEcosystemIdBytes();
-
-    /**
-     *
-     *
-     * <pre>
      * Description of the ecosystem
      * </pre>
      *
-     * <code>string description = 2;</code>
+     * <code>string description = 1;</code>
      *
      * @return The description.
      */
@@ -11415,7 +11390,7 @@ public final class ProviderOuterClass {
      * Description of the ecosystem
      * </pre>
      *
-     * <code>string description = 2;</code>
+     * <code>string description = 1;</code>
      *
      * @return The bytes for description.
      */
@@ -11428,7 +11403,7 @@ public final class ProviderOuterClass {
      * External URL associated with the organization or ecosystem entity
      * </pre>
      *
-     * <code>string uri = 3;</code>
+     * <code>string uri = 2;</code>
      *
      * @return The uri.
      */
@@ -11440,7 +11415,7 @@ public final class ProviderOuterClass {
      * External URL associated with the organization or ecosystem entity
      * </pre>
      *
-     * <code>string uri = 3;</code>
+     * <code>string uri = 2;</code>
      *
      * @return The bytes for uri.
      */
@@ -11466,7 +11441,6 @@ public final class ProviderOuterClass {
     }
 
     private UpdateEcosystemRequest() {
-      ecosystemId_ = "";
       description_ = "";
       uri_ = "";
     }
@@ -11504,17 +11478,10 @@ public final class ProviderOuterClass {
               {
                 java.lang.String s = input.readStringRequireUtf8();
 
-                ecosystemId_ = s;
-                break;
-              }
-            case 18:
-              {
-                java.lang.String s = input.readStringRequireUtf8();
-
                 description_ = s;
                 break;
               }
-            case 26:
+            case 18:
               {
                 java.lang.String s = input.readStringRequireUtf8();
 
@@ -11557,56 +11524,7 @@ public final class ProviderOuterClass {
               trinsic.services.common.v1.ProviderOuterClass.UpdateEcosystemRequest.Builder.class);
     }
 
-    public static final int ECOSYSTEM_ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object ecosystemId_;
-    /**
-     *
-     *
-     * <pre>
-     * ID of the ecosystem to update
-     * </pre>
-     *
-     * <code>string ecosystem_id = 1;</code>
-     *
-     * @return The ecosystemId.
-     */
-    @java.lang.Override
-    public java.lang.String getEcosystemId() {
-      java.lang.Object ref = ecosystemId_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        ecosystemId_ = s;
-        return s;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * ID of the ecosystem to update
-     * </pre>
-     *
-     * <code>string ecosystem_id = 1;</code>
-     *
-     * @return The bytes for ecosystemId.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString getEcosystemIdBytes() {
-      java.lang.Object ref = ecosystemId_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        ecosystemId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int DESCRIPTION_FIELD_NUMBER = 2;
+    public static final int DESCRIPTION_FIELD_NUMBER = 1;
     private volatile java.lang.Object description_;
     /**
      *
@@ -11615,7 +11533,7 @@ public final class ProviderOuterClass {
      * Description of the ecosystem
      * </pre>
      *
-     * <code>string description = 2;</code>
+     * <code>string description = 1;</code>
      *
      * @return The description.
      */
@@ -11638,7 +11556,7 @@ public final class ProviderOuterClass {
      * Description of the ecosystem
      * </pre>
      *
-     * <code>string description = 2;</code>
+     * <code>string description = 1;</code>
      *
      * @return The bytes for description.
      */
@@ -11655,7 +11573,7 @@ public final class ProviderOuterClass {
       }
     }
 
-    public static final int URI_FIELD_NUMBER = 3;
+    public static final int URI_FIELD_NUMBER = 2;
     private volatile java.lang.Object uri_;
     /**
      *
@@ -11664,7 +11582,7 @@ public final class ProviderOuterClass {
      * External URL associated with the organization or ecosystem entity
      * </pre>
      *
-     * <code>string uri = 3;</code>
+     * <code>string uri = 2;</code>
      *
      * @return The uri.
      */
@@ -11687,7 +11605,7 @@ public final class ProviderOuterClass {
      * External URL associated with the organization or ecosystem entity
      * </pre>
      *
-     * <code>string uri = 3;</code>
+     * <code>string uri = 2;</code>
      *
      * @return The bytes for uri.
      */
@@ -11718,14 +11636,11 @@ public final class ProviderOuterClass {
 
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, ecosystemId_);
-      }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, description_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, description_);
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(uri_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, uri_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, uri_);
       }
       unknownFields.writeTo(output);
     }
@@ -11736,14 +11651,11 @@ public final class ProviderOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, ecosystemId_);
-      }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, description_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, description_);
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(uri_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, uri_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, uri_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -11761,7 +11673,6 @@ public final class ProviderOuterClass {
       trinsic.services.common.v1.ProviderOuterClass.UpdateEcosystemRequest other =
           (trinsic.services.common.v1.ProviderOuterClass.UpdateEcosystemRequest) obj;
 
-      if (!getEcosystemId().equals(other.getEcosystemId())) return false;
       if (!getDescription().equals(other.getDescription())) return false;
       if (!getUri().equals(other.getUri())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -11775,8 +11686,6 @@ public final class ProviderOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + ECOSYSTEM_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getEcosystemId().hashCode();
       hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
       hash = (53 * hash) + getDescription().hashCode();
       hash = (37 * hash) + URI_FIELD_NUMBER;
@@ -11931,8 +11840,6 @@ public final class ProviderOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        ecosystemId_ = "";
-
         description_ = "";
 
         uri_ = "";
@@ -11967,7 +11874,6 @@ public final class ProviderOuterClass {
       public trinsic.services.common.v1.ProviderOuterClass.UpdateEcosystemRequest buildPartial() {
         trinsic.services.common.v1.ProviderOuterClass.UpdateEcosystemRequest result =
             new trinsic.services.common.v1.ProviderOuterClass.UpdateEcosystemRequest(this);
-        result.ecosystemId_ = ecosystemId_;
         result.description_ = description_;
         result.uri_ = uri_;
         onBuilt();
@@ -12025,10 +11931,6 @@ public final class ProviderOuterClass {
         if (other
             == trinsic.services.common.v1.ProviderOuterClass.UpdateEcosystemRequest
                 .getDefaultInstance()) return this;
-        if (!other.getEcosystemId().isEmpty()) {
-          ecosystemId_ = other.ecosystemId_;
-          onChanged();
-        }
         if (!other.getDescription().isEmpty()) {
           description_ = other.description_;
           onChanged();
@@ -12068,112 +11970,6 @@ public final class ProviderOuterClass {
         return this;
       }
 
-      private java.lang.Object ecosystemId_ = "";
-      /**
-       *
-       *
-       * <pre>
-       * ID of the ecosystem to update
-       * </pre>
-       *
-       * <code>string ecosystem_id = 1;</code>
-       *
-       * @return The ecosystemId.
-       */
-      public java.lang.String getEcosystemId() {
-        java.lang.Object ref = ecosystemId_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          ecosystemId_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       *
-       *
-       * <pre>
-       * ID of the ecosystem to update
-       * </pre>
-       *
-       * <code>string ecosystem_id = 1;</code>
-       *
-       * @return The bytes for ecosystemId.
-       */
-      public com.google.protobuf.ByteString getEcosystemIdBytes() {
-        java.lang.Object ref = ecosystemId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
-              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-          ecosystemId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       *
-       *
-       * <pre>
-       * ID of the ecosystem to update
-       * </pre>
-       *
-       * <code>string ecosystem_id = 1;</code>
-       *
-       * @param value The ecosystemId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setEcosystemId(java.lang.String value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-
-        ecosystemId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       *
-       *
-       * <pre>
-       * ID of the ecosystem to update
-       * </pre>
-       *
-       * <code>string ecosystem_id = 1;</code>
-       *
-       * @return This builder for chaining.
-       */
-      public Builder clearEcosystemId() {
-
-        ecosystemId_ = getDefaultInstance().getEcosystemId();
-        onChanged();
-        return this;
-      }
-      /**
-       *
-       *
-       * <pre>
-       * ID of the ecosystem to update
-       * </pre>
-       *
-       * <code>string ecosystem_id = 1;</code>
-       *
-       * @param value The bytes for ecosystemId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setEcosystemIdBytes(com.google.protobuf.ByteString value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        checkByteStringIsUtf8(value);
-
-        ecosystemId_ = value;
-        onChanged();
-        return this;
-      }
-
       private java.lang.Object description_ = "";
       /**
        *
@@ -12182,7 +11978,7 @@ public final class ProviderOuterClass {
        * Description of the ecosystem
        * </pre>
        *
-       * <code>string description = 2;</code>
+       * <code>string description = 1;</code>
        *
        * @return The description.
        */
@@ -12204,7 +12000,7 @@ public final class ProviderOuterClass {
        * Description of the ecosystem
        * </pre>
        *
-       * <code>string description = 2;</code>
+       * <code>string description = 1;</code>
        *
        * @return The bytes for description.
        */
@@ -12226,7 +12022,7 @@ public final class ProviderOuterClass {
        * Description of the ecosystem
        * </pre>
        *
-       * <code>string description = 2;</code>
+       * <code>string description = 1;</code>
        *
        * @param value The description to set.
        * @return This builder for chaining.
@@ -12247,7 +12043,7 @@ public final class ProviderOuterClass {
        * Description of the ecosystem
        * </pre>
        *
-       * <code>string description = 2;</code>
+       * <code>string description = 1;</code>
        *
        * @return This builder for chaining.
        */
@@ -12264,7 +12060,7 @@ public final class ProviderOuterClass {
        * Description of the ecosystem
        * </pre>
        *
-       * <code>string description = 2;</code>
+       * <code>string description = 1;</code>
        *
        * @param value The bytes for description to set.
        * @return This builder for chaining.
@@ -12288,7 +12084,7 @@ public final class ProviderOuterClass {
        * External URL associated with the organization or ecosystem entity
        * </pre>
        *
-       * <code>string uri = 3;</code>
+       * <code>string uri = 2;</code>
        *
        * @return The uri.
        */
@@ -12310,7 +12106,7 @@ public final class ProviderOuterClass {
        * External URL associated with the organization or ecosystem entity
        * </pre>
        *
-       * <code>string uri = 3;</code>
+       * <code>string uri = 2;</code>
        *
        * @return The bytes for uri.
        */
@@ -12332,7 +12128,7 @@ public final class ProviderOuterClass {
        * External URL associated with the organization or ecosystem entity
        * </pre>
        *
-       * <code>string uri = 3;</code>
+       * <code>string uri = 2;</code>
        *
        * @param value The uri to set.
        * @return This builder for chaining.
@@ -12353,7 +12149,7 @@ public final class ProviderOuterClass {
        * External URL associated with the organization or ecosystem entity
        * </pre>
        *
-       * <code>string uri = 3;</code>
+       * <code>string uri = 2;</code>
        *
        * @return This builder for chaining.
        */
@@ -12370,7 +12166,7 @@ public final class ProviderOuterClass {
        * External URL associated with the organization or ecosystem entity
        * </pre>
        *
-       * <code>string uri = 3;</code>
+       * <code>string uri = 2;</code>
        *
        * @param value The bytes for uri to set.
        * @return This builder for chaining.
@@ -13123,35 +12919,10 @@ public final class ProviderOuterClass {
      *
      *
      * <pre>
-     * ID of ecosystem to add webhook to
-     * </pre>
-     *
-     * <code>string ecosystem_id = 1;</code>
-     *
-     * @return The ecosystemId.
-     */
-    java.lang.String getEcosystemId();
-    /**
-     *
-     *
-     * <pre>
-     * ID of ecosystem to add webhook to
-     * </pre>
-     *
-     * <code>string ecosystem_id = 1;</code>
-     *
-     * @return The bytes for ecosystemId.
-     */
-    com.google.protobuf.ByteString getEcosystemIdBytes();
-
-    /**
-     *
-     *
-     * <pre>
      * Destination to post webhook calls to
      * </pre>
      *
-     * <code>string destination_url = 2;</code>
+     * <code>string destination_url = 1;</code>
      *
      * @return The destinationUrl.
      */
@@ -13163,7 +12934,7 @@ public final class ProviderOuterClass {
      * Destination to post webhook calls to
      * </pre>
      *
-     * <code>string destination_url = 2;</code>
+     * <code>string destination_url = 1;</code>
      *
      * @return The bytes for destinationUrl.
      */
@@ -13176,7 +12947,7 @@ public final class ProviderOuterClass {
      * HMAC secret for webhook validation
      * </pre>
      *
-     * <code>string secret = 3;</code>
+     * <code>string secret = 2;</code>
      *
      * @return The secret.
      */
@@ -13188,7 +12959,7 @@ public final class ProviderOuterClass {
      * HMAC secret for webhook validation
      * </pre>
      *
-     * <code>string secret = 3;</code>
+     * <code>string secret = 2;</code>
      *
      * @return The bytes for secret.
      */
@@ -13201,7 +12972,7 @@ public final class ProviderOuterClass {
      * Events to subscribe to. Default is "*" (all events)
      * </pre>
      *
-     * <code>repeated string events = 4;</code>
+     * <code>repeated string events = 3;</code>
      *
      * @return A list containing the events.
      */
@@ -13213,7 +12984,7 @@ public final class ProviderOuterClass {
      * Events to subscribe to. Default is "*" (all events)
      * </pre>
      *
-     * <code>repeated string events = 4;</code>
+     * <code>repeated string events = 3;</code>
      *
      * @return The count of events.
      */
@@ -13225,7 +12996,7 @@ public final class ProviderOuterClass {
      * Events to subscribe to. Default is "*" (all events)
      * </pre>
      *
-     * <code>repeated string events = 4;</code>
+     * <code>repeated string events = 3;</code>
      *
      * @param index The index of the element to return.
      * @return The events at the given index.
@@ -13238,7 +13009,7 @@ public final class ProviderOuterClass {
      * Events to subscribe to. Default is "*" (all events)
      * </pre>
      *
-     * <code>repeated string events = 4;</code>
+     * <code>repeated string events = 3;</code>
      *
      * @param index The index of the value to return.
      * @return The bytes of the events at the given index.
@@ -13265,7 +13036,6 @@ public final class ProviderOuterClass {
     }
 
     private AddWebhookRequest() {
-      ecosystemId_ = "";
       destinationUrl_ = "";
       secret_ = "";
       events_ = com.google.protobuf.LazyStringArrayList.EMPTY;
@@ -13305,24 +13075,17 @@ public final class ProviderOuterClass {
               {
                 java.lang.String s = input.readStringRequireUtf8();
 
-                ecosystemId_ = s;
+                destinationUrl_ = s;
                 break;
               }
             case 18:
               {
                 java.lang.String s = input.readStringRequireUtf8();
 
-                destinationUrl_ = s;
-                break;
-              }
-            case 26:
-              {
-                java.lang.String s = input.readStringRequireUtf8();
-
                 secret_ = s;
                 break;
               }
-            case 34:
+            case 26:
               {
                 java.lang.String s = input.readStringRequireUtf8();
                 if (!((mutable_bitField0_ & 0x00000001) != 0)) {
@@ -13371,56 +13134,7 @@ public final class ProviderOuterClass {
               trinsic.services.common.v1.ProviderOuterClass.AddWebhookRequest.Builder.class);
     }
 
-    public static final int ECOSYSTEM_ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object ecosystemId_;
-    /**
-     *
-     *
-     * <pre>
-     * ID of ecosystem to add webhook to
-     * </pre>
-     *
-     * <code>string ecosystem_id = 1;</code>
-     *
-     * @return The ecosystemId.
-     */
-    @java.lang.Override
-    public java.lang.String getEcosystemId() {
-      java.lang.Object ref = ecosystemId_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        ecosystemId_ = s;
-        return s;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * ID of ecosystem to add webhook to
-     * </pre>
-     *
-     * <code>string ecosystem_id = 1;</code>
-     *
-     * @return The bytes for ecosystemId.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString getEcosystemIdBytes() {
-      java.lang.Object ref = ecosystemId_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        ecosystemId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int DESTINATION_URL_FIELD_NUMBER = 2;
+    public static final int DESTINATION_URL_FIELD_NUMBER = 1;
     private volatile java.lang.Object destinationUrl_;
     /**
      *
@@ -13429,7 +13143,7 @@ public final class ProviderOuterClass {
      * Destination to post webhook calls to
      * </pre>
      *
-     * <code>string destination_url = 2;</code>
+     * <code>string destination_url = 1;</code>
      *
      * @return The destinationUrl.
      */
@@ -13452,7 +13166,7 @@ public final class ProviderOuterClass {
      * Destination to post webhook calls to
      * </pre>
      *
-     * <code>string destination_url = 2;</code>
+     * <code>string destination_url = 1;</code>
      *
      * @return The bytes for destinationUrl.
      */
@@ -13469,7 +13183,7 @@ public final class ProviderOuterClass {
       }
     }
 
-    public static final int SECRET_FIELD_NUMBER = 3;
+    public static final int SECRET_FIELD_NUMBER = 2;
     private volatile java.lang.Object secret_;
     /**
      *
@@ -13478,7 +13192,7 @@ public final class ProviderOuterClass {
      * HMAC secret for webhook validation
      * </pre>
      *
-     * <code>string secret = 3;</code>
+     * <code>string secret = 2;</code>
      *
      * @return The secret.
      */
@@ -13501,7 +13215,7 @@ public final class ProviderOuterClass {
      * HMAC secret for webhook validation
      * </pre>
      *
-     * <code>string secret = 3;</code>
+     * <code>string secret = 2;</code>
      *
      * @return The bytes for secret.
      */
@@ -13518,7 +13232,7 @@ public final class ProviderOuterClass {
       }
     }
 
-    public static final int EVENTS_FIELD_NUMBER = 4;
+    public static final int EVENTS_FIELD_NUMBER = 3;
     private com.google.protobuf.LazyStringList events_;
     /**
      *
@@ -13527,7 +13241,7 @@ public final class ProviderOuterClass {
      * Events to subscribe to. Default is "*" (all events)
      * </pre>
      *
-     * <code>repeated string events = 4;</code>
+     * <code>repeated string events = 3;</code>
      *
      * @return A list containing the events.
      */
@@ -13541,7 +13255,7 @@ public final class ProviderOuterClass {
      * Events to subscribe to. Default is "*" (all events)
      * </pre>
      *
-     * <code>repeated string events = 4;</code>
+     * <code>repeated string events = 3;</code>
      *
      * @return The count of events.
      */
@@ -13555,7 +13269,7 @@ public final class ProviderOuterClass {
      * Events to subscribe to. Default is "*" (all events)
      * </pre>
      *
-     * <code>repeated string events = 4;</code>
+     * <code>repeated string events = 3;</code>
      *
      * @param index The index of the element to return.
      * @return The events at the given index.
@@ -13570,7 +13284,7 @@ public final class ProviderOuterClass {
      * Events to subscribe to. Default is "*" (all events)
      * </pre>
      *
-     * <code>repeated string events = 4;</code>
+     * <code>repeated string events = 3;</code>
      *
      * @param index The index of the value to return.
      * @return The bytes of the events at the given index.
@@ -13593,17 +13307,14 @@ public final class ProviderOuterClass {
 
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, ecosystemId_);
-      }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(destinationUrl_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, destinationUrl_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, destinationUrl_);
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(secret_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, secret_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, secret_);
       }
       for (int i = 0; i < events_.size(); i++) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, events_.getRaw(i));
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, events_.getRaw(i));
       }
       unknownFields.writeTo(output);
     }
@@ -13614,14 +13325,11 @@ public final class ProviderOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, ecosystemId_);
-      }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(destinationUrl_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, destinationUrl_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, destinationUrl_);
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(secret_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, secret_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, secret_);
       }
       {
         int dataSize = 0;
@@ -13647,7 +13355,6 @@ public final class ProviderOuterClass {
       trinsic.services.common.v1.ProviderOuterClass.AddWebhookRequest other =
           (trinsic.services.common.v1.ProviderOuterClass.AddWebhookRequest) obj;
 
-      if (!getEcosystemId().equals(other.getEcosystemId())) return false;
       if (!getDestinationUrl().equals(other.getDestinationUrl())) return false;
       if (!getSecret().equals(other.getSecret())) return false;
       if (!getEventsList().equals(other.getEventsList())) return false;
@@ -13662,8 +13369,6 @@ public final class ProviderOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + ECOSYSTEM_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getEcosystemId().hashCode();
       hash = (37 * hash) + DESTINATION_URL_FIELD_NUMBER;
       hash = (53 * hash) + getDestinationUrl().hashCode();
       hash = (37 * hash) + SECRET_FIELD_NUMBER;
@@ -13822,8 +13527,6 @@ public final class ProviderOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        ecosystemId_ = "";
-
         destinationUrl_ = "";
 
         secret_ = "";
@@ -13859,7 +13562,6 @@ public final class ProviderOuterClass {
         trinsic.services.common.v1.ProviderOuterClass.AddWebhookRequest result =
             new trinsic.services.common.v1.ProviderOuterClass.AddWebhookRequest(this);
         int from_bitField0_ = bitField0_;
-        result.ecosystemId_ = ecosystemId_;
         result.destinationUrl_ = destinationUrl_;
         result.secret_ = secret_;
         if (((bitField0_ & 0x00000001) != 0)) {
@@ -13921,10 +13623,6 @@ public final class ProviderOuterClass {
         if (other
             == trinsic.services.common.v1.ProviderOuterClass.AddWebhookRequest.getDefaultInstance())
           return this;
-        if (!other.getEcosystemId().isEmpty()) {
-          ecosystemId_ = other.ecosystemId_;
-          onChanged();
-        }
         if (!other.getDestinationUrl().isEmpty()) {
           destinationUrl_ = other.destinationUrl_;
           onChanged();
@@ -13976,112 +13674,6 @@ public final class ProviderOuterClass {
 
       private int bitField0_;
 
-      private java.lang.Object ecosystemId_ = "";
-      /**
-       *
-       *
-       * <pre>
-       * ID of ecosystem to add webhook to
-       * </pre>
-       *
-       * <code>string ecosystem_id = 1;</code>
-       *
-       * @return The ecosystemId.
-       */
-      public java.lang.String getEcosystemId() {
-        java.lang.Object ref = ecosystemId_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          ecosystemId_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       *
-       *
-       * <pre>
-       * ID of ecosystem to add webhook to
-       * </pre>
-       *
-       * <code>string ecosystem_id = 1;</code>
-       *
-       * @return The bytes for ecosystemId.
-       */
-      public com.google.protobuf.ByteString getEcosystemIdBytes() {
-        java.lang.Object ref = ecosystemId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
-              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-          ecosystemId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       *
-       *
-       * <pre>
-       * ID of ecosystem to add webhook to
-       * </pre>
-       *
-       * <code>string ecosystem_id = 1;</code>
-       *
-       * @param value The ecosystemId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setEcosystemId(java.lang.String value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-
-        ecosystemId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       *
-       *
-       * <pre>
-       * ID of ecosystem to add webhook to
-       * </pre>
-       *
-       * <code>string ecosystem_id = 1;</code>
-       *
-       * @return This builder for chaining.
-       */
-      public Builder clearEcosystemId() {
-
-        ecosystemId_ = getDefaultInstance().getEcosystemId();
-        onChanged();
-        return this;
-      }
-      /**
-       *
-       *
-       * <pre>
-       * ID of ecosystem to add webhook to
-       * </pre>
-       *
-       * <code>string ecosystem_id = 1;</code>
-       *
-       * @param value The bytes for ecosystemId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setEcosystemIdBytes(com.google.protobuf.ByteString value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        checkByteStringIsUtf8(value);
-
-        ecosystemId_ = value;
-        onChanged();
-        return this;
-      }
-
       private java.lang.Object destinationUrl_ = "";
       /**
        *
@@ -14090,7 +13682,7 @@ public final class ProviderOuterClass {
        * Destination to post webhook calls to
        * </pre>
        *
-       * <code>string destination_url = 2;</code>
+       * <code>string destination_url = 1;</code>
        *
        * @return The destinationUrl.
        */
@@ -14112,7 +13704,7 @@ public final class ProviderOuterClass {
        * Destination to post webhook calls to
        * </pre>
        *
-       * <code>string destination_url = 2;</code>
+       * <code>string destination_url = 1;</code>
        *
        * @return The bytes for destinationUrl.
        */
@@ -14134,7 +13726,7 @@ public final class ProviderOuterClass {
        * Destination to post webhook calls to
        * </pre>
        *
-       * <code>string destination_url = 2;</code>
+       * <code>string destination_url = 1;</code>
        *
        * @param value The destinationUrl to set.
        * @return This builder for chaining.
@@ -14155,7 +13747,7 @@ public final class ProviderOuterClass {
        * Destination to post webhook calls to
        * </pre>
        *
-       * <code>string destination_url = 2;</code>
+       * <code>string destination_url = 1;</code>
        *
        * @return This builder for chaining.
        */
@@ -14172,7 +13764,7 @@ public final class ProviderOuterClass {
        * Destination to post webhook calls to
        * </pre>
        *
-       * <code>string destination_url = 2;</code>
+       * <code>string destination_url = 1;</code>
        *
        * @param value The bytes for destinationUrl to set.
        * @return This builder for chaining.
@@ -14196,7 +13788,7 @@ public final class ProviderOuterClass {
        * HMAC secret for webhook validation
        * </pre>
        *
-       * <code>string secret = 3;</code>
+       * <code>string secret = 2;</code>
        *
        * @return The secret.
        */
@@ -14218,7 +13810,7 @@ public final class ProviderOuterClass {
        * HMAC secret for webhook validation
        * </pre>
        *
-       * <code>string secret = 3;</code>
+       * <code>string secret = 2;</code>
        *
        * @return The bytes for secret.
        */
@@ -14240,7 +13832,7 @@ public final class ProviderOuterClass {
        * HMAC secret for webhook validation
        * </pre>
        *
-       * <code>string secret = 3;</code>
+       * <code>string secret = 2;</code>
        *
        * @param value The secret to set.
        * @return This builder for chaining.
@@ -14261,7 +13853,7 @@ public final class ProviderOuterClass {
        * HMAC secret for webhook validation
        * </pre>
        *
-       * <code>string secret = 3;</code>
+       * <code>string secret = 2;</code>
        *
        * @return This builder for chaining.
        */
@@ -14278,7 +13870,7 @@ public final class ProviderOuterClass {
        * HMAC secret for webhook validation
        * </pre>
        *
-       * <code>string secret = 3;</code>
+       * <code>string secret = 2;</code>
        *
        * @param value The bytes for secret to set.
        * @return This builder for chaining.
@@ -14310,7 +13902,7 @@ public final class ProviderOuterClass {
        * Events to subscribe to. Default is "*" (all events)
        * </pre>
        *
-       * <code>repeated string events = 4;</code>
+       * <code>repeated string events = 3;</code>
        *
        * @return A list containing the events.
        */
@@ -14324,7 +13916,7 @@ public final class ProviderOuterClass {
        * Events to subscribe to. Default is "*" (all events)
        * </pre>
        *
-       * <code>repeated string events = 4;</code>
+       * <code>repeated string events = 3;</code>
        *
        * @return The count of events.
        */
@@ -14338,7 +13930,7 @@ public final class ProviderOuterClass {
        * Events to subscribe to. Default is "*" (all events)
        * </pre>
        *
-       * <code>repeated string events = 4;</code>
+       * <code>repeated string events = 3;</code>
        *
        * @param index The index of the element to return.
        * @return The events at the given index.
@@ -14353,7 +13945,7 @@ public final class ProviderOuterClass {
        * Events to subscribe to. Default is "*" (all events)
        * </pre>
        *
-       * <code>repeated string events = 4;</code>
+       * <code>repeated string events = 3;</code>
        *
        * @param index The index of the value to return.
        * @return The bytes of the events at the given index.
@@ -14368,7 +13960,7 @@ public final class ProviderOuterClass {
        * Events to subscribe to. Default is "*" (all events)
        * </pre>
        *
-       * <code>repeated string events = 4;</code>
+       * <code>repeated string events = 3;</code>
        *
        * @param index The index to set the value at.
        * @param value The events to set.
@@ -14390,7 +13982,7 @@ public final class ProviderOuterClass {
        * Events to subscribe to. Default is "*" (all events)
        * </pre>
        *
-       * <code>repeated string events = 4;</code>
+       * <code>repeated string events = 3;</code>
        *
        * @param value The events to add.
        * @return This builder for chaining.
@@ -14411,7 +14003,7 @@ public final class ProviderOuterClass {
        * Events to subscribe to. Default is "*" (all events)
        * </pre>
        *
-       * <code>repeated string events = 4;</code>
+       * <code>repeated string events = 3;</code>
        *
        * @param values The events to add.
        * @return This builder for chaining.
@@ -14429,7 +14021,7 @@ public final class ProviderOuterClass {
        * Events to subscribe to. Default is "*" (all events)
        * </pre>
        *
-       * <code>repeated string events = 4;</code>
+       * <code>repeated string events = 3;</code>
        *
        * @return This builder for chaining.
        */
@@ -14446,7 +14038,7 @@ public final class ProviderOuterClass {
        * Events to subscribe to. Default is "*" (all events)
        * </pre>
        *
-       * <code>repeated string events = 4;</code>
+       * <code>repeated string events = 3;</code>
        *
        * @param value The bytes of the events to add.
        * @return This builder for chaining.
@@ -15303,35 +14895,10 @@ public final class ProviderOuterClass {
      *
      *
      * <pre>
-     * ID of ecosystem from which to delete webhook
-     * </pre>
-     *
-     * <code>string ecosystem_id = 1;</code>
-     *
-     * @return The ecosystemId.
-     */
-    java.lang.String getEcosystemId();
-    /**
-     *
-     *
-     * <pre>
-     * ID of ecosystem from which to delete webhook
-     * </pre>
-     *
-     * <code>string ecosystem_id = 1;</code>
-     *
-     * @return The bytes for ecosystemId.
-     */
-    com.google.protobuf.ByteString getEcosystemIdBytes();
-
-    /**
-     *
-     *
-     * <pre>
      * ID of webhook to delete
      * </pre>
      *
-     * <code>string webhook_id = 2;</code>
+     * <code>string webhook_id = 1;</code>
      *
      * @return The webhookId.
      */
@@ -15343,7 +14910,7 @@ public final class ProviderOuterClass {
      * ID of webhook to delete
      * </pre>
      *
-     * <code>string webhook_id = 2;</code>
+     * <code>string webhook_id = 1;</code>
      *
      * @return The bytes for webhookId.
      */
@@ -15369,7 +14936,6 @@ public final class ProviderOuterClass {
     }
 
     private DeleteWebhookRequest() {
-      ecosystemId_ = "";
       webhookId_ = "";
     }
 
@@ -15403,13 +14969,6 @@ public final class ProviderOuterClass {
               done = true;
               break;
             case 10:
-              {
-                java.lang.String s = input.readStringRequireUtf8();
-
-                ecosystemId_ = s;
-                break;
-              }
-            case 18:
               {
                 java.lang.String s = input.readStringRequireUtf8();
 
@@ -15452,56 +15011,7 @@ public final class ProviderOuterClass {
               trinsic.services.common.v1.ProviderOuterClass.DeleteWebhookRequest.Builder.class);
     }
 
-    public static final int ECOSYSTEM_ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object ecosystemId_;
-    /**
-     *
-     *
-     * <pre>
-     * ID of ecosystem from which to delete webhook
-     * </pre>
-     *
-     * <code>string ecosystem_id = 1;</code>
-     *
-     * @return The ecosystemId.
-     */
-    @java.lang.Override
-    public java.lang.String getEcosystemId() {
-      java.lang.Object ref = ecosystemId_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        ecosystemId_ = s;
-        return s;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * ID of ecosystem from which to delete webhook
-     * </pre>
-     *
-     * <code>string ecosystem_id = 1;</code>
-     *
-     * @return The bytes for ecosystemId.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString getEcosystemIdBytes() {
-      java.lang.Object ref = ecosystemId_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        ecosystemId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int WEBHOOK_ID_FIELD_NUMBER = 2;
+    public static final int WEBHOOK_ID_FIELD_NUMBER = 1;
     private volatile java.lang.Object webhookId_;
     /**
      *
@@ -15510,7 +15020,7 @@ public final class ProviderOuterClass {
      * ID of webhook to delete
      * </pre>
      *
-     * <code>string webhook_id = 2;</code>
+     * <code>string webhook_id = 1;</code>
      *
      * @return The webhookId.
      */
@@ -15533,7 +15043,7 @@ public final class ProviderOuterClass {
      * ID of webhook to delete
      * </pre>
      *
-     * <code>string webhook_id = 2;</code>
+     * <code>string webhook_id = 1;</code>
      *
      * @return The bytes for webhookId.
      */
@@ -15564,11 +15074,8 @@ public final class ProviderOuterClass {
 
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, ecosystemId_);
-      }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(webhookId_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, webhookId_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, webhookId_);
       }
       unknownFields.writeTo(output);
     }
@@ -15579,11 +15086,8 @@ public final class ProviderOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, ecosystemId_);
-      }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(webhookId_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, webhookId_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, webhookId_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -15601,7 +15105,6 @@ public final class ProviderOuterClass {
       trinsic.services.common.v1.ProviderOuterClass.DeleteWebhookRequest other =
           (trinsic.services.common.v1.ProviderOuterClass.DeleteWebhookRequest) obj;
 
-      if (!getEcosystemId().equals(other.getEcosystemId())) return false;
       if (!getWebhookId().equals(other.getWebhookId())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -15614,8 +15117,6 @@ public final class ProviderOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + ECOSYSTEM_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getEcosystemId().hashCode();
       hash = (37 * hash) + WEBHOOK_ID_FIELD_NUMBER;
       hash = (53 * hash) + getWebhookId().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -15768,8 +15269,6 @@ public final class ProviderOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        ecosystemId_ = "";
-
         webhookId_ = "";
 
         return this;
@@ -15801,7 +15300,6 @@ public final class ProviderOuterClass {
       public trinsic.services.common.v1.ProviderOuterClass.DeleteWebhookRequest buildPartial() {
         trinsic.services.common.v1.ProviderOuterClass.DeleteWebhookRequest result =
             new trinsic.services.common.v1.ProviderOuterClass.DeleteWebhookRequest(this);
-        result.ecosystemId_ = ecosystemId_;
         result.webhookId_ = webhookId_;
         onBuilt();
         return result;
@@ -15858,10 +15356,6 @@ public final class ProviderOuterClass {
         if (other
             == trinsic.services.common.v1.ProviderOuterClass.DeleteWebhookRequest
                 .getDefaultInstance()) return this;
-        if (!other.getEcosystemId().isEmpty()) {
-          ecosystemId_ = other.ecosystemId_;
-          onChanged();
-        }
         if (!other.getWebhookId().isEmpty()) {
           webhookId_ = other.webhookId_;
           onChanged();
@@ -15897,112 +15391,6 @@ public final class ProviderOuterClass {
         return this;
       }
 
-      private java.lang.Object ecosystemId_ = "";
-      /**
-       *
-       *
-       * <pre>
-       * ID of ecosystem from which to delete webhook
-       * </pre>
-       *
-       * <code>string ecosystem_id = 1;</code>
-       *
-       * @return The ecosystemId.
-       */
-      public java.lang.String getEcosystemId() {
-        java.lang.Object ref = ecosystemId_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          ecosystemId_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       *
-       *
-       * <pre>
-       * ID of ecosystem from which to delete webhook
-       * </pre>
-       *
-       * <code>string ecosystem_id = 1;</code>
-       *
-       * @return The bytes for ecosystemId.
-       */
-      public com.google.protobuf.ByteString getEcosystemIdBytes() {
-        java.lang.Object ref = ecosystemId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
-              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-          ecosystemId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       *
-       *
-       * <pre>
-       * ID of ecosystem from which to delete webhook
-       * </pre>
-       *
-       * <code>string ecosystem_id = 1;</code>
-       *
-       * @param value The ecosystemId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setEcosystemId(java.lang.String value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-
-        ecosystemId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       *
-       *
-       * <pre>
-       * ID of ecosystem from which to delete webhook
-       * </pre>
-       *
-       * <code>string ecosystem_id = 1;</code>
-       *
-       * @return This builder for chaining.
-       */
-      public Builder clearEcosystemId() {
-
-        ecosystemId_ = getDefaultInstance().getEcosystemId();
-        onChanged();
-        return this;
-      }
-      /**
-       *
-       *
-       * <pre>
-       * ID of ecosystem from which to delete webhook
-       * </pre>
-       *
-       * <code>string ecosystem_id = 1;</code>
-       *
-       * @param value The bytes for ecosystemId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setEcosystemIdBytes(com.google.protobuf.ByteString value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        checkByteStringIsUtf8(value);
-
-        ecosystemId_ = value;
-        onChanged();
-        return this;
-      }
-
       private java.lang.Object webhookId_ = "";
       /**
        *
@@ -16011,7 +15399,7 @@ public final class ProviderOuterClass {
        * ID of webhook to delete
        * </pre>
        *
-       * <code>string webhook_id = 2;</code>
+       * <code>string webhook_id = 1;</code>
        *
        * @return The webhookId.
        */
@@ -16033,7 +15421,7 @@ public final class ProviderOuterClass {
        * ID of webhook to delete
        * </pre>
        *
-       * <code>string webhook_id = 2;</code>
+       * <code>string webhook_id = 1;</code>
        *
        * @return The bytes for webhookId.
        */
@@ -16055,7 +15443,7 @@ public final class ProviderOuterClass {
        * ID of webhook to delete
        * </pre>
        *
-       * <code>string webhook_id = 2;</code>
+       * <code>string webhook_id = 1;</code>
        *
        * @param value The webhookId to set.
        * @return This builder for chaining.
@@ -16076,7 +15464,7 @@ public final class ProviderOuterClass {
        * ID of webhook to delete
        * </pre>
        *
-       * <code>string webhook_id = 2;</code>
+       * <code>string webhook_id = 1;</code>
        *
        * @return This builder for chaining.
        */
@@ -16093,7 +15481,7 @@ public final class ProviderOuterClass {
        * ID of webhook to delete
        * </pre>
        *
-       * <code>string webhook_id = 2;</code>
+       * <code>string webhook_id = 1;</code>
        *
        * @param value The bytes for webhookId to set.
        * @return This builder for chaining.
@@ -16944,33 +16332,7 @@ public final class ProviderOuterClass {
   public interface EcosystemInfoRequestOrBuilder
       extends
       // @@protoc_insertion_point(interface_extends:services.provider.v1.EcosystemInfoRequest)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     *
-     *
-     * <pre>
-     * ID of ecosystem to fetch information about
-     * </pre>
-     *
-     * <code>string ecosystem_id = 1;</code>
-     *
-     * @return The ecosystemId.
-     */
-    java.lang.String getEcosystemId();
-    /**
-     *
-     *
-     * <pre>
-     * ID of ecosystem to fetch information about
-     * </pre>
-     *
-     * <code>string ecosystem_id = 1;</code>
-     *
-     * @return The bytes for ecosystemId.
-     */
-    com.google.protobuf.ByteString getEcosystemIdBytes();
-  }
+      com.google.protobuf.MessageOrBuilder {}
   /**
    *
    *
@@ -16990,9 +16352,7 @@ public final class ProviderOuterClass {
       super(builder);
     }
 
-    private EcosystemInfoRequest() {
-      ecosystemId_ = "";
-    }
+    private EcosystemInfoRequest() {}
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
@@ -17023,13 +16383,6 @@ public final class ProviderOuterClass {
             case 0:
               done = true;
               break;
-            case 10:
-              {
-                java.lang.String s = input.readStringRequireUtf8();
-
-                ecosystemId_ = s;
-                break;
-              }
             default:
               {
                 if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
@@ -17066,55 +16419,6 @@ public final class ProviderOuterClass {
               trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoRequest.Builder.class);
     }
 
-    public static final int ECOSYSTEM_ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object ecosystemId_;
-    /**
-     *
-     *
-     * <pre>
-     * ID of ecosystem to fetch information about
-     * </pre>
-     *
-     * <code>string ecosystem_id = 1;</code>
-     *
-     * @return The ecosystemId.
-     */
-    @java.lang.Override
-    public java.lang.String getEcosystemId() {
-      java.lang.Object ref = ecosystemId_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        ecosystemId_ = s;
-        return s;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * ID of ecosystem to fetch information about
-     * </pre>
-     *
-     * <code>string ecosystem_id = 1;</code>
-     *
-     * @return The bytes for ecosystemId.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString getEcosystemIdBytes() {
-      java.lang.Object ref = ecosystemId_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        ecosystemId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
     private byte memoizedIsInitialized = -1;
 
     @java.lang.Override
@@ -17129,9 +16433,6 @@ public final class ProviderOuterClass {
 
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, ecosystemId_);
-      }
       unknownFields.writeTo(output);
     }
 
@@ -17141,9 +16442,6 @@ public final class ProviderOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, ecosystemId_);
-      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -17160,7 +16458,6 @@ public final class ProviderOuterClass {
       trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoRequest other =
           (trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoRequest) obj;
 
-      if (!getEcosystemId().equals(other.getEcosystemId())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -17172,8 +16469,6 @@ public final class ProviderOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + ECOSYSTEM_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getEcosystemId().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -17324,8 +16619,6 @@ public final class ProviderOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        ecosystemId_ = "";
-
         return this;
       }
 
@@ -17355,7 +16648,6 @@ public final class ProviderOuterClass {
       public trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoRequest buildPartial() {
         trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoRequest result =
             new trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoRequest(this);
-        result.ecosystemId_ = ecosystemId_;
         onBuilt();
         return result;
       }
@@ -17411,10 +16703,6 @@ public final class ProviderOuterClass {
         if (other
             == trinsic.services.common.v1.ProviderOuterClass.EcosystemInfoRequest
                 .getDefaultInstance()) return this;
-        if (!other.getEcosystemId().isEmpty()) {
-          ecosystemId_ = other.ecosystemId_;
-          onChanged();
-        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -17443,112 +16731,6 @@ public final class ProviderOuterClass {
             mergeFrom(parsedMessage);
           }
         }
-        return this;
-      }
-
-      private java.lang.Object ecosystemId_ = "";
-      /**
-       *
-       *
-       * <pre>
-       * ID of ecosystem to fetch information about
-       * </pre>
-       *
-       * <code>string ecosystem_id = 1;</code>
-       *
-       * @return The ecosystemId.
-       */
-      public java.lang.String getEcosystemId() {
-        java.lang.Object ref = ecosystemId_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          ecosystemId_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       *
-       *
-       * <pre>
-       * ID of ecosystem to fetch information about
-       * </pre>
-       *
-       * <code>string ecosystem_id = 1;</code>
-       *
-       * @return The bytes for ecosystemId.
-       */
-      public com.google.protobuf.ByteString getEcosystemIdBytes() {
-        java.lang.Object ref = ecosystemId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
-              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-          ecosystemId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       *
-       *
-       * <pre>
-       * ID of ecosystem to fetch information about
-       * </pre>
-       *
-       * <code>string ecosystem_id = 1;</code>
-       *
-       * @param value The ecosystemId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setEcosystemId(java.lang.String value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-
-        ecosystemId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       *
-       *
-       * <pre>
-       * ID of ecosystem to fetch information about
-       * </pre>
-       *
-       * <code>string ecosystem_id = 1;</code>
-       *
-       * @return This builder for chaining.
-       */
-      public Builder clearEcosystemId() {
-
-        ecosystemId_ = getDefaultInstance().getEcosystemId();
-        onChanged();
-        return this;
-      }
-      /**
-       *
-       *
-       * <pre>
-       * ID of ecosystem to fetch information about
-       * </pre>
-       *
-       * <code>string ecosystem_id = 1;</code>
-       *
-       * @param value The bytes for ecosystemId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setEcosystemIdBytes(com.google.protobuf.ByteString value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        checkByteStringIsUtf8(value);
-
-        ecosystemId_ = value;
-        onChanged();
         return this;
       }
 
@@ -20934,7 +20116,6 @@ public final class ProviderOuterClass {
      *
      *
      * <pre>
-     *
      * </pre>
      *
      * <code>bytes pk = 1;</code>
@@ -21042,7 +20223,6 @@ public final class ProviderOuterClass {
      *
      *
      * <pre>
-     *
      * </pre>
      *
      * <code>bytes pk = 1;</code>
@@ -21389,7 +20569,6 @@ public final class ProviderOuterClass {
        *
        *
        * <pre>
-       *
        * </pre>
        *
        * <code>bytes pk = 1;</code>
@@ -21404,7 +20583,6 @@ public final class ProviderOuterClass {
        *
        *
        * <pre>
-       *
        * </pre>
        *
        * <code>bytes pk = 1;</code>
@@ -21425,7 +20603,6 @@ public final class ProviderOuterClass {
        *
        *
        * <pre>
-       *
        * </pre>
        *
        * <code>bytes pk = 1;</code>
@@ -22318,27 +21495,23 @@ public final class ProviderOuterClass {
           + "\tecosystem\030\001 \001(\0132\037.services.provider.v1.Ecosystem\0224\n"
           + "\007profile\030\002 \001(\0132#.services.account.v1.AccountProfile\022D\n"
           + "\023confirmation_method\030\003"
-          + " \001(\0162\'.services.account.v1.ConfirmationMethod\"P\n"
-          + "\026UpdateEcosystemRequest\022\024\n"
-          + "\014ecosystem_id\030\001 \001(\t\022\023\n"
-          + "\013description\030\002 \001(\t\022\013\n"
-          + "\003uri\030\003 \001(\t\"M\n"
+          + " \001(\0162\'.services.account.v1.ConfirmationMethod\":\n"
+          + "\026UpdateEcosystemRequest\022\023\n"
+          + "\013description\030\001 \001(\t\022\013\n"
+          + "\003uri\030\002 \001(\t\"M\n"
           + "\027UpdateEcosystemResponse\0222\n"
-          + "\tEcosystem\030\001 \001(\0132\037.services.provider.v1.Ecosystem\"b\n"
-          + "\021AddWebhookRequest\022\024\n"
-          + "\014ecosystem_id\030\001 \001(\t\022\027\n"
-          + "\017destination_url\030\002 \001(\t\022\016\n"
-          + "\006secret\030\003 \001(\t\022\016\n"
-          + "\006events\030\004 \003(\t\"H\n"
+          + "\tEcosystem\030\001 \001(\0132\037.services.provider.v1.Ecosystem\"L\n"
+          + "\021AddWebhookRequest\022\027\n"
+          + "\017destination_url\030\001 \001(\t\022\016\n"
+          + "\006secret\030\002 \001(\t\022\016\n"
+          + "\006events\030\003 \003(\t\"H\n"
           + "\022AddWebhookResponse\0222\n"
-          + "\tecosystem\030\001 \001(\0132\037.services.provider.v1.Ecosystem\"@\n"
-          + "\024DeleteWebhookRequest\022\024\n"
-          + "\014ecosystem_id\030\001 \001(\t\022\022\n\n"
-          + "webhook_id\030\002 \001(\t\"K\n"
+          + "\tecosystem\030\001 \001(\0132\037.services.provider.v1.Ecosystem\"*\n"
+          + "\024DeleteWebhookRequest\022\022\n\n"
+          + "webhook_id\030\001 \001(\t\"K\n"
           + "\025DeleteWebhookResponse\0222\n"
-          + "\tecosystem\030\001 \001(\0132\037.services.provider.v1.Ecosystem\",\n"
-          + "\024EcosystemInfoRequest\022\024\n"
-          + "\014ecosystem_id\030\001 \001(\t\"K\n"
+          + "\tecosystem\030\001 \001(\0132\037.services.provider.v1.Ecosystem\"\026\n"
+          + "\024EcosystemInfoRequest\"K\n"
           + "\025EcosystemInfoResponse\0222\n"
           + "\tecosystem\030\001 \001(\0132\037.services.provider.v1.Ecosystem\"1\n"
           + "\024GenerateTokenRequest\022\031\n"
@@ -22350,34 +21523,35 @@ public final class ProviderOuterClass {
           + "\003key\030\001 \001(\t\"\"\n"
           + "\024GetEventTokenRequest\022\n\n"
           + "\002pk\030\001 \001(\014\"&\n"
-          + "\025GetEventTokenResponse\022\r\n"
+          + "\025GetEventTokenResponse\022\r"
+          + "\n"
           + "\005token\030\001 \001(\t*U\n"
           + "\017ParticipantType\022\037\n"
           + "\033participant_type_individual\020\000\022!\n"
           + "\035participant_type_organization\020\0012\242\010\n"
           + "\010Provider\022n\n"
-          + "\017CreateEcosystem\022,.services.provider"
-          + ".v1.CreateEcosystemRequest\032-.services.provider.v1.CreateEcosystemResponse\022n\n"
-          + "\017UpdateEcosystem\022,.services.provider.v1.Upda"
-          + "teEcosystemRequest\032-.services.provider.v1.UpdateEcosystemResponse\022_\n\n"
-          + "AddWebhook\022\'.services.provider.v1.AddWebhookRequest"
-          + "\032(.services.provider.v1.AddWebhookResponse\022h\n\r"
-          + "DeleteWebhook\022*.services.provider."
-          + "v1.DeleteWebhookRequest\032+.services.provider.v1.DeleteWebhookResponse\022h\n\r"
-          + "EcosystemInfo\022*.services.provider.v1.EcosystemIn"
-          + "foRequest\032+.services.provider.v1.EcosystemInfoResponse\022h\n\r"
-          + "GenerateToken\022*.services.provider.v1.GenerateTokenRequest\032+.se"
-          + "rvices.provider.v1.GenerateTokenResponse\022S\n"
-          + "\006Invite\022#.services.provider.v1.Invite"
-          + "Request\032$.services.provider.v1.InviteResponse\022q\n"
-          + "\020InvitationStatus\022-.services.provider.v1.InvitationStatusRequest\032..servi"
-          + "ces.provider.v1.InvitationStatusResponse\022e\n"
-          + "\014GetOberonKey\022).services.provider.v1."
-          + "GetOberonKeyRequest\032*.services.provider.v1.GetOberonKeyResponse\022h\n\r"
-          + "GetEventToken\022*.services.provider.v1.GetEventTokenReq"
-          + "uest\032+.services.provider.v1.GetEventTokenResponseBZ\n"
-          + "\032trinsic.services.common.v1Z\035services/provider/v1/provider\252\002\034Trinsic"
-          + ".Services.Provider.V1b\006proto3"
+          + "\017CreateEcosystem\022,.services.provider.v1.Crea"
+          + "teEcosystemRequest\032-.services.provider.v1.CreateEcosystemResponse\022n\n"
+          + "\017UpdateEcosystem\022,.services.provider.v1.UpdateEcosys"
+          + "temRequest\032-.services.provider.v1.UpdateEcosystemResponse\022_\n\n"
+          + "AddWebhook\022\'.servic"
+          + "es.provider.v1.AddWebhookRequest\032(.services.provider.v1.AddWebhookResponse\022h\n\r"
+          + "DeleteWebhook\022*.services.provider.v1.Delet"
+          + "eWebhookRequest\032+.services.provider.v1.DeleteWebhookResponse\022h\n\r"
+          + "EcosystemInfo\022*.services.provider.v1.EcosystemInfoReques"
+          + "t\032+.services.provider.v1.EcosystemInfoResponse\022h\n\r"
+          + "GenerateToken\022*.services.provi"
+          + "der.v1.GenerateTokenRequest\032+.services.provider.v1.GenerateTokenResponse\022S\n"
+          + "\006Invi"
+          + "te\022#.services.provider.v1.InviteRequest\032$.services.provider.v1.InviteResponse\022q\n"
+          + "\020InvitationStatus\022-.services.provider.v1"
+          + ".InvitationStatusRequest\032..services.provider.v1.InvitationStatusResponse\022e\n"
+          + "\014GetOberonKey\022).services.provider.v1.GetObero"
+          + "nKeyRequest\032*.services.provider.v1.GetOberonKeyResponse\022h\n\r"
+          + "GetEventToken\022*.services.provider.v1.GetEventTokenRequest\032+.s"
+          + "ervices.provider.v1.GetEventTokenResponseBZ\n"
+          + "\032trinsic.services.common.v1Z\035service"
+          + "s/provider/v1/provider\252\002\034Trinsic.Services.Provider.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -22470,7 +21644,7 @@ public final class ProviderOuterClass {
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_UpdateEcosystemRequest_descriptor,
             new java.lang.String[] {
-              "EcosystemId", "Description", "Uri",
+              "Description", "Uri",
             });
     internal_static_services_provider_v1_UpdateEcosystemResponse_descriptor =
         getDescriptor().getMessageTypes().get(10);
@@ -22486,7 +21660,7 @@ public final class ProviderOuterClass {
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_AddWebhookRequest_descriptor,
             new java.lang.String[] {
-              "EcosystemId", "DestinationUrl", "Secret", "Events",
+              "DestinationUrl", "Secret", "Events",
             });
     internal_static_services_provider_v1_AddWebhookResponse_descriptor =
         getDescriptor().getMessageTypes().get(12);
@@ -22502,7 +21676,7 @@ public final class ProviderOuterClass {
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_DeleteWebhookRequest_descriptor,
             new java.lang.String[] {
-              "EcosystemId", "WebhookId",
+              "WebhookId",
             });
     internal_static_services_provider_v1_DeleteWebhookResponse_descriptor =
         getDescriptor().getMessageTypes().get(14);
@@ -22517,9 +21691,7 @@ public final class ProviderOuterClass {
     internal_static_services_provider_v1_EcosystemInfoRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_EcosystemInfoRequest_descriptor,
-            new java.lang.String[] {
-              "EcosystemId",
-            });
+            new java.lang.String[] {});
     internal_static_services_provider_v1_EcosystemInfoResponse_descriptor =
         getDescriptor().getMessageTypes().get(16);
     internal_static_services_provider_v1_EcosystemInfoResponse_fieldAccessorTable =

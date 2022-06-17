@@ -47,7 +47,7 @@ public class EcosystemsDemo {
       // inviteParticipant() {
       inviteResponse =
           service
-              .inviteParticipant(
+              .invite(
                   ProviderOuterClass.InviteRequest.newBuilder()
                       .setParticipant(
                           ProviderOuterClass.ParticipantType.participant_type_individual)

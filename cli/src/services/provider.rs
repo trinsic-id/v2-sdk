@@ -50,8 +50,6 @@ async fn invite(args: &InviteArgs, config: &CliConfig) -> Result<Output, Error> 
 
 #[tokio::main]
 async fn create_ecosystem(args: &CreateEcosystemArgs, config: &CliConfig) -> Result<Output, Error> {
-    let mut client = grpc_client!(ProviderClient<Channel>, config.to_owned());
-
     let req = CreateEcosystemRequest {
         name: args.name.as_ref().map_or(String::default(), |x| x.to_owned()),
         details: Some(AccountDetails {
@@ -62,44 +60,21 @@ async fn create_ecosystem(args: &CreateEcosystemArgs, config: &CliConfig) -> Res
     };
     let request = tonic::Request::new(req);
 
-    let response = client.create_ecosystem(request).await?.into_inner();
-
-    let acc_profile = response.profile.unwrap();
-    let protection = acc_profile.protection.clone().unwrap();
-
-    let profile = match ConfirmationMethod::from_i32(protection.method).unwrap() {
-        ConfirmationMethod::None => acc_profile,
-        ConfirmationMethod::Email => {
-            println!("{}", "Confirmation required. Check your email for security code.".blue());
-            println!("{}", "Enter Code:".bold());
-            let mut buffer = String::new();
-            io::stdin().read_line(&mut buffer)?;
-
-            // strips new line characters at the end
-            let code = buffer.lines().next().unwrap();
-
-            let mut p = acc_profile.clone();
-            unprotect(&mut p, code.as_bytes().to_vec());
-
-            p
-        }
-        ConfirmationMethod::Sms => {
-            println!("{}", "SMS confirmation is not yet supported.".red());
-            acc_profile
-        }
-        ConfirmationMethod::ConnectedDevice => acc_profile,
-        ConfirmationMethod::Other => acc_profile,
+    let response = if args.name.is_some() || args.email.is_some() {
+        let mut client = grpc_client_with_auth!(ProviderClient<Channel>, config.to_owned());
+        client.create_ecosystem(request).await?.into_inner()
+    } else {
+        let mut client = grpc_client!(ProviderClient<Channel>, config.to_owned());
+        client.create_ecosystem(request).await?.into_inner()
     };
 
-    let mut new_config = config.clone();
-    new_config.options.auth_token = base64::encode_config(profile.encode_to_vec(), URL_SAFE_NO_PAD);
-
-    new_config.save()?;
+    let profile = response.profile.unwrap();
+    let auth_token = base64::encode_config(profile.encode_to_vec(), URL_SAFE_NO_PAD);
 
     Ok(indexmap! {
         "ecosystem".into() => response.ecosystem
             .ok_or(Error::InvalidArgument("expected ecosystem object in response".to_string()))?
             .to_string_pretty()?,
-        "auth token".into() => new_config.options.auth_token
+        "auth token".into() => auth_token
     })
 }

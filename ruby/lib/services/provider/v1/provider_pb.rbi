@@ -849,28 +849,14 @@ class Services::Provider::V1::UpdateEcosystemRequest
 
   sig do
     params(
-      ecosystem_id: T.nilable(String),
       description: T.nilable(String),
       uri: T.nilable(String)
     ).void
   end
   def initialize(
-    ecosystem_id: "",
     description: "",
     uri: ""
   )
-  end
-
-  sig { returns(String) }
-  def ecosystem_id
-  end
-
-  sig { params(value: String).void }
-  def ecosystem_id=(value)
-  end
-
-  sig { void }
-  def clear_ecosystem_id
   end
 
   sig { returns(String) }
@@ -991,30 +977,16 @@ class Services::Provider::V1::AddWebhookRequest
 
   sig do
     params(
-      ecosystem_id: T.nilable(String),
       destination_url: T.nilable(String),
       secret: T.nilable(String),
       events: T.nilable(T::Array[String])
     ).void
   end
   def initialize(
-    ecosystem_id: "",
     destination_url: "",
     secret: "",
     events: []
   )
-  end
-
-  sig { returns(String) }
-  def ecosystem_id
-  end
-
-  sig { params(value: String).void }
-  def ecosystem_id=(value)
-  end
-
-  sig { void }
-  def clear_ecosystem_id
   end
 
   sig { returns(String) }
@@ -1153,26 +1125,12 @@ class Services::Provider::V1::DeleteWebhookRequest
 
   sig do
     params(
-      ecosystem_id: T.nilable(String),
       webhook_id: T.nilable(String)
     ).void
   end
   def initialize(
-    ecosystem_id: "",
     webhook_id: ""
   )
-  end
-
-  sig { returns(String) }
-  def ecosystem_id
-  end
-
-  sig { params(value: String).void }
-  def ecosystem_id=(value)
-  end
-
-  sig { void }
-  def clear_ecosystem_id
   end
 
   sig { returns(String) }
@@ -1285,27 +1243,8 @@ class Services::Provider::V1::EcosystemInfoRequest
   def self.descriptor
   end
 
-  sig do
-    params(
-      ecosystem_id: T.nilable(String)
-    ).void
-  end
-  def initialize(
-    ecosystem_id: ""
-  )
-  end
-
-  sig { returns(String) }
-  def ecosystem_id
-  end
-
-  sig { params(value: String).void }
-  def ecosystem_id=(value)
-  end
-
-  sig { void }
-  def clear_ecosystem_id
-  end
+  sig {void}
+  def initialize; end
 
   sig { params(field: String).returns(T.untyped) }
   def [](field)

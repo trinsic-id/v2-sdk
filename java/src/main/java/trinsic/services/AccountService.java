@@ -4,6 +4,10 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executors;
 import org.jetbrains.annotations.NotNull;
 import trinsic.okapi.DidException;
 import trinsic.okapi.Hashing;
@@ -12,11 +16,6 @@ import trinsic.okapi.security.v1.Security;
 import trinsic.sdk.options.v1.Options;
 import trinsic.services.account.v1.AccountGrpc;
 import trinsic.services.account.v1.AccountOuterClass;
-
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executors;
 
 public class AccountService extends ServiceBase {
   private final AccountGrpc.AccountFutureStub stub;
@@ -102,70 +101,68 @@ public class AccountService extends ServiceBase {
     return Base64.getUrlEncoder().encodeToString(profile.toByteArray());
   }
 
-    public ListenableFuture<AccountOuterClass.LoginResponse> login(
-            AccountOuterClass.LoginRequest request)
-            throws InvalidProtocolBufferException, DidException {
-        return withMetadata(stub, request).login(request);
-    }
+  public ListenableFuture<AccountOuterClass.LoginResponse> login(
+      AccountOuterClass.LoginRequest request) throws InvalidProtocolBufferException, DidException {
+    return withMetadata(stub, request).login(request);
+  }
 
-    public ListenableFuture<String> loginConfirm(
-            ByteString challenge, String authCode)
-            throws InvalidProtocolBufferException, DidException {
-        var hashed =
-                Hashing.blake3_hash(
-                                trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest.newBuilder()
-                                        .setData(ByteString.copyFrom(authCode.getBytes(StandardCharsets.UTF_8)))
-                                        .build())
-                        .getDigest();
+  public ListenableFuture<String> loginConfirm(ByteString challenge, String authCode)
+      throws InvalidProtocolBufferException, DidException {
+    var hashed =
+        Hashing.blake3_hash(
+                trinsic.okapi.hashing.v1.Hashing.Blake3HashRequest.newBuilder()
+                    .setData(ByteString.copyFrom(authCode.getBytes(StandardCharsets.UTF_8)))
+                    .build())
+            .getDigest();
 
-        var request = AccountOuterClass.LoginConfirmRequest
-                .newBuilder()
-                .setChallenge(challenge)
-                .setConfirmationCodeHashed(hashed)
-                .build();
+    var request =
+        AccountOuterClass.LoginConfirmRequest.newBuilder()
+            .setChallenge(challenge)
+            .setConfirmationCodeHashed(hashed)
+            .build();
 
-        var response = withMetadata(stub, request).loginConfirm(request);
+    var response = withMetadata(stub, request).loginConfirm(request);
 
-        return Futures.transform(
-                response,
-                input -> {
-                    if(!input.hasProfile())
-                        return null;
-
-                    var profileBase64 =
-                            Base64.getUrlEncoder().encodeToString(input.getProfile().toByteArray());
-
-                    if(input.getProfile().getProtection().getEnabled()) {
-                        try {
-                            profileBase64 = unprotect(profileBase64, authCode);
-                        } catch (InvalidProtocolBufferException | DidException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-
-                    this.setProfile(profileBase64);
-                    return profileBase64;
-                },
-                Executors.newSingleThreadExecutor());
-    }
-
-    public ListenableFuture<String> loginAnonymous() throws InvalidProtocolBufferException, DidException, ExecutionException, InterruptedException {
-      var response = login(AccountOuterClass.LoginRequest.getDefaultInstance());
-
-      return Futures.transform(
+    return Futures.transform(
         response,
         input -> {
-            if(!input.hasProfile() || input.getProfile().getProtection().getEnabled())
-                return null;
+          if (!input.hasProfile()) return null;
 
-            var profileBase64 =
-                    Base64.getUrlEncoder().encodeToString(input.getProfile().toByteArray());
+          var profileBase64 =
+              Base64.getUrlEncoder().encodeToString(input.getProfile().toByteArray());
 
-            this.setProfile(profileBase64);
-            return profileBase64;
+          if (input.getProfile().getProtection().getEnabled()) {
+            try {
+              profileBase64 = unprotect(profileBase64, authCode);
+            } catch (InvalidProtocolBufferException | DidException e) {
+              throw new RuntimeException(e);
+            }
+          }
+
+          this.setProfile(profileBase64);
+          return profileBase64;
         },
         Executors.newSingleThreadExecutor());
-    }
+  }
+
+  public ListenableFuture<String> loginAnonymous()
+      throws InvalidProtocolBufferException, DidException, ExecutionException,
+          InterruptedException {
+    var response = login(AccountOuterClass.LoginRequest.getDefaultInstance());
+
+    return Futures.transform(
+        response,
+        input -> {
+          if (!input.hasProfile() || input.getProfile().getProtection().getEnabled()) return null;
+
+          var profileBase64 =
+              Base64.getUrlEncoder().encodeToString(input.getProfile().toByteArray());
+
+          this.setProfile(profileBase64);
+          return profileBase64;
+        },
+        Executors.newSingleThreadExecutor());
+  }
 
   public ListenableFuture<AccountOuterClass.AccountInfoResponse> getInfo()
       throws InvalidProtocolBufferException, DidException {
@@ -185,9 +182,9 @@ public class AccountService extends ServiceBase {
     return withMetadata(stub, request).revokeDevice(request);
   }
 
-    public ListenableFuture<AccountOuterClass.AuthorizeWebhookResponse> authorizeWebhook(
-            AccountOuterClass.AuthorizeWebhookRequest request)
-            throws InvalidProtocolBufferException, DidException {
-        return withMetadata(stub, request).authorizeWebhook(request);
-    }
+  public ListenableFuture<AccountOuterClass.AuthorizeWebhookResponse> authorizeWebhook(
+      AccountOuterClass.AuthorizeWebhookRequest request)
+      throws InvalidProtocolBufferException, DidException {
+    return withMetadata(stub, request).authorizeWebhook(request);
+  }
 }

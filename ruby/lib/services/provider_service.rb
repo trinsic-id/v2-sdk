@@ -17,7 +17,11 @@ module Trinsic
 
     def create_ecosystem(request = nil)
       request ||= Provider::CreateEcosystemRequest.new
-      @client.create_ecosystem(request)
+      if request.name.empty? && (request.details.nil? || request.details.email.empty?)
+        @client.create_ecosystem(request)
+      else
+        @client.create_ecosystem(request, metadata: metadata(request))
+      end
     end
 
     def update_ecosystem(request)

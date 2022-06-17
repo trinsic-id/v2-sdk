@@ -77,11 +77,15 @@ class AccountService extends ServiceBase {
   }
 
   Future<String> loginConfirm(String challenge, String authCode) async {
-    var hashed = Hashing.blake3Hash(Blake3HashRequest(data: Uint8List.fromList(utf8.encode(authCode))));
-    var request = LoginConfirmRequest(challenge: Uint8List.fromList(utf8.encode(challenge)), confirmationCodeHashed: hashed.digest);
+    var hashed = Hashing.blake3Hash(
+        Blake3HashRequest(data: Uint8List.fromList(utf8.encode(authCode))));
+    var request = LoginConfirmRequest(
+        challenge: Uint8List.fromList(utf8.encode(challenge)),
+        confirmationCodeHashed: hashed.digest);
     var response = await client.loginConfirm(request);
-    
-    var token = Base64Encoder.urlSafe().convert(response.profile.writeToBuffer());
+
+    var token =
+        Base64Encoder.urlSafe().convert(response.profile.writeToBuffer());
     if (response.profile.protection.enabled) {
       token = unprotect(token, authCode);
     }
