@@ -287,9 +287,15 @@ subcommands:
         - invitation_status:
             about: Check invitation status
 args:
+  - json:
+      long: json
+      short: j
+      help: Prints output in machine readable JSON format
+      takes_value: false
+      required: false
   - debug:
       long: debug
       short: d
-      help: (Optional) Print debug information.
+      help: Prints debug information
       takes_value: false
       required: false
