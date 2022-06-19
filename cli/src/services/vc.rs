@@ -1,4 +1,4 @@
-use super::{super::parser::vc::*, config::CliConfig, Output};
+use super::{super::parser::vc::*, config::CliConfig, Item, Output};
 use crate::{
     grpc_client_with_auth,
     parser::vc::{IssueFromTemplateArgs, UpdateStatusArgs},
@@ -6,7 +6,7 @@ use crate::{
         create_proof_request::Proof, verifiable_credential_client::VerifiableCredentialClient, CheckStatusRequest, CreateProofRequest,
         IssueFromTemplateRequest, IssueRequest, UpdateStatusRequest, VerifyProofRequest,
     },
-    utils::{prettify_json, read_file, write_file},
+    utils::{prettify_json, read_file, to_value, write_file},
     *,
 };
 use tonic::transport::Channel;
@@ -41,9 +41,9 @@ async fn issue(args: &IssueArgs, config: CliConfig) -> Result<Output, Error> {
         None => (),
     }
 
-    let mut output = Output::default();
-    output.insert("signed document".into(), prettify_json(&response.signed_document_json)?);
-    Ok(output)
+    Ok(dict! {
+        "signed document".into() => Item::Json(to_value(&response.signed_document_json)?)
+    })
 }
 
 #[tokio::main]
@@ -76,9 +76,9 @@ async fn issue_from_template(args: &IssueFromTemplateArgs, config: CliConfig) ->
         None => (),
     }
 
-    let mut output = Output::default();
-    output.insert("signed document".into(), prettify_json(&response.document_json)?);
-    Ok(output)
+    Ok(dict! {
+        "signed document".into() => Item::Json(to_value(&response.document_json)?)
+    })
 }
 
 #[tokio::main]
@@ -91,9 +91,9 @@ async fn get_status(args: &GetStatusArgs, config: CliConfig) -> Result<Output, E
 
     let response = client.check_status(request).await?.into_inner();
 
-    let mut output = Output::default();
-    output.insert("revoked".into(), response.revoked.to_string());
-    Ok(output)
+    Ok(dict! {
+        "status".into() => Item::String(response.revoked.to_string())
+    })
 }
 
 #[tokio::main]
@@ -139,9 +139,9 @@ async fn create_proof(args: &CreateProofArgs, config: CliConfig) -> Result<Outpu
         None => (),
     }
 
-    let mut output = Output::default();
-    output.insert("proof document".into(), prettify_json(&response.proof_document_json)?);
-    Ok(output)
+    Ok(dict! {
+        "proof document".into() => Item::Json(to_value(&response.proof_document_json)?)
+    })
 }
 
 #[tokio::main]
@@ -154,8 +154,8 @@ async fn verify_proof(args: &VerifyProofArgs, config: CliConfig) -> Result<Outpu
 
     let response = client.verify_proof(request).await?.into_inner();
 
-    let mut output = Output::default();
-    output.insert("is valid".into(), response.is_valid.to_string());
-    output.insert("validation results".into(), serde_json::to_string_pretty(&response.validation_results)?);
-    Ok(output)
+    Ok(dict! {
+        "is valid".into() => Item::String(response.is_valid.to_string()),
+        "validation results".into() => Item::Json(to_value(&response.validation_results)?)
+    })
 }

@@ -1,12 +1,12 @@
-use super::{config::CliConfig, Output};
+use super::{config::CliConfig, Item, Output};
 use crate::{
+    dict,
     error::Error,
     grpc_channel, grpc_client_with_auth,
     parser::trustregistry::*,
     proto::services::trustregistry::v1::{trust_registry_client::TrustRegistryClient, *},
-    utils::prettify_json,
+    utils::as_value,
 };
-use indexmap::indexmap;
 use tonic::transport::Channel;
 
 pub(crate) fn execute(args: &TrustRegistryCommand, config: &CliConfig) -> Result<Output, Error> {
@@ -66,10 +66,10 @@ async fn search(args: &SearchArgs, config: &CliConfig) -> Result<Output, Error> 
 
     let response = client.search_registry(request).await?.into_inner();
 
-    Ok(indexmap! {
-        "query".into() => args.query.clone(),
-        "items".into() => prettify_json(&response.items_json)?,
-        "more results".into() => response.has_more.to_string()
+    Ok(dict! {
+        "query".into() => Item::String(args.query.clone()),
+        "items".into() => Item::Json(as_value(&response.items_json)?),
+        "more results".into() => Item::String(response.has_more.to_string())
     })
 }
 
@@ -119,8 +119,8 @@ async fn get_status(args: &GetMembershipStatusArgs, config: &CliConfig) -> Resul
 
     let response = client.get_membership_status(request).await?.into_inner();
 
-    Ok(indexmap! {
-        "status".into() => format!("{:?}", RegistrationStatus::from_i32(response.status).ok_or(Error::SerializationError)?),
+    Ok(dict! {
+        "status".into() => Item::String(format!("{:?}", RegistrationStatus::from_i32(response.status).ok_or(Error::SerializationError)?)),
     })
 }
 

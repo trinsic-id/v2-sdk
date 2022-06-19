@@ -6,7 +6,10 @@ mod trustregistry;
 mod vc;
 mod wallet;
 
-use indexmap::IndexMap;
+use std::collections::BTreeMap;
+
+use serde::Serialize;
+use serde_json::Value;
 
 use self::config::CliConfig;
 use crate::error::Error;
@@ -36,5 +39,25 @@ pub(crate) enum Service<'a> {
     Unknown,
 }
 
-// type Output = BTreeMap<String, String>;
-type Output = IndexMap<String, String>;
+type Output = BTreeMap<String, Item>;
+
+#[derive(Serialize, Debug, PartialEq)]
+#[serde(untagged)]
+pub(crate) enum Item {
+    String(String),
+    Json(Value),
+}
+//type Output = IndexMap<String, String>;
+
+// impl Serialize for Output {
+//     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+//     where
+//         S: serde::Serializer,
+//     {
+//         let mut map = serializer.serialize_map(Some(self.len()))?;
+//         for (key, value) in self {
+//             map.serialize_entry(key, value)?;
+//         }
+//         map.end()
+//     }
+// }

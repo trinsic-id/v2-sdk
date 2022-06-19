@@ -63,10 +63,14 @@ fn main() {
     match parser::parse(&matches) {
         Ok(service) => match services::execute(&service, config) {
             Ok(output) => {
-                println!("{}", "ok".bold().green());
-                for (key, value) in output.iter() {
-                    print!("{} {} ", key.bold().yellow(), "→".bold().bright_black());
-                    println!("{}", value);
+                if matches.is_present("json") {
+                    println!("{}", serde_json::to_string_pretty(&output).unwrap());
+                } else {
+                    println!("{}", "ok".bold().green());
+                    for (key, value) in output.iter() {
+                        print!("{} {} ", key.bold().yellow(), "→".bold().bright_black());
+                        println!("{}", serde_json::to_string_pretty(&value).unwrap());
+                    }
                 }
             }
             Err(err) => {
