@@ -66,7 +66,7 @@ Updates an ecosystem's `description` or `uri`.
 
 {{proto_sample_start()}}
     === "Trinsic CLI"
-        > Sample coming soon
+        > CLI support for this endpoint coming soon
 
     === "TypeScript"
         > Sample coming soon
@@ -97,7 +97,7 @@ Fetches information about an ecosystem.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
-        > Sample coming soon
+        > CLI support for this endpoint coming soon
 
     === "TypeScript"
         > Sample coming soon
@@ -128,7 +128,7 @@ Adds a webhook to an ecosystem.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
-        > Sample coming soon
+        > CLI support for this endpoint coming soon
 
     === "TypeScript"
         > Sample coming soon
@@ -167,7 +167,7 @@ Deletes a webhook from an ecosystem.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
-        > Sample coming soon
+        > CLI support for this endpoint coming soon
 
     === "TypeScript"
         > Sample coming soon
