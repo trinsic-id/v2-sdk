@@ -1,8 +1,4 @@
-import {
-  AccountService,
-  CreateEcosystemRequest,
-  ProviderService,
-} from "../src";
+import { CreateEcosystemRequest, TrinsicService } from "../src";
 
 import { getTestServerOptions, setTestTimeout } from "./env";
 
@@ -11,16 +7,14 @@ const options = getTestServerOptions();
 describe("ProviderService Unit Tests", () => {
   setTestTimeout();
   beforeAll(async () => {
-    let service = new AccountService(options);
-    let authToken = await service.signIn();
-
-    options.authToken = authToken;
+    let service = new TrinsicService(options);
+      options.authToken = await service.account().signIn();
   });
 
   it("Demo: Ecosystem Tests", async () => {
-    let providerService = new ProviderService(options);
+    let trinsicService = new TrinsicService(options);
     // createEcosystem() {
-    let actualCreate = await providerService.createEcosystem(
+    let actualCreate = await trinsicService.provider().createEcosystem(
       CreateEcosystemRequest.fromPartial({
         description: "Test ecosystem from Node",
         uri: "https://example.com",

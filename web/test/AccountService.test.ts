@@ -1,20 +1,19 @@
-import { AccountService } from "../src";
+import {AccountService, TrinsicService} from "../src";
 
 import { getTestServerOptions, setTestTimeout } from "./env";
 
 const options = getTestServerOptions();
 
-async function printGetInfo(service: AccountService, profile: string) {
+async function printGetInfo(service: TrinsicService, profile: string) {
   service.options.authToken = profile;
-  const info = await service.info();
-  // console.log("account info=", info);
+  const info = await service.account().info();
 }
 
 describe("AccountService Unit Tests", () => {
   setTestTimeout();
   it("protect/unprotect account profile", async () => {
-    let service = new AccountService(options);
-    let myProfile = await service.signIn();
+    let service = new TrinsicService(options);
+    let myProfile = await service.account().signIn();
     await printGetInfo(service, myProfile);
 
     const code = "1234";
