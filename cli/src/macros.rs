@@ -6,7 +6,6 @@ macro_rules! dict {
     ($($key:expr => $value:expr,)+) => { dict!($($key => $value),+) };
     ($($key:expr => $value:expr),*) => {
         {
-            let _cap = dict!(@count $($key),*);
             let mut _map = std::collections::BTreeMap::new();
             $(
                 _map.insert($key, $value);
