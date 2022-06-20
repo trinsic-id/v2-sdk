@@ -145,11 +145,7 @@ export class AccountService extends ServiceBase {
           email: "",
           invitationCode: "",
         });
-        let response = await this.client.login(request, {
-          metadata: await this.getMetadata(
-            ListDevicesRequest.encode(request).finish()
-          ),
-        });
+        let response = await this.client.login(request);
         if (response.profile === undefined) {
             throw new Error("undefined profile returned");
         }

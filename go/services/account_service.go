@@ -153,11 +153,7 @@ func (a *accountBase) Protect(authtoken, securityCode string) (string, error) {
 }
 
 func (a *accountBase) Login(userContext context.Context, request *account.LoginRequest) (*account.LoginResponse, error) {
-	md, err := a.GetMetadataContext(userContext, request)
-	if err != nil {
-		return nil, err
-	}
-	response, err := a.client.Login(md, request)
+	response, err := a.client.Login(userContext, request)
 	if err != nil {
 		return nil, err
 	}
@@ -178,14 +174,8 @@ func (a *accountBase) LoginConfirm(userContext context.Context, challenge []byte
 		ConfirmationCodeHashed: codeHash.Digest,
 	}
 
-	// Generate metadata
-	md, err := a.GetMetadataContext(userContext, request)
-	if err != nil {
-		return "", err
-	}
-
 	// Send request
-	response, err := a.client.LoginConfirm(md, request)
+	response, err := a.client.LoginConfirm(userContext, request)
 	if err != nil {
 		return "", err
 	}
