@@ -1,4 +1,5 @@
 use crate::{
+    dict,
     error::Error,
     grpc_channel, grpc_client_with_auth,
     parser::template::*,
@@ -7,14 +8,12 @@ use crate::{
         GetCredentialTemplateRequest, ListCredentialTemplatesRequest, SearchCredentialTemplatesRequest,
     },
     services::CliConfig,
-    utils::{prettify_json, read_file},
-    MessageFormatter,
+    utils::{as_value, read_file, to_value},
 };
-use indexmap::indexmap;
 use std::collections::HashMap;
 use tonic::transport::Channel;
 
-use super::Output;
+use super::{Item, Output};
 
 pub(crate) fn execute(args: &TemplateCommand, config: &CliConfig) -> Result<Output, Error> {
     match args {
@@ -47,8 +46,8 @@ async fn create(args: &CreateTemplateArgs, config: &CliConfig) -> Result<Output,
 
     let response = client.create(request).await?.into_inner();
 
-    Ok(indexmap! {
-        "template".into() => response.to_string_pretty()?
+    Ok(dict! {
+        "template".into() => Item::Json(to_value(&response)?)
     })
 }
 
@@ -60,8 +59,8 @@ async fn get(args: &GetTemplateArgs, config: &CliConfig) -> Result<Output, Error
 
     let response = client.get(request).await?.into_inner();
 
-    Ok(indexmap! {
-        "template".into() => response.to_string_pretty()?
+    Ok(dict! {
+        "template".into() => Item::Json(to_value(&response)?)
     })
 }
 
@@ -76,8 +75,8 @@ async fn list(args: &ListTemplatesArgs, config: &CliConfig) -> Result<Output, Er
 
     let response = client.list(request).await?.into_inner();
 
-    Ok(indexmap! {
-        "response".into() => response.to_string_pretty()?
+    Ok(dict! {
+        "response".into() => Item::Json(to_value(&response)?)
     })
 }
 
@@ -92,10 +91,10 @@ async fn search(args: &SearchTemplatesArgs, config: &CliConfig) -> Result<Output
 
     let response = client.search(request).await?.into_inner();
 
-    Ok(indexmap! {
-        "query".into() => args.query.clone(),
-        "templates".into() => prettify_json(&response.items_json)?,
-        "more results".into() => response.has_more.to_string()
+    Ok(dict! {
+        "query".into() => Item::String(args.query.clone()),
+        "templates".into() => Item::Json(as_value(&response.items_json)?),
+        "more results".into() => Item::String(response.has_more.to_string())
     })
 }
 

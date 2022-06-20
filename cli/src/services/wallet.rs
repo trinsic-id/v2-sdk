@@ -1,5 +1,6 @@
-use super::{super::parser::wallet::*, Output};
+use super::{super::parser::wallet::*, Item, Output};
 use crate::{
+    dict,
     error::Error,
     grpc_channel, grpc_client_with_auth,
     proto::services::{
@@ -7,9 +8,8 @@ use crate::{
         verifiablecredentials::v1::{send_request::DeliveryMethod, verifiable_credential_client::VerifiableCredentialClient, SendRequest},
     },
     services::config::*,
-    utils::{prettify_json, read_file},
+    utils::{as_value, read_file},
 };
-use indexmap::indexmap;
 use std::default::*;
 use tonic::transport::Channel;
 
@@ -46,9 +46,9 @@ async fn search(args: &SearchArgs, config: CliConfig) -> Result<Output, Error> {
     out = out.trim_end_matches(",").to_string();
     out.push_str("]");
 
-    Ok(indexmap! {
-        "query".into() => query,
-        "items".into() => prettify_json(&out)?
+    Ok(dict! {
+        "query".into() => Item::String(query),
+        "items".into() => Item::Json(as_value(&out)?)
     })
 }
 
@@ -65,10 +65,9 @@ async fn insert_item(args: &InsertItemArgs, config: CliConfig) -> Result<Output,
         .await?
         .into_inner();
 
-    let mut output = Output::new();
-    output.insert("item id".into(), response.item_id);
-
-    Ok(output)
+    Ok(dict! {
+        "item id".into() => Item::String(response.item_id)
+    })
 }
 
 #[tokio::main]

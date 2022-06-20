@@ -1,20 +1,17 @@
-use std::io;
-
-use super::super::parser::provider::*;
 use super::Output;
+use super::{super::parser::provider::*, Item};
+use crate::utils::to_value;
 use crate::{
+    dict,
     error::Error,
     grpc_channel, grpc_client, grpc_client_with_auth, parser,
     proto::services::{
-        account::v1::{AccountDetails, ConfirmationMethod},
+        account::v1::AccountDetails,
         provider::v1::{provider_client::ProviderClient, CreateEcosystemRequest, InviteRequest},
     },
-    services::{account::unprotect, config::*},
-    MessageFormatter,
+    services::config::*,
 };
 use base64::URL_SAFE_NO_PAD;
-use colored::Colorize;
-use indexmap::indexmap;
 use prost::Message;
 use tonic::transport::Channel;
 
@@ -42,9 +39,9 @@ async fn invite(args: &InviteArgs, config: &CliConfig) -> Result<Output, Error> 
 
     let response = client.invite(request).await?.into_inner();
 
-    Ok(indexmap! {
-        "invitation id".into() => response.invitation_id,
-        "security code".into() => response.invitation_code,
+    Ok(dict! {
+        "invitation id".into() => Item::String(response.invitation_id),
+        "security code".into() => Item::String(response.invitation_code),
     })
 }
 
@@ -71,10 +68,9 @@ async fn create_ecosystem(args: &CreateEcosystemArgs, config: &CliConfig) -> Res
     let profile = response.profile.unwrap();
     let auth_token = base64::encode_config(profile.encode_to_vec(), URL_SAFE_NO_PAD);
 
-    Ok(indexmap! {
-        "ecosystem".into() => response.ecosystem
-            .ok_or(Error::InvalidArgument("expected ecosystem object in response".to_string()))?
-            .to_string_pretty()?,
-        "auth token".into() => auth_token
+    Ok(dict! {
+        "ecosystem".into() => Item::Json(to_value(&response.ecosystem
+            .ok_or(Error::InvalidArgument("expected ecosystem object in response".to_string()))?)?),
+        "auth token".into() => Item::String(auth_token)
     })
 }

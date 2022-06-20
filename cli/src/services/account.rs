@@ -1,8 +1,8 @@
 use super::config::CliConfig;
-use super::Output;
+use super::{Item, Output};
 use crate::parser::account::{Command, InfoArgs, SignInArgs};
 use crate::proto::services::account::v1::login_response::Response;
-use crate::MessageFormatter;
+use crate::utils::to_value;
 use crate::{
     error::Error,
     grpc_channel, grpc_client, grpc_client_with_auth,
@@ -52,7 +52,7 @@ async fn sign_in(args: &SignInArgs, config: CliConfig) -> Result<Output, Error> 
     new_config.save()?;
 
     let mut output = Output::new();
-    output.insert("auth token".into(), new_config.options.auth_token);
+    output.insert("auth token".into(), Item::String(new_config.options.auth_token));
 
     Ok(output)
 }
@@ -92,7 +92,7 @@ async fn info(_args: &InfoArgs, config: CliConfig) -> Result<Output, Error> {
     let response = client.info(request).await?.into_inner();
 
     let mut output = Output::new();
-    output.insert("account data".into(), response.to_string_pretty()?);
+    output.insert("account data".into(), Item::Json(to_value(&response)?));
 
     Ok(output)
 }
