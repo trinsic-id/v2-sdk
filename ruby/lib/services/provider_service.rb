@@ -9,15 +9,19 @@ module Trinsic
       super(service_options)
       if @service_options.server_use_tls
         channel_creds = GRPC::Core::ChannelCredentials.new
-        @client = Provider_V1::Provider::Stub.new(url_string, channel_creds)
+        @client = Provider::Provider::Stub.new(url_string, channel_creds)
       else
-        @client = Provider_V1::Provider::Stub.new(url_string, :this_channel_is_insecure)
+        @client = Provider::Provider::Stub.new(url_string, :this_channel_is_insecure)
       end
     end
 
     def create_ecosystem(request = nil)
-      request ||= Provider_V1::CreateEcosystemRequest.new
-      @client.create_ecosystem(request)
+      request ||= Provider::CreateEcosystemRequest.new
+      if request.name.empty? && (request.details.nil? || request.details.email.empty?)
+        @client.create_ecosystem(request)
+      else
+        @client.create_ecosystem(request, metadata: metadata(request))
+      end
     end
 
     def update_ecosystem(request)

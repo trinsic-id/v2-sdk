@@ -9,8 +9,7 @@ import 'package:uuid/uuid.dart';
 Future runTemplatesDemo() async {
   var accountService = AccountService(trinsicConfig());
   var profile = await accountService.signIn();
-  var templateService =
-      TemplateService(trinsicConfig(authToken: profile));
+  var templateService = TemplateService(trinsicConfig(authToken: profile));
   var credentialService = CredentialService(trinsicConfig(authToken: profile));
 
   var uuid = Uuid();

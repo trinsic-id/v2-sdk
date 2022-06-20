@@ -1,3 +1,4 @@
+import 'package:grpc/service_api.dart';
 import 'package:trinsic_dart/src/proto/sdk/options/v1/options.pb.dart';
 import 'package:trinsic_dart/src/proto/services/provider/v1/provider.pbgrpc.dart';
 import 'package:trinsic_dart/src/service_base.dart';
@@ -13,10 +14,17 @@ class ProviderService extends ServiceBase {
   Future<CreateEcosystemResponse> createEcosystem(
       {CreateEcosystemRequest? request}) async {
     request = request ?? CreateEcosystemRequest();
-    return await client.createEcosystem(request);
+    var metadata = {
+      'authenticateCall':
+          (request.name.isNotEmpty || request.details.email.isNotEmpty)
+              .toString()
+    };
+    return await client.createEcosystem(request,
+        options: CallOptions(metadata: metadata));
   }
 
-  Future<UpdateEcosystemResponse> updateEcosystem(UpdateEcosystemRequest request) async {
+  Future<UpdateEcosystemResponse> updateEcosystem(
+      UpdateEcosystemRequest request) async {
     return await client.updateEcosystem(request);
   }
 
@@ -24,15 +32,18 @@ class ProviderService extends ServiceBase {
     return await client.addWebhook(request);
   }
 
-  Future<DeleteWebhookResponse> deleteWebhook(DeleteWebhookRequest request) async {
+  Future<DeleteWebhookResponse> deleteWebhook(
+      DeleteWebhookRequest request) async {
     return await client.deleteWebhook(request);
   }
 
-  Future<EcosystemInfoResponse> ecosystemInfo(EcosystemInfoRequest request) async {
+  Future<EcosystemInfoResponse> ecosystemInfo(
+      EcosystemInfoRequest request) async {
     return await client.ecosystemInfo(request);
   }
 
-  Future<GenerateTokenResponse> generateToken(GenerateTokenRequest request) async {
+  Future<GenerateTokenResponse> generateToken(
+      GenerateTokenRequest request) async {
     return await client.generateToken(request);
   }
 
@@ -49,7 +60,8 @@ class ProviderService extends ServiceBase {
     return await client.getOberonKey(request);
   }
 
-  Future<GetEventTokenResponse> getEventToken(GetEventTokenRequest request) async {
+  Future<GetEventTokenResponse> getEventToken(
+      GetEventTokenRequest request) async {
     return await client.getEventToken(request);
   }
 }

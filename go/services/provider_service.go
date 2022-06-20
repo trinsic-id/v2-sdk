@@ -183,7 +183,17 @@ func (p *providerBase) CreateEcosystem(ctx context.Context, request *provider.Cr
 	if request == nil {
 		request = &provider.CreateEcosystemRequest{}
 	}
-	resp, err := p.client.CreateEcosystem(ctx, request)
+	var err error
+	var resp *provider.CreateEcosystemResponse
+	if len(request.Name) > 0 || (request.Details != nil && len(request.Details.Email) > 0) {
+		md, err := p.GetMetadataContext(ctx, request)
+		if err != nil {
+			return nil, err
+		}
+		resp, err = p.client.CreateEcosystem(md, request)
+	} else {
+		resp, err = p.client.CreateEcosystem(ctx, request)
+	}
 	if err != nil {
 		return nil, err
 	}

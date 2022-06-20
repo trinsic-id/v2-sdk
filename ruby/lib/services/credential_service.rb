@@ -9,14 +9,14 @@ module Trinsic
       super(service_options)
       if @service_options.server_use_tls
         channel_creds = GRPC::Core::ChannelCredentials.new
-        @client = Credentials_V1::VerifiableCredential::Stub.new(url_string, channel_creds)
+        @client = Credentials::VerifiableCredential::Stub.new(url_string, channel_creds)
       else
-        @client = Credentials_V1::VerifiableCredential::Stub.new(url_string, :this_channel_is_insecure)
+        @client = Credentials::VerifiableCredential::Stub.new(url_string, :this_channel_is_insecure)
       end
     end
 
     def issue_credential(request)
-      # Credentials_V1::IssueRequest.new(document_json: JSON.generate(document))
+      # Credentials::IssueRequest.new(document_json: JSON.generate(document))
       @client.issue(request, metadata: metadata(request))
     end
 
@@ -31,7 +31,7 @@ module Trinsic
     def create_proof(request)
       # doc_json = nil
       # doc_json = JSON.generate(document) unless document.nil?
-      # request = Credentials_V1::CreateProofRequest.new(item_id: item_id,
+      # request = Credentials::CreateProofRequest.new(item_id: item_id,
       #                                                  reveal_document_json: JSON.generate(reveal_document),
       #                                                  document_json: doc_json)
       @client.create_proof(request, metadata: metadata(request))
@@ -39,17 +39,17 @@ module Trinsic
     end
 
     def verify_proof(request)
-      # request = Credentials_V1::VerifyProofRequest.new(proof_document_json: JSON.generate(proof_document))
+      # request = Credentials::VerifyProofRequest.new(proof_document_json: JSON.generate(proof_document))
       @client.verify_proof(request, metadata: metadata(request))
     end
 
     def check_status(request)
-      # request = Credentials_V1::CheckStatusRequest.new(credential_status_id: credential_status_id)
+      # request = Credentials::CheckStatusRequest.new(credential_status_id: credential_status_id)
       @client.check_status(request, metadata: metadata(request))
     end
 
     def update_status(request)
-      # request = Credentials_V1::UpdateStatusRequest.new(credential_status_id: credential_status_id, revoked: revoked)
+      # request = Credentials::UpdateStatusRequest.new(credential_status_id: credential_status_id, revoked: revoked)
       @client.update_status(request, metadata: metadata(request))
     end
   end

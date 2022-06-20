@@ -9,9 +9,9 @@ module Trinsic
       super(service_options)
       if @service_options.server_use_tls
         channel_creds = GRPC::Core::ChannelCredentials.new
-        @client = Template_V1::CredentialTemplates::Stub.new(url_string, channel_creds)
+        @client = Template::CredentialTemplates::Stub.new(url_string, channel_creds)
       else
-        @client = Template_V1::CredentialTemplates::Stub.new(url_string, :this_channel_is_insecure)
+        @client = Template::CredentialTemplates::Stub.new(url_string, :this_channel_is_insecure)
       end
     end
 
