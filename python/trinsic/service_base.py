@@ -20,6 +20,7 @@ _skip_routes = [
     "/services.account.v1.Account/Login",
     "/services.account.v1.Account/LoginConfirm",
     "/services.provider.v1.Provider/CreateEcosystem",
+    "/services.provider.v1.Provider/GetOberonKey",
 ]
 
 
