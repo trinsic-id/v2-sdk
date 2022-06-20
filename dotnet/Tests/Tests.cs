@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using FluentAssertions;
+using Grpc.Core;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Trinsic;
@@ -320,12 +321,11 @@ public class Tests
         {
             var authCode = "1234";
 
-            // loginConfirm() {
-            string? authToken = await trinsic.Account.LoginConfirmAsync(loginResponse.Challenge, authCode);
-            // }
-
-            // Should fail as we aren't doing a proper auth
-            authToken.Should().BeNullOrEmpty();
+            await Assert.ThrowsAnyAsync<RpcException>(async () => {
+                // loginConfirm() {
+                string? authToken = await trinsic.Account.LoginConfirmAsync(loginResponse.Challenge, authCode);
+                // }
+            });
         }
 
         {
