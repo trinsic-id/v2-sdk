@@ -32,7 +32,7 @@ class AccountServiceTest {
         Exception.class,
         () -> {
           trinsicService.setProfile(myProtectedProfile);
-          Assertions.assertEquals(myProtectedProfile, trinsicService.account().getOptions().getAuthToken());
+          Assertions.assertEquals(myProtectedProfile, trinsicService.account().getOptionsBuilder().getAuthToken());
           trinsicService.account().getInfo().get();
         });
 

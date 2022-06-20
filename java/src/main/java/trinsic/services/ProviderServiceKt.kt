@@ -6,7 +6,7 @@ import trinsic.sdk.options.v1.Options
 import trinsic.services.common.v1.ProviderGrpcKt
 import trinsic.services.common.v1.ProviderOuterClass.*
 
-class ProviderServiceKt(options: Options.ServiceOptions?) : ServiceBase(options) {
+class ProviderServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(options) {
   var stub = ProviderGrpcKt.ProviderCoroutineStub(this.channel)
 
   @Throws(InvalidProtocolBufferException::class, DidException::class)

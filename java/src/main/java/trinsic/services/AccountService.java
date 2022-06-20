@@ -25,7 +25,7 @@ public class AccountService extends ServiceBase {
     this(null);
   }
 
-  public AccountService(Options.ServiceOptions options) {
+  public AccountService(Options.ServiceOptions.Builder options) {
     super(options);
     this.stub = AccountGrpc.newFutureStub(this.getChannel());
   }
@@ -38,7 +38,7 @@ public class AccountService extends ServiceBase {
     if (request.getEcosystemId().isBlank())
       request =
           AccountOuterClass.SignInRequest.newBuilder(request)
-              .setEcosystemId(this.getOptions().getDefaultEcosystem())
+              .setEcosystemId(this.getOptionsBuilder().getDefaultEcosystem())
               .build();
     var response = this.stub.signIn(request);
     return Futures.transform(

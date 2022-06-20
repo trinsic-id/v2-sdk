@@ -14,7 +14,7 @@ public class ProviderService extends ServiceBase {
     this(null);
   }
 
-  public ProviderService(Options.ServiceOptions options) {
+  public ProviderService(Options.ServiceOptions.Builder options) {
     super(options);
     this.stub = ProviderGrpc.newFutureStub(this.getChannel());
   }

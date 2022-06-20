@@ -14,44 +14,38 @@ public class TrinsicService extends ServiceBase {
         this(null);
     }
 
-    public TrinsicService(Options.ServiceOptions options) {
+    public TrinsicService(Options.ServiceOptions.Builder options) {
         super(options);
     }
 
     public AccountService account() {
-        if (_accountService == null) _accountService = new AccountService(this.getOptions());
-        _accountService.setOptions(this.getOptions());
+        if (_accountService == null) _accountService = new AccountService(this.getOptionsBuilder());
         return _accountService;
     }
 
     public CredentialService credential() {
-        if (_credentialService == null) _credentialService = new CredentialService(this.getOptions());
-        _credentialService.setOptions(this.getOptions());
+        if (_credentialService == null) _credentialService = new CredentialService(this.getOptionsBuilder());
         return _credentialService;
     }
 
     public CredentialTemplateService template() {
         if (_credentialTemplateService == null)
-            _credentialTemplateService = new CredentialTemplateService(this.getOptions());
-        _credentialTemplateService.setOptions(this.getOptions());
+            _credentialTemplateService = new CredentialTemplateService(this.getOptionsBuilder());
         return _credentialTemplateService;
     }
 
     public ProviderService provider() {
-        if (_providerService == null) _providerService = new ProviderService(this.getOptions());
-        _providerService.setOptions(this.getOptions());
+        if (_providerService == null) _providerService = new ProviderService(this.getOptionsBuilder());
         return _providerService;
     }
 
     public TrustRegistryService trustRegistry() {
-        if (_trustRegistryService == null) _trustRegistryService = new TrustRegistryService(this.getOptions());
-        _trustRegistryService.setOptions(this.getOptions());
+        if (_trustRegistryService == null) _trustRegistryService = new TrustRegistryService(this.getOptionsBuilder());
         return _trustRegistryService;
     }
 
     public WalletService wallet() {
-        if (_walletService == null) _walletService = new WalletService(this.getOptions());
-        _walletService.setOptions(this.getOptions());
+        if (_walletService == null) _walletService = new WalletService(this.getOptionsBuilder());
         return _walletService;
     }
 }

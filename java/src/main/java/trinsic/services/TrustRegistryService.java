@@ -2,14 +2,15 @@ package trinsic.services;
 
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.InvalidProtocolBufferException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Iterator;
-import java.util.concurrent.ExecutionException;
 import trinsic.okapi.DidException;
 import trinsic.sdk.options.v1.Options;
 import trinsic.services.trustregistry.v1.TrustRegistryGrpc;
 import trinsic.services.trustregistry.v1.TrustRegistryOuterClass;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Iterator;
+import java.util.concurrent.ExecutionException;
 
 public class TrustRegistryService extends ServiceBase {
   public TrustRegistryGrpc.TrustRegistryFutureStub stub;
@@ -20,7 +21,7 @@ public class TrustRegistryService extends ServiceBase {
     this(null);
   }
 
-  public TrustRegistryService(Options.ServiceOptions options) {
+  public TrustRegistryService(Options.ServiceOptions.Builder options) {
     super(options);
     this.stub = TrustRegistryGrpc.newFutureStub(this.getChannel());
     this.stub2 = TrustRegistryGrpc.newBlockingStub(this.getChannel());

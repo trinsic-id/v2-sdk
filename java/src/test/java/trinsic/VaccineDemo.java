@@ -24,9 +24,7 @@ public class VaccineDemo {
   public static void run()
       throws IOException, DidException, ExecutionException, InterruptedException {
     var serverConfig =
-        TrinsicUtilities.getTrinsicServiceOptions().toBuilder()
-            .setServerEndpoint("dev-internal.trinsic.cloud")
-            .build();
+        TrinsicUtilities.getTrinsicServiceOptions();
 
     var trinsicService = new TrinsicService(serverConfig);
 
@@ -40,7 +38,7 @@ public class VaccineDemo {
     // }
 
     // Set default ecosystem on config
-    serverConfig = serverConfig.toBuilder().setDefaultEcosystem(ecosystemId).build();
+    serverConfig.setDefaultEcosystem(ecosystemId);
     trinsicService.setDefaultEcosystem(ecosystemId);
 
     // setupActors() {

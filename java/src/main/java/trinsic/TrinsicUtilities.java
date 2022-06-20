@@ -3,8 +3,9 @@ package trinsic;
 import com.google.gson.Gson;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import java.util.HashMap;
 import trinsic.sdk.options.v1.Options;
+
+import java.util.HashMap;
 
 public class TrinsicUtilities {
 
@@ -14,7 +15,7 @@ public class TrinsicUtilities {
     return defaultValue;
   }
 
-  public static Options.ServiceOptions getTrinsicServiceOptions() {
+  public static Options.ServiceOptions.Builder getTrinsicServiceOptions() {
 
     String endpoint = getEnvVar("TEST_SERVER_ENDPOINT", "prod.trinsic.cloud");
     int port = Integer.parseInt(getEnvVar("TEST_SERVER_PORT", "443"));
@@ -27,15 +28,12 @@ public class TrinsicUtilities {
         .setServerPort(port)
         .setAuthToken(authToken)
         .setDefaultEcosystem(defaultEcosystem)
-        .setServerUseTls(useTls)
-        .build();
+        .setServerUseTls(useTls);
   }
 
-  public static Options.ServiceOptions getTrinsicServiceOptions(String authToken) {
-    return Options.ServiceOptions.newBuilder()
-        .mergeFrom(getTrinsicServiceOptions())
-        .setAuthToken(authToken)
-        .build();
+  public static Options.ServiceOptions.Builder getTrinsicServiceOptions(String authToken) {
+    return getTrinsicServiceOptions()
+        .setAuthToken(authToken);
   }
 
   public static String hashmapToJson(HashMap document) {
