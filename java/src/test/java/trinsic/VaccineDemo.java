@@ -51,7 +51,7 @@ public class VaccineDemo {
     // }
 
     // Create template
-    var templateId = DefineTemplate(trinsicService.credentialTemplateService(), clinic);
+    var templateId = DefineTemplate(trinsicService.template(), clinic);
 
     // Issue credential
     var credential = IssueCredential(trinsicService, templateId, clinic);

@@ -45,7 +45,7 @@ func (t *Trinsic) Account() AccountService {
 	return t.as
 }
 
-func (t *Trinsic) Credentials() CredentialService {
+func (t *Trinsic) Credential() CredentialService {
 	if t.cs == nil {
 		t.cs = &credentialBase{
 			Service: t.Service,
@@ -56,7 +56,7 @@ func (t *Trinsic) Credentials() CredentialService {
 	return t.cs
 }
 
-func (t *Trinsic) Templates() CredentialTemplateService {
+func (t *Trinsic) Template() CredentialTemplateService {
 	if t.ts == nil {
 		t.ts = &credentialTemplateBase{
 			Service: t.Service,
@@ -78,7 +78,7 @@ func (t *Trinsic) Provider() ProviderService {
 	return t.ps
 }
 
-func (t *Trinsic) TrustRegistries() TrustRegistryService {
+func (t *Trinsic) TrustRegistry() TrustRegistryService {
 	if t.tr == nil {
 		t.tr = &trustRegistryBase{
 			Service: t.Service,

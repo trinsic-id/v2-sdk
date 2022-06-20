@@ -40,7 +40,7 @@ public class TemplatesDemo {
             .setAllowAdditionalFields(false)
             .putAllFields(fields)
             .build();
-    var template = trinsicService.credentialTemplateService().create(templateRequest).get();
+    var template = trinsicService.template().create(templateRequest).get();
     // }
 
     assert template != null;
@@ -75,14 +75,14 @@ public class TemplatesDemo {
 
     // getCredentialTemplate() {
     var getResponse =
-            trinsicService.credentialTemplateService()
+            trinsicService.template()
             .get(Templates.GetCredentialTemplateRequest.newBuilder().setId(id).build())
             .get();
     // }
 
     // searchCredentialTemplate() {
     var searchResponse =
-            trinsicService.credentialTemplateService()
+            trinsicService.template()
             .search(
                 Templates.SearchCredentialTemplatesRequest.newBuilder()
                     .setQuery("SELECT * FROM c WHERE c.id = '" + id + "'")
@@ -92,7 +92,7 @@ public class TemplatesDemo {
 
     // deleteCredentialTemplate() {
     var deleteResponse =
-            trinsicService.credentialTemplateService()
+            trinsicService.template()
             .delete(Templates.DeleteCredentialTemplateRequest.newBuilder().setId(id).build())
             .get();
     // }

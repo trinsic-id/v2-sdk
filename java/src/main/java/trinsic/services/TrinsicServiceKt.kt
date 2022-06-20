@@ -20,7 +20,7 @@ class TrinsicServiceKt @JvmOverloads constructor(options: Options.ServiceOptions
     return _credentialService!!
   }
 
-  fun credentialTemplateService(): CredentialTemplateServiceKt {
+  fun template(): CredentialTemplateServiceKt {
     if (_credentialTemplateService == null)
         _credentialTemplateService = CredentialTemplateServiceKt(options)
     return _credentialTemplateService!!
@@ -31,7 +31,7 @@ class TrinsicServiceKt @JvmOverloads constructor(options: Options.ServiceOptions
     return _providerService!!
   }
 
-  fun trustRegistryService(): TrustRegistryServiceKt {
+  fun trustRegistry(): TrustRegistryServiceKt {
     if (_trustRegistryService == null) _trustRegistryService = TrustRegistryServiceKt(options)
     return _trustRegistryService!!
   }

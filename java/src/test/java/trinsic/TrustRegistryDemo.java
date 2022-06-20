@@ -26,7 +26,7 @@ public class TrustRegistryDemo {
 
     // addFramework() {
     var frameworkResponse =
-            trinsicService.trustRegistryService()
+            trinsicService.trustRegistry()
             .addFramework(
                 TrustRegistryOuterClass.AddFrameworkRequest.newBuilder()
                     .setGovernanceFrameworkUri(frameworkUri)
@@ -36,7 +36,7 @@ public class TrustRegistryDemo {
     // }
 
     // registerIssuerSample() {
-      trinsicService.trustRegistryService().registerMember(
+      trinsicService.trustRegistry().registerMember(
         TrustRegistryOuterClass.RegisterMemberRequest.newBuilder()
             .setDidUri(didUri)
             .setFrameworkId(frameworkResponse.getId())
@@ -45,7 +45,7 @@ public class TrustRegistryDemo {
     // }
     // checkIssuerStatus() {
     var issuerStatus =
-            trinsicService.trustRegistryService()
+            trinsicService.trustRegistry()
             .checkIssuerStatus(
                 TrustRegistryOuterClass.GetMembershipStatusRequest.newBuilder()
                     .setDidUri(didUri)
@@ -58,14 +58,14 @@ public class TrustRegistryDemo {
         TrustRegistryOuterClass.RegistrationStatus.CURRENT, issuerStatus.getStatus());
 
     // searchTrustRegistry() {
-    var searchResult = trinsicService.trustRegistryService().searchRegistry().get();
+    var searchResult = trinsicService.trustRegistry().searchRegistry().get();
     // }
     Assertions.assertNotNull(searchResult);
     Assertions.assertNotNull(searchResult.getItemsJson());
     Assertions.assertTrue(searchResult.getItemsJson().length() > 0);
 
     // unregisterIssuer() {
-      trinsicService.trustRegistryService().unregisterIssuer(
+      trinsicService.trustRegistry().unregisterIssuer(
         TrustRegistryOuterClass.UnregisterMemberRequest.newBuilder()
             .setFrameworkId(frameworkResponse.getId())
             .setDidUri(didUri)
