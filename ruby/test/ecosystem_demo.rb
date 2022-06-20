@@ -10,7 +10,7 @@ def ecosystem_demo_run
   service = Trinsic::ProviderService.new(Trinsic.trinsic_server(account))
 
   # test create ecosystem
-  actual_create = service.create_ecosystem(Trinsic::Provider_V1::CreateEcosystemRequest.new(
+  actual_create = service.create_ecosystem(Trinsic::Provider::CreateEcosystemRequest.new(
                                              description: 'My ecosystem', uri: 'https://example.com'
                                            ))
   raise 'ecosystem should be created' if actual_create.ecosystem.nil?

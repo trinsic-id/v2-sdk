@@ -1,7 +1,9 @@
 import base64
-from typing import Union, SupportsBytes
+import string
+from typing import ByteString, Union, SupportsBytes
 
-from trinsicokapi import oberon
+from trinsicokapi import oberon, hashing
+from trinsicokapi.proto.okapi.hashing.v1 import Blake3HashRequest
 from trinsicokapi.proto.okapi.security.v1 import (
     UnBlindOberonTokenRequest,
     BlindOberonTokenRequest,
@@ -9,7 +11,11 @@ from trinsicokapi.proto.okapi.security.v1 import (
 
 from trinsic.proto.sdk.options.v1 import ServiceOptions
 from trinsic.proto.services.account.v1 import *
-from trinsic.proto.services.account.v1 import LoginConfirmResponse, LoginResponse
+from trinsic.proto.services.account.v1 import (
+    LoginConfirmRequest,
+    LoginRequest,
+    LoginResponse,
+)
 from trinsic.service_base import ServiceBase
 
 
@@ -94,10 +100,60 @@ class AccountService(ServiceBase):
         return base64.urlsafe_b64encode(bytes(profile)).decode("utf-8")
 
     async def login(self, *, request: LoginRequest) -> LoginResponse:
+        """
+        Begins the login process for the specified user; returning a challenge which must be passed
+        to `login_confirm()` along with an auth code sent to the user's email
+        Args:
+            request: Login request
+        Returns:
+            LoginResponse with challenge
+        """
+        request = request or LoginRequest()
+        request.ecosystem_id = (
+            request.ecosystem_id or self.service_options.default_ecosystem
+        )
         return await self.client.login(request)
 
-    async def login_confirm(self, *, request: LoginConfirmRequest) -> LoginConfirmResponse:
-        return await self.client.login_confirm(request)
+    async def login_confirm(self, *, challenge: bytes, auth_code: str) -> str:
+        """
+        Finalizes the login process using the challenge received from `login()`,
+        and auth code sent to user's email
+        Args:
+            challenge: The challenge contained in the response to `login()`
+            auth_code: The auth code sent to the user's email
+        Returns:
+            Authentication token for account
+        """
+
+        code_hash = hashing.blake3_hash(
+            request=Blake3HashRequest(data=auth_code.encode("utf-8"))
+        ).digest
+
+        request = LoginConfirmRequest(
+            challenge=challenge, confirmation_code_hashed=code_hash
+        )
+        response = await self.client.login_confirm(request)
+
+        auth_token = base64.urlsafe_b64encode(bytes(response.profile)).decode("utf-8")
+
+        if response.profile.protection.enabled:
+            auth_token = self.unprotect(profile=auth_token, security_code=auth_code)
+
+        self.service_options.auth_token = auth_token
+        return auth_token
+
+    async def login_anonymous(self) -> string:
+        """
+        Create an anonymous account in the current ecosystem
+        Returns:
+            Authentication token for newly-created account
+        """
+        response = await self.login(request=LoginRequest())
+        auth_token = base64.urlsafe_b64encode(bytes(response.profile)).decode("utf-8")
+
+        self.service_options.auth_token = auth_token
+
+        return auth_token
 
     async def get_info(self) -> AccountInfoResponse:
         """
@@ -115,5 +171,7 @@ class AccountService(ServiceBase):
     ) -> RevokeDeviceResponse:
         return await self.client.revoke_device(revoke_device_request=request)
 
-    async def authorize_webhook(self, *, request: AuthorizeWebhookRequest) -> AuthorizeWebhookResponse:
+    async def authorize_webhook(
+        self, *, request: AuthorizeWebhookRequest
+    ) -> AuthorizeWebhookResponse:
         return await self.client.authorize_webhook(authorize_webhook_request=request)

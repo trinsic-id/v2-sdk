@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:okapi_dart/okapi.dart';
+import 'package:okapi_dart/proto/okapi/hashing/v1/hashing.pb.dart';
 import 'package:okapi_dart/proto/okapi/security/v1/security.pb.dart';
 import 'package:trinsic_dart/src/proto/sdk/options/v1/options.pb.dart';
 import 'package:trinsic_dart/src/proto/services/account/v1/account.pbgrpc.dart';
@@ -16,7 +17,7 @@ class AccountService extends ServiceBase {
   }
 
   Future<String> signIn({SignInRequest? request}) async {
-    request = request ?? SignInRequest();
+    request ??= SignInRequest();
     request.ecosystemId = request.ecosystemId != ""
         ? request.ecosystemId
         : serviceOptions.defaultEcosystem;
@@ -67,12 +68,40 @@ class AccountService extends ServiceBase {
     return Base64Encoder.urlSafe().convert(protectedProfile.writeToBuffer());
   }
 
-  Future<LoginResponse> login(LoginRequest request) async {
+  Future<LoginResponse> login({LoginRequest? request}) async {
+    request ??= LoginRequest();
+    request.ecosystemId = request.ecosystemId != ""
+        ? request.ecosystemId
+        : serviceOptions.defaultEcosystem;
     return await client.login(request);
   }
 
-  Future<LoginConfirmResponse> loginConfirm(LoginConfirmRequest request) async {
-    return await client.loginConfirm(request);
+  Future<String> loginConfirm(String challenge, String authCode) async {
+    var hashed = Hashing.blake3Hash(
+        Blake3HashRequest(data: Uint8List.fromList(utf8.encode(authCode))));
+    var request = LoginConfirmRequest(
+        challenge: Uint8List.fromList(utf8.encode(challenge)),
+        confirmationCodeHashed: hashed.digest);
+    var response = await client.loginConfirm(request);
+
+    var token =
+        Base64Encoder.urlSafe().convert(response.profile.writeToBuffer());
+    if (response.profile.protection.enabled) {
+      token = unprotect(token, authCode);
+    }
+    return token;
+  }
+
+  Future<String> loginAnonymous() async {
+    var response = await login();
+
+    if (response.profile.protection.enabled) {
+      throw Exception("protected profile returned from login()");
+    }
+    // Tokenize and return
+    var authToken =
+        Base64Encoder.urlSafe().convert(response.profile.writeToBuffer());
+    return authToken;
   }
 
   Future<AccountInfoResponse> getInfo() async {
@@ -87,7 +116,8 @@ class AccountService extends ServiceBase {
     return await client.revokeDevice(request);
   }
 
-  Future<AuthorizeWebhookResponse> authorizeWebhook(AuthorizeWebhookRequest request) async {
+  Future<AuthorizeWebhookResponse> authorizeWebhook(
+      AuthorizeWebhookRequest request) async {
     return await client.authorizeWebhook(request);
   }
 }

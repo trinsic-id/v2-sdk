@@ -3,16 +3,16 @@
 //  source: services/provider/v1/provider.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../account/v1/account.pb.dart' as $4;
+import '../../account/v1/account.pb.dart' as $0;
 
 import 'provider.pbenum.dart';
-import '../../account/v1/account.pbenum.dart' as $4;
+import '../../account/v1/account.pbenum.dart' as $0;
 
 export 'provider.pbenum.dart';
 
@@ -237,19 +237,19 @@ class InviteRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'description')
-    ..aOM<$4.AccountDetails>(
+    ..aOM<$0.AccountDetails>(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'details',
-        subBuilder: $4.AccountDetails.create)
+        subBuilder: $0.AccountDetails.create)
     ..hasRequiredFields = false;
 
   InviteRequest._() : super();
   factory InviteRequest({
     ParticipantType? participant,
     $core.String? description,
-    $4.AccountDetails? details,
+    $0.AccountDetails? details,
   }) {
     final _result = create();
     if (participant != null) {
@@ -315,9 +315,9 @@ class InviteRequest extends $pb.GeneratedMessage {
   void clearDescription() => clearField(2);
 
   @$pb.TagNumber(3)
-  $4.AccountDetails get details => $_getN(2);
+  $0.AccountDetails get details => $_getN(2);
   @$pb.TagNumber(3)
-  set details($4.AccountDetails v) {
+  set details($0.AccountDetails v) {
     setField(3, v);
   }
 
@@ -326,7 +326,7 @@ class InviteRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearDetails() => clearField(3);
   @$pb.TagNumber(3)
-  $4.AccountDetails ensureDetails() => $_ensure(2);
+  $0.AccountDetails ensureDetails() => $_ensure(2);
 }
 
 class InviteResponse extends $pb.GeneratedMessage {
@@ -869,12 +869,12 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'uri')
-    ..aOM<$4.AccountDetails>(
+    ..aOM<$0.AccountDetails>(
         4,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'details',
-        subBuilder: $4.AccountDetails.create)
+        subBuilder: $0.AccountDetails.create)
     ..hasRequiredFields = false;
 
   CreateEcosystemRequest._() : super();
@@ -882,7 +882,7 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
     $core.String? name,
     $core.String? description,
     $core.String? uri,
-    $4.AccountDetails? details,
+    $0.AccountDetails? details,
   }) {
     final _result = create();
     if (name != null) {
@@ -965,9 +965,9 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
   void clearUri() => clearField(3);
 
   @$pb.TagNumber(4)
-  $4.AccountDetails get details => $_getN(3);
+  $0.AccountDetails get details => $_getN(3);
   @$pb.TagNumber(4)
-  set details($4.AccountDetails v) {
+  set details($0.AccountDetails v) {
     setField(4, v);
   }
 
@@ -976,7 +976,7 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearDetails() => clearField(4);
   @$pb.TagNumber(4)
-  $4.AccountDetails ensureDetails() => $_ensure(3);
+  $0.AccountDetails ensureDetails() => $_ensure(3);
 }
 
 class CreateEcosystemResponse extends $pb.GeneratedMessage {
@@ -995,28 +995,28 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
             ? ''
             : 'ecosystem',
         subBuilder: Ecosystem.create)
-    ..aOM<$4.AccountProfile>(
+    ..aOM<$0.AccountProfile>(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'profile',
-        subBuilder: $4.AccountProfile.create)
-    ..e<$4.ConfirmationMethod>(
+        subBuilder: $0.AccountProfile.create)
+    ..e<$0.ConfirmationMethod>(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'confirmationMethod',
         $pb.PbFieldType.OE,
-        defaultOrMaker: $4.ConfirmationMethod.None,
-        valueOf: $4.ConfirmationMethod.valueOf,
-        enumValues: $4.ConfirmationMethod.values)
+        defaultOrMaker: $0.ConfirmationMethod.None,
+        valueOf: $0.ConfirmationMethod.valueOf,
+        enumValues: $0.ConfirmationMethod.values)
     ..hasRequiredFields = false;
 
   CreateEcosystemResponse._() : super();
   factory CreateEcosystemResponse({
     Ecosystem? ecosystem,
-    $4.AccountProfile? profile,
-    $4.ConfirmationMethod? confirmationMethod,
+    $0.AccountProfile? profile,
+    $0.ConfirmationMethod? confirmationMethod,
   }) {
     final _result = create();
     if (ecosystem != null) {
@@ -1074,9 +1074,9 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
   Ecosystem ensureEcosystem() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $4.AccountProfile get profile => $_getN(1);
+  $0.AccountProfile get profile => $_getN(1);
   @$pb.TagNumber(2)
-  set profile($4.AccountProfile v) {
+  set profile($0.AccountProfile v) {
     setField(2, v);
   }
 
@@ -1085,12 +1085,12 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearProfile() => clearField(2);
   @$pb.TagNumber(2)
-  $4.AccountProfile ensureProfile() => $_ensure(1);
+  $0.AccountProfile ensureProfile() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $4.ConfirmationMethod get confirmationMethod => $_getN(2);
+  $0.ConfirmationMethod get confirmationMethod => $_getN(2);
   @$pb.TagNumber(3)
-  set confirmationMethod($4.ConfirmationMethod v) {
+  set confirmationMethod($0.ConfirmationMethod v) {
     setField(3, v);
   }
 
@@ -1114,14 +1114,9 @@ class UpdateEcosystemRequest extends $pb.GeneratedMessage {
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'ecosystemId')
-    ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
             : 'description')
     ..aOS(
-        3,
+        2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'uri')
@@ -1129,14 +1124,10 @@ class UpdateEcosystemRequest extends $pb.GeneratedMessage {
 
   UpdateEcosystemRequest._() : super();
   factory UpdateEcosystemRequest({
-    $core.String? ecosystemId,
     $core.String? description,
     $core.String? uri,
   }) {
     final _result = create();
-    if (ecosystemId != null) {
-      _result.ecosystemId = ecosystemId;
-    }
     if (description != null) {
       _result.description = description;
     }
@@ -1175,40 +1166,28 @@ class UpdateEcosystemRequest extends $pb.GeneratedMessage {
   static UpdateEcosystemRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get ecosystemId => $_getSZ(0);
+  $core.String get description => $_getSZ(0);
   @$pb.TagNumber(1)
-  set ecosystemId($core.String v) {
+  set description($core.String v) {
     $_setString(0, v);
   }
 
   @$pb.TagNumber(1)
-  $core.bool hasEcosystemId() => $_has(0);
+  $core.bool hasDescription() => $_has(0);
   @$pb.TagNumber(1)
-  void clearEcosystemId() => clearField(1);
+  void clearDescription() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get description => $_getSZ(1);
+  $core.String get uri => $_getSZ(1);
   @$pb.TagNumber(2)
-  set description($core.String v) {
+  set uri($core.String v) {
     $_setString(1, v);
   }
 
   @$pb.TagNumber(2)
-  $core.bool hasDescription() => $_has(1);
+  $core.bool hasUri() => $_has(1);
   @$pb.TagNumber(2)
-  void clearDescription() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.String get uri => $_getSZ(2);
-  @$pb.TagNumber(3)
-  set uri($core.String v) {
-    $_setString(2, v);
-  }
-
-  @$pb.TagNumber(3)
-  $core.bool hasUri() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearUri() => clearField(3);
+  void clearUri() => clearField(2);
 }
 
 class UpdateEcosystemResponse extends $pb.GeneratedMessage {
@@ -1298,19 +1277,14 @@ class AddWebhookRequest extends $pb.GeneratedMessage {
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'ecosystemId')
+            : 'destinationUrl')
     ..aOS(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'destinationUrl')
-    ..aOS(
-        3,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
             : 'secret')
     ..pPS(
-        4,
+        3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'events')
@@ -1318,15 +1292,11 @@ class AddWebhookRequest extends $pb.GeneratedMessage {
 
   AddWebhookRequest._() : super();
   factory AddWebhookRequest({
-    $core.String? ecosystemId,
     $core.String? destinationUrl,
     $core.String? secret,
     $core.Iterable<$core.String>? events,
   }) {
     final _result = create();
-    if (ecosystemId != null) {
-      _result.ecosystemId = ecosystemId;
-    }
     if (destinationUrl != null) {
       _result.destinationUrl = destinationUrl;
     }
@@ -1366,43 +1336,31 @@ class AddWebhookRequest extends $pb.GeneratedMessage {
   static AddWebhookRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get ecosystemId => $_getSZ(0);
+  $core.String get destinationUrl => $_getSZ(0);
   @$pb.TagNumber(1)
-  set ecosystemId($core.String v) {
+  set destinationUrl($core.String v) {
     $_setString(0, v);
   }
 
   @$pb.TagNumber(1)
-  $core.bool hasEcosystemId() => $_has(0);
+  $core.bool hasDestinationUrl() => $_has(0);
   @$pb.TagNumber(1)
-  void clearEcosystemId() => clearField(1);
+  void clearDestinationUrl() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get destinationUrl => $_getSZ(1);
+  $core.String get secret => $_getSZ(1);
   @$pb.TagNumber(2)
-  set destinationUrl($core.String v) {
+  set secret($core.String v) {
     $_setString(1, v);
   }
 
   @$pb.TagNumber(2)
-  $core.bool hasDestinationUrl() => $_has(1);
+  $core.bool hasSecret() => $_has(1);
   @$pb.TagNumber(2)
-  void clearDestinationUrl() => clearField(2);
+  void clearSecret() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get secret => $_getSZ(2);
-  @$pb.TagNumber(3)
-  set secret($core.String v) {
-    $_setString(2, v);
-  }
-
-  @$pb.TagNumber(3)
-  $core.bool hasSecret() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearSecret() => clearField(3);
-
-  @$pb.TagNumber(4)
-  $core.List<$core.String> get events => $_getList(3);
+  $core.List<$core.String> get events => $_getList(2);
 }
 
 class AddWebhookResponse extends $pb.GeneratedMessage {
@@ -1489,23 +1447,14 @@ class DeleteWebhookRequest extends $pb.GeneratedMessage {
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
-            : 'ecosystemId')
-    ..aOS(
-        2,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
             : 'webhookId')
     ..hasRequiredFields = false;
 
   DeleteWebhookRequest._() : super();
   factory DeleteWebhookRequest({
-    $core.String? ecosystemId,
     $core.String? webhookId,
   }) {
     final _result = create();
-    if (ecosystemId != null) {
-      _result.ecosystemId = ecosystemId;
-    }
     if (webhookId != null) {
       _result.webhookId = webhookId;
     }
@@ -1540,28 +1489,16 @@ class DeleteWebhookRequest extends $pb.GeneratedMessage {
   static DeleteWebhookRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get ecosystemId => $_getSZ(0);
+  $core.String get webhookId => $_getSZ(0);
   @$pb.TagNumber(1)
-  set ecosystemId($core.String v) {
+  set webhookId($core.String v) {
     $_setString(0, v);
   }
 
   @$pb.TagNumber(1)
-  $core.bool hasEcosystemId() => $_has(0);
+  $core.bool hasWebhookId() => $_has(0);
   @$pb.TagNumber(1)
-  void clearEcosystemId() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.String get webhookId => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set webhookId($core.String v) {
-    $_setString(1, v);
-  }
-
-  @$pb.TagNumber(2)
-  $core.bool hasWebhookId() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearWebhookId() => clearField(2);
+  void clearWebhookId() => clearField(1);
 }
 
 class DeleteWebhookResponse extends $pb.GeneratedMessage {
@@ -1646,23 +1583,10 @@ class EcosystemInfoRequest extends $pb.GeneratedMessage {
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
-    ..aOS(
-        1,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'ecosystemId')
     ..hasRequiredFields = false;
 
   EcosystemInfoRequest._() : super();
-  factory EcosystemInfoRequest({
-    $core.String? ecosystemId,
-  }) {
-    final _result = create();
-    if (ecosystemId != null) {
-      _result.ecosystemId = ecosystemId;
-    }
-    return _result;
-  }
+  factory EcosystemInfoRequest() => create();
   factory EcosystemInfoRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
@@ -1690,18 +1614,6 @@ class EcosystemInfoRequest extends $pb.GeneratedMessage {
   static EcosystemInfoRequest getDefault() => _defaultInstance ??=
       $pb.GeneratedMessage.$_defaultFor<EcosystemInfoRequest>(create);
   static EcosystemInfoRequest? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get ecosystemId => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set ecosystemId($core.String v) {
-    $_setString(0, v);
-  }
-
-  @$pb.TagNumber(1)
-  $core.bool hasEcosystemId() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearEcosystemId() => clearField(1);
 }
 
 class EcosystemInfoResponse extends $pb.GeneratedMessage {
@@ -1854,17 +1766,17 @@ class GenerateTokenResponse extends $pb.GeneratedMessage {
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
-    ..aOM<$4.AccountProfile>(
+    ..aOM<$0.AccountProfile>(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'profile',
-        subBuilder: $4.AccountProfile.create)
+        subBuilder: $0.AccountProfile.create)
     ..hasRequiredFields = false;
 
   GenerateTokenResponse._() : super();
   factory GenerateTokenResponse({
-    $4.AccountProfile? profile,
+    $0.AccountProfile? profile,
   }) {
     final _result = create();
     if (profile != null) {
@@ -1902,9 +1814,9 @@ class GenerateTokenResponse extends $pb.GeneratedMessage {
   static GenerateTokenResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $4.AccountProfile get profile => $_getN(0);
+  $0.AccountProfile get profile => $_getN(0);
   @$pb.TagNumber(1)
-  set profile($4.AccountProfile v) {
+  set profile($0.AccountProfile v) {
     setField(1, v);
   }
 
@@ -1913,7 +1825,7 @@ class GenerateTokenResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearProfile() => clearField(1);
   @$pb.TagNumber(1)
-  $4.AccountProfile ensureProfile() => $_ensure(0);
+  $0.AccountProfile ensureProfile() => $_ensure(0);
 }
 
 class GetOberonKeyRequest extends $pb.GeneratedMessage {

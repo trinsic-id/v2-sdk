@@ -14,7 +14,7 @@ module Trinsic
       end
 
       { 'authorization' => @security_provider.get_auth_header(
-        Account_V1::AccountProfile.decode(Base64.urlsafe_decode64(@service_options.auth_token)), message
+        Account::AccountProfile.decode(Base64.urlsafe_decode64(@service_options.auth_token)), message
       ) }
     end
 
