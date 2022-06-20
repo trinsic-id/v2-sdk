@@ -31,7 +31,11 @@ The authentication code must be passed along with `challenge` to [LoginConfirm](
         ```
 
     === "TypeScript"
-        > Sample coming soon
+        <!--codeinclude--> 
+        ```typescript
+        [LoginRequest](../../../web/test/AccountService.test.ts) inside_block:loginRequest
+        ```
+        <!--/codeinclude-->
 
     === "C#"
         <!--codeinclude-->
@@ -82,7 +86,11 @@ Our SDK will take care of hashing the confirmation code for you.
         ```
 
     === "TypeScript"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```typescript
+        [LoginConfirm](../../../web/test/AccountService.test.ts) inside_block:loginConfirm
+        ```
+        <!--/codeinclude-->
 
     === "C#"
         <!--codeinclude-->
@@ -178,7 +186,11 @@ Authorizes the ecosystem provider to receive webhooks pertaining to this wallet.
         > CLI support for this endpoint coming soon
 
     === "TypeScript"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```typescript
+        [AuthorizeWebhook](../../../web/test/AccountService.test.ts) inside_block:authorizeWebhook
+        ```
+        <!--/codeinclude-->
 
     === "C#"
         <!--codeinclude-->

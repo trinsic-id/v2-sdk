@@ -69,7 +69,11 @@ Updates the active ecosystem's `description` or `uri`.
         > CLI support for this endpoint coming soon
 
     === "TypeScript"
-        > Sample coming soon
+        <!--codeinclude--> 
+        ```typescript
+        [UpdateEcosystem](../../../web/test/ProviderService.test.ts) inside_block:updateEcosystem
+        ```
+        <!--/codeinclude-->
 
     === "C#"
         <!--codeinclude-->
@@ -104,7 +108,11 @@ Fetches information about the active ecosystem.
         > CLI support for this endpoint coming soon
 
     === "TypeScript"
-        > Sample coming soon
+        <!--codeinclude--> 
+        ```typescript
+        [EcosystemInfo](../../../web/test/ProviderService.test.ts) inside_block:ecosystemInfo
+        ```
+        <!--/codeinclude-->
 
     === "C#"
         <!--codeinclude-->
@@ -139,7 +147,11 @@ Adds a webhook to an ecosystem.
         > CLI support for this endpoint coming soon
 
     === "TypeScript"
-        > Sample coming soon
+        <!--codeinclude--> 
+        ```typescript
+        [AddWebhook](../../../web/test/ProviderService.test.ts) inside_block:addWebhook
+        ```
+        <!--/codeinclude-->
 
     === "C#"
         <!--codeinclude-->
@@ -182,7 +194,11 @@ Deletes a webhook from an ecosystem.
         > CLI support for this endpoint coming soon
 
     === "TypeScript"
-        > Sample coming soon
+        <!--codeinclude--> 
+        ```typescript
+        [DeleteWebhook](../../../web/test/ProviderService.test.ts) inside_block:deleteWebhook
+        ```
+        <!--/codeinclude-->
 
     === "C#"
         <!--codeinclude-->
