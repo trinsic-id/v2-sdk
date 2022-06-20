@@ -54,7 +54,7 @@ module Trinsic
     def login_confirm(challenge, auth_code)
       hashed = Okapi::Hashing.blake3_hash(Okapi::Hashing::V1::Blake3HashRequest.new(data: auth_code))
       request = Account::LoginConfirmRequest.new(challenge: challenge, confirmation_code_hashed: hashed.digest)
-      response = @client.login_confirm(request, metadata: metadata(request))
+      response = @client.login_confirm(request)
       return nil if response.profile.nil?
 
       profile = response.profile
