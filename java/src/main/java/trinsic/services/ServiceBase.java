@@ -6,13 +6,14 @@ import io.grpc.Channel;
 import io.grpc.ManagedChannel;
 import io.grpc.Metadata;
 import io.grpc.stub.MetadataUtils;
-import java.util.Base64;
 import trinsic.TrinsicUtilities;
 import trinsic.okapi.DidException;
 import trinsic.sdk.options.v1.Options;
 import trinsic.security.ISecurityProvider;
 import trinsic.security.OberonSecurityProvider;
 import trinsic.services.account.v1.AccountOuterClass;
+
+import java.util.Base64;
 
 public abstract class ServiceBase {
   private final ISecurityProvider securityProvider = new OberonSecurityProvider();

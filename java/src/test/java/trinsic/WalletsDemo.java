@@ -1,15 +1,13 @@
 package trinsic;
 
-import java.io.IOException;
-import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.okapi.DidException;
-import trinsic.services.AccountService;
-import trinsic.services.ProviderService;
 import trinsic.services.TrinsicService;
-import trinsic.services.WalletService;
 import trinsic.services.common.v1.ProviderOuterClass;
 import trinsic.services.universalwallet.v1.UniversalWalletOuterClass;
+
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 public class WalletsDemo {
   public static void main(String[] args)
