@@ -1,4 +1,7 @@
+import base64url from "base64url";
+import { create } from "domain";
 import {
+  AccountProfile,
   AccountService,
   AddWebhookRequest,
   CreateEcosystemRequest,
@@ -41,6 +44,13 @@ describe("ProviderService Unit Tests", () => {
     ).toBeTruthy();
 
 
+    // Use auth token and ecosystem
+    trinsic.options.authToken = base64url(
+      Buffer.from(AccountProfile.encode(createResponse.profile!).finish())
+    );
+    trinsic.options.defaultEcosystem = createResponse.ecosystem!.id;
+
+
     // addWebhook() {
     let addResponse = await trinsic.provider().addWebhook(
       AddWebhookRequest.fromPartial({
@@ -63,7 +73,7 @@ describe("ProviderService Unit Tests", () => {
       })
     );
     //}
-    
+
     expect(deleteResponse.ecosystem?.webhooks.length).toBe(0);
 
     // updateEcosystem() {
