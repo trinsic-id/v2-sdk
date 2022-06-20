@@ -59,7 +59,11 @@ The authentication code must be passed along with `challenge` to [LoginConfirm](
         <!--/codeinclude-->
 
     === "Java"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```java
+        [LoginRequest](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:loginRequest
+        ```
+        <!--/codeinclude-->
 
     === "Ruby"
         > Sample coming soon
@@ -118,7 +122,11 @@ Our SDK will take care of hashing the confirmation code for you.
         <!--/codeinclude-->
 
     === "Java"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```java
+        [LoginConfirm](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:loginConfirm
+        ```
+        <!--/codeinclude-->
 
     === "Ruby"
         > Sample coming soon
@@ -222,7 +230,12 @@ Authorizes the ecosystem provider to receive webhooks pertaining to this wallet.
         <!--/codeinclude-->
 
     === "Java"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```java
+        [AuthorizeWebhook](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:authorizeWebhook
+        ```
+        <!--/codeinclude-->
+
 {{ proto_method_tabs("services.account.v1.Account.AuthorizeWebhook") }}
 
 ---

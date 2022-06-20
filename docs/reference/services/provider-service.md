@@ -97,7 +97,11 @@ Updates the active ecosystem's `description` or `uri`.
         <!--/codeinclude-->
 
     === "Java"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```java
+        [UpdateEcosystem](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:updateEcosystem
+        ```
+        <!--/codeinclude-->
 
 {{ proto_method_tabs("services.provider.v1.Provider.UpdateEcosystem") }}
 
@@ -140,7 +144,11 @@ Fetches information about the active ecosystem.
         <!--/codeinclude-->
 
     === "Java"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```java
+        [EcosystemInfo](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:ecosystemInfo
+        ```
+        <!--/codeinclude-->
 
 {{ proto_method_tabs("services.provider.v1.Provider.EcosystemInfo") }}
 
@@ -183,7 +191,11 @@ Adds a webhook to an ecosystem.
         <!--/codeinclude-->
 
     === "Java"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```java
+        [AddWebhook](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:addWebhook
+        ```
+        <!--/codeinclude-->
 
 {{ proto_method_tabs("services.provider.v1.Provider.AddWebhook") }}
 
@@ -234,7 +246,11 @@ Deletes a webhook from an ecosystem.
         <!--/codeinclude-->
 
     === "Java"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```java
+        [DeleteWebhook](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:deleteWebhook
+        ```
+        <!--/codeinclude-->
 
 {{ proto_method_tabs("services.provider.v1.Provider.DeleteWebhook") }}
 

@@ -6,18 +6,62 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import trinsic.okapi.DidException;
 import trinsic.services.AccountService;
+import trinsic.services.TrinsicService;
+import trinsic.services.account.v1.AccountOuterClass;
 
 class AccountServiceTest {
+
+  @Test
+  public void testLogin()
+    throws ExecutionException, InterruptedException, InvalidProtocolBufferException,
+        DidException {
+    var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
+
+    // loginRequest() {
+    var loginResponse =
+        trinsic.accountService().login(
+            AccountOuterClass.LoginRequest.newBuilder()
+                .setEmail("bob@example.com")
+                .build()
+        ).get();
+    // }
+
+
+    Assertions.assertThrows(Exception.class, () -> {
+        // loginConfirm() {
+        var authToken = trinsic.accountService()
+            .loginConfirm(loginResponse.getChallenge(), "12345").get();
+        // }
+    });
+  }
+
+  @Test
+  public void testAuthWebhook()
+    throws ExecutionException, InterruptedException, InvalidProtocolBufferException,
+        DidException {
+    var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
+
+    var profile = trinsic.accountService().loginAnonymous().get();
+
+    // authorizeWebhook() {
+    var authorizeResponse =
+        trinsic.accountService().authorizeWebhook(
+            AccountOuterClass.AuthorizeWebhookRequest.newBuilder()
+                .setEvents(0, "*") //Authorize all events
+                .build()
+        ).get();
+    // }
+  }
 
   @Test
   public void testProtectUnprotectAccount()
       throws ExecutionException, InterruptedException, InvalidProtocolBufferException,
           DidException {
     // accountServiceConstructor() {
-    var accountService = new AccountService(TrinsicUtilities.getTrinsicServiceOptions());
+    var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
     // }
     // accountServiceSignIn() {
-    var myProfile = accountService.signIn().get();
+    var myProfile = trinsic.accountService().signIn().get();
     // }
 
     // protectUnprotectProfile() {
@@ -29,19 +73,19 @@ class AccountServiceTest {
     Assertions.assertThrows(
         Exception.class,
         () -> {
-          accountService.setProfile(myProtectedProfile);
-          Assertions.assertEquals(myProtectedProfile, accountService.getOptions().getAuthToken());
-          accountService.getInfo().get();
+          trinsic.setProfile(myProtectedProfile);
+          Assertions.assertEquals(myProtectedProfile, trinsic.getOptions().getAuthToken());
+          trinsic.accountService().getInfo().get();
         });
 
     Assertions.assertDoesNotThrow(
         () -> {
-          accountService.setProfile(myUnprotectedProfile);
+          trinsic.setProfile(myUnprotectedProfile);
           // getInfo() {
-          var info = accountService.getInfo().get();
+          var info = trinsic.accountService().getInfo().get();
           // }
         });
 
-    accountService.shutdown();
+    trinsic.shutdown();
   }
 }
