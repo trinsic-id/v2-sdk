@@ -15,9 +15,10 @@ import 'package:trinsic_dart/src/trinsic_util.dart';
 class MetadataInterceptor extends ClientInterceptor {
   static const skipRoutes = [
     "/services.account.v1.Account/SignIn",
+    "/services.provider.v1.Account/Login",
+    "/services.provider.v1.Account/LoginConfirm",
     "/services.provider.v1.Provider/CreateEcosystem",
-    "/services.provider.v1.Provider/Login",
-    "/services.provider.v1.Provider/LoginConfirm",
+    "/services.provider.v1.Provider/GetOberonKey",
   ];
   late ServiceBase serviceContext;
   MetadataInterceptor(ServiceBase base) {

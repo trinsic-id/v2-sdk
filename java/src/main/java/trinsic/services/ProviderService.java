@@ -77,7 +77,7 @@ public class ProviderService extends ServiceBase {
   public ListenableFuture<ProviderOuterClass.GetOberonKeyResponse> getOberonKey(
       ProviderOuterClass.GetOberonKeyRequest request)
       throws InvalidProtocolBufferException, DidException {
-    return withMetadata(stub, request).getOberonKey(request);
+    return stub.getOberonKey(request);
   }
 
   public ListenableFuture<ProviderOuterClass.GetEventTokenResponse> getEventToken(

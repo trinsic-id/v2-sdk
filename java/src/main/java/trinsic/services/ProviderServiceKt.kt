@@ -55,7 +55,7 @@ class ProviderServiceKt(options: Options.ServiceOptions?) : ServiceBase(options)
 
   @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun getOberonKey(request: GetOberonKeyRequest): GetOberonKeyResponse {
-    return withMetadata(stub, request).getOberonKey(request)
+    return stub.getOberonKey(request)
   }
 
   @Throws(InvalidProtocolBufferException::class, DidException::class)
