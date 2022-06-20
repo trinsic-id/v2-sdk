@@ -1,4 +1,5 @@
 use chrono::{DateTime, Local, Utc};
+use serde::Serialize;
 use serde_json::{json, Value};
 use std::fs::{create_dir_all, OpenOptions};
 use std::io::{stdin, stdout, BufRead, Read, Write};
@@ -40,6 +41,14 @@ pub fn read_line(out: Option<&str>) -> String {
 
 pub(crate) fn prettify_json(json: &String) -> Result<String, Error> {
     Ok(serde_json::to_string_pretty(&serde_json::from_str::<Value>(json)?)?)
+}
+
+pub(crate) fn as_value(json: &String) -> Result<Value, Error> {
+    Ok(serde_json::from_str::<Value>(json)?)
+}
+
+pub(crate) fn to_value(message: &impl Serialize) -> Result<Value, Error> {
+    Ok(serde_json::from_slice::<Value>(&serde_json::to_vec(message)?)?)
 }
 
 pub(crate) fn write_file<P: AsRef<Path>>(path: P, data: &[u8]) -> Result<(), Error> {

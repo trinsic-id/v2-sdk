@@ -1,4 +1,5 @@
 use crate::{
+    dict,
     error::Error,
     parser::config::ConfigCommand,
     proto::{
@@ -10,7 +11,6 @@ use crate::{
 use bytes::Bytes;
 use clap::ArgMatches;
 use colored::Colorize;
-use indexmap::indexmap;
 use okapi::{proto::security::CreateOberonProofRequest, Oberon};
 use prost::Message;
 use serde::{Deserialize, Serialize};
@@ -73,7 +73,7 @@ impl Into<Bytes> for &ServiceOptions {
 
 use crate::DEBUG;
 
-use super::Output;
+use super::{Item, Output};
 
 impl From<&ArgMatches<'_>> for CliConfig {
     fn from(matches: &ArgMatches<'_>) -> Self {
@@ -186,13 +186,13 @@ pub(crate) fn execute(args: &ConfigCommand) -> Result<Output, Error> {
 fn print() -> Result<Output, Error> {
     let config = CliConfig::init()?.options;
 
-    Ok(indexmap! {
-        "path".into() => data_path()?.join(CONFIG_FILENAME).to_string_lossy().into(),
-        "server endpoint".into() => config.server_endpoint,
-        "server port".into() => config.server_port.to_string(),
-        "server use tls".into() => config.server_use_tls.to_string(),
-        "auth token".into() => config.auth_token,
-        "default ecosystem".into() => config.default_ecosystem
+    Ok(dict! {
+        "path".into() => Item::String(data_path()?.join(CONFIG_FILENAME).to_string_lossy().into()),
+        "server endpoint".into() => Item::String(config.server_endpoint),
+        "server port".into() => Item::String(config.server_port.to_string()),
+        "server use tls".into() => Item::String(config.server_use_tls.to_string()),
+        "auth token".into() => Item::String(config.auth_token),
+        "default ecosystem".into() => Item::String(config.default_ecosystem)
     })
 }
 

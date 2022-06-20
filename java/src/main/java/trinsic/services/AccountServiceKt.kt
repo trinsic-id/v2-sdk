@@ -81,7 +81,7 @@ class AccountServiceKt(options: Options.ServiceOptions?) : ServiceBase(options) 
 
   @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun login(request: LoginRequest): LoginResponse {
-    return withMetadata(stub, request).login(request)
+    return stub.login(request)
   }
 
   @Throws(InvalidProtocolBufferException::class, DidException::class)
@@ -99,7 +99,7 @@ class AccountServiceKt(options: Options.ServiceOptions?) : ServiceBase(options) 
             .setConfirmationCodeHashed(hashed)
             .build()
 
-    val response = withMetadata(stub, request).loginConfirm(request)
+    val response = stub.loginConfirm(request)
     var authToken = Base64.getUrlEncoder().encodeToString(response.profile.toByteArray())
 
     if (response.profile.protection.enabled) {

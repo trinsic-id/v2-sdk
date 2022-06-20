@@ -1,5 +1,5 @@
 max_width = 150
 reorder_imports = true
-indent_style = "Block"
-binop_separator = "Back"
+# indent_style = "Block"
+# binop_separator = "Back"
 use_try_shorthand = true

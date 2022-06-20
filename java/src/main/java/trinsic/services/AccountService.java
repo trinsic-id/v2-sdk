@@ -103,7 +103,7 @@ public class AccountService extends ServiceBase {
 
   public ListenableFuture<AccountOuterClass.LoginResponse> login(
       AccountOuterClass.LoginRequest request) throws InvalidProtocolBufferException, DidException {
-    return withMetadata(stub, request).login(request);
+    return stub.login(request);
   }
 
   public ListenableFuture<String> loginConfirm(ByteString challenge, String authCode)
@@ -121,7 +121,7 @@ public class AccountService extends ServiceBase {
             .setConfirmationCodeHashed(hashed)
             .build();
 
-    var response = withMetadata(stub, request).loginConfirm(request);
+    var response = stub.loginConfirm(request);
 
     return Futures.transform(
         response,

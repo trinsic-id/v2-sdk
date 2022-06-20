@@ -1,4 +1,21 @@
 #[macro_export]
+macro_rules! dict {
+    (@single $($x:tt)*) => (());
+    (@count $($rest:expr),*) => (<[()]>::len(&[$(dict!(@single $rest)),*]));
+
+    ($($key:expr => $value:expr,)+) => { dict!($($key => $value),+) };
+    ($($key:expr => $value:expr),*) => {
+        {
+            let mut _map = std::collections::BTreeMap::new();
+            $(
+                _map.insert($key, $value);
+            )*
+            _map
+        }
+    };
+}
+
+#[macro_export]
 macro_rules! grpc_channel {
     ($x:expr) => {
         Channel::from_shared(&$x.options)?.connect().await?
