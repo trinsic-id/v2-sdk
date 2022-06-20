@@ -16,8 +16,8 @@ class MetadataInterceptor extends ClientInterceptor {
   static const skipRoutes = [
     "/services.account.v1.Account/SignIn",
     "/services.provider.v1.Provider/CreateEcosystem",
-    "/services.provider.v1.Provider/LogIn",
-    "/services.provider.v1.Provider/LogInConfirm",
+    "/services.provider.v1.Provider/Login",
+    "/services.provider.v1.Provider/LoginConfirm",
   ];
   late ServiceBase serviceContext;
   MetadataInterceptor(ServiceBase base) {
