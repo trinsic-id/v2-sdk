@@ -31,14 +31,14 @@ class AccountServiceTest {
     Assertions.assertThrows(
         Exception.class,
         () -> {
-          trinsicService.account().setProfile(myProtectedProfile);
+          trinsicService.setProfile(myProtectedProfile);
           Assertions.assertEquals(myProtectedProfile, trinsicService.account().getOptions().getAuthToken());
           trinsicService.account().getInfo().get();
         });
 
     Assertions.assertDoesNotThrow(
         () -> {
-          trinsicService.account().setProfile(myUnprotectedProfile);
+          trinsicService.setProfile(myUnprotectedProfile);
           // getInfo() {
           var info = trinsicService.account().getInfo().get();
           // }

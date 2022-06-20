@@ -26,12 +26,12 @@ public class WalletsDemo {
     var ecosystemId = ecosystemResponse.getEcosystem().getId();
 
     // Create account
-    trinsicService.account().setDefaultEcosystem(ecosystemId);
+    trinsicService.setDefaultEcosystem(ecosystemId);
 
     var account = trinsicService.account().signIn().get();
 
     // Insert wallet item into wallet
-    trinsicService.wallet().setDefaultEcosystem(ecosystemId);
+    trinsicService.setProfile(account);
 
     var credentialJson =
         "{\"foo\":\"bar\"}"; // Doesn't need to actually be a credential for this test

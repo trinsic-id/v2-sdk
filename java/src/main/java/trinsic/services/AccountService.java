@@ -4,10 +4,6 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executors;
 import org.jetbrains.annotations.NotNull;
 import trinsic.okapi.DidException;
 import trinsic.okapi.Hashing;
@@ -16,6 +12,11 @@ import trinsic.okapi.security.v1.Security;
 import trinsic.sdk.options.v1.Options;
 import trinsic.services.account.v1.AccountGrpc;
 import trinsic.services.account.v1.AccountOuterClass;
+
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executors;
 
 public class AccountService extends ServiceBase {
   private final AccountGrpc.AccountFutureStub stub;
@@ -45,7 +46,6 @@ public class AccountService extends ServiceBase {
         input -> {
           var profileBase64 =
               Base64.getUrlEncoder().encodeToString(input.getProfile().toByteArray());
-          this.setProfile(profileBase64);
           return profileBase64;
         },
         Executors.newSingleThreadExecutor());
@@ -138,8 +138,6 @@ public class AccountService extends ServiceBase {
               throw new RuntimeException(e);
             }
           }
-
-          this.setProfile(profileBase64);
           return profileBase64;
         },
         Executors.newSingleThreadExecutor());
@@ -157,8 +155,6 @@ public class AccountService extends ServiceBase {
 
           var profileBase64 =
               Base64.getUrlEncoder().encodeToString(input.getProfile().toByteArray());
-
-          this.setProfile(profileBase64);
           return profileBase64;
         },
         Executors.newSingleThreadExecutor());
