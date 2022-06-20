@@ -30,7 +30,7 @@ class AccountServiceTest {
     Assertions.assertThrows(Exception.class, () -> {
         // loginConfirm() {
         var authToken = trinsic.accountService()
-            .loginConfirm(loginResponse.getChallenge(), "12345");
+            .loginConfirm(loginResponse.getChallenge(), "12345").get();
         // }
     });
   }
