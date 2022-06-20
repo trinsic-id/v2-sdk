@@ -26,10 +26,16 @@ The authentication code must be passed along with `challenge` to [LoginConfirm](
 
 {{ proto_sample_start() }}
     === "Trinsic CLI" 
-        > Sample coming soon
+        ```bash
+        trinsic account login --email "bob@example.com"
+        ```
 
     === "TypeScript"
-        > Sample coming soon
+        <!--codeinclude--> 
+        ```typescript
+        [LoginRequest](../../../web/test/AccountService.test.ts) inside_block:loginRequest
+        ```
+        <!--/codeinclude-->
 
     === "C#"
         <!--codeinclude-->
@@ -39,10 +45,18 @@ The authentication code must be passed along with `challenge` to [LoginConfirm](
         <!--/codeinclude-->
 
     === "Python"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```python
+        [LoginRequest](../../../python/samples/account_demo.py) inside_block:loginRequest
+        ```
+        <!--/codeinclude-->
 
     === "Go"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```golang
+        [LoginRequest](../../../go/services/account_service_test.go) inside_block:loginRequest
+        ```
+        <!--/codeinclude-->
 
     === "Java"
         > Sample coming soon
@@ -55,7 +69,9 @@ The authentication code must be passed along with `challenge` to [LoginConfirm](
 !!! tip "Anonymous Login"
     Anonymous accounts are accounts which are not tied to any email or phone number, and do not require any authentication. They are typically used for testing and prototypes.
 
-    To create an anonymous account, use the `TrinsicService.LoginAnonymous()` method.
+    To create an anonymous account with an SDK, use the `TrinsicService.LoginAnonymous()` method.
+
+    To create an anonymous account with the CLI, simply leave the `email` parameter unspecified.
 
 ---
 
@@ -69,10 +85,16 @@ Our SDK will take care of hashing the confirmation code for you.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI" 
-        > Sample coming soon
+        ```bash
+        trinsic account login --email "bob@example.com"
+        ```
 
     === "TypeScript"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```typescript
+        [LoginConfirm](../../../web/test/AccountService.test.ts) inside_block:loginConfirm
+        ```
+        <!--/codeinclude-->
 
     === "C#"
         <!--codeinclude-->
@@ -82,10 +104,18 @@ Our SDK will take care of hashing the confirmation code for you.
         <!--/codeinclude-->
 
     === "Python"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```python
+        [LoginConfirm](../../../python/samples/account_demo.py) inside_block:loginConfirm
+        ```
+        <!--/codeinclude-->
 
     === "Go"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```golang
+        [LoginConfirm](../../../go/services/account_service_test.go) inside_block:loginConfirm
+        ```
+        <!--/codeinclude-->
 
     === "Java"
         > Sample coming soon
@@ -161,19 +191,36 @@ Authorizes the ecosystem provider to receive webhooks pertaining to this wallet.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
-        > Sample coming soon
+        > CLI support for this endpoint coming soon
+
     === "TypeScript"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```typescript
+        [AuthorizeWebhook](../../../web/test/AccountService.test.ts) inside_block:authorizeWebhook
+        ```
+        <!--/codeinclude-->
+
     === "C#"
         <!--codeinclude-->
         ```csharp
         [AuthorizeWebhook](../../../dotnet/Tests/Tests.cs) inside_block:authorizeWebhook
         ```
         <!--/codeinclude-->
+
     === "Python"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```python
+        [AuthorizeWebhook](../../../python/samples/account_demo.py) inside_block:authorizeWebhook
+        ```
+        <!--/codeinclude-->
+
     === "Go"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```golang
+        [AuthorizeWebhook](../../../go/services/account_service_test.go) inside_block:authorizeWebhook
+        ```
+        <!--/codeinclude-->
+
     === "Java"
         > Sample coming soon
 {{ proto_method_tabs("services.account.v1.Account.AuthorizeWebhook") }}
@@ -181,6 +228,10 @@ Authorizes the ecosystem provider to receive webhooks pertaining to this wallet.
 ---
 
 ## Protect Account Profile
+!!! danger "Deprecated Sign-in Flow"
+    This section is related to the the deprecated [SignIn](#deprecated-sign-in) endpoint; the new [Login](#login) flow does not require
+    the use of `Protect` and `Unprotect`.
+
 Protects the specified account profile with a security code. It is not possible to execute this call using the CLI.
 
 === "TypeScript"
@@ -233,6 +284,10 @@ Protects the specified account profile with a security code. It is not possible 
 ---
 
 ## Unprotect Account Profile
+!!! danger "Deprecated Sign-in Flow"
+    This section is related to the the deprecated [SignIn](#deprecated-sign-in) endpoint; the new [Login](#login) flow does not require
+    the use of `Protect` and `Unprotect`.
+
 Unprotects the specified account profile using the given code. It is not possible to execute this call using the CLI.
 
 The profile must have been previously protected using the same code that is being used to unprotect it. Profiles can be protected using any arbitrary code via the [Protect](#protect-account-profile) method.

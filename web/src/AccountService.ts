@@ -118,9 +118,13 @@ export class AccountService extends ServiceBase {
   }
 
   public async loginConfirm(
-    challenge: string | Uint8Array,
+    challenge: Uint8Array | undefined,
     authCode: string | Uint8Array
   ): Promise<string> {
+      if (typeof challenge === "undefined") {
+        throw new TypeError("challenge must be a Uint8Array");
+      }
+
       challenge = AccountService.convertToUtf8(challenge);
       authCode = AccountService.convertToUtf8(authCode);
       let hashed = await Hashing.blake3Hash({data: authCode});
@@ -145,11 +149,7 @@ export class AccountService extends ServiceBase {
           email: "",
           invitationCode: "",
         });
-        let response = await this.client.login(request, {
-          metadata: await this.getMetadata(
-            ListDevicesRequest.encode(request).finish()
-          ),
-        });
+        let response = await this.client.login(request);
         if (response.profile === undefined) {
             throw new Error("undefined profile returned");
         }

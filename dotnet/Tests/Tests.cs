@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using FluentAssertions;
+using Grpc.Core;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Trinsic;
@@ -214,7 +215,6 @@ public class Tests
         {
             // updateEcosystem() {
             var updateResult = await trinsic.Provider.UpdateEcosystemAsync(new() {
-                EcosystemId = ecosystemId,
                 Description = "New ecosystem description",
                 Uri = "New ecosystem URI"
             });
@@ -230,7 +230,7 @@ public class Tests
 
         // test get ecosystem info
         // ecosystemInfo() {
-        var infoResult = await trinsic.Provider.EcosystemInfoAsync();
+        var infoResult = await trinsic.Provider.EcosystemInfoAsync(new());
         // }
 
         infoResult.Should().NotBeNull();
@@ -269,7 +269,6 @@ public class Tests
 
         // addWebhook() {
         var addWebhookResponse = await trinsic.Provider.AddWebhookAsync(new() {
-            EcosystemId = ecosystemId,
             DestinationUrl = "https://example.com/webhooks/trinsic",
             Secret = "my well-kept secret"
         });
@@ -284,7 +283,6 @@ public class Tests
         // test delete webhook
         // deleteWebhook() {
         var deleteWebhookResponse = await trinsic.Provider.DeleteWebhookAsync(new() {
-            EcosystemId = ecosystemId,
             WebhookId = webhookId
         });
         // }
@@ -323,12 +321,11 @@ public class Tests
         {
             var authCode = "1234";
 
-            // loginConfirm() {
-            string? authToken = await trinsic.Account.LoginConfirmAsync(loginResponse.Challenge, authCode);
-            // }
-
-            // Should fail as we aren't doing a proper auth
-            authToken.Should().BeNullOrEmpty();
+            await Assert.ThrowsAnyAsync<RpcException>(async () => {
+                // loginConfirm() {
+                string? authToken = await trinsic.Account.LoginConfirmAsync(loginResponse.Challenge, authCode);
+                // }
+            });
         }
 
         {

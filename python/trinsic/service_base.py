@@ -17,8 +17,8 @@ from trinsic.trinsic_util import trinsic_config, create_channel
 
 _skip_routes = [
     "/services.account.v1.Account/SignIn",
-    "/services.account.v1.Account/LogIn",
-    "/services.account.v1.Account/LogInConfirm",
+    "/services.account.v1.Account/Login",
+    "/services.account.v1.Account/LoginConfirm",
     "/services.provider.v1.Provider/CreateEcosystem",
 ]
 

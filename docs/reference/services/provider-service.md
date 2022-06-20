@@ -62,14 +62,18 @@ Creates a new ecosystem, along with a root controlling account.
 
 ## Update Ecosystem
 
-Updates an ecosystem's `description` or `uri`.
+Updates the active ecosystem's `description` or `uri`.
 
 {{proto_sample_start()}}
     === "Trinsic CLI"
-        > Sample coming soon
+        > CLI support for this endpoint coming soon
 
     === "TypeScript"
-        > Sample coming soon
+        <!--codeinclude--> 
+        ```typescript
+        [UpdateEcosystem](../../../web/test/ProviderService.test.ts) inside_block:updateEcosystem
+        ```
+        <!--/codeinclude-->
 
     === "C#"
         <!--codeinclude-->
@@ -79,10 +83,18 @@ Updates an ecosystem's `description` or `uri`.
         <!--/codeinclude-->
 
     === "Python"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```python
+        [UpdateEcosystem](../../../python/samples/provider_demo.py) inside_block:updateEcosystem
+        ```
+        <!--/codeinclude-->
 
     === "Go"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```golang
+        [UpdateEcosystem](../../../go/services/provider_service_test.go) inside_block:updateEcosystem
+        ```
+        <!--/codeinclude-->
 
     === "Java"
         > Sample coming soon
@@ -93,14 +105,18 @@ Updates an ecosystem's `description` or `uri`.
 
 ## Get Ecosystem Info
 
-Fetches information about an ecosystem.
+Fetches information about the active ecosystem.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
-        > Sample coming soon
+        > CLI support for this endpoint coming soon
 
     === "TypeScript"
-        > Sample coming soon
+        <!--codeinclude--> 
+        ```typescript
+        [EcosystemInfo](../../../web/test/ProviderService.test.ts) inside_block:ecosystemInfo
+        ```
+        <!--/codeinclude-->
 
     === "C#"
         <!--codeinclude-->
@@ -110,10 +126,18 @@ Fetches information about an ecosystem.
         <!--/codeinclude-->
 
     === "Python"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```python
+        [EcosystemInfo](../../../python/samples/provider_demo.py) inside_block:ecosystemInfo
+        ```
+        <!--/codeinclude-->
 
     === "Go"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```golang
+        [EcosystemInfo](../../../go/services/provider_service_test.go) inside_block:ecosystemInfo
+        ```
+        <!--/codeinclude-->
 
     === "Java"
         > Sample coming soon
@@ -128,10 +152,14 @@ Adds a webhook to an ecosystem.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
-        > Sample coming soon
+        > CLI support for this endpoint coming soon
 
     === "TypeScript"
-        > Sample coming soon
+        <!--codeinclude--> 
+        ```typescript
+        [AddWebhook](../../../web/test/ProviderService.test.ts) inside_block:addWebhook
+        ```
+        <!--/codeinclude-->
 
     === "C#"
         <!--codeinclude-->
@@ -141,10 +169,18 @@ Adds a webhook to an ecosystem.
         <!--/codeinclude-->
 
     === "Python"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```python
+        [AddWebhook](../../../python/samples/provider_demo.py) inside_block:addWebhook
+        ```
+        <!--/codeinclude-->
 
     === "Go"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```golang
+        [AddWebhook](../../../go/services/provider_service_test.go) inside_block:addWebhook
+        ```
+        <!--/codeinclude-->
 
     === "Java"
         > Sample coming soon
@@ -167,10 +203,14 @@ Deletes a webhook from an ecosystem.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
-        > Sample coming soon
+        > CLI support for this endpoint coming soon
 
     === "TypeScript"
-        > Sample coming soon
+        <!--codeinclude--> 
+        ```typescript
+        [DeleteWebhook](../../../web/test/ProviderService.test.ts) inside_block:deleteWebhook
+        ```
+        <!--/codeinclude-->
 
     === "C#"
         <!--codeinclude-->
@@ -180,10 +220,18 @@ Deletes a webhook from an ecosystem.
         <!--/codeinclude-->
 
     === "Python"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```python
+        [DeleteWebhook](../../../python/samples/provider_demo.py) inside_block:deleteWebhook
+        ```
+        <!--/codeinclude-->
 
     === "Go"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```golang
+        [DeleteWebhook](../../../go/services/provider_service_test.go) inside_block:deleteWebhook
+        ```
+        <!--/codeinclude-->
 
     === "Java"
         > Sample coming soon
