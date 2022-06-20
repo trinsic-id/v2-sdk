@@ -2,15 +2,17 @@ package trinsic;
 
 import com.google.gson.Gson;
 import com.google.protobuf.InvalidProtocolBufferException;
-import java.io.*;
-import java.util.HashMap;
-import java.util.concurrent.ExecutionException;
 import trinsic.okapi.DidException;
-import trinsic.services.*;
+import trinsic.services.CredentialTemplateService;
+import trinsic.services.TrinsicService;
 import trinsic.services.common.v1.ProviderOuterClass;
 import trinsic.services.universalwallet.v1.UniversalWalletOuterClass;
 import trinsic.services.verifiablecredentials.templates.v1.Templates;
 import trinsic.services.verifiablecredentials.v1.VerifiableCredentials;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.concurrent.ExecutionException;
 
 public class VaccineDemo {
 
@@ -26,11 +28,11 @@ public class VaccineDemo {
             .setServerEndpoint("dev-internal.trinsic.cloud")
             .build();
 
-    var providerService = new ProviderService(serverConfig);
+    var trinsicService = new TrinsicService(serverConfig);
 
     // createEcosystem() {
     var ecosystemResponse =
-        providerService
+            trinsicService.providerService()
             .createEcosystem(ProviderOuterClass.CreateEcosystemRequest.getDefaultInstance())
             .get();
 
@@ -39,35 +41,30 @@ public class VaccineDemo {
 
     // Set default ecosystem on config
     serverConfig = serverConfig.toBuilder().setDefaultEcosystem(ecosystemId).build();
-    providerService.setDefaultEcosystem(ecosystemId);
-
-    var accountService = new AccountService(serverConfig);
-    var walletService = new WalletService(serverConfig);
-    var credentialService = new CredentialService(serverConfig);
-    var templateService = new CredentialTemplateService(serverConfig);
+    trinsicService.setDefaultEcosystem(ecosystemId);
 
     // setupActors() {
     // Create an account for each participant in the scenario
-    var allison = accountService.signIn().get();
-    var clinic = accountService.signIn().get();
-    var airline = accountService.signIn().get();
+    var allison = trinsicService.accountService().signIn().get();
+    var clinic = trinsicService.accountService().signIn().get();
+    var airline = trinsicService.accountService().signIn().get();
     // }
 
     // Create template
-    var templateId = DefineTemplate(templateService, clinic);
+    var templateId = DefineTemplate(trinsicService.credentialTemplateService(), clinic);
 
     // Issue credential
-    var credential = IssueCredential(credentialService, templateId, clinic);
+    var credential = IssueCredential(trinsicService, templateId, clinic);
 
     System.out.println("Credential: " + credential);
 
     // storeCredential() {
     // Set active profile to 'allison' so we can manage her cloud wallet
-    walletService.setProfile(allison);
+    trinsicService.walletService().setProfile(allison);
 
     // Allison stores the credential in her cloud wallet.
     var insertItemResponse =
-        walletService
+        trinsicService.walletService()
             .insertItem(
                 UniversalWalletOuterClass.InsertItemRequest.newBuilder()
                     .setItemJson(credential)
@@ -81,11 +78,11 @@ public class VaccineDemo {
 
     // shareCredential() {
     // Set active profile to 'allison' so we can create a proof using her key
-    credentialService.setProfile(allison);
+    trinsicService.credentialService().setProfile(allison);
 
     // Allison shares the credential with the venue
     var createProofResponse =
-        credentialService
+        trinsicService.credentialService()
             .createProof(
                 VerifiableCredentials.CreateProofRequest.newBuilder().setItemId(itemId).build())
             .get();
@@ -96,11 +93,11 @@ public class VaccineDemo {
     System.out.println("Proof: " + credentialProof);
 
     // verifyCredential() {
-    credentialService.setProfile(airline);
+    trinsicService.credentialService().setProfile(airline);
 
     // Verify that Allison has provided a valid proof
     var verifyProofResponse =
-        credentialService
+        trinsicService.credentialService()
             .verifyProof(
                 VerifiableCredentials.VerifyProofRequest.newBuilder()
                     .setProofDocumentJson(credentialProof)
@@ -112,22 +109,16 @@ public class VaccineDemo {
 
     System.out.println("Verification result: " + isValid);
     assert isValid;
-
-    providerService.shutdown();
-    templateService.shutdown();
-    accountService.shutdown();
-    credentialService.shutdown();
-    walletService.shutdown();
   }
 
   private static String IssueCredential(
-      CredentialService credentialService, String templateId, String clinic)
+      TrinsicService trinsicService, String templateId, String clinic)
       throws InvalidProtocolBufferException, DidException, ExecutionException,
           InterruptedException {
     // issueCredential() {
     // Set active profile to 'clinic' so we can issue credential signed
     // with the clinic's signing keys
-    credentialService.setProfile(clinic);
+    trinsicService.credentialService().setProfile(clinic);
 
     // Prepare credential values
     var valuesMap = new HashMap<String, Object>();
@@ -141,7 +132,7 @@ public class VaccineDemo {
 
     // Issue credential
     var issueResponse =
-        credentialService
+        trinsicService.credentialService()
             .issueCredentialFromTemplate(
                 VerifiableCredentials.IssueFromTemplateRequest.newBuilder()
                     .setTemplateId(templateId)

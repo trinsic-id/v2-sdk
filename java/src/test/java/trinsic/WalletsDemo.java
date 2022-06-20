@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import trinsic.okapi.DidException;
 import trinsic.services.AccountService;
 import trinsic.services.ProviderService;
+import trinsic.services.TrinsicService;
 import trinsic.services.WalletService;
 import trinsic.services.common.v1.ProviderOuterClass;
 import trinsic.services.universalwallet.v1.UniversalWalletOuterClass;
@@ -19,29 +20,27 @@ public class WalletsDemo {
   public static void run()
       throws IOException, DidException, ExecutionException, InterruptedException {
     // Create ecosystem
-    var providerService = new ProviderService(TrinsicUtilities.getTrinsicServiceOptions());
+    var trinsicService = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
     var ecosystemResponse =
-        providerService
+        trinsicService.providerService()
             .createEcosystem(ProviderOuterClass.CreateEcosystemRequest.getDefaultInstance())
             .get();
     var ecosystemId = ecosystemResponse.getEcosystem().getId();
 
     // Create account
-    var accountService = new AccountService(TrinsicUtilities.getTrinsicServiceOptions());
-    accountService.setDefaultEcosystem(ecosystemId);
+    trinsicService.accountService().setDefaultEcosystem(ecosystemId);
 
-    var account = accountService.signIn().get();
+    var account = trinsicService.accountService().signIn().get();
 
     // Insert wallet item into wallet
-    var walletService = new WalletService(TrinsicUtilities.getTrinsicServiceOptions(account));
-    walletService.setDefaultEcosystem(ecosystemId);
+    trinsicService.walletService().setDefaultEcosystem(ecosystemId);
 
     var credentialJson =
         "{\"foo\":\"bar\"}"; // Doesn't need to actually be a credential for this test
 
     // insertItemWallet() {
     var insertResponse =
-        walletService
+            trinsicService.walletService()
             .insertItem(
                 UniversalWalletOuterClass.InsertItemRequest.newBuilder()
                     .setItemJson(credentialJson)
@@ -55,7 +54,7 @@ public class WalletsDemo {
     // Abuse scope to allow redeclaration of walletItems for docs injection niceness
     {
       // searchWalletBasic() {
-      var walletItems = walletService.search().get();
+      var walletItems = trinsicService.walletService().search().get();
       // }
 
       Assertions.assertNotNull(walletItems);
@@ -64,7 +63,7 @@ public class WalletsDemo {
 
     // Delete item in-between searches
     var deleteResponse =
-        walletService
+            trinsicService.walletService()
             .deleteItem(
                 UniversalWalletOuterClass.DeleteItemRequest.newBuilder().setItemId(itemId).build())
             .get();
@@ -74,7 +73,7 @@ public class WalletsDemo {
     {
       // searchWalletSQL() {
       var walletItems =
-          walletService
+              trinsicService.walletService()
               .search(
                   UniversalWalletOuterClass.SearchRequest.newBuilder()
                       .setQuery(
@@ -89,9 +88,5 @@ public class WalletsDemo {
     }
 
     System.out.println("Wallets demo successful");
-
-    walletService.shutdown();
-    accountService.shutdown();
-    providerService.shutdown();
   }
 }
