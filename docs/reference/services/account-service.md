@@ -41,7 +41,11 @@ The authentication code must be passed along with `challenge` to [LoginConfirm](
         <!--/codeinclude-->
 
     === "Python"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```python
+        [LoginRequest](../../../python/samples/account_demo.py) inside_block:loginRequest
+        ```
+        <!--/codeinclude-->
 
     === "Go"
         > Sample coming soon
@@ -88,7 +92,11 @@ Our SDK will take care of hashing the confirmation code for you.
         <!--/codeinclude-->
 
     === "Python"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```python
+        [LoginConfirm](../../../python/samples/account_demo.py) inside_block:loginConfirm
+        ```
+        <!--/codeinclude-->
 
     === "Go"
         > Sample coming soon
@@ -180,11 +188,15 @@ Authorizes the ecosystem provider to receive webhooks pertaining to this wallet.
         <!--/codeinclude-->
 
     === "Python"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```python
+        [AuthorizeWebhook](../../../python/samples/account_demo.py) inside_block:authorizeWebhook
+        ```
+        <!--/codeinclude-->
 
     === "Go"
         > Sample coming soon
-        
+
     === "Java"
         > Sample coming soon
 {{ proto_method_tabs("services.account.v1.Account.AuthorizeWebhook") }}

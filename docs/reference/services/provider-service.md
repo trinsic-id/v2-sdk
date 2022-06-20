@@ -62,7 +62,7 @@ Creates a new ecosystem, along with a root controlling account.
 
 ## Update Ecosystem
 
-Updates an ecosystem's `description` or `uri`.
+Updates the active ecosystem's `description` or `uri`.
 
 {{proto_sample_start()}}
     === "Trinsic CLI"
@@ -79,7 +79,11 @@ Updates an ecosystem's `description` or `uri`.
         <!--/codeinclude-->
 
     === "Python"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```python
+        [UpdateEcosystem](../../../python/samples/provider_demo.py) inside_block:updateEcosystem
+        ```
+        <!--/codeinclude-->
 
     === "Go"
         > Sample coming soon
@@ -93,7 +97,7 @@ Updates an ecosystem's `description` or `uri`.
 
 ## Get Ecosystem Info
 
-Fetches information about an ecosystem.
+Fetches information about the active ecosystem.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
@@ -110,7 +114,11 @@ Fetches information about an ecosystem.
         <!--/codeinclude-->
 
     === "Python"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```python
+        [EcosystemInfo](../../../python/samples/provider_demo.py) inside_block:ecosystemInfo
+        ```
+        <!--/codeinclude-->
 
     === "Go"
         > Sample coming soon
@@ -141,7 +149,11 @@ Adds a webhook to an ecosystem.
         <!--/codeinclude-->
 
     === "Python"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```python
+        [AddWebhook](../../../python/samples/provider_demo.py) inside_block:addWebhook
+        ```
+        <!--/codeinclude-->
 
     === "Go"
         > Sample coming soon
@@ -180,7 +192,11 @@ Deletes a webhook from an ecosystem.
         <!--/codeinclude-->
 
     === "Python"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```python
+        [DeleteWebhook](../../../python/samples/provider_demo.py) inside_block:deleteWebhook
+        ```
+        <!--/codeinclude-->
 
     === "Go"
         > Sample coming soon
