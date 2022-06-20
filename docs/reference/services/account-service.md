@@ -52,7 +52,11 @@ The authentication code must be passed along with `challenge` to [LoginConfirm](
         <!--/codeinclude-->
 
     === "Go"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```golang
+        [LoginRequest](../../../go/services/account_service_test.go) inside_block:loginRequest
+        ```
+        <!--/codeinclude-->
 
     === "Java"
         > Sample coming soon
@@ -107,7 +111,11 @@ Our SDK will take care of hashing the confirmation code for you.
         <!--/codeinclude-->
 
     === "Go"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```golang
+        [LoginConfirm](../../../go/services/account_service_test.go) inside_block:loginConfirm
+        ```
+        <!--/codeinclude-->
 
     === "Java"
         > Sample coming soon
@@ -207,7 +215,11 @@ Authorizes the ecosystem provider to receive webhooks pertaining to this wallet.
         <!--/codeinclude-->
 
     === "Go"
-        > Sample coming soon
+        <!--codeinclude-->
+        ```golang
+        [AuthorizeWebhook](../../../go/services/account_service_test.go) inside_block:authorizeWebhook
+        ```
+        <!--/codeinclude-->
 
     === "Java"
         > Sample coming soon
