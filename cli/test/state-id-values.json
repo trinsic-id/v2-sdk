@@ -1,0 +1,10 @@
+{
+    "lastName": "Doe",
+    "givenName": "John",
+    "birthDate": "1998-08-28",
+    "expiryDate": "2025-01-01T00:00:00.000Z",
+    "issueDate": "2020-01-01T00:00:00.000Z",
+    "issuingAuthority": "CO",
+    "issuingCountry": "US",
+    "documentNumber": "542426814"
+}

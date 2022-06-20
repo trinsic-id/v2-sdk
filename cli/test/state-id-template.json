@@ -1,0 +1,14 @@
+{
+    "givenName": {},
+    "lastName": {},
+    "issuingCountry": {},
+    "issuingAuthority": {},
+    "documentNumber": {},
+    "birthDate": {},
+    "issueDate": {
+        "type": "datetime"
+    },
+    "expiryDate": {
+        "type": "datetime"
+    }
+}
