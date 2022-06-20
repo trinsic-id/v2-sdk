@@ -22,13 +22,11 @@ def _vaccine_cert_unsigned_path() -> str:
 async def wallet_demo():
     config = trinsic_config()
 
-    account_service = AccountService(server_config=config)
-    account = await account_service.sign_in()
+    account = await trinsic_service.account.sign_in()
 
     config.auth_token = account
 
-    provider_service = ProviderService(server_config=config)
-    ecosystem = await provider_service.create_ecosystem()
+    ecosystem = await trinsic_service.provider.create_ecosystem()
     ecosystem_id = ecosystem.ecosystem.id
 
     # Set service default ecosystem
@@ -36,9 +34,6 @@ async def wallet_demo():
         account_service.service_options.default_ecosystem
     ) = ecosystem_id
     config.default_ecosystem = ecosystem_id
-
-    wallet_service = WalletService(server_config=config)
-    credentials_service = CredentialService(server_config=config)
 
     # Sign a credential as the clinic and send it to Allison
     with open(_vaccine_cert_unsigned_path(), "r") as fid:
@@ -51,7 +46,7 @@ async def wallet_demo():
     print(f"Credential: {credential}")
 
     # insertItemWallet() {
-    insert_response = await wallet_service.insert_item(
+    insert_response = await trinsic_service.wallet.insert_item(
         request=InsertItemRequest(
             item_json=credential, item_type="VerifiableCredential"
         )
@@ -62,11 +57,11 @@ async def wallet_demo():
     print(f"item id = {item_id}")
 
     # searchWalletBasic() {
-    wallet_items = await wallet_service.search()
+    wallet_items = await trinsic_service.wallet.search()
     # }
 
     # searchWalletSQL() {
-    wallet_items = await wallet_service.search(
+    wallet_items = await trinsic_service.wallet.search(
         request=SearchRequest(
             query="SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'"
         )
@@ -79,11 +74,6 @@ async def wallet_demo():
 
     assert len(wallet_items.items) == 1
     assert item["id"] == item_id
-
-    credentials_service.close()
-    wallet_service.close()
-    account_service.close()
-    provider_service.close()
 
 
 if __name__ == "__main__":

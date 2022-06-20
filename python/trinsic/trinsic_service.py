@@ -2,24 +2,34 @@ from functools import cached_property
 
 from trinsic.account_service import AccountService
 from trinsic.credential_service import CredentialService
+from trinsic.proto.sdk.options.v1 import ServiceOptions
 from trinsic.provider_service import ProviderService
+from trinsic.service_base import ServiceBase
 from trinsic.template_service import TemplateService
 from trinsic.trustregistry_service import TrustRegistryService
 from trinsic.wallet_service import WalletService
-from trinsic.proto.sdk.options.v1 import ServiceOptions
-from trinsic.service_base import ServiceBase
 
 
 class TrinsicService(ServiceBase):
     def __init__(
-        self,
-        server_config: ServiceOptions = None,
+            self,
+            *,
+            server_config: ServiceOptions = None,
     ):
         super().__init__(server_config)
 
+    def close(self):
+        # TODO - Channel management
+        self.account.close()
+        self.credential.close()
+        self.template.close()
+        self.provider.close()
+        self.trust_registry.close()
+        self.wallet.close()
+
     @cached_property
     def account(self) -> AccountService:
-        return AccountService(self.service_options)
+        return AccountService(server_config=self.service_options)
 
     @cached_property
     def credential(self) -> CredentialService:
