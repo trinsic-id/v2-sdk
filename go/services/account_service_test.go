@@ -32,7 +32,7 @@ func TestLogin(t *testing.T) {
 
 	// There SHOULD be an error -- auth code should be invalid
 	assert2.NotNil(err)
-	assert2.Nil(authToken)
+	assert2.Empty(authToken)
 }
 
 func TestAuthWebhook(t *testing.T) {
