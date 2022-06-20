@@ -168,6 +168,7 @@ Authorizes the ecosystem provider to receive webhooks pertaining to this wallet.
 {{ proto_sample_start() }}
     === "Trinsic CLI"
         > CLI support for this endpoint coming soon
+
     === "TypeScript"
         > Sample coming soon
 
@@ -180,8 +181,10 @@ Authorizes the ecosystem provider to receive webhooks pertaining to this wallet.
 
     === "Python"
         > Sample coming soon
+
     === "Go"
         > Sample coming soon
+        
     === "Java"
         > Sample coming soon
 {{ proto_method_tabs("services.account.v1.Account.AuthorizeWebhook") }}
