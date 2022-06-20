@@ -10,12 +10,12 @@ class TrinsicServiceKt @JvmOverloads constructor(options: Options.ServiceOptions
   private var _providerService: ProviderServiceKt? = null
   private var _trustRegistryService: TrustRegistryServiceKt? = null
   private var _walletService: WalletServiceKt? = null
-  fun accountService(): AccountServiceKt {
+  fun account(): AccountServiceKt {
     if (_accountService == null) _accountService = AccountServiceKt(options)
     return _accountService!!
   }
 
-  fun credentialService(): CredentialServiceKt {
+  fun credential(): CredentialServiceKt {
     if (_credentialService == null) _credentialService = CredentialServiceKt(options)
     return _credentialService!!
   }
@@ -26,7 +26,7 @@ class TrinsicServiceKt @JvmOverloads constructor(options: Options.ServiceOptions
     return _credentialTemplateService!!
   }
 
-  fun providerService(): ProviderServiceKt {
+  fun provider(): ProviderServiceKt {
     if (_providerService == null) _providerService = ProviderServiceKt(options)
     return _providerService!!
   }
@@ -36,7 +36,7 @@ class TrinsicServiceKt @JvmOverloads constructor(options: Options.ServiceOptions
     return _trustRegistryService!!
   }
 
-  fun walletService(): WalletServiceKt {
+  fun wallet(): WalletServiceKt {
     if (_walletService == null) _walletService = WalletServiceKt(options)
     return _walletService!!
   }

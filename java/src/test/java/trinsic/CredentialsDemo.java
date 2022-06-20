@@ -27,7 +27,7 @@ public class CredentialsDemo {
 
     var trinsicService = new TrinsicService(serverConfig);
     var ecosystemId =
-        trinsicService.providerService()
+        trinsicService.provider()
             .createEcosystem(ProviderOuterClass.CreateEcosystemRequest.getDefaultInstance())
             .get()
             .getEcosystem()
@@ -35,14 +35,14 @@ public class CredentialsDemo {
 
     serverConfig = serverConfig.toBuilder().setDefaultEcosystem(ecosystemId).build();
 
-    var issuerVerifier = trinsicService.accountService().signIn().get(); // Both issues and verifies
-    var holder = trinsicService.accountService().signIn().get();
+    var issuerVerifier = trinsicService.account().signIn().get(); // Both issues and verifies
+    var holder = trinsicService.account().signIn().get();
 
-      trinsicService.credentialService().setProfile(issuerVerifier);
+      trinsicService.credential().setProfile(issuerVerifier);
 
     // issueCredentialSample() {
     var issueResult =
-            trinsicService.credentialService()
+            trinsicService.credential()
             .issueCredential(
                 VerifiableCredentials.IssueRequest.newBuilder()
                     .setDocumentJson(unsignedCredential)
@@ -57,7 +57,7 @@ public class CredentialsDemo {
     trinsicService.setProfile(holder);
     // createProof() {
     var createProofResponse =
-            trinsicService.credentialService()
+            trinsicService.credential()
             .createProof(
                 VerifiableCredentials.CreateProofRequest.newBuilder()
                     .setDocumentJson(signedCredentialJson)
@@ -72,7 +72,7 @@ public class CredentialsDemo {
 
     try {
       // sendCredential() {
-        trinsicService.credentialService().send(
+        trinsicService.credential().send(
           VerifiableCredentials.SendRequest.newBuilder()
               .setDocumentJson(signedCredentialJson)
               .setEmail(recipientEmail)
@@ -85,7 +85,7 @@ public class CredentialsDemo {
     trinsicService.setProfile(issuerVerifier);
     // verifyProof() {
     var verifyProofResponse =
-            trinsicService.credentialService()
+            trinsicService.credential()
             .verifyProof(
                 VerifiableCredentials.VerifyProofRequest.newBuilder()
                     .setProofDocumentJson(credentialProof)

@@ -67,6 +67,9 @@ public abstract class ServiceBase {
   public Options.ServiceOptions getOptions() {
     return this.options;
   }
+  public void setOptions(Options.ServiceOptions options) {
+      this.options = options;
+  }
 
   public Channel getChannel() {
     return this.channel;

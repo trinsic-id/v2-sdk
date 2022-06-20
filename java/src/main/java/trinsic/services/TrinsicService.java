@@ -18,35 +18,41 @@ public class TrinsicService extends ServiceBase {
     super(options);
   }
 
-  public AccountService accountService() {
+  public AccountService account() {
     if (_accountService == null) _accountService = new AccountService(this.getOptions());
+    _accountService.setOptions(this.getOptions());
     return _accountService;
   }
 
-  public CredentialService credentialService() {
+  public CredentialService credential() {
     if (_credentialService == null) _credentialService = new CredentialService(this.getOptions());
+      _credentialService.setOptions(this.getOptions());
     return _credentialService;
   }
 
-  public CredentialTemplateService credentialTemplateService() {
+  public CredentialTemplateService template() {
     if (_credentialTemplateService == null)
       _credentialTemplateService = new CredentialTemplateService(this.getOptions());
+      _credentialTemplateService.setOptions(this.getOptions());
     return _credentialTemplateService;
   }
 
-  public ProviderService providerService() {
+  public ProviderService provider() {
     if (_providerService == null) _providerService = new ProviderService(this.getOptions());
+      _providerService.setOptions(this.getOptions());
     return _providerService;
   }
 
-  public TrustRegistryService trustRegistryService() {
+  public TrustRegistryService trust() {
     if (_trustRegistryService == null)
       _trustRegistryService = new TrustRegistryService(this.getOptions());
+      _trustRegistryService.setOptions(this.getOptions());
     return _trustRegistryService;
   }
 
-  public WalletService walletService() {
+  public WalletService wallet() {
     if (_walletService == null) _walletService = new WalletService(this.getOptions());
+      _walletService.setOptions(this.getOptions());
     return _walletService;
   }
 }

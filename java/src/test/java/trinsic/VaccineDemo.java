@@ -32,7 +32,7 @@ public class VaccineDemo {
 
     // createEcosystem() {
     var ecosystemResponse =
-            trinsicService.providerService()
+            trinsicService.provider()
             .createEcosystem(ProviderOuterClass.CreateEcosystemRequest.getDefaultInstance())
             .get();
 
@@ -45,9 +45,9 @@ public class VaccineDemo {
 
     // setupActors() {
     // Create an account for each participant in the scenario
-    var allison = trinsicService.accountService().signIn().get();
-    var clinic = trinsicService.accountService().signIn().get();
-    var airline = trinsicService.accountService().signIn().get();
+    var allison = trinsicService.account().signIn().get();
+    var clinic = trinsicService.account().signIn().get();
+    var airline = trinsicService.account().signIn().get();
     // }
 
     // Create template
@@ -60,11 +60,11 @@ public class VaccineDemo {
 
     // storeCredential() {
     // Set active profile to 'allison' so we can manage her cloud wallet
-    trinsicService.walletService().setProfile(allison);
+    trinsicService.wallet().setProfile(allison);
 
     // Allison stores the credential in her cloud wallet.
     var insertItemResponse =
-        trinsicService.walletService()
+        trinsicService.wallet()
             .insertItem(
                 UniversalWalletOuterClass.InsertItemRequest.newBuilder()
                     .setItemJson(credential)
@@ -78,11 +78,11 @@ public class VaccineDemo {
 
     // shareCredential() {
     // Set active profile to 'allison' so we can create a proof using her key
-    trinsicService.credentialService().setProfile(allison);
+    trinsicService.credential().setProfile(allison);
 
     // Allison shares the credential with the venue
     var createProofResponse =
-        trinsicService.credentialService()
+        trinsicService.credential()
             .createProof(
                 VerifiableCredentials.CreateProofRequest.newBuilder().setItemId(itemId).build())
             .get();
@@ -93,11 +93,11 @@ public class VaccineDemo {
     System.out.println("Proof: " + credentialProof);
 
     // verifyCredential() {
-    trinsicService.credentialService().setProfile(airline);
+    trinsicService.credential().setProfile(airline);
 
     // Verify that Allison has provided a valid proof
     var verifyProofResponse =
-        trinsicService.credentialService()
+        trinsicService.credential()
             .verifyProof(
                 VerifiableCredentials.VerifyProofRequest.newBuilder()
                     .setProofDocumentJson(credentialProof)
@@ -118,7 +118,7 @@ public class VaccineDemo {
     // issueCredential() {
     // Set active profile to 'clinic' so we can issue credential signed
     // with the clinic's signing keys
-    trinsicService.credentialService().setProfile(clinic);
+    trinsicService.credential().setProfile(clinic);
 
     // Prepare credential values
     var valuesMap = new HashMap<String, Object>();
@@ -132,7 +132,7 @@ public class VaccineDemo {
 
     // Issue credential
     var issueResponse =
-        trinsicService.credentialService()
+        trinsicService.credential()
             .issueCredentialFromTemplate(
                 VerifiableCredentials.IssueFromTemplateRequest.newBuilder()
                     .setTemplateId(templateId)

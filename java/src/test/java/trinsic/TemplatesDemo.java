@@ -20,7 +20,7 @@ public class TemplatesDemo {
   public static void run()
       throws IOException, DidException, ExecutionException, InterruptedException {
     var trinsicService = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
-    var account = trinsicService.accountService().signIn().get();
+    var account = trinsicService.account().signIn().get();
 
     // create example template
     // createTemplate() {
@@ -56,7 +56,7 @@ public class TemplatesDemo {
     valuesMap.put("age", 42);
     var valuesJson = new Gson().toJson(valuesMap);
     var issueResponse =
-            trinsicService.credentialService()
+            trinsicService.credential()
             .issueCredentialFromTemplate(
                 VerifiableCredentials.IssueFromTemplateRequest.newBuilder()
                     .setTemplateId(template.getData().getId())
@@ -100,7 +100,7 @@ public class TemplatesDemo {
     try {
       // checkCredentialStatus() {
       var checkStatusResponse =
-              trinsicService.credentialService()
+              trinsicService.credential()
               .checkStatus(VerifiableCredentials.CheckStatusRequest.newBuilder().build())
               .get();
       // }
@@ -109,7 +109,7 @@ public class TemplatesDemo {
 
     try {
       // updateCredentialStatus() {
-      trinsicService.credentialService().updateStatus(
+      trinsicService.credential().updateStatus(
           VerifiableCredentials.UpdateStatusRequest.newBuilder().build());
       // }
     } catch (Exception e) { // This is okay as an example

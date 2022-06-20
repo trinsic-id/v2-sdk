@@ -19,7 +19,7 @@ class AccountServiceTest {
     var trinsicService = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
     // }
     // accountServiceSignIn() {
-    var myProfile = trinsicService.accountService().signIn().get();
+    var myProfile = trinsicService.account().signIn().get();
     // }
 
     // protectUnprotectProfile() {
@@ -31,16 +31,16 @@ class AccountServiceTest {
     Assertions.assertThrows(
         Exception.class,
         () -> {
-          trinsicService.accountService().setProfile(myProtectedProfile);
-          Assertions.assertEquals(myProtectedProfile, trinsicService.accountService().getOptions().getAuthToken());
-          trinsicService.accountService().getInfo().get();
+          trinsicService.account().setProfile(myProtectedProfile);
+          Assertions.assertEquals(myProtectedProfile, trinsicService.account().getOptions().getAuthToken());
+          trinsicService.account().getInfo().get();
         });
 
     Assertions.assertDoesNotThrow(
         () -> {
-          trinsicService.accountService().setProfile(myUnprotectedProfile);
+          trinsicService.account().setProfile(myUnprotectedProfile);
           // getInfo() {
-          var info = trinsicService.accountService().getInfo().get();
+          var info = trinsicService.account().getInfo().get();
           // }
         });
   }
