@@ -18,15 +18,15 @@ $ServerEndpoint = switch ($Environment) {
     Default { "prod.trinsic.cloud" }
 }
 
-Write-Output "Environment: $Environment"
-Write-Output "CLI Path: $CommandPath"
+@{
+    Environment = $Environment
+    "CLI Path" = $CommandPath
+    Version = (Invoke-Expression "$CommandPath --version")
+} | Format-Table
 
 $trinsic = "$CommandPath --json"
 
 Invoke-Expression "$CommandPath config -e $ServerEndpoint" | Stop-OnError | Out-Null
-
-# Print CLI version
-Invoke-Expression "$CommandPath --version"
 
 # Print config
 Invoke-Expression "$trinsic config"
