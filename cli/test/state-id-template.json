@@ -1,0 +1,48 @@
+{
+    "givenName": {
+        "description": "First name(s), other name(s), or secondary identifier, of the licence holder."
+    },
+    "lastName": {
+        "description": "Last name, surname, or primary identifier, of the licence holder."
+    },
+    "issuingCountry": {
+        "description": "Country code as alpha 2 code, defined in ISO 3166-1, which issued the mDL or within which the licensing authority is located."
+    },
+    "issuingAuthority": {
+        "description": "Name of licensing authority, or issuing country if separate licensing authorities have not been authorized."
+    },
+    "documentNumber": {
+        "description": "The number assigned or calculated by the issuing authority."
+    },
+    "birthDate": {
+        "description": "Day, month, year on which the licence holder was born. If unknown, approximate."
+    },
+    "issueDate": {
+        "type": "datetime",
+        "description": "Date licence document was issued."
+    },
+    "expiryDate": {
+        "type": "datetime",
+        "description": "Date licence document expires."
+    },
+    "gender": {
+        "description": "Licence holder's gender: M for male, F for female, X for not specified",
+        "optional": true
+    },
+    "height": {
+        "description": "A Licence holder's height in centimetres.",
+        "optional": true
+    },
+    "weight": {
+        "description": "A Licence holder's weight in kilograms O F3N uint",
+        "optional": true
+    },
+    "residentAddress": {
+        "description": "The place where the licence holder resides and/or may be contacted (street/house number, municipality etc.)",
+        "optional": true
+    },
+    "portrait": {
+        "description": "A reproduction of the licence holder's portrait.",
+        "optional": true
+    }
+}
