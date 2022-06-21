@@ -1757,7 +1757,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">myProfile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">myAccountService</span><span class="p">.</span><span class="n">SignInAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">myProfile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsicService</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">SignInAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -1765,14 +1765,14 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">profile</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">SignIn</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">account</span><span class="p">.</span><span class="nx">SignInRequest</span><span class="p">{})</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">profile</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsicService</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">SignIn</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">account</span><span class="p">.</span><span class="nx">SignInRequest</span><span class="p">{})</span><span class="w"></span>
 <span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">myProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">accountService</span><span class="p">.</span><span class="na">signIn</span><span class="p">().</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">myProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsicService</span><span class="p">.</span><span class="na">account</span><span class="p">().</span><span class="na">signIn</span><span class="p">().</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -1815,7 +1815,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">myAccountService</span><span class="p">.</span><span class="n">GetInfoAsync</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsicService</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">GetInfoAsync</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -1823,11 +1823,11 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">info2</span><span class="p">,</span><span class="w"> </span><span class="nx">err2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">GetInfo</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">())</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">info2</span><span class="p">,</span><span class="w"> </span><span class="nx">err2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsicService</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">GetInfo</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">())</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">accountService</span><span class="p">.</span><span class="na">getInfo</span><span class="p">().</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsicService</span><span class="p">.</span><span class="na">account</span><span class="p">().</span><span class="na">getInfo</span><span class="p">().</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -1878,11 +1878,11 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nx">securityCode</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;1234&quot;</span><span class="w"></span>
-<span class="nx">protectedProfile</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">Protect</span><span class="p">(</span><span class="nx">profile</span><span class="p">,</span><span class="w"> </span><span class="nx">securityCode</span><span class="p">)</span><span class="w"></span>
+<span class="nx">protectedProfile</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsicService</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">Protect</span><span class="p">(</span><span class="nx">profile</span><span class="p">,</span><span class="w"> </span><span class="nx">securityCode</span><span class="p">)</span><span class="w"></span>
 <span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-<span class="nx">unprotectedProfile</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">Unprotect</span><span class="p">(</span><span class="nx">protectedProfile</span><span class="p">,</span><span class="w"> </span><span class="nx">securityCode</span><span class="p">)</span><span class="w"></span>
+<span class="nx">unprotectedProfile</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsicService</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">Unprotect</span><span class="p">(</span><span class="nx">protectedProfile</span><span class="p">,</span><span class="w"> </span><span class="nx">securityCode</span><span class="p">)</span><span class="w"></span>
 <span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
@@ -1936,11 +1936,11 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nx">securityCode</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="s">&quot;1234&quot;</span><span class="w"></span>
-<span class="nx">protectedProfile</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">Protect</span><span class="p">(</span><span class="nx">profile</span><span class="p">,</span><span class="w"> </span><span class="nx">securityCode</span><span class="p">)</span><span class="w"></span>
+<span class="nx">protectedProfile</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsicService</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">Protect</span><span class="p">(</span><span class="nx">profile</span><span class="p">,</span><span class="w"> </span><span class="nx">securityCode</span><span class="p">)</span><span class="w"></span>
 <span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-<span class="nx">unprotectedProfile</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">Unprotect</span><span class="p">(</span><span class="nx">protectedProfile</span><span class="p">,</span><span class="w"> </span><span class="nx">securityCode</span><span class="p">)</span><span class="w"></span>
+<span class="nx">unprotectedProfile</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsicService</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">Unprotect</span><span class="p">(</span><span class="nx">protectedProfile</span><span class="p">,</span><span class="w"> </span><span class="nx">securityCode</span><span class="p">)</span><span class="w"></span>
 <span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>

@@ -1946,27 +1946,27 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">ecosystem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">providerService</span><span class="p">.</span><span class="nx">createEcosystem</span><span class="p">(</span><span class="w"></span>
-<span class="w">  </span><span class="nx">CreateEcosystemRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({})</span><span class="w"></span>
-<span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">ecosystem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsicService</span><span class="w"></span>
+<span class="w">  </span><span class="p">.</span><span class="nx">provider</span><span class="p">()</span><span class="w"></span>
+<span class="w">  </span><span class="p">.</span><span class="nx">createEcosystem</span><span class="p">(</span><span class="nx">CreateEcosystemRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({}));</span><span class="w"></span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">ecosystemId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ecosystem</span><span class="p">.</span><span class="nx">ecosystem</span><span class="o">!</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">providerService</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProviderService</span><span class="p">(</span><span class="n">_options</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">trinsicService</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TrinsicService</span><span class="p">(</span><span class="n">_options</span><span class="p">);</span><span class="w"></span>
 
-<span class="kt">var</span><span class="w"> </span><span class="p">(</span><span class="n">ecosystem</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">providerService</span><span class="p">.</span><span class="n">CreateEcosystemAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span><span class="w"></span>
+<span class="kt">var</span><span class="w"> </span><span class="p">(</span><span class="n">ecosystem</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsicService</span><span class="p">.</span><span class="n">Provider</span><span class="p">.</span><span class="n">CreateEcosystemAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span><span class="w"></span>
 <span class="kt">var</span><span class="w"> </span><span class="n">ecosystemId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ecosystem</span><span class="p">?.</span><span class="n">Id</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">ecosystem</span> <span class="o">=</span> <span class="k">await</span> <span class="n">provider_service</span><span class="o">.</span><span class="n">create_ecosystem</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">ecosystem</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">provider</span><span class="o">.</span><span class="n">create_ecosystem</span><span class="p">()</span>
 <span class="n">ecosystem_id</span> <span class="o">=</span> <span class="n">ecosystem</span><span class="o">.</span><span class="n">ecosystem</span><span class="o">.</span><span class="n">id</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">ecosystemResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">    </span><span class="n">providerService</span><span class="w"></span>
+<span class="w">        </span><span class="n">trinsicService</span><span class="p">.</span><span class="na">provider</span><span class="p">()</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">createEcosystem</span><span class="p">(</span><span class="n">ProviderOuterClass</span><span class="p">.</span><span class="na">CreateEcosystemRequest</span><span class="p">.</span><span class="na">getDefaultInstance</span><span class="p">())</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 
@@ -2077,34 +2077,32 @@ trinsic account login --name <span class="s2">&quot;Vaccination Clinic&quot;</sp
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// Create 3 different profiles for each participant in the scenario</span><span class="w"></span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">allison</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">signIn</span><span class="p">();</span><span class="w"></span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">clinic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">signIn</span><span class="p">();</span><span class="w"></span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">airline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">signIn</span><span class="p">();</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">allison</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsicService</span><span class="p">.</span><span class="nx">account</span><span class="p">().</span><span class="nx">signIn</span><span class="p">();</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">clinic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsicService</span><span class="p">.</span><span class="nx">account</span><span class="p">().</span><span class="nx">signIn</span><span class="p">();</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">airline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsicService</span><span class="p">.</span><span class="nx">account</span><span class="p">().</span><span class="nx">signIn</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 <p>If you would like to save the account for future use, simply write the auth token to storage. Take care to store it in a secure location.</p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">accountService</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AccountService</span><span class="p">(</span><span class="n">_options</span><span class="p">);</span><span class="w"></span>
-
-<span class="kt">var</span><span class="w"> </span><span class="n">allison</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">accountService</span><span class="p">.</span><span class="n">SignInAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">EcosystemId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ecosystemId</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
-<span class="kt">var</span><span class="w"> </span><span class="n">clinic</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">accountService</span><span class="p">.</span><span class="n">SignInAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">EcosystemId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ecosystemId</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
-<span class="kt">var</span><span class="w"> </span><span class="n">airline</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">accountService</span><span class="p">.</span><span class="n">SignInAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">EcosystemId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ecosystemId</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">allison</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsicService</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">SignInAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">EcosystemId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ecosystemId</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+<span class="kt">var</span><span class="w"> </span><span class="n">clinic</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsicService</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">SignInAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">EcosystemId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ecosystemId</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+<span class="kt">var</span><span class="w"> </span><span class="n">airline</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsicService</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">SignInAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">EcosystemId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ecosystemId</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
 </code></pre></div>
 <p>If you would like to save an account for future use, simply write the auth token to storage. Take care to store it in a secure location.</p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Create an account for each participant in the scenario</span>
-<span class="n">allison</span> <span class="o">=</span> <span class="k">await</span> <span class="n">account_service</span><span class="o">.</span><span class="n">sign_in</span><span class="p">()</span>
-<span class="n">airline</span> <span class="o">=</span> <span class="k">await</span> <span class="n">account_service</span><span class="o">.</span><span class="n">sign_in</span><span class="p">()</span>
-<span class="n">clinic</span> <span class="o">=</span> <span class="k">await</span> <span class="n">account_service</span><span class="o">.</span><span class="n">sign_in</span><span class="p">()</span>
+<span class="n">allison</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">account</span><span class="o">.</span><span class="n">sign_in</span><span class="p">()</span>
+<span class="n">airline</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">account</span><span class="o">.</span><span class="n">sign_in</span><span class="p">()</span>
+<span class="n">clinic</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">account</span><span class="o">.</span><span class="n">sign_in</span><span class="p">()</span>
 </code></pre></div>
 <p>If you would like to save an account for future use, simply write the auth token to storage. Take care to store it in a secure location.</p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// Create an account for each participant in the scenario</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="n">allison</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">accountService</span><span class="p">.</span><span class="na">signIn</span><span class="p">().</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="n">clinic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">accountService</span><span class="p">.</span><span class="na">signIn</span><span class="p">().</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="n">airline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">accountService</span><span class="p">.</span><span class="na">signIn</span><span class="p">().</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="n">allison</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsicService</span><span class="p">.</span><span class="na">account</span><span class="p">().</span><span class="na">signIn</span><span class="p">().</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="n">clinic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsicService</span><span class="p">.</span><span class="na">account</span><span class="p">().</span><span class="na">signIn</span><span class="p">().</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="n">airline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsicService</span><span class="p">.</span><span class="na">account</span><span class="p">().</span><span class="na">signIn</span><span class="p">().</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 <p>If you would like to save an account for future use, simply write the auth token to storage. Take care to store it in a secure location.</p>
 </div>
@@ -2210,15 +2208,14 @@ trinsic account login --name <span class="s2">&quot;Vaccination Clinic&quot;</sp
 <span class="p">});</span><span class="w"></span>
 
 <span class="c1">//Create template</span><span class="w"></span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">templateService</span><span class="p">.</span><span class="nx">createCredentialTemplate</span><span class="p">(</span><span class="nx">request</span><span class="p">);</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsicService</span><span class="w"></span>
+<span class="w">  </span><span class="p">.</span><span class="nx">template</span><span class="p">()</span><span class="w"></span>
+<span class="w">  </span><span class="p">.</span><span class="nx">createCredentialTemplate</span><span class="p">(</span><span class="nx">request</span><span class="p">);</span><span class="w"></span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">template</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1">// Create a TemplateService instance</span>
-<span class="kt">var</span><span class="w"> </span><span class="n">templateService</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TemplateService</span><span class="p">(</span><span class="n">_options</span><span class="p">);</span><span class="w"></span>
-
-<span class="c1">// Prepare request to create template</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Prepare request to create template</span>
 <span class="n">CreateCredentialTemplateRequest</span><span class="w"> </span><span class="n">templateRequest</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">Name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;VaccinationCertificate&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="n">AllowAdditionalFields</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="w"></span>
@@ -2230,12 +2227,12 @@ trinsic account login --name <span class="s2">&quot;Vaccination Clinic&quot;</sp
 <span class="n">templateRequest</span><span class="p">.</span><span class="n">Fields</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;countryOfVaccination&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Description</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Country in which the subject was vaccinated&quot;</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
 
 <span class="c1">// Create template</span>
-<span class="kt">var</span><span class="w"> </span><span class="n">template</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">templateService</span><span class="p">.</span><span class="n">CreateAsync</span><span class="p">(</span><span class="n">templateRequest</span><span class="p">);</span><span class="w"></span>
+<span class="kt">var</span><span class="w"> </span><span class="n">template</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsicService</span><span class="p">.</span><span class="n">Template</span><span class="p">.</span><span class="n">CreateAsync</span><span class="p">(</span><span class="n">templateRequest</span><span class="p">);</span><span class="w"></span>
 <span class="kt">var</span><span class="w"> </span><span class="n">templateId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">template</span><span class="p">?.</span><span class="n">Data</span><span class="p">?.</span><span class="n">Id</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">template</span> <span class="o">=</span> <span class="k">await</span> <span class="n">template_service</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="n">template</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
     <span class="n">request</span><span class="o">=</span><span class="n">CreateCredentialTemplateRequest</span><span class="p">(</span>
         <span class="n">name</span><span class="o">=</span><span class="s2">&quot;VaccinationCertificate&quot;</span><span class="p">,</span>
         <span class="n">allow_additional_fields</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -2377,8 +2374,8 @@ trinsic vc issue-from-template --template-id <span class="o">{</span>TEMPLATE_ID
 <span class="p">});</span><span class="w"></span>
 
 <span class="c1">// Sign a credential as the clinic and send it to Allison</span><span class="w"></span>
-<span class="nx">credentialService</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">authToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clinic</span><span class="p">;</span><span class="w"></span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">issueResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">issueFromTemplate</span><span class="p">(</span><span class="w"></span>
+<span class="nx">trinsicService</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">authToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">clinic</span><span class="p">;</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">issueResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsicService</span><span class="p">.</span><span class="nx">credential</span><span class="p">().</span><span class="nx">issueFromTemplate</span><span class="p">(</span><span class="w"></span>
 <span class="w">  </span><span class="nx">IssueFromTemplateRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
 <span class="w">    </span><span class="nx">templateId</span><span class="o">:</span><span class="w"> </span><span class="kt">template.id</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nx">valuesJson</span><span class="o">:</span><span class="w"> </span><span class="kt">credentialValues</span><span class="p">,</span><span class="w"></span>
@@ -2387,11 +2384,9 @@ trinsic vc issue-from-template --template-id <span class="o">{</span>TEMPLATE_ID
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">credentialService</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CredentialService</span><span class="p">(</span><span class="n">_options</span><span class="p">);</span><span class="w"></span>
-
-<span class="c1">// Set active profile to &#39;clinic&#39; so we can issue credential signed</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Set active profile to &#39;clinic&#39; so we can issue credential signed</span>
 <span class="c1">// with the clinic&#39;s signing keys</span>
-<span class="n">credentialService</span><span class="p">.</span><span class="n">Options</span><span class="p">.</span><span class="n">AuthToken</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">clinic</span><span class="p">;</span><span class="w"></span>
+<span class="n">trinsicService</span><span class="p">.</span><span class="n">Options</span><span class="p">.</span><span class="n">AuthToken</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">clinic</span><span class="p">;</span><span class="w"></span>
 
 <span class="c1">// Prepare credential values</span>
 <span class="kt">var</span><span class="w"> </span><span class="n">credentialValues</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="p">&gt;()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -2402,7 +2397,7 @@ trinsic vc issue-from-template --template-id <span class="o">{</span>TEMPLATE_ID
 <span class="p">};</span><span class="w"></span>
 
 <span class="c1">// Issue credential</span>
-<span class="kt">var</span><span class="w"> </span><span class="n">issueResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">credentialService</span><span class="p">.</span><span class="n">IssueFromTemplateAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="kt">var</span><span class="w"> </span><span class="n">issueResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsicService</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">IssueFromTemplateAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">TemplateId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">templateId</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="n">ValuesJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">JsonSerializer</span><span class="p">.</span><span class="n">Serialize</span><span class="p">(</span><span class="n">credentialValues</span><span class="p">)</span><span class="w"></span>
 <span class="p">});</span><span class="w"></span>
@@ -2422,7 +2417,7 @@ trinsic vc issue-from-template --template-id <span class="o">{</span>TEMPLATE_ID
 <span class="p">)</span>
 
 <span class="c1"># Issue credential</span>
-<span class="n">issue_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">credential_service</span><span class="o">.</span><span class="n">issue_from_template</span><span class="p">(</span>
+<span class="n">issue_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">credential</span><span class="o">.</span><span class="n">issue_from_template</span><span class="p">(</span>
     <span class="n">request</span><span class="o">=</span><span class="n">IssueFromTemplateRequest</span><span class="p">(</span><span class="n">template_id</span><span class="o">=</span><span class="n">template</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">values_json</span><span class="o">=</span><span class="n">values</span><span class="p">)</span>
 <span class="p">)</span>
 
@@ -2432,7 +2427,7 @@ trinsic vc issue-from-template --template-id <span class="o">{</span>TEMPLATE_ID
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// Set active profile to &#39;clinic&#39; so we can issue credential signed</span><span class="w"></span>
 <span class="c1">// with the clinic&#39;s signing keys</span><span class="w"></span>
-<span class="n">credentialService</span><span class="p">.</span><span class="na">setProfile</span><span class="p">(</span><span class="n">clinic</span><span class="p">);</span><span class="w"></span>
+<span class="n">trinsicService</span><span class="p">.</span><span class="na">setProfile</span><span class="p">(</span><span class="n">clinic</span><span class="p">);</span><span class="w"></span>
 
 <span class="c1">// Prepare credential values</span><span class="w"></span>
 <span class="kd">var</span><span class="w"> </span><span class="n">valuesMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
@@ -2446,7 +2441,7 @@ trinsic vc issue-from-template --template-id <span class="o">{</span>TEMPLATE_ID
 
 <span class="c1">// Issue credential</span><span class="w"></span>
 <span class="kd">var</span><span class="w"> </span><span class="n">issueResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">    </span><span class="n">credentialService</span><span class="w"></span>
+<span class="w">    </span><span class="n">trinsicService</span><span class="p">.</span><span class="na">credential</span><span class="p">()</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">issueCredentialFromTemplate</span><span class="p">(</span><span class="w"></span>
 <span class="w">            </span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">IssueFromTemplateRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
 <span class="w">                </span><span class="p">.</span><span class="na">setTemplateId</span><span class="p">(</span><span class="n">templateId</span><span class="p">)</span><span class="w"></span>
@@ -2523,8 +2518,8 @@ trinsic wallet insert-item --item credential.json
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// Alice stores the credential in her cloud wallet.</span><span class="w"></span>
-<span class="nx">walletService</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">authToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allison</span><span class="p">;</span><span class="w"></span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">insertResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">walletService</span><span class="p">.</span><span class="nx">insertItem</span><span class="p">(</span><span class="w"></span>
+<span class="nx">trinsicService</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">authToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allison</span><span class="p">;</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">insertResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsicService</span><span class="p">.</span><span class="nx">wallet</span><span class="p">().</span><span class="nx">insertItem</span><span class="p">(</span><span class="w"></span>
 <span class="w">  </span><span class="nx">InsertItemRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
 <span class="w">    </span><span class="nx">itemJson</span><span class="o">:</span><span class="w"> </span><span class="kt">issueResponse.documentJson</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="p">})</span><span class="w"></span>
@@ -2532,13 +2527,11 @@ trinsic wallet insert-item --item credential.json
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">walletService</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">WalletService</span><span class="p">(</span><span class="n">_options</span><span class="p">);</span><span class="w"></span>
-
-<span class="c1">// Set active profile to &#39;allison&#39; so we can manage her cloud wallet</span>
-<span class="n">walletService</span><span class="p">.</span><span class="n">Options</span><span class="p">.</span><span class="n">AuthToken</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">allison</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Set active profile to &#39;allison&#39; so we can manage her cloud wallet</span>
+<span class="n">trinsicService</span><span class="p">.</span><span class="n">Options</span><span class="p">.</span><span class="n">AuthToken</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">allison</span><span class="p">;</span><span class="w"></span>
 
 <span class="c1">// Insert credential into Allison&#39;s wallet</span>
-<span class="kt">var</span><span class="w"> </span><span class="n">insertItemResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">walletService</span><span class="p">.</span><span class="n">InsertItemAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="kt">var</span><span class="w"> </span><span class="n">insertItemResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsicService</span><span class="p">.</span><span class="n">Wallet</span><span class="p">.</span><span class="n">InsertItemAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">ItemJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">signedCredential</span><span class="w"></span>
 <span class="p">});</span><span class="w"></span>
 
@@ -2547,9 +2540,9 @@ trinsic wallet insert-item --item credential.json
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Allison stores the credential in her cloud wallet</span>
-<span class="n">wallet_service</span><span class="o">.</span><span class="n">service_options</span><span class="o">.</span><span class="n">auth_token</span> <span class="o">=</span> <span class="n">allison</span>
+<span class="n">trinsic_service</span><span class="o">.</span><span class="n">service_options</span><span class="o">.</span><span class="n">auth_token</span> <span class="o">=</span> <span class="n">allison</span>
 
-<span class="n">insert_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">wallet_service</span><span class="o">.</span><span class="n">insert_item</span><span class="p">(</span>
+<span class="n">insert_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">insert_item</span><span class="p">(</span>
     <span class="n">request</span><span class="o">=</span><span class="n">InsertItemRequest</span><span class="p">(</span><span class="n">item_json</span><span class="o">=</span><span class="n">credential</span><span class="p">)</span>
 <span class="p">)</span>
 
@@ -2558,11 +2551,11 @@ trinsic wallet insert-item --item credential.json
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// Set active profile to &#39;allison&#39; so we can manage her cloud wallet</span><span class="w"></span>
-<span class="n">walletService</span><span class="p">.</span><span class="na">setProfile</span><span class="p">(</span><span class="n">allison</span><span class="p">);</span><span class="w"></span>
+<span class="n">trinsicService</span><span class="p">.</span><span class="na">setProfile</span><span class="p">(</span><span class="n">allison</span><span class="p">);</span><span class="w"></span>
 
 <span class="c1">// Allison stores the credential in her cloud wallet.</span><span class="w"></span>
 <span class="kd">var</span><span class="w"> </span><span class="n">insertItemResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">    </span><span class="n">walletService</span><span class="w"></span>
+<span class="w">    </span><span class="n">trinsicService</span><span class="p">.</span><span class="na">wallet</span><span class="p">()</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">insertItem</span><span class="p">(</span><span class="w"></span>
 <span class="w">            </span><span class="n">UniversalWalletOuterClass</span><span class="p">.</span><span class="na">InsertItemRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
 <span class="w">                </span><span class="p">.</span><span class="na">setItemJson</span><span class="p">(</span><span class="n">credential</span><span class="p">)</span><span class="w"></span>
@@ -2610,8 +2603,8 @@ trinsic vc create-proof --item-id <span class="s2">&quot;{ITEM_ID}&quot;</span> 
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// Allison shares the credential with the venue.</span><span class="w"></span>
-<span class="nx">credentialService</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">authToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allison</span><span class="p">;</span><span class="w"></span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">proofResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">createProof</span><span class="p">(</span><span class="w"></span>
+<span class="nx">trinsicService</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">authToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">allison</span><span class="p">;</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">proofResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsicService</span><span class="p">.</span><span class="nx">credential</span><span class="p">().</span><span class="nx">createProof</span><span class="p">(</span><span class="w"></span>
 <span class="w">  </span><span class="nx">CreateProofRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
 <span class="w">    </span><span class="nx">itemId</span><span class="o">:</span><span class="w"> </span><span class="kt">insertResponse.itemId</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="p">})</span><span class="w"></span>
@@ -2620,10 +2613,10 @@ trinsic vc create-proof --item-id <span class="s2">&quot;{ITEM_ID}&quot;</span> 
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// Set active profile to &#39;allison&#39; so we can create a proof using her key</span>
-<span class="n">credentialService</span><span class="p">.</span><span class="n">Options</span><span class="p">.</span><span class="n">AuthToken</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">allison</span><span class="p">;</span><span class="w"></span>
+<span class="n">trinsicService</span><span class="p">.</span><span class="n">Options</span><span class="p">.</span><span class="n">AuthToken</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">allison</span><span class="p">;</span><span class="w"></span>
 
 <span class="c1">// Build a proof for the signed credential</span>
-<span class="kt">var</span><span class="w"> </span><span class="n">proofResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">credentialService</span><span class="p">.</span><span class="n">CreateProofAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="kt">var</span><span class="w"> </span><span class="n">proofResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsicService</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">CreateProofAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">ItemId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">itemId</span><span class="w"></span>
 <span class="p">});</span><span class="w"></span>
 
@@ -2632,9 +2625,9 @@ trinsic vc create-proof --item-id <span class="s2">&quot;{ITEM_ID}&quot;</span> 
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Allison shares the credential with the airline</span>
-<span class="n">credential_service</span><span class="o">.</span><span class="n">service_options</span><span class="o">.</span><span class="n">auth_token</span> <span class="o">=</span> <span class="n">allison</span>
+<span class="n">trinsic_service</span><span class="o">.</span><span class="n">service_options</span><span class="o">.</span><span class="n">auth_token</span> <span class="o">=</span> <span class="n">allison</span>
 
-<span class="n">proof_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">credential_service</span><span class="o">.</span><span class="n">create_proof</span><span class="p">(</span>
+<span class="n">proof_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">credential</span><span class="o">.</span><span class="n">create_proof</span><span class="p">(</span>
     <span class="n">request</span><span class="o">=</span><span class="n">CreateProofRequest</span><span class="p">(</span><span class="n">item_id</span><span class="o">=</span><span class="n">item_id</span><span class="p">)</span>
 <span class="p">)</span>
 
@@ -2643,11 +2636,11 @@ trinsic vc create-proof --item-id <span class="s2">&quot;{ITEM_ID}&quot;</span> 
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// Set active profile to &#39;allison&#39; so we can create a proof using her key</span><span class="w"></span>
-<span class="n">credentialService</span><span class="p">.</span><span class="na">setProfile</span><span class="p">(</span><span class="n">allison</span><span class="p">);</span><span class="w"></span>
+<span class="n">trinsicService</span><span class="p">.</span><span class="na">setProfile</span><span class="p">(</span><span class="n">allison</span><span class="p">);</span><span class="w"></span>
 
 <span class="c1">// Allison shares the credential with the venue</span><span class="w"></span>
 <span class="kd">var</span><span class="w"> </span><span class="n">createProofResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">    </span><span class="n">credentialService</span><span class="w"></span>
+<span class="w">    </span><span class="n">trinsicService</span><span class="p">.</span><span class="na">credential</span><span class="p">()</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">createProof</span><span class="p">(</span><span class="w"></span>
 <span class="w">            </span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">CreateProofRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setItemId</span><span class="p">(</span><span class="n">itemId</span><span class="p">).</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
@@ -2698,8 +2691,8 @@ trinsic vc verify-proof --proof-document proof.json
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// The airline verifies the credential</span><span class="w"></span>
-<span class="nx">credentialService</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">authToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">airline</span><span class="p">;</span><span class="w"></span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">verifyResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">credentialService</span><span class="p">.</span><span class="nx">verifyProof</span><span class="p">(</span><span class="w"></span>
+<span class="nx">trinsicService</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">authToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">airline</span><span class="p">;</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">verifyResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsicService</span><span class="p">.</span><span class="nx">credential</span><span class="p">().</span><span class="nx">verifyProof</span><span class="p">(</span><span class="w"></span>
 <span class="w">  </span><span class="nx">VerifyProofRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
 <span class="w">    </span><span class="nx">proofDocumentJson</span><span class="o">:</span><span class="w"> </span><span class="kt">proofResponse.proofDocumentJson</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="p">})</span><span class="w"></span>
@@ -2708,7 +2701,7 @@ trinsic vc verify-proof --proof-document proof.json
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// Verify that Allison has provided a valid proof</span>
-<span class="kt">var</span><span class="w"> </span><span class="n">verifyResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">credentialService</span><span class="p">.</span><span class="n">VerifyProofAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="kt">var</span><span class="w"> </span><span class="n">verifyResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsicService</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">VerifyProofAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">ProofDocumentJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">proofJSON</span><span class="w"></span>
 <span class="p">});</span><span class="w"></span>
 
@@ -2717,9 +2710,9 @@ trinsic vc verify-proof --proof-document proof.json
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># The airline verifies the credential</span>
-<span class="n">credential_service</span><span class="o">.</span><span class="n">service_options</span><span class="o">.</span><span class="n">auth_token</span> <span class="o">=</span> <span class="n">airline</span>
+<span class="n">trinsic_service</span><span class="o">.</span><span class="n">service_options</span><span class="o">.</span><span class="n">auth_token</span> <span class="o">=</span> <span class="n">airline</span>
 
-<span class="n">verify_result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">credential_service</span><span class="o">.</span><span class="n">verify_proof</span><span class="p">(</span>
+<span class="n">verify_result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">credential</span><span class="o">.</span><span class="n">verify_proof</span><span class="p">(</span>
     <span class="n">request</span><span class="o">=</span><span class="n">VerifyProofRequest</span><span class="p">(</span><span class="n">proof_document_json</span><span class="o">=</span><span class="n">credential_proof</span><span class="p">)</span>
 <span class="p">)</span>
 
@@ -2727,11 +2720,11 @@ trinsic vc verify-proof --proof-document proof.json
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">credentialService</span><span class="p">.</span><span class="na">setProfile</span><span class="p">(</span><span class="n">airline</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">trinsicService</span><span class="p">.</span><span class="na">setProfile</span><span class="p">(</span><span class="n">airline</span><span class="p">);</span><span class="w"></span>
 
 <span class="c1">// Verify that Allison has provided a valid proof</span><span class="w"></span>
 <span class="kd">var</span><span class="w"> </span><span class="n">verifyProofResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">    </span><span class="n">credentialService</span><span class="w"></span>
+<span class="w">    </span><span class="n">trinsicService</span><span class="p">.</span><span class="na">credential</span><span class="p">()</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">verifyProof</span><span class="p">(</span><span class="w"></span>
 <span class="w">            </span><span class="n">VerifiableCredentials</span><span class="p">.</span><span class="na">VerifyProofRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
 <span class="w">                </span><span class="p">.</span><span class="na">setProofDocumentJson</span><span class="p">(</span><span class="n">credentialProof</span><span class="p">)</span><span class="w"></span>

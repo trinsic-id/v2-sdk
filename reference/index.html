@@ -1743,7 +1743,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">myAccountService</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AccountService</span><span class="p">(</span><span class="n">_options</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">trinsicService</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TrinsicService</span><span class="p">(</span><span class="n">_options</span><span class="p">.</span><span class="n">Clone</span><span class="p">());</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -1751,19 +1751,14 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">opts</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewServiceOptions</span><span class="p">(</span><span class="nx">WithTestEnv</span><span class="p">())</span><span class="w"></span>
-<span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-
-<span class="nx">accountService</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewAccountService</span><span class="p">(</span><span class="nx">opts</span><span class="p">)</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">trinsicService</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewTrinsic</span><span class="p">(</span><span class="nx">WithTestEnv</span><span class="p">())</span><span class="w"></span>
 <span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">accountService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AccountService</span><span class="p">(</span><span class="n">TrinsicUtilities</span><span class="p">.</span><span class="na">getTrinsicServiceOptions</span><span class="p">());</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">trinsicService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TrinsicService</span><span class="p">(</span><span class="n">TrinsicUtilities</span><span class="p">.</span><span class="na">getTrinsicServiceOptions</span><span class="p">());</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
