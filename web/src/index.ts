@@ -5,6 +5,7 @@ import { CredentialService } from "./CredentialService";
 import { TemplateService } from "./TemplateService";
 import { AccountService } from "./AccountService";
 import ServiceBase from "./ServiceBase";
+import {TrinsicService} from "./TrinsicService";
 
 export * from "./proto/index";
 
@@ -15,5 +16,6 @@ export {
   AccountService,
   CredentialService,
   TemplateService,
+    TrinsicService,
   ServiceBase,
 };

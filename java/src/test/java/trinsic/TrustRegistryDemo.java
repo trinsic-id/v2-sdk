@@ -1,13 +1,13 @@
 package trinsic;
 
+import org.junit.jupiter.api.Assertions;
+import trinsic.okapi.DidException;
+import trinsic.services.TrinsicService;
+import trinsic.services.trustregistry.v1.TrustRegistryOuterClass;
+
 import java.io.IOException;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
-import org.junit.jupiter.api.Assertions;
-import trinsic.okapi.DidException;
-import trinsic.services.AccountService;
-import trinsic.services.TrustRegistryService;
-import trinsic.services.trustregistry.v1.TrustRegistryOuterClass;
 
 public class TrustRegistryDemo {
   public static void main(String[] args)
@@ -17,9 +17,9 @@ public class TrustRegistryDemo {
 
   public static void run()
       throws IOException, DidException, ExecutionException, InterruptedException {
-    var accountService = new AccountService(TrinsicUtilities.getTrinsicServiceOptions());
-    var account = accountService.signIn().get();
-    var service = new TrustRegistryService(TrinsicUtilities.getTrinsicServiceOptions(account));
+    var trinsicService = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
+    var account = trinsicService.account().signIn().get();
+    trinsicService.setProfile(account);
 
     final String didUri = "did:example:test";
     final String frameworkUri = "https://example.com/" + UUID.randomUUID();
@@ -27,7 +27,7 @@ public class TrustRegistryDemo {
 
     // addFramework() {
     var frameworkResponse =
-        service
+            trinsicService.trustRegistry()
             .addFramework(
                 TrustRegistryOuterClass.AddFrameworkRequest.newBuilder()
                     .setGovernanceFrameworkUri(frameworkUri)
@@ -37,7 +37,7 @@ public class TrustRegistryDemo {
     // }
 
     // registerIssuerSample() {
-    service.registerMember(
+      trinsicService.trustRegistry().registerMember(
         TrustRegistryOuterClass.RegisterMemberRequest.newBuilder()
             .setDidUri(didUri)
             .setFrameworkId(frameworkResponse.getId())
@@ -46,7 +46,7 @@ public class TrustRegistryDemo {
     // }
     // checkIssuerStatus() {
     var issuerStatus =
-        service
+            trinsicService.trustRegistry()
             .checkIssuerStatus(
                 TrustRegistryOuterClass.GetMembershipStatusRequest.newBuilder()
                     .setDidUri(didUri)
@@ -59,14 +59,14 @@ public class TrustRegistryDemo {
         TrustRegistryOuterClass.RegistrationStatus.CURRENT, issuerStatus.getStatus());
 
     // searchTrustRegistry() {
-    var searchResult = service.searchRegistry().get();
+    var searchResult = trinsicService.trustRegistry().searchRegistry().get();
     // }
     Assertions.assertNotNull(searchResult);
     Assertions.assertNotNull(searchResult.getItemsJson());
     Assertions.assertTrue(searchResult.getItemsJson().length() > 0);
 
     // unregisterIssuer() {
-    service.unregisterIssuer(
+      trinsicService.trustRegistry().unregisterIssuer(
         TrustRegistryOuterClass.UnregisterMemberRequest.newBuilder()
             .setFrameworkId(frameworkResponse.getId())
             .setDidUri(didUri)

@@ -1,4 +1,4 @@
-import { AccountService, ServiceOptions } from "../src";
+import {AccountService, ServiceOptions, TrinsicService} from "../src";
 // @ts-ignore
 import templateCertFrame from "./data/credential-template-frame.json";
 import { getTestServerOptions, setTestTimeout } from "./env";
@@ -10,20 +10,20 @@ import {
 } from "./CredentialTemplateShared";
 
 const {
-  credentialTemplateName,
-  nameField,
+    nameField,
   numberOfBags,
   dateOfBirth,
   isVaccinated,
 } = createRequiredTestObjects();
 
 let options: ServiceOptions = getTestServerOptions();
+let service: TrinsicService;
 
 describe("Demo: Credential Templates", () => {
   setTestTimeout();
   beforeAll(async () => {
-    let service = new AccountService(options);
-    options.authToken = await service.signIn();
+    service = new TrinsicService(options);
+    options.authToken = await service.account().signIn();
   });
 
   it("should run create credential templates", async () => {

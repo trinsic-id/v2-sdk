@@ -1,7 +1,6 @@
 import asyncio
 import uuid
 
-from trinsic.account_service import AccountService
 from trinsic.proto.services.trustregistry.v1 import (
     RegistrationStatus,
     AddFrameworkRequest,
@@ -9,15 +8,14 @@ from trinsic.proto.services.trustregistry.v1 import (
     GetMembershipStatusRequest,
     RegisterMemberRequest,
 )
+from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config
-from trinsic.trustregistry_service import TrustRegistryService
 
 
 async def trustregistry_demo():
     # setup
-    account_service = AccountService(server_config=trinsic_config())
-    account = await account_service.sign_in()
-    service = TrustRegistryService(server_config=trinsic_config(account))
+    trinsic_service = TrinsicService(server_config=trinsic_config())
+    account = await trinsic_service.account.sign_in()
 
     # data
     https_schema_org = "https://schema.org/Card"
@@ -26,7 +24,7 @@ async def trustregistry_demo():
     framework_name = f"Example Framework: {uuid.uuid4()}"
 
     # registerGovernanceFramework() {
-    register_framework_response = await service.add_framework(
+    register_framework_response = await trinsic_service.trust_registry.add_framework(
         request=AddFrameworkRequest(
             governance_framework_uri=https_example_com,
             description="Demo framework",
@@ -36,7 +34,7 @@ async def trustregistry_demo():
     # }
 
     # registerIssuerSample() {
-    await service.register_member(
+    await trinsic_service.trust_registry.register_member(
         request=RegisterMemberRequest(
             did_uri=did_example_test,
             framework_id=register_framework_response.id,
@@ -46,7 +44,7 @@ async def trustregistry_demo():
     # }
 
     # checkIssuerStatus() {
-    check_response = await service.get_membership_status(
+    check_response = await trinsic_service.trust_registry.get_membership_status(
         request=GetMembershipStatusRequest(
             did_uri=did_example_test,
             governance_framework_uri=https_example_com,
@@ -58,14 +56,14 @@ async def trustregistry_demo():
     assert issuer_status == RegistrationStatus.CURRENT
 
     # searchTrustRegistry() {
-    search_result = await service.search_registry()
+    search_result = await trinsic_service.trust_registry.search_registry()
     # }
     assert search_result is not None
     assert search_result.items_json is not None
     assert len(search_result.items_json) > 0
 
     # unregisterIssuer() {
-    unregister_issuer_response = await service.unregister_member(
+    unregister_issuer_response = await trinsic_service.trust_registry.unregister_member(
         request=UnregisterMemberRequest(
             framework_id=register_framework_response.id,
             schema_uri=https_schema_org,

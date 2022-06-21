@@ -54,42 +54,38 @@ public class Tests
 
     [Fact(DisplayName = "Demo: wallet and credential sample")]
     public async Task TestWalletService() {
+        // createService() {
+        var trinsicService = new TrinsicService(_options.Clone());
+        // }
         // createAccountService() {
-        var providerService = new ProviderService(_options.Clone());
-        var accountService = new AccountService(_options.Clone());
-        var (ecosystem, _) = providerService.CreateEcosystem(new());
+        var (ecosystem, _) = trinsicService.Provider.CreateEcosystem(new());
         var ecosystemId = ecosystem.Id;
         // }
 
         // SETUP ACTORS
         // Create 3 different profiles for each participant in the scenario
         // setupActors() {
-        var allison = await accountService.SignInAsync(new() {EcosystemId = ecosystemId});
-        var clinic = await accountService.SignInAsync(new() {EcosystemId = ecosystemId});
-        var airline = await accountService.SignInAsync(new() {EcosystemId = ecosystemId});
+        var allison = await trinsicService.Account.SignInAsync(new() {EcosystemId = ecosystemId});
+        var clinic = await trinsicService.Account.SignInAsync(new() {EcosystemId = ecosystemId});
+        var airline = await trinsicService.Account.SignInAsync(new() {EcosystemId = ecosystemId});
         // }
 
-        accountService.Options.AuthToken = clinic;
-        var info = await accountService.GetInfoAsync();
+        trinsicService.Options.AuthToken = clinic;
+        var info = await trinsicService.Account.GetInfoAsync();
         info.Should().NotBeNull();
-
-        // createService() {
-        var walletService = new WalletService(_options.CloneWithAuthToken(allison));
-        var credentialsService = new CredentialService(_options.CloneWithAuthToken(clinic));
-        // }
 
         // ISSUE CREDENTIAL
         // Sign a credential as the clinic and send it to Allison
         // issueCredential() {
         // Set active profile to 'clinic' so we can issue credential signed
         // with the clinic's signing keys
-        walletService.Options.AuthToken = credentialsService.Options.AuthToken = clinic;
+        trinsicService.Options.AuthToken = clinic;
 
         // Read the JSON credential data
         var credentialJson = await File.ReadAllTextAsync(VaccinationCertificateUnsigned);
         // Sign the credential using BBS+ signature scheme
         // issueCredentialSample() {
-        var credential = await credentialsService.IssueCredentialAsync(new() {DocumentJson = credentialJson});
+        var credential = await trinsicService.Credential.IssueCredentialAsync(new() {DocumentJson = credentialJson});
         _testOutputHelper.WriteLine($"Credential:\n{credential.SignedDocumentJson}");
         // }
         // }
@@ -103,7 +99,7 @@ public class Tests
 
         try {
             // sendCredential() {
-            await credentialsService.SendAsync(new() {Email = "example@trinsic.id"});
+            await trinsicService.Credential.SendAsync(new() {Email = "example@trinsic.id"});
             // }
         } catch { } // We expect this to fail
 
@@ -112,18 +108,18 @@ public class Tests
 
         // storeCredential() {
         // Set active profile to 'allison' so we can manage her cloud wallet
-        walletService.Options.AuthToken = credentialsService.Options.AuthToken = allison;
+        trinsicService.Options.AuthToken = allison;
 
-        var insertItemResponse = await walletService.InsertItemAsync(new() {ItemJson = credential.SignedDocumentJson});
+        var insertItemResponse = await trinsicService.Wallet.InsertItemAsync(new() {ItemJson = credential.SignedDocumentJson});
         var itemId = insertItemResponse.ItemId;
         // }
         // searchWalletBasic() {
-        var walletItems = await walletService.SearchAsync(new());
+        var walletItems = await trinsicService.Wallet.SearchAsync(new());
         // }
         _testOutputHelper.WriteLine($"Last wallet item:\n{walletItems.Items.Last()}");
 
         // searchWalletSQL() { 
-        var walletItems2 = await walletService.SearchAsync(new() {Query = "SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'"});
+        var walletItems2 = await trinsicService.Wallet.SearchAsync(new() {Query = "SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'"});
         // }
 
         // SHARE CREDENTIAL
@@ -132,13 +128,13 @@ public class Tests
         // that they require expressed as a JSON-LD frame.
         // shareCredential() {
         // We'll read the request frame from a file and communicate this with Allison
-        walletService.Options.AuthToken = credentialsService.Options.AuthToken = allison;
+        trinsicService.Options.AuthToken = allison;
 
         var proofRequestJson = await File.ReadAllTextAsync(VaccinationCertificateFrame);
 
         // Build a proof for the given request and the `itemId` we previously received
         // which points to the stored credential
-        var credentialProof = await credentialsService.CreateProofAsync(new() {
+        var credentialProof = await trinsicService.Credential.CreateProofAsync(new() {
             ItemId = itemId,
             RevealDocumentJson = proofRequestJson
         });
@@ -150,10 +146,10 @@ public class Tests
         // VERIFY CREDENTIAL
         // verifyCredential() {
         // The airline verifies the credential
-        walletService.Options.AuthToken = credentialsService.Options.AuthToken = airline;
+        trinsicService.Options.AuthToken = airline;
 
         // Check for valid signature
-        var valid = await credentialsService.VerifyProofAsync(new() {
+        var valid = await trinsicService.Credential.VerifyProofAsync(new() {
             ProofDocumentJson = credentialProof.ProofDocumentJson
         });
         _testOutputHelper.WriteLine($"Verification result: {valid.IsValid}");
@@ -166,8 +162,8 @@ public class Tests
         var governanceUri = $"https://example.com/{Guid.NewGuid():N}";
 
         // setup
-        var providerService = new ProviderService(_options.Clone());
-        var (_, authToken) = await providerService.CreateEcosystemAsync(new());
+        var trinsicService = new TrinsicService(_options.Clone());
+        var (_, authToken) = await trinsicService.Provider.CreateEcosystemAsync(new());
         var service = new TrustRegistryService(_options.CloneWithAuthToken(authToken));
 
         // registerGovernanceFramework() {
@@ -219,13 +215,12 @@ public class Tests
     [Fact(DisplayName = "Demo: ecosystem creation and listing")]
     public async Task EcosystemTests() {
         // setup
-        var accountService = new AccountService(_options);
-        var account = await accountService.SignInAsync(new());
-        var service = new ProviderService(_options.CloneWithAuthToken(account));
+        var trinsicService = new TrinsicService(_options.Clone());
+        var account = await trinsicService.Account.SignInAsync(new());
 
         // test create ecosystem
         // createEcosystem() {
-        var (actualCreate, _) = await service.CreateEcosystemAsync(new() {
+        var (actualCreate, _) = await trinsicService.Provider.CreateEcosystemAsync(new() {
             Description = "My ecosystem",
             Uri = "https://example.com"
         });
@@ -237,7 +232,7 @@ public class Tests
 
         try {
             // inviteParticipant() {
-            var inviteResponse = await service.InviteParticipantAsync(new() {
+            var inviteResponse = await trinsicService.Provider.InviteParticipantAsync(new() {
                 Participant = ParticipantType.Individual,
                 Description = "Doc sample",
                 Details = new() {
@@ -250,7 +245,7 @@ public class Tests
         var invitationId = "N/A";
         try {
             // invitationStatus() {
-            var inviteStatus = await service.InvitationStatusAsync(new() {InvitationId = invitationId});
+            var inviteStatus = await trinsicService.Provider.InvitationStatusAsync(new() {InvitationId = invitationId});
             // }
         } catch(Exception) { } // This is expected as a doc sample
     }
@@ -259,14 +254,14 @@ public class Tests
     public async Task TestProtectUnprotectProfile() {
         // testSignInAndGetInfo() {
         // accountServiceConstructor() {
-        var myAccountService = new AccountService(_options);
+        var trinsicService = new TrinsicService(_options.Clone());
         // }
         // accountServiceSignIn() {
-        var myProfile = await myAccountService.SignInAsync(new());
+        var myProfile = await trinsicService.Account.SignInAsync(new());
         // }
-        myAccountService.Options.AuthToken = myProfile;
+        trinsicService.Account.Options.AuthToken = myProfile;
         // accountServiceGetInfo() {
-        var output = await myAccountService.GetInfoAsync();
+        var output = await trinsicService.Account.GetInfoAsync();
         // }
         Assert.NotNull(output);
         // }
@@ -276,45 +271,43 @@ public class Tests
         var myProtectedProfile = AccountService.Protect(myProfile, securityCode);
         var myUnprotectedProfile = AccountService.Unprotect(myProtectedProfile, securityCode);
         // }
-        myAccountService.Options.AuthToken = myProtectedProfile;
-        await Assert.ThrowsAsync<Exception>(myAccountService.GetInfoAsync);
-        myAccountService.Options.AuthToken = myUnprotectedProfile;
-        Assert.NotNull(await myAccountService.GetInfoAsync());
-        Assert.NotNull(myAccountService.GetInfo());
+        trinsicService.Account.Options.AuthToken = myProtectedProfile;
+        await Assert.ThrowsAsync<Exception>(trinsicService.Account.GetInfoAsync);
+        trinsicService.Account.Options.AuthToken = myUnprotectedProfile;
+        Assert.NotNull(await trinsicService.Account.GetInfoAsync());
+        Assert.NotNull(trinsicService.Account.GetInfo());
     }
 
     [Fact]
     public async Task TestInvitationIdSet() {
-        var providerService = new ProviderService(_options.Clone());
-        _ = await providerService.CreateEcosystemAsync(new());
+        var trinsicService = new TrinsicService(_options.Clone());
+        _ = await trinsicService.Provider.CreateEcosystemAsync(new());
 
-        var invitationResponse = await providerService.InviteParticipantAsync(new());
+        var invitationResponse = await trinsicService.Provider.InviteParticipantAsync(new());
 
         invitationResponse.Should().NotBeNull();
         invitationResponse.InvitationCode.Should().NotBeEmpty();
 
-        await Assert.ThrowsAsync<Exception>(async () => await providerService.InvitationStatusAsync(new()));
+        await Assert.ThrowsAsync<Exception>(async () => await trinsicService.Provider.InvitationStatusAsync(new()));
     }
 
     [Fact(Skip = "Ecosystem support not complete yet")]
     public async Task TestInviteParticipant() {
-        var myAccountService = new AccountService(_options);
-        var myProfile = await myAccountService.SignInAsync(new());
-        var myProviderService = new ProviderService(_options.CloneWithAuthToken(myProfile));
+        var trinsicService = new TrinsicService(_options.Clone());
+        var myProfile = await trinsicService.Account.SignInAsync(new());
         var invite = new InviteRequest {Description = "Test invitation"};
-        var response = await myProviderService.InviteParticipantAsync(invite);
+        var response = await trinsicService.Provider.InviteParticipantAsync(invite);
         Assert.NotNull(response);
 
-        var statusResponse = await myProviderService.InvitationStatusAsync(new() {InvitationId = response.InvitationId});
+        var statusResponse = await trinsicService.Provider.InvitationStatusAsync(new() {InvitationId = response.InvitationId});
         Assert.NotNull(statusResponse);
     }
 
     [Fact]
     public async Task TestGovernanceFrameworkUriParse() {
-        var myAccountService = new AccountService(_options);
-        var myProfile = await myAccountService.SignInAsync(new());
-        var myTrustRegistryService = new TrustRegistryService(_options.CloneWithAuthToken(myProfile));
-        await Assert.ThrowsAsync<Exception>(async () => await myTrustRegistryService.AddFrameworkAsync(new() {
+        var trinsicService = new TrinsicService(_options.Clone());
+        var myProfile = await trinsicService.Account.SignInAsync(new());
+        await Assert.ThrowsAsync<Exception>(async () => await trinsicService.TrustRegistry.AddFrameworkAsync(new() {
             Description = "invalid uri",
             GovernanceFrameworkUri = ""
         }));
@@ -322,13 +315,8 @@ public class Tests
 
     [Fact(DisplayName = "Demo: template management and credential issuance from template")]
     public async Task DemoTemplatesWithIssuance() {
-        var providerService = new ProviderService(_options.Clone());
-        var (_, authToken) = await providerService.CreateEcosystemAsync(new());
-        var options = _options.CloneWithAuthToken(authToken);
-
-        var templateService = new TemplateService(options);
-        var credentialService = new CredentialService(options);
-        var walletService = new WalletService(options);
+        var trinsicService = new TrinsicService(_options.Clone());
+        var (_, authToken) = await trinsicService.Provider.CreateEcosystemAsync(new());
 
         // create example template
         // createTemplate() {
@@ -340,7 +328,7 @@ public class Tests
         templateRequest.Fields.Add("lastName", new());
         templateRequest.Fields.Add("age", new() {Optional = true}); // TODO - use FieldType.NUMBER once schema validation is fixed.
 
-        var template = await templateService.CreateAsync(templateRequest);
+        var template = await trinsicService.Template.CreateAsync(templateRequest);
         // }
 
         template.Should().NotBeNull();
@@ -356,7 +344,7 @@ public class Tests
         });
 
         // issueFromTemplate() {
-        var credentialJson = await credentialService.IssueFromTemplateAsync(new() {
+        var credentialJson = await trinsicService.Credential.IssueFromTemplateAsync(new() {
             TemplateId = template.Data.Id,
             ValuesJson = values
         });
@@ -370,7 +358,7 @@ public class Tests
         jsonDocument.Should().Contain(x => x.Name == "credentialSubject");
 
         // insertItemWallet() {
-        var insertItemResponse = await walletService.InsertItemAsync(new() {ItemJson = credentialJson.DocumentJson});
+        var insertItemResponse = await trinsicService.Wallet.InsertItemAsync(new() {ItemJson = credentialJson.DocumentJson});
         // }
         var itemId = insertItemResponse.ItemId;
 
@@ -381,46 +369,46 @@ public class Tests
 
         // Create proof from input document
         // createProof() {
-        var proof = await credentialService.CreateProofAsync(new() {
+        var proof = await trinsicService.Credential.CreateProofAsync(new() {
             DocumentJson = credentialJson.DocumentJson,
             RevealDocumentJson = frame.ToString(Formatting.None)
         });
         // }
         // verifyProof() {
-        var valid = await credentialService.VerifyProofAsync(new() {ProofDocumentJson = proof.ProofDocumentJson});
+        var valid = await trinsicService.Credential.VerifyProofAsync(new() {ProofDocumentJson = proof.ProofDocumentJson});
         // }
         valid.IsValid.Should().BeTrue();
 
         // Create proof from item id
-        var proof2 = await credentialService.CreateProofAsync(new() {
+        var proof2 = await trinsicService.Credential.CreateProofAsync(new() {
             ItemId = itemId,
             RevealDocumentJson = frame.ToString(Formatting.None)
         });
 
-        var valid2 = await credentialService.VerifyProofAsync(new() {ProofDocumentJson = proof2.ProofDocumentJson});
+        var valid2 = await trinsicService.Credential.VerifyProofAsync(new() {ProofDocumentJson = proof2.ProofDocumentJson});
 
         valid2.IsValid.Should().BeTrue();
 
         try {
             // checkCredentialStatus() {
-            var checkResponse = await credentialService.CheckStatusAsync(new() {CredentialStatusId = ""});
+            var checkResponse = await trinsicService.Credential.CheckStatusAsync(new() {CredentialStatusId = ""});
             // }
         } catch { } // We expect this to fail
 
         try {
             // updateCredentialStatus() {
-            await credentialService.UpdateStatusAsync(new() {CredentialStatusId = "", Revoked = true});
+            await trinsicService.Credential.UpdateStatusAsync(new() {CredentialStatusId = "", Revoked = true});
             // }
         } catch { } // We expect this to fail
 
         // getCredentialTemplate() {
-        var getTemplateResponse = await templateService.GetAsync(new() {Id = template.Data.Id});
+        var getTemplateResponse = await trinsicService.Template.GetAsync(new() {Id = template.Data.Id});
         // }
         // searchCredentialTemplate() {
-        var searchTemplateResponse = await templateService.SearchAsync(new() {Query = "SELECT * FROM c"});
+        var searchTemplateResponse = await trinsicService.Template.SearchAsync(new() {Query = "SELECT * FROM c"});
         // }
         // deleteCredentialTemplate() {
-        var deleteTemplateResponse = await templateService.DeleteAsync(new() {Id = template.Data.Id});
+        var deleteTemplateResponse = await trinsicService.Template.DeleteAsync(new() {Id = template.Data.Id});
         // }
     }
 

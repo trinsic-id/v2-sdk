@@ -14,6 +14,7 @@ import {
   CreateCredentialTemplateRequest,
   TemplateData,
   IssueFromTemplateRequest,
+  TrinsicService,
 } from "../src";
 
 import { getTestServerOptions } from "./env";
@@ -21,39 +22,33 @@ import { getTestServerOptions } from "./env";
 const options = getTestServerOptions();
 
 export async function vaccineDemo() {
-  const providerService = new ProviderService(options);
+  // createService() {
+  const trinsicService = new TrinsicService(options);
+  // }
 
   // createEcosystem() {
-  const ecosystem = await providerService.createEcosystem(
-    CreateEcosystemRequest.fromPartial({})
-  );
+  const ecosystem = await trinsicService
+    .provider()
+    .createEcosystem(CreateEcosystemRequest.fromPartial({}));
   const ecosystemId = ecosystem.ecosystem!.id;
   // }
 
-  options.defaultEcosystem = providerService.options.defaultEcosystem =
-    ecosystemId;
-
-  const accountService = new AccountService(options);
-  const templateService = new TemplateService(options);
+  options.defaultEcosystem =
+    trinsicService.provider().options.defaultEcosystem = ecosystemId;
 
   // setupActors() {
   // Create 3 different profiles for each participant in the scenario
-  const allison = await accountService.signIn();
-  const clinic = await accountService.signIn();
-  const airline = await accountService.signIn();
+  const allison = await trinsicService.account().signIn();
+  const clinic = await trinsicService.account().signIn();
+  const airline = await trinsicService.account().signIn();
   // }
 
-  accountService.options.authToken = clinic;
-  const info = await accountService.info();
+  trinsicService.options.authToken = clinic;
+  const info = await trinsicService.account().info();
 
   // Create template
-  templateService.options.authToken = clinic;
-  const template = await doTemplate(templateService);
-
-  // createService() {
-  const walletService = new WalletService(options);
-  const credentialService = new CredentialService(options);
-  // }
+  trinsicService.options.authToken = clinic;
+  const template = await doTemplate(trinsicService);
 
   // issueCredential() {
   // Prepare the credential values JSON document
@@ -65,8 +60,8 @@ export async function vaccineDemo() {
   });
 
   // Sign a credential as the clinic and send it to Allison
-  credentialService.options.authToken = clinic;
-  const issueResponse = await credentialService.issueFromTemplate(
+  trinsicService.options.authToken = clinic;
+  const issueResponse = await trinsicService.credential().issueFromTemplate(
     IssueFromTemplateRequest.fromPartial({
       templateId: template.id,
       valuesJson: credentialValues,
@@ -76,8 +71,8 @@ export async function vaccineDemo() {
 
   // storeCredential() {
   // Alice stores the credential in her cloud wallet.
-  walletService.options.authToken = allison;
-  const insertResponse = await walletService.insertItem(
+  trinsicService.options.authToken = allison;
+  const insertResponse = await trinsicService.wallet().insertItem(
     InsertItemRequest.fromPartial({
       itemJson: issueResponse.documentJson,
     })
@@ -86,8 +81,8 @@ export async function vaccineDemo() {
 
   // shareCredential() {
   // Allison shares the credential with the venue.
-  credentialService.options.authToken = allison;
-  const proofResponse = await credentialService.createProof(
+  trinsicService.options.authToken = allison;
+  const proofResponse = await trinsicService.credential().createProof(
     CreateProofRequest.fromPartial({
       itemId: insertResponse.itemId,
     })
@@ -96,8 +91,8 @@ export async function vaccineDemo() {
 
   // verifyCredential() {
   // The airline verifies the credential
-  credentialService.options.authToken = airline;
-  const verifyResponse = await credentialService.verifyProof(
+  trinsicService.options.authToken = airline;
+  const verifyResponse = await trinsicService.credential().verifyProof(
     VerifyProofRequest.fromPartial({
       proofDocumentJson: proofResponse.proofDocumentJson,
     })
@@ -108,7 +103,7 @@ export async function vaccineDemo() {
 }
 
 async function doTemplate(
-  templateService: TemplateService
+  trinsicService: TrinsicService
 ): Promise<TemplateData> {
   // createTemplate() {
   //Define all fields
@@ -144,7 +139,9 @@ async function doTemplate(
   });
 
   //Create template
-  const response = await templateService.createCredentialTemplate(request);
+  const response = await trinsicService
+    .template()
+    .createCredentialTemplate(request);
   const template = response.data;
   // }
 

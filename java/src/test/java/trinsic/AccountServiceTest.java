@@ -1,11 +1,13 @@
 package trinsic;
 
 import com.google.protobuf.InvalidProtocolBufferException;
-import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import trinsic.okapi.DidException;
 import trinsic.services.AccountService;
+import trinsic.services.TrinsicService;
+
+import java.util.concurrent.ExecutionException;
 
 class AccountServiceTest {
 
@@ -14,10 +16,10 @@ class AccountServiceTest {
       throws ExecutionException, InterruptedException, InvalidProtocolBufferException,
           DidException {
     // accountServiceConstructor() {
-    var accountService = new AccountService(TrinsicUtilities.getTrinsicServiceOptions());
+    var trinsicService = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
     // }
     // accountServiceSignIn() {
-    var myProfile = accountService.signIn().get();
+    var myProfile = trinsicService.account().signIn().get();
     // }
 
     // protectUnprotectProfile() {
@@ -29,19 +31,17 @@ class AccountServiceTest {
     Assertions.assertThrows(
         Exception.class,
         () -> {
-          accountService.setProfile(myProtectedProfile);
-          Assertions.assertEquals(myProtectedProfile, accountService.getOptions().getAuthToken());
-          accountService.getInfo().get();
+          trinsicService.setProfile(myProtectedProfile);
+          Assertions.assertEquals(myProtectedProfile, trinsicService.account().getOptionsBuilder().getAuthToken());
+          trinsicService.account().getInfo().get();
         });
 
     Assertions.assertDoesNotThrow(
         () -> {
-          accountService.setProfile(myUnprotectedProfile);
+          trinsicService.setProfile(myUnprotectedProfile);
           // getInfo() {
-          var info = accountService.getInfo().get();
+          var info = trinsicService.account().getInfo().get();
           // }
         });
-
-    accountService.shutdown();
   }
 }

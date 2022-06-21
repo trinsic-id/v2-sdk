@@ -9,15 +9,15 @@ from trinsic.proto.services.provider.v1 import (
     InvitationStatusRequest,
 )
 from trinsic.provider_service import ProviderService
+from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config
 
 
 async def ecosystem_demo():
-    account_service = AccountService(server_config=trinsic_config())
-    account = await account_service.sign_in()
-    provider_service = ProviderService(server_config=trinsic_config(account))
+    trinsic_service = TrinsicService(server_config=trinsic_config())
+    account = await trinsic_service.account.sign_in()
     # createEcosystem() {
-    actual_create = await provider_service.create_ecosystem(
+    actual_create = await trinsic_service.provider.create_ecosystem(
         request=CreateEcosystemRequest(
             description="My ecosystem", uri="https://example.com"
         )
@@ -33,7 +33,7 @@ async def ecosystem_demo():
 
     try:
         # inviteParticipant() {
-        invite_response = await provider_service.invite_participant(
+        invite_response = await trinsic_service.provider.invite_participant(
             request=InviteRequest(
                 participant=ParticipantType.participant_type_individual,
                 description="Doc sample",
@@ -47,7 +47,7 @@ async def ecosystem_demo():
     invite_id = "NA"
     try:
         # invitationStatus() {
-        invite_status = await provider_service.invitation_status(
+        invite_status = await trinsic_service.provider.invitation_status(
             request=InvitationStatusRequest(invitation_id=invite_id)
         )
         # }

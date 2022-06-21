@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import trinsic.okapi.DidException;
 import trinsic.services.AccountService;
 import trinsic.services.ProviderService;
+import trinsic.services.TrinsicService;
 import trinsic.services.account.v1.AccountOuterClass;
 import trinsic.services.common.v1.ProviderOuterClass;
 
@@ -17,12 +18,11 @@ public class EcosystemsDemo {
 
   public static void run()
       throws IOException, DidException, ExecutionException, InterruptedException {
-    var accountService = new AccountService(TrinsicUtilities.getTrinsicServiceOptions());
-    var account = accountService.signIn().get();
-    var service = new ProviderService(TrinsicUtilities.getTrinsicServiceOptions(account));
+    var trinsicService = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
+    var account = trinsicService.account().signIn().get();
     // createEcosystem() {
     var response =
-        service
+            trinsicService.provider()
             .createEcosystem(
                 ProviderOuterClass.CreateEcosystemRequest.newBuilder()
                     .setDescription("My ecosystem")
@@ -46,7 +46,7 @@ public class EcosystemsDemo {
     try {
       // inviteParticipant() {
       inviteResponse =
-          service
+              trinsicService.provider()
               .invite(
                   ProviderOuterClass.InviteRequest.newBuilder()
                       .setParticipant(
@@ -65,7 +65,7 @@ public class EcosystemsDemo {
     try {
       // invitationStatus() {
       var invitationStatus =
-          service
+              trinsicService.provider()
               .invitationStatus(
                   ProviderOuterClass.InvitationStatusRequest.newBuilder()
                       .setInvitationId(inviteResponse.getInvitationId())
@@ -75,8 +75,5 @@ public class EcosystemsDemo {
     } catch (Exception e) {
       // this is okay as an example
     }
-
-    accountService.shutdown();
-    service.shutdown();
   }
 }
