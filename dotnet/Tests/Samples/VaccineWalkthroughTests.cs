@@ -42,7 +42,7 @@ public class VaccineWalkthroughTests
         // createEcosystem() {
         var trinsicService = new TrinsicService(_options);
 
-        var (ecosystem, _) = await trinsicService.Provider.CreateEcosystemAsync(new());
+        var (ecosystem, _authToken) = await trinsicService.Provider.CreateEcosystemAsync(new());
         var ecosystemId = ecosystem?.Id;
         // }
 
@@ -78,9 +78,7 @@ public class VaccineWalkthroughTests
         var templateId = template?.Data?.Id;
         // }
 
-
         templateId.Should().NotBeNullOrEmpty();
-
 
         // issueCredential() {
         // Set active profile to 'clinic' so we can issue credential signed
@@ -96,6 +94,7 @@ public class VaccineWalkthroughTests
         };
 
         // Issue credential
+        trinsicService.SetAuthToken(_authToken);
         var issueResponse = await trinsicService.Credential.IssueFromTemplateAsync(new() {
             TemplateId = templateId,
             ValuesJson = JsonSerializer.Serialize(credentialValues)
