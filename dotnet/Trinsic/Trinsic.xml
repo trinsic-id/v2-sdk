@@ -627,7 +627,7 @@
         </member>
         <member name="T:Trinsic.Services.Account.V1.AuthorizeWebhookRequest">
             <summary>
-            Authorize ecosystem to receive wallet envents
+            Authorize ecosystem to receive wallet events
             </summary>
         </member>
         <member name="F:Trinsic.Services.Account.V1.AuthorizeWebhookRequest.EventsFieldNumber">
