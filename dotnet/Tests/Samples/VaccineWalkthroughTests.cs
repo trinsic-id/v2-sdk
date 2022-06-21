@@ -49,7 +49,7 @@ public class VaccineWalkthroughTests
         ecosystemId.Should().NotBeNullOrEmpty();
 
         // Set default ecosystem
-        trinsicService.Options.DefaultEcosystem = _options.DefaultEcosystem = ecosystemId;
+        trinsicService.Options.DefaultEcosystem = ecosystemId;
 
         // setupActors() {
         var allison = await trinsicService.Account.SignInAsync(new() { EcosystemId = ecosystemId });
@@ -107,13 +107,11 @@ public class VaccineWalkthroughTests
         signedCredential.Should().NotBeNullOrEmpty();
 
         // storeCredential() {
-        var walletService = new WalletService(_options);
-
         // Set active profile to 'allison' so we can manage her cloud wallet
-        walletService.Options.AuthToken = allison;
+        trinsicService.Options.AuthToken = allison;
 
         // Insert credential into Allison's wallet
-        var insertItemResponse = await walletService.InsertItemAsync(new() {
+        var insertItemResponse = await trinsicService.Wallet.InsertItemAsync(new() {
             ItemJson = signedCredential
         });
 

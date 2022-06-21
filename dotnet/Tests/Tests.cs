@@ -317,7 +317,6 @@ public class Tests
     public async Task DemoTemplatesWithIssuance() {
         var trinsicService = new TrinsicService(_options.Clone());
         var (_, authToken) = await trinsicService.Provider.CreateEcosystemAsync(new());
-        var options = _options.CloneWithAuthToken(authToken);
 
         // create example template
         // createTemplate() {
