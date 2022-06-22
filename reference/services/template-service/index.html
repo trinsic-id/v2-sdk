@@ -14,7 +14,7 @@
         
       
       <link rel="icon" href="../../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.6+insiders-4.18.2">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.7+insiders-4.18.2">
     
     
       
@@ -1898,7 +1898,8 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">getResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">        </span><span class="n">trinsicService</span><span class="p">.</span><span class="na">template</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="n">trinsicService</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">template</span><span class="p">()</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">Templates</span><span class="p">.</span><span class="na">GetCredentialTemplateRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setId</span><span class="p">(</span><span class="n">id</span><span class="p">).</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
@@ -1943,7 +1944,8 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">deleteResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">        </span><span class="n">trinsicService</span><span class="p">.</span><span class="na">template</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="n">trinsicService</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">template</span><span class="p">()</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">delete</span><span class="p">(</span><span class="n">Templates</span><span class="p">.</span><span class="na">DeleteCredentialTemplateRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setId</span><span class="p">(</span><span class="n">id</span><span class="p">).</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
@@ -1990,7 +1992,8 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">searchResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">        </span><span class="n">trinsicService</span><span class="p">.</span><span class="na">template</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="n">trinsicService</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">template</span><span class="p">()</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">search</span><span class="p">(</span><span class="w"></span>
 <span class="w">            </span><span class="n">Templates</span><span class="p">.</span><span class="na">SearchCredentialTemplatesRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
 <span class="w">                </span><span class="p">.</span><span class="na">setQuery</span><span class="p">(</span><span class="s">&quot;SELECT * FROM c WHERE c.id = &#39;&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;&#39;&quot;</span><span class="p">)</span><span class="w"></span>
@@ -2084,7 +2087,7 @@
   
     <div class="md-source-date">
       <small>
-          Authors: <span class='git-page-authors git-authors'><a href='mailto:josh@trinsic.id'>Joshua Coffey</a>, <a href='mailto:polygonguru@gmail.com'>Scott Phillips</a>, <a href='mailto:michaeldavisboyd@gmail.com'>Michael Boyd</a></span>
+          Authors: <span class='git-page-authors git-authors'><a href='mailto:polygonguru@gmail.com'>Scott Phillips</a>, <a href='mailto:josh@trinsic.id'>Joshua Coffey</a>, <a href='mailto:michaeldavisboyd@gmail.com'>Michael Boyd</a></span>
       </small>
     </div>
   
