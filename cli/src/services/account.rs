@@ -1,9 +1,11 @@
 use super::config::CliConfig;
 use super::{Item, Output};
-use crate::parser::account::{Command, InfoArgs, SignInArgs};
+use crate::parser::account::{AuthorizeWebhookArgs, Command, InfoArgs, SignInArgs};
 use crate::proto::services::account::v1::login_response::Response;
+use crate::proto::services::account::v1::AuthorizeWebhookRequest;
 use crate::utils::to_value;
 use crate::{
+    dict,
     error::Error,
     grpc_channel, grpc_client, grpc_client_with_auth,
     proto::services::account::v1::{
@@ -22,6 +24,7 @@ pub(crate) fn execute(args: &Command, config: CliConfig) -> Result<Output, Error
     match args {
         Command::SignIn(args) => sign_in(args, config),
         Command::Info(args) => info(args, config),
+        Command::AuthorizeWebhook(args) => authorize_webhook(args, config),
     }
 }
 
@@ -95,6 +98,23 @@ async fn info(_args: &InfoArgs, config: CliConfig) -> Result<Output, Error> {
     output.insert("account data".into(), Item::Json(to_value(&response)?));
 
     Ok(output)
+}
+
+#[tokio::main]
+async fn authorize_webhook(args: &AuthorizeWebhookArgs, config: CliConfig) -> Result<Output, Error> {
+    let mut client = grpc_client_with_auth!(AccountClient<Channel>, config.to_owned());
+
+    let req = AuthorizeWebhookRequest { events: args.events.clone() };
+
+    let req2 = AuthorizeWebhookRequest { events: args.events.clone() };
+
+    let request = tonic::Request::new(req);
+
+    let _response = client.authorize_webhook(request).await?.into_inner();
+
+    Ok(dict! {
+        "request".into() => Item::Json(to_value(&req2)?)
+    })
 }
 
 pub(crate) fn unprotect(profile: &mut AccountProfile, code: Vec<u8>) {
