@@ -189,7 +189,9 @@ Authorizes the ecosystem provider to receive webhooks pertaining to this wallet.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
-        > CLI support for this endpoint coming soon
+        ```bash
+        trinsic account authorize-webhook --events "*"
+        ```
 
     === "TypeScript"
         <!--codeinclude-->

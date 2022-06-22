@@ -66,7 +66,11 @@ Updates the active ecosystem's `description` or `uri`.
 
 {{proto_sample_start()}}
     === "Trinsic CLI"
-        > CLI support for this endpoint coming soon
+        ```bash
+        trinsic provider update-ecosystem \
+                         --description "New description" \
+                         --uri "https://new-example.com"
+        ```
 
     === "TypeScript"
         <!--codeinclude--> 
@@ -113,7 +117,9 @@ Fetches information about the active ecosystem.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
-        > CLI support for this endpoint coming soon
+        ```bash
+        trinsic provider ecosystem-info
+        ```
 
     === "TypeScript"
         <!--codeinclude--> 
@@ -160,7 +166,12 @@ Adds a webhook to an ecosystem.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
-        > CLI support for this endpoint coming soon
+        ```bash
+        trinsic provider add-webhook \
+                        --url "https://example.com/webhooks/trinsic" \
+                        --secret "my well-kept secret" \
+                        --events "*"
+        ```
 
     === "TypeScript"
         <!--codeinclude--> 
@@ -215,7 +226,9 @@ Deletes a webhook from an ecosystem.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
-        > CLI support for this endpoint coming soon
+        ```bash
+        trinsic provider delete-webhook --webhook-id <WEBHOOK_ID>
+        ```
 
     === "TypeScript"
         <!--codeinclude--> 
