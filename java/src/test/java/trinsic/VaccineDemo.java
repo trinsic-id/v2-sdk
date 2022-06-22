@@ -2,6 +2,9 @@ package trinsic;
 
 import com.google.gson.Gson;
 import com.google.protobuf.InvalidProtocolBufferException;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.concurrent.ExecutionException;
 import trinsic.okapi.DidException;
 import trinsic.services.CredentialTemplateService;
 import trinsic.services.TrinsicService;
@@ -9,10 +12,6 @@ import trinsic.services.common.v1.ProviderOuterClass;
 import trinsic.services.universalwallet.v1.UniversalWalletOuterClass;
 import trinsic.services.verifiablecredentials.templates.v1.Templates;
 import trinsic.services.verifiablecredentials.v1.VerifiableCredentials;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.concurrent.ExecutionException;
 
 public class VaccineDemo {
 
@@ -23,14 +22,14 @@ public class VaccineDemo {
 
   public static void run()
       throws IOException, DidException, ExecutionException, InterruptedException {
-    var serverConfig =
-        TrinsicUtilities.getTrinsicServiceOptions();
+    var serverConfig = TrinsicUtilities.getTrinsicServiceOptions();
 
     var trinsicService = new TrinsicService(serverConfig);
 
     // createEcosystem() {
     var ecosystemResponse =
-            trinsicService.provider()
+        trinsicService
+            .provider()
             .createEcosystem(ProviderOuterClass.CreateEcosystemRequest.getDefaultInstance())
             .get();
 
@@ -62,7 +61,8 @@ public class VaccineDemo {
 
     // Allison stores the credential in her cloud wallet.
     var insertItemResponse =
-        trinsicService.wallet()
+        trinsicService
+            .wallet()
             .insertItem(
                 UniversalWalletOuterClass.InsertItemRequest.newBuilder()
                     .setItemJson(credential)
@@ -80,7 +80,8 @@ public class VaccineDemo {
 
     // Allison shares the credential with the venue
     var createProofResponse =
-        trinsicService.credential()
+        trinsicService
+            .credential()
             .createProof(
                 VerifiableCredentials.CreateProofRequest.newBuilder().setItemId(itemId).build())
             .get();
@@ -95,7 +96,8 @@ public class VaccineDemo {
 
     // Verify that Allison has provided a valid proof
     var verifyProofResponse =
-        trinsicService.credential()
+        trinsicService
+            .credential()
             .verifyProof(
                 VerifiableCredentials.VerifyProofRequest.newBuilder()
                     .setProofDocumentJson(credentialProof)
@@ -130,7 +132,8 @@ public class VaccineDemo {
 
     // Issue credential
     var issueResponse =
-        trinsicService.credential()
+        trinsicService
+            .credential()
             .issueCredentialFromTemplate(
                 VerifiableCredentials.IssueFromTemplateRequest.newBuilder()
                     .setTemplateId(templateId)

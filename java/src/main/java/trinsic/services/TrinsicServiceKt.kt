@@ -32,7 +32,8 @@ class TrinsicServiceKt @JvmOverloads constructor(options: Options.ServiceOptions
   }
 
   fun trustRegistry(): TrustRegistryServiceKt {
-    if (_trustRegistryService == null) _trustRegistryService = TrustRegistryServiceKt(optionsBuilder)
+    if (_trustRegistryService == null)
+        _trustRegistryService = TrustRegistryServiceKt(optionsBuilder)
     return _trustRegistryService!!
   }
 

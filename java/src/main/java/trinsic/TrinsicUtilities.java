@@ -3,9 +3,8 @@ package trinsic;
 import com.google.gson.Gson;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import trinsic.sdk.options.v1.Options;
-
 import java.util.HashMap;
+import trinsic.sdk.options.v1.Options;
 
 public class TrinsicUtilities {
 
@@ -32,8 +31,7 @@ public class TrinsicUtilities {
   }
 
   public static Options.ServiceOptions.Builder getTrinsicServiceOptions(String authToken) {
-    return getTrinsicServiceOptions()
-        .setAuthToken(authToken);
+    return getTrinsicServiceOptions().setAuthToken(authToken);
   }
 
   public static String hashmapToJson(HashMap document) {

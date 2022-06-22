@@ -23,8 +23,8 @@ class AccountService(ServiceBase):
     """Wrapper for the [Account Service](/reference/services/account-service/)"""
 
     def __init__(
-            self,
-            server_config: ServiceOptions = None,
+        self,
+        server_config: ServiceOptions = None,
     ):
         """
         Initialize a connection to the server.
@@ -40,7 +40,7 @@ class AccountService(ServiceBase):
         """
         request = request or SignInRequest()
         request.ecosystem_id = (
-                request.ecosystem_id or self.service_options.default_ecosystem
+            request.ecosystem_id or self.service_options.default_ecosystem
         )
         response = await self.client.sign_in(sign_in_request=request)
         auth_token = base64.urlsafe_b64encode(bytes(response.profile)).decode("utf-8")
@@ -49,9 +49,9 @@ class AccountService(ServiceBase):
 
     @staticmethod
     def unprotect(
-            *,
-            profile: Union[AccountProfile, str],
-            security_code: Union[SupportsBytes, bytes, str],
+        *,
+        profile: Union[AccountProfile, str],
+        security_code: Union[SupportsBytes, bytes, str],
     ) -> str:
         """
         Unprotect the account profile using a security code. The confirmation method field will specify how this code was communicated with the account owner.
@@ -73,9 +73,9 @@ class AccountService(ServiceBase):
 
     @staticmethod
     def protect(
-            *,
-            profile: Union[AccountProfile, str],
-            security_code: Union[SupportsBytes, bytes, str],
+        *,
+        profile: Union[AccountProfile, str],
+        security_code: Union[SupportsBytes, bytes, str],
     ) -> str:
         """
         Protect the account profile with a security code. The code can be a PIN, password, keychain secret, etc.
@@ -106,7 +106,7 @@ class AccountService(ServiceBase):
         """
         request = request or LoginRequest()
         request.ecosystem_id = (
-                request.ecosystem_id or self.service_options.default_ecosystem
+            request.ecosystem_id or self.service_options.default_ecosystem
         )
         return await self.client.login(request)
 
@@ -163,11 +163,11 @@ class AccountService(ServiceBase):
         return await self.client.list_devices(list_devices_request=request)
 
     async def revoke_device(
-            self, *, request: RevokeDeviceRequest
+        self, *, request: RevokeDeviceRequest
     ) -> RevokeDeviceResponse:
         return await self.client.revoke_device(revoke_device_request=request)
 
     async def authorize_webhook(
-            self, *, request: AuthorizeWebhookRequest
+        self, *, request: AuthorizeWebhookRequest
     ) -> AuthorizeWebhookResponse:
         return await self.client.authorize_webhook(authorize_webhook_request=request)

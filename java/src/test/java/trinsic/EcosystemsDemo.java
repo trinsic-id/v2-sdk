@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.okapi.DidException;
-import trinsic.services.AccountService;
-import trinsic.services.ProviderService;
 import trinsic.services.TrinsicService;
 import trinsic.services.account.v1.AccountOuterClass;
 import trinsic.services.common.v1.ProviderOuterClass;
@@ -22,7 +20,8 @@ public class EcosystemsDemo {
     var account = trinsicService.account().signIn().get();
     // createEcosystem() {
     var response =
-            trinsicService.provider()
+        trinsicService
+            .provider()
             .createEcosystem(
                 ProviderOuterClass.CreateEcosystemRequest.newBuilder()
                     .setDescription("My ecosystem")
@@ -46,7 +45,8 @@ public class EcosystemsDemo {
     try {
       // inviteParticipant() {
       inviteResponse =
-              trinsicService.provider()
+          trinsicService
+              .provider()
               .invite(
                   ProviderOuterClass.InviteRequest.newBuilder()
                       .setParticipant(
@@ -65,7 +65,8 @@ public class EcosystemsDemo {
     try {
       // invitationStatus() {
       var invitationStatus =
-              trinsicService.provider()
+          trinsicService
+              .provider()
               .invitationStatus(
                   ProviderOuterClass.InvitationStatusRequest.newBuilder()
                       .setInvitationId(inviteResponse.getInvitationId())
