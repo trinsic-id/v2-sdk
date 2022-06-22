@@ -105,6 +105,17 @@ message WebhookConfig {
     string status = 5;
 }
 
+message Grant {
+    // the urn of the resource
+    string resourceId = 1;
+
+     // list of actions that are allowed
+    repeated string actions = 2;
+    
+    // any child grants
+    repeated Grant child_grants = 3;
+}
+
 message CreateEcosystemRequest {
     // Globally unique name for the Ecosystem. This name will be
     // part of the ecosystem specific URLs and namespaces.
@@ -200,15 +211,54 @@ message GetOberonKeyResponse {
 }
 
 // generates an events token bound to the provided ed25519 pk
-message GetEventTokenRequest{
-    bytes pk = 1; //
+message GetEventTokenRequest {
+    bytes pk = 1; // 
 }
 
 // response message containing a token (JWT) that can be used
 // to connect directly to the message streaming architecture
-message GetEventTokenResponse{
+message GetEventTokenResponse {
     string token = 1; // a JWT bound to the PK provided in the request
 }
+
+// grant permissions to a resource or path in the ecosystem
+message GrantAuthorizationRequest {
+    oneof account {
+        string email = 1; // email associted with the account
+    
+        string walletId = 2; // wallet id of the account
+    }
+
+    string resource = 3; // resources are specified as a restful path: /{ecoId}/{resource type}/{resource id}. EcosystemId maybe ommited
+
+    string action = 4; // action to authorize. default is "*" (all)
+}
+
+message GrantAuthorizationResponse {
+}
+
+// revoke permissions to a resource or path in the ecosystem
+message RevokeAuthorizationRequest {
+    oneof account {
+        string email = 1; // email associted with the account
+    
+        string walletId = 2; // wallet id of the account
+    }
+    string resource = 3; // resources are specified as a restful path: /{ecoId}/{resource type}/{resource id}. EcosystemId maybe ommited
+
+    string action = 4; // action to revoke. default is "*" (all)
+}
+
+message RevokeAuthorizationResponse {
+}
+
+message GetAuthorizationsRequest{
+}
+
+message GetAuthorizationsResponse {
+    repeated Grant grants = 1;
+}
+
 
 service Provider {
     // Create new ecosystem and assign the authenticated user as owner
@@ -216,6 +266,15 @@ service Provider {
 
     // Update an existing ecosystem
     rpc UpdateEcosystem(UpdateEcosystemRequest) returns (UpdateEcosystemResponse);
+
+    // Grant authorization to ecosystem resources
+    rpc GrantAuthorization(GrantAuthorizationRequest) returns (GrantAuthorizationResponse);
+    
+    // Revoke authorization to ecosystem resources
+    rpc RevokeAuthorization(RevokeAuthorizationRequest) returns (RevokeAuthorizationResponse);
+
+    // Retreive the list of permissions for this particular account/ecosystem
+    rpc GetAuthorizations(GetAuthorizationsRequest) returns (GetAuthorizationsResponse);
 
     // Add a webhook endpoint to the ecosystem
     rpc AddWebhook(AddWebhookRequest) returns (AddWebhookResponse);
