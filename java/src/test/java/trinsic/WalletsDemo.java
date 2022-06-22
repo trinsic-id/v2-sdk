@@ -1,13 +1,12 @@
 package trinsic;
 
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.okapi.DidException;
 import trinsic.services.TrinsicService;
 import trinsic.services.common.v1.ProviderOuterClass;
 import trinsic.services.universalwallet.v1.UniversalWalletOuterClass;
-
-import java.io.IOException;
-import java.util.concurrent.ExecutionException;
 
 public class WalletsDemo {
   public static void main(String[] args)
@@ -20,7 +19,8 @@ public class WalletsDemo {
     // Create ecosystem
     var trinsicService = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
     var ecosystemResponse =
-        trinsicService.provider()
+        trinsicService
+            .provider()
             .createEcosystem(ProviderOuterClass.CreateEcosystemRequest.getDefaultInstance())
             .get();
     var ecosystemId = ecosystemResponse.getEcosystem().getId();
@@ -38,7 +38,8 @@ public class WalletsDemo {
 
     // insertItemWallet() {
     var insertResponse =
-            trinsicService.wallet()
+        trinsicService
+            .wallet()
             .insertItem(
                 UniversalWalletOuterClass.InsertItemRequest.newBuilder()
                     .setItemJson(credentialJson)
@@ -61,7 +62,8 @@ public class WalletsDemo {
 
     // Delete item in-between searches
     var deleteResponse =
-            trinsicService.wallet()
+        trinsicService
+            .wallet()
             .deleteItem(
                 UniversalWalletOuterClass.DeleteItemRequest.newBuilder().setItemId(itemId).build())
             .get();
@@ -71,7 +73,8 @@ public class WalletsDemo {
     {
       // searchWalletSQL() {
       var walletItems =
-              trinsicService.wallet()
+          trinsicService
+              .wallet()
               .search(
                   UniversalWalletOuterClass.SearchRequest.newBuilder()
                       .setQuery(

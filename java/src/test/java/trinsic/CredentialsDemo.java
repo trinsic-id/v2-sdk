@@ -1,15 +1,14 @@
 package trinsic;
 
-import trinsic.okapi.DidException;
-import trinsic.services.TrinsicService;
-import trinsic.services.common.v1.ProviderOuterClass;
-import trinsic.services.verifiablecredentials.v1.VerifiableCredentials;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.concurrent.ExecutionException;
+import trinsic.okapi.DidException;
+import trinsic.services.TrinsicService;
+import trinsic.services.common.v1.ProviderOuterClass;
+import trinsic.services.verifiablecredentials.v1.VerifiableCredentials;
 
 public class CredentialsDemo {
   public static void main(String[] args)
@@ -27,7 +26,8 @@ public class CredentialsDemo {
 
     var trinsicService = new TrinsicService(serverConfig);
     var ecosystemId =
-        trinsicService.provider()
+        trinsicService
+            .provider()
             .createEcosystem(ProviderOuterClass.CreateEcosystemRequest.getDefaultInstance())
             .get()
             .getEcosystem()
@@ -35,7 +35,7 @@ public class CredentialsDemo {
 
     serverConfig = serverConfig.setDefaultEcosystem(ecosystemId);
 
-//    trinsicService.setOptionsBuilder(serverConfig);
+    //    trinsicService.setOptionsBuilder(serverConfig);
 
     var issuerVerifier = trinsicService.account().signIn().get(); // Both issues and verifies
     var holder = trinsicService.account().signIn().get();
@@ -44,7 +44,8 @@ public class CredentialsDemo {
 
     // issueCredentialSample() {
     var issueResult =
-            trinsicService.credential()
+        trinsicService
+            .credential()
             .issueCredential(
                 VerifiableCredentials.IssueRequest.newBuilder()
                     .setDocumentJson(unsignedCredential)
@@ -59,7 +60,8 @@ public class CredentialsDemo {
     trinsicService.setProfile(holder);
     // createProof() {
     var createProofResponse =
-            trinsicService.credential()
+        trinsicService
+            .credential()
             .createProof(
                 VerifiableCredentials.CreateProofRequest.newBuilder()
                     .setDocumentJson(signedCredentialJson)
@@ -74,11 +76,13 @@ public class CredentialsDemo {
 
     try {
       // sendCredential() {
-        trinsicService.credential().send(
-          VerifiableCredentials.SendRequest.newBuilder()
-              .setDocumentJson(signedCredentialJson)
-              .setEmail(recipientEmail)
-              .build());
+      trinsicService
+          .credential()
+          .send(
+              VerifiableCredentials.SendRequest.newBuilder()
+                  .setDocumentJson(signedCredentialJson)
+                  .setEmail(recipientEmail)
+                  .build());
       // }
     } catch (ExecutionException re) {
       // This is okay, we don't expect that account to exist.
@@ -87,7 +91,8 @@ public class CredentialsDemo {
     trinsicService.setProfile(issuerVerifier);
     // verifyProof() {
     var verifyProofResponse =
-            trinsicService.credential()
+        trinsicService
+            .credential()
             .verifyProof(
                 VerifiableCredentials.VerifyProofRequest.newBuilder()
                     .setProofDocumentJson(credentialProof)

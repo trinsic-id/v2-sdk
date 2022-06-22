@@ -726,6 +726,24 @@
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.GenerateTokenResponse"
     },
+    "services.provider.v1.GetAuthorizationsRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.GetAuthorizationsResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.GetAuthorizationsResponse.grants": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.GetAuthorizationsResponse"
+    },
     "services.provider.v1.GetEventTokenRequest": {
       "type": "message",
       "collection": "messages",
@@ -767,6 +785,66 @@
       "collection": "fields",
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.GetOberonKeyResponse"
+    },
+    "services.provider.v1.Grant": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.Grant.actions": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.Grant"
+    },
+    "services.provider.v1.Grant.child_grants": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.Grant"
+    },
+    "services.provider.v1.Grant.resourceId": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.Grant"
+    },
+    "services.provider.v1.GrantAuthorizationRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.GrantAuthorizationRequest.action": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.GrantAuthorizationRequest"
+    },
+    "services.provider.v1.GrantAuthorizationRequest.email": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.GrantAuthorizationRequest"
+    },
+    "services.provider.v1.GrantAuthorizationRequest.resource": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.GrantAuthorizationRequest"
+    },
+    "services.provider.v1.GrantAuthorizationRequest.walletId": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.GrantAuthorizationRequest"
+    },
+    "services.provider.v1.GrantAuthorizationResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
     },
     "services.provider.v1.InvitationStatusRequest": {
       "type": "message",
@@ -966,6 +1044,12 @@
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
+    "services.provider.v1.Provider.GetAuthorizations": {
+      "type": "methodProto",
+      "collection": "methods",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
     "services.provider.v1.Provider.GetEventToken": {
       "type": "methodProto",
       "collection": "methods",
@@ -973,6 +1057,12 @@
       "parent": ""
     },
     "services.provider.v1.Provider.GetOberonKey": {
+      "type": "methodProto",
+      "collection": "methods",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.Provider.GrantAuthorization": {
       "type": "methodProto",
       "collection": "methods",
       "file": "services/provider/v1/provider.proto",
@@ -990,9 +1080,51 @@
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
+    "services.provider.v1.Provider.RevokeAuthorization": {
+      "type": "methodProto",
+      "collection": "methods",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
     "services.provider.v1.Provider.UpdateEcosystem": {
       "type": "methodProto",
       "collection": "methods",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.RevokeAuthorizationRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.RevokeAuthorizationRequest.action": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.RevokeAuthorizationRequest"
+    },
+    "services.provider.v1.RevokeAuthorizationRequest.email": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.RevokeAuthorizationRequest"
+    },
+    "services.provider.v1.RevokeAuthorizationRequest.resource": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.RevokeAuthorizationRequest"
+    },
+    "services.provider.v1.RevokeAuthorizationRequest.walletId": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.RevokeAuthorizationRequest"
+    },
+    "services.provider.v1.RevokeAuthorizationResponse": {
+      "type": "message",
+      "collection": "messages",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
@@ -2498,6 +2630,9 @@
       "methods": [
         "services.provider.v1.Provider.CreateEcosystem",
         "services.provider.v1.Provider.UpdateEcosystem",
+        "services.provider.v1.Provider.GrantAuthorization",
+        "services.provider.v1.Provider.RevokeAuthorization",
+        "services.provider.v1.Provider.GetAuthorizations",
         "services.provider.v1.Provider.AddWebhook",
         "services.provider.v1.Provider.DeleteWebhook",
         "services.provider.v1.Provider.EcosystemInfo",
@@ -2516,6 +2651,7 @@
         "services.provider.v1.InvitationStatusResponse",
         "services.provider.v1.Ecosystem",
         "services.provider.v1.WebhookConfig",
+        "services.provider.v1.Grant",
         "services.provider.v1.CreateEcosystemRequest",
         "services.provider.v1.CreateEcosystemResponse",
         "services.provider.v1.UpdateEcosystemRequest",
@@ -2531,7 +2667,13 @@
         "services.provider.v1.GetOberonKeyRequest",
         "services.provider.v1.GetOberonKeyResponse",
         "services.provider.v1.GetEventTokenRequest",
-        "services.provider.v1.GetEventTokenResponse"
+        "services.provider.v1.GetEventTokenResponse",
+        "services.provider.v1.GrantAuthorizationRequest",
+        "services.provider.v1.GrantAuthorizationResponse",
+        "services.provider.v1.RevokeAuthorizationRequest",
+        "services.provider.v1.RevokeAuthorizationResponse",
+        "services.provider.v1.GetAuthorizationsRequest",
+        "services.provider.v1.GetAuthorizationsResponse"
       ],
       "fields": [
         "services.provider.v1.Invite.id",
@@ -2556,6 +2698,9 @@
         "services.provider.v1.WebhookConfig.destination_url",
         "services.provider.v1.WebhookConfig.events",
         "services.provider.v1.WebhookConfig.status",
+        "services.provider.v1.Grant.resourceId",
+        "services.provider.v1.Grant.actions",
+        "services.provider.v1.Grant.child_grants",
         "services.provider.v1.CreateEcosystemRequest.name",
         "services.provider.v1.CreateEcosystemRequest.description",
         "services.provider.v1.CreateEcosystemRequest.uri",
@@ -2577,7 +2722,16 @@
         "services.provider.v1.GenerateTokenResponse.profile",
         "services.provider.v1.GetOberonKeyResponse.key",
         "services.provider.v1.GetEventTokenRequest.pk",
-        "services.provider.v1.GetEventTokenResponse.token"
+        "services.provider.v1.GetEventTokenResponse.token",
+        "services.provider.v1.GrantAuthorizationRequest.email",
+        "services.provider.v1.GrantAuthorizationRequest.walletId",
+        "services.provider.v1.GrantAuthorizationRequest.resource",
+        "services.provider.v1.GrantAuthorizationRequest.action",
+        "services.provider.v1.RevokeAuthorizationRequest.email",
+        "services.provider.v1.RevokeAuthorizationRequest.walletId",
+        "services.provider.v1.RevokeAuthorizationRequest.resource",
+        "services.provider.v1.RevokeAuthorizationRequest.action",
+        "services.provider.v1.GetAuthorizationsResponse.grants"
       ],
       "enums": [
         "services.provider.v1.InvitationStatusResponse.Status",
@@ -2900,6 +3054,9 @@
       "methods": [
         "services.provider.v1.Provider.CreateEcosystem",
         "services.provider.v1.Provider.UpdateEcosystem",
+        "services.provider.v1.Provider.GrantAuthorization",
+        "services.provider.v1.Provider.RevokeAuthorization",
+        "services.provider.v1.Provider.GetAuthorizations",
         "services.provider.v1.Provider.AddWebhook",
         "services.provider.v1.Provider.DeleteWebhook",
         "services.provider.v1.Provider.EcosystemInfo",
@@ -3062,6 +3219,13 @@
       "output_type": "services.provider.v1.GenerateTokenResponse",
       "description": "Generates an unprotected authentication token that can be used to\nconfigure server side applications"
     },
+    "services.provider.v1.Provider.GetAuthorizations": {
+      "name": "GetAuthorizations",
+      "full_name": "services.provider.v1.Provider.GetAuthorizations",
+      "input_type": "services.provider.v1.GetAuthorizationsRequest",
+      "output_type": "services.provider.v1.GetAuthorizationsResponse",
+      "description": "Retreive the list of permissions for this particular account/ecosystem"
+    },
     "services.provider.v1.Provider.GetEventToken": {
       "name": "GetEventToken",
       "full_name": "services.provider.v1.Provider.GetEventToken",
@@ -3076,6 +3240,13 @@
       "output_type": "services.provider.v1.GetOberonKeyResponse",
       "description": "Returns the public key being used to create/verify oberon tokens"
     },
+    "services.provider.v1.Provider.GrantAuthorization": {
+      "name": "GrantAuthorization",
+      "full_name": "services.provider.v1.Provider.GrantAuthorization",
+      "input_type": "services.provider.v1.GrantAuthorizationRequest",
+      "output_type": "services.provider.v1.GrantAuthorizationResponse",
+      "description": "Grant authorization to ecosystem resources"
+    },
     "services.provider.v1.Provider.InvitationStatus": {
       "name": "InvitationStatus",
       "full_name": "services.provider.v1.Provider.InvitationStatus",
@@ -3089,6 +3260,13 @@
       "input_type": "services.provider.v1.InviteRequest",
       "output_type": "services.provider.v1.InviteResponse",
       "description": "Invite a user to the ecosystem"
+    },
+    "services.provider.v1.Provider.RevokeAuthorization": {
+      "name": "RevokeAuthorization",
+      "full_name": "services.provider.v1.Provider.RevokeAuthorization",
+      "input_type": "services.provider.v1.RevokeAuthorizationRequest",
+      "output_type": "services.provider.v1.RevokeAuthorizationResponse",
+      "description": "Revoke authorization to ecosystem resources"
     },
     "services.provider.v1.Provider.UpdateEcosystem": {
       "name": "UpdateEcosystem",
@@ -3613,6 +3791,24 @@
       "messages": [],
       "enums": []
     },
+    "services.provider.v1.GetAuthorizationsRequest": {
+      "name": "GetAuthorizationsRequest",
+      "full_name": "services.provider.v1.GetAuthorizationsRequest",
+      "description": "",
+      "fields": [],
+      "messages": [],
+      "enums": []
+    },
+    "services.provider.v1.GetAuthorizationsResponse": {
+      "name": "GetAuthorizationsResponse",
+      "full_name": "services.provider.v1.GetAuthorizationsResponse",
+      "description": "",
+      "fields": [
+        "services.provider.v1.GetAuthorizationsResponse.grants"
+      ],
+      "messages": [],
+      "enums": []
+    },
     "services.provider.v1.GetEventTokenRequest": {
       "name": "GetEventTokenRequest",
       "full_name": "services.provider.v1.GetEventTokenRequest",
@@ -3648,6 +3844,39 @@
       "fields": [
         "services.provider.v1.GetOberonKeyResponse.key"
       ],
+      "messages": [],
+      "enums": []
+    },
+    "services.provider.v1.Grant": {
+      "name": "Grant",
+      "full_name": "services.provider.v1.Grant",
+      "description": "",
+      "fields": [
+        "services.provider.v1.Grant.resourceId",
+        "services.provider.v1.Grant.actions",
+        "services.provider.v1.Grant.child_grants"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.provider.v1.GrantAuthorizationRequest": {
+      "name": "GrantAuthorizationRequest",
+      "full_name": "services.provider.v1.GrantAuthorizationRequest",
+      "description": "grant permissions to a resource or path in the ecosystem",
+      "fields": [
+        "services.provider.v1.GrantAuthorizationRequest.email",
+        "services.provider.v1.GrantAuthorizationRequest.walletId",
+        "services.provider.v1.GrantAuthorizationRequest.resource",
+        "services.provider.v1.GrantAuthorizationRequest.action"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.provider.v1.GrantAuthorizationResponse": {
+      "name": "GrantAuthorizationResponse",
+      "full_name": "services.provider.v1.GrantAuthorizationResponse",
+      "description": "",
+      "fields": [],
       "messages": [],
       "enums": []
     },
@@ -3718,6 +3947,27 @@
         "services.provider.v1.InviteResponse.invitation_id",
         "services.provider.v1.InviteResponse.invitation_code"
       ],
+      "messages": [],
+      "enums": []
+    },
+    "services.provider.v1.RevokeAuthorizationRequest": {
+      "name": "RevokeAuthorizationRequest",
+      "full_name": "services.provider.v1.RevokeAuthorizationRequest",
+      "description": "revoke permissions to a resource or path in the ecosystem",
+      "fields": [
+        "services.provider.v1.RevokeAuthorizationRequest.email",
+        "services.provider.v1.RevokeAuthorizationRequest.walletId",
+        "services.provider.v1.RevokeAuthorizationRequest.resource",
+        "services.provider.v1.RevokeAuthorizationRequest.action"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.provider.v1.RevokeAuthorizationResponse": {
+      "name": "RevokeAuthorizationResponse",
+      "full_name": "services.provider.v1.RevokeAuthorizationResponse",
+      "description": "",
+      "fields": [],
       "messages": [],
       "enums": []
     },
@@ -4949,6 +5199,14 @@
       "full_type": "services.account.v1.AccountProfile",
       "description": "Account authentication profile that contains unprotected token"
     },
+    "services.provider.v1.GetAuthorizationsResponse.grants": {
+      "name": "grants",
+      "full_name": "services.provider.v1.GetAuthorizationsResponse.grants",
+      "label": "LABEL_REPEATED",
+      "type": "Grant",
+      "full_type": "services.provider.v1.Grant",
+      "description": ""
+    },
     "services.provider.v1.GetEventTokenRequest.pk": {
       "name": "pk",
       "full_name": "services.provider.v1.GetEventTokenRequest.pk",
@@ -4972,6 +5230,62 @@
       "type": "string",
       "full_type": "string",
       "description": "Oberon Public Key as RAW base64 URL encoded string"
+    },
+    "services.provider.v1.Grant.actions": {
+      "name": "actions",
+      "full_name": "services.provider.v1.Grant.actions",
+      "label": "LABEL_REPEATED",
+      "type": "string",
+      "full_type": "string",
+      "description": "list of actions that are allowed"
+    },
+    "services.provider.v1.Grant.child_grants": {
+      "name": "child_grants",
+      "full_name": "services.provider.v1.Grant.child_grants",
+      "label": "LABEL_REPEATED",
+      "type": "Grant",
+      "full_type": "services.provider.v1.Grant",
+      "description": "any child grants"
+    },
+    "services.provider.v1.Grant.resourceId": {
+      "name": "resourceId",
+      "full_name": "services.provider.v1.Grant.resourceId",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "the urn of the resource"
+    },
+    "services.provider.v1.GrantAuthorizationRequest.action": {
+      "name": "action",
+      "full_name": "services.provider.v1.GrantAuthorizationRequest.action",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "action to authorize. default is \"*\" (all)"
+    },
+    "services.provider.v1.GrantAuthorizationRequest.email": {
+      "name": "email",
+      "full_name": "services.provider.v1.GrantAuthorizationRequest.email",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "email associted with the account"
+    },
+    "services.provider.v1.GrantAuthorizationRequest.resource": {
+      "name": "resource",
+      "full_name": "services.provider.v1.GrantAuthorizationRequest.resource",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "resources are specified as a restful path: /{ecoId}/{resource type}/{resource id}. EcosystemId maybe ommited"
+    },
+    "services.provider.v1.GrantAuthorizationRequest.walletId": {
+      "name": "walletId",
+      "full_name": "services.provider.v1.GrantAuthorizationRequest.walletId",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "wallet id of the account"
     },
     "services.provider.v1.InvitationStatusRequest.invitation_id": {
       "name": "invitation_id",
@@ -5082,6 +5396,38 @@
       "type": "string",
       "full_type": "string",
       "description": "ID of created invitation"
+    },
+    "services.provider.v1.RevokeAuthorizationRequest.action": {
+      "name": "action",
+      "full_name": "services.provider.v1.RevokeAuthorizationRequest.action",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "action to revoke. default is \"*\" (all)"
+    },
+    "services.provider.v1.RevokeAuthorizationRequest.email": {
+      "name": "email",
+      "full_name": "services.provider.v1.RevokeAuthorizationRequest.email",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "email associted with the account"
+    },
+    "services.provider.v1.RevokeAuthorizationRequest.resource": {
+      "name": "resource",
+      "full_name": "services.provider.v1.RevokeAuthorizationRequest.resource",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "resources are specified as a restful path: /{ecoId}/{resource type}/{resource id}. EcosystemId maybe ommited"
+    },
+    "services.provider.v1.RevokeAuthorizationRequest.walletId": {
+      "name": "walletId",
+      "full_name": "services.provider.v1.RevokeAuthorizationRequest.walletId",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "wallet id of the account"
     },
     "services.provider.v1.UpdateEcosystemRequest.description": {
       "name": "description",

@@ -132,6 +132,18 @@ class WebhookConfig(betterproto.Message):
 
 
 @dataclass(eq=False, repr=False)
+class Grant(betterproto.Message):
+    resource_id: str = betterproto.string_field(1)
+    """the urn of the resource"""
+
+    actions: List[str] = betterproto.string_field(2)
+    """list of actions that are allowed"""
+
+    child_grants: List["Grant"] = betterproto.message_field(3)
+    """any child grants"""
+
+
+@dataclass(eq=False, repr=False)
 class CreateEcosystemRequest(betterproto.Message):
     name: str = betterproto.string_field(1)
     """
@@ -279,6 +291,46 @@ class GetEventTokenResponse(betterproto.Message):
     token: str = betterproto.string_field(1)
 
 
+@dataclass(eq=False, repr=False)
+class GrantAuthorizationRequest(betterproto.Message):
+    """grant permissions to a resource or path in the ecosystem"""
+
+    email: str = betterproto.string_field(1, group="account")
+    wallet_id: str = betterproto.string_field(2, group="account")
+    resource: str = betterproto.string_field(3)
+    action: str = betterproto.string_field(4)
+
+
+@dataclass(eq=False, repr=False)
+class GrantAuthorizationResponse(betterproto.Message):
+    pass
+
+
+@dataclass(eq=False, repr=False)
+class RevokeAuthorizationRequest(betterproto.Message):
+    """revoke permissions to a resource or path in the ecosystem"""
+
+    email: str = betterproto.string_field(1, group="account")
+    wallet_id: str = betterproto.string_field(2, group="account")
+    resource: str = betterproto.string_field(3)
+    action: str = betterproto.string_field(4)
+
+
+@dataclass(eq=False, repr=False)
+class RevokeAuthorizationResponse(betterproto.Message):
+    pass
+
+
+@dataclass(eq=False, repr=False)
+class GetAuthorizationsRequest(betterproto.Message):
+    pass
+
+
+@dataclass(eq=False, repr=False)
+class GetAuthorizationsResponse(betterproto.Message):
+    grants: List["Grant"] = betterproto.message_field(1)
+
+
 class ProviderStub(betterproto.ServiceStub):
     async def create_ecosystem(
         self,
@@ -307,6 +359,54 @@ class ProviderStub(betterproto.ServiceStub):
             "/services.provider.v1.Provider/UpdateEcosystem",
             update_ecosystem_request,
             UpdateEcosystemResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
+    async def grant_authorization(
+        self,
+        grant_authorization_request: "GrantAuthorizationRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "GrantAuthorizationResponse":
+        return await self._unary_unary(
+            "/services.provider.v1.Provider/GrantAuthorization",
+            grant_authorization_request,
+            GrantAuthorizationResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
+    async def revoke_authorization(
+        self,
+        revoke_authorization_request: "RevokeAuthorizationRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "RevokeAuthorizationResponse":
+        return await self._unary_unary(
+            "/services.provider.v1.Provider/RevokeAuthorization",
+            revoke_authorization_request,
+            RevokeAuthorizationResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
+    async def get_authorizations(
+        self,
+        get_authorizations_request: "GetAuthorizationsRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "GetAuthorizationsResponse":
+        return await self._unary_unary(
+            "/services.provider.v1.Provider/GetAuthorizations",
+            get_authorizations_request,
+            GetAuthorizationsResponse,
             timeout=timeout,
             deadline=deadline,
             metadata=metadata,
@@ -452,6 +552,21 @@ class ProviderBase(ServiceBase):
     ) -> "UpdateEcosystemResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
+    async def grant_authorization(
+        self, grant_authorization_request: "GrantAuthorizationRequest"
+    ) -> "GrantAuthorizationResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def revoke_authorization(
+        self, revoke_authorization_request: "RevokeAuthorizationRequest"
+    ) -> "RevokeAuthorizationResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def get_authorizations(
+        self, get_authorizations_request: "GetAuthorizationsRequest"
+    ) -> "GetAuthorizationsResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
     async def add_webhook(
         self, add_webhook_request: "AddWebhookRequest"
     ) -> "AddWebhookResponse":
@@ -498,6 +613,21 @@ class ProviderBase(ServiceBase):
     async def __rpc_update_ecosystem(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.update_ecosystem(request)
+        await stream.send_message(response)
+
+    async def __rpc_grant_authorization(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.grant_authorization(request)
+        await stream.send_message(response)
+
+    async def __rpc_revoke_authorization(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.revoke_authorization(request)
+        await stream.send_message(response)
+
+    async def __rpc_get_authorizations(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.get_authorizations(request)
         await stream.send_message(response)
 
     async def __rpc_add_webhook(self, stream: grpclib.server.Stream) -> None:
@@ -553,6 +683,24 @@ class ProviderBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 UpdateEcosystemRequest,
                 UpdateEcosystemResponse,
+            ),
+            "/services.provider.v1.Provider/GrantAuthorization": grpclib.const.Handler(
+                self.__rpc_grant_authorization,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                GrantAuthorizationRequest,
+                GrantAuthorizationResponse,
+            ),
+            "/services.provider.v1.Provider/RevokeAuthorization": grpclib.const.Handler(
+                self.__rpc_revoke_authorization,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                RevokeAuthorizationRequest,
+                RevokeAuthorizationResponse,
+            ),
+            "/services.provider.v1.Provider/GetAuthorizations": grpclib.const.Handler(
+                self.__rpc_get_authorizations,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                GetAuthorizationsRequest,
+                GetAuthorizationsResponse,
             ),
             "/services.provider.v1.Provider/AddWebhook": grpclib.const.Handler(
                 self.__rpc_add_webhook,

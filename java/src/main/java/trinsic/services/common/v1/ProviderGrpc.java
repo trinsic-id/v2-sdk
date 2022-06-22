@@ -107,6 +107,149 @@ public final class ProviderGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<
+          trinsic.services.common.v1.ProviderOuterClass.GrantAuthorizationRequest,
+          trinsic.services.common.v1.ProviderOuterClass.GrantAuthorizationResponse>
+      getGrantAuthorizationMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GrantAuthorization",
+      requestType = trinsic.services.common.v1.ProviderOuterClass.GrantAuthorizationRequest.class,
+      responseType = trinsic.services.common.v1.ProviderOuterClass.GrantAuthorizationResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<
+          trinsic.services.common.v1.ProviderOuterClass.GrantAuthorizationRequest,
+          trinsic.services.common.v1.ProviderOuterClass.GrantAuthorizationResponse>
+      getGrantAuthorizationMethod() {
+    io.grpc.MethodDescriptor<
+            trinsic.services.common.v1.ProviderOuterClass.GrantAuthorizationRequest,
+            trinsic.services.common.v1.ProviderOuterClass.GrantAuthorizationResponse>
+        getGrantAuthorizationMethod;
+    if ((getGrantAuthorizationMethod = ProviderGrpc.getGrantAuthorizationMethod) == null) {
+      synchronized (ProviderGrpc.class) {
+        if ((getGrantAuthorizationMethod = ProviderGrpc.getGrantAuthorizationMethod) == null) {
+          ProviderGrpc.getGrantAuthorizationMethod =
+              getGrantAuthorizationMethod =
+                  io.grpc.MethodDescriptor
+                      .<trinsic.services.common.v1.ProviderOuterClass.GrantAuthorizationRequest,
+                          trinsic.services.common.v1.ProviderOuterClass.GrantAuthorizationResponse>
+                          newBuilder()
+                      .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                      .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GrantAuthorization"))
+                      .setSampledToLocalTracing(true)
+                      .setRequestMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.common.v1.ProviderOuterClass
+                                  .GrantAuthorizationRequest.getDefaultInstance()))
+                      .setResponseMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.common.v1.ProviderOuterClass
+                                  .GrantAuthorizationResponse.getDefaultInstance()))
+                      .setSchemaDescriptor(
+                          new ProviderMethodDescriptorSupplier("GrantAuthorization"))
+                      .build();
+        }
+      }
+    }
+    return getGrantAuthorizationMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<
+          trinsic.services.common.v1.ProviderOuterClass.RevokeAuthorizationRequest,
+          trinsic.services.common.v1.ProviderOuterClass.RevokeAuthorizationResponse>
+      getRevokeAuthorizationMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "RevokeAuthorization",
+      requestType = trinsic.services.common.v1.ProviderOuterClass.RevokeAuthorizationRequest.class,
+      responseType =
+          trinsic.services.common.v1.ProviderOuterClass.RevokeAuthorizationResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<
+          trinsic.services.common.v1.ProviderOuterClass.RevokeAuthorizationRequest,
+          trinsic.services.common.v1.ProviderOuterClass.RevokeAuthorizationResponse>
+      getRevokeAuthorizationMethod() {
+    io.grpc.MethodDescriptor<
+            trinsic.services.common.v1.ProviderOuterClass.RevokeAuthorizationRequest,
+            trinsic.services.common.v1.ProviderOuterClass.RevokeAuthorizationResponse>
+        getRevokeAuthorizationMethod;
+    if ((getRevokeAuthorizationMethod = ProviderGrpc.getRevokeAuthorizationMethod) == null) {
+      synchronized (ProviderGrpc.class) {
+        if ((getRevokeAuthorizationMethod = ProviderGrpc.getRevokeAuthorizationMethod) == null) {
+          ProviderGrpc.getRevokeAuthorizationMethod =
+              getRevokeAuthorizationMethod =
+                  io.grpc.MethodDescriptor
+                      .<trinsic.services.common.v1.ProviderOuterClass.RevokeAuthorizationRequest,
+                          trinsic.services.common.v1.ProviderOuterClass.RevokeAuthorizationResponse>
+                          newBuilder()
+                      .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                      .setFullMethodName(
+                          generateFullMethodName(SERVICE_NAME, "RevokeAuthorization"))
+                      .setSampledToLocalTracing(true)
+                      .setRequestMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.common.v1.ProviderOuterClass
+                                  .RevokeAuthorizationRequest.getDefaultInstance()))
+                      .setResponseMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.common.v1.ProviderOuterClass
+                                  .RevokeAuthorizationResponse.getDefaultInstance()))
+                      .setSchemaDescriptor(
+                          new ProviderMethodDescriptorSupplier("RevokeAuthorization"))
+                      .build();
+        }
+      }
+    }
+    return getRevokeAuthorizationMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<
+          trinsic.services.common.v1.ProviderOuterClass.GetAuthorizationsRequest,
+          trinsic.services.common.v1.ProviderOuterClass.GetAuthorizationsResponse>
+      getGetAuthorizationsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetAuthorizations",
+      requestType = trinsic.services.common.v1.ProviderOuterClass.GetAuthorizationsRequest.class,
+      responseType = trinsic.services.common.v1.ProviderOuterClass.GetAuthorizationsResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<
+          trinsic.services.common.v1.ProviderOuterClass.GetAuthorizationsRequest,
+          trinsic.services.common.v1.ProviderOuterClass.GetAuthorizationsResponse>
+      getGetAuthorizationsMethod() {
+    io.grpc.MethodDescriptor<
+            trinsic.services.common.v1.ProviderOuterClass.GetAuthorizationsRequest,
+            trinsic.services.common.v1.ProviderOuterClass.GetAuthorizationsResponse>
+        getGetAuthorizationsMethod;
+    if ((getGetAuthorizationsMethod = ProviderGrpc.getGetAuthorizationsMethod) == null) {
+      synchronized (ProviderGrpc.class) {
+        if ((getGetAuthorizationsMethod = ProviderGrpc.getGetAuthorizationsMethod) == null) {
+          ProviderGrpc.getGetAuthorizationsMethod =
+              getGetAuthorizationsMethod =
+                  io.grpc.MethodDescriptor
+                      .<trinsic.services.common.v1.ProviderOuterClass.GetAuthorizationsRequest,
+                          trinsic.services.common.v1.ProviderOuterClass.GetAuthorizationsResponse>
+                          newBuilder()
+                      .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                      .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetAuthorizations"))
+                      .setSampledToLocalTracing(true)
+                      .setRequestMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.common.v1.ProviderOuterClass.GetAuthorizationsRequest
+                                  .getDefaultInstance()))
+                      .setResponseMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.common.v1.ProviderOuterClass
+                                  .GetAuthorizationsResponse.getDefaultInstance()))
+                      .setSchemaDescriptor(
+                          new ProviderMethodDescriptorSupplier("GetAuthorizations"))
+                      .build();
+        }
+      }
+    }
+    return getGetAuthorizationsMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<
           trinsic.services.common.v1.ProviderOuterClass.AddWebhookRequest,
           trinsic.services.common.v1.ProviderOuterClass.AddWebhookResponse>
       getAddWebhookMethod;
@@ -553,6 +696,54 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
+     * Grant authorization to ecosystem resources
+     * </pre>
+     */
+    public void grantAuthorization(
+        trinsic.services.common.v1.ProviderOuterClass.GrantAuthorizationRequest request,
+        io.grpc.stub.StreamObserver<
+                trinsic.services.common.v1.ProviderOuterClass.GrantAuthorizationResponse>
+            responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
+          getGrantAuthorizationMethod(), responseObserver);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Revoke authorization to ecosystem resources
+     * </pre>
+     */
+    public void revokeAuthorization(
+        trinsic.services.common.v1.ProviderOuterClass.RevokeAuthorizationRequest request,
+        io.grpc.stub.StreamObserver<
+                trinsic.services.common.v1.ProviderOuterClass.RevokeAuthorizationResponse>
+            responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
+          getRevokeAuthorizationMethod(), responseObserver);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Retreive the list of permissions for this particular account/ecosystem
+     * </pre>
+     */
+    public void getAuthorizations(
+        trinsic.services.common.v1.ProviderOuterClass.GetAuthorizationsRequest request,
+        io.grpc.stub.StreamObserver<
+                trinsic.services.common.v1.ProviderOuterClass.GetAuthorizationsResponse>
+            responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
+          getGetAuthorizationsMethod(), responseObserver);
+    }
+
+    /**
+     *
+     *
+     * <pre>
      * Add a webhook endpoint to the ecosystem
      * </pre>
      */
@@ -693,6 +884,27 @@ public final class ProviderGrpc {
                       trinsic.services.common.v1.ProviderOuterClass.UpdateEcosystemResponse>(
                       this, METHODID_UPDATE_ECOSYSTEM)))
           .addMethod(
+              getGrantAuthorizationMethod(),
+              io.grpc.stub.ServerCalls.asyncUnaryCall(
+                  new MethodHandlers<
+                      trinsic.services.common.v1.ProviderOuterClass.GrantAuthorizationRequest,
+                      trinsic.services.common.v1.ProviderOuterClass.GrantAuthorizationResponse>(
+                      this, METHODID_GRANT_AUTHORIZATION)))
+          .addMethod(
+              getRevokeAuthorizationMethod(),
+              io.grpc.stub.ServerCalls.asyncUnaryCall(
+                  new MethodHandlers<
+                      trinsic.services.common.v1.ProviderOuterClass.RevokeAuthorizationRequest,
+                      trinsic.services.common.v1.ProviderOuterClass.RevokeAuthorizationResponse>(
+                      this, METHODID_REVOKE_AUTHORIZATION)))
+          .addMethod(
+              getGetAuthorizationsMethod(),
+              io.grpc.stub.ServerCalls.asyncUnaryCall(
+                  new MethodHandlers<
+                      trinsic.services.common.v1.ProviderOuterClass.GetAuthorizationsRequest,
+                      trinsic.services.common.v1.ProviderOuterClass.GetAuthorizationsResponse>(
+                      this, METHODID_GET_AUTHORIZATIONS)))
+          .addMethod(
               getAddWebhookMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
                   new MethodHandlers<
@@ -795,6 +1007,60 @@ public final class ProviderGrpc {
             responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getUpdateEcosystemMethod(), getCallOptions()),
+          request,
+          responseObserver);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Grant authorization to ecosystem resources
+     * </pre>
+     */
+    public void grantAuthorization(
+        trinsic.services.common.v1.ProviderOuterClass.GrantAuthorizationRequest request,
+        io.grpc.stub.StreamObserver<
+                trinsic.services.common.v1.ProviderOuterClass.GrantAuthorizationResponse>
+            responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGrantAuthorizationMethod(), getCallOptions()),
+          request,
+          responseObserver);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Revoke authorization to ecosystem resources
+     * </pre>
+     */
+    public void revokeAuthorization(
+        trinsic.services.common.v1.ProviderOuterClass.RevokeAuthorizationRequest request,
+        io.grpc.stub.StreamObserver<
+                trinsic.services.common.v1.ProviderOuterClass.RevokeAuthorizationResponse>
+            responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getRevokeAuthorizationMethod(), getCallOptions()),
+          request,
+          responseObserver);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Retreive the list of permissions for this particular account/ecosystem
+     * </pre>
+     */
+    public void getAuthorizations(
+        trinsic.services.common.v1.ProviderOuterClass.GetAuthorizationsRequest request,
+        io.grpc.stub.StreamObserver<
+                trinsic.services.common.v1.ProviderOuterClass.GetAuthorizationsResponse>
+            responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetAuthorizationsMethod(), getCallOptions()),
           request,
           responseObserver);
     }
@@ -982,6 +1248,48 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
+     * Grant authorization to ecosystem resources
+     * </pre>
+     */
+    public trinsic.services.common.v1.ProviderOuterClass.GrantAuthorizationResponse
+        grantAuthorization(
+            trinsic.services.common.v1.ProviderOuterClass.GrantAuthorizationRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGrantAuthorizationMethod(), getCallOptions(), request);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Revoke authorization to ecosystem resources
+     * </pre>
+     */
+    public trinsic.services.common.v1.ProviderOuterClass.RevokeAuthorizationResponse
+        revokeAuthorization(
+            trinsic.services.common.v1.ProviderOuterClass.RevokeAuthorizationRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getRevokeAuthorizationMethod(), getCallOptions(), request);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Retreive the list of permissions for this particular account/ecosystem
+     * </pre>
+     */
+    public trinsic.services.common.v1.ProviderOuterClass.GetAuthorizationsResponse
+        getAuthorizations(
+            trinsic.services.common.v1.ProviderOuterClass.GetAuthorizationsRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetAuthorizationsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     *
+     *
+     * <pre>
      * Add a webhook endpoint to the ecosystem
      * </pre>
      */
@@ -1130,6 +1438,51 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
+     * Grant authorization to ecosystem resources
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<
+            trinsic.services.common.v1.ProviderOuterClass.GrantAuthorizationResponse>
+        grantAuthorization(
+            trinsic.services.common.v1.ProviderOuterClass.GrantAuthorizationRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGrantAuthorizationMethod(), getCallOptions()), request);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Revoke authorization to ecosystem resources
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<
+            trinsic.services.common.v1.ProviderOuterClass.RevokeAuthorizationResponse>
+        revokeAuthorization(
+            trinsic.services.common.v1.ProviderOuterClass.RevokeAuthorizationRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getRevokeAuthorizationMethod(), getCallOptions()), request);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Retreive the list of permissions for this particular account/ecosystem
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<
+            trinsic.services.common.v1.ProviderOuterClass.GetAuthorizationsResponse>
+        getAuthorizations(
+            trinsic.services.common.v1.ProviderOuterClass.GetAuthorizationsRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetAuthorizationsMethod(), getCallOptions()), request);
+    }
+
+    /**
+     *
+     *
+     * <pre>
      * Add a webhook endpoint to the ecosystem
      * </pre>
      */
@@ -1243,14 +1596,17 @@ public final class ProviderGrpc {
 
   private static final int METHODID_CREATE_ECOSYSTEM = 0;
   private static final int METHODID_UPDATE_ECOSYSTEM = 1;
-  private static final int METHODID_ADD_WEBHOOK = 2;
-  private static final int METHODID_DELETE_WEBHOOK = 3;
-  private static final int METHODID_ECOSYSTEM_INFO = 4;
-  private static final int METHODID_GENERATE_TOKEN = 5;
-  private static final int METHODID_INVITE = 6;
-  private static final int METHODID_INVITATION_STATUS = 7;
-  private static final int METHODID_GET_OBERON_KEY = 8;
-  private static final int METHODID_GET_EVENT_TOKEN = 9;
+  private static final int METHODID_GRANT_AUTHORIZATION = 2;
+  private static final int METHODID_REVOKE_AUTHORIZATION = 3;
+  private static final int METHODID_GET_AUTHORIZATIONS = 4;
+  private static final int METHODID_ADD_WEBHOOK = 5;
+  private static final int METHODID_DELETE_WEBHOOK = 6;
+  private static final int METHODID_ECOSYSTEM_INFO = 7;
+  private static final int METHODID_GENERATE_TOKEN = 8;
+  private static final int METHODID_INVITE = 9;
+  private static final int METHODID_INVITATION_STATUS = 10;
+  private static final int METHODID_GET_OBERON_KEY = 11;
+  private static final int METHODID_GET_EVENT_TOKEN = 12;
 
   private static final class MethodHandlers<Req, Resp>
       implements io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -1281,6 +1637,27 @@ public final class ProviderGrpc {
               (trinsic.services.common.v1.ProviderOuterClass.UpdateEcosystemRequest) request,
               (io.grpc.stub.StreamObserver<
                       trinsic.services.common.v1.ProviderOuterClass.UpdateEcosystemResponse>)
+                  responseObserver);
+          break;
+        case METHODID_GRANT_AUTHORIZATION:
+          serviceImpl.grantAuthorization(
+              (trinsic.services.common.v1.ProviderOuterClass.GrantAuthorizationRequest) request,
+              (io.grpc.stub.StreamObserver<
+                      trinsic.services.common.v1.ProviderOuterClass.GrantAuthorizationResponse>)
+                  responseObserver);
+          break;
+        case METHODID_REVOKE_AUTHORIZATION:
+          serviceImpl.revokeAuthorization(
+              (trinsic.services.common.v1.ProviderOuterClass.RevokeAuthorizationRequest) request,
+              (io.grpc.stub.StreamObserver<
+                      trinsic.services.common.v1.ProviderOuterClass.RevokeAuthorizationResponse>)
+                  responseObserver);
+          break;
+        case METHODID_GET_AUTHORIZATIONS:
+          serviceImpl.getAuthorizations(
+              (trinsic.services.common.v1.ProviderOuterClass.GetAuthorizationsRequest) request,
+              (io.grpc.stub.StreamObserver<
+                      trinsic.services.common.v1.ProviderOuterClass.GetAuthorizationsResponse>)
                   responseObserver);
           break;
         case METHODID_ADD_WEBHOOK:
@@ -1403,6 +1780,9 @@ public final class ProviderGrpc {
                       .setSchemaDescriptor(new ProviderFileDescriptorSupplier())
                       .addMethod(getCreateEcosystemMethod())
                       .addMethod(getUpdateEcosystemMethod())
+                      .addMethod(getGrantAuthorizationMethod())
+                      .addMethod(getRevokeAuthorizationMethod())
+                      .addMethod(getGetAuthorizationsMethod())
                       .addMethod(getAddWebhookMethod())
                       .addMethod(getDeleteWebhookMethod())
                       .addMethod(getEcosystemInfoMethod())

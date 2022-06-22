@@ -1,13 +1,12 @@
 package trinsic;
 
+import java.io.IOException;
+import java.util.UUID;
+import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.okapi.DidException;
 import trinsic.services.TrinsicService;
 import trinsic.services.trustregistry.v1.TrustRegistryOuterClass;
-
-import java.io.IOException;
-import java.util.UUID;
-import java.util.concurrent.ExecutionException;
 
 public class TrustRegistryDemo {
   public static void main(String[] args)
@@ -27,7 +26,8 @@ public class TrustRegistryDemo {
 
     // addFramework() {
     var frameworkResponse =
-            trinsicService.trustRegistry()
+        trinsicService
+            .trustRegistry()
             .addFramework(
                 TrustRegistryOuterClass.AddFrameworkRequest.newBuilder()
                     .setGovernanceFrameworkUri(frameworkUri)
@@ -37,16 +37,19 @@ public class TrustRegistryDemo {
     // }
 
     // registerIssuerSample() {
-      trinsicService.trustRegistry().registerMember(
-        TrustRegistryOuterClass.RegisterMemberRequest.newBuilder()
-            .setDidUri(didUri)
-            .setFrameworkId(frameworkResponse.getId())
-            .setSchemaUri(typeUri)
-            .build());
+    trinsicService
+        .trustRegistry()
+        .registerMember(
+            TrustRegistryOuterClass.RegisterMemberRequest.newBuilder()
+                .setDidUri(didUri)
+                .setFrameworkId(frameworkResponse.getId())
+                .setSchemaUri(typeUri)
+                .build());
     // }
     // checkIssuerStatus() {
     var issuerStatus =
-            trinsicService.trustRegistry()
+        trinsicService
+            .trustRegistry()
             .checkIssuerStatus(
                 TrustRegistryOuterClass.GetMembershipStatusRequest.newBuilder()
                     .setDidUri(didUri)
@@ -66,12 +69,14 @@ public class TrustRegistryDemo {
     Assertions.assertTrue(searchResult.getItemsJson().length() > 0);
 
     // unregisterIssuer() {
-      trinsicService.trustRegistry().unregisterIssuer(
-        TrustRegistryOuterClass.UnregisterMemberRequest.newBuilder()
-            .setFrameworkId(frameworkResponse.getId())
-            .setDidUri(didUri)
-            .setSchemaUri(typeUri)
-            .build());
+    trinsicService
+        .trustRegistry()
+        .unregisterIssuer(
+            TrustRegistryOuterClass.UnregisterMemberRequest.newBuilder()
+                .setFrameworkId(frameworkResponse.getId())
+                .setDidUri(didUri)
+                .setSchemaUri(typeUri)
+                .build());
     // }
   }
 }

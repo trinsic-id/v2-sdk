@@ -632,6 +632,94 @@ class Services::Provider::V1::WebhookConfig
   end
 end
 
+class Services::Provider::V1::Grant
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::Grant) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::Grant).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::Grant) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::Grant, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      resourceId: T.nilable(String),
+      actions: T.nilable(T::Array[String]),
+      child_grants: T.nilable(T::Array[T.nilable(Services::Provider::V1::Grant)])
+    ).void
+  end
+  def initialize(
+    resourceId: "",
+    actions: [],
+    child_grants: []
+  )
+  end
+
+  sig { returns(String) }
+  def resourceId
+  end
+
+  sig { params(value: String).void }
+  def resourceId=(value)
+  end
+
+  sig { void }
+  def clear_resourceId
+  end
+
+  sig { returns(T::Array[String]) }
+  def actions
+  end
+
+  sig { params(value: Google::Protobuf::RepeatedField).void }
+  def actions=(value)
+  end
+
+  sig { void }
+  def clear_actions
+  end
+
+  sig { returns(T::Array[T.nilable(Services::Provider::V1::Grant)]) }
+  def child_grants
+  end
+
+  sig { params(value: Google::Protobuf::RepeatedField).void }
+  def child_grants=(value)
+  end
+
+  sig { void }
+  def clear_child_grants
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
 class Services::Provider::V1::CreateEcosystemRequest
   include Google::Protobuf
   include Google::Protobuf::MessageExts
@@ -1645,6 +1733,401 @@ class Services::Provider::V1::GetEventTokenResponse
 
   sig { void }
   def clear_token
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::GrantAuthorizationRequest
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::GrantAuthorizationRequest) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::GrantAuthorizationRequest).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::GrantAuthorizationRequest) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::GrantAuthorizationRequest, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      email: T.nilable(String),
+      walletId: T.nilable(String),
+      resource: T.nilable(String),
+      action: T.nilable(String)
+    ).void
+  end
+  def initialize(
+    email: "",
+    walletId: "",
+    resource: "",
+    action: ""
+  )
+  end
+
+  sig { returns(String) }
+  def email
+  end
+
+  sig { params(value: String).void }
+  def email=(value)
+  end
+
+  sig { void }
+  def clear_email
+  end
+
+  sig { returns(String) }
+  def walletId
+  end
+
+  sig { params(value: String).void }
+  def walletId=(value)
+  end
+
+  sig { void }
+  def clear_walletId
+  end
+
+  sig { returns(String) }
+  def resource
+  end
+
+  sig { params(value: String).void }
+  def resource=(value)
+  end
+
+  sig { void }
+  def clear_resource
+  end
+
+  sig { returns(String) }
+  def action
+  end
+
+  sig { params(value: String).void }
+  def action=(value)
+  end
+
+  sig { void }
+  def clear_action
+  end
+
+  sig { returns(T.nilable(Symbol)) }
+  def account
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::GrantAuthorizationResponse
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::GrantAuthorizationResponse) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::GrantAuthorizationResponse).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::GrantAuthorizationResponse) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::GrantAuthorizationResponse, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig {void}
+  def initialize; end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::RevokeAuthorizationRequest
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::RevokeAuthorizationRequest) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::RevokeAuthorizationRequest).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::RevokeAuthorizationRequest) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::RevokeAuthorizationRequest, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      email: T.nilable(String),
+      walletId: T.nilable(String),
+      resource: T.nilable(String),
+      action: T.nilable(String)
+    ).void
+  end
+  def initialize(
+    email: "",
+    walletId: "",
+    resource: "",
+    action: ""
+  )
+  end
+
+  sig { returns(String) }
+  def email
+  end
+
+  sig { params(value: String).void }
+  def email=(value)
+  end
+
+  sig { void }
+  def clear_email
+  end
+
+  sig { returns(String) }
+  def walletId
+  end
+
+  sig { params(value: String).void }
+  def walletId=(value)
+  end
+
+  sig { void }
+  def clear_walletId
+  end
+
+  sig { returns(String) }
+  def resource
+  end
+
+  sig { params(value: String).void }
+  def resource=(value)
+  end
+
+  sig { void }
+  def clear_resource
+  end
+
+  sig { returns(String) }
+  def action
+  end
+
+  sig { params(value: String).void }
+  def action=(value)
+  end
+
+  sig { void }
+  def clear_action
+  end
+
+  sig { returns(T.nilable(Symbol)) }
+  def account
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::RevokeAuthorizationResponse
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::RevokeAuthorizationResponse) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::RevokeAuthorizationResponse).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::RevokeAuthorizationResponse) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::RevokeAuthorizationResponse, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig {void}
+  def initialize; end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::GetAuthorizationsRequest
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::GetAuthorizationsRequest) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::GetAuthorizationsRequest).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::GetAuthorizationsRequest) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::GetAuthorizationsRequest, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig {void}
+  def initialize; end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::GetAuthorizationsResponse
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::GetAuthorizationsResponse) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::GetAuthorizationsResponse).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::GetAuthorizationsResponse) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::GetAuthorizationsResponse, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      grants: T.nilable(T::Array[T.nilable(Services::Provider::V1::Grant)])
+    ).void
+  end
+  def initialize(
+    grants: []
+  )
+  end
+
+  sig { returns(T::Array[T.nilable(Services::Provider::V1::Grant)]) }
+  def grants
+  end
+
+  sig { params(value: Google::Protobuf::RepeatedField).void }
+  def grants=(value)
+  end
+
+  sig { void }
+  def clear_grants
   end
 
   sig { params(field: String).returns(T.untyped) }

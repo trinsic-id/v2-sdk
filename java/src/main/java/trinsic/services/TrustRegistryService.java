@@ -2,15 +2,14 @@ package trinsic.services;
 
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.InvalidProtocolBufferException;
-import trinsic.okapi.DidException;
-import trinsic.sdk.options.v1.Options;
-import trinsic.services.trustregistry.v1.TrustRegistryGrpc;
-import trinsic.services.trustregistry.v1.TrustRegistryOuterClass;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.concurrent.ExecutionException;
+import trinsic.okapi.DidException;
+import trinsic.sdk.options.v1.Options;
+import trinsic.services.trustregistry.v1.TrustRegistryGrpc;
+import trinsic.services.trustregistry.v1.TrustRegistryOuterClass;
 
 public class TrustRegistryService extends ServiceBase {
   public TrustRegistryGrpc.TrustRegistryFutureStub stub;
