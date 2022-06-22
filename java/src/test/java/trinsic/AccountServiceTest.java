@@ -1,13 +1,12 @@
 package trinsic;
 
 import com.google.protobuf.InvalidProtocolBufferException;
+import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import trinsic.okapi.DidException;
 import trinsic.services.AccountService;
 import trinsic.services.TrinsicService;
-
-import java.util.concurrent.ExecutionException;
 
 class AccountServiceTest {
 
@@ -32,7 +31,8 @@ class AccountServiceTest {
         Exception.class,
         () -> {
           trinsicService.setProfile(myProtectedProfile);
-          Assertions.assertEquals(myProtectedProfile, trinsicService.account().getOptionsBuilder().getAuthToken());
+          Assertions.assertEquals(
+              myProtectedProfile, trinsicService.account().getOptionsBuilder().getAuthToken());
           trinsicService.account().getInfo().get();
         });
 

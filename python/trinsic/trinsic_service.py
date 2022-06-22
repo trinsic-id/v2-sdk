@@ -12,9 +12,9 @@ from trinsic.wallet_service import WalletService
 
 class TrinsicService(ServiceBase):
     def __init__(
-            self,
-            *,
-            server_config: ServiceOptions = None,
+        self,
+        *,
+        server_config: ServiceOptions = None,
     ):
         super().__init__(server_config)
 

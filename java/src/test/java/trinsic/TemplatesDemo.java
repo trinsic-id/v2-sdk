@@ -1,15 +1,14 @@
 package trinsic;
 
 import com.google.gson.Gson;
-import trinsic.okapi.DidException;
-import trinsic.services.TrinsicService;
-import trinsic.services.verifiablecredentials.templates.v1.Templates;
-import trinsic.services.verifiablecredentials.v1.VerifiableCredentials;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
+import trinsic.okapi.DidException;
+import trinsic.services.TrinsicService;
+import trinsic.services.verifiablecredentials.templates.v1.Templates;
+import trinsic.services.verifiablecredentials.v1.VerifiableCredentials;
 
 public class TemplatesDemo {
   public static void main(String[] args)
@@ -57,7 +56,8 @@ public class TemplatesDemo {
     valuesMap.put("age", 42);
     var valuesJson = new Gson().toJson(valuesMap);
     var issueResponse =
-            trinsicService.credential()
+        trinsicService
+            .credential()
             .issueCredentialFromTemplate(
                 VerifiableCredentials.IssueFromTemplateRequest.newBuilder()
                     .setTemplateId(template.getData().getId())
@@ -76,14 +76,16 @@ public class TemplatesDemo {
 
     // getCredentialTemplate() {
     var getResponse =
-            trinsicService.template()
+        trinsicService
+            .template()
             .get(Templates.GetCredentialTemplateRequest.newBuilder().setId(id).build())
             .get();
     // }
 
     // searchCredentialTemplate() {
     var searchResponse =
-            trinsicService.template()
+        trinsicService
+            .template()
             .search(
                 Templates.SearchCredentialTemplatesRequest.newBuilder()
                     .setQuery("SELECT * FROM c WHERE c.id = '" + id + "'")
@@ -93,7 +95,8 @@ public class TemplatesDemo {
 
     // deleteCredentialTemplate() {
     var deleteResponse =
-            trinsicService.template()
+        trinsicService
+            .template()
             .delete(Templates.DeleteCredentialTemplateRequest.newBuilder().setId(id).build())
             .get();
     // }
@@ -101,7 +104,8 @@ public class TemplatesDemo {
     try {
       // checkCredentialStatus() {
       var checkStatusResponse =
-              trinsicService.credential()
+          trinsicService
+              .credential()
               .checkStatus(VerifiableCredentials.CheckStatusRequest.newBuilder().build())
               .get();
       // }
@@ -110,8 +114,9 @@ public class TemplatesDemo {
 
     try {
       // updateCredentialStatus() {
-      trinsicService.credential().updateStatus(
-          VerifiableCredentials.UpdateStatusRequest.newBuilder().build());
+      trinsicService
+          .credential()
+          .updateStatus(VerifiableCredentials.UpdateStatusRequest.newBuilder().build());
       // }
     } catch (Exception e) { // This is okay as an example
     }

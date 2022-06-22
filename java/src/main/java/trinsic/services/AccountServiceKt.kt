@@ -23,7 +23,9 @@ class AccountServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(o
     var request2 = request
     if (request.ecosystemId.isBlank())
         request2 =
-            SignInRequest.newBuilder(request).setEcosystemId(optionsBuilder.defaultEcosystem).build()
+            SignInRequest.newBuilder(request)
+                .setEcosystemId(optionsBuilder.defaultEcosystem)
+                .build()
     return Base64.getUrlEncoder().encodeToString(stub.signIn(request2).profile.toByteArray())
   }
 

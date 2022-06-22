@@ -187,6 +187,26 @@ const WebhookConfig$json = const {
 /// Descriptor for `WebhookConfig`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List webhookConfigDescriptor = $convert.base64Decode(
     'Cg1XZWJob29rQ29uZmlnEg4KAmlkGAEgASgJUgJpZBInCg9kZXN0aW5hdGlvbl91cmwYAiABKAlSDmRlc3RpbmF0aW9uVXJsEhYKBmV2ZW50cxgEIAMoCVIGZXZlbnRzEhYKBnN0YXR1cxgFIAEoCVIGc3RhdHVz');
+@$core.Deprecated('Use grantDescriptor instead')
+const Grant$json = const {
+  '1': 'Grant',
+  '2': const [
+    const {'1': 'resourceId', '3': 1, '4': 1, '5': 9, '10': 'resourceId'},
+    const {'1': 'actions', '3': 2, '4': 3, '5': 9, '10': 'actions'},
+    const {
+      '1': 'child_grants',
+      '3': 3,
+      '4': 3,
+      '5': 11,
+      '6': '.services.provider.v1.Grant',
+      '10': 'childGrants'
+    },
+  ],
+};
+
+/// Descriptor for `Grant`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List grantDescriptor = $convert.base64Decode(
+    'CgVHcmFudBIeCgpyZXNvdXJjZUlkGAEgASgJUgpyZXNvdXJjZUlkEhgKB2FjdGlvbnMYAiADKAlSB2FjdGlvbnMSPgoMY2hpbGRfZ3JhbnRzGAMgAygLMhsuc2VydmljZXMucHJvdmlkZXIudjEuR3JhbnRSC2NoaWxkR3JhbnRz');
 @$core.Deprecated('Use createEcosystemRequestDescriptor instead')
 const CreateEcosystemRequest$json = const {
   '1': 'CreateEcosystemRequest',
@@ -453,3 +473,82 @@ const GetEventTokenResponse$json = const {
 final $typed_data.Uint8List getEventTokenResponseDescriptor =
     $convert.base64Decode(
         'ChVHZXRFdmVudFRva2VuUmVzcG9uc2USFAoFdG9rZW4YASABKAlSBXRva2Vu');
+@$core.Deprecated('Use grantAuthorizationRequestDescriptor instead')
+const GrantAuthorizationRequest$json = const {
+  '1': 'GrantAuthorizationRequest',
+  '2': const [
+    const {'1': 'email', '3': 1, '4': 1, '5': 9, '9': 0, '10': 'email'},
+    const {'1': 'walletId', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'walletId'},
+    const {'1': 'resource', '3': 3, '4': 1, '5': 9, '10': 'resource'},
+    const {'1': 'action', '3': 4, '4': 1, '5': 9, '10': 'action'},
+  ],
+  '8': const [
+    const {'1': 'account'},
+  ],
+};
+
+/// Descriptor for `GrantAuthorizationRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List grantAuthorizationRequestDescriptor =
+    $convert.base64Decode(
+        'ChlHcmFudEF1dGhvcml6YXRpb25SZXF1ZXN0EhYKBWVtYWlsGAEgASgJSABSBWVtYWlsEhwKCHdhbGxldElkGAIgASgJSABSCHdhbGxldElkEhoKCHJlc291cmNlGAMgASgJUghyZXNvdXJjZRIWCgZhY3Rpb24YBCABKAlSBmFjdGlvbkIJCgdhY2NvdW50');
+@$core.Deprecated('Use grantAuthorizationResponseDescriptor instead')
+const GrantAuthorizationResponse$json = const {
+  '1': 'GrantAuthorizationResponse',
+};
+
+/// Descriptor for `GrantAuthorizationResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List grantAuthorizationResponseDescriptor =
+    $convert.base64Decode('ChpHcmFudEF1dGhvcml6YXRpb25SZXNwb25zZQ==');
+@$core.Deprecated('Use revokeAuthorizationRequestDescriptor instead')
+const RevokeAuthorizationRequest$json = const {
+  '1': 'RevokeAuthorizationRequest',
+  '2': const [
+    const {'1': 'email', '3': 1, '4': 1, '5': 9, '9': 0, '10': 'email'},
+    const {'1': 'walletId', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'walletId'},
+    const {'1': 'resource', '3': 3, '4': 1, '5': 9, '10': 'resource'},
+    const {'1': 'action', '3': 4, '4': 1, '5': 9, '10': 'action'},
+  ],
+  '8': const [
+    const {'1': 'account'},
+  ],
+};
+
+/// Descriptor for `RevokeAuthorizationRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List revokeAuthorizationRequestDescriptor =
+    $convert.base64Decode(
+        'ChpSZXZva2VBdXRob3JpemF0aW9uUmVxdWVzdBIWCgVlbWFpbBgBIAEoCUgAUgVlbWFpbBIcCgh3YWxsZXRJZBgCIAEoCUgAUgh3YWxsZXRJZBIaCghyZXNvdXJjZRgDIAEoCVIIcmVzb3VyY2USFgoGYWN0aW9uGAQgASgJUgZhY3Rpb25CCQoHYWNjb3VudA==');
+@$core.Deprecated('Use revokeAuthorizationResponseDescriptor instead')
+const RevokeAuthorizationResponse$json = const {
+  '1': 'RevokeAuthorizationResponse',
+};
+
+/// Descriptor for `RevokeAuthorizationResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List revokeAuthorizationResponseDescriptor =
+    $convert.base64Decode('ChtSZXZva2VBdXRob3JpemF0aW9uUmVzcG9uc2U=');
+@$core.Deprecated('Use getAuthorizationsRequestDescriptor instead')
+const GetAuthorizationsRequest$json = const {
+  '1': 'GetAuthorizationsRequest',
+};
+
+/// Descriptor for `GetAuthorizationsRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getAuthorizationsRequestDescriptor =
+    $convert.base64Decode('ChhHZXRBdXRob3JpemF0aW9uc1JlcXVlc3Q=');
+@$core.Deprecated('Use getAuthorizationsResponseDescriptor instead')
+const GetAuthorizationsResponse$json = const {
+  '1': 'GetAuthorizationsResponse',
+  '2': const [
+    const {
+      '1': 'grants',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.services.provider.v1.Grant',
+      '10': 'grants'
+    },
+  ],
+};
+
+/// Descriptor for `GetAuthorizationsResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getAuthorizationsResponseDescriptor =
+    $convert.base64Decode(
+        'ChlHZXRBdXRob3JpemF0aW9uc1Jlc3BvbnNlEjMKBmdyYW50cxgBIAMoCzIbLnNlcnZpY2VzLnByb3ZpZGVyLnYxLkdyYW50UgZncmFudHM=');

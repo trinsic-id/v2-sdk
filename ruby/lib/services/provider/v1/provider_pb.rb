@@ -52,6 +52,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       repeated :events, :string, 4
       optional :status, :string, 5
     end
+    add_message "services.provider.v1.Grant" do
+      optional :resourceId, :string, 1
+      repeated :actions, :string, 2
+      repeated :child_grants, :message, 3, "services.provider.v1.Grant"
+    end
     add_message "services.provider.v1.CreateEcosystemRequest" do
       optional :name, :string, 1
       optional :description, :string, 2
@@ -106,6 +111,31 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "services.provider.v1.GetEventTokenResponse" do
       optional :token, :string, 1
     end
+    add_message "services.provider.v1.GrantAuthorizationRequest" do
+      optional :resource, :string, 3
+      optional :action, :string, 4
+      oneof :account do
+        optional :email, :string, 1
+        optional :walletId, :string, 2
+      end
+    end
+    add_message "services.provider.v1.GrantAuthorizationResponse" do
+    end
+    add_message "services.provider.v1.RevokeAuthorizationRequest" do
+      optional :resource, :string, 3
+      optional :action, :string, 4
+      oneof :account do
+        optional :email, :string, 1
+        optional :walletId, :string, 2
+      end
+    end
+    add_message "services.provider.v1.RevokeAuthorizationResponse" do
+    end
+    add_message "services.provider.v1.GetAuthorizationsRequest" do
+    end
+    add_message "services.provider.v1.GetAuthorizationsResponse" do
+      repeated :grants, :message, 1, "services.provider.v1.Grant"
+    end
     add_enum "services.provider.v1.ParticipantType" do
       value :participant_type_individual, 0
       value :participant_type_organization, 1
@@ -125,6 +155,7 @@ module Services
       InvitationStatusResponse::Status = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.InvitationStatusResponse.Status").enummodule
       Ecosystem = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.Ecosystem").msgclass
       WebhookConfig = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.WebhookConfig").msgclass
+      Grant = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.Grant").msgclass
       CreateEcosystemRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.CreateEcosystemRequest").msgclass
       CreateEcosystemResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.CreateEcosystemResponse").msgclass
       UpdateEcosystemRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.UpdateEcosystemRequest").msgclass
@@ -141,6 +172,12 @@ module Services
       GetOberonKeyResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GetOberonKeyResponse").msgclass
       GetEventTokenRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GetEventTokenRequest").msgclass
       GetEventTokenResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GetEventTokenResponse").msgclass
+      GrantAuthorizationRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GrantAuthorizationRequest").msgclass
+      GrantAuthorizationResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GrantAuthorizationResponse").msgclass
+      RevokeAuthorizationRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.RevokeAuthorizationRequest").msgclass
+      RevokeAuthorizationResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.RevokeAuthorizationResponse").msgclass
+      GetAuthorizationsRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GetAuthorizationsRequest").msgclass
+      GetAuthorizationsResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GetAuthorizationsResponse").msgclass
       ParticipantType = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.ParticipantType").enummodule
     end
   end

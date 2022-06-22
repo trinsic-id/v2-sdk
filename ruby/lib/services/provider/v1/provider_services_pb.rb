@@ -20,6 +20,12 @@ module Services
           rpc :CreateEcosystem, ::Services::Provider::V1::CreateEcosystemRequest, ::Services::Provider::V1::CreateEcosystemResponse
           # Update an existing ecosystem
           rpc :UpdateEcosystem, ::Services::Provider::V1::UpdateEcosystemRequest, ::Services::Provider::V1::UpdateEcosystemResponse
+          # Grant authorization to ecosystem resources
+          rpc :GrantAuthorization, ::Services::Provider::V1::GrantAuthorizationRequest, ::Services::Provider::V1::GrantAuthorizationResponse
+          # Revoke authorization to ecosystem resources
+          rpc :RevokeAuthorization, ::Services::Provider::V1::RevokeAuthorizationRequest, ::Services::Provider::V1::RevokeAuthorizationResponse
+          # Retreive the list of permissions for this particular account/ecosystem
+          rpc :GetAuthorizations, ::Services::Provider::V1::GetAuthorizationsRequest, ::Services::Provider::V1::GetAuthorizationsResponse
           # Add a webhook endpoint to the ecosystem
           rpc :AddWebhook, ::Services::Provider::V1::AddWebhookRequest, ::Services::Provider::V1::AddWebhookResponse
           # Delete a webhook endpoint from the ecosystem
