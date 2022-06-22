@@ -1,14 +1,15 @@
 package trinsic;
 
 import com.google.gson.Gson;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.UUID;
-import java.util.concurrent.ExecutionException;
 import trinsic.okapi.DidException;
 import trinsic.services.TrinsicService;
 import trinsic.services.verifiablecredentials.templates.v1.Templates;
 import trinsic.services.verifiablecredentials.v1.VerifiableCredentials;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.UUID;
+import java.util.concurrent.ExecutionException;
 
 public class TemplatesDemo {
   public static void main(String[] args)
@@ -93,14 +94,6 @@ public class TemplatesDemo {
             .get();
     // }
 
-    // deleteCredentialTemplate() {
-    var deleteResponse =
-        trinsicService
-            .template()
-            .delete(Templates.DeleteCredentialTemplateRequest.newBuilder().setId(id).build())
-            .get();
-    // }
-
     try {
       // checkCredentialStatus() {
       var checkStatusResponse =
@@ -118,6 +111,17 @@ public class TemplatesDemo {
           .credential()
           .updateStatus(VerifiableCredentials.UpdateStatusRequest.newBuilder().build());
       // }
+    } catch (Exception e) { // This is okay as an example
+    }
+
+    try {
+        // deleteCredentialTemplate() {
+        var deleteResponse =
+                trinsicService
+                        .template()
+                        .delete(Templates.DeleteCredentialTemplateRequest.newBuilder().setId(id).build())
+                        .get();
+        // }
     } catch (Exception e) { // This is okay as an example
     }
   }
