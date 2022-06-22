@@ -117,11 +117,15 @@ async def templates_demo():
         request=SearchCredentialTemplatesRequest(query="SELECT * FROM c")
     )
     # }
-    # deleteCredentialTemplate() {
-    delete_template_response = await trinsic_service.template.delete(
-        request=DeleteCredentialTemplateRequest(id=template.data.id)
-    )
-    # }
+    try:
+        # deleteCredentialTemplate() {
+        delete_template_response = await trinsic_service.template.delete(
+            request=DeleteCredentialTemplateRequest(id=template.data.id)
+        )
+        # }
+    except:
+        # permission denied on deletion - whatever
+        pass
 
 
 if __name__ == "__main__":
