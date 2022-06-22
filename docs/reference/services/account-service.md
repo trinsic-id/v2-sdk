@@ -65,9 +65,6 @@ The authentication code must be passed along with `challenge` to [LoginConfirm](
         ```
         <!--/codeinclude-->
 
-    === "Ruby"
-        > Sample coming soon
-
 {{ proto_method_tabs("services.account.v1.Account.Login") }}
 
 !!! tip "Anonymous Login"
@@ -128,9 +125,6 @@ Our SDK will take care of hashing the confirmation code for you.
         ```
         <!--/codeinclude-->
 
-    === "Ruby"
-        > Sample coming soon
-
 {{ proto_method_tabs("services.account.v1.Account.LoginConfirm") }}
 
 ---
@@ -178,10 +172,6 @@ Returns the account information (name, email address, phone number, etc.) used t
         ```
         <!--/codeinclude-->
 
-    === "Ruby"
-        ```ruby
-        info = account_service.get_info()
-        ```
 {{ proto_method_tabs("services.account.v1.Account.Info") }}
 
 !!! note
@@ -280,11 +270,6 @@ Protects the specified account profile with a security code. It is not possible 
     ```
     <!--/codeinclude-->
 
-=== "Ruby"
-    ```ruby
-    protected_profile = account_service.protect(account_profile, '1234')
-    ```
-
 !!! info
     In this context, "protection" refers to a cryptographic operation on the authorization token for an account.
 
@@ -340,10 +325,6 @@ Most commonly, this method is used on a protected profile received from the [Sig
     ```
     <!--/codeinclude-->
 
-=== "Ruby"
-    ```ruby
-    account_profile = account_service.unprotect(protected_profile, '1234')
-    ```
 
 ---
 
@@ -396,11 +377,6 @@ If no account details are passed to this method, an anonymous account will be cr
         [CreateEcosystem](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:accountServiceSignIn
         ```
         <!--/codeinclude-->
-
-    === "Ruby"
-        ```ruby
-        allison = account_service.sign_in(nil).profile
-        ```
 
 {{ proto_method_tabs("services.account.v1.Account.SignIn") }}
 
