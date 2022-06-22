@@ -1,6 +1,6 @@
-# Okapi Protobuf Files
+# Trinsic Services Protobuf Files
 
-These files are synched with Buf repo at https://buf.build/trinsic/okapi.
+These files are synched with Buf repo at https://buf.build/trinsic/services.
 
 ## Working with Buf repo
 
