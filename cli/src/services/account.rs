@@ -106,15 +106,11 @@ async fn authorize_webhook(args: &AuthorizeWebhookArgs, config: CliConfig) -> Re
 
     let req = AuthorizeWebhookRequest { events: args.events.clone() };
 
-    let req2 = AuthorizeWebhookRequest { events: args.events.clone() };
-
     let request = tonic::Request::new(req);
 
     let _response = client.authorize_webhook(request).await?.into_inner();
 
-    Ok(dict! {
-        "request".into() => Item::Json(to_value(&req2)?)
-    })
+    Ok(Output::new())
 }
 
 pub(crate) fn unprotect(profile: &mut AccountProfile, code: Vec<u8>) {
