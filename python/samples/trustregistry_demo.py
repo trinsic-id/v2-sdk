@@ -1,13 +1,7 @@
 import asyncio
 import uuid
 
-from trinsic.proto.services.trustregistry.v1 import (
-    RegistrationStatus,
-    AddFrameworkRequest,
-    UnregisterMemberRequest,
-    GetMembershipStatusRequest,
-    RegisterMemberRequest,
-)
+from trinsic.proto.services.trustregistry.v1 import *
 from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config
 
