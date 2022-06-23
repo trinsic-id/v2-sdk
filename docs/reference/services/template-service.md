@@ -1,7 +1,7 @@
 
 # Template Service
 
-The Template Service allows you to manage and search [Credential Templates](/learn/templates).
+The Template Service allows you to manage and search [Credential Templates](/learn/platform/templates).
 
 
 !!! info "Templates are optional"

@@ -11,17 +11,18 @@ nav:
   - Learn: 
     - Overview: learn/index.md
     - Key Concepts:
-      - What is Trinsic?: learn/intro.md
-      - Security Overview: learn/security.md
-      - Identity Ecosystems: learn/ecosystems.md
-      - Wallets: learn/wallets.md
-      - Templates: learn/templates.md
-      - Credentials: learn/credentials.md
-      - Trust Registries: learn/trust-registries.md
-      - Standards: learn/standards.md
+      - Identity Ecosystems: learn/concepts/ecosystems.md
+      - Credentials: learn/concepts/credentials.md
+      - Trust Registries: learn/concepts/trust-registries.md
+      - Standards: learn/concepts/standards.md
+    - Trinsic Platform:
+      - What is Trinsic?: learn/platform/intro.md
+      - Security Overview: learn/platform/security.md
+      - Templates: learn/platform/templates.md
+      - Wallets: learn/platform/wallets.md
     - Tutorials:
       - Build a Vaccine Card: walkthroughs/vaccination.md
-  - Services:
+  - Reference:
     - Overview: reference/index.md
     - SDK Services:
       - Account Service: reference/services/account-service.md

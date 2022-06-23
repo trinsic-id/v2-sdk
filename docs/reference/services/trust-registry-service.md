@@ -1,6 +1,6 @@
 # Trust Registry Service
 
-The Trust Registry Service exposes functionality for managing [Trust Registries](/learn/trust-registries) -- lists of authorized issuers for the various credential types within an ecosystem.
+The Trust Registry Service exposes functionality for managing [Trust Registries](/learn/concepts/trust-registries) -- lists of authorized issuers for the various credential types within an ecosystem.
 
 !!! warning "Under Construction"
     This section -- and the underlying API -- is under active development.

@@ -6,7 +6,7 @@ When using the SDK, you can pass parameters to the default service constructors 
 
 ## Authorization
 
-See our [security](../learn/security.md) section for more information on how we have implemented wallet authentication and authorization.
+See our [security](../learn/platform/security.md) section for more information on how we have implemented wallet authentication and authorization.
 <!-- ### Profile Data Format -->
 
 ## SDK Services

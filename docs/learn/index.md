@@ -1,4 +1,3 @@
 # Learn
 
-Understand the [key concepts](./intro.md) involved when using Trinsic, or work through our [tutorials](../walkthroughs/vaccination.md) to learn how to build out specific functionality.
-
+Understand the [key concepts](./intro.md) of self-sovereign identity, learn about the specifics of working with the [Trinsic platform](./platform/intro.md), or work through our [tutorials](../walkthroughs/vaccination.md) to learn how to build out specific functionality.
