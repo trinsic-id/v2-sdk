@@ -14,9 +14,9 @@ type Trinsic struct {
 
 	as *accountBase
 	cs *credentialBase
-	ts *credentialTemplateBase
+	ts *templateBase
 	ps *providerBase
-	tr *trustRegistryBase
+	tr *trustregistryBase
 	ws *walletBase
 }
 
@@ -58,7 +58,7 @@ func (t *Trinsic) Credential() CredentialService {
 
 func (t *Trinsic) Template() CredentialTemplateService {
 	if t.ts == nil {
-		t.ts = &credentialTemplateBase{
+		t.ts = &templateBase{
 			Service: t.Service,
 			client:  template.NewCredentialTemplatesClient(t.Service.GetChannel()),
 		}
@@ -80,7 +80,7 @@ func (t *Trinsic) Provider() ProviderService {
 
 func (t *Trinsic) TrustRegistry() TrustRegistryService {
 	if t.tr == nil {
-		t.tr = &trustRegistryBase{
+		t.tr = &trustregistryBase{
 			Service: t.Service,
 			client:  trustregistry.NewTrustRegistryClient(t.Service.GetChannel()),
 		}
