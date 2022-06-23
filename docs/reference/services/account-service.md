@@ -130,7 +130,7 @@ Returns the account information (name, email address, phone number, etc.) used t
 {{ proto_method_tabs("services.account.v1.Account.Info") }}
 
 !!! note
-    This call returns the information associated with the authentication token used to create the request; therefore, it is not possible to pass a different authentication token to this call. Otherwise, Trinsic's [zero-knowledge proof](/learn/security) authentication scheme would be violated.
+    This call returns the information associated with the authentication token used to create the request; therefore, it is not possible to pass a different authentication token to this call. Otherwise, Trinsic's [zero-knowledge proof](/learn/platform/security) authentication scheme would be violated.
 
     When using the CLI, this will return information for the account most recently logged in to.
 

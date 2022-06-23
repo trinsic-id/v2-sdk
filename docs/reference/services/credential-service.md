@@ -1,6 +1,6 @@
 # Credential Service
 
-The Credential Service exposes functionality for issuance, proof generation, verification, and revocation of [Verifiable Credentials](/learn/credentials){target=_blank}.
+The Credential Service exposes functionality for issuance, proof generation, verification, and revocation of [Verifiable Credentials](/learn/concepts/credentials){target=_blank}.
 
 
 !!! info "Signature Format" 
