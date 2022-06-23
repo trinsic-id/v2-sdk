@@ -136,7 +136,7 @@ async fn add_framework(args: &AddFrameworkArgs, config: &CliConfig) -> Result<Ou
 
     let response = client.add_framework(request).await?.into_inner();
 
-    Ok(dict!{
+    Ok(dict! {
         "response".into() => Item::Json(to_value(&response)?)
     })
 }

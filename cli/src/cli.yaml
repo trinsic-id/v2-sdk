@@ -70,6 +70,14 @@ subcommands:
                   takes_value: true
                   required: false
                   help: (Optional) The ecosystem name or id to sign in
+        - authorize-webhook:
+            about: Authorizes ecosystem provider to receive webhooks for current account
+            args:
+              - events:
+                  long: events
+                  help: Comma-separated list of events to authorize, or "*" for all events
+                  takes_value: true
+                  required: true
         - info:
             about: Show account information
   - wallet:
@@ -255,6 +263,47 @@ subcommands:
                   help: Alias to use with this authentication profile
                   takes_value: true
                   required: false
+        - update-ecosystem:
+            about: Updates ecosystem description or URI
+            args:
+              - description:
+                  long: description
+                  help: New description for the ecosystem
+                  takes_value: true
+                  required: false
+              - uri:
+                  long: uri
+                  help: New URI for the ecosystem
+                  takes_value: true
+                  required: false
+        - ecosystem-info:
+            about: Fetches information about the current ecosystem
+        - add-webhook:
+            about: Adds a webhook to the ecosystem
+            args:
+              - url:
+                  long: url
+                  help: Destination URL of webhook
+                  takes_value: true
+                  required: true
+              - secret:
+                  long: secret
+                  help: Secret phrase used to sign and verify webhook payloads
+                  takes_value: true
+                  required: true
+              - events:
+                  long: events
+                  help: Comma-separated list of events webhook should receive, or "*" for all (default "*")
+                  takes_value: true
+                  required: false
+        - delete-webhook:
+            about: Deletes a webhook from the ecosystem
+            args:
+              - webhook-id:
+                  long: webhook-id
+                  help: ID of webhook to delete
+                  takes_value: true
+                  required: true
         - invite:
             about: Send an invitation
             args:
