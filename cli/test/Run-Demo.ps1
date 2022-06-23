@@ -14,7 +14,7 @@ function Stop-OnError {
 
 $ServerEndpoint = switch ($Environment) {
     Development { "dev-internal.trinsic.cloud" }
-    Staging { "staging.trinsic.cloud" }
+    Staging { "staging-internal.trinsic.cloud" }
     Default { "prod.trinsic.cloud" }
 }
 
