@@ -14,7 +14,7 @@
         
       
       <link rel="icon" href="../../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.7+insiders-4.18.2">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.8+insiders-4.19.0">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.8ae2a6bc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.485cfce5.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
@@ -1852,7 +1852,7 @@
 <span class="n">templateRequest</span><span class="p">.</span><span class="n">Fields</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;lastName&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="p">());</span><span class="w"></span>
 <span class="n">templateRequest</span><span class="p">.</span><span class="n">Fields</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">Optional</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="p">});</span><span class="w"> </span><span class="c1">// TODO - use FieldType.NUMBER once schema validation is fixed.</span>
 
-<span class="kt">var</span><span class="w"> </span><span class="n">template</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsicService</span><span class="p">.</span><span class="n">Template</span><span class="p">.</span><span class="n">CreateAsync</span><span class="p">(</span><span class="n">templateRequest</span><span class="p">);</span><span class="w"></span>
+<span class="kt">var</span><span class="w"> </span><span class="n">template</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Template</span><span class="p">.</span><span class="n">CreateAsync</span><span class="p">(</span><span class="n">templateRequest</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -1875,7 +1875,7 @@
 <span class="nx">templateRequest</span><span class="p">.</span><span class="nx">Fields</span><span class="p">[</span><span class="s">&quot;lastName&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">template</span><span class="p">.</span><span class="nx">TemplateField</span><span class="p">{}</span><span class="w"></span>
 <span class="nx">templateRequest</span><span class="p">.</span><span class="nx">Fields</span><span class="p">[</span><span class="s">&quot;age&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">template</span><span class="p">.</span><span class="nx">TemplateField</span><span class="p">{</span><span class="nx">Type</span><span class="p">:</span><span class="w"> </span><span class="nx">template</span><span class="p">.</span><span class="nx">FieldType_NUMBER</span><span class="p">,</span><span class="w"> </span><span class="nx">Optional</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span><span class="w"></span>
 
-<span class="nx">templateResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">Template</span><span class="p">().</span><span class="nx">Create</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">templateRequest</span><span class="p">)</span><span class="w"></span>
+<span class="nx">templateResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Template</span><span class="p">().</span><span class="nx">Create</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">templateRequest</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -1895,7 +1895,7 @@
 <span class="w">        </span><span class="p">.</span><span class="na">setAllowAdditionalFields</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">putAllFields</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">();</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="n">template</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsicService</span><span class="p">.</span><span class="na">template</span><span class="p">().</span><span class="na">create</span><span class="p">(</span><span class="n">templateRequest</span><span class="p">).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<span class="kd">var</span><span class="w"> </span><span class="n">template</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">template</span><span class="p">().</span><span class="na">create</span><span class="p">(</span><span class="n">templateRequest</span><span class="p">).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>
@@ -1923,7 +1923,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">getTemplateResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsicService</span><span class="p">.</span><span class="n">Template</span><span class="p">.</span><span class="n">GetAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">Id</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">template</span><span class="p">.</span><span class="n">Data</span><span class="p">.</span><span class="n">Id</span><span class="p">});</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">getTemplateResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Template</span><span class="p">.</span><span class="n">GetAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">Id</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">template</span><span class="p">.</span><span class="n">Data</span><span class="p">.</span><span class="n">Id</span><span class="p">});</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -1933,12 +1933,12 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">getResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">Template</span><span class="p">().</span><span class="nx">Get</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">template</span><span class="p">.</span><span class="nx">GetCredentialTemplateRequest</span><span class="p">{</span><span class="nx">Id</span><span class="p">:</span><span class="w"> </span><span class="nx">templateResponse</span><span class="p">.</span><span class="nx">Data</span><span class="p">.</span><span class="nx">Id</span><span class="p">})</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">getResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Template</span><span class="p">().</span><span class="nx">Get</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">template</span><span class="p">.</span><span class="nx">GetCredentialTemplateRequest</span><span class="p">{</span><span class="nx">Id</span><span class="p">:</span><span class="w"> </span><span class="nx">templateResponse</span><span class="p">.</span><span class="nx">Data</span><span class="p">.</span><span class="nx">Id</span><span class="p">})</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">getResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">    </span><span class="n">trinsicService</span><span class="w"></span>
+<span class="w">    </span><span class="n">trinsic</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">template</span><span class="p">()</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">Templates</span><span class="p">.</span><span class="na">GetCredentialTemplateRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setId</span><span class="p">(</span><span class="n">id</span><span class="p">).</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
@@ -1969,7 +1969,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">deleteTemplateResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsicService</span><span class="p">.</span><span class="n">Template</span><span class="p">.</span><span class="n">DeleteAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">Id</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">template</span><span class="p">.</span><span class="n">Data</span><span class="p">.</span><span class="n">Id</span><span class="p">});</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">deleteTemplateResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Template</span><span class="p">.</span><span class="n">DeleteAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">Id</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">template</span><span class="p">.</span><span class="n">Data</span><span class="p">.</span><span class="n">Id</span><span class="p">});</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -1979,12 +1979,12 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">deleteResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">Template</span><span class="p">().</span><span class="nx">Delete</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">template</span><span class="p">.</span><span class="nx">DeleteCredentialTemplateRequest</span><span class="p">{</span><span class="nx">Id</span><span class="p">:</span><span class="w"> </span><span class="nx">templateResponse</span><span class="p">.</span><span class="nx">Data</span><span class="p">.</span><span class="nx">Id</span><span class="p">})</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">deleteResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Template</span><span class="p">().</span><span class="nx">Delete</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">template</span><span class="p">.</span><span class="nx">DeleteCredentialTemplateRequest</span><span class="p">{</span><span class="nx">Id</span><span class="p">:</span><span class="w"> </span><span class="nx">templateResponse</span><span class="p">.</span><span class="nx">Data</span><span class="p">.</span><span class="nx">Id</span><span class="p">})</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">deleteResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">        </span><span class="n">trinsicService</span><span class="w"></span>
+<span class="w">        </span><span class="n">trinsic</span><span class="w"></span>
 <span class="w">                </span><span class="p">.</span><span class="na">template</span><span class="p">()</span><span class="w"></span>
 <span class="w">                </span><span class="p">.</span><span class="na">delete</span><span class="p">(</span><span class="n">Templates</span><span class="p">.</span><span class="na">DeleteCredentialTemplateRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setId</span><span class="p">(</span><span class="n">id</span><span class="p">).</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
 <span class="w">                </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
@@ -2017,7 +2017,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">searchTemplateResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsicService</span><span class="p">.</span><span class="n">Template</span><span class="p">.</span><span class="n">SearchAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">Query</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;SELECT * FROM c&quot;</span><span class="p">});</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">searchTemplateResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Template</span><span class="p">.</span><span class="n">SearchAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">Query</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;SELECT * FROM c&quot;</span><span class="p">});</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2027,12 +2027,12 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">searchResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">service</span><span class="p">.</span><span class="nx">Template</span><span class="p">().</span><span class="nx">Search</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">template</span><span class="p">.</span><span class="nx">SearchCredentialTemplatesRequest</span><span class="p">{</span><span class="nx">Query</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;SELECT * FROM c&quot;</span><span class="p">})</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">searchResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Template</span><span class="p">().</span><span class="nx">Search</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">template</span><span class="p">.</span><span class="nx">SearchCredentialTemplatesRequest</span><span class="p">{</span><span class="nx">Query</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;SELECT * FROM c&quot;</span><span class="p">})</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">searchResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">    </span><span class="n">trinsicService</span><span class="w"></span>
+<span class="w">    </span><span class="n">trinsic</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">template</span><span class="p">()</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">search</span><span class="p">(</span><span class="w"></span>
 <span class="w">            </span><span class="n">Templates</span><span class="p">.</span><span class="na">SearchCredentialTemplatesRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
@@ -2118,6 +2118,29 @@
 <p class="admonition-title">More Info</p>
 <p>This endpoint works very similarly to querying Wallet items; please see <a href="/reference/services/wallet-service/#advanced-search">Wallet Service &gt; Search</a> for more information.</p>
 </div>
+
+
+  <aside class="md-source-file">
+    
+    
+    
+      
+      <span class="md-source-file__fact">
+        <span class="md-icon" title="Contributors">
+          
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.536 5.536 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13v-1.75M0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20H0m24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9V20Z"/></svg>
+          
+        </span>
+        <nav>
+          
+            <a href="mailto:polygonguru@gmail.com">Scott Phillips</a>, 
+            <a href="mailto:josh@trinsic.id">Joshua Coffey</a>, 
+            <a href="mailto:michaeldavisboyd@gmail.com">Michael Boyd</a>
+        </nav>
+      </span>
+    
+    
+  </aside>
 
 
 
