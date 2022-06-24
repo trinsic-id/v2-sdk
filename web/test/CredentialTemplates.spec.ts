@@ -17,13 +17,13 @@ const {
 } = createRequiredTestObjects();
 
 let options: ServiceOptions = getTestServerOptions();
-let service: TrinsicService;
+let trinsic: TrinsicService;
 
 describe("Demo: Credential Templates", () => {
   setTestTimeout();
   beforeAll(async () => {
-    service = new TrinsicService(options);
-    options.authToken = await service.account().signIn();
+    trinsic = new TrinsicService(options);
+    options.authToken = await trinsic.account().signIn();
   });
 
   it("should run create credential templates", async () => {

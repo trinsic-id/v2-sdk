@@ -7,14 +7,14 @@ const options = getTestServerOptions();
 describe("ProviderService Unit Tests", () => {
   setTestTimeout();
   beforeAll(async () => {
-    let service = new TrinsicService(options);
-      options.authToken = await service.account().signIn();
+    let trinsic = new TrinsicService(options);
+      options.authToken = await trinsic.account().signIn();
   });
 
   it("Demo: Ecosystem Tests", async () => {
-    let trinsicService = new TrinsicService(options);
+    let trinsic = new TrinsicService(options);
     // createEcosystem() {
-    let actualCreate = await trinsicService.provider().createEcosystem(
+    let actualCreate = await trinsic.provider().createEcosystem(
       CreateEcosystemRequest.fromPartial({
         description: "Test ecosystem from Node",
         uri: "https://example.com",

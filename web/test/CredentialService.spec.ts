@@ -10,18 +10,18 @@ import vaccineCertUnsigned from "./data/vaccination-certificate-unsigned.json";
 import { getTestServerOptions, setTestTimeout } from "./env";
 
 let options: ServiceOptions = getTestServerOptions();
-let service: TrinsicService;
+let trinsic: TrinsicService;
 
 describe("CredentialService Unit Tests", () => {
   setTestTimeout();
   beforeAll(async () => {
-    service = new TrinsicService(options);
-    options.authToken = await service.account().signIn();
+    trinsic = new TrinsicService(options);
+    options.authToken = await trinsic.account().signIn();
   });
 
   it("Issue Credential From Template", async () => {
     //Get account info so we can compare issued DID etc.
-    let info = await service.account().info();
+    let info = await trinsic.account().info();
 
     //Set issuer DID of credential
     let vaccineCert = Object.assign({}, vaccineCertUnsigned, {
@@ -30,7 +30,7 @@ describe("CredentialService Unit Tests", () => {
     let credentialJSON = JSON.stringify(vaccineCert);
 
     // issueCredential() {
-    const issueResponse = await service.credential().issueCredential(
+    const issueResponse = await trinsic.credential().issueCredential(
       IssueRequest.fromPartial({ documentJson: credentialJSON })
     );
     // }

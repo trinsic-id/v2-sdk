@@ -13,22 +13,22 @@ import {v4 as uuid} from "uuid";
 
 let options = getTestServerOptions();
 
-let service: TrinsicService;
+let trinsic: TrinsicService;
 
 describe("wallet service tests", () => {
     setTestTimeout();
     beforeAll(async () => {
-        service = new TrinsicService(options);
-        options.authToken = await service.account().signIn();
+        trinsic = new TrinsicService(options);
+        options.authToken = await trinsic.account().signIn();
     });
 
     it("can retrieve account info", async () => {
-        const info = await service.account().info();
+        const info = await trinsic.account().info();
         expect(info).not.toBeNull();
     });
 
     it("can create new ecosystem", async () => {
-        const response = await service.provider().createEcosystem(
+        const response = await trinsic.provider().createEcosystem(
             CreateEcosystemRequest.fromPartial({})
         );
 
@@ -42,12 +42,12 @@ describe("wallet service tests", () => {
             id: "https://issuer.oidp.uscis.gov/credentials/83627465",
         };
 
-        let issueResponse = await service.credential().issueCredential({
+        let issueResponse = await trinsic.credential().issueCredential({
             documentJson: JSON.stringify(unsignedDocument),
         });
         expect(issueResponse).not.toBeNull();
 
-        let insertResponse = await service.wallet().insertItem(
+        let insertResponse = await trinsic.wallet().insertItem(
             InsertItemRequest.fromPartial({
                 itemJson: issueResponse.signedDocumentJson,
             })
@@ -55,11 +55,11 @@ describe("wallet service tests", () => {
         expect(insertResponse).not.toBeNull();
         expect(insertResponse.itemId).not.toBe("");
 
-        let searchResponse = await service.wallet().search();
+        let searchResponse = await trinsic.wallet().search();
         expect(searchResponse).not.toBeNull();
         expect(searchResponse.items.length).toBeGreaterThan(0);
 
-        let proof = await service.credential().createProof(
+        let proof = await trinsic.credential().createProof(
             CreateProofRequest.fromPartial({
                 itemId: insertResponse.itemId,
                 revealDocumentJson: JSON.stringify({
@@ -69,7 +69,7 @@ describe("wallet service tests", () => {
         );
         expect(proof).not.toBeNull();
 
-        let verifyResponse = await service.credential().verifyProof({
+        let verifyResponse = await trinsic.credential().verifyProof({
             proofDocumentJson: proof.proofDocumentJson,
         });
         expect(verifyResponse).not.toBeNull();
@@ -91,7 +91,7 @@ describe("wallet service tests", () => {
             },
         });
 
-        let template = await service.template().createCredentialTemplate(
+        let template = await trinsic.template().createCredentialTemplate(
             templateRequest
         );
 
@@ -107,7 +107,7 @@ describe("wallet service tests", () => {
             age: 42,
         });
 
-        let issueResponse = await service.credential().issueFromTemplate(
+        let issueResponse = await trinsic.credential().issueFromTemplate(
             IssueFromTemplateRequest.fromPartial({
                 templateId: template!.data!.id,
                 valuesJson: values,
