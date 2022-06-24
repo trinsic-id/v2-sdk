@@ -24,9 +24,9 @@ public class CredentialsDemo {
 
     var serverConfig = TrinsicUtilities.getTrinsicServiceOptions();
 
-    var trinsicService = new TrinsicService(serverConfig);
+    var trinsic = new TrinsicService(serverConfig);
     var ecosystemId =
-        trinsicService
+        trinsic
             .provider()
             .createEcosystem(ProviderOuterClass.CreateEcosystemRequest.getDefaultInstance())
             .get()
@@ -37,14 +37,14 @@ public class CredentialsDemo {
 
     //    trinsicService.setOptionsBuilder(serverConfig);
 
-    var issuerVerifier = trinsicService.account().signIn().get(); // Both issues and verifies
-    var holder = trinsicService.account().signIn().get();
+    var issuerVerifier = trinsic.account().signIn().get(); // Both issues and verifies
+    var holder = trinsic.account().signIn().get();
 
-    trinsicService.setProfile(issuerVerifier);
+    trinsic.setProfile(issuerVerifier);
 
     // issueCredentialSample() {
     var issueResult =
-        trinsicService
+        trinsic
             .credential()
             .issueCredential(
                 VerifiableCredentials.IssueRequest.newBuilder()
@@ -57,10 +57,10 @@ public class CredentialsDemo {
 
     System.out.println("Credential: " + signedCredentialJson);
 
-    trinsicService.setProfile(holder);
+    trinsic.setProfile(holder);
     // createProof() {
     var createProofResponse =
-        trinsicService
+        trinsic
             .credential()
             .createProof(
                 VerifiableCredentials.CreateProofRequest.newBuilder()
@@ -76,7 +76,7 @@ public class CredentialsDemo {
 
     try {
       // sendCredential() {
-      trinsicService
+      trinsic
           .credential()
           .send(
               VerifiableCredentials.SendRequest.newBuilder()
@@ -88,10 +88,10 @@ public class CredentialsDemo {
       // This is okay, we don't expect that account to exist.
     }
 
-    trinsicService.setProfile(issuerVerifier);
+    trinsic.setProfile(issuerVerifier);
     // verifyProof() {
     var verifyProofResponse =
-        trinsicService
+        trinsic
             .credential()
             .verifyProof(
                 VerifiableCredentials.VerifyProofRequest.newBuilder()

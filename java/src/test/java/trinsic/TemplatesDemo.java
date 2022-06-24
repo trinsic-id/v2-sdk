@@ -19,9 +19,9 @@ public class TemplatesDemo {
 
   public static void run()
       throws IOException, DidException, ExecutionException, InterruptedException {
-    var trinsicService = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
-    var account = trinsicService.account().signIn().get();
-    trinsicService.setProfile(account);
+    var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
+    var account = trinsic.account().signIn().get();
+    trinsic.setProfile(account);
 
     // create example template
     // createTemplate() {
@@ -41,7 +41,7 @@ public class TemplatesDemo {
             .setAllowAdditionalFields(false)
             .putAllFields(fields)
             .build();
-    var template = trinsicService.template().create(templateRequest).get();
+    var template = trinsic.template().create(templateRequest).get();
     // }
 
     assert template != null;
@@ -57,7 +57,7 @@ public class TemplatesDemo {
     valuesMap.put("age", 42);
     var valuesJson = new Gson().toJson(valuesMap);
     var issueResponse =
-        trinsicService
+        trinsic
             .credential()
             .issueCredentialFromTemplate(
                 VerifiableCredentials.IssueFromTemplateRequest.newBuilder()
@@ -77,7 +77,7 @@ public class TemplatesDemo {
 
     // getCredentialTemplate() {
     var getResponse =
-        trinsicService
+        trinsic
             .template()
             .get(Templates.GetCredentialTemplateRequest.newBuilder().setId(id).build())
             .get();
@@ -85,7 +85,7 @@ public class TemplatesDemo {
 
     // searchCredentialTemplate() {
     var searchResponse =
-        trinsicService
+        trinsic
             .template()
             .search(
                 Templates.SearchCredentialTemplatesRequest.newBuilder()
@@ -97,7 +97,7 @@ public class TemplatesDemo {
     try {
       // checkCredentialStatus() {
       var checkStatusResponse =
-          trinsicService
+          trinsic
               .credential()
               .checkStatus(VerifiableCredentials.CheckStatusRequest.newBuilder().build())
               .get();
@@ -107,7 +107,7 @@ public class TemplatesDemo {
 
     try {
       // updateCredentialStatus() {
-      trinsicService
+      trinsic
           .credential()
           .updateStatus(VerifiableCredentials.UpdateStatusRequest.newBuilder().build());
       // }
@@ -117,7 +117,7 @@ public class TemplatesDemo {
     try {
         // deleteCredentialTemplate() {
         var deleteResponse =
-                trinsicService
+                trinsic
                         .template()
                         .delete(Templates.DeleteCredentialTemplateRequest.newBuilder().setId(id).build())
                         .get();

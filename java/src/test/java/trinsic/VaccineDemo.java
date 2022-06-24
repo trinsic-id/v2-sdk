@@ -24,11 +24,11 @@ public class VaccineDemo {
       throws IOException, DidException, ExecutionException, InterruptedException {
     var serverConfig = TrinsicUtilities.getTrinsicServiceOptions();
 
-    var trinsicService = new TrinsicService(serverConfig);
+    var trinsic = new TrinsicService(serverConfig);
 
     // createEcosystem() {
     var ecosystemResponse =
-        trinsicService
+        trinsic
             .provider()
             .createEcosystem(ProviderOuterClass.CreateEcosystemRequest.getDefaultInstance())
             .get();
@@ -38,30 +38,30 @@ public class VaccineDemo {
 
     // Set default ecosystem on config
     serverConfig.setDefaultEcosystem(ecosystemId);
-    trinsicService.setDefaultEcosystem(ecosystemId);
+    trinsic.setDefaultEcosystem(ecosystemId);
 
     // setupActors() {
     // Create an account for each participant in the scenario
-    var allison = trinsicService.account().signIn().get();
-    var clinic = trinsicService.account().signIn().get();
-    var airline = trinsicService.account().signIn().get();
+    var allison = trinsic.account().signIn().get();
+    var clinic = trinsic.account().signIn().get();
+    var airline = trinsic.account().signIn().get();
     // }
 
     // Create template
-    var templateId = DefineTemplate(trinsicService.template(), clinic);
+    var templateId = DefineTemplate(trinsic.template(), clinic);
 
     // Issue credential
-    var credential = IssueCredential(trinsicService, templateId, clinic);
+    var credential = IssueCredential(trinsic, templateId, clinic);
 
     System.out.println("Credential: " + credential);
 
     // storeCredential() {
     // Set active profile to 'allison' so we can manage her cloud wallet
-    trinsicService.setProfile(allison);
+    trinsic.setProfile(allison);
 
     // Allison stores the credential in her cloud wallet.
     var insertItemResponse =
-        trinsicService
+        trinsic
             .wallet()
             .insertItem(
                 UniversalWalletOuterClass.InsertItemRequest.newBuilder()
@@ -76,11 +76,11 @@ public class VaccineDemo {
 
     // shareCredential() {
     // Set active profile to 'allison' so we can create a proof using her key
-    trinsicService.setProfile(allison);
+    trinsic.setProfile(allison);
 
     // Allison shares the credential with the venue
     var createProofResponse =
-        trinsicService
+        trinsic
             .credential()
             .createProof(
                 VerifiableCredentials.CreateProofRequest.newBuilder().setItemId(itemId).build())
@@ -92,11 +92,11 @@ public class VaccineDemo {
     System.out.println("Proof: " + credentialProof);
 
     // verifyCredential() {
-    trinsicService.setProfile(airline);
+    trinsic.setProfile(airline);
 
     // Verify that Allison has provided a valid proof
     var verifyProofResponse =
-        trinsicService
+        trinsic
             .credential()
             .verifyProof(
                 VerifiableCredentials.VerifyProofRequest.newBuilder()
