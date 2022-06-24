@@ -10,7 +10,7 @@ require 'services/wallet_service'
 require 'json'
 
 # rubocop:disable Metrics/MethodLength
-def do_template(template_service)
+def do_template(trinsic)
   # createTemplate() {
   request = Trinsic::Template::CreateCredentialTemplateRequest.new(name: 'VaccinationCertificate',
                                                                       allow_additional_fields: false)
@@ -22,7 +22,7 @@ def do_template(template_service)
   request.fields['countryOfVaccination'] =
     Trinsic::Template::TemplateField.new(description: 'Country in which the subject was vaccinated')
 
-  template = template_service.create(request)
+  template = trinsic.template_service.create(request)
   template_id = template.data.id
   # }
 
@@ -37,37 +37,30 @@ end
 def vaccine_demo_run
   config = Trinsic.trinsic_server
 
-  account_service = Trinsic::AccountService.new(config)
-  provider_service = Trinsic::ProviderService.new(config)
+  trinsic = Trinsic::TrinsicService.new(config)
 
   # createEcosystem() {
-  ecosystem = provider_service.create_ecosystem
+  ecosystem = trinsic.provider_service.create_ecosystem
   ecosystem_id = ecosystem.ecosystem.id
   # }
 
   # Set service default ecosystem
-  provider_service.default_ecosystem = ecosystem_id
-  account_service.default_ecosystem = ecosystem_id
-  config.default_ecosystem = ecosystem_id
-
-  wallet_service = Trinsic::WalletService.new(config)
-  credential_service = Trinsic::CredentialService.new(config)
-  template_service = Trinsic::TemplateService.new(config)
+  trinsic.default_ecosystem = ecosystem_id
 
   # setupActors() {
   # Create an account for each participant in the scenario
-  allison = account_service.sign_in
-  clinic = account_service.sign_in
-  airline = account_service.sign_in
+  allison = trinsic.account_service.login_anonymous
+  clinic = trinsic.account_service.login_anonymous
+  airline = trinsic.account_service.login_anonymous
   # }
 
-  account_service.auth_token = clinic
-  info = account_service.info
+  trinsic.auth_token = clinic
+  info = trinsic.account_service.info
   puts("account info #{info}")
 
   # Create a template
-  template_service.auth_token = clinic
-  template = do_template(template_service)
+  trinsic.auth_token = clinic
+  template = do_template(trinsic)
 
   # Create template values
 
@@ -77,7 +70,7 @@ def vaccine_demo_run
                            countryOfVaccination: 'US' })
 
   # Issue credential
-  issue_response = credential_service.issue_from_template(Trinsic::Credentials::IssueFromTemplateRequest.new(
+  issue_response = trinsic.credential_service.issue_from_template(Trinsic::Credentials::IssueFromTemplateRequest.new(
                                                             template_id: template.id, values_json: values
                                                           ))
   credential = issue_response.document_json
@@ -88,7 +81,7 @@ def vaccine_demo_run
   # rubocop:disable Lint/RescueException
   begin
     # sendCredential() {
-    send_response = credential_service.send(Trinsic::Credentials::SendRequest.new(document_json: credential,
+    send_response = trinsic.credential_service.send(Trinsic::Credentials::SendRequest.new(document_json: credential,
                                                                                      email: 'example@trinsic.id'))
     # }
     puts(send_response)
@@ -99,16 +92,16 @@ def vaccine_demo_run
 
   # storeCredential() {
   # Allison stores the credential in her cloud wallet
-  wallet_service.auth_token = allison
-  insert_response = wallet_service.insert_item(Trinsic::Wallet::InsertItemRequest.new(item_json: credential))
+  trinsic.auth_token = allison
+  insert_response = trinsic.wallet_service.insert_item(Trinsic::Wallet::InsertItemRequest.new(item_json: credential))
   item_id = insert_response.item_id
   # }
   puts("item id = #{item_id}")
 
   # shareCredential() {
   # Allison shares the credential with the airline
-  credential_service.auth_token = allison
-  proof_response = credential_service.create_proof(Trinsic::Credentials::CreateProofRequest.new(item_id: item_id))
+  trinsic.auth_token = allison
+  proof_response = trinsic.credential_service.create_proof(Trinsic::Credentials::CreateProofRequest.new(item_id: item_id))
   credential_proof = proof_response.proof_document_json
   # }
 
@@ -116,9 +109,9 @@ def vaccine_demo_run
 
   # verifyCredential() {
   # The airline verifies the credential
-  credential_service.auth_token = airline
+  trinsic.auth_token = airline
 
-  verify_result = credential_service.verify_proof(
+  verify_result = trinsic.credential_service.verify_proof(
     Trinsic::Credentials::VerifyProofRequest.new(proof_document_json: credential_proof)
   )
 

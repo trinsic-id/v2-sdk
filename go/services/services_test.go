@@ -62,7 +62,7 @@ func TestServiceOptions(t *testing.T) {
 }
 
 func TestTrustRegistryDemo(t *testing.T) {
-	assert2, service, err := createAccountAndSignIn(t)
+	assert2, trinsic, err := createAccountAndSignIn(t)
 	if !assert2.Nil(err) {
 		return
 	}
@@ -73,7 +73,7 @@ func TestTrustRegistryDemo(t *testing.T) {
 	frameworkURI := fmt.Sprintf("https://example.com/%s", uuid.New())
 
 	// registerGovernanceFramework() {
-	newFramework, err := service.TrustRegistry().AddFramework(context.Background(), &trustregistry.AddFrameworkRequest{
+	newFramework, err := trinsic.TrustRegistry().AddFramework(context.Background(), &trustregistry.AddFrameworkRequest{
 		GovernanceFrameworkUri: frameworkURI,
 		Name:                   fmt.Sprintf("Example Framework - %s", uuid.New()),
 	})
@@ -83,7 +83,7 @@ func TestTrustRegistryDemo(t *testing.T) {
 	}
 
 	// registerMemberSample() {
-	registerMemberResponse, err := service.TrustRegistry().RegisterMember(context.Background(), &trustregistry.RegisterMemberRequest{
+	registerMemberResponse, err := trinsic.TrustRegistry().RegisterMember(context.Background(), &trustregistry.RegisterMemberRequest{
 		FrameworkId: newFramework.Id,
 		SchemaUri:   schemaURI,
 		Member:      &trustregistry.RegisterMemberRequest_DidUri{DidUri: didURI},
@@ -94,7 +94,7 @@ func TestTrustRegistryDemo(t *testing.T) {
 	}
 
 	// getMembershipStatus() {
-	getMembershipStatusResponse, err := service.TrustRegistry().GetMembershipStatus(context.Background(), &trustregistry.GetMembershipStatusRequest{
+	getMembershipStatusResponse, err := trinsic.TrustRegistry().GetMembershipStatus(context.Background(), &trustregistry.GetMembershipStatusRequest{
 		GovernanceFrameworkUri: frameworkURI,
 		Member:                 &trustregistry.GetMembershipStatusRequest_DidUri{DidUri: didURI},
 		SchemaUri:              schemaURI,
@@ -106,7 +106,7 @@ func TestTrustRegistryDemo(t *testing.T) {
 	assert2.Equal(trustregistry.RegistrationStatus_CURRENT, getMembershipStatusResponse.Status, "Member status should be current")
 
 	// searchTrustRegistry() {
-	ecosystemList, err := service.TrustRegistry().SearchRegistry(context.Background(), nil)
+	ecosystemList, err := trinsic.TrustRegistry().SearchRegistry(context.Background(), nil)
 	// }
 	if !assert2.Nil(err) {
 		return
@@ -115,7 +115,7 @@ func TestTrustRegistryDemo(t *testing.T) {
 	assert2.NotEmpty(ecosystemList)
 
 	// unregisterIssuer() {
-	unregisterMemberResponse, err := service.TrustRegistry().UnregisterMember(context.Background(), &trustregistry.UnregisterMemberRequest{
+	unregisterMemberResponse, err := trinsic.TrustRegistry().UnregisterMember(context.Background(), &trustregistry.UnregisterMemberRequest{
 		SchemaUri:   schemaURI,
 		FrameworkId: newFramework.Id,
 	})
@@ -130,27 +130,27 @@ func TestTrustRegistryDemo(t *testing.T) {
 func createAccountAndSignIn(t *testing.T) (*assert.Assertions, *Trinsic, error) {
 	assert2 := assert.New(t)
 
-	service, err := NewTrinsic(WithTestEnv())
+	trinsic, err := NewTrinsic(WithTestEnv())
 	if !assert2.Nil(err) {
 		fmt.Println(err)
 		return assert2, nil, err
 	}
-	_, _, err = service.Account().SignIn(context.Background(), &account.SignInRequest{})
+	_, _, err = trinsic.Account().SignIn(context.Background(), &account.SignInRequest{})
 	if !assert2.Nil(err) {
 		fmt.Println(err)
 		return assert2, nil, err
 	}
-	return assert2, service, nil
+	return assert2, trinsic, nil
 }
 
 func TestEcosystemDemo(t *testing.T) {
-	assert2, service, err := createAccountAndSignIn(t)
+	assert2, trinsic, err := createAccountAndSignIn(t)
 	if !assert2.Nil(err) {
 		return
 	}
 
 	// createEcosystem() {
-	actualCreate, err := service.Provider().CreateEcosystem(context.Background(), &provider.CreateEcosystemRequest{
+	actualCreate, err := trinsic.Provider().CreateEcosystem(context.Background(), &provider.CreateEcosystemRequest{
 		Description: "My ecosystem",
 		Uri:         "https://example.com",
 	})
@@ -163,7 +163,7 @@ func TestEcosystemDemo(t *testing.T) {
 	// assert2.True(strings.HasPrefix(actualCreate.Id, "urn:trinsic:ecosystems:"))
 
 	// inviteParticipant() {
-	inviteResponse, err := service.Provider().InviteParticipant(context.Background(),
+	inviteResponse, err := trinsic.Provider().InviteParticipant(context.Background(),
 		&provider.InviteRequest{Participant: provider.ParticipantType_participant_type_individual,
 			Details: &account.AccountDetails{Email: "example@trinsic.id"}})
 	// }
@@ -171,7 +171,7 @@ func TestEcosystemDemo(t *testing.T) {
 		inviteResponse = &provider.InviteResponse{InvitationId: "NA"}
 	}
 	// invitationStatus() {
-	inviteStatus, err := service.Provider().InvitationStatus(context.Background(), &provider.InvitationStatusRequest{InvitationId: inviteResponse.InvitationId})
+	inviteStatus, err := trinsic.Provider().InvitationStatus(context.Background(), &provider.InvitationStatusRequest{InvitationId: inviteResponse.InvitationId})
 	// }
 	if inviteStatus != nil {
 	}

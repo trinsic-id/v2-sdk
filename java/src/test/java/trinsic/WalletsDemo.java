@@ -17,28 +17,28 @@ public class WalletsDemo {
   public static void run()
       throws IOException, DidException, ExecutionException, InterruptedException {
     // Create ecosystem
-    var trinsicService = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
+    var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
     var ecosystemResponse =
-        trinsicService
+        trinsic
             .provider()
             .createEcosystem(ProviderOuterClass.CreateEcosystemRequest.getDefaultInstance())
             .get();
     var ecosystemId = ecosystemResponse.getEcosystem().getId();
 
     // Create account
-    trinsicService.setDefaultEcosystem(ecosystemId);
+    trinsic.setDefaultEcosystem(ecosystemId);
 
-    var account = trinsicService.account().signIn().get();
+    var account = trinsic.account().signIn().get();
 
     // Insert wallet item into wallet
-    trinsicService.setProfile(account);
+    trinsic.setProfile(account);
 
     var credentialJson =
         "{\"foo\":\"bar\"}"; // Doesn't need to actually be a credential for this test
 
     // insertItemWallet() {
     var insertResponse =
-        trinsicService
+        trinsic
             .wallet()
             .insertItem(
                 UniversalWalletOuterClass.InsertItemRequest.newBuilder()
@@ -53,7 +53,7 @@ public class WalletsDemo {
     // Abuse scope to allow redeclaration of walletItems for docs injection niceness
     {
       // searchWalletBasic() {
-      var walletItems = trinsicService.wallet().search().get();
+      var walletItems = trinsic.wallet().search().get();
       // }
 
       Assertions.assertNotNull(walletItems);
@@ -62,7 +62,7 @@ public class WalletsDemo {
 
     // Delete item in-between searches
     var deleteResponse =
-        trinsicService
+        trinsic
             .wallet()
             .deleteItem(
                 UniversalWalletOuterClass.DeleteItemRequest.newBuilder().setItemId(itemId).build())
@@ -73,7 +73,7 @@ public class WalletsDemo {
     {
       // searchWalletSQL() {
       var walletItems =
-          trinsicService
+          trinsic
               .wallet()
               .search(
                   UniversalWalletOuterClass.SearchRequest.newBuilder()

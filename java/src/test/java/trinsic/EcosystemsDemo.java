@@ -16,11 +16,11 @@ public class EcosystemsDemo {
 
   public static void run()
       throws IOException, DidException, ExecutionException, InterruptedException {
-    var trinsicService = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
-    var account = trinsicService.account().signIn().get();
+    var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
+    var account = trinsic.account().signIn().get();
     // createEcosystem() {
     var response =
-        trinsicService
+        trinsic
             .provider()
             .createEcosystem(
                 ProviderOuterClass.CreateEcosystemRequest.newBuilder()
@@ -45,7 +45,7 @@ public class EcosystemsDemo {
     try {
       // inviteParticipant() {
       inviteResponse =
-          trinsicService
+          trinsic
               .provider()
               .invite(
                   ProviderOuterClass.InviteRequest.newBuilder()
@@ -65,7 +65,7 @@ public class EcosystemsDemo {
     try {
       // invitationStatus() {
       var invitationStatus =
-          trinsicService
+          trinsic
               .provider()
               .invitationStatus(
                   ProviderOuterClass.InvitationStatusRequest.newBuilder()

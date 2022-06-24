@@ -16,9 +16,9 @@ public class TrustRegistryDemo {
 
   public static void run()
       throws IOException, DidException, ExecutionException, InterruptedException {
-    var trinsicService = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
-    var account = trinsicService.account().signIn().get();
-    trinsicService.setProfile(account);
+    var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
+    var account = trinsic.account().signIn().get();
+    trinsic.setProfile(account);
 
     final String didUri = "did:example:test";
     final String frameworkUri = "https://example.com/" + UUID.randomUUID();
@@ -26,7 +26,7 @@ public class TrustRegistryDemo {
 
     // addFramework() {
     var frameworkResponse =
-        trinsicService
+        trinsic
             .trustRegistry()
             .addFramework(
                 TrustRegistryOuterClass.AddFrameworkRequest.newBuilder()
@@ -37,7 +37,7 @@ public class TrustRegistryDemo {
     // }
 
     // registerIssuerSample() {
-    trinsicService
+    trinsic
         .trustRegistry()
         .registerMember(
             TrustRegistryOuterClass.RegisterMemberRequest.newBuilder()
@@ -48,7 +48,7 @@ public class TrustRegistryDemo {
     // }
     // checkIssuerStatus() {
     var issuerStatus =
-        trinsicService
+        trinsic
             .trustRegistry()
             .checkIssuerStatus(
                 TrustRegistryOuterClass.GetMembershipStatusRequest.newBuilder()
@@ -62,14 +62,14 @@ public class TrustRegistryDemo {
         TrustRegistryOuterClass.RegistrationStatus.CURRENT, issuerStatus.getStatus());
 
     // searchTrustRegistry() {
-    var searchResult = trinsicService.trustRegistry().searchRegistry().get();
+    var searchResult = trinsic.trustRegistry().searchRegistry().get();
     // }
     Assertions.assertNotNull(searchResult);
     Assertions.assertNotNull(searchResult.getItemsJson());
     Assertions.assertTrue(searchResult.getItemsJson().length() > 0);
 
     // unregisterIssuer() {
-    trinsicService
+    trinsic
         .trustRegistry()
         .unregisterIssuer(
             TrustRegistryOuterClass.UnregisterMemberRequest.newBuilder()

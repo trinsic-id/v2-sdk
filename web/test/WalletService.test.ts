@@ -24,36 +24,36 @@ const options = getTestServerOptions();
 const allison = getTestServerOptions();
 const clinic = getTestServerOptions();
 const airline = getTestServerOptions();
-let service = new TrinsicService(options);
+let trinsic = new TrinsicService(options);
 
 describe("WalletService Unit Tests", () => {
   setTestTimeout();
   beforeAll(async () => {
-    allison.authToken = await service.account().signIn();
-    clinic.authToken = await service.account().signIn();
-    airline.authToken = await service.account().signIn();
+    allison.authToken = await trinsic.account().signIn();
+    clinic.authToken = await trinsic.account().signIn();
+    airline.authToken = await trinsic.account().signIn();
   });
 
   it("get account info", async () => {
-    let info = await service.account().info();
+    let info = await trinsic.account().info();
 
     expect(info).not.toBeNull();
   });
 
   it("create new account", async () => {
-    let response = await service.account().signIn();
+    let response = await trinsic.account().signIn();
 
     expect(response).not.toBeNull();
     expect(response).not.toBe("");
   });
 
   it("Demo: create wallet, set profile, search records, issue credential", async () => {
-    let issueResponse = await service.credential().issueCredential({
+    let issueResponse = await trinsic.credential().issueCredential({
       documentJson: getVaccineCertUnsignedJSON(),
     });
 
     // insertItemWallet() {
-    let insertItemResponse = await service.wallet().insertItem(
+    let insertItemResponse = await trinsic.wallet().insertItem(
       InsertItemRequest.fromPartial({
         itemJson: issueResponse.signedDocumentJson,
       })
@@ -68,10 +68,10 @@ describe("WalletService Unit Tests", () => {
     await new Promise((res) => setTimeout(res, 1000));
 
     // searchWalletBasic() {
-    let items = await service.wallet().search();
+    let items = await trinsic.wallet().search();
     // }
     // searchWalletSQL() {
-    let items2 = await service.wallet().search(
+    let items2 = await trinsic.wallet().search(
       SearchRequest.fromPartial({
         query:
           "SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'",
@@ -79,9 +79,9 @@ describe("WalletService Unit Tests", () => {
     );
     // }
 
-    service.options = allison;
+    trinsic.options = allison;
     // createProof() {
-    let proof = await service.credential().createProof(
+    let proof = await trinsic.credential().createProof(
       CreateProofRequest.fromPartial({
         itemId: insertItemResponse.itemId,
         revealDocumentJson: getVaccineCertFrameJSON(),
@@ -89,9 +89,9 @@ describe("WalletService Unit Tests", () => {
     );
     // }
 
-    service.options = airline;
+    trinsic.options = airline;
     // verifyProof() {
-    let verifyResponse = await service.credential().verifyProof({
+    let verifyResponse = await trinsic.credential().verifyProof({
       proofDocumentJson: proof.proofDocumentJson,
     });
     // }
@@ -114,7 +114,7 @@ describe("WalletService Unit Tests", () => {
       },
     });
 
-    let template = await service
+    let template = await trinsic
       .template()
       .createCredentialTemplate(templateRequest);
 
@@ -130,7 +130,7 @@ describe("WalletService Unit Tests", () => {
       age: 42,
     });
 
-    let issueResponse = await service.credential().issueFromTemplate(
+    let issueResponse = await trinsic.credential().issueFromTemplate(
       IssueFromTemplateRequest.fromPartial({
         templateId: template.data!.id,
         valuesJson: values,

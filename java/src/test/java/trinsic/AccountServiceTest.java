@@ -15,10 +15,10 @@ class AccountServiceTest {
       throws ExecutionException, InterruptedException, InvalidProtocolBufferException,
           DidException {
     // accountServiceConstructor() {
-    var trinsicService = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
+    var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
     // }
     // accountServiceSignIn() {
-    var myProfile = trinsicService.account().signIn().get();
+    var myProfile = trinsic.account().signIn().get();
     // }
 
     // protectUnprotectProfile() {
@@ -30,17 +30,17 @@ class AccountServiceTest {
     Assertions.assertThrows(
         Exception.class,
         () -> {
-          trinsicService.setProfile(myProtectedProfile);
+          trinsic.setProfile(myProtectedProfile);
           Assertions.assertEquals(
-              myProtectedProfile, trinsicService.account().getOptionsBuilder().getAuthToken());
-          trinsicService.account().getInfo().get();
+              myProtectedProfile, trinsic.account().getOptionsBuilder().getAuthToken());
+          trinsic.account().getInfo().get();
         });
 
     Assertions.assertDoesNotThrow(
         () -> {
-          trinsicService.setProfile(myUnprotectedProfile);
+          trinsic.setProfile(myUnprotectedProfile);
           // getInfo() {
-          var info = trinsicService.account().getInfo().get();
+          var info = trinsic.account().getInfo().get();
           // }
         });
   }

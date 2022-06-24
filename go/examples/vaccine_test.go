@@ -12,7 +12,7 @@ import (
 	"testing"
 )
 
-func defineTemplate(templateService services.CredentialTemplateService, t *testing.T) *template.TemplateData {
+func defineTemplate(trinsic services.TrinsicService, t *testing.T) *template.TemplateData {
 	// createTemplate() {
 	templateRequest := &template.CreateCredentialTemplateRequest{Name: "VaccinationCertificate", AllowAdditionalFields: false, Fields: make(map[string]*template.TemplateField)}
 	templateRequest.Fields["firstName"] = &template.TemplateField{Description: "First name of vaccine recipient"}
@@ -31,39 +31,29 @@ func defineTemplate(templateService services.CredentialTemplateService, t *testi
 }
 
 func TestVaccineDemo(t *testing.T) {
-	config, _ := services.NewServiceOptions(services.WithTestEnv())
-
-	accountService, _ := services.NewAccountService(config)
-	providerService, _ := services.NewProviderService(config)
+	trinsic, _ := services.NewTrinsic(services.WithTestEnv())
 
 	// createEcosystem() {
-	ecosystem, _ := providerService.CreateEcosystem(context.Background(), nil)
+	ecosystem, _ := trinsic.Provider().CreateEcosystem(context.Background(), nil)
 	ecosystemId := ecosystem.Ecosystem.Id
 	// }
 
 	// Set service default ecosystem
-	providerService.SetEcosystemId(ecosystemId)
-	accountService.SetEcosystemId(ecosystemId)
-	config.ServiceOptions.DefaultEcosystem = ecosystemId
-
-	walletService, _ := services.NewWalletService(config)
-	credentialService, _ := services.NewCredentialService(config)
-	templateService, _ := services.NewCredentialTemplateService(config)
+	trinsic.SetEcosystemId(ecosystemId)
 
 	// setupActors() {
 	// Create an account for each participant in the scenario
-	allison, _, _ := accountService.SignIn(context.Background(), nil)
-	airline, _, _ := accountService.SignIn(context.Background(), nil)
-	clinic, _, _ := accountService.SignIn(context.Background(), nil)
+	allison, _ := trinsic.Account().LoginAnonymous(context.Background())
+	airline, _ := trinsic.Account().LoginAnonymous(context.Background())
+	clinic, _ := trinsic.Account().LoginAnonymous(context.Background())
 	// }
 
-	accountService.SetToken(clinic)
-	info, _ := accountService.GetInfo(context.Background())
+	trinsic.SetToken(clinic)
+	info, _ := trinsic.Account().GetInfo(context.Background())
 	fmt.Println("Account info:", info)
 
 	// Create a template
-	templateService.SetToken(clinic)
-	createdTemplate := defineTemplate(templateService, t)
+	createdTemplate := defineTemplate(trinsic, t)
 
 	// Create template values
 	// issueCredential() {
@@ -82,7 +72,7 @@ func TestVaccineDemo(t *testing.T) {
 	values, _ := json.Marshal(valuesStruct)
 
 	// Issue credential
-	issueResponse, _ := credentialService.IssueFromTemplate(context.Background(), &credential.IssueFromTemplateRequest{
+	issueResponse, _ := trinsic.Credential().IssueFromTemplate(context.Background(), &credential.IssueFromTemplateRequest{
 		TemplateId: createdTemplate.Id,
 		ValuesJson: string(values),
 	})
@@ -93,7 +83,7 @@ func TestVaccineDemo(t *testing.T) {
 	fmt.Println("Credential:", issuedCredential)
 
 	// sendCredential() {
-	sendResponse, _ := credentialService.Send(context.Background(), &credential.SendRequest{
+	sendResponse, _ := trinsic.Credential().Send(context.Background(), &credential.SendRequest{
 		DeliveryMethod: &credential.SendRequest_Email{Email: "example@trinsic.id"},
 		DocumentJson:   issuedCredential,
 	})
@@ -103,8 +93,8 @@ func TestVaccineDemo(t *testing.T) {
 
 	// storeCredential() {
 	// Allison stores the credential in her cloud wallet
-	walletService.SetToken(allison)
-	insertResponse, _ := walletService.InsertItem(context.Background(), &wallet.InsertItemRequest{ItemJson: issuedCredential})
+	trinsic.SetToken(allison)
+	insertResponse, _ := trinsic.Wallet().InsertItem(context.Background(), &wallet.InsertItemRequest{ItemJson: issuedCredential})
 
 	itemId := insertResponse.ItemId
 	// }
@@ -112,8 +102,8 @@ func TestVaccineDemo(t *testing.T) {
 
 	// shareCredential() {
 	// Allison shares the credential with the airline
-	credentialService.SetToken(allison)
-	proofResponse, _ := credentialService.CreateProof(context.Background(), &credential.CreateProofRequest{
+	trinsic.SetToken(allison)
+	proofResponse, _ := trinsic.Credential().CreateProof(context.Background(), &credential.CreateProofRequest{
 		Proof: &credential.CreateProofRequest_ItemId{ItemId: itemId},
 	})
 
@@ -124,8 +114,8 @@ func TestVaccineDemo(t *testing.T) {
 
 	// verifyCredential() {
 	// The airline verifies the credential
-	credentialService.SetToken(airline)
-	verifyResult, _ := credentialService.VerifyProof(context.Background(), &credential.VerifyProofRequest{ProofDocumentJson: credentialProof})
+	trinsic.SetToken(airline)
+	verifyResult, _ := trinsic.Credential().VerifyProof(context.Background(), &credential.VerifyProofRequest{ProofDocumentJson: credentialProof})
 	valid := verifyResult.IsValid
 	// }
 
