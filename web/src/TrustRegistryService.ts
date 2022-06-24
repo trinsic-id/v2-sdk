@@ -66,6 +66,17 @@ export class TrustRegistryService extends ServiceBase {
     });
   }
 
+  public async searchRegistry(
+    request: SearchRegistryRequest
+  ): Promise<SearchRegistryResponse> {
+    // TODO - handle metadata
+    return this.client.searchRegistry(request, {
+      metadata: await this.getMetadata(
+        SearchRegistryRequest.encode(request).finish()
+      ),
+    });
+  }
+
   public async registerMember(
     request: RegisterMemberRequest
   ): Promise<RegisterMemberResponse> {

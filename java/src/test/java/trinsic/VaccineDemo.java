@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
 import trinsic.okapi.DidException;
-import trinsic.services.CredentialTemplateService;
+import trinsic.services.TemplateService;
 import trinsic.services.TrinsicService;
 import trinsic.services.common.v1.ProviderOuterClass;
 import trinsic.services.universalwallet.v1.UniversalWalletOuterClass;
@@ -147,7 +147,7 @@ public class VaccineDemo {
     return credential;
   }
 
-  private static String DefineTemplate(CredentialTemplateService templateService, String clinic)
+  private static String DefineTemplate(TemplateService templateService, String clinic)
       throws InvalidProtocolBufferException, DidException, ExecutionException,
           InterruptedException {
     // createTemplate() {

@@ -47,6 +47,17 @@ export class WalletService extends ServiceBase {
     });
   }
 
+  public async search(
+    request: SearchRequest
+  ): Promise<SearchResponse> {
+    // TODO - handle metadata
+    return this.client.search(request, {
+      metadata: await this.getMetadata(
+        SearchRequest.encode(request).finish()
+      ),
+    });
+  }
+
   public async insertItem(
     request: InsertItemRequest
   ): Promise<InsertItemResponse> {
