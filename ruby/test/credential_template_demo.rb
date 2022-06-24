@@ -9,10 +9,10 @@ require 'securerandom'
 
 # rubocop:disable Metrics/MethodLength Metrics/AbcSize Metrics/CyclomaticComplexity
 def credential_template_demo_run
-  account_service = Trinsic::AccountService.new(Trinsic.trinsic_server)
-  account = account_service.sign_in
-  credential_service = Trinsic::CredentialService.new(Trinsic.trinsic_server(account))
-  template_service = Trinsic::TemplateService.new(Trinsic.trinsic_server(account))
+  trinsic = Trinsic::TrinsicService.new(Trinsic.trinsic_server)
+  account = trinsic.account_service.login_anonymous
+
+  trinsic.auth_token = account
 
   # create example template
   template_request = Trinsic::Template::CreateCredentialTemplateRequest.new(
@@ -22,7 +22,7 @@ def credential_template_demo_run
   template_request.fields['lastName'] = Trinsic::Template::TemplateField.new
   template_request.fields['age'] =
     Trinsic::Template::TemplateField.new(type: Trinsic::Template::FieldType::NUMBER, optional: true)
-  template = template_service.create(template_request)
+  template = trinsic.template_service.create(template_request)
 
   raise 'template should not be nil' if template.nil?
   raise 'template data should not be nil' if template.data.nil?
@@ -31,7 +31,7 @@ def credential_template_demo_run
 
   # issue credential from this template
   values = JSON.generate({ firstName: 'Jane', lastName: 'Doe', age: 42 })
-  credential_json = credential_service.issue_from_template(Trinsic::Credentials::IssueFromTemplateRequest.new(
+  credential_json = trinsic.credential_service.issue_from_template(Trinsic::Credentials::IssueFromTemplateRequest.new(
                                                              template_id: template.data.id, values_json: values
                                                            ))
   raise 'credential json document should not be nil' if credential_json.document_json.nil?

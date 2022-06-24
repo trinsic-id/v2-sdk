@@ -5,12 +5,13 @@ require 'services/account_service'
 require 'services/provider_service'
 
 def ecosystem_demo_run
-  account_service = Trinsic::AccountService.new(Trinsic.trinsic_server)
-  account = account_service.sign_in(nil)
-  service = Trinsic::ProviderService.new(Trinsic.trinsic_server(account))
+  trinsic = Trinsic::TrinsicService.new(Trinsic.trinsic_server)
+  account = trinsic.account_service.login_anonymous
+
+  trinsic.auth_token = account
 
   # test create ecosystem
-  actual_create = service.create_ecosystem(Trinsic::Provider::CreateEcosystemRequest.new(
+  actual_create = trinsic.provider_service.create_ecosystem(Trinsic::Provider::CreateEcosystemRequest.new(
                                              description: 'My ecosystem', uri: 'https://example.com'
                                            ))
   raise 'ecosystem should be created' if actual_create.ecosystem.nil?
