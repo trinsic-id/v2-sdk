@@ -40,21 +40,21 @@ public class VaccineWalkthroughTests
     [Fact(DisplayName = "Vaccine Walkthrough")]
     public async Task TestWalkthrough() {
         // createEcosystem() {
-        var trinsicService = new TrinsicService(_options);
+        var trinsic = new TrinsicService(_options);
 
-        var (ecosystem, _authToken) = await trinsicService.Provider.CreateEcosystemAsync(new());
+        var (ecosystem, _authToken) = await trinsic.Provider.CreateEcosystemAsync(new());
         var ecosystemId = ecosystem?.Id;
         // }
 
         ecosystemId.Should().NotBeNullOrEmpty();
 
         // Set default ecosystem
-        trinsicService.Options.DefaultEcosystem = ecosystemId;
+        trinsic.Options.DefaultEcosystem = ecosystemId;
 
         // setupActors() {
-        var allison = await trinsicService.Account.SignInAsync(new() { EcosystemId = ecosystemId });
-        var clinic = await trinsicService.Account.SignInAsync(new() { EcosystemId = ecosystemId });
-        var airline = await trinsicService.Account.SignInAsync(new() { EcosystemId = ecosystemId });
+        var allison = await trinsic.Account.SignInAsync(new() { EcosystemId = ecosystemId });
+        var clinic = await trinsic.Account.SignInAsync(new() { EcosystemId = ecosystemId });
+        var airline = await trinsic.Account.SignInAsync(new() { EcosystemId = ecosystemId });
         // }
 
         allison.Should().NotBeNullOrEmpty();
@@ -74,7 +74,7 @@ public class VaccineWalkthroughTests
         templateRequest.Fields.Add("countryOfVaccination", new() { Description = "Country in which the subject was vaccinated" });
 
         // Create template
-        var template = await trinsicService.Template.CreateAsync(templateRequest);
+        var template = await trinsic.Template.CreateAsync(templateRequest);
         var templateId = template?.Data?.Id;
         // }
 
@@ -83,7 +83,7 @@ public class VaccineWalkthroughTests
         // issueCredential() {
         // Set active profile to 'clinic' so we can issue credential signed
         // with the clinic's signing keys
-        trinsicService.Options.AuthToken = clinic;
+        trinsic.Options.AuthToken = clinic;
 
         // Prepare credential values
         var credentialValues = new Dictionary<string, string>() {
@@ -94,8 +94,8 @@ public class VaccineWalkthroughTests
         };
 
         // Issue credential
-        trinsicService.SetAuthToken(_authToken);
-        var issueResponse = await trinsicService.Credential.IssueFromTemplateAsync(new() {
+        trinsic.SetAuthToken(_authToken);
+        var issueResponse = await trinsic.Credential.IssueFromTemplateAsync(new() {
             TemplateId = templateId,
             ValuesJson = JsonSerializer.Serialize(credentialValues)
         });
@@ -107,10 +107,10 @@ public class VaccineWalkthroughTests
 
         // storeCredential() {
         // Set active profile to 'allison' so we can manage her cloud wallet
-        trinsicService.Options.AuthToken = allison;
+        trinsic.Options.AuthToken = allison;
 
         // Insert credential into Allison's wallet
-        var insertItemResponse = await trinsicService.Wallet.InsertItemAsync(new() {
+        var insertItemResponse = await trinsic.Wallet.InsertItemAsync(new() {
             ItemJson = signedCredential
         });
 
@@ -122,10 +122,10 @@ public class VaccineWalkthroughTests
 
         // shareCredential() {
         // Set active profile to 'allison' so we can create a proof using her key
-        trinsicService.Options.AuthToken = allison;
+        trinsic.Options.AuthToken = allison;
 
         // Build a proof for the signed credential
-        var proofResponse = await trinsicService.Credential.CreateProofAsync(new() {
+        var proofResponse = await trinsic.Credential.CreateProofAsync(new() {
             ItemId = itemId
         });
 
@@ -136,7 +136,7 @@ public class VaccineWalkthroughTests
 
         // verifyCredential() {
         // Verify that Allison has provided a valid proof
-        var verifyResponse = await trinsicService.Credential.VerifyProofAsync(new() {
+        var verifyResponse = await trinsic.Credential.VerifyProofAsync(new() {
             ProofDocumentJson = proofJSON
         });
 
