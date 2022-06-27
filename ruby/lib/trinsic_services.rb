@@ -17,6 +17,12 @@ require 'services/common/v1/common_pb'
 require 'sdk/options/v1/options_pb'
 require 'security'
 require 'services/service_base'
+require 'services/account_service'
+require 'services/credential_service'
+require 'services/provider_service'
+require 'services/template_service'
+require 'services/trust_registry_service'
+require 'services/wallet_service'
 require 'memoist'
 
 # Module for all Trinsic servers
@@ -52,27 +58,27 @@ module Trinsic
     end
 
     def account_service
-      AccountService(@service_options)
+      AccountService.new(@service_options)
     end
 
     def credential_service
-      CredentialService(@service_options)
+      CredentialService.new(@service_options)
     end
 
     def provider_service
-      ProviderService(@service_options)
+      ProviderService.new(@service_options)
     end
 
     def template_service
-      TemplateService(@service_options)
+      TemplateService.new(@service_options)
     end
 
     def trust_registry_service
-      TrustRegistryService(@service_options)
+      TrustRegistryService.new(@service_options)
     end
 
     def wallet_service
-      WalletService(@service_options)
+      WalletService.new(@service_options)
     end
 
     memoize :account_service, :credential_service, :provider_service, :template_service, :trust_registry_service,

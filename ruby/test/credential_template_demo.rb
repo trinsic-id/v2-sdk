@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 require 'trinsic_services'
-require 'services/account_service'
-require 'services/credential_service'
-require 'services/template_service'
 require 'json'
 require 'securerandom'
 

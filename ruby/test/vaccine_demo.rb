@@ -2,11 +2,6 @@
 
 require 'trinsic_services'
 require 'services/service_base'
-require 'services/account_service'
-require 'services/provider_service'
-require 'services/credential_service'
-require 'services/template_service'
-require 'services/wallet_service'
 require 'json'
 
 # rubocop:disable Metrics/MethodLength
