@@ -1,6 +1,6 @@
 import base64
 import string
-from typing import ByteString, Union, SupportsBytes
+from typing import Union, SupportsBytes
 
 from trinsicokapi import oberon, hashing
 from trinsicokapi.proto.okapi.hashing.v1 import Blake3HashRequest
@@ -36,11 +36,7 @@ class AccountService(ServiceBase):
 
     async def sign_in(self, *, request: SignInRequest = None) -> str:
         """
-        Perform a sign-in to obtain an account profile. If the `AccountDetails` are specified, they will be used to associate
-        Args:
-            request:
-        Returns:
-            `AccountProfile` that has been created binary serialized and base64 encoded so that it can be stored
+        Deprecated - use `AccountService.login` and `AccountService.login_confirm` instead
         """
         request = request or SignInRequest()
         request.ecosystem_id = (

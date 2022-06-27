@@ -1,14 +1,12 @@
 package trinsic;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.concurrent.ExecutionException;
 import trinsic.okapi.DidException;
-import trinsic.services.AccountService;
-import trinsic.services.CredentialService;
-import trinsic.services.ProviderService;
-import trinsic.services.WalletService;
+import trinsic.services.TrinsicService;
 import trinsic.services.common.v1.ProviderOuterClass;
 import trinsic.services.verifiablecredentials.v1.VerifiableCredentials;
 
@@ -26,29 +24,28 @@ public class CredentialsDemo {
 
     var serverConfig = TrinsicUtilities.getTrinsicServiceOptions();
 
-    var providerService = new ProviderService(serverConfig);
+    var trinsic = new TrinsicService(serverConfig);
     var ecosystemId =
-        providerService
+        trinsic
+            .provider()
             .createEcosystem(ProviderOuterClass.CreateEcosystemRequest.getDefaultInstance())
             .get()
             .getEcosystem()
             .getId();
 
-    serverConfig = serverConfig.toBuilder().setDefaultEcosystem(ecosystemId).build();
+    serverConfig = serverConfig.setDefaultEcosystem(ecosystemId);
 
-    var accountService = new AccountService(serverConfig);
+    //    trinsicService.setOptionsBuilder(serverConfig);
 
-    var issuerVerifier = accountService.signIn().get(); // Both issues and verifies
-    var holder = accountService.signIn().get();
+    var issuerVerifier = trinsic.account().signIn().get(); // Both issues and verifies
+    var holder = trinsic.account().signIn().get();
 
-    var walletService = new WalletService(TrinsicUtilities.getTrinsicServiceOptions());
-    var credentialService = new CredentialService(TrinsicUtilities.getTrinsicServiceOptions());
-
-    credentialService.setProfile(issuerVerifier);
+    trinsic.setProfile(issuerVerifier);
 
     // issueCredentialSample() {
     var issueResult =
-        credentialService
+        trinsic
+            .credential()
             .issueCredential(
                 VerifiableCredentials.IssueRequest.newBuilder()
                     .setDocumentJson(unsignedCredential)
@@ -60,10 +57,11 @@ public class CredentialsDemo {
 
     System.out.println("Credential: " + signedCredentialJson);
 
-    credentialService.setProfile(holder);
+    trinsic.setProfile(holder);
     // createProof() {
     var createProofResponse =
-        credentialService
+        trinsic
+            .credential()
             .createProof(
                 VerifiableCredentials.CreateProofRequest.newBuilder()
                     .setDocumentJson(signedCredentialJson)
@@ -78,20 +76,23 @@ public class CredentialsDemo {
 
     try {
       // sendCredential() {
-      credentialService.send(
-          VerifiableCredentials.SendRequest.newBuilder()
-              .setDocumentJson(signedCredentialJson)
-              .setEmail(recipientEmail)
-              .build());
+      trinsic
+          .credential()
+          .send(
+              VerifiableCredentials.SendRequest.newBuilder()
+                  .setDocumentJson(signedCredentialJson)
+                  .setEmail(recipientEmail)
+                  .build());
       // }
     } catch (ExecutionException re) {
       // This is okay, we don't expect that account to exist.
     }
 
-    credentialService.setProfile(issuerVerifier);
+    trinsic.setProfile(issuerVerifier);
     // verifyProof() {
     var verifyProofResponse =
-        credentialService
+        trinsic
+            .credential()
             .verifyProof(
                 VerifiableCredentials.VerifyProofRequest.newBuilder()
                     .setProofDocumentJson(credentialProof)
@@ -103,11 +104,6 @@ public class CredentialsDemo {
 
     System.out.println("Verification result: " + isValid);
     assert isValid;
-
-    providerService.shutdown();
-    accountService.shutdown();
-    credentialService.shutdown();
-    walletService.shutdown();
   }
 
   public static String baseTestPath() {

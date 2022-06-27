@@ -20,6 +20,7 @@ _skip_routes = [
     "/services.account.v1.Account/Login",
     "/services.account.v1.Account/LoginConfirm",
     "/services.provider.v1.Provider/CreateEcosystem",
+    "/services.provider.v1.Provider/GetOberonKey",
 ]
 
 
@@ -60,7 +61,7 @@ class ServiceBase(ABC):
 
     def close(self):
         """Close the underlying channel"""
-        if self._channel is not None:
+        if hasattr(self, '_channel') and self._channel is not None:
             try:
                 self._channel.close()
             except RuntimeError:

@@ -5,7 +5,7 @@ use crate::{
     grpc_channel, grpc_client_with_auth,
     parser::trustregistry::*,
     proto::services::trustregistry::v1::{trust_registry_client::TrustRegistryClient, *},
-    utils::as_value,
+    utils::{as_value, to_value},
 };
 use tonic::transport::Channel;
 
@@ -134,9 +134,11 @@ async fn add_framework(args: &AddFrameworkArgs, config: &CliConfig) -> Result<Ou
         name: args.name.clone(),
     });
 
-    let _response = client.add_framework(request).await?.into_inner();
+    let response = client.add_framework(request).await?.into_inner();
 
-    Ok(Output::new())
+    Ok(dict! {
+        "response".into() => Item::Json(to_value(&response)?)
+    })
 }
 
 #[tokio::main]

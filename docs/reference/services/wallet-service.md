@@ -69,7 +69,7 @@ Stores a credential (or any other JSON object) in a wallet.
 
 !!! question "What can be stored in a wallet?"
     
-    Wallets are mainly intended to hold [Verifiable Credentials](/learn/credentials){target=_blank}, but can technically
+    Wallets are mainly intended to hold [Verifiable Credentials](/learn/concepts/credentials){target=_blank}, but can technically
     store any JSON blob.
 
     If you store a Verifiable Credential in a Wallet, ensure that its `item_type` is `VerifiableCredential`.

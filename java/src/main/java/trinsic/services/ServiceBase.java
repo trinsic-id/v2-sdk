@@ -1,5 +1,7 @@
 package trinsic.services;
 
+import static trinsic.TrinsicUtilities.getTrinsicServiceOptions;
+
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import io.grpc.Channel;
@@ -17,12 +19,12 @@ import trinsic.services.account.v1.AccountOuterClass;
 public abstract class ServiceBase {
   private final ISecurityProvider securityProvider = new OberonSecurityProvider();
   private final Channel channel;
-  private Options.ServiceOptions options;
+  private Options.ServiceOptions.Builder options;
 
-  protected ServiceBase(Options.ServiceOptions options) {
+  protected ServiceBase(Options.ServiceOptions.Builder options) {
     this.options = options;
-    if (this.options == null) this.options = TrinsicUtilities.getTrinsicServiceOptions();
-    this.channel = TrinsicUtilities.getChannel(this.options);
+    if (this.options == null) this.options = getTrinsicServiceOptions();
+    this.channel = TrinsicUtilities.getChannel(this.options.build());
   }
 
   public void shutdown() {
@@ -48,23 +50,19 @@ public abstract class ServiceBase {
   }
 
   public void setProfile(String base64ProfileToken) {
-    this.options =
-        Options.ServiceOptions.newBuilder()
-            .mergeFrom(this.options)
-            .setAuthToken(base64ProfileToken)
-            .build();
+    this.options.setAuthToken(base64ProfileToken);
   }
 
   public void setDefaultEcosystem(String ecosystemId) {
-    this.options =
-        Options.ServiceOptions.newBuilder()
-            .mergeFrom(this.options)
-            .setDefaultEcosystem(ecosystemId)
-            .build();
+    this.options.setDefaultEcosystem(ecosystemId);
   }
 
-  public Options.ServiceOptions getOptions() {
+  public Options.ServiceOptions.Builder getOptionsBuilder() {
     return this.options;
+  }
+
+  public void setOptionsBuilder(Options.ServiceOptions.Builder builder) {
+    this.options = builder;
   }
 
   public Channel getChannel() {

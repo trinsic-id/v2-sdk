@@ -52,7 +52,7 @@ You can follow along using one of our SDKs, or use the Trinsic CLI, which implem
 
 ## Create an Ecosystem
 
-The first step is to create an [ecosystem](/learn/ecosystems/), within which everything else (wallets, templates, and credentials) will live.
+The first step is to create an [ecosystem](/learn/concepts/ecosystems/), within which everything else (wallets, templates, and credentials) will live.
 
 === "Trinsic CLI"
     ```
@@ -173,7 +173,7 @@ Once we've created our ecosystem, we need to configure our SDK client (or CLI) t
 
 !!! info "Further Reading: Ecosystems"
 
-    - Learn more about [Ecosystems](/learn/ecosystems){target=_blank}
+    - Learn more about [Ecosystems](/learn/concepts/ecosystems){target=_blank}
     - Browse the [Provider API reference](/reference/services/provider-service/){target=_blank}
 
 ## Create Accounts
@@ -261,15 +261,15 @@ The clinic's account will **issue** the credential, Allison's account will **hol
     Note that accounts are tied to their ecosystem. If you create an account tied to `bob@example.com` in the `example1` ecosystem, it will not be visible in any other ecosystem. The same email address can be used to create accounts in multiple ecosystems.
 
 !!! abstract "Further Reading: Accounts and Wallets"
-    - Learn more about [Wallets](../learn/wallets.md){target=_blank}
+    - Learn more about [Wallets](/learn/platform/wallets.md){target=_blank}
     - Browse the [Account API reference](/reference/services/account-service/){target=_blank}
-    - Read about [authentication tokens and security](/learn/security/){target=_blank}
+    - Read about [authentication tokens and security](/learn/platform/security/){target=_blank}
 
 ---
 
 ## Define a Template
 
-Before we can issue a credential, we need to create a [Template](/learn/templates/){target=_blank} for it. 
+Before we can issue a credential, we need to create a [Template](/learn/platform/templates/){target=_blank} for it. 
 
 Templates are simply a list of the fields that a credential can have.
 
@@ -358,7 +358,7 @@ Templates are simply a list of the fields that a credential can have.
 
 !!! abstract "Further Reading: Templates"
 
-    - Learn more about [Templates](/learn/templates){target=_blank}
+    - Learn more about [Templates](/learn/platform/templates){target=_blank}
     - Browse the [Template API reference](/reference/services/template-service/){target=_blank}
 
 ---
@@ -437,7 +437,7 @@ To issue a vaccine certificate, we'll use the template we created in the last st
 
 !!! abstract "Further Reading: Issuance and Credentials"
 
-    - Learn more about [Verifiable Credentials](/learn/credentials/){target=_blank}
+    - Learn more about [Verifiable Credentials](/learn/concepts/credentials/){target=_blank}
     - Browse the [Credential API reference](/reference/services/credential-service/){target=_blank}
 
 
@@ -515,7 +515,7 @@ Once Allison receives the credential, it must be stored in her wallet.
 The response to this call contains an Item ID; copy this down.
 
 !!! abstract "Further Reading: Wallets"
-    - Learn more about [Wallets](/learn/wallets/){target=_blank}
+    - Learn more about [Wallets](/learn/platform/wallets/){target=_blank}
     - Browse the [Wallet API reference](/reference/services/wallet-service/){target=_blank}
 
 
@@ -685,4 +685,4 @@ Congratulations! If you've completed all the steps of this walkthrough, you've j
 
 - Try out a [sample app](https://github.com/trinsic-id/sdk-examples){target=_blank}
 - Browse the [Service Reference](/reference/){target=_blank}
-- [Read more](/learn/intro/){target=_blank} about the key concepts and technologies at play
+- [Learn more](/learn){target=_blank} about the key concepts and technologies at play

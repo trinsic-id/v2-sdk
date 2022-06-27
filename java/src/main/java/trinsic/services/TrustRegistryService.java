@@ -20,7 +20,7 @@ public class TrustRegistryService extends ServiceBase {
     this(null);
   }
 
-  public TrustRegistryService(Options.ServiceOptions options) {
+  public TrustRegistryService(Options.ServiceOptions.Builder options) {
     super(options);
     this.stub = TrustRegistryGrpc.newFutureStub(this.getChannel());
     this.stub2 = TrustRegistryGrpc.newBlockingStub(this.getChannel());

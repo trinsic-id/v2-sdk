@@ -15,7 +15,7 @@ public class CredentialService extends ServiceBase {
     this(null);
   }
 
-  public CredentialService(Options.ServiceOptions options) {
+  public CredentialService(Options.ServiceOptions.Builder options) {
     super(options);
 
     this.stub = VerifiableCredentialGrpc.newFutureStub(this.getChannel());

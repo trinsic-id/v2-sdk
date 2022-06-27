@@ -14,7 +14,7 @@ public class ProviderService extends ServiceBase {
     this(null);
   }
 
-  public ProviderService(Options.ServiceOptions options) {
+  public ProviderService(Options.ServiceOptions.Builder options) {
     super(options);
     this.stub = ProviderGrpc.newFutureStub(this.getChannel());
   }
@@ -77,7 +77,7 @@ public class ProviderService extends ServiceBase {
   public ListenableFuture<ProviderOuterClass.GetOberonKeyResponse> getOberonKey(
       ProviderOuterClass.GetOberonKeyRequest request)
       throws InvalidProtocolBufferException, DidException {
-    return withMetadata(stub, request).getOberonKey(request);
+    return stub.getOberonKey(request);
   }
 
   public ListenableFuture<ProviderOuterClass.GetEventTokenResponse> getEventToken(

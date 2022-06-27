@@ -1,27 +1,26 @@
 import {
-  AccountService,
-  AddFrameworkRequest,
-  RegisterMemberRequest,
-  RegistrationStatus,
-  SignInRequest,
-  TrustRegistryService,
+    AccountService,
+    AddFrameworkRequest,
+    RegisterMemberRequest,
+    RegistrationStatus,
+    SignInRequest, TrinsicService,
+    TrustRegistryService,
 } from "../src";
 import { v4 as uuid } from "uuid";
 import { getTestServerOptions } from "./env";
 import { GetMembershipStatusRequest } from "../lib";
 
 const options = getTestServerOptions();
+let trinsic: TrinsicService;
 
 describe("TrustRegistryService Unit Tests", () => {
   beforeAll(async () => {
-    let service = new AccountService(options);
-    await service.signIn(SignInRequest.fromPartial({}));
+    trinsic = new TrinsicService(options);
+      options.authToken = await trinsic.account().signIn(SignInRequest.fromPartial({}));
   });
 
   it("add governance framework", async () => {
-    let trustRegistryService = new TrustRegistryService(options);
-
-    let response = await trustRegistryService.addFramework(
+    let response = await trinsic.trustRegistry().addFramework(
       AddFrameworkRequest.fromPartial({
         governanceFrameworkUri: `urn:egf:${uuid()}`,
         name: `Test Governance Framework - ${uuid()}`,
@@ -31,10 +30,8 @@ describe("TrustRegistryService Unit Tests", () => {
   });
 
   it("add governance framework - invalid uri", async () => {
-    let trustRegistryService = new TrustRegistryService(options);
-
     try {
-      await trustRegistryService.addFramework(
+      await trinsic.trustRegistry().addFramework(
         AddFrameworkRequest.fromPartial({})
       );
       // This is a failure case since jest doesn't have expect().toThrow()
@@ -45,20 +42,18 @@ describe("TrustRegistryService Unit Tests", () => {
   });
 
   it("Demo: Trust Registry", async () => {
-    let trustRegistryService = new TrustRegistryService(options);
-
     const didUri = "did:example:test";
     const frameworkUri = `urn:egf:${uuid()}`;
     const schemaUri = "https://schema.org/Card";
 
-    let frameworkResponse = await trustRegistryService.addFramework(
+    let frameworkResponse = await trinsic.trustRegistry().addFramework(
       AddFrameworkRequest.fromPartial({
         governanceFrameworkUri: frameworkUri,
         name: `Test Governance Framework - ${uuid()}`,
       })
     );
 
-    let response = await trustRegistryService.registerMember(
+    let response = await trinsic.trustRegistry().registerMember(
       RegisterMemberRequest.fromPartial({
         didUri: didUri,
         frameworkId: frameworkResponse.id,
@@ -67,7 +62,7 @@ describe("TrustRegistryService Unit Tests", () => {
     );
     expect(response).not.toBeNull();
 
-    let response2 = await trustRegistryService.registerMember(
+    let response2 = await trinsic.trustRegistry().registerMember(
       RegisterMemberRequest.fromPartial({
         didUri: didUri,
         frameworkId: frameworkResponse.id,
@@ -76,7 +71,7 @@ describe("TrustRegistryService Unit Tests", () => {
     );
     expect(response2).not.toBeNull();
 
-    let issuerStatus = await trustRegistryService.getMembershipStatus(
+    let issuerStatus = await trinsic.trustRegistry().getMembershipStatus(
       GetMembershipStatusRequest.fromPartial({
         didUri: didUri,
         governanceFrameworkUri: frameworkUri,
@@ -86,7 +81,7 @@ describe("TrustRegistryService Unit Tests", () => {
     expect(issuerStatus).not.toBeNull();
     expect(issuerStatus.status).toBe(RegistrationStatus.CURRENT);
 
-    let verifierStatus = await trustRegistryService.getMembershipStatus(
+    let verifierStatus = await trinsic.trustRegistry().getMembershipStatus(
       GetMembershipStatusRequest.fromPartial({
         didUri: didUri,
         governanceFrameworkUri: frameworkUri,
@@ -96,7 +91,7 @@ describe("TrustRegistryService Unit Tests", () => {
     expect(verifierStatus).not.toBeNull();
     expect(verifierStatus.status).toBe(RegistrationStatus.CURRENT);
 
-    let searchResult = await trustRegistryService.searchRegistry();
+    let searchResult = await trinsic.trustRegistry().searchRegistry();
     expect(searchResult).not.toBeNull();
     expect(searchResult.itemsJson).not.toBeNull();
     expect(searchResult.itemsJson.length > 0).toBeTruthy();

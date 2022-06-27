@@ -166,6 +166,15 @@ export interface WebhookConfig {
   status: string;
 }
 
+export interface Grant {
+  /** the urn of the resource */
+  resourceId: string;
+  /** list of actions that are allowed */
+  actions: string[];
+  /** any child grants */
+  childGrants: Grant[];
+}
+
 export interface CreateEcosystemRequest {
   /**
    * Globally unique name for the Ecosystem. This name will be
@@ -275,6 +284,40 @@ export interface GetEventTokenRequest {
 export interface GetEventTokenResponse {
   /** a JWT bound to the PK provided in the request */
   token: string;
+}
+
+/** grant permissions to a resource or path in the ecosystem */
+export interface GrantAuthorizationRequest {
+  /** email associted with the account */
+  email: string | undefined;
+  /** wallet id of the account */
+  walletId: string | undefined;
+  /** resources are specified as a restful path: /{ecoId}/{resource type}/{resource id}. EcosystemId maybe ommited */
+  resource: string;
+  /** action to authorize. default is "*" (all) */
+  action: string;
+}
+
+export interface GrantAuthorizationResponse {}
+
+/** revoke permissions to a resource or path in the ecosystem */
+export interface RevokeAuthorizationRequest {
+  /** email associted with the account */
+  email: string | undefined;
+  /** wallet id of the account */
+  walletId: string | undefined;
+  /** resources are specified as a restful path: /{ecoId}/{resource type}/{resource id}. EcosystemId maybe ommited */
+  resource: string;
+  /** action to revoke. default is "*" (all) */
+  action: string;
+}
+
+export interface RevokeAuthorizationResponse {}
+
+export interface GetAuthorizationsRequest {}
+
+export interface GetAuthorizationsResponse {
+  grants: Grant[];
 }
 
 function createBaseInvite(): Invite {
@@ -875,6 +918,88 @@ export const WebhookConfig = {
     message.destinationUrl = object.destinationUrl ?? "";
     message.events = object.events?.map((e) => e) || [];
     message.status = object.status ?? "";
+    return message;
+  },
+};
+
+function createBaseGrant(): Grant {
+  return { resourceId: "", actions: [], childGrants: [] };
+}
+
+export const Grant = {
+  encode(message: Grant, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.resourceId !== "") {
+      writer.uint32(10).string(message.resourceId);
+    }
+    for (const v of message.actions) {
+      writer.uint32(18).string(v!);
+    }
+    for (const v of message.childGrants) {
+      Grant.encode(v!, writer.uint32(26).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): Grant {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseGrant();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.resourceId = reader.string();
+          break;
+        case 2:
+          message.actions.push(reader.string());
+          break;
+        case 3:
+          message.childGrants.push(Grant.decode(reader, reader.uint32()));
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): Grant {
+    return {
+      resourceId: isSet(object.resourceId) ? String(object.resourceId) : "",
+      actions: Array.isArray(object?.actions)
+        ? object.actions.map((e: any) => String(e))
+        : [],
+      childGrants: Array.isArray(object?.childGrants)
+        ? object.childGrants.map((e: any) => Grant.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: Grant): unknown {
+    const obj: any = {};
+    message.resourceId !== undefined && (obj.resourceId = message.resourceId);
+    if (message.actions) {
+      obj.actions = message.actions.map((e) => e);
+    } else {
+      obj.actions = [];
+    }
+    if (message.childGrants) {
+      obj.childGrants = message.childGrants.map((e) =>
+        e ? Grant.toJSON(e) : undefined
+      );
+    } else {
+      obj.childGrants = [];
+    }
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<Grant>): Grant {
+    const message = createBaseGrant();
+    message.resourceId = object.resourceId ?? "";
+    message.actions = object.actions?.map((e) => e) || [];
+    message.childGrants =
+      object.childGrants?.map((e) => Grant.fromPartial(e)) || [];
     return message;
   },
 };
@@ -1902,6 +2027,378 @@ export const GetEventTokenResponse = {
   },
 };
 
+function createBaseGrantAuthorizationRequest(): GrantAuthorizationRequest {
+  return { email: undefined, walletId: undefined, resource: "", action: "" };
+}
+
+export const GrantAuthorizationRequest = {
+  encode(
+    message: GrantAuthorizationRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.email !== undefined) {
+      writer.uint32(10).string(message.email);
+    }
+    if (message.walletId !== undefined) {
+      writer.uint32(18).string(message.walletId);
+    }
+    if (message.resource !== "") {
+      writer.uint32(26).string(message.resource);
+    }
+    if (message.action !== "") {
+      writer.uint32(34).string(message.action);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): GrantAuthorizationRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseGrantAuthorizationRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.email = reader.string();
+          break;
+        case 2:
+          message.walletId = reader.string();
+          break;
+        case 3:
+          message.resource = reader.string();
+          break;
+        case 4:
+          message.action = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): GrantAuthorizationRequest {
+    return {
+      email: isSet(object.email) ? String(object.email) : undefined,
+      walletId: isSet(object.walletId) ? String(object.walletId) : undefined,
+      resource: isSet(object.resource) ? String(object.resource) : "",
+      action: isSet(object.action) ? String(object.action) : "",
+    };
+  },
+
+  toJSON(message: GrantAuthorizationRequest): unknown {
+    const obj: any = {};
+    message.email !== undefined && (obj.email = message.email);
+    message.walletId !== undefined && (obj.walletId = message.walletId);
+    message.resource !== undefined && (obj.resource = message.resource);
+    message.action !== undefined && (obj.action = message.action);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<GrantAuthorizationRequest>
+  ): GrantAuthorizationRequest {
+    const message = createBaseGrantAuthorizationRequest();
+    message.email = object.email ?? undefined;
+    message.walletId = object.walletId ?? undefined;
+    message.resource = object.resource ?? "";
+    message.action = object.action ?? "";
+    return message;
+  },
+};
+
+function createBaseGrantAuthorizationResponse(): GrantAuthorizationResponse {
+  return {};
+}
+
+export const GrantAuthorizationResponse = {
+  encode(
+    _: GrantAuthorizationResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): GrantAuthorizationResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseGrantAuthorizationResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): GrantAuthorizationResponse {
+    return {};
+  },
+
+  toJSON(_: GrantAuthorizationResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<GrantAuthorizationResponse>
+  ): GrantAuthorizationResponse {
+    const message = createBaseGrantAuthorizationResponse();
+    return message;
+  },
+};
+
+function createBaseRevokeAuthorizationRequest(): RevokeAuthorizationRequest {
+  return { email: undefined, walletId: undefined, resource: "", action: "" };
+}
+
+export const RevokeAuthorizationRequest = {
+  encode(
+    message: RevokeAuthorizationRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.email !== undefined) {
+      writer.uint32(10).string(message.email);
+    }
+    if (message.walletId !== undefined) {
+      writer.uint32(18).string(message.walletId);
+    }
+    if (message.resource !== "") {
+      writer.uint32(26).string(message.resource);
+    }
+    if (message.action !== "") {
+      writer.uint32(34).string(message.action);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): RevokeAuthorizationRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseRevokeAuthorizationRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.email = reader.string();
+          break;
+        case 2:
+          message.walletId = reader.string();
+          break;
+        case 3:
+          message.resource = reader.string();
+          break;
+        case 4:
+          message.action = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): RevokeAuthorizationRequest {
+    return {
+      email: isSet(object.email) ? String(object.email) : undefined,
+      walletId: isSet(object.walletId) ? String(object.walletId) : undefined,
+      resource: isSet(object.resource) ? String(object.resource) : "",
+      action: isSet(object.action) ? String(object.action) : "",
+    };
+  },
+
+  toJSON(message: RevokeAuthorizationRequest): unknown {
+    const obj: any = {};
+    message.email !== undefined && (obj.email = message.email);
+    message.walletId !== undefined && (obj.walletId = message.walletId);
+    message.resource !== undefined && (obj.resource = message.resource);
+    message.action !== undefined && (obj.action = message.action);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<RevokeAuthorizationRequest>
+  ): RevokeAuthorizationRequest {
+    const message = createBaseRevokeAuthorizationRequest();
+    message.email = object.email ?? undefined;
+    message.walletId = object.walletId ?? undefined;
+    message.resource = object.resource ?? "";
+    message.action = object.action ?? "";
+    return message;
+  },
+};
+
+function createBaseRevokeAuthorizationResponse(): RevokeAuthorizationResponse {
+  return {};
+}
+
+export const RevokeAuthorizationResponse = {
+  encode(
+    _: RevokeAuthorizationResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): RevokeAuthorizationResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseRevokeAuthorizationResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): RevokeAuthorizationResponse {
+    return {};
+  },
+
+  toJSON(_: RevokeAuthorizationResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<RevokeAuthorizationResponse>
+  ): RevokeAuthorizationResponse {
+    const message = createBaseRevokeAuthorizationResponse();
+    return message;
+  },
+};
+
+function createBaseGetAuthorizationsRequest(): GetAuthorizationsRequest {
+  return {};
+}
+
+export const GetAuthorizationsRequest = {
+  encode(
+    _: GetAuthorizationsRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): GetAuthorizationsRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseGetAuthorizationsRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): GetAuthorizationsRequest {
+    return {};
+  },
+
+  toJSON(_: GetAuthorizationsRequest): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<GetAuthorizationsRequest>
+  ): GetAuthorizationsRequest {
+    const message = createBaseGetAuthorizationsRequest();
+    return message;
+  },
+};
+
+function createBaseGetAuthorizationsResponse(): GetAuthorizationsResponse {
+  return { grants: [] };
+}
+
+export const GetAuthorizationsResponse = {
+  encode(
+    message: GetAuthorizationsResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    for (const v of message.grants) {
+      Grant.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): GetAuthorizationsResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseGetAuthorizationsResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.grants.push(Grant.decode(reader, reader.uint32()));
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): GetAuthorizationsResponse {
+    return {
+      grants: Array.isArray(object?.grants)
+        ? object.grants.map((e: any) => Grant.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: GetAuthorizationsResponse): unknown {
+    const obj: any = {};
+    if (message.grants) {
+      obj.grants = message.grants.map((e) => (e ? Grant.toJSON(e) : undefined));
+    } else {
+      obj.grants = [];
+    }
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<GetAuthorizationsResponse>
+  ): GetAuthorizationsResponse {
+    const message = createBaseGetAuthorizationsResponse();
+    message.grants = object.grants?.map((e) => Grant.fromPartial(e)) || [];
+    return message;
+  },
+};
+
 export type ProviderDefinition = typeof ProviderDefinition;
 export const ProviderDefinition = {
   name: "Provider",
@@ -1922,6 +2419,33 @@ export const ProviderDefinition = {
       requestType: UpdateEcosystemRequest,
       requestStream: false,
       responseType: UpdateEcosystemResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** Grant authorization to ecosystem resources */
+    grantAuthorization: {
+      name: "GrantAuthorization",
+      requestType: GrantAuthorizationRequest,
+      requestStream: false,
+      responseType: GrantAuthorizationResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** Revoke authorization to ecosystem resources */
+    revokeAuthorization: {
+      name: "RevokeAuthorization",
+      requestType: RevokeAuthorizationRequest,
+      requestStream: false,
+      responseType: RevokeAuthorizationResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** Retreive the list of permissions for this particular account/ecosystem */
+    getAuthorizations: {
+      name: "GetAuthorizations",
+      requestType: GetAuthorizationsRequest,
+      requestStream: false,
+      responseType: GetAuthorizationsResponse,
       responseStream: false,
       options: {},
     },

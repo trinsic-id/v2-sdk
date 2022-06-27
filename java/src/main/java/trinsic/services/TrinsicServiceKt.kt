@@ -2,7 +2,7 @@ package trinsic.services
 
 import trinsic.sdk.options.v1.Options
 
-class TrinsicServiceKt @JvmOverloads constructor(options: Options.ServiceOptions? = null) :
+class TrinsicServiceKt @JvmOverloads constructor(options: Options.ServiceOptions.Builder? = null) :
     ServiceBase(options) {
   private var _accountService: AccountServiceKt? = null
   private var _credentialService: CredentialServiceKt? = null
@@ -10,34 +10,35 @@ class TrinsicServiceKt @JvmOverloads constructor(options: Options.ServiceOptions
   private var _providerService: ProviderServiceKt? = null
   private var _trustRegistryService: TrustRegistryServiceKt? = null
   private var _walletService: WalletServiceKt? = null
-  fun accountService(): AccountServiceKt {
-    if (_accountService == null) _accountService = AccountServiceKt(options)
+  fun account(): AccountServiceKt {
+    if (_accountService == null) _accountService = AccountServiceKt(optionsBuilder)
     return _accountService!!
   }
 
-  fun credentialService(): CredentialServiceKt {
-    if (_credentialService == null) _credentialService = CredentialServiceKt(options)
+  fun credential(): CredentialServiceKt {
+    if (_credentialService == null) _credentialService = CredentialServiceKt(optionsBuilder)
     return _credentialService!!
   }
 
-  fun credentialTemplateService(): CredentialTemplateServiceKt {
+  fun template(): CredentialTemplateServiceKt {
     if (_credentialTemplateService == null)
-        _credentialTemplateService = CredentialTemplateServiceKt(options)
+        _credentialTemplateService = CredentialTemplateServiceKt(optionsBuilder)
     return _credentialTemplateService!!
   }
 
-  fun providerService(): ProviderServiceKt {
-    if (_providerService == null) _providerService = ProviderServiceKt(options)
+  fun provider(): ProviderServiceKt {
+    if (_providerService == null) _providerService = ProviderServiceKt(optionsBuilder)
     return _providerService!!
   }
 
-  fun trustRegistryService(): TrustRegistryServiceKt {
-    if (_trustRegistryService == null) _trustRegistryService = TrustRegistryServiceKt(options)
+  fun trustRegistry(): TrustRegistryServiceKt {
+    if (_trustRegistryService == null)
+        _trustRegistryService = TrustRegistryServiceKt(optionsBuilder)
     return _trustRegistryService!!
   }
 
-  fun walletService(): WalletServiceKt {
-    if (_walletService == null) _walletService = WalletServiceKt(options)
+  fun wallet(): WalletServiceKt {
+    if (_walletService == null) _walletService = WalletServiceKt(optionsBuilder)
     return _walletService!!
   }
 }

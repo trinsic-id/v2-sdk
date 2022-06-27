@@ -9,6 +9,7 @@ import {
   SearchRequest,
   TemplateField,
   TemplateService,
+  TrinsicService,
   WalletService,
 } from "../src";
 import {
@@ -23,41 +24,36 @@ const options = getTestServerOptions();
 const allison = getTestServerOptions();
 const clinic = getTestServerOptions();
 const airline = getTestServerOptions();
+let trinsic = new TrinsicService(options);
 
 describe("WalletService Unit Tests", () => {
   setTestTimeout();
   beforeAll(async () => {
-    let service = new AccountService(options);
-    allison.authToken = await service.signIn();
-    clinic.authToken = await service.signIn();
-    airline.authToken = await service.signIn();
+    allison.authToken = await trinsic.account().signIn();
+    clinic.authToken = await trinsic.account().signIn();
+    airline.authToken = await trinsic.account().signIn();
   });
 
   it("get account info", async () => {
-    let service = new AccountService(clinic);
-    let info = await service.info();
+    let info = await trinsic.account().info();
 
     expect(info).not.toBeNull();
   });
 
   it("create new account", async () => {
-    let service = new AccountService(clinic);
-    let response = await service.signIn();
+    let response = await trinsic.account().signIn();
 
     expect(response).not.toBeNull();
     expect(response).not.toBe("");
   });
 
   it("Demo: create wallet, set profile, search records, issue credential", async () => {
-    let credentialService = new CredentialService(clinic);
-    let walletService = new WalletService(allison);
-
-    let issueResponse = await credentialService.issueCredential({
+    let issueResponse = await trinsic.credential().issueCredential({
       documentJson: getVaccineCertUnsignedJSON(),
     });
 
     // insertItemWallet() {
-    let insertItemResponse = await walletService.insertItem(
+    let insertItemResponse = await trinsic.wallet().insertItem(
       InsertItemRequest.fromPartial({
         itemJson: issueResponse.signedDocumentJson,
       })
@@ -72,10 +68,10 @@ describe("WalletService Unit Tests", () => {
     await new Promise((res) => setTimeout(res, 1000));
 
     // searchWalletBasic() {
-    let items = await walletService.search();
+    let items = await trinsic.wallet().search();
     // }
     // searchWalletSQL() {
-    let items2 = await walletService.search(
+    let items2 = await trinsic.wallet().search(
       SearchRequest.fromPartial({
         query:
           "SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'",
@@ -83,9 +79,9 @@ describe("WalletService Unit Tests", () => {
     );
     // }
 
-    credentialService.options = allison;
+    trinsic.options = allison;
     // createProof() {
-    let proof = await credentialService.createProof(
+    let proof = await trinsic.credential().createProof(
       CreateProofRequest.fromPartial({
         itemId: insertItemResponse.itemId,
         revealDocumentJson: getVaccineCertFrameJSON(),
@@ -93,9 +89,9 @@ describe("WalletService Unit Tests", () => {
     );
     // }
 
-    credentialService.options = airline;
+    trinsic.options = airline;
     // verifyProof() {
-    let verifyResponse = await credentialService.verifyProof({
+    let verifyResponse = await trinsic.credential().verifyProof({
       proofDocumentJson: proof.proofDocumentJson,
     });
     // }
@@ -104,9 +100,6 @@ describe("WalletService Unit Tests", () => {
   });
 
   it("Demo: template management and credential issuance from template", async () => {
-    let credentialService = new CredentialService(options);
-    let templateService = new TemplateService(options);
-
     // create example template
     let templateRequest = CreateCredentialTemplateRequest.fromPartial({
       name: `My Example Credential-${uuid()}`,
@@ -121,9 +114,9 @@ describe("WalletService Unit Tests", () => {
       },
     });
 
-    let template = await templateService.createCredentialTemplate(
-      templateRequest
-    );
+    let template = await trinsic
+      .template()
+      .createCredentialTemplate(templateRequest);
 
     expect(template).not.toBeNull();
     expect(template.data).not.toBeNull();
@@ -137,7 +130,7 @@ describe("WalletService Unit Tests", () => {
       age: 42,
     });
 
-    let issueResponse = await credentialService.issueFromTemplate(
+    let issueResponse = await trinsic.credential().issueFromTemplate(
       IssueFromTemplateRequest.fromPartial({
         templateId: template.data!.id,
         valuesJson: values,

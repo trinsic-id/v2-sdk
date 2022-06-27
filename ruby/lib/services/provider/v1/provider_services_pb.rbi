@@ -36,6 +36,30 @@ module Services::Provider::V1::Provider
 
     sig do
       params(
+        request: Services::Provider::V1::GrantAuthorizationRequest
+      ).returns(Services::Provider::V1::GrantAuthorizationResponse)
+    end
+    def grant_authorization(request)
+    end
+
+    sig do
+      params(
+        request: Services::Provider::V1::RevokeAuthorizationRequest
+      ).returns(Services::Provider::V1::RevokeAuthorizationResponse)
+    end
+    def revoke_authorization(request)
+    end
+
+    sig do
+      params(
+        request: Services::Provider::V1::GetAuthorizationsRequest
+      ).returns(Services::Provider::V1::GetAuthorizationsResponse)
+    end
+    def get_authorizations(request)
+    end
+
+    sig do
+      params(
         request: Services::Provider::V1::AddWebhookRequest
       ).returns(Services::Provider::V1::AddWebhookResponse)
     end

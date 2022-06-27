@@ -62,17 +62,10 @@ func TestServiceOptions(t *testing.T) {
 }
 
 func TestTrustRegistryDemo(t *testing.T) {
-	assert2, authtoken, err := createAccountAndSignIn(t)
+	assert2, trinsic, err := createAccountAndSignIn(t)
 	if !assert2.Nil(err) {
 		return
 	}
-
-	opts, err := NewServiceOptions(WithTestEnv(), WithAuthToken(authtoken))
-	if !assert2.Nil(err) {
-		return
-	}
-
-	service, _ := NewTrustRegistryService(opts)
 
 	// register issuer
 	didURI := "did:example:test"
@@ -80,7 +73,7 @@ func TestTrustRegistryDemo(t *testing.T) {
 	frameworkURI := fmt.Sprintf("https://example.com/%s", uuid.New())
 
 	// registerGovernanceFramework() {
-	newFramework, err := service.AddFramework(context.Background(), &trustregistry.AddFrameworkRequest{
+	newFramework, err := trinsic.TrustRegistry().AddFramework(context.Background(), &trustregistry.AddFrameworkRequest{
 		GovernanceFrameworkUri: frameworkURI,
 		Name:                   fmt.Sprintf("Example Framework - %s", uuid.New()),
 	})
@@ -90,7 +83,7 @@ func TestTrustRegistryDemo(t *testing.T) {
 	}
 
 	// registerMemberSample() {
-	registerMemberResponse, err := service.RegisterMember(context.Background(), &trustregistry.RegisterMemberRequest{
+	registerMemberResponse, err := trinsic.TrustRegistry().RegisterMember(context.Background(), &trustregistry.RegisterMemberRequest{
 		FrameworkId: newFramework.Id,
 		SchemaUri:   schemaURI,
 		Member:      &trustregistry.RegisterMemberRequest_DidUri{DidUri: didURI},
@@ -101,7 +94,7 @@ func TestTrustRegistryDemo(t *testing.T) {
 	}
 
 	// getMembershipStatus() {
-	getMembershipStatusResponse, err := service.GetMembershipStatus(context.Background(), &trustregistry.GetMembershipStatusRequest{
+	getMembershipStatusResponse, err := trinsic.TrustRegistry().GetMembershipStatus(context.Background(), &trustregistry.GetMembershipStatusRequest{
 		GovernanceFrameworkUri: frameworkURI,
 		Member:                 &trustregistry.GetMembershipStatusRequest_DidUri{DidUri: didURI},
 		SchemaUri:              schemaURI,
@@ -113,7 +106,7 @@ func TestTrustRegistryDemo(t *testing.T) {
 	assert2.Equal(trustregistry.RegistrationStatus_CURRENT, getMembershipStatusResponse.Status, "Member status should be current")
 
 	// searchTrustRegistry() {
-	ecosystemList, err := service.SearchRegistry(context.Background(), nil)
+	ecosystemList, err := trinsic.TrustRegistry().SearchRegistry(context.Background(), nil)
 	// }
 	if !assert2.Nil(err) {
 		return
@@ -122,7 +115,7 @@ func TestTrustRegistryDemo(t *testing.T) {
 	assert2.NotEmpty(ecosystemList)
 
 	// unregisterIssuer() {
-	unregisterMemberResponse, err := service.UnregisterMember(context.Background(), &trustregistry.UnregisterMemberRequest{
+	unregisterMemberResponse, err := trinsic.TrustRegistry().UnregisterMember(context.Background(), &trustregistry.UnregisterMemberRequest{
 		SchemaUri:   schemaURI,
 		FrameworkId: newFramework.Id,
 	})
@@ -134,58 +127,30 @@ func TestTrustRegistryDemo(t *testing.T) {
 	}
 }
 
-func createAccountAndSignIn(t *testing.T) (*assert.Assertions, string, error) {
+func createAccountAndSignIn(t *testing.T) (*assert.Assertions, *Trinsic, error) {
 	assert2 := assert.New(t)
-	opts, err := NewServiceOptions(WithTestEnv())
-	if !assert2.Nil(err) {
-		return assert2, "", err
-	}
-	// Open in background
-	accountService, err := NewAccountService(opts)
-	if !assert2.Nil(err) {
-		return assert2, "", err
-	}
-	authtoken, _, err := accountService.SignIn(context.Background(), &account.SignInRequest{})
+
+	trinsic, err := NewTrinsic(WithTestEnv())
 	if !assert2.Nil(err) {
 		fmt.Println(err)
-		return assert2, "", err
+		return assert2, nil, err
 	}
-	return assert2, authtoken, nil
+	_, _, err = trinsic.Account().SignIn(context.Background(), &account.SignInRequest{})
+	if !assert2.Nil(err) {
+		fmt.Println(err)
+		return assert2, nil, err
+	}
+	return assert2, trinsic, nil
 }
 
-func createRandomEcosystem() error {
-	opts, err := NewServiceOptions(WithTestEnv())
-	if err != nil {
-		return err
-	}
-
-	ps, err := NewProviderService(opts)
-	if err != nil {
-		return err
-	}
-
-	_, err = ps.CreateEcosystem(context.Background(), &provider.CreateEcosystemRequest{Name: "test-sdk-" + uuid.New().String()})
-
-	return err
-}
 func TestEcosystemDemo(t *testing.T) {
-	assert2, authtoken, err := createAccountAndSignIn(t)
-	if !assert2.Nil(err) {
-		return
-	}
-
-	opts, err := NewServiceOptions(WithTestEnv(), WithAuthToken(authtoken))
-	if !assert2.Nil(err) {
-		return
-	}
-
-	service, err := NewProviderService(opts)
+	assert2, trinsic, err := createAccountAndSignIn(t)
 	if !assert2.Nil(err) {
 		return
 	}
 
 	// createEcosystem() {
-	actualCreate, err := service.CreateEcosystem(context.Background(), &provider.CreateEcosystemRequest{
+	actualCreate, err := trinsic.Provider().CreateEcosystem(context.Background(), &provider.CreateEcosystemRequest{
 		Description: "My ecosystem",
 		Uri:         "https://example.com",
 	})
@@ -198,7 +163,7 @@ func TestEcosystemDemo(t *testing.T) {
 	// assert2.True(strings.HasPrefix(actualCreate.Id, "urn:trinsic:ecosystems:"))
 
 	// inviteParticipant() {
-	inviteResponse, err := service.InviteParticipant(context.Background(),
+	inviteResponse, err := trinsic.Provider().InviteParticipant(context.Background(),
 		&provider.InviteRequest{Participant: provider.ParticipantType_participant_type_individual,
 			Details: &account.AccountDetails{Email: "example@trinsic.id"}})
 	// }
@@ -206,19 +171,12 @@ func TestEcosystemDemo(t *testing.T) {
 		inviteResponse = &provider.InviteResponse{InvitationId: "NA"}
 	}
 	// invitationStatus() {
-	inviteStatus, err := service.InvitationStatus(context.Background(), &provider.InvitationStatusRequest{InvitationId: inviteResponse.InvitationId})
+	inviteStatus, err := trinsic.Provider().InvitationStatus(context.Background(), &provider.InvitationStatusRequest{InvitationId: inviteResponse.InvitationId})
 	// }
 	if inviteStatus != nil {
 	}
 
 }
-
-// func TestCreateChannelUrlFromConfig(t *testing.T) {
-// 	assert2 := assert.New(t)
-// 	if !assert2.Equalf(CreateChannelUrlFromConfig(TrinsicProductionConfig()), CreateChannelUrlFromConfig(nil), "Default is production stack") {
-// 		return
-// 	}
-// }
 
 func failError(t *testing.T, message string, err error) {
 	if err != nil {

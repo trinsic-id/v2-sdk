@@ -208,7 +208,7 @@ public class ProviderService : ServiceBase
     /// <param name="request"></param>
     /// <returns></returns>
     public async Task<GetOberonKeyResponse> GetOberonKeyAsync(GetOberonKeyRequest request) {
-        return await Client.GetOberonKeyAsync(request, await BuildMetadataAsync(request));
+        return await Client.GetOberonKeyAsync(request);
     }
 
     /// <summary>
@@ -217,7 +217,7 @@ public class ProviderService : ServiceBase
     /// <param name="request"></param>
     /// <returns></returns>
     public GetOberonKeyResponse GetOberonKey(GetOberonKeyRequest request) {
-        return Client.GetOberonKey(request, BuildMetadata(request));
+        return Client.GetOberonKey(request);
     }
 
 

@@ -14,39 +14,40 @@ public class TrinsicService extends ServiceBase {
     this(null);
   }
 
-  public TrinsicService(Options.ServiceOptions options) {
+  public TrinsicService(Options.ServiceOptions.Builder options) {
     super(options);
   }
 
-  public AccountService accountService() {
-    if (_accountService == null) _accountService = new AccountService(this.getOptions());
+  public AccountService account() {
+    if (_accountService == null) _accountService = new AccountService(this.getOptionsBuilder());
     return _accountService;
   }
 
-  public CredentialService credentialService() {
-    if (_credentialService == null) _credentialService = new CredentialService(this.getOptions());
+  public CredentialService credential() {
+    if (_credentialService == null)
+      _credentialService = new CredentialService(this.getOptionsBuilder());
     return _credentialService;
   }
 
-  public CredentialTemplateService credentialTemplateService() {
+  public CredentialTemplateService template() {
     if (_credentialTemplateService == null)
-      _credentialTemplateService = new CredentialTemplateService(this.getOptions());
+      _credentialTemplateService = new CredentialTemplateService(this.getOptionsBuilder());
     return _credentialTemplateService;
   }
 
-  public ProviderService providerService() {
-    if (_providerService == null) _providerService = new ProviderService(this.getOptions());
+  public ProviderService provider() {
+    if (_providerService == null) _providerService = new ProviderService(this.getOptionsBuilder());
     return _providerService;
   }
 
-  public TrustRegistryService trustRegistryService() {
+  public TrustRegistryService trustRegistry() {
     if (_trustRegistryService == null)
-      _trustRegistryService = new TrustRegistryService(this.getOptions());
+      _trustRegistryService = new TrustRegistryService(this.getOptionsBuilder());
     return _trustRegistryService;
   }
 
-  public WalletService walletService() {
-    if (_walletService == null) _walletService = new WalletService(this.getOptions());
+  public WalletService wallet() {
+    if (_walletService == null) _walletService = new WalletService(this.getOptionsBuilder());
     return _walletService;
   }
 }

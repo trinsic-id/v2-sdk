@@ -120,12 +120,7 @@ func (p *providerBase) GenerateToken(ctx context.Context, request *provider.Gene
 }
 
 func (p *providerBase) GetOberonKey(ctx context.Context, request *provider.GetOberonKeyRequest) (*provider.GetOberonKeyResponse, error) {
-	md, err := p.GetMetadataContext(ctx, request)
-	if err != nil {
-		return nil, err
-	}
-
-	response, err := p.client.GetOberonKey(md, request)
+	response, err := p.client.GetOberonKey(ctx, request)
 	if err != nil {
 		return nil, err
 	}

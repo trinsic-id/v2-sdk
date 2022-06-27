@@ -59,7 +59,7 @@ module Trinsic
     end
 
     def get_oberon_key(request)
-      @client.generate_token(request, metadata: metadata(request))
+      @client.generate_token(request)
     end
 
     def get_event_token(request)

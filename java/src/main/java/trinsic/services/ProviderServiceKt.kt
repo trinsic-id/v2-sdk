@@ -6,7 +6,7 @@ import trinsic.sdk.options.v1.Options
 import trinsic.services.common.v1.ProviderGrpcKt
 import trinsic.services.common.v1.ProviderOuterClass.*
 
-class ProviderServiceKt(options: Options.ServiceOptions?) : ServiceBase(options) {
+class ProviderServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(options) {
   var stub = ProviderGrpcKt.ProviderCoroutineStub(this.channel)
 
   @Throws(InvalidProtocolBufferException::class, DidException::class)
@@ -55,7 +55,7 @@ class ProviderServiceKt(options: Options.ServiceOptions?) : ServiceBase(options)
 
   @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun getOberonKey(request: GetOberonKeyRequest): GetOberonKeyResponse {
-    return withMetadata(stub, request).getOberonKey(request)
+    return stub.getOberonKey(request)
   }
 
   @Throws(InvalidProtocolBufferException::class, DidException::class)

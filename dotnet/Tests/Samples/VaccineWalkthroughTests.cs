@@ -21,7 +21,6 @@ public class VaccineWalkthroughTests
 {
     private const string DefaultEndpoint = "staging-internal.trinsic.cloud";
     private const int DefaultPort = 443;
-    private const bool DefaultUseTls = true;
 
     private readonly ITestOutputHelper _testOutputHelper;
     private readonly ServiceOptions _options;
@@ -32,7 +31,7 @@ public class VaccineWalkthroughTests
         _options = new() {
             ServerEndpoint = Environment.GetEnvironmentVariable("TEST_SERVER_ENDPOINT") ?? DefaultEndpoint,
             ServerPort = int.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_PORT"), out var port) ? port : DefaultPort,
-            ServerUseTls = bool.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_USE_TLS"), out var tls) ? tls : DefaultUseTls
+            ServerUseTls = !bool.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_USE_TLS"), out var tls) || tls
         };
 
         _testOutputHelper.WriteLine($"Testing endpoint: {_options.FormatUrl()}");
@@ -43,7 +42,7 @@ public class VaccineWalkthroughTests
         // createEcosystem() {
         var trinsic = new TrinsicService(_options);
 
-        var (ecosystem, _) = await trinsic.Provider.CreateEcosystemAsync(new());
+        var (ecosystem, _authToken) = await trinsic.Provider.CreateEcosystemAsync(new());
         var ecosystemId = ecosystem?.Id;
         // }
 
@@ -80,7 +79,6 @@ public class VaccineWalkthroughTests
         var template = await trinsic.Template.CreateAsync(templateRequest);
         var templateId = template?.Data?.Id;
         // }
-
 
         templateId.Should().NotBeNullOrEmpty();
 

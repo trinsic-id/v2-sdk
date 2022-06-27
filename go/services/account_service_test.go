@@ -70,18 +70,13 @@ func TestProtectUnprotectProfile(t *testing.T) {
 	assert2 := assert.New(t)
 
 	// accountServiceConstructor() {
-	opts, err := NewServiceOptions(WithTestEnv())
-	if !assert2.Nil(err) {
-		return
-	}
-
-	accountService, err := NewAccountService(opts)
+	trinsic, err := NewTrinsic(WithTestEnv())
 	if !assert2.Nil(err) {
 		return
 	}
 	// }
 	// accountServiceSignIn() {
-	profile, _, err := accountService.SignIn(context.Background(), &account.SignInRequest{})
+	profile, _, err := trinsic.Account().SignIn(context.Background(), &account.SignInRequest{})
 	if !assert2.Nil(err) {
 		return
 	}
@@ -90,19 +85,19 @@ func TestProtectUnprotectProfile(t *testing.T) {
 	// accountService
 	// protectUnprotectProfile() {
 	securityCode := "1234"
-	protectedProfile, err := accountService.Protect(profile, securityCode)
+	protectedProfile, err := trinsic.Account().Protect(profile, securityCode)
 	if !assert2.Nil(err) {
 		return
 	}
-	unprotectedProfile, err := accountService.Unprotect(protectedProfile, securityCode)
+	unprotectedProfile, err := trinsic.Account().Unprotect(protectedProfile, securityCode)
 	if !assert2.Nil(err) {
 		return
 	}
 	// }
 
 	t.Run("Protected profile should fail", func(t *testing.T) {
-		accountService.SetToken(protectedProfile)
-		info2, err2 := accountService.GetInfo(context.Background())
+		trinsic.Account().SetToken(protectedProfile)
+		info2, err2 := trinsic.Account().GetInfo(context.Background())
 		if !assert2.NotNil(err2) {
 			t.FailNow()
 		}
@@ -112,9 +107,9 @@ func TestProtectUnprotectProfile(t *testing.T) {
 	})
 
 	t.Run("Unprotected profile should work", func(t *testing.T) {
-		accountService.SetToken(unprotectedProfile)
+		trinsic.Account().SetToken(unprotectedProfile)
 		// getInfo() {
-		info2, err2 := accountService.GetInfo(context.Background())
+		info2, err2 := trinsic.Account().GetInfo(context.Background())
 		// }
 		if !assert2.Nil(err2) {
 			t.FailNow()

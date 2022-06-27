@@ -7,7 +7,6 @@ const options = getTestServerOptions();
 async function printGetInfo(service: TrinsicService, profile: string) {
   service.options.authToken = profile;
   const info = await service.account().info();
-  // console.log("account info=", info);
 }
 
 describe("AccountService Unit Tests", () => {
@@ -48,14 +47,14 @@ describe("AccountService Unit Tests", () => {
   });
 
   it("protect/unprotect account profile", async () => {
-    let service = new TrinsicService(options);
-    let myProfile = await service.account().signIn();
-    await printGetInfo(service, myProfile);
+    let trinsic = new TrinsicService(options);
+    let myProfile = await trinsic.account().signIn();
+    await printGetInfo(trinsic, myProfile);
 
     const code = "1234";
     const myProtectedProfile = await AccountService.protect(myProfile, code);
     try {
-      await printGetInfo(service, myProtectedProfile);
+      await printGetInfo(trinsic, myProtectedProfile);
       fail("previous line should have thrown.");
     } catch { }
 
@@ -63,6 +62,6 @@ describe("AccountService Unit Tests", () => {
       myProtectedProfile,
       code
     );
-    await printGetInfo(service, myUnprotectedProfile);
+    await printGetInfo(trinsic, myUnprotectedProfile);
   });
 });

@@ -13,22 +13,7 @@ import (
 )
 
 func TestTemplatesDemo(t *testing.T) {
-	assert2, authtoken, err := createAccountAndSignIn(t)
-	if !assert2.Nil(err) {
-		return
-	}
-
-	opts, err := NewServiceOptions(WithTestEnv(), WithAuthToken(authtoken))
-	if !assert2.Nil(err) {
-		return
-	}
-
-	templateService, err := NewCredentialTemplateService(opts)
-	if !assert2.Nil(err) {
-		return
-	}
-
-	credentialService, err := NewCredentialService(opts)
+	assert2, trinsic, err := createAccountAndSignIn(t)
 	if !assert2.Nil(err) {
 		return
 	}
@@ -40,7 +25,7 @@ func TestTemplatesDemo(t *testing.T) {
 	templateRequest.Fields["lastName"] = &template.TemplateField{}
 	templateRequest.Fields["age"] = &template.TemplateField{Type: template.FieldType_NUMBER, Optional: true}
 
-	templateResponse, err := templateService.Create(context.Background(), templateRequest)
+	templateResponse, err := trinsic.Template().Create(context.Background(), templateRequest)
 	// }
 	if !assert2.Nil(err) && !assert2.NotNil(templateResponse) {
 		return
@@ -65,7 +50,7 @@ func TestTemplatesDemo(t *testing.T) {
 	}
 
 	// issueFromTemplate() {
-	credentialJSON, err := credentialService.IssueFromTemplate(context.Background(), &credential.IssueFromTemplateRequest{
+	credentialJSON, err := trinsic.Credential().IssueFromTemplate(context.Background(), &credential.IssueFromTemplateRequest{
 		TemplateId: templateResponse.Data.Id,
 		ValuesJson: string(valuesString),
 	})
@@ -83,31 +68,31 @@ func TestTemplatesDemo(t *testing.T) {
 	assert2.NotNil(jsonDocument["credentialSubject"])
 
 	// getCredentialTemplate() {
-	getResponse, err := templateService.Get(context.Background(), &template.GetCredentialTemplateRequest{Id: templateResponse.Data.Id})
+	getResponse, err := trinsic.Template().Get(context.Background(), &template.GetCredentialTemplateRequest{Id: templateResponse.Data.Id})
 	// }
 	if getResponse != nil {
 	}
 
 	// searchCredentialTemplate() {
-	searchResponse, err := templateService.Search(context.Background(), &template.SearchCredentialTemplatesRequest{Query: "SELECT * FROM c"})
+	searchResponse, err := trinsic.Template().Search(context.Background(), &template.SearchCredentialTemplatesRequest{Query: "SELECT * FROM c"})
 	// }
 	if searchResponse != nil {
 	}
 
 	// deleteCredentialTemplate() {
-	deleteResponse, err := templateService.Delete(context.Background(), &template.DeleteCredentialTemplateRequest{Id: templateResponse.Data.Id})
+	deleteResponse, err := trinsic.Template().Delete(context.Background(), &template.DeleteCredentialTemplateRequest{Id: templateResponse.Data.Id})
 	// }
 	if deleteResponse != nil {
 	}
 
 	// checkCredentialStatus() {
-	status, err := credentialService.CheckStatus(context.Background(), &credential.CheckStatusRequest{CredentialStatusId: ""})
+	status, err := trinsic.Credential().CheckStatus(context.Background(), &credential.CheckStatusRequest{CredentialStatusId: ""})
 	// }
 	if status != nil {
 	}
 
 	// updateCredentialStatus() {
-	updateResponse, err := credentialService.UpdateStatus(context.Background(), &credential.UpdateStatusRequest{CredentialStatusId: "", Revoked: true})
+	updateResponse, err := trinsic.Credential().UpdateStatus(context.Background(), &credential.UpdateStatusRequest{CredentialStatusId: "", Revoked: true})
 	// }
 	if updateResponse != nil {
 	}

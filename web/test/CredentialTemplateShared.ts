@@ -1,19 +1,19 @@
 import { v4 as uuid } from "uuid";
 import {
-  AccountService,
-  CreateCredentialTemplateRequest,
-  CreateCredentialTemplateResponse,
-  CreateProofRequest,
-  CredentialService,
-  FieldType,
-  InsertItemRequest,
-  IssueFromTemplateRequest,
-  IssueFromTemplateResponse,
-  ServiceOptions,
-  TemplateField,
-  TemplateService,
-  VerifyProofRequest,
-  WalletService,
+    AccountService,
+    CreateCredentialTemplateRequest,
+    CreateCredentialTemplateResponse,
+    CreateProofRequest,
+    CredentialService,
+    FieldType,
+    InsertItemRequest,
+    IssueFromTemplateRequest,
+    IssueFromTemplateResponse,
+    ServiceOptions,
+    TemplateField,
+    TemplateService, TrinsicService,
+    VerifyProofRequest,
+    WalletService,
 } from "../src";
 
 export function createRequiredTestObjects() {
@@ -56,32 +56,30 @@ export async function verifyCredential(
   options: ServiceOptions,
   templateCertFrame: string
 ): Promise<boolean> {
-  const credentialService = new CredentialService(options);
-  const accountService = new AccountService(options);
-  const walletService = new WalletService(options);
+  const trinsic = new TrinsicService(options);
 
-  const allison = await accountService.signIn();
-  const airline = await accountService.signIn();
+  const allison = await trinsic.account().signIn();
+  const airline = await trinsic.account().signIn();
 
   const credential = await issueCredentialFromTemplate(options);
 
-  walletService.options.authToken = allison;
-  const insertItemResponse = await walletService.insertItem(
+  trinsic.wallet().options.authToken = allison;
+  const insertItemResponse = await trinsic.wallet().insertItem(
     InsertItemRequest.fromPartial({ itemJson: credential.documentJson })
   );
 
-  credentialService.options.authToken = allison;
+  trinsic.credential().options.authToken = allison;
   const proofRequest = CreateProofRequest.fromPartial({
     itemId: insertItemResponse.itemId,
     revealDocumentJson: templateCertFrame,
   });
-  const proof = await credentialService.createProof(proofRequest);
+  const proof = await trinsic.credential().createProof(proofRequest);
 
-  credentialService.options.authToken = airline;
+  trinsic.credential().options.authToken = airline;
   const verifyProofRequest = VerifyProofRequest.fromPartial({
     proofDocumentJson: proof.proofDocumentJson,
   });
-  const verifyProofResponse = await credentialService.verifyProof(
+  const verifyProofResponse = await trinsic.credential().verifyProof(
     verifyProofRequest
   );
 
@@ -99,7 +97,7 @@ export async function createCredentialTemplateTest(
     isVaccinated,
   } = createRequiredTestObjects();
   // createTemplate() {
-  const templateService = new TemplateService(options);
+  const trinsic = new TrinsicService(options);
 
   let request = CreateCredentialTemplateRequest.fromPartial({
     name: credentialTemplateName,
@@ -111,7 +109,7 @@ export async function createCredentialTemplateTest(
     },
   });
 
-  let response = await templateService.createCredentialTemplate(request);
+  let response = await trinsic.template().createCredentialTemplate(request);
   // }
 
   return response;
@@ -122,7 +120,7 @@ export async function issueCredentialFromTemplate(
 ): Promise<IssueFromTemplateResponse> {
   let templateResponse = await createCredentialTemplateTest(options);
 
-  let service = new CredentialService(options);
+  let trinsic = new TrinsicService(options);
   // issueFromTemplate() {
   let request = IssueFromTemplateRequest.fromPartial({
     templateId: templateResponse?.data?.id ?? "",
@@ -134,7 +132,7 @@ export async function issueCredentialFromTemplate(
     }),
   });
 
-  let response = await service.issueFromTemplate(request);
+  let response = await trinsic.credential().issueFromTemplate(request);
   // }
 
   return response;

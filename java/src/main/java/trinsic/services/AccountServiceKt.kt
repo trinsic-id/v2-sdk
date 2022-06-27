@@ -12,7 +12,7 @@ import trinsic.sdk.options.v1.Options
 import trinsic.services.account.v1.AccountGrpcKt
 import trinsic.services.account.v1.AccountOuterClass.*
 
-class AccountServiceKt(options: Options.ServiceOptions?) : ServiceBase(options) {
+class AccountServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(options) {
   var stub: AccountGrpcKt.AccountCoroutineStub = AccountGrpcKt.AccountCoroutineStub(this.channel)
 
   suspend fun signIn(): String {
@@ -23,7 +23,9 @@ class AccountServiceKt(options: Options.ServiceOptions?) : ServiceBase(options) 
     var request2 = request
     if (request.ecosystemId.isBlank())
         request2 =
-            SignInRequest.newBuilder(request).setEcosystemId(options.defaultEcosystem).build()
+            SignInRequest.newBuilder(request)
+                .setEcosystemId(optionsBuilder.defaultEcosystem)
+                .build()
     return Base64.getUrlEncoder().encodeToString(stub.signIn(request2).profile.toByteArray())
   }
 

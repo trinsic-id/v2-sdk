@@ -9,10 +9,10 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../account/v1/account.pb.dart' as $0;
+import '../../account/v1/account.pb.dart' as $4;
 
 import 'provider.pbenum.dart';
-import '../../account/v1/account.pbenum.dart' as $0;
+import '../../account/v1/account.pbenum.dart' as $4;
 
 export 'provider.pbenum.dart';
 
@@ -237,19 +237,19 @@ class InviteRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'description')
-    ..aOM<$0.AccountDetails>(
+    ..aOM<$4.AccountDetails>(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'details',
-        subBuilder: $0.AccountDetails.create)
+        subBuilder: $4.AccountDetails.create)
     ..hasRequiredFields = false;
 
   InviteRequest._() : super();
   factory InviteRequest({
     ParticipantType? participant,
     $core.String? description,
-    $0.AccountDetails? details,
+    $4.AccountDetails? details,
   }) {
     final _result = create();
     if (participant != null) {
@@ -315,9 +315,9 @@ class InviteRequest extends $pb.GeneratedMessage {
   void clearDescription() => clearField(2);
 
   @$pb.TagNumber(3)
-  $0.AccountDetails get details => $_getN(2);
+  $4.AccountDetails get details => $_getN(2);
   @$pb.TagNumber(3)
-  set details($0.AccountDetails v) {
+  set details($4.AccountDetails v) {
     setField(3, v);
   }
 
@@ -326,7 +326,7 @@ class InviteRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearDetails() => clearField(3);
   @$pb.TagNumber(3)
-  $0.AccountDetails ensureDetails() => $_ensure(2);
+  $4.AccountDetails ensureDetails() => $_ensure(2);
 }
 
 class InviteResponse extends $pb.GeneratedMessage {
@@ -844,6 +844,99 @@ class WebhookConfig extends $pb.GeneratedMessage {
   void clearStatus() => clearField(5);
 }
 
+class Grant extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'Grant',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'resourceId',
+        protoName: 'resourceId')
+    ..pPS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'actions')
+    ..pc<Grant>(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'childGrants',
+        $pb.PbFieldType.PM,
+        subBuilder: Grant.create)
+    ..hasRequiredFields = false;
+
+  Grant._() : super();
+  factory Grant({
+    $core.String? resourceId,
+    $core.Iterable<$core.String>? actions,
+    $core.Iterable<Grant>? childGrants,
+  }) {
+    final _result = create();
+    if (resourceId != null) {
+      _result.resourceId = resourceId;
+    }
+    if (actions != null) {
+      _result.actions.addAll(actions);
+    }
+    if (childGrants != null) {
+      _result.childGrants.addAll(childGrants);
+    }
+    return _result;
+  }
+  factory Grant.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory Grant.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  Grant clone() => Grant()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  Grant copyWith(void Function(Grant) updates) =>
+      super.copyWith((message) => updates(message as Grant))
+          as Grant; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static Grant create() => Grant._();
+  Grant createEmptyInstance() => create();
+  static $pb.PbList<Grant> createRepeated() => $pb.PbList<Grant>();
+  @$core.pragma('dart2js:noInline')
+  static Grant getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Grant>(create);
+  static Grant? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get resourceId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set resourceId($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasResourceId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearResourceId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.List<$core.String> get actions => $_getList(1);
+
+  @$pb.TagNumber(3)
+  $core.List<Grant> get childGrants => $_getList(2);
+}
+
 class CreateEcosystemRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')
@@ -869,12 +962,12 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'uri')
-    ..aOM<$0.AccountDetails>(
+    ..aOM<$4.AccountDetails>(
         4,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'details',
-        subBuilder: $0.AccountDetails.create)
+        subBuilder: $4.AccountDetails.create)
     ..hasRequiredFields = false;
 
   CreateEcosystemRequest._() : super();
@@ -882,7 +975,7 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
     $core.String? name,
     $core.String? description,
     $core.String? uri,
-    $0.AccountDetails? details,
+    $4.AccountDetails? details,
   }) {
     final _result = create();
     if (name != null) {
@@ -965,9 +1058,9 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
   void clearUri() => clearField(3);
 
   @$pb.TagNumber(4)
-  $0.AccountDetails get details => $_getN(3);
+  $4.AccountDetails get details => $_getN(3);
   @$pb.TagNumber(4)
-  set details($0.AccountDetails v) {
+  set details($4.AccountDetails v) {
     setField(4, v);
   }
 
@@ -976,7 +1069,7 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearDetails() => clearField(4);
   @$pb.TagNumber(4)
-  $0.AccountDetails ensureDetails() => $_ensure(3);
+  $4.AccountDetails ensureDetails() => $_ensure(3);
 }
 
 class CreateEcosystemResponse extends $pb.GeneratedMessage {
@@ -995,28 +1088,28 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
             ? ''
             : 'ecosystem',
         subBuilder: Ecosystem.create)
-    ..aOM<$0.AccountProfile>(
+    ..aOM<$4.AccountProfile>(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'profile',
-        subBuilder: $0.AccountProfile.create)
-    ..e<$0.ConfirmationMethod>(
+        subBuilder: $4.AccountProfile.create)
+    ..e<$4.ConfirmationMethod>(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'confirmationMethod',
         $pb.PbFieldType.OE,
-        defaultOrMaker: $0.ConfirmationMethod.None,
-        valueOf: $0.ConfirmationMethod.valueOf,
-        enumValues: $0.ConfirmationMethod.values)
+        defaultOrMaker: $4.ConfirmationMethod.None,
+        valueOf: $4.ConfirmationMethod.valueOf,
+        enumValues: $4.ConfirmationMethod.values)
     ..hasRequiredFields = false;
 
   CreateEcosystemResponse._() : super();
   factory CreateEcosystemResponse({
     Ecosystem? ecosystem,
-    $0.AccountProfile? profile,
-    $0.ConfirmationMethod? confirmationMethod,
+    $4.AccountProfile? profile,
+    $4.ConfirmationMethod? confirmationMethod,
   }) {
     final _result = create();
     if (ecosystem != null) {
@@ -1074,9 +1167,9 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
   Ecosystem ensureEcosystem() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $0.AccountProfile get profile => $_getN(1);
+  $4.AccountProfile get profile => $_getN(1);
   @$pb.TagNumber(2)
-  set profile($0.AccountProfile v) {
+  set profile($4.AccountProfile v) {
     setField(2, v);
   }
 
@@ -1085,12 +1178,12 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearProfile() => clearField(2);
   @$pb.TagNumber(2)
-  $0.AccountProfile ensureProfile() => $_ensure(1);
+  $4.AccountProfile ensureProfile() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $0.ConfirmationMethod get confirmationMethod => $_getN(2);
+  $4.ConfirmationMethod get confirmationMethod => $_getN(2);
   @$pb.TagNumber(3)
-  set confirmationMethod($0.ConfirmationMethod v) {
+  set confirmationMethod($4.ConfirmationMethod v) {
     setField(3, v);
   }
 
@@ -1766,17 +1859,17 @@ class GenerateTokenResponse extends $pb.GeneratedMessage {
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
-    ..aOM<$0.AccountProfile>(
+    ..aOM<$4.AccountProfile>(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'profile',
-        subBuilder: $0.AccountProfile.create)
+        subBuilder: $4.AccountProfile.create)
     ..hasRequiredFields = false;
 
   GenerateTokenResponse._() : super();
   factory GenerateTokenResponse({
-    $0.AccountProfile? profile,
+    $4.AccountProfile? profile,
   }) {
     final _result = create();
     if (profile != null) {
@@ -1814,9 +1907,9 @@ class GenerateTokenResponse extends $pb.GeneratedMessage {
   static GenerateTokenResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $0.AccountProfile get profile => $_getN(0);
+  $4.AccountProfile get profile => $_getN(0);
   @$pb.TagNumber(1)
-  set profile($0.AccountProfile v) {
+  set profile($4.AccountProfile v) {
     setField(1, v);
   }
 
@@ -1825,7 +1918,7 @@ class GenerateTokenResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearProfile() => clearField(1);
   @$pb.TagNumber(1)
-  $0.AccountProfile ensureProfile() => $_ensure(0);
+  $4.AccountProfile ensureProfile() => $_ensure(0);
 }
 
 class GetOberonKeyRequest extends $pb.GeneratedMessage {
@@ -2074,4 +2167,494 @@ class GetEventTokenResponse extends $pb.GeneratedMessage {
   $core.bool hasToken() => $_has(0);
   @$pb.TagNumber(1)
   void clearToken() => clearField(1);
+}
+
+enum GrantAuthorizationRequest_Account { email, walletId, notSet }
+
+class GrantAuthorizationRequest extends $pb.GeneratedMessage {
+  static const $core.Map<$core.int, GrantAuthorizationRequest_Account>
+      _GrantAuthorizationRequest_AccountByTag = {
+    1: GrantAuthorizationRequest_Account.email,
+    2: GrantAuthorizationRequest_Account.walletId,
+    0: GrantAuthorizationRequest_Account.notSet
+  };
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'GrantAuthorizationRequest',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..oo(0, [1, 2])
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'email')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'walletId',
+        protoName: 'walletId')
+    ..aOS(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'resource')
+    ..aOS(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'action')
+    ..hasRequiredFields = false;
+
+  GrantAuthorizationRequest._() : super();
+  factory GrantAuthorizationRequest({
+    $core.String? email,
+    $core.String? walletId,
+    $core.String? resource,
+    $core.String? action,
+  }) {
+    final _result = create();
+    if (email != null) {
+      _result.email = email;
+    }
+    if (walletId != null) {
+      _result.walletId = walletId;
+    }
+    if (resource != null) {
+      _result.resource = resource;
+    }
+    if (action != null) {
+      _result.action = action;
+    }
+    return _result;
+  }
+  factory GrantAuthorizationRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory GrantAuthorizationRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  GrantAuthorizationRequest clone() =>
+      GrantAuthorizationRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  GrantAuthorizationRequest copyWith(
+          void Function(GrantAuthorizationRequest) updates) =>
+      super.copyWith((message) => updates(message as GrantAuthorizationRequest))
+          as GrantAuthorizationRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GrantAuthorizationRequest create() => GrantAuthorizationRequest._();
+  GrantAuthorizationRequest createEmptyInstance() => create();
+  static $pb.PbList<GrantAuthorizationRequest> createRepeated() =>
+      $pb.PbList<GrantAuthorizationRequest>();
+  @$core.pragma('dart2js:noInline')
+  static GrantAuthorizationRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<GrantAuthorizationRequest>(create);
+  static GrantAuthorizationRequest? _defaultInstance;
+
+  GrantAuthorizationRequest_Account whichAccount() =>
+      _GrantAuthorizationRequest_AccountByTag[$_whichOneof(0)]!;
+  void clearAccount() => clearField($_whichOneof(0));
+
+  @$pb.TagNumber(1)
+  $core.String get email => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set email($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasEmail() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearEmail() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get walletId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set walletId($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasWalletId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearWalletId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get resource => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set resource($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasResource() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearResource() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get action => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set action($core.String v) {
+    $_setString(3, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasAction() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearAction() => clearField(4);
+}
+
+class GrantAuthorizationResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'GrantAuthorizationResponse',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  GrantAuthorizationResponse._() : super();
+  factory GrantAuthorizationResponse() => create();
+  factory GrantAuthorizationResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory GrantAuthorizationResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  GrantAuthorizationResponse clone() =>
+      GrantAuthorizationResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  GrantAuthorizationResponse copyWith(
+          void Function(GrantAuthorizationResponse) updates) =>
+      super.copyWith(
+              (message) => updates(message as GrantAuthorizationResponse))
+          as GrantAuthorizationResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GrantAuthorizationResponse create() => GrantAuthorizationResponse._();
+  GrantAuthorizationResponse createEmptyInstance() => create();
+  static $pb.PbList<GrantAuthorizationResponse> createRepeated() =>
+      $pb.PbList<GrantAuthorizationResponse>();
+  @$core.pragma('dart2js:noInline')
+  static GrantAuthorizationResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<GrantAuthorizationResponse>(create);
+  static GrantAuthorizationResponse? _defaultInstance;
+}
+
+enum RevokeAuthorizationRequest_Account { email, walletId, notSet }
+
+class RevokeAuthorizationRequest extends $pb.GeneratedMessage {
+  static const $core.Map<$core.int, RevokeAuthorizationRequest_Account>
+      _RevokeAuthorizationRequest_AccountByTag = {
+    1: RevokeAuthorizationRequest_Account.email,
+    2: RevokeAuthorizationRequest_Account.walletId,
+    0: RevokeAuthorizationRequest_Account.notSet
+  };
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'RevokeAuthorizationRequest',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..oo(0, [1, 2])
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'email')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'walletId',
+        protoName: 'walletId')
+    ..aOS(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'resource')
+    ..aOS(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'action')
+    ..hasRequiredFields = false;
+
+  RevokeAuthorizationRequest._() : super();
+  factory RevokeAuthorizationRequest({
+    $core.String? email,
+    $core.String? walletId,
+    $core.String? resource,
+    $core.String? action,
+  }) {
+    final _result = create();
+    if (email != null) {
+      _result.email = email;
+    }
+    if (walletId != null) {
+      _result.walletId = walletId;
+    }
+    if (resource != null) {
+      _result.resource = resource;
+    }
+    if (action != null) {
+      _result.action = action;
+    }
+    return _result;
+  }
+  factory RevokeAuthorizationRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory RevokeAuthorizationRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  RevokeAuthorizationRequest clone() =>
+      RevokeAuthorizationRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  RevokeAuthorizationRequest copyWith(
+          void Function(RevokeAuthorizationRequest) updates) =>
+      super.copyWith(
+              (message) => updates(message as RevokeAuthorizationRequest))
+          as RevokeAuthorizationRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static RevokeAuthorizationRequest create() => RevokeAuthorizationRequest._();
+  RevokeAuthorizationRequest createEmptyInstance() => create();
+  static $pb.PbList<RevokeAuthorizationRequest> createRepeated() =>
+      $pb.PbList<RevokeAuthorizationRequest>();
+  @$core.pragma('dart2js:noInline')
+  static RevokeAuthorizationRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<RevokeAuthorizationRequest>(create);
+  static RevokeAuthorizationRequest? _defaultInstance;
+
+  RevokeAuthorizationRequest_Account whichAccount() =>
+      _RevokeAuthorizationRequest_AccountByTag[$_whichOneof(0)]!;
+  void clearAccount() => clearField($_whichOneof(0));
+
+  @$pb.TagNumber(1)
+  $core.String get email => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set email($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasEmail() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearEmail() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get walletId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set walletId($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasWalletId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearWalletId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get resource => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set resource($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasResource() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearResource() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get action => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set action($core.String v) {
+    $_setString(3, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasAction() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearAction() => clearField(4);
+}
+
+class RevokeAuthorizationResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'RevokeAuthorizationResponse',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  RevokeAuthorizationResponse._() : super();
+  factory RevokeAuthorizationResponse() => create();
+  factory RevokeAuthorizationResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory RevokeAuthorizationResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  RevokeAuthorizationResponse clone() =>
+      RevokeAuthorizationResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  RevokeAuthorizationResponse copyWith(
+          void Function(RevokeAuthorizationResponse) updates) =>
+      super.copyWith(
+              (message) => updates(message as RevokeAuthorizationResponse))
+          as RevokeAuthorizationResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static RevokeAuthorizationResponse create() =>
+      RevokeAuthorizationResponse._();
+  RevokeAuthorizationResponse createEmptyInstance() => create();
+  static $pb.PbList<RevokeAuthorizationResponse> createRepeated() =>
+      $pb.PbList<RevokeAuthorizationResponse>();
+  @$core.pragma('dart2js:noInline')
+  static RevokeAuthorizationResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<RevokeAuthorizationResponse>(create);
+  static RevokeAuthorizationResponse? _defaultInstance;
+}
+
+class GetAuthorizationsRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'GetAuthorizationsRequest',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  GetAuthorizationsRequest._() : super();
+  factory GetAuthorizationsRequest() => create();
+  factory GetAuthorizationsRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory GetAuthorizationsRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  GetAuthorizationsRequest clone() =>
+      GetAuthorizationsRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  GetAuthorizationsRequest copyWith(
+          void Function(GetAuthorizationsRequest) updates) =>
+      super.copyWith((message) => updates(message as GetAuthorizationsRequest))
+          as GetAuthorizationsRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetAuthorizationsRequest create() => GetAuthorizationsRequest._();
+  GetAuthorizationsRequest createEmptyInstance() => create();
+  static $pb.PbList<GetAuthorizationsRequest> createRepeated() =>
+      $pb.PbList<GetAuthorizationsRequest>();
+  @$core.pragma('dart2js:noInline')
+  static GetAuthorizationsRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<GetAuthorizationsRequest>(create);
+  static GetAuthorizationsRequest? _defaultInstance;
+}
+
+class GetAuthorizationsResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'GetAuthorizationsResponse',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..pc<Grant>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'grants',
+        $pb.PbFieldType.PM,
+        subBuilder: Grant.create)
+    ..hasRequiredFields = false;
+
+  GetAuthorizationsResponse._() : super();
+  factory GetAuthorizationsResponse({
+    $core.Iterable<Grant>? grants,
+  }) {
+    final _result = create();
+    if (grants != null) {
+      _result.grants.addAll(grants);
+    }
+    return _result;
+  }
+  factory GetAuthorizationsResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory GetAuthorizationsResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  GetAuthorizationsResponse clone() =>
+      GetAuthorizationsResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  GetAuthorizationsResponse copyWith(
+          void Function(GetAuthorizationsResponse) updates) =>
+      super.copyWith((message) => updates(message as GetAuthorizationsResponse))
+          as GetAuthorizationsResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetAuthorizationsResponse create() => GetAuthorizationsResponse._();
+  GetAuthorizationsResponse createEmptyInstance() => create();
+  static $pb.PbList<GetAuthorizationsResponse> createRepeated() =>
+      $pb.PbList<GetAuthorizationsResponse>();
+  @$core.pragma('dart2js:noInline')
+  static GetAuthorizationsResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<GetAuthorizationsResponse>(create);
+  static GetAuthorizationsResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<Grant> get grants => $_getList(0);
 }

@@ -1,7 +1,6 @@
 import asyncio
 import base64
 
-from trinsic.account_service import AccountService
 from trinsic.proto.services.account.v1 import AccountDetails
 from trinsic.proto.services.provider.v1 import AddWebhookRequest, DeleteWebhookRequest, EcosystemInfoRequest, ParticipantType, InviteRequest, UpdateEcosystemRequest
 from trinsic.provider_service import ProviderService

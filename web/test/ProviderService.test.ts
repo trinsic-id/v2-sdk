@@ -19,10 +19,8 @@ const options = getTestServerOptions();
 describe("ProviderService Unit Tests", () => {
   setTestTimeout();
   beforeAll(async () => {
-    let service = new AccountService(options);
-    let authToken = await service.signIn();
-
-    options.authToken = authToken;
+    let trinsic = new TrinsicService(options);
+      options.authToken = await trinsic.account().signIn();
   });
 
   it("Demo: Ecosystem Tests", async () => {

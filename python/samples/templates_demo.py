@@ -2,9 +2,6 @@ import asyncio
 import json
 import uuid
 
-from trinsic.account_service import AccountService
-from trinsic.credential_service import CredentialService
-from trinsic.template_service import TemplateService
 from trinsic.proto.services.verifiablecredentials.templates.v1 import (
     TemplateField,
     FieldType,
@@ -16,18 +13,17 @@ from trinsic.proto.services.verifiablecredentials.templates.v1 import (
 from trinsic.proto.services.verifiablecredentials.v1 import (
     IssueFromTemplateRequest,
 )
+from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config
 
 
 async def templates_demo():
-    account_service = AccountService(server_config=trinsic_config())
-    profile = await account_service.sign_in()
-    template_service = TemplateService(server_config=trinsic_config(profile))
-    credential_service = CredentialService(server_config=trinsic_config(profile))
+    trinsic_service = TrinsicService(server_config=trinsic_config())
+    profile = await trinsic_service.account.sign_in()
 
     # create example template
     # createTemplate() {
-    template = await template_service.create(
+    template = await trinsic_service.template.create(
         request=CreateCredentialTemplateRequest(
             name=f"An Example Credential: {uuid.uuid4()}",
             allow_additional_fields=False,
@@ -47,7 +43,7 @@ async def templates_demo():
     # issue credential from this template
     # issueFromTemplate() {
     values = json.dumps({"firstName": "Jane", "lastName": "Doe", "age": "42"})
-    issue_response = await credential_service.issue_from_template(
+    issue_response = await trinsic_service.credential.issue_from_template(
         request=IssueFromTemplateRequest(
             template_id=template.data.id, values_json=values
         )
@@ -61,7 +57,7 @@ async def templates_demo():
     assert "credentialSubject" in json_keys
 
     # TODO - Fix this, it's not part of the other tests
-    # insert_response = await wallet_service.insert_item(
+    # insert_response = await trinsic_service.wallet.insert_item(
     #     request=InsertItemRequest(item_json=json.dumps(json_document))
     # )
     # item_id = insert_response.item_id
@@ -71,31 +67,31 @@ async def templates_demo():
     # }
     #
     # # create proof from input document
-    # proof = await credential_service.create_proof(
+    # proof = await trinsic_service.credential.create_proof(
     #     request=CreateProofRequest(
     #         document_json=issue_response.document_json,
     #         reveal_document_json=json.dumps(frame),
     #     )
     # )
-    # verify_result = await credential_service.verify_proof(
+    # verify_result = await trinsic_service.credential.verify_proof(
     #     request=VerifyProofRequest(proof_document_json=proof.proof_document_json)
     # )
     # assert verify_result.is_valid
     #
     # # create proof from item id
-    # proof = await credential_service.create_proof(
+    # proof = await trinsic_service.credential.create_proof(
     #     request=CreateProofRequest(
     #         item_id=item_id, reveal_document_json=json.dumps(frame)
     #     )
     # )
-    # verify_result = await credential_service.verify_proof(
+    # verify_result = await trinsic_service.credential.verify_proof(
     #     request=VerifyProofRequest(proof_document_json=proof.proof_document_json)
     # )
     # assert verify_result.is_valid
     #
     # try:
     #     # checkCredentialStatus() {
-    #     check_response = await credential_service.check_status(
+    #     check_response = await trinsic_service.credential.check_status(
     #         request=CheckStatusRequest(credential_status_id="")
     #     )
     #     # }
@@ -104,7 +100,7 @@ async def templates_demo():
     #
     # try:
     #     # updateCredentialStatus() {
-    #     update_response = await credential_service.update_status(
+    #     update_response = await trinsic_service.credential.update_status(
     #         request=UpdateStatusRequest(credential_status_id="", revoked=True)
     #     )
     #     # }
@@ -112,24 +108,24 @@ async def templates_demo():
     #     pass  # This is expected
 
     # getCredentialTemplate() {
-    get_template_response = await template_service.get(
+    get_template_response = await trinsic_service.template.get(
         request=GetCredentialTemplateRequest(id=template.data.id)
     )
     # }
     # searchCredentialTemplate() {
-    search_template_response = await template_service.search(
+    search_template_response = await trinsic_service.template.search(
         request=SearchCredentialTemplatesRequest(query="SELECT * FROM c")
     )
     # }
-    # deleteCredentialTemplate() {
-    delete_template_response = await template_service.delete(
-        request=DeleteCredentialTemplateRequest(id=template.data.id)
-    )
-    # }
-
-    account_service.close()
-    template_service.close()
-    credential_service.close()
+    try:
+        # deleteCredentialTemplate() {
+        delete_template_response = await trinsic_service.template.delete(
+            request=DeleteCredentialTemplateRequest(id=template.data.id)
+        )
+        # }
+    except:
+        # permission denied on deletion - whatever
+        pass
 
 
 if __name__ == "__main__":

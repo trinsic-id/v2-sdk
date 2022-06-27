@@ -41,6 +41,23 @@ object ProviderGrpcKt {
           ProviderOuterClass.UpdateEcosystemRequest, ProviderOuterClass.UpdateEcosystemResponse>
     @JvmStatic get() = ProviderGrpc.getUpdateEcosystemMethod()
 
+  val grantAuthorizationMethod:
+      MethodDescriptor<
+          ProviderOuterClass.GrantAuthorizationRequest,
+          ProviderOuterClass.GrantAuthorizationResponse>
+    @JvmStatic get() = ProviderGrpc.getGrantAuthorizationMethod()
+
+  val revokeAuthorizationMethod:
+      MethodDescriptor<
+          ProviderOuterClass.RevokeAuthorizationRequest,
+          ProviderOuterClass.RevokeAuthorizationResponse>
+    @JvmStatic get() = ProviderGrpc.getRevokeAuthorizationMethod()
+
+  val getAuthorizationsMethod:
+      MethodDescriptor<
+          ProviderOuterClass.GetAuthorizationsRequest, ProviderOuterClass.GetAuthorizationsResponse>
+    @JvmStatic get() = ProviderGrpc.getGetAuthorizationsMethod()
+
   val addWebhookMethod:
       MethodDescriptor<ProviderOuterClass.AddWebhookRequest, ProviderOuterClass.AddWebhookResponse>
     @JvmStatic get() = ProviderGrpc.getAddWebhookMethod()
@@ -124,6 +141,58 @@ object ProviderGrpcKt {
         headers: Metadata = Metadata()
     ): ProviderOuterClass.UpdateEcosystemResponse =
         unaryRpc(channel, ProviderGrpc.getUpdateEcosystemMethod(), request, callOptions, headers)
+    /**
+     * Executes this RPC and returns the response message, suspending until the RPC completes with
+     * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
+     * [StatusException] is thrown. If this coroutine is cancelled, the RPC is also cancelled with
+     * the corresponding exception as a cause.
+     *
+     * @param request The request message to send to the server.
+     *
+     * @param headers Metadata to attach to the request. Most users will not need this.
+     *
+     * @return The single response from the server.
+     */
+    suspend fun grantAuthorization(
+        request: ProviderOuterClass.GrantAuthorizationRequest,
+        headers: Metadata = Metadata()
+    ): ProviderOuterClass.GrantAuthorizationResponse =
+        unaryRpc(channel, ProviderGrpc.getGrantAuthorizationMethod(), request, callOptions, headers)
+    /**
+     * Executes this RPC and returns the response message, suspending until the RPC completes with
+     * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
+     * [StatusException] is thrown. If this coroutine is cancelled, the RPC is also cancelled with
+     * the corresponding exception as a cause.
+     *
+     * @param request The request message to send to the server.
+     *
+     * @param headers Metadata to attach to the request. Most users will not need this.
+     *
+     * @return The single response from the server.
+     */
+    suspend fun revokeAuthorization(
+        request: ProviderOuterClass.RevokeAuthorizationRequest,
+        headers: Metadata = Metadata()
+    ): ProviderOuterClass.RevokeAuthorizationResponse =
+        unaryRpc(
+            channel, ProviderGrpc.getRevokeAuthorizationMethod(), request, callOptions, headers)
+    /**
+     * Executes this RPC and returns the response message, suspending until the RPC completes with
+     * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
+     * [StatusException] is thrown. If this coroutine is cancelled, the RPC is also cancelled with
+     * the corresponding exception as a cause.
+     *
+     * @param request The request message to send to the server.
+     *
+     * @param headers Metadata to attach to the request. Most users will not need this.
+     *
+     * @return The single response from the server.
+     */
+    suspend fun getAuthorizations(
+        request: ProviderOuterClass.GetAuthorizationsRequest,
+        headers: Metadata = Metadata()
+    ): ProviderOuterClass.GetAuthorizationsResponse =
+        unaryRpc(channel, ProviderGrpc.getGetAuthorizationsMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
      * [`Status.OK`][Status]. If the RPC completes with another status, a corresponding
@@ -304,6 +373,57 @@ object ProviderGrpcKt {
                 "Method services.provider.v1.Provider.UpdateEcosystem is unimplemented"))
 
     /**
+     * Returns the response to an RPC for services.provider.v1.Provider.GrantAuthorization.
+     *
+     * If this method fails with a [StatusException], the RPC will fail with the corresponding
+     * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
+     * will fail with status `Status.CANCELLED`. If this method fails for any other reason, the RPC
+     * will fail with `Status.UNKNOWN` with the exception as a cause.
+     *
+     * @param request The request from the client.
+     */
+    open suspend fun grantAuthorization(
+        request: ProviderOuterClass.GrantAuthorizationRequest
+    ): ProviderOuterClass.GrantAuthorizationResponse =
+        throw StatusException(
+            UNIMPLEMENTED.withDescription(
+                "Method services.provider.v1.Provider.GrantAuthorization is unimplemented"))
+
+    /**
+     * Returns the response to an RPC for services.provider.v1.Provider.RevokeAuthorization.
+     *
+     * If this method fails with a [StatusException], the RPC will fail with the corresponding
+     * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
+     * will fail with status `Status.CANCELLED`. If this method fails for any other reason, the RPC
+     * will fail with `Status.UNKNOWN` with the exception as a cause.
+     *
+     * @param request The request from the client.
+     */
+    open suspend fun revokeAuthorization(
+        request: ProviderOuterClass.RevokeAuthorizationRequest
+    ): ProviderOuterClass.RevokeAuthorizationResponse =
+        throw StatusException(
+            UNIMPLEMENTED.withDescription(
+                "Method services.provider.v1.Provider.RevokeAuthorization is unimplemented"))
+
+    /**
+     * Returns the response to an RPC for services.provider.v1.Provider.GetAuthorizations.
+     *
+     * If this method fails with a [StatusException], the RPC will fail with the corresponding
+     * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
+     * will fail with status `Status.CANCELLED`. If this method fails for any other reason, the RPC
+     * will fail with `Status.UNKNOWN` with the exception as a cause.
+     *
+     * @param request The request from the client.
+     */
+    open suspend fun getAuthorizations(
+        request: ProviderOuterClass.GetAuthorizationsRequest
+    ): ProviderOuterClass.GetAuthorizationsResponse =
+        throw StatusException(
+            UNIMPLEMENTED.withDescription(
+                "Method services.provider.v1.Provider.GetAuthorizations is unimplemented"))
+
+    /**
      * Returns the response to an RPC for services.provider.v1.Provider.AddWebhook.
      *
      * If this method fails with a [StatusException], the RPC will fail with the corresponding
@@ -451,6 +571,21 @@ object ProviderGrpcKt {
                     context = this.context,
                     descriptor = ProviderGrpc.getUpdateEcosystemMethod(),
                     implementation = ::updateEcosystem))
+            .addMethod(
+                unaryServerMethodDefinition(
+                    context = this.context,
+                    descriptor = ProviderGrpc.getGrantAuthorizationMethod(),
+                    implementation = ::grantAuthorization))
+            .addMethod(
+                unaryServerMethodDefinition(
+                    context = this.context,
+                    descriptor = ProviderGrpc.getRevokeAuthorizationMethod(),
+                    implementation = ::revokeAuthorization))
+            .addMethod(
+                unaryServerMethodDefinition(
+                    context = this.context,
+                    descriptor = ProviderGrpc.getGetAuthorizationsMethod(),
+                    implementation = ::getAuthorizations))
             .addMethod(
                 unaryServerMethodDefinition(
                     context = this.context,
