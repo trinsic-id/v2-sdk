@@ -31,69 +31,45 @@ object ProviderGrpcKt {
   val serviceDescriptor: ServiceDescriptor
     get() = ProviderGrpc.getServiceDescriptor()
 
-  val createEcosystemMethod:
-      MethodDescriptor<
-          ProviderOuterClass.CreateEcosystemRequest, ProviderOuterClass.CreateEcosystemResponse>
+  val createEcosystemMethod: MethodDescriptor<CreateEcosystemRequest, CreateEcosystemResponse>
     @JvmStatic get() = ProviderGrpc.getCreateEcosystemMethod()
 
-  val updateEcosystemMethod:
-      MethodDescriptor<
-          ProviderOuterClass.UpdateEcosystemRequest, ProviderOuterClass.UpdateEcosystemResponse>
+  val updateEcosystemMethod: MethodDescriptor<UpdateEcosystemRequest, UpdateEcosystemResponse>
     @JvmStatic get() = ProviderGrpc.getUpdateEcosystemMethod()
 
   val grantAuthorizationMethod:
-      MethodDescriptor<
-          ProviderOuterClass.GrantAuthorizationRequest,
-          ProviderOuterClass.GrantAuthorizationResponse>
+      MethodDescriptor<GrantAuthorizationRequest, GrantAuthorizationResponse>
     @JvmStatic get() = ProviderGrpc.getGrantAuthorizationMethod()
 
   val revokeAuthorizationMethod:
-      MethodDescriptor<
-          ProviderOuterClass.RevokeAuthorizationRequest,
-          ProviderOuterClass.RevokeAuthorizationResponse>
+      MethodDescriptor<RevokeAuthorizationRequest, RevokeAuthorizationResponse>
     @JvmStatic get() = ProviderGrpc.getRevokeAuthorizationMethod()
 
-  val getAuthorizationsMethod:
-      MethodDescriptor<
-          ProviderOuterClass.GetAuthorizationsRequest, ProviderOuterClass.GetAuthorizationsResponse>
+  val getAuthorizationsMethod: MethodDescriptor<GetAuthorizationsRequest, GetAuthorizationsResponse>
     @JvmStatic get() = ProviderGrpc.getGetAuthorizationsMethod()
 
-  val addWebhookMethod:
-      MethodDescriptor<ProviderOuterClass.AddWebhookRequest, ProviderOuterClass.AddWebhookResponse>
+  val addWebhookMethod: MethodDescriptor<AddWebhookRequest, AddWebhookResponse>
     @JvmStatic get() = ProviderGrpc.getAddWebhookMethod()
 
-  val deleteWebhookMethod:
-      MethodDescriptor<
-          ProviderOuterClass.DeleteWebhookRequest, ProviderOuterClass.DeleteWebhookResponse>
+  val deleteWebhookMethod: MethodDescriptor<DeleteWebhookRequest, DeleteWebhookResponse>
     @JvmStatic get() = ProviderGrpc.getDeleteWebhookMethod()
 
-  val ecosystemInfoMethod:
-      MethodDescriptor<
-          ProviderOuterClass.EcosystemInfoRequest, ProviderOuterClass.EcosystemInfoResponse>
+  val ecosystemInfoMethod: MethodDescriptor<EcosystemInfoRequest, EcosystemInfoResponse>
     @JvmStatic get() = ProviderGrpc.getEcosystemInfoMethod()
 
-  val generateTokenMethod:
-      MethodDescriptor<
-          ProviderOuterClass.GenerateTokenRequest, ProviderOuterClass.GenerateTokenResponse>
+  val generateTokenMethod: MethodDescriptor<GenerateTokenRequest, GenerateTokenResponse>
     @JvmStatic get() = ProviderGrpc.getGenerateTokenMethod()
 
-  val inviteMethod:
-      MethodDescriptor<ProviderOuterClass.InviteRequest, ProviderOuterClass.InviteResponse>
+  val inviteMethod: MethodDescriptor<InviteRequest, InviteResponse>
     @JvmStatic get() = ProviderGrpc.getInviteMethod()
 
-  val invitationStatusMethod:
-      MethodDescriptor<
-          ProviderOuterClass.InvitationStatusRequest, ProviderOuterClass.InvitationStatusResponse>
+  val invitationStatusMethod: MethodDescriptor<InvitationStatusRequest, InvitationStatusResponse>
     @JvmStatic get() = ProviderGrpc.getInvitationStatusMethod()
 
-  val getOberonKeyMethod:
-      MethodDescriptor<
-          ProviderOuterClass.GetOberonKeyRequest, ProviderOuterClass.GetOberonKeyResponse>
+  val getOberonKeyMethod: MethodDescriptor<GetOberonKeyRequest, GetOberonKeyResponse>
     @JvmStatic get() = ProviderGrpc.getGetOberonKeyMethod()
 
-  val getEventTokenMethod:
-      MethodDescriptor<
-          ProviderOuterClass.GetEventTokenRequest, ProviderOuterClass.GetEventTokenResponse>
+  val getEventTokenMethod: MethodDescriptor<GetEventTokenRequest, GetEventTokenResponse>
     @JvmStatic get() = ProviderGrpc.getGetEventTokenMethod()
 
   /**
@@ -120,9 +96,9 @@ object ProviderGrpcKt {
      * @return The single response from the server.
      */
     suspend fun createEcosystem(
-        request: ProviderOuterClass.CreateEcosystemRequest,
+        request: CreateEcosystemRequest,
         headers: Metadata = Metadata()
-    ): ProviderOuterClass.CreateEcosystemResponse =
+    ): CreateEcosystemResponse =
         unaryRpc(channel, ProviderGrpc.getCreateEcosystemMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
@@ -137,9 +113,9 @@ object ProviderGrpcKt {
      * @return The single response from the server.
      */
     suspend fun updateEcosystem(
-        request: ProviderOuterClass.UpdateEcosystemRequest,
+        request: UpdateEcosystemRequest,
         headers: Metadata = Metadata()
-    ): ProviderOuterClass.UpdateEcosystemResponse =
+    ): UpdateEcosystemResponse =
         unaryRpc(channel, ProviderGrpc.getUpdateEcosystemMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
@@ -154,9 +130,9 @@ object ProviderGrpcKt {
      * @return The single response from the server.
      */
     suspend fun grantAuthorization(
-        request: ProviderOuterClass.GrantAuthorizationRequest,
+        request: GrantAuthorizationRequest,
         headers: Metadata = Metadata()
-    ): ProviderOuterClass.GrantAuthorizationResponse =
+    ): GrantAuthorizationResponse =
         unaryRpc(channel, ProviderGrpc.getGrantAuthorizationMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
@@ -171,9 +147,9 @@ object ProviderGrpcKt {
      * @return The single response from the server.
      */
     suspend fun revokeAuthorization(
-        request: ProviderOuterClass.RevokeAuthorizationRequest,
+        request: RevokeAuthorizationRequest,
         headers: Metadata = Metadata()
-    ): ProviderOuterClass.RevokeAuthorizationResponse =
+    ): RevokeAuthorizationResponse =
         unaryRpc(
             channel, ProviderGrpc.getRevokeAuthorizationMethod(), request, callOptions, headers)
     /**
@@ -189,9 +165,9 @@ object ProviderGrpcKt {
      * @return The single response from the server.
      */
     suspend fun getAuthorizations(
-        request: ProviderOuterClass.GetAuthorizationsRequest,
+        request: GetAuthorizationsRequest,
         headers: Metadata = Metadata()
-    ): ProviderOuterClass.GetAuthorizationsResponse =
+    ): GetAuthorizationsResponse =
         unaryRpc(channel, ProviderGrpc.getGetAuthorizationsMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
@@ -206,9 +182,9 @@ object ProviderGrpcKt {
      * @return The single response from the server.
      */
     suspend fun addWebhook(
-        request: ProviderOuterClass.AddWebhookRequest,
+        request: AddWebhookRequest,
         headers: Metadata = Metadata()
-    ): ProviderOuterClass.AddWebhookResponse =
+    ): AddWebhookResponse =
         unaryRpc(channel, ProviderGrpc.getAddWebhookMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
@@ -223,9 +199,9 @@ object ProviderGrpcKt {
      * @return The single response from the server.
      */
     suspend fun deleteWebhook(
-        request: ProviderOuterClass.DeleteWebhookRequest,
+        request: DeleteWebhookRequest,
         headers: Metadata = Metadata()
-    ): ProviderOuterClass.DeleteWebhookResponse =
+    ): DeleteWebhookResponse =
         unaryRpc(channel, ProviderGrpc.getDeleteWebhookMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
@@ -240,9 +216,9 @@ object ProviderGrpcKt {
      * @return The single response from the server.
      */
     suspend fun ecosystemInfo(
-        request: ProviderOuterClass.EcosystemInfoRequest,
+        request: EcosystemInfoRequest,
         headers: Metadata = Metadata()
-    ): ProviderOuterClass.EcosystemInfoResponse =
+    ): EcosystemInfoResponse =
         unaryRpc(channel, ProviderGrpc.getEcosystemInfoMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
@@ -257,9 +233,9 @@ object ProviderGrpcKt {
      * @return The single response from the server.
      */
     suspend fun generateToken(
-        request: ProviderOuterClass.GenerateTokenRequest,
+        request: GenerateTokenRequest,
         headers: Metadata = Metadata()
-    ): ProviderOuterClass.GenerateTokenResponse =
+    ): GenerateTokenResponse =
         unaryRpc(channel, ProviderGrpc.getGenerateTokenMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
@@ -273,10 +249,7 @@ object ProviderGrpcKt {
      *
      * @return The single response from the server.
      */
-    suspend fun invite(
-        request: ProviderOuterClass.InviteRequest,
-        headers: Metadata = Metadata()
-    ): ProviderOuterClass.InviteResponse =
+    suspend fun invite(request: InviteRequest, headers: Metadata = Metadata()): InviteResponse =
         unaryRpc(channel, ProviderGrpc.getInviteMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
@@ -291,9 +264,9 @@ object ProviderGrpcKt {
      * @return The single response from the server.
      */
     suspend fun invitationStatus(
-        request: ProviderOuterClass.InvitationStatusRequest,
+        request: InvitationStatusRequest,
         headers: Metadata = Metadata()
-    ): ProviderOuterClass.InvitationStatusResponse =
+    ): InvitationStatusResponse =
         unaryRpc(channel, ProviderGrpc.getInvitationStatusMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
@@ -308,9 +281,9 @@ object ProviderGrpcKt {
      * @return The single response from the server.
      */
     suspend fun getOberonKey(
-        request: ProviderOuterClass.GetOberonKeyRequest,
+        request: GetOberonKeyRequest,
         headers: Metadata = Metadata()
-    ): ProviderOuterClass.GetOberonKeyResponse =
+    ): GetOberonKeyResponse =
         unaryRpc(channel, ProviderGrpc.getGetOberonKeyMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
@@ -325,9 +298,9 @@ object ProviderGrpcKt {
      * @return The single response from the server.
      */
     suspend fun getEventToken(
-        request: ProviderOuterClass.GetEventTokenRequest,
+        request: GetEventTokenRequest,
         headers: Metadata = Metadata()
-    ): ProviderOuterClass.GetEventTokenResponse =
+    ): GetEventTokenResponse =
         unaryRpc(channel, ProviderGrpc.getGetEventTokenMethod(), request, callOptions, headers)
   }
 
@@ -348,9 +321,7 @@ object ProviderGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun createEcosystem(
-        request: ProviderOuterClass.CreateEcosystemRequest
-    ): ProviderOuterClass.CreateEcosystemResponse =
+    open suspend fun createEcosystem(request: CreateEcosystemRequest): CreateEcosystemResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.provider.v1.Provider.CreateEcosystem is unimplemented"))
@@ -365,9 +336,7 @@ object ProviderGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun updateEcosystem(
-        request: ProviderOuterClass.UpdateEcosystemRequest
-    ): ProviderOuterClass.UpdateEcosystemResponse =
+    open suspend fun updateEcosystem(request: UpdateEcosystemRequest): UpdateEcosystemResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.provider.v1.Provider.UpdateEcosystem is unimplemented"))
@@ -383,8 +352,8 @@ object ProviderGrpcKt {
      * @param request The request from the client.
      */
     open suspend fun grantAuthorization(
-        request: ProviderOuterClass.GrantAuthorizationRequest
-    ): ProviderOuterClass.GrantAuthorizationResponse =
+        request: GrantAuthorizationRequest
+    ): GrantAuthorizationResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.provider.v1.Provider.GrantAuthorization is unimplemented"))
@@ -400,8 +369,8 @@ object ProviderGrpcKt {
      * @param request The request from the client.
      */
     open suspend fun revokeAuthorization(
-        request: ProviderOuterClass.RevokeAuthorizationRequest
-    ): ProviderOuterClass.RevokeAuthorizationResponse =
+        request: RevokeAuthorizationRequest
+    ): RevokeAuthorizationResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.provider.v1.Provider.RevokeAuthorization is unimplemented"))
@@ -417,8 +386,8 @@ object ProviderGrpcKt {
      * @param request The request from the client.
      */
     open suspend fun getAuthorizations(
-        request: ProviderOuterClass.GetAuthorizationsRequest
-    ): ProviderOuterClass.GetAuthorizationsResponse =
+        request: GetAuthorizationsRequest
+    ): GetAuthorizationsResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.provider.v1.Provider.GetAuthorizations is unimplemented"))
@@ -433,9 +402,7 @@ object ProviderGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun addWebhook(
-        request: ProviderOuterClass.AddWebhookRequest
-    ): ProviderOuterClass.AddWebhookResponse =
+    open suspend fun addWebhook(request: AddWebhookRequest): AddWebhookResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.provider.v1.Provider.AddWebhook is unimplemented"))
@@ -450,9 +417,7 @@ object ProviderGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun deleteWebhook(
-        request: ProviderOuterClass.DeleteWebhookRequest
-    ): ProviderOuterClass.DeleteWebhookResponse =
+    open suspend fun deleteWebhook(request: DeleteWebhookRequest): DeleteWebhookResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.provider.v1.Provider.DeleteWebhook is unimplemented"))
@@ -467,9 +432,7 @@ object ProviderGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun ecosystemInfo(
-        request: ProviderOuterClass.EcosystemInfoRequest
-    ): ProviderOuterClass.EcosystemInfoResponse =
+    open suspend fun ecosystemInfo(request: EcosystemInfoRequest): EcosystemInfoResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.provider.v1.Provider.EcosystemInfo is unimplemented"))
@@ -484,9 +447,7 @@ object ProviderGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun generateToken(
-        request: ProviderOuterClass.GenerateTokenRequest
-    ): ProviderOuterClass.GenerateTokenResponse =
+    open suspend fun generateToken(request: GenerateTokenRequest): GenerateTokenResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.provider.v1.Provider.GenerateToken is unimplemented"))
@@ -501,9 +462,7 @@ object ProviderGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun invite(
-        request: ProviderOuterClass.InviteRequest
-    ): ProviderOuterClass.InviteResponse =
+    open suspend fun invite(request: InviteRequest): InviteResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.provider.v1.Provider.Invite is unimplemented"))
@@ -518,9 +477,7 @@ object ProviderGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun invitationStatus(
-        request: ProviderOuterClass.InvitationStatusRequest
-    ): ProviderOuterClass.InvitationStatusResponse =
+    open suspend fun invitationStatus(request: InvitationStatusRequest): InvitationStatusResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.provider.v1.Provider.InvitationStatus is unimplemented"))
@@ -535,9 +492,7 @@ object ProviderGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun getOberonKey(
-        request: ProviderOuterClass.GetOberonKeyRequest
-    ): ProviderOuterClass.GetOberonKeyResponse =
+    open suspend fun getOberonKey(request: GetOberonKeyRequest): GetOberonKeyResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.provider.v1.Provider.GetOberonKey is unimplemented"))
@@ -552,9 +507,7 @@ object ProviderGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun getEventToken(
-        request: ProviderOuterClass.GetEventTokenRequest
-    ): ProviderOuterClass.GetEventTokenResponse =
+    open suspend fun getEventToken(request: GetEventTokenRequest): GetEventTokenResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.provider.v1.Provider.GetEventToken is unimplemented"))

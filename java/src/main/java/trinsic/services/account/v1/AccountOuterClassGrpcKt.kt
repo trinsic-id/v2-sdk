@@ -31,34 +31,25 @@ object AccountGrpcKt {
   val serviceDescriptor: ServiceDescriptor
     get() = AccountGrpc.getServiceDescriptor()
 
-  val signInMethod:
-      MethodDescriptor<AccountOuterClass.SignInRequest, AccountOuterClass.SignInResponse>
+  val signInMethod: MethodDescriptor<SignInRequest, SignInResponse>
     @JvmStatic get() = AccountGrpc.getSignInMethod()
 
-  val loginMethod: MethodDescriptor<AccountOuterClass.LoginRequest, AccountOuterClass.LoginResponse>
+  val loginMethod: MethodDescriptor<LoginRequest, LoginResponse>
     @JvmStatic get() = AccountGrpc.getLoginMethod()
 
-  val loginConfirmMethod:
-      MethodDescriptor<
-          AccountOuterClass.LoginConfirmRequest, AccountOuterClass.LoginConfirmResponse>
+  val loginConfirmMethod: MethodDescriptor<LoginConfirmRequest, LoginConfirmResponse>
     @JvmStatic get() = AccountGrpc.getLoginConfirmMethod()
 
-  val infoMethod:
-      MethodDescriptor<AccountOuterClass.AccountInfoRequest, AccountOuterClass.AccountInfoResponse>
+  val infoMethod: MethodDescriptor<AccountInfoRequest, AccountInfoResponse>
     @JvmStatic get() = AccountGrpc.getInfoMethod()
 
-  val listDevicesMethod:
-      MethodDescriptor<AccountOuterClass.ListDevicesRequest, AccountOuterClass.ListDevicesResponse>
+  val listDevicesMethod: MethodDescriptor<ListDevicesRequest, ListDevicesResponse>
     @JvmStatic get() = AccountGrpc.getListDevicesMethod()
 
-  val revokeDeviceMethod:
-      MethodDescriptor<
-          AccountOuterClass.RevokeDeviceRequest, AccountOuterClass.RevokeDeviceResponse>
+  val revokeDeviceMethod: MethodDescriptor<RevokeDeviceRequest, RevokeDeviceResponse>
     @JvmStatic get() = AccountGrpc.getRevokeDeviceMethod()
 
-  val authorizeWebhookMethod:
-      MethodDescriptor<
-          AccountOuterClass.AuthorizeWebhookRequest, AccountOuterClass.AuthorizeWebhookResponse>
+  val authorizeWebhookMethod: MethodDescriptor<AuthorizeWebhookRequest, AuthorizeWebhookResponse>
     @JvmStatic get() = AccountGrpc.getAuthorizeWebhookMethod()
 
   /**
@@ -84,10 +75,7 @@ object AccountGrpcKt {
      *
      * @return The single response from the server.
      */
-    suspend fun signIn(
-        request: AccountOuterClass.SignInRequest,
-        headers: Metadata = Metadata()
-    ): AccountOuterClass.SignInResponse =
+    suspend fun signIn(request: SignInRequest, headers: Metadata = Metadata()): SignInResponse =
         unaryRpc(channel, AccountGrpc.getSignInMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
@@ -101,10 +89,7 @@ object AccountGrpcKt {
      *
      * @return The single response from the server.
      */
-    suspend fun login(
-        request: AccountOuterClass.LoginRequest,
-        headers: Metadata = Metadata()
-    ): AccountOuterClass.LoginResponse =
+    suspend fun login(request: LoginRequest, headers: Metadata = Metadata()): LoginResponse =
         unaryRpc(channel, AccountGrpc.getLoginMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
@@ -119,9 +104,9 @@ object AccountGrpcKt {
      * @return The single response from the server.
      */
     suspend fun loginConfirm(
-        request: AccountOuterClass.LoginConfirmRequest,
+        request: LoginConfirmRequest,
         headers: Metadata = Metadata()
-    ): AccountOuterClass.LoginConfirmResponse =
+    ): LoginConfirmResponse =
         unaryRpc(channel, AccountGrpc.getLoginConfirmMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
@@ -136,9 +121,9 @@ object AccountGrpcKt {
      * @return The single response from the server.
      */
     suspend fun info(
-        request: AccountOuterClass.AccountInfoRequest,
+        request: AccountInfoRequest,
         headers: Metadata = Metadata()
-    ): AccountOuterClass.AccountInfoResponse =
+    ): AccountInfoResponse =
         unaryRpc(channel, AccountGrpc.getInfoMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
@@ -153,9 +138,9 @@ object AccountGrpcKt {
      * @return The single response from the server.
      */
     suspend fun listDevices(
-        request: AccountOuterClass.ListDevicesRequest,
+        request: ListDevicesRequest,
         headers: Metadata = Metadata()
-    ): AccountOuterClass.ListDevicesResponse =
+    ): ListDevicesResponse =
         unaryRpc(channel, AccountGrpc.getListDevicesMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
@@ -170,9 +155,9 @@ object AccountGrpcKt {
      * @return The single response from the server.
      */
     suspend fun revokeDevice(
-        request: AccountOuterClass.RevokeDeviceRequest,
+        request: RevokeDeviceRequest,
         headers: Metadata = Metadata()
-    ): AccountOuterClass.RevokeDeviceResponse =
+    ): RevokeDeviceResponse =
         unaryRpc(channel, AccountGrpc.getRevokeDeviceMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
@@ -187,9 +172,9 @@ object AccountGrpcKt {
      * @return The single response from the server.
      */
     suspend fun authorizeWebhook(
-        request: AccountOuterClass.AuthorizeWebhookRequest,
+        request: AuthorizeWebhookRequest,
         headers: Metadata = Metadata()
-    ): AccountOuterClass.AuthorizeWebhookResponse =
+    ): AuthorizeWebhookResponse =
         unaryRpc(channel, AccountGrpc.getAuthorizeWebhookMethod(), request, callOptions, headers)
   }
 
@@ -209,9 +194,7 @@ object AccountGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun signIn(
-        request: AccountOuterClass.SignInRequest
-    ): AccountOuterClass.SignInResponse =
+    open suspend fun signIn(request: SignInRequest): SignInResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.account.v1.Account.SignIn is unimplemented"))
@@ -226,9 +209,7 @@ object AccountGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun login(
-        request: AccountOuterClass.LoginRequest
-    ): AccountOuterClass.LoginResponse =
+    open suspend fun login(request: LoginRequest): LoginResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.account.v1.Account.Login is unimplemented"))
@@ -243,9 +224,7 @@ object AccountGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun loginConfirm(
-        request: AccountOuterClass.LoginConfirmRequest
-    ): AccountOuterClass.LoginConfirmResponse =
+    open suspend fun loginConfirm(request: LoginConfirmRequest): LoginConfirmResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.account.v1.Account.LoginConfirm is unimplemented"))
@@ -260,9 +239,7 @@ object AccountGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun info(
-        request: AccountOuterClass.AccountInfoRequest
-    ): AccountOuterClass.AccountInfoResponse =
+    open suspend fun info(request: AccountInfoRequest): AccountInfoResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.account.v1.Account.Info is unimplemented"))
@@ -277,9 +254,7 @@ object AccountGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun listDevices(
-        request: AccountOuterClass.ListDevicesRequest
-    ): AccountOuterClass.ListDevicesResponse =
+    open suspend fun listDevices(request: ListDevicesRequest): ListDevicesResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.account.v1.Account.ListDevices is unimplemented"))
@@ -294,9 +269,7 @@ object AccountGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun revokeDevice(
-        request: AccountOuterClass.RevokeDeviceRequest
-    ): AccountOuterClass.RevokeDeviceResponse =
+    open suspend fun revokeDevice(request: RevokeDeviceRequest): RevokeDeviceResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.account.v1.Account.RevokeDevice is unimplemented"))
@@ -311,9 +284,7 @@ object AccountGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun authorizeWebhook(
-        request: AccountOuterClass.AuthorizeWebhookRequest
-    ): AccountOuterClass.AuthorizeWebhookResponse =
+    open suspend fun authorizeWebhook(request: AuthorizeWebhookRequest): AuthorizeWebhookResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.account.v1.Account.AuthorizeWebhook is unimplemented"))

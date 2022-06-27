@@ -8,6 +8,8 @@ public final class FieldOptions {
 
   public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {
     registry.add(trinsic.services.protobuf.options.FieldOptions.optional);
+    registry.add(trinsic.services.protobuf.options.FieldOptions.anonymous);
+    registry.add(trinsic.services.protobuf.options.FieldOptions.ignore);
   }
 
   public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {
@@ -32,6 +34,40 @@ public final class FieldOptions {
           com.google.protobuf.GeneratedMessage.newFileScopedGeneratedExtension(
               java.lang.Boolean.class, null);
 
+  public static final int ANONYMOUS_FIELD_NUMBER = 600001;
+  /**
+   *
+   *
+   * <pre>
+   * Whether the service endpoint allows anonymous (no Oberon) authentication
+   * This is used by the `protoc-gen-trinsic-sdk` plugin for metadata.
+   * </pre>
+   *
+   * <code>extend .google.protobuf.MethodOptions { ... }</code>
+   */
+  public static final com.google.protobuf.GeneratedMessage.GeneratedExtension<
+          com.google.protobuf.DescriptorProtos.MethodOptions, java.lang.Boolean>
+      anonymous =
+          com.google.protobuf.GeneratedMessage.newFileScopedGeneratedExtension(
+              java.lang.Boolean.class, null);
+
+  public static final int IGNORE_FIELD_NUMBER = 600002;
+  /**
+   *
+   *
+   * <pre>
+   * Whether the SDK template generator should ignoroe this method. This method will
+   * be wrapped manually.
+   * </pre>
+   *
+   * <code>extend .google.protobuf.MethodOptions { ... }</code>
+   */
+  public static final com.google.protobuf.GeneratedMessage.GeneratedExtension<
+          com.google.protobuf.DescriptorProtos.MethodOptions, java.lang.Boolean>
+      ignore =
+          com.google.protobuf.GeneratedMessage.newFileScopedGeneratedExtension(
+              java.lang.Boolean.class, null);
+
   public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
   }
@@ -43,10 +79,12 @@ public final class FieldOptions {
       "\n$services/options/field-options.proto\022\020"
           + "services.options\032 google/protobuf/descri"
           + "ptor.proto:4\n\010optional\022\035.google.protobuf"
-          + ".FieldOptions\030\340\324\003 \001(\010\210\001\001BY\n!trinsic.serv"
-          + "ices.protobuf.optionsZ\020services/options\252"
-          + "\002!Trinsic.Services.Protobuf.Optionsb\006pro"
-          + "to3"
+          + ".FieldOptions\030\340\324\003 \001(\010\210\001\001:6\n\tanonymous\022\036."
+          + "google.protobuf.MethodOptions\030\301\317$ \001(\010\210\001\001"
+          + ":3\n\006ignore\022\036.google.protobuf.MethodOptio"
+          + "ns\030\302\317$ \001(\010\210\001\001BY\n!trinsic.services.protob"
+          + "uf.optionsZ\020services/options\252\002!Trinsic.S"
+          + "ervices.Protobuf.Optionsb\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -55,6 +93,8 @@ public final class FieldOptions {
               com.google.protobuf.DescriptorProtos.getDescriptor(),
             });
     optional.internalInit(descriptor.getExtensions().get(0));
+    anonymous.internalInit(descriptor.getExtensions().get(1));
+    ignore.internalInit(descriptor.getExtensions().get(2));
     com.google.protobuf.DescriptorProtos.getDescriptor();
   }
 

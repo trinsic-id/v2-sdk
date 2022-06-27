@@ -92,6 +92,8 @@ Nonce used to generate an oberon proof
 | Extension | Type | Base | Number | Description |
 | --------- | ---- | ---- | ------ | ----------- |
 | optional | bool | .google.protobuf.FieldOptions | 60000 | Whether field is optional in Trinsic's backend. This is not the same as an `optional` protobuf label; it only impacts documentation generation for the field. |
+| anonymous | bool | .google.protobuf.MethodOptions | 600001 | Whether the service endpoint allows anonymous (no Oberon) authentication This is used by the `protoc-gen-trinsic-sdk` plugin for metadata. |
+| ignore | bool | .google.protobuf.MethodOptions | 600002 | Whether the SDK template generator should ignoroe this method. This method will be wrapped manually. |
 
  <!-- end HasExtensions -->
 

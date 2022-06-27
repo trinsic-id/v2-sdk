@@ -19,7 +19,27 @@ class Field_options {
           : 'optional',
       60000,
       $pb.PbFieldType.OB);
+  static final anonymous = $pb.Extension<$core.bool>(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'google.protobuf.MethodOptions',
+      const $core.bool.fromEnvironment('protobuf.omit_field_names')
+          ? ''
+          : 'anonymous',
+      600001,
+      $pb.PbFieldType.OB);
+  static final ignore = $pb.Extension<$core.bool>(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'google.protobuf.MethodOptions',
+      const $core.bool.fromEnvironment('protobuf.omit_field_names')
+          ? ''
+          : 'ignore',
+      600002,
+      $pb.PbFieldType.OB);
   static void registerAllExtensions($pb.ExtensionRegistry registry) {
     registry.add(optional);
+    registry.add(anonymous);
+    registry.add(ignore);
   }
 }
