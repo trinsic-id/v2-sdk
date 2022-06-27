@@ -2,8 +2,8 @@ syntax = "proto3";
 package services.options;
 
 option csharp_namespace = "Trinsic.Services.Protobuf.Options";
-option java_package = "trinsic.services.protobuf.options";
 option go_package = "services/options";
+option java_package = "trinsic.services.protobuf.options";
 
 import "google/protobuf/descriptor.proto";
 
@@ -19,8 +19,8 @@ extend google.protobuf.FieldOptions {
 extend google.protobuf.MethodOptions {
     // Whether the service endpoint allows anonymous (no Oberon) authentication
     // This is used by the `protoc-gen-trinsic-sdk` plugin for metadata.
-    optional bool anonymous = 600001;
+    optional bool sdk_anonymous = 600001;
     // Whether the SDK template generator should ignoroe this method. This method will
     // be wrapped manually.
-    optional bool ignore = 600002;
+    optional bool sdk_template_ignore = 600002;
 }
