@@ -15,3 +15,12 @@ extend google.protobuf.FieldOptions {
     // it only impacts documentation generation for the field.
     optional bool optional = 60000;
 }
+
+extend google.protobuf.MethodOptions {
+    // Whether the service endpoint allows anonymous (no Oberon) authentication
+    // This is used by the `protoc-gen-trinsic-sdk` plugin for metadata.
+    optional bool anonymous = 600001;
+    // Whether the SDK template generator should ignoroe this method. This method will
+    // be wrapped manually.
+    optional bool ignore = 600002;
+}
