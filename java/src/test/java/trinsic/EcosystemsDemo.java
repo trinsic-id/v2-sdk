@@ -19,11 +19,11 @@ public class EcosystemsDemo {
   public static void run()
       throws IOException, DidException, ExecutionException, InterruptedException {
     var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
-    var account = trinsic.accountService().loginAnonymous().get();
+    var account = trinsic.account().loginAnonymous().get();
 
     // createEcosystem() {
     var response =
-        trinsic.providerService().createEcosystem(
+        trinsic.provider().createEcosystem(
             ProviderOuterClass.CreateEcosystemRequest.newBuilder()
                 .setDescription("My ecosystem")
                 .setUri("https://example.com")
@@ -36,7 +36,7 @@ public class EcosystemsDemo {
 
     // updateEcosystem() {
     var updateResponse =
-        trinsic.providerService().updateEcosystem(
+        trinsic.provider().updateEcosystem(
             ProviderOuterClass.UpdateEcosystemRequest.newBuilder()
                 .setDescription("My updated ecosystem")
                 .setUri("https://new-example.com")
@@ -49,7 +49,7 @@ public class EcosystemsDemo {
 
     // ecosystemInfo() {
     var infoResponse =
-        trinsic.providerService().ecosystemInfo(
+        trinsic.provider().ecosystemInfo(
             ProviderOuterClass.EcosystemInfoRequest.getDefaultInstance()
         ).get();
     // }
@@ -59,7 +59,7 @@ public class EcosystemsDemo {
 
     // addWebhook() {
     var addWebhookResponse =
-        trinsic.providerService().addWebhook(
+        trinsic.provider().addWebhook(
             ProviderOuterClass.AddWebhookRequest.newBuilder()
                 .setDestinationUrl("https://example.com/webhooks/trinsic")
                 .setSecret("my well-kept secret")
@@ -76,7 +76,7 @@ public class EcosystemsDemo {
 
     // deleteWebhook() {
     var deleteWebhookResponse =
-          trinsic.providerService().deleteWebhook(
+          trinsic.provider().deleteWebhook(
               ProviderOuterClass.DeleteWebhookRequest.newBuilder()
                   .setWebhookId(webhookId)
                   .build()
@@ -98,7 +98,7 @@ public class EcosystemsDemo {
     try {
       // inviteParticipant() {
       inviteResponse =
-          trinsic.providerService().invite(
+          trinsic.provider().invite(
               ProviderOuterClass.InviteRequest.newBuilder()
                   .setParticipant(
                       ProviderOuterClass.ParticipantType.participant_type_individual)
@@ -116,7 +116,7 @@ public class EcosystemsDemo {
     try {
       // invitationStatus() {
       var invitationStatus =
-          trinsic.providerService().invitationStatus(
+          trinsic.provider().invitationStatus(
               ProviderOuterClass.InvitationStatusRequest.newBuilder()
                   .setInvitationId(inviteResponse.getInvitationId())
                   .build())

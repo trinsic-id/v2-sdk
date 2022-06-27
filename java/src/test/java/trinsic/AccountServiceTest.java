@@ -19,7 +19,7 @@ class AccountServiceTest {
 
     // loginRequest() {
     var loginResponse =
-        trinsic.accountService().login(
+        trinsic.account().login(
             AccountOuterClass.LoginRequest.newBuilder()
                 .setEmail("bob@example.com")
                 .build()
@@ -29,7 +29,7 @@ class AccountServiceTest {
 
     Assertions.assertThrows(Exception.class, () -> {
         // loginConfirm() {
-        var authToken = trinsic.accountService()
+        var authToken = trinsic.account()
             .loginConfirm(loginResponse.getChallenge(), "12345").get();
         // }
     });
@@ -41,11 +41,11 @@ class AccountServiceTest {
         DidException {
     var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
 
-    var profile = trinsic.accountService().loginAnonymous().get();
+    var profile = trinsic.account().loginAnonymous().get();
 
     // authorizeWebhook() {
     var authorizeResponse =
-        trinsic.accountService().authorizeWebhook(
+        trinsic.account().authorizeWebhook(
             AccountOuterClass.AuthorizeWebhookRequest.newBuilder()
                 .setEvents(0, "*") //Authorize all events
                 .build()
