@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 require 'trinsic_services'
-require 'services/account_service'
-require 'services/provider_service'
 
 def ecosystem_demo_run
   trinsic = Trinsic::TrinsicService.new(Trinsic.trinsic_server)
