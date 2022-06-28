@@ -8,3 +8,36 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
+
+@$core.Deprecated('Use sdkTemplateOptionDescriptor instead')
+const SdkTemplateOption$json = const {
+  '1': 'SdkTemplateOption',
+  '2': const [
+    const {
+      '1': 'anonymous',
+      '3': 1,
+      '4': 1,
+      '5': 8,
+      '9': 0,
+      '10': 'anonymous',
+      '17': true
+    },
+    const {
+      '1': 'ignore',
+      '3': 2,
+      '4': 1,
+      '5': 8,
+      '9': 1,
+      '10': 'ignore',
+      '17': true
+    },
+  ],
+  '8': const [
+    const {'1': '_anonymous'},
+    const {'1': '_ignore'},
+  ],
+};
+
+/// Descriptor for `SdkTemplateOption`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List sdkTemplateOptionDescriptor = $convert.base64Decode(
+    'ChFTZGtUZW1wbGF0ZU9wdGlvbhIhCglhbm9ueW1vdXMYASABKAhIAFIJYW5vbnltb3VziAEBEhsKBmlnbm9yZRgCIAEoCEgBUgZpZ25vcmWIAQFCDAoKX2Fub255bW91c0IJCgdfaWdub3Jl');
