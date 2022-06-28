@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import trinsic.okapi.DidException;
 import trinsic.services.AccountService;
 import trinsic.services.ProviderService;
-import trinsic.services.common.v1.*;
+import trinsic.services.provider.v1.*;
 
 class TrinsicServicesTest {
 

@@ -5,7 +5,7 @@ import trinsic.TrinsicUtilities
 import trinsic.okapi.DidException
 import trinsic.services.AccountServiceKt
 import trinsic.services.ProviderServiceKt
-import trinsic.services.common.v1.*
+import trinsic.services.provider.v1.CreateEcosystemRequest
 
 @Throws(
     IOException::class, DidException::class, ExecutionException::class, InterruptedException::class)
