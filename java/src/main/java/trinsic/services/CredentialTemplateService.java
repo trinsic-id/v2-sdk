@@ -4,8 +4,8 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.InvalidProtocolBufferException;
 import trinsic.okapi.DidException;
 import trinsic.sdk.options.v1.Options;
+import trinsic.services.verifiablecredentials.templates.v1.*;
 import trinsic.services.verifiablecredentials.templates.v1.CredentialTemplatesGrpc;
-import trinsic.services.verifiablecredentials.templates.v1.Templates;
 
 public class CredentialTemplateService extends ServiceBase {
   private final CredentialTemplatesGrpc.CredentialTemplatesFutureStub stub;
@@ -20,32 +20,32 @@ public class CredentialTemplateService extends ServiceBase {
     this.stub = CredentialTemplatesGrpc.newFutureStub(this.getChannel());
   }
 
-  public ListenableFuture<Templates.CreateCredentialTemplateResponse> create(
-      Templates.CreateCredentialTemplateRequest request)
+  public ListenableFuture<CreateCredentialTemplateResponse> create(
+      CreateCredentialTemplateRequest request)
       throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).create(request);
   }
 
-  public ListenableFuture<Templates.GetCredentialTemplateResponse> get(
-      Templates.GetCredentialTemplateRequest request)
+  public ListenableFuture<GetCredentialTemplateResponse> get(
+      GetCredentialTemplateRequest request)
       throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).get(request);
   }
 
-  public ListenableFuture<Templates.ListCredentialTemplatesResponse> list(
-      Templates.ListCredentialTemplatesRequest request)
+  public ListenableFuture<ListCredentialTemplatesResponse> list(
+      ListCredentialTemplatesRequest request)
       throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).list(request);
   }
 
-  public ListenableFuture<Templates.SearchCredentialTemplatesResponse> search(
-      Templates.SearchCredentialTemplatesRequest request)
+  public ListenableFuture<SearchCredentialTemplatesResponse> search(
+      SearchCredentialTemplatesRequest request)
       throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).search(request);
   }
 
-  public ListenableFuture<Templates.DeleteCredentialTemplateResponse> delete(
-      Templates.DeleteCredentialTemplateRequest request)
+  public ListenableFuture<DeleteCredentialTemplateResponse> delete(
+      DeleteCredentialTemplateRequest request)
       throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).delete(request);
   }

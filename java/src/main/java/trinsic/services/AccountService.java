@@ -4,10 +4,6 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executors;
 import org.jetbrains.annotations.NotNull;
 import trinsic.okapi.DidException;
 import trinsic.okapi.Hashing;
@@ -15,7 +11,12 @@ import trinsic.okapi.Oberon;
 import trinsic.okapi.security.v1.Security;
 import trinsic.sdk.options.v1.Options;
 import trinsic.services.account.v1.AccountGrpc;
-import trinsic.services.account.v1.AccountOuterClass;
+import trinsic.services.account.v1.*;
+
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executors;
 
 public class AccountService extends ServiceBase {
   private final AccountGrpc.AccountFutureStub stub;
@@ -30,13 +31,13 @@ public class AccountService extends ServiceBase {
   }
 
   public ListenableFuture<String> signIn() {
-    return signIn(AccountOuterClass.SignInRequest.getDefaultInstance());
+    return signIn(SignInRequest.getDefaultInstance());
   }
 
-  public ListenableFuture<String> signIn(@NotNull AccountOuterClass.SignInRequest request) {
+  public ListenableFuture<String> signIn(@NotNull SignInRequest request) {
     if (request.getEcosystemId().isBlank())
       request =
-          AccountOuterClass.SignInRequest.newBuilder(request)
+          SignInRequest.newBuilder(request)
               .setEcosystemId(this.getOptionsBuilder().getDefaultEcosystem())
               .build();
     var response = this.stub.signIn(request);
@@ -53,7 +54,7 @@ public class AccountService extends ServiceBase {
   public static String unprotect(String base64Profile, String securityCode)
       throws InvalidProtocolBufferException, DidException {
     var profile =
-        AccountOuterClass.AccountProfile.newBuilder()
+        AccountProfile.newBuilder()
             .mergeFrom(Base64.getUrlDecoder().decode(base64Profile))
             .build();
     var request =
@@ -64,11 +65,11 @@ public class AccountService extends ServiceBase {
     var result = Oberon.unBlindToken(request);
 
     profile =
-        AccountOuterClass.AccountProfile.newBuilder(profile)
+        AccountProfile.newBuilder(profile)
             .setAuthToken(result.getToken())
             .setProtection(
-                AccountOuterClass.TokenProtection.newBuilder()
-                    .setMethod(AccountOuterClass.ConfirmationMethod.None)
+                TokenProtection.newBuilder()
+                    .setMethod(ConfirmationMethod.None)
                     .setEnabled(false)
                     .build())
             .build();
@@ -78,7 +79,7 @@ public class AccountService extends ServiceBase {
   public static String protect(String base64Profile, String securityCode)
       throws InvalidProtocolBufferException, DidException {
     var profile =
-        AccountOuterClass.AccountProfile.newBuilder()
+        AccountProfile.newBuilder()
             .mergeFrom(Base64.getUrlDecoder().decode(base64Profile))
             .build();
     var request =
@@ -89,19 +90,19 @@ public class AccountService extends ServiceBase {
     var result = Oberon.blindToken(request);
 
     profile =
-        AccountOuterClass.AccountProfile.newBuilder(profile)
+        AccountProfile.newBuilder(profile)
             .setAuthToken(result.getToken())
             .setProtection(
-                AccountOuterClass.TokenProtection.newBuilder()
-                    .setMethod(AccountOuterClass.ConfirmationMethod.Other)
+                TokenProtection.newBuilder()
+                    .setMethod(ConfirmationMethod.Other)
                     .setEnabled(true)
                     .build())
             .build();
     return Base64.getUrlEncoder().encodeToString(profile.toByteArray());
   }
 
-  public ListenableFuture<AccountOuterClass.LoginResponse> login(
-      AccountOuterClass.LoginRequest request) throws InvalidProtocolBufferException, DidException {
+  public ListenableFuture<LoginResponse> login(
+      LoginRequest request) throws InvalidProtocolBufferException, DidException {
     return stub.login(request);
   }
 
@@ -115,7 +116,7 @@ public class AccountService extends ServiceBase {
             .getDigest();
 
     var request =
-        AccountOuterClass.LoginConfirmRequest.newBuilder()
+        LoginConfirmRequest.newBuilder()
             .setChallenge(challenge)
             .setConfirmationCodeHashed(hashed)
             .build();
@@ -145,7 +146,7 @@ public class AccountService extends ServiceBase {
   public ListenableFuture<String> loginAnonymous()
       throws InvalidProtocolBufferException, DidException, ExecutionException,
           InterruptedException {
-    var response = login(AccountOuterClass.LoginRequest.getDefaultInstance());
+    var response = login(LoginRequest.getDefaultInstance());
 
     return Futures.transform(
         response,
@@ -159,26 +160,26 @@ public class AccountService extends ServiceBase {
         Executors.newSingleThreadExecutor());
   }
 
-  public ListenableFuture<AccountOuterClass.AccountInfoResponse> getInfo()
+  public ListenableFuture<AccountInfoResponse> getInfo()
       throws InvalidProtocolBufferException, DidException {
-    var request = AccountOuterClass.AccountInfoRequest.newBuilder().build();
+    var request = AccountInfoRequest.newBuilder().build();
     return withMetadata(stub, request).info(request);
   }
 
-  public ListenableFuture<AccountOuterClass.ListDevicesResponse> listDevices(
-      AccountOuterClass.ListDevicesRequest request)
+  public ListenableFuture<ListDevicesResponse> listDevices(
+      ListDevicesRequest request)
       throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).listDevices(request);
   }
 
-  public ListenableFuture<AccountOuterClass.RevokeDeviceResponse> revokeDevice(
-      AccountOuterClass.RevokeDeviceRequest request)
+  public ListenableFuture<RevokeDeviceResponse> revokeDevice(
+      RevokeDeviceRequest request)
       throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).revokeDevice(request);
   }
 
-  public ListenableFuture<AccountOuterClass.AuthorizeWebhookResponse> authorizeWebhook(
-      AccountOuterClass.AuthorizeWebhookRequest request)
+  public ListenableFuture<AuthorizeWebhookResponse> authorizeWebhook(
+      AuthorizeWebhookRequest request)
       throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).authorizeWebhook(request);
   }

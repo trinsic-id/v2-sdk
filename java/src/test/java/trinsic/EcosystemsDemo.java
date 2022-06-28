@@ -1,12 +1,13 @@
 package trinsic;
 
-import java.io.IOException;
-import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.okapi.DidException;
 import trinsic.services.TrinsicService;
-import trinsic.services.account.v1.AccountOuterClass;
-import trinsic.services.common.v1.ProviderOuterClass;
+import trinsic.services.account.v1.AccountDetails;
+import trinsic.services.common.v1.*;
+
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 public class EcosystemsDemo {
   public static void main(String[] args)
@@ -23,7 +24,7 @@ public class EcosystemsDemo {
         trinsic
             .provider()
             .createEcosystem(
-                ProviderOuterClass.CreateEcosystemRequest.newBuilder()
+                CreateEcosystemRequest.newBuilder()
                     .setDescription("My ecosystem")
                     .setUri("https://example.com")
                     .build())
@@ -36,23 +37,23 @@ public class EcosystemsDemo {
     // listEcosystems() {
     // }
     //        var actualList =
-    // service.listEcosystems(ProviderOuterClass.ListEcosystemsRequest.newBuilder().build()).get();
+    // service.listEcosystems(ListEcosystemsRequest.newBuilder().build()).get();
     //        Assertions.assertNotNull(actualList);
     //        Assertions.assertTrue(actualList.size() > 0);
 
-    ProviderOuterClass.InviteResponse inviteResponse =
-        ProviderOuterClass.InviteResponse.newBuilder().setInvitationId("N/A").build();
+    InviteResponse inviteResponse =
+        InviteResponse.newBuilder().setInvitationId("N/A").build();
     try {
       // inviteParticipant() {
       inviteResponse =
           trinsic
               .provider()
               .invite(
-                  ProviderOuterClass.InviteRequest.newBuilder()
+                  InviteRequest.newBuilder()
                       .setParticipant(
-                          ProviderOuterClass.ParticipantType.participant_type_individual)
+                          ParticipantType.participant_type_individual)
                       .setDetails(
-                          AccountOuterClass.AccountDetails.newBuilder()
+                          AccountDetails.newBuilder()
                               .setEmail("example@trinsic.id")
                               .build())
                       .build())
@@ -68,7 +69,7 @@ public class EcosystemsDemo {
           trinsic
               .provider()
               .invitationStatus(
-                  ProviderOuterClass.InvitationStatusRequest.newBuilder()
+                  InvitationStatusRequest.newBuilder()
                       .setInvitationId(inviteResponse.getInvitationId())
                       .build())
               .get();

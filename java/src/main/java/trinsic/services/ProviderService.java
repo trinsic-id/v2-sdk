@@ -4,8 +4,8 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.InvalidProtocolBufferException;
 import trinsic.okapi.DidException;
 import trinsic.sdk.options.v1.Options;
+import trinsic.services.common.v1.*;
 import trinsic.services.common.v1.ProviderGrpc;
-import trinsic.services.common.v1.ProviderOuterClass;
 
 public class ProviderService extends ServiceBase {
   public ProviderGrpc.ProviderFutureStub stub;
@@ -19,8 +19,8 @@ public class ProviderService extends ServiceBase {
     this.stub = ProviderGrpc.newFutureStub(this.getChannel());
   }
 
-  public ListenableFuture<ProviderOuterClass.CreateEcosystemResponse> createEcosystem(
-      ProviderOuterClass.CreateEcosystemRequest request)
+  public ListenableFuture<CreateEcosystemResponse> createEcosystem(
+      CreateEcosystemRequest request)
       throws InvalidProtocolBufferException, DidException {
     if (request.getName().isBlank() && request.getDetails().getEmail().isBlank()) {
       return stub.createEcosystem(request);
@@ -29,44 +29,44 @@ public class ProviderService extends ServiceBase {
     }
   }
 
-  public ListenableFuture<ProviderOuterClass.UpdateEcosystemResponse> updateEcosystem(
-      ProviderOuterClass.UpdateEcosystemRequest request)
+  public ListenableFuture<UpdateEcosystemResponse> updateEcosystem(
+      UpdateEcosystemRequest request)
       throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).updateEcosystem(request);
   }
 
-  public ListenableFuture<ProviderOuterClass.AddWebhookResponse> addWebhook(
-      ProviderOuterClass.AddWebhookRequest request)
+  public ListenableFuture<AddWebhookResponse> addWebhook(
+      AddWebhookRequest request)
       throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).addWebhook(request);
   }
 
-  public ListenableFuture<ProviderOuterClass.DeleteWebhookResponse> deleteWebhook(
-      ProviderOuterClass.DeleteWebhookRequest request)
+  public ListenableFuture<DeleteWebhookResponse> deleteWebhook(
+      DeleteWebhookRequest request)
       throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).deleteWebhook(request);
   }
 
-  public ListenableFuture<ProviderOuterClass.EcosystemInfoResponse> ecosystemInfo(
-      ProviderOuterClass.EcosystemInfoRequest request)
+  public ListenableFuture<EcosystemInfoResponse> ecosystemInfo(
+      EcosystemInfoRequest request)
       throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).ecosystemInfo(request);
   }
 
-  public ListenableFuture<ProviderOuterClass.GenerateTokenResponse> generateToken(
-      ProviderOuterClass.GenerateTokenRequest request)
+  public ListenableFuture<GenerateTokenResponse> generateToken(
+      GenerateTokenRequest request)
       throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).generateToken(request);
   }
 
-  public ListenableFuture<ProviderOuterClass.InviteResponse> invite(
-      ProviderOuterClass.InviteRequest request)
+  public ListenableFuture<InviteResponse> invite(
+      InviteRequest request)
       throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).invite(request);
   }
 
-  public ListenableFuture<ProviderOuterClass.InvitationStatusResponse> invitationStatus(
-      ProviderOuterClass.InvitationStatusRequest request)
+  public ListenableFuture<InvitationStatusResponse> invitationStatus(
+      InvitationStatusRequest request)
       throws InvalidProtocolBufferException, DidException {
     if (request.getInvitationId().isBlank())
       throw new IllegalArgumentException("Onboarding reference ID must be set.");
@@ -74,14 +74,14 @@ public class ProviderService extends ServiceBase {
     return withMetadata(stub, request).invitationStatus(request);
   }
 
-  public ListenableFuture<ProviderOuterClass.GetOberonKeyResponse> getOberonKey(
-      ProviderOuterClass.GetOberonKeyRequest request)
+  public ListenableFuture<GetOberonKeyResponse> getOberonKey(
+      GetOberonKeyRequest request)
       throws InvalidProtocolBufferException, DidException {
     return stub.getOberonKey(request);
   }
 
-  public ListenableFuture<ProviderOuterClass.GetEventTokenResponse> getEventToken(
-      ProviderOuterClass.GetEventTokenRequest request)
+  public ListenableFuture<GetEventTokenResponse> getEventToken(
+      GetEventTokenRequest request)
       throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).getEventToken(request);
   }

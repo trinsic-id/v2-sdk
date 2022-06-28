@@ -2,16 +2,21 @@ package trinsic;
 
 import com.google.gson.Gson;
 import com.google.protobuf.InvalidProtocolBufferException;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.concurrent.ExecutionException;
 import trinsic.okapi.DidException;
 import trinsic.services.CredentialTemplateService;
 import trinsic.services.TrinsicService;
-import trinsic.services.common.v1.ProviderOuterClass;
-import trinsic.services.universalwallet.v1.UniversalWalletOuterClass;
-import trinsic.services.verifiablecredentials.templates.v1.Templates;
-import trinsic.services.verifiablecredentials.v1.VerifiableCredentials;
+import trinsic.services.common.v1.CreateEcosystemRequest;
+import trinsic.services.universalwallet.v1.InsertItemRequest;
+import trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest;
+import trinsic.services.verifiablecredentials.templates.v1.FieldType;
+import trinsic.services.verifiablecredentials.templates.v1.TemplateField;
+import trinsic.services.verifiablecredentials.v1.CreateProofRequest;
+import trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest;
+import trinsic.services.verifiablecredentials.v1.VerifyProofRequest;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.concurrent.ExecutionException;
 
 public class VaccineDemo {
 
@@ -30,7 +35,7 @@ public class VaccineDemo {
     var ecosystemResponse =
         trinsic
             .provider()
-            .createEcosystem(ProviderOuterClass.CreateEcosystemRequest.getDefaultInstance())
+            .createEcosystem(CreateEcosystemRequest.getDefaultInstance())
             .get();
 
     var ecosystemId = ecosystemResponse.getEcosystem().getId();
@@ -64,7 +69,7 @@ public class VaccineDemo {
         trinsic
             .wallet()
             .insertItem(
-                UniversalWalletOuterClass.InsertItemRequest.newBuilder()
+                InsertItemRequest.newBuilder()
                     .setItemJson(credential)
                     .build())
             .get();
@@ -83,7 +88,7 @@ public class VaccineDemo {
         trinsic
             .credential()
             .createProof(
-                VerifiableCredentials.CreateProofRequest.newBuilder().setItemId(itemId).build())
+                CreateProofRequest.newBuilder().setItemId(itemId).build())
             .get();
 
     var credentialProof = createProofResponse.getProofDocumentJson();
@@ -99,7 +104,7 @@ public class VaccineDemo {
         trinsic
             .credential()
             .verifyProof(
-                VerifiableCredentials.VerifyProofRequest.newBuilder()
+                VerifyProofRequest.newBuilder()
                     .setProofDocumentJson(credentialProof)
                     .build())
             .get();
@@ -135,7 +140,7 @@ public class VaccineDemo {
         trinsicService
             .credential()
             .issueCredentialFromTemplate(
-                VerifiableCredentials.IssueFromTemplateRequest.newBuilder()
+                IssueFromTemplateRequest.newBuilder()
                     .setTemplateId(templateId)
                     .setValuesJson(valuesJson)
                     .build())
@@ -155,32 +160,32 @@ public class VaccineDemo {
     templateService.setProfile(clinic);
 
     // Define fields for template
-    var fields = new HashMap<String, Templates.TemplateField>();
+    var fields = new HashMap<String, TemplateField>();
     fields.put(
         "firstName",
-        Templates.TemplateField.newBuilder()
+        TemplateField.newBuilder()
             .setDescription("First name of vaccine recipient")
             .build());
     fields.put(
         "lastName",
-        Templates.TemplateField.newBuilder()
+        TemplateField.newBuilder()
             .setDescription("Last name of vaccine recipient")
             .build());
     fields.put(
         "batchNumber",
-        Templates.TemplateField.newBuilder()
-            .setType(Templates.FieldType.STRING)
+        TemplateField.newBuilder()
+            .setType(FieldType.STRING)
             .setDescription("Batch number of vaccine")
             .build());
     fields.put(
         "countryOfVaccination",
-        Templates.TemplateField.newBuilder()
+        TemplateField.newBuilder()
             .setDescription("Country in which the subject was vaccinated")
             .build());
 
     // Create template request
     var templateRequest =
-        Templates.CreateCredentialTemplateRequest.newBuilder()
+        CreateCredentialTemplateRequest.newBuilder()
             .setName("VaccinationCertificate")
             .setAllowAdditionalFields(false)
             .putAllFields(fields)
