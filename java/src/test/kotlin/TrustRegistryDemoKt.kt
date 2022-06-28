@@ -5,7 +5,7 @@ import trinsic.TrinsicUtilities
 import trinsic.okapi.DidException
 import trinsic.services.AccountServiceKt
 import trinsic.services.TrustRegistryServiceKt
-import trinsic.services.trustregistry.v1.TrustRegistryOuterClass.*
+import trinsic.services.trustregistry.v1.*
 
 @Throws(
     IOException::class, DidException::class, ExecutionException::class, InterruptedException::class)

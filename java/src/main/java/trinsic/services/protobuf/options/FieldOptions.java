@@ -8,6 +8,7 @@ public final class FieldOptions {
 
   public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {
     registry.add(trinsic.services.protobuf.options.FieldOptions.optional);
+    registry.add(trinsic.services.protobuf.options.FieldOptions.sdkTemplateOption);
   }
 
   public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {
@@ -32,6 +33,21 @@ public final class FieldOptions {
           com.google.protobuf.GeneratedMessage.newFileScopedGeneratedExtension(
               java.lang.Boolean.class, null);
 
+  public static final int SDK_TEMPLATE_OPTION_FIELD_NUMBER = 60001;
+  /** <code>extend .google.protobuf.MethodOptions { ... }</code> */
+  public static final com.google.protobuf.GeneratedMessage.GeneratedExtension<
+          com.google.protobuf.DescriptorProtos.MethodOptions,
+          trinsic.services.protobuf.options.SdkTemplateOption>
+      sdkTemplateOption =
+          com.google.protobuf.GeneratedMessage.newFileScopedGeneratedExtension(
+              trinsic.services.protobuf.options.SdkTemplateOption.class,
+              trinsic.services.protobuf.options.SdkTemplateOption.getDefaultInstance());
+
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_options_SdkTemplateOption_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_options_SdkTemplateOption_fieldAccessorTable;
+
   public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
   }
@@ -40,13 +56,20 @@ public final class FieldOptions {
 
   static {
     java.lang.String[] descriptorData = {
-      "\n$services/options/field-options.proto\022\020"
-          + "services.options\032 google/protobuf/descri"
-          + "ptor.proto:4\n\010optional\022\035.google.protobuf"
-          + ".FieldOptions\030\340\324\003 \001(\010\210\001\001BY\n!trinsic.serv"
-          + "ices.protobuf.optionsZ\020services/options\252"
-          + "\002!Trinsic.Services.Protobuf.Optionsb\006pro"
-          + "to3"
+      "\n"
+          + "$services/options/field-options.proto\022\020services.options\032"
+          + " google/protobuf/descriptor.proto\"Y\n"
+          + "\021SdkTemplateOption\022\026\n"
+          + "\tanonymous\030\001 \001(\010H\000\210\001\001\022\023\n"
+          + "\006ignore\030\002 \001(\010H\001\210\001\001B\014\n\n"
+          + "_anonymousB\t\n"
+          + "\007_ignore:4\n"
+          + "\010optional\022\035.google.protobuf.FieldOptions\030\340\324\003"
+          + " \001(\010\210\001\001:e\n"
+          + "\023sdk_template_option\022\036.google.protobuf.MethodOptions\030\341\324\003"
+          + " \001(\0132#.services.options.SdkTemplateOption\210\001\001B[\n"
+          + "!trinsic.services.protobuf.optionsP\001Z\020services/options\252\002!Tr"
+          + "insic.Services.Protobuf.Optionsb\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -54,7 +77,16 @@ public final class FieldOptions {
             new com.google.protobuf.Descriptors.FileDescriptor[] {
               com.google.protobuf.DescriptorProtos.getDescriptor(),
             });
+    internal_static_services_options_SdkTemplateOption_descriptor =
+        getDescriptor().getMessageTypes().get(0);
+    internal_static_services_options_SdkTemplateOption_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_options_SdkTemplateOption_descriptor,
+            new java.lang.String[] {
+              "Anonymous", "Ignore", "Anonymous", "Ignore",
+            });
     optional.internalInit(descriptor.getExtensions().get(0));
+    sdkTemplateOption.internalInit(descriptor.getExtensions().get(1));
     com.google.protobuf.DescriptorProtos.getDescriptor();
   }
 

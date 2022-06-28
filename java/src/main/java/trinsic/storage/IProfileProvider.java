@@ -2,11 +2,11 @@ package trinsic.storage;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import trinsic.services.account.v1.AccountOuterClass;
+import trinsic.services.account.v1.AccountProfile;
 
 public interface IProfileProvider {
-  AccountOuterClass.AccountProfile get(String name) throws NoSuchAlgorithmException, IOException;
+  AccountProfile get(String name) throws NoSuchAlgorithmException, IOException;
 
-  void save(String name, AccountOuterClass.AccountProfile accountProfile)
+  void save(String name, AccountProfile accountProfile)
       throws NoSuchAlgorithmException, IOException;
 }

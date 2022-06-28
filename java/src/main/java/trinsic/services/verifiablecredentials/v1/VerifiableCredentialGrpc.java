@@ -16,24 +16,22 @@ public final class VerifiableCredentialGrpc {
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueRequest,
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueResponse>
+          trinsic.services.verifiablecredentials.v1.IssueRequest,
+          trinsic.services.verifiablecredentials.v1.IssueResponse>
       getIssueMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Issue",
-      requestType =
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueRequest.class,
-      responseType =
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueResponse.class,
+      requestType = trinsic.services.verifiablecredentials.v1.IssueRequest.class,
+      responseType = trinsic.services.verifiablecredentials.v1.IssueResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueRequest,
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueResponse>
+          trinsic.services.verifiablecredentials.v1.IssueRequest,
+          trinsic.services.verifiablecredentials.v1.IssueResponse>
       getIssueMethod() {
     io.grpc.MethodDescriptor<
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueRequest,
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueResponse>
+            trinsic.services.verifiablecredentials.v1.IssueRequest,
+            trinsic.services.verifiablecredentials.v1.IssueResponse>
         getIssueMethod;
     if ((getIssueMethod = VerifiableCredentialGrpc.getIssueMethod) == null) {
       synchronized (VerifiableCredentialGrpc.class) {
@@ -41,22 +39,20 @@ public final class VerifiableCredentialGrpc {
           VerifiableCredentialGrpc.getIssueMethod =
               getIssueMethod =
                   io.grpc.MethodDescriptor
-                      .<trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                              .IssueRequest,
-                          trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                              .IssueResponse>
+                      .<trinsic.services.verifiablecredentials.v1.IssueRequest,
+                          trinsic.services.verifiablecredentials.v1.IssueResponse>
                           newBuilder()
                       .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                       .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Issue"))
                       .setSampledToLocalTracing(true)
                       .setRequestMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                                  .IssueRequest.getDefaultInstance()))
+                              trinsic.services.verifiablecredentials.v1.IssueRequest
+                                  .getDefaultInstance()))
                       .setResponseMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                                  .IssueResponse.getDefaultInstance()))
+                              trinsic.services.verifiablecredentials.v1.IssueResponse
+                                  .getDefaultInstance()))
                       .setSchemaDescriptor(
                           new VerifiableCredentialMethodDescriptorSupplier("Issue"))
                       .build();
@@ -67,28 +63,22 @@ public final class VerifiableCredentialGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateRequest,
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateResponse>
+          trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest,
+          trinsic.services.verifiablecredentials.v1.IssueFromTemplateResponse>
       getIssueFromTemplateMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "IssueFromTemplate",
-      requestType =
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateRequest
-              .class,
-      responseType =
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateResponse
-              .class,
+      requestType = trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest.class,
+      responseType = trinsic.services.verifiablecredentials.v1.IssueFromTemplateResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateRequest,
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateResponse>
+          trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest,
+          trinsic.services.verifiablecredentials.v1.IssueFromTemplateResponse>
       getIssueFromTemplateMethod() {
     io.grpc.MethodDescriptor<
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                .IssueFromTemplateRequest,
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                .IssueFromTemplateResponse>
+            trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest,
+            trinsic.services.verifiablecredentials.v1.IssueFromTemplateResponse>
         getIssueFromTemplateMethod;
     if ((getIssueFromTemplateMethod = VerifiableCredentialGrpc.getIssueFromTemplateMethod)
         == null) {
@@ -98,22 +88,20 @@ public final class VerifiableCredentialGrpc {
           VerifiableCredentialGrpc.getIssueFromTemplateMethod =
               getIssueFromTemplateMethod =
                   io.grpc.MethodDescriptor
-                      .<trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                              .IssueFromTemplateRequest,
-                          trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                              .IssueFromTemplateResponse>
+                      .<trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest,
+                          trinsic.services.verifiablecredentials.v1.IssueFromTemplateResponse>
                           newBuilder()
                       .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                       .setFullMethodName(generateFullMethodName(SERVICE_NAME, "IssueFromTemplate"))
                       .setSampledToLocalTracing(true)
                       .setRequestMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                                  .IssueFromTemplateRequest.getDefaultInstance()))
+                              trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest
+                                  .getDefaultInstance()))
                       .setResponseMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                                  .IssueFromTemplateResponse.getDefaultInstance()))
+                              trinsic.services.verifiablecredentials.v1.IssueFromTemplateResponse
+                                  .getDefaultInstance()))
                       .setSchemaDescriptor(
                           new VerifiableCredentialMethodDescriptorSupplier("IssueFromTemplate"))
                       .build();
@@ -124,24 +112,22 @@ public final class VerifiableCredentialGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusRequest,
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusResponse>
+          trinsic.services.verifiablecredentials.v1.CheckStatusRequest,
+          trinsic.services.verifiablecredentials.v1.CheckStatusResponse>
       getCheckStatusMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "CheckStatus",
-      requestType =
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusRequest.class,
-      responseType =
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusResponse.class,
+      requestType = trinsic.services.verifiablecredentials.v1.CheckStatusRequest.class,
+      responseType = trinsic.services.verifiablecredentials.v1.CheckStatusResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusRequest,
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusResponse>
+          trinsic.services.verifiablecredentials.v1.CheckStatusRequest,
+          trinsic.services.verifiablecredentials.v1.CheckStatusResponse>
       getCheckStatusMethod() {
     io.grpc.MethodDescriptor<
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusRequest,
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusResponse>
+            trinsic.services.verifiablecredentials.v1.CheckStatusRequest,
+            trinsic.services.verifiablecredentials.v1.CheckStatusResponse>
         getCheckStatusMethod;
     if ((getCheckStatusMethod = VerifiableCredentialGrpc.getCheckStatusMethod) == null) {
       synchronized (VerifiableCredentialGrpc.class) {
@@ -149,22 +135,20 @@ public final class VerifiableCredentialGrpc {
           VerifiableCredentialGrpc.getCheckStatusMethod =
               getCheckStatusMethod =
                   io.grpc.MethodDescriptor
-                      .<trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                              .CheckStatusRequest,
-                          trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                              .CheckStatusResponse>
+                      .<trinsic.services.verifiablecredentials.v1.CheckStatusRequest,
+                          trinsic.services.verifiablecredentials.v1.CheckStatusResponse>
                           newBuilder()
                       .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                       .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CheckStatus"))
                       .setSampledToLocalTracing(true)
                       .setRequestMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                                  .CheckStatusRequest.getDefaultInstance()))
+                              trinsic.services.verifiablecredentials.v1.CheckStatusRequest
+                                  .getDefaultInstance()))
                       .setResponseMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                                  .CheckStatusResponse.getDefaultInstance()))
+                              trinsic.services.verifiablecredentials.v1.CheckStatusResponse
+                                  .getDefaultInstance()))
                       .setSchemaDescriptor(
                           new VerifiableCredentialMethodDescriptorSupplier("CheckStatus"))
                       .build();
@@ -175,25 +159,22 @@ public final class VerifiableCredentialGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusRequest,
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusResponse>
+          trinsic.services.verifiablecredentials.v1.UpdateStatusRequest,
+          trinsic.services.verifiablecredentials.v1.UpdateStatusResponse>
       getUpdateStatusMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "UpdateStatus",
-      requestType =
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusRequest.class,
-      responseType =
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusResponse
-              .class,
+      requestType = trinsic.services.verifiablecredentials.v1.UpdateStatusRequest.class,
+      responseType = trinsic.services.verifiablecredentials.v1.UpdateStatusResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusRequest,
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusResponse>
+          trinsic.services.verifiablecredentials.v1.UpdateStatusRequest,
+          trinsic.services.verifiablecredentials.v1.UpdateStatusResponse>
       getUpdateStatusMethod() {
     io.grpc.MethodDescriptor<
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusRequest,
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusResponse>
+            trinsic.services.verifiablecredentials.v1.UpdateStatusRequest,
+            trinsic.services.verifiablecredentials.v1.UpdateStatusResponse>
         getUpdateStatusMethod;
     if ((getUpdateStatusMethod = VerifiableCredentialGrpc.getUpdateStatusMethod) == null) {
       synchronized (VerifiableCredentialGrpc.class) {
@@ -201,22 +182,20 @@ public final class VerifiableCredentialGrpc {
           VerifiableCredentialGrpc.getUpdateStatusMethod =
               getUpdateStatusMethod =
                   io.grpc.MethodDescriptor
-                      .<trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                              .UpdateStatusRequest,
-                          trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                              .UpdateStatusResponse>
+                      .<trinsic.services.verifiablecredentials.v1.UpdateStatusRequest,
+                          trinsic.services.verifiablecredentials.v1.UpdateStatusResponse>
                           newBuilder()
                       .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                       .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UpdateStatus"))
                       .setSampledToLocalTracing(true)
                       .setRequestMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                                  .UpdateStatusRequest.getDefaultInstance()))
+                              trinsic.services.verifiablecredentials.v1.UpdateStatusRequest
+                                  .getDefaultInstance()))
                       .setResponseMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                                  .UpdateStatusResponse.getDefaultInstance()))
+                              trinsic.services.verifiablecredentials.v1.UpdateStatusResponse
+                                  .getDefaultInstance()))
                       .setSchemaDescriptor(
                           new VerifiableCredentialMethodDescriptorSupplier("UpdateStatus"))
                       .build();
@@ -227,24 +206,22 @@ public final class VerifiableCredentialGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest,
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofResponse>
+          trinsic.services.verifiablecredentials.v1.CreateProofRequest,
+          trinsic.services.verifiablecredentials.v1.CreateProofResponse>
       getCreateProofMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "CreateProof",
-      requestType =
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest.class,
-      responseType =
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofResponse.class,
+      requestType = trinsic.services.verifiablecredentials.v1.CreateProofRequest.class,
+      responseType = trinsic.services.verifiablecredentials.v1.CreateProofResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest,
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofResponse>
+          trinsic.services.verifiablecredentials.v1.CreateProofRequest,
+          trinsic.services.verifiablecredentials.v1.CreateProofResponse>
       getCreateProofMethod() {
     io.grpc.MethodDescriptor<
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest,
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofResponse>
+            trinsic.services.verifiablecredentials.v1.CreateProofRequest,
+            trinsic.services.verifiablecredentials.v1.CreateProofResponse>
         getCreateProofMethod;
     if ((getCreateProofMethod = VerifiableCredentialGrpc.getCreateProofMethod) == null) {
       synchronized (VerifiableCredentialGrpc.class) {
@@ -252,22 +229,20 @@ public final class VerifiableCredentialGrpc {
           VerifiableCredentialGrpc.getCreateProofMethod =
               getCreateProofMethod =
                   io.grpc.MethodDescriptor
-                      .<trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                              .CreateProofRequest,
-                          trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                              .CreateProofResponse>
+                      .<trinsic.services.verifiablecredentials.v1.CreateProofRequest,
+                          trinsic.services.verifiablecredentials.v1.CreateProofResponse>
                           newBuilder()
                       .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                       .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateProof"))
                       .setSampledToLocalTracing(true)
                       .setRequestMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                                  .CreateProofRequest.getDefaultInstance()))
+                              trinsic.services.verifiablecredentials.v1.CreateProofRequest
+                                  .getDefaultInstance()))
                       .setResponseMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                                  .CreateProofResponse.getDefaultInstance()))
+                              trinsic.services.verifiablecredentials.v1.CreateProofResponse
+                                  .getDefaultInstance()))
                       .setSchemaDescriptor(
                           new VerifiableCredentialMethodDescriptorSupplier("CreateProof"))
                       .build();
@@ -278,24 +253,22 @@ public final class VerifiableCredentialGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofRequest,
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofResponse>
+          trinsic.services.verifiablecredentials.v1.VerifyProofRequest,
+          trinsic.services.verifiablecredentials.v1.VerifyProofResponse>
       getVerifyProofMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "VerifyProof",
-      requestType =
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofRequest.class,
-      responseType =
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofResponse.class,
+      requestType = trinsic.services.verifiablecredentials.v1.VerifyProofRequest.class,
+      responseType = trinsic.services.verifiablecredentials.v1.VerifyProofResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofRequest,
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofResponse>
+          trinsic.services.verifiablecredentials.v1.VerifyProofRequest,
+          trinsic.services.verifiablecredentials.v1.VerifyProofResponse>
       getVerifyProofMethod() {
     io.grpc.MethodDescriptor<
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofRequest,
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofResponse>
+            trinsic.services.verifiablecredentials.v1.VerifyProofRequest,
+            trinsic.services.verifiablecredentials.v1.VerifyProofResponse>
         getVerifyProofMethod;
     if ((getVerifyProofMethod = VerifiableCredentialGrpc.getVerifyProofMethod) == null) {
       synchronized (VerifiableCredentialGrpc.class) {
@@ -303,22 +276,20 @@ public final class VerifiableCredentialGrpc {
           VerifiableCredentialGrpc.getVerifyProofMethod =
               getVerifyProofMethod =
                   io.grpc.MethodDescriptor
-                      .<trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                              .VerifyProofRequest,
-                          trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                              .VerifyProofResponse>
+                      .<trinsic.services.verifiablecredentials.v1.VerifyProofRequest,
+                          trinsic.services.verifiablecredentials.v1.VerifyProofResponse>
                           newBuilder()
                       .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                       .setFullMethodName(generateFullMethodName(SERVICE_NAME, "VerifyProof"))
                       .setSampledToLocalTracing(true)
                       .setRequestMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                                  .VerifyProofRequest.getDefaultInstance()))
+                              trinsic.services.verifiablecredentials.v1.VerifyProofRequest
+                                  .getDefaultInstance()))
                       .setResponseMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                                  .VerifyProofResponse.getDefaultInstance()))
+                              trinsic.services.verifiablecredentials.v1.VerifyProofResponse
+                                  .getDefaultInstance()))
                       .setSchemaDescriptor(
                           new VerifiableCredentialMethodDescriptorSupplier("VerifyProof"))
                       .build();
@@ -329,24 +300,22 @@ public final class VerifiableCredentialGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendRequest,
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendResponse>
+          trinsic.services.verifiablecredentials.v1.SendRequest,
+          trinsic.services.verifiablecredentials.v1.SendResponse>
       getSendMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Send",
-      requestType =
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendRequest.class,
-      responseType =
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendResponse.class,
+      requestType = trinsic.services.verifiablecredentials.v1.SendRequest.class,
+      responseType = trinsic.services.verifiablecredentials.v1.SendResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendRequest,
-          trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendResponse>
+          trinsic.services.verifiablecredentials.v1.SendRequest,
+          trinsic.services.verifiablecredentials.v1.SendResponse>
       getSendMethod() {
     io.grpc.MethodDescriptor<
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendRequest,
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendResponse>
+            trinsic.services.verifiablecredentials.v1.SendRequest,
+            trinsic.services.verifiablecredentials.v1.SendResponse>
         getSendMethod;
     if ((getSendMethod = VerifiableCredentialGrpc.getSendMethod) == null) {
       synchronized (VerifiableCredentialGrpc.class) {
@@ -354,21 +323,20 @@ public final class VerifiableCredentialGrpc {
           VerifiableCredentialGrpc.getSendMethod =
               getSendMethod =
                   io.grpc.MethodDescriptor
-                      .<trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendRequest,
-                          trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                              .SendResponse>
+                      .<trinsic.services.verifiablecredentials.v1.SendRequest,
+                          trinsic.services.verifiablecredentials.v1.SendResponse>
                           newBuilder()
                       .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                       .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Send"))
                       .setSampledToLocalTracing(true)
                       .setRequestMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                                  .SendRequest.getDefaultInstance()))
+                              trinsic.services.verifiablecredentials.v1.SendRequest
+                                  .getDefaultInstance()))
                       .setResponseMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                                  .SendResponse.getDefaultInstance()))
+                              trinsic.services.verifiablecredentials.v1.SendResponse
+                                  .getDefaultInstance()))
                       .setSchemaDescriptor(new VerifiableCredentialMethodDescriptorSupplier("Send"))
                       .build();
         }
@@ -430,9 +398,8 @@ public final class VerifiableCredentialGrpc {
      * </pre>
      */
     public void issue(
-        trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueRequest request,
-        io.grpc.stub.StreamObserver<
-                trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueResponse>
+        trinsic.services.verifiablecredentials.v1.IssueRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.IssueResponse>
             responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getIssueMethod(), responseObserver);
     }
@@ -447,11 +414,9 @@ public final class VerifiableCredentialGrpc {
      * </pre>
      */
     public void issueFromTemplate(
-        trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateRequest
-            request,
+        trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest request,
         io.grpc.stub.StreamObserver<
-                trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                    .IssueFromTemplateResponse>
+                trinsic.services.verifiablecredentials.v1.IssueFromTemplateResponse>
             responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
           getIssueFromTemplateMethod(), responseObserver);
@@ -465,9 +430,8 @@ public final class VerifiableCredentialGrpc {
      * </pre>
      */
     public void checkStatus(
-        trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusRequest request,
-        io.grpc.stub.StreamObserver<
-                trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusResponse>
+        trinsic.services.verifiablecredentials.v1.CheckStatusRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.CheckStatusResponse>
             responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
           getCheckStatusMethod(), responseObserver);
@@ -481,10 +445,8 @@ public final class VerifiableCredentialGrpc {
      * </pre>
      */
     public void updateStatus(
-        trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusRequest request,
-        io.grpc.stub.StreamObserver<
-                trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                    .UpdateStatusResponse>
+        trinsic.services.verifiablecredentials.v1.UpdateStatusRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.UpdateStatusResponse>
             responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
           getUpdateStatusMethod(), responseObserver);
@@ -499,9 +461,8 @@ public final class VerifiableCredentialGrpc {
      * </pre>
      */
     public void createProof(
-        trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest request,
-        io.grpc.stub.StreamObserver<
-                trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofResponse>
+        trinsic.services.verifiablecredentials.v1.CreateProofRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.CreateProofResponse>
             responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
           getCreateProofMethod(), responseObserver);
@@ -516,9 +477,8 @@ public final class VerifiableCredentialGrpc {
      * </pre>
      */
     public void verifyProof(
-        trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofRequest request,
-        io.grpc.stub.StreamObserver<
-                trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofResponse>
+        trinsic.services.verifiablecredentials.v1.VerifyProofRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.VerifyProofResponse>
             responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
           getVerifyProofMethod(), responseObserver);
@@ -532,9 +492,8 @@ public final class VerifiableCredentialGrpc {
      * </pre>
      */
     public void send(
-        trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendRequest request,
-        io.grpc.stub.StreamObserver<
-                trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendResponse>
+        trinsic.services.verifiablecredentials.v1.SendRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.SendResponse>
             responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSendMethod(), responseObserver);
     }
@@ -546,56 +505,50 @@ public final class VerifiableCredentialGrpc {
               getIssueMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
                   new MethodHandlers<
-                      trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueRequest,
-                      trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                          .IssueResponse>(this, METHODID_ISSUE)))
+                      trinsic.services.verifiablecredentials.v1.IssueRequest,
+                      trinsic.services.verifiablecredentials.v1.IssueResponse>(
+                      this, METHODID_ISSUE)))
           .addMethod(
               getIssueFromTemplateMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
                   new MethodHandlers<
-                      trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                          .IssueFromTemplateRequest,
-                      trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                          .IssueFromTemplateResponse>(this, METHODID_ISSUE_FROM_TEMPLATE)))
+                      trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest,
+                      trinsic.services.verifiablecredentials.v1.IssueFromTemplateResponse>(
+                      this, METHODID_ISSUE_FROM_TEMPLATE)))
           .addMethod(
               getCheckStatusMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
                   new MethodHandlers<
-                      trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                          .CheckStatusRequest,
-                      trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                          .CheckStatusResponse>(this, METHODID_CHECK_STATUS)))
+                      trinsic.services.verifiablecredentials.v1.CheckStatusRequest,
+                      trinsic.services.verifiablecredentials.v1.CheckStatusResponse>(
+                      this, METHODID_CHECK_STATUS)))
           .addMethod(
               getUpdateStatusMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
                   new MethodHandlers<
-                      trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                          .UpdateStatusRequest,
-                      trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                          .UpdateStatusResponse>(this, METHODID_UPDATE_STATUS)))
+                      trinsic.services.verifiablecredentials.v1.UpdateStatusRequest,
+                      trinsic.services.verifiablecredentials.v1.UpdateStatusResponse>(
+                      this, METHODID_UPDATE_STATUS)))
           .addMethod(
               getCreateProofMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
                   new MethodHandlers<
-                      trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                          .CreateProofRequest,
-                      trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                          .CreateProofResponse>(this, METHODID_CREATE_PROOF)))
+                      trinsic.services.verifiablecredentials.v1.CreateProofRequest,
+                      trinsic.services.verifiablecredentials.v1.CreateProofResponse>(
+                      this, METHODID_CREATE_PROOF)))
           .addMethod(
               getVerifyProofMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
                   new MethodHandlers<
-                      trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                          .VerifyProofRequest,
-                      trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                          .VerifyProofResponse>(this, METHODID_VERIFY_PROOF)))
+                      trinsic.services.verifiablecredentials.v1.VerifyProofRequest,
+                      trinsic.services.verifiablecredentials.v1.VerifyProofResponse>(
+                      this, METHODID_VERIFY_PROOF)))
           .addMethod(
               getSendMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
                   new MethodHandlers<
-                      trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendRequest,
-                      trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendResponse>(
-                      this, METHODID_SEND)))
+                      trinsic.services.verifiablecredentials.v1.SendRequest,
+                      trinsic.services.verifiablecredentials.v1.SendResponse>(this, METHODID_SEND)))
           .build();
     }
   }
@@ -622,9 +575,8 @@ public final class VerifiableCredentialGrpc {
      * </pre>
      */
     public void issue(
-        trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueRequest request,
-        io.grpc.stub.StreamObserver<
-                trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueResponse>
+        trinsic.services.verifiablecredentials.v1.IssueRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.IssueResponse>
             responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getIssueMethod(), getCallOptions()), request, responseObserver);
@@ -640,11 +592,9 @@ public final class VerifiableCredentialGrpc {
      * </pre>
      */
     public void issueFromTemplate(
-        trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateRequest
-            request,
+        trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest request,
         io.grpc.stub.StreamObserver<
-                trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                    .IssueFromTemplateResponse>
+                trinsic.services.verifiablecredentials.v1.IssueFromTemplateResponse>
             responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getIssueFromTemplateMethod(), getCallOptions()),
@@ -660,9 +610,8 @@ public final class VerifiableCredentialGrpc {
      * </pre>
      */
     public void checkStatus(
-        trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusRequest request,
-        io.grpc.stub.StreamObserver<
-                trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusResponse>
+        trinsic.services.verifiablecredentials.v1.CheckStatusRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.CheckStatusResponse>
             responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getCheckStatusMethod(), getCallOptions()),
@@ -678,10 +627,8 @@ public final class VerifiableCredentialGrpc {
      * </pre>
      */
     public void updateStatus(
-        trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusRequest request,
-        io.grpc.stub.StreamObserver<
-                trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                    .UpdateStatusResponse>
+        trinsic.services.verifiablecredentials.v1.UpdateStatusRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.UpdateStatusResponse>
             responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getUpdateStatusMethod(), getCallOptions()),
@@ -698,9 +645,8 @@ public final class VerifiableCredentialGrpc {
      * </pre>
      */
     public void createProof(
-        trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest request,
-        io.grpc.stub.StreamObserver<
-                trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofResponse>
+        trinsic.services.verifiablecredentials.v1.CreateProofRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.CreateProofResponse>
             responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getCreateProofMethod(), getCallOptions()),
@@ -717,9 +663,8 @@ public final class VerifiableCredentialGrpc {
      * </pre>
      */
     public void verifyProof(
-        trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofRequest request,
-        io.grpc.stub.StreamObserver<
-                trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofResponse>
+        trinsic.services.verifiablecredentials.v1.VerifyProofRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.VerifyProofResponse>
             responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getVerifyProofMethod(), getCallOptions()),
@@ -735,9 +680,8 @@ public final class VerifiableCredentialGrpc {
      * </pre>
      */
     public void send(
-        trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendRequest request,
-        io.grpc.stub.StreamObserver<
-                trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendResponse>
+        trinsic.services.verifiablecredentials.v1.SendRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.SendResponse>
             responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getSendMethod(), getCallOptions()), request, responseObserver);
@@ -766,8 +710,8 @@ public final class VerifiableCredentialGrpc {
      * The document must be a valid JSON-LD document.
      * </pre>
      */
-    public trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueResponse issue(
-        trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueRequest request) {
+    public trinsic.services.verifiablecredentials.v1.IssueResponse issue(
+        trinsic.services.verifiablecredentials.v1.IssueRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getIssueMethod(), getCallOptions(), request);
     }
@@ -781,10 +725,8 @@ public final class VerifiableCredentialGrpc {
      * revocation registry entry in the credential.
      * </pre>
      */
-    public trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateResponse
-        issueFromTemplate(
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateRequest
-                request) {
+    public trinsic.services.verifiablecredentials.v1.IssueFromTemplateResponse issueFromTemplate(
+        trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getIssueFromTemplateMethod(), getCallOptions(), request);
     }
@@ -796,10 +738,8 @@ public final class VerifiableCredentialGrpc {
      * Check credential status in the revocation registry
      * </pre>
      */
-    public trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusResponse
-        checkStatus(
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusRequest
-                request) {
+    public trinsic.services.verifiablecredentials.v1.CheckStatusResponse checkStatus(
+        trinsic.services.verifiablecredentials.v1.CheckStatusRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getCheckStatusMethod(), getCallOptions(), request);
     }
@@ -811,10 +751,8 @@ public final class VerifiableCredentialGrpc {
      * Update credential status by setting the revocation value
      * </pre>
      */
-    public trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusResponse
-        updateStatus(
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusRequest
-                request) {
+    public trinsic.services.verifiablecredentials.v1.UpdateStatusResponse updateStatus(
+        trinsic.services.verifiablecredentials.v1.UpdateStatusRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getUpdateStatusMethod(), getCallOptions(), request);
     }
@@ -827,10 +765,8 @@ public final class VerifiableCredentialGrpc {
      * verifiable credential and contains a signature from which a proof can be derived.
      * </pre>
      */
-    public trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofResponse
-        createProof(
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest
-                request) {
+    public trinsic.services.verifiablecredentials.v1.CreateProofResponse createProof(
+        trinsic.services.verifiablecredentials.v1.CreateProofRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getCreateProofMethod(), getCallOptions(), request);
     }
@@ -843,10 +779,8 @@ public final class VerifiableCredentialGrpc {
      * revocation status, and issuer status against a trust registry
      * </pre>
      */
-    public trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofResponse
-        verifyProof(
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofRequest
-                request) {
+    public trinsic.services.verifiablecredentials.v1.VerifyProofResponse verifyProof(
+        trinsic.services.verifiablecredentials.v1.VerifyProofRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getVerifyProofMethod(), getCallOptions(), request);
     }
@@ -858,8 +792,8 @@ public final class VerifiableCredentialGrpc {
      * Sends a document directly to a user's email within the given ecosystem
      * </pre>
      */
-    public trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendResponse send(
-        trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendRequest request) {
+    public trinsic.services.verifiablecredentials.v1.SendResponse send(
+        trinsic.services.verifiablecredentials.v1.SendRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getSendMethod(), getCallOptions(), request);
     }
@@ -888,9 +822,8 @@ public final class VerifiableCredentialGrpc {
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueResponse>
-        issue(
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueRequest request) {
+            trinsic.services.verifiablecredentials.v1.IssueResponse>
+        issue(trinsic.services.verifiablecredentials.v1.IssueRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getIssueMethod(), getCallOptions()), request);
     }
@@ -905,11 +838,9 @@ public final class VerifiableCredentialGrpc {
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                .IssueFromTemplateResponse>
+            trinsic.services.verifiablecredentials.v1.IssueFromTemplateResponse>
         issueFromTemplate(
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueFromTemplateRequest
-                request) {
+            trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getIssueFromTemplateMethod(), getCallOptions()), request);
     }
@@ -922,10 +853,8 @@ public final class VerifiableCredentialGrpc {
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusResponse>
-        checkStatus(
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusRequest
-                request) {
+            trinsic.services.verifiablecredentials.v1.CheckStatusResponse>
+        checkStatus(trinsic.services.verifiablecredentials.v1.CheckStatusRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getCheckStatusMethod(), getCallOptions()), request);
     }
@@ -938,10 +867,8 @@ public final class VerifiableCredentialGrpc {
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusResponse>
-        updateStatus(
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusRequest
-                request) {
+            trinsic.services.verifiablecredentials.v1.UpdateStatusResponse>
+        updateStatus(trinsic.services.verifiablecredentials.v1.UpdateStatusRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getUpdateStatusMethod(), getCallOptions()), request);
     }
@@ -955,10 +882,8 @@ public final class VerifiableCredentialGrpc {
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofResponse>
-        createProof(
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest
-                request) {
+            trinsic.services.verifiablecredentials.v1.CreateProofResponse>
+        createProof(trinsic.services.verifiablecredentials.v1.CreateProofRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getCreateProofMethod(), getCallOptions()), request);
     }
@@ -972,10 +897,8 @@ public final class VerifiableCredentialGrpc {
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofResponse>
-        verifyProof(
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofRequest
-                request) {
+            trinsic.services.verifiablecredentials.v1.VerifyProofResponse>
+        verifyProof(trinsic.services.verifiablecredentials.v1.VerifyProofRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getVerifyProofMethod(), getCallOptions()), request);
     }
@@ -988,8 +911,8 @@ public final class VerifiableCredentialGrpc {
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
-            trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendResponse>
-        send(trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendRequest request) {
+            trinsic.services.verifiablecredentials.v1.SendResponse>
+        send(trinsic.services.verifiablecredentials.v1.SendRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getSendMethod(), getCallOptions()), request);
     }
@@ -1022,64 +945,49 @@ public final class VerifiableCredentialGrpc {
       switch (methodId) {
         case METHODID_ISSUE:
           serviceImpl.issue(
-              (trinsic.services.verifiablecredentials.v1.VerifiableCredentials.IssueRequest)
-                  request,
-              (io.grpc.stub.StreamObserver<
-                      trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                          .IssueResponse>)
+              (trinsic.services.verifiablecredentials.v1.IssueRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.IssueResponse>)
                   responseObserver);
           break;
         case METHODID_ISSUE_FROM_TEMPLATE:
           serviceImpl.issueFromTemplate(
-              (trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                      .IssueFromTemplateRequest)
-                  request,
+              (trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest) request,
               (io.grpc.stub.StreamObserver<
-                      trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                          .IssueFromTemplateResponse>)
+                      trinsic.services.verifiablecredentials.v1.IssueFromTemplateResponse>)
                   responseObserver);
           break;
         case METHODID_CHECK_STATUS:
           serviceImpl.checkStatus(
-              (trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CheckStatusRequest)
-                  request,
+              (trinsic.services.verifiablecredentials.v1.CheckStatusRequest) request,
               (io.grpc.stub.StreamObserver<
-                      trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                          .CheckStatusResponse>)
+                      trinsic.services.verifiablecredentials.v1.CheckStatusResponse>)
                   responseObserver);
           break;
         case METHODID_UPDATE_STATUS:
           serviceImpl.updateStatus(
-              (trinsic.services.verifiablecredentials.v1.VerifiableCredentials.UpdateStatusRequest)
-                  request,
+              (trinsic.services.verifiablecredentials.v1.UpdateStatusRequest) request,
               (io.grpc.stub.StreamObserver<
-                      trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                          .UpdateStatusResponse>)
+                      trinsic.services.verifiablecredentials.v1.UpdateStatusResponse>)
                   responseObserver);
           break;
         case METHODID_CREATE_PROOF:
           serviceImpl.createProof(
-              (trinsic.services.verifiablecredentials.v1.VerifiableCredentials.CreateProofRequest)
-                  request,
+              (trinsic.services.verifiablecredentials.v1.CreateProofRequest) request,
               (io.grpc.stub.StreamObserver<
-                      trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                          .CreateProofResponse>)
+                      trinsic.services.verifiablecredentials.v1.CreateProofResponse>)
                   responseObserver);
           break;
         case METHODID_VERIFY_PROOF:
           serviceImpl.verifyProof(
-              (trinsic.services.verifiablecredentials.v1.VerifiableCredentials.VerifyProofRequest)
-                  request,
+              (trinsic.services.verifiablecredentials.v1.VerifyProofRequest) request,
               (io.grpc.stub.StreamObserver<
-                      trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                          .VerifyProofResponse>)
+                      trinsic.services.verifiablecredentials.v1.VerifyProofResponse>)
                   responseObserver);
           break;
         case METHODID_SEND:
           serviceImpl.send(
-              (trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendRequest) request,
-              (io.grpc.stub.StreamObserver<
-                      trinsic.services.verifiablecredentials.v1.VerifiableCredentials.SendResponse>)
+              (trinsic.services.verifiablecredentials.v1.SendRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.v1.SendResponse>)
                   responseObserver);
           break;
         default:
