@@ -1,5 +1,7 @@
 package trinsic;
 
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.okapi.DidException;
 import trinsic.services.TrinsicService;
@@ -7,9 +9,6 @@ import trinsic.services.common.v1.CreateEcosystemRequest;
 import trinsic.services.universalwallet.v1.DeleteItemRequest;
 import trinsic.services.universalwallet.v1.InsertItemRequest;
 import trinsic.services.universalwallet.v1.SearchRequest;
-
-import java.io.IOException;
-import java.util.concurrent.ExecutionException;
 
 public class WalletsDemo {
   public static void main(String[] args)
@@ -22,10 +21,7 @@ public class WalletsDemo {
     // Create ecosystem
     var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
     var ecosystemResponse =
-        trinsic
-            .provider()
-            .createEcosystem(CreateEcosystemRequest.getDefaultInstance())
-            .get();
+        trinsic.provider().createEcosystem(CreateEcosystemRequest.getDefaultInstance()).get();
     var ecosystemId = ecosystemResponse.getEcosystem().getId();
 
     // Create account
@@ -65,11 +61,7 @@ public class WalletsDemo {
 
     // Delete item in-between searches
     var deleteResponse =
-        trinsic
-            .wallet()
-            .deleteItem(
-                DeleteItemRequest.newBuilder().setItemId(itemId).build())
-            .get();
+        trinsic.wallet().deleteItem(DeleteItemRequest.newBuilder().setItemId(itemId).build()).get();
 
     Assertions.assertNotNull(deleteResponse);
 

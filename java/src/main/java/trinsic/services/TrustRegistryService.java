@@ -2,15 +2,14 @@ package trinsic.services;
 
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.InvalidProtocolBufferException;
-import trinsic.okapi.DidException;
-import trinsic.sdk.options.v1.Options;
-import trinsic.services.trustregistry.v1.*;
-import trinsic.services.trustregistry.v1.TrustRegistryGrpc;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.concurrent.ExecutionException;
+import trinsic.okapi.DidException;
+import trinsic.sdk.options.v1.Options;
+import trinsic.services.trustregistry.v1.*;
+import trinsic.services.trustregistry.v1.TrustRegistryGrpc;
 
 public class TrustRegistryService extends ServiceBase {
   public TrustRegistryGrpc.TrustRegistryFutureStub stub;
@@ -27,8 +26,7 @@ public class TrustRegistryService extends ServiceBase {
     this.stub2 = TrustRegistryGrpc.newBlockingStub(this.getChannel());
   }
 
-  public ListenableFuture<AddFrameworkResponse> addFramework(
-      AddFrameworkRequest request)
+  public ListenableFuture<AddFrameworkResponse> addFramework(AddFrameworkRequest request)
       throws InvalidProtocolBufferException, DidException {
     try {
       new URL(request.getGovernanceFrameworkUri());
@@ -38,30 +36,26 @@ public class TrustRegistryService extends ServiceBase {
     return withMetadata(stub, request).addFramework(request);
   }
 
-  public RemoveFrameworkResponse removeFramework(
-      RemoveFrameworkRequest request)
+  public RemoveFrameworkResponse removeFramework(RemoveFrameworkRequest request)
       throws InvalidProtocolBufferException, DidException, ExecutionException,
           InterruptedException {
     return withMetadata(stub, request).removeFramework(request).get();
   }
 
-  public RegisterMemberResponse registerMember(
-      RegisterMemberRequest request)
+  public RegisterMemberResponse registerMember(RegisterMemberRequest request)
       throws InvalidProtocolBufferException, DidException, ExecutionException,
           InterruptedException {
     return withMetadata(stub, request).registerMember(request).get();
   }
 
-  public UnregisterMemberResponse unregisterIssuer(
-      UnregisterMemberRequest request)
+  public UnregisterMemberResponse unregisterIssuer(UnregisterMemberRequest request)
       throws InvalidProtocolBufferException, DidException, ExecutionException,
           InterruptedException {
     return withMetadata(stub, request).unregisterMember(request).get();
   }
 
   public ListenableFuture<GetMembershipStatusResponse> checkIssuerStatus(
-      GetMembershipStatusRequest request)
-      throws InvalidProtocolBufferException, DidException {
+      GetMembershipStatusRequest request) throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).getMembershipStatus(request);
   }
 
@@ -70,8 +64,7 @@ public class TrustRegistryService extends ServiceBase {
     return searchRegistry(SearchRegistryRequest.getDefaultInstance());
   }
 
-  public ListenableFuture<SearchRegistryResponse> searchRegistry(
-      SearchRegistryRequest request)
+  public ListenableFuture<SearchRegistryResponse> searchRegistry(SearchRegistryRequest request)
       throws InvalidProtocolBufferException, DidException {
     if (request.getQuery().isBlank())
       request =
@@ -81,8 +74,7 @@ public class TrustRegistryService extends ServiceBase {
     return withMetadata(stub, request).searchRegistry(request);
   }
 
-  public Iterator<FetchDataResponse> fetchData(
-      FetchDataRequest request)
+  public Iterator<FetchDataResponse> fetchData(FetchDataRequest request)
       throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub2, request).fetchData(request);
   }

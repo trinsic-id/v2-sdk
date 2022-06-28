@@ -24,8 +24,7 @@ public class WalletService extends ServiceBase {
     return search(SearchRequest.getDefaultInstance());
   }
 
-  public ListenableFuture<SearchResponse> search(
-      SearchRequest request)
+  public ListenableFuture<SearchResponse> search(SearchRequest request)
       throws InvalidProtocolBufferException, DidException {
     if (request.getQuery().isBlank())
       request =
@@ -36,14 +35,12 @@ public class WalletService extends ServiceBase {
     return withMetadata(stub, request).search(request);
   }
 
-  public ListenableFuture<InsertItemResponse> insertItem(
-      InsertItemRequest request)
+  public ListenableFuture<InsertItemResponse> insertItem(InsertItemRequest request)
       throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).insertItem(request);
   }
 
-  public ListenableFuture<DeleteItemResponse> deleteItem(
-      DeleteItemRequest request)
+  public ListenableFuture<DeleteItemResponse> deleteItem(DeleteItemRequest request)
       throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).deleteItem(request);
   }

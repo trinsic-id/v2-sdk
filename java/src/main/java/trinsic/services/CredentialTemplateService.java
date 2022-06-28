@@ -21,20 +21,17 @@ public class CredentialTemplateService extends ServiceBase {
   }
 
   public ListenableFuture<CreateCredentialTemplateResponse> create(
-      CreateCredentialTemplateRequest request)
-      throws InvalidProtocolBufferException, DidException {
+      CreateCredentialTemplateRequest request) throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).create(request);
   }
 
-  public ListenableFuture<GetCredentialTemplateResponse> get(
-      GetCredentialTemplateRequest request)
+  public ListenableFuture<GetCredentialTemplateResponse> get(GetCredentialTemplateRequest request)
       throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).get(request);
   }
 
   public ListenableFuture<ListCredentialTemplatesResponse> list(
-      ListCredentialTemplatesRequest request)
-      throws InvalidProtocolBufferException, DidException {
+      ListCredentialTemplatesRequest request) throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).list(request);
   }
 
@@ -45,8 +42,7 @@ public class CredentialTemplateService extends ServiceBase {
   }
 
   public ListenableFuture<DeleteCredentialTemplateResponse> delete(
-      DeleteCredentialTemplateRequest request)
-      throws InvalidProtocolBufferException, DidException {
+      DeleteCredentialTemplateRequest request) throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).delete(request);
   }
 }

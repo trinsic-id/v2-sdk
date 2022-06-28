@@ -2,6 +2,9 @@ package trinsic;
 
 import com.google.gson.Gson;
 import com.google.protobuf.InvalidProtocolBufferException;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.concurrent.ExecutionException;
 import trinsic.okapi.DidException;
 import trinsic.services.CredentialTemplateService;
 import trinsic.services.TrinsicService;
@@ -13,10 +16,6 @@ import trinsic.services.verifiablecredentials.templates.v1.TemplateField;
 import trinsic.services.verifiablecredentials.v1.CreateProofRequest;
 import trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest;
 import trinsic.services.verifiablecredentials.v1.VerifyProofRequest;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.concurrent.ExecutionException;
 
 public class VaccineDemo {
 
@@ -33,10 +32,7 @@ public class VaccineDemo {
 
     // createEcosystem() {
     var ecosystemResponse =
-        trinsic
-            .provider()
-            .createEcosystem(CreateEcosystemRequest.getDefaultInstance())
-            .get();
+        trinsic.provider().createEcosystem(CreateEcosystemRequest.getDefaultInstance()).get();
 
     var ecosystemId = ecosystemResponse.getEcosystem().getId();
     // }
@@ -68,10 +64,7 @@ public class VaccineDemo {
     var insertItemResponse =
         trinsic
             .wallet()
-            .insertItem(
-                InsertItemRequest.newBuilder()
-                    .setItemJson(credential)
-                    .build())
+            .insertItem(InsertItemRequest.newBuilder().setItemJson(credential).build())
             .get();
 
     final var itemId = insertItemResponse.getItemId();
@@ -87,8 +80,7 @@ public class VaccineDemo {
     var createProofResponse =
         trinsic
             .credential()
-            .createProof(
-                CreateProofRequest.newBuilder().setItemId(itemId).build())
+            .createProof(CreateProofRequest.newBuilder().setItemId(itemId).build())
             .get();
 
     var credentialProof = createProofResponse.getProofDocumentJson();
@@ -104,9 +96,7 @@ public class VaccineDemo {
         trinsic
             .credential()
             .verifyProof(
-                VerifyProofRequest.newBuilder()
-                    .setProofDocumentJson(credentialProof)
-                    .build())
+                VerifyProofRequest.newBuilder().setProofDocumentJson(credentialProof).build())
             .get();
 
     boolean isValid = verifyProofResponse.getIsValid();
@@ -163,14 +153,10 @@ public class VaccineDemo {
     var fields = new HashMap<String, TemplateField>();
     fields.put(
         "firstName",
-        TemplateField.newBuilder()
-            .setDescription("First name of vaccine recipient")
-            .build());
+        TemplateField.newBuilder().setDescription("First name of vaccine recipient").build());
     fields.put(
         "lastName",
-        TemplateField.newBuilder()
-            .setDescription("Last name of vaccine recipient")
-            .build());
+        TemplateField.newBuilder().setDescription("Last name of vaccine recipient").build());
     fields.put(
         "batchNumber",
         TemplateField.newBuilder()

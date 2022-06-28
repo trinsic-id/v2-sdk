@@ -82,9 +82,7 @@ suspend fun runVaccineDemo() {
   credentialsService.setProfile(airline)
   val verifyResult =
       credentialsService.verifyProof(
-          VerifyProofRequest.newBuilder()
-              .setProofDocumentJson(credentialProof)
-              .build())
+          VerifyProofRequest.newBuilder().setProofDocumentJson(credentialProof).build())
   println("Verification result: ${verifyResult.isValid}")
   Assertions.assertTrue(verifyResult.isValid)
   // }

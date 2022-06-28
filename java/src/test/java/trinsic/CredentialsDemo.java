@@ -1,15 +1,14 @@
 package trinsic;
 
-import trinsic.okapi.DidException;
-import trinsic.services.TrinsicService;
-import trinsic.services.common.v1.CreateEcosystemRequest;
-import trinsic.services.verifiablecredentials.v1.*;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.concurrent.ExecutionException;
+import trinsic.okapi.DidException;
+import trinsic.services.TrinsicService;
+import trinsic.services.common.v1.CreateEcosystemRequest;
+import trinsic.services.verifiablecredentials.v1.*;
 
 public class CredentialsDemo {
   public static void main(String[] args)
@@ -47,10 +46,7 @@ public class CredentialsDemo {
     var issueResult =
         trinsic
             .credential()
-            .issueCredential(
-                IssueRequest.newBuilder()
-                    .setDocumentJson(unsignedCredential)
-                    .build())
+            .issueCredential(IssueRequest.newBuilder().setDocumentJson(unsignedCredential).build())
             .get();
 
     var signedCredentialJson = issueResult.getSignedDocumentJson();
@@ -95,9 +91,7 @@ public class CredentialsDemo {
         trinsic
             .credential()
             .verifyProof(
-                VerifyProofRequest.newBuilder()
-                    .setProofDocumentJson(credentialProof)
-                    .build())
+                VerifyProofRequest.newBuilder().setProofDocumentJson(credentialProof).build())
             .get();
 
     boolean isValid = verifyProofResponse.getIsValid();
