@@ -174,13 +174,13 @@ message AuthorizeWebhookResponse {
 service Account {
     // Sign in to an already existing account
     rpc SignIn              (SignInRequest)             returns (SignInResponse) {
-        option (sdk_template).ignore = true;
-        option (sdk_template).anonymous = true;
+        option (options.sdk_template_option).ignore = true;
+        option (options.sdk_template_option).anonymous = true;
     }
 
     // Login to account. If account doesn't exist, new will be created
     rpc Login               (LoginRequest)              returns (LoginResponse) {
-        option (sdk_template).anonymous = true;
+        option (options.sdk_template_option).anonymous = true;
     }
 
     // Confirm login step by responding to the challenge request
