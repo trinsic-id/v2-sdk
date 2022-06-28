@@ -1,14 +1,15 @@
 package trinsic;
 
 import com.google.gson.Gson;
+import trinsic.okapi.DidException;
+import trinsic.services.TrinsicService;
+import trinsic.services.verifiablecredentials.templates.v1.*;
+import trinsic.services.verifiablecredentials.v1.*;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
-import trinsic.okapi.DidException;
-import trinsic.services.TrinsicService;
-import trinsic.services.verifiablecredentials.templates.v1.Templates;
-import trinsic.services.verifiablecredentials.v1.VerifiableCredentials;
 
 public class TemplatesDemo {
   public static void main(String[] args)
@@ -24,18 +25,18 @@ public class TemplatesDemo {
 
     // create example template
     // createTemplate() {
-    var fields = new HashMap<String, Templates.TemplateField>();
+    var fields = new HashMap<String, TemplateField>();
     fields.put(
-        "firstName", Templates.TemplateField.newBuilder().setDescription("Given name").build());
-    fields.put("lastName", Templates.TemplateField.newBuilder().build());
+        "firstName", TemplateField.newBuilder().setDescription("Given name").build());
+    fields.put("lastName", TemplateField.newBuilder().build());
     fields.put(
         "age",
-        Templates.TemplateField.newBuilder()
-            .setType(Templates.FieldType.NUMBER)
+        TemplateField.newBuilder()
+            .setType(FieldType.NUMBER)
             .setOptional(true)
             .build());
     var templateRequest =
-        Templates.CreateCredentialTemplateRequest.newBuilder()
+        CreateCredentialTemplateRequest.newBuilder()
             .setName("My Example Credential-" + UUID.randomUUID())
             .setAllowAdditionalFields(false)
             .putAllFields(fields)
@@ -59,7 +60,7 @@ public class TemplatesDemo {
         trinsic
             .credential()
             .issueCredentialFromTemplate(
-                VerifiableCredentials.IssueFromTemplateRequest.newBuilder()
+                IssueFromTemplateRequest.newBuilder()
                     .setTemplateId(template.getData().getId())
                     .setValuesJson(valuesJson)
                     .build())
@@ -78,7 +79,7 @@ public class TemplatesDemo {
     var getResponse =
         trinsic
             .template()
-            .get(Templates.GetCredentialTemplateRequest.newBuilder().setId(id).build())
+            .get(GetCredentialTemplateRequest.newBuilder().setId(id).build())
             .get();
     // }
 
@@ -87,7 +88,7 @@ public class TemplatesDemo {
         trinsic
             .template()
             .search(
-                Templates.SearchCredentialTemplatesRequest.newBuilder()
+                SearchCredentialTemplatesRequest.newBuilder()
                     .setQuery("SELECT * FROM c WHERE c.id = '" + id + "'")
                     .build())
             .get();
@@ -98,7 +99,7 @@ public class TemplatesDemo {
       var checkStatusResponse =
           trinsic
               .credential()
-              .checkStatus(VerifiableCredentials.CheckStatusRequest.newBuilder().build())
+              .checkStatus(CheckStatusRequest.newBuilder().build())
               .get();
       // }
     } catch (Exception e) { // This is okay as an example
@@ -108,7 +109,7 @@ public class TemplatesDemo {
       // updateCredentialStatus() {
       trinsic
           .credential()
-          .updateStatus(VerifiableCredentials.UpdateStatusRequest.newBuilder().build());
+          .updateStatus(UpdateStatusRequest.newBuilder().build());
       // }
     } catch (Exception e) { // This is okay as an example
     }
@@ -118,7 +119,7 @@ public class TemplatesDemo {
       var deleteResponse =
           trinsic
               .template()
-              .delete(Templates.DeleteCredentialTemplateRequest.newBuilder().setId(id).build())
+              .delete(DeleteCredentialTemplateRequest.newBuilder().setId(id).build())
               .get();
       // }
     } catch (Exception e) { // This is okay as an example

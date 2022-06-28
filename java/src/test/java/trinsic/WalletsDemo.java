@@ -1,12 +1,15 @@
 package trinsic;
 
-import java.io.IOException;
-import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.okapi.DidException;
 import trinsic.services.TrinsicService;
-import trinsic.services.common.v1.ProviderOuterClass;
-import trinsic.services.universalwallet.v1.UniversalWalletOuterClass;
+import trinsic.services.common.v1.CreateEcosystemRequest;
+import trinsic.services.universalwallet.v1.DeleteItemRequest;
+import trinsic.services.universalwallet.v1.InsertItemRequest;
+import trinsic.services.universalwallet.v1.SearchRequest;
+
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 public class WalletsDemo {
   public static void main(String[] args)
@@ -21,7 +24,7 @@ public class WalletsDemo {
     var ecosystemResponse =
         trinsic
             .provider()
-            .createEcosystem(ProviderOuterClass.CreateEcosystemRequest.getDefaultInstance())
+            .createEcosystem(CreateEcosystemRequest.getDefaultInstance())
             .get();
     var ecosystemId = ecosystemResponse.getEcosystem().getId();
 
@@ -41,7 +44,7 @@ public class WalletsDemo {
         trinsic
             .wallet()
             .insertItem(
-                UniversalWalletOuterClass.InsertItemRequest.newBuilder()
+                InsertItemRequest.newBuilder()
                     .setItemJson(credentialJson)
                     .setItemType("VerifiableCredential")
                     .build())
@@ -65,7 +68,7 @@ public class WalletsDemo {
         trinsic
             .wallet()
             .deleteItem(
-                UniversalWalletOuterClass.DeleteItemRequest.newBuilder().setItemId(itemId).build())
+                DeleteItemRequest.newBuilder().setItemId(itemId).build())
             .get();
 
     Assertions.assertNotNull(deleteResponse);
@@ -76,7 +79,7 @@ public class WalletsDemo {
           trinsic
               .wallet()
               .search(
-                  UniversalWalletOuterClass.SearchRequest.newBuilder()
+                  SearchRequest.newBuilder()
                       .setQuery(
                           "SELECT c.id, c.type, c.data FROM c WHERE c.type ="
                               + " 'VerifiableCredential'")

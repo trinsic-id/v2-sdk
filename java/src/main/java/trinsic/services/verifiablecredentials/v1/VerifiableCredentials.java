@@ -142,7 +142,7 @@ public final class VerifiableCredentials {
           + "insic.services.verifiablecredentials.v1P"
           + "\001Z,services/verifiablecredentials/v1/cre"
           + "dential\242\002\017TrinsicServices\252\002)Trinsic.Serv"
-          + "ices.VerifiableCredentials.V1b\006proto3"
+          + "ices.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
