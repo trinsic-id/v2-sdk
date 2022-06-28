@@ -20,6 +20,7 @@ nav:
       - Security Overview: learn/platform/security.md
       - Templates: learn/platform/templates.md
       - Wallets: learn/platform/wallets.md
+      - Webhooks: learn/platform/webhooks.md
     - Tutorials:
       - Build a Vaccine Card: walkthroughs/vaccination.md
   - Reference:
@@ -34,6 +35,7 @@ nav:
       - Protocol Buffers Reference: reference/proto/index.md
     - Other Services:
       - OpenID Credential Exchange: reference/other/openid.md
+    - Events Reference: reference/events.md
   - Tools & SDKs:
     - Trinsic CLI: cli/index.md
     - Client-Side SDKs:
