@@ -4,8 +4,8 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.InvalidProtocolBufferException;
 import trinsic.okapi.DidException;
 import trinsic.sdk.options.v1.Options;
-import trinsic.services.common.v1.*;
-import trinsic.services.common.v1.ProviderGrpc;
+import trinsic.services.provider.v1.*;
+import trinsic.services.provider.v1.ProviderGrpc;
 
 public class ProviderService extends ServiceBase {
   public ProviderGrpc.ProviderFutureStub stub;

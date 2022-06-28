@@ -8,7 +8,7 @@ import java.util.concurrent.ExecutionException;
 import trinsic.okapi.DidException;
 import trinsic.services.CredentialTemplateService;
 import trinsic.services.TrinsicService;
-import trinsic.services.common.v1.CreateEcosystemRequest;
+import trinsic.services.provider.v1.CreateEcosystemRequest;
 import trinsic.services.universalwallet.v1.InsertItemRequest;
 import trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest;
 import trinsic.services.verifiablecredentials.templates.v1.FieldType;

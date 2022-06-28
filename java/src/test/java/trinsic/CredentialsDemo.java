@@ -7,7 +7,7 @@ import java.nio.file.Path;
 import java.util.concurrent.ExecutionException;
 import trinsic.okapi.DidException;
 import trinsic.services.TrinsicService;
-import trinsic.services.common.v1.CreateEcosystemRequest;
+import trinsic.services.provider.v1.CreateEcosystemRequest;
 import trinsic.services.verifiablecredentials.v1.*;
 
 public class CredentialsDemo {
