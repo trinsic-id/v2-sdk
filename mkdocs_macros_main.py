@@ -102,6 +102,23 @@ def define_env(env):
 
         return ret
 
+    @env.macro
+    def all_proto_events():
+        """
+        Prints all protobuf events
+        """
+        proto_json = get_proto_json()
+        file = proto_json["files"]["sdk/events/v1/events.proto"]
+        messages = file["messages"]
+
+        ret = ""
+
+        for messageName in messages:
+            ret += print_message(messageName)
+            # ret += "<br/>"
+
+        return ret
+
 
 ###### Helper methods below
 

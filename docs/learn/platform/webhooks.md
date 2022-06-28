@@ -14,8 +14,48 @@ Webhooks may be added to an ecosystem using the [AddWebhook](/reference/services
 
 By default, webhooks receive all [event types](#events), but can be configured to only trigger on a specific subset of events.
 
-## 
+## Receiving Webhooks
 
+Webhooks are sent as JSON strings to your specified URL (which must be HTTPS) using the `POST` method. 
+
+### Structure
+
+The structure of a webhook payload is shown below. Event-specific information is stored in `data`; its format is [event-specific].
+
+| Field     | Type        | Description                                     |
+| --------- | ----------- | ----------------------------------------------- |
+| id        | `string`    | The ID of the event which triggered the webhook |
+| timestamp | `timestamp` | The timestamp of the event                      |
+| type      | `string`    | The type of event contained in `data`           |
+| data      | `object`    | The data of the event itself                    |
+
+
+### Verification
+
+Because webhooks are URLs accessible over the internet, it is necessary to ensure that a webhook comes from Trinsic and not an attacker.    
+
+Trinsic hashes payloads using [HMAC-SHA256](https://en.wikipedia.org/wiki/HMAC){target=_blank}, using the `secret` you provided during webhook creation as the secret key, and the raw `POST` body as the message contents.
+
+This hash is sent with the request as a header named `trinsic-signature-sha256`.
+
+Your verification code may look like the following pseudocode:
+
+=== "Pseudocode"
+    ```
+    message = http_request.post_body
+    trinsic_hash = http_request.headers["trinsic-signature-sha256"]
+
+    computed_hash = hmac_sha256(message, stored_secret)
+
+    if(trinsic_hash != computed_hash) {
+        // Hash failed verification. This is not a genuine webhook from Trinsic.
+    }
+    ```
+
+!!! tip "Use a library"
+    It is highly recommended that you use a library to compute and verify HMACs.
+
+    Many languages have native support for HMAC-SHA256; for those that don't, high-quality open source libraries exist.
 
 
 ## Receiving Wallet Events
