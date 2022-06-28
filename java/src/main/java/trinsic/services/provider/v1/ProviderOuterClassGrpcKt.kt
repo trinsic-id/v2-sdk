@@ -1,4 +1,4 @@
-package trinsic.services.common.v1
+package trinsic.services.provider.v1
 
 import io.grpc.CallOptions
 import io.grpc.CallOptions.DEFAULT
@@ -21,7 +21,7 @@ import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
 import kotlin.jvm.JvmOverloads
 import kotlin.jvm.JvmStatic
-import trinsic.services.common.v1.ProviderGrpc.getServiceDescriptor
+import trinsic.services.provider.v1.ProviderGrpc.getServiceDescriptor
 
 /** Holder for Kotlin coroutine-based client and server APIs for services.provider.v1.Provider. */
 object ProviderGrpcKt {
