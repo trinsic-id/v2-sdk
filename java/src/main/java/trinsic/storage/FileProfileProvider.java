@@ -1,9 +1,6 @@
 package trinsic.storage;
 
 import io.leonard.Base58;
-import org.jetbrains.annotations.NotNull;
-import trinsic.services.account.v1.AccountProfile;
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -11,11 +8,12 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import org.jetbrains.annotations.NotNull;
+import trinsic.services.account.v1.AccountProfile;
 
 public class FileProfileProvider implements IProfileProvider {
   @Override
-  public AccountProfile get(String name)
-      throws NoSuchAlgorithmException, IOException {
+  public AccountProfile get(String name) throws NoSuchAlgorithmException, IOException {
     // TODO - Location application data
     Path filename = getFilename(name);
     var readFile = new FileInputStream(String.valueOf(filename));

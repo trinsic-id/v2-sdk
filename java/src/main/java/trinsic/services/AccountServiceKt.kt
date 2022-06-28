@@ -9,7 +9,7 @@ import trinsic.okapi.Oberon
 import trinsic.okapi.security.v1.Security.BlindOberonTokenRequest
 import trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest
 import trinsic.sdk.options.v1.Options
-import trinsic.services.account.v1.*;
+import trinsic.services.account.v1.*
 
 class AccountServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(options) {
   var stub: AccountGrpcKt.AccountCoroutineStub = AccountGrpcKt.AccountCoroutineStub(this.channel)

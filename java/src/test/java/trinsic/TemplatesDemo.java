@@ -1,15 +1,14 @@
 package trinsic;
 
 import com.google.gson.Gson;
-import trinsic.okapi.DidException;
-import trinsic.services.TrinsicService;
-import trinsic.services.verifiablecredentials.templates.v1.*;
-import trinsic.services.verifiablecredentials.v1.*;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
+import trinsic.okapi.DidException;
+import trinsic.services.TrinsicService;
+import trinsic.services.verifiablecredentials.templates.v1.*;
+import trinsic.services.verifiablecredentials.v1.*;
 
 public class TemplatesDemo {
   public static void main(String[] args)
@@ -26,15 +25,10 @@ public class TemplatesDemo {
     // create example template
     // createTemplate() {
     var fields = new HashMap<String, TemplateField>();
-    fields.put(
-        "firstName", TemplateField.newBuilder().setDescription("Given name").build());
+    fields.put("firstName", TemplateField.newBuilder().setDescription("Given name").build());
     fields.put("lastName", TemplateField.newBuilder().build());
     fields.put(
-        "age",
-        TemplateField.newBuilder()
-            .setType(FieldType.NUMBER)
-            .setOptional(true)
-            .build());
+        "age", TemplateField.newBuilder().setType(FieldType.NUMBER).setOptional(true).build());
     var templateRequest =
         CreateCredentialTemplateRequest.newBuilder()
             .setName("My Example Credential-" + UUID.randomUUID())
@@ -77,10 +71,7 @@ public class TemplatesDemo {
 
     // getCredentialTemplate() {
     var getResponse =
-        trinsic
-            .template()
-            .get(GetCredentialTemplateRequest.newBuilder().setId(id).build())
-            .get();
+        trinsic.template().get(GetCredentialTemplateRequest.newBuilder().setId(id).build()).get();
     // }
 
     // searchCredentialTemplate() {
@@ -97,19 +88,14 @@ public class TemplatesDemo {
     try {
       // checkCredentialStatus() {
       var checkStatusResponse =
-          trinsic
-              .credential()
-              .checkStatus(CheckStatusRequest.newBuilder().build())
-              .get();
+          trinsic.credential().checkStatus(CheckStatusRequest.newBuilder().build()).get();
       // }
     } catch (Exception e) { // This is okay as an example
     }
 
     try {
       // updateCredentialStatus() {
-      trinsic
-          .credential()
-          .updateStatus(UpdateStatusRequest.newBuilder().build());
+      trinsic.credential().updateStatus(UpdateStatusRequest.newBuilder().build());
       // }
     } catch (Exception e) { // This is okay as an example
     }

@@ -1,13 +1,12 @@
 package trinsic;
 
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.okapi.DidException;
 import trinsic.services.TrinsicService;
 import trinsic.services.account.v1.AccountDetails;
 import trinsic.services.common.v1.*;
-
-import java.io.IOException;
-import java.util.concurrent.ExecutionException;
 
 public class EcosystemsDemo {
   public static void main(String[] args)
@@ -41,8 +40,7 @@ public class EcosystemsDemo {
     //        Assertions.assertNotNull(actualList);
     //        Assertions.assertTrue(actualList.size() > 0);
 
-    InviteResponse inviteResponse =
-        InviteResponse.newBuilder().setInvitationId("N/A").build();
+    InviteResponse inviteResponse = InviteResponse.newBuilder().setInvitationId("N/A").build();
     try {
       // inviteParticipant() {
       inviteResponse =
@@ -50,12 +48,9 @@ public class EcosystemsDemo {
               .provider()
               .invite(
                   InviteRequest.newBuilder()
-                      .setParticipant(
-                          ParticipantType.participant_type_individual)
+                      .setParticipant(ParticipantType.participant_type_individual)
                       .setDetails(
-                          AccountDetails.newBuilder()
-                              .setEmail("example@trinsic.id")
-                              .build())
+                          AccountDetails.newBuilder().setEmail("example@trinsic.id").build())
                       .build())
               .get();
       // }

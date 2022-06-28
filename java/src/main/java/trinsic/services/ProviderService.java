@@ -19,8 +19,7 @@ public class ProviderService extends ServiceBase {
     this.stub = ProviderGrpc.newFutureStub(this.getChannel());
   }
 
-  public ListenableFuture<CreateEcosystemResponse> createEcosystem(
-      CreateEcosystemRequest request)
+  public ListenableFuture<CreateEcosystemResponse> createEcosystem(CreateEcosystemRequest request)
       throws InvalidProtocolBufferException, DidException {
     if (request.getName().isBlank() && request.getDetails().getEmail().isBlank()) {
       return stub.createEcosystem(request);
@@ -29,59 +28,50 @@ public class ProviderService extends ServiceBase {
     }
   }
 
-  public ListenableFuture<UpdateEcosystemResponse> updateEcosystem(
-      UpdateEcosystemRequest request)
+  public ListenableFuture<UpdateEcosystemResponse> updateEcosystem(UpdateEcosystemRequest request)
       throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).updateEcosystem(request);
   }
 
-  public ListenableFuture<AddWebhookResponse> addWebhook(
-      AddWebhookRequest request)
+  public ListenableFuture<AddWebhookResponse> addWebhook(AddWebhookRequest request)
       throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).addWebhook(request);
   }
 
-  public ListenableFuture<DeleteWebhookResponse> deleteWebhook(
-      DeleteWebhookRequest request)
+  public ListenableFuture<DeleteWebhookResponse> deleteWebhook(DeleteWebhookRequest request)
       throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).deleteWebhook(request);
   }
 
-  public ListenableFuture<EcosystemInfoResponse> ecosystemInfo(
-      EcosystemInfoRequest request)
+  public ListenableFuture<EcosystemInfoResponse> ecosystemInfo(EcosystemInfoRequest request)
       throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).ecosystemInfo(request);
   }
 
-  public ListenableFuture<GenerateTokenResponse> generateToken(
-      GenerateTokenRequest request)
+  public ListenableFuture<GenerateTokenResponse> generateToken(GenerateTokenRequest request)
       throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).generateToken(request);
   }
 
-  public ListenableFuture<InviteResponse> invite(
-      InviteRequest request)
+  public ListenableFuture<InviteResponse> invite(InviteRequest request)
       throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).invite(request);
   }
 
   public ListenableFuture<InvitationStatusResponse> invitationStatus(
-      InvitationStatusRequest request)
-      throws InvalidProtocolBufferException, DidException {
+      InvitationStatusRequest request) throws InvalidProtocolBufferException, DidException {
     if (request.getInvitationId().isBlank())
       throw new IllegalArgumentException("Onboarding reference ID must be set.");
 
     return withMetadata(stub, request).invitationStatus(request);
   }
 
-  public ListenableFuture<GetOberonKeyResponse> getOberonKey(
-      GetOberonKeyRequest request)
+  public ListenableFuture<GetOberonKeyResponse> getOberonKey(GetOberonKeyRequest request)
       throws InvalidProtocolBufferException, DidException {
     return stub.getOberonKey(request);
   }
 
-  public ListenableFuture<GetEventTokenResponse> getEventToken(
-      GetEventTokenRequest request)
+  public ListenableFuture<GetEventTokenResponse> getEventToken(GetEventTokenRequest request)
       throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).getEventToken(request);
   }

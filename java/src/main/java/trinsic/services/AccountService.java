@@ -4,19 +4,18 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executors;
 import org.jetbrains.annotations.NotNull;
 import trinsic.okapi.DidException;
 import trinsic.okapi.Hashing;
 import trinsic.okapi.Oberon;
 import trinsic.okapi.security.v1.Security;
 import trinsic.sdk.options.v1.Options;
-import trinsic.services.account.v1.AccountGrpc;
 import trinsic.services.account.v1.*;
-
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executors;
+import trinsic.services.account.v1.AccountGrpc;
 
 public class AccountService extends ServiceBase {
   private final AccountGrpc.AccountFutureStub stub;
@@ -54,9 +53,7 @@ public class AccountService extends ServiceBase {
   public static String unprotect(String base64Profile, String securityCode)
       throws InvalidProtocolBufferException, DidException {
     var profile =
-        AccountProfile.newBuilder()
-            .mergeFrom(Base64.getUrlDecoder().decode(base64Profile))
-            .build();
+        AccountProfile.newBuilder().mergeFrom(Base64.getUrlDecoder().decode(base64Profile)).build();
     var request =
         Security.UnBlindOberonTokenRequest.newBuilder()
             .setToken(profile.getAuthToken())
@@ -79,9 +76,7 @@ public class AccountService extends ServiceBase {
   public static String protect(String base64Profile, String securityCode)
       throws InvalidProtocolBufferException, DidException {
     var profile =
-        AccountProfile.newBuilder()
-            .mergeFrom(Base64.getUrlDecoder().decode(base64Profile))
-            .build();
+        AccountProfile.newBuilder().mergeFrom(Base64.getUrlDecoder().decode(base64Profile)).build();
     var request =
         Security.BlindOberonTokenRequest.newBuilder()
             .setToken(profile.getAuthToken())
@@ -101,8 +96,8 @@ public class AccountService extends ServiceBase {
     return Base64.getUrlEncoder().encodeToString(profile.toByteArray());
   }
 
-  public ListenableFuture<LoginResponse> login(
-      LoginRequest request) throws InvalidProtocolBufferException, DidException {
+  public ListenableFuture<LoginResponse> login(LoginRequest request)
+      throws InvalidProtocolBufferException, DidException {
     return stub.login(request);
   }
 
@@ -166,21 +161,18 @@ public class AccountService extends ServiceBase {
     return withMetadata(stub, request).info(request);
   }
 
-  public ListenableFuture<ListDevicesResponse> listDevices(
-      ListDevicesRequest request)
+  public ListenableFuture<ListDevicesResponse> listDevices(ListDevicesRequest request)
       throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).listDevices(request);
   }
 
-  public ListenableFuture<RevokeDeviceResponse> revokeDevice(
-      RevokeDeviceRequest request)
+  public ListenableFuture<RevokeDeviceResponse> revokeDevice(RevokeDeviceRequest request)
       throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).revokeDevice(request);
   }
 
   public ListenableFuture<AuthorizeWebhookResponse> authorizeWebhook(
-      AuthorizeWebhookRequest request)
-      throws InvalidProtocolBufferException, DidException {
+      AuthorizeWebhookRequest request) throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).authorizeWebhook(request);
   }
 }

@@ -2,15 +2,14 @@ package trinsic.security;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
+import java.time.Instant;
+import java.util.Base64;
 import trinsic.okapi.DidException;
 import trinsic.okapi.Hashing;
 import trinsic.okapi.Oberon;
 import trinsic.okapi.security.v1.Security;
 import trinsic.services.account.v1.AccountProfile;
 import trinsic.services.common.v1.Nonce;
-
-import java.time.Instant;
-import java.util.Base64;
 
 public class OberonSecurityProvider implements ISecurityProvider {
   @Override
