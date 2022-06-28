@@ -12,7 +12,7 @@ Webhooks enable providers to receive updates whenever an event occurs within the
 
 Webhooks may be added to an ecosystem using the [AddWebhook](/reference/services/provider-service.md#add-webhook) method; either with the [CLI](/cli/index.md) or any of our SDKs. In the future, webhooks will also be configurable through a web dashboard.
 
-By default, webhooks receive all [event types](#events), but can be configured to only trigger on a specific subset of events.
+By default, webhooks receive all [event types](#event-types), but can be configured to only trigger on a specific subset of events.
 
 ## Receiving Webhooks
 
@@ -20,7 +20,7 @@ Webhooks are sent as JSON strings to your specified URL (which must be HTTPS) us
 
 ### Structure
 
-The structure of a webhook payload is shown below. Event-specific information is stored in `data`; its format is [event-specific].
+The structure of a webhook payload is shown below. Event-specific information is stored in `data`; its format is [event-specific](/reference/events){target=_blank}.
 
 | Field     | Type        | Description                                     |
 | --------- | ----------- | ----------------------------------------------- |
@@ -58,14 +58,14 @@ Your verification code may look like the following pseudocode:
     Many languages have native support for HMAC-SHA256; for those that don't, high-quality open source libraries exist.
 
 
-## Receiving Wallet Events
+## Enabling Wallet Events
 
-Events which occur on a [wallet](/learn/platform/wallets.md) will not automatically trigger a webhook.
+Events which occur on a [wallet](/learn/platform/wallets) will not be sent to your webhooks unless the wallet holder has opted in.
 
 To receive webhooks for wallet events, the [AuthorizeWebhook](/reference/services/account-service.md#authorize-webhook) method must be called for each wallet which is opting-in to propagate wallet events to the ecosystem provider.
 
 This call must be performed using the wallet's authentication token.
 
-## Events
+## Event Types
 
-For a list of all event types and their structures, see the [Events](/reference/events.md) page.
+For a list of all event types and their structures, see the [Events Reference](/reference/events) page.

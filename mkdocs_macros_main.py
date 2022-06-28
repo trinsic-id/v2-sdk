@@ -2,6 +2,8 @@
 Macros created by Trinsic for documentation site
 """
 
+from email import message
+from tkinter.messagebox import IGNORE
 from requests import head
 from os.path import abspath, relpath, join, dirname, exists
 from pathlib import Path
@@ -107,13 +109,23 @@ def define_env(env):
         """
         Prints all protobuf events
         """
+        IGNORE_MESSAGES = ["trinsic.services.event.Event", "trinsic.services.event.APICall"]
+
         proto_json = get_proto_json()
-        file = proto_json["files"]["sdk/events/v1/events.proto"]
+        file = proto_json["files"]["services/event/v1/event.proto"]
         messages = file["messages"]
 
         ret = ""
 
         for messageName in messages:
+            if messageName in IGNORE_MESSAGES:
+                continue
+
+            message = get_entity(messageName)
+            shortName = message["name"]
+            ret += "\n"
+            ret += f"### {shortName}"
+            ret += "\n"
             ret += print_message(messageName)
             # ret += "<br/>"
 

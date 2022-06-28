@@ -35,7 +35,7 @@ nav:
       - Protocol Buffers Reference: reference/proto/index.md
     - Other Services:
       - OpenID Credential Exchange: reference/other/openid.md
-    - Events: reference/events.md
+    - Events Reference: reference/events.md
   - Tools & SDKs:
     - Trinsic CLI: cli/index.md
     - Client-Side SDKs:
