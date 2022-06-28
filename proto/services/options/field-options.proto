@@ -7,6 +7,8 @@ option java_package = "trinsic.services.protobuf.options";
 
 import "google/protobuf/descriptor.proto";
 
+// This file is compiled into `protoc-gen-sdk`
+
 
 // Trinsic public SDK proto options start at 60,000
 extend google.protobuf.FieldOptions {
