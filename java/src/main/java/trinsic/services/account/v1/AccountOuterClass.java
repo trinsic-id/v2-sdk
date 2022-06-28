@@ -16343,24 +16343,24 @@ public final class AccountOuterClass {
           + "\003Sms\020\002\022\023\n"
           + "\017ConnectedDevice\020\003\022\t\n"
           + "\005Other\020\n"
-          + "2\244\005\n"
-          + "\007Account\022Q\n"
+          + "2\302\005\n"
+          + "\007Account\022_\n"
           + "\006SignIn\022\".services.account.v1.SignInReq"
-          + "uest\032#.services.account.v1.SignInResponse\022N\n"
-          + "\005Login\022!.services.account.v1.LoginRe"
-          + "quest\032\".services.account.v1.LoginResponse\022c\n"
-          + "\014LoginConfirm\022(.services.account.v1."
-          + "LoginConfirmRequest\032).services.account.v1.LoginConfirmResponse\022Y\n"
-          + "\004Info\022\'.service"
-          + "s.account.v1.AccountInfoRequest\032(.services.account.v1.AccountInfoResponse\022`\n"
-          + "\013ListDevices\022\'.services.account.v1.ListDevic"
-          + "esRequest\032(.services.account.v1.ListDevicesResponse\022c\n"
-          + "\014RevokeDevice\022(.services.a"
-          + "ccount.v1.RevokeDeviceRequest\032).services.account.v1.RevokeDeviceResponse\022o\n"
-          + "\020AuthorizeWebhook\022,.services.account.v1.Autho"
-          + "rizeWebhookRequest\032-.services.account.v1.AuthorizeWebhookResponseBX\n"
-          + "\033trinsic.services.account.v1Z\033services/account/v1/ac"
-          + "count\252\002\033Trinsic.Services.Account.V1b\006proto3"
+          + "uest\032#.services.account.v1.SignInResponse\"\014\212\246\035\002\020\001\212\246\035\002\010\001\022V\n"
+          + "\005Login\022!.services.acco"
+          + "unt.v1.LoginRequest\032\".services.account.v1.LoginResponse\"\006\212\246\035\002\010\001\022k\n"
+          + "\014LoginConfirm\022(.services.account.v1.LoginConfirmReques"
+          + "t\032).services.account.v1.LoginConfirmResponse\"\006\212\246\035\002\020\001\022Y\n"
+          + "\004Info\022\'.services.account."
+          + "v1.AccountInfoRequest\032(.services.account.v1.AccountInfoResponse\022`\n"
+          + "\013ListDevices\022\'.services.account.v1.ListDevicesRequest\032"
+          + "(.services.account.v1.ListDevicesResponse\022c\n"
+          + "\014RevokeDevice\022(.services.account.v1."
+          + "RevokeDeviceRequest\032).services.account.v1.RevokeDeviceResponse\022o\n"
+          + "\020AuthorizeWebhook\022,.services.account.v1.AuthorizeWebhoo"
+          + "kRequest\032-.services.account.v1.AuthorizeWebhookResponseBX\n"
+          + "\033trinsic.services.account.v1Z\033services/account/v1/account\252\002\033Tr"
+          + "insic.Services.Account.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -16509,6 +16509,7 @@ public final class AccountOuterClass {
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(trinsic.services.protobuf.options.FieldOptions.optional);
+    registry.add(trinsic.services.protobuf.options.FieldOptions.sdkTemplateOption);
     com.google.protobuf.Descriptors.FileDescriptor.internalUpdateFileDescriptor(
         descriptor, registry);
     trinsic.services.protobuf.options.FieldOptions.getDescriptor();
