@@ -61,7 +61,7 @@ class ServiceBase(ABC):
 
     def close(self):
         """Close the underlying channel"""
-        if hasattr(self, '_channel') and self._channel is not None:
+        if hasattr(self, "_channel") and self._channel is not None:
             try:
                 self._channel.close()
             except RuntimeError:

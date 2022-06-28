@@ -5,7 +5,7 @@ import trinsic.TrinsicUtilities
 import trinsic.okapi.DidException
 import trinsic.services.AccountServiceKt
 import trinsic.services.ProviderServiceKt
-import trinsic.services.common.v1.ProviderOuterClass
+import trinsic.services.provider.v1.CreateEcosystemRequest
 
 @Throws(
     IOException::class, DidException::class, ExecutionException::class, InterruptedException::class)
@@ -21,7 +21,7 @@ suspend fun runEcosystemsDemo() {
   val service = ProviderServiceKt(TrinsicUtilities.getTrinsicServiceOptions(account))
   val response =
       service.createEcosystem(
-          ProviderOuterClass.CreateEcosystemRequest.newBuilder()
+          CreateEcosystemRequest.newBuilder()
               .setName("test-sdk-" + java.util.UUID.randomUUID())
               .setDescription("My ecosystem")
               .setUri("https://example.com")

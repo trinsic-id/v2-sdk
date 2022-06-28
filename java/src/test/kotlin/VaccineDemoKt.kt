@@ -8,8 +8,8 @@ import trinsic.okapi.DidException
 import trinsic.services.AccountServiceKt
 import trinsic.services.CredentialServiceKt
 import trinsic.services.WalletServiceKt
-import trinsic.services.universalwallet.v1.UniversalWalletOuterClass.InsertItemRequest
-import trinsic.services.verifiablecredentials.v1.VerifiableCredentials
+import trinsic.services.universalwallet.v1.*
+import trinsic.services.verifiablecredentials.v1.*
 
 suspend fun main() {
   runVaccineDemo()
@@ -48,7 +48,7 @@ suspend fun runVaccineDemo() {
   val credentialJson = File(vaccineCertUnsignedPath()).readText()
   val credential =
       credentialsService.issueCredential(
-          VerifiableCredentials.IssueRequest.newBuilder().setDocumentJson(credentialJson).build())
+          IssueRequest.newBuilder().setDocumentJson(credentialJson).build())
   println("Credential: $credential")
   // }
 
@@ -69,7 +69,7 @@ suspend fun runVaccineDemo() {
   val proofRequestJson = File(vaccineCertFramePath()).readText()
   val createProofResponse =
       credentialsService.createProof(
-          VerifiableCredentials.CreateProofRequest.newBuilder()
+          CreateProofRequest.newBuilder()
               .setItemId(itemId)
               .setRevealDocumentJson(proofRequestJson)
               .build())
@@ -82,9 +82,7 @@ suspend fun runVaccineDemo() {
   credentialsService.setProfile(airline)
   val verifyResult =
       credentialsService.verifyProof(
-          VerifiableCredentials.VerifyProofRequest.newBuilder()
-              .setProofDocumentJson(credentialProof)
-              .build())
+          VerifyProofRequest.newBuilder().setProofDocumentJson(credentialProof).build())
   println("Verification result: ${verifyResult.isValid}")
   Assertions.assertTrue(verifyResult.isValid)
   // }

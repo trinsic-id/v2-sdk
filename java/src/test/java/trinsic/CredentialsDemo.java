@@ -7,8 +7,8 @@ import java.nio.file.Path;
 import java.util.concurrent.ExecutionException;
 import trinsic.okapi.DidException;
 import trinsic.services.TrinsicService;
-import trinsic.services.common.v1.ProviderOuterClass;
-import trinsic.services.verifiablecredentials.v1.VerifiableCredentials;
+import trinsic.services.provider.v1.CreateEcosystemRequest;
+import trinsic.services.verifiablecredentials.v1.*;
 
 public class CredentialsDemo {
   public static void main(String[] args)
@@ -28,7 +28,7 @@ public class CredentialsDemo {
     var ecosystemId =
         trinsic
             .provider()
-            .createEcosystem(ProviderOuterClass.CreateEcosystemRequest.getDefaultInstance())
+            .createEcosystem(CreateEcosystemRequest.getDefaultInstance())
             .get()
             .getEcosystem()
             .getId();
@@ -46,10 +46,7 @@ public class CredentialsDemo {
     var issueResult =
         trinsic
             .credential()
-            .issueCredential(
-                VerifiableCredentials.IssueRequest.newBuilder()
-                    .setDocumentJson(unsignedCredential)
-                    .build())
+            .issueCredential(IssueRequest.newBuilder().setDocumentJson(unsignedCredential).build())
             .get();
 
     var signedCredentialJson = issueResult.getSignedDocumentJson();
@@ -63,7 +60,7 @@ public class CredentialsDemo {
         trinsic
             .credential()
             .createProof(
-                VerifiableCredentials.CreateProofRequest.newBuilder()
+                CreateProofRequest.newBuilder()
                     .setDocumentJson(signedCredentialJson)
                     .setRevealDocumentJson(proofRequestJson)
                     .build())
@@ -79,7 +76,7 @@ public class CredentialsDemo {
       trinsic
           .credential()
           .send(
-              VerifiableCredentials.SendRequest.newBuilder()
+              SendRequest.newBuilder()
                   .setDocumentJson(signedCredentialJson)
                   .setEmail(recipientEmail)
                   .build());
@@ -94,9 +91,7 @@ public class CredentialsDemo {
         trinsic
             .credential()
             .verifyProof(
-                VerifiableCredentials.VerifyProofRequest.newBuilder()
-                    .setProofDocumentJson(credentialProof)
-                    .build())
+                VerifyProofRequest.newBuilder().setProofDocumentJson(credentialProof).build())
             .get();
 
     boolean isValid = verifyProofResponse.getIsValid();

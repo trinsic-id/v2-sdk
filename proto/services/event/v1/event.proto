@@ -1,0 +1,111 @@
+syntax = "proto3";
+package trinsic.services.event;
+
+option csharp_namespace = "Trinsic.Services.Event.V1";
+option go_package = "./eventpb";
+option java_package = "trinsic.services.event.v1";
+option java_multiple_files = true;
+
+enum EventType {
+    PING = 0;
+    LOG = 1;
+    
+    EGF_CREATED = 5;
+    EGF_MEMBER_REGISTERED = 6;
+    EGF_MEMBER_UNREGISTERED = 7;
+    
+    TEMPLATE_CREATED = 10;
+    TEMPLATE_DELETED = 11;
+
+    WALLET_CREATED = 15;
+    ITEM_RECEIVED = 16;
+}
+
+// System event
+message Event {
+    // UUID for the event
+    string id = 1;
+    
+    // event type
+    EventType type = 2; 
+    
+    // when the event occured
+    string timestamp = 3;
+
+    // data payload - will be encoded proto message for the event type
+    bytes data = 4;
+}
+
+message APICall {
+    string source = 1;
+    bytes request = 2;
+    bytes response = 3;
+}
+
+// Message to test webhook functionality
+message Ping {
+    // UUID of this ping
+    string id = 1;
+
+    // UUID of the webhook receiving the ping
+    string webhook_id = 2;
+
+    // when this was generated
+    string timestamp = 3;
+    
+    // message to be sent (e.g. I'm a teapot)
+    string message = 4;
+}
+
+
+message EGFCreated{
+    // UUID of the governance framework
+    string id = 1;
+
+    // UUID of the ecosystem that owns this egf
+    string ecosystem_id = 2;
+
+    // Trust registry assoicated with this egf
+    string trust_registry  = 3;
+
+    // Wallet ID of the aurhority for this egf
+    string governing_authority = 4;
+
+    // Type of egf 
+    string type = 5;
+
+    // User friendly name for the egf
+    string name = 6;
+
+    // Description of the egf
+    string description = 7;
+
+    // URI for the egf
+    string governance_framework = 8;
+}
+
+
+message TemplateCreated {
+    // UUID of the template
+    string id = 1;
+
+    // UUID of the ecosystem that owns this template
+    string ecosystem_id = 2;
+
+    // Template name
+    string name = 3;
+
+    // Tempalte type
+    string type = 4;
+
+    // WalletID that created the template
+    string created_by = 5;
+}
+
+message ItemReceived {
+    // UUID of the new item
+    string id = 1;
+
+    // Timestamp when the item was received
+    string received = 2;
+}

@@ -534,6 +534,24 @@
       "file": "services/debug/v1/debug.proto",
       "parent": ""
     },
+    "services.options.SdkTemplateOption": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/options/field-options.proto",
+      "parent": ""
+    },
+    "services.options.SdkTemplateOption.anonymous": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/options/field-options.proto",
+      "parent": "services.options.SdkTemplateOption"
+    },
+    "services.options.SdkTemplateOption.ignore": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/options/field-options.proto",
+      "parent": "services.options.SdkTemplateOption"
+    },
     "services.provider.v1.AddWebhookRequest": {
       "type": "message",
       "collection": "messages",
@@ -2459,6 +2477,258 @@
       "collection": "fields",
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
       "parent": "services.verifiablecredentials.v1.VerifyProofResponse"
+    },
+    "trinsic.services.event.APICall": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/event/v1/event.proto",
+      "parent": ""
+    },
+    "trinsic.services.event.APICall.request": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.APICall"
+    },
+    "trinsic.services.event.APICall.response": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.APICall"
+    },
+    "trinsic.services.event.APICall.source": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.APICall"
+    },
+    "trinsic.services.event.EGFCreated": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/event/v1/event.proto",
+      "parent": ""
+    },
+    "trinsic.services.event.EGFCreated.description": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.EGFCreated"
+    },
+    "trinsic.services.event.EGFCreated.ecosystem_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.EGFCreated"
+    },
+    "trinsic.services.event.EGFCreated.governance_framework": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.EGFCreated"
+    },
+    "trinsic.services.event.EGFCreated.governing_authority": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.EGFCreated"
+    },
+    "trinsic.services.event.EGFCreated.id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.EGFCreated"
+    },
+    "trinsic.services.event.EGFCreated.name": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.EGFCreated"
+    },
+    "trinsic.services.event.EGFCreated.trust_registry": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.EGFCreated"
+    },
+    "trinsic.services.event.EGFCreated.type": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.EGFCreated"
+    },
+    "trinsic.services.event.Event": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/event/v1/event.proto",
+      "parent": ""
+    },
+    "trinsic.services.event.Event.data": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.Event"
+    },
+    "trinsic.services.event.Event.id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.Event"
+    },
+    "trinsic.services.event.Event.timestamp": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.Event"
+    },
+    "trinsic.services.event.Event.type": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.Event"
+    },
+    "trinsic.services.event.EventType": {
+      "type": "enum",
+      "collection": "enums",
+      "file": "services/event/v1/event.proto",
+      "parent": ""
+    },
+    "trinsic.services.event.EventType.EGF_CREATED": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.EventType"
+    },
+    "trinsic.services.event.EventType.EGF_MEMBER_REGISTERED": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.EventType"
+    },
+    "trinsic.services.event.EventType.EGF_MEMBER_UNREGISTERED": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.EventType"
+    },
+    "trinsic.services.event.EventType.ITEM_RECEIVED": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.EventType"
+    },
+    "trinsic.services.event.EventType.LOG": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.EventType"
+    },
+    "trinsic.services.event.EventType.PING": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.EventType"
+    },
+    "trinsic.services.event.EventType.TEMPLATE_CREATED": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.EventType"
+    },
+    "trinsic.services.event.EventType.TEMPLATE_DELETED": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.EventType"
+    },
+    "trinsic.services.event.EventType.WALLET_CREATED": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.EventType"
+    },
+    "trinsic.services.event.ItemReceived": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/event/v1/event.proto",
+      "parent": ""
+    },
+    "trinsic.services.event.ItemReceived.id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.ItemReceived"
+    },
+    "trinsic.services.event.ItemReceived.received": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.ItemReceived"
+    },
+    "trinsic.services.event.Ping": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/event/v1/event.proto",
+      "parent": ""
+    },
+    "trinsic.services.event.Ping.id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.Ping"
+    },
+    "trinsic.services.event.Ping.message": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.Ping"
+    },
+    "trinsic.services.event.Ping.timestamp": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.Ping"
+    },
+    "trinsic.services.event.Ping.webhook_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.Ping"
+    },
+    "trinsic.services.event.TemplateCreated": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/event/v1/event.proto",
+      "parent": ""
+    },
+    "trinsic.services.event.TemplateCreated.created_by": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.TemplateCreated"
+    },
+    "trinsic.services.event.TemplateCreated.ecosystem_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.TemplateCreated"
+    },
+    "trinsic.services.event.TemplateCreated.id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.TemplateCreated"
+    },
+    "trinsic.services.event.TemplateCreated.name": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.TemplateCreated"
+    },
+    "trinsic.services.event.TemplateCreated.type": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.TemplateCreated"
     }
   },
   "files": {
@@ -2609,14 +2879,76 @@
       "enums": [],
       "enum_values": []
     },
+    "services/event/v1/event.proto": {
+      "name": "services/event/v1/event.proto",
+      "package": "trinsic.services.event",
+      "description": "",
+      "services": [],
+      "methods": [],
+      "messages": [
+        "trinsic.services.event.Event",
+        "trinsic.services.event.APICall",
+        "trinsic.services.event.Ping",
+        "trinsic.services.event.EGFCreated",
+        "trinsic.services.event.TemplateCreated",
+        "trinsic.services.event.ItemReceived"
+      ],
+      "fields": [
+        "trinsic.services.event.Event.id",
+        "trinsic.services.event.Event.type",
+        "trinsic.services.event.Event.timestamp",
+        "trinsic.services.event.Event.data",
+        "trinsic.services.event.APICall.source",
+        "trinsic.services.event.APICall.request",
+        "trinsic.services.event.APICall.response",
+        "trinsic.services.event.Ping.id",
+        "trinsic.services.event.Ping.webhook_id",
+        "trinsic.services.event.Ping.timestamp",
+        "trinsic.services.event.Ping.message",
+        "trinsic.services.event.EGFCreated.id",
+        "trinsic.services.event.EGFCreated.ecosystem_id",
+        "trinsic.services.event.EGFCreated.trust_registry",
+        "trinsic.services.event.EGFCreated.governing_authority",
+        "trinsic.services.event.EGFCreated.type",
+        "trinsic.services.event.EGFCreated.name",
+        "trinsic.services.event.EGFCreated.description",
+        "trinsic.services.event.EGFCreated.governance_framework",
+        "trinsic.services.event.TemplateCreated.id",
+        "trinsic.services.event.TemplateCreated.ecosystem_id",
+        "trinsic.services.event.TemplateCreated.name",
+        "trinsic.services.event.TemplateCreated.type",
+        "trinsic.services.event.TemplateCreated.created_by",
+        "trinsic.services.event.ItemReceived.id",
+        "trinsic.services.event.ItemReceived.received"
+      ],
+      "enums": [
+        "trinsic.services.event.EventType"
+      ],
+      "enum_values": [
+        "trinsic.services.event.EventType.PING",
+        "trinsic.services.event.EventType.LOG",
+        "trinsic.services.event.EventType.EGF_CREATED",
+        "trinsic.services.event.EventType.EGF_MEMBER_REGISTERED",
+        "trinsic.services.event.EventType.EGF_MEMBER_UNREGISTERED",
+        "trinsic.services.event.EventType.TEMPLATE_CREATED",
+        "trinsic.services.event.EventType.TEMPLATE_DELETED",
+        "trinsic.services.event.EventType.WALLET_CREATED",
+        "trinsic.services.event.EventType.ITEM_RECEIVED"
+      ]
+    },
     "services/options/field-options.proto": {
       "name": "services/options/field-options.proto",
       "package": "services.options",
       "description": "",
       "services": [],
       "methods": [],
-      "messages": [],
-      "fields": [],
+      "messages": [
+        "services.options.SdkTemplateOption"
+      ],
+      "fields": [
+        "services.options.SdkTemplateOption.anonymous",
+        "services.options.SdkTemplateOption.ignore"
+      ],
       "enums": [],
       "enum_values": []
     },
@@ -3672,6 +4004,17 @@
       "messages": [],
       "enums": []
     },
+    "services.options.SdkTemplateOption": {
+      "name": "SdkTemplateOption",
+      "full_name": "services.options.SdkTemplateOption",
+      "description": "",
+      "fields": [
+        "services.options.SdkTemplateOption.anonymous",
+        "services.options.SdkTemplateOption.ignore"
+      ],
+      "messages": [],
+      "enums": []
+    },
     "services.provider.v1.AddWebhookRequest": {
       "name": "AddWebhookRequest",
       "full_name": "services.provider.v1.AddWebhookRequest",
@@ -4646,6 +4989,86 @@
       ],
       "messages": [],
       "enums": []
+    },
+    "trinsic.services.event.APICall": {
+      "name": "APICall",
+      "full_name": "trinsic.services.event.APICall",
+      "description": "",
+      "fields": [
+        "trinsic.services.event.APICall.source",
+        "trinsic.services.event.APICall.request",
+        "trinsic.services.event.APICall.response"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "trinsic.services.event.EGFCreated": {
+      "name": "EGFCreated",
+      "full_name": "trinsic.services.event.EGFCreated",
+      "description": "",
+      "fields": [
+        "trinsic.services.event.EGFCreated.id",
+        "trinsic.services.event.EGFCreated.ecosystem_id",
+        "trinsic.services.event.EGFCreated.trust_registry",
+        "trinsic.services.event.EGFCreated.governing_authority",
+        "trinsic.services.event.EGFCreated.type",
+        "trinsic.services.event.EGFCreated.name",
+        "trinsic.services.event.EGFCreated.description",
+        "trinsic.services.event.EGFCreated.governance_framework"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "trinsic.services.event.Event": {
+      "name": "Event",
+      "full_name": "trinsic.services.event.Event",
+      "description": "System event",
+      "fields": [
+        "trinsic.services.event.Event.id",
+        "trinsic.services.event.Event.type",
+        "trinsic.services.event.Event.timestamp",
+        "trinsic.services.event.Event.data"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "trinsic.services.event.ItemReceived": {
+      "name": "ItemReceived",
+      "full_name": "trinsic.services.event.ItemReceived",
+      "description": "",
+      "fields": [
+        "trinsic.services.event.ItemReceived.id",
+        "trinsic.services.event.ItemReceived.received"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "trinsic.services.event.Ping": {
+      "name": "Ping",
+      "full_name": "trinsic.services.event.Ping",
+      "description": "Message to test webhook functionality",
+      "fields": [
+        "trinsic.services.event.Ping.id",
+        "trinsic.services.event.Ping.webhook_id",
+        "trinsic.services.event.Ping.timestamp",
+        "trinsic.services.event.Ping.message"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "trinsic.services.event.TemplateCreated": {
+      "name": "TemplateCreated",
+      "full_name": "trinsic.services.event.TemplateCreated",
+      "description": "",
+      "fields": [
+        "trinsic.services.event.TemplateCreated.id",
+        "trinsic.services.event.TemplateCreated.ecosystem_id",
+        "trinsic.services.event.TemplateCreated.name",
+        "trinsic.services.event.TemplateCreated.type",
+        "trinsic.services.event.TemplateCreated.created_by"
+      ],
+      "messages": [],
+      "enums": []
     }
   },
   "fields": {
@@ -5021,6 +5444,22 @@
       "type": "bool",
       "full_type": "bool",
       "description": "indicates if tls is used"
+    },
+    "services.options.SdkTemplateOption.anonymous": {
+      "name": "anonymous",
+      "full_name": "services.options.SdkTemplateOption.anonymous",
+      "label": "LABEL_OPTIONAL",
+      "type": "bool",
+      "full_type": "bool",
+      "description": "Whether the service endpoint allows anonymous (no Oberon) authentication\nThis is used by the `protoc-gen-trinsic-sdk` plugin for metadata."
+    },
+    "services.options.SdkTemplateOption.ignore": {
+      "name": "ignore",
+      "full_name": "services.options.SdkTemplateOption.ignore",
+      "label": "LABEL_OPTIONAL",
+      "type": "bool",
+      "full_type": "bool",
+      "description": "Whether the SDK template generator should ignoroe this method. This method will\nbe wrapped manually."
     },
     "services.provider.v1.AddWebhookRequest.destination_url": {
       "name": "destination_url",
@@ -6414,6 +6853,214 @@
       "type": "ValidationResultsEntry",
       "full_type": "services.verifiablecredentials.v1.VerifyProofResponse.ValidationResultsEntry",
       "description": "Results of each validation check performed, \nsuch as schema conformance, revocation status, signature, etc.\nDetailed results are provided for failed validations."
+    },
+    "trinsic.services.event.APICall.request": {
+      "name": "request",
+      "full_name": "trinsic.services.event.APICall.request",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": ""
+    },
+    "trinsic.services.event.APICall.response": {
+      "name": "response",
+      "full_name": "trinsic.services.event.APICall.response",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": ""
+    },
+    "trinsic.services.event.APICall.source": {
+      "name": "source",
+      "full_name": "trinsic.services.event.APICall.source",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "trinsic.services.event.EGFCreated.description": {
+      "name": "description",
+      "full_name": "trinsic.services.event.EGFCreated.description",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Description of the egf"
+    },
+    "trinsic.services.event.EGFCreated.ecosystem_id": {
+      "name": "ecosystem_id",
+      "full_name": "trinsic.services.event.EGFCreated.ecosystem_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "UUID of the ecosystem that owns this egf"
+    },
+    "trinsic.services.event.EGFCreated.governance_framework": {
+      "name": "governance_framework",
+      "full_name": "trinsic.services.event.EGFCreated.governance_framework",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "URI for the egf"
+    },
+    "trinsic.services.event.EGFCreated.governing_authority": {
+      "name": "governing_authority",
+      "full_name": "trinsic.services.event.EGFCreated.governing_authority",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Wallet ID of the aurhority for this egf"
+    },
+    "trinsic.services.event.EGFCreated.id": {
+      "name": "id",
+      "full_name": "trinsic.services.event.EGFCreated.id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "UUID of the governance framework"
+    },
+    "trinsic.services.event.EGFCreated.name": {
+      "name": "name",
+      "full_name": "trinsic.services.event.EGFCreated.name",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "User friendly name for the egf"
+    },
+    "trinsic.services.event.EGFCreated.trust_registry": {
+      "name": "trust_registry",
+      "full_name": "trinsic.services.event.EGFCreated.trust_registry",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Trust registry assoicated with this egf"
+    },
+    "trinsic.services.event.EGFCreated.type": {
+      "name": "type",
+      "full_name": "trinsic.services.event.EGFCreated.type",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Type of egf"
+    },
+    "trinsic.services.event.Event.data": {
+      "name": "data",
+      "full_name": "trinsic.services.event.Event.data",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": "data payload - will be encoded proto message for the event type"
+    },
+    "trinsic.services.event.Event.id": {
+      "name": "id",
+      "full_name": "trinsic.services.event.Event.id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "UUID for the event"
+    },
+    "trinsic.services.event.Event.timestamp": {
+      "name": "timestamp",
+      "full_name": "trinsic.services.event.Event.timestamp",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "when the event occured"
+    },
+    "trinsic.services.event.Event.type": {
+      "name": "type",
+      "full_name": "trinsic.services.event.Event.type",
+      "label": "LABEL_OPTIONAL",
+      "type": "EventType",
+      "full_type": "trinsic.services.event.EventType",
+      "description": "event type"
+    },
+    "trinsic.services.event.ItemReceived.id": {
+      "name": "id",
+      "full_name": "trinsic.services.event.ItemReceived.id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "UUID of the new item"
+    },
+    "trinsic.services.event.ItemReceived.received": {
+      "name": "received",
+      "full_name": "trinsic.services.event.ItemReceived.received",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Timestamp when the item was received"
+    },
+    "trinsic.services.event.Ping.id": {
+      "name": "id",
+      "full_name": "trinsic.services.event.Ping.id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "UUID of this ping"
+    },
+    "trinsic.services.event.Ping.message": {
+      "name": "message",
+      "full_name": "trinsic.services.event.Ping.message",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "message to be sent (e.g. I'm a teapot)"
+    },
+    "trinsic.services.event.Ping.timestamp": {
+      "name": "timestamp",
+      "full_name": "trinsic.services.event.Ping.timestamp",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "when this was generated"
+    },
+    "trinsic.services.event.Ping.webhook_id": {
+      "name": "webhook_id",
+      "full_name": "trinsic.services.event.Ping.webhook_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "UUID of the webhook receiving the ping"
+    },
+    "trinsic.services.event.TemplateCreated.created_by": {
+      "name": "created_by",
+      "full_name": "trinsic.services.event.TemplateCreated.created_by",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "WalletID that created the template"
+    },
+    "trinsic.services.event.TemplateCreated.ecosystem_id": {
+      "name": "ecosystem_id",
+      "full_name": "trinsic.services.event.TemplateCreated.ecosystem_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "UUID of the ecosystem that owns this template"
+    },
+    "trinsic.services.event.TemplateCreated.id": {
+      "name": "id",
+      "full_name": "trinsic.services.event.TemplateCreated.id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "UUID of the template"
+    },
+    "trinsic.services.event.TemplateCreated.name": {
+      "name": "name",
+      "full_name": "trinsic.services.event.TemplateCreated.name",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Template name"
+    },
+    "trinsic.services.event.TemplateCreated.type": {
+      "name": "type",
+      "full_name": "trinsic.services.event.TemplateCreated.type",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Tempalte type"
     }
   },
   "enums": {
@@ -6483,6 +7130,22 @@
         "services.verifiablecredentials.templates.v1.FieldType.NUMBER",
         "services.verifiablecredentials.templates.v1.FieldType.BOOL",
         "services.verifiablecredentials.templates.v1.FieldType.DATETIME"
+      ]
+    },
+    "trinsic.services.event.EventType": {
+      "name": "EventType",
+      "full_name": "trinsic.services.event.EventType",
+      "description": "",
+      "values": [
+        "trinsic.services.event.EventType.PING",
+        "trinsic.services.event.EventType.LOG",
+        "trinsic.services.event.EventType.EGF_CREATED",
+        "trinsic.services.event.EventType.EGF_MEMBER_REGISTERED",
+        "trinsic.services.event.EventType.EGF_MEMBER_UNREGISTERED",
+        "trinsic.services.event.EventType.TEMPLATE_CREATED",
+        "trinsic.services.event.EventType.TEMPLATE_DELETED",
+        "trinsic.services.event.EventType.WALLET_CREATED",
+        "trinsic.services.event.EventType.ITEM_RECEIVED"
       ]
     }
   },
@@ -6642,6 +7305,60 @@
       "full_name": "services.verifiablecredentials.templates.v1.FieldType.STRING",
       "description": "",
       "value": 0
+    },
+    "trinsic.services.event.EventType.EGF_CREATED": {
+      "name": "EGF_CREATED",
+      "full_name": "trinsic.services.event.EventType.EGF_CREATED",
+      "description": "",
+      "value": 5
+    },
+    "trinsic.services.event.EventType.EGF_MEMBER_REGISTERED": {
+      "name": "EGF_MEMBER_REGISTERED",
+      "full_name": "trinsic.services.event.EventType.EGF_MEMBER_REGISTERED",
+      "description": "",
+      "value": 6
+    },
+    "trinsic.services.event.EventType.EGF_MEMBER_UNREGISTERED": {
+      "name": "EGF_MEMBER_UNREGISTERED",
+      "full_name": "trinsic.services.event.EventType.EGF_MEMBER_UNREGISTERED",
+      "description": "",
+      "value": 7
+    },
+    "trinsic.services.event.EventType.ITEM_RECEIVED": {
+      "name": "ITEM_RECEIVED",
+      "full_name": "trinsic.services.event.EventType.ITEM_RECEIVED",
+      "description": "",
+      "value": 16
+    },
+    "trinsic.services.event.EventType.LOG": {
+      "name": "LOG",
+      "full_name": "trinsic.services.event.EventType.LOG",
+      "description": "",
+      "value": 1
+    },
+    "trinsic.services.event.EventType.PING": {
+      "name": "PING",
+      "full_name": "trinsic.services.event.EventType.PING",
+      "description": "",
+      "value": 0
+    },
+    "trinsic.services.event.EventType.TEMPLATE_CREATED": {
+      "name": "TEMPLATE_CREATED",
+      "full_name": "trinsic.services.event.EventType.TEMPLATE_CREATED",
+      "description": "",
+      "value": 10
+    },
+    "trinsic.services.event.EventType.TEMPLATE_DELETED": {
+      "name": "TEMPLATE_DELETED",
+      "full_name": "trinsic.services.event.EventType.TEMPLATE_DELETED",
+      "description": "",
+      "value": 11
+    },
+    "trinsic.services.event.EventType.WALLET_CREATED": {
+      "name": "WALLET_CREATED",
+      "full_name": "trinsic.services.event.EventType.WALLET_CREATED",
+      "description": "",
+      "value": 15
     }
   }
 }

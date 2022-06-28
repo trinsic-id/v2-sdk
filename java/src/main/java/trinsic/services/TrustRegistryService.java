@@ -8,8 +8,8 @@ import java.util.Iterator;
 import java.util.concurrent.ExecutionException;
 import trinsic.okapi.DidException;
 import trinsic.sdk.options.v1.Options;
+import trinsic.services.trustregistry.v1.*;
 import trinsic.services.trustregistry.v1.TrustRegistryGrpc;
-import trinsic.services.trustregistry.v1.TrustRegistryOuterClass;
 
 public class TrustRegistryService extends ServiceBase {
   public TrustRegistryGrpc.TrustRegistryFutureStub stub;
@@ -26,8 +26,7 @@ public class TrustRegistryService extends ServiceBase {
     this.stub2 = TrustRegistryGrpc.newBlockingStub(this.getChannel());
   }
 
-  public ListenableFuture<TrustRegistryOuterClass.AddFrameworkResponse> addFramework(
-      TrustRegistryOuterClass.AddFrameworkRequest request)
+  public ListenableFuture<AddFrameworkResponse> addFramework(AddFrameworkRequest request)
       throws InvalidProtocolBufferException, DidException {
     try {
       new URL(request.getGovernanceFrameworkUri());
@@ -37,51 +36,45 @@ public class TrustRegistryService extends ServiceBase {
     return withMetadata(stub, request).addFramework(request);
   }
 
-  public TrustRegistryOuterClass.RemoveFrameworkResponse removeFramework(
-      TrustRegistryOuterClass.RemoveFrameworkRequest request)
+  public RemoveFrameworkResponse removeFramework(RemoveFrameworkRequest request)
       throws InvalidProtocolBufferException, DidException, ExecutionException,
           InterruptedException {
     return withMetadata(stub, request).removeFramework(request).get();
   }
 
-  public TrustRegistryOuterClass.RegisterMemberResponse registerMember(
-      TrustRegistryOuterClass.RegisterMemberRequest request)
+  public RegisterMemberResponse registerMember(RegisterMemberRequest request)
       throws InvalidProtocolBufferException, DidException, ExecutionException,
           InterruptedException {
     return withMetadata(stub, request).registerMember(request).get();
   }
 
-  public TrustRegistryOuterClass.UnregisterMemberResponse unregisterIssuer(
-      TrustRegistryOuterClass.UnregisterMemberRequest request)
+  public UnregisterMemberResponse unregisterIssuer(UnregisterMemberRequest request)
       throws InvalidProtocolBufferException, DidException, ExecutionException,
           InterruptedException {
     return withMetadata(stub, request).unregisterMember(request).get();
   }
 
-  public ListenableFuture<TrustRegistryOuterClass.GetMembershipStatusResponse> checkIssuerStatus(
-      TrustRegistryOuterClass.GetMembershipStatusRequest request)
-      throws InvalidProtocolBufferException, DidException {
+  public ListenableFuture<GetMembershipStatusResponse> checkIssuerStatus(
+      GetMembershipStatusRequest request) throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub, request).getMembershipStatus(request);
   }
 
-  public ListenableFuture<TrustRegistryOuterClass.SearchRegistryResponse> searchRegistry()
+  public ListenableFuture<SearchRegistryResponse> searchRegistry()
       throws InvalidProtocolBufferException, DidException {
-    return searchRegistry(TrustRegistryOuterClass.SearchRegistryRequest.getDefaultInstance());
+    return searchRegistry(SearchRegistryRequest.getDefaultInstance());
   }
 
-  public ListenableFuture<TrustRegistryOuterClass.SearchRegistryResponse> searchRegistry(
-      TrustRegistryOuterClass.SearchRegistryRequest request)
+  public ListenableFuture<SearchRegistryResponse> searchRegistry(SearchRegistryRequest request)
       throws InvalidProtocolBufferException, DidException {
     if (request.getQuery().isBlank())
       request =
-          TrustRegistryOuterClass.SearchRegistryRequest.newBuilder(request)
+          SearchRegistryRequest.newBuilder(request)
               .setQuery("SELECT * FROM c OFFSET 0 LIMIT 100")
               .build();
     return withMetadata(stub, request).searchRegistry(request);
   }
 
-  public Iterator<TrustRegistryOuterClass.FetchDataResponse> fetchData(
-      TrustRegistryOuterClass.FetchDataRequest request)
+  public Iterator<FetchDataResponse> fetchData(FetchDataRequest request)
       throws InvalidProtocolBufferException, DidException {
     return withMetadata(stub2, request).fetchData(request);
   }

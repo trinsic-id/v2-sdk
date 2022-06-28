@@ -7,8 +7,8 @@ import trinsic.okapi.DidException;
 import trinsic.services.AccountService;
 import trinsic.services.ProviderService;
 import trinsic.services.TrinsicService;
-import trinsic.services.account.v1.AccountOuterClass;
-import trinsic.services.common.v1.ProviderOuterClass;
+import trinsic.services.account.v1.AccountDetails;
+import trinsic.services.provider.v1.*;
 
 public class EcosystemsDemo {
   public static void main(String[] args)
@@ -23,12 +23,14 @@ public class EcosystemsDemo {
 
     // createEcosystem() {
     var response =
-        trinsic.provider().createEcosystem(
-            ProviderOuterClass.CreateEcosystemRequest.newBuilder()
-                .setDescription("My ecosystem")
-                .setUri("https://example.com")
-                .build())
-        .get();
+        trinsic
+            .provider()
+            .createEcosystem(
+                CreateEcosystemRequest.newBuilder()
+                    .setDescription("My ecosystem")
+                    .setUri("https://example.com")
+                    .build())
+            .get();
     // }
     Assertions.assertNotNull(response.getEcosystem());
     Assertions.assertNotNull(response.getEcosystem().getId());
@@ -89,25 +91,23 @@ public class EcosystemsDemo {
     // listEcosystems() {
     // }
     //        var actualList =
-    // service.listEcosystems(ProviderOuterClass.ListEcosystemsRequest.newBuilder().build()).get();
+    // service.listEcosystems(ListEcosystemsRequest.newBuilder().build()).get();
     //        Assertions.assertNotNull(actualList);
     //        Assertions.assertTrue(actualList.size() > 0);
 
-    ProviderOuterClass.InviteResponse inviteResponse =
-        ProviderOuterClass.InviteResponse.newBuilder().setInvitationId("N/A").build();
+    InviteResponse inviteResponse = InviteResponse.newBuilder().setInvitationId("N/A").build();
     try {
       // inviteParticipant() {
       inviteResponse =
-          trinsic.provider().invite(
-              ProviderOuterClass.InviteRequest.newBuilder()
-                  .setParticipant(
-                      ProviderOuterClass.ParticipantType.participant_type_individual)
-                  .setDetails(
-                      AccountOuterClass.AccountDetails.newBuilder()
-                          .setEmail("example@trinsic.id")
-                          .build())
-                  .build())
-          .get();
+          trinsic
+              .provider()
+              .invite(
+                  InviteRequest.newBuilder()
+                      .setParticipant(ParticipantType.participant_type_individual)
+                      .setDetails(
+                          AccountDetails.newBuilder().setEmail("example@trinsic.id").build())
+                      .build())
+              .get();
       // }
     } catch (Exception e) {
       // this is okay as an example
@@ -116,11 +116,13 @@ public class EcosystemsDemo {
     try {
       // invitationStatus() {
       var invitationStatus =
-          trinsic.provider().invitationStatus(
-              ProviderOuterClass.InvitationStatusRequest.newBuilder()
-                  .setInvitationId(inviteResponse.getInvitationId())
-                  .build())
-          .get();
+          trinsic
+              .provider()
+              .invitationStatus(
+                  InvitationStatusRequest.newBuilder()
+                      .setInvitationId(inviteResponse.getInvitationId())
+                      .build())
+              .get();
       // }
     } catch (Exception e) {
       // this is okay as an example
