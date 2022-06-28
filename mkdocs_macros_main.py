@@ -2,8 +2,6 @@
 Macros created by Trinsic for documentation site
 """
 
-from email import message
-from tkinter.messagebox import IGNORE
 from requests import head
 from os.path import abspath, relpath, join, dirname, exists
 from pathlib import Path
@@ -107,7 +105,7 @@ def define_env(env):
     @env.macro
     def all_proto_events():
         """
-        Prints all protobuf events
+        Prints all protobuf events -- intended for usage in the Events Reference docs page
         """
         IGNORE_MESSAGES = ["trinsic.services.event.Event", "trinsic.services.event.APICall"]
 
