@@ -5,9 +5,8 @@ package services.verifiablecredentials.templates.v1;
 import "services/options/field-options.proto";
 
 option csharp_namespace = "Trinsic.Services.VerifiableCredentials.Templates.V1";
-option java_package = "trinsic.services.verifiablecredentials.templates.v1";
 option go_package = "services/verifiablecredentials/templates/v1/template";
-
+option java_package = "trinsic.services.verifiablecredentials.templates.v1";
 
 
 // Request to fetch a template by ID
