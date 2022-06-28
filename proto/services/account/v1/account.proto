@@ -184,7 +184,9 @@ service Account {
     }
 
     // Confirm login step by responding to the challenge request
-    rpc LoginConfirm        (LoginConfirmRequest)       returns (LoginConfirmResponse);
+    rpc LoginConfirm        (LoginConfirmRequest)       returns (LoginConfirmResponse) {
+        option (options.sdk_template_option).ignore = true;
+    }
 
     // Get account information
     rpc Info                (AccountInfoRequest)        returns (AccountInfoResponse);
