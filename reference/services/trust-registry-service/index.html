@@ -1857,7 +1857,7 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">org.junit.jupiter.api.Assertions</span><span class="p">;</span><span class="w"></span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">trinsic.okapi.DidException</span><span class="p">;</span><span class="w"></span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">trinsic.services.TrinsicService</span><span class="p">;</span><span class="w"></span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">trinsic.services.trustregistry.v1.TrustRegistryOuterClass</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">trinsic.services.trustregistry.v1.*</span><span class="p">;</span><span class="w"></span>
 
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">TrustRegistryDemo</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"></span>
@@ -1880,7 +1880,7 @@
 <span class="w">        </span><span class="n">trinsic</span><span class="w"></span>
 <span class="w">            </span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">()</span><span class="w"></span>
 <span class="w">            </span><span class="p">.</span><span class="na">addFramework</span><span class="p">(</span><span class="w"></span>
-<span class="w">                </span><span class="n">TrustRegistryOuterClass</span><span class="p">.</span><span class="na">AddFrameworkRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="n">AddFrameworkRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
 <span class="w">                    </span><span class="p">.</span><span class="na">setGovernanceFrameworkUri</span><span class="p">(</span><span class="n">frameworkUri</span><span class="p">)</span><span class="w"></span>
 <span class="w">                    </span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">&quot;Example Framework&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">UUID</span><span class="p">.</span><span class="na">randomUUID</span><span class="p">())</span><span class="w"></span>
 <span class="w">                    </span><span class="p">.</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
@@ -1891,7 +1891,7 @@
 <span class="w">    </span><span class="n">trinsic</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">()</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">registerMember</span><span class="p">(</span><span class="w"></span>
-<span class="w">            </span><span class="n">TrustRegistryOuterClass</span><span class="p">.</span><span class="na">RegisterMemberRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="w">            </span><span class="n">RegisterMemberRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
 <span class="w">                </span><span class="p">.</span><span class="na">setDidUri</span><span class="p">(</span><span class="n">didUri</span><span class="p">)</span><span class="w"></span>
 <span class="w">                </span><span class="p">.</span><span class="na">setFrameworkId</span><span class="p">(</span><span class="n">frameworkResponse</span><span class="p">.</span><span class="na">getId</span><span class="p">())</span><span class="w"></span>
 <span class="w">                </span><span class="p">.</span><span class="na">setSchemaUri</span><span class="p">(</span><span class="n">typeUri</span><span class="p">)</span><span class="w"></span>
@@ -1902,15 +1902,14 @@
 <span class="w">        </span><span class="n">trinsic</span><span class="w"></span>
 <span class="w">            </span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">()</span><span class="w"></span>
 <span class="w">            </span><span class="p">.</span><span class="na">checkIssuerStatus</span><span class="p">(</span><span class="w"></span>
-<span class="w">                </span><span class="n">TrustRegistryOuterClass</span><span class="p">.</span><span class="na">GetMembershipStatusRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="n">GetMembershipStatusRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
 <span class="w">                    </span><span class="p">.</span><span class="na">setDidUri</span><span class="p">(</span><span class="n">didUri</span><span class="p">)</span><span class="w"></span>
 <span class="w">                    </span><span class="p">.</span><span class="na">setGovernanceFrameworkUri</span><span class="p">(</span><span class="n">frameworkUri</span><span class="p">)</span><span class="w"></span>
 <span class="w">                    </span><span class="p">.</span><span class="na">setSchemaUri</span><span class="p">(</span><span class="n">typeUri</span><span class="p">)</span><span class="w"></span>
 <span class="w">                    </span><span class="p">.</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
 <span class="w">            </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 <span class="w">    </span><span class="c1">// }</span><span class="w"></span>
-<span class="w">    </span><span class="n">Assertions</span><span class="p">.</span><span class="na">assertEquals</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="n">TrustRegistryOuterClass</span><span class="p">.</span><span class="na">RegistrationStatus</span><span class="p">.</span><span class="na">CURRENT</span><span class="p">,</span><span class="w"> </span><span class="n">issuerStatus</span><span class="p">.</span><span class="na">getStatus</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="n">Assertions</span><span class="p">.</span><span class="na">assertEquals</span><span class="p">(</span><span class="n">RegistrationStatus</span><span class="p">.</span><span class="na">CURRENT</span><span class="p">,</span><span class="w"> </span><span class="n">issuerStatus</span><span class="p">.</span><span class="na">getStatus</span><span class="p">());</span><span class="w"></span>
 
 <span class="w">    </span><span class="c1">// searchTrustRegistry() {</span><span class="w"></span>
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="n">searchResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">().</span><span class="na">searchRegistry</span><span class="p">().</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
@@ -1923,7 +1922,7 @@
 <span class="w">    </span><span class="n">trinsic</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">()</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">unregisterIssuer</span><span class="p">(</span><span class="w"></span>
-<span class="w">            </span><span class="n">TrustRegistryOuterClass</span><span class="p">.</span><span class="na">UnregisterMemberRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="w">            </span><span class="n">UnregisterMemberRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
 <span class="w">                </span><span class="p">.</span><span class="na">setFrameworkId</span><span class="p">(</span><span class="n">frameworkResponse</span><span class="p">.</span><span class="na">getId</span><span class="p">())</span><span class="w"></span>
 <span class="w">                </span><span class="p">.</span><span class="na">setDidUri</span><span class="p">(</span><span class="n">didUri</span><span class="p">)</span><span class="w"></span>
 <span class="w">                </span><span class="p">.</span><span class="na">setSchemaUri</span><span class="p">(</span><span class="n">typeUri</span><span class="p">)</span><span class="w"></span>
@@ -2173,7 +2172,7 @@
 <div class="highlight"><pre><span></span><code><span class="n">trinsic</span><span class="w"></span>
 <span class="w">    </span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">()</span><span class="w"></span>
 <span class="w">    </span><span class="p">.</span><span class="na">registerMember</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="n">TrustRegistryOuterClass</span><span class="p">.</span><span class="na">RegisterMemberRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="w">        </span><span class="n">RegisterMemberRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
 <span class="w">            </span><span class="p">.</span><span class="na">setDidUri</span><span class="p">(</span><span class="n">didUri</span><span class="p">)</span><span class="w"></span>
 <span class="w">            </span><span class="p">.</span><span class="na">setFrameworkId</span><span class="p">(</span><span class="n">frameworkResponse</span><span class="p">.</span><span class="na">getId</span><span class="p">())</span><span class="w"></span>
 <span class="w">            </span><span class="p">.</span><span class="na">setSchemaUri</span><span class="p">(</span><span class="n">typeUri</span><span class="p">)</span><span class="w"></span>
@@ -2236,7 +2235,7 @@
 <div class="highlight"><pre><span></span><code><span class="n">trinsic</span><span class="w"></span>
 <span class="w">    </span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">()</span><span class="w"></span>
 <span class="w">    </span><span class="p">.</span><span class="na">unregisterIssuer</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="n">TrustRegistryOuterClass</span><span class="p">.</span><span class="na">UnregisterMemberRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="w">        </span><span class="n">UnregisterMemberRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
 <span class="w">            </span><span class="p">.</span><span class="na">setFrameworkId</span><span class="p">(</span><span class="n">frameworkResponse</span><span class="p">.</span><span class="na">getId</span><span class="p">())</span><span class="w"></span>
 <span class="w">            </span><span class="p">.</span><span class="na">setDidUri</span><span class="p">(</span><span class="n">didUri</span><span class="p">)</span><span class="w"></span>
 <span class="w">            </span><span class="p">.</span><span class="na">setSchemaUri</span><span class="p">(</span><span class="n">typeUri</span><span class="p">)</span><span class="w"></span>
@@ -2483,7 +2482,7 @@
 <span class="w">    </span><span class="n">trinsic</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">()</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">checkIssuerStatus</span><span class="p">(</span><span class="w"></span>
-<span class="w">            </span><span class="n">TrustRegistryOuterClass</span><span class="p">.</span><span class="na">GetMembershipStatusRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="w">            </span><span class="n">GetMembershipStatusRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
 <span class="w">                </span><span class="p">.</span><span class="na">setDidUri</span><span class="p">(</span><span class="n">didUri</span><span class="p">)</span><span class="w"></span>
 <span class="w">                </span><span class="p">.</span><span class="na">setGovernanceFrameworkUri</span><span class="p">(</span><span class="n">frameworkUri</span><span class="p">)</span><span class="w"></span>
 <span class="w">                </span><span class="p">.</span><span class="na">setSchemaUri</span><span class="p">(</span><span class="n">typeUri</span><span class="p">)</span><span class="w"></span>
