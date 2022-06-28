@@ -5,8 +5,10 @@ import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.okapi.DidException;
 import trinsic.services.TrinsicService;
-import trinsic.services.common.v1.ProviderOuterClass;
-import trinsic.services.universalwallet.v1.UniversalWalletOuterClass;
+import trinsic.services.provider.v1.CreateEcosystemRequest;
+import trinsic.services.universalwallet.v1.DeleteItemRequest;
+import trinsic.services.universalwallet.v1.InsertItemRequest;
+import trinsic.services.universalwallet.v1.SearchRequest;
 
 public class WalletsDemo {
   public static void main(String[] args)
@@ -19,10 +21,7 @@ public class WalletsDemo {
     // Create ecosystem
     var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
     var ecosystemResponse =
-        trinsic
-            .provider()
-            .createEcosystem(ProviderOuterClass.CreateEcosystemRequest.getDefaultInstance())
-            .get();
+        trinsic.provider().createEcosystem(CreateEcosystemRequest.getDefaultInstance()).get();
     var ecosystemId = ecosystemResponse.getEcosystem().getId();
 
     // Create account
@@ -41,7 +40,7 @@ public class WalletsDemo {
         trinsic
             .wallet()
             .insertItem(
-                UniversalWalletOuterClass.InsertItemRequest.newBuilder()
+                InsertItemRequest.newBuilder()
                     .setItemJson(credentialJson)
                     .setItemType("VerifiableCredential")
                     .build())
@@ -62,11 +61,7 @@ public class WalletsDemo {
 
     // Delete item in-between searches
     var deleteResponse =
-        trinsic
-            .wallet()
-            .deleteItem(
-                UniversalWalletOuterClass.DeleteItemRequest.newBuilder().setItemId(itemId).build())
-            .get();
+        trinsic.wallet().deleteItem(DeleteItemRequest.newBuilder().setItemId(itemId).build()).get();
 
     Assertions.assertNotNull(deleteResponse);
 
@@ -76,7 +71,7 @@ public class WalletsDemo {
           trinsic
               .wallet()
               .search(
-                  UniversalWalletOuterClass.SearchRequest.newBuilder()
+                  SearchRequest.newBuilder()
                       .setQuery(
                           "SELECT c.id, c.type, c.data FROM c WHERE c.type ="
                               + " 'VerifiableCredential'")

@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import trinsic.okapi.DidException;
 import trinsic.services.AccountService;
 import trinsic.services.ProviderService;
-import trinsic.services.common.v1.ProviderOuterClass;
+import trinsic.services.provider.v1.*;
 
 class TrinsicServicesTest {
 
@@ -31,14 +31,11 @@ class TrinsicServicesTest {
     var providerService = new ProviderService(TrinsicUtilities.getTrinsicServiceOptions(account));
     var ecosystem =
         providerService
-            .createEcosystem(
-                ProviderOuterClass.CreateEcosystemRequest.newBuilder()
-                    .setName("Test Ecosystem")
-                    .build())
+            .createEcosystem(CreateEcosystemRequest.newBuilder().setName("Test Ecosystem").build())
             .get();
     var invitation =
-        ProviderOuterClass.InviteRequest.newBuilder()
-            .setParticipant(ProviderOuterClass.ParticipantType.participant_type_individual)
+        InviteRequest.newBuilder()
+            .setParticipant(ParticipantType.participant_type_individual)
             .setDescription("I dunno")
             .build();
     var response = providerService.invite(invitation).get();
@@ -47,7 +44,7 @@ class TrinsicServicesTest {
     var status =
         providerService
             .invitationStatus(
-                ProviderOuterClass.InvitationStatusRequest.newBuilder()
+                InvitationStatusRequest.newBuilder()
                     .setInvitationId(response.getInvitationId())
                     .build())
             .get();
@@ -95,11 +92,9 @@ class TrinsicServicesTest {
     var providerService = new ProviderService(TrinsicUtilities.getTrinsicServiceOptions());
     Assertions.assertThrows(
         IllegalArgumentException.class,
-        () -> providerService.invite(ProviderOuterClass.InviteRequest.newBuilder().build()));
+        () -> providerService.invite(InviteRequest.newBuilder().build()));
     Assertions.assertThrows(
         IllegalArgumentException.class,
-        () ->
-            providerService.invitationStatus(
-                ProviderOuterClass.InvitationStatusRequest.newBuilder().build()));
+        () -> providerService.invitationStatus(InvitationStatusRequest.newBuilder().build()));
   }
 }

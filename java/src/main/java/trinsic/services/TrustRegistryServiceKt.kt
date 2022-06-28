@@ -7,8 +7,8 @@ import java.util.concurrent.ExecutionException
 import kotlinx.coroutines.flow.Flow
 import trinsic.okapi.DidException
 import trinsic.sdk.options.v1.Options
+import trinsic.services.trustregistry.v1.*
 import trinsic.services.trustregistry.v1.TrustRegistryGrpcKt
-import trinsic.services.trustregistry.v1.TrustRegistryOuterClass.*
 
 class TrustRegistryServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(options) {
   var stub = TrustRegistryGrpcKt.TrustRegistryCoroutineStub(this.channel)
