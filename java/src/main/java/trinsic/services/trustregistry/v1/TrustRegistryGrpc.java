@@ -15,24 +15,22 @@ public final class TrustRegistryGrpc {
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkRequest,
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkResponse>
+          trinsic.services.trustregistry.v1.AddFrameworkRequest,
+          trinsic.services.trustregistry.v1.AddFrameworkResponse>
       getAddFrameworkMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "AddFramework",
-      requestType =
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkRequest.class,
-      responseType =
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkResponse.class,
+      requestType = trinsic.services.trustregistry.v1.AddFrameworkRequest.class,
+      responseType = trinsic.services.trustregistry.v1.AddFrameworkResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkRequest,
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkResponse>
+          trinsic.services.trustregistry.v1.AddFrameworkRequest,
+          trinsic.services.trustregistry.v1.AddFrameworkResponse>
       getAddFrameworkMethod() {
     io.grpc.MethodDescriptor<
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkRequest,
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkResponse>
+            trinsic.services.trustregistry.v1.AddFrameworkRequest,
+            trinsic.services.trustregistry.v1.AddFrameworkResponse>
         getAddFrameworkMethod;
     if ((getAddFrameworkMethod = TrustRegistryGrpc.getAddFrameworkMethod) == null) {
       synchronized (TrustRegistryGrpc.class) {
@@ -40,22 +38,20 @@ public final class TrustRegistryGrpc {
           TrustRegistryGrpc.getAddFrameworkMethod =
               getAddFrameworkMethod =
                   io.grpc.MethodDescriptor
-                      .<trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                              .AddFrameworkRequest,
-                          trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                              .AddFrameworkResponse>
+                      .<trinsic.services.trustregistry.v1.AddFrameworkRequest,
+                          trinsic.services.trustregistry.v1.AddFrameworkResponse>
                           newBuilder()
                       .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                       .setFullMethodName(generateFullMethodName(SERVICE_NAME, "AddFramework"))
                       .setSampledToLocalTracing(true)
                       .setRequestMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                                  .AddFrameworkRequest.getDefaultInstance()))
+                              trinsic.services.trustregistry.v1.AddFrameworkRequest
+                                  .getDefaultInstance()))
                       .setResponseMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                                  .AddFrameworkResponse.getDefaultInstance()))
+                              trinsic.services.trustregistry.v1.AddFrameworkResponse
+                                  .getDefaultInstance()))
                       .setSchemaDescriptor(
                           new TrustRegistryMethodDescriptorSupplier("AddFramework"))
                       .build();
@@ -66,24 +62,22 @@ public final class TrustRegistryGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkRequest,
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkResponse>
+          trinsic.services.trustregistry.v1.RemoveFrameworkRequest,
+          trinsic.services.trustregistry.v1.RemoveFrameworkResponse>
       getRemoveFrameworkMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "RemoveFramework",
-      requestType =
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkRequest.class,
-      responseType =
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkResponse.class,
+      requestType = trinsic.services.trustregistry.v1.RemoveFrameworkRequest.class,
+      responseType = trinsic.services.trustregistry.v1.RemoveFrameworkResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkRequest,
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkResponse>
+          trinsic.services.trustregistry.v1.RemoveFrameworkRequest,
+          trinsic.services.trustregistry.v1.RemoveFrameworkResponse>
       getRemoveFrameworkMethod() {
     io.grpc.MethodDescriptor<
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkRequest,
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkResponse>
+            trinsic.services.trustregistry.v1.RemoveFrameworkRequest,
+            trinsic.services.trustregistry.v1.RemoveFrameworkResponse>
         getRemoveFrameworkMethod;
     if ((getRemoveFrameworkMethod = TrustRegistryGrpc.getRemoveFrameworkMethod) == null) {
       synchronized (TrustRegistryGrpc.class) {
@@ -91,22 +85,20 @@ public final class TrustRegistryGrpc {
           TrustRegistryGrpc.getRemoveFrameworkMethod =
               getRemoveFrameworkMethod =
                   io.grpc.MethodDescriptor
-                      .<trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                              .RemoveFrameworkRequest,
-                          trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                              .RemoveFrameworkResponse>
+                      .<trinsic.services.trustregistry.v1.RemoveFrameworkRequest,
+                          trinsic.services.trustregistry.v1.RemoveFrameworkResponse>
                           newBuilder()
                       .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                       .setFullMethodName(generateFullMethodName(SERVICE_NAME, "RemoveFramework"))
                       .setSampledToLocalTracing(true)
                       .setRequestMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                                  .RemoveFrameworkRequest.getDefaultInstance()))
+                              trinsic.services.trustregistry.v1.RemoveFrameworkRequest
+                                  .getDefaultInstance()))
                       .setResponseMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                                  .RemoveFrameworkResponse.getDefaultInstance()))
+                              trinsic.services.trustregistry.v1.RemoveFrameworkResponse
+                                  .getDefaultInstance()))
                       .setSchemaDescriptor(
                           new TrustRegistryMethodDescriptorSupplier("RemoveFramework"))
                       .build();
@@ -117,24 +109,22 @@ public final class TrustRegistryGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.SearchRegistryRequest,
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.SearchRegistryResponse>
+          trinsic.services.trustregistry.v1.SearchRegistryRequest,
+          trinsic.services.trustregistry.v1.SearchRegistryResponse>
       getSearchRegistryMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "SearchRegistry",
-      requestType =
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.SearchRegistryRequest.class,
-      responseType =
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.SearchRegistryResponse.class,
+      requestType = trinsic.services.trustregistry.v1.SearchRegistryRequest.class,
+      responseType = trinsic.services.trustregistry.v1.SearchRegistryResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.SearchRegistryRequest,
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.SearchRegistryResponse>
+          trinsic.services.trustregistry.v1.SearchRegistryRequest,
+          trinsic.services.trustregistry.v1.SearchRegistryResponse>
       getSearchRegistryMethod() {
     io.grpc.MethodDescriptor<
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.SearchRegistryRequest,
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.SearchRegistryResponse>
+            trinsic.services.trustregistry.v1.SearchRegistryRequest,
+            trinsic.services.trustregistry.v1.SearchRegistryResponse>
         getSearchRegistryMethod;
     if ((getSearchRegistryMethod = TrustRegistryGrpc.getSearchRegistryMethod) == null) {
       synchronized (TrustRegistryGrpc.class) {
@@ -142,22 +132,20 @@ public final class TrustRegistryGrpc {
           TrustRegistryGrpc.getSearchRegistryMethod =
               getSearchRegistryMethod =
                   io.grpc.MethodDescriptor
-                      .<trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                              .SearchRegistryRequest,
-                          trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                              .SearchRegistryResponse>
+                      .<trinsic.services.trustregistry.v1.SearchRegistryRequest,
+                          trinsic.services.trustregistry.v1.SearchRegistryResponse>
                           newBuilder()
                       .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                       .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SearchRegistry"))
                       .setSampledToLocalTracing(true)
                       .setRequestMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                                  .SearchRegistryRequest.getDefaultInstance()))
+                              trinsic.services.trustregistry.v1.SearchRegistryRequest
+                                  .getDefaultInstance()))
                       .setResponseMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                                  .SearchRegistryResponse.getDefaultInstance()))
+                              trinsic.services.trustregistry.v1.SearchRegistryResponse
+                                  .getDefaultInstance()))
                       .setSchemaDescriptor(
                           new TrustRegistryMethodDescriptorSupplier("SearchRegistry"))
                       .build();
@@ -168,24 +156,22 @@ public final class TrustRegistryGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest,
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse>
+          trinsic.services.trustregistry.v1.RegisterMemberRequest,
+          trinsic.services.trustregistry.v1.RegisterMemberResponse>
       getRegisterMemberMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "RegisterMember",
-      requestType =
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest.class,
-      responseType =
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse.class,
+      requestType = trinsic.services.trustregistry.v1.RegisterMemberRequest.class,
+      responseType = trinsic.services.trustregistry.v1.RegisterMemberResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest,
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse>
+          trinsic.services.trustregistry.v1.RegisterMemberRequest,
+          trinsic.services.trustregistry.v1.RegisterMemberResponse>
       getRegisterMemberMethod() {
     io.grpc.MethodDescriptor<
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest,
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse>
+            trinsic.services.trustregistry.v1.RegisterMemberRequest,
+            trinsic.services.trustregistry.v1.RegisterMemberResponse>
         getRegisterMemberMethod;
     if ((getRegisterMemberMethod = TrustRegistryGrpc.getRegisterMemberMethod) == null) {
       synchronized (TrustRegistryGrpc.class) {
@@ -193,22 +179,20 @@ public final class TrustRegistryGrpc {
           TrustRegistryGrpc.getRegisterMemberMethod =
               getRegisterMemberMethod =
                   io.grpc.MethodDescriptor
-                      .<trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                              .RegisterMemberRequest,
-                          trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                              .RegisterMemberResponse>
+                      .<trinsic.services.trustregistry.v1.RegisterMemberRequest,
+                          trinsic.services.trustregistry.v1.RegisterMemberResponse>
                           newBuilder()
                       .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                       .setFullMethodName(generateFullMethodName(SERVICE_NAME, "RegisterMember"))
                       .setSampledToLocalTracing(true)
                       .setRequestMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                                  .RegisterMemberRequest.getDefaultInstance()))
+                              trinsic.services.trustregistry.v1.RegisterMemberRequest
+                                  .getDefaultInstance()))
                       .setResponseMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                                  .RegisterMemberResponse.getDefaultInstance()))
+                              trinsic.services.trustregistry.v1.RegisterMemberResponse
+                                  .getDefaultInstance()))
                       .setSchemaDescriptor(
                           new TrustRegistryMethodDescriptorSupplier("RegisterMember"))
                       .build();
@@ -219,24 +203,22 @@ public final class TrustRegistryGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest,
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse>
+          trinsic.services.trustregistry.v1.UnregisterMemberRequest,
+          trinsic.services.trustregistry.v1.UnregisterMemberResponse>
       getUnregisterMemberMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "UnregisterMember",
-      requestType =
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest.class,
-      responseType =
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse.class,
+      requestType = trinsic.services.trustregistry.v1.UnregisterMemberRequest.class,
+      responseType = trinsic.services.trustregistry.v1.UnregisterMemberResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest,
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse>
+          trinsic.services.trustregistry.v1.UnregisterMemberRequest,
+          trinsic.services.trustregistry.v1.UnregisterMemberResponse>
       getUnregisterMemberMethod() {
     io.grpc.MethodDescriptor<
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest,
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse>
+            trinsic.services.trustregistry.v1.UnregisterMemberRequest,
+            trinsic.services.trustregistry.v1.UnregisterMemberResponse>
         getUnregisterMemberMethod;
     if ((getUnregisterMemberMethod = TrustRegistryGrpc.getUnregisterMemberMethod) == null) {
       synchronized (TrustRegistryGrpc.class) {
@@ -244,22 +226,20 @@ public final class TrustRegistryGrpc {
           TrustRegistryGrpc.getUnregisterMemberMethod =
               getUnregisterMemberMethod =
                   io.grpc.MethodDescriptor
-                      .<trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                              .UnregisterMemberRequest,
-                          trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                              .UnregisterMemberResponse>
+                      .<trinsic.services.trustregistry.v1.UnregisterMemberRequest,
+                          trinsic.services.trustregistry.v1.UnregisterMemberResponse>
                           newBuilder()
                       .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                       .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UnregisterMember"))
                       .setSampledToLocalTracing(true)
                       .setRequestMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                                  .UnregisterMemberRequest.getDefaultInstance()))
+                              trinsic.services.trustregistry.v1.UnregisterMemberRequest
+                                  .getDefaultInstance()))
                       .setResponseMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                                  .UnregisterMemberResponse.getDefaultInstance()))
+                              trinsic.services.trustregistry.v1.UnregisterMemberResponse
+                                  .getDefaultInstance()))
                       .setSchemaDescriptor(
                           new TrustRegistryMethodDescriptorSupplier("UnregisterMember"))
                       .build();
@@ -270,26 +250,22 @@ public final class TrustRegistryGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest,
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse>
+          trinsic.services.trustregistry.v1.GetMembershipStatusRequest,
+          trinsic.services.trustregistry.v1.GetMembershipStatusResponse>
       getGetMembershipStatusMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetMembershipStatus",
-      requestType =
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest
-              .class,
-      responseType =
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse
-              .class,
+      requestType = trinsic.services.trustregistry.v1.GetMembershipStatusRequest.class,
+      responseType = trinsic.services.trustregistry.v1.GetMembershipStatusResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest,
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse>
+          trinsic.services.trustregistry.v1.GetMembershipStatusRequest,
+          trinsic.services.trustregistry.v1.GetMembershipStatusResponse>
       getGetMembershipStatusMethod() {
     io.grpc.MethodDescriptor<
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest,
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse>
+            trinsic.services.trustregistry.v1.GetMembershipStatusRequest,
+            trinsic.services.trustregistry.v1.GetMembershipStatusResponse>
         getGetMembershipStatusMethod;
     if ((getGetMembershipStatusMethod = TrustRegistryGrpc.getGetMembershipStatusMethod) == null) {
       synchronized (TrustRegistryGrpc.class) {
@@ -298,10 +274,8 @@ public final class TrustRegistryGrpc {
           TrustRegistryGrpc.getGetMembershipStatusMethod =
               getGetMembershipStatusMethod =
                   io.grpc.MethodDescriptor
-                      .<trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                              .GetMembershipStatusRequest,
-                          trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                              .GetMembershipStatusResponse>
+                      .<trinsic.services.trustregistry.v1.GetMembershipStatusRequest,
+                          trinsic.services.trustregistry.v1.GetMembershipStatusResponse>
                           newBuilder()
                       .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                       .setFullMethodName(
@@ -309,12 +283,12 @@ public final class TrustRegistryGrpc {
                       .setSampledToLocalTracing(true)
                       .setRequestMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                                  .GetMembershipStatusRequest.getDefaultInstance()))
+                              trinsic.services.trustregistry.v1.GetMembershipStatusRequest
+                                  .getDefaultInstance()))
                       .setResponseMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                                  .GetMembershipStatusResponse.getDefaultInstance()))
+                              trinsic.services.trustregistry.v1.GetMembershipStatusResponse
+                                  .getDefaultInstance()))
                       .setSchemaDescriptor(
                           new TrustRegistryMethodDescriptorSupplier("GetMembershipStatus"))
                       .build();
@@ -325,24 +299,22 @@ public final class TrustRegistryGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.FetchDataRequest,
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.FetchDataResponse>
+          trinsic.services.trustregistry.v1.FetchDataRequest,
+          trinsic.services.trustregistry.v1.FetchDataResponse>
       getFetchDataMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "FetchData",
-      requestType =
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.FetchDataRequest.class,
-      responseType =
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.FetchDataResponse.class,
+      requestType = trinsic.services.trustregistry.v1.FetchDataRequest.class,
+      responseType = trinsic.services.trustregistry.v1.FetchDataResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
   public static io.grpc.MethodDescriptor<
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.FetchDataRequest,
-          trinsic.services.trustregistry.v1.TrustRegistryOuterClass.FetchDataResponse>
+          trinsic.services.trustregistry.v1.FetchDataRequest,
+          trinsic.services.trustregistry.v1.FetchDataResponse>
       getFetchDataMethod() {
     io.grpc.MethodDescriptor<
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.FetchDataRequest,
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.FetchDataResponse>
+            trinsic.services.trustregistry.v1.FetchDataRequest,
+            trinsic.services.trustregistry.v1.FetchDataResponse>
         getFetchDataMethod;
     if ((getFetchDataMethod = TrustRegistryGrpc.getFetchDataMethod) == null) {
       synchronized (TrustRegistryGrpc.class) {
@@ -350,21 +322,20 @@ public final class TrustRegistryGrpc {
           TrustRegistryGrpc.getFetchDataMethod =
               getFetchDataMethod =
                   io.grpc.MethodDescriptor
-                      .<trinsic.services.trustregistry.v1.TrustRegistryOuterClass.FetchDataRequest,
-                          trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                              .FetchDataResponse>
+                      .<trinsic.services.trustregistry.v1.FetchDataRequest,
+                          trinsic.services.trustregistry.v1.FetchDataResponse>
                           newBuilder()
                       .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
                       .setFullMethodName(generateFullMethodName(SERVICE_NAME, "FetchData"))
                       .setSampledToLocalTracing(true)
                       .setRequestMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                                  .FetchDataRequest.getDefaultInstance()))
+                              trinsic.services.trustregistry.v1.FetchDataRequest
+                                  .getDefaultInstance()))
                       .setResponseMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                                  .FetchDataResponse.getDefaultInstance()))
+                              trinsic.services.trustregistry.v1.FetchDataResponse
+                                  .getDefaultInstance()))
                       .setSchemaDescriptor(new TrustRegistryMethodDescriptorSupplier("FetchData"))
                       .build();
         }
@@ -425,9 +396,8 @@ public final class TrustRegistryGrpc {
      * </pre>
      */
     public void addFramework(
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkRequest request,
-        io.grpc.stub.StreamObserver<
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkResponse>
+        trinsic.services.trustregistry.v1.AddFrameworkRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.AddFrameworkResponse>
             responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
           getAddFrameworkMethod(), responseObserver);
@@ -435,9 +405,8 @@ public final class TrustRegistryGrpc {
 
     /** */
     public void removeFramework(
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkRequest request,
-        io.grpc.stub.StreamObserver<
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkResponse>
+        trinsic.services.trustregistry.v1.RemoveFrameworkRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.RemoveFrameworkResponse>
             responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
           getRemoveFrameworkMethod(), responseObserver);
@@ -445,9 +414,8 @@ public final class TrustRegistryGrpc {
 
     /** */
     public void searchRegistry(
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.SearchRegistryRequest request,
-        io.grpc.stub.StreamObserver<
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.SearchRegistryResponse>
+        trinsic.services.trustregistry.v1.SearchRegistryRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.SearchRegistryResponse>
             responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
           getSearchRegistryMethod(), responseObserver);
@@ -461,9 +429,8 @@ public final class TrustRegistryGrpc {
      * </pre>
      */
     public void registerMember(
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest request,
-        io.grpc.stub.StreamObserver<
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse>
+        trinsic.services.trustregistry.v1.RegisterMemberRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.RegisterMemberResponse>
             responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
           getRegisterMemberMethod(), responseObserver);
@@ -477,9 +444,8 @@ public final class TrustRegistryGrpc {
      * </pre>
      */
     public void unregisterMember(
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest request,
-        io.grpc.stub.StreamObserver<
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse>
+        trinsic.services.trustregistry.v1.UnregisterMemberRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.UnregisterMemberResponse>
             responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
           getUnregisterMemberMethod(), responseObserver);
@@ -487,11 +453,8 @@ public final class TrustRegistryGrpc {
 
     /** */
     public void getMembershipStatus(
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest
-            request,
-        io.grpc.stub.StreamObserver<
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                    .GetMembershipStatusResponse>
+        trinsic.services.trustregistry.v1.GetMembershipStatusRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.GetMembershipStatusResponse>
             responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
           getGetMembershipStatusMethod(), responseObserver);
@@ -499,9 +462,8 @@ public final class TrustRegistryGrpc {
 
     /** */
     public void fetchData(
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.FetchDataRequest request,
-        io.grpc.stub.StreamObserver<
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.FetchDataResponse>
+        trinsic.services.trustregistry.v1.FetchDataRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.FetchDataResponse>
             responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getFetchDataMethod(), responseObserver);
     }
@@ -513,55 +475,50 @@ public final class TrustRegistryGrpc {
               getAddFrameworkMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
                   new MethodHandlers<
-                      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkRequest,
-                      trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                          .AddFrameworkResponse>(this, METHODID_ADD_FRAMEWORK)))
+                      trinsic.services.trustregistry.v1.AddFrameworkRequest,
+                      trinsic.services.trustregistry.v1.AddFrameworkResponse>(
+                      this, METHODID_ADD_FRAMEWORK)))
           .addMethod(
               getRemoveFrameworkMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
                   new MethodHandlers<
-                      trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                          .RemoveFrameworkRequest,
-                      trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                          .RemoveFrameworkResponse>(this, METHODID_REMOVE_FRAMEWORK)))
+                      trinsic.services.trustregistry.v1.RemoveFrameworkRequest,
+                      trinsic.services.trustregistry.v1.RemoveFrameworkResponse>(
+                      this, METHODID_REMOVE_FRAMEWORK)))
           .addMethod(
               getSearchRegistryMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
                   new MethodHandlers<
-                      trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                          .SearchRegistryRequest,
-                      trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                          .SearchRegistryResponse>(this, METHODID_SEARCH_REGISTRY)))
+                      trinsic.services.trustregistry.v1.SearchRegistryRequest,
+                      trinsic.services.trustregistry.v1.SearchRegistryResponse>(
+                      this, METHODID_SEARCH_REGISTRY)))
           .addMethod(
               getRegisterMemberMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
                   new MethodHandlers<
-                      trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                          .RegisterMemberRequest,
-                      trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                          .RegisterMemberResponse>(this, METHODID_REGISTER_MEMBER)))
+                      trinsic.services.trustregistry.v1.RegisterMemberRequest,
+                      trinsic.services.trustregistry.v1.RegisterMemberResponse>(
+                      this, METHODID_REGISTER_MEMBER)))
           .addMethod(
               getUnregisterMemberMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
                   new MethodHandlers<
-                      trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                          .UnregisterMemberRequest,
-                      trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                          .UnregisterMemberResponse>(this, METHODID_UNREGISTER_MEMBER)))
+                      trinsic.services.trustregistry.v1.UnregisterMemberRequest,
+                      trinsic.services.trustregistry.v1.UnregisterMemberResponse>(
+                      this, METHODID_UNREGISTER_MEMBER)))
           .addMethod(
               getGetMembershipStatusMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
                   new MethodHandlers<
-                      trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                          .GetMembershipStatusRequest,
-                      trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                          .GetMembershipStatusResponse>(this, METHODID_GET_MEMBERSHIP_STATUS)))
+                      trinsic.services.trustregistry.v1.GetMembershipStatusRequest,
+                      trinsic.services.trustregistry.v1.GetMembershipStatusResponse>(
+                      this, METHODID_GET_MEMBERSHIP_STATUS)))
           .addMethod(
               getFetchDataMethod(),
               io.grpc.stub.ServerCalls.asyncServerStreamingCall(
                   new MethodHandlers<
-                      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.FetchDataRequest,
-                      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.FetchDataResponse>(
+                      trinsic.services.trustregistry.v1.FetchDataRequest,
+                      trinsic.services.trustregistry.v1.FetchDataResponse>(
                       this, METHODID_FETCH_DATA)))
           .build();
     }
@@ -587,9 +544,8 @@ public final class TrustRegistryGrpc {
      * </pre>
      */
     public void addFramework(
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkRequest request,
-        io.grpc.stub.StreamObserver<
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkResponse>
+        trinsic.services.trustregistry.v1.AddFrameworkRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.AddFrameworkResponse>
             responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getAddFrameworkMethod(), getCallOptions()),
@@ -599,9 +555,8 @@ public final class TrustRegistryGrpc {
 
     /** */
     public void removeFramework(
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkRequest request,
-        io.grpc.stub.StreamObserver<
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkResponse>
+        trinsic.services.trustregistry.v1.RemoveFrameworkRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.RemoveFrameworkResponse>
             responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getRemoveFrameworkMethod(), getCallOptions()),
@@ -611,9 +566,8 @@ public final class TrustRegistryGrpc {
 
     /** */
     public void searchRegistry(
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.SearchRegistryRequest request,
-        io.grpc.stub.StreamObserver<
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.SearchRegistryResponse>
+        trinsic.services.trustregistry.v1.SearchRegistryRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.SearchRegistryResponse>
             responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getSearchRegistryMethod(), getCallOptions()),
@@ -629,9 +583,8 @@ public final class TrustRegistryGrpc {
      * </pre>
      */
     public void registerMember(
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest request,
-        io.grpc.stub.StreamObserver<
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse>
+        trinsic.services.trustregistry.v1.RegisterMemberRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.RegisterMemberResponse>
             responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getRegisterMemberMethod(), getCallOptions()),
@@ -647,9 +600,8 @@ public final class TrustRegistryGrpc {
      * </pre>
      */
     public void unregisterMember(
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest request,
-        io.grpc.stub.StreamObserver<
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse>
+        trinsic.services.trustregistry.v1.UnregisterMemberRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.UnregisterMemberResponse>
             responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getUnregisterMemberMethod(), getCallOptions()),
@@ -659,11 +611,8 @@ public final class TrustRegistryGrpc {
 
     /** */
     public void getMembershipStatus(
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest
-            request,
-        io.grpc.stub.StreamObserver<
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                    .GetMembershipStatusResponse>
+        trinsic.services.trustregistry.v1.GetMembershipStatusRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.GetMembershipStatusResponse>
             responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetMembershipStatusMethod(), getCallOptions()),
@@ -673,9 +622,8 @@ public final class TrustRegistryGrpc {
 
     /** */
     public void fetchData(
-        trinsic.services.trustregistry.v1.TrustRegistryOuterClass.FetchDataRequest request,
-        io.grpc.stub.StreamObserver<
-                trinsic.services.trustregistry.v1.TrustRegistryOuterClass.FetchDataResponse>
+        trinsic.services.trustregistry.v1.FetchDataRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.FetchDataResponse>
             responseObserver) {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getFetchDataMethod(), getCallOptions()), request, responseObserver);
@@ -702,27 +650,22 @@ public final class TrustRegistryGrpc {
      * Adds a trust registry defintion to the ecosystem
      * </pre>
      */
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkResponse
-        addFramework(
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkRequest request) {
+    public trinsic.services.trustregistry.v1.AddFrameworkResponse addFramework(
+        trinsic.services.trustregistry.v1.AddFrameworkRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getAddFrameworkMethod(), getCallOptions(), request);
     }
 
     /** */
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkResponse
-        removeFramework(
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkRequest
-                request) {
+    public trinsic.services.trustregistry.v1.RemoveFrameworkResponse removeFramework(
+        trinsic.services.trustregistry.v1.RemoveFrameworkRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getRemoveFrameworkMethod(), getCallOptions(), request);
     }
 
     /** */
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.SearchRegistryResponse
-        searchRegistry(
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.SearchRegistryRequest
-                request) {
+    public trinsic.services.trustregistry.v1.SearchRegistryResponse searchRegistry(
+        trinsic.services.trustregistry.v1.SearchRegistryRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getSearchRegistryMethod(), getCallOptions(), request);
     }
@@ -734,10 +677,8 @@ public final class TrustRegistryGrpc {
      * Registers an authoritative issuer with a credential template
      * </pre>
      */
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse
-        registerMember(
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest
-                request) {
+    public trinsic.services.trustregistry.v1.RegisterMemberResponse registerMember(
+        trinsic.services.trustregistry.v1.RegisterMemberRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getRegisterMemberMethod(), getCallOptions(), request);
     }
@@ -749,28 +690,22 @@ public final class TrustRegistryGrpc {
      * Removes an authoritative issuer with a credential template from the trust registry
      * </pre>
      */
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse
-        unregisterMember(
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest
-                request) {
+    public trinsic.services.trustregistry.v1.UnregisterMemberResponse unregisterMember(
+        trinsic.services.trustregistry.v1.UnregisterMemberRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getUnregisterMemberMethod(), getCallOptions(), request);
     }
 
     /** */
-    public trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse
-        getMembershipStatus(
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest
-                request) {
+    public trinsic.services.trustregistry.v1.GetMembershipStatusResponse getMembershipStatus(
+        trinsic.services.trustregistry.v1.GetMembershipStatusRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetMembershipStatusMethod(), getCallOptions(), request);
     }
 
     /** */
-    public java.util.Iterator<
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.FetchDataResponse>
-        fetchData(
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.FetchDataRequest request) {
+    public java.util.Iterator<trinsic.services.trustregistry.v1.FetchDataResponse> fetchData(
+        trinsic.services.trustregistry.v1.FetchDataRequest request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getFetchDataMethod(), getCallOptions(), request);
     }
@@ -797,29 +732,24 @@ public final class TrustRegistryGrpc {
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkResponse>
-        addFramework(
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkRequest request) {
+            trinsic.services.trustregistry.v1.AddFrameworkResponse>
+        addFramework(trinsic.services.trustregistry.v1.AddFrameworkRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getAddFrameworkMethod(), getCallOptions()), request);
     }
 
     /** */
     public com.google.common.util.concurrent.ListenableFuture<
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkResponse>
-        removeFramework(
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkRequest
-                request) {
+            trinsic.services.trustregistry.v1.RemoveFrameworkResponse>
+        removeFramework(trinsic.services.trustregistry.v1.RemoveFrameworkRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getRemoveFrameworkMethod(), getCallOptions()), request);
     }
 
     /** */
     public com.google.common.util.concurrent.ListenableFuture<
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.SearchRegistryResponse>
-        searchRegistry(
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.SearchRegistryRequest
-                request) {
+            trinsic.services.trustregistry.v1.SearchRegistryResponse>
+        searchRegistry(trinsic.services.trustregistry.v1.SearchRegistryRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getSearchRegistryMethod(), getCallOptions()), request);
     }
@@ -832,10 +762,8 @@ public final class TrustRegistryGrpc {
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberResponse>
-        registerMember(
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest
-                request) {
+            trinsic.services.trustregistry.v1.RegisterMemberResponse>
+        registerMember(trinsic.services.trustregistry.v1.RegisterMemberRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getRegisterMemberMethod(), getCallOptions()), request);
     }
@@ -848,20 +776,16 @@ public final class TrustRegistryGrpc {
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberResponse>
-        unregisterMember(
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest
-                request) {
+            trinsic.services.trustregistry.v1.UnregisterMemberResponse>
+        unregisterMember(trinsic.services.trustregistry.v1.UnregisterMemberRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getUnregisterMemberMethod(), getCallOptions()), request);
     }
 
     /** */
     public com.google.common.util.concurrent.ListenableFuture<
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusResponse>
-        getMembershipStatus(
-            trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest
-                request) {
+            trinsic.services.trustregistry.v1.GetMembershipStatusResponse>
+        getMembershipStatus(trinsic.services.trustregistry.v1.GetMembershipStatusRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetMembershipStatusMethod(), getCallOptions()), request);
     }
@@ -894,63 +818,49 @@ public final class TrustRegistryGrpc {
       switch (methodId) {
         case METHODID_ADD_FRAMEWORK:
           serviceImpl.addFramework(
-              (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.AddFrameworkRequest)
-                  request,
-              (io.grpc.stub.StreamObserver<
-                      trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                          .AddFrameworkResponse>)
+              (trinsic.services.trustregistry.v1.AddFrameworkRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.AddFrameworkResponse>)
                   responseObserver);
           break;
         case METHODID_REMOVE_FRAMEWORK:
           serviceImpl.removeFramework(
-              (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RemoveFrameworkRequest)
-                  request,
+              (trinsic.services.trustregistry.v1.RemoveFrameworkRequest) request,
               (io.grpc.stub.StreamObserver<
-                      trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                          .RemoveFrameworkResponse>)
+                      trinsic.services.trustregistry.v1.RemoveFrameworkResponse>)
                   responseObserver);
           break;
         case METHODID_SEARCH_REGISTRY:
           serviceImpl.searchRegistry(
-              (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.SearchRegistryRequest)
-                  request,
+              (trinsic.services.trustregistry.v1.SearchRegistryRequest) request,
               (io.grpc.stub.StreamObserver<
-                      trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                          .SearchRegistryResponse>)
+                      trinsic.services.trustregistry.v1.SearchRegistryResponse>)
                   responseObserver);
           break;
         case METHODID_REGISTER_MEMBER:
           serviceImpl.registerMember(
-              (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.RegisterMemberRequest)
-                  request,
+              (trinsic.services.trustregistry.v1.RegisterMemberRequest) request,
               (io.grpc.stub.StreamObserver<
-                      trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                          .RegisterMemberResponse>)
+                      trinsic.services.trustregistry.v1.RegisterMemberResponse>)
                   responseObserver);
           break;
         case METHODID_UNREGISTER_MEMBER:
           serviceImpl.unregisterMember(
-              (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.UnregisterMemberRequest)
-                  request,
+              (trinsic.services.trustregistry.v1.UnregisterMemberRequest) request,
               (io.grpc.stub.StreamObserver<
-                      trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                          .UnregisterMemberResponse>)
+                      trinsic.services.trustregistry.v1.UnregisterMemberResponse>)
                   responseObserver);
           break;
         case METHODID_GET_MEMBERSHIP_STATUS:
           serviceImpl.getMembershipStatus(
-              (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.GetMembershipStatusRequest)
-                  request,
+              (trinsic.services.trustregistry.v1.GetMembershipStatusRequest) request,
               (io.grpc.stub.StreamObserver<
-                      trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-                          .GetMembershipStatusResponse>)
+                      trinsic.services.trustregistry.v1.GetMembershipStatusResponse>)
                   responseObserver);
           break;
         case METHODID_FETCH_DATA:
           serviceImpl.fetchData(
-              (trinsic.services.trustregistry.v1.TrustRegistryOuterClass.FetchDataRequest) request,
-              (io.grpc.stub.StreamObserver<
-                      trinsic.services.trustregistry.v1.TrustRegistryOuterClass.FetchDataResponse>)
+              (trinsic.services.trustregistry.v1.FetchDataRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.FetchDataResponse>)
                   responseObserver);
           break;
         default:

@@ -34,29 +34,19 @@ object UniversalWalletGrpcKt {
   val serviceDescriptor: ServiceDescriptor
     get() = UniversalWalletGrpc.getServiceDescriptor()
 
-  val getItemMethod:
-      MethodDescriptor<
-          UniversalWalletOuterClass.GetItemRequest, UniversalWalletOuterClass.GetItemResponse>
+  val getItemMethod: MethodDescriptor<GetItemRequest, GetItemResponse>
     @JvmStatic get() = UniversalWalletGrpc.getGetItemMethod()
 
-  val searchMethod:
-      MethodDescriptor<
-          UniversalWalletOuterClass.SearchRequest, UniversalWalletOuterClass.SearchResponse>
+  val searchMethod: MethodDescriptor<SearchRequest, SearchResponse>
     @JvmStatic get() = UniversalWalletGrpc.getSearchMethod()
 
-  val insertItemMethod:
-      MethodDescriptor<
-          UniversalWalletOuterClass.InsertItemRequest, UniversalWalletOuterClass.InsertItemResponse>
+  val insertItemMethod: MethodDescriptor<InsertItemRequest, InsertItemResponse>
     @JvmStatic get() = UniversalWalletGrpc.getInsertItemMethod()
 
-  val updateItemMethod:
-      MethodDescriptor<
-          UniversalWalletOuterClass.UpdateItemRequest, UniversalWalletOuterClass.UpdateItemResponse>
+  val updateItemMethod: MethodDescriptor<UpdateItemRequest, UpdateItemResponse>
     @JvmStatic get() = UniversalWalletGrpc.getUpdateItemMethod()
 
-  val deleteItemMethod:
-      MethodDescriptor<
-          UniversalWalletOuterClass.DeleteItemRequest, UniversalWalletOuterClass.DeleteItemResponse>
+  val deleteItemMethod: MethodDescriptor<DeleteItemRequest, DeleteItemResponse>
     @JvmStatic get() = UniversalWalletGrpc.getDeleteItemMethod()
 
   /**
@@ -83,10 +73,7 @@ object UniversalWalletGrpcKt {
      *
      * @return The single response from the server.
      */
-    suspend fun getItem(
-        request: UniversalWalletOuterClass.GetItemRequest,
-        headers: Metadata = Metadata()
-    ): UniversalWalletOuterClass.GetItemResponse =
+    suspend fun getItem(request: GetItemRequest, headers: Metadata = Metadata()): GetItemResponse =
         unaryRpc(channel, UniversalWalletGrpc.getGetItemMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
@@ -100,10 +87,7 @@ object UniversalWalletGrpcKt {
      *
      * @return The single response from the server.
      */
-    suspend fun search(
-        request: UniversalWalletOuterClass.SearchRequest,
-        headers: Metadata = Metadata()
-    ): UniversalWalletOuterClass.SearchResponse =
+    suspend fun search(request: SearchRequest, headers: Metadata = Metadata()): SearchResponse =
         unaryRpc(channel, UniversalWalletGrpc.getSearchMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
@@ -118,9 +102,9 @@ object UniversalWalletGrpcKt {
      * @return The single response from the server.
      */
     suspend fun insertItem(
-        request: UniversalWalletOuterClass.InsertItemRequest,
+        request: InsertItemRequest,
         headers: Metadata = Metadata()
-    ): UniversalWalletOuterClass.InsertItemResponse =
+    ): InsertItemResponse =
         unaryRpc(channel, UniversalWalletGrpc.getInsertItemMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
@@ -135,9 +119,9 @@ object UniversalWalletGrpcKt {
      * @return The single response from the server.
      */
     suspend fun updateItem(
-        request: UniversalWalletOuterClass.UpdateItemRequest,
+        request: UpdateItemRequest,
         headers: Metadata = Metadata()
-    ): UniversalWalletOuterClass.UpdateItemResponse =
+    ): UpdateItemResponse =
         unaryRpc(channel, UniversalWalletGrpc.getUpdateItemMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
@@ -152,9 +136,9 @@ object UniversalWalletGrpcKt {
      * @return The single response from the server.
      */
     suspend fun deleteItem(
-        request: UniversalWalletOuterClass.DeleteItemRequest,
+        request: DeleteItemRequest,
         headers: Metadata = Metadata()
-    ): UniversalWalletOuterClass.DeleteItemResponse =
+    ): DeleteItemResponse =
         unaryRpc(channel, UniversalWalletGrpc.getDeleteItemMethod(), request, callOptions, headers)
   }
 
@@ -175,9 +159,7 @@ object UniversalWalletGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun getItem(
-        request: UniversalWalletOuterClass.GetItemRequest
-    ): UniversalWalletOuterClass.GetItemResponse =
+    open suspend fun getItem(request: GetItemRequest): GetItemResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.universalwallet.v1.UniversalWallet.GetItem is unimplemented"))
@@ -192,9 +174,7 @@ object UniversalWalletGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun search(
-        request: UniversalWalletOuterClass.SearchRequest
-    ): UniversalWalletOuterClass.SearchResponse =
+    open suspend fun search(request: SearchRequest): SearchResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.universalwallet.v1.UniversalWallet.Search is unimplemented"))
@@ -209,9 +189,7 @@ object UniversalWalletGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun insertItem(
-        request: UniversalWalletOuterClass.InsertItemRequest
-    ): UniversalWalletOuterClass.InsertItemResponse =
+    open suspend fun insertItem(request: InsertItemRequest): InsertItemResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.universalwallet.v1.UniversalWallet.InsertItem is unimplemented"))
@@ -226,9 +204,7 @@ object UniversalWalletGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun updateItem(
-        request: UniversalWalletOuterClass.UpdateItemRequest
-    ): UniversalWalletOuterClass.UpdateItemResponse =
+    open suspend fun updateItem(request: UpdateItemRequest): UpdateItemResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.universalwallet.v1.UniversalWallet.UpdateItem is unimplemented"))
@@ -243,9 +219,7 @@ object UniversalWalletGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun deleteItem(
-        request: UniversalWalletOuterClass.DeleteItemRequest
-    ): UniversalWalletOuterClass.DeleteItemResponse =
+    open suspend fun deleteItem(request: DeleteItemRequest): DeleteItemResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.universalwallet.v1.UniversalWallet.DeleteItem is unimplemented"))

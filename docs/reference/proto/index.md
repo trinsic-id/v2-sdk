@@ -81,6 +81,22 @@ Nonce used to generate an oberon proof
 
  <!-- end services -->
 
+
+<a name="services-options-SdkTemplateOption"></a>
+
+### SdkTemplateOption
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| anonymous | [bool](/reference/proto#bool) | Whether the service endpoint allows anonymous (no Oberon) authentication This is used by the `protoc-gen-trinsic-sdk` plugin for metadata. |
+| ignore | [bool](/reference/proto#bool) | Whether the SDK template generator should ignoroe this method. This method will be wrapped manually. |
+
+
+
+
+
  <!-- end messages -->
 
  <!-- end enums -->
@@ -92,6 +108,7 @@ Nonce used to generate an oberon proof
 | Extension | Type | Base | Number | Description |
 | --------- | ---- | ---- | ------ | ----------- |
 | optional | bool | .google.protobuf.FieldOptions | 60000 | Whether field is optional in Trinsic's backend. This is not the same as an `optional` protobuf label; it only impacts documentation generation for the field. |
+| sdk_template_option | SdkTemplateOption | .google.protobuf.MethodOptions | 60001 |  |
 
  <!-- end HasExtensions -->
 
@@ -1708,6 +1725,151 @@ Register new ecosystem governance framework
 | TERMINATED | 2 | - entity has voluntarily ceased Issuer role under the specific EGF. |
 | REVOKED | 3 | - entity authority under specific EGF was terminated by the governing authority. |
 | NOT_FOUND | 10 |  |
+
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="services_event_v1_event-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## services/event/v1/event.proto
+
+
+ <!-- end services -->
+
+
+<a name="trinsic-services-event-APICall"></a>
+
+### APICall
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| source | [string](/reference/proto#string) |  |
+| request | [bytes](/reference/proto#bytes) |  |
+| response | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="trinsic-services-event-EGFCreated"></a>
+
+### EGFCreated
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | UUID of the governance framework |
+| ecosystem_id | [string](/reference/proto#string) | UUID of the ecosystem that owns this egf |
+| trust_registry | [string](/reference/proto#string) | Trust registry assoicated with this egf |
+| governing_authority | [string](/reference/proto#string) | Wallet ID of the aurhority for this egf |
+| type | [string](/reference/proto#string) | Type of egf |
+| name | [string](/reference/proto#string) | User friendly name for the egf |
+| description | [string](/reference/proto#string) | Description of the egf |
+| governance_framework | [string](/reference/proto#string) | URI for the egf |
+
+
+
+
+
+
+<a name="trinsic-services-event-Event"></a>
+
+### Event
+System event
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | UUID for the event |
+| type | [EventType](/reference/proto#trinsic-services-event-EventType) | event type |
+| timestamp | [string](/reference/proto#string) | when the event occured |
+| data | [bytes](/reference/proto#bytes) | data payload - will be encoded proto message for the event type |
+
+
+
+
+
+
+<a name="trinsic-services-event-ItemReceived"></a>
+
+### ItemReceived
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | UUID of the new item |
+| received | [string](/reference/proto#string) | Timestamp when the item was received |
+
+
+
+
+
+
+<a name="trinsic-services-event-Ping"></a>
+
+### Ping
+Message to test webhook functionality
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | UUID of this ping |
+| webhook_id | [string](/reference/proto#string) | UUID of the webhook receiving the ping |
+| timestamp | [string](/reference/proto#string) | when this was generated |
+| message | [string](/reference/proto#string) | message to be sent (e.g. I'm a teapot) |
+
+
+
+
+
+
+<a name="trinsic-services-event-TemplateCreated"></a>
+
+### TemplateCreated
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| id | [string](/reference/proto#string) | UUID of the template |
+| ecosystem_id | [string](/reference/proto#string) | UUID of the ecosystem that owns this template |
+| name | [string](/reference/proto#string) | Template name |
+| type | [string](/reference/proto#string) | Tempalte type |
+| created_by | [string](/reference/proto#string) | WalletID that created the template |
+
+
+
+
+
+ <!-- end messages -->
+
+
+<a name="trinsic-services-event-EventType"></a>
+
+### EventType
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| PING | 0 |  |
+| LOG | 1 |  |
+| EGF_CREATED | 5 |  |
+| EGF_MEMBER_REGISTERED | 6 |  |
+| EGF_MEMBER_UNREGISTERED | 7 |  |
+| TEMPLATE_CREATED | 10 |  |
+| TEMPLATE_DELETED | 11 |  |
+| WALLET_CREATED | 15 |  |
+| ITEM_RECEIVED | 16 |  |
 
 
  <!-- end enums -->
