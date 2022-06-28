@@ -1,7 +1,7 @@
 # Events Reference
 ## Overview
 
-This page documents each event which Trinsic's platform will raise.
+This page documents each event type raised by Trinsic's platform.
 
 To consume events, set up a [webhook](/learn/platform/webhooks).
 
