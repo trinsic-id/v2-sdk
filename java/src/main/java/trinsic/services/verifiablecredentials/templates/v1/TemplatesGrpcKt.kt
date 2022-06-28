@@ -35,28 +35,21 @@ object CredentialTemplatesGrpcKt {
     get() = CredentialTemplatesGrpc.getServiceDescriptor()
 
   val createMethod:
-      MethodDescriptor<
-          Templates.CreateCredentialTemplateRequest, Templates.CreateCredentialTemplateResponse>
+      MethodDescriptor<CreateCredentialTemplateRequest, CreateCredentialTemplateResponse>
     @JvmStatic get() = CredentialTemplatesGrpc.getCreateMethod()
 
-  val getMethod:
-      MethodDescriptor<
-          Templates.GetCredentialTemplateRequest, Templates.GetCredentialTemplateResponse>
+  val getMethod: MethodDescriptor<GetCredentialTemplateRequest, GetCredentialTemplateResponse>
     @JvmStatic get() = CredentialTemplatesGrpc.getGetMethod()
 
-  val listMethod:
-      MethodDescriptor<
-          Templates.ListCredentialTemplatesRequest, Templates.ListCredentialTemplatesResponse>
+  val listMethod: MethodDescriptor<ListCredentialTemplatesRequest, ListCredentialTemplatesResponse>
     @JvmStatic get() = CredentialTemplatesGrpc.getListMethod()
 
   val searchMethod:
-      MethodDescriptor<
-          Templates.SearchCredentialTemplatesRequest, Templates.SearchCredentialTemplatesResponse>
+      MethodDescriptor<SearchCredentialTemplatesRequest, SearchCredentialTemplatesResponse>
     @JvmStatic get() = CredentialTemplatesGrpc.getSearchMethod()
 
   val deleteMethod:
-      MethodDescriptor<
-          Templates.DeleteCredentialTemplateRequest, Templates.DeleteCredentialTemplateResponse>
+      MethodDescriptor<DeleteCredentialTemplateRequest, DeleteCredentialTemplateResponse>
     @JvmStatic get() = CredentialTemplatesGrpc.getDeleteMethod()
 
   /**
@@ -86,9 +79,9 @@ object CredentialTemplatesGrpcKt {
      * @return The single response from the server.
      */
     suspend fun create(
-        request: Templates.CreateCredentialTemplateRequest,
+        request: CreateCredentialTemplateRequest,
         headers: Metadata = Metadata()
-    ): Templates.CreateCredentialTemplateResponse =
+    ): CreateCredentialTemplateResponse =
         unaryRpc(channel, CredentialTemplatesGrpc.getCreateMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
@@ -103,9 +96,9 @@ object CredentialTemplatesGrpcKt {
      * @return The single response from the server.
      */
     suspend fun get(
-        request: Templates.GetCredentialTemplateRequest,
+        request: GetCredentialTemplateRequest,
         headers: Metadata = Metadata()
-    ): Templates.GetCredentialTemplateResponse =
+    ): GetCredentialTemplateResponse =
         unaryRpc(channel, CredentialTemplatesGrpc.getGetMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
@@ -120,9 +113,9 @@ object CredentialTemplatesGrpcKt {
      * @return The single response from the server.
      */
     suspend fun list(
-        request: Templates.ListCredentialTemplatesRequest,
+        request: ListCredentialTemplatesRequest,
         headers: Metadata = Metadata()
-    ): Templates.ListCredentialTemplatesResponse =
+    ): ListCredentialTemplatesResponse =
         unaryRpc(channel, CredentialTemplatesGrpc.getListMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
@@ -137,9 +130,9 @@ object CredentialTemplatesGrpcKt {
      * @return The single response from the server.
      */
     suspend fun search(
-        request: Templates.SearchCredentialTemplatesRequest,
+        request: SearchCredentialTemplatesRequest,
         headers: Metadata = Metadata()
-    ): Templates.SearchCredentialTemplatesResponse =
+    ): SearchCredentialTemplatesResponse =
         unaryRpc(channel, CredentialTemplatesGrpc.getSearchMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
@@ -154,9 +147,9 @@ object CredentialTemplatesGrpcKt {
      * @return The single response from the server.
      */
     suspend fun delete(
-        request: Templates.DeleteCredentialTemplateRequest,
+        request: DeleteCredentialTemplateRequest,
         headers: Metadata = Metadata()
-    ): Templates.DeleteCredentialTemplateResponse =
+    ): DeleteCredentialTemplateResponse =
         unaryRpc(channel, CredentialTemplatesGrpc.getDeleteMethod(), request, callOptions, headers)
   }
 
@@ -179,8 +172,8 @@ object CredentialTemplatesGrpcKt {
      * @param request The request from the client.
      */
     open suspend fun create(
-        request: Templates.CreateCredentialTemplateRequest
-    ): Templates.CreateCredentialTemplateResponse =
+        request: CreateCredentialTemplateRequest
+    ): CreateCredentialTemplateResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.verifiablecredentials.templates.v1.CredentialTemplates.Create is unimplemented"))
@@ -196,9 +189,7 @@ object CredentialTemplatesGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun get(
-        request: Templates.GetCredentialTemplateRequest
-    ): Templates.GetCredentialTemplateResponse =
+    open suspend fun get(request: GetCredentialTemplateRequest): GetCredentialTemplateResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.verifiablecredentials.templates.v1.CredentialTemplates.Get is unimplemented"))
@@ -215,8 +206,8 @@ object CredentialTemplatesGrpcKt {
      * @param request The request from the client.
      */
     open suspend fun list(
-        request: Templates.ListCredentialTemplatesRequest
-    ): Templates.ListCredentialTemplatesResponse =
+        request: ListCredentialTemplatesRequest
+    ): ListCredentialTemplatesResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.verifiablecredentials.templates.v1.CredentialTemplates.List is unimplemented"))
@@ -233,8 +224,8 @@ object CredentialTemplatesGrpcKt {
      * @param request The request from the client.
      */
     open suspend fun search(
-        request: Templates.SearchCredentialTemplatesRequest
-    ): Templates.SearchCredentialTemplatesResponse =
+        request: SearchCredentialTemplatesRequest
+    ): SearchCredentialTemplatesResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.verifiablecredentials.templates.v1.CredentialTemplates.Search is unimplemented"))
@@ -251,8 +242,8 @@ object CredentialTemplatesGrpcKt {
      * @param request The request from the client.
      */
     open suspend fun delete(
-        request: Templates.DeleteCredentialTemplateRequest
-    ): Templates.DeleteCredentialTemplateResponse =
+        request: DeleteCredentialTemplateRequest
+    ): DeleteCredentialTemplateResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.verifiablecredentials.templates.v1.CredentialTemplates.Delete is unimplemented"))
