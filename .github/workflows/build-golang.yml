@@ -29,7 +29,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Download ${{ matrix.os-artifact[0] }} binaries
-        uses: dawidd6/action-download-artifact@v2.17.0
+        uses: dawidd6/action-download-artifact@v2.21.1
         with:
           workflow: "build-libs.yml"
           path: ./libs/${{ matrix.os-artifact[1] }}
@@ -37,7 +37,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           name: ${{ matrix.os-artifact[1] }}
       - name: Download C header
-        uses: dawidd6/action-download-artifact@v2.14.0
+        uses: dawidd6/action-download-artifact@v2.21.1
         with:
           workflow: "build-libs.yml"
           path: ./libs/C_header
@@ -47,7 +47,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
-          go-version: ^1.16
+          go-version: ^1.18
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
