@@ -140,6 +140,10 @@
     
       
     
+      
+    
+      
+    
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
@@ -805,6 +809,25 @@
 
               
             
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/platform/webhooks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Webhooks
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1235,6 +1258,25 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Events Reference
+  </span>
+
+      </a>
     </li>
   
 
@@ -1775,19 +1817,19 @@
 <li><a href="services/wallet-service/">Wallet Service</a></li>
 </ul>
 <h3 id="using-an-sdk-service">Using an SDK Service<a class="headerlink" href="#using-an-sdk-service" title="Permanent link">&para;</a></h3>
-<p>If you are using one of the Trinsic SDKs, you will need to create an instance of a service in order to use it.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:6"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">TypeScript</label><label for="__tabbed_1_2">C#</label><label for="__tabbed_1_3">Python</label><label for="__tabbed_1_4">Go</label><label for="__tabbed_1_5">Java</label><label for="__tabbed_1_6">Ruby</label></div>
+<p>If you are using one of the Trinsic SDKs, you will need to create an instance of a <code>TrinsicService</code> in order to use it.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">TypeScript</label><label for="__tabbed_1_2">C#</label><label for="__tabbed_1_3">Python</label><label for="__tabbed_1_4">Go</label><label for="__tabbed_1_5">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">accountService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">AccountService</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">trinsic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TrinsicService</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">trinsic</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TrinsicService</span><span class="p">(</span><span class="n">_options</span><span class="p">.</span><span class="n">Clone</span><span class="p">());</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">trinsic</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TrinsicService</span><span class="p">(</span><span class="n">_options</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">account_service</span> <span class="o">=</span> <span class="n">AccountService</span><span class="p">(</span><span class="n">server_config</span><span class="o">=</span><span class="n">trinsic_config</span><span class="p">())</span>
+<div class="highlight"><pre><span></span><code><span class="n">trinsic_service</span> <span class="o">=</span> <span class="n">TrinsicService</span><span class="p">(</span><span class="n">server_config</span><span class="o">=</span><span class="n">trinsic_config</span><span class="p">())</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -1801,13 +1843,9 @@
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">trinsic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TrinsicService</span><span class="p">(</span><span class="n">TrinsicUtilities</span><span class="p">.</span><span class="na">getTrinsicServiceOptions</span><span class="p">());</span><span class="w"></span>
 </code></pre></div>
 </div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">account_service</span> <span class="o">=</span> <span class="no">Trinsic</span><span class="o">::</span><span class="no">AccountService</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="kp">nil</span><span class="p">,</span> <span class="no">Trinsic</span><span class="o">::</span><span class="n">trinsic_prod_server</span><span class="p">)</span>
-</code></pre></div>
 </div>
 </div>
-</div>
-<p>All service constructors also accept a <a href="../proto/index.md#serviceoptions">ServiceOptions</a> object as an argument, allowing you to specify a default ecosystem and other configuration properties.</p>
+<p>The constructor accepts a <a href="../proto/index.md#serviceoptions">ServiceOptions</a> object as an argument, allowing you to specify a default ecosystem and other configuration properties:</p>
 <div class='proto-obj-container' data-proto-name='sdk.options.v1.ServiceOptions'><div class='proto-obj-name'><a name='sdk.options.v1.ServiceOptions' href='/reference/proto#sdk.options.v1.ServiceOptions'>ServiceOptions</a></div><div class='proto-obj-description'>Configuration for Trinsic SDK Services</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>server_endpoint</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Trinsic API endpoint. Defaults to `prod.trinsic.cloud`</div></div><div class='proto-field'><div class='proto-field-name'>server_port</div> <div class='proto-field-type'>int32</div><div class='proto-field-description'>Trinsic API port; defaults to `443`</div></div><div class='proto-field'><div class='proto-field-name'>server_use_tls</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>Whether TLS is enabled between SDK and Trinsic API; defaults to `true`</div></div><div class='proto-field'><div class='proto-field-name'>auth_token</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Authentication token for SDK calls; defaults to empty string (unauthenticated)</div></div><div class='proto-field'><div class='proto-field-name'>default_ecosystem</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Default ecosystem ID to use for various SDK calls; defaults to `default`</div></div></div></div>
 
 <p>The exact structure of this object will depend on the language you are working with. You can always rely on your editor's intellisense when in doubt. </p>

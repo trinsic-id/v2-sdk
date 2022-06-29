@@ -140,6 +140,10 @@
     
       
     
+      
+    
+      
+    
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
@@ -805,6 +809,25 @@
 
               
             
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learn/platform/webhooks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Webhooks
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1258,6 +1281,25 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Events Reference
+  </span>
+
+      </a>
     </li>
   
 
@@ -1824,10 +1866,10 @@
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">schemaUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;https://schema.org/Card&quot;</span><span class="p">;</span><span class="w"></span>
 <span class="kt">var</span><span class="w"> </span><span class="n">frameworkUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;https://example.com&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="kt">var</span><span class="w"> </span><span class="n">registerFrameworkResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">AddFrameworkAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">Name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">$&quot;Demo framework-{Guid.NewGuid()}&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">GovernanceFrameworkUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">frameworkUri</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Description</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">schemaUri</span><span class="w"></span>
+<span class="kt">var</span><span class="w"> </span><span class="n">registerFrameworkResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">AddFrameworkAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Demo framework&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Description</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;My governance framework&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">GovernanceFrameworkUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">frameworkUri</span><span class="w"></span>
 <span class="p">});</span><span class="w"></span>
 </code></pre></div>
 </div>
@@ -1961,7 +2003,7 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">didUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;did:example:test&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="kt">var</span><span class="w"> </span><span class="n">registerMemberResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">RegisterMemberAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="kt">var</span><span class="w"> </span><span class="n">registerMemberResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">RegisterMemberAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">DidUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">didUri</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="n">FrameworkId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">registerFrameworkResponse</span><span class="p">.</span><span class="n">Id</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="n">SchemaUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">schemaUri</span><span class="w"></span>
@@ -2207,7 +2249,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">UnregisterMemberAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">unregisterResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">UnregisterMemberAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">DidUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">didUri</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="n">FrameworkId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">registerFrameworkResponse</span><span class="p">.</span><span class="n">Id</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="n">SchemaUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">schemaUri</span><span class="w"></span>
@@ -2270,7 +2312,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">issuerStatus</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">GetMembershipStatusAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">issuerStatus</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">GetMembershipStatusAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">DidUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">didUri</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="n">GovernanceFrameworkUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">frameworkUri</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="n">SchemaUri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">schemaUri</span><span class="w"></span>
@@ -2515,7 +2557,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">searchResult</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">SearchRegistryAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">searchResult</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">SearchRegistryAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2566,8 +2608,8 @@
         </span>
         <nav>
           
-            <a href="mailto:polygonguru@gmail.com">Scott Phillips</a>, 
             <a href="mailto:josh@trinsic.id">Joshua Coffey</a>, 
+            <a href="mailto:polygonguru@gmail.com">Scott Phillips</a>, 
             <a href="mailto:michaeldavisboyd@gmail.com">Michael Boyd</a>
         </nav>
       </span>
@@ -2583,7 +2625,7 @@
   
     <div class="md-source-date">
       <small>
-          Authors: <span class='git-page-authors git-authors'><a href='mailto:polygonguru@gmail.com'>Scott Phillips</a>, <a href='mailto:josh@trinsic.id'>Joshua Coffey</a>, <a href='mailto:michaeldavisboyd@gmail.com'>Michael Boyd</a></span>
+          Authors: <span class='git-page-authors git-authors'><a href='mailto:josh@trinsic.id'>Joshua Coffey</a>, <a href='mailto:polygonguru@gmail.com'>Scott Phillips</a>, <a href='mailto:michaeldavisboyd@gmail.com'>Michael Boyd</a></span>
       </small>
     </div>
   

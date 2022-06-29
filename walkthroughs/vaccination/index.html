@@ -140,6 +140,10 @@
     
       
     
+      
+    
+      
+    
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
@@ -807,6 +811,25 @@
 
               
             
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learn/platform/webhooks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Webhooks
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1327,6 +1350,25 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Events Reference
+  </span>
+
+      </a>
     </li>
   
 
@@ -2122,9 +2164,9 @@ trinsic account login --name <span class="s2">&quot;Vaccination Clinic&quot;</sp
 <p>If you would like to save the account for future use, simply write the auth token to storage. Take care to store it in a secure location.</p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">allison</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">SignInAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">EcosystemId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ecosystemId</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
-<span class="kt">var</span><span class="w"> </span><span class="n">clinic</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">SignInAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">EcosystemId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ecosystemId</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
-<span class="kt">var</span><span class="w"> </span><span class="n">airline</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">SignInAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">EcosystemId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ecosystemId</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">allison</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">LoginAnonymousAsync</span><span class="p">();</span><span class="w"></span>
+<span class="kt">var</span><span class="w"> </span><span class="n">clinic</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">LoginAnonymousAsync</span><span class="p">();</span><span class="w"></span>
+<span class="kt">var</span><span class="w"> </span><span class="n">airline</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">LoginAnonymousAsync</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 <p>If you would like to save an account for future use, simply write the auth token to storage. Take care to store it in a secure location.</p>
 </div>
@@ -2253,7 +2295,10 @@ trinsic account login --name <span class="s2">&quot;Vaccination Clinic&quot;</sp
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1">// Prepare request to create template</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Set active profile to `clinic` so we can create a template</span>
+<span class="n">trinsic</span><span class="p">.</span><span class="n">SetAuthToken</span><span class="p">(</span><span class="n">clinic</span><span class="p">!);</span><span class="w"></span>
+
+<span class="c1">// Prepare request to create template</span>
 <span class="n">CreateCredentialTemplateRequest</span><span class="w"> </span><span class="n">templateRequest</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">Name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;VaccinationCertificate&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="n">AllowAdditionalFields</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">false</span><span class="w"></span>
@@ -2418,11 +2463,7 @@ trinsic vc issue-from-template --template-id <span class="o">{</span>TEMPLATE_ID
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1">// Set active profile to &#39;clinic&#39; so we can issue credential signed</span>
-<span class="c1">// with the clinic&#39;s signing keys</span>
-<span class="n">trinsic</span><span class="p">.</span><span class="n">Options</span><span class="p">.</span><span class="n">AuthToken</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">clinic</span><span class="p">;</span><span class="w"></span>
-
-<span class="c1">// Prepare credential values</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Prepare credential values</span>
 <span class="kt">var</span><span class="w"> </span><span class="n">credentialValues</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="p">&gt;()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;firstName&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Allison&quot;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
 <span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;lastName&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Allisonne&quot;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
@@ -2430,8 +2471,7 @@ trinsic vc issue-from-template --template-id <span class="o">{</span>TEMPLATE_ID
 <span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;countryOfVaccination&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;US&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
 
-<span class="c1">// Issue credential</span>
-<span class="n">trinsic</span><span class="p">.</span><span class="n">SetAuthToken</span><span class="p">(</span><span class="n">_authToken</span><span class="p">);</span><span class="w"></span>
+<span class="c1">// Issue credential as clinic</span>
 <span class="kt">var</span><span class="w"> </span><span class="n">issueResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">IssueFromTemplateAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">TemplateId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">templateId</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="n">ValuesJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">JsonSerializer</span><span class="p">.</span><span class="n">Serialize</span><span class="p">(</span><span class="n">credentialValues</span><span class="p">)</span><span class="w"></span>
@@ -2564,7 +2604,7 @@ trinsic wallet insert-item --item credential.json
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// Set active profile to &#39;allison&#39; so we can manage her cloud wallet</span>
-<span class="n">trinsic</span><span class="p">.</span><span class="n">Options</span><span class="p">.</span><span class="n">AuthToken</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">allison</span><span class="p">;</span><span class="w"></span>
+<span class="n">trinsic</span><span class="p">.</span><span class="n">SetAuthToken</span><span class="p">(</span><span class="n">allison</span><span class="p">!);</span><span class="w"></span>
 
 <span class="c1">// Insert credential into Allison&#39;s wallet</span>
 <span class="kt">var</span><span class="w"> </span><span class="n">insertItemResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Wallet</span><span class="p">.</span><span class="n">InsertItemAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -2646,10 +2686,7 @@ trinsic vc create-proof --item-id <span class="s2">&quot;{ITEM_ID}&quot;</span> 
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1">// Set active profile to &#39;allison&#39; so we can create a proof using her key</span>
-<span class="n">trinsic</span><span class="p">.</span><span class="n">Options</span><span class="p">.</span><span class="n">AuthToken</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">allison</span><span class="p">;</span><span class="w"></span>
-
-<span class="c1">// Build a proof for the signed credential</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Build a proof for the signed credential as allison</span>
 <span class="kt">var</span><span class="w"> </span><span class="n">proofResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">CreateProofAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">ItemId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">itemId</span><span class="w"></span>
 <span class="p">});</span><span class="w"></span>
@@ -2734,7 +2771,10 @@ trinsic vc verify-proof --proof-document proof.json
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1">// Verify that Allison has provided a valid proof</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// Set active profile to `airline`</span>
+<span class="n">trinsic</span><span class="p">.</span><span class="n">SetAuthToken</span><span class="p">(</span><span class="n">airline</span><span class="p">!);</span><span class="w"></span>
+
+<span class="c1">// Verify that Allison has provided a valid proof</span>
 <span class="kt">var</span><span class="w"> </span><span class="n">verifyResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">VerifyProofAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">ProofDocumentJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">proofJSON</span><span class="w"></span>
 <span class="p">});</span><span class="w"></span>
@@ -2839,8 +2879,8 @@ trinsic vc verify-proof --proof-document proof.json
         </span>
         <nav>
           
-            <a href="mailto:polygonguru@gmail.com">Scott Phillips</a>, 
             <a href="mailto:josh@trinsic.id">Joshua Coffey</a>, 
+            <a href="mailto:polygonguru@gmail.com">Scott Phillips</a>, 
             <a href="mailto:michaeldavisboyd@gmail.com">Michael Boyd</a>
         </nav>
       </span>
@@ -2856,7 +2896,7 @@ trinsic vc verify-proof --proof-document proof.json
   
     <div class="md-source-date">
       <small>
-          Authors: <span class='git-page-authors git-authors'><a href='mailto:polygonguru@gmail.com'>Scott Phillips</a>, <a href='mailto:josh@trinsic.id'>Joshua Coffey</a>, <a href='mailto:michaeldavisboyd@gmail.com'>Michael Boyd</a></span>
+          Authors: <span class='git-page-authors git-authors'><a href='mailto:josh@trinsic.id'>Joshua Coffey</a>, <a href='mailto:polygonguru@gmail.com'>Scott Phillips</a>, <a href='mailto:michaeldavisboyd@gmail.com'>Michael Boyd</a></span>
       </small>
     </div>
   
@@ -2877,7 +2917,7 @@ trinsic vc verify-proof --proof-document proof.json
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../../learn/platform/wallets/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Wallets" rel="prev">
+        <a href="../../learn/platform/webhooks/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Webhooks" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -2886,7 +2926,7 @@ trinsic vc verify-proof --proof-document proof.json
               <span class="md-footer__direction">
                 Previous
               </span>
-              Wallets
+              Webhooks
             </div>
           </div>
         </a>

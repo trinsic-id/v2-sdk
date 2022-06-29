@@ -140,6 +140,10 @@
     
       
     
+      
+    
+      
+    
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
@@ -805,6 +809,25 @@
 
               
             
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learn/platform/webhooks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Webhooks
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1020,9 +1043,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sign-in" class="md-nav__link">
+  <a href="#login" class="md-nav__link">
     <span class="md-ellipsis">
-      Sign In
+      Login
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#login-confirm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Login Confirm
     </span>
   </a>
   
@@ -1032,6 +1064,15 @@
   <a href="#get-account-info" class="md-nav__link">
     <span class="md-ellipsis">
       Get Account Info
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authorize-webhook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authorize Webhook
     </span>
   </a>
   
@@ -1050,6 +1091,15 @@
   <a href="#unprotect-account-profile" class="md-nav__link">
     <span class="md-ellipsis">
       Unprotect Account Profile
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deprecated-sign-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      [Deprecated] Sign In
     </span>
   </a>
   
@@ -1240,6 +1290,25 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Events Reference
+  </span>
+
+      </a>
     </li>
   
 
@@ -1711,9 +1780,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sign-in" class="md-nav__link">
+  <a href="#login" class="md-nav__link">
     <span class="md-ellipsis">
-      Sign In
+      Login
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#login-confirm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Login Confirm
     </span>
   </a>
   
@@ -1723,6 +1801,15 @@
   <a href="#get-account-info" class="md-nav__link">
     <span class="md-ellipsis">
       Get Account Info
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authorize-webhook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authorize Webhook
     </span>
   </a>
   
@@ -1741,6 +1828,15 @@
   <a href="#unprotect-account-profile" class="md-nav__link">
     <span class="md-ellipsis">
       Unprotect Account Profile
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deprecated-sign-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      [Deprecated] Sign In
     </span>
   </a>
   
@@ -1779,72 +1875,126 @@
 <p>These are effectively API keys; they should be kept safe and never published.</p>
 </div>
 <hr />
-<h2 id="sign-in">Sign In<a class="headerlink" href="#sign-in" title="Permanent link">&para;</a></h2>
-<p>Sign in to an existing account, or create a new one.</p>
-<p>If no account details are passed to this method, an anonymous account will be created.</p>
+<h2 id="login">Login<a class="headerlink" href="#login" title="Permanent link">&para;</a></h2>
+<p>Attempts the first step of the login process for the specified account, creating it if it does not already exist.</p>
+<p>Trinsic will response with a <code>challenge</code>, and send an authentication code to the account's email address.</p>
+<p>The authentication code must be passed along with <code>challenge</code> to <a href="#login-confirm">LoginConfirm</a> to finalize the login.</p>
 <div class='proto-method-tabs-marker'></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_1_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_1_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="2:7"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><input id="__tabbed_2_6" name="__tabbed_2" type="radio" /><input id="__tabbed_2_7" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Trinsic CLI</label><label for="__tabbed_2_2">TypeScript</label><label for="__tabbed_2_3">C#</label><label for="__tabbed_2_4">Python</label><label for="__tabbed_2_5">Go</label><label for="__tabbed_2_6">Java</label><label for="__tabbed_2_7">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:6"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><input id="__tabbed_2_6" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Trinsic CLI</label><label for="__tabbed_2_2">TypeScript</label><label for="__tabbed_2_3">C#</label><label for="__tabbed_2_4">Python</label><label for="__tabbed_2_5">Go</label><label for="__tabbed_2_6">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>trinsic account login --email &lt;PROFILE_EMAIL&gt; --name &lt;PROFILE_NAME&gt;
+<div class="highlight"><pre><span></span><code>trinsic account login --email <span class="s2">&quot;bob@example.com&quot;</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">allison</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">signIn</span><span class="p">()).</span><span class="nx">getProfile</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">loginResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">account</span><span class="p">().</span><span class="nx">login</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="nx">LoginRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
+<span class="w">    </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;bob@example.com&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">})</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">myProfile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">SignInAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">loginResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">LoginAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">EcosystemId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ecosystemId</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Email</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;bob@example.com&quot;</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">my_profile</span> <span class="o">=</span> <span class="k">await</span> <span class="n">account_service</span><span class="o">.</span><span class="n">sign_in</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">login_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic</span><span class="o">.</span><span class="n">account</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="n">LoginRequest</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="s2">&quot;bob@example.com&quot;</span><span class="p">))</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">profile</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">SignIn</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">account</span><span class="p">.</span><span class="nx">SignInRequest</span><span class="p">{})</span><span class="w"></span>
-<span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">loginResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">Login</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">account</span><span class="p">.</span><span class="nx">LoginRequest</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">Email</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bob@example.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="p">})</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">myProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">account</span><span class="p">().</span><span class="na">signIn</span><span class="p">().</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">loginResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="n">trinsic</span><span class="p">.</span><span class="na">account</span><span class="p">().</span><span class="na">login</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">LoginRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="w">            </span><span class="p">.</span><span class="na">setEmail</span><span class="p">(</span><span class="s">&quot;bob@example.com&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="p">.</span><span class="na">build</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.account.v1.LoginRequest'><div class='proto-obj-name'><a name='services.account.v1.LoginRequest' href='/reference/proto#services.account.v1.LoginRequest'>LoginRequest</a></div><div class='proto-obj-description'></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>email</div> <div class='proto-field-type'>optional string</div><div class='proto-field-description'>Email account to associate with the login request</div></div><div class='proto-field'><div class='proto-field-name'>invitation_code</div> <div class='proto-field-type'>optional string</div><div class='proto-field-description'>Invitation code associated with this registration</div></div><div class='proto-field'><div class='proto-field-name'>ecosystem_id</div> <div class='proto-field-type'>optional string</div><div class='proto-field-description'>ID of Ecosystem to sign into. Ignored if <code>invitation_code</code> is passed</div></div></div></div></p>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.account.v1.LoginResponse'><div class='proto-obj-name'><a name='services.account.v1.LoginResponse' href='/reference/proto#services.account.v1.LoginResponse'>LoginResponse</a></div><div class='proto-obj-description'></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>challenge</div> <div class='proto-field-type'>bytes</div><div class='proto-field-description'>Challenge response. Random byte sequence unique for this login request</div></div><div class='proto-field'><div class='proto-field-name'>profile</div> <div class='proto-field-type'><a href='/reference/proto#services.account.v1.AccountProfile'>AccountProfile</a></div><div class='proto-field-description'>Profile response. The login isn't challenged and the token is returned in this call. Does not require confirmation step</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.</span>profile_type</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>The type of profile, used to differentiate between protocol schemes or versions</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.</span>auth_data</div> <div class='proto-field-type'>bytes</div><div class='proto-field-description'>Auth data containg information about the current device access</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.</span>auth_token</div> <div class='proto-field-type'>bytes</div><div class='proto-field-description'>Secure token issued by server used to generate zero-knowledge proofs</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.</span>protection</div> <div class='proto-field-type'><a href='/reference/proto#services.account.v1.TokenProtection'>TokenProtection</a></div><div class='proto-field-description'>Token security information about the token. If token protection is enabled, implementations must supply protection secret before using the token for authentication.</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.protection.</span>enabled</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>Indicates if token is protected using a PIN, security code, HSM secret, etc.</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.protection.</span>method</div> <div class='proto-field-type'><a href='/reference/proto#services.account.v1.ConfirmationMethod'>ConfirmationMethod</a></div><div class='proto-field-description'>The method used to protect the token</div><div class='proto-field-expand-btn' data-sub-type='enum' onclick='expandSubField(this);'>Show enum values</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>None</div> <div class='proto-field-type'> = 0</div><div class='proto-field-description'>No confirmation required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>Email</div> <div class='proto-field-type'> = 1</div><div class='proto-field-description'>Email confirmation required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>Sms</div> <div class='proto-field-type'> = 2</div><div class='proto-field-description'>SMS confirmation required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>ConnectedDevice</div> <div class='proto-field-type'> = 3</div><div class='proto-field-description'>Confirmation from a connected device is required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>Other</div> <div class='proto-field-type'> = 10</div><div class='proto-field-description'>Indicates third-party method of confirmation is required</div></div></div></div></div></div></div></div></div></div></div></div></div></p>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Anonymous Login</p>
+<p>Anonymous accounts are accounts which are not tied to any email or phone number, and do not require any authentication. They are typically used for testing and prototypes.</p>
+<p>To create an anonymous account with an SDK, use the <code>TrinsicService.LoginAnonymous()</code> method.</p>
+<p>To create an anonymous account with the CLI, simply leave the <code>email</code> parameter unspecified.</p>
+</div>
+<hr />
+<h2 id="login-confirm">Login Confirm<a class="headerlink" href="#login-confirm" title="Permanent link">&para;</a></h2>
+<p>Finalizes the login process.</p>
+<p>You must pass <code>challenge</code> as it was received in response to <a href="#login">Login</a>, along with the confirmation code that was sent in an email.</p>
+<p>Our SDK will take care of hashing the confirmation code for you.</p>
+<div class='proto-method-tabs-marker'></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_3_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_3_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="4:6"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><input id="__tabbed_4_6" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Trinsic CLI</label><label for="__tabbed_4_2">TypeScript</label><label for="__tabbed_4_3">C#</label><label for="__tabbed_4_4">Python</label><label for="__tabbed_4_5">Go</label><label for="__tabbed_4_6">Java</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>trinsic account login --email <span class="s2">&quot;bob@example.com&quot;</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">allison</span> <span class="o">=</span> <span class="n">account_service</span><span class="o">.</span><span class="n">sign_in</span><span class="p">(</span><span class="kp">nil</span><span class="p">)</span><span class="o">.</span><span class="n">profile</span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">authToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">account</span><span class="p">().</span><span class="nx">loginConfirm</span><span class="p">(</span><span class="nx">loginResponse</span><span class="p">.</span><span class="nx">challenge</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;12345&quot;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kt">string?</span><span class="w"> </span><span class="n">authToken</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">LoginConfirmAsync</span><span class="p">(</span><span class="n">loginResponse</span><span class="p">.</span><span class="n">Challenge</span><span class="p">,</span><span class="w"> </span><span class="n">authCode</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">auth_token</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic</span><span class="o">.</span><span class="n">account</span><span class="o">.</span><span class="n">login_confirm</span><span class="p">(</span><span class="n">challenge</span><span class="o">=</span><span class="n">login_response</span><span class="o">.</span><span class="n">challenge</span><span class="p">,</span> <span class="n">auth_code</span><span class="o">=</span><span class="s2">&quot;12345&quot;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nx">authToken</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">LoginConfirm</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">loginResponse</span><span class="p">.</span><span class="nx">GetChallenge</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;12345&quot;</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">authToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">account</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="na">loginConfirm</span><span class="p">(</span><span class="n">loginResponse</span><span class="p">.</span><span class="na">getChallenge</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;12345&quot;</span><span class="p">).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.account.v1.SignInRequest'><div class='proto-obj-name'><a name='services.account.v1.SignInRequest' href='/reference/proto#services.account.v1.SignInRequest'>SignInRequest</a></div><div class='proto-obj-description'>Request for creating or signing into an account</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>details</div> <div class='proto-field-type'><a href='/reference/proto#services.account.v1.AccountDetails'>AccountDetails</a></div><div class='proto-field-description'>Account registration details</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>details.</span>name</div> <div class='proto-field-type'>optional string</div><div class='proto-field-description'>Account name</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>details.</span>email</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Email account</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>details.</span>sms</div> <div class='proto-field-type'>optional string</div><div class='proto-field-description'>SMS number including country code</div></div></div></div></div><div class='proto-field'><div class='proto-field-name'>invitation_code</div> <div class='proto-field-type'>optional string</div><div class='proto-field-description'>Invitation code associated with this registration</div></div><div class='proto-field'><div class='proto-field-name'>ecosystem_id</div> <div class='proto-field-type'>optional string</div><div class='proto-field-description'>ID of Ecosystem to use Ignored if <code>invitation_code</code> is passed</div></div></div></div></p>
+<p><div class='proto-obj-container' data-proto-name='services.account.v1.LoginConfirmRequest'><div class='proto-obj-name'><a name='services.account.v1.LoginConfirmRequest' href='/reference/proto#services.account.v1.LoginConfirmRequest'>LoginConfirmRequest</a></div><div class='proto-obj-description'></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>challenge</div> <div class='proto-field-type'>bytes</div><div class='proto-field-description'>Login challenge received during the Login call</div></div><div class='proto-field'><div class='proto-field-name'>confirmation_code_hashed</div> <div class='proto-field-type'>bytes</div><div class='proto-field-description'>Confirmation code received in email or SMS hashed using Blake3</div></div></div></div></p>
 </div>
 <div class="tabbed-block">
-<p><div class='proto-obj-container' data-proto-name='services.account.v1.SignInResponse'><div class='proto-obj-name'><a name='services.account.v1.SignInResponse' href='/reference/proto#services.account.v1.SignInResponse'>SignInResponse</a></div><div class='proto-obj-description'>Response for creating new account This object will indicate if a confirmation code was sent to one of the users two-factor methods like email, SMS, etc.</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>confirmation_method</div> <div class='proto-field-type'><a href='/reference/proto#services.account.v1.ConfirmationMethod'>ConfirmationMethod</a></div><div class='proto-field-description'>Indicates if confirmation of account is required. This settings is configured globally by the server administrator.</div><div class='proto-field-expand-btn' data-sub-type='enum' onclick='expandSubField(this);'>Show enum values</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>None</div> <div class='proto-field-type'> = 0</div><div class='proto-field-description'>No confirmation required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>Email</div> <div class='proto-field-type'> = 1</div><div class='proto-field-description'>Email confirmation required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>Sms</div> <div class='proto-field-type'> = 2</div><div class='proto-field-description'>SMS confirmation required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>ConnectedDevice</div> <div class='proto-field-type'> = 3</div><div class='proto-field-description'>Confirmation from a connected device is required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>Other</div> <div class='proto-field-type'> = 10</div><div class='proto-field-description'>Indicates third-party method of confirmation is required</div></div></div></div></div><div class='proto-field'><div class='proto-field-name'>profile</div> <div class='proto-field-type'><a href='/reference/proto#services.account.v1.AccountProfile'>AccountProfile</a></div><div class='proto-field-description'>Contains authentication data for use with the current device. This object must be stored in a secure place. It can also be protected with a PIN, but this is optional. See the docs at https://docs.trinsic.id for more information on working with authentication data.</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.</span>profile_type</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>The type of profile, used to differentiate between protocol schemes or versions</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.</span>auth_data</div> <div class='proto-field-type'>bytes</div><div class='proto-field-description'>Auth data containg information about the current device access</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.</span>auth_token</div> <div class='proto-field-type'>bytes</div><div class='proto-field-description'>Secure token issued by server used to generate zero-knowledge proofs</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.</span>protection</div> <div class='proto-field-type'><a href='/reference/proto#services.account.v1.TokenProtection'>TokenProtection</a></div><div class='proto-field-description'>Token security information about the token. If token protection is enabled, implementations must supply protection secret before using the token for authentication.</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.protection.</span>enabled</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>Indicates if token is protected using a PIN, security code, HSM secret, etc.</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.protection.</span>method</div> <div class='proto-field-type'><a href='/reference/proto#services.account.v1.ConfirmationMethod'>ConfirmationMethod</a></div><div class='proto-field-description'>The method used to protect the token</div><div class='proto-field-expand-btn' data-sub-type='enum' onclick='expandSubField(this);'>Show enum values</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>None</div> <div class='proto-field-type'> = 0</div><div class='proto-field-description'>No confirmation required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>Email</div> <div class='proto-field-type'> = 1</div><div class='proto-field-description'>Email confirmation required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>Sms</div> <div class='proto-field-type'> = 2</div><div class='proto-field-description'>SMS confirmation required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>ConnectedDevice</div> <div class='proto-field-type'> = 3</div><div class='proto-field-description'>Confirmation from a connected device is required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>Other</div> <div class='proto-field-type'> = 10</div><div class='proto-field-description'>Indicates third-party method of confirmation is required</div></div></div></div></div></div></div></div></div></div></div></div></div></p>
+<p><div class='proto-obj-container' data-proto-name='services.account.v1.LoginConfirmResponse'><div class='proto-obj-name'><a name='services.account.v1.LoginConfirmResponse' href='/reference/proto#services.account.v1.LoginConfirmResponse'>LoginConfirmResponse</a></div><div class='proto-obj-description'></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>profile</div> <div class='proto-field-type'><a href='/reference/proto#services.account.v1.AccountProfile'>AccountProfile</a></div><div class='proto-field-description'>Profile response. This profile may be protected and require unblinding/unprotection using the raw hashed code</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.</span>profile_type</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>The type of profile, used to differentiate between protocol schemes or versions</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.</span>auth_data</div> <div class='proto-field-type'>bytes</div><div class='proto-field-description'>Auth data containg information about the current device access</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.</span>auth_token</div> <div class='proto-field-type'>bytes</div><div class='proto-field-description'>Secure token issued by server used to generate zero-knowledge proofs</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.</span>protection</div> <div class='proto-field-type'><a href='/reference/proto#services.account.v1.TokenProtection'>TokenProtection</a></div><div class='proto-field-description'>Token security information about the token. If token protection is enabled, implementations must supply protection secret before using the token for authentication.</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.protection.</span>enabled</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>Indicates if token is protected using a PIN, security code, HSM secret, etc.</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.protection.</span>method</div> <div class='proto-field-type'><a href='/reference/proto#services.account.v1.ConfirmationMethod'>ConfirmationMethod</a></div><div class='proto-field-description'>The method used to protect the token</div><div class='proto-field-expand-btn' data-sub-type='enum' onclick='expandSubField(this);'>Show enum values</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>None</div> <div class='proto-field-type'> = 0</div><div class='proto-field-description'>No confirmation required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>Email</div> <div class='proto-field-type'> = 1</div><div class='proto-field-description'>Email confirmation required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>Sms</div> <div class='proto-field-type'> = 2</div><div class='proto-field-description'>SMS confirmation required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>ConnectedDevice</div> <div class='proto-field-type'> = 3</div><div class='proto-field-description'>Confirmation from a connected device is required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>Other</div> <div class='proto-field-type'> = 10</div><div class='proto-field-description'>Indicates third-party method of confirmation is required</div></div></div></div></div></div></div></div></div></div></div></div></div></p>
 </div>
 </div>
-</div>
-<p>This operation, if successful, returns an authentication token string.</p>
-<div class="admonition warning">
-<p class="admonition-title">Protected Authentication Tokens</p>
-<p>If you are attempting to login to a non-anonymous account (by specifying an email address or phone number), the authentication token returned will be <em>protected</em>, and cannot be used until it has been unprotected.</p>
-<p>Trinsic will have sent a security code to the account's email address or phone number; this security code must be used with the <a href="#unprotect-account-profile">Unprotect</a> call to receive a usable authentication token.</p>
-<p>In the future, we will provide an SDK call to determine if an authentication token is protected.</p>
 </div>
 <hr />
 <h2 id="get-account-info">Get Account Info<a class="headerlink" href="#get-account-info" title="Permanent link">&para;</a></h2>
 <p>Returns the account information (name, email address, phone number, etc.) used to create the currently-active account profile.</p>
 <div class='proto-method-tabs-marker'></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_3_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_3_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_5_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_5_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="4:7"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><input id="__tabbed_4_6" name="__tabbed_4" type="radio" /><input id="__tabbed_4_7" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Trinsic CLI</label><label for="__tabbed_4_2">TypeScript</label><label for="__tabbed_4_3">C#</label><label for="__tabbed_4_4">Python</label><label for="__tabbed_4_5">Go</label><label for="__tabbed_4_6">Java</label><label for="__tabbed_4_7">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:6"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><input id="__tabbed_6_6" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Trinsic CLI</label><label for="__tabbed_6_2">TypeScript</label><label for="__tabbed_6_3">C#</label><label for="__tabbed_6_4">Python</label><label for="__tabbed_6_5">Go</label><label for="__tabbed_6_6">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>trinsic account info
@@ -1855,7 +2005,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">GetInfoAsync</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">GetInfoAsync</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -1868,10 +2018,6 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">account</span><span class="p">().</span><span class="na">getInfo</span><span class="p">().</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">info</span> <span class="o">=</span> <span class="n">account_service</span><span class="o">.</span><span class="n">get_info</span><span class="p">()</span>
 </code></pre></div>
 </div>
 </div>
@@ -1892,9 +2038,76 @@
 <p>When using the SDK, this will return information for the authentication token stored in the <code>AccountService</code> instance's <code>ServiceOptions.AuthToken</code> field, which will be the account most recently logged in to, unless you have manually set this value yourself.</p>
 </div>
 <hr />
+<h2 id="authorize-webhook">Authorize Webhook<a class="headerlink" href="#authorize-webhook" title="Permanent link">&para;</a></h2>
+<p>Authorizes the ecosystem provider to receive webhooks pertaining to this wallet.</p>
+<div class='proto-method-tabs-marker'></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:3"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_7_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_7_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="8:6"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><input id="__tabbed_8_4" name="__tabbed_8" type="radio" /><input id="__tabbed_8_5" name="__tabbed_8" type="radio" /><input id="__tabbed_8_6" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Trinsic CLI</label><label for="__tabbed_8_2">TypeScript</label><label for="__tabbed_8_3">C#</label><label for="__tabbed_8_4">Python</label><label for="__tabbed_8_5">Go</label><label for="__tabbed_8_6">Java</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>trinsic account authorize-webhook --events <span class="s2">&quot;*&quot;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">account</span><span class="p">().</span><span class="nx">authorizeWebhook</span><span class="p">(</span><span class="w"></span>
+<span class="w">  </span><span class="nx">AuthorizeWebhookRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
+<span class="w">    </span><span class="nx">events</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">]</span><span class="w">  </span><span class="c1">// Authorize all events</span><span class="w"></span>
+<span class="w">  </span><span class="p">})</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AuthorizeWebhookRequest</span><span class="p">();</span><span class="w"></span>
+<span class="n">request</span><span class="p">.</span><span class="n">Events</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;*&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">//Authorize all events</span>
+
+<span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">AuthorizeWebhookAsync</span><span class="p">(</span><span class="n">request</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">request</span> <span class="o">=</span> <span class="n">AuthorizeWebhookRequest</span><span class="p">()</span>
+<span class="n">request</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic</span><span class="o">.</span><span class="n">account</span><span class="o">.</span><span class="n">authorize_webhook</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nx">request</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">account</span><span class="p">.</span><span class="nx">AuthorizeWebhookRequest</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">Events</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;*&quot;</span><span class="p">},</span><span class="w"> </span><span class="c1">//Authorize all events</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="nx">authResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">AuthorizeWebhook</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">request</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">authorizeResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="n">trinsic</span><span class="p">.</span><span class="na">account</span><span class="p">().</span><span class="na">authorizeWebhook</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">AuthorizeWebhookRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="w">            </span><span class="p">.</span><span class="na">setEvents</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">//Authorize all events</span><span class="w"></span>
+<span class="w">            </span><span class="p">.</span><span class="na">build</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.account.v1.AuthorizeWebhookRequest'><div class='proto-obj-name'><a name='services.account.v1.AuthorizeWebhookRequest' href='/reference/proto#services.account.v1.AuthorizeWebhookRequest'>AuthorizeWebhookRequest</a></div><div class='proto-obj-description'>Authorize ecosystem to receive wallet events</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>events</div> <div class='proto-field-type'>string[]</div><div class='proto-field-description'>Events to authorize access to. Default is "*" (all events)</div></div></div></div></p>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.account.v1.AuthorizeWebhookResponse'><div class='proto-obj-name'><a name='services.account.v1.AuthorizeWebhookResponse' href='/reference/proto#services.account.v1.AuthorizeWebhookResponse'>AuthorizeWebhookResponse</a></div><div class='proto-obj-description'>Response to <code>AuthorizeWebhookRequest</code></div><i style='display:block; font-size: 0.65rem; margin-top: 0.5rem'>This message has no fields</i></div></p>
+</div>
+</div>
+</div>
+<hr />
 <h2 id="protect-account-profile">Protect Account Profile<a class="headerlink" href="#protect-account-profile" title="Permanent link">&para;</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">Deprecated Sign-in Flow</p>
+<p>This section is related to the the deprecated <a href="#deprecated-sign-in">SignIn</a> endpoint; the new <a href="#login">Login</a> flow does not require
+the use of <code>Protect</code> and <code>Unprotect</code>.</p>
+</div>
 <p>Protects the specified account profile with a security code. It is not possible to execute this call using the CLI.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:6"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><input id="__tabbed_5_4" name="__tabbed_5" type="radio" /><input id="__tabbed_5_5" name="__tabbed_5" type="radio" /><input id="__tabbed_5_6" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">TypeScript</label><label for="__tabbed_5_2">C#</label><label for="__tabbed_5_3">Python</label><label for="__tabbed_5_4">Go</label><label for="__tabbed_5_5">Java</label><label for="__tabbed_5_6">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:5"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><input id="__tabbed_9_4" name="__tabbed_9" type="radio" /><input id="__tabbed_9_5" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">TypeScript</label><label for="__tabbed_9_2">C#</label><label for="__tabbed_9_3">Python</label><label for="__tabbed_9_4">Go</label><label for="__tabbed_9_5">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">protectedProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">protect</span><span class="p">(</span><span class="nx">accountProfile</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;1234&quot;</span><span class="p">);</span><span class="w"></span>
@@ -1934,10 +2147,6 @@
 <span class="kd">var</span><span class="w"> </span><span class="n">myUnprotectedProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="na">unprotect</span><span class="p">(</span><span class="n">myProtectedProfile</span><span class="p">,</span><span class="w"> </span><span class="n">code</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 </div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">protected_profile</span> <span class="o">=</span> <span class="n">account_service</span><span class="o">.</span><span class="n">protect</span><span class="p">(</span><span class="n">account_profile</span><span class="p">,</span> <span class="s1">&#39;1234&#39;</span><span class="p">)</span>
-</code></pre></div>
-</div>
 </div>
 </div>
 <div class="admonition info">
@@ -1949,10 +2158,15 @@
 </div>
 <hr />
 <h2 id="unprotect-account-profile">Unprotect Account Profile<a class="headerlink" href="#unprotect-account-profile" title="Permanent link">&para;</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">Deprecated Sign-in Flow</p>
+<p>This section is related to the the deprecated <a href="#deprecated-sign-in">SignIn</a> endpoint; the new <a href="#login">Login</a> flow does not require
+the use of <code>Protect</code> and <code>Unprotect</code>.</p>
+</div>
 <p>Unprotects the specified account profile using the given code. It is not possible to execute this call using the CLI.</p>
 <p>The profile must have been previously protected using the same code that is being used to unprotect it. Profiles can be protected using any arbitrary code via the <a href="#protect-account-profile">Protect</a> method.</p>
 <p>Most commonly, this method is used on a protected profile received from the <a href="#sign-in">Sign In</a> method. The code to unprotect it will have been sent to the account owner via email or SMS.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:6"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><input id="__tabbed_6_6" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">TypeScript</label><label for="__tabbed_6_2">C#</label><label for="__tabbed_6_3">Python</label><label for="__tabbed_6_4">Go</label><label for="__tabbed_6_5">Java</label><label for="__tabbed_6_6">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:5"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><input id="__tabbed_10_4" name="__tabbed_10" type="radio" /><input id="__tabbed_10_5" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">TypeScript</label><label for="__tabbed_10_2">C#</label><label for="__tabbed_10_3">Python</label><label for="__tabbed_10_4">Go</label><label for="__tabbed_10_5">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">accountProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">unprotect</span><span class="p">(</span><span class="nx">protectedProfile</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;1234&quot;</span><span class="p">);</span><span class="w"></span>
@@ -1992,11 +2206,67 @@
 <span class="kd">var</span><span class="w"> </span><span class="n">myUnprotectedProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="na">unprotect</span><span class="p">(</span><span class="n">myProtectedProfile</span><span class="p">,</span><span class="w"> </span><span class="n">code</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 </div>
+</div>
+</div>
+<hr />
+<h2 id="deprecated-sign-in">[Deprecated] Sign In<a class="headerlink" href="#deprecated-sign-in" title="Permanent link">&para;</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">Deprecated</p>
+<p>This endpoint is deprecated, and will be removed in the near future.</p>
+<p>Please use <a href="#login">Login</a> and <a href="#login-confirm">LoginConfirm</a>.</p>
+</div>
+<p>Sign in to an existing account, or create a new one.</p>
+<p>If no account details are passed to this method, an anonymous account will be created.</p>
+<div class='proto-method-tabs-marker'></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:3"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><input id="__tabbed_11_3" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_11_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_11_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
+<div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">account_profile</span> <span class="o">=</span> <span class="n">account_service</span><span class="o">.</span><span class="n">unprotect</span><span class="p">(</span><span class="n">protected_profile</span><span class="p">,</span> <span class="s1">&#39;1234&#39;</span><span class="p">)</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:6"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><input id="__tabbed_12_3" name="__tabbed_12" type="radio" /><input id="__tabbed_12_4" name="__tabbed_12" type="radio" /><input id="__tabbed_12_5" name="__tabbed_12" type="radio" /><input id="__tabbed_12_6" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Trinsic CLI</label><label for="__tabbed_12_2">TypeScript</label><label for="__tabbed_12_3">C#</label><label for="__tabbed_12_4">Python</label><label for="__tabbed_12_5">Go</label><label for="__tabbed_12_6">Java</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>trinsic account login --email &lt;PROFILE_EMAIL&gt; --name &lt;PROFILE_NAME&gt;
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">allison</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">accountService</span><span class="p">.</span><span class="nx">signIn</span><span class="p">()).</span><span class="nx">getProfile</span><span class="p">();</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">myProfile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">SignInAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">my_profile</span> <span class="o">=</span> <span class="k">await</span> <span class="n">account_service</span><span class="o">.</span><span class="n">sign_in</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nx">profile</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Account</span><span class="p">().</span><span class="nx">SignIn</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">account</span><span class="p">.</span><span class="nx">SignInRequest</span><span class="p">{})</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">myProfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">account</span><span class="p">().</span><span class="na">signIn</span><span class="p">().</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>
+</div>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.account.v1.SignInRequest'><div class='proto-obj-name'><a name='services.account.v1.SignInRequest' href='/reference/proto#services.account.v1.SignInRequest'>SignInRequest</a></div><div class='proto-obj-description'>Request for creating or signing into an account</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>details</div> <div class='proto-field-type'><a href='/reference/proto#services.account.v1.AccountDetails'>AccountDetails</a></div><div class='proto-field-description'>Account registration details</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>details.</span>name</div> <div class='proto-field-type'>optional string</div><div class='proto-field-description'>Account name</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>details.</span>email</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Email account</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>details.</span>sms</div> <div class='proto-field-type'>optional string</div><div class='proto-field-description'>SMS number including country code</div></div></div></div></div><div class='proto-field'><div class='proto-field-name'>invitation_code</div> <div class='proto-field-type'>optional string</div><div class='proto-field-description'>Invitation code associated with this registration</div></div><div class='proto-field'><div class='proto-field-name'>ecosystem_id</div> <div class='proto-field-type'>optional string</div><div class='proto-field-description'>ID of Ecosystem to use Ignored if <code>invitation_code</code> is passed</div></div></div></div></p>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.account.v1.SignInResponse'><div class='proto-obj-name'><a name='services.account.v1.SignInResponse' href='/reference/proto#services.account.v1.SignInResponse'>SignInResponse</a></div><div class='proto-obj-description'>Response for creating new account This object will indicate if a confirmation code was sent to one of the users two-factor methods like email, SMS, etc.</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>confirmation_method</div> <div class='proto-field-type'><a href='/reference/proto#services.account.v1.ConfirmationMethod'>ConfirmationMethod</a></div><div class='proto-field-description'>Indicates if confirmation of account is required. This settings is configured globally by the server administrator.</div><div class='proto-field-expand-btn' data-sub-type='enum' onclick='expandSubField(this);'>Show enum values</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>None</div> <div class='proto-field-type'> = 0</div><div class='proto-field-description'>No confirmation required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>Email</div> <div class='proto-field-type'> = 1</div><div class='proto-field-description'>Email confirmation required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>Sms</div> <div class='proto-field-type'> = 2</div><div class='proto-field-description'>SMS confirmation required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>ConnectedDevice</div> <div class='proto-field-type'> = 3</div><div class='proto-field-description'>Confirmation from a connected device is required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>Other</div> <div class='proto-field-type'> = 10</div><div class='proto-field-description'>Indicates third-party method of confirmation is required</div></div></div></div></div><div class='proto-field'><div class='proto-field-name'>profile</div> <div class='proto-field-type'><a href='/reference/proto#services.account.v1.AccountProfile'>AccountProfile</a></div><div class='proto-field-description'>Contains authentication data for use with the current device. This object must be stored in a secure place. It can also be protected with a PIN, but this is optional. See the docs at https://docs.trinsic.id for more information on working with authentication data.</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.</span>profile_type</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>The type of profile, used to differentiate between protocol schemes or versions</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.</span>auth_data</div> <div class='proto-field-type'>bytes</div><div class='proto-field-description'>Auth data containg information about the current device access</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.</span>auth_token</div> <div class='proto-field-type'>bytes</div><div class='proto-field-description'>Secure token issued by server used to generate zero-knowledge proofs</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.</span>protection</div> <div class='proto-field-type'><a href='/reference/proto#services.account.v1.TokenProtection'>TokenProtection</a></div><div class='proto-field-description'>Token security information about the token. If token protection is enabled, implementations must supply protection secret before using the token for authentication.</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.protection.</span>enabled</div> <div class='proto-field-type'>bool</div><div class='proto-field-description'>Indicates if token is protected using a PIN, security code, HSM secret, etc.</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>profile.protection.</span>method</div> <div class='proto-field-type'><a href='/reference/proto#services.account.v1.ConfirmationMethod'>ConfirmationMethod</a></div><div class='proto-field-description'>The method used to protect the token</div><div class='proto-field-expand-btn' data-sub-type='enum' onclick='expandSubField(this);'>Show enum values</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>None</div> <div class='proto-field-type'> = 0</div><div class='proto-field-description'>No confirmation required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>Email</div> <div class='proto-field-type'> = 1</div><div class='proto-field-description'>Email confirmation required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>Sms</div> <div class='proto-field-type'> = 2</div><div class='proto-field-description'>SMS confirmation required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>ConnectedDevice</div> <div class='proto-field-type'> = 3</div><div class='proto-field-description'>Confirmation from a connected device is required</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ConfirmationMethod.</span>Other</div> <div class='proto-field-type'> = 10</div><div class='proto-field-description'>Indicates third-party method of confirmation is required</div></div></div></div></div></div></div></div></div></div></div></div></div></p>
+</div>
+</div>
+</div>
+<p>This operation, if successful, returns an authentication token string.</p>
+<div class="admonition warning">
+<p class="admonition-title">Protected Authentication Tokens</p>
+<p>If you are attempting to login to a non-anonymous account (by specifying an email address or phone number), the authentication token returned will be <em>protected</em>, and cannot be used until it has been unprotected.</p>
+<p>Trinsic will have sent a security code to the account's email address or phone number; this security code must be used with the <a href="#unprotect-account-profile">Unprotect</a> call to receive a usable authentication token.</p>
+<p>In the future, we will provide an SDK call to determine if an authentication token is protected.</p>
 </div>
 
 
@@ -2013,8 +2283,8 @@
         </span>
         <nav>
           
-            <a href="mailto:polygonguru@gmail.com">Scott Phillips</a>, 
             <a href="mailto:josh@trinsic.id">Joshua Coffey</a>, 
+            <a href="mailto:polygonguru@gmail.com">Scott Phillips</a>, 
             <a href="mailto:michaeldavisboyd@gmail.com">Michael Boyd</a>
         </nav>
       </span>
@@ -2030,7 +2300,7 @@
   
     <div class="md-source-date">
       <small>
-          Authors: <span class='git-page-authors git-authors'><a href='mailto:polygonguru@gmail.com'>Scott Phillips</a>, <a href='mailto:josh@trinsic.id'>Joshua Coffey</a>, <a href='mailto:michaeldavisboyd@gmail.com'>Michael Boyd</a></span>
+          Authors: <span class='git-page-authors git-authors'><a href='mailto:josh@trinsic.id'>Joshua Coffey</a>, <a href='mailto:polygonguru@gmail.com'>Scott Phillips</a>, <a href='mailto:michaeldavisboyd@gmail.com'>Michael Boyd</a></span>
       </small>
     </div>
   

@@ -140,6 +140,10 @@
     
       
     
+      
+    
+      
+    
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
@@ -805,6 +809,25 @@
 
               
             
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/platform/webhooks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Webhooks
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1161,6 +1184,25 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Events Reference
+  </span>
+
+      </a>
     </li>
   
 
@@ -1772,17 +1814,16 @@
 </div>
 </div>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c1">// accountServiceConstructor() {</span>
-<span class="kt">var</span><span class="w"> </span><span class="n">trinsic</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TrinsicService</span><span class="p">(</span><span class="n">_options</span><span class="p">.</span><span class="n">Clone</span><span class="p">());</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1">// trinsicServiceConstructor() {</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">trinsic</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TrinsicService</span><span class="p">(</span><span class="n">_options</span><span class="p">);</span><span class="w"></span>
 <span class="c1">// }</span>
 <span class="c1">// accountServiceSignIn() {</span>
 <span class="kt">var</span><span class="w"> </span><span class="n">myProfile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">SignInAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span><span class="w"></span>
 <span class="c1">// }</span>
-<span class="n">trinsic</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">Options</span><span class="p">.</span><span class="n">AuthToken</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">myProfile</span><span class="p">;</span><span class="w"></span>
+<span class="n">trinsic</span><span class="p">.</span><span class="n">SetAuthToken</span><span class="p">(</span><span class="n">myProfile</span><span class="p">);</span><span class="w"></span>
 <span class="c1">// accountServiceGetInfo() {</span>
-<span class="kt">var</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">GetInfoAsync</span><span class="p">();</span><span class="w"></span>
+<span class="kt">var</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">GetInfoAsync</span><span class="p">();</span><span class="w"></span>
 <span class="c1">// }</span>
-<span class="n">Assert</span><span class="p">.</span><span class="n">NotNull</span><span class="p">(</span><span class="n">output</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <p>Once the .NET SDK package is installed and configured, you're ready to start building! We recommend going through the <a href="../walkthroughs/vaccination/">walkthrough</a> next. If you're ready to dive into building your ecosystem, check out our <a href="../reference/">API Reference</a></p>

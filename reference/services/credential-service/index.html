@@ -140,6 +140,10 @@
     
       
     
+      
+    
+      
+    
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
@@ -805,6 +809,25 @@
 
               
             
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learn/platform/webhooks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Webhooks
+  </span>
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1282,6 +1305,25 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Events Reference
+  </span>
+
+      </a>
     </li>
   
 
@@ -1876,8 +1918,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">credential</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">IssueCredentialAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">DocumentJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">credentialJson</span><span class="p">});</span><span class="w"></span>
-<span class="n">_testOutputHelper</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&quot;Credential:\n{credential.SignedDocumentJson}&quot;</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">credential</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">IssueCredentialAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">DocumentJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">credentialJson</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2137,7 +2178,7 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">credentialJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">IssueFromTemplateAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">TemplateId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">template</span><span class="p">.</span><span class="n">Data</span><span class="p">.</span><span class="n">Id</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">TemplateId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">templateId</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="n">ValuesJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">values</span><span class="w"></span>
 <span class="p">});</span><span class="w"></span>
 </code></pre></div>
@@ -2201,7 +2242,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">checkResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">CheckStatusAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">CredentialStatusId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">});</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">checkResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">CheckStatusAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">CredentialStatusId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2249,7 +2290,7 @@ trinsic vc update-status --unrevoked --credential-status-id &lt;ID&gt;
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">UpdateStatusAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">CredentialStatusId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Revoked</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="p">});</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">UpdateStatusAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">CredentialStatusId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Revoked</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2544,7 +2585,7 @@ trinsic vc update-status --unrevoked --credential-status-id &lt;ID&gt;
 <div class="tabbed-set tabbed-alternate" data-tabs="11:3"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><input id="__tabbed_11_3" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_11_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_11_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="12:7"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><input id="__tabbed_12_3" name="__tabbed_12" type="radio" /><input id="__tabbed_12_4" name="__tabbed_12" type="radio" /><input id="__tabbed_12_5" name="__tabbed_12" type="radio" /><input id="__tabbed_12_6" name="__tabbed_12" type="radio" /><input id="__tabbed_12_7" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Trinsic CLI</label><label for="__tabbed_12_2">TypeScript</label><label for="__tabbed_12_3">C#</label><label for="__tabbed_12_4">Python</label><label for="__tabbed_12_5">Go</label><label for="__tabbed_12_6">Java</label><label for="__tabbed_12_7">Ruby</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:6"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><input id="__tabbed_12_3" name="__tabbed_12" type="radio" /><input id="__tabbed_12_4" name="__tabbed_12" type="radio" /><input id="__tabbed_12_5" name="__tabbed_12" type="radio" /><input id="__tabbed_12_6" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Trinsic CLI</label><label for="__tabbed_12_2">TypeScript</label><label for="__tabbed_12_3">C#</label><label for="__tabbed_12_4">Python</label><label for="__tabbed_12_5">Go</label><label for="__tabbed_12_6">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># The JSONLD_FILE refers to the proof document obtained from a CreateProofResponse</span>
@@ -2558,7 +2599,7 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">valid</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">VerifyProofAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">ProofDocumentJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">proof</span><span class="p">.</span><span class="n">ProofDocumentJson</span><span class="p">});</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">valid</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">VerifyProofAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">ProofDocumentJson</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">proof</span><span class="p">.</span><span class="n">ProofDocumentJson</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2583,8 +2624,9 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
 
 
 <span class="k">async</span> <span class="k">def</span> <span class="nf">vaccine_demo</span><span class="p">():</span>
-    <span class="n">config</span> <span class="o">=</span> <span class="n">trinsic_config</span><span class="p">()</span>
-    <span class="n">trinsic_service</span> <span class="o">=</span> <span class="n">TrinsicService</span><span class="p">(</span><span class="n">server_config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+    <span class="c1"># trinsicServiceConstructor() {</span>
+    <span class="n">trinsic_service</span> <span class="o">=</span> <span class="n">TrinsicService</span><span class="p">(</span><span class="n">server_config</span><span class="o">=</span><span class="n">trinsic_config</span><span class="p">())</span>
+    <span class="c1"># }</span>
 
     <span class="c1"># createEcosystem() {</span>
     <span class="n">ecosystem</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">provider</span><span class="o">.</span><span class="n">create_ecosystem</span><span class="p">()</span>
@@ -2593,7 +2635,6 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
 
     <span class="c1"># Set service default ecosystem</span>
     <span class="n">trinsic_service</span><span class="o">.</span><span class="n">service_options</span><span class="o">.</span><span class="n">default_ecosystem</span> <span class="o">=</span> <span class="n">ecosystem_id</span>
-    <span class="n">config</span><span class="o">.</span><span class="n">default_ecosystem</span> <span class="o">=</span> <span class="n">ecosystem_id</span>
 
     <span class="c1"># setupActors() {</span>
     <span class="c1"># Create an account for each participant in the scenario</span>
@@ -2925,7 +2966,6 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
 <span class="kt">boolean</span><span class="w"> </span><span class="n">isValid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">verifyProofResponse</span><span class="p">.</span><span class="na">getIsValid</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 </div>
-<div class="tabbed-block"></div>
 </div>
 </div>
 </div>
@@ -2989,7 +3029,7 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">SendAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="n">Email</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;example@trinsic.id&quot;</span><span class="p">});</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">sendResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Credential</span><span class="p">.</span><span class="n">SendAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Email</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;example@trinsic.id&quot;</span><span class="w"> </span><span class="p">});</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -3237,8 +3277,8 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
         </span>
         <nav>
           
-            <a href="mailto:polygonguru@gmail.com">Scott Phillips</a>, 
             <a href="mailto:josh@trinsic.id">Joshua Coffey</a>, 
+            <a href="mailto:polygonguru@gmail.com">Scott Phillips</a>, 
             <a href="mailto:michaeldavisboyd@gmail.com">Michael Boyd</a>
         </nav>
       </span>
@@ -3254,7 +3294,7 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
   
     <div class="md-source-date">
       <small>
-          Authors: <span class='git-page-authors git-authors'><a href='mailto:polygonguru@gmail.com'>Scott Phillips</a>, <a href='mailto:josh@trinsic.id'>Joshua Coffey</a>, <a href='mailto:michaeldavisboyd@gmail.com'>Michael Boyd</a></span>
+          Authors: <span class='git-page-authors git-authors'><a href='mailto:josh@trinsic.id'>Joshua Coffey</a>, <a href='mailto:polygonguru@gmail.com'>Scott Phillips</a>, <a href='mailto:michaeldavisboyd@gmail.com'>Michael Boyd</a></span>
       </small>
     </div>
   
