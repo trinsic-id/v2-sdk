@@ -66,6 +66,8 @@ theme:
     - navigation.tracking
     - announce.dismiss
     - navigation.tabs
+    - navigation.tabs.sticky
+    - toc.integrate
     # - navigation.expand
     # - navigation.sections
   icon:
