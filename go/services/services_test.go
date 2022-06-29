@@ -106,7 +106,7 @@ func TestTrustRegistryDemo(t *testing.T) {
 	assert2.Equal(trustregistry.RegistrationStatus_CURRENT, getMembershipStatusResponse.Status, "Member status should be current")
 
 	// searchTrustRegistry() {
-	ecosystemList, err := trinsic.TrustRegistry().SearchRegistry(context.Background(), nil)
+	ecosystemList, err := trinsic.TrustRegistry().Search(context.Background(), nil)
 	// }
 	if !assert2.Nil(err) {
 		return
