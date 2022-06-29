@@ -6,7 +6,6 @@ import { TemplateService } from "./TemplateService";
 import { AccountService } from "./AccountService";
 import { TrinsicService } from "./TrinsicService";
 import ServiceBase from "./ServiceBase";
-import {TrinsicService} from "./TrinsicService";
 
 export * from "./proto/index";
 
