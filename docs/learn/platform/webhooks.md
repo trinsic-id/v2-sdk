@@ -8,11 +8,21 @@
 
 Webhooks enable providers to receive updates whenever an event occurs within the ecosystem they manage.
 
+---
+
 ## Configuring Webhooks
 
 Webhooks may be added to an ecosystem using the [AddWebhook](/reference/services/provider-service.md#add-webhook) method; either with the [CLI](/cli/index.md) or any of our SDKs. In the future, webhooks will also be configurable through a web dashboard.
 
-By default, webhooks receive all [event types](#event-types), but can be configured to only trigger on a specific subset of events.
+The value chosen for `secret` should be a UTF-8 string which is never published anywhere; it is used to [verify incoming payloads](#verification).
+
+The `destination_url` of a webhook **must** be an HTTPS URL accessible over the internet.
+
+
+!!! info "Event Type Filtering"
+    By default, webhooks receive all [event types](#event-types), but can be configured to only trigger on a specific subset of events.
+
+---
 
 ## Receiving Webhooks
 
@@ -57,6 +67,7 @@ Your verification code may look like the following pseudocode:
 
     Many languages have native support for HMAC-SHA256; for those that don't, high-quality open source libraries exist.
 
+---
 
 ## Enabling Wallet Events
 
@@ -65,6 +76,8 @@ Events which occur on a [wallet](/learn/platform/wallets) will not be sent to yo
 To receive webhooks for wallet events, the [AuthorizeWebhook](/reference/services/account-service.md#authorize-webhook) method must be called for each wallet which is opting-in to propagate wallet events to the ecosystem provider.
 
 This call must be performed using the wallet's authentication token.
+
+---
 
 ## Event Types
 
