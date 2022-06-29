@@ -18,6 +18,5 @@ export {
   AccountService,
   CredentialService,
   TemplateService,
-    TrinsicService,
   ServiceBase,
 };
