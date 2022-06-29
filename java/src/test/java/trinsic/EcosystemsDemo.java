@@ -1,6 +1,7 @@
 package trinsic;
 
 import java.io.IOException;
+import java.util.Base64;
 import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.okapi.DidException;
@@ -34,6 +35,10 @@ public class EcosystemsDemo {
     Assertions.assertNotNull(response.getEcosystem().getId());
     Assertions.assertTrue(response.getEcosystem().getId().startsWith("urn:trinsic:ecosystems:"));
 
+    var profileBase64 = Base64.getUrlEncoder().encodeToString(response.getProfile().toByteArray());
+
+    trinsic.setProfile(profileBase64);
+
     // updateEcosystem() {
     var updateResponse =
         trinsic.provider().updateEcosystem(
@@ -63,7 +68,7 @@ public class EcosystemsDemo {
             AddWebhookRequest.newBuilder()
                 .setDestinationUrl("https://example.com/webhooks/trinsic")
                 .setSecret("my well-kept secret")
-                .setEvents(0, "*") //All events
+                .addEvents( "*") //All events
                 .build()
         ).get();
     // }

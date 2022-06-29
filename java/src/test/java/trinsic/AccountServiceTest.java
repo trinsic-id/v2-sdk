@@ -44,12 +44,13 @@ class AccountServiceTest {
     var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
 
     var profile = trinsic.account().loginAnonymous().get();
+    trinsic.setProfile(profile);
 
     // authorizeWebhook() {
     var authorizeResponse =
         trinsic.account().authorizeWebhook(
             AuthorizeWebhookRequest.newBuilder()
-                .setEvents(0, "*") //Authorize all events
+                .addEvents( "*") //Authorize all events
                 .build()
         ).get();
     // }
