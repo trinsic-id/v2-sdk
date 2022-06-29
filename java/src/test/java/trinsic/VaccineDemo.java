@@ -2,11 +2,8 @@ package trinsic;
 
 import com.google.gson.Gson;
 import com.google.protobuf.InvalidProtocolBufferException;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.concurrent.ExecutionException;
 import trinsic.okapi.DidException;
-import trinsic.services.CredentialTemplateService;
+import trinsic.services.TemplateService;
 import trinsic.services.TrinsicService;
 import trinsic.services.provider.v1.CreateEcosystemRequest;
 import trinsic.services.universalwallet.v1.InsertItemRequest;
@@ -16,6 +13,10 @@ import trinsic.services.verifiablecredentials.templates.v1.TemplateField;
 import trinsic.services.verifiablecredentials.v1.CreateProofRequest;
 import trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest;
 import trinsic.services.verifiablecredentials.v1.VerifyProofRequest;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.concurrent.ExecutionException;
 
 public class VaccineDemo {
 
@@ -142,7 +143,7 @@ public class VaccineDemo {
     return credential;
   }
 
-  private static String DefineTemplate(CredentialTemplateService templateService, String clinic)
+  private static String DefineTemplate(TemplateService templateService, String clinic)
       throws InvalidProtocolBufferException, DidException, ExecutionException,
           InterruptedException {
     // createTemplate() {

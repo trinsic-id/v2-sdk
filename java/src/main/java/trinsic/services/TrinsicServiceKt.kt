@@ -6,7 +6,7 @@ class TrinsicServiceKt @JvmOverloads constructor(options: Options.ServiceOptions
     ServiceBase(options) {
   private var _accountService: AccountServiceKt? = null
   private var _credentialService: CredentialServiceKt? = null
-  private var _credentialTemplateService: CredentialTemplateServiceKt? = null
+  private var _credentialTemplateService: TemplateServiceKt? = null
   private var _providerService: ProviderServiceKt? = null
   private var _trustRegistryService: TrustRegistryServiceKt? = null
   private var _walletService: WalletServiceKt? = null
@@ -20,9 +20,9 @@ class TrinsicServiceKt @JvmOverloads constructor(options: Options.ServiceOptions
     return _credentialService!!
   }
 
-  fun template(): CredentialTemplateServiceKt {
+  fun template(): TemplateServiceKt {
     if (_credentialTemplateService == null)
-        _credentialTemplateService = CredentialTemplateServiceKt(optionsBuilder)
+        _credentialTemplateService = TemplateServiceKt(optionsBuilder)
     return _credentialTemplateService!!
   }
 
