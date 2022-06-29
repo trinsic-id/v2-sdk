@@ -19,8 +19,9 @@ from trinsic.trinsic_util import trinsic_config
 
 
 async def vaccine_demo():
-    config = trinsic_config()
-    trinsic_service = TrinsicService(server_config=config)
+    # trinsicServiceConstructor() {
+    trinsic_service = TrinsicService(server_config=trinsic_config())
+    # }
 
     # createEcosystem() {
     ecosystem = await trinsic_service.provider.create_ecosystem()
@@ -29,7 +30,6 @@ async def vaccine_demo():
 
     # Set service default ecosystem
     trinsic_service.service_options.default_ecosystem = ecosystem_id
-    config.default_ecosystem = ecosystem_id
 
     # setupActors() {
     # Create an account for each participant in the scenario

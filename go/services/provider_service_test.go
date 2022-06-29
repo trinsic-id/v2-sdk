@@ -9,6 +9,112 @@ import (
 	"github.com/trinsic-id/sdk/go/proto/services/provider/v1/provider"
 )
 
+func TestWebhookAddDelete(t *testing.T) {
+	assert2 := assert.New(t)
+
+	trinsic, err := NewTrinsic(WithTestEnv())
+	if !assert2.Nil(err) {
+		return
+	}
+
+	createResponse, err := trinsic.Provider().CreateEcosystem(context.Background(), &provider.CreateEcosystemRequest{})
+	if !assert2.Nil(err) {
+		return
+	}
+
+	token, err := ProfileToToken(createResponse.Profile)
+	if !assert2.Nil(err) {
+		return
+	}
+
+	trinsic.SetEcosystemId(createResponse.Ecosystem.Id)
+	trinsic.SetToken(token)
+
+	webhookId := ""
+
+	{
+		// addWebhook() {
+		request := &provider.AddWebhookRequest{
+			DestinationUrl: "https://example.com/webhooks/trinsic",
+			Secret:         "my well-kept secret",
+			Events:         []string{"*"}, // All events
+		}
+
+		response, err := trinsic.Provider().AddWebhook(context.Background(), request)
+		// }
+
+		if !assert2.Nil(err) || !assert2.NotNil(response) {
+			return
+		}
+
+		webhookId = response.Ecosystem.Webhooks[0].Id
+	}
+
+	{
+		// deleteWebhook() {
+		request := &provider.DeleteWebhookRequest{
+			WebhookId: webhookId,
+		}
+
+		deleteResponse, err := trinsic.Provider().DeleteWebhook(context.Background(), request)
+		// }
+
+		if !assert2.Nil(err) || !assert2.NotNil(deleteResponse) {
+			return
+		}
+	}
+}
+
+func TestEcosystemUpdateInfo(t *testing.T) {
+	assert2 := assert.New(t)
+
+	trinsic, err := NewTrinsic(WithTestEnv())
+	if !assert2.Nil(err) {
+		return
+	}
+
+	createResponse, err := trinsic.Provider().CreateEcosystem(context.Background(), &provider.CreateEcosystemRequest{})
+	if !assert2.Nil(err) {
+		return
+	}
+
+	token, err := ProfileToToken(createResponse.Profile)
+	if !assert2.Nil(err) {
+		return
+	}
+
+	trinsic.SetEcosystemId(createResponse.Ecosystem.Id)
+	trinsic.SetToken(token)
+
+	// updateEcosystem() {
+	updateRequest := &provider.UpdateEcosystemRequest{
+		Description: "My new description",
+		Uri:         "https://new-example.com",
+	}
+
+	updateResponse, err := trinsic.Provider().UpdateEcosystem(context.Background(), updateRequest)
+	// }
+	if !assert2.Nil(err) || !assert2.NotNil(updateResponse) {
+		return
+	}
+
+	if !assert2.Equal(updateResponse.Ecosystem.Description, "My new description") {
+		return
+	}
+
+	// ecosystemInfo() {
+	infoResponse, err := trinsic.Provider().EcosystemInfo(context.Background(), &provider.EcosystemInfoRequest{})
+	// }
+
+	if !assert2.Nil(err) || !assert2.NotNil(updateResponse) {
+		return
+	}
+
+	if !assert2.Equal(infoResponse.Ecosystem.Description, updateResponse.Ecosystem.Description) {
+		return
+	}
+}
+
 func TestProviderBase_InviteParticipant(t *testing.T) {
 	assert2 := assert.New(t)
 

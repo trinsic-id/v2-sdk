@@ -22,24 +22,24 @@ Our SDK is broken down into the following services:
  
 ### Using an SDK Service
 
-If you are using one of the Trinsic SDKs, you will need to create an instance of a service in order to use it.
+If you are using one of the Trinsic SDKs, you will need to create an instance of a `TrinsicService` in order to use it.
 
 === "TypeScript"
     ```typescript
-    const accountService = new AccountService();
+    const trinsic = new TrinsicService();
     ```
 
 === "C#"
     <!--codeinclude-->
     ```csharp
-    [CreateProof](../../dotnet/Tests/Tests.cs) inside_block:accountServiceConstructor
+    [CreateProof](../../dotnet/Tests/Tests.cs) inside_block:trinsicServiceConstructor
     ```
     <!--/codeinclude-->
 
 === "Python"
     <!--codeinclude-->
     ```python
-    [Insert Item Wallet](../../python/tests/test_trinsic_services.py) inside_block:accountServiceConstructor
+    [Insert Item Wallet](../../python/samples/vaccine_demo.py) inside_block:trinsicServiceConstructor
     ```
     <!--/codeinclude-->
 
@@ -57,12 +57,7 @@ If you are using one of the Trinsic SDKs, you will need to create an instance of
     ```
     <!--/codeinclude-->
 
-=== "Ruby"
-    ```ruby
-    account_service = Trinsic::AccountService.new(nil, Trinsic::trinsic_prod_server)
-    ```
-
-All service constructors also accept a [ServiceOptions](../proto/index.md#serviceoptions) object as an argument, allowing you to specify a default ecosystem and other configuration properties.
+The constructor accepts a [ServiceOptions](../proto/index.md#serviceoptions) object as an argument, allowing you to specify a default ecosystem and other configuration properties:
 
 {{ proto_message('sdk.options.v1.ServiceOptions') }}
 

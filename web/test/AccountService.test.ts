@@ -1,4 +1,4 @@
-import {AccountService, TrinsicService} from "../src";
+import { AccountService, AuthorizeWebhookRequest, LoginConfirmRequest, LoginRequest, TrinsicService } from "../src";
 
 import { getTestServerOptions, setTestTimeout } from "./env";
 
@@ -11,6 +11,41 @@ async function printGetInfo(service: TrinsicService, profile: string) {
 
 describe("AccountService Unit Tests", () => {
   setTestTimeout();
+
+  it("login / loginconfirm", async () => {
+    let trinsic = new TrinsicService(options);
+
+    // loginRequest() {
+    const loginResponse = await trinsic.account().login(
+      LoginRequest.fromPartial({
+        email: "bob@example.com"
+      })
+    );
+    //}
+
+    // We expect this to fail; we have no real auth flow here
+    try {
+      // loginConfirm() {
+      const authToken = await trinsic.account().loginConfirm(loginResponse.challenge, "12345");
+      //}
+    } catch { }
+  });
+
+  it("authorize webhook", async () => {
+    let trinsic = new TrinsicService(options);
+    let account = await trinsic.account().loginAnonymous();
+
+    trinsic.options.authToken = account.toString(); //wat
+
+    // authorizeWebhook() {
+    const response = await trinsic.account().authorizeWebhook(
+      AuthorizeWebhookRequest.fromPartial({
+        events: ["*"]  // Authorize all events
+      })
+    );
+    //}
+  });
+
   it("protect/unprotect account profile", async () => {
     let trinsic = new TrinsicService(options);
     let myProfile = await trinsic.account().signIn();
@@ -21,7 +56,7 @@ describe("AccountService Unit Tests", () => {
     try {
       await printGetInfo(trinsic, myProtectedProfile);
       fail("previous line should have thrown.");
-    } catch {}
+    } catch { }
 
     const myUnprotectedProfile = await AccountService.unprotect(
       myProtectedProfile,

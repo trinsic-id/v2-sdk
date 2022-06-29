@@ -2,6 +2,7 @@ import asyncio
 import platform
 import unittest
 
+from samples.account_demo import account_demo
 from samples.ecosystem_demo import ecosystem_demo
 from samples.provider_demo import provider_demo
 from samples.templates_demo import templates_demo
@@ -59,6 +60,9 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
 
     async def test_templates_demo(self):
         await templates_demo()
+
+    async def test_account_demo(self):
+        await account_demo()
 
     async def test_providerservice_input_validation(self):
         cred_service = ProviderService(server_config=trinsic_config())

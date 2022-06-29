@@ -102,6 +102,33 @@ def define_env(env):
 
         return ret
 
+    @env.macro
+    def all_proto_events():
+        """
+        Prints all protobuf events -- intended for usage in the Events Reference docs page
+        """
+        IGNORE_MESSAGES = ["trinsic.services.event.Event", "trinsic.services.event.APICall"]
+
+        proto_json = get_proto_json()
+        file = proto_json["files"]["services/event/v1/event.proto"]
+        messages = file["messages"]
+
+        ret = ""
+
+        for messageName in messages:
+            if messageName in IGNORE_MESSAGES:
+                continue
+
+            message = get_entity(messageName)
+            shortName = message["name"]
+            ret += "\n"
+            ret += f"### {shortName}"
+            ret += "\n"
+            ret += print_message(messageName)
+            # ret += "<br/>"
+
+        return ret
+
 
 ###### Helper methods below
 

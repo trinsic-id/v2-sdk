@@ -317,13 +317,6 @@ Verifies a proof for validity and authenticity. Only supports BBS+ Signatures at
         ```
         <!--/codeinclude-->
 
-    === "Ruby"
-        <!--codeinclude-->
-        ```ruby
-        
-        ```
-        <!--/codeinclude-->
-
 {{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.VerifyProof") }}
 
 ???+ info "Validation Results"

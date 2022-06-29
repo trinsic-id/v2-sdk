@@ -7,8 +7,53 @@ import org.junit.jupiter.api.Test;
 import trinsic.okapi.DidException;
 import trinsic.services.AccountService;
 import trinsic.services.TrinsicService;
+import trinsic.services.account.v1.AccountOuterClass;
+import trinsic.services.account.v1.AuthorizeWebhookRequest;
+import trinsic.services.account.v1.LoginRequest;
 
 class AccountServiceTest {
+
+  @Test
+  public void testLogin()
+    throws ExecutionException, InterruptedException, InvalidProtocolBufferException,
+        DidException {
+    var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
+
+    // loginRequest() {
+    var loginResponse =
+        trinsic.account().login(
+            LoginRequest.newBuilder()
+                .setEmail("bob@example.com")
+                .build()
+        ).get();
+    // }
+
+
+    Assertions.assertThrows(Exception.class, () -> {
+        // loginConfirm() {
+        var authToken = trinsic.account()
+            .loginConfirm(loginResponse.getChallenge(), "12345").get();
+        // }
+    });
+  }
+
+  @Test
+  public void testAuthWebhook()
+    throws ExecutionException, InterruptedException, InvalidProtocolBufferException,
+        DidException {
+    var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
+
+    var profile = trinsic.account().loginAnonymous().get();
+
+    // authorizeWebhook() {
+    var authorizeResponse =
+        trinsic.account().authorizeWebhook(
+            AuthorizeWebhookRequest.newBuilder()
+                .setEvents(0, "*") //Authorize all events
+                .build()
+        ).get();
+    // }
+  }
 
   @Test
   public void testProtectUnprotectAccount()

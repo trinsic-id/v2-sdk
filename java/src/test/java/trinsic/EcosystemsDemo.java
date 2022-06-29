@@ -17,7 +17,8 @@ public class EcosystemsDemo {
   public static void run()
       throws IOException, DidException, ExecutionException, InterruptedException {
     var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
-    var account = trinsic.account().signIn().get();
+    var account = trinsic.account().loginAnonymous().get();
+
     // createEcosystem() {
     var response =
         trinsic
@@ -32,6 +33,58 @@ public class EcosystemsDemo {
     Assertions.assertNotNull(response.getEcosystem());
     Assertions.assertNotNull(response.getEcosystem().getId());
     Assertions.assertTrue(response.getEcosystem().getId().startsWith("urn:trinsic:ecosystems:"));
+
+    // updateEcosystem() {
+    var updateResponse =
+        trinsic.provider().updateEcosystem(
+            UpdateEcosystemRequest.newBuilder()
+                .setDescription("My updated ecosystem")
+                .setUri("https://new-example.com")
+                .build())
+        .get();
+    // }
+
+    Assertions.assertNotNull(updateResponse.getEcosystem());
+    Assertions.assertEquals(updateResponse.getEcosystem().getUri(), "https://new-example.com");
+
+    // ecosystemInfo() {
+    var infoResponse =
+        trinsic.provider().ecosystemInfo(
+            EcosystemInfoRequest.getDefaultInstance()
+        ).get();
+    // }
+
+    Assertions.assertNotNull(infoResponse.getEcosystem());
+    Assertions.assertEquals(infoResponse.getEcosystem().getUri(), updateResponse.getEcosystem().getUri());
+
+    // addWebhook() {
+    var addWebhookResponse =
+        trinsic.provider().addWebhook(
+            AddWebhookRequest.newBuilder()
+                .setDestinationUrl("https://example.com/webhooks/trinsic")
+                .setSecret("my well-kept secret")
+                .setEvents(0, "*") //All events
+                .build()
+        ).get();
+    // }
+
+    Assertions.assertNotNull(addWebhookResponse.getEcosystem());
+    Assertions.assertEquals(1, addWebhookResponse.getEcosystem().getWebhooksCount());
+
+    var webhook = addWebhookResponse.getEcosystem().getWebhooks(0);
+    var webhookId = webhook.getId();
+
+    // deleteWebhook() {
+    var deleteWebhookResponse =
+          trinsic.provider().deleteWebhook(
+              DeleteWebhookRequest.newBuilder()
+                  .setWebhookId(webhookId)
+                  .build()
+          ).get();
+    // }
+
+    Assertions.assertNotNull(deleteWebhookResponse.getEcosystem());
+    Assertions.assertEquals(0, deleteWebhookResponse.getEcosystem().getWebhooksCount());
 
     // listEcosystems() {
     // }
@@ -72,5 +125,7 @@ public class EcosystemsDemo {
     } catch (Exception e) {
       // this is okay as an example
     }
+
+    trinsic.shutdown();
   }
 }

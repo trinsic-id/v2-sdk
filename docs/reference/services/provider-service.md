@@ -58,6 +58,215 @@ Creates a new ecosystem, along with a root controlling account.
 
 {{ proto_method_tabs("services.provider.v1.Provider.CreateEcosystem") }}
 
+---
+
+## Update Ecosystem
+
+Updates the active ecosystem's `description` or `uri`.
+
+{{proto_sample_start()}}
+    === "Trinsic CLI"
+        ```bash
+        trinsic provider update-ecosystem \
+                         --description "New description" \
+                         --uri "https://new-example.com"
+        ```
+
+    === "TypeScript"
+        <!--codeinclude--> 
+        ```typescript
+        [UpdateEcosystem](../../../web/test/ProviderService.test.ts) inside_block:updateEcosystem
+        ```
+        <!--/codeinclude-->
+
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [UpdateEcosystem](../../../dotnet/Tests/Tests.cs) inside_block:updateEcosystem
+        ```
+        <!--/codeinclude-->
+
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [UpdateEcosystem](../../../python/samples/provider_demo.py) inside_block:updateEcosystem
+        ```
+        <!--/codeinclude-->
+
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [UpdateEcosystem](../../../go/services/provider_service_test.go) inside_block:updateEcosystem
+        ```
+        <!--/codeinclude-->
+
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [UpdateEcosystem](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:updateEcosystem
+        ```
+        <!--/codeinclude-->
+
+{{ proto_method_tabs("services.provider.v1.Provider.UpdateEcosystem") }}
+
+---
+
+## Get Ecosystem Info
+
+Fetches information about the active ecosystem.
+
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic provider ecosystem-info
+        ```
+
+    === "TypeScript"
+        <!--codeinclude--> 
+        ```typescript
+        [EcosystemInfo](../../../web/test/ProviderService.test.ts) inside_block:ecosystemInfo
+        ```
+        <!--/codeinclude-->
+
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [EcosystemInfo](../../../dotnet/Tests/Tests.cs) inside_block:ecosystemInfo
+        ```
+        <!--/codeinclude-->
+
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [EcosystemInfo](../../../python/samples/provider_demo.py) inside_block:ecosystemInfo
+        ```
+        <!--/codeinclude-->
+
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [EcosystemInfo](../../../go/services/provider_service_test.go) inside_block:ecosystemInfo
+        ```
+        <!--/codeinclude-->
+
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [EcosystemInfo](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:ecosystemInfo
+        ```
+        <!--/codeinclude-->
+
+{{ proto_method_tabs("services.provider.v1.Provider.EcosystemInfo") }}
+
+---
+
+## Add Webhook
+
+Adds a webhook to an ecosystem.
+
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic provider add-webhook \
+                        --url "https://example.com/webhooks/trinsic" \
+                        --secret "my well-kept secret" \
+                        --events "*"
+        ```
+
+    === "TypeScript"
+        <!--codeinclude--> 
+        ```typescript
+        [AddWebhook](../../../web/test/ProviderService.test.ts) inside_block:addWebhook
+        ```
+        <!--/codeinclude-->
+
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [AddWebhook](../../../dotnet/Tests/Tests.cs) inside_block:addWebhook
+        ```
+        <!--/codeinclude-->
+
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [AddWebhook](../../../python/samples/provider_demo.py) inside_block:addWebhook
+        ```
+        <!--/codeinclude-->
+
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [AddWebhook](../../../go/services/provider_service_test.go) inside_block:addWebhook
+        ```
+        <!--/codeinclude-->
+
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [AddWebhook](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:addWebhook
+        ```
+        <!--/codeinclude-->
+
+{{ proto_method_tabs("services.provider.v1.Provider.AddWebhook") }}
+
+!!! warning "Webhook Limits"
+    At present, an ecosystem can have no more than 10 webhooks.
+
+!!! tip "Wallet Webhook Events"
+    In order to receive webhooks for events which occur on a wallet, an additional authorization step must be performed.
+
+    See [AuthorizeWebhook](/reference/services/account-service#authorize-webhook) for more info.
+
+---
+
+## Delete Webhook
+
+Deletes a webhook from an ecosystem.
+
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic provider delete-webhook --webhook-id <WEBHOOK_ID>
+        ```
+
+    === "TypeScript"
+        <!--codeinclude--> 
+        ```typescript
+        [DeleteWebhook](../../../web/test/ProviderService.test.ts) inside_block:deleteWebhook
+        ```
+        <!--/codeinclude-->
+
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [DeleteWebhook](../../../dotnet/Tests/Tests.cs) inside_block:deleteWebhook
+        ```
+        <!--/codeinclude-->
+
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [DeleteWebhook](../../../python/samples/provider_demo.py) inside_block:deleteWebhook
+        ```
+        <!--/codeinclude-->
+
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [DeleteWebhook](../../../go/services/provider_service_test.go) inside_block:deleteWebhook
+        ```
+        <!--/codeinclude-->
+
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [DeleteWebhook](../../../java/src/test/java/trinsic/EcosystemsDemo.java) inside_block:deleteWebhook
+        ```
+        <!--/codeinclude-->
+
+{{ proto_method_tabs("services.provider.v1.Provider.DeleteWebhook") }}
+
 <!-- 
 // This call is not yet implemented
 ## List Ecosystems

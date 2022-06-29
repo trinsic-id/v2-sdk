@@ -124,13 +124,6 @@ If no `query` is specified, this call by default returns the first 100 items in 
         [RegisterIssuer](../../../java/src/test/java/trinsic/WalletsDemo.java) inside_block:searchWalletBasic
         ```
         <!--/codeinclude-->
-
-    === "Ruby"
-        <!--codeinclude-->
-        ```ruby
-        
-        ```
-        <!--/codeinclude-->
     
 {{ proto_method_tabs("services.universalwallet.v1.UniversalWallet.Search") }}
 

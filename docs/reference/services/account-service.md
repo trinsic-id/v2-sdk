@@ -16,67 +16,116 @@ The Account Service allows you to create and sign in to accounts.
 
 ---
 
-## Sign In
+## Login
 
-Sign in to an existing account, or create a new one.
+Attempts the first step of the login process for the specified account, creating it if it does not already exist.
 
-If no account details are passed to this method, an anonymous account will be created.
+Trinsic will response with a `challenge`, and send an authentication code to the account's email address.
+
+The authentication code must be passed along with `challenge` to [LoginConfirm](#login-confirm) to finalize the login.
 
 {{ proto_sample_start() }}
     === "Trinsic CLI" 
         ```bash
-        trinsic account login --email <PROFILE_EMAIL> --name <PROFILE_NAME>
+        trinsic account login --email "bob@example.com"
         ```
 
     === "TypeScript"
+        <!--codeinclude--> 
         ```typescript
-        const allison = (await accountService.signIn()).getProfile();
+        [LoginRequest](../../../web/test/AccountService.test.ts) inside_block:loginRequest
         ```
+        <!--/codeinclude-->
 
     === "C#"
         <!--codeinclude-->
         ```csharp
-        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:accountServiceSignIn
+        [LoginRequest](../../../dotnet/Tests/Tests.cs) inside_block:loginRequest
         ```
         <!--/codeinclude-->
 
     === "Python"
         <!--codeinclude-->
         ```python
-        [Insert Item Wallet](../../../python/tests/test_trinsic_services.py) inside_block:accountServiceSignIn
+        [LoginRequest](../../../python/samples/account_demo.py) inside_block:loginRequest
         ```
         <!--/codeinclude-->
 
     === "Go"
         <!--codeinclude-->
         ```golang
-        [CreateEcosystem](../../../go/services/account_service_test.go) inside_block:accountServiceSignIn
+        [LoginRequest](../../../go/services/account_service_test.go) inside_block:loginRequest
         ```
         <!--/codeinclude-->
 
     === "Java"
         <!--codeinclude-->
         ```java
-        [CreateEcosystem](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:accountServiceSignIn
+        [LoginRequest](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:loginRequest
         ```
         <!--/codeinclude-->
 
-    === "Ruby"
-        ```ruby
-        allison = account_service.sign_in(nil).profile
+{{ proto_method_tabs("services.account.v1.Account.Login") }}
+
+!!! tip "Anonymous Login"
+    Anonymous accounts are accounts which are not tied to any email or phone number, and do not require any authentication. They are typically used for testing and prototypes.
+
+    To create an anonymous account with an SDK, use the `TrinsicService.LoginAnonymous()` method.
+
+    To create an anonymous account with the CLI, simply leave the `email` parameter unspecified.
+
+---
+
+## Login Confirm
+
+Finalizes the login process.
+
+You must pass `challenge` as it was received in response to [Login](#login), along with the confirmation code that was sent in an email.
+
+Our SDK will take care of hashing the confirmation code for you.
+
+{{ proto_sample_start() }}
+    === "Trinsic CLI" 
+        ```bash
+        trinsic account login --email "bob@example.com"
         ```
 
-{{ proto_method_tabs("services.account.v1.Account.SignIn") }}
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [LoginConfirm](../../../web/test/AccountService.test.ts) inside_block:loginConfirm
+        ```
+        <!--/codeinclude-->
 
-This operation, if successful, returns an authentication token string.
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [LoginConfirm](../../../dotnet/Tests/Tests.cs) inside_block:loginConfirm
+        ```
+        <!--/codeinclude-->
 
-!!! warning "Protected Authentication Tokens"
-    If you are attempting to login to a non-anonymous account (by specifying an email address or phone number), the authentication token returned will be _protected_, and cannot be used until it has been unprotected.
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [LoginConfirm](../../../python/samples/account_demo.py) inside_block:loginConfirm
+        ```
+        <!--/codeinclude-->
 
-    Trinsic will have sent a security code to the account's email address or phone number; this security code must be used with the [Unprotect](#unprotect-account-profile) call to receive a usable authentication token.
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [LoginConfirm](../../../go/services/account_service_test.go) inside_block:loginConfirm
+        ```
+        <!--/codeinclude-->
 
-    In the future, we will provide an SDK call to determine if an authentication token is protected.
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [LoginConfirm](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:loginConfirm
+        ```
+        <!--/codeinclude-->
 
+{{ proto_method_tabs("services.account.v1.Account.LoginConfirm") }}
 
 ---
 
@@ -123,10 +172,6 @@ Returns the account information (name, email address, phone number, etc.) used t
         ```
         <!--/codeinclude-->
 
-    === "Ruby"
-        ```ruby
-        info = account_service.get_info()
-        ```
 {{ proto_method_tabs("services.account.v1.Account.Info") }}
 
 !!! note
@@ -138,7 +183,60 @@ Returns the account information (name, email address, phone number, etc.) used t
 
 ---
 
+## Authorize Webhook
+
+Authorizes the ecosystem provider to receive webhooks pertaining to this wallet.
+
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic account authorize-webhook --events "*"
+        ```
+
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [AuthorizeWebhook](../../../web/test/AccountService.test.ts) inside_block:authorizeWebhook
+        ```
+        <!--/codeinclude-->
+
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [AuthorizeWebhook](../../../dotnet/Tests/Tests.cs) inside_block:authorizeWebhook
+        ```
+        <!--/codeinclude-->
+
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [AuthorizeWebhook](../../../python/samples/account_demo.py) inside_block:authorizeWebhook
+        ```
+        <!--/codeinclude-->
+
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [AuthorizeWebhook](../../../go/services/account_service_test.go) inside_block:authorizeWebhook
+        ```
+        <!--/codeinclude-->
+
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [AuthorizeWebhook](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:authorizeWebhook
+        ```
+        <!--/codeinclude-->
+
+{{ proto_method_tabs("services.account.v1.Account.AuthorizeWebhook") }}
+
+---
+
 ## Protect Account Profile
+!!! danger "Deprecated Sign-in Flow"
+    This section is related to the the deprecated [SignIn](#deprecated-sign-in) endpoint; the new [Login](#login) flow does not require
+    the use of `Protect` and `Unprotect`.
+
 Protects the specified account profile with a security code. It is not possible to execute this call using the CLI.
 
 === "TypeScript"
@@ -174,11 +272,6 @@ Protects the specified account profile with a security code. It is not possible 
     ```
     <!--/codeinclude-->
 
-=== "Ruby"
-    ```ruby
-    protected_profile = account_service.protect(account_profile, '1234')
-    ```
-
 !!! info
     In this context, "protection" refers to a cryptographic operation on the authorization token for an account.
 
@@ -191,6 +284,10 @@ Protects the specified account profile with a security code. It is not possible 
 ---
 
 ## Unprotect Account Profile
+!!! danger "Deprecated Sign-in Flow"
+    This section is related to the the deprecated [SignIn](#deprecated-sign-in) endpoint; the new [Login](#login) flow does not require
+    the use of `Protect` and `Unprotect`.
+
 Unprotects the specified account profile using the given code. It is not possible to execute this call using the CLI.
 
 The profile must have been previously protected using the same code that is being used to unprotect it. Profiles can be protected using any arbitrary code via the [Protect](#protect-account-profile) method.
@@ -230,7 +327,66 @@ Most commonly, this method is used on a protected profile received from the [Sig
     ```
     <!--/codeinclude-->
 
-=== "Ruby"
-    ```ruby
-    account_profile = account_service.unprotect(protected_profile, '1234')
-    ```
+
+---
+
+## \[Deprecated\] Sign In
+
+!!! danger "Deprecated"
+    This endpoint is deprecated, and will be removed in the near future.
+
+    Please use [Login](#login) and [LoginConfirm](#login-confirm).
+
+Sign in to an existing account, or create a new one.
+
+If no account details are passed to this method, an anonymous account will be created.
+
+{{ proto_sample_start() }}
+    === "Trinsic CLI" 
+        ```bash
+        trinsic account login --email <PROFILE_EMAIL> --name <PROFILE_NAME>
+        ```
+
+    === "TypeScript"
+        ```typescript
+        const allison = (await accountService.signIn()).getProfile();
+        ```
+
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [CreateProof](../../../dotnet/Tests/Tests.cs) inside_block:accountServiceSignIn
+        ```
+        <!--/codeinclude-->
+
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [Insert Item Wallet](../../../python/tests/test_trinsic_services.py) inside_block:accountServiceSignIn
+        ```
+        <!--/codeinclude-->
+
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [CreateEcosystem](../../../go/services/account_service_test.go) inside_block:accountServiceSignIn
+        ```
+        <!--/codeinclude-->
+
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [CreateEcosystem](../../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:accountServiceSignIn
+        ```
+        <!--/codeinclude-->
+
+{{ proto_method_tabs("services.account.v1.Account.SignIn") }}
+
+This operation, if successful, returns an authentication token string.
+
+!!! warning "Protected Authentication Tokens"
+    If you are attempting to login to a non-anonymous account (by specifying an email address or phone number), the authentication token returned will be _protected_, and cannot be used until it has been unprotected.
+
+    Trinsic will have sent a security code to the account's email address or phone number; this security code must be used with the [Unprotect](#unprotect-account-profile) call to receive a usable authentication token.
+
+    In the future, we will provide an SDK call to determine if an authentication token is protected.
