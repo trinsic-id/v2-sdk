@@ -1,8 +1,4 @@
 # Webhooks
-!!! warning "Under Construction"
-    Webhooks are under active development, and the design is not yet finalized.
-
-    This page will be updated with further details as they become available.
 
 ## Overview
 
