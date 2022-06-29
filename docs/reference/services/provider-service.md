@@ -2,19 +2,22 @@
 
 The Provider Service enables the creation and management of ecosystems and webhooks.
 
-!!! warning "Named / Production Ecosystems"
-    During the beta period, anyone may create an ecosystem with any name. As we move toward general availability of the platform, we will restrict the creation of named / production ecosystems.
+!!! warning "Named vs Anonymous ecosystems"
+    There are two types of ecosystems: *named* and *anonymous*.
 
-    Once this shift occurs, named ecosystems (suitable for production) will be created for you by Trinsic as part of your onboarding process.
+    Named ecosystems are suitable for production, and will be prepared for you by Trinsic during onboarding.
 
-    Ecosystems with auto-generated names may be created by anyone for testing purposes, but these **may not** be used in production -- doing so is an unauthorized use of Trinsic's platform.
+    Anonymous ecosystems have auto-generated names (such as `eager-elephant-94jkn5h`), and may be created by anyone at any time.
 
+    Using an anonymous ecosystem for purposes other than prototyping and testing is considered an unauthorized use of Trinsic's platform.
 
 ---
 
 ## Create Ecosystem
 
 Creates a new ecosystem, along with a root controlling account.
+
+If `name` is left empty, an anonymous ecosystem will be created.
 
 {{proto_sample_start()}}
     === "Trinsic CLI"
