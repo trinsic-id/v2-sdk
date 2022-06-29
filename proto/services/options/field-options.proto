@@ -2,10 +2,13 @@ syntax = "proto3";
 package services.options;
 
 option csharp_namespace = "Trinsic.Services.Protobuf.Options";
-option java_package = "trinsic.services.protobuf.options";
 option go_package = "services/options";
+option java_package = "trinsic.services.protobuf.options";
+option java_multiple_files = true;
 
 import "google/protobuf/descriptor.proto";
+
+// This file is compiled into `protoc-gen-sdk`
 
 
 // Trinsic public SDK proto options start at 60,000
@@ -14,4 +17,17 @@ extend google.protobuf.FieldOptions {
     // This is not the same as an `optional` protobuf label;
     // it only impacts documentation generation for the field.
     optional bool optional = 60000;
+}
+
+message SdkTemplateOption {
+    // Whether the service endpoint allows anonymous (no Oberon) authentication
+    // This is used by the `protoc-gen-trinsic-sdk` plugin for metadata.
+    optional bool anonymous = 1;
+    // Whether the SDK template generator should ignoroe this method. This method will
+    // be wrapped manually.
+    optional bool ignore = 2;
+}
+
+extend google.protobuf.MethodOptions {
+    optional SdkTemplateOption sdk_template_option = 60001;
 }

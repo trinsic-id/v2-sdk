@@ -14,7 +14,7 @@ import trinsic.okapi.DidException;
 import trinsic.sdk.options.v1.Options;
 import trinsic.security.ISecurityProvider;
 import trinsic.security.OberonSecurityProvider;
-import trinsic.services.account.v1.AccountOuterClass;
+import trinsic.services.account.v1.AccountProfile;
 
 public abstract class ServiceBase {
   private final ISecurityProvider securityProvider = new OberonSecurityProvider();
@@ -43,8 +43,8 @@ public abstract class ServiceBase {
     return metadata;
   }
 
-  private AccountOuterClass.AccountProfile getProfile() throws InvalidProtocolBufferException {
-    return AccountOuterClass.AccountProfile.newBuilder()
+  private AccountProfile getProfile() throws InvalidProtocolBufferException {
+    return AccountProfile.newBuilder()
         .mergeFrom(Base64.getUrlDecoder().decode(this.options.getAuthToken()))
         .build();
   }

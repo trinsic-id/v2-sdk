@@ -34,38 +34,25 @@ object VerifiableCredentialGrpcKt {
   val serviceDescriptor: ServiceDescriptor
     get() = VerifiableCredentialGrpc.getServiceDescriptor()
 
-  val issueMethod:
-      MethodDescriptor<VerifiableCredentials.IssueRequest, VerifiableCredentials.IssueResponse>
+  val issueMethod: MethodDescriptor<IssueRequest, IssueResponse>
     @JvmStatic get() = VerifiableCredentialGrpc.getIssueMethod()
 
-  val issueFromTemplateMethod:
-      MethodDescriptor<
-          VerifiableCredentials.IssueFromTemplateRequest,
-          VerifiableCredentials.IssueFromTemplateResponse>
+  val issueFromTemplateMethod: MethodDescriptor<IssueFromTemplateRequest, IssueFromTemplateResponse>
     @JvmStatic get() = VerifiableCredentialGrpc.getIssueFromTemplateMethod()
 
-  val checkStatusMethod:
-      MethodDescriptor<
-          VerifiableCredentials.CheckStatusRequest, VerifiableCredentials.CheckStatusResponse>
+  val checkStatusMethod: MethodDescriptor<CheckStatusRequest, CheckStatusResponse>
     @JvmStatic get() = VerifiableCredentialGrpc.getCheckStatusMethod()
 
-  val updateStatusMethod:
-      MethodDescriptor<
-          VerifiableCredentials.UpdateStatusRequest, VerifiableCredentials.UpdateStatusResponse>
+  val updateStatusMethod: MethodDescriptor<UpdateStatusRequest, UpdateStatusResponse>
     @JvmStatic get() = VerifiableCredentialGrpc.getUpdateStatusMethod()
 
-  val createProofMethod:
-      MethodDescriptor<
-          VerifiableCredentials.CreateProofRequest, VerifiableCredentials.CreateProofResponse>
+  val createProofMethod: MethodDescriptor<CreateProofRequest, CreateProofResponse>
     @JvmStatic get() = VerifiableCredentialGrpc.getCreateProofMethod()
 
-  val verifyProofMethod:
-      MethodDescriptor<
-          VerifiableCredentials.VerifyProofRequest, VerifiableCredentials.VerifyProofResponse>
+  val verifyProofMethod: MethodDescriptor<VerifyProofRequest, VerifyProofResponse>
     @JvmStatic get() = VerifiableCredentialGrpc.getVerifyProofMethod()
 
-  val sendMethod:
-      MethodDescriptor<VerifiableCredentials.SendRequest, VerifiableCredentials.SendResponse>
+  val sendMethod: MethodDescriptor<SendRequest, SendResponse>
     @JvmStatic get() = VerifiableCredentialGrpc.getSendMethod()
 
   /**
@@ -94,10 +81,7 @@ object VerifiableCredentialGrpcKt {
      *
      * @return The single response from the server.
      */
-    suspend fun issue(
-        request: VerifiableCredentials.IssueRequest,
-        headers: Metadata = Metadata()
-    ): VerifiableCredentials.IssueResponse =
+    suspend fun issue(request: IssueRequest, headers: Metadata = Metadata()): IssueResponse =
         unaryRpc(channel, VerifiableCredentialGrpc.getIssueMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
@@ -112,9 +96,9 @@ object VerifiableCredentialGrpcKt {
      * @return The single response from the server.
      */
     suspend fun issueFromTemplate(
-        request: VerifiableCredentials.IssueFromTemplateRequest,
+        request: IssueFromTemplateRequest,
         headers: Metadata = Metadata()
-    ): VerifiableCredentials.IssueFromTemplateResponse =
+    ): IssueFromTemplateResponse =
         unaryRpc(
             channel,
             VerifiableCredentialGrpc.getIssueFromTemplateMethod(),
@@ -134,9 +118,9 @@ object VerifiableCredentialGrpcKt {
      * @return The single response from the server.
      */
     suspend fun checkStatus(
-        request: VerifiableCredentials.CheckStatusRequest,
+        request: CheckStatusRequest,
         headers: Metadata = Metadata()
-    ): VerifiableCredentials.CheckStatusResponse =
+    ): CheckStatusResponse =
         unaryRpc(
             channel, VerifiableCredentialGrpc.getCheckStatusMethod(), request, callOptions, headers)
     /**
@@ -152,9 +136,9 @@ object VerifiableCredentialGrpcKt {
      * @return The single response from the server.
      */
     suspend fun updateStatus(
-        request: VerifiableCredentials.UpdateStatusRequest,
+        request: UpdateStatusRequest,
         headers: Metadata = Metadata()
-    ): VerifiableCredentials.UpdateStatusResponse =
+    ): UpdateStatusResponse =
         unaryRpc(
             channel,
             VerifiableCredentialGrpc.getUpdateStatusMethod(),
@@ -174,9 +158,9 @@ object VerifiableCredentialGrpcKt {
      * @return The single response from the server.
      */
     suspend fun createProof(
-        request: VerifiableCredentials.CreateProofRequest,
+        request: CreateProofRequest,
         headers: Metadata = Metadata()
-    ): VerifiableCredentials.CreateProofResponse =
+    ): CreateProofResponse =
         unaryRpc(
             channel, VerifiableCredentialGrpc.getCreateProofMethod(), request, callOptions, headers)
     /**
@@ -192,9 +176,9 @@ object VerifiableCredentialGrpcKt {
      * @return The single response from the server.
      */
     suspend fun verifyProof(
-        request: VerifiableCredentials.VerifyProofRequest,
+        request: VerifyProofRequest,
         headers: Metadata = Metadata()
-    ): VerifiableCredentials.VerifyProofResponse =
+    ): VerifyProofResponse =
         unaryRpc(
             channel, VerifiableCredentialGrpc.getVerifyProofMethod(), request, callOptions, headers)
     /**
@@ -209,10 +193,7 @@ object VerifiableCredentialGrpcKt {
      *
      * @return The single response from the server.
      */
-    suspend fun send(
-        request: VerifiableCredentials.SendRequest,
-        headers: Metadata = Metadata()
-    ): VerifiableCredentials.SendResponse =
+    suspend fun send(request: SendRequest, headers: Metadata = Metadata()): SendResponse =
         unaryRpc(channel, VerifiableCredentialGrpc.getSendMethod(), request, callOptions, headers)
   }
 
@@ -234,9 +215,7 @@ object VerifiableCredentialGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun issue(
-        request: VerifiableCredentials.IssueRequest
-    ): VerifiableCredentials.IssueResponse =
+    open suspend fun issue(request: IssueRequest): IssueResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.verifiablecredentials.v1.VerifiableCredential.Issue is unimplemented"))
@@ -253,8 +232,8 @@ object VerifiableCredentialGrpcKt {
      * @param request The request from the client.
      */
     open suspend fun issueFromTemplate(
-        request: VerifiableCredentials.IssueFromTemplateRequest
-    ): VerifiableCredentials.IssueFromTemplateResponse =
+        request: IssueFromTemplateRequest
+    ): IssueFromTemplateResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.verifiablecredentials.v1.VerifiableCredential.IssueFromTemplate is unimplemented"))
@@ -270,9 +249,7 @@ object VerifiableCredentialGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun checkStatus(
-        request: VerifiableCredentials.CheckStatusRequest
-    ): VerifiableCredentials.CheckStatusResponse =
+    open suspend fun checkStatus(request: CheckStatusRequest): CheckStatusResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.verifiablecredentials.v1.VerifiableCredential.CheckStatus is unimplemented"))
@@ -288,9 +265,7 @@ object VerifiableCredentialGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun updateStatus(
-        request: VerifiableCredentials.UpdateStatusRequest
-    ): VerifiableCredentials.UpdateStatusResponse =
+    open suspend fun updateStatus(request: UpdateStatusRequest): UpdateStatusResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.verifiablecredentials.v1.VerifiableCredential.UpdateStatus is unimplemented"))
@@ -306,9 +281,7 @@ object VerifiableCredentialGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun createProof(
-        request: VerifiableCredentials.CreateProofRequest
-    ): VerifiableCredentials.CreateProofResponse =
+    open suspend fun createProof(request: CreateProofRequest): CreateProofResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.verifiablecredentials.v1.VerifiableCredential.CreateProof is unimplemented"))
@@ -324,9 +297,7 @@ object VerifiableCredentialGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun verifyProof(
-        request: VerifiableCredentials.VerifyProofRequest
-    ): VerifiableCredentials.VerifyProofResponse =
+    open suspend fun verifyProof(request: VerifyProofRequest): VerifyProofResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.verifiablecredentials.v1.VerifiableCredential.VerifyProof is unimplemented"))
@@ -342,9 +313,7 @@ object VerifiableCredentialGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun send(
-        request: VerifiableCredentials.SendRequest
-    ): VerifiableCredentials.SendResponse =
+    open suspend fun send(request: SendRequest): SendResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.verifiablecredentials.v1.VerifiableCredential.Send is unimplemented"))

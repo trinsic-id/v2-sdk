@@ -4,8 +4,8 @@ import com.google.protobuf.InvalidProtocolBufferException
 import java.util.concurrent.ExecutionException
 import trinsic.okapi.DidException
 import trinsic.sdk.options.v1.Options
+import trinsic.services.verifiablecredentials.v1.*
 import trinsic.services.verifiablecredentials.v1.VerifiableCredentialGrpcKt
-import trinsic.services.verifiablecredentials.v1.VerifiableCredentials.*
 
 class CredentialServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(options) {
   var stub = VerifiableCredentialGrpcKt.VerifiableCredentialCoroutineStub(this.channel)
