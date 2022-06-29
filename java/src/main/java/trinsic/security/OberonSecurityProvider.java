@@ -8,12 +8,12 @@ import trinsic.okapi.DidException;
 import trinsic.okapi.Hashing;
 import trinsic.okapi.Oberon;
 import trinsic.okapi.security.v1.Security;
-import trinsic.services.account.v1.AccountOuterClass;
-import trinsic.services.common.v1.Common;
+import trinsic.services.account.v1.AccountProfile;
+import trinsic.services.common.v1.Nonce;
 
 public class OberonSecurityProvider implements ISecurityProvider {
   @Override
-  public String GetAuthHeader(AccountOuterClass.AccountProfile accountProfile, Message message)
+  public String GetAuthHeader(AccountProfile accountProfile, Message message)
       throws InvalidProtocolBufferException, DidException {
     if (accountProfile.hasProtection() && accountProfile.getProtection().getEnabled())
       throw new RuntimeException("the token must be unprotected before use.");
@@ -27,7 +27,7 @@ public class OberonSecurityProvider implements ISecurityProvider {
             .getDigest();
 
     var nonce =
-        Common.Nonce.newBuilder()
+        Nonce.newBuilder()
             .setTimestamp(Instant.now().toEpochMilli())
             .setRequestHash(messageHash)
             .build();

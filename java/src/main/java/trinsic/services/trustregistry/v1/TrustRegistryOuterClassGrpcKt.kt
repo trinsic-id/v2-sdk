@@ -37,44 +37,26 @@ object TrustRegistryGrpcKt {
   val serviceDescriptor: ServiceDescriptor
     get() = TrustRegistryGrpc.getServiceDescriptor()
 
-  val addFrameworkMethod:
-      MethodDescriptor<
-          TrustRegistryOuterClass.AddFrameworkRequest, TrustRegistryOuterClass.AddFrameworkResponse>
+  val addFrameworkMethod: MethodDescriptor<AddFrameworkRequest, AddFrameworkResponse>
     @JvmStatic get() = TrustRegistryGrpc.getAddFrameworkMethod()
 
-  val removeFrameworkMethod:
-      MethodDescriptor<
-          TrustRegistryOuterClass.RemoveFrameworkRequest,
-          TrustRegistryOuterClass.RemoveFrameworkResponse>
+  val removeFrameworkMethod: MethodDescriptor<RemoveFrameworkRequest, RemoveFrameworkResponse>
     @JvmStatic get() = TrustRegistryGrpc.getRemoveFrameworkMethod()
 
-  val searchRegistryMethod:
-      MethodDescriptor<
-          TrustRegistryOuterClass.SearchRegistryRequest,
-          TrustRegistryOuterClass.SearchRegistryResponse>
+  val searchRegistryMethod: MethodDescriptor<SearchRegistryRequest, SearchRegistryResponse>
     @JvmStatic get() = TrustRegistryGrpc.getSearchRegistryMethod()
 
-  val registerMemberMethod:
-      MethodDescriptor<
-          TrustRegistryOuterClass.RegisterMemberRequest,
-          TrustRegistryOuterClass.RegisterMemberResponse>
+  val registerMemberMethod: MethodDescriptor<RegisterMemberRequest, RegisterMemberResponse>
     @JvmStatic get() = TrustRegistryGrpc.getRegisterMemberMethod()
 
-  val unregisterMemberMethod:
-      MethodDescriptor<
-          TrustRegistryOuterClass.UnregisterMemberRequest,
-          TrustRegistryOuterClass.UnregisterMemberResponse>
+  val unregisterMemberMethod: MethodDescriptor<UnregisterMemberRequest, UnregisterMemberResponse>
     @JvmStatic get() = TrustRegistryGrpc.getUnregisterMemberMethod()
 
   val getMembershipStatusMethod:
-      MethodDescriptor<
-          TrustRegistryOuterClass.GetMembershipStatusRequest,
-          TrustRegistryOuterClass.GetMembershipStatusResponse>
+      MethodDescriptor<GetMembershipStatusRequest, GetMembershipStatusResponse>
     @JvmStatic get() = TrustRegistryGrpc.getGetMembershipStatusMethod()
 
-  val fetchDataMethod:
-      MethodDescriptor<
-          TrustRegistryOuterClass.FetchDataRequest, TrustRegistryOuterClass.FetchDataResponse>
+  val fetchDataMethod: MethodDescriptor<FetchDataRequest, FetchDataResponse>
     @JvmStatic get() = TrustRegistryGrpc.getFetchDataMethod()
 
   /**
@@ -102,9 +84,9 @@ object TrustRegistryGrpcKt {
      * @return The single response from the server.
      */
     suspend fun addFramework(
-        request: TrustRegistryOuterClass.AddFrameworkRequest,
+        request: AddFrameworkRequest,
         headers: Metadata = Metadata()
-    ): TrustRegistryOuterClass.AddFrameworkResponse =
+    ): AddFrameworkResponse =
         unaryRpc(channel, TrustRegistryGrpc.getAddFrameworkMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
@@ -119,9 +101,9 @@ object TrustRegistryGrpcKt {
      * @return The single response from the server.
      */
     suspend fun removeFramework(
-        request: TrustRegistryOuterClass.RemoveFrameworkRequest,
+        request: RemoveFrameworkRequest,
         headers: Metadata = Metadata()
-    ): TrustRegistryOuterClass.RemoveFrameworkResponse =
+    ): RemoveFrameworkResponse =
         unaryRpc(
             channel, TrustRegistryGrpc.getRemoveFrameworkMethod(), request, callOptions, headers)
     /**
@@ -137,9 +119,9 @@ object TrustRegistryGrpcKt {
      * @return The single response from the server.
      */
     suspend fun searchRegistry(
-        request: TrustRegistryOuterClass.SearchRegistryRequest,
+        request: SearchRegistryRequest,
         headers: Metadata = Metadata()
-    ): TrustRegistryOuterClass.SearchRegistryResponse =
+    ): SearchRegistryResponse =
         unaryRpc(
             channel, TrustRegistryGrpc.getSearchRegistryMethod(), request, callOptions, headers)
     /**
@@ -155,9 +137,9 @@ object TrustRegistryGrpcKt {
      * @return The single response from the server.
      */
     suspend fun registerMember(
-        request: TrustRegistryOuterClass.RegisterMemberRequest,
+        request: RegisterMemberRequest,
         headers: Metadata = Metadata()
-    ): TrustRegistryOuterClass.RegisterMemberResponse =
+    ): RegisterMemberResponse =
         unaryRpc(
             channel, TrustRegistryGrpc.getRegisterMemberMethod(), request, callOptions, headers)
     /**
@@ -173,9 +155,9 @@ object TrustRegistryGrpcKt {
      * @return The single response from the server.
      */
     suspend fun unregisterMember(
-        request: TrustRegistryOuterClass.UnregisterMemberRequest,
+        request: UnregisterMemberRequest,
         headers: Metadata = Metadata()
-    ): TrustRegistryOuterClass.UnregisterMemberResponse =
+    ): UnregisterMemberResponse =
         unaryRpc(
             channel, TrustRegistryGrpc.getUnregisterMemberMethod(), request, callOptions, headers)
     /**
@@ -191,9 +173,9 @@ object TrustRegistryGrpcKt {
      * @return The single response from the server.
      */
     suspend fun getMembershipStatus(
-        request: TrustRegistryOuterClass.GetMembershipStatusRequest,
+        request: GetMembershipStatusRequest,
         headers: Metadata = Metadata()
-    ): TrustRegistryOuterClass.GetMembershipStatusResponse =
+    ): GetMembershipStatusResponse =
         unaryRpc(
             channel,
             TrustRegistryGrpc.getGetMembershipStatusMethod(),
@@ -214,9 +196,9 @@ object TrustRegistryGrpcKt {
      * @return A flow that, when collected, emits the responses from the server.
      */
     fun fetchData(
-        request: TrustRegistryOuterClass.FetchDataRequest,
+        request: FetchDataRequest,
         headers: Metadata = Metadata()
-    ): Flow<TrustRegistryOuterClass.FetchDataResponse> =
+    ): Flow<FetchDataResponse> =
         serverStreamingRpc(
             channel, TrustRegistryGrpc.getFetchDataMethod(), request, callOptions, headers)
   }
@@ -238,9 +220,7 @@ object TrustRegistryGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun addFramework(
-        request: TrustRegistryOuterClass.AddFrameworkRequest
-    ): TrustRegistryOuterClass.AddFrameworkResponse =
+    open suspend fun addFramework(request: AddFrameworkRequest): AddFrameworkResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.trustregistry.v1.TrustRegistry.AddFramework is unimplemented"))
@@ -255,9 +235,7 @@ object TrustRegistryGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun removeFramework(
-        request: TrustRegistryOuterClass.RemoveFrameworkRequest
-    ): TrustRegistryOuterClass.RemoveFrameworkResponse =
+    open suspend fun removeFramework(request: RemoveFrameworkRequest): RemoveFrameworkResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.trustregistry.v1.TrustRegistry.RemoveFramework is unimplemented"))
@@ -272,9 +250,7 @@ object TrustRegistryGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun searchRegistry(
-        request: TrustRegistryOuterClass.SearchRegistryRequest
-    ): TrustRegistryOuterClass.SearchRegistryResponse =
+    open suspend fun searchRegistry(request: SearchRegistryRequest): SearchRegistryResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.trustregistry.v1.TrustRegistry.SearchRegistry is unimplemented"))
@@ -289,9 +265,7 @@ object TrustRegistryGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun registerMember(
-        request: TrustRegistryOuterClass.RegisterMemberRequest
-    ): TrustRegistryOuterClass.RegisterMemberResponse =
+    open suspend fun registerMember(request: RegisterMemberRequest): RegisterMemberResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.trustregistry.v1.TrustRegistry.RegisterMember is unimplemented"))
@@ -306,9 +280,7 @@ object TrustRegistryGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun unregisterMember(
-        request: TrustRegistryOuterClass.UnregisterMemberRequest
-    ): TrustRegistryOuterClass.UnregisterMemberResponse =
+    open suspend fun unregisterMember(request: UnregisterMemberRequest): UnregisterMemberResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.trustregistry.v1.TrustRegistry.UnregisterMember is unimplemented"))
@@ -325,8 +297,8 @@ object TrustRegistryGrpcKt {
      * @param request The request from the client.
      */
     open suspend fun getMembershipStatus(
-        request: TrustRegistryOuterClass.GetMembershipStatusRequest
-    ): TrustRegistryOuterClass.GetMembershipStatusResponse =
+        request: GetMembershipStatusRequest
+    ): GetMembershipStatusResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.trustregistry.v1.TrustRegistry.GetMembershipStatus is unimplemented"))
@@ -343,9 +315,7 @@ object TrustRegistryGrpcKt {
      *
      * @param request The request from the client.
      */
-    open fun fetchData(
-        request: TrustRegistryOuterClass.FetchDataRequest
-    ): Flow<TrustRegistryOuterClass.FetchDataResponse> =
+    open fun fetchData(request: FetchDataRequest): Flow<FetchDataResponse> =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.trustregistry.v1.TrustRegistry.FetchData is unimplemented"))

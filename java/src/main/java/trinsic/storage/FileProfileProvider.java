@@ -9,16 +9,15 @@ import java.nio.file.Path;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import org.jetbrains.annotations.NotNull;
-import trinsic.services.account.v1.AccountOuterClass;
+import trinsic.services.account.v1.AccountProfile;
 
 public class FileProfileProvider implements IProfileProvider {
   @Override
-  public AccountOuterClass.AccountProfile get(String name)
-      throws NoSuchAlgorithmException, IOException {
+  public AccountProfile get(String name) throws NoSuchAlgorithmException, IOException {
     // TODO - Location application data
     Path filename = getFilename(name);
     var readFile = new FileInputStream(String.valueOf(filename));
-    return AccountOuterClass.AccountProfile.newBuilder().mergeFrom(readFile.readAllBytes()).build();
+    return AccountProfile.newBuilder().mergeFrom(readFile.readAllBytes()).build();
   }
 
   @NotNull
@@ -29,7 +28,7 @@ public class FileProfileProvider implements IProfileProvider {
   }
 
   @Override
-  public void save(String name, AccountOuterClass.AccountProfile accountProfile)
+  public void save(String name, AccountProfile accountProfile)
       throws NoSuchAlgorithmException, IOException {
     // TODO - Location application data
     Path filename = getFilename(name);

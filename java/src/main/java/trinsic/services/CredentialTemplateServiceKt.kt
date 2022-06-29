@@ -3,8 +3,8 @@ package trinsic.services
 import com.google.protobuf.InvalidProtocolBufferException
 import trinsic.okapi.DidException
 import trinsic.sdk.options.v1.Options.ServiceOptions
+import trinsic.services.verifiablecredentials.templates.v1.*
 import trinsic.services.verifiablecredentials.templates.v1.CredentialTemplatesGrpcKt
-import trinsic.services.verifiablecredentials.templates.v1.Templates.*
 
 class CredentialTemplateServiceKt(options: ServiceOptions.Builder?) : ServiceBase(options) {
   var stub = CredentialTemplatesGrpcKt.CredentialTemplatesCoroutineStub(this.channel)

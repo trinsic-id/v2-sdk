@@ -6,7 +6,7 @@ import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.okapi.DidException;
 import trinsic.services.TrinsicService;
-import trinsic.services.trustregistry.v1.TrustRegistryOuterClass;
+import trinsic.services.trustregistry.v1.*;
 
 public class TrustRegistryDemo {
   public static void main(String[] args)
@@ -29,7 +29,7 @@ public class TrustRegistryDemo {
         trinsic
             .trustRegistry()
             .addFramework(
-                TrustRegistryOuterClass.AddFrameworkRequest.newBuilder()
+                AddFrameworkRequest.newBuilder()
                     .setGovernanceFrameworkUri(frameworkUri)
                     .setName("Example Framework" + UUID.randomUUID())
                     .build())
@@ -40,7 +40,7 @@ public class TrustRegistryDemo {
     trinsic
         .trustRegistry()
         .registerMember(
-            TrustRegistryOuterClass.RegisterMemberRequest.newBuilder()
+            RegisterMemberRequest.newBuilder()
                 .setDidUri(didUri)
                 .setFrameworkId(frameworkResponse.getId())
                 .setSchemaUri(typeUri)
@@ -51,15 +51,14 @@ public class TrustRegistryDemo {
         trinsic
             .trustRegistry()
             .checkIssuerStatus(
-                TrustRegistryOuterClass.GetMembershipStatusRequest.newBuilder()
+                GetMembershipStatusRequest.newBuilder()
                     .setDidUri(didUri)
                     .setGovernanceFrameworkUri(frameworkUri)
                     .setSchemaUri(typeUri)
                     .build())
             .get();
     // }
-    Assertions.assertEquals(
-        TrustRegistryOuterClass.RegistrationStatus.CURRENT, issuerStatus.getStatus());
+    Assertions.assertEquals(RegistrationStatus.CURRENT, issuerStatus.getStatus());
 
     // searchTrustRegistry() {
     var searchResult = trinsic.trustRegistry().searchRegistry().get();
@@ -72,7 +71,7 @@ public class TrustRegistryDemo {
     trinsic
         .trustRegistry()
         .unregisterIssuer(
-            TrustRegistryOuterClass.UnregisterMemberRequest.newBuilder()
+            UnregisterMemberRequest.newBuilder()
                 .setFrameworkId(frameworkResponse.getId())
                 .setDidUri(didUri)
                 .setSchemaUri(typeUri)
