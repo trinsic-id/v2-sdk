@@ -32,14 +32,14 @@ If you are using one of the Trinsic SDKs, you will need to create an instance of
 === "C#"
     <!--codeinclude-->
     ```csharp
-    [CreateProof](../../dotnet/Tests/Tests.cs) inside_block:accountServiceConstructor
+    [CreateProof](../../dotnet/Tests/Tests.cs) inside_block:trinsicServiceConstructor
     ```
     <!--/codeinclude-->
 
 === "Python"
     <!--codeinclude-->
     ```python
-    [Insert Item Wallet](../../python/tests/test_trinsic_services.py) inside_block:accountServiceConstructor
+    [Insert Item Wallet](../../python/samples/vaccine_demo.py) inside_block:trinsicServiceConstructor
     ```
     <!--/codeinclude-->
 
@@ -57,7 +57,7 @@ If you are using one of the Trinsic SDKs, you will need to create an instance of
     ```
     <!--/codeinclude-->
 
-All service constructors also accept a [ServiceOptions](../proto/index.md#serviceoptions) object as an argument, allowing you to specify a default ecosystem and other configuration properties.
+The constructor accepts a [ServiceOptions](../proto/index.md#serviceoptions) object as an argument, allowing you to specify a default ecosystem and other configuration properties:
 
 {{ proto_message('sdk.options.v1.ServiceOptions') }}
 
