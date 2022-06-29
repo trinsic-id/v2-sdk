@@ -42,11 +42,7 @@ public class AccountService extends ServiceBase {
     var response = this.stub.signIn(request);
     return Futures.transform(
         response,
-        input -> {
-          var profileBase64 =
-              Base64.getUrlEncoder().encodeToString(input.getProfile().toByteArray());
-          return profileBase64;
-        },
+        input -> Base64.getUrlEncoder().encodeToString(input.getProfile().toByteArray()),
         Executors.newSingleThreadExecutor());
   }
 
@@ -148,9 +144,7 @@ public class AccountService extends ServiceBase {
         input -> {
           if (!input.hasProfile() || input.getProfile().getProtection().getEnabled()) return null;
 
-          var profileBase64 =
-              Base64.getUrlEncoder().encodeToString(input.getProfile().toByteArray());
-          return profileBase64;
+            return Base64.getUrlEncoder().encodeToString(input.getProfile().toByteArray());
         },
         Executors.newSingleThreadExecutor());
   }
