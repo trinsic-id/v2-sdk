@@ -6,7 +6,7 @@ const options = getTestServerOptions();
 
 async function printGetInfo(service: TrinsicService, profile: string) {
   service.options.authToken = profile;
-  const info = await service.account().info();
+  const info = await service.account().getInfo();
 }
 
 describe("AccountService Unit Tests", () => {

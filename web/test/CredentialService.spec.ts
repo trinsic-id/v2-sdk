@@ -21,7 +21,7 @@ describe("CredentialService Unit Tests", () => {
 
   it("Issue Credential From Template", async () => {
     //Get account info so we can compare issued DID etc.
-    let info = await trinsic.account().info();
+    let info = await trinsic.account().getInfo();
 
     //Set issuer DID of credential
     let vaccineCert = Object.assign({}, vaccineCertUnsigned, {
@@ -30,7 +30,7 @@ describe("CredentialService Unit Tests", () => {
     let credentialJSON = JSON.stringify(vaccineCert);
 
     // issueCredential() {
-    const issueResponse = await trinsic.credential().issueCredential(
+    const issueResponse = await trinsic.credential().issue(
       IssueRequest.fromPartial({ documentJson: credentialJSON })
     );
     // }
