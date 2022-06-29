@@ -30,8 +30,7 @@ public class TrinsicService extends ServiceBase {
   }
 
   public TemplateService template() {
-    if (_TemplateService == null)
-      _TemplateService = new TemplateService(this.getOptionsBuilder());
+    if (_TemplateService == null) _TemplateService = new TemplateService(this.getOptionsBuilder());
     return _TemplateService;
   }
 
