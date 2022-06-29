@@ -67,7 +67,7 @@ Future runVaccineDemo() async {
 
   // issueCredential() {
   var issueResponse = await credentialService
-      .issueCredential(IssueRequest(documentJson: credentialJson));
+      .issue(IssueRequest(documentJson: credentialJson));
   // }
   var credential = issueResponse.signedDocumentJson;
   print("Credential: $credential");

@@ -51,7 +51,7 @@ Future runTrustRegistryDemo() async {
   assert(checkResponse.status == RegistrationStatus.CURRENT);
 
   // searchTrustRegistry() {
-  var searchResult = await trustRegistryService.searchRegistry();
+  var searchResult = await trustRegistryService.search();
   // }
   assert(searchResult.itemsJson != "");
 
