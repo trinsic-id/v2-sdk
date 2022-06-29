@@ -130,7 +130,7 @@ public class VaccineDemo {
     var issueResponse =
         trinsicService
             .credential()
-            .issueCredentialFromTemplate(
+            .issueFromTemplate(
                 IssueFromTemplateRequest.newBuilder()
                     .setTemplateId(templateId)
                     .setValuesJson(valuesJson)

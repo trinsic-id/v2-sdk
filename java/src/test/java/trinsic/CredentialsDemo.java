@@ -1,14 +1,18 @@
 package trinsic;
 
+import trinsic.okapi.DidException;
+import trinsic.services.TrinsicService;
+import trinsic.services.provider.v1.CreateEcosystemRequest;
+import trinsic.services.verifiablecredentials.v1.CreateProofRequest;
+import trinsic.services.verifiablecredentials.v1.IssueRequest;
+import trinsic.services.verifiablecredentials.v1.SendRequest;
+import trinsic.services.verifiablecredentials.v1.VerifyProofRequest;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.concurrent.ExecutionException;
-import trinsic.okapi.DidException;
-import trinsic.services.TrinsicService;
-import trinsic.services.provider.v1.CreateEcosystemRequest;
-import trinsic.services.verifiablecredentials.v1.*;
 
 public class CredentialsDemo {
   public static void main(String[] args)
@@ -46,7 +50,7 @@ public class CredentialsDemo {
     var issueResult =
         trinsic
             .credential()
-            .issueCredential(IssueRequest.newBuilder().setDocumentJson(unsignedCredential).build())
+            .issue(IssueRequest.newBuilder().setDocumentJson(unsignedCredential).build())
             .get();
 
     var signedCredentialJson = issueResult.getSignedDocumentJson();
@@ -81,7 +85,7 @@ public class CredentialsDemo {
                   .setEmail(recipientEmail)
                   .build());
       // }
-    } catch (ExecutionException re) {
+    } catch (RuntimeException re) {
       // This is okay, we don't expect that account to exist.
     }
 

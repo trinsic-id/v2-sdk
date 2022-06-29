@@ -1,12 +1,13 @@
 package trinsic;
 
-import java.io.IOException;
-import java.util.UUID;
-import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.okapi.DidException;
 import trinsic.services.TrinsicService;
 import trinsic.services.trustregistry.v1.*;
+
+import java.io.IOException;
+import java.util.UUID;
+import java.util.concurrent.ExecutionException;
 
 public class TrustRegistryDemo {
   public static void main(String[] args)
@@ -50,7 +51,7 @@ public class TrustRegistryDemo {
     var issuerStatus =
         trinsic
             .trustRegistry()
-            .checkIssuerStatus(
+            .getMembershipStatus(
                 GetMembershipStatusRequest.newBuilder()
                     .setDidUri(didUri)
                     .setGovernanceFrameworkUri(frameworkUri)
@@ -61,7 +62,7 @@ public class TrustRegistryDemo {
     Assertions.assertEquals(RegistrationStatus.CURRENT, issuerStatus.getStatus());
 
     // searchTrustRegistry() {
-    var searchResult = trinsic.trustRegistry().searchRegistry().get();
+    var searchResult = trinsic.trustRegistry().search().get();
     // }
     Assertions.assertNotNull(searchResult);
     Assertions.assertNotNull(searchResult.getItemsJson());
@@ -70,7 +71,7 @@ public class TrustRegistryDemo {
     // unregisterIssuer() {
     trinsic
         .trustRegistry()
-        .unregisterIssuer(
+        .unregisterMember(
             UnregisterMemberRequest.newBuilder()
                 .setFrameworkId(frameworkResponse.getId())
                 .setDidUri(didUri)
