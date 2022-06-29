@@ -2077,7 +2077,7 @@
 <span class="w">        </span><span class="n">AddWebhookRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
 <span class="w">            </span><span class="p">.</span><span class="na">setDestinationUrl</span><span class="p">(</span><span class="s">&quot;https://example.com/webhooks/trinsic&quot;</span><span class="p">)</span><span class="w"></span>
 <span class="w">            </span><span class="p">.</span><span class="na">setSecret</span><span class="p">(</span><span class="s">&quot;my well-kept secret&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">            </span><span class="p">.</span><span class="na">setEvents</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">//All events</span><span class="w"></span>
+<span class="w">            </span><span class="p">.</span><span class="na">addEvents</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">//All events</span><span class="w"></span>
 <span class="w">            </span><span class="p">.</span><span class="na">build</span><span class="p">()</span><span class="w"></span>
 <span class="w">    </span><span class="p">).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>

@@ -2083,7 +2083,7 @@
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">authorizeResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
 <span class="w">    </span><span class="n">trinsic</span><span class="p">.</span><span class="na">account</span><span class="p">().</span><span class="na">authorizeWebhook</span><span class="p">(</span><span class="w"></span>
 <span class="w">        </span><span class="n">AuthorizeWebhookRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
-<span class="w">            </span><span class="p">.</span><span class="na">setEvents</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">//Authorize all events</span><span class="w"></span>
+<span class="w">            </span><span class="p">.</span><span class="na">addEvents</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">//Authorize all events</span><span class="w"></span>
 <span class="w">            </span><span class="p">.</span><span class="na">build</span><span class="p">()</span><span class="w"></span>
 <span class="w">    </span><span class="p">).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
