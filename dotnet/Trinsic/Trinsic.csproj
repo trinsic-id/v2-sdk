@@ -7,7 +7,7 @@
         <IsBrowser>false</IsBrowser>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <DocumentationFile>Trinsic.xml</DocumentationFile>
-        <PackageReadmeFile>../README.md</PackageReadmeFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(IsBrowser)' == 'true'">
@@ -52,6 +52,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <None Include="../README.md" Pack="true" PackagePath="\" />
         <Protobuf Include="../../proto/**/*.proto" ProtoRoot="../../proto" />
     </ItemGroup>
 
