@@ -378,7 +378,7 @@ public class Tests
         invitationResponse.Should().NotBeNull();
         invitationResponse.InvitationCode.Should().NotBeEmpty();
 
-        await Assert.ThrowsAsync<Exception>(async () => await trinsic.Provider.InvitationStatusAsync(new()));
+        await Assert.ThrowsAsync<RpcException>(async () => await trinsic.Provider.InvitationStatusAsync(new()));
     }
 
     [Fact(Skip = "Ecosystem support not complete yet")]

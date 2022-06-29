@@ -47,7 +47,7 @@ In the background, Trinsic will also generate and save a valid JSON-LD Context a
     === "Go"
         <!--codeinclude-->
         ```golang
-        [CreateTemplate](../../../go/services/credentialtemplate_service_test.go) inside_block:createTemplate
+        [CreateTemplate](../../../go/services/template_service_test.go) inside_block:createTemplate
         ```
         <!--/codeinclude-->
 
@@ -90,7 +90,7 @@ Fetches a template definition by `id`.
     === "Go"
         <!--codeinclude-->
         ```golang
-        [Issue From Template](../../../go/services/credentialtemplate_service_test.go) inside_block:getCredentialTemplate
+        [Issue From Template](../../../go/services/template_service_test.go) inside_block:getCredentialTemplate
         ```
         <!--/codeinclude-->
 
@@ -132,7 +132,7 @@ Deletes a credential template by `id`.
     === "Go"
         <!--codeinclude-->
         ```golang
-        [Issue From Template](../../../go/services/credentialtemplate_service_test.go) inside_block:deleteCredentialTemplate
+        [Issue From Template](../../../go/services/template_service_test.go) inside_block:deleteCredentialTemplate
         ```
         <!--/codeinclude-->
 
@@ -177,7 +177,7 @@ If no `query` is specified, this call by default returns the first 100 templates
     === "Go"
         <!--codeinclude-->
         ```golang
-        [Issue From Template](../../../go/services/credentialtemplate_service_test.go) inside_block:searchCredentialTemplate
+        [Issue From Template](../../../go/services/template_service_test.go) inside_block:searchCredentialTemplate
         ```
         <!--/codeinclude-->
 
