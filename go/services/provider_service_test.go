@@ -128,7 +128,7 @@ func TestProviderBase_InviteParticipant(t *testing.T) {
 		if !assert2.Nil(err) {
 			return
 		}
-		_, err = providerService.InviteParticipant(context.Background(), &provider.InviteRequest{})
+		_, err = providerService.Invite(context.Background(), &provider.InviteRequest{})
 		if !assert2.NotNil(err) {
 			return
 		}

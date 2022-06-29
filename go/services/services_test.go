@@ -163,7 +163,7 @@ func TestEcosystemDemo(t *testing.T) {
 	// assert2.True(strings.HasPrefix(actualCreate.Id, "urn:trinsic:ecosystems:"))
 
 	// inviteParticipant() {
-	inviteResponse, err := trinsic.Provider().InviteParticipant(context.Background(),
+	inviteResponse, err := trinsic.Provider().Invite(context.Background(),
 		&provider.InviteRequest{Participant: provider.ParticipantType_participant_type_individual,
 			Details: &account.AccountDetails{Email: "example@trinsic.id"}})
 	// }
