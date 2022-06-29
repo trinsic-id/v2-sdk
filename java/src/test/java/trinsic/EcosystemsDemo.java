@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.okapi.DidException;
-import trinsic.services.AccountService;
-import trinsic.services.ProviderService;
 import trinsic.services.TrinsicService;
 import trinsic.services.account.v1.AccountDetails;
 import trinsic.services.provider.v1.*;
@@ -39,7 +37,7 @@ public class EcosystemsDemo {
     // updateEcosystem() {
     var updateResponse =
         trinsic.provider().updateEcosystem(
-            ProviderOuterClass.UpdateEcosystemRequest.newBuilder()
+            UpdateEcosystemRequest.newBuilder()
                 .setDescription("My updated ecosystem")
                 .setUri("https://new-example.com")
                 .build())
@@ -52,7 +50,7 @@ public class EcosystemsDemo {
     // ecosystemInfo() {
     var infoResponse =
         trinsic.provider().ecosystemInfo(
-            ProviderOuterClass.EcosystemInfoRequest.getDefaultInstance()
+            EcosystemInfoRequest.getDefaultInstance()
         ).get();
     // }
 
@@ -62,7 +60,7 @@ public class EcosystemsDemo {
     // addWebhook() {
     var addWebhookResponse =
         trinsic.provider().addWebhook(
-            ProviderOuterClass.AddWebhookRequest.newBuilder()
+            AddWebhookRequest.newBuilder()
                 .setDestinationUrl("https://example.com/webhooks/trinsic")
                 .setSecret("my well-kept secret")
                 .setEvents(0, "*") //All events
@@ -79,7 +77,7 @@ public class EcosystemsDemo {
     // deleteWebhook() {
     var deleteWebhookResponse =
           trinsic.provider().deleteWebhook(
-              ProviderOuterClass.DeleteWebhookRequest.newBuilder()
+              DeleteWebhookRequest.newBuilder()
                   .setWebhookId(webhookId)
                   .build()
           ).get();
