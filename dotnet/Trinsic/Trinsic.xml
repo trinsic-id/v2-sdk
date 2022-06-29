@@ -1031,6 +1031,215 @@
             <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
             <param name="serviceImpl">An object implementing the server-side handling logic.</param>
         </member>
+        <member name="T:Trinsic.Services.Event.V1.EventReflection">
+            <summary>Holder for reflection information generated from services/event/v1/event.proto</summary>
+        </member>
+        <member name="P:Trinsic.Services.Event.V1.EventReflection.Descriptor">
+            <summary>File descriptor for services/event/v1/event.proto</summary>
+        </member>
+        <member name="T:Trinsic.Services.Event.V1.Event">
+            <summary>
+            System event
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Event.V1.Event.IdFieldNumber">
+            <summary>Field number for the "id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Event.V1.Event.Id">
+            <summary>
+            UUID for the event
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Event.V1.Event.TypeFieldNumber">
+            <summary>Field number for the "type" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Event.V1.Event.Type">
+            <summary>
+            event type
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Event.V1.Event.TimestampFieldNumber">
+            <summary>Field number for the "timestamp" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Event.V1.Event.Timestamp">
+            <summary>
+            when the event occured
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Event.V1.Event.DataFieldNumber">
+            <summary>Field number for the "data" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Event.V1.Event.Data">
+            <summary>
+            data payload - will be encoded proto message for the event type
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Event.V1.APICall.SourceFieldNumber">
+            <summary>Field number for the "source" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.Event.V1.APICall.RequestFieldNumber">
+            <summary>Field number for the "request" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.Event.V1.APICall.ResponseFieldNumber">
+            <summary>Field number for the "response" field.</summary>
+        </member>
+        <member name="T:Trinsic.Services.Event.V1.Ping">
+            <summary>
+            Message to test webhook functionality
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Event.V1.Ping.IdFieldNumber">
+            <summary>Field number for the "id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Event.V1.Ping.Id">
+            <summary>
+            UUID of this ping
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Event.V1.Ping.WebhookIdFieldNumber">
+            <summary>Field number for the "webhook_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Event.V1.Ping.WebhookId">
+            <summary>
+            UUID of the webhook receiving the ping
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Event.V1.Ping.TimestampFieldNumber">
+            <summary>Field number for the "timestamp" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Event.V1.Ping.Timestamp">
+            <summary>
+            when this was generated
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Event.V1.Ping.MessageFieldNumber">
+            <summary>Field number for the "message" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Event.V1.Ping.Message">
+            <summary>
+            message to be sent (e.g. I'm a teapot)
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Event.V1.EGFCreated.IdFieldNumber">
+            <summary>Field number for the "id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Event.V1.EGFCreated.Id">
+            <summary>
+            UUID of the governance framework
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Event.V1.EGFCreated.EcosystemIdFieldNumber">
+            <summary>Field number for the "ecosystem_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Event.V1.EGFCreated.EcosystemId">
+            <summary>
+            UUID of the ecosystem that owns this egf
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Event.V1.EGFCreated.TrustRegistryFieldNumber">
+            <summary>Field number for the "trust_registry" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Event.V1.EGFCreated.TrustRegistry">
+            <summary>
+            Trust registry assoicated with this egf
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Event.V1.EGFCreated.GoverningAuthorityFieldNumber">
+            <summary>Field number for the "governing_authority" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Event.V1.EGFCreated.GoverningAuthority">
+            <summary>
+            Wallet ID of the aurhority for this egf
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Event.V1.EGFCreated.TypeFieldNumber">
+            <summary>Field number for the "type" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Event.V1.EGFCreated.Type">
+            <summary>
+            Type of egf 
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Event.V1.EGFCreated.NameFieldNumber">
+            <summary>Field number for the "name" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Event.V1.EGFCreated.Name">
+            <summary>
+            User friendly name for the egf
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Event.V1.EGFCreated.DescriptionFieldNumber">
+            <summary>Field number for the "description" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Event.V1.EGFCreated.Description">
+            <summary>
+            Description of the egf
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Event.V1.EGFCreated.GovernanceFrameworkFieldNumber">
+            <summary>Field number for the "governance_framework" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Event.V1.EGFCreated.GovernanceFramework">
+            <summary>
+            URI for the egf
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Event.V1.TemplateCreated.IdFieldNumber">
+            <summary>Field number for the "id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Event.V1.TemplateCreated.Id">
+            <summary>
+            UUID of the template
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Event.V1.TemplateCreated.EcosystemIdFieldNumber">
+            <summary>Field number for the "ecosystem_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Event.V1.TemplateCreated.EcosystemId">
+            <summary>
+            UUID of the ecosystem that owns this template
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Event.V1.TemplateCreated.NameFieldNumber">
+            <summary>Field number for the "name" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Event.V1.TemplateCreated.Name">
+            <summary>
+            Template name
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Event.V1.TemplateCreated.TypeFieldNumber">
+            <summary>Field number for the "type" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Event.V1.TemplateCreated.Type">
+            <summary>
+            Tempalte type
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Event.V1.TemplateCreated.CreatedByFieldNumber">
+            <summary>Field number for the "created_by" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Event.V1.TemplateCreated.CreatedBy">
+            <summary>
+            WalletID that created the template
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Event.V1.ItemReceived.IdFieldNumber">
+            <summary>Field number for the "id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Event.V1.ItemReceived.Id">
+            <summary>
+            UUID of the new item
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Event.V1.ItemReceived.ReceivedFieldNumber">
+            <summary>Field number for the "received" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Event.V1.ItemReceived.Received">
+            <summary>
+            Timestamp when the item was received
+            </summary>
+        </member>
         <member name="T:Trinsic.Services.Protobuf.Options.FieldOptionsReflection">
             <summary>Holder for reflection information generated from services/options/field-options.proto</summary>
         </member>
@@ -1046,6 +1255,36 @@
             This is not the same as an `optional` protobuf label;
             it only impacts documentation generation for the field.
             </summary>
+        </member>
+        <member name="F:Trinsic.Services.Protobuf.Options.SdkTemplateOption.AnonymousFieldNumber">
+            <summary>Field number for the "anonymous" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Protobuf.Options.SdkTemplateOption.Anonymous">
+            <summary>
+            Whether the service endpoint allows anonymous (no Oberon) authentication
+            This is used by the `protoc-gen-trinsic-sdk` plugin for metadata.
+            </summary>
+        </member>
+        <member name="P:Trinsic.Services.Protobuf.Options.SdkTemplateOption.HasAnonymous">
+            <summary>Gets whether the "anonymous" field is set</summary>
+        </member>
+        <member name="M:Trinsic.Services.Protobuf.Options.SdkTemplateOption.ClearAnonymous">
+            <summary>Clears the value of the "anonymous" field</summary>
+        </member>
+        <member name="F:Trinsic.Services.Protobuf.Options.SdkTemplateOption.IgnoreFieldNumber">
+            <summary>Field number for the "ignore" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Protobuf.Options.SdkTemplateOption.Ignore">
+            <summary>
+            Whether the SDK template generator should ignoroe this method. This method will
+            be wrapped manually.
+            </summary>
+        </member>
+        <member name="P:Trinsic.Services.Protobuf.Options.SdkTemplateOption.HasIgnore">
+            <summary>Gets whether the "ignore" field is set</summary>
+        </member>
+        <member name="M:Trinsic.Services.Protobuf.Options.SdkTemplateOption.ClearIgnore">
+            <summary>Clears the value of the "ignore" field</summary>
         </member>
         <member name="T:Trinsic.Services.Provider.V1.ProviderReflection">
             <summary>Holder for reflection information generated from services/provider/v1/provider.proto</summary>
@@ -1237,6 +1476,30 @@
         <member name="P:Trinsic.Services.Provider.V1.WebhookConfig.Status">
             <summary>
             Whether we are able to sucessfully send events to the webhook
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.Grant.ResourceIdFieldNumber">
+            <summary>Field number for the "resourceId" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.Grant.ResourceId">
+            <summary>
+            the urn of the resource
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.Grant.ActionsFieldNumber">
+            <summary>Field number for the "actions" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.Grant.Actions">
+            <summary>
+            list of actions that are allowed
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.Grant.ChildGrantsFieldNumber">
+            <summary>Field number for the "child_grants" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.Grant.ChildGrants">
+            <summary>
+            any child grants
             </summary>
         </member>
         <member name="F:Trinsic.Services.Provider.V1.CreateEcosystemRequest.NameFieldNumber">
@@ -1457,6 +1720,7 @@
         </member>
         <member name="P:Trinsic.Services.Provider.V1.GetEventTokenRequest.Pk">
             <summary>
+            
             </summary>
         </member>
         <member name="T:Trinsic.Services.Provider.V1.GetEventTokenResponse">
@@ -1472,6 +1736,89 @@
             <summary>
             a JWT bound to the PK provided in the request
             </summary>
+        </member>
+        <member name="T:Trinsic.Services.Provider.V1.GrantAuthorizationRequest">
+            <summary>
+            grant permissions to a resource or path in the ecosystem
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.GrantAuthorizationRequest.EmailFieldNumber">
+            <summary>Field number for the "email" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.GrantAuthorizationRequest.Email">
+            <summary>
+            email associted with the account
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.GrantAuthorizationRequest.WalletIdFieldNumber">
+            <summary>Field number for the "walletId" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.GrantAuthorizationRequest.WalletId">
+            <summary>
+            wallet id of the account
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.GrantAuthorizationRequest.ResourceFieldNumber">
+            <summary>Field number for the "resource" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.GrantAuthorizationRequest.Resource">
+            <summary>
+            resources are specified as a restful path: /{ecoId}/{resource type}/{resource id}. EcosystemId maybe ommited
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.GrantAuthorizationRequest.ActionFieldNumber">
+            <summary>Field number for the "action" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.GrantAuthorizationRequest.Action">
+            <summary>
+            action to authorize. default is "*" (all)
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.Provider.V1.GrantAuthorizationRequest.AccountOneofCase">
+            <summary>Enum of possible cases for the "account" oneof.</summary>
+        </member>
+        <member name="T:Trinsic.Services.Provider.V1.RevokeAuthorizationRequest">
+            <summary>
+            revoke permissions to a resource or path in the ecosystem
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.RevokeAuthorizationRequest.EmailFieldNumber">
+            <summary>Field number for the "email" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.RevokeAuthorizationRequest.Email">
+            <summary>
+            email associted with the account
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.RevokeAuthorizationRequest.WalletIdFieldNumber">
+            <summary>Field number for the "walletId" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.RevokeAuthorizationRequest.WalletId">
+            <summary>
+            wallet id of the account
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.RevokeAuthorizationRequest.ResourceFieldNumber">
+            <summary>Field number for the "resource" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.RevokeAuthorizationRequest.Resource">
+            <summary>
+            resources are specified as a restful path: /{ecoId}/{resource type}/{resource id}. EcosystemId maybe ommited
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.RevokeAuthorizationRequest.ActionFieldNumber">
+            <summary>Field number for the "action" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.RevokeAuthorizationRequest.Action">
+            <summary>
+            action to revoke. default is "*" (all)
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.Provider.V1.RevokeAuthorizationRequest.AccountOneofCase">
+            <summary>Enum of possible cases for the "account" oneof.</summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.GetAuthorizationsResponse.GrantsFieldNumber">
+            <summary>Field number for the "grants" field.</summary>
         </member>
         <member name="P:Trinsic.Services.Provider.V1.Provider.Descriptor">
             <summary>Service descriptor</summary>
@@ -1490,6 +1837,30 @@
         <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.UpdateEcosystem(Trinsic.Services.Provider.V1.UpdateEcosystemRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Update an existing ecosystem
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.GrantAuthorization(Trinsic.Services.Provider.V1.GrantAuthorizationRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Grant authorization to ecosystem resources
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.RevokeAuthorization(Trinsic.Services.Provider.V1.RevokeAuthorizationRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Revoke authorization to ecosystem resources
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.GetAuthorizations(Trinsic.Services.Provider.V1.GetAuthorizationsRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Retreive the list of permissions for this particular account/ecosystem
             </summary>
             <param name="request">The request received from the client.</param>
             <param name="context">The context of the server-side call handler being invoked.</param>
@@ -1645,6 +2016,114 @@
         <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.UpdateEcosystemAsync(Trinsic.Services.Provider.V1.UpdateEcosystemRequest,Grpc.Core.CallOptions)">
             <summary>
             Update an existing ecosystem
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GrantAuthorization(Trinsic.Services.Provider.V1.GrantAuthorizationRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Grant authorization to ecosystem resources
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GrantAuthorization(Trinsic.Services.Provider.V1.GrantAuthorizationRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Grant authorization to ecosystem resources
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GrantAuthorizationAsync(Trinsic.Services.Provider.V1.GrantAuthorizationRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Grant authorization to ecosystem resources
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GrantAuthorizationAsync(Trinsic.Services.Provider.V1.GrantAuthorizationRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Grant authorization to ecosystem resources
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RevokeAuthorization(Trinsic.Services.Provider.V1.RevokeAuthorizationRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Revoke authorization to ecosystem resources
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RevokeAuthorization(Trinsic.Services.Provider.V1.RevokeAuthorizationRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Revoke authorization to ecosystem resources
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RevokeAuthorizationAsync(Trinsic.Services.Provider.V1.RevokeAuthorizationRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Revoke authorization to ecosystem resources
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RevokeAuthorizationAsync(Trinsic.Services.Provider.V1.RevokeAuthorizationRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Revoke authorization to ecosystem resources
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GetAuthorizations(Trinsic.Services.Provider.V1.GetAuthorizationsRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Retreive the list of permissions for this particular account/ecosystem
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GetAuthorizations(Trinsic.Services.Provider.V1.GetAuthorizationsRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Retreive the list of permissions for this particular account/ecosystem
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GetAuthorizationsAsync(Trinsic.Services.Provider.V1.GetAuthorizationsRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Retreive the list of permissions for this particular account/ecosystem
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GetAuthorizationsAsync(Trinsic.Services.Provider.V1.GetAuthorizationsRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Retreive the list of permissions for this particular account/ecosystem
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="options">The options for the call.</param>
