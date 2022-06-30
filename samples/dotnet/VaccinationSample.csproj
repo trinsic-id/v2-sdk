@@ -9,13 +9,8 @@
         <PackageReference Include="FluentAssertions" Version="6.2.0"/>
         <PackageReference Include="Trinsic" Version="1.6.0"/>
     </ItemGroup>
-
-    <ItemGroup>
-        <Content Include="../../devops/testdata/vaccination-certificate-unsigned.jsonld">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </Content>
-        <Content Include="../../devops/testdata/vaccination-certificate-frame.jsonld">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </Content>
-    </ItemGroup>
+    <Target Name="CopyJsonFiles" AfterTargets="AfterBuild">
+        <Copy SourceFiles="../../devops/testdata/vaccination-certificate-frame.jsonld;../../devops/testdata/vaccination-certificate-unsigned.jsonld" DestinationFolder="$(OutDir)"/>
+        <Copy SourceFiles="../../devops/testdata/vaccination-certificate-frame.jsonld;../../devops/testdata/vaccination-certificate-unsigned.jsonld" DestinationFolder="$(ProjectDir)"/>
+    </Target>
 </Project>
