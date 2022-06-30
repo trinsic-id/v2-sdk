@@ -1866,7 +1866,7 @@
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="n">issuerStatus</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
 <span class="w">        </span><span class="n">trinsic</span><span class="w"></span>
 <span class="w">            </span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">()</span><span class="w"></span>
-<span class="w">            </span><span class="p">.</span><span class="na">checkIssuerStatus</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="p">.</span><span class="na">getMembershipStatus</span><span class="p">(</span><span class="w"></span>
 <span class="w">                </span><span class="n">GetMembershipStatusRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
 <span class="w">                    </span><span class="p">.</span><span class="na">setDidUri</span><span class="p">(</span><span class="n">didUri</span><span class="p">)</span><span class="w"></span>
 <span class="w">                    </span><span class="p">.</span><span class="na">setGovernanceFrameworkUri</span><span class="p">(</span><span class="n">frameworkUri</span><span class="p">)</span><span class="w"></span>
@@ -1877,7 +1877,7 @@
 <span class="w">    </span><span class="n">Assertions</span><span class="p">.</span><span class="na">assertEquals</span><span class="p">(</span><span class="n">RegistrationStatus</span><span class="p">.</span><span class="na">CURRENT</span><span class="p">,</span><span class="w"> </span><span class="n">issuerStatus</span><span class="p">.</span><span class="na">getStatus</span><span class="p">());</span><span class="w"></span>
 
 <span class="w">    </span><span class="c1">// searchTrustRegistry() {</span><span class="w"></span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="n">searchResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">().</span><span class="na">searchRegistry</span><span class="p">().</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="n">searchResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">().</span><span class="na">search</span><span class="p">().</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 <span class="w">    </span><span class="c1">// }</span><span class="w"></span>
 <span class="w">    </span><span class="n">Assertions</span><span class="p">.</span><span class="na">assertNotNull</span><span class="p">(</span><span class="n">searchResult</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="n">Assertions</span><span class="p">.</span><span class="na">assertNotNull</span><span class="p">(</span><span class="n">searchResult</span><span class="p">.</span><span class="na">getItemsJson</span><span class="p">());</span><span class="w"></span>
@@ -1886,7 +1886,7 @@
 <span class="w">    </span><span class="c1">// unregisterIssuer() {</span><span class="w"></span>
 <span class="w">    </span><span class="n">trinsic</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">()</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">unregisterIssuer</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">unregisterMember</span><span class="p">(</span><span class="w"></span>
 <span class="w">            </span><span class="n">UnregisterMemberRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
 <span class="w">                </span><span class="p">.</span><span class="na">setFrameworkId</span><span class="p">(</span><span class="n">frameworkResponse</span><span class="p">.</span><span class="na">getId</span><span class="p">())</span><span class="w"></span>
 <span class="w">                </span><span class="p">.</span><span class="na">setDidUri</span><span class="p">(</span><span class="n">didUri</span><span class="p">)</span><span class="w"></span>
@@ -2052,7 +2052,7 @@
 <span class="w">    </span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Equal</span><span class="p">(</span><span class="nx">trustregistry</span><span class="p">.</span><span class="nx">RegistrationStatus_CURRENT</span><span class="p">,</span><span class="w"> </span><span class="nx">getMembershipStatusResponse</span><span class="p">.</span><span class="nx">Status</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Member status should be current&quot;</span><span class="p">)</span><span class="w"></span>
 
 <span class="w">    </span><span class="c1">// searchTrustRegistry() {</span><span class="w"></span>
-<span class="w">    </span><span class="nx">ecosystemList</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">TrustRegistry</span><span class="p">().</span><span class="nx">SearchRegistry</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">ecosystemList</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">TrustRegistry</span><span class="p">().</span><span class="nx">Search</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="c1">// }</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="k">return</span><span class="w"></span>
@@ -2109,7 +2109,7 @@
 <span class="w">    </span><span class="c1">// assert2.True(strings.HasPrefix(actualCreate.Id, &quot;urn:trinsic:ecosystems:&quot;))</span><span class="w"></span>
 
 <span class="w">    </span><span class="c1">// inviteParticipant() {</span><span class="w"></span>
-<span class="w">    </span><span class="nx">inviteResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Provider</span><span class="p">().</span><span class="nx">InviteParticipant</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"></span>
+<span class="w">    </span><span class="nx">inviteResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Provider</span><span class="p">().</span><span class="nx">Invite</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"></span>
 <span class="w">        </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">InviteRequest</span><span class="p">{</span><span class="nx">Participant</span><span class="p">:</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">ParticipantType_participant_type_individual</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="nx">Details</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">account</span><span class="p">.</span><span class="nx">AccountDetails</span><span class="p">{</span><span class="nx">Email</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;example@trinsic.id&quot;</span><span class="p">}})</span><span class="w"></span>
 <span class="w">    </span><span class="c1">// }</span><span class="w"></span>
@@ -2199,7 +2199,7 @@
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">trinsic</span><span class="w"></span>
 <span class="w">    </span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="p">.</span><span class="na">unregisterIssuer</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="na">unregisterMember</span><span class="p">(</span><span class="w"></span>
 <span class="w">        </span><span class="n">UnregisterMemberRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
 <span class="w">            </span><span class="p">.</span><span class="na">setFrameworkId</span><span class="p">(</span><span class="n">frameworkResponse</span><span class="p">.</span><span class="na">getId</span><span class="p">())</span><span class="w"></span>
 <span class="w">            </span><span class="p">.</span><span class="na">setDidUri</span><span class="p">(</span><span class="n">didUri</span><span class="p">)</span><span class="w"></span>
@@ -2361,7 +2361,7 @@
 <span class="w">    </span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Equal</span><span class="p">(</span><span class="nx">trustregistry</span><span class="p">.</span><span class="nx">RegistrationStatus_CURRENT</span><span class="p">,</span><span class="w"> </span><span class="nx">getMembershipStatusResponse</span><span class="p">.</span><span class="nx">Status</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Member status should be current&quot;</span><span class="p">)</span><span class="w"></span>
 
 <span class="w">    </span><span class="c1">// searchTrustRegistry() {</span><span class="w"></span>
-<span class="w">    </span><span class="nx">ecosystemList</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">TrustRegistry</span><span class="p">().</span><span class="nx">SearchRegistry</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nx">ecosystemList</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">TrustRegistry</span><span class="p">().</span><span class="nx">Search</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="c1">// }</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">assert2</span><span class="p">.</span><span class="nx">Nil</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="k">return</span><span class="w"></span>
@@ -2418,7 +2418,7 @@
 <span class="w">    </span><span class="c1">// assert2.True(strings.HasPrefix(actualCreate.Id, &quot;urn:trinsic:ecosystems:&quot;))</span><span class="w"></span>
 
 <span class="w">    </span><span class="c1">// inviteParticipant() {</span><span class="w"></span>
-<span class="w">    </span><span class="nx">inviteResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Provider</span><span class="p">().</span><span class="nx">InviteParticipant</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"></span>
+<span class="w">    </span><span class="nx">inviteResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Provider</span><span class="p">().</span><span class="nx">Invite</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"></span>
 <span class="w">        </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">InviteRequest</span><span class="p">{</span><span class="nx">Participant</span><span class="p">:</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">ParticipantType_participant_type_individual</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="nx">Details</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">account</span><span class="p">.</span><span class="nx">AccountDetails</span><span class="p">{</span><span class="nx">Email</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;example@trinsic.id&quot;</span><span class="p">}})</span><span class="w"></span>
 <span class="w">    </span><span class="c1">// }</span><span class="w"></span>
@@ -2446,7 +2446,7 @@
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">issuerStatus</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
 <span class="w">    </span><span class="n">trinsic</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">()</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">checkIssuerStatus</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">getMembershipStatus</span><span class="p">(</span><span class="w"></span>
 <span class="w">            </span><span class="n">GetMembershipStatusRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
 <span class="w">                </span><span class="p">.</span><span class="na">setDidUri</span><span class="p">(</span><span class="n">didUri</span><span class="p">)</span><span class="w"></span>
 <span class="w">                </span><span class="p">.</span><span class="na">setGovernanceFrameworkUri</span><span class="p">(</span><span class="n">frameworkUri</span><span class="p">)</span><span class="w"></span>
@@ -2480,19 +2480,19 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">searchResult</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">SearchRegistryAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">searchResult</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">TrustRegistry</span><span class="p">.</span><span class="n">SearchAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">search_result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">trust_registry</span><span class="o">.</span><span class="n">search_registry</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">search_result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic_service</span><span class="o">.</span><span class="n">trust_registry</span><span class="o">.</span><span class="n">search</span><span class="p">()</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">ecosystemList</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">TrustRegistry</span><span class="p">().</span><span class="nx">SearchRegistry</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">ecosystemList</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">TrustRegistry</span><span class="p">().</span><span class="nx">Search</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">searchResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">().</span><span class="na">searchRegistry</span><span class="p">().</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">searchResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">().</span><span class="na">search</span><span class="p">().</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>

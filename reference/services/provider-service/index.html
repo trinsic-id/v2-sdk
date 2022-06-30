@@ -1866,7 +1866,9 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">request</span> <span class="o">=</span> <span class="n">UpdateEcosystemRequest</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;My new description&quot;</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="s2">&quot;https://example.com&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">request</span> <span class="o">=</span> <span class="n">UpdateEcosystemRequest</span><span class="p">(</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;My new description&quot;</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="s2">&quot;https://example.com&quot;</span>
+<span class="p">)</span>
 <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic</span><span class="o">.</span><span class="n">provider</span><span class="o">.</span><span class="n">update_ecosystem</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">)</span>
 </code></pre></div>
 </div>
@@ -1881,12 +1883,14 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">updateResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">    </span><span class="n">trinsic</span><span class="p">.</span><span class="na">provider</span><span class="p">().</span><span class="na">updateEcosystem</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="n">UpdateEcosystemRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
-<span class="w">            </span><span class="p">.</span><span class="na">setDescription</span><span class="p">(</span><span class="s">&quot;My updated ecosystem&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">            </span><span class="p">.</span><span class="na">setUri</span><span class="p">(</span><span class="s">&quot;https://new-example.com&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">            </span><span class="p">.</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
-<span class="w">    </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">trinsic</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">provider</span><span class="p">()</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">updateEcosystem</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">UpdateEcosystemRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">setDescription</span><span class="p">(</span><span class="s">&quot;My updated ecosystem&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">setUri</span><span class="p">(</span><span class="s">&quot;https://new-example.com&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>
@@ -1936,9 +1940,7 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">infoResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">    </span><span class="n">trinsic</span><span class="p">.</span><span class="na">provider</span><span class="p">().</span><span class="na">ecosystemInfo</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="n">EcosystemInfoRequest</span><span class="p">.</span><span class="na">getDefaultInstance</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="p">).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">trinsic</span><span class="p">.</span><span class="na">provider</span><span class="p">().</span><span class="na">ecosystemInfo</span><span class="p">(</span><span class="n">EcosystemInfoRequest</span><span class="p">.</span><span class="na">getDefaultInstance</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>
@@ -1988,9 +1990,9 @@
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">request</span> <span class="o">=</span> <span class="n">AddWebhookRequest</span><span class="p">(</span>
     <span class="n">destination_url</span><span class="o">=</span><span class="s2">&quot;https://example.com/webhooks/trinsic&quot;</span><span class="p">,</span>
-    <span class="n">secret</span><span class="o">=</span><span class="s2">&quot;my well-kept secret&quot;</span>
+    <span class="n">secret</span><span class="o">=</span><span class="s2">&quot;my well-kept secret&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">request</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">)</span> <span class="c1"># Enable all events</span>
+<span class="n">request</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">)</span>  <span class="c1"># Enable all events</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic</span><span class="o">.</span><span class="n">provider</span><span class="o">.</span><span class="n">add_webhook</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">)</span>
 </code></pre></div>
@@ -2007,13 +2009,15 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">addWebhookResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">    </span><span class="n">trinsic</span><span class="p">.</span><span class="na">provider</span><span class="p">().</span><span class="na">addWebhook</span><span class="p">(</span><span class="w"></span>
-<span class="w">        </span><span class="n">AddWebhookRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
-<span class="w">            </span><span class="p">.</span><span class="na">setDestinationUrl</span><span class="p">(</span><span class="s">&quot;https://example.com/webhooks/trinsic&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">            </span><span class="p">.</span><span class="na">setSecret</span><span class="p">(</span><span class="s">&quot;my well-kept secret&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">            </span><span class="p">.</span><span class="na">addEvents</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">//All events</span><span class="w"></span>
-<span class="w">            </span><span class="p">.</span><span class="na">build</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="p">).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">trinsic</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">provider</span><span class="p">()</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">addWebhook</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">AddWebhookRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">setDestinationUrl</span><span class="p">(</span><span class="s">&quot;https://example.com/webhooks/trinsic&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">setSecret</span><span class="p">(</span><span class="s">&quot;my well-kept secret&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">addEvents</span><span class="p">(</span><span class="s">&quot;*&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// All events</span><span class="w"></span>
+<span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>
@@ -2064,7 +2068,9 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic</span><span class="o">.</span><span class="n">provider</span><span class="o">.</span><span class="n">delete_webhook</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="n">DeleteWebhookRequest</span><span class="p">(</span><span class="n">webhook_id</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic</span><span class="o">.</span><span class="n">provider</span><span class="o">.</span><span class="n">delete_webhook</span><span class="p">(</span>
+    <span class="n">request</span><span class="o">=</span><span class="n">DeleteWebhookRequest</span><span class="p">(</span><span class="n">webhook_id</span><span class="p">)</span>
+<span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2077,11 +2083,10 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">deleteWebhookResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w">      </span><span class="n">trinsic</span><span class="p">.</span><span class="na">provider</span><span class="p">().</span><span class="na">deleteWebhook</span><span class="p">(</span><span class="w"></span>
-<span class="w">          </span><span class="n">DeleteWebhookRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
-<span class="w">              </span><span class="p">.</span><span class="na">setWebhookId</span><span class="p">(</span><span class="n">webhookId</span><span class="p">)</span><span class="w"></span>
-<span class="w">              </span><span class="p">.</span><span class="na">build</span><span class="p">()</span><span class="w"></span>
-<span class="w">      </span><span class="p">).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">trinsic</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">provider</span><span class="p">()</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">deleteWebhook</span><span class="p">(</span><span class="n">DeleteWebhookRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setWebhookId</span><span class="p">(</span><span class="n">webhookId</span><span class="p">).</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>
