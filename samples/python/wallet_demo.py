@@ -2,13 +2,10 @@ import asyncio
 import json
 from os.path import abspath, join, dirname
 
-from trinsic.account_service import AccountService
-from trinsic.credential_service import CredentialService
 from trinsic.proto.services.universalwallet.v1 import InsertItemRequest, SearchRequest
 from trinsic.proto.services.verifiablecredentials.v1 import IssueRequest
-from trinsic.provider_service import ProviderService
+from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config
-from trinsic.wallet_service import WalletService
 
 
 def _base_data_path() -> str:
@@ -21,6 +18,7 @@ def _vaccine_cert_unsigned_path() -> str:
 
 async def wallet_demo():
     config = trinsic_config()
+    trinsic_service = TrinsicService(config)
 
     account = await trinsic_service.account.sign_in()
 

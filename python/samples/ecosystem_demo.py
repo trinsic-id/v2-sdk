@@ -1,6 +1,5 @@
 import asyncio
 
-from trinsic.account_service import AccountService
 from trinsic.proto.services.account.v1 import AccountDetails
 from trinsic.proto.services.provider.v1 import (
     CreateEcosystemRequest,
@@ -8,7 +7,6 @@ from trinsic.proto.services.provider.v1 import (
     ParticipantType,
     InvitationStatusRequest,
 )
-from trinsic.provider_service import ProviderService
 from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config
 

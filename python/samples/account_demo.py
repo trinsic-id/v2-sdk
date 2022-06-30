@@ -1,17 +1,9 @@
 import asyncio
 
-from trinsic.account_service import AccountService
-from trinsic.credential_service import CredentialService
-from trinsic.proto.services.account.v1 import AuthorizeWebhookRequest, LoginRequest, LoginResponse
-from trinsic.proto.services.universalwallet.v1 import InsertItemRequest, SearchRequest
-from trinsic.proto.services.verifiablecredentials.v1 import (
-    IssueRequest,
-    CreateProofRequest,
-    VerifyProofRequest,
-    SendRequest,
-)
+from trinsic.proto.services.account.v1 import AuthorizeWebhookRequest, LoginRequest
 from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config
+
 
 async def account_demo():
     config = trinsic_config()
