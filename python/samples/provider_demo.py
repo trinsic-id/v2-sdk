@@ -10,6 +10,7 @@ from trinsic.proto.services.provider.v1 import (
     InviteRequest,
     UpdateEcosystemRequest,
 )
+
 from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 

@@ -105,7 +105,7 @@ Issues a credential from a [previously-defined template](/reference/services/tem
     === "Go"
         <!--codeinclude-->
         ```golang
-        [Issue From Template](../../../go/services/credentialtemplate_service_test.go) inside_block:issueFromTemplate
+        [Issue From Template](../../../go/services/template_service_test.go) inside_block:issueFromTemplate
         ```
         <!--/codeinclude-->
 
@@ -149,7 +149,7 @@ A `credential_status_id` can be found in a credential's `credentialStatus.id` fi
     === "Go"
         <!--codeinclude-->
         ```golang
-        [Check Revocation Status](../../../go/services/credentialtemplate_service_test.go) inside_block:checkCredentialStatus
+        [Check Revocation Status](../../../go/services/template_service_test.go) inside_block:checkCredentialStatus
         ```
         <!--/codeinclude-->
 
@@ -197,7 +197,7 @@ A `credential_status_id` can be found in a credential's `credentialStatus.id` fi
     === "Go"
         <!--codeinclude-->
         ```golang
-        [Update Revocation Status](../../../go/services/credentialtemplate_service_test.go) inside_block:updateCredentialStatus
+        [Update Revocation Status](../../../go/services/template_service_test.go) inside_block:updateCredentialStatus
         ```
         <!--/codeinclude-->
 

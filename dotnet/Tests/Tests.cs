@@ -80,7 +80,7 @@ public class Tests
         var credentialJson = await File.ReadAllTextAsync(VaccinationCertificateUnsigned);
 
         // issueCredentialSample() {
-        var credential = await trinsic.Credential.IssueCredentialAsync(new() { DocumentJson = credentialJson });
+        var credential = await trinsic.Credential.IssueAsync(new() { DocumentJson = credentialJson });
         // }
 
         _testOutputHelper.WriteLine($"Credential:\n{credential.SignedDocumentJson}");
@@ -173,7 +173,7 @@ public class Tests
         issuerStatus.Status.Should().Be(RegistrationStatus.Current);
 
         // searchTrustRegistry() {
-        var searchResult = await trinsic.TrustRegistry.SearchRegistryAsync(new());
+        var searchResult = await trinsic.TrustRegistry.SearchAsync(new());
         // }
 
         searchResult.Should().NotBeNull();
@@ -239,7 +239,7 @@ public class Tests
         try
         {
             // inviteParticipant() {
-            var inviteResponse = await trinsic.Provider.InviteParticipantAsync(new() {
+            var inviteResponse = await trinsic.Provider.InviteAsync(new() {
                 Participant = ParticipantType.Individual,
                 Description = "Doc sample",
                 Details = new() {
@@ -373,12 +373,12 @@ public class Tests
         var trinsic = new TrinsicService(_options.Clone());
         _ = await trinsic.Provider.CreateEcosystemAsync(new());
 
-        var invitationResponse = await trinsic.Provider.InviteParticipantAsync(new());
+        var invitationResponse = await trinsic.Provider.InviteAsync(new());
 
         invitationResponse.Should().NotBeNull();
         invitationResponse.InvitationCode.Should().NotBeEmpty();
 
-        await Assert.ThrowsAsync<Exception>(async () => await trinsic.Provider.InvitationStatusAsync(new()));
+        await Assert.ThrowsAsync<RpcException>(async () => await trinsic.Provider.InvitationStatusAsync(new()));
     }
 
     [Fact(Skip = "Ecosystem support not complete yet")]
@@ -389,7 +389,7 @@ public class Tests
         trinsic.SetAuthToken(myProfile);
 
         var invite = new InviteRequest { Description = "Test invitation" };
-        var response = await trinsic.Provider.InviteParticipantAsync(invite);
+        var response = await trinsic.Provider.InviteAsync(invite);
         Assert.NotNull(response);
 
         var statusResponse = await trinsic.Provider.InvitationStatusAsync(new() { InvitationId = response.InvitationId });
@@ -403,7 +403,7 @@ public class Tests
 
         trinsic.SetAuthToken(myProfile);
 
-        await Assert.ThrowsAsync<Exception>(async () => await trinsic.TrustRegistry.AddFrameworkAsync(new() {
+        await Assert.ThrowsAsync<RpcException>(async () => await trinsic.TrustRegistry.AddFrameworkAsync(new() {
             Description = "invalid uri",
             GovernanceFrameworkUri = ""
         }));

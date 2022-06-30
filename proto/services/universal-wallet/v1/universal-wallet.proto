@@ -92,7 +92,9 @@ service UniversalWallet {
     // Retrieve an item from the wallet with a given item identifier
     rpc GetItem(GetItemRequest) returns (GetItemResponse);
     // Search the wallet using a SQL-like syntax
-    rpc Search(SearchRequest) returns (SearchResponse);
+    rpc Search(SearchRequest) returns (SearchResponse) {
+        option (options.sdk_template_option).ignore = true;
+    }
     // Insert an item into the wallet
     rpc InsertItem(InsertItemRequest) returns (InsertItemResponse);
     // Update an item in the wallet

@@ -32,7 +32,12 @@ jobs:
         working-directory: ./cli
     steps:
       - uses: actions/checkout@v1
-      - run: |
+      - name: Build and test Rust
+        run: |
           rustup component add rustfmt
           cargo build
           cargo test
+      - name: Test CLI directly
+        run: |
+          ./test/Run-Demo.ps1 -Environment Staging -CommandPath ./target/debug/trinsic
+        shell: pwsh

@@ -23,7 +23,7 @@ describe("wallet service tests", () => {
     });
 
     it("can retrieve account info", async () => {
-        const info = await trinsic.account().info();
+        const info = await trinsic.account().getInfo();
         expect(info).not.toBeNull();
     });
 
@@ -42,7 +42,7 @@ describe("wallet service tests", () => {
             id: "https://issuer.oidp.uscis.gov/credentials/83627465",
         };
 
-        let issueResponse = await trinsic.credential().issueCredential({
+        let issueResponse = await trinsic.credential().issue({
             documentJson: JSON.stringify(unsignedDocument),
         });
         expect(issueResponse).not.toBeNull();

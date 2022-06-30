@@ -181,6 +181,7 @@ service Account {
 
     // Login to account. If account doesn't exist, new will be created
     rpc Login               (LoginRequest)              returns (LoginResponse) {
+        option (options.sdk_template_option).ignore = true;
         option (options.sdk_template_option).anonymous = true;
     }
 

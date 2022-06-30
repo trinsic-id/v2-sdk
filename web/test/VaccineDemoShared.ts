@@ -44,7 +44,7 @@ export async function vaccineDemo() {
   // }
 
   trinsic.options.authToken = clinic;
-  const info = await trinsic.account().info();
+  const info = await trinsic.account().getInfo();
 
   // Create template
   trinsic.options.authToken = clinic;
