@@ -1,16 +1,12 @@
 import {
-  AccountService,
   CreateCredentialTemplateRequest,
   CreateProofRequest,
-  CredentialService,
   FieldType,
   InsertItemRequest,
   IssueFromTemplateRequest,
   SearchRequest,
   TemplateField,
-  TemplateService,
   TrinsicService,
-  WalletService,
 } from "../src";
 import {
   getVaccineCertFrameJSON,
@@ -35,7 +31,7 @@ describe("WalletService Unit Tests", () => {
   });
 
   it("get account info", async () => {
-    let info = await trinsic.account().info();
+    let info = await trinsic.account().getInfo();
 
     expect(info).not.toBeNull();
   });
@@ -48,7 +44,7 @@ describe("WalletService Unit Tests", () => {
   });
 
   it("Demo: create wallet, set profile, search records, issue credential", async () => {
-    let issueResponse = await trinsic.credential().issueCredential({
+    let issueResponse = await trinsic.credential().issue({
       documentJson: getVaccineCertUnsignedJSON(),
     });
 

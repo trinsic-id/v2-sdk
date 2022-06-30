@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
 import trinsic.okapi.DidException;
-import trinsic.services.CredentialTemplateService;
+import trinsic.services.TemplateService;
 import trinsic.services.TrinsicService;
 import trinsic.services.provider.v1.CreateEcosystemRequest;
 import trinsic.services.universalwallet.v1.InsertItemRequest;
@@ -129,7 +129,7 @@ public class VaccineDemo {
     var issueResponse =
         trinsicService
             .credential()
-            .issueCredentialFromTemplate(
+            .issueFromTemplate(
                 IssueFromTemplateRequest.newBuilder()
                     .setTemplateId(templateId)
                     .setValuesJson(valuesJson)
@@ -142,7 +142,7 @@ public class VaccineDemo {
     return credential;
   }
 
-  private static String DefineTemplate(CredentialTemplateService templateService, String clinic)
+  private static String DefineTemplate(TemplateService templateService, String clinic)
       throws InvalidProtocolBufferException, DidException, ExecutionException,
           InterruptedException {
     // createTemplate() {

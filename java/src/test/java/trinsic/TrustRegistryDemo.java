@@ -50,7 +50,7 @@ public class TrustRegistryDemo {
     var issuerStatus =
         trinsic
             .trustRegistry()
-            .checkIssuerStatus(
+            .getMembershipStatus(
                 GetMembershipStatusRequest.newBuilder()
                     .setDidUri(didUri)
                     .setGovernanceFrameworkUri(frameworkUri)
@@ -61,7 +61,7 @@ public class TrustRegistryDemo {
     Assertions.assertEquals(RegistrationStatus.CURRENT, issuerStatus.getStatus());
 
     // searchTrustRegistry() {
-    var searchResult = trinsic.trustRegistry().searchRegistry().get();
+    var searchResult = trinsic.trustRegistry().search().get();
     // }
     Assertions.assertNotNull(searchResult);
     Assertions.assertNotNull(searchResult.getItemsJson());
@@ -70,7 +70,7 @@ public class TrustRegistryDemo {
     // unregisterIssuer() {
     trinsic
         .trustRegistry()
-        .unregisterIssuer(
+        .unregisterMember(
             UnregisterMemberRequest.newBuilder()
                 .setFrameworkId(frameworkResponse.getId())
                 .setDidUri(didUri)

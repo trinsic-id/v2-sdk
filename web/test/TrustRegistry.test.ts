@@ -91,7 +91,7 @@ describe("TrustRegistryService Unit Tests", () => {
     expect(verifierStatus).not.toBeNull();
     expect(verifierStatus.status).toBe(RegistrationStatus.CURRENT);
 
-    let searchResult = await trinsic.trustRegistry().searchRegistry();
+    let searchResult = await trinsic.trustRegistry().search();
     expect(searchResult).not.toBeNull();
     expect(searchResult.itemsJson).not.toBeNull();
     expect(searchResult.itemsJson.length > 0).toBeTruthy();

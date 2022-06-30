@@ -66,8 +66,8 @@ Future runVaccineDemo() async {
   var credentialJson = await vaccineCertFile.readAsString();
 
   // issueCredential() {
-  var issueResponse = await credentialService
-      .issueCredential(IssueRequest(documentJson: credentialJson));
+  var issueResponse =
+      await credentialService.issue(IssueRequest(documentJson: credentialJson));
   // }
   var credential = issueResponse.signedDocumentJson;
   print("Credential: $credential");

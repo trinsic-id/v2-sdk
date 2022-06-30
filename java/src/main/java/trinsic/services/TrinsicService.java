@@ -5,7 +5,7 @@ import trinsic.sdk.options.v1.Options;
 public class TrinsicService extends ServiceBase {
   private AccountService _accountService;
   private CredentialService _credentialService;
-  private CredentialTemplateService _credentialTemplateService;
+  private TemplateService _TemplateService;
   private ProviderService _providerService;
   private TrustRegistryService _trustRegistryService;
   private WalletService _walletService;
@@ -29,10 +29,9 @@ public class TrinsicService extends ServiceBase {
     return _credentialService;
   }
 
-  public CredentialTemplateService template() {
-    if (_credentialTemplateService == null)
-      _credentialTemplateService = new CredentialTemplateService(this.getOptionsBuilder());
-    return _credentialTemplateService;
+  public TemplateService template() {
+    if (_TemplateService == null) _TemplateService = new TemplateService(this.getOptionsBuilder());
+    return _TemplateService;
   }
 
   public ProviderService provider() {
