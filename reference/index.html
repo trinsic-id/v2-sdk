@@ -994,11 +994,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#authorization" class="md-nav__link">
+  <a href="#authentication" class="md-nav__link">
     <span class="md-ellipsis">
-      Authorization
+      Authentication
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Authentication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#auth-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Auth Tokens
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-protection-of-auth-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Protection of Auth Tokens
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-auth-tokens-in-the-sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Auth Tokens in the SDK
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1746,12 +1779,45 @@
 <h1 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h1>
 <p>If you are ready to begin integrating the SDK, make sure you have an SDK installed and configured. You can install each SDK by following the instructions in each page under <strong>Build</strong> in the sidebar.</p>
 <p>When using the SDK, you can pass parameters to the default service constructors and use the provided methods to set different active profiles.</p>
-<h2 id="authorization">Authorization<a class="headerlink" href="#authorization" title="Permanent link">&para;</a></h2>
-<p>See our <a href="../learn/platform/security/">security</a> section for more information on how we have implemented wallet authentication and authorization.</p>
-<!-- ### Profile Data Format -->
-
+<h2 id="authentication">Authentication<a class="headerlink" href="#authentication" title="Permanent link">&para;</a></h2>
+<h3 id="auth-tokens">Auth Tokens<a class="headerlink" href="#auth-tokens" title="Permanent link">&para;</a></h3>
+<p>Authentication with the Trinsic platform operates off of auth tokens, which are strings that operate similarly to API keys.</p>
+<p>Unlike API keys, however, Trinsic utilizes <a href="/learn/platform/security">zero-knowledge proofs</a> to sign SDK calls using an auth token, without ever transmitting the auth token itself down the wire. This provides increased security compared to API keys, while being more convenient than other public/private key schemes.</p>
+<h3 id="custom-protection-of-auth-tokens">Custom Protection of Auth Tokens<a class="headerlink" href="#custom-protection-of-auth-tokens" title="Permanent link">&para;</a></h3>
+<p>We provide helper methods to <a href="/reference/services/account-service#protect">protect</a> auth tokens -- enabling you to perform custom security operations. An auth token, once protected with a code, is unusable until unprotected with that same code. Protection and unprotection and performed entirely on-device.</p>
+<h3 id="using-auth-tokens-in-the-sdk">Using Auth Tokens in the SDK<a class="headerlink" href="#using-auth-tokens-in-the-sdk" title="Permanent link">&para;</a></h3>
+<p>Whenever you perform an SDK call which returns an auth token (signing in to an account, or creating an ecosystem), our SDKs will automatically store the auth token in memory and use it for subsequent calls.</p>
+<p>You can also manually set the auth token used by the SDK (such as when loading an auth token from storage):</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:6"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Trinsic CLI</label><label for="__tabbed_1_2">TypeScript</label><label for="__tabbed_1_3">C#</label><label for="__tabbed_1_4">Python</label><label for="__tabbed_1_5">Go</label><label for="__tabbed_1_6">Java</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>trinsic config --auth-token <span class="o">{</span>AUTH_TOKEN<span class="o">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nx">trinsic</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">authToken</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">authToken</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">trinsic</span><span class="p">.</span><span class="n">SetAuthToken</span><span class="p">(</span><span class="n">authToken</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">trinsic</span><span class="o">.</span><span class="n">service_options</span><span class="o">.</span><span class="n">auth_token</span> <span class="o">=</span> <span class="n">auth_token</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nx">trinsic</span><span class="p">.</span><span class="nx">SetToken</span><span class="p">(</span><span class="nx">authToken</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">trinsic</span><span class="p">.</span><span class="na">setProfile</span><span class="p">(</span><span class="n">authToken</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
 <h2 id="sdk-services">SDK Services<a class="headerlink" href="#sdk-services" title="Permanent link">&para;</a></h2>
-<p>Our SDK is broken down into the following services:</p>
+</div>
+</div>
+</div>
+<p>Our SDK is broken down into the following logical services, each of which is accessible through a single <code>TrinsicService</code> instance:</p>
 <ul>
 <li><a href="services/account-service/">Account Service</a></li>
 <li><a href="services/credential-service/">Credential Service</a></li>
@@ -1762,7 +1828,7 @@
 </ul>
 <h3 id="using-an-sdk-service">Using an SDK Service<a class="headerlink" href="#using-an-sdk-service" title="Permanent link">&para;</a></h3>
 <p>If you are using one of the Trinsic SDKs, you will need to create an instance of a <code>TrinsicService</code> in order to use it.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">TypeScript</label><label for="__tabbed_1_2">C#</label><label for="__tabbed_1_3">Python</label><label for="__tabbed_1_4">Go</label><label for="__tabbed_1_5">Java</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:5"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">TypeScript</label><label for="__tabbed_2_2">C#</label><label for="__tabbed_2_3">Python</label><label for="__tabbed_2_4">Go</label><label for="__tabbed_2_5">Java</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">trinsic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TrinsicService</span><span class="p">();</span><span class="w"></span>
