@@ -11,10 +11,10 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Content Update="../../devops/testdata/vaccination-certificate-unsigned.jsonld">
+        <Content Include="../../devops/testdata/vaccination-certificate-unsigned.jsonld">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
-        <Content Update="../../devops/testdata/vaccination-certificate-frame.jsonld">
+        <Content Include="../../devops/testdata/vaccination-certificate-frame.jsonld">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
     </ItemGroup>
