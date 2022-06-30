@@ -1,18 +1,16 @@
 # Overview
 
-If you are ready to begin integrating the SDK, make sure you have an SDK installed and configured. You can install each SDK by following the instructions in each page under **Build** in the sidebar.
-
-When using the SDK, you can pass parameters to the default service constructors and use the provided methods to set different active profiles.
+This section serves as the reference for the Trinsic API, which can be accessed using any of our [SDKs](/cli/).
 
 ## Authentication
 ### Auth Tokens
-Authentication with the Trinsic platform operates off of auth tokens, which are strings that operate similarly to API keys.
+Authentication with the Trinsic platform uses auth tokens, which are strings that operate similarly to API keys.
 
-Unlike API keys, however, Trinsic utilizes [zero-knowledge proofs](/learn/platform/security) to sign SDK calls using an auth token, without ever transmitting the auth token itself down the wire. This provides increased security compared to API keys, while being more convenient than other public/private key schemes.
+Unlike API keys, however, Trinsic utilizes [zero-knowledge proofs](/learn/platform/security) to sign SDK calls using an auth token, without ever transmitting the auth token itself down the wire. This provides increased security compared to API keys, while being more convenient than other auth schemes, such as public/private tokens.
 
 ### Custom Protection of Auth Tokens
 
-We provide helper methods to [protect](/reference/services/account-service#protect) auth tokens -- enabling you to perform custom security operations. An auth token, once protected with a code, is unusable until unprotected with that same code. Protection and unprotection and performed entirely on-device.
+We provide helper methods to [protect](/reference/services/account-service#protect) auth tokens -- enabling you to perform custom security operations. An auth token, once protected with a code, is unusable until unprotected with that same code. Protection and unprotection are performed entirely on-device.
 
 ### Using Auth Tokens in the SDK
 
