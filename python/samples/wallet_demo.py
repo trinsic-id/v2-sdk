@@ -35,7 +35,7 @@ async def wallet_demo():
     with open(_vaccine_cert_unsigned_path(), "r") as fid:
         credential_json = "\n".join(fid.readlines())
 
-    issue_response = await trinsic.credential.issue_credential(
+    issue_response = await trinsic.credential.issue(
         request=IssueRequest(document_json=credential_json)
     )
     credential = issue_response.signed_document_json

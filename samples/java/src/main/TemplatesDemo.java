@@ -8,7 +8,9 @@ import java.util.concurrent.ExecutionException;
 import trinsic.okapi.DidException;
 import trinsic.services.TrinsicService;
 import trinsic.services.verifiablecredentials.templates.v1.*;
-import trinsic.services.verifiablecredentials.v1.*;
+import trinsic.services.verifiablecredentials.v1.CheckStatusRequest;
+import trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest;
+import trinsic.services.verifiablecredentials.v1.UpdateStatusRequest;
 
 public class TemplatesDemo {
   public static void main(String[] args)
@@ -53,7 +55,7 @@ public class TemplatesDemo {
     var issueResponse =
         trinsic
             .credential()
-            .issueCredentialFromTemplate(
+            .issueFromTemplate(
                 IssueFromTemplateRequest.newBuilder()
                     .setTemplateId(template.getData().getId())
                     .setValuesJson(valuesJson)

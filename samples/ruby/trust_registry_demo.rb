@@ -29,7 +29,7 @@ def trust_registry_demo_run
   raise "Issuer status #{issuer_status.status} should be current" unless issuer_status.status == :CURRENT
 
   # search registry
-  search_result = trinsic.trust_registry_service.search_registry
+  search_result = trinsic.trust_registry_service.search
   raise 'Search result should exist' if search_result.nil?
   raise 'Search result should not be empty' unless JSON.parse(search_result.items_json).length.positive?
 end

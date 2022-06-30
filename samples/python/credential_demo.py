@@ -43,7 +43,7 @@ async def credential_demo():
         credential_json = "\n".join(fid.readlines())
 
     # issueCredential() {
-    issue_response = await trinsic_service.credential.issue_credential(
+    issue_response = await trinsic_service.credential.issue(
         request=IssueRequest(document_json=credential_json)
     )
     # }
