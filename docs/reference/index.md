@@ -57,7 +57,9 @@ You can also manually set the auth token used by the SDK (such as when loading a
     [SetAuthTokenSample](../../java/src/test/java/trinsic/AccountServiceTest.java) inside_block:setAuthTokenSample
     ```
     <!--/codeinclude-->
-## SDK Services
+
+
+## Services
 Our SDK is broken down into the following logical services, each of which is accessible through a single `TrinsicService` instance:
 
 - [Account Service](./services/account-service.md)
