@@ -96,12 +96,16 @@ public abstract class ServiceBase
         var authToken = string.IsNullOrWhiteSpace(Options.AuthToken) 
             ? TokenProvider.Get() 
             : Options.AuthToken;
-        if (authToken is null) throw new("Cannot call authenticated endpoint before signing in");
 
-        var profile = AccountProfile.Parser.ParseFrom(Base64Url.DecodeBytes(authToken));
+        string authHeader = "";
+        if (authToken is not null)
+        {
+            var profile = AccountProfile.Parser.ParseFrom(Base64Url.DecodeBytes(authToken));
+            authHeader = _securityProvider.GetAuthHeader(profile, request);
+        }
 
         return new() {
-            {"Authorization", _securityProvider.GetAuthHeader(profile, request)}
+            {"Authorization", authHeader}
         };
     }
 }
