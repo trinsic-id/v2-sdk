@@ -28,6 +28,10 @@ describe("AccountService Unit Tests", () => {
       // loginConfirm() {
       const authToken = await trinsic.account().loginConfirm(loginResponse.challenge, "12345");
       //}
+
+      // setAuthTokenSample() {
+      trinsic.options.authToken = authToken;
+      //}
     } catch { }
   });
 

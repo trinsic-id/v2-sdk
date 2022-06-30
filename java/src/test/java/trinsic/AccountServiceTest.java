@@ -33,6 +33,10 @@ class AccountServiceTest {
           var authToken =
               trinsic.account().loginConfirm(loginResponse.getChallenge(), "12345").get();
           // }
+
+          // setAuthTokenSample() {
+          trinsic.setProfile(authToken);
+          // }
         });
   }
 

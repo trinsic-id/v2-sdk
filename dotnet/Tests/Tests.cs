@@ -139,7 +139,11 @@ public class Tests
         var trinsic = new TrinsicService(_options.Clone());
         var (ecosystem, authToken) = await trinsic.Provider.CreateEcosystemAsync(new());
 
-        trinsic.SetDefaultEcosystem(ecosystem.Id).SetAuthToken(authToken);
+        trinsic.SetDefaultEcosystem(ecosystem.Id);
+
+        // setAuthTokenSample() {
+        trinsic.SetAuthToken(authToken);
+        // }
 
         // registerGovernanceFramework() {
         var schemaUri = "https://schema.org/Card";
