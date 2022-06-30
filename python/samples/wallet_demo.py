@@ -18,7 +18,7 @@ def _vaccine_cert_unsigned_path() -> str:
 
 async def wallet_demo():
     config = trinsic_config()
-    trinsic_service = TrinsicService(config)
+    trinsic_service = TrinsicService(server_config=config)
 
     account = await trinsic_service.account.sign_in()
 
