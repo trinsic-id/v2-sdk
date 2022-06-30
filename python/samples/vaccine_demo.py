@@ -15,7 +15,7 @@ from trinsic.proto.services.verifiablecredentials.v1 import (
     SendRequest,
 )
 from trinsic.trinsic_service import TrinsicService
-from trinsic.trinsic_util import trinsic_config
+from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 
 
 async def vaccine_demo():
@@ -157,4 +157,5 @@ async def do_template(trinsic_service: TrinsicService) -> TemplateData:
 
 
 if __name__ == "__main__":
+    set_eventloop_policy()
     asyncio.run(vaccine_demo())

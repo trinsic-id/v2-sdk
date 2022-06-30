@@ -1,5 +1,5 @@
 import asyncio
-import platform
+from asyncio import set_event_loop_policy
 
 from trinsic.proto.services.provider.v1 import GetOberonKeyRequest
 from trinsic.provider_service import ProviderService
@@ -14,6 +14,5 @@ async def demo():
 
 
 if __name__ == "__main__":
-    if platform.system() == "Windows":
-        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    set_event_loop_policy()
     asyncio.run(demo())

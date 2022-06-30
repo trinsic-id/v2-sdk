@@ -9,7 +9,7 @@ from trinsic.proto.services.trustregistry.v1 import (
     RegisterMemberRequest,
 )
 from trinsic.trinsic_service import TrinsicService
-from trinsic.trinsic_util import trinsic_config
+from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 
 
 async def trustregistry_demo():
@@ -74,4 +74,5 @@ async def trustregistry_demo():
 
 
 if __name__ == "__main__":
+    set_eventloop_policy()
     asyncio.run(trustregistry_demo())

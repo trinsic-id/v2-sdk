@@ -5,7 +5,7 @@ from os.path import abspath, join, dirname
 from trinsic.proto.services.universalwallet.v1 import InsertItemRequest, SearchRequest
 from trinsic.proto.services.verifiablecredentials.v1 import IssueRequest
 from trinsic.trinsic_service import TrinsicService
-from trinsic.trinsic_util import trinsic_config
+from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 
 
 def _base_data_path() -> str:
@@ -75,4 +75,5 @@ async def wallet_demo():
 
 
 if __name__ == "__main__":
+    set_eventloop_policy()
     asyncio.run(wallet_demo())

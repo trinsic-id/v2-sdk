@@ -2,10 +2,16 @@ import asyncio
 import base64
 
 from trinsic.proto.services.account.v1 import AccountDetails
-from trinsic.proto.services.provider.v1 import AddWebhookRequest, DeleteWebhookRequest, EcosystemInfoRequest, \
-    ParticipantType, InviteRequest, UpdateEcosystemRequest
+from trinsic.proto.services.provider.v1 import (
+    AddWebhookRequest,
+    DeleteWebhookRequest,
+    EcosystemInfoRequest,
+    ParticipantType,
+    InviteRequest,
+    UpdateEcosystemRequest,
+)
 from trinsic.trinsic_service import TrinsicService
-from trinsic.trinsic_util import trinsic_config
+from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 
 
 async def provider_demo():
@@ -13,7 +19,9 @@ async def provider_demo():
 
     ecosystem_response = await trinsic.provider.create_ecosystem()
     ecosystem = ecosystem_response.ecosystem
-    auth_token = base64.urlsafe_b64encode(bytes(ecosystem_response.profile)).decode("utf-8")
+    auth_token = base64.urlsafe_b64encode(bytes(ecosystem_response.profile)).decode(
+        "utf-8"
+    )
 
     trinsic.service_options.default_ecosystem = ecosystem
     trinsic.service_options.auth_token = auth_token
@@ -21,9 +29,9 @@ async def provider_demo():
     # addWebhook() {
     request = AddWebhookRequest(
         destination_url="https://example.com/webhooks/trinsic",
-        secret="my well-kept secret"
+        secret="my well-kept secret",
     )
-    request.events.append("*") # Enable all events
+    request.events.append("*")  # Enable all events
 
     response = await trinsic.provider.add_webhook(request=request)
     # }
@@ -32,11 +40,15 @@ async def provider_demo():
     webhook_id = webhook.id
 
     # deleteWebhook() {
-    response = await trinsic.provider.delete_webhook(request=DeleteWebhookRequest(webhook_id))
+    response = await trinsic.provider.delete_webhook(
+        request=DeleteWebhookRequest(webhook_id)
+    )
     # }
 
     # updateEcosystem() {
-    request = UpdateEcosystemRequest(description="My new description", uri="https://example.com")
+    request = UpdateEcosystemRequest(
+        description="My new description", uri="https://example.com"
+    )
     response = await trinsic.provider.update_ecosystem(request=request)
     # }
 
@@ -44,7 +56,6 @@ async def provider_demo():
     response = await trinsic.provider.ecosystem_info(request=EcosystemInfoRequest())
     ecosystem = response.ecosystem
     # }
-
 
     try:
         invite_response = await trinsic.provider.invite_participant(
@@ -59,8 +70,6 @@ async def provider_demo():
         pass
 
 
-
-
-
 if __name__ == "__main__":
+    set_eventloop_policy()
     asyncio.run(provider_demo())

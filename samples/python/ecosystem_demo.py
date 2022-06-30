@@ -8,7 +8,7 @@ from trinsic.proto.services.provider.v1 import (
     InvitationStatusRequest,
 )
 from trinsic.trinsic_service import TrinsicService
-from trinsic.trinsic_util import trinsic_config
+from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 
 
 async def ecosystem_demo():
@@ -54,4 +54,5 @@ async def ecosystem_demo():
 
 
 if __name__ == "__main__":
+    set_eventloop_policy()
     asyncio.run(ecosystem_demo())
