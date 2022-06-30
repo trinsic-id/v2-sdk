@@ -1,149 +1,159 @@
 import asyncio
-from os.path import abspath, join, dirname
+import json
 
-from trinsic.account_service import AccountService
-from trinsic.credentials_service import CredentialsService
-from trinsic.proto.services.account.v1 import SignInRequest
 from trinsic.proto.services.universalwallet.v1 import InsertItemRequest
+from trinsic.proto.services.verifiablecredentials.templates.v1 import (
+    CreateCredentialTemplateRequest,
+    TemplateData,
+    TemplateField,
+    FieldType,
+)
 from trinsic.proto.services.verifiablecredentials.v1 import (
-    IssueRequest,
+    IssueFromTemplateRequest,
     CreateProofRequest,
     VerifyProofRequest,
+    SendRequest,
 )
-from trinsic.provider_service import ProviderService
+from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config
-from trinsic.wallet_service import WalletService
-
-
-# pathData() {
-def _base_data_path() -> str:
-    return abspath(join(dirname(__file__), "..", "..", "devops", "testdata"))
-
-
-def _vaccine_cert_unsigned_path() -> str:
-    return abspath(join(_base_data_path(), "vaccination-certificate-unsigned.jsonld"))
-
-
-def _vaccine_cert_frame_path() -> str:
-    return abspath(join(_base_data_path(), "vaccination-certificate-frame.jsonld"))
-
-
-# }
 
 
 async def vaccine_demo():
-    # createAccountService() {
-    account_service = AccountService(server_config=trinsic_config())
-    account = await account_service.sign_in()
-    provider_service = ProviderService(server_config=trinsic_config(account))
+    # trinsicServiceConstructor() {
+    trinsic_service = TrinsicService(server_config=trinsic_config())
+    # }
 
-    ecosystem = await provider_service.create_ecosystem()
+    # createEcosystem() {
+    ecosystem = await trinsic_service.provider.create_ecosystem()
     ecosystem_id = ecosystem.ecosystem.id
     # }
 
+    # Set service default ecosystem
+    trinsic_service.service_options.default_ecosystem = ecosystem_id
+
     # setupActors() {
-    # Create 3 different profiles for each participant in the scenario
-    allison = await account_service.sign_in(
-        request=SignInRequest(ecosystem_id=ecosystem_id)
-    )
-    clinic = await account_service.sign_in(
-        request=SignInRequest(ecosystem_id=ecosystem_id)
-    )
-    airline = await account_service.sign_in(
-        request=SignInRequest(ecosystem_id=ecosystem_id)
-    )
+    # Create an account for each participant in the scenario
+    allison = await trinsic_service.account.sign_in()
+    airline = await trinsic_service.account.sign_in()
+    clinic = await trinsic_service.account.sign_in()
     # }
 
-    account_service.service_options.auth_token = clinic
-    info = await account_service.get_info()
+    trinsic_service.service_options.auth_token = clinic
+    info = await trinsic_service.account.get_info()
     print(f"Account info={info}")
 
-    # createService() {
-    wallet_service = WalletService(server_config=trinsic_config(allison))
-    credentials_service = CredentialsService(server_config=trinsic_config(clinic))
-    # }
+    # Create a template
+    trinsic_service.service_options.auth_token = clinic
+    template = await do_template(trinsic_service)
 
-    # storeAndRecallProfile() {
-    # Store profile for later use
-    with open("allison.txt", "wb") as fid:
-        fid.write(allison.encode("utf-8"))
-
-    # Create profile from existing data
-    with open("allison.txt", "rb") as fid:
-        allison = fid.readline()
-    # }
+    # Create template values
 
     # issueCredential() {
-    # Sign a credential as the clinic and send it to Allison
-    with open(_vaccine_cert_unsigned_path(), "r") as fid:
-        credential_json = "\n".join(fid.readlines())
-
-    issue_response = await credentials_service.issue_credential(
-        request=IssueRequest(document_json=credential_json)
+    # Prepare values for credential
+    values = json.dumps(
+        {
+            "firstName": "Allison",
+            "lastName": "Allisonne",
+            "batchNumber": "123454321",
+            "countryOfVaccination": "US",
+        }
     )
-    credential = issue_response.signed_document_json
-    print(f"Credential: {credential}")
+
+    # Issue credential
+    issue_response = await trinsic_service.credential.issue_from_template(
+        request=IssueFromTemplateRequest(template_id=template.id, values_json=values)
+    )
+
+    credential = issue_response.document_json
     # }
 
-    # checkCredentialStatus() {
-    # status_id = credential['id']
-    # credential_status = await credentials_service.check_status(credential_status_id=status_id)
-    # print(f"Credential_status: {credential_status}")
-    # }
+    print(f"Credential: {credential}")
+
+    try:
+        # sendCredential() {
+        send_response = await trinsic_service.credential.send(
+            request=SendRequest(document_json=credential, email="example@trinsic.id")
+        )
+        # }
+    except:
+        pass
 
     # storeCredential() {
-    # Alice stores the credential in her cloud wallet.
-    wallet_service.service_options.auth_token = allison
-    insert_response = await wallet_service.insert_item(
+    # Allison stores the credential in her cloud wallet
+    trinsic_service.service_options.auth_token = allison
+
+    insert_response = await trinsic_service.wallet.insert_item(
         request=InsertItemRequest(item_json=credential)
     )
+
     item_id = insert_response.item_id
-    print(f"item id = {item_id}")
-    wallet_items = await wallet_service.search()
-    print(f"last wallet item = {wallet_items.items[-1]}")
     # }
+    print(f"item id = {item_id}")
 
     # shareCredential() {
-    # Allison shares the credential with the venue.
-    # The venue has communicated with Allison the details of the credential
-    # that they require expressed as a JSON-LD frame.
-    credentials_service.service_options.auth_token = allison
-    wallet_service.service_options.auth_token = allison
-    with open(_vaccine_cert_frame_path(), "r") as fid2:
-        proof_request_json = "\n".join(fid2.readlines())
+    # Allison shares the credential with the airline
+    trinsic_service.service_options.auth_token = allison
 
-    proof_response = await credentials_service.create_proof(
-        request=CreateProofRequest(
-            reveal_document_json=proof_request_json, item_id=item_id
-        )
+    proof_response = await trinsic_service.credential.create_proof(
+        request=CreateProofRequest(item_id=item_id)
     )
+
     credential_proof = proof_response.proof_document_json
-    print(f"Proof: {credential_proof}")
     # }
+
+    print(f"Proof: {credential_proof}")
 
     # verifyCredential() {
     # The airline verifies the credential
-    credentials_service.service_options.auth_token = airline
-    wallet_service.service_options.auth_token = airline
-    verify_result = await credentials_service.verify_proof(
+    trinsic_service.service_options.auth_token = airline
+
+    verify_result = await trinsic_service.credential.verify_proof(
         request=VerifyProofRequest(proof_document_json=credential_proof)
     )
+
     valid = verify_result.is_valid
-    print(f"Verification result: {valid}")
-    assert valid is True
     # }
 
+    print(f"Verification result: {valid}")
+    assert valid is True
+
     # revokeCredential() {
-    # update_status_response = await credentials_service.update_status(credential_status_id=status_id, revoked=True)
+    # update_status_response = await trinsic_service.credential.update_status(credential_status_id=status_id, revoked=True)
     # print(f"UpdateStatusResponse: {update_status_response}")
-    # credential_status = await credentials_service.check_status(credential_status_id=status_id)
+    # credential_status = await trinsic_service.credential.check_status(credential_status_id=status_id)
     # print(f"Credential_status: {credential_status}")
     # assert credential_status.revoked is True
     # }
-    credentials_service.close()
-    wallet_service.close()
-    account_service.close()
-    provider_service.close()
+
+
+async def do_template(trinsic_service: TrinsicService) -> TemplateData:
+    # createTemplate() {
+    template = await trinsic_service.template.create(
+        request=CreateCredentialTemplateRequest(
+            name="VaccinationCertificate",
+            allow_additional_fields=False,
+            fields={
+                "firstName": TemplateField(
+                    description="First name of vaccine recipient"
+                ),
+                "lastName": TemplateField(description="Last name of vaccine recipient"),
+                "batchNumber": TemplateField(
+                    description="Batch number of vaccine", type=FieldType.STRING
+                ),
+                "countryOfVaccination": TemplateField(
+                    description="Country in which the subject was vaccinated"
+                ),
+            },
+        )
+    )
+
+    template_id = template.data.id
+    # }
+
+    assert template_id is not None
+    assert template.data.schema_uri is not None
+
+    return template.data
 
 
 if __name__ == "__main__":

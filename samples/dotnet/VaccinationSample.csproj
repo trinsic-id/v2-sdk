@@ -7,15 +7,15 @@
 
     <ItemGroup>
         <PackageReference Include="FluentAssertions" Version="6.2.0"/>
-        <PackageReference Include="Trinsic" Version="1.4.0"/>
+        <PackageReference Include="Trinsic" Version="1.6.0"/>
     </ItemGroup>
 
     <ItemGroup>
-        <None Update="vaccination-certificate-unsigned.jsonld">
+        <Content Update="../../devops/testdata/vaccination-certificate-unsigned.jsonld">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
-        <None Update="vaccination-certificate-frame.jsonld">
+        </Content>
+        <Content Update="../../devops/testdata/vaccination-certificate-frame.jsonld">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
+        </Content>
     </ItemGroup>
 </Project>
