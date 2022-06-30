@@ -33,6 +33,10 @@ func TestLogin(t *testing.T) {
 	// There SHOULD be an error -- auth code should be invalid
 	assert2.NotNil(err)
 	assert2.Empty(authToken)
+
+	// setAuthTokenSample() {
+	trinsic.SetToken(authToken)
+	// }
 }
 
 func TestAuthWebhook(t *testing.T) {
