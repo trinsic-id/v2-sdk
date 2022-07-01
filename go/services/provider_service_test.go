@@ -2,8 +2,6 @@ package services
 
 import (
     "context"
-    "github.com/trinsic-id/sdk/go/test_util"
-
     "testing"
 
     "github.com/stretchr/testify/assert"
@@ -13,7 +11,7 @@ import (
 func TestWebhookAddDelete(t *testing.T) {
     assert2 := assert.New(t)
 
-    trinsic, err := test_util.TestTrinsicWithNewEcosystem()
+    trinsic, err := CreateTestTrinsicWithNewEcosystem()
     if !assert2.Nil(err) {
         return
     }
@@ -56,7 +54,7 @@ func TestWebhookAddDelete(t *testing.T) {
 func TestEcosystemUpdateInfo(t *testing.T) {
     assert2 := assert.New(t)
 
-    trinsic, err := test_util.TestTrinsicWithNewEcosystem()
+    trinsic, err := CreateTestTrinsicWithNewEcosystem()
     if !assert2.Nil(err) {
         return
     }

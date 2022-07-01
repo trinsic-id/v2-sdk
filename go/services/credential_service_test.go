@@ -1,20 +1,19 @@
 package services
 
 import (
-	"context"
-	"encoding/json"
-	"github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/templates/v1/template"
-	"github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/v1/credential"
-	"github.com/trinsic-id/sdk/go/test_util"
-	"testing"
+    "context"
+    "encoding/json"
+    "github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/templates/v1/template"
+    "github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/v1/credential"
+    "testing"
 
-	"github.com/stretchr/testify/assert"
+    "github.com/stretchr/testify/assert"
 )
 
 func TestIssueAndVerify(t *testing.T) {
 	assert2 := assert.New(t)
 
-	trinsic, err := test_util.TestTrinsicWithNewEcosystem()
+	trinsic, err := CreateTestTrinsicWithNewEcosystem()
 	assert2.Nil(err)
 
 	// Create a simple template to issue against

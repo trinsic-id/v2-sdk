@@ -3,7 +3,6 @@ package services
 import (
 	"context"
 	"fmt"
-	"github.com/trinsic-id/sdk/go/test_util"
 	"path/filepath"
 	"runtime"
 	"testing"
@@ -22,14 +21,33 @@ func GetBasePath() string {
 	path := filepath.Clean(filepath.Join(filepath.Dir(fileName), "..", "..", "devops", "testdata"))
 	return path
 }
-func GetVaccineCertUnsignedPath() string {
-	return filepath.Join(GetBasePath(), "vaccination-certificate-unsigned.jsonld")
-}
-func GetVaccineCertFramePath() string {
-	return filepath.Join(GetBasePath(), "vaccination-certificate-frame.jsonld")
-}
 
 // }
+
+// CreateTestTrinsicWithNewEcosystem creates a testing ecosystem and returns a `services.Trinsic` configured against it
+func CreateTestTrinsicWithNewEcosystem() (*Trinsic, error) {
+	trinsic, err := NewTrinsic(WithTestEnv())
+	if err != nil {
+		return nil, err
+	}
+
+	// Make a new ecosystem
+	ecoResponse, err := trinsic.Provider().CreateEcosystem(context.Background(), &provider.CreateEcosystemRequest{})
+	if err != nil {
+		return nil, err
+	}
+
+	// Set auth token and ecosystem ID
+	token, err := ProfileToToken(ecoResponse.GetProfile())
+	if err != nil {
+		return nil, err
+	}
+
+	trinsic.SetToken(token)
+	trinsic.SetEcosystemId(ecoResponse.GetEcosystem().Id)
+
+	return trinsic, nil
+}
 
 func TestServiceOptions(t *testing.T) {
 	assert := assert.New(t)
@@ -64,7 +82,7 @@ func TestServiceOptions(t *testing.T) {
 
 func TestTrustRegistryDemo(t *testing.T) {
 	assert2 := assert.New(t)
-	trinsic, err := test_util.TestTrinsicWithNewEcosystem()
+	trinsic, err := CreateTestTrinsicWithNewEcosystem()
 	if !assert2.Nil(err) {
 		return
 	}
@@ -131,7 +149,7 @@ func TestTrustRegistryDemo(t *testing.T) {
 
 func TestEcosystemDemo(t *testing.T) {
 	assert2 := assert.New(t)
-	trinsic, err := test_util.TestTrinsicWithNewEcosystem()
+	trinsic, err := CreateTestTrinsicWithNewEcosystem()
 	if !assert2.Nil(err) {
 		return
 	}

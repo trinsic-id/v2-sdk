@@ -1,19 +1,18 @@
 package services
 
 import (
-	"context"
-	"encoding/json"
-	"github.com/trinsic-id/sdk/go/proto/services/universalwallet/v1/wallet"
-	"github.com/trinsic-id/sdk/go/test_util"
-	"testing"
+    "context"
+    "encoding/json"
+    "github.com/trinsic-id/sdk/go/proto/services/universalwallet/v1/wallet"
+    "testing"
 
-	"github.com/stretchr/testify/assert"
+    "github.com/stretchr/testify/assert"
 )
 
 func TestWalletService(t *testing.T) {
 	assert2 := assert.New(t)
 
-	trinsic, err := test_util.TestTrinsicWithNewEcosystem()
+	trinsic, err := CreateTestTrinsicWithNewEcosystem()
 	assert2.Nil(err)
 
 	valuesBytes, _ := json.Marshal(struct{ name string }{name: "A Realperson"})

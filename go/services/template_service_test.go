@@ -1,22 +1,20 @@
 package services
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"github.com/stretchr/testify/assert"
-	"github.com/trinsic-id/sdk/go/test_util"
+    "context"
+    "encoding/json"
+    "fmt"
+    "github.com/google/uuid"
+    "github.com/stretchr/testify/assert"
+    "github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/templates/v1/template"
+    "github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/v1/credential"
 
-	"github.com/google/uuid"
-	"github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/templates/v1/template"
-	"github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/v1/credential"
-
-	"testing"
+    "testing"
 )
 
 func TestTemplatesDemo(t *testing.T) {
 	assert2 := assert.New(t)
-	trinsic, err := test_util.TestTrinsicWithNewEcosystem()
+	trinsic, err := CreateTestTrinsicWithNewEcosystem()
 	if !assert2.Nil(err) {
 		return
 	}
