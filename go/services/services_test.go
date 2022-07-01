@@ -114,7 +114,7 @@ func TestTrustRegistryDemo(t *testing.T) {
 	assert2.NotNil(ecosystemList)
 	assert2.NotEmpty(ecosystemList)
 
-	// unregisterIssuer() {
+	// unregisterMember() {
 	unregisterMemberResponse, err := trinsic.TrustRegistry().UnregisterMember(context.Background(), &trustregistry.UnregisterMemberRequest{
 		SchemaUri:   schemaURI,
 		FrameworkId: newFramework.Id,
