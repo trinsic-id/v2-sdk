@@ -25,7 +25,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows], [macos-latest, macos] ] # disabled due to macos not allowing us to set the LD_LIBRARY_PATH as a github action
+        os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows-gnu], [macos-latest, macos] ] # disabled due to macos not allowing us to set the LD_LIBRARY_PATH as a github action
     steps:
       - uses: actions/checkout@v2
       - name: Download ${{ matrix.os-artifact[0] }} binaries
