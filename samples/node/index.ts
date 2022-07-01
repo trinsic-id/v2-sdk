@@ -1,74 +1,92 @@
-import {
-    AccountService,
-    CreateProofRequest,
-    CredentialService,
-    InsertItemRequest,
-    IssueRequest,
-    SignInRequest,
-    VerifyProofRequest,
-    WalletService
-} from "@trinsic/trinsic";
+import {CreateProofRequest, InsertItemRequest, TrinsicService} from '@trinsic/trinsic';
+import {resolve} from "path";
+import {readFileSync} from "fs";
 
-import {getVaccineCertUnsignedJSON, getVaccineCertFrameJSON} from "./TestData"
+function vaccineCertFramePath(): string {
+    return resolve(
+        __dirname,
+        "..",
+        "..",
+        "devops",
+        "testdata",
+        "vaccination-certificate-frame.jsonld"
+    );
+}
+
+function vaccineCertUnsignedPath(): string {
+    return resolve(
+        __dirname,
+        "..",
+        "..",
+        "devops",
+        "testdata",
+        "vaccination-certificate-unsigned.jsonld"
+    );
+}
+
+function templateCertFramePath(): string {
+    return resolve(
+        __dirname,
+        "..",
+        "..",
+        "devops",
+        "testdata",
+        "credential-template-frame.jsonld"
+    );
+}
+
+function getVaccineCertFrameJSON(): string {
+    return readFileSync(vaccineCertFramePath(), "utf8");
+}
+
+function getVaccineCertUnsignedJSON(): string {
+    return readFileSync(vaccineCertUnsignedPath(), "utf8");
+}
+
+function getTemplateCertFrameJSON(): string {
+    return readFileSync(templateCertFramePath(), "utf8");
+}
 
 async function vaccineDemo() {
-    // createAccountService() {
-    const accountService = new AccountService();
-    // }
+    const trinsic = new TrinsicService();
 
-    // setupActors() {
     // Create 3 different profiles for each participant in the scenario
-    const allison = await accountService.signIn(new SignInRequest());
-    const clinic = await accountService.signIn(new SignInRequest());
-    const airline = await accountService.signIn(new SignInRequest());
-    // }
+    const allison = await trinsic.account().loginAnonymous();
+    const clinic = await trinsic.account().loginAnonymous();
+    const airline = await trinsic.account().loginAnonymous();
 
-    accountService.options.setAuthToken(clinic);
-    const info = await accountService.info();
+    // @ts-ignore
+    trinsic.options.authToken = clinic;
+    const info = await trinsic.account().info();
 
-    // createService() {
-    const walletService = new WalletService();
-    const credentialService = new CredentialService();
-    // }
-
-    // issueCredential() {
     // Sign a credential as the clinic and send it to Allison
     const credentialJson = getVaccineCertUnsignedJSON()
-    credentialService.options.setAuthToken(clinic)
-    const credential = await credentialService.issueCredential(new IssueRequest()
-        .setDocumentJson(JSON.stringify(credentialJson)));
-    // }
+    const credential = await trinsic.credential().issueCredential({documentJson: JSON.stringify(credentialJson)});
 
-    // storeCredential() {
     // Alice stores the credential in her cloud wallet.
-    walletService.options.setAuthToken(allison);
-    const itemId = await walletService.insertItem(new InsertItemRequest()
-        .setItemJson(credential.getSignedDocumentJson()));
-    // }
+    // @ts-ignore
+    trinsic.options.authToken = allison;
+    const itemId = await trinsic.wallet().insertItem(InsertItemRequest.fromPartial({itemJson: credential.signedDocumentJson}));
 
-    // shareCredential() {
     // Allison shares the credential with the venue.
     // The venue has communicated with Allison the details of the credential
     // that they require expressed as a JSON-LD frame.
-    credentialService.options.setAuthToken(allison);
+    // @ts-ignore
+    trinsic.options.authToken = (allison);
     const proofRequestJson = getVaccineCertFrameJSON();
-    const proof = await credentialService.createProof(new CreateProofRequest()
-        .setItemId(itemId.getItemId())
-        .setRevealDocumentJson(JSON.stringify(proofRequestJson)));
-    // }
+    const proof = await trinsic.credential().createProof(CreateProofRequest.fromPartial({
+        itemId: itemId.itemId,
+        revealDocumentJson: JSON.stringify(proofRequestJson)
+    }));
 
-    // verifyCredential() {
-    // The airline verifies the credential
-    credentialService.options.setAuthToken(airline);
-    const verifyResponse = await credentialService.verifyProof(new VerifyProofRequest()
-        .setProofDocumentJson(proof.getProofDocumentJson()));
-    // }
-
-    return verifyResponse
+    // The trinsic verifies the credential
+    // @ts-ignore
+    trinsic.options.authToken = (airline);
+    return await trinsic.credential().verifyProof({proofDocumentJson: proof.proofDocumentJson})
 }
 
 vaccineDemo().then(x => {
-    console.log("Is-valid=", x.getIsValid())
+    console.log("Is-valid=", x.isValid)
 }).catch(reason => {
     console.error(reason)
 })
