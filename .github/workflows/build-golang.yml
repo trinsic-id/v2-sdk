@@ -47,7 +47,6 @@ jobs:
       - name: Build and Test Golang
         run: |
           go version
-          python ../../devops/build_sdks.py --language=golang
           go build
           go test -v -race -covermode=atomic -coverprofile="coverage.out"
         shell: pwsh
