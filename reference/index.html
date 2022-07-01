@@ -597,7 +597,9 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
@@ -713,7 +715,9 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
@@ -848,7 +852,9 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
@@ -1036,13 +1042,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sdk-services" class="md-nav__link">
+  <a href="#services" class="md-nav__link">
     <span class="md-ellipsis">
-      SDK Services
+      Services
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="SDK Services">
+    <nav class="md-nav" aria-label="Services">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1076,7 +1082,9 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
@@ -1249,7 +1257,9 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
@@ -1389,7 +1399,9 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
@@ -1486,7 +1498,9 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
@@ -1777,14 +1791,13 @@
 
 
 <h1 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h1>
-<p>If you are ready to begin integrating the SDK, make sure you have an SDK installed and configured. You can install each SDK by following the instructions in each page under <strong>Build</strong> in the sidebar.</p>
-<p>When using the SDK, you can pass parameters to the default service constructors and use the provided methods to set different active profiles.</p>
+<p>This section serves as the reference for the Trinsic API, which can be accessed using any of our <a href="/cli/">SDKs</a>.</p>
 <h2 id="authentication">Authentication<a class="headerlink" href="#authentication" title="Permanent link">&para;</a></h2>
 <h3 id="auth-tokens">Auth Tokens<a class="headerlink" href="#auth-tokens" title="Permanent link">&para;</a></h3>
-<p>Authentication with the Trinsic platform operates off of auth tokens, which are strings that operate similarly to API keys.</p>
-<p>Unlike API keys, however, Trinsic utilizes <a href="/learn/platform/security">zero-knowledge proofs</a> to sign SDK calls using an auth token, without ever transmitting the auth token itself down the wire. This provides increased security compared to API keys, while being more convenient than other public/private key schemes.</p>
+<p>Authentication with the Trinsic platform uses auth tokens, which are strings that operate similarly to API keys.</p>
+<p>Unlike API keys, however, Trinsic utilizes <a href="/learn/platform/security">zero-knowledge proofs</a> to sign SDK calls using an auth token, without ever transmitting the auth token itself down the wire. This provides increased security compared to API keys, while being more convenient than other auth schemes, such as public/private tokens.</p>
 <h3 id="custom-protection-of-auth-tokens">Custom Protection of Auth Tokens<a class="headerlink" href="#custom-protection-of-auth-tokens" title="Permanent link">&para;</a></h3>
-<p>We provide helper methods to <a href="/reference/services/account-service#protect">protect</a> auth tokens -- enabling you to perform custom security operations. An auth token, once protected with a code, is unusable until unprotected with that same code. Protection and unprotection and performed entirely on-device.</p>
+<p>We provide helper methods to <a href="/reference/services/account-service#protect">protect</a> auth tokens -- enabling you to perform custom security operations. An auth token, once protected with a code, is unusable until unprotected with that same code. Protection and unprotection are performed entirely on-device.</p>
 <h3 id="using-auth-tokens-in-the-sdk">Using Auth Tokens in the SDK<a class="headerlink" href="#using-auth-tokens-in-the-sdk" title="Permanent link">&para;</a></h3>
 <p>Whenever you perform an SDK call which returns an auth token (signing in to an account, or creating an ecosystem), our SDKs will automatically store the auth token in memory and use it for subsequent calls.</p>
 <p>You can also manually set the auth token used by the SDK (such as when loading an auth token from storage):</p>
@@ -1813,10 +1826,10 @@
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">trinsic</span><span class="p">.</span><span class="na">setProfile</span><span class="p">(</span><span class="n">authToken</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
-<h2 id="sdk-services">SDK Services<a class="headerlink" href="#sdk-services" title="Permanent link">&para;</a></h2>
 </div>
 </div>
 </div>
+<h2 id="services">Services<a class="headerlink" href="#services" title="Permanent link">&para;</a></h2>
 <p>Our SDK is broken down into the following logical services, each of which is accessible through a single <code>TrinsicService</code> instance:</p>
 <ul>
 <li><a href="services/account-service/">Account Service</a></li>
@@ -1950,7 +1963,7 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link", "navigation.instant", "navigation.tracking", "announce.dismiss", "navigation.tabs", "navigation.tabs.sticky", "toc.integrate"], "search": "../assets/javascripts/workers/search.720157f5.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link", "navigation.instant", "navigation.tracking", "announce.dismiss", "navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.sections"], "search": "../assets/javascripts/workers/search.720157f5.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
       <script src="../assets/javascripts/bundle.2131bdac.min.js"></script>
