@@ -61,14 +61,11 @@ theme:
   custom_dir: docs/overrides
   favicon: _static/logo.png
   features:
-    # - content.tabs.link
-    # - navigation.instant
     - navigation.tracking
     - announce.dismiss
     - navigation.tabs
     - navigation.tabs.sticky
     - toc.integrate
-    # - navigation.expand
     - navigation.sections
   icon:
     repo: fontawesome/brands/github-alt
