@@ -44,7 +44,7 @@ Issues a credential from a valid JSON-LD document. Issued credentials are not au
     === "Go"
         <!--codeinclude-->
         ```golang
-        [VerifyProof](../../../go/services/services_test.go) inside_block:issueCredentialSample
+        [VerifyProof](../../../go/examples/vaccine_test.go) inside_block:issueCredential
         ```
         <!--/codeinclude-->
 
