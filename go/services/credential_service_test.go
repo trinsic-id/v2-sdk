@@ -1,105 +1,95 @@
 package services
 
 import (
-    "context"
-    "encoding/json"
-    "github.com/trinsic-id/sdk/go/proto/services/provider/v1/provider"
-    "github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/templates/v1/template"
-    "github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/v1/credential"
-    "testing"
+	"context"
+	"encoding/json"
+	"github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/templates/v1/template"
+	"github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/v1/credential"
+	"github.com/trinsic-id/sdk/go/test_util"
+	"testing"
 
-    "github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestIssueAndVerify(t *testing.T) {
-    assert2 := assert.New(t)
+	assert2 := assert.New(t)
 
-    trinsic, err := NewTrinsic(WithTestEnv())
-    if !assert2.Nil(err) {
-        return
-    }
+	trinsic, err := test_util.TestTrinsicWithNewEcosystem()
+	assert2.Nil(err)
 
-    // Make a new ecosystem
-    ecoResponse, _ := trinsic.Provider().CreateEcosystem(context.Background(), &provider.CreateEcosystemRequest{})
+	// Create a simple template to issue against
+	templateRequest := &template.CreateCredentialTemplateRequest{Name: "Test", AllowAdditionalFields: false, Fields: make(map[string]*template.TemplateField)}
+	templateRequest.Fields["name"] = &template.TemplateField{Description: "Name of credential recipient"}
 
-    // Set auth token and ecosystem ID
-    token, _ := ProfileToToken(ecoResponse.GetProfile())
-    trinsic.SetToken(token)
-    trinsic.SetEcosystemId(ecoResponse.GetEcosystem().Id)
+	createdTemplate, _ := trinsic.Template().Create(context.Background(), templateRequest)
+	templateId := createdTemplate.Data.Id
 
-    // Create a simple template to issue against
-    templateRequest := &template.CreateCredentialTemplateRequest{Name: "Test", AllowAdditionalFields: false, Fields: make(map[string]*template.TemplateField)}
-    templateRequest.Fields["name"] = &template.TemplateField{Description: "Name of credential recipient"}
+	// Issue from template
+	valuesBytes, _ := json.Marshal(struct{ name string }{name: "A Realperson"})
+	valuesJson := string(valuesBytes)
 
-    createdTemplate, _ := trinsic.Template().Create(context.Background(), templateRequest)
-    templateId := createdTemplate.Data.Id
+	// issueFromTemplate() {
+	issueTemplateResponse, err := trinsic.Credential().IssueFromTemplate(context.Background(),
+		&credential.IssueFromTemplateRequest{
+			ValuesJson: valuesJson,
+			TemplateId: templateId,
+		})
+	// }
 
-    // Issue from template
-    valuesBytes, _ := json.Marshal(struct{ name string }{name: "A Realperson"})
-    valuesJson := string(valuesBytes)
+	credentialJson := issueTemplateResponse.DocumentJson
 
-    // issueFromTemplate() {
-    issueTemplateResponse, err := trinsic.Credential().IssueFromTemplate(context.Background(),
-        &credential.IssueFromTemplateRequest{
-            ValuesJson: valuesJson,
-            TemplateId: templateId,
-        })
-    // }
+	assert2.Nil(err)
+	assert2.NotNil(issueTemplateResponse)
 
-    credentialJson := issueTemplateResponse.DocumentJson
+	// Issue (not from template) -- can just be any JSON blob
+	unsignedCredential := valuesJson
 
-    assert2.Nil(err)
-    assert2.NotNil(issueTemplateResponse)
+	// issueCredential() {
+	issueResponse, err := trinsic.Credential().Issue(context.Background(),
+		&credential.IssueRequest{
+			DocumentJson: unsignedCredential,
+		})
+	// }
 
-    // Issue (not from template) -- can just be any JSON blob
-    unsignedCredential := valuesJson
+	assert2.NotNil(issueResponse)
 
-    // issueCredential() {
-    issueResponse, err := trinsic.Credential().Issue(context.Background(),
-        &credential.IssueRequest{
-            DocumentJson: unsignedCredential,
-        })
-    // }
+	// Create a proof
+	// createProof() {
+	request := &credential.CreateProofRequest{
+		Proof: &credential.CreateProofRequest_DocumentJson{
+			DocumentJson: credentialJson,
+		},
+	}
 
-    assert2.NotNil(issueResponse)
+	proofResponse, err := trinsic.Credential().CreateProof(context.Background(), request)
+	// }
 
-    // Create a proof
-    // createProof() {
-    request := &credential.CreateProofRequest{
-        Proof: &credential.CreateProofRequest_DocumentJson{
-            DocumentJson: credentialJson,
-        },
-    }
+	assert2.NotNil(proofResponse)
+	assert2.Nil(err)
 
-    proofResponse, err := trinsic.Credential().CreateProof(context.Background(), request)
-    // }
+	proofJson := proofResponse.ProofDocumentJson
 
-    assert2.NotNil(proofResponse)
-    assert2.Nil(err)
+	// Verify proof
+	// verifyProof() {
+	verifyResponse, err := trinsic.Credential().VerifyProof(context.Background(), &credential.VerifyProofRequest{
+		ProofDocumentJson: proofJson,
+	})
+	// }
 
-    proofJson := proofResponse.ProofDocumentJson
+	assert2.NotNil(verifyResponse)
+	assert2.Nil(err)
 
-    // Verify proof
-    // verifyProof() {
-    verifyResponse, err := trinsic.Credential().VerifyProof(context.Background(), &credential.VerifyProofRequest{
-        ProofDocumentJson: proofJson,
-    })
-    // }
+	// Send credential
+	// sendCredential() {
+	sendResponse, err := trinsic.Credential().Send(context.Background(), &credential.SendRequest{
+		DeliveryMethod: &credential.SendRequest_Email{
+			Email: "example@trinsic.id",
+		},
+		DocumentJson: credentialJson,
+	})
+	// }
 
-    assert2.NotNil(verifyResponse)
-    assert2.Nil(err)
-
-    // Send credential
-    // sendCredential() {
-    sendResponse, err := trinsic.Credential().Send(context.Background(), &credential.SendRequest{
-        DeliveryMethod: &credential.SendRequest_Email{
-            Email: "example@trinsic.id",
-        },
-        DocumentJson: credentialJson,
-    })
-    // }
-
-    // Send() isn't implemented yet, should error
-    assert2.Nil(sendResponse)
-    assert2.NotNil(err)
+	// Send() isn't implemented yet, should error
+	assert2.Nil(sendResponse)
+	assert2.NotNil(err)
 }

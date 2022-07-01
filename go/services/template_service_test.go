@@ -4,6 +4,8 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/stretchr/testify/assert"
+	"github.com/trinsic-id/sdk/go/test_util"
 
 	"github.com/google/uuid"
 	"github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/templates/v1/template"
@@ -13,7 +15,8 @@ import (
 )
 
 func TestTemplatesDemo(t *testing.T) {
-	assert2, trinsic, err := createAccountAndSignIn(t)
+	assert2 := assert.New(t)
+	trinsic, err := test_util.TestTrinsicWithNewEcosystem()
 	if !assert2.Nil(err) {
 		return
 	}

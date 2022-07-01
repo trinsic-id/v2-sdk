@@ -3,6 +3,7 @@ package services
 import (
 	"context"
 	"fmt"
+	"github.com/trinsic-id/sdk/go/test_util"
 	"path/filepath"
 	"runtime"
 	"testing"
@@ -62,7 +63,8 @@ func TestServiceOptions(t *testing.T) {
 }
 
 func TestTrustRegistryDemo(t *testing.T) {
-	assert2, trinsic, err := createAccountAndSignIn(t)
+	assert2 := assert.New(t)
+	trinsic, err := test_util.TestTrinsicWithNewEcosystem()
 	if !assert2.Nil(err) {
 		return
 	}
@@ -127,24 +129,9 @@ func TestTrustRegistryDemo(t *testing.T) {
 	}
 }
 
-func createAccountAndSignIn(t *testing.T) (*assert.Assertions, *Trinsic, error) {
-	assert2 := assert.New(t)
-
-	trinsic, err := NewTrinsic(WithTestEnv())
-	if !assert2.Nil(err) {
-		fmt.Println(err)
-		return assert2, nil, err
-	}
-	_, _, err = trinsic.Account().SignIn(context.Background(), &account.SignInRequest{})
-	if !assert2.Nil(err) {
-		fmt.Println(err)
-		return assert2, nil, err
-	}
-	return assert2, trinsic, nil
-}
-
 func TestEcosystemDemo(t *testing.T) {
-	assert2, trinsic, err := createAccountAndSignIn(t)
+	assert2 := assert.New(t)
+	trinsic, err := test_util.TestTrinsicWithNewEcosystem()
 	if !assert2.Nil(err) {
 		return
 	}
@@ -176,12 +163,4 @@ func TestEcosystemDemo(t *testing.T) {
 	if inviteStatus != nil {
 	}
 
-}
-
-func failError(t *testing.T, message string, err error) {
-	if err != nil {
-		t.Helper()
-		t.Errorf("%s: %v", message, err)
-		t.FailNow()
-	}
 }
