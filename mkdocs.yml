@@ -61,14 +61,11 @@ theme:
   custom_dir: docs/overrides
   favicon: _static/logo.png
   features:
-    - content.tabs.link
-    - navigation.instant
     - navigation.tracking
     - announce.dismiss
     - navigation.tabs
     - navigation.tabs.sticky
     - toc.integrate
-    # - navigation.expand
     - navigation.sections
   icon:
     repo: fontawesome/brands/github-alt
@@ -115,6 +112,8 @@ markdown_extensions:
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js
   - _static/javascripts/config.js
+  - _static/javascripts/proto_functionality.js
+  - _static/javascripts/tab_sync.js
 extra_css:
   - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/vs.min.css
   - _static/extra.css
