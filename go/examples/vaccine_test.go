@@ -12,7 +12,7 @@ import (
 	"testing"
 )
 
-func defineTemplate(trinsic services.TrinsicService, t *testing.T) *template.TemplateData {
+func defineTemplate(trinsic *services.Trinsic, t *testing.T) *template.TemplateData {
 	// createTemplate() {
 	templateRequest := &template.CreateCredentialTemplateRequest{Name: "VaccinationCertificate", AllowAdditionalFields: false, Fields: make(map[string]*template.TemplateField)}
 	templateRequest.Fields["firstName"] = &template.TemplateField{Description: "First name of vaccine recipient"}
@@ -20,7 +20,7 @@ func defineTemplate(trinsic services.TrinsicService, t *testing.T) *template.Tem
 	templateRequest.Fields["batchNumber"] = &template.TemplateField{Description: "Batch number of vaccine", Type: template.FieldType_STRING}
 	templateRequest.Fields["countryOfVaccination"] = &template.TemplateField{Description: "Country in which the subject was vaccinated"}
 
-	createdTemplate, _ := templateService.Create(context.Background(), templateRequest)
+	createdTemplate, _ := trinsic.Template().Create(context.Background(), templateRequest)
 
 	templateId := createdTemplate.Data.Id
 	// }
