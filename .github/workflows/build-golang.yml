@@ -47,7 +47,7 @@ jobs:
       - name: Build and Test Golang
         run: |
           go version
-          go test -x -race -covermode "atomic" -coverprofile "coverage.txt"
+          go test -v -race -covermode "atomic" -coverprofile "coverage.txt"
         working-directory: go/services
         env:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
