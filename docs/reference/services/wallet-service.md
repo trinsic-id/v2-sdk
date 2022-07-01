@@ -54,7 +54,7 @@ Stores a credential (or any other JSON object) in a wallet.
     === "Go"
         <!--codeinclude-->
         ```golang
-        [RegisterIssuer](../../../go/services/services_test.go) inside_block:insertItemWallet
+        [RegisterIssuer](../../../go/services/wallet_service_test.go) inside_block:insertItemWallet
         ```
         <!--/codeinclude-->
 
@@ -114,7 +114,7 @@ If no `query` is specified, this call by default returns the first 100 items in 
     === "Go"
         <!--codeinclude-->
         ```golang
-        [RegisterIssuer](../../../go/services/services_test.go) inside_block:searchWalletBasic
+        [RegisterIssuer](../../../go/services/wallet_service_test.go) inside_block:searchWalletBasic
         ```
         <!--/codeinclude-->
 
