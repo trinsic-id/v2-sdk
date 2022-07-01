@@ -43,7 +43,7 @@ Creates a Governance Framework and attaches it to the current ecosystem.
     === "Java"
         <!--codeinclude-->
         ```java
-        [RegisterGovernanceFramework](../../../java/src/test/java/trinsic/TrustRegistryDemo.java) inside_block:registerGovernanceFramework
+        [RegisterGovernanceFramework](../../../java/src/test/java/trinsic/TrustRegistryDemo.java) inside_block:addFramework
         ```
         <!--/codeinclude-->
 
@@ -81,7 +81,7 @@ Registers an authorized issuer for a specific credential type (identified by its
     === "Go"
         <!--codeinclude-->
         ```golang
-        [RegisterIssuer](../../../go/services/services_test.go) inside_block:registerIssuerSample
+        [RegisterIssuer](../../../go/services/services_test.go) inside_block:registerMemberSample
         ```
         <!--/codeinclude-->
 
@@ -127,7 +127,7 @@ Unregisters an issuer for a specific credential type (identified by its `schema_
     === "Go"
         <!--codeinclude-->
         ```golang
-        [RegisterIssuer](../../../go/services/services_test.go) inside_block:unregisterIssuer
+        [RegisterIssuer](../../../go/services/services_test.go) inside_block:unregisterMember
         ```
         <!--/codeinclude-->
 
@@ -171,7 +171,7 @@ Check the status of an issuer for a specific credential type.
     === "Go"
         <!--codeinclude-->
         ```golang
-        [RegisterIssuer](../../../go/services/services_test.go) inside_block:checkIssuerStatus
+        [RegisterIssuer](../../../go/services/services_test.go) inside_block:getMembershipStatus
         ```
         <!--/codeinclude-->
 

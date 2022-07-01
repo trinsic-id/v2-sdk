@@ -21,14 +21,33 @@ func GetBasePath() string {
 	path := filepath.Clean(filepath.Join(filepath.Dir(fileName), "..", "..", "devops", "testdata"))
 	return path
 }
-func GetVaccineCertUnsignedPath() string {
-	return filepath.Join(GetBasePath(), "vaccination-certificate-unsigned.jsonld")
-}
-func GetVaccineCertFramePath() string {
-	return filepath.Join(GetBasePath(), "vaccination-certificate-frame.jsonld")
-}
 
 // }
+
+// CreateTestTrinsicWithNewEcosystem creates a testing ecosystem and returns a `services.Trinsic` configured against it
+func CreateTestTrinsicWithNewEcosystem() (*Trinsic, error) {
+	trinsic, err := NewTrinsic(WithTestEnv())
+	if err != nil {
+		return nil, err
+	}
+
+	// Make a new ecosystem
+	ecoResponse, err := trinsic.Provider().CreateEcosystem(context.Background(), &provider.CreateEcosystemRequest{})
+	if err != nil {
+		return nil, err
+	}
+
+	// Set auth token and ecosystem ID
+	token, err := ProfileToToken(ecoResponse.GetProfile())
+	if err != nil {
+		return nil, err
+	}
+
+	trinsic.SetToken(token)
+	trinsic.SetEcosystemId(ecoResponse.GetEcosystem().Id)
+
+	return trinsic, nil
+}
 
 func TestServiceOptions(t *testing.T) {
 	assert := assert.New(t)
@@ -62,7 +81,8 @@ func TestServiceOptions(t *testing.T) {
 }
 
 func TestTrustRegistryDemo(t *testing.T) {
-	assert2, trinsic, err := createAccountAndSignIn(t)
+	assert2 := assert.New(t)
+	trinsic, err := CreateTestTrinsicWithNewEcosystem()
 	if !assert2.Nil(err) {
 		return
 	}
@@ -114,7 +134,7 @@ func TestTrustRegistryDemo(t *testing.T) {
 	assert2.NotNil(ecosystemList)
 	assert2.NotEmpty(ecosystemList)
 
-	// unregisterIssuer() {
+	// unregisterMember() {
 	unregisterMemberResponse, err := trinsic.TrustRegistry().UnregisterMember(context.Background(), &trustregistry.UnregisterMemberRequest{
 		SchemaUri:   schemaURI,
 		FrameworkId: newFramework.Id,
@@ -127,24 +147,9 @@ func TestTrustRegistryDemo(t *testing.T) {
 	}
 }
 
-func createAccountAndSignIn(t *testing.T) (*assert.Assertions, *Trinsic, error) {
-	assert2 := assert.New(t)
-
-	trinsic, err := NewTrinsic(WithTestEnv())
-	if !assert2.Nil(err) {
-		fmt.Println(err)
-		return assert2, nil, err
-	}
-	_, _, err = trinsic.Account().SignIn(context.Background(), &account.SignInRequest{})
-	if !assert2.Nil(err) {
-		fmt.Println(err)
-		return assert2, nil, err
-	}
-	return assert2, trinsic, nil
-}
-
 func TestEcosystemDemo(t *testing.T) {
-	assert2, trinsic, err := createAccountAndSignIn(t)
+	assert2 := assert.New(t)
+	trinsic, err := CreateTestTrinsicWithNewEcosystem()
 	if !assert2.Nil(err) {
 		return
 	}
@@ -176,12 +181,4 @@ func TestEcosystemDemo(t *testing.T) {
 	if inviteStatus != nil {
 	}
 
-}
-
-func failError(t *testing.T, message string, err error) {
-	if err != nil {
-		t.Helper()
-		t.Errorf("%s: %v", message, err)
-		t.FailNow()
-	}
 }

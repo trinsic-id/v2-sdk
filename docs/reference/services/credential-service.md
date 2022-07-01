@@ -44,7 +44,7 @@ Issues a credential from a valid JSON-LD document. Issued credentials are not au
     === "Go"
         <!--codeinclude-->
         ```golang
-        [VerifyProof](../../../go/examples/vaccine_test.go) inside_block:issueCredential
+        [VerifyProof](../../../go/services/credential_service_test.go) inside_block:issueCredential
         ```
         <!--/codeinclude-->
 
@@ -105,7 +105,7 @@ Issues a credential from a [previously-defined template](/reference/services/tem
     === "Go"
         <!--codeinclude-->
         ```golang
-        [Issue From Template](../../../go/services/template_service_test.go) inside_block:issueFromTemplate
+        [Issue From Template](../../../go/services/credential_service_test.go) inside_block:issueFromTemplate
         ```
         <!--/codeinclude-->
 
@@ -228,7 +228,7 @@ If `reveal_document_json` is passed, a proof will be generated for only the fiel
     === "TypeScript"
         <!--codeinclude-->
         ```typescript
-        [CreateProof](../../../web/test/WalletService.test.ts) inside_block:createProof
+        [CreateProof](../../../web/test/WalletService.test.ts) inside_block:createProof 
         ```
         <!--/codeinclude-->
 
@@ -249,7 +249,7 @@ If `reveal_document_json` is passed, a proof will be generated for only the fiel
     === "Go"
         <!--codeinclude-->
         ```golang
-        [CreateProof](../../../go/services/services_test.go) inside_block:createProof
+        [CreateProof](../../../go/services/credential_service_test.go) inside_block:createProof
         ```
         <!--/codeinclude-->
 
@@ -299,14 +299,14 @@ Verifies a proof for validity and authenticity. Only supports BBS+ Signatures at
     === "Python"
         <!--codeinclude-->
         ```python
-        [VerifyProof](../../../python/samples/vaccine_demo.py) inside_block:verifyProof
+        [VerifyProof](../../../python/samples/credential_demo.py) inside_block:verifyProof
         ```
         <!--/codeinclude-->
 
     === "Go"
         <!--codeinclude-->
         ```golang
-        [VerifyProof](../../../go/services/services_test.go) inside_block:verifyProof
+        [VerifyProof](../../../go/services/credential_service_test.go) inside_block:verifyProof
         ```
         <!--/codeinclude-->
 
@@ -372,7 +372,7 @@ The specified email address must be tied to an existing account in the same ecos
     === "Go"
         <!--codeinclude-->
         ```golang
-        [SendRequest](../../../go/services/services_test.go) inside_block:sendCredential
+        [SendRequest](../../../go/services/credential_service_test.go) inside_block:sendCredential
         ```
         <!--/codeinclude-->
 

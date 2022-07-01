@@ -1,17 +1,17 @@
 package services
 
 import (
-	"context"
-	"testing"
+    "context"
+    "testing"
 
-	"github.com/stretchr/testify/assert"
-	"github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
+    "github.com/stretchr/testify/assert"
+    "github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
 )
 
 func TestLogin(t *testing.T) {
 	assert2 := assert.New(t)
 
-	trinsic, err := NewTrinsic(WithTestEnv())
+	trinsic, err := CreateTestTrinsicWithNewEcosystem()
 	if !assert2.Nil(err) {
 		return
 	}
@@ -42,7 +42,7 @@ func TestLogin(t *testing.T) {
 func TestAuthWebhook(t *testing.T) {
 	assert2 := assert.New(t)
 
-	trinsic, err := NewTrinsic(WithTestEnv())
+	trinsic, err := CreateTestTrinsicWithNewEcosystem()
 	if !assert2.Nil(err) {
 		return
 	}
