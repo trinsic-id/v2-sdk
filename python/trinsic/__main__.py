@@ -1,5 +1,5 @@
 import asyncio
-from asyncio import set_event_loop_policy
+from trinsic.trinsic_util import set_event_loop_policy
 
 from trinsic.proto.services.provider.v1 import GetOberonKeyRequest
 from trinsic.provider_service import ProviderService
