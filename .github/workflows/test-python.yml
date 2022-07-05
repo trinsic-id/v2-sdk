@@ -9,6 +9,7 @@ on:
   pull_request:
     paths:
       - ".github/workflows/test-python.yml"
+      - "samples/python/**"
 
 jobs:
   prod-test-python:

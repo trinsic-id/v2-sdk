@@ -9,6 +9,7 @@ on:
   pull_request:
     paths:
       - ".github/workflows/test-dotnet.yml"
+      - "samples/dotnet/**"
 
 jobs:
   prod-test-net:

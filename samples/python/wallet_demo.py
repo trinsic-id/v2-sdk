@@ -1,11 +1,12 @@
 import asyncio
 import json
+import platform
 from os.path import abspath, join, dirname
 
 from trinsic.proto.services.universalwallet.v1 import InsertItemRequest, SearchRequest
 from trinsic.proto.services.verifiablecredentials.v1 import IssueRequest
 from trinsic.trinsic_service import TrinsicService
-from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
+from trinsic.trinsic_util import trinsic_config
 
 
 def _base_data_path() -> str:
@@ -35,7 +36,7 @@ async def wallet_demo():
     with open(_vaccine_cert_unsigned_path(), "r") as fid:
         credential_json = "\n".join(fid.readlines())
 
-    issue_response = await trinsic.credential.issue(
+    issue_response = await trinsic.credential.issue_credential(
         request=IssueRequest(document_json=credential_json)
     )
     credential = issue_response.signed_document_json
@@ -73,5 +74,6 @@ async def wallet_demo():
 
 
 if __name__ == "__main__":
-    set_eventloop_policy()
+    if platform.system() == "Windows":
+        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     asyncio.run(wallet_demo())

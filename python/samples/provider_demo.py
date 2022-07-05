@@ -10,9 +10,9 @@ from trinsic.proto.services.provider.v1 import (
     InviteRequest,
     UpdateEcosystemRequest,
 )
-from trinsic.provider_service import ProviderService
+
 from trinsic.trinsic_service import TrinsicService
-from trinsic.trinsic_util import trinsic_config
+from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 
 
 async def provider_demo():
@@ -72,4 +72,5 @@ async def provider_demo():
 
 
 if __name__ == "__main__":
+    set_eventloop_policy()
     asyncio.run(provider_demo())

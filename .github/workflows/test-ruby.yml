@@ -9,6 +9,7 @@ on:
   pull_request:
     paths:
       - ".github/workflows/test-ruby.yml"
+      - "samples/ruby/**"
 
 jobs:
   prod-test-ruby:
