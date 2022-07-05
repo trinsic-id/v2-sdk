@@ -10,17 +10,15 @@ The Trinsic Python SDK makes it easy to interact with the Trinsic API from any P
 ```bash
 pip install trinsic-sdk
 ```
-* Test installation by running the following python script:
-
-<!--codeinclude-->
-```python
-[Initial Python Sample](../../samples/python/sample_demo.py) inside_block:sampleDemo
+* Test installation by running the following shell command:
+```bash
+# May be "python" or "python3" depending on your install
+python -m trinsic
 ```
-<!--/codeinclude-->
 
 * The output should look something like this:
 ```bash
-AccountProfile(profile_type='https://trinsic.id/security/v1/oberon', auth_data=b'\n*urn:trinsic:wallets:JkhchLXS8NDwTjmJjNogkQ\x12$1d58106c-325a-4f45-abe0-6a14aa613a10', auth_token=b'\x83E\x06p\xd60V\xe0D\x12NU\xe7\n6\x06\x19 \x0b\xe0\x8er\xf2\xc1\xb3\x96\xdb\xbd/\xf5#\xa7\xe7F\x10\x97E\xe2\xa9\xc4\x10\xdfJ\xbe\xea\xa3Fz', protection=TokenProtection())
+Package successfully installed. Sample profile below
 ```
 
 ## Next Steps
