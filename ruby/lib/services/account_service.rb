@@ -58,7 +58,9 @@ module Trinsic
 
       profile = response.profile
       profile = unprotect(profile, auth_code) if response.profile.protection.enabled
-      Base64.urlsafe_encode64(Account::AccountProfile.encode(profile))
+      encoded_profile = Base64.urlsafe_encode64(Account::AccountProfile.encode(profile))
+      self.auth_token = encoded_profile
+      encoded_profile
     end
 
     def login_anonymous
@@ -66,7 +68,9 @@ module Trinsic
       raise Error('nil profile returned') if response.profile.nil?
       raise Error('protected profile returned') if response.profile.protection.enabled
 
-      Base64.urlsafe_encode64(Account::AccountProfile.encode(response.profile))
+      encoded_profile = Base64.urlsafe_encode64(Account::AccountProfile.encode(response.profile))
+      self.auth_token = encoded_profile
+      encoded_profile
     end
 
     def get_info
