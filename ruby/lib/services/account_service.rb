@@ -18,6 +18,7 @@ module Trinsic
     def sign_in(request = nil)
       request ||= Account::SignInRequest.new
       request.details = request.details || Account::AccountDetails.new
+      request.ecosystem_id = request.ecosystem_id || 'default'
       auth_token = @client.sign_in(request).profile
       encoded_profile = Base64.urlsafe_encode64(Account::AccountProfile.encode(auth_token))
       self.auth_token = encoded_profile

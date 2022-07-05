@@ -8,7 +8,7 @@ require 'securerandom'
 # rubocop:disable Metrics/MethodLength
 def do_template(trinsic)
   # createTemplate() {
-  request = Trinsic::Template::CreateCredentialTemplateRequest.new(name: "VaccinationCertificate: #{SecureRandom.uuid}",
+  request = Trinsic::Template::CreateCredentialTemplateRequest.new(name: "VaccinationCertificate-#{SecureRandom.uuid}",
                                                                       allow_additional_fields: false)
   request.fields['firstName'] = Trinsic::Template::TemplateField.new(description: 'First name of vaccine recipient')
   request.fields['lastName'] = Trinsic::Template::TemplateField.new(description: 'Last name of vaccine recipient')
