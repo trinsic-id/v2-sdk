@@ -1,4 +1,5 @@
 import asyncio
+import platform
 from os.path import abspath, join, dirname
 
 from trinsic.proto.services.verifiablecredentials.v1 import (
@@ -8,7 +9,7 @@ from trinsic.proto.services.verifiablecredentials.v1 import (
     SendRequest,
 )
 from trinsic.trinsic_service import TrinsicService
-from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
+from trinsic.trinsic_util import trinsic_config
 
 
 def _base_data_path() -> str:
@@ -32,13 +33,18 @@ async def credential_demo():
     config.auth_token = account
 
     ecosystem = await trinsic_service.provider.create_ecosystem()
+    ecosystem_id = ecosystem.ecosystem.id
+
+    # Set service default ecosystem
+    trinsic_service.service_options.default_ecosystem = ecosystem_id
+    config.default_ecosystem = ecosystem_id
 
     # Sign a credential as the clinic and send it to Allison
     with open(_vaccine_cert_unsigned_path(), "r") as fid:
         credential_json = "\n".join(fid.readlines())
 
     # issueCredential() {
-    issue_response = await trinsic_service.credential.issue(
+    issue_response = await trinsic_service.credential.issue_credential(
         request=IssueRequest(document_json=credential_json)
     )
     # }
@@ -84,5 +90,6 @@ async def credential_demo():
 
 
 if __name__ == "__main__":
-    set_eventloop_policy()
+    if platform.system() == "Windows":
+        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     asyncio.run(credential_demo())

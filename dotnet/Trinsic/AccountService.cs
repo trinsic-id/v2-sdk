@@ -47,7 +47,7 @@ public class AccountService : ServiceBase
     /// <returns></returns>
     public async Task<string> SignInAsync(SignInRequest request) {
         if (string.IsNullOrWhiteSpace(request.EcosystemId)) request.EcosystemId = DefaultEcosystem;
-        var response = await Client.SignInAsync(request);
+        var response = await Client.SignInAsync(request, await BuildMetadataAsync(request));
 
         var authToken = Base64Url.Encode(response.Profile.ToByteArray());
 
@@ -65,7 +65,7 @@ public class AccountService : ServiceBase
     /// <returns></returns>
     public string SignIn(SignInRequest request) {
         if (string.IsNullOrWhiteSpace(request.EcosystemId)) request.EcosystemId = DefaultEcosystem;
-        var response = Client.SignIn(request);
+        var response = Client.SignIn(request, BuildMetadata(request));
 
         var authToken = Base64Url.Encode(response.Profile.ToByteArray());
 
@@ -127,7 +127,7 @@ public class AccountService : ServiceBase
         if (string.IsNullOrWhiteSpace(request.EcosystemId))
             request.EcosystemId = DefaultEcosystem;
 
-        var response = await Client.LoginAsync(request);
+        var response = await Client.LoginAsync(request, await BuildMetadataAsync(request));
 
         if (response.ResponseCase == LoginResponse.ResponseOneofCase.Profile)
         {
@@ -146,7 +146,7 @@ public class AccountService : ServiceBase
         if (string.IsNullOrWhiteSpace(request.EcosystemId))
             request.EcosystemId = DefaultEcosystem;
 
-        var response = Client.Login(request);
+        var response = Client.Login(request, BuildMetadata(request));
 
         return response;
     }
@@ -169,7 +169,7 @@ public class AccountService : ServiceBase
             ConfirmationCodeHashed = hashed.Digest
         };
 
-        var response = await Client.LoginConfirmAsync(request);
+        var response = await Client.LoginConfirmAsync(request, await BuildMetadataAsync(request));
 
         if (response?.Profile == null)
             return null;
@@ -202,7 +202,7 @@ public class AccountService : ServiceBase
             ConfirmationCodeHashed = hashed.Digest
         };
 
-        var response = Client.LoginConfirm(request);
+        var response = Client.LoginConfirm(request, BuildMetadata(request));
 
         if (response?.Profile == null)
             return null;

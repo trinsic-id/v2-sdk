@@ -1,7 +1,9 @@
 """
 Utility functions for the Trinsic services SDK
 """
+import asyncio
 import dataclasses
+import platform
 from datetime import datetime
 from distutils.util import strtobool
 from os import getenv
@@ -78,3 +80,10 @@ def convert_to_epoch_seconds(
     valid_from_epoch = (valid_from - epoch).total_seconds()
     valid_until_epoch = (valid_until - epoch).total_seconds()
     return valid_from_epoch, valid_until_epoch
+
+
+def set_eventloop_policy() -> None:
+    """Set the event loop policy on windows to eliminate the `RuntimeError: Event loop is closed`"""
+    # https://stackoverflow.com/questions/45600579/asyncio-event-loop-is-closed-when-getting-loop
+    if platform.system() == "Windows":
+        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
