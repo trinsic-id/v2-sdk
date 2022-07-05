@@ -1,5 +1,6 @@
 import asyncio
 import json
+import uuid
 
 from trinsic.proto.services.universalwallet.v1 import InsertItemRequest
 from trinsic.proto.services.verifiablecredentials.templates.v1 import (
@@ -130,7 +131,7 @@ async def do_template(trinsic_service: TrinsicService) -> TemplateData:
     # createTemplate() {
     template = await trinsic_service.template.create(
         request=CreateCredentialTemplateRequest(
-            name="VaccinationCertificate",
+            name=f"VaccinationCertificate-{uuid.uuid4()}",
             allow_additional_fields=False,
             fields={
                 "firstName": TemplateField(
