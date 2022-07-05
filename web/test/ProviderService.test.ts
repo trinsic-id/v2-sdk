@@ -46,7 +46,7 @@ describe("ProviderService Unit Tests", () => {
     trinsic.options.authToken = base64url(
       Buffer.from(AccountProfile.encode(createResponse.profile!).finish())
     );
-    trinsic.options.defaultEcosystem = createResponse.ecosystem!.id;
+    // trinsic.options.defaultEcosystem = createResponse.ecosystem!.id;
 
 
     // addWebhook() {

@@ -20,7 +20,7 @@ class AccountService extends ServiceBase {
     request ??= SignInRequest();
     request.ecosystemId = request.ecosystemId != ""
         ? request.ecosystemId
-        : serviceOptions.defaultEcosystem;
+        : "default";
     SignInResponse response = await client.signIn(request);
     var authToken =
         Base64Encoder.urlSafe().convert(response.profile.writeToBuffer());
@@ -70,9 +70,6 @@ class AccountService extends ServiceBase {
 
   Future<LoginResponse> login({LoginRequest? request}) async {
     request ??= LoginRequest();
-    request.ecosystemId = request.ecosystemId != ""
-        ? request.ecosystemId
-        : serviceOptions.defaultEcosystem;
     return await client.login(request);
   }
 

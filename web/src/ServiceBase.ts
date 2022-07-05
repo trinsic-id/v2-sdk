@@ -24,7 +24,6 @@ export default abstract class ServiceBase {
     options.serverPort = options.serverPort || 443;
     options.serverUseTls =
       options.serverPort == 443 ? true : options.serverUseTls || false;
-    options.defaultEcosystem = options.defaultEcosystem || "default";
 
     this.options = options;
 
