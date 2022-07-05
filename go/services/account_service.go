@@ -82,10 +82,6 @@ func (a *accountBase) SignIn(userContext context.Context, request *account.SignI
 		request.Details = &account.AccountDetails{}
 	}
 
-	if len(request.EcosystemId) == 0 {
-		request.EcosystemId = a.GetServiceOptions().DefaultEcosystem
-	}
-
 	resp, err := a.client.SignIn(userContext, request)
 	if err != nil {
 		return "", account.ConfirmationMethod_None, err
@@ -210,8 +206,7 @@ func (a *accountBase) LoginConfirm(userContext context.Context, challenge []byte
 func (a *accountBase) LoginAnonymous(userContext context.Context) (string, error) {
 	// Create request
 	request := &account.LoginRequest{
-		Email:       "",
-		EcosystemId: a.GetServiceOptions().GetDefaultEcosystem(),
+		Email: "",
 	}
 
 	// Attempt login

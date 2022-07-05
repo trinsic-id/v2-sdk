@@ -59,7 +59,6 @@ func TestServiceOptions(t *testing.T) {
 	err = WithProductionEnv()(prodOpts)
 	assert.Nil(err, "production options should return")
 
-	prodOpts.ServiceOptions.DefaultEcosystem = "default"
 	assert.Equal(prodOpts, opts, "should default to production env")
 	assert.Equal("prod.trinsic.cloud", opts.ServiceOptions.ServerEndpoint, "incorrect prod url")
 
@@ -77,7 +76,6 @@ func TestServiceOptions(t *testing.T) {
 
 	err = WithDefaultEcosystem("test1")(opts)
 	assert.Nil(err, "should not error on setting default ecosystem")
-	assert.Equal("test1", opts.ServiceOptions.DefaultEcosystem, "default ecosystem not updated")
 }
 
 func TestTrustRegistryDemo(t *testing.T) {

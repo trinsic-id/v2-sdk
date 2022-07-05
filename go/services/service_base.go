@@ -43,8 +43,6 @@ type Service interface {
 	// SetToken assigns the given auth token to the service. This token will be used for
 	// make all api calls
 	SetToken(token string)
-	// SetEcosystemId assigns the given ecosystem ID to the service.
-	SetEcosystemId(ecosystemId string)
 	// GetToken returns the auth token currently assigned to this service or an empty string
 	// if none is set
 	GetToken() string
@@ -68,10 +66,6 @@ func (s *serviceBase) GetChannel() *grpc.ClientConn {
 
 func (s *serviceBase) SetToken(authtoken string) {
 	s.options.ServiceOptions.AuthToken = authtoken
-}
-
-func (s *serviceBase) SetEcosystemId(ecosystemId string) {
-	s.options.ServiceOptions.DefaultEcosystem = ecosystemId
 }
 
 func (s *serviceBase) GetToken() string {
