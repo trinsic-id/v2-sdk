@@ -40,7 +40,7 @@ async def account_demo():
         # }
 
         # setAuthTokenSample() {
-        trinsic.service_options.auth_token = auth_token;
+        trinsic.service_options.auth_token = auth_token
         # }
 
         assert False  # If we get here, it means login succeeded -- which is an error.

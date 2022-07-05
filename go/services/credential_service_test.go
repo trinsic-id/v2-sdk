@@ -1,13 +1,13 @@
 package services
 
 import (
-    "context"
-    "encoding/json"
-    "github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/templates/v1/template"
-    "github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/v1/credential"
-    "testing"
+	"context"
+	"encoding/json"
+	"github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/templates/v1/template"
+	"github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/v1/credential"
+	"testing"
 
-    "github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestIssueAndVerify(t *testing.T) {

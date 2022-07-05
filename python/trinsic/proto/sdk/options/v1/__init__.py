@@ -27,8 +27,3 @@ class ServiceOptions(betterproto.Message):
     Authentication token for SDK calls; defaults to empty string
     (unauthenticated)
     """
-
-    default_ecosystem: str = betterproto.string_field(5)
-    """
-    Default ecosystem ID to use for various SDK calls; defaults to `default`
-    """

@@ -40,11 +40,6 @@ class ServiceOptions extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'authToken')
-    ..aOS(
-        5,
-        const $core.bool.fromEnvironment('protobuf.omit_field_names')
-            ? ''
-            : 'defaultEcosystem')
     ..hasRequiredFields = false;
 
   ServiceOptions._() : super();
@@ -53,7 +48,6 @@ class ServiceOptions extends $pb.GeneratedMessage {
     $core.int? serverPort,
     $core.bool? serverUseTls,
     $core.String? authToken,
-    $core.String? defaultEcosystem,
   }) {
     final _result = create();
     if (serverEndpoint != null) {
@@ -67,9 +61,6 @@ class ServiceOptions extends $pb.GeneratedMessage {
     }
     if (authToken != null) {
       _result.authToken = authToken;
-    }
-    if (defaultEcosystem != null) {
-      _result.defaultEcosystem = defaultEcosystem;
     }
     return _result;
   }
@@ -147,16 +138,4 @@ class ServiceOptions extends $pb.GeneratedMessage {
   $core.bool hasAuthToken() => $_has(3);
   @$pb.TagNumber(4)
   void clearAuthToken() => clearField(4);
-
-  @$pb.TagNumber(5)
-  $core.String get defaultEcosystem => $_getSZ(4);
-  @$pb.TagNumber(5)
-  set defaultEcosystem($core.String v) {
-    $_setString(4, v);
-  }
-
-  @$pb.TagNumber(5)
-  $core.bool hasDefaultEcosystem() => $_has(4);
-  @$pb.TagNumber(5)
-  void clearDefaultEcosystem() => clearField(5);
 }
