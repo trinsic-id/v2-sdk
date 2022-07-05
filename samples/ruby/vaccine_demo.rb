@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 require 'trinsic_services'
-require 'services'
-require 'services/service_base'
 require 'json'
 
 # rubocop:disable Metrics/MethodLength
