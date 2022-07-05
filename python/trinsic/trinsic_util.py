@@ -23,12 +23,10 @@ def trinsic_config(auth_token: str = None) -> ServiceOptions:
     endpoint = getenv("TEST_SERVER_ENDPOINT", "prod.trinsic.cloud")
     port = int(getenv("TEST_SERVER_PORT", 443))
     use_tls = bool(strtobool(getenv("TEST_SERVER_USE_TLS", "true")))
-    ecosystem = getenv("TEST_SERVER_ECOSYSTEM", "default")
     return ServiceOptions(
         server_endpoint=endpoint,
         server_port=port,
         server_use_tls=use_tls,
-        default_ecosystem=ecosystem,
         auth_token=auth_token,
     )
 

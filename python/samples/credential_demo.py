@@ -32,11 +32,6 @@ async def credential_demo():
     config.auth_token = account
 
     ecosystem = await trinsic_service.provider.create_ecosystem()
-    ecosystem_id = ecosystem.ecosystem.id
-
-    # Set service default ecosystem
-    trinsic_service.service_options.default_ecosystem = ecosystem_id
-    config.default_ecosystem = ecosystem_id
 
     # Sign a credential as the clinic and send it to Allison
     with open(_vaccine_cert_unsigned_path(), "r") as fid:
