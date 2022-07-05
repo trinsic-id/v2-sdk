@@ -1,5 +1,6 @@
 import asyncio
 import base64
+import platform
 
 from trinsic.proto.services.account.v1 import AccountDetails
 from trinsic.proto.services.provider.v1 import (
@@ -12,7 +13,7 @@ from trinsic.proto.services.provider.v1 import (
 )
 
 from trinsic.trinsic_service import TrinsicService
-from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
+from trinsic.trinsic_util import trinsic_config
 
 
 async def provider_demo():
@@ -72,5 +73,6 @@ async def provider_demo():
 
 
 if __name__ == "__main__":
-    set_eventloop_policy()
+    if platform.system() == "Windows":
+        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     asyncio.run(provider_demo())

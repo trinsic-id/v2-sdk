@@ -1,4 +1,5 @@
 import asyncio
+import platform
 import uuid
 
 from trinsic.proto.services.trustregistry.v1 import (
@@ -9,7 +10,7 @@ from trinsic.proto.services.trustregistry.v1 import (
     RegisterMemberRequest,
 )
 from trinsic.trinsic_service import TrinsicService
-from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
+from trinsic.trinsic_util import trinsic_config
 
 
 async def trustregistry_demo():
@@ -74,5 +75,6 @@ async def trustregistry_demo():
 
 
 if __name__ == "__main__":
-    set_eventloop_policy()
+    if platform.system() == "Windows":
+        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     asyncio.run(trustregistry_demo())

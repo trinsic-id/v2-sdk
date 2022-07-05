@@ -1,5 +1,6 @@
 import asyncio
 import json
+import platform
 
 from trinsic.proto.services.universalwallet.v1 import InsertItemRequest
 from trinsic.proto.services.verifiablecredentials.templates.v1 import (
@@ -15,7 +16,7 @@ from trinsic.proto.services.verifiablecredentials.v1 import (
     SendRequest,
 )
 from trinsic.trinsic_service import TrinsicService
-from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
+from trinsic.trinsic_util import trinsic_config
 
 
 async def vaccine_demo():
@@ -157,5 +158,6 @@ async def do_template(trinsic_service: TrinsicService) -> TemplateData:
 
 
 if __name__ == "__main__":
-    set_eventloop_policy()
+    if platform.system() == "Windows":
+        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     asyncio.run(vaccine_demo())
