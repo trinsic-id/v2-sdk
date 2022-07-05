@@ -36,7 +36,8 @@ public class CredentialsDemo {
             .getEcosystem()
             .getId();
 
-    var issuerVerifier = trinsic.account().loginAnonymous(ecosystemId).get(); // Both issues and verifies
+    var issuerVerifier =
+        trinsic.account().loginAnonymous(ecosystemId).get(); // Both issues and verifies
     var holder = trinsic.account().loginAnonymous(ecosystemId).get();
 
     trinsic.setProfile(issuerVerifier);
