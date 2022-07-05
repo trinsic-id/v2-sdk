@@ -29,7 +29,6 @@ public class HostTests
         accountService.Options.ServerEndpoint.Should().Be(ServiceBase.DefaultServerEndpoint);
         accountService.Options.ServerPort.Should().Be(ServiceBase.DefaultServerPort);
         accountService.Options.ServerUseTls.Should().Be(ServiceBase.DefaultServerUseTls);
-        accountService.Options.DefaultEcosystem.Should().Be(ServiceBase.DefaultEcosystem);
         accountService.Options.AuthToken.Should().Be(string.Empty);
         accountService.TokenProvider.Should().BeOfType<FileTokenProvider>();
 
@@ -43,7 +42,6 @@ public class HostTests
             .ConfigureServices(services => {
                 services.AddTrinsic(options => {
                     options.AuthToken = "auth";
-                    options.DefaultEcosystem = "eco";
                     options.ServerEndpoint = "example.com";
                     options.ServerPort = 42;
                     options.ServerUseTls = true;
@@ -61,7 +59,6 @@ public class HostTests
         accountService.Options.ServerEndpoint.Should().Be("example.com");
         accountService.Options.ServerPort.Should().Be(42);
         accountService.Options.ServerUseTls.Should().BeTrue();
-        accountService.Options.DefaultEcosystem.Should().Be("eco");
         accountService.Options.AuthToken.Should().Be("auth");
 
         await host.StopAsync();

@@ -42,18 +42,16 @@ public class VaccineWalkthroughTests
         // createEcosystem() {
         var trinsic = new TrinsicService(_options);
 
-        var (ecosystem, _authToken) = await trinsic.Provider.CreateEcosystemAsync(new());
+        var (ecosystem, authToken) = await trinsic.Provider.CreateEcosystemAsync(new());
         var ecosystemId = ecosystem?.Id;
         // }
 
         ecosystemId.Should().NotBeNullOrEmpty();
 
-        trinsic.SetDefaultEcosystem(ecosystemId!);
-
         // setupActors() {
-        var allison = await trinsic.Account.LoginAnonymousAsync();
-        var clinic = await trinsic.Account.LoginAnonymousAsync();
-        var airline = await trinsic.Account.LoginAnonymousAsync();
+        var allison = await trinsic.Account.LoginAnonymousAsync(ecosystemId!);
+        var clinic = await trinsic.Account.LoginAnonymousAsync(ecosystemId!);
+        var airline = await trinsic.Account.LoginAnonymousAsync(ecosystemId!);
         // }
 
         allison.Should().NotBeNullOrEmpty();

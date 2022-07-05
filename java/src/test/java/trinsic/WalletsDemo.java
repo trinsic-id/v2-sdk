@@ -24,10 +24,7 @@ public class WalletsDemo {
         trinsic.provider().createEcosystem(CreateEcosystemRequest.getDefaultInstance()).get();
     var ecosystemId = ecosystemResponse.getEcosystem().getId();
 
-    // Create account
-    trinsic.setDefaultEcosystem(ecosystemId);
-
-    var account = trinsic.account().signIn().get();
+    var account = trinsic.account().loginAnonymous(ecosystemId).get();
 
     // Insert wallet item into wallet
     trinsic.setProfile(account);

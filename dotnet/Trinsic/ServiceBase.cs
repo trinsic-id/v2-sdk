@@ -46,7 +46,6 @@ public abstract class ServiceBase
         if (string.IsNullOrWhiteSpace(Options.ServerEndpoint)) Options.ServerEndpoint = DefaultServerEndpoint;
         if (Options.ServerPort == default) Options.ServerPort = DefaultServerPort;
         if (Options.ServerPort == DefaultServerPort) Options.ServerUseTls = DefaultServerUseTls;
-        if (string.IsNullOrWhiteSpace(Options.DefaultEcosystem)) Options.DefaultEcosystem = DefaultEcosystem;
     }
 
     private static GrpcChannel CreateChannel(ServiceOptions options) {

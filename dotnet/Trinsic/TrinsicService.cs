@@ -127,16 +127,6 @@ public class TrinsicService : ServiceBase
     }
 
     /// <summary>
-    /// Sets the Default Ecosystem ID of this instance's ServiceOptions, and returns the instance for chaining.
-    /// </summary>
-    /// <param name="ecosystemId">The new ecosystem ID to use</param>
-    /// <returns></returns>
-    public TrinsicService SetDefaultEcosystem(string ecosystemId) {
-        this.Options.DefaultEcosystem = ecosystemId;
-        return this;
-    }
-
-    /// <summary>
     /// Sets the Auth Token of this instance's ServiceOptions, and returns the instance for chaining.
     /// </summary>
     /// <param name="authToken">The new auth token to use</param>

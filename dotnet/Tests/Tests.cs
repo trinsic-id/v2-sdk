@@ -58,10 +58,8 @@ public class Tests
     public async Task TestWalletService() {
         var trinsic = new TrinsicService(_options.Clone());
 
-        var (ecosystem, _) = trinsic.Provider.CreateEcosystem(new());
+        var (ecosystem, authToken) = trinsic.Provider.CreateEcosystem(new());
         var ecosystemId = ecosystem.Id;
-
-        trinsic.SetDefaultEcosystem(ecosystemId);
 
         // SETUP ACTORS
         // Create 3 different profiles for each participant in the scenario
@@ -139,8 +137,6 @@ public class Tests
         var trinsic = new TrinsicService(_options.Clone());
         var (ecosystem, authToken) = await trinsic.Provider.CreateEcosystemAsync(new());
 
-        trinsic.SetDefaultEcosystem(ecosystem.Id);
-
         // setAuthTokenSample() {
         trinsic.SetAuthToken(authToken);
         // }
@@ -209,9 +205,7 @@ public class Tests
         ecosystem.Id.Should().NotBeNull();
         ecosystem.Id.Should().StartWith("urn:trinsic:ecosystems:");
 
-        var ecosystemId = ecosystem.Id;
-
-        trinsic.SetDefaultEcosystem(ecosystemId).SetAuthToken(authToken);
+        trinsic.SetAuthToken(authToken);
 
         // test update ecosystem
         // wrapped in try/catch as method is not yet implemented in backend.
@@ -269,7 +263,7 @@ public class Tests
 
         var ecosystemId = ecosystem.Id;
 
-        trinsic.SetAuthToken(authToken).SetDefaultEcosystem(ecosystemId);
+        trinsic.SetAuthToken(authToken);
 
         // addWebhook() {
         var addWebhookResponse = await trinsic.Provider.AddWebhookAsync(new() {
@@ -309,8 +303,6 @@ public class Tests
 
         var ecosystemId = ecosystem.Id;
 
-        trinsic.SetDefaultEcosystem(ecosystemId);
-
         // loginRequest() {
         var loginResponse = await trinsic.Account.LoginAsync(new() {
             EcosystemId = ecosystemId,
@@ -334,7 +326,7 @@ public class Tests
 
         {
             // loginAnonymous() {
-            string? authToken = await trinsic.Account.LoginAnonymousAsync();
+            string? authToken = await trinsic.Account.LoginAnonymousAsync(ecosystemId!);
             // }
 
             authToken.Should().NotBeNullOrEmpty();
@@ -418,7 +410,7 @@ public class Tests
         var trinsic = new TrinsicService(_options.Clone());
         var (ecosystem, authToken) = await trinsic.Provider.CreateEcosystemAsync(new());
 
-        trinsic.SetAuthToken(authToken).SetDefaultEcosystem(ecosystem.Id);
+        trinsic.SetAuthToken(authToken);
 
         // create example template
         // createTemplate() {
