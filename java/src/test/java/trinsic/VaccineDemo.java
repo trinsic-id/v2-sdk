@@ -37,15 +37,11 @@ public class VaccineDemo {
     var ecosystemId = ecosystemResponse.getEcosystem().getId();
     // }
 
-    // Set default ecosystem on config
-    serverConfig.setDefaultEcosystem(ecosystemId);
-    trinsic.setDefaultEcosystem(ecosystemId);
-
     // setupActors() {
     // Create an account for each participant in the scenario
-    var allison = trinsic.account().signIn().get();
-    var clinic = trinsic.account().signIn().get();
-    var airline = trinsic.account().signIn().get();
+    var allison = trinsic.account().loginAnonymous(ecosystemId).get();
+    var clinic = trinsic.account().loginAnonymous(ecosystemId).get();
+    var airline = trinsic.account().loginAnonymous(ecosystemId).get();
     // }
 
     // Create template
