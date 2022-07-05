@@ -44,7 +44,6 @@ func CreateTestTrinsicWithNewEcosystem() (*Trinsic, error) {
 	}
 
 	trinsic.SetToken(token)
-	trinsic.SetEcosystemId(ecoResponse.GetEcosystem().Id)
 
 	return trinsic, nil
 }
