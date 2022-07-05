@@ -5,7 +5,6 @@ from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 
 
-
 async def account_demo():
     config = trinsic_config()
 
