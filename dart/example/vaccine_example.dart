@@ -57,8 +57,9 @@ Future runVaccineDemo() async {
   var credentialJson = await vaccineCertFile.readAsString();
 
   // issueCredential() {
-  var issueResponse =
-      await trinsic.credential().issue(IssueRequest(documentJson: credentialJson));
+  var issueResponse = await trinsic
+      .credential()
+      .issue(IssueRequest(documentJson: credentialJson));
   // }
   var credential = issueResponse.signedDocumentJson;
   print("Credential: $credential");
@@ -69,8 +70,9 @@ Future runVaccineDemo() async {
   // Alice stores the credential in her cloud wallet.
   trinsic.serviceOptions.authToken = allison;
   // insertItemWallet() {
-  var insertResponse =
-      await trinsic.wallet().insertItem(InsertItemRequest(itemJson: credential));
+  var insertResponse = await trinsic
+      .wallet()
+      .insertItem(InsertItemRequest(itemJson: credential));
   // }
   var itemId = insertResponse.itemId;
   // }
@@ -94,7 +96,8 @@ Future runVaccineDemo() async {
   // The airline verifies the credential
   trinsic.serviceOptions.authToken = airline;
   // verifyProof() {
-  var verifyResult = await trinsic.credential()
+  var verifyResult = await trinsic
+      .credential()
       .verifyProof(VerifyProofRequest(proofDocumentJson: credentialProof));
   // }
   var valid = verifyResult.isValid;
