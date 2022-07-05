@@ -5,7 +5,6 @@ use crate::proto::services::account::v1::login_response::Response;
 use crate::proto::services::account::v1::AuthorizeWebhookRequest;
 use crate::utils::to_value;
 use crate::{
-    dict,
     error::Error,
     grpc_channel, grpc_client, grpc_client_with_auth,
     proto::services::account::v1::{
