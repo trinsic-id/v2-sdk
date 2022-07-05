@@ -57,7 +57,7 @@ async def trustregistry_demo():
     assert issuer_status == RegistrationStatus.CURRENT
 
     # searchTrustRegistry() {
-    search_result = await trinsic_service.trust_registry.search()
+    search_result = await trinsic_service.trust_registry.search_registry()
     # }
     assert search_result is not None
     assert search_result.items_json is not None

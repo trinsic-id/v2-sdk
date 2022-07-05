@@ -60,7 +60,7 @@ async def provider_demo():
     # }
 
     try:
-        invite_response = await trinsic.provider.invite_participant(
+        invite_response = await trinsic.provider.invite(
             request=InviteRequest(
                 details=AccountDetails(email="nothing@trinsic.id"),
                 participant=ParticipantType.participant_type_individual,

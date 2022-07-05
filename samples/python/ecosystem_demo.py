@@ -32,7 +32,7 @@ async def ecosystem_demo():
 
     try:
         # inviteParticipant() {
-        invite_response = await trinsic_service.provider.invite_participant(
+        invite_response = await trinsic_service.provider.invite(
             request=InviteRequest(
                 participant=ParticipantType.participant_type_individual,
                 description="Doc sample",
