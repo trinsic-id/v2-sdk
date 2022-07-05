@@ -54,7 +54,7 @@ public class VaccineDemo {
 
     // storeCredential() {
     // Set active profile to 'allison' so we can manage her cloud wallet
-    trinsic.setProfile(allison);
+    trinsic.setAuthToken(allison);
 
     // Allison stores the credential in her cloud wallet.
     var insertItemResponse =
@@ -70,7 +70,7 @@ public class VaccineDemo {
 
     // shareCredential() {
     // Set active profile to 'allison' so we can create a proof using her key
-    trinsic.setProfile(allison);
+    trinsic.setAuthToken(allison);
 
     // Allison shares the credential with the venue
     var createProofResponse =
@@ -85,7 +85,7 @@ public class VaccineDemo {
     System.out.println("Proof: " + credentialProof);
 
     // verifyCredential() {
-    trinsic.setProfile(airline);
+    trinsic.setAuthToken(airline);
 
     // Verify that Allison has provided a valid proof
     var verifyProofResponse =
@@ -109,7 +109,7 @@ public class VaccineDemo {
     // issueCredential() {
     // Set active profile to 'clinic' so we can issue credential signed
     // with the clinic's signing keys
-    trinsicService.setProfile(clinic);
+    trinsicService.setAuthToken(clinic);
 
     // Prepare credential values
     var valuesMap = new HashMap<String, Object>();
@@ -143,7 +143,7 @@ public class VaccineDemo {
           InterruptedException {
     // createTemplate() {
     // Set active profile to 'clinic'
-    templateService.setProfile(clinic);
+    templateService.setAuthToken(clinic);
 
     // Define fields for template
     var fields = new HashMap<String, TemplateField>();

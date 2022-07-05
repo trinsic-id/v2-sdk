@@ -149,7 +149,7 @@ export class AccountService extends ServiceBase {
     return authToken;
   }
 
-  public async loginAnonymous(): Promise<String> {
+  public async loginAnonymous(): Promise<string> {
     const request = LoginRequest.fromPartial({
       email: "",
       invitationCode: "",

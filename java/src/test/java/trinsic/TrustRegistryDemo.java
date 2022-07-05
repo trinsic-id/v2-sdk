@@ -18,7 +18,7 @@ public class TrustRegistryDemo {
       throws IOException, DidException, ExecutionException, InterruptedException {
     var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
     var account = trinsic.account().signIn().get();
-    trinsic.setProfile(account);
+    trinsic.setAuthToken(account);
 
     final String didUri = "did:example:test";
     final String frameworkUri = "https://example.com/" + UUID.randomUUID();

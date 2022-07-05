@@ -40,12 +40,12 @@ type Service interface {
 	GetMetadataContext(userContext context.Context, message proto.Message) (context.Context, error)
 	// BuildMetadata builds the required grpc metadata
 	BuildMetadata(message proto.Message) (metadata.MD, error)
-	// SetToken assigns the given auth token to the service. This token will be used for
+	// SetAuthToken assigns the given auth token to the service. This token will be used for
 	// make all api calls
-	SetToken(token string)
-	// GetToken returns the auth token currently assigned to this service or an empty string
+	SetAuthToken(token string)
+	// GetAuthToken returns the auth token currently assigned to this service or an empty string
 	// if none is set
-	GetToken() string
+	GetAuthToken() string
 	// GetProfile returns the account profile associated with this service, or null if none
 	GetProfile() *account.AccountProfile
 	// GetServiceOptions returns the set of ServiceOptions the service is using
@@ -64,11 +64,11 @@ func (s *serviceBase) GetChannel() *grpc.ClientConn {
 	return s.channel
 }
 
-func (s *serviceBase) SetToken(authtoken string) {
+func (s *serviceBase) SetAuthToken(authtoken string) {
 	s.options.ServiceOptions.AuthToken = authtoken
 }
 
-func (s *serviceBase) GetToken() string {
+func (s *serviceBase) GetAuthToken() string {
 	return s.options.ServiceOptions.AuthToken
 }
 

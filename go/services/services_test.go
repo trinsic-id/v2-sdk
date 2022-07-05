@@ -43,7 +43,7 @@ func CreateTestTrinsicWithNewEcosystem() (*Trinsic, error) {
 		return nil, err
 	}
 
-	trinsic.SetToken(token)
+	trinsic.SetAuthToken(token)
 
 	return trinsic, nil
 }

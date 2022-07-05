@@ -86,7 +86,7 @@ func (p *providerBase) CreateEcosystem(ctx context.Context, request *provider.Cr
 		return nil, err
 	}
 
-	p.SetToken(authToken)
+	p.SetAuthToken(authToken)
 
 	return resp, nil
 }

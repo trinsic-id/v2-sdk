@@ -65,7 +65,7 @@ suspend fun runVaccineDemo() {
   // Allison shares the credential with the venue.
   // The venue has communicated with Allison the details of the credential
   // that they require expressed as a JSON-LD frame.
-  credentialsService.setProfile(allison)
+  credentialsService.setAuthToken(allison)
   val proofRequestJson = File(vaccineCertFramePath()).readText()
   val createProofResponse =
       credentialsService.createProof(
@@ -79,7 +79,7 @@ suspend fun runVaccineDemo() {
 
   // verifyCredential() {
   // The airline verifies the credential
-  credentialsService.setProfile(airline)
+  credentialsService.setAuthToken(airline)
   val verifyResult =
       credentialsService.verifyProof(
           VerifyProofRequest.newBuilder().setProofDocumentJson(credentialProof).build())

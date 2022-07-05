@@ -92,7 +92,7 @@ func (a *accountBase) SignIn(userContext context.Context, request *account.SignI
 		return "", account.ConfirmationMethod_None, err
 	}
 
-	a.SetToken(tkn)
+	a.SetAuthToken(tkn)
 
 	return tkn, resp.ConfirmationMethod, nil
 }
@@ -200,7 +200,7 @@ func (a *accountBase) LoginConfirm(userContext context.Context, challenge []byte
 		return "", err
 	}
 
-	a.SetToken(authToken)
+	a.SetAuthToken(authToken)
 
 	return authToken, nil
 }
@@ -231,7 +231,7 @@ func (a *accountBase) LoginAnonymous(userContext context.Context) (string, error
 		return "", err
 	}
 
-	a.SetToken(authToken)
+	a.SetAuthToken(authToken)
 
 	return authToken, nil
 }

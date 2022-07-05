@@ -84,6 +84,10 @@ export default abstract class ServiceBase {
     return metadata;
   }
 
+  protected setAuthToken(token: string) {
+      this.options.authToken = token;
+  }
+
   protected transportFactory(): grpc.TransportFactory | undefined {
     // https://stackoverflow.com/questions/4224606/how-to-check-whether-a-script-is-running-under-node-js
     try {

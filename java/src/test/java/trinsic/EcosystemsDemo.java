@@ -37,7 +37,7 @@ public class EcosystemsDemo {
 
     var profileBase64 = Base64.getUrlEncoder().encodeToString(response.getProfile().toByteArray());
 
-    trinsic.setProfile(profileBase64);
+    trinsic.setAuthToken(profileBase64);
 
     // updateEcosystem() {
     var updateResponse =
