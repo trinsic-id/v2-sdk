@@ -11,9 +11,9 @@ pub struct ServiceOptions {
     #[prost(bool, tag = "3")]
     pub server_use_tls: bool,
     /// Authentication token for SDK calls; defaults to empty string (unauthenticated)
+    ///
+    /// Default ecosystem ID to use for various SDK calls; defaults to `default`
+    /// string default_ecosystem = 5;
     #[prost(string, tag = "4")]
     pub auth_token: ::prost::alloc::string::String,
-    /// Default ecosystem ID to use for various SDK calls; defaults to `default`
-    #[prost(string, tag = "5")]
-    pub default_ecosystem: ::prost::alloc::string::String,
 }

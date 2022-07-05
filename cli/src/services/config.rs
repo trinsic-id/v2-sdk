@@ -52,7 +52,6 @@ impl Default for CliConfig {
                 server_endpoint: DEFAULT_SERVER_ENDPOINT.into(),
                 server_port: DEFAULT_SERVER_PORT,
                 server_use_tls: DEFAULT_SERVER_USE_TLS,
-                default_ecosystem: "default".into(),
                 auth_token: "".into(),
             },
             defaults: None,
@@ -191,8 +190,7 @@ fn print() -> Result<Output, Error> {
         "server endpoint".into() => Item::String(config.server_endpoint),
         "server port".into() => Item::String(config.server_port.to_string()),
         "server use tls".into() => Item::String(config.server_use_tls.to_string()),
-        "auth token".into() => Item::String(config.auth_token),
-        "default ecosystem".into() => Item::String(config.default_ecosystem)
+        "auth token".into() => Item::String(config.auth_token)
     })
 }
 
@@ -209,9 +207,6 @@ fn save(args: &SdkOptionsArgs) -> Result<Output, Error> {
     }
     if args.auth_token.is_some() {
         config.options.auth_token = args.auth_token.as_ref().unwrap().to_string();
-    }
-    if args.default_ecosystem.is_some() {
-        config.options.default_ecosystem = args.default_ecosystem.as_ref().unwrap().to_string();
     }
 
     config.save()?;

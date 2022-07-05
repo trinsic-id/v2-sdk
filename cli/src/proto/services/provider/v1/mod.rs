@@ -106,6 +106,18 @@ pub struct WebhookConfig {
     pub status: ::prost::alloc::string::String,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct Grant {
+    /// the urn of the resource
+    #[prost(string, tag = "1")]
+    pub resource_id: ::prost::alloc::string::String,
+    /// list of actions that are allowed
+    #[prost(string, repeated, tag = "2")]
+    pub actions: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+    /// any child grants
+    #[prost(message, repeated, tag = "3")]
+    pub child_grants: ::prost::alloc::vec::Vec<Grant>,
+}
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct CreateEcosystemRequest {
     /// Globally unique name for the Ecosystem. This name will be
     /// part of the ecosystem specific URLs and namespaces.
@@ -232,6 +244,65 @@ pub struct GetEventTokenResponse {
     #[prost(string, tag = "1")]
     pub token: ::prost::alloc::string::String,
 }
+/// grant permissions to a resource or path in the ecosystem
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct GrantAuthorizationRequest {
+    /// resources are specified as a restful path: /{ecoId}/{resource type}/{resource id}. EcosystemId maybe ommited
+    #[prost(string, tag = "3")]
+    pub resource: ::prost::alloc::string::String,
+    /// action to authorize. default is "*" (all)
+    #[prost(string, tag = "4")]
+    pub action: ::prost::alloc::string::String,
+    #[prost(oneof = "grant_authorization_request::Account", tags = "1, 2")]
+    pub account: ::core::option::Option<grant_authorization_request::Account>,
+}
+/// Nested message and enum types in `GrantAuthorizationRequest`.
+pub mod grant_authorization_request {
+    #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Oneof)]
+    pub enum Account {
+        /// email associted with the account
+        #[prost(string, tag = "1")]
+        Email(::prost::alloc::string::String),
+        /// wallet id of the account
+        #[prost(string, tag = "2")]
+        WalletId(::prost::alloc::string::String),
+    }
+}
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct GrantAuthorizationResponse {}
+/// revoke permissions to a resource or path in the ecosystem
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct RevokeAuthorizationRequest {
+    /// resources are specified as a restful path: /{ecoId}/{resource type}/{resource id}. EcosystemId maybe ommited
+    #[prost(string, tag = "3")]
+    pub resource: ::prost::alloc::string::String,
+    /// action to revoke. default is "*" (all)
+    #[prost(string, tag = "4")]
+    pub action: ::prost::alloc::string::String,
+    #[prost(oneof = "revoke_authorization_request::Account", tags = "1, 2")]
+    pub account: ::core::option::Option<revoke_authorization_request::Account>,
+}
+/// Nested message and enum types in `RevokeAuthorizationRequest`.
+pub mod revoke_authorization_request {
+    #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Oneof)]
+    pub enum Account {
+        /// email associted with the account
+        #[prost(string, tag = "1")]
+        Email(::prost::alloc::string::String),
+        /// wallet id of the account
+        #[prost(string, tag = "2")]
+        WalletId(::prost::alloc::string::String),
+    }
+}
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct RevokeAuthorizationResponse {}
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct GetAuthorizationsRequest {}
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct GetAuthorizationsResponse {
+    #[prost(message, repeated, tag = "1")]
+    pub grants: ::prost::alloc::vec::Vec<Grant>,
+}
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ParticipantType {
@@ -316,6 +387,45 @@ pub mod provider_client {
                 .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/UpdateEcosystem");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        #[doc = " Grant authorization to ecosystem resources"]
+        pub async fn grant_authorization(
+            &mut self,
+            request: impl tonic::IntoRequest<super::GrantAuthorizationRequest>,
+        ) -> Result<tonic::Response<super::GrantAuthorizationResponse>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/GrantAuthorization");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        #[doc = " Revoke authorization to ecosystem resources"]
+        pub async fn revoke_authorization(
+            &mut self,
+            request: impl tonic::IntoRequest<super::RevokeAuthorizationRequest>,
+        ) -> Result<tonic::Response<super::RevokeAuthorizationResponse>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/RevokeAuthorization");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        #[doc = " Retreive the list of permissions for this particular account/ecosystem"]
+        pub async fn get_authorizations(
+            &mut self,
+            request: impl tonic::IntoRequest<super::GetAuthorizationsRequest>,
+        ) -> Result<tonic::Response<super::GetAuthorizationsResponse>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/GetAuthorizations");
             self.inner.unary(request.into_request(), path, codec).await
         }
         #[doc = " Add a webhook endpoint to the ecosystem"]
