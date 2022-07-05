@@ -92,31 +92,6 @@ public final class Options {
      * @return The bytes for authToken.
      */
     com.google.protobuf.ByteString getAuthTokenBytes();
-
-    /**
-     *
-     *
-     * <pre>
-     * Default ecosystem ID to use for various SDK calls; defaults to `default`
-     * </pre>
-     *
-     * <code>string default_ecosystem = 5;</code>
-     *
-     * @return The defaultEcosystem.
-     */
-    java.lang.String getDefaultEcosystem();
-    /**
-     *
-     *
-     * <pre>
-     * Default ecosystem ID to use for various SDK calls; defaults to `default`
-     * </pre>
-     *
-     * <code>string default_ecosystem = 5;</code>
-     *
-     * @return The bytes for defaultEcosystem.
-     */
-    com.google.protobuf.ByteString getDefaultEcosystemBytes();
   }
   /**
    *
@@ -140,7 +115,6 @@ public final class Options {
     private ServiceOptions() {
       serverEndpoint_ = "";
       authToken_ = "";
-      defaultEcosystem_ = "";
     }
 
     @java.lang.Override
@@ -194,13 +168,6 @@ public final class Options {
                 java.lang.String s = input.readStringRequireUtf8();
 
                 authToken_ = s;
-                break;
-              }
-            case 42:
-              {
-                java.lang.String s = input.readStringRequireUtf8();
-
-                defaultEcosystem_ = s;
                 break;
               }
             default:
@@ -373,55 +340,6 @@ public final class Options {
       }
     }
 
-    public static final int DEFAULT_ECOSYSTEM_FIELD_NUMBER = 5;
-    private volatile java.lang.Object defaultEcosystem_;
-    /**
-     *
-     *
-     * <pre>
-     * Default ecosystem ID to use for various SDK calls; defaults to `default`
-     * </pre>
-     *
-     * <code>string default_ecosystem = 5;</code>
-     *
-     * @return The defaultEcosystem.
-     */
-    @java.lang.Override
-    public java.lang.String getDefaultEcosystem() {
-      java.lang.Object ref = defaultEcosystem_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        defaultEcosystem_ = s;
-        return s;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Default ecosystem ID to use for various SDK calls; defaults to `default`
-     * </pre>
-     *
-     * <code>string default_ecosystem = 5;</code>
-     *
-     * @return The bytes for defaultEcosystem.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString getDefaultEcosystemBytes() {
-      java.lang.Object ref = defaultEcosystem_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        defaultEcosystem_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
     private byte memoizedIsInitialized = -1;
 
     @java.lang.Override
@@ -448,9 +366,6 @@ public final class Options {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(authToken_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, authToken_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(defaultEcosystem_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, defaultEcosystem_);
-      }
       unknownFields.writeTo(output);
     }
 
@@ -472,9 +387,6 @@ public final class Options {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(authToken_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, authToken_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(defaultEcosystem_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, defaultEcosystem_);
-      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -495,7 +407,6 @@ public final class Options {
       if (getServerPort() != other.getServerPort()) return false;
       if (getServerUseTls() != other.getServerUseTls()) return false;
       if (!getAuthToken().equals(other.getAuthToken())) return false;
-      if (!getDefaultEcosystem().equals(other.getDefaultEcosystem())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -515,8 +426,6 @@ public final class Options {
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getServerUseTls());
       hash = (37 * hash) + AUTH_TOKEN_FIELD_NUMBER;
       hash = (53 * hash) + getAuthToken().hashCode();
-      hash = (37 * hash) + DEFAULT_ECOSYSTEM_FIELD_NUMBER;
-      hash = (53 * hash) + getDefaultEcosystem().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -672,8 +581,6 @@ public final class Options {
 
         authToken_ = "";
 
-        defaultEcosystem_ = "";
-
         return this;
       }
 
@@ -705,7 +612,6 @@ public final class Options {
         result.serverPort_ = serverPort_;
         result.serverUseTls_ = serverUseTls_;
         result.authToken_ = authToken_;
-        result.defaultEcosystem_ = defaultEcosystem_;
         onBuilt();
         return result;
       }
@@ -770,10 +676,6 @@ public final class Options {
         }
         if (!other.getAuthToken().isEmpty()) {
           authToken_ = other.authToken_;
-          onChanged();
-        }
-        if (!other.getDefaultEcosystem().isEmpty()) {
-          defaultEcosystem_ = other.defaultEcosystem_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -1121,112 +1023,6 @@ public final class Options {
         return this;
       }
 
-      private java.lang.Object defaultEcosystem_ = "";
-      /**
-       *
-       *
-       * <pre>
-       * Default ecosystem ID to use for various SDK calls; defaults to `default`
-       * </pre>
-       *
-       * <code>string default_ecosystem = 5;</code>
-       *
-       * @return The defaultEcosystem.
-       */
-      public java.lang.String getDefaultEcosystem() {
-        java.lang.Object ref = defaultEcosystem_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          defaultEcosystem_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       *
-       *
-       * <pre>
-       * Default ecosystem ID to use for various SDK calls; defaults to `default`
-       * </pre>
-       *
-       * <code>string default_ecosystem = 5;</code>
-       *
-       * @return The bytes for defaultEcosystem.
-       */
-      public com.google.protobuf.ByteString getDefaultEcosystemBytes() {
-        java.lang.Object ref = defaultEcosystem_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
-              com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-          defaultEcosystem_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       *
-       *
-       * <pre>
-       * Default ecosystem ID to use for various SDK calls; defaults to `default`
-       * </pre>
-       *
-       * <code>string default_ecosystem = 5;</code>
-       *
-       * @param value The defaultEcosystem to set.
-       * @return This builder for chaining.
-       */
-      public Builder setDefaultEcosystem(java.lang.String value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-
-        defaultEcosystem_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       *
-       *
-       * <pre>
-       * Default ecosystem ID to use for various SDK calls; defaults to `default`
-       * </pre>
-       *
-       * <code>string default_ecosystem = 5;</code>
-       *
-       * @return This builder for chaining.
-       */
-      public Builder clearDefaultEcosystem() {
-
-        defaultEcosystem_ = getDefaultInstance().getDefaultEcosystem();
-        onChanged();
-        return this;
-      }
-      /**
-       *
-       *
-       * <pre>
-       * Default ecosystem ID to use for various SDK calls; defaults to `default`
-       * </pre>
-       *
-       * <code>string default_ecosystem = 5;</code>
-       *
-       * @param value The bytes for defaultEcosystem to set.
-       * @return This builder for chaining.
-       */
-      public Builder setDefaultEcosystemBytes(com.google.protobuf.ByteString value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        checkByteStringIsUtf8(value);
-
-        defaultEcosystem_ = value;
-        onChanged();
-        return this;
-      }
-
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1293,12 +1089,11 @@ public final class Options {
   static {
     java.lang.String[] descriptorData = {
       "\n\034sdk/options/v1/options.proto\022\016sdk.opti"
-          + "ons.v1\"\205\001\n\016ServiceOptions\022\027\n\017server_endp"
-          + "oint\030\001 \001(\t\022\023\n\013server_port\030\002 \001(\005\022\026\n\016serve"
-          + "r_use_tls\030\003 \001(\010\022\022\n\nauth_token\030\004 \001(\t\022\031\n\021d"
-          + "efault_ecosystem\030\005 \001(\tBI\n\026trinsic.sdk.op"
-          + "tions.v1Z\026sdk/options/v1/options\252\002\026Trins"
-          + "ic.Sdk.Options.V1b\006proto3"
+          + "ons.v1\"j\n\016ServiceOptions\022\027\n\017server_endpo"
+          + "int\030\001 \001(\t\022\023\n\013server_port\030\002 \001(\005\022\026\n\016server"
+          + "_use_tls\030\003 \001(\010\022\022\n\nauth_token\030\004 \001(\tBI\n\026tr"
+          + "insic.sdk.options.v1Z\026sdk/options/v1/opt"
+          + "ions\252\002\026Trinsic.Sdk.Options.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -1309,7 +1104,7 @@ public final class Options {
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_sdk_options_v1_ServiceOptions_descriptor,
             new java.lang.String[] {
-              "ServerEndpoint", "ServerPort", "ServerUseTls", "AuthToken", "DefaultEcosystem",
+              "ServerEndpoint", "ServerPort", "ServerUseTls", "AuthToken",
             });
   }
 

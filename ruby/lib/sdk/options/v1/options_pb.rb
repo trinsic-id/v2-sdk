@@ -10,7 +10,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :server_port, :int32, 2
       optional :server_use_tls, :bool, 3
       optional :auth_token, :string, 4
-      optional :default_ecosystem, :string, 5
     end
   end
 end

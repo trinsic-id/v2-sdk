@@ -2211,8 +2211,9 @@ Configuration for Trinsic SDK Services
 | server_endpoint | [string](/reference/proto#string) | Trinsic API endpoint. Defaults to `prod.trinsic.cloud` |
 | server_port | [int32](/reference/proto#int32) | Trinsic API port; defaults to `443` |
 | server_use_tls | [bool](/reference/proto#bool) | Whether TLS is enabled between SDK and Trinsic API; defaults to `true` |
-| auth_token | [string](/reference/proto#string) | Authentication token for SDK calls; defaults to empty string (unauthenticated) |
-| default_ecosystem | [string](/reference/proto#string) | Default ecosystem ID to use for various SDK calls; defaults to `default` |
+| auth_token | [string](/reference/proto#string) | Authentication token for SDK calls; defaults to empty string (unauthenticated)
+
+Default ecosystem ID to use for various SDK calls; defaults to `default` string default_ecosystem = 5; |
 
 
 
