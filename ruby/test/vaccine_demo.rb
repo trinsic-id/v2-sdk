@@ -39,9 +39,6 @@ def vaccine_demo_run
   ecosystem_id = ecosystem.ecosystem.id
   # }
 
-  # Set service default ecosystem
-  trinsic.default_ecosystem = ecosystem_id
-
   # setupActors() {
   # Create an account for each participant in the scenario
   allison = trinsic.account_service.login_anonymous

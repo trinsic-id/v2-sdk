@@ -24,9 +24,6 @@ async def account_demo():
     trinsic = TrinsicService(server_config=config)
 
     ecosystem = await trinsic.provider.create_ecosystem()
-    ecosystem_id = ecosystem.ecosystem.id
-
-    trinsic.service_options.default_ecosystem = ecosystem_id
 
     # loginRequest() {
     login_response = await trinsic.account.login(

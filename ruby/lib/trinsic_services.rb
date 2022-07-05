@@ -36,15 +36,13 @@ module Trinsic
   TrustRegistry = Services::Trustregistry::V1
   Wallet = Services::Universalwallet::V1
 
-  def self.trinsic_server(auth_token = nil, ecosystem_id = nil)
+  def self.trinsic_server(auth_token = nil)
     server_endpoint = ENV.fetch('TEST_SERVER_ENDPOINT', 'prod.trinsic.cloud')
     server_port = ENV.fetch('TEST_SERVER_PORT', '443')
     server_use_tls = ENV.fetch('TEST_SERVER_USE_TLS', 'true')
     server_authtoken = auth_token || ''
-    server_default_ecosystem = ecosystem_id || ENV.fetch('TEST_SERVER_ECOSYSTEM', 'default')
     Options::ServiceOptions.new(server_endpoint: server_endpoint, server_port: server_port.to_i,
-                                server_use_tls: server_use_tls.downcase != 'false', auth_token: server_authtoken,
-                                default_ecosystem: server_default_ecosystem)
+                                server_use_tls: server_use_tls.downcase != 'false', auth_token: server_authtoken)
   end
 
   class Error < StandardError; end
