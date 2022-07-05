@@ -1,24 +1,23 @@
 import ServiceBase from "./ServiceBase";
 import {
-    AccountDefinition,
-    AccountProfile,
-    ConfirmationMethod,
-    AccountInfoRequest,
-    AccountInfoResponse,
-    ListDevicesRequest,
-    ListDevicesResponse,
-    RevokeDeviceRequest,
-    RevokeDeviceResponse,
-    ServiceOptions,
-    SignInRequest,
-    TokenProtection,
-    LoginRequest,
-    LoginResponse,
-    LoginConfirmResponse,
-    AuthorizeWebhookRequest,
-    AuthorizeWebhookResponse, LoginConfirmRequest,
+  AccountDefinition,
+  AccountInfoRequest,
+  AccountInfoResponse,
+  AccountProfile,
+  AuthorizeWebhookRequest,
+  AuthorizeWebhookResponse,
+  ConfirmationMethod,
+  ListDevicesRequest,
+  ListDevicesResponse,
+  LoginRequest,
+  LoginResponse,
+  RevokeDeviceRequest,
+  RevokeDeviceResponse,
+  ServiceOptions,
+  SignInRequest,
+  TokenProtection,
 } from "./proto";
-import { Oberon, Blake3HashRequest, Hashing } from "@trinsic/okapi";
+import { Hashing, Oberon } from "@trinsic/okapi";
 import base64url from "base64url";
 
 import type { Client as BrowserClient } from "nice-grpc-web";
@@ -100,7 +99,7 @@ export class AccountService extends ServiceBase {
   public async signIn(
     request: SignInRequest = SignInRequest.fromPartial({})
   ): Promise<string> {
-      request.ecosystemId ||= "default";
+    request.ecosystemId ||= "default";
 
     let response = await this.client.signIn(request);
     const authToken = base64url(
@@ -112,7 +111,9 @@ export class AccountService extends ServiceBase {
     return authToken;
   }
 
-  public async login(request: LoginRequest = LoginRequest.fromPartial({})): Promise<LoginResponse> {
+  public async login(
+    request: LoginRequest = LoginRequest.fromPartial({})
+  ): Promise<LoginResponse> {
     return this.client.login(request);
   }
 
@@ -120,44 +121,52 @@ export class AccountService extends ServiceBase {
     challenge: Uint8Array | undefined,
     authCode: string | Uint8Array
   ): Promise<string> {
-      if (typeof challenge === "undefined") {
-        throw new TypeError("challenge must be a Uint8Array");
-      }
+    if (typeof challenge === "undefined") {
+      throw new TypeError("challenge must be a Uint8Array");
+    }
 
-      challenge = AccountService.convertToUtf8(challenge);
-      authCode = AccountService.convertToUtf8(authCode);
-      let hashed = await Hashing.blake3Hash({data: authCode});
+    challenge = AccountService.convertToUtf8(challenge);
+    authCode = AccountService.convertToUtf8(authCode);
+    let hashed = await Hashing.blake3Hash({ data: authCode });
 
-      let response = await this.client.loginConfirm({challenge: challenge, confirmationCodeHashed: hashed.digest});
-      if (response.profile === undefined) {
-          return "";
-      }
+    let response = await this.client.loginConfirm({
+      challenge: challenge,
+      confirmationCodeHashed: hashed.digest,
+    });
+    if (response.profile === undefined) {
+      return "";
+    }
 
-      let token = base64url(
-          Buffer.from(AccountProfile.encode(response.profile!).finish())
-      );
-      if (response.profile.protection?.enabled ?? false) {
-          token = await AccountService.unprotect(token, authCode);
-      }
-      return token;
+    let authToken = base64url(
+      Buffer.from(AccountProfile.encode(response.profile!).finish())
+    );
+    if (response.profile.protection?.enabled ?? false) {
+      authToken = await AccountService.unprotect(authToken, authCode);
+    }
+
+    // set the auth token as active for the current service instance
+    this.options.authToken = authToken;
+    return authToken;
   }
 
-    public async loginAnonymous(): Promise<String> {
-        const request = LoginRequest.fromPartial({
-          email: "",
-          invitationCode: "",
-        });
-        let response = await this.client.login(request);
-        if (response.profile === undefined) {
-            throw new Error("undefined profile returned");
-        }
-        if (response.profile!.protection!.enabled) {
-            throw new Error("protected profile returned from login");
-        }
-        return base64url(
-            Buffer.from(AccountProfile.encode(response.profile!).finish())
-        );
+  public async loginAnonymous(): Promise<String> {
+    const request = LoginRequest.fromPartial({
+      email: "",
+      invitationCode: "",
+    });
+    let response = await this.client.login(request);
+    if (response.profile === undefined) {
+      throw new Error("undefined profile returned");
     }
+    if (response.profile!.protection!.enabled) {
+      throw new Error("protected profile returned from login");
+    }
+    const authToken = base64url(
+      Buffer.from(AccountProfile.encode(response.profile!).finish())
+    );
+    this.options.authToken = authToken;
+    return authToken;
+  }
 
   public async getInfo(): Promise<AccountInfoResponse> {
     const request = AccountInfoRequest.fromPartial({});
@@ -168,12 +177,11 @@ export class AccountService extends ServiceBase {
       ),
     });
   }
-// BEGIN Code generated by protoc-gen-trinsic. DO NOT EDIT.
-// target: ..\sdk\web\src\accountService.ts
 
-  public async info(
-    request: AccountInfoRequest
-  ): Promise<AccountInfoResponse> {
+  // BEGIN Code generated by protoc-gen-trinsic. DO NOT EDIT.
+  // target: ..\sdk\web\src\accountService.ts
+
+  public async info(request: AccountInfoRequest): Promise<AccountInfoResponse> {
     // TODO - handle metadata
     return this.client.info(request, {
       metadata: await this.getMetadata(
@@ -181,6 +189,7 @@ export class AccountService extends ServiceBase {
       ),
     });
   }
+
   public async listDevices(
     request: ListDevicesRequest
   ): Promise<ListDevicesResponse> {
@@ -191,6 +200,7 @@ export class AccountService extends ServiceBase {
       ),
     });
   }
+
   public async revokeDevice(
     request: RevokeDeviceRequest
   ): Promise<RevokeDeviceResponse> {
@@ -201,6 +211,7 @@ export class AccountService extends ServiceBase {
       ),
     });
   }
+
   public async authorizeWebhook(
     request: AuthorizeWebhookRequest
   ): Promise<AuthorizeWebhookResponse> {
@@ -211,5 +222,6 @@ export class AccountService extends ServiceBase {
       ),
     });
   }
-// END Code generated by protoc-gen-trinsic. DO NOT EDIT.
+
+  // END Code generated by protoc-gen-trinsic. DO NOT EDIT.
 }
