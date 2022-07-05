@@ -18,9 +18,8 @@ class AccountService extends ServiceBase {
 
   Future<String> signIn({SignInRequest? request}) async {
     request ??= SignInRequest();
-    request.ecosystemId = request.ecosystemId != ""
-        ? request.ecosystemId
-        : "default";
+    request.ecosystemId =
+        request.ecosystemId != "" ? request.ecosystemId : "default";
     SignInResponse response = await client.signIn(request);
     var authToken =
         Base64Encoder.urlSafe().convert(response.profile.writeToBuffer());
