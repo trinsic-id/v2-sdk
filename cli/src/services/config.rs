@@ -245,7 +245,6 @@ mod test {
             server_endpoint: "example.com".into(),
             server_port: 443,
             server_use_tls: true,
-            default_ecosystem: "default".into(),
             ..Default::default()
         };
 
