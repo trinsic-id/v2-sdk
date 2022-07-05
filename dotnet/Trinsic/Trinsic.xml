@@ -81,15 +81,15 @@
             <param name="authCode">Plaintext authentication code sent to account email</param>
             <returns>Auth token on success; null on failure</returns>
         </member>
-        <member name="M:Trinsic.AccountService.LoginAnonymous">
+        <member name="M:Trinsic.AccountService.LoginAnonymous(System.String)">
             <summary>
             Creates an anonymous account in the current ecosystem
             </summary>
             <returns>Auth token for newly-created account; null on failure</returns>
         </member>
-        <member name="M:Trinsic.AccountService.LoginAnonymousAsync">
+        <member name="M:Trinsic.AccountService.LoginAnonymousAsync(System.String)">
             <summary>
-            Creates an anonymous account in the current ecosystem
+            Creates an anonymous account in the given ecosystem
             </summary>
             <returns>Auth token for newly-created account; null on failure</returns>
         </member>
@@ -4524,13 +4524,6 @@
             Exposes Wallet Service functionality
             </summary>
         </member>
-        <member name="M:Trinsic.TrinsicService.SetDefaultEcosystem(System.String)">
-            <summary>
-            Sets the Default Ecosystem ID of this instance's ServiceOptions, and returns the instance for chaining.
-            </summary>
-            <param name="ecosystemId">The new ecosystem ID to use</param>
-            <returns></returns>
-        </member>
         <member name="M:Trinsic.TrinsicService.SetAuthToken(System.String)">
             <summary>
             Sets the Auth Token of this instance's ServiceOptions, and returns the instance for chaining.
@@ -4673,14 +4666,6 @@
         <member name="P:Trinsic.Sdk.Options.V1.ServiceOptions.AuthToken">
             <summary>
             Authentication token for SDK calls; defaults to empty string (unauthenticated)
-            </summary>
-        </member>
-        <member name="F:Trinsic.Sdk.Options.V1.ServiceOptions.DefaultEcosystemFieldNumber">
-            <summary>Field number for the "default_ecosystem" field.</summary>
-        </member>
-        <member name="P:Trinsic.Sdk.Options.V1.ServiceOptions.DefaultEcosystem">
-            <summary>
-            Default ecosystem ID to use for various SDK calls; defaults to `default`
             </summary>
         </member>
         <member name="M:Google.Protobuf.ProtoMessageExtensions.As``1(Google.Protobuf.IMessage)">

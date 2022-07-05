@@ -5,7 +5,6 @@ use crate::proto::services::account::v1::login_response::Response;
 use crate::proto::services::account::v1::AuthorizeWebhookRequest;
 use crate::utils::to_value;
 use crate::{
-    dict,
     error::Error,
     grpc_channel, grpc_client, grpc_client_with_auth,
     proto::services::account::v1::{
@@ -30,7 +29,7 @@ pub(crate) fn execute(args: &Command, config: CliConfig) -> Result<Output, Error
 
 #[tokio::main]
 async fn sign_in(args: &SignInArgs, config: CliConfig) -> Result<Output, Error> {
-    let ecosystem = args.ecosystem.as_ref().map_or(config.options.default_ecosystem.clone(), |x| x.to_owned());
+    let ecosystem = args.ecosystem.as_ref().map_or("default".into(), |x| x.to_owned());
 
     let mut client = grpc_client!(AccountClient<Channel>, config.to_owned());
 

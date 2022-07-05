@@ -18,9 +18,7 @@ type Options struct {
 // NewServiceOptions returns a service options configuration with the provided options set
 func NewServiceOptions(opts ...Option) (*Options, error) {
 	options := &Options{
-		ServiceOptions: &options.ServiceOptions{
-			DefaultEcosystem: "default",
-		},
+		ServiceOptions: &options.ServiceOptions{},
 	}
 
 	// Default to production
@@ -67,7 +65,6 @@ func WithGrpcDialOptions(grpcDialOptions ...grpc.DialOption) Option {
 // if no value is provided
 func WithDefaultEcosystem(ecosystemID string) Option {
 	return func(s *Options) error {
-		s.ServiceOptions.DefaultEcosystem = ecosystemID
 		return nil
 	}
 }
@@ -79,7 +76,6 @@ func WithOptions(serviceOptions *options.ServiceOptions) Option {
 		s.ServiceOptions.ServerPort = serviceOptions.ServerPort
 		s.ServiceOptions.ServerEndpoint = serviceOptions.ServerEndpoint
 		s.ServiceOptions.ServerUseTls = serviceOptions.ServerUseTls
-		s.ServiceOptions.DefaultEcosystem = serviceOptions.DefaultEcosystem
 
 		return nil
 	}
@@ -139,12 +135,6 @@ func WithTestEnv() Option {
 			s.ServiceOptions.ServerUseTls = false
 		} else {
 			s.ServiceOptions.ServerUseTls = true
-		}
-
-		defaultEcosystem := os.Getenv("TEST_SERVER_ECOSYSTEM")
-		if len(defaultEcosystem) > 0 {
-		} else {
-			s.ServiceOptions.DefaultEcosystem = "default"
 		}
 
 		return nil

@@ -53,10 +53,6 @@ public abstract class ServiceBase {
     this.options.setAuthToken(base64ProfileToken);
   }
 
-  public void setDefaultEcosystem(String ecosystemId) {
-    this.options.setDefaultEcosystem(ecosystemId);
-  }
-
   public Options.ServiceOptions.Builder getOptionsBuilder() {
     return this.options;
   }

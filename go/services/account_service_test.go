@@ -1,11 +1,11 @@
 package services
 
 import (
-    "context"
-    "testing"
+	"context"
+	"testing"
 
-    "github.com/stretchr/testify/assert"
-    "github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
+	"github.com/stretchr/testify/assert"
+	"github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
 )
 
 func TestLogin(t *testing.T) {
@@ -80,7 +80,7 @@ func TestProtectUnprotectProfile(t *testing.T) {
 	}
 	// }
 	// accountServiceSignIn() {
-	profile, _, err := trinsic.Account().SignIn(context.Background(), &account.SignInRequest{})
+	profile, err := trinsic.Account().LoginAnonymous(context.Background())
 	if !assert2.Nil(err) {
 		return
 	}

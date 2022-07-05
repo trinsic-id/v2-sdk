@@ -5,16 +5,12 @@ from trinsic.trinsic_service import TrinsicService
 from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 
 
-
 async def account_demo():
     config = trinsic_config()
 
     trinsic = TrinsicService(server_config=config)
 
     ecosystem = await trinsic.provider.create_ecosystem()
-    ecosystem_id = ecosystem.ecosystem.id
-
-    trinsic.service_options.default_ecosystem = ecosystem_id
 
     # loginRequest() {
     login_response = await trinsic.account.login(
@@ -31,7 +27,7 @@ async def account_demo():
         # }
 
         # setAuthTokenSample() {
-        trinsic.service_options.auth_token = auth_token;
+        trinsic.service_options.auth_token = auth_token
         # }
 
         assert False  # If we get here, it means login succeeded -- which is an error.

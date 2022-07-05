@@ -28,7 +28,7 @@ class TrinsicServiceTest < Minitest::Test
     assert_raises Exception do
       account_service.metadata(nil)
     end
-    account_profile = account_service.sign_in(nil)
+    account_profile = account_service.login_anonymous
     account_service.auth_token = account_profile
     metadata = account_service.metadata(Services::Provider::V1::InviteRequest.new)
     assert(!metadata.nil?, 'Valid metadata once profile is set')

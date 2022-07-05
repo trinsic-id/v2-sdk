@@ -20,9 +20,8 @@ func TestServiceBase(t *testing.T) {
 
 	opts, err := NewServiceOptions(
 		WithOptions(&options.ServiceOptions{
-			ServerEndpoint:   "127.0.0.1",
-			ServerPort:       1234,
-			DefaultEcosystem: "test"},
+			ServerEndpoint: "127.0.0.1",
+			ServerPort:     1234},
 		),
 	)
 
@@ -49,9 +48,8 @@ func TestServiceBase(t *testing.T) {
 
 	opts, err = NewServiceOptions(
 		WithOptions(&options.ServiceOptions{
-			ServerEndpoint:   "127.0.0.1",
-			ServerPort:       1234,
-			DefaultEcosystem: "test"},
+			ServerEndpoint: "127.0.0.1",
+			ServerPort:     1234},
 		),
 	)
 

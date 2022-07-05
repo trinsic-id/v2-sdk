@@ -1,12 +1,12 @@
 package services
 
 import (
-    "context"
-    "encoding/json"
-    "github.com/trinsic-id/sdk/go/proto/services/universalwallet/v1/wallet"
-    "testing"
+	"context"
+	"encoding/json"
+	"github.com/trinsic-id/sdk/go/proto/services/universalwallet/v1/wallet"
+	"testing"
 
-    "github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestWalletService(t *testing.T) {

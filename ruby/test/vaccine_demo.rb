@@ -3,11 +3,12 @@
 require 'trinsic_services'
 require 'services/service_base'
 require 'json'
+require 'securerandom'
 
 # rubocop:disable Metrics/MethodLength
 def do_template(trinsic)
   # createTemplate() {
-  request = Trinsic::Template::CreateCredentialTemplateRequest.new(name: 'VaccinationCertificate',
+  request = Trinsic::Template::CreateCredentialTemplateRequest.new(name: "VaccinationCertificate-#{SecureRandom.uuid}",
                                                                       allow_additional_fields: false)
   request.fields['firstName'] = Trinsic::Template::TemplateField.new(description: 'First name of vaccine recipient')
   request.fields['lastName'] = Trinsic::Template::TemplateField.new(description: 'Last name of vaccine recipient')
@@ -38,9 +39,6 @@ def vaccine_demo_run
   ecosystem = trinsic.provider_service.create_ecosystem
   ecosystem_id = ecosystem.ecosystem.id
   # }
-
-  # Set service default ecosystem
-  trinsic.default_ecosystem = ecosystem_id
 
   # setupActors() {
   # Create an account for each participant in the scenario

@@ -1,19 +1,16 @@
 import { v4 as uuid } from "uuid";
 import {
-    AccountService,
-    CreateCredentialTemplateRequest,
-    CreateCredentialTemplateResponse,
-    CreateProofRequest,
-    CredentialService,
-    FieldType,
-    InsertItemRequest,
-    IssueFromTemplateRequest,
-    IssueFromTemplateResponse,
-    ServiceOptions,
-    TemplateField,
-    TemplateService, TrinsicService,
-    VerifyProofRequest,
-    WalletService,
+  CreateCredentialTemplateRequest,
+  CreateCredentialTemplateResponse,
+  CreateProofRequest,
+  FieldType,
+  InsertItemRequest,
+  IssueFromTemplateRequest,
+  IssueFromTemplateResponse,
+  ServiceOptions,
+  TemplateField,
+  TrinsicService,
+  VerifyProofRequest,
 } from "../src";
 
 export function createRequiredTestObjects() {
@@ -64,9 +61,11 @@ export async function verifyCredential(
   const credential = await issueCredentialFromTemplate(options);
 
   trinsic.wallet().options.authToken = allison;
-  const insertItemResponse = await trinsic.wallet().insertItem(
-    InsertItemRequest.fromPartial({ itemJson: credential.documentJson })
-  );
+  const insertItemResponse = await trinsic
+    .wallet()
+    .insertItem(
+      InsertItemRequest.fromPartial({ itemJson: credential.documentJson })
+    );
 
   trinsic.credential().options.authToken = allison;
   const proofRequest = CreateProofRequest.fromPartial({
@@ -79,9 +78,9 @@ export async function verifyCredential(
   const verifyProofRequest = VerifyProofRequest.fromPartial({
     proofDocumentJson: proof.proofDocumentJson,
   });
-  const verifyProofResponse = await trinsic.credential().verifyProof(
-    verifyProofRequest
-  );
+  const verifyProofResponse = await trinsic
+    .credential()
+    .verifyProof(verifyProofRequest);
 
   return verifyProofResponse.isValid;
 }

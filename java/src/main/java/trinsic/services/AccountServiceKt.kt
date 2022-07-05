@@ -21,10 +21,7 @@ class AccountServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(o
   suspend fun signIn(request: SignInRequest): String {
     var request2 = request
     if (request.ecosystemId.isBlank())
-        request2 =
-            SignInRequest.newBuilder(request)
-                .setEcosystemId(optionsBuilder.defaultEcosystem)
-                .build()
+        request2 = SignInRequest.newBuilder(request).setEcosystemId("default").build()
     return Base64.getUrlEncoder().encodeToString(stub.signIn(request2).profile.toByteArray())
   }
 
@@ -111,8 +108,8 @@ class AccountServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(o
   }
 
   @Throws(InvalidProtocolBufferException::class, DidException::class)
-  suspend fun loginAnonymous(): String {
-    val response = this.login(LoginRequest.getDefaultInstance())
+  suspend fun loginAnonymous(ecosystemId: String = "default"): String {
+    val response = this.login(LoginRequest.newBuilder().setEcosystemId(ecosystemId).build())
 
     return Base64.getUrlEncoder().encodeToString(response.profile.toByteArray())
   }

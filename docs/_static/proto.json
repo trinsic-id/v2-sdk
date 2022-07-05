@@ -12,12 +12,6 @@
       "file": "sdk/options/v1/options.proto",
       "parent": "sdk.options.v1.ServiceOptions"
     },
-    "sdk.options.v1.ServiceOptions.default_ecosystem": {
-      "type": "field",
-      "collection": "fields",
-      "file": "sdk/options/v1/options.proto",
-      "parent": "sdk.options.v1.ServiceOptions"
-    },
     "sdk.options.v1.ServiceOptions.server_endpoint": {
       "type": "field",
       "collection": "fields",
@@ -2745,8 +2739,7 @@
         "sdk.options.v1.ServiceOptions.server_endpoint",
         "sdk.options.v1.ServiceOptions.server_port",
         "sdk.options.v1.ServiceOptions.server_use_tls",
-        "sdk.options.v1.ServiceOptions.auth_token",
-        "sdk.options.v1.ServiceOptions.default_ecosystem"
+        "sdk.options.v1.ServiceOptions.auth_token"
       ],
       "enums": [],
       "enum_values": []
@@ -3785,8 +3778,7 @@
         "sdk.options.v1.ServiceOptions.server_endpoint",
         "sdk.options.v1.ServiceOptions.server_port",
         "sdk.options.v1.ServiceOptions.server_use_tls",
-        "sdk.options.v1.ServiceOptions.auth_token",
-        "sdk.options.v1.ServiceOptions.default_ecosystem"
+        "sdk.options.v1.ServiceOptions.auth_token"
       ],
       "messages": [],
       "enums": []
@@ -5078,15 +5070,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Authentication token for SDK calls; defaults to empty string (unauthenticated)"
-    },
-    "sdk.options.v1.ServiceOptions.default_ecosystem": {
-      "name": "default_ecosystem",
-      "full_name": "sdk.options.v1.ServiceOptions.default_ecosystem",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "Default ecosystem ID to use for various SDK calls; defaults to `default`"
+      "description": "Authentication token for SDK calls; defaults to empty string (unauthenticated)\n\nDefault ecosystem ID to use for various SDK calls; defaults to `default`\nstring default_ecosystem = 5;"
     },
     "sdk.options.v1.ServiceOptions.server_endpoint": {
       "name": "server_endpoint",

@@ -17,6 +17,6 @@ message ServiceOptions {
     // Authentication token for SDK calls; defaults to empty string (unauthenticated)
     string auth_token = 4;
     // Default ecosystem ID to use for various SDK calls; defaults to `default`
-    string default_ecosystem = 5;
+    // string default_ecosystem = 5;
 }
 

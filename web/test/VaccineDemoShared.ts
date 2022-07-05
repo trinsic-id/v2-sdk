@@ -1,20 +1,15 @@
+import { v4 as uuid } from "uuid";
 import {
-  AccountService,
-  CreateProofRequest,
-  CredentialService,
-  InsertItemRequest,
-  IssueRequest,
-  VerifyProofRequest,
-  WalletService,
-  ProviderService,
-  CreateEcosystemRequest,
-  TemplateService,
-  TemplateField,
-  FieldType,
   CreateCredentialTemplateRequest,
-  TemplateData,
+  CreateEcosystemRequest,
+  CreateProofRequest,
+  FieldType,
+  InsertItemRequest,
   IssueFromTemplateRequest,
+  TemplateData,
+  TemplateField,
   TrinsicService,
+  VerifyProofRequest,
 } from "../src";
 
 import { getTestServerOptions } from "./env";
@@ -32,9 +27,6 @@ export async function vaccineDemo() {
     .createEcosystem(CreateEcosystemRequest.fromPartial({}));
   const ecosystemId = ecosystem.ecosystem!.id;
   // }
-
-  options.defaultEcosystem =
-    trinsic.provider().options.defaultEcosystem = ecosystemId;
 
   // setupActors() {
   // Create 3 different profiles for each participant in the scenario
@@ -129,7 +121,7 @@ async function doTemplate(
 
   //Create request
   let request = CreateCredentialTemplateRequest.fromPartial({
-    name: "VaccinationCertificate",
+    name: `VaccinationCertificate-${uuid()}`,
     fields: {
       firstName: firstNameField,
       lastName: lastNameField,

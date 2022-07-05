@@ -20,13 +20,11 @@ public class TrinsicUtilities {
     int port = Integer.parseInt(getEnvVar("TEST_SERVER_PORT", "443"));
     boolean useTls = Boolean.parseBoolean(getEnvVar("TEST_SERVER_USE_TLS", "true"));
     String authToken = getEnvVar("TEST_SERVER_AUTH_TOKEN", "");
-    String defaultEcosystem = getEnvVar("TEST_SERVER_ECOSYSTEM", "default");
 
     return Options.ServiceOptions.newBuilder()
         .setServerEndpoint(endpoint)
         .setServerPort(port)
         .setAuthToken(authToken)
-        .setDefaultEcosystem(defaultEcosystem)
         .setServerUseTls(useTls);
   }
 

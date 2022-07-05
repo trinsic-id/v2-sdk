@@ -7,12 +7,9 @@ ServiceOptions trinsicConfig({String authToken = ""}) {
       Platform.environment["TEST_SERVER_ENDPOINT"] ?? "prod.trinsic.cloud";
   String port = Platform.environment["TEST_SERVER_PORT"] ?? "443";
   String useTls = Platform.environment["TEST_SERVER_USE_TLS"] ?? "true";
-  String ecosystemName =
-      Platform.environment["TEST_SERVER_ECOSYSTEM"] ?? "default";
 
   return ServiceOptions(
       authToken: authToken,
-      defaultEcosystem: ecosystemName,
       serverEndpoint: endpoint,
       serverPort: int.parse(port),
       serverUseTls: useTls.toLowerCase() != "false");

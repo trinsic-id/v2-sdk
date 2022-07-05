@@ -34,10 +34,7 @@ public class AccountService extends ServiceBase {
 
   public ListenableFuture<String> signIn(@NotNull SignInRequest request) {
     if (request.getEcosystemId().isBlank())
-      request =
-          SignInRequest.newBuilder(request)
-              .setEcosystemId(this.getOptionsBuilder().getDefaultEcosystem())
-              .build();
+      request = SignInRequest.newBuilder(request).setEcosystemId("default").build();
     var response = this.stub.signIn(request);
     return Futures.transform(
         response,
@@ -136,7 +133,13 @@ public class AccountService extends ServiceBase {
   public ListenableFuture<String> loginAnonymous()
       throws InvalidProtocolBufferException, DidException, ExecutionException,
           InterruptedException {
-    var response = login(LoginRequest.getDefaultInstance());
+    return loginAnonymous("default");
+  }
+
+  public ListenableFuture<String> loginAnonymous(String ecosystemId)
+      throws InvalidProtocolBufferException, DidException, ExecutionException,
+          InterruptedException {
+    var response = login(LoginRequest.newBuilder().setEcosystemId(ecosystemId).build());
 
     return Futures.transform(
         response,

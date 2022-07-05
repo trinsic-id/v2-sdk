@@ -26,14 +26,6 @@ module Trinsic
       @service_options.auth_token
     end
 
-    def default_ecosystem=(new_ecosystem_id)
-      @service_options.default_ecosystem = new_ecosystem_id
-    end
-
-    def default_ecosystem
-      @service_options.default_ecosystem
-    end
-
     def url_string
       "#{@service_options.server_endpoint}:#{@service_options.server_port}"
     end

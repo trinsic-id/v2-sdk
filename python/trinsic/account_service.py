@@ -34,9 +34,7 @@ class AccountService(ServiceBase):
         Deprecated - use `AccountService.login` and `AccountService.login_confirm` instead
         """
         request = request or SignInRequest()
-        request.ecosystem_id = (
-            request.ecosystem_id or self.service_options.default_ecosystem
-        )
+        request.ecosystem_id = request.ecosystem_id or "default"
         response = await self.client.sign_in(sign_in_request=request)
         auth_token = base64.urlsafe_b64encode(bytes(response.profile)).decode("utf-8")
         self.service_options.auth_token = auth_token
@@ -100,9 +98,6 @@ class AccountService(ServiceBase):
             LoginResponse with challenge
         """
         request = request or LoginRequest()
-        request.ecosystem_id = (
-            request.ecosystem_id or self.service_options.default_ecosystem
-        )
         return await self.client.login(request)
 
     async def login_confirm(self, *, challenge: bytes, auth_code: str) -> str:
