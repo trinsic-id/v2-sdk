@@ -12,8 +12,6 @@ export interface ServiceOptions {
   serverUseTls: boolean;
   /** Authentication token for SDK calls; defaults to empty string (unauthenticated) */
   authToken: string;
-  /** Default ecosystem ID to use for various SDK calls; defaults to `default` */
-  defaultEcosystem: string;
 }
 
 function createBaseServiceOptions(): ServiceOptions {
@@ -22,7 +20,6 @@ function createBaseServiceOptions(): ServiceOptions {
     serverPort: 0,
     serverUseTls: false,
     authToken: "",
-    defaultEcosystem: "",
   };
 }
 
@@ -42,9 +39,6 @@ export const ServiceOptions = {
     }
     if (message.authToken !== "") {
       writer.uint32(34).string(message.authToken);
-    }
-    if (message.defaultEcosystem !== "") {
-      writer.uint32(42).string(message.defaultEcosystem);
     }
     return writer;
   },
@@ -68,9 +62,6 @@ export const ServiceOptions = {
         case 4:
           message.authToken = reader.string();
           break;
-        case 5:
-          message.defaultEcosystem = reader.string();
-          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -89,9 +80,6 @@ export const ServiceOptions = {
         ? Boolean(object.serverUseTls)
         : false,
       authToken: isSet(object.authToken) ? String(object.authToken) : "",
-      defaultEcosystem: isSet(object.defaultEcosystem)
-        ? String(object.defaultEcosystem)
-        : "",
     };
   },
 
@@ -104,8 +92,6 @@ export const ServiceOptions = {
     message.serverUseTls !== undefined &&
       (obj.serverUseTls = message.serverUseTls);
     message.authToken !== undefined && (obj.authToken = message.authToken);
-    message.defaultEcosystem !== undefined &&
-      (obj.defaultEcosystem = message.defaultEcosystem);
     return obj;
   },
 
@@ -115,7 +101,6 @@ export const ServiceOptions = {
     message.serverPort = object.serverPort ?? 0;
     message.serverUseTls = object.serverUseTls ?? false;
     message.authToken = object.authToken ?? "";
-    message.defaultEcosystem = object.defaultEcosystem ?? "";
     return message;
   },
 };

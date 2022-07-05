@@ -1,11 +1,11 @@
 package services
 
 import (
-    "context"
-    "testing"
+	"context"
+	"testing"
 
-    "github.com/stretchr/testify/assert"
-    "github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
+	"github.com/stretchr/testify/assert"
+	"github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
 )
 
 func TestLogin(t *testing.T) {

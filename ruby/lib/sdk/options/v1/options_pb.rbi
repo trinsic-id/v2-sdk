@@ -32,16 +32,14 @@ class Sdk::Options::V1::ServiceOptions
       server_endpoint: T.nilable(String),
       server_port: T.nilable(Integer),
       server_use_tls: T.nilable(T::Boolean),
-      auth_token: T.nilable(String),
-      default_ecosystem: T.nilable(String)
+      auth_token: T.nilable(String)
     ).void
   end
   def initialize(
     server_endpoint: "",
     server_port: 0,
     server_use_tls: false,
-    auth_token: "",
-    default_ecosystem: ""
+    auth_token: ""
   )
   end
 
@@ -91,18 +89,6 @@ class Sdk::Options::V1::ServiceOptions
 
   sig { void }
   def clear_auth_token
-  end
-
-  sig { returns(String) }
-  def default_ecosystem
-  end
-
-  sig { params(value: String).void }
-  def default_ecosystem=(value)
-  end
-
-  sig { void }
-  def clear_default_ecosystem
   end
 
   sig { params(field: String).returns(T.untyped) }
