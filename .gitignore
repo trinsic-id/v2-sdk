@@ -398,3 +398,5 @@ web/coverage/
 web/test/build/
 web/.config/coverage/
 dart/allison.txt
+samples/dotnet/vaccination-certificate-frame.jsonld
+samples/dotnet/vaccination-certificate-unsigned.jsonld

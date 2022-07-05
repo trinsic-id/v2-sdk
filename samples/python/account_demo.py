@@ -1,9 +1,9 @@
 import asyncio
+import platform
 
 from trinsic.proto.services.account.v1 import AuthorizeWebhookRequest, LoginRequest
 from trinsic.trinsic_service import TrinsicService
-from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
-
+from trinsic.trinsic_util import trinsic_config
 
 
 async def account_demo():
@@ -30,10 +30,6 @@ async def account_demo():
         )
         # }
 
-        # setAuthTokenSample() {
-        trinsic.service_options.auth_token = auth_token;
-        # }
-
         assert False  # If we get here, it means login succeeded -- which is an error.
     except:
         pass
@@ -51,5 +47,6 @@ async def account_demo():
 
 
 if __name__ == "__main__":
-    set_eventloop_policy()
+    if platform.system() == "Windows":
+        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     asyncio.run(account_demo())
