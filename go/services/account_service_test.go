@@ -80,7 +80,7 @@ func TestProtectUnprotectProfile(t *testing.T) {
 	}
 	// }
 	// accountServiceSignIn() {
-	profile, _, err := trinsic.Account().SignIn(context.Background(), &account.SignInRequest{})
+	profile, err := trinsic.Account().LoginAnonymous(context.Background())
 	if !assert2.Nil(err) {
 		return
 	}
