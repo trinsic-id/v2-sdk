@@ -81,6 +81,13 @@ func (p *providerBase) CreateEcosystem(ctx context.Context, request *provider.Cr
 		return nil, err
 	}
 
+	authToken, err := ProfileToToken(resp.GetProfile())
+	if err != nil {
+		return nil, err
+	}
+
+	p.SetToken(authToken)
+
 	return resp, nil
 }
 

@@ -200,6 +200,8 @@ func (a *accountBase) LoginConfirm(userContext context.Context, challenge []byte
 		return "", err
 	}
 
+	a.SetToken(authToken)
+
 	return authToken, nil
 }
 
