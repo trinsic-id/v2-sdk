@@ -14,7 +14,7 @@
         
       
       <link rel="icon" href="../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.8+insiders-4.19.1">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9+insiders-4.19.2">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.485cfce5.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.6661e186.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
@@ -1754,23 +1754,17 @@
 <li>Install the trinsic package
 <div class="highlight"><pre><span></span><code>pip install trinsic-sdk
 </code></pre></div></li>
-<li>Test installation by running the following python script:</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">asyncio</span>
-<span class="kn">from</span> <span class="nn">trinsic.services</span> <span class="kn">import</span> <span class="n">AccountService</span>
-
-<span class="k">async</span> <span class="k">def</span> <span class="nf">demo</span><span class="p">():</span>
-    <span class="n">account_service</span> <span class="o">=</span> <span class="n">AccountService</span><span class="p">()</span>
-    <span class="n">profile</span> <span class="o">=</span> <span class="k">await</span> <span class="n">account_service</span><span class="o">.</span><span class="n">sign_in</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">profile</span><span class="p">)</span>
-    <span class="n">account_service</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">demo</span><span class="p">())</span>
-</code></pre></div>
-<ul>
-<li>The output should look something like this:
-<div class="highlight"><pre><span></span><code>AccountProfile<span class="o">(</span><span class="nv">profile_type</span><span class="o">=</span><span class="s1">&#39;https://trinsic.id/security/v1/oberon&#39;</span>, <span class="nv">auth_data</span><span class="o">=</span>b<span class="s1">&#39;\n*urn:trinsic:wallets:JkhchLXS8NDwTjmJjNogkQ\x12$1d58106c-325a-4f45-abe0-6a14aa613a10&#39;</span>, <span class="nv">auth_token</span><span class="o">=</span>b<span class="s1">&#39;\x83E\x06p\xd60V\xe0D\x12NU\xe7\n6\x06\x19 \x0b\xe0\x8er\xf2\xc1\xb3\x96\xdb\xbd/\xf5#\xa7\xe7F\x10\x97E\xe2\xa9\xc4\x10\xdfJ\xbe\xea\xa3Fz&#39;</span>, <span class="nv">protection</span><span class="o">=</span>TokenProtection<span class="o">())</span>
-</code></pre></div></li>
+<li>
+<p>Test installation by running the following shell command:
+<div class="highlight"><pre><span></span><code><span class="c1"># May be &quot;python&quot; or &quot;python3&quot; depending on your install</span>
+python -m trinsic
+</code></pre></div></p>
+</li>
+<li>
+<p>The output should look something like this:
+<div class="highlight"><pre><span></span><code>Package successfully installed. Sample profile below
+</code></pre></div></p>
+</li>
 </ul>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <p>Once the SDK is installed and configured, you're ready to start building! We recommend going through the <a href="../walkthroughs/vaccination/">walkthrough</a> next. If you're ready to dive into building your ecosystem, check out our <a href="../reference/">API Reference</a></p>
@@ -1867,7 +1861,7 @@
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tracking", "announce.dismiss", "navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.sections"], "search": "../assets/javascripts/workers/search.720157f5.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.2131bdac.min.js"></script>
+      <script src="../assets/javascripts/bundle.c2e1238c.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
       
