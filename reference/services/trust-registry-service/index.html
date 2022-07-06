@@ -1894,14 +1894,14 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">trinsic</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">memberResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="w"></span>
 <span class="w">    </span><span class="p">.</span><span class="na">trustRegistry</span><span class="p">()</span><span class="w"></span>
 <span class="w">    </span><span class="p">.</span><span class="na">registerMember</span><span class="p">(</span><span class="w"></span>
 <span class="w">        </span><span class="n">RegisterMemberRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
 <span class="w">            </span><span class="p">.</span><span class="na">setDidUri</span><span class="p">(</span><span class="n">didUri</span><span class="p">)</span><span class="w"></span>
 <span class="w">            </span><span class="p">.</span><span class="na">setFrameworkId</span><span class="p">(</span><span class="n">frameworkResponse</span><span class="p">.</span><span class="na">getId</span><span class="p">())</span><span class="w"></span>
 <span class="w">            </span><span class="p">.</span><span class="na">setSchemaUri</span><span class="p">(</span><span class="n">typeUri</span><span class="p">)</span><span class="w"></span>
-<span class="w">            </span><span class="p">.</span><span class="na">build</span><span class="p">());</span><span class="w"></span>
+<span class="w">            </span><span class="p">.</span><span class="na">build</span><span class="p">()).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>

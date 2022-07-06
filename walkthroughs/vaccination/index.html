@@ -2207,7 +2207,7 @@ trinsic account login --name <span class="s2">&quot;Vaccination Clinic&quot;</sp
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// Set active profile to &#39;clinic&#39;</span><span class="w"></span>
-<span class="n">templateService</span><span class="p">.</span><span class="na">setProfile</span><span class="p">(</span><span class="n">clinic</span><span class="p">);</span><span class="w"></span>
+<span class="n">templateService</span><span class="p">.</span><span class="na">setAuthToken</span><span class="p">(</span><span class="n">clinic</span><span class="p">);</span><span class="w"></span>
 
 <span class="c1">// Define fields for template</span><span class="w"></span>
 <span class="kd">var</span><span class="w"> </span><span class="n">fields</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">TemplateField</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
@@ -2370,7 +2370,7 @@ trinsic vc issue-from-template --template-id <span class="o">{</span>TEMPLATE_ID
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// Set active profile to &#39;clinic&#39; so we can issue credential signed</span><span class="w"></span>
 <span class="c1">// with the clinic&#39;s signing keys</span><span class="w"></span>
-<span class="n">trinsicService</span><span class="p">.</span><span class="na">setProfile</span><span class="p">(</span><span class="n">clinic</span><span class="p">);</span><span class="w"></span>
+<span class="n">trinsicService</span><span class="p">.</span><span class="na">setAuthToken</span><span class="p">(</span><span class="n">clinic</span><span class="p">);</span><span class="w"></span>
 
 <span class="c1">// Prepare credential values</span><span class="w"></span>
 <span class="kd">var</span><span class="w"> </span><span class="n">valuesMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="p">();</span><span class="w"></span>
@@ -2495,7 +2495,7 @@ trinsic wallet insert-item --item credential.json
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// Set active profile to &#39;allison&#39; so we can manage her cloud wallet</span><span class="w"></span>
-<span class="n">trinsic</span><span class="p">.</span><span class="na">setProfile</span><span class="p">(</span><span class="n">allison</span><span class="p">);</span><span class="w"></span>
+<span class="n">trinsic</span><span class="p">.</span><span class="na">setAuthToken</span><span class="p">(</span><span class="n">allison</span><span class="p">);</span><span class="w"></span>
 
 <span class="c1">// Allison stores the credential in her cloud wallet.</span><span class="w"></span>
 <span class="kd">var</span><span class="w"> </span><span class="n">insertItemResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
@@ -2575,7 +2575,7 @@ trinsic vc create-proof --item-id <span class="s2">&quot;{ITEM_ID}&quot;</span> 
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// Set active profile to &#39;allison&#39; so we can create a proof using her key</span><span class="w"></span>
-<span class="n">trinsic</span><span class="p">.</span><span class="na">setProfile</span><span class="p">(</span><span class="n">allison</span><span class="p">);</span><span class="w"></span>
+<span class="n">trinsic</span><span class="p">.</span><span class="na">setAuthToken</span><span class="p">(</span><span class="n">allison</span><span class="p">);</span><span class="w"></span>
 
 <span class="c1">// Allison shares the credential with the venue</span><span class="w"></span>
 <span class="kd">var</span><span class="w"> </span><span class="n">createProofResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
@@ -2662,7 +2662,7 @@ trinsic vc verify-proof --proof-document proof.json
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">trinsic</span><span class="p">.</span><span class="na">setProfile</span><span class="p">(</span><span class="n">airline</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">trinsic</span><span class="p">.</span><span class="na">setAuthToken</span><span class="p">(</span><span class="n">airline</span><span class="p">);</span><span class="w"></span>
 
 <span class="c1">// Verify that Allison has provided a valid proof</span><span class="w"></span>
 <span class="kd">var</span><span class="w"> </span><span class="n">verifyProofResponse</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
