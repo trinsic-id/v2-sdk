@@ -40,7 +40,7 @@ public class CredentialsDemo {
         trinsic.account().loginAnonymous(ecosystemId).get(); // Both issues and verifies
     var holder = trinsic.account().loginAnonymous(ecosystemId).get();
 
-    trinsic.setProfile(issuerVerifier);
+    trinsic.setAuthToken(issuerVerifier);
 
     // issueCredentialSample() {
     var issueResult =
@@ -54,7 +54,7 @@ public class CredentialsDemo {
 
     System.out.println("Credential: " + signedCredentialJson);
 
-    trinsic.setProfile(holder);
+    trinsic.setAuthToken(holder);
     // createProof() {
     var createProofResponse =
         trinsic
@@ -85,7 +85,7 @@ public class CredentialsDemo {
       // This is okay, we don't expect that account to exist.
     }
 
-    trinsic.setProfile(issuerVerifier);
+    trinsic.setAuthToken(issuerVerifier);
     // verifyProof() {
     var verifyProofResponse =
         trinsic

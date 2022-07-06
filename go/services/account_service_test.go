@@ -35,7 +35,7 @@ func TestLogin(t *testing.T) {
 	assert2.Empty(authToken)
 
 	// setAuthTokenSample() {
-	trinsic.SetToken(authToken)
+	trinsic.SetAuthToken(authToken)
 	// }
 }
 
@@ -100,7 +100,7 @@ func TestProtectUnprotectProfile(t *testing.T) {
 	// }
 
 	t.Run("Protected profile should fail", func(t *testing.T) {
-		trinsic.Account().SetToken(protectedProfile)
+		trinsic.Account().SetAuthToken(protectedProfile)
 		info2, err2 := trinsic.Account().GetInfo(context.Background())
 		if !assert2.NotNil(err2) {
 			t.FailNow()
@@ -111,7 +111,7 @@ func TestProtectUnprotectProfile(t *testing.T) {
 	})
 
 	t.Run("Unprotected profile should work", func(t *testing.T) {
-		trinsic.Account().SetToken(unprotectedProfile)
+		trinsic.Account().SetAuthToken(unprotectedProfile)
 		// getInfo() {
 		info2, err2 := trinsic.Account().GetInfo(context.Background())
 		// }

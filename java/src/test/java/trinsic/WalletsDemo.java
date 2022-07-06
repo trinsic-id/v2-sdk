@@ -27,7 +27,7 @@ public class WalletsDemo {
     var account = trinsic.account().loginAnonymous(ecosystemId).get();
 
     // Insert wallet item into wallet
-    trinsic.setProfile(account);
+    trinsic.setAuthToken(account);
 
     var credentialJson =
         "{\"foo\":\"bar\"}"; // Doesn't need to actually be a credential for this test
