@@ -84,7 +84,7 @@ func TestServiceBase(t *testing.T) {
 	assert.Equal("EgoxMjM0NTY3ODkwGgoxMjM0NTY3ODkwIgIIAQ", tkn)
 
 	// Set new profile
-	base.SetToken(tkn)
+	base.SetAuthToken(tkn)
 	assert.Equal(tkn, base.GetServiceOptions().AuthToken, "auth token should have been replaced")
 
 	// Must Unprotect token
@@ -95,7 +95,7 @@ func TestServiceBase(t *testing.T) {
 
 	// use test vector (valid unprotected token)
 	testToken := "CiVodHRwczovL3RyaW5zaWMuaWQvc2VjdXJpdHkvdjEvb2Jlcm9uEnAKKnVybjp0cmluc2ljOndhbGxldHM6SlZkS0pHcWs1YnFzRmtNTGJKTHZwSxIkYmFiM2Y5ZTgtOTIyYS00ZjEwLWI5MmMtMmYyZTM0MmUwNDQzIhx1cm46dHJpbnNpYzplY29zeXN0ZW1zOlRlc3QxGjCFcgwYBFmtbNn4Y2D37yIiChzzNLfods2vo37H6wf65vAYFZ3FqbtMNe6MKX14LQQiAA"
-	base.SetToken(testToken)
+	base.SetAuthToken(testToken)
 	assert.Equal(testToken, base.GetServiceOptions().AuthToken, "auth token should have been replaced")
 
 	// Sets the authorization header to oberon
