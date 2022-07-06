@@ -2206,7 +2206,7 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
 </tr>
 <tr>
 <td><code style="word-break:keep-all">CredentialStatus</code></td>
-<td><em>(if supported by credential)</em> Checks if credential has been revoked*</td>
+<td><em>(if supported by credential)</em> Checks if credential has been revoked</td>
 </tr>
 <tr>
 <td><code style="word-break:keep-all">SchemaConformance</code></td>
@@ -2215,6 +2215,10 @@ trinsic vc issuer verify-proof --proof-document &lt;JSONLD_FILE&gt;
 <tr>
 <td><code style="word-break:keep-all">TrustRegistryMembership</code></td>
 <td><em>(if relevant)</em> Verifies that credential issuer is an authorized member of the credential's governing Trust Registry</td>
+</tr>
+<tr>
+<td><code style="word-break:keep-all">IssuerIsSigner</code></td>
+<td>Document <code>issuer</code> is same DID as document signer. <em>If false, it is not safe to assume that the claimed <code>issuer</code> actually issued the credential.</em></td>
 </tr>
 </tbody>
 </table>
