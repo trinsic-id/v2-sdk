@@ -1,12 +1,13 @@
 package trinsic;
 
-import java.io.IOException;
-import java.util.UUID;
-import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.okapi.DidException;
 import trinsic.services.TrinsicService;
 import trinsic.services.trustregistry.v1.*;
+
+import java.io.IOException;
+import java.util.UUID;
+import java.util.concurrent.ExecutionException;
 
 public class TrustRegistryDemo {
   public static void main(String[] args)
@@ -37,14 +38,14 @@ public class TrustRegistryDemo {
     // }
 
     // registerIssuerSample() {
-    trinsic
+    var memberResponse = trinsic
         .trustRegistry()
         .registerMember(
             RegisterMemberRequest.newBuilder()
                 .setDidUri(didUri)
                 .setFrameworkId(frameworkResponse.getId())
                 .setSchemaUri(typeUri)
-                .build());
+                .build()).get();
     // }
     // checkIssuerStatus() {
     var issuerStatus =

@@ -12,11 +12,11 @@ class ProviderServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(
 
   @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun createEcosystem(request: CreateEcosystemRequest): CreateEcosystemResponse {
-      var response: CreateEcosystemResponse
-    if (request.name.isNullOrBlank() && request.details.email.isNullOrBlank()) {
-      response = stub.createEcosystem(request)
-    }
-    response = withMetadata(stub, request).createEcosystem(request)
+      var response: CreateEcosystemResponse = if (request.name.isNullOrBlank() && request.details.email.isNullOrBlank()) {
+          stub.createEcosystem(request)
+      } else {
+          withMetadata(stub, request).createEcosystem(request)
+      }
       this.optionsBuilder.authToken = Base64.getUrlEncoder().encodeToString(response.profile.toByteArray())
       return response
   }
