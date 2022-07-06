@@ -1,13 +1,10 @@
 import base64url from "base64url";
-import { create } from "domain";
 import {
   AccountProfile,
-  AccountService,
   AddWebhookRequest,
   CreateEcosystemRequest,
   DeleteWebhookRequest,
   EcosystemInfoRequest,
-  ProviderService,
   TrinsicService,
   UpdateEcosystemRequest,
 } from "../src";
@@ -20,7 +17,7 @@ describe("ProviderService Unit Tests", () => {
   setTestTimeout();
   beforeAll(async () => {
     let trinsic = new TrinsicService(options);
-      options.authToken = await trinsic.account().signIn();
+    options.authToken = await trinsic.account().signIn();
   });
 
   it("Demo: Ecosystem Tests", async () => {
@@ -41,20 +38,18 @@ describe("ProviderService Unit Tests", () => {
       createResponse.ecosystem!.id.startsWith("urn:trinsic:ecosystems:")
     ).toBeTruthy();
 
-
     // Use auth token and ecosystem
     trinsic.options.authToken = base64url(
       Buffer.from(AccountProfile.encode(createResponse.profile!).finish())
     );
     // trinsic.options.defaultEcosystem = createResponse.ecosystem!.id;
 
-
     // addWebhook() {
     let addResponse = await trinsic.provider().addWebhook(
       AddWebhookRequest.fromPartial({
         destinationUrl: "https://example.com/webhooks/trinsic",
         secret: "my well-kept secret",
-        events: ["*"]
+        events: ["*"],
       })
     );
     //}
@@ -67,7 +62,7 @@ describe("ProviderService Unit Tests", () => {
     // deleteWebhook() {
     let deleteResponse = await trinsic.provider().deleteWebhook(
       DeleteWebhookRequest.fromPartial({
-        webhookId: webhookId
+        webhookId: webhookId,
       })
     );
     //}
@@ -78,19 +73,21 @@ describe("ProviderService Unit Tests", () => {
     let updateResponse = await trinsic.provider().updateEcosystem(
       UpdateEcosystemRequest.fromPartial({
         description: "New ecosystem description",
-        uri: "https://new-example.com"
+        uri: "https://new-example.com",
       })
     );
     //}
 
     expect(updateResponse).not.toBeNull();
     expect(updateResponse.Ecosystem).not.toBeNull();
-    expect(updateResponse.Ecosystem?.description).toBe("New ecosystem description");
+    expect(updateResponse.Ecosystem?.description).toBe(
+      "New ecosystem description"
+    );
 
     // ecosystemInfo() {
-    const infoResponse = await trinsic.provider().ecosystemInfo(
-      EcosystemInfoRequest.fromPartial({})
-    );
+    const infoResponse = await trinsic
+      .provider()
+      .ecosystemInfo(EcosystemInfoRequest.fromPartial({}));
 
     const ecosystem = infoResponse.ecosystem;
     //}

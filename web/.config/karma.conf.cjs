@@ -1,6 +1,6 @@
 // const webpackConfig = require("./webpack.config.js");
 const {resolve} = require("path");
-const {SourceMapDevToolPlugin, ProvidePlugin} = require("webpack");
+const {SourceMapDevToolPlugin, ProvidePlugin, IgnorePlugin} = require("webpack");
 const path = require("path");
 module.exports = async (config) => {
     config.set({
@@ -58,9 +58,6 @@ module.exports = async (config) => {
         webpack: {
             mode: "development",
             devtool: "inline-source-map",
-            entry: {
-                wallet: "../test/web.spec.ts",
-            },
             module: {
                 rules: [
                     {
@@ -81,7 +78,6 @@ module.exports = async (config) => {
             },
             output: {
                 path: resolve(__dirname, "../test/build"),
-                libraryTarget: 'umd',
                 globalObject: 'this',
                 libraryExport: 'default'
             },
@@ -94,6 +90,7 @@ module.exports = async (config) => {
                     process: "process/browser",
                     Buffer: ["buffer", "Buffer"],
                 }),
+                new IgnorePlugin({ resourceRegExp: /^/u, contextRegExp: /grpc-web-node-http-transport/u })
             ],
             experiments: {
                 asyncWebAssembly: true,
