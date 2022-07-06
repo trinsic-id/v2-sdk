@@ -329,9 +329,10 @@ Verifies a proof for validity and authenticity. Only supports BBS+ Signatures at
     | Name                                                     | Description                                                                                                          |
     | -------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
     | `SignatureVerification`{: style="word-break:keep-all"}   | Cryptographic signature validity of proof                                                                            |
-    | `CredentialStatus`{: style="word-break:keep-all"}        | *(if supported by credential)* Checks if credential has been revoked*                                                |
+    | `CredentialStatus`{: style="word-break:keep-all"}        | *(if supported by credential)* Checks if credential has been revoked                                                 |
     | `SchemaConformance`{: style="word-break:keep-all"}       | Ensures credential conforms with its schema                                                                          |
     | `TrustRegistryMembership`{: style="word-break:keep-all"} | *(if relevant)* Verifies that credential issuer is an authorized member of the credential's governing Trust Registry |
+    | `IssuerIsSigner`{: style="word-break:keep-all"}          | Document `issuer` is same DID as document signer. *If false, it is not safe to assume that the claimed `issuer` actually issued the credential.*                                                                     |
 
 ---
 
