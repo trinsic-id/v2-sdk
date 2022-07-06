@@ -78,6 +78,10 @@ class ServiceBase {
             Base64Decoder().convert(serviceOptions.authToken)),
         request);
   }
+
+  void setAuthToken(String authToken) {
+    serviceOptions.authToken = authToken;
+  }
 }
 
 abstract class ISecurityProvider {

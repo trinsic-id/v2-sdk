@@ -85,6 +85,7 @@ class AccountService extends ServiceBase {
     if (response.profile.protection.enabled) {
       token = unprotect(token, authCode);
     }
+    serviceOptions.authToken = token;
     return token;
   }
 
@@ -97,6 +98,7 @@ class AccountService extends ServiceBase {
     // Tokenize and return
     var authToken =
         Base64Encoder.urlSafe().convert(response.profile.writeToBuffer());
+    serviceOptions.authToken = authToken;
     return authToken;
   }
 

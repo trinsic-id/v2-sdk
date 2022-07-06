@@ -35,7 +35,7 @@ class AccountServiceTest {
           // }
 
           // setAuthTokenSample() {
-          trinsic.setProfile(authToken);
+          trinsic.setAuthToken(authToken);
           // }
         });
   }
@@ -47,7 +47,7 @@ class AccountServiceTest {
     var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
 
     var profile = trinsic.account().loginAnonymous().get();
-    trinsic.setProfile(profile);
+    trinsic.setAuthToken(profile);
 
     // authorizeWebhook() {
     var authorizeResponse =
@@ -81,7 +81,7 @@ class AccountServiceTest {
     Assertions.assertThrows(
         Exception.class,
         () -> {
-          trinsic.setProfile(myProtectedProfile);
+          trinsic.setAuthToken(myProtectedProfile);
           Assertions.assertEquals(
               myProtectedProfile, trinsic.account().getOptionsBuilder().getAuthToken());
           trinsic.account().getInfo().get();
@@ -89,7 +89,7 @@ class AccountServiceTest {
 
     Assertions.assertDoesNotThrow(
         () -> {
-          trinsic.setProfile(myUnprotectedProfile);
+          trinsic.setAuthToken(myUnprotectedProfile);
           // getInfo() {
           var info = trinsic.account().getInfo().get();
           // }

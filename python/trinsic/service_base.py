@@ -68,6 +68,9 @@ class ServiceBase(ABC):
                 # If the event loop is closed, NBD.
                 pass
 
+    def set_auth_token(self, auth_token: str) -> None:
+        self.service_options.auth_token = auth_token
+
     def build_metadata(self, request: Message) -> Dict[str, str]:
         """
         Create call metadata by setting required authentication headers via `AccountProfile`

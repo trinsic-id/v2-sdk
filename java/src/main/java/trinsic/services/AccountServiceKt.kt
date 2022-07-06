@@ -22,7 +22,9 @@ class AccountServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(o
     var request2 = request
     if (request.ecosystemId.isBlank())
         request2 = SignInRequest.newBuilder(request).setEcosystemId("default").build()
-    return Base64.getUrlEncoder().encodeToString(stub.signIn(request2).profile.toByteArray())
+    val authToken = Base64.getUrlEncoder().encodeToString(stub.signIn(request2).profile.toByteArray())
+      this.optionsBuilder.authToken = authToken
+      return authToken
   }
 
   companion object {
@@ -103,6 +105,7 @@ class AccountServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(o
     if (response.profile.protection.enabled) {
       authToken = unprotect(authToken, authCode)
     }
+      this.optionsBuilder.authToken = authToken
 
     return authToken
   }
@@ -111,7 +114,9 @@ class AccountServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(o
   suspend fun loginAnonymous(ecosystemId: String = "default"): String {
     val response = this.login(LoginRequest.newBuilder().setEcosystemId(ecosystemId).build())
 
-    return Base64.getUrlEncoder().encodeToString(response.profile.toByteArray())
+    val authToken = Base64.getUrlEncoder().encodeToString(response.profile.toByteArray())
+    this.optionsBuilder.authToken = authToken
+    return authToken
   }
 
   suspend fun getInfo(): AccountInfoResponse {
