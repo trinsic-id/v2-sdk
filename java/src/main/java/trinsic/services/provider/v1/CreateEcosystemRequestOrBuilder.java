@@ -13,11 +13,12 @@ public interface CreateEcosystemRequestOrBuilder
    *
    * <pre>
    * Globally unique name for the Ecosystem. This name will be
-   * part of the ecosystem specific URLs and namespaces.
+   * part of the ecosystem-specific URLs and namespaces.
    * Allowed characters are lowercase letters, numbers, underscore and hyphen.
+   * If not passed, ecosystem name will be auto-generated.
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>string name = 1 [(.services.options.optional) = true];</code>
    *
    * @return The name.
    */
@@ -27,11 +28,12 @@ public interface CreateEcosystemRequestOrBuilder
    *
    * <pre>
    * Globally unique name for the Ecosystem. This name will be
-   * part of the ecosystem specific URLs and namespaces.
+   * part of the ecosystem-specific URLs and namespaces.
    * Allowed characters are lowercase letters, numbers, underscore and hyphen.
+   * If not passed, ecosystem name will be auto-generated.
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>string name = 1 [(.services.options.optional) = true];</code>
    *
    * @return The bytes for name.
    */

@@ -3,7 +3,15 @@
 
 package trinsic.services.trustregistry.v1;
 
-/** Protobuf type {@code services.trustregistry.v1.GovernanceFramework} */
+/**
+ *
+ *
+ * <pre>
+ * Ecosystem Governance Framework
+ * </pre>
+ *
+ * Protobuf type {@code services.trustregistry.v1.GovernanceFramework}
+ */
 public final class GovernanceFramework extends com.google.protobuf.GeneratedMessageV3
     implements
     // @@protoc_insertion_point(message_implements:services.trustregistry.v1.GovernanceFramework)
@@ -109,6 +117,12 @@ public final class GovernanceFramework extends com.google.protobuf.GeneratedMess
   public static final int GOVERNANCE_FRAMEWORK_URI_FIELD_NUMBER = 1;
   private volatile java.lang.Object governanceFrameworkUri_;
   /**
+   *
+   *
+   * <pre>
+   * URI of governance framework organization
+   * </pre>
+   *
    * <code>string governance_framework_uri = 1;</code>
    *
    * @return The governanceFrameworkUri.
@@ -126,6 +140,12 @@ public final class GovernanceFramework extends com.google.protobuf.GeneratedMess
     }
   }
   /**
+   *
+   *
+   * <pre>
+   * URI of governance framework organization
+   * </pre>
+   *
    * <code>string governance_framework_uri = 1;</code>
    *
    * @return The bytes for governanceFrameworkUri.
@@ -146,6 +166,12 @@ public final class GovernanceFramework extends com.google.protobuf.GeneratedMess
   public static final int TRUST_REGISTRY_URI_FIELD_NUMBER = 2;
   private volatile java.lang.Object trustRegistryUri_;
   /**
+   *
+   *
+   * <pre>
+   * URI of trust registry associated with governance framework
+   * </pre>
+   *
    * <code>string trust_registry_uri = 2;</code>
    *
    * @return The trustRegistryUri.
@@ -163,6 +189,12 @@ public final class GovernanceFramework extends com.google.protobuf.GeneratedMess
     }
   }
   /**
+   *
+   *
+   * <pre>
+   * URI of trust registry associated with governance framework
+   * </pre>
+   *
    * <code>string trust_registry_uri = 2;</code>
    *
    * @return The bytes for trustRegistryUri.
@@ -183,6 +215,12 @@ public final class GovernanceFramework extends com.google.protobuf.GeneratedMess
   public static final int DESCRIPTION_FIELD_NUMBER = 3;
   private volatile java.lang.Object description_;
   /**
+   *
+   *
+   * <pre>
+   * Description of governance framework
+   * </pre>
+   *
    * <code>string description = 3;</code>
    *
    * @return The description.
@@ -200,6 +238,12 @@ public final class GovernanceFramework extends com.google.protobuf.GeneratedMess
     }
   }
   /**
+   *
+   *
+   * <pre>
+   * Description of governance framework
+   * </pre>
+   *
    * <code>string description = 3;</code>
    *
    * @return The bytes for description.
@@ -395,7 +439,15 @@ public final class GovernanceFramework extends com.google.protobuf.GeneratedMess
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code services.trustregistry.v1.GovernanceFramework} */
+  /**
+   *
+   *
+   * <pre>
+   * Ecosystem Governance Framework
+   * </pre>
+   *
+   * Protobuf type {@code services.trustregistry.v1.GovernanceFramework}
+   */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
       // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.GovernanceFramework)
@@ -562,6 +614,12 @@ public final class GovernanceFramework extends com.google.protobuf.GeneratedMess
 
     private java.lang.Object governanceFrameworkUri_ = "";
     /**
+     *
+     *
+     * <pre>
+     * URI of governance framework organization
+     * </pre>
+     *
      * <code>string governance_framework_uri = 1;</code>
      *
      * @return The governanceFrameworkUri.
@@ -578,6 +636,12 @@ public final class GovernanceFramework extends com.google.protobuf.GeneratedMess
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * URI of governance framework organization
+     * </pre>
+     *
      * <code>string governance_framework_uri = 1;</code>
      *
      * @return The bytes for governanceFrameworkUri.
@@ -594,6 +658,12 @@ public final class GovernanceFramework extends com.google.protobuf.GeneratedMess
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * URI of governance framework organization
+     * </pre>
+     *
      * <code>string governance_framework_uri = 1;</code>
      *
      * @param value The governanceFrameworkUri to set.
@@ -609,6 +679,12 @@ public final class GovernanceFramework extends com.google.protobuf.GeneratedMess
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * URI of governance framework organization
+     * </pre>
+     *
      * <code>string governance_framework_uri = 1;</code>
      *
      * @return This builder for chaining.
@@ -620,6 +696,12 @@ public final class GovernanceFramework extends com.google.protobuf.GeneratedMess
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * URI of governance framework organization
+     * </pre>
+     *
      * <code>string governance_framework_uri = 1;</code>
      *
      * @param value The bytes for governanceFrameworkUri to set.
@@ -638,6 +720,12 @@ public final class GovernanceFramework extends com.google.protobuf.GeneratedMess
 
     private java.lang.Object trustRegistryUri_ = "";
     /**
+     *
+     *
+     * <pre>
+     * URI of trust registry associated with governance framework
+     * </pre>
+     *
      * <code>string trust_registry_uri = 2;</code>
      *
      * @return The trustRegistryUri.
@@ -654,6 +742,12 @@ public final class GovernanceFramework extends com.google.protobuf.GeneratedMess
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * URI of trust registry associated with governance framework
+     * </pre>
+     *
      * <code>string trust_registry_uri = 2;</code>
      *
      * @return The bytes for trustRegistryUri.
@@ -670,6 +764,12 @@ public final class GovernanceFramework extends com.google.protobuf.GeneratedMess
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * URI of trust registry associated with governance framework
+     * </pre>
+     *
      * <code>string trust_registry_uri = 2;</code>
      *
      * @param value The trustRegistryUri to set.
@@ -685,6 +785,12 @@ public final class GovernanceFramework extends com.google.protobuf.GeneratedMess
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * URI of trust registry associated with governance framework
+     * </pre>
+     *
      * <code>string trust_registry_uri = 2;</code>
      *
      * @return This builder for chaining.
@@ -696,6 +802,12 @@ public final class GovernanceFramework extends com.google.protobuf.GeneratedMess
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * URI of trust registry associated with governance framework
+     * </pre>
+     *
      * <code>string trust_registry_uri = 2;</code>
      *
      * @param value The bytes for trustRegistryUri to set.
@@ -714,6 +826,12 @@ public final class GovernanceFramework extends com.google.protobuf.GeneratedMess
 
     private java.lang.Object description_ = "";
     /**
+     *
+     *
+     * <pre>
+     * Description of governance framework
+     * </pre>
+     *
      * <code>string description = 3;</code>
      *
      * @return The description.
@@ -730,6 +848,12 @@ public final class GovernanceFramework extends com.google.protobuf.GeneratedMess
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * Description of governance framework
+     * </pre>
+     *
      * <code>string description = 3;</code>
      *
      * @return The bytes for description.
@@ -746,6 +870,12 @@ public final class GovernanceFramework extends com.google.protobuf.GeneratedMess
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * Description of governance framework
+     * </pre>
+     *
      * <code>string description = 3;</code>
      *
      * @param value The description to set.
@@ -761,6 +891,12 @@ public final class GovernanceFramework extends com.google.protobuf.GeneratedMess
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * Description of governance framework
+     * </pre>
+     *
      * <code>string description = 3;</code>
      *
      * @return This builder for chaining.
@@ -772,6 +908,12 @@ public final class GovernanceFramework extends com.google.protobuf.GeneratedMess
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * Description of governance framework
+     * </pre>
+     *
      * <code>string description = 3;</code>
      *
      * @param value The bytes for description to set.

@@ -3,18 +3,58 @@
 
 package trinsic.services.provider.v1;
 
-/** Protobuf enum {@code services.provider.v1.ParticipantType} */
+/**
+ *
+ *
+ * <pre>
+ * Type of participant being invited to ecosystem
+ * </pre>
+ *
+ * Protobuf enum {@code services.provider.v1.ParticipantType}
+ */
 public enum ParticipantType implements com.google.protobuf.ProtocolMessageEnum {
-  /** <code>participant_type_individual = 0;</code> */
+  /**
+   *
+   *
+   * <pre>
+   * Participant is an individual
+   * </pre>
+   *
+   * <code>participant_type_individual = 0;</code>
+   */
   participant_type_individual(0),
-  /** <code>participant_type_organization = 1;</code> */
+  /**
+   *
+   *
+   * <pre>
+   * Participant is an organization
+   * </pre>
+   *
+   * <code>participant_type_organization = 1;</code>
+   */
   participant_type_organization(1),
   UNRECOGNIZED(-1),
   ;
 
-  /** <code>participant_type_individual = 0;</code> */
+  /**
+   *
+   *
+   * <pre>
+   * Participant is an individual
+   * </pre>
+   *
+   * <code>participant_type_individual = 0;</code>
+   */
   public static final int participant_type_individual_VALUE = 0;
-  /** <code>participant_type_organization = 1;</code> */
+  /**
+   *
+   *
+   * <pre>
+   * Participant is an organization
+   * </pre>
+   *
+   * <code>participant_type_organization = 1;</code>
+   */
   public static final int participant_type_organization_VALUE = 1;
 
   public final int getNumber() {

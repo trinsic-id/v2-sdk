@@ -12,7 +12,7 @@ public interface UpdateEcosystemRequestOrBuilder
    *
    *
    * <pre>
-   * Description of the ecosystem
+   * New description of the ecosystem
    * </pre>
    *
    * <code>string description = 1;</code>
@@ -24,7 +24,7 @@ public interface UpdateEcosystemRequestOrBuilder
    *
    *
    * <pre>
-   * Description of the ecosystem
+   * New description of the ecosystem
    * </pre>
    *
    * <code>string description = 1;</code>
@@ -37,7 +37,7 @@ public interface UpdateEcosystemRequestOrBuilder
    *
    *
    * <pre>
-   * External URL associated with the organization or ecosystem entity
+   * New external URL associated with the organization or ecosystem entity
    * </pre>
    *
    * <code>string uri = 2;</code>
@@ -49,7 +49,7 @@ public interface UpdateEcosystemRequestOrBuilder
    *
    *
    * <pre>
-   * External URL associated with the organization or ecosystem entity
+   * New external URL associated with the organization or ecosystem entity
    * </pre>
    *
    * <code>string uri = 2;</code>

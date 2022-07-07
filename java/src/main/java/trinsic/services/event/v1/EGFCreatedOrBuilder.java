@@ -37,7 +37,7 @@ public interface EGFCreatedOrBuilder
    *
    *
    * <pre>
-   * UUID of the ecosystem that owns this egf
+   * UUID of the ecosystem that owns this EGF
    * </pre>
    *
    * <code>string ecosystem_id = 2;</code>
@@ -49,7 +49,7 @@ public interface EGFCreatedOrBuilder
    *
    *
    * <pre>
-   * UUID of the ecosystem that owns this egf
+   * UUID of the ecosystem that owns this EGF
    * </pre>
    *
    * <code>string ecosystem_id = 2;</code>
@@ -62,7 +62,7 @@ public interface EGFCreatedOrBuilder
    *
    *
    * <pre>
-   * Trust registry assoicated with this egf
+   * Trust registry associated with this EGF
    * </pre>
    *
    * <code>string trust_registry = 3;</code>
@@ -74,7 +74,7 @@ public interface EGFCreatedOrBuilder
    *
    *
    * <pre>
-   * Trust registry assoicated with this egf
+   * Trust registry associated with this EGF
    * </pre>
    *
    * <code>string trust_registry = 3;</code>
@@ -87,7 +87,7 @@ public interface EGFCreatedOrBuilder
    *
    *
    * <pre>
-   * Wallet ID of the aurhority for this egf
+   * Wallet ID of the authority for this EGF
    * </pre>
    *
    * <code>string governing_authority = 4;</code>
@@ -99,7 +99,7 @@ public interface EGFCreatedOrBuilder
    *
    *
    * <pre>
-   * Wallet ID of the aurhority for this egf
+   * Wallet ID of the authority for this EGF
    * </pre>
    *
    * <code>string governing_authority = 4;</code>
@@ -112,7 +112,7 @@ public interface EGFCreatedOrBuilder
    *
    *
    * <pre>
-   * Type of egf
+   * Type of EGF
    * </pre>
    *
    * <code>string type = 5;</code>
@@ -124,7 +124,7 @@ public interface EGFCreatedOrBuilder
    *
    *
    * <pre>
-   * Type of egf
+   * Type of EGF
    * </pre>
    *
    * <code>string type = 5;</code>
@@ -137,7 +137,7 @@ public interface EGFCreatedOrBuilder
    *
    *
    * <pre>
-   * User friendly name for the egf
+   * User-friendly name for the EGF
    * </pre>
    *
    * <code>string name = 6;</code>
@@ -149,7 +149,7 @@ public interface EGFCreatedOrBuilder
    *
    *
    * <pre>
-   * User friendly name for the egf
+   * User-friendly name for the EGF
    * </pre>
    *
    * <code>string name = 6;</code>
@@ -162,7 +162,7 @@ public interface EGFCreatedOrBuilder
    *
    *
    * <pre>
-   * Description of the egf
+   * Description of the EGF
    * </pre>
    *
    * <code>string description = 7;</code>
@@ -174,7 +174,7 @@ public interface EGFCreatedOrBuilder
    *
    *
    * <pre>
-   * Description of the egf
+   * Description of the EGF
    * </pre>
    *
    * <code>string description = 7;</code>
@@ -187,7 +187,7 @@ public interface EGFCreatedOrBuilder
    *
    *
    * <pre>
-   * URI for the egf
+   * URI for the EGF
    * </pre>
    *
    * <code>string governance_framework = 8;</code>
@@ -199,7 +199,7 @@ public interface EGFCreatedOrBuilder
    *
    *
    * <pre>
-   * URI for the egf
+   * URI for the EGF
    * </pre>
    *
    * <code>string governance_framework = 8;</code>

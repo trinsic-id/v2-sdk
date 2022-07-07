@@ -3,7 +3,15 @@
 
 package trinsic.services.trustregistry.v1;
 
-/** Protobuf type {@code services.trustregistry.v1.RemoveFrameworkRequest} */
+/**
+ *
+ *
+ * <pre>
+ * Request to remove a governance framework from the current ecosystem
+ * </pre>
+ *
+ * Protobuf type {@code services.trustregistry.v1.RemoveFrameworkRequest}
+ */
 public final class RemoveFrameworkRequest extends com.google.protobuf.GeneratedMessageV3
     implements
     // @@protoc_insertion_point(message_implements:services.trustregistry.v1.RemoveFrameworkRequest)
@@ -93,6 +101,12 @@ public final class RemoveFrameworkRequest extends com.google.protobuf.GeneratedM
   public static final int ID_FIELD_NUMBER = 1;
   private volatile java.lang.Object id_;
   /**
+   *
+   *
+   * <pre>
+   * ID of governance framework to remove
+   * </pre>
+   *
    * <code>string id = 1;</code>
    *
    * @return The id.
@@ -110,6 +124,12 @@ public final class RemoveFrameworkRequest extends com.google.protobuf.GeneratedM
     }
   }
   /**
+   *
+   *
+   * <pre>
+   * ID of governance framework to remove
+   * </pre>
+   *
    * <code>string id = 1;</code>
    *
    * @return The bytes for id.
@@ -287,7 +307,15 @@ public final class RemoveFrameworkRequest extends com.google.protobuf.GeneratedM
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code services.trustregistry.v1.RemoveFrameworkRequest} */
+  /**
+   *
+   *
+   * <pre>
+   * Request to remove a governance framework from the current ecosystem
+   * </pre>
+   *
+   * Protobuf type {@code services.trustregistry.v1.RemoveFrameworkRequest}
+   */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
       // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.RemoveFrameworkRequest)
@@ -440,6 +468,12 @@ public final class RemoveFrameworkRequest extends com.google.protobuf.GeneratedM
 
     private java.lang.Object id_ = "";
     /**
+     *
+     *
+     * <pre>
+     * ID of governance framework to remove
+     * </pre>
+     *
      * <code>string id = 1;</code>
      *
      * @return The id.
@@ -456,6 +490,12 @@ public final class RemoveFrameworkRequest extends com.google.protobuf.GeneratedM
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * ID of governance framework to remove
+     * </pre>
+     *
      * <code>string id = 1;</code>
      *
      * @return The bytes for id.
@@ -472,6 +512,12 @@ public final class RemoveFrameworkRequest extends com.google.protobuf.GeneratedM
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * ID of governance framework to remove
+     * </pre>
+     *
      * <code>string id = 1;</code>
      *
      * @param value The id to set.
@@ -487,6 +533,12 @@ public final class RemoveFrameworkRequest extends com.google.protobuf.GeneratedM
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * ID of governance framework to remove
+     * </pre>
+     *
      * <code>string id = 1;</code>
      *
      * @return This builder for chaining.
@@ -498,6 +550,12 @@ public final class RemoveFrameworkRequest extends com.google.protobuf.GeneratedM
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * ID of governance framework to remove
+     * </pre>
+     *
      * <code>string id = 1;</code>
      *
      * @param value The bytes for id to set.

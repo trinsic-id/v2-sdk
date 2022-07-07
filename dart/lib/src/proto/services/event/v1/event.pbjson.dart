@@ -71,11 +71,12 @@ const Ping$json = const {
     const {'1': 'timestamp', '3': 3, '4': 1, '5': 9, '10': 'timestamp'},
     const {'1': 'message', '3': 4, '4': 1, '5': 9, '10': 'message'},
   ],
+  '7': const {},
 };
 
 /// Descriptor for `Ping`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List pingDescriptor = $convert.base64Decode(
-    'CgRQaW5nEg4KAmlkGAEgASgJUgJpZBIdCgp3ZWJob29rX2lkGAIgASgJUgl3ZWJob29rSWQSHAoJdGltZXN0YW1wGAMgASgJUgl0aW1lc3RhbXASGAoHbWVzc2FnZRgEIAEoCVIHbWVzc2FnZQ==');
+    'CgRQaW5nEg4KAmlkGAEgASgJUgJpZBIdCgp3ZWJob29rX2lkGAIgASgJUgl3ZWJob29rSWQSHAoJdGltZXN0YW1wGAMgASgJUgl0aW1lc3RhbXASGAoHbWVzc2FnZRgEIAEoCVIHbWVzc2FnZToEkKYdAA==');
 @$core.Deprecated('Use eGFCreatedDescriptor instead')
 const EGFCreated$json = const {
   '1': 'EGFCreated',
@@ -107,11 +108,12 @@ const EGFCreated$json = const {
       '10': 'governanceFramework'
     },
   ],
+  '7': const {},
 };
 
 /// Descriptor for `EGFCreated`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List eGFCreatedDescriptor = $convert.base64Decode(
-    'CgpFR0ZDcmVhdGVkEg4KAmlkGAEgASgJUgJpZBIhCgxlY29zeXN0ZW1faWQYAiABKAlSC2Vjb3N5c3RlbUlkEiUKDnRydXN0X3JlZ2lzdHJ5GAMgASgJUg10cnVzdFJlZ2lzdHJ5Ei8KE2dvdmVybmluZ19hdXRob3JpdHkYBCABKAlSEmdvdmVybmluZ0F1dGhvcml0eRISCgR0eXBlGAUgASgJUgR0eXBlEhIKBG5hbWUYBiABKAlSBG5hbWUSIAoLZGVzY3JpcHRpb24YByABKAlSC2Rlc2NyaXB0aW9uEjEKFGdvdmVybmFuY2VfZnJhbWV3b3JrGAggASgJUhNnb3Zlcm5hbmNlRnJhbWV3b3Jr');
+    'CgpFR0ZDcmVhdGVkEg4KAmlkGAEgASgJUgJpZBIhCgxlY29zeXN0ZW1faWQYAiABKAlSC2Vjb3N5c3RlbUlkEiUKDnRydXN0X3JlZ2lzdHJ5GAMgASgJUg10cnVzdFJlZ2lzdHJ5Ei8KE2dvdmVybmluZ19hdXRob3JpdHkYBCABKAlSEmdvdmVybmluZ0F1dGhvcml0eRISCgR0eXBlGAUgASgJUgR0eXBlEhIKBG5hbWUYBiABKAlSBG5hbWUSIAoLZGVzY3JpcHRpb24YByABKAlSC2Rlc2NyaXB0aW9uEjEKFGdvdmVybmFuY2VfZnJhbWV3b3JrGAggASgJUhNnb3Zlcm5hbmNlRnJhbWV3b3JrOgSQph0F');
 @$core.Deprecated('Use templateCreatedDescriptor instead')
 const TemplateCreated$json = const {
   '1': 'TemplateCreated',
@@ -122,11 +124,12 @@ const TemplateCreated$json = const {
     const {'1': 'type', '3': 4, '4': 1, '5': 9, '10': 'type'},
     const {'1': 'created_by', '3': 5, '4': 1, '5': 9, '10': 'createdBy'},
   ],
+  '7': const {},
 };
 
 /// Descriptor for `TemplateCreated`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List templateCreatedDescriptor = $convert.base64Decode(
-    'Cg9UZW1wbGF0ZUNyZWF0ZWQSDgoCaWQYASABKAlSAmlkEiEKDGVjb3N5c3RlbV9pZBgCIAEoCVILZWNvc3lzdGVtSWQSEgoEbmFtZRgDIAEoCVIEbmFtZRISCgR0eXBlGAQgASgJUgR0eXBlEh0KCmNyZWF0ZWRfYnkYBSABKAlSCWNyZWF0ZWRCeQ==');
+    'Cg9UZW1wbGF0ZUNyZWF0ZWQSDgoCaWQYASABKAlSAmlkEiEKDGVjb3N5c3RlbV9pZBgCIAEoCVILZWNvc3lzdGVtSWQSEgoEbmFtZRgDIAEoCVIEbmFtZRISCgR0eXBlGAQgASgJUgR0eXBlEh0KCmNyZWF0ZWRfYnkYBSABKAlSCWNyZWF0ZWRCeToEkKYdCg==');
 @$core.Deprecated('Use itemReceivedDescriptor instead')
 const ItemReceived$json = const {
   '1': 'ItemReceived',
@@ -134,8 +137,9 @@ const ItemReceived$json = const {
     const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
     const {'1': 'received', '3': 2, '4': 1, '5': 9, '10': 'received'},
   ],
+  '7': const {},
 };
 
 /// Descriptor for `ItemReceived`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List itemReceivedDescriptor = $convert.base64Decode(
-    'CgxJdGVtUmVjZWl2ZWQSDgoCaWQYASABKAlSAmlkEhoKCHJlY2VpdmVkGAIgASgJUghyZWNlaXZlZA==');
+    'CgxJdGVtUmVjZWl2ZWQSDgoCaWQYASABKAlSAmlkEhoKCHJlY2VpdmVkGAIgASgJUghyZWNlaXZlZDoEkKYdEA==');

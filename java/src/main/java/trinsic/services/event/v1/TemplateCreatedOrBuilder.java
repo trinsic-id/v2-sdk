@@ -87,7 +87,7 @@ public interface TemplateCreatedOrBuilder
    *
    *
    * <pre>
-   * Tempalte type
+   * Template type
    * </pre>
    *
    * <code>string type = 4;</code>
@@ -99,7 +99,7 @@ public interface TemplateCreatedOrBuilder
    *
    *
    * <pre>
-   * Tempalte type
+   * Template type
    * </pre>
    *
    * <code>string type = 4;</code>

@@ -37,10 +37,10 @@ public interface AccountDetailsOrBuilder
    *
    *
    * <pre>
-   * Email account
+   * Email address of account
    * </pre>
    *
-   * <code>string email = 2;</code>
+   * <code>string email = 2 [(.services.options.optional) = true];</code>
    *
    * @return The email.
    */
@@ -49,10 +49,10 @@ public interface AccountDetailsOrBuilder
    *
    *
    * <pre>
-   * Email account
+   * Email address of account
    * </pre>
    *
-   * <code>string email = 2;</code>
+   * <code>string email = 2 [(.services.options.optional) = true];</code>
    *
    * @return The bytes for email.
    */

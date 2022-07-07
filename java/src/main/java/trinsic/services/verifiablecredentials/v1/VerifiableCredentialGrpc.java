@@ -410,7 +410,7 @@ public final class VerifiableCredentialGrpc {
      * <pre>
      * Sign and issue a verifiable credential from a pre-defined template.
      * This process will also add schema validation and
-     * revocation registry entry in the credential.
+     * revocation registry values to the credential.
      * </pre>
      */
     public void issueFromTemplate(
@@ -588,7 +588,7 @@ public final class VerifiableCredentialGrpc {
      * <pre>
      * Sign and issue a verifiable credential from a pre-defined template.
      * This process will also add schema validation and
-     * revocation registry entry in the credential.
+     * revocation registry values to the credential.
      * </pre>
      */
     public void issueFromTemplate(
@@ -722,7 +722,7 @@ public final class VerifiableCredentialGrpc {
      * <pre>
      * Sign and issue a verifiable credential from a pre-defined template.
      * This process will also add schema validation and
-     * revocation registry entry in the credential.
+     * revocation registry values to the credential.
      * </pre>
      */
     public trinsic.services.verifiablecredentials.v1.IssueFromTemplateResponse issueFromTemplate(
@@ -834,7 +834,7 @@ public final class VerifiableCredentialGrpc {
      * <pre>
      * Sign and issue a verifiable credential from a pre-defined template.
      * This process will also add schema validation and
-     * revocation registry entry in the credential.
+     * revocation registry values to the credential.
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<

@@ -111,7 +111,7 @@ public final class DeleteWebhookResponse extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Ecosystem after removal of webhook
+   * Ecosystem data after removal of webhook
    * </pre>
    *
    * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
@@ -126,7 +126,7 @@ public final class DeleteWebhookResponse extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Ecosystem after removal of webhook
+   * Ecosystem data after removal of webhook
    * </pre>
    *
    * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
@@ -143,7 +143,7 @@ public final class DeleteWebhookResponse extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Ecosystem after removal of webhook
+   * Ecosystem data after removal of webhook
    * </pre>
    *
    * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
@@ -493,7 +493,7 @@ public final class DeleteWebhookResponse extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Ecosystem after removal of webhook
+     * Ecosystem data after removal of webhook
      * </pre>
      *
      * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
@@ -507,7 +507,7 @@ public final class DeleteWebhookResponse extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Ecosystem after removal of webhook
+     * Ecosystem data after removal of webhook
      * </pre>
      *
      * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
@@ -527,7 +527,7 @@ public final class DeleteWebhookResponse extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Ecosystem after removal of webhook
+     * Ecosystem data after removal of webhook
      * </pre>
      *
      * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
@@ -549,7 +549,7 @@ public final class DeleteWebhookResponse extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Ecosystem after removal of webhook
+     * Ecosystem data after removal of webhook
      * </pre>
      *
      * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
@@ -568,7 +568,7 @@ public final class DeleteWebhookResponse extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Ecosystem after removal of webhook
+     * Ecosystem data after removal of webhook
      * </pre>
      *
      * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
@@ -594,7 +594,7 @@ public final class DeleteWebhookResponse extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Ecosystem after removal of webhook
+     * Ecosystem data after removal of webhook
      * </pre>
      *
      * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
@@ -614,7 +614,7 @@ public final class DeleteWebhookResponse extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Ecosystem after removal of webhook
+     * Ecosystem data after removal of webhook
      * </pre>
      *
      * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
@@ -628,7 +628,7 @@ public final class DeleteWebhookResponse extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Ecosystem after removal of webhook
+     * Ecosystem data after removal of webhook
      * </pre>
      *
      * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
@@ -646,7 +646,7 @@ public final class DeleteWebhookResponse extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Ecosystem after removal of webhook
+     * Ecosystem data after removal of webhook
      * </pre>
      *
      * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>

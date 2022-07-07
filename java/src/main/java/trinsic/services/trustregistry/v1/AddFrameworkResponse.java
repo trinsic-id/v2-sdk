@@ -3,7 +3,15 @@
 
 package trinsic.services.trustregistry.v1;
 
-/** Protobuf type {@code services.trustregistry.v1.AddFrameworkResponse} */
+/**
+ *
+ *
+ * <pre>
+ * Response to `AddFrameworkRequest`
+ * </pre>
+ *
+ * Protobuf type {@code services.trustregistry.v1.AddFrameworkResponse}
+ */
 public final class AddFrameworkResponse extends com.google.protobuf.GeneratedMessageV3
     implements
     // @@protoc_insertion_point(message_implements:services.trustregistry.v1.AddFrameworkResponse)
@@ -158,6 +166,12 @@ public final class AddFrameworkResponse extends com.google.protobuf.GeneratedMes
   public static final int GOVERNING_AUTHORITY_FIELD_NUMBER = 2;
   private volatile java.lang.Object governingAuthority_;
   /**
+   *
+   *
+   * <pre>
+   * DID URI of Trinsic account which created the governance framework
+   * </pre>
+   *
    * <code>string governing_authority = 2;</code>
    *
    * @return The governingAuthority.
@@ -175,6 +189,12 @@ public final class AddFrameworkResponse extends com.google.protobuf.GeneratedMes
     }
   }
   /**
+   *
+   *
+   * <pre>
+   * DID URI of Trinsic account which created the governance framework
+   * </pre>
+   *
    * <code>string governing_authority = 2;</code>
    *
    * @return The bytes for governingAuthority.
@@ -195,6 +215,12 @@ public final class AddFrameworkResponse extends com.google.protobuf.GeneratedMes
   public static final int TRUST_REGISTRY_FIELD_NUMBER = 3;
   private volatile java.lang.Object trustRegistry_;
   /**
+   *
+   *
+   * <pre>
+   * URN of trust registry for governance framework
+   * </pre>
+   *
    * <code>string trust_registry = 3;</code>
    *
    * @return The trustRegistry.
@@ -212,6 +238,12 @@ public final class AddFrameworkResponse extends com.google.protobuf.GeneratedMes
     }
   }
   /**
+   *
+   *
+   * <pre>
+   * URN of trust registry for governance framework
+   * </pre>
+   *
    * <code>string trust_registry = 3;</code>
    *
    * @return The bytes for trustRegistry.
@@ -407,7 +439,15 @@ public final class AddFrameworkResponse extends com.google.protobuf.GeneratedMes
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code services.trustregistry.v1.AddFrameworkResponse} */
+  /**
+   *
+   *
+   * <pre>
+   * Response to `AddFrameworkRequest`
+   * </pre>
+   *
+   * Protobuf type {@code services.trustregistry.v1.AddFrameworkResponse}
+   */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
       // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.AddFrameworkResponse)
@@ -680,6 +720,12 @@ public final class AddFrameworkResponse extends com.google.protobuf.GeneratedMes
 
     private java.lang.Object governingAuthority_ = "";
     /**
+     *
+     *
+     * <pre>
+     * DID URI of Trinsic account which created the governance framework
+     * </pre>
+     *
      * <code>string governing_authority = 2;</code>
      *
      * @return The governingAuthority.
@@ -696,6 +742,12 @@ public final class AddFrameworkResponse extends com.google.protobuf.GeneratedMes
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * DID URI of Trinsic account which created the governance framework
+     * </pre>
+     *
      * <code>string governing_authority = 2;</code>
      *
      * @return The bytes for governingAuthority.
@@ -712,6 +764,12 @@ public final class AddFrameworkResponse extends com.google.protobuf.GeneratedMes
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * DID URI of Trinsic account which created the governance framework
+     * </pre>
+     *
      * <code>string governing_authority = 2;</code>
      *
      * @param value The governingAuthority to set.
@@ -727,6 +785,12 @@ public final class AddFrameworkResponse extends com.google.protobuf.GeneratedMes
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * DID URI of Trinsic account which created the governance framework
+     * </pre>
+     *
      * <code>string governing_authority = 2;</code>
      *
      * @return This builder for chaining.
@@ -738,6 +802,12 @@ public final class AddFrameworkResponse extends com.google.protobuf.GeneratedMes
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * DID URI of Trinsic account which created the governance framework
+     * </pre>
+     *
      * <code>string governing_authority = 2;</code>
      *
      * @param value The bytes for governingAuthority to set.
@@ -756,6 +826,12 @@ public final class AddFrameworkResponse extends com.google.protobuf.GeneratedMes
 
     private java.lang.Object trustRegistry_ = "";
     /**
+     *
+     *
+     * <pre>
+     * URN of trust registry for governance framework
+     * </pre>
+     *
      * <code>string trust_registry = 3;</code>
      *
      * @return The trustRegistry.
@@ -772,6 +848,12 @@ public final class AddFrameworkResponse extends com.google.protobuf.GeneratedMes
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * URN of trust registry for governance framework
+     * </pre>
+     *
      * <code>string trust_registry = 3;</code>
      *
      * @return The bytes for trustRegistry.
@@ -788,6 +870,12 @@ public final class AddFrameworkResponse extends com.google.protobuf.GeneratedMes
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * URN of trust registry for governance framework
+     * </pre>
+     *
      * <code>string trust_registry = 3;</code>
      *
      * @param value The trustRegistry to set.
@@ -803,6 +891,12 @@ public final class AddFrameworkResponse extends com.google.protobuf.GeneratedMes
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * URN of trust registry for governance framework
+     * </pre>
+     *
      * <code>string trust_registry = 3;</code>
      *
      * @return This builder for chaining.
@@ -814,6 +908,12 @@ public final class AddFrameworkResponse extends com.google.protobuf.GeneratedMes
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * URN of trust registry for governance framework
+     * </pre>
+     *
      * <code>string trust_registry = 3;</code>
      *
      * @param value The bytes for trustRegistry to set.

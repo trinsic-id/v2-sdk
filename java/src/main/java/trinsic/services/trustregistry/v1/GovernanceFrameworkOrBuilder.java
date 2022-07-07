@@ -9,12 +9,24 @@ public interface GovernanceFrameworkOrBuilder
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
+   * <pre>
+   * URI of governance framework organization
+   * </pre>
+   *
    * <code>string governance_framework_uri = 1;</code>
    *
    * @return The governanceFrameworkUri.
    */
   java.lang.String getGovernanceFrameworkUri();
   /**
+   *
+   *
+   * <pre>
+   * URI of governance framework organization
+   * </pre>
+   *
    * <code>string governance_framework_uri = 1;</code>
    *
    * @return The bytes for governanceFrameworkUri.
@@ -22,12 +34,24 @@ public interface GovernanceFrameworkOrBuilder
   com.google.protobuf.ByteString getGovernanceFrameworkUriBytes();
 
   /**
+   *
+   *
+   * <pre>
+   * URI of trust registry associated with governance framework
+   * </pre>
+   *
    * <code>string trust_registry_uri = 2;</code>
    *
    * @return The trustRegistryUri.
    */
   java.lang.String getTrustRegistryUri();
   /**
+   *
+   *
+   * <pre>
+   * URI of trust registry associated with governance framework
+   * </pre>
+   *
    * <code>string trust_registry_uri = 2;</code>
    *
    * @return The bytes for trustRegistryUri.
@@ -35,12 +59,24 @@ public interface GovernanceFrameworkOrBuilder
   com.google.protobuf.ByteString getTrustRegistryUriBytes();
 
   /**
+   *
+   *
+   * <pre>
+   * Description of governance framework
+   * </pre>
+   *
    * <code>string description = 3;</code>
    *
    * @return The description.
    */
   java.lang.String getDescription();
   /**
+   *
+   *
+   * <pre>
+   * Description of governance framework
+   * </pre>
+   *
    * <code>string description = 3;</code>
    *
    * @return The bytes for description.

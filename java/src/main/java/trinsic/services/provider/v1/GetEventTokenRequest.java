@@ -7,7 +7,7 @@ package trinsic.services.provider.v1;
  *
  *
  * <pre>
- * generates an events token bound to the provided ed25519 pk
+ * Generates an events token bound to the provided ed25519 public key.
  * </pre>
  *
  * Protobuf type {@code services.provider.v1.GetEventTokenRequest}
@@ -102,7 +102,7 @@ public final class GetEventTokenRequest extends com.google.protobuf.GeneratedMes
    *
    *
    * <pre>
-   *
+   * Raw public key to generate event token for
    * </pre>
    *
    * <code>bytes pk = 1;</code>
@@ -277,7 +277,7 @@ public final class GetEventTokenRequest extends com.google.protobuf.GeneratedMes
    *
    *
    * <pre>
-   * generates an events token bound to the provided ed25519 pk
+   * Generates an events token bound to the provided ed25519 public key.
    * </pre>
    *
    * Protobuf type {@code services.provider.v1.GetEventTokenRequest}
@@ -436,7 +436,7 @@ public final class GetEventTokenRequest extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     *
+     * Raw public key to generate event token for
      * </pre>
      *
      * <code>bytes pk = 1;</code>
@@ -451,7 +451,7 @@ public final class GetEventTokenRequest extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     *
+     * Raw public key to generate event token for
      * </pre>
      *
      * <code>bytes pk = 1;</code>
@@ -472,7 +472,7 @@ public final class GetEventTokenRequest extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     *
+     * Raw public key to generate event token for
      * </pre>
      *
      * <code>bytes pk = 1;</code>

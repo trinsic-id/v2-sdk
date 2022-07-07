@@ -3,7 +3,15 @@
 
 package trinsic.services.trustregistry.v1;
 
-/** Protobuf type {@code services.trustregistry.v1.GetMembershipStatusResponse} */
+/**
+ *
+ *
+ * <pre>
+ * Response to `GetMembershipStatusRequest`
+ * </pre>
+ *
+ * Protobuf type {@code services.trustregistry.v1.GetMembershipStatusResponse}
+ */
 public final class GetMembershipStatusResponse extends com.google.protobuf.GeneratedMessageV3
     implements
     // @@protoc_insertion_point(message_implements:services.trustregistry.v1.GetMembershipStatusResponse)
@@ -93,6 +101,12 @@ public final class GetMembershipStatusResponse extends com.google.protobuf.Gener
   public static final int STATUS_FIELD_NUMBER = 1;
   private int status_;
   /**
+   *
+   *
+   * <pre>
+   * Status of member for given credential schema
+   * </pre>
+   *
    * <code>.services.trustregistry.v1.RegistrationStatus status = 1;</code>
    *
    * @return The enum numeric value on the wire for status.
@@ -102,6 +116,12 @@ public final class GetMembershipStatusResponse extends com.google.protobuf.Gener
     return status_;
   }
   /**
+   *
+   *
+   * <pre>
+   * Status of member for given credential schema
+   * </pre>
+   *
    * <code>.services.trustregistry.v1.RegistrationStatus status = 1;</code>
    *
    * @return The status.
@@ -276,7 +296,15 @@ public final class GetMembershipStatusResponse extends com.google.protobuf.Gener
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code services.trustregistry.v1.GetMembershipStatusResponse} */
+  /**
+   *
+   *
+   * <pre>
+   * Response to `GetMembershipStatusRequest`
+   * </pre>
+   *
+   * Protobuf type {@code services.trustregistry.v1.GetMembershipStatusResponse}
+   */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
       // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.GetMembershipStatusResponse)
@@ -431,6 +459,12 @@ public final class GetMembershipStatusResponse extends com.google.protobuf.Gener
 
     private int status_ = 0;
     /**
+     *
+     *
+     * <pre>
+     * Status of member for given credential schema
+     * </pre>
+     *
      * <code>.services.trustregistry.v1.RegistrationStatus status = 1;</code>
      *
      * @return The enum numeric value on the wire for status.
@@ -440,6 +474,12 @@ public final class GetMembershipStatusResponse extends com.google.protobuf.Gener
       return status_;
     }
     /**
+     *
+     *
+     * <pre>
+     * Status of member for given credential schema
+     * </pre>
+     *
      * <code>.services.trustregistry.v1.RegistrationStatus status = 1;</code>
      *
      * @param value The enum numeric value on the wire for status to set.
@@ -452,6 +492,12 @@ public final class GetMembershipStatusResponse extends com.google.protobuf.Gener
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * Status of member for given credential schema
+     * </pre>
+     *
      * <code>.services.trustregistry.v1.RegistrationStatus status = 1;</code>
      *
      * @return The status.
@@ -466,6 +512,12 @@ public final class GetMembershipStatusResponse extends com.google.protobuf.Gener
           : result;
     }
     /**
+     *
+     *
+     * <pre>
+     * Status of member for given credential schema
+     * </pre>
+     *
      * <code>.services.trustregistry.v1.RegistrationStatus status = 1;</code>
      *
      * @param value The status to set.
@@ -481,6 +533,12 @@ public final class GetMembershipStatusResponse extends com.google.protobuf.Gener
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * Status of member for given credential schema
+     * </pre>
+     *
      * <code>.services.trustregistry.v1.RegistrationStatus status = 1;</code>
      *
      * @return This builder for chaining.

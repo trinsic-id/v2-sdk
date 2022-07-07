@@ -3,7 +3,15 @@
 
 package trinsic.services.account.v1;
 
-/** Protobuf type {@code services.account.v1.LoginRequest} */
+/**
+ *
+ *
+ * <pre>
+ * Request to begin login flow
+ * </pre>
+ *
+ * Protobuf type {@code services.account.v1.LoginRequest}
+ */
 public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
     implements
     // @@protoc_insertion_point(message_implements:services.account.v1.LoginRequest)
@@ -112,7 +120,7 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Email account to associate with the login request
+   * Email address of account. If unspecified, an anonymous account will be created.
    * </pre>
    *
    * <code>string email = 1 [(.services.options.optional) = true];</code>
@@ -135,7 +143,7 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Email account to associate with the login request
+   * Email address of account. If unspecified, an anonymous account will be created.
    * </pre>
    *
    * <code>string email = 1 [(.services.options.optional) = true];</code>
@@ -211,7 +219,7 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
    *
    * <pre>
    * ID of Ecosystem to sign into.
-   * Ignored if `invitation_code` is passed
+   * Ignored if `invitation_code` is passed.
    * </pre>
    *
    * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
@@ -235,7 +243,7 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
    *
    * <pre>
    * ID of Ecosystem to sign into.
-   * Ignored if `invitation_code` is passed
+   * Ignored if `invitation_code` is passed.
    * </pre>
    *
    * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
@@ -431,7 +439,15 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code services.account.v1.LoginRequest} */
+  /**
+   *
+   *
+   * <pre>
+   * Request to begin login flow
+   * </pre>
+   *
+   * Protobuf type {@code services.account.v1.LoginRequest}
+   */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
       // @@protoc_insertion_point(builder_implements:services.account.v1.LoginRequest)
@@ -599,7 +615,7 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Email account to associate with the login request
+     * Email address of account. If unspecified, an anonymous account will be created.
      * </pre>
      *
      * <code>string email = 1 [(.services.options.optional) = true];</code>
@@ -621,7 +637,7 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Email account to associate with the login request
+     * Email address of account. If unspecified, an anonymous account will be created.
      * </pre>
      *
      * <code>string email = 1 [(.services.options.optional) = true];</code>
@@ -643,7 +659,7 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Email account to associate with the login request
+     * Email address of account. If unspecified, an anonymous account will be created.
      * </pre>
      *
      * <code>string email = 1 [(.services.options.optional) = true];</code>
@@ -664,7 +680,7 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Email account to associate with the login request
+     * Email address of account. If unspecified, an anonymous account will be created.
      * </pre>
      *
      * <code>string email = 1 [(.services.options.optional) = true];</code>
@@ -681,7 +697,7 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Email account to associate with the login request
+     * Email address of account. If unspecified, an anonymous account will be created.
      * </pre>
      *
      * <code>string email = 1 [(.services.options.optional) = true];</code>
@@ -812,7 +828,7 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
      *
      * <pre>
      * ID of Ecosystem to sign into.
-     * Ignored if `invitation_code` is passed
+     * Ignored if `invitation_code` is passed.
      * </pre>
      *
      * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
@@ -835,7 +851,7 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
      *
      * <pre>
      * ID of Ecosystem to sign into.
-     * Ignored if `invitation_code` is passed
+     * Ignored if `invitation_code` is passed.
      * </pre>
      *
      * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
@@ -858,7 +874,7 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
      *
      * <pre>
      * ID of Ecosystem to sign into.
-     * Ignored if `invitation_code` is passed
+     * Ignored if `invitation_code` is passed.
      * </pre>
      *
      * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
@@ -880,7 +896,7 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
      *
      * <pre>
      * ID of Ecosystem to sign into.
-     * Ignored if `invitation_code` is passed
+     * Ignored if `invitation_code` is passed.
      * </pre>
      *
      * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
@@ -898,7 +914,7 @@ public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
      *
      * <pre>
      * ID of Ecosystem to sign into.
-     * Ignored if `invitation_code` is passed
+     * Ignored if `invitation_code` is passed.
      * </pre>
      *
      * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>

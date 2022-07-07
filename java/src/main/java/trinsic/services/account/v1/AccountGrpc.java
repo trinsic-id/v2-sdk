@@ -370,6 +370,7 @@ public final class AccountGrpc {
      * Sign in to an already existing account
      * </pre>
      */
+    @java.lang.Deprecated
     public void signIn(
         trinsic.services.account.v1.SignInRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.account.v1.SignInResponse> responseObserver) {
@@ -380,7 +381,7 @@ public final class AccountGrpc {
      *
      *
      * <pre>
-     * Login to account. If account doesn't exist, new will be created
+     * Begin login flow for specified account, creating one if it does not already exist
      * </pre>
      */
     public void login(
@@ -393,7 +394,7 @@ public final class AccountGrpc {
      *
      *
      * <pre>
-     * Confirm login step by responding to the challenge request
+     * Finalize login flow with two-factor confirmation code
      * </pre>
      */
     public void loginConfirm(
@@ -534,6 +535,7 @@ public final class AccountGrpc {
      * Sign in to an already existing account
      * </pre>
      */
+    @java.lang.Deprecated
     public void signIn(
         trinsic.services.account.v1.SignInRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.account.v1.SignInResponse> responseObserver) {
@@ -545,7 +547,7 @@ public final class AccountGrpc {
      *
      *
      * <pre>
-     * Login to account. If account doesn't exist, new will be created
+     * Begin login flow for specified account, creating one if it does not already exist
      * </pre>
      */
     public void login(
@@ -559,7 +561,7 @@ public final class AccountGrpc {
      *
      *
      * <pre>
-     * Confirm login step by responding to the challenge request
+     * Finalize login flow with two-factor confirmation code
      * </pre>
      */
     public void loginConfirm(
@@ -658,6 +660,7 @@ public final class AccountGrpc {
      * Sign in to an already existing account
      * </pre>
      */
+    @java.lang.Deprecated
     public trinsic.services.account.v1.SignInResponse signIn(
         trinsic.services.account.v1.SignInRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -668,7 +671,7 @@ public final class AccountGrpc {
      *
      *
      * <pre>
-     * Login to account. If account doesn't exist, new will be created
+     * Begin login flow for specified account, creating one if it does not already exist
      * </pre>
      */
     public trinsic.services.account.v1.LoginResponse login(
@@ -681,7 +684,7 @@ public final class AccountGrpc {
      *
      *
      * <pre>
-     * Confirm login step by responding to the challenge request
+     * Finalize login flow with two-factor confirmation code
      * </pre>
      */
     public trinsic.services.account.v1.LoginConfirmResponse loginConfirm(
@@ -762,6 +765,7 @@ public final class AccountGrpc {
      * Sign in to an already existing account
      * </pre>
      */
+    @java.lang.Deprecated
     public com.google.common.util.concurrent.ListenableFuture<
             trinsic.services.account.v1.SignInResponse>
         signIn(trinsic.services.account.v1.SignInRequest request) {
@@ -773,7 +777,7 @@ public final class AccountGrpc {
      *
      *
      * <pre>
-     * Login to account. If account doesn't exist, new will be created
+     * Begin login flow for specified account, creating one if it does not already exist
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
@@ -787,7 +791,7 @@ public final class AccountGrpc {
      *
      *
      * <pre>
-     * Confirm login step by responding to the challenge request
+     * Finalize login flow with two-factor confirmation code
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<

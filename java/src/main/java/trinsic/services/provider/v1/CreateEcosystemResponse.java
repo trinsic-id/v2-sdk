@@ -3,7 +3,15 @@
 
 package trinsic.services.provider.v1;
 
-/** Protobuf type {@code services.provider.v1.CreateEcosystemResponse} */
+/**
+ *
+ *
+ * <pre>
+ * Response to `CreateEcosystemRequest`
+ * </pre>
+ *
+ * Protobuf type {@code services.provider.v1.CreateEcosystemResponse}
+ */
 public final class CreateEcosystemResponse extends com.google.protobuf.GeneratedMessageV3
     implements
     // @@protoc_insertion_point(message_implements:services.provider.v1.CreateEcosystemResponse)
@@ -225,7 +233,6 @@ public final class CreateEcosystemResponse extends com.google.protobuf.Generated
    *
    * <pre>
    * Indicates if confirmation of account is required.
-   * This setting is configured globally by the server administrator.
    * </pre>
    *
    * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
@@ -241,7 +248,6 @@ public final class CreateEcosystemResponse extends com.google.protobuf.Generated
    *
    * <pre>
    * Indicates if confirmation of account is required.
-   * This setting is configured globally by the server administrator.
    * </pre>
    *
    * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
@@ -443,7 +449,15 @@ public final class CreateEcosystemResponse extends com.google.protobuf.Generated
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code services.provider.v1.CreateEcosystemResponse} */
+  /**
+   *
+   *
+   * <pre>
+   * Response to `CreateEcosystemRequest`
+   * </pre>
+   *
+   * Protobuf type {@code services.provider.v1.CreateEcosystemResponse}
+   */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
       // @@protoc_insertion_point(builder_implements:services.provider.v1.CreateEcosystemResponse)
@@ -997,7 +1011,6 @@ public final class CreateEcosystemResponse extends com.google.protobuf.Generated
      *
      * <pre>
      * Indicates if confirmation of account is required.
-     * This setting is configured globally by the server administrator.
      * </pre>
      *
      * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
@@ -1013,7 +1026,6 @@ public final class CreateEcosystemResponse extends com.google.protobuf.Generated
      *
      * <pre>
      * Indicates if confirmation of account is required.
-     * This setting is configured globally by the server administrator.
      * </pre>
      *
      * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
@@ -1032,7 +1044,6 @@ public final class CreateEcosystemResponse extends com.google.protobuf.Generated
      *
      * <pre>
      * Indicates if confirmation of account is required.
-     * This setting is configured globally by the server administrator.
      * </pre>
      *
      * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
@@ -1051,7 +1062,6 @@ public final class CreateEcosystemResponse extends com.google.protobuf.Generated
      *
      * <pre>
      * Indicates if confirmation of account is required.
-     * This setting is configured globally by the server administrator.
      * </pre>
      *
      * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
@@ -1073,7 +1083,6 @@ public final class CreateEcosystemResponse extends com.google.protobuf.Generated
      *
      * <pre>
      * Indicates if confirmation of account is required.
-     * This setting is configured globally by the server administrator.
      * </pre>
      *
      * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>

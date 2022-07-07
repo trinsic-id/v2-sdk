@@ -3,13 +3,12 @@ package trinsic.services;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.InvalidProtocolBufferException;
+import java.util.Base64;
+import java.util.concurrent.Executors;
 import trinsic.okapi.DidException;
 import trinsic.sdk.options.v1.Options;
 import trinsic.services.provider.v1.*;
 import trinsic.services.provider.v1.ProviderGrpc;
-
-import java.util.Base64;
-import java.util.concurrent.Executors;
 
 public class ProviderService extends ServiceBase {
   public ProviderGrpc.ProviderFutureStub stub;
@@ -25,19 +24,20 @@ public class ProviderService extends ServiceBase {
 
   public ListenableFuture<CreateEcosystemResponse> createEcosystem(CreateEcosystemRequest request)
       throws InvalidProtocolBufferException, DidException {
-      ListenableFuture<CreateEcosystemResponse> response;
+    ListenableFuture<CreateEcosystemResponse> response;
     if (request.getName().isBlank() && request.getDetails().getEmail().isBlank()) {
       response = stub.createEcosystem(request);
     } else {
       response = withMetadata(stub, request).createEcosystem(request);
     }
-    return Futures.transform(response,
+    return Futures.transform(
+        response,
         input -> {
-            if (!input.hasProfile() || input.getProfile().getProtection().getEnabled()) return null;
+          if (!input.hasProfile() || input.getProfile().getProtection().getEnabled()) return null;
 
-            var token = Base64.getUrlEncoder().encodeToString(input.getProfile().toByteArray());
-            this.getOptionsBuilder().setAuthToken(token);
-            return input;
+          var token = Base64.getUrlEncoder().encodeToString(input.getProfile().toByteArray());
+          this.getOptionsBuilder().setAuthToken(token);
+          return input;
         },
         Executors.newSingleThreadExecutor());
   }

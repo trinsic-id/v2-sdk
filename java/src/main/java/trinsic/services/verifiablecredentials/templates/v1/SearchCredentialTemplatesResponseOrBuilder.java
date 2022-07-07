@@ -50,8 +50,6 @@ public interface SearchCredentialTemplatesResponseOrBuilder
    *
    *
    * <pre>
-   * Count of items in `items_json`
-   * int32 count = 3; unpopulated and unused
    * Token to fetch next set of results via `SearchCredentialTemplatesRequest`
    * </pre>
    *
@@ -64,8 +62,6 @@ public interface SearchCredentialTemplatesResponseOrBuilder
    *
    *
    * <pre>
-   * Count of items in `items_json`
-   * int32 count = 3; unpopulated and unused
    * Token to fetch next set of results via `SearchCredentialTemplatesRequest`
    * </pre>
    *

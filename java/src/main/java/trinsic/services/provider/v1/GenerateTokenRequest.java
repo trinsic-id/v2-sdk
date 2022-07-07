@@ -3,7 +3,15 @@
 
 package trinsic.services.provider.v1;
 
-/** Protobuf type {@code services.provider.v1.GenerateTokenRequest} */
+/**
+ *
+ *
+ * <pre>
+ * Request to generate an authentication token for the current account
+ * </pre>
+ *
+ * Protobuf type {@code services.provider.v1.GenerateTokenRequest}
+ */
 public final class GenerateTokenRequest extends com.google.protobuf.GeneratedMessageV3
     implements
     // @@protoc_insertion_point(message_implements:services.provider.v1.GenerateTokenRequest)
@@ -298,7 +306,15 @@ public final class GenerateTokenRequest extends com.google.protobuf.GeneratedMes
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code services.provider.v1.GenerateTokenRequest} */
+  /**
+   *
+   *
+   * <pre>
+   * Request to generate an authentication token for the current account
+   * </pre>
+   *
+   * Protobuf type {@code services.provider.v1.GenerateTokenRequest}
+   */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
       // @@protoc_insertion_point(builder_implements:services.provider.v1.GenerateTokenRequest)

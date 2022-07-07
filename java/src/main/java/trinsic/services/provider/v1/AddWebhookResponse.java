@@ -111,7 +111,7 @@ public final class AddWebhookResponse extends com.google.protobuf.GeneratedMessa
    *
    *
    * <pre>
-   * Ecosystem with new webhook
+   * Ecosystem data with new webhook
    * </pre>
    *
    * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
@@ -126,7 +126,7 @@ public final class AddWebhookResponse extends com.google.protobuf.GeneratedMessa
    *
    *
    * <pre>
-   * Ecosystem with new webhook
+   * Ecosystem data with new webhook
    * </pre>
    *
    * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
@@ -143,7 +143,7 @@ public final class AddWebhookResponse extends com.google.protobuf.GeneratedMessa
    *
    *
    * <pre>
-   * Ecosystem with new webhook
+   * Ecosystem data with new webhook
    * </pre>
    *
    * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
@@ -492,7 +492,7 @@ public final class AddWebhookResponse extends com.google.protobuf.GeneratedMessa
      *
      *
      * <pre>
-     * Ecosystem with new webhook
+     * Ecosystem data with new webhook
      * </pre>
      *
      * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
@@ -506,7 +506,7 @@ public final class AddWebhookResponse extends com.google.protobuf.GeneratedMessa
      *
      *
      * <pre>
-     * Ecosystem with new webhook
+     * Ecosystem data with new webhook
      * </pre>
      *
      * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
@@ -526,7 +526,7 @@ public final class AddWebhookResponse extends com.google.protobuf.GeneratedMessa
      *
      *
      * <pre>
-     * Ecosystem with new webhook
+     * Ecosystem data with new webhook
      * </pre>
      *
      * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
@@ -548,7 +548,7 @@ public final class AddWebhookResponse extends com.google.protobuf.GeneratedMessa
      *
      *
      * <pre>
-     * Ecosystem with new webhook
+     * Ecosystem data with new webhook
      * </pre>
      *
      * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
@@ -567,7 +567,7 @@ public final class AddWebhookResponse extends com.google.protobuf.GeneratedMessa
      *
      *
      * <pre>
-     * Ecosystem with new webhook
+     * Ecosystem data with new webhook
      * </pre>
      *
      * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
@@ -593,7 +593,7 @@ public final class AddWebhookResponse extends com.google.protobuf.GeneratedMessa
      *
      *
      * <pre>
-     * Ecosystem with new webhook
+     * Ecosystem data with new webhook
      * </pre>
      *
      * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
@@ -613,7 +613,7 @@ public final class AddWebhookResponse extends com.google.protobuf.GeneratedMessa
      *
      *
      * <pre>
-     * Ecosystem with new webhook
+     * Ecosystem data with new webhook
      * </pre>
      *
      * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
@@ -627,7 +627,7 @@ public final class AddWebhookResponse extends com.google.protobuf.GeneratedMessa
      *
      *
      * <pre>
-     * Ecosystem with new webhook
+     * Ecosystem data with new webhook
      * </pre>
      *
      * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
@@ -645,7 +645,7 @@ public final class AddWebhookResponse extends com.google.protobuf.GeneratedMessa
      *
      *
      * <pre>
-     * Ecosystem with new webhook
+     * Ecosystem data with new webhook
      * </pre>
      *
      * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>

@@ -12,7 +12,7 @@ public interface UpdateStatusRequestOrBuilder
    *
    *
    * <pre>
-   * Credential Status ID to update
+   * Credential Status ID to update. This is not the same as the credential's ID.
    * </pre>
    *
    * <code>string credential_status_id = 1;</code>
@@ -24,7 +24,7 @@ public interface UpdateStatusRequestOrBuilder
    *
    *
    * <pre>
-   * Credential Status ID to update
+   * Credential Status ID to update. This is not the same as the credential's ID.
    * </pre>
    *
    * <code>string credential_status_id = 1;</code>

@@ -3,7 +3,15 @@
 
 package trinsic.services.trustregistry.v1;
 
-/** Protobuf type {@code services.trustregistry.v1.UnregisterMemberResponse} */
+/**
+ *
+ *
+ * <pre>
+ * Response to `UnregisterMemberRequest`
+ * </pre>
+ *
+ * Protobuf type {@code services.trustregistry.v1.UnregisterMemberResponse}
+ */
 public final class UnregisterMemberResponse extends com.google.protobuf.GeneratedMessageV3
     implements
     // @@protoc_insertion_point(message_implements:services.trustregistry.v1.UnregisterMemberResponse)
@@ -232,7 +240,15 @@ public final class UnregisterMemberResponse extends com.google.protobuf.Generate
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code services.trustregistry.v1.UnregisterMemberResponse} */
+  /**
+   *
+   *
+   * <pre>
+   * Response to `UnregisterMemberRequest`
+   * </pre>
+   *
+   * Protobuf type {@code services.trustregistry.v1.UnregisterMemberResponse}
+   */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
       // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.UnregisterMemberResponse)

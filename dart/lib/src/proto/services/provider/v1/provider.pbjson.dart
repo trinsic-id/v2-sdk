@@ -21,21 +21,6 @@ const ParticipantType$json = const {
 /// Descriptor for `ParticipantType`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List participantTypeDescriptor = $convert.base64Decode(
     'Cg9QYXJ0aWNpcGFudFR5cGUSHwobcGFydGljaXBhbnRfdHlwZV9pbmRpdmlkdWFsEAASIQodcGFydGljaXBhbnRfdHlwZV9vcmdhbml6YXRpb24QAQ==');
-@$core.Deprecated('Use inviteDescriptor instead')
-const Invite$json = const {
-  '1': 'Invite',
-  '2': const [
-    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
-    const {'1': 'code', '3': 2, '4': 1, '5': 9, '10': 'code'},
-    const {'1': 'created', '3': 3, '4': 1, '5': 9, '10': 'created'},
-    const {'1': 'accepted', '3': 4, '4': 1, '5': 9, '10': 'accepted'},
-    const {'1': 'expires', '3': 5, '4': 1, '5': 9, '10': 'expires'},
-  ],
-};
-
-/// Descriptor for `Invite`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List inviteDescriptor = $convert.base64Decode(
-    'CgZJbnZpdGUSDgoCaWQYASABKAlSAmlkEhIKBGNvZGUYAiABKAlSBGNvZGUSGAoHY3JlYXRlZBgDIAEoCVIHY3JlYXRlZBIaCghhY2NlcHRlZBgEIAEoCVIIYWNjZXB0ZWQSGAoHZXhwaXJlcxgFIAEoCVIHZXhwaXJlcw==');
 @$core.Deprecated('Use inviteRequestDescriptor instead')
 const InviteRequest$json = const {
   '1': 'InviteRequest',
@@ -211,7 +196,7 @@ final $typed_data.Uint8List grantDescriptor = $convert.base64Decode(
 const CreateEcosystemRequest$json = const {
   '1': 'CreateEcosystemRequest',
   '2': const [
-    const {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
+    const {'1': 'name', '3': 1, '4': 1, '5': 9, '8': const {}, '10': 'name'},
     const {
       '1': 'description',
       '3': 2,
@@ -235,7 +220,7 @@ const CreateEcosystemRequest$json = const {
 /// Descriptor for `CreateEcosystemRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List createEcosystemRequestDescriptor =
     $convert.base64Decode(
-        'ChZDcmVhdGVFY29zeXN0ZW1SZXF1ZXN0EhIKBG5hbWUYASABKAlSBG5hbWUSJgoLZGVzY3JpcHRpb24YAiABKAlCBICmHQFSC2Rlc2NyaXB0aW9uEhYKA3VyaRgDIAEoCUIEgKYdAVIDdXJpEj0KB2RldGFpbHMYBCABKAsyIy5zZXJ2aWNlcy5hY2NvdW50LnYxLkFjY291bnREZXRhaWxzUgdkZXRhaWxz');
+        'ChZDcmVhdGVFY29zeXN0ZW1SZXF1ZXN0EhgKBG5hbWUYASABKAlCBICmHQFSBG5hbWUSJgoLZGVzY3JpcHRpb24YAiABKAlCBICmHQFSC2Rlc2NyaXB0aW9uEhYKA3VyaRgDIAEoCUIEgKYdAVIDdXJpEj0KB2RldGFpbHMYBCABKAsyIy5zZXJ2aWNlcy5hY2NvdW50LnYxLkFjY291bnREZXRhaWxzUgdkZXRhaWxz');
 @$core.Deprecated('Use createEcosystemResponseDescriptor instead')
 const CreateEcosystemResponse$json = const {
   '1': 'CreateEcosystemResponse',

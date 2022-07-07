@@ -3,7 +3,15 @@
 
 package trinsic.services.trustregistry.v1;
 
-/** Protobuf type {@code services.trustregistry.v1.SearchRegistryRequest} */
+/**
+ *
+ *
+ * <pre>
+ * Request to search all governance frameworks within ecosystem
+ * </pre>
+ *
+ * Protobuf type {@code services.trustregistry.v1.SearchRegistryRequest}
+ */
 public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMessageV3
     implements
     // @@protoc_insertion_point(message_implements:services.trustregistry.v1.SearchRegistryRequest)
@@ -104,7 +112,7 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * SELECT c from c where c.type == 'GovernanceFramework'
+   * SQL query to execute against frameworks. Example: `SELECT c from c where c.type == 'GovernanceFramework'`
    * </pre>
    *
    * <code>string query = 1;</code>
@@ -127,7 +135,7 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * SELECT c from c where c.type == 'GovernanceFramework'
+   * SQL query to execute against frameworks. Example: `SELECT c from c where c.type == 'GovernanceFramework'`
    * </pre>
    *
    * <code>string query = 1;</code>
@@ -150,7 +158,13 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
   public static final int CONTINUATION_TOKEN_FIELD_NUMBER = 2;
   private volatile java.lang.Object continuationToken_;
   /**
-   * <code>string continuation_token = 2;</code>
+   *
+   *
+   * <pre>
+   * Token to fetch next set of results, from previous `SearchRegistryResponse`
+   * </pre>
+   *
+   * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
    *
    * @return The continuationToken.
    */
@@ -167,7 +181,13 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
     }
   }
   /**
-   * <code>string continuation_token = 2;</code>
+   *
+   *
+   * <pre>
+   * Token to fetch next set of results, from previous `SearchRegistryResponse`
+   * </pre>
+   *
+   * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
    *
    * @return The bytes for continuationToken.
    */
@@ -353,7 +373,15 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code services.trustregistry.v1.SearchRegistryRequest} */
+  /**
+   *
+   *
+   * <pre>
+   * Request to search all governance frameworks within ecosystem
+   * </pre>
+   *
+   * Protobuf type {@code services.trustregistry.v1.SearchRegistryRequest}
+   */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
       // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.SearchRegistryRequest)
@@ -516,7 +544,7 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * SELECT c from c where c.type == 'GovernanceFramework'
+     * SQL query to execute against frameworks. Example: `SELECT c from c where c.type == 'GovernanceFramework'`
      * </pre>
      *
      * <code>string query = 1;</code>
@@ -538,7 +566,7 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * SELECT c from c where c.type == 'GovernanceFramework'
+     * SQL query to execute against frameworks. Example: `SELECT c from c where c.type == 'GovernanceFramework'`
      * </pre>
      *
      * <code>string query = 1;</code>
@@ -560,7 +588,7 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * SELECT c from c where c.type == 'GovernanceFramework'
+     * SQL query to execute against frameworks. Example: `SELECT c from c where c.type == 'GovernanceFramework'`
      * </pre>
      *
      * <code>string query = 1;</code>
@@ -581,7 +609,7 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * SELECT c from c where c.type == 'GovernanceFramework'
+     * SQL query to execute against frameworks. Example: `SELECT c from c where c.type == 'GovernanceFramework'`
      * </pre>
      *
      * <code>string query = 1;</code>
@@ -598,7 +626,7 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * SELECT c from c where c.type == 'GovernanceFramework'
+     * SQL query to execute against frameworks. Example: `SELECT c from c where c.type == 'GovernanceFramework'`
      * </pre>
      *
      * <code>string query = 1;</code>
@@ -619,7 +647,13 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
 
     private java.lang.Object continuationToken_ = "";
     /**
-     * <code>string continuation_token = 2;</code>
+     *
+     *
+     * <pre>
+     * Token to fetch next set of results, from previous `SearchRegistryResponse`
+     * </pre>
+     *
+     * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
      *
      * @return The continuationToken.
      */
@@ -635,7 +669,13 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
       }
     }
     /**
-     * <code>string continuation_token = 2;</code>
+     *
+     *
+     * <pre>
+     * Token to fetch next set of results, from previous `SearchRegistryResponse`
+     * </pre>
+     *
+     * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
      *
      * @return The bytes for continuationToken.
      */
@@ -651,7 +691,13 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
       }
     }
     /**
-     * <code>string continuation_token = 2;</code>
+     *
+     *
+     * <pre>
+     * Token to fetch next set of results, from previous `SearchRegistryResponse`
+     * </pre>
+     *
+     * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
      *
      * @param value The continuationToken to set.
      * @return This builder for chaining.
@@ -666,7 +712,13 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
       return this;
     }
     /**
-     * <code>string continuation_token = 2;</code>
+     *
+     *
+     * <pre>
+     * Token to fetch next set of results, from previous `SearchRegistryResponse`
+     * </pre>
+     *
+     * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
      *
      * @return This builder for chaining.
      */
@@ -677,7 +729,13 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
       return this;
     }
     /**
-     * <code>string continuation_token = 2;</code>
+     *
+     *
+     * <pre>
+     * Token to fetch next set of results, from previous `SearchRegistryResponse`
+     * </pre>
+     *
+     * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
      *
      * @param value The bytes for continuationToken to set.
      * @return This builder for chaining.

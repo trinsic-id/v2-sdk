@@ -448,7 +448,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
    *
    * <pre>
    * The public DID associated with this account.
-   * This DID is used as "issuer" when signing verifiable credentials
+   * This DID is used as the `issuer` when signing verifiable credentials
    * </pre>
    *
    * <code>string public_did = 6;</code>
@@ -472,7 +472,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
    *
    * <pre>
    * The public DID associated with this account.
-   * This DID is used as "issuer" when signing verifiable credentials
+   * This DID is used as the `issuer` when signing verifiable credentials
    * </pre>
    *
    * <code>string public_did = 6;</code>
@@ -498,7 +498,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
    *
    *
    * <pre>
-   * Webhook events if any this wallet has authorized
+   * Webhook events, if any, this wallet has authorized
    * </pre>
    *
    * <code>repeated string authorized_webhooks = 7;</code>
@@ -512,7 +512,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
    *
    *
    * <pre>
-   * Webhook events if any this wallet has authorized
+   * Webhook events, if any, this wallet has authorized
    * </pre>
    *
    * <code>repeated string authorized_webhooks = 7;</code>
@@ -526,7 +526,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
    *
    *
    * <pre>
-   * Webhook events if any this wallet has authorized
+   * Webhook events, if any, this wallet has authorized
    * </pre>
    *
    * <code>repeated string authorized_webhooks = 7;</code>
@@ -541,7 +541,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
    *
    *
    * <pre>
-   * Webhook events if any this wallet has authorized
+   * Webhook events, if any, this wallet has authorized
    * </pre>
    *
    * <code>repeated string authorized_webhooks = 7;</code>
@@ -1942,7 +1942,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      * <pre>
      * The public DID associated with this account.
-     * This DID is used as "issuer" when signing verifiable credentials
+     * This DID is used as the `issuer` when signing verifiable credentials
      * </pre>
      *
      * <code>string public_did = 6;</code>
@@ -1965,7 +1965,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      * <pre>
      * The public DID associated with this account.
-     * This DID is used as "issuer" when signing verifiable credentials
+     * This DID is used as the `issuer` when signing verifiable credentials
      * </pre>
      *
      * <code>string public_did = 6;</code>
@@ -1988,7 +1988,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      * <pre>
      * The public DID associated with this account.
-     * This DID is used as "issuer" when signing verifiable credentials
+     * This DID is used as the `issuer` when signing verifiable credentials
      * </pre>
      *
      * <code>string public_did = 6;</code>
@@ -2010,7 +2010,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      * <pre>
      * The public DID associated with this account.
-     * This DID is used as "issuer" when signing verifiable credentials
+     * This DID is used as the `issuer` when signing verifiable credentials
      * </pre>
      *
      * <code>string public_did = 6;</code>
@@ -2028,7 +2028,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      * <pre>
      * The public DID associated with this account.
-     * This DID is used as "issuer" when signing verifiable credentials
+     * This DID is used as the `issuer` when signing verifiable credentials
      * </pre>
      *
      * <code>string public_did = 6;</code>
@@ -2060,7 +2060,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Webhook events if any this wallet has authorized
+     * Webhook events, if any, this wallet has authorized
      * </pre>
      *
      * <code>repeated string authorized_webhooks = 7;</code>
@@ -2074,7 +2074,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Webhook events if any this wallet has authorized
+     * Webhook events, if any, this wallet has authorized
      * </pre>
      *
      * <code>repeated string authorized_webhooks = 7;</code>
@@ -2088,7 +2088,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Webhook events if any this wallet has authorized
+     * Webhook events, if any, this wallet has authorized
      * </pre>
      *
      * <code>repeated string authorized_webhooks = 7;</code>
@@ -2103,7 +2103,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Webhook events if any this wallet has authorized
+     * Webhook events, if any, this wallet has authorized
      * </pre>
      *
      * <code>repeated string authorized_webhooks = 7;</code>
@@ -2118,7 +2118,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Webhook events if any this wallet has authorized
+     * Webhook events, if any, this wallet has authorized
      * </pre>
      *
      * <code>repeated string authorized_webhooks = 7;</code>
@@ -2140,7 +2140,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Webhook events if any this wallet has authorized
+     * Webhook events, if any, this wallet has authorized
      * </pre>
      *
      * <code>repeated string authorized_webhooks = 7;</code>
@@ -2161,7 +2161,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Webhook events if any this wallet has authorized
+     * Webhook events, if any, this wallet has authorized
      * </pre>
      *
      * <code>repeated string authorized_webhooks = 7;</code>
@@ -2179,7 +2179,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Webhook events if any this wallet has authorized
+     * Webhook events, if any, this wallet has authorized
      * </pre>
      *
      * <code>repeated string authorized_webhooks = 7;</code>
@@ -2196,7 +2196,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Webhook events if any this wallet has authorized
+     * Webhook events, if any, this wallet has authorized
      * </pre>
      *
      * <code>repeated string authorized_webhooks = 7;</code>

@@ -12,7 +12,7 @@ public interface EventOrBuilder
    *
    *
    * <pre>
-   * UUID for the event
+   * UUID of event
    * </pre>
    *
    * <code>string id = 1;</code>
@@ -24,7 +24,7 @@ public interface EventOrBuilder
    *
    *
    * <pre>
-   * UUID for the event
+   * UUID of event
    * </pre>
    *
    * <code>string id = 1;</code>
@@ -37,7 +37,7 @@ public interface EventOrBuilder
    *
    *
    * <pre>
-   * event type
+   * Type of event
    * </pre>
    *
    * <code>.trinsic.services.event.EventType type = 2;</code>
@@ -49,7 +49,7 @@ public interface EventOrBuilder
    *
    *
    * <pre>
-   * event type
+   * Type of event
    * </pre>
    *
    * <code>.trinsic.services.event.EventType type = 2;</code>
@@ -62,7 +62,7 @@ public interface EventOrBuilder
    *
    *
    * <pre>
-   * when the event occured
+   * Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
    * </pre>
    *
    * <code>string timestamp = 3;</code>
@@ -74,7 +74,7 @@ public interface EventOrBuilder
    *
    *
    * <pre>
-   * when the event occured
+   * Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
    * </pre>
    *
    * <code>string timestamp = 3;</code>
@@ -87,7 +87,7 @@ public interface EventOrBuilder
    *
    *
    * <pre>
-   * data payload - will be encoded proto message for the event type
+   * Event-specific payload, as an encoded protobuf message
    * </pre>
    *
    * <code>bytes data = 4;</code>

@@ -29,104 +29,214 @@ class RegistrationStatus(betterproto.Enum):
 
 @dataclass(eq=False, repr=False)
 class AddFrameworkRequest(betterproto.Message):
-    """Register new ecosystem governance framework"""
+    """
+    Request to register a new ecosystem governance framework in the current
+    ecosystem
+    """
 
     governance_framework_uri: str = betterproto.string_field(1)
+    """URI of governance framework organization"""
+
     name: str = betterproto.string_field(2)
+    """Name of governance framework organization"""
+
     description: str = betterproto.string_field(3)
+    """Description of governance framework"""
 
 
 @dataclass(eq=False, repr=False)
 class AddFrameworkResponse(betterproto.Message):
+    """Response to `AddFrameworkRequest`"""
+
     id: str = betterproto.string_field(1)
     """Unique framework identifier"""
 
     governing_authority: str = betterproto.string_field(2)
+    """DID URI of Trinsic account which created the governance framework"""
+
     trust_registry: str = betterproto.string_field(3)
+    """URN of trust registry for governance framework"""
 
 
 @dataclass(eq=False, repr=False)
 class RemoveFrameworkRequest(betterproto.Message):
+    """Request to remove a governance framework from the current ecosystem"""
+
     id: str = betterproto.string_field(1)
+    """ID of governance framework to remove"""
 
 
 @dataclass(eq=False, repr=False)
 class RemoveFrameworkResponse(betterproto.Message):
+    """Response to `RemoveFrameworkRequest`"""
+
     pass
 
 
 @dataclass(eq=False, repr=False)
 class SearchRegistryRequest(betterproto.Message):
+    """Request to search all governance frameworks within ecosystem"""
+
     query: str = betterproto.string_field(1)
+    """
+    SQL query to execute against frameworks. Example: `SELECT c from c where
+    c.type == 'GovernanceFramework'`
+    """
+
     continuation_token: str = betterproto.string_field(2)
+    """
+    Token to fetch next set of results, from previous `SearchRegistryResponse`
+    """
 
 
 @dataclass(eq=False, repr=False)
 class SearchRegistryResponse(betterproto.Message):
+    """Response to `SearchRegistryRequest`"""
+
     items_json: str = betterproto.string_field(1)
+    """JSON string containing array of resultant objects"""
+
     has_more: bool = betterproto.bool_field(2)
+    """Whether more data is available to fetch for query"""
+
     continuation_token: str = betterproto.string_field(4)
+    """Token to fetch next set of results via `SearchRegistryRequest`"""
 
 
 @dataclass(eq=False, repr=False)
 class GovernanceFramework(betterproto.Message):
+    """Ecosystem Governance Framework"""
+
     governance_framework_uri: str = betterproto.string_field(1)
+    """URI of governance framework organization"""
+
     trust_registry_uri: str = betterproto.string_field(2)
+    """URI of trust registry associated with governance framework"""
+
     description: str = betterproto.string_field(3)
+    """Description of governance framework"""
 
 
 @dataclass(eq=False, repr=False)
 class RegisterMemberRequest(betterproto.Message):
+    """
+    Request to register a member as a valid issuer of a specific credential
+    schema. Only one of `did_uri`, `wallet_id`, or `email` may be specified.
+    """
+
     did_uri: str = betterproto.string_field(1, group="member")
+    """DID URI of member to register"""
+
     wallet_id: str = betterproto.string_field(3, group="member")
+    """Trinsic Wallet ID of member to register"""
+
     email: str = betterproto.string_field(4, group="member")
+    """
+    Email address of member to register. Must be associated with an existing
+    Trinsic account.
+    """
+
     schema_uri: str = betterproto.string_field(10)
+    """URI of credential schema to register member as authorized issuer of"""
+
     valid_from_utc: int = betterproto.uint64_field(11)
+    """
+    Unix Timestamp member is valid from. Member will not be considered valid
+    before this timestamp.
+    """
+
     valid_until_utc: int = betterproto.uint64_field(12)
+    """
+    Unix Timestamp member is valid until. Member will not be considered valid
+    after this timestamp.
+    """
+
     framework_id: str = betterproto.string_field(30)
-    """the id of the governance framework"""
+    """ID of the governance framework that member is being added to"""
 
 
 @dataclass(eq=False, repr=False)
 class RegisterMemberResponse(betterproto.Message):
+    """Response to `RegisterMemberRequest`"""
+
     pass
 
 
 @dataclass(eq=False, repr=False)
 class UnregisterMemberRequest(betterproto.Message):
+    """
+    Request to unregister a member as a valid issuer of a specific credential
+    schema. Only one of `did_uri`, `wallet_id`, or `email` may be specified.
+    """
+
     did_uri: str = betterproto.string_field(1, group="member")
+    """DID URI of member to unregister"""
+
     wallet_id: str = betterproto.string_field(3, group="member")
+    """Trinsic Wallet ID of member to unregister"""
+
     email: str = betterproto.string_field(4, group="member")
+    """
+    Email address of member to unregister. Must be associated with an existing
+    Trinsic account.
+    """
+
     schema_uri: str = betterproto.string_field(10)
+    """
+    URI of credential schema to unregister member as authorized issuer of
+    """
+
     framework_id: str = betterproto.string_field(20)
+    """ID of the governance framework that member is being removed from"""
 
 
 @dataclass(eq=False, repr=False)
 class UnregisterMemberResponse(betterproto.Message):
+    """Response to `UnregisterMemberRequest`"""
+
     pass
 
 
 @dataclass(eq=False, repr=False)
 class GetMembershipStatusRequest(betterproto.Message):
+    """
+    Request to fetch membership status in governance framework for a specific
+    credential schema. Only one of `did_uri`, `x509_cert` may be specified.
+    """
+
     governance_framework_uri: str = betterproto.string_field(1)
+    """URI of governance framework"""
+
     did_uri: str = betterproto.string_field(2, group="member")
+    """DID URI of member"""
+
     x509_cert: str = betterproto.string_field(3, group="member")
+    """X.509 certificate of member"""
+
     schema_uri: str = betterproto.string_field(4)
+    """URI of credential schema associated with membership"""
 
 
 @dataclass(eq=False, repr=False)
 class GetMembershipStatusResponse(betterproto.Message):
+    """Response to `GetMembershipStatusRequest`"""
+
     status: "RegistrationStatus" = betterproto.enum_field(1)
+    """Status of member for given credential schema"""
 
 
 @dataclass(eq=False, repr=False)
 class FetchDataRequest(betterproto.Message):
+    """Not implemented."""
+
     governance_framework_uri: str = betterproto.string_field(1)
     query: str = betterproto.string_field(2)
 
 
 @dataclass(eq=False, repr=False)
 class FetchDataResponse(betterproto.Message):
+    """Not implemented."""
+
     response_json: str = betterproto.string_field(1)
     has_more_results: bool = betterproto.bool_field(2)
     continuation_token: str = betterproto.string_field(3)

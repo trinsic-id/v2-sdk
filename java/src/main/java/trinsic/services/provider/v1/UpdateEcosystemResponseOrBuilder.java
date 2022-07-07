@@ -9,17 +9,37 @@ public interface UpdateEcosystemResponseOrBuilder
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
+   * <pre>
+   * Current ecosystem metadata, post-update
+   * </pre>
+   *
    * <code>.services.provider.v1.Ecosystem Ecosystem = 1;</code>
    *
    * @return Whether the ecosystem field is set.
    */
   boolean hasEcosystem();
   /**
+   *
+   *
+   * <pre>
+   * Current ecosystem metadata, post-update
+   * </pre>
+   *
    * <code>.services.provider.v1.Ecosystem Ecosystem = 1;</code>
    *
    * @return The ecosystem.
    */
   trinsic.services.provider.v1.Ecosystem getEcosystem();
-  /** <code>.services.provider.v1.Ecosystem Ecosystem = 1;</code> */
+  /**
+   *
+   *
+   * <pre>
+   * Current ecosystem metadata, post-update
+   * </pre>
+   *
+   * <code>.services.provider.v1.Ecosystem Ecosystem = 1;</code>
+   */
   trinsic.services.provider.v1.EcosystemOrBuilder getEcosystemOrBuilder();
 }

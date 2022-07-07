@@ -127,7 +127,8 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
    *
    *
    * <pre>
-   * Destination to post webhook calls to
+   * Destination to post webhook calls to.
+   * Must be a reachable HTTPS URL.
    * </pre>
    *
    * <code>string destination_url = 1;</code>
@@ -150,7 +151,8 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
    *
    *
    * <pre>
-   * Destination to post webhook calls to
+   * Destination to post webhook calls to.
+   * Must be a reachable HTTPS URL.
    * </pre>
    *
    * <code>string destination_url = 1;</code>
@@ -176,7 +178,8 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
    *
    *
    * <pre>
-   * HMAC secret for webhook validation
+   * Secret string used for HMAC-SHA256 signing of webhook payloads
+   * to verify that a webhook comes from Trinsic
    * </pre>
    *
    * <code>string secret = 2;</code>
@@ -199,7 +202,8 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
    *
    *
    * <pre>
-   * HMAC secret for webhook validation
+   * Secret string used for HMAC-SHA256 signing of webhook payloads
+   * to verify that a webhook comes from Trinsic
    * </pre>
    *
    * <code>string secret = 2;</code>
@@ -653,7 +657,8 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * Destination to post webhook calls to
+     * Destination to post webhook calls to.
+     * Must be a reachable HTTPS URL.
      * </pre>
      *
      * <code>string destination_url = 1;</code>
@@ -675,7 +680,8 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * Destination to post webhook calls to
+     * Destination to post webhook calls to.
+     * Must be a reachable HTTPS URL.
      * </pre>
      *
      * <code>string destination_url = 1;</code>
@@ -697,7 +703,8 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * Destination to post webhook calls to
+     * Destination to post webhook calls to.
+     * Must be a reachable HTTPS URL.
      * </pre>
      *
      * <code>string destination_url = 1;</code>
@@ -718,7 +725,8 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * Destination to post webhook calls to
+     * Destination to post webhook calls to.
+     * Must be a reachable HTTPS URL.
      * </pre>
      *
      * <code>string destination_url = 1;</code>
@@ -735,7 +743,8 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * Destination to post webhook calls to
+     * Destination to post webhook calls to.
+     * Must be a reachable HTTPS URL.
      * </pre>
      *
      * <code>string destination_url = 1;</code>
@@ -759,7 +768,8 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * HMAC secret for webhook validation
+     * Secret string used for HMAC-SHA256 signing of webhook payloads
+     * to verify that a webhook comes from Trinsic
      * </pre>
      *
      * <code>string secret = 2;</code>
@@ -781,7 +791,8 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * HMAC secret for webhook validation
+     * Secret string used for HMAC-SHA256 signing of webhook payloads
+     * to verify that a webhook comes from Trinsic
      * </pre>
      *
      * <code>string secret = 2;</code>
@@ -803,7 +814,8 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * HMAC secret for webhook validation
+     * Secret string used for HMAC-SHA256 signing of webhook payloads
+     * to verify that a webhook comes from Trinsic
      * </pre>
      *
      * <code>string secret = 2;</code>
@@ -824,7 +836,8 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * HMAC secret for webhook validation
+     * Secret string used for HMAC-SHA256 signing of webhook payloads
+     * to verify that a webhook comes from Trinsic
      * </pre>
      *
      * <code>string secret = 2;</code>
@@ -841,7 +854,8 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * HMAC secret for webhook validation
+     * Secret string used for HMAC-SHA256 signing of webhook payloads
+     * to verify that a webhook comes from Trinsic
      * </pre>
      *
      * <code>string secret = 2;</code>

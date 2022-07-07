@@ -7,10 +7,7 @@ package trinsic.services.provider.v1;
  *
  *
  * <pre>
- * Request details for the status of onboarding
- * an individual or organization.
- * The reference_id passed is the response from the
- * `Onboard` method call
+ * Request details for the status of an invitation
  * </pre>
  *
  * Protobuf type {@code services.provider.v1.InvitationStatusRequest}
@@ -107,7 +104,7 @@ public final class InvitationStatusRequest extends com.google.protobuf.Generated
    *
    *
    * <pre>
-   * ID of invitation
+   * ID of invitation, received from `InviteResponse`
    * </pre>
    *
    * <code>string invitation_id = 1;</code>
@@ -130,7 +127,7 @@ public final class InvitationStatusRequest extends com.google.protobuf.Generated
    *
    *
    * <pre>
-   * ID of invitation
+   * ID of invitation, received from `InviteResponse`
    * </pre>
    *
    * <code>string invitation_id = 1;</code>
@@ -313,10 +310,7 @@ public final class InvitationStatusRequest extends com.google.protobuf.Generated
    *
    *
    * <pre>
-   * Request details for the status of onboarding
-   * an individual or organization.
-   * The reference_id passed is the response from the
-   * `Onboard` method call
+   * Request details for the status of an invitation
    * </pre>
    *
    * Protobuf type {@code services.provider.v1.InvitationStatusRequest}
@@ -476,7 +470,7 @@ public final class InvitationStatusRequest extends com.google.protobuf.Generated
      *
      *
      * <pre>
-     * ID of invitation
+     * ID of invitation, received from `InviteResponse`
      * </pre>
      *
      * <code>string invitation_id = 1;</code>
@@ -498,7 +492,7 @@ public final class InvitationStatusRequest extends com.google.protobuf.Generated
      *
      *
      * <pre>
-     * ID of invitation
+     * ID of invitation, received from `InviteResponse`
      * </pre>
      *
      * <code>string invitation_id = 1;</code>
@@ -520,7 +514,7 @@ public final class InvitationStatusRequest extends com.google.protobuf.Generated
      *
      *
      * <pre>
-     * ID of invitation
+     * ID of invitation, received from `InviteResponse`
      * </pre>
      *
      * <code>string invitation_id = 1;</code>
@@ -541,7 +535,7 @@ public final class InvitationStatusRequest extends com.google.protobuf.Generated
      *
      *
      * <pre>
-     * ID of invitation
+     * ID of invitation, received from `InviteResponse`
      * </pre>
      *
      * <code>string invitation_id = 1;</code>
@@ -558,7 +552,7 @@ public final class InvitationStatusRequest extends com.google.protobuf.Generated
      *
      *
      * <pre>
-     * ID of invitation
+     * ID of invitation, received from `InviteResponse`
      * </pre>
      *
      * <code>string invitation_id = 1;</code>

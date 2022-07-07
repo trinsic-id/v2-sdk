@@ -109,7 +109,7 @@ public final class UpdateStatusRequest extends com.google.protobuf.GeneratedMess
    *
    *
    * <pre>
-   * Credential Status ID to update
+   * Credential Status ID to update. This is not the same as the credential's ID.
    * </pre>
    *
    * <code>string credential_status_id = 1;</code>
@@ -132,7 +132,7 @@ public final class UpdateStatusRequest extends com.google.protobuf.GeneratedMess
    *
    *
    * <pre>
-   * Credential Status ID to update
+   * Credential Status ID to update. This is not the same as the credential's ID.
    * </pre>
    *
    * <code>string credential_status_id = 1;</code>
@@ -512,7 +512,7 @@ public final class UpdateStatusRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Credential Status ID to update
+     * Credential Status ID to update. This is not the same as the credential's ID.
      * </pre>
      *
      * <code>string credential_status_id = 1;</code>
@@ -534,7 +534,7 @@ public final class UpdateStatusRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Credential Status ID to update
+     * Credential Status ID to update. This is not the same as the credential's ID.
      * </pre>
      *
      * <code>string credential_status_id = 1;</code>
@@ -556,7 +556,7 @@ public final class UpdateStatusRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Credential Status ID to update
+     * Credential Status ID to update. This is not the same as the credential's ID.
      * </pre>
      *
      * <code>string credential_status_id = 1;</code>
@@ -577,7 +577,7 @@ public final class UpdateStatusRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Credential Status ID to update
+     * Credential Status ID to update. This is not the same as the credential's ID.
      * </pre>
      *
      * <code>string credential_status_id = 1;</code>
@@ -594,7 +594,7 @@ public final class UpdateStatusRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Credential Status ID to update
+     * Credential Status ID to update. This is not the same as the credential's ID.
      * </pre>
      *
      * <code>string credential_status_id = 1;</code>

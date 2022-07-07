@@ -22,8 +22,13 @@ if TYPE_CHECKING:
 
 
 class ParticipantType(betterproto.Enum):
+    """Type of participant being invited to ecosystem"""
+
     participant_type_individual = 0
+    """Participant is an individual"""
+
     participant_type_organization = 1
+    """Participant is an organization"""
 
 
 class InvitationStatusResponseStatus(betterproto.Enum):
@@ -41,16 +46,9 @@ class InvitationStatusResponseStatus(betterproto.Enum):
 
 
 @dataclass(eq=False, repr=False)
-class Invite(betterproto.Message):
-    id: str = betterproto.string_field(1)
-    code: str = betterproto.string_field(2)
-    created: str = betterproto.string_field(3)
-    accepted: str = betterproto.string_field(4)
-    expires: str = betterproto.string_field(5)
-
-
-@dataclass(eq=False, repr=False)
 class InviteRequest(betterproto.Message):
+    """Request to invite a participant to an ecosystem"""
+
     participant: "ParticipantType" = betterproto.enum_field(1)
     """Type of participant being invited (individual/organization)"""
 
@@ -68,29 +66,27 @@ class InviteRequestDidCommInvitation(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class InviteResponse(betterproto.Message):
+    """Response to `InviteRequest`"""
+
     invitation_id: str = betterproto.string_field(10)
     """ID of created invitation"""
 
     invitation_code: str = betterproto.string_field(11)
-    """
-    Invitation Code that must be passed with the account 'SignIn' request to
-    correlate this user with the invitation sent.
-    """
+    """Invitation code -- must be passed back in `LoginRequest`"""
 
 
 @dataclass(eq=False, repr=False)
 class InvitationStatusRequest(betterproto.Message):
-    """
-    Request details for the status of onboarding an individual or organization.
-    The reference_id passed is the response from the `Onboard` method call
-    """
+    """Request details for the status of an invitation"""
 
     invitation_id: str = betterproto.string_field(1)
-    """ID of invitation"""
+    """ID of invitation, received from `InviteResponse`"""
 
 
 @dataclass(eq=False, repr=False)
 class InvitationStatusResponse(betterproto.Message):
+    """Response to `InvitationStatusRequest`"""
+
     status: "InvitationStatusResponseStatus" = betterproto.enum_field(1)
     """Status of invitation"""
 
@@ -100,6 +96,8 @@ class InvitationStatusResponse(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class Ecosystem(betterproto.Message):
+    """Details of an ecosystem"""
+
     id: str = betterproto.string_field(1)
     """URN of the ecosystem"""
 
@@ -118,21 +116,28 @@ class Ecosystem(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class WebhookConfig(betterproto.Message):
+    """Webhook configured on an ecosystem"""
+
     id: str = betterproto.string_field(1)
     """UUID of the webhook"""
 
     destination_url: str = betterproto.string_field(2)
-    """Destination to post webhook calls to"""
+    """HTTPS URL to POST webhook calls to"""
 
     events: List[str] = betterproto.string_field(4)
     """Events the webhook is subscribed to"""
 
     status: str = betterproto.string_field(5)
-    """Whether we are able to sucessfully send events to the webhook"""
+    """
+    Last known status of webhook (whether or not Trinsic can successfully reach
+    destination)
+    """
 
 
 @dataclass(eq=False, repr=False)
 class Grant(betterproto.Message):
+    """A grant authorizing `actions` on a `resourceId`"""
+
     resource_id: str = betterproto.string_field(1)
     """the urn of the resource"""
 
@@ -145,11 +150,14 @@ class Grant(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class CreateEcosystemRequest(betterproto.Message):
+    """Request to create an ecosystem"""
+
     name: str = betterproto.string_field(1)
     """
     Globally unique name for the Ecosystem. This name will be part of the
-    ecosystem specific URLs and namespaces. Allowed characters are lowercase
-    letters, numbers, underscore and hyphen.
+    ecosystem-specific URLs and namespaces. Allowed characters are lowercase
+    letters, numbers, underscore and hyphen. If not passed, ecosystem name will
+    be auto-generated.
     """
 
     description: str = betterproto.string_field(2)
@@ -164,6 +172,8 @@ class CreateEcosystemRequest(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class CreateEcosystemResponse(betterproto.Message):
+    """Response to `CreateEcosystemRequest`"""
+
     ecosystem: "Ecosystem" = betterproto.message_field(1)
     """Details of the created ecosystem"""
 
@@ -171,21 +181,20 @@ class CreateEcosystemResponse(betterproto.Message):
     """Account profile for auth of the owner of the ecosystem"""
 
     confirmation_method: "__account_v1__.ConfirmationMethod" = betterproto.enum_field(3)
-    """
-    Indicates if confirmation of account is required. This setting is
-    configured globally by the server administrator.
-    """
+    """Indicates if confirmation of account is required."""
 
 
 @dataclass(eq=False, repr=False)
 class UpdateEcosystemRequest(betterproto.Message):
-    """Request to update an ecosystem"""
+    """Request to update an ecosystem's metadata"""
 
     description: str = betterproto.string_field(1)
-    """Description of the ecosystem"""
+    """New description of the ecosystem"""
 
     uri: str = betterproto.string_field(2)
-    """External URL associated with the organization or ecosystem entity"""
+    """
+    New external URL associated with the organization or ecosystem entity
+    """
 
 
 @dataclass(eq=False, repr=False)
@@ -193,6 +202,7 @@ class UpdateEcosystemResponse(betterproto.Message):
     """Response to `UpdateEcosystemRequest`"""
 
     ecosystem: "Ecosystem" = betterproto.message_field(1)
+    """Current ecosystem metadata, post-update"""
 
 
 @dataclass(eq=False, repr=False)
@@ -200,10 +210,13 @@ class AddWebhookRequest(betterproto.Message):
     """Request to add a webhook to an ecosystem"""
 
     destination_url: str = betterproto.string_field(1)
-    """Destination to post webhook calls to"""
+    """Destination to post webhook calls to. Must be a reachable HTTPS URL."""
 
     secret: str = betterproto.string_field(2)
-    """HMAC secret for webhook validation"""
+    """
+    Secret string used for HMAC-SHA256 signing of webhook payloads to verify
+    that a webhook comes from Trinsic
+    """
 
     events: List[str] = betterproto.string_field(3)
     """Events to subscribe to. Default is "*" (all events)"""
@@ -214,7 +227,7 @@ class AddWebhookResponse(betterproto.Message):
     """Response to `AddWebhookRequest`"""
 
     ecosystem: "Ecosystem" = betterproto.message_field(1)
-    """Ecosystem with new webhook"""
+    """Ecosystem data with new webhook"""
 
 
 @dataclass(eq=False, repr=False)
@@ -230,7 +243,7 @@ class DeleteWebhookResponse(betterproto.Message):
     """Response to `DeleteWebhookRequest`"""
 
     ecosystem: "Ecosystem" = betterproto.message_field(1)
-    """Ecosystem after removal of webhook"""
+    """Ecosystem data after removal of webhook"""
 
 
 @dataclass(eq=False, repr=False)
@@ -250,85 +263,141 @@ class EcosystemInfoResponse(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class GenerateTokenRequest(betterproto.Message):
+    """Request to generate an authentication token for the current account"""
+
     description: str = betterproto.string_field(1)
     """Description to identify this token"""
 
 
 @dataclass(eq=False, repr=False)
 class GenerateTokenResponse(betterproto.Message):
+    """Response to `GenerateTokenRequest`"""
+
     profile: "__account_v1__.AccountProfile" = betterproto.message_field(1)
     """Account authentication profile that contains unprotected token"""
 
 
 @dataclass(eq=False, repr=False)
 class GetOberonKeyRequest(betterproto.Message):
-    """request message for GetOberonKey"""
+    """
+    Request to fetch the Trinsic public key used to verify authentication token
+    validity
+    """
 
     pass
 
 
 @dataclass(eq=False, repr=False)
 class GetOberonKeyResponse(betterproto.Message):
-    """response message for GetOberonKey"""
+    """Response to `GetOberonKeyRequest`"""
 
     key: str = betterproto.string_field(1)
+    """Oberon Public Key as RAW base64-url encoded string"""
 
 
 @dataclass(eq=False, repr=False)
 class GetEventTokenRequest(betterproto.Message):
-    """generates an events token bound to the provided ed25519 pk"""
+    """Generates an events token bound to the provided ed25519 public key."""
 
     pk: bytes = betterproto.bytes_field(1)
+    """Raw public key to generate event token for"""
 
 
 @dataclass(eq=False, repr=False)
 class GetEventTokenResponse(betterproto.Message):
     """
-    response message containing a token (JWT) that can be used to connect
+    Response message containing a token (JWT) that can be used to connect
     directly to the message streaming architecture
     """
 
     token: str = betterproto.string_field(1)
+    """JWT bound to the public key provided in `GetEventTokenRequest`"""
 
 
 @dataclass(eq=False, repr=False)
 class GrantAuthorizationRequest(betterproto.Message):
-    """grant permissions to a resource or path in the ecosystem"""
+    """Grant permissions to a resource or path in the ecosystem"""
 
     email: str = betterproto.string_field(1, group="account")
+    """
+    Email address of account being granted permission. Mutually exclusive with
+    `walletId`.
+    """
+
     wallet_id: str = betterproto.string_field(2, group="account")
+    """
+    Wallet ID of account being granted permission. Mutually exclusive with
+    `email`.
+    """
+
     resource: str = betterproto.string_field(3)
+    """
+    Resource string that account is receiving permissions for. Resources are
+    specified as a RESTful path: /{ecoId}/{resource type}/{resource id}.
+    `ecoId` may be omitted.
+    """
+
     action: str = betterproto.string_field(4)
+    """Action to authorize. Default is "*" (all)"""
 
 
 @dataclass(eq=False, repr=False)
 class GrantAuthorizationResponse(betterproto.Message):
+    """Response to `GrantAuthorizationRequest`"""
+
     pass
 
 
 @dataclass(eq=False, repr=False)
 class RevokeAuthorizationRequest(betterproto.Message):
-    """revoke permissions to a resource or path in the ecosystem"""
+    """Revoke permissions to a resource or path in the ecosystem"""
 
     email: str = betterproto.string_field(1, group="account")
+    """
+    Email address of account having permission revoked. Mutually exclusive with
+    `walletId`.
+    """
+
     wallet_id: str = betterproto.string_field(2, group="account")
+    """
+    Wallet ID of account having permission revoked. Mutually exclusive with
+    `email`.
+    """
+
     resource: str = betterproto.string_field(3)
+    """
+    Resource string that account is losing permissions for. Resources are
+    specified as a RESTful path: /{ecoId}/{resource type}/{resource id}.
+    `ecoId` may be omitted.
+    """
+
     action: str = betterproto.string_field(4)
+    """Action to revoke. Default is "*" (all)"""
 
 
 @dataclass(eq=False, repr=False)
 class RevokeAuthorizationResponse(betterproto.Message):
+    """Response to `RevokeAuthorizationRequest`"""
+
     pass
 
 
 @dataclass(eq=False, repr=False)
 class GetAuthorizationsRequest(betterproto.Message):
+    """
+    Fetch list of grants that the current account has access to in its
+    ecosystem
+    """
+
     pass
 
 
 @dataclass(eq=False, repr=False)
 class GetAuthorizationsResponse(betterproto.Message):
+    """Response to `GetAuthorizationsRequest`"""
+
     grants: List["Grant"] = betterproto.message_field(1)
+    """Grants attached to account"""
 
 
 class ProviderStub(betterproto.ServiceStub):

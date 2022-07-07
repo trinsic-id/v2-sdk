@@ -3,7 +3,15 @@
 
 package trinsic.services.account.v1;
 
-/** Protobuf type {@code services.account.v1.LoginConfirmRequest} */
+/**
+ *
+ *
+ * <pre>
+ * Request to finalize login flow
+ * </pre>
+ *
+ * Protobuf type {@code services.account.v1.LoginConfirmRequest}
+ */
 public final class LoginConfirmRequest extends com.google.protobuf.GeneratedMessageV3
     implements
     // @@protoc_insertion_point(message_implements:services.account.v1.LoginConfirmRequest)
@@ -100,7 +108,7 @@ public final class LoginConfirmRequest extends com.google.protobuf.GeneratedMess
    *
    *
    * <pre>
-   * Login challenge received during the Login call
+   * Challenge received from `Login`
    * </pre>
    *
    * <code>bytes challenge = 1;</code>
@@ -118,8 +126,8 @@ public final class LoginConfirmRequest extends com.google.protobuf.GeneratedMess
    *
    *
    * <pre>
-   * Confirmation code received in email or SMS
-   * hashed using Blake3
+   * Two-factor confirmation code sent to account email or phone,
+   * hashed using Blake3. Our SDKs will handle this hashing process for you.
    * </pre>
    *
    * <code>bytes confirmation_code_hashed = 2;</code>
@@ -299,7 +307,15 @@ public final class LoginConfirmRequest extends com.google.protobuf.GeneratedMess
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code services.account.v1.LoginConfirmRequest} */
+  /**
+   *
+   *
+   * <pre>
+   * Request to finalize login flow
+   * </pre>
+   *
+   * Protobuf type {@code services.account.v1.LoginConfirmRequest}
+   */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
       // @@protoc_insertion_point(builder_implements:services.account.v1.LoginConfirmRequest)
@@ -459,7 +475,7 @@ public final class LoginConfirmRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Login challenge received during the Login call
+     * Challenge received from `Login`
      * </pre>
      *
      * <code>bytes challenge = 1;</code>
@@ -474,7 +490,7 @@ public final class LoginConfirmRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Login challenge received during the Login call
+     * Challenge received from `Login`
      * </pre>
      *
      * <code>bytes challenge = 1;</code>
@@ -495,7 +511,7 @@ public final class LoginConfirmRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Login challenge received during the Login call
+     * Challenge received from `Login`
      * </pre>
      *
      * <code>bytes challenge = 1;</code>
@@ -515,8 +531,8 @@ public final class LoginConfirmRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Confirmation code received in email or SMS
-     * hashed using Blake3
+     * Two-factor confirmation code sent to account email or phone,
+     * hashed using Blake3. Our SDKs will handle this hashing process for you.
      * </pre>
      *
      * <code>bytes confirmation_code_hashed = 2;</code>
@@ -531,8 +547,8 @@ public final class LoginConfirmRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Confirmation code received in email or SMS
-     * hashed using Blake3
+     * Two-factor confirmation code sent to account email or phone,
+     * hashed using Blake3. Our SDKs will handle this hashing process for you.
      * </pre>
      *
      * <code>bytes confirmation_code_hashed = 2;</code>
@@ -553,8 +569,8 @@ public final class LoginConfirmRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Confirmation code received in email or SMS
-     * hashed using Blake3
+     * Two-factor confirmation code sent to account email or phone,
+     * hashed using Blake3. Our SDKs will handle this hashing process for you.
      * </pre>
      *
      * <code>bytes confirmation_code_hashed = 2;</code>

@@ -3,7 +3,15 @@
 
 package trinsic.services.event.v1;
 
-/** Protobuf type {@code trinsic.services.event.ItemReceived} */
+/**
+ *
+ *
+ * <pre>
+ * Item inserted into wallet
+ * </pre>
+ *
+ * Protobuf type {@code trinsic.services.event.ItemReceived}
+ */
 public final class ItemReceived extends com.google.protobuf.GeneratedMessageV3
     implements
     // @@protoc_insertion_point(message_implements:trinsic.services.event.ItemReceived)
@@ -153,7 +161,7 @@ public final class ItemReceived extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Timestamp when the item was received
+   * Timestamp when the item was received, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
    * </pre>
    *
    * <code>string received = 2;</code>
@@ -176,7 +184,7 @@ public final class ItemReceived extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Timestamp when the item was received
+   * Timestamp when the item was received, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
    * </pre>
    *
    * <code>string received = 2;</code>
@@ -363,7 +371,15 @@ public final class ItemReceived extends com.google.protobuf.GeneratedMessageV3
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code trinsic.services.event.ItemReceived} */
+  /**
+   *
+   *
+   * <pre>
+   * Item inserted into wallet
+   * </pre>
+   *
+   * Protobuf type {@code trinsic.services.event.ItemReceived}
+   */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
       // @@protoc_insertion_point(builder_implements:trinsic.services.event.ItemReceived)
@@ -630,7 +646,7 @@ public final class ItemReceived extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Timestamp when the item was received
+     * Timestamp when the item was received, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
      * </pre>
      *
      * <code>string received = 2;</code>
@@ -652,7 +668,7 @@ public final class ItemReceived extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Timestamp when the item was received
+     * Timestamp when the item was received, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
      * </pre>
      *
      * <code>string received = 2;</code>
@@ -674,7 +690,7 @@ public final class ItemReceived extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Timestamp when the item was received
+     * Timestamp when the item was received, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
      * </pre>
      *
      * <code>string received = 2;</code>
@@ -695,7 +711,7 @@ public final class ItemReceived extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Timestamp when the item was received
+     * Timestamp when the item was received, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
      * </pre>
      *
      * <code>string received = 2;</code>
@@ -712,7 +728,7 @@ public final class ItemReceived extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Timestamp when the item was received
+     * Timestamp when the item was received, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
      * </pre>
      *
      * <code>string received = 2;</code>

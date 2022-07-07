@@ -6,11 +6,29 @@ package trinsic.services.event.v1;
 public final class EventOuterClass {
   private EventOuterClass() {}
 
-  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {}
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {
+    registry.add(trinsic.services.event.v1.EventOuterClass.eventType);
+  }
 
   public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {
     registerAllExtensions((com.google.protobuf.ExtensionRegistryLite) registry);
   }
+
+  public static final int EVENT_TYPE_FIELD_NUMBER = 60002;
+  /**
+   *
+   *
+   * <pre>
+   * Event type associated with this Event message.
+   * </pre>
+   *
+   * <code>extend .google.protobuf.MessageOptions { ... }</code>
+   */
+  public static final com.google.protobuf.GeneratedMessage.GeneratedExtension<
+          com.google.protobuf.DescriptorProtos.MessageOptions, trinsic.services.event.v1.EventType>
+      eventType =
+          com.google.protobuf.GeneratedMessage.newFileScopedGeneratedExtension(
+              trinsic.services.event.v1.EventType.class, null);
 
   static final com.google.protobuf.Descriptors.Descriptor
       internal_static_trinsic_services_event_Event_descriptor;
@@ -46,7 +64,8 @@ public final class EventOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n"
-          + "\035services/event/v1/event.proto\022\026trinsic.services.event\"e\n"
+          + "\035services/event/v1/event.proto\022\026trinsic.services.event\032"
+          + " google/protobuf/descriptor.proto\"e\n"
           + "\005Event\022\n\n"
           + "\002id\030\001 \001(\t\022/\n"
           + "\004type\030\002 \001(\0162!.trinsic.services.event.EventType\022\021\n"
@@ -55,12 +74,12 @@ public final class EventOuterClass {
           + "\007APICall\022\016\n"
           + "\006source\030\001 \001(\t\022\017\n"
           + "\007request\030\002 \001(\014\022\020\n"
-          + "\010response\030\003 \001(\014\"J\n"
+          + "\010response\030\003 \001(\014\"P\n"
           + "\004Ping\022\n\n"
           + "\002id\030\001 \001(\t\022\022\n\n"
           + "webhook_id\030\002 \001(\t\022\021\n"
           + "\ttimestamp\030\003 \001(\t\022\017\n"
-          + "\007message\030\004 \001(\t\"\262\001\n\n"
+          + "\007message\030\004 \001(\t:\004\220\246\035\000\"\270\001\n\n"
           + "EGFCreated\022\n\n"
           + "\002id\030\001 \001(\t\022\024\n"
           + "\014ecosystem_id\030\002 \001(\t\022\026\n"
@@ -69,16 +88,17 @@ public final class EventOuterClass {
           + "\004type\030\005 \001(\t\022\014\n"
           + "\004name\030\006 \001(\t\022\023\n"
           + "\013description\030\007 \001(\t\022\034\n"
-          + "\024governance_framework\030\010 \001(\t\"c\n"
+          + "\024governance_framework\030\010 \001(\t:\004\220\246\035\005\"i\n"
           + "\017TemplateCreated\022\n\n"
           + "\002id\030\001 \001(\t\022\024\n"
           + "\014ecosystem_id\030\002 \001(\t\022\014\n"
           + "\004name\030\003 \001(\t\022\014\n"
           + "\004type\030\004 \001(\t\022\022\n\n"
-          + "created_by\030\005 \001(\t\",\n"
+          + "created_by\030\005 \001(\t:\004\220\246\035\n"
+          + "\"2\n"
           + "\014ItemReceived\022\n\n"
           + "\002id\030\001 \001(\t\022\020\n"
-          + "\010received\030\002 \001(\t*\272\001\n"
+          + "\010received\030\002 \001(\t:\004\220\246\035\020*\272\001\n"
           + "\tEventType\022\010\n"
           + "\004PING\020\000\022\007\n"
           + "\003LOG\020\001\022\017\n"
@@ -89,13 +109,18 @@ public final class EventOuterClass {
           + "\022\024\n"
           + "\020TEMPLATE_DELETED\020\013\022\022\n"
           + "\016WALLET_CREATED\020\017\022\021\n\r"
-          + "ITEM_RECEIVED\020\020BD\n"
-          + "\031trinsic.services.event.v1P\001Z\t./eventpb\252\002\031Trinsic.Services.Event"
-          + ".V1b\006proto3"
+          + "ITEM_RECEIVED\020\020:[\n\n"
+          + "event_type\022\037.google.protobuf.MessageOptions\030\342\324\003"
+          + " \001(\0162!.trinsic.services.event.EventType\210\001\001BD\n"
+          + "\031trinsic.services.event.v1P\001Z\t./e"
+          + "ventpb\252\002\031Trinsic.Services.Event.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
-            descriptorData, new com.google.protobuf.Descriptors.FileDescriptor[] {});
+            descriptorData,
+            new com.google.protobuf.Descriptors.FileDescriptor[] {
+              com.google.protobuf.DescriptorProtos.getDescriptor(),
+            });
     internal_static_trinsic_services_event_Event_descriptor =
         getDescriptor().getMessageTypes().get(0);
     internal_static_trinsic_services_event_Event_fieldAccessorTable =
@@ -151,6 +176,13 @@ public final class EventOuterClass {
             new java.lang.String[] {
               "Id", "Received",
             });
+    eventType.internalInit(descriptor.getExtensions().get(0));
+    com.google.protobuf.ExtensionRegistry registry =
+        com.google.protobuf.ExtensionRegistry.newInstance();
+    registry.add(trinsic.services.event.v1.EventOuterClass.eventType);
+    com.google.protobuf.Descriptors.FileDescriptor.internalUpdateFileDescriptor(
+        descriptor, registry);
+    com.google.protobuf.DescriptorProtos.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

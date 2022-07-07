@@ -7,7 +7,7 @@ package trinsic.services.provider.v1;
  *
  *
  * <pre>
- * Request to update an ecosystem
+ * Request to update an ecosystem's metadata
  * </pre>
  *
  * Protobuf type {@code services.provider.v1.UpdateEcosystemRequest}
@@ -112,7 +112,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
    *
    *
    * <pre>
-   * Description of the ecosystem
+   * New description of the ecosystem
    * </pre>
    *
    * <code>string description = 1;</code>
@@ -135,7 +135,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
    *
    *
    * <pre>
-   * Description of the ecosystem
+   * New description of the ecosystem
    * </pre>
    *
    * <code>string description = 1;</code>
@@ -161,7 +161,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
    *
    *
    * <pre>
-   * External URL associated with the organization or ecosystem entity
+   * New external URL associated with the organization or ecosystem entity
    * </pre>
    *
    * <code>string uri = 2;</code>
@@ -184,7 +184,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
    *
    *
    * <pre>
-   * External URL associated with the organization or ecosystem entity
+   * New external URL associated with the organization or ecosystem entity
    * </pre>
    *
    * <code>string uri = 2;</code>
@@ -376,7 +376,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
    *
    *
    * <pre>
-   * Request to update an ecosystem
+   * Request to update an ecosystem's metadata
    * </pre>
    *
    * Protobuf type {@code services.provider.v1.UpdateEcosystemRequest}
@@ -543,7 +543,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
-     * Description of the ecosystem
+     * New description of the ecosystem
      * </pre>
      *
      * <code>string description = 1;</code>
@@ -565,7 +565,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
-     * Description of the ecosystem
+     * New description of the ecosystem
      * </pre>
      *
      * <code>string description = 1;</code>
@@ -587,7 +587,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
-     * Description of the ecosystem
+     * New description of the ecosystem
      * </pre>
      *
      * <code>string description = 1;</code>
@@ -608,7 +608,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
-     * Description of the ecosystem
+     * New description of the ecosystem
      * </pre>
      *
      * <code>string description = 1;</code>
@@ -625,7 +625,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
-     * Description of the ecosystem
+     * New description of the ecosystem
      * </pre>
      *
      * <code>string description = 1;</code>
@@ -649,7 +649,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
-     * External URL associated with the organization or ecosystem entity
+     * New external URL associated with the organization or ecosystem entity
      * </pre>
      *
      * <code>string uri = 2;</code>
@@ -671,7 +671,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
-     * External URL associated with the organization or ecosystem entity
+     * New external URL associated with the organization or ecosystem entity
      * </pre>
      *
      * <code>string uri = 2;</code>
@@ -693,7 +693,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
-     * External URL associated with the organization or ecosystem entity
+     * New external URL associated with the organization or ecosystem entity
      * </pre>
      *
      * <code>string uri = 2;</code>
@@ -714,7 +714,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
-     * External URL associated with the organization or ecosystem entity
+     * New external URL associated with the organization or ecosystem entity
      * </pre>
      *
      * <code>string uri = 2;</code>
@@ -731,7 +731,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
-     * External URL associated with the organization or ecosystem entity
+     * New external URL associated with the organization or ecosystem entity
      * </pre>
      *
      * <code>string uri = 2;</code>

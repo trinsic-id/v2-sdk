@@ -13,10 +13,6 @@ public final class Common {
   }
 
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_common_v1_ServerConfig_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_common_v1_ServerConfig_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
       internal_static_services_common_v1_Nonce_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_common_v1_Nonce_fieldAccessorTable;
@@ -29,38 +25,20 @@ public final class Common {
 
   static {
     java.lang.String[] descriptorData = {
-      "\n"
-          + "\037services/common/v1/common.proto\022\022services.common.v1\"?\n"
-          + "\014ServerConfig\022\020\n"
-          + "\010endpoint\030\001 \001(\t\022\014\n"
-          + "\004port\030\002 \001(\005\022\017\n"
-          + "\007use_tls\030\003 \001(\010\"0\n"
-          + "\005Nonce\022\021\n"
-          + "\ttimestamp\030\001 \001(\003\022\024\n"
-          + "\014request_hash\030\002 \001(\014*\213\001\n"
-          + "\016ResponseStatus\022\013\n"
-          + "\007SUCCESS\020\000\022\030\n"
-          + "\024WALLET_ACCESS_DENIED\020\n"
-          + "\022\021\n\r"
-          + "WALLET_EXISTS\020\013\022\022\n"
-          + "\016ITEM_NOT_FOUND\020\024\022\030\n"
-          + "\023SERIALIZATION_ERROR\020\310\001\022\021\n\r"
-          + "UNKNOWN_ERROR\020dBV\n"
-          + "\032trinsic.services.common.v1P\001Z\031services/common/"
-          + "v1/common\252\002\032Trinsic.Services.Common.V1b\006proto3"
+      "\n\037services/common/v1/common.proto\022\022servi"
+          + "ces.common.v1\"0\n\005Nonce\022\021\n\ttimestamp\030\001 \001("
+          + "\003\022\024\n\014request_hash\030\002 \001(\014*\213\001\n\016ResponseStat"
+          + "us\022\013\n\007SUCCESS\020\000\022\030\n\024WALLET_ACCESS_DENIED\020"
+          + "\n\022\021\n\rWALLET_EXISTS\020\013\022\022\n\016ITEM_NOT_FOUND\020\024"
+          + "\022\030\n\023SERIALIZATION_ERROR\020\310\001\022\021\n\rUNKNOWN_ER"
+          + "ROR\020dBV\n\032trinsic.services.common.v1P\001Z\031s"
+          + "ervices/common/v1/common\252\002\032Trinsic.Servi"
+          + "ces.Common.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
             descriptorData, new com.google.protobuf.Descriptors.FileDescriptor[] {});
-    internal_static_services_common_v1_ServerConfig_descriptor =
-        getDescriptor().getMessageTypes().get(0);
-    internal_static_services_common_v1_ServerConfig_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_common_v1_ServerConfig_descriptor,
-            new java.lang.String[] {
-              "Endpoint", "Port", "UseTls",
-            });
-    internal_static_services_common_v1_Nonce_descriptor = getDescriptor().getMessageTypes().get(1);
+    internal_static_services_common_v1_Nonce_descriptor = getDescriptor().getMessageTypes().get(0);
     internal_static_services_common_v1_Nonce_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_common_v1_Nonce_descriptor,

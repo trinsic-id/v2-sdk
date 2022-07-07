@@ -3,7 +3,15 @@
 
 package trinsic.services.account.v1;
 
-/** Protobuf type {@code services.account.v1.LoginResponse} */
+/**
+ *
+ *
+ * <pre>
+ * Response to `LoginRequest`
+ * </pre>
+ *
+ * Protobuf type {@code services.account.v1.LoginResponse}
+ */
 public final class LoginResponse extends com.google.protobuf.GeneratedMessageV3
     implements
     // @@protoc_insertion_point(message_implements:services.account.v1.LoginResponse)
@@ -155,8 +163,9 @@ public final class LoginResponse extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Challenge response. Random byte sequence unique
-   * for this login request
+   * Random byte sequence unique to this login request.
+   * If present, two-factor confirmation of login is required.
+   * Must be sent back, unaltered, in `LoginConfirm`.
    * </pre>
    *
    * <code>bytes challenge = 1;</code>
@@ -171,8 +180,9 @@ public final class LoginResponse extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Challenge response. Random byte sequence unique
-   * for this login request
+   * Random byte sequence unique to this login request.
+   * If present, two-factor confirmation of login is required.
+   * Must be sent back, unaltered, in `LoginConfirm`.
    * </pre>
    *
    * <code>bytes challenge = 1;</code>
@@ -192,9 +202,7 @@ public final class LoginResponse extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Profile response. The login isn't challenged and
-   * the token is returned in this call. Does not require
-   * confirmation step
+   * Account profile response. If present, no confirmation of login is required.
    * </pre>
    *
    * <code>.services.account.v1.AccountProfile profile = 2;</code>
@@ -209,9 +217,7 @@ public final class LoginResponse extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Profile response. The login isn't challenged and
-   * the token is returned in this call. Does not require
-   * confirmation step
+   * Account profile response. If present, no confirmation of login is required.
    * </pre>
    *
    * <code>.services.account.v1.AccountProfile profile = 2;</code>
@@ -229,9 +235,7 @@ public final class LoginResponse extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Profile response. The login isn't challenged and
-   * the token is returned in this call. Does not require
-   * confirmation step
+   * Account profile response. If present, no confirmation of login is required.
    * </pre>
    *
    * <code>.services.account.v1.AccountProfile profile = 2;</code>
@@ -433,7 +437,15 @@ public final class LoginResponse extends com.google.protobuf.GeneratedMessageV3
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code services.account.v1.LoginResponse} */
+  /**
+   *
+   *
+   * <pre>
+   * Response to `LoginRequest`
+   * </pre>
+   *
+   * Protobuf type {@code services.account.v1.LoginResponse}
+   */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
       // @@protoc_insertion_point(builder_implements:services.account.v1.LoginResponse)
@@ -622,8 +634,9 @@ public final class LoginResponse extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Challenge response. Random byte sequence unique
-     * for this login request
+     * Random byte sequence unique to this login request.
+     * If present, two-factor confirmation of login is required.
+     * Must be sent back, unaltered, in `LoginConfirm`.
      * </pre>
      *
      * <code>bytes challenge = 1;</code>
@@ -637,8 +650,9 @@ public final class LoginResponse extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Challenge response. Random byte sequence unique
-     * for this login request
+     * Random byte sequence unique to this login request.
+     * If present, two-factor confirmation of login is required.
+     * Must be sent back, unaltered, in `LoginConfirm`.
      * </pre>
      *
      * <code>bytes challenge = 1;</code>
@@ -655,8 +669,9 @@ public final class LoginResponse extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Challenge response. Random byte sequence unique
-     * for this login request
+     * Random byte sequence unique to this login request.
+     * If present, two-factor confirmation of login is required.
+     * Must be sent back, unaltered, in `LoginConfirm`.
      * </pre>
      *
      * <code>bytes challenge = 1;</code>
@@ -677,8 +692,9 @@ public final class LoginResponse extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Challenge response. Random byte sequence unique
-     * for this login request
+     * Random byte sequence unique to this login request.
+     * If present, two-factor confirmation of login is required.
+     * Must be sent back, unaltered, in `LoginConfirm`.
      * </pre>
      *
      * <code>bytes challenge = 1;</code>
@@ -703,9 +719,7 @@ public final class LoginResponse extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Profile response. The login isn't challenged and
-     * the token is returned in this call. Does not require
-     * confirmation step
+     * Account profile response. If present, no confirmation of login is required.
      * </pre>
      *
      * <code>.services.account.v1.AccountProfile profile = 2;</code>
@@ -720,9 +734,7 @@ public final class LoginResponse extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Profile response. The login isn't challenged and
-     * the token is returned in this call. Does not require
-     * confirmation step
+     * Account profile response. If present, no confirmation of login is required.
      * </pre>
      *
      * <code>.services.account.v1.AccountProfile profile = 2;</code>
@@ -747,9 +759,7 @@ public final class LoginResponse extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Profile response. The login isn't challenged and
-     * the token is returned in this call. Does not require
-     * confirmation step
+     * Account profile response. If present, no confirmation of login is required.
      * </pre>
      *
      * <code>.services.account.v1.AccountProfile profile = 2;</code>
@@ -771,9 +781,7 @@ public final class LoginResponse extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Profile response. The login isn't challenged and
-     * the token is returned in this call. Does not require
-     * confirmation step
+     * Account profile response. If present, no confirmation of login is required.
      * </pre>
      *
      * <code>.services.account.v1.AccountProfile profile = 2;</code>
@@ -792,9 +800,7 @@ public final class LoginResponse extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Profile response. The login isn't challenged and
-     * the token is returned in this call. Does not require
-     * confirmation step
+     * Account profile response. If present, no confirmation of login is required.
      * </pre>
      *
      * <code>.services.account.v1.AccountProfile profile = 2;</code>
@@ -826,9 +832,7 @@ public final class LoginResponse extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Profile response. The login isn't challenged and
-     * the token is returned in this call. Does not require
-     * confirmation step
+     * Account profile response. If present, no confirmation of login is required.
      * </pre>
      *
      * <code>.services.account.v1.AccountProfile profile = 2;</code>
@@ -853,9 +857,7 @@ public final class LoginResponse extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Profile response. The login isn't challenged and
-     * the token is returned in this call. Does not require
-     * confirmation step
+     * Account profile response. If present, no confirmation of login is required.
      * </pre>
      *
      * <code>.services.account.v1.AccountProfile profile = 2;</code>
@@ -867,9 +869,7 @@ public final class LoginResponse extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Profile response. The login isn't challenged and
-     * the token is returned in this call. Does not require
-     * confirmation step
+     * Account profile response. If present, no confirmation of login is required.
      * </pre>
      *
      * <code>.services.account.v1.AccountProfile profile = 2;</code>
@@ -889,9 +889,7 @@ public final class LoginResponse extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Profile response. The login isn't challenged and
-     * the token is returned in this call. Does not require
-     * confirmation step
+     * Account profile response. If present, no confirmation of login is required.
      * </pre>
      *
      * <code>.services.account.v1.AccountProfile profile = 2;</code>

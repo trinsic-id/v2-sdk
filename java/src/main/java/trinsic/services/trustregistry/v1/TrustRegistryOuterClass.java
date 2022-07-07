@@ -82,7 +82,8 @@ public final class TrustRegistryOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n"
-          + "/services/trust-registry/v1/trust-registry.proto\022\031services.trustregistry.v1\"Z\n"
+          + "/services/trust-registry/v1/trust-regis"
+          + "try.proto\022\031services.trustregistry.v1\032$services/options/field-options.proto\"Z\n"
           + "\023AddFrameworkRequest\022 \n"
           + "\030governance_framework_uri\030\001 \001(\t\022\014\n"
           + "\004name\030\002 \001(\t\022\023\n"
@@ -93,10 +94,10 @@ public final class TrustRegistryOuterClass {
           + "\016trust_registry\030\003 \001(\t\"$\n"
           + "\026RemoveFrameworkRequest\022\n\n"
           + "\002id\030\001 \001(\t\"\031\n"
-          + "\027RemoveFrameworkResponse\"B\n"
+          + "\027RemoveFrameworkResponse\"H\n"
           + "\025SearchRegistryRequest\022\r\n"
-          + "\005query\030\001 \001(\t\022\032\n"
-          + "\022continuation_token\030\002 \001(\t\"Z\n"
+          + "\005query\030\001 \001(\t\022 \n"
+          + "\022continuation_token\030\002 \001(\tB\004\200\246\035\001\"Z\n"
           + "\026SearchRegistryResponse\022\022\n\n"
           + "items_json\030\001 \001(\t\022\020\n"
           + "\010has_more\030\002 \001(\010\022\032\n"
@@ -146,29 +147,32 @@ public final class TrustRegistryOuterClass {
           + "TERMINATED\020\002\022\013\n"
           + "\007REVOKED\020\003\022\r\n"
           + "\tNOT_FOUND\020\n"
-          + "2\326\006\n\r"
+          + "2\336\006\n\r"
           + "TrustRegistry\022o\n"
-          + "\014AddFramework\022..services.trustregistry.v1.AddFra"
-          + "meworkRequest\032/.services.trustregistry.v1.AddFrameworkResponse\022x\n"
-          + "\017RemoveFramework\0221.services.trustregistry.v1.RemoveFram"
-          + "eworkRequest\0322.services.trustregistry.v1.RemoveFrameworkResponse\022u\n"
-          + "\016SearchRegistry\0220.services.trustregistry.v1.SearchReg"
-          + "istryRequest\0321.services.trustregistry.v1.SearchRegistryResponse\022u\n"
-          + "\016RegisterMember\0220.services.trustregistry.v1.RegisterMe"
-          + "mberRequest\0321.services.trustregistry.v1.RegisterMemberResponse\022{\n"
-          + "\020UnregisterMember\0222.services.trustregistry.v1.Unregiste"
-          + "rMemberRequest\0323.services.trustregistry.v1.UnregisterMemberResponse\022\204\001\n"
-          + "\023GetMembershipStatus\0225.services.trustregistry.v1."
-          + "GetMembershipStatusRequest\0326.services.tr"
-          + "ustregistry.v1.GetMembershipStatusResponse\022h\n"
-          + "\tFetchData\022+.services.trustregistry"
-          + ".v1.FetchDataRequest\032,.services.trustregistry.v1.FetchDataResponse0\001Br\n"
-          + "!trinsic.services.trustregistry.v1P\001Z\'services/tr"
-          + "ustregistry/v1/trustregistry\252\002!Trinsic.Services.TrustRegistry.V1b\006proto3"
+          + "\014AddFramework\022..services.trustregistry.v1.Ad"
+          + "dFrameworkRequest\032/.services.trustregistry.v1.AddFrameworkResponse\022x\n"
+          + "\017RemoveFramework\0221.services.trustregistry.v1.Remove"
+          + "FrameworkRequest\0322.services.trustregistry.v1.RemoveFrameworkResponse\022u\n"
+          + "\016SearchRegistry\0220.services.trustregistry.v1.Searc"
+          + "hRegistryRequest\0321.services.trustregistry.v1.SearchRegistryResponse\022u\n"
+          + "\016RegisterMember\0220.services.trustregistry.v1.Regist"
+          + "erMemberRequest\0321.services.trustregistry.v1.RegisterMemberResponse\022{\n"
+          + "\020UnregisterMember\0222.services.trustregistry.v1.Unreg"
+          + "isterMemberRequest\0323.services.trustregistry.v1.UnregisterMemberResponse\022\204\001\n"
+          + "\023GetMembershipStatus\0225.services.trustregistry"
+          + ".v1.GetMembershipStatusRequest\0326.service"
+          + "s.trustregistry.v1.GetMembershipStatusResponse\022p\n"
+          + "\tFetchData\022+.services.trustregistry.v1.FetchDataRequest\032,.services.trus"
+          + "tregistry.v1.FetchDataResponse\"\006\212\246\035\002\020\0010\001Br\n"
+          + "!trinsic.services.trustregistry.v1P\001Z\'services/trustregistry/v1/trustregistry"
+          + "\252\002!Trinsic.Services.TrustRegistry.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
-            descriptorData, new com.google.protobuf.Descriptors.FileDescriptor[] {});
+            descriptorData,
+            new com.google.protobuf.Descriptors.FileDescriptor[] {
+              trinsic.services.protobuf.options.FieldOptions.getDescriptor(),
+            });
     internal_static_services_trustregistry_v1_AddFrameworkRequest_descriptor =
         getDescriptor().getMessageTypes().get(0);
     internal_static_services_trustregistry_v1_AddFrameworkRequest_fieldAccessorTable =
@@ -290,6 +294,13 @@ public final class TrustRegistryOuterClass {
             new java.lang.String[] {
               "ResponseJson", "HasMoreResults", "ContinuationToken",
             });
+    com.google.protobuf.ExtensionRegistry registry =
+        com.google.protobuf.ExtensionRegistry.newInstance();
+    registry.add(trinsic.services.protobuf.options.FieldOptions.optional);
+    registry.add(trinsic.services.protobuf.options.FieldOptions.sdkTemplateOption);
+    com.google.protobuf.Descriptors.FileDescriptor.internalUpdateFileDescriptor(
+        descriptor, registry);
+    trinsic.services.protobuf.options.FieldOptions.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -17,10 +17,15 @@ module Services
             self.unmarshal_class_method = :decode
             self.service_name = 'services.verifiablecredentials.templates.v1.CredentialTemplates'
 
+            # Create a credential template in the current ecosystem
             rpc :Create, ::Services::Verifiablecredentials::Templates::V1::CreateCredentialTemplateRequest, ::Services::Verifiablecredentials::Templates::V1::CreateCredentialTemplateResponse
+            # Fetch a credential template by ID
             rpc :Get, ::Services::Verifiablecredentials::Templates::V1::GetCredentialTemplateRequest, ::Services::Verifiablecredentials::Templates::V1::GetCredentialTemplateResponse
+            # Search credential templates using SQL, returning strongly-typed template data
             rpc :List, ::Services::Verifiablecredentials::Templates::V1::ListCredentialTemplatesRequest, ::Services::Verifiablecredentials::Templates::V1::ListCredentialTemplatesResponse
+            # Search credential templates using SQL, returning raw JSON data
             rpc :Search, ::Services::Verifiablecredentials::Templates::V1::SearchCredentialTemplatesRequest, ::Services::Verifiablecredentials::Templates::V1::SearchCredentialTemplatesResponse
+            # Delete a credential template from the current ecosystem by ID
             rpc :Delete, ::Services::Verifiablecredentials::Templates::V1::DeleteCredentialTemplateRequest, ::Services::Verifiablecredentials::Templates::V1::DeleteCredentialTemplateResponse
           end
 

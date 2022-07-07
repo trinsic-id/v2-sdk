@@ -131,7 +131,8 @@ public final class SignInRequest extends com.google.protobuf.GeneratedMessageV3
    * Account registration details
    * </pre>
    *
-   * <code>.services.account.v1.AccountDetails details = 1;</code>
+   * <code>.services.account.v1.AccountDetails details = 1 [(.services.options.optional) = true];
+   * </code>
    *
    * @return Whether the details field is set.
    */
@@ -146,7 +147,8 @@ public final class SignInRequest extends com.google.protobuf.GeneratedMessageV3
    * Account registration details
    * </pre>
    *
-   * <code>.services.account.v1.AccountDetails details = 1;</code>
+   * <code>.services.account.v1.AccountDetails details = 1 [(.services.options.optional) = true];
+   * </code>
    *
    * @return The details.
    */
@@ -163,7 +165,8 @@ public final class SignInRequest extends com.google.protobuf.GeneratedMessageV3
    * Account registration details
    * </pre>
    *
-   * <code>.services.account.v1.AccountDetails details = 1;</code>
+   * <code>.services.account.v1.AccountDetails details = 1 [(.services.options.optional) = true];
+   * </code>
    */
   @java.lang.Override
   public trinsic.services.account.v1.AccountDetailsOrBuilder getDetailsOrBuilder() {
@@ -643,7 +646,8 @@ public final class SignInRequest extends com.google.protobuf.GeneratedMessageV3
      * Account registration details
      * </pre>
      *
-     * <code>.services.account.v1.AccountDetails details = 1;</code>
+     * <code>.services.account.v1.AccountDetails details = 1 [(.services.options.optional) = true];
+     * </code>
      *
      * @return Whether the details field is set.
      */
@@ -657,7 +661,8 @@ public final class SignInRequest extends com.google.protobuf.GeneratedMessageV3
      * Account registration details
      * </pre>
      *
-     * <code>.services.account.v1.AccountDetails details = 1;</code>
+     * <code>.services.account.v1.AccountDetails details = 1 [(.services.options.optional) = true];
+     * </code>
      *
      * @return The details.
      */
@@ -677,7 +682,8 @@ public final class SignInRequest extends com.google.protobuf.GeneratedMessageV3
      * Account registration details
      * </pre>
      *
-     * <code>.services.account.v1.AccountDetails details = 1;</code>
+     * <code>.services.account.v1.AccountDetails details = 1 [(.services.options.optional) = true];
+     * </code>
      */
     public Builder setDetails(trinsic.services.account.v1.AccountDetails value) {
       if (detailsBuilder_ == null) {
@@ -699,7 +705,8 @@ public final class SignInRequest extends com.google.protobuf.GeneratedMessageV3
      * Account registration details
      * </pre>
      *
-     * <code>.services.account.v1.AccountDetails details = 1;</code>
+     * <code>.services.account.v1.AccountDetails details = 1 [(.services.options.optional) = true];
+     * </code>
      */
     public Builder setDetails(trinsic.services.account.v1.AccountDetails.Builder builderForValue) {
       if (detailsBuilder_ == null) {
@@ -718,7 +725,8 @@ public final class SignInRequest extends com.google.protobuf.GeneratedMessageV3
      * Account registration details
      * </pre>
      *
-     * <code>.services.account.v1.AccountDetails details = 1;</code>
+     * <code>.services.account.v1.AccountDetails details = 1 [(.services.options.optional) = true];
+     * </code>
      */
     public Builder mergeDetails(trinsic.services.account.v1.AccountDetails value) {
       if (detailsBuilder_ == null) {
@@ -744,7 +752,8 @@ public final class SignInRequest extends com.google.protobuf.GeneratedMessageV3
      * Account registration details
      * </pre>
      *
-     * <code>.services.account.v1.AccountDetails details = 1;</code>
+     * <code>.services.account.v1.AccountDetails details = 1 [(.services.options.optional) = true];
+     * </code>
      */
     public Builder clearDetails() {
       if (detailsBuilder_ == null) {
@@ -764,7 +773,8 @@ public final class SignInRequest extends com.google.protobuf.GeneratedMessageV3
      * Account registration details
      * </pre>
      *
-     * <code>.services.account.v1.AccountDetails details = 1;</code>
+     * <code>.services.account.v1.AccountDetails details = 1 [(.services.options.optional) = true];
+     * </code>
      */
     public trinsic.services.account.v1.AccountDetails.Builder getDetailsBuilder() {
 
@@ -778,7 +788,8 @@ public final class SignInRequest extends com.google.protobuf.GeneratedMessageV3
      * Account registration details
      * </pre>
      *
-     * <code>.services.account.v1.AccountDetails details = 1;</code>
+     * <code>.services.account.v1.AccountDetails details = 1 [(.services.options.optional) = true];
+     * </code>
      */
     public trinsic.services.account.v1.AccountDetailsOrBuilder getDetailsOrBuilder() {
       if (detailsBuilder_ != null) {
@@ -796,7 +807,8 @@ public final class SignInRequest extends com.google.protobuf.GeneratedMessageV3
      * Account registration details
      * </pre>
      *
-     * <code>.services.account.v1.AccountDetails details = 1;</code>
+     * <code>.services.account.v1.AccountDetails details = 1 [(.services.options.optional) = true];
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
             trinsic.services.account.v1.AccountDetails,

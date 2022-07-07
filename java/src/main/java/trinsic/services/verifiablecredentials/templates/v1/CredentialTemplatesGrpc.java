@@ -316,7 +316,13 @@ public final class CredentialTemplatesGrpc {
   /** */
   public abstract static class CredentialTemplatesImplBase implements io.grpc.BindableService {
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Create a credential template in the current ecosystem
+     * </pre>
+     */
     public void create(
         trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest request,
         io.grpc.stub.StreamObserver<
@@ -326,7 +332,13 @@ public final class CredentialTemplatesGrpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCreateMethod(), responseObserver);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Fetch a credential template by ID
+     * </pre>
+     */
     public void get(
         trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest request,
         io.grpc.stub.StreamObserver<
@@ -335,7 +347,13 @@ public final class CredentialTemplatesGrpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetMethod(), responseObserver);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Search credential templates using SQL, returning strongly-typed template data
+     * </pre>
+     */
     public void list(
         trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest request,
         io.grpc.stub.StreamObserver<
@@ -344,7 +362,13 @@ public final class CredentialTemplatesGrpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListMethod(), responseObserver);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Search credential templates using SQL, returning raw JSON data
+     * </pre>
+     */
     public void search(
         trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
             request,
@@ -355,7 +379,13 @@ public final class CredentialTemplatesGrpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSearchMethod(), responseObserver);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Delete a credential template from the current ecosystem by ID
+     * </pre>
+     */
     public void delete(
         trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest request,
         io.grpc.stub.StreamObserver<
@@ -425,7 +455,13 @@ public final class CredentialTemplatesGrpc {
       return new CredentialTemplatesStub(channel, callOptions);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Create a credential template in the current ecosystem
+     * </pre>
+     */
     public void create(
         trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest request,
         io.grpc.stub.StreamObserver<
@@ -436,7 +472,13 @@ public final class CredentialTemplatesGrpc {
           getChannel().newCall(getCreateMethod(), getCallOptions()), request, responseObserver);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Fetch a credential template by ID
+     * </pre>
+     */
     public void get(
         trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest request,
         io.grpc.stub.StreamObserver<
@@ -446,7 +488,13 @@ public final class CredentialTemplatesGrpc {
           getChannel().newCall(getGetMethod(), getCallOptions()), request, responseObserver);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Search credential templates using SQL, returning strongly-typed template data
+     * </pre>
+     */
     public void list(
         trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest request,
         io.grpc.stub.StreamObserver<
@@ -456,7 +504,13 @@ public final class CredentialTemplatesGrpc {
           getChannel().newCall(getListMethod(), getCallOptions()), request, responseObserver);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Search credential templates using SQL, returning raw JSON data
+     * </pre>
+     */
     public void search(
         trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
             request,
@@ -468,7 +522,13 @@ public final class CredentialTemplatesGrpc {
           getChannel().newCall(getSearchMethod(), getCallOptions()), request, responseObserver);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Delete a credential template from the current ecosystem by ID
+     * </pre>
+     */
     public void delete(
         trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest request,
         io.grpc.stub.StreamObserver<
@@ -494,7 +554,13 @@ public final class CredentialTemplatesGrpc {
       return new CredentialTemplatesBlockingStub(channel, callOptions);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Create a credential template in the current ecosystem
+     * </pre>
+     */
     public trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse
         create(
             trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest
@@ -503,14 +569,26 @@ public final class CredentialTemplatesGrpc {
           getChannel(), getCreateMethod(), getCallOptions(), request);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Fetch a credential template by ID
+     * </pre>
+     */
     public trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse get(
         trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetMethod(), getCallOptions(), request);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Search credential templates using SQL, returning strongly-typed template data
+     * </pre>
+     */
     public trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse list(
         trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest
             request) {
@@ -518,7 +596,13 @@ public final class CredentialTemplatesGrpc {
           getChannel(), getListMethod(), getCallOptions(), request);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Search credential templates using SQL, returning raw JSON data
+     * </pre>
+     */
     public trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse
         search(
             trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
@@ -527,7 +611,13 @@ public final class CredentialTemplatesGrpc {
           getChannel(), getSearchMethod(), getCallOptions(), request);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Delete a credential template from the current ecosystem by ID
+     * </pre>
+     */
     public trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse
         delete(
             trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest
@@ -551,7 +641,13 @@ public final class CredentialTemplatesGrpc {
       return new CredentialTemplatesFutureStub(channel, callOptions);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Create a credential template in the current ecosystem
+     * </pre>
+     */
     public com.google.common.util.concurrent.ListenableFuture<
             trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse>
         create(
@@ -561,7 +657,13 @@ public final class CredentialTemplatesGrpc {
           getChannel().newCall(getCreateMethod(), getCallOptions()), request);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Fetch a credential template by ID
+     * </pre>
+     */
     public com.google.common.util.concurrent.ListenableFuture<
             trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse>
         get(
@@ -571,7 +673,13 @@ public final class CredentialTemplatesGrpc {
           getChannel().newCall(getGetMethod(), getCallOptions()), request);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Search credential templates using SQL, returning strongly-typed template data
+     * </pre>
+     */
     public com.google.common.util.concurrent.ListenableFuture<
             trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse>
         list(
@@ -581,7 +689,13 @@ public final class CredentialTemplatesGrpc {
           getChannel().newCall(getListMethod(), getCallOptions()), request);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Search credential templates using SQL, returning raw JSON data
+     * </pre>
+     */
     public com.google.common.util.concurrent.ListenableFuture<
             trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse>
         search(
@@ -591,7 +705,13 @@ public final class CredentialTemplatesGrpc {
           getChannel().newCall(getSearchMethod(), getCallOptions()), request);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Delete a credential template from the current ecosystem by ID
+     * </pre>
+     */
     public com.google.common.util.concurrent.ListenableFuture<
             trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse>
         delete(

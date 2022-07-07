@@ -9,12 +9,24 @@ public interface RemoveFrameworkRequestOrBuilder
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
+   * <pre>
+   * ID of governance framework to remove
+   * </pre>
+   *
    * <code>string id = 1;</code>
    *
    * @return The id.
    */
   java.lang.String getId();
   /**
+   *
+   *
+   * <pre>
+   * ID of governance framework to remove
+   * </pre>
+   *
    * <code>string id = 1;</code>
    *
    * @return The bytes for id.

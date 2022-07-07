@@ -104,7 +104,7 @@ public final class CheckStatusRequest extends com.google.protobuf.GeneratedMessa
    *
    *
    * <pre>
-   * Credential Status ID to check
+   * Credential Status ID to check. This is not the same as the credential's ID.
    * </pre>
    *
    * <code>string credential_status_id = 1;</code>
@@ -127,7 +127,7 @@ public final class CheckStatusRequest extends com.google.protobuf.GeneratedMessa
    *
    *
    * <pre>
-   * Credential Status ID to check
+   * Credential Status ID to check. This is not the same as the credential's ID.
    * </pre>
    *
    * <code>string credential_status_id = 1;</code>
@@ -473,7 +473,7 @@ public final class CheckStatusRequest extends com.google.protobuf.GeneratedMessa
      *
      *
      * <pre>
-     * Credential Status ID to check
+     * Credential Status ID to check. This is not the same as the credential's ID.
      * </pre>
      *
      * <code>string credential_status_id = 1;</code>
@@ -495,7 +495,7 @@ public final class CheckStatusRequest extends com.google.protobuf.GeneratedMessa
      *
      *
      * <pre>
-     * Credential Status ID to check
+     * Credential Status ID to check. This is not the same as the credential's ID.
      * </pre>
      *
      * <code>string credential_status_id = 1;</code>
@@ -517,7 +517,7 @@ public final class CheckStatusRequest extends com.google.protobuf.GeneratedMessa
      *
      *
      * <pre>
-     * Credential Status ID to check
+     * Credential Status ID to check. This is not the same as the credential's ID.
      * </pre>
      *
      * <code>string credential_status_id = 1;</code>
@@ -538,7 +538,7 @@ public final class CheckStatusRequest extends com.google.protobuf.GeneratedMessa
      *
      *
      * <pre>
-     * Credential Status ID to check
+     * Credential Status ID to check. This is not the same as the credential's ID.
      * </pre>
      *
      * <code>string credential_status_id = 1;</code>
@@ -555,7 +555,7 @@ public final class CheckStatusRequest extends com.google.protobuf.GeneratedMessa
      *
      *
      * <pre>
-     * Credential Status ID to check
+     * Credential Status ID to check. This is not the same as the credential's ID.
      * </pre>
      *
      * <code>string credential_status_id = 1;</code>

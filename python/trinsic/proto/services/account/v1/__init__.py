@@ -36,7 +36,7 @@ class ConfirmationMethod(betterproto.Enum):
     """Confirmation from a connected device is required"""
 
     Other = 10
-    """Indicates third-party method of confirmation is required"""
+    """Third-party method of confirmation is required"""
 
 
 @dataclass(eq=False, repr=False)
@@ -61,7 +61,7 @@ class AccountDetails(betterproto.Message):
     """Account name"""
 
     email: str = betterproto.string_field(2)
-    """Email account"""
+    """Email address of account"""
 
     sms: str = betterproto.string_field(3)
     """SMS number including country code"""
@@ -76,10 +76,7 @@ class SignInResponse(betterproto.Message):
     """
 
     confirmation_method: "ConfirmationMethod" = betterproto.enum_field(3)
-    """
-    Indicates if confirmation of account is required. This settings is
-    configured globally by the server administrator.
-    """
+    """Indicates if confirmation of account is required."""
 
     profile: "AccountProfile" = betterproto.message_field(4)
     """
@@ -159,12 +156,12 @@ class AccountInfoResponse(betterproto.Message):
 
     public_did: str = betterproto.string_field(6)
     """
-    The public DID associated with this account. This DID is used as "issuer"
-    when signing verifiable credentials
+    The public DID associated with this account. This DID is used as the
+    `issuer` when signing verifiable credentials
     """
 
     authorized_webhooks: List[str] = betterproto.string_field(7)
-    """Webhook events if any this wallet has authorized"""
+    """Webhook events, if any, this wallet has authorized"""
 
     def __post_init__(self) -> None:
         super().__post_init__()
@@ -196,6 +193,8 @@ class RevokeDeviceResponse(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class AccountEcosystem(betterproto.Message):
+    """Deprecated"""
+
     id: str = betterproto.string_field(1)
     name: str = betterproto.string_field(2)
     description: str = betterproto.string_field(3)
@@ -204,51 +203,72 @@ class AccountEcosystem(betterproto.Message):
 
 @dataclass(eq=False, repr=False)
 class LoginRequest(betterproto.Message):
+    """Request to begin login flow"""
+
     email: str = betterproto.string_field(1)
-    """Email account to associate with the login request"""
+    """
+    Email address of account. If unspecified, an anonymous account will be
+    created.
+    """
 
     invitation_code: str = betterproto.string_field(2)
     """Invitation code associated with this registration"""
 
     ecosystem_id: str = betterproto.string_field(3)
-    """ID of Ecosystem to sign into. Ignored if `invitation_code` is passed"""
+    """
+    ID of Ecosystem to sign into. Ignored if `invitation_code` is passed.
+    """
 
 
 @dataclass(eq=False, repr=False)
 class LoginResponse(betterproto.Message):
+    """Response to `LoginRequest`"""
+
     challenge: bytes = betterproto.bytes_field(1, group="response")
     """
-    Challenge response. Random byte sequence unique for this login request
+    Random byte sequence unique to this login request. If present, two-factor
+    confirmation of login is required. Must be sent back, unaltered, in
+    `LoginConfirm`.
     """
 
     profile: "AccountProfile" = betterproto.message_field(2, group="response")
     """
-    Profile response. The login isn't challenged and the token is returned in
-    this call. Does not require confirmation step
+    Account profile response. If present, no confirmation of login is required.
     """
 
 
 @dataclass(eq=False, repr=False)
 class LoginConfirmRequest(betterproto.Message):
+    """Request to finalize login flow"""
+
     challenge: bytes = betterproto.bytes_field(1)
-    """Login challenge received during the Login call"""
+    """Challenge received from `Login`"""
 
     confirmation_code_hashed: bytes = betterproto.bytes_field(2)
-    """Confirmation code received in email or SMS hashed using Blake3"""
+    """
+    Two-factor confirmation code sent to account email or phone, hashed using
+    Blake3. Our SDKs will handle this hashing process for you.
+    """
 
 
 @dataclass(eq=False, repr=False)
 class LoginConfirmResponse(betterproto.Message):
+    """Response to `LoginConfirmRequest`"""
+
     profile: "AccountProfile" = betterproto.message_field(1)
     """
-    Profile response. This profile may be protected and require
-    unblinding/unprotection using the raw hashed code
+    Profile response; must be unprotected using unhashed confirmation code. Our
+    SDKs will handle this process for you, and return to you an authentication
+    token string.
     """
 
 
 @dataclass(eq=False, repr=False)
 class AuthorizeWebhookRequest(betterproto.Message):
-    """Authorize ecosystem to receive wallet events"""
+    """
+    Request to authorize Ecosystem provider to receive webhooks for events
+    which occur on this wallet.
+    """
 
     events: List[str] = betterproto.string_field(1)
     """Events to authorize access to. Default is "*" (all events)"""

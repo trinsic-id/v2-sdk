@@ -169,10 +169,10 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Email account
+   * Email address of account
    * </pre>
    *
-   * <code>string email = 2;</code>
+   * <code>string email = 2 [(.services.options.optional) = true];</code>
    *
    * @return The email.
    */
@@ -192,10 +192,10 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Email account
+   * Email address of account
    * </pre>
    *
-   * <code>string email = 2;</code>
+   * <code>string email = 2 [(.services.options.optional) = true];</code>
    *
    * @return The bytes for email.
    */
@@ -720,10 +720,10 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Email account
+     * Email address of account
      * </pre>
      *
-     * <code>string email = 2;</code>
+     * <code>string email = 2 [(.services.options.optional) = true];</code>
      *
      * @return The email.
      */
@@ -742,10 +742,10 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Email account
+     * Email address of account
      * </pre>
      *
-     * <code>string email = 2;</code>
+     * <code>string email = 2 [(.services.options.optional) = true];</code>
      *
      * @return The bytes for email.
      */
@@ -764,10 +764,10 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Email account
+     * Email address of account
      * </pre>
      *
-     * <code>string email = 2;</code>
+     * <code>string email = 2 [(.services.options.optional) = true];</code>
      *
      * @param value The email to set.
      * @return This builder for chaining.
@@ -785,10 +785,10 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Email account
+     * Email address of account
      * </pre>
      *
-     * <code>string email = 2;</code>
+     * <code>string email = 2 [(.services.options.optional) = true];</code>
      *
      * @return This builder for chaining.
      */
@@ -802,10 +802,10 @@ public final class AccountDetails extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Email account
+     * Email address of account
      * </pre>
      *
-     * <code>string email = 2;</code>
+     * <code>string email = 2 [(.services.options.optional) = true];</code>
      *
      * @param value The bytes for email to set.
      * @return This builder for chaining.

@@ -77,11 +77,7 @@ export interface SearchCredentialTemplatesResponse {
   itemsJson: string;
   /** Whether more results are available for this query via `continuation_token` */
   hasMore: boolean;
-  /**
-   * Count of items in `items_json`
-   * int32 count = 3; unpopulated and unused
-   * Token to fetch next set of results via `SearchCredentialTemplatesRequest`
-   */
+  /** Token to fetch next set of results via `SearchCredentialTemplatesRequest` */
   continuationToken: string;
 }
 
@@ -1519,6 +1515,7 @@ export const CredentialTemplatesDefinition = {
   name: "CredentialTemplates",
   fullName: "services.verifiablecredentials.templates.v1.CredentialTemplates",
   methods: {
+    /** Create a credential template in the current ecosystem */
     create: {
       name: "Create",
       requestType: CreateCredentialTemplateRequest,
@@ -1527,6 +1524,7 @@ export const CredentialTemplatesDefinition = {
       responseStream: false,
       options: {},
     },
+    /** Fetch a credential template by ID */
     get: {
       name: "Get",
       requestType: GetCredentialTemplateRequest,
@@ -1535,6 +1533,7 @@ export const CredentialTemplatesDefinition = {
       responseStream: false,
       options: {},
     },
+    /** Search credential templates using SQL, returning strongly-typed template data */
     list: {
       name: "List",
       requestType: ListCredentialTemplatesRequest,
@@ -1543,6 +1542,7 @@ export const CredentialTemplatesDefinition = {
       responseStream: false,
       options: {},
     },
+    /** Search credential templates using SQL, returning raw JSON data */
     search: {
       name: "Search",
       requestType: SearchCredentialTemplatesRequest,
@@ -1551,6 +1551,7 @@ export const CredentialTemplatesDefinition = {
       responseStream: false,
       options: {},
     },
+    /** Delete a credential template from the current ecosystem by ID */
     delete: {
       name: "Delete",
       requestType: DeleteCredentialTemplateRequest,

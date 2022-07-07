@@ -34,6 +34,7 @@ const SignInRequest$json = const {
       '4': 1,
       '5': 11,
       '6': '.services.account.v1.AccountDetails',
+      '8': const {},
       '10': 'details'
     },
     const {
@@ -57,20 +58,20 @@ const SignInRequest$json = const {
 
 /// Descriptor for `SignInRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List signInRequestDescriptor = $convert.base64Decode(
-    'Cg1TaWduSW5SZXF1ZXN0Ej0KB2RldGFpbHMYASABKAsyIy5zZXJ2aWNlcy5hY2NvdW50LnYxLkFjY291bnREZXRhaWxzUgdkZXRhaWxzEi0KD2ludml0YXRpb25fY29kZRgCIAEoCUIEgKYdAVIOaW52aXRhdGlvbkNvZGUSJwoMZWNvc3lzdGVtX2lkGAMgASgJQgSAph0BUgtlY29zeXN0ZW1JZA==');
+    'Cg1TaWduSW5SZXF1ZXN0EkMKB2RldGFpbHMYASABKAsyIy5zZXJ2aWNlcy5hY2NvdW50LnYxLkFjY291bnREZXRhaWxzQgSAph0BUgdkZXRhaWxzEi0KD2ludml0YXRpb25fY29kZRgCIAEoCUIEgKYdAVIOaW52aXRhdGlvbkNvZGUSJwoMZWNvc3lzdGVtX2lkGAMgASgJQgSAph0BUgtlY29zeXN0ZW1JZA==');
 @$core.Deprecated('Use accountDetailsDescriptor instead')
 const AccountDetails$json = const {
   '1': 'AccountDetails',
   '2': const [
     const {'1': 'name', '3': 1, '4': 1, '5': 9, '8': const {}, '10': 'name'},
-    const {'1': 'email', '3': 2, '4': 1, '5': 9, '10': 'email'},
+    const {'1': 'email', '3': 2, '4': 1, '5': 9, '8': const {}, '10': 'email'},
     const {'1': 'sms', '3': 3, '4': 1, '5': 9, '8': const {}, '10': 'sms'},
   ],
 };
 
 /// Descriptor for `AccountDetails`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List accountDetailsDescriptor = $convert.base64Decode(
-    'Cg5BY2NvdW50RGV0YWlscxIYCgRuYW1lGAEgASgJQgSAph0BUgRuYW1lEhQKBWVtYWlsGAIgASgJUgVlbWFpbBIWCgNzbXMYAyABKAlCBICmHQFSA3Ntcw==');
+    'Cg5BY2NvdW50RGV0YWlscxIYCgRuYW1lGAEgASgJQgSAph0BUgRuYW1lEhoKBWVtYWlsGAIgASgJQgSAph0BUgVlbWFpbBIWCgNzbXMYAyABKAlCBICmHQFSA3Ntcw==');
 @$core.Deprecated('Use signInResponseDescriptor instead')
 const SignInResponse$json = const {
   '1': 'SignInResponse',

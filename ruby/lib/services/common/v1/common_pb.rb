@@ -5,11 +5,6 @@ require 'google/protobuf'
 
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("services/common/v1/common.proto", :syntax => :proto3) do
-    add_message "services.common.v1.ServerConfig" do
-      optional :endpoint, :string, 1
-      optional :port, :int32, 2
-      optional :use_tls, :bool, 3
-    end
     add_message "services.common.v1.Nonce" do
       optional :timestamp, :int64, 1
       optional :request_hash, :bytes, 2
@@ -28,7 +23,6 @@ end
 module Services
   module Common
     module V1
-      ServerConfig = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.common.v1.ServerConfig").msgclass
       Nonce = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.common.v1.Nonce").msgclass
       ResponseStatus = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.common.v1.ResponseStatus").enummodule
     end

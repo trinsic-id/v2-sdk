@@ -12,7 +12,7 @@ public interface GetOberonKeyResponseOrBuilder
    *
    *
    * <pre>
-   * Oberon Public Key as RAW base64 URL encoded string
+   * Oberon Public Key as RAW base64-url encoded string
    * </pre>
    *
    * <code>string key = 1;</code>
@@ -24,7 +24,7 @@ public interface GetOberonKeyResponseOrBuilder
    *
    *
    * <pre>
-   * Oberon Public Key as RAW base64 URL encoded string
+   * Oberon Public Key as RAW base64-url encoded string
    * </pre>
    *
    * <code>string key = 1;</code>

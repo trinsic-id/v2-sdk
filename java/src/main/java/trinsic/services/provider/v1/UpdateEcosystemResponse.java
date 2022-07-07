@@ -108,6 +108,12 @@ public final class UpdateEcosystemResponse extends com.google.protobuf.Generated
   public static final int ECOSYSTEM_FIELD_NUMBER = 1;
   private trinsic.services.provider.v1.Ecosystem ecosystem_;
   /**
+   *
+   *
+   * <pre>
+   * Current ecosystem metadata, post-update
+   * </pre>
+   *
    * <code>.services.provider.v1.Ecosystem Ecosystem = 1;</code>
    *
    * @return Whether the ecosystem field is set.
@@ -117,6 +123,12 @@ public final class UpdateEcosystemResponse extends com.google.protobuf.Generated
     return ecosystem_ != null;
   }
   /**
+   *
+   *
+   * <pre>
+   * Current ecosystem metadata, post-update
+   * </pre>
+   *
    * <code>.services.provider.v1.Ecosystem Ecosystem = 1;</code>
    *
    * @return The ecosystem.
@@ -127,7 +139,15 @@ public final class UpdateEcosystemResponse extends com.google.protobuf.Generated
         ? trinsic.services.provider.v1.Ecosystem.getDefaultInstance()
         : ecosystem_;
   }
-  /** <code>.services.provider.v1.Ecosystem Ecosystem = 1;</code> */
+  /**
+   *
+   *
+   * <pre>
+   * Current ecosystem metadata, post-update
+   * </pre>
+   *
+   * <code>.services.provider.v1.Ecosystem Ecosystem = 1;</code>
+   */
   @java.lang.Override
   public trinsic.services.provider.v1.EcosystemOrBuilder getEcosystemOrBuilder() {
     return getEcosystem();
@@ -470,6 +490,12 @@ public final class UpdateEcosystemResponse extends com.google.protobuf.Generated
             trinsic.services.provider.v1.EcosystemOrBuilder>
         ecosystemBuilder_;
     /**
+     *
+     *
+     * <pre>
+     * Current ecosystem metadata, post-update
+     * </pre>
+     *
      * <code>.services.provider.v1.Ecosystem Ecosystem = 1;</code>
      *
      * @return Whether the ecosystem field is set.
@@ -478,6 +504,12 @@ public final class UpdateEcosystemResponse extends com.google.protobuf.Generated
       return ecosystemBuilder_ != null || ecosystem_ != null;
     }
     /**
+     *
+     *
+     * <pre>
+     * Current ecosystem metadata, post-update
+     * </pre>
+     *
      * <code>.services.provider.v1.Ecosystem Ecosystem = 1;</code>
      *
      * @return The ecosystem.
@@ -491,7 +523,15 @@ public final class UpdateEcosystemResponse extends com.google.protobuf.Generated
         return ecosystemBuilder_.getMessage();
       }
     }
-    /** <code>.services.provider.v1.Ecosystem Ecosystem = 1;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Current ecosystem metadata, post-update
+     * </pre>
+     *
+     * <code>.services.provider.v1.Ecosystem Ecosystem = 1;</code>
+     */
     public Builder setEcosystem(trinsic.services.provider.v1.Ecosystem value) {
       if (ecosystemBuilder_ == null) {
         if (value == null) {
@@ -505,7 +545,15 @@ public final class UpdateEcosystemResponse extends com.google.protobuf.Generated
 
       return this;
     }
-    /** <code>.services.provider.v1.Ecosystem Ecosystem = 1;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Current ecosystem metadata, post-update
+     * </pre>
+     *
+     * <code>.services.provider.v1.Ecosystem Ecosystem = 1;</code>
+     */
     public Builder setEcosystem(trinsic.services.provider.v1.Ecosystem.Builder builderForValue) {
       if (ecosystemBuilder_ == null) {
         ecosystem_ = builderForValue.build();
@@ -516,7 +564,15 @@ public final class UpdateEcosystemResponse extends com.google.protobuf.Generated
 
       return this;
     }
-    /** <code>.services.provider.v1.Ecosystem Ecosystem = 1;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Current ecosystem metadata, post-update
+     * </pre>
+     *
+     * <code>.services.provider.v1.Ecosystem Ecosystem = 1;</code>
+     */
     public Builder mergeEcosystem(trinsic.services.provider.v1.Ecosystem value) {
       if (ecosystemBuilder_ == null) {
         if (ecosystem_ != null) {
@@ -534,7 +590,15 @@ public final class UpdateEcosystemResponse extends com.google.protobuf.Generated
 
       return this;
     }
-    /** <code>.services.provider.v1.Ecosystem Ecosystem = 1;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Current ecosystem metadata, post-update
+     * </pre>
+     *
+     * <code>.services.provider.v1.Ecosystem Ecosystem = 1;</code>
+     */
     public Builder clearEcosystem() {
       if (ecosystemBuilder_ == null) {
         ecosystem_ = null;
@@ -546,13 +610,29 @@ public final class UpdateEcosystemResponse extends com.google.protobuf.Generated
 
       return this;
     }
-    /** <code>.services.provider.v1.Ecosystem Ecosystem = 1;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Current ecosystem metadata, post-update
+     * </pre>
+     *
+     * <code>.services.provider.v1.Ecosystem Ecosystem = 1;</code>
+     */
     public trinsic.services.provider.v1.Ecosystem.Builder getEcosystemBuilder() {
 
       onChanged();
       return getEcosystemFieldBuilder().getBuilder();
     }
-    /** <code>.services.provider.v1.Ecosystem Ecosystem = 1;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Current ecosystem metadata, post-update
+     * </pre>
+     *
+     * <code>.services.provider.v1.Ecosystem Ecosystem = 1;</code>
+     */
     public trinsic.services.provider.v1.EcosystemOrBuilder getEcosystemOrBuilder() {
       if (ecosystemBuilder_ != null) {
         return ecosystemBuilder_.getMessageOrBuilder();
@@ -562,7 +642,15 @@ public final class UpdateEcosystemResponse extends com.google.protobuf.Generated
             : ecosystem_;
       }
     }
-    /** <code>.services.provider.v1.Ecosystem Ecosystem = 1;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Current ecosystem metadata, post-update
+     * </pre>
+     *
+     * <code>.services.provider.v1.Ecosystem Ecosystem = 1;</code>
+     */
     private com.google.protobuf.SingleFieldBuilderV3<
             trinsic.services.provider.v1.Ecosystem,
             trinsic.services.provider.v1.Ecosystem.Builder,

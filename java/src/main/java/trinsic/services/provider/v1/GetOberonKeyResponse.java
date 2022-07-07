@@ -7,7 +7,7 @@ package trinsic.services.provider.v1;
  *
  *
  * <pre>
- * response message for GetOberonKey
+ * Response to `GetOberonKeyRequest`
  * </pre>
  *
  * Protobuf type {@code services.provider.v1.GetOberonKeyResponse}
@@ -104,7 +104,7 @@ public final class GetOberonKeyResponse extends com.google.protobuf.GeneratedMes
    *
    *
    * <pre>
-   * Oberon Public Key as RAW base64 URL encoded string
+   * Oberon Public Key as RAW base64-url encoded string
    * </pre>
    *
    * <code>string key = 1;</code>
@@ -127,7 +127,7 @@ public final class GetOberonKeyResponse extends com.google.protobuf.GeneratedMes
    *
    *
    * <pre>
-   * Oberon Public Key as RAW base64 URL encoded string
+   * Oberon Public Key as RAW base64-url encoded string
    * </pre>
    *
    * <code>string key = 1;</code>
@@ -310,7 +310,7 @@ public final class GetOberonKeyResponse extends com.google.protobuf.GeneratedMes
    *
    *
    * <pre>
-   * response message for GetOberonKey
+   * Response to `GetOberonKeyRequest`
    * </pre>
    *
    * Protobuf type {@code services.provider.v1.GetOberonKeyResponse}
@@ -470,7 +470,7 @@ public final class GetOberonKeyResponse extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Oberon Public Key as RAW base64 URL encoded string
+     * Oberon Public Key as RAW base64-url encoded string
      * </pre>
      *
      * <code>string key = 1;</code>
@@ -492,7 +492,7 @@ public final class GetOberonKeyResponse extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Oberon Public Key as RAW base64 URL encoded string
+     * Oberon Public Key as RAW base64-url encoded string
      * </pre>
      *
      * <code>string key = 1;</code>
@@ -514,7 +514,7 @@ public final class GetOberonKeyResponse extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Oberon Public Key as RAW base64 URL encoded string
+     * Oberon Public Key as RAW base64-url encoded string
      * </pre>
      *
      * <code>string key = 1;</code>
@@ -535,7 +535,7 @@ public final class GetOberonKeyResponse extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Oberon Public Key as RAW base64 URL encoded string
+     * Oberon Public Key as RAW base64-url encoded string
      * </pre>
      *
      * <code>string key = 1;</code>
@@ -552,7 +552,7 @@ public final class GetOberonKeyResponse extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Oberon Public Key as RAW base64 URL encoded string
+     * Oberon Public Key as RAW base64-url encoded string
      * </pre>
      *
      * <code>string key = 1;</code>

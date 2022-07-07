@@ -837,3 +837,21 @@ class ItemReceived extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearReceived() => clearField(2);
 }
+
+class EventExt {
+  static final eventType = $pb.Extension<EventType>(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'google.protobuf.MessageOptions',
+      const $core.bool.fromEnvironment('protobuf.omit_field_names')
+          ? ''
+          : 'eventType',
+      60002,
+      $pb.PbFieldType.OE,
+      defaultOrMaker: EventType.PING,
+      valueOf: EventType.valueOf,
+      enumValues: EventType.values);
+  static void registerAllExtensions($pb.ExtensionRegistry registry) {
+    registry.add(eventType);
+  }
+}

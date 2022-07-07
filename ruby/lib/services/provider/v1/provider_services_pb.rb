@@ -20,9 +20,9 @@ module Services
           rpc :CreateEcosystem, ::Services::Provider::V1::CreateEcosystemRequest, ::Services::Provider::V1::CreateEcosystemResponse
           # Update an existing ecosystem
           rpc :UpdateEcosystem, ::Services::Provider::V1::UpdateEcosystemRequest, ::Services::Provider::V1::UpdateEcosystemResponse
-          # Grant authorization to ecosystem resources
+          # Grant user authorization to ecosystem resources
           rpc :GrantAuthorization, ::Services::Provider::V1::GrantAuthorizationRequest, ::Services::Provider::V1::GrantAuthorizationResponse
-          # Revoke authorization to ecosystem resources
+          # Revoke user authorization to ecosystem resources
           rpc :RevokeAuthorization, ::Services::Provider::V1::RevokeAuthorizationRequest, ::Services::Provider::V1::RevokeAuthorizationResponse
           # Retreive the list of permissions for this particular account/ecosystem
           rpc :GetAuthorizations, ::Services::Provider::V1::GetAuthorizationsRequest, ::Services::Provider::V1::GetAuthorizationsResponse
@@ -37,7 +37,7 @@ module Services
           rpc :GenerateToken, ::Services::Provider::V1::GenerateTokenRequest, ::Services::Provider::V1::GenerateTokenResponse
           # Invite a user to the ecosystem
           rpc :Invite, ::Services::Provider::V1::InviteRequest, ::Services::Provider::V1::InviteResponse
-          # Check the invitation status
+          # Check the status of an invitation
           rpc :InvitationStatus, ::Services::Provider::V1::InvitationStatusRequest, ::Services::Provider::V1::InvitationStatusResponse
           # Returns the public key being used to create/verify oberon tokens
           rpc :GetOberonKey, ::Services::Provider::V1::GetOberonKeyRequest, ::Services::Provider::V1::GetOberonKeyResponse
