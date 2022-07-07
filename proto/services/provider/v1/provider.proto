@@ -10,14 +10,7 @@ option java_multiple_files = true;
 import "services/account/v1/account.proto";
 import "services/options/field-options.proto";
 
-message Invite {
-    string id = 1;
-    string code = 2;
-    string created = 3;
-    string accepted = 4;
-    string expires = 5;
-}
-
+// Request to invite a participant to an ecosystem
 message InviteRequest {
     // Type of participant being invited (individual/organization)
     ParticipantType participant = 1;
@@ -30,29 +23,32 @@ message InviteRequest {
 
     message DidCommInvitation {}
 }
+
+// Type of participant being invited to ecosystem
 enum ParticipantType {
+    // Participant is an individual
     participant_type_individual = 0;
+
+    // Participant is an organization
     participant_type_organization = 1;
 }
 
+// Response to `InviteRequest`
 message InviteResponse {
     // ID of created invitation
     string invitation_id = 10;
 
-    // Invitation Code that must be passed with the account 'SignIn' request
-    // to correlate this user with the invitation sent.
+    // Invitation code -- must be passed back in `LoginRequest`
     string invitation_code = 11;
 }
 
-// Request details for the status of onboarding
-// an individual or organization.
-// The reference_id passed is the response from the
-// `Onboard` method call
+// Request details for the status of an invitation
 message InvitationStatusRequest {
-    // ID of invitation
+    // ID of invitation, received from `InviteResponse`
     string invitation_id = 1;
 }
 
+// Response to `InvitationStatusRequest`
 message InvitationStatusResponse {
     enum Status {
         // Onboarding resulted in error
@@ -75,6 +71,7 @@ message InvitationStatusResponse {
     string status_details = 2;
 }
 
+// Details of an ecosystem
 message Ecosystem {
     // URN of the ecosystem
     string id = 1;
@@ -92,20 +89,22 @@ message Ecosystem {
     repeated WebhookConfig webhooks = 5;
 }
 
+// Webhook configured on an ecosystem
 message WebhookConfig {
     // UUID of the webhook
     string id = 1;
 
-    // Destination to post webhook calls to
+    // HTTPS URL to POST webhook calls to
     string destination_url = 2;
 
     // Events the webhook is subscribed to
     repeated string events = 4;
 
-    // Whether we are able to sucessfully send events to the webhook
+    // Last known status of webhook (whether or not Trinsic can successfully reach destination)
     string status = 5;
 }
 
+// A grant authorizing `actions` on a `resourceId`
 message Grant {
     // the urn of the resource
     string resourceId = 1;
@@ -117,48 +116,56 @@ message Grant {
     repeated Grant child_grants = 3;
 }
 
+// Request to create an ecosystem
 message CreateEcosystemRequest {
     // Globally unique name for the Ecosystem. This name will be
-    // part of the ecosystem specific URLs and namespaces.
+    // part of the ecosystem-specific URLs and namespaces.
     // Allowed characters are lowercase letters, numbers, underscore and hyphen.
-    string name = 1;
+    // If not passed, ecosystem name will be auto-generated.
+    string name = 1 [(options.optional)=true];
+
     // Ecosystem description
     string description = 2 [(options.optional)=true];
+
     // External URL associated with your organization or ecosystem entity
     string uri = 3 [(options.optional)=true];
+
     // The account details of the owner of the ecosystem
     services.account.v1.AccountDetails details = 4;
 }
 
+// Response to `CreateEcosystemRequest`
 message CreateEcosystemResponse {
     // Details of the created ecosystem
     Ecosystem ecosystem = 1;
     // Account profile for auth of the owner of the ecosystem
     services.account.v1.AccountProfile profile = 2;
     // Indicates if confirmation of account is required.
-    // This setting is configured globally by the server administrator.
     services.account.v1.ConfirmationMethod confirmation_method = 3;
 }
 
-// Request to update an ecosystem
+// Request to update an ecosystem's metadata
 message UpdateEcosystemRequest {
-    // Description of the ecosystem
+    // New description of the ecosystem
     string description = 1;
-    // External URL associated with the organization or ecosystem entity
+    // New external URL associated with the organization or ecosystem entity
     string uri = 2;
 }
 
 // Response to `UpdateEcosystemRequest`
 message UpdateEcosystemResponse {
+    // Current ecosystem metadata, post-update
     Ecosystem Ecosystem = 1;
 }
 
 // Request to add a webhook to an ecosystem
 message AddWebhookRequest {
-    // Destination to post webhook calls to
+    // Destination to post webhook calls to.
+    // Must be a reachable HTTPS URL.
     string destination_url = 1;
 
-    // HMAC secret for webhook validation
+    // Secret string used for HMAC-SHA256 signing of webhook payloads
+    // to verify that a webhook comes from Trinsic
     string secret = 2;
 
     // Events to subscribe to. Default is "*" (all events)
@@ -167,7 +174,7 @@ message AddWebhookRequest {
 
 // Response to `AddWebhookRequest`
 message AddWebhookResponse {
-     // Ecosystem with new webhook
+    // Ecosystem data with new webhook
     Ecosystem ecosystem = 1;
 }
 
@@ -179,7 +186,7 @@ message DeleteWebhookRequest {
 
 // Response to `DeleteWebhookRequest`
 message DeleteWebhookResponse {
-     // Ecosystem after removal of webhook
+    // Ecosystem data after removal of webhook
     Ecosystem ecosystem = 1;
 }
 
@@ -192,88 +199,115 @@ message EcosystemInfoResponse {
     Ecosystem ecosystem = 1;
 }
 
+// Request to generate an authentication token for the current account
 message GenerateTokenRequest {
     // Description to identify this token
     string description = 1 [(options.optional)=true];
 }
+
+// Response to `GenerateTokenRequest`
 message GenerateTokenResponse {
     // Account authentication profile that contains unprotected token
     services.account.v1.AccountProfile profile = 1;
 }
 
 
-// request message for GetOberonKey
+// Request to fetch the Trinsic public key used
+// to verify authentication token validity
 message GetOberonKeyRequest {
 }
 
-// response message for GetOberonKey
+// Response to `GetOberonKeyRequest`
 message GetOberonKeyResponse {
-    string key = 1; // Oberon Public Key as RAW base64 URL encoded string
+    // Oberon Public Key as RAW base64-url encoded string
+    string key = 1; 
 }
 
-// generates an events token bound to the provided ed25519 pk
+// Generates an events token bound to the provided ed25519 public key.
 message GetEventTokenRequest {
-    bytes pk = 1; // 
+    // Raw public key to generate event token for
+    bytes pk = 1;
 }
 
-// response message containing a token (JWT) that can be used
+// Response message containing a token (JWT) that can be used
 // to connect directly to the message streaming architecture
 message GetEventTokenResponse {
-    string token = 1; // a JWT bound to the PK provided in the request
+    // JWT bound to the public key provided in `GetEventTokenRequest`
+    string token = 1; 
 }
 
-// grant permissions to a resource or path in the ecosystem
+// Grant permissions to a resource or path in the ecosystem
 message GrantAuthorizationRequest {
     oneof account {
-        string email = 1; // email associted with the account
+        // Email address of account being granted permission.
+        // Mutually exclusive with `walletId`.
+        string email = 1;
     
-        string walletId = 2; // wallet id of the account
+        // Wallet ID of account being granted permission.
+        // Mutually exclusive with `email`.
+        string walletId = 2;
     }
 
-    string resource = 3; // resources are specified as a restful path: /{ecoId}/{resource type}/{resource id}. EcosystemId maybe ommited
+    // Resource string that account is receiving permissions for.
+    // Resources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted.
+    string resource = 3; 
 
-    string action = 4; // action to authorize. default is "*" (all)
+    // Action to authorize. Default is "*" (all)
+    string action = 4; 
 }
 
+
+// Response to `GrantAuthorizationRequest`
 message GrantAuthorizationResponse {
 }
 
-// revoke permissions to a resource or path in the ecosystem
+// Revoke permissions to a resource or path in the ecosystem
 message RevokeAuthorizationRequest {
     oneof account {
-        string email = 1; // email associted with the account
+        // Email address of account having permission revoked.
+        // Mutually exclusive with `walletId`.
+        string email = 1;
     
-        string walletId = 2; // wallet id of the account
+        // Wallet ID of account having permission revoked.
+        // Mutually exclusive with `email`.
+        string walletId = 2;
     }
-    string resource = 3; // resources are specified as a restful path: /{ecoId}/{resource type}/{resource id}. EcosystemId maybe ommited
 
-    string action = 4; // action to revoke. default is "*" (all)
+     // Resource string that account is losing permissions for.
+    // Resources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted.
+    string resource = 3;
+
+    // Action to revoke. Default is "*" (all)
+    string action = 4; 
 }
 
+// Response to `RevokeAuthorizationRequest`
 message RevokeAuthorizationResponse {
 }
 
+// Fetch list of grants that the current account has access to
+// in its ecosystem
 message GetAuthorizationsRequest{
 }
 
+// Response to `GetAuthorizationsRequest`
 message GetAuthorizationsResponse {
+    // Grants attached to account
     repeated Grant grants = 1;
 }
 
 
 service Provider {
     // Create new ecosystem and assign the authenticated user as owner
-    rpc CreateEcosystem(CreateEcosystemRequest) returns (CreateEcosystemResponse) {
-        option (options.sdk_template_option).ignore = true;
-    }
+    rpc CreateEcosystem(CreateEcosystemRequest) returns (CreateEcosystemResponse);
 
     // Update an existing ecosystem
     rpc UpdateEcosystem(UpdateEcosystemRequest) returns (UpdateEcosystemResponse);
 
-    // Grant authorization to ecosystem resources
+    // Grant user authorization to ecosystem resources
     rpc GrantAuthorization(GrantAuthorizationRequest) returns (GrantAuthorizationResponse);
     
-    // Revoke authorization to ecosystem resources
+    // Revoke user authorization to ecosystem resources
     rpc RevokeAuthorization(RevokeAuthorizationRequest) returns (RevokeAuthorizationResponse);
 
     // Retreive the list of permissions for this particular account/ecosystem
@@ -295,7 +329,7 @@ service Provider {
     // Invite a user to the ecosystem
     rpc Invite(InviteRequest) returns (InviteResponse);
 
-    // Check the invitation status
+    // Check the status of an invitation
     rpc InvitationStatus(InvitationStatusRequest) returns (InvitationStatusResponse);
 
     // Returns the public key being used to create/verify oberon tokens

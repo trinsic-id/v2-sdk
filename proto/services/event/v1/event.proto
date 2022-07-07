@@ -6,6 +6,16 @@ option go_package = "./eventpb";
 option java_package = "trinsic.services.event.v1";
 option java_multiple_files = true;
 
+
+import "google/protobuf/descriptor.proto";
+
+extend google.protobuf.MessageOptions {
+    // Event type associated with this Event message.
+    optional EventType event_type = 60002;
+}
+
+
+// All event types
 enum EventType {
     PING = 0;
     LOG = 1;
@@ -21,18 +31,18 @@ enum EventType {
     ITEM_RECEIVED = 16;
 }
 
-// System event
+// Event 
 message Event {
-    // UUID for the event
+    // UUID of event
     string id = 1;
     
-    // event type
+    // Type of event
     EventType type = 2; 
     
-    // when the event occured
+    // Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
     string timestamp = 3;
 
-    // data payload - will be encoded proto message for the event type
+    // Event-specific payload, as an encoded protobuf message
     bytes data = 4;
 }
 
@@ -42,50 +52,57 @@ message APICall {
     bytes response = 3;
 }
 
-// Message to test webhook functionality
+// Webhook test event
 message Ping {
+    option (event_type) = PING;
+
     // UUID of this ping
     string id = 1;
 
     // UUID of the webhook receiving the ping
     string webhook_id = 2;
 
-    // when this was generated
+    // Timestamp ping was requested, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
     string timestamp = 3;
     
-    // message to be sent (e.g. I'm a teapot)
+    // Arbitrary message specified when ping was requested
     string message = 4;
 }
 
 
+// Entity Governance Framework created and attached to ecosystem
 message EGFCreated{
+    option (event_type) = EGF_CREATED;
+
     // UUID of the governance framework
     string id = 1;
 
-    // UUID of the ecosystem that owns this egf
+    // UUID of the ecosystem that owns this EGF
     string ecosystem_id = 2;
 
-    // Trust registry assoicated with this egf
+    // Trust registry associated with this EGF
     string trust_registry  = 3;
 
-    // Wallet ID of the aurhority for this egf
+    // Wallet ID of the authority for this EGF
     string governing_authority = 4;
 
-    // Type of egf 
+    // Type of EGF
     string type = 5;
 
-    // User friendly name for the egf
+    // User-friendly name for the EGF
     string name = 6;
 
-    // Description of the egf
+    // Description of the EGF
     string description = 7;
 
-    // URI for the egf
+    // URI for the EGF
     string governance_framework = 8;
 }
 
-
+// Template created in ecosystem
 message TemplateCreated {
+    option (event_type) = TEMPLATE_CREATED;
+
     // UUID of the template
     string id = 1;
 
@@ -95,17 +112,20 @@ message TemplateCreated {
     // Template name
     string name = 3;
 
-    // Tempalte type
+    // Template type
     string type = 4;
 
     // WalletID that created the template
     string created_by = 5;
 }
 
+// Item inserted into wallet
 message ItemReceived {
+    option (event_type) = ITEM_RECEIVED;
+    
     // UUID of the new item
     string id = 1;
 
-    // Timestamp when the item was received
+    // Timestamp when the item was received, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
     string received = 2;
 }
