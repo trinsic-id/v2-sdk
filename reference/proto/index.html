@@ -14,7 +14,7 @@
         
       
       <link rel="icon" href="../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9+insiders-4.19.2">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9+insiders-4.20.0">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.6661e186.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.19db47b7.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
@@ -1188,15 +1188,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#serverconfig" class="md-nav__link">
-    <span class="md-ellipsis">
-      ServerConfig
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#responsestatus" class="md-nav__link">
     <span class="md-ellipsis">
       ResponseStatus
@@ -1962,15 +1953,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#invite" class="md-nav__link">
-    <span class="md-ellipsis">
-      Invite
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#inviterequest" class="md-nav__link">
     <span class="md-ellipsis">
       InviteRequest
@@ -2301,6 +2283,15 @@
   <a href="#eventtype" class="md-nav__link">
     <span class="md-ellipsis">
       EventType
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-level-extensions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      File-level Extensions
     </span>
   </a>
   
@@ -3130,34 +3121,6 @@
 </tr>
 </tbody>
 </table>
-<p><a name="services-common-v1-ServerConfig"></a></p>
-<h3 id="serverconfig">ServerConfig<a class="headerlink" href="#serverconfig" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>endpoint</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>service endpoint</td>
-</tr>
-<tr>
-<td>port</td>
-<td><a href="/reference/proto#int32">int32</a></td>
-<td>service port</td>
-</tr>
-<tr>
-<td>use_tls</td>
-<td><a href="/reference/proto#bool">bool</a></td>
-<td>indicates if tls is used</td>
-</tr>
-</tbody>
-</table>
 <!-- end messages -->
 
 <p><a name="services-common-v1-ResponseStatus"></a></p>
@@ -3227,12 +3190,12 @@
 <tr>
 <td>anonymous</td>
 <td><a href="/reference/proto#bool">bool</a></td>
-<td>Whether the service endpoint allows anonymous (no Oberon) authentication This is used by the <code>protoc-gen-trinsic-sdk</code> plugin for metadata.</td>
+<td>Whether the service endpoint allows anonymous (no auth token necessary) authentication This is used by the <code>protoc-gen-trinsic-sdk</code> plugin for metadata.</td>
 </tr>
 <tr>
 <td>ignore</td>
 <td><a href="/reference/proto#bool">bool</a></td>
-<td>Whether the SDK template generator should ignoroe this method. This method will be wrapped manually.</td>
+<td>Whether the SDK template generator should ignore this method. This method will be wrapped manually.</td>
 </tr>
 </tbody>
 </table>
@@ -3291,31 +3254,31 @@
 <td>Create</td>
 <td><a href="/reference/proto#services-verifiablecredentials-templates-v1-CreateCredentialTemplateRequest">CreateCredentialTemplateRequest</a></td>
 <td><a href="/reference/proto#services-verifiablecredentials-templates-v1-CreateCredentialTemplateResponse">CreateCredentialTemplateResponse</a></td>
-<td></td>
+<td>Create a credential template in the current ecosystem</td>
 </tr>
 <tr>
 <td>Get</td>
 <td><a href="/reference/proto#services-verifiablecredentials-templates-v1-GetCredentialTemplateRequest">GetCredentialTemplateRequest</a></td>
 <td><a href="/reference/proto#services-verifiablecredentials-templates-v1-GetCredentialTemplateResponse">GetCredentialTemplateResponse</a></td>
-<td></td>
+<td>Fetch a credential template by ID</td>
 </tr>
 <tr>
 <td>List</td>
 <td><a href="/reference/proto#services-verifiablecredentials-templates-v1-ListCredentialTemplatesRequest">ListCredentialTemplatesRequest</a></td>
 <td><a href="/reference/proto#services-verifiablecredentials-templates-v1-ListCredentialTemplatesResponse">ListCredentialTemplatesResponse</a></td>
-<td></td>
+<td>Search credential templates using SQL, returning strongly-typed template data</td>
 </tr>
 <tr>
 <td>Search</td>
 <td><a href="/reference/proto#services-verifiablecredentials-templates-v1-SearchCredentialTemplatesRequest">SearchCredentialTemplatesRequest</a></td>
 <td><a href="/reference/proto#services-verifiablecredentials-templates-v1-SearchCredentialTemplatesResponse">SearchCredentialTemplatesResponse</a></td>
-<td></td>
+<td>Search credential templates using SQL, returning raw JSON data</td>
 </tr>
 <tr>
 <td>Delete</td>
 <td><a href="/reference/proto#services-verifiablecredentials-templates-v1-DeleteCredentialTemplateRequest">DeleteCredentialTemplateRequest</a></td>
 <td><a href="/reference/proto#services-verifiablecredentials-templates-v1-DeleteCredentialTemplateResponse">DeleteCredentialTemplateResponse</a></td>
-<td></td>
+<td>Delete a credential template from the current ecosystem by ID</td>
 </tr>
 </tbody>
 </table>
@@ -3614,7 +3577,7 @@
 <tr>
 <td>continuation_token</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Count of items in <code>items_json</code> int32 count = 3; unpopulated and unused Token to fetch next set of results via <code>SearchCredentialTemplatesRequest</code></td>
+<td>Token to fetch next set of results via <code>SearchCredentialTemplatesRequest</code></td>
 </tr>
 </tbody>
 </table>
@@ -3800,7 +3763,7 @@
 <td>IssueFromTemplate</td>
 <td><a href="/reference/proto#services-verifiablecredentials-v1-IssueFromTemplateRequest">IssueFromTemplateRequest</a></td>
 <td><a href="/reference/proto#services-verifiablecredentials-v1-IssueFromTemplateResponse">IssueFromTemplateResponse</a></td>
-<td>Sign and issue a verifiable credential from a pre-defined template. This process will also add schema validation and revocation registry entry in the credential.</td>
+<td>Sign and issue a verifiable credential from a pre-defined template. This process will also add schema validation and revocation registry values to the credential.</td>
 </tr>
 <tr>
 <td>CheckStatus</td>
@@ -3851,7 +3814,7 @@
 <tr>
 <td>credential_status_id</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Credential Status ID to check</td>
+<td>Credential Status ID to check. This is not the same as the credential's ID.</td>
 </tr>
 </tbody>
 </table>
@@ -4061,7 +4024,7 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 <tr>
 <td>credential_status_id</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Credential Status ID to update</td>
+<td>Credential Status ID to update. This is not the same as the credential's ID.</td>
 </tr>
 <tr>
 <td>revoked</td>
@@ -4131,7 +4094,7 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 <tr>
 <td>is_valid</td>
 <td><a href="/reference/proto#bool">bool</a></td>
-<td>Whether or not all validations in <code>validation_results</code> passed</td>
+<td>Whether all validations in <code>validation_results</code> passed</td>
 </tr>
 <tr>
 <td>validation_messages</td>
@@ -4238,7 +4201,7 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 <td>Search</td>
 <td><a href="/reference/proto#services-universalwallet-v1-SearchRequest">SearchRequest</a></td>
 <td><a href="/reference/proto#services-universalwallet-v1-SearchResponse">SearchResponse</a></td>
-<td>Search the wallet using a SQL-like syntax</td>
+<td>Search the wallet using a SQL syntax</td>
 </tr>
 <tr>
 <td>InsertItem</td>
@@ -4488,13 +4451,13 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 <td>GrantAuthorization</td>
 <td><a href="/reference/proto#services-provider-v1-GrantAuthorizationRequest">GrantAuthorizationRequest</a></td>
 <td><a href="/reference/proto#services-provider-v1-GrantAuthorizationResponse">GrantAuthorizationResponse</a></td>
-<td>Grant authorization to ecosystem resources</td>
+<td>Grant user authorization to ecosystem resources</td>
 </tr>
 <tr>
 <td>RevokeAuthorization</td>
 <td><a href="/reference/proto#services-provider-v1-RevokeAuthorizationRequest">RevokeAuthorizationRequest</a></td>
 <td><a href="/reference/proto#services-provider-v1-RevokeAuthorizationResponse">RevokeAuthorizationResponse</a></td>
-<td>Revoke authorization to ecosystem resources</td>
+<td>Revoke user authorization to ecosystem resources</td>
 </tr>
 <tr>
 <td>GetAuthorizations</td>
@@ -4536,7 +4499,7 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 <td>InvitationStatus</td>
 <td><a href="/reference/proto#services-provider-v1-InvitationStatusRequest">InvitationStatusRequest</a></td>
 <td><a href="/reference/proto#services-provider-v1-InvitationStatusResponse">InvitationStatusResponse</a></td>
-<td>Check the invitation status</td>
+<td>Check the status of an invitation</td>
 </tr>
 <tr>
 <td>GetOberonKey</td>
@@ -4569,12 +4532,12 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 <tr>
 <td>destination_url</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Destination to post webhook calls to</td>
+<td>Destination to post webhook calls to. Must be a reachable HTTPS URL.</td>
 </tr>
 <tr>
 <td>secret</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>HMAC secret for webhook validation</td>
+<td>Secret string used for HMAC-SHA256 signing of webhook payloads to verify that a webhook comes from Trinsic</td>
 </tr>
 <tr>
 <td>events</td>
@@ -4598,12 +4561,13 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 <tr>
 <td>ecosystem</td>
 <td><a href="/reference/proto#services-provider-v1-Ecosystem">Ecosystem</a></td>
-<td>Ecosystem with new webhook</td>
+<td>Ecosystem data with new webhook</td>
 </tr>
 </tbody>
 </table>
 <p><a name="services-provider-v1-CreateEcosystemRequest"></a></p>
 <h3 id="createecosystemrequest">CreateEcosystemRequest<a class="headerlink" href="#createecosystemrequest" title="Permanent link">&para;</a></h3>
+<p>Request to create an ecosystem</p>
 <table>
 <thead>
 <tr>
@@ -4616,7 +4580,7 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 <tr>
 <td>name</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Globally unique name for the Ecosystem. This name will be part of the ecosystem specific URLs and namespaces. Allowed characters are lowercase letters, numbers, underscore and hyphen.</td>
+<td>Globally unique name for the Ecosystem. This name will be part of the ecosystem-specific URLs and namespaces. Allowed characters are lowercase letters, numbers, underscore and hyphen. If not passed, ecosystem name will be auto-generated.</td>
 </tr>
 <tr>
 <td>description</td>
@@ -4637,6 +4601,7 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 </table>
 <p><a name="services-provider-v1-CreateEcosystemResponse"></a></p>
 <h3 id="createecosystemresponse">CreateEcosystemResponse<a class="headerlink" href="#createecosystemresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>CreateEcosystemRequest</code></p>
 <table>
 <thead>
 <tr>
@@ -4659,7 +4624,7 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 <tr>
 <td>confirmation_method</td>
 <td><a href="/reference/proto#services-account-v1-ConfirmationMethod">services.account.v1.ConfirmationMethod</a></td>
-<td>Indicates if confirmation of account is required. This setting is configured globally by the server administrator.</td>
+<td>Indicates if confirmation of account is required.</td>
 </tr>
 </tbody>
 </table>
@@ -4697,12 +4662,13 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 <tr>
 <td>ecosystem</td>
 <td><a href="/reference/proto#services-provider-v1-Ecosystem">Ecosystem</a></td>
-<td>Ecosystem after removal of webhook</td>
+<td>Ecosystem data after removal of webhook</td>
 </tr>
 </tbody>
 </table>
 <p><a name="services-provider-v1-Ecosystem"></a></p>
 <h3 id="ecosystem">Ecosystem<a class="headerlink" href="#ecosystem" title="Permanent link">&para;</a></h3>
+<p>Details of an ecosystem</p>
 <table>
 <thead>
 <tr>
@@ -4763,6 +4729,7 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 </table>
 <p><a name="services-provider-v1-GenerateTokenRequest"></a></p>
 <h3 id="generatetokenrequest">GenerateTokenRequest<a class="headerlink" href="#generatetokenrequest" title="Permanent link">&para;</a></h3>
+<p>Request to generate an authentication token for the current account</p>
 <table>
 <thead>
 <tr>
@@ -4781,6 +4748,7 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 </table>
 <p><a name="services-provider-v1-GenerateTokenResponse"></a></p>
 <h3 id="generatetokenresponse">GenerateTokenResponse<a class="headerlink" href="#generatetokenresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>GenerateTokenRequest</code></p>
 <table>
 <thead>
 <tr>
@@ -4799,8 +4767,11 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 </table>
 <p><a name="services-provider-v1-GetAuthorizationsRequest"></a></p>
 <h3 id="getauthorizationsrequest">GetAuthorizationsRequest<a class="headerlink" href="#getauthorizationsrequest" title="Permanent link">&para;</a></h3>
+<p>Fetch list of grants that the current account has access to
+in its ecosystem</p>
 <p><a name="services-provider-v1-GetAuthorizationsResponse"></a></p>
 <h3 id="getauthorizationsresponse">GetAuthorizationsResponse<a class="headerlink" href="#getauthorizationsresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>GetAuthorizationsRequest</code></p>
 <table>
 <thead>
 <tr>
@@ -4813,13 +4784,13 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 <tr>
 <td>grants</td>
 <td><a href="/reference/proto#services-provider-v1-Grant">Grant</a>[]</td>
-<td></td>
+<td>Grants attached to account</td>
 </tr>
 </tbody>
 </table>
 <p><a name="services-provider-v1-GetEventTokenRequest"></a></p>
 <h3 id="geteventtokenrequest">GetEventTokenRequest<a class="headerlink" href="#geteventtokenrequest" title="Permanent link">&para;</a></h3>
-<p>generates an events token bound to the provided ed25519 pk</p>
+<p>Generates an events token bound to the provided ed25519 public key.</p>
 <table>
 <thead>
 <tr>
@@ -4832,13 +4803,13 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 <tr>
 <td>pk</td>
 <td><a href="/reference/proto#bytes">bytes</a></td>
-<td></td>
+<td>Raw public key to generate event token for</td>
 </tr>
 </tbody>
 </table>
 <p><a name="services-provider-v1-GetEventTokenResponse"></a></p>
 <h3 id="geteventtokenresponse">GetEventTokenResponse<a class="headerlink" href="#geteventtokenresponse" title="Permanent link">&para;</a></h3>
-<p>response message containing a token (JWT) that can be used
+<p>Response message containing a token (JWT) that can be used
 to connect directly to the message streaming architecture</p>
 <table>
 <thead>
@@ -4852,16 +4823,17 @@ to connect directly to the message streaming architecture</p>
 <tr>
 <td>token</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>a JWT bound to the PK provided in the request</td>
+<td>JWT bound to the public key provided in <code>GetEventTokenRequest</code></td>
 </tr>
 </tbody>
 </table>
 <p><a name="services-provider-v1-GetOberonKeyRequest"></a></p>
 <h3 id="getoberonkeyrequest">GetOberonKeyRequest<a class="headerlink" href="#getoberonkeyrequest" title="Permanent link">&para;</a></h3>
-<p>request message for GetOberonKey</p>
+<p>Request to fetch the Trinsic public key used
+to verify authentication token validity</p>
 <p><a name="services-provider-v1-GetOberonKeyResponse"></a></p>
 <h3 id="getoberonkeyresponse">GetOberonKeyResponse<a class="headerlink" href="#getoberonkeyresponse" title="Permanent link">&para;</a></h3>
-<p>response message for GetOberonKey</p>
+<p>Response to <code>GetOberonKeyRequest</code></p>
 <table>
 <thead>
 <tr>
@@ -4874,12 +4846,13 @@ to connect directly to the message streaming architecture</p>
 <tr>
 <td>key</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Oberon Public Key as RAW base64 URL encoded string</td>
+<td>Oberon Public Key as RAW base64-url encoded string</td>
 </tr>
 </tbody>
 </table>
 <p><a name="services-provider-v1-Grant"></a></p>
 <h3 id="grant">Grant<a class="headerlink" href="#grant" title="Permanent link">&para;</a></h3>
+<p>A grant authorizing <code>actions</code> on a <code>resourceId</code></p>
 <table>
 <thead>
 <tr>
@@ -4908,7 +4881,7 @@ to connect directly to the message streaming architecture</p>
 </table>
 <p><a name="services-provider-v1-GrantAuthorizationRequest"></a></p>
 <h3 id="grantauthorizationrequest">GrantAuthorizationRequest<a class="headerlink" href="#grantauthorizationrequest" title="Permanent link">&para;</a></h3>
-<p>grant permissions to a resource or path in the ecosystem</p>
+<p>Grant permissions to a resource or path in the ecosystem</p>
 <table>
 <thead>
 <tr>
@@ -4921,33 +4894,31 @@ to connect directly to the message streaming architecture</p>
 <tr>
 <td>email</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>email associted with the account</td>
+<td>Email address of account being granted permission. Mutually exclusive with <code>walletId</code>.</td>
 </tr>
 <tr>
 <td>walletId</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>wallet id of the account</td>
+<td>Wallet ID of account being granted permission. Mutually exclusive with <code>email</code>.</td>
 </tr>
 <tr>
 <td>resource</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>resources are specified as a restful path: /{ecoId}/{resource type}/{resource id}. EcosystemId maybe ommited</td>
+<td>Resource string that account is receiving permissions for. Resources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. <code>ecoId</code> may be omitted.</td>
 </tr>
 <tr>
 <td>action</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>action to authorize. default is "*" (all)</td>
+<td>Action to authorize. Default is "*" (all)</td>
 </tr>
 </tbody>
 </table>
 <p><a name="services-provider-v1-GrantAuthorizationResponse"></a></p>
 <h3 id="grantauthorizationresponse">GrantAuthorizationResponse<a class="headerlink" href="#grantauthorizationresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>GrantAuthorizationRequest</code></p>
 <p><a name="services-provider-v1-InvitationStatusRequest"></a></p>
 <h3 id="invitationstatusrequest">InvitationStatusRequest<a class="headerlink" href="#invitationstatusrequest" title="Permanent link">&para;</a></h3>
-<p>Request details for the status of onboarding
-an individual or organization.
-The reference_id passed is the response from the
-<code>Onboard</code> method call</p>
+<p>Request details for the status of an invitation</p>
 <table>
 <thead>
 <tr>
@@ -4960,12 +4931,13 @@ The reference_id passed is the response from the
 <tr>
 <td>invitation_id</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>ID of invitation</td>
+<td>ID of invitation, received from <code>InviteResponse</code></td>
 </tr>
 </tbody>
 </table>
 <p><a name="services-provider-v1-InvitationStatusResponse"></a></p>
 <h3 id="invitationstatusresponse">InvitationStatusResponse<a class="headerlink" href="#invitationstatusresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>InvitationStatusRequest</code></p>
 <table>
 <thead>
 <tr>
@@ -4987,46 +4959,9 @@ The reference_id passed is the response from the
 </tr>
 </tbody>
 </table>
-<p><a name="services-provider-v1-Invite"></a></p>
-<h3 id="invite">Invite<a class="headerlink" href="#invite" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>code</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>created</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>accepted</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-<tr>
-<td>expires</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <p><a name="services-provider-v1-InviteRequest"></a></p>
 <h3 id="inviterequest">InviteRequest<a class="headerlink" href="#inviterequest" title="Permanent link">&para;</a></h3>
+<p>Request to invite a participant to an ecosystem</p>
 <table>
 <thead>
 <tr>
@@ -5057,6 +4992,7 @@ The reference_id passed is the response from the
 <h3 id="inviterequestdidcomminvitation">InviteRequest.DidCommInvitation<a class="headerlink" href="#inviterequestdidcomminvitation" title="Permanent link">&para;</a></h3>
 <p><a name="services-provider-v1-InviteResponse"></a></p>
 <h3 id="inviteresponse">InviteResponse<a class="headerlink" href="#inviteresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>InviteRequest</code></p>
 <table>
 <thead>
 <tr>
@@ -5074,13 +5010,13 @@ The reference_id passed is the response from the
 <tr>
 <td>invitation_code</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Invitation Code that must be passed with the account 'SignIn' request to correlate this user with the invitation sent.</td>
+<td>Invitation code -- must be passed back in <code>LoginRequest</code></td>
 </tr>
 </tbody>
 </table>
 <p><a name="services-provider-v1-RevokeAuthorizationRequest"></a></p>
 <h3 id="revokeauthorizationrequest">RevokeAuthorizationRequest<a class="headerlink" href="#revokeauthorizationrequest" title="Permanent link">&para;</a></h3>
-<p>revoke permissions to a resource or path in the ecosystem</p>
+<p>Revoke permissions to a resource or path in the ecosystem</p>
 <table>
 <thead>
 <tr>
@@ -5093,30 +5029,31 @@ The reference_id passed is the response from the
 <tr>
 <td>email</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>email associted with the account</td>
+<td>Email address of account having permission revoked. Mutually exclusive with <code>walletId</code>.</td>
 </tr>
 <tr>
 <td>walletId</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>wallet id of the account</td>
+<td>Wallet ID of account having permission revoked. Mutually exclusive with <code>email</code>.</td>
 </tr>
 <tr>
 <td>resource</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>resources are specified as a restful path: /{ecoId}/{resource type}/{resource id}. EcosystemId maybe ommited</td>
+<td>Resource string that account is losing permissions for. Resources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. <code>ecoId</code> may be omitted.</td>
 </tr>
 <tr>
 <td>action</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>action to revoke. default is "*" (all)</td>
+<td>Action to revoke. Default is "*" (all)</td>
 </tr>
 </tbody>
 </table>
 <p><a name="services-provider-v1-RevokeAuthorizationResponse"></a></p>
 <h3 id="revokeauthorizationresponse">RevokeAuthorizationResponse<a class="headerlink" href="#revokeauthorizationresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>RevokeAuthorizationRequest</code></p>
 <p><a name="services-provider-v1-UpdateEcosystemRequest"></a></p>
 <h3 id="updateecosystemrequest">UpdateEcosystemRequest<a class="headerlink" href="#updateecosystemrequest" title="Permanent link">&para;</a></h3>
-<p>Request to update an ecosystem</p>
+<p>Request to update an ecosystem's metadata</p>
 <table>
 <thead>
 <tr>
@@ -5129,12 +5066,12 @@ The reference_id passed is the response from the
 <tr>
 <td>description</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Description of the ecosystem</td>
+<td>New description of the ecosystem</td>
 </tr>
 <tr>
 <td>uri</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>External URL associated with the organization or ecosystem entity</td>
+<td>New external URL associated with the organization or ecosystem entity</td>
 </tr>
 </tbody>
 </table>
@@ -5153,12 +5090,13 @@ The reference_id passed is the response from the
 <tr>
 <td>Ecosystem</td>
 <td><a href="/reference/proto#services-provider-v1-Ecosystem">Ecosystem</a></td>
-<td></td>
+<td>Current ecosystem metadata, post-update</td>
 </tr>
 </tbody>
 </table>
 <p><a name="services-provider-v1-WebhookConfig"></a></p>
 <h3 id="webhookconfig">WebhookConfig<a class="headerlink" href="#webhookconfig" title="Permanent link">&para;</a></h3>
+<p>Webhook configured on an ecosystem</p>
 <table>
 <thead>
 <tr>
@@ -5176,7 +5114,7 @@ The reference_id passed is the response from the
 <tr>
 <td>destination_url</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Destination to post webhook calls to</td>
+<td>HTTPS URL to POST webhook calls to</td>
 </tr>
 <tr>
 <td>events</td>
@@ -5186,7 +5124,7 @@ The reference_id passed is the response from the
 <tr>
 <td>status</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Whether we are able to sucessfully send events to the webhook</td>
+<td>Last known status of webhook (whether or not Trinsic can successfully reach destination)</td>
 </tr>
 </tbody>
 </table>
@@ -5227,6 +5165,7 @@ The reference_id passed is the response from the
 </table>
 <p><a name="services-provider-v1-ParticipantType"></a></p>
 <h3 id="participanttype">ParticipantType<a class="headerlink" href="#participanttype" title="Permanent link">&para;</a></h3>
+<p>Type of participant being invited to ecosystem</p>
 <table>
 <thead>
 <tr>
@@ -5239,12 +5178,12 @@ The reference_id passed is the response from the
 <tr>
 <td>participant_type_individual</td>
 <td>0</td>
-<td></td>
+<td>Participant is an individual</td>
 </tr>
 <tr>
 <td>participant_type_organization</td>
 <td>1</td>
-<td></td>
+<td>Participant is an organization</td>
 </tr>
 </tbody>
 </table>
@@ -5272,43 +5211,43 @@ The reference_id passed is the response from the
 <td>AddFramework</td>
 <td><a href="/reference/proto#services-trustregistry-v1-AddFrameworkRequest">AddFrameworkRequest</a></td>
 <td><a href="/reference/proto#services-trustregistry-v1-AddFrameworkResponse">AddFrameworkResponse</a></td>
-<td>Adds a trust registry defintion to the ecosystem</td>
+<td>Add a governance framework to the ecosystem</td>
 </tr>
 <tr>
 <td>RemoveFramework</td>
 <td><a href="/reference/proto#services-trustregistry-v1-RemoveFrameworkRequest">RemoveFrameworkRequest</a></td>
 <td><a href="/reference/proto#services-trustregistry-v1-RemoveFrameworkResponse">RemoveFrameworkResponse</a></td>
-<td></td>
+<td>Remove a governance framework from the ecosystem</td>
 </tr>
 <tr>
 <td>SearchRegistry</td>
 <td><a href="/reference/proto#services-trustregistry-v1-SearchRegistryRequest">SearchRegistryRequest</a></td>
 <td><a href="/reference/proto#services-trustregistry-v1-SearchRegistryResponse">SearchRegistryResponse</a></td>
-<td></td>
+<td>Search the ecosystem's governance frameworks</td>
 </tr>
 <tr>
 <td>RegisterMember</td>
 <td><a href="/reference/proto#services-trustregistry-v1-RegisterMemberRequest">RegisterMemberRequest</a></td>
 <td><a href="/reference/proto#services-trustregistry-v1-RegisterMemberResponse">RegisterMemberResponse</a></td>
-<td>Registers an authoritative issuer with a credential template</td>
+<td>Register an authoritative issuer for a credential schema</td>
 </tr>
 <tr>
 <td>UnregisterMember</td>
 <td><a href="/reference/proto#services-trustregistry-v1-UnregisterMemberRequest">UnregisterMemberRequest</a></td>
 <td><a href="/reference/proto#services-trustregistry-v1-UnregisterMemberResponse">UnregisterMemberResponse</a></td>
-<td>Removes an authoritative issuer with a credential template from the trust registry</td>
+<td>Removes an authoritative issuer for a credential schema from the trust registry</td>
 </tr>
 <tr>
 <td>GetMembershipStatus</td>
 <td><a href="/reference/proto#services-trustregistry-v1-GetMembershipStatusRequest">GetMembershipStatusRequest</a></td>
 <td><a href="/reference/proto#services-trustregistry-v1-GetMembershipStatusResponse">GetMembershipStatusResponse</a></td>
-<td></td>
+<td>Fetch the membership status of an issuer for a given credential schema in a trust registry</td>
 </tr>
 <tr>
 <td>FetchData</td>
 <td><a href="/reference/proto#services-trustregistry-v1-FetchDataRequest">FetchDataRequest</a></td>
 <td><a href="/reference/proto#services-trustregistry-v1-FetchDataResponse">FetchDataResponse</a> stream</td>
-<td></td>
+<td>Not implemented.</td>
 </tr>
 </tbody>
 </table>
@@ -5316,7 +5255,7 @@ The reference_id passed is the response from the
 
 <p><a name="services-trustregistry-v1-AddFrameworkRequest"></a></p>
 <h3 id="addframeworkrequest">AddFrameworkRequest<a class="headerlink" href="#addframeworkrequest" title="Permanent link">&para;</a></h3>
-<p>Register new ecosystem governance framework</p>
+<p>Request to register a new ecosystem governance framework in the current ecosystem</p>
 <table>
 <thead>
 <tr>
@@ -5329,22 +5268,23 @@ The reference_id passed is the response from the
 <tr>
 <td>governance_framework_uri</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>URI of governance framework organization</td>
 </tr>
 <tr>
 <td>name</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>Name of governance framework organization</td>
 </tr>
 <tr>
 <td>description</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>Description of governance framework</td>
 </tr>
 </tbody>
 </table>
 <p><a name="services-trustregistry-v1-AddFrameworkResponse"></a></p>
 <h3 id="addframeworkresponse">AddFrameworkResponse<a class="headerlink" href="#addframeworkresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>AddFrameworkRequest</code></p>
 <table>
 <thead>
 <tr>
@@ -5362,17 +5302,18 @@ The reference_id passed is the response from the
 <tr>
 <td>governing_authority</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>DID URI of Trinsic account which created the governance framework</td>
 </tr>
 <tr>
 <td>trust_registry</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>URN of trust registry for governance framework</td>
 </tr>
 </tbody>
 </table>
 <p><a name="services-trustregistry-v1-FetchDataRequest"></a></p>
 <h3 id="fetchdatarequest">FetchDataRequest<a class="headerlink" href="#fetchdatarequest" title="Permanent link">&para;</a></h3>
+<p>Not implemented.</p>
 <table>
 <thead>
 <tr>
@@ -5396,6 +5337,7 @@ The reference_id passed is the response from the
 </table>
 <p><a name="services-trustregistry-v1-FetchDataResponse"></a></p>
 <h3 id="fetchdataresponse">FetchDataResponse<a class="headerlink" href="#fetchdataresponse" title="Permanent link">&para;</a></h3>
+<p>Not implemented.</p>
 <table>
 <thead>
 <tr>
@@ -5424,6 +5366,8 @@ The reference_id passed is the response from the
 </table>
 <p><a name="services-trustregistry-v1-GetMembershipStatusRequest"></a></p>
 <h3 id="getmembershipstatusrequest">GetMembershipStatusRequest<a class="headerlink" href="#getmembershipstatusrequest" title="Permanent link">&para;</a></h3>
+<p>Request to fetch membership status in governance framework for a specific credential schema.
+Only one of <code>did_uri</code>, <code>x509_cert</code> may be specified.</p>
 <table>
 <thead>
 <tr>
@@ -5436,27 +5380,28 @@ The reference_id passed is the response from the
 <tr>
 <td>governance_framework_uri</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>URI of governance framework</td>
 </tr>
 <tr>
 <td>did_uri</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>DID URI of member</td>
 </tr>
 <tr>
 <td>x509_cert</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>X.509 certificate of member</td>
 </tr>
 <tr>
 <td>schema_uri</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>URI of credential schema associated with membership</td>
 </tr>
 </tbody>
 </table>
 <p><a name="services-trustregistry-v1-GetMembershipStatusResponse"></a></p>
 <h3 id="getmembershipstatusresponse">GetMembershipStatusResponse<a class="headerlink" href="#getmembershipstatusresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>GetMembershipStatusRequest</code></p>
 <table>
 <thead>
 <tr>
@@ -5469,12 +5414,13 @@ The reference_id passed is the response from the
 <tr>
 <td>status</td>
 <td><a href="/reference/proto#services-trustregistry-v1-RegistrationStatus">RegistrationStatus</a></td>
-<td></td>
+<td>Status of member for given credential schema</td>
 </tr>
 </tbody>
 </table>
 <p><a name="services-trustregistry-v1-GovernanceFramework"></a></p>
 <h3 id="governanceframework">GovernanceFramework<a class="headerlink" href="#governanceframework" title="Permanent link">&para;</a></h3>
+<p>Ecosystem Governance Framework</p>
 <table>
 <thead>
 <tr>
@@ -5487,22 +5433,24 @@ The reference_id passed is the response from the
 <tr>
 <td>governance_framework_uri</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>URI of governance framework organization</td>
 </tr>
 <tr>
 <td>trust_registry_uri</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>URI of trust registry associated with governance framework</td>
 </tr>
 <tr>
 <td>description</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>Description of governance framework</td>
 </tr>
 </tbody>
 </table>
 <p><a name="services-trustregistry-v1-RegisterMemberRequest"></a></p>
 <h3 id="registermemberrequest">RegisterMemberRequest<a class="headerlink" href="#registermemberrequest" title="Permanent link">&para;</a></h3>
+<p>Request to register a member as a valid issuer of a specific credential schema.
+Only one of <code>did_uri</code>, <code>wallet_id</code>, or <code>email</code> may be specified.</p>
 <table>
 <thead>
 <tr>
@@ -5515,44 +5463,46 @@ The reference_id passed is the response from the
 <tr>
 <td>did_uri</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>DID URI of member to register</td>
 </tr>
 <tr>
 <td>wallet_id</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>Trinsic Wallet ID of member to register</td>
 </tr>
 <tr>
 <td>email</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>Email address of member to register. Must be associated with an existing Trinsic account.</td>
 </tr>
 <tr>
 <td>schema_uri</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>URI of credential schema to register member as authorized issuer of</td>
 </tr>
 <tr>
 <td>valid_from_utc</td>
 <td><a href="/reference/proto#uint64">uint64</a></td>
-<td></td>
+<td>Unix Timestamp member is valid from. Member will not be considered valid before this timestamp.</td>
 </tr>
 <tr>
 <td>valid_until_utc</td>
 <td><a href="/reference/proto#uint64">uint64</a></td>
-<td></td>
+<td>Unix Timestamp member is valid until. Member will not be considered valid after this timestamp.</td>
 </tr>
 <tr>
 <td>framework_id</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>the id of the governance framework</td>
+<td>ID of the governance framework that member is being added to</td>
 </tr>
 </tbody>
 </table>
 <p><a name="services-trustregistry-v1-RegisterMemberResponse"></a></p>
 <h3 id="registermemberresponse">RegisterMemberResponse<a class="headerlink" href="#registermemberresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>RegisterMemberRequest</code></p>
 <p><a name="services-trustregistry-v1-RemoveFrameworkRequest"></a></p>
 <h3 id="removeframeworkrequest">RemoveFrameworkRequest<a class="headerlink" href="#removeframeworkrequest" title="Permanent link">&para;</a></h3>
+<p>Request to remove a governance framework from the current ecosystem</p>
 <table>
 <thead>
 <tr>
@@ -5565,14 +5515,16 @@ The reference_id passed is the response from the
 <tr>
 <td>id</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>ID of governance framework to remove</td>
 </tr>
 </tbody>
 </table>
 <p><a name="services-trustregistry-v1-RemoveFrameworkResponse"></a></p>
 <h3 id="removeframeworkresponse">RemoveFrameworkResponse<a class="headerlink" href="#removeframeworkresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>RemoveFrameworkRequest</code></p>
 <p><a name="services-trustregistry-v1-SearchRegistryRequest"></a></p>
 <h3 id="searchregistryrequest">SearchRegistryRequest<a class="headerlink" href="#searchregistryrequest" title="Permanent link">&para;</a></h3>
+<p>Request to search all governance frameworks within ecosystem</p>
 <table>
 <thead>
 <tr>
@@ -5585,17 +5537,18 @@ The reference_id passed is the response from the
 <tr>
 <td>query</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>SELECT c from c where c.type == 'GovernanceFramework'</td>
+<td>SQL query to execute against frameworks. Example: <code>SELECT c from c where c.type == 'GovernanceFramework'</code></td>
 </tr>
 <tr>
 <td>continuation_token</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>Token to fetch next set of results, from previous <code>SearchRegistryResponse</code></td>
 </tr>
 </tbody>
 </table>
 <p><a name="services-trustregistry-v1-SearchRegistryResponse"></a></p>
 <h3 id="searchregistryresponse">SearchRegistryResponse<a class="headerlink" href="#searchregistryresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>SearchRegistryRequest</code></p>
 <table>
 <thead>
 <tr>
@@ -5608,22 +5561,24 @@ The reference_id passed is the response from the
 <tr>
 <td>items_json</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>JSON string containing array of resultant objects</td>
 </tr>
 <tr>
 <td>has_more</td>
 <td><a href="/reference/proto#bool">bool</a></td>
-<td></td>
+<td>Whether more data is available to fetch for query</td>
 </tr>
 <tr>
 <td>continuation_token</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>Token to fetch next set of results via <code>SearchRegistryRequest</code></td>
 </tr>
 </tbody>
 </table>
 <p><a name="services-trustregistry-v1-UnregisterMemberRequest"></a></p>
 <h3 id="unregistermemberrequest">UnregisterMemberRequest<a class="headerlink" href="#unregistermemberrequest" title="Permanent link">&para;</a></h3>
+<p>Request to unregister a member as a valid issuer of a specific credential schema.
+Only one of <code>did_uri</code>, <code>wallet_id</code>, or <code>email</code> may be specified.</p>
 <table>
 <thead>
 <tr>
@@ -5636,32 +5591,33 @@ The reference_id passed is the response from the
 <tr>
 <td>did_uri</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>DID URI of member to unregister</td>
 </tr>
 <tr>
 <td>wallet_id</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>Trinsic Wallet ID of member to unregister</td>
 </tr>
 <tr>
 <td>email</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>Email address of member to unregister. Must be associated with an existing Trinsic account.</td>
 </tr>
 <tr>
 <td>schema_uri</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>URI of credential schema to unregister member as authorized issuer of</td>
 </tr>
 <tr>
 <td>framework_id</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td></td>
+<td>ID of the governance framework that member is being removed from</td>
 </tr>
 </tbody>
 </table>
 <p><a name="services-trustregistry-v1-UnregisterMemberResponse"></a></p>
 <h3 id="unregistermemberresponse">UnregisterMemberResponse<a class="headerlink" href="#unregistermemberresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>UnregisterMemberRequest</code></p>
 <!-- end messages -->
 
 <p><a name="services-trustregistry-v1-RegistrationStatus"></a></p>
@@ -5678,27 +5634,27 @@ The reference_id passed is the response from the
 <tr>
 <td>CURRENT</td>
 <td>0</td>
-<td>- the entity is currently authorized, as of time of the query.</td>
+<td>Member is currently authorized, as of the time of the query</td>
 </tr>
 <tr>
 <td>EXPIRED</td>
 <td>1</td>
-<td>- entity rights have expired.</td>
+<td>Member's authorization has expired</td>
 </tr>
 <tr>
 <td>TERMINATED</td>
 <td>2</td>
-<td>- entity has voluntarily ceased Issuer role under the specific EGF.</td>
+<td>Member has voluntarily ceased Issuer role under the specific EGF</td>
 </tr>
 <tr>
 <td>REVOKED</td>
 <td>3</td>
-<td>- entity authority under specific EGF was terminated by the governing authority.</td>
+<td>Member authority under specific EGF was terminated by the governing authority</td>
 </tr>
 <tr>
 <td>NOT_FOUND</td>
 <td>10</td>
-<td></td>
+<td>Member is not associated with given credential schema in the EGF</td>
 </tr>
 </tbody>
 </table>
@@ -5742,6 +5698,7 @@ The reference_id passed is the response from the
 </table>
 <p><a name="trinsic-services-event-EGFCreated"></a></p>
 <h3 id="egfcreated">EGFCreated<a class="headerlink" href="#egfcreated" title="Permanent link">&para;</a></h3>
+<p>Entity Governance Framework created and attached to ecosystem</p>
 <table>
 <thead>
 <tr>
@@ -5759,43 +5716,43 @@ The reference_id passed is the response from the
 <tr>
 <td>ecosystem_id</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>UUID of the ecosystem that owns this egf</td>
+<td>UUID of the ecosystem that owns this EGF</td>
 </tr>
 <tr>
 <td>trust_registry</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Trust registry assoicated with this egf</td>
+<td>Trust registry associated with this EGF</td>
 </tr>
 <tr>
 <td>governing_authority</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Wallet ID of the aurhority for this egf</td>
+<td>Wallet ID of the authority for this EGF</td>
 </tr>
 <tr>
 <td>type</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Type of egf</td>
+<td>Type of EGF</td>
 </tr>
 <tr>
 <td>name</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>User friendly name for the egf</td>
+<td>User-friendly name for the EGF</td>
 </tr>
 <tr>
 <td>description</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Description of the egf</td>
+<td>Description of the EGF</td>
 </tr>
 <tr>
 <td>governance_framework</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>URI for the egf</td>
+<td>URI for the EGF</td>
 </tr>
 </tbody>
 </table>
 <p><a name="trinsic-services-event-Event"></a></p>
 <h3 id="event">Event<a class="headerlink" href="#event" title="Permanent link">&para;</a></h3>
-<p>System event</p>
+<p>Event</p>
 <table>
 <thead>
 <tr>
@@ -5808,27 +5765,28 @@ The reference_id passed is the response from the
 <tr>
 <td>id</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>UUID for the event</td>
+<td>UUID of event</td>
 </tr>
 <tr>
 <td>type</td>
 <td><a href="/reference/proto#trinsic-services-event-EventType">EventType</a></td>
-<td>event type</td>
+<td>Type of event</td>
 </tr>
 <tr>
 <td>timestamp</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>when the event occured</td>
+<td>Timestamp event occurred, in ISO 8601 format (ex. <code>2022-07-07T08:09:10.11Z</code>)</td>
 </tr>
 <tr>
 <td>data</td>
 <td><a href="/reference/proto#bytes">bytes</a></td>
-<td>data payload - will be encoded proto message for the event type</td>
+<td>Event-specific payload, as an encoded protobuf message</td>
 </tr>
 </tbody>
 </table>
 <p><a name="trinsic-services-event-ItemReceived"></a></p>
 <h3 id="itemreceived">ItemReceived<a class="headerlink" href="#itemreceived" title="Permanent link">&para;</a></h3>
+<p>Item inserted into wallet</p>
 <table>
 <thead>
 <tr>
@@ -5846,13 +5804,13 @@ The reference_id passed is the response from the
 <tr>
 <td>received</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Timestamp when the item was received</td>
+<td>Timestamp when the item was received, in ISO 8601 format (ex. <code>2022-07-07T08:09:10.11Z</code>)</td>
 </tr>
 </tbody>
 </table>
 <p><a name="trinsic-services-event-Ping"></a></p>
 <h3 id="ping">Ping<a class="headerlink" href="#ping" title="Permanent link">&para;</a></h3>
-<p>Message to test webhook functionality</p>
+<p>Webhook test event</p>
 <table>
 <thead>
 <tr>
@@ -5875,17 +5833,18 @@ The reference_id passed is the response from the
 <tr>
 <td>timestamp</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>when this was generated</td>
+<td>Timestamp ping was requested, in ISO 8601 format (ex. <code>2022-07-07T08:09:10.11Z</code>)</td>
 </tr>
 <tr>
 <td>message</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>message to be sent (e.g. I'm a teapot)</td>
+<td>Arbitrary message specified when ping was requested</td>
 </tr>
 </tbody>
 </table>
 <p><a name="trinsic-services-event-TemplateCreated"></a></p>
 <h3 id="templatecreated">TemplateCreated<a class="headerlink" href="#templatecreated" title="Permanent link">&para;</a></h3>
+<p>Template created in ecosystem</p>
 <table>
 <thead>
 <tr>
@@ -5913,7 +5872,7 @@ The reference_id passed is the response from the
 <tr>
 <td>type</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Tempalte type</td>
+<td>Template type</td>
 </tr>
 <tr>
 <td>created_by</td>
@@ -5926,6 +5885,7 @@ The reference_id passed is the response from the
 
 <p><a name="trinsic-services-event-EventType"></a></p>
 <h3 id="eventtype">EventType<a class="headerlink" href="#eventtype" title="Permanent link">&para;</a></h3>
+<p>All event types</p>
 <table>
 <thead>
 <tr>
@@ -5984,6 +5944,28 @@ The reference_id passed is the response from the
 </table>
 <!-- end enums -->
 
+<p><a name="services_event_v1_event-proto-extensions"></a></p>
+<h3 id="file-level-extensions_1">File-level Extensions<a class="headerlink" href="#file-level-extensions_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Extension</th>
+<th>Type</th>
+<th>Base</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>event_type</td>
+<td>EventType</td>
+<td>.google.protobuf.MessageOptions</td>
+<td>60002</td>
+<td>Event type associated with this Event message.</td>
+</tr>
+</tbody>
+</table>
 <!-- end HasExtensions -->
 
 <p><a name="services_account_v1_account-proto"></a></p>
@@ -6012,13 +5994,13 @@ The reference_id passed is the response from the
 <td>Login</td>
 <td><a href="/reference/proto#services-account-v1-LoginRequest">LoginRequest</a></td>
 <td><a href="/reference/proto#services-account-v1-LoginResponse">LoginResponse</a></td>
-<td>Login to account. If account doesn't exist, new will be created</td>
+<td>Begin login flow for specified account, creating one if it does not already exist</td>
 </tr>
 <tr>
 <td>LoginConfirm</td>
 <td><a href="/reference/proto#services-account-v1-LoginConfirmRequest">LoginConfirmRequest</a></td>
 <td><a href="/reference/proto#services-account-v1-LoginConfirmResponse">LoginConfirmResponse</a></td>
-<td>Confirm login step by responding to the challenge request</td>
+<td>Finalize login flow with two-factor confirmation code</td>
 </tr>
 <tr>
 <td>Info</td>
@@ -6068,7 +6050,7 @@ The reference_id passed is the response from the
 <tr>
 <td>email</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Email account</td>
+<td>Email address of account</td>
 </tr>
 <tr>
 <td>sms</td>
@@ -6079,6 +6061,7 @@ The reference_id passed is the response from the
 </table>
 <p><a name="services-account-v1-AccountEcosystem"></a></p>
 <h3 id="accountecosystem">AccountEcosystem<a class="headerlink" href="#accountecosystem" title="Permanent link">&para;</a></h3>
+<p>Deprecated</p>
 <table>
 <thead>
 <tr>
@@ -6153,12 +6136,12 @@ The reference_id passed is the response from the
 <tr>
 <td>public_did</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>The public DID associated with this account. This DID is used as "issuer" when signing verifiable credentials</td>
+<td>The public DID associated with this account. This DID is used as the <code>issuer</code> when signing verifiable credentials</td>
 </tr>
 <tr>
 <td>authorized_webhooks</td>
 <td><a href="/reference/proto#string">string</a>[]</td>
-<td>Webhook events if any this wallet has authorized</td>
+<td>Webhook events, if any, this wallet has authorized</td>
 </tr>
 </tbody>
 </table>
@@ -6199,7 +6182,8 @@ This information should be stored securely</p>
 </table>
 <p><a name="services-account-v1-AuthorizeWebhookRequest"></a></p>
 <h3 id="authorizewebhookrequest">AuthorizeWebhookRequest<a class="headerlink" href="#authorizewebhookrequest" title="Permanent link">&para;</a></h3>
-<p>Authorize ecosystem to receive wallet events</p>
+<p>Request to authorize Ecosystem provider to receive webhooks for events
+which occur on this wallet.</p>
 <table>
 <thead>
 <tr>
@@ -6225,6 +6209,7 @@ This information should be stored securely</p>
 <h3 id="listdevicesresponse">ListDevicesResponse<a class="headerlink" href="#listdevicesresponse" title="Permanent link">&para;</a></h3>
 <p><a name="services-account-v1-LoginConfirmRequest"></a></p>
 <h3 id="loginconfirmrequest">LoginConfirmRequest<a class="headerlink" href="#loginconfirmrequest" title="Permanent link">&para;</a></h3>
+<p>Request to finalize login flow</p>
 <table>
 <thead>
 <tr>
@@ -6237,17 +6222,18 @@ This information should be stored securely</p>
 <tr>
 <td>challenge</td>
 <td><a href="/reference/proto#bytes">bytes</a></td>
-<td>Login challenge received during the Login call</td>
+<td>Challenge received from <code>Login</code></td>
 </tr>
 <tr>
 <td>confirmation_code_hashed</td>
 <td><a href="/reference/proto#bytes">bytes</a></td>
-<td>Confirmation code received in email or SMS hashed using Blake3</td>
+<td>Two-factor confirmation code sent to account email or phone, hashed using Blake3. Our SDKs will handle this hashing process for you.</td>
 </tr>
 </tbody>
 </table>
 <p><a name="services-account-v1-LoginConfirmResponse"></a></p>
 <h3 id="loginconfirmresponse">LoginConfirmResponse<a class="headerlink" href="#loginconfirmresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>LoginConfirmRequest</code></p>
 <table>
 <thead>
 <tr>
@@ -6260,12 +6246,13 @@ This information should be stored securely</p>
 <tr>
 <td>profile</td>
 <td><a href="/reference/proto#services-account-v1-AccountProfile">AccountProfile</a></td>
-<td>Profile response. This profile may be protected and require unblinding/unprotection using the raw hashed code</td>
+<td>Profile response; must be unprotected using unhashed confirmation code. Our SDKs will handle this process for you, and return to you an authentication token string.</td>
 </tr>
 </tbody>
 </table>
 <p><a name="services-account-v1-LoginRequest"></a></p>
 <h3 id="loginrequest">LoginRequest<a class="headerlink" href="#loginrequest" title="Permanent link">&para;</a></h3>
+<p>Request to begin login flow</p>
 <table>
 <thead>
 <tr>
@@ -6278,7 +6265,7 @@ This information should be stored securely</p>
 <tr>
 <td>email</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>Email account to associate with the login request</td>
+<td>Email address of account. If unspecified, an anonymous account will be created.</td>
 </tr>
 <tr>
 <td>invitation_code</td>
@@ -6288,12 +6275,13 @@ This information should be stored securely</p>
 <tr>
 <td>ecosystem_id</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>ID of Ecosystem to sign into. Ignored if <code>invitation_code</code> is passed</td>
+<td>ID of Ecosystem to sign into. Ignored if <code>invitation_code</code> is passed.</td>
 </tr>
 </tbody>
 </table>
 <p><a name="services-account-v1-LoginResponse"></a></p>
 <h3 id="loginresponse">LoginResponse<a class="headerlink" href="#loginresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>LoginRequest</code></p>
 <table>
 <thead>
 <tr>
@@ -6306,12 +6294,12 @@ This information should be stored securely</p>
 <tr>
 <td>challenge</td>
 <td><a href="/reference/proto#bytes">bytes</a></td>
-<td>Challenge response. Random byte sequence unique for this login request</td>
+<td>Random byte sequence unique to this login request. If present, two-factor confirmation of login is required. Must be sent back, unaltered, in <code>LoginConfirm</code>.</td>
 </tr>
 <tr>
 <td>profile</td>
 <td><a href="/reference/proto#services-account-v1-AccountProfile">AccountProfile</a></td>
-<td>Profile response. The login isn't challenged and the token is returned in this call. Does not require confirmation step</td>
+<td>Account profile response. If present, no confirmation of login is required.</td>
 </tr>
 </tbody>
 </table>
@@ -6366,7 +6354,7 @@ like email, SMS, etc.</p>
 <tr>
 <td>confirmation_method</td>
 <td><a href="/reference/proto#services-account-v1-ConfirmationMethod">ConfirmationMethod</a></td>
-<td>Indicates if confirmation of account is required. This settings is configured globally by the server administrator.</td>
+<td>Indicates if confirmation of account is required.</td>
 </tr>
 <tr>
 <td>profile</td>
@@ -6436,7 +6424,7 @@ like email, SMS, etc.</p>
 <tr>
 <td>Other</td>
 <td>10</td>
-<td>Indicates third-party method of confirmation is required</td>
+<td>Third-party method of confirmation is required</td>
 </tr>
 </tbody>
 </table>
@@ -6766,7 +6754,7 @@ like email, SMS, etc.</p>
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "announce.dismiss", "navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.sections"], "search": "../../assets/javascripts/workers/search.720157f5.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c2e1238c.min.js"></script>
+      <script src="../../assets/javascripts/bundle.5e3df397.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
       
