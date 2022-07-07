@@ -9,12 +9,24 @@ public interface AddFrameworkRequestOrBuilder
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
+   * <pre>
+   * URI of governance framework organization
+   * </pre>
+   *
    * <code>string governance_framework_uri = 1;</code>
    *
    * @return The governanceFrameworkUri.
    */
   java.lang.String getGovernanceFrameworkUri();
   /**
+   *
+   *
+   * <pre>
+   * URI of governance framework organization
+   * </pre>
+   *
    * <code>string governance_framework_uri = 1;</code>
    *
    * @return The bytes for governanceFrameworkUri.
@@ -22,12 +34,24 @@ public interface AddFrameworkRequestOrBuilder
   com.google.protobuf.ByteString getGovernanceFrameworkUriBytes();
 
   /**
+   *
+   *
+   * <pre>
+   * Name of governance framework organization
+   * </pre>
+   *
    * <code>string name = 2;</code>
    *
    * @return The name.
    */
   java.lang.String getName();
   /**
+   *
+   *
+   * <pre>
+   * Name of governance framework organization
+   * </pre>
+   *
    * <code>string name = 2;</code>
    *
    * @return The bytes for name.
@@ -35,12 +59,24 @@ public interface AddFrameworkRequestOrBuilder
   com.google.protobuf.ByteString getNameBytes();
 
   /**
+   *
+   *
+   * <pre>
+   * Description of governance framework
+   * </pre>
+   *
    * <code>string description = 3;</code>
    *
    * @return The description.
    */
   java.lang.String getDescription();
   /**
+   *
+   *
+   * <pre>
+   * Description of governance framework
+   * </pre>
+   *
    * <code>string description = 3;</code>
    *
    * @return The bytes for description.

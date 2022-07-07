@@ -57,7 +57,7 @@ public enum ConfirmationMethod implements com.google.protobuf.ProtocolMessageEnu
    *
    *
    * <pre>
-   * Indicates third-party method of confirmation is required
+   * Third-party method of confirmation is required
    * </pre>
    *
    * <code>Other = 10;</code>
@@ -110,7 +110,7 @@ public enum ConfirmationMethod implements com.google.protobuf.ProtocolMessageEnu
    *
    *
    * <pre>
-   * Indicates third-party method of confirmation is required
+   * Third-party method of confirmation is required
    * </pre>
    *
    * <code>Other = 10;</code>

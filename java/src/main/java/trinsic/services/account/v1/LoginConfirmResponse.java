@@ -3,7 +3,15 @@
 
 package trinsic.services.account.v1;
 
-/** Protobuf type {@code services.account.v1.LoginConfirmResponse} */
+/**
+ *
+ *
+ * <pre>
+ * Response to `LoginConfirmRequest`
+ * </pre>
+ *
+ * Protobuf type {@code services.account.v1.LoginConfirmResponse}
+ */
 public final class LoginConfirmResponse extends com.google.protobuf.GeneratedMessageV3
     implements
     // @@protoc_insertion_point(message_implements:services.account.v1.LoginConfirmResponse)
@@ -103,8 +111,8 @@ public final class LoginConfirmResponse extends com.google.protobuf.GeneratedMes
    *
    *
    * <pre>
-   * Profile response. This profile may be protected and
-   * require unblinding/unprotection using the raw hashed code
+   * Profile response; must be unprotected using unhashed confirmation code.
+   * Our SDKs will handle this process for you, and return to you an authentication token string.
    * </pre>
    *
    * <code>.services.account.v1.AccountProfile profile = 1;</code>
@@ -119,8 +127,8 @@ public final class LoginConfirmResponse extends com.google.protobuf.GeneratedMes
    *
    *
    * <pre>
-   * Profile response. This profile may be protected and
-   * require unblinding/unprotection using the raw hashed code
+   * Profile response; must be unprotected using unhashed confirmation code.
+   * Our SDKs will handle this process for you, and return to you an authentication token string.
    * </pre>
    *
    * <code>.services.account.v1.AccountProfile profile = 1;</code>
@@ -137,8 +145,8 @@ public final class LoginConfirmResponse extends com.google.protobuf.GeneratedMes
    *
    *
    * <pre>
-   * Profile response. This profile may be protected and
-   * require unblinding/unprotection using the raw hashed code
+   * Profile response; must be unprotected using unhashed confirmation code.
+   * Our SDKs will handle this process for you, and return to you an authentication token string.
    * </pre>
    *
    * <code>.services.account.v1.AccountProfile profile = 1;</code>
@@ -312,7 +320,15 @@ public final class LoginConfirmResponse extends com.google.protobuf.GeneratedMes
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code services.account.v1.LoginConfirmResponse} */
+  /**
+   *
+   *
+   * <pre>
+   * Response to `LoginConfirmRequest`
+   * </pre>
+   *
+   * Protobuf type {@code services.account.v1.LoginConfirmResponse}
+   */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
       // @@protoc_insertion_point(builder_implements:services.account.v1.LoginConfirmResponse)
@@ -479,8 +495,8 @@ public final class LoginConfirmResponse extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Profile response. This profile may be protected and
-     * require unblinding/unprotection using the raw hashed code
+     * Profile response; must be unprotected using unhashed confirmation code.
+     * Our SDKs will handle this process for you, and return to you an authentication token string.
      * </pre>
      *
      * <code>.services.account.v1.AccountProfile profile = 1;</code>
@@ -494,8 +510,8 @@ public final class LoginConfirmResponse extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Profile response. This profile may be protected and
-     * require unblinding/unprotection using the raw hashed code
+     * Profile response; must be unprotected using unhashed confirmation code.
+     * Our SDKs will handle this process for you, and return to you an authentication token string.
      * </pre>
      *
      * <code>.services.account.v1.AccountProfile profile = 1;</code>
@@ -515,8 +531,8 @@ public final class LoginConfirmResponse extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Profile response. This profile may be protected and
-     * require unblinding/unprotection using the raw hashed code
+     * Profile response; must be unprotected using unhashed confirmation code.
+     * Our SDKs will handle this process for you, and return to you an authentication token string.
      * </pre>
      *
      * <code>.services.account.v1.AccountProfile profile = 1;</code>
@@ -538,8 +554,8 @@ public final class LoginConfirmResponse extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Profile response. This profile may be protected and
-     * require unblinding/unprotection using the raw hashed code
+     * Profile response; must be unprotected using unhashed confirmation code.
+     * Our SDKs will handle this process for you, and return to you an authentication token string.
      * </pre>
      *
      * <code>.services.account.v1.AccountProfile profile = 1;</code>
@@ -558,8 +574,8 @@ public final class LoginConfirmResponse extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Profile response. This profile may be protected and
-     * require unblinding/unprotection using the raw hashed code
+     * Profile response; must be unprotected using unhashed confirmation code.
+     * Our SDKs will handle this process for you, and return to you an authentication token string.
      * </pre>
      *
      * <code>.services.account.v1.AccountProfile profile = 1;</code>
@@ -585,8 +601,8 @@ public final class LoginConfirmResponse extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Profile response. This profile may be protected and
-     * require unblinding/unprotection using the raw hashed code
+     * Profile response; must be unprotected using unhashed confirmation code.
+     * Our SDKs will handle this process for you, and return to you an authentication token string.
      * </pre>
      *
      * <code>.services.account.v1.AccountProfile profile = 1;</code>
@@ -606,8 +622,8 @@ public final class LoginConfirmResponse extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Profile response. This profile may be protected and
-     * require unblinding/unprotection using the raw hashed code
+     * Profile response; must be unprotected using unhashed confirmation code.
+     * Our SDKs will handle this process for you, and return to you an authentication token string.
      * </pre>
      *
      * <code>.services.account.v1.AccountProfile profile = 1;</code>
@@ -621,8 +637,8 @@ public final class LoginConfirmResponse extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Profile response. This profile may be protected and
-     * require unblinding/unprotection using the raw hashed code
+     * Profile response; must be unprotected using unhashed confirmation code.
+     * Our SDKs will handle this process for you, and return to you an authentication token string.
      * </pre>
      *
      * <code>.services.account.v1.AccountProfile profile = 1;</code>
@@ -640,8 +656,8 @@ public final class LoginConfirmResponse extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Profile response. This profile may be protected and
-     * require unblinding/unprotection using the raw hashed code
+     * Profile response; must be unprotected using unhashed confirmation code.
+     * Our SDKs will handle this process for you, and return to you an authentication token string.
      * </pre>
      *
      * <code>.services.account.v1.AccountProfile profile = 1;</code>

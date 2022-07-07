@@ -12,7 +12,7 @@ public interface VerifyProofResponseOrBuilder
    *
    *
    * <pre>
-   * Whether or not all validations in `validation_results` passed
+   * Whether all validations in `validation_results` passed
    * </pre>
    *
    * <code>bool is_valid = 1;</code>
@@ -31,7 +31,7 @@ public interface VerifyProofResponseOrBuilder
    * <code>repeated string validation_messages = 2 [deprecated = true];</code>
    *
    * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=83
+   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
    * @return A list containing the validationMessages.
    */
   @java.lang.Deprecated
@@ -46,7 +46,7 @@ public interface VerifyProofResponseOrBuilder
    * <code>repeated string validation_messages = 2 [deprecated = true];</code>
    *
    * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=83
+   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
    * @return The count of validationMessages.
    */
   @java.lang.Deprecated
@@ -61,7 +61,7 @@ public interface VerifyProofResponseOrBuilder
    * <code>repeated string validation_messages = 2 [deprecated = true];</code>
    *
    * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=83
+   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
    * @param index The index of the element to return.
    * @return The validationMessages at the given index.
    */
@@ -77,7 +77,7 @@ public interface VerifyProofResponseOrBuilder
    * <code>repeated string validation_messages = 2 [deprecated = true];</code>
    *
    * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=83
+   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
    * @param index The index of the value to return.
    * @return The bytes of the validationMessages at the given index.
    */

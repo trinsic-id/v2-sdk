@@ -59,15 +59,6 @@ export function responseStatusToJSON(object: ResponseStatus): string {
   }
 }
 
-export interface ServerConfig {
-  /** service endpoint */
-  endpoint: string;
-  /** service port */
-  port: number;
-  /** indicates if tls is used */
-  useTls: boolean;
-}
-
 /** Nonce used to generate an oberon proof */
 export interface Nonce {
   /** UTC unix millisecond timestamp the request was made */
@@ -75,76 +66,6 @@ export interface Nonce {
   /** blake3256 hash of the request body */
   requestHash: Uint8Array;
 }
-
-function createBaseServerConfig(): ServerConfig {
-  return { endpoint: "", port: 0, useTls: false };
-}
-
-export const ServerConfig = {
-  encode(
-    message: ServerConfig,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
-    if (message.endpoint !== "") {
-      writer.uint32(10).string(message.endpoint);
-    }
-    if (message.port !== 0) {
-      writer.uint32(16).int32(message.port);
-    }
-    if (message.useTls === true) {
-      writer.uint32(24).bool(message.useTls);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): ServerConfig {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseServerConfig();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.endpoint = reader.string();
-          break;
-        case 2:
-          message.port = reader.int32();
-          break;
-        case 3:
-          message.useTls = reader.bool();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-
-  fromJSON(object: any): ServerConfig {
-    return {
-      endpoint: isSet(object.endpoint) ? String(object.endpoint) : "",
-      port: isSet(object.port) ? Number(object.port) : 0,
-      useTls: isSet(object.useTls) ? Boolean(object.useTls) : false,
-    };
-  },
-
-  toJSON(message: ServerConfig): unknown {
-    const obj: any = {};
-    message.endpoint !== undefined && (obj.endpoint = message.endpoint);
-    message.port !== undefined && (obj.port = Math.round(message.port));
-    message.useTls !== undefined && (obj.useTls = message.useTls);
-    return obj;
-  },
-
-  fromPartial(object: DeepPartial<ServerConfig>): ServerConfig {
-    const message = createBaseServerConfig();
-    message.endpoint = object.endpoint ?? "";
-    message.port = object.port ?? 0;
-    message.useTls = object.useTls ?? false;
-    return message;
-  },
-};
 
 function createBaseNonce(): Nonce {
   return { timestamp: 0, requestHash: new Uint8Array() };

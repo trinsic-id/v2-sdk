@@ -124,7 +124,6 @@ public final class SignInResponse extends com.google.protobuf.GeneratedMessageV3
    *
    * <pre>
    * Indicates if confirmation of account is required.
-   * This settings is configured globally by the server administrator.
    * </pre>
    *
    * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
@@ -140,7 +139,6 @@ public final class SignInResponse extends com.google.protobuf.GeneratedMessageV3
    *
    * <pre>
    * Indicates if confirmation of account is required.
-   * This settings is configured globally by the server administrator.
    * </pre>
    *
    * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
@@ -567,7 +565,6 @@ public final class SignInResponse extends com.google.protobuf.GeneratedMessageV3
      *
      * <pre>
      * Indicates if confirmation of account is required.
-     * This settings is configured globally by the server administrator.
      * </pre>
      *
      * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
@@ -583,7 +580,6 @@ public final class SignInResponse extends com.google.protobuf.GeneratedMessageV3
      *
      * <pre>
      * Indicates if confirmation of account is required.
-     * This settings is configured globally by the server administrator.
      * </pre>
      *
      * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
@@ -602,7 +598,6 @@ public final class SignInResponse extends com.google.protobuf.GeneratedMessageV3
      *
      * <pre>
      * Indicates if confirmation of account is required.
-     * This settings is configured globally by the server administrator.
      * </pre>
      *
      * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
@@ -621,7 +616,6 @@ public final class SignInResponse extends com.google.protobuf.GeneratedMessageV3
      *
      * <pre>
      * Indicates if confirmation of account is required.
-     * This settings is configured globally by the server administrator.
      * </pre>
      *
      * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
@@ -643,7 +637,6 @@ public final class SignInResponse extends com.google.protobuf.GeneratedMessageV3
      *
      * <pre>
      * Indicates if confirmation of account is required.
-     * This settings is configured globally by the server administrator.
      * </pre>
      *
      * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>

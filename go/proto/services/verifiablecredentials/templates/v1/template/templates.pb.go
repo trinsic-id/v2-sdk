@@ -241,8 +241,6 @@ type SearchCredentialTemplatesResponse struct {
 	ItemsJson string `protobuf:"bytes,1,opt,name=items_json,json=itemsJson,proto3" json:"items_json,omitempty"`
 	// Whether more results are available for this query via `continuation_token`
 	HasMore bool `protobuf:"varint,2,opt,name=has_more,json=hasMore,proto3" json:"has_more,omitempty"`
-	// Count of items in `items_json`
-	// int32 count = 3; unpopulated and unused
 	// Token to fetch next set of results via `SearchCredentialTemplatesRequest`
 	ContinuationToken string `protobuf:"bytes,4,opt,name=continuation_token,json=continuationToken,proto3" json:"continuation_token,omitempty"`
 }

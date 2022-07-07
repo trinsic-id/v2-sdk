@@ -7,7 +7,8 @@ package trinsic.services.account.v1;
  *
  *
  * <pre>
- * Authorize ecosystem to receive wallet events
+ * Request to authorize Ecosystem provider to receive webhooks for events
+ * which occur on this wallet.
  * </pre>
  *
  * Protobuf type {@code services.account.v1.AuthorizeWebhookRequest}
@@ -336,7 +337,8 @@ public final class AuthorizeWebhookRequest extends com.google.protobuf.Generated
    *
    *
    * <pre>
-   * Authorize ecosystem to receive wallet events
+   * Request to authorize Ecosystem provider to receive webhooks for events
+   * which occur on this wallet.
    * </pre>
    *
    * Protobuf type {@code services.account.v1.AuthorizeWebhookRequest}

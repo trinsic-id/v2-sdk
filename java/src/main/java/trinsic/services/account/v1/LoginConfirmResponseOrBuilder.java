@@ -12,8 +12,8 @@ public interface LoginConfirmResponseOrBuilder
    *
    *
    * <pre>
-   * Profile response. This profile may be protected and
-   * require unblinding/unprotection using the raw hashed code
+   * Profile response; must be unprotected using unhashed confirmation code.
+   * Our SDKs will handle this process for you, and return to you an authentication token string.
    * </pre>
    *
    * <code>.services.account.v1.AccountProfile profile = 1;</code>
@@ -25,8 +25,8 @@ public interface LoginConfirmResponseOrBuilder
    *
    *
    * <pre>
-   * Profile response. This profile may be protected and
-   * require unblinding/unprotection using the raw hashed code
+   * Profile response; must be unprotected using unhashed confirmation code.
+   * Our SDKs will handle this process for you, and return to you an authentication token string.
    * </pre>
    *
    * <code>.services.account.v1.AccountProfile profile = 1;</code>
@@ -38,8 +38,8 @@ public interface LoginConfirmResponseOrBuilder
    *
    *
    * <pre>
-   * Profile response. This profile may be protected and
-   * require unblinding/unprotection using the raw hashed code
+   * Profile response; must be unprotected using unhashed confirmation code.
+   * Our SDKs will handle this process for you, and return to you an authentication token string.
    * </pre>
    *
    * <code>.services.account.v1.AccountProfile profile = 1;</code>

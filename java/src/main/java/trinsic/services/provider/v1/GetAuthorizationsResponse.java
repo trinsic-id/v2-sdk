@@ -3,7 +3,15 @@
 
 package trinsic.services.provider.v1;
 
-/** Protobuf type {@code services.provider.v1.GetAuthorizationsResponse} */
+/**
+ *
+ *
+ * <pre>
+ * Response to `GetAuthorizationsRequest`
+ * </pre>
+ *
+ * Protobuf type {@code services.provider.v1.GetAuthorizationsResponse}
+ */
 public final class GetAuthorizationsResponse extends com.google.protobuf.GeneratedMessageV3
     implements
     // @@protoc_insertion_point(message_implements:services.provider.v1.GetAuthorizationsResponse)
@@ -100,28 +108,68 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
 
   public static final int GRANTS_FIELD_NUMBER = 1;
   private java.util.List<trinsic.services.provider.v1.Grant> grants_;
-  /** <code>repeated .services.provider.v1.Grant grants = 1;</code> */
+  /**
+   *
+   *
+   * <pre>
+   * Grants attached to account
+   * </pre>
+   *
+   * <code>repeated .services.provider.v1.Grant grants = 1;</code>
+   */
   @java.lang.Override
   public java.util.List<trinsic.services.provider.v1.Grant> getGrantsList() {
     return grants_;
   }
-  /** <code>repeated .services.provider.v1.Grant grants = 1;</code> */
+  /**
+   *
+   *
+   * <pre>
+   * Grants attached to account
+   * </pre>
+   *
+   * <code>repeated .services.provider.v1.Grant grants = 1;</code>
+   */
   @java.lang.Override
   public java.util.List<? extends trinsic.services.provider.v1.GrantOrBuilder>
       getGrantsOrBuilderList() {
     return grants_;
   }
-  /** <code>repeated .services.provider.v1.Grant grants = 1;</code> */
+  /**
+   *
+   *
+   * <pre>
+   * Grants attached to account
+   * </pre>
+   *
+   * <code>repeated .services.provider.v1.Grant grants = 1;</code>
+   */
   @java.lang.Override
   public int getGrantsCount() {
     return grants_.size();
   }
-  /** <code>repeated .services.provider.v1.Grant grants = 1;</code> */
+  /**
+   *
+   *
+   * <pre>
+   * Grants attached to account
+   * </pre>
+   *
+   * <code>repeated .services.provider.v1.Grant grants = 1;</code>
+   */
   @java.lang.Override
   public trinsic.services.provider.v1.Grant getGrants(int index) {
     return grants_.get(index);
   }
-  /** <code>repeated .services.provider.v1.Grant grants = 1;</code> */
+  /**
+   *
+   *
+   * <pre>
+   * Grants attached to account
+   * </pre>
+   *
+   * <code>repeated .services.provider.v1.Grant grants = 1;</code>
+   */
   @java.lang.Override
   public trinsic.services.provider.v1.GrantOrBuilder getGrantsOrBuilder(int index) {
     return grants_.get(index);
@@ -289,7 +337,15 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code services.provider.v1.GetAuthorizationsResponse} */
+  /**
+   *
+   *
+   * <pre>
+   * Response to `GetAuthorizationsRequest`
+   * </pre>
+   *
+   * Protobuf type {@code services.provider.v1.GetAuthorizationsResponse}
+   */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
       // @@protoc_insertion_point(builder_implements:services.provider.v1.GetAuthorizationsResponse)
@@ -496,7 +552,15 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
             trinsic.services.provider.v1.GrantOrBuilder>
         grantsBuilder_;
 
-    /** <code>repeated .services.provider.v1.Grant grants = 1;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Grants attached to account
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.Grant grants = 1;</code>
+     */
     public java.util.List<trinsic.services.provider.v1.Grant> getGrantsList() {
       if (grantsBuilder_ == null) {
         return java.util.Collections.unmodifiableList(grants_);
@@ -504,7 +568,15 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
         return grantsBuilder_.getMessageList();
       }
     }
-    /** <code>repeated .services.provider.v1.Grant grants = 1;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Grants attached to account
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.Grant grants = 1;</code>
+     */
     public int getGrantsCount() {
       if (grantsBuilder_ == null) {
         return grants_.size();
@@ -512,7 +584,15 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
         return grantsBuilder_.getCount();
       }
     }
-    /** <code>repeated .services.provider.v1.Grant grants = 1;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Grants attached to account
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.Grant grants = 1;</code>
+     */
     public trinsic.services.provider.v1.Grant getGrants(int index) {
       if (grantsBuilder_ == null) {
         return grants_.get(index);
@@ -520,7 +600,15 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
         return grantsBuilder_.getMessage(index);
       }
     }
-    /** <code>repeated .services.provider.v1.Grant grants = 1;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Grants attached to account
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.Grant grants = 1;</code>
+     */
     public Builder setGrants(int index, trinsic.services.provider.v1.Grant value) {
       if (grantsBuilder_ == null) {
         if (value == null) {
@@ -534,7 +622,15 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
       }
       return this;
     }
-    /** <code>repeated .services.provider.v1.Grant grants = 1;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Grants attached to account
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.Grant grants = 1;</code>
+     */
     public Builder setGrants(
         int index, trinsic.services.provider.v1.Grant.Builder builderForValue) {
       if (grantsBuilder_ == null) {
@@ -546,7 +642,15 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
       }
       return this;
     }
-    /** <code>repeated .services.provider.v1.Grant grants = 1;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Grants attached to account
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.Grant grants = 1;</code>
+     */
     public Builder addGrants(trinsic.services.provider.v1.Grant value) {
       if (grantsBuilder_ == null) {
         if (value == null) {
@@ -560,7 +664,15 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
       }
       return this;
     }
-    /** <code>repeated .services.provider.v1.Grant grants = 1;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Grants attached to account
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.Grant grants = 1;</code>
+     */
     public Builder addGrants(int index, trinsic.services.provider.v1.Grant value) {
       if (grantsBuilder_ == null) {
         if (value == null) {
@@ -574,7 +686,15 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
       }
       return this;
     }
-    /** <code>repeated .services.provider.v1.Grant grants = 1;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Grants attached to account
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.Grant grants = 1;</code>
+     */
     public Builder addGrants(trinsic.services.provider.v1.Grant.Builder builderForValue) {
       if (grantsBuilder_ == null) {
         ensureGrantsIsMutable();
@@ -585,7 +705,15 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
       }
       return this;
     }
-    /** <code>repeated .services.provider.v1.Grant grants = 1;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Grants attached to account
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.Grant grants = 1;</code>
+     */
     public Builder addGrants(
         int index, trinsic.services.provider.v1.Grant.Builder builderForValue) {
       if (grantsBuilder_ == null) {
@@ -597,7 +725,15 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
       }
       return this;
     }
-    /** <code>repeated .services.provider.v1.Grant grants = 1;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Grants attached to account
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.Grant grants = 1;</code>
+     */
     public Builder addAllGrants(
         java.lang.Iterable<? extends trinsic.services.provider.v1.Grant> values) {
       if (grantsBuilder_ == null) {
@@ -609,7 +745,15 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
       }
       return this;
     }
-    /** <code>repeated .services.provider.v1.Grant grants = 1;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Grants attached to account
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.Grant grants = 1;</code>
+     */
     public Builder clearGrants() {
       if (grantsBuilder_ == null) {
         grants_ = java.util.Collections.emptyList();
@@ -620,7 +764,15 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
       }
       return this;
     }
-    /** <code>repeated .services.provider.v1.Grant grants = 1;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Grants attached to account
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.Grant grants = 1;</code>
+     */
     public Builder removeGrants(int index) {
       if (grantsBuilder_ == null) {
         ensureGrantsIsMutable();
@@ -631,11 +783,27 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
       }
       return this;
     }
-    /** <code>repeated .services.provider.v1.Grant grants = 1;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Grants attached to account
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.Grant grants = 1;</code>
+     */
     public trinsic.services.provider.v1.Grant.Builder getGrantsBuilder(int index) {
       return getGrantsFieldBuilder().getBuilder(index);
     }
-    /** <code>repeated .services.provider.v1.Grant grants = 1;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Grants attached to account
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.Grant grants = 1;</code>
+     */
     public trinsic.services.provider.v1.GrantOrBuilder getGrantsOrBuilder(int index) {
       if (grantsBuilder_ == null) {
         return grants_.get(index);
@@ -643,7 +811,15 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
         return grantsBuilder_.getMessageOrBuilder(index);
       }
     }
-    /** <code>repeated .services.provider.v1.Grant grants = 1;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Grants attached to account
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.Grant grants = 1;</code>
+     */
     public java.util.List<? extends trinsic.services.provider.v1.GrantOrBuilder>
         getGrantsOrBuilderList() {
       if (grantsBuilder_ != null) {
@@ -652,17 +828,41 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
         return java.util.Collections.unmodifiableList(grants_);
       }
     }
-    /** <code>repeated .services.provider.v1.Grant grants = 1;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Grants attached to account
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.Grant grants = 1;</code>
+     */
     public trinsic.services.provider.v1.Grant.Builder addGrantsBuilder() {
       return getGrantsFieldBuilder()
           .addBuilder(trinsic.services.provider.v1.Grant.getDefaultInstance());
     }
-    /** <code>repeated .services.provider.v1.Grant grants = 1;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Grants attached to account
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.Grant grants = 1;</code>
+     */
     public trinsic.services.provider.v1.Grant.Builder addGrantsBuilder(int index) {
       return getGrantsFieldBuilder()
           .addBuilder(index, trinsic.services.provider.v1.Grant.getDefaultInstance());
     }
-    /** <code>repeated .services.provider.v1.Grant grants = 1;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Grants attached to account
+     * </pre>
+     *
+     * <code>repeated .services.provider.v1.Grant grants = 1;</code>
+     */
     public java.util.List<trinsic.services.provider.v1.Grant.Builder> getGrantsBuilderList() {
       return getGrantsFieldBuilder().getBuilderList();
     }

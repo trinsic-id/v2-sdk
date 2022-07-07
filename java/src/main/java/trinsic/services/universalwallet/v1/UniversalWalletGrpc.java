@@ -309,7 +309,7 @@ public final class UniversalWalletGrpc {
      *
      *
      * <pre>
-     * Search the wallet using a SQL-like syntax
+     * Search the wallet using a SQL syntax
      * </pre>
      */
     public void search(
@@ -433,7 +433,7 @@ public final class UniversalWalletGrpc {
      *
      *
      * <pre>
-     * Search the wallet using a SQL-like syntax
+     * Search the wallet using a SQL syntax
      * </pre>
      */
     public void search(
@@ -520,7 +520,7 @@ public final class UniversalWalletGrpc {
      *
      *
      * <pre>
-     * Search the wallet using a SQL-like syntax
+     * Search the wallet using a SQL syntax
      * </pre>
      */
     public trinsic.services.universalwallet.v1.SearchResponse search(
@@ -600,7 +600,7 @@ public final class UniversalWalletGrpc {
      *
      *
      * <pre>
-     * Search the wallet using a SQL-like syntax
+     * Search the wallet using a SQL syntax
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<

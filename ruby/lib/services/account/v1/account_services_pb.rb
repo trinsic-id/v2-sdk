@@ -18,9 +18,9 @@ module Services
 
           # Sign in to an already existing account
           rpc :SignIn, ::Services::Account::V1::SignInRequest, ::Services::Account::V1::SignInResponse
-          # Login to account. If account doesn't exist, new will be created
+          # Begin login flow for specified account, creating one if it does not already exist
           rpc :Login, ::Services::Account::V1::LoginRequest, ::Services::Account::V1::LoginResponse
-          # Confirm login step by responding to the challenge request
+          # Finalize login flow with two-factor confirmation code
           rpc :LoginConfirm, ::Services::Account::V1::LoginConfirmRequest, ::Services::Account::V1::LoginConfirmResponse
           # Get account information
           rpc :Info, ::Services::Account::V1::AccountInfoRequest, ::Services::Account::V1::AccountInfoResponse

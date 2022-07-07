@@ -3,7 +3,16 @@
 
 package trinsic.services.trustregistry.v1;
 
-/** Protobuf type {@code services.trustregistry.v1.GetMembershipStatusRequest} */
+/**
+ *
+ *
+ * <pre>
+ * Request to fetch membership status in governance framework for a specific credential schema.
+ * Only one of `did_uri`, `x509_cert` may be specified.
+ * </pre>
+ *
+ * Protobuf type {@code services.trustregistry.v1.GetMembershipStatusRequest}
+ */
 public final class GetMembershipStatusRequest extends com.google.protobuf.GeneratedMessageV3
     implements
     // @@protoc_insertion_point(message_implements:services.trustregistry.v1.GetMembershipStatusRequest)
@@ -162,6 +171,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
   public static final int GOVERNANCE_FRAMEWORK_URI_FIELD_NUMBER = 1;
   private volatile java.lang.Object governanceFrameworkUri_;
   /**
+   *
+   *
+   * <pre>
+   * URI of governance framework
+   * </pre>
+   *
    * <code>string governance_framework_uri = 1;</code>
    *
    * @return The governanceFrameworkUri.
@@ -179,6 +194,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
     }
   }
   /**
+   *
+   *
+   * <pre>
+   * URI of governance framework
+   * </pre>
+   *
    * <code>string governance_framework_uri = 1;</code>
    *
    * @return The bytes for governanceFrameworkUri.
@@ -198,6 +219,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
 
   public static final int DID_URI_FIELD_NUMBER = 2;
   /**
+   *
+   *
+   * <pre>
+   * DID URI of member
+   * </pre>
+   *
    * <code>string did_uri = 2;</code>
    *
    * @return Whether the didUri field is set.
@@ -206,6 +233,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
     return memberCase_ == 2;
   }
   /**
+   *
+   *
+   * <pre>
+   * DID URI of member
+   * </pre>
+   *
    * <code>string did_uri = 2;</code>
    *
    * @return The didUri.
@@ -227,6 +260,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
     }
   }
   /**
+   *
+   *
+   * <pre>
+   * DID URI of member
+   * </pre>
+   *
    * <code>string did_uri = 2;</code>
    *
    * @return The bytes for didUri.
@@ -250,6 +289,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
 
   public static final int X509_CERT_FIELD_NUMBER = 3;
   /**
+   *
+   *
+   * <pre>
+   * X.509 certificate of member
+   * </pre>
+   *
    * <code>string x509_cert = 3;</code>
    *
    * @return Whether the x509Cert field is set.
@@ -258,6 +303,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
     return memberCase_ == 3;
   }
   /**
+   *
+   *
+   * <pre>
+   * X.509 certificate of member
+   * </pre>
+   *
    * <code>string x509_cert = 3;</code>
    *
    * @return The x509Cert.
@@ -279,6 +330,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
     }
   }
   /**
+   *
+   *
+   * <pre>
+   * X.509 certificate of member
+   * </pre>
+   *
    * <code>string x509_cert = 3;</code>
    *
    * @return The bytes for x509Cert.
@@ -303,6 +360,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
   public static final int SCHEMA_URI_FIELD_NUMBER = 4;
   private volatile java.lang.Object schemaUri_;
   /**
+   *
+   *
+   * <pre>
+   * URI of credential schema associated with membership
+   * </pre>
+   *
    * <code>string schema_uri = 4;</code>
    *
    * @return The schemaUri.
@@ -320,6 +383,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
     }
   }
   /**
+   *
+   *
+   * <pre>
+   * URI of credential schema associated with membership
+   * </pre>
+   *
    * <code>string schema_uri = 4;</code>
    *
    * @return The bytes for schemaUri.
@@ -541,7 +610,16 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code services.trustregistry.v1.GetMembershipStatusRequest} */
+  /**
+   *
+   *
+   * <pre>
+   * Request to fetch membership status in governance framework for a specific credential schema.
+   * Only one of `did_uri`, `x509_cert` may be specified.
+   * </pre>
+   *
+   * Protobuf type {@code services.trustregistry.v1.GetMembershipStatusRequest}
+   */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
       // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.GetMembershipStatusRequest)
@@ -746,6 +824,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
 
     private java.lang.Object governanceFrameworkUri_ = "";
     /**
+     *
+     *
+     * <pre>
+     * URI of governance framework
+     * </pre>
+     *
      * <code>string governance_framework_uri = 1;</code>
      *
      * @return The governanceFrameworkUri.
@@ -762,6 +846,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * URI of governance framework
+     * </pre>
+     *
      * <code>string governance_framework_uri = 1;</code>
      *
      * @return The bytes for governanceFrameworkUri.
@@ -778,6 +868,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * URI of governance framework
+     * </pre>
+     *
      * <code>string governance_framework_uri = 1;</code>
      *
      * @param value The governanceFrameworkUri to set.
@@ -793,6 +889,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * URI of governance framework
+     * </pre>
+     *
      * <code>string governance_framework_uri = 1;</code>
      *
      * @return This builder for chaining.
@@ -804,6 +906,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * URI of governance framework
+     * </pre>
+     *
      * <code>string governance_framework_uri = 1;</code>
      *
      * @param value The bytes for governanceFrameworkUri to set.
@@ -821,6 +929,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
     }
 
     /**
+     *
+     *
+     * <pre>
+     * DID URI of member
+     * </pre>
+     *
      * <code>string did_uri = 2;</code>
      *
      * @return Whether the didUri field is set.
@@ -830,6 +944,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
       return memberCase_ == 2;
     }
     /**
+     *
+     *
+     * <pre>
+     * DID URI of member
+     * </pre>
+     *
      * <code>string did_uri = 2;</code>
      *
      * @return The didUri.
@@ -852,6 +972,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * DID URI of member
+     * </pre>
+     *
      * <code>string did_uri = 2;</code>
      *
      * @return The bytes for didUri.
@@ -874,6 +1000,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * DID URI of member
+     * </pre>
+     *
      * <code>string did_uri = 2;</code>
      *
      * @param value The didUri to set.
@@ -889,6 +1021,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * DID URI of member
+     * </pre>
+     *
      * <code>string did_uri = 2;</code>
      *
      * @return This builder for chaining.
@@ -902,6 +1040,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * DID URI of member
+     * </pre>
+     *
      * <code>string did_uri = 2;</code>
      *
      * @param value The bytes for didUri to set.
@@ -919,6 +1063,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
     }
 
     /**
+     *
+     *
+     * <pre>
+     * X.509 certificate of member
+     * </pre>
+     *
      * <code>string x509_cert = 3;</code>
      *
      * @return Whether the x509Cert field is set.
@@ -928,6 +1078,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
       return memberCase_ == 3;
     }
     /**
+     *
+     *
+     * <pre>
+     * X.509 certificate of member
+     * </pre>
+     *
      * <code>string x509_cert = 3;</code>
      *
      * @return The x509Cert.
@@ -950,6 +1106,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * X.509 certificate of member
+     * </pre>
+     *
      * <code>string x509_cert = 3;</code>
      *
      * @return The bytes for x509Cert.
@@ -972,6 +1134,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * X.509 certificate of member
+     * </pre>
+     *
      * <code>string x509_cert = 3;</code>
      *
      * @param value The x509Cert to set.
@@ -987,6 +1155,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * X.509 certificate of member
+     * </pre>
+     *
      * <code>string x509_cert = 3;</code>
      *
      * @return This builder for chaining.
@@ -1000,6 +1174,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * X.509 certificate of member
+     * </pre>
+     *
      * <code>string x509_cert = 3;</code>
      *
      * @param value The bytes for x509Cert to set.
@@ -1018,6 +1198,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
 
     private java.lang.Object schemaUri_ = "";
     /**
+     *
+     *
+     * <pre>
+     * URI of credential schema associated with membership
+     * </pre>
+     *
      * <code>string schema_uri = 4;</code>
      *
      * @return The schemaUri.
@@ -1034,6 +1220,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * URI of credential schema associated with membership
+     * </pre>
+     *
      * <code>string schema_uri = 4;</code>
      *
      * @return The bytes for schemaUri.
@@ -1050,6 +1242,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * URI of credential schema associated with membership
+     * </pre>
+     *
      * <code>string schema_uri = 4;</code>
      *
      * @param value The schemaUri to set.
@@ -1065,6 +1263,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * URI of credential schema associated with membership
+     * </pre>
+     *
      * <code>string schema_uri = 4;</code>
      *
      * @return This builder for chaining.
@@ -1076,6 +1280,12 @@ public final class GetMembershipStatusRequest extends com.google.protobuf.Genera
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * URI of credential schema associated with membership
+     * </pre>
+     *
      * <code>string schema_uri = 4;</code>
      *
      * @param value The bytes for schemaUri to set.

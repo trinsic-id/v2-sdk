@@ -3,7 +3,16 @@
 
 package trinsic.services.trustregistry.v1;
 
-/** Protobuf type {@code services.trustregistry.v1.UnregisterMemberRequest} */
+/**
+ *
+ *
+ * <pre>
+ * Request to unregister a member as a valid issuer of a specific credential schema.
+ * Only one of `did_uri`, `wallet_id`, or `email` may be specified.
+ * </pre>
+ *
+ * Protobuf type {@code services.trustregistry.v1.UnregisterMemberRequest}
+ */
 public final class UnregisterMemberRequest extends com.google.protobuf.GeneratedMessageV3
     implements
     // @@protoc_insertion_point(message_implements:services.trustregistry.v1.UnregisterMemberRequest)
@@ -171,6 +180,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
 
   public static final int DID_URI_FIELD_NUMBER = 1;
   /**
+   *
+   *
+   * <pre>
+   * DID URI of member to unregister
+   * </pre>
+   *
    * <code>string did_uri = 1;</code>
    *
    * @return Whether the didUri field is set.
@@ -179,6 +194,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
     return memberCase_ == 1;
   }
   /**
+   *
+   *
+   * <pre>
+   * DID URI of member to unregister
+   * </pre>
+   *
    * <code>string did_uri = 1;</code>
    *
    * @return The didUri.
@@ -200,6 +221,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
     }
   }
   /**
+   *
+   *
+   * <pre>
+   * DID URI of member to unregister
+   * </pre>
+   *
    * <code>string did_uri = 1;</code>
    *
    * @return The bytes for didUri.
@@ -223,6 +250,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
 
   public static final int WALLET_ID_FIELD_NUMBER = 3;
   /**
+   *
+   *
+   * <pre>
+   * Trinsic Wallet ID of member to unregister
+   * </pre>
+   *
    * <code>string wallet_id = 3;</code>
    *
    * @return Whether the walletId field is set.
@@ -231,6 +264,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
     return memberCase_ == 3;
   }
   /**
+   *
+   *
+   * <pre>
+   * Trinsic Wallet ID of member to unregister
+   * </pre>
+   *
    * <code>string wallet_id = 3;</code>
    *
    * @return The walletId.
@@ -252,6 +291,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
     }
   }
   /**
+   *
+   *
+   * <pre>
+   * Trinsic Wallet ID of member to unregister
+   * </pre>
+   *
    * <code>string wallet_id = 3;</code>
    *
    * @return The bytes for walletId.
@@ -275,6 +320,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
 
   public static final int EMAIL_FIELD_NUMBER = 4;
   /**
+   *
+   *
+   * <pre>
+   * Email address of member to unregister. Must be associated with an existing Trinsic account.
+   * </pre>
+   *
    * <code>string email = 4;</code>
    *
    * @return Whether the email field is set.
@@ -283,6 +334,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
     return memberCase_ == 4;
   }
   /**
+   *
+   *
+   * <pre>
+   * Email address of member to unregister. Must be associated with an existing Trinsic account.
+   * </pre>
+   *
    * <code>string email = 4;</code>
    *
    * @return The email.
@@ -304,6 +361,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
     }
   }
   /**
+   *
+   *
+   * <pre>
+   * Email address of member to unregister. Must be associated with an existing Trinsic account.
+   * </pre>
+   *
    * <code>string email = 4;</code>
    *
    * @return The bytes for email.
@@ -328,6 +391,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
   public static final int SCHEMA_URI_FIELD_NUMBER = 10;
   private volatile java.lang.Object schemaUri_;
   /**
+   *
+   *
+   * <pre>
+   * URI of credential schema to unregister member as authorized issuer of
+   * </pre>
+   *
    * <code>string schema_uri = 10;</code>
    *
    * @return The schemaUri.
@@ -345,6 +414,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
     }
   }
   /**
+   *
+   *
+   * <pre>
+   * URI of credential schema to unregister member as authorized issuer of
+   * </pre>
+   *
    * <code>string schema_uri = 10;</code>
    *
    * @return The bytes for schemaUri.
@@ -365,6 +440,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
   public static final int FRAMEWORK_ID_FIELD_NUMBER = 20;
   private volatile java.lang.Object frameworkId_;
   /**
+   *
+   *
+   * <pre>
+   * ID of the governance framework that member is being removed from
+   * </pre>
+   *
    * <code>string framework_id = 20;</code>
    *
    * @return The frameworkId.
@@ -382,6 +463,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
     }
   }
   /**
+   *
+   *
+   * <pre>
+   * ID of the governance framework that member is being removed from
+   * </pre>
+   *
    * <code>string framework_id = 20;</code>
    *
    * @return The bytes for frameworkId.
@@ -616,7 +703,16 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code services.trustregistry.v1.UnregisterMemberRequest} */
+  /**
+   *
+   *
+   * <pre>
+   * Request to unregister a member as a valid issuer of a specific credential schema.
+   * Only one of `did_uri`, `wallet_id`, or `email` may be specified.
+   * </pre>
+   *
+   * Protobuf type {@code services.trustregistry.v1.UnregisterMemberRequest}
+   */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
       // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.UnregisterMemberRequest)
@@ -828,6 +924,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
     }
 
     /**
+     *
+     *
+     * <pre>
+     * DID URI of member to unregister
+     * </pre>
+     *
      * <code>string did_uri = 1;</code>
      *
      * @return Whether the didUri field is set.
@@ -837,6 +939,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
       return memberCase_ == 1;
     }
     /**
+     *
+     *
+     * <pre>
+     * DID URI of member to unregister
+     * </pre>
+     *
      * <code>string did_uri = 1;</code>
      *
      * @return The didUri.
@@ -859,6 +967,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * DID URI of member to unregister
+     * </pre>
+     *
      * <code>string did_uri = 1;</code>
      *
      * @return The bytes for didUri.
@@ -881,6 +995,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * DID URI of member to unregister
+     * </pre>
+     *
      * <code>string did_uri = 1;</code>
      *
      * @param value The didUri to set.
@@ -896,6 +1016,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * DID URI of member to unregister
+     * </pre>
+     *
      * <code>string did_uri = 1;</code>
      *
      * @return This builder for chaining.
@@ -909,6 +1035,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * DID URI of member to unregister
+     * </pre>
+     *
      * <code>string did_uri = 1;</code>
      *
      * @param value The bytes for didUri to set.
@@ -926,6 +1058,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
     }
 
     /**
+     *
+     *
+     * <pre>
+     * Trinsic Wallet ID of member to unregister
+     * </pre>
+     *
      * <code>string wallet_id = 3;</code>
      *
      * @return Whether the walletId field is set.
@@ -935,6 +1073,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
       return memberCase_ == 3;
     }
     /**
+     *
+     *
+     * <pre>
+     * Trinsic Wallet ID of member to unregister
+     * </pre>
+     *
      * <code>string wallet_id = 3;</code>
      *
      * @return The walletId.
@@ -957,6 +1101,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * Trinsic Wallet ID of member to unregister
+     * </pre>
+     *
      * <code>string wallet_id = 3;</code>
      *
      * @return The bytes for walletId.
@@ -979,6 +1129,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * Trinsic Wallet ID of member to unregister
+     * </pre>
+     *
      * <code>string wallet_id = 3;</code>
      *
      * @param value The walletId to set.
@@ -994,6 +1150,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * Trinsic Wallet ID of member to unregister
+     * </pre>
+     *
      * <code>string wallet_id = 3;</code>
      *
      * @return This builder for chaining.
@@ -1007,6 +1169,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * Trinsic Wallet ID of member to unregister
+     * </pre>
+     *
      * <code>string wallet_id = 3;</code>
      *
      * @param value The bytes for walletId to set.
@@ -1024,6 +1192,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
     }
 
     /**
+     *
+     *
+     * <pre>
+     * Email address of member to unregister. Must be associated with an existing Trinsic account.
+     * </pre>
+     *
      * <code>string email = 4;</code>
      *
      * @return Whether the email field is set.
@@ -1033,6 +1207,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
       return memberCase_ == 4;
     }
     /**
+     *
+     *
+     * <pre>
+     * Email address of member to unregister. Must be associated with an existing Trinsic account.
+     * </pre>
+     *
      * <code>string email = 4;</code>
      *
      * @return The email.
@@ -1055,6 +1235,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * Email address of member to unregister. Must be associated with an existing Trinsic account.
+     * </pre>
+     *
      * <code>string email = 4;</code>
      *
      * @return The bytes for email.
@@ -1077,6 +1263,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * Email address of member to unregister. Must be associated with an existing Trinsic account.
+     * </pre>
+     *
      * <code>string email = 4;</code>
      *
      * @param value The email to set.
@@ -1092,6 +1284,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * Email address of member to unregister. Must be associated with an existing Trinsic account.
+     * </pre>
+     *
      * <code>string email = 4;</code>
      *
      * @return This builder for chaining.
@@ -1105,6 +1303,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * Email address of member to unregister. Must be associated with an existing Trinsic account.
+     * </pre>
+     *
      * <code>string email = 4;</code>
      *
      * @param value The bytes for email to set.
@@ -1123,6 +1327,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
 
     private java.lang.Object schemaUri_ = "";
     /**
+     *
+     *
+     * <pre>
+     * URI of credential schema to unregister member as authorized issuer of
+     * </pre>
+     *
      * <code>string schema_uri = 10;</code>
      *
      * @return The schemaUri.
@@ -1139,6 +1349,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * URI of credential schema to unregister member as authorized issuer of
+     * </pre>
+     *
      * <code>string schema_uri = 10;</code>
      *
      * @return The bytes for schemaUri.
@@ -1155,6 +1371,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * URI of credential schema to unregister member as authorized issuer of
+     * </pre>
+     *
      * <code>string schema_uri = 10;</code>
      *
      * @param value The schemaUri to set.
@@ -1170,6 +1392,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * URI of credential schema to unregister member as authorized issuer of
+     * </pre>
+     *
      * <code>string schema_uri = 10;</code>
      *
      * @return This builder for chaining.
@@ -1181,6 +1409,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * URI of credential schema to unregister member as authorized issuer of
+     * </pre>
+     *
      * <code>string schema_uri = 10;</code>
      *
      * @param value The bytes for schemaUri to set.
@@ -1199,6 +1433,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
 
     private java.lang.Object frameworkId_ = "";
     /**
+     *
+     *
+     * <pre>
+     * ID of the governance framework that member is being removed from
+     * </pre>
+     *
      * <code>string framework_id = 20;</code>
      *
      * @return The frameworkId.
@@ -1215,6 +1455,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * ID of the governance framework that member is being removed from
+     * </pre>
+     *
      * <code>string framework_id = 20;</code>
      *
      * @return The bytes for frameworkId.
@@ -1231,6 +1477,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * ID of the governance framework that member is being removed from
+     * </pre>
+     *
      * <code>string framework_id = 20;</code>
      *
      * @param value The frameworkId to set.
@@ -1246,6 +1498,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * ID of the governance framework that member is being removed from
+     * </pre>
+     *
      * <code>string framework_id = 20;</code>
      *
      * @return This builder for chaining.
@@ -1257,6 +1515,12 @@ public final class UnregisterMemberRequest extends com.google.protobuf.Generated
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * ID of the governance framework that member is being removed from
+     * </pre>
+     *
      * <code>string framework_id = 20;</code>
      *
      * @param value The bytes for frameworkId to set.

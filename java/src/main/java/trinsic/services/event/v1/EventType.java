@@ -3,7 +3,15 @@
 
 package trinsic.services.event.v1;
 
-/** Protobuf enum {@code trinsic.services.event.EventType} */
+/**
+ *
+ *
+ * <pre>
+ * All event types
+ * </pre>
+ *
+ * Protobuf enum {@code trinsic.services.event.EventType}
+ */
 public enum EventType implements com.google.protobuf.ProtocolMessageEnum {
   /** <code>PING = 0;</code> */
   PING(0),

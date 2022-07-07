@@ -7,7 +7,8 @@ package trinsic.services.provider.v1;
  *
  *
  * <pre>
- * request message for GetOberonKey
+ * Request to fetch the Trinsic public key used
+ * to verify authentication token validity
  * </pre>
  *
  * Protobuf type {@code services.provider.v1.GetOberonKeyRequest}
@@ -243,7 +244,8 @@ public final class GetOberonKeyRequest extends com.google.protobuf.GeneratedMess
    *
    *
    * <pre>
-   * request message for GetOberonKey
+   * Request to fetch the Trinsic public key used
+   * to verify authentication token validity
    * </pre>
    *
    * Protobuf type {@code services.provider.v1.GetOberonKeyRequest}

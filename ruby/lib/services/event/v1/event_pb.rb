@@ -3,6 +3,8 @@
 
 require 'google/protobuf'
 
+require 'google/protobuf/descriptor_pb'
+
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("services/event/v1/event.proto", :syntax => :proto3) do
     add_message "trinsic.services.event.Event" do

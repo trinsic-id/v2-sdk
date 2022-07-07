@@ -12,7 +12,7 @@ export enum ConfirmationMethod {
   Sms = 2,
   /** ConnectedDevice - Confirmation from a connected device is required */
   ConnectedDevice = 3,
-  /** Other - Indicates third-party method of confirmation is required */
+  /** Other - Third-party method of confirmation is required */
   Other = 10,
   UNRECOGNIZED = -1,
 }
@@ -76,7 +76,7 @@ export interface SignInRequest {
 export interface AccountDetails {
   /** Account name */
   name: string;
-  /** Email account */
+  /** Email address of account */
   email: string;
   /** SMS number including country code */
   sms: string;
@@ -89,10 +89,7 @@ export interface AccountDetails {
  * like email, SMS, etc.
  */
 export interface SignInResponse {
-  /**
-   * Indicates if confirmation of account is required.
-   * This settings is configured globally by the server administrator.
-   */
+  /** Indicates if confirmation of account is required. */
   confirmationMethod: ConfirmationMethod;
   /**
    * Contains authentication data for use with the current device.
@@ -161,10 +158,10 @@ export interface AccountInfoResponse {
   ecosystemId: string;
   /**
    * The public DID associated with this account.
-   * This DID is used as "issuer" when signing verifiable credentials
+   * This DID is used as the `issuer` when signing verifiable credentials
    */
   publicDid: string;
-  /** Webhook events if any this wallet has authorized */
+  /** Webhook events, if any, this wallet has authorized */
   authorizedWebhooks: string[];
 }
 
@@ -176,6 +173,7 @@ export interface RevokeDeviceRequest {}
 
 export interface RevokeDeviceResponse {}
 
+/** Deprecated */
 export interface AccountEcosystem {
   id: string;
   name: string;
@@ -183,51 +181,55 @@ export interface AccountEcosystem {
   uri: string;
 }
 
+/** Request to begin login flow */
 export interface LoginRequest {
-  /** Email account to associate with the login request */
+  /** Email address of account. If unspecified, an anonymous account will be created. */
   email: string;
   /** Invitation code associated with this registration */
   invitationCode: string;
   /**
    * ID of Ecosystem to sign into.
-   * Ignored if `invitation_code` is passed
+   * Ignored if `invitation_code` is passed.
    */
   ecosystemId: string;
 }
 
+/** Response to `LoginRequest` */
 export interface LoginResponse {
   /**
-   * Challenge response. Random byte sequence unique
-   * for this login request
+   * Random byte sequence unique to this login request.
+   * If present, two-factor confirmation of login is required.
+   * Must be sent back, unaltered, in `LoginConfirm`.
    */
   challenge: Uint8Array | undefined;
-  /**
-   * Profile response. The login isn't challenged and
-   * the token is returned in this call. Does not require
-   * confirmation step
-   */
+  /** Account profile response. If present, no confirmation of login is required. */
   profile: AccountProfile | undefined;
 }
 
+/** Request to finalize login flow */
 export interface LoginConfirmRequest {
-  /** Login challenge received during the Login call */
+  /** Challenge received from `Login` */
   challenge: Uint8Array;
   /**
-   * Confirmation code received in email or SMS
-   * hashed using Blake3
+   * Two-factor confirmation code sent to account email or phone,
+   * hashed using Blake3. Our SDKs will handle this hashing process for you.
    */
   confirmationCodeHashed: Uint8Array;
 }
 
+/** Response to `LoginConfirmRequest` */
 export interface LoginConfirmResponse {
   /**
-   * Profile response. This profile may be protected and
-   * require unblinding/unprotection using the raw hashed code
+   * Profile response; must be unprotected using unhashed confirmation code.
+   * Our SDKs will handle this process for you, and return to you an authentication token string.
    */
   profile: AccountProfile | undefined;
 }
 
-/** Authorize ecosystem to receive wallet events */
+/**
+ * Request to authorize Ecosystem provider to receive webhooks for events
+ * which occur on this wallet.
+ */
 export interface AuthorizeWebhookRequest {
   /** Events to authorize access to. Default is "*" (all events) */
   events: string[];
@@ -1469,7 +1471,11 @@ export const AccountDefinition = {
   name: "Account",
   fullName: "services.account.v1.Account",
   methods: {
-    /** Sign in to an already existing account */
+    /**
+     * Sign in to an already existing account
+     *
+     * @deprecated
+     */
     signIn: {
       name: "SignIn",
       requestType: SignInRequest,
@@ -1478,7 +1484,7 @@ export const AccountDefinition = {
       responseStream: false,
       options: {},
     },
-    /** Login to account. If account doesn't exist, new will be created */
+    /** Begin login flow for specified account, creating one if it does not already exist */
     login: {
       name: "Login",
       requestType: LoginRequest,
@@ -1487,7 +1493,7 @@ export const AccountDefinition = {
       responseStream: false,
       options: {},
     },
-    /** Confirm login step by responding to the challenge request */
+    /** Finalize login flow with two-factor confirmation code */
     loginConfirm: {
       name: "LoginConfirm",
       requestType: LoginConfirmRequest,

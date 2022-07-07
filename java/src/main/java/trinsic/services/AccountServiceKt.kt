@@ -22,9 +22,10 @@ class AccountServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(o
     var request2 = request
     if (request.ecosystemId.isBlank())
         request2 = SignInRequest.newBuilder(request).setEcosystemId("default").build()
-    val authToken = Base64.getUrlEncoder().encodeToString(stub.signIn(request2).profile.toByteArray())
-      this.optionsBuilder.authToken = authToken
-      return authToken
+    val authToken =
+        Base64.getUrlEncoder().encodeToString(stub.signIn(request2).profile.toByteArray())
+    this.optionsBuilder.authToken = authToken
+    return authToken
   }
 
   companion object {
@@ -105,7 +106,7 @@ class AccountServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(o
     if (response.profile.protection.enabled) {
       authToken = unprotect(authToken, authCode)
     }
-      this.optionsBuilder.authToken = authToken
+    this.optionsBuilder.authToken = authToken
 
     return authToken
   }

@@ -3,7 +3,16 @@
 
 package trinsic.services.provider.v1;
 
-/** Protobuf type {@code services.provider.v1.GetAuthorizationsRequest} */
+/**
+ *
+ *
+ * <pre>
+ * Fetch list of grants that the current account has access to
+ * in its ecosystem
+ * </pre>
+ *
+ * Protobuf type {@code services.provider.v1.GetAuthorizationsRequest}
+ */
 public final class GetAuthorizationsRequest extends com.google.protobuf.GeneratedMessageV3
     implements
     // @@protoc_insertion_point(message_implements:services.provider.v1.GetAuthorizationsRequest)
@@ -232,7 +241,16 @@ public final class GetAuthorizationsRequest extends com.google.protobuf.Generate
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code services.provider.v1.GetAuthorizationsRequest} */
+  /**
+   *
+   *
+   * <pre>
+   * Fetch list of grants that the current account has access to
+   * in its ecosystem
+   * </pre>
+   *
+   * Protobuf type {@code services.provider.v1.GetAuthorizationsRequest}
+   */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
       // @@protoc_insertion_point(builder_implements:services.provider.v1.GetAuthorizationsRequest)

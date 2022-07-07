@@ -3,7 +3,15 @@
 
 package trinsic.services.provider.v1;
 
-/** Protobuf type {@code services.provider.v1.WebhookConfig} */
+/**
+ *
+ *
+ * <pre>
+ * Webhook configured on an ecosystem
+ * </pre>
+ *
+ * Protobuf type {@code services.provider.v1.WebhookConfig}
+ */
 public final class WebhookConfig extends com.google.protobuf.GeneratedMessageV3
     implements
     // @@protoc_insertion_point(message_implements:services.provider.v1.WebhookConfig)
@@ -176,7 +184,7 @@ public final class WebhookConfig extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Destination to post webhook calls to
+   * HTTPS URL to POST webhook calls to
    * </pre>
    *
    * <code>string destination_url = 2;</code>
@@ -199,7 +207,7 @@ public final class WebhookConfig extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Destination to post webhook calls to
+   * HTTPS URL to POST webhook calls to
    * </pre>
    *
    * <code>string destination_url = 2;</code>
@@ -286,7 +294,7 @@ public final class WebhookConfig extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Whether we are able to sucessfully send events to the webhook
+   * Last known status of webhook (whether or not Trinsic can successfully reach destination)
    * </pre>
    *
    * <code>string status = 5;</code>
@@ -309,7 +317,7 @@ public final class WebhookConfig extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Whether we are able to sucessfully send events to the webhook
+   * Last known status of webhook (whether or not Trinsic can successfully reach destination)
    * </pre>
    *
    * <code>string status = 5;</code>
@@ -522,7 +530,15 @@ public final class WebhookConfig extends com.google.protobuf.GeneratedMessageV3
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code services.provider.v1.WebhookConfig} */
+  /**
+   *
+   *
+   * <pre>
+   * Webhook configured on an ecosystem
+   * </pre>
+   *
+   * Protobuf type {@code services.provider.v1.WebhookConfig}
+   */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
       // @@protoc_insertion_point(builder_implements:services.provider.v1.WebhookConfig)
@@ -816,7 +832,7 @@ public final class WebhookConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Destination to post webhook calls to
+     * HTTPS URL to POST webhook calls to
      * </pre>
      *
      * <code>string destination_url = 2;</code>
@@ -838,7 +854,7 @@ public final class WebhookConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Destination to post webhook calls to
+     * HTTPS URL to POST webhook calls to
      * </pre>
      *
      * <code>string destination_url = 2;</code>
@@ -860,7 +876,7 @@ public final class WebhookConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Destination to post webhook calls to
+     * HTTPS URL to POST webhook calls to
      * </pre>
      *
      * <code>string destination_url = 2;</code>
@@ -881,7 +897,7 @@ public final class WebhookConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Destination to post webhook calls to
+     * HTTPS URL to POST webhook calls to
      * </pre>
      *
      * <code>string destination_url = 2;</code>
@@ -898,7 +914,7 @@ public final class WebhookConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Destination to post webhook calls to
+     * HTTPS URL to POST webhook calls to
      * </pre>
      *
      * <code>string destination_url = 2;</code>
@@ -1090,7 +1106,7 @@ public final class WebhookConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Whether we are able to sucessfully send events to the webhook
+     * Last known status of webhook (whether or not Trinsic can successfully reach destination)
      * </pre>
      *
      * <code>string status = 5;</code>
@@ -1112,7 +1128,7 @@ public final class WebhookConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Whether we are able to sucessfully send events to the webhook
+     * Last known status of webhook (whether or not Trinsic can successfully reach destination)
      * </pre>
      *
      * <code>string status = 5;</code>
@@ -1134,7 +1150,7 @@ public final class WebhookConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Whether we are able to sucessfully send events to the webhook
+     * Last known status of webhook (whether or not Trinsic can successfully reach destination)
      * </pre>
      *
      * <code>string status = 5;</code>
@@ -1155,7 +1171,7 @@ public final class WebhookConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Whether we are able to sucessfully send events to the webhook
+     * Last known status of webhook (whether or not Trinsic can successfully reach destination)
      * </pre>
      *
      * <code>string status = 5;</code>
@@ -1172,7 +1188,7 @@ public final class WebhookConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Whether we are able to sucessfully send events to the webhook
+     * Last known status of webhook (whether or not Trinsic can successfully reach destination)
      * </pre>
      *
      * <code>string status = 5;</code>

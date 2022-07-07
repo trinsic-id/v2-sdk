@@ -18,7 +18,7 @@ module Services
 
           # Retrieve an item from the wallet with a given item identifier
           rpc :GetItem, ::Services::Universalwallet::V1::GetItemRequest, ::Services::Universalwallet::V1::GetItemResponse
-          # Search the wallet using a SQL-like syntax
+          # Search the wallet using a SQL syntax
           rpc :Search, ::Services::Universalwallet::V1::SearchRequest, ::Services::Universalwallet::V1::SearchResponse
           # Insert an item into the wallet
           rpc :InsertItem, ::Services::Universalwallet::V1::InsertItemRequest, ::Services::Universalwallet::V1::InsertItemResponse

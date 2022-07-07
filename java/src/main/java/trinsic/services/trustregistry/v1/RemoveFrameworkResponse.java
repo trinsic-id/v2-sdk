@@ -3,7 +3,15 @@
 
 package trinsic.services.trustregistry.v1;
 
-/** Protobuf type {@code services.trustregistry.v1.RemoveFrameworkResponse} */
+/**
+ *
+ *
+ * <pre>
+ * Response to `RemoveFrameworkRequest`
+ * </pre>
+ *
+ * Protobuf type {@code services.trustregistry.v1.RemoveFrameworkResponse}
+ */
 public final class RemoveFrameworkResponse extends com.google.protobuf.GeneratedMessageV3
     implements
     // @@protoc_insertion_point(message_implements:services.trustregistry.v1.RemoveFrameworkResponse)
@@ -232,7 +240,15 @@ public final class RemoveFrameworkResponse extends com.google.protobuf.Generated
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code services.trustregistry.v1.RemoveFrameworkResponse} */
+  /**
+   *
+   *
+   * <pre>
+   * Response to `RemoveFrameworkRequest`
+   * </pre>
+   *
+   * Protobuf type {@code services.trustregistry.v1.RemoveFrameworkResponse}
+   */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
       // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.RemoveFrameworkResponse)

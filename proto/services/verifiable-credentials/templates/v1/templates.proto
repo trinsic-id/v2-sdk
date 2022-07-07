@@ -35,10 +35,10 @@ message SearchCredentialTemplatesRequest {
 message SearchCredentialTemplatesResponse {
   // Raw JSON data returned from query
   string items_json = 1;
+
   // Whether more results are available for this query via `continuation_token`
   bool has_more = 2;
-  // Count of items in `items_json`
-  // int32 count = 3; unpopulated and unused
+  
   // Token to fetch next set of results via `SearchCredentialTemplatesRequest`
   string continuation_token = 4;
 }
@@ -57,8 +57,10 @@ message ListCredentialTemplatesRequest {
 message ListCredentialTemplatesResponse {
   // Templates found by query
   repeated TemplateData templates = 1;
+
   // Whether more results are available for this query via `continuation_token`
   bool has_more_results = 2;
+
   // Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
   string continuation_token = 3;
 }
@@ -76,8 +78,10 @@ message DeleteCredentialTemplateResponse {}
 message CreateCredentialTemplateRequest {
   // Name of new template
   string name = 1;
+
   // Fields which compose the template
   map<string, TemplateField> fields = 2;
+
   // Whether credentials may be issued against this template which have fields
   // not specified in `fields`
   bool allow_additional_fields = 3;
@@ -93,8 +97,10 @@ message CreateCredentialTemplateResponse {
 message TemplateField {
   // Human-readable description of the field
   string description = 2;
+
   // Whether this field may be omitted when a credential is issued against the template
   bool optional = 3;
+
   // The type of the field
   FieldType type = 4;
 }
@@ -148,9 +154,18 @@ message TemplateData {
 }
 
 service CredentialTemplates {
+  // Create a credential template in the current ecosystem
   rpc Create(CreateCredentialTemplateRequest) returns (CreateCredentialTemplateResponse);
+
+  // Fetch a credential template by ID
   rpc Get(GetCredentialTemplateRequest) returns (GetCredentialTemplateResponse);
+
+  // Search credential templates using SQL, returning strongly-typed template data
   rpc List(ListCredentialTemplatesRequest) returns (ListCredentialTemplatesResponse);
+
+  // Search credential templates using SQL, returning raw JSON data
   rpc Search(SearchCredentialTemplatesRequest) returns (SearchCredentialTemplatesResponse);
+
+  // Delete a credential template from the current ecosystem by ID
   rpc Delete(DeleteCredentialTemplateRequest) returns (DeleteCredentialTemplateResponse);
 }

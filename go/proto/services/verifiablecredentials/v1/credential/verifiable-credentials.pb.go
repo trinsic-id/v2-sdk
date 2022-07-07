@@ -445,7 +445,7 @@ type VerifyProofResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Whether or not all validations in `validation_results` passed
+	// Whether all validations in `validation_results` passed
 	IsValid bool `protobuf:"varint,1,opt,name=is_valid,json=isValid,proto3" json:"is_valid,omitempty"`
 	// Use `validation_results` instead
 	//
@@ -721,7 +721,7 @@ type UpdateStatusRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Credential Status ID to update
+	// Credential Status ID to update. This is not the same as the credential's ID.
 	CredentialStatusId string `protobuf:"bytes,1,opt,name=credential_status_id,json=credentialStatusId,proto3" json:"credential_status_id,omitempty"`
 	// New revocation status of credential
 	Revoked bool `protobuf:"varint,2,opt,name=revoked,proto3" json:"revoked,omitempty"`
@@ -818,7 +818,7 @@ type CheckStatusRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Credential Status ID to check
+	// Credential Status ID to check. This is not the same as the credential's ID.
 	CredentialStatusId string `protobuf:"bytes,1,opt,name=credential_status_id,json=credentialStatusId,proto3" json:"credential_status_id,omitempty"`
 }
 

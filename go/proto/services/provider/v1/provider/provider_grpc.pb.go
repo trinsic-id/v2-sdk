@@ -26,9 +26,9 @@ type ProviderClient interface {
 	CreateEcosystem(ctx context.Context, in *CreateEcosystemRequest, opts ...grpc.CallOption) (*CreateEcosystemResponse, error)
 	// Update an existing ecosystem
 	UpdateEcosystem(ctx context.Context, in *UpdateEcosystemRequest, opts ...grpc.CallOption) (*UpdateEcosystemResponse, error)
-	// Grant authorization to ecosystem resources
+	// Grant user authorization to ecosystem resources
 	GrantAuthorization(ctx context.Context, in *GrantAuthorizationRequest, opts ...grpc.CallOption) (*GrantAuthorizationResponse, error)
-	// Revoke authorization to ecosystem resources
+	// Revoke user authorization to ecosystem resources
 	RevokeAuthorization(ctx context.Context, in *RevokeAuthorizationRequest, opts ...grpc.CallOption) (*RevokeAuthorizationResponse, error)
 	// Retreive the list of permissions for this particular account/ecosystem
 	GetAuthorizations(ctx context.Context, in *GetAuthorizationsRequest, opts ...grpc.CallOption) (*GetAuthorizationsResponse, error)
@@ -43,7 +43,7 @@ type ProviderClient interface {
 	GenerateToken(ctx context.Context, in *GenerateTokenRequest, opts ...grpc.CallOption) (*GenerateTokenResponse, error)
 	// Invite a user to the ecosystem
 	Invite(ctx context.Context, in *InviteRequest, opts ...grpc.CallOption) (*InviteResponse, error)
-	// Check the invitation status
+	// Check the status of an invitation
 	InvitationStatus(ctx context.Context, in *InvitationStatusRequest, opts ...grpc.CallOption) (*InvitationStatusResponse, error)
 	// Returns the public key being used to create/verify oberon tokens
 	GetOberonKey(ctx context.Context, in *GetOberonKeyRequest, opts ...grpc.CallOption) (*GetOberonKeyResponse, error)
@@ -184,9 +184,9 @@ type ProviderServer interface {
 	CreateEcosystem(context.Context, *CreateEcosystemRequest) (*CreateEcosystemResponse, error)
 	// Update an existing ecosystem
 	UpdateEcosystem(context.Context, *UpdateEcosystemRequest) (*UpdateEcosystemResponse, error)
-	// Grant authorization to ecosystem resources
+	// Grant user authorization to ecosystem resources
 	GrantAuthorization(context.Context, *GrantAuthorizationRequest) (*GrantAuthorizationResponse, error)
-	// Revoke authorization to ecosystem resources
+	// Revoke user authorization to ecosystem resources
 	RevokeAuthorization(context.Context, *RevokeAuthorizationRequest) (*RevokeAuthorizationResponse, error)
 	// Retreive the list of permissions for this particular account/ecosystem
 	GetAuthorizations(context.Context, *GetAuthorizationsRequest) (*GetAuthorizationsResponse, error)
@@ -201,7 +201,7 @@ type ProviderServer interface {
 	GenerateToken(context.Context, *GenerateTokenRequest) (*GenerateTokenResponse, error)
 	// Invite a user to the ecosystem
 	Invite(context.Context, *InviteRequest) (*InviteResponse, error)
-	// Check the invitation status
+	// Check the status of an invitation
 	InvitationStatus(context.Context, *InvitationStatusRequest) (*InvitationStatusResponse, error)
 	// Returns the public key being used to create/verify oberon tokens
 	GetOberonKey(context.Context, *GetOberonKeyRequest) (*GetOberonKeyResponse, error)

@@ -8,13 +8,6 @@ require 'services/options/field-options_pb'
 
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("services/provider/v1/provider.proto", :syntax => :proto3) do
-    add_message "services.provider.v1.Invite" do
-      optional :id, :string, 1
-      optional :code, :string, 2
-      optional :created, :string, 3
-      optional :accepted, :string, 4
-      optional :expires, :string, 5
-    end
     add_message "services.provider.v1.InviteRequest" do
       optional :participant, :enum, 1, "services.provider.v1.ParticipantType"
       optional :description, :string, 2
@@ -146,7 +139,6 @@ end
 module Services
   module Provider
     module V1
-      Invite = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.Invite").msgclass
       InviteRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.InviteRequest").msgclass
       InviteRequest::DidCommInvitation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.InviteRequest.DidCommInvitation").msgclass
       InviteResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.InviteResponse").msgclass

@@ -22,15 +22,19 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type TrustRegistryClient interface {
-	// Adds a trust registry defintion to the ecosystem
+	// Add a governance framework to the ecosystem
 	AddFramework(ctx context.Context, in *AddFrameworkRequest, opts ...grpc.CallOption) (*AddFrameworkResponse, error)
+	// Remove a governance framework from the ecosystem
 	RemoveFramework(ctx context.Context, in *RemoveFrameworkRequest, opts ...grpc.CallOption) (*RemoveFrameworkResponse, error)
+	// Search the ecosystem's governance frameworks
 	SearchRegistry(ctx context.Context, in *SearchRegistryRequest, opts ...grpc.CallOption) (*SearchRegistryResponse, error)
-	// Registers an authoritative issuer with a credential template
+	// Register an authoritative issuer for a credential schema
 	RegisterMember(ctx context.Context, in *RegisterMemberRequest, opts ...grpc.CallOption) (*RegisterMemberResponse, error)
-	// Removes an authoritative issuer with a credential template from the trust registry
+	// Removes an authoritative issuer for a credential schema from the trust registry
 	UnregisterMember(ctx context.Context, in *UnregisterMemberRequest, opts ...grpc.CallOption) (*UnregisterMemberResponse, error)
+	// Fetch the membership status of an issuer for a given credential schema in a trust registry
 	GetMembershipStatus(ctx context.Context, in *GetMembershipStatusRequest, opts ...grpc.CallOption) (*GetMembershipStatusResponse, error)
+	// Not implemented.
 	FetchData(ctx context.Context, in *FetchDataRequest, opts ...grpc.CallOption) (TrustRegistry_FetchDataClient, error)
 }
 
@@ -132,15 +136,19 @@ func (x *trustRegistryFetchDataClient) Recv() (*FetchDataResponse, error) {
 // All implementations must embed UnimplementedTrustRegistryServer
 // for forward compatibility
 type TrustRegistryServer interface {
-	// Adds a trust registry defintion to the ecosystem
+	// Add a governance framework to the ecosystem
 	AddFramework(context.Context, *AddFrameworkRequest) (*AddFrameworkResponse, error)
+	// Remove a governance framework from the ecosystem
 	RemoveFramework(context.Context, *RemoveFrameworkRequest) (*RemoveFrameworkResponse, error)
+	// Search the ecosystem's governance frameworks
 	SearchRegistry(context.Context, *SearchRegistryRequest) (*SearchRegistryResponse, error)
-	// Registers an authoritative issuer with a credential template
+	// Register an authoritative issuer for a credential schema
 	RegisterMember(context.Context, *RegisterMemberRequest) (*RegisterMemberResponse, error)
-	// Removes an authoritative issuer with a credential template from the trust registry
+	// Removes an authoritative issuer for a credential schema from the trust registry
 	UnregisterMember(context.Context, *UnregisterMemberRequest) (*UnregisterMemberResponse, error)
+	// Fetch the membership status of an issuer for a given credential schema in a trust registry
 	GetMembershipStatus(context.Context, *GetMembershipStatusRequest) (*GetMembershipStatusResponse, error)
+	// Not implemented.
 	FetchData(*FetchDataRequest, TrustRegistry_FetchDataServer) error
 	mustEmbedUnimplementedTrustRegistryServer()
 }

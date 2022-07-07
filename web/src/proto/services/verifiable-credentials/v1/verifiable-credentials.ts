@@ -79,7 +79,7 @@ export interface VerifyProofRequest {
 
 /** Response to `VerifyProofRequest` */
 export interface VerifyProofResponse {
-  /** Whether or not all validations in `validation_results` passed */
+  /** Whether all validations in `validation_results` passed */
   isValid: boolean;
   /**
    * Use `validation_results` instead
@@ -125,7 +125,7 @@ export interface SendResponse {}
 
 /** Request to update a credential's revocation status */
 export interface UpdateStatusRequest {
-  /** Credential Status ID to update */
+  /** Credential Status ID to update. This is not the same as the credential's ID. */
   credentialStatusId: string;
   /** New revocation status of credential */
   revoked: boolean;
@@ -136,7 +136,7 @@ export interface UpdateStatusResponse {}
 
 /** Request to check a credential's revocation status */
 export interface CheckStatusRequest {
-  /** Credential Status ID to check */
+  /** Credential Status ID to check. This is not the same as the credential's ID. */
   credentialStatusId: string;
 }
 
@@ -1195,7 +1195,7 @@ export const VerifiableCredentialDefinition = {
     /**
      * Sign and issue a verifiable credential from a pre-defined template.
      * This process will also add schema validation and
-     * revocation registry entry in the credential.
+     * revocation registry values to the credential.
      */
     issueFromTemplate: {
       name: "IssueFromTemplate",

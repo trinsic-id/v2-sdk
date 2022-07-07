@@ -87,20 +87,21 @@ public final class UniversalWalletOuterClass {
           + "\007item_id\030\002 \001(\t\"$\n"
           + "\021DeleteItemRequest\022\017\n"
           + "\007item_id\030\001 \001(\t\"\024\n"
-          + "\022DeleteItemResponse2\257\004\n"
+          + "\022DeleteItemResponse2\247\004\n"
           + "\017UniversalWallet\022d\n"
           + "\007GetItem\022+.services.universalwallet.v1.GetItemReque"
-          + "st\032,.services.universalwallet.v1.GetItemResponse\022i\n"
+          + "st\032,.services.universalwallet.v1.GetItemResponse\022a\n"
           + "\006Search\022*.services.universalw"
-          + "allet.v1.SearchRequest\032+.services.universalwallet.v1.SearchResponse\"\006\212\246\035\002\020\001\022m\n\n"
-          + "InsertItem\022..services.universalwallet.v1."
-          + "InsertItemRequest\032/.services.universalwallet.v1.InsertItemResponse\022m\n\n"
-          + "UpdateItem\022..services.universalwallet.v1.UpdateIte"
-          + "mRequest\032/.services.universalwallet.v1.UpdateItemResponse\022m\n\n"
-          + "DeleteItem\022..services.universalwallet.v1.DeleteItemRequest\032"
-          + "/.services.universalwallet.v1.DeleteItemResponseBq\n"
-          + "#trinsic.services.universalwallet.v1P\001Z\"services/universalwallet/v1/w"
-          + "allet\252\002#Trinsic.Services.UniversalWallet.V1b\006proto3"
+          + "allet.v1.SearchRequest\032+.services.universalwallet.v1.SearchResponse\022m\n\n"
+          + "InsertItem\022..services.universalwallet.v1.InsertIt"
+          + "emRequest\032/.services.universalwallet.v1.InsertItemResponse\022m\n\n"
+          + "UpdateItem\022..services.universalwallet.v1.UpdateItemRequest"
+          + "\032/.services.universalwallet.v1.UpdateItemResponse\022m\n\n"
+          + "DeleteItem\022..services.universalwallet.v1.DeleteItemRequest\032/.servic"
+          + "es.universalwallet.v1.DeleteItemResponseBq\n"
+          + "#trinsic.services.universalwallet.v1P"
+          + "\001Z\"services/universalwallet/v1/wallet\252\002#"
+          + "Trinsic.Services.UniversalWallet.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -187,7 +188,6 @@ public final class UniversalWalletOuterClass {
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(trinsic.services.protobuf.options.FieldOptions.optional);
-    registry.add(trinsic.services.protobuf.options.FieldOptions.sdkTemplateOption);
     com.google.protobuf.Descriptors.FileDescriptor.internalUpdateFileDescriptor(
         descriptor, registry);
     trinsic.services.protobuf.options.FieldOptions.getDescriptor();

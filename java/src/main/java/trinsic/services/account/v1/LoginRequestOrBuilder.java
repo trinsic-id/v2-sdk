@@ -12,7 +12,7 @@ public interface LoginRequestOrBuilder
    *
    *
    * <pre>
-   * Email account to associate with the login request
+   * Email address of account. If unspecified, an anonymous account will be created.
    * </pre>
    *
    * <code>string email = 1 [(.services.options.optional) = true];</code>
@@ -24,7 +24,7 @@ public interface LoginRequestOrBuilder
    *
    *
    * <pre>
-   * Email account to associate with the login request
+   * Email address of account. If unspecified, an anonymous account will be created.
    * </pre>
    *
    * <code>string email = 1 [(.services.options.optional) = true];</code>
@@ -63,7 +63,7 @@ public interface LoginRequestOrBuilder
    *
    * <pre>
    * ID of Ecosystem to sign into.
-   * Ignored if `invitation_code` is passed
+   * Ignored if `invitation_code` is passed.
    * </pre>
    *
    * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
@@ -76,7 +76,7 @@ public interface LoginRequestOrBuilder
    *
    * <pre>
    * ID of Ecosystem to sign into.
-   * Ignored if `invitation_code` is passed
+   * Ignored if `invitation_code` is passed.
    * </pre>
    *
    * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>

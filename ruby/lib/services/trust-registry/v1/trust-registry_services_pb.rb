@@ -16,15 +16,19 @@ module Services
           self.unmarshal_class_method = :decode
           self.service_name = 'services.trustregistry.v1.TrustRegistry'
 
-          # Adds a trust registry defintion to the ecosystem
+          # Add a governance framework to the ecosystem
           rpc :AddFramework, ::Services::Trustregistry::V1::AddFrameworkRequest, ::Services::Trustregistry::V1::AddFrameworkResponse
+          # Remove a governance framework from the ecosystem
           rpc :RemoveFramework, ::Services::Trustregistry::V1::RemoveFrameworkRequest, ::Services::Trustregistry::V1::RemoveFrameworkResponse
+          # Search the ecosystem's governance frameworks
           rpc :SearchRegistry, ::Services::Trustregistry::V1::SearchRegistryRequest, ::Services::Trustregistry::V1::SearchRegistryResponse
-          # Registers an authoritative issuer with a credential template
+          # Register an authoritative issuer for a credential schema
           rpc :RegisterMember, ::Services::Trustregistry::V1::RegisterMemberRequest, ::Services::Trustregistry::V1::RegisterMemberResponse
-          # Removes an authoritative issuer with a credential template from the trust registry
+          # Removes an authoritative issuer for a credential schema from the trust registry
           rpc :UnregisterMember, ::Services::Trustregistry::V1::UnregisterMemberRequest, ::Services::Trustregistry::V1::UnregisterMemberResponse
+          # Fetch the membership status of an issuer for a given credential schema in a trust registry
           rpc :GetMembershipStatus, ::Services::Trustregistry::V1::GetMembershipStatusRequest, ::Services::Trustregistry::V1::GetMembershipStatusResponse
+          # Not implemented.
           rpc :FetchData, ::Services::Trustregistry::V1::FetchDataRequest, stream(::Services::Trustregistry::V1::FetchDataResponse)
         end
 

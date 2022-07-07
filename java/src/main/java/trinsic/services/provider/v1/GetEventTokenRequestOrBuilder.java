@@ -12,7 +12,7 @@ public interface GetEventTokenRequestOrBuilder
    *
    *
    * <pre>
-   *
+   * Raw public key to generate event token for
    * </pre>
    *
    * <code>bytes pk = 1;</code>

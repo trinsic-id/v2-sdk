@@ -3,7 +3,15 @@
 
 package trinsic.services.provider.v1;
 
-/** Protobuf type {@code services.provider.v1.CreateEcosystemRequest} */
+/**
+ *
+ *
+ * <pre>
+ * Request to create an ecosystem
+ * </pre>
+ *
+ * Protobuf type {@code services.provider.v1.CreateEcosystemRequest}
+ */
 public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedMessageV3
     implements
     // @@protoc_insertion_point(message_implements:services.provider.v1.CreateEcosystemRequest)
@@ -129,11 +137,12 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
    *
    * <pre>
    * Globally unique name for the Ecosystem. This name will be
-   * part of the ecosystem specific URLs and namespaces.
+   * part of the ecosystem-specific URLs and namespaces.
    * Allowed characters are lowercase letters, numbers, underscore and hyphen.
+   * If not passed, ecosystem name will be auto-generated.
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>string name = 1 [(.services.options.optional) = true];</code>
    *
    * @return The name.
    */
@@ -154,11 +163,12 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
    *
    * <pre>
    * Globally unique name for the Ecosystem. This name will be
-   * part of the ecosystem specific URLs and namespaces.
+   * part of the ecosystem-specific URLs and namespaces.
    * Allowed characters are lowercase letters, numbers, underscore and hyphen.
+   * If not passed, ecosystem name will be auto-generated.
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>string name = 1 [(.services.options.optional) = true];</code>
    *
    * @return The bytes for name.
    */
@@ -512,7 +522,15 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code services.provider.v1.CreateEcosystemRequest} */
+  /**
+   *
+   *
+   * <pre>
+   * Request to create an ecosystem
+   * </pre>
+   *
+   * Protobuf type {@code services.provider.v1.CreateEcosystemRequest}
+   */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
       // @@protoc_insertion_point(builder_implements:services.provider.v1.CreateEcosystemRequest)
@@ -697,11 +715,12 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
      *
      * <pre>
      * Globally unique name for the Ecosystem. This name will be
-     * part of the ecosystem specific URLs and namespaces.
+     * part of the ecosystem-specific URLs and namespaces.
      * Allowed characters are lowercase letters, numbers, underscore and hyphen.
+     * If not passed, ecosystem name will be auto-generated.
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.services.options.optional) = true];</code>
      *
      * @return The name.
      */
@@ -721,11 +740,12 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
      *
      * <pre>
      * Globally unique name for the Ecosystem. This name will be
-     * part of the ecosystem specific URLs and namespaces.
+     * part of the ecosystem-specific URLs and namespaces.
      * Allowed characters are lowercase letters, numbers, underscore and hyphen.
+     * If not passed, ecosystem name will be auto-generated.
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.services.options.optional) = true];</code>
      *
      * @return The bytes for name.
      */
@@ -745,11 +765,12 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
      *
      * <pre>
      * Globally unique name for the Ecosystem. This name will be
-     * part of the ecosystem specific URLs and namespaces.
+     * part of the ecosystem-specific URLs and namespaces.
      * Allowed characters are lowercase letters, numbers, underscore and hyphen.
+     * If not passed, ecosystem name will be auto-generated.
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.services.options.optional) = true];</code>
      *
      * @param value The name to set.
      * @return This builder for chaining.
@@ -768,11 +789,12 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
      *
      * <pre>
      * Globally unique name for the Ecosystem. This name will be
-     * part of the ecosystem specific URLs and namespaces.
+     * part of the ecosystem-specific URLs and namespaces.
      * Allowed characters are lowercase letters, numbers, underscore and hyphen.
+     * If not passed, ecosystem name will be auto-generated.
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.services.options.optional) = true];</code>
      *
      * @return This builder for chaining.
      */
@@ -787,11 +809,12 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
      *
      * <pre>
      * Globally unique name for the Ecosystem. This name will be
-     * part of the ecosystem specific URLs and namespaces.
+     * part of the ecosystem-specific URLs and namespaces.
      * Allowed characters are lowercase letters, numbers, underscore and hyphen.
+     * If not passed, ecosystem name will be auto-generated.
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.services.options.optional) = true];</code>
      *
      * @param value The bytes for name to set.
      * @return This builder for chaining.

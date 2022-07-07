@@ -22,10 +22,15 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CredentialTemplatesClient interface {
+	// Create a credential template in the current ecosystem
 	Create(ctx context.Context, in *CreateCredentialTemplateRequest, opts ...grpc.CallOption) (*CreateCredentialTemplateResponse, error)
+	// Fetch a credential template by ID
 	Get(ctx context.Context, in *GetCredentialTemplateRequest, opts ...grpc.CallOption) (*GetCredentialTemplateResponse, error)
+	// Search credential templates using SQL, returning strongly-typed template data
 	List(ctx context.Context, in *ListCredentialTemplatesRequest, opts ...grpc.CallOption) (*ListCredentialTemplatesResponse, error)
+	// Search credential templates using SQL, returning raw JSON data
 	Search(ctx context.Context, in *SearchCredentialTemplatesRequest, opts ...grpc.CallOption) (*SearchCredentialTemplatesResponse, error)
+	// Delete a credential template from the current ecosystem by ID
 	Delete(ctx context.Context, in *DeleteCredentialTemplateRequest, opts ...grpc.CallOption) (*DeleteCredentialTemplateResponse, error)
 }
 
@@ -86,10 +91,15 @@ func (c *credentialTemplatesClient) Delete(ctx context.Context, in *DeleteCreden
 // All implementations must embed UnimplementedCredentialTemplatesServer
 // for forward compatibility
 type CredentialTemplatesServer interface {
+	// Create a credential template in the current ecosystem
 	Create(context.Context, *CreateCredentialTemplateRequest) (*CreateCredentialTemplateResponse, error)
+	// Fetch a credential template by ID
 	Get(context.Context, *GetCredentialTemplateRequest) (*GetCredentialTemplateResponse, error)
+	// Search credential templates using SQL, returning strongly-typed template data
 	List(context.Context, *ListCredentialTemplatesRequest) (*ListCredentialTemplatesResponse, error)
+	// Search credential templates using SQL, returning raw JSON data
 	Search(context.Context, *SearchCredentialTemplatesRequest) (*SearchCredentialTemplatesResponse, error)
+	// Delete a credential template from the current ecosystem by ID
 	Delete(context.Context, *DeleteCredentialTemplateRequest) (*DeleteCredentialTemplateResponse, error)
 	mustEmbedUnimplementedCredentialTemplatesServer()
 }

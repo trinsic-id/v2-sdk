@@ -97,6 +97,7 @@ const SearchRegistryRequest$json = const {
       '3': 2,
       '4': 1,
       '5': 9,
+      '8': const {},
       '10': 'continuationToken'
     },
   ],
@@ -104,7 +105,7 @@ const SearchRegistryRequest$json = const {
 
 /// Descriptor for `SearchRegistryRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List searchRegistryRequestDescriptor = $convert.base64Decode(
-    'ChVTZWFyY2hSZWdpc3RyeVJlcXVlc3QSFAoFcXVlcnkYASABKAlSBXF1ZXJ5Ei0KEmNvbnRpbnVhdGlvbl90b2tlbhgCIAEoCVIRY29udGludWF0aW9uVG9rZW4=');
+    'ChVTZWFyY2hSZWdpc3RyeVJlcXVlc3QSFAoFcXVlcnkYASABKAlSBXF1ZXJ5EjMKEmNvbnRpbnVhdGlvbl90b2tlbhgCIAEoCUIEgKYdAVIRY29udGludWF0aW9uVG9rZW4=');
 @$core.Deprecated('Use searchRegistryResponseDescriptor instead')
 const SearchRegistryResponse$json = const {
   '1': 'SearchRegistryResponse',

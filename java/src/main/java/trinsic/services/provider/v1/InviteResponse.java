@@ -3,7 +3,15 @@
 
 package trinsic.services.provider.v1;
 
-/** Protobuf type {@code services.provider.v1.InviteResponse} */
+/**
+ *
+ *
+ * <pre>
+ * Response to `InviteRequest`
+ * </pre>
+ *
+ * Protobuf type {@code services.provider.v1.InviteResponse}
+ */
 public final class InviteResponse extends com.google.protobuf.GeneratedMessageV3
     implements
     // @@protoc_insertion_point(message_implements:services.provider.v1.InviteResponse)
@@ -153,8 +161,7 @@ public final class InviteResponse extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Invitation Code that must be passed with the account 'SignIn' request
-   * to correlate this user with the invitation sent.
+   * Invitation code -- must be passed back in `LoginRequest`
    * </pre>
    *
    * <code>string invitation_code = 11;</code>
@@ -177,8 +184,7 @@ public final class InviteResponse extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Invitation Code that must be passed with the account 'SignIn' request
-   * to correlate this user with the invitation sent.
+   * Invitation code -- must be passed back in `LoginRequest`
    * </pre>
    *
    * <code>string invitation_code = 11;</code>
@@ -366,7 +372,15 @@ public final class InviteResponse extends com.google.protobuf.GeneratedMessageV3
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code services.provider.v1.InviteResponse} */
+  /**
+   *
+   *
+   * <pre>
+   * Response to `InviteRequest`
+   * </pre>
+   *
+   * Protobuf type {@code services.provider.v1.InviteResponse}
+   */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
       // @@protoc_insertion_point(builder_implements:services.provider.v1.InviteResponse)
@@ -633,8 +647,7 @@ public final class InviteResponse extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Invitation Code that must be passed with the account 'SignIn' request
-     * to correlate this user with the invitation sent.
+     * Invitation code -- must be passed back in `LoginRequest`
      * </pre>
      *
      * <code>string invitation_code = 11;</code>
@@ -656,8 +669,7 @@ public final class InviteResponse extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Invitation Code that must be passed with the account 'SignIn' request
-     * to correlate this user with the invitation sent.
+     * Invitation code -- must be passed back in `LoginRequest`
      * </pre>
      *
      * <code>string invitation_code = 11;</code>
@@ -679,8 +691,7 @@ public final class InviteResponse extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Invitation Code that must be passed with the account 'SignIn' request
-     * to correlate this user with the invitation sent.
+     * Invitation code -- must be passed back in `LoginRequest`
      * </pre>
      *
      * <code>string invitation_code = 11;</code>
@@ -701,8 +712,7 @@ public final class InviteResponse extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Invitation Code that must be passed with the account 'SignIn' request
-     * to correlate this user with the invitation sent.
+     * Invitation code -- must be passed back in `LoginRequest`
      * </pre>
      *
      * <code>string invitation_code = 11;</code>
@@ -719,8 +729,7 @@ public final class InviteResponse extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Invitation Code that must be passed with the account 'SignIn' request
-     * to correlate this user with the invitation sent.
+     * Invitation code -- must be passed back in `LoginRequest`
      * </pre>
      *
      * <code>string invitation_code = 11;</code>

@@ -16,6 +16,7 @@ import io.grpc.kotlin.AbstractCoroutineStub
 import io.grpc.kotlin.ClientCalls.unaryRpc
 import io.grpc.kotlin.ServerCalls.unaryServerMethodDefinition
 import io.grpc.kotlin.StubFor
+import kotlin.Deprecated
 import kotlin.String
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
@@ -75,6 +76,7 @@ object AccountGrpcKt {
      *
      * @return The single response from the server.
      */
+    @Deprecated("The underlying service method is marked deprecated.")
     suspend fun signIn(request: SignInRequest, headers: Metadata = Metadata()): SignInResponse =
         unaryRpc(channel, AccountGrpc.getSignInMethod(), request, callOptions, headers)
     /**
@@ -194,6 +196,7 @@ object AccountGrpcKt {
      *
      * @param request The request from the client.
      */
+    @Deprecated("The underlying service method is marked deprecated.")
     open suspend fun signIn(request: SignInRequest): SignInResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(

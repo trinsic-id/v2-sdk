@@ -15,15 +15,6 @@ enum ResponseStatus {
     UNKNOWN_ERROR = 100;
 }
 
-message ServerConfig {
-    // service endpoint
-    string endpoint = 1;
-    // service port
-    int32 port = 2;
-    // indicates if tls is used
-    bool use_tls = 3;
-}
-
 // Nonce used to generate an oberon proof
 message Nonce {
     int64 timestamp = 1; // UTC unix millisecond timestamp the request was made

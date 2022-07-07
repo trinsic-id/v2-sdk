@@ -4,6 +4,10 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executors;
 import org.jetbrains.annotations.NotNull;
 import trinsic.okapi.DidException;
 import trinsic.okapi.Hashing;
@@ -11,11 +15,6 @@ import trinsic.okapi.Oberon;
 import trinsic.okapi.security.v1.Security;
 import trinsic.sdk.options.v1.Options;
 import trinsic.services.account.v1.*;
-
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executors;
 
 public class AccountService extends ServiceBase {
   private final AccountGrpc.AccountFutureStub stub;
@@ -39,9 +38,10 @@ public class AccountService extends ServiceBase {
     var response = this.stub.signIn(request);
     return Futures.transform(
         response,
-        input -> {var token = Base64.getUrlEncoder().encodeToString(input.getProfile().toByteArray());
-                this.getOptionsBuilder().setAuthToken(token);
-                return token;
+        input -> {
+          var token = Base64.getUrlEncoder().encodeToString(input.getProfile().toByteArray());
+          this.getOptionsBuilder().setAuthToken(token);
+          return token;
         },
         Executors.newSingleThreadExecutor());
   }
@@ -119,18 +119,17 @@ public class AccountService extends ServiceBase {
         input -> {
           if (!input.hasProfile()) return null;
 
-          var token =
-              Base64.getUrlEncoder().encodeToString(input.getProfile().toByteArray());
+          var token = Base64.getUrlEncoder().encodeToString(input.getProfile().toByteArray());
 
           if (input.getProfile().getProtection().getEnabled()) {
             try {
-                token = unprotect(token, authCode);
+              token = unprotect(token, authCode);
             } catch (InvalidProtocolBufferException | DidException e) {
               throw new RuntimeException(e);
             }
           }
-            this.getOptionsBuilder().setAuthToken(token);
-            return token;
+          this.getOptionsBuilder().setAuthToken(token);
+          return token;
         },
         Executors.newSingleThreadExecutor());
   }
@@ -152,8 +151,8 @@ public class AccountService extends ServiceBase {
           if (!input.hasProfile() || input.getProfile().getProtection().getEnabled()) return null;
 
           var token = Base64.getUrlEncoder().encodeToString(input.getProfile().toByteArray());
-            this.getOptionsBuilder().setAuthToken(token);
-            return token;
+          this.getOptionsBuilder().setAuthToken(token);
+          return token;
         },
         Executors.newSingleThreadExecutor());
   }

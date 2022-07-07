@@ -18,11 +18,11 @@ module Trinsic
     def create_ecosystem(request = nil)
       request ||= Provider::CreateEcosystemRequest.new
       response = Provider::CreateEcosystemResponse
-      if request.name.empty? && (request.details.nil? || request.details.email.empty?)
-        response = @client.create_ecosystem(request)
-      else
-        response = @client.create_ecosystem(request, metadata: metadata(request))
-      end
+      response = if request.name.empty? && (request.details.nil? || request.details.email.empty?)
+                   @client.create_ecosystem(request)
+                 else
+                   @client.create_ecosystem(request, metadata: metadata(request))
+                 end
       encoded_profile = Base64.urlsafe_encode64(Account::AccountProfile.encode(response.profile))
       self.auth_token = encoded_profile
       response

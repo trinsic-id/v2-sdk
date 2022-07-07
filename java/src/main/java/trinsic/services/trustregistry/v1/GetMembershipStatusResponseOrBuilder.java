@@ -9,12 +9,24 @@ public interface GetMembershipStatusResponseOrBuilder
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
+   * <pre>
+   * Status of member for given credential schema
+   * </pre>
+   *
    * <code>.services.trustregistry.v1.RegistrationStatus status = 1;</code>
    *
    * @return The enum numeric value on the wire for status.
    */
   int getStatusValue();
   /**
+   *
+   *
+   * <pre>
+   * Status of member for given credential schema
+   * </pre>
+   *
    * <code>.services.trustregistry.v1.RegistrationStatus status = 1;</code>
    *
    * @return The status.

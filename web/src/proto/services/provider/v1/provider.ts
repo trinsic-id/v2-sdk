@@ -9,8 +9,11 @@ import {
   confirmationMethodToJSON,
 } from "../../../services/account/v1/account";
 
+/** Type of participant being invited to ecosystem */
 export enum ParticipantType {
+  /** participant_type_individual - Participant is an individual */
   participant_type_individual = 0,
+  /** participant_type_organization - Participant is an organization */
   participant_type_organization = 1,
   UNRECOGNIZED = -1,
 }
@@ -42,14 +45,7 @@ export function participantTypeToJSON(object: ParticipantType): string {
   }
 }
 
-export interface Invite {
-  id: string;
-  code: string;
-  created: string;
-  accepted: string;
-  expires: string;
-}
-
+/** Request to invite a participant to an ecosystem */
 export interface InviteRequest {
   /** Type of participant being invited (individual/organization) */
   participant: ParticipantType;
@@ -61,27 +57,21 @@ export interface InviteRequest {
 
 export interface InviteRequest_DidCommInvitation {}
 
+/** Response to `InviteRequest` */
 export interface InviteResponse {
   /** ID of created invitation */
   invitationId: string;
-  /**
-   * Invitation Code that must be passed with the account 'SignIn' request
-   * to correlate this user with the invitation sent.
-   */
+  /** Invitation code -- must be passed back in `LoginRequest` */
   invitationCode: string;
 }
 
-/**
- * Request details for the status of onboarding
- * an individual or organization.
- * The reference_id passed is the response from the
- * `Onboard` method call
- */
+/** Request details for the status of an invitation */
 export interface InvitationStatusRequest {
-  /** ID of invitation */
+  /** ID of invitation, received from `InviteResponse` */
   invitationId: string;
 }
 
+/** Response to `InvitationStatusRequest` */
 export interface InvitationStatusResponse {
   /** Status of invitation */
   status: InvitationStatusResponse_Status;
@@ -142,6 +132,7 @@ export function invitationStatusResponse_StatusToJSON(
   }
 }
 
+/** Details of an ecosystem */
 export interface Ecosystem {
   /** URN of the ecosystem */
   id: string;
@@ -155,17 +146,19 @@ export interface Ecosystem {
   webhooks: WebhookConfig[];
 }
 
+/** Webhook configured on an ecosystem */
 export interface WebhookConfig {
   /** UUID of the webhook */
   id: string;
-  /** Destination to post webhook calls to */
+  /** HTTPS URL to POST webhook calls to */
   destinationUrl: string;
   /** Events the webhook is subscribed to */
   events: string[];
-  /** Whether we are able to sucessfully send events to the webhook */
+  /** Last known status of webhook (whether or not Trinsic can successfully reach destination) */
   status: string;
 }
 
+/** A grant authorizing `actions` on a `resourceId` */
 export interface Grant {
   /** the urn of the resource */
   resourceId: string;
@@ -175,11 +168,13 @@ export interface Grant {
   childGrants: Grant[];
 }
 
+/** Request to create an ecosystem */
 export interface CreateEcosystemRequest {
   /**
    * Globally unique name for the Ecosystem. This name will be
-   * part of the ecosystem specific URLs and namespaces.
+   * part of the ecosystem-specific URLs and namespaces.
    * Allowed characters are lowercase letters, numbers, underscore and hyphen.
+   * If not passed, ecosystem name will be auto-generated.
    */
   name: string;
   /** Ecosystem description */
@@ -190,36 +185,41 @@ export interface CreateEcosystemRequest {
   details: AccountDetails | undefined;
 }
 
+/** Response to `CreateEcosystemRequest` */
 export interface CreateEcosystemResponse {
   /** Details of the created ecosystem */
   ecosystem: Ecosystem | undefined;
   /** Account profile for auth of the owner of the ecosystem */
   profile: AccountProfile | undefined;
-  /**
-   * Indicates if confirmation of account is required.
-   * This setting is configured globally by the server administrator.
-   */
+  /** Indicates if confirmation of account is required. */
   confirmationMethod: ConfirmationMethod;
 }
 
-/** Request to update an ecosystem */
+/** Request to update an ecosystem's metadata */
 export interface UpdateEcosystemRequest {
-  /** Description of the ecosystem */
+  /** New description of the ecosystem */
   description: string;
-  /** External URL associated with the organization or ecosystem entity */
+  /** New external URL associated with the organization or ecosystem entity */
   uri: string;
 }
 
 /** Response to `UpdateEcosystemRequest` */
 export interface UpdateEcosystemResponse {
+  /** Current ecosystem metadata, post-update */
   Ecosystem: Ecosystem | undefined;
 }
 
 /** Request to add a webhook to an ecosystem */
 export interface AddWebhookRequest {
-  /** Destination to post webhook calls to */
+  /**
+   * Destination to post webhook calls to.
+   * Must be a reachable HTTPS URL.
+   */
   destinationUrl: string;
-  /** HMAC secret for webhook validation */
+  /**
+   * Secret string used for HMAC-SHA256 signing of webhook payloads
+   * to verify that a webhook comes from Trinsic
+   */
   secret: string;
   /** Events to subscribe to. Default is "*" (all events) */
   events: string[];
@@ -227,7 +227,7 @@ export interface AddWebhookRequest {
 
 /** Response to `AddWebhookRequest` */
 export interface AddWebhookResponse {
-  /** Ecosystem with new webhook */
+  /** Ecosystem data with new webhook */
   ecosystem: Ecosystem | undefined;
 }
 
@@ -239,7 +239,7 @@ export interface DeleteWebhookRequest {
 
 /** Response to `DeleteWebhookRequest` */
 export interface DeleteWebhookResponse {
-  /** Ecosystem after removal of webhook */
+  /** Ecosystem data after removal of webhook */
   ecosystem: Ecosystem | undefined;
 }
 
@@ -252,161 +252,104 @@ export interface EcosystemInfoResponse {
   ecosystem: Ecosystem | undefined;
 }
 
+/** Request to generate an authentication token for the current account */
 export interface GenerateTokenRequest {
   /** Description to identify this token */
   description: string;
 }
 
+/** Response to `GenerateTokenRequest` */
 export interface GenerateTokenResponse {
   /** Account authentication profile that contains unprotected token */
   profile: AccountProfile | undefined;
 }
 
-/** request message for GetOberonKey */
+/**
+ * Request to fetch the Trinsic public key used
+ * to verify authentication token validity
+ */
 export interface GetOberonKeyRequest {}
 
-/** response message for GetOberonKey */
+/** Response to `GetOberonKeyRequest` */
 export interface GetOberonKeyResponse {
-  /** Oberon Public Key as RAW base64 URL encoded string */
+  /** Oberon Public Key as RAW base64-url encoded string */
   key: string;
 }
 
-/** generates an events token bound to the provided ed25519 pk */
+/** Generates an events token bound to the provided ed25519 public key. */
 export interface GetEventTokenRequest {
-  /**  */
+  /** Raw public key to generate event token for */
   pk: Uint8Array;
 }
 
 /**
- * response message containing a token (JWT) that can be used
+ * Response message containing a token (JWT) that can be used
  * to connect directly to the message streaming architecture
  */
 export interface GetEventTokenResponse {
-  /** a JWT bound to the PK provided in the request */
+  /** JWT bound to the public key provided in `GetEventTokenRequest` */
   token: string;
 }
 
-/** grant permissions to a resource or path in the ecosystem */
+/** Grant permissions to a resource or path in the ecosystem */
 export interface GrantAuthorizationRequest {
-  /** email associted with the account */
+  /**
+   * Email address of account being granted permission.
+   * Mutually exclusive with `walletId`.
+   */
   email: string | undefined;
-  /** wallet id of the account */
+  /**
+   * Wallet ID of account being granted permission.
+   * Mutually exclusive with `email`.
+   */
   walletId: string | undefined;
-  /** resources are specified as a restful path: /{ecoId}/{resource type}/{resource id}. EcosystemId maybe ommited */
+  /**
+   * Resource string that account is receiving permissions for.
+   * Resources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted.
+   */
   resource: string;
-  /** action to authorize. default is "*" (all) */
+  /** Action to authorize. Default is "*" (all) */
   action: string;
 }
 
+/** Response to `GrantAuthorizationRequest` */
 export interface GrantAuthorizationResponse {}
 
-/** revoke permissions to a resource or path in the ecosystem */
+/** Revoke permissions to a resource or path in the ecosystem */
 export interface RevokeAuthorizationRequest {
-  /** email associted with the account */
+  /**
+   * Email address of account having permission revoked.
+   * Mutually exclusive with `walletId`.
+   */
   email: string | undefined;
-  /** wallet id of the account */
+  /**
+   * Wallet ID of account having permission revoked.
+   * Mutually exclusive with `email`.
+   */
   walletId: string | undefined;
-  /** resources are specified as a restful path: /{ecoId}/{resource type}/{resource id}. EcosystemId maybe ommited */
+  /**
+   * Resource string that account is losing permissions for.
+   * Resources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted.
+   */
   resource: string;
-  /** action to revoke. default is "*" (all) */
+  /** Action to revoke. Default is "*" (all) */
   action: string;
 }
 
+/** Response to `RevokeAuthorizationRequest` */
 export interface RevokeAuthorizationResponse {}
 
+/**
+ * Fetch list of grants that the current account has access to
+ * in its ecosystem
+ */
 export interface GetAuthorizationsRequest {}
 
+/** Response to `GetAuthorizationsRequest` */
 export interface GetAuthorizationsResponse {
+  /** Grants attached to account */
   grants: Grant[];
 }
-
-function createBaseInvite(): Invite {
-  return { id: "", code: "", created: "", accepted: "", expires: "" };
-}
-
-export const Invite = {
-  encode(
-    message: Invite,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
-    if (message.id !== "") {
-      writer.uint32(10).string(message.id);
-    }
-    if (message.code !== "") {
-      writer.uint32(18).string(message.code);
-    }
-    if (message.created !== "") {
-      writer.uint32(26).string(message.created);
-    }
-    if (message.accepted !== "") {
-      writer.uint32(34).string(message.accepted);
-    }
-    if (message.expires !== "") {
-      writer.uint32(42).string(message.expires);
-    }
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): Invite {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseInvite();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.id = reader.string();
-          break;
-        case 2:
-          message.code = reader.string();
-          break;
-        case 3:
-          message.created = reader.string();
-          break;
-        case 4:
-          message.accepted = reader.string();
-          break;
-        case 5:
-          message.expires = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-
-  fromJSON(object: any): Invite {
-    return {
-      id: isSet(object.id) ? String(object.id) : "",
-      code: isSet(object.code) ? String(object.code) : "",
-      created: isSet(object.created) ? String(object.created) : "",
-      accepted: isSet(object.accepted) ? String(object.accepted) : "",
-      expires: isSet(object.expires) ? String(object.expires) : "",
-    };
-  },
-
-  toJSON(message: Invite): unknown {
-    const obj: any = {};
-    message.id !== undefined && (obj.id = message.id);
-    message.code !== undefined && (obj.code = message.code);
-    message.created !== undefined && (obj.created = message.created);
-    message.accepted !== undefined && (obj.accepted = message.accepted);
-    message.expires !== undefined && (obj.expires = message.expires);
-    return obj;
-  },
-
-  fromPartial(object: DeepPartial<Invite>): Invite {
-    const message = createBaseInvite();
-    message.id = object.id ?? "";
-    message.code = object.code ?? "";
-    message.created = object.created ?? "";
-    message.accepted = object.accepted ?? "";
-    message.expires = object.expires ?? "";
-    return message;
-  },
-};
 
 function createBaseInviteRequest(): InviteRequest {
   return { participant: 0, description: "", details: undefined };
@@ -2422,7 +2365,7 @@ export const ProviderDefinition = {
       responseStream: false,
       options: {},
     },
-    /** Grant authorization to ecosystem resources */
+    /** Grant user authorization to ecosystem resources */
     grantAuthorization: {
       name: "GrantAuthorization",
       requestType: GrantAuthorizationRequest,
@@ -2431,7 +2374,7 @@ export const ProviderDefinition = {
       responseStream: false,
       options: {},
     },
-    /** Revoke authorization to ecosystem resources */
+    /** Revoke user authorization to ecosystem resources */
     revokeAuthorization: {
       name: "RevokeAuthorization",
       requestType: RevokeAuthorizationRequest,
@@ -2497,7 +2440,7 @@ export const ProviderDefinition = {
       responseStream: false,
       options: {},
     },
-    /** Check the invitation status */
+    /** Check the status of an invitation */
     invitationStatus: {
       name: "InvitationStatus",
       requestType: InvitationStatusRequest,

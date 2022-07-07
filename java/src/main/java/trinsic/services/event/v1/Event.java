@@ -7,7 +7,7 @@ package trinsic.services.event.v1;
  *
  *
  * <pre>
- * System event
+ * Event
  * </pre>
  *
  * Protobuf type {@code trinsic.services.event.Event}
@@ -125,7 +125,7 @@ public final class Event extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * UUID for the event
+   * UUID of event
    * </pre>
    *
    * <code>string id = 1;</code>
@@ -148,7 +148,7 @@ public final class Event extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * UUID for the event
+   * UUID of event
    * </pre>
    *
    * <code>string id = 1;</code>
@@ -174,7 +174,7 @@ public final class Event extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * event type
+   * Type of event
    * </pre>
    *
    * <code>.trinsic.services.event.EventType type = 2;</code>
@@ -189,7 +189,7 @@ public final class Event extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * event type
+   * Type of event
    * </pre>
    *
    * <code>.trinsic.services.event.EventType type = 2;</code>
@@ -209,7 +209,7 @@ public final class Event extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * when the event occured
+   * Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
    * </pre>
    *
    * <code>string timestamp = 3;</code>
@@ -232,7 +232,7 @@ public final class Event extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * when the event occured
+   * Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
    * </pre>
    *
    * <code>string timestamp = 3;</code>
@@ -258,7 +258,7 @@ public final class Event extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * data payload - will be encoded proto message for the event type
+   * Event-specific payload, as an encoded protobuf message
    * </pre>
    *
    * <code>bytes data = 4;</code>
@@ -458,7 +458,7 @@ public final class Event extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * System event
+   * Event
    * </pre>
    *
    * Protobuf type {@code trinsic.services.event.Event}
@@ -633,7 +633,7 @@ public final class Event extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * UUID for the event
+     * UUID of event
      * </pre>
      *
      * <code>string id = 1;</code>
@@ -655,7 +655,7 @@ public final class Event extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * UUID for the event
+     * UUID of event
      * </pre>
      *
      * <code>string id = 1;</code>
@@ -677,7 +677,7 @@ public final class Event extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * UUID for the event
+     * UUID of event
      * </pre>
      *
      * <code>string id = 1;</code>
@@ -698,7 +698,7 @@ public final class Event extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * UUID for the event
+     * UUID of event
      * </pre>
      *
      * <code>string id = 1;</code>
@@ -715,7 +715,7 @@ public final class Event extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * UUID for the event
+     * UUID of event
      * </pre>
      *
      * <code>string id = 1;</code>
@@ -739,7 +739,7 @@ public final class Event extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * event type
+     * Type of event
      * </pre>
      *
      * <code>.trinsic.services.event.EventType type = 2;</code>
@@ -754,7 +754,7 @@ public final class Event extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * event type
+     * Type of event
      * </pre>
      *
      * <code>.trinsic.services.event.EventType type = 2;</code>
@@ -772,7 +772,7 @@ public final class Event extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * event type
+     * Type of event
      * </pre>
      *
      * <code>.trinsic.services.event.EventType type = 2;</code>
@@ -790,7 +790,7 @@ public final class Event extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * event type
+     * Type of event
      * </pre>
      *
      * <code>.trinsic.services.event.EventType type = 2;</code>
@@ -811,7 +811,7 @@ public final class Event extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * event type
+     * Type of event
      * </pre>
      *
      * <code>.trinsic.services.event.EventType type = 2;</code>
@@ -830,7 +830,7 @@ public final class Event extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * when the event occured
+     * Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
      * </pre>
      *
      * <code>string timestamp = 3;</code>
@@ -852,7 +852,7 @@ public final class Event extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * when the event occured
+     * Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
      * </pre>
      *
      * <code>string timestamp = 3;</code>
@@ -874,7 +874,7 @@ public final class Event extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * when the event occured
+     * Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
      * </pre>
      *
      * <code>string timestamp = 3;</code>
@@ -895,7 +895,7 @@ public final class Event extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * when the event occured
+     * Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
      * </pre>
      *
      * <code>string timestamp = 3;</code>
@@ -912,7 +912,7 @@ public final class Event extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * when the event occured
+     * Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
      * </pre>
      *
      * <code>string timestamp = 3;</code>
@@ -936,7 +936,7 @@ public final class Event extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * data payload - will be encoded proto message for the event type
+     * Event-specific payload, as an encoded protobuf message
      * </pre>
      *
      * <code>bytes data = 4;</code>
@@ -951,7 +951,7 @@ public final class Event extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * data payload - will be encoded proto message for the event type
+     * Event-specific payload, as an encoded protobuf message
      * </pre>
      *
      * <code>bytes data = 4;</code>
@@ -972,7 +972,7 @@ public final class Event extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * data payload - will be encoded proto message for the event type
+     * Event-specific payload, as an encoded protobuf message
      * </pre>
      *
      * <code>bytes data = 4;</code>

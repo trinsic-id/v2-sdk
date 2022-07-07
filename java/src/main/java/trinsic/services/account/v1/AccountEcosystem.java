@@ -3,7 +3,15 @@
 
 package trinsic.services.account.v1;
 
-/** Protobuf type {@code services.account.v1.AccountEcosystem} */
+/**
+ *
+ *
+ * <pre>
+ * Deprecated
+ * </pre>
+ *
+ * Protobuf type {@code services.account.v1.AccountEcosystem}
+ */
 public final class AccountEcosystem extends com.google.protobuf.GeneratedMessageV3
     implements
     // @@protoc_insertion_point(message_implements:services.account.v1.AccountEcosystem)
@@ -448,7 +456,15 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code services.account.v1.AccountEcosystem} */
+  /**
+   *
+   *
+   * <pre>
+   * Deprecated
+   * </pre>
+   *
+   * Protobuf type {@code services.account.v1.AccountEcosystem}
+   */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
       // @@protoc_insertion_point(builder_implements:services.account.v1.AccountEcosystem)

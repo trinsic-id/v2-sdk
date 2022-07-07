@@ -3,7 +3,15 @@
 
 package trinsic.services.event.v1;
 
-/** Protobuf type {@code trinsic.services.event.TemplateCreated} */
+/**
+ *
+ *
+ * <pre>
+ * Template created in ecosystem
+ * </pre>
+ *
+ * Protobuf type {@code trinsic.services.event.TemplateCreated}
+ */
 public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV3
     implements
     // @@protoc_insertion_point(message_implements:trinsic.services.event.TemplateCreated)
@@ -275,7 +283,7 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Tempalte type
+   * Template type
    * </pre>
    *
    * <code>string type = 4;</code>
@@ -298,7 +306,7 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Tempalte type
+   * Template type
    * </pre>
    *
    * <code>string type = 4;</code>
@@ -562,7 +570,15 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code trinsic.services.event.TemplateCreated} */
+  /**
+   *
+   *
+   * <pre>
+   * Template created in ecosystem
+   * </pre>
+   *
+   * Protobuf type {@code trinsic.services.event.TemplateCreated}
+   */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
       // @@protoc_insertion_point(builder_implements:trinsic.services.event.TemplateCreated)
@@ -1062,7 +1078,7 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Tempalte type
+     * Template type
      * </pre>
      *
      * <code>string type = 4;</code>
@@ -1084,7 +1100,7 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Tempalte type
+     * Template type
      * </pre>
      *
      * <code>string type = 4;</code>
@@ -1106,7 +1122,7 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Tempalte type
+     * Template type
      * </pre>
      *
      * <code>string type = 4;</code>
@@ -1127,7 +1143,7 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Tempalte type
+     * Template type
      * </pre>
      *
      * <code>string type = 4;</code>
@@ -1144,7 +1160,7 @@ public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Tempalte type
+     * Template type
      * </pre>
      *
      * <code>string type = 4;</code>
