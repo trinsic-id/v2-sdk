@@ -14,12 +14,13 @@ class SdkTemplateOption(betterproto.Message):
         1, optional=True, group="_anonymous"
     )
     """
-    Whether the service endpoint allows anonymous (no Oberon) authentication
-    This is used by the `protoc-gen-trinsic-sdk` plugin for metadata.
+    Whether the service endpoint allows anonymous (no auth token necessary)
+    authentication This is used by the `protoc-gen-trinsic-sdk` plugin for
+    metadata.
     """
 
     ignore: Optional[bool] = betterproto.bool_field(2, optional=True, group="_ignore")
     """
-    Whether the SDK template generator should ignoroe this method. This method
+    Whether the SDK template generator should ignore this method. This method
     will be wrapped manually.
     """

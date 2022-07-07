@@ -392,7 +392,7 @@ public final class TrustRegistryGrpc {
      *
      *
      * <pre>
-     * Adds a trust registry defintion to the ecosystem
+     * Add a governance framework to the ecosystem
      * </pre>
      */
     public void addFramework(
@@ -403,7 +403,13 @@ public final class TrustRegistryGrpc {
           getAddFrameworkMethod(), responseObserver);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Remove a governance framework from the ecosystem
+     * </pre>
+     */
     public void removeFramework(
         trinsic.services.trustregistry.v1.RemoveFrameworkRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.RemoveFrameworkResponse>
@@ -412,7 +418,13 @@ public final class TrustRegistryGrpc {
           getRemoveFrameworkMethod(), responseObserver);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Search the ecosystem's governance frameworks
+     * </pre>
+     */
     public void searchRegistry(
         trinsic.services.trustregistry.v1.SearchRegistryRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.SearchRegistryResponse>
@@ -425,7 +437,7 @@ public final class TrustRegistryGrpc {
      *
      *
      * <pre>
-     * Registers an authoritative issuer with a credential template
+     * Register an authoritative issuer for a credential schema
      * </pre>
      */
     public void registerMember(
@@ -440,7 +452,7 @@ public final class TrustRegistryGrpc {
      *
      *
      * <pre>
-     * Removes an authoritative issuer with a credential template from the trust registry
+     * Removes an authoritative issuer for a credential schema from the trust registry
      * </pre>
      */
     public void unregisterMember(
@@ -451,7 +463,13 @@ public final class TrustRegistryGrpc {
           getUnregisterMemberMethod(), responseObserver);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Fetch the membership status of an issuer for a given credential schema in a trust registry
+     * </pre>
+     */
     public void getMembershipStatus(
         trinsic.services.trustregistry.v1.GetMembershipStatusRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.GetMembershipStatusResponse>
@@ -460,7 +478,13 @@ public final class TrustRegistryGrpc {
           getGetMembershipStatusMethod(), responseObserver);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Not implemented.
+     * </pre>
+     */
     public void fetchData(
         trinsic.services.trustregistry.v1.FetchDataRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.FetchDataResponse>
@@ -540,7 +564,7 @@ public final class TrustRegistryGrpc {
      *
      *
      * <pre>
-     * Adds a trust registry defintion to the ecosystem
+     * Add a governance framework to the ecosystem
      * </pre>
      */
     public void addFramework(
@@ -553,7 +577,13 @@ public final class TrustRegistryGrpc {
           responseObserver);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Remove a governance framework from the ecosystem
+     * </pre>
+     */
     public void removeFramework(
         trinsic.services.trustregistry.v1.RemoveFrameworkRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.RemoveFrameworkResponse>
@@ -564,7 +594,13 @@ public final class TrustRegistryGrpc {
           responseObserver);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Search the ecosystem's governance frameworks
+     * </pre>
+     */
     public void searchRegistry(
         trinsic.services.trustregistry.v1.SearchRegistryRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.SearchRegistryResponse>
@@ -579,7 +615,7 @@ public final class TrustRegistryGrpc {
      *
      *
      * <pre>
-     * Registers an authoritative issuer with a credential template
+     * Register an authoritative issuer for a credential schema
      * </pre>
      */
     public void registerMember(
@@ -596,7 +632,7 @@ public final class TrustRegistryGrpc {
      *
      *
      * <pre>
-     * Removes an authoritative issuer with a credential template from the trust registry
+     * Removes an authoritative issuer for a credential schema from the trust registry
      * </pre>
      */
     public void unregisterMember(
@@ -609,7 +645,13 @@ public final class TrustRegistryGrpc {
           responseObserver);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Fetch the membership status of an issuer for a given credential schema in a trust registry
+     * </pre>
+     */
     public void getMembershipStatus(
         trinsic.services.trustregistry.v1.GetMembershipStatusRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.GetMembershipStatusResponse>
@@ -620,7 +662,13 @@ public final class TrustRegistryGrpc {
           responseObserver);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Not implemented.
+     * </pre>
+     */
     public void fetchData(
         trinsic.services.trustregistry.v1.FetchDataRequest request,
         io.grpc.stub.StreamObserver<trinsic.services.trustregistry.v1.FetchDataResponse>
@@ -647,7 +695,7 @@ public final class TrustRegistryGrpc {
      *
      *
      * <pre>
-     * Adds a trust registry defintion to the ecosystem
+     * Add a governance framework to the ecosystem
      * </pre>
      */
     public trinsic.services.trustregistry.v1.AddFrameworkResponse addFramework(
@@ -656,14 +704,26 @@ public final class TrustRegistryGrpc {
           getChannel(), getAddFrameworkMethod(), getCallOptions(), request);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Remove a governance framework from the ecosystem
+     * </pre>
+     */
     public trinsic.services.trustregistry.v1.RemoveFrameworkResponse removeFramework(
         trinsic.services.trustregistry.v1.RemoveFrameworkRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getRemoveFrameworkMethod(), getCallOptions(), request);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Search the ecosystem's governance frameworks
+     * </pre>
+     */
     public trinsic.services.trustregistry.v1.SearchRegistryResponse searchRegistry(
         trinsic.services.trustregistry.v1.SearchRegistryRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -674,7 +734,7 @@ public final class TrustRegistryGrpc {
      *
      *
      * <pre>
-     * Registers an authoritative issuer with a credential template
+     * Register an authoritative issuer for a credential schema
      * </pre>
      */
     public trinsic.services.trustregistry.v1.RegisterMemberResponse registerMember(
@@ -687,7 +747,7 @@ public final class TrustRegistryGrpc {
      *
      *
      * <pre>
-     * Removes an authoritative issuer with a credential template from the trust registry
+     * Removes an authoritative issuer for a credential schema from the trust registry
      * </pre>
      */
     public trinsic.services.trustregistry.v1.UnregisterMemberResponse unregisterMember(
@@ -696,14 +756,26 @@ public final class TrustRegistryGrpc {
           getChannel(), getUnregisterMemberMethod(), getCallOptions(), request);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Fetch the membership status of an issuer for a given credential schema in a trust registry
+     * </pre>
+     */
     public trinsic.services.trustregistry.v1.GetMembershipStatusResponse getMembershipStatus(
         trinsic.services.trustregistry.v1.GetMembershipStatusRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetMembershipStatusMethod(), getCallOptions(), request);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Not implemented.
+     * </pre>
+     */
     public java.util.Iterator<trinsic.services.trustregistry.v1.FetchDataResponse> fetchData(
         trinsic.services.trustregistry.v1.FetchDataRequest request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
@@ -728,7 +800,7 @@ public final class TrustRegistryGrpc {
      *
      *
      * <pre>
-     * Adds a trust registry defintion to the ecosystem
+     * Add a governance framework to the ecosystem
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
@@ -738,7 +810,13 @@ public final class TrustRegistryGrpc {
           getChannel().newCall(getAddFrameworkMethod(), getCallOptions()), request);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Remove a governance framework from the ecosystem
+     * </pre>
+     */
     public com.google.common.util.concurrent.ListenableFuture<
             trinsic.services.trustregistry.v1.RemoveFrameworkResponse>
         removeFramework(trinsic.services.trustregistry.v1.RemoveFrameworkRequest request) {
@@ -746,7 +824,13 @@ public final class TrustRegistryGrpc {
           getChannel().newCall(getRemoveFrameworkMethod(), getCallOptions()), request);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Search the ecosystem's governance frameworks
+     * </pre>
+     */
     public com.google.common.util.concurrent.ListenableFuture<
             trinsic.services.trustregistry.v1.SearchRegistryResponse>
         searchRegistry(trinsic.services.trustregistry.v1.SearchRegistryRequest request) {
@@ -758,7 +842,7 @@ public final class TrustRegistryGrpc {
      *
      *
      * <pre>
-     * Registers an authoritative issuer with a credential template
+     * Register an authoritative issuer for a credential schema
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
@@ -772,7 +856,7 @@ public final class TrustRegistryGrpc {
      *
      *
      * <pre>
-     * Removes an authoritative issuer with a credential template from the trust registry
+     * Removes an authoritative issuer for a credential schema from the trust registry
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
@@ -782,7 +866,13 @@ public final class TrustRegistryGrpc {
           getChannel().newCall(getUnregisterMemberMethod(), getCallOptions()), request);
     }
 
-    /** */
+    /**
+     *
+     *
+     * <pre>
+     * Fetch the membership status of an issuer for a given credential schema in a trust registry
+     * </pre>
+     */
     public com.google.common.util.concurrent.ListenableFuture<
             trinsic.services.trustregistry.v1.GetMembershipStatusResponse>
         getMembershipStatus(trinsic.services.trustregistry.v1.GetMembershipStatusRequest request) {

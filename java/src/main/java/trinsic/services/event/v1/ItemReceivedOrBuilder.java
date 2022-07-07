@@ -37,7 +37,7 @@ public interface ItemReceivedOrBuilder
    *
    *
    * <pre>
-   * Timestamp when the item was received
+   * Timestamp when the item was received, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
    * </pre>
    *
    * <code>string received = 2;</code>
@@ -49,7 +49,7 @@ public interface ItemReceivedOrBuilder
    *
    *
    * <pre>
-   * Timestamp when the item was received
+   * Timestamp when the item was received, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
    * </pre>
    *
    * <code>string received = 2;</code>

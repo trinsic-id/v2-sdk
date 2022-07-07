@@ -74,7 +74,6 @@ class SearchCredentialTemplatesResponse(betterproto.Message):
 
     continuation_token: str = betterproto.string_field(4)
     """
-    Count of items in `items_json` int32 count = 3; unpopulated and unused
     Token to fetch next set of results via `SearchCredentialTemplatesRequest`
     """
 

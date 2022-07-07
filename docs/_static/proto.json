@@ -486,30 +486,6 @@
       "file": "services/common/v1/common.proto",
       "parent": "services.common.v1.ResponseStatus"
     },
-    "services.common.v1.ServerConfig": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/common/v1/common.proto",
-      "parent": ""
-    },
-    "services.common.v1.ServerConfig.endpoint": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/common/v1/common.proto",
-      "parent": "services.common.v1.ServerConfig"
-    },
-    "services.common.v1.ServerConfig.port": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/common/v1/common.proto",
-      "parent": "services.common.v1.ServerConfig"
-    },
-    "services.common.v1.ServerConfig.use_tls": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/common/v1/common.proto",
-      "parent": "services.common.v1.ServerConfig"
-    },
     "services.debug.v1.Debugging": {
       "type": "serviceProto",
       "collection": "services",
@@ -917,42 +893,6 @@
       "collection": "fields",
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.InvitationStatusResponse"
-    },
-    "services.provider.v1.Invite": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.Invite.accepted": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.Invite"
-    },
-    "services.provider.v1.Invite.code": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.Invite"
-    },
-    "services.provider.v1.Invite.created": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.Invite"
-    },
-    "services.provider.v1.Invite.expires": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.Invite"
-    },
-    "services.provider.v1.Invite.id": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.Invite"
     },
     "services.provider.v1.InviteRequest": {
       "type": "message",
@@ -2834,13 +2774,9 @@
       "services": [],
       "methods": [],
       "messages": [
-        "services.common.v1.ServerConfig",
         "services.common.v1.Nonce"
       ],
       "fields": [
-        "services.common.v1.ServerConfig.endpoint",
-        "services.common.v1.ServerConfig.port",
-        "services.common.v1.ServerConfig.use_tls",
         "services.common.v1.Nonce.timestamp",
         "services.common.v1.Nonce.request_hash"
       ],
@@ -2968,7 +2904,6 @@
         "services.provider.v1.Provider.GetEventToken"
       ],
       "messages": [
-        "services.provider.v1.Invite",
         "services.provider.v1.InviteRequest",
         "services.provider.v1.InviteRequest.DidCommInvitation",
         "services.provider.v1.InviteResponse",
@@ -3001,11 +2936,6 @@
         "services.provider.v1.GetAuthorizationsResponse"
       ],
       "fields": [
-        "services.provider.v1.Invite.id",
-        "services.provider.v1.Invite.code",
-        "services.provider.v1.Invite.created",
-        "services.provider.v1.Invite.accepted",
-        "services.provider.v1.Invite.expires",
         "services.provider.v1.InviteRequest.participant",
         "services.provider.v1.InviteRequest.description",
         "services.provider.v1.InviteRequest.details",
@@ -3472,14 +3402,14 @@
       "full_name": "services.account.v1.Account.Login",
       "input_type": "services.account.v1.LoginRequest",
       "output_type": "services.account.v1.LoginResponse",
-      "description": "Login to account. If account doesn't exist, new will be created"
+      "description": "Begin login flow for specified account, creating one if it does not already exist"
     },
     "services.account.v1.Account.LoginConfirm": {
       "name": "LoginConfirm",
       "full_name": "services.account.v1.Account.LoginConfirm",
       "input_type": "services.account.v1.LoginConfirmRequest",
       "output_type": "services.account.v1.LoginConfirmResponse",
-      "description": "Confirm login step by responding to the challenge request"
+      "description": "Finalize login flow with two-factor confirmation code"
     },
     "services.account.v1.Account.RevokeDevice": {
       "name": "RevokeDevice",
@@ -3570,14 +3500,14 @@
       "full_name": "services.provider.v1.Provider.GrantAuthorization",
       "input_type": "services.provider.v1.GrantAuthorizationRequest",
       "output_type": "services.provider.v1.GrantAuthorizationResponse",
-      "description": "Grant authorization to ecosystem resources"
+      "description": "Grant user authorization to ecosystem resources"
     },
     "services.provider.v1.Provider.InvitationStatus": {
       "name": "InvitationStatus",
       "full_name": "services.provider.v1.Provider.InvitationStatus",
       "input_type": "services.provider.v1.InvitationStatusRequest",
       "output_type": "services.provider.v1.InvitationStatusResponse",
-      "description": "Check the invitation status"
+      "description": "Check the status of an invitation"
     },
     "services.provider.v1.Provider.Invite": {
       "name": "Invite",
@@ -3591,7 +3521,7 @@
       "full_name": "services.provider.v1.Provider.RevokeAuthorization",
       "input_type": "services.provider.v1.RevokeAuthorizationRequest",
       "output_type": "services.provider.v1.RevokeAuthorizationResponse",
-      "description": "Revoke authorization to ecosystem resources"
+      "description": "Revoke user authorization to ecosystem resources"
     },
     "services.provider.v1.Provider.UpdateEcosystem": {
       "name": "UpdateEcosystem",
@@ -3605,49 +3535,49 @@
       "full_name": "services.trustregistry.v1.TrustRegistry.AddFramework",
       "input_type": "services.trustregistry.v1.AddFrameworkRequest",
       "output_type": "services.trustregistry.v1.AddFrameworkResponse",
-      "description": "Adds a trust registry defintion to the ecosystem"
+      "description": "Add a governance framework to the ecosystem"
     },
     "services.trustregistry.v1.TrustRegistry.FetchData": {
       "name": "FetchData",
       "full_name": "services.trustregistry.v1.TrustRegistry.FetchData",
       "input_type": "services.trustregistry.v1.FetchDataRequest",
       "output_type": "services.trustregistry.v1.FetchDataResponse",
-      "description": ""
+      "description": "Not implemented."
     },
     "services.trustregistry.v1.TrustRegistry.GetMembershipStatus": {
       "name": "GetMembershipStatus",
       "full_name": "services.trustregistry.v1.TrustRegistry.GetMembershipStatus",
       "input_type": "services.trustregistry.v1.GetMembershipStatusRequest",
       "output_type": "services.trustregistry.v1.GetMembershipStatusResponse",
-      "description": ""
+      "description": "Fetch the membership status of an issuer for a given credential schema in a trust registry"
     },
     "services.trustregistry.v1.TrustRegistry.RegisterMember": {
       "name": "RegisterMember",
       "full_name": "services.trustregistry.v1.TrustRegistry.RegisterMember",
       "input_type": "services.trustregistry.v1.RegisterMemberRequest",
       "output_type": "services.trustregistry.v1.RegisterMemberResponse",
-      "description": "Registers an authoritative issuer with a credential template"
+      "description": "Register an authoritative issuer for a credential schema"
     },
     "services.trustregistry.v1.TrustRegistry.RemoveFramework": {
       "name": "RemoveFramework",
       "full_name": "services.trustregistry.v1.TrustRegistry.RemoveFramework",
       "input_type": "services.trustregistry.v1.RemoveFrameworkRequest",
       "output_type": "services.trustregistry.v1.RemoveFrameworkResponse",
-      "description": ""
+      "description": "Remove a governance framework from the ecosystem"
     },
     "services.trustregistry.v1.TrustRegistry.SearchRegistry": {
       "name": "SearchRegistry",
       "full_name": "services.trustregistry.v1.TrustRegistry.SearchRegistry",
       "input_type": "services.trustregistry.v1.SearchRegistryRequest",
       "output_type": "services.trustregistry.v1.SearchRegistryResponse",
-      "description": ""
+      "description": "Search the ecosystem's governance frameworks"
     },
     "services.trustregistry.v1.TrustRegistry.UnregisterMember": {
       "name": "UnregisterMember",
       "full_name": "services.trustregistry.v1.TrustRegistry.UnregisterMember",
       "input_type": "services.trustregistry.v1.UnregisterMemberRequest",
       "output_type": "services.trustregistry.v1.UnregisterMemberResponse",
-      "description": "Removes an authoritative issuer with a credential template from the trust registry"
+      "description": "Removes an authoritative issuer for a credential schema from the trust registry"
     },
     "services.universalwallet.v1.UniversalWallet.DeleteItem": {
       "name": "DeleteItem",
@@ -3675,7 +3605,7 @@
       "full_name": "services.universalwallet.v1.UniversalWallet.Search",
       "input_type": "services.universalwallet.v1.SearchRequest",
       "output_type": "services.universalwallet.v1.SearchResponse",
-      "description": "Search the wallet using a SQL-like syntax"
+      "description": "Search the wallet using a SQL syntax"
     },
     "services.universalwallet.v1.UniversalWallet.UpdateItem": {
       "name": "UpdateItem",
@@ -3689,35 +3619,35 @@
       "full_name": "services.verifiablecredentials.templates.v1.CredentialTemplates.Create",
       "input_type": "services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest",
       "output_type": "services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse",
-      "description": ""
+      "description": "Create a credential template in the current ecosystem"
     },
     "services.verifiablecredentials.templates.v1.CredentialTemplates.Delete": {
       "name": "Delete",
       "full_name": "services.verifiablecredentials.templates.v1.CredentialTemplates.Delete",
       "input_type": "services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest",
       "output_type": "services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse",
-      "description": ""
+      "description": "Delete a credential template from the current ecosystem by ID"
     },
     "services.verifiablecredentials.templates.v1.CredentialTemplates.Get": {
       "name": "Get",
       "full_name": "services.verifiablecredentials.templates.v1.CredentialTemplates.Get",
       "input_type": "services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest",
       "output_type": "services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse",
-      "description": ""
+      "description": "Fetch a credential template by ID"
     },
     "services.verifiablecredentials.templates.v1.CredentialTemplates.List": {
       "name": "List",
       "full_name": "services.verifiablecredentials.templates.v1.CredentialTemplates.List",
       "input_type": "services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest",
       "output_type": "services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse",
-      "description": ""
+      "description": "Search credential templates using SQL, returning strongly-typed template data"
     },
     "services.verifiablecredentials.templates.v1.CredentialTemplates.Search": {
       "name": "Search",
       "full_name": "services.verifiablecredentials.templates.v1.CredentialTemplates.Search",
       "input_type": "services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest",
       "output_type": "services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse",
-      "description": ""
+      "description": "Search credential templates using SQL, returning raw JSON data"
     },
     "services.verifiablecredentials.v1.VerifiableCredential.CheckStatus": {
       "name": "CheckStatus",
@@ -3745,7 +3675,7 @@
       "full_name": "services.verifiablecredentials.v1.VerifiableCredential.IssueFromTemplate",
       "input_type": "services.verifiablecredentials.v1.IssueFromTemplateRequest",
       "output_type": "services.verifiablecredentials.v1.IssueFromTemplateResponse",
-      "description": "Sign and issue a verifiable credential from a pre-defined template.\nThis process will also add schema validation and \nrevocation registry entry in the credential."
+      "description": "Sign and issue a verifiable credential from a pre-defined template.\nThis process will also add schema validation and \nrevocation registry values to the credential."
     },
     "services.verifiablecredentials.v1.VerifiableCredential.Send": {
       "name": "Send",
@@ -3798,7 +3728,7 @@
     "services.account.v1.AccountEcosystem": {
       "name": "AccountEcosystem",
       "full_name": "services.account.v1.AccountEcosystem",
-      "description": "",
+      "description": "Deprecated",
       "fields": [
         "services.account.v1.AccountEcosystem.id",
         "services.account.v1.AccountEcosystem.name",
@@ -3848,7 +3778,7 @@
     "services.account.v1.AuthorizeWebhookRequest": {
       "name": "AuthorizeWebhookRequest",
       "full_name": "services.account.v1.AuthorizeWebhookRequest",
-      "description": "Authorize ecosystem to receive wallet events",
+      "description": "Request to authorize Ecosystem provider to receive webhooks for events\nwhich occur on this wallet.",
       "fields": [
         "services.account.v1.AuthorizeWebhookRequest.events"
       ],
@@ -3882,7 +3812,7 @@
     "services.account.v1.LoginConfirmRequest": {
       "name": "LoginConfirmRequest",
       "full_name": "services.account.v1.LoginConfirmRequest",
-      "description": "",
+      "description": "Request to finalize login flow",
       "fields": [
         "services.account.v1.LoginConfirmRequest.challenge",
         "services.account.v1.LoginConfirmRequest.confirmation_code_hashed"
@@ -3893,7 +3823,7 @@
     "services.account.v1.LoginConfirmResponse": {
       "name": "LoginConfirmResponse",
       "full_name": "services.account.v1.LoginConfirmResponse",
-      "description": "",
+      "description": "Response to `LoginConfirmRequest`",
       "fields": [
         "services.account.v1.LoginConfirmResponse.profile"
       ],
@@ -3903,7 +3833,7 @@
     "services.account.v1.LoginRequest": {
       "name": "LoginRequest",
       "full_name": "services.account.v1.LoginRequest",
-      "description": "",
+      "description": "Request to begin login flow",
       "fields": [
         "services.account.v1.LoginRequest.email",
         "services.account.v1.LoginRequest.invitation_code",
@@ -3915,7 +3845,7 @@
     "services.account.v1.LoginResponse": {
       "name": "LoginResponse",
       "full_name": "services.account.v1.LoginResponse",
-      "description": "",
+      "description": "Response to `LoginRequest`",
       "fields": [
         "services.account.v1.LoginResponse.challenge",
         "services.account.v1.LoginResponse.profile"
@@ -3984,18 +3914,6 @@
       "messages": [],
       "enums": []
     },
-    "services.common.v1.ServerConfig": {
-      "name": "ServerConfig",
-      "full_name": "services.common.v1.ServerConfig",
-      "description": "",
-      "fields": [
-        "services.common.v1.ServerConfig.endpoint",
-        "services.common.v1.ServerConfig.port",
-        "services.common.v1.ServerConfig.use_tls"
-      ],
-      "messages": [],
-      "enums": []
-    },
     "services.options.SdkTemplateOption": {
       "name": "SdkTemplateOption",
       "full_name": "services.options.SdkTemplateOption",
@@ -4032,7 +3950,7 @@
     "services.provider.v1.CreateEcosystemRequest": {
       "name": "CreateEcosystemRequest",
       "full_name": "services.provider.v1.CreateEcosystemRequest",
-      "description": "",
+      "description": "Request to create an ecosystem",
       "fields": [
         "services.provider.v1.CreateEcosystemRequest.name",
         "services.provider.v1.CreateEcosystemRequest.description",
@@ -4045,7 +3963,7 @@
     "services.provider.v1.CreateEcosystemResponse": {
       "name": "CreateEcosystemResponse",
       "full_name": "services.provider.v1.CreateEcosystemResponse",
-      "description": "",
+      "description": "Response to `CreateEcosystemRequest`",
       "fields": [
         "services.provider.v1.CreateEcosystemResponse.ecosystem",
         "services.provider.v1.CreateEcosystemResponse.profile",
@@ -4077,7 +3995,7 @@
     "services.provider.v1.Ecosystem": {
       "name": "Ecosystem",
       "full_name": "services.provider.v1.Ecosystem",
-      "description": "",
+      "description": "Details of an ecosystem",
       "fields": [
         "services.provider.v1.Ecosystem.id",
         "services.provider.v1.Ecosystem.name",
@@ -4109,7 +4027,7 @@
     "services.provider.v1.GenerateTokenRequest": {
       "name": "GenerateTokenRequest",
       "full_name": "services.provider.v1.GenerateTokenRequest",
-      "description": "",
+      "description": "Request to generate an authentication token for the current account",
       "fields": [
         "services.provider.v1.GenerateTokenRequest.description"
       ],
@@ -4119,7 +4037,7 @@
     "services.provider.v1.GenerateTokenResponse": {
       "name": "GenerateTokenResponse",
       "full_name": "services.provider.v1.GenerateTokenResponse",
-      "description": "",
+      "description": "Response to `GenerateTokenRequest`",
       "fields": [
         "services.provider.v1.GenerateTokenResponse.profile"
       ],
@@ -4129,7 +4047,7 @@
     "services.provider.v1.GetAuthorizationsRequest": {
       "name": "GetAuthorizationsRequest",
       "full_name": "services.provider.v1.GetAuthorizationsRequest",
-      "description": "",
+      "description": "Fetch list of grants that the current account has access to\nin its ecosystem",
       "fields": [],
       "messages": [],
       "enums": []
@@ -4137,7 +4055,7 @@
     "services.provider.v1.GetAuthorizationsResponse": {
       "name": "GetAuthorizationsResponse",
       "full_name": "services.provider.v1.GetAuthorizationsResponse",
-      "description": "",
+      "description": "Response to `GetAuthorizationsRequest`",
       "fields": [
         "services.provider.v1.GetAuthorizationsResponse.grants"
       ],
@@ -4147,7 +4065,7 @@
     "services.provider.v1.GetEventTokenRequest": {
       "name": "GetEventTokenRequest",
       "full_name": "services.provider.v1.GetEventTokenRequest",
-      "description": "generates an events token bound to the provided ed25519 pk",
+      "description": "Generates an events token bound to the provided ed25519 public key.",
       "fields": [
         "services.provider.v1.GetEventTokenRequest.pk"
       ],
@@ -4157,7 +4075,7 @@
     "services.provider.v1.GetEventTokenResponse": {
       "name": "GetEventTokenResponse",
       "full_name": "services.provider.v1.GetEventTokenResponse",
-      "description": "response message containing a token (JWT) that can be used\nto connect directly to the message streaming architecture",
+      "description": "Response message containing a token (JWT) that can be used\nto connect directly to the message streaming architecture",
       "fields": [
         "services.provider.v1.GetEventTokenResponse.token"
       ],
@@ -4167,7 +4085,7 @@
     "services.provider.v1.GetOberonKeyRequest": {
       "name": "GetOberonKeyRequest",
       "full_name": "services.provider.v1.GetOberonKeyRequest",
-      "description": "request message for GetOberonKey",
+      "description": "Request to fetch the Trinsic public key used\nto verify authentication token validity",
       "fields": [],
       "messages": [],
       "enums": []
@@ -4175,7 +4093,7 @@
     "services.provider.v1.GetOberonKeyResponse": {
       "name": "GetOberonKeyResponse",
       "full_name": "services.provider.v1.GetOberonKeyResponse",
-      "description": "response message for GetOberonKey",
+      "description": "Response to `GetOberonKeyRequest`",
       "fields": [
         "services.provider.v1.GetOberonKeyResponse.key"
       ],
@@ -4185,7 +4103,7 @@
     "services.provider.v1.Grant": {
       "name": "Grant",
       "full_name": "services.provider.v1.Grant",
-      "description": "",
+      "description": "A grant authorizing `actions` on a `resourceId`",
       "fields": [
         "services.provider.v1.Grant.resourceId",
         "services.provider.v1.Grant.actions",
@@ -4197,7 +4115,7 @@
     "services.provider.v1.GrantAuthorizationRequest": {
       "name": "GrantAuthorizationRequest",
       "full_name": "services.provider.v1.GrantAuthorizationRequest",
-      "description": "grant permissions to a resource or path in the ecosystem",
+      "description": "Grant permissions to a resource or path in the ecosystem",
       "fields": [
         "services.provider.v1.GrantAuthorizationRequest.email",
         "services.provider.v1.GrantAuthorizationRequest.walletId",
@@ -4210,7 +4128,7 @@
     "services.provider.v1.GrantAuthorizationResponse": {
       "name": "GrantAuthorizationResponse",
       "full_name": "services.provider.v1.GrantAuthorizationResponse",
-      "description": "",
+      "description": "Response to `GrantAuthorizationRequest`",
       "fields": [],
       "messages": [],
       "enums": []
@@ -4218,7 +4136,7 @@
     "services.provider.v1.InvitationStatusRequest": {
       "name": "InvitationStatusRequest",
       "full_name": "services.provider.v1.InvitationStatusRequest",
-      "description": "Request details for the status of onboarding\nan individual or organization.\nThe reference_id passed is the response from the\n`Onboard` method call",
+      "description": "Request details for the status of an invitation",
       "fields": [
         "services.provider.v1.InvitationStatusRequest.invitation_id"
       ],
@@ -4228,7 +4146,7 @@
     "services.provider.v1.InvitationStatusResponse": {
       "name": "InvitationStatusResponse",
       "full_name": "services.provider.v1.InvitationStatusResponse",
-      "description": "",
+      "description": "Response to `InvitationStatusRequest`",
       "fields": [
         "services.provider.v1.InvitationStatusResponse.status",
         "services.provider.v1.InvitationStatusResponse.status_details"
@@ -4238,24 +4156,10 @@
         "services.provider.v1.InvitationStatusResponse.Status"
       ]
     },
-    "services.provider.v1.Invite": {
-      "name": "Invite",
-      "full_name": "services.provider.v1.Invite",
-      "description": "",
-      "fields": [
-        "services.provider.v1.Invite.id",
-        "services.provider.v1.Invite.code",
-        "services.provider.v1.Invite.created",
-        "services.provider.v1.Invite.accepted",
-        "services.provider.v1.Invite.expires"
-      ],
-      "messages": [],
-      "enums": []
-    },
     "services.provider.v1.InviteRequest": {
       "name": "InviteRequest",
       "full_name": "services.provider.v1.InviteRequest",
-      "description": "",
+      "description": "Request to invite a participant to an ecosystem",
       "fields": [
         "services.provider.v1.InviteRequest.participant",
         "services.provider.v1.InviteRequest.description",
@@ -4277,7 +4181,7 @@
     "services.provider.v1.InviteResponse": {
       "name": "InviteResponse",
       "full_name": "services.provider.v1.InviteResponse",
-      "description": "",
+      "description": "Response to `InviteRequest`",
       "fields": [
         "services.provider.v1.InviteResponse.invitation_id",
         "services.provider.v1.InviteResponse.invitation_code"
@@ -4288,7 +4192,7 @@
     "services.provider.v1.RevokeAuthorizationRequest": {
       "name": "RevokeAuthorizationRequest",
       "full_name": "services.provider.v1.RevokeAuthorizationRequest",
-      "description": "revoke permissions to a resource or path in the ecosystem",
+      "description": "Revoke permissions to a resource or path in the ecosystem",
       "fields": [
         "services.provider.v1.RevokeAuthorizationRequest.email",
         "services.provider.v1.RevokeAuthorizationRequest.walletId",
@@ -4301,7 +4205,7 @@
     "services.provider.v1.RevokeAuthorizationResponse": {
       "name": "RevokeAuthorizationResponse",
       "full_name": "services.provider.v1.RevokeAuthorizationResponse",
-      "description": "",
+      "description": "Response to `RevokeAuthorizationRequest`",
       "fields": [],
       "messages": [],
       "enums": []
@@ -4309,7 +4213,7 @@
     "services.provider.v1.UpdateEcosystemRequest": {
       "name": "UpdateEcosystemRequest",
       "full_name": "services.provider.v1.UpdateEcosystemRequest",
-      "description": "Request to update an ecosystem",
+      "description": "Request to update an ecosystem's metadata",
       "fields": [
         "services.provider.v1.UpdateEcosystemRequest.description",
         "services.provider.v1.UpdateEcosystemRequest.uri"
@@ -4330,7 +4234,7 @@
     "services.provider.v1.WebhookConfig": {
       "name": "WebhookConfig",
       "full_name": "services.provider.v1.WebhookConfig",
-      "description": "",
+      "description": "Webhook configured on an ecosystem",
       "fields": [
         "services.provider.v1.WebhookConfig.id",
         "services.provider.v1.WebhookConfig.destination_url",
@@ -4343,7 +4247,7 @@
     "services.trustregistry.v1.AddFrameworkRequest": {
       "name": "AddFrameworkRequest",
       "full_name": "services.trustregistry.v1.AddFrameworkRequest",
-      "description": "Register new ecosystem governance framework",
+      "description": "Request to register a new ecosystem governance framework in the current ecosystem",
       "fields": [
         "services.trustregistry.v1.AddFrameworkRequest.governance_framework_uri",
         "services.trustregistry.v1.AddFrameworkRequest.name",
@@ -4355,7 +4259,7 @@
     "services.trustregistry.v1.AddFrameworkResponse": {
       "name": "AddFrameworkResponse",
       "full_name": "services.trustregistry.v1.AddFrameworkResponse",
-      "description": "",
+      "description": "Response to `AddFrameworkRequest`",
       "fields": [
         "services.trustregistry.v1.AddFrameworkResponse.id",
         "services.trustregistry.v1.AddFrameworkResponse.governing_authority",
@@ -4367,7 +4271,7 @@
     "services.trustregistry.v1.FetchDataRequest": {
       "name": "FetchDataRequest",
       "full_name": "services.trustregistry.v1.FetchDataRequest",
-      "description": "",
+      "description": "Not implemented.",
       "fields": [
         "services.trustregistry.v1.FetchDataRequest.governance_framework_uri",
         "services.trustregistry.v1.FetchDataRequest.query"
@@ -4378,7 +4282,7 @@
     "services.trustregistry.v1.FetchDataResponse": {
       "name": "FetchDataResponse",
       "full_name": "services.trustregistry.v1.FetchDataResponse",
-      "description": "",
+      "description": "Not implemented.",
       "fields": [
         "services.trustregistry.v1.FetchDataResponse.response_json",
         "services.trustregistry.v1.FetchDataResponse.has_more_results",
@@ -4390,7 +4294,7 @@
     "services.trustregistry.v1.GetMembershipStatusRequest": {
       "name": "GetMembershipStatusRequest",
       "full_name": "services.trustregistry.v1.GetMembershipStatusRequest",
-      "description": "",
+      "description": "Request to fetch membership status in governance framework for a specific credential schema.\nOnly one of `did_uri`, `x509_cert` may be specified.",
       "fields": [
         "services.trustregistry.v1.GetMembershipStatusRequest.governance_framework_uri",
         "services.trustregistry.v1.GetMembershipStatusRequest.did_uri",
@@ -4403,7 +4307,7 @@
     "services.trustregistry.v1.GetMembershipStatusResponse": {
       "name": "GetMembershipStatusResponse",
       "full_name": "services.trustregistry.v1.GetMembershipStatusResponse",
-      "description": "",
+      "description": "Response to `GetMembershipStatusRequest`",
       "fields": [
         "services.trustregistry.v1.GetMembershipStatusResponse.status"
       ],
@@ -4413,7 +4317,7 @@
     "services.trustregistry.v1.GovernanceFramework": {
       "name": "GovernanceFramework",
       "full_name": "services.trustregistry.v1.GovernanceFramework",
-      "description": "",
+      "description": "Ecosystem Governance Framework",
       "fields": [
         "services.trustregistry.v1.GovernanceFramework.governance_framework_uri",
         "services.trustregistry.v1.GovernanceFramework.trust_registry_uri",
@@ -4425,7 +4329,7 @@
     "services.trustregistry.v1.RegisterMemberRequest": {
       "name": "RegisterMemberRequest",
       "full_name": "services.trustregistry.v1.RegisterMemberRequest",
-      "description": "",
+      "description": "Request to register a member as a valid issuer of a specific credential schema.\nOnly one of `did_uri`, `wallet_id`, or `email` may be specified.",
       "fields": [
         "services.trustregistry.v1.RegisterMemberRequest.did_uri",
         "services.trustregistry.v1.RegisterMemberRequest.wallet_id",
@@ -4441,7 +4345,7 @@
     "services.trustregistry.v1.RegisterMemberResponse": {
       "name": "RegisterMemberResponse",
       "full_name": "services.trustregistry.v1.RegisterMemberResponse",
-      "description": "",
+      "description": "Response to `RegisterMemberRequest`",
       "fields": [],
       "messages": [],
       "enums": []
@@ -4449,7 +4353,7 @@
     "services.trustregistry.v1.RemoveFrameworkRequest": {
       "name": "RemoveFrameworkRequest",
       "full_name": "services.trustregistry.v1.RemoveFrameworkRequest",
-      "description": "",
+      "description": "Request to remove a governance framework from the current ecosystem",
       "fields": [
         "services.trustregistry.v1.RemoveFrameworkRequest.id"
       ],
@@ -4459,7 +4363,7 @@
     "services.trustregistry.v1.RemoveFrameworkResponse": {
       "name": "RemoveFrameworkResponse",
       "full_name": "services.trustregistry.v1.RemoveFrameworkResponse",
-      "description": "",
+      "description": "Response to `RemoveFrameworkRequest`",
       "fields": [],
       "messages": [],
       "enums": []
@@ -4467,7 +4371,7 @@
     "services.trustregistry.v1.SearchRegistryRequest": {
       "name": "SearchRegistryRequest",
       "full_name": "services.trustregistry.v1.SearchRegistryRequest",
-      "description": "",
+      "description": "Request to search all governance frameworks within ecosystem",
       "fields": [
         "services.trustregistry.v1.SearchRegistryRequest.query",
         "services.trustregistry.v1.SearchRegistryRequest.continuation_token"
@@ -4478,7 +4382,7 @@
     "services.trustregistry.v1.SearchRegistryResponse": {
       "name": "SearchRegistryResponse",
       "full_name": "services.trustregistry.v1.SearchRegistryResponse",
-      "description": "",
+      "description": "Response to `SearchRegistryRequest`",
       "fields": [
         "services.trustregistry.v1.SearchRegistryResponse.items_json",
         "services.trustregistry.v1.SearchRegistryResponse.has_more",
@@ -4490,7 +4394,7 @@
     "services.trustregistry.v1.UnregisterMemberRequest": {
       "name": "UnregisterMemberRequest",
       "full_name": "services.trustregistry.v1.UnregisterMemberRequest",
-      "description": "",
+      "description": "Request to unregister a member as a valid issuer of a specific credential schema.\nOnly one of `did_uri`, `wallet_id`, or `email` may be specified.",
       "fields": [
         "services.trustregistry.v1.UnregisterMemberRequest.did_uri",
         "services.trustregistry.v1.UnregisterMemberRequest.wallet_id",
@@ -4504,7 +4408,7 @@
     "services.trustregistry.v1.UnregisterMemberResponse": {
       "name": "UnregisterMemberResponse",
       "full_name": "services.trustregistry.v1.UnregisterMemberResponse",
-      "description": "",
+      "description": "Response to `UnregisterMemberRequest`",
       "fields": [],
       "messages": [],
       "enums": []
@@ -4997,7 +4901,7 @@
     "trinsic.services.event.EGFCreated": {
       "name": "EGFCreated",
       "full_name": "trinsic.services.event.EGFCreated",
-      "description": "",
+      "description": "Entity Governance Framework created and attached to ecosystem",
       "fields": [
         "trinsic.services.event.EGFCreated.id",
         "trinsic.services.event.EGFCreated.ecosystem_id",
@@ -5014,7 +4918,7 @@
     "trinsic.services.event.Event": {
       "name": "Event",
       "full_name": "trinsic.services.event.Event",
-      "description": "System event",
+      "description": "Event",
       "fields": [
         "trinsic.services.event.Event.id",
         "trinsic.services.event.Event.type",
@@ -5027,7 +4931,7 @@
     "trinsic.services.event.ItemReceived": {
       "name": "ItemReceived",
       "full_name": "trinsic.services.event.ItemReceived",
-      "description": "",
+      "description": "Item inserted into wallet",
       "fields": [
         "trinsic.services.event.ItemReceived.id",
         "trinsic.services.event.ItemReceived.received"
@@ -5038,7 +4942,7 @@
     "trinsic.services.event.Ping": {
       "name": "Ping",
       "full_name": "trinsic.services.event.Ping",
-      "description": "Message to test webhook functionality",
+      "description": "Webhook test event",
       "fields": [
         "trinsic.services.event.Ping.id",
         "trinsic.services.event.Ping.webhook_id",
@@ -5051,7 +4955,7 @@
     "trinsic.services.event.TemplateCreated": {
       "name": "TemplateCreated",
       "full_name": "trinsic.services.event.TemplateCreated",
-      "description": "",
+      "description": "Template created in ecosystem",
       "fields": [
         "trinsic.services.event.TemplateCreated.id",
         "trinsic.services.event.TemplateCreated.ecosystem_id",
@@ -5102,7 +5006,10 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Email account"
+      "description": "Email address of account",
+      "options": {
+        "services.options.optional": true
+      }
     },
     "services.account.v1.AccountDetails.name": {
       "name": "name",
@@ -5164,7 +5071,7 @@
       "label": "LABEL_REPEATED",
       "type": "string",
       "full_type": "string",
-      "description": "Webhook events if any this wallet has authorized"
+      "description": "Webhook events, if any, this wallet has authorized"
     },
     "services.account.v1.AccountInfoResponse.details": {
       "name": "details",
@@ -5204,7 +5111,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "The public DID associated with this account.\nThis DID is used as \"issuer\" when signing verifiable credentials"
+      "description": "The public DID associated with this account.\nThis DID is used as the `issuer` when signing verifiable credentials"
     },
     "services.account.v1.AccountInfoResponse.wallet_id": {
       "name": "wallet_id",
@@ -5260,7 +5167,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "bytes",
       "full_type": "bytes",
-      "description": "Login challenge received during the Login call"
+      "description": "Challenge received from `Login`"
     },
     "services.account.v1.LoginConfirmRequest.confirmation_code_hashed": {
       "name": "confirmation_code_hashed",
@@ -5268,7 +5175,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "bytes",
       "full_type": "bytes",
-      "description": "Confirmation code received in email or SMS\nhashed using Blake3"
+      "description": "Two-factor confirmation code sent to account email or phone,\nhashed using Blake3. Our SDKs will handle this hashing process for you."
     },
     "services.account.v1.LoginConfirmResponse.profile": {
       "name": "profile",
@@ -5276,7 +5183,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "AccountProfile",
       "full_type": "services.account.v1.AccountProfile",
-      "description": "Profile response. This profile may be protected and\nrequire unblinding/unprotection using the raw hashed code"
+      "description": "Profile response; must be unprotected using unhashed confirmation code.\nOur SDKs will handle this process for you, and return to you an authentication token string."
     },
     "services.account.v1.LoginRequest.ecosystem_id": {
       "name": "ecosystem_id",
@@ -5284,7 +5191,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "ID of Ecosystem to sign into.\nIgnored if `invitation_code` is passed",
+      "description": "ID of Ecosystem to sign into.\nIgnored if `invitation_code` is passed.",
       "options": {
         "services.options.optional": true
       }
@@ -5295,7 +5202,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Email account to associate with the login request",
+      "description": "Email address of account. If unspecified, an anonymous account will be created.",
       "options": {
         "services.options.optional": true
       }
@@ -5317,7 +5224,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "bytes",
       "full_type": "bytes",
-      "description": "Challenge response. Random byte sequence unique\nfor this login request"
+      "description": "Random byte sequence unique to this login request.\nIf present, two-factor confirmation of login is required.\nMust be sent back, unaltered, in `LoginConfirm`."
     },
     "services.account.v1.LoginResponse.profile": {
       "name": "profile",
@@ -5325,7 +5232,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "AccountProfile",
       "full_type": "services.account.v1.AccountProfile",
-      "description": "Profile response. The login isn't challenged and\nthe token is returned in this call. Does not require\nconfirmation step"
+      "description": "Account profile response. If present, no confirmation of login is required."
     },
     "services.account.v1.SignInRequest.details": {
       "name": "details",
@@ -5333,7 +5240,10 @@
       "label": "LABEL_OPTIONAL",
       "type": "AccountDetails",
       "full_type": "services.account.v1.AccountDetails",
-      "description": "Account registration details"
+      "description": "Account registration details",
+      "options": {
+        "services.options.optional": true
+      }
     },
     "services.account.v1.SignInRequest.ecosystem_id": {
       "name": "ecosystem_id",
@@ -5363,7 +5273,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "ConfirmationMethod",
       "full_type": "services.account.v1.ConfirmationMethod",
-      "description": "Indicates if confirmation of account is required.\nThis settings is configured globally by the server administrator."
+      "description": "Indicates if confirmation of account is required."
     },
     "services.account.v1.SignInResponse.profile": {
       "name": "profile",
@@ -5405,37 +5315,13 @@
       "full_type": "int64",
       "description": "UTC unix millisecond timestamp the request was made"
     },
-    "services.common.v1.ServerConfig.endpoint": {
-      "name": "endpoint",
-      "full_name": "services.common.v1.ServerConfig.endpoint",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "service endpoint"
-    },
-    "services.common.v1.ServerConfig.port": {
-      "name": "port",
-      "full_name": "services.common.v1.ServerConfig.port",
-      "label": "LABEL_OPTIONAL",
-      "type": "int32",
-      "full_type": "int32",
-      "description": "service port"
-    },
-    "services.common.v1.ServerConfig.use_tls": {
-      "name": "use_tls",
-      "full_name": "services.common.v1.ServerConfig.use_tls",
-      "label": "LABEL_OPTIONAL",
-      "type": "bool",
-      "full_type": "bool",
-      "description": "indicates if tls is used"
-    },
     "services.options.SdkTemplateOption.anonymous": {
       "name": "anonymous",
       "full_name": "services.options.SdkTemplateOption.anonymous",
       "label": "LABEL_OPTIONAL",
       "type": "bool",
       "full_type": "bool",
-      "description": "Whether the service endpoint allows anonymous (no Oberon) authentication\nThis is used by the `protoc-gen-trinsic-sdk` plugin for metadata."
+      "description": "Whether the service endpoint allows anonymous (no auth token necessary) authentication\nThis is used by the `protoc-gen-trinsic-sdk` plugin for metadata."
     },
     "services.options.SdkTemplateOption.ignore": {
       "name": "ignore",
@@ -5443,7 +5329,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "bool",
       "full_type": "bool",
-      "description": "Whether the SDK template generator should ignoroe this method. This method will\nbe wrapped manually."
+      "description": "Whether the SDK template generator should ignore this method. This method will\nbe wrapped manually."
     },
     "services.provider.v1.AddWebhookRequest.destination_url": {
       "name": "destination_url",
@@ -5451,7 +5337,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Destination to post webhook calls to"
+      "description": "Destination to post webhook calls to.\nMust be a reachable HTTPS URL."
     },
     "services.provider.v1.AddWebhookRequest.events": {
       "name": "events",
@@ -5467,7 +5353,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "HMAC secret for webhook validation"
+      "description": "Secret string used for HMAC-SHA256 signing of webhook payloads\nto verify that a webhook comes from Trinsic"
     },
     "services.provider.v1.AddWebhookResponse.ecosystem": {
       "name": "ecosystem",
@@ -5475,7 +5361,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "Ecosystem",
       "full_type": "services.provider.v1.Ecosystem",
-      "description": "Ecosystem with new webhook"
+      "description": "Ecosystem data with new webhook"
     },
     "services.provider.v1.CreateEcosystemRequest.description": {
       "name": "description",
@@ -5502,7 +5388,10 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Globally unique name for the Ecosystem. This name will be\npart of the ecosystem specific URLs and namespaces.\nAllowed characters are lowercase letters, numbers, underscore and hyphen."
+      "description": "Globally unique name for the Ecosystem. This name will be\npart of the ecosystem-specific URLs and namespaces.\nAllowed characters are lowercase letters, numbers, underscore and hyphen.\nIf not passed, ecosystem name will be auto-generated.",
+      "options": {
+        "services.options.optional": true
+      }
     },
     "services.provider.v1.CreateEcosystemRequest.uri": {
       "name": "uri",
@@ -5521,7 +5410,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "ConfirmationMethod",
       "full_type": "services.account.v1.ConfirmationMethod",
-      "description": "Indicates if confirmation of account is required.\nThis setting is configured globally by the server administrator."
+      "description": "Indicates if confirmation of account is required."
     },
     "services.provider.v1.CreateEcosystemResponse.ecosystem": {
       "name": "ecosystem",
@@ -5553,7 +5442,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "Ecosystem",
       "full_type": "services.provider.v1.Ecosystem",
-      "description": "Ecosystem after removal of webhook"
+      "description": "Ecosystem data after removal of webhook"
     },
     "services.provider.v1.Ecosystem.description": {
       "name": "description",
@@ -5628,7 +5517,7 @@
       "label": "LABEL_REPEATED",
       "type": "Grant",
       "full_type": "services.provider.v1.Grant",
-      "description": ""
+      "description": "Grants attached to account"
     },
     "services.provider.v1.GetEventTokenRequest.pk": {
       "name": "pk",
@@ -5636,7 +5525,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "bytes",
       "full_type": "bytes",
-      "description": ""
+      "description": "Raw public key to generate event token for"
     },
     "services.provider.v1.GetEventTokenResponse.token": {
       "name": "token",
@@ -5644,7 +5533,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "a JWT bound to the PK provided in the request"
+      "description": "JWT bound to the public key provided in `GetEventTokenRequest`"
     },
     "services.provider.v1.GetOberonKeyResponse.key": {
       "name": "key",
@@ -5652,7 +5541,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Oberon Public Key as RAW base64 URL encoded string"
+      "description": "Oberon Public Key as RAW base64-url encoded string"
     },
     "services.provider.v1.Grant.actions": {
       "name": "actions",
@@ -5684,7 +5573,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "action to authorize. default is \"*\" (all)"
+      "description": "Action to authorize. Default is \"*\" (all)"
     },
     "services.provider.v1.GrantAuthorizationRequest.email": {
       "name": "email",
@@ -5692,7 +5581,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "email associted with the account"
+      "description": "Email address of account being granted permission.\nMutually exclusive with `walletId`."
     },
     "services.provider.v1.GrantAuthorizationRequest.resource": {
       "name": "resource",
@@ -5700,7 +5589,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "resources are specified as a restful path: /{ecoId}/{resource type}/{resource id}. EcosystemId maybe ommited"
+      "description": "Resource string that account is receiving permissions for.\nResources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted."
     },
     "services.provider.v1.GrantAuthorizationRequest.walletId": {
       "name": "walletId",
@@ -5708,7 +5597,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "wallet id of the account"
+      "description": "Wallet ID of account being granted permission.\nMutually exclusive with `email`."
     },
     "services.provider.v1.InvitationStatusRequest.invitation_id": {
       "name": "invitation_id",
@@ -5716,7 +5605,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "ID of invitation"
+      "description": "ID of invitation, received from `InviteResponse`"
     },
     "services.provider.v1.InvitationStatusResponse.status": {
       "name": "status",
@@ -5733,46 +5622,6 @@
       "type": "string",
       "full_type": "string",
       "description": "Human-readable string with details about invitation status"
-    },
-    "services.provider.v1.Invite.accepted": {
-      "name": "accepted",
-      "full_name": "services.provider.v1.Invite.accepted",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": ""
-    },
-    "services.provider.v1.Invite.code": {
-      "name": "code",
-      "full_name": "services.provider.v1.Invite.code",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": ""
-    },
-    "services.provider.v1.Invite.created": {
-      "name": "created",
-      "full_name": "services.provider.v1.Invite.created",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": ""
-    },
-    "services.provider.v1.Invite.expires": {
-      "name": "expires",
-      "full_name": "services.provider.v1.Invite.expires",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": ""
-    },
-    "services.provider.v1.Invite.id": {
-      "name": "id",
-      "full_name": "services.provider.v1.Invite.id",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": ""
     },
     "services.provider.v1.InviteRequest.description": {
       "name": "description",
@@ -5810,7 +5659,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Invitation Code that must be passed with the account 'SignIn' request\nto correlate this user with the invitation sent."
+      "description": "Invitation code -- must be passed back in `LoginRequest`"
     },
     "services.provider.v1.InviteResponse.invitation_id": {
       "name": "invitation_id",
@@ -5826,7 +5675,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "action to revoke. default is \"*\" (all)"
+      "description": "Action to revoke. Default is \"*\" (all)"
     },
     "services.provider.v1.RevokeAuthorizationRequest.email": {
       "name": "email",
@@ -5834,7 +5683,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "email associted with the account"
+      "description": "Email address of account having permission revoked.\nMutually exclusive with `walletId`."
     },
     "services.provider.v1.RevokeAuthorizationRequest.resource": {
       "name": "resource",
@@ -5842,7 +5691,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "resources are specified as a restful path: /{ecoId}/{resource type}/{resource id}. EcosystemId maybe ommited"
+      "description": "Resource string that account is losing permissions for.\nResources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted."
     },
     "services.provider.v1.RevokeAuthorizationRequest.walletId": {
       "name": "walletId",
@@ -5850,7 +5699,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "wallet id of the account"
+      "description": "Wallet ID of account having permission revoked.\nMutually exclusive with `email`."
     },
     "services.provider.v1.UpdateEcosystemRequest.description": {
       "name": "description",
@@ -5858,7 +5707,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Description of the ecosystem"
+      "description": "New description of the ecosystem"
     },
     "services.provider.v1.UpdateEcosystemRequest.uri": {
       "name": "uri",
@@ -5866,7 +5715,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "External URL associated with the organization or ecosystem entity"
+      "description": "New external URL associated with the organization or ecosystem entity"
     },
     "services.provider.v1.UpdateEcosystemResponse.Ecosystem": {
       "name": "Ecosystem",
@@ -5874,7 +5723,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "Ecosystem",
       "full_type": "services.provider.v1.Ecosystem",
-      "description": ""
+      "description": "Current ecosystem metadata, post-update"
     },
     "services.provider.v1.WebhookConfig.destination_url": {
       "name": "destination_url",
@@ -5882,7 +5731,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Destination to post webhook calls to"
+      "description": "HTTPS URL to POST webhook calls to"
     },
     "services.provider.v1.WebhookConfig.events": {
       "name": "events",
@@ -5906,7 +5755,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Whether we are able to sucessfully send events to the webhook"
+      "description": "Last known status of webhook (whether or not Trinsic can successfully reach destination)"
     },
     "services.trustregistry.v1.AddFrameworkRequest.description": {
       "name": "description",
@@ -5914,7 +5763,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "Description of governance framework"
     },
     "services.trustregistry.v1.AddFrameworkRequest.governance_framework_uri": {
       "name": "governance_framework_uri",
@@ -5922,7 +5771,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "URI of governance framework organization"
     },
     "services.trustregistry.v1.AddFrameworkRequest.name": {
       "name": "name",
@@ -5930,7 +5779,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "Name of governance framework organization"
     },
     "services.trustregistry.v1.AddFrameworkResponse.governing_authority": {
       "name": "governing_authority",
@@ -5938,7 +5787,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "DID URI of Trinsic account which created the governance framework"
     },
     "services.trustregistry.v1.AddFrameworkResponse.id": {
       "name": "id",
@@ -5954,7 +5803,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "URN of trust registry for governance framework"
     },
     "services.trustregistry.v1.FetchDataRequest.governance_framework_uri": {
       "name": "governance_framework_uri",
@@ -6002,7 +5851,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "DID URI of member"
     },
     "services.trustregistry.v1.GetMembershipStatusRequest.governance_framework_uri": {
       "name": "governance_framework_uri",
@@ -6010,7 +5859,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "URI of governance framework"
     },
     "services.trustregistry.v1.GetMembershipStatusRequest.schema_uri": {
       "name": "schema_uri",
@@ -6018,7 +5867,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "URI of credential schema associated with membership"
     },
     "services.trustregistry.v1.GetMembershipStatusRequest.x509_cert": {
       "name": "x509_cert",
@@ -6026,7 +5875,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "X.509 certificate of member"
     },
     "services.trustregistry.v1.GetMembershipStatusResponse.status": {
       "name": "status",
@@ -6034,7 +5883,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "RegistrationStatus",
       "full_type": "services.trustregistry.v1.RegistrationStatus",
-      "description": ""
+      "description": "Status of member for given credential schema"
     },
     "services.trustregistry.v1.GovernanceFramework.description": {
       "name": "description",
@@ -6042,7 +5891,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "Description of governance framework"
     },
     "services.trustregistry.v1.GovernanceFramework.governance_framework_uri": {
       "name": "governance_framework_uri",
@@ -6050,7 +5899,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "URI of governance framework organization"
     },
     "services.trustregistry.v1.GovernanceFramework.trust_registry_uri": {
       "name": "trust_registry_uri",
@@ -6058,7 +5907,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "URI of trust registry associated with governance framework"
     },
     "services.trustregistry.v1.RegisterMemberRequest.did_uri": {
       "name": "did_uri",
@@ -6066,7 +5915,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "DID URI of member to register"
     },
     "services.trustregistry.v1.RegisterMemberRequest.email": {
       "name": "email",
@@ -6074,7 +5923,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "Email address of member to register. Must be associated with an existing Trinsic account."
     },
     "services.trustregistry.v1.RegisterMemberRequest.framework_id": {
       "name": "framework_id",
@@ -6082,7 +5931,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "the id of the governance framework"
+      "description": "ID of the governance framework that member is being added to"
     },
     "services.trustregistry.v1.RegisterMemberRequest.schema_uri": {
       "name": "schema_uri",
@@ -6090,7 +5939,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "URI of credential schema to register member as authorized issuer of"
     },
     "services.trustregistry.v1.RegisterMemberRequest.valid_from_utc": {
       "name": "valid_from_utc",
@@ -6098,7 +5947,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "uint64",
       "full_type": "uint64",
-      "description": ""
+      "description": "Unix Timestamp member is valid from. Member will not be considered valid before this timestamp."
     },
     "services.trustregistry.v1.RegisterMemberRequest.valid_until_utc": {
       "name": "valid_until_utc",
@@ -6106,7 +5955,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "uint64",
       "full_type": "uint64",
-      "description": ""
+      "description": "Unix Timestamp member is valid until. Member will not be considered valid after this timestamp."
     },
     "services.trustregistry.v1.RegisterMemberRequest.wallet_id": {
       "name": "wallet_id",
@@ -6114,7 +5963,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "Trinsic Wallet ID of member to register"
     },
     "services.trustregistry.v1.RemoveFrameworkRequest.id": {
       "name": "id",
@@ -6122,7 +5971,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "ID of governance framework to remove"
     },
     "services.trustregistry.v1.SearchRegistryRequest.continuation_token": {
       "name": "continuation_token",
@@ -6130,7 +5979,10 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "Token to fetch next set of results, from previous `SearchRegistryResponse`",
+      "options": {
+        "services.options.optional": true
+      }
     },
     "services.trustregistry.v1.SearchRegistryRequest.query": {
       "name": "query",
@@ -6138,7 +5990,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "SELECT c from c where c.type == 'GovernanceFramework'"
+      "description": "SQL query to execute against frameworks. Example: `SELECT c from c where c.type == 'GovernanceFramework'`"
     },
     "services.trustregistry.v1.SearchRegistryResponse.continuation_token": {
       "name": "continuation_token",
@@ -6146,7 +5998,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "Token to fetch next set of results via `SearchRegistryRequest`"
     },
     "services.trustregistry.v1.SearchRegistryResponse.has_more": {
       "name": "has_more",
@@ -6154,7 +6006,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "bool",
       "full_type": "bool",
-      "description": ""
+      "description": "Whether more data is available to fetch for query"
     },
     "services.trustregistry.v1.SearchRegistryResponse.items_json": {
       "name": "items_json",
@@ -6162,7 +6014,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "JSON string containing array of resultant objects"
     },
     "services.trustregistry.v1.UnregisterMemberRequest.did_uri": {
       "name": "did_uri",
@@ -6170,7 +6022,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "DID URI of member to unregister"
     },
     "services.trustregistry.v1.UnregisterMemberRequest.email": {
       "name": "email",
@@ -6178,7 +6030,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "Email address of member to unregister. Must be associated with an existing Trinsic account."
     },
     "services.trustregistry.v1.UnregisterMemberRequest.framework_id": {
       "name": "framework_id",
@@ -6186,7 +6038,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "ID of the governance framework that member is being removed from"
     },
     "services.trustregistry.v1.UnregisterMemberRequest.schema_uri": {
       "name": "schema_uri",
@@ -6194,7 +6046,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "URI of credential schema to unregister member as authorized issuer of"
     },
     "services.trustregistry.v1.UnregisterMemberRequest.wallet_id": {
       "name": "wallet_id",
@@ -6202,7 +6054,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": ""
+      "description": "Trinsic Wallet ID of member to unregister"
     },
     "services.universalwallet.v1.DeleteItemRequest.item_id": {
       "name": "item_id",
@@ -6489,7 +6341,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Count of items in `items_json`\nint32 count = 3; unpopulated and unused\nToken to fetch next set of results via `SearchCredentialTemplatesRequest`"
+      "description": "Token to fetch next set of results via `SearchCredentialTemplatesRequest`"
     },
     "services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse.has_more": {
       "name": "has_more",
@@ -6633,7 +6485,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Credential Status ID to check"
+      "description": "Credential Status ID to check. This is not the same as the credential's ID."
     },
     "services.verifiablecredentials.v1.CheckStatusResponse.revoked": {
       "name": "revoked",
@@ -6764,7 +6616,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Credential Status ID to update"
+      "description": "Credential Status ID to update. This is not the same as the credential's ID."
     },
     "services.verifiablecredentials.v1.UpdateStatusRequest.revoked": {
       "name": "revoked",
@@ -6820,7 +6672,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "bool",
       "full_type": "bool",
-      "description": "Whether or not all validations in `validation_results` passed"
+      "description": "Whether all validations in `validation_results` passed"
     },
     "services.verifiablecredentials.v1.VerifyProofResponse.validation_messages": {
       "name": "validation_messages",
@@ -6868,7 +6720,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Description of the egf"
+      "description": "Description of the EGF"
     },
     "trinsic.services.event.EGFCreated.ecosystem_id": {
       "name": "ecosystem_id",
@@ -6876,7 +6728,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "UUID of the ecosystem that owns this egf"
+      "description": "UUID of the ecosystem that owns this EGF"
     },
     "trinsic.services.event.EGFCreated.governance_framework": {
       "name": "governance_framework",
@@ -6884,7 +6736,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "URI for the egf"
+      "description": "URI for the EGF"
     },
     "trinsic.services.event.EGFCreated.governing_authority": {
       "name": "governing_authority",
@@ -6892,7 +6744,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Wallet ID of the aurhority for this egf"
+      "description": "Wallet ID of the authority for this EGF"
     },
     "trinsic.services.event.EGFCreated.id": {
       "name": "id",
@@ -6908,7 +6760,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "User friendly name for the egf"
+      "description": "User-friendly name for the EGF"
     },
     "trinsic.services.event.EGFCreated.trust_registry": {
       "name": "trust_registry",
@@ -6916,7 +6768,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Trust registry assoicated with this egf"
+      "description": "Trust registry associated with this EGF"
     },
     "trinsic.services.event.EGFCreated.type": {
       "name": "type",
@@ -6924,7 +6776,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Type of egf"
+      "description": "Type of EGF"
     },
     "trinsic.services.event.Event.data": {
       "name": "data",
@@ -6932,7 +6784,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "bytes",
       "full_type": "bytes",
-      "description": "data payload - will be encoded proto message for the event type"
+      "description": "Event-specific payload, as an encoded protobuf message"
     },
     "trinsic.services.event.Event.id": {
       "name": "id",
@@ -6940,7 +6792,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "UUID for the event"
+      "description": "UUID of event"
     },
     "trinsic.services.event.Event.timestamp": {
       "name": "timestamp",
@@ -6948,7 +6800,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "when the event occured"
+      "description": "Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)"
     },
     "trinsic.services.event.Event.type": {
       "name": "type",
@@ -6956,7 +6808,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "EventType",
       "full_type": "trinsic.services.event.EventType",
-      "description": "event type"
+      "description": "Type of event"
     },
     "trinsic.services.event.ItemReceived.id": {
       "name": "id",
@@ -6972,7 +6824,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Timestamp when the item was received"
+      "description": "Timestamp when the item was received, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)"
     },
     "trinsic.services.event.Ping.id": {
       "name": "id",
@@ -6988,7 +6840,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "message to be sent (e.g. I'm a teapot)"
+      "description": "Arbitrary message specified when ping was requested"
     },
     "trinsic.services.event.Ping.timestamp": {
       "name": "timestamp",
@@ -6996,7 +6848,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "when this was generated"
+      "description": "Timestamp ping was requested, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)"
     },
     "trinsic.services.event.Ping.webhook_id": {
       "name": "webhook_id",
@@ -7044,7 +6896,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "Tempalte type"
+      "description": "Template type"
     }
   },
   "enums": {
@@ -7087,7 +6939,7 @@
     "services.provider.v1.ParticipantType": {
       "name": "ParticipantType",
       "full_name": "services.provider.v1.ParticipantType",
-      "description": "",
+      "description": "Type of participant being invited to ecosystem",
       "values": [
         "services.provider.v1.ParticipantType.participant_type_individual",
         "services.provider.v1.ParticipantType.participant_type_organization"
@@ -7119,7 +6971,7 @@
     "trinsic.services.event.EventType": {
       "name": "EventType",
       "full_name": "trinsic.services.event.EventType",
-      "description": "",
+      "description": "All event types",
       "values": [
         "trinsic.services.event.EventType.PING",
         "trinsic.services.event.EventType.LOG",
@@ -7155,7 +7007,7 @@
     "services.account.v1.ConfirmationMethod.Other": {
       "name": "Other",
       "full_name": "services.account.v1.ConfirmationMethod.Other",
-      "description": "Indicates third-party method of confirmation is required",
+      "description": "Third-party method of confirmation is required",
       "value": 10
     },
     "services.account.v1.ConfirmationMethod.Sms": {
@@ -7227,43 +7079,43 @@
     "services.provider.v1.ParticipantType.participant_type_individual": {
       "name": "participant_type_individual",
       "full_name": "services.provider.v1.ParticipantType.participant_type_individual",
-      "description": "",
+      "description": "Participant is an individual",
       "value": 0
     },
     "services.provider.v1.ParticipantType.participant_type_organization": {
       "name": "participant_type_organization",
       "full_name": "services.provider.v1.ParticipantType.participant_type_organization",
-      "description": "",
+      "description": "Participant is an organization",
       "value": 1
     },
     "services.trustregistry.v1.RegistrationStatus.CURRENT": {
       "name": "CURRENT",
       "full_name": "services.trustregistry.v1.RegistrationStatus.CURRENT",
-      "description": "- the entity is currently authorized, as of time of the query.",
+      "description": "Member is currently authorized, as of the time of the query",
       "value": 0
     },
     "services.trustregistry.v1.RegistrationStatus.EXPIRED": {
       "name": "EXPIRED",
       "full_name": "services.trustregistry.v1.RegistrationStatus.EXPIRED",
-      "description": "- entity rights have expired.",
+      "description": "Member's authorization has expired",
       "value": 1
     },
     "services.trustregistry.v1.RegistrationStatus.NOT_FOUND": {
       "name": "NOT_FOUND",
       "full_name": "services.trustregistry.v1.RegistrationStatus.NOT_FOUND",
-      "description": "",
+      "description": "Member is not associated with given credential schema in the EGF",
       "value": 10
     },
     "services.trustregistry.v1.RegistrationStatus.REVOKED": {
       "name": "REVOKED",
       "full_name": "services.trustregistry.v1.RegistrationStatus.REVOKED",
-      "description": "- entity authority under specific EGF was terminated by the governing authority.",
+      "description": "Member authority under specific EGF was terminated by the governing authority",
       "value": 3
     },
     "services.trustregistry.v1.RegistrationStatus.TERMINATED": {
       "name": "TERMINATED",
       "full_name": "services.trustregistry.v1.RegistrationStatus.TERMINATED",
-      "description": "- entity has voluntarily ceased Issuer role under the specific EGF.",
+      "description": "Member has voluntarily ceased Issuer role under the specific EGF",
       "value": 2
     },
     "services.verifiablecredentials.templates.v1.FieldType.BOOL": {

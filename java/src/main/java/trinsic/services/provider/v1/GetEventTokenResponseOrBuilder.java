@@ -12,7 +12,7 @@ public interface GetEventTokenResponseOrBuilder
    *
    *
    * <pre>
-   * a JWT bound to the PK provided in the request
+   * JWT bound to the public key provided in `GetEventTokenRequest`
    * </pre>
    *
    * <code>string token = 1;</code>
@@ -24,7 +24,7 @@ public interface GetEventTokenResponseOrBuilder
    *
    *
    * <pre>
-   * a JWT bound to the PK provided in the request
+   * JWT bound to the public key provided in `GetEventTokenRequest`
    * </pre>
    *
    * <code>string token = 1;</code>

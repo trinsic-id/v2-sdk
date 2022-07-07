@@ -34,12 +34,24 @@ public interface AddFrameworkResponseOrBuilder
   com.google.protobuf.ByteString getIdBytes();
 
   /**
+   *
+   *
+   * <pre>
+   * DID URI of Trinsic account which created the governance framework
+   * </pre>
+   *
    * <code>string governing_authority = 2;</code>
    *
    * @return The governingAuthority.
    */
   java.lang.String getGoverningAuthority();
   /**
+   *
+   *
+   * <pre>
+   * DID URI of Trinsic account which created the governance framework
+   * </pre>
+   *
    * <code>string governing_authority = 2;</code>
    *
    * @return The bytes for governingAuthority.
@@ -47,12 +59,24 @@ public interface AddFrameworkResponseOrBuilder
   com.google.protobuf.ByteString getGoverningAuthorityBytes();
 
   /**
+   *
+   *
+   * <pre>
+   * URN of trust registry for governance framework
+   * </pre>
+   *
    * <code>string trust_registry = 3;</code>
    *
    * @return The trustRegistry.
    */
   java.lang.String getTrustRegistry();
   /**
+   *
+   *
+   * <pre>
+   * URN of trust registry for governance framework
+   * </pre>
+   *
    * <code>string trust_registry = 3;</code>
    *
    * @return The bytes for trustRegistry.

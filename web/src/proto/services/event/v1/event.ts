@@ -2,6 +2,7 @@
 import Long from "long";
 import * as _m0 from "protobufjs/minimal";
 
+/** All event types */
 export enum EventType {
   PING = 0,
   LOG = 1,
@@ -77,15 +78,15 @@ export function eventTypeToJSON(object: EventType): string {
   }
 }
 
-/** System event */
+/** Event */
 export interface Event {
-  /** UUID for the event */
+  /** UUID of event */
   id: string;
-  /** event type */
+  /** Type of event */
   type: EventType;
-  /** when the event occured */
+  /** Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`) */
   timestamp: string;
-  /** data payload - will be encoded proto message for the event type */
+  /** Event-specific payload, as an encoded protobuf message */
   data: Uint8Array;
 }
 
@@ -95,37 +96,39 @@ export interface APICall {
   response: Uint8Array;
 }
 
-/** Message to test webhook functionality */
+/** Webhook test event */
 export interface Ping {
   /** UUID of this ping */
   id: string;
   /** UUID of the webhook receiving the ping */
   webhookId: string;
-  /** when this was generated */
+  /** Timestamp ping was requested, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`) */
   timestamp: string;
-  /** message to be sent (e.g. I'm a teapot) */
+  /** Arbitrary message specified when ping was requested */
   message: string;
 }
 
+/** Entity Governance Framework created and attached to ecosystem */
 export interface EGFCreated {
   /** UUID of the governance framework */
   id: string;
-  /** UUID of the ecosystem that owns this egf */
+  /** UUID of the ecosystem that owns this EGF */
   ecosystemId: string;
-  /** Trust registry assoicated with this egf */
+  /** Trust registry associated with this EGF */
   trustRegistry: string;
-  /** Wallet ID of the aurhority for this egf */
+  /** Wallet ID of the authority for this EGF */
   governingAuthority: string;
-  /** Type of egf */
+  /** Type of EGF */
   type: string;
-  /** User friendly name for the egf */
+  /** User-friendly name for the EGF */
   name: string;
-  /** Description of the egf */
+  /** Description of the EGF */
   description: string;
-  /** URI for the egf */
+  /** URI for the EGF */
   governanceFramework: string;
 }
 
+/** Template created in ecosystem */
 export interface TemplateCreated {
   /** UUID of the template */
   id: string;
@@ -133,16 +136,17 @@ export interface TemplateCreated {
   ecosystemId: string;
   /** Template name */
   name: string;
-  /** Tempalte type */
+  /** Template type */
   type: string;
   /** WalletID that created the template */
   createdBy: string;
 }
 
+/** Item inserted into wallet */
 export interface ItemReceived {
   /** UUID of the new item */
   id: string;
-  /** Timestamp when the item was received */
+  /** Timestamp when the item was received, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`) */
   received: string;
 }
 

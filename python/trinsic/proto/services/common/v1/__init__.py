@@ -17,18 +17,6 @@ class ResponseStatus(betterproto.Enum):
 
 
 @dataclass(eq=False, repr=False)
-class ServerConfig(betterproto.Message):
-    endpoint: str = betterproto.string_field(1)
-    """service endpoint"""
-
-    port: int = betterproto.int32_field(2)
-    """service port"""
-
-    use_tls: bool = betterproto.bool_field(3)
-    """indicates if tls is used"""
-
-
-@dataclass(eq=False, repr=False)
 class Nonce(betterproto.Message):
     """Nonce used to generate an oberon proof"""
 

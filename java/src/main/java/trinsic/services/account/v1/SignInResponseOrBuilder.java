@@ -13,7 +13,6 @@ public interface SignInResponseOrBuilder
    *
    * <pre>
    * Indicates if confirmation of account is required.
-   * This settings is configured globally by the server administrator.
    * </pre>
    *
    * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
@@ -26,7 +25,6 @@ public interface SignInResponseOrBuilder
    *
    * <pre>
    * Indicates if confirmation of account is required.
-   * This settings is configured globally by the server administrator.
    * </pre>
    *
    * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>

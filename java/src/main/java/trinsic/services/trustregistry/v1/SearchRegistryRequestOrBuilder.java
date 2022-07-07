@@ -12,7 +12,7 @@ public interface SearchRegistryRequestOrBuilder
    *
    *
    * <pre>
-   * SELECT c from c where c.type == 'GovernanceFramework'
+   * SQL query to execute against frameworks. Example: `SELECT c from c where c.type == 'GovernanceFramework'`
    * </pre>
    *
    * <code>string query = 1;</code>
@@ -24,7 +24,7 @@ public interface SearchRegistryRequestOrBuilder
    *
    *
    * <pre>
-   * SELECT c from c where c.type == 'GovernanceFramework'
+   * SQL query to execute against frameworks. Example: `SELECT c from c where c.type == 'GovernanceFramework'`
    * </pre>
    *
    * <code>string query = 1;</code>
@@ -34,13 +34,25 @@ public interface SearchRegistryRequestOrBuilder
   com.google.protobuf.ByteString getQueryBytes();
 
   /**
-   * <code>string continuation_token = 2;</code>
+   *
+   *
+   * <pre>
+   * Token to fetch next set of results, from previous `SearchRegistryResponse`
+   * </pre>
+   *
+   * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
    *
    * @return The continuationToken.
    */
   java.lang.String getContinuationToken();
   /**
-   * <code>string continuation_token = 2;</code>
+   *
+   *
+   * <pre>
+   * Token to fetch next set of results, from previous `SearchRegistryResponse`
+   * </pre>
+   *
+   * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
    *
    * @return The bytes for continuationToken.
    */

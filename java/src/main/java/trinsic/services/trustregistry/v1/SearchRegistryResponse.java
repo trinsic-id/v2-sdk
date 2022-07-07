@@ -3,7 +3,15 @@
 
 package trinsic.services.trustregistry.v1;
 
-/** Protobuf type {@code services.trustregistry.v1.SearchRegistryResponse} */
+/**
+ *
+ *
+ * <pre>
+ * Response to `SearchRegistryRequest`
+ * </pre>
+ *
+ * Protobuf type {@code services.trustregistry.v1.SearchRegistryResponse}
+ */
 public final class SearchRegistryResponse extends com.google.protobuf.GeneratedMessageV3
     implements
     // @@protoc_insertion_point(message_implements:services.trustregistry.v1.SearchRegistryResponse)
@@ -106,6 +114,12 @@ public final class SearchRegistryResponse extends com.google.protobuf.GeneratedM
   public static final int ITEMS_JSON_FIELD_NUMBER = 1;
   private volatile java.lang.Object itemsJson_;
   /**
+   *
+   *
+   * <pre>
+   * JSON string containing array of resultant objects
+   * </pre>
+   *
    * <code>string items_json = 1;</code>
    *
    * @return The itemsJson.
@@ -123,6 +137,12 @@ public final class SearchRegistryResponse extends com.google.protobuf.GeneratedM
     }
   }
   /**
+   *
+   *
+   * <pre>
+   * JSON string containing array of resultant objects
+   * </pre>
+   *
    * <code>string items_json = 1;</code>
    *
    * @return The bytes for itemsJson.
@@ -143,6 +163,12 @@ public final class SearchRegistryResponse extends com.google.protobuf.GeneratedM
   public static final int HAS_MORE_FIELD_NUMBER = 2;
   private boolean hasMore_;
   /**
+   *
+   *
+   * <pre>
+   * Whether more data is available to fetch for query
+   * </pre>
+   *
    * <code>bool has_more = 2;</code>
    *
    * @return The hasMore.
@@ -155,6 +181,12 @@ public final class SearchRegistryResponse extends com.google.protobuf.GeneratedM
   public static final int CONTINUATION_TOKEN_FIELD_NUMBER = 4;
   private volatile java.lang.Object continuationToken_;
   /**
+   *
+   *
+   * <pre>
+   * Token to fetch next set of results via `SearchRegistryRequest`
+   * </pre>
+   *
    * <code>string continuation_token = 4;</code>
    *
    * @return The continuationToken.
@@ -172,6 +204,12 @@ public final class SearchRegistryResponse extends com.google.protobuf.GeneratedM
     }
   }
   /**
+   *
+   *
+   * <pre>
+   * Token to fetch next set of results via `SearchRegistryRequest`
+   * </pre>
+   *
    * <code>string continuation_token = 4;</code>
    *
    * @return The bytes for continuationToken.
@@ -367,7 +405,15 @@ public final class SearchRegistryResponse extends com.google.protobuf.GeneratedM
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code services.trustregistry.v1.SearchRegistryResponse} */
+  /**
+   *
+   *
+   * <pre>
+   * Response to `SearchRegistryRequest`
+   * </pre>
+   *
+   * Protobuf type {@code services.trustregistry.v1.SearchRegistryResponse}
+   */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
       // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.SearchRegistryResponse)
@@ -533,6 +579,12 @@ public final class SearchRegistryResponse extends com.google.protobuf.GeneratedM
 
     private java.lang.Object itemsJson_ = "";
     /**
+     *
+     *
+     * <pre>
+     * JSON string containing array of resultant objects
+     * </pre>
+     *
      * <code>string items_json = 1;</code>
      *
      * @return The itemsJson.
@@ -549,6 +601,12 @@ public final class SearchRegistryResponse extends com.google.protobuf.GeneratedM
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * JSON string containing array of resultant objects
+     * </pre>
+     *
      * <code>string items_json = 1;</code>
      *
      * @return The bytes for itemsJson.
@@ -565,6 +623,12 @@ public final class SearchRegistryResponse extends com.google.protobuf.GeneratedM
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * JSON string containing array of resultant objects
+     * </pre>
+     *
      * <code>string items_json = 1;</code>
      *
      * @param value The itemsJson to set.
@@ -580,6 +644,12 @@ public final class SearchRegistryResponse extends com.google.protobuf.GeneratedM
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * JSON string containing array of resultant objects
+     * </pre>
+     *
      * <code>string items_json = 1;</code>
      *
      * @return This builder for chaining.
@@ -591,6 +661,12 @@ public final class SearchRegistryResponse extends com.google.protobuf.GeneratedM
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * JSON string containing array of resultant objects
+     * </pre>
+     *
      * <code>string items_json = 1;</code>
      *
      * @param value The bytes for itemsJson to set.
@@ -609,6 +685,12 @@ public final class SearchRegistryResponse extends com.google.protobuf.GeneratedM
 
     private boolean hasMore_;
     /**
+     *
+     *
+     * <pre>
+     * Whether more data is available to fetch for query
+     * </pre>
+     *
      * <code>bool has_more = 2;</code>
      *
      * @return The hasMore.
@@ -618,6 +700,12 @@ public final class SearchRegistryResponse extends com.google.protobuf.GeneratedM
       return hasMore_;
     }
     /**
+     *
+     *
+     * <pre>
+     * Whether more data is available to fetch for query
+     * </pre>
+     *
      * <code>bool has_more = 2;</code>
      *
      * @param value The hasMore to set.
@@ -630,6 +718,12 @@ public final class SearchRegistryResponse extends com.google.protobuf.GeneratedM
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * Whether more data is available to fetch for query
+     * </pre>
+     *
      * <code>bool has_more = 2;</code>
      *
      * @return This builder for chaining.
@@ -643,6 +737,12 @@ public final class SearchRegistryResponse extends com.google.protobuf.GeneratedM
 
     private java.lang.Object continuationToken_ = "";
     /**
+     *
+     *
+     * <pre>
+     * Token to fetch next set of results via `SearchRegistryRequest`
+     * </pre>
+     *
      * <code>string continuation_token = 4;</code>
      *
      * @return The continuationToken.
@@ -659,6 +759,12 @@ public final class SearchRegistryResponse extends com.google.protobuf.GeneratedM
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * Token to fetch next set of results via `SearchRegistryRequest`
+     * </pre>
+     *
      * <code>string continuation_token = 4;</code>
      *
      * @return The bytes for continuationToken.
@@ -675,6 +781,12 @@ public final class SearchRegistryResponse extends com.google.protobuf.GeneratedM
       }
     }
     /**
+     *
+     *
+     * <pre>
+     * Token to fetch next set of results via `SearchRegistryRequest`
+     * </pre>
+     *
      * <code>string continuation_token = 4;</code>
      *
      * @param value The continuationToken to set.
@@ -690,6 +802,12 @@ public final class SearchRegistryResponse extends com.google.protobuf.GeneratedM
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * Token to fetch next set of results via `SearchRegistryRequest`
+     * </pre>
+     *
      * <code>string continuation_token = 4;</code>
      *
      * @return This builder for chaining.
@@ -701,6 +819,12 @@ public final class SearchRegistryResponse extends com.google.protobuf.GeneratedM
       return this;
     }
     /**
+     *
+     *
+     * <pre>
+     * Token to fetch next set of results via `SearchRegistryRequest`
+     * </pre>
+     *
      * <code>string continuation_token = 4;</code>
      *
      * @param value The bytes for continuationToken to set.

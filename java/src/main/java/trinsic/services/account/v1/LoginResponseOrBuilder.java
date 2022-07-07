@@ -12,8 +12,9 @@ public interface LoginResponseOrBuilder
    *
    *
    * <pre>
-   * Challenge response. Random byte sequence unique
-   * for this login request
+   * Random byte sequence unique to this login request.
+   * If present, two-factor confirmation of login is required.
+   * Must be sent back, unaltered, in `LoginConfirm`.
    * </pre>
    *
    * <code>bytes challenge = 1;</code>
@@ -25,8 +26,9 @@ public interface LoginResponseOrBuilder
    *
    *
    * <pre>
-   * Challenge response. Random byte sequence unique
-   * for this login request
+   * Random byte sequence unique to this login request.
+   * If present, two-factor confirmation of login is required.
+   * Must be sent back, unaltered, in `LoginConfirm`.
    * </pre>
    *
    * <code>bytes challenge = 1;</code>
@@ -39,9 +41,7 @@ public interface LoginResponseOrBuilder
    *
    *
    * <pre>
-   * Profile response. The login isn't challenged and
-   * the token is returned in this call. Does not require
-   * confirmation step
+   * Account profile response. If present, no confirmation of login is required.
    * </pre>
    *
    * <code>.services.account.v1.AccountProfile profile = 2;</code>
@@ -53,9 +53,7 @@ public interface LoginResponseOrBuilder
    *
    *
    * <pre>
-   * Profile response. The login isn't challenged and
-   * the token is returned in this call. Does not require
-   * confirmation step
+   * Account profile response. If present, no confirmation of login is required.
    * </pre>
    *
    * <code>.services.account.v1.AccountProfile profile = 2;</code>
@@ -67,9 +65,7 @@ public interface LoginResponseOrBuilder
    *
    *
    * <pre>
-   * Profile response. The login isn't challenged and
-   * the token is returned in this call. Does not require
-   * confirmation step
+   * Account profile response. If present, no confirmation of login is required.
    * </pre>
    *
    * <code>.services.account.v1.AccountProfile profile = 2;</code>

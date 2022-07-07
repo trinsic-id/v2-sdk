@@ -12,7 +12,7 @@ public interface InvitationStatusRequestOrBuilder
    *
    *
    * <pre>
-   * ID of invitation
+   * ID of invitation, received from `InviteResponse`
    * </pre>
    *
    * <code>string invitation_id = 1;</code>
@@ -24,7 +24,7 @@ public interface InvitationStatusRequestOrBuilder
    *
    *
    * <pre>
-   * ID of invitation
+   * ID of invitation, received from `InviteResponse`
    * </pre>
    *
    * <code>string invitation_id = 1;</code>

@@ -7,7 +7,7 @@ package trinsic.services.event.v1;
  *
  *
  * <pre>
- * Message to test webhook functionality
+ * Webhook test event
  * </pre>
  *
  * Protobuf type {@code trinsic.services.event.Ping}
@@ -225,7 +225,7 @@ public final class Ping extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * when this was generated
+   * Timestamp ping was requested, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
    * </pre>
    *
    * <code>string timestamp = 3;</code>
@@ -248,7 +248,7 @@ public final class Ping extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * when this was generated
+   * Timestamp ping was requested, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
    * </pre>
    *
    * <code>string timestamp = 3;</code>
@@ -274,7 +274,7 @@ public final class Ping extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * message to be sent (e.g. I'm a teapot)
+   * Arbitrary message specified when ping was requested
    * </pre>
    *
    * <code>string message = 4;</code>
@@ -297,7 +297,7 @@ public final class Ping extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * message to be sent (e.g. I'm a teapot)
+   * Arbitrary message specified when ping was requested
    * </pre>
    *
    * <code>string message = 4;</code>
@@ -505,7 +505,7 @@ public final class Ping extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Message to test webhook functionality
+   * Webhook test event
    * </pre>
    *
    * Protobuf type {@code trinsic.services.event.Ping}
@@ -894,7 +894,7 @@ public final class Ping extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * when this was generated
+     * Timestamp ping was requested, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
      * </pre>
      *
      * <code>string timestamp = 3;</code>
@@ -916,7 +916,7 @@ public final class Ping extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * when this was generated
+     * Timestamp ping was requested, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
      * </pre>
      *
      * <code>string timestamp = 3;</code>
@@ -938,7 +938,7 @@ public final class Ping extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * when this was generated
+     * Timestamp ping was requested, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
      * </pre>
      *
      * <code>string timestamp = 3;</code>
@@ -959,7 +959,7 @@ public final class Ping extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * when this was generated
+     * Timestamp ping was requested, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
      * </pre>
      *
      * <code>string timestamp = 3;</code>
@@ -976,7 +976,7 @@ public final class Ping extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * when this was generated
+     * Timestamp ping was requested, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
      * </pre>
      *
      * <code>string timestamp = 3;</code>
@@ -1000,7 +1000,7 @@ public final class Ping extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * message to be sent (e.g. I'm a teapot)
+     * Arbitrary message specified when ping was requested
      * </pre>
      *
      * <code>string message = 4;</code>
@@ -1022,7 +1022,7 @@ public final class Ping extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * message to be sent (e.g. I'm a teapot)
+     * Arbitrary message specified when ping was requested
      * </pre>
      *
      * <code>string message = 4;</code>
@@ -1044,7 +1044,7 @@ public final class Ping extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * message to be sent (e.g. I'm a teapot)
+     * Arbitrary message specified when ping was requested
      * </pre>
      *
      * <code>string message = 4;</code>
@@ -1065,7 +1065,7 @@ public final class Ping extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * message to be sent (e.g. I'm a teapot)
+     * Arbitrary message specified when ping was requested
      * </pre>
      *
      * <code>string message = 4;</code>
@@ -1082,7 +1082,7 @@ public final class Ping extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * message to be sent (e.g. I'm a teapot)
+     * Arbitrary message specified when ping was requested
      * </pre>
      *
      * <code>string message = 4;</code>

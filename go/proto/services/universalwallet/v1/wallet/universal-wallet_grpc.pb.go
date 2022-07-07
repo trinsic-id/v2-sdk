@@ -24,7 +24,7 @@ const _ = grpc.SupportPackageIsVersion7
 type UniversalWalletClient interface {
 	// Retrieve an item from the wallet with a given item identifier
 	GetItem(ctx context.Context, in *GetItemRequest, opts ...grpc.CallOption) (*GetItemResponse, error)
-	// Search the wallet using a SQL-like syntax
+	// Search the wallet using a SQL syntax
 	Search(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*SearchResponse, error)
 	// Insert an item into the wallet
 	InsertItem(ctx context.Context, in *InsertItemRequest, opts ...grpc.CallOption) (*InsertItemResponse, error)
@@ -93,7 +93,7 @@ func (c *universalWalletClient) DeleteItem(ctx context.Context, in *DeleteItemRe
 type UniversalWalletServer interface {
 	// Retrieve an item from the wallet with a given item identifier
 	GetItem(context.Context, *GetItemRequest) (*GetItemResponse, error)
-	// Search the wallet using a SQL-like syntax
+	// Search the wallet using a SQL syntax
 	Search(context.Context, *SearchRequest) (*SearchResponse, error)
 	// Insert an item into the wallet
 	InsertItem(context.Context, *InsertItemRequest) (*InsertItemResponse, error)

@@ -3,14 +3,15 @@ import Long from "long";
 import * as _m0 from "protobufjs/minimal";
 
 export enum RegistrationStatus {
-  /** CURRENT - - the entity is currently authorized, as of time of the query. */
+  /** CURRENT - Member is currently authorized, as of the time of the query */
   CURRENT = 0,
-  /** EXPIRED - - entity rights have expired. */
+  /** EXPIRED - Member's authorization has expired */
   EXPIRED = 1,
-  /** TERMINATED - - entity has voluntarily ceased Issuer role under the specific EGF. */
+  /** TERMINATED - Member has voluntarily ceased Issuer role under the specific EGF */
   TERMINATED = 2,
-  /** REVOKED - - entity authority under specific EGF was terminated by the governing authority. */
+  /** REVOKED - Member authority under specific EGF was terminated by the governing authority */
   REVOKED = 3,
+  /** NOT_FOUND - Member is not associated with given credential schema in the EGF */
   NOT_FOUND = 10,
   UNRECOGNIZED = -1,
 }
@@ -57,83 +58,135 @@ export function registrationStatusToJSON(object: RegistrationStatus): string {
   }
 }
 
-/** Register new ecosystem governance framework */
+/** Request to register a new ecosystem governance framework in the current ecosystem */
 export interface AddFrameworkRequest {
+  /** URI of governance framework organization */
   governanceFrameworkUri: string;
+  /** Name of governance framework organization */
   name: string;
+  /** Description of governance framework */
   description: string;
 }
 
+/** Response to `AddFrameworkRequest` */
 export interface AddFrameworkResponse {
   /** Unique framework identifier */
   id: string;
+  /** DID URI of Trinsic account which created the governance framework */
   governingAuthority: string;
+  /** URN of trust registry for governance framework */
   trustRegistry: string;
 }
 
+/** Request to remove a governance framework from the current ecosystem */
 export interface RemoveFrameworkRequest {
+  /** ID of governance framework to remove */
   id: string;
 }
 
+/** Response to `RemoveFrameworkRequest` */
 export interface RemoveFrameworkResponse {}
 
+/** Request to search all governance frameworks within ecosystem */
 export interface SearchRegistryRequest {
-  /** SELECT c from c where c.type == 'GovernanceFramework' */
+  /** SQL query to execute against frameworks. Example: `SELECT c from c where c.type == 'GovernanceFramework'` */
   query: string;
+  /** Token to fetch next set of results, from previous `SearchRegistryResponse` */
   continuationToken: string;
 }
 
+/** Response to `SearchRegistryRequest` */
 export interface SearchRegistryResponse {
+  /** JSON string containing array of resultant objects */
   itemsJson: string;
+  /** Whether more data is available to fetch for query */
   hasMore: boolean;
+  /** Token to fetch next set of results via `SearchRegistryRequest` */
   continuationToken: string;
 }
 
+/** Ecosystem Governance Framework */
 export interface GovernanceFramework {
+  /** URI of governance framework organization */
   governanceFrameworkUri: string;
+  /** URI of trust registry associated with governance framework */
   trustRegistryUri: string;
+  /** Description of governance framework */
   description: string;
 }
 
+/**
+ * Request to register a member as a valid issuer of a specific credential schema.
+ * Only one of `did_uri`, `wallet_id`, or `email` may be specified.
+ */
 export interface RegisterMemberRequest {
+  /** DID URI of member to register */
   didUri: string | undefined;
+  /** Trinsic Wallet ID of member to register */
   walletId: string | undefined;
+  /** Email address of member to register. Must be associated with an existing Trinsic account. */
   email: string | undefined;
+  /** URI of credential schema to register member as authorized issuer of */
   schemaUri: string;
+  /** Unix Timestamp member is valid from. Member will not be considered valid before this timestamp. */
   validFromUtc: number;
+  /** Unix Timestamp member is valid until. Member will not be considered valid after this timestamp. */
   validUntilUtc: number;
-  /** the id of the governance framework */
+  /** ID of the governance framework that member is being added to */
   frameworkId: string;
 }
 
+/** Response to `RegisterMemberRequest` */
 export interface RegisterMemberResponse {}
 
+/**
+ * Request to unregister a member as a valid issuer of a specific credential schema.
+ * Only one of `did_uri`, `wallet_id`, or `email` may be specified.
+ */
 export interface UnregisterMemberRequest {
+  /** DID URI of member to unregister */
   didUri: string | undefined;
+  /** Trinsic Wallet ID of member to unregister */
   walletId: string | undefined;
+  /** Email address of member to unregister. Must be associated with an existing Trinsic account. */
   email: string | undefined;
+  /** URI of credential schema to unregister member as authorized issuer of */
   schemaUri: string;
+  /** ID of the governance framework that member is being removed from */
   frameworkId: string;
 }
 
+/** Response to `UnregisterMemberRequest` */
 export interface UnregisterMemberResponse {}
 
+/**
+ * Request to fetch membership status in governance framework for a specific credential schema.
+ * Only one of `did_uri`, `x509_cert` may be specified.
+ */
 export interface GetMembershipStatusRequest {
+  /** URI of governance framework */
   governanceFrameworkUri: string;
+  /** DID URI of member */
   didUri: string | undefined;
+  /** X.509 certificate of member */
   x509Cert: string | undefined;
+  /** URI of credential schema associated with membership */
   schemaUri: string;
 }
 
+/** Response to `GetMembershipStatusRequest` */
 export interface GetMembershipStatusResponse {
+  /** Status of member for given credential schema */
   status: RegistrationStatus;
 }
 
+/** Not implemented. */
 export interface FetchDataRequest {
   governanceFrameworkUri: string;
   query: string;
 }
 
+/** Not implemented. */
 export interface FetchDataResponse {
   responseJson: string;
   hasMoreResults: boolean;
@@ -1239,7 +1292,7 @@ export const TrustRegistryDefinition = {
   name: "TrustRegistry",
   fullName: "services.trustregistry.v1.TrustRegistry",
   methods: {
-    /** Adds a trust registry defintion to the ecosystem */
+    /** Add a governance framework to the ecosystem */
     addFramework: {
       name: "AddFramework",
       requestType: AddFrameworkRequest,
@@ -1248,6 +1301,7 @@ export const TrustRegistryDefinition = {
       responseStream: false,
       options: {},
     },
+    /** Remove a governance framework from the ecosystem */
     removeFramework: {
       name: "RemoveFramework",
       requestType: RemoveFrameworkRequest,
@@ -1256,6 +1310,7 @@ export const TrustRegistryDefinition = {
       responseStream: false,
       options: {},
     },
+    /** Search the ecosystem's governance frameworks */
     searchRegistry: {
       name: "SearchRegistry",
       requestType: SearchRegistryRequest,
@@ -1264,7 +1319,7 @@ export const TrustRegistryDefinition = {
       responseStream: false,
       options: {},
     },
-    /** Registers an authoritative issuer with a credential template */
+    /** Register an authoritative issuer for a credential schema */
     registerMember: {
       name: "RegisterMember",
       requestType: RegisterMemberRequest,
@@ -1273,7 +1328,7 @@ export const TrustRegistryDefinition = {
       responseStream: false,
       options: {},
     },
-    /** Removes an authoritative issuer with a credential template from the trust registry */
+    /** Removes an authoritative issuer for a credential schema from the trust registry */
     unregisterMember: {
       name: "UnregisterMember",
       requestType: UnregisterMemberRequest,
@@ -1282,6 +1337,7 @@ export const TrustRegistryDefinition = {
       responseStream: false,
       options: {},
     },
+    /** Fetch the membership status of an issuer for a given credential schema in a trust registry */
     getMembershipStatus: {
       name: "GetMembershipStatus",
       requestType: GetMembershipStatusRequest,
@@ -1290,6 +1346,7 @@ export const TrustRegistryDefinition = {
       responseStream: false,
       options: {},
     },
+    /** Not implemented. */
     fetchData: {
       name: "FetchData",
       requestType: FetchDataRequest,

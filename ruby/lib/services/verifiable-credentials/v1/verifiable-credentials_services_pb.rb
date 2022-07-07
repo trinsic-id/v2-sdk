@@ -21,7 +21,7 @@ module Services
           rpc :Issue, ::Services::Verifiablecredentials::V1::IssueRequest, ::Services::Verifiablecredentials::V1::IssueResponse
           # Sign and issue a verifiable credential from a pre-defined template.
           # This process will also add schema validation and 
-          # revocation registry entry in the credential.
+          # revocation registry values to the credential.
           rpc :IssueFromTemplate, ::Services::Verifiablecredentials::V1::IssueFromTemplateRequest, ::Services::Verifiablecredentials::V1::IssueFromTemplateResponse
           # Check credential status in the revocation registry
           rpc :CheckStatus, ::Services::Verifiablecredentials::V1::CheckStatusRequest, ::Services::Verifiablecredentials::V1::CheckStatusResponse

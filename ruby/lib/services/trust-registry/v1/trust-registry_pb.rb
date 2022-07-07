@@ -3,6 +3,8 @@
 
 require 'google/protobuf'
 
+require 'services/options/field-options_pb'
+
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("services/trust-registry/v1/trust-registry.proto", :syntax => :proto3) do
     add_message "services.trustregistry.v1.AddFrameworkRequest" do

@@ -12,7 +12,7 @@ public interface SdkTemplateOptionOrBuilder
    *
    *
    * <pre>
-   * Whether the service endpoint allows anonymous (no Oberon) authentication
+   * Whether the service endpoint allows anonymous (no auth token necessary) authentication
    * This is used by the `protoc-gen-trinsic-sdk` plugin for metadata.
    * </pre>
    *
@@ -25,7 +25,7 @@ public interface SdkTemplateOptionOrBuilder
    *
    *
    * <pre>
-   * Whether the service endpoint allows anonymous (no Oberon) authentication
+   * Whether the service endpoint allows anonymous (no auth token necessary) authentication
    * This is used by the `protoc-gen-trinsic-sdk` plugin for metadata.
    * </pre>
    *
@@ -39,7 +39,7 @@ public interface SdkTemplateOptionOrBuilder
    *
    *
    * <pre>
-   * Whether the SDK template generator should ignoroe this method. This method will
+   * Whether the SDK template generator should ignore this method. This method will
    * be wrapped manually.
    * </pre>
    *
@@ -52,7 +52,7 @@ public interface SdkTemplateOptionOrBuilder
    *
    *
    * <pre>
-   * Whether the SDK template generator should ignoroe this method. This method will
+   * Whether the SDK template generator should ignore this method. This method will
    * be wrapped manually.
    * </pre>
    *

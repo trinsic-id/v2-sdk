@@ -3,7 +3,15 @@
 
 package trinsic.services.trustregistry.v1;
 
-/** Protobuf type {@code services.trustregistry.v1.FetchDataRequest} */
+/**
+ *
+ *
+ * <pre>
+ * Not implemented.
+ * </pre>
+ *
+ * Protobuf type {@code services.trustregistry.v1.FetchDataRequest}
+ */
 public final class FetchDataRequest extends com.google.protobuf.GeneratedMessageV3
     implements
     // @@protoc_insertion_point(message_implements:services.trustregistry.v1.FetchDataRequest)
@@ -340,7 +348,15 @@ public final class FetchDataRequest extends com.google.protobuf.GeneratedMessage
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code services.trustregistry.v1.FetchDataRequest} */
+  /**
+   *
+   *
+   * <pre>
+   * Not implemented.
+   * </pre>
+   *
+   * Protobuf type {@code services.trustregistry.v1.FetchDataRequest}
+   */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
       // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.FetchDataRequest)

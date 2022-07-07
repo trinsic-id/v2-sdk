@@ -7,7 +7,7 @@ package trinsic.services.provider.v1;
  *
  *
  * <pre>
- * revoke permissions to a resource or path in the ecosystem
+ * Revoke permissions to a resource or path in the ecosystem
  * </pre>
  *
  * Protobuf type {@code services.provider.v1.RevokeAuthorizationRequest}
@@ -172,7 +172,8 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
    *
    *
    * <pre>
-   * email associted with the account
+   * Email address of account having permission revoked.
+   * Mutually exclusive with `walletId`.
    * </pre>
    *
    * <code>string email = 1;</code>
@@ -186,7 +187,8 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
    *
    *
    * <pre>
-   * email associted with the account
+   * Email address of account having permission revoked.
+   * Mutually exclusive with `walletId`.
    * </pre>
    *
    * <code>string email = 1;</code>
@@ -213,7 +215,8 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
    *
    *
    * <pre>
-   * email associted with the account
+   * Email address of account having permission revoked.
+   * Mutually exclusive with `walletId`.
    * </pre>
    *
    * <code>string email = 1;</code>
@@ -242,7 +245,8 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
    *
    *
    * <pre>
-   * wallet id of the account
+   * Wallet ID of account having permission revoked.
+   * Mutually exclusive with `email`.
    * </pre>
    *
    * <code>string walletId = 2;</code>
@@ -256,7 +260,8 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
    *
    *
    * <pre>
-   * wallet id of the account
+   * Wallet ID of account having permission revoked.
+   * Mutually exclusive with `email`.
    * </pre>
    *
    * <code>string walletId = 2;</code>
@@ -283,7 +288,8 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
    *
    *
    * <pre>
-   * wallet id of the account
+   * Wallet ID of account having permission revoked.
+   * Mutually exclusive with `email`.
    * </pre>
    *
    * <code>string walletId = 2;</code>
@@ -313,7 +319,8 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
    *
    *
    * <pre>
-   * resources are specified as a restful path: /{ecoId}/{resource type}/{resource id}. EcosystemId maybe ommited
+   * Resource string that account is losing permissions for.
+   * Resources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted.
    * </pre>
    *
    * <code>string resource = 3;</code>
@@ -336,7 +343,8 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
    *
    *
    * <pre>
-   * resources are specified as a restful path: /{ecoId}/{resource type}/{resource id}. EcosystemId maybe ommited
+   * Resource string that account is losing permissions for.
+   * Resources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted.
    * </pre>
    *
    * <code>string resource = 3;</code>
@@ -362,7 +370,7 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
    *
    *
    * <pre>
-   * action to revoke. default is "*" (all)
+   * Action to revoke. Default is "*" (all)
    * </pre>
    *
    * <code>string action = 4;</code>
@@ -385,7 +393,7 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
    *
    *
    * <pre>
-   * action to revoke. default is "*" (all)
+   * Action to revoke. Default is "*" (all)
    * </pre>
    *
    * <code>string action = 4;</code>
@@ -613,7 +621,7 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
    *
    *
    * <pre>
-   * revoke permissions to a resource or path in the ecosystem
+   * Revoke permissions to a resource or path in the ecosystem
    * </pre>
    *
    * Protobuf type {@code services.provider.v1.RevokeAuthorizationRequest}
@@ -822,7 +830,8 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * email associted with the account
+     * Email address of account having permission revoked.
+     * Mutually exclusive with `walletId`.
      * </pre>
      *
      * <code>string email = 1;</code>
@@ -837,7 +846,8 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * email associted with the account
+     * Email address of account having permission revoked.
+     * Mutually exclusive with `walletId`.
      * </pre>
      *
      * <code>string email = 1;</code>
@@ -865,7 +875,8 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * email associted with the account
+     * Email address of account having permission revoked.
+     * Mutually exclusive with `walletId`.
      * </pre>
      *
      * <code>string email = 1;</code>
@@ -893,7 +904,8 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * email associted with the account
+     * Email address of account having permission revoked.
+     * Mutually exclusive with `walletId`.
      * </pre>
      *
      * <code>string email = 1;</code>
@@ -914,7 +926,8 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * email associted with the account
+     * Email address of account having permission revoked.
+     * Mutually exclusive with `walletId`.
      * </pre>
      *
      * <code>string email = 1;</code>
@@ -933,7 +946,8 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * email associted with the account
+     * Email address of account having permission revoked.
+     * Mutually exclusive with `walletId`.
      * </pre>
      *
      * <code>string email = 1;</code>
@@ -956,7 +970,8 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * wallet id of the account
+     * Wallet ID of account having permission revoked.
+     * Mutually exclusive with `email`.
      * </pre>
      *
      * <code>string walletId = 2;</code>
@@ -971,7 +986,8 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * wallet id of the account
+     * Wallet ID of account having permission revoked.
+     * Mutually exclusive with `email`.
      * </pre>
      *
      * <code>string walletId = 2;</code>
@@ -999,7 +1015,8 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * wallet id of the account
+     * Wallet ID of account having permission revoked.
+     * Mutually exclusive with `email`.
      * </pre>
      *
      * <code>string walletId = 2;</code>
@@ -1027,7 +1044,8 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * wallet id of the account
+     * Wallet ID of account having permission revoked.
+     * Mutually exclusive with `email`.
      * </pre>
      *
      * <code>string walletId = 2;</code>
@@ -1048,7 +1066,8 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * wallet id of the account
+     * Wallet ID of account having permission revoked.
+     * Mutually exclusive with `email`.
      * </pre>
      *
      * <code>string walletId = 2;</code>
@@ -1067,7 +1086,8 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * wallet id of the account
+     * Wallet ID of account having permission revoked.
+     * Mutually exclusive with `email`.
      * </pre>
      *
      * <code>string walletId = 2;</code>
@@ -1091,7 +1111,8 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * resources are specified as a restful path: /{ecoId}/{resource type}/{resource id}. EcosystemId maybe ommited
+     * Resource string that account is losing permissions for.
+     * Resources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted.
      * </pre>
      *
      * <code>string resource = 3;</code>
@@ -1113,7 +1134,8 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * resources are specified as a restful path: /{ecoId}/{resource type}/{resource id}. EcosystemId maybe ommited
+     * Resource string that account is losing permissions for.
+     * Resources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted.
      * </pre>
      *
      * <code>string resource = 3;</code>
@@ -1135,7 +1157,8 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * resources are specified as a restful path: /{ecoId}/{resource type}/{resource id}. EcosystemId maybe ommited
+     * Resource string that account is losing permissions for.
+     * Resources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted.
      * </pre>
      *
      * <code>string resource = 3;</code>
@@ -1156,7 +1179,8 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * resources are specified as a restful path: /{ecoId}/{resource type}/{resource id}. EcosystemId maybe ommited
+     * Resource string that account is losing permissions for.
+     * Resources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted.
      * </pre>
      *
      * <code>string resource = 3;</code>
@@ -1173,7 +1197,8 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * resources are specified as a restful path: /{ecoId}/{resource type}/{resource id}. EcosystemId maybe ommited
+     * Resource string that account is losing permissions for.
+     * Resources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted.
      * </pre>
      *
      * <code>string resource = 3;</code>
@@ -1197,7 +1222,7 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * action to revoke. default is "*" (all)
+     * Action to revoke. Default is "*" (all)
      * </pre>
      *
      * <code>string action = 4;</code>
@@ -1219,7 +1244,7 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * action to revoke. default is "*" (all)
+     * Action to revoke. Default is "*" (all)
      * </pre>
      *
      * <code>string action = 4;</code>
@@ -1241,7 +1266,7 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * action to revoke. default is "*" (all)
+     * Action to revoke. Default is "*" (all)
      * </pre>
      *
      * <code>string action = 4;</code>
@@ -1262,7 +1287,7 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * action to revoke. default is "*" (all)
+     * Action to revoke. Default is "*" (all)
      * </pre>
      *
      * <code>string action = 4;</code>
@@ -1279,7 +1304,7 @@ public final class RevokeAuthorizationRequest extends com.google.protobuf.Genera
      *
      *
      * <pre>
-     * action to revoke. default is "*" (all)
+     * Action to revoke. Default is "*" (all)
      * </pre>
      *
      * <code>string action = 4;</code>

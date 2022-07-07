@@ -27,7 +27,7 @@ type VerifiableCredentialClient interface {
 	Issue(ctx context.Context, in *IssueRequest, opts ...grpc.CallOption) (*IssueResponse, error)
 	// Sign and issue a verifiable credential from a pre-defined template.
 	// This process will also add schema validation and
-	// revocation registry entry in the credential.
+	// revocation registry values to the credential.
 	IssueFromTemplate(ctx context.Context, in *IssueFromTemplateRequest, opts ...grpc.CallOption) (*IssueFromTemplateResponse, error)
 	// Check credential status in the revocation registry
 	CheckStatus(ctx context.Context, in *CheckStatusRequest, opts ...grpc.CallOption) (*CheckStatusResponse, error)
@@ -123,7 +123,7 @@ type VerifiableCredentialServer interface {
 	Issue(context.Context, *IssueRequest) (*IssueResponse, error)
 	// Sign and issue a verifiable credential from a pre-defined template.
 	// This process will also add schema validation and
-	// revocation registry entry in the credential.
+	// revocation registry values to the credential.
 	IssueFromTemplate(context.Context, *IssueFromTemplateRequest) (*IssueFromTemplateResponse, error)
 	// Check credential status in the revocation registry
 	CheckStatus(context.Context, *CheckStatusRequest) (*CheckStatusResponse, error)

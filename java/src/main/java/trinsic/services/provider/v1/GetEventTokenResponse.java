@@ -7,7 +7,7 @@ package trinsic.services.provider.v1;
  *
  *
  * <pre>
- * response message containing a token (JWT) that can be used
+ * Response message containing a token (JWT) that can be used
  * to connect directly to the message streaming architecture
  * </pre>
  *
@@ -105,7 +105,7 @@ public final class GetEventTokenResponse extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * a JWT bound to the PK provided in the request
+   * JWT bound to the public key provided in `GetEventTokenRequest`
    * </pre>
    *
    * <code>string token = 1;</code>
@@ -128,7 +128,7 @@ public final class GetEventTokenResponse extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * a JWT bound to the PK provided in the request
+   * JWT bound to the public key provided in `GetEventTokenRequest`
    * </pre>
    *
    * <code>string token = 1;</code>
@@ -311,7 +311,7 @@ public final class GetEventTokenResponse extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * response message containing a token (JWT) that can be used
+   * Response message containing a token (JWT) that can be used
    * to connect directly to the message streaming architecture
    * </pre>
    *
@@ -472,7 +472,7 @@ public final class GetEventTokenResponse extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * a JWT bound to the PK provided in the request
+     * JWT bound to the public key provided in `GetEventTokenRequest`
      * </pre>
      *
      * <code>string token = 1;</code>
@@ -494,7 +494,7 @@ public final class GetEventTokenResponse extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * a JWT bound to the PK provided in the request
+     * JWT bound to the public key provided in `GetEventTokenRequest`
      * </pre>
      *
      * <code>string token = 1;</code>
@@ -516,7 +516,7 @@ public final class GetEventTokenResponse extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * a JWT bound to the PK provided in the request
+     * JWT bound to the public key provided in `GetEventTokenRequest`
      * </pre>
      *
      * <code>string token = 1;</code>
@@ -537,7 +537,7 @@ public final class GetEventTokenResponse extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * a JWT bound to the PK provided in the request
+     * JWT bound to the public key provided in `GetEventTokenRequest`
      * </pre>
      *
      * <code>string token = 1;</code>
@@ -554,7 +554,7 @@ public final class GetEventTokenResponse extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * a JWT bound to the PK provided in the request
+     * JWT bound to the public key provided in `GetEventTokenRequest`
      * </pre>
      *
      * <code>string token = 1;</code>

@@ -9,12 +9,24 @@ public interface SearchRegistryResponseOrBuilder
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
+   * <pre>
+   * JSON string containing array of resultant objects
+   * </pre>
+   *
    * <code>string items_json = 1;</code>
    *
    * @return The itemsJson.
    */
   java.lang.String getItemsJson();
   /**
+   *
+   *
+   * <pre>
+   * JSON string containing array of resultant objects
+   * </pre>
+   *
    * <code>string items_json = 1;</code>
    *
    * @return The bytes for itemsJson.
@@ -22,6 +34,12 @@ public interface SearchRegistryResponseOrBuilder
   com.google.protobuf.ByteString getItemsJsonBytes();
 
   /**
+   *
+   *
+   * <pre>
+   * Whether more data is available to fetch for query
+   * </pre>
+   *
    * <code>bool has_more = 2;</code>
    *
    * @return The hasMore.
@@ -29,12 +47,24 @@ public interface SearchRegistryResponseOrBuilder
   boolean getHasMore();
 
   /**
+   *
+   *
+   * <pre>
+   * Token to fetch next set of results via `SearchRegistryRequest`
+   * </pre>
+   *
    * <code>string continuation_token = 4;</code>
    *
    * @return The continuationToken.
    */
   java.lang.String getContinuationToken();
   /**
+   *
+   *
+   * <pre>
+   * Token to fetch next set of results via `SearchRegistryRequest`
+   * </pre>
+   *
    * <code>string continuation_token = 4;</code>
    *
    * @return The bytes for continuationToken.

@@ -12,7 +12,7 @@ public interface LoginConfirmRequestOrBuilder
    *
    *
    * <pre>
-   * Login challenge received during the Login call
+   * Challenge received from `Login`
    * </pre>
    *
    * <code>bytes challenge = 1;</code>
@@ -25,8 +25,8 @@ public interface LoginConfirmRequestOrBuilder
    *
    *
    * <pre>
-   * Confirmation code received in email or SMS
-   * hashed using Blake3
+   * Two-factor confirmation code sent to account email or phone,
+   * hashed using Blake3. Our SDKs will handle this hashing process for you.
    * </pre>
    *
    * <code>bytes confirmation_code_hashed = 2;</code>

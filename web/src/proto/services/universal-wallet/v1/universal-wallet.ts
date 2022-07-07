@@ -651,7 +651,7 @@ export const UniversalWalletDefinition = {
       responseStream: false,
       options: {},
     },
-    /** Search the wallet using a SQL-like syntax */
+    /** Search the wallet using a SQL syntax */
     search: {
       name: "Search",
       requestType: SearchRequest,

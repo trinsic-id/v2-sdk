@@ -9,7 +9,7 @@ public enum RegistrationStatus implements com.google.protobuf.ProtocolMessageEnu
    *
    *
    * <pre>
-   * - the entity is currently authorized, as of time of the query.
+   * Member is currently authorized, as of the time of the query
    * </pre>
    *
    * <code>CURRENT = 0;</code>
@@ -19,7 +19,7 @@ public enum RegistrationStatus implements com.google.protobuf.ProtocolMessageEnu
    *
    *
    * <pre>
-   * - entity rights have expired.
+   * Member's authorization has expired
    * </pre>
    *
    * <code>EXPIRED = 1;</code>
@@ -29,7 +29,7 @@ public enum RegistrationStatus implements com.google.protobuf.ProtocolMessageEnu
    *
    *
    * <pre>
-   * - entity has voluntarily ceased Issuer role under the specific EGF.
+   * Member has voluntarily ceased Issuer role under the specific EGF
    * </pre>
    *
    * <code>TERMINATED = 2;</code>
@@ -39,13 +39,21 @@ public enum RegistrationStatus implements com.google.protobuf.ProtocolMessageEnu
    *
    *
    * <pre>
-   * - entity authority under specific EGF was terminated by the governing authority.
+   * Member authority under specific EGF was terminated by the governing authority
    * </pre>
    *
    * <code>REVOKED = 3;</code>
    */
   REVOKED(3),
-  /** <code>NOT_FOUND = 10;</code> */
+  /**
+   *
+   *
+   * <pre>
+   * Member is not associated with given credential schema in the EGF
+   * </pre>
+   *
+   * <code>NOT_FOUND = 10;</code>
+   */
   NOT_FOUND(10),
   UNRECOGNIZED(-1),
   ;
@@ -54,7 +62,7 @@ public enum RegistrationStatus implements com.google.protobuf.ProtocolMessageEnu
    *
    *
    * <pre>
-   * - the entity is currently authorized, as of time of the query.
+   * Member is currently authorized, as of the time of the query
    * </pre>
    *
    * <code>CURRENT = 0;</code>
@@ -64,7 +72,7 @@ public enum RegistrationStatus implements com.google.protobuf.ProtocolMessageEnu
    *
    *
    * <pre>
-   * - entity rights have expired.
+   * Member's authorization has expired
    * </pre>
    *
    * <code>EXPIRED = 1;</code>
@@ -74,7 +82,7 @@ public enum RegistrationStatus implements com.google.protobuf.ProtocolMessageEnu
    *
    *
    * <pre>
-   * - entity has voluntarily ceased Issuer role under the specific EGF.
+   * Member has voluntarily ceased Issuer role under the specific EGF
    * </pre>
    *
    * <code>TERMINATED = 2;</code>
@@ -84,13 +92,21 @@ public enum RegistrationStatus implements com.google.protobuf.ProtocolMessageEnu
    *
    *
    * <pre>
-   * - entity authority under specific EGF was terminated by the governing authority.
+   * Member authority under specific EGF was terminated by the governing authority
    * </pre>
    *
    * <code>REVOKED = 3;</code>
    */
   public static final int REVOKED_VALUE = 3;
-  /** <code>NOT_FOUND = 10;</code> */
+  /**
+   *
+   *
+   * <pre>
+   * Member is not associated with given credential schema in the EGF
+   * </pre>
+   *
+   * <code>NOT_FOUND = 10;</code>
+   */
   public static final int NOT_FOUND_VALUE = 10;
 
   public final int getNumber() {

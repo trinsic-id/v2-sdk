@@ -25,19 +25,6 @@ const ResponseStatus$json = const {
 /// Descriptor for `ResponseStatus`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List responseStatusDescriptor = $convert.base64Decode(
     'Cg5SZXNwb25zZVN0YXR1cxILCgdTVUNDRVNTEAASGAoUV0FMTEVUX0FDQ0VTU19ERU5JRUQQChIRCg1XQUxMRVRfRVhJU1RTEAsSEgoOSVRFTV9OT1RfRk9VTkQQFBIYChNTRVJJQUxJWkFUSU9OX0VSUk9SEMgBEhEKDVVOS05PV05fRVJST1IQZA==');
-@$core.Deprecated('Use serverConfigDescriptor instead')
-const ServerConfig$json = const {
-  '1': 'ServerConfig',
-  '2': const [
-    const {'1': 'endpoint', '3': 1, '4': 1, '5': 9, '10': 'endpoint'},
-    const {'1': 'port', '3': 2, '4': 1, '5': 5, '10': 'port'},
-    const {'1': 'use_tls', '3': 3, '4': 1, '5': 8, '10': 'useTls'},
-  ],
-};
-
-/// Descriptor for `ServerConfig`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List serverConfigDescriptor = $convert.base64Decode(
-    'CgxTZXJ2ZXJDb25maWcSGgoIZW5kcG9pbnQYASABKAlSCGVuZHBvaW50EhIKBHBvcnQYAiABKAVSBHBvcnQSFwoHdXNlX3RscxgDIAEoCFIGdXNlVGxz');
 @$core.Deprecated('Use nonceDescriptor instead')
 const Nonce$json = const {
   '1': 'Nonce',

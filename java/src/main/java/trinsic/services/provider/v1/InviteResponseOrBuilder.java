@@ -37,8 +37,7 @@ public interface InviteResponseOrBuilder
    *
    *
    * <pre>
-   * Invitation Code that must be passed with the account 'SignIn' request
-   * to correlate this user with the invitation sent.
+   * Invitation code -- must be passed back in `LoginRequest`
    * </pre>
    *
    * <code>string invitation_code = 11;</code>
@@ -50,8 +49,7 @@ public interface InviteResponseOrBuilder
    *
    *
    * <pre>
-   * Invitation Code that must be passed with the account 'SignIn' request
-   * to correlate this user with the invitation sent.
+   * Invitation code -- must be passed back in `LoginRequest`
    * </pre>
    *
    * <code>string invitation_code = 11;</code>

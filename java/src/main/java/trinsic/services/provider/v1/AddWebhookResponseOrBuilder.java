@@ -12,7 +12,7 @@ public interface AddWebhookResponseOrBuilder
    *
    *
    * <pre>
-   * Ecosystem with new webhook
+   * Ecosystem data with new webhook
    * </pre>
    *
    * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
@@ -24,7 +24,7 @@ public interface AddWebhookResponseOrBuilder
    *
    *
    * <pre>
-   * Ecosystem with new webhook
+   * Ecosystem data with new webhook
    * </pre>
    *
    * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
@@ -36,7 +36,7 @@ public interface AddWebhookResponseOrBuilder
    *
    *
    * <pre>
-   * Ecosystem with new webhook
+   * Ecosystem data with new webhook
    * </pre>
    *
    * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>

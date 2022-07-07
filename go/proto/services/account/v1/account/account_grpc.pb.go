@@ -22,11 +22,12 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AccountClient interface {
+	// Deprecated: Do not use.
 	// Sign in to an already existing account
 	SignIn(ctx context.Context, in *SignInRequest, opts ...grpc.CallOption) (*SignInResponse, error)
-	// Login to account. If account doesn't exist, new will be created
+	// Begin login flow for specified account, creating one if it does not already exist
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
-	// Confirm login step by responding to the challenge request
+	// Finalize login flow with two-factor confirmation code
 	LoginConfirm(ctx context.Context, in *LoginConfirmRequest, opts ...grpc.CallOption) (*LoginConfirmResponse, error)
 	// Get account information
 	Info(ctx context.Context, in *AccountInfoRequest, opts ...grpc.CallOption) (*AccountInfoResponse, error)
@@ -46,6 +47,7 @@ func NewAccountClient(cc grpc.ClientConnInterface) AccountClient {
 	return &accountClient{cc}
 }
 
+// Deprecated: Do not use.
 func (c *accountClient) SignIn(ctx context.Context, in *SignInRequest, opts ...grpc.CallOption) (*SignInResponse, error) {
 	out := new(SignInResponse)
 	err := c.cc.Invoke(ctx, "/services.account.v1.Account/SignIn", in, out, opts...)
@@ -113,11 +115,12 @@ func (c *accountClient) AuthorizeWebhook(ctx context.Context, in *AuthorizeWebho
 // All implementations must embed UnimplementedAccountServer
 // for forward compatibility
 type AccountServer interface {
+	// Deprecated: Do not use.
 	// Sign in to an already existing account
 	SignIn(context.Context, *SignInRequest) (*SignInResponse, error)
-	// Login to account. If account doesn't exist, new will be created
+	// Begin login flow for specified account, creating one if it does not already exist
 	Login(context.Context, *LoginRequest) (*LoginResponse, error)
-	// Confirm login step by responding to the challenge request
+	// Finalize login flow with two-factor confirmation code
 	LoginConfirm(context.Context, *LoginConfirmRequest) (*LoginConfirmResponse, error)
 	// Get account information
 	Info(context.Context, *AccountInfoRequest) (*AccountInfoResponse, error)

@@ -121,7 +121,7 @@ class VerifyProofResponse(betterproto.Message):
     """Response to `VerifyProofRequest`"""
 
     is_valid: bool = betterproto.bool_field(1)
-    """Whether or not all validations in `validation_results` passed"""
+    """Whether all validations in `validation_results` passed"""
 
     validation_messages: List[str] = betterproto.string_field(2)
     """Use `validation_results` instead"""
@@ -184,7 +184,10 @@ class UpdateStatusRequest(betterproto.Message):
     """Request to update a credential's revocation status"""
 
     credential_status_id: str = betterproto.string_field(1)
-    """Credential Status ID to update"""
+    """
+    Credential Status ID to update. This is not the same as the credential's
+    ID.
+    """
 
     revoked: bool = betterproto.bool_field(2)
     """New revocation status of credential"""
@@ -202,7 +205,9 @@ class CheckStatusRequest(betterproto.Message):
     """Request to check a credential's revocation status"""
 
     credential_status_id: str = betterproto.string_field(1)
-    """Credential Status ID to check"""
+    """
+    Credential Status ID to check. This is not the same as the credential's ID.
+    """
 
 
 @dataclass(eq=False, repr=False)

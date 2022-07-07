@@ -37,7 +37,7 @@ public interface WebhookConfigOrBuilder
    *
    *
    * <pre>
-   * Destination to post webhook calls to
+   * HTTPS URL to POST webhook calls to
    * </pre>
    *
    * <code>string destination_url = 2;</code>
@@ -49,7 +49,7 @@ public interface WebhookConfigOrBuilder
    *
    *
    * <pre>
-   * Destination to post webhook calls to
+   * HTTPS URL to POST webhook calls to
    * </pre>
    *
    * <code>string destination_url = 2;</code>
@@ -113,7 +113,7 @@ public interface WebhookConfigOrBuilder
    *
    *
    * <pre>
-   * Whether we are able to sucessfully send events to the webhook
+   * Last known status of webhook (whether or not Trinsic can successfully reach destination)
    * </pre>
    *
    * <code>string status = 5;</code>
@@ -125,7 +125,7 @@ public interface WebhookConfigOrBuilder
    *
    *
    * <pre>
-   * Whether we are able to sucessfully send events to the webhook
+   * Last known status of webhook (whether or not Trinsic can successfully reach destination)
    * </pre>
    *
    * <code>string status = 5;</code>

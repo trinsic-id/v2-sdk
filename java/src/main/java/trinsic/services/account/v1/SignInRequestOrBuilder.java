@@ -15,7 +15,8 @@ public interface SignInRequestOrBuilder
    * Account registration details
    * </pre>
    *
-   * <code>.services.account.v1.AccountDetails details = 1;</code>
+   * <code>.services.account.v1.AccountDetails details = 1 [(.services.options.optional) = true];
+   * </code>
    *
    * @return Whether the details field is set.
    */
@@ -27,7 +28,8 @@ public interface SignInRequestOrBuilder
    * Account registration details
    * </pre>
    *
-   * <code>.services.account.v1.AccountDetails details = 1;</code>
+   * <code>.services.account.v1.AccountDetails details = 1 [(.services.options.optional) = true];
+   * </code>
    *
    * @return The details.
    */
@@ -39,7 +41,8 @@ public interface SignInRequestOrBuilder
    * Account registration details
    * </pre>
    *
-   * <code>.services.account.v1.AccountDetails details = 1;</code>
+   * <code>.services.account.v1.AccountDetails details = 1 [(.services.options.optional) = true];
+   * </code>
    */
   trinsic.services.account.v1.AccountDetailsOrBuilder getDetailsOrBuilder();
 

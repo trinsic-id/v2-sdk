@@ -686,7 +686,7 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Grant authorization to ecosystem resources
+     * Grant user authorization to ecosystem resources
      * </pre>
      */
     public void grantAuthorization(
@@ -701,7 +701,7 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Revoke authorization to ecosystem resources
+     * Revoke user authorization to ecosystem resources
      * </pre>
      */
     public void revokeAuthorization(
@@ -804,7 +804,7 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Check the invitation status
+     * Check the status of an invitation
      * </pre>
      */
     public void invitationStatus(
@@ -990,7 +990,7 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Grant authorization to ecosystem resources
+     * Grant user authorization to ecosystem resources
      * </pre>
      */
     public void grantAuthorization(
@@ -1007,7 +1007,7 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Revoke authorization to ecosystem resources
+     * Revoke user authorization to ecosystem resources
      * </pre>
      */
     public void revokeAuthorization(
@@ -1122,7 +1122,7 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Check the invitation status
+     * Check the status of an invitation
      * </pre>
      */
     public void invitationStatus(
@@ -1212,7 +1212,7 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Grant authorization to ecosystem resources
+     * Grant user authorization to ecosystem resources
      * </pre>
      */
     public trinsic.services.provider.v1.GrantAuthorizationResponse grantAuthorization(
@@ -1225,7 +1225,7 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Revoke authorization to ecosystem resources
+     * Revoke user authorization to ecosystem resources
      * </pre>
      */
     public trinsic.services.provider.v1.RevokeAuthorizationResponse revokeAuthorization(
@@ -1317,7 +1317,7 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Check the invitation status
+     * Check the status of an invitation
      * </pre>
      */
     public trinsic.services.provider.v1.InvitationStatusResponse invitationStatus(
@@ -1397,7 +1397,7 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Grant authorization to ecosystem resources
+     * Grant user authorization to ecosystem resources
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
@@ -1411,7 +1411,7 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Revoke authorization to ecosystem resources
+     * Revoke user authorization to ecosystem resources
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
@@ -1510,7 +1510,7 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Check the invitation status
+     * Check the status of an invitation
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
