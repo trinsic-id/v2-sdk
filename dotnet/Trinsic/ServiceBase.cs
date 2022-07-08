@@ -36,7 +36,7 @@ public abstract class ServiceBase
 #if __IOS__
         TokenProvider = KeyChainTokenProvider.StaticInstance;
 #else
-        TokenProvider = MemoryTokenProvider.StaticInstance;
+        TokenProvider = FileTokenProvider.StaticInstance;
 #endif
     }
 

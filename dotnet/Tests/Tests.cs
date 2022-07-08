@@ -56,7 +56,7 @@ public class Tests
 
     [Fact(DisplayName = "Demo: wallet and credential sample")]
     public async Task TestWalletService() {
-        var trinsic = new TrinsicService(_options.Clone());
+        var trinsic = new TrinsicService(MemoryTokenProvider.StaticInstance, _options.Clone());
 
         var (ecosystem, authToken) = trinsic.Provider.CreateEcosystem(new());
         var ecosystemId = ecosystem.Id;
@@ -133,7 +133,7 @@ public class Tests
         var governanceUri = $"https://example.com/{Guid.NewGuid():N}";
 
         // setup
-        var trinsic = new TrinsicService(_options.Clone());
+        var trinsic = new TrinsicService(MemoryTokenProvider.StaticInstance, _options.Clone());
         var (ecosystem, authToken) = await trinsic.Provider.CreateEcosystemAsync(new());
 
         // setAuthTokenSample() {
@@ -190,7 +190,7 @@ public class Tests
     [Fact(DisplayName = "Demo: ecosystem creation and listing")]
     public async Task EcosystemTests() {
         // setup
-        var trinsic = new TrinsicService(_options.Clone());
+        var trinsic = new TrinsicService(MemoryTokenProvider.StaticInstance, _options.Clone());
 
         // test create ecosystem
         // createEcosystem() {
@@ -254,7 +254,7 @@ public class Tests
 
     [Fact]
     public async Task TestWebhooks() {
-        var trinsic = new TrinsicService(_options);
+        var trinsic = new TrinsicService(MemoryTokenProvider.StaticInstance, _options.Clone());
         var (ecosystem, authToken) = await trinsic.Provider.CreateEcosystemAsync(new());
 
         var ecosystemId = ecosystem.Id;
@@ -294,7 +294,7 @@ public class Tests
 
     [Fact]
     public async Task TestLogin() {
-        var trinsic = new TrinsicService(_options);
+        var trinsic = new TrinsicService(MemoryTokenProvider.StaticInstance, _options.Clone());
         var (ecosystem, _) = await trinsic.Provider.CreateEcosystemAsync(new());
 
         var ecosystemId = ecosystem.Id;
@@ -362,7 +362,7 @@ public class Tests
 
     [Fact]
     public async Task TestInvitationIdSet() {
-        var trinsic = new TrinsicService(_options.Clone());
+        var trinsic = new TrinsicService(MemoryTokenProvider.StaticInstance, _options.Clone());
         _ = await trinsic.Provider.CreateEcosystemAsync(new());
 
         var invitationResponse = await trinsic.Provider.InviteAsync(new());
@@ -375,7 +375,7 @@ public class Tests
 
     [Fact(Skip = "Ecosystem support not complete yet")]
     public async Task TestInviteParticipant() {
-        var trinsic = new TrinsicService(_options);
+        var trinsic = new TrinsicService(MemoryTokenProvider.StaticInstance, _options.Clone());
         var myProfile = await trinsic.Account.SignInAsync(new());
 
         trinsic.SetAuthToken(myProfile);
@@ -390,7 +390,7 @@ public class Tests
 
     [Fact]
     public async Task TestGovernanceFrameworkUriParse() {
-        var trinsic = new TrinsicService(_options);
+        var trinsic = new TrinsicService(MemoryTokenProvider.StaticInstance, _options.Clone());
         var myProfile = await trinsic.Account.SignInAsync(new());
 
         trinsic.SetAuthToken(myProfile);
