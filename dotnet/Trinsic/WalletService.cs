@@ -75,7 +75,7 @@ public class WalletService : ServiceBase
         return await Client.GetItemAsync(request, await BuildMetadataAsync(request));
     }
 
-	/// <summary>
+    /// <summary>
     /// Insert an item into the wallet
     /// </summary>	
     public InsertItemResponse InsertItem(InsertItemRequest request) {

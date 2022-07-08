@@ -161,14 +161,14 @@
             <summary>
             Sign and issue a verifiable credential from a pre-defined template.
              This process will also add schema validation and 
-             revocation registry entry in the credential.
+             revocation registry values to the credential.
             </summary>	
         </member>
         <member name="M:Trinsic.CredentialService.IssueFromTemplateAsync(Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest)">
             <summary>
             Sign and issue a verifiable credential from a pre-defined template.
              This process will also add schema validation and 
-             revocation registry entry in the credential.
+             revocation registry values to the credential.
             </summary>	
         </member>
         <member name="M:Trinsic.CredentialService.CheckStatus(Trinsic.Services.VerifiableCredentials.V1.CheckStatusRequest)">
@@ -5011,125 +5011,125 @@
         </member>
         <member name="M:Trinsic.ProviderService.UpdateEcosystem(Trinsic.Services.Provider.V1.UpdateEcosystemRequest)">
             <summary>
-                Update an existing ecosystem
-            </summary>
+            Update an existing ecosystem
+            </summary>	
         </member>
         <member name="M:Trinsic.ProviderService.UpdateEcosystemAsync(Trinsic.Services.Provider.V1.UpdateEcosystemRequest)">
             <summary>
-                Update an existing ecosystem
-            </summary>
+            Update an existing ecosystem
+            </summary>	
         </member>
         <member name="M:Trinsic.ProviderService.GrantAuthorization(Trinsic.Services.Provider.V1.GrantAuthorizationRequest)">
             <summary>
-                Grant authorization to ecosystem resources
-            </summary>
+            Grant user authorization to ecosystem resources
+            </summary>	
         </member>
         <member name="M:Trinsic.ProviderService.GrantAuthorizationAsync(Trinsic.Services.Provider.V1.GrantAuthorizationRequest)">
             <summary>
-                Grant authorization to ecosystem resources
-            </summary>
+            Grant user authorization to ecosystem resources
+            </summary>	
         </member>
         <member name="M:Trinsic.ProviderService.RevokeAuthorization(Trinsic.Services.Provider.V1.RevokeAuthorizationRequest)">
             <summary>
-                Revoke authorization to ecosystem resources
-            </summary>
+            Revoke user authorization to ecosystem resources
+            </summary>	
         </member>
         <member name="M:Trinsic.ProviderService.RevokeAuthorizationAsync(Trinsic.Services.Provider.V1.RevokeAuthorizationRequest)">
             <summary>
-                Revoke authorization to ecosystem resources
-            </summary>
+            Revoke user authorization to ecosystem resources
+            </summary>	
         </member>
         <member name="M:Trinsic.ProviderService.GetAuthorizations(Trinsic.Services.Provider.V1.GetAuthorizationsRequest)">
             <summary>
-                Retreive the list of permissions for this particular account/ecosystem
-            </summary>
+            Retreive the list of permissions for this particular account/ecosystem
+            </summary>	
         </member>
         <member name="M:Trinsic.ProviderService.GetAuthorizationsAsync(Trinsic.Services.Provider.V1.GetAuthorizationsRequest)">
             <summary>
-                Retreive the list of permissions for this particular account/ecosystem
-            </summary>
+            Retreive the list of permissions for this particular account/ecosystem
+            </summary>	
         </member>
         <member name="M:Trinsic.ProviderService.AddWebhook(Trinsic.Services.Provider.V1.AddWebhookRequest)">
             <summary>
-                Add a webhook endpoint to the ecosystem
-            </summary>
+            Add a webhook endpoint to the ecosystem
+            </summary>	
         </member>
         <member name="M:Trinsic.ProviderService.AddWebhookAsync(Trinsic.Services.Provider.V1.AddWebhookRequest)">
             <summary>
-                Add a webhook endpoint to the ecosystem
-            </summary>
+            Add a webhook endpoint to the ecosystem
+            </summary>	
         </member>
         <member name="M:Trinsic.ProviderService.DeleteWebhook(Trinsic.Services.Provider.V1.DeleteWebhookRequest)">
             <summary>
-                Delete a webhook endpoint from the ecosystem
-            </summary>
+            Delete a webhook endpoint from the ecosystem
+            </summary>	
         </member>
         <member name="M:Trinsic.ProviderService.DeleteWebhookAsync(Trinsic.Services.Provider.V1.DeleteWebhookRequest)">
             <summary>
-                Delete a webhook endpoint from the ecosystem
-            </summary>
+            Delete a webhook endpoint from the ecosystem
+            </summary>	
         </member>
         <member name="M:Trinsic.ProviderService.EcosystemInfo(Trinsic.Services.Provider.V1.EcosystemInfoRequest)">
             <summary>
-                Get ecosystem information
-            </summary>
+            Get ecosystem information
+            </summary>	
         </member>
         <member name="M:Trinsic.ProviderService.EcosystemInfoAsync(Trinsic.Services.Provider.V1.EcosystemInfoRequest)">
             <summary>
-                Get ecosystem information
-            </summary>
+            Get ecosystem information
+            </summary>	
         </member>
         <member name="M:Trinsic.ProviderService.GenerateToken(Trinsic.Services.Provider.V1.GenerateTokenRequest)">
             <summary>
-                Generates an unprotected authentication token that can be used to
-                configure server side applications
-            </summary>
+            Generates an unprotected authentication token that can be used to
+             configure server side applications
+            </summary>	
         </member>
         <member name="M:Trinsic.ProviderService.GenerateTokenAsync(Trinsic.Services.Provider.V1.GenerateTokenRequest)">
             <summary>
-                Generates an unprotected authentication token that can be used to
-                configure server side applications
-            </summary>
+            Generates an unprotected authentication token that can be used to
+             configure server side applications
+            </summary>	
         </member>
         <member name="M:Trinsic.ProviderService.Invite(Trinsic.Services.Provider.V1.InviteRequest)">
             <summary>
-                Invite a user to the ecosystem
-            </summary>
+            Invite a user to the ecosystem
+            </summary>	
         </member>
         <member name="M:Trinsic.ProviderService.InviteAsync(Trinsic.Services.Provider.V1.InviteRequest)">
             <summary>
-                Invite a user to the ecosystem
-            </summary>
+            Invite a user to the ecosystem
+            </summary>	
         </member>
         <member name="M:Trinsic.ProviderService.InvitationStatus(Trinsic.Services.Provider.V1.InvitationStatusRequest)">
             <summary>
-                Check the invitation status
-            </summary>
+            Check the status of an invitation
+            </summary>	
         </member>
         <member name="M:Trinsic.ProviderService.InvitationStatusAsync(Trinsic.Services.Provider.V1.InvitationStatusRequest)">
             <summary>
-                Check the invitation status
-            </summary>
+            Check the status of an invitation
+            </summary>	
         </member>
         <member name="M:Trinsic.ProviderService.GetOberonKey(Trinsic.Services.Provider.V1.GetOberonKeyRequest)">
             <summary>
-                Returns the public key being used to create/verify oberon tokens
-            </summary>
+            Returns the public key being used to create/verify oberon tokens
+            </summary>	
         </member>
         <member name="M:Trinsic.ProviderService.GetOberonKeyAsync(Trinsic.Services.Provider.V1.GetOberonKeyRequest)">
             <summary>
-                Returns the public key being used to create/verify oberon tokens
-            </summary>
+            Returns the public key being used to create/verify oberon tokens
+            </summary>	
         </member>
         <member name="M:Trinsic.ProviderService.GetEventToken(Trinsic.Services.Provider.V1.GetEventTokenRequest)">
             <summary>
-                Generate a signed token (JWT) that can be used to connect to the message bus
-            </summary>
+            Generate a signed token (JWT) that can be used to connect to the message bus
+            </summary>	
         </member>
         <member name="M:Trinsic.ProviderService.GetEventTokenAsync(Trinsic.Services.Provider.V1.GetEventTokenRequest)">
             <summary>
-                Generate a signed token (JWT) that can be used to connect to the message bus
-            </summary>
+            Generate a signed token (JWT) that can be used to connect to the message bus
+            </summary>	
         </member>
         <member name="M:Trinsic.OberonSecurityProvider.Base64UrlEncode(System.Byte[])">
             <summary>
@@ -5178,6 +5178,56 @@
             <summary>
             Template Service for managing credential schemas
             </summary>
+        </member>
+        <member name="M:Trinsic.TemplateService.Create(Trinsic.Services.VerifiableCredentials.Templates.V1.CreateCredentialTemplateRequest)">
+            <summary>
+            Create a credential template in the current ecosystem
+            </summary>	
+        </member>
+        <member name="M:Trinsic.TemplateService.CreateAsync(Trinsic.Services.VerifiableCredentials.Templates.V1.CreateCredentialTemplateRequest)">
+            <summary>
+            Create a credential template in the current ecosystem
+            </summary>	
+        </member>
+        <member name="M:Trinsic.TemplateService.Get(Trinsic.Services.VerifiableCredentials.Templates.V1.GetCredentialTemplateRequest)">
+            <summary>
+            Fetch a credential template by ID
+            </summary>	
+        </member>
+        <member name="M:Trinsic.TemplateService.GetAsync(Trinsic.Services.VerifiableCredentials.Templates.V1.GetCredentialTemplateRequest)">
+            <summary>
+            Fetch a credential template by ID
+            </summary>	
+        </member>
+        <member name="M:Trinsic.TemplateService.List(Trinsic.Services.VerifiableCredentials.Templates.V1.ListCredentialTemplatesRequest)">
+            <summary>
+            Search credential templates using SQL, returning strongly-typed template data
+            </summary>	
+        </member>
+        <member name="M:Trinsic.TemplateService.ListAsync(Trinsic.Services.VerifiableCredentials.Templates.V1.ListCredentialTemplatesRequest)">
+            <summary>
+            Search credential templates using SQL, returning strongly-typed template data
+            </summary>	
+        </member>
+        <member name="M:Trinsic.TemplateService.Search(Trinsic.Services.VerifiableCredentials.Templates.V1.SearchCredentialTemplatesRequest)">
+            <summary>
+            Search credential templates using SQL, returning raw JSON data
+            </summary>	
+        </member>
+        <member name="M:Trinsic.TemplateService.SearchAsync(Trinsic.Services.VerifiableCredentials.Templates.V1.SearchCredentialTemplatesRequest)">
+            <summary>
+            Search credential templates using SQL, returning raw JSON data
+            </summary>	
+        </member>
+        <member name="M:Trinsic.TemplateService.Delete(Trinsic.Services.VerifiableCredentials.Templates.V1.DeleteCredentialTemplateRequest)">
+            <summary>
+            Delete a credential template from the current ecosystem by ID
+            </summary>	
+        </member>
+        <member name="M:Trinsic.TemplateService.DeleteAsync(Trinsic.Services.VerifiableCredentials.Templates.V1.DeleteCredentialTemplateRequest)">
+            <summary>
+            Delete a credential template from the current ecosystem by ID
+            </summary>	
         </member>
         <member name="T:Trinsic.TrinsicService">
             <summary>
@@ -5229,32 +5279,62 @@
         </member>
         <member name="M:Trinsic.TrustRegistryService.AddFramework(Trinsic.Services.TrustRegistry.V1.AddFrameworkRequest)">
             <summary>
-            Adds a trust registry defintion to the ecosystem
+            Add a governance framework to the ecosystem
             </summary>	
         </member>
         <member name="M:Trinsic.TrustRegistryService.AddFrameworkAsync(Trinsic.Services.TrustRegistry.V1.AddFrameworkRequest)">
             <summary>
-            Adds a trust registry defintion to the ecosystem
+            Add a governance framework to the ecosystem
+            </summary>	
+        </member>
+        <member name="M:Trinsic.TrustRegistryService.RemoveFramework(Trinsic.Services.TrustRegistry.V1.RemoveFrameworkRequest)">
+            <summary>
+            Remove a governance framework from the ecosystem
+            </summary>	
+        </member>
+        <member name="M:Trinsic.TrustRegistryService.RemoveFrameworkAsync(Trinsic.Services.TrustRegistry.V1.RemoveFrameworkRequest)">
+            <summary>
+            Remove a governance framework from the ecosystem
+            </summary>	
+        </member>
+        <member name="M:Trinsic.TrustRegistryService.SearchRegistry(Trinsic.Services.TrustRegistry.V1.SearchRegistryRequest)">
+            <summary>
+            Search the ecosystem's governance frameworks
+            </summary>	
+        </member>
+        <member name="M:Trinsic.TrustRegistryService.SearchRegistryAsync(Trinsic.Services.TrustRegistry.V1.SearchRegistryRequest)">
+            <summary>
+            Search the ecosystem's governance frameworks
             </summary>	
         </member>
         <member name="M:Trinsic.TrustRegistryService.RegisterMember(Trinsic.Services.TrustRegistry.V1.RegisterMemberRequest)">
             <summary>
-            Registers an authoritative issuer with a credential template
+            Register an authoritative issuer for a credential schema
             </summary>	
         </member>
         <member name="M:Trinsic.TrustRegistryService.RegisterMemberAsync(Trinsic.Services.TrustRegistry.V1.RegisterMemberRequest)">
             <summary>
-            Registers an authoritative issuer with a credential template
+            Register an authoritative issuer for a credential schema
             </summary>	
         </member>
         <member name="M:Trinsic.TrustRegistryService.UnregisterMember(Trinsic.Services.TrustRegistry.V1.UnregisterMemberRequest)">
             <summary>
-            Removes an authoritative issuer with a credential template from the trust registry
+            Removes an authoritative issuer for a credential schema from the trust registry
             </summary>	
         </member>
         <member name="M:Trinsic.TrustRegistryService.UnregisterMemberAsync(Trinsic.Services.TrustRegistry.V1.UnregisterMemberRequest)">
             <summary>
-            Removes an authoritative issuer with a credential template from the trust registry
+            Removes an authoritative issuer for a credential schema from the trust registry
+            </summary>	
+        </member>
+        <member name="M:Trinsic.TrustRegistryService.GetMembershipStatus(Trinsic.Services.TrustRegistry.V1.GetMembershipStatusRequest)">
+            <summary>
+            Fetch the membership status of an issuer for a given credential schema in a trust registry
+            </summary>	
+        </member>
+        <member name="M:Trinsic.TrustRegistryService.GetMembershipStatusAsync(Trinsic.Services.TrustRegistry.V1.GetMembershipStatusRequest)">
+            <summary>
+            Fetch the membership status of an issuer for a given credential schema in a trust registry
             </summary>	
         </member>
         <member name="M:Trinsic.WalletService.SearchAsync(Trinsic.Services.UniversalWallet.V1.SearchRequest)">
