@@ -45,6 +45,9 @@ You can follow along using one of our SDKs, or use the Trinsic CLI, which implem
 === "Go"
     [Click here](/go/){target=_blank} for installation instructions for the Go SDK.
 
+=== "Ruby"
+    [Click here](/ruby/){target=_blank} for installation instructions for the Ruby SDK.
+
 ---
 
 ## Create an Ecosystem
