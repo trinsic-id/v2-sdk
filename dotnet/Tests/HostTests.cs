@@ -30,7 +30,7 @@ public class HostTests
         accountService.Options.ServerPort.Should().Be(ServiceBase.DefaultServerPort);
         accountService.Options.ServerUseTls.Should().Be(ServiceBase.DefaultServerUseTls);
         accountService.Options.AuthToken.Should().Be(string.Empty);
-        accountService.TokenProvider.Should().BeOfType<FileTokenProvider>();
+        accountService.TokenProvider.Should().BeOfType<MemoryTokenProvider>();
 
         await host.StopAsync();
     }

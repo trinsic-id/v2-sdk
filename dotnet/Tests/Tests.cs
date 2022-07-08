@@ -63,9 +63,9 @@ public class Tests
 
         // SETUP ACTORS
         // Create 3 different profiles for each participant in the scenario
-        var allison = await trinsic.Account.SignInAsync(new() { EcosystemId = ecosystemId });
-        var clinic = await trinsic.Account.SignInAsync(new() { EcosystemId = ecosystemId });
-        var airline = await trinsic.Account.SignInAsync(new() { EcosystemId = ecosystemId });
+        var allison = await trinsic.Account.SignInAsync(new() {EcosystemId = ecosystemId});
+        var clinic = await trinsic.Account.SignInAsync(new() {EcosystemId = ecosystemId});
+        var airline = await trinsic.Account.SignInAsync(new() {EcosystemId = ecosystemId});
 
         trinsic.SetAuthToken(clinic);
 
@@ -78,22 +78,21 @@ public class Tests
         var credentialJson = await File.ReadAllTextAsync(VaccinationCertificateUnsigned);
 
         // issueCredentialSample() {
-        var credential = await trinsic.Credential.IssueAsync(new() { DocumentJson = credentialJson });
+        var credential = await trinsic.Credential.IssueAsync(new() {DocumentJson = credentialJson});
         // }
 
         _testOutputHelper.WriteLine($"Credential:\n{credential.SignedDocumentJson}");
 
-        try
-        {
+        try {
             // sendCredential() {
-            var sendResponse = await trinsic.Credential.SendAsync(new() { Email = "example@trinsic.id" });
+            var sendResponse = await trinsic.Credential.SendAsync(new() {Email = "example@trinsic.id"});
             // }
         } catch { } // We expect this to fail
 
         // STORE CREDENTIAL
         trinsic.SetAuthToken(allison);
 
-        var insertItemResponse = await trinsic.Wallet.InsertItemAsync(new() { ItemJson = credential.SignedDocumentJson });
+        var insertItemResponse = await trinsic.Wallet.InsertItemAsync(new() {ItemJson = credential.SignedDocumentJson});
         var itemId = insertItemResponse.ItemId;
 
         // searchWalletBasic() {
@@ -103,7 +102,7 @@ public class Tests
         _testOutputHelper.WriteLine($"Last wallet item:\n{walletItems.Items.Last()}");
 
         // searchWalletSQL() { 
-        var walletItems2 = await trinsic.Wallet.SearchAsync(new() { Query = "SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'" });
+        var walletItems2 = await trinsic.Wallet.SearchAsync(new() {Query = "SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'"});
         // }
 
         // SHARE CREDENTIAL
@@ -125,8 +124,8 @@ public class Tests
             ProofDocumentJson = credentialProof.ProofDocumentJson
         });
 
-        _testOutputHelper.WriteLine($"Verification result: {valid.IsValid}");
-        Assert.True(valid.IsValid);
+        _testOutputHelper.WriteLine($"Verification result: {valid.ValidationResults}");
+        Assert.True(valid.ValidationResults["SignatureVerification"].IsValid);
     }
 
     [Fact(DisplayName = "Demo: trust registries")]
@@ -209,8 +208,7 @@ public class Tests
 
         // test update ecosystem
         // wrapped in try/catch as method is not yet implemented in backend.
-        try
-        {
+        try {
             // updateEcosystem() {
             var updateResult = await trinsic.Provider.UpdateEcosystemAsync(new() {
                 Description = "New ecosystem description",
@@ -234,8 +232,7 @@ public class Tests
         infoResult.Should().NotBeNull();
         //infoResult.Ecosystem.Should().Be(updateResult.Ecosystem); //TODO: UNCOMMENT WHEN updateEcosystem() TEST IS UN-CATCHED.
 
-        try
-        {
+        try {
             // inviteParticipant() {
             var inviteResponse = await trinsic.Provider.InviteAsync(new() {
                 Participant = ParticipantType.Individual,
@@ -245,15 +242,14 @@ public class Tests
                 }
             });
             // }
-        } catch (Exception) { } // This is expected as a doc sample
+        } catch(Exception) { } // This is expected as a doc sample
 
         var invitationId = "N/A";
-        try
-        {
+        try {
             // invitationStatus() {
-            var inviteStatus = await trinsic.Provider.InvitationStatusAsync(new() { InvitationId = invitationId });
+            var inviteStatus = await trinsic.Provider.InvitationStatusAsync(new() {InvitationId = invitationId});
             // }
-        } catch (Exception) { } // This is expected as a doc sample
+        } catch(Exception) { } // This is expected as a doc sample
     }
 
     [Fact]
@@ -319,14 +315,14 @@ public class Tests
 
             await Assert.ThrowsAnyAsync<RpcException>(async () => {
                 // loginConfirm() {
-                string? authToken = await trinsic.Account.LoginConfirmAsync(loginResponse.Challenge, authCode);
+                var authToken = await trinsic.Account.LoginConfirmAsync(loginResponse.Challenge, authCode);
                 // }
             });
         }
 
         {
             // loginAnonymous() {
-            string? authToken = await trinsic.Account.LoginAnonymousAsync(ecosystemId!);
+            var authToken = await trinsic.Account.LoginAnonymousAsync(ecosystemId!);
             // }
 
             authToken.Should().NotBeNullOrEmpty();
@@ -384,11 +380,11 @@ public class Tests
 
         trinsic.SetAuthToken(myProfile);
 
-        var invite = new InviteRequest { Description = "Test invitation" };
+        var invite = new InviteRequest {Description = "Test invitation"};
         var response = await trinsic.Provider.InviteAsync(invite);
         Assert.NotNull(response);
 
-        var statusResponse = await trinsic.Provider.InvitationStatusAsync(new() { InvitationId = response.InvitationId });
+        var statusResponse = await trinsic.Provider.InvitationStatusAsync(new() {InvitationId = response.InvitationId});
         Assert.NotNull(statusResponse);
     }
 
@@ -418,9 +414,9 @@ public class Tests
             Name = "An Example Credential",
             AllowAdditionalFields = false
         };
-        templateRequest.Fields.Add("firstName", new() { Description = "Given name" });
+        templateRequest.Fields.Add("firstName", new() {Description = "Given name"});
         templateRequest.Fields.Add("lastName", new());
-        templateRequest.Fields.Add("age", new() { Optional = true }); // TODO - use FieldType.NUMBER once schema validation is fixed.
+        templateRequest.Fields.Add("age", new() {Optional = true}); // TODO - use FieldType.NUMBER once schema validation is fixed.
 
         var template = await trinsic.Template.CreateAsync(templateRequest);
         // }
@@ -454,7 +450,7 @@ public class Tests
         jsonDocument.Should().Contain(x => x.Name == "credentialSubject");
 
         // insertItemWallet() {
-        var insertItemResponse = await trinsic.Wallet.InsertItemAsync(new() { ItemJson = credentialJson.DocumentJson });
+        var insertItemResponse = await trinsic.Wallet.InsertItemAsync(new() {ItemJson = credentialJson.DocumentJson});
         // }
 
         var itemId = insertItemResponse.ItemId;
@@ -472,7 +468,7 @@ public class Tests
         });
         // }
         // verifyProof() {
-        var valid = await trinsic.Credential.VerifyProofAsync(new() { ProofDocumentJson = proof.ProofDocumentJson });
+        var valid = await trinsic.Credential.VerifyProofAsync(new() {ProofDocumentJson = proof.ProofDocumentJson});
         // }
         valid.IsValid.Should().BeTrue();
 
@@ -482,32 +478,30 @@ public class Tests
             RevealDocumentJson = frame.ToString(Formatting.None)
         });
 
-        var valid2 = await trinsic.Credential.VerifyProofAsync(new() { ProofDocumentJson = proof2.ProofDocumentJson });
+        var valid2 = await trinsic.Credential.VerifyProofAsync(new() {ProofDocumentJson = proof2.ProofDocumentJson});
 
         valid2.IsValid.Should().BeTrue();
 
-        try
-        {
+        try {
             // checkCredentialStatus() {
-            var checkResponse = await trinsic.Credential.CheckStatusAsync(new() { CredentialStatusId = "" });
+            var checkResponse = await trinsic.Credential.CheckStatusAsync(new() {CredentialStatusId = ""});
             // }
         } catch { } // We expect this to fail
 
-        try
-        {
+        try {
             // updateCredentialStatus() {
-            await trinsic.Credential.UpdateStatusAsync(new() { CredentialStatusId = "", Revoked = true });
+            await trinsic.Credential.UpdateStatusAsync(new() {CredentialStatusId = "", Revoked = true});
             // }
         } catch { } // We expect this to fail
 
         // getCredentialTemplate() {
-        var getTemplateResponse = await trinsic.Template.GetAsync(new() { Id = template.Data.Id });
+        var getTemplateResponse = await trinsic.Template.GetAsync(new() {Id = template.Data.Id});
         // }
         // searchCredentialTemplate() {
-        var searchTemplateResponse = await trinsic.Template.SearchAsync(new() { Query = "SELECT * FROM c" });
+        var searchTemplateResponse = await trinsic.Template.SearchAsync(new() {Query = "SELECT * FROM c"});
         // }
         // deleteCredentialTemplate() {
-        var deleteTemplateResponse = await trinsic.Template.DeleteAsync(new() { Id = template.Data.Id });
+        var deleteTemplateResponse = await trinsic.Template.DeleteAsync(new() {Id = template.Data.Id});
         // }
     }
 

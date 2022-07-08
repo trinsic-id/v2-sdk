@@ -36,7 +36,7 @@ public abstract class ServiceBase
 #if __IOS__
         TokenProvider = KeyChainTokenProvider.StaticInstance;
 #else
-        TokenProvider = FileTokenProvider.StaticInstance;
+        TokenProvider = MemoryTokenProvider.StaticInstance;
 #endif
     }
 
@@ -72,30 +72,32 @@ public abstract class ServiceBase
     /// </summary>
     protected GrpcChannel Channel { get; }
 
+    private MetadataResponse? _okapiMetadata;
     /// <summary>
     /// The cached metadata of the Okapi library being used.
-    ///
-    /// Do not read this variable directly -- use `GetOkapiMetadata()`.
     /// </summary>
-    private MetadataResponse? CachedOkapiMetadata { get; set; } = null;
+    private MetadataResponse CachedOkapiMetadata {
+        get
+        {
+            _okapiMetadata ??= OkapiMetadata.GetMetadata();
+            return _okapiMetadata;
+        }
+    }
 
     /// <summary>
     /// Create call metadata by setting authentication and version headers
-    ///
-    /// TODO: `request` only has relevance if `authenticated` == true. Decide what to do about that.
     /// </summary>
     /// <param name="request">Protobuf request message to create headers for</param>
-    /// <param name="authenticated">If true, authentication headers will be built for request -- and exception will be thrown if no authentication token is available to do so</param>
     /// <returns></returns>
-    protected async Task<Metadata> BuildMetadataAsync(IMessage request, bool authenticated = true) {
+    protected async Task<Metadata> BuildMetadataAsync(IMessage? request = null) {
         var headers = new Metadata() {
             {"TrinsicSDKLanguage", "dotnet"},
             {"TrinsicSDKVersion", GetSdkVersion()},
-            {"TrinsicOkapiVersion", GetOkapiMetadata().Version}
+            {"TrinsicOkapiVersion", CachedOkapiMetadata.Version}
         };
 
         // If no authentication needed, return early
-        if (!authenticated)
+        if (request == null)
             return headers;
 
         // Build Authentication header
@@ -113,22 +115,19 @@ public abstract class ServiceBase
     }
 
     /// <summary>
-    /// Create call metadata by setting the required authentication and version headers
-    ///
-    /// TODO: `request` only has relevance if `authenticated` == true. Decide what to do about that.
+    /// Create call metadata by setting the required authentication and version headers for provided request
     /// </summary>
     /// <param name="request">Protobuf request message to create headers for</param>
-    /// <param name="authenticated">If true, authentication headers will be built for request -- and exception will be thrown if no authentication token is available to do so</param>
     /// <returns></returns>
-    protected Metadata BuildMetadata(IMessage request, bool authenticated = true) {
+    protected Metadata BuildMetadata(IMessage? request = null) {
         var headers = new Metadata() {
             {"TrinsicSDKLanguage", "dotnet"},
             {"TrinsicSDKVersion", GetSdkVersion()},
-            {"TrinsicOkapiVersion", GetOkapiMetadata().Version}
+            {"TrinsicOkapiVersion", CachedOkapiMetadata.Version}
         };
 
         // If no authentication needed, return early
-        if (!authenticated)
+        if (request == null)
             return headers;
 
         // Build authentication header
@@ -150,15 +149,7 @@ public abstract class ServiceBase
     /// </summary>
     /// <returns></returns>
     private string GetSdkVersion() {
-        // TODO: this is always returning `1.0.0.0` because that's what's specified in the project settings. Figure out how to get the actual version number.
+        // This will always be 1.0.0.0 on local builds, since the version number is set on the github action during publish.
         return Assembly.GetAssembly(typeof(ServiceBase))?.GetName().Version?.ToString() ?? "unknown";
-    }
-
-    /// <summary>
-    /// Returns metadata from the Okapi library, caching in-memory to avoid repeat requests
-    /// </summary>
-    /// <returns></returns>
-    private MetadataResponse GetOkapiMetadata() {
-        return CachedOkapiMetadata ??= OkapiMetadata.GetMetadata();
     }
 }

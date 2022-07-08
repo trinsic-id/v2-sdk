@@ -4997,139 +4997,139 @@
         </member>
         <member name="M:Trinsic.ProviderService.CreateEcosystemAsync(Trinsic.Services.Provider.V1.CreateEcosystemRequest)">
             <summary>
-            Create new ecosystem and assigns the authenticated user as owner
+                Create new ecosystem and assigns the authenticated user as owner
             </summary>
             <param name="request"></param>
             <returns></returns>
         </member>
         <member name="M:Trinsic.ProviderService.CreateEcosystem(Trinsic.Services.Provider.V1.CreateEcosystemRequest)">
             <summary>
-            Create new ecosystem and assigns the authenticated user as owner
+                Create new ecosystem and assigns the authenticated user as owner
             </summary>
             <param name="request"></param>
             <returns></returns>
         </member>
         <member name="M:Trinsic.ProviderService.UpdateEcosystem(Trinsic.Services.Provider.V1.UpdateEcosystemRequest)">
             <summary>
-            Update an existing ecosystem
-            </summary>	
+                Update an existing ecosystem
+            </summary>
         </member>
         <member name="M:Trinsic.ProviderService.UpdateEcosystemAsync(Trinsic.Services.Provider.V1.UpdateEcosystemRequest)">
             <summary>
-            Update an existing ecosystem
-            </summary>	
+                Update an existing ecosystem
+            </summary>
         </member>
         <member name="M:Trinsic.ProviderService.GrantAuthorization(Trinsic.Services.Provider.V1.GrantAuthorizationRequest)">
             <summary>
-            Grant authorization to ecosystem resources
-            </summary>	
+                Grant authorization to ecosystem resources
+            </summary>
         </member>
         <member name="M:Trinsic.ProviderService.GrantAuthorizationAsync(Trinsic.Services.Provider.V1.GrantAuthorizationRequest)">
             <summary>
-            Grant authorization to ecosystem resources
-            </summary>	
+                Grant authorization to ecosystem resources
+            </summary>
         </member>
         <member name="M:Trinsic.ProviderService.RevokeAuthorization(Trinsic.Services.Provider.V1.RevokeAuthorizationRequest)">
             <summary>
-            Revoke authorization to ecosystem resources
-            </summary>	
+                Revoke authorization to ecosystem resources
+            </summary>
         </member>
         <member name="M:Trinsic.ProviderService.RevokeAuthorizationAsync(Trinsic.Services.Provider.V1.RevokeAuthorizationRequest)">
             <summary>
-            Revoke authorization to ecosystem resources
-            </summary>	
+                Revoke authorization to ecosystem resources
+            </summary>
         </member>
         <member name="M:Trinsic.ProviderService.GetAuthorizations(Trinsic.Services.Provider.V1.GetAuthorizationsRequest)">
             <summary>
-            Retreive the list of permissions for this particular account/ecosystem
-            </summary>	
+                Retreive the list of permissions for this particular account/ecosystem
+            </summary>
         </member>
         <member name="M:Trinsic.ProviderService.GetAuthorizationsAsync(Trinsic.Services.Provider.V1.GetAuthorizationsRequest)">
             <summary>
-            Retreive the list of permissions for this particular account/ecosystem
-            </summary>	
+                Retreive the list of permissions for this particular account/ecosystem
+            </summary>
         </member>
         <member name="M:Trinsic.ProviderService.AddWebhook(Trinsic.Services.Provider.V1.AddWebhookRequest)">
             <summary>
-            Add a webhook endpoint to the ecosystem
-            </summary>	
+                Add a webhook endpoint to the ecosystem
+            </summary>
         </member>
         <member name="M:Trinsic.ProviderService.AddWebhookAsync(Trinsic.Services.Provider.V1.AddWebhookRequest)">
             <summary>
-            Add a webhook endpoint to the ecosystem
-            </summary>	
+                Add a webhook endpoint to the ecosystem
+            </summary>
         </member>
         <member name="M:Trinsic.ProviderService.DeleteWebhook(Trinsic.Services.Provider.V1.DeleteWebhookRequest)">
             <summary>
-            Delete a webhook endpoint from the ecosystem
-            </summary>	
+                Delete a webhook endpoint from the ecosystem
+            </summary>
         </member>
         <member name="M:Trinsic.ProviderService.DeleteWebhookAsync(Trinsic.Services.Provider.V1.DeleteWebhookRequest)">
             <summary>
-            Delete a webhook endpoint from the ecosystem
-            </summary>	
+                Delete a webhook endpoint from the ecosystem
+            </summary>
         </member>
         <member name="M:Trinsic.ProviderService.EcosystemInfo(Trinsic.Services.Provider.V1.EcosystemInfoRequest)">
             <summary>
-            Get ecosystem information
-            </summary>	
+                Get ecosystem information
+            </summary>
         </member>
         <member name="M:Trinsic.ProviderService.EcosystemInfoAsync(Trinsic.Services.Provider.V1.EcosystemInfoRequest)">
             <summary>
-            Get ecosystem information
-            </summary>	
+                Get ecosystem information
+            </summary>
         </member>
         <member name="M:Trinsic.ProviderService.GenerateToken(Trinsic.Services.Provider.V1.GenerateTokenRequest)">
             <summary>
-            Generates an unprotected authentication token that can be used to
-             configure server side applications
-            </summary>	
+                Generates an unprotected authentication token that can be used to
+                configure server side applications
+            </summary>
         </member>
         <member name="M:Trinsic.ProviderService.GenerateTokenAsync(Trinsic.Services.Provider.V1.GenerateTokenRequest)">
             <summary>
-            Generates an unprotected authentication token that can be used to
-             configure server side applications
-            </summary>	
+                Generates an unprotected authentication token that can be used to
+                configure server side applications
+            </summary>
         </member>
         <member name="M:Trinsic.ProviderService.Invite(Trinsic.Services.Provider.V1.InviteRequest)">
             <summary>
-            Invite a user to the ecosystem
-            </summary>	
+                Invite a user to the ecosystem
+            </summary>
         </member>
         <member name="M:Trinsic.ProviderService.InviteAsync(Trinsic.Services.Provider.V1.InviteRequest)">
             <summary>
-            Invite a user to the ecosystem
-            </summary>	
+                Invite a user to the ecosystem
+            </summary>
         </member>
         <member name="M:Trinsic.ProviderService.InvitationStatus(Trinsic.Services.Provider.V1.InvitationStatusRequest)">
             <summary>
-            Check the invitation status
-            </summary>	
+                Check the invitation status
+            </summary>
         </member>
         <member name="M:Trinsic.ProviderService.InvitationStatusAsync(Trinsic.Services.Provider.V1.InvitationStatusRequest)">
             <summary>
-            Check the invitation status
-            </summary>	
+                Check the invitation status
+            </summary>
         </member>
         <member name="M:Trinsic.ProviderService.GetOberonKey(Trinsic.Services.Provider.V1.GetOberonKeyRequest)">
             <summary>
-            Returns the public key being used to create/verify oberon tokens
-            </summary>	
+                Returns the public key being used to create/verify oberon tokens
+            </summary>
         </member>
         <member name="M:Trinsic.ProviderService.GetOberonKeyAsync(Trinsic.Services.Provider.V1.GetOberonKeyRequest)">
             <summary>
-            Returns the public key being used to create/verify oberon tokens
-            </summary>	
+                Returns the public key being used to create/verify oberon tokens
+            </summary>
         </member>
         <member name="M:Trinsic.ProviderService.GetEventToken(Trinsic.Services.Provider.V1.GetEventTokenRequest)">
             <summary>
-            Generate a signed token (JWT) that can be used to connect to the message bus
-            </summary>	
+                Generate a signed token (JWT) that can be used to connect to the message bus
+            </summary>
         </member>
         <member name="M:Trinsic.ProviderService.GetEventTokenAsync(Trinsic.Services.Provider.V1.GetEventTokenRequest)">
             <summary>
-            Generate a signed token (JWT) that can be used to connect to the message bus
-            </summary>	
+                Generate a signed token (JWT) that can be used to connect to the message bus
+            </summary>
         </member>
         <member name="M:Trinsic.OberonSecurityProvider.Base64UrlEncode(System.Byte[])">
             <summary>
@@ -5150,41 +5150,27 @@
             </summary>
         </member>
         <member name="P:Trinsic.ServiceBase.CachedOkapiMetadata">
-             <summary>
-             The cached metadata of the Okapi library being used.
-            
-             Do not read this variable directly -- use `GetOkapiMetadata()`.
-             </summary>
+            <summary>
+            The cached metadata of the Okapi library being used.
+            </summary>
         </member>
-        <member name="M:Trinsic.ServiceBase.BuildMetadataAsync(Google.Protobuf.IMessage,System.Boolean)">
-             <summary>
-             Create call metadata by setting authentication and version headers
-            
-             TODO: `request` only has relevance if `authenticated` == true. Decide what to do about that.
-             </summary>
-             <param name="request">Protobuf request message to create headers for</param>
-             <param name="authenticated">If true, authentication headers will be built for request -- and exception will be thrown if no authentication token is available to do so</param>
-             <returns></returns>
+        <member name="M:Trinsic.ServiceBase.BuildMetadataAsync(Google.Protobuf.IMessage)">
+            <summary>
+            Create call metadata by setting authentication and version headers
+            </summary>
+            <param name="request">Protobuf request message to create headers for</param>
+            <returns></returns>
         </member>
-        <member name="M:Trinsic.ServiceBase.BuildMetadata(Google.Protobuf.IMessage,System.Boolean)">
-             <summary>
-             Create call metadata by setting the required authentication and version headers
-            
-             TODO: `request` only has relevance if `authenticated` == true. Decide what to do about that.
-             </summary>
-             <param name="request">Protobuf request message to create headers for</param>
-             <param name="authenticated">If true, authentication headers will be built for request -- and exception will be thrown if no authentication token is available to do so</param>
-             <returns></returns>
+        <member name="M:Trinsic.ServiceBase.BuildMetadata(Google.Protobuf.IMessage)">
+            <summary>
+            Create call metadata by setting the required authentication and version headers for provided request
+            </summary>
+            <param name="request">Protobuf request message to create headers for</param>
+            <returns></returns>
         </member>
         <member name="M:Trinsic.ServiceBase.GetSdkVersion">
             <summary>
             Fetches the current version of the SDK
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Trinsic.ServiceBase.GetOkapiMetadata">
-            <summary>
-            Returns metadata from the Okapi library, caching in-memory to avoid repeat requests
             </summary>
             <returns></returns>
         </member>
