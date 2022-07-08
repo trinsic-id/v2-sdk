@@ -37,7 +37,10 @@ public class ProviderService : ServiceBase
     public async Task<(Ecosystem ecosystem, string authToken)> CreateEcosystemAsync(CreateEcosystemRequest request) {
         request.Details ??= new();
 
-        var response = await Client.CreateEcosystemAsync(request, await BuildMetadataAsync(request));
+        // Named / owned ecosystems require authentication to create
+        bool requiresAuth = !string.IsNullOrWhiteSpace(request.Name) || !string.IsNullOrWhiteSpace(request.Details?.Email);
+
+        var response = await Client.CreateEcosystemAsync(request, await BuildMetadataAsync(request, requiresAuth));
         var authToken = Base64Url.Encode(response.Profile.ToByteArray());
 
         if (!response.Profile.Protection?.Enabled ?? true)
@@ -45,6 +48,7 @@ public class ProviderService : ServiceBase
             Options.AuthToken = authToken;
             await TokenProvider.SaveAsync(authToken);
         }
+
         return (response.Ecosystem, authToken);
     }
 
@@ -56,7 +60,10 @@ public class ProviderService : ServiceBase
     public (Ecosystem ecosystem, string authToken) CreateEcosystem(CreateEcosystemRequest request) {
         request.Details ??= new();
 
-        var response = Client.CreateEcosystem(request, BuildMetadata(request));
+        // Named / owned ecosystems require authentication to create
+        bool requiresAuth = !string.IsNullOrWhiteSpace(request.Name) || !string.IsNullOrWhiteSpace(request.Details?.Email);
+
+        var response = Client.CreateEcosystem(request, BuildMetadata(request, requiresAuth));
         var authToken = Base64Url.Encode(response.Profile.ToByteArray());
 
         if (!response.Profile.Protection?.Enabled ?? true)
