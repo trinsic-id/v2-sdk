@@ -9,7 +9,7 @@ nav:
     - Introduction: index.md
     - Join the Beta: early-adopter.md
   - Learn: 
-    - Overview: learn/index.md 
+    - Overview: learn/index.md
     - Key Concepts:
       - Identity Ecosystems: learn/concepts/ecosystems.md
       - Credentials: learn/concepts/credentials.md
