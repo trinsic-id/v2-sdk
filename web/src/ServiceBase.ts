@@ -1,5 +1,4 @@
 import { AccountProfile, Nonce, ServiceOptions } from "./proto";
-import { Hashing, Oberon } from "@trinsic/okapi";
 import { Metadata } from "nice-grpc-common";
 import base64url from "base64url";
 import { grpc } from "@improbable-eng/grpc-web";
@@ -9,6 +8,7 @@ import {
   createClient,
 } from "nice-grpc-web";
 import { CompatServiceDefinition as ClientServiceDefinition } from "nice-grpc-web/lib/service-definitions";
+import { blake3HashRequest, oberonProofRequest } from "./OkapiProvider";
 
 export default abstract class ServiceBase {
   // TODO - Maybe move this into the `ServiceOptions` structure or something? This is a global flag
@@ -53,31 +53,20 @@ export default abstract class ServiceBase {
       );
     }
 
-    const requestData = request;
-    let requestHash = new Uint8Array();
-
-    if (requestData.length > 0) {
-      let hashResponse = await Hashing.blake3Hash({ data: requestData });
-      requestHash = hashResponse.digest;
-    }
+    const requestHash = await blake3HashRequest(request);
     const timestamp = Date.now();
 
     let nonce: Nonce = { timestamp: timestamp, requestHash: requestHash };
 
     const nonceUint8 = Nonce.encode(nonce).finish();
-    let proof = await Oberon.createProof({
-      data: profile.authData,
-      nonce: nonceUint8,
-      token: profile.authToken,
-      blinding: [],
-    });
+    const proof = await oberonProofRequest(profile, nonceUint8);
 
     const metadata = new Metadata();
     metadata.append(
       "authorization",
       `Oberon ` +
         `ver=1,` +
-        `proof=${base64url(Buffer.from(proof.proof))},` +
+        `proof=${base64url(Buffer.from(proof))},` +
         `data=${base64url(Buffer.from(profile.authData))},` +
         `nonce=${base64url(Buffer.from(nonceUint8))}`
     );
