@@ -1867,7 +1867,7 @@
 <div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">updateResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">provider</span><span class="p">().</span><span class="nx">updateEcosystem</span><span class="p">(</span><span class="w"></span>
 <span class="w">  </span><span class="nx">UpdateEcosystemRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
 <span class="w">    </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;New ecosystem description&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">uri</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://new-example.com&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nx">uri</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://new-example.com&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="p">})</span><span class="w"></span>
 <span class="p">);</span><span class="w"></span>
 </code></pre></div>
@@ -1932,9 +1932,9 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">infoResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">provider</span><span class="p">().</span><span class="nx">ecosystemInfo</span><span class="p">(</span><span class="w"></span>
-<span class="w">  </span><span class="nx">EcosystemInfoRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({})</span><span class="w"></span>
-<span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">infoResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="w"></span>
+<span class="w">  </span><span class="p">.</span><span class="nx">provider</span><span class="p">()</span><span class="w"></span>
+<span class="w">  </span><span class="p">.</span><span class="nx">ecosystemInfo</span><span class="p">(</span><span class="nx">EcosystemInfoRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({}));</span><span class="w"></span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">ecosystem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">infoResponse</span><span class="p">.</span><span class="nx">ecosystem</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
@@ -1989,7 +1989,7 @@
 <span class="w">  </span><span class="nx">AddWebhookRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
 <span class="w">    </span><span class="nx">destinationUrl</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/webhooks/trinsic&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nx">secret</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;my well-kept secret&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">events</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="nx">events</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span><span class="w"></span>
 <span class="w">  </span><span class="p">})</span><span class="w"></span>
 <span class="p">);</span><span class="w"></span>
 </code></pre></div>
@@ -2070,7 +2070,7 @@
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">deleteResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">provider</span><span class="p">().</span><span class="nx">deleteWebhook</span><span class="p">(</span><span class="w"></span>
 <span class="w">  </span><span class="nx">DeleteWebhookRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
-<span class="w">    </span><span class="nx">webhookId</span><span class="o">:</span><span class="w"> </span><span class="kt">webhookId</span><span class="w"></span>
+<span class="w">    </span><span class="nx">webhookId</span><span class="o">:</span><span class="w"> </span><span class="kt">webhookId</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="p">})</span><span class="w"></span>
 <span class="p">);</span><span class="w"></span>
 </code></pre></div>
