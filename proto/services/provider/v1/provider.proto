@@ -299,7 +299,9 @@ message GetAuthorizationsResponse {
 
 service Provider {
     // Create new ecosystem and assign the authenticated user as owner
-    rpc CreateEcosystem(CreateEcosystemRequest) returns (CreateEcosystemResponse);
+    rpc CreateEcosystem(CreateEcosystemRequest) returns (CreateEcosystemResponse) {
+        option (options.sdk_template_option).ignore = true;
+    }
 
     // Update an existing ecosystem
     rpc UpdateEcosystem(UpdateEcosystemRequest) returns (UpdateEcosystemResponse);

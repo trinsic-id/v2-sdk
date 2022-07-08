@@ -192,6 +192,7 @@ service Account {
 
     // Begin login flow for specified account, creating one if it does not already exist
     rpc Login               (LoginRequest)              returns (LoginResponse) {
+        option (options.sdk_template_option).ignore = true;
         option (options.sdk_template_option).anonymous = true;
     }
 
