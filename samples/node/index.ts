@@ -57,11 +57,12 @@ async function vaccineDemo() {
 
     // @ts-ignore
     trinsic.options.authToken = clinic;
-    const info = await trinsic.account().info();
+    const info = await trinsic.account().getInfo();
+    console.log(info)
 
     // Sign a credential as the clinic and send it to Allison
     const credentialJson = getVaccineCertUnsignedJSON()
-    const credential = await trinsic.credential().issueCredential({documentJson: JSON.stringify(credentialJson)});
+    const credential = await trinsic.credential().issue({documentJson: JSON.stringify(credentialJson)});
 
     // Alice stores the credential in her cloud wallet.
     // @ts-ignore

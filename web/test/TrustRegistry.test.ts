@@ -1,14 +1,13 @@
 import {
-    AccountService,
-    AddFrameworkRequest,
-    RegisterMemberRequest,
-    RegistrationStatus,
-    SignInRequest, TrinsicService,
-    TrustRegistryService,
+  AddFrameworkRequest,
+  RegisterMemberRequest,
+  RegistrationStatus,
+  SignInRequest,
+    GetMembershipStatusRequest,
+  TrinsicService,
 } from "../src";
 import { v4 as uuid } from "uuid";
 import { getTestServerOptions } from "./env";
-import { GetMembershipStatusRequest } from "../lib";
 
 const options = getTestServerOptions();
 let trinsic: TrinsicService;
@@ -16,7 +15,9 @@ let trinsic: TrinsicService;
 describe("TrustRegistryService Unit Tests", () => {
   beforeAll(async () => {
     trinsic = new TrinsicService(options);
-      options.authToken = await trinsic.account().signIn(SignInRequest.fromPartial({}));
+    options.authToken = await trinsic
+      .account()
+      .signIn(SignInRequest.fromPartial({}));
   });
 
   it("add governance framework", async () => {
@@ -31,9 +32,9 @@ describe("TrustRegistryService Unit Tests", () => {
 
   it("add governance framework - invalid uri", async () => {
     try {
-      await trinsic.trustRegistry().addFramework(
-        AddFrameworkRequest.fromPartial({})
-      );
+      await trinsic
+        .trustRegistry()
+        .addFramework(AddFrameworkRequest.fromPartial({}));
       // This is a failure case since jest doesn't have expect().toThrow()
       expect(false).toBeTruthy();
     } catch (e) {

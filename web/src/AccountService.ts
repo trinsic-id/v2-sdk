@@ -17,10 +17,10 @@ import {
   SignInRequest,
   TokenProtection,
 } from "./proto";
-import { Hashing, Oberon } from "@trinsic/okapi";
 import base64url from "base64url";
 
 import type { Client as BrowserClient } from "nice-grpc-web";
+import { blake3HashRequest, blindOberon, unblindOberon } from "./OkapiProvider";
 
 export class AccountService extends ServiceBase {
   client: BrowserClient<typeof AccountDefinition>;
@@ -43,10 +43,7 @@ export class AccountService extends ServiceBase {
     securityCode = AccountService.convertToUtf8(securityCode);
     profile = AccountService.convertToProfile(profile);
     let cloned = AccountProfile.fromPartial(profile);
-    const result = await Oberon.blindToken({
-      blinding: [securityCode],
-      token: cloned.authToken,
-    });
+    const result = await blindOberon(cloned, securityCode);
     cloned.authToken = result.token;
     cloned.protection = TokenProtection.fromPartial({
       enabled: true,
@@ -67,10 +64,7 @@ export class AccountService extends ServiceBase {
     securityCode = AccountService.convertToUtf8(securityCode);
     profile = AccountService.convertToProfile(profile);
     let cloned = AccountProfile.fromPartial(profile);
-    const result = await Oberon.unblindToken({
-      token: cloned.authToken,
-      blinding: [securityCode],
-    });
+    const result = await unblindOberon(cloned, securityCode);
     cloned.authToken = result.token;
     cloned.protection = TokenProtection.fromPartial({
       enabled: false,
@@ -127,11 +121,11 @@ export class AccountService extends ServiceBase {
 
     challenge = AccountService.convertToUtf8(challenge);
     authCode = AccountService.convertToUtf8(authCode);
-    let hashed = await Hashing.blake3Hash({ data: authCode });
+    let digest = await blake3HashRequest(authCode);
 
     let response = await this.client.loginConfirm({
       challenge: challenge,
-      confirmationCodeHashed: hashed.digest,
+      confirmationCodeHashed: digest,
     });
     if (response.profile === undefined) {
       return "";

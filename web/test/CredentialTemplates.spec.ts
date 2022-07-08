@@ -1,4 +1,4 @@
-import {AccountService, ServiceOptions, TrinsicService} from "../src";
+import { ServiceOptions, TrinsicService } from "../src";
 // @ts-ignore
 import templateCertFrame from "./data/credential-template-frame.json";
 import { getTestServerOptions, setTestTimeout } from "./env";
@@ -9,12 +9,8 @@ import {
   verifyCredential,
 } from "./CredentialTemplateShared";
 
-const {
-    nameField,
-  numberOfBags,
-  dateOfBirth,
-  isVaccinated,
-} = createRequiredTestObjects();
+const { nameField, numberOfBags, dateOfBirth, isVaccinated } =
+  createRequiredTestObjects();
 
 let options: ServiceOptions = getTestServerOptions();
 let trinsic: TrinsicService;

@@ -1,19 +1,18 @@
 import { AccountProfile, Nonce, ServiceOptions } from "./proto";
-import { Hashing, Oberon } from "@trinsic/okapi";
 import { Metadata } from "nice-grpc-common";
-import { fromUint8Array, toUint8Array } from "js-base64";
+import base64url from "base64url";
 import { grpc } from "@improbable-eng/grpc-web";
-// These imports are used by require directives below, but commented out to prevent webpack from complaining as much.
-// Ideally, we can configure webpack to ignore these packages?
-// import { NodeHttpTransport } from "@improbable-eng/grpc-web-node-http-transport";
-// import type { CompatServiceDefinition as ServerServiceDefinition } from "nice-grpc/lib/service-definitions";
-// import type { Client as ServerClient } from "nice-grpc";
-import type { CompatServiceDefinition as ClientServiceDefinition } from "nice-grpc-web/lib/service-definitions";
-import type { Client as BrowserClient } from "nice-grpc-web";
+import {
+  Client as BrowserClient,
+  createChannel,
+  createClient,
+} from "nice-grpc-web";
+import { CompatServiceDefinition as ClientServiceDefinition } from "nice-grpc-web/lib/service-definitions";
+import { blake3HashRequest, oberonProofRequest } from "./OkapiProvider";
 
 export default abstract class ServiceBase {
   // TODO - Maybe move this into the `ServiceOptions` structure or something? This is a global flag
-  public static useNodeHttpTransport: boolean = false;
+  // public static useNodeHttpTransport: boolean = false;
   options: ServiceOptions;
   address: string;
 
@@ -45,47 +44,38 @@ export default abstract class ServiceBase {
       throw new Error("auth token must be set");
     }
 
-    const profile = AccountProfile.decode(toUint8Array(this.options.authToken));
+    const profile = AccountProfile.decode(
+      base64url.toBuffer(this.options.authToken)
+    );
     if (profile.protection?.enabled) {
       throw new Error(
         "profile is protected; you must use security code to remove the protection first"
       );
     }
 
-    const requestData = request;
-    let requestHash = new Uint8Array();
-
-    if (requestData.length > 0) {
-      let hashResponse = await Hashing.blake3Hash({ data: requestData });
-      requestHash = hashResponse.digest;
-    }
+    const requestHash = await blake3HashRequest(request);
     const timestamp = Date.now();
 
     let nonce: Nonce = { timestamp: timestamp, requestHash: requestHash };
 
     const nonceUint8 = Nonce.encode(nonce).finish();
-    let proof = await Oberon.createProof({
-      data: profile.authData,
-      nonce: nonceUint8,
-      token: profile.authToken,
-      blinding: [],
-    });
+    const proof = await oberonProofRequest(profile, nonceUint8);
 
     const metadata = new Metadata();
     metadata.append(
       "authorization",
       `Oberon ` +
         `ver=1,` +
-        `proof=${fromUint8Array(proof.proof, true)},` +
-        `data=${fromUint8Array(profile.authData, true)},` +
-        `nonce=${fromUint8Array(nonceUint8, true)}`
+        `proof=${base64url(Buffer.from(proof))},` +
+        `data=${base64url(Buffer.from(profile.authData))},` +
+        `nonce=${base64url(Buffer.from(nonceUint8))}`
     );
 
     return metadata;
   }
 
   protected setAuthToken(token: string) {
-      this.options.authToken = token;
+    this.options.authToken = token;
   }
 
   protected transportFactory(): grpc.TransportFactory | undefined {
@@ -103,18 +93,18 @@ export default abstract class ServiceBase {
     definition: ClientService
   ): BrowserClient<ClientService> {
     // ServerClient<ServerService> | BrowserClient<ClientService>
-    if (!ServiceBase.isNode() || ServiceBase.useNodeHttpTransport) {
-      let clientMod = require("nice-grpc-web");
-      return clientMod.createClient(
-        definition as ClientService,
-        clientMod.createChannel(this.address, this.transportFactory())
-      );
-    } else {
-      let serverMod = require("nice-grpc");
-      return serverMod.createClient(
-        definition,
-        serverMod.createChannel(this.address)
-      );
-    }
+    // if (!ServiceBase.isNode() || ServiceBase.useNodeHttpTransport) {
+    //   let clientMod = require("nice-grpc-web");
+    return createClient(
+      definition as ClientService,
+      createChannel(this.address, this.transportFactory())
+    );
+    // } else {
+    //   let serverMod = require("nice-grpc");
+    //   return serverMod.createClient(
+    //     definition,
+    //     serverMod.createChannel(this.address)
+    //   );
+    // }
   }
 }

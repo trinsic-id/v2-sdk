@@ -1,10 +1,4 @@
-import {
-    AccountService,
-    CredentialService,
-    IssueRequest,
-    IssueResponse,
-    ServiceOptions, TrinsicService,
-} from "../src";
+import { IssueRequest, ServiceOptions, TrinsicService } from "../src";
 // @ts-ignore
 import vaccineCertUnsigned from "./data/vaccination-certificate-unsigned.json";
 import { getTestServerOptions, setTestTimeout } from "./env";
@@ -30,9 +24,9 @@ describe("CredentialService Unit Tests", () => {
     let credentialJSON = JSON.stringify(vaccineCert);
 
     // issueCredential() {
-    const issueResponse = await trinsic.credential().issue(
-      IssueRequest.fromPartial({ documentJson: credentialJSON })
-    );
+    const issueResponse = await trinsic
+      .credential()
+      .issue(IssueRequest.fromPartial({ documentJson: credentialJSON }));
     // }
 
     expect(issueResponse?.signedDocumentJson).not.toBeNull();

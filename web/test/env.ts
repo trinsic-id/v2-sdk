@@ -10,9 +10,9 @@ export function getTestServerOptions(): ServiceOptions {
   if (!ServiceBase.isNode()) return defaults;
 
   // Use environment variables for which node transport protocol we need
-  const useNodeHttp =
-    (process.env.TEST_SERVER_NODE_PROTOCOL || "false") == "true";
-  ServiceBase.useNodeHttpTransport = useNodeHttp;
+  // const useNodeHttp =
+  //   (process.env.TEST_SERVER_NODE_PROTOCOL || "false") == "true";
+  // ServiceBase.useNodeHttpTransport = useNodeHttp;
 
   const endpoint = process.env.TEST_SERVER_ENDPOINT || defaults.serverEndpoint;
   const port: number = +(process.env.TEST_SERVER_PORT || defaults.serverPort);

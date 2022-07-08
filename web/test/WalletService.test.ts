@@ -44,10 +44,12 @@ describe("WalletService Unit Tests", () => {
   });
 
   it("Demo: create wallet, set profile, search records, issue credential", async () => {
+      trinsic.options = clinic;
     let issueResponse = await trinsic.credential().issue({
       documentJson: getVaccineCertUnsignedJSON(),
     });
 
+    trinsic.options = allison;
     // insertItemWallet() {
     let insertItemResponse = await trinsic.wallet().insertItem(
       InsertItemRequest.fromPartial({
@@ -92,7 +94,7 @@ describe("WalletService Unit Tests", () => {
     });
     // }
 
-    expect(verifyResponse.isValid).toBeTruthy();
+    expect(verifyResponse.validationResults['SignatureVerification'].isValid).toBeTruthy();
   });
 
   it("Demo: template management and credential issuance from template", async () => {

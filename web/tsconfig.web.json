@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "es2020",
+  },
+  "include": [
+    "./**/*.ts"
+  ],
+  "exclude": ["node_modules", "lib", "test"]
+}
