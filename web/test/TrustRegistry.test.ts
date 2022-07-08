@@ -3,11 +3,11 @@ import {
   RegisterMemberRequest,
   RegistrationStatus,
   SignInRequest,
+    GetMembershipStatusRequest,
   TrinsicService,
 } from "../src";
 import { v4 as uuid } from "uuid";
 import { getTestServerOptions } from "./env";
-import { GetMembershipStatusRequest } from "../lib";
 
 const options = getTestServerOptions();
 let trinsic: TrinsicService;

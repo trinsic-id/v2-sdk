@@ -65,12 +65,15 @@ module.exports = async (config) => {
                         exclude: /node_modules/,
                         loader: "ts-loader",
                         options: {
-                            configFile: 'tsconfig.json'
+                            configFile: 'tsconfig.web.json'
                         }
                     }
                 ],
             },
             resolve: {
+                alias: {
+                    ["@trinsic-id/okapi-node"]: "@trinsic-id/okapi-web"
+                },
                 extensions: [".ts", ".js"],
                 fallback: {
                     buffer: require.resolve("buffer")

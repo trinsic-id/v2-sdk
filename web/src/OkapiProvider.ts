@@ -1,6 +1,7 @@
 // TODO - Include this only for node
 import { Hashing, Oberon } from "@trinsic/okapi-node";
 import { AccountProfile } from "./proto/services/account/v1/account";
+// TODO - Include something else only for web
 
 export async function blake3HashRequest(
   requestData: Uint8Array
@@ -36,4 +37,3 @@ export async function blindOberon(cloned: AccountProfile, securityCode: Uint8Arr
       blinding: [securityCode],
     });
 }
-// TODO - Include something else only for web
