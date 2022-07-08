@@ -44,9 +44,9 @@ You can follow along using one of our SDKs, or use the Trinsic CLI, which implem
 
 === "Go"
     [Click here](/go/){target=_blank} for installation instructions for the Go SDK.
-   
+
 === "Ruby"
-    [Click here](/ruby/){target=_blank} for installation instructions for the Ruby   SDK.
+    [Click here](/ruby/){target=_blank} for installation instructions for the Ruby SDK.
 
 ---
 
@@ -56,7 +56,11 @@ The first step is to create an [ecosystem](/learn/concepts/ecosystems/), within 
 
 === "Trinsic CLI"
     ```
+    # First, create an ecosystem...
     trinsic provider create-ecosystem
+
+    #... then, configure the CLI to use it for future logins
+    trinsic config --default-ecosystem {ECOSYSTEM_ID}
     ```
     
 === "Typescript"
@@ -103,73 +107,6 @@ The first step is to create an [ecosystem](/learn/concepts/ecosystems/), within 
 
 The response to this call contains the name and ID of your newly-created ecosystem; copy either of these down.
 
-### Configure SDK for Created Ecosystem
-
-Once we've created our ecosystem, we need to configure our SDK client (or CLI) to use it as the default ecosystem for all service calls in the rest of the walkthrough.
-
-=== "Trinsic CLI"
-    ```
-    trinsic config --default-ecosystem "{ECOSYSTEM_NAME_OR_ID}"
-    ```
-    
-=== "Typescript"
-    ```typescript
-    // Either configure defaultEcosystem during instantiation of an SDK service...
-    const options = ServiceOptions.fromPartial({
-        defaultEcosystem: "{ECOSYSTEM_NAME_OR_ID}"
-    });
-
-    const providerService = new ProviderService(options); 
-
-    //...or after instantiation
-    providerService.options.defaultEcosystem = "{ECOSYSTEM_NAME_OR_ID}";
-    ```
-
-=== "C#"
-    ```csharp
-    // Either configure DefaultEcosystem during instantiation of an SDK service...
-    var providerService = new ProviderService(new()
-    {
-        DefaultEcosystem = "{ECOSYSTEM_NAME_OR_ID}"
-    });
-
-    //...or after instantiation
-    providerService.Options.DefaultEcosystem = "{ECOSYSTEM_NAME_OR_ID}";
-    ```
-
-=== "Python"
-    ```python
-    from trinsic.trinsic_util import trinsic_config
-
-    # Either configure default_ecosystem during instantiation of an SDK service...
-    config = trinsic_config()
-    config.default_ecosystem = "{ECOSYSTEM_NAME_OR_ID}"
-    provider_service = ProviderService(server_config=config)
-
-    # ...or after instantiation
-    provider_service.service_options.default_ecosystem = "{ECOSYSTEM_NAME_OR_ID}"
-    ```
-
-=== "Java"
-    ```java
-    var options = TrinsicUtilities.getTrinsicServiceOptions();
-    options = options
-              .toBuilder()
-              .setDefaultEcosystem("ECOSYSTEM_ID_OR_NAME")
-              .build();
-    var accountService = new AccountService(options);
-    ```
-
-=== "Go"
-    ```go
-    ///Either configure DefaultEcosystem during instantiation of an SDK service...
-    opts, _ := sdk.NewServiceOptions()
-    providerService, _ := sdk.NewProviderService(opts)
-
-    //...or after instantiation
-    providerService.options.ServiceOptions.DefaultEcosystem = "{ECOSYSTEM_NAME_OR_ID}"
-
-    ```
 
 !!! info "Further Reading: Ecosystems"
 
