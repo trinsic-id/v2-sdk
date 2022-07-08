@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es2017",
-    "module": "ES2022",
+    "module": "commonjs",
     "composite": true,
     "outDir": "dist",
     "sourceMap": true,

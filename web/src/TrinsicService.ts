@@ -23,42 +23,42 @@ export class TrinsicService extends ServiceBase {
   public account(): AccountService {
       this._account =
         this._account || new AccountService(this.options);
-
+      this._account.options = this.options;
       return this._account!;
   }
 
     public credential(): CredentialService {
         this._credential =
             this._credential || new CredentialService(this.options);
-
+        this._credential.options = this.options;
         return this._credential!;
     }
 
     public provider(): ProviderService {
         this._provider =
             this._provider || new ProviderService(this.options);
-
+        this._provider.options = this.options;
         return this._provider!;
     }
 
     public template(): TemplateService {
         this._template =
             this._template || new TemplateService(this.options);
-
+        this._template.options = this.options;
         return this._template!;
     }
 
     public trustRegistry(): TrustRegistryService {
         this._trustRegistry =
             this._trustRegistry || new TrustRegistryService(this.options);
-
+        this._trustRegistry.options = this.options;
         return this._trustRegistry!;
     }
 
     public wallet(): WalletService {
         this._wallet =
             this._wallet || new WalletService(this.options);
-
+        this._wallet.options = this.options;
         return this._wallet!;
     }
 }

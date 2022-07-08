@@ -1,15 +1,17 @@
 import {
-  CreateCredentialTemplateRequest,
-  CreateEcosystemRequest,
-  CreateProofRequest,
-  FieldType,
-  InsertItemRequest,
-  IssueFromTemplateRequest,
-  TemplateField,
-  TrinsicService,
+    AccountProfile,
+    CreateCredentialTemplateRequest,
+    CreateEcosystemRequest,
+    CreateProofRequest,
+    FieldType,
+    InsertItemRequest,
+    IssueFromTemplateRequest,
+    TemplateField,
+    TrinsicService,
 } from "../src";
 import { getTestServerOptions, setTestTimeout } from "./env";
 import { v4 as uuid } from "uuid";
+import base64url from "base64url";
 
 let options = getTestServerOptions();
 
@@ -58,22 +60,6 @@ describe("wallet service tests", () => {
     let searchResponse = await trinsic.wallet().search();
     expect(searchResponse).not.toBeNull();
     expect(searchResponse.items.length).toBeGreaterThan(0);
-
-    let proof = await trinsic.credential().createProof(
-      CreateProofRequest.fromPartial({
-        itemId: insertResponse.itemId,
-        revealDocumentJson: JSON.stringify({
-          "@context": "https://w3id.org/security/v3-unstable",
-        }),
-      })
-    );
-    expect(proof).not.toBeNull();
-
-    let verifyResponse = await trinsic.credential().verifyProof({
-      proofDocumentJson: proof.proofDocumentJson,
-    });
-    expect(verifyResponse).not.toBeNull();
-    expect(verifyResponse.isValid).toBeTruthy();
   });
 
   it("Demo: template management and credential issuance from template", async () => {

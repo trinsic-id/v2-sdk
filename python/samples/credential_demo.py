@@ -79,8 +79,8 @@ async def credential_demo():
     )
     # }
     valid = verify_result.is_valid
-    print(f"Verification result: {valid}")
-    assert valid is True
+    print(f"Verification result: {verify_result}")
+    assert verify_result.validation_results['SignatureVerification'].is_valid
 
 
 if __name__ == "__main__":
