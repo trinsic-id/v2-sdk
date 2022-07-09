@@ -32,7 +32,7 @@ class ServiceBase {
     throw UnsupportedError("Closing the channel not yet supported");
   }
 
-  CallOptions buildMetadata($pb.GeneratedMessage? request) {
+  CallOptions buildMetadata({$pb.GeneratedMessage? request}) {
     var metadata = <String, String>{};
     metadata['TrinsicOkapiVersion'] = okapi.Metadata.getMetadata().version;
     metadata['TrinsicSDKLanguage'] = "dart";
