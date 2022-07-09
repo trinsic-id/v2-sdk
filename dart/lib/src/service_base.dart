@@ -12,42 +12,6 @@ import 'package:trinsic_dart/src/proto/services/account/v1/account.pb.dart';
 import 'package:trinsic_dart/src/proto/services/common/v1/common.pb.dart';
 import 'package:trinsic_dart/src/trinsic_util.dart';
 
-class MetadataInterceptor extends ClientInterceptor {
-  static const skipRoutes = [
-    "/services.account.v1.Account/SignIn",
-    "/services.provider.v1.Account/Login",
-    "/services.provider.v1.Account/LoginConfirm",
-    "/services.provider.v1.Provider/CreateEcosystem",
-    "/services.provider.v1.Provider/GetOberonKey",
-  ];
-  late ServiceBase serviceContext;
-  MetadataInterceptor(ServiceBase base) {
-    serviceContext = base;
-  }
-
-  FutureOr<void> addMetadataProvider(Map<String, String> metadata, String uri,
-      $pb.GeneratedMessage request) async {}
-
-  @override
-  ResponseFuture<R> interceptUnary<Q, R>(
-      ClientMethod<Q, R> method, Q request, CallOptions options, invoker) {
-    FutureOr<void> _provider(Map<String, String> metadata, String uri) async {
-      var authenticateCall =
-          (options.metadata['authenticateCall']?.toLowerCase() ?? "false") !=
-              "false";
-      var buildMetadata = !skipRoutes.any((element) => element == method.path);
-      buildMetadata = buildMetadata || authenticateCall;
-      if (buildMetadata) {
-        metadata['authorization'] =
-            serviceContext.buildMetadata(request as $pb.GeneratedMessage);
-      }
-    }
-
-    return super.interceptUnary(method, request,
-        options.mergedWith(CallOptions(providers: [_provider])), invoker);
-  }
-}
-
 class ServiceBase {
   late ServiceOptions serviceOptions;
   final ISecurityProvider _securityProvider = OberonSecurityProvider();
@@ -68,15 +32,24 @@ class ServiceBase {
     throw UnsupportedError("Closing the channel not yet supported");
   }
 
-  String buildMetadata($pb.GeneratedMessage request) {
-    if (serviceOptions.authToken == "") {
-      throw Exception(
-          "cannot call authenticated endpoint: auth token must be set in service options");
+  CallOptions buildMetadata($pb.GeneratedMessage? request) {
+    var metadata = <String, String>{};
+    metadata['TrinsicOkapiVersion'] = okapi.Metadata.getMetadata().version;
+    metadata['TrinsicSDKLanguage'] = "dart";
+    // TODO - embed a constant in this module to specify the version explicitly.
+    metadata['TrinsicSDKVersion'] = "unknown";
+
+    if (request != null) {
+      if (serviceOptions.authToken == "") {
+        throw Exception(
+            "cannot call authenticated endpoint: auth token must be set in service options");
+      }
+      metadata['authorization'] = _securityProvider.getAuthHeader(
+          AccountProfile.fromBuffer(
+              Base64Decoder().convert(serviceOptions.authToken)),
+          request);
     }
-    return _securityProvider.getAuthHeader(
-        AccountProfile.fromBuffer(
-            Base64Decoder().convert(serviceOptions.authToken)),
-        request);
+    return CallOptions(metadata: metadata);
   }
 
   void setAuthToken(String authToken) {
