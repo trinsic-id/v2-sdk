@@ -1,11 +1,13 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 using Grpc.Core;
 using Google.Protobuf;
 using Trinsic.Services.Common.V1;
 using Trinsic.Services.Account.V1;
 using System.Threading.Tasks;
 using Grpc.Net.Client;
+using Okapi.Metadata;
 using Trinsic.Sdk.Options.V1;
 #if __BROWSER__
 using System.Net.Http;
@@ -70,47 +72,84 @@ public abstract class ServiceBase
     /// </summary>
     protected GrpcChannel Channel { get; }
 
+    private MetadataResponse? _okapiMetadata;
     /// <summary>
-    /// Create call metadata by setting the required authentication headers
+    /// The cached metadata of the Okapi library being used.
     /// </summary>
+    private MetadataResponse CachedOkapiMetadata {
+        get
+        {
+            _okapiMetadata ??= OkapiMetadata.GetMetadata();
+            return _okapiMetadata;
+        }
+    }
+
+    /// <summary>
+    /// Create call metadata by setting authentication and version headers
+    /// </summary>
+    /// <param name="request">Protobuf request message to create headers for</param>
     /// <returns></returns>
-    protected async Task<Metadata> BuildMetadataAsync(IMessage request) {
+    protected async Task<Metadata> BuildMetadataAsync(IMessage? request = null) {
+        var headers = new Metadata() {
+            {"TrinsicSDKLanguage", "dotnet"},
+            {"TrinsicSDKVersion", GetSdkVersion()},
+            {"TrinsicOkapiVersion", CachedOkapiMetadata.Version}
+        };
+
+        // If no authentication needed, return early
+        if (request == null)
+            return headers;
+
+        // Build Authentication header
         var authToken = string.IsNullOrWhiteSpace(Options.AuthToken)
             ? await TokenProvider.GetAsync()
             : Options.AuthToken;
 
-        // Return empty metadata if no auth token
         if (authToken is null)
-        {
-            return new();
-        }
+            throw new("Cannot call authenticated endpoint before signing in");
 
         var profile = AccountProfile.Parser.ParseFrom(Base64Url.DecodeBytes(authToken));
 
-        return new() {
-            { "Authorization", await _securityProvider.GetAuthHeaderAsync(profile, request) }
-        };
+        headers.Add("Authorization", await _securityProvider.GetAuthHeaderAsync(profile, request));
+        return headers;
     }
 
     /// <summary>
-    /// Create call metadata by setting the required authentication headers
+    /// Create call metadata by setting the required authentication and version headers for provided request
     /// </summary>
+    /// <param name="request">Protobuf request message to create headers for</param>
     /// <returns></returns>
-    protected Metadata BuildMetadata(IMessage request) {
+    protected Metadata BuildMetadata(IMessage? request = null) {
+        var headers = new Metadata() {
+            {"TrinsicSDKLanguage", "dotnet"},
+            {"TrinsicSDKVersion", GetSdkVersion()},
+            {"TrinsicOkapiVersion", CachedOkapiMetadata.Version}
+        };
+
+        // If no authentication needed, return early
+        if (request == null)
+            return headers;
+
+        // Build authentication header
         var authToken = string.IsNullOrWhiteSpace(Options.AuthToken)
             ? TokenProvider.Get()
             : Options.AuthToken;
-
-        // Return empty metadata if no auth token
+        
         if (authToken is null)
-        {
-            return new();
-        }
+            throw new("Cannot call authenticated endpoint before signing in");
 
         var profile = AccountProfile.Parser.ParseFrom(Base64Url.DecodeBytes(authToken));
 
-        return new() {
-            { "Authorization", _securityProvider.GetAuthHeader(profile, request) }
-        };
+        headers.Add("Authorization", _securityProvider.GetAuthHeader(profile, request));
+        return headers;
+    }
+
+    /// <summary>
+    /// Fetches the current version of the SDK
+    /// </summary>
+    /// <returns></returns>
+    private string GetSdkVersion() {
+        // This will always be 1.0.0.0 on local builds, since the version number is set on the github action during publish.
+        return Assembly.GetAssembly(typeof(ServiceBase))?.GetName().Version?.ToString() ?? "unknown";
     }
 }

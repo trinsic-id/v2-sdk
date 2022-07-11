@@ -51,7 +51,7 @@ public class CredentialService : ServiceBase
 	/// <summary>
     /// Sign and issue a verifiable credential from a pre-defined template.
     ///  This process will also add schema validation and 
-    ///  revocation registry entry in the credential.
+    ///  revocation registry values to the credential.
     /// </summary>	
     public IssueFromTemplateResponse IssueFromTemplate(IssueFromTemplateRequest request) {
         return Client.IssueFromTemplate(request, BuildMetadata(request));
@@ -60,7 +60,7 @@ public class CredentialService : ServiceBase
 	/// <summary>
     /// Sign and issue a verifiable credential from a pre-defined template.
     ///  This process will also add schema validation and 
-    ///  revocation registry entry in the credential.
+    ///  revocation registry values to the credential.
     /// </summary>	
     public async Task<IssueFromTemplateResponse> IssueFromTemplateAsync(IssueFromTemplateRequest request) {
         return await Client.IssueFromTemplateAsync(request, await BuildMetadataAsync(request));

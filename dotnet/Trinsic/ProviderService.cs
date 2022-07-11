@@ -30,37 +30,42 @@ public class ProviderService : ServiceBase
     private Provider.ProviderClient Client { get; }
 
     /// <summary>
-    /// Create new ecosystem and assigns the authenticated user as owner
+    ///     Create new ecosystem and assigns the authenticated user as owner
     /// </summary>
     /// <param name="request"></param>
     /// <returns></returns>
     public async Task<(Ecosystem ecosystem, string authToken)> CreateEcosystemAsync(CreateEcosystemRequest request) {
         request.Details ??= new();
 
-        var response = await Client.CreateEcosystemAsync(request, await BuildMetadataAsync(request));
+        // Named / owned ecosystems require authentication to create
+        var requiresAuth = !string.IsNullOrWhiteSpace(request.Name) || !string.IsNullOrWhiteSpace(request.Details?.Email);
+        var metadata = requiresAuth ? await BuildMetadataAsync(request) : await BuildMetadataAsync();
+        var response = await Client.CreateEcosystemAsync(request, metadata);
         var authToken = Base64Url.Encode(response.Profile.ToByteArray());
 
-        if (!response.Profile.Protection?.Enabled ?? true)
-        {
+        if (!response.Profile.Protection?.Enabled ?? true) {
             Options.AuthToken = authToken;
             await TokenProvider.SaveAsync(authToken);
         }
+
         return (response.Ecosystem, authToken);
     }
 
     /// <summary>
-    /// Create new ecosystem and assigns the authenticated user as owner
+    ///     Create new ecosystem and assigns the authenticated user as owner
     /// </summary>
     /// <param name="request"></param>
     /// <returns></returns>
     public (Ecosystem ecosystem, string authToken) CreateEcosystem(CreateEcosystemRequest request) {
         request.Details ??= new();
 
-        var response = Client.CreateEcosystem(request, BuildMetadata(request));
+        // Named / owned ecosystems require authentication to create
+        var requiresAuth = !string.IsNullOrWhiteSpace(request.Name) || !string.IsNullOrWhiteSpace(request.Details?.Email);
+        var metadata = requiresAuth ? BuildMetadata(request) : BuildMetadata();
+        var response = Client.CreateEcosystem(request, metadata);
         var authToken = Base64Url.Encode(response.Profile.ToByteArray());
 
-        if (!response.Profile.Protection?.Enabled ?? true)
-        {
+        if (!response.Profile.Protection?.Enabled ?? true) {
             Options.AuthToken = authToken;
             TokenProvider.Save(authToken);
         }
@@ -84,28 +89,28 @@ public class ProviderService : ServiceBase
     }
 
 	/// <summary>
-    /// Grant authorization to ecosystem resources
+    /// Grant user authorization to ecosystem resources
     /// </summary>	
     public GrantAuthorizationResponse GrantAuthorization(GrantAuthorizationRequest request) {
         return Client.GrantAuthorization(request, BuildMetadata(request));
     }
 	
 	/// <summary>
-    /// Grant authorization to ecosystem resources
+    /// Grant user authorization to ecosystem resources
     /// </summary>	
     public async Task<GrantAuthorizationResponse> GrantAuthorizationAsync(GrantAuthorizationRequest request) {
         return await Client.GrantAuthorizationAsync(request, await BuildMetadataAsync(request));
     }
 
 	/// <summary>
-    /// Revoke authorization to ecosystem resources
+    /// Revoke user authorization to ecosystem resources
     /// </summary>	
     public RevokeAuthorizationResponse RevokeAuthorization(RevokeAuthorizationRequest request) {
         return Client.RevokeAuthorization(request, BuildMetadata(request));
     }
 	
 	/// <summary>
-    /// Revoke authorization to ecosystem resources
+    /// Revoke user authorization to ecosystem resources
     /// </summary>	
     public async Task<RevokeAuthorizationResponse> RevokeAuthorizationAsync(RevokeAuthorizationRequest request) {
         return await Client.RevokeAuthorizationAsync(request, await BuildMetadataAsync(request));
@@ -198,14 +203,14 @@ public class ProviderService : ServiceBase
     }
 
 	/// <summary>
-    /// Check the invitation status
+    /// Check the status of an invitation
     /// </summary>	
     public InvitationStatusResponse InvitationStatus(InvitationStatusRequest request) {
         return Client.InvitationStatus(request, BuildMetadata(request));
     }
 	
 	/// <summary>
-    /// Check the invitation status
+    /// Check the status of an invitation
     /// </summary>	
     public async Task<InvitationStatusResponse> InvitationStatusAsync(InvitationStatusRequest request) {
         return await Client.InvitationStatusAsync(request, await BuildMetadataAsync(request));

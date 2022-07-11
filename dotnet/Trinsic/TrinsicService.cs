@@ -32,8 +32,8 @@ public class TrinsicService : ServiceBase
     internal TrinsicService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
     }
 
-    internal TrinsicService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
-        : base(options.Value, tokenProvider) {
+    internal TrinsicService(ITokenProvider tokenProvider, ServiceOptions options)
+        : base(options, tokenProvider) {
     }
 
     /// <summary>
