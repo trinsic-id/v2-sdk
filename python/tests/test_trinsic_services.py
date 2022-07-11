@@ -91,7 +91,7 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
         account_service = AccountService(server_config=trinsic_config())
         # }
         # accountServiceSignIn() {
-        my_profile = await account_service.sign_in()
+        my_profile = await account_service.login_anonymous()
         # }
         await self.print_get_info(account_service, my_profile)
 
@@ -109,10 +109,10 @@ class TestServices(unittest.IsolatedAsyncioTestCase):
         await self.print_get_info(account_service, my_unprotected_profile)
 
     @staticmethod
-    async def print_get_info(account_service: AccountService, my_profile):
-        account_service.service_options.auth_token = my_profile
+    async def print_get_info(service: AccountService, my_profile):
+        service.service_options.auth_token = my_profile
         # accountServiceGetInfo() {
-        info = await account_service.get_info()
+        info = await service.get_info()
         # }
         assert info is not None
         print(f"profile={info}")
