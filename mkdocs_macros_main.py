@@ -254,17 +254,44 @@ def print_field(fieldName, context: str = None):
 
     # Determine if field is primitive (non-primitive types get expanded)
     is_prim = field_is_primitive(field)
+
+    # Determine if field is a `map<x,y>` type
+    is_map = field_is_map(field)
+
+    is_array = field["label"] == "LABEL_REPEATED"
     
     field_type = field["type"]
+    field_full_type = field["full_type"]
 
-    # Don't generate links to primitive types
-    if not is_prim:
-        field_type = f"<a href='/reference/proto#{field['full_type']}'>{field['type']}</a>"
+    # Handle map types specially
+    if is_map:
+        (key_type, value_type) = get_map_key_value_types(field["full_type"])
+        value_ent = try_get_entity(value_type)
+        value_is_prim = (value_ent is None)
 
-    # Add array indicator
-    # TODO: Do a better job of handling "Entry" types
-    if field["label"] == "LABEL_REPEATED":
-        field_type += "[]"
+        value_type_name = value_type
+        if not value_is_prim:
+            value_msg = get_entity(value_type)
+            value_short_type = value_msg["name"]
+            value_type_name = f"<a href='/reference/proto#{value_type}'>{value_short_type}</a>"
+
+        field_type = f"map({key_type} -> {value_type_name})"
+
+        # Set field_full_type to value_type so that when we expand the child type later,
+        # the *value* type of the MapEntry is expanded, instead of expanding the MapEntry itself
+        field_full_type = value_type
+
+        # If the value is a primitive type, set is_prim to true so that we don't
+        # try to expand a sub-type later that's primitive
+        is_prim = value_is_prim
+    else:
+        # Generate a link for a non-primitive type
+        if not is_prim:
+            field_type = f"<a href='/reference/proto#{field['full_type']}'>{field['type']}</a>"
+
+        # Add array indicator
+        if is_array:
+            field_type += "[]"
 
     # If the "optional" option is set, display that
     # TODO: Better presentation of optional designation
@@ -291,7 +318,7 @@ def print_field(fieldName, context: str = None):
     # If the message isn't primitive, expand its type and document it
     if not is_prim:
         # Get entry in protoc-gen-json index of types.
-        field_type_index = get_index_entry(field["full_type"])
+        field_type_index = get_index_entry(field_full_type)
 
         sub_content = None
         sub_content_msg = ""
@@ -303,12 +330,18 @@ def print_field(fieldName, context: str = None):
                 context = field['name']
             else:
                 context += f".{field['name']}"
+
+            if is_map:
+                context += "[<span class='proto-context-array-key'>key</span>]"
+            elif is_array:
+                context += "[<span class='proto-context-array-key'>i</span>]"
+            
             
             # Embed just the sub-type's fields, not its name or description
-            sub_content = print_message_fields(field["full_type"], context)
+            sub_content = print_message_fields(field_full_type, context)
             sub_content_msg = "Show child attributes"
         elif field_type_index["type"] == "enum":
-            sub_content = print_enum_values(field["full_type"])
+            sub_content = print_enum_values(field_full_type)
             sub_content_msg = "Show enum values"
 
         if sub_content is not None:
@@ -329,6 +362,47 @@ def field_is_primitive(field):
     """
     return field["type"] == field["full_type"]
 
+def field_is_map(field):
+    """
+    Determines if a field's type is a `map<x, y>` type.
+    """
+
+    if field_is_primitive(field):
+        return False
+
+    msg = get_entity(field["full_type"])
+    return message_is_map_entry(msg)
+
+def message_is_map_entry(msg):
+    """
+    Determines if a message is a MapEntry type
+    """
+    return "is_map_entry" in msg and msg["is_map_entry"]
+
+def get_map_key_value_types(message_full_type):
+    """
+    Returns a (key_type, value_type) tuple for a MapEntry's key/value field types
+    """
+    msg = get_entity(message_full_type)
+
+    if not message_is_map_entry(msg):
+        return None
+    
+    # Find the Key and Value fields
+    key_type = None
+    value_type = None
+
+    for field in msg["fields"]:
+        field_obj = get_entity(field)
+
+        if field_obj["name"] == "key":
+            key_type = field_obj["full_type"]
+        elif field_obj["name"] == "value":
+            value_type = field_obj["full_type"]
+    
+    return (key_type, value_type)
+
+
 def get_index_entry(name: str):
     """
     Fetch a proto.json index entry by its Fully Qualified Name
@@ -341,6 +415,15 @@ def get_index_entry(name: str):
         raise Exception(f"Cannot find protobuf object with name {name}")
 
     return index[name]
+
+def try_get_entity(name: str):
+    """
+    Tries to fetch a protobuf entity by name, returning None on failure
+    """
+    try:
+        return get_entity(name)
+    except:
+        return None
 
 def get_entity(name: str):
     """
