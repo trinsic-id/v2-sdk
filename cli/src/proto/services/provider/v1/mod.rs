@@ -1,16 +1,4 @@
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
-pub struct Invite {
-    #[prost(string, tag = "1")]
-    pub id: ::prost::alloc::string::String,
-    #[prost(string, tag = "2")]
-    pub code: ::prost::alloc::string::String,
-    #[prost(string, tag = "3")]
-    pub created: ::prost::alloc::string::String,
-    #[prost(string, tag = "4")]
-    pub accepted: ::prost::alloc::string::String,
-    #[prost(string, tag = "5")]
-    pub expires: ::prost::alloc::string::String,
-}
+/// Request to invite a participant to an ecosystem
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct InviteRequest {
     /// Type of participant being invited (individual/organization)
@@ -28,26 +16,24 @@ pub mod invite_request {
     #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
     pub struct DidCommInvitation {}
 }
+/// Response to `InviteRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct InviteResponse {
     /// ID of created invitation
     #[prost(string, tag = "10")]
     pub invitation_id: ::prost::alloc::string::String,
-    /// Invitation Code that must be passed with the account 'SignIn' request
-    /// to correlate this user with the invitation sent.
+    /// Invitation code -- must be passed back in `LoginRequest`
     #[prost(string, tag = "11")]
     pub invitation_code: ::prost::alloc::string::String,
 }
-/// Request details for the status of onboarding
-/// an individual or organization.
-/// The reference_id passed is the response from the
-/// `Onboard` method call
+/// Request details for the status of an invitation
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct InvitationStatusRequest {
-    /// ID of invitation
+    /// ID of invitation, received from `InviteResponse`
     #[prost(string, tag = "1")]
     pub invitation_id: ::prost::alloc::string::String,
 }
+/// Response to `InvitationStatusRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct InvitationStatusResponse {
     /// Status of invitation
@@ -72,6 +58,7 @@ pub mod invitation_status_response {
         Expired = 3,
     }
 }
+/// Details of an ecosystem
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct Ecosystem {
     /// URN of the ecosystem
@@ -90,21 +77,23 @@ pub struct Ecosystem {
     #[prost(message, repeated, tag = "5")]
     pub webhooks: ::prost::alloc::vec::Vec<WebhookConfig>,
 }
+/// Webhook configured on an ecosystem
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct WebhookConfig {
     /// UUID of the webhook
     #[prost(string, tag = "1")]
     pub id: ::prost::alloc::string::String,
-    /// Destination to post webhook calls to
+    /// HTTPS URL to POST webhook calls to
     #[prost(string, tag = "2")]
     pub destination_url: ::prost::alloc::string::String,
     /// Events the webhook is subscribed to
     #[prost(string, repeated, tag = "4")]
     pub events: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
-    /// Whether we are able to sucessfully send events to the webhook
+    /// Last known status of webhook (whether or not Trinsic can successfully reach destination)
     #[prost(string, tag = "5")]
     pub status: ::prost::alloc::string::String,
 }
+/// A grant authorizing `actions` on a `resourceId`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct Grant {
     /// the urn of the resource
@@ -117,11 +106,13 @@ pub struct Grant {
     #[prost(message, repeated, tag = "3")]
     pub child_grants: ::prost::alloc::vec::Vec<Grant>,
 }
+/// Request to create an ecosystem
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct CreateEcosystemRequest {
     /// Globally unique name for the Ecosystem. This name will be
-    /// part of the ecosystem specific URLs and namespaces.
+    /// part of the ecosystem-specific URLs and namespaces.
     /// Allowed characters are lowercase letters, numbers, underscore and hyphen.
+    /// If not passed, ecosystem name will be auto-generated.
     #[prost(string, tag = "1")]
     pub name: ::prost::alloc::string::String,
     /// Ecosystem description
@@ -134,6 +125,7 @@ pub struct CreateEcosystemRequest {
     #[prost(message, optional, tag = "4")]
     pub details: ::core::option::Option<super::super::account::v1::AccountDetails>,
 }
+/// Response to `CreateEcosystemRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct CreateEcosystemResponse {
     /// Details of the created ecosystem
@@ -143,33 +135,35 @@ pub struct CreateEcosystemResponse {
     #[prost(message, optional, tag = "2")]
     pub profile: ::core::option::Option<super::super::account::v1::AccountProfile>,
     /// Indicates if confirmation of account is required.
-    /// This setting is configured globally by the server administrator.
     #[prost(enumeration = "super::super::account::v1::ConfirmationMethod", tag = "3")]
     pub confirmation_method: i32,
 }
-/// Request to update an ecosystem
+/// Request to update an ecosystem's metadata
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct UpdateEcosystemRequest {
-    /// Description of the ecosystem
+    /// New description of the ecosystem
     #[prost(string, tag = "1")]
     pub description: ::prost::alloc::string::String,
-    /// External URL associated with the organization or ecosystem entity
+    /// New external URL associated with the organization or ecosystem entity
     #[prost(string, tag = "2")]
     pub uri: ::prost::alloc::string::String,
 }
 /// Response to `UpdateEcosystemRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct UpdateEcosystemResponse {
+    /// Current ecosystem metadata, post-update
     #[prost(message, optional, tag = "1")]
     pub ecosystem: ::core::option::Option<Ecosystem>,
 }
 /// Request to add a webhook to an ecosystem
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct AddWebhookRequest {
-    /// Destination to post webhook calls to
+    /// Destination to post webhook calls to.
+    /// Must be a reachable HTTPS URL.
     #[prost(string, tag = "1")]
     pub destination_url: ::prost::alloc::string::String,
-    /// HMAC secret for webhook validation
+    /// Secret string used for HMAC-SHA256 signing of webhook payloads
+    /// to verify that a webhook comes from Trinsic
     #[prost(string, tag = "2")]
     pub secret: ::prost::alloc::string::String,
     /// Events to subscribe to. Default is "*" (all events)
@@ -179,7 +173,7 @@ pub struct AddWebhookRequest {
 /// Response to `AddWebhookRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct AddWebhookResponse {
-    /// Ecosystem with new webhook
+    /// Ecosystem data with new webhook
     #[prost(message, optional, tag = "1")]
     pub ecosystem: ::core::option::Option<Ecosystem>,
 }
@@ -193,7 +187,7 @@ pub struct DeleteWebhookRequest {
 /// Response to `DeleteWebhookRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct DeleteWebhookResponse {
-    /// Ecosystem after removal of webhook
+    /// Ecosystem data after removal of webhook
     #[prost(message, optional, tag = "1")]
     pub ecosystem: ::core::option::Option<Ecosystem>,
 }
@@ -207,50 +201,54 @@ pub struct EcosystemInfoResponse {
     #[prost(message, optional, tag = "1")]
     pub ecosystem: ::core::option::Option<Ecosystem>,
 }
+/// Request to generate an authentication token for the current account
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct GenerateTokenRequest {
     /// Description to identify this token
     #[prost(string, tag = "1")]
     pub description: ::prost::alloc::string::String,
 }
+/// Response to `GenerateTokenRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct GenerateTokenResponse {
     /// Account authentication profile that contains unprotected token
     #[prost(message, optional, tag = "1")]
     pub profile: ::core::option::Option<super::super::account::v1::AccountProfile>,
 }
-/// request message for GetOberonKey
+/// Request to fetch the Trinsic public key used
+/// to verify authentication token validity
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct GetOberonKeyRequest {}
-/// response message for GetOberonKey
+/// Response to `GetOberonKeyRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct GetOberonKeyResponse {
-    /// Oberon Public Key as RAW base64 URL encoded string
+    /// Oberon Public Key as RAW base64-url encoded string
     #[prost(string, tag = "1")]
     pub key: ::prost::alloc::string::String,
 }
-/// generates an events token bound to the provided ed25519 pk
+/// Generates an events token bound to the provided ed25519 public key.
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct GetEventTokenRequest {
-    ///
+    /// Raw public key to generate event token for
     #[prost(bytes = "vec", tag = "1")]
     pub pk: ::prost::alloc::vec::Vec<u8>,
 }
-/// response message containing a token (JWT) that can be used
+/// Response message containing a token (JWT) that can be used
 /// to connect directly to the message streaming architecture
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct GetEventTokenResponse {
-    /// a JWT bound to the PK provided in the request
+    /// JWT bound to the public key provided in `GetEventTokenRequest`
     #[prost(string, tag = "1")]
     pub token: ::prost::alloc::string::String,
 }
-/// grant permissions to a resource or path in the ecosystem
+/// Grant permissions to a resource or path in the ecosystem
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct GrantAuthorizationRequest {
-    /// resources are specified as a restful path: /{ecoId}/{resource type}/{resource id}. EcosystemId maybe ommited
+    /// Resource string that account is receiving permissions for.
+    /// Resources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted.
     #[prost(string, tag = "3")]
     pub resource: ::prost::alloc::string::String,
-    /// action to authorize. default is "*" (all)
+    /// Action to authorize. Default is "*" (all)
     #[prost(string, tag = "4")]
     pub action: ::prost::alloc::string::String,
     #[prost(oneof = "grant_authorization_request::Account", tags = "1, 2")]
@@ -260,23 +258,27 @@ pub struct GrantAuthorizationRequest {
 pub mod grant_authorization_request {
     #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Oneof)]
     pub enum Account {
-        /// email associted with the account
+        /// Email address of account being granted permission.
+        /// Mutually exclusive with `walletId`.
         #[prost(string, tag = "1")]
         Email(::prost::alloc::string::String),
-        /// wallet id of the account
+        /// Wallet ID of account being granted permission.
+        /// Mutually exclusive with `email`.
         #[prost(string, tag = "2")]
         WalletId(::prost::alloc::string::String),
     }
 }
+/// Response to `GrantAuthorizationRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct GrantAuthorizationResponse {}
-/// revoke permissions to a resource or path in the ecosystem
+/// Revoke permissions to a resource or path in the ecosystem
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct RevokeAuthorizationRequest {
-    /// resources are specified as a restful path: /{ecoId}/{resource type}/{resource id}. EcosystemId maybe ommited
+    /// Resource string that account is losing permissions for.
+    /// Resources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted.
     #[prost(string, tag = "3")]
     pub resource: ::prost::alloc::string::String,
-    /// action to revoke. default is "*" (all)
+    /// Action to revoke. Default is "*" (all)
     #[prost(string, tag = "4")]
     pub action: ::prost::alloc::string::String,
     #[prost(oneof = "revoke_authorization_request::Account", tags = "1, 2")]
@@ -286,27 +288,37 @@ pub struct RevokeAuthorizationRequest {
 pub mod revoke_authorization_request {
     #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Oneof)]
     pub enum Account {
-        /// email associted with the account
+        /// Email address of account having permission revoked.
+        /// Mutually exclusive with `walletId`.
         #[prost(string, tag = "1")]
         Email(::prost::alloc::string::String),
-        /// wallet id of the account
+        /// Wallet ID of account having permission revoked.
+        /// Mutually exclusive with `email`.
         #[prost(string, tag = "2")]
         WalletId(::prost::alloc::string::String),
     }
 }
+/// Response to `RevokeAuthorizationRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct RevokeAuthorizationResponse {}
+/// Fetch list of grants that the current account has access to
+/// in its ecosystem
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct GetAuthorizationsRequest {}
+/// Response to `GetAuthorizationsRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct GetAuthorizationsResponse {
+    /// Grants attached to account
     #[prost(message, repeated, tag = "1")]
     pub grants: ::prost::alloc::vec::Vec<Grant>,
 }
+/// Type of participant being invited to ecosystem
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ParticipantType {
+    /// Participant is an individual
     Individual = 0,
+    /// Participant is an organization
     Organization = 1,
 }
 #[doc = r" Generated client implementations."]
@@ -389,7 +401,7 @@ pub mod provider_client {
             let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/UpdateEcosystem");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Grant authorization to ecosystem resources"]
+        #[doc = " Grant user authorization to ecosystem resources"]
         pub async fn grant_authorization(
             &mut self,
             request: impl tonic::IntoRequest<super::GrantAuthorizationRequest>,
@@ -402,7 +414,7 @@ pub mod provider_client {
             let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/GrantAuthorization");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Revoke authorization to ecosystem resources"]
+        #[doc = " Revoke user authorization to ecosystem resources"]
         pub async fn revoke_authorization(
             &mut self,
             request: impl tonic::IntoRequest<super::RevokeAuthorizationRequest>,
@@ -494,7 +506,7 @@ pub mod provider_client {
             let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/Invite");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Check the invitation status"]
+        #[doc = " Check the status of an invitation"]
         pub async fn invitation_status(
             &mut self,
             request: impl tonic::IntoRequest<super::InvitationStatusRequest>,

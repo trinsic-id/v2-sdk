@@ -85,7 +85,7 @@ pub struct VerifyProofRequest {
 /// Response to `VerifyProofRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct VerifyProofResponse {
-    /// Whether or not all validations in `validation_results` passed
+    /// Whether all validations in `validation_results` passed
     #[prost(bool, tag = "1")]
     pub is_valid: bool,
     /// Use `validation_results` instead
@@ -138,7 +138,7 @@ pub struct SendResponse {}
 /// Request to update a credential's revocation status
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct UpdateStatusRequest {
-    /// Credential Status ID to update
+    /// Credential Status ID to update. This is not the same as the credential's ID.
     #[prost(string, tag = "1")]
     pub credential_status_id: ::prost::alloc::string::String,
     /// New revocation status of credential
@@ -151,7 +151,7 @@ pub struct UpdateStatusResponse {}
 /// Request to check a credential's revocation status
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct CheckStatusRequest {
-    /// Credential Status ID to check
+    /// Credential Status ID to check. This is not the same as the credential's ID.
     #[prost(string, tag = "1")]
     pub credential_status_id: ::prost::alloc::string::String,
 }
@@ -232,7 +232,7 @@ pub mod verifiable_credential_client {
         }
         #[doc = " Sign and issue a verifiable credential from a pre-defined template."]
         #[doc = " This process will also add schema validation and "]
-        #[doc = " revocation registry entry in the credential."]
+        #[doc = " revocation registry values to the credential."]
         pub async fn issue_from_template(
             &mut self,
             request: impl tonic::IntoRequest<super::IssueFromTemplateRequest>,

@@ -18,7 +18,7 @@ pub struct AccountDetails {
     /// Account name
     #[prost(string, tag = "1")]
     pub name: ::prost::alloc::string::String,
-    /// Email account
+    /// Email address of account
     #[prost(string, tag = "2")]
     pub email: ::prost::alloc::string::String,
     /// SMS number including country code
@@ -32,7 +32,6 @@ pub struct AccountDetails {
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct SignInResponse {
     /// Indicates if confirmation of account is required.
-    /// This settings is configured globally by the server administrator.
     #[prost(enumeration = "ConfirmationMethod", tag = "3")]
     pub confirmation_method: i32,
     /// Contains authentication data for use with the current device.
@@ -98,10 +97,10 @@ pub struct AccountInfoResponse {
     #[prost(string, tag = "5")]
     pub ecosystem_id: ::prost::alloc::string::String,
     /// The public DID associated with this account.
-    /// This DID is used as "issuer" when signing verifiable credentials
+    /// This DID is used as the `issuer` when signing verifiable credentials
     #[prost(string, tag = "6")]
     pub public_did: ::prost::alloc::string::String,
-    /// Webhook events if any this wallet has authorized
+    /// Webhook events, if any, this wallet has authorized
     #[prost(string, repeated, tag = "7")]
     pub authorized_webhooks: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
@@ -113,6 +112,7 @@ pub struct ListDevicesResponse {}
 pub struct RevokeDeviceRequest {}
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct RevokeDeviceResponse {}
+/// Deprecated
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct AccountEcosystem {
     #[prost(string, tag = "1")]
@@ -126,19 +126,21 @@ pub struct AccountEcosystem {
 }
 // Login
 
+/// Request to begin login flow
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct LoginRequest {
-    /// Email account to associate with the login request
+    /// Email address of account. If unspecified, an anonymous account will be created.
     #[prost(string, tag = "1")]
     pub email: ::prost::alloc::string::String,
     /// Invitation code associated with this registration
     #[prost(string, tag = "2")]
     pub invitation_code: ::prost::alloc::string::String,
     /// ID of Ecosystem to sign into.
-    /// Ignored if `invitation_code` is passed
+    /// Ignored if `invitation_code` is passed.
     #[prost(string, tag = "3")]
     pub ecosystem_id: ::prost::alloc::string::String,
 }
+/// Response to `LoginRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct LoginResponse {
     #[prost(oneof = "login_response::Response", tags = "1, 2")]
@@ -148,35 +150,37 @@ pub struct LoginResponse {
 pub mod login_response {
     #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Oneof)]
     pub enum Response {
-        /// Challenge response. Random byte sequence unique
-        /// for this login request
+        /// Random byte sequence unique to this login request.
+        /// If present, two-factor confirmation of login is required.
+        /// Must be sent back, unaltered, in `LoginConfirm`.
         #[prost(bytes, tag = "1")]
         Challenge(::prost::alloc::vec::Vec<u8>),
-        /// Profile response. The login isn't challenged and
-        /// the token is returned in this call. Does not require
-        /// confirmation step
+        /// Account profile response. If present, no confirmation of login is required.
         #[prost(message, tag = "2")]
         Profile(super::AccountProfile),
     }
 }
+/// Request to finalize login flow
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct LoginConfirmRequest {
-    /// Login challenge received during the Login call
+    /// Challenge received from `Login`
     #[prost(bytes = "vec", tag = "1")]
     pub challenge: ::prost::alloc::vec::Vec<u8>,
-    /// Confirmation code received in email or SMS
-    /// hashed using Blake3
+    /// Two-factor confirmation code sent to account email or phone,
+    /// hashed using Blake3. Our SDKs will handle this hashing process for you.
     #[prost(bytes = "vec", tag = "2")]
     pub confirmation_code_hashed: ::prost::alloc::vec::Vec<u8>,
 }
+/// Response to `LoginConfirmRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct LoginConfirmResponse {
-    /// Profile response. This profile may be protected and
-    /// require unblinding/unprotection using the raw hashed code
+    /// Profile response; must be unprotected using unhashed confirmation code.
+    /// Our SDKs will handle this process for you, and return to you an authentication token string.
     #[prost(message, optional, tag = "1")]
     pub profile: ::core::option::Option<AccountProfile>,
 }
-/// Authorize ecosystem to receive wallet events
+/// Request to authorize Ecosystem provider to receive webhooks for events
+/// which occur on this wallet.
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct AuthorizeWebhookRequest {
     /// Events to authorize access to. Default is "*" (all events)
@@ -198,7 +202,7 @@ pub enum ConfirmationMethod {
     Sms = 2,
     /// Confirmation from a connected device is required
     ConnectedDevice = 3,
-    /// Indicates third-party method of confirmation is required
+    /// Third-party method of confirmation is required
     Other = 10,
 }
 #[doc = r" Generated client implementations."]
@@ -268,7 +272,7 @@ pub mod account_client {
             let path = http::uri::PathAndQuery::from_static("/services.account.v1.Account/SignIn");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Login to account. If account doesn't exist, new will be created"]
+        #[doc = " Begin login flow for specified account, creating one if it does not already exist"]
         pub async fn login(
             &mut self,
             request: impl tonic::IntoRequest<super::LoginRequest>,
@@ -281,7 +285,7 @@ pub mod account_client {
             let path = http::uri::PathAndQuery::from_static("/services.account.v1.Account/Login");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Confirm login step by responding to the challenge request"]
+        #[doc = " Finalize login flow with two-factor confirmation code"]
         pub async fn login_confirm(
             &mut self,
             request: impl tonic::IntoRequest<super::LoginConfirmRequest>,
