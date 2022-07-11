@@ -1,5 +1,5 @@
 // TODO - Include this only for node
-import { Hashing, Oberon } from "@trinsic/okapi-node";
+import { Hashing, Oberon, OkapiMetadata } from "@trinsic/okapi-node";
 import { AccountProfile } from "./proto/services/account/v1/account";
 // TODO - Include something else only for web
 
@@ -36,4 +36,8 @@ export async function blindOberon(cloned: AccountProfile, securityCode: Uint8Arr
       token: cloned.authToken,
       blinding: [securityCode],
     });
+}
+
+export async function okapiVersion(): Promise<string> {
+    return (await OkapiMetadata.getMetadata()).version;
 }

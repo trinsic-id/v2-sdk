@@ -39,7 +39,7 @@ export class ProviderService extends ServiceBase {
   ): Promise<CreateEcosystemResponse> {
     const response = request.name?.trim() || request.details?.email?.trim()
       ? await this.client.createEcosystem(request, {
-        metadata: await this.getMetadata(
+        metadata: await this.buildMetadata(
           CreateEcosystemRequest.encode(request).finish()
         ),
       })
@@ -57,121 +57,85 @@ export class ProviderService extends ServiceBase {
   public async updateEcosystem(
     request: UpdateEcosystemRequest
   ): Promise<UpdateEcosystemResponse> {
-    // TODO - handle metadata
     return this.client.updateEcosystem(request, {
-      metadata: await this.getMetadata(
-        UpdateEcosystemRequest.encode(request).finish()
-      ),
+      metadata: await this.buildMetadata(UpdateEcosystemRequest.encode(request).finish())
     });
   }
   public async grantAuthorization(
     request: GrantAuthorizationRequest
   ): Promise<GrantAuthorizationResponse> {
-    // TODO - handle metadata
     return this.client.grantAuthorization(request, {
-      metadata: await this.getMetadata(
-        GrantAuthorizationRequest.encode(request).finish()
-      ),
+      metadata: await this.buildMetadata(GrantAuthorizationRequest.encode(request).finish())
     });
   }
   public async revokeAuthorization(
     request: RevokeAuthorizationRequest
   ): Promise<RevokeAuthorizationResponse> {
-    // TODO - handle metadata
     return this.client.revokeAuthorization(request, {
-      metadata: await this.getMetadata(
-        RevokeAuthorizationRequest.encode(request).finish()
-      ),
+      metadata: await this.buildMetadata(RevokeAuthorizationRequest.encode(request).finish())
     });
   }
   public async getAuthorizations(
     request: GetAuthorizationsRequest
   ): Promise<GetAuthorizationsResponse> {
-    // TODO - handle metadata
     return this.client.getAuthorizations(request, {
-      metadata: await this.getMetadata(
-        GetAuthorizationsRequest.encode(request).finish()
-      ),
+      metadata: await this.buildMetadata(GetAuthorizationsRequest.encode(request).finish())
     });
   }
   public async addWebhook(
     request: AddWebhookRequest
   ): Promise<AddWebhookResponse> {
-    // TODO - handle metadata
     return this.client.addWebhook(request, {
-      metadata: await this.getMetadata(
-        AddWebhookRequest.encode(request).finish()
-      ),
+      metadata: await this.buildMetadata(AddWebhookRequest.encode(request).finish())
     });
   }
   public async deleteWebhook(
     request: DeleteWebhookRequest
   ): Promise<DeleteWebhookResponse> {
-    // TODO - handle metadata
     return this.client.deleteWebhook(request, {
-      metadata: await this.getMetadata(
-        DeleteWebhookRequest.encode(request).finish()
-      ),
+      metadata: await this.buildMetadata(DeleteWebhookRequest.encode(request).finish())
     });
   }
   public async ecosystemInfo(
     request: EcosystemInfoRequest
   ): Promise<EcosystemInfoResponse> {
-    // TODO - handle metadata
     return this.client.ecosystemInfo(request, {
-      metadata: await this.getMetadata(
-        EcosystemInfoRequest.encode(request).finish()
-      ),
+      metadata: await this.buildMetadata(EcosystemInfoRequest.encode(request).finish())
     });
   }
   public async generateToken(
     request: GenerateTokenRequest
   ): Promise<GenerateTokenResponse> {
-    // TODO - handle metadata
     return this.client.generateToken(request, {
-      metadata: await this.getMetadata(
-        GenerateTokenRequest.encode(request).finish()
-      ),
+      metadata: await this.buildMetadata(GenerateTokenRequest.encode(request).finish())
     });
   }
   public async invite(
     request: InviteRequest
   ): Promise<InviteResponse> {
-    // TODO - handle metadata
     return this.client.invite(request, {
-      metadata: await this.getMetadata(
-        InviteRequest.encode(request).finish()
-      ),
+      metadata: await this.buildMetadata(InviteRequest.encode(request).finish())
     });
   }
   public async invitationStatus(
     request: InvitationStatusRequest
   ): Promise<InvitationStatusResponse> {
-    // TODO - handle metadata
     return this.client.invitationStatus(request, {
-      metadata: await this.getMetadata(
-        InvitationStatusRequest.encode(request).finish()
-      ),
+      metadata: await this.buildMetadata(InvitationStatusRequest.encode(request).finish())
     });
   }
   public async getOberonKey(
     request: GetOberonKeyRequest
   ): Promise<GetOberonKeyResponse> {
-    // TODO - handle metadata
     return this.client.getOberonKey(request, {
-      metadata: await this.getMetadata(
-        GetOberonKeyRequest.encode(request).finish()
-      ),
+      metadata: await this.buildMetadata(GetOberonKeyRequest.encode(request).finish())
     });
   }
   public async getEventToken(
     request: GetEventTokenRequest
   ): Promise<GetEventTokenResponse> {
-    // TODO - handle metadata
     return this.client.getEventToken(request, {
-      metadata: await this.getMetadata(
-        GetEventTokenRequest.encode(request).finish()
-      ),
+      metadata: await this.buildMetadata(GetEventTokenRequest.encode(request).finish())
     });
   }
 // END Code generated by protoc-gen-trinsic. DO NOT EDIT.
