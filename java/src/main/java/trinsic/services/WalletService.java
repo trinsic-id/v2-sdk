@@ -43,11 +43,6 @@ public class WalletService extends ServiceBase {
     // TODO - Handle metadata
 	return withMetadata(stub, request).getItem(request);
   }
-  public ListenableFuture<SearchResponse> search(SearchRequest request)
-      throws InvalidProtocolBufferException, DidException {
-    // TODO - Handle metadata
-	return withMetadata(stub, request).search(request);
-  }
   public ListenableFuture<InsertItemResponse> insertItem(InsertItemRequest request)
       throws InvalidProtocolBufferException, DidException {
     // TODO - Handle metadata

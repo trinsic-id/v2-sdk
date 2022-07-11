@@ -31,13 +31,6 @@ class WalletServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(op
     return withMetadata(stub, request).getItem(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
-  suspend fun search(request: SearchRequest): SearchResponse {
-	 /**  Search the wallet using a SQL syntax
-*/
-    // TODO - Support metadata anonymous
-    return withMetadata(stub, request).search(request)
-  }
-  @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun insertItem(request: InsertItemRequest): InsertItemResponse {
 	 /**  Insert an item into the wallet
 */
