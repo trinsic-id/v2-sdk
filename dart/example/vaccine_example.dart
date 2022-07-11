@@ -100,9 +100,8 @@ Future runVaccineDemo() async {
       .credential()
       .verifyProof(VerifyProofRequest(proofDocumentJson: credentialProof));
   // }
-  var valid = verifyResult.isValid;
-  print("Verification result: $valid");
-  assert(valid);
+  print("Verification result: $verifyResult");
+  assert(verifyResult.validationResults["SignatureVerification"]?.isValid ?? false);
   // }
 
   // TODO - Revoke credential
