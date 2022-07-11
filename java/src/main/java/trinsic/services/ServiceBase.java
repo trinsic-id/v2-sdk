@@ -1,20 +1,22 @@
 package trinsic.services;
 
-import static trinsic.TrinsicUtilities.getTrinsicServiceOptions;
-
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import io.grpc.Channel;
 import io.grpc.ManagedChannel;
 import io.grpc.Metadata;
 import io.grpc.stub.MetadataUtils;
-import java.util.Base64;
 import trinsic.TrinsicUtilities;
 import trinsic.okapi.DidException;
+import trinsic.okapi.OkapiMetadata;
 import trinsic.sdk.options.v1.Options;
 import trinsic.security.ISecurityProvider;
 import trinsic.security.OberonSecurityProvider;
 import trinsic.services.account.v1.AccountProfile;
+
+import java.util.Base64;
+
+import static trinsic.TrinsicUtilities.getTrinsicServiceOptions;
 
 public abstract class ServiceBase {
   private final ISecurityProvider securityProvider = new OberonSecurityProvider();
@@ -31,15 +33,22 @@ public abstract class ServiceBase {
     if (channel instanceof ManagedChannel) ((ManagedChannel) this.channel).shutdownNow();
   }
 
+  private static void putMetadata(Metadata m, String key, String value) {
+      m.put(Metadata.Key.of(key, Metadata.ASCII_STRING_MARSHALLER), value);
+  }
+
   public Metadata buildMetadata(Message request)
       throws InvalidProtocolBufferException, DidException {
-    if (this.options == null || this.options.getAuthToken().isEmpty())
-      throw new IllegalArgumentException("Cannot call authenticated endpoint: profile must be set");
+      var metadata = new Metadata();
+      putMetadata(metadata, "TrinsicSDKLanguage", "java");
+      putMetadata(metadata, "TrinsicSDKVersion", "unknown");  // TODO - Get the Java jar information from ?gradle?
+      putMetadata(metadata, "TrinsicOkapiVersion", OkapiMetadata.getMetadata().getVersion());
+      if (request != null) {
+          if (this.options == null || this.options.getAuthToken().isEmpty())
+              throw new IllegalArgumentException("Cannot call authenticated endpoint: profile must be set");
 
-    var metadata = new Metadata();
-    metadata.put(
-        Metadata.Key.of("authorization", Metadata.ASCII_STRING_MARSHALLER),
-        securityProvider.GetAuthHeader(this.getProfile(), request));
+          putMetadata(metadata,"authorization", securityProvider.GetAuthHeader(this.getProfile(), request));
+      }
     return metadata;
   }
 
