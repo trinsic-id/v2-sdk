@@ -5,6 +5,7 @@ import (
 	"crypto/x509"
 	"errors"
 	"fmt"
+	"github.com/trinsic-id/okapi/go/okapi"
 	"github.com/trinsic-id/sdk/go/proto/sdk/options/v1/options"
 	"github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
 
@@ -105,23 +106,33 @@ func (s *serviceBase) GetMetadataContext(userContext context.Context, message pr
 //
 // This call will return an error if the auth token is not set
 func (s *serviceBase) BuildMetadata(message proto.Message) (metadata.MD, error) {
+	md := metadata.New(make(map[string]string))
 	if len(s.options.ServiceOptions.AuthToken) == 0 {
 		return nil, errors.New("cannot call authenticated endpoint: auth token must be set in service options")
 	}
-
-	profile, err := ProfileFromToken(s.options.ServiceOptions.AuthToken)
+	okapiVersion, err := okapi.OkapiMetadata().GetMetadata()
 	if err != nil {
 		return nil, err
 	}
+	md.Set("TrinsicOkapiVersion", okapiVersion.Version)
+	// TODO - Figure out the golang package version from a constant
+	md.Set("TrinsicSDKVersion", "unknown")
+	md.Set("TrinsicSDKLanguage", "golang")
 
-	authString, err := s.securityProvider.GetAuthHeader(profile, message)
-	if err != nil {
-		return nil, err
+	if message != nil {
+		profile, err := ProfileFromToken(s.options.ServiceOptions.AuthToken)
+		if err != nil {
+			return nil, err
+		}
+
+		authString, err := s.securityProvider.GetAuthHeader(profile, message)
+		if err != nil {
+			return nil, err
+		}
+		md.Set("authorization", authString)
 	}
 
-	return metadata.New(map[string]string{
-		"authorization": authString,
-	}), nil
+	return md, nil
 }
 
 // NewServiceConnection returns a grpc client connection to the target
