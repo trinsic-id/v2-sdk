@@ -2,6 +2,7 @@
 
 require 'okapi'
 require 'okapi/utils'
+require 'okapi/metadata/metadata_pb'
 
 module Trinsic
   # Base functionality of all services
@@ -12,7 +13,7 @@ module Trinsic
     end
 
     def metadata(message)
-      call_metadata = { 'TrinsicOkapiVersion' => Okapi::Utils::version().version, 'TrinsicSDKLanguage' => 'ruby', 'TrinsicSDKVersion' => Trinsic::VERSION }
+      call_metadata = { 'TrinsicOkapiVersion'.downcase => Okapi::Utils::version().version, 'TrinsicSDKLanguage'.downcase => 'ruby', 'TrinsicSDKVersion'.downcase => Trinsic::VERSION }
       unless message.nil?
         if @service_options.nil? || @service_options.auth_token.nil?
           raise Error, 'Cannot call authenticated endpoint: profile must be set'

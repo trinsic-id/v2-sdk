@@ -26,7 +26,7 @@ class TrinsicServiceTest < Minitest::Test
   def test_servicebase_setprofile
     account_service = Trinsic::AccountService.new(Trinsic.trinsic_server)
     assert_raises Exception do
-      account_service.metadata(nil)
+      account_service.metadata(Services::Provider::V1::InviteRequest.new)
     end
     account_profile = account_service.login_anonymous
     account_service.auth_token = account_profile
