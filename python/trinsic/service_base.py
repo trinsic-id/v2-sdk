@@ -2,42 +2,21 @@
 Base class and helper methods for the Service wrappers
 """
 import base64
-import types
 from abc import ABC
-from typing import Optional, Type, T, Dict
+from typing import Dict
 
-from betterproto import Message, ServiceStub
+import trinsicokapi.metadata
+from betterproto import Message
 from grpclib.client import Channel
 
+from trinsicokapi import metadata
+
+import trinsic
 from trinsic.proto.sdk.options.v1 import ServiceOptions
 from trinsic.proto.services.account.v1 import AccountProfile
 from trinsic.proto.services.common.v1 import ResponseStatus
 from trinsic.security_providers import OberonSecurityProvider, SecurityProvider
 from trinsic.trinsic_util import trinsic_config, create_channel
-
-_skip_routes = [
-    "/services.account.v1.Account/SignIn",
-    "/services.account.v1.Account/Login",
-    "/services.account.v1.Account/LoginConfirm",
-    "/services.provider.v1.Provider/CreateEcosystem",
-    "/services.provider.v1.Provider/GetOberonKey",
-]
-
-
-def _update_metadata(
-    route: str,
-    service: "ServiceBase",
-    metadata: "_MetadataLike",
-    request: "_MessageLike",
-) -> "_MetadataLike":
-    metadata = metadata or {}
-    # Remove this key
-    authenticate_call = metadata.pop("authenticateCall", False)
-    if route in _skip_routes and not authenticate_call:
-        return metadata
-    new_metadata = service.build_metadata(request)
-    metadata.update(new_metadata)
-    return metadata
 
 
 class ServiceBase(ABC):
@@ -71,56 +50,29 @@ class ServiceBase(ABC):
     def set_auth_token(self, auth_token: str) -> None:
         self.service_options.auth_token = auth_token
 
-    def build_metadata(self, request: Message) -> Dict[str, str]:
+    def build_metadata(self, request: Message = None) -> Dict[str, str]:
         """
         Create call metadata by setting required authentication headers via `AccountProfile`
         :return: authentication headers with base-64 encoded Oberon
         """
-        if not self.service_options or not self.service_options.auth_token:
-            raise ValueError(
-                "Cannot call authenticated endpoint: auth token must be set in service options"
-            )
-
-        return {
-            "authorization": self._security_provider.get_auth_header(
-                AccountProfile().parse(
-                    data=base64.urlsafe_b64decode(self.service_options.auth_token)
-                ),
-                request,
-            )
+        call_metadata = {
+            "TrinsicOkapiVersion".lower(): trinsicokapi.metadata.get_metadata().version,
+            "TrinsicSDKLanguage".lower(): "python",
+            "TrinsicSDKVersion".lower(): trinsic.__version__()
         }
+        if request is not None:
+            if not self.service_options or not self.service_options.auth_token:
+                raise ValueError(
+                    "Cannot call authenticated endpoint: auth token must be set in service options"
+                )
 
-    def stub_with_metadata(self, stub_type: Type[T]) -> T:
-        return self.with_call_metadata(stub_type(self.channel))
-
-    def with_call_metadata(self, stub: ServiceStub) -> ServiceStub:
-        # Find the _unary_unary() method
-        _cls_unary_unary = getattr(stub, "_unary_unary")
-
-        # Wrap it
-        async def wrapped_unary(
-            this,
-            route: str,
-            request: "_MessageLike",
-            response_type: Type[T],
-            *,
-            timeout: Optional[float] = None,
-            deadline: Optional["Deadline"] = None,
-            metadata: Optional["_MetadataLike"] = None,
-        ) -> Type[T]:
-            metadata = _update_metadata(route, self, metadata, request)
-            return await this._unary_unary_1(
-                route,
-                request,
-                response_type,
-                timeout=timeout,
-                deadline=deadline,
-                metadata=metadata,
-            )
-
-        stub._unary_unary = types.MethodType(wrapped_unary, stub)
-        stub._unary_unary_1 = _cls_unary_unary
-        return stub
+            call_metadata["authorization"] = self._security_provider.get_auth_header(
+                    AccountProfile().parse(
+                        data=base64.urlsafe_b64decode(self.service_options.auth_token)
+                    ),
+                    request,
+                )
+        return call_metadata
 
     @property
     def channel(self):

@@ -53,11 +53,11 @@ async def wallet_demo():
     print(f"item id = {item_id}")
 
     # searchWalletBasic() {
-    wallet_items = await trinsic.wallet.search()
+    wallet_items = await trinsic.wallet.search_wallet()
     # }
 
     # searchWalletSQL() {
-    wallet_items = await trinsic.wallet.search(
+    wallet_items = await trinsic.wallet.search_wallet(
         request=SearchRequest(
             query="SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'"
         )
