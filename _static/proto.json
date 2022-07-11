@@ -4533,6 +4533,7 @@
       "name": "FieldsEntry",
       "full_name": "services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest.FieldsEntry",
       "description": "",
+      "is_map_entry": true,
       "fields": [
         "services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest.FieldsEntry.key",
         "services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest.FieldsEntry.value"
@@ -4697,6 +4698,7 @@
       "name": "FieldsEntry",
       "full_name": "services.verifiablecredentials.templates.v1.TemplateData.FieldsEntry",
       "description": "",
+      "is_map_entry": true,
       "fields": [
         "services.verifiablecredentials.templates.v1.TemplateData.FieldsEntry.key",
         "services.verifiablecredentials.templates.v1.TemplateData.FieldsEntry.value"
@@ -4879,6 +4881,7 @@
       "name": "ValidationResultsEntry",
       "full_name": "services.verifiablecredentials.v1.VerifyProofResponse.ValidationResultsEntry",
       "description": "",
+      "is_map_entry": true,
       "fields": [
         "services.verifiablecredentials.v1.VerifyProofResponse.ValidationResultsEntry.key",
         "services.verifiablecredentials.v1.VerifyProofResponse.ValidationResultsEntry.value"
