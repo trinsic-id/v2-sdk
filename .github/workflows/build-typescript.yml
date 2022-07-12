@@ -5,7 +5,6 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
-      - 'node/**'
       - 'web/**'
       - 'proto/**'
       - '.github/workflows/*typescript*'
@@ -14,7 +13,6 @@ on:
     branches:
       - main
     paths:
-      - 'node/**'
       - 'web/**'
       - 'proto/**'
       - '.github/workflows/*typescript*'
@@ -28,12 +26,10 @@ jobs:
       fail-fast: false
       matrix:
         os: [ ubuntu-latest, windows-latest, macos-latest ]
-        target: [ "web" ]
         node-version: [ 14, 16, 18 ]
-        node-http-protocol: ["true", "false"]
     defaults:
       run:
-        working-directory: ${{ matrix.target }}
+        working-directory: web
     steps:
       - uses: actions/checkout@v1
       - uses: arduino/setup-protoc@v1
@@ -47,12 +43,11 @@ jobs:
           npm install
           npm run build
           npm run test
-        name: "Build and Test Package: Node v${{ matrix.node-version }} with HTTP1 protocol=${{ matrix.node-http-protocol }}"
+        name: "Build and Test Package: Node v${{ matrix.node-version }}"
         env:
           TEST_SERVER_ENDPOINT: ${{ secrets.TEST_SERVER_ENDPOINT }}
           TEST_SERVER_PORT: ${{ secrets.TEST_SERVER_PORT }}
           TEST_SERVER_USE_TLS: ${{ secrets.TEST_SERVER_USE_TLS }}
-          TEST_SERVER_NODE_PROTOCOL: ${{ matrix.node-http-protocol }}
         shell: pwsh
       - name: "Upload coverage to Codecov"
         uses: codecov/codecov-action@v2
