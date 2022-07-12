@@ -1,7 +1,6 @@
 // TODO - Include this only for node
 import { Hashing, Oberon, OkapiMetadata } from "@trinsic/okapi-node";
 import { AccountProfile } from "./proto/services/account/v1/account";
-import {TextDecoder, TextEncoder} from "util";
 // TODO - Include something else only for web
 
 export async function blake3HashRequest(
