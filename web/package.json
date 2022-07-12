@@ -37,8 +37,8 @@
   "license": "ISC",
   "dependencies": {
     "@improbable-eng/grpc-web-node-http-transport": "^0.15.0",
-    "@trinsic/okapi-node": "^1.6.1-rc1",
-    "@trinsic/okapi-web": "^1.6.1-rc1",
+    "@trinsic/okapi-node": "^1.6.1-rc2",
+    "@trinsic/okapi-web": "^1.6.1-rc2",
     "assert": "^2.0.0",
     "base64url": "^3.0.1",
     "buffer": "^6.0.3",
