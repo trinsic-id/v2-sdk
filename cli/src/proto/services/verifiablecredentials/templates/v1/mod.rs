@@ -32,8 +32,6 @@ pub struct SearchCredentialTemplatesResponse {
     /// Whether more results are available for this query via `continuation_token`
     #[prost(bool, tag = "2")]
     pub has_more: bool,
-    /// Count of items in `items_json`
-    /// int32 count = 3; unpopulated and unused
     /// Token to fetch next set of results via `SearchCredentialTemplatesRequest`
     #[prost(string, tag = "4")]
     pub continuation_token: ::prost::alloc::string::String,
@@ -225,6 +223,7 @@ pub mod credential_templates_client {
             self.inner = self.inner.accept_gzip();
             self
         }
+        #[doc = " Create a credential template in the current ecosystem"]
         pub async fn create(
             &mut self,
             request: impl tonic::IntoRequest<super::CreateCredentialTemplateRequest>,
@@ -237,6 +236,7 @@ pub mod credential_templates_client {
             let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.templates.v1.CredentialTemplates/Create");
             self.inner.unary(request.into_request(), path, codec).await
         }
+        #[doc = " Fetch a credential template by ID"]
         pub async fn get(
             &mut self,
             request: impl tonic::IntoRequest<super::GetCredentialTemplateRequest>,
@@ -249,6 +249,7 @@ pub mod credential_templates_client {
             let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.templates.v1.CredentialTemplates/Get");
             self.inner.unary(request.into_request(), path, codec).await
         }
+        #[doc = " Search credential templates using SQL, returning strongly-typed template data"]
         pub async fn list(
             &mut self,
             request: impl tonic::IntoRequest<super::ListCredentialTemplatesRequest>,
@@ -261,6 +262,7 @@ pub mod credential_templates_client {
             let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.templates.v1.CredentialTemplates/List");
             self.inner.unary(request.into_request(), path, codec).await
         }
+        #[doc = " Search credential templates using SQL, returning raw JSON data"]
         pub async fn search(
             &mut self,
             request: impl tonic::IntoRequest<super::SearchCredentialTemplatesRequest>,
@@ -273,6 +275,7 @@ pub mod credential_templates_client {
             let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.templates.v1.CredentialTemplates/Search");
             self.inner.unary(request.into_request(), path, codec).await
         }
+        #[doc = " Delete a credential template from the current ecosystem by ID"]
         pub async fn delete(
             &mut self,
             request: impl tonic::IntoRequest<super::DeleteCredentialTemplateRequest>,

@@ -12,7 +12,6 @@ pub struct SdkOptionsArgs {
     pub port: Option<u16>,
     pub use_tls: Option<bool>,
     pub auth_token: Option<String>,
-    pub default_ecosystem: Option<String>,
 }
 
 #[derive(Debug, PartialEq, Default)]
@@ -38,9 +37,6 @@ pub fn parse<'a>(args: &'a ArgMatches<'_>) -> ConfigCommand {
     }
     if args.is_present("auth-token") {
         config_args.options.auth_token = args.value_of("auth-token").map(|x| x.into());
-    }
-    if args.is_present("default-ecosystem") {
-        config_args.options.default_ecosystem = args.value_of("default-ecosystem").map(|x| x.into());
     }
 
     if config_args == ConfigArgs::default() {

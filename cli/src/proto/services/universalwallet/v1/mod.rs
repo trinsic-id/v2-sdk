@@ -20,7 +20,6 @@ pub struct SearchResponse {
     /// Whether more results are available for this query via `continuation_token`
     #[prost(bool, tag = "2")]
     pub has_more: bool,
-    // int32 count = 3;
     /// Token to fetch next set of results via `SearchRequest`
     #[prost(string, tag = "4")]
     pub continuation_token: ::prost::alloc::string::String,
@@ -155,7 +154,7 @@ pub mod universal_wallet_client {
             let path = http::uri::PathAndQuery::from_static("/services.universalwallet.v1.UniversalWallet/GetItem");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Search the wallet using a SQL-like syntax"]
+        #[doc = " Search the wallet using a SQL syntax"]
         pub async fn search(
             &mut self,
             request: impl tonic::IntoRequest<super::SearchRequest>,

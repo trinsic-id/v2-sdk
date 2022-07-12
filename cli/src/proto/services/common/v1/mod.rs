@@ -1,15 +1,3 @@
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
-pub struct ServerConfig {
-    /// service endpoint
-    #[prost(string, tag = "1")]
-    pub endpoint: ::prost::alloc::string::String,
-    /// service port
-    #[prost(int32, tag = "2")]
-    pub port: i32,
-    /// indicates if tls is used
-    #[prost(bool, tag = "3")]
-    pub use_tls: bool,
-}
 /// Nonce used to generate an oberon proof
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct Nonce {
