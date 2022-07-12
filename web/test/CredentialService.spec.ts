@@ -10,7 +10,7 @@ describe("CredentialService Unit Tests", () => {
   setTestTimeout();
   beforeAll(async () => {
     trinsic = new TrinsicService(options);
-    options.authToken = await trinsic.account().signIn();
+    options.authToken = await trinsic.account().loginAnonymous();
   });
 
   it("Issue Credential From Template", async () => {

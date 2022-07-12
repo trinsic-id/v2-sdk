@@ -12,18 +12,17 @@ import {
 const { nameField, numberOfBags, dateOfBirth, isVaccinated } =
   createRequiredTestObjects();
 
-let options: ServiceOptions = getTestServerOptions();
 let trinsic: TrinsicService;
 
 describe("Demo: Credential Templates", () => {
   setTestTimeout();
   beforeAll(async () => {
-    trinsic = new TrinsicService(options);
-    options.authToken = await trinsic.account().signIn();
+    trinsic = new TrinsicService(getTestServerOptions());
+    trinsic.options.authToken = await trinsic.account().loginAnonymous();
   });
 
   it("should run create credential templates", async () => {
-    let response = await createCredentialTemplateTest(options);
+    let response = await createCredentialTemplateTest(trinsic);
 
     // We use GUID's to prevent the "not an owner" error.
     expect(
@@ -39,7 +38,7 @@ describe("Demo: Credential Templates", () => {
 
   it("Issue Credential From Template", async () => {
     let response = JSON.parse(
-      (await issueCredentialFromTemplate(options)).documentJson
+      (await issueCredentialFromTemplate(trinsic)).documentJson
     );
 
     expect(response?.issuer).not.toBeNull();
@@ -54,7 +53,7 @@ describe("Demo: Credential Templates", () => {
 
   it("Verify Credential Issued from Template", async () => {
     let response = await verifyCredential(
-      options,
+      trinsic,
       JSON.stringify(templateCertFrame)
     );
     expect(response).toBeTruthy();

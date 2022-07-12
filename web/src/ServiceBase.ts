@@ -15,10 +15,7 @@ import {
 } from "./OkapiProvider";
 
 export default abstract class ServiceBase {
-  // TODO - Maybe move this into the `ServiceOptions` structure or something? This is a global flag
-  // public static useNodeHttpTransport: boolean = false;
   options: ServiceOptions;
-  address: string;
 
   protected constructor(
     options: ServiceOptions = ServiceOptions.fromPartial({})
@@ -29,10 +26,6 @@ export default abstract class ServiceBase {
       options.serverPort == 443 ? true : options.serverUseTls || false;
 
     this.options = options;
-
-    this.address = `${this.options.serverUseTls ? "https" : "http"}://${
-      this.options.serverEndpoint
-    }:${this.options.serverPort}`;
   }
 
   public static isNode(): boolean {
@@ -44,20 +37,19 @@ export default abstract class ServiceBase {
   }
 
   private static getLanguageMetadata(): string {
-      if (ServiceBase.isNode())
-          return "typescript-node";
-      else
-          return "typescript-web";
+    if (ServiceBase.isNode()) return "typescript-node";
+    else return "typescript-web";
   }
 
-  async buildMetadata(
-    request: Uint8Array | undefined = undefined
-  ): Promise<Metadata> {
+  async buildMetadata(request?: Uint8Array): Promise<Metadata> {
     const metadata = new Metadata();
     metadata.append("TrinsicOkapiVersion".toLowerCase(), await okapiVersion());
-    metadata.append("TrinsicSDKLanguage".toLowerCase(), ServiceBase.getLanguageMetadata());
+    metadata.append(
+      "TrinsicSDKLanguage".toLowerCase(),
+      ServiceBase.getLanguageMetadata()
+    );
     metadata.append("TrinsicSDKVersion".toLowerCase(), "unknown"); // TODO - Get this from npm?
-    if (request !== undefined) {
+    if (request != undefined || request != null) {
       if (!this.options.authToken) {
         throw new Error("auth token must be set");
       }
@@ -97,31 +89,22 @@ export default abstract class ServiceBase {
 
   protected transportFactory(): grpc.TransportFactory | undefined {
     // https://stackoverflow.com/questions/4224606/how-to-check-whether-a-script-is-running-under-node-js
-    try {
-      if (ServiceBase.isNode()) {
-        let impEng = require("@improbable-eng/grpc-web-node-http-transport");
-        return impEng.NodeHttpTransport();
-      }
-    } catch {}
+    if (ServiceBase.isNode()) {
+      let impEng = require("@improbable-eng/grpc-web-node-http-transport");
+      return impEng.NodeHttpTransport();
+    }
     return undefined;
   }
 
   protected createClient<ClientService extends ClientServiceDefinition>(
     definition: ClientService
   ): BrowserClient<ClientService> {
-    // ServerClient<ServerService> | BrowserClient<ClientService>
-    // if (!ServiceBase.isNode() || ServiceBase.useNodeHttpTransport) {
-    //   let clientMod = require("nice-grpc-web");
+    let address = `${this.options.serverUseTls ? "https" : "http"}://${
+      this.options.serverEndpoint
+    }:${this.options.serverPort}`;
     return createClient(
       definition as ClientService,
-      createChannel(this.address, this.transportFactory())
+      createChannel(address, this.transportFactory())
     );
-    // } else {
-    //   let serverMod = require("nice-grpc");
-    //   return serverMod.createClient(
-    //     definition,
-    //     serverMod.createChannel(this.address)
-    //   );
-    // }
   }
 }

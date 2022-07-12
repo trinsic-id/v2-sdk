@@ -21,7 +21,7 @@ describe("wallet service tests", () => {
   setTestTimeout();
   beforeAll(async () => {
     trinsic = new TrinsicService(options);
-    options.authToken = await trinsic.account().signIn();
+    options.authToken = await trinsic.account().loginAnonymous();
   });
 
   it("can retrieve account info", async () => {

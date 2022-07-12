@@ -1,7 +1,6 @@
-// TODO - Include this only for node
+// This is overridden by the `browser` field in package.json for web
 import { Hashing, Oberon, OkapiMetadata } from "@trinsic/okapi-node";
 import { AccountProfile } from "./proto/services/account/v1/account";
-// TODO - Include something else only for web
 
 export async function blake3HashRequest(
   requestData: Uint8Array
