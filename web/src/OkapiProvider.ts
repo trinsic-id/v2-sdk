@@ -40,6 +40,5 @@ export async function blindOberon(cloned: AccountProfile, securityCode: Uint8Arr
 }
 
 export async function okapiVersion(): Promise<string> {
-    const a = (await OkapiMetadata.getMetadata()).version;
-    return new TextDecoder().decode(new TextEncoder().encode(a));
+    return (await OkapiMetadata.getMetadata()).version;
 }
