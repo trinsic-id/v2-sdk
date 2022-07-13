@@ -143,11 +143,17 @@ export class AccountService extends ServiceBase {
     return authToken;
   }
 
-  public async loginAnonymous(): Promise<string> {
+  public async loginAnonymous(
+    ecosystemId?: string
+  ): Promise<string> {
+    ecosystemId ||= "default";
+
     const request = LoginRequest.fromPartial({
       email: "",
       invitationCode: "",
+      ecosystemId: ecosystemId
     });
+
     let response = await this.client.login(request);
     if (response.profile === undefined) {
       throw new Error("undefined profile returned");
