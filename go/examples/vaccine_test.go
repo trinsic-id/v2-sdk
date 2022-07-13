@@ -38,17 +38,14 @@ func TestVaccineDemo(t *testing.T) {
 	ecosystemId := ecosystem.Ecosystem.Id
 	// }
 
-	// Set service default ecosystem
-	trinsic.SetEcosystemId(ecosystemId)
-
 	// setupActors() {
 	// Create an account for each participant in the scenario
-	allison, _ := trinsic.Account().LoginAnonymous(context.Background())
-	airline, _ := trinsic.Account().LoginAnonymous(context.Background())
-	clinic, _ := trinsic.Account().LoginAnonymous(context.Background())
+	allison, _ := trinsic.Account().LoginAnonymous(context.Background(), ecosystemId)
+	airline, _ := trinsic.Account().LoginAnonymous(context.Background(), ecosystemId)
+	clinic, _ := trinsic.Account().LoginAnonymous(context.Background(), ecosystemId)
 	// }
 
-	trinsic.SetToken(clinic)
+	trinsic.SetAuthToken(clinic)
 	info, _ := trinsic.Account().GetInfo(context.Background())
 	fmt.Println("Account info:", info)
 
@@ -93,7 +90,7 @@ func TestVaccineDemo(t *testing.T) {
 
 	// storeCredential() {
 	// Allison stores the credential in her cloud wallet
-	trinsic.SetToken(allison)
+	trinsic.SetAuthToken(allison)
 	insertResponse, _ := trinsic.Wallet().InsertItem(context.Background(), &wallet.InsertItemRequest{ItemJson: issuedCredential})
 
 	itemId := insertResponse.ItemId
@@ -102,7 +99,7 @@ func TestVaccineDemo(t *testing.T) {
 
 	// shareCredential() {
 	// Allison shares the credential with the airline
-	trinsic.SetToken(allison)
+	trinsic.SetAuthToken(allison)
 	proofResponse, _ := trinsic.Credential().CreateProof(context.Background(), &credential.CreateProofRequest{
 		Proof: &credential.CreateProofRequest_ItemId{ItemId: itemId},
 	})
@@ -114,7 +111,7 @@ func TestVaccineDemo(t *testing.T) {
 
 	// verifyCredential() {
 	// The airline verifies the credential
-	trinsic.SetToken(airline)
+	trinsic.SetAuthToken(airline)
 	verifyResult, _ := trinsic.Credential().VerifyProof(context.Background(), &credential.VerifyProofRequest{ProofDocumentJson: credentialProof})
 	valid := verifyResult.IsValid
 	// }
