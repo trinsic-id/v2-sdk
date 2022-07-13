@@ -42,9 +42,9 @@ def vaccine_demo_run
 
   # setupActors() {
   # Create an account for each participant in the scenario
-  allison = trinsic.account_service.login_anonymous
-  clinic = trinsic.account_service.login_anonymous
-  airline = trinsic.account_service.login_anonymous
+  allison = trinsic.account_service.login_anonymous(ecosystem_id)
+  clinic = trinsic.account_service.login_anonymous(ecosystem_id)
+  airline = trinsic.account_service.login_anonymous(ecosystem_id)
   # }
 
   trinsic.auth_token = clinic

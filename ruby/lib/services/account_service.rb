@@ -63,8 +63,12 @@ module Trinsic
       encoded_profile
     end
 
-    def login_anonymous
-      response = login
+    def login_anonymous(ecosystem_id = nil)
+      ecosystem_id ||= "default"
+
+      request = Account::LoginRequest.new(ecosystem_id: ecosystem_id)
+      response = login(request)
+      
       raise Error('nil profile returned') if response.profile.nil?
       raise Error('protected profile returned') if response.profile.protection.enabled
 
