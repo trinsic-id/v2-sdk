@@ -128,13 +128,18 @@ class AccountService(ServiceBase):
         self.service_options.auth_token = auth_token
         return auth_token
 
-    async def login_anonymous(self) -> string:
+    async def login_anonymous(self, *, ecosystem_id: string = None) -> string:
         """
-        Create an anonymous account in the current ecosystem
+        Create an anonymous account in the given ecosystem
+        Args:
+            ecosystem_id: ID of ecosystem to sign into; defaults to "default" if unspecified
         Returns:
             Authentication token for newly-created account
         """
-        response = await self.login(request=LoginRequest())
+
+        ecosystem_id = ecosystem_id or "default"
+
+        response = await self.login(request=LoginRequest(ecosystem_id=ecosystem_id))
         auth_token = base64.urlsafe_b64encode(bytes(response.profile)).decode("utf-8")
 
         self.service_options.auth_token = auth_token
