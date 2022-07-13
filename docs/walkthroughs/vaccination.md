@@ -50,17 +50,25 @@ You can follow along using one of our SDKs, or use the Trinsic CLI, which implem
 
 ---
 
-## Create an Ecosystem
+## Ecosystem Setup
 
-The first step is to create an [ecosystem](/learn/concepts/ecosystems/), within which everything else (wallets, templates, and credentials) will live.
+Before we begin, you'll need an [ecosystem](/learn/concepts/ecosystems) -- somewhere for the resources we're about to create (wallets, templates, credentials) to live.
+
+### Use Existing Ecosystem
+
+If you've already [signed up as a customer](https://form.typeform.com/to/EIO26xym){target:_blank}, you'll have received an email with an ecosystem ID and authentication token. 
+
+Copy this ecosystem ID down, and [skip to the next step](#create-accounts).
+
+### Create New Ecosystem
+
+If you don't already have an ecosystem provisioned for you, you'll need to create one first. 
+
+This will be a *sandbox* ecosystem; suitable for prototyping and testing, but not production purposes. To receive a production ecosystem, [sign up](https://form.typeform.com/to/EIO26xym){target:_blank}.
 
 === "Trinsic CLI"
     ```
-    # First, create an ecosystem...
     trinsic provider create-ecosystem
-
-    #... then, configure the CLI to use it for future logins
-    trinsic config --default-ecosystem {ECOSYSTEM_ID}
     ```
     
 === "Typescript"
@@ -113,6 +121,8 @@ The response to this call contains the name and ID of your newly-created ecosyst
     - Learn more about [Ecosystems](/learn/concepts/ecosystems){target=_blank}
     - Browse the [Provider API reference](/reference/services/provider-service/){target=_blank}
 
+---
+
 ## Create Accounts
 
 We need to create Trinsic accounts for the participants in this credential exchange. Accounts and wallets can be considered interchangeably; all accounts have exactly one associated wallet.
@@ -127,13 +137,13 @@ The clinic's account will **issue** the credential, Allison's account will **hol
     When using the CLI, the authentication token of the most recently used account is saved in `~/.trinsic`. In a real-world scenario, you should back this token up securely.
 
     ```bash
-    trinsic account login --name "Allison"
+    trinsic account login --ecosystem {ECOSYSTEM_ID} --name "Allison"
     # Save auth token in `allison.txt` before continuing
 
-    trinsic account login --name "Airline"
+    trinsic account login --ecosystem {ECOSYSTEM_ID} --name "Airline"
     # Save auth token in `airline.txt` before continuing
 
-    trinsic account login --name "Vaccination Clinic"
+    trinsic account login --ecosystem {ECOSYSTEM_ID} --name "Vaccination Clinic"
     # Save auth token in `clinic.txt` before continuing
     ```
 
