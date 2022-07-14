@@ -335,7 +335,9 @@ service Provider {
     rpc InvitationStatus(InvitationStatusRequest) returns (InvitationStatusResponse);
 
     // Returns the public key being used to create/verify oberon tokens
-    rpc GetOberonKey(GetOberonKeyRequest) returns (GetOberonKeyResponse);
+    rpc GetOberonKey(GetOberonKeyRequest) returns (GetOberonKeyResponse) {
+        option (options.sdk_template_option).anonymous = true;
+    }
 
     // Generate a signed token (JWT) that can be used to connect to the message bus
     rpc GetEventToken(GetEventTokenRequest) returns (GetEventTokenResponse);
