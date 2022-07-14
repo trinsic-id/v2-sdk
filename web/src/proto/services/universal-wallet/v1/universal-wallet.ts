@@ -1,5 +1,4 @@
 /* eslint-disable */
-import Long from "long";
 import * as _m0 from "protobufjs/minimal";
 
 /** Request to search items in wallet */
@@ -708,11 +707,6 @@ type DeepPartial<T> = T extends Builtin
   : T extends {}
   ? { [K in keyof T]?: DeepPartial<T[K]> }
   : Partial<T>;
-
-if (_m0.util.Long !== Long) {
-  _m0.util.Long = Long as any;
-  _m0.configure();
-}
 
 function isSet(value: any): boolean {
   return value !== null && value !== undefined;

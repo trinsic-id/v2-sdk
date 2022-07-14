@@ -146,9 +146,7 @@ class ProviderService(ServiceBase):
         """
         Returns the public key being used to create/verify oberon tokens
         """
-        return await self.client.get_oberon_key(
-            request, metadata=self.build_metadata(request)
-        )
+        return await self.client.get_oberon_key(request, metadata=self.build_metadata())
 
     async def get_event_token(
         self, *, request: GetEventTokenRequest

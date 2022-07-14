@@ -34,12 +34,11 @@ public class WalletService : ServiceBase
     ///     See https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-select
     /// </remarks>
     /// <returns></returns>
-    public async Task<SearchResponse> SearchAsync(SearchRequest request) {
+    public async Task<SearchResponse> SearchWalletAsync(SearchRequest request) {
         if (string.IsNullOrWhiteSpace(request.Query))
             request.Query = "SELECT c.id, c.type, c.data FROM c OFFSET 0 LIMIT 100";
 
-        var response = await Client.SearchAsync(request, await BuildMetadataAsync(request));
-        return response;
+        return await SearchAsync(request);
     }
 
     /// <summary>
@@ -49,12 +48,11 @@ public class WalletService : ServiceBase
     ///     See https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-select
     /// </remarks>
     /// <returns></returns>
-    public SearchResponse Search(SearchRequest request) {
+    public SearchResponse SearchWallet(SearchRequest request) {
         if (string.IsNullOrWhiteSpace(request.Query))
             request.Query = "SELECT c.id, c.type, c.data FROM c OFFSET 0 LIMIT 100";
 
-        var response = Client.Search(request, BuildMetadata(request));
-        return response;
+        return Search(request);
     }
 
     
@@ -75,7 +73,21 @@ public class WalletService : ServiceBase
         return await Client.GetItemAsync(request, await BuildMetadataAsync(request));
     }
 
-    /// <summary>
+	/// <summary>
+    /// Search the wallet using a SQL syntax
+    /// </summary>	
+    public SearchResponse Search(SearchRequest request) {
+        return Client.Search(request, BuildMetadata(request));
+    }
+	
+	/// <summary>
+    /// Search the wallet using a SQL syntax
+    /// </summary>	
+    public async Task<SearchResponse> SearchAsync(SearchRequest request) {
+        return await Client.SearchAsync(request, await BuildMetadataAsync(request));
+    }
+
+	/// <summary>
     /// Insert an item into the wallet
     /// </summary>	
     public InsertItemResponse InsertItem(InsertItemRequest request) {

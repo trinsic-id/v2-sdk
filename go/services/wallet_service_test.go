@@ -29,7 +29,7 @@ func TestWalletService(t *testing.T) {
 	assert2.Nil(err)
 
 	// searchWalletBasic() {
-	searchResponse, err := trinsic.Wallet().Search(context.Background(), &wallet.SearchRequest{})
+	searchResponse, err := trinsic.Wallet().SearchWallet(context.Background(), &wallet.SearchRequest{})
 	// }
 
 	assert2.NotNil(searchResponse)

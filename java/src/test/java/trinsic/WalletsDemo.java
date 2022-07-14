@@ -49,7 +49,7 @@ public class WalletsDemo {
     // Abuse scope to allow redeclaration of walletItems for docs injection niceness
     {
       // searchWalletBasic() {
-      var walletItems = trinsic.wallet().search().get();
+      var walletItems = trinsic.wallet().searchWallet().get();
       // }
 
       Assertions.assertNotNull(walletItems);

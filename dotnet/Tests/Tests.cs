@@ -96,13 +96,13 @@ public class Tests
         var itemId = insertItemResponse.ItemId;
 
         // searchWalletBasic() {
-        var walletItems = await trinsic.Wallet.SearchAsync(new());
+        var walletItems = await trinsic.Wallet.SearchWalletAsync(new());
         // }
 
         _testOutputHelper.WriteLine($"Last wallet item:\n{walletItems.Items.Last()}");
 
         // searchWalletSQL() { 
-        var walletItems2 = await trinsic.Wallet.SearchAsync(new() {Query = "SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'"});
+        var walletItems2 = await trinsic.Wallet.SearchWalletAsync(new() {Query = "SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'"});
         // }
 
         // SHARE CREDENTIAL

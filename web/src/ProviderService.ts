@@ -127,8 +127,8 @@ export class ProviderService extends ServiceBase {
   public async getOberonKey(
     request: GetOberonKeyRequest
   ): Promise<GetOberonKeyResponse> {
-    return await this.client.getOberonKey(request, {
-      metadata: await this.buildMetadata(GetOberonKeyRequest.encode(request).finish())
+    return this.client.getOberonKey(request, {
+      metadata: await this.buildMetadata()
     });
   }
   public async getEventToken(

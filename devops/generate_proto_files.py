@@ -166,6 +166,7 @@ def run_protoc(
     command_args = [arg for arg in command_args if arg]
     logging.info(command_args)
     if os.system(" ".join(command_args)) != 0:
+        logging.error(command_args)
         raise Exception("protoc failed")
 
 
@@ -349,7 +350,7 @@ def parse_arguments():
 
 def main():
     logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
-    logging.getLogger().setLevel(logging.INFO)
+    logging.getLogger().setLevel(logging.WARN)
     # Get command line arguments
     args = parse_arguments()
     langs_to_build = [lang.lower() for lang in (args.language + ",").split(",")]
