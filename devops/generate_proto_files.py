@@ -148,28 +148,20 @@ def run_protoc(
 ) -> None:
     proto_path_string = f'--proto_path="{get_language_dir(proto_path or "proto")}"'
     plugin_string = f"--plugin={plugin}" if plugin else ""
+    command_args = [protoc_executable, plugin_string, proto_path_string, join_args(language_options),
+                    join_args(custom_options), proto_files]
+    # Regularize 2D array and flatten
     command_args = [
-        protoc_executable,
-        plugin_string,
-        proto_path_string,
-        join_args(language_options),
-        join_args(custom_options),
+        arg_list if isinstance(arg_list, list) else [arg_list]
+        for arg_list in command_args
     ]
-    # Because of the length of some command line arguments, we have to compile each file individually
-    for proto_file in proto_files:
-        command_args.append(proto_file)
-        # Regularize 2D array and flatten
-        command_args = [
-            arg_list if isinstance(arg_list, list) else [arg_list]
-            for arg_list in command_args
-        ]
-        command_args = list(itertools.chain(*command_args))
-        # Strip blank arguments because protoc WILL DIE, and do so passive-aggressive
-        command_args = [arg for arg in command_args if arg]
-        logging.info(command_args)
-        if os.system(" ".join(command_args)) != 0:
-            logging.error(command_args)
-            raise Exception("protoc failed")
+    command_args = list(itertools.chain(*command_args))
+    # Strip blank arguments because protoc WILL DIE, and do so passive-aggressive
+    command_args = [arg for arg in command_args if arg]
+    logging.info(command_args)
+    if os.system(" ".join(command_args)) != 0:
+        logging.error(command_args)
+        raise Exception("protoc failed")
 
 
 def update_golang():
