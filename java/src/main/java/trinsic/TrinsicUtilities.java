@@ -3,8 +3,9 @@ package trinsic;
 import com.google.gson.Gson;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import java.util.HashMap;
 import trinsic.sdk.options.v1.Options;
+
+import java.util.HashMap;
 
 public class TrinsicUtilities {
 
@@ -43,5 +44,10 @@ public class TrinsicUtilities {
     if (!config.getServerUseTls()) channelBuilder = channelBuilder.usePlaintext();
     else channelBuilder = channelBuilder.useTransportSecurity();
     return channelBuilder.build();
+  }
+
+  public static String getSdkVersion() {
+    final String sdkVersion = "1.0.0";
+    return sdkVersion;
   }
 }

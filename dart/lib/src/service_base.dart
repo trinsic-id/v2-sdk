@@ -36,8 +36,7 @@ class ServiceBase {
     var metadata = <String, String>{};
     metadata['TrinsicOkapiVersion'] = okapi.Metadata.getMetadata().version;
     metadata['TrinsicSDKLanguage'] = "dart";
-    // TODO - embed a constant in this module to specify the version explicitly.
-    metadata['TrinsicSDKVersion'] = "unknown";
+    metadata['TrinsicSDKVersion'] = getSdkVersion();
 
     if (request != null) {
       if (serviceOptions.authToken == "") {
