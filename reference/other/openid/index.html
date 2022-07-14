@@ -1814,46 +1814,64 @@
 </div>
 <h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
 <p>Configure your OIDC library with the following parameters:</p>
-<ul>
-<li><code>authority</code><ul>
-<li>Must be <code>https://connect.trinsic.cloud/</code></li>
-</ul>
-</li>
-<li><code>response_type</code><ul>
-<li>Must be <code>code</code></li>
-</ul>
-</li>
-<li><code>scope</code><ul>
-<li>Must be <code>openid</code></li>
-</ul>
-</li>
-<li><code>client_id</code><ul>
-<li>Any string which uniquely represents your client application</li>
-<li>In future, we may require registration of client IDs with Trinsic</li>
-</ul>
-</li>
-<li><code>redirect_uri</code><ul>
-<li>The URI your user should be redirected to once they have completed (or canceled) the flow</li>
-</ul>
-</li>
-<li><strong>Additional Query Parameters</strong><ul>
-<li><code>trinsic:ecosystem</code><ul>
-<li>Name of Ecosystem to fetch credentials from</li>
-<li>Only credentials which were issued within this Ecosystem may be returned</li>
-</ul>
-</li>
-<li><code>trinsic:schema</code><ul>
-<li>Comma-separated list of Schema URLs</li>
-<li>Only credentials which match one of these schemas may be returned</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>General Parameters</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>authority</code></td>
+<td><code>https://connect.trinsic.cloud</code></td>
+</tr>
+<tr>
+<td><code>response_type</code></td>
+<td><code>code</code></td>
+</tr>
+<tr>
+<td><code>scope</code></td>
+<td><code>openid</code></td>
+</tr>
+<tr>
+<td><code>client_id</code></td>
+<td>Any string which uniquely represents your client application</td>
+</tr>
+<tr>
+<td><code>redirect_uri</code></td>
+<td>The URI your user should be redirected to once they have completed (or canceled) the flow</td>
+</tr>
+<tr>
+<td><strong>Trinsic-Specific Parameters</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><code>trinsic:ecosystem</code></td>
+<td>ID of ecosystem user wallet resides in</td>
+</tr>
+<tr>
+<td><code>trinsic:schema</code></td>
+<td><em>(Optional)</em> Comma-separated listed of Schema URLs. Only credentials which match one of these schemas will be returned.</td>
+</tr>
+<tr>
+<td><code>trinsic:issuer</code></td>
+<td><em>(Optional)</em> Comma-separated list of Issuer DIDs. Only credentials issued by one of these issuers will be returned.</td>
+</tr>
+<tr>
+<td><code>trinsic:egf</code></td>
+<td><em>(Optional)</em> Comma-separated list of <a href="/learn/concepts/trust-registries">Entity Governance Framework</a> IDs. Only credentials bound to one of these EGF IDs will be returned.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="response-data">Response Data<a class="headerlink" href="#response-data" title="Permanent link">&para;</a></h3>
 <p>Once the user has returned to your redirect URL, exchange the authorization code (added to your redirect URI as a query parameter named <code>code</code>) for an identity token using your OIDC library.</p>
 <p>You will receive a JSON object of the following form:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><span class="filename">Response JSON</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;id_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{JWT containing same data as vp_token}&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;access_token&quot;</span><span class="p">:</span><span class="s2">&quot;invalid&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;token_type&quot;</span><span class="p">:</span><span class="s2">&quot;Bearer&quot;</span><span class="p">,</span><span class="w"></span>
