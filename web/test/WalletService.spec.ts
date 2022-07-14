@@ -79,7 +79,7 @@ describe("wallet service tests", () => {
 
     let template = await trinsic
       .template()
-      .createCredentialTemplate(templateRequest);
+      .create(templateRequest);
 
     expect(template).not.toBeNull();
     expect(template!.data).not.toBeNull();

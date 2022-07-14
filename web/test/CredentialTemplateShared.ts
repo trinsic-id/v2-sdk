@@ -108,7 +108,7 @@ export async function createCredentialTemplateTest(
     },
   });
 
-  let response = await trinsic.template().createCredentialTemplate(request);
+  let response = await trinsic.template().create(request);
   // }
 
   return response;

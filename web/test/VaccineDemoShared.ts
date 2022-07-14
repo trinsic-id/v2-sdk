@@ -133,7 +133,7 @@ async function doTemplate(
   //Create template
   const response = await trinsicService
     .template()
-    .createCredentialTemplate(request);
+    .create(request);
   const template = response.data;
   // }
 
