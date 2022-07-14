@@ -198,6 +198,7 @@ service Account {
 
     // Finalize login flow with two-factor confirmation code
     rpc LoginConfirm        (LoginConfirmRequest)       returns (LoginConfirmResponse) {
+        option (options.sdk_template_option).anonymous = true;
         option (options.sdk_template_option).ignore = true;
     }
 

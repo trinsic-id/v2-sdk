@@ -30,9 +30,9 @@ export async function vaccineDemo() {
 
   // setupActors() {
   // Create 3 different profiles for each participant in the scenario
-  const allison = await trinsic.account().loginAnonymous();
-  const clinic = await trinsic.account().loginAnonymous();
-  const airline = await trinsic.account().loginAnonymous();
+  const allison = await trinsic.account().loginAnonymous(ecosystemId);
+  const clinic = await trinsic.account().loginAnonymous(ecosystemId);
+  const airline = await trinsic.account().loginAnonymous(ecosystemId);
   // }
 
   trinsic.options.authToken = clinic;

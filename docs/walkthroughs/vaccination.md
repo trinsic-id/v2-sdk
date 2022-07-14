@@ -44,15 +44,27 @@ You can follow along using one of our SDKs, or use the Trinsic CLI, which implem
 
 === "Go"
     [Click here](/go/){target=_blank} for installation instructions for the Go SDK.
-   
+
 === "Ruby"
-    [Click here](/ruby/){target=_blank} for installation instructions for the Ruby   SDK.
+    [Click here](/ruby/){target=_blank} for installation instructions for the Ruby SDK.
 
 ---
 
-## Create an Ecosystem
+## Ecosystem Setup
 
-The first step is to create an [ecosystem](/learn/concepts/ecosystems/), within which everything else (wallets, templates, and credentials) will live.
+Before we begin, you'll need an [ecosystem](/learn/concepts/ecosystems) -- somewhere for the resources we're about to create (wallets, templates, credentials) to live.
+
+### Use Existing Ecosystem
+
+If you've already [signed up as a customer](https://form.typeform.com/to/EIO26xym){target:_blank}, you'll have received an email with an ecosystem ID and authentication token. 
+
+Copy this ecosystem ID down, and [skip to the next step](#create-accounts).
+
+### Create New Ecosystem
+
+If you don't already have an ecosystem provisioned for you, you'll need to create one first. 
+
+This will be a *sandbox* ecosystem; suitable for prototyping and testing, but not production purposes. To receive a production ecosystem, [sign up](https://form.typeform.com/to/EIO26xym){target:_blank}.
 
 === "Trinsic CLI"
     ```
@@ -103,78 +115,13 @@ The first step is to create an [ecosystem](/learn/concepts/ecosystems/), within 
 
 The response to this call contains the name and ID of your newly-created ecosystem; copy either of these down.
 
-### Configure SDK for Created Ecosystem
-
-Once we've created our ecosystem, we need to configure our SDK client (or CLI) to use it as the default ecosystem for all service calls in the rest of the walkthrough.
-
-=== "Trinsic CLI"
-    ```
-    trinsic config --default-ecosystem "{ECOSYSTEM_NAME_OR_ID}"
-    ```
-    
-=== "Typescript"
-    ```typescript
-    // Either configure defaultEcosystem during instantiation of an SDK service...
-    const options = ServiceOptions.fromPartial({
-        defaultEcosystem: "{ECOSYSTEM_NAME_OR_ID}"
-    });
-
-    const providerService = new ProviderService(options); 
-
-    //...or after instantiation
-    providerService.options.defaultEcosystem = "{ECOSYSTEM_NAME_OR_ID}";
-    ```
-
-=== "C#"
-    ```csharp
-    // Either configure DefaultEcosystem during instantiation of an SDK service...
-    var providerService = new ProviderService(new()
-    {
-        DefaultEcosystem = "{ECOSYSTEM_NAME_OR_ID}"
-    });
-
-    //...or after instantiation
-    providerService.Options.DefaultEcosystem = "{ECOSYSTEM_NAME_OR_ID}";
-    ```
-
-=== "Python"
-    ```python
-    from trinsic.trinsic_util import trinsic_config
-
-    # Either configure default_ecosystem during instantiation of an SDK service...
-    config = trinsic_config()
-    config.default_ecosystem = "{ECOSYSTEM_NAME_OR_ID}"
-    provider_service = ProviderService(server_config=config)
-
-    # ...or after instantiation
-    provider_service.service_options.default_ecosystem = "{ECOSYSTEM_NAME_OR_ID}"
-    ```
-
-=== "Java"
-    ```java
-    var options = TrinsicUtilities.getTrinsicServiceOptions();
-    options = options
-              .toBuilder()
-              .setDefaultEcosystem("ECOSYSTEM_ID_OR_NAME")
-              .build();
-    var accountService = new AccountService(options);
-    ```
-
-=== "Go"
-    ```go
-    ///Either configure DefaultEcosystem during instantiation of an SDK service...
-    opts, _ := sdk.NewServiceOptions()
-    providerService, _ := sdk.NewProviderService(opts)
-
-    //...or after instantiation
-    providerService.options.ServiceOptions.DefaultEcosystem = "{ECOSYSTEM_NAME_OR_ID}"
-
-    ```
 
 !!! info "Further Reading: Ecosystems"
 
     - Learn more about [Ecosystems](/learn/concepts/ecosystems){target=_blank}
     - Browse the [Provider API reference](/reference/services/provider-service/){target=_blank}
+
+---
 
 ## Create Accounts
 
@@ -190,13 +137,13 @@ The clinic's account will **issue** the credential, Allison's account will **hol
     When using the CLI, the authentication token of the most recently used account is saved in `~/.trinsic`. In a real-world scenario, you should back this token up securely.
 
     ```bash
-    trinsic account login --name "Allison"
+    trinsic account login --ecosystem {ECOSYSTEM_ID} --name "Allison"
     # Save auth token in `allison.txt` before continuing
 
-    trinsic account login --name "Airline"
+    trinsic account login --ecosystem {ECOSYSTEM_ID} --name "Airline"
     # Save auth token in `airline.txt` before continuing
 
-    trinsic account login --name "Vaccination Clinic"
+    trinsic account login --ecosystem {ECOSYSTEM_ID} --name "Vaccination Clinic"
     # Save auth token in `clinic.txt` before continuing
     ```
 
