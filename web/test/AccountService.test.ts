@@ -59,7 +59,7 @@ describe("AccountService Unit Tests", () => {
 
   it("protect/unprotect account profile", async () => {
     let trinsic = new TrinsicService(options);
-    let myProfile = await trinsic.account().signIn();
+    let myProfile = await trinsic.account().loginAnonymous();
     await printGetInfo(trinsic, myProfile);
 
     const code = "1234";

@@ -27,24 +27,19 @@ Because this is an OpenID Connect service, any compliant library may be used -- 
 
 Configure your OIDC library with the following parameters:
 
-- `authority`
-    - Must be `https://connect.trinsic.cloud/`
-- `response_type`
-    - Must be `code`
-- `scope`
-    - Must be `openid`
-- `client_id`
-    - Any string which uniquely represents your client application
-    - In future, we may require registration of client IDs with Trinsic
-- `redirect_uri`
-    - The URI your user should be redirected to once they have completed (or canceled) the flow
-- **Additional Query Parameters**
-    - `trinsic:ecosystem`
-        - Name of Ecosystem to fetch credentials from
-        - Only credentials which were issued within this Ecosystem may be returned
-    - `trinsic:schema`
-        - Comma-separated list of Schema URLs
-        - Only credentials which match one of these schemas may be returned
+| Parameter                       | Description                                                                                                                                                                |
+| ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **General Parameters**          |
+| `authority`                     | `https://connect.trinsic.cloud`                                                                                                                                            |
+| `response_type`                 | `code`                                                                                                                                                                     |
+| `scope`                         | `openid`                                                                                                                                                                   |
+| `client_id`                     | Any string which uniquely represents your client application                                                                                                               |
+| `redirect_uri`                  | The URI your user should be redirected to once they have completed (or canceled) the flow                                                                                  |
+| **Trinsic-Specific Parameters** |
+| `trinsic:ecosystem`             | ID of ecosystem user wallet resides in                                                                                                                                     |
+| `trinsic:schema`                | *(Optional)* Comma-separated listed of Schema URLs. Only credentials which match one of these schemas will be returned.                                                    |
+| `trinsic:issuer`                | *(Optional)* Comma-separated list of Issuer DIDs. Only credentials issued by one of these issuers will be returned.                                                        |
+| `trinsic:egf`                   | *(Optional)* Comma-separated list of [Entity Governance Framework](/learn/concepts/trust-registries) IDs. Only credentials bound to one of these EGF IDs will be returned. |
 
 ### Response Data
 
@@ -52,7 +47,7 @@ Once the user has returned to your redirect URL, exchange the authorization code
 
 You will receive a JSON object of the following form:
 
-```json
+```json title="Response JSON"
 {
     "id_token": "{JWT containing same data as vp_token}",
     "access_token":"invalid",

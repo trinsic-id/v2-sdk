@@ -34,49 +34,49 @@ export class CredentialService extends ServiceBase {
   public async issue(
     request: IssueRequest
   ): Promise<IssueResponse> {
-    return this.client.issue(request, {
+    return await this.client.issue(request, {
       metadata: await this.buildMetadata(IssueRequest.encode(request).finish())
     });
   }
   public async issueFromTemplate(
     request: IssueFromTemplateRequest
   ): Promise<IssueFromTemplateResponse> {
-    return this.client.issueFromTemplate(request, {
+    return await this.client.issueFromTemplate(request, {
       metadata: await this.buildMetadata(IssueFromTemplateRequest.encode(request).finish())
     });
   }
   public async checkStatus(
     request: CheckStatusRequest
   ): Promise<CheckStatusResponse> {
-    return this.client.checkStatus(request, {
+    return await this.client.checkStatus(request, {
       metadata: await this.buildMetadata(CheckStatusRequest.encode(request).finish())
     });
   }
   public async updateStatus(
     request: UpdateStatusRequest
   ): Promise<UpdateStatusResponse> {
-    return this.client.updateStatus(request, {
+    return await this.client.updateStatus(request, {
       metadata: await this.buildMetadata(UpdateStatusRequest.encode(request).finish())
     });
   }
   public async createProof(
     request: CreateProofRequest
   ): Promise<CreateProofResponse> {
-    return this.client.createProof(request, {
+    return await this.client.createProof(request, {
       metadata: await this.buildMetadata(CreateProofRequest.encode(request).finish())
     });
   }
   public async verifyProof(
     request: VerifyProofRequest
   ): Promise<VerifyProofResponse> {
-    return this.client.verifyProof(request, {
+    return await this.client.verifyProof(request, {
       metadata: await this.buildMetadata(VerifyProofRequest.encode(request).finish())
     });
   }
   public async send(
     request: SendRequest
   ): Promise<SendResponse> {
-    return this.client.send(request, {
+    return await this.client.send(request, {
       metadata: await this.buildMetadata(SendRequest.encode(request).finish())
     });
   }
