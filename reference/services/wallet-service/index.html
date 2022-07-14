@@ -1881,19 +1881,19 @@ store any JSON blob.</p>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">walletItems</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Wallet</span><span class="p">.</span><span class="n">SearchAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">walletItems</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Wallet</span><span class="p">.</span><span class="n">SearchWalletAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">wallet_items</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">search</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">wallet_items</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic</span><span class="o">.</span><span class="n">wallet</span><span class="o">.</span><span class="n">search_wallet</span><span class="p">()</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nx">searchResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">().</span><span class="nx">Search</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">wallet</span><span class="p">.</span><span class="nx">SearchRequest</span><span class="p">{})</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nx">searchResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">().</span><span class="nx">SearchWallet</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">wallet</span><span class="p">.</span><span class="nx">SearchRequest</span><span class="p">{})</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">walletItems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">wallet</span><span class="p">().</span><span class="na">search</span><span class="p">().</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">walletItems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">wallet</span><span class="p">().</span><span class="na">searchWallet</span><span class="p">().</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>
