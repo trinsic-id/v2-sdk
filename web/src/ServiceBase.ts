@@ -43,12 +43,12 @@ export default abstract class ServiceBase {
 
   async buildMetadata(request?: Uint8Array): Promise<Metadata> {
     const metadata = new Metadata();
-    metadata.append("TrinsicOkapiVersion".toLowerCase(), await okapiVersion());
+    metadata.append("trinsicokapiversion", await okapiVersion());
     metadata.append(
-      "TrinsicSDKLanguage".toLowerCase(),
+      "trinsicsdklanguage".toLowerCase(),
       ServiceBase.getLanguageMetadata()
     );
-    metadata.append("TrinsicSDKVersion".toLowerCase(), "unknown"); // TODO - Get this from npm?
+    metadata.append("trinsicsdkversion".toLowerCase(), "unknown"); // TODO - Get this from npm?
     if (request != undefined || request != null) {
       if (!this.options.authToken) {
         throw new Error("auth token must be set");
