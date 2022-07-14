@@ -25,9 +25,9 @@ let trinsic = new TrinsicService(options);
 describe("WalletService Unit Tests", () => {
   setTestTimeout();
   beforeAll(async () => {
-    allison.authToken = await trinsic.account().signIn();
-    clinic.authToken = await trinsic.account().signIn();
-    airline.authToken = await trinsic.account().signIn();
+    allison.authToken = await trinsic.account().loginAnonymous();
+    clinic.authToken = await trinsic.account().loginAnonymous();
+    airline.authToken = await trinsic.account().loginAnonymous();
   });
 
   it("get account info", async () => {
@@ -37,7 +37,7 @@ describe("WalletService Unit Tests", () => {
   });
 
   it("create new account", async () => {
-    let response = await trinsic.account().signIn();
+    let response = await trinsic.account().loginAnonymous();
 
     expect(response).not.toBeNull();
     expect(response).not.toBe("");

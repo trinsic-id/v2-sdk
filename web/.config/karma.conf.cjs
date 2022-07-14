@@ -17,7 +17,7 @@ module.exports = async (config) => {
         singleRun: true,  // run and exit for CI pipelines, lol
 
         client: {
-            clearContext: false, // will show the results in browser once all the testcases are loaded
+            clearContext: true, // will show the results in browser once all the testcases are loaded
         },
 
         reporters: ["kjhtml", "progress"],

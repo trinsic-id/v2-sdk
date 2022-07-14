@@ -1,17 +1,14 @@
 import {
-    AccountProfile,
-    CreateCredentialTemplateRequest,
-    CreateEcosystemRequest,
-    CreateProofRequest,
-    FieldType,
-    InsertItemRequest,
-    IssueFromTemplateRequest,
-    TemplateField,
-    TrinsicService,
+  CreateCredentialTemplateRequest,
+  CreateEcosystemRequest,
+  FieldType,
+  InsertItemRequest,
+  IssueFromTemplateRequest,
+  TemplateField,
+  TrinsicService,
 } from "../src";
 import { getTestServerOptions, setTestTimeout } from "./env";
 import { v4 as uuid } from "uuid";
-import base64url from "base64url";
 
 let options = getTestServerOptions();
 
@@ -21,7 +18,7 @@ describe("wallet service tests", () => {
   setTestTimeout();
   beforeAll(async () => {
     trinsic = new TrinsicService(options);
-    options.authToken = await trinsic.account().signIn();
+    options.authToken = await trinsic.account().loginAnonymous();
   });
 
   it("can retrieve account info", async () => {

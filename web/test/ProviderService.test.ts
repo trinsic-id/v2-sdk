@@ -17,7 +17,7 @@ describe("ProviderService Unit Tests", () => {
   setTestTimeout();
   beforeAll(async () => {
     let trinsic = new TrinsicService(options);
-    options.authToken = await trinsic.account().signIn();
+    options.authToken = await trinsic.account().loginAnonymous();
   });
 
   it("Demo: Ecosystem Tests", async () => {
