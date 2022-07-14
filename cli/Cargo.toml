@@ -5,7 +5,7 @@ authors = ["Trinsic <support@trinsic.id>"]
 edition = "2021"
 license = "Apache-2.0"
 description = "Command-line tool for Trinsic APIs"
-build = "build.rs"
+# build = "build.rs"
 
 [dependencies]
 tonic = { version = "0.6", features = ["tls", "tls-roots"] }
