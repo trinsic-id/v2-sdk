@@ -17,7 +17,7 @@ class WalletService(ServiceBase):
         super().__init__(server_config)
         self.client = UniversalWalletStub(super().channel)
 
-    async def search(self, request: SearchRequest = None) -> SearchResponse:
+    async def search_wallet(self, request: SearchRequest = None) -> SearchResponse:
         """
         [Search for crdentials](/reference/services/wallet-service/#search-query)
         Args:
