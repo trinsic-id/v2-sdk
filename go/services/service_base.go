@@ -115,8 +115,7 @@ func (s *serviceBase) BuildMetadata(message proto.Message) (metadata.MD, error) 
 		return nil, err
 	}
 	md.Set("TrinsicOkapiVersion", okapiVersion.Version)
-	// TODO - Figure out the golang package version from a constant
-	md.Set("TrinsicSDKVersion", "unknown")
+	md.Set("TrinsicSDKVersion", GetSdkVersion())
 	md.Set("TrinsicSDKLanguage", "golang")
 
 	if message != nil {

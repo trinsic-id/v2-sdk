@@ -7,8 +7,8 @@ import logging
 import os
 import platform
 import shutil
-from os.path import join, abspath, dirname, isdir, split
 import subprocess
+from os.path import join, abspath, dirname, isdir, split
 from typing import Dict
 
 try:
@@ -109,6 +109,10 @@ def build_python(args) -> None:
         join(python_dir, "setup.cfg"),
         {"version = ": f"version = {get_package_versions(args)}"},
     )
+    update_line(
+        join(python_dir, "trinsic", "__init__.py"),
+        {'sdk_version = "': f'    sdk_version = "{get_package_versions(args)}"'},
+    )
     copy_okapi_libs(abspath(join(python_dir, "..", "libs")))
 
 
@@ -118,6 +122,10 @@ def build_java(args) -> None:
     update_line(
         join(java_dir, "build.gradle"),
         {"def jarVersion": f'def jarVersion = "{get_package_versions(args)}"'},
+    )
+    update_line(
+        join(java_dir, "src", "main", "java", "trinsic", "TrinsicUtilities.java"),
+        {"final String sdkVersion = ": f'    final String sdkVersion = "{get_package_versions(args)}";'},
     )
     copy_okapi_libs(abspath(join(java_dir, "..", "libs")))
 
@@ -138,6 +146,10 @@ def build_ruby(args) -> None:
 def build_golang(args) -> None:
     # Update version in setup.cfg
     golang_dir = abspath(join(get_language_dir("go"), "services"))
+    update_line(
+        join(golang_dir, "services.go"),
+        {"const sdkVersion = ": f'    const sdkVersion = "{get_package_versions(args)}"'},
+    )
     # Copy in the binaries
     copy_okapi_libs(golang_dir, "windows-gnu")
 
@@ -145,7 +157,7 @@ def build_golang(args) -> None:
 def build_dart(args) -> None:
     lang_dir = get_language_dir("dart")
     update_line(
-        join(lang_dir, "lib","src", "trinsic_util.dart"),
+        join(lang_dir, "lib", "src", "trinsic_util.dart"),
         {
             'const sdkVersion = "1.0.0";': f'  const sdkVersion = "{get_package_versions(args)}";'
         },
