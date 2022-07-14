@@ -325,7 +325,7 @@ def update_typescript():
 
 def update_none() -> None:
     """
-    This is here so you can specify no language to update - eg just download plugins
+    This is here, so you can specify no language to update - eg just download plugins
     """
     pass
 

@@ -14,3 +14,8 @@ ServiceOptions trinsicConfig({String authToken = ""}) {
       serverPort: int.parse(port),
       serverUseTls: useTls.toLowerCase() != "false");
 }
+
+String getSdkVersion() {
+  const sdkVersion = "1.0.0";
+  return sdkVersion;
+}
