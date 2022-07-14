@@ -58,7 +58,7 @@ class ServiceBase(ABC):
         call_metadata = {
             "TrinsicOkapiVersion".lower(): trinsicokapi.metadata.get_metadata().version,
             "TrinsicSDKLanguage".lower(): "python",
-            "TrinsicSDKVersion".lower(): trinsic.__version__()
+            "TrinsicSDKVersion".lower(): trinsic.__version__(),
         }
         if request is not None:
             if not self.service_options or not self.service_options.auth_token:
@@ -67,11 +67,11 @@ class ServiceBase(ABC):
                 )
 
             call_metadata["authorization"] = self._security_provider.get_auth_header(
-                    AccountProfile().parse(
-                        data=base64.urlsafe_b64decode(self.service_options.auth_token)
-                    ),
-                    request,
-                )
+                AccountProfile().parse(
+                    data=base64.urlsafe_b64decode(self.service_options.auth_token)
+                ),
+                request,
+            )
         return call_metadata
 
     @property
