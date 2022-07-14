@@ -148,8 +148,14 @@ def run_protoc(
 ) -> None:
     proto_path_string = f'--proto_path="{get_language_dir(proto_path or "proto")}"'
     plugin_string = f"--plugin={plugin}" if plugin else ""
-    command_args = [protoc_executable, plugin_string, proto_path_string, join_args(language_options),
-                    join_args(custom_options), proto_files]
+    command_args = [
+        protoc_executable,
+        plugin_string,
+        proto_path_string,
+        join_args(language_options),
+        join_args(custom_options),
+    ]
+    command_args.extend(join_args(proto_files))
     # Regularize 2D array and flatten
     command_args = [
         arg_list if isinstance(arg_list, list) else [arg_list]
