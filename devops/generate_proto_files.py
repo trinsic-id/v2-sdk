@@ -366,7 +366,7 @@ def main():
         "ruby": update_ruby,
         "python": update_python,
         "java": update_java,
-        # "docs": update_markdown,
+        "docs": update_markdown,
         "dart": update_dart,
         "typescript": update_typescript,
         "none": update_none,
