@@ -13,6 +13,7 @@ import {
   oberonProofRequest,
   okapiVersion,
 } from "./OkapiProvider";
+import {getSdkVersion} from "./Version";
 
 export default abstract class ServiceBase {
   options: ServiceOptions;
@@ -48,7 +49,7 @@ export default abstract class ServiceBase {
       "trinsicsdklanguage".toLowerCase(),
       ServiceBase.getLanguageMetadata()
     );
-    metadata.append("trinsicsdkversion".toLowerCase(), "unknown"); // TODO - Get this from npm?
+    metadata.append("trinsicsdkversion".toLowerCase(), getSdkVersion());
     if (request != undefined || request != null) {
       if (!this.options.authToken) {
         throw new Error("auth token must be set");
