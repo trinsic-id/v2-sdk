@@ -27,7 +27,7 @@ macro_rules! grpc_channel {
 #[macro_export]
 macro_rules! grpc_client_with_metadata {
     ($c:ty,$x:expr) => {
-        <$c>::with_interceptor(grpc_channel!($x), MetadataVersion{})
+        <$c>::with_interceptor(grpc_channel!($x), MetadataVersion {})
     };
 }
 

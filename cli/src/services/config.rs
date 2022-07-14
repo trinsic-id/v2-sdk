@@ -65,7 +65,7 @@ impl Default for CliConfig {
 
 impl Default for MetadataVersion {
     fn default() -> Self {
-        MetadataVersion{}
+        MetadataVersion {}
     }
 }
 

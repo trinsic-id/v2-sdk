@@ -4,9 +4,13 @@ use crate::parser::account::{AuthorizeWebhookArgs, Command, InfoArgs, SignInArgs
 use crate::proto::services::account::v1::login_response::Response;
 use crate::proto::services::account::v1::AuthorizeWebhookRequest;
 use crate::utils::to_value;
-use crate::{error::Error, grpc_channel, grpc_client_with_auth, grpc_client_with_metadata, proto::services::account::v1::{
-    account_client::AccountClient, AccountInfoRequest, AccountProfile, ConfirmationMethod, LoginConfirmRequest, LoginRequest, TokenProtection,
-}};
+use crate::{
+    error::Error,
+    grpc_channel, grpc_client_with_auth, grpc_client_with_metadata,
+    proto::services::account::v1::{
+        account_client::AccountClient, AccountInfoRequest, AccountProfile, ConfirmationMethod, LoginConfirmRequest, LoginRequest, TokenProtection,
+    },
+};
 use base64::URL_SAFE_NO_PAD;
 use colored::Colorize;
 use okapi::{proto::security::UnBlindOberonTokenRequest, Oberon};
@@ -56,7 +60,10 @@ async fn sign_in(args: &SignInArgs, config: CliConfig) -> Result<Output, Error> 
     Ok(output)
 }
 
-async fn login_confirm(client: &mut AccountClient<InterceptedService<Channel, MetadataVersion>>, challenge: Vec<u8>) -> Result<AccountProfile, Error> {
+async fn login_confirm(
+    client: &mut AccountClient<InterceptedService<Channel, MetadataVersion>>,
+    challenge: Vec<u8>,
+) -> Result<AccountProfile, Error> {
     println!("{}", "Confirmation required. Check your email for security code.".blue());
     println!("{}", "Enter Code:".bold());
     let mut buffer = String::new();
