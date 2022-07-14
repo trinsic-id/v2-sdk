@@ -11,7 +11,7 @@ use crate::{
 use bytes::Bytes;
 use clap::ArgMatches;
 use colored::Colorize;
-use okapi::{proto::security::CreateOberonProofRequest, Oberon};
+use okapi::{proto::metadata::MetadataRequest, proto::security::CreateOberonProofRequest, Metadata, Oberon};
 use prost::Message;
 use serde::{Deserialize, Serialize};
 use std::{
@@ -40,6 +40,10 @@ pub(crate) struct CliConfig {
     pub defaults: Option<ConfigDefaults>,
 }
 
+pub(crate) struct MetadataVersion {
+    // This space left blank for future expansion - but needed for the second interceptor trait
+}
+
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub(crate) struct ConfigDefaults {
     pub profile: String,
@@ -56,6 +60,12 @@ impl Default for CliConfig {
             },
             defaults: None,
         }
+    }
+}
+
+impl Default for MetadataVersion {
+    fn default() -> Self {
+        MetadataVersion{}
     }
 }
 
@@ -84,7 +94,7 @@ impl From<&ArgMatches<'_>> for CliConfig {
 }
 
 impl CliConfig {
-    /// Initialize the configuration by reading the default confgiruation file.
+    /// Initialize the configuration by reading the default configuration file.
     /// If no file is found, a new one will be created with default options.
     pub(crate) fn init() -> Result<Self, Error> {
         let config_file = data_path()?.join(CONFIG_FILENAME);
@@ -164,13 +174,38 @@ impl Interceptor for CliConfig {
         );
 
         unsafe {
-            if crate::DEBUG {
+            if DEBUG {
                 println!("DEBUG: Authorization: {}", header.purple())
             }
         }
 
-        // append auhtorization header
+        // append authorization header
         request.metadata_mut().insert("authorization", header.parse().unwrap());
+
+        // Add caller metadata
+        request = add_version_metadata(request).expect("Metadata should be added");
+
+        Ok(request)
+    }
+}
+
+pub(crate) fn add_version_metadata(mut request: tonic::Request<()>) -> Result<tonic::Request<()>, tonic::Status> {
+    // append authorization header
+    request.metadata_mut().insert("trinsicsdklanguage", "rust-cli".parse().unwrap()); // TODO - Rust crate?
+    request.metadata_mut().insert(
+        "trinsicsdkversion",
+        option_env!("CARGO_PKG_VERSION").unwrap_or_default().to_string().parse().unwrap(),
+    );
+    request.metadata_mut().insert(
+        "trinsicokapiversion",
+        Metadata::get_metadata(&MetadataRequest {}).unwrap_or_default().version.parse().unwrap(),
+    );
+    Ok(request)
+}
+
+impl Interceptor for MetadataVersion {
+    fn call(&mut self, mut request: tonic::Request<()>) -> Result<tonic::Request<()>, tonic::Status> {
+        request = add_version_metadata(request).expect("Metadata to be set");
         Ok(request)
     }
 }

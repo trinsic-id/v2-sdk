@@ -35,7 +35,7 @@ fn main() {
         )
         .unwrap();
 
-    _ = remove_file("./src/proto/services.options.rs");
+    remove_file("./src/proto/services.options.rs").expect("Failed to remove file!");
     move_file!("./src/proto/google.protobuf.rs", "./src/proto/google/protobuf/mod.rs");
     move_file!("./src/proto/sdk.options.v1.rs", "./src/proto/sdk/options/v1/mod.rs");
     move_file!("./src/proto/services.common.v1.rs", "./src/proto/services/common/v1/mod.rs");
