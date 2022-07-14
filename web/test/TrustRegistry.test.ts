@@ -13,8 +13,8 @@ const options = getTestServerOptions();
 let trinsic: TrinsicService;
 
 describe("TrustRegistryService Unit Tests", () => {
+  setTestTimeout();
   beforeAll(async () => {
-    setTestTimeout();
     trinsic = new TrinsicService(options);
     options.authToken = await trinsic
       .account()
