@@ -97,7 +97,7 @@ var valid = await trinsic.Credential.VerifyProofAsync(new VerifyProofRequest
     ProofDocumentJson = credentialProof.ProofDocumentJson
 });
 Console.WriteLine($"Verification result: {valid}");
-valid.IsValid.Should().BeTrue();
+valid.ValidationResults["SignatureVerification"].IsValid.Should().BeTrue();
 // }
 
 static class Extensions
