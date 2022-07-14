@@ -47,7 +47,7 @@ Once the user has returned to your redirect URL, exchange the authorization code
 
 You will receive a JSON object of the following form:
 
-```json
+```json title="Response JSON"
 {
     "id_token": "{JWT containing same data as vp_token}",
     "access_token":"invalid",
