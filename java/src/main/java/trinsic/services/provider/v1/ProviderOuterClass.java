@@ -239,7 +239,7 @@ public final class ProviderOuterClass {
           + "\006grants\030\001 \003(\0132\033.services.provider.v1.Grant*U\n"
           + "\017ParticipantType\022\037\n"
           + "\033participant_type_individual\020\000\022!\n"
-          + "\035participant_type_organization\020\0012\225\013\n"
+          + "\035participant_type_organization\020\0012\235\013\n"
           + "\010Provider\022v\n"
           + "\017CreateEcosystem\022,.services.provider.v1.Cre"
           + "ateEcosystemRequest\032-.services.provider.v1.CreateEcosystemResponse\"\006\212\246\035\002\020\001\022n\n"
@@ -262,13 +262,13 @@ public final class ProviderOuterClass {
           + "\006Invite\022#.services.provider.v1.In"
           + "viteRequest\032$.services.provider.v1.InviteResponse\022q\n"
           + "\020InvitationStatus\022-.services.provider.v1.InvitationStatusRequest\032..s"
-          + "ervices.provider.v1.InvitationStatusResponse\022e\n"
+          + "ervices.provider.v1.InvitationStatusResponse\022m\n"
           + "\014GetOberonKey\022).services.provider"
-          + ".v1.GetOberonKeyRequest\032*.services.provider.v1.GetOberonKeyResponse\022h\n\r"
-          + "GetEventToken\022*.services.provider.v1.GetEventToke"
-          + "nRequest\032+.services.provider.v1.GetEventTokenResponseB^\n"
-          + "\034trinsic.services.provider.v1P\001Z\035services/provider/v1/provider\252\002"
-          + "\034Trinsic.Services.Provider.V1b\006proto3"
+          + ".v1.GetOberonKeyRequest\032*.services.provider.v1.GetOberonKeyResponse\"\006\212\246\035\002\010\001\022h\n\r"
+          + "GetEventToken\022*.services.provider.v1.GetE"
+          + "ventTokenRequest\032+.services.provider.v1.GetEventTokenResponseB^\n"
+          + "\034trinsic.services.provider.v1P\001Z\035services/provider/v1/pr"
+          + "ovider\252\002\034Trinsic.Services.Provider.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
