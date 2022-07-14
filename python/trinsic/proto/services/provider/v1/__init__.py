@@ -2,61 +2,39 @@
 # sources: services/provider/v1/provider.proto
 # plugin: python-betterproto
 from dataclasses import dataclass
-from typing import (
-    TYPE_CHECKING,
-    Dict,
-    List,
-    Optional,
-)
+from typing import Dict, List
 
 import betterproto
-import grpclib
 from betterproto.grpc.grpclib_server import ServiceBase
-
-from ...account import v1 as __account_v1__
-
-
-if TYPE_CHECKING:
-    from betterproto.grpc.grpclib_client import MetadataLike
-    from grpclib.metadata import Deadline
+import grpclib
 
 
 class ParticipantType(betterproto.Enum):
     """Type of participant being invited to ecosystem"""
 
+    # Participant is an individual
     participant_type_individual = 0
-    """Participant is an individual"""
-
+    # Participant is an organization
     participant_type_organization = 1
-    """Participant is an organization"""
 
 
 class InvitationStatusResponseStatus(betterproto.Enum):
     Error = 0
-    """Onboarding resulted in error"""
-
     InvitationSent = 1
-    """The participant has been invited"""
-
     Completed = 2
-    """The participant has been onboarded"""
-
     Expired = 3
-    """The invite has expired"""
 
 
 @dataclass(eq=False, repr=False)
 class InviteRequest(betterproto.Message):
     """Request to invite a participant to an ecosystem"""
 
+    # Type of participant being invited (individual/organization)
     participant: "ParticipantType" = betterproto.enum_field(1)
-    """Type of participant being invited (individual/organization)"""
-
+    # Description of invitation
     description: str = betterproto.string_field(2)
-    """Description of invitation"""
-
+    # Account details of invitee
     details: "__account_v1__.AccountDetails" = betterproto.message_field(3)
-    """Account details of invitee"""
 
 
 @dataclass(eq=False, repr=False)
@@ -68,182 +46,155 @@ class InviteRequestDidCommInvitation(betterproto.Message):
 class InviteResponse(betterproto.Message):
     """Response to `InviteRequest`"""
 
+    # ID of created invitation
     invitation_id: str = betterproto.string_field(10)
-    """ID of created invitation"""
-
+    # Invitation code -- must be passed back in `LoginRequest`
     invitation_code: str = betterproto.string_field(11)
-    """Invitation code -- must be passed back in `LoginRequest`"""
 
 
 @dataclass(eq=False, repr=False)
 class InvitationStatusRequest(betterproto.Message):
     """Request details for the status of an invitation"""
 
+    # ID of invitation, received from `InviteResponse`
     invitation_id: str = betterproto.string_field(1)
-    """ID of invitation, received from `InviteResponse`"""
 
 
 @dataclass(eq=False, repr=False)
 class InvitationStatusResponse(betterproto.Message):
     """Response to `InvitationStatusRequest`"""
 
+    # Status of invitation
     status: "InvitationStatusResponseStatus" = betterproto.enum_field(1)
-    """Status of invitation"""
-
+    # Human-readable string with details about invitation status
     status_details: str = betterproto.string_field(2)
-    """Human-readable string with details about invitation status"""
 
 
 @dataclass(eq=False, repr=False)
 class Ecosystem(betterproto.Message):
     """Details of an ecosystem"""
 
+    # URN of the ecosystem
     id: str = betterproto.string_field(1)
-    """URN of the ecosystem"""
-
+    # Globally unique name for the ecosystem
     name: str = betterproto.string_field(2)
-    """Globally unique name for the ecosystem"""
-
+    # Ecosystem description
     description: str = betterproto.string_field(3)
-    """Ecosystem description"""
-
+    # External URL associated with the organization or ecosystem entity
     uri: str = betterproto.string_field(4)
-    """External URL associated with the organization or ecosystem entity"""
-
+    # Configured webhooks, if any
     webhooks: List["WebhookConfig"] = betterproto.message_field(5)
-    """Configured webhooks, if any"""
 
 
 @dataclass(eq=False, repr=False)
 class WebhookConfig(betterproto.Message):
     """Webhook configured on an ecosystem"""
 
+    # UUID of the webhook
     id: str = betterproto.string_field(1)
-    """UUID of the webhook"""
-
+    # HTTPS URL to POST webhook calls to
     destination_url: str = betterproto.string_field(2)
-    """HTTPS URL to POST webhook calls to"""
-
+    # Events the webhook is subscribed to
     events: List[str] = betterproto.string_field(4)
-    """Events the webhook is subscribed to"""
-
+    # Last known status of webhook (whether or not Trinsic can successfully reach
+    # destination)
     status: str = betterproto.string_field(5)
-    """
-    Last known status of webhook (whether or not Trinsic can successfully reach
-    destination)
-    """
 
 
 @dataclass(eq=False, repr=False)
 class Grant(betterproto.Message):
     """A grant authorizing `actions` on a `resourceId`"""
 
+    # the urn of the resource
     resource_id: str = betterproto.string_field(1)
-    """the urn of the resource"""
-
+    # list of actions that are allowed
     actions: List[str] = betterproto.string_field(2)
-    """list of actions that are allowed"""
-
+    # any child grants
     child_grants: List["Grant"] = betterproto.message_field(3)
-    """any child grants"""
 
 
 @dataclass(eq=False, repr=False)
 class CreateEcosystemRequest(betterproto.Message):
     """Request to create an ecosystem"""
 
+    # Globally unique name for the Ecosystem. This name will be part of the
+    # ecosystem-specific URLs and namespaces. Allowed characters are lowercase
+    # letters, numbers, underscore and hyphen. If not passed, ecosystem name will
+    # be auto-generated.
     name: str = betterproto.string_field(1)
-    """
-    Globally unique name for the Ecosystem. This name will be part of the
-    ecosystem-specific URLs and namespaces. Allowed characters are lowercase
-    letters, numbers, underscore and hyphen. If not passed, ecosystem name will
-    be auto-generated.
-    """
-
+    # Ecosystem description
     description: str = betterproto.string_field(2)
-    """Ecosystem description"""
-
+    # External URL associated with your organization or ecosystem entity
     uri: str = betterproto.string_field(3)
-    """External URL associated with your organization or ecosystem entity"""
-
+    # The account details of the owner of the ecosystem
     details: "__account_v1__.AccountDetails" = betterproto.message_field(4)
-    """The account details of the owner of the ecosystem"""
 
 
 @dataclass(eq=False, repr=False)
 class CreateEcosystemResponse(betterproto.Message):
     """Response to `CreateEcosystemRequest`"""
 
+    # Details of the created ecosystem
     ecosystem: "Ecosystem" = betterproto.message_field(1)
-    """Details of the created ecosystem"""
-
+    # Account profile for auth of the owner of the ecosystem
     profile: "__account_v1__.AccountProfile" = betterproto.message_field(2)
-    """Account profile for auth of the owner of the ecosystem"""
-
+    # Indicates if confirmation of account is required.
     confirmation_method: "__account_v1__.ConfirmationMethod" = betterproto.enum_field(3)
-    """Indicates if confirmation of account is required."""
 
 
 @dataclass(eq=False, repr=False)
 class UpdateEcosystemRequest(betterproto.Message):
     """Request to update an ecosystem's metadata"""
 
+    # New description of the ecosystem
     description: str = betterproto.string_field(1)
-    """New description of the ecosystem"""
-
+    # New external URL associated with the organization or ecosystem entity
     uri: str = betterproto.string_field(2)
-    """
-    New external URL associated with the organization or ecosystem entity
-    """
 
 
 @dataclass(eq=False, repr=False)
 class UpdateEcosystemResponse(betterproto.Message):
     """Response to `UpdateEcosystemRequest`"""
 
+    # Current ecosystem metadata, post-update
     ecosystem: "Ecosystem" = betterproto.message_field(1)
-    """Current ecosystem metadata, post-update"""
 
 
 @dataclass(eq=False, repr=False)
 class AddWebhookRequest(betterproto.Message):
     """Request to add a webhook to an ecosystem"""
 
+    # Destination to post webhook calls to. Must be a reachable HTTPS URL.
     destination_url: str = betterproto.string_field(1)
-    """Destination to post webhook calls to. Must be a reachable HTTPS URL."""
-
+    # Secret string used for HMAC-SHA256 signing of webhook payloads to verify
+    # that a webhook comes from Trinsic
     secret: str = betterproto.string_field(2)
-    """
-    Secret string used for HMAC-SHA256 signing of webhook payloads to verify
-    that a webhook comes from Trinsic
-    """
-
+    # Events to subscribe to. Default is "*" (all events)
     events: List[str] = betterproto.string_field(3)
-    """Events to subscribe to. Default is "*" (all events)"""
 
 
 @dataclass(eq=False, repr=False)
 class AddWebhookResponse(betterproto.Message):
     """Response to `AddWebhookRequest`"""
 
+    # Ecosystem data with new webhook
     ecosystem: "Ecosystem" = betterproto.message_field(1)
-    """Ecosystem data with new webhook"""
 
 
 @dataclass(eq=False, repr=False)
 class DeleteWebhookRequest(betterproto.Message):
     """Request to delete a webhook from an ecosystem"""
 
+    # ID of webhook to delete
     webhook_id: str = betterproto.string_field(1)
-    """ID of webhook to delete"""
 
 
 @dataclass(eq=False, repr=False)
 class DeleteWebhookResponse(betterproto.Message):
     """Response to `DeleteWebhookRequest`"""
 
+    # Ecosystem data after removal of webhook
     ecosystem: "Ecosystem" = betterproto.message_field(1)
-    """Ecosystem data after removal of webhook"""
 
 
 @dataclass(eq=False, repr=False)
@@ -257,24 +208,24 @@ class EcosystemInfoRequest(betterproto.Message):
 class EcosystemInfoResponse(betterproto.Message):
     """Response to `InfoRequest`"""
 
+    # Ecosystem corresponding to requested `ecosystem_id`
     ecosystem: "Ecosystem" = betterproto.message_field(1)
-    """Ecosystem corresponding to requested `ecosystem_id`"""
 
 
 @dataclass(eq=False, repr=False)
 class GenerateTokenRequest(betterproto.Message):
     """Request to generate an authentication token for the current account"""
 
+    # Description to identify this token
     description: str = betterproto.string_field(1)
-    """Description to identify this token"""
 
 
 @dataclass(eq=False, repr=False)
 class GenerateTokenResponse(betterproto.Message):
     """Response to `GenerateTokenRequest`"""
 
+    # Account authentication profile that contains unprotected token
     profile: "__account_v1__.AccountProfile" = betterproto.message_field(1)
-    """Account authentication profile that contains unprotected token"""
 
 
 @dataclass(eq=False, repr=False)
@@ -291,16 +242,16 @@ class GetOberonKeyRequest(betterproto.Message):
 class GetOberonKeyResponse(betterproto.Message):
     """Response to `GetOberonKeyRequest`"""
 
+    # Oberon Public Key as RAW base64-url encoded string
     key: str = betterproto.string_field(1)
-    """Oberon Public Key as RAW base64-url encoded string"""
 
 
 @dataclass(eq=False, repr=False)
 class GetEventTokenRequest(betterproto.Message):
     """Generates an events token bound to the provided ed25519 public key."""
 
+    # Raw public key to generate event token for
     pk: bytes = betterproto.bytes_field(1)
-    """Raw public key to generate event token for"""
 
 
 @dataclass(eq=False, repr=False)
@@ -310,35 +261,26 @@ class GetEventTokenResponse(betterproto.Message):
     directly to the message streaming architecture
     """
 
+    # JWT bound to the public key provided in `GetEventTokenRequest`
     token: str = betterproto.string_field(1)
-    """JWT bound to the public key provided in `GetEventTokenRequest`"""
 
 
 @dataclass(eq=False, repr=False)
 class GrantAuthorizationRequest(betterproto.Message):
     """Grant permissions to a resource or path in the ecosystem"""
 
+    # Email address of account being granted permission. Mutually exclusive with
+    # `walletId`.
     email: str = betterproto.string_field(1, group="account")
-    """
-    Email address of account being granted permission. Mutually exclusive with
-    `walletId`.
-    """
-
+    # Wallet ID of account being granted permission. Mutually exclusive with
+    # `email`.
     wallet_id: str = betterproto.string_field(2, group="account")
-    """
-    Wallet ID of account being granted permission. Mutually exclusive with
-    `email`.
-    """
-
+    # Resource string that account is receiving permissions for. Resources are
+    # specified as a RESTful path: /{ecoId}/{resource type}/{resource id}.
+    # `ecoId` may be omitted.
     resource: str = betterproto.string_field(3)
-    """
-    Resource string that account is receiving permissions for. Resources are
-    specified as a RESTful path: /{ecoId}/{resource type}/{resource id}.
-    `ecoId` may be omitted.
-    """
-
+    # Action to authorize. Default is "*" (all)
     action: str = betterproto.string_field(4)
-    """Action to authorize. Default is "*" (all)"""
 
 
 @dataclass(eq=False, repr=False)
@@ -352,27 +294,18 @@ class GrantAuthorizationResponse(betterproto.Message):
 class RevokeAuthorizationRequest(betterproto.Message):
     """Revoke permissions to a resource or path in the ecosystem"""
 
+    # Email address of account having permission revoked. Mutually exclusive with
+    # `walletId`.
     email: str = betterproto.string_field(1, group="account")
-    """
-    Email address of account having permission revoked. Mutually exclusive with
-    `walletId`.
-    """
-
+    # Wallet ID of account having permission revoked. Mutually exclusive with
+    # `email`.
     wallet_id: str = betterproto.string_field(2, group="account")
-    """
-    Wallet ID of account having permission revoked. Mutually exclusive with
-    `email`.
-    """
-
+    # Resource string that account is losing permissions for. Resources are
+    # specified as a RESTful path: /{ecoId}/{resource type}/{resource id}.
+    # `ecoId` may be omitted.
     resource: str = betterproto.string_field(3)
-    """
-    Resource string that account is losing permissions for. Resources are
-    specified as a RESTful path: /{ecoId}/{resource type}/{resource id}.
-    `ecoId` may be omitted.
-    """
-
+    # Action to revoke. Default is "*" (all)
     action: str = betterproto.string_field(4)
-    """Action to revoke. Default is "*" (all)"""
 
 
 @dataclass(eq=False, repr=False)
@@ -396,217 +329,122 @@ class GetAuthorizationsRequest(betterproto.Message):
 class GetAuthorizationsResponse(betterproto.Message):
     """Response to `GetAuthorizationsRequest`"""
 
+    # Grants attached to account
     grants: List["Grant"] = betterproto.message_field(1)
-    """Grants attached to account"""
 
 
 class ProviderStub(betterproto.ServiceStub):
     async def create_ecosystem(
-        self,
-        create_ecosystem_request: "CreateEcosystemRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, create_ecosystem_request: "CreateEcosystemRequest"
     ) -> "CreateEcosystemResponse":
         return await self._unary_unary(
             "/services.provider.v1.Provider/CreateEcosystem",
             create_ecosystem_request,
             CreateEcosystemResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def update_ecosystem(
-        self,
-        update_ecosystem_request: "UpdateEcosystemRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, update_ecosystem_request: "UpdateEcosystemRequest"
     ) -> "UpdateEcosystemResponse":
         return await self._unary_unary(
             "/services.provider.v1.Provider/UpdateEcosystem",
             update_ecosystem_request,
             UpdateEcosystemResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def grant_authorization(
-        self,
-        grant_authorization_request: "GrantAuthorizationRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, grant_authorization_request: "GrantAuthorizationRequest"
     ) -> "GrantAuthorizationResponse":
         return await self._unary_unary(
             "/services.provider.v1.Provider/GrantAuthorization",
             grant_authorization_request,
             GrantAuthorizationResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def revoke_authorization(
-        self,
-        revoke_authorization_request: "RevokeAuthorizationRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, revoke_authorization_request: "RevokeAuthorizationRequest"
     ) -> "RevokeAuthorizationResponse":
         return await self._unary_unary(
             "/services.provider.v1.Provider/RevokeAuthorization",
             revoke_authorization_request,
             RevokeAuthorizationResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def get_authorizations(
-        self,
-        get_authorizations_request: "GetAuthorizationsRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, get_authorizations_request: "GetAuthorizationsRequest"
     ) -> "GetAuthorizationsResponse":
         return await self._unary_unary(
             "/services.provider.v1.Provider/GetAuthorizations",
             get_authorizations_request,
             GetAuthorizationsResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def add_webhook(
-        self,
-        add_webhook_request: "AddWebhookRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, add_webhook_request: "AddWebhookRequest"
     ) -> "AddWebhookResponse":
         return await self._unary_unary(
             "/services.provider.v1.Provider/AddWebhook",
             add_webhook_request,
             AddWebhookResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def delete_webhook(
-        self,
-        delete_webhook_request: "DeleteWebhookRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, delete_webhook_request: "DeleteWebhookRequest"
     ) -> "DeleteWebhookResponse":
         return await self._unary_unary(
             "/services.provider.v1.Provider/DeleteWebhook",
             delete_webhook_request,
             DeleteWebhookResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def ecosystem_info(
-        self,
-        ecosystem_info_request: "EcosystemInfoRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, ecosystem_info_request: "EcosystemInfoRequest"
     ) -> "EcosystemInfoResponse":
         return await self._unary_unary(
             "/services.provider.v1.Provider/EcosystemInfo",
             ecosystem_info_request,
             EcosystemInfoResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def generate_token(
-        self,
-        generate_token_request: "GenerateTokenRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, generate_token_request: "GenerateTokenRequest"
     ) -> "GenerateTokenResponse":
         return await self._unary_unary(
             "/services.provider.v1.Provider/GenerateToken",
             generate_token_request,
             GenerateTokenResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
-    async def invite(
-        self,
-        invite_request: "InviteRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
-    ) -> "InviteResponse":
+    async def invite(self, invite_request: "InviteRequest") -> "InviteResponse":
         return await self._unary_unary(
-            "/services.provider.v1.Provider/Invite",
-            invite_request,
-            InviteResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
+            "/services.provider.v1.Provider/Invite", invite_request, InviteResponse
         )
 
     async def invitation_status(
-        self,
-        invitation_status_request: "InvitationStatusRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, invitation_status_request: "InvitationStatusRequest"
     ) -> "InvitationStatusResponse":
         return await self._unary_unary(
             "/services.provider.v1.Provider/InvitationStatus",
             invitation_status_request,
             InvitationStatusResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def get_oberon_key(
-        self,
-        get_oberon_key_request: "GetOberonKeyRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, get_oberon_key_request: "GetOberonKeyRequest"
     ) -> "GetOberonKeyResponse":
         return await self._unary_unary(
             "/services.provider.v1.Provider/GetOberonKey",
             get_oberon_key_request,
             GetOberonKeyResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def get_event_token(
-        self,
-        get_event_token_request: "GetEventTokenRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, get_event_token_request: "GetEventTokenRequest"
     ) -> "GetEventTokenResponse":
         return await self._unary_unary(
             "/services.provider.v1.Provider/GetEventToken",
             get_event_token_request,
             GetEventTokenResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
 
@@ -820,3 +658,6 @@ class ProviderBase(ServiceBase):
                 GetEventTokenResponse,
             ),
         }
+
+
+from ...account import v1 as __account_v1__

@@ -4,39 +4,37 @@
 package trinsic.services.verifiablecredentials.v1;
 
 /**
- *
- *
  * <pre>
  * Response to `VerifyProofRequest`
  * </pre>
  *
  * Protobuf type {@code services.verifiablecredentials.v1.VerifyProofResponse}
  */
-public final class VerifyProofResponse extends com.google.protobuf.GeneratedMessageV3
-    implements
+public final class VerifyProofResponse extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:services.verifiablecredentials.v1.VerifyProofResponse)
     VerifyProofResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+private static final long serialVersionUID = 0L;
   // Use VerifyProofResponse.newBuilder() to construct.
   private VerifyProofResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private VerifyProofResponse() {
     validationMessages_ = com.google.protobuf.LazyStringArrayList.EMPTY;
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new VerifyProofResponse();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
     return this.unknownFields;
   }
-
   private VerifyProofResponse(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -56,47 +54,40 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
           case 0:
             done = true;
             break;
-          case 8:
-            {
-              isValid_ = input.readBool();
-              break;
+          case 8: {
+
+            isValid_ = input.readBool();
+            break;
+          }
+          case 18: {
+            java.lang.String s = input.readStringRequireUtf8();
+            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+              validationMessages_ = new com.google.protobuf.LazyStringArrayList();
+              mutable_bitField0_ |= 0x00000001;
             }
-          case 18:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                validationMessages_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              validationMessages_.add(s);
-              break;
+            validationMessages_.add(s);
+            break;
+          }
+          case 26: {
+            if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+              validationResults_ = com.google.protobuf.MapField.newMapField(
+                  ValidationResultsDefaultEntryHolder.defaultEntry);
+              mutable_bitField0_ |= 0x00000002;
             }
-          case 26:
-            {
-              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                validationResults_ =
-                    com.google.protobuf.MapField.newMapField(
-                        ValidationResultsDefaultEntryHolder.defaultEntry);
-                mutable_bitField0_ |= 0x00000002;
-              }
-              com.google.protobuf.MapEntry<
-                      java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>
-                  validationResults__ =
-                      input.readMessage(
-                          ValidationResultsDefaultEntryHolder.defaultEntry.getParserForType(),
-                          extensionRegistry);
-              validationResults_
-                  .getMutableMap()
-                  .put(validationResults__.getKey(), validationResults__.getValue());
-              break;
+            com.google.protobuf.MapEntry<java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>
+            validationResults__ = input.readMessage(
+                ValidationResultsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+            validationResults_.getMutableMap().put(
+                validationResults__.getKey(), validationResults__.getValue());
+            break;
+          }
+          default: {
+            if (!parseUnknownField(
+                input, unknownFields, extensionRegistry, tag)) {
+              done = true;
             }
-          default:
-            {
-              if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
+            break;
+          }
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -104,7 +95,8 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
     } catch (com.google.protobuf.UninitializedMessageException e) {
       throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
+      throw new com.google.protobuf.InvalidProtocolBufferException(
+          e).setUnfinishedMessage(this);
     } finally {
       if (((mutable_bitField0_ & 0x00000001) != 0)) {
         validationMessages_ = validationMessages_.getUnmodifiableView();
@@ -113,44 +105,39 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
       makeExtensionsImmutable();
     }
   }
-
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-        .internal_static_services_verifiablecredentials_v1_VerifyProofResponse_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_VerifyProofResponse_descriptor;
   }
 
   @SuppressWarnings({"rawtypes"})
   @java.lang.Override
-  protected com.google.protobuf.MapField internalGetMapField(int number) {
+  protected com.google.protobuf.MapField internalGetMapField(
+      int number) {
     switch (number) {
       case 3:
         return internalGetValidationResults();
       default:
-        throw new RuntimeException("Invalid map field number: " + number);
+        throw new RuntimeException(
+            "Invalid map field number: " + number);
     }
   }
-
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-        .internal_static_services_verifiablecredentials_v1_VerifyProofResponse_fieldAccessorTable
+    return trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_VerifyProofResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.verifiablecredentials.v1.VerifyProofResponse.class,
-            trinsic.services.verifiablecredentials.v1.VerifyProofResponse.Builder.class);
+            trinsic.services.verifiablecredentials.v1.VerifyProofResponse.class, trinsic.services.verifiablecredentials.v1.VerifyProofResponse.Builder.class);
   }
 
   public static final int IS_VALID_FIELD_NUMBER = 1;
   private boolean isValid_;
   /**
-   *
-   *
    * <pre>
    * Whether all validations in `validation_results` passed
    * </pre>
    *
    * <code>bool is_valid = 1;</code>
-   *
    * @return The isValid.
    */
   @java.lang.Override
@@ -161,101 +148,78 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
   public static final int VALIDATION_MESSAGES_FIELD_NUMBER = 2;
   private com.google.protobuf.LazyStringList validationMessages_;
   /**
-   *
-   *
    * <pre>
    * Use `validation_results` instead
    * </pre>
    *
    * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-   *
-   * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
+   * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
+   *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
    * @return A list containing the validationMessages.
    */
-  @java.lang.Deprecated
-  public com.google.protobuf.ProtocolStringList getValidationMessagesList() {
+  @java.lang.Deprecated public com.google.protobuf.ProtocolStringList
+      getValidationMessagesList() {
     return validationMessages_;
   }
   /**
-   *
-   *
    * <pre>
    * Use `validation_results` instead
    * </pre>
    *
    * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-   *
-   * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
+   * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
+   *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
    * @return The count of validationMessages.
    */
-  @java.lang.Deprecated
-  public int getValidationMessagesCount() {
+  @java.lang.Deprecated public int getValidationMessagesCount() {
     return validationMessages_.size();
   }
   /**
-   *
-   *
    * <pre>
    * Use `validation_results` instead
    * </pre>
    *
    * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-   *
-   * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
+   * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
+   *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
    * @param index The index of the element to return.
    * @return The validationMessages at the given index.
    */
-  @java.lang.Deprecated
-  public java.lang.String getValidationMessages(int index) {
+  @java.lang.Deprecated public java.lang.String getValidationMessages(int index) {
     return validationMessages_.get(index);
   }
   /**
-   *
-   *
    * <pre>
    * Use `validation_results` instead
    * </pre>
    *
    * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-   *
-   * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
+   * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
+   *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
    * @param index The index of the value to return.
    * @return The bytes of the validationMessages at the given index.
    */
-  @java.lang.Deprecated
-  public com.google.protobuf.ByteString getValidationMessagesBytes(int index) {
+  @java.lang.Deprecated public com.google.protobuf.ByteString
+      getValidationMessagesBytes(int index) {
     return validationMessages_.getByteString(index);
   }
 
   public static final int VALIDATION_RESULTS_FIELD_NUMBER = 3;
-
   private static final class ValidationResultsDefaultEntryHolder {
     static final com.google.protobuf.MapEntry<
-            java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>
-        defaultEntry =
+        java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage> defaultEntry =
             com.google.protobuf.MapEntry
-                .<java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>
-                    newDefaultInstance(
-                        trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-                            .internal_static_services_verifiablecredentials_v1_VerifyProofResponse_ValidationResultsEntry_descriptor,
-                        com.google.protobuf.WireFormat.FieldType.STRING,
-                        "",
-                        com.google.protobuf.WireFormat.FieldType.MESSAGE,
-                        trinsic.services.verifiablecredentials.v1.ValidationMessage
-                            .getDefaultInstance());
+            .<java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>newDefaultInstance(
+                trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_VerifyProofResponse_ValidationResultsEntry_descriptor, 
+                com.google.protobuf.WireFormat.FieldType.STRING,
+                "",
+                com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                trinsic.services.verifiablecredentials.v1.ValidationMessage.getDefaultInstance());
   }
-
   private com.google.protobuf.MapField<
-          java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>
-      validationResults_;
-
-  private com.google.protobuf.MapField<
-          java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>
-      internalGetValidationResults() {
+      java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage> validationResults_;
+  private com.google.protobuf.MapField<java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>
+  internalGetValidationResults() {
     if (validationResults_ == null) {
       return com.google.protobuf.MapField.emptyMapField(
           ValidationResultsDefaultEntryHolder.defaultEntry);
@@ -267,97 +231,78 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
     return internalGetValidationResults().getMap().size();
   }
   /**
-   *
-   *
    * <pre>
-   * Results of each validation check performed,
+   * Results of each validation check performed, 
    * such as schema conformance, revocation status, signature, etc.
    * Detailed results are provided for failed validations.
    * </pre>
    *
-   * <code>
-   * map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;
-   * </code>
+   * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
    */
+
   @java.lang.Override
-  public boolean containsValidationResults(java.lang.String key) {
-    if (key == null) {
-      throw new NullPointerException("map key");
-    }
+  public boolean containsValidationResults(
+      java.lang.String key) {
+    if (key == null) { throw new NullPointerException("map key"); }
     return internalGetValidationResults().getMap().containsKey(key);
   }
-  /** Use {@link #getValidationResultsMap()} instead. */
+  /**
+   * Use {@link #getValidationResultsMap()} instead.
+   */
   @java.lang.Override
   @java.lang.Deprecated
-  public java.util.Map<
-          java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>
-      getValidationResults() {
+  public java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage> getValidationResults() {
     return getValidationResultsMap();
   }
   /**
-   *
-   *
    * <pre>
-   * Results of each validation check performed,
+   * Results of each validation check performed, 
    * such as schema conformance, revocation status, signature, etc.
    * Detailed results are provided for failed validations.
    * </pre>
    *
-   * <code>
-   * map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;
-   * </code>
+   * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
    */
   @java.lang.Override
-  public java.util.Map<
-          java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>
-      getValidationResultsMap() {
+
+  public java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage> getValidationResultsMap() {
     return internalGetValidationResults().getMap();
   }
   /**
-   *
-   *
    * <pre>
-   * Results of each validation check performed,
+   * Results of each validation check performed, 
    * such as schema conformance, revocation status, signature, etc.
    * Detailed results are provided for failed validations.
    * </pre>
    *
-   * <code>
-   * map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;
-   * </code>
+   * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
    */
   @java.lang.Override
+
   public trinsic.services.verifiablecredentials.v1.ValidationMessage getValidationResultsOrDefault(
       java.lang.String key,
       trinsic.services.verifiablecredentials.v1.ValidationMessage defaultValue) {
-    if (key == null) {
-      throw new NullPointerException("map key");
-    }
-    java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>
-        map = internalGetValidationResults().getMap();
+    if (key == null) { throw new NullPointerException("map key"); }
+    java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage> map =
+        internalGetValidationResults().getMap();
     return map.containsKey(key) ? map.get(key) : defaultValue;
   }
   /**
-   *
-   *
    * <pre>
-   * Results of each validation check performed,
+   * Results of each validation check performed, 
    * such as schema conformance, revocation status, signature, etc.
    * Detailed results are provided for failed validations.
    * </pre>
    *
-   * <code>
-   * map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;
-   * </code>
+   * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
    */
   @java.lang.Override
+
   public trinsic.services.verifiablecredentials.v1.ValidationMessage getValidationResultsOrThrow(
       java.lang.String key) {
-    if (key == null) {
-      throw new NullPointerException("map key");
-    }
-    java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>
-        map = internalGetValidationResults().getMap();
+    if (key == null) { throw new NullPointerException("map key"); }
+    java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage> map =
+        internalGetValidationResults().getMap();
     if (!map.containsKey(key)) {
       throw new java.lang.IllegalArgumentException();
     }
@@ -365,7 +310,6 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -377,14 +321,16 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     if (isValid_ != false) {
       output.writeBool(1, isValid_);
     }
     for (int i = 0; i < validationMessages_.size(); i++) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, validationMessages_.getRaw(i));
     }
-    com.google.protobuf.GeneratedMessageV3.serializeStringMapTo(
+    com.google.protobuf.GeneratedMessageV3
+      .serializeStringMapTo(
         output,
         internalGetValidationResults(),
         ValidationResultsDefaultEntryHolder.defaultEntry,
@@ -399,7 +345,8 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
 
     size = 0;
     if (isValid_ != false) {
-      size += com.google.protobuf.CodedOutputStream.computeBoolSize(1, isValid_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(1, isValid_);
     }
     {
       int dataSize = 0;
@@ -409,18 +356,15 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
       size += dataSize;
       size += 1 * getValidationMessagesList().size();
     }
-    for (java.util.Map.Entry<
-            java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>
-        entry : internalGetValidationResults().getMap().entrySet()) {
-      com.google.protobuf.MapEntry<
-              java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>
-          validationResults__ =
-              ValidationResultsDefaultEntryHolder.defaultEntry
-                  .newBuilderForType()
-                  .setKey(entry.getKey())
-                  .setValue(entry.getValue())
-                  .build();
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(3, validationResults__);
+    for (java.util.Map.Entry<java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage> entry
+         : internalGetValidationResults().getMap().entrySet()) {
+      com.google.protobuf.MapEntry<java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>
+      validationResults__ = ValidationResultsDefaultEntryHolder.defaultEntry.newBuilderForType()
+          .setKey(entry.getKey())
+          .setValue(entry.getValue())
+          .build();
+      size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, validationResults__);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -430,17 +374,19 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof trinsic.services.verifiablecredentials.v1.VerifyProofResponse)) {
       return super.equals(obj);
     }
-    trinsic.services.verifiablecredentials.v1.VerifyProofResponse other =
-        (trinsic.services.verifiablecredentials.v1.VerifyProofResponse) obj;
+    trinsic.services.verifiablecredentials.v1.VerifyProofResponse other = (trinsic.services.verifiablecredentials.v1.VerifyProofResponse) obj;
 
-    if (getIsValid() != other.getIsValid()) return false;
-    if (!getValidationMessagesList().equals(other.getValidationMessagesList())) return false;
-    if (!internalGetValidationResults().equals(other.internalGetValidationResults())) return false;
+    if (getIsValid()
+        != other.getIsValid()) return false;
+    if (!getValidationMessagesList()
+        .equals(other.getValidationMessagesList())) return false;
+    if (!internalGetValidationResults().equals(
+        other.internalGetValidationResults())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -453,7 +399,8 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + IS_VALID_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getIsValid());
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getIsValid());
     if (getValidationMessagesCount() > 0) {
       hash = (37 * hash) + VALIDATION_MESSAGES_FIELD_NUMBER;
       hash = (53 * hash) + getValidationMessagesList().hashCode();
@@ -468,147 +415,139 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
   }
 
   public static trinsic.services.verifiablecredentials.v1.VerifyProofResponse parseFrom(
-      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.verifiablecredentials.v1.VerifyProofResponse parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.verifiablecredentials.v1.VerifyProofResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.verifiablecredentials.v1.VerifyProofResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.verifiablecredentials.v1.VerifyProofResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.verifiablecredentials.v1.VerifyProofResponse parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
-  public static trinsic.services.verifiablecredentials.v1.VerifyProofResponse parseFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-  }
-
-  public static trinsic.services.verifiablecredentials.v1.VerifyProofResponse parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+  public static trinsic.services.verifiablecredentials.v1.VerifyProofResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
-  public static trinsic.services.verifiablecredentials.v1.VerifyProofResponse parseDelimitedFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static trinsic.services.verifiablecredentials.v1.VerifyProofResponse parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
-  }
-
   public static trinsic.services.verifiablecredentials.v1.VerifyProofResponse parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
+  public static trinsic.services.verifiablecredentials.v1.VerifyProofResponse parseDelimitedFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
+  }
+  public static trinsic.services.verifiablecredentials.v1.VerifyProofResponse parseDelimitedFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+  }
+  public static trinsic.services.verifiablecredentials.v1.VerifyProofResponse parseFrom(
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
+  }
   public static trinsic.services.verifiablecredentials.v1.VerifyProofResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
-  public static Builder newBuilder(
-      trinsic.services.verifiablecredentials.v1.VerifyProofResponse prototype) {
+  public static Builder newBuilder(trinsic.services.verifiablecredentials.v1.VerifyProofResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
-   *
-   *
    * <pre>
    * Response to `VerifyProofRequest`
    * </pre>
    *
    * Protobuf type {@code services.verifiablecredentials.v1.VerifyProofResponse}
    */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:services.verifiablecredentials.v1.VerifyProofResponse)
       trinsic.services.verifiablecredentials.v1.VerifyProofResponseOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-          .internal_static_services_verifiablecredentials_v1_VerifyProofResponse_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_VerifyProofResponse_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(int number) {
+    protected com.google.protobuf.MapField internalGetMapField(
+        int number) {
       switch (number) {
         case 3:
           return internalGetValidationResults();
         default:
-          throw new RuntimeException("Invalid map field number: " + number);
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
       }
     }
-
     @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMutableMapField(int number) {
+    protected com.google.protobuf.MapField internalGetMutableMapField(
+        int number) {
       switch (number) {
         case 3:
           return internalGetMutableValidationResults();
         default:
-          throw new RuntimeException("Invalid map field number: " + number);
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
       }
     }
-
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-          .internal_static_services_verifiablecredentials_v1_VerifyProofResponse_fieldAccessorTable
+      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_VerifyProofResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.verifiablecredentials.v1.VerifyProofResponse.class,
-              trinsic.services.verifiablecredentials.v1.VerifyProofResponse.Builder.class);
+              trinsic.services.verifiablecredentials.v1.VerifyProofResponse.class, trinsic.services.verifiablecredentials.v1.VerifyProofResponse.Builder.class);
     }
 
     // Construct using trinsic.services.verifiablecredentials.v1.VerifyProofResponse.newBuilder()
@@ -616,15 +555,16 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
       maybeForceBuilderInitialization();
     }
 
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
-
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+      }
     }
-
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -637,14 +577,13 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-          .internal_static_services_verifiablecredentials_v1_VerifyProofResponse_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_VerifyProofResponse_descriptor;
     }
 
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.v1.VerifyProofResponse
-        getDefaultInstanceForType() {
+    public trinsic.services.verifiablecredentials.v1.VerifyProofResponse getDefaultInstanceForType() {
       return trinsic.services.verifiablecredentials.v1.VerifyProofResponse.getDefaultInstance();
     }
 
@@ -659,8 +598,7 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
 
     @java.lang.Override
     public trinsic.services.verifiablecredentials.v1.VerifyProofResponse buildPartial() {
-      trinsic.services.verifiablecredentials.v1.VerifyProofResponse result =
-          new trinsic.services.verifiablecredentials.v1.VerifyProofResponse(this);
+      trinsic.services.verifiablecredentials.v1.VerifyProofResponse result = new trinsic.services.verifiablecredentials.v1.VerifyProofResponse(this);
       int from_bitField0_ = bitField0_;
       result.isValid_ = isValid_;
       if (((bitField0_ & 0x00000001) != 0)) {
@@ -678,39 +616,38 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof trinsic.services.verifiablecredentials.v1.VerifyProofResponse) {
-        return mergeFrom((trinsic.services.verifiablecredentials.v1.VerifyProofResponse) other);
+        return mergeFrom((trinsic.services.verifiablecredentials.v1.VerifyProofResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -718,9 +655,7 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
     }
 
     public Builder mergeFrom(trinsic.services.verifiablecredentials.v1.VerifyProofResponse other) {
-      if (other
-          == trinsic.services.verifiablecredentials.v1.VerifyProofResponse.getDefaultInstance())
-        return this;
+      if (other == trinsic.services.verifiablecredentials.v1.VerifyProofResponse.getDefaultInstance()) return this;
       if (other.getIsValid() != false) {
         setIsValid(other.getIsValid());
       }
@@ -734,7 +669,8 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
         }
         onChanged();
       }
-      internalGetMutableValidationResults().mergeFrom(other.internalGetValidationResults());
+      internalGetMutableValidationResults().mergeFrom(
+          other.internalGetValidationResults());
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -754,9 +690,7 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage =
-            (trinsic.services.verifiablecredentials.v1.VerifyProofResponse)
-                e.getUnfinishedMessage();
+        parsedMessage = (trinsic.services.verifiablecredentials.v1.VerifyProofResponse) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -765,19 +699,15 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
       }
       return this;
     }
-
     private int bitField0_;
 
-    private boolean isValid_;
+    private boolean isValid_ ;
     /**
-     *
-     *
      * <pre>
      * Whether all validations in `validation_results` passed
      * </pre>
      *
      * <code>bool is_valid = 1;</code>
-     *
      * @return The isValid.
      */
     @java.lang.Override
@@ -785,230 +715,193 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
       return isValid_;
     }
     /**
-     *
-     *
      * <pre>
      * Whether all validations in `validation_results` passed
      * </pre>
      *
      * <code>bool is_valid = 1;</code>
-     *
      * @param value The isValid to set.
      * @return This builder for chaining.
      */
     public Builder setIsValid(boolean value) {
-
+      
       isValid_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Whether all validations in `validation_results` passed
      * </pre>
      *
      * <code>bool is_valid = 1;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearIsValid() {
-
+      
       isValid_ = false;
       onChanged();
       return this;
     }
 
-    private com.google.protobuf.LazyStringList validationMessages_ =
-        com.google.protobuf.LazyStringArrayList.EMPTY;
-
+    private com.google.protobuf.LazyStringList validationMessages_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     private void ensureValidationMessagesIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
         validationMessages_ = new com.google.protobuf.LazyStringArrayList(validationMessages_);
         bitField0_ |= 0x00000001;
-      }
+       }
     }
     /**
-     *
-     *
      * <pre>
      * Use `validation_results` instead
      * </pre>
      *
      * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-     *
-     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
+     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
+     *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
      * @return A list containing the validationMessages.
      */
-    @java.lang.Deprecated
-    public com.google.protobuf.ProtocolStringList getValidationMessagesList() {
+    @java.lang.Deprecated public com.google.protobuf.ProtocolStringList
+        getValidationMessagesList() {
       return validationMessages_.getUnmodifiableView();
     }
     /**
-     *
-     *
      * <pre>
      * Use `validation_results` instead
      * </pre>
      *
      * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-     *
-     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
+     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
+     *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
      * @return The count of validationMessages.
      */
-    @java.lang.Deprecated
-    public int getValidationMessagesCount() {
+    @java.lang.Deprecated public int getValidationMessagesCount() {
       return validationMessages_.size();
     }
     /**
-     *
-     *
      * <pre>
      * Use `validation_results` instead
      * </pre>
      *
      * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-     *
-     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
+     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
+     *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
      * @param index The index of the element to return.
      * @return The validationMessages at the given index.
      */
-    @java.lang.Deprecated
-    public java.lang.String getValidationMessages(int index) {
+    @java.lang.Deprecated public java.lang.String getValidationMessages(int index) {
       return validationMessages_.get(index);
     }
     /**
-     *
-     *
      * <pre>
      * Use `validation_results` instead
      * </pre>
      *
      * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-     *
-     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
+     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
+     *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
      * @param index The index of the value to return.
      * @return The bytes of the validationMessages at the given index.
      */
-    @java.lang.Deprecated
-    public com.google.protobuf.ByteString getValidationMessagesBytes(int index) {
+    @java.lang.Deprecated public com.google.protobuf.ByteString
+        getValidationMessagesBytes(int index) {
       return validationMessages_.getByteString(index);
     }
     /**
-     *
-     *
      * <pre>
      * Use `validation_results` instead
      * </pre>
      *
      * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-     *
-     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
+     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
+     *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
      * @param index The index to set the value at.
      * @param value The validationMessages to set.
      * @return This builder for chaining.
      */
-    @java.lang.Deprecated
-    public Builder setValidationMessages(int index, java.lang.String value) {
+    @java.lang.Deprecated public Builder setValidationMessages(
+        int index, java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureValidationMessagesIsMutable();
+    throw new NullPointerException();
+  }
+  ensureValidationMessagesIsMutable();
       validationMessages_.set(index, value);
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Use `validation_results` instead
      * </pre>
      *
      * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-     *
-     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
+     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
+     *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
      * @param value The validationMessages to add.
      * @return This builder for chaining.
      */
-    @java.lang.Deprecated
-    public Builder addValidationMessages(java.lang.String value) {
+    @java.lang.Deprecated public Builder addValidationMessages(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureValidationMessagesIsMutable();
+    throw new NullPointerException();
+  }
+  ensureValidationMessagesIsMutable();
       validationMessages_.add(value);
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Use `validation_results` instead
      * </pre>
      *
      * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-     *
-     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
+     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
+     *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
      * @param values The validationMessages to add.
      * @return This builder for chaining.
      */
-    @java.lang.Deprecated
-    public Builder addAllValidationMessages(java.lang.Iterable<java.lang.String> values) {
+    @java.lang.Deprecated public Builder addAllValidationMessages(
+        java.lang.Iterable<java.lang.String> values) {
       ensureValidationMessagesIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(values, validationMessages_);
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, validationMessages_);
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Use `validation_results` instead
      * </pre>
      *
      * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-     *
-     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
+     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
+     *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
      * @return This builder for chaining.
      */
-    @java.lang.Deprecated
-    public Builder clearValidationMessages() {
+    @java.lang.Deprecated public Builder clearValidationMessages() {
       validationMessages_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       bitField0_ = (bitField0_ & ~0x00000001);
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Use `validation_results` instead
      * </pre>
      *
      * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-     *
-     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
-     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
+     * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
+     *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
      * @param value The bytes of the validationMessages to add.
      * @return This builder for chaining.
      */
-    @java.lang.Deprecated
-    public Builder addValidationMessagesBytes(com.google.protobuf.ByteString value) {
+    @java.lang.Deprecated public Builder addValidationMessagesBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
       ensureValidationMessagesIsMutable();
       validationMessages_.add(value);
       onChanged();
@@ -1016,28 +909,21 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
     }
 
     private com.google.protobuf.MapField<
-            java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>
-        validationResults_;
-
-    private com.google.protobuf.MapField<
-            java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>
-        internalGetValidationResults() {
+        java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage> validationResults_;
+    private com.google.protobuf.MapField<java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>
+    internalGetValidationResults() {
       if (validationResults_ == null) {
         return com.google.protobuf.MapField.emptyMapField(
             ValidationResultsDefaultEntryHolder.defaultEntry);
       }
       return validationResults_;
     }
-
-    private com.google.protobuf.MapField<
-            java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>
-        internalGetMutableValidationResults() {
-      onChanged();
-      ;
+    private com.google.protobuf.MapField<java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>
+    internalGetMutableValidationResults() {
+      onChanged();;
       if (validationResults_ == null) {
-        validationResults_ =
-            com.google.protobuf.MapField.newMapField(
-                ValidationResultsDefaultEntryHolder.defaultEntry);
+        validationResults_ = com.google.protobuf.MapField.newMapField(
+            ValidationResultsDefaultEntryHolder.defaultEntry);
       }
       if (!validationResults_.isMutable()) {
         validationResults_ = validationResults_.copy();
@@ -1049,98 +935,78 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
       return internalGetValidationResults().getMap().size();
     }
     /**
-     *
-     *
      * <pre>
-     * Results of each validation check performed,
+     * Results of each validation check performed, 
      * such as schema conformance, revocation status, signature, etc.
      * Detailed results are provided for failed validations.
      * </pre>
      *
-     * <code>
-     * map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;
-     * </code>
+     * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
      */
+
     @java.lang.Override
-    public boolean containsValidationResults(java.lang.String key) {
-      if (key == null) {
-        throw new NullPointerException("map key");
-      }
+    public boolean containsValidationResults(
+        java.lang.String key) {
+      if (key == null) { throw new NullPointerException("map key"); }
       return internalGetValidationResults().getMap().containsKey(key);
     }
-    /** Use {@link #getValidationResultsMap()} instead. */
+    /**
+     * Use {@link #getValidationResultsMap()} instead.
+     */
     @java.lang.Override
     @java.lang.Deprecated
-    public java.util.Map<
-            java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>
-        getValidationResults() {
+    public java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage> getValidationResults() {
       return getValidationResultsMap();
     }
     /**
-     *
-     *
      * <pre>
-     * Results of each validation check performed,
+     * Results of each validation check performed, 
      * such as schema conformance, revocation status, signature, etc.
      * Detailed results are provided for failed validations.
      * </pre>
      *
-     * <code>
-     * map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;
-     * </code>
+     * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
      */
     @java.lang.Override
-    public java.util.Map<
-            java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>
-        getValidationResultsMap() {
+
+    public java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage> getValidationResultsMap() {
       return internalGetValidationResults().getMap();
     }
     /**
-     *
-     *
      * <pre>
-     * Results of each validation check performed,
+     * Results of each validation check performed, 
      * such as schema conformance, revocation status, signature, etc.
      * Detailed results are provided for failed validations.
      * </pre>
      *
-     * <code>
-     * map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;
-     * </code>
+     * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
      */
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.v1.ValidationMessage
-        getValidationResultsOrDefault(
-            java.lang.String key,
-            trinsic.services.verifiablecredentials.v1.ValidationMessage defaultValue) {
-      if (key == null) {
-        throw new NullPointerException("map key");
-      }
-      java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>
-          map = internalGetValidationResults().getMap();
+
+    public trinsic.services.verifiablecredentials.v1.ValidationMessage getValidationResultsOrDefault(
+        java.lang.String key,
+        trinsic.services.verifiablecredentials.v1.ValidationMessage defaultValue) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage> map =
+          internalGetValidationResults().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     *
-     *
      * <pre>
-     * Results of each validation check performed,
+     * Results of each validation check performed, 
      * such as schema conformance, revocation status, signature, etc.
      * Detailed results are provided for failed validations.
      * </pre>
      *
-     * <code>
-     * map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;
-     * </code>
+     * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
      */
     @java.lang.Override
+
     public trinsic.services.verifiablecredentials.v1.ValidationMessage getValidationResultsOrThrow(
         java.lang.String key) {
-      if (key == null) {
-        throw new NullPointerException("map key");
-      }
-      java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>
-          map = internalGetValidationResults().getMap();
+      if (key == null) { throw new NullPointerException("map key"); }
+      java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage> map =
+          internalGetValidationResults().getMap();
       if (!map.containsKey(key)) {
         throw new java.lang.IllegalArgumentException();
       }
@@ -1148,83 +1014,75 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
     }
 
     public Builder clearValidationResults() {
-      internalGetMutableValidationResults().getMutableMap().clear();
+      internalGetMutableValidationResults().getMutableMap()
+          .clear();
       return this;
     }
     /**
-     *
-     *
      * <pre>
-     * Results of each validation check performed,
+     * Results of each validation check performed, 
      * such as schema conformance, revocation status, signature, etc.
      * Detailed results are provided for failed validations.
      * </pre>
      *
-     * <code>
-     * map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;
-     * </code>
+     * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
      */
-    public Builder removeValidationResults(java.lang.String key) {
-      if (key == null) {
-        throw new NullPointerException("map key");
-      }
-      internalGetMutableValidationResults().getMutableMap().remove(key);
+
+    public Builder removeValidationResults(
+        java.lang.String key) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      internalGetMutableValidationResults().getMutableMap()
+          .remove(key);
       return this;
     }
-    /** Use alternate mutation accessors instead. */
+    /**
+     * Use alternate mutation accessors instead.
+     */
     @java.lang.Deprecated
-    public java.util.Map<
-            java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>
-        getMutableValidationResults() {
+    public java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>
+    getMutableValidationResults() {
       return internalGetMutableValidationResults().getMutableMap();
     }
     /**
-     *
-     *
      * <pre>
-     * Results of each validation check performed,
+     * Results of each validation check performed, 
      * such as schema conformance, revocation status, signature, etc.
      * Detailed results are provided for failed validations.
      * </pre>
      *
-     * <code>
-     * map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;
-     * </code>
+     * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
      */
     public Builder putValidationResults(
-        java.lang.String key, trinsic.services.verifiablecredentials.v1.ValidationMessage value) {
-      if (key == null) {
-        throw new NullPointerException("map key");
-      }
+        java.lang.String key,
+        trinsic.services.verifiablecredentials.v1.ValidationMessage value) {
+      if (key == null) { throw new NullPointerException("map key"); }
       if (value == null) {
-        throw new NullPointerException("map value");
-      }
+  throw new NullPointerException("map value");
+}
 
-      internalGetMutableValidationResults().getMutableMap().put(key, value);
+      internalGetMutableValidationResults().getMutableMap()
+          .put(key, value);
       return this;
     }
     /**
-     *
-     *
      * <pre>
-     * Results of each validation check performed,
+     * Results of each validation check performed, 
      * such as schema conformance, revocation status, signature, etc.
      * Detailed results are provided for failed validations.
      * </pre>
      *
-     * <code>
-     * map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;
-     * </code>
+     * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
      */
+
     public Builder putAllValidationResults(
-        java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>
-            values) {
-      internalGetMutableValidationResults().getMutableMap().putAll(values);
+        java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage> values) {
+      internalGetMutableValidationResults().getMutableMap()
+          .putAll(values);
       return this;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -1234,13 +1092,12 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:services.verifiablecredentials.v1.VerifyProofResponse)
   }
 
   // @@protoc_insertion_point(class_scope:services.verifiablecredentials.v1.VerifyProofResponse)
-  private static final trinsic.services.verifiablecredentials.v1.VerifyProofResponse
-      DEFAULT_INSTANCE;
-
+  private static final trinsic.services.verifiablecredentials.v1.VerifyProofResponse DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new trinsic.services.verifiablecredentials.v1.VerifyProofResponse();
   }
@@ -1249,16 +1106,16 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<VerifyProofResponse> PARSER =
-      new com.google.protobuf.AbstractParser<VerifyProofResponse>() {
-        @java.lang.Override
-        public VerifyProofResponse parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return new VerifyProofResponse(input, extensionRegistry);
-        }
-      };
+  private static final com.google.protobuf.Parser<VerifyProofResponse>
+      PARSER = new com.google.protobuf.AbstractParser<VerifyProofResponse>() {
+    @java.lang.Override
+    public VerifyProofResponse parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return new VerifyProofResponse(input, extensionRegistry);
+    }
+  };
 
   public static com.google.protobuf.Parser<VerifyProofResponse> parser() {
     return PARSER;
@@ -1273,4 +1130,6 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
   public trinsic.services.verifiablecredentials.v1.VerifyProofResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

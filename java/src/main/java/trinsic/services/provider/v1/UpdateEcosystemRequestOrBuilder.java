@@ -3,58 +3,47 @@
 
 package trinsic.services.provider.v1;
 
-public interface UpdateEcosystemRequestOrBuilder
-    extends
+public interface UpdateEcosystemRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:services.provider.v1.UpdateEcosystemRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   *
-   *
    * <pre>
    * New description of the ecosystem
    * </pre>
    *
    * <code>string description = 1;</code>
-   *
    * @return The description.
    */
   java.lang.String getDescription();
   /**
-   *
-   *
    * <pre>
    * New description of the ecosystem
    * </pre>
    *
    * <code>string description = 1;</code>
-   *
    * @return The bytes for description.
    */
-  com.google.protobuf.ByteString getDescriptionBytes();
+  com.google.protobuf.ByteString
+      getDescriptionBytes();
 
   /**
-   *
-   *
    * <pre>
    * New external URL associated with the organization or ecosystem entity
    * </pre>
    *
    * <code>string uri = 2;</code>
-   *
    * @return The uri.
    */
   java.lang.String getUri();
   /**
-   *
-   *
    * <pre>
    * New external URL associated with the organization or ecosystem entity
    * </pre>
    *
    * <code>string uri = 2;</code>
-   *
    * @return The bytes for uri.
    */
-  com.google.protobuf.ByteString getUriBytes();
+  com.google.protobuf.ByteString
+      getUriBytes();
 }

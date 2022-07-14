@@ -4,39 +4,37 @@
 package trinsic.services.verifiablecredentials.v1;
 
 /**
- *
- *
  * <pre>
  * Response to `IssueRequest`
  * </pre>
  *
  * Protobuf type {@code services.verifiablecredentials.v1.IssueResponse}
  */
-public final class IssueResponse extends com.google.protobuf.GeneratedMessageV3
-    implements
+public final class IssueResponse extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:services.verifiablecredentials.v1.IssueResponse)
     IssueResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+private static final long serialVersionUID = 0L;
   // Use IssueResponse.newBuilder() to construct.
   private IssueResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private IssueResponse() {
     signedDocumentJson_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new IssueResponse();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
     return this.unknownFields;
   }
-
   private IssueResponse(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -55,20 +53,19 @@ public final class IssueResponse extends com.google.protobuf.GeneratedMessageV3
           case 0:
             done = true;
             break;
-          case 10:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-              signedDocumentJson_ = s;
-              break;
+            signedDocumentJson_ = s;
+            break;
+          }
+          default: {
+            if (!parseUnknownField(
+                input, unknownFields, extensionRegistry, tag)) {
+              done = true;
             }
-          default:
-            {
-              if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
+            break;
+          }
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -76,40 +73,35 @@ public final class IssueResponse extends com.google.protobuf.GeneratedMessageV3
     } catch (com.google.protobuf.UninitializedMessageException e) {
       throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
+      throw new com.google.protobuf.InvalidProtocolBufferException(
+          e).setUnfinishedMessage(this);
     } finally {
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
-
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-        .internal_static_services_verifiablecredentials_v1_IssueResponse_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_IssueResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-        .internal_static_services_verifiablecredentials_v1_IssueResponse_fieldAccessorTable
+    return trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_IssueResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.verifiablecredentials.v1.IssueResponse.class,
-            trinsic.services.verifiablecredentials.v1.IssueResponse.Builder.class);
+            trinsic.services.verifiablecredentials.v1.IssueResponse.class, trinsic.services.verifiablecredentials.v1.IssueResponse.Builder.class);
   }
 
   public static final int SIGNED_DOCUMENT_JSON_FIELD_NUMBER = 1;
   private volatile java.lang.Object signedDocumentJson_;
   /**
-   *
-   *
    * <pre>
    * Verifiable Credential document, signed with public key
    * tied to caller of `IssueRequest`
    * </pre>
    *
    * <code>string signed_document_json = 1;</code>
-   *
    * @return The signedDocumentJson.
    */
   @java.lang.Override
@@ -118,30 +110,30 @@ public final class IssueResponse extends com.google.protobuf.GeneratedMessageV3
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       signedDocumentJson_ = s;
       return s;
     }
   }
   /**
-   *
-   *
    * <pre>
    * Verifiable Credential document, signed with public key
    * tied to caller of `IssueRequest`
    * </pre>
    *
    * <code>string signed_document_json = 1;</code>
-   *
    * @return The bytes for signedDocumentJson.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getSignedDocumentJsonBytes() {
+  public com.google.protobuf.ByteString
+      getSignedDocumentJsonBytes() {
     java.lang.Object ref = signedDocumentJson_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       signedDocumentJson_ = b;
       return b;
     } else {
@@ -150,7 +142,6 @@ public final class IssueResponse extends com.google.protobuf.GeneratedMessageV3
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -162,7 +153,8 @@ public final class IssueResponse extends com.google.protobuf.GeneratedMessageV3
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(signedDocumentJson_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, signedDocumentJson_);
     }
@@ -186,15 +178,15 @@ public final class IssueResponse extends com.google.protobuf.GeneratedMessageV3
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof trinsic.services.verifiablecredentials.v1.IssueResponse)) {
       return super.equals(obj);
     }
-    trinsic.services.verifiablecredentials.v1.IssueResponse other =
-        (trinsic.services.verifiablecredentials.v1.IssueResponse) obj;
+    trinsic.services.verifiablecredentials.v1.IssueResponse other = (trinsic.services.verifiablecredentials.v1.IssueResponse) obj;
 
-    if (!getSignedDocumentJson().equals(other.getSignedDocumentJson())) return false;
+    if (!getSignedDocumentJson()
+        .equals(other.getSignedDocumentJson())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -214,127 +206,117 @@ public final class IssueResponse extends com.google.protobuf.GeneratedMessageV3
   }
 
   public static trinsic.services.verifiablecredentials.v1.IssueResponse parseFrom(
-      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.verifiablecredentials.v1.IssueResponse parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.verifiablecredentials.v1.IssueResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.verifiablecredentials.v1.IssueResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.verifiablecredentials.v1.IssueResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.verifiablecredentials.v1.IssueResponse parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
-  public static trinsic.services.verifiablecredentials.v1.IssueResponse parseFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-  }
-
-  public static trinsic.services.verifiablecredentials.v1.IssueResponse parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+  public static trinsic.services.verifiablecredentials.v1.IssueResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
-  public static trinsic.services.verifiablecredentials.v1.IssueResponse parseDelimitedFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static trinsic.services.verifiablecredentials.v1.IssueResponse parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
-  }
-
   public static trinsic.services.verifiablecredentials.v1.IssueResponse parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
+  public static trinsic.services.verifiablecredentials.v1.IssueResponse parseDelimitedFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
+  }
+  public static trinsic.services.verifiablecredentials.v1.IssueResponse parseDelimitedFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+  }
+  public static trinsic.services.verifiablecredentials.v1.IssueResponse parseFrom(
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
+  }
   public static trinsic.services.verifiablecredentials.v1.IssueResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
-  public static Builder newBuilder(
-      trinsic.services.verifiablecredentials.v1.IssueResponse prototype) {
+  public static Builder newBuilder(trinsic.services.verifiablecredentials.v1.IssueResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
-   *
-   *
    * <pre>
    * Response to `IssueRequest`
    * </pre>
    *
    * Protobuf type {@code services.verifiablecredentials.v1.IssueResponse}
    */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:services.verifiablecredentials.v1.IssueResponse)
       trinsic.services.verifiablecredentials.v1.IssueResponseOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-          .internal_static_services_verifiablecredentials_v1_IssueResponse_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_IssueResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-          .internal_static_services_verifiablecredentials_v1_IssueResponse_fieldAccessorTable
+      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_IssueResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.verifiablecredentials.v1.IssueResponse.class,
-              trinsic.services.verifiablecredentials.v1.IssueResponse.Builder.class);
+              trinsic.services.verifiablecredentials.v1.IssueResponse.class, trinsic.services.verifiablecredentials.v1.IssueResponse.Builder.class);
     }
 
     // Construct using trinsic.services.verifiablecredentials.v1.IssueResponse.newBuilder()
@@ -342,15 +324,16 @@ public final class IssueResponse extends com.google.protobuf.GeneratedMessageV3
       maybeForceBuilderInitialization();
     }
 
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
-
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+      }
     }
-
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -360,9 +343,9 @@ public final class IssueResponse extends com.google.protobuf.GeneratedMessageV3
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-          .internal_static_services_verifiablecredentials_v1_IssueResponse_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_IssueResponse_descriptor;
     }
 
     @java.lang.Override
@@ -381,8 +364,7 @@ public final class IssueResponse extends com.google.protobuf.GeneratedMessageV3
 
     @java.lang.Override
     public trinsic.services.verifiablecredentials.v1.IssueResponse buildPartial() {
-      trinsic.services.verifiablecredentials.v1.IssueResponse result =
-          new trinsic.services.verifiablecredentials.v1.IssueResponse(this);
+      trinsic.services.verifiablecredentials.v1.IssueResponse result = new trinsic.services.verifiablecredentials.v1.IssueResponse(this);
       result.signedDocumentJson_ = signedDocumentJson_;
       onBuilt();
       return result;
@@ -392,39 +374,38 @@ public final class IssueResponse extends com.google.protobuf.GeneratedMessageV3
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof trinsic.services.verifiablecredentials.v1.IssueResponse) {
-        return mergeFrom((trinsic.services.verifiablecredentials.v1.IssueResponse) other);
+        return mergeFrom((trinsic.services.verifiablecredentials.v1.IssueResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -432,8 +413,7 @@ public final class IssueResponse extends com.google.protobuf.GeneratedMessageV3
     }
 
     public Builder mergeFrom(trinsic.services.verifiablecredentials.v1.IssueResponse other) {
-      if (other == trinsic.services.verifiablecredentials.v1.IssueResponse.getDefaultInstance())
-        return this;
+      if (other == trinsic.services.verifiablecredentials.v1.IssueResponse.getDefaultInstance()) return this;
       if (!other.getSignedDocumentJson().isEmpty()) {
         signedDocumentJson_ = other.signedDocumentJson_;
         onChanged();
@@ -457,8 +437,7 @@ public final class IssueResponse extends com.google.protobuf.GeneratedMessageV3
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage =
-            (trinsic.services.verifiablecredentials.v1.IssueResponse) e.getUnfinishedMessage();
+        parsedMessage = (trinsic.services.verifiablecredentials.v1.IssueResponse) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -470,21 +449,19 @@ public final class IssueResponse extends com.google.protobuf.GeneratedMessageV3
 
     private java.lang.Object signedDocumentJson_ = "";
     /**
-     *
-     *
      * <pre>
      * Verifiable Credential document, signed with public key
      * tied to caller of `IssueRequest`
      * </pre>
      *
      * <code>string signed_document_json = 1;</code>
-     *
      * @return The signedDocumentJson.
      */
     public java.lang.String getSignedDocumentJson() {
       java.lang.Object ref = signedDocumentJson_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         signedDocumentJson_ = s;
         return s;
@@ -493,22 +470,21 @@ public final class IssueResponse extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * Verifiable Credential document, signed with public key
      * tied to caller of `IssueRequest`
      * </pre>
      *
      * <code>string signed_document_json = 1;</code>
-     *
      * @return The bytes for signedDocumentJson.
      */
-    public com.google.protobuf.ByteString getSignedDocumentJsonBytes() {
+    public com.google.protobuf.ByteString
+        getSignedDocumentJsonBytes() {
       java.lang.Object ref = signedDocumentJson_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         signedDocumentJson_ = b;
         return b;
       } else {
@@ -516,71 +492,64 @@ public final class IssueResponse extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * Verifiable Credential document, signed with public key
      * tied to caller of `IssueRequest`
      * </pre>
      *
      * <code>string signed_document_json = 1;</code>
-     *
      * @param value The signedDocumentJson to set.
      * @return This builder for chaining.
      */
-    public Builder setSignedDocumentJson(java.lang.String value) {
+    public Builder setSignedDocumentJson(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       signedDocumentJson_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Verifiable Credential document, signed with public key
      * tied to caller of `IssueRequest`
      * </pre>
      *
      * <code>string signed_document_json = 1;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearSignedDocumentJson() {
-
+      
       signedDocumentJson_ = getDefaultInstance().getSignedDocumentJson();
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Verifiable Credential document, signed with public key
      * tied to caller of `IssueRequest`
      * </pre>
      *
      * <code>string signed_document_json = 1;</code>
-     *
      * @param value The bytes for signedDocumentJson to set.
      * @return This builder for chaining.
      */
-    public Builder setSignedDocumentJsonBytes(com.google.protobuf.ByteString value) {
+    public Builder setSignedDocumentJsonBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       signedDocumentJson_ = value;
       onChanged();
       return this;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -590,12 +559,12 @@ public final class IssueResponse extends com.google.protobuf.GeneratedMessageV3
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:services.verifiablecredentials.v1.IssueResponse)
   }
 
   // @@protoc_insertion_point(class_scope:services.verifiablecredentials.v1.IssueResponse)
   private static final trinsic.services.verifiablecredentials.v1.IssueResponse DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new trinsic.services.verifiablecredentials.v1.IssueResponse();
   }
@@ -604,16 +573,16 @@ public final class IssueResponse extends com.google.protobuf.GeneratedMessageV3
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<IssueResponse> PARSER =
-      new com.google.protobuf.AbstractParser<IssueResponse>() {
-        @java.lang.Override
-        public IssueResponse parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return new IssueResponse(input, extensionRegistry);
-        }
-      };
+  private static final com.google.protobuf.Parser<IssueResponse>
+      PARSER = new com.google.protobuf.AbstractParser<IssueResponse>() {
+    @java.lang.Override
+    public IssueResponse parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return new IssueResponse(input, extensionRegistry);
+    }
+  };
 
   public static com.google.protobuf.Parser<IssueResponse> parser() {
     return PARSER;
@@ -628,4 +597,6 @@ public final class IssueResponse extends com.google.protobuf.GeneratedMessageV3
   public trinsic.services.verifiablecredentials.v1.IssueResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

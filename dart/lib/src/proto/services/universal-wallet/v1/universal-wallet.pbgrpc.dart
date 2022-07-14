@@ -10,69 +10,69 @@ import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
-import 'universal-wallet.pb.dart' as $6;
+import 'universal-wallet.pb.dart' as $4;
 export 'universal-wallet.pb.dart';
 
 class UniversalWalletClient extends $grpc.Client {
   static final _$getItem =
-      $grpc.ClientMethod<$6.GetItemRequest, $6.GetItemResponse>(
+      $grpc.ClientMethod<$4.GetItemRequest, $4.GetItemResponse>(
           '/services.universalwallet.v1.UniversalWallet/GetItem',
-          ($6.GetItemRequest value) => value.writeToBuffer(),
+          ($4.GetItemRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $6.GetItemResponse.fromBuffer(value));
+              $4.GetItemResponse.fromBuffer(value));
   static final _$search =
-      $grpc.ClientMethod<$6.SearchRequest, $6.SearchResponse>(
+      $grpc.ClientMethod<$4.SearchRequest, $4.SearchResponse>(
           '/services.universalwallet.v1.UniversalWallet/Search',
-          ($6.SearchRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) => $6.SearchResponse.fromBuffer(value));
+          ($4.SearchRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $4.SearchResponse.fromBuffer(value));
   static final _$insertItem =
-      $grpc.ClientMethod<$6.InsertItemRequest, $6.InsertItemResponse>(
+      $grpc.ClientMethod<$4.InsertItemRequest, $4.InsertItemResponse>(
           '/services.universalwallet.v1.UniversalWallet/InsertItem',
-          ($6.InsertItemRequest value) => value.writeToBuffer(),
+          ($4.InsertItemRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $6.InsertItemResponse.fromBuffer(value));
+              $4.InsertItemResponse.fromBuffer(value));
   static final _$updateItem =
-      $grpc.ClientMethod<$6.UpdateItemRequest, $6.UpdateItemResponse>(
+      $grpc.ClientMethod<$4.UpdateItemRequest, $4.UpdateItemResponse>(
           '/services.universalwallet.v1.UniversalWallet/UpdateItem',
-          ($6.UpdateItemRequest value) => value.writeToBuffer(),
+          ($4.UpdateItemRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $6.UpdateItemResponse.fromBuffer(value));
+              $4.UpdateItemResponse.fromBuffer(value));
   static final _$deleteItem =
-      $grpc.ClientMethod<$6.DeleteItemRequest, $6.DeleteItemResponse>(
+      $grpc.ClientMethod<$4.DeleteItemRequest, $4.DeleteItemResponse>(
           '/services.universalwallet.v1.UniversalWallet/DeleteItem',
-          ($6.DeleteItemRequest value) => value.writeToBuffer(),
+          ($4.DeleteItemRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $6.DeleteItemResponse.fromBuffer(value));
+              $4.DeleteItemResponse.fromBuffer(value));
 
   UniversalWalletClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
-  $grpc.ResponseFuture<$6.GetItemResponse> getItem($6.GetItemRequest request,
+  $grpc.ResponseFuture<$4.GetItemResponse> getItem($4.GetItemRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getItem, request, options: options);
   }
 
-  $grpc.ResponseFuture<$6.SearchResponse> search($6.SearchRequest request,
+  $grpc.ResponseFuture<$4.SearchResponse> search($4.SearchRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$search, request, options: options);
   }
 
-  $grpc.ResponseFuture<$6.InsertItemResponse> insertItem(
-      $6.InsertItemRequest request,
+  $grpc.ResponseFuture<$4.InsertItemResponse> insertItem(
+      $4.InsertItemRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$insertItem, request, options: options);
   }
 
-  $grpc.ResponseFuture<$6.UpdateItemResponse> updateItem(
-      $6.UpdateItemRequest request,
+  $grpc.ResponseFuture<$4.UpdateItemResponse> updateItem(
+      $4.UpdateItemRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$updateItem, request, options: options);
   }
 
-  $grpc.ResponseFuture<$6.DeleteItemResponse> deleteItem(
-      $6.DeleteItemRequest request,
+  $grpc.ResponseFuture<$4.DeleteItemResponse> deleteItem(
+      $4.DeleteItemRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$deleteItem, request, options: options);
   }
@@ -82,76 +82,76 @@ abstract class UniversalWalletServiceBase extends $grpc.Service {
   $core.String get $name => 'services.universalwallet.v1.UniversalWallet';
 
   UniversalWalletServiceBase() {
-    $addMethod($grpc.ServiceMethod<$6.GetItemRequest, $6.GetItemResponse>(
+    $addMethod($grpc.ServiceMethod<$4.GetItemRequest, $4.GetItemResponse>(
         'GetItem',
         getItem_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $6.GetItemRequest.fromBuffer(value),
-        ($6.GetItemResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$6.SearchRequest, $6.SearchResponse>(
+        ($core.List<$core.int> value) => $4.GetItemRequest.fromBuffer(value),
+        ($4.GetItemResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.SearchRequest, $4.SearchResponse>(
         'Search',
         search_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $6.SearchRequest.fromBuffer(value),
-        ($6.SearchResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$6.InsertItemRequest, $6.InsertItemResponse>(
+        ($core.List<$core.int> value) => $4.SearchRequest.fromBuffer(value),
+        ($4.SearchResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.InsertItemRequest, $4.InsertItemResponse>(
         'InsertItem',
         insertItem_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $6.InsertItemRequest.fromBuffer(value),
-        ($6.InsertItemResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$6.UpdateItemRequest, $6.UpdateItemResponse>(
+        ($core.List<$core.int> value) => $4.InsertItemRequest.fromBuffer(value),
+        ($4.InsertItemResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.UpdateItemRequest, $4.UpdateItemResponse>(
         'UpdateItem',
         updateItem_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $6.UpdateItemRequest.fromBuffer(value),
-        ($6.UpdateItemResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$6.DeleteItemRequest, $6.DeleteItemResponse>(
+        ($core.List<$core.int> value) => $4.UpdateItemRequest.fromBuffer(value),
+        ($4.UpdateItemResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.DeleteItemRequest, $4.DeleteItemResponse>(
         'DeleteItem',
         deleteItem_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $6.DeleteItemRequest.fromBuffer(value),
-        ($6.DeleteItemResponse value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $4.DeleteItemRequest.fromBuffer(value),
+        ($4.DeleteItemResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$6.GetItemResponse> getItem_Pre(
-      $grpc.ServiceCall call, $async.Future<$6.GetItemRequest> request) async {
+  $async.Future<$4.GetItemResponse> getItem_Pre(
+      $grpc.ServiceCall call, $async.Future<$4.GetItemRequest> request) async {
     return getItem(call, await request);
   }
 
-  $async.Future<$6.SearchResponse> search_Pre(
-      $grpc.ServiceCall call, $async.Future<$6.SearchRequest> request) async {
+  $async.Future<$4.SearchResponse> search_Pre(
+      $grpc.ServiceCall call, $async.Future<$4.SearchRequest> request) async {
     return search(call, await request);
   }
 
-  $async.Future<$6.InsertItemResponse> insertItem_Pre($grpc.ServiceCall call,
-      $async.Future<$6.InsertItemRequest> request) async {
+  $async.Future<$4.InsertItemResponse> insertItem_Pre($grpc.ServiceCall call,
+      $async.Future<$4.InsertItemRequest> request) async {
     return insertItem(call, await request);
   }
 
-  $async.Future<$6.UpdateItemResponse> updateItem_Pre($grpc.ServiceCall call,
-      $async.Future<$6.UpdateItemRequest> request) async {
+  $async.Future<$4.UpdateItemResponse> updateItem_Pre($grpc.ServiceCall call,
+      $async.Future<$4.UpdateItemRequest> request) async {
     return updateItem(call, await request);
   }
 
-  $async.Future<$6.DeleteItemResponse> deleteItem_Pre($grpc.ServiceCall call,
-      $async.Future<$6.DeleteItemRequest> request) async {
+  $async.Future<$4.DeleteItemResponse> deleteItem_Pre($grpc.ServiceCall call,
+      $async.Future<$4.DeleteItemRequest> request) async {
     return deleteItem(call, await request);
   }
 
-  $async.Future<$6.GetItemResponse> getItem(
-      $grpc.ServiceCall call, $6.GetItemRequest request);
-  $async.Future<$6.SearchResponse> search(
-      $grpc.ServiceCall call, $6.SearchRequest request);
-  $async.Future<$6.InsertItemResponse> insertItem(
-      $grpc.ServiceCall call, $6.InsertItemRequest request);
-  $async.Future<$6.UpdateItemResponse> updateItem(
-      $grpc.ServiceCall call, $6.UpdateItemRequest request);
-  $async.Future<$6.DeleteItemResponse> deleteItem(
-      $grpc.ServiceCall call, $6.DeleteItemRequest request);
+  $async.Future<$4.GetItemResponse> getItem(
+      $grpc.ServiceCall call, $4.GetItemRequest request);
+  $async.Future<$4.SearchResponse> search(
+      $grpc.ServiceCall call, $4.SearchRequest request);
+  $async.Future<$4.InsertItemResponse> insertItem(
+      $grpc.ServiceCall call, $4.InsertItemRequest request);
+  $async.Future<$4.UpdateItemResponse> updateItem(
+      $grpc.ServiceCall call, $4.UpdateItemRequest request);
+  $async.Future<$4.DeleteItemResponse> deleteItem(
+      $grpc.ServiceCall call, $4.DeleteItemRequest request);
 }

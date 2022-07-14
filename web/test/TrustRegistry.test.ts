@@ -3,7 +3,7 @@ import {
   RegisterMemberRequest,
   RegistrationStatus,
   SignInRequest,
-    GetMembershipStatusRequest,
+  GetMembershipStatusRequest,
   TrinsicService,
 } from "../src";
 import { v4 as uuid } from "uuid";

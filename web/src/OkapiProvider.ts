@@ -1,7 +1,7 @@
 // TODO - Include this only for node
 import { Hashing, Oberon, OkapiMetadata } from "@trinsic/okapi-node";
 import { AccountProfile } from "./proto/services/account/v1/account";
-import {TextDecoder, TextEncoder} from "util";
+import { TextDecoder, TextEncoder } from "util";
 // TODO - Include something else only for web
 
 export async function blake3HashRequest(
@@ -15,31 +15,40 @@ export async function blake3HashRequest(
   return requestHash;
 }
 
-export async function oberonProofRequest(profile: AccountProfile, nonceUint8: Uint8Array): Promise<Uint8Array> {
-    let proof = await Oberon.createProof({
-        data: profile.authData,
-        nonce: nonceUint8,
-        token: profile.authToken,
-        blinding: [],
-    });
-    return proof.proof;
+export async function oberonProofRequest(
+  profile: AccountProfile,
+  nonceUint8: Uint8Array
+): Promise<Uint8Array> {
+  let proof = await Oberon.createProof({
+    data: profile.authData,
+    nonce: nonceUint8,
+    token: profile.authToken,
+    blinding: [],
+  });
+  return proof.proof;
 }
 
-export async function unblindOberon(cloned: AccountProfile, securityCode: Uint8Array) {
-    return await Oberon.unblindToken({
-      token: cloned.authToken,
-      blinding: [securityCode],
-    });
+export async function unblindOberon(
+  cloned: AccountProfile,
+  securityCode: Uint8Array
+) {
+  return await Oberon.unblindToken({
+    token: cloned.authToken,
+    blinding: [securityCode],
+  });
 }
 
-export async function blindOberon(cloned: AccountProfile, securityCode: Uint8Array) {
-    return await Oberon.blindToken({
-      token: cloned.authToken,
-      blinding: [securityCode],
-    });
+export async function blindOberon(
+  cloned: AccountProfile,
+  securityCode: Uint8Array
+) {
+  return await Oberon.blindToken({
+    token: cloned.authToken,
+    blinding: [securityCode],
+  });
 }
 
 export async function okapiVersion(): Promise<string> {
-    const a = (await OkapiMetadata.getMetadata()).version;
-    return new TextDecoder().decode(new TextEncoder().encode(a));
+  const a = (await OkapiMetadata.getMetadata()).version;
+  return new TextDecoder().decode(new TextEncoder().encode(a));
 }

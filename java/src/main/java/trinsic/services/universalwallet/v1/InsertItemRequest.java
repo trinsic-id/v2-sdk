@@ -4,24 +4,21 @@
 package trinsic.services.universalwallet.v1;
 
 /**
- *
- *
  * <pre>
  * Request to insert a JSON document into a wallet
  * </pre>
  *
  * Protobuf type {@code services.universalwallet.v1.InsertItemRequest}
  */
-public final class InsertItemRequest extends com.google.protobuf.GeneratedMessageV3
-    implements
+public final class InsertItemRequest extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:services.universalwallet.v1.InsertItemRequest)
     InsertItemRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+private static final long serialVersionUID = 0L;
   // Use InsertItemRequest.newBuilder() to construct.
   private InsertItemRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private InsertItemRequest() {
     itemJson_ = "";
     itemType_ = "";
@@ -29,15 +26,16 @@ public final class InsertItemRequest extends com.google.protobuf.GeneratedMessag
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new InsertItemRequest();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
     return this.unknownFields;
   }
-
   private InsertItemRequest(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -56,27 +54,25 @@ public final class InsertItemRequest extends com.google.protobuf.GeneratedMessag
           case 0:
             done = true;
             break;
-          case 10:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-              itemJson_ = s;
-              break;
-            }
-          case 18:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
+            itemJson_ = s;
+            break;
+          }
+          case 18: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-              itemType_ = s;
-              break;
+            itemType_ = s;
+            break;
+          }
+          default: {
+            if (!parseUnknownField(
+                input, unknownFields, extensionRegistry, tag)) {
+              done = true;
             }
-          default:
-            {
-              if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
+            break;
+          }
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -84,39 +80,34 @@ public final class InsertItemRequest extends com.google.protobuf.GeneratedMessag
     } catch (com.google.protobuf.UninitializedMessageException e) {
       throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
+      throw new com.google.protobuf.InvalidProtocolBufferException(
+          e).setUnfinishedMessage(this);
     } finally {
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
-
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return trinsic.services.universalwallet.v1.UniversalWalletOuterClass
-        .internal_static_services_universalwallet_v1_InsertItemRequest_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return trinsic.services.universalwallet.v1.UniversalWalletOuterClass.internal_static_services_universalwallet_v1_InsertItemRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.universalwallet.v1.UniversalWalletOuterClass
-        .internal_static_services_universalwallet_v1_InsertItemRequest_fieldAccessorTable
+    return trinsic.services.universalwallet.v1.UniversalWalletOuterClass.internal_static_services_universalwallet_v1_InsertItemRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.universalwallet.v1.InsertItemRequest.class,
-            trinsic.services.universalwallet.v1.InsertItemRequest.Builder.class);
+            trinsic.services.universalwallet.v1.InsertItemRequest.class, trinsic.services.universalwallet.v1.InsertItemRequest.Builder.class);
   }
 
   public static final int ITEM_JSON_FIELD_NUMBER = 1;
   private volatile java.lang.Object itemJson_;
   /**
-   *
-   *
    * <pre>
    * Document to insert; must be stringified JSON
    * </pre>
    *
    * <code>string item_json = 1;</code>
-   *
    * @return The itemJson.
    */
   @java.lang.Override
@@ -125,29 +116,29 @@ public final class InsertItemRequest extends com.google.protobuf.GeneratedMessag
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       itemJson_ = s;
       return s;
     }
   }
   /**
-   *
-   *
    * <pre>
    * Document to insert; must be stringified JSON
    * </pre>
    *
    * <code>string item_json = 1;</code>
-   *
    * @return The bytes for itemJson.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getItemJsonBytes() {
+  public com.google.protobuf.ByteString
+      getItemJsonBytes() {
     java.lang.Object ref = itemJson_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       itemJson_ = b;
       return b;
     } else {
@@ -158,14 +149,11 @@ public final class InsertItemRequest extends com.google.protobuf.GeneratedMessag
   public static final int ITEM_TYPE_FIELD_NUMBER = 2;
   private volatile java.lang.Object itemType_;
   /**
-   *
-   *
    * <pre>
    * Item type (ex. "VerifiableCredential")
    * </pre>
    *
    * <code>string item_type = 2 [(.services.options.optional) = true];</code>
-   *
    * @return The itemType.
    */
   @java.lang.Override
@@ -174,29 +162,29 @@ public final class InsertItemRequest extends com.google.protobuf.GeneratedMessag
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       itemType_ = s;
       return s;
     }
   }
   /**
-   *
-   *
    * <pre>
    * Item type (ex. "VerifiableCredential")
    * </pre>
    *
    * <code>string item_type = 2 [(.services.options.optional) = true];</code>
-   *
    * @return The bytes for itemType.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getItemTypeBytes() {
+  public com.google.protobuf.ByteString
+      getItemTypeBytes() {
     java.lang.Object ref = itemType_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       itemType_ = b;
       return b;
     } else {
@@ -205,7 +193,6 @@ public final class InsertItemRequest extends com.google.protobuf.GeneratedMessag
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -217,7 +204,8 @@ public final class InsertItemRequest extends com.google.protobuf.GeneratedMessag
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(itemJson_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, itemJson_);
     }
@@ -247,16 +235,17 @@ public final class InsertItemRequest extends com.google.protobuf.GeneratedMessag
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof trinsic.services.universalwallet.v1.InsertItemRequest)) {
       return super.equals(obj);
     }
-    trinsic.services.universalwallet.v1.InsertItemRequest other =
-        (trinsic.services.universalwallet.v1.InsertItemRequest) obj;
+    trinsic.services.universalwallet.v1.InsertItemRequest other = (trinsic.services.universalwallet.v1.InsertItemRequest) obj;
 
-    if (!getItemJson().equals(other.getItemJson())) return false;
-    if (!getItemType().equals(other.getItemType())) return false;
+    if (!getItemJson()
+        .equals(other.getItemJson())) return false;
+    if (!getItemType()
+        .equals(other.getItemType())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -278,127 +267,117 @@ public final class InsertItemRequest extends com.google.protobuf.GeneratedMessag
   }
 
   public static trinsic.services.universalwallet.v1.InsertItemRequest parseFrom(
-      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.universalwallet.v1.InsertItemRequest parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.universalwallet.v1.InsertItemRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.universalwallet.v1.InsertItemRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.universalwallet.v1.InsertItemRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.universalwallet.v1.InsertItemRequest parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
-  public static trinsic.services.universalwallet.v1.InsertItemRequest parseFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-  }
-
-  public static trinsic.services.universalwallet.v1.InsertItemRequest parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+  public static trinsic.services.universalwallet.v1.InsertItemRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
-  public static trinsic.services.universalwallet.v1.InsertItemRequest parseDelimitedFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static trinsic.services.universalwallet.v1.InsertItemRequest parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
-  }
-
   public static trinsic.services.universalwallet.v1.InsertItemRequest parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
+  public static trinsic.services.universalwallet.v1.InsertItemRequest parseDelimitedFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
+  }
+  public static trinsic.services.universalwallet.v1.InsertItemRequest parseDelimitedFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+  }
+  public static trinsic.services.universalwallet.v1.InsertItemRequest parseFrom(
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
+  }
   public static trinsic.services.universalwallet.v1.InsertItemRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
-  public static Builder newBuilder(
-      trinsic.services.universalwallet.v1.InsertItemRequest prototype) {
+  public static Builder newBuilder(trinsic.services.universalwallet.v1.InsertItemRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
-   *
-   *
    * <pre>
    * Request to insert a JSON document into a wallet
    * </pre>
    *
    * Protobuf type {@code services.universalwallet.v1.InsertItemRequest}
    */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:services.universalwallet.v1.InsertItemRequest)
       trinsic.services.universalwallet.v1.InsertItemRequestOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return trinsic.services.universalwallet.v1.UniversalWalletOuterClass
-          .internal_static_services_universalwallet_v1_InsertItemRequest_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.universalwallet.v1.UniversalWalletOuterClass.internal_static_services_universalwallet_v1_InsertItemRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.universalwallet.v1.UniversalWalletOuterClass
-          .internal_static_services_universalwallet_v1_InsertItemRequest_fieldAccessorTable
+      return trinsic.services.universalwallet.v1.UniversalWalletOuterClass.internal_static_services_universalwallet_v1_InsertItemRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.universalwallet.v1.InsertItemRequest.class,
-              trinsic.services.universalwallet.v1.InsertItemRequest.Builder.class);
+              trinsic.services.universalwallet.v1.InsertItemRequest.class, trinsic.services.universalwallet.v1.InsertItemRequest.Builder.class);
     }
 
     // Construct using trinsic.services.universalwallet.v1.InsertItemRequest.newBuilder()
@@ -406,15 +385,16 @@ public final class InsertItemRequest extends com.google.protobuf.GeneratedMessag
       maybeForceBuilderInitialization();
     }
 
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
-
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+      }
     }
-
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -426,9 +406,9 @@ public final class InsertItemRequest extends com.google.protobuf.GeneratedMessag
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return trinsic.services.universalwallet.v1.UniversalWalletOuterClass
-          .internal_static_services_universalwallet_v1_InsertItemRequest_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return trinsic.services.universalwallet.v1.UniversalWalletOuterClass.internal_static_services_universalwallet_v1_InsertItemRequest_descriptor;
     }
 
     @java.lang.Override
@@ -447,8 +427,7 @@ public final class InsertItemRequest extends com.google.protobuf.GeneratedMessag
 
     @java.lang.Override
     public trinsic.services.universalwallet.v1.InsertItemRequest buildPartial() {
-      trinsic.services.universalwallet.v1.InsertItemRequest result =
-          new trinsic.services.universalwallet.v1.InsertItemRequest(this);
+      trinsic.services.universalwallet.v1.InsertItemRequest result = new trinsic.services.universalwallet.v1.InsertItemRequest(this);
       result.itemJson_ = itemJson_;
       result.itemType_ = itemType_;
       onBuilt();
@@ -459,39 +438,38 @@ public final class InsertItemRequest extends com.google.protobuf.GeneratedMessag
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof trinsic.services.universalwallet.v1.InsertItemRequest) {
-        return mergeFrom((trinsic.services.universalwallet.v1.InsertItemRequest) other);
+        return mergeFrom((trinsic.services.universalwallet.v1.InsertItemRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -499,8 +477,7 @@ public final class InsertItemRequest extends com.google.protobuf.GeneratedMessag
     }
 
     public Builder mergeFrom(trinsic.services.universalwallet.v1.InsertItemRequest other) {
-      if (other == trinsic.services.universalwallet.v1.InsertItemRequest.getDefaultInstance())
-        return this;
+      if (other == trinsic.services.universalwallet.v1.InsertItemRequest.getDefaultInstance()) return this;
       if (!other.getItemJson().isEmpty()) {
         itemJson_ = other.itemJson_;
         onChanged();
@@ -528,8 +505,7 @@ public final class InsertItemRequest extends com.google.protobuf.GeneratedMessag
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage =
-            (trinsic.services.universalwallet.v1.InsertItemRequest) e.getUnfinishedMessage();
+        parsedMessage = (trinsic.services.universalwallet.v1.InsertItemRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -541,20 +517,18 @@ public final class InsertItemRequest extends com.google.protobuf.GeneratedMessag
 
     private java.lang.Object itemJson_ = "";
     /**
-     *
-     *
      * <pre>
      * Document to insert; must be stringified JSON
      * </pre>
      *
      * <code>string item_json = 1;</code>
-     *
      * @return The itemJson.
      */
     public java.lang.String getItemJson() {
       java.lang.Object ref = itemJson_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         itemJson_ = s;
         return s;
@@ -563,21 +537,20 @@ public final class InsertItemRequest extends com.google.protobuf.GeneratedMessag
       }
     }
     /**
-     *
-     *
      * <pre>
      * Document to insert; must be stringified JSON
      * </pre>
      *
      * <code>string item_json = 1;</code>
-     *
      * @return The bytes for itemJson.
      */
-    public com.google.protobuf.ByteString getItemJsonBytes() {
+    public com.google.protobuf.ByteString
+        getItemJsonBytes() {
       java.lang.Object ref = itemJson_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         itemJson_ = b;
         return b;
       } else {
@@ -585,61 +558,54 @@ public final class InsertItemRequest extends com.google.protobuf.GeneratedMessag
       }
     }
     /**
-     *
-     *
      * <pre>
      * Document to insert; must be stringified JSON
      * </pre>
      *
      * <code>string item_json = 1;</code>
-     *
      * @param value The itemJson to set.
      * @return This builder for chaining.
      */
-    public Builder setItemJson(java.lang.String value) {
+    public Builder setItemJson(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       itemJson_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Document to insert; must be stringified JSON
      * </pre>
      *
      * <code>string item_json = 1;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearItemJson() {
-
+      
       itemJson_ = getDefaultInstance().getItemJson();
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Document to insert; must be stringified JSON
      * </pre>
      *
      * <code>string item_json = 1;</code>
-     *
      * @param value The bytes for itemJson to set.
      * @return This builder for chaining.
      */
-    public Builder setItemJsonBytes(com.google.protobuf.ByteString value) {
+    public Builder setItemJsonBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       itemJson_ = value;
       onChanged();
       return this;
@@ -647,20 +613,18 @@ public final class InsertItemRequest extends com.google.protobuf.GeneratedMessag
 
     private java.lang.Object itemType_ = "";
     /**
-     *
-     *
      * <pre>
      * Item type (ex. "VerifiableCredential")
      * </pre>
      *
      * <code>string item_type = 2 [(.services.options.optional) = true];</code>
-     *
      * @return The itemType.
      */
     public java.lang.String getItemType() {
       java.lang.Object ref = itemType_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         itemType_ = s;
         return s;
@@ -669,21 +633,20 @@ public final class InsertItemRequest extends com.google.protobuf.GeneratedMessag
       }
     }
     /**
-     *
-     *
      * <pre>
      * Item type (ex. "VerifiableCredential")
      * </pre>
      *
      * <code>string item_type = 2 [(.services.options.optional) = true];</code>
-     *
      * @return The bytes for itemType.
      */
-    public com.google.protobuf.ByteString getItemTypeBytes() {
+    public com.google.protobuf.ByteString
+        getItemTypeBytes() {
       java.lang.Object ref = itemType_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         itemType_ = b;
         return b;
       } else {
@@ -691,68 +654,61 @@ public final class InsertItemRequest extends com.google.protobuf.GeneratedMessag
       }
     }
     /**
-     *
-     *
      * <pre>
      * Item type (ex. "VerifiableCredential")
      * </pre>
      *
      * <code>string item_type = 2 [(.services.options.optional) = true];</code>
-     *
      * @param value The itemType to set.
      * @return This builder for chaining.
      */
-    public Builder setItemType(java.lang.String value) {
+    public Builder setItemType(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       itemType_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Item type (ex. "VerifiableCredential")
      * </pre>
      *
      * <code>string item_type = 2 [(.services.options.optional) = true];</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearItemType() {
-
+      
       itemType_ = getDefaultInstance().getItemType();
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Item type (ex. "VerifiableCredential")
      * </pre>
      *
      * <code>string item_type = 2 [(.services.options.optional) = true];</code>
-     *
      * @param value The bytes for itemType to set.
      * @return This builder for chaining.
      */
-    public Builder setItemTypeBytes(com.google.protobuf.ByteString value) {
+    public Builder setItemTypeBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       itemType_ = value;
       onChanged();
       return this;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -762,12 +718,12 @@ public final class InsertItemRequest extends com.google.protobuf.GeneratedMessag
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:services.universalwallet.v1.InsertItemRequest)
   }
 
   // @@protoc_insertion_point(class_scope:services.universalwallet.v1.InsertItemRequest)
   private static final trinsic.services.universalwallet.v1.InsertItemRequest DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new trinsic.services.universalwallet.v1.InsertItemRequest();
   }
@@ -776,16 +732,16 @@ public final class InsertItemRequest extends com.google.protobuf.GeneratedMessag
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<InsertItemRequest> PARSER =
-      new com.google.protobuf.AbstractParser<InsertItemRequest>() {
-        @java.lang.Override
-        public InsertItemRequest parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return new InsertItemRequest(input, extensionRegistry);
-        }
-      };
+  private static final com.google.protobuf.Parser<InsertItemRequest>
+      PARSER = new com.google.protobuf.AbstractParser<InsertItemRequest>() {
+    @java.lang.Override
+    public InsertItemRequest parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return new InsertItemRequest(input, extensionRegistry);
+    }
+  };
 
   public static com.google.protobuf.Parser<InsertItemRequest> parser() {
     return PARSER;
@@ -800,4 +756,6 @@ public final class InsertItemRequest extends com.google.protobuf.GeneratedMessag
   public trinsic.services.universalwallet.v1.InsertItemRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

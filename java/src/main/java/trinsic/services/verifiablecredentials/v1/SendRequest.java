@@ -4,39 +4,37 @@
 package trinsic.services.verifiablecredentials.v1;
 
 /**
- *
- *
  * <pre>
  * Request to send a document to another user's wallet
  * </pre>
  *
  * Protobuf type {@code services.verifiablecredentials.v1.SendRequest}
  */
-public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
-    implements
+public final class SendRequest extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:services.verifiablecredentials.v1.SendRequest)
     SendRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+private static final long serialVersionUID = 0L;
   // Use SendRequest.newBuilder() to construct.
   private SendRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private SendRequest() {
     documentJson_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new SendRequest();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
     return this.unknownFields;
   }
-
   private SendRequest(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -55,41 +53,37 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
           case 0:
             done = true;
             break;
-          case 10:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
-              deliveryMethodCase_ = 1;
-              deliveryMethod_ = s;
-              break;
-            }
-          case 18:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
-              deliveryMethodCase_ = 2;
-              deliveryMethod_ = s;
-              break;
-            }
-          case 26:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
-              deliveryMethodCase_ = 3;
-              deliveryMethod_ = s;
-              break;
-            }
-          case 802:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
+            deliveryMethodCase_ = 1;
+            deliveryMethod_ = s;
+            break;
+          }
+          case 18: {
+            java.lang.String s = input.readStringRequireUtf8();
+            deliveryMethodCase_ = 2;
+            deliveryMethod_ = s;
+            break;
+          }
+          case 26: {
+            java.lang.String s = input.readStringRequireUtf8();
+            deliveryMethodCase_ = 3;
+            deliveryMethod_ = s;
+            break;
+          }
+          case 802: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-              documentJson_ = s;
-              break;
+            documentJson_ = s;
+            break;
+          }
+          default: {
+            if (!parseUnknownField(
+                input, unknownFields, extensionRegistry, tag)) {
+              done = true;
             }
-          default:
-            {
-              if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
+            break;
+          }
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -97,41 +91,36 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
     } catch (com.google.protobuf.UninitializedMessageException e) {
       throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
+      throw new com.google.protobuf.InvalidProtocolBufferException(
+          e).setUnfinishedMessage(this);
     } finally {
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
-
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-        .internal_static_services_verifiablecredentials_v1_SendRequest_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_SendRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-        .internal_static_services_verifiablecredentials_v1_SendRequest_fieldAccessorTable
+    return trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_SendRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.verifiablecredentials.v1.SendRequest.class,
-            trinsic.services.verifiablecredentials.v1.SendRequest.Builder.class);
+            trinsic.services.verifiablecredentials.v1.SendRequest.class, trinsic.services.verifiablecredentials.v1.SendRequest.Builder.class);
   }
 
   private int deliveryMethodCase_ = 0;
   private java.lang.Object deliveryMethod_;
-
   public enum DeliveryMethodCase
-      implements
-          com.google.protobuf.Internal.EnumLite,
+      implements com.google.protobuf.Internal.EnumLite,
           com.google.protobuf.AbstractMessage.InternalOneOfEnum {
     EMAIL(1),
     DID_URI(2),
     DIDCOMM_INVITATION_JSON(3),
     DELIVERYMETHOD_NOT_SET(0);
     private final int value;
-
     private DeliveryMethodCase(int value) {
       this.value = value;
     }
@@ -147,52 +136,42 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
 
     public static DeliveryMethodCase forNumber(int value) {
       switch (value) {
-        case 1:
-          return EMAIL;
-        case 2:
-          return DID_URI;
-        case 3:
-          return DIDCOMM_INVITATION_JSON;
-        case 0:
-          return DELIVERYMETHOD_NOT_SET;
-        default:
-          return null;
+        case 1: return EMAIL;
+        case 2: return DID_URI;
+        case 3: return DIDCOMM_INVITATION_JSON;
+        case 0: return DELIVERYMETHOD_NOT_SET;
+        default: return null;
       }
     }
-
     public int getNumber() {
       return this.value;
     }
   };
 
-  public DeliveryMethodCase getDeliveryMethodCase() {
-    return DeliveryMethodCase.forNumber(deliveryMethodCase_);
+  public DeliveryMethodCase
+  getDeliveryMethodCase() {
+    return DeliveryMethodCase.forNumber(
+        deliveryMethodCase_);
   }
 
   public static final int EMAIL_FIELD_NUMBER = 1;
   /**
-   *
-   *
    * <pre>
    * Email address of user to send item to
    * </pre>
    *
    * <code>string email = 1;</code>
-   *
    * @return Whether the email field is set.
    */
   public boolean hasEmail() {
     return deliveryMethodCase_ == 1;
   }
   /**
-   *
-   *
    * <pre>
    * Email address of user to send item to
    * </pre>
    *
    * <code>string email = 1;</code>
-   *
    * @return The email.
    */
   public java.lang.String getEmail() {
@@ -203,7 +182,8 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       if (deliveryMethodCase_ == 1) {
         deliveryMethod_ = s;
@@ -212,24 +192,23 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
     }
   }
   /**
-   *
-   *
    * <pre>
    * Email address of user to send item to
    * </pre>
    *
    * <code>string email = 1;</code>
-   *
    * @return The bytes for email.
    */
-  public com.google.protobuf.ByteString getEmailBytes() {
+  public com.google.protobuf.ByteString
+      getEmailBytes() {
     java.lang.Object ref = "";
     if (deliveryMethodCase_ == 1) {
       ref = deliveryMethod_;
     }
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       if (deliveryMethodCase_ == 1) {
         deliveryMethod_ = b;
       }
@@ -241,28 +220,22 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
 
   public static final int DID_URI_FIELD_NUMBER = 2;
   /**
-   *
-   *
    * <pre>
    * DID of recipient (presently unsupported)
    * </pre>
    *
    * <code>string did_uri = 2;</code>
-   *
    * @return Whether the didUri field is set.
    */
   public boolean hasDidUri() {
     return deliveryMethodCase_ == 2;
   }
   /**
-   *
-   *
    * <pre>
    * DID of recipient (presently unsupported)
    * </pre>
    *
    * <code>string did_uri = 2;</code>
-   *
    * @return The didUri.
    */
   public java.lang.String getDidUri() {
@@ -273,7 +246,8 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       if (deliveryMethodCase_ == 2) {
         deliveryMethod_ = s;
@@ -282,24 +256,23 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
     }
   }
   /**
-   *
-   *
    * <pre>
    * DID of recipient (presently unsupported)
    * </pre>
    *
    * <code>string did_uri = 2;</code>
-   *
    * @return The bytes for didUri.
    */
-  public com.google.protobuf.ByteString getDidUriBytes() {
+  public com.google.protobuf.ByteString
+      getDidUriBytes() {
     java.lang.Object ref = "";
     if (deliveryMethodCase_ == 2) {
       ref = deliveryMethod_;
     }
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       if (deliveryMethodCase_ == 2) {
         deliveryMethod_ = b;
       }
@@ -311,28 +284,22 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
 
   public static final int DIDCOMM_INVITATION_JSON_FIELD_NUMBER = 3;
   /**
-   *
-   *
    * <pre>
    * DIDComm out-of-band invitation JSON (presently unsupported)
    * </pre>
    *
    * <code>string didcomm_invitation_json = 3;</code>
-   *
    * @return Whether the didcommInvitationJson field is set.
    */
   public boolean hasDidcommInvitationJson() {
     return deliveryMethodCase_ == 3;
   }
   /**
-   *
-   *
    * <pre>
    * DIDComm out-of-band invitation JSON (presently unsupported)
    * </pre>
    *
    * <code>string didcomm_invitation_json = 3;</code>
-   *
    * @return The didcommInvitationJson.
    */
   public java.lang.String getDidcommInvitationJson() {
@@ -343,7 +310,8 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       if (deliveryMethodCase_ == 3) {
         deliveryMethod_ = s;
@@ -352,24 +320,23 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
     }
   }
   /**
-   *
-   *
    * <pre>
    * DIDComm out-of-band invitation JSON (presently unsupported)
    * </pre>
    *
    * <code>string didcomm_invitation_json = 3;</code>
-   *
    * @return The bytes for didcommInvitationJson.
    */
-  public com.google.protobuf.ByteString getDidcommInvitationJsonBytes() {
+  public com.google.protobuf.ByteString
+      getDidcommInvitationJsonBytes() {
     java.lang.Object ref = "";
     if (deliveryMethodCase_ == 3) {
       ref = deliveryMethod_;
     }
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       if (deliveryMethodCase_ == 3) {
         deliveryMethod_ = b;
       }
@@ -382,14 +349,11 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
   public static final int DOCUMENT_JSON_FIELD_NUMBER = 100;
   private volatile java.lang.Object documentJson_;
   /**
-   *
-   *
    * <pre>
    * JSON document to send to recipient
    * </pre>
    *
    * <code>string document_json = 100;</code>
-   *
    * @return The documentJson.
    */
   @java.lang.Override
@@ -398,29 +362,29 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       documentJson_ = s;
       return s;
     }
   }
   /**
-   *
-   *
    * <pre>
    * JSON document to send to recipient
    * </pre>
    *
    * <code>string document_json = 100;</code>
-   *
    * @return The bytes for documentJson.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getDocumentJsonBytes() {
+  public com.google.protobuf.ByteString
+      getDocumentJsonBytes() {
     java.lang.Object ref = documentJson_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       documentJson_ = b;
       return b;
     } else {
@@ -429,7 +393,6 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -441,7 +404,8 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     if (deliveryMethodCase_ == 1) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, deliveryMethod_);
     }
@@ -483,25 +447,28 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof trinsic.services.verifiablecredentials.v1.SendRequest)) {
       return super.equals(obj);
     }
-    trinsic.services.verifiablecredentials.v1.SendRequest other =
-        (trinsic.services.verifiablecredentials.v1.SendRequest) obj;
+    trinsic.services.verifiablecredentials.v1.SendRequest other = (trinsic.services.verifiablecredentials.v1.SendRequest) obj;
 
-    if (!getDocumentJson().equals(other.getDocumentJson())) return false;
+    if (!getDocumentJson()
+        .equals(other.getDocumentJson())) return false;
     if (!getDeliveryMethodCase().equals(other.getDeliveryMethodCase())) return false;
     switch (deliveryMethodCase_) {
       case 1:
-        if (!getEmail().equals(other.getEmail())) return false;
+        if (!getEmail()
+            .equals(other.getEmail())) return false;
         break;
       case 2:
-        if (!getDidUri().equals(other.getDidUri())) return false;
+        if (!getDidUri()
+            .equals(other.getDidUri())) return false;
         break;
       case 3:
-        if (!getDidcommInvitationJson().equals(other.getDidcommInvitationJson())) return false;
+        if (!getDidcommInvitationJson()
+            .equals(other.getDidcommInvitationJson())) return false;
         break;
       case 0:
       default:
@@ -541,127 +508,117 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
   }
 
   public static trinsic.services.verifiablecredentials.v1.SendRequest parseFrom(
-      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.verifiablecredentials.v1.SendRequest parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.verifiablecredentials.v1.SendRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.verifiablecredentials.v1.SendRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.verifiablecredentials.v1.SendRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.verifiablecredentials.v1.SendRequest parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
-  public static trinsic.services.verifiablecredentials.v1.SendRequest parseFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-  }
-
-  public static trinsic.services.verifiablecredentials.v1.SendRequest parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+  public static trinsic.services.verifiablecredentials.v1.SendRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
-  public static trinsic.services.verifiablecredentials.v1.SendRequest parseDelimitedFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static trinsic.services.verifiablecredentials.v1.SendRequest parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
-  }
-
   public static trinsic.services.verifiablecredentials.v1.SendRequest parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
+  public static trinsic.services.verifiablecredentials.v1.SendRequest parseDelimitedFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
+  }
+  public static trinsic.services.verifiablecredentials.v1.SendRequest parseDelimitedFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+  }
+  public static trinsic.services.verifiablecredentials.v1.SendRequest parseFrom(
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
+  }
   public static trinsic.services.verifiablecredentials.v1.SendRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
-  public static Builder newBuilder(
-      trinsic.services.verifiablecredentials.v1.SendRequest prototype) {
+  public static Builder newBuilder(trinsic.services.verifiablecredentials.v1.SendRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
-   *
-   *
    * <pre>
    * Request to send a document to another user's wallet
    * </pre>
    *
    * Protobuf type {@code services.verifiablecredentials.v1.SendRequest}
    */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:services.verifiablecredentials.v1.SendRequest)
       trinsic.services.verifiablecredentials.v1.SendRequestOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-          .internal_static_services_verifiablecredentials_v1_SendRequest_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_SendRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-          .internal_static_services_verifiablecredentials_v1_SendRequest_fieldAccessorTable
+      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_SendRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.verifiablecredentials.v1.SendRequest.class,
-              trinsic.services.verifiablecredentials.v1.SendRequest.Builder.class);
+              trinsic.services.verifiablecredentials.v1.SendRequest.class, trinsic.services.verifiablecredentials.v1.SendRequest.Builder.class);
     }
 
     // Construct using trinsic.services.verifiablecredentials.v1.SendRequest.newBuilder()
@@ -669,15 +626,16 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
       maybeForceBuilderInitialization();
     }
 
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
-
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+      }
     }
-
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -689,9 +647,9 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-          .internal_static_services_verifiablecredentials_v1_SendRequest_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_SendRequest_descriptor;
     }
 
     @java.lang.Override
@@ -710,8 +668,7 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
 
     @java.lang.Override
     public trinsic.services.verifiablecredentials.v1.SendRequest buildPartial() {
-      trinsic.services.verifiablecredentials.v1.SendRequest result =
-          new trinsic.services.verifiablecredentials.v1.SendRequest(this);
+      trinsic.services.verifiablecredentials.v1.SendRequest result = new trinsic.services.verifiablecredentials.v1.SendRequest(this);
       if (deliveryMethodCase_ == 1) {
         result.deliveryMethod_ = deliveryMethod_;
       }
@@ -731,39 +688,38 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof trinsic.services.verifiablecredentials.v1.SendRequest) {
-        return mergeFrom((trinsic.services.verifiablecredentials.v1.SendRequest) other);
+        return mergeFrom((trinsic.services.verifiablecredentials.v1.SendRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -771,38 +727,33 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
     }
 
     public Builder mergeFrom(trinsic.services.verifiablecredentials.v1.SendRequest other) {
-      if (other == trinsic.services.verifiablecredentials.v1.SendRequest.getDefaultInstance())
-        return this;
+      if (other == trinsic.services.verifiablecredentials.v1.SendRequest.getDefaultInstance()) return this;
       if (!other.getDocumentJson().isEmpty()) {
         documentJson_ = other.documentJson_;
         onChanged();
       }
       switch (other.getDeliveryMethodCase()) {
-        case EMAIL:
-          {
-            deliveryMethodCase_ = 1;
-            deliveryMethod_ = other.deliveryMethod_;
-            onChanged();
-            break;
-          }
-        case DID_URI:
-          {
-            deliveryMethodCase_ = 2;
-            deliveryMethod_ = other.deliveryMethod_;
-            onChanged();
-            break;
-          }
-        case DIDCOMM_INVITATION_JSON:
-          {
-            deliveryMethodCase_ = 3;
-            deliveryMethod_ = other.deliveryMethod_;
-            onChanged();
-            break;
-          }
-        case DELIVERYMETHOD_NOT_SET:
-          {
-            break;
-          }
+        case EMAIL: {
+          deliveryMethodCase_ = 1;
+          deliveryMethod_ = other.deliveryMethod_;
+          onChanged();
+          break;
+        }
+        case DID_URI: {
+          deliveryMethodCase_ = 2;
+          deliveryMethod_ = other.deliveryMethod_;
+          onChanged();
+          break;
+        }
+        case DIDCOMM_INVITATION_JSON: {
+          deliveryMethodCase_ = 3;
+          deliveryMethod_ = other.deliveryMethod_;
+          onChanged();
+          break;
+        }
+        case DELIVERYMETHOD_NOT_SET: {
+          break;
+        }
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -823,8 +774,7 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage =
-            (trinsic.services.verifiablecredentials.v1.SendRequest) e.getUnfinishedMessage();
+        parsedMessage = (trinsic.services.verifiablecredentials.v1.SendRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -833,12 +783,12 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
       }
       return this;
     }
-
     private int deliveryMethodCase_ = 0;
     private java.lang.Object deliveryMethod_;
-
-    public DeliveryMethodCase getDeliveryMethodCase() {
-      return DeliveryMethodCase.forNumber(deliveryMethodCase_);
+    public DeliveryMethodCase
+        getDeliveryMethodCase() {
+      return DeliveryMethodCase.forNumber(
+          deliveryMethodCase_);
     }
 
     public Builder clearDeliveryMethod() {
@@ -848,15 +798,13 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
+
     /**
-     *
-     *
      * <pre>
      * Email address of user to send item to
      * </pre>
      *
      * <code>string email = 1;</code>
-     *
      * @return Whether the email field is set.
      */
     @java.lang.Override
@@ -864,14 +812,11 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
       return deliveryMethodCase_ == 1;
     }
     /**
-     *
-     *
      * <pre>
      * Email address of user to send item to
      * </pre>
      *
      * <code>string email = 1;</code>
-     *
      * @return The email.
      */
     @java.lang.Override
@@ -881,7 +826,8 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
         ref = deliveryMethod_;
       }
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (deliveryMethodCase_ == 1) {
           deliveryMethod_ = s;
@@ -892,25 +838,24 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * Email address of user to send item to
      * </pre>
      *
      * <code>string email = 1;</code>
-     *
      * @return The bytes for email.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString getEmailBytes() {
+    public com.google.protobuf.ByteString
+        getEmailBytes() {
       java.lang.Object ref = "";
       if (deliveryMethodCase_ == 1) {
         ref = deliveryMethod_;
       }
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         if (deliveryMethodCase_ == 1) {
           deliveryMethod_ = b;
         }
@@ -920,35 +865,30 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * Email address of user to send item to
      * </pre>
      *
      * <code>string email = 1;</code>
-     *
      * @param value The email to set.
      * @return This builder for chaining.
      */
-    public Builder setEmail(java.lang.String value) {
+    public Builder setEmail(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      deliveryMethodCase_ = 1;
+    throw new NullPointerException();
+  }
+  deliveryMethodCase_ = 1;
       deliveryMethod_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Email address of user to send item to
      * </pre>
      *
      * <code>string email = 1;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearEmail() {
@@ -960,22 +900,20 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Email address of user to send item to
      * </pre>
      *
      * <code>string email = 1;</code>
-     *
      * @param value The bytes for email to set.
      * @return This builder for chaining.
      */
-    public Builder setEmailBytes(com.google.protobuf.ByteString value) {
+    public Builder setEmailBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
       deliveryMethodCase_ = 1;
       deliveryMethod_ = value;
       onChanged();
@@ -983,14 +921,11 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
     }
 
     /**
-     *
-     *
      * <pre>
      * DID of recipient (presently unsupported)
      * </pre>
      *
      * <code>string did_uri = 2;</code>
-     *
      * @return Whether the didUri field is set.
      */
     @java.lang.Override
@@ -998,14 +933,11 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
       return deliveryMethodCase_ == 2;
     }
     /**
-     *
-     *
      * <pre>
      * DID of recipient (presently unsupported)
      * </pre>
      *
      * <code>string did_uri = 2;</code>
-     *
      * @return The didUri.
      */
     @java.lang.Override
@@ -1015,7 +947,8 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
         ref = deliveryMethod_;
       }
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (deliveryMethodCase_ == 2) {
           deliveryMethod_ = s;
@@ -1026,25 +959,24 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * DID of recipient (presently unsupported)
      * </pre>
      *
      * <code>string did_uri = 2;</code>
-     *
      * @return The bytes for didUri.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString getDidUriBytes() {
+    public com.google.protobuf.ByteString
+        getDidUriBytes() {
       java.lang.Object ref = "";
       if (deliveryMethodCase_ == 2) {
         ref = deliveryMethod_;
       }
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         if (deliveryMethodCase_ == 2) {
           deliveryMethod_ = b;
         }
@@ -1054,35 +986,30 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * DID of recipient (presently unsupported)
      * </pre>
      *
      * <code>string did_uri = 2;</code>
-     *
      * @param value The didUri to set.
      * @return This builder for chaining.
      */
-    public Builder setDidUri(java.lang.String value) {
+    public Builder setDidUri(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      deliveryMethodCase_ = 2;
+    throw new NullPointerException();
+  }
+  deliveryMethodCase_ = 2;
       deliveryMethod_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * DID of recipient (presently unsupported)
      * </pre>
      *
      * <code>string did_uri = 2;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearDidUri() {
@@ -1094,22 +1021,20 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * DID of recipient (presently unsupported)
      * </pre>
      *
      * <code>string did_uri = 2;</code>
-     *
      * @param value The bytes for didUri to set.
      * @return This builder for chaining.
      */
-    public Builder setDidUriBytes(com.google.protobuf.ByteString value) {
+    public Builder setDidUriBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
       deliveryMethodCase_ = 2;
       deliveryMethod_ = value;
       onChanged();
@@ -1117,14 +1042,11 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
     }
 
     /**
-     *
-     *
      * <pre>
      * DIDComm out-of-band invitation JSON (presently unsupported)
      * </pre>
      *
      * <code>string didcomm_invitation_json = 3;</code>
-     *
      * @return Whether the didcommInvitationJson field is set.
      */
     @java.lang.Override
@@ -1132,14 +1054,11 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
       return deliveryMethodCase_ == 3;
     }
     /**
-     *
-     *
      * <pre>
      * DIDComm out-of-band invitation JSON (presently unsupported)
      * </pre>
      *
      * <code>string didcomm_invitation_json = 3;</code>
-     *
      * @return The didcommInvitationJson.
      */
     @java.lang.Override
@@ -1149,7 +1068,8 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
         ref = deliveryMethod_;
       }
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (deliveryMethodCase_ == 3) {
           deliveryMethod_ = s;
@@ -1160,25 +1080,24 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * DIDComm out-of-band invitation JSON (presently unsupported)
      * </pre>
      *
      * <code>string didcomm_invitation_json = 3;</code>
-     *
      * @return The bytes for didcommInvitationJson.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString getDidcommInvitationJsonBytes() {
+    public com.google.protobuf.ByteString
+        getDidcommInvitationJsonBytes() {
       java.lang.Object ref = "";
       if (deliveryMethodCase_ == 3) {
         ref = deliveryMethod_;
       }
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         if (deliveryMethodCase_ == 3) {
           deliveryMethod_ = b;
         }
@@ -1188,35 +1107,30 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * DIDComm out-of-band invitation JSON (presently unsupported)
      * </pre>
      *
      * <code>string didcomm_invitation_json = 3;</code>
-     *
      * @param value The didcommInvitationJson to set.
      * @return This builder for chaining.
      */
-    public Builder setDidcommInvitationJson(java.lang.String value) {
+    public Builder setDidcommInvitationJson(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      deliveryMethodCase_ = 3;
+    throw new NullPointerException();
+  }
+  deliveryMethodCase_ = 3;
       deliveryMethod_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * DIDComm out-of-band invitation JSON (presently unsupported)
      * </pre>
      *
      * <code>string didcomm_invitation_json = 3;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearDidcommInvitationJson() {
@@ -1228,22 +1142,20 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * DIDComm out-of-band invitation JSON (presently unsupported)
      * </pre>
      *
      * <code>string didcomm_invitation_json = 3;</code>
-     *
      * @param value The bytes for didcommInvitationJson to set.
      * @return This builder for chaining.
      */
-    public Builder setDidcommInvitationJsonBytes(com.google.protobuf.ByteString value) {
+    public Builder setDidcommInvitationJsonBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
       deliveryMethodCase_ = 3;
       deliveryMethod_ = value;
       onChanged();
@@ -1252,20 +1164,18 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
 
     private java.lang.Object documentJson_ = "";
     /**
-     *
-     *
      * <pre>
      * JSON document to send to recipient
      * </pre>
      *
      * <code>string document_json = 100;</code>
-     *
      * @return The documentJson.
      */
     public java.lang.String getDocumentJson() {
       java.lang.Object ref = documentJson_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         documentJson_ = s;
         return s;
@@ -1274,21 +1184,20 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * JSON document to send to recipient
      * </pre>
      *
      * <code>string document_json = 100;</code>
-     *
      * @return The bytes for documentJson.
      */
-    public com.google.protobuf.ByteString getDocumentJsonBytes() {
+    public com.google.protobuf.ByteString
+        getDocumentJsonBytes() {
       java.lang.Object ref = documentJson_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         documentJson_ = b;
         return b;
       } else {
@@ -1296,68 +1205,61 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * JSON document to send to recipient
      * </pre>
      *
      * <code>string document_json = 100;</code>
-     *
      * @param value The documentJson to set.
      * @return This builder for chaining.
      */
-    public Builder setDocumentJson(java.lang.String value) {
+    public Builder setDocumentJson(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       documentJson_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * JSON document to send to recipient
      * </pre>
      *
      * <code>string document_json = 100;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearDocumentJson() {
-
+      
       documentJson_ = getDefaultInstance().getDocumentJson();
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * JSON document to send to recipient
      * </pre>
      *
      * <code>string document_json = 100;</code>
-     *
      * @param value The bytes for documentJson to set.
      * @return This builder for chaining.
      */
-    public Builder setDocumentJsonBytes(com.google.protobuf.ByteString value) {
+    public Builder setDocumentJsonBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       documentJson_ = value;
       onChanged();
       return this;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -1367,12 +1269,12 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:services.verifiablecredentials.v1.SendRequest)
   }
 
   // @@protoc_insertion_point(class_scope:services.verifiablecredentials.v1.SendRequest)
   private static final trinsic.services.verifiablecredentials.v1.SendRequest DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new trinsic.services.verifiablecredentials.v1.SendRequest();
   }
@@ -1381,16 +1283,16 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<SendRequest> PARSER =
-      new com.google.protobuf.AbstractParser<SendRequest>() {
-        @java.lang.Override
-        public SendRequest parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return new SendRequest(input, extensionRegistry);
-        }
-      };
+  private static final com.google.protobuf.Parser<SendRequest>
+      PARSER = new com.google.protobuf.AbstractParser<SendRequest>() {
+    @java.lang.Override
+    public SendRequest parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return new SendRequest(input, extensionRegistry);
+    }
+  };
 
   public static com.google.protobuf.Parser<SendRequest> parser() {
     return PARSER;
@@ -1405,4 +1307,6 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
   public trinsic.services.verifiablecredentials.v1.SendRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

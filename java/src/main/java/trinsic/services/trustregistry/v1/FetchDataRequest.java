@@ -4,24 +4,21 @@
 package trinsic.services.trustregistry.v1;
 
 /**
- *
- *
  * <pre>
  * Not implemented.
  * </pre>
  *
  * Protobuf type {@code services.trustregistry.v1.FetchDataRequest}
  */
-public final class FetchDataRequest extends com.google.protobuf.GeneratedMessageV3
-    implements
+public final class FetchDataRequest extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:services.trustregistry.v1.FetchDataRequest)
     FetchDataRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+private static final long serialVersionUID = 0L;
   // Use FetchDataRequest.newBuilder() to construct.
   private FetchDataRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private FetchDataRequest() {
     governanceFrameworkUri_ = "";
     query_ = "";
@@ -29,15 +26,16 @@ public final class FetchDataRequest extends com.google.protobuf.GeneratedMessage
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new FetchDataRequest();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
     return this.unknownFields;
   }
-
   private FetchDataRequest(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -56,27 +54,25 @@ public final class FetchDataRequest extends com.google.protobuf.GeneratedMessage
           case 0:
             done = true;
             break;
-          case 10:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-              governanceFrameworkUri_ = s;
-              break;
-            }
-          case 18:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
+            governanceFrameworkUri_ = s;
+            break;
+          }
+          case 18: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-              query_ = s;
-              break;
+            query_ = s;
+            break;
+          }
+          default: {
+            if (!parseUnknownField(
+                input, unknownFields, extensionRegistry, tag)) {
+              done = true;
             }
-          default:
-            {
-              if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
+            break;
+          }
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -84,33 +80,30 @@ public final class FetchDataRequest extends com.google.protobuf.GeneratedMessage
     } catch (com.google.protobuf.UninitializedMessageException e) {
       throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
+      throw new com.google.protobuf.InvalidProtocolBufferException(
+          e).setUnfinishedMessage(this);
     } finally {
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
-
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-        .internal_static_services_trustregistry_v1_FetchDataRequest_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_FetchDataRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-        .internal_static_services_trustregistry_v1_FetchDataRequest_fieldAccessorTable
+    return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_FetchDataRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.trustregistry.v1.FetchDataRequest.class,
-            trinsic.services.trustregistry.v1.FetchDataRequest.Builder.class);
+            trinsic.services.trustregistry.v1.FetchDataRequest.class, trinsic.services.trustregistry.v1.FetchDataRequest.Builder.class);
   }
 
   public static final int GOVERNANCE_FRAMEWORK_URI_FIELD_NUMBER = 1;
   private volatile java.lang.Object governanceFrameworkUri_;
   /**
    * <code>string governance_framework_uri = 1;</code>
-   *
    * @return The governanceFrameworkUri.
    */
   @java.lang.Override
@@ -119,7 +112,8 @@ public final class FetchDataRequest extends com.google.protobuf.GeneratedMessage
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       governanceFrameworkUri_ = s;
       return s;
@@ -127,15 +121,16 @@ public final class FetchDataRequest extends com.google.protobuf.GeneratedMessage
   }
   /**
    * <code>string governance_framework_uri = 1;</code>
-   *
    * @return The bytes for governanceFrameworkUri.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getGovernanceFrameworkUriBytes() {
+  public com.google.protobuf.ByteString
+      getGovernanceFrameworkUriBytes() {
     java.lang.Object ref = governanceFrameworkUri_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       governanceFrameworkUri_ = b;
       return b;
     } else {
@@ -147,7 +142,6 @@ public final class FetchDataRequest extends com.google.protobuf.GeneratedMessage
   private volatile java.lang.Object query_;
   /**
    * <code>string query = 2;</code>
-   *
    * @return The query.
    */
   @java.lang.Override
@@ -156,7 +150,8 @@ public final class FetchDataRequest extends com.google.protobuf.GeneratedMessage
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       query_ = s;
       return s;
@@ -164,15 +159,16 @@ public final class FetchDataRequest extends com.google.protobuf.GeneratedMessage
   }
   /**
    * <code>string query = 2;</code>
-   *
    * @return The bytes for query.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getQueryBytes() {
+  public com.google.protobuf.ByteString
+      getQueryBytes() {
     java.lang.Object ref = query_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       query_ = b;
       return b;
     } else {
@@ -181,7 +177,6 @@ public final class FetchDataRequest extends com.google.protobuf.GeneratedMessage
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -193,7 +188,8 @@ public final class FetchDataRequest extends com.google.protobuf.GeneratedMessage
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, governanceFrameworkUri_);
     }
@@ -223,16 +219,17 @@ public final class FetchDataRequest extends com.google.protobuf.GeneratedMessage
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof trinsic.services.trustregistry.v1.FetchDataRequest)) {
       return super.equals(obj);
     }
-    trinsic.services.trustregistry.v1.FetchDataRequest other =
-        (trinsic.services.trustregistry.v1.FetchDataRequest) obj;
+    trinsic.services.trustregistry.v1.FetchDataRequest other = (trinsic.services.trustregistry.v1.FetchDataRequest) obj;
 
-    if (!getGovernanceFrameworkUri().equals(other.getGovernanceFrameworkUri())) return false;
-    if (!getQuery().equals(other.getQuery())) return false;
+    if (!getGovernanceFrameworkUri()
+        .equals(other.getGovernanceFrameworkUri())) return false;
+    if (!getQuery()
+        .equals(other.getQuery())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -254,126 +251,117 @@ public final class FetchDataRequest extends com.google.protobuf.GeneratedMessage
   }
 
   public static trinsic.services.trustregistry.v1.FetchDataRequest parseFrom(
-      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.trustregistry.v1.FetchDataRequest parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.trustregistry.v1.FetchDataRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.trustregistry.v1.FetchDataRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.trustregistry.v1.FetchDataRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.trustregistry.v1.FetchDataRequest parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
-  public static trinsic.services.trustregistry.v1.FetchDataRequest parseFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-  }
-
-  public static trinsic.services.trustregistry.v1.FetchDataRequest parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+  public static trinsic.services.trustregistry.v1.FetchDataRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
-  public static trinsic.services.trustregistry.v1.FetchDataRequest parseDelimitedFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static trinsic.services.trustregistry.v1.FetchDataRequest parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
-  }
-
   public static trinsic.services.trustregistry.v1.FetchDataRequest parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
+  public static trinsic.services.trustregistry.v1.FetchDataRequest parseDelimitedFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
+  }
+  public static trinsic.services.trustregistry.v1.FetchDataRequest parseDelimitedFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+  }
+  public static trinsic.services.trustregistry.v1.FetchDataRequest parseFrom(
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
+  }
   public static trinsic.services.trustregistry.v1.FetchDataRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
   public static Builder newBuilder(trinsic.services.trustregistry.v1.FetchDataRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
-   *
-   *
    * <pre>
    * Not implemented.
    * </pre>
    *
    * Protobuf type {@code services.trustregistry.v1.FetchDataRequest}
    */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.FetchDataRequest)
       trinsic.services.trustregistry.v1.FetchDataRequestOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-          .internal_static_services_trustregistry_v1_FetchDataRequest_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_FetchDataRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-          .internal_static_services_trustregistry_v1_FetchDataRequest_fieldAccessorTable
+      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_FetchDataRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.trustregistry.v1.FetchDataRequest.class,
-              trinsic.services.trustregistry.v1.FetchDataRequest.Builder.class);
+              trinsic.services.trustregistry.v1.FetchDataRequest.class, trinsic.services.trustregistry.v1.FetchDataRequest.Builder.class);
     }
 
     // Construct using trinsic.services.trustregistry.v1.FetchDataRequest.newBuilder()
@@ -381,15 +369,16 @@ public final class FetchDataRequest extends com.google.protobuf.GeneratedMessage
       maybeForceBuilderInitialization();
     }
 
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
-
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+      }
     }
-
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -401,9 +390,9 @@ public final class FetchDataRequest extends com.google.protobuf.GeneratedMessage
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-          .internal_static_services_trustregistry_v1_FetchDataRequest_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_FetchDataRequest_descriptor;
     }
 
     @java.lang.Override
@@ -422,8 +411,7 @@ public final class FetchDataRequest extends com.google.protobuf.GeneratedMessage
 
     @java.lang.Override
     public trinsic.services.trustregistry.v1.FetchDataRequest buildPartial() {
-      trinsic.services.trustregistry.v1.FetchDataRequest result =
-          new trinsic.services.trustregistry.v1.FetchDataRequest(this);
+      trinsic.services.trustregistry.v1.FetchDataRequest result = new trinsic.services.trustregistry.v1.FetchDataRequest(this);
       result.governanceFrameworkUri_ = governanceFrameworkUri_;
       result.query_ = query_;
       onBuilt();
@@ -434,39 +422,38 @@ public final class FetchDataRequest extends com.google.protobuf.GeneratedMessage
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof trinsic.services.trustregistry.v1.FetchDataRequest) {
-        return mergeFrom((trinsic.services.trustregistry.v1.FetchDataRequest) other);
+        return mergeFrom((trinsic.services.trustregistry.v1.FetchDataRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -474,8 +461,7 @@ public final class FetchDataRequest extends com.google.protobuf.GeneratedMessage
     }
 
     public Builder mergeFrom(trinsic.services.trustregistry.v1.FetchDataRequest other) {
-      if (other == trinsic.services.trustregistry.v1.FetchDataRequest.getDefaultInstance())
-        return this;
+      if (other == trinsic.services.trustregistry.v1.FetchDataRequest.getDefaultInstance()) return this;
       if (!other.getGovernanceFrameworkUri().isEmpty()) {
         governanceFrameworkUri_ = other.governanceFrameworkUri_;
         onChanged();
@@ -503,8 +489,7 @@ public final class FetchDataRequest extends com.google.protobuf.GeneratedMessage
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage =
-            (trinsic.services.trustregistry.v1.FetchDataRequest) e.getUnfinishedMessage();
+        parsedMessage = (trinsic.services.trustregistry.v1.FetchDataRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -517,13 +502,13 @@ public final class FetchDataRequest extends com.google.protobuf.GeneratedMessage
     private java.lang.Object governanceFrameworkUri_ = "";
     /**
      * <code>string governance_framework_uri = 1;</code>
-     *
      * @return The governanceFrameworkUri.
      */
     public java.lang.String getGovernanceFrameworkUri() {
       java.lang.Object ref = governanceFrameworkUri_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         governanceFrameworkUri_ = s;
         return s;
@@ -533,14 +518,15 @@ public final class FetchDataRequest extends com.google.protobuf.GeneratedMessage
     }
     /**
      * <code>string governance_framework_uri = 1;</code>
-     *
      * @return The bytes for governanceFrameworkUri.
      */
-    public com.google.protobuf.ByteString getGovernanceFrameworkUriBytes() {
+    public com.google.protobuf.ByteString
+        getGovernanceFrameworkUriBytes() {
       java.lang.Object ref = governanceFrameworkUri_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         governanceFrameworkUri_ = b;
         return b;
       } else {
@@ -549,42 +535,41 @@ public final class FetchDataRequest extends com.google.protobuf.GeneratedMessage
     }
     /**
      * <code>string governance_framework_uri = 1;</code>
-     *
      * @param value The governanceFrameworkUri to set.
      * @return This builder for chaining.
      */
-    public Builder setGovernanceFrameworkUri(java.lang.String value) {
+    public Builder setGovernanceFrameworkUri(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       governanceFrameworkUri_ = value;
       onChanged();
       return this;
     }
     /**
      * <code>string governance_framework_uri = 1;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearGovernanceFrameworkUri() {
-
+      
       governanceFrameworkUri_ = getDefaultInstance().getGovernanceFrameworkUri();
       onChanged();
       return this;
     }
     /**
      * <code>string governance_framework_uri = 1;</code>
-     *
      * @param value The bytes for governanceFrameworkUri to set.
      * @return This builder for chaining.
      */
-    public Builder setGovernanceFrameworkUriBytes(com.google.protobuf.ByteString value) {
+    public Builder setGovernanceFrameworkUriBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       governanceFrameworkUri_ = value;
       onChanged();
       return this;
@@ -593,13 +578,13 @@ public final class FetchDataRequest extends com.google.protobuf.GeneratedMessage
     private java.lang.Object query_ = "";
     /**
      * <code>string query = 2;</code>
-     *
      * @return The query.
      */
     public java.lang.String getQuery() {
       java.lang.Object ref = query_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         query_ = s;
         return s;
@@ -609,14 +594,15 @@ public final class FetchDataRequest extends com.google.protobuf.GeneratedMessage
     }
     /**
      * <code>string query = 2;</code>
-     *
      * @return The bytes for query.
      */
-    public com.google.protobuf.ByteString getQueryBytes() {
+    public com.google.protobuf.ByteString
+        getQueryBytes() {
       java.lang.Object ref = query_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         query_ = b;
         return b;
       } else {
@@ -625,49 +611,48 @@ public final class FetchDataRequest extends com.google.protobuf.GeneratedMessage
     }
     /**
      * <code>string query = 2;</code>
-     *
      * @param value The query to set.
      * @return This builder for chaining.
      */
-    public Builder setQuery(java.lang.String value) {
+    public Builder setQuery(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       query_ = value;
       onChanged();
       return this;
     }
     /**
      * <code>string query = 2;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearQuery() {
-
+      
       query_ = getDefaultInstance().getQuery();
       onChanged();
       return this;
     }
     /**
      * <code>string query = 2;</code>
-     *
      * @param value The bytes for query to set.
      * @return This builder for chaining.
      */
-    public Builder setQueryBytes(com.google.protobuf.ByteString value) {
+    public Builder setQueryBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       query_ = value;
       onChanged();
       return this;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -677,12 +662,12 @@ public final class FetchDataRequest extends com.google.protobuf.GeneratedMessage
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:services.trustregistry.v1.FetchDataRequest)
   }
 
   // @@protoc_insertion_point(class_scope:services.trustregistry.v1.FetchDataRequest)
   private static final trinsic.services.trustregistry.v1.FetchDataRequest DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new trinsic.services.trustregistry.v1.FetchDataRequest();
   }
@@ -691,16 +676,16 @@ public final class FetchDataRequest extends com.google.protobuf.GeneratedMessage
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<FetchDataRequest> PARSER =
-      new com.google.protobuf.AbstractParser<FetchDataRequest>() {
-        @java.lang.Override
-        public FetchDataRequest parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return new FetchDataRequest(input, extensionRegistry);
-        }
-      };
+  private static final com.google.protobuf.Parser<FetchDataRequest>
+      PARSER = new com.google.protobuf.AbstractParser<FetchDataRequest>() {
+    @java.lang.Override
+    public FetchDataRequest parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return new FetchDataRequest(input, extensionRegistry);
+    }
+  };
 
   public static com.google.protobuf.Parser<FetchDataRequest> parser() {
     return PARSER;
@@ -715,4 +700,6 @@ public final class FetchDataRequest extends com.google.protobuf.GeneratedMessage
   public trinsic.services.trustregistry.v1.FetchDataRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

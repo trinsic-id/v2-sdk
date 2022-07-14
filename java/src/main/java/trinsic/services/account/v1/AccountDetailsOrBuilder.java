@@ -3,83 +3,67 @@
 
 package trinsic.services.account.v1;
 
-public interface AccountDetailsOrBuilder
-    extends
+public interface AccountDetailsOrBuilder extends
     // @@protoc_insertion_point(interface_extends:services.account.v1.AccountDetails)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   *
-   *
    * <pre>
    * Account name
    * </pre>
    *
    * <code>string name = 1 [(.services.options.optional) = true];</code>
-   *
    * @return The name.
    */
   java.lang.String getName();
   /**
-   *
-   *
    * <pre>
    * Account name
    * </pre>
    *
    * <code>string name = 1 [(.services.options.optional) = true];</code>
-   *
    * @return The bytes for name.
    */
-  com.google.protobuf.ByteString getNameBytes();
+  com.google.protobuf.ByteString
+      getNameBytes();
 
   /**
-   *
-   *
    * <pre>
    * Email address of account
    * </pre>
    *
    * <code>string email = 2 [(.services.options.optional) = true];</code>
-   *
    * @return The email.
    */
   java.lang.String getEmail();
   /**
-   *
-   *
    * <pre>
    * Email address of account
    * </pre>
    *
    * <code>string email = 2 [(.services.options.optional) = true];</code>
-   *
    * @return The bytes for email.
    */
-  com.google.protobuf.ByteString getEmailBytes();
+  com.google.protobuf.ByteString
+      getEmailBytes();
 
   /**
-   *
-   *
    * <pre>
    * SMS number including country code
    * </pre>
    *
    * <code>string sms = 3 [(.services.options.optional) = true];</code>
-   *
    * @return The sms.
    */
   java.lang.String getSms();
   /**
-   *
-   *
    * <pre>
    * SMS number including country code
    * </pre>
    *
    * <code>string sms = 3 [(.services.options.optional) = true];</code>
-   *
    * @return The bytes for sms.
    */
-  com.google.protobuf.ByteString getSmsBytes();
+  com.google.protobuf.ByteString
+      getSmsBytes();
 }

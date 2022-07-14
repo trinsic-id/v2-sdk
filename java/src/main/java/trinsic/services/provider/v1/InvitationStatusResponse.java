@@ -4,24 +4,21 @@
 package trinsic.services.provider.v1;
 
 /**
- *
- *
  * <pre>
  * Response to `InvitationStatusRequest`
  * </pre>
  *
  * Protobuf type {@code services.provider.v1.InvitationStatusResponse}
  */
-public final class InvitationStatusResponse extends com.google.protobuf.GeneratedMessageV3
-    implements
+public final class InvitationStatusResponse extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:services.provider.v1.InvitationStatusResponse)
     InvitationStatusResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+private static final long serialVersionUID = 0L;
   // Use InvitationStatusResponse.newBuilder() to construct.
   private InvitationStatusResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private InvitationStatusResponse() {
     status_ = 0;
     statusDetails_ = "";
@@ -29,15 +26,16 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new InvitationStatusResponse();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
     return this.unknownFields;
   }
-
   private InvitationStatusResponse(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -56,27 +54,25 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
           case 0:
             done = true;
             break;
-          case 8:
-            {
-              int rawValue = input.readEnum();
+          case 8: {
+            int rawValue = input.readEnum();
 
-              status_ = rawValue;
-              break;
-            }
-          case 18:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
+            status_ = rawValue;
+            break;
+          }
+          case 18: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-              statusDetails_ = s;
-              break;
+            statusDetails_ = s;
+            break;
+          }
+          default: {
+            if (!parseUnknownField(
+                input, unknownFields, extensionRegistry, tag)) {
+              done = true;
             }
-          default:
-            {
-              if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
+            break;
+          }
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -84,33 +80,32 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
     } catch (com.google.protobuf.UninitializedMessageException e) {
       throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
+      throw new com.google.protobuf.InvalidProtocolBufferException(
+          e).setUnfinishedMessage(this);
     } finally {
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
-
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return trinsic.services.provider.v1.ProviderOuterClass
-        .internal_static_services_provider_v1_InvitationStatusResponse_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_InvitationStatusResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.provider.v1.ProviderOuterClass
-        .internal_static_services_provider_v1_InvitationStatusResponse_fieldAccessorTable
+    return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_InvitationStatusResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.provider.v1.InvitationStatusResponse.class,
-            trinsic.services.provider.v1.InvitationStatusResponse.Builder.class);
+            trinsic.services.provider.v1.InvitationStatusResponse.class, trinsic.services.provider.v1.InvitationStatusResponse.Builder.class);
   }
 
-  /** Protobuf enum {@code services.provider.v1.InvitationStatusResponse.Status} */
-  public enum Status implements com.google.protobuf.ProtocolMessageEnum {
+  /**
+   * Protobuf enum {@code services.provider.v1.InvitationStatusResponse.Status}
+   */
+  public enum Status
+      implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     *
-     *
      * <pre>
      * Onboarding resulted in error
      * </pre>
@@ -119,8 +114,6 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
      */
     Error(0),
     /**
-     *
-     *
      * <pre>
      * The participant has been invited
      * </pre>
@@ -129,8 +122,6 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
      */
     InvitationSent(1),
     /**
-     *
-     *
      * <pre>
      * The participant has been onboarded
      * </pre>
@@ -139,8 +130,6 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
      */
     Completed(2),
     /**
-     *
-     *
      * <pre>
      * The invite has expired
      * </pre>
@@ -152,8 +141,6 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
     ;
 
     /**
-     *
-     *
      * <pre>
      * Onboarding resulted in error
      * </pre>
@@ -162,8 +149,6 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
      */
     public static final int Error_VALUE = 0;
     /**
-     *
-     *
      * <pre>
      * The participant has been invited
      * </pre>
@@ -172,8 +157,6 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
      */
     public static final int InvitationSent_VALUE = 1;
     /**
-     *
-     *
      * <pre>
      * The participant has been onboarded
      * </pre>
@@ -182,8 +165,6 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
      */
     public static final int Completed_VALUE = 2;
     /**
-     *
-     *
      * <pre>
      * The invite has expired
      * </pre>
@@ -191,6 +172,7 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
      * <code>Expired = 3;</code>
      */
     public static final int Expired_VALUE = 3;
+
 
     public final int getNumber() {
       if (this == UNRECOGNIZED) {
@@ -216,53 +198,50 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
      */
     public static Status forNumber(int value) {
       switch (value) {
-        case 0:
-          return Error;
-        case 1:
-          return InvitationSent;
-        case 2:
-          return Completed;
-        case 3:
-          return Expired;
-        default:
-          return null;
+        case 0: return Error;
+        case 1: return InvitationSent;
+        case 2: return Completed;
+        case 3: return Expired;
+        default: return null;
       }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<Status> internalGetValueMap() {
+    public static com.google.protobuf.Internal.EnumLiteMap<Status>
+        internalGetValueMap() {
       return internalValueMap;
     }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        Status> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<Status>() {
+            public Status findValueByNumber(int number) {
+              return Status.forNumber(number);
+            }
+          };
 
-    private static final com.google.protobuf.Internal.EnumLiteMap<Status> internalValueMap =
-        new com.google.protobuf.Internal.EnumLiteMap<Status>() {
-          public Status findValueByNumber(int number) {
-            return Status.forNumber(number);
-          }
-        };
-
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor getValueDescriptor() {
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
       if (this == UNRECOGNIZED) {
         throw new java.lang.IllegalStateException(
             "Can't get the descriptor of an unrecognized enum value.");
       }
       return getDescriptor().getValues().get(ordinal());
     }
-
-    public final com.google.protobuf.Descriptors.EnumDescriptor getDescriptorForType() {
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
       return getDescriptor();
     }
-
-    public static final com.google.protobuf.Descriptors.EnumDescriptor getDescriptor() {
-      return trinsic.services.provider.v1.InvitationStatusResponse.getDescriptor()
-          .getEnumTypes()
-          .get(0);
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return trinsic.services.provider.v1.InvitationStatusResponse.getDescriptor().getEnumTypes().get(0);
     }
 
     private static final Status[] VALUES = values();
 
-    public static Status valueOf(com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+    public static Status valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException("EnumValueDescriptor is not for this type.");
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
       }
       if (desc.getIndex() == -1) {
         return UNRECOGNIZED;
@@ -282,52 +261,38 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
   public static final int STATUS_FIELD_NUMBER = 1;
   private int status_;
   /**
-   *
-   *
    * <pre>
    * Status of invitation
    * </pre>
    *
    * <code>.services.provider.v1.InvitationStatusResponse.Status status = 1;</code>
-   *
    * @return The enum numeric value on the wire for status.
    */
-  @java.lang.Override
-  public int getStatusValue() {
+  @java.lang.Override public int getStatusValue() {
     return status_;
   }
   /**
-   *
-   *
    * <pre>
    * Status of invitation
    * </pre>
    *
    * <code>.services.provider.v1.InvitationStatusResponse.Status status = 1;</code>
-   *
    * @return The status.
    */
-  @java.lang.Override
-  public trinsic.services.provider.v1.InvitationStatusResponse.Status getStatus() {
+  @java.lang.Override public trinsic.services.provider.v1.InvitationStatusResponse.Status getStatus() {
     @SuppressWarnings("deprecation")
-    trinsic.services.provider.v1.InvitationStatusResponse.Status result =
-        trinsic.services.provider.v1.InvitationStatusResponse.Status.valueOf(status_);
-    return result == null
-        ? trinsic.services.provider.v1.InvitationStatusResponse.Status.UNRECOGNIZED
-        : result;
+    trinsic.services.provider.v1.InvitationStatusResponse.Status result = trinsic.services.provider.v1.InvitationStatusResponse.Status.valueOf(status_);
+    return result == null ? trinsic.services.provider.v1.InvitationStatusResponse.Status.UNRECOGNIZED : result;
   }
 
   public static final int STATUS_DETAILS_FIELD_NUMBER = 2;
   private volatile java.lang.Object statusDetails_;
   /**
-   *
-   *
    * <pre>
    * Human-readable string with details about invitation status
    * </pre>
    *
    * <code>string status_details = 2;</code>
-   *
    * @return The statusDetails.
    */
   @java.lang.Override
@@ -336,29 +301,29 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       statusDetails_ = s;
       return s;
     }
   }
   /**
-   *
-   *
    * <pre>
    * Human-readable string with details about invitation status
    * </pre>
    *
    * <code>string status_details = 2;</code>
-   *
    * @return The bytes for statusDetails.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getStatusDetailsBytes() {
+  public com.google.protobuf.ByteString
+      getStatusDetailsBytes() {
     java.lang.Object ref = statusDetails_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       statusDetails_ = b;
       return b;
     } else {
@@ -367,7 +332,6 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -379,7 +343,8 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     if (status_ != trinsic.services.provider.v1.InvitationStatusResponse.Status.Error.getNumber()) {
       output.writeEnum(1, status_);
     }
@@ -396,7 +361,8 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
 
     size = 0;
     if (status_ != trinsic.services.provider.v1.InvitationStatusResponse.Status.Error.getNumber()) {
-      size += com.google.protobuf.CodedOutputStream.computeEnumSize(1, status_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(1, status_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(statusDetails_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, statusDetails_);
@@ -409,16 +375,16 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof trinsic.services.provider.v1.InvitationStatusResponse)) {
       return super.equals(obj);
     }
-    trinsic.services.provider.v1.InvitationStatusResponse other =
-        (trinsic.services.provider.v1.InvitationStatusResponse) obj;
+    trinsic.services.provider.v1.InvitationStatusResponse other = (trinsic.services.provider.v1.InvitationStatusResponse) obj;
 
     if (status_ != other.status_) return false;
-    if (!getStatusDetails().equals(other.getStatusDetails())) return false;
+    if (!getStatusDetails()
+        .equals(other.getStatusDetails())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -440,127 +406,117 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
   }
 
   public static trinsic.services.provider.v1.InvitationStatusResponse parseFrom(
-      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.provider.v1.InvitationStatusResponse parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.provider.v1.InvitationStatusResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.provider.v1.InvitationStatusResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.provider.v1.InvitationStatusResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.provider.v1.InvitationStatusResponse parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
-  public static trinsic.services.provider.v1.InvitationStatusResponse parseFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-  }
-
-  public static trinsic.services.provider.v1.InvitationStatusResponse parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+  public static trinsic.services.provider.v1.InvitationStatusResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
-  public static trinsic.services.provider.v1.InvitationStatusResponse parseDelimitedFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static trinsic.services.provider.v1.InvitationStatusResponse parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
-  }
-
   public static trinsic.services.provider.v1.InvitationStatusResponse parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
+  public static trinsic.services.provider.v1.InvitationStatusResponse parseDelimitedFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
+  }
+  public static trinsic.services.provider.v1.InvitationStatusResponse parseDelimitedFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+  }
+  public static trinsic.services.provider.v1.InvitationStatusResponse parseFrom(
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
+  }
   public static trinsic.services.provider.v1.InvitationStatusResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
-  public static Builder newBuilder(
-      trinsic.services.provider.v1.InvitationStatusResponse prototype) {
+  public static Builder newBuilder(trinsic.services.provider.v1.InvitationStatusResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
-   *
-   *
    * <pre>
    * Response to `InvitationStatusRequest`
    * </pre>
    *
    * Protobuf type {@code services.provider.v1.InvitationStatusResponse}
    */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:services.provider.v1.InvitationStatusResponse)
       trinsic.services.provider.v1.InvitationStatusResponseOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_InvitationStatusResponse_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_InvitationStatusResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_InvitationStatusResponse_fieldAccessorTable
+      return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_InvitationStatusResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.provider.v1.InvitationStatusResponse.class,
-              trinsic.services.provider.v1.InvitationStatusResponse.Builder.class);
+              trinsic.services.provider.v1.InvitationStatusResponse.class, trinsic.services.provider.v1.InvitationStatusResponse.Builder.class);
     }
 
     // Construct using trinsic.services.provider.v1.InvitationStatusResponse.newBuilder()
@@ -568,15 +524,16 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
       maybeForceBuilderInitialization();
     }
 
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
-
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+      }
     }
-
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -588,9 +545,9 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_InvitationStatusResponse_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_InvitationStatusResponse_descriptor;
     }
 
     @java.lang.Override
@@ -609,8 +566,7 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
 
     @java.lang.Override
     public trinsic.services.provider.v1.InvitationStatusResponse buildPartial() {
-      trinsic.services.provider.v1.InvitationStatusResponse result =
-          new trinsic.services.provider.v1.InvitationStatusResponse(this);
+      trinsic.services.provider.v1.InvitationStatusResponse result = new trinsic.services.provider.v1.InvitationStatusResponse(this);
       result.status_ = status_;
       result.statusDetails_ = statusDetails_;
       onBuilt();
@@ -621,39 +577,38 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof trinsic.services.provider.v1.InvitationStatusResponse) {
-        return mergeFrom((trinsic.services.provider.v1.InvitationStatusResponse) other);
+        return mergeFrom((trinsic.services.provider.v1.InvitationStatusResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -661,8 +616,7 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
     }
 
     public Builder mergeFrom(trinsic.services.provider.v1.InvitationStatusResponse other) {
-      if (other == trinsic.services.provider.v1.InvitationStatusResponse.getDefaultInstance())
-        return this;
+      if (other == trinsic.services.provider.v1.InvitationStatusResponse.getDefaultInstance()) return this;
       if (other.status_ != 0) {
         setStatusValue(other.getStatusValue());
       }
@@ -689,8 +643,7 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage =
-            (trinsic.services.provider.v1.InvitationStatusResponse) e.getUnfinishedMessage();
+        parsedMessage = (trinsic.services.provider.v1.InvitationStatusResponse) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -702,67 +655,51 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
 
     private int status_ = 0;
     /**
-     *
-     *
      * <pre>
      * Status of invitation
      * </pre>
      *
      * <code>.services.provider.v1.InvitationStatusResponse.Status status = 1;</code>
-     *
      * @return The enum numeric value on the wire for status.
      */
-    @java.lang.Override
-    public int getStatusValue() {
+    @java.lang.Override public int getStatusValue() {
       return status_;
     }
     /**
-     *
-     *
      * <pre>
      * Status of invitation
      * </pre>
      *
      * <code>.services.provider.v1.InvitationStatusResponse.Status status = 1;</code>
-     *
      * @param value The enum numeric value on the wire for status to set.
      * @return This builder for chaining.
      */
     public Builder setStatusValue(int value) {
-
+      
       status_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Status of invitation
      * </pre>
      *
      * <code>.services.provider.v1.InvitationStatusResponse.Status status = 1;</code>
-     *
      * @return The status.
      */
     @java.lang.Override
     public trinsic.services.provider.v1.InvitationStatusResponse.Status getStatus() {
       @SuppressWarnings("deprecation")
-      trinsic.services.provider.v1.InvitationStatusResponse.Status result =
-          trinsic.services.provider.v1.InvitationStatusResponse.Status.valueOf(status_);
-      return result == null
-          ? trinsic.services.provider.v1.InvitationStatusResponse.Status.UNRECOGNIZED
-          : result;
+      trinsic.services.provider.v1.InvitationStatusResponse.Status result = trinsic.services.provider.v1.InvitationStatusResponse.Status.valueOf(status_);
+      return result == null ? trinsic.services.provider.v1.InvitationStatusResponse.Status.UNRECOGNIZED : result;
     }
     /**
-     *
-     *
      * <pre>
      * Status of invitation
      * </pre>
      *
      * <code>.services.provider.v1.InvitationStatusResponse.Status status = 1;</code>
-     *
      * @param value The status to set.
      * @return This builder for chaining.
      */
@@ -770,24 +707,21 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
       if (value == null) {
         throw new NullPointerException();
       }
-
+      
       status_ = value.getNumber();
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Status of invitation
      * </pre>
      *
      * <code>.services.provider.v1.InvitationStatusResponse.Status status = 1;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearStatus() {
-
+      
       status_ = 0;
       onChanged();
       return this;
@@ -795,20 +729,18 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
 
     private java.lang.Object statusDetails_ = "";
     /**
-     *
-     *
      * <pre>
      * Human-readable string with details about invitation status
      * </pre>
      *
      * <code>string status_details = 2;</code>
-     *
      * @return The statusDetails.
      */
     public java.lang.String getStatusDetails() {
       java.lang.Object ref = statusDetails_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         statusDetails_ = s;
         return s;
@@ -817,21 +749,20 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
       }
     }
     /**
-     *
-     *
      * <pre>
      * Human-readable string with details about invitation status
      * </pre>
      *
      * <code>string status_details = 2;</code>
-     *
      * @return The bytes for statusDetails.
      */
-    public com.google.protobuf.ByteString getStatusDetailsBytes() {
+    public com.google.protobuf.ByteString
+        getStatusDetailsBytes() {
       java.lang.Object ref = statusDetails_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         statusDetails_ = b;
         return b;
       } else {
@@ -839,68 +770,61 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
       }
     }
     /**
-     *
-     *
      * <pre>
      * Human-readable string with details about invitation status
      * </pre>
      *
      * <code>string status_details = 2;</code>
-     *
      * @param value The statusDetails to set.
      * @return This builder for chaining.
      */
-    public Builder setStatusDetails(java.lang.String value) {
+    public Builder setStatusDetails(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       statusDetails_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Human-readable string with details about invitation status
      * </pre>
      *
      * <code>string status_details = 2;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearStatusDetails() {
-
+      
       statusDetails_ = getDefaultInstance().getStatusDetails();
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Human-readable string with details about invitation status
      * </pre>
      *
      * <code>string status_details = 2;</code>
-     *
      * @param value The bytes for statusDetails to set.
      * @return This builder for chaining.
      */
-    public Builder setStatusDetailsBytes(com.google.protobuf.ByteString value) {
+    public Builder setStatusDetailsBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       statusDetails_ = value;
       onChanged();
       return this;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -910,12 +834,12 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:services.provider.v1.InvitationStatusResponse)
   }
 
   // @@protoc_insertion_point(class_scope:services.provider.v1.InvitationStatusResponse)
   private static final trinsic.services.provider.v1.InvitationStatusResponse DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new trinsic.services.provider.v1.InvitationStatusResponse();
   }
@@ -924,16 +848,16 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<InvitationStatusResponse> PARSER =
-      new com.google.protobuf.AbstractParser<InvitationStatusResponse>() {
-        @java.lang.Override
-        public InvitationStatusResponse parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return new InvitationStatusResponse(input, extensionRegistry);
-        }
-      };
+  private static final com.google.protobuf.Parser<InvitationStatusResponse>
+      PARSER = new com.google.protobuf.AbstractParser<InvitationStatusResponse>() {
+    @java.lang.Override
+    public InvitationStatusResponse parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return new InvitationStatusResponse(input, extensionRegistry);
+    }
+  };
 
   public static com.google.protobuf.Parser<InvitationStatusResponse> parser() {
     return PARSER;
@@ -948,4 +872,6 @@ public final class InvitationStatusResponse extends com.google.protobuf.Generate
   public trinsic.services.provider.v1.InvitationStatusResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

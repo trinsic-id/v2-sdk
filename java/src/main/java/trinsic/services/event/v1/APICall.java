@@ -3,17 +3,18 @@
 
 package trinsic.services.event.v1;
 
-/** Protobuf type {@code trinsic.services.event.APICall} */
-public final class APICall extends com.google.protobuf.GeneratedMessageV3
-    implements
+/**
+ * Protobuf type {@code trinsic.services.event.APICall}
+ */
+public final class APICall extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:trinsic.services.event.APICall)
     APICallOrBuilder {
-  private static final long serialVersionUID = 0L;
+private static final long serialVersionUID = 0L;
   // Use APICall.newBuilder() to construct.
   private APICall(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private APICall() {
     source_ = "";
     request_ = com.google.protobuf.ByteString.EMPTY;
@@ -22,15 +23,16 @@ public final class APICall extends com.google.protobuf.GeneratedMessageV3
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new APICall();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
     return this.unknownFields;
   }
-
   private APICall(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -49,30 +51,29 @@ public final class APICall extends com.google.protobuf.GeneratedMessageV3
           case 0:
             done = true;
             break;
-          case 10:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-              source_ = s;
-              break;
+            source_ = s;
+            break;
+          }
+          case 18: {
+
+            request_ = input.readBytes();
+            break;
+          }
+          case 26: {
+
+            response_ = input.readBytes();
+            break;
+          }
+          default: {
+            if (!parseUnknownField(
+                input, unknownFields, extensionRegistry, tag)) {
+              done = true;
             }
-          case 18:
-            {
-              request_ = input.readBytes();
-              break;
-            }
-          case 26:
-            {
-              response_ = input.readBytes();
-              break;
-            }
-          default:
-            {
-              if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
+            break;
+          }
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -80,33 +81,30 @@ public final class APICall extends com.google.protobuf.GeneratedMessageV3
     } catch (com.google.protobuf.UninitializedMessageException e) {
       throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
+      throw new com.google.protobuf.InvalidProtocolBufferException(
+          e).setUnfinishedMessage(this);
     } finally {
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
-
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return trinsic.services.event.v1.EventOuterClass
-        .internal_static_trinsic_services_event_APICall_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return trinsic.services.event.v1.EventOuterClass.internal_static_trinsic_services_event_APICall_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.event.v1.EventOuterClass
-        .internal_static_trinsic_services_event_APICall_fieldAccessorTable
+    return trinsic.services.event.v1.EventOuterClass.internal_static_trinsic_services_event_APICall_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.event.v1.APICall.class,
-            trinsic.services.event.v1.APICall.Builder.class);
+            trinsic.services.event.v1.APICall.class, trinsic.services.event.v1.APICall.Builder.class);
   }
 
   public static final int SOURCE_FIELD_NUMBER = 1;
   private volatile java.lang.Object source_;
   /**
    * <code>string source = 1;</code>
-   *
    * @return The source.
    */
   @java.lang.Override
@@ -115,7 +113,8 @@ public final class APICall extends com.google.protobuf.GeneratedMessageV3
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       source_ = s;
       return s;
@@ -123,15 +122,16 @@ public final class APICall extends com.google.protobuf.GeneratedMessageV3
   }
   /**
    * <code>string source = 1;</code>
-   *
    * @return The bytes for source.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getSourceBytes() {
+  public com.google.protobuf.ByteString
+      getSourceBytes() {
     java.lang.Object ref = source_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       source_ = b;
       return b;
     } else {
@@ -143,7 +143,6 @@ public final class APICall extends com.google.protobuf.GeneratedMessageV3
   private com.google.protobuf.ByteString request_;
   /**
    * <code>bytes request = 2;</code>
-   *
    * @return The request.
    */
   @java.lang.Override
@@ -155,7 +154,6 @@ public final class APICall extends com.google.protobuf.GeneratedMessageV3
   private com.google.protobuf.ByteString response_;
   /**
    * <code>bytes response = 3;</code>
-   *
    * @return The response.
    */
   @java.lang.Override
@@ -164,7 +162,6 @@ public final class APICall extends com.google.protobuf.GeneratedMessageV3
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -176,7 +173,8 @@ public final class APICall extends com.google.protobuf.GeneratedMessageV3
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(source_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, source_);
     }
@@ -199,10 +197,12 @@ public final class APICall extends com.google.protobuf.GeneratedMessageV3
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, source_);
     }
     if (!request_.isEmpty()) {
-      size += com.google.protobuf.CodedOutputStream.computeBytesSize(2, request_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeBytesSize(2, request_);
     }
     if (!response_.isEmpty()) {
-      size += com.google.protobuf.CodedOutputStream.computeBytesSize(3, response_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeBytesSize(3, response_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -212,16 +212,19 @@ public final class APICall extends com.google.protobuf.GeneratedMessageV3
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof trinsic.services.event.v1.APICall)) {
       return super.equals(obj);
     }
     trinsic.services.event.v1.APICall other = (trinsic.services.event.v1.APICall) obj;
 
-    if (!getSource().equals(other.getSource())) return false;
-    if (!getRequest().equals(other.getRequest())) return false;
-    if (!getResponse().equals(other.getResponse())) return false;
+    if (!getSource()
+        .equals(other.getSource())) return false;
+    if (!getRequest()
+        .equals(other.getRequest())) return false;
+    if (!getResponse()
+        .equals(other.getResponse())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -244,118 +247,114 @@ public final class APICall extends com.google.protobuf.GeneratedMessageV3
     return hash;
   }
 
-  public static trinsic.services.event.v1.APICall parseFrom(java.nio.ByteBuffer data)
+  public static trinsic.services.event.v1.APICall parseFrom(
+      java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.event.v1.APICall parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
-  public static trinsic.services.event.v1.APICall parseFrom(com.google.protobuf.ByteString data)
+  public static trinsic.services.event.v1.APICall parseFrom(
+      com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.event.v1.APICall parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.event.v1.APICall parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.event.v1.APICall parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.event.v1.APICall parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static trinsic.services.event.v1.APICall parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static trinsic.services.event.v1.APICall parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static trinsic.services.event.v1.APICall parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static trinsic.services.event.v1.APICall parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static trinsic.services.event.v1.APICall parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
   public static Builder newBuilder(trinsic.services.event.v1.APICall prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code trinsic.services.event.APICall} */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  /**
+   * Protobuf type {@code trinsic.services.event.APICall}
+   */
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:trinsic.services.event.APICall)
       trinsic.services.event.v1.APICallOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return trinsic.services.event.v1.EventOuterClass
-          .internal_static_trinsic_services_event_APICall_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.event.v1.EventOuterClass.internal_static_trinsic_services_event_APICall_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.event.v1.EventOuterClass
-          .internal_static_trinsic_services_event_APICall_fieldAccessorTable
+      return trinsic.services.event.v1.EventOuterClass.internal_static_trinsic_services_event_APICall_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.event.v1.APICall.class,
-              trinsic.services.event.v1.APICall.Builder.class);
+              trinsic.services.event.v1.APICall.class, trinsic.services.event.v1.APICall.Builder.class);
     }
 
     // Construct using trinsic.services.event.v1.APICall.newBuilder()
@@ -363,15 +362,16 @@ public final class APICall extends com.google.protobuf.GeneratedMessageV3
       maybeForceBuilderInitialization();
     }
 
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
-
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+      }
     }
-
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -385,9 +385,9 @@ public final class APICall extends com.google.protobuf.GeneratedMessageV3
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return trinsic.services.event.v1.EventOuterClass
-          .internal_static_trinsic_services_event_APICall_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return trinsic.services.event.v1.EventOuterClass.internal_static_trinsic_services_event_APICall_descriptor;
     }
 
     @java.lang.Override
@@ -418,39 +418,38 @@ public final class APICall extends com.google.protobuf.GeneratedMessageV3
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof trinsic.services.event.v1.APICall) {
-        return mergeFrom((trinsic.services.event.v1.APICall) other);
+        return mergeFrom((trinsic.services.event.v1.APICall)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -501,13 +500,13 @@ public final class APICall extends com.google.protobuf.GeneratedMessageV3
     private java.lang.Object source_ = "";
     /**
      * <code>string source = 1;</code>
-     *
      * @return The source.
      */
     public java.lang.String getSource() {
       java.lang.Object ref = source_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         source_ = s;
         return s;
@@ -517,14 +516,15 @@ public final class APICall extends com.google.protobuf.GeneratedMessageV3
     }
     /**
      * <code>string source = 1;</code>
-     *
      * @return The bytes for source.
      */
-    public com.google.protobuf.ByteString getSourceBytes() {
+    public com.google.protobuf.ByteString
+        getSourceBytes() {
       java.lang.Object ref = source_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         source_ = b;
         return b;
       } else {
@@ -533,42 +533,41 @@ public final class APICall extends com.google.protobuf.GeneratedMessageV3
     }
     /**
      * <code>string source = 1;</code>
-     *
      * @param value The source to set.
      * @return This builder for chaining.
      */
-    public Builder setSource(java.lang.String value) {
+    public Builder setSource(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       source_ = value;
       onChanged();
       return this;
     }
     /**
      * <code>string source = 1;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearSource() {
-
+      
       source_ = getDefaultInstance().getSource();
       onChanged();
       return this;
     }
     /**
      * <code>string source = 1;</code>
-     *
      * @param value The bytes for source to set.
      * @return This builder for chaining.
      */
-    public Builder setSourceBytes(com.google.protobuf.ByteString value) {
+    public Builder setSourceBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       source_ = value;
       onChanged();
       return this;
@@ -577,7 +576,6 @@ public final class APICall extends com.google.protobuf.GeneratedMessageV3
     private com.google.protobuf.ByteString request_ = com.google.protobuf.ByteString.EMPTY;
     /**
      * <code>bytes request = 2;</code>
-     *
      * @return The request.
      */
     @java.lang.Override
@@ -586,26 +584,24 @@ public final class APICall extends com.google.protobuf.GeneratedMessageV3
     }
     /**
      * <code>bytes request = 2;</code>
-     *
      * @param value The request to set.
      * @return This builder for chaining.
      */
     public Builder setRequest(com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       request_ = value;
       onChanged();
       return this;
     }
     /**
      * <code>bytes request = 2;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearRequest() {
-
+      
       request_ = getDefaultInstance().getRequest();
       onChanged();
       return this;
@@ -614,7 +610,6 @@ public final class APICall extends com.google.protobuf.GeneratedMessageV3
     private com.google.protobuf.ByteString response_ = com.google.protobuf.ByteString.EMPTY;
     /**
      * <code>bytes response = 3;</code>
-     *
      * @return The response.
      */
     @java.lang.Override
@@ -623,33 +618,31 @@ public final class APICall extends com.google.protobuf.GeneratedMessageV3
     }
     /**
      * <code>bytes response = 3;</code>
-     *
      * @param value The response to set.
      * @return This builder for chaining.
      */
     public Builder setResponse(com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       response_ = value;
       onChanged();
       return this;
     }
     /**
      * <code>bytes response = 3;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearResponse() {
-
+      
       response_ = getDefaultInstance().getResponse();
       onChanged();
       return this;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -659,12 +652,12 @@ public final class APICall extends com.google.protobuf.GeneratedMessageV3
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:trinsic.services.event.APICall)
   }
 
   // @@protoc_insertion_point(class_scope:trinsic.services.event.APICall)
   private static final trinsic.services.event.v1.APICall DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new trinsic.services.event.v1.APICall();
   }
@@ -673,16 +666,16 @@ public final class APICall extends com.google.protobuf.GeneratedMessageV3
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<APICall> PARSER =
-      new com.google.protobuf.AbstractParser<APICall>() {
-        @java.lang.Override
-        public APICall parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return new APICall(input, extensionRegistry);
-        }
-      };
+  private static final com.google.protobuf.Parser<APICall>
+      PARSER = new com.google.protobuf.AbstractParser<APICall>() {
+    @java.lang.Override
+    public APICall parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return new APICall(input, extensionRegistry);
+    }
+  };
 
   public static com.google.protobuf.Parser<APICall> parser() {
     return PARSER;
@@ -697,4 +690,6 @@ public final class APICall extends com.google.protobuf.GeneratedMessageV3
   public trinsic.services.event.v1.APICall getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

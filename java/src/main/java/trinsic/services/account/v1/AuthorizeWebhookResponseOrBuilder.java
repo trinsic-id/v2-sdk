@@ -3,7 +3,7 @@
 
 package trinsic.services.account.v1;
 
-public interface AuthorizeWebhookResponseOrBuilder
-    extends
+public interface AuthorizeWebhookResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:services.account.v1.AuthorizeWebhookResponse)
-    com.google.protobuf.MessageOrBuilder {}
+    com.google.protobuf.MessageOrBuilder {
+}

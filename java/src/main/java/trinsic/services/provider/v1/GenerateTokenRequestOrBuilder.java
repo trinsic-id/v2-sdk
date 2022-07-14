@@ -3,33 +3,27 @@
 
 package trinsic.services.provider.v1;
 
-public interface GenerateTokenRequestOrBuilder
-    extends
+public interface GenerateTokenRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:services.provider.v1.GenerateTokenRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   *
-   *
    * <pre>
    * Description to identify this token
    * </pre>
    *
    * <code>string description = 1 [(.services.options.optional) = true];</code>
-   *
    * @return The description.
    */
   java.lang.String getDescription();
   /**
-   *
-   *
    * <pre>
    * Description to identify this token
    * </pre>
    *
    * <code>string description = 1 [(.services.options.optional) = true];</code>
-   *
    * @return The bytes for description.
    */
-  com.google.protobuf.ByteString getDescriptionBytes();
+  com.google.protobuf.ByteString
+      getDescriptionBytes();
 }

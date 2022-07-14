@@ -4,24 +4,21 @@
 package trinsic.services.verifiablecredentials.v1;
 
 /**
- *
- *
  * <pre>
  * Request to create and sign a JSON-LD Verifiable Credential from a template using public key tied to caller
  * </pre>
  *
  * Protobuf type {@code services.verifiablecredentials.v1.IssueFromTemplateRequest}
  */
-public final class IssueFromTemplateRequest extends com.google.protobuf.GeneratedMessageV3
-    implements
+public final class IssueFromTemplateRequest extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:services.verifiablecredentials.v1.IssueFromTemplateRequest)
     IssueFromTemplateRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+private static final long serialVersionUID = 0L;
   // Use IssueFromTemplateRequest.newBuilder() to construct.
   private IssueFromTemplateRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private IssueFromTemplateRequest() {
     templateId_ = "";
     valuesJson_ = "";
@@ -30,15 +27,16 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new IssueFromTemplateRequest();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
     return this.unknownFields;
   }
-
   private IssueFromTemplateRequest(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -57,34 +55,31 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
           case 0:
             done = true;
             break;
-          case 10:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-              templateId_ = s;
-              break;
-            }
-          case 18:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
+            templateId_ = s;
+            break;
+          }
+          case 18: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-              valuesJson_ = s;
-              break;
-            }
-          case 26:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
+            valuesJson_ = s;
+            break;
+          }
+          case 26: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-              frameworkId_ = s;
-              break;
+            frameworkId_ = s;
+            break;
+          }
+          default: {
+            if (!parseUnknownField(
+                input, unknownFields, extensionRegistry, tag)) {
+              done = true;
             }
-          default:
-            {
-              if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
+            break;
+          }
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -92,39 +87,34 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
     } catch (com.google.protobuf.UninitializedMessageException e) {
       throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
+      throw new com.google.protobuf.InvalidProtocolBufferException(
+          e).setUnfinishedMessage(this);
     } finally {
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
-
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-        .internal_static_services_verifiablecredentials_v1_IssueFromTemplateRequest_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_IssueFromTemplateRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-        .internal_static_services_verifiablecredentials_v1_IssueFromTemplateRequest_fieldAccessorTable
+    return trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_IssueFromTemplateRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest.class,
-            trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest.Builder.class);
+            trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest.class, trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest.Builder.class);
   }
 
   public static final int TEMPLATE_ID_FIELD_NUMBER = 1;
   private volatile java.lang.Object templateId_;
   /**
-   *
-   *
    * <pre>
    * ID of template to use
    * </pre>
    *
    * <code>string template_id = 1;</code>
-   *
    * @return The templateId.
    */
   @java.lang.Override
@@ -133,29 +123,29 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       templateId_ = s;
       return s;
     }
   }
   /**
-   *
-   *
    * <pre>
    * ID of template to use
    * </pre>
    *
    * <code>string template_id = 1;</code>
-   *
    * @return The bytes for templateId.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getTemplateIdBytes() {
+  public com.google.protobuf.ByteString
+      getTemplateIdBytes() {
     java.lang.Object ref = templateId_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       templateId_ = b;
       return b;
     } else {
@@ -166,15 +156,12 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
   public static final int VALUES_JSON_FIELD_NUMBER = 2;
   private volatile java.lang.Object valuesJson_;
   /**
-   *
-   *
    * <pre>
    * JSON document string with keys corresponding to the fields of
    * the template referenced by `template_id`
    * </pre>
    *
    * <code>string values_json = 2;</code>
-   *
    * @return The valuesJson.
    */
   @java.lang.Override
@@ -183,30 +170,30 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       valuesJson_ = s;
       return s;
     }
   }
   /**
-   *
-   *
    * <pre>
    * JSON document string with keys corresponding to the fields of
    * the template referenced by `template_id`
    * </pre>
    *
    * <code>string values_json = 2;</code>
-   *
    * @return The bytes for valuesJson.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getValuesJsonBytes() {
+  public com.google.protobuf.ByteString
+      getValuesJsonBytes() {
     java.lang.Object ref = valuesJson_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       valuesJson_ = b;
       return b;
     } else {
@@ -217,8 +204,6 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
   public static final int FRAMEWORK_ID_FIELD_NUMBER = 3;
   private volatile java.lang.Object frameworkId_;
   /**
-   *
-   *
    * <pre>
    * Governance framework ID to use with issuance of this credential.
    * If specified, the issued credential will contain extended issuer
@@ -226,7 +211,6 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
    * </pre>
    *
    * <code>string framework_id = 3 [(.services.options.optional) = true];</code>
-   *
    * @return The frameworkId.
    */
   @java.lang.Override
@@ -235,15 +219,14 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       frameworkId_ = s;
       return s;
     }
   }
   /**
-   *
-   *
    * <pre>
    * Governance framework ID to use with issuance of this credential.
    * If specified, the issued credential will contain extended issuer
@@ -251,15 +234,16 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
    * </pre>
    *
    * <code>string framework_id = 3 [(.services.options.optional) = true];</code>
-   *
    * @return The bytes for frameworkId.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getFrameworkIdBytes() {
+  public com.google.protobuf.ByteString
+      getFrameworkIdBytes() {
     java.lang.Object ref = frameworkId_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       frameworkId_ = b;
       return b;
     } else {
@@ -268,7 +252,6 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -280,7 +263,8 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(templateId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, templateId_);
     }
@@ -316,17 +300,19 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest)) {
       return super.equals(obj);
     }
-    trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest other =
-        (trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest) obj;
+    trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest other = (trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest) obj;
 
-    if (!getTemplateId().equals(other.getTemplateId())) return false;
-    if (!getValuesJson().equals(other.getValuesJson())) return false;
-    if (!getFrameworkId().equals(other.getFrameworkId())) return false;
+    if (!getTemplateId()
+        .equals(other.getTemplateId())) return false;
+    if (!getValuesJson()
+        .equals(other.getValuesJson())) return false;
+    if (!getFrameworkId()
+        .equals(other.getFrameworkId())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -350,145 +336,134 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
   }
 
   public static trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest parseFrom(
-      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
-  public static trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest parseFrom(
-      byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
+  public static trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest parseFrom(byte[] data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
-  public static trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest parseFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-  }
-
-  public static trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+  public static trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
-  public static trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest
-      parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest
-      parseDelimitedFrom(
-          java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
-  }
-
   public static trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
+  public static trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest parseDelimitedFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
+  }
+  public static trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest parseDelimitedFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+  }
+  public static trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest parseFrom(
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
+  }
   public static trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
-  public static Builder newBuilder(
-      trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest prototype) {
+  public static Builder newBuilder(trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
-   *
-   *
    * <pre>
    * Request to create and sign a JSON-LD Verifiable Credential from a template using public key tied to caller
    * </pre>
    *
    * Protobuf type {@code services.verifiablecredentials.v1.IssueFromTemplateRequest}
    */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:services.verifiablecredentials.v1.IssueFromTemplateRequest)
       trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequestOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-          .internal_static_services_verifiablecredentials_v1_IssueFromTemplateRequest_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_IssueFromTemplateRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-          .internal_static_services_verifiablecredentials_v1_IssueFromTemplateRequest_fieldAccessorTable
+      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_IssueFromTemplateRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest.class,
-              trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest.Builder.class);
+              trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest.class, trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest.Builder.class);
     }
 
-    // Construct using
-    // trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest.newBuilder()
+    // Construct using trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
 
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
-
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+      }
     }
-
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -502,16 +477,14 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-          .internal_static_services_verifiablecredentials_v1_IssueFromTemplateRequest_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_IssueFromTemplateRequest_descriptor;
     }
 
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest
-        getDefaultInstanceForType() {
-      return trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest
-          .getDefaultInstance();
+    public trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest getDefaultInstanceForType() {
+      return trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest.getDefaultInstance();
     }
 
     @java.lang.Override
@@ -525,8 +498,7 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
 
     @java.lang.Override
     public trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest buildPartial() {
-      trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest result =
-          new trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest(this);
+      trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest result = new trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest(this);
       result.templateId_ = templateId_;
       result.valuesJson_ = valuesJson_;
       result.frameworkId_ = frameworkId_;
@@ -538,51 +510,46 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest) {
-        return mergeFrom(
-            (trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest) other);
+        return mergeFrom((trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(
-        trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest other) {
-      if (other
-          == trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest
-              .getDefaultInstance()) return this;
+    public Builder mergeFrom(trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest other) {
+      if (other == trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest.getDefaultInstance()) return this;
       if (!other.getTemplateId().isEmpty()) {
         templateId_ = other.templateId_;
         onChanged();
@@ -614,9 +581,7 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage =
-            (trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest)
-                e.getUnfinishedMessage();
+        parsedMessage = (trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -628,20 +593,18 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
 
     private java.lang.Object templateId_ = "";
     /**
-     *
-     *
      * <pre>
      * ID of template to use
      * </pre>
      *
      * <code>string template_id = 1;</code>
-     *
      * @return The templateId.
      */
     public java.lang.String getTemplateId() {
       java.lang.Object ref = templateId_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         templateId_ = s;
         return s;
@@ -650,21 +613,20 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
       }
     }
     /**
-     *
-     *
      * <pre>
      * ID of template to use
      * </pre>
      *
      * <code>string template_id = 1;</code>
-     *
      * @return The bytes for templateId.
      */
-    public com.google.protobuf.ByteString getTemplateIdBytes() {
+    public com.google.protobuf.ByteString
+        getTemplateIdBytes() {
       java.lang.Object ref = templateId_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         templateId_ = b;
         return b;
       } else {
@@ -672,61 +634,54 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
       }
     }
     /**
-     *
-     *
      * <pre>
      * ID of template to use
      * </pre>
      *
      * <code>string template_id = 1;</code>
-     *
      * @param value The templateId to set.
      * @return This builder for chaining.
      */
-    public Builder setTemplateId(java.lang.String value) {
+    public Builder setTemplateId(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       templateId_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * ID of template to use
      * </pre>
      *
      * <code>string template_id = 1;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearTemplateId() {
-
+      
       templateId_ = getDefaultInstance().getTemplateId();
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * ID of template to use
      * </pre>
      *
      * <code>string template_id = 1;</code>
-     *
      * @param value The bytes for templateId to set.
      * @return This builder for chaining.
      */
-    public Builder setTemplateIdBytes(com.google.protobuf.ByteString value) {
+    public Builder setTemplateIdBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       templateId_ = value;
       onChanged();
       return this;
@@ -734,21 +689,19 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
 
     private java.lang.Object valuesJson_ = "";
     /**
-     *
-     *
      * <pre>
      * JSON document string with keys corresponding to the fields of
      * the template referenced by `template_id`
      * </pre>
      *
      * <code>string values_json = 2;</code>
-     *
      * @return The valuesJson.
      */
     public java.lang.String getValuesJson() {
       java.lang.Object ref = valuesJson_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         valuesJson_ = s;
         return s;
@@ -757,22 +710,21 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
       }
     }
     /**
-     *
-     *
      * <pre>
      * JSON document string with keys corresponding to the fields of
      * the template referenced by `template_id`
      * </pre>
      *
      * <code>string values_json = 2;</code>
-     *
      * @return The bytes for valuesJson.
      */
-    public com.google.protobuf.ByteString getValuesJsonBytes() {
+    public com.google.protobuf.ByteString
+        getValuesJsonBytes() {
       java.lang.Object ref = valuesJson_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         valuesJson_ = b;
         return b;
       } else {
@@ -780,64 +732,57 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
       }
     }
     /**
-     *
-     *
      * <pre>
      * JSON document string with keys corresponding to the fields of
      * the template referenced by `template_id`
      * </pre>
      *
      * <code>string values_json = 2;</code>
-     *
      * @param value The valuesJson to set.
      * @return This builder for chaining.
      */
-    public Builder setValuesJson(java.lang.String value) {
+    public Builder setValuesJson(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       valuesJson_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * JSON document string with keys corresponding to the fields of
      * the template referenced by `template_id`
      * </pre>
      *
      * <code>string values_json = 2;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearValuesJson() {
-
+      
       valuesJson_ = getDefaultInstance().getValuesJson();
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * JSON document string with keys corresponding to the fields of
      * the template referenced by `template_id`
      * </pre>
      *
      * <code>string values_json = 2;</code>
-     *
      * @param value The bytes for valuesJson to set.
      * @return This builder for chaining.
      */
-    public Builder setValuesJsonBytes(com.google.protobuf.ByteString value) {
+    public Builder setValuesJsonBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       valuesJson_ = value;
       onChanged();
       return this;
@@ -845,8 +790,6 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
 
     private java.lang.Object frameworkId_ = "";
     /**
-     *
-     *
      * <pre>
      * Governance framework ID to use with issuance of this credential.
      * If specified, the issued credential will contain extended issuer
@@ -854,13 +797,13 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
      * </pre>
      *
      * <code>string framework_id = 3 [(.services.options.optional) = true];</code>
-     *
      * @return The frameworkId.
      */
     public java.lang.String getFrameworkId() {
       java.lang.Object ref = frameworkId_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         frameworkId_ = s;
         return s;
@@ -869,8 +812,6 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
       }
     }
     /**
-     *
-     *
      * <pre>
      * Governance framework ID to use with issuance of this credential.
      * If specified, the issued credential will contain extended issuer
@@ -878,14 +819,15 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
      * </pre>
      *
      * <code>string framework_id = 3 [(.services.options.optional) = true];</code>
-     *
      * @return The bytes for frameworkId.
      */
-    public com.google.protobuf.ByteString getFrameworkIdBytes() {
+    public com.google.protobuf.ByteString
+        getFrameworkIdBytes() {
       java.lang.Object ref = frameworkId_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         frameworkId_ = b;
         return b;
       } else {
@@ -893,8 +835,6 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
       }
     }
     /**
-     *
-     *
      * <pre>
      * Governance framework ID to use with issuance of this credential.
      * If specified, the issued credential will contain extended issuer
@@ -902,22 +842,20 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
      * </pre>
      *
      * <code>string framework_id = 3 [(.services.options.optional) = true];</code>
-     *
      * @param value The frameworkId to set.
      * @return This builder for chaining.
      */
-    public Builder setFrameworkId(java.lang.String value) {
+    public Builder setFrameworkId(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       frameworkId_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Governance framework ID to use with issuance of this credential.
      * If specified, the issued credential will contain extended issuer
@@ -925,18 +863,15 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
      * </pre>
      *
      * <code>string framework_id = 3 [(.services.options.optional) = true];</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearFrameworkId() {
-
+      
       frameworkId_ = getDefaultInstance().getFrameworkId();
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Governance framework ID to use with issuance of this credential.
      * If specified, the issued credential will contain extended issuer
@@ -944,23 +879,23 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
      * </pre>
      *
      * <code>string framework_id = 3 [(.services.options.optional) = true];</code>
-     *
      * @param value The bytes for frameworkId to set.
      * @return This builder for chaining.
      */
-    public Builder setFrameworkIdBytes(com.google.protobuf.ByteString value) {
+    public Builder setFrameworkIdBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       frameworkId_ = value;
       onChanged();
       return this;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -970,32 +905,30 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:services.verifiablecredentials.v1.IssueFromTemplateRequest)
   }
 
   // @@protoc_insertion_point(class_scope:services.verifiablecredentials.v1.IssueFromTemplateRequest)
-  private static final trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest
-      DEFAULT_INSTANCE;
-
+  private static final trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest();
   }
 
-  public static trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest
-      getDefaultInstance() {
+  public static trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<IssueFromTemplateRequest> PARSER =
-      new com.google.protobuf.AbstractParser<IssueFromTemplateRequest>() {
-        @java.lang.Override
-        public IssueFromTemplateRequest parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return new IssueFromTemplateRequest(input, extensionRegistry);
-        }
-      };
+  private static final com.google.protobuf.Parser<IssueFromTemplateRequest>
+      PARSER = new com.google.protobuf.AbstractParser<IssueFromTemplateRequest>() {
+    @java.lang.Override
+    public IssueFromTemplateRequest parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return new IssueFromTemplateRequest(input, extensionRegistry);
+    }
+  };
 
   public static com.google.protobuf.Parser<IssueFromTemplateRequest> parser() {
     return PARSER;
@@ -1007,8 +940,9 @@ public final class IssueFromTemplateRequest extends com.google.protobuf.Generate
   }
 
   @java.lang.Override
-  public trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest
-      getDefaultInstanceForType() {
+  public trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

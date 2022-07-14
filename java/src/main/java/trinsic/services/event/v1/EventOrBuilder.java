@@ -3,95 +3,75 @@
 
 package trinsic.services.event.v1;
 
-public interface EventOrBuilder
-    extends
+public interface EventOrBuilder extends
     // @@protoc_insertion_point(interface_extends:trinsic.services.event.Event)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   *
-   *
    * <pre>
    * UUID of event
    * </pre>
    *
    * <code>string id = 1;</code>
-   *
    * @return The id.
    */
   java.lang.String getId();
   /**
-   *
-   *
    * <pre>
    * UUID of event
    * </pre>
    *
    * <code>string id = 1;</code>
-   *
    * @return The bytes for id.
    */
-  com.google.protobuf.ByteString getIdBytes();
+  com.google.protobuf.ByteString
+      getIdBytes();
 
   /**
-   *
-   *
    * <pre>
    * Type of event
    * </pre>
    *
    * <code>.trinsic.services.event.EventType type = 2;</code>
-   *
    * @return The enum numeric value on the wire for type.
    */
   int getTypeValue();
   /**
-   *
-   *
    * <pre>
    * Type of event
    * </pre>
    *
    * <code>.trinsic.services.event.EventType type = 2;</code>
-   *
    * @return The type.
    */
   trinsic.services.event.v1.EventType getType();
 
   /**
-   *
-   *
    * <pre>
    * Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
    * </pre>
    *
    * <code>string timestamp = 3;</code>
-   *
    * @return The timestamp.
    */
   java.lang.String getTimestamp();
   /**
-   *
-   *
    * <pre>
    * Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
    * </pre>
    *
    * <code>string timestamp = 3;</code>
-   *
    * @return The bytes for timestamp.
    */
-  com.google.protobuf.ByteString getTimestampBytes();
+  com.google.protobuf.ByteString
+      getTimestampBytes();
 
   /**
-   *
-   *
    * <pre>
    * Event-specific payload, as an encoded protobuf message
    * </pre>
    *
    * <code>bytes data = 4;</code>
-   *
    * @return The data.
    */
   com.google.protobuf.ByteString getData();

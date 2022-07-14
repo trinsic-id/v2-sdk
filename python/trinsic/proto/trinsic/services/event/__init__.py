@@ -25,20 +25,15 @@ class EventType(betterproto.Enum):
 class Event(betterproto.Message):
     """Event"""
 
+    # UUID of event
     id: str = betterproto.string_field(1)
-    """UUID of event"""
-
+    # Type of event
     type: "EventType" = betterproto.enum_field(2)
-    """Type of event"""
-
+    # Timestamp event occurred, in ISO 8601 format (ex.
+    # `2022-07-07T08:09:10.11Z`)
     timestamp: str = betterproto.string_field(3)
-    """
-    Timestamp event occurred, in ISO 8601 format (ex.
-    `2022-07-07T08:09:10.11Z`)
-    """
-
+    # Event-specific payload, as an encoded protobuf message
     data: bytes = betterproto.bytes_field(4)
-    """Event-specific payload, as an encoded protobuf message"""
 
 
 @dataclass(eq=False, repr=False)
@@ -52,80 +47,61 @@ class ApiCall(betterproto.Message):
 class Ping(betterproto.Message):
     """Webhook test event"""
 
+    # UUID of this ping
     id: str = betterproto.string_field(1)
-    """UUID of this ping"""
-
+    # UUID of the webhook receiving the ping
     webhook_id: str = betterproto.string_field(2)
-    """UUID of the webhook receiving the ping"""
-
+    # Timestamp ping was requested, in ISO 8601 format (ex.
+    # `2022-07-07T08:09:10.11Z`)
     timestamp: str = betterproto.string_field(3)
-    """
-    Timestamp ping was requested, in ISO 8601 format (ex.
-    `2022-07-07T08:09:10.11Z`)
-    """
-
+    # Arbitrary message specified when ping was requested
     message: str = betterproto.string_field(4)
-    """Arbitrary message specified when ping was requested"""
 
 
 @dataclass(eq=False, repr=False)
 class EgfCreated(betterproto.Message):
     """Entity Governance Framework created and attached to ecosystem"""
 
+    # UUID of the governance framework
     id: str = betterproto.string_field(1)
-    """UUID of the governance framework"""
-
+    # UUID of the ecosystem that owns this EGF
     ecosystem_id: str = betterproto.string_field(2)
-    """UUID of the ecosystem that owns this EGF"""
-
+    # Trust registry associated with this EGF
     trust_registry: str = betterproto.string_field(3)
-    """Trust registry associated with this EGF"""
-
+    # Wallet ID of the authority for this EGF
     governing_authority: str = betterproto.string_field(4)
-    """Wallet ID of the authority for this EGF"""
-
+    # Type of EGF
     type: str = betterproto.string_field(5)
-    """Type of EGF"""
-
+    # User-friendly name for the EGF
     name: str = betterproto.string_field(6)
-    """User-friendly name for the EGF"""
-
+    # Description of the EGF
     description: str = betterproto.string_field(7)
-    """Description of the EGF"""
-
+    # URI for the EGF
     governance_framework: str = betterproto.string_field(8)
-    """URI for the EGF"""
 
 
 @dataclass(eq=False, repr=False)
 class TemplateCreated(betterproto.Message):
     """Template created in ecosystem"""
 
+    # UUID of the template
     id: str = betterproto.string_field(1)
-    """UUID of the template"""
-
+    # UUID of the ecosystem that owns this template
     ecosystem_id: str = betterproto.string_field(2)
-    """UUID of the ecosystem that owns this template"""
-
+    # Template name
     name: str = betterproto.string_field(3)
-    """Template name"""
-
+    # Template type
     type: str = betterproto.string_field(4)
-    """Template type"""
-
+    # WalletID that created the template
     created_by: str = betterproto.string_field(5)
-    """WalletID that created the template"""
 
 
 @dataclass(eq=False, repr=False)
 class ItemReceived(betterproto.Message):
     """Item inserted into wallet"""
 
+    # UUID of the new item
     id: str = betterproto.string_field(1)
-    """UUID of the new item"""
-
+    # Timestamp when the item was received, in ISO 8601 format (ex.
+    # `2022-07-07T08:09:10.11Z`)
     received: str = betterproto.string_field(2)
-    """
-    Timestamp when the item was received, in ISO 8601 format (ex.
-    `2022-07-07T08:09:10.11Z`)
-    """

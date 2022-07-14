@@ -4,39 +4,37 @@
 package trinsic.services.verifiablecredentials.v1;
 
 /**
- *
- *
  * <pre>
  * Request to update a credential's revocation status
  * </pre>
  *
  * Protobuf type {@code services.verifiablecredentials.v1.UpdateStatusRequest}
  */
-public final class UpdateStatusRequest extends com.google.protobuf.GeneratedMessageV3
-    implements
+public final class UpdateStatusRequest extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:services.verifiablecredentials.v1.UpdateStatusRequest)
     UpdateStatusRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+private static final long serialVersionUID = 0L;
   // Use UpdateStatusRequest.newBuilder() to construct.
   private UpdateStatusRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private UpdateStatusRequest() {
     credentialStatusId_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new UpdateStatusRequest();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
     return this.unknownFields;
   }
-
   private UpdateStatusRequest(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -55,25 +53,24 @@ public final class UpdateStatusRequest extends com.google.protobuf.GeneratedMess
           case 0:
             done = true;
             break;
-          case 10:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-              credentialStatusId_ = s;
-              break;
+            credentialStatusId_ = s;
+            break;
+          }
+          case 16: {
+
+            revoked_ = input.readBool();
+            break;
+          }
+          default: {
+            if (!parseUnknownField(
+                input, unknownFields, extensionRegistry, tag)) {
+              done = true;
             }
-          case 16:
-            {
-              revoked_ = input.readBool();
-              break;
-            }
-          default:
-            {
-              if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
+            break;
+          }
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -81,39 +78,34 @@ public final class UpdateStatusRequest extends com.google.protobuf.GeneratedMess
     } catch (com.google.protobuf.UninitializedMessageException e) {
       throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
+      throw new com.google.protobuf.InvalidProtocolBufferException(
+          e).setUnfinishedMessage(this);
     } finally {
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
-
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-        .internal_static_services_verifiablecredentials_v1_UpdateStatusRequest_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_UpdateStatusRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-        .internal_static_services_verifiablecredentials_v1_UpdateStatusRequest_fieldAccessorTable
+    return trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_UpdateStatusRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.verifiablecredentials.v1.UpdateStatusRequest.class,
-            trinsic.services.verifiablecredentials.v1.UpdateStatusRequest.Builder.class);
+            trinsic.services.verifiablecredentials.v1.UpdateStatusRequest.class, trinsic.services.verifiablecredentials.v1.UpdateStatusRequest.Builder.class);
   }
 
   public static final int CREDENTIAL_STATUS_ID_FIELD_NUMBER = 1;
   private volatile java.lang.Object credentialStatusId_;
   /**
-   *
-   *
    * <pre>
    * Credential Status ID to update. This is not the same as the credential's ID.
    * </pre>
    *
    * <code>string credential_status_id = 1;</code>
-   *
    * @return The credentialStatusId.
    */
   @java.lang.Override
@@ -122,29 +114,29 @@ public final class UpdateStatusRequest extends com.google.protobuf.GeneratedMess
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       credentialStatusId_ = s;
       return s;
     }
   }
   /**
-   *
-   *
    * <pre>
    * Credential Status ID to update. This is not the same as the credential's ID.
    * </pre>
    *
    * <code>string credential_status_id = 1;</code>
-   *
    * @return The bytes for credentialStatusId.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getCredentialStatusIdBytes() {
+  public com.google.protobuf.ByteString
+      getCredentialStatusIdBytes() {
     java.lang.Object ref = credentialStatusId_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       credentialStatusId_ = b;
       return b;
     } else {
@@ -155,14 +147,11 @@ public final class UpdateStatusRequest extends com.google.protobuf.GeneratedMess
   public static final int REVOKED_FIELD_NUMBER = 2;
   private boolean revoked_;
   /**
-   *
-   *
    * <pre>
    * New revocation status of credential
    * </pre>
    *
    * <code>bool revoked = 2;</code>
-   *
    * @return The revoked.
    */
   @java.lang.Override
@@ -171,7 +160,6 @@ public final class UpdateStatusRequest extends com.google.protobuf.GeneratedMess
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -183,7 +171,8 @@ public final class UpdateStatusRequest extends com.google.protobuf.GeneratedMess
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(credentialStatusId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, credentialStatusId_);
     }
@@ -203,7 +192,8 @@ public final class UpdateStatusRequest extends com.google.protobuf.GeneratedMess
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, credentialStatusId_);
     }
     if (revoked_ != false) {
-      size += com.google.protobuf.CodedOutputStream.computeBoolSize(2, revoked_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(2, revoked_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -213,16 +203,17 @@ public final class UpdateStatusRequest extends com.google.protobuf.GeneratedMess
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof trinsic.services.verifiablecredentials.v1.UpdateStatusRequest)) {
       return super.equals(obj);
     }
-    trinsic.services.verifiablecredentials.v1.UpdateStatusRequest other =
-        (trinsic.services.verifiablecredentials.v1.UpdateStatusRequest) obj;
+    trinsic.services.verifiablecredentials.v1.UpdateStatusRequest other = (trinsic.services.verifiablecredentials.v1.UpdateStatusRequest) obj;
 
-    if (!getCredentialStatusId().equals(other.getCredentialStatusId())) return false;
-    if (getRevoked() != other.getRevoked()) return false;
+    if (!getCredentialStatusId()
+        .equals(other.getCredentialStatusId())) return false;
+    if (getRevoked()
+        != other.getRevoked()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -237,134 +228,125 @@ public final class UpdateStatusRequest extends com.google.protobuf.GeneratedMess
     hash = (37 * hash) + CREDENTIAL_STATUS_ID_FIELD_NUMBER;
     hash = (53 * hash) + getCredentialStatusId().hashCode();
     hash = (37 * hash) + REVOKED_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getRevoked());
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getRevoked());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
   public static trinsic.services.verifiablecredentials.v1.UpdateStatusRequest parseFrom(
-      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.verifiablecredentials.v1.UpdateStatusRequest parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.verifiablecredentials.v1.UpdateStatusRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.verifiablecredentials.v1.UpdateStatusRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.verifiablecredentials.v1.UpdateStatusRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.verifiablecredentials.v1.UpdateStatusRequest parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
-  public static trinsic.services.verifiablecredentials.v1.UpdateStatusRequest parseFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-  }
-
-  public static trinsic.services.verifiablecredentials.v1.UpdateStatusRequest parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+  public static trinsic.services.verifiablecredentials.v1.UpdateStatusRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
-  public static trinsic.services.verifiablecredentials.v1.UpdateStatusRequest parseDelimitedFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static trinsic.services.verifiablecredentials.v1.UpdateStatusRequest parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
-  }
-
   public static trinsic.services.verifiablecredentials.v1.UpdateStatusRequest parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
+  public static trinsic.services.verifiablecredentials.v1.UpdateStatusRequest parseDelimitedFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
+  }
+  public static trinsic.services.verifiablecredentials.v1.UpdateStatusRequest parseDelimitedFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+  }
+  public static trinsic.services.verifiablecredentials.v1.UpdateStatusRequest parseFrom(
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
+  }
   public static trinsic.services.verifiablecredentials.v1.UpdateStatusRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
-  public static Builder newBuilder(
-      trinsic.services.verifiablecredentials.v1.UpdateStatusRequest prototype) {
+  public static Builder newBuilder(trinsic.services.verifiablecredentials.v1.UpdateStatusRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
-   *
-   *
    * <pre>
    * Request to update a credential's revocation status
    * </pre>
    *
    * Protobuf type {@code services.verifiablecredentials.v1.UpdateStatusRequest}
    */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:services.verifiablecredentials.v1.UpdateStatusRequest)
       trinsic.services.verifiablecredentials.v1.UpdateStatusRequestOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-          .internal_static_services_verifiablecredentials_v1_UpdateStatusRequest_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_UpdateStatusRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-          .internal_static_services_verifiablecredentials_v1_UpdateStatusRequest_fieldAccessorTable
+      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_UpdateStatusRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.verifiablecredentials.v1.UpdateStatusRequest.class,
-              trinsic.services.verifiablecredentials.v1.UpdateStatusRequest.Builder.class);
+              trinsic.services.verifiablecredentials.v1.UpdateStatusRequest.class, trinsic.services.verifiablecredentials.v1.UpdateStatusRequest.Builder.class);
     }
 
     // Construct using trinsic.services.verifiablecredentials.v1.UpdateStatusRequest.newBuilder()
@@ -372,15 +354,16 @@ public final class UpdateStatusRequest extends com.google.protobuf.GeneratedMess
       maybeForceBuilderInitialization();
     }
 
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
-
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+      }
     }
-
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -392,14 +375,13 @@ public final class UpdateStatusRequest extends com.google.protobuf.GeneratedMess
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
-          .internal_static_services_verifiablecredentials_v1_UpdateStatusRequest_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_UpdateStatusRequest_descriptor;
     }
 
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.v1.UpdateStatusRequest
-        getDefaultInstanceForType() {
+    public trinsic.services.verifiablecredentials.v1.UpdateStatusRequest getDefaultInstanceForType() {
       return trinsic.services.verifiablecredentials.v1.UpdateStatusRequest.getDefaultInstance();
     }
 
@@ -414,8 +396,7 @@ public final class UpdateStatusRequest extends com.google.protobuf.GeneratedMess
 
     @java.lang.Override
     public trinsic.services.verifiablecredentials.v1.UpdateStatusRequest buildPartial() {
-      trinsic.services.verifiablecredentials.v1.UpdateStatusRequest result =
-          new trinsic.services.verifiablecredentials.v1.UpdateStatusRequest(this);
+      trinsic.services.verifiablecredentials.v1.UpdateStatusRequest result = new trinsic.services.verifiablecredentials.v1.UpdateStatusRequest(this);
       result.credentialStatusId_ = credentialStatusId_;
       result.revoked_ = revoked_;
       onBuilt();
@@ -426,39 +407,38 @@ public final class UpdateStatusRequest extends com.google.protobuf.GeneratedMess
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof trinsic.services.verifiablecredentials.v1.UpdateStatusRequest) {
-        return mergeFrom((trinsic.services.verifiablecredentials.v1.UpdateStatusRequest) other);
+        return mergeFrom((trinsic.services.verifiablecredentials.v1.UpdateStatusRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -466,9 +446,7 @@ public final class UpdateStatusRequest extends com.google.protobuf.GeneratedMess
     }
 
     public Builder mergeFrom(trinsic.services.verifiablecredentials.v1.UpdateStatusRequest other) {
-      if (other
-          == trinsic.services.verifiablecredentials.v1.UpdateStatusRequest.getDefaultInstance())
-        return this;
+      if (other == trinsic.services.verifiablecredentials.v1.UpdateStatusRequest.getDefaultInstance()) return this;
       if (!other.getCredentialStatusId().isEmpty()) {
         credentialStatusId_ = other.credentialStatusId_;
         onChanged();
@@ -495,9 +473,7 @@ public final class UpdateStatusRequest extends com.google.protobuf.GeneratedMess
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage =
-            (trinsic.services.verifiablecredentials.v1.UpdateStatusRequest)
-                e.getUnfinishedMessage();
+        parsedMessage = (trinsic.services.verifiablecredentials.v1.UpdateStatusRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -509,20 +485,18 @@ public final class UpdateStatusRequest extends com.google.protobuf.GeneratedMess
 
     private java.lang.Object credentialStatusId_ = "";
     /**
-     *
-     *
      * <pre>
      * Credential Status ID to update. This is not the same as the credential's ID.
      * </pre>
      *
      * <code>string credential_status_id = 1;</code>
-     *
      * @return The credentialStatusId.
      */
     public java.lang.String getCredentialStatusId() {
       java.lang.Object ref = credentialStatusId_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         credentialStatusId_ = s;
         return s;
@@ -531,21 +505,20 @@ public final class UpdateStatusRequest extends com.google.protobuf.GeneratedMess
       }
     }
     /**
-     *
-     *
      * <pre>
      * Credential Status ID to update. This is not the same as the credential's ID.
      * </pre>
      *
      * <code>string credential_status_id = 1;</code>
-     *
      * @return The bytes for credentialStatusId.
      */
-    public com.google.protobuf.ByteString getCredentialStatusIdBytes() {
+    public com.google.protobuf.ByteString
+        getCredentialStatusIdBytes() {
       java.lang.Object ref = credentialStatusId_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         credentialStatusId_ = b;
         return b;
       } else {
@@ -553,76 +526,66 @@ public final class UpdateStatusRequest extends com.google.protobuf.GeneratedMess
       }
     }
     /**
-     *
-     *
      * <pre>
      * Credential Status ID to update. This is not the same as the credential's ID.
      * </pre>
      *
      * <code>string credential_status_id = 1;</code>
-     *
      * @param value The credentialStatusId to set.
      * @return This builder for chaining.
      */
-    public Builder setCredentialStatusId(java.lang.String value) {
+    public Builder setCredentialStatusId(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       credentialStatusId_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Credential Status ID to update. This is not the same as the credential's ID.
      * </pre>
      *
      * <code>string credential_status_id = 1;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearCredentialStatusId() {
-
+      
       credentialStatusId_ = getDefaultInstance().getCredentialStatusId();
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Credential Status ID to update. This is not the same as the credential's ID.
      * </pre>
      *
      * <code>string credential_status_id = 1;</code>
-     *
      * @param value The bytes for credentialStatusId to set.
      * @return This builder for chaining.
      */
-    public Builder setCredentialStatusIdBytes(com.google.protobuf.ByteString value) {
+    public Builder setCredentialStatusIdBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       credentialStatusId_ = value;
       onChanged();
       return this;
     }
 
-    private boolean revoked_;
+    private boolean revoked_ ;
     /**
-     *
-     *
      * <pre>
      * New revocation status of credential
      * </pre>
      *
      * <code>bool revoked = 2;</code>
-     *
      * @return The revoked.
      */
     @java.lang.Override
@@ -630,43 +593,37 @@ public final class UpdateStatusRequest extends com.google.protobuf.GeneratedMess
       return revoked_;
     }
     /**
-     *
-     *
      * <pre>
      * New revocation status of credential
      * </pre>
      *
      * <code>bool revoked = 2;</code>
-     *
      * @param value The revoked to set.
      * @return This builder for chaining.
      */
     public Builder setRevoked(boolean value) {
-
+      
       revoked_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * New revocation status of credential
      * </pre>
      *
      * <code>bool revoked = 2;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearRevoked() {
-
+      
       revoked_ = false;
       onChanged();
       return this;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -676,13 +633,12 @@ public final class UpdateStatusRequest extends com.google.protobuf.GeneratedMess
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:services.verifiablecredentials.v1.UpdateStatusRequest)
   }
 
   // @@protoc_insertion_point(class_scope:services.verifiablecredentials.v1.UpdateStatusRequest)
-  private static final trinsic.services.verifiablecredentials.v1.UpdateStatusRequest
-      DEFAULT_INSTANCE;
-
+  private static final trinsic.services.verifiablecredentials.v1.UpdateStatusRequest DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new trinsic.services.verifiablecredentials.v1.UpdateStatusRequest();
   }
@@ -691,16 +647,16 @@ public final class UpdateStatusRequest extends com.google.protobuf.GeneratedMess
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<UpdateStatusRequest> PARSER =
-      new com.google.protobuf.AbstractParser<UpdateStatusRequest>() {
-        @java.lang.Override
-        public UpdateStatusRequest parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return new UpdateStatusRequest(input, extensionRegistry);
-        }
-      };
+  private static final com.google.protobuf.Parser<UpdateStatusRequest>
+      PARSER = new com.google.protobuf.AbstractParser<UpdateStatusRequest>() {
+    @java.lang.Override
+    public UpdateStatusRequest parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return new UpdateStatusRequest(input, extensionRegistry);
+    }
+  };
 
   public static com.google.protobuf.Parser<UpdateStatusRequest> parser() {
     return PARSER;
@@ -715,4 +671,6 @@ public final class UpdateStatusRequest extends com.google.protobuf.GeneratedMess
   public trinsic.services.verifiablecredentials.v1.UpdateStatusRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

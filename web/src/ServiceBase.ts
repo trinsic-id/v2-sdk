@@ -8,7 +8,11 @@ import {
   createClient,
 } from "nice-grpc-web";
 import { CompatServiceDefinition as ClientServiceDefinition } from "nice-grpc-web/lib/service-definitions";
-import {blake3HashRequest, oberonProofRequest, okapiVersion} from "./OkapiProvider";
+import {
+  blake3HashRequest,
+  oberonProofRequest,
+  okapiVersion,
+} from "./OkapiProvider";
 
 export default abstract class ServiceBase {
   // TODO - Maybe move this into the `ServiceOptions` structure or something? This is a global flag
@@ -44,8 +48,8 @@ export default abstract class ServiceBase {
   ): Promise<Metadata> {
     const metadata = new Metadata();
     metadata.append("TrinsicOkapiVersion", await okapiVersion());
-      metadata.append("TrinsicSDKLanguage", "typescript");
-      metadata.append("TrinsicSDKVersion", "unknown");
+    metadata.append("TrinsicSDKLanguage", "typescript");
+    metadata.append("TrinsicSDKVersion", "unknown");
     if (request !== undefined) {
       if (!this.options.authToken) {
         throw new Error("auth token must be set");

@@ -2,21 +2,11 @@
 # sources: services/trust-registry/v1/trust-registry.proto
 # plugin: python-betterproto
 from dataclasses import dataclass
-from typing import (
-    TYPE_CHECKING,
-    AsyncIterator,
-    Dict,
-    Optional,
-)
+from typing import AsyncIterator, Dict
 
 import betterproto
-import grpclib
 from betterproto.grpc.grpclib_server import ServiceBase
-
-
-if TYPE_CHECKING:
-    from betterproto.grpc.grpclib_client import MetadataLike
-    from grpclib.metadata import Deadline
+import grpclib
 
 
 class RegistrationStatus(betterproto.Enum):
@@ -34,36 +24,32 @@ class AddFrameworkRequest(betterproto.Message):
     ecosystem
     """
 
+    # URI of governance framework organization
     governance_framework_uri: str = betterproto.string_field(1)
-    """URI of governance framework organization"""
-
+    # Name of governance framework organization
     name: str = betterproto.string_field(2)
-    """Name of governance framework organization"""
-
+    # Description of governance framework
     description: str = betterproto.string_field(3)
-    """Description of governance framework"""
 
 
 @dataclass(eq=False, repr=False)
 class AddFrameworkResponse(betterproto.Message):
     """Response to `AddFrameworkRequest`"""
 
+    # Unique framework identifier
     id: str = betterproto.string_field(1)
-    """Unique framework identifier"""
-
+    # DID URI of Trinsic account which created the governance framework
     governing_authority: str = betterproto.string_field(2)
-    """DID URI of Trinsic account which created the governance framework"""
-
+    # URN of trust registry for governance framework
     trust_registry: str = betterproto.string_field(3)
-    """URN of trust registry for governance framework"""
 
 
 @dataclass(eq=False, repr=False)
 class RemoveFrameworkRequest(betterproto.Message):
     """Request to remove a governance framework from the current ecosystem"""
 
+    # ID of governance framework to remove
     id: str = betterproto.string_field(1)
-    """ID of governance framework to remove"""
 
 
 @dataclass(eq=False, repr=False)
@@ -77,44 +63,35 @@ class RemoveFrameworkResponse(betterproto.Message):
 class SearchRegistryRequest(betterproto.Message):
     """Request to search all governance frameworks within ecosystem"""
 
+    # SQL query to execute against frameworks. Example: `SELECT c from c where
+    # c.type == 'GovernanceFramework'`
     query: str = betterproto.string_field(1)
-    """
-    SQL query to execute against frameworks. Example: `SELECT c from c where
-    c.type == 'GovernanceFramework'`
-    """
-
+    # Token to fetch next set of results, from previous `SearchRegistryResponse`
     continuation_token: str = betterproto.string_field(2)
-    """
-    Token to fetch next set of results, from previous `SearchRegistryResponse`
-    """
 
 
 @dataclass(eq=False, repr=False)
 class SearchRegistryResponse(betterproto.Message):
     """Response to `SearchRegistryRequest`"""
 
+    # JSON string containing array of resultant objects
     items_json: str = betterproto.string_field(1)
-    """JSON string containing array of resultant objects"""
-
+    # Whether more data is available to fetch for query
     has_more: bool = betterproto.bool_field(2)
-    """Whether more data is available to fetch for query"""
-
+    # Token to fetch next set of results via `SearchRegistryRequest`
     continuation_token: str = betterproto.string_field(4)
-    """Token to fetch next set of results via `SearchRegistryRequest`"""
 
 
 @dataclass(eq=False, repr=False)
 class GovernanceFramework(betterproto.Message):
     """Ecosystem Governance Framework"""
 
+    # URI of governance framework organization
     governance_framework_uri: str = betterproto.string_field(1)
-    """URI of governance framework organization"""
-
+    # URI of trust registry associated with governance framework
     trust_registry_uri: str = betterproto.string_field(2)
-    """URI of trust registry associated with governance framework"""
-
+    # Description of governance framework
     description: str = betterproto.string_field(3)
-    """Description of governance framework"""
 
 
 @dataclass(eq=False, repr=False)
@@ -124,35 +101,23 @@ class RegisterMemberRequest(betterproto.Message):
     schema. Only one of `did_uri`, `wallet_id`, or `email` may be specified.
     """
 
+    # DID URI of member to register
     did_uri: str = betterproto.string_field(1, group="member")
-    """DID URI of member to register"""
-
+    # Trinsic Wallet ID of member to register
     wallet_id: str = betterproto.string_field(3, group="member")
-    """Trinsic Wallet ID of member to register"""
-
+    # Email address of member to register. Must be associated with an existing
+    # Trinsic account.
     email: str = betterproto.string_field(4, group="member")
-    """
-    Email address of member to register. Must be associated with an existing
-    Trinsic account.
-    """
-
+    # URI of credential schema to register member as authorized issuer of
     schema_uri: str = betterproto.string_field(10)
-    """URI of credential schema to register member as authorized issuer of"""
-
+    # Unix Timestamp member is valid from. Member will not be considered valid
+    # before this timestamp.
     valid_from_utc: int = betterproto.uint64_field(11)
-    """
-    Unix Timestamp member is valid from. Member will not be considered valid
-    before this timestamp.
-    """
-
+    # Unix Timestamp member is valid until. Member will not be considered valid
+    # after this timestamp.
     valid_until_utc: int = betterproto.uint64_field(12)
-    """
-    Unix Timestamp member is valid until. Member will not be considered valid
-    after this timestamp.
-    """
-
+    # ID of the governance framework that member is being added to
     framework_id: str = betterproto.string_field(30)
-    """ID of the governance framework that member is being added to"""
 
 
 @dataclass(eq=False, repr=False)
@@ -169,25 +134,17 @@ class UnregisterMemberRequest(betterproto.Message):
     schema. Only one of `did_uri`, `wallet_id`, or `email` may be specified.
     """
 
+    # DID URI of member to unregister
     did_uri: str = betterproto.string_field(1, group="member")
-    """DID URI of member to unregister"""
-
+    # Trinsic Wallet ID of member to unregister
     wallet_id: str = betterproto.string_field(3, group="member")
-    """Trinsic Wallet ID of member to unregister"""
-
+    # Email address of member to unregister. Must be associated with an existing
+    # Trinsic account.
     email: str = betterproto.string_field(4, group="member")
-    """
-    Email address of member to unregister. Must be associated with an existing
-    Trinsic account.
-    """
-
+    # URI of credential schema to unregister member as authorized issuer of
     schema_uri: str = betterproto.string_field(10)
-    """
-    URI of credential schema to unregister member as authorized issuer of
-    """
-
+    # ID of the governance framework that member is being removed from
     framework_id: str = betterproto.string_field(20)
-    """ID of the governance framework that member is being removed from"""
 
 
 @dataclass(eq=False, repr=False)
@@ -204,25 +161,22 @@ class GetMembershipStatusRequest(betterproto.Message):
     credential schema. Only one of `did_uri`, `x509_cert` may be specified.
     """
 
+    # URI of governance framework
     governance_framework_uri: str = betterproto.string_field(1)
-    """URI of governance framework"""
-
+    # DID URI of member
     did_uri: str = betterproto.string_field(2, group="member")
-    """DID URI of member"""
-
+    # X.509 certificate of member
     x509_cert: str = betterproto.string_field(3, group="member")
-    """X.509 certificate of member"""
-
+    # URI of credential schema associated with membership
     schema_uri: str = betterproto.string_field(4)
-    """URI of credential schema associated with membership"""
 
 
 @dataclass(eq=False, repr=False)
 class GetMembershipStatusResponse(betterproto.Message):
     """Response to `GetMembershipStatusRequest`"""
 
+    # Status of member for given credential schema
     status: "RegistrationStatus" = betterproto.enum_field(1)
-    """Status of member for given credential schema"""
 
 
 @dataclass(eq=False, repr=False)
@@ -244,115 +198,66 @@ class FetchDataResponse(betterproto.Message):
 
 class TrustRegistryStub(betterproto.ServiceStub):
     async def add_framework(
-        self,
-        add_framework_request: "AddFrameworkRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, add_framework_request: "AddFrameworkRequest"
     ) -> "AddFrameworkResponse":
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/AddFramework",
             add_framework_request,
             AddFrameworkResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def remove_framework(
-        self,
-        remove_framework_request: "RemoveFrameworkRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, remove_framework_request: "RemoveFrameworkRequest"
     ) -> "RemoveFrameworkResponse":
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/RemoveFramework",
             remove_framework_request,
             RemoveFrameworkResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def search_registry(
-        self,
-        search_registry_request: "SearchRegistryRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, search_registry_request: "SearchRegistryRequest"
     ) -> "SearchRegistryResponse":
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/SearchRegistry",
             search_registry_request,
             SearchRegistryResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def register_member(
-        self,
-        register_member_request: "RegisterMemberRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, register_member_request: "RegisterMemberRequest"
     ) -> "RegisterMemberResponse":
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/RegisterMember",
             register_member_request,
             RegisterMemberResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def unregister_member(
-        self,
-        unregister_member_request: "UnregisterMemberRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, unregister_member_request: "UnregisterMemberRequest"
     ) -> "UnregisterMemberResponse":
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/UnregisterMember",
             unregister_member_request,
             UnregisterMemberResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def get_membership_status(
-        self,
-        get_membership_status_request: "GetMembershipStatusRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, get_membership_status_request: "GetMembershipStatusRequest"
     ) -> "GetMembershipStatusResponse":
         return await self._unary_unary(
             "/services.trustregistry.v1.TrustRegistry/GetMembershipStatus",
             get_membership_status_request,
             GetMembershipStatusResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         )
 
     async def fetch_data(
-        self,
-        fetch_data_request: "FetchDataRequest",
-        timeout: Optional[float] = None,
-        deadline: Optional["Deadline"] = None,
-        metadata: Optional["_MetadataLike"] = None,
+        self, fetch_data_request: "FetchDataRequest"
     ) -> AsyncIterator["FetchDataResponse"]:
         async for response in self._unary_stream(
             "/services.trustregistry.v1.TrustRegistry/FetchData",
             fetch_data_request,
             FetchDataResponse,
-            timeout=timeout,
-            deadline=deadline,
-            metadata=metadata,
         ):
             yield response
 

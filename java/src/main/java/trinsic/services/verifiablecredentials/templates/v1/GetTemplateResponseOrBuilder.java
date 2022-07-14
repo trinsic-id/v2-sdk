@@ -3,23 +3,22 @@
 
 package trinsic.services.verifiablecredentials.templates.v1;
 
-public interface GetTemplateResponseOrBuilder
-    extends
+public interface GetTemplateResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.templates.v1.GetTemplateResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
-   *
    * @return Whether the data field is set.
    */
   boolean hasData();
   /**
    * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
-   *
    * @return The data.
    */
   trinsic.services.verifiablecredentials.templates.v1.TemplateData getData();
-  /** <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code> */
+  /**
+   * <code>.services.verifiablecredentials.templates.v1.TemplateData data = 1;</code>
+   */
   trinsic.services.verifiablecredentials.templates.v1.TemplateDataOrBuilder getDataOrBuilder();
 }

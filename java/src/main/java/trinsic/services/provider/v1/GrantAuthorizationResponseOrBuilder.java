@@ -3,7 +3,7 @@
 
 package trinsic.services.provider.v1;
 
-public interface GrantAuthorizationResponseOrBuilder
-    extends
+public interface GrantAuthorizationResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:services.provider.v1.GrantAuthorizationResponse)
-    com.google.protobuf.MessageOrBuilder {}
+    com.google.protobuf.MessageOrBuilder {
+}

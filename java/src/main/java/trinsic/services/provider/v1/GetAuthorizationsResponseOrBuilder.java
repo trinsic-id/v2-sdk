@@ -3,24 +3,20 @@
 
 package trinsic.services.provider.v1;
 
-public interface GetAuthorizationsResponseOrBuilder
-    extends
+public interface GetAuthorizationsResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:services.provider.v1.GetAuthorizationsResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   *
-   *
    * <pre>
    * Grants attached to account
    * </pre>
    *
    * <code>repeated .services.provider.v1.Grant grants = 1;</code>
    */
-  java.util.List<trinsic.services.provider.v1.Grant> getGrantsList();
+  java.util.List<trinsic.services.provider.v1.Grant> 
+      getGrantsList();
   /**
-   *
-   *
    * <pre>
    * Grants attached to account
    * </pre>
@@ -29,8 +25,6 @@ public interface GetAuthorizationsResponseOrBuilder
    */
   trinsic.services.provider.v1.Grant getGrants(int index);
   /**
-   *
-   *
    * <pre>
    * Grants attached to account
    * </pre>
@@ -39,23 +33,21 @@ public interface GetAuthorizationsResponseOrBuilder
    */
   int getGrantsCount();
   /**
-   *
-   *
    * <pre>
    * Grants attached to account
    * </pre>
    *
    * <code>repeated .services.provider.v1.Grant grants = 1;</code>
    */
-  java.util.List<? extends trinsic.services.provider.v1.GrantOrBuilder> getGrantsOrBuilderList();
+  java.util.List<? extends trinsic.services.provider.v1.GrantOrBuilder> 
+      getGrantsOrBuilderList();
   /**
-   *
-   *
    * <pre>
    * Grants attached to account
    * </pre>
    *
    * <code>repeated .services.provider.v1.Grant grants = 1;</code>
    */
-  trinsic.services.provider.v1.GrantOrBuilder getGrantsOrBuilder(int index);
+  trinsic.services.provider.v1.GrantOrBuilder getGrantsOrBuilder(
+      int index);
 }

@@ -44,6 +44,12 @@ class WalletService(ServiceBase):
             request, metadata=self.build_metadata(request)
         )
 
+    async def search(self, *, request: SearchRequest) -> SearchResponse:
+        """
+        Search the wallet using a SQL syntax
+        """
+        return await self.client.search(request, metadata=self.build_metadata(request))
+
     async def insert_item(self, *, request: InsertItemRequest) -> InsertItemResponse:
         """
         Insert an item into the wallet

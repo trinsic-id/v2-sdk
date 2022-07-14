@@ -3,60 +3,49 @@
 
 package trinsic.services.verifiablecredentials.templates.v1;
 
-public interface ListCredentialTemplatesRequestOrBuilder
-    extends
+public interface ListCredentialTemplatesRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   *
-   *
    * <pre>
    * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
    * </pre>
    *
    * <code>string query = 1;</code>
-   *
    * @return The query.
    */
   java.lang.String getQuery();
   /**
-   *
-   *
    * <pre>
    * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
    * </pre>
    *
    * <code>string query = 1;</code>
-   *
    * @return The bytes for query.
    */
-  com.google.protobuf.ByteString getQueryBytes();
+  com.google.protobuf.ByteString
+      getQueryBytes();
 
   /**
-   *
-   *
    * <pre>
    * Token provided by previous `ListCredentialTemplatesResponse`
    * if more data is available for query
    * </pre>
    *
    * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
-   *
    * @return The continuationToken.
    */
   java.lang.String getContinuationToken();
   /**
-   *
-   *
    * <pre>
    * Token provided by previous `ListCredentialTemplatesResponse`
    * if more data is available for query
    * </pre>
    *
    * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
-   *
    * @return The bytes for continuationToken.
    */
-  com.google.protobuf.ByteString getContinuationTokenBytes();
+  com.google.protobuf.ByteString
+      getContinuationTokenBytes();
 }

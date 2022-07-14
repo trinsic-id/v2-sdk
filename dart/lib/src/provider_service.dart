@@ -98,8 +98,7 @@ class ProviderService extends ServiceBase {
 
   Future<GetOberonKeyResponse> getOberonKey(GetOberonKeyRequest request) async {
     ///  Returns the public key being used to create/verify oberon tokens
-    return await client.getOberonKey(request,
-        options: buildMetadata(request: request));
+    return await client.getOberonKey(request, options: buildMetadata());
   }
 
   Future<GetEventTokenResponse> getEventToken(

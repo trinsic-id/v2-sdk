@@ -238,7 +238,7 @@ func (p *providerBase) InvitationStatus(userContext context.Context, request *pr
 // GetOberonKey  Returns the public key being used to create/verify oberon tokens
 func (p *providerBase) GetOberonKey(userContext context.Context, request *provider.GetOberonKeyRequest) (*provider.GetOberonKeyResponse, error) {
 	// TODO - Handle a flag for the metadata context
-	md, err := p.GetMetadataContext(userContext, request)
+	md, err := p.GetMetadataContext(userContext, nil)
 	if err != nil {
 		return nil, err
 	}

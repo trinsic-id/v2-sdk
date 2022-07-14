@@ -4,24 +4,21 @@
 package trinsic.services.event.v1;
 
 /**
- *
- *
  * <pre>
  * Entity Governance Framework created and attached to ecosystem
  * </pre>
  *
  * Protobuf type {@code trinsic.services.event.EGFCreated}
  */
-public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
-    implements
+public final class EGFCreated extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:trinsic.services.event.EGFCreated)
     EGFCreatedOrBuilder {
-  private static final long serialVersionUID = 0L;
+private static final long serialVersionUID = 0L;
   // Use EGFCreated.newBuilder() to construct.
   private EGFCreated(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private EGFCreated() {
     id_ = "";
     ecosystemId_ = "";
@@ -35,15 +32,16 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new EGFCreated();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
     return this.unknownFields;
   }
-
   private EGFCreated(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -62,69 +60,61 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
           case 0:
             done = true;
             break;
-          case 10:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-              id_ = s;
-              break;
-            }
-          case 18:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
+            id_ = s;
+            break;
+          }
+          case 18: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-              ecosystemId_ = s;
-              break;
-            }
-          case 26:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
+            ecosystemId_ = s;
+            break;
+          }
+          case 26: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-              trustRegistry_ = s;
-              break;
-            }
-          case 34:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
+            trustRegistry_ = s;
+            break;
+          }
+          case 34: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-              governingAuthority_ = s;
-              break;
-            }
-          case 42:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
+            governingAuthority_ = s;
+            break;
+          }
+          case 42: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-              type_ = s;
-              break;
-            }
-          case 50:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
+            type_ = s;
+            break;
+          }
+          case 50: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-              name_ = s;
-              break;
-            }
-          case 58:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
+            name_ = s;
+            break;
+          }
+          case 58: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-              description_ = s;
-              break;
-            }
-          case 66:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
+            description_ = s;
+            break;
+          }
+          case 66: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-              governanceFramework_ = s;
-              break;
+            governanceFramework_ = s;
+            break;
+          }
+          default: {
+            if (!parseUnknownField(
+                input, unknownFields, extensionRegistry, tag)) {
+              done = true;
             }
-          default:
-            {
-              if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
+            break;
+          }
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -132,39 +122,34 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
     } catch (com.google.protobuf.UninitializedMessageException e) {
       throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
+      throw new com.google.protobuf.InvalidProtocolBufferException(
+          e).setUnfinishedMessage(this);
     } finally {
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
-
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return trinsic.services.event.v1.EventOuterClass
-        .internal_static_trinsic_services_event_EGFCreated_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return trinsic.services.event.v1.EventOuterClass.internal_static_trinsic_services_event_EGFCreated_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.event.v1.EventOuterClass
-        .internal_static_trinsic_services_event_EGFCreated_fieldAccessorTable
+    return trinsic.services.event.v1.EventOuterClass.internal_static_trinsic_services_event_EGFCreated_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.event.v1.EGFCreated.class,
-            trinsic.services.event.v1.EGFCreated.Builder.class);
+            trinsic.services.event.v1.EGFCreated.class, trinsic.services.event.v1.EGFCreated.Builder.class);
   }
 
   public static final int ID_FIELD_NUMBER = 1;
   private volatile java.lang.Object id_;
   /**
-   *
-   *
    * <pre>
    * UUID of the governance framework
    * </pre>
    *
    * <code>string id = 1;</code>
-   *
    * @return The id.
    */
   @java.lang.Override
@@ -173,29 +158,29 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       id_ = s;
       return s;
     }
   }
   /**
-   *
-   *
    * <pre>
    * UUID of the governance framework
    * </pre>
    *
    * <code>string id = 1;</code>
-   *
    * @return The bytes for id.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getIdBytes() {
+  public com.google.protobuf.ByteString
+      getIdBytes() {
     java.lang.Object ref = id_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       id_ = b;
       return b;
     } else {
@@ -206,14 +191,11 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
   public static final int ECOSYSTEM_ID_FIELD_NUMBER = 2;
   private volatile java.lang.Object ecosystemId_;
   /**
-   *
-   *
    * <pre>
    * UUID of the ecosystem that owns this EGF
    * </pre>
    *
    * <code>string ecosystem_id = 2;</code>
-   *
    * @return The ecosystemId.
    */
   @java.lang.Override
@@ -222,29 +204,29 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       ecosystemId_ = s;
       return s;
     }
   }
   /**
-   *
-   *
    * <pre>
    * UUID of the ecosystem that owns this EGF
    * </pre>
    *
    * <code>string ecosystem_id = 2;</code>
-   *
    * @return The bytes for ecosystemId.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getEcosystemIdBytes() {
+  public com.google.protobuf.ByteString
+      getEcosystemIdBytes() {
     java.lang.Object ref = ecosystemId_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       ecosystemId_ = b;
       return b;
     } else {
@@ -255,14 +237,11 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
   public static final int TRUST_REGISTRY_FIELD_NUMBER = 3;
   private volatile java.lang.Object trustRegistry_;
   /**
-   *
-   *
    * <pre>
    * Trust registry associated with this EGF
    * </pre>
    *
    * <code>string trust_registry = 3;</code>
-   *
    * @return The trustRegistry.
    */
   @java.lang.Override
@@ -271,29 +250,29 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       trustRegistry_ = s;
       return s;
     }
   }
   /**
-   *
-   *
    * <pre>
    * Trust registry associated with this EGF
    * </pre>
    *
    * <code>string trust_registry = 3;</code>
-   *
    * @return The bytes for trustRegistry.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getTrustRegistryBytes() {
+  public com.google.protobuf.ByteString
+      getTrustRegistryBytes() {
     java.lang.Object ref = trustRegistry_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       trustRegistry_ = b;
       return b;
     } else {
@@ -304,14 +283,11 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
   public static final int GOVERNING_AUTHORITY_FIELD_NUMBER = 4;
   private volatile java.lang.Object governingAuthority_;
   /**
-   *
-   *
    * <pre>
    * Wallet ID of the authority for this EGF
    * </pre>
    *
    * <code>string governing_authority = 4;</code>
-   *
    * @return The governingAuthority.
    */
   @java.lang.Override
@@ -320,29 +296,29 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       governingAuthority_ = s;
       return s;
     }
   }
   /**
-   *
-   *
    * <pre>
    * Wallet ID of the authority for this EGF
    * </pre>
    *
    * <code>string governing_authority = 4;</code>
-   *
    * @return The bytes for governingAuthority.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getGoverningAuthorityBytes() {
+  public com.google.protobuf.ByteString
+      getGoverningAuthorityBytes() {
     java.lang.Object ref = governingAuthority_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       governingAuthority_ = b;
       return b;
     } else {
@@ -353,14 +329,11 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
   public static final int TYPE_FIELD_NUMBER = 5;
   private volatile java.lang.Object type_;
   /**
-   *
-   *
    * <pre>
    * Type of EGF
    * </pre>
    *
    * <code>string type = 5;</code>
-   *
    * @return The type.
    */
   @java.lang.Override
@@ -369,29 +342,29 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       type_ = s;
       return s;
     }
   }
   /**
-   *
-   *
    * <pre>
    * Type of EGF
    * </pre>
    *
    * <code>string type = 5;</code>
-   *
    * @return The bytes for type.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getTypeBytes() {
+  public com.google.protobuf.ByteString
+      getTypeBytes() {
     java.lang.Object ref = type_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       type_ = b;
       return b;
     } else {
@@ -402,14 +375,11 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
   public static final int NAME_FIELD_NUMBER = 6;
   private volatile java.lang.Object name_;
   /**
-   *
-   *
    * <pre>
    * User-friendly name for the EGF
    * </pre>
    *
    * <code>string name = 6;</code>
-   *
    * @return The name.
    */
   @java.lang.Override
@@ -418,29 +388,29 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       name_ = s;
       return s;
     }
   }
   /**
-   *
-   *
    * <pre>
    * User-friendly name for the EGF
    * </pre>
    *
    * <code>string name = 6;</code>
-   *
    * @return The bytes for name.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getNameBytes() {
+  public com.google.protobuf.ByteString
+      getNameBytes() {
     java.lang.Object ref = name_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       name_ = b;
       return b;
     } else {
@@ -451,14 +421,11 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
   public static final int DESCRIPTION_FIELD_NUMBER = 7;
   private volatile java.lang.Object description_;
   /**
-   *
-   *
    * <pre>
    * Description of the EGF
    * </pre>
    *
    * <code>string description = 7;</code>
-   *
    * @return The description.
    */
   @java.lang.Override
@@ -467,29 +434,29 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       description_ = s;
       return s;
     }
   }
   /**
-   *
-   *
    * <pre>
    * Description of the EGF
    * </pre>
    *
    * <code>string description = 7;</code>
-   *
    * @return The bytes for description.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getDescriptionBytes() {
+  public com.google.protobuf.ByteString
+      getDescriptionBytes() {
     java.lang.Object ref = description_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       description_ = b;
       return b;
     } else {
@@ -500,14 +467,11 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
   public static final int GOVERNANCE_FRAMEWORK_FIELD_NUMBER = 8;
   private volatile java.lang.Object governanceFramework_;
   /**
-   *
-   *
    * <pre>
    * URI for the EGF
    * </pre>
    *
    * <code>string governance_framework = 8;</code>
-   *
    * @return The governanceFramework.
    */
   @java.lang.Override
@@ -516,29 +480,29 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       governanceFramework_ = s;
       return s;
     }
   }
   /**
-   *
-   *
    * <pre>
    * URI for the EGF
    * </pre>
    *
    * <code>string governance_framework = 8;</code>
-   *
    * @return The bytes for governanceFramework.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getGovernanceFrameworkBytes() {
+  public com.google.protobuf.ByteString
+      getGovernanceFrameworkBytes() {
     java.lang.Object ref = governanceFramework_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       governanceFramework_ = b;
       return b;
     } else {
@@ -547,7 +511,6 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -559,7 +522,8 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
     }
@@ -625,21 +589,29 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof trinsic.services.event.v1.EGFCreated)) {
       return super.equals(obj);
     }
     trinsic.services.event.v1.EGFCreated other = (trinsic.services.event.v1.EGFCreated) obj;
 
-    if (!getId().equals(other.getId())) return false;
-    if (!getEcosystemId().equals(other.getEcosystemId())) return false;
-    if (!getTrustRegistry().equals(other.getTrustRegistry())) return false;
-    if (!getGoverningAuthority().equals(other.getGoverningAuthority())) return false;
-    if (!getType().equals(other.getType())) return false;
-    if (!getName().equals(other.getName())) return false;
-    if (!getDescription().equals(other.getDescription())) return false;
-    if (!getGovernanceFramework().equals(other.getGovernanceFramework())) return false;
+    if (!getId()
+        .equals(other.getId())) return false;
+    if (!getEcosystemId()
+        .equals(other.getEcosystemId())) return false;
+    if (!getTrustRegistry()
+        .equals(other.getTrustRegistry())) return false;
+    if (!getGoverningAuthority()
+        .equals(other.getGoverningAuthority())) return false;
+    if (!getType()
+        .equals(other.getType())) return false;
+    if (!getName()
+        .equals(other.getName())) return false;
+    if (!getDescription()
+        .equals(other.getDescription())) return false;
+    if (!getGovernanceFramework()
+        .equals(other.getGovernanceFramework())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -672,126 +644,118 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
     return hash;
   }
 
-  public static trinsic.services.event.v1.EGFCreated parseFrom(java.nio.ByteBuffer data)
+  public static trinsic.services.event.v1.EGFCreated parseFrom(
+      java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.event.v1.EGFCreated parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
-  public static trinsic.services.event.v1.EGFCreated parseFrom(com.google.protobuf.ByteString data)
+  public static trinsic.services.event.v1.EGFCreated parseFrom(
+      com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.event.v1.EGFCreated parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.event.v1.EGFCreated parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.event.v1.EGFCreated parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.event.v1.EGFCreated parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static trinsic.services.event.v1.EGFCreated parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static trinsic.services.event.v1.EGFCreated parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static trinsic.services.event.v1.EGFCreated parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static trinsic.services.event.v1.EGFCreated parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static trinsic.services.event.v1.EGFCreated parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
   public static Builder newBuilder(trinsic.services.event.v1.EGFCreated prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
-   *
-   *
    * <pre>
    * Entity Governance Framework created and attached to ecosystem
    * </pre>
    *
    * Protobuf type {@code trinsic.services.event.EGFCreated}
    */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:trinsic.services.event.EGFCreated)
       trinsic.services.event.v1.EGFCreatedOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return trinsic.services.event.v1.EventOuterClass
-          .internal_static_trinsic_services_event_EGFCreated_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.event.v1.EventOuterClass.internal_static_trinsic_services_event_EGFCreated_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.event.v1.EventOuterClass
-          .internal_static_trinsic_services_event_EGFCreated_fieldAccessorTable
+      return trinsic.services.event.v1.EventOuterClass.internal_static_trinsic_services_event_EGFCreated_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.event.v1.EGFCreated.class,
-              trinsic.services.event.v1.EGFCreated.Builder.class);
+              trinsic.services.event.v1.EGFCreated.class, trinsic.services.event.v1.EGFCreated.Builder.class);
     }
 
     // Construct using trinsic.services.event.v1.EGFCreated.newBuilder()
@@ -799,15 +763,16 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
       maybeForceBuilderInitialization();
     }
 
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
-
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+      }
     }
-
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -831,9 +796,9 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return trinsic.services.event.v1.EventOuterClass
-          .internal_static_trinsic_services_event_EGFCreated_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return trinsic.services.event.v1.EventOuterClass.internal_static_trinsic_services_event_EGFCreated_descriptor;
     }
 
     @java.lang.Override
@@ -869,39 +834,38 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof trinsic.services.event.v1.EGFCreated) {
-        return mergeFrom((trinsic.services.event.v1.EGFCreated) other);
+        return mergeFrom((trinsic.services.event.v1.EGFCreated)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -973,20 +937,18 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
 
     private java.lang.Object id_ = "";
     /**
-     *
-     *
      * <pre>
      * UUID of the governance framework
      * </pre>
      *
      * <code>string id = 1;</code>
-     *
      * @return The id.
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         id_ = s;
         return s;
@@ -995,21 +957,20 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * UUID of the governance framework
      * </pre>
      *
      * <code>string id = 1;</code>
-     *
      * @return The bytes for id.
      */
-    public com.google.protobuf.ByteString getIdBytes() {
+    public com.google.protobuf.ByteString
+        getIdBytes() {
       java.lang.Object ref = id_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         id_ = b;
         return b;
       } else {
@@ -1017,61 +978,54 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * UUID of the governance framework
      * </pre>
      *
      * <code>string id = 1;</code>
-     *
      * @param value The id to set.
      * @return This builder for chaining.
      */
-    public Builder setId(java.lang.String value) {
+    public Builder setId(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       id_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * UUID of the governance framework
      * </pre>
      *
      * <code>string id = 1;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearId() {
-
+      
       id_ = getDefaultInstance().getId();
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * UUID of the governance framework
      * </pre>
      *
      * <code>string id = 1;</code>
-     *
      * @param value The bytes for id to set.
      * @return This builder for chaining.
      */
-    public Builder setIdBytes(com.google.protobuf.ByteString value) {
+    public Builder setIdBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       id_ = value;
       onChanged();
       return this;
@@ -1079,20 +1033,18 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
 
     private java.lang.Object ecosystemId_ = "";
     /**
-     *
-     *
      * <pre>
      * UUID of the ecosystem that owns this EGF
      * </pre>
      *
      * <code>string ecosystem_id = 2;</code>
-     *
      * @return The ecosystemId.
      */
     public java.lang.String getEcosystemId() {
       java.lang.Object ref = ecosystemId_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         ecosystemId_ = s;
         return s;
@@ -1101,21 +1053,20 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * UUID of the ecosystem that owns this EGF
      * </pre>
      *
      * <code>string ecosystem_id = 2;</code>
-     *
      * @return The bytes for ecosystemId.
      */
-    public com.google.protobuf.ByteString getEcosystemIdBytes() {
+    public com.google.protobuf.ByteString
+        getEcosystemIdBytes() {
       java.lang.Object ref = ecosystemId_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         ecosystemId_ = b;
         return b;
       } else {
@@ -1123,61 +1074,54 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * UUID of the ecosystem that owns this EGF
      * </pre>
      *
      * <code>string ecosystem_id = 2;</code>
-     *
      * @param value The ecosystemId to set.
      * @return This builder for chaining.
      */
-    public Builder setEcosystemId(java.lang.String value) {
+    public Builder setEcosystemId(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       ecosystemId_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * UUID of the ecosystem that owns this EGF
      * </pre>
      *
      * <code>string ecosystem_id = 2;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearEcosystemId() {
-
+      
       ecosystemId_ = getDefaultInstance().getEcosystemId();
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * UUID of the ecosystem that owns this EGF
      * </pre>
      *
      * <code>string ecosystem_id = 2;</code>
-     *
      * @param value The bytes for ecosystemId to set.
      * @return This builder for chaining.
      */
-    public Builder setEcosystemIdBytes(com.google.protobuf.ByteString value) {
+    public Builder setEcosystemIdBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       ecosystemId_ = value;
       onChanged();
       return this;
@@ -1185,20 +1129,18 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
 
     private java.lang.Object trustRegistry_ = "";
     /**
-     *
-     *
      * <pre>
      * Trust registry associated with this EGF
      * </pre>
      *
      * <code>string trust_registry = 3;</code>
-     *
      * @return The trustRegistry.
      */
     public java.lang.String getTrustRegistry() {
       java.lang.Object ref = trustRegistry_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         trustRegistry_ = s;
         return s;
@@ -1207,21 +1149,20 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * Trust registry associated with this EGF
      * </pre>
      *
      * <code>string trust_registry = 3;</code>
-     *
      * @return The bytes for trustRegistry.
      */
-    public com.google.protobuf.ByteString getTrustRegistryBytes() {
+    public com.google.protobuf.ByteString
+        getTrustRegistryBytes() {
       java.lang.Object ref = trustRegistry_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         trustRegistry_ = b;
         return b;
       } else {
@@ -1229,61 +1170,54 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * Trust registry associated with this EGF
      * </pre>
      *
      * <code>string trust_registry = 3;</code>
-     *
      * @param value The trustRegistry to set.
      * @return This builder for chaining.
      */
-    public Builder setTrustRegistry(java.lang.String value) {
+    public Builder setTrustRegistry(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       trustRegistry_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Trust registry associated with this EGF
      * </pre>
      *
      * <code>string trust_registry = 3;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearTrustRegistry() {
-
+      
       trustRegistry_ = getDefaultInstance().getTrustRegistry();
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Trust registry associated with this EGF
      * </pre>
      *
      * <code>string trust_registry = 3;</code>
-     *
      * @param value The bytes for trustRegistry to set.
      * @return This builder for chaining.
      */
-    public Builder setTrustRegistryBytes(com.google.protobuf.ByteString value) {
+    public Builder setTrustRegistryBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       trustRegistry_ = value;
       onChanged();
       return this;
@@ -1291,20 +1225,18 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
 
     private java.lang.Object governingAuthority_ = "";
     /**
-     *
-     *
      * <pre>
      * Wallet ID of the authority for this EGF
      * </pre>
      *
      * <code>string governing_authority = 4;</code>
-     *
      * @return The governingAuthority.
      */
     public java.lang.String getGoverningAuthority() {
       java.lang.Object ref = governingAuthority_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         governingAuthority_ = s;
         return s;
@@ -1313,21 +1245,20 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * Wallet ID of the authority for this EGF
      * </pre>
      *
      * <code>string governing_authority = 4;</code>
-     *
      * @return The bytes for governingAuthority.
      */
-    public com.google.protobuf.ByteString getGoverningAuthorityBytes() {
+    public com.google.protobuf.ByteString
+        getGoverningAuthorityBytes() {
       java.lang.Object ref = governingAuthority_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         governingAuthority_ = b;
         return b;
       } else {
@@ -1335,61 +1266,54 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * Wallet ID of the authority for this EGF
      * </pre>
      *
      * <code>string governing_authority = 4;</code>
-     *
      * @param value The governingAuthority to set.
      * @return This builder for chaining.
      */
-    public Builder setGoverningAuthority(java.lang.String value) {
+    public Builder setGoverningAuthority(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       governingAuthority_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Wallet ID of the authority for this EGF
      * </pre>
      *
      * <code>string governing_authority = 4;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearGoverningAuthority() {
-
+      
       governingAuthority_ = getDefaultInstance().getGoverningAuthority();
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Wallet ID of the authority for this EGF
      * </pre>
      *
      * <code>string governing_authority = 4;</code>
-     *
      * @param value The bytes for governingAuthority to set.
      * @return This builder for chaining.
      */
-    public Builder setGoverningAuthorityBytes(com.google.protobuf.ByteString value) {
+    public Builder setGoverningAuthorityBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       governingAuthority_ = value;
       onChanged();
       return this;
@@ -1397,20 +1321,18 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
 
     private java.lang.Object type_ = "";
     /**
-     *
-     *
      * <pre>
      * Type of EGF
      * </pre>
      *
      * <code>string type = 5;</code>
-     *
      * @return The type.
      */
     public java.lang.String getType() {
       java.lang.Object ref = type_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         type_ = s;
         return s;
@@ -1419,21 +1341,20 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * Type of EGF
      * </pre>
      *
      * <code>string type = 5;</code>
-     *
      * @return The bytes for type.
      */
-    public com.google.protobuf.ByteString getTypeBytes() {
+    public com.google.protobuf.ByteString
+        getTypeBytes() {
       java.lang.Object ref = type_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         type_ = b;
         return b;
       } else {
@@ -1441,61 +1362,54 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * Type of EGF
      * </pre>
      *
      * <code>string type = 5;</code>
-     *
      * @param value The type to set.
      * @return This builder for chaining.
      */
-    public Builder setType(java.lang.String value) {
+    public Builder setType(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       type_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Type of EGF
      * </pre>
      *
      * <code>string type = 5;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearType() {
-
+      
       type_ = getDefaultInstance().getType();
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Type of EGF
      * </pre>
      *
      * <code>string type = 5;</code>
-     *
      * @param value The bytes for type to set.
      * @return This builder for chaining.
      */
-    public Builder setTypeBytes(com.google.protobuf.ByteString value) {
+    public Builder setTypeBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       type_ = value;
       onChanged();
       return this;
@@ -1503,20 +1417,18 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
 
     private java.lang.Object name_ = "";
     /**
-     *
-     *
      * <pre>
      * User-friendly name for the EGF
      * </pre>
      *
      * <code>string name = 6;</code>
-     *
      * @return The name.
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         name_ = s;
         return s;
@@ -1525,21 +1437,20 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * User-friendly name for the EGF
      * </pre>
      *
      * <code>string name = 6;</code>
-     *
      * @return The bytes for name.
      */
-    public com.google.protobuf.ByteString getNameBytes() {
+    public com.google.protobuf.ByteString
+        getNameBytes() {
       java.lang.Object ref = name_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         name_ = b;
         return b;
       } else {
@@ -1547,61 +1458,54 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * User-friendly name for the EGF
      * </pre>
      *
      * <code>string name = 6;</code>
-     *
      * @param value The name to set.
      * @return This builder for chaining.
      */
-    public Builder setName(java.lang.String value) {
+    public Builder setName(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       name_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * User-friendly name for the EGF
      * </pre>
      *
      * <code>string name = 6;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearName() {
-
+      
       name_ = getDefaultInstance().getName();
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * User-friendly name for the EGF
      * </pre>
      *
      * <code>string name = 6;</code>
-     *
      * @param value The bytes for name to set.
      * @return This builder for chaining.
      */
-    public Builder setNameBytes(com.google.protobuf.ByteString value) {
+    public Builder setNameBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       name_ = value;
       onChanged();
       return this;
@@ -1609,20 +1513,18 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
 
     private java.lang.Object description_ = "";
     /**
-     *
-     *
      * <pre>
      * Description of the EGF
      * </pre>
      *
      * <code>string description = 7;</code>
-     *
      * @return The description.
      */
     public java.lang.String getDescription() {
       java.lang.Object ref = description_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         description_ = s;
         return s;
@@ -1631,21 +1533,20 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * Description of the EGF
      * </pre>
      *
      * <code>string description = 7;</code>
-     *
      * @return The bytes for description.
      */
-    public com.google.protobuf.ByteString getDescriptionBytes() {
+    public com.google.protobuf.ByteString
+        getDescriptionBytes() {
       java.lang.Object ref = description_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         description_ = b;
         return b;
       } else {
@@ -1653,61 +1554,54 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * Description of the EGF
      * </pre>
      *
      * <code>string description = 7;</code>
-     *
      * @param value The description to set.
      * @return This builder for chaining.
      */
-    public Builder setDescription(java.lang.String value) {
+    public Builder setDescription(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       description_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Description of the EGF
      * </pre>
      *
      * <code>string description = 7;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearDescription() {
-
+      
       description_ = getDefaultInstance().getDescription();
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Description of the EGF
      * </pre>
      *
      * <code>string description = 7;</code>
-     *
      * @param value The bytes for description to set.
      * @return This builder for chaining.
      */
-    public Builder setDescriptionBytes(com.google.protobuf.ByteString value) {
+    public Builder setDescriptionBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       description_ = value;
       onChanged();
       return this;
@@ -1715,20 +1609,18 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
 
     private java.lang.Object governanceFramework_ = "";
     /**
-     *
-     *
      * <pre>
      * URI for the EGF
      * </pre>
      *
      * <code>string governance_framework = 8;</code>
-     *
      * @return The governanceFramework.
      */
     public java.lang.String getGovernanceFramework() {
       java.lang.Object ref = governanceFramework_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         governanceFramework_ = s;
         return s;
@@ -1737,21 +1629,20 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * URI for the EGF
      * </pre>
      *
      * <code>string governance_framework = 8;</code>
-     *
      * @return The bytes for governanceFramework.
      */
-    public com.google.protobuf.ByteString getGovernanceFrameworkBytes() {
+    public com.google.protobuf.ByteString
+        getGovernanceFrameworkBytes() {
       java.lang.Object ref = governanceFramework_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         governanceFramework_ = b;
         return b;
       } else {
@@ -1759,68 +1650,61 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * URI for the EGF
      * </pre>
      *
      * <code>string governance_framework = 8;</code>
-     *
      * @param value The governanceFramework to set.
      * @return This builder for chaining.
      */
-    public Builder setGovernanceFramework(java.lang.String value) {
+    public Builder setGovernanceFramework(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       governanceFramework_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * URI for the EGF
      * </pre>
      *
      * <code>string governance_framework = 8;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearGovernanceFramework() {
-
+      
       governanceFramework_ = getDefaultInstance().getGovernanceFramework();
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * URI for the EGF
      * </pre>
      *
      * <code>string governance_framework = 8;</code>
-     *
      * @param value The bytes for governanceFramework to set.
      * @return This builder for chaining.
      */
-    public Builder setGovernanceFrameworkBytes(com.google.protobuf.ByteString value) {
+    public Builder setGovernanceFrameworkBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       governanceFramework_ = value;
       onChanged();
       return this;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -1830,12 +1714,12 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:trinsic.services.event.EGFCreated)
   }
 
   // @@protoc_insertion_point(class_scope:trinsic.services.event.EGFCreated)
   private static final trinsic.services.event.v1.EGFCreated DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new trinsic.services.event.v1.EGFCreated();
   }
@@ -1844,16 +1728,16 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<EGFCreated> PARSER =
-      new com.google.protobuf.AbstractParser<EGFCreated>() {
-        @java.lang.Override
-        public EGFCreated parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return new EGFCreated(input, extensionRegistry);
-        }
-      };
+  private static final com.google.protobuf.Parser<EGFCreated>
+      PARSER = new com.google.protobuf.AbstractParser<EGFCreated>() {
+    @java.lang.Override
+    public EGFCreated parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return new EGFCreated(input, extensionRegistry);
+    }
+  };
 
   public static com.google.protobuf.Parser<EGFCreated> parser() {
     return PARSER;
@@ -1868,4 +1752,6 @@ public final class EGFCreated extends com.google.protobuf.GeneratedMessageV3
   public trinsic.services.event.v1.EGFCreated getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

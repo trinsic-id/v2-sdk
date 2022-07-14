@@ -4,24 +4,21 @@
 package trinsic.services.account.v1;
 
 /**
- *
- *
  * <pre>
  * Deprecated
  * </pre>
  *
  * Protobuf type {@code services.account.v1.AccountEcosystem}
  */
-public final class AccountEcosystem extends com.google.protobuf.GeneratedMessageV3
-    implements
+public final class AccountEcosystem extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:services.account.v1.AccountEcosystem)
     AccountEcosystemOrBuilder {
-  private static final long serialVersionUID = 0L;
+private static final long serialVersionUID = 0L;
   // Use AccountEcosystem.newBuilder() to construct.
   private AccountEcosystem(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private AccountEcosystem() {
     id_ = "";
     name_ = "";
@@ -31,15 +28,16 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new AccountEcosystem();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
     return this.unknownFields;
   }
-
   private AccountEcosystem(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -58,41 +56,37 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
           case 0:
             done = true;
             break;
-          case 10:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-              id_ = s;
-              break;
-            }
-          case 18:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
+            id_ = s;
+            break;
+          }
+          case 18: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-              name_ = s;
-              break;
-            }
-          case 26:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
+            name_ = s;
+            break;
+          }
+          case 26: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-              description_ = s;
-              break;
-            }
-          case 34:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
+            description_ = s;
+            break;
+          }
+          case 34: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-              uri_ = s;
-              break;
+            uri_ = s;
+            break;
+          }
+          default: {
+            if (!parseUnknownField(
+                input, unknownFields, extensionRegistry, tag)) {
+              done = true;
             }
-          default:
-            {
-              if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
+            break;
+          }
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -100,33 +94,30 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
     } catch (com.google.protobuf.UninitializedMessageException e) {
       throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
     } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
+      throw new com.google.protobuf.InvalidProtocolBufferException(
+          e).setUnfinishedMessage(this);
     } finally {
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
   }
-
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return trinsic.services.account.v1.AccountOuterClass
-        .internal_static_services_account_v1_AccountEcosystem_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_AccountEcosystem_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.account.v1.AccountOuterClass
-        .internal_static_services_account_v1_AccountEcosystem_fieldAccessorTable
+    return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_AccountEcosystem_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.account.v1.AccountEcosystem.class,
-            trinsic.services.account.v1.AccountEcosystem.Builder.class);
+            trinsic.services.account.v1.AccountEcosystem.class, trinsic.services.account.v1.AccountEcosystem.Builder.class);
   }
 
   public static final int ID_FIELD_NUMBER = 1;
   private volatile java.lang.Object id_;
   /**
    * <code>string id = 1;</code>
-   *
    * @return The id.
    */
   @java.lang.Override
@@ -135,7 +126,8 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       id_ = s;
       return s;
@@ -143,15 +135,16 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
   }
   /**
    * <code>string id = 1;</code>
-   *
    * @return The bytes for id.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getIdBytes() {
+  public com.google.protobuf.ByteString
+      getIdBytes() {
     java.lang.Object ref = id_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       id_ = b;
       return b;
     } else {
@@ -163,7 +156,6 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
   private volatile java.lang.Object name_;
   /**
    * <code>string name = 2;</code>
-   *
    * @return The name.
    */
   @java.lang.Override
@@ -172,7 +164,8 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       name_ = s;
       return s;
@@ -180,15 +173,16 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
   }
   /**
    * <code>string name = 2;</code>
-   *
    * @return The bytes for name.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getNameBytes() {
+  public com.google.protobuf.ByteString
+      getNameBytes() {
     java.lang.Object ref = name_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       name_ = b;
       return b;
     } else {
@@ -200,7 +194,6 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
   private volatile java.lang.Object description_;
   /**
    * <code>string description = 3;</code>
-   *
    * @return The description.
    */
   @java.lang.Override
@@ -209,7 +202,8 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       description_ = s;
       return s;
@@ -217,15 +211,16 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
   }
   /**
    * <code>string description = 3;</code>
-   *
    * @return The bytes for description.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getDescriptionBytes() {
+  public com.google.protobuf.ByteString
+      getDescriptionBytes() {
     java.lang.Object ref = description_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       description_ = b;
       return b;
     } else {
@@ -237,7 +232,6 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
   private volatile java.lang.Object uri_;
   /**
    * <code>string uri = 4;</code>
-   *
    * @return The uri.
    */
   @java.lang.Override
@@ -246,7 +240,8 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       uri_ = s;
       return s;
@@ -254,15 +249,16 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
   }
   /**
    * <code>string uri = 4;</code>
-   *
    * @return The bytes for uri.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getUriBytes() {
+  public com.google.protobuf.ByteString
+      getUriBytes() {
     java.lang.Object ref = uri_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       uri_ = b;
       return b;
     } else {
@@ -271,7 +267,6 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -283,7 +278,8 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
     }
@@ -325,18 +321,21 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof trinsic.services.account.v1.AccountEcosystem)) {
       return super.equals(obj);
     }
-    trinsic.services.account.v1.AccountEcosystem other =
-        (trinsic.services.account.v1.AccountEcosystem) obj;
+    trinsic.services.account.v1.AccountEcosystem other = (trinsic.services.account.v1.AccountEcosystem) obj;
 
-    if (!getId().equals(other.getId())) return false;
-    if (!getName().equals(other.getName())) return false;
-    if (!getDescription().equals(other.getDescription())) return false;
-    if (!getUri().equals(other.getUri())) return false;
+    if (!getId()
+        .equals(other.getId())) return false;
+    if (!getName()
+        .equals(other.getName())) return false;
+    if (!getDescription()
+        .equals(other.getDescription())) return false;
+    if (!getUri()
+        .equals(other.getUri())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -361,127 +360,118 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
     return hash;
   }
 
-  public static trinsic.services.account.v1.AccountEcosystem parseFrom(java.nio.ByteBuffer data)
+  public static trinsic.services.account.v1.AccountEcosystem parseFrom(
+      java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.account.v1.AccountEcosystem parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.account.v1.AccountEcosystem parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.account.v1.AccountEcosystem parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.account.v1.AccountEcosystem parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.account.v1.AccountEcosystem parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.account.v1.AccountEcosystem parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static trinsic.services.account.v1.AccountEcosystem parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
-  public static trinsic.services.account.v1.AccountEcosystem parseDelimitedFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static trinsic.services.account.v1.AccountEcosystem parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+  public static trinsic.services.account.v1.AccountEcosystem parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
   }
-
+  public static trinsic.services.account.v1.AccountEcosystem parseDelimitedFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+  }
   public static trinsic.services.account.v1.AccountEcosystem parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static trinsic.services.account.v1.AccountEcosystem parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
   public static Builder newBuilder(trinsic.services.account.v1.AccountEcosystem prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
-   *
-   *
    * <pre>
    * Deprecated
    * </pre>
    *
    * Protobuf type {@code services.account.v1.AccountEcosystem}
    */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:services.account.v1.AccountEcosystem)
       trinsic.services.account.v1.AccountEcosystemOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return trinsic.services.account.v1.AccountOuterClass
-          .internal_static_services_account_v1_AccountEcosystem_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_AccountEcosystem_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.account.v1.AccountOuterClass
-          .internal_static_services_account_v1_AccountEcosystem_fieldAccessorTable
+      return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_AccountEcosystem_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.account.v1.AccountEcosystem.class,
-              trinsic.services.account.v1.AccountEcosystem.Builder.class);
+              trinsic.services.account.v1.AccountEcosystem.class, trinsic.services.account.v1.AccountEcosystem.Builder.class);
     }
 
     // Construct using trinsic.services.account.v1.AccountEcosystem.newBuilder()
@@ -489,15 +479,16 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
       maybeForceBuilderInitialization();
     }
 
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
       maybeForceBuilderInitialization();
     }
-
     private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+      }
     }
-
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -513,9 +504,9 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return trinsic.services.account.v1.AccountOuterClass
-          .internal_static_services_account_v1_AccountEcosystem_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_AccountEcosystem_descriptor;
     }
 
     @java.lang.Override
@@ -534,8 +525,7 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
 
     @java.lang.Override
     public trinsic.services.account.v1.AccountEcosystem buildPartial() {
-      trinsic.services.account.v1.AccountEcosystem result =
-          new trinsic.services.account.v1.AccountEcosystem(this);
+      trinsic.services.account.v1.AccountEcosystem result = new trinsic.services.account.v1.AccountEcosystem(this);
       result.id_ = id_;
       result.name_ = name_;
       result.description_ = description_;
@@ -548,39 +538,38 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof trinsic.services.account.v1.AccountEcosystem) {
-        return mergeFrom((trinsic.services.account.v1.AccountEcosystem) other);
+        return mergeFrom((trinsic.services.account.v1.AccountEcosystem)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -637,13 +626,13 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
     private java.lang.Object id_ = "";
     /**
      * <code>string id = 1;</code>
-     *
      * @return The id.
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         id_ = s;
         return s;
@@ -653,14 +642,15 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
     }
     /**
      * <code>string id = 1;</code>
-     *
      * @return The bytes for id.
      */
-    public com.google.protobuf.ByteString getIdBytes() {
+    public com.google.protobuf.ByteString
+        getIdBytes() {
       java.lang.Object ref = id_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         id_ = b;
         return b;
       } else {
@@ -669,42 +659,41 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
     }
     /**
      * <code>string id = 1;</code>
-     *
      * @param value The id to set.
      * @return This builder for chaining.
      */
-    public Builder setId(java.lang.String value) {
+    public Builder setId(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       id_ = value;
       onChanged();
       return this;
     }
     /**
      * <code>string id = 1;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearId() {
-
+      
       id_ = getDefaultInstance().getId();
       onChanged();
       return this;
     }
     /**
      * <code>string id = 1;</code>
-     *
      * @param value The bytes for id to set.
      * @return This builder for chaining.
      */
-    public Builder setIdBytes(com.google.protobuf.ByteString value) {
+    public Builder setIdBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       id_ = value;
       onChanged();
       return this;
@@ -713,13 +702,13 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
     private java.lang.Object name_ = "";
     /**
      * <code>string name = 2;</code>
-     *
      * @return The name.
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         name_ = s;
         return s;
@@ -729,14 +718,15 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
     }
     /**
      * <code>string name = 2;</code>
-     *
      * @return The bytes for name.
      */
-    public com.google.protobuf.ByteString getNameBytes() {
+    public com.google.protobuf.ByteString
+        getNameBytes() {
       java.lang.Object ref = name_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         name_ = b;
         return b;
       } else {
@@ -745,42 +735,41 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
     }
     /**
      * <code>string name = 2;</code>
-     *
      * @param value The name to set.
      * @return This builder for chaining.
      */
-    public Builder setName(java.lang.String value) {
+    public Builder setName(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       name_ = value;
       onChanged();
       return this;
     }
     /**
      * <code>string name = 2;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearName() {
-
+      
       name_ = getDefaultInstance().getName();
       onChanged();
       return this;
     }
     /**
      * <code>string name = 2;</code>
-     *
      * @param value The bytes for name to set.
      * @return This builder for chaining.
      */
-    public Builder setNameBytes(com.google.protobuf.ByteString value) {
+    public Builder setNameBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       name_ = value;
       onChanged();
       return this;
@@ -789,13 +778,13 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
     private java.lang.Object description_ = "";
     /**
      * <code>string description = 3;</code>
-     *
      * @return The description.
      */
     public java.lang.String getDescription() {
       java.lang.Object ref = description_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         description_ = s;
         return s;
@@ -805,14 +794,15 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
     }
     /**
      * <code>string description = 3;</code>
-     *
      * @return The bytes for description.
      */
-    public com.google.protobuf.ByteString getDescriptionBytes() {
+    public com.google.protobuf.ByteString
+        getDescriptionBytes() {
       java.lang.Object ref = description_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         description_ = b;
         return b;
       } else {
@@ -821,42 +811,41 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
     }
     /**
      * <code>string description = 3;</code>
-     *
      * @param value The description to set.
      * @return This builder for chaining.
      */
-    public Builder setDescription(java.lang.String value) {
+    public Builder setDescription(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       description_ = value;
       onChanged();
       return this;
     }
     /**
      * <code>string description = 3;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearDescription() {
-
+      
       description_ = getDefaultInstance().getDescription();
       onChanged();
       return this;
     }
     /**
      * <code>string description = 3;</code>
-     *
      * @param value The bytes for description to set.
      * @return This builder for chaining.
      */
-    public Builder setDescriptionBytes(com.google.protobuf.ByteString value) {
+    public Builder setDescriptionBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       description_ = value;
       onChanged();
       return this;
@@ -865,13 +854,13 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
     private java.lang.Object uri_ = "";
     /**
      * <code>string uri = 4;</code>
-     *
      * @return The uri.
      */
     public java.lang.String getUri() {
       java.lang.Object ref = uri_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         uri_ = s;
         return s;
@@ -881,14 +870,15 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
     }
     /**
      * <code>string uri = 4;</code>
-     *
      * @return The bytes for uri.
      */
-    public com.google.protobuf.ByteString getUriBytes() {
+    public com.google.protobuf.ByteString
+        getUriBytes() {
       java.lang.Object ref = uri_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         uri_ = b;
         return b;
       } else {
@@ -897,49 +887,48 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
     }
     /**
      * <code>string uri = 4;</code>
-     *
      * @param value The uri to set.
      * @return This builder for chaining.
      */
-    public Builder setUri(java.lang.String value) {
+    public Builder setUri(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       uri_ = value;
       onChanged();
       return this;
     }
     /**
      * <code>string uri = 4;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearUri() {
-
+      
       uri_ = getDefaultInstance().getUri();
       onChanged();
       return this;
     }
     /**
      * <code>string uri = 4;</code>
-     *
      * @param value The bytes for uri to set.
      * @return This builder for chaining.
      */
-    public Builder setUriBytes(com.google.protobuf.ByteString value) {
+    public Builder setUriBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       uri_ = value;
       onChanged();
       return this;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -949,12 +938,12 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:services.account.v1.AccountEcosystem)
   }
 
   // @@protoc_insertion_point(class_scope:services.account.v1.AccountEcosystem)
   private static final trinsic.services.account.v1.AccountEcosystem DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new trinsic.services.account.v1.AccountEcosystem();
   }
@@ -963,16 +952,16 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<AccountEcosystem> PARSER =
-      new com.google.protobuf.AbstractParser<AccountEcosystem>() {
-        @java.lang.Override
-        public AccountEcosystem parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return new AccountEcosystem(input, extensionRegistry);
-        }
-      };
+  private static final com.google.protobuf.Parser<AccountEcosystem>
+      PARSER = new com.google.protobuf.AbstractParser<AccountEcosystem>() {
+    @java.lang.Override
+    public AccountEcosystem parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return new AccountEcosystem(input, extensionRegistry);
+    }
+  };
 
   public static com.google.protobuf.Parser<AccountEcosystem> parser() {
     return PARSER;
@@ -987,4 +976,6 @@ public final class AccountEcosystem extends com.google.protobuf.GeneratedMessage
   public trinsic.services.account.v1.AccountEcosystem getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

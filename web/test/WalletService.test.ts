@@ -44,7 +44,7 @@ describe("WalletService Unit Tests", () => {
   });
 
   it("Demo: create wallet, set profile, search records, issue credential", async () => {
-      trinsic.options = clinic;
+    trinsic.options = clinic;
     let issueResponse = await trinsic.credential().issue({
       documentJson: getVaccineCertUnsignedJSON(),
     });
@@ -94,7 +94,9 @@ describe("WalletService Unit Tests", () => {
     });
     // }
 
-    expect(verifyResponse.validationResults['SignatureVerification'].isValid).toBeTruthy();
+    expect(
+      verifyResponse.validationResults["SignatureVerification"].isValid
+    ).toBeTruthy();
   });
 
   it("Demo: template management and credential issuance from template", async () => {

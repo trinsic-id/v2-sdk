@@ -220,14 +220,14 @@ public class ProviderService : ServiceBase
     /// Returns the public key being used to create/verify oberon tokens
     /// </summary>	
     public GetOberonKeyResponse GetOberonKey(GetOberonKeyRequest request) {
-        return Client.GetOberonKey(request, BuildMetadata(request));
+        return Client.GetOberonKey(request, BuildMetadata());
     }
 	
 	/// <summary>
     /// Returns the public key being used to create/verify oberon tokens
     /// </summary>	
     public async Task<GetOberonKeyResponse> GetOberonKeyAsync(GetOberonKeyRequest request) {
-        return await Client.GetOberonKeyAsync(request, await BuildMetadataAsync(request));
+        return await Client.GetOberonKeyAsync(request, await BuildMetadataAsync());
     }
 
 	/// <summary>
