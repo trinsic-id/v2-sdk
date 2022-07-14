@@ -28,16 +28,17 @@ jobs:
         os-artifact: [ [ubuntu-latest, linux], [windows-latest, windows], [macos-latest, macos] ]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
           java-version: '15'
           distribution: 'adopt'
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: 3.9
+          cache: pip
       - name: Download ${{ matrix.os-artifact[0] }} binaries
         uses: dawidd6/action-download-artifact@v2.17.0
         with:
