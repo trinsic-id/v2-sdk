@@ -155,18 +155,21 @@ def run_protoc(
         join_args(language_options),
         join_args(custom_options),
     ]
-    command_args.extend(join_args(proto_files))
-    # Regularize 2D array and flatten
-    command_args = [
-        arg_list if isinstance(arg_list, list) else [arg_list]
-        for arg_list in command_args
-    ]
-    command_args = list(itertools.chain(*command_args))
-    # Strip blank arguments because protoc WILL DIE, and do so passive-aggressive
-    command_args = [arg for arg in command_args if arg]
-    logging.info(command_args)
-    if os.system(" ".join(command_args)) != 0:
-        raise Exception("protoc failed")
+    # Because of the length of some command line arguments, we have to compile each file individually
+    for proto_file in proto_files:
+        command_args.append(proto_file)
+        # Regularize 2D array and flatten
+        command_args = [
+            arg_list if isinstance(arg_list, list) else [arg_list]
+            for arg_list in command_args
+        ]
+        command_args = list(itertools.chain(*command_args))
+        # Strip blank arguments because protoc WILL DIE, and do so passive-aggressive
+        command_args = [arg for arg in command_args if arg]
+        logging.info(command_args)
+        if os.system(" ".join(command_args)) != 0:
+            logging.error(command_args)
+            raise Exception("protoc failed")
 
 
 def update_golang():
@@ -349,7 +352,7 @@ def parse_arguments():
 
 def main():
     logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
-    logging.getLogger().setLevel(logging.INFO)
+    logging.getLogger().setLevel(logging.WARN)
     # Get command line arguments
     args = parse_arguments()
     langs_to_build = [lang.lower() for lang in (args.language + ",").split(",")]
@@ -363,7 +366,7 @@ def main():
         "ruby": update_ruby,
         "python": update_python,
         "java": update_java,
-        "docs": update_markdown,
+        # "docs": update_markdown,
         "dart": update_dart,
         "typescript": update_typescript,
         "none": update_none,
