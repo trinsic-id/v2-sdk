@@ -13,7 +13,7 @@ jobs:
     environment:
       name: buf.build
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: bufbuild/buf-setup-action@v0.5.0
       - uses: bufbuild/buf-push-action@v1
         with:

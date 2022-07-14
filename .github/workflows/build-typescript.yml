@@ -31,7 +31,7 @@ jobs:
       run:
         working-directory: web
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
       - uses: arduino/setup-protoc@v1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
@@ -39,6 +39,7 @@ jobs:
         name: Setup Node v${{ matrix.node-version }}
         with:
           node-version: ${{ matrix.node-version }}
+          cache: 'npm'
       - run: |
           npm install
           npm run build
