@@ -1,4 +1,4 @@
-use super::config::CliConfig;
+use super::config::{CliConfig, MetadataVersion};
 use super::{Item, Output};
 use crate::parser::account::{AuthorizeWebhookArgs, Command, InfoArgs, SignInArgs};
 use crate::proto::services::account::v1::login_response::Response;
@@ -6,7 +6,7 @@ use crate::proto::services::account::v1::AuthorizeWebhookRequest;
 use crate::utils::to_value;
 use crate::{
     error::Error,
-    grpc_channel, grpc_client, grpc_client_with_auth,
+    grpc_channel, grpc_client_with_auth, grpc_client_with_metadata,
     proto::services::account::v1::{
         account_client::AccountClient, AccountInfoRequest, AccountProfile, ConfirmationMethod, LoginConfirmRequest, LoginRequest, TokenProtection,
     },
@@ -16,6 +16,7 @@ use colored::Colorize;
 use okapi::{proto::security::UnBlindOberonTokenRequest, Oberon};
 use prost::Message;
 use std::io;
+use tonic::codegen::InterceptedService;
 use tonic::transport::Channel;
 
 #[allow(clippy::unit_arg)]
@@ -31,7 +32,7 @@ pub(crate) fn execute(args: &Command, config: CliConfig) -> Result<Output, Error
 async fn sign_in(args: &SignInArgs, config: CliConfig) -> Result<Output, Error> {
     let ecosystem = args.ecosystem.as_ref().map_or("default".into(), |x| x.to_owned());
 
-    let mut client = grpc_client!(AccountClient<Channel>, config.to_owned());
+    let mut client = grpc_client_with_metadata!(AccountClient<Channel>, config.to_owned());
 
     let request = tonic::Request::new(LoginRequest {
         email: args.email.map_or(String::default(), |x| x.to_string()),
@@ -59,7 +60,10 @@ async fn sign_in(args: &SignInArgs, config: CliConfig) -> Result<Output, Error> 
     Ok(output)
 }
 
-async fn login_confirm(client: &mut AccountClient<Channel>, challenge: Vec<u8>) -> Result<AccountProfile, Error> {
+async fn login_confirm(
+    client: &mut AccountClient<InterceptedService<Channel, MetadataVersion>>,
+    challenge: Vec<u8>,
+) -> Result<AccountProfile, Error> {
     println!("{}", "Confirmation required. Check your email for security code.".blue());
     println!("{}", "Enter Code:".bold());
     let mut buffer = String::new();
@@ -71,7 +75,7 @@ async fn login_confirm(client: &mut AccountClient<Channel>, challenge: Vec<u8>) 
     let code_hashed = blake3::hash(&code_bytes).as_bytes().to_vec();
 
     let request = tonic::Request::new(LoginConfirmRequest {
-        challenge: challenge,
+        challenge,
         confirmation_code_hashed: code_hashed,
     });
 
