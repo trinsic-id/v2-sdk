@@ -57,84 +57,84 @@ export class ProviderService extends ServiceBase {
   public async updateEcosystem(
     request: UpdateEcosystemRequest
   ): Promise<UpdateEcosystemResponse> {
-    return this.client.updateEcosystem(request, {
+    return await this.client.updateEcosystem(request, {
       metadata: await this.buildMetadata(UpdateEcosystemRequest.encode(request).finish())
     });
   }
   public async grantAuthorization(
     request: GrantAuthorizationRequest
   ): Promise<GrantAuthorizationResponse> {
-    return this.client.grantAuthorization(request, {
+    return await this.client.grantAuthorization(request, {
       metadata: await this.buildMetadata(GrantAuthorizationRequest.encode(request).finish())
     });
   }
   public async revokeAuthorization(
     request: RevokeAuthorizationRequest
   ): Promise<RevokeAuthorizationResponse> {
-    return this.client.revokeAuthorization(request, {
+    return await this.client.revokeAuthorization(request, {
       metadata: await this.buildMetadata(RevokeAuthorizationRequest.encode(request).finish())
     });
   }
   public async getAuthorizations(
     request: GetAuthorizationsRequest
   ): Promise<GetAuthorizationsResponse> {
-    return this.client.getAuthorizations(request, {
+    return await this.client.getAuthorizations(request, {
       metadata: await this.buildMetadata(GetAuthorizationsRequest.encode(request).finish())
     });
   }
   public async addWebhook(
     request: AddWebhookRequest
   ): Promise<AddWebhookResponse> {
-    return this.client.addWebhook(request, {
+    return await this.client.addWebhook(request, {
       metadata: await this.buildMetadata(AddWebhookRequest.encode(request).finish())
     });
   }
   public async deleteWebhook(
     request: DeleteWebhookRequest
   ): Promise<DeleteWebhookResponse> {
-    return this.client.deleteWebhook(request, {
+    return await this.client.deleteWebhook(request, {
       metadata: await this.buildMetadata(DeleteWebhookRequest.encode(request).finish())
     });
   }
   public async ecosystemInfo(
     request: EcosystemInfoRequest
   ): Promise<EcosystemInfoResponse> {
-    return this.client.ecosystemInfo(request, {
+    return await this.client.ecosystemInfo(request, {
       metadata: await this.buildMetadata(EcosystemInfoRequest.encode(request).finish())
     });
   }
   public async generateToken(
     request: GenerateTokenRequest
   ): Promise<GenerateTokenResponse> {
-    return this.client.generateToken(request, {
+    return await this.client.generateToken(request, {
       metadata: await this.buildMetadata(GenerateTokenRequest.encode(request).finish())
     });
   }
   public async invite(
     request: InviteRequest
   ): Promise<InviteResponse> {
-    return this.client.invite(request, {
+    return await this.client.invite(request, {
       metadata: await this.buildMetadata(InviteRequest.encode(request).finish())
     });
   }
   public async invitationStatus(
     request: InvitationStatusRequest
   ): Promise<InvitationStatusResponse> {
-    return this.client.invitationStatus(request, {
+    return await this.client.invitationStatus(request, {
       metadata: await this.buildMetadata(InvitationStatusRequest.encode(request).finish())
     });
   }
   public async getOberonKey(
     request: GetOberonKeyRequest
   ): Promise<GetOberonKeyResponse> {
-    return this.client.getOberonKey(request, {
+    return await this.client.getOberonKey(request, {
       metadata: await this.buildMetadata(GetOberonKeyRequest.encode(request).finish())
     });
   }
   public async getEventToken(
     request: GetEventTokenRequest
   ): Promise<GetEventTokenResponse> {
-    return this.client.getEventToken(request, {
+    return await this.client.getEventToken(request, {
       metadata: await this.buildMetadata(GetEventTokenRequest.encode(request).finish())
     });
   }

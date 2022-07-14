@@ -38,28 +38,28 @@ export class WalletService extends ServiceBase {
   public async getItem(
     request: GetItemRequest
   ): Promise<GetItemResponse> {
-    return this.client.getItem(request, {
+    return await this.client.getItem(request, {
       metadata: await this.buildMetadata(GetItemRequest.encode(request).finish())
     });
   }
   public async insertItem(
     request: InsertItemRequest
   ): Promise<InsertItemResponse> {
-    return this.client.insertItem(request, {
+    return await this.client.insertItem(request, {
       metadata: await this.buildMetadata(InsertItemRequest.encode(request).finish())
     });
   }
   public async updateItem(
     request: UpdateItemRequest
   ): Promise<UpdateItemResponse> {
-    return this.client.updateItem(request, {
+    return await this.client.updateItem(request, {
       metadata: await this.buildMetadata(UpdateItemRequest.encode(request).finish())
     });
   }
   public async deleteItem(
     request: DeleteItemRequest
   ): Promise<DeleteItemResponse> {
-    return this.client.deleteItem(request, {
+    return await this.client.deleteItem(request, {
       metadata: await this.buildMetadata(DeleteItemRequest.encode(request).finish())
     });
   }
