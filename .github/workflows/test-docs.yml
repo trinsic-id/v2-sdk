@@ -39,18 +39,23 @@ jobs:
         run: npm install netlify-cli --save-dev
       - run: python ./devops/generate_proto_files.py --language docs # Generate protobuf documentation files
       - run: mkdocs build
+      - name: Determine Branch Name
+        run: |
+          DOCS_BRANCH_VAR="$(echo "trinsic-docs-pr-${{ github.head_ref }}" | tr / -)"
+          echo "DOCS_BRANCH_NAME=$DOCS_BRANCH_VAR" >> $GITHUB_ENV
+          echo "Branch name: $DOCS_BRANCH_VAR"
       - name: Netlify Push
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }} 
         run: |
-          echo "Creating site trinsic-docs-pr-${{ github.head_ref }}"
+          echo "Creating site ${{ env.DOCS_BRANCH_NAME }}"
 
-          netlify sites:create --name "trinsic-docs-pr-${{ github.head_ref }}" --disable-linking -a josh-abi1wqk
-          netlify deploy --site "trinsic-docs-pr-${{ github.head_ref }}" --dir ./docs-site/ --prod
+          netlify sites:create --name "${{ env.DOCS_BRANCH_NAME }}" --disable-linking -a josh-abi1wqk
+          netlify deploy --site "${{ env.DOCS_BRANCH_NAME }}" --dir ./docs-site/ --prod
       - uses: mshick/add-pr-comment@v1
         with:
           message: |
-            [Preview docs site](https://trinsic-docs-pr-${{ github.head_ref }}.netlify.app/)
+            [Preview docs site](https://${{ env.DOCS_BRANCH_NAME }}.netlify.app/)
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: 'github-actions[bot]'
           allow-repeats: false
