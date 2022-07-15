@@ -36,9 +36,9 @@ jobs:
           go install github.com/trinsic-id/protoc-gen-json@latest
           pip install -r ./devops/requirements.txt
       - name: Install netlify
+        run: npm install netlify-cli --save-dev
       - run: python ./devops/generate_proto_files.py --language docs # Generate protobuf documentation files
       - run: mkdocs build
-      - run: npm install netlify-cli --save-dev
       - name: Netlify Push
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }} 
