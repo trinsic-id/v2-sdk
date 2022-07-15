@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Node and Browser wrapper for the Trinsic services",
   "browser": {
-    "@trinsic/okapi-node": "@trinsic/okapi-web"
+    "@trinsic/okapi-node": "@trinsic/okapi-web",
+    "nice-grpc": "nice-grpc-web"
   },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -43,7 +44,8 @@
     "buffer": "^6.0.3",
     "google-protobuf": "^3.20.1",
     "long": "^5.2.0",
-    "nice-grpc-web": "^1.1.0"
+    "nice-grpc-web": "^1.1.0",
+    "nice-grpc": "^1.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.2",

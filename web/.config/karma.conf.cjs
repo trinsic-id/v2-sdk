@@ -72,7 +72,8 @@ module.exports = async (config) => {
             },
             resolve: {
                 alias: {
-                    ["@trinsic-id/okapi-node"]: "@trinsic-id/okapi-web"
+                    ["@trinsic-id/okapi-node"]: "@trinsic-id/okapi-web",
+                    ["nice-grpc"]: "nice-grpc-web"
                 },
                 extensions: [".ts", ".js"],
                 fallback: {

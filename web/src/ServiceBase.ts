@@ -3,11 +3,15 @@ import { Metadata } from "nice-grpc-common";
 import base64url from "base64url";
 import { grpc } from "@improbable-eng/grpc-web";
 import {
-  Client as BrowserClient,
-  createChannel,
-  createClient,
+  Client,
+  createChannel as webCreateChannel,
+  createClient as webCreateClient,
 } from "nice-grpc-web";
-import { CompatServiceDefinition as ClientServiceDefinition } from "nice-grpc-web/lib/service-definitions";
+import {
+  createChannel as nodeCreateChannel,
+  createClient as nodeCreateClient,
+} from "nice-grpc";
+import { CompatServiceDefinition as ClientServiceDefinition } from "nice-grpc-web";
 import {
   blake3HashRequest,
   oberonProofRequest,
@@ -98,13 +102,18 @@ export default abstract class ServiceBase {
 
   protected createClient<ClientService extends ClientServiceDefinition>(
     definition: ClientService
-  ): BrowserClient<ClientService> {
+  ): Client<ClientService> {
     let address = `${this.options.serverUseTls ? "https" : "http"}://${
       this.options.serverEndpoint
     }:${this.options.serverPort}`;
-    return createClient(
-      definition as ClientService,
-      createChannel(address, this.transportFactory())
-    );
+    if (ServiceBase.isNode()) {
+      // @ts-ignore - We know this is bad, but it has the same API surface, so typing doesn't matter
+      return nodeCreateClient(definition, nodeCreateChannel(address));
+    } else {
+      return webCreateClient(
+        definition as ClientService,
+        webCreateChannel(address, this.transportFactory())
+      );
+    }
   }
 }
