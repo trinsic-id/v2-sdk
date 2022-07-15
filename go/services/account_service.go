@@ -87,14 +87,15 @@ func (a *accountBase) SignIn(userContext context.Context, request *account.SignI
 		return "", account.ConfirmationMethod_None, err
 	}
 
-	tkn, err := ProfileToToken(resp.Profile)
+	authToken, err := ProfileToToken(resp.Profile)
 	if err != nil {
 		return "", account.ConfirmationMethod_None, err
 	}
 
-	a.SetAuthToken(tkn)
+	a.SetAuthToken(authToken)
+	a.GetTokenProvider().SaveDefault(authToken)
 
-	return tkn, resp.ConfirmationMethod, nil
+	return authToken, resp.ConfirmationMethod, nil
 }
 
 // Unprotect an authtoken using the given security code
@@ -201,6 +202,7 @@ func (a *accountBase) LoginConfirm(userContext context.Context, challenge []byte
 	}
 
 	a.SetAuthToken(authToken)
+	a.GetTokenProvider().SaveDefault(authToken)
 
 	return authToken, nil
 }
@@ -240,6 +242,7 @@ func (a *accountBase) LoginAnonymous(userContext context.Context, ecosystemId ..
 	}
 
 	a.SetAuthToken(authToken)
+	a.GetTokenProvider().SaveDefault(authToken)
 
 	return authToken, nil
 }
