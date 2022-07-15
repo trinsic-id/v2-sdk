@@ -51,19 +51,26 @@ jobs:
         run: netlify status
       - name: Create new Netlify site
         continue-on-error: true
+        working-directory: ./docs-site/
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }} 
         run: |
           echo "Creating site ${{ env.DOCS_BRANCH_NAME }}"
-          netlify sites:create --name "${{ env.DOCS_BRANCH_NAME }}" --disable-linking -a josh-abi1wqk
-          netlify deploy --site "${{ env.DOCS_BRANCH_NAME }}" --dir ./docs-site/ --prod
+          netlify sites:create --name "${{ env.DOCS_BRANCH_NAME }}"-a josh-abi1wqk
+      - name: Wait for Netlify site to be ready
+        continue-on-error: true
+        working-directory: ./docs-site/
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }} 
+        run: netlify watch
       - name: Deploy Netlify site
         continue-on-error: true
+        working-directory: ./docs-site/
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }} 
         run: |
           echo "Deploying site ${{ env.DOCS_BRANCH_NAME }}"
-          netlify deploy --site "${{ env.DOCS_BRANCH_NAME }}" --dir ./docs-site/ --prod
+          netlify deploy --site "${{ env.DOCS_BRANCH_NAME }}" --dir ./ --prod
       - uses: mshick/add-pr-comment@v1
         with:
           message: |
