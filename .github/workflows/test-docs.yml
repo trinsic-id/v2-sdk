@@ -41,7 +41,7 @@ jobs:
       - run: mkdocs build
       - name: Determine Branch Name
         run: |
-          DOCS_BRANCH_VAR="$(echo "trinsic-docs-pr-${{ github.head_ref }}" | tr / -)"
+          DOCS_BRANCH_VAR="$(echo "trinsic-docs-pr-${{ github.head_ref }}" | tr / - | tr '[:upper:]' '[:lower:]')"
           echo "DOCS_BRANCH_NAME=$DOCS_BRANCH_VAR" >> $GITHUB_ENV
           echo "Branch name: $DOCS_BRANCH_VAR"
       - name: Delete previous Netlify site
