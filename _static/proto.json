@@ -31,49 +31,49 @@
       "parent": "sdk.options.v1.ServiceOptions"
     },
     "services.account.v1.Account": {
-      "type": "serviceProto",
+      "type": "service",
       "collection": "services",
       "file": "services/account/v1/account.proto",
       "parent": ""
     },
     "services.account.v1.Account.AuthorizeWebhook": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/account/v1/account.proto",
       "parent": ""
     },
     "services.account.v1.Account.Info": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/account/v1/account.proto",
       "parent": ""
     },
     "services.account.v1.Account.ListDevices": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/account/v1/account.proto",
       "parent": ""
     },
     "services.account.v1.Account.Login": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/account/v1/account.proto",
       "parent": ""
     },
     "services.account.v1.Account.LoginConfirm": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/account/v1/account.proto",
       "parent": ""
     },
     "services.account.v1.Account.RevokeDevice": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/account/v1/account.proto",
       "parent": ""
     },
     "services.account.v1.Account.SignIn": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/account/v1/account.proto",
       "parent": ""
@@ -487,19 +487,19 @@
       "parent": "services.common.v1.ResponseStatus"
     },
     "services.debug.v1.Debugging": {
-      "type": "serviceProto",
+      "type": "service",
       "collection": "services",
       "file": "services/debug/v1/debug.proto",
       "parent": ""
     },
     "services.debug.v1.Debugging.CallEmpty": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/debug/v1/debug.proto",
       "parent": ""
     },
     "services.debug.v1.Debugging.CallEmptyAuth": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/debug/v1/debug.proto",
       "parent": ""
@@ -961,85 +961,85 @@
       "parent": "services.provider.v1.ParticipantType"
     },
     "services.provider.v1.Provider": {
-      "type": "serviceProto",
+      "type": "service",
       "collection": "services",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
     "services.provider.v1.Provider.AddWebhook": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
     "services.provider.v1.Provider.CreateEcosystem": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
     "services.provider.v1.Provider.DeleteWebhook": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
     "services.provider.v1.Provider.EcosystemInfo": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
     "services.provider.v1.Provider.GenerateToken": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
     "services.provider.v1.Provider.GetAuthorizations": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
     "services.provider.v1.Provider.GetEventToken": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
     "services.provider.v1.Provider.GetOberonKey": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
     "services.provider.v1.Provider.GrantAuthorization": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
     "services.provider.v1.Provider.InvitationStatus": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
     "services.provider.v1.Provider.Invite": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
     "services.provider.v1.Provider.RevokeAuthorization": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
     "services.provider.v1.Provider.UpdateEcosystem": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
@@ -1447,49 +1447,49 @@
       "parent": "services.trustregistry.v1.SearchRegistryResponse"
     },
     "services.trustregistry.v1.TrustRegistry": {
-      "type": "serviceProto",
+      "type": "service",
       "collection": "services",
       "file": "services/trust-registry/v1/trust-registry.proto",
       "parent": ""
     },
     "services.trustregistry.v1.TrustRegistry.AddFramework": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/trust-registry/v1/trust-registry.proto",
       "parent": ""
     },
     "services.trustregistry.v1.TrustRegistry.FetchData": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/trust-registry/v1/trust-registry.proto",
       "parent": ""
     },
     "services.trustregistry.v1.TrustRegistry.GetMembershipStatus": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/trust-registry/v1/trust-registry.proto",
       "parent": ""
     },
     "services.trustregistry.v1.TrustRegistry.RegisterMember": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/trust-registry/v1/trust-registry.proto",
       "parent": ""
     },
     "services.trustregistry.v1.TrustRegistry.RemoveFramework": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/trust-registry/v1/trust-registry.proto",
       "parent": ""
     },
     "services.trustregistry.v1.TrustRegistry.SearchRegistry": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/trust-registry/v1/trust-registry.proto",
       "parent": ""
     },
     "services.trustregistry.v1.TrustRegistry.UnregisterMember": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/trust-registry/v1/trust-registry.proto",
       "parent": ""
@@ -1657,37 +1657,37 @@
       "parent": "services.universalwallet.v1.SearchResponse"
     },
     "services.universalwallet.v1.UniversalWallet": {
-      "type": "serviceProto",
+      "type": "service",
       "collection": "services",
       "file": "services/universal-wallet/v1/universal-wallet.proto",
       "parent": ""
     },
     "services.universalwallet.v1.UniversalWallet.DeleteItem": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/universal-wallet/v1/universal-wallet.proto",
       "parent": ""
     },
     "services.universalwallet.v1.UniversalWallet.GetItem": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/universal-wallet/v1/universal-wallet.proto",
       "parent": ""
     },
     "services.universalwallet.v1.UniversalWallet.InsertItem": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/universal-wallet/v1/universal-wallet.proto",
       "parent": ""
     },
     "services.universalwallet.v1.UniversalWallet.Search": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/universal-wallet/v1/universal-wallet.proto",
       "parent": ""
     },
     "services.universalwallet.v1.UniversalWallet.UpdateItem": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/universal-wallet/v1/universal-wallet.proto",
       "parent": ""
@@ -1771,37 +1771,37 @@
       "parent": "services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse"
     },
     "services.verifiablecredentials.templates.v1.CredentialTemplates": {
-      "type": "serviceProto",
+      "type": "service",
       "collection": "services",
       "file": "services/verifiable-credentials/templates/v1/templates.proto",
       "parent": ""
     },
     "services.verifiablecredentials.templates.v1.CredentialTemplates.Create": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/verifiable-credentials/templates/v1/templates.proto",
       "parent": ""
     },
     "services.verifiablecredentials.templates.v1.CredentialTemplates.Delete": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/verifiable-credentials/templates/v1/templates.proto",
       "parent": ""
     },
     "services.verifiablecredentials.templates.v1.CredentialTemplates.Get": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/verifiable-credentials/templates/v1/templates.proto",
       "parent": ""
     },
     "services.verifiablecredentials.templates.v1.CredentialTemplates.List": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/verifiable-credentials/templates/v1/templates.proto",
       "parent": ""
     },
     "services.verifiablecredentials.templates.v1.CredentialTemplates.Search": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/verifiable-credentials/templates/v1/templates.proto",
       "parent": ""
@@ -2311,49 +2311,49 @@
       "parent": "services.verifiablecredentials.v1.ValidationMessage"
     },
     "services.verifiablecredentials.v1.VerifiableCredential": {
-      "type": "serviceProto",
+      "type": "service",
       "collection": "services",
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
       "parent": ""
     },
     "services.verifiablecredentials.v1.VerifiableCredential.CheckStatus": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
       "parent": ""
     },
     "services.verifiablecredentials.v1.VerifiableCredential.CreateProof": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
       "parent": ""
     },
     "services.verifiablecredentials.v1.VerifiableCredential.Issue": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
       "parent": ""
     },
     "services.verifiablecredentials.v1.VerifiableCredential.IssueFromTemplate": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
       "parent": ""
     },
     "services.verifiablecredentials.v1.VerifiableCredential.Send": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
       "parent": ""
     },
     "services.verifiablecredentials.v1.VerifiableCredential.UpdateStatus": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
       "parent": ""
     },
     "services.verifiablecredentials.v1.VerifiableCredential.VerifyProof": {
-      "type": "methodProto",
+      "type": "method",
       "collection": "methods",
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
       "parent": ""
