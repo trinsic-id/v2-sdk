@@ -20,7 +20,7 @@ With Core, you can transform credentials, licenses, passes, and certificates int
 ### Trinsic Ecosystems
 A layer built on top of Core, Trinsic Ecosystems is a product for organizations that want to build an ecosystem of different issuers, holders, and verifiers of credentials. By ecosystem, we mean a network of companies and consumers that need to be able to securely share and instantly verify data. 
 
-At Trinsic, we call the organizations that bring together these ecosystems of companies and customers "providers" since they are providing digital trust to the ecosystem through Trinsic's infrastructure.
+At Trinsic, we call the organizations that bring together these ecosystems of companies and customers "providers", since they are providing digital trust to the ecosystem through Trinsic's infrastructure.
 
 !!! Note "Get Started in 15 Minutes"
     Want to get started using digital credentials quickly? Try our [tutorial](walkthroughs/vaccination) to get a conceptual walkthrough of a common use case.
