@@ -63,7 +63,7 @@ jobs:
       - uses: mshick/add-pr-comment@v1
         with:
           message: |
-            [Preview docs site for {{ $github.head_ref }}@{{ $github.sha }}](https://${{ env.DOCS_BRANCH_NAME }}.netlify.app/)
+            [Preview docs site for ${{ github.head_ref }}@${{ github.sha }}](https://${{ env.DOCS_BRANCH_NAME }}.netlify.app/)
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: 'github-actions[bot]'
           allow-repeats: false
