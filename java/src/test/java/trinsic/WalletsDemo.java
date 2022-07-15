@@ -52,7 +52,6 @@ public class WalletsDemo {
       var walletItems = trinsic.wallet().searchWallet().get();
       // }
 
-      Assertions.assertNotNull(walletItems);
       Assertions.assertEquals(1, walletItems.getItemsCount());
     }
 

@@ -1,18 +1,19 @@
 import {
   AddFrameworkRequest,
+  GetMembershipStatusRequest,
   RegisterMemberRequest,
   RegistrationStatus,
   SignInRequest,
-    GetMembershipStatusRequest,
   TrinsicService,
 } from "../src";
 import { v4 as uuid } from "uuid";
-import { getTestServerOptions } from "./env";
+import { getTestServerOptions, setTestTimeout } from "./env";
 
 const options = getTestServerOptions();
 let trinsic: TrinsicService;
 
 describe("TrustRegistryService Unit Tests", () => {
+  setTestTimeout();
   beforeAll(async () => {
     trinsic = new TrinsicService(options);
     options.authToken = await trinsic

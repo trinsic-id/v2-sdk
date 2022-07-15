@@ -9,7 +9,7 @@ export function getTestServerOptions(): ServiceOptions {
   return defaults;
 }
 
-export function setTestTimeout(timeoutMs: number = 20000) {
+export function setTestTimeout(timeoutMs: number = 40000) {
   if (typeof jasmine !== "undefined")
     jasmine.DEFAULT_TIMEOUT_INTERVAL = timeoutMs;
   if (typeof jest !== "undefined") jest.setTimeout(timeoutMs);

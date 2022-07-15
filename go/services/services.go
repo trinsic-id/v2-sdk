@@ -9,6 +9,12 @@ import (
 	"google.golang.org/grpc"
 )
 
+// GetSdkVersion used to send metadata
+func GetSdkVersion() string {
+	const sdkVersion = "1.0.0"
+	return sdkVersion
+}
+
 //Options for configuring the sdk
 type Options struct {
 	ServiceOptions  *options.ServiceOptions

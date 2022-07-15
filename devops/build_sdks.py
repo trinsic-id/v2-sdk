@@ -7,8 +7,8 @@ import logging
 import os
 import platform
 import shutil
-from os.path import join, abspath, dirname, isdir, split
 import subprocess
+from os.path import join, abspath, dirname, isdir, split
 from typing import Dict
 
 try:
@@ -109,6 +109,10 @@ def build_python(args) -> None:
         join(python_dir, "setup.cfg"),
         {"version = ": f"version = {get_package_versions(args)}"},
     )
+    update_line(
+        join(python_dir, "trinsic", "__init__.py"),
+        {'sdk_version = "': f'    sdk_version = "{get_package_versions(args)}"'},
+    )
     copy_okapi_libs(abspath(join(python_dir, "..", "libs")))
 
 
@@ -118,6 +122,10 @@ def build_java(args) -> None:
     update_line(
         join(java_dir, "build.gradle"),
         {"def jarVersion": f'def jarVersion = "{get_package_versions(args)}"'},
+    )
+    update_line(
+        join(java_dir, "src", "main", "java", "trinsic", "TrinsicUtilities.java"),
+        {"final String sdkVersion = ": f'    final String sdkVersion = "{get_package_versions(args)}";'},
     )
     copy_okapi_libs(abspath(join(java_dir, "..", "libs")))
 
@@ -138,8 +146,32 @@ def build_ruby(args) -> None:
 def build_golang(args) -> None:
     # Update version in setup.cfg
     golang_dir = abspath(join(get_language_dir("go"), "services"))
+    update_line(
+        join(golang_dir, "services.go"),
+        {"const sdkVersion = ": f'    const sdkVersion = "{get_package_versions(args)}"'},
+    )
     # Copy in the binaries
     copy_okapi_libs(golang_dir, "windows-gnu")
+
+
+def build_dart(args) -> None:
+    lang_dir = get_language_dir("dart")
+    update_line(
+        join(lang_dir, "lib", "src", "trinsic_util.dart"),
+        {
+            'const sdkVersion = "1.0.0";': f'  const sdkVersion = "{get_package_versions(args)}";'
+        },
+    )
+
+
+def build_typescript(args) -> None:
+    lang_dir = get_language_dir("web")
+    update_line(
+        join(lang_dir, "src", "Version.ts"),
+        {
+            '    const sdkVersion = "1.0.0";': f'    const sdkVersion = "{get_package_versions(args)}";'
+        },
+    )
 
 
 def get_package_versions(args) -> str:
@@ -200,6 +232,19 @@ def build_go_docs(args):
     write_doc_file(get_language_dir("go"), "index")
 
 
+def build_docs(args):
+    build_java_docs(args)
+    build_dotnet_docs(args)
+    build_go_docs(args)
+
+
+def build_none(args) -> None:
+    """
+    This is here, so you can specify no language to update - eg just download plugins
+    """
+    pass
+
+
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Process SDK building")
     parser.add_argument("--package-version", help="Manual override package version")
@@ -213,20 +258,30 @@ def main():
     # Get command line arguments
     args = parse_arguments()
     langs_to_build = [lang.lower() for lang in (args.language + ",").split(",")]
-    build_all = "all" in langs_to_build
-    # Update version information
-    if build_all or "python" in langs_to_build:
-        build_python(args)
-    if build_all or "java" in langs_to_build:
-        build_java(args)
-    if build_all or "ruby" in langs_to_build:
-        build_ruby(args)
-    if build_all or "golang" in langs_to_build:
-        build_golang(args)
-    if build_all or "docs" in langs_to_build:
-        build_java_docs(args)
-        build_dotnet_docs(args)
-        build_go_docs(args)
+
+    # Mapping of (language -> compilation function)
+    lang_funcs = {
+        "golang": build_golang,
+        "ruby": build_ruby,
+        "python": build_python,
+        "java": build_java,
+        "dart": build_dart,
+        "typescript": build_typescript,
+        "none": build_none,
+    }
+    # If "all" is specified, set the array of languages to build to the list of all languages we _can_ build.
+    if "all" in langs_to_build:
+        langs_to_build = list(lang_funcs.keys())
+
+    if len(langs_to_build) == 0:
+        raise Exception("No languages specified")
+
+    # Execute specified languages
+    for lang in langs_to_build:
+        if lang not in lang_funcs:
+            raise Exception(f"Language {lang} is not a valid compilation language.")
+
+        lang_funcs[lang](args)
 
 
 if __name__ == "__main__":

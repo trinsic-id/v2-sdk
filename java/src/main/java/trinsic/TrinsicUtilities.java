@@ -44,4 +44,9 @@ public class TrinsicUtilities {
     else channelBuilder = channelBuilder.useTransportSecurity();
     return channelBuilder.build();
   }
+
+  public static String getSdkVersion() {
+    final String sdkVersion = "1.0.0";
+    return sdkVersion;
+  }
 }

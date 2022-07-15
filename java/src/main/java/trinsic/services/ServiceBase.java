@@ -1,5 +1,6 @@
 package trinsic.services;
 
+import static trinsic.TrinsicUtilities.getSdkVersion;
 import static trinsic.TrinsicUtilities.getTrinsicServiceOptions;
 
 import com.google.protobuf.InvalidProtocolBufferException;
@@ -40,10 +41,7 @@ public abstract class ServiceBase {
       throws InvalidProtocolBufferException, DidException {
     var metadata = new Metadata();
     putMetadata(metadata, "TrinsicSDKLanguage", "java");
-    putMetadata(
-        metadata,
-        "TrinsicSDKVersion",
-        "unknown"); // TODO - Get the Java jar information from ?gradle?
+    putMetadata(metadata, "TrinsicSDKVersion", getSdkVersion());
     putMetadata(metadata, "TrinsicOkapiVersion", OkapiMetadata.getMetadata().getVersion());
     if (request != null) {
       if (this.options == null || this.options.getAuthToken().isEmpty())
