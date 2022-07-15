@@ -103,6 +103,38 @@ This proof can be verified with any library that supports VC verifications for B
 
 ## Sample
 
-If you'd like to see how to implement a basic OIDC flow against this service, or just want to see it in action, check out our [client-side verification flow example <small>:material-open-in-new:</small>](https://replit.com/@trinsic/oidc-sample){target=_blank}.
+We've prepared a sample demonstrating client-side OIDC Verification.
 
-You'll need to fork the repl and follow the instructions in `README.md`.
+<div class="grid cards" markdown>
+
+-   :octicons-browser-24: Interactive Sample
+
+    ---
+
+    Try out an [interactive demo](https://replit.com/@trinsic/oidc-sample) demonstrating client-side verifications
+
+-   :fontawesome-brands-github: Sample Source
+
+    ---
+
+    The source for this sample is available [on GitHub](https://github.com/trinsic-id/sdk/tree/main/samples/oidc-client-verifier)
+
+</div>
+
+
+## OIDC Libraries
+
+Libraries exist enabling OIDC functionality for all major languages.
+
+The [OpenID Connect website](https://openid.net/developers/certified/) lists a number of certified libraries; we've included links to some of these below.
+
+<div class="grid cards" markdown>
+
+-   :material-language-javascript: [TypeScript/JavaScript](https://github.com/authts/oidc-client-ts)
+-   :material-language-python: [Python](https://github.com/OpenIDC/pyoidc)
+-   :material-language-csharp: [C#](https://github.com/IdentityModel/IdentityModel.OidcClient)
+-   :material-language-go: [Go](https://github.com/zitadel/oidc)
+-   :material-language-java: [Java](https://docs.spring.io/spring-security/site/docs/5.2.12.RELEASE/reference/html/oauth2.html)
+-   :material-language-ruby: [Ruby](https://github.com/nov/openid_connect)
+
+</div>
