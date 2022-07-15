@@ -56,7 +56,7 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }} 
         run: |
           echo "Creating site ${{ env.DOCS_BRANCH_NAME }}"
-          netlify sites:create --name "${{ env.DOCS_BRANCH_NAME }}"-a josh-abi1wqk
+          netlify sites:create --name "${{ env.DOCS_BRANCH_NAME }}" -a josh-abi1wqk
       - name: Wait for Netlify site to be ready
         continue-on-error: true
         working-directory: ./docs-site/
