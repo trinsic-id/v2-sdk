@@ -49,7 +49,7 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }} 
         run: |
           echo "Creating site ${{ env.DOCS_BRANCH_NAME }}"
-
+          netlify status
           netlify sites:create --name "${{ env.DOCS_BRANCH_NAME }}" --disable-linking -a josh-abi1wqk
           netlify deploy --site "${{ env.DOCS_BRANCH_NAME }}" --dir ./docs-site/ --prod
       - uses: mshick/add-pr-comment@v1
