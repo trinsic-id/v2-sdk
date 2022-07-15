@@ -44,13 +44,25 @@ jobs:
           DOCS_BRANCH_VAR="$(echo "trinsic-docs-pr-${{ github.head_ref }}" | tr / -)"
           echo "DOCS_BRANCH_NAME=$DOCS_BRANCH_VAR" >> $GITHUB_ENV
           echo "Branch name: $DOCS_BRANCH_VAR"
-      - name: Netlify Push
+      - name: Delete previous Netlify site
+        continue-on-error: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }} 
+        run: netlify status
+      - name: Create new Netlify site
+        continue-on-error: true
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }} 
         run: |
           echo "Creating site ${{ env.DOCS_BRANCH_NAME }}"
-          netlify status
           netlify sites:create --name "${{ env.DOCS_BRANCH_NAME }}" --disable-linking -a josh-abi1wqk
+          netlify deploy --site "${{ env.DOCS_BRANCH_NAME }}" --dir ./docs-site/ --prod
+      - name: Deploy Netlify site
+        continue-on-error: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }} 
+        run: |
+          echo "Deploying site ${{ env.DOCS_BRANCH_NAME }}"
           netlify deploy --site "${{ env.DOCS_BRANCH_NAME }}" --dir ./docs-site/ --prod
       - uses: mshick/add-pr-comment@v1
         with:
