@@ -1,7 +1,7 @@
 # Underlying Tech
 
 ## Linked Data
-When we consider credentials getting exchanged online far and wide, a problem starts to occur - how does everyone know what every else means when they show a credential? To the rescue comes Linked Data, a format for representing structured data with self-contained descriptors of that data.
+When we consider credentials getting exchanged online far and wide, a problem starts to occur - how does everyone know what everyone else means when they show a credential? To the rescue comes Linked Data, a format for representing structured data with self-contained descriptors of that data.
 
 "Linked data is to spreadsheets and databases what the web of hypertext documents is to word processor files" - [W3C Wiki on Linked Data](https://www.w3.org/wiki/LinkedData)
 
