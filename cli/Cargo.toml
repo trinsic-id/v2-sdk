@@ -31,6 +31,7 @@ tonic-build = { version = "0.6", features = ["prost", "rustfmt"] }
 
 [lib]
 crate-type = ["cdylib", "rlib"]
+doctest = false
 
 [[bin]]
 name = "trinsic"
