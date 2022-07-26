@@ -5,6 +5,7 @@ authors = ["Trinsic <support@trinsic.id>"]
 edition = "2021"
 license = "Apache-2.0"
 description = "Command-line tool for Trinsic APIs"
+default-run = "trinsic"
 # build = "build.rs"
 
 [dependencies]
@@ -27,6 +28,10 @@ bytes = "1.1"
 
 [build-dependencies]
 tonic-build = { version = "0.6", features = ["prost", "rustfmt"] }
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+doctest = false
 
 [[bin]]
 name = "trinsic"
