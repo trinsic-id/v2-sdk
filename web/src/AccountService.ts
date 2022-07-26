@@ -20,7 +20,6 @@ import {
 import base64url from "base64url";
 
 import type { Client as BrowserClient } from "nice-grpc-web";
-import { ITrinsicProvider } from "./ITrinsicProvider";
 
 export class AccountService extends ServiceBase {
   client: BrowserClient<typeof AccountDefinition>;
@@ -36,14 +35,14 @@ export class AccountService extends ServiceBase {
    * @param profile The profile to protect with oberon blinding
    * @param securityCode must be utf-8 encoded `UInt8Array`. `string` will be decoded to utf-8.
    */
-  public static async protect(
+  public async protect(
     profile: string | AccountProfile,
     securityCode: string | Uint8Array
   ): Promise<string> {
     securityCode = AccountService.convertToUtf8(securityCode);
     profile = AccountService.convertToProfile(profile);
     let cloned = AccountProfile.fromPartial(profile);
-    const resultToken = await blindOberon(cloned, securityCode);
+    const resultToken = await this.providerSingleton.blindOberon(cloned, securityCode);
     cloned.authToken = resultToken;
     cloned.protection = TokenProtection.fromPartial({
       enabled: true,
@@ -57,14 +56,14 @@ export class AccountService extends ServiceBase {
    * @param profile The profile to unprotect with oberon blinding
    * @param securityCode must be utf-8 encoded `UInt8Array`. `string` will be decoded to utf-8.
    */
-  public static async unprotect(
+  public async unprotect(
     profile: string | AccountProfile,
     securityCode: string | Uint8Array
   ): Promise<string> {
     securityCode = AccountService.convertToUtf8(securityCode);
     profile = AccountService.convertToProfile(profile);
     let cloned = AccountProfile.fromPartial(profile);
-    const resultToken = await unblindOberon(cloned, securityCode);
+    const resultToken = await this.providerSingleton.unblindOberon(cloned, securityCode);
     cloned.authToken = resultToken;
     cloned.protection = TokenProtection.fromPartial({
       enabled: false,
@@ -121,7 +120,7 @@ export class AccountService extends ServiceBase {
 
     challenge = AccountService.convertToUtf8(challenge);
     authCode = AccountService.convertToUtf8(authCode);
-    let digest = await blake3HashRequest(authCode);
+    let digest = await this.providerSingleton.blake3HashRequest(authCode);
 
     let response = await this.client.loginConfirm({
       challenge: challenge,
@@ -135,7 +134,7 @@ export class AccountService extends ServiceBase {
       Buffer.from(AccountProfile.encode(response.profile!).finish())
     );
     if (response.profile.protection?.enabled ?? false) {
-      authToken = await AccountService.unprotect(authToken, authCode);
+      authToken = await this.unprotect(authToken, authCode);
     }
 
     // set the auth token as active for the current service instance

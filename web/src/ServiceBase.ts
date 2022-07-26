@@ -12,15 +12,12 @@ import {
   createClient as nodeCreateClient,
 } from "nice-grpc";
 import { CompatServiceDefinition as ClientServiceDefinition } from "nice-grpc-web";
-import {
-  blake3HashRequest,
-  oberonProofRequest,
-  okapiVersion,
-} from "./ITrinsicProvider";
 import {getSdkVersion} from "./Version";
+import {ITrinsicProvider} from "./ITrinsicProvider";
 
 export default abstract class ServiceBase {
   options: ServiceOptions;
+  providerSingleton: ITrinsicProvider;
 
   protected constructor(
     options: ServiceOptions = ServiceOptions.fromPartial({})
@@ -48,7 +45,7 @@ export default abstract class ServiceBase {
 
   async buildMetadata(request?: Uint8Array): Promise<Metadata> {
     const metadata = new Metadata();
-    metadata.append("trinsicokapiversion", await okapiVersion());
+    metadata.append("trinsicokapiversion", await this.providerSingleton.okapiVersion());
     metadata.append(
       "trinsicsdklanguage".toLowerCase(),
       ServiceBase.getLanguageMetadata()
