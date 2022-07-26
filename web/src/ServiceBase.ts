@@ -16,7 +16,7 @@ import {
   blake3HashRequest,
   oberonProofRequest,
   okapiVersion,
-} from "./OkapiProvider";
+} from "./ITrinsicProvider";
 import {getSdkVersion} from "./Version";
 
 export default abstract class ServiceBase {

@@ -20,7 +20,7 @@ import {
 import base64url from "base64url";
 
 import type { Client as BrowserClient } from "nice-grpc-web";
-import { blake3HashRequest, blindOberon, unblindOberon } from "./OkapiProvider";
+import { ITrinsicProvider } from "./ITrinsicProvider";
 
 export class AccountService extends ServiceBase {
   client: BrowserClient<typeof AccountDefinition>;
@@ -43,8 +43,8 @@ export class AccountService extends ServiceBase {
     securityCode = AccountService.convertToUtf8(securityCode);
     profile = AccountService.convertToProfile(profile);
     let cloned = AccountProfile.fromPartial(profile);
-    const result = await blindOberon(cloned, securityCode);
-    cloned.authToken = result.token;
+    const resultToken = await blindOberon(cloned, securityCode);
+    cloned.authToken = resultToken;
     cloned.protection = TokenProtection.fromPartial({
       enabled: true,
       method: ConfirmationMethod.Other,
@@ -64,8 +64,8 @@ export class AccountService extends ServiceBase {
     securityCode = AccountService.convertToUtf8(securityCode);
     profile = AccountService.convertToProfile(profile);
     let cloned = AccountProfile.fromPartial(profile);
-    const result = await unblindOberon(cloned, securityCode);
-    cloned.authToken = result.token;
+    const resultToken = await unblindOberon(cloned, securityCode);
+    cloned.authToken = resultToken;
     cloned.protection = TokenProtection.fromPartial({
       enabled: false,
       method: ConfirmationMethod.None,
