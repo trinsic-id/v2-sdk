@@ -1,26 +1,17 @@
 import { AccountProfile, Nonce, ServiceOptions } from "./proto";
 import { Metadata } from "nice-grpc-common";
 import base64url from "base64url";
-import { grpc } from "@improbable-eng/grpc-web";
-import {
-  Client,
-  createChannel as webCreateChannel,
-  createClient as webCreateClient,
-} from "nice-grpc-web";
-import {
-  createChannel as nodeCreateChannel,
-  createClient as nodeCreateClient,
-} from "nice-grpc";
-import { CompatServiceDefinition as ClientServiceDefinition } from "nice-grpc-web";
 import {getSdkVersion} from "./Version";
 import {ITrinsicProvider} from "./ITrinsicProvider";
+import {Client as BrowserClient, CompatServiceDefinition as ClientServiceDefinition} from "nice-grpc-web";
+
 
 export default abstract class ServiceBase {
+  static provider: ITrinsicProvider;
   options: ServiceOptions;
-  providerSingleton: ITrinsicProvider;
 
   protected constructor(
-    options: ServiceOptions = ServiceOptions.fromPartial({})
+    options: ServiceOptions = ServiceOptions.fromPartial({}),
   ) {
     options.serverEndpoint = options.serverEndpoint || "prod.trinsic.cloud";
     options.serverPort = options.serverPort || 443;
@@ -28,6 +19,10 @@ export default abstract class ServiceBase {
       options.serverPort == 443 ? true : options.serverUseTls || false;
 
     this.options = options;
+  }
+
+  public static setProvider(provider: ITrinsicProvider) {
+      ServiceBase.provider = provider;
   }
 
   public static isNode(): boolean {
@@ -45,7 +40,7 @@ export default abstract class ServiceBase {
 
   async buildMetadata(request?: Uint8Array): Promise<Metadata> {
     const metadata = new Metadata();
-    metadata.append("trinsicokapiversion", await this.providerSingleton.okapiVersion());
+    metadata.append("trinsicokapiversion", await ServiceBase.provider.okapiVersion());
     metadata.append(
       "trinsicsdklanguage".toLowerCase(),
       ServiceBase.getLanguageMetadata()
@@ -65,13 +60,13 @@ export default abstract class ServiceBase {
         );
       }
 
-      const requestHash = await blake3HashRequest(request);
+      const requestHash = await ServiceBase.provider.blake3HashRequest(request);
       const timestamp = Date.now();
 
       let nonce: Nonce = { timestamp: timestamp, requestHash: requestHash };
 
       const nonceUint8 = Nonce.encode(nonce).finish();
-      const proof = await oberonProofRequest(profile, nonceUint8);
+      const proof = await ServiceBase.provider.oberonProofRequest(profile, nonceUint8);
 
       metadata.append(
         "authorization",
@@ -89,29 +84,12 @@ export default abstract class ServiceBase {
     this.options.authToken = token;
   }
 
-  protected transportFactory(): grpc.TransportFactory | undefined {
-    // https://stackoverflow.com/questions/4224606/how-to-check-whether-a-script-is-running-under-node-js
-    if (ServiceBase.isNode()) {
-      let impEng = require("@improbable-eng/grpc-web-node-http-transport");
-      return impEng.NodeHttpTransport();
-    }
-    return undefined;
-  }
-
-  protected createClient<ClientService extends ClientServiceDefinition>(
-    definition: ClientService
-  ): Client<ClientService> {
-    let address = `${this.options.serverUseTls ? "https" : "http"}://${
-      this.options.serverEndpoint
-    }:${this.options.serverPort}`;
-    if (ServiceBase.isNode()) {
-      // @ts-ignore - We know this is bad, but it has the same API surface, so typing doesn't matter
-      return nodeCreateClient(definition, nodeCreateChannel(address));
-    } else {
-      return webCreateClient(
-        definition as ClientService,
-        webCreateChannel(address, this.transportFactory())
-      );
-    }
+    protected createClient<ClientService extends ClientServiceDefinition>(
+        definition: ClientService
+    ): BrowserClient<ClientService> {
+      let address = `${this.options.serverUseTls ? "https" : "http"}://${
+          this.options.serverEndpoint
+      }:${this.options.serverPort}`;
+      return ServiceBase.provider.createGrpcClient(definition, address);
   }
 }

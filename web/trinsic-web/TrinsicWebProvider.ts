@@ -1,9 +1,11 @@
 // This is overridden by the `browser` field in package.json for web
-import {Hashing, Oberon, OkapiMetadata} from "@trinsic/okapi-node";
-import { AccountProfile } from "./proto/services/account/v1/account";
-import {ITrinsicProvider} from "./ITrinsicProvider";
+import {Hashing, Oberon, OkapiMetadata} from "@trinsic/okapi-web";
+import { AccountProfile } from "../src";
+import {ITrinsicProvider} from "../src/ITrinsicProvider";
+import {Client, CompatServiceDefinition, createClient, createChannel} from "nice-grpc-web";
 
-export class TrinsicNodeProvider implements ITrinsicProvider {
+
+export class TrinsicWebProvider implements ITrinsicProvider {
     async blake3HashRequest(
         requestData: Uint8Array
     ): Promise<Uint8Array> {
@@ -46,8 +48,12 @@ export class TrinsicNodeProvider implements ITrinsicProvider {
     }
 
     provider(): ITrinsicProvider {
-        return nodeInstance;
+        return webInstance;
+    }
+
+    createGrpcClient<ClientService extends CompatServiceDefinition>(definition: ClientService, address: string): Client<ClientService> {
+        return createClient(definition, createChannel(address));
     }
 }
 
-let nodeInstance = new TrinsicNodeProvider();
+let webInstance = new TrinsicWebProvider();

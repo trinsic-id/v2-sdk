@@ -12,7 +12,9 @@
     "forceConsistentCasingInFileNames": true
   },
   "include": [
-    "./**/*.ts"
+    "./trinsic-node/**/*.ts",
+    "./src/**/*.ts"
   ],
-  "exclude": ["node_modules", "lib", "test"]
+  "exclude": [
+    "./node_modules", "lib", "test"]
 }

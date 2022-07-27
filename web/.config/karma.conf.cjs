@@ -30,7 +30,7 @@ module.exports = async (config) => {
         // Here I'm including all the Jest tests which are all under the __tests__ directory.
         // You may need to tweak this pattern to find your test files/
         files: [
-            { pattern: "test/**/*.spec.ts", watched: false, included: true, served: true },
+            { pattern: "trinsic-web/test/**/*.spec.ts", watched: false, included: true, served: true },
             { pattern: "**/*.wasm", watched: false, included: false, served: true },
         ],
 
