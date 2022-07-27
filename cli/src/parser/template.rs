@@ -105,13 +105,15 @@ pub fn to_map(map: HashMap<String, Field>) -> HashMap<String, ProtoField> {
 
 pub(crate) fn parse(args: &ArgMatches) -> Result<TemplateCommand, Error> {
     if args.is_present("create") {
-        create(&args.subcommand_matches("create").expect("Error parsing request"))
+        create(args.subcommand_matches("create").ok_or(Error::MissingArguments)?)
     } else if args.is_present("get") {
-        get(&args.subcommand_matches("get").expect("Error parsing request"))
+        get(args.subcommand_matches("get").ok_or(Error::MissingArguments)?)
     } else if args.is_present("list") {
-        list(&args.subcommand_matches("list").expect("Error parsing request"))
+        list(args.subcommand_matches("list").ok_or(Error::MissingArguments)?)
     } else if args.is_present("search") {
-        search(&args.subcommand_matches("search").expect("Error parsing request"))
+        search(args.subcommand_matches("search").ok_or(Error::MissingArguments)?)
+    } else if args.is_present("delete") {
+        delete(args.subcommand_matches("delete").ok_or(Error::MissingArguments)?)
     } else {
         Err(Error::MissingArguments)
     }
@@ -147,6 +149,12 @@ fn search(args: &ArgMatches) -> Result<TemplateCommand, Error> {
             .value_of("query")
             .map_or("SELECT * FROM _ OFFSET 0 LIMIT 100".to_string(), |x| x.to_string()),
         continuation_token: args.value_of("continuation-token").map_or(String::default(), |x| x.to_string()),
+    }))
+}
+
+fn delete(args: &ArgMatches) -> Result<TemplateCommand, Error> {
+    Ok(TemplateCommand::Delete(DeleteTemplateArgs {
+        id: args.value_of("id").map_or(String::default(), |x| x.to_string()),
     }))
 }
 
@@ -189,7 +197,8 @@ pub(crate) fn subcommand<'a, 'b>() -> App<'a, 'b> {
         .subcommand(
             SubCommand::with_name("delete")
                 .setting(AppSettings::ArgRequiredElseHelp)
-                .about("Delete a template"),
+                .about("Delete a template")
+                .arg(Arg::from_usage("-i --id <TEMPLATE_ID> 'Sets the id of the template'").required(true)),
         )
 }
 
