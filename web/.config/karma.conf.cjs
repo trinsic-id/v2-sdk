@@ -7,6 +7,7 @@ module.exports = async (config) => {
         plugins: [
             "karma-webpack",
             "karma-jasmine",
+            "karma-coverage",
             "karma-chrome-launcher",
             "karma-jasmine-html-reporter",
         ],
