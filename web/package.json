@@ -32,6 +32,10 @@
     }
   ],
   "license": "ISC",
+  "dependencies": {
+    "base64url": "^3.0.1",
+    "nice-grpc-web": "^1.1.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.18.2",
     "@babel/plugin-transform-modules-commonjs": "^7.18.2",
