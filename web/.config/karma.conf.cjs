@@ -20,7 +20,12 @@ module.exports = async (config) => {
             clearContext: true, // will show the results in browser once all the testcases are loaded
         },
 
-        reporters: ["kjhtml", "progress"],
+        reporters: ["kjhtml", "progress", "coverage"],
+        coverageReporter: {
+            reporters: [{
+                type: 'cobertura'
+            }]
+        },
 
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
@@ -39,6 +44,8 @@ module.exports = async (config) => {
         preprocessors: {
             // Use webpack to bundle our tests files
             "test/**/*.spec.ts": ["webpack"],
+            // Report coverage
+            "src/**/*.ts": ["coverage"],
         },
         // "Chrome", "ChromeHeadless"
         browsers: ["ChromeHeadless"],
