@@ -10,7 +10,6 @@
   "scripts": {
     "build": "npx tsc",
     "test": "jest --config ../.config/jest.config.cjs --no-cache",
-    "build-and-test": "npm run build && npx run test"
   },
   "author": "Trinsic",
   "contributors": [

@@ -10,7 +10,6 @@
   "scripts": {
     "build": "npx tsc",
     "test": "karma start ../.config/karma.conf.cjs",
-    "build-and-test": "npm run build && npx run test"
   },
   "author": "Trinsic",
   "contributors": [
