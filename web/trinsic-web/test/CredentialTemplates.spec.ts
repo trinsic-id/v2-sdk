@@ -1,6 +1,6 @@
 import { ServiceOptions, TrinsicService } from "../index";
 // @ts-ignore
-import templateCertFrame from "./data/credential-template-frame.json";
+import templateCertFrame from "../../test/data/credential-template-frame.json";
 import { getTestServerOptions, setTestTimeout } from "../../test/env";
 import {
   createCredentialTemplateTest,

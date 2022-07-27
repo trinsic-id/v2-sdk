@@ -1,7 +1,7 @@
 // @ts-ignore
-import vaccineCertUnsigned from "./data/vaccination-certificate-unsigned.json";
+import vaccineCertUnsigned from "../../test/data/vaccination-certificate-unsigned.json";
 // @ts-ignore
-import vaccineCertFrame from "./data/vaccination-certificate-frame.json";
+import vaccineCertFrame from "../../test/data/vaccination-certificate-frame.json";
 import { vaccineDemo } from "./VaccineDemoShared";
 import { setTestTimeout } from "../../test/env";
 

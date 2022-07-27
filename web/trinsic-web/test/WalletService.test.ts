@@ -11,7 +11,7 @@ import {
 import {
   getVaccineCertFrameJSON,
   getVaccineCertUnsignedJSON,
-} from "./TestData";
+} from "../../test/TestData";
 
 import { getTestServerOptions, setTestTimeout } from "../../test/env";
 import { v4 as uuid } from "uuid";
