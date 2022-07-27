@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "npx tsc",
-    "test": "jest --config ../.config/jest.config.cjs --no-cache",
+    "test": "jest --config ../.config/jest.config.cjs --no-cache"
   },
   "author": "Trinsic",
   "contributors": [

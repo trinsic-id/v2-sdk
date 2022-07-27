@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "npx tsc",
-    "test": "karma start ../.config/karma.conf.cjs",
+    "test": "karma start ../.config/karma.conf.cjs"
   },
   "author": "Trinsic",
   "contributors": [
