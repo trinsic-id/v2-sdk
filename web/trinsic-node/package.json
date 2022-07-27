@@ -8,7 +8,7 @@
     "lib/*"
   ],
   "scripts": {
-    "build:typescript": "npx tsc",
+    "build": "npx tsc",
     "test": "jest --config ../.config/jest.config.cjs --no-cache",
     "build-and-test": "npm run build && npx run test"
   },

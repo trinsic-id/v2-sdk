@@ -15,9 +15,13 @@ jobs:
     name: Publish
     runs-on: ubuntu-latest
     environment: npmjs.com
+    strategy:
+      fail-fast: false
+      matrix:
+        working-directory: [ node, web ]
     defaults:
       run:
-        working-directory: "web"
+        working-directory: web/trinsic-${{ matrix.working-directory }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v2

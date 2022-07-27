@@ -8,7 +8,7 @@
     "lib/*"
   ],
   "scripts": {
-    "build:typescript": "npx tsc",
+    "build": "npx tsc",
     "test": "karma start ../.config/karma.conf.cjs",
     "build-and-test": "npm run build && npx run test"
   },
