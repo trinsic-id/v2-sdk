@@ -6,8 +6,8 @@ import {
   IssueFromTemplateRequest,
   TemplateField,
   TrinsicService,
-} from "../src";
-import { getTestServerOptions, setTestTimeout } from "./env";
+} from "../index";
+import { getTestServerOptions, setTestTimeout } from "../../test/env";
 import { v4 as uuid } from "uuid";
 
 let options = getTestServerOptions();

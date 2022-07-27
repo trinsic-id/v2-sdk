@@ -11,7 +11,7 @@ import {
   TemplateField,
   TrinsicService,
   VerifyProofRequest,
-} from "../src";
+} from "../index";
 
 export function createRequiredTestObjects() {
   // defineTemplate() {

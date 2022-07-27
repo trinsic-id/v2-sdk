@@ -7,13 +7,13 @@ import {
   SearchRequest,
   TemplateField,
   TrinsicService,
-} from "../src";
+} from "../index";
 import {
   getVaccineCertFrameJSON,
   getVaccineCertUnsignedJSON,
 } from "./TestData";
 
-import { getTestServerOptions, setTestTimeout } from "./env";
+import { getTestServerOptions, setTestTimeout } from "../../test/env";
 import { v4 as uuid } from "uuid";
 
 const options = getTestServerOptions();

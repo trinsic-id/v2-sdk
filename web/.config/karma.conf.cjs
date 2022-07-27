@@ -38,7 +38,7 @@ module.exports = async (config) => {
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
             // Use webpack to bundle our tests files
-            "test/**/*.spec.ts": ["webpack"],
+            "trinsic-web/test/**/*.spec.ts": ["webpack"],
         },
         // "Chrome", "ChromeHeadless"
         browsers: ["ChromeHeadless"],
@@ -71,10 +71,6 @@ module.exports = async (config) => {
                 ],
             },
             resolve: {
-                alias: {
-                    ["@trinsic-id/okapi-node"]: "@trinsic-id/okapi-web",
-                    ["nice-grpc"]: "nice-grpc-web"
-                },
                 extensions: [".ts", ".js"],
                 fallback: {
                     buffer: require.resolve("buffer")
@@ -93,8 +89,7 @@ module.exports = async (config) => {
                 new ProvidePlugin({
                     process: "process/browser",
                     Buffer: ["buffer", "Buffer"],
-                }),
-                new IgnorePlugin({ resourceRegExp: /^/u, contextRegExp: /grpc-web-node-http-transport/u })
+                })
             ],
             experiments: {
                 asyncWebAssembly: true,

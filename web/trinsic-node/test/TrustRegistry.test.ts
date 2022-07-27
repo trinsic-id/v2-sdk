@@ -5,9 +5,9 @@ import {
   RegistrationStatus,
   SignInRequest,
   TrinsicService,
-} from "../src";
+} from "../index";
 import { v4 as uuid } from "uuid";
-import { getTestServerOptions, setTestTimeout } from "./env";
+import { getTestServerOptions, setTestTimeout } from "../../test/env";
 
 const options = getTestServerOptions();
 let trinsic: TrinsicService;

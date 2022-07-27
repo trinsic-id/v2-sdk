@@ -17,5 +17,5 @@ module.exports = {
     transformIgnorePatterns: [],
     preset: 'ts-jest',
     testEnvironment: 'node',
-    roots: ['../test']
+    roots: ['../trinsic-node/test']
 }

@@ -1,7 +1,7 @@
-import { IssueRequest, ServiceOptions, TrinsicService } from "../src";
+import { IssueRequest, ServiceOptions, TrinsicService } from "../index";
 // @ts-ignore
 import vaccineCertUnsigned from "./data/vaccination-certificate-unsigned.json";
-import { getTestServerOptions, setTestTimeout } from "./env";
+import { getTestServerOptions, setTestTimeout } from "../../test/env";
 
 let options: ServiceOptions = getTestServerOptions();
 let trinsic: TrinsicService;

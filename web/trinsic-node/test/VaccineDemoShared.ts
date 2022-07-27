@@ -10,9 +10,9 @@ import {
   TemplateField,
   TrinsicService,
   VerifyProofRequest,
-} from "../src";
+} from "../index";
 
-import { getTestServerOptions } from "./env";
+import { getTestServerOptions } from "../../test/env";
 
 const options = getTestServerOptions();
 

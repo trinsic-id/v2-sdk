@@ -1,4 +1,4 @@
-import { ServiceOptions } from "../index";
+import { ServiceOptions } from "../trinsic-node";
 
 export function getTestServerOptions(): ServiceOptions {
   let defaults = ServiceOptions.fromPartial({
