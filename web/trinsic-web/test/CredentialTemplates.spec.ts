@@ -7,7 +7,7 @@ import {
   createRequiredTestObjects,
   issueCredentialFromTemplate,
   verifyCredential,
-} from "./CredentialTemplateShared";
+} from "../../test/CredentialTemplateShared";
 
 const { nameField, numberOfBags, dateOfBirth, isVaccinated } =
   createRequiredTestObjects();

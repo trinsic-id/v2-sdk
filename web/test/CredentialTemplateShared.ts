@@ -7,11 +7,10 @@ import {
   InsertItemRequest,
   IssueFromTemplateRequest,
   IssueFromTemplateResponse,
-  ServiceOptions,
   TemplateField,
   TrinsicService,
   VerifyProofRequest,
-} from "../index";
+} from "../src";
 
 export function createRequiredTestObjects() {
   // defineTemplate() {

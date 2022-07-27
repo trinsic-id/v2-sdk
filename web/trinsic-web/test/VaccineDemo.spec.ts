@@ -2,7 +2,7 @@
 import vaccineCertUnsigned from "../../test/data/vaccination-certificate-unsigned.json";
 // @ts-ignore
 import vaccineCertFrame from "../../test/data/vaccination-certificate-frame.json";
-import { vaccineDemo } from "./VaccineDemoShared";
+import { vaccineDemo } from "../../test/VaccineDemoShared";
 import { setTestTimeout } from "../../test/env";
 
 describe("Demo: vaccination demo - credential issuance, storing, and verification", () => {
