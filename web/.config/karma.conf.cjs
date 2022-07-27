@@ -22,6 +22,11 @@ module.exports = async (config) => {
         },
 
         reporters: ["kjhtml", "progress", "coverage"],
+        coverageReporter: {
+            reporters: [{
+                type: 'cobertura'
+            }]
+        },
 
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
