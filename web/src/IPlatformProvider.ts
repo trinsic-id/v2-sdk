@@ -6,7 +6,7 @@ import {
 } from "nice-grpc-web";
 
 
-export interface ITrinsicProvider {
+export interface IPlatformProvider {
     metadataLanguage(): string
     blake3HashRequest(requestData: Uint8Array): Promise<Uint8Array>
     oberonProofRequest(profile: AccountProfile, nonceUint8: Uint8Array): Promise<Uint8Array>

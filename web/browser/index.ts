@@ -1,6 +1,6 @@
 import {ServiceBase} from "../src";
-import {TrinsicBrowserProvider} from "./TrinsicBrowserProvider";
+import {BrowserProvider} from "./BrowserProvider";
 
 export * from '../src'
 
-ServiceBase.setProvider(new TrinsicBrowserProvider());
+ServiceBase.setProvider(new BrowserProvider());

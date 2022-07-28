@@ -1,6 +1,6 @@
 import {ServiceBase} from "../src";
-import {TrinsicNodeProvider} from "./TrinsicNodeProvider";
+import {NodeProvider} from "./NodeProvider";
 
 export * from '../src'
 
-ServiceBase.setProvider(new TrinsicNodeProvider());
+ServiceBase.setProvider(new NodeProvider());

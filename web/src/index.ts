@@ -6,7 +6,7 @@ import { TemplateService } from "./TemplateService";
 import { AccountService } from "./AccountService";
 import { TrinsicService } from "./TrinsicService";
 import ServiceBase from "./ServiceBase";
-import { ITrinsicProvider } from "./ITrinsicProvider";
+import { IPlatformProvider } from "./IPlatformProvider";
 
 export * from "./proto/index";
 
@@ -19,5 +19,5 @@ export {
   CredentialService,
   TemplateService,
   ServiceBase,
-  ITrinsicProvider,
+  IPlatformProvider,
 };

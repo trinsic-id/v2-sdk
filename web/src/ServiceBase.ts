@@ -7,10 +7,10 @@ import {
 } from "nice-grpc-web";
 import { getSdkVersion } from "./Version";
 import { ITokenProvider, MemoryTokenProvider } from "./TokenProvider";
-import { ITrinsicProvider } from "./ITrinsicProvider";
+import { IPlatformProvider } from "./IPlatformProvider";
 
 export default abstract class ServiceBase {
-  static trinsicProvider: ITrinsicProvider;
+  static trinsicProvider: IPlatformProvider;
   options: ServiceOptions;
   tokenProvider: ITokenProvider = MemoryTokenProvider.DefaultInstance();
 
@@ -25,7 +25,7 @@ export default abstract class ServiceBase {
     this.options = options;
   }
 
-  public static setProvider(provider: ITrinsicProvider) {
+  public static setProvider(provider: IPlatformProvider) {
     ServiceBase.trinsicProvider = provider;
   }
 
