@@ -1,4 +1,4 @@
-// This is overridden by the `browser` field in package.json for web
+// This is overridden by the `node` field in package.json for web
 import { Hashing, Oberon, OkapiMetadata } from "@trinsic/okapi-node";
 import { AccountProfile } from "./proto/services/account/v1/account";
 

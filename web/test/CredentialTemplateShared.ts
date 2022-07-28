@@ -7,7 +7,6 @@ import {
   InsertItemRequest,
   IssueFromTemplateRequest,
   IssueFromTemplateResponse,
-  ServiceOptions,
   TemplateField,
   TrinsicService,
   VerifyProofRequest,
@@ -111,7 +110,7 @@ export async function createCredentialTemplateTest(
 }
 
 export async function issueCredentialFromTemplate(
-    trinsic: TrinsicService
+  trinsic: TrinsicService
 ): Promise<IssueFromTemplateResponse> {
   let templateResponse = await createCredentialTemplateTest(trinsic);
 

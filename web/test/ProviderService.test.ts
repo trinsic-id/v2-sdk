@@ -7,7 +7,7 @@ import {
   EcosystemInfoRequest,
   TrinsicService,
   UpdateEcosystemRequest,
-} from "../src";
+} from "../node";
 
 import { getTestServerOptions, setTestTimeout } from "./env";
 

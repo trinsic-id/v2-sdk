@@ -1,4 +1,4 @@
-import { IssueRequest, ServiceOptions, TrinsicService } from "../src";
+import { IssueRequest, ServiceOptions, TrinsicService } from "../browser";
 // @ts-ignore
 import vaccineCertUnsigned from "./data/vaccination-certificate-unsigned.json";
 import { getTestServerOptions, setTestTimeout } from "./env";

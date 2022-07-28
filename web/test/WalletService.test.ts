@@ -7,7 +7,7 @@ import {
   SearchRequest,
   TemplateField,
   TrinsicService,
-} from "../src";
+} from "../node";
 import {
   getVaccineCertFrameJSON,
   getVaccineCertUnsignedJSON,

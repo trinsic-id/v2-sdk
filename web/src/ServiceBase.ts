@@ -1,26 +1,16 @@
 import { AccountProfile, Nonce, ServiceOptions } from "./proto";
 import { Metadata } from "nice-grpc-common";
 import base64url from "base64url";
-import { grpc } from "@improbable-eng/grpc-web";
 import {
-  Client,
-  createChannel as webCreateChannel,
-  createClient as webCreateClient,
+  Client as BrowserClient,
+  CompatServiceDefinition as ClientServiceDefinition,
 } from "nice-grpc-web";
-import {
-  createChannel as nodeCreateChannel,
-  createClient as nodeCreateClient,
-} from "nice-grpc";
-import { CompatServiceDefinition as ClientServiceDefinition } from "nice-grpc-web";
-import {
-  blake3HashRequest,
-  oberonProofRequest,
-  okapiVersion,
-} from "./OkapiProvider";
-import {getSdkVersion} from "./Version";
-import {ITokenProvider, MemoryTokenProvider} from "./TokenProvider";
+import { getSdkVersion } from "./Version";
+import { ITokenProvider, MemoryTokenProvider } from "./TokenProvider";
+import { ITrinsicProvider } from "./ITrinsicProvider";
 
 export default abstract class ServiceBase {
+  static trinsicProvider: ITrinsicProvider;
   options: ServiceOptions;
   tokenProvider: ITokenProvider = MemoryTokenProvider.DefaultInstance();
 
@@ -35,50 +25,48 @@ export default abstract class ServiceBase {
     this.options = options;
   }
 
-  public static isNode(): boolean {
-    return (
-      typeof process !== "undefined" &&
-      typeof process.release !== "undefined" &&
-      process.release.name === "node"
-    );
-  }
-
-  private static getLanguageMetadata(): string {
-    if (ServiceBase.isNode()) return "typescript-node";
-    else return "typescript-web";
+  public static setProvider(provider: ITrinsicProvider) {
+    ServiceBase.trinsicProvider = provider;
   }
 
   async buildMetadata(request?: Uint8Array): Promise<Metadata> {
     const metadata = new Metadata();
-    metadata.append("trinsicokapiversion", await okapiVersion());
+    metadata.append(
+      "trinsicokapiversion",
+      await ServiceBase.trinsicProvider.okapiVersion()
+    );
     metadata.append(
       "trinsicsdklanguage".toLowerCase(),
-      ServiceBase.getLanguageMetadata()
+      ServiceBase.trinsicProvider.metadataLanguage()
     );
     metadata.append("trinsicsdkversion".toLowerCase(), getSdkVersion());
     if (request != undefined || request != null) {
-        let authToken = this.options.authToken || await this.tokenProvider.getDefault();
+      let authToken =
+        this.options.authToken || (await this.tokenProvider.getDefault());
 
       if (!authToken) {
         throw new Error("auth token must be set");
       }
 
-      const profile = AccountProfile.decode(
-        base64url.toBuffer(authToken)
-      );
+      const profile = AccountProfile.decode(base64url.toBuffer(authToken));
       if (profile.protection?.enabled) {
         throw new Error(
           "profile is protected; you must use security code to remove the protection first"
         );
       }
 
-      const requestHash = await blake3HashRequest(request);
+      const requestHash = await ServiceBase.trinsicProvider.blake3HashRequest(
+        request
+      );
       const timestamp = Date.now();
 
       let nonce: Nonce = { timestamp: timestamp, requestHash: requestHash };
 
       const nonceUint8 = Nonce.encode(nonce).finish();
-      const proof = await oberonProofRequest(profile, nonceUint8);
+      const proof = await ServiceBase.trinsicProvider.oberonProofRequest(
+        profile,
+        nonceUint8
+      );
 
       metadata.append(
         "authorization",
@@ -96,29 +84,12 @@ export default abstract class ServiceBase {
     this.options.authToken = token;
   }
 
-  protected transportFactory(): grpc.TransportFactory | undefined {
-    // https://stackoverflow.com/questions/4224606/how-to-check-whether-a-script-is-running-under-node-js
-    if (ServiceBase.isNode()) {
-      let impEng = require("@improbable-eng/grpc-web-node-http-transport");
-      return impEng.NodeHttpTransport();
-    }
-    return undefined;
-  }
-
   protected createClient<ClientService extends ClientServiceDefinition>(
     definition: ClientService
-  ): Client<ClientService> {
+  ): BrowserClient<ClientService> {
     let address = `${this.options.serverUseTls ? "https" : "http"}://${
       this.options.serverEndpoint
     }:${this.options.serverPort}`;
-    if (ServiceBase.isNode()) {
-      // @ts-ignore - We know this is bad, but it has the same API surface, so typing doesn't matter
-      return nodeCreateClient(definition, nodeCreateChannel(address));
-    } else {
-      return webCreateClient(
-        definition as ClientService,
-        webCreateChannel(address, this.transportFactory())
-      );
-    }
+    return ServiceBase.trinsicProvider.createGrpcClient(definition, address);
   }
 }

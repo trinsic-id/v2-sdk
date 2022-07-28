@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "description": "Node and Browser wrapper for the Trinsic services",
   "browser": {
-    "@trinsic/okapi-node": "@trinsic/okapi-web",
-    "nice-grpc": "nice-grpc-web"
+    "lib/node/index.js": "lib/browser/index.js"
   },
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "lib/node/index.js",
+  "types": "lib/node/index.d.ts",
   "files": [
     "lib/*"
   ],
