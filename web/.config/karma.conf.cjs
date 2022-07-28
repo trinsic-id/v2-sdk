@@ -79,10 +79,6 @@ module.exports = async (config) => {
                 ],
             },
             resolve: {
-                alias: {
-                    ["@trinsic-id/okapi-node"]: "@trinsic-id/okapi-web",
-                    ["nice-grpc"]: "nice-grpc-web"
-                },
                 extensions: [".ts", ".js"],
                 fallback: {
                     buffer: require.resolve("buffer")
@@ -102,7 +98,6 @@ module.exports = async (config) => {
                     process: "process/node",
                     Buffer: ["buffer", "Buffer"],
                 }),
-                new IgnorePlugin({ resourceRegExp: /^/u, contextRegExp: /grpc-web-node-http-transport/u })
             ],
             experiments: {
                 asyncWebAssembly: true,

@@ -42,42 +42,42 @@ export class TrustRegistryService extends ServiceBase {
   public async addFramework(
     request: AddFrameworkRequest
   ): Promise<AddFrameworkResponse> {
-    return await this.client.addFramework(request, {
+    return this.client.addFramework(request, {
       metadata: await this.buildMetadata(AddFrameworkRequest.encode(request).finish())
     });
   }
   public async removeFramework(
     request: RemoveFrameworkRequest
   ): Promise<RemoveFrameworkResponse> {
-    return await this.client.removeFramework(request, {
+    return this.client.removeFramework(request, {
       metadata: await this.buildMetadata(RemoveFrameworkRequest.encode(request).finish())
     });
   }
   public async searchRegistry(
     request: SearchRegistryRequest
   ): Promise<SearchRegistryResponse> {
-    return await this.client.searchRegistry(request, {
+    return this.client.searchRegistry(request, {
       metadata: await this.buildMetadata(SearchRegistryRequest.encode(request).finish())
     });
   }
   public async registerMember(
     request: RegisterMemberRequest
   ): Promise<RegisterMemberResponse> {
-    return await this.client.registerMember(request, {
+    return this.client.registerMember(request, {
       metadata: await this.buildMetadata(RegisterMemberRequest.encode(request).finish())
     });
   }
   public async unregisterMember(
     request: UnregisterMemberRequest
   ): Promise<UnregisterMemberResponse> {
-    return await this.client.unregisterMember(request, {
+    return this.client.unregisterMember(request, {
       metadata: await this.buildMetadata(UnregisterMemberRequest.encode(request).finish())
     });
   }
   public async getMembershipStatus(
     request: GetMembershipStatusRequest
   ): Promise<GetMembershipStatusResponse> {
-    return await this.client.getMembershipStatus(request, {
+    return this.client.getMembershipStatus(request, {
       metadata: await this.buildMetadata(GetMembershipStatusRequest.encode(request).finish())
     });
   }

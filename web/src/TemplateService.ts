@@ -31,35 +31,35 @@ export class TemplateService extends ServiceBase {
   public async create(
     request: CreateCredentialTemplateRequest
   ): Promise<CreateCredentialTemplateResponse> {
-    return await this.client.create(request, {
+    return this.client.create(request, {
       metadata: await this.buildMetadata(CreateCredentialTemplateRequest.encode(request).finish())
     });
   }
   public async get(
     request: GetCredentialTemplateRequest
   ): Promise<GetCredentialTemplateResponse> {
-    return await this.client.get(request, {
+    return this.client.get(request, {
       metadata: await this.buildMetadata(GetCredentialTemplateRequest.encode(request).finish())
     });
   }
   public async list(
     request: ListCredentialTemplatesRequest
   ): Promise<ListCredentialTemplatesResponse> {
-    return await this.client.list(request, {
+    return this.client.list(request, {
       metadata: await this.buildMetadata(ListCredentialTemplatesRequest.encode(request).finish())
     });
   }
   public async search(
     request: SearchCredentialTemplatesRequest
   ): Promise<SearchCredentialTemplatesResponse> {
-    return await this.client.search(request, {
+    return this.client.search(request, {
       metadata: await this.buildMetadata(SearchCredentialTemplatesRequest.encode(request).finish())
     });
   }
   public async delete(
     request: DeleteCredentialTemplateRequest
   ): Promise<DeleteCredentialTemplateResponse> {
-    return await this.client.delete(request, {
+    return this.client.delete(request, {
       metadata: await this.buildMetadata(DeleteCredentialTemplateRequest.encode(request).finish())
     });
   }
