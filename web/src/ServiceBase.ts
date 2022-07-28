@@ -92,7 +92,7 @@ export default abstract class ServiceBase {
     return metadata;
   }
 
-  protected setAuthToken(token: string) {
+  public setAuthToken(token: string) {
     this.options.authToken = token;
   }
 
