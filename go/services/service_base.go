@@ -32,6 +32,7 @@ func NewServiceBase(options *Options) (Service, error) {
 		options:          options,
 		channel:          conn,
 		securityProvider: &OberonSecurityProvider{},
+		tokenProvider:    DefaultTokenProvider, // This is a global instance
 	}, nil
 }
 
@@ -53,16 +54,22 @@ type Service interface {
 	GetServiceOptions() *options.ServiceOptions
 	// GetChannel returns the grpc client connect
 	GetChannel() *grpc.ClientConn
+	// GetTokenProvider returns the Token provider
+	GetTokenProvider() TokenProvider
 }
 
 type serviceBase struct {
 	options          *Options
 	channel          *grpc.ClientConn
 	securityProvider SecurityProvider
+	tokenProvider    TokenProvider
 }
 
 func (s *serviceBase) GetChannel() *grpc.ClientConn {
 	return s.channel
+}
+func (s *serviceBase) GetTokenProvider() TokenProvider {
+	return s.tokenProvider
 }
 
 func (s *serviceBase) SetAuthToken(authtoken string) {
@@ -119,6 +126,10 @@ func (s *serviceBase) BuildMetadata(message proto.Message) (metadata.MD, error) 
 	md.Set("TrinsicSDKLanguage", "golang")
 
 	if message != nil {
+		authToken := s.options.ServiceOptions.AuthToken
+		if authToken == "" {
+			authToken = s.tokenProvider.GetDefault()
+		}
 		profile, err := ProfileFromToken(s.options.ServiceOptions.AuthToken)
 		if err != nil {
 			return nil, err
