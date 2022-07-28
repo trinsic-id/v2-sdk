@@ -57,7 +57,7 @@ export default abstract class ServiceBase {
     );
     metadata.append("trinsicsdkversion".toLowerCase(), getSdkVersion());
     if (request != undefined || request != null) {
-        let authToken = this.options.authToken ?? await this.tokenProvider.getDefault();
+        let authToken = this.options.authToken || await this.tokenProvider.getDefault();
 
       if (!authToken) {
         throw new Error("auth token must be set");
