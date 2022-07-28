@@ -34,4 +34,4 @@ func NewMemoryTokenProvider() TokenProvider {
 	return &memoryTokenProvider{tokens: make(map[string]string)}
 }
 
-var DefaultTokenProvider TokenProvider = NewMemoryTokenProvider()
+var DefaultTokenProvider = NewMemoryTokenProvider()

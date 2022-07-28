@@ -101,7 +101,7 @@ export class AccountService extends ServiceBase {
     );
 
     // set the auth token as active for the current service instance
-    this.options.authToken = authToken;
+    await this.tokenProvider.saveDefault(authToken);
     return authToken;
   }
 
@@ -139,7 +139,7 @@ export class AccountService extends ServiceBase {
     }
 
     // set the auth token as active for the current service instance
-    this.options.authToken = authToken;
+      await this.tokenProvider.saveDefault(authToken);
     return authToken;
   }
 
@@ -163,7 +163,7 @@ export class AccountService extends ServiceBase {
     const authToken = base64url(
       Buffer.from(AccountProfile.encode(response.profile!).finish())
     );
-    this.options.authToken = authToken;
+      await this.tokenProvider.saveDefault(authToken);
     return authToken;
   }
 

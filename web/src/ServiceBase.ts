@@ -18,9 +18,11 @@ import {
   okapiVersion,
 } from "./OkapiProvider";
 import {getSdkVersion} from "./Version";
+import {ITokenProvider, MemoryTokenProvider} from "./TokenProvider";
 
 export default abstract class ServiceBase {
   options: ServiceOptions;
+  tokenProvider: ITokenProvider = MemoryTokenProvider.DefaultInstance();
 
   protected constructor(
     options: ServiceOptions = ServiceOptions.fromPartial({})
@@ -55,12 +57,14 @@ export default abstract class ServiceBase {
     );
     metadata.append("trinsicsdkversion".toLowerCase(), getSdkVersion());
     if (request != undefined || request != null) {
-      if (!this.options.authToken) {
+        let authToken = this.options.authToken ?? await this.tokenProvider.getDefault();
+
+      if (!authToken) {
         throw new Error("auth token must be set");
       }
 
       const profile = AccountProfile.decode(
-        base64url.toBuffer(this.options.authToken)
+        base64url.toBuffer(authToken)
       );
       if (profile.protection?.enabled) {
         throw new Error(
