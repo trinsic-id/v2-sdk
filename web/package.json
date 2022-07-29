@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Node and Browser wrapper for the Trinsic services",
   "browser": {
-    "lib/node/index.js": "lib/browser/index.js"
+    "lib/node.js": "lib/browser.js"
   },
-  "main": "lib/node/index.js",
-  "types": "lib/node/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "lib/**/*"
   ],
