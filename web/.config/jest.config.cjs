@@ -9,6 +9,7 @@ module.exports = {
     globals: {
         'ts-jest': {
             useESM: true,
+            tsConfig: 'tsconfig.test.json'
         },
     },
     transform: {

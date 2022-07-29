@@ -73,7 +73,7 @@ module.exports = async (config) => {
                         exclude: /node_modules/,
                         loader: "ts-loader",
                         options: {
-                            configFile: 'tsconfig.json'
+                            configFile: 'tsconfig.test.json'
                         }
                     }
                 ],
