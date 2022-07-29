@@ -4,7 +4,7 @@ module.exports = {
     collectCoverage: true,
     collectCoverageFrom: ['**/src/**/*.ts', '!**/node_modules/**'],
     testMatch: [
-        '**/test/*.(spec|test).ts'
+        '**/test/*.test.ts'
     ],
     globals: {
         'ts-jest': {

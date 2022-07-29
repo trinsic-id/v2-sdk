@@ -3,7 +3,7 @@ import {
   AuthorizeWebhookRequest,
   LoginRequest,
   TrinsicService,
-} from "../src";
+} from "../node";
 
 import { getTestServerOptions, setTestTimeout } from "./env";
 

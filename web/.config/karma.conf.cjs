@@ -18,7 +18,7 @@ module.exports = async (config) => {
         singleRun: true,  // run and exit for CI pipelines, lol
 
         client: {
-            clearContext: true, // will show the results in browser once all the testcases are loaded
+            clearContext: true, // will show the results in node once all the testcases are loaded
         },
 
         reporters: ["kjhtml", "progress", "coverage"],
@@ -32,7 +32,7 @@ module.exports = async (config) => {
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
         frameworks: ["jasmine", "webpack"],
 
-        // list of files / patterns to load in the browser
+        // list of files / patterns to load in the node
         // Here I'm including all the Jest tests which are all under the __tests__ directory.
         // You may need to tweak this pattern to find your test files/
         files: [
@@ -40,7 +40,7 @@ module.exports = async (config) => {
             { pattern: "**/*.wasm", watched: false, included: false, served: true },
         ],
 
-        // preprocess matching files before serving them to the browser
+        // preprocess matching files before serving them to the node
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
             // Use webpack to bundle our tests files
@@ -73,16 +73,12 @@ module.exports = async (config) => {
                         exclude: /node_modules/,
                         loader: "ts-loader",
                         options: {
-                            configFile: 'tsconfig.web.json'
+                            configFile: 'tsconfig.json'
                         }
                     }
                 ],
             },
             resolve: {
-                alias: {
-                    ["@trinsic-id/okapi-node"]: "@trinsic-id/okapi-web",
-                    ["nice-grpc"]: "nice-grpc-web"
-                },
                 extensions: [".ts", ".js"],
                 fallback: {
                     buffer: require.resolve("buffer")
@@ -99,10 +95,9 @@ module.exports = async (config) => {
                     test: /\.(ts|js)($|\?)/i,
                 }),
                 new ProvidePlugin({
-                    process: "process/browser",
+                    process: "process/node",
                     Buffer: ["buffer", "Buffer"],
                 }),
-                new IgnorePlugin({ resourceRegExp: /^/u, contextRegExp: /grpc-web-node-http-transport/u })
             ],
             experiments: {
                 asyncWebAssembly: true,

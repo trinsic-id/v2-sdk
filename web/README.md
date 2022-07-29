@@ -5,10 +5,16 @@
 npm install @trinsic/trinsic
 ```
 
-For web usage, to reduce bundler warnings, add the following plugin to your webpack 5 plugin configuration:
-```typescript
- new IgnorePlugin({ resourceRegExp: /^/u, contextRegExp: /grpc-web-node-http-transport/u })
+```ts
+import {
+    TrinsicService
+} from "@trinsic/trinsic";
 ```
+
+For bundlers that do not use the `"browser"` field, you can directly import the required web package with:
+```ts
+import { AccountService} from "@trinsic/trinsic/lib/browser";
+````
 
 ## Documentation
 

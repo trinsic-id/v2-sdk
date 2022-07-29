@@ -5,7 +5,7 @@ import {
   RegistrationStatus,
   SignInRequest,
   TrinsicService,
-} from "../src";
+} from "../node";
 import { v4 as uuid } from "uuid";
 import { getTestServerOptions, setTestTimeout } from "./env";
 
