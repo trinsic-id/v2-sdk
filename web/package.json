@@ -5,13 +5,10 @@
   "browser": {
     "lib/node.js": "lib/browser.js"
   },
-  "main": "./index.js",
-  "types": "./index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
-    "src/**/*.(js|d.ts)",
-    "browser/*.(js|d.ts)",
-    "node/*.(js|d.ts)",
-    "*.(js|d.ts)"
+    "lib/**/*"
   ],
   "scripts": {
     "build": "npm run build:proto && npm run build:typescript",
