@@ -2,18 +2,18 @@
 
 ## Installation
 ```bash
-npm install @trinsic/trinsic
+npm install @trinsic/sdk
 ```
 
 ```ts
 import {
     TrinsicService
-} from "@trinsic/trinsic";
+} from "@trinsic/sdk";
 ```
 
 For bundlers that do not use the `"browser"` field, you can directly import the required web package with:
 ```ts
-import { AccountService} from "@trinsic/trinsic/browser";
+import { AccountService} from "@trinsic/sdk/browser";
 ````
 
 ## Documentation
