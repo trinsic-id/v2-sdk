@@ -9,10 +9,10 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../account/v1/account.pb.dart' as $0;
+import '../../account/v1/account.pb.dart' as $1;
 
 import 'provider.pbenum.dart';
-import '../../account/v1/account.pbenum.dart' as $0;
+import '../../account/v1/account.pbenum.dart' as $1;
 
 export 'provider.pbenum.dart';
 
@@ -87,19 +87,19 @@ class InviteRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'description')
-    ..aOM<$0.AccountDetails>(
+    ..aOM<$1.AccountDetails>(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'details',
-        subBuilder: $0.AccountDetails.create)
+        subBuilder: $1.AccountDetails.create)
     ..hasRequiredFields = false;
 
   InviteRequest._() : super();
   factory InviteRequest({
     ParticipantType? participant,
     $core.String? description,
-    $0.AccountDetails? details,
+    $1.AccountDetails? details,
   }) {
     final _result = create();
     if (participant != null) {
@@ -165,9 +165,9 @@ class InviteRequest extends $pb.GeneratedMessage {
   void clearDescription() => clearField(2);
 
   @$pb.TagNumber(3)
-  $0.AccountDetails get details => $_getN(2);
+  $1.AccountDetails get details => $_getN(2);
   @$pb.TagNumber(3)
-  set details($0.AccountDetails v) {
+  set details($1.AccountDetails v) {
     setField(3, v);
   }
 
@@ -176,7 +176,7 @@ class InviteRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearDetails() => clearField(3);
   @$pb.TagNumber(3)
-  $0.AccountDetails ensureDetails() => $_ensure(2);
+  $1.AccountDetails ensureDetails() => $_ensure(2);
 }
 
 class InviteResponse extends $pb.GeneratedMessage {
@@ -812,12 +812,12 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'uri')
-    ..aOM<$0.AccountDetails>(
+    ..aOM<$1.AccountDetails>(
         4,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'details',
-        subBuilder: $0.AccountDetails.create)
+        subBuilder: $1.AccountDetails.create)
     ..hasRequiredFields = false;
 
   CreateEcosystemRequest._() : super();
@@ -825,7 +825,7 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
     $core.String? name,
     $core.String? description,
     $core.String? uri,
-    $0.AccountDetails? details,
+    $1.AccountDetails? details,
   }) {
     final _result = create();
     if (name != null) {
@@ -908,9 +908,9 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
   void clearUri() => clearField(3);
 
   @$pb.TagNumber(4)
-  $0.AccountDetails get details => $_getN(3);
+  $1.AccountDetails get details => $_getN(3);
   @$pb.TagNumber(4)
-  set details($0.AccountDetails v) {
+  set details($1.AccountDetails v) {
     setField(4, v);
   }
 
@@ -919,7 +919,7 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearDetails() => clearField(4);
   @$pb.TagNumber(4)
-  $0.AccountDetails ensureDetails() => $_ensure(3);
+  $1.AccountDetails ensureDetails() => $_ensure(3);
 }
 
 class CreateEcosystemResponse extends $pb.GeneratedMessage {
@@ -938,28 +938,28 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
             ? ''
             : 'ecosystem',
         subBuilder: Ecosystem.create)
-    ..aOM<$0.AccountProfile>(
+    ..aOM<$1.AccountProfile>(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'profile',
-        subBuilder: $0.AccountProfile.create)
-    ..e<$0.ConfirmationMethod>(
+        subBuilder: $1.AccountProfile.create)
+    ..e<$1.ConfirmationMethod>(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'confirmationMethod',
         $pb.PbFieldType.OE,
-        defaultOrMaker: $0.ConfirmationMethod.None,
-        valueOf: $0.ConfirmationMethod.valueOf,
-        enumValues: $0.ConfirmationMethod.values)
+        defaultOrMaker: $1.ConfirmationMethod.None,
+        valueOf: $1.ConfirmationMethod.valueOf,
+        enumValues: $1.ConfirmationMethod.values)
     ..hasRequiredFields = false;
 
   CreateEcosystemResponse._() : super();
   factory CreateEcosystemResponse({
     Ecosystem? ecosystem,
-    $0.AccountProfile? profile,
-    $0.ConfirmationMethod? confirmationMethod,
+    $1.AccountProfile? profile,
+    $1.ConfirmationMethod? confirmationMethod,
   }) {
     final _result = create();
     if (ecosystem != null) {
@@ -1017,9 +1017,9 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
   Ecosystem ensureEcosystem() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $0.AccountProfile get profile => $_getN(1);
+  $1.AccountProfile get profile => $_getN(1);
   @$pb.TagNumber(2)
-  set profile($0.AccountProfile v) {
+  set profile($1.AccountProfile v) {
     setField(2, v);
   }
 
@@ -1028,12 +1028,12 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearProfile() => clearField(2);
   @$pb.TagNumber(2)
-  $0.AccountProfile ensureProfile() => $_ensure(1);
+  $1.AccountProfile ensureProfile() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $0.ConfirmationMethod get confirmationMethod => $_getN(2);
+  $1.ConfirmationMethod get confirmationMethod => $_getN(2);
   @$pb.TagNumber(3)
-  set confirmationMethod($0.ConfirmationMethod v) {
+  set confirmationMethod($1.ConfirmationMethod v) {
     setField(3, v);
   }
 
@@ -1709,17 +1709,17 @@ class GenerateTokenResponse extends $pb.GeneratedMessage {
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
-    ..aOM<$0.AccountProfile>(
+    ..aOM<$1.AccountProfile>(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'profile',
-        subBuilder: $0.AccountProfile.create)
+        subBuilder: $1.AccountProfile.create)
     ..hasRequiredFields = false;
 
   GenerateTokenResponse._() : super();
   factory GenerateTokenResponse({
-    $0.AccountProfile? profile,
+    $1.AccountProfile? profile,
   }) {
     final _result = create();
     if (profile != null) {
@@ -1757,9 +1757,9 @@ class GenerateTokenResponse extends $pb.GeneratedMessage {
   static GenerateTokenResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $0.AccountProfile get profile => $_getN(0);
+  $1.AccountProfile get profile => $_getN(0);
   @$pb.TagNumber(1)
-  set profile($0.AccountProfile v) {
+  set profile($1.AccountProfile v) {
     setField(1, v);
   }
 
@@ -1768,7 +1768,7 @@ class GenerateTokenResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearProfile() => clearField(1);
   @$pb.TagNumber(1)
-  $0.AccountProfile ensureProfile() => $_ensure(0);
+  $1.AccountProfile ensureProfile() => $_ensure(0);
 }
 
 class GetOberonKeyRequest extends $pb.GeneratedMessage {
