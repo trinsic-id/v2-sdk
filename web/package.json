@@ -10,6 +10,10 @@
   "files": [
     "lib/**/*"
   ],
+  "exports": {
+    ".": "./lib/index.js",
+    "./browser": "./lib/browser.js"
+  },
   "scripts": {
     "build": "npm run build:proto && npm run build:typescript",
     "build:proto": "pwsh Generate-Proto.ps1",

@@ -13,7 +13,7 @@ import {
 
 For bundlers that do not use the `"browser"` field, you can directly import the required web package with:
 ```ts
-import { AccountService} from "@trinsic/trinsic/lib/browser";
+import { AccountService} from "@trinsic/trinsic/browser";
 ````
 
 ## Documentation
