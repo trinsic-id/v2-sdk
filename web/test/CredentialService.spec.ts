@@ -14,10 +14,10 @@ describe("CredentialService Unit Tests", () => {
   });
 
   it("Issue Credential From Template", async () => {
-    //Get account info so we can compare issued DID etc.
+    // Get account info, so we can compare issued DID etc.
     let info = await trinsic.account().getInfo();
 
-    //Set issuer DID of credential
+    // Set issuer DID of credential
     let vaccineCert = Object.assign({}, vaccineCertUnsigned, {
       issuer: info.publicDid,
     });
