@@ -1,5 +1,5 @@
 {
-  "name": "@trinsic/sdk",
+  "name": "@trinsic/trinsic",
   "version": "1.0.0",
   "description": "Node and Browser wrapper for the Trinsic services",
   "browser": {

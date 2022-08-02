@@ -257,7 +257,7 @@ def parse_arguments():
 def main():
     # Get command line arguments
     args = parse_arguments()
-    langs_to_build = [lang.lower() for lang in (args.language + ",").split(",")]
+    langs_to_build = [lang.lower() for lang in (args.language + ",").split(",") if lang]
 
     # Mapping of (language -> compilation function)
     lang_funcs = {
