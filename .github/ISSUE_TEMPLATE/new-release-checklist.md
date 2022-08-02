@@ -46,7 +46,7 @@ Manual steps are instructions that need to be taken in order to have a full rele
 - [ ] External Tools
   - [ ] **Homebrew** &mdash; to create a new tap, follow the instructions at [trinsic-id/homebrew-tap](https://github.com/trinsic-id/homebrew-tap) by making a new PR with the required information. This step depends on a release asset package. TODO: Renovate bot can update this automatically
   - [ ] **Windows Package Manager** (winget) &mdash; Update PR to the yaml here: https://github.com/microsoft/winget-pkgs/tree/master/manifests/t/trinsic/cli/ This step depends on the Microsoft Installer package.
-  - [ ] **NixOS** &mdash; TODO: Add details
+  - [ ] **NixOS** &mdash; done automatically by nixos bot. Periodically verify that package versions haven't fallen behind at https://search.nixos.org/packages in Unstable channel.
 - [ ] **Samples** &mdash; if required, code samples at https://github.com/trinsic-id/sdk-examples should be updated to match the version
     - [ ] Renovate bot will produce PRs to update all relevant samples with the latest trinsic packages, so this is mostly automatic
 - [ ] Release announced to Trinsic Team
