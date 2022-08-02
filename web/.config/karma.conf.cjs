@@ -80,9 +80,6 @@ module.exports = async (config) => {
             },
             resolve: {
                 extensions: [".ts", ".js"],
-                fallback: {
-                    buffer: require.resolve("buffer")
-                },
             },
             output: {
                 path: resolve(__dirname, "../test/build"),
