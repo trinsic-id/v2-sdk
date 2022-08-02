@@ -32,15 +32,16 @@ jobs:
         with:
           githubToken: ${{ secrets.API_GITHUB_TOKEN }}
           overrideVersion: ${{ github.event.inputs.packageVersion }}
-      - run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
       - run: |
           npm install
           npm version ${{ steps.setversion.outputs.packageVersion }} --no-git-tag-version --yes
           npm run build
-          npm publish --no-git-tag-version --yes --no-verify-access
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           TEST_SERVER_ENDPOINT: ${{ secrets.TEST_SERVER_ENDPOINT }}
           TEST_SERVER_PORT: ${{ secrets.TEST_SERVER_PORT }}
           TEST_SERVER_USE_TLS: ${{ secrets.TEST_SERVER_USE_TLS }}
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
 
