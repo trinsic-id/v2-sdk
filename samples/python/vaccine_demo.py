@@ -1,6 +1,6 @@
 import asyncio
 import json
-import platform
+import uuid
 
 from trinsic.proto.services.universalwallet.v1 import InsertItemRequest
 from trinsic.proto.services.verifiablecredentials.templates.v1 import (
@@ -16,7 +16,7 @@ from trinsic.proto.services.verifiablecredentials.v1 import (
     SendRequest,
 )
 from trinsic.trinsic_service import TrinsicService
-from trinsic.trinsic_util import trinsic_config
+from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 
 
 async def vaccine_demo():
@@ -29,14 +29,11 @@ async def vaccine_demo():
     ecosystem_id = ecosystem.ecosystem.id
     # }
 
-    # Set service default ecosystem
-    trinsic_service.service_options.default_ecosystem = ecosystem_id
-
     # setupActors() {
     # Create an account for each participant in the scenario
-    allison = await trinsic_service.account.sign_in()
-    airline = await trinsic_service.account.sign_in()
-    clinic = await trinsic_service.account.sign_in()
+    allison = await trinsic_service.account.login_anonymous(ecosystem_id=ecosystem_id)
+    airline = await trinsic_service.account.login_anonymous(ecosystem_id=ecosystem_id)
+    clinic = await trinsic_service.account.login_anonymous(ecosystem_id=ecosystem_id)
     # }
 
     trinsic_service.service_options.auth_token = clinic
@@ -131,7 +128,7 @@ async def do_template(trinsic_service: TrinsicService) -> TemplateData:
     # createTemplate() {
     template = await trinsic_service.template.create(
         request=CreateCredentialTemplateRequest(
-            name="VaccinationCertificate",
+            name=f"VaccinationCertificate-{uuid.uuid4()}",
             allow_additional_fields=False,
             fields={
                 "firstName": TemplateField(
@@ -158,6 +155,5 @@ async def do_template(trinsic_service: TrinsicService) -> TemplateData:
 
 
 if __name__ == "__main__":
-    if platform.system() == "Windows":
-        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    set_eventloop_policy()
     asyncio.run(vaccine_demo())

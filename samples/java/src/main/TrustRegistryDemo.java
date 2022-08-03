@@ -18,7 +18,7 @@ public class TrustRegistryDemo {
       throws IOException, DidException, ExecutionException, InterruptedException {
     var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
     var account = trinsic.account().signIn().get();
-    trinsic.setProfile(account);
+    trinsic.setAuthToken(account);
 
     final String didUri = "did:example:test";
     final String frameworkUri = "https://example.com/" + UUID.randomUUID();
@@ -37,14 +37,16 @@ public class TrustRegistryDemo {
     // }
 
     // registerIssuerSample() {
-    trinsic
-        .trustRegistry()
-        .registerMember(
-            RegisterMemberRequest.newBuilder()
-                .setDidUri(didUri)
-                .setFrameworkId(frameworkResponse.getId())
-                .setSchemaUri(typeUri)
-                .build());
+    var memberResponse =
+        trinsic
+            .trustRegistry()
+            .registerMember(
+                RegisterMemberRequest.newBuilder()
+                    .setDidUri(didUri)
+                    .setFrameworkId(frameworkResponse.getId())
+                    .setSchemaUri(typeUri)
+                    .build())
+            .get();
     // }
     // checkIssuerStatus() {
     var issuerStatus =

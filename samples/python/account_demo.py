@@ -1,9 +1,8 @@
 import asyncio
-import platform
 
 from trinsic.proto.services.account.v1 import AuthorizeWebhookRequest, LoginRequest
 from trinsic.trinsic_service import TrinsicService
-from trinsic.trinsic_util import trinsic_config
+from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 
 
 async def account_demo():
@@ -12,9 +11,6 @@ async def account_demo():
     trinsic = TrinsicService(server_config=config)
 
     ecosystem = await trinsic.provider.create_ecosystem()
-    ecosystem_id = ecosystem.ecosystem.id
-
-    trinsic.service_options.default_ecosystem = ecosystem_id
 
     # loginRequest() {
     login_response = await trinsic.account.login(
@@ -28,6 +24,10 @@ async def account_demo():
         auth_token = await trinsic.account.login_confirm(
             challenge=login_response.challenge, auth_code="12345"
         )
+        # }
+
+        # setAuthTokenSample() {
+        trinsic.service_options.auth_token = auth_token
         # }
 
         assert False  # If we get here, it means login succeeded -- which is an error.
@@ -47,6 +47,5 @@ async def account_demo():
 
 
 if __name__ == "__main__":
-    if platform.system() == "Windows":
-        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    set_eventloop_policy()
     asyncio.run(account_demo())

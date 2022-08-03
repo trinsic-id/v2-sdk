@@ -37,15 +37,11 @@ public class VaccineDemo {
     var ecosystemId = ecosystemResponse.getEcosystem().getId();
     // }
 
-    // Set default ecosystem on config
-    serverConfig.setDefaultEcosystem(ecosystemId);
-    trinsic.setDefaultEcosystem(ecosystemId);
-
     // setupActors() {
     // Create an account for each participant in the scenario
-    var allison = trinsic.account().signIn().get();
-    var clinic = trinsic.account().signIn().get();
-    var airline = trinsic.account().signIn().get();
+    var allison = trinsic.account().loginAnonymous(ecosystemId).get();
+    var clinic = trinsic.account().loginAnonymous(ecosystemId).get();
+    var airline = trinsic.account().loginAnonymous(ecosystemId).get();
     // }
 
     // Create template
@@ -58,7 +54,7 @@ public class VaccineDemo {
 
     // storeCredential() {
     // Set active profile to 'allison' so we can manage her cloud wallet
-    trinsic.setProfile(allison);
+    trinsic.setAuthToken(allison);
 
     // Allison stores the credential in her cloud wallet.
     var insertItemResponse =
@@ -74,7 +70,7 @@ public class VaccineDemo {
 
     // shareCredential() {
     // Set active profile to 'allison' so we can create a proof using her key
-    trinsic.setProfile(allison);
+    trinsic.setAuthToken(allison);
 
     // Allison shares the credential with the venue
     var createProofResponse =
@@ -89,7 +85,7 @@ public class VaccineDemo {
     System.out.println("Proof: " + credentialProof);
 
     // verifyCredential() {
-    trinsic.setProfile(airline);
+    trinsic.setAuthToken(airline);
 
     // Verify that Allison has provided a valid proof
     var verifyProofResponse =
@@ -113,7 +109,7 @@ public class VaccineDemo {
     // issueCredential() {
     // Set active profile to 'clinic' so we can issue credential signed
     // with the clinic's signing keys
-    trinsicService.setProfile(clinic);
+    trinsicService.setAuthToken(clinic);
 
     // Prepare credential values
     var valuesMap = new HashMap<String, Object>();
@@ -147,7 +143,7 @@ public class VaccineDemo {
           InterruptedException {
     // createTemplate() {
     // Set active profile to 'clinic'
-    templateService.setProfile(clinic);
+    templateService.setAuthToken(clinic);
 
     // Define fields for template
     var fields = new HashMap<String, TemplateField>();

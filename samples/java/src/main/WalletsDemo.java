@@ -24,13 +24,10 @@ public class WalletsDemo {
         trinsic.provider().createEcosystem(CreateEcosystemRequest.getDefaultInstance()).get();
     var ecosystemId = ecosystemResponse.getEcosystem().getId();
 
-    // Create account
-    trinsic.setDefaultEcosystem(ecosystemId);
-
-    var account = trinsic.account().signIn().get();
+    var account = trinsic.account().loginAnonymous(ecosystemId).get();
 
     // Insert wallet item into wallet
-    trinsic.setProfile(account);
+    trinsic.setAuthToken(account);
 
     var credentialJson =
         "{\"foo\":\"bar\"}"; // Doesn't need to actually be a credential for this test
@@ -52,10 +49,9 @@ public class WalletsDemo {
     // Abuse scope to allow redeclaration of walletItems for docs injection niceness
     {
       // searchWalletBasic() {
-      var walletItems = trinsic.wallet().search().get();
+      var walletItems = trinsic.wallet().searchWallet().get();
       // }
 
-      Assertions.assertNotNull(walletItems);
       Assertions.assertEquals(1, walletItems.getItemsCount());
     }
 
