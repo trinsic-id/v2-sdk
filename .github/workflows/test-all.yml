@@ -8,9 +8,6 @@ on:
       - ".github/workflows/test-all.yml"
 
 jobs:
-  prod-test-docs:
-    name: Docs - samples - prod test
-    uses: ./.github/workflows/test-docs.yml
   prod-test-dotnet:
     name: Dotnet - samples - prod test
     uses: ./.github/workflows/test-dotnet.yml
