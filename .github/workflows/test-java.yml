@@ -4,8 +4,8 @@ on:
   workflow_call:
   workflow_dispatch:
   schedule:
-    # Do it daily at 8AM
-    - cron: "4 8 * * *"
+    # Do it Thursday at 8AM (meeting day)
+    - cron: "4 8 * * 4"
   pull_request:
     paths:
       - ".github/workflows/test-java.yml"
