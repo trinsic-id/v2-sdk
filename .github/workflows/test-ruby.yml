@@ -3,9 +3,6 @@ name: Ruby (prod test)
 on:
   workflow_call:
   workflow_dispatch:
-  schedule:
-    # Do it Thursday at 8AM (meeting day)
-    - cron: "8 8 * * 4"
   pull_request:
     paths:
       - ".github/workflows/test-ruby.yml"

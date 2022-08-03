@@ -3,9 +3,6 @@ name: .NET (prod test)
 on:
   workflow_call:
   workflow_dispatch:
-  schedule:
-    # Do it Thursday at 8AM (meeting day)
-    - cron: "0 8 * * 4"
   pull_request:
     paths:
       - ".github/workflows/test-dotnet.yml"
