@@ -10,29 +10,22 @@ on:
 jobs:
   prod-test-docs:
     name: Docs - samples - prod test
-    runs-on: ubuntu-latest
     uses: ./.github/workflows/test-docs.yml
   prod-test-dotnet:
     name: Dotnet - samples - prod test
-    runs-on: ubuntu-latest
     uses: ./.github/workflows/test-dotnet.yml
   prod-test-golang:
     name: Golang - samples - prod test
-    runs-on: ubuntu-latest
     uses: ./.github/workflows/test-golang.yml
   prod-test-java:
     name: Java - samples - prod test
-    runs-on: ubuntu-latest
     uses: ./.github/workflows/test-java.yml
   prod-test-python:
     name: Python - samples - prod test
-    runs-on: ubuntu-latest
     uses: ./.github/workflows/test-python.yml
   prod-test-ruby:
     name: Ruby - samples - prod test
-    runs-on: ubuntu-latest
     uses: ./.github/workflows/test-ruby.yml
   prod-test-typescript:
     name: Typescript - samples - prod test
-    runs-on: ubuntu-latest
     uses: ./.github/workflows/test-typescript.yml
