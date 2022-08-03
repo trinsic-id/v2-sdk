@@ -12,34 +12,34 @@ jobs:
     name: Docs - samples - prod test
     runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/workflows/test-docs
+      - uses: ./.github/workflows/test-docs.yml
   prod-test-dotnet:
     name: Dotnet - samples - prod test
     runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/workflows/test-dotnet
+      - uses: ./.github/workflows/test-dotnet.yml
   prod-test-golang:
     name: Golang - samples - prod test
     runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/workflows/test-golang
+      - uses: ./.github/workflows/test-golang.yml
   prod-test-java:
     name: Java - samples - prod test
     runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/workflows/test-java
+      - uses: ./.github/workflows/test-java.yml
   prod-test-python:
     name: Python - samples - prod test
     runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/workflows/test-python
+      - uses: ./.github/workflows/test-python.yml
   prod-test-ruby:
     name: Ruby - samples - prod test
     runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/workflows/test-ruby
+      - uses: ./.github/workflows/test-ruby.yml
   prod-test-typescript:
     name: Typescript - samples - prod test
     runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/workflows/test-typescript
+      - uses: ./.github/workflows/test-typescript.yml
