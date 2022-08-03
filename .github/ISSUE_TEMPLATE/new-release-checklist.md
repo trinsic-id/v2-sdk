@@ -49,4 +49,5 @@ Manual steps are instructions that need to be taken in order to have a full rele
   - [ ] **NixOS** &mdash; done automatically by nixos bot. Periodically verify that package versions haven't fallen behind at https://search.nixos.org/packages in Unstable channel.
 - [ ] **Samples** &mdash; if required, code samples at https://github.com/trinsic-id/sdk-examples should be updated to match the version
     - [ ] Renovate bot will produce PRs to update all relevant samples with the latest trinsic packages, so this is mostly automatic
+    - [ ] Update Instruqt demo here: https://github.com/trinsic-id/tutorials/
 - [ ] Release announced to Trinsic Team
