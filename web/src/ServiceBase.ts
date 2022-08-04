@@ -1,6 +1,6 @@
 import { AccountProfile, Nonce, ServiceOptions } from "./proto";
 import { Metadata } from "nice-grpc-common";
-import base64url from "base64url";
+import {Base64} from "js-base64";
 import {
   Client as BrowserClient,
   CompatServiceDefinition as ClientServiceDefinition,
@@ -48,7 +48,7 @@ export default abstract class ServiceBase {
         throw new Error("auth token must be set");
       }
 
-      const profile = AccountProfile.decode(base64url.toBuffer(authToken));
+      const profile = AccountProfile.decode(Base64.toUint8Array(authToken));
       if (profile.protection?.enabled) {
         throw new Error(
           "profile is protected; you must use security code to remove the protection first"
@@ -72,9 +72,9 @@ export default abstract class ServiceBase {
         "authorization",
         `Oberon ` +
           `ver=1,` +
-          `proof=${base64url(Buffer.from(proof))},` +
-          `data=${base64url(Buffer.from(profile.authData))},` +
-          `nonce=${base64url(Buffer.from(nonceUint8))}`
+          `proof=${Base64.fromUint8Array(proof, true)},` +
+          `data=${Base64.fromUint8Array(profile.authData, true)},` +
+          `nonce=${Base64.fromUint8Array(nonceUint8, true)}`
       );
     }
     return metadata;

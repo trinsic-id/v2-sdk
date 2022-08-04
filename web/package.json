@@ -12,7 +12,8 @@
   ],
   "exports": {
     ".": "./lib/index.js",
-    "./browser": "./lib/browser.js"
+    "./browser": "./lib/browser/index.js",
+    "./node": "./lib/node/index.js"
   },
   "scripts": {
     "build": "npm run build:proto && npm run build:typescript",
@@ -43,12 +44,12 @@
     "@improbable-eng/grpc-web-node-http-transport": "^0.15.0",
     "@trinsic/okapi-node": "^1.6.1-rc3",
     "@trinsic/okapi-web": "^1.6.1-rc3",
-    "base64url": "^3.0.1",
     "buffer": "^6.0.3",
     "google-protobuf": "^3.20.1",
     "long": "^5.2.0",
+    "nice-grpc": "^1.2.0",
     "nice-grpc-web": "^1.1.0",
-    "nice-grpc": "^1.2.0"
+    "js-base64": "3.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.18.2",
@@ -72,8 +73,8 @@
     "jasmine-spec-reporter": "^7.0.0",
     "jest": "^28.1.0",
     "karma": "^6.3.20",
-    "karma-coverage": "^2.2.0",
     "karma-chrome-launcher": "^3.1.1",
+    "karma-coverage": "^2.2.0",
     "karma-jasmine": "^5.0.1",
     "karma-jasmine-html-reporter": "^2.0.0",
     "karma-sourcemap-loader": "^0.3.8",

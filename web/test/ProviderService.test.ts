@@ -1,6 +1,4 @@
-import base64url from "base64url";
 import {
-  AccountProfile,
   AddWebhookRequest,
   CreateEcosystemRequest,
   DeleteWebhookRequest,
@@ -37,12 +35,6 @@ describe("ProviderService Unit Tests", () => {
     expect(
       createResponse.ecosystem!.id.startsWith("urn:trinsic:ecosystems:")
     ).toBeTruthy();
-
-    // Use auth token and ecosystem
-    trinsic.options.authToken = base64url(
-      Buffer.from(AccountProfile.encode(createResponse.profile!).finish())
-    );
-    // trinsic.options.defaultEcosystem = createResponse.ecosystem!.id;
 
     // addWebhook() {
     let addResponse = await trinsic.provider().addWebhook(

@@ -1,6 +1,6 @@
 // const webpackConfig = require("./webpack.config.js");
 const {resolve} = require("path");
-const {SourceMapDevToolPlugin, ProvidePlugin, IgnorePlugin} = require("webpack");
+const {SourceMapDevToolPlugin, ProvidePlugin} = require("webpack");
 const path = require("path");
 module.exports = async (config) => {
     config.set({
@@ -80,9 +80,6 @@ module.exports = async (config) => {
             },
             resolve: {
                 extensions: [".ts", ".js"],
-                fallback: {
-                    buffer: require.resolve("buffer")
-                },
             },
             output: {
                 path: resolve(__dirname, "../test/build"),
@@ -93,11 +90,7 @@ module.exports = async (config) => {
                 new SourceMapDevToolPlugin({
                     filename: null,
                     test: /\.(ts|js)($|\?)/i,
-                }),
-                new ProvidePlugin({
-                    process: "process/node",
-                    Buffer: ["buffer", "Buffer"],
-                }),
+                })
             ],
             experiments: {
                 asyncWebAssembly: true,
