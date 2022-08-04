@@ -8,6 +8,7 @@ nav:
   - Home:
     - Introduction: index.md
     - Join the Beta: early-adopter.md
+    - Test Page: home/test.md
   - Learn: 
     - Overview: learn/index.md
     - Key Concepts:
