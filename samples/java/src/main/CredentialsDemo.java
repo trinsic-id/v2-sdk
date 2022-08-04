@@ -36,14 +36,11 @@ public class CredentialsDemo {
             .getEcosystem()
             .getId();
 
-    serverConfig = serverConfig.setDefaultEcosystem(ecosystemId);
+    var issuerVerifier =
+        trinsic.account().loginAnonymous(ecosystemId).get(); // Both issues and verifies
+    var holder = trinsic.account().loginAnonymous(ecosystemId).get();
 
-    //    trinsicService.setOptionsBuilder(serverConfig);
-
-    var issuerVerifier = trinsic.account().signIn().get(); // Both issues and verifies
-    var holder = trinsic.account().signIn().get();
-
-    trinsic.setProfile(issuerVerifier);
+    trinsic.setAuthToken(issuerVerifier);
 
     // issueCredentialSample() {
     var issueResult =
@@ -57,7 +54,7 @@ public class CredentialsDemo {
 
     System.out.println("Credential: " + signedCredentialJson);
 
-    trinsic.setProfile(holder);
+    trinsic.setAuthToken(holder);
     // createProof() {
     var createProofResponse =
         trinsic
@@ -88,7 +85,7 @@ public class CredentialsDemo {
       // This is okay, we don't expect that account to exist.
     }
 
-    trinsic.setProfile(issuerVerifier);
+    trinsic.setAuthToken(issuerVerifier);
     // verifyProof() {
     var verifyProofResponse =
         trinsic
@@ -100,8 +97,7 @@ public class CredentialsDemo {
     boolean isValid = verifyProofResponse.getIsValid();
     // }
 
-    System.out.println("Verification result: " + isValid);
-    assert isValid;
+    assert verifyProofResponse.getValidationResultsOrThrow("SignatureVerification").getIsValid();
   }
 
   public static String baseTestPath() {

@@ -1,6 +1,5 @@
 import asyncio
 import json
-import platform
 import uuid
 
 from trinsic.proto.services.verifiablecredentials.templates.v1 import (
@@ -15,7 +14,7 @@ from trinsic.proto.services.verifiablecredentials.v1 import (
     IssueFromTemplateRequest,
 )
 from trinsic.trinsic_service import TrinsicService
-from trinsic.trinsic_util import trinsic_config
+from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 
 
 async def templates_demo():
@@ -130,6 +129,5 @@ async def templates_demo():
 
 
 if __name__ == "__main__":
-    if platform.system() == "Windows":
-        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    set_eventloop_policy()
     asyncio.run(templates_demo())

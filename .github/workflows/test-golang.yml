@@ -3,9 +3,6 @@ name: Golang (prod test)
 on:
   workflow_call:
   workflow_dispatch:
-  schedule:
-    # Do it daily at 8AM
-    - cron: "2 8 * * *"
   pull_request:
     paths:
       - ".github/workflows/test-golang.yml"

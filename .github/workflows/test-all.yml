@@ -1,0 +1,28 @@
+name: All (Endpoint test)
+
+on:
+  workflow_call:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/test-all.yml"
+
+jobs:
+  prod-test-dotnet:
+    name: Dotnet - samples - prod test
+    uses: ./.github/workflows/test-dotnet.yml
+  prod-test-golang:
+    name: Golang - samples - prod test
+    uses: ./.github/workflows/test-golang.yml
+  prod-test-java:
+    name: Java - samples - prod test
+    uses: ./.github/workflows/test-java.yml
+  prod-test-python:
+    name: Python - samples - prod test
+    uses: ./.github/workflows/test-python.yml
+  prod-test-ruby:
+    name: Ruby - samples - prod test
+    uses: ./.github/workflows/test-ruby.yml
+  prod-test-typescript:
+    name: Typescript - samples - prod test
+    uses: ./.github/workflows/test-typescript.yml

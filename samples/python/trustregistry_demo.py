@@ -1,5 +1,4 @@
 import asyncio
-import platform
 import uuid
 
 from trinsic.proto.services.trustregistry.v1 import (
@@ -10,7 +9,7 @@ from trinsic.proto.services.trustregistry.v1 import (
     RegisterMemberRequest,
 )
 from trinsic.trinsic_service import TrinsicService
-from trinsic.trinsic_util import trinsic_config
+from trinsic.trinsic_util import trinsic_config, set_eventloop_policy
 
 
 async def trustregistry_demo():
@@ -57,7 +56,7 @@ async def trustregistry_demo():
     assert issuer_status == RegistrationStatus.CURRENT
 
     # searchTrustRegistry() {
-    search_result = await trinsic_service.trust_registry.search_registry()
+    search_result = await trinsic_service.trust_registry.search()
     # }
     assert search_result is not None
     assert search_result.items_json is not None
@@ -75,6 +74,5 @@ async def trustregistry_demo():
 
 
 if __name__ == "__main__":
-    if platform.system() == "Windows":
-        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    set_eventloop_policy()
     asyncio.run(trustregistry_demo())

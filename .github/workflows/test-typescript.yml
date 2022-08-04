@@ -3,9 +3,6 @@ name: Typescript (prod test)
 on:
   workflow_call:
   workflow_dispatch:
-  schedule:
-    # Do it daily at 8AM
-    - cron: "6 8 * * *"
   pull_request:
     paths:
       - ".github/workflows/test-node.yml"
