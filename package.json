@@ -5,6 +5,6 @@
   "author": "Trinsic",
   "license": "Apache-2.0",
   "devDependencies": {
-    "groovydoc-to-markdown": "^1.0.1"
+    "groovydoc-to-markdown": "1.0.1"
   }
 }
