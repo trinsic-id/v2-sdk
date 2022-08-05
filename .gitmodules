@@ -1,3 +1,4 @@
 [submodule "swift"]
 	path = swift
 	url = https://github.com/trinsic-id/sdk-swift
+	branch = main
