@@ -314,7 +314,7 @@ def update_dart():
 def update_typescript():
     language_path = get_language_dir("web")
     install_cmds = [
-        "npm install",
+        "npm ci",
         "pwsh ./Generate-Proto.ps1",
         "prettier --write **/*.ts",
     ]

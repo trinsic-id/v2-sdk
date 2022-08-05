@@ -192,7 +192,7 @@ def get_github_version(github_token: str = None) -> str:
 
 def build_java_docs(args):
     # https://github.com/fchastanet/groovydoc-to-markdown
-    # npm install in the root of sdk
+    # npm ci in the root of sdk
     subprocess.Popen(
         r"node ./node_modules/groovydoc-to-markdown/src/doc2md.js  ./java java ./docs/reference/java",
         cwd=get_sdk_dir(),

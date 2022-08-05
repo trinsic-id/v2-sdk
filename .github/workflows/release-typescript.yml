@@ -34,7 +34,7 @@ jobs:
           overrideVersion: ${{ github.event.inputs.packageVersion }}
       - run: npm set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
       - run: |
-          npm install
+          npm ci
           npm version ${{ steps.setversion.outputs.packageVersion }} --no-git-tag-version --yes
           npm run build
           npm publish --no-git-tag-version --yes --no-verify-access

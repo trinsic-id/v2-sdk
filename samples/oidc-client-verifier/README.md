@@ -6,7 +6,7 @@ This is a simple example which demonstrates the usage of Trinsic's OIDC endpoint
 
 This sample uses `parcel` as a barebones webserver.
   
-On first run, issue `npm install`.
+On first run, issue `npm ci`.
 
 To host the webserver and access the sample, execute `npm start`.
 
