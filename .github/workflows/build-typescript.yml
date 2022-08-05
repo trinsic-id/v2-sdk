@@ -41,7 +41,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - run: |
-          npm install
+          npm ci
           npm run build
           npm run test
         name: "Build and Test Package: Node v${{ matrix.node-version }}"

@@ -36,7 +36,7 @@ npm install -g grpc-web prettier
 grpc_tools_node_protoc --js_out=import_style=commonjs,binary:./dist --grpc_out=grpc_js:./dist --proto_path=../../proto ProviderService.proto
 ```
 
-After this, you can run `npm install` and `npm build`.
+After this, you can run `npm ci` and `npm build`.
 
 The build script will generate the proto files by running the `Generate-Proto.ps1` script. You can also run this script manually.
 
