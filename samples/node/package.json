@@ -20,6 +20,6 @@
     "@trinsic/trinsic": "1.6.1-rc2"
   },
   "devDependencies": {
-    "ts-node": "^10.8.2"
+    "ts-node": "10.8.2"
   }
 }
