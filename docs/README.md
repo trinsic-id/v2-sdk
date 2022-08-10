@@ -62,7 +62,7 @@ Immediately following `proto_sample_start()` should be a set of tabs, **indented
 {{ proto_sample_start() }}
     === "Trinsic CLI" 
         ```bash
-        trinsic account login --email <PROFILE_EMAIL> --name <PROFILE_NAME>
+        trinsic account login --email <PROFILE_EMAIL>
         ```
 
     === "TypeScript"
