@@ -137,13 +137,13 @@ The clinic's account will **issue** the credential, Allison's account will **hol
     When using the CLI, the authentication token of the most recently used account is saved in `~/.trinsic`. In a real-world scenario, you should back this token up securely.
 
     ```bash
-    trinsic account login --ecosystem {ECOSYSTEM_ID} --name "Allison"
+    trinsic account login --ecosystem {ECOSYSTEM_ID}
     # Save auth token in `allison.txt` before continuing
 
-    trinsic account login --ecosystem {ECOSYSTEM_ID} --name "Airline"
+    trinsic account login --ecosystem {ECOSYSTEM_ID}
     # Save auth token in `airline.txt` before continuing
 
-    trinsic account login --ecosystem {ECOSYSTEM_ID} --name "Vaccination Clinic"
+    trinsic account login --ecosystem {ECOSYSTEM_ID}
     # Save auth token in `clinic.txt` before continuing
     ```
 
