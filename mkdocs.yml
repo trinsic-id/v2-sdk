@@ -10,7 +10,7 @@ nav:
     - Join the Beta: early-adopter.md
   - Learn: 
     - Overview: learn/index.md
-    - Migration Guide: learn/migrate.md
+    - Migration Guidelines: learn/migrate.md
     - Key Concepts:
       - Identity Ecosystems: learn/concepts/ecosystems.md
       - Credentials: learn/concepts/credentials.md
