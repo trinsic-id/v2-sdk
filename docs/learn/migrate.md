@@ -1,10 +1,26 @@
 # Migration Guidelines
 
-This document describes the concepts and steps needed to migrate your platform from Trinsic's existing technology to our next-gen identity infrastructure, also known as Ecosystems. If you have an existing integration with our existing platform based on Hyperledger Aries and would like to move to the new platform, this guide is for you. Please [reach out to us](/support) or ask any questions in our [Slack Community](https://join.slack.com/t/trinsiccommunity/shared_invite/zt-pcsdy7kn-h4vtdPEpqQUlmirU8FFzSQ) channels.
+This document describes the concepts and steps needed to migrate your platform from Trinsic's existing technology to our next-gen identity infrastructure, also known as Ecosystems. If you have an existing integration with our platform based on Hyperledger Aries and would like to move to the new platform, this guide is for you. Please [reach out to us](/support) or ask any questions in our [Slack Community](https://join.slack.com/t/trinsiccommunity/shared_invite/zt-pcsdy7kn-h4vtdPEpqQUlmirU8FFzSQ) channels.
 
-## Why move to Ecosystems?
+## Motivations for new platform
 
-Describe reasons here why
+> TODO
+
+- Use of open standards and protocols
+- More performant crypto suites
+- Scalability issues
+- Custodial wallets
+- Ledger costs
+
+## Who should consider migration?
+
+> TODO
+
+- Teams looking to manage their ecosystem
+- Need support for governance
+- Looking to use open standards
+- Want to reduce ledger fees
+- Looking to provide custom wallet experience
 
 ## Concepts Comparison
 
@@ -34,6 +50,8 @@ The concept of an organization (or tenant) as a top level scope of identity netw
 Eacosystems represent your enterprise network as an established model of relationships between different entities. Ecosystems define the contracts of how verifiable data can be exchanged and governed. Individual holders of credentials will be assigned a wallet within the scope of an ecosystem.
 
 ### Identity Wallets
+
+> TODO
 
 Existing -> self managed
 
@@ -110,11 +128,11 @@ Our existing platform uses the cryptographic suite [Anoncreds](https://hyperledg
 
 ### Revocation Registries
 
-Revocation in our existing platform uses Anoncreds with RSA accumulator. These is a powerful, privacy preserving solution, but a little cumbersome when it comes to maintaining accumulator states. It requires publishing revocation registry state on the ledger, as well as publishing a tails file on a web resource. All of these are required for holders to prepare non-revocation proofs, which can effect the speed and experience of the interacting parties.
+Revocation in our existing platform uses Anoncreds with RSA accumulator. These is a powerful, privacy preserving solution, but a little cumbersome when it comes to maintaining accumulator states. It requires publishing revocation registry state on the ledger, as well as publishing a tails file on a web resource. All of these are required for holders to prepare non-revocation proofs, which can affect the speed and experience of the interacting parties.
 
 Our new platform uses a more flexible solution based on [Status List](https://w3c-ccg.github.io/vc-status-list-2021/). This apporach is based on a W3C community published specification with a much simpler and flexible approach to revocation.
 
-!!! info "Future Considerations"
+!!! info "Future considerations"
 
     At the time of writing this article, we are actively looking to add support for additional revocation solutions, such as one based on accumulators for pairing-friendly curves. These are significant improvements over RSA accumulators with an improvement in data privacy, performance and scalability.
 
@@ -122,4 +140,41 @@ Our new platform uses a more flexible solution based on [Status List](https://w3
 
 The approach to interaction between verifiers and credential holders is based on different solutions. In our existing platform we use Aries protocol to exchange data between two parties. This is usually done by the verifier preparing a verification request and communicating this to the user in a form of a URL or QR code. The holder then scans this code and responds to the request using a mobile app.
 
-In our new platform, we use interactive protocol based on [OpenID for Verifiable Presentations](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html) (OIDC4VP). This specification uses the widely adopted OpenID Connect standard to exchange verifiable data between parties in a secure way.
+In our new platform, we use interactive protocol based on [OpenID for Verifiable Presentations](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html) (OIDC4VP). This specification uses the widely adopted OpenID Connect standard to exchange verifiable data between parties in a secure way. During verification, the holder is redirected to our OIDC provider which allows the user access to their identity wallet to respond to the verification request.
+
+!!! cite ""
+
+    An example verification request payload
+
+    ```json
+    {
+        "name": "string",
+        "version": "string",
+        "attributes": [{
+            "policyName": "string",
+            "attributeNames": [ "firstName" ],
+            "restrictions": [{
+                "schemaId": "string"
+            }]
+        }],
+        "predicates": [],
+        "revocationRequirement": {
+            "validAt": "2022-08-13T13:29:38.800Z",
+            "validNow": true
+        }
+    }
+    ```
+
+!!! success ""
+
+    Example OIDC request for verifiable presentation
+
+    ```txt
+    GET https://connect.trinsic.cloud/authorize?
+        &response_type=code
+        &scope=openid
+        &client_id=client01
+        &trinsic%3Aecosystem=example
+        &redirect_uri=https://example.com/callback
+        &nonce=n-0S6_WzA2Mj HTTP/1.1
+    ```
