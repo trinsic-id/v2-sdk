@@ -1,30 +1,30 @@
 # Migration Guidelines
 
-This document describes the concepts and steps needed to migrate your platform from Trinsic's existing technology to our next-gen identity infrastructure, also known as Ecosystems. If you have an existing integration with our platform based on Hyperledger Aries and would like to move to the new platform, this guide is for you. Please [reach out to us](/support) or ask any questions in our [Slack Community](https://join.slack.com/t/trinsiccommunity/shared_invite/zt-pcsdy7kn-h4vtdPEpqQUlmirU8FFzSQ) channels.
+This document outlines the differences between our existing platform based on Hyperledger Aries and our next-gen identity infrastructure, also known as Ecosystems. The intended audience of this document is technical business decision makers or solution architects who are looking to migrate their existing integration. For everyone else, this can also be a good source of information with comparsion between the two platforms. Please feel free to [reach out to us](/support) or ask any questions in our [Slack Community](https://join.slack.com/t/trinsiccommunity/shared_invite/zt-pcsdy7kn-h4vtdPEpqQUlmirU8FFzSQ) channels.
 
-## Motivations for new platform
+## Motivations to build the new platform
 
-> TODO
+**Open standards and protocols** &mdash; one of the critical decisions to create our new platform was the ability to use standardized data models. The [Verifiable Credentials Data Model](https://www.w3.org/TR/vc-data-model/) was an important milestone that standardized the data exchange format. The use of Decentralized Identifiers was another important step in building solutions that will work with community supported specifications. The tight integration of Anoncreds with the wallet and ledger layers proved to be very challenging to iterrate on.
 
-- Use of open standards and protocols
-- More performant crypto suites
-- Scalability issues
-- Custodial wallets
-- Ledger costs
+**Cryptographic suites performance and extensibility** &mdash; we wanted to be able to introduce different cryptgraphic schemes with a standardized model in order to support different data workflows. The Data Integrity and JOSE proof formats work well with the VC model and allow extensibility and use of different cryptographic suites.
+
+**Scalability concerns and technology lock-in** &mdash; there are couple of different points here: scalability concerns with ledger throughput for  Indy Nodes and the requirement to write numerous identity data to the ledger, raises some concerns on how much this infrastructure will perform well in hyperscale. The technology lock-in of using wallets through a single library implementation was another factor we considered; it proved to be fairly difficult to build customized experiences and extend our platform.
+
+**Ledger costs and transaction fees** &mdash; the costs of writing data to the ledger was a significant factor for many developers considering to move to production networks
+
+**Customized wallet experience** &mdash; we wanted to build a service that allows developers to build their own wallet experience and not have to rely on a single mobile app. While we are commited to building great wallet experience for users, we wanted to empower everyone to build their own solution or have the ability to integrate the wallet into their existing apps.
 
 ## Who should consider migration?
 
-> TODO
-
-- Teams looking to manage their ecosystem
-- Need support for governance
-- Looking to use open standards
-- Want to reduce ledger fees
-- Looking to provide custom wallet experience
+- Teams looking to manage their own identity data in the ecosystem
+- Your solution requires support for ecosystem governance
+- You are looking to use open standard and need interoperability with VC, JWT, or OIDC
+- Teams looking to reduce transaction costs of writing to decentralized ledgers
+- Developers looking to provide custom wallet experience or customized integration
 
 ## Concepts Comparison
 
-Direct comparsions between the two platforms may be enclosed in **colored blocks** as shown below:
+Direct comparsions of technical details between the two platforms may be enclosed in **colored blocks** as shown below:
 
 !!! cite ""
 
@@ -49,13 +49,23 @@ Let's take a deeper look of how different problems and concepts map between the 
 The concept of an organization (or tenant) as a top level scope of identity network is now represented as a more expanded concept of an ecosystem.
 Eacosystems represent your enterprise network as an established model of relationships between different entities. Ecosystems define the contracts of how verifiable data can be exchanged and governed. Individual holders of credentials will be assigned a wallet within the scope of an ecosystem.
 
+!!! cite ""
+
+    Managed through [Provider API](https://docs.trinsic.id/reference/createtenant-1) endpoints
+
+!!! success ""
+
+    Managed through [Provider Service](/reference/services/provider-service/) SDK
+
 ### Identity Wallets
 
-> TODO
+In our existing platform, identity wallets are self-managed and stored in a mobile device. All of the credentials and private material are securely stored on the user's device. This is a great solution that allows the user to have full control over their identity, but it comes with the risk of losing all identity data if something happens to the device.
 
-Existing -> self managed
+Our new platform uses custodial wallets that are hosted in the cloud with a strong access security. Wallets data is accessed through our new API which allows developers to build their own wallet experience as a web app, mobile app, etc. Custodial wallets allow better integration with existing platforms and improved user experience.
 
-New -> custodial/cloud wallets
+!!! info "Future considerations"
+
+    We are actively working to improve the wallet experience by introducing encrypted cloud wallets. This will add another layer of privacy and security to users' data. We are also exploring options to export wallet data, so it can be moved between providers or to a custodial wallet on a user's device.
 
 ### Ledgers and Decentralized Infrastructure
 
@@ -65,11 +75,13 @@ The new platform uses decentralized ledgers or blockchains for DIDs only. Schema
 
 !!! cite ""
 
-    Indy Node based, supported networks: Sovrin, Indicio, BCovrin
+    - Indy Node based
+    - Supported networks: Sovrin, Indicio, BCovrin
 
 !!! success ""
 
-    Self-assertive identifiers, Bitcoin layer 2 using Sidetree
+    - Self-asserting identifiers
+    - Bitcoin layer 2 using Sidetree
 
 ### Credential Formats
 
@@ -148,18 +160,17 @@ In our new platform, we use interactive protocol based on [OpenID for Verifiable
 
     ```json
     {
-        "name": "string",
-        "version": "string",
+        "name": "verification-request",
+        "version": "1.0",
         "attributes": [{
-            "policyName": "string",
+            "policyName": "verify-name",
             "attributeNames": [ "firstName" ],
             "restrictions": [{
-                "schemaId": "string"
+                "issuerID": "string"
             }]
         }],
         "predicates": [],
         "revocationRequirement": {
-            "validAt": "2022-08-13T13:29:38.800Z",
             "validNow": true
         }
     }
@@ -178,3 +189,7 @@ In our new platform, we use interactive protocol based on [OpenID for Verifiable
         &redirect_uri=https://example.com/callback
         &nonce=n-0S6_WzA2Mj HTTP/1.1
     ```
+
+### What's next?
+
+If you're looking to do a migration and need help, please drop us a line on [Slack](https://join.slack.com/t/trinsiccommunity/shared_invite/zt-pcsdy7kn-h4vtdPEpqQUlmirU8FFzSQ) or Intercom. Otherwise, feel free to explore our documentation, try the Getting Started guide or watch an introductory video.
