@@ -1,6 +1,6 @@
 # Migration Guidelines
 
-This document outlines the differences between our existing platform based on Hyperledger Aries and our next-gen identity infrastructure, also known as Ecosystems. The intended audience of this document is technical business decision makers or solution architects who are looking to migrate their existing integration. For everyone else, this can also be a good source of information with comparsion between the two platforms. Please feel free to [reach out to us](/support) or ask any questions in our [Slack Community](https://join.slack.com/t/trinsiccommunity/shared_invite/zt-pcsdy7kn-h4vtdPEpqQUlmirU8FFzSQ) channels.
+This document outlines the differences between our existing platform based on Hyperledger Aries and our next-gen identity infrastructure, also known as Ecosystems. The intended audience of this document are technical business decision makers or solution architects who are looking to migrate their existing integration. For everyone else, this can also be a good source of information with comparsion between the two platforms. Please feel free to [reach out to us](/support) or ask any questions in our [Slack Community](https://join.slack.com/t/trinsiccommunity/shared_invite/zt-pcsdy7kn-h4vtdPEpqQUlmirU8FFzSQ) channels.
 
 ## Motivations to build the new platform
 
