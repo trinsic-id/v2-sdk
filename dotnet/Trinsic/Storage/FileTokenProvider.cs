@@ -19,9 +19,11 @@ internal class FileTokenProvider : ITokenProvider
         var rootPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         var filename = Path.Combine(rootPath, Vendor, name);
 
-        try {
+        try
+        {
             _cachedToken = await File.ReadAllTextAsync(filename, cancellationToken);
-        } catch {
+        } catch
+        {
             // ignored
         }
         return _cachedToken;
@@ -32,9 +34,11 @@ internal class FileTokenProvider : ITokenProvider
         var rootPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         var filename = Path.Combine(rootPath, Vendor, name);
 
-        try {
+        try
+        {
             _cachedToken = File.ReadAllText(filename);
-        } catch {
+        } catch
+        {
             // ignored
         }
         return _cachedToken;

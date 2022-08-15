@@ -1,4 +1,4 @@
-﻿#if __BROWSER__
+#if __BROWSER__
 using System;
 using System.Threading;
 using System.Threading.Tasks;

@@ -1,14 +1,28 @@
+# top-most EditorConfig file
+root = true
+
 # Unix-style newlines with a newline ending every file
 [*]
 end_of_line = lf
 indent_style = space
 charset = utf-8
-
-[*.cs]
-trim_trailing_whitespace = true
 indent_size = 4
+trim_trailing_whitespace = true
 insert_final_newline = true
 
+[*.go]
+indent_style = tab
+; mimic gofmt's go/printer.printer.funcBody().maxSize
+max_line_length = 100
+indent_size = 8
+
+[{go.mod,go.sum}]
+indent_style = tab
+
+[{m,M}akefile]
+indent_style = tabs
+
+[*.cs]
 # CS1701: Assuming assembly reference matches identity
 dotnet_diagnostic.CS1701.severity = silent
 
@@ -18,11 +32,6 @@ dotnet_diagnostic.CS1702.severity = silent
 #IDE1006	Naming rule violation: Missing suffix: 'Async'
 
 dotnet_diagnostic.IDE1006.severity = silent
-
-[*.proto]
-trim_trailing_whitespace = true
-indent_size = 4
-insert_final_newline = true
 
 [*.rs]
 max_line_length = 120

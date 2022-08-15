@@ -76,7 +76,8 @@ public abstract class ServiceBase
     /// <summary>
     /// The cached metadata of the Okapi library being used.
     /// </summary>
-    private MetadataResponse CachedOkapiMetadata {
+    private MetadataResponse CachedOkapiMetadata
+    {
         get
         {
             _okapiMetadata ??= OkapiMetadata.GetMetadata();
@@ -134,7 +135,7 @@ public abstract class ServiceBase
         var authToken = string.IsNullOrWhiteSpace(Options.AuthToken)
             ? TokenProvider.Get()
             : Options.AuthToken;
-        
+
         if (authToken is null)
             throw new("Cannot call authenticated endpoint before signing in");
 

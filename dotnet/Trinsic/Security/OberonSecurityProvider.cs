@@ -34,7 +34,7 @@ internal class OberonSecurityProvider : ISecurityProvider
         var requestBytes = message.ToByteArray();
         var requestHash = ByteString.Empty;
 
-        if (requestBytes.Any()) requestHash = Okapi.Hashing.Blake3.Hash(new() {Data = ByteString.CopyFrom(requestBytes)}).Digest;
+        if (requestBytes.Any()) requestHash = Okapi.Hashing.Blake3.Hash(new() { Data = ByteString.CopyFrom(requestBytes) }).Digest;
 
         Nonce nonce = new() {
             Timestamp = DateTimeOffset.Now.ToUnixTimeMilliseconds(),
