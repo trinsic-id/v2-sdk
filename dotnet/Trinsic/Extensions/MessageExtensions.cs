@@ -1,4 +1,4 @@
-﻿namespace Google.Protobuf;
+namespace Google.Protobuf;
 
 public static class ProtoMessageExtensions
 {

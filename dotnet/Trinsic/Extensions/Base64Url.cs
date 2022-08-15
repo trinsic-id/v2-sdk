@@ -105,7 +105,8 @@ public static class Base64Url
         str = str.Replace(Base64UrlCharacter63, Base64Character63);
 
         // check for padding
-        switch (str.Length % 4) {
+        switch (str.Length % 4)
+        {
             case 0:
                 // No pad chars in this case
                 break;
