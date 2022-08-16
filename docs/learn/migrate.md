@@ -47,7 +47,7 @@ Let's take a deeper look of how different problems and concepts map between the 
 ### Organizations and Tenants
 
 The concept of an organization (or tenant) as a top level scope of identity network is now represented as a more expanded concept of an ecosystem.
-Eacosystems represent your enterprise network as an established model of relationships between different entities. Ecosystems define the contracts of how verifiable data can be exchanged and governed. Individual holders of credentials will be assigned a wallet within the scope of an ecosystem.
+Ecosystems represent your enterprise network as an established model of relationships between different entities. Ecosystems define the contracts of how verifiable data can be exchanged and governed. Individual holders of credentials will be assigned a wallet within the scope of an ecosystem.
 
 !!! cite ""
 
