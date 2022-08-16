@@ -140,7 +140,7 @@ Our existing platform uses the cryptographic suite [Anoncreds](https://hyperledg
 
 ### Revocation Registries
 
-Revocation in our existing platform uses Anoncreds with RSA accumulator. These is a powerful, privacy preserving solution, but a little cumbersome when it comes to maintaining accumulator states. It requires publishing revocation registry state on the ledger, as well as publishing a tails file on a web resource. All of these are required for holders to prepare non-revocation proofs, which can affect the speed and experience of the interacting parties.
+Revocation in our existing platform uses Anoncreds with RSA accumulator. This is a powerful, privacy preserving solution, but a little cumbersome when it comes to maintaining accumulator states. It requires publishing revocation registry state on the ledger, as well as publishing a tails file on a web resource. All of these are required for holders to prepare non-revocation proofs, which can affect the speed and experience of the interacting parties.
 
 Our new platform uses a more flexible solution based on [Status List](https://w3c-ccg.github.io/vc-status-list-2021/). This apporach is based on a W3C community published specification with a much simpler and flexible approach to revocation.
 
