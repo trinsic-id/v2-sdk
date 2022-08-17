@@ -11,8 +11,8 @@ default-run = "trinsic"
 [dependencies]
 tonic = { version = "0.6", features = ["tls", "tls-roots"] }
 prost = "0.9"
-prost-types = "0.9"
-tokio = { version = "1.20", features = ["macros", "rt-multi-thread"] }
+prost-types = "0.11"
+tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] }
 okapi = { git ="https://github.com/trinsic-id/okapi", rev = "17dc90a92981197051b3e28495e5f7a2680e385e" }
 clap = { version = "~2", features = ["yaml"] }
 serde = "1.0"
