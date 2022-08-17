@@ -32,7 +32,7 @@
         </ItemGroup>
     </Target>
     <ItemGroup>
-        <PackageReference Include="Grpc.Net.Client" Version="2.45.0" />
+        <PackageReference Include="Grpc.Net.Client" Version="2.47.0" />
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Grpc.Tools" Version="2.46.1" PrivateAssets="All" />
