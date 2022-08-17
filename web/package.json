@@ -55,7 +55,7 @@
     "@trinsic/okapi-node": "1.6.1-rc3",
     "@trinsic/okapi-web": "1.6.1-rc3",
     "buffer": "6.0.3",
-    "google-protobuf": "3.20.1",
+    "google-protobuf": "3.21.0",
     "long": "5.2.0",
     "nice-grpc": "1.2.2",
     "nice-grpc-web": "1.1.0",
