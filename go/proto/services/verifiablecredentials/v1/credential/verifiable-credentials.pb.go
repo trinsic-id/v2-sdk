@@ -256,6 +256,7 @@ type CreateProofRequest struct {
 	// Input can be an existing item in the wallet or an input document
 	//
 	// Types that are assignable to Proof:
+	//
 	//	*CreateProofRequest_ItemId
 	//	*CreateProofRequest_DocumentJson
 	Proof isCreateProofRequest_Proof `protobuf_oneof:"proof"`
@@ -576,6 +577,7 @@ type SendRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Types that are assignable to DeliveryMethod:
+	//
 	//	*SendRequest_Email
 	//	*SendRequest_DidUri
 	//	*SendRequest_DidcommInvitationJson

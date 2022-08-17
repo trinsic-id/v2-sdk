@@ -15,7 +15,7 @@ func GetSdkVersion() string {
 	return sdkVersion
 }
 
-//Options for configuring the sdk
+// Options for configuring the sdk
 type Options struct {
 	ServiceOptions  *options.ServiceOptions
 	GrpcDialOptions []grpc.DialOption
