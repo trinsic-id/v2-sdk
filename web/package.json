@@ -57,7 +57,7 @@
     "buffer": "6.0.3",
     "google-protobuf": "3.21.0",
     "long": "5.2.0",
-    "nice-grpc": "1.2.2",
+    "nice-grpc": "2.0.0",
     "nice-grpc-web": "2.0.0",
     "js-base64": "3.7.2"
   },
