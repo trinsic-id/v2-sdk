@@ -38,7 +38,7 @@
         <PackageReference Include="Grpc.Tools" Version="2.46.1" PrivateAssets="All" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
         <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
-        <PackageReference Include="Okapi.Net" Version="1.6.2">
+        <PackageReference Include="Okapi.Net" Version="1.6.3">
             <PrivateAssets>none</PrivateAssets>
         </PackageReference>
     </ItemGroup>
