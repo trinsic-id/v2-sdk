@@ -66,6 +66,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs-v2.trinsic.id/learn/migrate/</loc>
+         <lastmod>2022-08-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs-v2.trinsic.id/learn/concepts/credentials/</loc>
          <lastmod>2022-08-17</lastmod>
          <changefreq>daily</changefreq>
