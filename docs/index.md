@@ -6,8 +6,6 @@ hide:
 ## Issue and verify universally-accepted digital credentials.
 Trinsic is the proof of anything platform. We make it easy for people and organizations to prove things about themselves with technology instead of paper documents. Our software is based on Decentralized Identifiers (DIDs) and Verifiable Credentials (VCs), a new digital identity standard. 
 
-A test change to trigger docs PR.
-
 Using Trinsic, organizations and their customers share data between each other in a trustworthy, standardized, and privacy-preserving way without requiring a centralized server or database. 
 
 We make all of this possible by signing, sharing and storing verifiable data within identity wallets owned by individuals. People can easily share them with others to prove things about themselves anywhere.
