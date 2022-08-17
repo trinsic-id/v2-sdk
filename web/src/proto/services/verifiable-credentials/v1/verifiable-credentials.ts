@@ -1,5 +1,5 @@
 /* eslint-disable */
-import * as _m0 from "protobufjs/minimal";
+import _m0 from "protobufjs/minimal";
 
 /** Request to sign a JSON-LD Credential using public key tied to caller */
 export interface IssueRequest {
