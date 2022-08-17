@@ -3,5 +3,11 @@
   "extends": [
     "config:base"
   ],
-  "prHourlyLimit": 10
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
+    }
+  ]
+  "prHourlyLimit": 100
 }
