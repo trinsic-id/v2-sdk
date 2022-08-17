@@ -7,6 +7,16 @@
   },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "typesVersions": {
+    "*": {
+        "browser": [
+            "./lib/browser/index.d.ts"
+        ],
+        "node": [
+            "./lib/node/index.d.ts"
+        ]
+    }
+  },
   "files": [
     "lib/**/*"
   ],
