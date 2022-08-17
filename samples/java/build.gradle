@@ -23,7 +23,7 @@ def urlFile = { url, name ->
 
 dependencies {
     compileOnly 'org.apache.tomcat:annotations-api:6.0.53' // necessary for Java 9+
-    implementation 'com.google.code.gson:gson:2.9.0'
+    implementation 'com.google.code.gson:gson:2.9.1'
     implementation 'com.google.guava:guava:31.1-jre'
     implementation group: 'com.google.protobuf', name: 'protobuf-java', version: '3.19.1'
     implementation 'com.google.protobuf:protobuf-java-util:3.19.4'
