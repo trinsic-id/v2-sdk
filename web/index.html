@@ -1378,17 +1378,17 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Installation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#create-new-project" class="md-nav__link">
     <span class="md-ellipsis">
       Create new project
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Create new project">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#configure-webpack" class="md-nav__link">
@@ -1783,44 +1783,43 @@
 <p>Install the package for Node or Browser from <a href="https://www.npmjs.com/package/@trinsic/trinsic" target="_blank">npmjs.com <small><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg></span></small></a></p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Install</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block">
+<div class="tabbed-block"></div>
+</div>
+</div>
 <div class="highlight"><pre><span></span><code>npm i @trinsic/trinsic
 </code></pre></div>
-</div>
-</div>
-</div>
 <!-- ## Configuration -->
 
-<h3 id="create-new-project">Create new project<a class="headerlink" href="#create-new-project" title="Permanent link">&para;</a></h3>
+<h2 id="create-new-project">Create new project<a class="headerlink" href="#create-new-project" title="Permanent link">&para;</a></h2>
 <p>Let's create a new console app that we will use to add our sample code</p>
 <div class="highlight"><pre><span></span><code>mkdir web-sample <span class="o">&amp;&amp;</span> <span class="nb">cd</span> web-sample <span class="o">&amp;&amp;</span> npm init
 </code></pre></div>
 <p>You can select all the defaults for the node project.</p>
 <p>Add the required dependencies</p>
-<div class="highlight"><pre><span></span><code>npm i @trinsic/trinsic-web
+<div class="highlight"><pre><span></span><code>npm i @trinsic/trinsic
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>npm i --save-dev http-server webpack webpack-cli
 </code></pre></div>
 <h3 id="configure-webpack">Configure Webpack<a class="headerlink" href="#configure-webpack" title="Permanent link">&para;</a></h3>
 <p>After installing the dependencies you'll need a configuration file for webpack.
-Create a file called webpack.config.js at the root of your project and then copy and paste this into that file
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">);</span><span class="w"></span>
+Create a file called webpack.config.js at the root of your project and then copy and paste this into that file</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;path&quot;</span><span class="p">);</span><span class="w"></span>
 
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">mode</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;development&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">entry</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;./src/index.js&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nx">output</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;./src&#39;</span><span class="p">),</span><span class="w"></span>
-<span class="w">    </span><span class="nx">filename</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;bundle.js&#39;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="nx">mode</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;development&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">entry</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;./src/index.js&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">output</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;./src&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="nx">filename</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;bundle.js&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
 <span class="p">};</span><span class="w"></span>
-</code></pre></div></p>
+</code></pre></div>
 <h4 id="configure-webpack-for-react">Configure Webpack for React<a class="headerlink" href="#configure-webpack-for-react" title="Permanent link">&para;</a></h4>
 <p>If using React you may need to start your project with <a href="https://www.npmjs.com/package/@craco/craco">craco</a></p>
-<p>Install Craco
+<p>Install Craco</p>
 <div class="highlight"><pre><span></span><code>npm i @craco/craco
-</code></pre></div></p>
-<p>Next change your react scripts in your package.json file
+</code></pre></div>
+<p>Next change your react scripts in your package.json file</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="mi">-</span><span class="w">   </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;react-scripts start&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="err">+</span><span class="w">   </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;craco start&quot;</span><span class="p">,</span><span class="w"></span>
@@ -1830,54 +1829,61 @@ Create a file called webpack.config.js at the root of your project and then copy
 <span class="err">+</span><span class="w">   </span><span class="nt">&quot;test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;craco test&quot;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
-Finally you will need to add a craco configuration file called <code>craco.config.js</code> and add the following:</p>
+<p>Finally you will need to add a craco configuration file called <code>craco.config.js</code> and add the following:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// craco.config.js</span><span class="w"></span>
 
-<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">addBeforeLoader</span><span class="p">,</span><span class="w"> </span><span class="nx">loaderByName</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;@craco/craco&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">addBeforeLoader</span><span class="p">,</span><span class="w"> </span><span class="nx">loaderByName</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;@craco/craco&quot;</span><span class="p">);</span><span class="w"></span>
 
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nx">webpack</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nx">configure</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">webpackConfig</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">wasmExtensionRegExp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sr">/\.wasm$/</span><span class="p">;</span><span class="w"></span>
-<span class="w">      </span><span class="nx">webpackConfig</span><span class="p">.</span><span class="nx">resolve</span><span class="p">.</span><span class="nx">extensions</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">&#39;.wasm&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="nx">webpack</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">configure</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">webpackConfig</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">wasmExtensionRegExp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sr">/\.wasm$/</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="nx">webpackConfig</span><span class="p">.</span><span class="nx">resolve</span><span class="p">.</span><span class="nx">extensions</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">&quot;.wasm&quot;</span><span class="p">);</span><span class="w"></span>
 
-<span class="w">      </span><span class="nx">webpackConfig</span><span class="p">.</span><span class="nx">module</span><span class="p">.</span><span class="nx">rules</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">rule</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="p">(</span><span class="nx">rule</span><span class="p">.</span><span class="nx">oneOf</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">[]).</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">oneOf</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">oneOf</span><span class="p">.</span><span class="nx">loader</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">oneOf</span><span class="p">.</span><span class="nx">loader</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;file-loader&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nx">oneOf</span><span class="p">.</span><span class="nx">exclude</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">wasmExtensionRegExp</span><span class="p">);</span><span class="w"></span>
-<span class="w">          </span><span class="p">}</span><span class="w"></span>
-<span class="w">        </span><span class="p">});</span><span class="w"></span>
-<span class="w">      </span><span class="p">});</span><span class="w"></span>
+<span class="w">            </span><span class="nx">webpackConfig</span><span class="p">.</span><span class="nx">module</span><span class="p">.</span><span class="nx">rules</span><span class="p">.</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">rule</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="p">(</span><span class="nx">rule</span><span class="p">.</span><span class="nx">oneOf</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">[]).</span><span class="nx">forEach</span><span class="p">((</span><span class="nx">oneOf</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">                        </span><span class="nx">oneOf</span><span class="p">.</span><span class="nx">loader</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"></span>
+<span class="w">                        </span><span class="nx">oneOf</span><span class="p">.</span><span class="nx">loader</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&quot;file-loader&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">0</span><span class="w"></span>
+<span class="w">                    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="nx">oneOf</span><span class="p">.</span><span class="nx">exclude</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">wasmExtensionRegExp</span><span class="p">);</span><span class="w"></span>
+<span class="w">                    </span><span class="p">}</span><span class="w"></span>
+<span class="w">                </span><span class="p">});</span><span class="w"></span>
+<span class="w">            </span><span class="p">});</span><span class="w"></span>
 
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">wasmLoader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nx">test</span><span class="o">:</span><span class="w"> </span><span class="sr">/\.wasm$/</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nx">exclude</span><span class="o">:</span><span class="w"> </span><span class="sr">/node_modules/</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nx">loaders</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;wasm-loader&#39;</span><span class="p">],</span><span class="w"></span>
-<span class="w">      </span><span class="p">};</span><span class="w"></span>
+<span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">wasmLoader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nx">test</span><span class="o">:</span><span class="w"> </span><span class="sr">/\.wasm$/</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">exclude</span><span class="o">:</span><span class="w"> </span><span class="sr">/node_modules/</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">loaders</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;wasm-loader&quot;</span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="p">};</span><span class="w"></span>
 
-<span class="w">      </span><span class="nx">addBeforeLoader</span><span class="p">(</span><span class="nx">webpackConfig</span><span class="p">,</span><span class="w"> </span><span class="nx">loaderByName</span><span class="p">(</span><span class="s1">&#39;file-loader&#39;</span><span class="p">),</span><span class="w"> </span><span class="nx">wasmLoader</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="nx">addBeforeLoader</span><span class="p">(</span><span class="w"></span>
+<span class="w">                </span><span class="nx">webpackConfig</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nx">loaderByName</span><span class="p">(</span><span class="s2">&quot;file-loader&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">                </span><span class="nx">wasmLoader</span><span class="w"></span>
+<span class="w">            </span><span class="p">);</span><span class="w"></span>
 
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">webpackConfig</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">webpackConfig</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
 </code></pre></div>
 <p>This allows react loaders to properly load in some of our needed .wasm files.</p>
 <h3 id="set-up-website">Set up Website<a class="headerlink" href="#set-up-website" title="Permanent link">&para;</a></h3>
 <p>Create a simple html page with a script tag referencing the webpack bundle that will be built after completing the sample code. Note that you will not have the bundle.js file yet because it will be generated from the index.js file you create.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Web Sample<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span> <span class="p">/&gt;</span>
-  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width,initial-scale=1&quot;</span> <span class="p">/&gt;</span>
-  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;description&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;&quot;</span> <span class="p">/&gt;</span>
-<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Web Sample<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;wallet&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;../bundle.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Web Sample<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width,initial-scale=1&quot;</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;description&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Web Sample<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;wallet&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;../bundle.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>Your file structure should look like this</p>
