@@ -1,6 +1,6 @@
 module github.com/trinsic-id/sdk/go
 
-go 1.16
+go 1.19
 
 require (
 	github.com/google/uuid v1.3.0
