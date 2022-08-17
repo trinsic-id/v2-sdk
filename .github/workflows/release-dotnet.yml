@@ -34,7 +34,7 @@ jobs:
           dotnet pack -p:Configuration=Release -p:PackageVersion=${{ steps.setversion.outputs.packageVersion }} -p:IsBrowser=true -p:PackageId=Trinsic.Web ./Trinsic
         working-directory: ./dotnet
         shell: pwsh
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: nuget
           path: |
