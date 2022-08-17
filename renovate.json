@@ -8,6 +8,6 @@
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
       "automerge": true
     }
-  ]
+  ],
   "prHourlyLimit": 100
 }
