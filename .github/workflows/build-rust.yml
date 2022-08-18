@@ -45,10 +45,12 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: build
+          args: --manifest-path cli/Cargo.toml
       - name: cargo test
         uses: actions-rs/cargo@v1
         with:
           command: test
+          args: --manifest-path cli/Cargo.toml
       - name: Test CLI directly
         run: |
           ./test/Run-Demo.ps1 -Environment Staging -CommandPath ./target/debug/trinsic
