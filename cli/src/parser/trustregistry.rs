@@ -169,7 +169,7 @@ fn remove_framework(args: &ArgMatches) -> Result<TrustRegistryCommand, Error> {
     }))
 }
 
-pub(crate) fn subcommand<'a, 'b>() -> App<'a, 'b> {
+pub(crate) fn subcommand<'a, 'b>() -> App<'a> {
     SubCommand::with_name("trust-registry")
         .about("Manage Trust Registry membership and governance")
         .setting(AppSettings::SubcommandRequiredElseHelp)

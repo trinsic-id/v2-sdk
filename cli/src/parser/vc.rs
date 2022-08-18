@@ -1,7 +1,7 @@
 use crate::error::Error;
 use clap::ArgMatches;
 
-pub(crate) fn parse<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
+pub(crate) fn parse<'a>(args: &'a ArgMatches) -> Result<Command<'a>, Error> {
     if args.is_present("issue") {
         issue(&args.subcommand_matches("issue").expect("Error parsing request"))
     } else if args.is_present("issue-from-template") {
@@ -19,14 +19,14 @@ pub(crate) fn parse<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> 
     }
 }
 
-fn issue<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
+fn issue<'a>(args: &'a ArgMatches) -> Result<Command<'a>, Error> {
     Ok(Command::Issue(IssueArgs {
         document: args.value_of("document").map(|x| x.into()),
         out: args.value_of("out").map(|x| x.into()),
     }))
 }
 
-fn issue_from_template<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
+fn issue_from_template<'a>(args: &'a ArgMatches) -> Result<Command<'a>, Error> {
     Ok(Command::IssueFromTemplate(IssueFromTemplateArgs {
         template_id: args.value_of("template-id").map_or(String::default(), |x| x.to_string()),
         framework_id: args.value_of("framework-id").map(|x| x.to_string()),
@@ -36,20 +36,20 @@ fn issue_from_template<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Erro
     }))
 }
 
-fn get_status<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
+fn get_status<'a>(args: &'a ArgMatches) -> Result<Command<'a>, Error> {
     Ok(Command::GetStatus(GetStatusArgs {
         credential_status_id: args.value_of("credential-status-id").map_or(String::default(), |x| x.to_string()),
     }))
 }
 
-fn update_status<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
+fn update_status<'a>(args: &'a ArgMatches) -> Result<Command<'a>, Error> {
     Ok(Command::UpdateStatus(UpdateStatusArgs {
         credential_status_id: args.value_of("credential-status-id").map_or(String::default(), |x| x.to_string()),
         revoked: args.is_present("revoked"),
     }))
 }
 
-fn create_proof<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
+fn create_proof<'a>(args: &'a ArgMatches) -> Result<Command<'a>, Error> {
     Ok(Command::CreateProof(CreateProofArgs {
         reveal_document: args.value_of("reveal-document-file").map(|x| x.into()),
         document_file: args.value_of("document-file").map(|x| x.into()),
@@ -58,7 +58,7 @@ fn create_proof<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
     }))
 }
 
-fn verify_proof<'a>(args: &'a ArgMatches<'_>) -> Result<Command<'a>, Error> {
+fn verify_proof<'a>(args: &'a ArgMatches) -> Result<Command<'a>, Error> {
     Ok(Command::VerifyProof(VerifyProofArgs {
         proof_document: args.value_of("proof-document"),
     }))

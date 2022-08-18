@@ -158,7 +158,7 @@ fn delete(args: &ArgMatches) -> Result<TemplateCommand, Error> {
     }))
 }
 
-pub(crate) fn subcommand<'a, 'b>() -> App<'a, 'b> {
+pub(crate) fn subcommand<'a, 'b>() -> App<'a> {
     SubCommand::with_name("template")
         .about("Manage templates and schemas for Verifiable Credentials")
         .setting(AppSettings::SubcommandRequiredElseHelp)
