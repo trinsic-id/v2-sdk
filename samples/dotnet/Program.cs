@@ -42,7 +42,7 @@ trinsic.Options.AuthToken = clinic;
 // Read the JSON credential data
 var credentialJson = await File.ReadAllTextAsync(VaccinationCertificateUnsigned);
 // Sign the credential using BBS+ signature scheme
-var credential = await trinsic.Credential.IssueCredentialAsync(new IssueRequest { DocumentJson = credentialJson });
+var credential = await trinsic.Credential.IssueAsync(new IssueRequest { DocumentJson = credentialJson });
 Console.WriteLine($"Credential:\n{credential.SignedDocumentJson}");
 // }
 
