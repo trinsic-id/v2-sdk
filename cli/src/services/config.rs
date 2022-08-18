@@ -84,8 +84,8 @@ use crate::DEBUG;
 
 use super::{Item, Output};
 
-impl From<&ArgMatches<'_>> for CliConfig {
-    fn from(matches: &ArgMatches<'_>) -> Self {
+impl From<&ArgMatches> for CliConfig {
+    fn from(matches: &ArgMatches) -> Self {
         if matches.is_present("debug") {
             unsafe { DEBUG = true }
         }
