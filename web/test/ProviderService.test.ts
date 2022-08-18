@@ -22,12 +22,13 @@ describe("ProviderService Unit Tests", () => {
     let trinsic = new TrinsicService(options);
 
     // createEcosystem() {
-    let createResponse = await trinsic.provider().createEcosystem(
+    let createEcosystemResponseWithProfile = await trinsic.provider().createEcosystem(
       CreateEcosystemRequest.fromPartial({
         description: "Test ecosystem from Node",
         uri: "https://example.com",
       })
     );
+    let createResponse = createEcosystemResponseWithProfile.response;
     // }
 
     expect(createResponse).not.toBeNull();

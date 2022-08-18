@@ -31,8 +31,8 @@ describe("wallet service tests", () => {
       .provider()
       .createEcosystem(CreateEcosystemRequest.fromPartial({}));
 
-    expect(response.ecosystem).not.toBeNull();
-    expect(response.profile).not.toBeNull();
+    expect(response.response.ecosystem).not.toBeNull();
+    expect(response.response.profile).not.toBeNull();
   });
 
   it("Demo: create wallet, set profile, search records, issue credential", async () => {

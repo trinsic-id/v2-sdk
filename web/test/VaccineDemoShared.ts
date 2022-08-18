@@ -22,10 +22,11 @@ export async function vaccineDemo() {
   // }
 
   // createEcosystem() {
-  const ecosystem = await trinsic
+  const createEcosystemResponseWithProfile = await trinsic
     .provider()
     .createEcosystem(CreateEcosystemRequest.fromPartial({}));
-  const ecosystemId = ecosystem.ecosystem!.id;
+  const authToken: string = createEcosystemResponseWithProfile.base64Profile;
+  const ecosystemId = createEcosystemResponseWithProfile.response.ecosystem!.id;
   // }
 
   // setupActors() {
