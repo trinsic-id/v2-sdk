@@ -32,6 +32,8 @@ jobs:
         working-directory: ./cli
     steps:
       - uses: actions/checkout@v3
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v1
       - name: Build and test Rust
         run: |
           rustup component add rustfmt
