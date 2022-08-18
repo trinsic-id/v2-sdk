@@ -74,17 +74,8 @@ github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+
 github.com/stretchr/testify v1.5.1/go.mod h1:5W2xD1RspED5o8YsWQXVCued0rvSQ+mT+I5cxcmMvtA=
 github.com/stretchr/testify v1.7.0 h1:nwc3DEeHmmLAfoZucVR881uASk0Mfjw8xYJ99tb5CcY=
 github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
-github.com/trinsic-id/okapi/go v1.4.0/go.mod h1:8K9N5GlLGylTkoCsyHJakjM+ed4w9vPZqW+kOr6867U=
-github.com/trinsic-id/okapi/go v1.5.0 h1:EsExtCsYXKu4nlA3TAenmCHZH+/5XtuKaMbGQowcAY0=
-github.com/trinsic-id/okapi/go v1.5.0/go.mod h1:aU28oQqJLtqfidWi+z+s9yyl3ejNOdm/MEI+QGpfqpI=
 github.com/trinsic-id/okapi/go v1.6.0 h1:6qVjc41lpqD9gK46B+GLQ+q5KnPp7jhiG+6lRDD3eqc=
 github.com/trinsic-id/okapi/go v1.6.0/go.mod h1:aU28oQqJLtqfidWi+z+s9yyl3ejNOdm/MEI+QGpfqpI=
-github.com/trinsic-id/sdk/go v1.5.0 h1:8zJlMiEl4nW1cbzs1mFv5nUXS5pByTKVID+wAo5+NdM=
-github.com/trinsic-id/sdk/go v1.5.0/go.mod h1:idtJ9bSleDYgjFJmHX2tOQeEvF85NlMg1cRRs/UsQAY=
-github.com/trinsic-id/sdk/go v1.5.1 h1:mVTR+BAvb1lGKZL/i2nErW3ycDG0sswh27AnIwyJ3cM=
-github.com/trinsic-id/sdk/go v1.5.1/go.mod h1:qN6YAc3i2s6YCauxiYzLsh0wq2Pz/dVfvpudjJaXjbg=
-github.com/trinsic-id/sdk/go v1.6.0 h1:jHSjVGLVE3Guj42dnVM0vshyedNDQQJz3tajOTQKf74=
-github.com/trinsic-id/sdk/go v1.6.0/go.mod h1:9vPVjUPQsr/RNVlf5VGpSTcLL+ze+zu4JsptjTUVEsw=
 github.com/trinsic-id/sdk/go v1.7.0 h1:ZMaOTRUJkFtSwYgayz29cW4sn8sjtrKiQHgotAQ9hHk=
 github.com/trinsic-id/sdk/go v1.7.0/go.mod h1:9vPVjUPQsr/RNVlf5VGpSTcLL+ze+zu4JsptjTUVEsw=
 go.opentelemetry.io/proto/otlp v0.7.0/go.mod h1:PqfVotwruBrMGOCsRd/89rSnXhoiJIqeYNgFYFoEGnI=
