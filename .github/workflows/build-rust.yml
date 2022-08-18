@@ -40,9 +40,7 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
             toolchain: stable
-            default: true
             profile: minimal
-            components: rustfmt
       - name: cargo build
         uses: actions-rs/cargo@v1
         with:
