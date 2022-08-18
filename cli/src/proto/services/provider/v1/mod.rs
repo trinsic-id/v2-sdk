@@ -57,6 +57,20 @@ pub mod invitation_status_response {
         /// The invite has expired
         Expired = 3,
     }
+    impl Status {
+        /// String value of the enum field names used in the ProtoBuf definition.
+        ///
+        /// The values are not transformed in any way and thus are considered stable
+        /// (if the ProtoBuf definition does not change) and safe for programmatic use.
+        pub fn as_str_name(&self) -> &'static str {
+            match self {
+                Status::Error => "Error",
+                Status::InvitationSent => "InvitationSent",
+                Status::Completed => "Completed",
+                Status::Expired => "Expired",
+            }
+        }
+    }
 }
 /// Details of an ecosystem
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
@@ -321,16 +335,29 @@ pub enum ParticipantType {
     /// Participant is an organization
     Organization = 1,
 }
-#[doc = r" Generated client implementations."]
+impl ParticipantType {
+    /// String value of the enum field names used in the ProtoBuf definition.
+    ///
+    /// The values are not transformed in any way and thus are considered stable
+    /// (if the ProtoBuf definition does not change) and safe for programmatic use.
+    pub fn as_str_name(&self) -> &'static str {
+        match self {
+            ParticipantType::Individual => "participant_type_individual",
+            ParticipantType::Organization => "participant_type_organization",
+        }
+    }
+}
+/// Generated client implementations.
 pub mod provider_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
+    use tonic::codegen::http::Uri;
     use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct ProviderClient<T> {
         inner: tonic::client::Grpc<T>,
     }
     impl ProviderClient<tonic::transport::Channel> {
-        #[doc = r" Attempt to create a new client by connecting to a given endpoint."]
+        /// Attempt to create a new client by connecting to a given endpoint.
         pub async fn connect<D>(dst: D) -> Result<Self, tonic::transport::Error>
         where
             D: std::convert::TryInto<tonic::transport::Endpoint>,
@@ -343,17 +370,22 @@ pub mod provider_client {
     impl<T> ProviderClient<T>
     where
         T: tonic::client::GrpcService<tonic::body::BoxBody>,
-        T::ResponseBody: Body + Send + 'static,
         T::Error: Into<StdError>,
+        T::ResponseBody: Body<Data = Bytes> + Send + 'static,
         <T::ResponseBody as Body>::Error: Into<StdError> + Send,
     {
         pub fn new(inner: T) -> Self {
             let inner = tonic::client::Grpc::new(inner);
             Self { inner }
         }
+        pub fn with_origin(inner: T, origin: Uri) -> Self {
+            let inner = tonic::client::Grpc::with_origin(inner, origin);
+            Self { inner }
+        }
         pub fn with_interceptor<F>(inner: T, interceptor: F) -> ProviderClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
+            T::ResponseBody: Default,
             T: tonic::codegen::Service<
                 http::Request<tonic::body::BoxBody>,
                 Response = http::Response<<T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody>,
@@ -362,20 +394,22 @@ pub mod provider_client {
         {
             ProviderClient::new(InterceptedService::new(inner, interceptor))
         }
-        #[doc = r" Compress requests with `gzip`."]
-        #[doc = r""]
-        #[doc = r" This requires the server to support it otherwise it might respond with an"]
-        #[doc = r" error."]
-        pub fn send_gzip(mut self) -> Self {
-            self.inner = self.inner.send_gzip();
+        /// Compress requests with the given encoding.
+        ///
+        /// This requires the server to support it otherwise it might respond with an
+        /// error.
+        #[must_use]
+        pub fn send_compressed(mut self, encoding: CompressionEncoding) -> Self {
+            self.inner = self.inner.send_compressed(encoding);
             self
         }
-        #[doc = r" Enable decompressing responses with `gzip`."]
-        pub fn accept_gzip(mut self) -> Self {
-            self.inner = self.inner.accept_gzip();
+        /// Enable decompressing responses.
+        #[must_use]
+        pub fn accept_compressed(mut self, encoding: CompressionEncoding) -> Self {
+            self.inner = self.inner.accept_compressed(encoding);
             self
         }
-        #[doc = " Create new ecosystem and assign the authenticated user as owner"]
+        /// Create new ecosystem and assign the authenticated user as owner
         pub async fn create_ecosystem(
             &mut self,
             request: impl tonic::IntoRequest<super::CreateEcosystemRequest>,
@@ -388,7 +422,7 @@ pub mod provider_client {
             let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/CreateEcosystem");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Update an existing ecosystem"]
+        /// Update an existing ecosystem
         pub async fn update_ecosystem(
             &mut self,
             request: impl tonic::IntoRequest<super::UpdateEcosystemRequest>,
@@ -401,7 +435,7 @@ pub mod provider_client {
             let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/UpdateEcosystem");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Grant user authorization to ecosystem resources"]
+        /// Grant user authorization to ecosystem resources
         pub async fn grant_authorization(
             &mut self,
             request: impl tonic::IntoRequest<super::GrantAuthorizationRequest>,
@@ -414,7 +448,7 @@ pub mod provider_client {
             let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/GrantAuthorization");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Revoke user authorization to ecosystem resources"]
+        /// Revoke user authorization to ecosystem resources
         pub async fn revoke_authorization(
             &mut self,
             request: impl tonic::IntoRequest<super::RevokeAuthorizationRequest>,
@@ -427,7 +461,7 @@ pub mod provider_client {
             let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/RevokeAuthorization");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Retreive the list of permissions for this particular account/ecosystem"]
+        /// Retreive the list of permissions for this particular account/ecosystem
         pub async fn get_authorizations(
             &mut self,
             request: impl tonic::IntoRequest<super::GetAuthorizationsRequest>,
@@ -440,7 +474,7 @@ pub mod provider_client {
             let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/GetAuthorizations");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Add a webhook endpoint to the ecosystem"]
+        /// Add a webhook endpoint to the ecosystem
         pub async fn add_webhook(
             &mut self,
             request: impl tonic::IntoRequest<super::AddWebhookRequest>,
@@ -453,7 +487,7 @@ pub mod provider_client {
             let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/AddWebhook");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Delete a webhook endpoint from the ecosystem"]
+        /// Delete a webhook endpoint from the ecosystem
         pub async fn delete_webhook(
             &mut self,
             request: impl tonic::IntoRequest<super::DeleteWebhookRequest>,
@@ -466,7 +500,7 @@ pub mod provider_client {
             let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/DeleteWebhook");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Get ecosystem information"]
+        /// Get ecosystem information
         pub async fn ecosystem_info(
             &mut self,
             request: impl tonic::IntoRequest<super::EcosystemInfoRequest>,
@@ -479,8 +513,8 @@ pub mod provider_client {
             let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/EcosystemInfo");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Generates an unprotected authentication token that can be used to"]
-        #[doc = " configure server side applications"]
+        /// Generates an unprotected authentication token that can be used to
+        /// configure server side applications
         pub async fn generate_token(
             &mut self,
             request: impl tonic::IntoRequest<super::GenerateTokenRequest>,
@@ -493,7 +527,7 @@ pub mod provider_client {
             let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/GenerateToken");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Invite a user to the ecosystem"]
+        /// Invite a user to the ecosystem
         pub async fn invite(
             &mut self,
             request: impl tonic::IntoRequest<super::InviteRequest>,
@@ -506,7 +540,7 @@ pub mod provider_client {
             let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/Invite");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Check the status of an invitation"]
+        /// Check the status of an invitation
         pub async fn invitation_status(
             &mut self,
             request: impl tonic::IntoRequest<super::InvitationStatusRequest>,
@@ -519,7 +553,7 @@ pub mod provider_client {
             let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/InvitationStatus");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Returns the public key being used to create/verify oberon tokens"]
+        /// Returns the public key being used to create/verify oberon tokens
         pub async fn get_oberon_key(
             &mut self,
             request: impl tonic::IntoRequest<super::GetOberonKeyRequest>,
@@ -532,7 +566,7 @@ pub mod provider_client {
             let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/GetOberonKey");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Generate a signed token (JWT) that can be used to connect to the message bus"]
+        /// Generate a signed token (JWT) that can be used to connect to the message bus
         pub async fn get_event_token(
             &mut self,
             request: impl tonic::IntoRequest<super::GetEventTokenRequest>,
