@@ -32,11 +32,25 @@ jobs:
         working-directory: ./cli
     steps:
       - uses: actions/checkout@v3
-      - name: Build and test Rust
-        run: |
-          rustup component add rustfmt
-          cargo build
-          cargo test
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: install toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+            toolchain: stable
+            profile: minimal
+      - name: cargo build
+        uses: actions-rs/cargo@v1
+        with:
+          command: build
+          args: --manifest-path cli/Cargo.toml
+      - name: cargo test
+        uses: actions-rs/cargo@v1
+        with:
+          command: test
+          args: --manifest-path cli/Cargo.toml
       - name: Test CLI directly
         run: |
           ./test/Run-Demo.ps1 -Environment Staging -CommandPath ./target/debug/trinsic

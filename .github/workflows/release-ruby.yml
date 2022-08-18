@@ -21,9 +21,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Set up Ruby 2.7
-        uses: ruby/setup-ruby@v1.115.0
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7
+          ruby-version: '3.0'
       - uses: trinsic-id/set-version@v0.1
         id: setversion
         with:

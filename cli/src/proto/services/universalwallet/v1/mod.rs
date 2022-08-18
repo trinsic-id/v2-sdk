@@ -87,16 +87,17 @@ pub struct DeleteItemRequest {
 /// Response to `DeleteItemRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct DeleteItemResponse {}
-#[doc = r" Generated client implementations."]
+/// Generated client implementations.
 pub mod universal_wallet_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
+    use tonic::codegen::http::Uri;
     use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct UniversalWalletClient<T> {
         inner: tonic::client::Grpc<T>,
     }
     impl UniversalWalletClient<tonic::transport::Channel> {
-        #[doc = r" Attempt to create a new client by connecting to a given endpoint."]
+        /// Attempt to create a new client by connecting to a given endpoint.
         pub async fn connect<D>(dst: D) -> Result<Self, tonic::transport::Error>
         where
             D: std::convert::TryInto<tonic::transport::Endpoint>,
@@ -109,17 +110,22 @@ pub mod universal_wallet_client {
     impl<T> UniversalWalletClient<T>
     where
         T: tonic::client::GrpcService<tonic::body::BoxBody>,
-        T::ResponseBody: Body + Send + 'static,
         T::Error: Into<StdError>,
+        T::ResponseBody: Body<Data = Bytes> + Send + 'static,
         <T::ResponseBody as Body>::Error: Into<StdError> + Send,
     {
         pub fn new(inner: T) -> Self {
             let inner = tonic::client::Grpc::new(inner);
             Self { inner }
         }
+        pub fn with_origin(inner: T, origin: Uri) -> Self {
+            let inner = tonic::client::Grpc::with_origin(inner, origin);
+            Self { inner }
+        }
         pub fn with_interceptor<F>(inner: T, interceptor: F) -> UniversalWalletClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
+            T::ResponseBody: Default,
             T: tonic::codegen::Service<
                 http::Request<tonic::body::BoxBody>,
                 Response = http::Response<<T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody>,
@@ -128,20 +134,22 @@ pub mod universal_wallet_client {
         {
             UniversalWalletClient::new(InterceptedService::new(inner, interceptor))
         }
-        #[doc = r" Compress requests with `gzip`."]
-        #[doc = r""]
-        #[doc = r" This requires the server to support it otherwise it might respond with an"]
-        #[doc = r" error."]
-        pub fn send_gzip(mut self) -> Self {
-            self.inner = self.inner.send_gzip();
+        /// Compress requests with the given encoding.
+        ///
+        /// This requires the server to support it otherwise it might respond with an
+        /// error.
+        #[must_use]
+        pub fn send_compressed(mut self, encoding: CompressionEncoding) -> Self {
+            self.inner = self.inner.send_compressed(encoding);
             self
         }
-        #[doc = r" Enable decompressing responses with `gzip`."]
-        pub fn accept_gzip(mut self) -> Self {
-            self.inner = self.inner.accept_gzip();
+        /// Enable decompressing responses.
+        #[must_use]
+        pub fn accept_compressed(mut self, encoding: CompressionEncoding) -> Self {
+            self.inner = self.inner.accept_compressed(encoding);
             self
         }
-        #[doc = " Retrieve an item from the wallet with a given item identifier"]
+        /// Retrieve an item from the wallet with a given item identifier
         pub async fn get_item(
             &mut self,
             request: impl tonic::IntoRequest<super::GetItemRequest>,
@@ -154,7 +162,7 @@ pub mod universal_wallet_client {
             let path = http::uri::PathAndQuery::from_static("/services.universalwallet.v1.UniversalWallet/GetItem");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Search the wallet using a SQL syntax"]
+        /// Search the wallet using a SQL syntax
         pub async fn search(
             &mut self,
             request: impl tonic::IntoRequest<super::SearchRequest>,
@@ -167,7 +175,7 @@ pub mod universal_wallet_client {
             let path = http::uri::PathAndQuery::from_static("/services.universalwallet.v1.UniversalWallet/Search");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Insert an item into the wallet"]
+        /// Insert an item into the wallet
         pub async fn insert_item(
             &mut self,
             request: impl tonic::IntoRequest<super::InsertItemRequest>,
@@ -180,7 +188,7 @@ pub mod universal_wallet_client {
             let path = http::uri::PathAndQuery::from_static("/services.universalwallet.v1.UniversalWallet/InsertItem");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Update an item in the wallet"]
+        /// Update an item in the wallet
         pub async fn update_item(
             &mut self,
             request: impl tonic::IntoRequest<super::UpdateItemRequest>,
@@ -193,7 +201,7 @@ pub mod universal_wallet_client {
             let path = http::uri::PathAndQuery::from_static("/services.universalwallet.v1.UniversalWallet/UpdateItem");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Delete an item from the wallet permanently"]
+        /// Delete an item from the wallet permanently
         pub async fn delete_item(
             &mut self,
             request: impl tonic::IntoRequest<super::DeleteItemRequest>,

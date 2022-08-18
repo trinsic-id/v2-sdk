@@ -1,7 +1,7 @@
 use std::fs::{copy, remove_file};
 
 fn main() {
-    let config = tonic_build::configure().build_server(false).out_dir("./src/proto").format(true);
+    let config = tonic_build::configure().build_server(false).out_dir("./src/proto");
 
     config
         .compile_well_known_types(true)

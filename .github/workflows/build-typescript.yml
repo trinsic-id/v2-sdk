@@ -26,7 +26,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ ubuntu-latest, windows-latest, macos-latest ]
-        node-version: [ 14, 16, 18 ]
+        node-version: [ 16, 18 ]
     defaults:
       run:
         working-directory: web
@@ -42,7 +42,6 @@ jobs:
           cache: 'npm'
       - run: |
           npm ci
-          npm run build
           npm run test
         name: "Build and Test Package: Node v${{ matrix.node-version }}"
         env:
@@ -51,7 +50,7 @@ jobs:
           TEST_SERVER_USE_TLS: ${{ secrets.TEST_SERVER_USE_TLS }}
         shell: pwsh
       - name: "Upload coverage to Codecov"
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
         with:
           fail_ci_if_error: true
           directory: web

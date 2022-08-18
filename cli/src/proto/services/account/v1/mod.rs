@@ -205,16 +205,32 @@ pub enum ConfirmationMethod {
     /// Third-party method of confirmation is required
     Other = 10,
 }
-#[doc = r" Generated client implementations."]
+impl ConfirmationMethod {
+    /// String value of the enum field names used in the ProtoBuf definition.
+    ///
+    /// The values are not transformed in any way and thus are considered stable
+    /// (if the ProtoBuf definition does not change) and safe for programmatic use.
+    pub fn as_str_name(&self) -> &'static str {
+        match self {
+            ConfirmationMethod::None => "None",
+            ConfirmationMethod::Email => "Email",
+            ConfirmationMethod::Sms => "Sms",
+            ConfirmationMethod::ConnectedDevice => "ConnectedDevice",
+            ConfirmationMethod::Other => "Other",
+        }
+    }
+}
+/// Generated client implementations.
 pub mod account_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
+    use tonic::codegen::http::Uri;
     use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct AccountClient<T> {
         inner: tonic::client::Grpc<T>,
     }
     impl AccountClient<tonic::transport::Channel> {
-        #[doc = r" Attempt to create a new client by connecting to a given endpoint."]
+        /// Attempt to create a new client by connecting to a given endpoint.
         pub async fn connect<D>(dst: D) -> Result<Self, tonic::transport::Error>
         where
             D: std::convert::TryInto<tonic::transport::Endpoint>,
@@ -227,17 +243,22 @@ pub mod account_client {
     impl<T> AccountClient<T>
     where
         T: tonic::client::GrpcService<tonic::body::BoxBody>,
-        T::ResponseBody: Body + Send + 'static,
         T::Error: Into<StdError>,
+        T::ResponseBody: Body<Data = Bytes> + Send + 'static,
         <T::ResponseBody as Body>::Error: Into<StdError> + Send,
     {
         pub fn new(inner: T) -> Self {
             let inner = tonic::client::Grpc::new(inner);
             Self { inner }
         }
+        pub fn with_origin(inner: T, origin: Uri) -> Self {
+            let inner = tonic::client::Grpc::with_origin(inner, origin);
+            Self { inner }
+        }
         pub fn with_interceptor<F>(inner: T, interceptor: F) -> AccountClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
+            T::ResponseBody: Default,
             T: tonic::codegen::Service<
                 http::Request<tonic::body::BoxBody>,
                 Response = http::Response<<T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody>,
@@ -246,20 +267,22 @@ pub mod account_client {
         {
             AccountClient::new(InterceptedService::new(inner, interceptor))
         }
-        #[doc = r" Compress requests with `gzip`."]
-        #[doc = r""]
-        #[doc = r" This requires the server to support it otherwise it might respond with an"]
-        #[doc = r" error."]
-        pub fn send_gzip(mut self) -> Self {
-            self.inner = self.inner.send_gzip();
+        /// Compress requests with the given encoding.
+        ///
+        /// This requires the server to support it otherwise it might respond with an
+        /// error.
+        #[must_use]
+        pub fn send_compressed(mut self, encoding: CompressionEncoding) -> Self {
+            self.inner = self.inner.send_compressed(encoding);
             self
         }
-        #[doc = r" Enable decompressing responses with `gzip`."]
-        pub fn accept_gzip(mut self) -> Self {
-            self.inner = self.inner.accept_gzip();
+        /// Enable decompressing responses.
+        #[must_use]
+        pub fn accept_compressed(mut self, encoding: CompressionEncoding) -> Self {
+            self.inner = self.inner.accept_compressed(encoding);
             self
         }
-        #[doc = " Sign in to an already existing account"]
+        /// Sign in to an already existing account
         pub async fn sign_in(
             &mut self,
             request: impl tonic::IntoRequest<super::SignInRequest>,
@@ -272,7 +295,7 @@ pub mod account_client {
             let path = http::uri::PathAndQuery::from_static("/services.account.v1.Account/SignIn");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Begin login flow for specified account, creating one if it does not already exist"]
+        /// Begin login flow for specified account, creating one if it does not already exist
         pub async fn login(
             &mut self,
             request: impl tonic::IntoRequest<super::LoginRequest>,
@@ -285,7 +308,7 @@ pub mod account_client {
             let path = http::uri::PathAndQuery::from_static("/services.account.v1.Account/Login");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Finalize login flow with two-factor confirmation code"]
+        /// Finalize login flow with two-factor confirmation code
         pub async fn login_confirm(
             &mut self,
             request: impl tonic::IntoRequest<super::LoginConfirmRequest>,
@@ -298,7 +321,7 @@ pub mod account_client {
             let path = http::uri::PathAndQuery::from_static("/services.account.v1.Account/LoginConfirm");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Get account information"]
+        /// Get account information
         pub async fn info(
             &mut self,
             request: impl tonic::IntoRequest<super::AccountInfoRequest>,
@@ -311,7 +334,7 @@ pub mod account_client {
             let path = http::uri::PathAndQuery::from_static("/services.account.v1.Account/Info");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " List all connected devices"]
+        /// List all connected devices
         pub async fn list_devices(
             &mut self,
             request: impl tonic::IntoRequest<super::ListDevicesRequest>,
@@ -324,7 +347,7 @@ pub mod account_client {
             let path = http::uri::PathAndQuery::from_static("/services.account.v1.Account/ListDevices");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Revoke device access to the account's cloud wallet"]
+        /// Revoke device access to the account's cloud wallet
         pub async fn revoke_device(
             &mut self,
             request: impl tonic::IntoRequest<super::RevokeDeviceRequest>,
@@ -337,7 +360,7 @@ pub mod account_client {
             let path = http::uri::PathAndQuery::from_static("/services.account.v1.Account/RevokeDevice");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Authorize Ecosystem to receive webhook events"]
+        /// Authorize Ecosystem to receive webhook events
         pub async fn authorize_webhook(
             &mut self,
             request: impl tonic::IntoRequest<super::AuthorizeWebhookRequest>,
