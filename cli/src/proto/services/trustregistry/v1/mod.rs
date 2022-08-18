@@ -158,7 +158,7 @@ pub mod get_membership_status_request {
         /// DID URI of member
         #[prost(string, tag = "2")]
         DidUri(::prost::alloc::string::String),
-        ///X.509 certificate of member
+        /// X.509 certificate of member
         #[prost(string, tag = "3")]
         X509Cert(::prost::alloc::string::String),
     }
@@ -202,16 +202,32 @@ pub enum RegistrationStatus {
     /// Member is not associated with given credential schema in the EGF
     NotFound = 10,
 }
-#[doc = r" Generated client implementations."]
+impl RegistrationStatus {
+    /// String value of the enum field names used in the ProtoBuf definition.
+    ///
+    /// The values are not transformed in any way and thus are considered stable
+    /// (if the ProtoBuf definition does not change) and safe for programmatic use.
+    pub fn as_str_name(&self) -> &'static str {
+        match self {
+            RegistrationStatus::Current => "CURRENT",
+            RegistrationStatus::Expired => "EXPIRED",
+            RegistrationStatus::Terminated => "TERMINATED",
+            RegistrationStatus::Revoked => "REVOKED",
+            RegistrationStatus::NotFound => "NOT_FOUND",
+        }
+    }
+}
+/// Generated client implementations.
 pub mod trust_registry_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
+    use tonic::codegen::http::Uri;
     use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct TrustRegistryClient<T> {
         inner: tonic::client::Grpc<T>,
     }
     impl TrustRegistryClient<tonic::transport::Channel> {
-        #[doc = r" Attempt to create a new client by connecting to a given endpoint."]
+        /// Attempt to create a new client by connecting to a given endpoint.
         pub async fn connect<D>(dst: D) -> Result<Self, tonic::transport::Error>
         where
             D: std::convert::TryInto<tonic::transport::Endpoint>,
@@ -224,17 +240,22 @@ pub mod trust_registry_client {
     impl<T> TrustRegistryClient<T>
     where
         T: tonic::client::GrpcService<tonic::body::BoxBody>,
-        T::ResponseBody: Body + Send + 'static,
         T::Error: Into<StdError>,
+        T::ResponseBody: Body<Data = Bytes> + Send + 'static,
         <T::ResponseBody as Body>::Error: Into<StdError> + Send,
     {
         pub fn new(inner: T) -> Self {
             let inner = tonic::client::Grpc::new(inner);
             Self { inner }
         }
+        pub fn with_origin(inner: T, origin: Uri) -> Self {
+            let inner = tonic::client::Grpc::with_origin(inner, origin);
+            Self { inner }
+        }
         pub fn with_interceptor<F>(inner: T, interceptor: F) -> TrustRegistryClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
+            T::ResponseBody: Default,
             T: tonic::codegen::Service<
                 http::Request<tonic::body::BoxBody>,
                 Response = http::Response<<T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody>,
@@ -243,20 +264,22 @@ pub mod trust_registry_client {
         {
             TrustRegistryClient::new(InterceptedService::new(inner, interceptor))
         }
-        #[doc = r" Compress requests with `gzip`."]
-        #[doc = r""]
-        #[doc = r" This requires the server to support it otherwise it might respond with an"]
-        #[doc = r" error."]
-        pub fn send_gzip(mut self) -> Self {
-            self.inner = self.inner.send_gzip();
+        /// Compress requests with the given encoding.
+        ///
+        /// This requires the server to support it otherwise it might respond with an
+        /// error.
+        #[must_use]
+        pub fn send_compressed(mut self, encoding: CompressionEncoding) -> Self {
+            self.inner = self.inner.send_compressed(encoding);
             self
         }
-        #[doc = r" Enable decompressing responses with `gzip`."]
-        pub fn accept_gzip(mut self) -> Self {
-            self.inner = self.inner.accept_gzip();
+        /// Enable decompressing responses.
+        #[must_use]
+        pub fn accept_compressed(mut self, encoding: CompressionEncoding) -> Self {
+            self.inner = self.inner.accept_compressed(encoding);
             self
         }
-        #[doc = " Add a governance framework to the ecosystem"]
+        /// Add a governance framework to the ecosystem
         pub async fn add_framework(
             &mut self,
             request: impl tonic::IntoRequest<super::AddFrameworkRequest>,
@@ -269,7 +292,7 @@ pub mod trust_registry_client {
             let path = http::uri::PathAndQuery::from_static("/services.trustregistry.v1.TrustRegistry/AddFramework");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Remove a governance framework from the ecosystem"]
+        /// Remove a governance framework from the ecosystem
         pub async fn remove_framework(
             &mut self,
             request: impl tonic::IntoRequest<super::RemoveFrameworkRequest>,
@@ -282,7 +305,7 @@ pub mod trust_registry_client {
             let path = http::uri::PathAndQuery::from_static("/services.trustregistry.v1.TrustRegistry/RemoveFramework");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Search the ecosystem's governance frameworks"]
+        /// Search the ecosystem's governance frameworks
         pub async fn search_registry(
             &mut self,
             request: impl tonic::IntoRequest<super::SearchRegistryRequest>,
@@ -295,7 +318,7 @@ pub mod trust_registry_client {
             let path = http::uri::PathAndQuery::from_static("/services.trustregistry.v1.TrustRegistry/SearchRegistry");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Register an authoritative issuer for a credential schema"]
+        /// Register an authoritative issuer for a credential schema
         pub async fn register_member(
             &mut self,
             request: impl tonic::IntoRequest<super::RegisterMemberRequest>,
@@ -308,7 +331,7 @@ pub mod trust_registry_client {
             let path = http::uri::PathAndQuery::from_static("/services.trustregistry.v1.TrustRegistry/RegisterMember");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Removes an authoritative issuer for a credential schema from the trust registry"]
+        /// Removes an authoritative issuer for a credential schema from the trust registry
         pub async fn unregister_member(
             &mut self,
             request: impl tonic::IntoRequest<super::UnregisterMemberRequest>,
@@ -321,7 +344,7 @@ pub mod trust_registry_client {
             let path = http::uri::PathAndQuery::from_static("/services.trustregistry.v1.TrustRegistry/UnregisterMember");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Fetch the membership status of an issuer for a given credential schema in a trust registry"]
+        /// Fetch the membership status of an issuer for a given credential schema in a trust registry
         pub async fn get_membership_status(
             &mut self,
             request: impl tonic::IntoRequest<super::GetMembershipStatusRequest>,
@@ -334,7 +357,7 @@ pub mod trust_registry_client {
             let path = http::uri::PathAndQuery::from_static("/services.trustregistry.v1.TrustRegistry/GetMembershipStatus");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Not implemented."]
+        /// Not implemented.
         pub async fn fetch_data(
             &mut self,
             request: impl tonic::IntoRequest<super::FetchDataRequest>,

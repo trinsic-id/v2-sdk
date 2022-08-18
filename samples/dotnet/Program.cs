@@ -42,7 +42,7 @@ trinsic.Options.AuthToken = clinic;
 // Read the JSON credential data
 var credentialJson = await File.ReadAllTextAsync(VaccinationCertificateUnsigned);
 // Sign the credential using BBS+ signature scheme
-var credential = await trinsic.Credential.IssueCredentialAsync(new IssueRequest { DocumentJson = credentialJson });
+var credential = await trinsic.Credential.IssueAsync(new IssueRequest { DocumentJson = credentialJson });
 Console.WriteLine($"Credential:\n{credential.SignedDocumentJson}");
 // }
 
@@ -60,7 +60,7 @@ allison = File.ReadAllText("allison.txt");
 trinsic.Wallet.Options.AuthToken = trinsic.Credential.Options.AuthToken = allison;
 
 var insertResponse = await trinsic.Wallet.InsertItemAsync(new InsertItemRequest { ItemJson = credential.SignedDocumentJson });
-var walletItems = await trinsic.Wallet.SearchAsync(new SearchRequest());
+var walletItems = await trinsic.Wallet.SearchWalletAsync(new SearchRequest());
 Console.WriteLine($"Last wallet item:\n{walletItems.Items.ToList().Last()}");
 // }
 

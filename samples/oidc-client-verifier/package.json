@@ -10,7 +10,7 @@
   "author": "Trinsic",
   "license": "ISC",
   "devDependencies": {
-    "parcel": "2.4.1"
+    "parcel": "2.7.0"
   },
   "dependencies": {
     "oidc-client-ts": "2.0.5"
