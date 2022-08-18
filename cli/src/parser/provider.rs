@@ -2,7 +2,7 @@ use crate::error::Error;
 use clap::ArgMatches;
 use std::fmt::{self, Display, Formatter};
 
-pub(crate) fn parse<'a>(args: &'a ArgMatches) -> Result<Command<'a>, Error> {
+pub(crate) fn parse(args: &ArgMatches) -> Result<Command, Error> {
     if args.is_present("create-ecosystem") {
         create_ecosystem(&args.subcommand_matches("create-ecosystem").expect("Error parsing request"))
     } else if args.is_present("update-ecosystem") {
@@ -20,7 +20,7 @@ pub(crate) fn parse<'a>(args: &'a ArgMatches) -> Result<Command<'a>, Error> {
     }
 }
 
-fn create_ecosystem<'a>(args: &'a ArgMatches) -> Result<Command<'a>, Error> {
+fn create_ecosystem(args: &ArgMatches) -> Result<Command, Error> {
     let ecosystem = CreateEcosystemArgs {
         name: args.value_of("name").map(|x| x.into()),
         email: args.value_of("email").map(|x| x.into()),
@@ -30,7 +30,7 @@ fn create_ecosystem<'a>(args: &'a ArgMatches) -> Result<Command<'a>, Error> {
     Ok(Command::CreateEcosystem(ecosystem))
 }
 
-fn update_ecosystem<'a>(args: &'a ArgMatches) -> Result<Command<'a>, Error> {
+fn update_ecosystem(args: &ArgMatches) -> Result<Command, Error> {
     if !args.is_present("description") && !args.is_present("uri") {
         return Err(Error::MissingArguments);
     }
@@ -65,13 +65,13 @@ fn add_webhook<'a>(args: &'a ArgMatches) -> Result<Command<'a>, Error> {
     }))
 }
 
-fn delete_webhook<'a>(args: &'a ArgMatches) -> Result<Command<'a>, Error> {
+fn delete_webhook(args: &ArgMatches) -> Result<Command, Error> {
     Ok(Command::DeleteWebhook(DeleteWebhookArgs {
         webhook_id: args.value_of("webhook-id").map(|x| x.into()).unwrap(),
     }))
 }
 
-fn invite<'a>(args: &'a ArgMatches) -> Result<Command<'a>, Error> {
+fn invite(args: &ArgMatches) -> Result<Command, Error> {
     Ok(Command::Invite(InviteArgs {
         participant_type: if args.is_present("organization") {
             ParticipantType::Organization

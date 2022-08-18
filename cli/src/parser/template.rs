@@ -210,7 +210,7 @@ pub mod test {
 
     #[test]
     fn serialize_fields() {
-        let f = super::Field {
+        let f = Field {
             optional: false,
             r#type: FieldType::Number,
             description: "desc".to_string(),

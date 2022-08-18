@@ -1,7 +1,7 @@
 use crate::error::Error;
 use clap::ArgMatches;
 
-pub(crate) fn parse<'a>(args: &'a ArgMatches) -> Result<Command<'a>, Error> {
+pub(crate) fn parse(args: &ArgMatches) -> Result<Command, Error> {
     if args.is_present("search") {
         return search(&args.subcommand_matches("search").expect("Error parsing request"));
     } else if args.is_present("insert-item") {
@@ -15,26 +15,26 @@ pub(crate) fn parse<'a>(args: &'a ArgMatches) -> Result<Command<'a>, Error> {
     }
 }
 
-fn search<'a>(args: &'a ArgMatches) -> Result<Command<'a>, Error> {
+fn search(args: &ArgMatches) -> Result<Command, Error> {
     Ok(Command::Search(SearchArgs {
         query: args.value_of("query"),
     }))
 }
 
-fn insert_item<'a>(args: &'a ArgMatches) -> Result<Command<'a>, Error> {
+fn insert_item(args: &ArgMatches) -> Result<Command, Error> {
     Ok(Command::InsertItem(InsertItemArgs {
         item_type: args.value_of("type"),
         item: args.value_of("item"),
     }))
 }
 
-fn delete_item<'a>(args: &'a ArgMatches) -> Result<Command<'a>, Error> {
+fn delete_item(args: &ArgMatches) -> Result<Command, Error> {
     Ok(Command::DeleteItem(DeleteItemArgs {
         item_id: args.value_of("item-id"),
     }))
 }
 
-fn send<'a>(args: &'a ArgMatches) -> Result<Command<'a>, Error> {
+fn send(args: &ArgMatches) -> Result<Command, Error> {
     Ok(Command::Send(SendArgs {
         email: args.value_of("email"),
         item: args.value_of("item"),

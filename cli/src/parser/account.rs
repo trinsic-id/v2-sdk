@@ -2,7 +2,7 @@ use clap::ArgMatches;
 
 use crate::error::Error;
 
-pub(crate) fn parse<'a>(args: &'a ArgMatches) -> Result<Command<'a>, Error> {
+pub(crate) fn parse(args: &ArgMatches) -> Result<Command, Error> {
     if args.is_present("login") {
         sign_in(&args.subcommand_matches("login").expect("Error parsing request"))
     } else if args.is_present("info") {
@@ -14,7 +14,7 @@ pub(crate) fn parse<'a>(args: &'a ArgMatches) -> Result<Command<'a>, Error> {
     }
 }
 
-fn sign_in<'a>(args: &'a ArgMatches) -> Result<Command<'a>, Error> {
+fn sign_in(args: &ArgMatches) -> Result<Command, Error> {
     Ok(Command::SignIn(SignInArgs {
         email: args.value_of("email"),
         invitation_code: args.value_of("invitation-code"),
@@ -22,7 +22,7 @@ fn sign_in<'a>(args: &'a ArgMatches) -> Result<Command<'a>, Error> {
     }))
 }
 
-fn info<'a>(_args: &'a ArgMatches) -> Result<Command<'a>, Error> {
+fn info(_args: &ArgMatches) -> Result<Command, Error> {
     Ok(Command::Info(InfoArgs {}))
 }
 

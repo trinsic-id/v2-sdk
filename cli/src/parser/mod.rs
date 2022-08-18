@@ -9,7 +9,7 @@ pub mod trustregistry;
 pub mod vc;
 pub mod wallet;
 
-pub(crate) fn parse<'a>(args: &'a ArgMatches) -> Result<Service<'a>, Error> {
+pub(crate) fn parse(args: &ArgMatches) -> Result<Service, Error> {
     Ok(if args.is_present("wallet") {
         Service::Wallet(wallet::parse(&args.subcommand_matches("wallet").expect("Error parsing request"))?)
     } else if args.is_present("config") {

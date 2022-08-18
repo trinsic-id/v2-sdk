@@ -23,7 +23,7 @@ pub enum ConfigCommand {
     Save(ConfigArgs),
 }
 
-pub fn parse<'a>(args: &'a ArgMatches) -> ConfigCommand {
+pub fn parse(args: &ArgMatches) -> ConfigCommand {
     let mut config_args = ConfigArgs { ..Default::default() };
 
     if args.is_present("server-endpoint") {
