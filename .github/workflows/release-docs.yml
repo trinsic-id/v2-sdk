@@ -21,7 +21,7 @@ jobs:
           pip install -r ./python/requirements.txt
           pip install git+https://${{ secrets.MKDOCS_INSIDERS_TOKEN }}@github.com/squidfunk/mkdocs-material-insiders.git
       - name: Set up Go
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v3
         with:
           go-version: ^1.16
       - name: Install Protoc
