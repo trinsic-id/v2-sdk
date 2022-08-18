@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"fmt"
-	account "github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
 	sdk "github.com/trinsic-id/sdk/go/services"
 )
 
@@ -13,7 +12,7 @@ func main() {
 		panic("Account service not created")
 	}
 
-	profile, _, err := trinsicService.Account().SignIn(context.Background(), &account.SignInRequest{})
+	profile, err := trinsicService.Account().LoginAnonymous(context.Background())
 	if err != nil {
 		panic("Sign in failed!")
 	}

@@ -1437,6 +1437,7 @@ type GrantAuthorizationRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Types that are assignable to Account:
+	//
 	//	*GrantAuthorizationRequest_Email
 	//	*GrantAuthorizationRequest_WalletId
 	Account isGrantAuthorizationRequest_Account `protobuf_oneof:"account"`
@@ -1580,6 +1581,7 @@ type RevokeAuthorizationRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Types that are assignable to Account:
+	//
 	//	*RevokeAuthorizationRequest_Email
 	//	*RevokeAuthorizationRequest_WalletId
 	Account isRevokeAuthorizationRequest_Account `protobuf_oneof:"account"`

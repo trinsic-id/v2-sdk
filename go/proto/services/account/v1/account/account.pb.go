@@ -867,6 +867,7 @@ type LoginResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Types that are assignable to Response:
+	//
 	//	*LoginResponse_Challenge
 	//	*LoginResponse_Profile
 	Response isLoginResponse_Response `protobuf_oneof:"response"`

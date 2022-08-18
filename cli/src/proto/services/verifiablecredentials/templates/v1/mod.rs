@@ -169,16 +169,31 @@ pub enum FieldType {
     Bool = 2,
     Datetime = 4,
 }
-#[doc = r" Generated client implementations."]
+impl FieldType {
+    /// String value of the enum field names used in the ProtoBuf definition.
+    ///
+    /// The values are not transformed in any way and thus are considered stable
+    /// (if the ProtoBuf definition does not change) and safe for programmatic use.
+    pub fn as_str_name(&self) -> &'static str {
+        match self {
+            FieldType::String => "STRING",
+            FieldType::Number => "NUMBER",
+            FieldType::Bool => "BOOL",
+            FieldType::Datetime => "DATETIME",
+        }
+    }
+}
+/// Generated client implementations.
 pub mod credential_templates_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
+    use tonic::codegen::http::Uri;
     use tonic::codegen::*;
     #[derive(Debug, Clone)]
     pub struct CredentialTemplatesClient<T> {
         inner: tonic::client::Grpc<T>,
     }
     impl CredentialTemplatesClient<tonic::transport::Channel> {
-        #[doc = r" Attempt to create a new client by connecting to a given endpoint."]
+        /// Attempt to create a new client by connecting to a given endpoint.
         pub async fn connect<D>(dst: D) -> Result<Self, tonic::transport::Error>
         where
             D: std::convert::TryInto<tonic::transport::Endpoint>,
@@ -191,17 +206,22 @@ pub mod credential_templates_client {
     impl<T> CredentialTemplatesClient<T>
     where
         T: tonic::client::GrpcService<tonic::body::BoxBody>,
-        T::ResponseBody: Body + Send + 'static,
         T::Error: Into<StdError>,
+        T::ResponseBody: Body<Data = Bytes> + Send + 'static,
         <T::ResponseBody as Body>::Error: Into<StdError> + Send,
     {
         pub fn new(inner: T) -> Self {
             let inner = tonic::client::Grpc::new(inner);
             Self { inner }
         }
+        pub fn with_origin(inner: T, origin: Uri) -> Self {
+            let inner = tonic::client::Grpc::with_origin(inner, origin);
+            Self { inner }
+        }
         pub fn with_interceptor<F>(inner: T, interceptor: F) -> CredentialTemplatesClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
+            T::ResponseBody: Default,
             T: tonic::codegen::Service<
                 http::Request<tonic::body::BoxBody>,
                 Response = http::Response<<T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody>,
@@ -210,20 +230,22 @@ pub mod credential_templates_client {
         {
             CredentialTemplatesClient::new(InterceptedService::new(inner, interceptor))
         }
-        #[doc = r" Compress requests with `gzip`."]
-        #[doc = r""]
-        #[doc = r" This requires the server to support it otherwise it might respond with an"]
-        #[doc = r" error."]
-        pub fn send_gzip(mut self) -> Self {
-            self.inner = self.inner.send_gzip();
+        /// Compress requests with the given encoding.
+        ///
+        /// This requires the server to support it otherwise it might respond with an
+        /// error.
+        #[must_use]
+        pub fn send_compressed(mut self, encoding: CompressionEncoding) -> Self {
+            self.inner = self.inner.send_compressed(encoding);
             self
         }
-        #[doc = r" Enable decompressing responses with `gzip`."]
-        pub fn accept_gzip(mut self) -> Self {
-            self.inner = self.inner.accept_gzip();
+        /// Enable decompressing responses.
+        #[must_use]
+        pub fn accept_compressed(mut self, encoding: CompressionEncoding) -> Self {
+            self.inner = self.inner.accept_compressed(encoding);
             self
         }
-        #[doc = " Create a credential template in the current ecosystem"]
+        /// Create a credential template in the current ecosystem
         pub async fn create(
             &mut self,
             request: impl tonic::IntoRequest<super::CreateCredentialTemplateRequest>,
@@ -236,7 +258,7 @@ pub mod credential_templates_client {
             let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.templates.v1.CredentialTemplates/Create");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Fetch a credential template by ID"]
+        /// Fetch a credential template by ID
         pub async fn get(
             &mut self,
             request: impl tonic::IntoRequest<super::GetCredentialTemplateRequest>,
@@ -249,7 +271,7 @@ pub mod credential_templates_client {
             let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.templates.v1.CredentialTemplates/Get");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Search credential templates using SQL, returning strongly-typed template data"]
+        /// Search credential templates using SQL, returning strongly-typed template data
         pub async fn list(
             &mut self,
             request: impl tonic::IntoRequest<super::ListCredentialTemplatesRequest>,
@@ -262,7 +284,7 @@ pub mod credential_templates_client {
             let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.templates.v1.CredentialTemplates/List");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Search credential templates using SQL, returning raw JSON data"]
+        /// Search credential templates using SQL, returning raw JSON data
         pub async fn search(
             &mut self,
             request: impl tonic::IntoRequest<super::SearchCredentialTemplatesRequest>,
@@ -275,7 +297,7 @@ pub mod credential_templates_client {
             let path = http::uri::PathAndQuery::from_static("/services.verifiablecredentials.templates.v1.CredentialTemplates/Search");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        #[doc = " Delete a credential template from the current ecosystem by ID"]
+        /// Delete a credential template from the current ecosystem by ID
         pub async fn delete(
             &mut self,
             request: impl tonic::IntoRequest<super::DeleteCredentialTemplateRequest>,

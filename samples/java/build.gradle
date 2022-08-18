@@ -27,14 +27,14 @@ dependencies {
     implementation 'com.google.guava:guava:31.1-jre'
     implementation group: 'com.google.protobuf', name: 'protobuf-java', version: '3.21.5'
     implementation 'com.google.protobuf:protobuf-java-util:3.21.5'
-    implementation 'io.grpc:grpc-protobuf:1.44.1'
-    implementation 'io.grpc:grpc-netty-shaded:1.44.1'
-    implementation 'io.grpc:grpc-stub:1.44.1'
-    implementation 'io.grpc:grpc-protobuf:1.44.1'
+    implementation 'io.grpc:grpc-protobuf:1.48.1'
+    implementation 'io.grpc:grpc-netty-shaded:1.48.1'
+    implementation 'io.grpc:grpc-stub:1.48.1'
+    implementation 'io.grpc:grpc-protobuf:1.48.1'
     implementation 'org.jetbrains:annotations:23.0.0'
-    implementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
-    implementation 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
-    implementation 'org.junit.jupiter:junit-jupiter-params:5.8.2'
+    implementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    implementation 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+    implementation 'org.junit.jupiter:junit-jupiter-params:5.9.0'
     implementation urlFile('https://github.com/trinsic-id/okapi/releases/download/v1.4.0/trinsic-okapi-1.4.0.jar', 'trinsic-okapi-1.4.0')
     implementation urlFile('https://github.com/trinsic-id/sdk/releases/download/v1.4.0/trinsic-services-1.4.1.jar', 'trinsic-services-1.4.1')
 }

@@ -18,3 +18,19 @@ pub enum ResponseStatus {
     SerializationError = 200,
     UnknownError = 100,
 }
+impl ResponseStatus {
+    /// String value of the enum field names used in the ProtoBuf definition.
+    ///
+    /// The values are not transformed in any way and thus are considered stable
+    /// (if the ProtoBuf definition does not change) and safe for programmatic use.
+    pub fn as_str_name(&self) -> &'static str {
+        match self {
+            ResponseStatus::Success => "SUCCESS",
+            ResponseStatus::WalletAccessDenied => "WALLET_ACCESS_DENIED",
+            ResponseStatus::WalletExists => "WALLET_EXISTS",
+            ResponseStatus::ItemNotFound => "ITEM_NOT_FOUND",
+            ResponseStatus::SerializationError => "SERIALIZATION_ERROR",
+            ResponseStatus::UnknownError => "UNKNOWN_ERROR",
+        }
+    }
+}
