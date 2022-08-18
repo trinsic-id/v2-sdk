@@ -66,7 +66,7 @@ impl From<Status> for Error {
 }
 
 impl Display for Error {
-    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         f.write_fmt(format_args!("{:#?}", self))
     }
 }
