@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,6 +9,7 @@ using Xunit;
 
 namespace Tests;
 
+[SuppressMessage("ReSharper", "InconsistentNaming")]
 public class HostTests
 {
     [Fact(DisplayName = "Test default service host")]
@@ -41,10 +43,12 @@ public class HostTests
             .CreateDefaultBuilder()
             .ConfigureServices(services => {
                 services.AddTrinsic(options => {
-                    options.AuthToken = "auth";
-                    options.ServerEndpoint = "example.com";
-                    options.ServerPort = 42;
-                    options.ServerUseTls = true;
+                    options.UseInMemoryTokenProvider();
+
+                    options.ServiceOptions.AuthToken = "auth";
+                    options.ServiceOptions.ServerEndpoint = "example.com";
+                    options.ServiceOptions.ServerPort = 42;
+                    options.ServiceOptions.ServerUseTls = true;
                 });
             }).Build();
 
@@ -52,14 +56,36 @@ public class HostTests
 
         var providerService = host.Services.GetService<ProviderService>();
         var accountService = host.Services.GetRequiredService<AccountService>();
+        var tokenProvider = host.Services.GetRequiredService<ITokenProvider>();
 
         providerService.Should().NotBeNull();
         accountService.Should().NotBeNull();
+
+        tokenProvider.Should().BeOfType<MemoryTokenProvider>();
 
         accountService.Options.ServerEndpoint.Should().Be("example.com");
         accountService.Options.ServerPort.Should().Be(42);
         accountService.Options.ServerUseTls.Should().BeTrue();
         accountService.Options.AuthToken.Should().Be("auth");
+
+        await host.StopAsync();
+    }
+
+    [Fact(DisplayName = "Test disabled token persistence")]
+    public async Task TestDisableTokenPersistence() {
+        var host = Host
+            .CreateDefaultBuilder()
+            .ConfigureServices(services => {
+                services.AddTrinsic(options => {
+                    options.TokenPersistenceEnabled = false;
+                });
+            }).Build();
+
+        await host.StartAsync();
+
+        var tokenProvider = host.Services.GetRequiredService<ITokenProvider>();
+
+        tokenProvider.Should().BeOfType<NoOpTokenProvider>();
 
         await host.StopAsync();
     }

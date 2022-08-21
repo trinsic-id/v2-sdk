@@ -1,9 +1,11 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 using Trinsic;
 using Trinsic.Sdk.Options.V1;
 
+// ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection;
 
 [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
@@ -11,16 +13,19 @@ namespace Microsoft.Extensions.DependencyInjection;
 [SuppressMessage("ReSharper", "UnusedMember.Global")]
 public static class ServiceCollectionExtensions
 {
-    /// <summary>
-    /// Registers Trinsic SDK services and dependencies
-    /// </summary>
-    /// <param name="services"></param>
-    /// <param name="configure"></param>
-    /// <returns></returns>
-    public static IServiceCollection AddTrinsic(this IServiceCollection services, Action<ServiceOptions> configure) {
-        services.Configure(configure);
+    public static IServiceCollection AddTrinsic(this IServiceCollection serviceCollection, Action<ITrinsicBuilder> configureBuilder) {
+        DefaultTrinsicBuilder builder = new(serviceCollection);
+        configureBuilder(builder);
+        serviceCollection.Configure((ServiceOptions options) => options.MergeFrom(builder.ServiceOptions));
 
-        return AddTrinsic(services);
+        if (!builder.TokenPersistenceEnabled)
+        {
+            builder.Services.AddSingleton<ITokenProvider, NoOpTokenProvider>();
+        }
+
+        AddTrinsic(serviceCollection);
+
+        return serviceCollection;
     }
 
     /// <summary>
@@ -30,11 +35,11 @@ public static class ServiceCollectionExtensions
     /// <returns></returns>
     public static IServiceCollection AddTrinsic(this IServiceCollection services) {
 #if __IOS__
-        services.AddSingleton<ITokenProvider, KeyChainTokenProvider>();
+        services.TryAddSingleton<ITokenProvider, KeyChainTokenProvider>();
 #elif __BROWSER__
-        services.AddSingleton<ITokenProvider, BrowserTokenProvider>();
+        services.TryAddSingleton<ITokenProvider, BrowserTokenProvider>();
 #else
-        services.AddSingleton<ITokenProvider, FileTokenProvider>();
+        services.TryAddSingleton<ITokenProvider, FileTokenProvider>();
 #endif
         services.AddSingleton<AccountService>(provider =>
             new(provider.GetRequiredService<ITokenProvider>(),
@@ -52,6 +57,9 @@ public static class ServiceCollectionExtensions
             new(provider.GetRequiredService<ITokenProvider>(),
                 provider.GetRequiredService<IOptions<ServiceOptions>>()));
         services.AddSingleton<TrustRegistryService>(provider =>
+            new(provider.GetRequiredService<ITokenProvider>(),
+                provider.GetRequiredService<IOptions<ServiceOptions>>()));
+        services.AddSingleton<TrinsicService>(provider =>
             new(provider.GetRequiredService<ITokenProvider>(),
                 provider.GetRequiredService<IOptions<ServiceOptions>>()));
         return services;

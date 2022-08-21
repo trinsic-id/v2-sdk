@@ -1,11 +1,6 @@
-using System;
-using System.Threading.Tasks;
-using Google.Protobuf;
 using Microsoft.Extensions.Options;
-using Okapi.Security;
-using Okapi.Security.V1;
 using Trinsic.Sdk.Options.V1;
-using Trinsic.Services.Account.V1;
+using MicrosoftOptions = Microsoft.Extensions.Options.Options;
 
 namespace Trinsic;
 
@@ -32,8 +27,12 @@ public class TrinsicService : ServiceBase
     internal TrinsicService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
     }
 
-    internal TrinsicService(ITokenProvider tokenProvider, ServiceOptions options)
+    public TrinsicService(ITokenProvider tokenProvider, ServiceOptions options)
         : base(options, tokenProvider) {
+    }
+
+    internal TrinsicService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
+        : base(options.Value, tokenProvider) {
     }
 
     /// <summary>
@@ -45,7 +44,7 @@ public class TrinsicService : ServiceBase
         {
             if (_account == null)
             {
-                _account = new AccountService(Options);
+                _account = new AccountService(TokenProvider, MicrosoftOptions.Create(Options));
             }
             return _account;
         }
@@ -60,7 +59,7 @@ public class TrinsicService : ServiceBase
         {
             if (_credential == null)
             {
-                _credential = new CredentialService(Options);
+                _credential = new CredentialService(TokenProvider, MicrosoftOptions.Create(Options));
             }
             return _credential;
         }
@@ -75,7 +74,7 @@ public class TrinsicService : ServiceBase
         {
             if (_template == null)
             {
-                _template = new TemplateService(Options);
+                _template = new TemplateService(TokenProvider, MicrosoftOptions.Create(Options));
             }
             return _template;
         }
@@ -90,7 +89,7 @@ public class TrinsicService : ServiceBase
         {
             if (_provider == null)
             {
-                _provider = new ProviderService(Options);
+                _provider = new ProviderService(TokenProvider, MicrosoftOptions.Create(Options));
             }
             return _provider;
         }
@@ -105,7 +104,7 @@ public class TrinsicService : ServiceBase
         {
             if (_trustRegistry == null)
             {
-                _trustRegistry = new TrustRegistryService(Options);
+                _trustRegistry = new TrustRegistryService(TokenProvider, MicrosoftOptions.Create(Options));
             }
             return _trustRegistry;
         }
@@ -120,7 +119,7 @@ public class TrinsicService : ServiceBase
         {
             if (_wallet == null)
             {
-                _wallet = new WalletService(Options);
+                _wallet = new WalletService(TokenProvider, MicrosoftOptions.Create(Options));
             }
             return _wallet;
         }
