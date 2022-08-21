@@ -60,14 +60,6 @@ var trinsicService = new TrinsicService(new ServiceOptions
 });
 ```
 
-## Configuration
-
-<!--codeinclude-->
-```csharp
-[SampleAccountService](../../dotnet/Tests/Tests.cs) inside_block:testSignInAndGetInfo
-```
-<!--/codeinclude-->
-
 ## Next Steps
 
 Once the .NET SDK package is installed and configured, you're ready to start building! We recommend going through the [walkthrough](../walkthroughs/vaccination.md) next. If you're ready to dive into building your ecosystem, check out our [API Reference](../reference/index.md)
