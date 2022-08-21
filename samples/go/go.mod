@@ -1,6 +1,6 @@
 module github.com/trinsic-id/sdk/samples/go
 
-go 1.18
+go 1.19
 
 require github.com/trinsic-id/sdk/go v1.7.0
 
