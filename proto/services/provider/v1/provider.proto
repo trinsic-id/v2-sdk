@@ -83,10 +83,16 @@ message Ecosystem {
     string description = 3;
 
     // External URL associated with the organization or ecosystem entity
-    string uri = 4;
+    string uri = 4 [deprecated = true];
 
     // Configured webhooks, if any
     repeated WebhookConfig webhooks = 5;
+
+    // Display details
+    EcosystemDisplay display = 6;
+
+    // Domain
+    string domain = 7;
 }
 
 // Webhook configured on an ecosystem
@@ -111,7 +117,7 @@ message Grant {
 
      // list of actions that are allowed
     repeated string actions = 2;
-    
+
     // any child grants
     repeated Grant child_grants = 3;
 }
@@ -128,10 +134,13 @@ message CreateEcosystemRequest {
     string description = 2 [(options.optional)=true];
 
     // External URL associated with your organization or ecosystem entity
-    string uri = 3 [(options.optional)=true];
+    string uri = 3 [(options.optional)=true, deprecated = true];
 
     // The account details of the owner of the ecosystem
     services.account.v1.AccountDetails details = 4;
+
+    // New domain URL
+    string domain = 5;
 }
 
 // Response to `CreateEcosystemRequest`
@@ -149,7 +158,25 @@ message UpdateEcosystemRequest {
     // New description of the ecosystem
     string description = 1;
     // New external URL associated with the organization or ecosystem entity
-    string uri = 2;
+   string uri = 2 [deprecated = true];
+    // New domain URL
+    string domain = 3;
+    // New name
+    string name = 4;
+    // Display details
+    EcosystemDisplay display = 5;
+}
+
+message EcosystemDisplay {
+    EcosystemDisplayDetails dark = 1;
+    EcosystemDisplayDetails light = 2;
+}
+
+message EcosystemDisplayDetails {
+    // string id = 1;
+    // string name = 2;
+    string logo_url = 3;
+    string color = 4;
 }
 
 // Response to `UpdateEcosystemRequest`
@@ -191,7 +218,8 @@ message DeleteWebhookResponse {
 }
 
 // Request to fetch information about an ecosystem
-message EcosystemInfoRequest {}
+message EcosystemInfoRequest {
+}
 
 // Response to `InfoRequest`
 message EcosystemInfoResponse {
@@ -220,7 +248,7 @@ message GetOberonKeyRequest {
 // Response to `GetOberonKeyRequest`
 message GetOberonKeyResponse {
     // Oberon Public Key as RAW base64-url encoded string
-    string key = 1; 
+    string key = 1;
 }
 
 // Generates an events token bound to the provided ed25519 public key.
@@ -233,7 +261,27 @@ message GetEventTokenRequest {
 // to connect directly to the message streaming architecture
 message GetEventTokenResponse {
     // JWT bound to the public key provided in `GetEventTokenRequest`
-    string token = 1; 
+    string token = 1;
+}
+
+message RetrieveVerificationRecordRequest {
+}
+
+// Response message containing a TXT record content for domain url verification
+message RetrieveVerificationRecordResponse {
+    // TXT code to use for domain verification
+    string verification_txt = 1;
+}
+
+message RefreshVerificationStatusRequest {
+    // TODO - Should we allow specifying which ecosystem to use?
+}
+
+message RefreshVerificationStatusResponse {
+    // Domain URL verified
+    string domain = 1;
+    // Specifies if the above `domain` was successfully verified
+    bool domain_verified = 2;
 }
 
 // Grant permissions to a resource or path in the ecosystem
@@ -242,7 +290,7 @@ message GrantAuthorizationRequest {
         // Email address of account being granted permission.
         // Mutually exclusive with `walletId`.
         string email = 1;
-    
+
         // Wallet ID of account being granted permission.
         // Mutually exclusive with `email`.
         string walletId = 2;
@@ -250,10 +298,10 @@ message GrantAuthorizationRequest {
 
     // Resource string that account is receiving permissions for.
     // Resources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted.
-    string resource = 3; 
+    string resource = 3;
 
     // Action to authorize. Default is "*" (all)
-    string action = 4; 
+    string action = 4;
 }
 
 
@@ -267,7 +315,7 @@ message RevokeAuthorizationRequest {
         // Email address of account having permission revoked.
         // Mutually exclusive with `walletId`.
         string email = 1;
-    
+
         // Wallet ID of account having permission revoked.
         // Mutually exclusive with `email`.
         string walletId = 2;
@@ -278,7 +326,7 @@ message RevokeAuthorizationRequest {
     string resource = 3;
 
     // Action to revoke. Default is "*" (all)
-    string action = 4; 
+    string action = 4;
 }
 
 // Response to `RevokeAuthorizationRequest`
@@ -287,7 +335,7 @@ message RevokeAuthorizationResponse {
 
 // Fetch list of grants that the current account has access to
 // in its ecosystem
-message GetAuthorizationsRequest{
+message GetAuthorizationsRequest {
 }
 
 // Response to `GetAuthorizationsRequest`
@@ -308,7 +356,7 @@ service Provider {
 
     // Grant user authorization to ecosystem resources
     rpc GrantAuthorization(GrantAuthorizationRequest) returns (GrantAuthorizationResponse);
-    
+
     // Revoke user authorization to ecosystem resources
     rpc RevokeAuthorization(RevokeAuthorizationRequest) returns (RevokeAuthorizationResponse);
 
@@ -341,4 +389,10 @@ service Provider {
 
     // Generate a signed token (JWT) that can be used to connect to the message bus
     rpc GetEventToken(GetEventTokenRequest) returns (GetEventTokenResponse);
+
+    // Retrieve a random hash TXT that can be used to verify domain ownership
+    rpc RetrieveVerificationRecord(RetrieveVerificationRecordRequest) returns (RetrieveVerificationRecordResponse);
+
+    // Call to verif
+    rpc RefreshVerificationStatus(RefreshVerificationStatusRequest) returns (RefreshVerificationStatusResponse);
 }
