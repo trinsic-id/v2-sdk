@@ -58,7 +58,7 @@ jobs:
         run: |
           python ./devops/generate_proto_files.py --language=all
           
-      - uses: trinsic-id/protoc-gen-sdk@v0.1.0
+      - uses: trinsic-id/protoc-gen-sdk@v0.1.1
         id: buildsdkwrappers
 
       - name: Commit Changes
