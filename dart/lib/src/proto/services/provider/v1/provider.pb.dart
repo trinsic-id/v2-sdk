@@ -467,6 +467,17 @@ class Ecosystem extends $pb.GeneratedMessage {
             : 'webhooks',
         $pb.PbFieldType.PM,
         subBuilder: WebhookConfig.create)
+    ..aOM<EcosystemDisplay>(
+        6,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'display',
+        subBuilder: EcosystemDisplay.create)
+    ..aOS(
+        7,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'domain')
     ..hasRequiredFields = false;
 
   Ecosystem._() : super();
@@ -474,8 +485,10 @@ class Ecosystem extends $pb.GeneratedMessage {
     $core.String? id,
     $core.String? name,
     $core.String? description,
-    $core.String? uri,
+    @$core.Deprecated('This field is deprecated.') $core.String? uri,
     $core.Iterable<WebhookConfig>? webhooks,
+    EcosystemDisplay? display,
+    $core.String? domain,
   }) {
     final _result = create();
     if (id != null) {
@@ -488,10 +501,17 @@ class Ecosystem extends $pb.GeneratedMessage {
       _result.description = description;
     }
     if (uri != null) {
+      // ignore: deprecated_member_use_from_same_package
       _result.uri = uri;
     }
     if (webhooks != null) {
       _result.webhooks.addAll(webhooks);
+    }
+    if (display != null) {
+      _result.display = display;
+    }
+    if (domain != null) {
+      _result.domain = domain;
     }
     return _result;
   }
@@ -557,20 +577,50 @@ class Ecosystem extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearDescription() => clearField(3);
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(4)
   $core.String get uri => $_getSZ(3);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(4)
   set uri($core.String v) {
     $_setString(3, v);
   }
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(4)
   $core.bool hasUri() => $_has(3);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(4)
   void clearUri() => clearField(4);
 
   @$pb.TagNumber(5)
   $core.List<WebhookConfig> get webhooks => $_getList(4);
+
+  @$pb.TagNumber(6)
+  EcosystemDisplay get display => $_getN(5);
+  @$pb.TagNumber(6)
+  set display(EcosystemDisplay v) {
+    setField(6, v);
+  }
+
+  @$pb.TagNumber(6)
+  $core.bool hasDisplay() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearDisplay() => clearField(6);
+  @$pb.TagNumber(6)
+  EcosystemDisplay ensureDisplay() => $_ensure(5);
+
+  @$pb.TagNumber(7)
+  $core.String get domain => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set domain($core.String v) {
+    $_setString(6, v);
+  }
+
+  @$pb.TagNumber(7)
+  $core.bool hasDomain() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearDomain() => clearField(7);
 }
 
 class WebhookConfig extends $pb.GeneratedMessage {
@@ -818,14 +868,20 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
             ? ''
             : 'details',
         subBuilder: $4.AccountDetails.create)
+    ..aOS(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'domain')
     ..hasRequiredFields = false;
 
   CreateEcosystemRequest._() : super();
   factory CreateEcosystemRequest({
     $core.String? name,
     $core.String? description,
-    $core.String? uri,
+    @$core.Deprecated('This field is deprecated.') $core.String? uri,
     $4.AccountDetails? details,
+    $core.String? domain,
   }) {
     final _result = create();
     if (name != null) {
@@ -835,10 +891,14 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
       _result.description = description;
     }
     if (uri != null) {
+      // ignore: deprecated_member_use_from_same_package
       _result.uri = uri;
     }
     if (details != null) {
       _result.details = details;
+    }
+    if (domain != null) {
+      _result.domain = domain;
     }
     return _result;
   }
@@ -895,15 +955,19 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearDescription() => clearField(2);
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(3)
   $core.String get uri => $_getSZ(2);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(3)
   set uri($core.String v) {
     $_setString(2, v);
   }
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(3)
   $core.bool hasUri() => $_has(2);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(3)
   void clearUri() => clearField(3);
 
@@ -920,6 +984,18 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
   void clearDetails() => clearField(4);
   @$pb.TagNumber(4)
   $4.AccountDetails ensureDetails() => $_ensure(3);
+
+  @$pb.TagNumber(5)
+  $core.String get domain => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set domain($core.String v) {
+    $_setString(4, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasDomain() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearDomain() => clearField(5);
 }
 
 class CreateEcosystemResponse extends $pb.GeneratedMessage {
@@ -1063,19 +1139,48 @@ class UpdateEcosystemRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'uri')
+    ..aOS(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'domain')
+    ..aOS(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'name')
+    ..aOM<EcosystemDisplay>(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'display',
+        subBuilder: EcosystemDisplay.create)
     ..hasRequiredFields = false;
 
   UpdateEcosystemRequest._() : super();
   factory UpdateEcosystemRequest({
     $core.String? description,
-    $core.String? uri,
+    @$core.Deprecated('This field is deprecated.') $core.String? uri,
+    $core.String? domain,
+    $core.String? name,
+    EcosystemDisplay? display,
   }) {
     final _result = create();
     if (description != null) {
       _result.description = description;
     }
     if (uri != null) {
+      // ignore: deprecated_member_use_from_same_package
       _result.uri = uri;
+    }
+    if (domain != null) {
+      _result.domain = domain;
+    }
+    if (name != null) {
+      _result.name = name;
+    }
+    if (display != null) {
+      _result.display = display;
     }
     return _result;
   }
@@ -1120,17 +1225,243 @@ class UpdateEcosystemRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearDescription() => clearField(1);
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(2)
   $core.String get uri => $_getSZ(1);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(2)
   set uri($core.String v) {
     $_setString(1, v);
   }
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(2)
   $core.bool hasUri() => $_has(1);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(2)
   void clearUri() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get domain => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set domain($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasDomain() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearDomain() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get name => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set name($core.String v) {
+    $_setString(3, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasName() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearName() => clearField(4);
+
+  @$pb.TagNumber(5)
+  EcosystemDisplay get display => $_getN(4);
+  @$pb.TagNumber(5)
+  set display(EcosystemDisplay v) {
+    setField(5, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasDisplay() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearDisplay() => clearField(5);
+  @$pb.TagNumber(5)
+  EcosystemDisplay ensureDisplay() => $_ensure(4);
+}
+
+class EcosystemDisplay extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'EcosystemDisplay',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..aOM<EcosystemDisplayDetails>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'dark',
+        subBuilder: EcosystemDisplayDetails.create)
+    ..aOM<EcosystemDisplayDetails>(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'light',
+        subBuilder: EcosystemDisplayDetails.create)
+    ..hasRequiredFields = false;
+
+  EcosystemDisplay._() : super();
+  factory EcosystemDisplay({
+    EcosystemDisplayDetails? dark,
+    EcosystemDisplayDetails? light,
+  }) {
+    final _result = create();
+    if (dark != null) {
+      _result.dark = dark;
+    }
+    if (light != null) {
+      _result.light = light;
+    }
+    return _result;
+  }
+  factory EcosystemDisplay.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory EcosystemDisplay.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  EcosystemDisplay clone() => EcosystemDisplay()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  EcosystemDisplay copyWith(void Function(EcosystemDisplay) updates) =>
+      super.copyWith((message) => updates(message as EcosystemDisplay))
+          as EcosystemDisplay; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static EcosystemDisplay create() => EcosystemDisplay._();
+  EcosystemDisplay createEmptyInstance() => create();
+  static $pb.PbList<EcosystemDisplay> createRepeated() =>
+      $pb.PbList<EcosystemDisplay>();
+  @$core.pragma('dart2js:noInline')
+  static EcosystemDisplay getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<EcosystemDisplay>(create);
+  static EcosystemDisplay? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  EcosystemDisplayDetails get dark => $_getN(0);
+  @$pb.TagNumber(1)
+  set dark(EcosystemDisplayDetails v) {
+    setField(1, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasDark() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearDark() => clearField(1);
+  @$pb.TagNumber(1)
+  EcosystemDisplayDetails ensureDark() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  EcosystemDisplayDetails get light => $_getN(1);
+  @$pb.TagNumber(2)
+  set light(EcosystemDisplayDetails v) {
+    setField(2, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasLight() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearLight() => clearField(2);
+  @$pb.TagNumber(2)
+  EcosystemDisplayDetails ensureLight() => $_ensure(1);
+}
+
+class EcosystemDisplayDetails extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'EcosystemDisplayDetails',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..aOS(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'logoUrl')
+    ..aOS(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'color')
+    ..hasRequiredFields = false;
+
+  EcosystemDisplayDetails._() : super();
+  factory EcosystemDisplayDetails({
+    $core.String? logoUrl,
+    $core.String? color,
+  }) {
+    final _result = create();
+    if (logoUrl != null) {
+      _result.logoUrl = logoUrl;
+    }
+    if (color != null) {
+      _result.color = color;
+    }
+    return _result;
+  }
+  factory EcosystemDisplayDetails.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory EcosystemDisplayDetails.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  EcosystemDisplayDetails clone() =>
+      EcosystemDisplayDetails()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  EcosystemDisplayDetails copyWith(
+          void Function(EcosystemDisplayDetails) updates) =>
+      super.copyWith((message) => updates(message as EcosystemDisplayDetails))
+          as EcosystemDisplayDetails; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static EcosystemDisplayDetails create() => EcosystemDisplayDetails._();
+  EcosystemDisplayDetails createEmptyInstance() => create();
+  static $pb.PbList<EcosystemDisplayDetails> createRepeated() =>
+      $pb.PbList<EcosystemDisplayDetails>();
+  @$core.pragma('dart2js:noInline')
+  static EcosystemDisplayDetails getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<EcosystemDisplayDetails>(create);
+  static EcosystemDisplayDetails? _defaultInstance;
+
+  @$pb.TagNumber(3)
+  $core.String get logoUrl => $_getSZ(0);
+  @$pb.TagNumber(3)
+  set logoUrl($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasLogoUrl() => $_has(0);
+  @$pb.TagNumber(3)
+  void clearLogoUrl() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get color => $_getSZ(1);
+  @$pb.TagNumber(4)
+  set color($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasColor() => $_has(1);
+  @$pb.TagNumber(4)
+  void clearColor() => clearField(4);
 }
 
 class UpdateEcosystemResponse extends $pb.GeneratedMessage {
@@ -2017,6 +2348,265 @@ class GetEventTokenResponse extends $pb.GeneratedMessage {
   $core.bool hasToken() => $_has(0);
   @$pb.TagNumber(1)
   void clearToken() => clearField(1);
+}
+
+class RetrieveVerificationRecordRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'RetrieveVerificationRecordRequest',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  RetrieveVerificationRecordRequest._() : super();
+  factory RetrieveVerificationRecordRequest() => create();
+  factory RetrieveVerificationRecordRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory RetrieveVerificationRecordRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  RetrieveVerificationRecordRequest clone() =>
+      RetrieveVerificationRecordRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  RetrieveVerificationRecordRequest copyWith(
+          void Function(RetrieveVerificationRecordRequest) updates) =>
+      super.copyWith((message) =>
+              updates(message as RetrieveVerificationRecordRequest))
+          as RetrieveVerificationRecordRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static RetrieveVerificationRecordRequest create() =>
+      RetrieveVerificationRecordRequest._();
+  RetrieveVerificationRecordRequest createEmptyInstance() => create();
+  static $pb.PbList<RetrieveVerificationRecordRequest> createRepeated() =>
+      $pb.PbList<RetrieveVerificationRecordRequest>();
+  @$core.pragma('dart2js:noInline')
+  static RetrieveVerificationRecordRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<RetrieveVerificationRecordRequest>(
+          create);
+  static RetrieveVerificationRecordRequest? _defaultInstance;
+}
+
+class RetrieveVerificationRecordResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'RetrieveVerificationRecordResponse',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'verificationTxt')
+    ..hasRequiredFields = false;
+
+  RetrieveVerificationRecordResponse._() : super();
+  factory RetrieveVerificationRecordResponse({
+    $core.String? verificationTxt,
+  }) {
+    final _result = create();
+    if (verificationTxt != null) {
+      _result.verificationTxt = verificationTxt;
+    }
+    return _result;
+  }
+  factory RetrieveVerificationRecordResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory RetrieveVerificationRecordResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  RetrieveVerificationRecordResponse clone() =>
+      RetrieveVerificationRecordResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  RetrieveVerificationRecordResponse copyWith(
+          void Function(RetrieveVerificationRecordResponse) updates) =>
+      super.copyWith((message) =>
+              updates(message as RetrieveVerificationRecordResponse))
+          as RetrieveVerificationRecordResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static RetrieveVerificationRecordResponse create() =>
+      RetrieveVerificationRecordResponse._();
+  RetrieveVerificationRecordResponse createEmptyInstance() => create();
+  static $pb.PbList<RetrieveVerificationRecordResponse> createRepeated() =>
+      $pb.PbList<RetrieveVerificationRecordResponse>();
+  @$core.pragma('dart2js:noInline')
+  static RetrieveVerificationRecordResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<RetrieveVerificationRecordResponse>(
+          create);
+  static RetrieveVerificationRecordResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get verificationTxt => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set verificationTxt($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasVerificationTxt() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearVerificationTxt() => clearField(1);
+}
+
+class RefreshVerificationStatusRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'RefreshVerificationStatusRequest',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..hasRequiredFields = false;
+
+  RefreshVerificationStatusRequest._() : super();
+  factory RefreshVerificationStatusRequest() => create();
+  factory RefreshVerificationStatusRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory RefreshVerificationStatusRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  RefreshVerificationStatusRequest clone() =>
+      RefreshVerificationStatusRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  RefreshVerificationStatusRequest copyWith(
+          void Function(RefreshVerificationStatusRequest) updates) =>
+      super.copyWith(
+              (message) => updates(message as RefreshVerificationStatusRequest))
+          as RefreshVerificationStatusRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static RefreshVerificationStatusRequest create() =>
+      RefreshVerificationStatusRequest._();
+  RefreshVerificationStatusRequest createEmptyInstance() => create();
+  static $pb.PbList<RefreshVerificationStatusRequest> createRepeated() =>
+      $pb.PbList<RefreshVerificationStatusRequest>();
+  @$core.pragma('dart2js:noInline')
+  static RefreshVerificationStatusRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<RefreshVerificationStatusRequest>(
+          create);
+  static RefreshVerificationStatusRequest? _defaultInstance;
+}
+
+class RefreshVerificationStatusResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'RefreshVerificationStatusResponse',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'domain')
+    ..aOB(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'domainVerified')
+    ..hasRequiredFields = false;
+
+  RefreshVerificationStatusResponse._() : super();
+  factory RefreshVerificationStatusResponse({
+    $core.String? domain,
+    $core.bool? domainVerified,
+  }) {
+    final _result = create();
+    if (domain != null) {
+      _result.domain = domain;
+    }
+    if (domainVerified != null) {
+      _result.domainVerified = domainVerified;
+    }
+    return _result;
+  }
+  factory RefreshVerificationStatusResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory RefreshVerificationStatusResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  RefreshVerificationStatusResponse clone() =>
+      RefreshVerificationStatusResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  RefreshVerificationStatusResponse copyWith(
+          void Function(RefreshVerificationStatusResponse) updates) =>
+      super.copyWith((message) =>
+              updates(message as RefreshVerificationStatusResponse))
+          as RefreshVerificationStatusResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static RefreshVerificationStatusResponse create() =>
+      RefreshVerificationStatusResponse._();
+  RefreshVerificationStatusResponse createEmptyInstance() => create();
+  static $pb.PbList<RefreshVerificationStatusResponse> createRepeated() =>
+      $pb.PbList<RefreshVerificationStatusResponse>();
+  @$core.pragma('dart2js:noInline')
+  static RefreshVerificationStatusResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<RefreshVerificationStatusResponse>(
+          create);
+  static RefreshVerificationStatusResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get domain => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set domain($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasDomain() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearDomain() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.bool get domainVerified => $_getBF(1);
+  @$pb.TagNumber(2)
+  set domainVerified($core.bool v) {
+    $_setBool(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasDomainVerified() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearDomainVerified() => clearField(2);
 }
 
 enum GrantAuthorizationRequest_Account { email, walletId, notSet }

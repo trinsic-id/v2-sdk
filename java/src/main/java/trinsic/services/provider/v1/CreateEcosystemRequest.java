@@ -26,6 +26,7 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
     name_ = "";
     description_ = "";
     uri_ = "";
+    domain_ = "";
   }
 
   @java.lang.Override
@@ -92,6 +93,13 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
                 details_ = subBuilder.buildPartial();
               }
 
+              break;
+            }
+          case 42:
+            {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              domain_ = s;
               break;
             }
           default:
@@ -243,11 +251,14 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
    * External URL associated with your organization or ecosystem entity
    * </pre>
    *
-   * <code>string uri = 3 [(.services.options.optional) = true];</code>
+   * <code>string uri = 3 [deprecated = true, (.services.options.optional) = true];</code>
    *
+   * @deprecated services.provider.v1.CreateEcosystemRequest.uri is deprecated. See
+   *     services/provider/v1/provider.proto;l=136
    * @return The uri.
    */
   @java.lang.Override
+  @java.lang.Deprecated
   public java.lang.String getUri() {
     java.lang.Object ref = uri_;
     if (ref instanceof java.lang.String) {
@@ -266,11 +277,14 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
    * External URL associated with your organization or ecosystem entity
    * </pre>
    *
-   * <code>string uri = 3 [(.services.options.optional) = true];</code>
+   * <code>string uri = 3 [deprecated = true, (.services.options.optional) = true];</code>
    *
+   * @deprecated services.provider.v1.CreateEcosystemRequest.uri is deprecated. See
+   *     services/provider/v1/provider.proto;l=136
    * @return The bytes for uri.
    */
   @java.lang.Override
+  @java.lang.Deprecated
   public com.google.protobuf.ByteString getUriBytes() {
     java.lang.Object ref = uri_;
     if (ref instanceof java.lang.String) {
@@ -331,6 +345,55 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
     return getDetails();
   }
 
+  public static final int DOMAIN_FIELD_NUMBER = 5;
+  private volatile java.lang.Object domain_;
+  /**
+   *
+   *
+   * <pre>
+   * New domain URL
+   * </pre>
+   *
+   * <code>string domain = 5;</code>
+   *
+   * @return The domain.
+   */
+  @java.lang.Override
+  public java.lang.String getDomain() {
+    java.lang.Object ref = domain_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      domain_ = s;
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * New domain URL
+   * </pre>
+   *
+   * <code>string domain = 5;</code>
+   *
+   * @return The bytes for domain.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getDomainBytes() {
+    java.lang.Object ref = domain_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      domain_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -357,6 +420,9 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
     if (details_ != null) {
       output.writeMessage(4, getDetails());
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(domain_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, domain_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -377,6 +443,9 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
     }
     if (details_ != null) {
       size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, getDetails());
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(domain_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, domain_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -401,6 +470,7 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
     if (hasDetails()) {
       if (!getDetails().equals(other.getDetails())) return false;
     }
+    if (!getDomain().equals(other.getDomain())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -422,6 +492,8 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
       hash = (37 * hash) + DETAILS_FIELD_NUMBER;
       hash = (53 * hash) + getDetails().hashCode();
     }
+    hash = (37 * hash) + DOMAIN_FIELD_NUMBER;
+    hash = (53 * hash) + getDomain().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -579,6 +651,8 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
         details_ = null;
         detailsBuilder_ = null;
       }
+      domain_ = "";
+
       return this;
     }
 
@@ -614,6 +688,7 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
       } else {
         result.details_ = detailsBuilder_.build();
       }
+      result.domain_ = domain_;
       onBuilt();
       return result;
     }
@@ -678,6 +753,10 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
       }
       if (other.hasDetails()) {
         mergeDetails(other.getDetails());
+      }
+      if (!other.getDomain().isEmpty()) {
+        domain_ = other.domain_;
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -944,10 +1023,13 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
      * External URL associated with your organization or ecosystem entity
      * </pre>
      *
-     * <code>string uri = 3 [(.services.options.optional) = true];</code>
+     * <code>string uri = 3 [deprecated = true, (.services.options.optional) = true];</code>
      *
+     * @deprecated services.provider.v1.CreateEcosystemRequest.uri is deprecated. See
+     *     services/provider/v1/provider.proto;l=136
      * @return The uri.
      */
+    @java.lang.Deprecated
     public java.lang.String getUri() {
       java.lang.Object ref = uri_;
       if (!(ref instanceof java.lang.String)) {
@@ -966,10 +1048,13 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
      * External URL associated with your organization or ecosystem entity
      * </pre>
      *
-     * <code>string uri = 3 [(.services.options.optional) = true];</code>
+     * <code>string uri = 3 [deprecated = true, (.services.options.optional) = true];</code>
      *
+     * @deprecated services.provider.v1.CreateEcosystemRequest.uri is deprecated. See
+     *     services/provider/v1/provider.proto;l=136
      * @return The bytes for uri.
      */
+    @java.lang.Deprecated
     public com.google.protobuf.ByteString getUriBytes() {
       java.lang.Object ref = uri_;
       if (ref instanceof String) {
@@ -988,11 +1073,14 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
      * External URL associated with your organization or ecosystem entity
      * </pre>
      *
-     * <code>string uri = 3 [(.services.options.optional) = true];</code>
+     * <code>string uri = 3 [deprecated = true, (.services.options.optional) = true];</code>
      *
+     * @deprecated services.provider.v1.CreateEcosystemRequest.uri is deprecated. See
+     *     services/provider/v1/provider.proto;l=136
      * @param value The uri to set.
      * @return This builder for chaining.
      */
+    @java.lang.Deprecated
     public Builder setUri(java.lang.String value) {
       if (value == null) {
         throw new NullPointerException();
@@ -1009,10 +1097,13 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
      * External URL associated with your organization or ecosystem entity
      * </pre>
      *
-     * <code>string uri = 3 [(.services.options.optional) = true];</code>
+     * <code>string uri = 3 [deprecated = true, (.services.options.optional) = true];</code>
      *
+     * @deprecated services.provider.v1.CreateEcosystemRequest.uri is deprecated. See
+     *     services/provider/v1/provider.proto;l=136
      * @return This builder for chaining.
      */
+    @java.lang.Deprecated
     public Builder clearUri() {
 
       uri_ = getDefaultInstance().getUri();
@@ -1026,11 +1117,14 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
      * External URL associated with your organization or ecosystem entity
      * </pre>
      *
-     * <code>string uri = 3 [(.services.options.optional) = true];</code>
+     * <code>string uri = 3 [deprecated = true, (.services.options.optional) = true];</code>
      *
+     * @deprecated services.provider.v1.CreateEcosystemRequest.uri is deprecated. See
+     *     services/provider/v1/provider.proto;l=136
      * @param value The bytes for uri to set.
      * @return This builder for chaining.
      */
+    @java.lang.Deprecated
     public Builder setUriBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
         throw new NullPointerException();
@@ -1225,6 +1319,112 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
         details_ = null;
       }
       return detailsBuilder_;
+    }
+
+    private java.lang.Object domain_ = "";
+    /**
+     *
+     *
+     * <pre>
+     * New domain URL
+     * </pre>
+     *
+     * <code>string domain = 5;</code>
+     *
+     * @return The domain.
+     */
+    public java.lang.String getDomain() {
+      java.lang.Object ref = domain_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        domain_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * New domain URL
+     * </pre>
+     *
+     * <code>string domain = 5;</code>
+     *
+     * @return The bytes for domain.
+     */
+    public com.google.protobuf.ByteString getDomainBytes() {
+      java.lang.Object ref = domain_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        domain_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * New domain URL
+     * </pre>
+     *
+     * <code>string domain = 5;</code>
+     *
+     * @param value The domain to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDomain(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      domain_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * New domain URL
+     * </pre>
+     *
+     * <code>string domain = 5;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearDomain() {
+
+      domain_ = getDefaultInstance().getDomain();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * New domain URL
+     * </pre>
+     *
+     * <code>string domain = 5;</code>
+     *
+     * @param value The bytes for domain to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDomainBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
+      domain_ = value;
+      onChanged();
+      return this;
     }
 
     @java.lang.Override

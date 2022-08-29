@@ -139,10 +139,18 @@ export interface Ecosystem {
   name: string;
   /** Ecosystem description */
   description: string;
-  /** External URL associated with the organization or ecosystem entity */
+  /**
+   * External URL associated with the organization or ecosystem entity
+   *
+   * @deprecated
+   */
   uri: string;
   /** Configured webhooks, if any */
   webhooks: WebhookConfig[];
+  /** Display details */
+  display: EcosystemDisplay | undefined;
+  /** Domain */
+  domain: string;
 }
 
 /** Webhook configured on an ecosystem */
@@ -178,10 +186,16 @@ export interface CreateEcosystemRequest {
   name: string;
   /** Ecosystem description */
   description: string;
-  /** External URL associated with your organization or ecosystem entity */
+  /**
+   * External URL associated with your organization or ecosystem entity
+   *
+   * @deprecated
+   */
   uri: string;
   /** The account details of the owner of the ecosystem */
   details: AccountDetails | undefined;
+  /** New domain URL */
+  domain: string;
 }
 
 /** Response to `CreateEcosystemRequest` */
@@ -198,8 +212,32 @@ export interface CreateEcosystemResponse {
 export interface UpdateEcosystemRequest {
   /** New description of the ecosystem */
   description: string;
-  /** New external URL associated with the organization or ecosystem entity */
+  /**
+   * New external URL associated with the organization or ecosystem entity
+   *
+   * @deprecated
+   */
   uri: string;
+  /** New domain URL */
+  domain: string;
+  /** New name */
+  name: string;
+  /** Display details */
+  display: EcosystemDisplay | undefined;
+}
+
+export interface EcosystemDisplay {
+  dark: EcosystemDisplayDetails | undefined;
+  light: EcosystemDisplayDetails | undefined;
+}
+
+export interface EcosystemDisplayDetails {
+  /**
+   * string id = 1;
+   * string name = 2;
+   */
+  logoUrl: string;
+  color: string;
 }
 
 /** Response to `UpdateEcosystemRequest` */
@@ -288,6 +326,24 @@ export interface GetEventTokenRequest {
 export interface GetEventTokenResponse {
   /** JWT bound to the public key provided in `GetEventTokenRequest` */
   token: string;
+}
+
+export interface RetrieveVerificationRecordRequest {}
+
+/** Response message containing a TXT record content for domain url verification */
+export interface RetrieveVerificationRecordResponse {
+  /** TXT code to use for domain verification */
+  verificationTxt: string;
+}
+
+/** TODO - Should we allow specifying which ecosystem to use? */
+export interface RefreshVerificationStatusRequest {}
+
+export interface RefreshVerificationStatusResponse {
+  /** Domain URL verified */
+  domain: string;
+  /** Specifies if the above `domain` was successfully verified */
+  domainVerified: boolean;
 }
 
 /** Grant permissions to a resource or path in the ecosystem */
@@ -679,7 +735,15 @@ export const InvitationStatusResponse = {
 };
 
 function createBaseEcosystem(): Ecosystem {
-  return { id: "", name: "", description: "", uri: "", webhooks: [] };
+  return {
+    id: "",
+    name: "",
+    description: "",
+    uri: "",
+    webhooks: [],
+    display: undefined,
+    domain: "",
+  };
 }
 
 export const Ecosystem = {
@@ -701,6 +765,15 @@ export const Ecosystem = {
     }
     for (const v of message.webhooks) {
       WebhookConfig.encode(v!, writer.uint32(42).fork()).ldelim();
+    }
+    if (message.display !== undefined) {
+      EcosystemDisplay.encode(
+        message.display,
+        writer.uint32(50).fork()
+      ).ldelim();
+    }
+    if (message.domain !== "") {
+      writer.uint32(58).string(message.domain);
     }
     return writer;
   },
@@ -727,6 +800,12 @@ export const Ecosystem = {
         case 5:
           message.webhooks.push(WebhookConfig.decode(reader, reader.uint32()));
           break;
+        case 6:
+          message.display = EcosystemDisplay.decode(reader, reader.uint32());
+          break;
+        case 7:
+          message.domain = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -744,6 +823,10 @@ export const Ecosystem = {
       webhooks: Array.isArray(object?.webhooks)
         ? object.webhooks.map((e: any) => WebhookConfig.fromJSON(e))
         : [],
+      display: isSet(object.display)
+        ? EcosystemDisplay.fromJSON(object.display)
+        : undefined,
+      domain: isSet(object.domain) ? String(object.domain) : "",
     };
   },
 
@@ -761,6 +844,11 @@ export const Ecosystem = {
     } else {
       obj.webhooks = [];
     }
+    message.display !== undefined &&
+      (obj.display = message.display
+        ? EcosystemDisplay.toJSON(message.display)
+        : undefined);
+    message.domain !== undefined && (obj.domain = message.domain);
     return obj;
   },
 
@@ -772,6 +860,11 @@ export const Ecosystem = {
     message.uri = object.uri ?? "";
     message.webhooks =
       object.webhooks?.map((e) => WebhookConfig.fromPartial(e)) || [];
+    message.display =
+      object.display !== undefined && object.display !== null
+        ? EcosystemDisplay.fromPartial(object.display)
+        : undefined;
+    message.domain = object.domain ?? "";
     return message;
   },
 };
@@ -947,7 +1040,7 @@ export const Grant = {
 };
 
 function createBaseCreateEcosystemRequest(): CreateEcosystemRequest {
-  return { name: "", description: "", uri: "", details: undefined };
+  return { name: "", description: "", uri: "", details: undefined, domain: "" };
 }
 
 export const CreateEcosystemRequest = {
@@ -966,6 +1059,9 @@ export const CreateEcosystemRequest = {
     }
     if (message.details !== undefined) {
       AccountDetails.encode(message.details, writer.uint32(34).fork()).ldelim();
+    }
+    if (message.domain !== "") {
+      writer.uint32(42).string(message.domain);
     }
     return writer;
   },
@@ -992,6 +1088,9 @@ export const CreateEcosystemRequest = {
         case 4:
           message.details = AccountDetails.decode(reader, reader.uint32());
           break;
+        case 5:
+          message.domain = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -1008,6 +1107,7 @@ export const CreateEcosystemRequest = {
       details: isSet(object.details)
         ? AccountDetails.fromJSON(object.details)
         : undefined,
+      domain: isSet(object.domain) ? String(object.domain) : "",
     };
   },
 
@@ -1021,6 +1121,7 @@ export const CreateEcosystemRequest = {
       (obj.details = message.details
         ? AccountDetails.toJSON(message.details)
         : undefined);
+    message.domain !== undefined && (obj.domain = message.domain);
     return obj;
   },
 
@@ -1035,6 +1136,7 @@ export const CreateEcosystemRequest = {
       object.details !== undefined && object.details !== null
         ? AccountDetails.fromPartial(object.details)
         : undefined;
+    message.domain = object.domain ?? "";
     return message;
   },
 };
@@ -1136,7 +1238,7 @@ export const CreateEcosystemResponse = {
 };
 
 function createBaseUpdateEcosystemRequest(): UpdateEcosystemRequest {
-  return { description: "", uri: "" };
+  return { description: "", uri: "", domain: "", name: "", display: undefined };
 }
 
 export const UpdateEcosystemRequest = {
@@ -1149,6 +1251,18 @@ export const UpdateEcosystemRequest = {
     }
     if (message.uri !== "") {
       writer.uint32(18).string(message.uri);
+    }
+    if (message.domain !== "") {
+      writer.uint32(26).string(message.domain);
+    }
+    if (message.name !== "") {
+      writer.uint32(34).string(message.name);
+    }
+    if (message.display !== undefined) {
+      EcosystemDisplay.encode(
+        message.display,
+        writer.uint32(42).fork()
+      ).ldelim();
     }
     return writer;
   },
@@ -1169,6 +1283,15 @@ export const UpdateEcosystemRequest = {
         case 2:
           message.uri = reader.string();
           break;
+        case 3:
+          message.domain = reader.string();
+          break;
+        case 4:
+          message.name = reader.string();
+          break;
+        case 5:
+          message.display = EcosystemDisplay.decode(reader, reader.uint32());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -1181,6 +1304,11 @@ export const UpdateEcosystemRequest = {
     return {
       description: isSet(object.description) ? String(object.description) : "",
       uri: isSet(object.uri) ? String(object.uri) : "",
+      domain: isSet(object.domain) ? String(object.domain) : "",
+      name: isSet(object.name) ? String(object.name) : "",
+      display: isSet(object.display)
+        ? EcosystemDisplay.fromJSON(object.display)
+        : undefined,
     };
   },
 
@@ -1189,6 +1317,12 @@ export const UpdateEcosystemRequest = {
     message.description !== undefined &&
       (obj.description = message.description);
     message.uri !== undefined && (obj.uri = message.uri);
+    message.domain !== undefined && (obj.domain = message.domain);
+    message.name !== undefined && (obj.name = message.name);
+    message.display !== undefined &&
+      (obj.display = message.display
+        ? EcosystemDisplay.toJSON(message.display)
+        : undefined);
     return obj;
   },
 
@@ -1198,6 +1332,167 @@ export const UpdateEcosystemRequest = {
     const message = createBaseUpdateEcosystemRequest();
     message.description = object.description ?? "";
     message.uri = object.uri ?? "";
+    message.domain = object.domain ?? "";
+    message.name = object.name ?? "";
+    message.display =
+      object.display !== undefined && object.display !== null
+        ? EcosystemDisplay.fromPartial(object.display)
+        : undefined;
+    return message;
+  },
+};
+
+function createBaseEcosystemDisplay(): EcosystemDisplay {
+  return { dark: undefined, light: undefined };
+}
+
+export const EcosystemDisplay = {
+  encode(
+    message: EcosystemDisplay,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.dark !== undefined) {
+      EcosystemDisplayDetails.encode(
+        message.dark,
+        writer.uint32(10).fork()
+      ).ldelim();
+    }
+    if (message.light !== undefined) {
+      EcosystemDisplayDetails.encode(
+        message.light,
+        writer.uint32(18).fork()
+      ).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): EcosystemDisplay {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseEcosystemDisplay();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.dark = EcosystemDisplayDetails.decode(
+            reader,
+            reader.uint32()
+          );
+          break;
+        case 2:
+          message.light = EcosystemDisplayDetails.decode(
+            reader,
+            reader.uint32()
+          );
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): EcosystemDisplay {
+    return {
+      dark: isSet(object.dark)
+        ? EcosystemDisplayDetails.fromJSON(object.dark)
+        : undefined,
+      light: isSet(object.light)
+        ? EcosystemDisplayDetails.fromJSON(object.light)
+        : undefined,
+    };
+  },
+
+  toJSON(message: EcosystemDisplay): unknown {
+    const obj: any = {};
+    message.dark !== undefined &&
+      (obj.dark = message.dark
+        ? EcosystemDisplayDetails.toJSON(message.dark)
+        : undefined);
+    message.light !== undefined &&
+      (obj.light = message.light
+        ? EcosystemDisplayDetails.toJSON(message.light)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<EcosystemDisplay>): EcosystemDisplay {
+    const message = createBaseEcosystemDisplay();
+    message.dark =
+      object.dark !== undefined && object.dark !== null
+        ? EcosystemDisplayDetails.fromPartial(object.dark)
+        : undefined;
+    message.light =
+      object.light !== undefined && object.light !== null
+        ? EcosystemDisplayDetails.fromPartial(object.light)
+        : undefined;
+    return message;
+  },
+};
+
+function createBaseEcosystemDisplayDetails(): EcosystemDisplayDetails {
+  return { logoUrl: "", color: "" };
+}
+
+export const EcosystemDisplayDetails = {
+  encode(
+    message: EcosystemDisplayDetails,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.logoUrl !== "") {
+      writer.uint32(26).string(message.logoUrl);
+    }
+    if (message.color !== "") {
+      writer.uint32(34).string(message.color);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): EcosystemDisplayDetails {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseEcosystemDisplayDetails();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 3:
+          message.logoUrl = reader.string();
+          break;
+        case 4:
+          message.color = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): EcosystemDisplayDetails {
+    return {
+      logoUrl: isSet(object.logoUrl) ? String(object.logoUrl) : "",
+      color: isSet(object.color) ? String(object.color) : "",
+    };
+  },
+
+  toJSON(message: EcosystemDisplayDetails): unknown {
+    const obj: any = {};
+    message.logoUrl !== undefined && (obj.logoUrl = message.logoUrl);
+    message.color !== undefined && (obj.color = message.color);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<EcosystemDisplayDetails>
+  ): EcosystemDisplayDetails {
+    const message = createBaseEcosystemDisplayDetails();
+    message.logoUrl = object.logoUrl ?? "";
+    message.color = object.color ?? "";
     return message;
   },
 };
@@ -1969,6 +2264,229 @@ export const GetEventTokenResponse = {
   },
 };
 
+function createBaseRetrieveVerificationRecordRequest(): RetrieveVerificationRecordRequest {
+  return {};
+}
+
+export const RetrieveVerificationRecordRequest = {
+  encode(
+    _: RetrieveVerificationRecordRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): RetrieveVerificationRecordRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseRetrieveVerificationRecordRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): RetrieveVerificationRecordRequest {
+    return {};
+  },
+
+  toJSON(_: RetrieveVerificationRecordRequest): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<RetrieveVerificationRecordRequest>
+  ): RetrieveVerificationRecordRequest {
+    const message = createBaseRetrieveVerificationRecordRequest();
+    return message;
+  },
+};
+
+function createBaseRetrieveVerificationRecordResponse(): RetrieveVerificationRecordResponse {
+  return { verificationTxt: "" };
+}
+
+export const RetrieveVerificationRecordResponse = {
+  encode(
+    message: RetrieveVerificationRecordResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.verificationTxt !== "") {
+      writer.uint32(10).string(message.verificationTxt);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): RetrieveVerificationRecordResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseRetrieveVerificationRecordResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.verificationTxt = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): RetrieveVerificationRecordResponse {
+    return {
+      verificationTxt: isSet(object.verificationTxt)
+        ? String(object.verificationTxt)
+        : "",
+    };
+  },
+
+  toJSON(message: RetrieveVerificationRecordResponse): unknown {
+    const obj: any = {};
+    message.verificationTxt !== undefined &&
+      (obj.verificationTxt = message.verificationTxt);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<RetrieveVerificationRecordResponse>
+  ): RetrieveVerificationRecordResponse {
+    const message = createBaseRetrieveVerificationRecordResponse();
+    message.verificationTxt = object.verificationTxt ?? "";
+    return message;
+  },
+};
+
+function createBaseRefreshVerificationStatusRequest(): RefreshVerificationStatusRequest {
+  return {};
+}
+
+export const RefreshVerificationStatusRequest = {
+  encode(
+    _: RefreshVerificationStatusRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): RefreshVerificationStatusRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseRefreshVerificationStatusRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): RefreshVerificationStatusRequest {
+    return {};
+  },
+
+  toJSON(_: RefreshVerificationStatusRequest): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<RefreshVerificationStatusRequest>
+  ): RefreshVerificationStatusRequest {
+    const message = createBaseRefreshVerificationStatusRequest();
+    return message;
+  },
+};
+
+function createBaseRefreshVerificationStatusResponse(): RefreshVerificationStatusResponse {
+  return { domain: "", domainVerified: false };
+}
+
+export const RefreshVerificationStatusResponse = {
+  encode(
+    message: RefreshVerificationStatusResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.domain !== "") {
+      writer.uint32(10).string(message.domain);
+    }
+    if (message.domainVerified === true) {
+      writer.uint32(16).bool(message.domainVerified);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): RefreshVerificationStatusResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseRefreshVerificationStatusResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.domain = reader.string();
+          break;
+        case 2:
+          message.domainVerified = reader.bool();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): RefreshVerificationStatusResponse {
+    return {
+      domain: isSet(object.domain) ? String(object.domain) : "",
+      domainVerified: isSet(object.domainVerified)
+        ? Boolean(object.domainVerified)
+        : false,
+    };
+  },
+
+  toJSON(message: RefreshVerificationStatusResponse): unknown {
+    const obj: any = {};
+    message.domain !== undefined && (obj.domain = message.domain);
+    message.domainVerified !== undefined &&
+      (obj.domainVerified = message.domainVerified);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<RefreshVerificationStatusResponse>
+  ): RefreshVerificationStatusResponse {
+    const message = createBaseRefreshVerificationStatusResponse();
+    message.domain = object.domain ?? "";
+    message.domainVerified = object.domainVerified ?? false;
+    return message;
+  },
+};
+
 function createBaseGrantAuthorizationRequest(): GrantAuthorizationRequest {
   return { email: undefined, walletId: undefined, resource: "", action: "" };
 }
@@ -2463,6 +2981,24 @@ export const ProviderDefinition = {
       requestType: GetEventTokenRequest,
       requestStream: false,
       responseType: GetEventTokenResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** Retrieve a random hash TXT that can be used to verify domain ownership */
+    retrieveVerificationRecord: {
+      name: "RetrieveVerificationRecord",
+      requestType: RetrieveVerificationRecordRequest,
+      requestStream: false,
+      responseType: RetrieveVerificationRecordResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** Call to verif */
+    refreshVerificationStatus: {
+      name: "RefreshVerificationStatus",
+      requestType: RefreshVerificationStatusRequest,
+      requestStream: false,
+      responseType: RefreshVerificationStatusResponse,
       responseStream: false,
       options: {},
     },

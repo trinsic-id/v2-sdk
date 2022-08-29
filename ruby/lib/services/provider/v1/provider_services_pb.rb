@@ -43,6 +43,10 @@ module Services
           rpc :GetOberonKey, ::Services::Provider::V1::GetOberonKeyRequest, ::Services::Provider::V1::GetOberonKeyResponse
           # Generate a signed token (JWT) that can be used to connect to the message bus
           rpc :GetEventToken, ::Services::Provider::V1::GetEventTokenRequest, ::Services::Provider::V1::GetEventTokenResponse
+          # Retrieve a random hash TXT that can be used to verify domain ownership
+          rpc :RetrieveVerificationRecord, ::Services::Provider::V1::RetrieveVerificationRecordRequest, ::Services::Provider::V1::RetrieveVerificationRecordResponse
+          # Call to verif
+          rpc :RefreshVerificationStatus, ::Services::Provider::V1::RefreshVerificationStatusRequest, ::Services::Provider::V1::RefreshVerificationStatusResponse
         end
 
         Stub = Service.rpc_stub_class
