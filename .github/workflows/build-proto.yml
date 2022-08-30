@@ -49,6 +49,10 @@ jobs:
         uses: OleksiyRudenko/gha-git-credentials@v2
         with:
           token: '${{ secrets.GITHUB_TOKEN }}'
+      
+      - uses: trinsic-id/protoc-gen-sdk@v0.1.2
+        id: buildsdkwrappers
+          
       - name: Install protobuf plugins
         run: |
           pip install -r ./devops/requirements.txt
@@ -57,9 +61,6 @@ jobs:
       - name: Compile proto files
         run: |
           python ./devops/generate_proto_files.py --language=all
-          
-      - uses: trinsic-id/protoc-gen-sdk@v0.1.2
-        id: buildsdkwrappers
 
       - name: Commit Changes
         run: |
