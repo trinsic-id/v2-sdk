@@ -50,11 +50,8 @@ jobs:
         with:
           token: '${{ secrets.GITHUB_TOKEN }}'
       
-      - uses: trinsic-id/protoc-gen-sdk@v0.1.2
+      - uses: trinsic-id/protoc-gen-sdk@v0.1.3
         id: buildsdkwrappers
-        with:
-          protoPath: './proto'
-          pythonPath: './python'
 
       - name: Install protobuf plugins
         run: |
