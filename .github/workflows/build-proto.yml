@@ -60,6 +60,9 @@ jobs:
           
       - uses: trinsic-id/protoc-gen-sdk@v0.1.2
         id: buildsdkwrappers
+        with:
+          protoPath: './proto'
+          pythonPath: './python'
 
       - name: Commit Changes
         run: |
