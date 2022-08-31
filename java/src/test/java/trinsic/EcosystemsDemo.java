@@ -44,9 +44,7 @@ public class EcosystemsDemo {
         trinsic
             .provider()
             .updateEcosystem(
-                UpdateEcosystemRequest.newBuilder()
-                    .setDescription("My updated ecosystem")
-                    .build())
+                UpdateEcosystemRequest.newBuilder().setDescription("My updated ecosystem").build())
             .get();
     // }
 
