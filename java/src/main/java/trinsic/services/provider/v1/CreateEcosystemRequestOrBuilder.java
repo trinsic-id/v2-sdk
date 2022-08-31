@@ -71,10 +71,13 @@ public interface CreateEcosystemRequestOrBuilder
    * External URL associated with your organization or ecosystem entity
    * </pre>
    *
-   * <code>string uri = 3 [(.services.options.optional) = true];</code>
+   * <code>string uri = 3 [deprecated = true, (.services.options.optional) = true];</code>
    *
+   * @deprecated services.provider.v1.CreateEcosystemRequest.uri is deprecated. See
+   *     services/provider/v1/provider.proto;l=136
    * @return The uri.
    */
+  @java.lang.Deprecated
   java.lang.String getUri();
   /**
    *
@@ -83,10 +86,13 @@ public interface CreateEcosystemRequestOrBuilder
    * External URL associated with your organization or ecosystem entity
    * </pre>
    *
-   * <code>string uri = 3 [(.services.options.optional) = true];</code>
+   * <code>string uri = 3 [deprecated = true, (.services.options.optional) = true];</code>
    *
+   * @deprecated services.provider.v1.CreateEcosystemRequest.uri is deprecated. See
+   *     services/provider/v1/provider.proto;l=136
    * @return The bytes for uri.
    */
+  @java.lang.Deprecated
   com.google.protobuf.ByteString getUriBytes();
 
   /**
@@ -123,4 +129,29 @@ public interface CreateEcosystemRequestOrBuilder
    * <code>.services.account.v1.AccountDetails details = 4;</code>
    */
   trinsic.services.account.v1.AccountDetailsOrBuilder getDetailsOrBuilder();
+
+  /**
+   *
+   *
+   * <pre>
+   * New domain URL
+   * </pre>
+   *
+   * <code>string domain = 5;</code>
+   *
+   * @return The domain.
+   */
+  java.lang.String getDomain();
+  /**
+   *
+   *
+   * <pre>
+   * New domain URL
+   * </pre>
+   *
+   * <code>string domain = 5;</code>
+   *
+   * @return The bytes for domain.
+   */
+  com.google.protobuf.ByteString getDomainBytes();
 }

@@ -121,5 +121,21 @@ module Services::Provider::V1::Provider
     end
     def get_event_token(request)
     end
+
+    sig do
+      params(
+        request: Services::Provider::V1::RetrieveVerificationRecordRequest
+      ).returns(Services::Provider::V1::RetrieveVerificationRecordResponse)
+    end
+    def retrieve_verification_record(request)
+    end
+
+    sig do
+      params(
+        request: Services::Provider::V1::RefreshVerificationStatusRequest
+      ).returns(Services::Provider::V1::RefreshVerificationStatusResponse)
+    end
+    def refresh_verification_status(request)
+    end
   end
 end
