@@ -378,7 +378,7 @@ DerivedData/
 .swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
 swift/TrinsicServices/.build
 
-!/proto/**/debug/
+!web/src/proto/**/debug/
 go/services/libokapi.dll.a
 go/services/okapi.dll
 go/services/okapi.h
@@ -402,3 +402,5 @@ samples/dotnet/vaccination-certificate-frame.jsonld
 samples/dotnet/vaccination-certificate-unsigned.jsonld
 
 .cache
+web/src/proto/services/debug/v1/debug.js.map
+web/src/proto/services/debug/v1/DebugServiceClientPb.js.map
