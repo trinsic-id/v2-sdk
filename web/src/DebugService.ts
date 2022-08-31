@@ -5,6 +5,7 @@ import {
 } from "./proto";
 
 import type { Client as BrowserClient } from "nice-grpc-web";
+import {Empty} from "./proto/google/protobuf/empty";
 
 export class DebugService extends ServiceBase {
   client: BrowserClient<typeof DebuggingDefinition>;
