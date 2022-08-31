@@ -66,7 +66,7 @@ describe("WalletService Unit Tests", () => {
     await new Promise((res) => setTimeout(res, 1000));
 
     // searchWalletBasic() {
-    let items = await trinsic.wallet().search();
+    let items = await trinsic.wallet().searchWallet();
     // }
     // searchWalletSQL() {
     let items2 = await trinsic.wallet().search(
