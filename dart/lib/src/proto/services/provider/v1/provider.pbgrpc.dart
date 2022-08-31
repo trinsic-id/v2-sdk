@@ -91,6 +91,20 @@ class ProviderClient extends $grpc.Client {
           ($5.GetEventTokenRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $5.GetEventTokenResponse.fromBuffer(value));
+  static final _$retrieveVerificationRecord = $grpc.ClientMethod<
+          $5.RetrieveVerificationRecordRequest,
+          $5.RetrieveVerificationRecordResponse>(
+      '/services.provider.v1.Provider/RetrieveVerificationRecord',
+      ($5.RetrieveVerificationRecordRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) =>
+          $5.RetrieveVerificationRecordResponse.fromBuffer(value));
+  static final _$refreshVerificationStatus = $grpc.ClientMethod<
+          $5.RefreshVerificationStatusRequest,
+          $5.RefreshVerificationStatusResponse>(
+      '/services.provider.v1.Provider/RefreshVerificationStatus',
+      ($5.RefreshVerificationStatusRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) =>
+          $5.RefreshVerificationStatusResponse.fromBuffer(value));
 
   ProviderClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -172,6 +186,20 @@ class ProviderClient extends $grpc.Client {
       $5.GetEventTokenRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getEventToken, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$5.RetrieveVerificationRecordResponse>
+      retrieveVerificationRecord($5.RetrieveVerificationRecordRequest request,
+          {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$retrieveVerificationRecord, request,
+        options: options);
+  }
+
+  $grpc.ResponseFuture<$5.RefreshVerificationStatusResponse>
+      refreshVerificationStatus($5.RefreshVerificationStatusRequest request,
+          {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$refreshVerificationStatus, request,
+        options: options);
   }
 }
 
@@ -292,6 +320,25 @@ abstract class ProviderServiceBase extends $grpc.Service {
             ($core.List<$core.int> value) =>
                 $5.GetEventTokenRequest.fromBuffer(value),
             ($5.GetEventTokenResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$5.RetrieveVerificationRecordRequest,
+            $5.RetrieveVerificationRecordResponse>(
+        'RetrieveVerificationRecord',
+        retrieveVerificationRecord_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) =>
+            $5.RetrieveVerificationRecordRequest.fromBuffer(value),
+        ($5.RetrieveVerificationRecordResponse value) =>
+            value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$5.RefreshVerificationStatusRequest,
+            $5.RefreshVerificationStatusResponse>(
+        'RefreshVerificationStatus',
+        refreshVerificationStatus_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) =>
+            $5.RefreshVerificationStatusRequest.fromBuffer(value),
+        ($5.RefreshVerificationStatusResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$5.CreateEcosystemResponse> createEcosystem_Pre(
@@ -370,6 +417,18 @@ abstract class ProviderServiceBase extends $grpc.Service {
     return getEventToken(call, await request);
   }
 
+  $async.Future<$5.RetrieveVerificationRecordResponse>
+      retrieveVerificationRecord_Pre($grpc.ServiceCall call,
+          $async.Future<$5.RetrieveVerificationRecordRequest> request) async {
+    return retrieveVerificationRecord(call, await request);
+  }
+
+  $async.Future<$5.RefreshVerificationStatusResponse>
+      refreshVerificationStatus_Pre($grpc.ServiceCall call,
+          $async.Future<$5.RefreshVerificationStatusRequest> request) async {
+    return refreshVerificationStatus(call, await request);
+  }
+
   $async.Future<$5.CreateEcosystemResponse> createEcosystem(
       $grpc.ServiceCall call, $5.CreateEcosystemRequest request);
   $async.Future<$5.UpdateEcosystemResponse> updateEcosystem(
@@ -396,4 +455,9 @@ abstract class ProviderServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $5.GetOberonKeyRequest request);
   $async.Future<$5.GetEventTokenResponse> getEventToken(
       $grpc.ServiceCall call, $5.GetEventTokenRequest request);
+  $async.Future<$5.RetrieveVerificationRecordResponse>
+      retrieveVerificationRecord(
+          $grpc.ServiceCall call, $5.RetrieveVerificationRecordRequest request);
+  $async.Future<$5.RefreshVerificationStatusResponse> refreshVerificationStatus(
+      $grpc.ServiceCall call, $5.RefreshVerificationStatusRequest request);
 }
