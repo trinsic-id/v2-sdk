@@ -2,7 +2,7 @@ import { ServiceOptions } from "../src";
 
 export function getTestServerOptions(): ServiceOptions {
   let defaults = ServiceOptions.fromPartial({
-    serverEndpoint: "staging-internal.trinsic.cloud",
+    serverEndpoint: "dev-internal.trinsic.cloud",
     serverPort: 443,
     serverUseTls: true,
   });

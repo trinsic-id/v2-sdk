@@ -46,13 +46,11 @@ public class EcosystemsDemo {
             .updateEcosystem(
                 UpdateEcosystemRequest.newBuilder()
                     .setDescription("My updated ecosystem")
-                    .setUri("https://new-example.com")
                     .build())
             .get();
     // }
 
     Assertions.assertNotNull(updateResponse.getEcosystem());
-    Assertions.assertEquals(updateResponse.getEcosystem().getUri(), "https://new-example.com");
 
     // ecosystemInfo() {
     var infoResponse =
