@@ -1739,30 +1739,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#servicesdebugv1debugproto" class="md-nav__link">
-    <span class="md-ellipsis">
-      services/debug/v1/debug.proto
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="services/debug/v1/debug.proto">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#service-debugging" class="md-nav__link">
-    <span class="md-ellipsis">
-      Service - Debugging
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#servicesaccountv1accountproto" class="md-nav__link">
     <span class="md-ellipsis">
       services/account/v1/account.proto
@@ -2040,6 +2016,24 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#ecosystemdisplay" class="md-nav__link">
+    <span class="md-ellipsis">
+      EcosystemDisplay
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecosystemdisplaydetails" class="md-nav__link">
+    <span class="md-ellipsis">
+      EcosystemDisplayDetails
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ecosysteminforequest" class="md-nav__link">
     <span class="md-ellipsis">
       EcosystemInfoRequest
@@ -2196,6 +2190,42 @@
   <a href="#inviteresponse" class="md-nav__link">
     <span class="md-ellipsis">
       InviteResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#refreshverificationstatusrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      RefreshVerificationStatusRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#refreshverificationstatusresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      RefreshVerificationStatusResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieveverificationrecordrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      RetrieveVerificationRecordRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrieveverificationrecordresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      RetrieveVerificationRecordResponse
     </span>
   </a>
   
@@ -4617,44 +4647,6 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 </table>
 <!-- end HasExtensions -->
 
-<p><a name="services_debug_v1_debug-proto"></a></p>
-<p align="right"><a href="#top">Top</a></p>
-
-<h2 id="servicesdebugv1debugproto">services/debug/v1/debug.proto<a class="headerlink" href="#servicesdebugv1debugproto" title="Permanent link">&para;</a></h2>
-<p><a name="services-debug-v1-Debugging"></a></p>
-<h3 id="service-debugging">Service - Debugging<a class="headerlink" href="#service-debugging" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Method Name</th>
-<th>Request Type</th>
-<th>Response Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CallEmpty</td>
-<td><a href="/reference/proto#google-protobuf-Empty">.google.protobuf.Empty</a></td>
-<td><a href="/reference/proto#google-protobuf-Empty">.google.protobuf.Empty</a></td>
-<td></td>
-</tr>
-<tr>
-<td>CallEmptyAuth</td>
-<td><a href="/reference/proto#google-protobuf-Empty">.google.protobuf.Empty</a></td>
-<td><a href="/reference/proto#google-protobuf-Empty">.google.protobuf.Empty</a></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<!-- end services -->
-
-<!-- end messages -->
-
-<!-- end enums -->
-
-<!-- end HasExtensions -->
-
 <p><a name="services_account_v1_account-proto"></a></p>
 <p align="right"><a href="#top">Top</a></p>
 
@@ -5213,6 +5205,18 @@ like email, SMS, etc.</p>
 <td><a href="/reference/proto#services-provider-v1-GetEventTokenResponse">GetEventTokenResponse</a></td>
 <td>Generate a signed token (JWT) that can be used to connect to the message bus</td>
 </tr>
+<tr>
+<td>RetrieveVerificationRecord</td>
+<td><a href="/reference/proto#services-provider-v1-RetrieveVerificationRecordRequest">RetrieveVerificationRecordRequest</a></td>
+<td><a href="/reference/proto#services-provider-v1-RetrieveVerificationRecordResponse">RetrieveVerificationRecordResponse</a></td>
+<td>Retrieve a random hash TXT that can be used to verify domain ownership</td>
+</tr>
+<tr>
+<td>RefreshVerificationStatus</td>
+<td><a href="/reference/proto#services-provider-v1-RefreshVerificationStatusRequest">RefreshVerificationStatusRequest</a></td>
+<td><a href="/reference/proto#services-provider-v1-RefreshVerificationStatusResponse">RefreshVerificationStatusResponse</a></td>
+<td>Call to verif</td>
+</tr>
 </tbody>
 </table>
 <!-- end services -->
@@ -5290,12 +5294,17 @@ like email, SMS, etc.</p>
 <tr>
 <td>uri</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>External URL associated with your organization or ecosystem entity</td>
+<td><strong>Deprecated.</strong> External URL associated with your organization or ecosystem entity</td>
 </tr>
 <tr>
 <td>details</td>
 <td><a href="/reference/proto#services-account-v1-AccountDetails">services.account.v1.AccountDetails</a></td>
 <td>The account details of the owner of the ecosystem</td>
+</tr>
+<tr>
+<td>domain</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>New domain URL</td>
 </tr>
 </tbody>
 </table>
@@ -5396,12 +5405,68 @@ like email, SMS, etc.</p>
 <tr>
 <td>uri</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>External URL associated with the organization or ecosystem entity</td>
+<td><strong>Deprecated.</strong> External URL associated with the organization or ecosystem entity</td>
 </tr>
 <tr>
 <td>webhooks</td>
 <td><a href="/reference/proto#services-provider-v1-WebhookConfig">WebhookConfig</a>[]</td>
 <td>Configured webhooks, if any</td>
+</tr>
+<tr>
+<td>display</td>
+<td><a href="/reference/proto#services-provider-v1-EcosystemDisplay">EcosystemDisplay</a></td>
+<td>Display details</td>
+</tr>
+<tr>
+<td>domain</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Domain</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-EcosystemDisplay"></a></p>
+<h3 id="ecosystemdisplay">EcosystemDisplay<a class="headerlink" href="#ecosystemdisplay" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dark</td>
+<td><a href="/reference/proto#services-provider-v1-EcosystemDisplayDetails">EcosystemDisplayDetails</a></td>
+<td></td>
+</tr>
+<tr>
+<td>light</td>
+<td><a href="/reference/proto#services-provider-v1-EcosystemDisplayDetails">EcosystemDisplayDetails</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-EcosystemDisplayDetails"></a></p>
+<h3 id="ecosystemdisplaydetails">EcosystemDisplayDetails<a class="headerlink" href="#ecosystemdisplaydetails" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>logo_url</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>string id = 1; string name = 2;</td>
+</tr>
+<tr>
+<td>color</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -5714,6 +5779,53 @@ to verify authentication token validity</p>
 </tr>
 </tbody>
 </table>
+<p><a name="services-provider-v1-RefreshVerificationStatusRequest"></a></p>
+<h3 id="refreshverificationstatusrequest">RefreshVerificationStatusRequest<a class="headerlink" href="#refreshverificationstatusrequest" title="Permanent link">&para;</a></h3>
+<p>TODO - Should we allow specifying which ecosystem to use?</p>
+<p><a name="services-provider-v1-RefreshVerificationStatusResponse"></a></p>
+<h3 id="refreshverificationstatusresponse">RefreshVerificationStatusResponse<a class="headerlink" href="#refreshverificationstatusresponse" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>domain</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Domain URL verified</td>
+</tr>
+<tr>
+<td>domain_verified</td>
+<td><a href="/reference/proto#bool">bool</a></td>
+<td>Specifies if the above <code>domain</code> was successfully verified</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-RetrieveVerificationRecordRequest"></a></p>
+<h3 id="retrieveverificationrecordrequest">RetrieveVerificationRecordRequest<a class="headerlink" href="#retrieveverificationrecordrequest" title="Permanent link">&para;</a></h3>
+<p><a name="services-provider-v1-RetrieveVerificationRecordResponse"></a></p>
+<h3 id="retrieveverificationrecordresponse">RetrieveVerificationRecordResponse<a class="headerlink" href="#retrieveverificationrecordresponse" title="Permanent link">&para;</a></h3>
+<p>Response message containing a TXT record content for domain url verification</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>verification_txt</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>TXT code to use for domain verification</td>
+</tr>
+</tbody>
+</table>
 <p><a name="services-provider-v1-RevokeAuthorizationRequest"></a></p>
 <h3 id="revokeauthorizationrequest">RevokeAuthorizationRequest<a class="headerlink" href="#revokeauthorizationrequest" title="Permanent link">&para;</a></h3>
 <p>Revoke permissions to a resource or path in the ecosystem</p>
@@ -5771,7 +5883,22 @@ to verify authentication token validity</p>
 <tr>
 <td>uri</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>New external URL associated with the organization or ecosystem entity</td>
+<td><strong>Deprecated.</strong> New external URL associated with the organization or ecosystem entity</td>
+</tr>
+<tr>
+<td>domain</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>New domain URL</td>
+</tr>
+<tr>
+<td>name</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>New name</td>
+</tr>
+<tr>
+<td>display</td>
+<td><a href="/reference/proto#services-provider-v1-EcosystemDisplay">EcosystemDisplay</a></td>
+<td>Display details</td>
 </tr>
 </tbody>
 </table>
