@@ -7,16 +7,16 @@ import runTrustRegistryDemo
 import runVaccineDemo
 
 class KotlinDemoTest {
-    @Test
-    fun ecosystemDemo() {
-        runBlocking { runEcosystemsDemo() }
-    }
-    @Test
-    fun trustRegistryDemo() {
-        runBlocking { runTrustRegistryDemo() }
-    }
-    @Test
-    fun vaccineDemo() {
-        runBlocking { runVaccineDemo() }
-    }
+  @Test
+  fun ecosystemDemo() {
+    runBlocking { runEcosystemsDemo() }
+  }
+  @Test
+  fun trustRegistryDemo() {
+    runBlocking { runTrustRegistryDemo() }
+  }
+  @Test
+  fun vaccineDemo() {
+    runBlocking { runVaccineDemo() }
+  }
 }
