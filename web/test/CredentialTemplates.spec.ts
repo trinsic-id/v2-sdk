@@ -24,11 +24,6 @@ describe("Demo: Credential Templates", () => {
   it("should run create credential templates", async () => {
     let response = await createCredentialTemplateTest(trinsic);
 
-    // We use GUID's to prevent the "not an owner" error.
-    expect(
-      response.data?.name.startsWith("My First Credential Template")
-    ).toBeTruthy();
-
     const fieldsMap = response.data?.fields!;
     expect(fieldsMap["name"]).toEqual(nameField);
     expect(fieldsMap["numberOfBags"]).toEqual(numberOfBags);

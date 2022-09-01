@@ -24,7 +24,6 @@ suspend fun runEcosystemsDemo() {
           CreateEcosystemRequest.newBuilder()
               .setName("test-sdk-" + java.util.UUID.randomUUID())
               .setDescription("My ecosystem")
-              .setUri("https://example.com")
               .build())
   Assertions.assertNotNull(response.ecosystem)
   Assertions.assertNotNull(response.ecosystem.id)
@@ -33,4 +32,6 @@ suspend fun runEcosystemsDemo() {
   // service.listEcosystems(ProviderOuterClass.ListEcosystemsRequest.newBuilder().build())
   //    Assertions.assertNotNull(actualList)
   //    Assertions.assertTrue(actualList.isNotEmpty())
+    accountService.shutdown()
+    service.shutdown()
 }

@@ -1,13 +1,14 @@
 package trinsic;
 
-import java.io.IOException;
-import java.util.Base64;
-import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.okapi.DidException;
 import trinsic.services.TrinsicService;
 import trinsic.services.account.v1.AccountDetails;
 import trinsic.services.provider.v1.*;
+
+import java.io.IOException;
+import java.util.Base64;
+import java.util.concurrent.ExecutionException;
 
 public class EcosystemsDemo {
   public static void main(String[] args)
@@ -46,13 +47,11 @@ public class EcosystemsDemo {
             .updateEcosystem(
                 UpdateEcosystemRequest.newBuilder()
                     .setDescription("My updated ecosystem")
-                    .setUri("https://new-example.com")
                     .build())
             .get();
     // }
 
     Assertions.assertNotNull(updateResponse.getEcosystem());
-    Assertions.assertEquals(updateResponse.getEcosystem().getUri(), "https://new-example.com");
 
     // ecosystemInfo() {
     var infoResponse =

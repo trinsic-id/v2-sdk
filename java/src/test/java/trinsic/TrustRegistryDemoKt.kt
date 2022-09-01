@@ -55,4 +55,7 @@ suspend fun runTrustRegistryDemo() {
           .setDidUri(didUri)
           .setSchemaUri(typeUri)
           .build())
+
+    service.shutdown()
+    accountService.shutdown()
 }
