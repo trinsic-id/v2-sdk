@@ -22,7 +22,6 @@ suspend fun runEcosystemsDemo() {
   val response =
       service.createEcosystem(
           CreateEcosystemRequest.newBuilder()
-              .setName("test-sdk-" + java.util.UUID.randomUUID())
               .setDescription("My ecosystem")
               .build())
   Assertions.assertNotNull(response.ecosystem)
