@@ -1,11 +1,8 @@
-using System;
 using System.Threading.Tasks;
 using Google.Protobuf.WellKnownTypes;
 using Microsoft.Extensions.Options;
 using Trinsic.Sdk.Options.V1;
 using Trinsic.Services.Debug.V1;
-using Trinsic.Services.VerifiableCredentials.Templates.V1;
-using Trinsic.Services.VerifiableCredentials.V1;
 
 namespace Trinsic;
 

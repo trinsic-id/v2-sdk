@@ -1,12 +1,13 @@
 package trinsic;
 
-import java.io.IOException;
-import java.util.UUID;
-import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.okapi.DidException;
 import trinsic.services.TrinsicService;
 import trinsic.services.trustregistry.v1.*;
+
+import java.io.IOException;
+import java.util.UUID;
+import java.util.concurrent.ExecutionException;
 
 public class TrustRegistryDemo {
   public static void main(String[] args)
@@ -20,9 +21,9 @@ public class TrustRegistryDemo {
     var account = trinsic.account().signIn().get();
     trinsic.setAuthToken(account);
 
-    final String didUri = "did:example:test";
-    final String frameworkUri = "https://example.com/" + UUID.randomUUID();
-    final String typeUri = "https://schema.org/Card";
+    var didUri = "did:example:test";
+    var frameworkUri = "https://example.com/" + UUID.randomUUID();
+    var typeUri = "https://schema.org/Card";
 
     // addFramework() {
     var frameworkResponse =

@@ -1,11 +1,11 @@
-import java.io.IOException
-import java.util.concurrent.ExecutionException
 import org.junit.jupiter.api.Assertions
 import trinsic.TrinsicUtilities
 import trinsic.okapi.DidException
 import trinsic.services.AccountServiceKt
 import trinsic.services.ProviderServiceKt
 import trinsic.services.provider.v1.CreateEcosystemRequest
+import java.io.IOException
+import java.util.concurrent.ExecutionException
 
 @Throws(
     IOException::class, DidException::class, ExecutionException::class, InterruptedException::class)
@@ -17,12 +17,11 @@ suspend fun main() {
     IOException::class, DidException::class, ExecutionException::class, InterruptedException::class)
 suspend fun runEcosystemsDemo() {
   val accountService = AccountServiceKt(TrinsicUtilities.getTrinsicServiceOptions())
-  val account = accountService.signIn()
-  val service = ProviderServiceKt(TrinsicUtilities.getTrinsicServiceOptions(account))
+  val authToken = accountService.loginAnonymous()
+  val service = ProviderServiceKt(TrinsicUtilities.getTrinsicServiceOptions(authToken))
   val response =
       service.createEcosystem(
           CreateEcosystemRequest.newBuilder()
-              .setName("test-sdk-" + java.util.UUID.randomUUID())
               .setDescription("My ecosystem")
               .setUri("https://example.com")
               .build())

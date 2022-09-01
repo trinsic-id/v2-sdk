@@ -6,6 +6,7 @@ import trinsic.okapi.DidException
 import trinsic.services.AccountServiceKt
 import trinsic.services.TrustRegistryServiceKt
 import trinsic.services.trustregistry.v1.*
+import java.util.*
 
 @Throws(
     IOException::class, DidException::class, ExecutionException::class, InterruptedException::class)
@@ -22,12 +23,12 @@ suspend fun runTrustRegistryDemo() {
   val service = TrustRegistryServiceKt(TrinsicUtilities.getTrinsicServiceOptions(account))
 
   val didUri = "did:example:test"
-  val frameworkUri = "https://example.com"
+  val frameworkUri = "https://example.com/" + UUID.randomUUID();
   val typeUri = "https://schema.org/Card"
 
   val frameworkResponse =
       service.addFramework(
-          AddFrameworkRequest.newBuilder().setGovernanceFrameworkUri(frameworkUri).build())
+          AddFrameworkRequest.newBuilder().setGovernanceFrameworkUri(frameworkUri).setName("Example Framework" + UUID.randomUUID()).build())
   service.registerMember(
       RegisterMemberRequest.newBuilder()
           .setDidUri(didUri)
