@@ -1,12 +1,7 @@
-package trinsic
-
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Test
-import runEcosystemsDemo
-import runTrustRegistryDemo
-import runVaccineDemo
 
-class KotlinDemoTest {
+class KotlinTestKt {
   @Test
   fun ecosystemDemo() {
     runBlocking { runEcosystemsDemo() }

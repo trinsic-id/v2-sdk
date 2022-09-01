@@ -17,13 +17,11 @@ suspend fun main() {
     IOException::class, DidException::class, ExecutionException::class, InterruptedException::class)
 suspend fun runEcosystemsDemo() {
   val accountService = AccountServiceKt(TrinsicUtilities.getTrinsicServiceOptions())
-  val account = accountService.signIn()
-  val service = ProviderServiceKt(TrinsicUtilities.getTrinsicServiceOptions(account))
+  val authToken = accountService.loginAnonymous()
+  val service = ProviderServiceKt(TrinsicUtilities.getTrinsicServiceOptions(authToken))
   val response =
       service.createEcosystem(
-          CreateEcosystemRequest.newBuilder()
-              .setDescription("My ecosystem")
-              .build())
+          CreateEcosystemRequest.newBuilder().setDescription("My ecosystem").build())
   Assertions.assertNotNull(response.ecosystem)
   Assertions.assertNotNull(response.ecosystem.id)
   Assertions.assertTrue(response.ecosystem.id.startsWith("urn:trinsic:ecosystems:"))
@@ -31,6 +29,6 @@ suspend fun runEcosystemsDemo() {
   // service.listEcosystems(ProviderOuterClass.ListEcosystemsRequest.newBuilder().build())
   //    Assertions.assertNotNull(actualList)
   //    Assertions.assertTrue(actualList.isNotEmpty())
-    accountService.shutdown()
-    service.shutdown()
+  accountService.shutdown()
+  service.shutdown()
 }

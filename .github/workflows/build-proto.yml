@@ -12,6 +12,7 @@ on:
     paths:
       - "proto/**"
       - "devops/**"
+      - ".github/workflows/build-proto.yml"
 
 jobs:
   compile_proto:
@@ -21,6 +22,7 @@ jobs:
         with:
           fetch-depth: 0
           ref: ${{ github.head_ref }}
+          submodules: recursive
       - name: Set up Python 3.9
         uses: actions/setup-python@v4
         with:
@@ -48,6 +50,9 @@ jobs:
         uses: OleksiyRudenko/gha-git-credentials@v2
         with:
           token: '${{ secrets.GITHUB_TOKEN }}'
+      
+      - uses: trinsic-id/protoc-gen-sdk@main
+        id: buildsdkwrappers
       - name: Install protobuf plugins
         run: |
           pip install -r ./devops/requirements.txt
