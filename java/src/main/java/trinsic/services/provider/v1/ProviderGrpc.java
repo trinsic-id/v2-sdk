@@ -609,6 +609,106 @@ public final class ProviderGrpc {
     return getGetEventTokenMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<
+          trinsic.services.provider.v1.RetrieveVerificationRecordRequest,
+          trinsic.services.provider.v1.RetrieveVerificationRecordResponse>
+      getRetrieveVerificationRecordMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "RetrieveVerificationRecord",
+      requestType = trinsic.services.provider.v1.RetrieveVerificationRecordRequest.class,
+      responseType = trinsic.services.provider.v1.RetrieveVerificationRecordResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<
+          trinsic.services.provider.v1.RetrieveVerificationRecordRequest,
+          trinsic.services.provider.v1.RetrieveVerificationRecordResponse>
+      getRetrieveVerificationRecordMethod() {
+    io.grpc.MethodDescriptor<
+            trinsic.services.provider.v1.RetrieveVerificationRecordRequest,
+            trinsic.services.provider.v1.RetrieveVerificationRecordResponse>
+        getRetrieveVerificationRecordMethod;
+    if ((getRetrieveVerificationRecordMethod = ProviderGrpc.getRetrieveVerificationRecordMethod)
+        == null) {
+      synchronized (ProviderGrpc.class) {
+        if ((getRetrieveVerificationRecordMethod = ProviderGrpc.getRetrieveVerificationRecordMethod)
+            == null) {
+          ProviderGrpc.getRetrieveVerificationRecordMethod =
+              getRetrieveVerificationRecordMethod =
+                  io.grpc.MethodDescriptor
+                      .<trinsic.services.provider.v1.RetrieveVerificationRecordRequest,
+                          trinsic.services.provider.v1.RetrieveVerificationRecordResponse>
+                          newBuilder()
+                      .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                      .setFullMethodName(
+                          generateFullMethodName(SERVICE_NAME, "RetrieveVerificationRecord"))
+                      .setSampledToLocalTracing(true)
+                      .setRequestMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.provider.v1.RetrieveVerificationRecordRequest
+                                  .getDefaultInstance()))
+                      .setResponseMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.provider.v1.RetrieveVerificationRecordResponse
+                                  .getDefaultInstance()))
+                      .setSchemaDescriptor(
+                          new ProviderMethodDescriptorSupplier("RetrieveVerificationRecord"))
+                      .build();
+        }
+      }
+    }
+    return getRetrieveVerificationRecordMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<
+          trinsic.services.provider.v1.RefreshVerificationStatusRequest,
+          trinsic.services.provider.v1.RefreshVerificationStatusResponse>
+      getRefreshVerificationStatusMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "RefreshVerificationStatus",
+      requestType = trinsic.services.provider.v1.RefreshVerificationStatusRequest.class,
+      responseType = trinsic.services.provider.v1.RefreshVerificationStatusResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<
+          trinsic.services.provider.v1.RefreshVerificationStatusRequest,
+          trinsic.services.provider.v1.RefreshVerificationStatusResponse>
+      getRefreshVerificationStatusMethod() {
+    io.grpc.MethodDescriptor<
+            trinsic.services.provider.v1.RefreshVerificationStatusRequest,
+            trinsic.services.provider.v1.RefreshVerificationStatusResponse>
+        getRefreshVerificationStatusMethod;
+    if ((getRefreshVerificationStatusMethod = ProviderGrpc.getRefreshVerificationStatusMethod)
+        == null) {
+      synchronized (ProviderGrpc.class) {
+        if ((getRefreshVerificationStatusMethod = ProviderGrpc.getRefreshVerificationStatusMethod)
+            == null) {
+          ProviderGrpc.getRefreshVerificationStatusMethod =
+              getRefreshVerificationStatusMethod =
+                  io.grpc.MethodDescriptor
+                      .<trinsic.services.provider.v1.RefreshVerificationStatusRequest,
+                          trinsic.services.provider.v1.RefreshVerificationStatusResponse>
+                          newBuilder()
+                      .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                      .setFullMethodName(
+                          generateFullMethodName(SERVICE_NAME, "RefreshVerificationStatus"))
+                      .setSampledToLocalTracing(true)
+                      .setRequestMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.provider.v1.RefreshVerificationStatusRequest
+                                  .getDefaultInstance()))
+                      .setResponseMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.provider.v1.RefreshVerificationStatusResponse
+                                  .getDefaultInstance()))
+                      .setSchemaDescriptor(
+                          new ProviderMethodDescriptorSupplier("RefreshVerificationStatus"))
+                      .build();
+        }
+      }
+    }
+    return getRefreshVerificationStatusMethod;
+  }
+
   /** Creates a new async stub that supports all call types for the service */
   public static ProviderStub newStub(io.grpc.Channel channel) {
     io.grpc.stub.AbstractStub.StubFactory<ProviderStub> factory =
@@ -845,6 +945,36 @@ public final class ProviderGrpc {
           getGetEventTokenMethod(), responseObserver);
     }
 
+    /**
+     *
+     *
+     * <pre>
+     * Retrieve a random hash TXT that can be used to verify domain ownership
+     * </pre>
+     */
+    public void retrieveVerificationRecord(
+        trinsic.services.provider.v1.RetrieveVerificationRecordRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.provider.v1.RetrieveVerificationRecordResponse>
+            responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
+          getRetrieveVerificationRecordMethod(), responseObserver);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Call to verif
+     * </pre>
+     */
+    public void refreshVerificationStatus(
+        trinsic.services.provider.v1.RefreshVerificationStatusRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.provider.v1.RefreshVerificationStatusResponse>
+            responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
+          getRefreshVerificationStatusMethod(), responseObserver);
+    }
+
     @java.lang.Override
     public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
@@ -937,6 +1067,20 @@ public final class ProviderGrpc {
                       trinsic.services.provider.v1.GetEventTokenRequest,
                       trinsic.services.provider.v1.GetEventTokenResponse>(
                       this, METHODID_GET_EVENT_TOKEN)))
+          .addMethod(
+              getRetrieveVerificationRecordMethod(),
+              io.grpc.stub.ServerCalls.asyncUnaryCall(
+                  new MethodHandlers<
+                      trinsic.services.provider.v1.RetrieveVerificationRecordRequest,
+                      trinsic.services.provider.v1.RetrieveVerificationRecordResponse>(
+                      this, METHODID_RETRIEVE_VERIFICATION_RECORD)))
+          .addMethod(
+              getRefreshVerificationStatusMethod(),
+              io.grpc.stub.ServerCalls.asyncUnaryCall(
+                  new MethodHandlers<
+                      trinsic.services.provider.v1.RefreshVerificationStatusRequest,
+                      trinsic.services.provider.v1.RefreshVerificationStatusResponse>(
+                      this, METHODID_REFRESH_VERIFICATION_STATUS)))
           .build();
     }
   }
@@ -1168,6 +1312,40 @@ public final class ProviderGrpc {
           request,
           responseObserver);
     }
+
+    /**
+     *
+     *
+     * <pre>
+     * Retrieve a random hash TXT that can be used to verify domain ownership
+     * </pre>
+     */
+    public void retrieveVerificationRecord(
+        trinsic.services.provider.v1.RetrieveVerificationRecordRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.provider.v1.RetrieveVerificationRecordResponse>
+            responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getRetrieveVerificationRecordMethod(), getCallOptions()),
+          request,
+          responseObserver);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Call to verif
+     * </pre>
+     */
+    public void refreshVerificationStatus(
+        trinsic.services.provider.v1.RefreshVerificationStatusRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.provider.v1.RefreshVerificationStatusResponse>
+            responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getRefreshVerificationStatusMethod(), getCallOptions()),
+          request,
+          responseObserver);
+    }
   }
 
   /** */
@@ -1350,6 +1528,33 @@ public final class ProviderGrpc {
         trinsic.services.provider.v1.GetEventTokenRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetEventTokenMethod(), getCallOptions(), request);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Retrieve a random hash TXT that can be used to verify domain ownership
+     * </pre>
+     */
+    public trinsic.services.provider.v1.RetrieveVerificationRecordResponse
+        retrieveVerificationRecord(
+            trinsic.services.provider.v1.RetrieveVerificationRecordRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getRetrieveVerificationRecordMethod(), getCallOptions(), request);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Call to verif
+     * </pre>
+     */
+    public trinsic.services.provider.v1.RefreshVerificationStatusResponse refreshVerificationStatus(
+        trinsic.services.provider.v1.RefreshVerificationStatusRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getRefreshVerificationStatusMethod(), getCallOptions(), request);
     }
   }
 
@@ -1547,6 +1752,36 @@ public final class ProviderGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetEventTokenMethod(), getCallOptions()), request);
     }
+
+    /**
+     *
+     *
+     * <pre>
+     * Retrieve a random hash TXT that can be used to verify domain ownership
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<
+            trinsic.services.provider.v1.RetrieveVerificationRecordResponse>
+        retrieveVerificationRecord(
+            trinsic.services.provider.v1.RetrieveVerificationRecordRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getRetrieveVerificationRecordMethod(), getCallOptions()), request);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Call to verif
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<
+            trinsic.services.provider.v1.RefreshVerificationStatusResponse>
+        refreshVerificationStatus(
+            trinsic.services.provider.v1.RefreshVerificationStatusRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getRefreshVerificationStatusMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_CREATE_ECOSYSTEM = 0;
@@ -1562,6 +1797,8 @@ public final class ProviderGrpc {
   private static final int METHODID_INVITATION_STATUS = 10;
   private static final int METHODID_GET_OBERON_KEY = 11;
   private static final int METHODID_GET_EVENT_TOKEN = 12;
+  private static final int METHODID_RETRIEVE_VERIFICATION_RECORD = 13;
+  private static final int METHODID_REFRESH_VERIFICATION_STATUS = 14;
 
   private static final class MethodHandlers<Req, Resp>
       implements io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -1659,6 +1896,20 @@ public final class ProviderGrpc {
               (io.grpc.stub.StreamObserver<trinsic.services.provider.v1.GetEventTokenResponse>)
                   responseObserver);
           break;
+        case METHODID_RETRIEVE_VERIFICATION_RECORD:
+          serviceImpl.retrieveVerificationRecord(
+              (trinsic.services.provider.v1.RetrieveVerificationRecordRequest) request,
+              (io.grpc.stub.StreamObserver<
+                      trinsic.services.provider.v1.RetrieveVerificationRecordResponse>)
+                  responseObserver);
+          break;
+        case METHODID_REFRESH_VERIFICATION_STATUS:
+          serviceImpl.refreshVerificationStatus(
+              (trinsic.services.provider.v1.RefreshVerificationStatusRequest) request,
+              (io.grpc.stub.StreamObserver<
+                      trinsic.services.provider.v1.RefreshVerificationStatusResponse>)
+                  responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -1734,6 +1985,8 @@ public final class ProviderGrpc {
                       .addMethod(getInvitationStatusMethod())
                       .addMethod(getGetOberonKeyMethod())
                       .addMethod(getGetEventTokenMethod())
+                      .addMethod(getRetrieveVerificationRecordMethod())
+                      .addMethod(getRefreshVerificationStatusMethod())
                       .build();
         }
       }

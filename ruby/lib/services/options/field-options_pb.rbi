@@ -52,10 +52,6 @@ class Services::Options::SdkTemplateOption
   end
 
   sig { returns(T::Boolean) }
-  def has_anonymous?
-  end
-
-  sig { returns(T::Boolean) }
   def ignore
   end
 
@@ -65,10 +61,6 @@ class Services::Options::SdkTemplateOption
 
   sig { void }
   def clear_ignore
-  end
-
-  sig { returns(T::Boolean) }
-  def has_ignore?
   end
 
   sig { params(field: String).returns(T.untyped) }

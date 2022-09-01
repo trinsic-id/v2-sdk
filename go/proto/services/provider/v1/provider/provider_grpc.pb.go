@@ -49,6 +49,10 @@ type ProviderClient interface {
 	GetOberonKey(ctx context.Context, in *GetOberonKeyRequest, opts ...grpc.CallOption) (*GetOberonKeyResponse, error)
 	// Generate a signed token (JWT) that can be used to connect to the message bus
 	GetEventToken(ctx context.Context, in *GetEventTokenRequest, opts ...grpc.CallOption) (*GetEventTokenResponse, error)
+	// Retrieve a random hash TXT that can be used to verify domain ownership
+	RetrieveVerificationRecord(ctx context.Context, in *RetrieveVerificationRecordRequest, opts ...grpc.CallOption) (*RetrieveVerificationRecordResponse, error)
+	// Call to verif
+	RefreshVerificationStatus(ctx context.Context, in *RefreshVerificationStatusRequest, opts ...grpc.CallOption) (*RefreshVerificationStatusResponse, error)
 }
 
 type providerClient struct {
@@ -176,6 +180,24 @@ func (c *providerClient) GetEventToken(ctx context.Context, in *GetEventTokenReq
 	return out, nil
 }
 
+func (c *providerClient) RetrieveVerificationRecord(ctx context.Context, in *RetrieveVerificationRecordRequest, opts ...grpc.CallOption) (*RetrieveVerificationRecordResponse, error) {
+	out := new(RetrieveVerificationRecordResponse)
+	err := c.cc.Invoke(ctx, "/services.provider.v1.Provider/RetrieveVerificationRecord", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *providerClient) RefreshVerificationStatus(ctx context.Context, in *RefreshVerificationStatusRequest, opts ...grpc.CallOption) (*RefreshVerificationStatusResponse, error) {
+	out := new(RefreshVerificationStatusResponse)
+	err := c.cc.Invoke(ctx, "/services.provider.v1.Provider/RefreshVerificationStatus", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ProviderServer is the server API for Provider service.
 // All implementations must embed UnimplementedProviderServer
 // for forward compatibility
@@ -207,6 +229,10 @@ type ProviderServer interface {
 	GetOberonKey(context.Context, *GetOberonKeyRequest) (*GetOberonKeyResponse, error)
 	// Generate a signed token (JWT) that can be used to connect to the message bus
 	GetEventToken(context.Context, *GetEventTokenRequest) (*GetEventTokenResponse, error)
+	// Retrieve a random hash TXT that can be used to verify domain ownership
+	RetrieveVerificationRecord(context.Context, *RetrieveVerificationRecordRequest) (*RetrieveVerificationRecordResponse, error)
+	// Call to verif
+	RefreshVerificationStatus(context.Context, *RefreshVerificationStatusRequest) (*RefreshVerificationStatusResponse, error)
 	mustEmbedUnimplementedProviderServer()
 }
 
@@ -252,6 +278,12 @@ func (UnimplementedProviderServer) GetOberonKey(context.Context, *GetOberonKeyRe
 }
 func (UnimplementedProviderServer) GetEventToken(context.Context, *GetEventTokenRequest) (*GetEventTokenResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetEventToken not implemented")
+}
+func (UnimplementedProviderServer) RetrieveVerificationRecord(context.Context, *RetrieveVerificationRecordRequest) (*RetrieveVerificationRecordResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RetrieveVerificationRecord not implemented")
+}
+func (UnimplementedProviderServer) RefreshVerificationStatus(context.Context, *RefreshVerificationStatusRequest) (*RefreshVerificationStatusResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RefreshVerificationStatus not implemented")
 }
 func (UnimplementedProviderServer) mustEmbedUnimplementedProviderServer() {}
 
@@ -500,6 +532,42 @@ func _Provider_GetEventToken_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Provider_RetrieveVerificationRecord_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RetrieveVerificationRecordRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProviderServer).RetrieveVerificationRecord(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/services.provider.v1.Provider/RetrieveVerificationRecord",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProviderServer).RetrieveVerificationRecord(ctx, req.(*RetrieveVerificationRecordRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Provider_RefreshVerificationStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RefreshVerificationStatusRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProviderServer).RefreshVerificationStatus(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/services.provider.v1.Provider/RefreshVerificationStatus",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProviderServer).RefreshVerificationStatus(ctx, req.(*RefreshVerificationStatusRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Provider_ServiceDesc is the grpc.ServiceDesc for Provider service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -558,6 +626,14 @@ var Provider_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetEventToken",
 			Handler:    _Provider_GetEventToken_Handler,
+		},
+		{
+			MethodName: "RetrieveVerificationRecord",
+			Handler:    _Provider_RetrieveVerificationRecord_Handler,
+		},
+		{
+			MethodName: "RefreshVerificationStatus",
+			Handler:    _Provider_RefreshVerificationStatus_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
