@@ -10,7 +10,7 @@ class TrustRegistryServiceKt(options: Options.ServiceOptions.Builder?) : Service
   var stub = TrustRegistryGrpcKt.TrustRegistryCoroutineStub(this.channel)
 
   @Throws(InvalidProtocolBufferException::class, DidException::class)
-  suspend fun searchRegistry(): SearchRegistryResponse {
+  suspend fun search(): SearchRegistryResponse {
     return search(SearchRegistryRequest.getDefaultInstance())
   }
 

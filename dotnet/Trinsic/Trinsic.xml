@@ -1029,49 +1029,6 @@
             <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
             <param name="serviceImpl">An object implementing the server-side handling logic.</param>
         </member>
-        <member name="T:Trinsic.Services.Debug.V1.DebugReflection">
-            <summary>Holder for reflection information generated from services/debug/v1/debug.proto</summary>
-        </member>
-        <member name="P:Trinsic.Services.Debug.V1.DebugReflection.Descriptor">
-            <summary>File descriptor for services/debug/v1/debug.proto</summary>
-        </member>
-        <member name="P:Trinsic.Services.Debug.V1.Debugging.Descriptor">
-            <summary>Service descriptor</summary>
-        </member>
-        <member name="T:Trinsic.Services.Debug.V1.Debugging.DebuggingBase">
-            <summary>Base class for server-side implementations of Debugging</summary>
-        </member>
-        <member name="T:Trinsic.Services.Debug.V1.Debugging.DebuggingClient">
-            <summary>Client for Debugging</summary>
-        </member>
-        <member name="M:Trinsic.Services.Debug.V1.Debugging.DebuggingClient.#ctor(Grpc.Core.ChannelBase)">
-            <summary>Creates a new client for Debugging</summary>
-            <param name="channel">The channel to use to make remote calls.</param>
-        </member>
-        <member name="M:Trinsic.Services.Debug.V1.Debugging.DebuggingClient.#ctor(Grpc.Core.CallInvoker)">
-            <summary>Creates a new client for Debugging that uses a custom <c>CallInvoker</c>.</summary>
-            <param name="callInvoker">The callInvoker to use to make remote calls.</param>
-        </member>
-        <member name="M:Trinsic.Services.Debug.V1.Debugging.DebuggingClient.#ctor">
-            <summary>Protected parameterless constructor to allow creation of test doubles.</summary>
-        </member>
-        <member name="M:Trinsic.Services.Debug.V1.Debugging.DebuggingClient.#ctor(Grpc.Core.ClientBase.ClientBaseConfiguration)">
-            <summary>Protected constructor to allow creation of configured clients.</summary>
-            <param name="configuration">The client configuration.</param>
-        </member>
-        <member name="M:Trinsic.Services.Debug.V1.Debugging.DebuggingClient.NewInstance(Grpc.Core.ClientBase.ClientBaseConfiguration)">
-            <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
-        </member>
-        <member name="M:Trinsic.Services.Debug.V1.Debugging.BindService(Trinsic.Services.Debug.V1.Debugging.DebuggingBase)">
-            <summary>Creates service definition that can be registered with a server</summary>
-            <param name="serviceImpl">An object implementing the server-side handling logic.</param>
-        </member>
-        <member name="M:Trinsic.Services.Debug.V1.Debugging.BindService(Grpc.Core.ServiceBinderBase,Trinsic.Services.Debug.V1.Debugging.DebuggingBase)">
-            <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
-            Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
-            <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
-            <param name="serviceImpl">An object implementing the server-side handling logic.</param>
-        </member>
         <member name="T:Trinsic.Services.Event.V1.EventReflection">
             <summary>Holder for reflection information generated from services/event/v1/event.proto</summary>
         </member>
@@ -1334,12 +1291,6 @@
             This is used by the `protoc-gen-trinsic-sdk` plugin for metadata.
             </summary>
         </member>
-        <member name="P:Trinsic.Services.Protobuf.Options.SdkTemplateOption.HasAnonymous">
-            <summary>Gets whether the "anonymous" field is set</summary>
-        </member>
-        <member name="M:Trinsic.Services.Protobuf.Options.SdkTemplateOption.ClearAnonymous">
-            <summary>Clears the value of the "anonymous" field</summary>
-        </member>
         <member name="F:Trinsic.Services.Protobuf.Options.SdkTemplateOption.IgnoreFieldNumber">
             <summary>Field number for the "ignore" field.</summary>
         </member>
@@ -1348,12 +1299,6 @@
             Whether the SDK template generator should ignore this method. This method will
             be wrapped manually.
             </summary>
-        </member>
-        <member name="P:Trinsic.Services.Protobuf.Options.SdkTemplateOption.HasIgnore">
-            <summary>Gets whether the "ignore" field is set</summary>
-        </member>
-        <member name="M:Trinsic.Services.Protobuf.Options.SdkTemplateOption.ClearIgnore">
-            <summary>Clears the value of the "ignore" field</summary>
         </member>
         <member name="T:Trinsic.Services.Provider.V1.ProviderReflection">
             <summary>Holder for reflection information generated from services/provider/v1/provider.proto</summary>
@@ -5317,6 +5262,26 @@
         <member name="M:Trinsic.ProviderService.GetEventTokenAsync(Trinsic.Services.Provider.V1.GetEventTokenRequest)">
             <summary>
             Generate a signed token (JWT) that can be used to connect to the message bus
+            </summary>	
+        </member>
+        <member name="M:Trinsic.ProviderService.RetrieveVerificationRecord(Trinsic.Services.Provider.V1.RetrieveVerificationRecordRequest)">
+            <summary>
+            Retrieve a random hash TXT that can be used to verify domain ownership
+            </summary>	
+        </member>
+        <member name="M:Trinsic.ProviderService.RetrieveVerificationRecordAsync(Trinsic.Services.Provider.V1.RetrieveVerificationRecordRequest)">
+            <summary>
+            Retrieve a random hash TXT that can be used to verify domain ownership
+            </summary>	
+        </member>
+        <member name="M:Trinsic.ProviderService.RefreshVerificationStatus(Trinsic.Services.Provider.V1.RefreshVerificationStatusRequest)">
+            <summary>
+            Call to verif
+            </summary>	
+        </member>
+        <member name="M:Trinsic.ProviderService.RefreshVerificationStatusAsync(Trinsic.Services.Provider.V1.RefreshVerificationStatusRequest)">
+            <summary>
+            Call to verif
             </summary>	
         </member>
         <member name="M:Trinsic.OberonSecurityProvider.Base64UrlEncode(System.Byte[])">
