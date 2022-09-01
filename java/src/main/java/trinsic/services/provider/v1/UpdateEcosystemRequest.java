@@ -25,6 +25,8 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
   private UpdateEcosystemRequest() {
     description_ = "";
     uri_ = "";
+    domain_ = "";
+    name_ = "";
   }
 
   @java.lang.Override
@@ -68,6 +70,36 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
               java.lang.String s = input.readStringRequireUtf8();
 
               uri_ = s;
+              break;
+            }
+          case 26:
+            {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              domain_ = s;
+              break;
+            }
+          case 34:
+            {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              name_ = s;
+              break;
+            }
+          case 42:
+            {
+              trinsic.services.provider.v1.EcosystemDisplay.Builder subBuilder = null;
+              if (display_ != null) {
+                subBuilder = display_.toBuilder();
+              }
+              display_ =
+                  input.readMessage(
+                      trinsic.services.provider.v1.EcosystemDisplay.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(display_);
+                display_ = subBuilder.buildPartial();
+              }
+
               break;
             }
           default:
@@ -164,11 +196,14 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
    * New external URL associated with the organization or ecosystem entity
    * </pre>
    *
-   * <code>string uri = 2;</code>
+   * <code>string uri = 2 [deprecated = true];</code>
    *
+   * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
+   *     services/provider/v1/provider.proto;l=160
    * @return The uri.
    */
   @java.lang.Override
+  @java.lang.Deprecated
   public java.lang.String getUri() {
     java.lang.Object ref = uri_;
     if (ref instanceof java.lang.String) {
@@ -187,11 +222,14 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
    * New external URL associated with the organization or ecosystem entity
    * </pre>
    *
-   * <code>string uri = 2;</code>
+   * <code>string uri = 2 [deprecated = true];</code>
    *
+   * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
+   *     services/provider/v1/provider.proto;l=160
    * @return The bytes for uri.
    */
   @java.lang.Override
+  @java.lang.Deprecated
   public com.google.protobuf.ByteString getUriBytes() {
     java.lang.Object ref = uri_;
     if (ref instanceof java.lang.String) {
@@ -202,6 +240,152 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
+  }
+
+  public static final int DOMAIN_FIELD_NUMBER = 3;
+  private volatile java.lang.Object domain_;
+  /**
+   *
+   *
+   * <pre>
+   * New domain URL
+   * </pre>
+   *
+   * <code>string domain = 3;</code>
+   *
+   * @return The domain.
+   */
+  @java.lang.Override
+  public java.lang.String getDomain() {
+    java.lang.Object ref = domain_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      domain_ = s;
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * New domain URL
+   * </pre>
+   *
+   * <code>string domain = 3;</code>
+   *
+   * @return The bytes for domain.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getDomainBytes() {
+    java.lang.Object ref = domain_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      domain_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int NAME_FIELD_NUMBER = 4;
+  private volatile java.lang.Object name_;
+  /**
+   *
+   *
+   * <pre>
+   * New name
+   * </pre>
+   *
+   * <code>string name = 4;</code>
+   *
+   * @return The name.
+   */
+  @java.lang.Override
+  public java.lang.String getName() {
+    java.lang.Object ref = name_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      name_ = s;
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * New name
+   * </pre>
+   *
+   * <code>string name = 4;</code>
+   *
+   * @return The bytes for name.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getNameBytes() {
+    java.lang.Object ref = name_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      name_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int DISPLAY_FIELD_NUMBER = 5;
+  private trinsic.services.provider.v1.EcosystemDisplay display_;
+  /**
+   *
+   *
+   * <pre>
+   * Display details
+   * </pre>
+   *
+   * <code>.services.provider.v1.EcosystemDisplay display = 5;</code>
+   *
+   * @return Whether the display field is set.
+   */
+  @java.lang.Override
+  public boolean hasDisplay() {
+    return display_ != null;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Display details
+   * </pre>
+   *
+   * <code>.services.provider.v1.EcosystemDisplay display = 5;</code>
+   *
+   * @return The display.
+   */
+  @java.lang.Override
+  public trinsic.services.provider.v1.EcosystemDisplay getDisplay() {
+    return display_ == null
+        ? trinsic.services.provider.v1.EcosystemDisplay.getDefaultInstance()
+        : display_;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Display details
+   * </pre>
+   *
+   * <code>.services.provider.v1.EcosystemDisplay display = 5;</code>
+   */
+  @java.lang.Override
+  public trinsic.services.provider.v1.EcosystemDisplayOrBuilder getDisplayOrBuilder() {
+    return getDisplay();
   }
 
   private byte memoizedIsInitialized = -1;
@@ -224,6 +408,15 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(uri_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, uri_);
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(domain_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, domain_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, name_);
+    }
+    if (display_ != null) {
+      output.writeMessage(5, getDisplay());
+    }
     unknownFields.writeTo(output);
   }
 
@@ -238,6 +431,15 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(uri_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, uri_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(domain_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, domain_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, name_);
+    }
+    if (display_ != null) {
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(5, getDisplay());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -257,6 +459,12 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
 
     if (!getDescription().equals(other.getDescription())) return false;
     if (!getUri().equals(other.getUri())) return false;
+    if (!getDomain().equals(other.getDomain())) return false;
+    if (!getName().equals(other.getName())) return false;
+    if (hasDisplay() != other.hasDisplay()) return false;
+    if (hasDisplay()) {
+      if (!getDisplay().equals(other.getDisplay())) return false;
+    }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -272,6 +480,14 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
     hash = (53 * hash) + getDescription().hashCode();
     hash = (37 * hash) + URI_FIELD_NUMBER;
     hash = (53 * hash) + getUri().hashCode();
+    hash = (37 * hash) + DOMAIN_FIELD_NUMBER;
+    hash = (53 * hash) + getDomain().hashCode();
+    hash = (37 * hash) + NAME_FIELD_NUMBER;
+    hash = (53 * hash) + getName().hashCode();
+    if (hasDisplay()) {
+      hash = (37 * hash) + DISPLAY_FIELD_NUMBER;
+      hash = (53 * hash) + getDisplay().hashCode();
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -421,6 +637,16 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
 
       uri_ = "";
 
+      domain_ = "";
+
+      name_ = "";
+
+      if (displayBuilder_ == null) {
+        display_ = null;
+      } else {
+        display_ = null;
+        displayBuilder_ = null;
+      }
       return this;
     }
 
@@ -450,6 +676,13 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
           new trinsic.services.provider.v1.UpdateEcosystemRequest(this);
       result.description_ = description_;
       result.uri_ = uri_;
+      result.domain_ = domain_;
+      result.name_ = name_;
+      if (displayBuilder_ == null) {
+        result.display_ = display_;
+      } else {
+        result.display_ = displayBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -507,6 +740,17 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
       if (!other.getUri().isEmpty()) {
         uri_ = other.uri_;
         onChanged();
+      }
+      if (!other.getDomain().isEmpty()) {
+        domain_ = other.domain_;
+        onChanged();
+      }
+      if (!other.getName().isEmpty()) {
+        name_ = other.name_;
+        onChanged();
+      }
+      if (other.hasDisplay()) {
+        mergeDisplay(other.getDisplay());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -652,10 +896,13 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      * New external URL associated with the organization or ecosystem entity
      * </pre>
      *
-     * <code>string uri = 2;</code>
+     * <code>string uri = 2 [deprecated = true];</code>
      *
+     * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
+     *     services/provider/v1/provider.proto;l=160
      * @return The uri.
      */
+    @java.lang.Deprecated
     public java.lang.String getUri() {
       java.lang.Object ref = uri_;
       if (!(ref instanceof java.lang.String)) {
@@ -674,10 +921,13 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      * New external URL associated with the organization or ecosystem entity
      * </pre>
      *
-     * <code>string uri = 2;</code>
+     * <code>string uri = 2 [deprecated = true];</code>
      *
+     * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
+     *     services/provider/v1/provider.proto;l=160
      * @return The bytes for uri.
      */
+    @java.lang.Deprecated
     public com.google.protobuf.ByteString getUriBytes() {
       java.lang.Object ref = uri_;
       if (ref instanceof String) {
@@ -696,11 +946,14 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      * New external URL associated with the organization or ecosystem entity
      * </pre>
      *
-     * <code>string uri = 2;</code>
+     * <code>string uri = 2 [deprecated = true];</code>
      *
+     * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
+     *     services/provider/v1/provider.proto;l=160
      * @param value The uri to set.
      * @return This builder for chaining.
      */
+    @java.lang.Deprecated
     public Builder setUri(java.lang.String value) {
       if (value == null) {
         throw new NullPointerException();
@@ -717,10 +970,13 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      * New external URL associated with the organization or ecosystem entity
      * </pre>
      *
-     * <code>string uri = 2;</code>
+     * <code>string uri = 2 [deprecated = true];</code>
      *
+     * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
+     *     services/provider/v1/provider.proto;l=160
      * @return This builder for chaining.
      */
+    @java.lang.Deprecated
     public Builder clearUri() {
 
       uri_ = getDefaultInstance().getUri();
@@ -734,11 +990,14 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      * New external URL associated with the organization or ecosystem entity
      * </pre>
      *
-     * <code>string uri = 2;</code>
+     * <code>string uri = 2 [deprecated = true];</code>
      *
+     * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
+     *     services/provider/v1/provider.proto;l=160
      * @param value The bytes for uri to set.
      * @return This builder for chaining.
      */
+    @java.lang.Deprecated
     public Builder setUriBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
         throw new NullPointerException();
@@ -748,6 +1007,404 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
       uri_ = value;
       onChanged();
       return this;
+    }
+
+    private java.lang.Object domain_ = "";
+    /**
+     *
+     *
+     * <pre>
+     * New domain URL
+     * </pre>
+     *
+     * <code>string domain = 3;</code>
+     *
+     * @return The domain.
+     */
+    public java.lang.String getDomain() {
+      java.lang.Object ref = domain_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        domain_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * New domain URL
+     * </pre>
+     *
+     * <code>string domain = 3;</code>
+     *
+     * @return The bytes for domain.
+     */
+    public com.google.protobuf.ByteString getDomainBytes() {
+      java.lang.Object ref = domain_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        domain_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * New domain URL
+     * </pre>
+     *
+     * <code>string domain = 3;</code>
+     *
+     * @param value The domain to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDomain(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      domain_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * New domain URL
+     * </pre>
+     *
+     * <code>string domain = 3;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearDomain() {
+
+      domain_ = getDefaultInstance().getDomain();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * New domain URL
+     * </pre>
+     *
+     * <code>string domain = 3;</code>
+     *
+     * @param value The bytes for domain to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDomainBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
+      domain_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object name_ = "";
+    /**
+     *
+     *
+     * <pre>
+     * New name
+     * </pre>
+     *
+     * <code>string name = 4;</code>
+     *
+     * @return The name.
+     */
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        name_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * New name
+     * </pre>
+     *
+     * <code>string name = 4;</code>
+     *
+     * @return The bytes for name.
+     */
+    public com.google.protobuf.ByteString getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * New name
+     * </pre>
+     *
+     * <code>string name = 4;</code>
+     *
+     * @param value The name to set.
+     * @return This builder for chaining.
+     */
+    public Builder setName(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      name_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * New name
+     * </pre>
+     *
+     * <code>string name = 4;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearName() {
+
+      name_ = getDefaultInstance().getName();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * New name
+     * </pre>
+     *
+     * <code>string name = 4;</code>
+     *
+     * @param value The bytes for name to set.
+     * @return This builder for chaining.
+     */
+    public Builder setNameBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
+      name_ = value;
+      onChanged();
+      return this;
+    }
+
+    private trinsic.services.provider.v1.EcosystemDisplay display_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+            trinsic.services.provider.v1.EcosystemDisplay,
+            trinsic.services.provider.v1.EcosystemDisplay.Builder,
+            trinsic.services.provider.v1.EcosystemDisplayOrBuilder>
+        displayBuilder_;
+    /**
+     *
+     *
+     * <pre>
+     * Display details
+     * </pre>
+     *
+     * <code>.services.provider.v1.EcosystemDisplay display = 5;</code>
+     *
+     * @return Whether the display field is set.
+     */
+    public boolean hasDisplay() {
+      return displayBuilder_ != null || display_ != null;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Display details
+     * </pre>
+     *
+     * <code>.services.provider.v1.EcosystemDisplay display = 5;</code>
+     *
+     * @return The display.
+     */
+    public trinsic.services.provider.v1.EcosystemDisplay getDisplay() {
+      if (displayBuilder_ == null) {
+        return display_ == null
+            ? trinsic.services.provider.v1.EcosystemDisplay.getDefaultInstance()
+            : display_;
+      } else {
+        return displayBuilder_.getMessage();
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Display details
+     * </pre>
+     *
+     * <code>.services.provider.v1.EcosystemDisplay display = 5;</code>
+     */
+    public Builder setDisplay(trinsic.services.provider.v1.EcosystemDisplay value) {
+      if (displayBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        display_ = value;
+        onChanged();
+      } else {
+        displayBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Display details
+     * </pre>
+     *
+     * <code>.services.provider.v1.EcosystemDisplay display = 5;</code>
+     */
+    public Builder setDisplay(
+        trinsic.services.provider.v1.EcosystemDisplay.Builder builderForValue) {
+      if (displayBuilder_ == null) {
+        display_ = builderForValue.build();
+        onChanged();
+      } else {
+        displayBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Display details
+     * </pre>
+     *
+     * <code>.services.provider.v1.EcosystemDisplay display = 5;</code>
+     */
+    public Builder mergeDisplay(trinsic.services.provider.v1.EcosystemDisplay value) {
+      if (displayBuilder_ == null) {
+        if (display_ != null) {
+          display_ =
+              trinsic.services.provider.v1.EcosystemDisplay.newBuilder(display_)
+                  .mergeFrom(value)
+                  .buildPartial();
+        } else {
+          display_ = value;
+        }
+        onChanged();
+      } else {
+        displayBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Display details
+     * </pre>
+     *
+     * <code>.services.provider.v1.EcosystemDisplay display = 5;</code>
+     */
+    public Builder clearDisplay() {
+      if (displayBuilder_ == null) {
+        display_ = null;
+        onChanged();
+      } else {
+        display_ = null;
+        displayBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Display details
+     * </pre>
+     *
+     * <code>.services.provider.v1.EcosystemDisplay display = 5;</code>
+     */
+    public trinsic.services.provider.v1.EcosystemDisplay.Builder getDisplayBuilder() {
+
+      onChanged();
+      return getDisplayFieldBuilder().getBuilder();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Display details
+     * </pre>
+     *
+     * <code>.services.provider.v1.EcosystemDisplay display = 5;</code>
+     */
+    public trinsic.services.provider.v1.EcosystemDisplayOrBuilder getDisplayOrBuilder() {
+      if (displayBuilder_ != null) {
+        return displayBuilder_.getMessageOrBuilder();
+      } else {
+        return display_ == null
+            ? trinsic.services.provider.v1.EcosystemDisplay.getDefaultInstance()
+            : display_;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Display details
+     * </pre>
+     *
+     * <code>.services.provider.v1.EcosystemDisplay display = 5;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+            trinsic.services.provider.v1.EcosystemDisplay,
+            trinsic.services.provider.v1.EcosystemDisplay.Builder,
+            trinsic.services.provider.v1.EcosystemDisplayOrBuilder>
+        getDisplayFieldBuilder() {
+      if (displayBuilder_ == null) {
+        displayBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                trinsic.services.provider.v1.EcosystemDisplay,
+                trinsic.services.provider.v1.EcosystemDisplay.Builder,
+                trinsic.services.provider.v1.EcosystemDisplayOrBuilder>(
+                getDisplay(), getParentForChildren(), isClean());
+        display_ = null;
+      }
+      return displayBuilder_;
     }
 
     @java.lang.Override
