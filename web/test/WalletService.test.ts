@@ -69,7 +69,7 @@ describe("WalletService Unit Tests", () => {
     let items = await trinsic.wallet().searchWallet();
     // }
     // searchWalletSQL() {
-    let items2 = await trinsic.wallet().search(
+    let items2 = await trinsic.wallet().searchWallet(
       SearchRequest.fromPartial({
         query:
           "SELECT c.id, c.type, c.data FROM c WHERE c.type = 'VerifiableCredential'",

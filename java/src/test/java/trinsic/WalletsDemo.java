@@ -1,7 +1,5 @@
 package trinsic;
 
-import java.io.IOException;
-import java.util.concurrent.ExecutionException;
 import org.junit.jupiter.api.Assertions;
 import trinsic.okapi.DidException;
 import trinsic.services.TrinsicService;
@@ -9,6 +7,9 @@ import trinsic.services.provider.v1.CreateEcosystemRequest;
 import trinsic.services.universalwallet.v1.DeleteItemRequest;
 import trinsic.services.universalwallet.v1.InsertItemRequest;
 import trinsic.services.universalwallet.v1.SearchRequest;
+
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 public class WalletsDemo {
   public static void main(String[] args)
@@ -80,5 +81,6 @@ public class WalletsDemo {
     }
 
     System.out.println("Wallets demo successful");
+      trinsic.shutdown();
   }
 }
