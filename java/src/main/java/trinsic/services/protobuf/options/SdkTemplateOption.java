@@ -35,7 +35,6 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
-    int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
@@ -48,13 +47,11 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
             break;
           case 8:
             {
-              bitField0_ |= 0x00000001;
               anonymous_ = input.readBool();
               break;
             }
           case 16:
             {
-              bitField0_ |= 0x00000002;
               ignore_ = input.readBool();
               break;
             }
@@ -94,7 +91,6 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
             trinsic.services.protobuf.options.SdkTemplateOption.Builder.class);
   }
 
-  private int bitField0_;
   public static final int ANONYMOUS_FIELD_NUMBER = 1;
   private boolean anonymous_;
   /**
@@ -105,23 +101,7 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
    * This is used by the `protoc-gen-trinsic-sdk` plugin for metadata.
    * </pre>
    *
-   * <code>optional bool anonymous = 1;</code>
-   *
-   * @return Whether the anonymous field is set.
-   */
-  @java.lang.Override
-  public boolean hasAnonymous() {
-    return ((bitField0_ & 0x00000001) != 0);
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Whether the service endpoint allows anonymous (no auth token necessary) authentication
-   * This is used by the `protoc-gen-trinsic-sdk` plugin for metadata.
-   * </pre>
-   *
-   * <code>optional bool anonymous = 1;</code>
+   * <code>bool anonymous = 1;</code>
    *
    * @return The anonymous.
    */
@@ -140,23 +120,7 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
    * be wrapped manually.
    * </pre>
    *
-   * <code>optional bool ignore = 2;</code>
-   *
-   * @return Whether the ignore field is set.
-   */
-  @java.lang.Override
-  public boolean hasIgnore() {
-    return ((bitField0_ & 0x00000002) != 0);
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Whether the SDK template generator should ignore this method. This method will
-   * be wrapped manually.
-   * </pre>
-   *
-   * <code>optional bool ignore = 2;</code>
+   * <code>bool ignore = 2;</code>
    *
    * @return The ignore.
    */
@@ -179,10 +143,10 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
 
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (anonymous_ != false) {
       output.writeBool(1, anonymous_);
     }
-    if (((bitField0_ & 0x00000002) != 0)) {
+    if (ignore_ != false) {
       output.writeBool(2, ignore_);
     }
     unknownFields.writeTo(output);
@@ -194,10 +158,10 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
     if (size != -1) return size;
 
     size = 0;
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (anonymous_ != false) {
       size += com.google.protobuf.CodedOutputStream.computeBoolSize(1, anonymous_);
     }
-    if (((bitField0_ & 0x00000002) != 0)) {
+    if (ignore_ != false) {
       size += com.google.protobuf.CodedOutputStream.computeBoolSize(2, ignore_);
     }
     size += unknownFields.getSerializedSize();
@@ -216,14 +180,8 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
     trinsic.services.protobuf.options.SdkTemplateOption other =
         (trinsic.services.protobuf.options.SdkTemplateOption) obj;
 
-    if (hasAnonymous() != other.hasAnonymous()) return false;
-    if (hasAnonymous()) {
-      if (getAnonymous() != other.getAnonymous()) return false;
-    }
-    if (hasIgnore() != other.hasIgnore()) return false;
-    if (hasIgnore()) {
-      if (getIgnore() != other.getIgnore()) return false;
-    }
+    if (getAnonymous() != other.getAnonymous()) return false;
+    if (getIgnore() != other.getIgnore()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -235,14 +193,10 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (hasAnonymous()) {
-      hash = (37 * hash) + ANONYMOUS_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getAnonymous());
-    }
-    if (hasIgnore()) {
-      hash = (37 * hash) + IGNORE_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getIgnore());
-    }
+    hash = (37 * hash) + ANONYMOUS_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getAnonymous());
+    hash = (37 * hash) + IGNORE_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getIgnore());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -381,9 +335,9 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
     public Builder clear() {
       super.clear();
       anonymous_ = false;
-      bitField0_ = (bitField0_ & ~0x00000001);
+
       ignore_ = false;
-      bitField0_ = (bitField0_ & ~0x00000002);
+
       return this;
     }
 
@@ -411,17 +365,8 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
     public trinsic.services.protobuf.options.SdkTemplateOption buildPartial() {
       trinsic.services.protobuf.options.SdkTemplateOption result =
           new trinsic.services.protobuf.options.SdkTemplateOption(this);
-      int from_bitField0_ = bitField0_;
-      int to_bitField0_ = 0;
-      if (((from_bitField0_ & 0x00000001) != 0)) {
-        result.anonymous_ = anonymous_;
-        to_bitField0_ |= 0x00000001;
-      }
-      if (((from_bitField0_ & 0x00000002) != 0)) {
-        result.ignore_ = ignore_;
-        to_bitField0_ |= 0x00000002;
-      }
-      result.bitField0_ = to_bitField0_;
+      result.anonymous_ = anonymous_;
+      result.ignore_ = ignore_;
       onBuilt();
       return result;
     }
@@ -472,10 +417,10 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
     public Builder mergeFrom(trinsic.services.protobuf.options.SdkTemplateOption other) {
       if (other == trinsic.services.protobuf.options.SdkTemplateOption.getDefaultInstance())
         return this;
-      if (other.hasAnonymous()) {
+      if (other.getAnonymous() != false) {
         setAnonymous(other.getAnonymous());
       }
-      if (other.hasIgnore()) {
+      if (other.getIgnore() != false) {
         setIgnore(other.getIgnore());
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -508,8 +453,6 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
       return this;
     }
 
-    private int bitField0_;
-
     private boolean anonymous_;
     /**
      *
@@ -519,23 +462,7 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
      * This is used by the `protoc-gen-trinsic-sdk` plugin for metadata.
      * </pre>
      *
-     * <code>optional bool anonymous = 1;</code>
-     *
-     * @return Whether the anonymous field is set.
-     */
-    @java.lang.Override
-    public boolean hasAnonymous() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Whether the service endpoint allows anonymous (no auth token necessary) authentication
-     * This is used by the `protoc-gen-trinsic-sdk` plugin for metadata.
-     * </pre>
-     *
-     * <code>optional bool anonymous = 1;</code>
+     * <code>bool anonymous = 1;</code>
      *
      * @return The anonymous.
      */
@@ -551,13 +478,13 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
      * This is used by the `protoc-gen-trinsic-sdk` plugin for metadata.
      * </pre>
      *
-     * <code>optional bool anonymous = 1;</code>
+     * <code>bool anonymous = 1;</code>
      *
      * @param value The anonymous to set.
      * @return This builder for chaining.
      */
     public Builder setAnonymous(boolean value) {
-      bitField0_ |= 0x00000001;
+
       anonymous_ = value;
       onChanged();
       return this;
@@ -570,12 +497,12 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
      * This is used by the `protoc-gen-trinsic-sdk` plugin for metadata.
      * </pre>
      *
-     * <code>optional bool anonymous = 1;</code>
+     * <code>bool anonymous = 1;</code>
      *
      * @return This builder for chaining.
      */
     public Builder clearAnonymous() {
-      bitField0_ = (bitField0_ & ~0x00000001);
+
       anonymous_ = false;
       onChanged();
       return this;
@@ -590,23 +517,7 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
      * be wrapped manually.
      * </pre>
      *
-     * <code>optional bool ignore = 2;</code>
-     *
-     * @return Whether the ignore field is set.
-     */
-    @java.lang.Override
-    public boolean hasIgnore() {
-      return ((bitField0_ & 0x00000002) != 0);
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Whether the SDK template generator should ignore this method. This method will
-     * be wrapped manually.
-     * </pre>
-     *
-     * <code>optional bool ignore = 2;</code>
+     * <code>bool ignore = 2;</code>
      *
      * @return The ignore.
      */
@@ -622,13 +533,13 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
      * be wrapped manually.
      * </pre>
      *
-     * <code>optional bool ignore = 2;</code>
+     * <code>bool ignore = 2;</code>
      *
      * @param value The ignore to set.
      * @return This builder for chaining.
      */
     public Builder setIgnore(boolean value) {
-      bitField0_ |= 0x00000002;
+
       ignore_ = value;
       onChanged();
       return this;
@@ -641,12 +552,12 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
      * be wrapped manually.
      * </pre>
      *
-     * <code>optional bool ignore = 2;</code>
+     * <code>bool ignore = 2;</code>
      *
      * @return This builder for chaining.
      */
     public Builder clearIgnore() {
-      bitField0_ = (bitField0_ & ~0x00000002);
+
       ignore_ = false;
       onChanged();
       return this;

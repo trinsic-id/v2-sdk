@@ -8,8 +8,8 @@ require 'google/protobuf/descriptor_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("services/options/field-options.proto", :syntax => :proto3) do
     add_message "services.options.SdkTemplateOption" do
-      proto3_optional :anonymous, :bool, 1
-      proto3_optional :ignore, :bool, 2
+      optional :anonymous, :bool, 1
+      optional :ignore, :bool, 2
     end
   end
 end

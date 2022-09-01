@@ -985,33 +985,6 @@ All event types
 
 
 
-<a name="services_debug_v1_debug-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## services/debug/v1/debug.proto
-
-
-
-<a name="services-debug-v1-Debugging"></a>
-
-### Service - Debugging
-
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| CallEmpty | [.google.protobuf.Empty](/reference/proto#google-protobuf-Empty) | [.google.protobuf.Empty](/reference/proto#google-protobuf-Empty) |  |
-| CallEmptyAuth | [.google.protobuf.Empty](/reference/proto#google-protobuf-Empty) | [.google.protobuf.Empty](/reference/proto#google-protobuf-Empty) |  |
-
- <!-- end services -->
-
- <!-- end messages -->
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-
 <a name="services_account_v1_account-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
