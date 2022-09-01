@@ -26,6 +26,9 @@ message SdkTemplateOption {
     // Whether the SDK template generator should ignore this method. This method will
     // be wrapped manually.
     bool ignore = 2;
+    // Whether the SDK template generator should generate this method without arguments, eg
+    // ProviderService.GetEcosystemInfo() where the request object is empty
+    bool no_arguments = 3;
 }
 
 extend google.protobuf.MethodOptions {
