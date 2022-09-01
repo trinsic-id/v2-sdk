@@ -54,7 +54,7 @@ describe("wallet service tests", () => {
     expect(insertResponse).not.toBeNull();
     expect(insertResponse.itemId).not.toBe("");
 
-    let searchResponse = await trinsic.wallet().search();
+    let searchResponse = await trinsic.wallet().searchWallet();
     expect(searchResponse).not.toBeNull();
     expect(searchResponse.items.length).toBeGreaterThan(0);
   });
