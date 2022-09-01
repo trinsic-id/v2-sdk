@@ -1800,7 +1800,7 @@
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="p">(</span><span class="n">ecosystem</span><span class="p">,</span><span class="w"> </span><span class="n">authToken</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Provider</span><span class="p">.</span><span class="n">CreateEcosystemAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">Description</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;My ecosystem&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Uri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;https://example.com&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="n">Domain</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;https://example.com&quot;</span><span class="w"></span>
 <span class="p">});</span><span class="w"></span>
 </code></pre></div>
 </div>
@@ -1869,7 +1869,7 @@
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">updateResult</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Provider</span><span class="p">.</span><span class="n">UpdateEcosystemAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">Description</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;New ecosystem description&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Uri</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;New ecosystem URI&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="n">Domain</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;New ecosystem URI&quot;</span><span class="w"></span>
 <span class="p">});</span><span class="w"></span>
 </code></pre></div>
 </div>
@@ -1896,7 +1896,6 @@
 <span class="w">        </span><span class="p">.</span><span class="na">updateEcosystem</span><span class="p">(</span><span class="w"></span>
 <span class="w">            </span><span class="n">UpdateEcosystemRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
 <span class="w">                </span><span class="p">.</span><span class="na">setDescription</span><span class="p">(</span><span class="s">&quot;My updated ecosystem&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">                </span><span class="p">.</span><span class="na">setUri</span><span class="p">(</span><span class="s">&quot;https://new-example.com&quot;</span><span class="p">)</span><span class="w"></span>
 <span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
 <span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
