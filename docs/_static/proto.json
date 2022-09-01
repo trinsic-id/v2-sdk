@@ -504,6 +504,12 @@
       "file": "services/options/field-options.proto",
       "parent": "services.options.SdkTemplateOption"
     },
+    "services.options.SdkTemplateOption.no_arguments": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/options/field-options.proto",
+      "parent": "services.options.SdkTemplateOption"
+    },
     "services.provider.v1.AddWebhookRequest": {
       "type": "message",
       "collection": "messages",
@@ -2968,7 +2974,8 @@
       ],
       "fields": [
         "services.options.SdkTemplateOption.anonymous",
-        "services.options.SdkTemplateOption.ignore"
+        "services.options.SdkTemplateOption.ignore",
+        "services.options.SdkTemplateOption.no_arguments"
       ],
       "enums": [],
       "enum_values": []
@@ -4026,7 +4033,8 @@
       "description": "",
       "fields": [
         "services.options.SdkTemplateOption.anonymous",
-        "services.options.SdkTemplateOption.ignore"
+        "services.options.SdkTemplateOption.ignore",
+        "services.options.SdkTemplateOption.no_arguments"
       ],
       "messages": [],
       "enums": []
@@ -5504,6 +5512,14 @@
       "type": "bool",
       "full_type": "bool",
       "description": "Whether the SDK template generator should ignore this method. This method will\nbe wrapped manually."
+    },
+    "services.options.SdkTemplateOption.no_arguments": {
+      "name": "no_arguments",
+      "full_name": "services.options.SdkTemplateOption.no_arguments",
+      "label": "LABEL_OPTIONAL",
+      "type": "bool",
+      "full_type": "bool",
+      "description": "Whether the SDK template generator should generate this method without arguments, eg\nProviderService.GetEcosystemInfo() where the request object is empty"
     },
     "services.provider.v1.AddWebhookRequest.destination_url": {
       "name": "destination_url",

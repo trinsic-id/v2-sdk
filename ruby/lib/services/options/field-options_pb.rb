@@ -10,6 +10,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "services.options.SdkTemplateOption" do
       optional :anonymous, :bool, 1
       optional :ignore, :bool, 2
+      optional :no_arguments, :bool, 3
     end
   end
 end

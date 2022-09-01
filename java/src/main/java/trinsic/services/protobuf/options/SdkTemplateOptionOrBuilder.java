@@ -35,4 +35,18 @@ public interface SdkTemplateOptionOrBuilder
    * @return The ignore.
    */
   boolean getIgnore();
+
+  /**
+   *
+   *
+   * <pre>
+   * Whether the SDK template generator should generate this method without arguments, eg
+   * ProviderService.GetEcosystemInfo() where the request object is empty
+   * </pre>
+   *
+   * <code>bool no_arguments = 3;</code>
+   *
+   * @return The noArguments.
+   */
+  boolean getNoArguments();
 }
