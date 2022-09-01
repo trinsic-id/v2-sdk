@@ -1,5 +1,9 @@
 import com.google.gson.Gson
 import com.google.protobuf.InvalidProtocolBufferException
+import java.io.File
+import java.io.IOException
+import java.nio.file.Path
+import java.util.concurrent.ExecutionException
 import trinsic.TrinsicUtilities
 import trinsic.okapi.DidException
 import trinsic.services.TemplateServiceKt
@@ -12,10 +16,6 @@ import trinsic.services.verifiablecredentials.templates.v1.TemplateField
 import trinsic.services.verifiablecredentials.v1.CreateProofRequest
 import trinsic.services.verifiablecredentials.v1.IssueFromTemplateRequest
 import trinsic.services.verifiablecredentials.v1.VerifyProofRequest
-import java.io.File
-import java.io.IOException
-import java.nio.file.Path
-import java.util.concurrent.ExecutionException
 
 suspend fun main() {
   runVaccineDemo()
@@ -24,182 +24,180 @@ suspend fun main() {
 @Throws(
     IOException::class, DidException::class, ExecutionException::class, InterruptedException::class)
 suspend fun runVaccineDemo() {
-    val serverConfig = TrinsicUtilities.getTrinsicServiceOptions()
+  val serverConfig = TrinsicUtilities.getTrinsicServiceOptions()
 
-    val trinsic = TrinsicServiceKt(serverConfig)
+  val trinsic = TrinsicServiceKt(serverConfig)
 
-    // createEcosystem() {
+  // createEcosystem() {
 
-    // createEcosystem() {
-    val ecosystemResponse = trinsic.provider().createEcosystem(CreateEcosystemRequest.getDefaultInstance())
+  // createEcosystem() {
+  val ecosystemResponse =
+      trinsic.provider().createEcosystem(CreateEcosystemRequest.getDefaultInstance())
 
-    val ecosystemId = ecosystemResponse.ecosystem.id
-    // }
+  val ecosystemId = ecosystemResponse.ecosystem.id
+  // }
 
-    // setupActors() {
-    // Create an account for each participant in the scenario
-    // }
+  // setupActors() {
+  // Create an account for each participant in the scenario
+  // }
 
-    // setupActors() {
-    // Create an account for each participant in the scenario
-    val allison = trinsic.account().loginAnonymous(ecosystemId)
-    val clinic = trinsic.account().loginAnonymous(ecosystemId)
-    val airline = trinsic.account().loginAnonymous(ecosystemId)
-    // }
+  // setupActors() {
+  // Create an account for each participant in the scenario
+  val allison = trinsic.account().loginAnonymous(ecosystemId)
+  val clinic = trinsic.account().loginAnonymous(ecosystemId)
+  val airline = trinsic.account().loginAnonymous(ecosystemId)
+  // }
 
-    // Create template
-    // }
+  // Create template
+  // }
 
-    // Create template
-    val templateId = defineTemplate(trinsic.template(), clinic)
+  // Create template
+  val templateId = defineTemplate(trinsic.template(), clinic)
 
-    // Issue credential
+  // Issue credential
 
-    // Issue credential
-    val credential = issueCredential(trinsic, templateId, clinic)
+  // Issue credential
+  val credential = issueCredential(trinsic, templateId, clinic)
 
-    println("Credential: $credential")
+  println("Credential: $credential")
 
-    // storeCredential() {
-    // Set active profile to 'allison' so we can manage her cloud wallet
+  // storeCredential() {
+  // Set active profile to 'allison' so we can manage her cloud wallet
 
-    // storeCredential() {
-    // Set active profile to 'allison' so we can manage her cloud wallet
-    trinsic.setAuthToken(allison)
+  // storeCredential() {
+  // Set active profile to 'allison' so we can manage her cloud wallet
+  trinsic.setAuthToken(allison)
 
-    // Allison stores the credential in her cloud wallet.
+  // Allison stores the credential in her cloud wallet.
 
-    // Allison stores the credential in her cloud wallet.
-    val insertItemResponse = trinsic
-        .wallet()
-        .insertItem(InsertItemRequest.newBuilder().setItemJson(credential).build())
+  // Allison stores the credential in her cloud wallet.
+  val insertItemResponse =
+      trinsic.wallet().insertItem(InsertItemRequest.newBuilder().setItemJson(credential).build())
 
+  val itemId = insertItemResponse.itemId
+  // }
 
-    val itemId = insertItemResponse.itemId
-    // }
+  // }
+  println("item id = $itemId")
 
-    // }
-    println("item id = $itemId")
+  // shareCredential() {
+  // Set active profile to 'allison' so we can create a proof using her key
 
-    // shareCredential() {
-    // Set active profile to 'allison' so we can create a proof using her key
+  // shareCredential() {
+  // Set active profile to 'allison' so we can create a proof using her key
+  trinsic.setAuthToken(allison)
 
-    // shareCredential() {
-    // Set active profile to 'allison' so we can create a proof using her key
-    trinsic.setAuthToken(allison)
+  // Allison shares the credential with the venue
 
-    // Allison shares the credential with the venue
+  // Allison shares the credential with the venue
+  val createProofResponse =
+      trinsic.credential().createProof(CreateProofRequest.newBuilder().setItemId(itemId).build())
 
-    // Allison shares the credential with the venue
-    val createProofResponse = trinsic
-        .credential()
-        .createProof(
-            CreateProofRequest.newBuilder().setItemId(itemId).build()
-        )
+  val credentialProof = createProofResponse.proofDocumentJson
+  // }
 
+  // }
+  println("Proof: $credentialProof")
 
-    val credentialProof = createProofResponse.proofDocumentJson
-    // }
+  // verifyCredential() {
 
-    // }
-    println("Proof: $credentialProof")
+  // verifyCredential() {
+  trinsic.setAuthToken(airline)
 
-    // verifyCredential() {
+  // Verify that Allison has provided a valid proof
 
-    // verifyCredential() {
-    trinsic.setAuthToken(airline)
+  // Verify that Allison has provided a valid proof
+  val verifyProofResponse =
+      trinsic
+          .credential()
+          .verifyProof(
+              VerifyProofRequest.newBuilder().setProofDocumentJson(credentialProof).build())
 
-    // Verify that Allison has provided a valid proof
+  val isValid = verifyProofResponse.isValid
+  // }
 
-    // Verify that Allison has provided a valid proof
-    val verifyProofResponse = trinsic
-        .credential()
-        .verifyProof(
-            VerifyProofRequest.newBuilder()
-                .setProofDocumentJson(credentialProof).build()
-        )
-
-
-    val isValid = verifyProofResponse.isValid
-    // }
-
-    // }
-    println("Verification result: $isValid")
-    assert(isValid)
+  // }
+  println("Verification result: $isValid")
+  assert(isValid)
 }
 
 @Throws(
     InvalidProtocolBufferException::class,
     DidException::class,
     ExecutionException::class,
-    InterruptedException::class
-)
+    InterruptedException::class)
 private suspend fun issueCredential(
-    trinsicService: TrinsicServiceKt, templateId: String, clinic: String
+    trinsicService: TrinsicServiceKt,
+    templateId: String,
+    clinic: String
 ): String {
-    // issueCredential() {
-    // Set active profile to 'clinic' so we can issue credential signed
-    // with the clinic's signing keys
-    trinsicService.setAuthToken(clinic)
+  // issueCredential() {
+  // Set active profile to 'clinic' so we can issue credential signed
+  // with the clinic's signing keys
+  trinsicService.setAuthToken(clinic)
 
-    // Prepare credential values
-    val valuesMap = HashMap<String, Any>()
-    valuesMap["firstName"] = "Allison"
-    valuesMap["lastName"] = "Allissonne"
-    valuesMap["batchNumber"] = "123454321"
-    valuesMap["countryOfVaccination"] = "US"
+  // Prepare credential values
+  val valuesMap = HashMap<String, Any>()
+  valuesMap["firstName"] = "Allison"
+  valuesMap["lastName"] = "Allissonne"
+  valuesMap["batchNumber"] = "123454321"
+  valuesMap["countryOfVaccination"] = "US"
 
-    // Serialize values to JSON
-    val valuesJson = Gson().toJson(valuesMap)
+  // Serialize values to JSON
+  val valuesJson = Gson().toJson(valuesMap)
 
-    // Issue credential
-    val issueResponse = trinsicService
-        .credential()
-        .issueFromTemplate(
-            IssueFromTemplateRequest.newBuilder()
-                .setTemplateId(templateId)
-                .setValuesJson(valuesJson)
-                .build()
-        )
+  // Issue credential
+  val issueResponse =
+      trinsicService
+          .credential()
+          .issueFromTemplate(
+              IssueFromTemplateRequest.newBuilder()
+                  .setTemplateId(templateId)
+                  .setValuesJson(valuesJson)
+                  .build())
 
-    // }
-    return issueResponse.documentJson
+  // }
+  return issueResponse.documentJson
 }
 
 @Throws(
     InvalidProtocolBufferException::class,
     DidException::class,
     ExecutionException::class,
-    InterruptedException::class
-)
+    InterruptedException::class)
 private suspend fun defineTemplate(templateService: TemplateServiceKt, clinic: String): String {
-    // createTemplate() {
-    // Set active profile to 'clinic'
-    templateService.setAuthToken(clinic)
+  // createTemplate() {
+  // Set active profile to 'clinic'
+  templateService.setAuthToken(clinic)
 
-    // Define fields for template
-    val fields = HashMap<String, TemplateField>()
-    fields["firstName"] = TemplateField.newBuilder().setDescription("First name of vaccine recipient").build()
-    fields["lastName"] = TemplateField.newBuilder().setDescription("Last name of vaccine recipient").build()
-    fields["batchNumber"] = TemplateField.newBuilder()
-        .setType(FieldType.STRING)
-        .setDescription("Batch number of vaccine")
-        .build()
-    fields["countryOfVaccination"] = TemplateField.newBuilder()
-        .setDescription("Country in which the subject was vaccinated")
-        .build()
+  // Define fields for template
+  val fields = HashMap<String, TemplateField>()
+  fields["firstName"] =
+      TemplateField.newBuilder().setDescription("First name of vaccine recipient").build()
+  fields["lastName"] =
+      TemplateField.newBuilder().setDescription("Last name of vaccine recipient").build()
+  fields["batchNumber"] =
+      TemplateField.newBuilder()
+          .setType(FieldType.STRING)
+          .setDescription("Batch number of vaccine")
+          .build()
+  fields["countryOfVaccination"] =
+      TemplateField.newBuilder()
+          .setDescription("Country in which the subject was vaccinated")
+          .build()
 
-    // Create template request
-    val templateRequest = CreateCredentialTemplateRequest.newBuilder()
-        .setName("VaccinationCertificate")
-        .setAllowAdditionalFields(false)
-        .putAllFields(fields)
-        .build()
+  // Create template request
+  val templateRequest =
+      CreateCredentialTemplateRequest.newBuilder()
+          .setName("VaccinationCertificate")
+          .setAllowAdditionalFields(false)
+          .putAllFields(fields)
+          .build()
 
-    // Execute template creation
-    val template = templateService.create(templateRequest)
-    // }
-    return template.data.id
+  // Execute template creation
+  val template = templateService.create(templateRequest)
+  // }
+  return template.data.id
 }
 
 // pathData() {
