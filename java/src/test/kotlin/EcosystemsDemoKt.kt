@@ -1,11 +1,11 @@
+import java.io.IOException
+import java.util.concurrent.ExecutionException
 import org.junit.jupiter.api.Assertions
 import trinsic.TrinsicUtilities
 import trinsic.okapi.DidException
 import trinsic.services.AccountServiceKt
 import trinsic.services.ProviderServiceKt
 import trinsic.services.provider.v1.CreateEcosystemRequest
-import java.io.IOException
-import java.util.concurrent.ExecutionException
 
 @Throws(
     IOException::class, DidException::class, ExecutionException::class, InterruptedException::class)
