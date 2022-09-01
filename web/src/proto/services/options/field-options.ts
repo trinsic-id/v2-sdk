@@ -6,16 +6,16 @@ export interface SdkTemplateOption {
    * Whether the service endpoint allows anonymous (no auth token necessary) authentication
    * This is used by the `protoc-gen-trinsic-sdk` plugin for metadata.
    */
-  anonymous?: boolean | undefined;
+  anonymous: boolean;
   /**
    * Whether the SDK template generator should ignore this method. This method will
    * be wrapped manually.
    */
-  ignore?: boolean | undefined;
+  ignore: boolean;
 }
 
 function createBaseSdkTemplateOption(): SdkTemplateOption {
-  return { anonymous: undefined, ignore: undefined };
+  return { anonymous: false, ignore: false };
 }
 
 export const SdkTemplateOption = {
@@ -23,10 +23,10 @@ export const SdkTemplateOption = {
     message: SdkTemplateOption,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
-    if (message.anonymous !== undefined) {
+    if (message.anonymous === true) {
       writer.uint32(8).bool(message.anonymous);
     }
-    if (message.ignore !== undefined) {
+    if (message.ignore === true) {
       writer.uint32(16).bool(message.ignore);
     }
     return writer;
@@ -55,10 +55,8 @@ export const SdkTemplateOption = {
 
   fromJSON(object: any): SdkTemplateOption {
     return {
-      anonymous: isSet(object.anonymous)
-        ? Boolean(object.anonymous)
-        : undefined,
-      ignore: isSet(object.ignore) ? Boolean(object.ignore) : undefined,
+      anonymous: isSet(object.anonymous) ? Boolean(object.anonymous) : false,
+      ignore: isSet(object.ignore) ? Boolean(object.ignore) : false,
     };
   },
 
@@ -71,8 +69,8 @@ export const SdkTemplateOption = {
 
   fromPartial(object: DeepPartial<SdkTemplateOption>): SdkTemplateOption {
     const message = createBaseSdkTemplateOption();
-    message.anonymous = object.anonymous ?? undefined;
-    message.ignore = object.ignore ?? undefined;
+    message.anonymous = object.anonymous ?? false;
+    message.ignore = object.ignore ?? false;
     return message;
   },
 };

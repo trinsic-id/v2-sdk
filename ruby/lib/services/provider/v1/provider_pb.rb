@@ -38,6 +38,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :description, :string, 3
       optional :uri, :string, 4
       repeated :webhooks, :message, 5, "services.provider.v1.WebhookConfig"
+      optional :display, :message, 6, "services.provider.v1.EcosystemDisplay"
+      optional :domain, :string, 7
     end
     add_message "services.provider.v1.WebhookConfig" do
       optional :id, :string, 1
@@ -55,6 +57,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :description, :string, 2
       optional :uri, :string, 3
       optional :details, :message, 4, "services.account.v1.AccountDetails"
+      optional :domain, :string, 5
     end
     add_message "services.provider.v1.CreateEcosystemResponse" do
       optional :ecosystem, :message, 1, "services.provider.v1.Ecosystem"
@@ -64,6 +67,17 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "services.provider.v1.UpdateEcosystemRequest" do
       optional :description, :string, 1
       optional :uri, :string, 2
+      optional :domain, :string, 3
+      optional :name, :string, 4
+      optional :display, :message, 5, "services.provider.v1.EcosystemDisplay"
+    end
+    add_message "services.provider.v1.EcosystemDisplay" do
+      optional :dark, :message, 1, "services.provider.v1.EcosystemDisplayDetails"
+      optional :light, :message, 2, "services.provider.v1.EcosystemDisplayDetails"
+    end
+    add_message "services.provider.v1.EcosystemDisplayDetails" do
+      optional :logo_url, :string, 3
+      optional :color, :string, 4
     end
     add_message "services.provider.v1.UpdateEcosystemResponse" do
       optional :Ecosystem, :message, 1, "services.provider.v1.Ecosystem"
@@ -103,6 +117,17 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_message "services.provider.v1.GetEventTokenResponse" do
       optional :token, :string, 1
+    end
+    add_message "services.provider.v1.RetrieveVerificationRecordRequest" do
+    end
+    add_message "services.provider.v1.RetrieveVerificationRecordResponse" do
+      optional :verification_txt, :string, 1
+    end
+    add_message "services.provider.v1.RefreshVerificationStatusRequest" do
+    end
+    add_message "services.provider.v1.RefreshVerificationStatusResponse" do
+      optional :domain, :string, 1
+      optional :domain_verified, :bool, 2
     end
     add_message "services.provider.v1.GrantAuthorizationRequest" do
       optional :resource, :string, 3
@@ -151,6 +176,8 @@ module Services
       CreateEcosystemRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.CreateEcosystemRequest").msgclass
       CreateEcosystemResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.CreateEcosystemResponse").msgclass
       UpdateEcosystemRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.UpdateEcosystemRequest").msgclass
+      EcosystemDisplay = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.EcosystemDisplay").msgclass
+      EcosystemDisplayDetails = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.EcosystemDisplayDetails").msgclass
       UpdateEcosystemResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.UpdateEcosystemResponse").msgclass
       AddWebhookRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.AddWebhookRequest").msgclass
       AddWebhookResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.AddWebhookResponse").msgclass
@@ -164,6 +191,10 @@ module Services
       GetOberonKeyResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GetOberonKeyResponse").msgclass
       GetEventTokenRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GetEventTokenRequest").msgclass
       GetEventTokenResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GetEventTokenResponse").msgclass
+      RetrieveVerificationRecordRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.RetrieveVerificationRecordRequest").msgclass
+      RetrieveVerificationRecordResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.RetrieveVerificationRecordResponse").msgclass
+      RefreshVerificationStatusRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.RefreshVerificationStatusRequest").msgclass
+      RefreshVerificationStatusResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.RefreshVerificationStatusResponse").msgclass
       GrantAuthorizationRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GrantAuthorizationRequest").msgclass
       GrantAuthorizationResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GrantAuthorizationResponse").msgclass
       RevokeAuthorizationRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.RevokeAuthorizationRequest").msgclass

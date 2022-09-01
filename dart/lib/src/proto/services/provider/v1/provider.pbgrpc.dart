@@ -10,168 +10,196 @@ import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
-import 'provider.pb.dart' as $5;
+import 'provider.pb.dart' as $4;
 export 'provider.pb.dart';
 
 class ProviderClient extends $grpc.Client {
   static final _$createEcosystem =
-      $grpc.ClientMethod<$5.CreateEcosystemRequest, $5.CreateEcosystemResponse>(
+      $grpc.ClientMethod<$4.CreateEcosystemRequest, $4.CreateEcosystemResponse>(
           '/services.provider.v1.Provider/CreateEcosystem',
-          ($5.CreateEcosystemRequest value) => value.writeToBuffer(),
+          ($4.CreateEcosystemRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $5.CreateEcosystemResponse.fromBuffer(value));
+              $4.CreateEcosystemResponse.fromBuffer(value));
   static final _$updateEcosystem =
-      $grpc.ClientMethod<$5.UpdateEcosystemRequest, $5.UpdateEcosystemResponse>(
+      $grpc.ClientMethod<$4.UpdateEcosystemRequest, $4.UpdateEcosystemResponse>(
           '/services.provider.v1.Provider/UpdateEcosystem',
-          ($5.UpdateEcosystemRequest value) => value.writeToBuffer(),
+          ($4.UpdateEcosystemRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $5.UpdateEcosystemResponse.fromBuffer(value));
+              $4.UpdateEcosystemResponse.fromBuffer(value));
   static final _$grantAuthorization = $grpc.ClientMethod<
-          $5.GrantAuthorizationRequest, $5.GrantAuthorizationResponse>(
+          $4.GrantAuthorizationRequest, $4.GrantAuthorizationResponse>(
       '/services.provider.v1.Provider/GrantAuthorization',
-      ($5.GrantAuthorizationRequest value) => value.writeToBuffer(),
+      ($4.GrantAuthorizationRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $5.GrantAuthorizationResponse.fromBuffer(value));
+          $4.GrantAuthorizationResponse.fromBuffer(value));
   static final _$revokeAuthorization = $grpc.ClientMethod<
-          $5.RevokeAuthorizationRequest, $5.RevokeAuthorizationResponse>(
+          $4.RevokeAuthorizationRequest, $4.RevokeAuthorizationResponse>(
       '/services.provider.v1.Provider/RevokeAuthorization',
-      ($5.RevokeAuthorizationRequest value) => value.writeToBuffer(),
+      ($4.RevokeAuthorizationRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $5.RevokeAuthorizationResponse.fromBuffer(value));
+          $4.RevokeAuthorizationResponse.fromBuffer(value));
   static final _$getAuthorizations = $grpc.ClientMethod<
-          $5.GetAuthorizationsRequest, $5.GetAuthorizationsResponse>(
+          $4.GetAuthorizationsRequest, $4.GetAuthorizationsResponse>(
       '/services.provider.v1.Provider/GetAuthorizations',
-      ($5.GetAuthorizationsRequest value) => value.writeToBuffer(),
+      ($4.GetAuthorizationsRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $5.GetAuthorizationsResponse.fromBuffer(value));
+          $4.GetAuthorizationsResponse.fromBuffer(value));
   static final _$addWebhook =
-      $grpc.ClientMethod<$5.AddWebhookRequest, $5.AddWebhookResponse>(
+      $grpc.ClientMethod<$4.AddWebhookRequest, $4.AddWebhookResponse>(
           '/services.provider.v1.Provider/AddWebhook',
-          ($5.AddWebhookRequest value) => value.writeToBuffer(),
+          ($4.AddWebhookRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $5.AddWebhookResponse.fromBuffer(value));
+              $4.AddWebhookResponse.fromBuffer(value));
   static final _$deleteWebhook =
-      $grpc.ClientMethod<$5.DeleteWebhookRequest, $5.DeleteWebhookResponse>(
+      $grpc.ClientMethod<$4.DeleteWebhookRequest, $4.DeleteWebhookResponse>(
           '/services.provider.v1.Provider/DeleteWebhook',
-          ($5.DeleteWebhookRequest value) => value.writeToBuffer(),
+          ($4.DeleteWebhookRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $5.DeleteWebhookResponse.fromBuffer(value));
+              $4.DeleteWebhookResponse.fromBuffer(value));
   static final _$ecosystemInfo =
-      $grpc.ClientMethod<$5.EcosystemInfoRequest, $5.EcosystemInfoResponse>(
+      $grpc.ClientMethod<$4.EcosystemInfoRequest, $4.EcosystemInfoResponse>(
           '/services.provider.v1.Provider/EcosystemInfo',
-          ($5.EcosystemInfoRequest value) => value.writeToBuffer(),
+          ($4.EcosystemInfoRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $5.EcosystemInfoResponse.fromBuffer(value));
+              $4.EcosystemInfoResponse.fromBuffer(value));
   static final _$generateToken =
-      $grpc.ClientMethod<$5.GenerateTokenRequest, $5.GenerateTokenResponse>(
+      $grpc.ClientMethod<$4.GenerateTokenRequest, $4.GenerateTokenResponse>(
           '/services.provider.v1.Provider/GenerateToken',
-          ($5.GenerateTokenRequest value) => value.writeToBuffer(),
+          ($4.GenerateTokenRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $5.GenerateTokenResponse.fromBuffer(value));
+              $4.GenerateTokenResponse.fromBuffer(value));
   static final _$invite =
-      $grpc.ClientMethod<$5.InviteRequest, $5.InviteResponse>(
+      $grpc.ClientMethod<$4.InviteRequest, $4.InviteResponse>(
           '/services.provider.v1.Provider/Invite',
-          ($5.InviteRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) => $5.InviteResponse.fromBuffer(value));
+          ($4.InviteRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $4.InviteResponse.fromBuffer(value));
   static final _$invitationStatus = $grpc.ClientMethod<
-          $5.InvitationStatusRequest, $5.InvitationStatusResponse>(
+          $4.InvitationStatusRequest, $4.InvitationStatusResponse>(
       '/services.provider.v1.Provider/InvitationStatus',
-      ($5.InvitationStatusRequest value) => value.writeToBuffer(),
+      ($4.InvitationStatusRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $5.InvitationStatusResponse.fromBuffer(value));
+          $4.InvitationStatusResponse.fromBuffer(value));
   static final _$getOberonKey =
-      $grpc.ClientMethod<$5.GetOberonKeyRequest, $5.GetOberonKeyResponse>(
+      $grpc.ClientMethod<$4.GetOberonKeyRequest, $4.GetOberonKeyResponse>(
           '/services.provider.v1.Provider/GetOberonKey',
-          ($5.GetOberonKeyRequest value) => value.writeToBuffer(),
+          ($4.GetOberonKeyRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $5.GetOberonKeyResponse.fromBuffer(value));
+              $4.GetOberonKeyResponse.fromBuffer(value));
   static final _$getEventToken =
-      $grpc.ClientMethod<$5.GetEventTokenRequest, $5.GetEventTokenResponse>(
+      $grpc.ClientMethod<$4.GetEventTokenRequest, $4.GetEventTokenResponse>(
           '/services.provider.v1.Provider/GetEventToken',
-          ($5.GetEventTokenRequest value) => value.writeToBuffer(),
+          ($4.GetEventTokenRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $5.GetEventTokenResponse.fromBuffer(value));
+              $4.GetEventTokenResponse.fromBuffer(value));
+  static final _$retrieveVerificationRecord = $grpc.ClientMethod<
+          $4.RetrieveVerificationRecordRequest,
+          $4.RetrieveVerificationRecordResponse>(
+      '/services.provider.v1.Provider/RetrieveVerificationRecord',
+      ($4.RetrieveVerificationRecordRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) =>
+          $4.RetrieveVerificationRecordResponse.fromBuffer(value));
+  static final _$refreshVerificationStatus = $grpc.ClientMethod<
+          $4.RefreshVerificationStatusRequest,
+          $4.RefreshVerificationStatusResponse>(
+      '/services.provider.v1.Provider/RefreshVerificationStatus',
+      ($4.RefreshVerificationStatusRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) =>
+          $4.RefreshVerificationStatusResponse.fromBuffer(value));
 
   ProviderClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
-  $grpc.ResponseFuture<$5.CreateEcosystemResponse> createEcosystem(
-      $5.CreateEcosystemRequest request,
+  $grpc.ResponseFuture<$4.CreateEcosystemResponse> createEcosystem(
+      $4.CreateEcosystemRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$createEcosystem, request, options: options);
   }
 
-  $grpc.ResponseFuture<$5.UpdateEcosystemResponse> updateEcosystem(
-      $5.UpdateEcosystemRequest request,
+  $grpc.ResponseFuture<$4.UpdateEcosystemResponse> updateEcosystem(
+      $4.UpdateEcosystemRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$updateEcosystem, request, options: options);
   }
 
-  $grpc.ResponseFuture<$5.GrantAuthorizationResponse> grantAuthorization(
-      $5.GrantAuthorizationRequest request,
+  $grpc.ResponseFuture<$4.GrantAuthorizationResponse> grantAuthorization(
+      $4.GrantAuthorizationRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$grantAuthorization, request, options: options);
   }
 
-  $grpc.ResponseFuture<$5.RevokeAuthorizationResponse> revokeAuthorization(
-      $5.RevokeAuthorizationRequest request,
+  $grpc.ResponseFuture<$4.RevokeAuthorizationResponse> revokeAuthorization(
+      $4.RevokeAuthorizationRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$revokeAuthorization, request, options: options);
   }
 
-  $grpc.ResponseFuture<$5.GetAuthorizationsResponse> getAuthorizations(
-      $5.GetAuthorizationsRequest request,
+  $grpc.ResponseFuture<$4.GetAuthorizationsResponse> getAuthorizations(
+      $4.GetAuthorizationsRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getAuthorizations, request, options: options);
   }
 
-  $grpc.ResponseFuture<$5.AddWebhookResponse> addWebhook(
-      $5.AddWebhookRequest request,
+  $grpc.ResponseFuture<$4.AddWebhookResponse> addWebhook(
+      $4.AddWebhookRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$addWebhook, request, options: options);
   }
 
-  $grpc.ResponseFuture<$5.DeleteWebhookResponse> deleteWebhook(
-      $5.DeleteWebhookRequest request,
+  $grpc.ResponseFuture<$4.DeleteWebhookResponse> deleteWebhook(
+      $4.DeleteWebhookRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$deleteWebhook, request, options: options);
   }
 
-  $grpc.ResponseFuture<$5.EcosystemInfoResponse> ecosystemInfo(
-      $5.EcosystemInfoRequest request,
+  $grpc.ResponseFuture<$4.EcosystemInfoResponse> ecosystemInfo(
+      $4.EcosystemInfoRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$ecosystemInfo, request, options: options);
   }
 
-  $grpc.ResponseFuture<$5.GenerateTokenResponse> generateToken(
-      $5.GenerateTokenRequest request,
+  $grpc.ResponseFuture<$4.GenerateTokenResponse> generateToken(
+      $4.GenerateTokenRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$generateToken, request, options: options);
   }
 
-  $grpc.ResponseFuture<$5.InviteResponse> invite($5.InviteRequest request,
+  $grpc.ResponseFuture<$4.InviteResponse> invite($4.InviteRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$invite, request, options: options);
   }
 
-  $grpc.ResponseFuture<$5.InvitationStatusResponse> invitationStatus(
-      $5.InvitationStatusRequest request,
+  $grpc.ResponseFuture<$4.InvitationStatusResponse> invitationStatus(
+      $4.InvitationStatusRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$invitationStatus, request, options: options);
   }
 
-  $grpc.ResponseFuture<$5.GetOberonKeyResponse> getOberonKey(
-      $5.GetOberonKeyRequest request,
+  $grpc.ResponseFuture<$4.GetOberonKeyResponse> getOberonKey(
+      $4.GetOberonKeyRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getOberonKey, request, options: options);
   }
 
-  $grpc.ResponseFuture<$5.GetEventTokenResponse> getEventToken(
-      $5.GetEventTokenRequest request,
+  $grpc.ResponseFuture<$4.GetEventTokenResponse> getEventToken(
+      $4.GetEventTokenRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getEventToken, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$4.RetrieveVerificationRecordResponse>
+      retrieveVerificationRecord($4.RetrieveVerificationRecordRequest request,
+          {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$retrieveVerificationRecord, request,
+        options: options);
+  }
+
+  $grpc.ResponseFuture<$4.RefreshVerificationStatusResponse>
+      refreshVerificationStatus($4.RefreshVerificationStatusRequest request,
+          {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$refreshVerificationStatus, request,
+        options: options);
   }
 }
 
@@ -179,221 +207,257 @@ abstract class ProviderServiceBase extends $grpc.Service {
   $core.String get $name => 'services.provider.v1.Provider';
 
   ProviderServiceBase() {
-    $addMethod($grpc.ServiceMethod<$5.CreateEcosystemRequest,
-            $5.CreateEcosystemResponse>(
+    $addMethod($grpc.ServiceMethod<$4.CreateEcosystemRequest,
+            $4.CreateEcosystemResponse>(
         'CreateEcosystem',
         createEcosystem_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $5.CreateEcosystemRequest.fromBuffer(value),
-        ($5.CreateEcosystemResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$5.UpdateEcosystemRequest,
-            $5.UpdateEcosystemResponse>(
+            $4.CreateEcosystemRequest.fromBuffer(value),
+        ($4.CreateEcosystemResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.UpdateEcosystemRequest,
+            $4.UpdateEcosystemResponse>(
         'UpdateEcosystem',
         updateEcosystem_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $5.UpdateEcosystemRequest.fromBuffer(value),
-        ($5.UpdateEcosystemResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$5.GrantAuthorizationRequest,
-            $5.GrantAuthorizationResponse>(
+            $4.UpdateEcosystemRequest.fromBuffer(value),
+        ($4.UpdateEcosystemResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.GrantAuthorizationRequest,
+            $4.GrantAuthorizationResponse>(
         'GrantAuthorization',
         grantAuthorization_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $5.GrantAuthorizationRequest.fromBuffer(value),
-        ($5.GrantAuthorizationResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$5.RevokeAuthorizationRequest,
-            $5.RevokeAuthorizationResponse>(
+            $4.GrantAuthorizationRequest.fromBuffer(value),
+        ($4.GrantAuthorizationResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.RevokeAuthorizationRequest,
+            $4.RevokeAuthorizationResponse>(
         'RevokeAuthorization',
         revokeAuthorization_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $5.RevokeAuthorizationRequest.fromBuffer(value),
-        ($5.RevokeAuthorizationResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$5.GetAuthorizationsRequest,
-            $5.GetAuthorizationsResponse>(
+            $4.RevokeAuthorizationRequest.fromBuffer(value),
+        ($4.RevokeAuthorizationResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.GetAuthorizationsRequest,
+            $4.GetAuthorizationsResponse>(
         'GetAuthorizations',
         getAuthorizations_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $5.GetAuthorizationsRequest.fromBuffer(value),
-        ($5.GetAuthorizationsResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$5.AddWebhookRequest, $5.AddWebhookResponse>(
+            $4.GetAuthorizationsRequest.fromBuffer(value),
+        ($4.GetAuthorizationsResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.AddWebhookRequest, $4.AddWebhookResponse>(
         'AddWebhook',
         addWebhook_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $5.AddWebhookRequest.fromBuffer(value),
-        ($5.AddWebhookResponse value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $4.AddWebhookRequest.fromBuffer(value),
+        ($4.AddWebhookResponse value) => value.writeToBuffer()));
     $addMethod(
-        $grpc.ServiceMethod<$5.DeleteWebhookRequest, $5.DeleteWebhookResponse>(
+        $grpc.ServiceMethod<$4.DeleteWebhookRequest, $4.DeleteWebhookResponse>(
             'DeleteWebhook',
             deleteWebhook_Pre,
             false,
             false,
             ($core.List<$core.int> value) =>
-                $5.DeleteWebhookRequest.fromBuffer(value),
-            ($5.DeleteWebhookResponse value) => value.writeToBuffer()));
+                $4.DeleteWebhookRequest.fromBuffer(value),
+            ($4.DeleteWebhookResponse value) => value.writeToBuffer()));
     $addMethod(
-        $grpc.ServiceMethod<$5.EcosystemInfoRequest, $5.EcosystemInfoResponse>(
+        $grpc.ServiceMethod<$4.EcosystemInfoRequest, $4.EcosystemInfoResponse>(
             'EcosystemInfo',
             ecosystemInfo_Pre,
             false,
             false,
             ($core.List<$core.int> value) =>
-                $5.EcosystemInfoRequest.fromBuffer(value),
-            ($5.EcosystemInfoResponse value) => value.writeToBuffer()));
+                $4.EcosystemInfoRequest.fromBuffer(value),
+            ($4.EcosystemInfoResponse value) => value.writeToBuffer()));
     $addMethod(
-        $grpc.ServiceMethod<$5.GenerateTokenRequest, $5.GenerateTokenResponse>(
+        $grpc.ServiceMethod<$4.GenerateTokenRequest, $4.GenerateTokenResponse>(
             'GenerateToken',
             generateToken_Pre,
             false,
             false,
             ($core.List<$core.int> value) =>
-                $5.GenerateTokenRequest.fromBuffer(value),
-            ($5.GenerateTokenResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$5.InviteRequest, $5.InviteResponse>(
+                $4.GenerateTokenRequest.fromBuffer(value),
+            ($4.GenerateTokenResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.InviteRequest, $4.InviteResponse>(
         'Invite',
         invite_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $5.InviteRequest.fromBuffer(value),
-        ($5.InviteResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$5.InvitationStatusRequest,
-            $5.InvitationStatusResponse>(
+        ($core.List<$core.int> value) => $4.InviteRequest.fromBuffer(value),
+        ($4.InviteResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.InvitationStatusRequest,
+            $4.InvitationStatusResponse>(
         'InvitationStatus',
         invitationStatus_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $5.InvitationStatusRequest.fromBuffer(value),
-        ($5.InvitationStatusResponse value) => value.writeToBuffer()));
+            $4.InvitationStatusRequest.fromBuffer(value),
+        ($4.InvitationStatusResponse value) => value.writeToBuffer()));
     $addMethod(
-        $grpc.ServiceMethod<$5.GetOberonKeyRequest, $5.GetOberonKeyResponse>(
+        $grpc.ServiceMethod<$4.GetOberonKeyRequest, $4.GetOberonKeyResponse>(
             'GetOberonKey',
             getOberonKey_Pre,
             false,
             false,
             ($core.List<$core.int> value) =>
-                $5.GetOberonKeyRequest.fromBuffer(value),
-            ($5.GetOberonKeyResponse value) => value.writeToBuffer()));
+                $4.GetOberonKeyRequest.fromBuffer(value),
+            ($4.GetOberonKeyResponse value) => value.writeToBuffer()));
     $addMethod(
-        $grpc.ServiceMethod<$5.GetEventTokenRequest, $5.GetEventTokenResponse>(
+        $grpc.ServiceMethod<$4.GetEventTokenRequest, $4.GetEventTokenResponse>(
             'GetEventToken',
             getEventToken_Pre,
             false,
             false,
             ($core.List<$core.int> value) =>
-                $5.GetEventTokenRequest.fromBuffer(value),
-            ($5.GetEventTokenResponse value) => value.writeToBuffer()));
+                $4.GetEventTokenRequest.fromBuffer(value),
+            ($4.GetEventTokenResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.RetrieveVerificationRecordRequest,
+            $4.RetrieveVerificationRecordResponse>(
+        'RetrieveVerificationRecord',
+        retrieveVerificationRecord_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) =>
+            $4.RetrieveVerificationRecordRequest.fromBuffer(value),
+        ($4.RetrieveVerificationRecordResponse value) =>
+            value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.RefreshVerificationStatusRequest,
+            $4.RefreshVerificationStatusResponse>(
+        'RefreshVerificationStatus',
+        refreshVerificationStatus_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) =>
+            $4.RefreshVerificationStatusRequest.fromBuffer(value),
+        ($4.RefreshVerificationStatusResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$5.CreateEcosystemResponse> createEcosystem_Pre(
+  $async.Future<$4.CreateEcosystemResponse> createEcosystem_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$5.CreateEcosystemRequest> request) async {
+      $async.Future<$4.CreateEcosystemRequest> request) async {
     return createEcosystem(call, await request);
   }
 
-  $async.Future<$5.UpdateEcosystemResponse> updateEcosystem_Pre(
+  $async.Future<$4.UpdateEcosystemResponse> updateEcosystem_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$5.UpdateEcosystemRequest> request) async {
+      $async.Future<$4.UpdateEcosystemRequest> request) async {
     return updateEcosystem(call, await request);
   }
 
-  $async.Future<$5.GrantAuthorizationResponse> grantAuthorization_Pre(
+  $async.Future<$4.GrantAuthorizationResponse> grantAuthorization_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$5.GrantAuthorizationRequest> request) async {
+      $async.Future<$4.GrantAuthorizationRequest> request) async {
     return grantAuthorization(call, await request);
   }
 
-  $async.Future<$5.RevokeAuthorizationResponse> revokeAuthorization_Pre(
+  $async.Future<$4.RevokeAuthorizationResponse> revokeAuthorization_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$5.RevokeAuthorizationRequest> request) async {
+      $async.Future<$4.RevokeAuthorizationRequest> request) async {
     return revokeAuthorization(call, await request);
   }
 
-  $async.Future<$5.GetAuthorizationsResponse> getAuthorizations_Pre(
+  $async.Future<$4.GetAuthorizationsResponse> getAuthorizations_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$5.GetAuthorizationsRequest> request) async {
+      $async.Future<$4.GetAuthorizationsRequest> request) async {
     return getAuthorizations(call, await request);
   }
 
-  $async.Future<$5.AddWebhookResponse> addWebhook_Pre($grpc.ServiceCall call,
-      $async.Future<$5.AddWebhookRequest> request) async {
+  $async.Future<$4.AddWebhookResponse> addWebhook_Pre($grpc.ServiceCall call,
+      $async.Future<$4.AddWebhookRequest> request) async {
     return addWebhook(call, await request);
   }
 
-  $async.Future<$5.DeleteWebhookResponse> deleteWebhook_Pre(
+  $async.Future<$4.DeleteWebhookResponse> deleteWebhook_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$5.DeleteWebhookRequest> request) async {
+      $async.Future<$4.DeleteWebhookRequest> request) async {
     return deleteWebhook(call, await request);
   }
 
-  $async.Future<$5.EcosystemInfoResponse> ecosystemInfo_Pre(
+  $async.Future<$4.EcosystemInfoResponse> ecosystemInfo_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$5.EcosystemInfoRequest> request) async {
+      $async.Future<$4.EcosystemInfoRequest> request) async {
     return ecosystemInfo(call, await request);
   }
 
-  $async.Future<$5.GenerateTokenResponse> generateToken_Pre(
+  $async.Future<$4.GenerateTokenResponse> generateToken_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$5.GenerateTokenRequest> request) async {
+      $async.Future<$4.GenerateTokenRequest> request) async {
     return generateToken(call, await request);
   }
 
-  $async.Future<$5.InviteResponse> invite_Pre(
-      $grpc.ServiceCall call, $async.Future<$5.InviteRequest> request) async {
+  $async.Future<$4.InviteResponse> invite_Pre(
+      $grpc.ServiceCall call, $async.Future<$4.InviteRequest> request) async {
     return invite(call, await request);
   }
 
-  $async.Future<$5.InvitationStatusResponse> invitationStatus_Pre(
+  $async.Future<$4.InvitationStatusResponse> invitationStatus_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$5.InvitationStatusRequest> request) async {
+      $async.Future<$4.InvitationStatusRequest> request) async {
     return invitationStatus(call, await request);
   }
 
-  $async.Future<$5.GetOberonKeyResponse> getOberonKey_Pre(
+  $async.Future<$4.GetOberonKeyResponse> getOberonKey_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$5.GetOberonKeyRequest> request) async {
+      $async.Future<$4.GetOberonKeyRequest> request) async {
     return getOberonKey(call, await request);
   }
 
-  $async.Future<$5.GetEventTokenResponse> getEventToken_Pre(
+  $async.Future<$4.GetEventTokenResponse> getEventToken_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$5.GetEventTokenRequest> request) async {
+      $async.Future<$4.GetEventTokenRequest> request) async {
     return getEventToken(call, await request);
   }
 
-  $async.Future<$5.CreateEcosystemResponse> createEcosystem(
-      $grpc.ServiceCall call, $5.CreateEcosystemRequest request);
-  $async.Future<$5.UpdateEcosystemResponse> updateEcosystem(
-      $grpc.ServiceCall call, $5.UpdateEcosystemRequest request);
-  $async.Future<$5.GrantAuthorizationResponse> grantAuthorization(
-      $grpc.ServiceCall call, $5.GrantAuthorizationRequest request);
-  $async.Future<$5.RevokeAuthorizationResponse> revokeAuthorization(
-      $grpc.ServiceCall call, $5.RevokeAuthorizationRequest request);
-  $async.Future<$5.GetAuthorizationsResponse> getAuthorizations(
-      $grpc.ServiceCall call, $5.GetAuthorizationsRequest request);
-  $async.Future<$5.AddWebhookResponse> addWebhook(
-      $grpc.ServiceCall call, $5.AddWebhookRequest request);
-  $async.Future<$5.DeleteWebhookResponse> deleteWebhook(
-      $grpc.ServiceCall call, $5.DeleteWebhookRequest request);
-  $async.Future<$5.EcosystemInfoResponse> ecosystemInfo(
-      $grpc.ServiceCall call, $5.EcosystemInfoRequest request);
-  $async.Future<$5.GenerateTokenResponse> generateToken(
-      $grpc.ServiceCall call, $5.GenerateTokenRequest request);
-  $async.Future<$5.InviteResponse> invite(
-      $grpc.ServiceCall call, $5.InviteRequest request);
-  $async.Future<$5.InvitationStatusResponse> invitationStatus(
-      $grpc.ServiceCall call, $5.InvitationStatusRequest request);
-  $async.Future<$5.GetOberonKeyResponse> getOberonKey(
-      $grpc.ServiceCall call, $5.GetOberonKeyRequest request);
-  $async.Future<$5.GetEventTokenResponse> getEventToken(
-      $grpc.ServiceCall call, $5.GetEventTokenRequest request);
+  $async.Future<$4.RetrieveVerificationRecordResponse>
+      retrieveVerificationRecord_Pre($grpc.ServiceCall call,
+          $async.Future<$4.RetrieveVerificationRecordRequest> request) async {
+    return retrieveVerificationRecord(call, await request);
+  }
+
+  $async.Future<$4.RefreshVerificationStatusResponse>
+      refreshVerificationStatus_Pre($grpc.ServiceCall call,
+          $async.Future<$4.RefreshVerificationStatusRequest> request) async {
+    return refreshVerificationStatus(call, await request);
+  }
+
+  $async.Future<$4.CreateEcosystemResponse> createEcosystem(
+      $grpc.ServiceCall call, $4.CreateEcosystemRequest request);
+  $async.Future<$4.UpdateEcosystemResponse> updateEcosystem(
+      $grpc.ServiceCall call, $4.UpdateEcosystemRequest request);
+  $async.Future<$4.GrantAuthorizationResponse> grantAuthorization(
+      $grpc.ServiceCall call, $4.GrantAuthorizationRequest request);
+  $async.Future<$4.RevokeAuthorizationResponse> revokeAuthorization(
+      $grpc.ServiceCall call, $4.RevokeAuthorizationRequest request);
+  $async.Future<$4.GetAuthorizationsResponse> getAuthorizations(
+      $grpc.ServiceCall call, $4.GetAuthorizationsRequest request);
+  $async.Future<$4.AddWebhookResponse> addWebhook(
+      $grpc.ServiceCall call, $4.AddWebhookRequest request);
+  $async.Future<$4.DeleteWebhookResponse> deleteWebhook(
+      $grpc.ServiceCall call, $4.DeleteWebhookRequest request);
+  $async.Future<$4.EcosystemInfoResponse> ecosystemInfo(
+      $grpc.ServiceCall call, $4.EcosystemInfoRequest request);
+  $async.Future<$4.GenerateTokenResponse> generateToken(
+      $grpc.ServiceCall call, $4.GenerateTokenRequest request);
+  $async.Future<$4.InviteResponse> invite(
+      $grpc.ServiceCall call, $4.InviteRequest request);
+  $async.Future<$4.InvitationStatusResponse> invitationStatus(
+      $grpc.ServiceCall call, $4.InvitationStatusRequest request);
+  $async.Future<$4.GetOberonKeyResponse> getOberonKey(
+      $grpc.ServiceCall call, $4.GetOberonKeyRequest request);
+  $async.Future<$4.GetEventTokenResponse> getEventToken(
+      $grpc.ServiceCall call, $4.GetEventTokenRequest request);
+  $async.Future<$4.RetrieveVerificationRecordResponse>
+      retrieveVerificationRecord(
+          $grpc.ServiceCall call, $4.RetrieveVerificationRecordRequest request);
+  $async.Future<$4.RefreshVerificationStatusResponse> refreshVerificationStatus(
+      $grpc.ServiceCall call, $4.RefreshVerificationStatusRequest request);
 }

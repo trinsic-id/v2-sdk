@@ -985,33 +985,6 @@ All event types
 
 
 
-<a name="services_debug_v1_debug-proto"></a>
-<p align="right"><a href="#top">Top</a></p>
-
-## services/debug/v1/debug.proto
-
-
-
-<a name="services-debug-v1-Debugging"></a>
-
-### Service - Debugging
-
-
-| Method Name | Request Type | Response Type | Description |
-| ----------- | ------------ | ------------- | ------------|
-| CallEmpty | [.google.protobuf.Empty](/reference/proto#google-protobuf-Empty) | [.google.protobuf.Empty](/reference/proto#google-protobuf-Empty) |  |
-| CallEmptyAuth | [.google.protobuf.Empty](/reference/proto#google-protobuf-Empty) | [.google.protobuf.Empty](/reference/proto#google-protobuf-Empty) |  |
-
- <!-- end services -->
-
- <!-- end messages -->
-
- <!-- end enums -->
-
- <!-- end HasExtensions -->
-
-
-
 <a name="services_account_v1_account-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
@@ -1353,6 +1326,8 @@ Confirmation method type for two-factor workflows
 | InvitationStatus | [InvitationStatusRequest](/reference/proto#services-provider-v1-InvitationStatusRequest) | [InvitationStatusResponse](/reference/proto#services-provider-v1-InvitationStatusResponse) | Check the status of an invitation |
 | GetOberonKey | [GetOberonKeyRequest](/reference/proto#services-provider-v1-GetOberonKeyRequest) | [GetOberonKeyResponse](/reference/proto#services-provider-v1-GetOberonKeyResponse) | Returns the public key being used to create/verify oberon tokens |
 | GetEventToken | [GetEventTokenRequest](/reference/proto#services-provider-v1-GetEventTokenRequest) | [GetEventTokenResponse](/reference/proto#services-provider-v1-GetEventTokenResponse) | Generate a signed token (JWT) that can be used to connect to the message bus |
+| RetrieveVerificationRecord | [RetrieveVerificationRecordRequest](/reference/proto#services-provider-v1-RetrieveVerificationRecordRequest) | [RetrieveVerificationRecordResponse](/reference/proto#services-provider-v1-RetrieveVerificationRecordResponse) | Retrieve a random hash TXT that can be used to verify domain ownership |
+| RefreshVerificationStatus | [RefreshVerificationStatusRequest](/reference/proto#services-provider-v1-RefreshVerificationStatusRequest) | [RefreshVerificationStatusResponse](/reference/proto#services-provider-v1-RefreshVerificationStatusResponse) | Call to verif |
 
  <!-- end services -->
 
@@ -1399,8 +1374,9 @@ Request to create an ecosystem
 | ----- | ---- | ----------- |
 | name | [string](/reference/proto#string) | Globally unique name for the Ecosystem. This name will be part of the ecosystem-specific URLs and namespaces. Allowed characters are lowercase letters, numbers, underscore and hyphen. If not passed, ecosystem name will be auto-generated. |
 | description | [string](/reference/proto#string) | Ecosystem description |
-| uri | [string](/reference/proto#string) | External URL associated with your organization or ecosystem entity |
+| uri | [string](/reference/proto#string) | **Deprecated.** External URL associated with your organization or ecosystem entity |
 | details | [services.account.v1.AccountDetails](/reference/proto#services-account-v1-AccountDetails) | The account details of the owner of the ecosystem |
+| domain | [string](/reference/proto#string) | New domain URL |
 
 
 
@@ -1465,8 +1441,42 @@ Details of an ecosystem
 | id | [string](/reference/proto#string) | URN of the ecosystem |
 | name | [string](/reference/proto#string) | Globally unique name for the ecosystem |
 | description | [string](/reference/proto#string) | Ecosystem description |
-| uri | [string](/reference/proto#string) | External URL associated with the organization or ecosystem entity |
+| uri | [string](/reference/proto#string) | **Deprecated.** External URL associated with the organization or ecosystem entity |
 | webhooks | [WebhookConfig](/reference/proto#services-provider-v1-WebhookConfig)[] | Configured webhooks, if any |
+| display | [EcosystemDisplay](/reference/proto#services-provider-v1-EcosystemDisplay) | Display details |
+| domain | [string](/reference/proto#string) | Domain |
+
+
+
+
+
+
+<a name="services-provider-v1-EcosystemDisplay"></a>
+
+### EcosystemDisplay
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| dark | [EcosystemDisplayDetails](/reference/proto#services-provider-v1-EcosystemDisplayDetails) |  |
+| light | [EcosystemDisplayDetails](/reference/proto#services-provider-v1-EcosystemDisplayDetails) |  |
+
+
+
+
+
+
+<a name="services-provider-v1-EcosystemDisplayDetails"></a>
+
+### EcosystemDisplayDetails
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| logo_url | [string](/reference/proto#string) | string id = 1; string name = 2; |
+| color | [string](/reference/proto#string) |  |
 
 
 
@@ -1730,6 +1740,57 @@ Response to `InviteRequest`
 
 
 
+<a name="services-provider-v1-RefreshVerificationStatusRequest"></a>
+
+### RefreshVerificationStatusRequest
+TODO - Should we allow specifying which ecosystem to use?
+
+
+
+
+
+
+<a name="services-provider-v1-RefreshVerificationStatusResponse"></a>
+
+### RefreshVerificationStatusResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| domain | [string](/reference/proto#string) | Domain URL verified |
+| domain_verified | [bool](/reference/proto#bool) | Specifies if the above `domain` was successfully verified |
+
+
+
+
+
+
+<a name="services-provider-v1-RetrieveVerificationRecordRequest"></a>
+
+### RetrieveVerificationRecordRequest
+
+
+
+
+
+
+
+<a name="services-provider-v1-RetrieveVerificationRecordResponse"></a>
+
+### RetrieveVerificationRecordResponse
+Response message containing a TXT record content for domain url verification
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| verification_txt | [string](/reference/proto#string) | TXT code to use for domain verification |
+
+
+
+
+
+
 <a name="services-provider-v1-RevokeAuthorizationRequest"></a>
 
 ### RevokeAuthorizationRequest
@@ -1767,7 +1828,10 @@ Request to update an ecosystem's metadata
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | description | [string](/reference/proto#string) | New description of the ecosystem |
-| uri | [string](/reference/proto#string) | New external URL associated with the organization or ecosystem entity |
+| uri | [string](/reference/proto#string) | **Deprecated.** New external URL associated with the organization or ecosystem entity |
+| domain | [string](/reference/proto#string) | New domain URL |
+| name | [string](/reference/proto#string) | New name |
+| display | [EcosystemDisplay](/reference/proto#services-provider-v1-EcosystemDisplay) | Display details |
 
 
 
