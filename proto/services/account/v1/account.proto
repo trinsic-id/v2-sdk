@@ -203,7 +203,9 @@ service Account {
     }
 
     // Get account information
-    rpc Info                (AccountInfoRequest)        returns (AccountInfoResponse);
+    rpc Info                (AccountInfoRequest)        returns (AccountInfoResponse) {
+        option (options.sdk_template_option).no_arguments = true;
+    }
     
     // List all connected devices
     rpc ListDevices         (ListDevicesRequest)        returns (ListDevicesResponse);
