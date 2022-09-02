@@ -38,92 +38,32 @@ public class TrinsicService : ServiceBase
     /// <summary>
     /// Exposes Account Service functionality
     /// </summary>
-    public AccountService Account
-    {
-        get
-        {
-            if (_account == null)
-            {
-                _account = new AccountService(TokenProvider, MicrosoftOptions.Create(Options));
-            }
-            return _account;
-        }
-    }
+    public AccountService Account => _account ??= new(TokenProvider, MicrosoftOptions.Create(Options));
 
     /// <summary>
     /// Exposes Credential Service functionality
     /// </summary>
-    public CredentialService Credential
-    {
-        get
-        {
-            if (_credential == null)
-            {
-                _credential = new CredentialService(TokenProvider, MicrosoftOptions.Create(Options));
-            }
-            return _credential;
-        }
-    }
+    public CredentialService Credential => _credential ??= new(TokenProvider, MicrosoftOptions.Create(Options));
 
     /// <summary>
     /// Exposes Template Service functionality
     /// </summary>
-    public TemplateService Template
-    {
-        get
-        {
-            if (_template == null)
-            {
-                _template = new TemplateService(TokenProvider, MicrosoftOptions.Create(Options));
-            }
-            return _template;
-        }
-    }
+    public TemplateService Template => _template ??= new(TokenProvider, MicrosoftOptions.Create(Options));
 
     /// <summary>
     /// Exposes Provider Service functionality
     /// </summary>
-    public ProviderService Provider
-    {
-        get
-        {
-            if (_provider == null)
-            {
-                _provider = new ProviderService(TokenProvider, MicrosoftOptions.Create(Options));
-            }
-            return _provider;
-        }
-    }
+    public ProviderService Provider => _provider ??= new(TokenProvider, MicrosoftOptions.Create(Options));
 
     /// <summary>
     /// Exposes Trust Registry Service functionality
     /// </summary>
-    public TrustRegistryService TrustRegistry
-    {
-        get
-        {
-            if (_trustRegistry == null)
-            {
-                _trustRegistry = new TrustRegistryService(TokenProvider, MicrosoftOptions.Create(Options));
-            }
-            return _trustRegistry;
-        }
-    }
+    public TrustRegistryService TrustRegistry => _trustRegistry ??= new(TokenProvider, MicrosoftOptions.Create(Options));
 
     /// <summary>
     /// Exposes Wallet Service functionality
     /// </summary>
-    public WalletService Wallet
-    {
-        get
-        {
-            if (_wallet == null)
-            {
-                _wallet = new WalletService(TokenProvider, MicrosoftOptions.Create(Options));
-            }
-            return _wallet;
-        }
-    }
+    public WalletService Wallet => _wallet ??= new(TokenProvider, MicrosoftOptions.Create(Options));
 
     /// <summary>
     /// Sets the Auth Token of this instance's ServiceOptions, and returns the instance for chaining.
