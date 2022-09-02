@@ -77,7 +77,6 @@ func (t *trustregistryBase) Search(userContext context.Context, request *trustre
 
 // AddFramework  Add a governance framework to the ecosystem
 func (t *trustregistryBase) AddFramework(userContext context.Context, request *trustregistry.AddFrameworkRequest) (*trustregistry.AddFrameworkResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -91,7 +90,6 @@ func (t *trustregistryBase) AddFramework(userContext context.Context, request *t
 
 // RemoveFramework  Remove a governance framework from the ecosystem
 func (t *trustregistryBase) RemoveFramework(userContext context.Context, request *trustregistry.RemoveFrameworkRequest) (*trustregistry.RemoveFrameworkResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -105,7 +103,6 @@ func (t *trustregistryBase) RemoveFramework(userContext context.Context, request
 
 // SearchRegistry  Search the ecosystem's governance frameworks
 func (t *trustregistryBase) SearchRegistry(userContext context.Context, request *trustregistry.SearchRegistryRequest) (*trustregistry.SearchRegistryResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -119,7 +116,6 @@ func (t *trustregistryBase) SearchRegistry(userContext context.Context, request 
 
 // RegisterMember  Register an authoritative issuer for a credential schema
 func (t *trustregistryBase) RegisterMember(userContext context.Context, request *trustregistry.RegisterMemberRequest) (*trustregistry.RegisterMemberResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -133,7 +129,6 @@ func (t *trustregistryBase) RegisterMember(userContext context.Context, request 
 
 // UnregisterMember  Removes an authoritative issuer for a credential schema from the trust registry
 func (t *trustregistryBase) UnregisterMember(userContext context.Context, request *trustregistry.UnregisterMemberRequest) (*trustregistry.UnregisterMemberResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -147,7 +142,6 @@ func (t *trustregistryBase) UnregisterMember(userContext context.Context, reques
 
 // GetMembershipStatus  Fetch the membership status of an issuer for a given credential schema in a trust registry
 func (t *trustregistryBase) GetMembershipStatus(userContext context.Context, request *trustregistry.GetMembershipStatusRequest) (*trustregistry.GetMembershipStatusResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err

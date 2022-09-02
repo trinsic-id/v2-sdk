@@ -25,8 +25,9 @@ class CredentialService(ServiceBase):
     async def issue(self, *, request: IssueRequest) -> IssueResponse:
         """
         Sign and issue a verifiable credential from a submitted document.
-        The document must be a valid JSON-LD document.
+         The document must be a valid JSON-LD document.
         """
+
         return await self.client.issue(request, metadata=self.build_metadata(request))
 
     async def issue_from_template(
@@ -34,17 +35,17 @@ class CredentialService(ServiceBase):
     ) -> IssueFromTemplateResponse:
         """
         Sign and issue a verifiable credential from a pre-defined template.
-        This process will also add schema validation and
-        revocation registry values to the credential.
+         This process will also add schema validation and
+         revocation registry values to the credential.
         """
+
         return await self.client.issue_from_template(
             request, metadata=self.build_metadata(request)
         )
 
     async def check_status(self, *, request: CheckStatusRequest) -> CheckStatusResponse:
-        """
-        Check credential status in the revocation registry
-        """
+        """Check credential status in the revocation registry"""
+
         return await self.client.check_status(
             request, metadata=self.build_metadata(request)
         )
@@ -52,9 +53,8 @@ class CredentialService(ServiceBase):
     async def update_status(
         self, *, request: UpdateStatusRequest
     ) -> UpdateStatusResponse:
-        """
-        Update credential status by setting the revocation value
-        """
+        """Update credential status by setting the revocation value"""
+
         return await self.client.update_status(
             request, metadata=self.build_metadata(request)
         )
@@ -62,8 +62,9 @@ class CredentialService(ServiceBase):
     async def create_proof(self, *, request: CreateProofRequest) -> CreateProofResponse:
         """
         Create a proof from a signed document that is a valid
-        verifiable credential and contains a signature from which a proof can be derived.
+         verifiable credential and contains a signature from which a proof can be derived.
         """
+
         return await self.client.create_proof(
             request, metadata=self.build_metadata(request)
         )
@@ -71,16 +72,16 @@ class CredentialService(ServiceBase):
     async def verify_proof(self, *, request: VerifyProofRequest) -> VerifyProofResponse:
         """
         Verifies a proof by checking the signature value, and if possible schema validation,
-        revocation status, and issuer status against a trust registry
+         revocation status, and issuer status against a trust registry
         """
+
         return await self.client.verify_proof(
             request, metadata=self.build_metadata(request)
         )
 
     async def send(self, *, request: SendRequest) -> SendResponse:
-        """
-        Sends a document directly to a user's email within the given ecosystem
-        """
+        """Sends a document directly to a user's email within the given ecosystem"""
+
         return await self.client.send(request, metadata=self.build_metadata(request))
 
 
