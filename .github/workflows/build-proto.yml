@@ -69,7 +69,9 @@ jobs:
           fi
           HeadRef="${{ github.head_ref }}"
           # If HeadRef null, make it `my` so it expands to `my-generated-protos`
-          ${HeadRef:=my}
+          if [ -z "$HeadRef" ]; then
+            HeadRef="my"
+          fi
           git checkout -b "$HeadRef-generated-protos"
           git add .
           git commit -m "Generated code from proto files"
