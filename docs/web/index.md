@@ -2,6 +2,8 @@
 
 The Trinsic Web SDK makes it easy to interact with the Trinsic API from any client-side web application. You can find the SDKs source on [Github](https://github.com/trinsic-id/sdk/tree/main/web).
 
+Hello
+
 ## Installation
 
 Install the package for Node or Browser from [npmjs.com <small>:material-open-in-new:</small>](https://www.npmjs.com/package/@trinsic/trinsic){target=\_blank}
@@ -9,147 +11,124 @@ Install the package for Node or Browser from [npmjs.com <small>:material-open-in
 === "Install"
 
 ```bash
-npm i @trinsic/trinsic
+npm install @trinsic/trinsic
 ```
 
-<!-- ## Configuration -->
+<!-- prettier-ignore-start -->
+## Configuration
 
-## Create new project
+<!-- prettier-ignore -->
+=== "Webpack 4"
+    You can find a [basic Webpack 4 sample here](https://github.com/trinsic-id/sdk-examples/tree/main/browser/basic-webpack-4).
 
-Let's create a new console app that we will use to add our sample code
+    The library works without any further configuration in Webpack 4.
 
-```bash
-mkdir web-sample && cd web-sample && npm init
-```
+    !!! info "Package import"
+        Import the library using `@trinsic/trinsic/lib/browser`.
 
-You can select all the defaults for the node project.
+=== "Create React App 4"
+    You can find a [basic Create React App 4 sample here](https://github.com/trinsic-id/sdk-examples/tree/main/browser/basic-create-react-app-4).
 
-Add the required dependencies
+    You will have to extend the Create React App Webpack configuration to allow the included `wasm` bundle to be loaded.
 
-```bash
-npm i @trinsic/trinsic
-```
+    !!! info "Package import"
+        Import the library using `@trinsic/trinsic/lib/browser`.
 
-```bash
-npm i --save-dev http-server webpack webpack-cli
-```
+    1. Install the `@craco/craco` package in case you're not yet using `craco`
+        ```bash
+        npm install @craco/craco --save-exact --save-dev
+        ```
+    1. Adjust your `package.json` scripts to the below:
+        ```json
+        "scripts": {
+            "start": "craco start",
+            "build": "craco build",
+            "test": "craco test",
+            "eject": "react-scripts eject"
+        }
+        ```
+    1. Add a `craco.config.js` file next to the `package.json` file with the following configuration:
+        ```js
+        const { addBeforeLoader, loaderByName } = require('@craco/craco');
+        module.exports = {
+            webpack: {
+                configure: (webpackConfig) => {
+                    const wasmExtensionRegExp = /\.wasm$/;
 
-### Configure Webpack
+                    webpackConfig.module.rules.forEach((rule) => {
+                        (rule.oneOf || []).forEach((oneOf) => {
+                        if (oneOf.loader && oneOf.loader.indexOf('file-loader') >= 0) {
+                            oneOf.exclude.push(wasmExtensionRegExp);
+                        }
+                        });
+                    });
 
-After installing the dependencies you'll need a configuration file for webpack.
-Create a file called webpack.config.js at the root of your project and then copy and paste this into that file
+                    return webpackConfig;
+                },
+            },
+        };
+        ```
 
-```js
-const path = require("path");
+=== "Webpack 5"
+    You can find a [basic Webpack 5 sample here](https://github.com/trinsic-id/sdk-examples/tree/main/browser/basic-webpack-5).
 
-module.exports = {
-    mode: "development",
-    entry: "./src/index.js",
-    output: {
-        path: path.resolve(__dirname, "./src"),
-        filename: "bundle.js",
-    },
-};
-```
+    !!! info "Package import"
+        Import the library using `@trinsic/trinsic/browser`.
 
-#### Configure Webpack for React
+    You will have to enable the `asyncWebAssembly` experiment in Webpack 5.
 
-If using React you may need to start your project with [craco](https://www.npmjs.com/package/@craco/craco)
-
-Install Craco
-
-```bash
-npm i @craco/craco
-```
-
-Next change your react scripts in your package.json file
-
-```json
-"scripts": {
--   "start": "react-scripts start",
-+   "start": "craco start",
--   "build": "react-scripts build",
-+   "build": "craco build"
--   "test": "react-scripts test",
-+   "test": "craco test"
-}
-```
-
-Finally you will need to add a craco configuration file called `craco.config.js` and add the following:
-
-```js
-// craco.config.js
-
-const { addBeforeLoader, loaderByName } = require("@craco/craco");
-
-module.exports = {
-    webpack: {
-        configure: (webpackConfig) => {
-            const wasmExtensionRegExp = /\.wasm$/;
-            webpackConfig.resolve.extensions.push(".wasm");
-
-            webpackConfig.module.rules.forEach((rule) => {
-                (rule.oneOf || []).forEach((oneOf) => {
-                    if (
-                        oneOf.loader &&
-                        oneOf.loader.indexOf("file-loader") >= 0
-                    ) {
-                        oneOf.exclude.push(wasmExtensionRegExp);
-                    }
-                });
-            });
-
-            const wasmLoader = {
-                test: /\.wasm$/,
-                exclude: /node_modules/,
-                loaders: ["wasm-loader"],
-            };
-
-            addBeforeLoader(
-                webpackConfig,
-                loaderByName("file-loader"),
-                wasmLoader
-            );
-
-            return webpackConfig;
+    1. Adjust your `webpack.config.js`:
+        ```js
+        experiments: {
+            asyncWebAssembly: true,
         },
-    },
-};
-```
+        ```
 
-This allows react loaders to properly load in some of our needed .wasm files.
+=== "Create React App 5"
+    You can find a [basic Create React App 5 sample here](https://github.com/trinsic-id/sdk-examples/tree/main/browser/basic-create-react-app-5).
 
-### Set up Website
+    !!! info "Package import"
+        Import the library using `@trinsic/trinsic/browser`.
 
-Create a simple html page with a script tag referencing the webpack bundle that will be built after completing the sample code. Note that you will not have the bundle.js file yet because it will be generated from the index.js file you create.
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Web Sample</title>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <meta name="description" content="" />
-    </head>
-    <body>
-        <h1>Web Sample</h1>
-        <div id="wallet"></div>
-    </body>
-    <script src="../bundle.js"></script>
-</html>
-```
+    You will have to extend the Create React App Webpack configuration to allow the included `wasm` bundle to be loaded.
 
-Your file structure should look like this
+    1. Install the `@craco/craco` dependency in case you're not yet using `craco`
+        ```bash
+        npm install @craco/craco --save-exact --save-dev
+        ```
+    1. Adjust your `package.json` scripts to the below:
+        ```json
+        "scripts": {
+            "start": "craco start",
+            "build": "craco build",
+            "test": "craco test",
+            "eject": "react-scripts eject"
+        }
+        ```
+    1. Add a `craco.config.js` file next to the `package.json` file with the following configuration:
+        ```js
+        module.exports = {
+            webpack: {
+                configure: (webpackConfig) => {
+                    webpackConfig.experiments = {
+                        asyncWebAssembly: true
+                    };
 
-```
-web-sample
-    src
-        index.html
-        index.js
-    package.json
-    webpack.config.js
-```
+                    const wasmExtensionRegExp = /\.wasm$/;
+                    webpackConfig.module.rules.forEach((rule) => {
+                        (rule.oneOf || []).forEach((oneOf) => {
+                            if (oneOf.type === "asset/resource") {
+                                oneOf.exclude.push(wasmExtensionRegExp);
+                            }
+                        });
+                    });
+                    return webpackConfig;
+                },
+            },
+        };
+        ```
+<!-- prettier-ignore-end -->
 
 ## Next Steps
 
