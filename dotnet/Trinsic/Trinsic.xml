@@ -1300,6 +1300,15 @@
             be wrapped manually.
             </summary>
         </member>
+        <member name="F:Trinsic.Services.Protobuf.Options.SdkTemplateOption.NoArgumentsFieldNumber">
+            <summary>Field number for the "no_arguments" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Protobuf.Options.SdkTemplateOption.NoArguments">
+            <summary>
+            Whether the SDK template generator should generate this method without arguments, eg
+            ProviderService.GetEcosystemInfo() where the request object is empty
+            </summary>
+        </member>
         <member name="T:Trinsic.Services.Provider.V1.ProviderReflection">
             <summary>Holder for reflection information generated from services/provider/v1/provider.proto</summary>
         </member>

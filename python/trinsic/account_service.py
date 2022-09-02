@@ -11,6 +11,7 @@ from trinsicokapi.proto.okapi.security.v1 import (
 
 from trinsic.proto.sdk.options.v1 import ServiceOptions
 from trinsic.proto.services.account.v1 import *
+from trinsic.security_providers import ITokenProvider
 from trinsic.service_base import ServiceBase
 
 
@@ -20,13 +21,14 @@ class AccountService(ServiceBase):
     def __init__(
         self,
         server_config: ServiceOptions = None,
+        token_provider: ITokenProvider = None,
     ):
         """
         Initialize a connection to the server.
         Args:
             server_config: The URL of the server, or a channel which encapsulates the connection already.
         """
-        super().__init__(server_config)
+        super().__init__(server_config, token_provider)
         self.client = AccountStub(super().channel)
 
     async def sign_in(self, *, request: SignInRequest = None) -> str:
@@ -39,7 +41,7 @@ class AccountService(ServiceBase):
             sign_in_request=request, metadata=self.build_metadata()
         )
         auth_token = base64.urlsafe_b64encode(bytes(response.profile)).decode("utf-8")
-        self.service_options.auth_token = auth_token
+        self.token_provider.save(auth_token)
         return auth_token
 
     @staticmethod
@@ -100,7 +102,12 @@ class AccountService(ServiceBase):
             LoginResponse with challenge
         """
         request = request or LoginRequest()
-        return await self.client.login(request, metadata=self.build_metadata())
+        response = await self.client.login(request, metadata=self.build_metadata())
+        if response.profile:
+            self.token_provider.save(
+                base64.urlsafe_b64encode(bytes(response.profile)).decode("utf8")
+            )
+        return response
 
     async def login_confirm(self, *, challenge: bytes, auth_code: str) -> str:
         """
@@ -129,7 +136,7 @@ class AccountService(ServiceBase):
         if response.profile.protection.enabled:
             auth_token = self.unprotect(profile=auth_token, security_code=auth_code)
 
-        self.service_options.auth_token = auth_token
+        self.token_provider.save(auth_token)
         return auth_token
 
     async def login_anonymous(self, *, ecosystem_id: string = None) -> string:
@@ -146,7 +153,7 @@ class AccountService(ServiceBase):
         response = await self.login(request=LoginRequest(ecosystem_id=ecosystem_id))
         auth_token = base64.urlsafe_b64encode(bytes(response.profile)).decode("utf-8")
 
-        self.service_options.auth_token = auth_token
+        self.token_provider.save(auth_token)
 
         return auth_token
 

@@ -1,5 +1,6 @@
 from trinsic.proto.sdk.options.v1 import ServiceOptions
 from trinsic.proto.services.universalwallet.v1 import *
+from trinsic.security_providers import ITokenProvider
 from trinsic.service_base import ServiceBase
 
 
@@ -8,13 +9,18 @@ class WalletService(ServiceBase):
     Wrapper for the [Wallet Service](/reference/services/wallet-service/)
     """
 
-    def __init__(self, *, server_config: ServiceOptions = None):
+    def __init__(
+        self,
+        *,
+        server_config: ServiceOptions = None,
+        token_provider: ITokenProvider = None
+    ):
         """
         Initialize a connection to the server.
         Args:
             server_config: The URL of the server, or a channel which encapsulates the connection already.
         """
-        super().__init__(server_config)
+        super().__init__(server_config, token_provider)
         self.client = UniversalWalletStub(super().channel)
 
     async def search_wallet(self, request: SearchRequest = None) -> SearchResponse:
