@@ -100,7 +100,6 @@ func (p *providerBase) CreateEcosystem(ctx context.Context, request *provider.Cr
 
 // UpdateEcosystem  Update an existing ecosystem
 func (p *providerBase) UpdateEcosystem(userContext context.Context, request *provider.UpdateEcosystemRequest) (*provider.UpdateEcosystemResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := p.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -114,7 +113,6 @@ func (p *providerBase) UpdateEcosystem(userContext context.Context, request *pro
 
 // GrantAuthorization  Grant user authorization to ecosystem resources
 func (p *providerBase) GrantAuthorization(userContext context.Context, request *provider.GrantAuthorizationRequest) (*provider.GrantAuthorizationResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := p.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -128,7 +126,6 @@ func (p *providerBase) GrantAuthorization(userContext context.Context, request *
 
 // RevokeAuthorization  Revoke user authorization to ecosystem resources
 func (p *providerBase) RevokeAuthorization(userContext context.Context, request *provider.RevokeAuthorizationRequest) (*provider.RevokeAuthorizationResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := p.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -142,7 +139,6 @@ func (p *providerBase) RevokeAuthorization(userContext context.Context, request 
 
 // GetAuthorizations  Retreive the list of permissions for this particular account/ecosystem
 func (p *providerBase) GetAuthorizations(userContext context.Context, request *provider.GetAuthorizationsRequest) (*provider.GetAuthorizationsResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := p.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -156,7 +152,6 @@ func (p *providerBase) GetAuthorizations(userContext context.Context, request *p
 
 // AddWebhook  Add a webhook endpoint to the ecosystem
 func (p *providerBase) AddWebhook(userContext context.Context, request *provider.AddWebhookRequest) (*provider.AddWebhookResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := p.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -170,7 +165,6 @@ func (p *providerBase) AddWebhook(userContext context.Context, request *provider
 
 // DeleteWebhook  Delete a webhook endpoint from the ecosystem
 func (p *providerBase) DeleteWebhook(userContext context.Context, request *provider.DeleteWebhookRequest) (*provider.DeleteWebhookResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := p.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -184,7 +178,6 @@ func (p *providerBase) DeleteWebhook(userContext context.Context, request *provi
 
 // EcosystemInfo  Get ecosystem information
 func (p *providerBase) EcosystemInfo(userContext context.Context, request *provider.EcosystemInfoRequest) (*provider.EcosystemInfoResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := p.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -199,7 +192,6 @@ func (p *providerBase) EcosystemInfo(userContext context.Context, request *provi
 // GenerateToken  Generates an unprotected authentication token that can be used to
 // configure server side applications
 func (p *providerBase) GenerateToken(userContext context.Context, request *provider.GenerateTokenRequest) (*provider.GenerateTokenResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := p.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -213,7 +205,6 @@ func (p *providerBase) GenerateToken(userContext context.Context, request *provi
 
 // Invite  Invite a user to the ecosystem
 func (p *providerBase) Invite(userContext context.Context, request *provider.InviteRequest) (*provider.InviteResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := p.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -227,7 +218,6 @@ func (p *providerBase) Invite(userContext context.Context, request *provider.Inv
 
 // InvitationStatus  Check the status of an invitation
 func (p *providerBase) InvitationStatus(userContext context.Context, request *provider.InvitationStatusRequest) (*provider.InvitationStatusResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := p.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -241,7 +231,6 @@ func (p *providerBase) InvitationStatus(userContext context.Context, request *pr
 
 // GetOberonKey  Returns the public key being used to create/verify oberon tokens
 func (p *providerBase) GetOberonKey(userContext context.Context, request *provider.GetOberonKeyRequest) (*provider.GetOberonKeyResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := p.GetMetadataContext(userContext, nil)
 	if err != nil {
 		return nil, err
@@ -255,7 +244,6 @@ func (p *providerBase) GetOberonKey(userContext context.Context, request *provid
 
 // GetEventToken  Generate a signed token (JWT) that can be used to connect to the message bus
 func (p *providerBase) GetEventToken(userContext context.Context, request *provider.GetEventTokenRequest) (*provider.GetEventTokenResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := p.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -269,7 +257,6 @@ func (p *providerBase) GetEventToken(userContext context.Context, request *provi
 
 // RetrieveVerificationRecord  Retrieve a random hash TXT that can be used to verify domain ownership
 func (p *providerBase) RetrieveVerificationRecord(userContext context.Context, request *provider.RetrieveVerificationRecordRequest) (*provider.RetrieveVerificationRecordResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := p.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -283,7 +270,6 @@ func (p *providerBase) RetrieveVerificationRecord(userContext context.Context, r
 
 // RefreshVerificationStatus  Call to verif
 func (p *providerBase) RefreshVerificationStatus(userContext context.Context, request *provider.RefreshVerificationStatusRequest) (*provider.RefreshVerificationStatusResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := p.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err

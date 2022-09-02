@@ -57,7 +57,7 @@ type AccountService interface {
 	// target: /home/runner/work/sdk/sdk/go/services/account_service.go
 
 	// Info  Get account information
-	Info(userContext context.Context, request *account.AccountInfoRequest) (*account.AccountInfoResponse, error)
+	Info(userContext context.Context) (*account.AccountInfoResponse, error)
 	// ListDevices  List all connected devices
 	ListDevices(userContext context.Context, request *account.ListDevicesRequest) (*account.ListDevicesResponse, error)
 	// RevokeDevice  Revoke device access to the account's cloud wallet
@@ -289,8 +289,8 @@ func ProfileFromToken(token string) (*account.AccountProfile, error) {
 // target: /home/runner/work/sdk/sdk/go/services/account_service.go
 
 // Info  Get account information
-func (a *accountBase) Info(userContext context.Context, request *account.AccountInfoRequest) (*account.AccountInfoResponse, error) {
-	// TODO - Handle a flag for the metadata context
+func (a *accountBase) Info(userContext context.Context) (*account.AccountInfoResponse, error) {
+	request := &account.AccountInfoRequest{}
 	md, err := a.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -304,7 +304,6 @@ func (a *accountBase) Info(userContext context.Context, request *account.Account
 
 // ListDevices  List all connected devices
 func (a *accountBase) ListDevices(userContext context.Context, request *account.ListDevicesRequest) (*account.ListDevicesResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := a.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -318,7 +317,6 @@ func (a *accountBase) ListDevices(userContext context.Context, request *account.
 
 // RevokeDevice  Revoke device access to the account's cloud wallet
 func (a *accountBase) RevokeDevice(userContext context.Context, request *account.RevokeDeviceRequest) (*account.RevokeDeviceResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := a.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -332,7 +330,6 @@ func (a *accountBase) RevokeDevice(userContext context.Context, request *account
 
 // AuthorizeWebhook  Authorize Ecosystem to receive webhook events
 func (a *accountBase) AuthorizeWebhook(userContext context.Context, request *account.AuthorizeWebhookRequest) (*account.AuthorizeWebhookResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := a.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err

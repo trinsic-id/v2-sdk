@@ -37,39 +37,34 @@ class WalletService(ServiceBase):
     # target: /home/runner/work/sdk/sdk/python/trinsic/wallet_service.py
 
     async def get_item(self, *, request: GetItemRequest) -> GetItemResponse:
-        """
-        Retrieve an item from the wallet with a given item identifier
-        """
+        """Retrieve an item from the wallet with a given item identifier"""
+
         return await self.client.get_item(
             request, metadata=self.build_metadata(request)
         )
 
     async def search(self, *, request: SearchRequest) -> SearchResponse:
-        """
-        Search the wallet using a SQL syntax
-        """
+        """Search the wallet using a SQL syntax"""
+
         return await self.client.search(request, metadata=self.build_metadata(request))
 
     async def insert_item(self, *, request: InsertItemRequest) -> InsertItemResponse:
-        """
-        Insert an item into the wallet
-        """
+        """Insert an item into the wallet"""
+
         return await self.client.insert_item(
             request, metadata=self.build_metadata(request)
         )
 
     async def update_item(self, *, request: UpdateItemRequest) -> UpdateItemResponse:
-        """
-        Update an item in the wallet
-        """
+        """Update an item in the wallet"""
+
         return await self.client.update_item(
             request, metadata=self.build_metadata(request)
         )
 
     async def delete_item(self, *, request: DeleteItemRequest) -> DeleteItemResponse:
-        """
-        Delete an item from the wallet permanently
-        """
+        """Delete an item from the wallet permanently"""
+
         return await self.client.delete_item(
             request, metadata=self.build_metadata(request)
         )

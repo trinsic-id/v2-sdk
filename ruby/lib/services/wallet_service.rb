@@ -27,35 +27,35 @@ module Trinsic
 
     #  Retrieve an item from the wallet with a given item identifier
     # @param [GetItemRequest] request
-    # @return [GetItemResponse]
+    # @return [Services::Universalwallet::V1::GetItemResponse]
     def get_item(request)
       @client.get_item(request, metadata: metadata(request))
     end
 
     #  Search the wallet using a SQL syntax
     # @param [SearchRequest] request
-    # @return [SearchResponse]
+    # @return [Services::Universalwallet::V1::SearchResponse]
     def search(request)
       @client.search(request, metadata: metadata(request))
     end
 
     #  Insert an item into the wallet
     # @param [InsertItemRequest] request
-    # @return [InsertItemResponse]
+    # @return [Services::Universalwallet::V1::InsertItemResponse]
     def insert_item(request)
       @client.insert_item(request, metadata: metadata(request))
     end
 
     #  Update an item in the wallet
     # @param [UpdateItemRequest] request
-    # @return [UpdateItemResponse]
+    # @return [Services::Universalwallet::V1::UpdateItemResponse]
     def update_item(request)
       @client.update_item(request, metadata: metadata(request))
     end
 
     #  Delete an item from the wallet permanently
     # @param [DeleteItemRequest] request
-    # @return [DeleteItemResponse]
+    # @return [Services::Universalwallet::V1::DeleteItemResponse]
     def delete_item(request)
       @client.delete_item(request, metadata: metadata(request))
     end

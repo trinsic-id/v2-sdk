@@ -28,13 +28,11 @@ class ProviderServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(
   @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun updateEcosystem(request: UpdateEcosystemRequest): UpdateEcosystemResponse {
     /** Update an existing ecosystem */
-    // TODO - Support metadata anonymous
     return withMetadata(stub, request).updateEcosystem(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun grantAuthorization(request: GrantAuthorizationRequest): GrantAuthorizationResponse {
     /** Grant user authorization to ecosystem resources */
-    // TODO - Support metadata anonymous
     return withMetadata(stub, request).grantAuthorization(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
@@ -42,31 +40,26 @@ class ProviderServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(
       request: RevokeAuthorizationRequest
   ): RevokeAuthorizationResponse {
     /** Revoke user authorization to ecosystem resources */
-    // TODO - Support metadata anonymous
     return withMetadata(stub, request).revokeAuthorization(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun getAuthorizations(request: GetAuthorizationsRequest): GetAuthorizationsResponse {
     /** Retreive the list of permissions for this particular account/ecosystem */
-    // TODO - Support metadata anonymous
     return withMetadata(stub, request).getAuthorizations(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun addWebhook(request: AddWebhookRequest): AddWebhookResponse {
     /** Add a webhook endpoint to the ecosystem */
-    // TODO - Support metadata anonymous
     return withMetadata(stub, request).addWebhook(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun deleteWebhook(request: DeleteWebhookRequest): DeleteWebhookResponse {
     /** Delete a webhook endpoint from the ecosystem */
-    // TODO - Support metadata anonymous
     return withMetadata(stub, request).deleteWebhook(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun ecosystemInfo(request: EcosystemInfoRequest): EcosystemInfoResponse {
     /** Get ecosystem information */
-    // TODO - Support metadata anonymous
     return withMetadata(stub, request).ecosystemInfo(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
@@ -75,31 +68,26 @@ class ProviderServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(
      * Generates an unprotected authentication token that can be used to configure server side
      * applications
      */
-    // TODO - Support metadata anonymous
     return withMetadata(stub, request).generateToken(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun invite(request: InviteRequest): InviteResponse {
     /** Invite a user to the ecosystem */
-    // TODO - Support metadata anonymous
     return withMetadata(stub, request).invite(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun invitationStatus(request: InvitationStatusRequest): InvitationStatusResponse {
     /** Check the status of an invitation */
-    // TODO - Support metadata anonymous
     return withMetadata(stub, request).invitationStatus(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun getOberonKey(request: GetOberonKeyRequest): GetOberonKeyResponse {
     /** Returns the public key being used to create/verify oberon tokens */
-    // TODO - Support metadata anonymous
     return withMetadata(stub, request).getOberonKey(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun getEventToken(request: GetEventTokenRequest): GetEventTokenResponse {
     /** Generate a signed token (JWT) that can be used to connect to the message bus */
-    // TODO - Support metadata anonymous
     return withMetadata(stub, request).getEventToken(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
@@ -107,7 +95,6 @@ class ProviderServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(
       request: RetrieveVerificationRecordRequest
   ): RetrieveVerificationRecordResponse {
     /** Retrieve a random hash TXT that can be used to verify domain ownership */
-    // TODO - Support metadata anonymous
     return withMetadata(stub, request).retrieveVerificationRecord(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
@@ -115,7 +102,6 @@ class ProviderServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(
       request: RefreshVerificationStatusRequest
   ): RefreshVerificationStatusResponse {
     /** Call to verif */
-    // TODO - Support metadata anonymous
     return withMetadata(stub, request).refreshVerificationStatus(request)
   }
   // END Code generated by protoc-gen-trinsic. DO NOT EDIT.
