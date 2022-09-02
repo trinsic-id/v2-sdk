@@ -85,11 +85,18 @@ pub struct Ecosystem {
     #[prost(string, tag = "3")]
     pub description: ::prost::alloc::string::String,
     /// External URL associated with the organization or ecosystem entity
+    #[deprecated]
     #[prost(string, tag = "4")]
     pub uri: ::prost::alloc::string::String,
     /// Configured webhooks, if any
     #[prost(message, repeated, tag = "5")]
     pub webhooks: ::prost::alloc::vec::Vec<WebhookConfig>,
+    /// Display details
+    #[prost(message, optional, tag = "6")]
+    pub display: ::core::option::Option<EcosystemDisplay>,
+    /// Domain
+    #[prost(string, tag = "7")]
+    pub domain: ::prost::alloc::string::String,
 }
 /// Webhook configured on an ecosystem
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
@@ -133,11 +140,15 @@ pub struct CreateEcosystemRequest {
     #[prost(string, tag = "2")]
     pub description: ::prost::alloc::string::String,
     /// External URL associated with your organization or ecosystem entity
+    #[deprecated]
     #[prost(string, tag = "3")]
     pub uri: ::prost::alloc::string::String,
     /// The account details of the owner of the ecosystem
     #[prost(message, optional, tag = "4")]
     pub details: ::core::option::Option<super::super::account::v1::AccountDetails>,
+    /// New domain URL
+    #[prost(string, tag = "5")]
+    pub domain: ::prost::alloc::string::String,
 }
 /// Response to `CreateEcosystemRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
@@ -159,8 +170,34 @@ pub struct UpdateEcosystemRequest {
     #[prost(string, tag = "1")]
     pub description: ::prost::alloc::string::String,
     /// New external URL associated with the organization or ecosystem entity
+    #[deprecated]
     #[prost(string, tag = "2")]
     pub uri: ::prost::alloc::string::String,
+    /// New domain URL
+    #[prost(string, tag = "3")]
+    pub domain: ::prost::alloc::string::String,
+    /// New name
+    #[prost(string, tag = "4")]
+    pub name: ::prost::alloc::string::String,
+    /// Display details
+    #[prost(message, optional, tag = "5")]
+    pub display: ::core::option::Option<EcosystemDisplay>,
+}
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct EcosystemDisplay {
+    #[prost(message, optional, tag = "1")]
+    pub dark: ::core::option::Option<EcosystemDisplayDetails>,
+    #[prost(message, optional, tag = "2")]
+    pub light: ::core::option::Option<EcosystemDisplayDetails>,
+}
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct EcosystemDisplayDetails {
+    /// string id = 1;
+    /// string name = 2;
+    #[prost(string, tag = "3")]
+    pub logo_url: ::prost::alloc::string::String,
+    #[prost(string, tag = "4")]
+    pub color: ::prost::alloc::string::String,
 }
 /// Response to `UpdateEcosystemRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
@@ -254,6 +291,27 @@ pub struct GetEventTokenResponse {
     /// JWT bound to the public key provided in `GetEventTokenRequest`
     #[prost(string, tag = "1")]
     pub token: ::prost::alloc::string::String,
+}
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct RetrieveVerificationRecordRequest {}
+/// Response message containing a TXT record content for domain url verification
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct RetrieveVerificationRecordResponse {
+    /// TXT code to use for domain verification
+    #[prost(string, tag = "1")]
+    pub verification_txt: ::prost::alloc::string::String,
+}
+/// TODO - Should we allow specifying which ecosystem to use?
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct RefreshVerificationStatusRequest {}
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct RefreshVerificationStatusResponse {
+    /// Domain URL verified
+    #[prost(string, tag = "1")]
+    pub domain: ::prost::alloc::string::String,
+    /// Specifies if the above `domain` was successfully verified
+    #[prost(bool, tag = "2")]
+    pub domain_verified: bool,
 }
 /// Grant permissions to a resource or path in the ecosystem
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
@@ -577,6 +635,32 @@ pub mod provider_client {
                 .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/GetEventToken");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        /// Retrieve a random hash TXT that can be used to verify domain ownership
+        pub async fn retrieve_verification_record(
+            &mut self,
+            request: impl tonic::IntoRequest<super::RetrieveVerificationRecordRequest>,
+        ) -> Result<tonic::Response<super::RetrieveVerificationRecordResponse>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/RetrieveVerificationRecord");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        /// Call to verif
+        pub async fn refresh_verification_status(
+            &mut self,
+            request: impl tonic::IntoRequest<super::RefreshVerificationStatusRequest>,
+        ) -> Result<tonic::Response<super::RefreshVerificationStatusResponse>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/RefreshVerificationStatus");
             self.inner.unary(request.into_request(), path, codec).await
         }
     }

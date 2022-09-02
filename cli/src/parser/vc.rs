@@ -2,17 +2,17 @@ use crate::error::Error;
 use clap::ArgMatches;
 
 pub(crate) fn parse(args: &ArgMatches) -> Result<Command, Error> {
-    if args.is_present("issue") {
+    if args.subcommand_matches("issue").is_some() {
         issue(&args.subcommand_matches("issue").expect("Error parsing request"))
-    } else if args.is_present("issue-from-template") {
+    } else if args.subcommand_matches("issue-from-template").is_some() {
         issue_from_template(&args.subcommand_matches("issue-from-template").expect("Error parsing request"))
-    } else if args.is_present("get-status") {
+    } else if args.subcommand_matches("get-status").is_some() {
         get_status(&args.subcommand_matches("get-status").expect("Error parsing request"))
-    } else if args.is_present("update-status") {
+    } else if args.subcommand_matches("update-status").is_some() {
         update_status(&args.subcommand_matches("update-status").expect("Error parsing request"))
-    } else if args.is_present("create-proof") {
+    } else if args.subcommand_matches("create-proof").is_some() {
         create_proof(&args.subcommand_matches("create-proof").expect("Error parsing request"))
-    } else if args.is_present("verify-proof") {
+    } else if args.subcommand_matches("verify-proof").is_some() {
         verify_proof(&args.subcommand_matches("verify-proof").expect("Error parsing request"))
     } else {
         Err(Error::MissingArguments)

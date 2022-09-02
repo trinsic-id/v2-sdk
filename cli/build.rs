@@ -22,7 +22,6 @@ fn main() {
         .compile(
             &[
                 "../proto/sdk/options/v1/options.proto",
-                "../proto/services/debug/v1/debug.proto",
                 "../proto/services/common/v1/common.proto",
                 "../proto/services/verifiable-credentials/v1/verifiable-credentials.proto",
                 "../proto/services/verifiable-credentials/templates/v1/templates.proto",
@@ -39,7 +38,6 @@ fn main() {
     move_file!("./src/proto/google.protobuf.rs", "./src/proto/google/protobuf/mod.rs");
     move_file!("./src/proto/sdk.options.v1.rs", "./src/proto/sdk/options/v1/mod.rs");
     move_file!("./src/proto/services.common.v1.rs", "./src/proto/services/common/v1/mod.rs");
-    move_file!("./src/proto/services.debug.v1.rs", "./src/proto/services/debug/v1/mod.rs");
     move_file!("./src/proto/services.provider.v1.rs", "./src/proto/services/provider/v1/mod.rs");
     move_file!("./src/proto/services.account.v1.rs", "./src/proto/services/account/v1/mod.rs");
     move_file!("./src/proto/services.trustregistry.v1.rs", "./src/proto/services/trustregistry/v1/mod.rs");

@@ -78,17 +78,17 @@ pub struct GetMembershipStatusArgs {
 pub struct FetchDataArgs {}
 
 pub(crate) fn parse(args: &ArgMatches) -> Result<TrustRegistryCommand, Error> {
-    if args.is_present("search") {
+    if args.subcommand_matches("search").is_some() {
         search(&args.subcommand_matches("search").expect("Error parsing request"))
-    } else if args.is_present("register-member") {
+    } else if args.subcommand_matches("register-member").is_some() {
         register_member(&args.subcommand_matches("register-member").expect("Error parsing request"))
-    } else if args.is_present("unregister-member") {
+    } else if args.subcommand_matches("unregister-member").is_some() {
         unregister_member(&args.subcommand_matches("unregister-member").expect("Error parsing request"))
-    } else if args.is_present("get-membership-status") {
+    } else if args.subcommand_matches("get-membership-status").is_some() {
         get_status(&args.subcommand_matches("get-membership-status").expect("Error parsing request"))
-    } else if args.is_present("add-framework") {
+    } else if args.subcommand_matches("add-framework").is_some() {
         add_framework(&args.subcommand_matches("add-framework").expect("Error parsing request"))
-    } else if args.is_present("remove-framework") {
+    } else if args.subcommand_matches("remove-framework").is_some() {
         remove_framework(&args.subcommand_matches("remove-framework").expect("Error parsing request"))
     } else {
         Err(Error::MissingArguments)

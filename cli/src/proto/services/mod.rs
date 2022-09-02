@@ -1,6 +1,5 @@
 pub mod account;
 pub mod common;
-pub mod debug;
 pub mod provider;
 pub mod trustregistry;
 pub mod universalwallet;

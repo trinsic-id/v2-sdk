@@ -1,5 +1,6 @@
 use std::fmt::Display;
 
+use clap::parser::MatchesError;
 use serde::{Deserialize, Serialize};
 use tonic::Status;
 
@@ -23,6 +24,12 @@ impl From<toml::ser::Error> for Error {
 impl From<toml::de::Error> for Error {
     fn from(_: toml::de::Error) -> Self {
         Error::SerializationError
+    }
+}
+
+impl From<MatchesError> for Error {
+    fn from(_: MatchesError) -> Self {
+        Error::UnknownCommand
     }
 }
 

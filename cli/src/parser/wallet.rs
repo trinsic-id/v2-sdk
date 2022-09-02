@@ -2,13 +2,13 @@ use crate::error::Error;
 use clap::ArgMatches;
 
 pub(crate) fn parse(args: &ArgMatches) -> Result<Command, Error> {
-    if args.is_present("search") {
+    if args.subcommand_matches("search").is_some() {
         return search(&args.subcommand_matches("search").expect("Error parsing request"));
-    } else if args.is_present("insert-item") {
+    } else if args.subcommand_matches("insert-item").is_some() {
         return insert_item(&args.subcommand_matches("insert-item").expect("Error parsing request"));
-    } else if args.is_present("delete-item") {
+    } else if args.subcommand_matches("delete-item").is_some() {
         return delete_item(&args.subcommand_matches("delete-item").expect("Error parsing request"));
-    } else if args.is_present("send") {
+    } else if args.subcommand_matches("send").is_some() {
         return send(&args.subcommand_matches("send").expect("Error parsing request"));
     } else {
         Err(Error::MissingArguments)

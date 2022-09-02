@@ -104,15 +104,15 @@ pub fn to_map(map: HashMap<String, Field>) -> HashMap<String, ProtoField> {
 }
 
 pub(crate) fn parse(args: &ArgMatches) -> Result<TemplateCommand, Error> {
-    if args.is_present("create") {
+    if args.subcommand_matches("create").is_some() {
         create(args.subcommand_matches("create").ok_or(Error::MissingArguments)?)
-    } else if args.is_present("get") {
+    } else if args.subcommand_matches("get").is_some() {
         get(args.subcommand_matches("get").ok_or(Error::MissingArguments)?)
-    } else if args.is_present("list") {
+    } else if args.subcommand_matches("list").is_some() {
         list(args.subcommand_matches("list").ok_or(Error::MissingArguments)?)
-    } else if args.is_present("search") {
+    } else if args.subcommand_matches("search").is_some() {
         search(args.subcommand_matches("search").ok_or(Error::MissingArguments)?)
-    } else if args.is_present("delete") {
+    } else if args.subcommand_matches("delete").is_some() {
         delete(args.subcommand_matches("delete").ok_or(Error::MissingArguments)?)
     } else {
         Err(Error::MissingArguments)
