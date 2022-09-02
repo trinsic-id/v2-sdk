@@ -4,12 +4,13 @@ We're using [mkdocs](https://www.mkdocs.org/) with [`mkdocs-material`](https://s
 
 ### Dependencies
 
-- the gitpod environment is already set up with everything need to generate the documentation site.
+- The gitpod environment is already set up with everything need to generate the documentation site.
 - Install the necessary `protoc` plugins and make them available on your PATH
   - `go install github.com/trinsic-id/protoc-gen-json@latest`
   - `go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest`
-- Install the requirements using `pip install -r requirements.txt`
+- Install the requirements using `pip install -r docs/requirements.txt`
 - Install the python SDK requirements (required for `mkdocstrings` which uses introspection) using `pip install -r python/requirements.txt`
+  - If you get the error that it is missing the `poetry` module, run  `pip install -U poetry`
 - https://www.mkdocs.org/#installation
 - https://squidfunk.github.io/mkdocs-material/getting-started/#installation
 - https://github.com/rnorth/mkdocs-codeinclude-plugin
