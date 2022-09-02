@@ -15,9 +15,10 @@ const SdkTemplateOption$json = const {
   '2': const [
     const {'1': 'anonymous', '3': 1, '4': 1, '5': 8, '10': 'anonymous'},
     const {'1': 'ignore', '3': 2, '4': 1, '5': 8, '10': 'ignore'},
+    const {'1': 'no_arguments', '3': 3, '4': 1, '5': 8, '10': 'noArguments'},
   ],
 };
 
 /// Descriptor for `SdkTemplateOption`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List sdkTemplateOptionDescriptor = $convert.base64Decode(
-    'ChFTZGtUZW1wbGF0ZU9wdGlvbhIcCglhbm9ueW1vdXMYASABKAhSCWFub255bW91cxIWCgZpZ25vcmUYAiABKAhSBmlnbm9yZQ==');
+    'ChFTZGtUZW1wbGF0ZU9wdGlvbhIcCglhbm9ueW1vdXMYASABKAhSCWFub255bW91cxIWCgZpZ25vcmUYAiABKAhSBmlnbm9yZRIhCgxub19hcmd1bWVudHMYAyABKAhSC25vQXJndW1lbnRz');

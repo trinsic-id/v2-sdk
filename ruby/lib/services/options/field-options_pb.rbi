@@ -30,12 +30,14 @@ class Services::Options::SdkTemplateOption
   sig do
     params(
       anonymous: T.nilable(T::Boolean),
-      ignore: T.nilable(T::Boolean)
+      ignore: T.nilable(T::Boolean),
+      no_arguments: T.nilable(T::Boolean)
     ).void
   end
   def initialize(
     anonymous: false,
-    ignore: false
+    ignore: false,
+    no_arguments: false
   )
   end
 
@@ -61,6 +63,18 @@ class Services::Options::SdkTemplateOption
 
   sig { void }
   def clear_ignore
+  end
+
+  sig { returns(T::Boolean) }
+  def no_arguments
+  end
+
+  sig { params(value: T::Boolean).void }
+  def no_arguments=(value)
+  end
+
+  sig { void }
+  def clear_no_arguments
   end
 
   sig { params(field: String).returns(T.untyped) }

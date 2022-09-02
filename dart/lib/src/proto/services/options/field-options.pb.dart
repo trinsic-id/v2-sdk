@@ -29,12 +29,18 @@ class SdkTemplateOption extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'ignore')
+    ..aOB(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'noArguments')
     ..hasRequiredFields = false;
 
   SdkTemplateOption._() : super();
   factory SdkTemplateOption({
     $core.bool? anonymous,
     $core.bool? ignore,
+    $core.bool? noArguments,
   }) {
     final _result = create();
     if (anonymous != null) {
@@ -42,6 +48,9 @@ class SdkTemplateOption extends $pb.GeneratedMessage {
     }
     if (ignore != null) {
       _result.ignore = ignore;
+    }
+    if (noArguments != null) {
+      _result.noArguments = noArguments;
     }
     return _result;
   }
@@ -95,6 +104,18 @@ class SdkTemplateOption extends $pb.GeneratedMessage {
   $core.bool hasIgnore() => $_has(1);
   @$pb.TagNumber(2)
   void clearIgnore() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.bool get noArguments => $_getBF(2);
+  @$pb.TagNumber(3)
+  set noArguments($core.bool v) {
+    $_setBool(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasNoArguments() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearNoArguments() => clearField(3);
 }
 
 class Field_options {

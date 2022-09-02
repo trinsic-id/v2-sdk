@@ -55,6 +55,11 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
               ignore_ = input.readBool();
               break;
             }
+          case 24:
+            {
+              noArguments_ = input.readBool();
+              break;
+            }
           default:
             {
               if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
@@ -129,6 +134,25 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
     return ignore_;
   }
 
+  public static final int NO_ARGUMENTS_FIELD_NUMBER = 3;
+  private boolean noArguments_;
+  /**
+   *
+   *
+   * <pre>
+   * Whether the SDK template generator should generate this method without arguments, eg
+   * ProviderService.GetEcosystemInfo() where the request object is empty
+   * </pre>
+   *
+   * <code>bool no_arguments = 3;</code>
+   *
+   * @return The noArguments.
+   */
+  @java.lang.Override
+  public boolean getNoArguments() {
+    return noArguments_;
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -149,6 +173,9 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
     if (ignore_ != false) {
       output.writeBool(2, ignore_);
     }
+    if (noArguments_ != false) {
+      output.writeBool(3, noArguments_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -163,6 +190,9 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
     }
     if (ignore_ != false) {
       size += com.google.protobuf.CodedOutputStream.computeBoolSize(2, ignore_);
+    }
+    if (noArguments_ != false) {
+      size += com.google.protobuf.CodedOutputStream.computeBoolSize(3, noArguments_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -182,6 +212,7 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
 
     if (getAnonymous() != other.getAnonymous()) return false;
     if (getIgnore() != other.getIgnore()) return false;
+    if (getNoArguments() != other.getNoArguments()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -197,6 +228,8 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getAnonymous());
     hash = (37 * hash) + IGNORE_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getIgnore());
+    hash = (37 * hash) + NO_ARGUMENTS_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getNoArguments());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -338,6 +371,8 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
 
       ignore_ = false;
 
+      noArguments_ = false;
+
       return this;
     }
 
@@ -367,6 +402,7 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
           new trinsic.services.protobuf.options.SdkTemplateOption(this);
       result.anonymous_ = anonymous_;
       result.ignore_ = ignore_;
+      result.noArguments_ = noArguments_;
       onBuilt();
       return result;
     }
@@ -422,6 +458,9 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
       }
       if (other.getIgnore() != false) {
         setIgnore(other.getIgnore());
+      }
+      if (other.getNoArguments() != false) {
+        setNoArguments(other.getNoArguments());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -559,6 +598,61 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
     public Builder clearIgnore() {
 
       ignore_ = false;
+      onChanged();
+      return this;
+    }
+
+    private boolean noArguments_;
+    /**
+     *
+     *
+     * <pre>
+     * Whether the SDK template generator should generate this method without arguments, eg
+     * ProviderService.GetEcosystemInfo() where the request object is empty
+     * </pre>
+     *
+     * <code>bool no_arguments = 3;</code>
+     *
+     * @return The noArguments.
+     */
+    @java.lang.Override
+    public boolean getNoArguments() {
+      return noArguments_;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Whether the SDK template generator should generate this method without arguments, eg
+     * ProviderService.GetEcosystemInfo() where the request object is empty
+     * </pre>
+     *
+     * <code>bool no_arguments = 3;</code>
+     *
+     * @param value The noArguments to set.
+     * @return This builder for chaining.
+     */
+    public Builder setNoArguments(boolean value) {
+
+      noArguments_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Whether the SDK template generator should generate this method without arguments, eg
+     * ProviderService.GetEcosystemInfo() where the request object is empty
+     * </pre>
+     *
+     * <code>bool no_arguments = 3;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearNoArguments() {
+
+      noArguments_ = false;
       onChanged();
       return this;
     }

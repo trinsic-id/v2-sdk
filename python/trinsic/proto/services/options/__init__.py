@@ -21,3 +21,10 @@ class SdkTemplateOption(betterproto.Message):
     Whether the SDK template generator should ignore this method. This method
     will be wrapped manually.
     """
+
+    no_arguments: bool = betterproto.bool_field(3)
+    """
+    Whether the SDK template generator should generate this method without
+    arguments, eg ProviderService.GetEcosystemInfo() where the request object
+    is empty
+    """

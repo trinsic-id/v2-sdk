@@ -12,10 +12,15 @@ export interface SdkTemplateOption {
    * be wrapped manually.
    */
   ignore: boolean;
+  /**
+   * Whether the SDK template generator should generate this method without arguments, eg
+   * ProviderService.GetEcosystemInfo() where the request object is empty
+   */
+  noArguments: boolean;
 }
 
 function createBaseSdkTemplateOption(): SdkTemplateOption {
-  return { anonymous: false, ignore: false };
+  return { anonymous: false, ignore: false, noArguments: false };
 }
 
 export const SdkTemplateOption = {
@@ -28,6 +33,9 @@ export const SdkTemplateOption = {
     }
     if (message.ignore === true) {
       writer.uint32(16).bool(message.ignore);
+    }
+    if (message.noArguments === true) {
+      writer.uint32(24).bool(message.noArguments);
     }
     return writer;
   },
@@ -45,6 +53,9 @@ export const SdkTemplateOption = {
         case 2:
           message.ignore = reader.bool();
           break;
+        case 3:
+          message.noArguments = reader.bool();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -57,6 +68,9 @@ export const SdkTemplateOption = {
     return {
       anonymous: isSet(object.anonymous) ? Boolean(object.anonymous) : false,
       ignore: isSet(object.ignore) ? Boolean(object.ignore) : false,
+      noArguments: isSet(object.noArguments)
+        ? Boolean(object.noArguments)
+        : false,
     };
   },
 
@@ -64,6 +78,8 @@ export const SdkTemplateOption = {
     const obj: any = {};
     message.anonymous !== undefined && (obj.anonymous = message.anonymous);
     message.ignore !== undefined && (obj.ignore = message.ignore);
+    message.noArguments !== undefined &&
+      (obj.noArguments = message.noArguments);
     return obj;
   },
 
@@ -71,6 +87,7 @@ export const SdkTemplateOption = {
     const message = createBaseSdkTemplateOption();
     message.anonymous = object.anonymous ?? false;
     message.ignore = object.ignore ?? false;
+    message.noArguments = object.noArguments ?? false;
     return message;
   },
 };
