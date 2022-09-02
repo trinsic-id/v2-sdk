@@ -88,28 +88,29 @@ module Trinsic
 
     #  Get account information
     # @param [AccountInfoRequest] request
-    # @return [AccountInfoResponse]
-    def info(request)
+    # @return [Services::Account::V1::AccountInfoResponse]
+    def info
+      request = Services::Account::V1::AccountInfoRequest.new
       @client.info(request, metadata: metadata(request))
     end
 
     #  List all connected devices
     # @param [ListDevicesRequest] request
-    # @return [ListDevicesResponse]
+    # @return [Services::Account::V1::ListDevicesResponse]
     def list_devices(request)
       @client.list_devices(request, metadata: metadata(request))
     end
 
     #  Revoke device access to the account's cloud wallet
     # @param [RevokeDeviceRequest] request
-    # @return [RevokeDeviceResponse]
+    # @return [Services::Account::V1::RevokeDeviceResponse]
     def revoke_device(request)
       @client.revoke_device(request, metadata: metadata(request))
     end
 
     #  Authorize Ecosystem to receive webhook events
     # @param [AuthorizeWebhookRequest] request
-    # @return [AuthorizeWebhookResponse]
+    # @return [Services::Account::V1::AuthorizeWebhookResponse]
     def authorize_webhook(request)
       @client.authorize_webhook(request, metadata: metadata(request))
     end

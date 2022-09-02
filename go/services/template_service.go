@@ -51,7 +51,6 @@ type templateBase struct {
 
 // Create  Create a credential template in the current ecosystem
 func (t *templateBase) Create(userContext context.Context, request *template.CreateCredentialTemplateRequest) (*template.CreateCredentialTemplateResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -65,7 +64,6 @@ func (t *templateBase) Create(userContext context.Context, request *template.Cre
 
 // Get  Fetch a credential template by ID
 func (t *templateBase) Get(userContext context.Context, request *template.GetCredentialTemplateRequest) (*template.GetCredentialTemplateResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -79,7 +77,6 @@ func (t *templateBase) Get(userContext context.Context, request *template.GetCre
 
 // List  Search credential templates using SQL, returning strongly-typed template data
 func (t *templateBase) List(userContext context.Context, request *template.ListCredentialTemplatesRequest) (*template.ListCredentialTemplatesResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -93,7 +90,6 @@ func (t *templateBase) List(userContext context.Context, request *template.ListC
 
 // Search  Search credential templates using SQL, returning raw JSON data
 func (t *templateBase) Search(userContext context.Context, request *template.SearchCredentialTemplatesRequest) (*template.SearchCredentialTemplatesResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -107,7 +103,6 @@ func (t *templateBase) Search(userContext context.Context, request *template.Sea
 
 // Delete  Delete a credential template from the current ecosystem by ID
 func (t *templateBase) Delete(userContext context.Context, request *template.DeleteCredentialTemplateRequest) (*template.DeleteCredentialTemplateResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := t.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err

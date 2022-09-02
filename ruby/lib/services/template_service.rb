@@ -20,35 +20,35 @@ module Trinsic
 
     #  Create a credential template in the current ecosystem
     # @param [CreateCredentialTemplateRequest] request
-    # @return [CreateCredentialTemplateResponse]
+    # @return [Services::Verifiablecredentials::Templates::V1::CreateCredentialTemplateResponse]
     def create(request)
       @client.create(request, metadata: metadata(request))
     end
 
     #  Fetch a credential template by ID
     # @param [GetCredentialTemplateRequest] request
-    # @return [GetCredentialTemplateResponse]
+    # @return [Services::Verifiablecredentials::Templates::V1::GetCredentialTemplateResponse]
     def get(request)
       @client.get(request, metadata: metadata(request))
     end
 
     #  Search credential templates using SQL, returning strongly-typed template data
     # @param [ListCredentialTemplatesRequest] request
-    # @return [ListCredentialTemplatesResponse]
+    # @return [Services::Verifiablecredentials::Templates::V1::ListCredentialTemplatesResponse]
     def list(request)
       @client.list(request, metadata: metadata(request))
     end
 
     #  Search credential templates using SQL, returning raw JSON data
     # @param [SearchCredentialTemplatesRequest] request
-    # @return [SearchCredentialTemplatesResponse]
+    # @return [Services::Verifiablecredentials::Templates::V1::SearchCredentialTemplatesResponse]
     def search(request)
       @client.search(request, metadata: metadata(request))
     end
 
     #  Delete a credential template from the current ecosystem by ID
     # @param [DeleteCredentialTemplateRequest] request
-    # @return [DeleteCredentialTemplateResponse]
+    # @return [Services::Verifiablecredentials::Templates::V1::DeleteCredentialTemplateResponse]
     def delete(request)
       @client.delete(request, metadata: metadata(request))
     end

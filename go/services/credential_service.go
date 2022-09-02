@@ -61,7 +61,6 @@ type credentialBase struct {
 // Issue  Sign and issue a verifiable credential from a submitted document.
 // The document must be a valid JSON-LD document.
 func (c *credentialBase) Issue(userContext context.Context, request *credential.IssueRequest) (*credential.IssueResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -77,7 +76,6 @@ func (c *credentialBase) Issue(userContext context.Context, request *credential.
 // This process will also add schema validation and
 // revocation registry values to the credential.
 func (c *credentialBase) IssueFromTemplate(userContext context.Context, request *credential.IssueFromTemplateRequest) (*credential.IssueFromTemplateResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -91,7 +89,6 @@ func (c *credentialBase) IssueFromTemplate(userContext context.Context, request 
 
 // CheckStatus  Check credential status in the revocation registry
 func (c *credentialBase) CheckStatus(userContext context.Context, request *credential.CheckStatusRequest) (*credential.CheckStatusResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -105,7 +102,6 @@ func (c *credentialBase) CheckStatus(userContext context.Context, request *crede
 
 // UpdateStatus  Update credential status by setting the revocation value
 func (c *credentialBase) UpdateStatus(userContext context.Context, request *credential.UpdateStatusRequest) (*credential.UpdateStatusResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -120,7 +116,6 @@ func (c *credentialBase) UpdateStatus(userContext context.Context, request *cred
 // CreateProof  Create a proof from a signed document that is a valid
 // verifiable credential and contains a signature from which a proof can be derived.
 func (c *credentialBase) CreateProof(userContext context.Context, request *credential.CreateProofRequest) (*credential.CreateProofResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -135,7 +130,6 @@ func (c *credentialBase) CreateProof(userContext context.Context, request *crede
 // VerifyProof  Verifies a proof by checking the signature value, and if possible schema validation,
 // revocation status, and issuer status against a trust registry
 func (c *credentialBase) VerifyProof(userContext context.Context, request *credential.VerifyProofRequest) (*credential.VerifyProofResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -149,7 +143,6 @@ func (c *credentialBase) VerifyProof(userContext context.Context, request *crede
 
 // Send  Sends a document directly to a user's email within the given ecosystem
 func (c *credentialBase) Send(userContext context.Context, request *credential.SendRequest) (*credential.SendResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := c.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err

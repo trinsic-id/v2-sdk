@@ -287,14 +287,16 @@ public class AccountService : ServiceBase
 	/// <summary>
     /// Get account information
     /// </summary>	
-    public AccountInfoResponse Info(AccountInfoRequest request) {
+    public AccountInfoResponse Info() {
+        var request = new AccountInfoRequest();
         return Client.Info(request, BuildMetadata(request));
     }
 	
 	/// <summary>
     /// Get account information
     /// </summary>	
-    public async Task<AccountInfoResponse> InfoAsync(AccountInfoRequest request) {
+    public async Task<AccountInfoResponse> InfoAsync() {
+        var request = new AccountInfoRequest();
         return await Client.InfoAsync(request, await BuildMetadataAsync(request));
     }
 
@@ -302,6 +304,7 @@ public class AccountService : ServiceBase
     /// List all connected devices
     /// </summary>	
     public ListDevicesResponse ListDevices(ListDevicesRequest request) {
+        
         return Client.ListDevices(request, BuildMetadata(request));
     }
 	
@@ -309,6 +312,7 @@ public class AccountService : ServiceBase
     /// List all connected devices
     /// </summary>	
     public async Task<ListDevicesResponse> ListDevicesAsync(ListDevicesRequest request) {
+        
         return await Client.ListDevicesAsync(request, await BuildMetadataAsync(request));
     }
 
@@ -316,6 +320,7 @@ public class AccountService : ServiceBase
     /// Revoke device access to the account's cloud wallet
     /// </summary>	
     public RevokeDeviceResponse RevokeDevice(RevokeDeviceRequest request) {
+        
         return Client.RevokeDevice(request, BuildMetadata(request));
     }
 	
@@ -323,6 +328,7 @@ public class AccountService : ServiceBase
     /// Revoke device access to the account's cloud wallet
     /// </summary>	
     public async Task<RevokeDeviceResponse> RevokeDeviceAsync(RevokeDeviceRequest request) {
+        
         return await Client.RevokeDeviceAsync(request, await BuildMetadataAsync(request));
     }
 
@@ -330,6 +336,7 @@ public class AccountService : ServiceBase
     /// Authorize Ecosystem to receive webhook events
     /// </summary>	
     public AuthorizeWebhookResponse AuthorizeWebhook(AuthorizeWebhookRequest request) {
+        
         return Client.AuthorizeWebhook(request, BuildMetadata(request));
     }
 	
@@ -337,6 +344,7 @@ public class AccountService : ServiceBase
     /// Authorize Ecosystem to receive webhook events
     /// </summary>	
     public async Task<AuthorizeWebhookResponse> AuthorizeWebhookAsync(AuthorizeWebhookRequest request) {
+        
         return await Client.AuthorizeWebhookAsync(request, await BuildMetadataAsync(request));
     }
 
