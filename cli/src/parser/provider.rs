@@ -3,17 +3,17 @@ use clap::ArgMatches;
 use std::fmt::{self, Display, Formatter};
 
 pub(crate) fn parse(args: &ArgMatches) -> Result<Command, Error> {
-    if args.is_present("create-ecosystem") {
+    if args.subcommand_matches("create-ecosystem").is_some() {
         create_ecosystem(&args.subcommand_matches("create-ecosystem").expect("Error parsing request"))
-    } else if args.is_present("update-ecosystem") {
+    } else if args.subcommand_matches("update-ecosystem").is_some() {
         update_ecosystem(&args.subcommand_matches("update-ecosystem").expect("Error parsing request"))
-    } else if args.is_present("ecosystem-info") {
+    } else if args.subcommand_matches("ecosystem-info").is_some() {
         ecosystem_info()
-    } else if args.is_present("invite") {
+    } else if args.subcommand_matches("invite").is_some() {
         invite(&args.subcommand_matches("invite").expect("Error parsing request"))
-    } else if args.is_present("add-webhook") {
+    } else if args.subcommand_matches("add-webhook").is_some() {
         add_webhook(&args.subcommand_matches("add-webhook").expect("Error parsing request"))
-    } else if args.is_present("delete-webhook") {
+    } else if args.subcommand_matches("delete-webhook").is_some() {
         delete_webhook(&args.subcommand_matches("delete-webhook").expect("Error parsing request"))
     } else {
         Err(Error::MissingArguments)

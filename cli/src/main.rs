@@ -120,10 +120,12 @@ mod test {
     #[test]
     fn run_custom_command() {
         let yaml = load_yaml!("cli.yaml");
-        let _matches = App::from_yaml(yaml)
+        let matches = App::from_yaml(yaml)
             .get_matches_from_safe(vec!["trinsic", "config", "--server-endpoint", "example.com"])
             .unwrap();
 
-        // process(yaml, matches)
+        let result = parser::parse(&matches);
+
+        assert!(result.is_ok());
     }
 }

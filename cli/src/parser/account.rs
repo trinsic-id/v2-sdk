@@ -3,11 +3,11 @@ use clap::ArgMatches;
 use crate::error::Error;
 
 pub(crate) fn parse(args: &ArgMatches) -> Result<Command, Error> {
-    if args.is_present("login") {
+    if args.subcommand_matches("login").is_some() {
         sign_in(&args.subcommand_matches("login").expect("Error parsing request"))
-    } else if args.is_present("info") {
+    } else if args.subcommand_matches("info").is_some() {
         info(&args.subcommand_matches("info").expect("Error parsing request"))
-    } else if args.is_present("authorize-webhook") {
+    } else if args.subcommand_matches("authorize-webhook").is_some() {
         authorize_webhook(&args.subcommand_matches("authorize-webhook").expect("Error parsing request"))
     } else {
         Err(Error::MissingArguments)

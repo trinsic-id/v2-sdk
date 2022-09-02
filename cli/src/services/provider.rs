@@ -87,6 +87,7 @@ async fn update_ecosystem(args: &UpdateEcosystemArgs, config: &CliConfig) -> Res
     let request = tonic::Request::new(UpdateEcosystemRequest {
         description: args.description.as_ref().map_or(String::default(), |x| x.to_owned()),
         uri: args.uri.as_ref().map_or(String::default(), |x| x.to_owned()),
+        ..Default::default()
     });
 
     let response = client.update_ecosystem(request).await?.into_inner();
