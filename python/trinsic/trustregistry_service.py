@@ -1,5 +1,6 @@
 from trinsic.proto.sdk.options.v1 import ServiceOptions
 from trinsic.proto.services.trustregistry.v1 import *
+from trinsic.security_providers import ITokenProvider
 from trinsic.service_base import ServiceBase
 
 
@@ -12,8 +13,9 @@ class TrustRegistryService(ServiceBase):
         self,
         *,
         server_config: ServiceOptions = None,
+        token_provider: ITokenProvider = None
     ):
-        super().__init__(server_config)
+        super().__init__(server_config, token_provider)
         self.client = TrustRegistryStub(super().channel)
 
     async def search(

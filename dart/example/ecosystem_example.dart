@@ -4,9 +4,9 @@ import 'package:trinsic_dart/src/trinsic_util.dart';
 import 'package:trinsic_dart/trinsic.dart';
 
 Future runEcosystemDemo() async {
-  var accountService = AccountService(trinsicConfig());
+  var accountService = AccountService(trinsicConfig(), null);
   var account = await accountService.signIn();
-  var providerService = ProviderService(trinsicConfig(authToken: account));
+  var providerService = ProviderService(trinsicConfig(authToken: account), null);
   // createEcosystem() {
   var actualCreate = await providerService.createEcosystem(
       request: CreateEcosystemRequest(

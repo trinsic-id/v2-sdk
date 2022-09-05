@@ -1,6 +1,7 @@
 import base64
 from abc import ABC, abstractmethod
 from datetime import datetime
+from typing import Dict
 
 import betterproto
 from trinsicokapi import oberon, hashing
@@ -9,6 +10,35 @@ from trinsicokapi.proto.okapi.security.v1 import CreateOberonProofRequest
 
 from trinsic.proto.services.account.v1 import AccountProfile
 from trinsic.proto.services.common.v1 import Nonce
+
+
+class ITokenProvider(ABC):
+    @abstractmethod
+    def get(self, name: str = "trinsic") -> bytes:
+        pass
+
+    @abstractmethod
+    def save(self, auth_token: bytes, name: str = "trinsic") -> None:
+        pass
+
+
+class MemoryTokenProvider(ITokenProvider):
+    def __init__(self):
+        self.tokens: Dict[str, bytes] = dict()
+
+    def save(self, auth_token: bytes, name: str = "trinsic") -> None:
+        self.tokens[name] = auth_token
+
+    def get(self, name: str = "trinsic") -> bytes:
+        return self.tokens.get(name)
+
+
+class MemoryTokenProviderFactory:
+    _instance = MemoryTokenProvider()
+
+    @staticmethod
+    def instance() -> "MemoryTokenProvider":
+        return MemoryTokenProviderFactory._instance
 
 
 class SecurityProvider(ABC):

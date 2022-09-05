@@ -4,10 +4,10 @@ import 'package:trinsic_dart/trinsic.dart';
 import 'package:uuid/uuid.dart';
 
 Future runTrustRegistryDemo() async {
-  var accountService = AccountService(trinsicConfig());
+  var accountService = AccountService(trinsicConfig(), null);
   var account = await accountService.signIn();
   var trustRegistryService =
-      TrustRegistryService(trinsicConfig(authToken: account));
+      TrustRegistryService(trinsicConfig(authToken: account), null);
 
   var uuid = Uuid();
 

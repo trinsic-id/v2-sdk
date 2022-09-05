@@ -21,7 +21,9 @@ module Trinsic
       request.ecosystem_id = request.ecosystem_id || 'default'
       auth_token = @client.sign_in(request).profile
       encoded_profile = Base64.urlsafe_encode64(Account::AccountProfile.encode(auth_token))
-      self.auth_token = encoded_profile
+      unless auth_token.protection.enabled
+        @token_provider.save(encoded_profile)
+      end
       encoded_profile
     end
 
@@ -47,7 +49,12 @@ module Trinsic
 
     def login(request = nil)
       request ||= Account::LoginRequest.new
-      @client.login(request)
+      response = @client.login(request)
+      unless response.profile.nil?
+        encoded_profile = Base64.urlsafe_encode64(Account::AccountProfile.encode(response.profile))
+        @token_provider.save(encoded_profile)
+      end
+      response
     end
 
     def login_confirm(challenge, auth_code)
@@ -59,7 +66,7 @@ module Trinsic
       profile = response.profile
       profile = unprotect(profile, auth_code) if response.profile.protection.enabled
       encoded_profile = Base64.urlsafe_encode64(Account::AccountProfile.encode(profile))
-      self.auth_token = encoded_profile
+      @token_provider.save(encoded_profile)
       encoded_profile
     end
 
@@ -73,7 +80,7 @@ module Trinsic
       raise Error('protected profile returned') if response.profile.protection.enabled
 
       encoded_profile = Base64.urlsafe_encode64(Account::AccountProfile.encode(response.profile))
-      self.auth_token = encoded_profile
+      @token_provider.save(encoded_profile)
       encoded_profile
     end
 

@@ -24,7 +24,7 @@ String vaccineCertFramePath() {
 
 Future runVaccineDemo() async {
   // createService() {
-  var trinsic = TrinsicService(trinsicConfig());
+  var trinsic = TrinsicService(trinsicConfig(), null);
   // }
 
   // createEcosystem() {
