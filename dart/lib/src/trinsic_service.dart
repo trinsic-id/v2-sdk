@@ -1,6 +1,7 @@
 import 'package:trinsic_dart/src/account_service.dart';
 import 'package:trinsic_dart/src/proto/sdk/options/v1/options.pb.dart';
 import 'package:trinsic_dart/src/service_base.dart';
+import 'package:trinsic_dart/src/storage/token_provider.dart';
 import 'package:trinsic_dart/trinsic.dart';
 
 class TrinsicService extends ServiceBase {
@@ -10,41 +11,37 @@ class TrinsicService extends ServiceBase {
   TemplateService? _templateService;
   TrustRegistryService? _trustRegistryService;
   WalletService? _walletService;
-  TrinsicService(ServiceOptions? serverOptions) : super(serverOptions) {}
+  TrinsicService(ServiceOptions? serverOptions, ITokenProvider? provider)
+      : super(serverOptions, provider) {}
 
   AccountService account() {
-    _accountService ??= AccountService(serviceOptions);
-    _accountService?.serviceOptions = serviceOptions;
+    _accountService ??= AccountService(serviceOptions, tokenProvider);
     return _accountService!;
   }
 
   CredentialService credential() {
-    _credentialService ??= CredentialService(serviceOptions);
-    _credentialService?.serviceOptions = serviceOptions;
+    _credentialService ??= CredentialService(serviceOptions, tokenProvider);
     return _credentialService!;
   }
 
   ProviderService provider() {
-    _providerService ??= ProviderService(serviceOptions);
-    _providerService?.serviceOptions = serviceOptions;
+    _providerService ??= ProviderService(serviceOptions, tokenProvider);
     return _providerService!;
   }
 
   TemplateService template() {
-    _templateService ??= TemplateService(serviceOptions);
-    _templateService?.serviceOptions = serviceOptions;
+    _templateService ??= TemplateService(serviceOptions, tokenProvider);
     return _templateService!;
   }
 
   TrustRegistryService trustRegistry() {
-    _trustRegistryService ??= TrustRegistryService(serviceOptions);
-    _trustRegistryService?.serviceOptions = serviceOptions;
+    _trustRegistryService ??=
+        TrustRegistryService(serviceOptions, tokenProvider);
     return _trustRegistryService!;
   }
 
   WalletService wallet() {
-    _walletService ??= WalletService(serviceOptions);
-    _walletService?.serviceOptions = serviceOptions;
+    _walletService ??= WalletService(serviceOptions, tokenProvider);
     return _walletService!;
   }
 }

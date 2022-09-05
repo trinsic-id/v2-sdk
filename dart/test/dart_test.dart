@@ -33,7 +33,7 @@ void main() {
     });
 
     test('Trust Registry Service Input Validation', () async {
-      var trService = TrustRegistryService(trinsicConfig());
+      var trService = TrustRegistryService(trinsicConfig(), null);
       try {
         await trService.addFramework(AddFrameworkRequest(
             governanceFrameworkUri: "", description: "invalid framework"));
@@ -46,7 +46,7 @@ void main() {
 
     test('Test Protect/Unprotect Account', () async {
       // accountServiceConstructor() {
-      var accountService = AccountService(trinsicConfig());
+      var accountService = AccountService(trinsicConfig(), null);
       // }
       // accountServiceSignIn() {
       var myProfile = await accountService.signIn();

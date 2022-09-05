@@ -7,10 +7,10 @@ import 'package:trinsic_dart/trinsic.dart';
 import 'package:uuid/uuid.dart';
 
 Future runTemplatesDemo() async {
-  var accountService = AccountService(trinsicConfig());
+  var accountService = AccountService(trinsicConfig(), null);
   var profile = await accountService.signIn();
-  var templateService = TemplateService(trinsicConfig(authToken: profile));
-  var credentialService = CredentialService(trinsicConfig(authToken: profile));
+  var templateService = TemplateService(trinsicConfig(authToken: profile), null);
+  var credentialService = CredentialService(trinsicConfig(authToken: profile), null);
 
   var uuid = Uuid();
   // createTemplate() {

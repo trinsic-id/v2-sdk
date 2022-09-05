@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:convert';
 
 import 'package:fixnum/fixnum.dart' as $fixnum;
@@ -10,15 +9,18 @@ import 'package:protobuf/protobuf.dart' as $pb;
 import 'package:trinsic_dart/src/proto/sdk/options/v1/options.pb.dart';
 import 'package:trinsic_dart/src/proto/services/account/v1/account.pb.dart';
 import 'package:trinsic_dart/src/proto/services/common/v1/common.pb.dart';
+import 'package:trinsic_dart/src/storage/token_provider.dart';
 import 'package:trinsic_dart/src/trinsic_util.dart';
 
 class ServiceBase {
   late ServiceOptions serviceOptions;
   final ISecurityProvider _securityProvider = OberonSecurityProvider();
+  late ITokenProvider tokenProvider;
   late ClientChannel channel;
 
-  ServiceBase(ServiceOptions? serverOptions) {
+  ServiceBase(ServiceOptions? serverOptions, ITokenProvider? provider) {
     serviceOptions = serverOptions ?? trinsicConfig();
+    tokenProvider = provider ?? MemoryTokenProvider();
     channel = ClientChannel(serviceOptions.serverEndpoint,
         port: serviceOptions.serverPort,
         options: ChannelOptions(
@@ -32,27 +34,22 @@ class ServiceBase {
     throw UnsupportedError("Closing the channel not yet supported");
   }
 
-  CallOptions buildMetadata({$pb.GeneratedMessage? request}) {
+  Future<CallOptions> buildMetadata({$pb.GeneratedMessage? request}) async {
     var metadata = <String, String>{};
     metadata['TrinsicOkapiVersion'] = okapi.Metadata.getMetadata().version;
     metadata['TrinsicSDKLanguage'] = "dart";
     metadata['TrinsicSDKVersion'] = getSdkVersion();
 
     if (request != null) {
-      if (serviceOptions.authToken == "") {
-        throw Exception(
-            "cannot call authenticated endpoint: auth token must be set in service options");
+      var authToken = serviceOptions.authToken;
+      if (authToken == "") {
+        authToken = await tokenProvider.Get();
       }
       metadata['authorization'] = _securityProvider.getAuthHeader(
-          AccountProfile.fromBuffer(
-              Base64Decoder().convert(serviceOptions.authToken)),
+          AccountProfile.fromBuffer(Base64Decoder().convert(authToken)),
           request);
     }
     return CallOptions(metadata: metadata);
-  }
-
-  void setAuthToken(String authToken) {
-    serviceOptions.authToken = authToken;
   }
 }
 
