@@ -37,9 +37,8 @@ class TrustRegistryService(ServiceBase):
     async def add_framework(
         self, *, request: AddFrameworkRequest
     ) -> AddFrameworkResponse:
-        """
-        Add a governance framework to the ecosystem
-        """
+        """Add a governance framework to the ecosystem"""
+
         return await self.client.add_framework(
             request, metadata=self.build_metadata(request)
         )
@@ -47,9 +46,8 @@ class TrustRegistryService(ServiceBase):
     async def remove_framework(
         self, *, request: RemoveFrameworkRequest
     ) -> RemoveFrameworkResponse:
-        """
-        Remove a governance framework from the ecosystem
-        """
+        """Remove a governance framework from the ecosystem"""
+
         return await self.client.remove_framework(
             request, metadata=self.build_metadata(request)
         )
@@ -57,9 +55,8 @@ class TrustRegistryService(ServiceBase):
     async def search_registry(
         self, *, request: SearchRegistryRequest
     ) -> SearchRegistryResponse:
-        """
-        Search the ecosystem's governance frameworks
-        """
+        """Search the ecosystem's governance frameworks"""
+
         return await self.client.search_registry(
             request, metadata=self.build_metadata(request)
         )
@@ -67,9 +64,8 @@ class TrustRegistryService(ServiceBase):
     async def register_member(
         self, *, request: RegisterMemberRequest
     ) -> RegisterMemberResponse:
-        """
-        Register an authoritative issuer for a credential schema
-        """
+        """Register an authoritative issuer for a credential schema"""
+
         return await self.client.register_member(
             request, metadata=self.build_metadata(request)
         )
@@ -77,9 +73,8 @@ class TrustRegistryService(ServiceBase):
     async def unregister_member(
         self, *, request: UnregisterMemberRequest
     ) -> UnregisterMemberResponse:
-        """
-        Removes an authoritative issuer for a credential schema from the trust registry
-        """
+        """Removes an authoritative issuer for a credential schema from the trust registry"""
+
         return await self.client.unregister_member(
             request, metadata=self.build_metadata(request)
         )
@@ -87,9 +82,8 @@ class TrustRegistryService(ServiceBase):
     async def get_membership_status(
         self, *, request: GetMembershipStatusRequest
     ) -> GetMembershipStatusResponse:
-        """
-        Fetch the membership status of an issuer for a given credential schema in a trust registry
-        """
+        """Fetch the membership status of an issuer for a given credential schema in a trust registry"""
+
         return await self.client.get_membership_status(
             request, metadata=self.build_metadata(request)
         )

@@ -28,42 +28,42 @@ module Trinsic
 
     #  Add a governance framework to the ecosystem
     # @param [AddFrameworkRequest] request
-    # @return [AddFrameworkResponse]
+    # @return [Services::Trustregistry::V1::AddFrameworkResponse]
     def add_framework(request)
       @client.add_framework(request, metadata: metadata(request))
     end
 
     #  Remove a governance framework from the ecosystem
     # @param [RemoveFrameworkRequest] request
-    # @return [RemoveFrameworkResponse]
+    # @return [Services::Trustregistry::V1::RemoveFrameworkResponse]
     def remove_framework(request)
       @client.remove_framework(request, metadata: metadata(request))
     end
 
     #  Search the ecosystem's governance frameworks
     # @param [SearchRegistryRequest] request
-    # @return [SearchRegistryResponse]
+    # @return [Services::Trustregistry::V1::SearchRegistryResponse]
     def search_registry(request)
       @client.search_registry(request, metadata: metadata(request))
     end
 
     #  Register an authoritative issuer for a credential schema
     # @param [RegisterMemberRequest] request
-    # @return [RegisterMemberResponse]
+    # @return [Services::Trustregistry::V1::RegisterMemberResponse]
     def register_member(request)
       @client.register_member(request, metadata: metadata(request))
     end
 
     #  Removes an authoritative issuer for a credential schema from the trust registry
     # @param [UnregisterMemberRequest] request
-    # @return [UnregisterMemberResponse]
+    # @return [Services::Trustregistry::V1::UnregisterMemberResponse]
     def unregister_member(request)
       @client.unregister_member(request, metadata: metadata(request))
     end
 
     #  Fetch the membership status of an issuer for a given credential schema in a trust registry
     # @param [GetMembershipStatusRequest] request
-    # @return [GetMembershipStatusResponse]
+    # @return [Services::Trustregistry::V1::GetMembershipStatusResponse]
     def get_membership_status(request)
       @client.get_membership_status(request, metadata: metadata(request))
     end

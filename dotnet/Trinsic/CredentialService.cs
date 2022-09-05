@@ -37,6 +37,7 @@ public class CredentialService : ServiceBase
     ///  The document must be a valid JSON-LD document.
     /// </summary>	
     public IssueResponse Issue(IssueRequest request) {
+        
         return Client.Issue(request, BuildMetadata(request));
     }
 
@@ -45,6 +46,7 @@ public class CredentialService : ServiceBase
     ///  The document must be a valid JSON-LD document.
     /// </summary>	
     public async Task<IssueResponse> IssueAsync(IssueRequest request) {
+        
         return await Client.IssueAsync(request, await BuildMetadataAsync(request));
     }
 
@@ -54,6 +56,7 @@ public class CredentialService : ServiceBase
     ///  revocation registry values to the credential.
     /// </summary>	
     public IssueFromTemplateResponse IssueFromTemplate(IssueFromTemplateRequest request) {
+        
         return Client.IssueFromTemplate(request, BuildMetadata(request));
     }
 
@@ -63,6 +66,7 @@ public class CredentialService : ServiceBase
     ///  revocation registry values to the credential.
     /// </summary>	
     public async Task<IssueFromTemplateResponse> IssueFromTemplateAsync(IssueFromTemplateRequest request) {
+        
         return await Client.IssueFromTemplateAsync(request, await BuildMetadataAsync(request));
     }
 
@@ -70,6 +74,7 @@ public class CredentialService : ServiceBase
     /// Check credential status in the revocation registry
     /// </summary>	
     public CheckStatusResponse CheckStatus(CheckStatusRequest request) {
+        
         return Client.CheckStatus(request, BuildMetadata(request));
     }
 
@@ -77,6 +82,7 @@ public class CredentialService : ServiceBase
     /// Check credential status in the revocation registry
     /// </summary>	
     public async Task<CheckStatusResponse> CheckStatusAsync(CheckStatusRequest request) {
+        
         return await Client.CheckStatusAsync(request, await BuildMetadataAsync(request));
     }
 
@@ -84,6 +90,7 @@ public class CredentialService : ServiceBase
     /// Update credential status by setting the revocation value
     /// </summary>	
     public UpdateStatusResponse UpdateStatus(UpdateStatusRequest request) {
+        
         return Client.UpdateStatus(request, BuildMetadata(request));
     }
 
@@ -91,6 +98,7 @@ public class CredentialService : ServiceBase
     /// Update credential status by setting the revocation value
     /// </summary>	
     public async Task<UpdateStatusResponse> UpdateStatusAsync(UpdateStatusRequest request) {
+        
         return await Client.UpdateStatusAsync(request, await BuildMetadataAsync(request));
     }
 
@@ -99,6 +107,7 @@ public class CredentialService : ServiceBase
     ///  verifiable credential and contains a signature from which a proof can be derived.
     /// </summary>	
     public CreateProofResponse CreateProof(CreateProofRequest request) {
+        
         return Client.CreateProof(request, BuildMetadata(request));
     }
 
@@ -107,6 +116,7 @@ public class CredentialService : ServiceBase
     ///  verifiable credential and contains a signature from which a proof can be derived.
     /// </summary>	
     public async Task<CreateProofResponse> CreateProofAsync(CreateProofRequest request) {
+        
         return await Client.CreateProofAsync(request, await BuildMetadataAsync(request));
     }
 
@@ -115,6 +125,7 @@ public class CredentialService : ServiceBase
     ///  revocation status, and issuer status against a trust registry
     /// </summary>	
     public VerifyProofResponse VerifyProof(VerifyProofRequest request) {
+        
         return Client.VerifyProof(request, BuildMetadata(request));
     }
 
@@ -123,6 +134,7 @@ public class CredentialService : ServiceBase
     ///  revocation status, and issuer status against a trust registry
     /// </summary>	
     public async Task<VerifyProofResponse> VerifyProofAsync(VerifyProofRequest request) {
+        
         return await Client.VerifyProofAsync(request, await BuildMetadataAsync(request));
     }
 
@@ -130,6 +142,7 @@ public class CredentialService : ServiceBase
     /// Sends a document directly to a user's email within the given ecosystem
     /// </summary>	
     public SendResponse Send(SendRequest request) {
+        
         return Client.Send(request, BuildMetadata(request));
     }
 
@@ -137,6 +150,7 @@ public class CredentialService : ServiceBase
     /// Sends a document directly to a user's email within the given ecosystem
     /// </summary>	
     public async Task<SendResponse> SendAsync(SendRequest request) {
+        
         return await Client.SendAsync(request, await BuildMetadataAsync(request));
     }
 

@@ -67,7 +67,6 @@ func (w *walletBase) SearchWallet(userContext context.Context, request *wallet.S
 
 // GetItem  Retrieve an item from the wallet with a given item identifier
 func (w *walletBase) GetItem(userContext context.Context, request *wallet.GetItemRequest) (*wallet.GetItemResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := w.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -81,7 +80,6 @@ func (w *walletBase) GetItem(userContext context.Context, request *wallet.GetIte
 
 // Search  Search the wallet using a SQL syntax
 func (w *walletBase) Search(userContext context.Context, request *wallet.SearchRequest) (*wallet.SearchResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := w.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -95,7 +93,6 @@ func (w *walletBase) Search(userContext context.Context, request *wallet.SearchR
 
 // InsertItem  Insert an item into the wallet
 func (w *walletBase) InsertItem(userContext context.Context, request *wallet.InsertItemRequest) (*wallet.InsertItemResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := w.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -109,7 +106,6 @@ func (w *walletBase) InsertItem(userContext context.Context, request *wallet.Ins
 
 // UpdateItem  Update an item in the wallet
 func (w *walletBase) UpdateItem(userContext context.Context, request *wallet.UpdateItemRequest) (*wallet.UpdateItemResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := w.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err
@@ -123,7 +119,6 @@ func (w *walletBase) UpdateItem(userContext context.Context, request *wallet.Upd
 
 // DeleteItem  Delete an item from the wallet permanently
 func (w *walletBase) DeleteItem(userContext context.Context, request *wallet.DeleteItemRequest) (*wallet.DeleteItemResponse, error) {
-	// TODO - Handle a flag for the metadata context
 	md, err := w.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err

@@ -33,41 +33,36 @@ class TemplateService(ServiceBase):
     async def create(
         self, *, request: CreateCredentialTemplateRequest
     ) -> CreateCredentialTemplateResponse:
-        """
-        Create a credential template in the current ecosystem
-        """
+        """Create a credential template in the current ecosystem"""
+
         return await self.client.create(request, metadata=self.build_metadata(request))
 
     async def get(
         self, *, request: GetCredentialTemplateRequest
     ) -> GetCredentialTemplateResponse:
-        """
-        Fetch a credential template by ID
-        """
+        """Fetch a credential template by ID"""
+
         return await self.client.get(request, metadata=self.build_metadata(request))
 
     async def list(
         self, *, request: ListCredentialTemplatesRequest
     ) -> ListCredentialTemplatesResponse:
-        """
-        Search credential templates using SQL, returning strongly-typed template data
-        """
+        """Search credential templates using SQL, returning strongly-typed template data"""
+
         return await self.client.list(request, metadata=self.build_metadata(request))
 
     async def search(
         self, *, request: SearchCredentialTemplatesRequest
     ) -> SearchCredentialTemplatesResponse:
-        """
-        Search credential templates using SQL, returning raw JSON data
-        """
+        """Search credential templates using SQL, returning raw JSON data"""
+
         return await self.client.search(request, metadata=self.build_metadata(request))
 
     async def delete(
         self, *, request: DeleteCredentialTemplateRequest
     ) -> DeleteCredentialTemplateResponse:
-        """
-        Delete a credential template from the current ecosystem by ID
-        """
+        """Delete a credential template from the current ecosystem by ID"""
+
         return await self.client.delete(request, metadata=self.build_metadata(request))
 
 

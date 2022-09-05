@@ -59,9 +59,8 @@ class ProviderService(ServiceBase):
     async def update_ecosystem(
         self, *, request: UpdateEcosystemRequest
     ) -> UpdateEcosystemResponse:
-        """
-        Update an existing ecosystem
-        """
+        """Update an existing ecosystem"""
+
         return await self.client.update_ecosystem(
             request, metadata=self.build_metadata(request)
         )
@@ -69,9 +68,8 @@ class ProviderService(ServiceBase):
     async def grant_authorization(
         self, *, request: GrantAuthorizationRequest
     ) -> GrantAuthorizationResponse:
-        """
-        Grant user authorization to ecosystem resources
-        """
+        """Grant user authorization to ecosystem resources"""
+
         return await self.client.grant_authorization(
             request, metadata=self.build_metadata(request)
         )
@@ -79,9 +77,8 @@ class ProviderService(ServiceBase):
     async def revoke_authorization(
         self, *, request: RevokeAuthorizationRequest
     ) -> RevokeAuthorizationResponse:
-        """
-        Revoke user authorization to ecosystem resources
-        """
+        """Revoke user authorization to ecosystem resources"""
+
         return await self.client.revoke_authorization(
             request, metadata=self.build_metadata(request)
         )
@@ -89,17 +86,15 @@ class ProviderService(ServiceBase):
     async def get_authorizations(
         self, *, request: GetAuthorizationsRequest
     ) -> GetAuthorizationsResponse:
-        """
-        Retreive the list of permissions for this particular account/ecosystem
-        """
+        """Retreive the list of permissions for this particular account/ecosystem"""
+
         return await self.client.get_authorizations(
             request, metadata=self.build_metadata(request)
         )
 
     async def add_webhook(self, *, request: AddWebhookRequest) -> AddWebhookResponse:
-        """
-        Add a webhook endpoint to the ecosystem
-        """
+        """Add a webhook endpoint to the ecosystem"""
+
         return await self.client.add_webhook(
             request, metadata=self.build_metadata(request)
         )
@@ -107,9 +102,8 @@ class ProviderService(ServiceBase):
     async def delete_webhook(
         self, *, request: DeleteWebhookRequest
     ) -> DeleteWebhookResponse:
-        """
-        Delete a webhook endpoint from the ecosystem
-        """
+        """Delete a webhook endpoint from the ecosystem"""
+
         return await self.client.delete_webhook(
             request, metadata=self.build_metadata(request)
         )
@@ -117,9 +111,8 @@ class ProviderService(ServiceBase):
     async def ecosystem_info(
         self, *, request: EcosystemInfoRequest
     ) -> EcosystemInfoResponse:
-        """
-        Get ecosystem information
-        """
+        """Get ecosystem information"""
+
         return await self.client.ecosystem_info(
             request, metadata=self.build_metadata(request)
         )
@@ -129,24 +122,23 @@ class ProviderService(ServiceBase):
     ) -> GenerateTokenResponse:
         """
         Generates an unprotected authentication token that can be used to
-        configure server side applications
+         configure server side applications
         """
+
         return await self.client.generate_token(
             request, metadata=self.build_metadata(request)
         )
 
     async def invite(self, *, request: InviteRequest) -> InviteResponse:
-        """
-        Invite a user to the ecosystem
-        """
+        """Invite a user to the ecosystem"""
+
         return await self.client.invite(request, metadata=self.build_metadata(request))
 
     async def invitation_status(
         self, *, request: InvitationStatusRequest
     ) -> InvitationStatusResponse:
-        """
-        Check the status of an invitation
-        """
+        """Check the status of an invitation"""
+
         return await self.client.invitation_status(
             request, metadata=self.build_metadata(request)
         )
@@ -154,17 +146,15 @@ class ProviderService(ServiceBase):
     async def get_oberon_key(
         self, *, request: GetOberonKeyRequest
     ) -> GetOberonKeyResponse:
-        """
-        Returns the public key being used to create/verify oberon tokens
-        """
+        """Returns the public key being used to create/verify oberon tokens"""
+
         return await self.client.get_oberon_key(request, metadata=self.build_metadata())
 
     async def get_event_token(
         self, *, request: GetEventTokenRequest
     ) -> GetEventTokenResponse:
-        """
-        Generate a signed token (JWT) that can be used to connect to the message bus
-        """
+        """Generate a signed token (JWT) that can be used to connect to the message bus"""
+
         return await self.client.get_event_token(
             request, metadata=self.build_metadata(request)
         )
@@ -172,9 +162,8 @@ class ProviderService(ServiceBase):
     async def retrieve_verification_record(
         self, *, request: RetrieveVerificationRecordRequest
     ) -> RetrieveVerificationRecordResponse:
-        """
-        Retrieve a random hash TXT that can be used to verify domain ownership
-        """
+        """Retrieve a random hash TXT that can be used to verify domain ownership"""
+
         return await self.client.retrieve_verification_record(
             request, metadata=self.build_metadata(request)
         )
@@ -182,9 +171,8 @@ class ProviderService(ServiceBase):
     async def refresh_verification_status(
         self, *, request: RefreshVerificationStatusRequest
     ) -> RefreshVerificationStatusResponse:
-        """
-        Call to verif
-        """
+        """Call to verif"""
+
         return await self.client.refresh_verification_status(
             request, metadata=self.build_metadata(request)
         )

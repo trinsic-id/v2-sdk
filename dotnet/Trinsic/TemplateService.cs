@@ -37,6 +37,7 @@ public class TemplateService : ServiceBase
     /// Create a credential template in the current ecosystem
     /// </summary>	
     public CreateCredentialTemplateResponse Create(CreateCredentialTemplateRequest request) {
+        
         return Client.Create(request, BuildMetadata(request));
     }
 
@@ -44,6 +45,7 @@ public class TemplateService : ServiceBase
     /// Create a credential template in the current ecosystem
     /// </summary>	
     public async Task<CreateCredentialTemplateResponse> CreateAsync(CreateCredentialTemplateRequest request) {
+        
         return await Client.CreateAsync(request, await BuildMetadataAsync(request));
     }
 
@@ -51,6 +53,7 @@ public class TemplateService : ServiceBase
     /// Fetch a credential template by ID
     /// </summary>	
     public GetCredentialTemplateResponse Get(GetCredentialTemplateRequest request) {
+        
         return Client.Get(request, BuildMetadata(request));
     }
 
@@ -58,6 +61,7 @@ public class TemplateService : ServiceBase
     /// Fetch a credential template by ID
     /// </summary>	
     public async Task<GetCredentialTemplateResponse> GetAsync(GetCredentialTemplateRequest request) {
+        
         return await Client.GetAsync(request, await BuildMetadataAsync(request));
     }
 
@@ -65,6 +69,7 @@ public class TemplateService : ServiceBase
     /// Search credential templates using SQL, returning strongly-typed template data
     /// </summary>	
     public ListCredentialTemplatesResponse List(ListCredentialTemplatesRequest request) {
+        
         return Client.List(request, BuildMetadata(request));
     }
 
@@ -72,6 +77,7 @@ public class TemplateService : ServiceBase
     /// Search credential templates using SQL, returning strongly-typed template data
     /// </summary>	
     public async Task<ListCredentialTemplatesResponse> ListAsync(ListCredentialTemplatesRequest request) {
+        
         return await Client.ListAsync(request, await BuildMetadataAsync(request));
     }
 
@@ -79,6 +85,7 @@ public class TemplateService : ServiceBase
     /// Search credential templates using SQL, returning raw JSON data
     /// </summary>	
     public SearchCredentialTemplatesResponse Search(SearchCredentialTemplatesRequest request) {
+        
         return Client.Search(request, BuildMetadata(request));
     }
 
@@ -86,6 +93,7 @@ public class TemplateService : ServiceBase
     /// Search credential templates using SQL, returning raw JSON data
     /// </summary>	
     public async Task<SearchCredentialTemplatesResponse> SearchAsync(SearchCredentialTemplatesRequest request) {
+        
         return await Client.SearchAsync(request, await BuildMetadataAsync(request));
     }
 
@@ -93,6 +101,7 @@ public class TemplateService : ServiceBase
     /// Delete a credential template from the current ecosystem by ID
     /// </summary>	
     public DeleteCredentialTemplateResponse Delete(DeleteCredentialTemplateRequest request) {
+        
         return Client.Delete(request, BuildMetadata(request));
     }
 
@@ -100,6 +109,7 @@ public class TemplateService : ServiceBase
     /// Delete a credential template from the current ecosystem by ID
     /// </summary>	
     public async Task<DeleteCredentialTemplateResponse> DeleteAsync(DeleteCredentialTemplateRequest request) {
+        
         return await Client.DeleteAsync(request, await BuildMetadataAsync(request));
     }
 

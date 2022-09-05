@@ -67,9 +67,15 @@ jobs:
           if git diff --exit-code; then
             exit 0;
           fi
-          git checkout -b "${{ github.head_ref }}-generated-protos"
+          HeadRef="${{ github.head_ref }}"
+          # If HeadRef null, make it `my` so it expands to `my-generated-protos`
+          if [ -z "$HeadRef" ]; then
+            HeadRef="my"
+          fi
+          git checkout -b "$HeadRef-generated-protos"
           git add .
           git commit -m "Generated code from proto files"
-          git push --force --set-upstream origin "${{ github.head_ref }}-generated-protos"
+          git push --force --set-upstream origin "$HeadRef-generated-protos"
           echo ${{ secrets.GITHUB_TOKEN }} | gh auth login --with-token
-          gh pr create --base ${{ github.head_ref }} --title "Generated Protos for ${{ github.head_ref }}" --body "Generated files from proto"
+          # Line below can fail if PR already exists, there isn't a flag to say, "ignore if already exists"
+          gh pr create --base ${{ github.head_ref }} --title "Generated Protos for $HeadRef" --body "Generated files from proto"
