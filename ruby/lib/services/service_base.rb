@@ -3,13 +3,15 @@
 require 'okapi'
 require 'okapi/utils'
 require 'okapi/metadata/metadata_pb'
+require 'storage'
 
 module Trinsic
   # Base functionality of all services
   class ServiceBase
-    def initialize(service_options)
+    def initialize(service_options, token_provider = nil)
       @service_options = service_options || trinsic_server
       @security_provider = OberonSecurityProvider.new
+      @token_provider = token_provider || MemoryTokenProvider.new
     end
 
     def metadata(message)

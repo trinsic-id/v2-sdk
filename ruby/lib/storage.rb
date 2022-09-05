@@ -10,13 +10,28 @@ require 'okapi/oberon'
 module Trinsic
   # Interface
   module ITokenProvider
-    def (_account_profile, _message)
+    def save(_auth_token, _name = 'default')
+      raise 'Not implemented'
+    end
+    def get(_name)
       raise 'Not implemented'
     end
   end
 
-  # Oberon security
+  # In memory security provider
   class MemoryTokenProvider
     include ITokenProvider
+
+    def initialize
+      @tokens = {}
+    end
+
+    def save(_auth_token, _name = 'default')
+      @tokens[_name] = _auth_token
+    end
+
+    def get(_name)
+      @tokens[_name]
+    end
   end
 end
