@@ -2350,11 +2350,11 @@ class GetEventTokenResponse extends $pb.GeneratedMessage {
   void clearToken() => clearField(1);
 }
 
-class RetrieveVerificationRecordRequest extends $pb.GeneratedMessage {
+class RetrieveDomainVerificationRecordRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')
           ? ''
-          : 'RetrieveVerificationRecordRequest',
+          : 'RetrieveDomainVerificationRecordRequest',
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
@@ -2362,46 +2362,47 @@ class RetrieveVerificationRecordRequest extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..hasRequiredFields = false;
 
-  RetrieveVerificationRecordRequest._() : super();
-  factory RetrieveVerificationRecordRequest() => create();
-  factory RetrieveVerificationRecordRequest.fromBuffer($core.List<$core.int> i,
+  RetrieveDomainVerificationRecordRequest._() : super();
+  factory RetrieveDomainVerificationRecordRequest() => create();
+  factory RetrieveDomainVerificationRecordRequest.fromBuffer(
+          $core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory RetrieveVerificationRecordRequest.fromJson($core.String i,
+  factory RetrieveDomainVerificationRecordRequest.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  RetrieveVerificationRecordRequest clone() =>
-      RetrieveVerificationRecordRequest()..mergeFromMessage(this);
+  RetrieveDomainVerificationRecordRequest clone() =>
+      RetrieveDomainVerificationRecordRequest()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
-  RetrieveVerificationRecordRequest copyWith(
-          void Function(RetrieveVerificationRecordRequest) updates) =>
+  RetrieveDomainVerificationRecordRequest copyWith(
+          void Function(RetrieveDomainVerificationRecordRequest) updates) =>
       super.copyWith((message) =>
-              updates(message as RetrieveVerificationRecordRequest))
-          as RetrieveVerificationRecordRequest; // ignore: deprecated_member_use
+              updates(message as RetrieveDomainVerificationRecordRequest))
+          as RetrieveDomainVerificationRecordRequest; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static RetrieveVerificationRecordRequest create() =>
-      RetrieveVerificationRecordRequest._();
-  RetrieveVerificationRecordRequest createEmptyInstance() => create();
-  static $pb.PbList<RetrieveVerificationRecordRequest> createRepeated() =>
-      $pb.PbList<RetrieveVerificationRecordRequest>();
+  static RetrieveDomainVerificationRecordRequest create() =>
+      RetrieveDomainVerificationRecordRequest._();
+  RetrieveDomainVerificationRecordRequest createEmptyInstance() => create();
+  static $pb.PbList<RetrieveDomainVerificationRecordRequest> createRepeated() =>
+      $pb.PbList<RetrieveDomainVerificationRecordRequest>();
   @$core.pragma('dart2js:noInline')
-  static RetrieveVerificationRecordRequest getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<RetrieveVerificationRecordRequest>(
-          create);
-  static RetrieveVerificationRecordRequest? _defaultInstance;
+  static RetrieveDomainVerificationRecordRequest getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<
+          RetrieveDomainVerificationRecordRequest>(create);
+  static RetrieveDomainVerificationRecordRequest? _defaultInstance;
 }
 
-class RetrieveVerificationRecordResponse extends $pb.GeneratedMessage {
+class RetrieveDomainVerificationRecordResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')
           ? ''
-          : 'RetrieveVerificationRecordResponse',
+          : 'RetrieveDomainVerificationRecordResponse',
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
@@ -2414,8 +2415,8 @@ class RetrieveVerificationRecordResponse extends $pb.GeneratedMessage {
             : 'verificationTxt')
     ..hasRequiredFields = false;
 
-  RetrieveVerificationRecordResponse._() : super();
-  factory RetrieveVerificationRecordResponse({
+  RetrieveDomainVerificationRecordResponse._() : super();
+  factory RetrieveDomainVerificationRecordResponse({
     $core.String? verificationTxt,
   }) {
     final _result = create();
@@ -2424,37 +2425,39 @@ class RetrieveVerificationRecordResponse extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory RetrieveVerificationRecordResponse.fromBuffer($core.List<$core.int> i,
+  factory RetrieveDomainVerificationRecordResponse.fromBuffer(
+          $core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory RetrieveVerificationRecordResponse.fromJson($core.String i,
+  factory RetrieveDomainVerificationRecordResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  RetrieveVerificationRecordResponse clone() =>
-      RetrieveVerificationRecordResponse()..mergeFromMessage(this);
+  RetrieveDomainVerificationRecordResponse clone() =>
+      RetrieveDomainVerificationRecordResponse()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
-  RetrieveVerificationRecordResponse copyWith(
-          void Function(RetrieveVerificationRecordResponse) updates) =>
+  RetrieveDomainVerificationRecordResponse copyWith(
+          void Function(RetrieveDomainVerificationRecordResponse) updates) =>
       super.copyWith((message) =>
-              updates(message as RetrieveVerificationRecordResponse))
-          as RetrieveVerificationRecordResponse; // ignore: deprecated_member_use
+              updates(message as RetrieveDomainVerificationRecordResponse))
+          as RetrieveDomainVerificationRecordResponse; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static RetrieveVerificationRecordResponse create() =>
-      RetrieveVerificationRecordResponse._();
-  RetrieveVerificationRecordResponse createEmptyInstance() => create();
-  static $pb.PbList<RetrieveVerificationRecordResponse> createRepeated() =>
-      $pb.PbList<RetrieveVerificationRecordResponse>();
+  static RetrieveDomainVerificationRecordResponse create() =>
+      RetrieveDomainVerificationRecordResponse._();
+  RetrieveDomainVerificationRecordResponse createEmptyInstance() => create();
+  static $pb.PbList<RetrieveDomainVerificationRecordResponse>
+      createRepeated() =>
+          $pb.PbList<RetrieveDomainVerificationRecordResponse>();
   @$core.pragma('dart2js:noInline')
-  static RetrieveVerificationRecordResponse getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<RetrieveVerificationRecordResponse>(
-          create);
-  static RetrieveVerificationRecordResponse? _defaultInstance;
+  static RetrieveDomainVerificationRecordResponse getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<
+          RetrieveDomainVerificationRecordResponse>(create);
+  static RetrieveDomainVerificationRecordResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get verificationTxt => $_getSZ(0);
@@ -2469,11 +2472,11 @@ class RetrieveVerificationRecordResponse extends $pb.GeneratedMessage {
   void clearVerificationTxt() => clearField(1);
 }
 
-class RefreshVerificationStatusRequest extends $pb.GeneratedMessage {
+class RefreshDomainVerificationStatusRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')
           ? ''
-          : 'RefreshVerificationStatusRequest',
+          : 'RefreshDomainVerificationStatusRequest',
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
@@ -2481,46 +2484,47 @@ class RefreshVerificationStatusRequest extends $pb.GeneratedMessage {
       createEmptyInstance: create)
     ..hasRequiredFields = false;
 
-  RefreshVerificationStatusRequest._() : super();
-  factory RefreshVerificationStatusRequest() => create();
-  factory RefreshVerificationStatusRequest.fromBuffer($core.List<$core.int> i,
+  RefreshDomainVerificationStatusRequest._() : super();
+  factory RefreshDomainVerificationStatusRequest() => create();
+  factory RefreshDomainVerificationStatusRequest.fromBuffer(
+          $core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory RefreshVerificationStatusRequest.fromJson($core.String i,
+  factory RefreshDomainVerificationStatusRequest.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  RefreshVerificationStatusRequest clone() =>
-      RefreshVerificationStatusRequest()..mergeFromMessage(this);
+  RefreshDomainVerificationStatusRequest clone() =>
+      RefreshDomainVerificationStatusRequest()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
-  RefreshVerificationStatusRequest copyWith(
-          void Function(RefreshVerificationStatusRequest) updates) =>
-      super.copyWith(
-              (message) => updates(message as RefreshVerificationStatusRequest))
-          as RefreshVerificationStatusRequest; // ignore: deprecated_member_use
+  RefreshDomainVerificationStatusRequest copyWith(
+          void Function(RefreshDomainVerificationStatusRequest) updates) =>
+      super.copyWith((message) =>
+              updates(message as RefreshDomainVerificationStatusRequest))
+          as RefreshDomainVerificationStatusRequest; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static RefreshVerificationStatusRequest create() =>
-      RefreshVerificationStatusRequest._();
-  RefreshVerificationStatusRequest createEmptyInstance() => create();
-  static $pb.PbList<RefreshVerificationStatusRequest> createRepeated() =>
-      $pb.PbList<RefreshVerificationStatusRequest>();
+  static RefreshDomainVerificationStatusRequest create() =>
+      RefreshDomainVerificationStatusRequest._();
+  RefreshDomainVerificationStatusRequest createEmptyInstance() => create();
+  static $pb.PbList<RefreshDomainVerificationStatusRequest> createRepeated() =>
+      $pb.PbList<RefreshDomainVerificationStatusRequest>();
   @$core.pragma('dart2js:noInline')
-  static RefreshVerificationStatusRequest getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<RefreshVerificationStatusRequest>(
-          create);
-  static RefreshVerificationStatusRequest? _defaultInstance;
+  static RefreshDomainVerificationStatusRequest getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<
+          RefreshDomainVerificationStatusRequest>(create);
+  static RefreshDomainVerificationStatusRequest? _defaultInstance;
 }
 
-class RefreshVerificationStatusResponse extends $pb.GeneratedMessage {
+class RefreshDomainVerificationStatusResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')
           ? ''
-          : 'RefreshVerificationStatusResponse',
+          : 'RefreshDomainVerificationStatusResponse',
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
@@ -2538,8 +2542,8 @@ class RefreshVerificationStatusResponse extends $pb.GeneratedMessage {
             : 'domainVerified')
     ..hasRequiredFields = false;
 
-  RefreshVerificationStatusResponse._() : super();
-  factory RefreshVerificationStatusResponse({
+  RefreshDomainVerificationStatusResponse._() : super();
+  factory RefreshDomainVerificationStatusResponse({
     $core.String? domain,
     $core.bool? domainVerified,
   }) {
@@ -2552,37 +2556,38 @@ class RefreshVerificationStatusResponse extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory RefreshVerificationStatusResponse.fromBuffer($core.List<$core.int> i,
+  factory RefreshDomainVerificationStatusResponse.fromBuffer(
+          $core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory RefreshVerificationStatusResponse.fromJson($core.String i,
+  factory RefreshDomainVerificationStatusResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  RefreshVerificationStatusResponse clone() =>
-      RefreshVerificationStatusResponse()..mergeFromMessage(this);
+  RefreshDomainVerificationStatusResponse clone() =>
+      RefreshDomainVerificationStatusResponse()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
-  RefreshVerificationStatusResponse copyWith(
-          void Function(RefreshVerificationStatusResponse) updates) =>
+  RefreshDomainVerificationStatusResponse copyWith(
+          void Function(RefreshDomainVerificationStatusResponse) updates) =>
       super.copyWith((message) =>
-              updates(message as RefreshVerificationStatusResponse))
-          as RefreshVerificationStatusResponse; // ignore: deprecated_member_use
+              updates(message as RefreshDomainVerificationStatusResponse))
+          as RefreshDomainVerificationStatusResponse; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static RefreshVerificationStatusResponse create() =>
-      RefreshVerificationStatusResponse._();
-  RefreshVerificationStatusResponse createEmptyInstance() => create();
-  static $pb.PbList<RefreshVerificationStatusResponse> createRepeated() =>
-      $pb.PbList<RefreshVerificationStatusResponse>();
+  static RefreshDomainVerificationStatusResponse create() =>
+      RefreshDomainVerificationStatusResponse._();
+  RefreshDomainVerificationStatusResponse createEmptyInstance() => create();
+  static $pb.PbList<RefreshDomainVerificationStatusResponse> createRepeated() =>
+      $pb.PbList<RefreshDomainVerificationStatusResponse>();
   @$core.pragma('dart2js:noInline')
-  static RefreshVerificationStatusResponse getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<RefreshVerificationStatusResponse>(
-          create);
-  static RefreshVerificationStatusResponse? _defaultInstance;
+  static RefreshDomainVerificationStatusResponse getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<
+          RefreshDomainVerificationStatusResponse>(create);
+  static RefreshDomainVerificationStatusResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get domain => $_getSZ(0);

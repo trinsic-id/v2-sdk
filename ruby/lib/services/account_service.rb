@@ -21,9 +21,7 @@ module Trinsic
       request.ecosystem_id = request.ecosystem_id || 'default'
       auth_token = @client.sign_in(request).profile
       encoded_profile = Base64.urlsafe_encode64(Account::AccountProfile.encode(auth_token))
-      unless auth_token.protection.enabled
-        @token_provider.save(encoded_profile)
-      end
+      @token_provider.save(encoded_profile) unless auth_token.protection.enabled
       encoded_profile
     end
 

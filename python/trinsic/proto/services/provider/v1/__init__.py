@@ -367,12 +367,12 @@ class GetEventTokenResponse(betterproto.Message):
 
 
 @dataclass(eq=False, repr=False)
-class RetrieveVerificationRecordRequest(betterproto.Message):
+class RetrieveDomainVerificationRecordRequest(betterproto.Message):
     pass
 
 
 @dataclass(eq=False, repr=False)
-class RetrieveVerificationRecordResponse(betterproto.Message):
+class RetrieveDomainVerificationRecordResponse(betterproto.Message):
     """
     Response message containing a TXT record content for domain url
     verification
@@ -383,12 +383,12 @@ class RetrieveVerificationRecordResponse(betterproto.Message):
 
 
 @dataclass(eq=False, repr=False)
-class RefreshVerificationStatusRequest(betterproto.Message):
+class RefreshDomainVerificationStatusRequest(betterproto.Message):
     pass
 
 
 @dataclass(eq=False, repr=False)
-class RefreshVerificationStatusResponse(betterproto.Message):
+class RefreshDomainVerificationStatusResponse(betterproto.Message):
     domain: str = betterproto.string_field(1)
     """Domain URL verified"""
 
@@ -691,33 +691,33 @@ class ProviderStub(betterproto.ServiceStub):
             metadata=metadata,
         )
 
-    async def retrieve_verification_record(
+    async def retrieve_domain_verification_record(
         self,
-        retrieve_verification_record_request: "RetrieveVerificationRecordRequest",
+        retrieve_domain_verification_record_request: "RetrieveDomainVerificationRecordRequest",
         timeout: Optional[float] = None,
         deadline: Optional["Deadline"] = None,
         metadata: Optional["_MetadataLike"] = None,
-    ) -> "RetrieveVerificationRecordResponse":
+    ) -> "RetrieveDomainVerificationRecordResponse":
         return await self._unary_unary(
-            "/services.provider.v1.Provider/RetrieveVerificationRecord",
-            retrieve_verification_record_request,
-            RetrieveVerificationRecordResponse,
+            "/services.provider.v1.Provider/RetrieveDomainVerificationRecord",
+            retrieve_domain_verification_record_request,
+            RetrieveDomainVerificationRecordResponse,
             timeout=timeout,
             deadline=deadline,
             metadata=metadata,
         )
 
-    async def refresh_verification_status(
+    async def refresh_domain_verification_status(
         self,
-        refresh_verification_status_request: "RefreshVerificationStatusRequest",
+        refresh_domain_verification_status_request: "RefreshDomainVerificationStatusRequest",
         timeout: Optional[float] = None,
         deadline: Optional["Deadline"] = None,
         metadata: Optional["_MetadataLike"] = None,
-    ) -> "RefreshVerificationStatusResponse":
+    ) -> "RefreshDomainVerificationStatusResponse":
         return await self._unary_unary(
-            "/services.provider.v1.Provider/RefreshVerificationStatus",
-            refresh_verification_status_request,
-            RefreshVerificationStatusResponse,
+            "/services.provider.v1.Provider/RefreshDomainVerificationStatus",
+            refresh_domain_verification_status_request,
+            RefreshDomainVerificationStatusResponse,
             timeout=timeout,
             deadline=deadline,
             metadata=metadata,
@@ -788,14 +788,16 @@ class ProviderBase(ServiceBase):
     ) -> "GetEventTokenResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def retrieve_verification_record(
-        self, retrieve_verification_record_request: "RetrieveVerificationRecordRequest"
-    ) -> "RetrieveVerificationRecordResponse":
+    async def retrieve_domain_verification_record(
+        self,
+        retrieve_domain_verification_record_request: "RetrieveDomainVerificationRecordRequest",
+    ) -> "RetrieveDomainVerificationRecordResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def refresh_verification_status(
-        self, refresh_verification_status_request: "RefreshVerificationStatusRequest"
-    ) -> "RefreshVerificationStatusResponse":
+    async def refresh_domain_verification_status(
+        self,
+        refresh_domain_verification_status_request: "RefreshDomainVerificationStatusRequest",
+    ) -> "RefreshDomainVerificationStatusResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def __rpc_create_ecosystem(self, stream: grpclib.server.Stream) -> None:
@@ -863,18 +865,18 @@ class ProviderBase(ServiceBase):
         response = await self.get_event_token(request)
         await stream.send_message(response)
 
-    async def __rpc_retrieve_verification_record(
+    async def __rpc_retrieve_domain_verification_record(
         self, stream: grpclib.server.Stream
     ) -> None:
         request = await stream.recv_message()
-        response = await self.retrieve_verification_record(request)
+        response = await self.retrieve_domain_verification_record(request)
         await stream.send_message(response)
 
-    async def __rpc_refresh_verification_status(
+    async def __rpc_refresh_domain_verification_status(
         self, stream: grpclib.server.Stream
     ) -> None:
         request = await stream.recv_message()
-        response = await self.refresh_verification_status(request)
+        response = await self.refresh_domain_verification_status(request)
         await stream.send_message(response)
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
@@ -957,16 +959,16 @@ class ProviderBase(ServiceBase):
                 GetEventTokenRequest,
                 GetEventTokenResponse,
             ),
-            "/services.provider.v1.Provider/RetrieveVerificationRecord": grpclib.const.Handler(
-                self.__rpc_retrieve_verification_record,
+            "/services.provider.v1.Provider/RetrieveDomainVerificationRecord": grpclib.const.Handler(
+                self.__rpc_retrieve_domain_verification_record,
                 grpclib.const.Cardinality.UNARY_UNARY,
-                RetrieveVerificationRecordRequest,
-                RetrieveVerificationRecordResponse,
+                RetrieveDomainVerificationRecordRequest,
+                RetrieveDomainVerificationRecordResponse,
             ),
-            "/services.provider.v1.Provider/RefreshVerificationStatus": grpclib.const.Handler(
-                self.__rpc_refresh_verification_status,
+            "/services.provider.v1.Provider/RefreshDomainVerificationStatus": grpclib.const.Handler(
+                self.__rpc_refresh_domain_verification_status,
                 grpclib.const.Cardinality.UNARY_UNARY,
-                RefreshVerificationStatusRequest,
-                RefreshVerificationStatusResponse,
+                RefreshDomainVerificationStatusRequest,
+                RefreshDomainVerificationStatusResponse,
             ),
         }

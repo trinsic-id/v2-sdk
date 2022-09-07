@@ -1326,8 +1326,8 @@ Confirmation method type for two-factor workflows
 | InvitationStatus | [InvitationStatusRequest](/reference/proto#services-provider-v1-InvitationStatusRequest) | [InvitationStatusResponse](/reference/proto#services-provider-v1-InvitationStatusResponse) | Check the status of an invitation |
 | GetOberonKey | [GetOberonKeyRequest](/reference/proto#services-provider-v1-GetOberonKeyRequest) | [GetOberonKeyResponse](/reference/proto#services-provider-v1-GetOberonKeyResponse) | Returns the public key being used to create/verify oberon tokens |
 | GetEventToken | [GetEventTokenRequest](/reference/proto#services-provider-v1-GetEventTokenRequest) | [GetEventTokenResponse](/reference/proto#services-provider-v1-GetEventTokenResponse) | Generate a signed token (JWT) that can be used to connect to the message bus |
-| RetrieveVerificationRecord | [RetrieveVerificationRecordRequest](/reference/proto#services-provider-v1-RetrieveVerificationRecordRequest) | [RetrieveVerificationRecordResponse](/reference/proto#services-provider-v1-RetrieveVerificationRecordResponse) | Retrieve a random hash TXT that can be used to verify domain ownership |
-| RefreshVerificationStatus | [RefreshVerificationStatusRequest](/reference/proto#services-provider-v1-RefreshVerificationStatusRequest) | [RefreshVerificationStatusResponse](/reference/proto#services-provider-v1-RefreshVerificationStatusResponse) | Call to verif |
+| RetrieveDomainVerificationRecord | [RetrieveDomainVerificationRecordRequest](/reference/proto#services-provider-v1-RetrieveDomainVerificationRecordRequest) | [RetrieveDomainVerificationRecordResponse](/reference/proto#services-provider-v1-RetrieveDomainVerificationRecordResponse) | Retrieve a random hash TXT that can be used to verify domain ownership |
+| RefreshDomainVerificationStatus | [RefreshDomainVerificationStatusRequest](/reference/proto#services-provider-v1-RefreshDomainVerificationStatusRequest) | [RefreshDomainVerificationStatusResponse](/reference/proto#services-provider-v1-RefreshDomainVerificationStatusResponse) | Call to verif |
 
  <!-- end services -->
 
@@ -1740,19 +1740,19 @@ Response to `InviteRequest`
 
 
 
-<a name="services-provider-v1-RefreshVerificationStatusRequest"></a>
+<a name="services-provider-v1-RefreshDomainVerificationStatusRequest"></a>
 
-### RefreshVerificationStatusRequest
-TODO - Should we allow specifying which ecosystem to use?
-
+### RefreshDomainVerificationStatusRequest
 
 
 
 
 
-<a name="services-provider-v1-RefreshVerificationStatusResponse"></a>
 
-### RefreshVerificationStatusResponse
+
+<a name="services-provider-v1-RefreshDomainVerificationStatusResponse"></a>
+
+### RefreshDomainVerificationStatusResponse
 
 
 
@@ -1766,19 +1766,19 @@ TODO - Should we allow specifying which ecosystem to use?
 
 
 
-<a name="services-provider-v1-RetrieveVerificationRecordRequest"></a>
+<a name="services-provider-v1-RetrieveDomainVerificationRecordRequest"></a>
 
-### RetrieveVerificationRecordRequest
-
-
+### RetrieveDomainVerificationRecordRequest
 
 
 
 
 
-<a name="services-provider-v1-RetrieveVerificationRecordResponse"></a>
 
-### RetrieveVerificationRecordResponse
+
+<a name="services-provider-v1-RetrieveDomainVerificationRecordResponse"></a>
+
+### RetrieveDomainVerificationRecordResponse
 Response message containing a TXT record content for domain url verification
 
 

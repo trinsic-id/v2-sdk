@@ -159,21 +159,21 @@ class ProviderService(ServiceBase):
             request, metadata=self.build_metadata(request)
         )
 
-    async def retrieve_verification_record(
-        self, *, request: RetrieveVerificationRecordRequest
-    ) -> RetrieveVerificationRecordResponse:
+    async def retrieve_domain_verification_record(
+        self, *, request: RetrieveDomainVerificationRecordRequest
+    ) -> RetrieveDomainVerificationRecordResponse:
         """Retrieve a random hash TXT that can be used to verify domain ownership"""
 
-        return await self.client.retrieve_verification_record(
+        return await self.client.retrieve_domain_verification_record(
             request, metadata=self.build_metadata(request)
         )
 
-    async def refresh_verification_status(
-        self, *, request: RefreshVerificationStatusRequest
-    ) -> RefreshVerificationStatusResponse:
+    async def refresh_domain_verification_status(
+        self, *, request: RefreshDomainVerificationStatusRequest
+    ) -> RefreshDomainVerificationStatusResponse:
         """Call to verif"""
 
-        return await self.client.refresh_verification_status(
+        return await self.client.refresh_domain_verification_status(
             request, metadata=self.build_metadata(request)
         )
 

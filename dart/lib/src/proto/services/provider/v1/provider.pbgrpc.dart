@@ -91,20 +91,22 @@ class ProviderClient extends $grpc.Client {
           ($4.GetEventTokenRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $4.GetEventTokenResponse.fromBuffer(value));
-  static final _$retrieveVerificationRecord = $grpc.ClientMethod<
-          $4.RetrieveVerificationRecordRequest,
-          $4.RetrieveVerificationRecordResponse>(
-      '/services.provider.v1.Provider/RetrieveVerificationRecord',
-      ($4.RetrieveVerificationRecordRequest value) => value.writeToBuffer(),
+  static final _$retrieveDomainVerificationRecord = $grpc.ClientMethod<
+          $4.RetrieveDomainVerificationRecordRequest,
+          $4.RetrieveDomainVerificationRecordResponse>(
+      '/services.provider.v1.Provider/RetrieveDomainVerificationRecord',
+      ($4.RetrieveDomainVerificationRecordRequest value) =>
+          value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $4.RetrieveVerificationRecordResponse.fromBuffer(value));
-  static final _$refreshVerificationStatus = $grpc.ClientMethod<
-          $4.RefreshVerificationStatusRequest,
-          $4.RefreshVerificationStatusResponse>(
-      '/services.provider.v1.Provider/RefreshVerificationStatus',
-      ($4.RefreshVerificationStatusRequest value) => value.writeToBuffer(),
+          $4.RetrieveDomainVerificationRecordResponse.fromBuffer(value));
+  static final _$refreshDomainVerificationStatus = $grpc.ClientMethod<
+          $4.RefreshDomainVerificationStatusRequest,
+          $4.RefreshDomainVerificationStatusResponse>(
+      '/services.provider.v1.Provider/RefreshDomainVerificationStatus',
+      ($4.RefreshDomainVerificationStatusRequest value) =>
+          value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $4.RefreshVerificationStatusResponse.fromBuffer(value));
+          $4.RefreshDomainVerificationStatusResponse.fromBuffer(value));
 
   ProviderClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -188,17 +190,19 @@ class ProviderClient extends $grpc.Client {
     return $createUnaryCall(_$getEventToken, request, options: options);
   }
 
-  $grpc.ResponseFuture<$4.RetrieveVerificationRecordResponse>
-      retrieveVerificationRecord($4.RetrieveVerificationRecordRequest request,
+  $grpc.ResponseFuture<$4.RetrieveDomainVerificationRecordResponse>
+      retrieveDomainVerificationRecord(
+          $4.RetrieveDomainVerificationRecordRequest request,
           {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$retrieveVerificationRecord, request,
+    return $createUnaryCall(_$retrieveDomainVerificationRecord, request,
         options: options);
   }
 
-  $grpc.ResponseFuture<$4.RefreshVerificationStatusResponse>
-      refreshVerificationStatus($4.RefreshVerificationStatusRequest request,
+  $grpc.ResponseFuture<$4.RefreshDomainVerificationStatusResponse>
+      refreshDomainVerificationStatus(
+          $4.RefreshDomainVerificationStatusRequest request,
           {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$refreshVerificationStatus, request,
+    return $createUnaryCall(_$refreshDomainVerificationStatus, request,
         options: options);
   }
 }
@@ -320,25 +324,26 @@ abstract class ProviderServiceBase extends $grpc.Service {
             ($core.List<$core.int> value) =>
                 $4.GetEventTokenRequest.fromBuffer(value),
             ($4.GetEventTokenResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$4.RetrieveVerificationRecordRequest,
-            $4.RetrieveVerificationRecordResponse>(
-        'RetrieveVerificationRecord',
-        retrieveVerificationRecord_Pre,
+    $addMethod($grpc.ServiceMethod<$4.RetrieveDomainVerificationRecordRequest,
+            $4.RetrieveDomainVerificationRecordResponse>(
+        'RetrieveDomainVerificationRecord',
+        retrieveDomainVerificationRecord_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $4.RetrieveVerificationRecordRequest.fromBuffer(value),
-        ($4.RetrieveVerificationRecordResponse value) =>
+            $4.RetrieveDomainVerificationRecordRequest.fromBuffer(value),
+        ($4.RetrieveDomainVerificationRecordResponse value) =>
             value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$4.RefreshVerificationStatusRequest,
-            $4.RefreshVerificationStatusResponse>(
-        'RefreshVerificationStatus',
-        refreshVerificationStatus_Pre,
+    $addMethod($grpc.ServiceMethod<$4.RefreshDomainVerificationStatusRequest,
+            $4.RefreshDomainVerificationStatusResponse>(
+        'RefreshDomainVerificationStatus',
+        refreshDomainVerificationStatus_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $4.RefreshVerificationStatusRequest.fromBuffer(value),
-        ($4.RefreshVerificationStatusResponse value) => value.writeToBuffer()));
+            $4.RefreshDomainVerificationStatusRequest.fromBuffer(value),
+        ($4.RefreshDomainVerificationStatusResponse value) =>
+            value.writeToBuffer()));
   }
 
   $async.Future<$4.CreateEcosystemResponse> createEcosystem_Pre(
@@ -417,16 +422,20 @@ abstract class ProviderServiceBase extends $grpc.Service {
     return getEventToken(call, await request);
   }
 
-  $async.Future<$4.RetrieveVerificationRecordResponse>
-      retrieveVerificationRecord_Pre($grpc.ServiceCall call,
-          $async.Future<$4.RetrieveVerificationRecordRequest> request) async {
-    return retrieveVerificationRecord(call, await request);
+  $async.Future<$4.RetrieveDomainVerificationRecordResponse>
+      retrieveDomainVerificationRecord_Pre(
+          $grpc.ServiceCall call,
+          $async.Future<$4.RetrieveDomainVerificationRecordRequest>
+              request) async {
+    return retrieveDomainVerificationRecord(call, await request);
   }
 
-  $async.Future<$4.RefreshVerificationStatusResponse>
-      refreshVerificationStatus_Pre($grpc.ServiceCall call,
-          $async.Future<$4.RefreshVerificationStatusRequest> request) async {
-    return refreshVerificationStatus(call, await request);
+  $async.Future<$4.RefreshDomainVerificationStatusResponse>
+      refreshDomainVerificationStatus_Pre(
+          $grpc.ServiceCall call,
+          $async.Future<$4.RefreshDomainVerificationStatusRequest>
+              request) async {
+    return refreshDomainVerificationStatus(call, await request);
   }
 
   $async.Future<$4.CreateEcosystemResponse> createEcosystem(
@@ -455,9 +464,10 @@ abstract class ProviderServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $4.GetOberonKeyRequest request);
   $async.Future<$4.GetEventTokenResponse> getEventToken(
       $grpc.ServiceCall call, $4.GetEventTokenRequest request);
-  $async.Future<$4.RetrieveVerificationRecordResponse>
-      retrieveVerificationRecord(
-          $grpc.ServiceCall call, $4.RetrieveVerificationRecordRequest request);
-  $async.Future<$4.RefreshVerificationStatusResponse> refreshVerificationStatus(
-      $grpc.ServiceCall call, $4.RefreshVerificationStatusRequest request);
+  $async.Future<$4.RetrieveDomainVerificationRecordResponse>
+      retrieveDomainVerificationRecord($grpc.ServiceCall call,
+          $4.RetrieveDomainVerificationRecordRequest request);
+  $async.Future<$4.RefreshDomainVerificationStatusResponse>
+      refreshDomainVerificationStatus($grpc.ServiceCall call,
+          $4.RefreshDomainVerificationStatusRequest request);
 }

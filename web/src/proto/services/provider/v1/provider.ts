@@ -328,18 +328,17 @@ export interface GetEventTokenResponse {
   token: string;
 }
 
-export interface RetrieveVerificationRecordRequest {}
+export interface RetrieveDomainVerificationRecordRequest {}
 
 /** Response message containing a TXT record content for domain url verification */
-export interface RetrieveVerificationRecordResponse {
+export interface RetrieveDomainVerificationRecordResponse {
   /** TXT code to use for domain verification */
   verificationTxt: string;
 }
 
-/** TODO - Should we allow specifying which ecosystem to use? */
-export interface RefreshVerificationStatusRequest {}
+export interface RefreshDomainVerificationStatusRequest {}
 
-export interface RefreshVerificationStatusResponse {
+export interface RefreshDomainVerificationStatusResponse {
   /** Domain URL verified */
   domain: string;
   /** Specifies if the above `domain` was successfully verified */
@@ -2264,13 +2263,13 @@ export const GetEventTokenResponse = {
   },
 };
 
-function createBaseRetrieveVerificationRecordRequest(): RetrieveVerificationRecordRequest {
+function createBaseRetrieveDomainVerificationRecordRequest(): RetrieveDomainVerificationRecordRequest {
   return {};
 }
 
-export const RetrieveVerificationRecordRequest = {
+export const RetrieveDomainVerificationRecordRequest = {
   encode(
-    _: RetrieveVerificationRecordRequest,
+    _: RetrieveDomainVerificationRecordRequest,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
     return writer;
@@ -2279,10 +2278,10 @@ export const RetrieveVerificationRecordRequest = {
   decode(
     input: _m0.Reader | Uint8Array,
     length?: number
-  ): RetrieveVerificationRecordRequest {
+  ): RetrieveDomainVerificationRecordRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseRetrieveVerificationRecordRequest();
+    const message = createBaseRetrieveDomainVerificationRecordRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -2294,30 +2293,30 @@ export const RetrieveVerificationRecordRequest = {
     return message;
   },
 
-  fromJSON(_: any): RetrieveVerificationRecordRequest {
+  fromJSON(_: any): RetrieveDomainVerificationRecordRequest {
     return {};
   },
 
-  toJSON(_: RetrieveVerificationRecordRequest): unknown {
+  toJSON(_: RetrieveDomainVerificationRecordRequest): unknown {
     const obj: any = {};
     return obj;
   },
 
   fromPartial(
-    _: DeepPartial<RetrieveVerificationRecordRequest>
-  ): RetrieveVerificationRecordRequest {
-    const message = createBaseRetrieveVerificationRecordRequest();
+    _: DeepPartial<RetrieveDomainVerificationRecordRequest>
+  ): RetrieveDomainVerificationRecordRequest {
+    const message = createBaseRetrieveDomainVerificationRecordRequest();
     return message;
   },
 };
 
-function createBaseRetrieveVerificationRecordResponse(): RetrieveVerificationRecordResponse {
+function createBaseRetrieveDomainVerificationRecordResponse(): RetrieveDomainVerificationRecordResponse {
   return { verificationTxt: "" };
 }
 
-export const RetrieveVerificationRecordResponse = {
+export const RetrieveDomainVerificationRecordResponse = {
   encode(
-    message: RetrieveVerificationRecordResponse,
+    message: RetrieveDomainVerificationRecordResponse,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
     if (message.verificationTxt !== "") {
@@ -2329,10 +2328,10 @@ export const RetrieveVerificationRecordResponse = {
   decode(
     input: _m0.Reader | Uint8Array,
     length?: number
-  ): RetrieveVerificationRecordResponse {
+  ): RetrieveDomainVerificationRecordResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseRetrieveVerificationRecordResponse();
+    const message = createBaseRetrieveDomainVerificationRecordResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -2347,7 +2346,7 @@ export const RetrieveVerificationRecordResponse = {
     return message;
   },
 
-  fromJSON(object: any): RetrieveVerificationRecordResponse {
+  fromJSON(object: any): RetrieveDomainVerificationRecordResponse {
     return {
       verificationTxt: isSet(object.verificationTxt)
         ? String(object.verificationTxt)
@@ -2355,7 +2354,7 @@ export const RetrieveVerificationRecordResponse = {
     };
   },
 
-  toJSON(message: RetrieveVerificationRecordResponse): unknown {
+  toJSON(message: RetrieveDomainVerificationRecordResponse): unknown {
     const obj: any = {};
     message.verificationTxt !== undefined &&
       (obj.verificationTxt = message.verificationTxt);
@@ -2363,21 +2362,21 @@ export const RetrieveVerificationRecordResponse = {
   },
 
   fromPartial(
-    object: DeepPartial<RetrieveVerificationRecordResponse>
-  ): RetrieveVerificationRecordResponse {
-    const message = createBaseRetrieveVerificationRecordResponse();
+    object: DeepPartial<RetrieveDomainVerificationRecordResponse>
+  ): RetrieveDomainVerificationRecordResponse {
+    const message = createBaseRetrieveDomainVerificationRecordResponse();
     message.verificationTxt = object.verificationTxt ?? "";
     return message;
   },
 };
 
-function createBaseRefreshVerificationStatusRequest(): RefreshVerificationStatusRequest {
+function createBaseRefreshDomainVerificationStatusRequest(): RefreshDomainVerificationStatusRequest {
   return {};
 }
 
-export const RefreshVerificationStatusRequest = {
+export const RefreshDomainVerificationStatusRequest = {
   encode(
-    _: RefreshVerificationStatusRequest,
+    _: RefreshDomainVerificationStatusRequest,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
     return writer;
@@ -2386,10 +2385,10 @@ export const RefreshVerificationStatusRequest = {
   decode(
     input: _m0.Reader | Uint8Array,
     length?: number
-  ): RefreshVerificationStatusRequest {
+  ): RefreshDomainVerificationStatusRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseRefreshVerificationStatusRequest();
+    const message = createBaseRefreshDomainVerificationStatusRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -2401,30 +2400,30 @@ export const RefreshVerificationStatusRequest = {
     return message;
   },
 
-  fromJSON(_: any): RefreshVerificationStatusRequest {
+  fromJSON(_: any): RefreshDomainVerificationStatusRequest {
     return {};
   },
 
-  toJSON(_: RefreshVerificationStatusRequest): unknown {
+  toJSON(_: RefreshDomainVerificationStatusRequest): unknown {
     const obj: any = {};
     return obj;
   },
 
   fromPartial(
-    _: DeepPartial<RefreshVerificationStatusRequest>
-  ): RefreshVerificationStatusRequest {
-    const message = createBaseRefreshVerificationStatusRequest();
+    _: DeepPartial<RefreshDomainVerificationStatusRequest>
+  ): RefreshDomainVerificationStatusRequest {
+    const message = createBaseRefreshDomainVerificationStatusRequest();
     return message;
   },
 };
 
-function createBaseRefreshVerificationStatusResponse(): RefreshVerificationStatusResponse {
+function createBaseRefreshDomainVerificationStatusResponse(): RefreshDomainVerificationStatusResponse {
   return { domain: "", domainVerified: false };
 }
 
-export const RefreshVerificationStatusResponse = {
+export const RefreshDomainVerificationStatusResponse = {
   encode(
-    message: RefreshVerificationStatusResponse,
+    message: RefreshDomainVerificationStatusResponse,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
     if (message.domain !== "") {
@@ -2439,10 +2438,10 @@ export const RefreshVerificationStatusResponse = {
   decode(
     input: _m0.Reader | Uint8Array,
     length?: number
-  ): RefreshVerificationStatusResponse {
+  ): RefreshDomainVerificationStatusResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseRefreshVerificationStatusResponse();
+    const message = createBaseRefreshDomainVerificationStatusResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -2460,7 +2459,7 @@ export const RefreshVerificationStatusResponse = {
     return message;
   },
 
-  fromJSON(object: any): RefreshVerificationStatusResponse {
+  fromJSON(object: any): RefreshDomainVerificationStatusResponse {
     return {
       domain: isSet(object.domain) ? String(object.domain) : "",
       domainVerified: isSet(object.domainVerified)
@@ -2469,7 +2468,7 @@ export const RefreshVerificationStatusResponse = {
     };
   },
 
-  toJSON(message: RefreshVerificationStatusResponse): unknown {
+  toJSON(message: RefreshDomainVerificationStatusResponse): unknown {
     const obj: any = {};
     message.domain !== undefined && (obj.domain = message.domain);
     message.domainVerified !== undefined &&
@@ -2478,9 +2477,9 @@ export const RefreshVerificationStatusResponse = {
   },
 
   fromPartial(
-    object: DeepPartial<RefreshVerificationStatusResponse>
-  ): RefreshVerificationStatusResponse {
-    const message = createBaseRefreshVerificationStatusResponse();
+    object: DeepPartial<RefreshDomainVerificationStatusResponse>
+  ): RefreshDomainVerificationStatusResponse {
+    const message = createBaseRefreshDomainVerificationStatusResponse();
     message.domain = object.domain ?? "";
     message.domainVerified = object.domainVerified ?? false;
     return message;
@@ -2985,20 +2984,20 @@ export const ProviderDefinition = {
       options: {},
     },
     /** Retrieve a random hash TXT that can be used to verify domain ownership */
-    retrieveVerificationRecord: {
-      name: "RetrieveVerificationRecord",
-      requestType: RetrieveVerificationRecordRequest,
+    retrieveDomainVerificationRecord: {
+      name: "RetrieveDomainVerificationRecord",
+      requestType: RetrieveDomainVerificationRecordRequest,
       requestStream: false,
-      responseType: RetrieveVerificationRecordResponse,
+      responseType: RetrieveDomainVerificationRecordResponse,
       responseStream: false,
       options: {},
     },
     /** Call to verif */
-    refreshVerificationStatus: {
-      name: "RefreshVerificationStatus",
-      requestType: RefreshVerificationStatusRequest,
+    refreshDomainVerificationStatus: {
+      name: "RefreshDomainVerificationStatus",
+      requestType: RefreshDomainVerificationStatusRequest,
       requestStream: false,
-      responseType: RefreshVerificationStatusResponse,
+      responseType: RefreshDomainVerificationStatusResponse,
       responseStream: false,
       options: {},
     },

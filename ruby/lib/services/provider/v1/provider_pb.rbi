@@ -1864,24 +1864,24 @@ class Services::Provider::V1::GetEventTokenResponse
   end
 end
 
-class Services::Provider::V1::RetrieveVerificationRecordRequest
+class Services::Provider::V1::RetrieveDomainVerificationRecordRequest
   include Google::Protobuf
   include Google::Protobuf::MessageExts
   extend Google::Protobuf::MessageExts::ClassMethods
 
-  sig { params(str: String).returns(Services::Provider::V1::RetrieveVerificationRecordRequest) }
+  sig { params(str: String).returns(Services::Provider::V1::RetrieveDomainVerificationRecordRequest) }
   def self.decode(str)
   end
 
-  sig { params(msg: Services::Provider::V1::RetrieveVerificationRecordRequest).returns(String) }
+  sig { params(msg: Services::Provider::V1::RetrieveDomainVerificationRecordRequest).returns(String) }
   def self.encode(msg)
   end
 
-  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::RetrieveVerificationRecordRequest) }
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::RetrieveDomainVerificationRecordRequest) }
   def self.decode_json(str, **kw)
   end
 
-  sig { params(msg: Services::Provider::V1::RetrieveVerificationRecordRequest, kw: T.untyped).returns(String) }
+  sig { params(msg: Services::Provider::V1::RetrieveDomainVerificationRecordRequest, kw: T.untyped).returns(String) }
   def self.encode_json(msg, **kw)
   end
 
@@ -1905,24 +1905,24 @@ class Services::Provider::V1::RetrieveVerificationRecordRequest
   end
 end
 
-class Services::Provider::V1::RetrieveVerificationRecordResponse
+class Services::Provider::V1::RetrieveDomainVerificationRecordResponse
   include Google::Protobuf
   include Google::Protobuf::MessageExts
   extend Google::Protobuf::MessageExts::ClassMethods
 
-  sig { params(str: String).returns(Services::Provider::V1::RetrieveVerificationRecordResponse) }
+  sig { params(str: String).returns(Services::Provider::V1::RetrieveDomainVerificationRecordResponse) }
   def self.decode(str)
   end
 
-  sig { params(msg: Services::Provider::V1::RetrieveVerificationRecordResponse).returns(String) }
+  sig { params(msg: Services::Provider::V1::RetrieveDomainVerificationRecordResponse).returns(String) }
   def self.encode(msg)
   end
 
-  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::RetrieveVerificationRecordResponse) }
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::RetrieveDomainVerificationRecordResponse) }
   def self.decode_json(str, **kw)
   end
 
-  sig { params(msg: Services::Provider::V1::RetrieveVerificationRecordResponse, kw: T.untyped).returns(String) }
+  sig { params(msg: Services::Provider::V1::RetrieveDomainVerificationRecordResponse, kw: T.untyped).returns(String) }
   def self.encode_json(msg, **kw)
   end
 
@@ -1965,24 +1965,24 @@ class Services::Provider::V1::RetrieveVerificationRecordResponse
   end
 end
 
-class Services::Provider::V1::RefreshVerificationStatusRequest
+class Services::Provider::V1::RefreshDomainVerificationStatusRequest
   include Google::Protobuf
   include Google::Protobuf::MessageExts
   extend Google::Protobuf::MessageExts::ClassMethods
 
-  sig { params(str: String).returns(Services::Provider::V1::RefreshVerificationStatusRequest) }
+  sig { params(str: String).returns(Services::Provider::V1::RefreshDomainVerificationStatusRequest) }
   def self.decode(str)
   end
 
-  sig { params(msg: Services::Provider::V1::RefreshVerificationStatusRequest).returns(String) }
+  sig { params(msg: Services::Provider::V1::RefreshDomainVerificationStatusRequest).returns(String) }
   def self.encode(msg)
   end
 
-  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::RefreshVerificationStatusRequest) }
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::RefreshDomainVerificationStatusRequest) }
   def self.decode_json(str, **kw)
   end
 
-  sig { params(msg: Services::Provider::V1::RefreshVerificationStatusRequest, kw: T.untyped).returns(String) }
+  sig { params(msg: Services::Provider::V1::RefreshDomainVerificationStatusRequest, kw: T.untyped).returns(String) }
   def self.encode_json(msg, **kw)
   end
 
@@ -2006,24 +2006,24 @@ class Services::Provider::V1::RefreshVerificationStatusRequest
   end
 end
 
-class Services::Provider::V1::RefreshVerificationStatusResponse
+class Services::Provider::V1::RefreshDomainVerificationStatusResponse
   include Google::Protobuf
   include Google::Protobuf::MessageExts
   extend Google::Protobuf::MessageExts::ClassMethods
 
-  sig { params(str: String).returns(Services::Provider::V1::RefreshVerificationStatusResponse) }
+  sig { params(str: String).returns(Services::Provider::V1::RefreshDomainVerificationStatusResponse) }
   def self.decode(str)
   end
 
-  sig { params(msg: Services::Provider::V1::RefreshVerificationStatusResponse).returns(String) }
+  sig { params(msg: Services::Provider::V1::RefreshDomainVerificationStatusResponse).returns(String) }
   def self.encode(msg)
   end
 
-  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::RefreshVerificationStatusResponse) }
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::RefreshDomainVerificationStatusResponse) }
   def self.decode_json(str, **kw)
   end
 
-  sig { params(msg: Services::Provider::V1::RefreshVerificationStatusResponse, kw: T.untyped).returns(String) }
+  sig { params(msg: Services::Provider::V1::RefreshDomainVerificationStatusResponse, kw: T.untyped).returns(String) }
   def self.encode_json(msg, **kw)
   end
 

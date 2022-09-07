@@ -2,6 +2,7 @@ package trinsic.services
 
 import com.google.protobuf.ByteString
 import com.google.protobuf.InvalidProtocolBufferException
+import java.util.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import trinsic.okapi.DidException
@@ -11,7 +12,6 @@ import trinsic.okapi.security.v1.Security.BlindOberonTokenRequest
 import trinsic.okapi.security.v1.Security.UnBlindOberonTokenRequest
 import trinsic.sdk.options.v1.Options
 import trinsic.services.account.v1.*
-import java.util.*
 
 class AccountServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(options) {
   var stub: AccountGrpcKt.AccountCoroutineStub = AccountGrpcKt.AccountCoroutineStub(this.channel)
@@ -26,9 +26,7 @@ class AccountServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(o
         request2 = SignInRequest.newBuilder(request).setEcosystemId("default").build()
     val authToken =
         Base64.getUrlEncoder().encodeToString(stub.signIn(request2).profile.toByteArray())
-      withContext(Dispatchers.IO) {
-          tokenProvider.save(authToken).get()
-      }
+    withContext(Dispatchers.IO) { tokenProvider.save(authToken).get() }
     return authToken
   }
 
@@ -87,12 +85,11 @@ class AccountServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(o
   @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun login(request: LoginRequest): LoginResponse {
     val response = stub.login(request)
-      val authToken =
-          Base64.getUrlEncoder().encodeToString(response.profile.toByteArray())
-      withContext(Dispatchers.IO) {
-          if (!response.profile.protection.enabled) tokenProvider.save(authToken).get()
-      }
-      return response
+    val authToken = Base64.getUrlEncoder().encodeToString(response.profile.toByteArray())
+    withContext(Dispatchers.IO) {
+      if (!response.profile.protection.enabled) tokenProvider.save(authToken).get()
+    }
+    return response
   }
 
   @Throws(InvalidProtocolBufferException::class, DidException::class)
@@ -113,9 +110,7 @@ class AccountServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(o
     val response = stub.loginConfirm(request)
     val authToken = Base64.getUrlEncoder().encodeToString(response.profile.toByteArray())
 
-      withContext(Dispatchers.IO) {
-          tokenProvider.save(authToken).get()
-      }
+    withContext(Dispatchers.IO) { tokenProvider.save(authToken).get() }
 
     return authToken
   }
@@ -125,9 +120,7 @@ class AccountServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(o
     val response = this.login(LoginRequest.newBuilder().setEcosystemId(ecosystemId).build())
 
     val authToken = Base64.getUrlEncoder().encodeToString(response.profile.toByteArray())
-      withContext(Dispatchers.IO) {
-          tokenProvider.save(authToken).get()
-      }
+    withContext(Dispatchers.IO) { tokenProvider.save(authToken).get() }
     return authToken
   }
 

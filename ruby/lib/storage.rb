@@ -13,6 +13,7 @@ module Trinsic
     def save(_auth_token, _name = 'default')
       raise 'Not implemented'
     end
+
     def get(_name)
       raise 'Not implemented'
     end
