@@ -1,31 +1,29 @@
 import ServiceBase from "./ServiceBase";
-import {ServiceOptions} from "./proto/sdk/options/v1/options";
-import {AccountService} from "./AccountService";
-import {CredentialService} from "./CredentialService";
-import {TemplateService} from "./TemplateService";
-import {ProviderService} from "./ProviderService";
-import {TrustRegistryService} from "./TrustRegistryService";
-import {WalletService} from "./WalletService";
-
+import { ServiceOptions } from "./proto/sdk/options/v1/options";
+import { AccountService } from "./AccountService";
+import { CredentialService } from "./CredentialService";
+import { TemplateService } from "./TemplateService";
+import { ProviderService } from "./ProviderService";
+import { TrustRegistryService } from "./TrustRegistryService";
+import { WalletService } from "./WalletService";
 
 export class TrinsicService extends ServiceBase {
-  private _account: AccountService | undefined;
-  private _credential: CredentialService | undefined;
-  private _provider: ProviderService | undefined;
-  private _template: TemplateService | undefined;
-  private _trustRegistry: TrustRegistryService | undefined;
-  private _wallet: WalletService | undefined;
+    private _account: AccountService | undefined;
+    private _credential: CredentialService | undefined;
+    private _provider: ProviderService | undefined;
+    private _template: TemplateService | undefined;
+    private _trustRegistry: TrustRegistryService | undefined;
+    private _wallet: WalletService | undefined;
 
-  constructor(options?: ServiceOptions) {
-    super(options);
-  }
+    constructor(options?: ServiceOptions) {
+        super(options);
+    }
 
-  public account(): AccountService {
-      this._account =
-        this._account || new AccountService(this.options);
-      this._account.options = this.options;
-      return this._account!;
-  }
+    public account(): AccountService {
+        this._account = this._account || new AccountService(this.options);
+        this._account.options = this.options;
+        return this._account!;
+    }
 
     public credential(): CredentialService {
         this._credential =
@@ -35,15 +33,13 @@ export class TrinsicService extends ServiceBase {
     }
 
     public provider(): ProviderService {
-        this._provider =
-            this._provider || new ProviderService(this.options);
+        this._provider = this._provider || new ProviderService(this.options);
         this._provider.options = this.options;
         return this._provider!;
     }
 
     public template(): TemplateService {
-        this._template =
-            this._template || new TemplateService(this.options);
+        this._template = this._template || new TemplateService(this.options);
         this._template.options = this.options;
         return this._template!;
     }
@@ -56,8 +52,7 @@ export class TrinsicService extends ServiceBase {
     }
 
     public wallet(): WalletService {
-        this._wallet =
-            this._wallet || new WalletService(this.options);
+        this._wallet = this._wallet || new WalletService(this.options);
         this._wallet.options = this.options;
         return this._wallet!;
     }

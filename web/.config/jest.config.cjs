@@ -2,20 +2,18 @@
 module.exports = {
     verbose: true,
     collectCoverage: true,
-    collectCoverageFrom: ['**/src/**/*.ts', '!**/node_modules/**'],
-    testMatch: [
-        '**/test/*.test.ts'
-    ],
+    collectCoverageFrom: ["**/src/**/*.ts", "!**/node_modules/**"],
+    testMatch: ["**/test/*.test.ts"],
     globals: {
-        'ts-jest': {
+        "ts-jest": {
             useESM: true,
         },
     },
     transform: {
-        "^.+\\.jsx?$": "babel-jest"
+        "^.+\\.jsx?$": "babel-jest",
     },
     transformIgnorePatterns: [],
-    preset: 'ts-jest',
-    testEnvironment: 'node',
-    roots: ['../test']
-}
+    preset: "ts-jest",
+    testEnvironment: "node",
+    roots: ["../test"],
+};

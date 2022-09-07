@@ -1,6 +1,6 @@
 // const webpackConfig = require("./webpack.config.js");
-const {resolve} = require("path");
-const {SourceMapDevToolPlugin, ProvidePlugin} = require("webpack");
+const { resolve } = require("path");
+const { SourceMapDevToolPlugin, ProvidePlugin } = require("webpack");
 const path = require("path");
 module.exports = async (config) => {
     config.set({
@@ -15,7 +15,7 @@ module.exports = async (config) => {
         // base path that will be used to resolve all patterns (eg. files, exclude)
         basePath: "..",
 
-        singleRun: true,  // run and exit for CI pipelines, lol
+        singleRun: true, // run and exit for CI pipelines, lol
 
         client: {
             clearContext: true, // will show the results in node once all the testcases are loaded
@@ -23,9 +23,11 @@ module.exports = async (config) => {
 
         reporters: ["kjhtml", "progress", "coverage"],
         coverageReporter: {
-            reporters: [{
-                type: 'cobertura'
-            }]
+            reporters: [
+                {
+                    type: "cobertura",
+                },
+            ],
         },
 
         // frameworks to use
@@ -36,8 +38,18 @@ module.exports = async (config) => {
         // Here I'm including all the Jest tests which are all under the __tests__ directory.
         // You may need to tweak this pattern to find your test files/
         files: [
-            { pattern: "test/**/*.spec.ts", watched: false, included: true, served: true },
-            { pattern: "**/*.wasm", watched: false, included: false, served: true },
+            {
+                pattern: "test/**/*.spec.ts",
+                watched: false,
+                included: true,
+                served: true,
+            },
+            {
+                pattern: "**/*.wasm",
+                watched: false,
+                included: false,
+                served: true,
+            },
         ],
 
         // preprocess matching files before serving them to the node
@@ -73,9 +85,9 @@ module.exports = async (config) => {
                         exclude: /node_modules/,
                         loader: "ts-loader",
                         options: {
-                            configFile: 'tsconfig.json'
-                        }
-                    }
+                            configFile: "tsconfig.json",
+                        },
+                    },
                 ],
             },
             resolve: {
@@ -83,14 +95,14 @@ module.exports = async (config) => {
             },
             output: {
                 path: resolve(__dirname, "../test/build"),
-                globalObject: 'this',
-                libraryExport: 'default'
+                globalObject: "this",
+                libraryExport: "default",
             },
             plugins: [
                 new SourceMapDevToolPlugin({
                     filename: null,
                     test: /\.(ts|js)($|\?)/i,
-                })
+                }),
             ],
             experiments: {
                 asyncWebAssembly: true,

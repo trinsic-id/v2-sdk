@@ -11,13 +11,13 @@ import { IPlatformProvider } from "./IPlatformProvider";
 export * from "./proto/index";
 
 export {
-  TrinsicService,
-  WalletService,
-  ProviderService,
-  TrustRegistryService,
-  AccountService,
-  CredentialService,
-  TemplateService,
-  ServiceBase,
-  IPlatformProvider,
+    TrinsicService,
+    WalletService,
+    ProviderService,
+    TrustRegistryService,
+    AccountService,
+    CredentialService,
+    TemplateService,
+    ServiceBase,
+    IPlatformProvider,
 };
