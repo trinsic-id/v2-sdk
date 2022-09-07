@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/trinsic-id/sdk#readme",
   "dependencies": {
-    "@trinsic/trinsic": "1.7.0"
+    "@trinsic/trinsic": "1.7.3"
   },
   "devDependencies": {
     "ts-node": "10.9.1"

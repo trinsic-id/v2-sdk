@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Download ${{ matrix.os-artifact[0] }} binaries
-        uses: dawidd6/action-download-artifact@v2.22.0
+        uses: dawidd6/action-download-artifact@v2.23.0
         with:
           workflow: "build-libs.yml"
           path: ./samples/go
@@ -26,7 +26,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           name: ${{ matrix.os-artifact[1] }}
       - name: Download C header
-        uses: dawidd6/action-download-artifact@v2.22.0
+        uses: dawidd6/action-download-artifact@v2.23.0
         with:
           workflow: "build-libs.yml"
           path: ./samples/go
