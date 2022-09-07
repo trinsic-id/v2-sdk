@@ -1074,13 +1074,13 @@
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
-    "services.provider.v1.Provider.RefreshVerificationStatus": {
+    "services.provider.v1.Provider.RefreshDomainVerificationStatus": {
       "type": "method",
       "collection": "methods",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
-    "services.provider.v1.Provider.RetrieveVerificationRecord": {
+    "services.provider.v1.Provider.RetrieveDomainVerificationRecord": {
       "type": "method",
       "collection": "methods",
       "file": "services/provider/v1/provider.proto",
@@ -1098,47 +1098,47 @@
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
-    "services.provider.v1.RefreshVerificationStatusRequest": {
+    "services.provider.v1.RefreshDomainVerificationStatusRequest": {
       "type": "message",
       "collection": "messages",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
-    "services.provider.v1.RefreshVerificationStatusResponse": {
+    "services.provider.v1.RefreshDomainVerificationStatusResponse": {
       "type": "message",
       "collection": "messages",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
-    "services.provider.v1.RefreshVerificationStatusResponse.domain": {
+    "services.provider.v1.RefreshDomainVerificationStatusResponse.domain": {
       "type": "field",
       "collection": "fields",
       "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.RefreshVerificationStatusResponse"
+      "parent": "services.provider.v1.RefreshDomainVerificationStatusResponse"
     },
-    "services.provider.v1.RefreshVerificationStatusResponse.domain_verified": {
+    "services.provider.v1.RefreshDomainVerificationStatusResponse.domain_verified": {
       "type": "field",
       "collection": "fields",
       "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.RefreshVerificationStatusResponse"
+      "parent": "services.provider.v1.RefreshDomainVerificationStatusResponse"
     },
-    "services.provider.v1.RetrieveVerificationRecordRequest": {
+    "services.provider.v1.RetrieveDomainVerificationRecordRequest": {
       "type": "message",
       "collection": "messages",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
-    "services.provider.v1.RetrieveVerificationRecordResponse": {
+    "services.provider.v1.RetrieveDomainVerificationRecordResponse": {
       "type": "message",
       "collection": "messages",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
-    "services.provider.v1.RetrieveVerificationRecordResponse.verification_txt": {
+    "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_txt": {
       "type": "field",
       "collection": "fields",
       "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.RetrieveVerificationRecordResponse"
+      "parent": "services.provider.v1.RetrieveDomainVerificationRecordResponse"
     },
     "services.provider.v1.RevokeAuthorizationRequest": {
       "type": "message",
@@ -3001,8 +3001,8 @@
         "services.provider.v1.Provider.InvitationStatus",
         "services.provider.v1.Provider.GetOberonKey",
         "services.provider.v1.Provider.GetEventToken",
-        "services.provider.v1.Provider.RetrieveVerificationRecord",
-        "services.provider.v1.Provider.RefreshVerificationStatus"
+        "services.provider.v1.Provider.RetrieveDomainVerificationRecord",
+        "services.provider.v1.Provider.RefreshDomainVerificationStatus"
       ],
       "messages": [
         "services.provider.v1.InviteRequest",
@@ -3031,10 +3031,10 @@
         "services.provider.v1.GetOberonKeyResponse",
         "services.provider.v1.GetEventTokenRequest",
         "services.provider.v1.GetEventTokenResponse",
-        "services.provider.v1.RetrieveVerificationRecordRequest",
-        "services.provider.v1.RetrieveVerificationRecordResponse",
-        "services.provider.v1.RefreshVerificationStatusRequest",
-        "services.provider.v1.RefreshVerificationStatusResponse",
+        "services.provider.v1.RetrieveDomainVerificationRecordRequest",
+        "services.provider.v1.RetrieveDomainVerificationRecordResponse",
+        "services.provider.v1.RefreshDomainVerificationStatusRequest",
+        "services.provider.v1.RefreshDomainVerificationStatusResponse",
         "services.provider.v1.GrantAuthorizationRequest",
         "services.provider.v1.GrantAuthorizationResponse",
         "services.provider.v1.RevokeAuthorizationRequest",
@@ -3095,9 +3095,9 @@
         "services.provider.v1.GetOberonKeyResponse.key",
         "services.provider.v1.GetEventTokenRequest.pk",
         "services.provider.v1.GetEventTokenResponse.token",
-        "services.provider.v1.RetrieveVerificationRecordResponse.verification_txt",
-        "services.provider.v1.RefreshVerificationStatusResponse.domain",
-        "services.provider.v1.RefreshVerificationStatusResponse.domain_verified",
+        "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_txt",
+        "services.provider.v1.RefreshDomainVerificationStatusResponse.domain",
+        "services.provider.v1.RefreshDomainVerificationStatusResponse.domain_verified",
         "services.provider.v1.GrantAuthorizationRequest.email",
         "services.provider.v1.GrantAuthorizationRequest.walletId",
         "services.provider.v1.GrantAuthorizationRequest.resource",
@@ -3431,8 +3431,8 @@
         "services.provider.v1.Provider.InvitationStatus",
         "services.provider.v1.Provider.GetOberonKey",
         "services.provider.v1.Provider.GetEventToken",
-        "services.provider.v1.Provider.RetrieveVerificationRecord",
-        "services.provider.v1.Provider.RefreshVerificationStatus"
+        "services.provider.v1.Provider.RetrieveDomainVerificationRecord",
+        "services.provider.v1.Provider.RefreshDomainVerificationStatus"
       ]
     },
     "services.trustregistry.v1.TrustRegistry": {
@@ -3615,18 +3615,18 @@
       "output_type": "services.provider.v1.InviteResponse",
       "description": "Invite a user to the ecosystem"
     },
-    "services.provider.v1.Provider.RefreshVerificationStatus": {
-      "name": "RefreshVerificationStatus",
-      "full_name": "services.provider.v1.Provider.RefreshVerificationStatus",
-      "input_type": "services.provider.v1.RefreshVerificationStatusRequest",
-      "output_type": "services.provider.v1.RefreshVerificationStatusResponse",
+    "services.provider.v1.Provider.RefreshDomainVerificationStatus": {
+      "name": "RefreshDomainVerificationStatus",
+      "full_name": "services.provider.v1.Provider.RefreshDomainVerificationStatus",
+      "input_type": "services.provider.v1.RefreshDomainVerificationStatusRequest",
+      "output_type": "services.provider.v1.RefreshDomainVerificationStatusResponse",
       "description": "Call to verif"
     },
-    "services.provider.v1.Provider.RetrieveVerificationRecord": {
-      "name": "RetrieveVerificationRecord",
-      "full_name": "services.provider.v1.Provider.RetrieveVerificationRecord",
-      "input_type": "services.provider.v1.RetrieveVerificationRecordRequest",
-      "output_type": "services.provider.v1.RetrieveVerificationRecordResponse",
+    "services.provider.v1.Provider.RetrieveDomainVerificationRecord": {
+      "name": "RetrieveDomainVerificationRecord",
+      "full_name": "services.provider.v1.Provider.RetrieveDomainVerificationRecord",
+      "input_type": "services.provider.v1.RetrieveDomainVerificationRecordRequest",
+      "output_type": "services.provider.v1.RetrieveDomainVerificationRecordResponse",
       "description": "Retrieve a random hash TXT that can be used to verify domain ownership"
     },
     "services.provider.v1.Provider.RevokeAuthorization": {
@@ -4328,39 +4328,39 @@
       "messages": [],
       "enums": []
     },
-    "services.provider.v1.RefreshVerificationStatusRequest": {
-      "name": "RefreshVerificationStatusRequest",
-      "full_name": "services.provider.v1.RefreshVerificationStatusRequest",
-      "description": "TODO - Should we allow specifying which ecosystem to use?",
+    "services.provider.v1.RefreshDomainVerificationStatusRequest": {
+      "name": "RefreshDomainVerificationStatusRequest",
+      "full_name": "services.provider.v1.RefreshDomainVerificationStatusRequest",
+      "description": "",
       "fields": [],
       "messages": [],
       "enums": []
     },
-    "services.provider.v1.RefreshVerificationStatusResponse": {
-      "name": "RefreshVerificationStatusResponse",
-      "full_name": "services.provider.v1.RefreshVerificationStatusResponse",
+    "services.provider.v1.RefreshDomainVerificationStatusResponse": {
+      "name": "RefreshDomainVerificationStatusResponse",
+      "full_name": "services.provider.v1.RefreshDomainVerificationStatusResponse",
       "description": "",
       "fields": [
-        "services.provider.v1.RefreshVerificationStatusResponse.domain",
-        "services.provider.v1.RefreshVerificationStatusResponse.domain_verified"
+        "services.provider.v1.RefreshDomainVerificationStatusResponse.domain",
+        "services.provider.v1.RefreshDomainVerificationStatusResponse.domain_verified"
       ],
       "messages": [],
       "enums": []
     },
-    "services.provider.v1.RetrieveVerificationRecordRequest": {
-      "name": "RetrieveVerificationRecordRequest",
-      "full_name": "services.provider.v1.RetrieveVerificationRecordRequest",
+    "services.provider.v1.RetrieveDomainVerificationRecordRequest": {
+      "name": "RetrieveDomainVerificationRecordRequest",
+      "full_name": "services.provider.v1.RetrieveDomainVerificationRecordRequest",
       "description": "",
       "fields": [],
       "messages": [],
       "enums": []
     },
-    "services.provider.v1.RetrieveVerificationRecordResponse": {
-      "name": "RetrieveVerificationRecordResponse",
-      "full_name": "services.provider.v1.RetrieveVerificationRecordResponse",
+    "services.provider.v1.RetrieveDomainVerificationRecordResponse": {
+      "name": "RetrieveDomainVerificationRecordResponse",
+      "full_name": "services.provider.v1.RetrieveDomainVerificationRecordResponse",
       "description": "Response message containing a TXT record content for domain url verification",
       "fields": [
-        "services.provider.v1.RetrieveVerificationRecordResponse.verification_txt"
+        "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_txt"
       ],
       "messages": [],
       "enums": []
@@ -5916,25 +5916,25 @@
       "full_type": "string",
       "description": "ID of created invitation"
     },
-    "services.provider.v1.RefreshVerificationStatusResponse.domain": {
+    "services.provider.v1.RefreshDomainVerificationStatusResponse.domain": {
       "name": "domain",
-      "full_name": "services.provider.v1.RefreshVerificationStatusResponse.domain",
+      "full_name": "services.provider.v1.RefreshDomainVerificationStatusResponse.domain",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
       "description": "Domain URL verified"
     },
-    "services.provider.v1.RefreshVerificationStatusResponse.domain_verified": {
+    "services.provider.v1.RefreshDomainVerificationStatusResponse.domain_verified": {
       "name": "domain_verified",
-      "full_name": "services.provider.v1.RefreshVerificationStatusResponse.domain_verified",
+      "full_name": "services.provider.v1.RefreshDomainVerificationStatusResponse.domain_verified",
       "label": "LABEL_OPTIONAL",
       "type": "bool",
       "full_type": "bool",
       "description": "Specifies if the above `domain` was successfully verified"
     },
-    "services.provider.v1.RetrieveVerificationRecordResponse.verification_txt": {
+    "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_txt": {
       "name": "verification_txt",
-      "full_name": "services.provider.v1.RetrieveVerificationRecordResponse.verification_txt",
+      "full_name": "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_txt",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
