@@ -6,7 +6,8 @@ import 'package:trinsic_dart/trinsic.dart';
 Future runProviderDemo() async {
   var accountService = AccountService(trinsicConfig(), null);
   var account = await accountService.signIn();
-  var providerService = ProviderService(trinsicConfig(authToken: account), null);
+  var providerService =
+      ProviderService(trinsicConfig(authToken: account), null);
 
   try {
     var inviteResponse = await providerService.invite(InviteRequest(

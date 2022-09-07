@@ -72,13 +72,15 @@ object ProviderGrpcKt {
   val getEventTokenMethod: MethodDescriptor<GetEventTokenRequest, GetEventTokenResponse>
     @JvmStatic get() = ProviderGrpc.getGetEventTokenMethod()
 
-  val retrieveVerificationRecordMethod:
-      MethodDescriptor<RetrieveVerificationRecordRequest, RetrieveVerificationRecordResponse>
-    @JvmStatic get() = ProviderGrpc.getRetrieveVerificationRecordMethod()
+  val retrieveDomainVerificationRecordMethod:
+      MethodDescriptor<
+          RetrieveDomainVerificationRecordRequest, RetrieveDomainVerificationRecordResponse>
+    @JvmStatic get() = ProviderGrpc.getRetrieveDomainVerificationRecordMethod()
 
-  val refreshVerificationStatusMethod:
-      MethodDescriptor<RefreshVerificationStatusRequest, RefreshVerificationStatusResponse>
-    @JvmStatic get() = ProviderGrpc.getRefreshVerificationStatusMethod()
+  val refreshDomainVerificationStatusMethod:
+      MethodDescriptor<
+          RefreshDomainVerificationStatusRequest, RefreshDomainVerificationStatusResponse>
+    @JvmStatic get() = ProviderGrpc.getRefreshDomainVerificationStatusMethod()
 
   /**
    * A stub for issuing RPCs to a(n) services.provider.v1.Provider service as suspending coroutines.
@@ -322,13 +324,13 @@ object ProviderGrpcKt {
      *
      * @return The single response from the server.
      */
-    suspend fun retrieveVerificationRecord(
-        request: RetrieveVerificationRecordRequest,
+    suspend fun retrieveDomainVerificationRecord(
+        request: RetrieveDomainVerificationRecordRequest,
         headers: Metadata = Metadata()
-    ): RetrieveVerificationRecordResponse =
+    ): RetrieveDomainVerificationRecordResponse =
         unaryRpc(
             channel,
-            ProviderGrpc.getRetrieveVerificationRecordMethod(),
+            ProviderGrpc.getRetrieveDomainVerificationRecordMethod(),
             request,
             callOptions,
             headers)
@@ -344,13 +346,13 @@ object ProviderGrpcKt {
      *
      * @return The single response from the server.
      */
-    suspend fun refreshVerificationStatus(
-        request: RefreshVerificationStatusRequest,
+    suspend fun refreshDomainVerificationStatus(
+        request: RefreshDomainVerificationStatusRequest,
         headers: Metadata = Metadata()
-    ): RefreshVerificationStatusResponse =
+    ): RefreshDomainVerificationStatusResponse =
         unaryRpc(
             channel,
-            ProviderGrpc.getRefreshVerificationStatusMethod(),
+            ProviderGrpc.getRefreshDomainVerificationStatusMethod(),
             request,
             callOptions,
             headers)
@@ -565,7 +567,8 @@ object ProviderGrpcKt {
                 "Method services.provider.v1.Provider.GetEventToken is unimplemented"))
 
     /**
-     * Returns the response to an RPC for services.provider.v1.Provider.RetrieveVerificationRecord.
+     * Returns the response to an RPC for
+     * services.provider.v1.Provider.RetrieveDomainVerificationRecord.
      *
      * If this method fails with a [StatusException], the RPC will fail with the corresponding
      * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
@@ -574,15 +577,16 @@ object ProviderGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun retrieveVerificationRecord(
-        request: RetrieveVerificationRecordRequest
-    ): RetrieveVerificationRecordResponse =
+    open suspend fun retrieveDomainVerificationRecord(
+        request: RetrieveDomainVerificationRecordRequest
+    ): RetrieveDomainVerificationRecordResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
-                "Method services.provider.v1.Provider.RetrieveVerificationRecord is unimplemented"))
+                "Method services.provider.v1.Provider.RetrieveDomainVerificationRecord is unimplemented"))
 
     /**
-     * Returns the response to an RPC for services.provider.v1.Provider.RefreshVerificationStatus.
+     * Returns the response to an RPC for
+     * services.provider.v1.Provider.RefreshDomainVerificationStatus.
      *
      * If this method fails with a [StatusException], the RPC will fail with the corresponding
      * [Status]. If this method fails with a [java.util.concurrent.CancellationException], the RPC
@@ -591,12 +595,12 @@ object ProviderGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun refreshVerificationStatus(
-        request: RefreshVerificationStatusRequest
-    ): RefreshVerificationStatusResponse =
+    open suspend fun refreshDomainVerificationStatus(
+        request: RefreshDomainVerificationStatusRequest
+    ): RefreshDomainVerificationStatusResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
-                "Method services.provider.v1.Provider.RefreshVerificationStatus is unimplemented"))
+                "Method services.provider.v1.Provider.RefreshDomainVerificationStatus is unimplemented"))
 
     final override fun bindService(): ServerServiceDefinition =
         builder(getServiceDescriptor())
@@ -668,13 +672,13 @@ object ProviderGrpcKt {
             .addMethod(
                 unaryServerMethodDefinition(
                     context = this.context,
-                    descriptor = ProviderGrpc.getRetrieveVerificationRecordMethod(),
-                    implementation = ::retrieveVerificationRecord))
+                    descriptor = ProviderGrpc.getRetrieveDomainVerificationRecordMethod(),
+                    implementation = ::retrieveDomainVerificationRecord))
             .addMethod(
                 unaryServerMethodDefinition(
                     context = this.context,
-                    descriptor = ProviderGrpc.getRefreshVerificationStatusMethod(),
-                    implementation = ::refreshVerificationStatus))
+                    descriptor = ProviderGrpc.getRefreshDomainVerificationStatusMethod(),
+                    implementation = ::refreshDomainVerificationStatus))
             .build()
   }
 }

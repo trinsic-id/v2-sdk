@@ -189,21 +189,21 @@ export class AccountService extends ServiceBase {
   }
   /** List all connected devices */
   public async listDevices(request: ListDevicesRequest): Promise<ListDevicesResponse> {
-
+    
     return this.client.listDevices(request, {
       metadata: await this.buildMetadata(ListDevicesRequest.encode(request).finish())
     });
   }
   /** Revoke device access to the account's cloud wallet */
   public async revokeDevice(request: RevokeDeviceRequest): Promise<RevokeDeviceResponse> {
-
+    
     return this.client.revokeDevice(request, {
       metadata: await this.buildMetadata(RevokeDeviceRequest.encode(request).finish())
     });
   }
   /** Authorize Ecosystem to receive webhook events */
   public async authorizeWebhook(request: AuthorizeWebhookRequest): Promise<AuthorizeWebhookResponse> {
-
+    
     return this.client.authorizeWebhook(request, {
       metadata: await this.buildMetadata(AuthorizeWebhookRequest.encode(request).finish())
     });
