@@ -5,15 +5,25 @@ import {
     CompatServiceDefinition,
 } from "nice-grpc-web";
 
-
 export interface IPlatformProvider {
-    metadataLanguage(): string
-    blake3HashRequest(requestData: Uint8Array): Promise<Uint8Array>
-    oberonProofRequest(profile: AccountProfile, nonceUint8: Uint8Array): Promise<Uint8Array>
-    unblindOberon(cloned: AccountProfile, securityCode: Uint8Array): Promise<Uint8Array>
-    blindOberon(cloned: AccountProfile, securityCode: Uint8Array): Promise<Uint8Array>
-    okapiVersion(): Promise<string>
+    metadataLanguage(): string;
+    blake3HashRequest(requestData: Uint8Array): Promise<Uint8Array>;
+    oberonProofRequest(
+        profile: AccountProfile,
+        nonceUint8: Uint8Array
+    ): Promise<Uint8Array>;
+    unblindOberon(
+        cloned: AccountProfile,
+        securityCode: Uint8Array
+    ): Promise<Uint8Array>;
+    blindOberon(
+        cloned: AccountProfile,
+        securityCode: Uint8Array
+    ): Promise<Uint8Array>;
+    okapiVersion(): Promise<string>;
 
-    createGrpcClient<ClientService extends CompatServiceDefinition>(definition: ClientService, address: string): BrowserClient<ClientService>
+    createGrpcClient<ClientService extends CompatServiceDefinition>(
+        definition: ClientService,
+        address: string
+    ): BrowserClient<ClientService>;
 }
-

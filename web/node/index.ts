@@ -1,6 +1,6 @@
-import {ServiceBase} from "../src";
-import {NodeProvider} from "./NodeProvider";
+import { ServiceBase } from "../src";
+import { NodeProvider } from "./NodeProvider";
 
-export * from '../src'
+export * from "../src";
 
 ServiceBase.setProvider(new NodeProvider());

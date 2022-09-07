@@ -117,21 +117,21 @@ public final class ProviderOuterClass {
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_provider_v1_GetEventTokenResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_provider_v1_RetrieveVerificationRecordRequest_descriptor;
+      internal_static_services_provider_v1_RetrieveDomainVerificationRecordRequest_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_provider_v1_RetrieveVerificationRecordRequest_fieldAccessorTable;
+      internal_static_services_provider_v1_RetrieveDomainVerificationRecordRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_provider_v1_RetrieveVerificationRecordResponse_descriptor;
+      internal_static_services_provider_v1_RetrieveDomainVerificationRecordResponse_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_provider_v1_RetrieveVerificationRecordResponse_fieldAccessorTable;
+      internal_static_services_provider_v1_RetrieveDomainVerificationRecordResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_provider_v1_RefreshVerificationStatusRequest_descriptor;
+      internal_static_services_provider_v1_RefreshDomainVerificationStatusRequest_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_provider_v1_RefreshVerificationStatusRequest_fieldAccessorTable;
+      internal_static_services_provider_v1_RefreshDomainVerificationStatusRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_provider_v1_RefreshVerificationStatusResponse_descriptor;
+      internal_static_services_provider_v1_RefreshDomainVerificationStatusResponse_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_provider_v1_RefreshVerificationStatusResponse_fieldAccessorTable;
+      internal_static_services_provider_v1_RefreshDomainVerificationStatusResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
       internal_static_services_provider_v1_GrantAuthorizationRequest_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -255,12 +255,12 @@ public final class ProviderOuterClass {
           + "\024GetEventTokenRequest\022\n\n"
           + "\002pk\030\001 \001(\014\"&\n"
           + "\025GetEventTokenResponse\022\r\n"
-          + "\005token\030\001 \001(\t\"#\n"
-          + "!RetrieveVerificationRecordRequest\">\n"
-          + "\"RetrieveVerificationRecordResponse\022\030\n"
-          + "\020verification_txt\030\001 \001(\t\"\"\n"
-          + " RefreshVerificationStatusRequest\"L\n"
-          + "!RefreshVerificationStatusResponse\022\016\n"
+          + "\005token\030\001 \001(\t\")\n"
+          + "\'RetrieveDomainVerificationRecordRequest\"D\n"
+          + "(RetrieveDomainVerificationRecordResponse\022\030\n"
+          + "\020verification_txt\030\001 \001(\t\"(\n"
+          + "&RefreshDomainVerificationStatusRequest\"R\n"
+          + "\'RefreshDomainVerificationStatusResponse\022\016\n"
           + "\006domain\030\001 \001(\t\022\027\n"
           + "\017domain_verified\030\002 \001(\010\"m\n"
           + "\031GrantAuthorizationRequest\022\017\n"
@@ -282,42 +282,43 @@ public final class ProviderOuterClass {
           + "\006grants\030\001 \003(\0132\033.services.provider.v1.Grant*U\n"
           + "\017ParticipantType\022\037\n"
           + "\033participant_type_individual\020\000\022!\n"
-          + "\035participant_type_organization\020\0012\276\r\n"
+          + "\035participant_type_organization\020\0012\342\r\n"
           + "\010Provider\022v\n"
-          + "\017CreateEcosystem\022,.services.provider.v1.CreateEcosystemRequest\032-.services.pr"
-          + "ovider.v1.CreateEcosystemResponse\"\006\212\246\035\002\020\001\022n\n"
-          + "\017UpdateEcosystem\022,.services.provider"
-          + ".v1.UpdateEcosystemRequest\032-.services.provider.v1.UpdateEcosystemResponse\022w\n"
-          + "\022GrantAuthorization\022/.services.provider.v1.G"
-          + "rantAuthorizationRequest\0320.services.provider.v1.GrantAuthorizationResponse\022z\n"
-          + "\023RevokeAuthorization\0220.services.provider.v1"
-          + ".RevokeAuthorizationRequest\0321.services.p"
-          + "rovider.v1.RevokeAuthorizationResponse\022t\n"
-          + "\021GetAuthorizations\022..services.provider."
-          + "v1.GetAuthorizationsRequest\032/.services.provider.v1.GetAuthorizationsResponse\022_\n\n"
-          + "AddWebhook\022\'.services.provider.v1.AddWeb"
-          + "hookRequest\032(.services.provider.v1.AddWebhookResponse\022h\n\r"
-          + "DeleteWebhook\022*.services.provider.v1.DeleteWebhookRequest\032+.ser"
-          + "vices.provider.v1.DeleteWebhookResponse\022h\n\r"
-          + "EcosystemInfo\022*.services.provider.v1."
-          + "EcosystemInfoRequest\032+.services.provider.v1.EcosystemInfoResponse\022h\n\r"
-          + "GenerateToken\022*.services.provider.v1.GenerateTokenR"
-          + "equest\032+.services.provider.v1.GenerateTokenResponse\022S\n"
-          + "\006Invite\022#.services.provide"
-          + "r.v1.InviteRequest\032$.services.provider.v1.InviteResponse\022q\n"
-          + "\020InvitationStatus\022-.services.provider.v1.InvitationStatusRequ"
-          + "est\032..services.provider.v1.InvitationStatusResponse\022m\n"
-          + "\014GetOberonKey\022).services.provider.v1.GetOberonKeyRequest\032*.service"
-          + "s.provider.v1.GetOberonKeyResponse\"\006\212\246\035\002\010\001\022h\n\r"
-          + "GetEventToken\022*.services.provider."
-          + "v1.GetEventTokenRequest\032+.services.provider.v1.GetEventTokenResponse\022\217\001\n"
-          + "\032RetrieveVerificationRecord\0227.services.provider."
-          + "v1.RetrieveVerificationRecordRequest\0328.s"
-          + "ervices.provider.v1.RetrieveVerificationRecordResponse\022\214\001\n"
-          + "\031RefreshVerificationStatus\0226.services.provider.v1.RefreshVerif"
-          + "icationStatusRequest\0327.services.provider.v1.RefreshVerificationStatusResponseB^\n"
-          + "\034trinsic.services.provider.v1P\001Z\035service"
-          + "s/provider/v1/provider\252\002\034Trinsic.Services.Provider.V1b\006proto3"
+          + "\017CreateEcosystem\022,.services.provider.v1.CreateEcosys"
+          + "temRequest\032-.services.provider.v1.CreateEcosystemResponse\"\006\212\246\035\002\020\001\022n\n"
+          + "\017UpdateEcosystem\022,.services.provider.v1.UpdateEcosys"
+          + "temRequest\032-.services.provider.v1.UpdateEcosystemResponse\022w\n"
+          + "\022GrantAuthorization\022/.services.provider.v1.GrantAuthorizatio"
+          + "nRequest\0320.services.provider.v1.GrantAuthorizationResponse\022z\n"
+          + "\023RevokeAuthorization\0220.services.provider.v1.RevokeAuthoriza"
+          + "tionRequest\0321.services.provider.v1.RevokeAuthorizationResponse\022t\n"
+          + "\021GetAuthorizations\022..services.provider.v1.GetAuthorizat"
+          + "ionsRequest\032/.services.provider.v1.GetAuthorizationsResponse\022_\n\n"
+          + "AddWebhook\022\'.ser"
+          + "vices.provider.v1.AddWebhookRequest\032(.services.provider.v1.AddWebhookResponse\022h\n"
+          + "\r"
+          + "DeleteWebhook\022*.services.provider.v1.De"
+          + "leteWebhookRequest\032+.services.provider.v1.DeleteWebhookResponse\022h\n\r"
+          + "EcosystemInfo\022*.services.provider.v1.EcosystemInfoReq"
+          + "uest\032+.services.provider.v1.EcosystemInfoResponse\022h\n\r"
+          + "GenerateToken\022*.services.pr"
+          + "ovider.v1.GenerateTokenRequest\032+.services.provider.v1.GenerateTokenResponse\022S\n"
+          + "\006Invite\022#.services.provider.v1.InviteReque"
+          + "st\032$.services.provider.v1.InviteResponse\022q\n"
+          + "\020InvitationStatus\022-.services.provider"
+          + ".v1.InvitationStatusRequest\032..services.provider.v1.InvitationStatusResponse\022m\n"
+          + "\014GetOberonKey\022).services.provider.v1.GetOb"
+          + "eronKeyRequest\032*.services.provider.v1.GetOberonKeyResponse\"\006\212\246\035\002\010\001\022h\n\r"
+          + "GetEventToken\022*.services.provider.v1.GetEventToken"
+          + "Request\032+.services.provider.v1.GetEventTokenResponse\022\241\001\n"
+          + " RetrieveDomainVerificationRecord\022=.services.provider.v1.Retriev"
+          + "eDomainVerificationRecordRequest\032>.servi"
+          + "ces.provider.v1.RetrieveDomainVerificationRecordResponse\022\236\001\n"
+          + "\037RefreshDomainVerificationStatus\022<.services.provider.v1.Refr"
+          + "eshDomainVerificationStatusRequest\032=.ser"
+          + "vices.provider.v1.RefreshDomainVerificationStatusResponseB^\n"
+          + "\034trinsic.services.provider.v1P\001Z\035services/provider/v1/provid"
+          + "er\252\002\034Trinsic.Services.Provider.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -528,31 +529,31 @@ public final class ProviderOuterClass {
             new java.lang.String[] {
               "Token",
             });
-    internal_static_services_provider_v1_RetrieveVerificationRecordRequest_descriptor =
+    internal_static_services_provider_v1_RetrieveDomainVerificationRecordRequest_descriptor =
         getDescriptor().getMessageTypes().get(25);
-    internal_static_services_provider_v1_RetrieveVerificationRecordRequest_fieldAccessorTable =
+    internal_static_services_provider_v1_RetrieveDomainVerificationRecordRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_provider_v1_RetrieveVerificationRecordRequest_descriptor,
+            internal_static_services_provider_v1_RetrieveDomainVerificationRecordRequest_descriptor,
             new java.lang.String[] {});
-    internal_static_services_provider_v1_RetrieveVerificationRecordResponse_descriptor =
+    internal_static_services_provider_v1_RetrieveDomainVerificationRecordResponse_descriptor =
         getDescriptor().getMessageTypes().get(26);
-    internal_static_services_provider_v1_RetrieveVerificationRecordResponse_fieldAccessorTable =
+    internal_static_services_provider_v1_RetrieveDomainVerificationRecordResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_provider_v1_RetrieveVerificationRecordResponse_descriptor,
+            internal_static_services_provider_v1_RetrieveDomainVerificationRecordResponse_descriptor,
             new java.lang.String[] {
               "VerificationTxt",
             });
-    internal_static_services_provider_v1_RefreshVerificationStatusRequest_descriptor =
+    internal_static_services_provider_v1_RefreshDomainVerificationStatusRequest_descriptor =
         getDescriptor().getMessageTypes().get(27);
-    internal_static_services_provider_v1_RefreshVerificationStatusRequest_fieldAccessorTable =
+    internal_static_services_provider_v1_RefreshDomainVerificationStatusRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_provider_v1_RefreshVerificationStatusRequest_descriptor,
+            internal_static_services_provider_v1_RefreshDomainVerificationStatusRequest_descriptor,
             new java.lang.String[] {});
-    internal_static_services_provider_v1_RefreshVerificationStatusResponse_descriptor =
+    internal_static_services_provider_v1_RefreshDomainVerificationStatusResponse_descriptor =
         getDescriptor().getMessageTypes().get(28);
-    internal_static_services_provider_v1_RefreshVerificationStatusResponse_fieldAccessorTable =
+    internal_static_services_provider_v1_RefreshDomainVerificationStatusResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_provider_v1_RefreshVerificationStatusResponse_descriptor,
+            internal_static_services_provider_v1_RefreshDomainVerificationStatusResponse_descriptor,
             new java.lang.String[] {
               "Domain", "DomainVerified",
             });

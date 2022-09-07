@@ -1,16 +1,14 @@
-
 export interface ITokenProvider {
-    getDefault(): Promise<string>
-    get(name: string): Promise<string>
-    save(authToken: string, name: string): Promise<void>
-    saveDefault(authToken: string): Promise<void>
+    getDefault(): Promise<string>;
+    get(name: string): Promise<string>;
+    save(authToken: string, name: string): Promise<void>;
+    saveDefault(authToken: string): Promise<void>;
 }
 
 export class MemoryTokenProvider implements ITokenProvider {
-    tokens: {[name: string]: string} = {};
+    tokens: { [name: string]: string } = {};
 
-    private constructor() {
-    }
+    private constructor() {}
 
     private static _instance = new MemoryTokenProvider();
     public static DefaultInstance(): ITokenProvider {

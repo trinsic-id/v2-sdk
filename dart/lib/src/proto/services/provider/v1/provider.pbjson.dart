@@ -538,17 +538,20 @@ const GetEventTokenResponse$json = const {
 final $typed_data.Uint8List getEventTokenResponseDescriptor =
     $convert.base64Decode(
         'ChVHZXRFdmVudFRva2VuUmVzcG9uc2USFAoFdG9rZW4YASABKAlSBXRva2Vu');
-@$core.Deprecated('Use retrieveVerificationRecordRequestDescriptor instead')
-const RetrieveVerificationRecordRequest$json = const {
-  '1': 'RetrieveVerificationRecordRequest',
+@$core
+    .Deprecated('Use retrieveDomainVerificationRecordRequestDescriptor instead')
+const RetrieveDomainVerificationRecordRequest$json = const {
+  '1': 'RetrieveDomainVerificationRecordRequest',
 };
 
-/// Descriptor for `RetrieveVerificationRecordRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List retrieveVerificationRecordRequestDescriptor =
-    $convert.base64Decode('CiFSZXRyaWV2ZVZlcmlmaWNhdGlvblJlY29yZFJlcXVlc3Q=');
-@$core.Deprecated('Use retrieveVerificationRecordResponseDescriptor instead')
-const RetrieveVerificationRecordResponse$json = const {
-  '1': 'RetrieveVerificationRecordResponse',
+/// Descriptor for `RetrieveDomainVerificationRecordRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List retrieveDomainVerificationRecordRequestDescriptor =
+    $convert.base64Decode(
+        'CidSZXRyaWV2ZURvbWFpblZlcmlmaWNhdGlvblJlY29yZFJlcXVlc3Q=');
+@$core.Deprecated(
+    'Use retrieveDomainVerificationRecordResponseDescriptor instead')
+const RetrieveDomainVerificationRecordResponse$json = const {
+  '1': 'RetrieveDomainVerificationRecordResponse',
   '2': const [
     const {
       '1': 'verification_txt',
@@ -560,21 +563,24 @@ const RetrieveVerificationRecordResponse$json = const {
   ],
 };
 
-/// Descriptor for `RetrieveVerificationRecordResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List retrieveVerificationRecordResponseDescriptor =
+/// Descriptor for `RetrieveDomainVerificationRecordResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List retrieveDomainVerificationRecordResponseDescriptor =
     $convert.base64Decode(
-        'CiJSZXRyaWV2ZVZlcmlmaWNhdGlvblJlY29yZFJlc3BvbnNlEikKEHZlcmlmaWNhdGlvbl90eHQYASABKAlSD3ZlcmlmaWNhdGlvblR4dA==');
-@$core.Deprecated('Use refreshVerificationStatusRequestDescriptor instead')
-const RefreshVerificationStatusRequest$json = const {
-  '1': 'RefreshVerificationStatusRequest',
+        'CihSZXRyaWV2ZURvbWFpblZlcmlmaWNhdGlvblJlY29yZFJlc3BvbnNlEikKEHZlcmlmaWNhdGlvbl90eHQYASABKAlSD3ZlcmlmaWNhdGlvblR4dA==');
+@$core
+    .Deprecated('Use refreshDomainVerificationStatusRequestDescriptor instead')
+const RefreshDomainVerificationStatusRequest$json = const {
+  '1': 'RefreshDomainVerificationStatusRequest',
 };
 
-/// Descriptor for `RefreshVerificationStatusRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List refreshVerificationStatusRequestDescriptor =
-    $convert.base64Decode('CiBSZWZyZXNoVmVyaWZpY2F0aW9uU3RhdHVzUmVxdWVzdA==');
-@$core.Deprecated('Use refreshVerificationStatusResponseDescriptor instead')
-const RefreshVerificationStatusResponse$json = const {
-  '1': 'RefreshVerificationStatusResponse',
+/// Descriptor for `RefreshDomainVerificationStatusRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List refreshDomainVerificationStatusRequestDescriptor =
+    $convert.base64Decode(
+        'CiZSZWZyZXNoRG9tYWluVmVyaWZpY2F0aW9uU3RhdHVzUmVxdWVzdA==');
+@$core
+    .Deprecated('Use refreshDomainVerificationStatusResponseDescriptor instead')
+const RefreshDomainVerificationStatusResponse$json = const {
+  '1': 'RefreshDomainVerificationStatusResponse',
   '2': const [
     const {'1': 'domain', '3': 1, '4': 1, '5': 9, '10': 'domain'},
     const {
@@ -587,10 +593,10 @@ const RefreshVerificationStatusResponse$json = const {
   ],
 };
 
-/// Descriptor for `RefreshVerificationStatusResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List refreshVerificationStatusResponseDescriptor =
+/// Descriptor for `RefreshDomainVerificationStatusResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List refreshDomainVerificationStatusResponseDescriptor =
     $convert.base64Decode(
-        'CiFSZWZyZXNoVmVyaWZpY2F0aW9uU3RhdHVzUmVzcG9uc2USFgoGZG9tYWluGAEgASgJUgZkb21haW4SJwoPZG9tYWluX3ZlcmlmaWVkGAIgASgIUg5kb21haW5WZXJpZmllZA==');
+        'CidSZWZyZXNoRG9tYWluVmVyaWZpY2F0aW9uU3RhdHVzUmVzcG9uc2USFgoGZG9tYWluGAEgASgJUgZkb21haW4SJwoPZG9tYWluX3ZlcmlmaWVkGAIgASgIUg5kb21haW5WZXJpZmllZA==');
 @$core.Deprecated('Use grantAuthorizationRequestDescriptor instead')
 const GrantAuthorizationRequest$json = const {
   '1': 'GrantAuthorizationRequest',

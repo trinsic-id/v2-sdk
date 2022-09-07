@@ -124,18 +124,18 @@ module Services::Provider::V1::Provider
 
     sig do
       params(
-        request: Services::Provider::V1::RetrieveVerificationRecordRequest
-      ).returns(Services::Provider::V1::RetrieveVerificationRecordResponse)
+        request: Services::Provider::V1::RetrieveDomainVerificationRecordRequest
+      ).returns(Services::Provider::V1::RetrieveDomainVerificationRecordResponse)
     end
-    def retrieve_verification_record(request)
+    def retrieve_domain_verification_record(request)
     end
 
     sig do
       params(
-        request: Services::Provider::V1::RefreshVerificationStatusRequest
-      ).returns(Services::Provider::V1::RefreshVerificationStatusResponse)
+        request: Services::Provider::V1::RefreshDomainVerificationStatusRequest
+      ).returns(Services::Provider::V1::RefreshDomainVerificationStatusResponse)
     end
-    def refresh_verification_status(request)
+    def refresh_domain_verification_status(request)
     end
   end
 end

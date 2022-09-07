@@ -118,14 +118,14 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "services.provider.v1.GetEventTokenResponse" do
       optional :token, :string, 1
     end
-    add_message "services.provider.v1.RetrieveVerificationRecordRequest" do
+    add_message "services.provider.v1.RetrieveDomainVerificationRecordRequest" do
     end
-    add_message "services.provider.v1.RetrieveVerificationRecordResponse" do
+    add_message "services.provider.v1.RetrieveDomainVerificationRecordResponse" do
       optional :verification_txt, :string, 1
     end
-    add_message "services.provider.v1.RefreshVerificationStatusRequest" do
+    add_message "services.provider.v1.RefreshDomainVerificationStatusRequest" do
     end
-    add_message "services.provider.v1.RefreshVerificationStatusResponse" do
+    add_message "services.provider.v1.RefreshDomainVerificationStatusResponse" do
       optional :domain, :string, 1
       optional :domain_verified, :bool, 2
     end
@@ -191,10 +191,10 @@ module Services
       GetOberonKeyResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GetOberonKeyResponse").msgclass
       GetEventTokenRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GetEventTokenRequest").msgclass
       GetEventTokenResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GetEventTokenResponse").msgclass
-      RetrieveVerificationRecordRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.RetrieveVerificationRecordRequest").msgclass
-      RetrieveVerificationRecordResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.RetrieveVerificationRecordResponse").msgclass
-      RefreshVerificationStatusRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.RefreshVerificationStatusRequest").msgclass
-      RefreshVerificationStatusResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.RefreshVerificationStatusResponse").msgclass
+      RetrieveDomainVerificationRecordRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.RetrieveDomainVerificationRecordRequest").msgclass
+      RetrieveDomainVerificationRecordResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.RetrieveDomainVerificationRecordResponse").msgclass
+      RefreshDomainVerificationStatusRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.RefreshDomainVerificationStatusRequest").msgclass
+      RefreshDomainVerificationStatusResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.RefreshDomainVerificationStatusResponse").msgclass
       GrantAuthorizationRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GrantAuthorizationRequest").msgclass
       GrantAuthorizationResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GrantAuthorizationResponse").msgclass
       RevokeAuthorizationRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.RevokeAuthorizationRequest").msgclass

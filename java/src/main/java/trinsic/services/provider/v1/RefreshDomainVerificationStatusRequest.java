@@ -3,24 +3,25 @@
 
 package trinsic.services.provider.v1;
 
-/** Protobuf type {@code services.provider.v1.RetrieveVerificationRecordRequest} */
-public final class RetrieveVerificationRecordRequest extends com.google.protobuf.GeneratedMessageV3
+/** Protobuf type {@code services.provider.v1.RefreshDomainVerificationStatusRequest} */
+public final class RefreshDomainVerificationStatusRequest
+    extends com.google.protobuf.GeneratedMessageV3
     implements
-    // @@protoc_insertion_point(message_implements:services.provider.v1.RetrieveVerificationRecordRequest)
-    RetrieveVerificationRecordRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:services.provider.v1.RefreshDomainVerificationStatusRequest)
+    RefreshDomainVerificationStatusRequestOrBuilder {
   private static final long serialVersionUID = 0L;
-  // Use RetrieveVerificationRecordRequest.newBuilder() to construct.
-  private RetrieveVerificationRecordRequest(
+  // Use RefreshDomainVerificationStatusRequest.newBuilder() to construct.
+  private RefreshDomainVerificationStatusRequest(
       com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
 
-  private RetrieveVerificationRecordRequest() {}
+  private RefreshDomainVerificationStatusRequest() {}
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
-    return new RetrieveVerificationRecordRequest();
+    return new RefreshDomainVerificationStatusRequest();
   }
 
   @java.lang.Override
@@ -28,7 +29,7 @@ public final class RetrieveVerificationRecordRequest extends com.google.protobuf
     return this.unknownFields;
   }
 
-  private RetrieveVerificationRecordRequest(
+  private RefreshDomainVerificationStatusRequest(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -69,17 +70,17 @@ public final class RetrieveVerificationRecordRequest extends com.google.protobuf
 
   public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
     return trinsic.services.provider.v1.ProviderOuterClass
-        .internal_static_services_provider_v1_RetrieveVerificationRecordRequest_descriptor;
+        .internal_static_services_provider_v1_RefreshDomainVerificationStatusRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return trinsic.services.provider.v1.ProviderOuterClass
-        .internal_static_services_provider_v1_RetrieveVerificationRecordRequest_fieldAccessorTable
+        .internal_static_services_provider_v1_RefreshDomainVerificationStatusRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.provider.v1.RetrieveVerificationRecordRequest.class,
-            trinsic.services.provider.v1.RetrieveVerificationRecordRequest.Builder.class);
+            trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest.class,
+            trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest.Builder.class);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -115,11 +116,11 @@ public final class RetrieveVerificationRecordRequest extends com.google.protobuf
     if (obj == this) {
       return true;
     }
-    if (!(obj instanceof trinsic.services.provider.v1.RetrieveVerificationRecordRequest)) {
+    if (!(obj instanceof trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest)) {
       return super.equals(obj);
     }
-    trinsic.services.provider.v1.RetrieveVerificationRecordRequest other =
-        (trinsic.services.provider.v1.RetrieveVerificationRecordRequest) obj;
+    trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest other =
+        (trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest) obj;
 
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
@@ -137,71 +138,72 @@ public final class RetrieveVerificationRecordRequest extends com.google.protobuf
     return hash;
   }
 
-  public static trinsic.services.provider.v1.RetrieveVerificationRecordRequest parseFrom(
+  public static trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest parseFrom(
       java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.provider.v1.RetrieveVerificationRecordRequest parseFrom(
+  public static trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest parseFrom(
       java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.provider.v1.RetrieveVerificationRecordRequest parseFrom(
+  public static trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.provider.v1.RetrieveVerificationRecordRequest parseFrom(
+  public static trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.provider.v1.RetrieveVerificationRecordRequest parseFrom(
+  public static trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest parseFrom(
       byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.provider.v1.RetrieveVerificationRecordRequest parseFrom(
+  public static trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest parseFrom(
       byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.provider.v1.RetrieveVerificationRecordRequest parseFrom(
+  public static trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest parseFrom(
       java.io.InputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.provider.v1.RetrieveVerificationRecordRequest parseFrom(
+  public static trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest parseFrom(
       java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
         PARSER, input, extensionRegistry);
   }
 
-  public static trinsic.services.provider.v1.RetrieveVerificationRecordRequest parseDelimitedFrom(
-      java.io.InputStream input) throws java.io.IOException {
+  public static trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest
+      parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.provider.v1.RetrieveVerificationRecordRequest parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
+  public static trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest
+      parseDelimitedFrom(
+          java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
         PARSER, input, extensionRegistry);
   }
 
-  public static trinsic.services.provider.v1.RetrieveVerificationRecordRequest parseFrom(
+  public static trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest parseFrom(
       com.google.protobuf.CodedInputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.provider.v1.RetrieveVerificationRecordRequest parseFrom(
+  public static trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -219,7 +221,7 @@ public final class RetrieveVerificationRecordRequest extends com.google.protobuf
   }
 
   public static Builder newBuilder(
-      trinsic.services.provider.v1.RetrieveVerificationRecordRequest prototype) {
+      trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
 
@@ -233,27 +235,28 @@ public final class RetrieveVerificationRecordRequest extends com.google.protobuf
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code services.provider.v1.RetrieveVerificationRecordRequest} */
+  /** Protobuf type {@code services.provider.v1.RefreshDomainVerificationStatusRequest} */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
-      // @@protoc_insertion_point(builder_implements:services.provider.v1.RetrieveVerificationRecordRequest)
-      trinsic.services.provider.v1.RetrieveVerificationRecordRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:services.provider.v1.RefreshDomainVerificationStatusRequest)
+      trinsic.services.provider.v1.RefreshDomainVerificationStatusRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
       return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_RetrieveVerificationRecordRequest_descriptor;
+          .internal_static_services_provider_v1_RefreshDomainVerificationStatusRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_RetrieveVerificationRecordRequest_fieldAccessorTable
+          .internal_static_services_provider_v1_RefreshDomainVerificationStatusRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.provider.v1.RetrieveVerificationRecordRequest.class,
-              trinsic.services.provider.v1.RetrieveVerificationRecordRequest.Builder.class);
+              trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest.class,
+              trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest.Builder.class);
     }
 
-    // Construct using trinsic.services.provider.v1.RetrieveVerificationRecordRequest.newBuilder()
+    // Construct using
+    // trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -276,18 +279,19 @@ public final class RetrieveVerificationRecordRequest extends com.google.protobuf
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
       return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_RetrieveVerificationRecordRequest_descriptor;
+          .internal_static_services_provider_v1_RefreshDomainVerificationStatusRequest_descriptor;
     }
 
     @java.lang.Override
-    public trinsic.services.provider.v1.RetrieveVerificationRecordRequest
+    public trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest
         getDefaultInstanceForType() {
-      return trinsic.services.provider.v1.RetrieveVerificationRecordRequest.getDefaultInstance();
+      return trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest
+          .getDefaultInstance();
     }
 
     @java.lang.Override
-    public trinsic.services.provider.v1.RetrieveVerificationRecordRequest build() {
-      trinsic.services.provider.v1.RetrieveVerificationRecordRequest result = buildPartial();
+    public trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest build() {
+      trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -295,9 +299,9 @@ public final class RetrieveVerificationRecordRequest extends com.google.protobuf
     }
 
     @java.lang.Override
-    public trinsic.services.provider.v1.RetrieveVerificationRecordRequest buildPartial() {
-      trinsic.services.provider.v1.RetrieveVerificationRecordRequest result =
-          new trinsic.services.provider.v1.RetrieveVerificationRecordRequest(this);
+    public trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest buildPartial() {
+      trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest result =
+          new trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest(this);
       onBuilt();
       return result;
     }
@@ -337,18 +341,20 @@ public final class RetrieveVerificationRecordRequest extends com.google.protobuf
 
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof trinsic.services.provider.v1.RetrieveVerificationRecordRequest) {
-        return mergeFrom((trinsic.services.provider.v1.RetrieveVerificationRecordRequest) other);
+      if (other instanceof trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest) {
+        return mergeFrom(
+            (trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest) other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(trinsic.services.provider.v1.RetrieveVerificationRecordRequest other) {
+    public Builder mergeFrom(
+        trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest other) {
       if (other
-          == trinsic.services.provider.v1.RetrieveVerificationRecordRequest.getDefaultInstance())
-        return this;
+          == trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest
+              .getDefaultInstance()) return this;
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -364,12 +370,12 @@ public final class RetrieveVerificationRecordRequest extends com.google.protobuf
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      trinsic.services.provider.v1.RetrieveVerificationRecordRequest parsedMessage = null;
+      trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         parsedMessage =
-            (trinsic.services.provider.v1.RetrieveVerificationRecordRequest)
+            (trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest)
                 e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
@@ -391,44 +397,44 @@ public final class RetrieveVerificationRecordRequest extends com.google.protobuf
       return super.mergeUnknownFields(unknownFields);
     }
 
-    // @@protoc_insertion_point(builder_scope:services.provider.v1.RetrieveVerificationRecordRequest)
+    // @@protoc_insertion_point(builder_scope:services.provider.v1.RefreshDomainVerificationStatusRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:services.provider.v1.RetrieveVerificationRecordRequest)
-  private static final trinsic.services.provider.v1.RetrieveVerificationRecordRequest
+  // @@protoc_insertion_point(class_scope:services.provider.v1.RefreshDomainVerificationStatusRequest)
+  private static final trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest
       DEFAULT_INSTANCE;
 
   static {
-    DEFAULT_INSTANCE = new trinsic.services.provider.v1.RetrieveVerificationRecordRequest();
+    DEFAULT_INSTANCE = new trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest();
   }
 
-  public static trinsic.services.provider.v1.RetrieveVerificationRecordRequest
+  public static trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest
       getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<RetrieveVerificationRecordRequest> PARSER =
-      new com.google.protobuf.AbstractParser<RetrieveVerificationRecordRequest>() {
+  private static final com.google.protobuf.Parser<RefreshDomainVerificationStatusRequest> PARSER =
+      new com.google.protobuf.AbstractParser<RefreshDomainVerificationStatusRequest>() {
         @java.lang.Override
-        public RetrieveVerificationRecordRequest parsePartialFrom(
+        public RefreshDomainVerificationStatusRequest parsePartialFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
-          return new RetrieveVerificationRecordRequest(input, extensionRegistry);
+          return new RefreshDomainVerificationStatusRequest(input, extensionRegistry);
         }
       };
 
-  public static com.google.protobuf.Parser<RetrieveVerificationRecordRequest> parser() {
+  public static com.google.protobuf.Parser<RefreshDomainVerificationStatusRequest> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<RetrieveVerificationRecordRequest> getParserForType() {
+  public com.google.protobuf.Parser<RefreshDomainVerificationStatusRequest> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public trinsic.services.provider.v1.RetrieveVerificationRecordRequest
+  public trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest
       getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }

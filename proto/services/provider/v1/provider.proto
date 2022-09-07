@@ -264,20 +264,19 @@ message GetEventTokenResponse {
     string token = 1;
 }
 
-message RetrieveVerificationRecordRequest {
+message RetrieveDomainVerificationRecordRequest {
 }
 
 // Response message containing a TXT record content for domain url verification
-message RetrieveVerificationRecordResponse {
+message RetrieveDomainVerificationRecordResponse {
     // TXT code to use for domain verification
     string verification_txt = 1;
 }
 
-message RefreshVerificationStatusRequest {
-    // TODO - Should we allow specifying which ecosystem to use?
+message RefreshDomainVerificationStatusRequest {
 }
 
-message RefreshVerificationStatusResponse {
+message RefreshDomainVerificationStatusResponse {
     // Domain URL verified
     string domain = 1;
     // Specifies if the above `domain` was successfully verified
@@ -391,8 +390,8 @@ service Provider {
     rpc GetEventToken(GetEventTokenRequest) returns (GetEventTokenResponse);
 
     // Retrieve a random hash TXT that can be used to verify domain ownership
-    rpc RetrieveVerificationRecord(RetrieveVerificationRecordRequest) returns (RetrieveVerificationRecordResponse);
+    rpc RetrieveDomainVerificationRecord(RetrieveDomainVerificationRecordRequest) returns (RetrieveDomainVerificationRecordResponse);
 
     // Call to verif
-    rpc RefreshVerificationStatus(RefreshVerificationStatusRequest) returns (RefreshVerificationStatusResponse);
+    rpc RefreshDomainVerificationStatus(RefreshDomainVerificationStatusRequest) returns (RefreshDomainVerificationStatusResponse);
 }

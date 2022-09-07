@@ -1,7 +1,10 @@
 module.exports = {
     env: {
         test: {
-            plugins: ["@babel/plugin-transform-modules-commonjs", "babel-plugin-dynamic-import-node"]
-        }
+            plugins: [
+                "@babel/plugin-transform-modules-commonjs",
+                "babel-plugin-dynamic-import-node",
+            ],
+        },
     },
-}
+};

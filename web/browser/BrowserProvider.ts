@@ -61,6 +61,6 @@ export class BrowserProvider implements IPlatformProvider {
     }
 
     metadataLanguage(): string {
-            return "typescript-browser";
+        return "typescript-browser";
     }
 }
