@@ -482,6 +482,45 @@ class GetAuthorizationsResponse(betterproto.Message):
     """Grants attached to account"""
 
 
+@dataclass(eq=False, repr=False)
+class SearchWalletConfigurationsRequest(betterproto.Message):
+    """Search for issuers/holders/verifiers"""
+
+    query_filter: str = betterproto.string_field(1)
+    """SQL filter to execute. `SELECT * FROM _ WHERE [**queryFilter**]`"""
+
+    continuation_token: str = betterproto.string_field(2)
+    """
+    Token provided by previous `SearchResponse` if more data is available for
+    query
+    """
+
+
+@dataclass(eq=False, repr=False)
+class SearchWalletConfigurationResponse(betterproto.Message):
+    results: List["WalletConfiguration"] = betterproto.message_field(1)
+    """Results matching the search query"""
+
+    has_more: bool = betterproto.bool_field(2)
+    """
+    Whether more results are available for this query via `continuation_token`
+    """
+
+    continuation_token: str = betterproto.string_field(4)
+    """Token to fetch next set of results via `SearchRequest`"""
+
+
+@dataclass(eq=False, repr=False)
+class WalletConfiguration(betterproto.Message):
+    """Strongly typed information about wallet configurations"""
+
+    name: str = betterproto.string_field(1)
+    email: str = betterproto.string_field(2)
+    sms: str = betterproto.string_field(3)
+    wallet_id: str = betterproto.string_field(4)
+    public_did: str = betterproto.string_field(5)
+
+
 class ProviderStub(betterproto.ServiceStub):
     async def create_ecosystem(
         self,
@@ -723,6 +762,22 @@ class ProviderStub(betterproto.ServiceStub):
             metadata=metadata,
         )
 
+    async def search_wallet_configurations(
+        self,
+        search_wallet_configurations_request: "SearchWalletConfigurationsRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "SearchWalletConfigurationResponse":
+        return await self._unary_unary(
+            "/services.provider.v1.Provider/SearchWalletConfigurations",
+            search_wallet_configurations_request,
+            SearchWalletConfigurationResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
 
 class ProviderBase(ServiceBase):
     async def create_ecosystem(
@@ -798,6 +853,11 @@ class ProviderBase(ServiceBase):
         self,
         refresh_domain_verification_status_request: "RefreshDomainVerificationStatusRequest",
     ) -> "RefreshDomainVerificationStatusResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def search_wallet_configurations(
+        self, search_wallet_configurations_request: "SearchWalletConfigurationsRequest"
+    ) -> "SearchWalletConfigurationResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def __rpc_create_ecosystem(self, stream: grpclib.server.Stream) -> None:
@@ -877,6 +937,13 @@ class ProviderBase(ServiceBase):
     ) -> None:
         request = await stream.recv_message()
         response = await self.refresh_domain_verification_status(request)
+        await stream.send_message(response)
+
+    async def __rpc_search_wallet_configurations(
+        self, stream: grpclib.server.Stream
+    ) -> None:
+        request = await stream.recv_message()
+        response = await self.search_wallet_configurations(request)
         await stream.send_message(response)
 
     def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
@@ -970,5 +1037,11 @@ class ProviderBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 RefreshDomainVerificationStatusRequest,
                 RefreshDomainVerificationStatusResponse,
+            ),
+            "/services.provider.v1.Provider/SearchWalletConfigurations": grpclib.const.Handler(
+                self.__rpc_search_wallet_configurations,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                SearchWalletConfigurationsRequest,
+                SearchWalletConfigurationResponse,
             ),
         }

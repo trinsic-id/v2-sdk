@@ -86,7 +86,7 @@ class ProviderService(ServiceBase):
     async def get_authorizations(
         self, *, request: GetAuthorizationsRequest
     ) -> GetAuthorizationsResponse:
-        """Retreive the list of permissions for this particular account/ecosystem"""
+        """Retrieve the list of permissions for this particular account/ecosystem"""
 
         return await self.client.get_authorizations(
             request, metadata=self.build_metadata(request)
@@ -171,9 +171,18 @@ class ProviderService(ServiceBase):
     async def refresh_domain_verification_status(
         self, *, request: RefreshDomainVerificationStatusRequest
     ) -> RefreshDomainVerificationStatusResponse:
-        """Call to verif"""
+        """Call to verify domain"""
 
         return await self.client.refresh_domain_verification_status(
+            request, metadata=self.build_metadata(request)
+        )
+
+    async def search_wallet_configurations(
+        self, *, request: SearchWalletConfigurationsRequest
+    ) -> SearchWalletConfigurationResponse:
+        """Search for issuers/providers/verifiers in the current ecosystem"""
+
+        return await self.client.search_wallet_configurations(
             request, metadata=self.build_metadata(request)
         )
 

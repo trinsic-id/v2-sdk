@@ -3103,3 +3103,354 @@ class GetAuthorizationsResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.List<Grant> get grants => $_getList(0);
 }
+
+class SearchWalletConfigurationsRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'SearchWalletConfigurationsRequest',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'queryFilter')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'continuationToken')
+    ..hasRequiredFields = false;
+
+  SearchWalletConfigurationsRequest._() : super();
+  factory SearchWalletConfigurationsRequest({
+    $core.String? queryFilter,
+    $core.String? continuationToken,
+  }) {
+    final _result = create();
+    if (queryFilter != null) {
+      _result.queryFilter = queryFilter;
+    }
+    if (continuationToken != null) {
+      _result.continuationToken = continuationToken;
+    }
+    return _result;
+  }
+  factory SearchWalletConfigurationsRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory SearchWalletConfigurationsRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  SearchWalletConfigurationsRequest clone() =>
+      SearchWalletConfigurationsRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  SearchWalletConfigurationsRequest copyWith(
+          void Function(SearchWalletConfigurationsRequest) updates) =>
+      super.copyWith((message) =>
+              updates(message as SearchWalletConfigurationsRequest))
+          as SearchWalletConfigurationsRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static SearchWalletConfigurationsRequest create() =>
+      SearchWalletConfigurationsRequest._();
+  SearchWalletConfigurationsRequest createEmptyInstance() => create();
+  static $pb.PbList<SearchWalletConfigurationsRequest> createRepeated() =>
+      $pb.PbList<SearchWalletConfigurationsRequest>();
+  @$core.pragma('dart2js:noInline')
+  static SearchWalletConfigurationsRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<SearchWalletConfigurationsRequest>(
+          create);
+  static SearchWalletConfigurationsRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get queryFilter => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set queryFilter($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasQueryFilter() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearQueryFilter() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get continuationToken => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set continuationToken($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasContinuationToken() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearContinuationToken() => clearField(2);
+}
+
+class SearchWalletConfigurationResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'SearchWalletConfigurationResponse',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..pc<WalletConfiguration>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'results',
+        $pb.PbFieldType.PM,
+        subBuilder: WalletConfiguration.create)
+    ..aOB(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'hasMore')
+    ..aOS(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'continuationToken')
+    ..hasRequiredFields = false;
+
+  SearchWalletConfigurationResponse._() : super();
+  factory SearchWalletConfigurationResponse({
+    $core.Iterable<WalletConfiguration>? results,
+    $core.bool? hasMore,
+    $core.String? continuationToken,
+  }) {
+    final _result = create();
+    if (results != null) {
+      _result.results.addAll(results);
+    }
+    if (hasMore != null) {
+      _result.hasMore = hasMore;
+    }
+    if (continuationToken != null) {
+      _result.continuationToken = continuationToken;
+    }
+    return _result;
+  }
+  factory SearchWalletConfigurationResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory SearchWalletConfigurationResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  SearchWalletConfigurationResponse clone() =>
+      SearchWalletConfigurationResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  SearchWalletConfigurationResponse copyWith(
+          void Function(SearchWalletConfigurationResponse) updates) =>
+      super.copyWith((message) =>
+              updates(message as SearchWalletConfigurationResponse))
+          as SearchWalletConfigurationResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static SearchWalletConfigurationResponse create() =>
+      SearchWalletConfigurationResponse._();
+  SearchWalletConfigurationResponse createEmptyInstance() => create();
+  static $pb.PbList<SearchWalletConfigurationResponse> createRepeated() =>
+      $pb.PbList<SearchWalletConfigurationResponse>();
+  @$core.pragma('dart2js:noInline')
+  static SearchWalletConfigurationResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<SearchWalletConfigurationResponse>(
+          create);
+  static SearchWalletConfigurationResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<WalletConfiguration> get results => $_getList(0);
+
+  @$pb.TagNumber(2)
+  $core.bool get hasMore => $_getBF(1);
+  @$pb.TagNumber(2)
+  set hasMore($core.bool v) {
+    $_setBool(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasHasMore() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearHasMore() => clearField(2);
+
+  @$pb.TagNumber(4)
+  $core.String get continuationToken => $_getSZ(2);
+  @$pb.TagNumber(4)
+  set continuationToken($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasContinuationToken() => $_has(2);
+  @$pb.TagNumber(4)
+  void clearContinuationToken() => clearField(4);
+}
+
+class WalletConfiguration extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'WalletConfiguration',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'name')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'email')
+    ..aOS(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'sms')
+    ..aOS(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'walletId')
+    ..aOS(
+        5,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'publicDid')
+    ..hasRequiredFields = false;
+
+  WalletConfiguration._() : super();
+  factory WalletConfiguration({
+    $core.String? name,
+    $core.String? email,
+    $core.String? sms,
+    $core.String? walletId,
+    $core.String? publicDid,
+  }) {
+    final _result = create();
+    if (name != null) {
+      _result.name = name;
+    }
+    if (email != null) {
+      _result.email = email;
+    }
+    if (sms != null) {
+      _result.sms = sms;
+    }
+    if (walletId != null) {
+      _result.walletId = walletId;
+    }
+    if (publicDid != null) {
+      _result.publicDid = publicDid;
+    }
+    return _result;
+  }
+  factory WalletConfiguration.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory WalletConfiguration.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  WalletConfiguration clone() => WalletConfiguration()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  WalletConfiguration copyWith(void Function(WalletConfiguration) updates) =>
+      super.copyWith((message) => updates(message as WalletConfiguration))
+          as WalletConfiguration; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static WalletConfiguration create() => WalletConfiguration._();
+  WalletConfiguration createEmptyInstance() => create();
+  static $pb.PbList<WalletConfiguration> createRepeated() =>
+      $pb.PbList<WalletConfiguration>();
+  @$core.pragma('dart2js:noInline')
+  static WalletConfiguration getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<WalletConfiguration>(create);
+  static WalletConfiguration? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get name => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set name($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasName() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearName() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get email => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set email($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasEmail() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearEmail() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get sms => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set sms($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasSms() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearSms() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get walletId => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set walletId($core.String v) {
+    $_setString(3, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasWalletId() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearWalletId() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get publicDid => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set publicDid($core.String v) {
+    $_setString(4, v);
+  }
+
+  @$pb.TagNumber(5)
+  $core.bool hasPublicDid() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearPublicDid() => clearField(5);
+}

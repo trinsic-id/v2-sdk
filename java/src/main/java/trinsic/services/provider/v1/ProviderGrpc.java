@@ -713,6 +713,56 @@ public final class ProviderGrpc {
     return getRefreshDomainVerificationStatusMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<
+          trinsic.services.provider.v1.SearchWalletConfigurationsRequest,
+          trinsic.services.provider.v1.SearchWalletConfigurationResponse>
+      getSearchWalletConfigurationsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "SearchWalletConfigurations",
+      requestType = trinsic.services.provider.v1.SearchWalletConfigurationsRequest.class,
+      responseType = trinsic.services.provider.v1.SearchWalletConfigurationResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<
+          trinsic.services.provider.v1.SearchWalletConfigurationsRequest,
+          trinsic.services.provider.v1.SearchWalletConfigurationResponse>
+      getSearchWalletConfigurationsMethod() {
+    io.grpc.MethodDescriptor<
+            trinsic.services.provider.v1.SearchWalletConfigurationsRequest,
+            trinsic.services.provider.v1.SearchWalletConfigurationResponse>
+        getSearchWalletConfigurationsMethod;
+    if ((getSearchWalletConfigurationsMethod = ProviderGrpc.getSearchWalletConfigurationsMethod)
+        == null) {
+      synchronized (ProviderGrpc.class) {
+        if ((getSearchWalletConfigurationsMethod = ProviderGrpc.getSearchWalletConfigurationsMethod)
+            == null) {
+          ProviderGrpc.getSearchWalletConfigurationsMethod =
+              getSearchWalletConfigurationsMethod =
+                  io.grpc.MethodDescriptor
+                      .<trinsic.services.provider.v1.SearchWalletConfigurationsRequest,
+                          trinsic.services.provider.v1.SearchWalletConfigurationResponse>
+                          newBuilder()
+                      .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                      .setFullMethodName(
+                          generateFullMethodName(SERVICE_NAME, "SearchWalletConfigurations"))
+                      .setSampledToLocalTracing(true)
+                      .setRequestMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.provider.v1.SearchWalletConfigurationsRequest
+                                  .getDefaultInstance()))
+                      .setResponseMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.provider.v1.SearchWalletConfigurationResponse
+                                  .getDefaultInstance()))
+                      .setSchemaDescriptor(
+                          new ProviderMethodDescriptorSupplier("SearchWalletConfigurations"))
+                      .build();
+        }
+      }
+    }
+    return getSearchWalletConfigurationsMethod;
+  }
+
   /** Creates a new async stub that supports all call types for the service */
   public static ProviderStub newStub(io.grpc.Channel channel) {
     io.grpc.stub.AbstractStub.StubFactory<ProviderStub> factory =
@@ -820,7 +870,7 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Retreive the list of permissions for this particular account/ecosystem
+     * Retrieve the list of permissions for this particular account/ecosystem
      * </pre>
      */
     public void getAuthorizations(
@@ -969,7 +1019,7 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Call to verif
+     * Call to verify domain
      * </pre>
      */
     public void refreshDomainVerificationStatus(
@@ -979,6 +1029,21 @@ public final class ProviderGrpc {
             responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
           getRefreshDomainVerificationStatusMethod(), responseObserver);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Search for issuers/providers/verifiers in the current ecosystem
+     * </pre>
+     */
+    public void searchWalletConfigurations(
+        trinsic.services.provider.v1.SearchWalletConfigurationsRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.provider.v1.SearchWalletConfigurationResponse>
+            responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
+          getSearchWalletConfigurationsMethod(), responseObserver);
     }
 
     @java.lang.Override
@@ -1087,6 +1152,13 @@ public final class ProviderGrpc {
                       trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest,
                       trinsic.services.provider.v1.RefreshDomainVerificationStatusResponse>(
                       this, METHODID_REFRESH_DOMAIN_VERIFICATION_STATUS)))
+          .addMethod(
+              getSearchWalletConfigurationsMethod(),
+              io.grpc.stub.ServerCalls.asyncUnaryCall(
+                  new MethodHandlers<
+                      trinsic.services.provider.v1.SearchWalletConfigurationsRequest,
+                      trinsic.services.provider.v1.SearchWalletConfigurationResponse>(
+                      this, METHODID_SEARCH_WALLET_CONFIGURATIONS)))
           .build();
     }
   }
@@ -1174,7 +1246,7 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Retreive the list of permissions for this particular account/ecosystem
+     * Retrieve the list of permissions for this particular account/ecosystem
      * </pre>
      */
     public void getAuthorizations(
@@ -1341,7 +1413,7 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Call to verif
+     * Call to verify domain
      * </pre>
      */
     public void refreshDomainVerificationStatus(
@@ -1351,6 +1423,23 @@ public final class ProviderGrpc {
             responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getRefreshDomainVerificationStatusMethod(), getCallOptions()),
+          request,
+          responseObserver);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Search for issuers/providers/verifiers in the current ecosystem
+     * </pre>
+     */
+    public void searchWalletConfigurations(
+        trinsic.services.provider.v1.SearchWalletConfigurationsRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.provider.v1.SearchWalletConfigurationResponse>
+            responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getSearchWalletConfigurationsMethod(), getCallOptions()),
           request,
           responseObserver);
     }
@@ -1424,7 +1513,7 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Retreive the list of permissions for this particular account/ecosystem
+     * Retrieve the list of permissions for this particular account/ecosystem
      * </pre>
      */
     public trinsic.services.provider.v1.GetAuthorizationsResponse getAuthorizations(
@@ -1556,7 +1645,7 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Call to verif
+     * Call to verify domain
      * </pre>
      */
     public trinsic.services.provider.v1.RefreshDomainVerificationStatusResponse
@@ -1564,6 +1653,20 @@ public final class ProviderGrpc {
             trinsic.services.provider.v1.RefreshDomainVerificationStatusRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getRefreshDomainVerificationStatusMethod(), getCallOptions(), request);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Search for issuers/providers/verifiers in the current ecosystem
+     * </pre>
+     */
+    public trinsic.services.provider.v1.SearchWalletConfigurationResponse
+        searchWalletConfigurations(
+            trinsic.services.provider.v1.SearchWalletConfigurationsRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getSearchWalletConfigurationsMethod(), getCallOptions(), request);
     }
   }
 
@@ -1639,7 +1742,7 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Retreive the list of permissions for this particular account/ecosystem
+     * Retrieve the list of permissions for this particular account/ecosystem
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
@@ -1782,7 +1885,7 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
-     * Call to verif
+     * Call to verify domain
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
@@ -1792,6 +1895,21 @@ public final class ProviderGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getRefreshDomainVerificationStatusMethod(), getCallOptions()),
           request);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Search for issuers/providers/verifiers in the current ecosystem
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<
+            trinsic.services.provider.v1.SearchWalletConfigurationResponse>
+        searchWalletConfigurations(
+            trinsic.services.provider.v1.SearchWalletConfigurationsRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getSearchWalletConfigurationsMethod(), getCallOptions()), request);
     }
   }
 
@@ -1810,6 +1928,7 @@ public final class ProviderGrpc {
   private static final int METHODID_GET_EVENT_TOKEN = 12;
   private static final int METHODID_RETRIEVE_DOMAIN_VERIFICATION_RECORD = 13;
   private static final int METHODID_REFRESH_DOMAIN_VERIFICATION_STATUS = 14;
+  private static final int METHODID_SEARCH_WALLET_CONFIGURATIONS = 15;
 
   private static final class MethodHandlers<Req, Resp>
       implements io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -1921,6 +2040,13 @@ public final class ProviderGrpc {
                       trinsic.services.provider.v1.RefreshDomainVerificationStatusResponse>)
                   responseObserver);
           break;
+        case METHODID_SEARCH_WALLET_CONFIGURATIONS:
+          serviceImpl.searchWalletConfigurations(
+              (trinsic.services.provider.v1.SearchWalletConfigurationsRequest) request,
+              (io.grpc.stub.StreamObserver<
+                      trinsic.services.provider.v1.SearchWalletConfigurationResponse>)
+                  responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -1998,6 +2124,7 @@ public final class ProviderGrpc {
                       .addMethod(getGetEventTokenMethod())
                       .addMethod(getRetrieveDomainVerificationRecordMethod())
                       .addMethod(getRefreshDomainVerificationStatusMethod())
+                      .addMethod(getSearchWalletConfigurationsMethod())
                       .build();
         }
       }

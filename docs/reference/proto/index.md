@@ -1317,7 +1317,7 @@ Confirmation method type for two-factor workflows
 | UpdateEcosystem | [UpdateEcosystemRequest](/reference/proto#services-provider-v1-UpdateEcosystemRequest) | [UpdateEcosystemResponse](/reference/proto#services-provider-v1-UpdateEcosystemResponse) | Update an existing ecosystem |
 | GrantAuthorization | [GrantAuthorizationRequest](/reference/proto#services-provider-v1-GrantAuthorizationRequest) | [GrantAuthorizationResponse](/reference/proto#services-provider-v1-GrantAuthorizationResponse) | Grant user authorization to ecosystem resources |
 | RevokeAuthorization | [RevokeAuthorizationRequest](/reference/proto#services-provider-v1-RevokeAuthorizationRequest) | [RevokeAuthorizationResponse](/reference/proto#services-provider-v1-RevokeAuthorizationResponse) | Revoke user authorization to ecosystem resources |
-| GetAuthorizations | [GetAuthorizationsRequest](/reference/proto#services-provider-v1-GetAuthorizationsRequest) | [GetAuthorizationsResponse](/reference/proto#services-provider-v1-GetAuthorizationsResponse) | Retreive the list of permissions for this particular account/ecosystem |
+| GetAuthorizations | [GetAuthorizationsRequest](/reference/proto#services-provider-v1-GetAuthorizationsRequest) | [GetAuthorizationsResponse](/reference/proto#services-provider-v1-GetAuthorizationsResponse) | Retrieve the list of permissions for this particular account/ecosystem |
 | AddWebhook | [AddWebhookRequest](/reference/proto#services-provider-v1-AddWebhookRequest) | [AddWebhookResponse](/reference/proto#services-provider-v1-AddWebhookResponse) | Add a webhook endpoint to the ecosystem |
 | DeleteWebhook | [DeleteWebhookRequest](/reference/proto#services-provider-v1-DeleteWebhookRequest) | [DeleteWebhookResponse](/reference/proto#services-provider-v1-DeleteWebhookResponse) | Delete a webhook endpoint from the ecosystem |
 | EcosystemInfo | [EcosystemInfoRequest](/reference/proto#services-provider-v1-EcosystemInfoRequest) | [EcosystemInfoResponse](/reference/proto#services-provider-v1-EcosystemInfoResponse) | Get ecosystem information |
@@ -1327,7 +1327,8 @@ Confirmation method type for two-factor workflows
 | GetOberonKey | [GetOberonKeyRequest](/reference/proto#services-provider-v1-GetOberonKeyRequest) | [GetOberonKeyResponse](/reference/proto#services-provider-v1-GetOberonKeyResponse) | Returns the public key being used to create/verify oberon tokens |
 | GetEventToken | [GetEventTokenRequest](/reference/proto#services-provider-v1-GetEventTokenRequest) | [GetEventTokenResponse](/reference/proto#services-provider-v1-GetEventTokenResponse) | Generate a signed token (JWT) that can be used to connect to the message bus |
 | RetrieveDomainVerificationRecord | [RetrieveDomainVerificationRecordRequest](/reference/proto#services-provider-v1-RetrieveDomainVerificationRecordRequest) | [RetrieveDomainVerificationRecordResponse](/reference/proto#services-provider-v1-RetrieveDomainVerificationRecordResponse) | Retrieve a random hash TXT that can be used to verify domain ownership |
-| RefreshDomainVerificationStatus | [RefreshDomainVerificationStatusRequest](/reference/proto#services-provider-v1-RefreshDomainVerificationStatusRequest) | [RefreshDomainVerificationStatusResponse](/reference/proto#services-provider-v1-RefreshDomainVerificationStatusResponse) | Call to verif |
+| RefreshDomainVerificationStatus | [RefreshDomainVerificationStatusRequest](/reference/proto#services-provider-v1-RefreshDomainVerificationStatusRequest) | [RefreshDomainVerificationStatusResponse](/reference/proto#services-provider-v1-RefreshDomainVerificationStatusResponse) | Call to verify domain |
+| SearchWalletConfigurations | [SearchWalletConfigurationsRequest](/reference/proto#services-provider-v1-SearchWalletConfigurationsRequest) | [SearchWalletConfigurationResponse](/reference/proto#services-provider-v1-SearchWalletConfigurationResponse) | Search for issuers/providers/verifiers in the current ecosystem |
 
  <!-- end services -->
 
@@ -1819,6 +1820,39 @@ Response to `RevokeAuthorizationRequest`
 
 
 
+<a name="services-provider-v1-SearchWalletConfigurationResponse"></a>
+
+### SearchWalletConfigurationResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| results | [WalletConfiguration](/reference/proto#services-provider-v1-WalletConfiguration)[] | Results matching the search query |
+| has_more | [bool](/reference/proto#bool) | Whether more results are available for this query via `continuation_token` |
+| continuation_token | [string](/reference/proto#string) | Token to fetch next set of results via `SearchRequest` |
+
+
+
+
+
+
+<a name="services-provider-v1-SearchWalletConfigurationsRequest"></a>
+
+### SearchWalletConfigurationsRequest
+Search for issuers/holders/verifiers
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| query_filter | [string](/reference/proto#string) | SQL filter to execute. `SELECT * FROM _ WHERE [**queryFilter**]` |
+| continuation_token | [string](/reference/proto#string) | Token provided by previous `SearchResponse` if more data is available for query |
+
+
+
+
+
+
 <a name="services-provider-v1-UpdateEcosystemRequest"></a>
 
 ### UpdateEcosystemRequest
@@ -1847,6 +1881,25 @@ Response to `UpdateEcosystemRequest`
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | Ecosystem | [Ecosystem](/reference/proto#services-provider-v1-Ecosystem) | Current ecosystem metadata, post-update |
+
+
+
+
+
+
+<a name="services-provider-v1-WalletConfiguration"></a>
+
+### WalletConfiguration
+Strongly typed information about wallet configurations
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [string](/reference/proto#string) |  |
+| email | [string](/reference/proto#string) |  |
+| sms | [string](/reference/proto#string) |  |
+| wallet_id | [string](/reference/proto#string) |  |
+| public_did | [string](/reference/proto#string) |  |
 
 
 

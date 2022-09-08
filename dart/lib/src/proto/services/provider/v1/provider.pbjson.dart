@@ -676,3 +676,65 @@ const GetAuthorizationsResponse$json = const {
 final $typed_data.Uint8List getAuthorizationsResponseDescriptor =
     $convert.base64Decode(
         'ChlHZXRBdXRob3JpemF0aW9uc1Jlc3BvbnNlEjMKBmdyYW50cxgBIAMoCzIbLnNlcnZpY2VzLnByb3ZpZGVyLnYxLkdyYW50UgZncmFudHM=');
+@$core.Deprecated('Use searchWalletConfigurationsRequestDescriptor instead')
+const SearchWalletConfigurationsRequest$json = const {
+  '1': 'SearchWalletConfigurationsRequest',
+  '2': const [
+    const {'1': 'query_filter', '3': 1, '4': 1, '5': 9, '10': 'queryFilter'},
+    const {
+      '1': 'continuation_token',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '8': const {},
+      '10': 'continuationToken'
+    },
+  ],
+};
+
+/// Descriptor for `SearchWalletConfigurationsRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List searchWalletConfigurationsRequestDescriptor =
+    $convert.base64Decode(
+        'CiFTZWFyY2hXYWxsZXRDb25maWd1cmF0aW9uc1JlcXVlc3QSIQoMcXVlcnlfZmlsdGVyGAEgASgJUgtxdWVyeUZpbHRlchIzChJjb250aW51YXRpb25fdG9rZW4YAiABKAlCBICmHQFSEWNvbnRpbnVhdGlvblRva2Vu');
+@$core.Deprecated('Use searchWalletConfigurationResponseDescriptor instead')
+const SearchWalletConfigurationResponse$json = const {
+  '1': 'SearchWalletConfigurationResponse',
+  '2': const [
+    const {
+      '1': 'results',
+      '3': 1,
+      '4': 3,
+      '5': 11,
+      '6': '.services.provider.v1.WalletConfiguration',
+      '10': 'results'
+    },
+    const {'1': 'has_more', '3': 2, '4': 1, '5': 8, '10': 'hasMore'},
+    const {
+      '1': 'continuation_token',
+      '3': 4,
+      '4': 1,
+      '5': 9,
+      '10': 'continuationToken'
+    },
+  ],
+};
+
+/// Descriptor for `SearchWalletConfigurationResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List searchWalletConfigurationResponseDescriptor =
+    $convert.base64Decode(
+        'CiFTZWFyY2hXYWxsZXRDb25maWd1cmF0aW9uUmVzcG9uc2USQwoHcmVzdWx0cxgBIAMoCzIpLnNlcnZpY2VzLnByb3ZpZGVyLnYxLldhbGxldENvbmZpZ3VyYXRpb25SB3Jlc3VsdHMSGQoIaGFzX21vcmUYAiABKAhSB2hhc01vcmUSLQoSY29udGludWF0aW9uX3Rva2VuGAQgASgJUhFjb250aW51YXRpb25Ub2tlbg==');
+@$core.Deprecated('Use walletConfigurationDescriptor instead')
+const WalletConfiguration$json = const {
+  '1': 'WalletConfiguration',
+  '2': const [
+    const {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
+    const {'1': 'email', '3': 2, '4': 1, '5': 9, '8': const {}, '10': 'email'},
+    const {'1': 'sms', '3': 3, '4': 1, '5': 9, '8': const {}, '10': 'sms'},
+    const {'1': 'wallet_id', '3': 4, '4': 1, '5': 9, '10': 'walletId'},
+    const {'1': 'public_did', '3': 5, '4': 1, '5': 9, '10': 'publicDid'},
+  ],
+};
+
+/// Descriptor for `WalletConfiguration`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List walletConfigurationDescriptor = $convert.base64Decode(
+    'ChNXYWxsZXRDb25maWd1cmF0aW9uEhIKBG5hbWUYASABKAlSBG5hbWUSGgoFZW1haWwYAiABKAlCBICmHQFSBWVtYWlsEhYKA3NtcxgDIAEoCUIEgKYdAVIDc21zEhsKCXdhbGxldF9pZBgEIAEoCVIId2FsbGV0SWQSHQoKcHVibGljX2RpZBgFIAEoCVIJcHVibGljRGlk');
