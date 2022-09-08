@@ -79,4 +79,4 @@ jobs:
           echo ${{ secrets.GITHUB_TOKEN }} | gh auth login --with-token
           # Line below can fail if PR already exists, there isn't a flag to say, "ignore if already exists"
           PrTitle="Generated Protos for $HeadRef"
-          gh pr create --base ${{ github.head_ref }} --title PrTitle --body "Generated files from proto"
+          gh pr create --base ${{ github.head_ref }} --title $PrTitle --body "Generated files from proto"
