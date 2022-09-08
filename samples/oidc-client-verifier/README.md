@@ -5,14 +5,14 @@ This is a simple example which demonstrates the usage of Trinsic's OIDC endpoint
 ## Usage
 
 This sample uses `parcel` as a barebones webserver.
-  
+
 On first run, issue `npm ci`.
 
 To host the webserver and access the sample, execute `npm start`.
 
 ## Configuration
 
-You will need to modify the following constants in `src/js/app.js`:
+You will need to modify the following constants in `src/js/app.ts`:
 
 - `TRINSIC_ECOSYSTEM`
   - Set this to the name of the ecosystem from which you wish to fetch credentials
