@@ -343,6 +343,31 @@ message GetAuthorizationsResponse {
     repeated Grant grants = 1;
 }
 
+// Search for issuers/holders/verifiers
+message SearchWalletConfigurationsRequest {
+    // SQL filter to execute. `SELECT * FROM _ WHERE [**queryFilter**]`
+    string query_filter = 1;
+    // Token provided by previous `SearchResponse`
+    // if more data is available for query
+    string continuation_token = 2 [(options.optional)=true];
+}
+message SearchWalletConfigurationResponse {
+    // Results matching the search query
+    repeated WalletConfiguration results = 1;
+    // Whether more results are available for this query via `continuation_token`
+    bool has_more = 2;
+    // Token to fetch next set of results via `SearchRequest`
+    string continuation_token = 4;
+}
+// Strongly typed information about wallet configurations
+message WalletConfiguration {
+    string name = 1;
+    string email = 2  [(options.optional)=true];
+    string sms = 3  [(options.optional)=true];
+    string wallet_id = 4;
+    string public_did = 5;
+}
+
 
 service Provider {
     // Create new ecosystem and assign the authenticated user as owner
@@ -359,7 +384,7 @@ service Provider {
     // Revoke user authorization to ecosystem resources
     rpc RevokeAuthorization(RevokeAuthorizationRequest) returns (RevokeAuthorizationResponse);
 
-    // Retreive the list of permissions for this particular account/ecosystem
+    // Retrieve the list of permissions for this particular account/ecosystem
     rpc GetAuthorizations(GetAuthorizationsRequest) returns (GetAuthorizationsResponse);
 
     // Add a webhook endpoint to the ecosystem
@@ -392,6 +417,9 @@ service Provider {
     // Retrieve a random hash TXT that can be used to verify domain ownership
     rpc RetrieveDomainVerificationRecord(RetrieveDomainVerificationRecordRequest) returns (RetrieveDomainVerificationRecordResponse);
 
-    // Call to verif
+    // Call to verify domain
     rpc RefreshDomainVerificationStatus(RefreshDomainVerificationStatusRequest) returns (RefreshDomainVerificationStatusResponse);
+
+    // Search for issuers/providers/verifiers in the current ecosystem
+    rpc SearchWalletConfigurations(SearchWalletConfigurationsRequest) returns (SearchWalletConfigurationResponse);
 }
