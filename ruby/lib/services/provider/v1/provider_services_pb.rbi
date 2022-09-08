@@ -137,5 +137,13 @@ module Services::Provider::V1::Provider
     end
     def refresh_domain_verification_status(request)
     end
+
+    sig do
+      params(
+        request: Services::Provider::V1::SearchWalletConfigurationsRequest
+      ).returns(Services::Provider::V1::SearchWalletConfigurationResponse)
+    end
+    def search_wallet_configurations(request)
+    end
   end
 end

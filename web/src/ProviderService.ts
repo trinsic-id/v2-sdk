@@ -30,6 +30,8 @@ import {
     RetrieveDomainVerificationRecordResponse,
     RevokeAuthorizationRequest,
     RevokeAuthorizationResponse,
+    SearchWalletConfigurationResponse,
+    SearchWalletConfigurationsRequest,
     ServiceOptions,
     UpdateEcosystemRequest,
     UpdateEcosystemResponse,
@@ -99,7 +101,7 @@ export class ProviderService extends ServiceBase {
             ),
         });
     }
-    /** Retreive the list of permissions for this particular account/ecosystem */
+    /** Retrieve the list of permissions for this particular account/ecosystem */
     public async getAuthorizations(
         request: GetAuthorizationsRequest
     ): Promise<GetAuthorizationsResponse> {
@@ -196,13 +198,23 @@ export class ProviderService extends ServiceBase {
             ),
         });
     }
-    /** Call to verif */
+    /** Call to verify domain */
     public async refreshDomainVerificationStatus(
         request: RefreshDomainVerificationStatusRequest
     ): Promise<RefreshDomainVerificationStatusResponse> {
         return this.client.refreshDomainVerificationStatus(request, {
             metadata: await this.buildMetadata(
                 RefreshDomainVerificationStatusRequest.encode(request).finish()
+            ),
+        });
+    }
+    /** Search for issuers/providers/verifiers in the current ecosystem */
+    public async searchWalletConfigurations(
+        request: SearchWalletConfigurationsRequest
+    ): Promise<SearchWalletConfigurationResponse> {
+        return this.client.searchWalletConfigurations(request, {
+            metadata: await this.buildMetadata(
+                SearchWalletConfigurationsRequest.encode(request).finish()
             ),
         });
     }

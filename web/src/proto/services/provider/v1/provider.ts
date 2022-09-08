@@ -405,6 +405,35 @@ export interface GetAuthorizationsResponse {
     grants: Grant[];
 }
 
+/** Search for issuers/holders/verifiers */
+export interface SearchWalletConfigurationsRequest {
+    /** SQL filter to execute. `SELECT * FROM _ WHERE [**queryFilter**]` */
+    queryFilter: string;
+    /**
+     * Token provided by previous `SearchResponse`
+     * if more data is available for query
+     */
+    continuationToken: string;
+}
+
+export interface SearchWalletConfigurationResponse {
+    /** Results matching the search query */
+    results: WalletConfiguration[];
+    /** Whether more results are available for this query via `continuation_token` */
+    hasMore: boolean;
+    /** Token to fetch next set of results via `SearchRequest` */
+    continuationToken: string;
+}
+
+/** Strongly typed information about wallet configurations */
+export interface WalletConfiguration {
+    name: string;
+    email: string;
+    sms: string;
+    walletId: string;
+    publicDid: string;
+}
+
 function createBaseInviteRequest(): InviteRequest {
     return { participant: 0, description: "", details: undefined };
 }
@@ -3010,6 +3039,264 @@ export const GetAuthorizationsResponse = {
     },
 };
 
+function createBaseSearchWalletConfigurationsRequest(): SearchWalletConfigurationsRequest {
+    return { queryFilter: "", continuationToken: "" };
+}
+
+export const SearchWalletConfigurationsRequest = {
+    encode(
+        message: SearchWalletConfigurationsRequest,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.queryFilter !== "") {
+            writer.uint32(10).string(message.queryFilter);
+        }
+        if (message.continuationToken !== "") {
+            writer.uint32(18).string(message.continuationToken);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): SearchWalletConfigurationsRequest {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseSearchWalletConfigurationsRequest();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.queryFilter = reader.string();
+                    break;
+                case 2:
+                    message.continuationToken = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): SearchWalletConfigurationsRequest {
+        return {
+            queryFilter: isSet(object.queryFilter)
+                ? String(object.queryFilter)
+                : "",
+            continuationToken: isSet(object.continuationToken)
+                ? String(object.continuationToken)
+                : "",
+        };
+    },
+
+    toJSON(message: SearchWalletConfigurationsRequest): unknown {
+        const obj: any = {};
+        message.queryFilter !== undefined &&
+            (obj.queryFilter = message.queryFilter);
+        message.continuationToken !== undefined &&
+            (obj.continuationToken = message.continuationToken);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<SearchWalletConfigurationsRequest>
+    ): SearchWalletConfigurationsRequest {
+        const message = createBaseSearchWalletConfigurationsRequest();
+        message.queryFilter = object.queryFilter ?? "";
+        message.continuationToken = object.continuationToken ?? "";
+        return message;
+    },
+};
+
+function createBaseSearchWalletConfigurationResponse(): SearchWalletConfigurationResponse {
+    return { results: [], hasMore: false, continuationToken: "" };
+}
+
+export const SearchWalletConfigurationResponse = {
+    encode(
+        message: SearchWalletConfigurationResponse,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        for (const v of message.results) {
+            WalletConfiguration.encode(v!, writer.uint32(10).fork()).ldelim();
+        }
+        if (message.hasMore === true) {
+            writer.uint32(16).bool(message.hasMore);
+        }
+        if (message.continuationToken !== "") {
+            writer.uint32(34).string(message.continuationToken);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): SearchWalletConfigurationResponse {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseSearchWalletConfigurationResponse();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.results.push(
+                        WalletConfiguration.decode(reader, reader.uint32())
+                    );
+                    break;
+                case 2:
+                    message.hasMore = reader.bool();
+                    break;
+                case 4:
+                    message.continuationToken = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): SearchWalletConfigurationResponse {
+        return {
+            results: Array.isArray(object?.results)
+                ? object.results.map((e: any) =>
+                      WalletConfiguration.fromJSON(e)
+                  )
+                : [],
+            hasMore: isSet(object.hasMore) ? Boolean(object.hasMore) : false,
+            continuationToken: isSet(object.continuationToken)
+                ? String(object.continuationToken)
+                : "",
+        };
+    },
+
+    toJSON(message: SearchWalletConfigurationResponse): unknown {
+        const obj: any = {};
+        if (message.results) {
+            obj.results = message.results.map((e) =>
+                e ? WalletConfiguration.toJSON(e) : undefined
+            );
+        } else {
+            obj.results = [];
+        }
+        message.hasMore !== undefined && (obj.hasMore = message.hasMore);
+        message.continuationToken !== undefined &&
+            (obj.continuationToken = message.continuationToken);
+        return obj;
+    },
+
+    fromPartial(
+        object: DeepPartial<SearchWalletConfigurationResponse>
+    ): SearchWalletConfigurationResponse {
+        const message = createBaseSearchWalletConfigurationResponse();
+        message.results =
+            object.results?.map((e) => WalletConfiguration.fromPartial(e)) ||
+            [];
+        message.hasMore = object.hasMore ?? false;
+        message.continuationToken = object.continuationToken ?? "";
+        return message;
+    },
+};
+
+function createBaseWalletConfiguration(): WalletConfiguration {
+    return { name: "", email: "", sms: "", walletId: "", publicDid: "" };
+}
+
+export const WalletConfiguration = {
+    encode(
+        message: WalletConfiguration,
+        writer: _m0.Writer = _m0.Writer.create()
+    ): _m0.Writer {
+        if (message.name !== "") {
+            writer.uint32(10).string(message.name);
+        }
+        if (message.email !== "") {
+            writer.uint32(18).string(message.email);
+        }
+        if (message.sms !== "") {
+            writer.uint32(26).string(message.sms);
+        }
+        if (message.walletId !== "") {
+            writer.uint32(34).string(message.walletId);
+        }
+        if (message.publicDid !== "") {
+            writer.uint32(42).string(message.publicDid);
+        }
+        return writer;
+    },
+
+    decode(
+        input: _m0.Reader | Uint8Array,
+        length?: number
+    ): WalletConfiguration {
+        const reader =
+            input instanceof _m0.Reader ? input : new _m0.Reader(input);
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = createBaseWalletConfiguration();
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.name = reader.string();
+                    break;
+                case 2:
+                    message.email = reader.string();
+                    break;
+                case 3:
+                    message.sms = reader.string();
+                    break;
+                case 4:
+                    message.walletId = reader.string();
+                    break;
+                case 5:
+                    message.publicDid = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+
+    fromJSON(object: any): WalletConfiguration {
+        return {
+            name: isSet(object.name) ? String(object.name) : "",
+            email: isSet(object.email) ? String(object.email) : "",
+            sms: isSet(object.sms) ? String(object.sms) : "",
+            walletId: isSet(object.walletId) ? String(object.walletId) : "",
+            publicDid: isSet(object.publicDid) ? String(object.publicDid) : "",
+        };
+    },
+
+    toJSON(message: WalletConfiguration): unknown {
+        const obj: any = {};
+        message.name !== undefined && (obj.name = message.name);
+        message.email !== undefined && (obj.email = message.email);
+        message.sms !== undefined && (obj.sms = message.sms);
+        message.walletId !== undefined && (obj.walletId = message.walletId);
+        message.publicDid !== undefined && (obj.publicDid = message.publicDid);
+        return obj;
+    },
+
+    fromPartial(object: DeepPartial<WalletConfiguration>): WalletConfiguration {
+        const message = createBaseWalletConfiguration();
+        message.name = object.name ?? "";
+        message.email = object.email ?? "";
+        message.sms = object.sms ?? "";
+        message.walletId = object.walletId ?? "";
+        message.publicDid = object.publicDid ?? "";
+        return message;
+    },
+};
+
 export type ProviderDefinition = typeof ProviderDefinition;
 export const ProviderDefinition = {
     name: "Provider",
@@ -3051,7 +3338,7 @@ export const ProviderDefinition = {
             responseStream: false,
             options: {},
         },
-        /** Retreive the list of permissions for this particular account/ecosystem */
+        /** Retrieve the list of permissions for this particular account/ecosystem */
         getAuthorizations: {
             name: "GetAuthorizations",
             requestType: GetAuthorizationsRequest,
@@ -3144,12 +3431,21 @@ export const ProviderDefinition = {
             responseStream: false,
             options: {},
         },
-        /** Call to verif */
+        /** Call to verify domain */
         refreshDomainVerificationStatus: {
             name: "RefreshDomainVerificationStatus",
             requestType: RefreshDomainVerificationStatusRequest,
             requestStream: false,
             responseType: RefreshDomainVerificationStatusResponse,
+            responseStream: false,
+            options: {},
+        },
+        /** Search for issuers/providers/verifiers in the current ecosystem */
+        searchWalletConfigurations: {
+            name: "SearchWalletConfigurations",
+            requestType: SearchWalletConfigurationsRequest,
+            requestStream: false,
+            responseType: SearchWalletConfigurationResponse,
             responseStream: false,
             options: {},
         },

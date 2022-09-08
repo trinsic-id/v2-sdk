@@ -154,6 +154,22 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "services.provider.v1.GetAuthorizationsResponse" do
       repeated :grants, :message, 1, "services.provider.v1.Grant"
     end
+    add_message "services.provider.v1.SearchWalletConfigurationsRequest" do
+      optional :query_filter, :string, 1
+      optional :continuation_token, :string, 2
+    end
+    add_message "services.provider.v1.SearchWalletConfigurationResponse" do
+      repeated :results, :message, 1, "services.provider.v1.WalletConfiguration"
+      optional :has_more, :bool, 2
+      optional :continuation_token, :string, 4
+    end
+    add_message "services.provider.v1.WalletConfiguration" do
+      optional :name, :string, 1
+      optional :email, :string, 2
+      optional :sms, :string, 3
+      optional :wallet_id, :string, 4
+      optional :public_did, :string, 5
+    end
     add_enum "services.provider.v1.ParticipantType" do
       value :participant_type_individual, 0
       value :participant_type_organization, 1
@@ -201,6 +217,9 @@ module Services
       RevokeAuthorizationResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.RevokeAuthorizationResponse").msgclass
       GetAuthorizationsRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GetAuthorizationsRequest").msgclass
       GetAuthorizationsResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GetAuthorizationsResponse").msgclass
+      SearchWalletConfigurationsRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.SearchWalletConfigurationsRequest").msgclass
+      SearchWalletConfigurationResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.SearchWalletConfigurationResponse").msgclass
+      WalletConfiguration = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.WalletConfiguration").msgclass
       ParticipantType = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.ParticipantType").enummodule
     end
   end
