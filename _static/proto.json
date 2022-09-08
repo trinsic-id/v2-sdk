@@ -1092,6 +1092,12 @@
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
+    "services.provider.v1.Provider.SearchWalletConfigurations": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
     "services.provider.v1.Provider.UpdateEcosystem": {
       "type": "method",
       "collection": "methods",
@@ -1176,6 +1182,48 @@
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
+    "services.provider.v1.SearchWalletConfigurationResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.SearchWalletConfigurationResponse.continuation_token": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.SearchWalletConfigurationResponse"
+    },
+    "services.provider.v1.SearchWalletConfigurationResponse.has_more": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.SearchWalletConfigurationResponse"
+    },
+    "services.provider.v1.SearchWalletConfigurationResponse.results": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.SearchWalletConfigurationResponse"
+    },
+    "services.provider.v1.SearchWalletConfigurationsRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.SearchWalletConfigurationsRequest.continuation_token": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.SearchWalletConfigurationsRequest"
+    },
+    "services.provider.v1.SearchWalletConfigurationsRequest.query_filter": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.SearchWalletConfigurationsRequest"
+    },
     "services.provider.v1.UpdateEcosystemRequest": {
       "type": "message",
       "collection": "messages",
@@ -1223,6 +1271,42 @@
       "collection": "fields",
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.UpdateEcosystemResponse"
+    },
+    "services.provider.v1.WalletConfiguration": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.WalletConfiguration.email": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.WalletConfiguration"
+    },
+    "services.provider.v1.WalletConfiguration.name": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.WalletConfiguration"
+    },
+    "services.provider.v1.WalletConfiguration.public_did": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.WalletConfiguration"
+    },
+    "services.provider.v1.WalletConfiguration.sms": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.WalletConfiguration"
+    },
+    "services.provider.v1.WalletConfiguration.wallet_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.WalletConfiguration"
     },
     "services.provider.v1.WebhookConfig": {
       "type": "message",
@@ -3002,7 +3086,8 @@
         "services.provider.v1.Provider.GetOberonKey",
         "services.provider.v1.Provider.GetEventToken",
         "services.provider.v1.Provider.RetrieveDomainVerificationRecord",
-        "services.provider.v1.Provider.RefreshDomainVerificationStatus"
+        "services.provider.v1.Provider.RefreshDomainVerificationStatus",
+        "services.provider.v1.Provider.SearchWalletConfigurations"
       ],
       "messages": [
         "services.provider.v1.InviteRequest",
@@ -3040,7 +3125,10 @@
         "services.provider.v1.RevokeAuthorizationRequest",
         "services.provider.v1.RevokeAuthorizationResponse",
         "services.provider.v1.GetAuthorizationsRequest",
-        "services.provider.v1.GetAuthorizationsResponse"
+        "services.provider.v1.GetAuthorizationsResponse",
+        "services.provider.v1.SearchWalletConfigurationsRequest",
+        "services.provider.v1.SearchWalletConfigurationResponse",
+        "services.provider.v1.WalletConfiguration"
       ],
       "fields": [
         "services.provider.v1.InviteRequest.participant",
@@ -3106,7 +3194,17 @@
         "services.provider.v1.RevokeAuthorizationRequest.walletId",
         "services.provider.v1.RevokeAuthorizationRequest.resource",
         "services.provider.v1.RevokeAuthorizationRequest.action",
-        "services.provider.v1.GetAuthorizationsResponse.grants"
+        "services.provider.v1.GetAuthorizationsResponse.grants",
+        "services.provider.v1.SearchWalletConfigurationsRequest.query_filter",
+        "services.provider.v1.SearchWalletConfigurationsRequest.continuation_token",
+        "services.provider.v1.SearchWalletConfigurationResponse.results",
+        "services.provider.v1.SearchWalletConfigurationResponse.has_more",
+        "services.provider.v1.SearchWalletConfigurationResponse.continuation_token",
+        "services.provider.v1.WalletConfiguration.name",
+        "services.provider.v1.WalletConfiguration.email",
+        "services.provider.v1.WalletConfiguration.sms",
+        "services.provider.v1.WalletConfiguration.wallet_id",
+        "services.provider.v1.WalletConfiguration.public_did"
       ],
       "enums": [
         "services.provider.v1.InvitationStatusResponse.Status",
@@ -3432,7 +3530,8 @@
         "services.provider.v1.Provider.GetOberonKey",
         "services.provider.v1.Provider.GetEventToken",
         "services.provider.v1.Provider.RetrieveDomainVerificationRecord",
-        "services.provider.v1.Provider.RefreshDomainVerificationStatus"
+        "services.provider.v1.Provider.RefreshDomainVerificationStatus",
+        "services.provider.v1.Provider.SearchWalletConfigurations"
       ]
     },
     "services.trustregistry.v1.TrustRegistry": {
@@ -3578,7 +3677,7 @@
       "full_name": "services.provider.v1.Provider.GetAuthorizations",
       "input_type": "services.provider.v1.GetAuthorizationsRequest",
       "output_type": "services.provider.v1.GetAuthorizationsResponse",
-      "description": "Retreive the list of permissions for this particular account/ecosystem"
+      "description": "Retrieve the list of permissions for this particular account/ecosystem"
     },
     "services.provider.v1.Provider.GetEventToken": {
       "name": "GetEventToken",
@@ -3620,7 +3719,7 @@
       "full_name": "services.provider.v1.Provider.RefreshDomainVerificationStatus",
       "input_type": "services.provider.v1.RefreshDomainVerificationStatusRequest",
       "output_type": "services.provider.v1.RefreshDomainVerificationStatusResponse",
-      "description": "Call to verif"
+      "description": "Call to verify domain"
     },
     "services.provider.v1.Provider.RetrieveDomainVerificationRecord": {
       "name": "RetrieveDomainVerificationRecord",
@@ -3635,6 +3734,13 @@
       "input_type": "services.provider.v1.RevokeAuthorizationRequest",
       "output_type": "services.provider.v1.RevokeAuthorizationResponse",
       "description": "Revoke user authorization to ecosystem resources"
+    },
+    "services.provider.v1.Provider.SearchWalletConfigurations": {
+      "name": "SearchWalletConfigurations",
+      "full_name": "services.provider.v1.Provider.SearchWalletConfigurations",
+      "input_type": "services.provider.v1.SearchWalletConfigurationsRequest",
+      "output_type": "services.provider.v1.SearchWalletConfigurationResponse",
+      "description": "Search for issuers/providers/verifiers in the current ecosystem"
     },
     "services.provider.v1.Provider.UpdateEcosystem": {
       "name": "UpdateEcosystem",
@@ -4386,6 +4492,29 @@
       "messages": [],
       "enums": []
     },
+    "services.provider.v1.SearchWalletConfigurationResponse": {
+      "name": "SearchWalletConfigurationResponse",
+      "full_name": "services.provider.v1.SearchWalletConfigurationResponse",
+      "description": "",
+      "fields": [
+        "services.provider.v1.SearchWalletConfigurationResponse.results",
+        "services.provider.v1.SearchWalletConfigurationResponse.has_more",
+        "services.provider.v1.SearchWalletConfigurationResponse.continuation_token"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.provider.v1.SearchWalletConfigurationsRequest": {
+      "name": "SearchWalletConfigurationsRequest",
+      "full_name": "services.provider.v1.SearchWalletConfigurationsRequest",
+      "description": "Search for issuers/holders/verifiers",
+      "fields": [
+        "services.provider.v1.SearchWalletConfigurationsRequest.query_filter",
+        "services.provider.v1.SearchWalletConfigurationsRequest.continuation_token"
+      ],
+      "messages": [],
+      "enums": []
+    },
     "services.provider.v1.UpdateEcosystemRequest": {
       "name": "UpdateEcosystemRequest",
       "full_name": "services.provider.v1.UpdateEcosystemRequest",
@@ -4406,6 +4535,20 @@
       "description": "Response to `UpdateEcosystemRequest`",
       "fields": [
         "services.provider.v1.UpdateEcosystemResponse.Ecosystem"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.provider.v1.WalletConfiguration": {
+      "name": "WalletConfiguration",
+      "full_name": "services.provider.v1.WalletConfiguration",
+      "description": "Strongly typed information about wallet configurations",
+      "fields": [
+        "services.provider.v1.WalletConfiguration.name",
+        "services.provider.v1.WalletConfiguration.email",
+        "services.provider.v1.WalletConfiguration.sms",
+        "services.provider.v1.WalletConfiguration.wallet_id",
+        "services.provider.v1.WalletConfiguration.public_did"
       ],
       "messages": [],
       "enums": []
@@ -5972,6 +6115,49 @@
       "full_type": "string",
       "description": "Wallet ID of account having permission revoked.\nMutually exclusive with `email`."
     },
+    "services.provider.v1.SearchWalletConfigurationResponse.continuation_token": {
+      "name": "continuation_token",
+      "full_name": "services.provider.v1.SearchWalletConfigurationResponse.continuation_token",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Token to fetch next set of results via `SearchRequest`"
+    },
+    "services.provider.v1.SearchWalletConfigurationResponse.has_more": {
+      "name": "has_more",
+      "full_name": "services.provider.v1.SearchWalletConfigurationResponse.has_more",
+      "label": "LABEL_OPTIONAL",
+      "type": "bool",
+      "full_type": "bool",
+      "description": "Whether more results are available for this query via `continuation_token`"
+    },
+    "services.provider.v1.SearchWalletConfigurationResponse.results": {
+      "name": "results",
+      "full_name": "services.provider.v1.SearchWalletConfigurationResponse.results",
+      "label": "LABEL_REPEATED",
+      "type": "WalletConfiguration",
+      "full_type": "services.provider.v1.WalletConfiguration",
+      "description": "Results matching the search query"
+    },
+    "services.provider.v1.SearchWalletConfigurationsRequest.continuation_token": {
+      "name": "continuation_token",
+      "full_name": "services.provider.v1.SearchWalletConfigurationsRequest.continuation_token",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Token provided by previous `SearchResponse`\nif more data is available for query",
+      "options": {
+        "services.options.optional": true
+      }
+    },
+    "services.provider.v1.SearchWalletConfigurationsRequest.query_filter": {
+      "name": "query_filter",
+      "full_name": "services.provider.v1.SearchWalletConfigurationsRequest.query_filter",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "SQL filter to execute. `SELECT * FROM _ WHERE [**queryFilter**]`"
+    },
     "services.provider.v1.UpdateEcosystemRequest.description": {
       "name": "description",
       "full_name": "services.provider.v1.UpdateEcosystemRequest.description",
@@ -6019,6 +6205,52 @@
       "type": "Ecosystem",
       "full_type": "services.provider.v1.Ecosystem",
       "description": "Current ecosystem metadata, post-update"
+    },
+    "services.provider.v1.WalletConfiguration.email": {
+      "name": "email",
+      "full_name": "services.provider.v1.WalletConfiguration.email",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "",
+      "options": {
+        "services.options.optional": true
+      }
+    },
+    "services.provider.v1.WalletConfiguration.name": {
+      "name": "name",
+      "full_name": "services.provider.v1.WalletConfiguration.name",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "services.provider.v1.WalletConfiguration.public_did": {
+      "name": "public_did",
+      "full_name": "services.provider.v1.WalletConfiguration.public_did",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "services.provider.v1.WalletConfiguration.sms": {
+      "name": "sms",
+      "full_name": "services.provider.v1.WalletConfiguration.sms",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "",
+      "options": {
+        "services.options.optional": true
+      }
+    },
+    "services.provider.v1.WalletConfiguration.wallet_id": {
+      "name": "wallet_id",
+      "full_name": "services.provider.v1.WalletConfiguration.wallet_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
     },
     "services.provider.v1.WebhookConfig.destination_url": {
       "name": "destination_url",
