@@ -107,6 +107,13 @@ class ProviderClient extends $grpc.Client {
           value.writeToBuffer(),
       ($core.List<$core.int> value) =>
           $4.RefreshDomainVerificationStatusResponse.fromBuffer(value));
+  static final _$searchWalletConfigurations = $grpc.ClientMethod<
+          $4.SearchWalletConfigurationsRequest,
+          $4.SearchWalletConfigurationResponse>(
+      '/services.provider.v1.Provider/SearchWalletConfigurations',
+      ($4.SearchWalletConfigurationsRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) =>
+          $4.SearchWalletConfigurationResponse.fromBuffer(value));
 
   ProviderClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -203,6 +210,13 @@ class ProviderClient extends $grpc.Client {
           $4.RefreshDomainVerificationStatusRequest request,
           {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$refreshDomainVerificationStatus, request,
+        options: options);
+  }
+
+  $grpc.ResponseFuture<$4.SearchWalletConfigurationResponse>
+      searchWalletConfigurations($4.SearchWalletConfigurationsRequest request,
+          {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$searchWalletConfigurations, request,
         options: options);
   }
 }
@@ -344,6 +358,15 @@ abstract class ProviderServiceBase extends $grpc.Service {
             $4.RefreshDomainVerificationStatusRequest.fromBuffer(value),
         ($4.RefreshDomainVerificationStatusResponse value) =>
             value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.SearchWalletConfigurationsRequest,
+            $4.SearchWalletConfigurationResponse>(
+        'SearchWalletConfigurations',
+        searchWalletConfigurations_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) =>
+            $4.SearchWalletConfigurationsRequest.fromBuffer(value),
+        ($4.SearchWalletConfigurationResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$4.CreateEcosystemResponse> createEcosystem_Pre(
@@ -438,6 +461,12 @@ abstract class ProviderServiceBase extends $grpc.Service {
     return refreshDomainVerificationStatus(call, await request);
   }
 
+  $async.Future<$4.SearchWalletConfigurationResponse>
+      searchWalletConfigurations_Pre($grpc.ServiceCall call,
+          $async.Future<$4.SearchWalletConfigurationsRequest> request) async {
+    return searchWalletConfigurations(call, await request);
+  }
+
   $async.Future<$4.CreateEcosystemResponse> createEcosystem(
       $grpc.ServiceCall call, $4.CreateEcosystemRequest request);
   $async.Future<$4.UpdateEcosystemResponse> updateEcosystem(
@@ -470,4 +499,7 @@ abstract class ProviderServiceBase extends $grpc.Service {
   $async.Future<$4.RefreshDomainVerificationStatusResponse>
       refreshDomainVerificationStatus($grpc.ServiceCall call,
           $4.RefreshDomainVerificationStatusRequest request);
+  $async.Future<$4.SearchWalletConfigurationResponse>
+      searchWalletConfigurations(
+          $grpc.ServiceCall call, $4.SearchWalletConfigurationsRequest request);
 }

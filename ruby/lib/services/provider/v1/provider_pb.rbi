@@ -2475,6 +2475,284 @@ class Services::Provider::V1::GetAuthorizationsResponse
   end
 end
 
+class Services::Provider::V1::SearchWalletConfigurationsRequest
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::SearchWalletConfigurationsRequest) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::SearchWalletConfigurationsRequest).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::SearchWalletConfigurationsRequest) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::SearchWalletConfigurationsRequest, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      query_filter: T.nilable(String),
+      continuation_token: T.nilable(String)
+    ).void
+  end
+  def initialize(
+    query_filter: "",
+    continuation_token: ""
+  )
+  end
+
+  sig { returns(String) }
+  def query_filter
+  end
+
+  sig { params(value: String).void }
+  def query_filter=(value)
+  end
+
+  sig { void }
+  def clear_query_filter
+  end
+
+  sig { returns(String) }
+  def continuation_token
+  end
+
+  sig { params(value: String).void }
+  def continuation_token=(value)
+  end
+
+  sig { void }
+  def clear_continuation_token
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::SearchWalletConfigurationResponse
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::SearchWalletConfigurationResponse) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::SearchWalletConfigurationResponse).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::SearchWalletConfigurationResponse) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::SearchWalletConfigurationResponse, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      results: T.nilable(T::Array[T.nilable(Services::Provider::V1::WalletConfiguration)]),
+      has_more: T.nilable(T::Boolean),
+      continuation_token: T.nilable(String)
+    ).void
+  end
+  def initialize(
+    results: [],
+    has_more: false,
+    continuation_token: ""
+  )
+  end
+
+  sig { returns(T::Array[T.nilable(Services::Provider::V1::WalletConfiguration)]) }
+  def results
+  end
+
+  sig { params(value: Google::Protobuf::RepeatedField).void }
+  def results=(value)
+  end
+
+  sig { void }
+  def clear_results
+  end
+
+  sig { returns(T::Boolean) }
+  def has_more
+  end
+
+  sig { params(value: T::Boolean).void }
+  def has_more=(value)
+  end
+
+  sig { void }
+  def clear_has_more
+  end
+
+  sig { returns(String) }
+  def continuation_token
+  end
+
+  sig { params(value: String).void }
+  def continuation_token=(value)
+  end
+
+  sig { void }
+  def clear_continuation_token
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::WalletConfiguration
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::WalletConfiguration) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::WalletConfiguration).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::WalletConfiguration) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::WalletConfiguration, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      name: T.nilable(String),
+      email: T.nilable(String),
+      sms: T.nilable(String),
+      wallet_id: T.nilable(String),
+      public_did: T.nilable(String)
+    ).void
+  end
+  def initialize(
+    name: "",
+    email: "",
+    sms: "",
+    wallet_id: "",
+    public_did: ""
+  )
+  end
+
+  sig { returns(String) }
+  def name
+  end
+
+  sig { params(value: String).void }
+  def name=(value)
+  end
+
+  sig { void }
+  def clear_name
+  end
+
+  sig { returns(String) }
+  def email
+  end
+
+  sig { params(value: String).void }
+  def email=(value)
+  end
+
+  sig { void }
+  def clear_email
+  end
+
+  sig { returns(String) }
+  def sms
+  end
+
+  sig { params(value: String).void }
+  def sms=(value)
+  end
+
+  sig { void }
+  def clear_sms
+  end
+
+  sig { returns(String) }
+  def wallet_id
+  end
+
+  sig { params(value: String).void }
+  def wallet_id=(value)
+  end
+
+  sig { void }
+  def clear_wallet_id
+  end
+
+  sig { returns(String) }
+  def public_did
+  end
+
+  sig { params(value: String).void }
+  def public_did=(value)
+  end
+
+  sig { void }
+  def clear_public_did
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
 class Services::Provider::V1::InviteRequest::DidCommInvitation
   include Google::Protobuf
   include Google::Protobuf::MessageExts

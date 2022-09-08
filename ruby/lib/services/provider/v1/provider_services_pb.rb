@@ -24,7 +24,7 @@ module Services
           rpc :GrantAuthorization, ::Services::Provider::V1::GrantAuthorizationRequest, ::Services::Provider::V1::GrantAuthorizationResponse
           # Revoke user authorization to ecosystem resources
           rpc :RevokeAuthorization, ::Services::Provider::V1::RevokeAuthorizationRequest, ::Services::Provider::V1::RevokeAuthorizationResponse
-          # Retreive the list of permissions for this particular account/ecosystem
+          # Retrieve the list of permissions for this particular account/ecosystem
           rpc :GetAuthorizations, ::Services::Provider::V1::GetAuthorizationsRequest, ::Services::Provider::V1::GetAuthorizationsResponse
           # Add a webhook endpoint to the ecosystem
           rpc :AddWebhook, ::Services::Provider::V1::AddWebhookRequest, ::Services::Provider::V1::AddWebhookResponse
@@ -45,8 +45,10 @@ module Services
           rpc :GetEventToken, ::Services::Provider::V1::GetEventTokenRequest, ::Services::Provider::V1::GetEventTokenResponse
           # Retrieve a random hash TXT that can be used to verify domain ownership
           rpc :RetrieveDomainVerificationRecord, ::Services::Provider::V1::RetrieveDomainVerificationRecordRequest, ::Services::Provider::V1::RetrieveDomainVerificationRecordResponse
-          # Call to verif
+          # Call to verify domain
           rpc :RefreshDomainVerificationStatus, ::Services::Provider::V1::RefreshDomainVerificationStatusRequest, ::Services::Provider::V1::RefreshDomainVerificationStatusResponse
+          # Search for issuers/providers/verifiers in the current ecosystem
+          rpc :SearchWalletConfigurations, ::Services::Provider::V1::SearchWalletConfigurationsRequest, ::Services::Provider::V1::SearchWalletConfigurationResponse
         end
 
         Stub = Service.rpc_stub_class

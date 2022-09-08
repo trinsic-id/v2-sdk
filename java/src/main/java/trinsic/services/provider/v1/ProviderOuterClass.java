@@ -156,6 +156,18 @@ public final class ProviderOuterClass {
       internal_static_services_provider_v1_GetAuthorizationsResponse_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_provider_v1_GetAuthorizationsResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_provider_v1_SearchWalletConfigurationsRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_SearchWalletConfigurationsRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_provider_v1_SearchWalletConfigurationResponse_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_SearchWalletConfigurationResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_provider_v1_WalletConfiguration_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_WalletConfiguration_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
@@ -279,46 +291,60 @@ public final class ProviderOuterClass {
           + "\033RevokeAuthorizationResponse\"\032\n"
           + "\030GetAuthorizationsRequest\"H\n"
           + "\031GetAuthorizationsResponse\022+\n"
-          + "\006grants\030\001 \003(\0132\033.services.provider.v1.Grant*U\n"
+          + "\006grants\030\001 \003(\0132\033.services.provider.v1.Grant\"[\n"
+          + "!SearchWalletConfigurationsRequest\022\024\n"
+          + "\014query_filter\030\001 \001(\t\022 \n"
+          + "\022continuation_token\030\002 \001(\tB\004\200\246\035\001\"\215\001\n"
+          + "!SearchWalletConfigurationResponse\022:\n"
+          + "\007results\030\001 \003(\0132).services.provider.v1.WalletConfiguration\022\020\n"
+          + "\010has_more\030\002 \001(\010\022\032\n"
+          + "\022continuation_token\030\004 \001(\t\"r\n"
+          + "\023WalletConfiguration\022\014\n"
+          + "\004name\030\001 \001(\t\022\023\n"
+          + "\005email\030\002 \001(\tB\004\200\246\035\001\022\021\n"
+          + "\003sms\030\003 \001(\tB\004\200\246\035\001\022\021\n"
+          + "\twallet_id\030\004 \001(\t\022\022\n\n"
+          + "public_did\030\005 \001(\t*U\n"
           + "\017ParticipantType\022\037\n"
           + "\033participant_type_individual\020\000\022!\n"
-          + "\035participant_type_organization\020\0012\342\r\n"
+          + "\035participant_type_organization\020\0012\363\016\n"
           + "\010Provider\022v\n"
-          + "\017CreateEcosystem\022,.services.provider.v1.CreateEcosys"
-          + "temRequest\032-.services.provider.v1.CreateEcosystemResponse\"\006\212\246\035\002\020\001\022n\n"
-          + "\017UpdateEcosystem\022,.services.provider.v1.UpdateEcosys"
-          + "temRequest\032-.services.provider.v1.UpdateEcosystemResponse\022w\n"
-          + "\022GrantAuthorization\022/.services.provider.v1.GrantAuthorizatio"
-          + "nRequest\0320.services.provider.v1.GrantAuthorizationResponse\022z\n"
-          + "\023RevokeAuthorization\0220.services.provider.v1.RevokeAuthoriza"
-          + "tionRequest\0321.services.provider.v1.RevokeAuthorizationResponse\022t\n"
-          + "\021GetAuthorizations\022..services.provider.v1.GetAuthorizat"
-          + "ionsRequest\032/.services.provider.v1.GetAuthorizationsResponse\022_\n\n"
-          + "AddWebhook\022\'.ser"
-          + "vices.provider.v1.AddWebhookRequest\032(.services.provider.v1.AddWebhookResponse\022h\n"
-          + "\r"
-          + "DeleteWebhook\022*.services.provider.v1.De"
-          + "leteWebhookRequest\032+.services.provider.v1.DeleteWebhookResponse\022h\n\r"
-          + "EcosystemInfo\022*.services.provider.v1.EcosystemInfoReq"
-          + "uest\032+.services.provider.v1.EcosystemInfoResponse\022h\n\r"
-          + "GenerateToken\022*.services.pr"
-          + "ovider.v1.GenerateTokenRequest\032+.services.provider.v1.GenerateTokenResponse\022S\n"
-          + "\006Invite\022#.services.provider.v1.InviteReque"
-          + "st\032$.services.provider.v1.InviteResponse\022q\n"
-          + "\020InvitationStatus\022-.services.provider"
-          + ".v1.InvitationStatusRequest\032..services.provider.v1.InvitationStatusResponse\022m\n"
-          + "\014GetOberonKey\022).services.provider.v1.GetOb"
-          + "eronKeyRequest\032*.services.provider.v1.GetOberonKeyResponse\"\006\212\246\035\002\010\001\022h\n\r"
-          + "GetEventToken\022*.services.provider.v1.GetEventToken"
-          + "Request\032+.services.provider.v1.GetEventTokenResponse\022\241\001\n"
-          + " RetrieveDomainVerificationRecord\022=.services.provider.v1.Retriev"
-          + "eDomainVerificationRecordRequest\032>.servi"
-          + "ces.provider.v1.RetrieveDomainVerificationRecordResponse\022\236\001\n"
-          + "\037RefreshDomainVerificationStatus\022<.services.provider.v1.Refr"
-          + "eshDomainVerificationStatusRequest\032=.ser"
-          + "vices.provider.v1.RefreshDomainVerificationStatusResponseB^\n"
-          + "\034trinsic.services.provider.v1P\001Z\035services/provider/v1/provid"
-          + "er\252\002\034Trinsic.Services.Provider.V1b\006proto3"
+          + "\017CreateEcosystem\022,.services.provider.v1.CreateEcosystemRequ"
+          + "est\032-.services.provider.v1.CreateEcosystemResponse\"\006\212\246\035\002\020\001\022n\n"
+          + "\017UpdateEcosystem\022,.services.provider.v1.UpdateEcosystemRequ"
+          + "est\032-.services.provider.v1.UpdateEcosystemResponse\022w\n"
+          + "\022GrantAuthorization\022/.services.provider.v1.GrantAuthorizationReques"
+          + "t\0320.services.provider.v1.GrantAuthorizationResponse\022z\n"
+          + "\023RevokeAuthorization\0220.services.provider.v1.RevokeAuthorizationReq"
+          + "uest\0321.services.provider.v1.RevokeAuthorizationResponse\022t\n"
+          + "\021GetAuthorizations\022..services.provider.v1.GetAuthorizationsReq"
+          + "uest\032/.services.provider.v1.GetAuthorizationsResponse\022_\n\n"
+          + "AddWebhook\022\'.services.p"
+          + "rovider.v1.AddWebhookRequest\032(.services.provider.v1.AddWebhookResponse\022h\n\r"
+          + "DeleteWebhook\022*.services.provider.v1.DeleteWeb"
+          + "hookRequest\032+.services.provider.v1.DeleteWebhookResponse\022h\n\r"
+          + "EcosystemInfo\022*.services.provider.v1.EcosystemInfoRequest\032+."
+          + "services.provider.v1.EcosystemInfoResponse\022h\n\r"
+          + "GenerateToken\022*.services.provider."
+          + "v1.GenerateTokenRequest\032+.services.provider.v1.GenerateTokenResponse\022S\n"
+          + "\006Invite\022#"
+          + ".services.provider.v1.InviteRequest\032$.services.provider.v1.InviteResponse\022q\n"
+          + "\020InvitationStatus\022-.services.provider.v1.Inv"
+          + "itationStatusRequest\032..services.provider.v1.InvitationStatusResponse\022m\n"
+          + "\014GetOberonKey\022).services.provider.v1.GetOberonKey"
+          + "Request\032*.services.provider.v1.GetOberonKeyResponse\"\006\212\246\035\002\010\001\022h\n\r"
+          + "GetEventToken\022*.services.provider.v1.GetEventTokenRequest"
+          + "\032+.services.provider.v1.GetEventTokenResponse\022\241\001\n"
+          + " RetrieveDomainVerificationRecord\022=.services.provider.v1.RetrieveDomain"
+          + "VerificationRecordRequest\032>.services.pro"
+          + "vider.v1.RetrieveDomainVerificationRecordResponse\022\236\001\n"
+          + "\037RefreshDomainVerificationStatus\022<.services.provider.v1.RefreshDoma"
+          + "inVerificationStatusRequest\032=.services.p"
+          + "rovider.v1.RefreshDomainVerificationStatusResponse\022\216\001\n"
+          + "\032SearchWalletConfigurations\0227.services.provider.v1.SearchWalletCon"
+          + "figurationsRequest\0327.services.provider.v1.SearchWalletConfigurationResponseB^\n"
+          + "\034trinsic.services.provider.v1P\001Z\035services/"
+          + "provider/v1/provider\252\002\034Trinsic.Services.Provider.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -598,6 +624,30 @@ public final class ProviderOuterClass {
             internal_static_services_provider_v1_GetAuthorizationsResponse_descriptor,
             new java.lang.String[] {
               "Grants",
+            });
+    internal_static_services_provider_v1_SearchWalletConfigurationsRequest_descriptor =
+        getDescriptor().getMessageTypes().get(35);
+    internal_static_services_provider_v1_SearchWalletConfigurationsRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_provider_v1_SearchWalletConfigurationsRequest_descriptor,
+            new java.lang.String[] {
+              "QueryFilter", "ContinuationToken",
+            });
+    internal_static_services_provider_v1_SearchWalletConfigurationResponse_descriptor =
+        getDescriptor().getMessageTypes().get(36);
+    internal_static_services_provider_v1_SearchWalletConfigurationResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_provider_v1_SearchWalletConfigurationResponse_descriptor,
+            new java.lang.String[] {
+              "Results", "HasMore", "ContinuationToken",
+            });
+    internal_static_services_provider_v1_WalletConfiguration_descriptor =
+        getDescriptor().getMessageTypes().get(37);
+    internal_static_services_provider_v1_WalletConfiguration_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_provider_v1_WalletConfiguration_descriptor,
+            new java.lang.String[] {
+              "Name", "Email", "Sms", "WalletId", "PublicDid",
             });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();

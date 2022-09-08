@@ -30,7 +30,7 @@ type ProviderClient interface {
 	GrantAuthorization(ctx context.Context, in *GrantAuthorizationRequest, opts ...grpc.CallOption) (*GrantAuthorizationResponse, error)
 	// Revoke user authorization to ecosystem resources
 	RevokeAuthorization(ctx context.Context, in *RevokeAuthorizationRequest, opts ...grpc.CallOption) (*RevokeAuthorizationResponse, error)
-	// Retreive the list of permissions for this particular account/ecosystem
+	// Retrieve the list of permissions for this particular account/ecosystem
 	GetAuthorizations(ctx context.Context, in *GetAuthorizationsRequest, opts ...grpc.CallOption) (*GetAuthorizationsResponse, error)
 	// Add a webhook endpoint to the ecosystem
 	AddWebhook(ctx context.Context, in *AddWebhookRequest, opts ...grpc.CallOption) (*AddWebhookResponse, error)
@@ -51,8 +51,10 @@ type ProviderClient interface {
 	GetEventToken(ctx context.Context, in *GetEventTokenRequest, opts ...grpc.CallOption) (*GetEventTokenResponse, error)
 	// Retrieve a random hash TXT that can be used to verify domain ownership
 	RetrieveDomainVerificationRecord(ctx context.Context, in *RetrieveDomainVerificationRecordRequest, opts ...grpc.CallOption) (*RetrieveDomainVerificationRecordResponse, error)
-	// Call to verif
+	// Call to verify domain
 	RefreshDomainVerificationStatus(ctx context.Context, in *RefreshDomainVerificationStatusRequest, opts ...grpc.CallOption) (*RefreshDomainVerificationStatusResponse, error)
+	// Search for issuers/providers/verifiers in the current ecosystem
+	SearchWalletConfigurations(ctx context.Context, in *SearchWalletConfigurationsRequest, opts ...grpc.CallOption) (*SearchWalletConfigurationResponse, error)
 }
 
 type providerClient struct {
@@ -198,6 +200,15 @@ func (c *providerClient) RefreshDomainVerificationStatus(ctx context.Context, in
 	return out, nil
 }
 
+func (c *providerClient) SearchWalletConfigurations(ctx context.Context, in *SearchWalletConfigurationsRequest, opts ...grpc.CallOption) (*SearchWalletConfigurationResponse, error) {
+	out := new(SearchWalletConfigurationResponse)
+	err := c.cc.Invoke(ctx, "/services.provider.v1.Provider/SearchWalletConfigurations", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ProviderServer is the server API for Provider service.
 // All implementations must embed UnimplementedProviderServer
 // for forward compatibility
@@ -210,7 +221,7 @@ type ProviderServer interface {
 	GrantAuthorization(context.Context, *GrantAuthorizationRequest) (*GrantAuthorizationResponse, error)
 	// Revoke user authorization to ecosystem resources
 	RevokeAuthorization(context.Context, *RevokeAuthorizationRequest) (*RevokeAuthorizationResponse, error)
-	// Retreive the list of permissions for this particular account/ecosystem
+	// Retrieve the list of permissions for this particular account/ecosystem
 	GetAuthorizations(context.Context, *GetAuthorizationsRequest) (*GetAuthorizationsResponse, error)
 	// Add a webhook endpoint to the ecosystem
 	AddWebhook(context.Context, *AddWebhookRequest) (*AddWebhookResponse, error)
@@ -231,8 +242,10 @@ type ProviderServer interface {
 	GetEventToken(context.Context, *GetEventTokenRequest) (*GetEventTokenResponse, error)
 	// Retrieve a random hash TXT that can be used to verify domain ownership
 	RetrieveDomainVerificationRecord(context.Context, *RetrieveDomainVerificationRecordRequest) (*RetrieveDomainVerificationRecordResponse, error)
-	// Call to verif
+	// Call to verify domain
 	RefreshDomainVerificationStatus(context.Context, *RefreshDomainVerificationStatusRequest) (*RefreshDomainVerificationStatusResponse, error)
+	// Search for issuers/providers/verifiers in the current ecosystem
+	SearchWalletConfigurations(context.Context, *SearchWalletConfigurationsRequest) (*SearchWalletConfigurationResponse, error)
 	mustEmbedUnimplementedProviderServer()
 }
 
@@ -284,6 +297,9 @@ func (UnimplementedProviderServer) RetrieveDomainVerificationRecord(context.Cont
 }
 func (UnimplementedProviderServer) RefreshDomainVerificationStatus(context.Context, *RefreshDomainVerificationStatusRequest) (*RefreshDomainVerificationStatusResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RefreshDomainVerificationStatus not implemented")
+}
+func (UnimplementedProviderServer) SearchWalletConfigurations(context.Context, *SearchWalletConfigurationsRequest) (*SearchWalletConfigurationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchWalletConfigurations not implemented")
 }
 func (UnimplementedProviderServer) mustEmbedUnimplementedProviderServer() {}
 
@@ -568,6 +584,24 @@ func _Provider_RefreshDomainVerificationStatus_Handler(srv interface{}, ctx cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Provider_SearchWalletConfigurations_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SearchWalletConfigurationsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProviderServer).SearchWalletConfigurations(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/services.provider.v1.Provider/SearchWalletConfigurations",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProviderServer).SearchWalletConfigurations(ctx, req.(*SearchWalletConfigurationsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Provider_ServiceDesc is the grpc.ServiceDesc for Provider service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -634,6 +668,10 @@ var Provider_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RefreshDomainVerificationStatus",
 			Handler:    _Provider_RefreshDomainVerificationStatus_Handler,
+		},
+		{
+			MethodName: "SearchWalletConfigurations",
+			Handler:    _Provider_SearchWalletConfigurations_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
