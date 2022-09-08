@@ -64,7 +64,7 @@ jobs:
 
       - name: Commit Changes
         run: |
-          if git diff --exit-code; then
+          if git diff --exit-code --quiet; then
             exit 0;
           fi
           HeadRef="${{ github.head_ref }}"
@@ -78,4 +78,5 @@ jobs:
           git push --force --set-upstream origin "$HeadRef-generated-protos"
           echo ${{ secrets.GITHUB_TOKEN }} | gh auth login --with-token
           # Line below can fail if PR already exists, there isn't a flag to say, "ignore if already exists"
-          gh pr create --base ${{ github.head_ref }} --title "Generated Protos for $HeadRef" --body "Generated files from proto"
+          PrTitle="Generated Protos for $HeadRef"
+          gh pr create --base ${{ github.head_ref }} --title PrTitle --body "Generated files from proto"
