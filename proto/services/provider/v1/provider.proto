@@ -415,7 +415,9 @@ service Provider {
     rpc GetEventToken(GetEventTokenRequest) returns (GetEventTokenResponse);
 
     // Retrieve a random hash TXT that can be used to verify domain ownership
-    rpc RetrieveDomainVerificationRecord(RetrieveDomainVerificationRecordRequest) returns (RetrieveDomainVerificationRecordResponse);
+    rpc RetrieveDomainVerificationRecord(RetrieveDomainVerificationRecordRequest) returns (RetrieveDomainVerificationRecordResponse) {
+        option (options.sdk_template_option).no_arguments = true;
+    }
 
     // Call to verify domain
     rpc RefreshDomainVerificationStatus(RefreshDomainVerificationStatusRequest) returns (RefreshDomainVerificationStatusResponse);
