@@ -460,6 +460,65 @@ const EcosystemInfoResponse$json = const {
 /// Descriptor for `EcosystemInfoResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List ecosystemInfoResponseDescriptor = $convert.base64Decode(
     'ChVFY29zeXN0ZW1JbmZvUmVzcG9uc2USPQoJZWNvc3lzdGVtGAEgASgLMh8uc2VydmljZXMucHJvdmlkZXIudjEuRWNvc3lzdGVtUgllY29zeXN0ZW0=');
+@$core.Deprecated('Use getPublicEcosystemInfoRequestDescriptor instead')
+const GetPublicEcosystemInfoRequest$json = const {
+  '1': 'GetPublicEcosystemInfoRequest',
+  '2': const [
+    const {'1': 'ecosystem_id', '3': 1, '4': 1, '5': 9, '10': 'ecosystemId'},
+  ],
+};
+
+/// Descriptor for `GetPublicEcosystemInfoRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getPublicEcosystemInfoRequestDescriptor =
+    $convert.base64Decode(
+        'Ch1HZXRQdWJsaWNFY29zeXN0ZW1JbmZvUmVxdWVzdBIhCgxlY29zeXN0ZW1faWQYASABKAlSC2Vjb3N5c3RlbUlk');
+@$core.Deprecated('Use getPublicEcosystemInfoResponseDescriptor instead')
+const GetPublicEcosystemInfoResponse$json = const {
+  '1': 'GetPublicEcosystemInfoResponse',
+  '2': const [
+    const {
+      '1': 'ecosystem',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.services.provider.v1.PublicEcosystemInformation',
+      '10': 'ecosystem'
+    },
+  ],
+};
+
+/// Descriptor for `GetPublicEcosystemInfoResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List getPublicEcosystemInfoResponseDescriptor =
+    $convert.base64Decode(
+        'Ch5HZXRQdWJsaWNFY29zeXN0ZW1JbmZvUmVzcG9uc2USTgoJZWNvc3lzdGVtGAEgASgLMjAuc2VydmljZXMucHJvdmlkZXIudjEuUHVibGljRWNvc3lzdGVtSW5mb3JtYXRpb25SCWVjb3N5c3RlbQ==');
+@$core.Deprecated('Use publicEcosystemInformationDescriptor instead')
+const PublicEcosystemInformation$json = const {
+  '1': 'PublicEcosystemInformation',
+  '2': const [
+    const {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
+    const {'1': 'domain', '3': 2, '4': 1, '5': 9, '10': 'domain'},
+    const {
+      '1': 'domain_verified',
+      '3': 3,
+      '4': 1,
+      '5': 8,
+      '10': 'domainVerified'
+    },
+    const {
+      '1': 'style_display',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.services.provider.v1.EcosystemDisplay',
+      '10': 'styleDisplay'
+    },
+  ],
+};
+
+/// Descriptor for `PublicEcosystemInformation`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List publicEcosystemInformationDescriptor =
+    $convert.base64Decode(
+        'ChpQdWJsaWNFY29zeXN0ZW1JbmZvcm1hdGlvbhISCgRuYW1lGAEgASgJUgRuYW1lEhYKBmRvbWFpbhgCIAEoCVIGZG9tYWluEicKD2RvbWFpbl92ZXJpZmllZBgDIAEoCFIOZG9tYWluVmVyaWZpZWQSSwoNc3R5bGVfZGlzcGxheRgEIAEoCzImLnNlcnZpY2VzLnByb3ZpZGVyLnYxLkVjb3N5c3RlbURpc3BsYXlSDHN0eWxlRGlzcGxheQ==');
 @$core.Deprecated('Use generateTokenRequestDescriptor instead')
 const GenerateTokenRequest$json = const {
   '1': 'GenerateTokenRequest',

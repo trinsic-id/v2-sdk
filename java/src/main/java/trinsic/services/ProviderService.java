@@ -87,6 +87,12 @@ public class ProviderService extends ServiceBase {
 
     return withMetadata(stub, request).ecosystemInfo(request);
   }
+  /** Get public ecosystem information about *any* ecosystem */
+  public ListenableFuture<GetPublicEcosystemInfoResponse> getPublicEcosystemInfo(
+      GetPublicEcosystemInfoRequest request) throws InvalidProtocolBufferException, DidException {
+
+    return withMetadata(stub, request).getPublicEcosystemInfo(request);
+  }
   /**
    * Generates an unprotected authentication token that can be used to configure server side
    * applications
@@ -122,9 +128,8 @@ public class ProviderService extends ServiceBase {
   }
   /** Retrieve a random hash TXT that can be used to verify domain ownership */
   public ListenableFuture<RetrieveDomainVerificationRecordResponse>
-      retrieveDomainVerificationRecord(RetrieveDomainVerificationRecordRequest request)
-          throws InvalidProtocolBufferException, DidException {
-
+      retrieveDomainVerificationRecord() throws InvalidProtocolBufferException, DidException {
+    var request = RetrieveDomainVerificationRecordRequest.newBuilder().build();
     return withMetadata(stub, request).retrieveDomainVerificationRecord(request);
   }
   /** Call to verify domain */

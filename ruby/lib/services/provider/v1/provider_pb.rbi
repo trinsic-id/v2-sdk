@@ -1523,6 +1523,228 @@ class Services::Provider::V1::EcosystemInfoResponse
   end
 end
 
+class Services::Provider::V1::GetPublicEcosystemInfoRequest
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::GetPublicEcosystemInfoRequest) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::GetPublicEcosystemInfoRequest).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::GetPublicEcosystemInfoRequest) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::GetPublicEcosystemInfoRequest, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      ecosystem_id: T.nilable(String)
+    ).void
+  end
+  def initialize(
+    ecosystem_id: ""
+  )
+  end
+
+  sig { returns(String) }
+  def ecosystem_id
+  end
+
+  sig { params(value: String).void }
+  def ecosystem_id=(value)
+  end
+
+  sig { void }
+  def clear_ecosystem_id
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::GetPublicEcosystemInfoResponse
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::GetPublicEcosystemInfoResponse) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::GetPublicEcosystemInfoResponse).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::GetPublicEcosystemInfoResponse) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::GetPublicEcosystemInfoResponse, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      ecosystem: T.nilable(Services::Provider::V1::PublicEcosystemInformation)
+    ).void
+  end
+  def initialize(
+    ecosystem: nil
+  )
+  end
+
+  sig { returns(T.nilable(Services::Provider::V1::PublicEcosystemInformation)) }
+  def ecosystem
+  end
+
+  sig { params(value: T.nilable(Services::Provider::V1::PublicEcosystemInformation)).void }
+  def ecosystem=(value)
+  end
+
+  sig { void }
+  def clear_ecosystem
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::PublicEcosystemInformation
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::PublicEcosystemInformation) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::PublicEcosystemInformation).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::PublicEcosystemInformation) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::PublicEcosystemInformation, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      name: T.nilable(String),
+      domain: T.nilable(String),
+      domain_verified: T.nilable(T::Boolean),
+      style_display: T.nilable(Services::Provider::V1::EcosystemDisplay)
+    ).void
+  end
+  def initialize(
+    name: "",
+    domain: "",
+    domain_verified: false,
+    style_display: nil
+  )
+  end
+
+  sig { returns(String) }
+  def name
+  end
+
+  sig { params(value: String).void }
+  def name=(value)
+  end
+
+  sig { void }
+  def clear_name
+  end
+
+  sig { returns(String) }
+  def domain
+  end
+
+  sig { params(value: String).void }
+  def domain=(value)
+  end
+
+  sig { void }
+  def clear_domain
+  end
+
+  sig { returns(T::Boolean) }
+  def domain_verified
+  end
+
+  sig { params(value: T::Boolean).void }
+  def domain_verified=(value)
+  end
+
+  sig { void }
+  def clear_domain_verified
+  end
+
+  sig { returns(T.nilable(Services::Provider::V1::EcosystemDisplay)) }
+  def style_display
+  end
+
+  sig { params(value: T.nilable(Services::Provider::V1::EcosystemDisplay)).void }
+  def style_display=(value)
+  end
+
+  sig { void }
+  def clear_style_display
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
 class Services::Provider::V1::GenerateTokenRequest
   include Google::Protobuf
   include Google::Protobuf::MessageExts

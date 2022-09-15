@@ -1321,6 +1321,7 @@ Confirmation method type for two-factor workflows
 | AddWebhook | [AddWebhookRequest](/reference/proto#services-provider-v1-AddWebhookRequest) | [AddWebhookResponse](/reference/proto#services-provider-v1-AddWebhookResponse) | Add a webhook endpoint to the ecosystem |
 | DeleteWebhook | [DeleteWebhookRequest](/reference/proto#services-provider-v1-DeleteWebhookRequest) | [DeleteWebhookResponse](/reference/proto#services-provider-v1-DeleteWebhookResponse) | Delete a webhook endpoint from the ecosystem |
 | EcosystemInfo | [EcosystemInfoRequest](/reference/proto#services-provider-v1-EcosystemInfoRequest) | [EcosystemInfoResponse](/reference/proto#services-provider-v1-EcosystemInfoResponse) | Get ecosystem information |
+| GetPublicEcosystemInfo | [GetPublicEcosystemInfoRequest](/reference/proto#services-provider-v1-GetPublicEcosystemInfoRequest) | [GetPublicEcosystemInfoResponse](/reference/proto#services-provider-v1-GetPublicEcosystemInfoResponse) | Get public ecosystem information about *any* ecosystem |
 | GenerateToken | [GenerateTokenRequest](/reference/proto#services-provider-v1-GenerateTokenRequest) | [GenerateTokenResponse](/reference/proto#services-provider-v1-GenerateTokenResponse) | Generates an unprotected authentication token that can be used to configure server side applications |
 | Invite | [InviteRequest](/reference/proto#services-provider-v1-InviteRequest) | [InviteResponse](/reference/proto#services-provider-v1-InviteResponse) | Invite a user to the ecosystem |
 | InvitationStatus | [InvitationStatusRequest](/reference/proto#services-provider-v1-InvitationStatusRequest) | [InvitationStatusResponse](/reference/proto#services-provider-v1-InvitationStatusResponse) | Check the status of an invitation |
@@ -1502,7 +1503,7 @@ Response to `InfoRequest`
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| ecosystem | [Ecosystem](/reference/proto#services-provider-v1-Ecosystem) | Ecosystem corresponding to requested `ecosystem_id` |
+| ecosystem | [Ecosystem](/reference/proto#services-provider-v1-Ecosystem) | Ecosystem corresponding to current ecosystem in the account token |
 
 
 
@@ -1622,6 +1623,36 @@ Response to `GetOberonKeyRequest`
 
 
 
+<a name="services-provider-v1-GetPublicEcosystemInfoRequest"></a>
+
+### GetPublicEcosystemInfoRequest
+Request to fetch information about an ecosystem
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| ecosystem_id | [string](/reference/proto#string) |  |
+
+
+
+
+
+
+<a name="services-provider-v1-GetPublicEcosystemInfoResponse"></a>
+
+### GetPublicEcosystemInfoResponse
+Response to `InfoRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| ecosystem | [PublicEcosystemInformation](/reference/proto#services-provider-v1-PublicEcosystemInformation) | Ecosystem corresponding to requested `ecosystem_id` |
+
+
+
+
+
+
 <a name="services-provider-v1-Grant"></a>
 
 ### Grant
@@ -1735,6 +1766,24 @@ Response to `InviteRequest`
 | ----- | ---- | ----------- |
 | invitation_id | [string](/reference/proto#string) | ID of created invitation |
 | invitation_code | [string](/reference/proto#string) | Invitation code -- must be passed back in `LoginRequest` |
+
+
+
+
+
+
+<a name="services-provider-v1-PublicEcosystemInformation"></a>
+
+### PublicEcosystemInformation
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | [string](/reference/proto#string) | Public name of this ecosystem |
+| domain | [string](/reference/proto#string) | Public domain for the owner of this ecosystem |
+| domain_verified | [bool](/reference/proto#bool) | Trinsic verified the domain is owned by the owner of this ecosystem |
+| style_display | [EcosystemDisplay](/reference/proto#services-provider-v1-EcosystemDisplay) | Style display information |
 
 
 
