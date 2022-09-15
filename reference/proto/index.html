@@ -2144,6 +2144,24 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#getpublicecosysteminforequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetPublicEcosystemInfoRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getpublicecosysteminforesponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetPublicEcosystemInfoResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#grant" class="md-nav__link">
     <span class="md-ellipsis">
       Grant
@@ -2210,6 +2228,15 @@
   <a href="#inviteresponse" class="md-nav__link">
     <span class="md-ellipsis">
       InviteResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publicecosysteminformation" class="md-nav__link">
+    <span class="md-ellipsis">
+      PublicEcosystemInformation
     </span>
   </a>
   
@@ -5238,6 +5265,12 @@ like email, SMS, etc.</p>
 <td>Get ecosystem information</td>
 </tr>
 <tr>
+<td>GetPublicEcosystemInfo</td>
+<td><a href="/reference/proto#services-provider-v1-GetPublicEcosystemInfoRequest">GetPublicEcosystemInfoRequest</a></td>
+<td><a href="/reference/proto#services-provider-v1-GetPublicEcosystemInfoResponse">GetPublicEcosystemInfoResponse</a></td>
+<td>Get public ecosystem information about <em>any</em> ecosystem</td>
+</tr>
+<tr>
 <td>GenerateToken</td>
 <td><a href="/reference/proto#services-provider-v1-GenerateTokenRequest">GenerateTokenRequest</a></td>
 <td><a href="/reference/proto#services-provider-v1-GenerateTokenResponse">GenerateTokenResponse</a></td>
@@ -5556,7 +5589,7 @@ like email, SMS, etc.</p>
 <tr>
 <td>ecosystem</td>
 <td><a href="/reference/proto#services-provider-v1-Ecosystem">Ecosystem</a></td>
-<td>Ecosystem corresponding to requested <code>ecosystem_id</code></td>
+<td>Ecosystem corresponding to current ecosystem in the account token</td>
 </tr>
 </tbody>
 </table>
@@ -5680,6 +5713,44 @@ to verify authentication token validity</p>
 <td>key</td>
 <td><a href="/reference/proto#string">string</a></td>
 <td>Oberon Public Key as RAW base64-url encoded string</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-GetPublicEcosystemInfoRequest"></a></p>
+<h3 id="getpublicecosysteminforequest">GetPublicEcosystemInfoRequest<a class="headerlink" href="#getpublicecosysteminforequest" title="Permanent link">&para;</a></h3>
+<p>Request to fetch information about an ecosystem</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ecosystem_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-GetPublicEcosystemInfoResponse"></a></p>
+<h3 id="getpublicecosysteminforesponse">GetPublicEcosystemInfoResponse<a class="headerlink" href="#getpublicecosysteminforesponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>InfoRequest</code></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ecosystem</td>
+<td><a href="/reference/proto#services-provider-v1-PublicEcosystemInformation">PublicEcosystemInformation</a></td>
+<td>Ecosystem corresponding to requested <code>ecosystem_id</code></td>
 </tr>
 </tbody>
 </table>
@@ -5844,6 +5915,39 @@ to verify authentication token validity</p>
 <td>invitation_code</td>
 <td><a href="/reference/proto#string">string</a></td>
 <td>Invitation code -- must be passed back in <code>LoginRequest</code></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-PublicEcosystemInformation"></a></p>
+<h3 id="publicecosysteminformation">PublicEcosystemInformation<a class="headerlink" href="#publicecosysteminformation" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Public name of this ecosystem</td>
+</tr>
+<tr>
+<td>domain</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Public domain for the owner of this ecosystem</td>
+</tr>
+<tr>
+<td>domain_verified</td>
+<td><a href="/reference/proto#bool">bool</a></td>
+<td>Trinsic verified the domain is owned by the owner of this ecosystem</td>
+</tr>
+<tr>
+<td>style_display</td>
+<td><a href="/reference/proto#services-provider-v1-EcosystemDisplay">EcosystemDisplay</a></td>
+<td>Style display information</td>
 </tr>
 </tbody>
 </table>
