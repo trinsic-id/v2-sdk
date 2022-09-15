@@ -42,6 +42,8 @@ type ProviderService interface {
 	DeleteWebhook(userContext context.Context, request *provider.DeleteWebhookRequest) (*provider.DeleteWebhookResponse, error)
 	// EcosystemInfo  Get ecosystem information
 	EcosystemInfo(userContext context.Context, request *provider.EcosystemInfoRequest) (*provider.EcosystemInfoResponse, error)
+	// GetPublicEcosystemInfo  Get public ecosystem information about *any* ecosystem
+	GetPublicEcosystemInfo(userContext context.Context, request *provider.GetPublicEcosystemInfoRequest) (*provider.GetPublicEcosystemInfoResponse, error)
 	// GenerateToken  Generates an unprotected authentication token that can be used to
 	// configure server side applications
 	GenerateToken(userContext context.Context, request *provider.GenerateTokenRequest) (*provider.GenerateTokenResponse, error)
@@ -54,7 +56,7 @@ type ProviderService interface {
 	// GetEventToken  Generate a signed token (JWT) that can be used to connect to the message bus
 	GetEventToken(userContext context.Context, request *provider.GetEventTokenRequest) (*provider.GetEventTokenResponse, error)
 	// RetrieveDomainVerificationRecord  Retrieve a random hash TXT that can be used to verify domain ownership
-	RetrieveDomainVerificationRecord(userContext context.Context, request *provider.RetrieveDomainVerificationRecordRequest) (*provider.RetrieveDomainVerificationRecordResponse, error)
+	RetrieveDomainVerificationRecord(userContext context.Context) (*provider.RetrieveDomainVerificationRecordResponse, error)
 	// RefreshDomainVerificationStatus  Call to verify domain
 	RefreshDomainVerificationStatus(userContext context.Context, request *provider.RefreshDomainVerificationStatusRequest) (*provider.RefreshDomainVerificationStatusResponse, error)
 	// SearchWalletConfigurations  Search for issuers/providers/verifiers in the current ecosystem
@@ -191,6 +193,19 @@ func (p *providerBase) EcosystemInfo(userContext context.Context, request *provi
 	return response, nil
 }
 
+// GetPublicEcosystemInfo  Get public ecosystem information about *any* ecosystem
+func (p *providerBase) GetPublicEcosystemInfo(userContext context.Context, request *provider.GetPublicEcosystemInfoRequest) (*provider.GetPublicEcosystemInfoResponse, error) {
+	md, err := p.GetMetadataContext(userContext, nil)
+	if err != nil {
+		return nil, err
+	}
+	response, err := p.client.GetPublicEcosystemInfo(md, request)
+	if err != nil {
+		return nil, err
+	}
+	return response, nil
+}
+
 // GenerateToken  Generates an unprotected authentication token that can be used to
 // configure server side applications
 func (p *providerBase) GenerateToken(userContext context.Context, request *provider.GenerateTokenRequest) (*provider.GenerateTokenResponse, error) {
@@ -258,7 +273,8 @@ func (p *providerBase) GetEventToken(userContext context.Context, request *provi
 }
 
 // RetrieveDomainVerificationRecord  Retrieve a random hash TXT that can be used to verify domain ownership
-func (p *providerBase) RetrieveDomainVerificationRecord(userContext context.Context, request *provider.RetrieveDomainVerificationRecordRequest) (*provider.RetrieveDomainVerificationRecordResponse, error) {
+func (p *providerBase) RetrieveDomainVerificationRecord(userContext context.Context) (*provider.RetrieveDomainVerificationRecordResponse, error) {
+	request := &provider.RetrieveDomainVerificationRecordRequest{}
 	md, err := p.GetMetadataContext(userContext, request)
 	if err != nil {
 		return nil, err

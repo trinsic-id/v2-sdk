@@ -223,9 +223,32 @@ message EcosystemInfoRequest {
 
 // Response to `InfoRequest`
 message EcosystemInfoResponse {
-    // Ecosystem corresponding to requested `ecosystem_id`
+    // Ecosystem corresponding to current ecosystem in the account token
     Ecosystem ecosystem = 1;
 }
+
+// Request to fetch information about an ecosystem
+message GetPublicEcosystemInfoRequest {
+    string ecosystem_id = 1;
+}
+
+// Response to `InfoRequest`
+message GetPublicEcosystemInfoResponse {
+    // Ecosystem corresponding to requested `ecosystem_id`
+    PublicEcosystemInformation ecosystem = 1;
+}
+
+message PublicEcosystemInformation {
+    // Public name of this ecosystem
+    string name = 1;
+    // Public domain for the owner of this ecosystem
+    string domain = 2;
+    // Trinsic verified the domain is owned by the owner of this ecosystem
+    bool domain_verified = 3;
+    // Style display information
+    EcosystemDisplay style_display = 4;
+}
+
 
 // Request to generate an authentication token for the current account
 message GenerateTokenRequest {
@@ -396,6 +419,11 @@ service Provider {
     // Get ecosystem information
     rpc EcosystemInfo(EcosystemInfoRequest) returns (EcosystemInfoResponse);
 
+    // Get public ecosystem information about *any* ecosystem
+    rpc GetPublicEcosystemInfo(GetPublicEcosystemInfoRequest) returns (GetPublicEcosystemInfoResponse) {
+        option (options.sdk_template_option).anonymous = true;
+    }
+
     // Generates an unprotected authentication token that can be used to
     // configure server side applications
     rpc GenerateToken(GenerateTokenRequest) returns (GenerateTokenResponse);
@@ -415,7 +443,9 @@ service Provider {
     rpc GetEventToken(GetEventTokenRequest) returns (GetEventTokenResponse);
 
     // Retrieve a random hash TXT that can be used to verify domain ownership
-    rpc RetrieveDomainVerificationRecord(RetrieveDomainVerificationRecordRequest) returns (RetrieveDomainVerificationRecordResponse);
+    rpc RetrieveDomainVerificationRecord(RetrieveDomainVerificationRecordRequest) returns (RetrieveDomainVerificationRecordResponse) {
+        option (options.sdk_template_option).no_arguments = true;
+    }
 
     // Call to verify domain
     rpc RefreshDomainVerificationStatus(RefreshDomainVerificationStatusRequest) returns (RefreshDomainVerificationStatusResponse);

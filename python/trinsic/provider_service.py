@@ -117,6 +117,15 @@ class ProviderService(ServiceBase):
             request, metadata=self.build_metadata(request)
         )
 
+    async def get_public_ecosystem_info(
+        self, *, request: GetPublicEcosystemInfoRequest
+    ) -> GetPublicEcosystemInfoResponse:
+        """Get public ecosystem information about *any* ecosystem"""
+
+        return await self.client.get_public_ecosystem_info(
+            request, metadata=self.build_metadata()
+        )
+
     async def generate_token(
         self, *, request: GenerateTokenRequest
     ) -> GenerateTokenResponse:
@@ -160,10 +169,10 @@ class ProviderService(ServiceBase):
         )
 
     async def retrieve_domain_verification_record(
-        self, *, request: RetrieveDomainVerificationRecordRequest
+        self,
     ) -> RetrieveDomainVerificationRecordResponse:
         """Retrieve a random hash TXT that can be used to verify domain ownership"""
-
+        request = RetrieveDomainVerificationRecordRequest()
         return await self.client.retrieve_domain_verification_record(
             request, metadata=self.build_metadata(request)
         )

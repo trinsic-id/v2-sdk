@@ -87,6 +87,14 @@ class ProviderService extends ServiceBase {
         options: await buildMetadata(request: request));
   }
 
+  Future<GetPublicEcosystemInfoResponse> getPublicEcosystemInfo(
+      GetPublicEcosystemInfoRequest request) async {
+    ///  Get public ecosystem information about *any* ecosystem
+
+    return client.getPublicEcosystemInfo(request,
+        options: await buildMetadata());
+  }
+
   Future<GenerateTokenResponse> generateToken(
       GenerateTokenRequest request) async {
     ///  Generates an unprotected authentication token that can be used to
@@ -126,10 +134,9 @@ class ProviderService extends ServiceBase {
   }
 
   Future<RetrieveDomainVerificationRecordResponse>
-      retrieveDomainVerificationRecord(
-          RetrieveDomainVerificationRecordRequest request) async {
+      retrieveDomainVerificationRecord() async {
     ///  Retrieve a random hash TXT that can be used to verify domain ownership
-
+    var request = RetrieveDomainVerificationRecordRequest();
     return client.retrieveDomainVerificationRecord(request,
         options: await buildMetadata(request: request));
   }

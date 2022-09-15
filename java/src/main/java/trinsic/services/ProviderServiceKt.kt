@@ -64,6 +64,13 @@ class ProviderServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(
     return withMetadata(stub, request).ecosystemInfo(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
+  suspend fun getPublicEcosystemInfo(
+      request: GetPublicEcosystemInfoRequest
+  ): GetPublicEcosystemInfoResponse {
+    /** Get public ecosystem information about *any* ecosystem */
+    return withMetadata(stub, request).getPublicEcosystemInfo(request)
+  }
+  @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun generateToken(request: GenerateTokenRequest): GenerateTokenResponse {
     /**
      * Generates an unprotected authentication token that can be used to configure server side
@@ -92,10 +99,9 @@ class ProviderServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(
     return withMetadata(stub, request).getEventToken(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
-  suspend fun retrieveDomainVerificationRecord(
-      request: RetrieveDomainVerificationRecordRequest
-  ): RetrieveDomainVerificationRecordResponse {
+  suspend fun retrieveDomainVerificationRecord(): RetrieveDomainVerificationRecordResponse {
     /** Retrieve a random hash TXT that can be used to verify domain ownership */
+    val request = RetrieveDomainVerificationRecordRequest.newBuilder().build()
     return withMetadata(stub, request).retrieveDomainVerificationRecord(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)

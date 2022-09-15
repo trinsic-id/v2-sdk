@@ -385,6 +385,55 @@ public final class ProviderGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<
+          trinsic.services.provider.v1.GetPublicEcosystemInfoRequest,
+          trinsic.services.provider.v1.GetPublicEcosystemInfoResponse>
+      getGetPublicEcosystemInfoMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetPublicEcosystemInfo",
+      requestType = trinsic.services.provider.v1.GetPublicEcosystemInfoRequest.class,
+      responseType = trinsic.services.provider.v1.GetPublicEcosystemInfoResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<
+          trinsic.services.provider.v1.GetPublicEcosystemInfoRequest,
+          trinsic.services.provider.v1.GetPublicEcosystemInfoResponse>
+      getGetPublicEcosystemInfoMethod() {
+    io.grpc.MethodDescriptor<
+            trinsic.services.provider.v1.GetPublicEcosystemInfoRequest,
+            trinsic.services.provider.v1.GetPublicEcosystemInfoResponse>
+        getGetPublicEcosystemInfoMethod;
+    if ((getGetPublicEcosystemInfoMethod = ProviderGrpc.getGetPublicEcosystemInfoMethod) == null) {
+      synchronized (ProviderGrpc.class) {
+        if ((getGetPublicEcosystemInfoMethod = ProviderGrpc.getGetPublicEcosystemInfoMethod)
+            == null) {
+          ProviderGrpc.getGetPublicEcosystemInfoMethod =
+              getGetPublicEcosystemInfoMethod =
+                  io.grpc.MethodDescriptor
+                      .<trinsic.services.provider.v1.GetPublicEcosystemInfoRequest,
+                          trinsic.services.provider.v1.GetPublicEcosystemInfoResponse>
+                          newBuilder()
+                      .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                      .setFullMethodName(
+                          generateFullMethodName(SERVICE_NAME, "GetPublicEcosystemInfo"))
+                      .setSampledToLocalTracing(true)
+                      .setRequestMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.provider.v1.GetPublicEcosystemInfoRequest
+                                  .getDefaultInstance()))
+                      .setResponseMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.provider.v1.GetPublicEcosystemInfoResponse
+                                  .getDefaultInstance()))
+                      .setSchemaDescriptor(
+                          new ProviderMethodDescriptorSupplier("GetPublicEcosystemInfo"))
+                      .build();
+        }
+      }
+    }
+    return getGetPublicEcosystemInfoMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<
           trinsic.services.provider.v1.GenerateTokenRequest,
           trinsic.services.provider.v1.GenerateTokenResponse>
       getGenerateTokenMethod;
@@ -929,6 +978,21 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
+     * Get public ecosystem information about *any* ecosystem
+     * </pre>
+     */
+    public void getPublicEcosystemInfo(
+        trinsic.services.provider.v1.GetPublicEcosystemInfoRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.provider.v1.GetPublicEcosystemInfoResponse>
+            responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(
+          getGetPublicEcosystemInfoMethod(), responseObserver);
+    }
+
+    /**
+     *
+     *
+     * <pre>
      * Generates an unprotected authentication token that can be used to
      * configure server side applications
      * </pre>
@@ -1104,6 +1168,13 @@ public final class ProviderGrpc {
                       trinsic.services.provider.v1.EcosystemInfoRequest,
                       trinsic.services.provider.v1.EcosystemInfoResponse>(
                       this, METHODID_ECOSYSTEM_INFO)))
+          .addMethod(
+              getGetPublicEcosystemInfoMethod(),
+              io.grpc.stub.ServerCalls.asyncUnaryCall(
+                  new MethodHandlers<
+                      trinsic.services.provider.v1.GetPublicEcosystemInfoRequest,
+                      trinsic.services.provider.v1.GetPublicEcosystemInfoResponse>(
+                      this, METHODID_GET_PUBLIC_ECOSYSTEM_INFO)))
           .addMethod(
               getGenerateTokenMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -1304,6 +1375,23 @@ public final class ProviderGrpc {
             responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getEcosystemInfoMethod(), getCallOptions()),
+          request,
+          responseObserver);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Get public ecosystem information about *any* ecosystem
+     * </pre>
+     */
+    public void getPublicEcosystemInfo(
+        trinsic.services.provider.v1.GetPublicEcosystemInfoRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.provider.v1.GetPublicEcosystemInfoResponse>
+            responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetPublicEcosystemInfoMethod(), getCallOptions()),
           request,
           responseObserver);
     }
@@ -1565,6 +1653,19 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
+     * Get public ecosystem information about *any* ecosystem
+     * </pre>
+     */
+    public trinsic.services.provider.v1.GetPublicEcosystemInfoResponse getPublicEcosystemInfo(
+        trinsic.services.provider.v1.GetPublicEcosystemInfoRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetPublicEcosystemInfoMethod(), getCallOptions(), request);
+    }
+
+    /**
+     *
+     *
+     * <pre>
      * Generates an unprotected authentication token that can be used to
      * configure server side applications
      * </pre>
@@ -1798,6 +1899,20 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
+     * Get public ecosystem information about *any* ecosystem
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<
+            trinsic.services.provider.v1.GetPublicEcosystemInfoResponse>
+        getPublicEcosystemInfo(trinsic.services.provider.v1.GetPublicEcosystemInfoRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetPublicEcosystemInfoMethod(), getCallOptions()), request);
+    }
+
+    /**
+     *
+     *
+     * <pre>
      * Generates an unprotected authentication token that can be used to
      * configure server side applications
      * </pre>
@@ -1921,14 +2036,15 @@ public final class ProviderGrpc {
   private static final int METHODID_ADD_WEBHOOK = 5;
   private static final int METHODID_DELETE_WEBHOOK = 6;
   private static final int METHODID_ECOSYSTEM_INFO = 7;
-  private static final int METHODID_GENERATE_TOKEN = 8;
-  private static final int METHODID_INVITE = 9;
-  private static final int METHODID_INVITATION_STATUS = 10;
-  private static final int METHODID_GET_OBERON_KEY = 11;
-  private static final int METHODID_GET_EVENT_TOKEN = 12;
-  private static final int METHODID_RETRIEVE_DOMAIN_VERIFICATION_RECORD = 13;
-  private static final int METHODID_REFRESH_DOMAIN_VERIFICATION_STATUS = 14;
-  private static final int METHODID_SEARCH_WALLET_CONFIGURATIONS = 15;
+  private static final int METHODID_GET_PUBLIC_ECOSYSTEM_INFO = 8;
+  private static final int METHODID_GENERATE_TOKEN = 9;
+  private static final int METHODID_INVITE = 10;
+  private static final int METHODID_INVITATION_STATUS = 11;
+  private static final int METHODID_GET_OBERON_KEY = 12;
+  private static final int METHODID_GET_EVENT_TOKEN = 13;
+  private static final int METHODID_RETRIEVE_DOMAIN_VERIFICATION_RECORD = 14;
+  private static final int METHODID_REFRESH_DOMAIN_VERIFICATION_STATUS = 15;
+  private static final int METHODID_SEARCH_WALLET_CONFIGURATIONS = 16;
 
   private static final class MethodHandlers<Req, Resp>
       implements io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -1994,6 +2110,13 @@ public final class ProviderGrpc {
           serviceImpl.ecosystemInfo(
               (trinsic.services.provider.v1.EcosystemInfoRequest) request,
               (io.grpc.stub.StreamObserver<trinsic.services.provider.v1.EcosystemInfoResponse>)
+                  responseObserver);
+          break;
+        case METHODID_GET_PUBLIC_ECOSYSTEM_INFO:
+          serviceImpl.getPublicEcosystemInfo(
+              (trinsic.services.provider.v1.GetPublicEcosystemInfoRequest) request,
+              (io.grpc.stub.StreamObserver<
+                      trinsic.services.provider.v1.GetPublicEcosystemInfoResponse>)
                   responseObserver);
           break;
         case METHODID_GENERATE_TOKEN:
@@ -2117,6 +2240,7 @@ public final class ProviderGrpc {
                       .addMethod(getAddWebhookMethod())
                       .addMethod(getDeleteWebhookMethod())
                       .addMethod(getEcosystemInfoMethod())
+                      .addMethod(getGetPublicEcosystemInfoMethod())
                       .addMethod(getGenerateTokenMethod())
                       .addMethod(getInviteMethod())
                       .addMethod(getInvitationStatusMethod())

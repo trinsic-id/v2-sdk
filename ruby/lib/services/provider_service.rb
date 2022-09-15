@@ -83,6 +83,13 @@ module Trinsic
       @client.ecosystem_info(request, metadata: metadata(request))
     end
 
+    #  Get public ecosystem information about *any* ecosystem
+    # @param [GetPublicEcosystemInfoRequest] request
+    # @return [Services::Provider::V1::GetPublicEcosystemInfoResponse]
+    def get_public_ecosystem_info(request)
+      @client.get_public_ecosystem_info(request, metadata: metadata(request))
+    end
+
     #  Generates an unprotected authentication token that can be used to
     # configure server side applications
     # @param [GenerateTokenRequest] request
@@ -122,7 +129,8 @@ module Trinsic
     #  Retrieve a random hash TXT that can be used to verify domain ownership
     # @param [RetrieveDomainVerificationRecordRequest] request
     # @return [Services::Provider::V1::RetrieveDomainVerificationRecordResponse]
-    def retrieve_domain_verification_record(request)
+    def retrieve_domain_verification_record
+      request = Services::Provider::V1::RetrieveDomainVerificationRecordRequest.new
       @client.retrieve_domain_verification_record(request, metadata: metadata(request))
     end
 

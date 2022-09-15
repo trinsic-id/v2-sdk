@@ -189,6 +189,22 @@ public class ProviderService : ServiceBase
     }
 
 	/// <summary>
+    /// Get public ecosystem information about *any* ecosystem
+    /// </summary>	
+    public GetPublicEcosystemInfoResponse GetPublicEcosystemInfo(GetPublicEcosystemInfoRequest request) {
+        
+        return Client.GetPublicEcosystemInfo(request, BuildMetadata());
+    }
+	
+	/// <summary>
+    /// Get public ecosystem information about *any* ecosystem
+    /// </summary>	
+    public async Task<GetPublicEcosystemInfoResponse> GetPublicEcosystemInfoAsync(GetPublicEcosystemInfoRequest request) {
+        
+        return await Client.GetPublicEcosystemInfoAsync(request, await BuildMetadataAsync());
+    }
+
+	/// <summary>
     /// Generates an unprotected authentication token that can be used to
     ///  configure server side applications
     /// </summary>	
@@ -273,16 +289,16 @@ public class ProviderService : ServiceBase
 	/// <summary>
     /// Retrieve a random hash TXT that can be used to verify domain ownership
     /// </summary>	
-    public RetrieveDomainVerificationRecordResponse RetrieveDomainVerificationRecord(RetrieveDomainVerificationRecordRequest request) {
-        
+    public RetrieveDomainVerificationRecordResponse RetrieveDomainVerificationRecord() {
+        var request = new RetrieveDomainVerificationRecordRequest();
         return Client.RetrieveDomainVerificationRecord(request, BuildMetadata(request));
     }
 	
 	/// <summary>
     /// Retrieve a random hash TXT that can be used to verify domain ownership
     /// </summary>	
-    public async Task<RetrieveDomainVerificationRecordResponse> RetrieveDomainVerificationRecordAsync(RetrieveDomainVerificationRecordRequest request) {
-        
+    public async Task<RetrieveDomainVerificationRecordResponse> RetrieveDomainVerificationRecordAsync() {
+        var request = new RetrieveDomainVerificationRecordRequest();
         return await Client.RetrieveDomainVerificationRecordAsync(request, await BuildMetadataAsync(request));
     }
 

@@ -816,6 +816,30 @@
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.GetOberonKeyResponse"
     },
+    "services.provider.v1.GetPublicEcosystemInfoRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.GetPublicEcosystemInfoRequest.ecosystem_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.GetPublicEcosystemInfoRequest"
+    },
+    "services.provider.v1.GetPublicEcosystemInfoResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.GetPublicEcosystemInfoResponse.ecosystem": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.GetPublicEcosystemInfoResponse"
+    },
     "services.provider.v1.Grant": {
       "type": "message",
       "collection": "messages",
@@ -1056,6 +1080,12 @@
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
+    "services.provider.v1.Provider.GetPublicEcosystemInfo": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
     "services.provider.v1.Provider.GrantAuthorization": {
       "type": "method",
       "collection": "methods",
@@ -1103,6 +1133,36 @@
       "collection": "methods",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
+    },
+    "services.provider.v1.PublicEcosystemInformation": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.PublicEcosystemInformation.domain": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.PublicEcosystemInformation"
+    },
+    "services.provider.v1.PublicEcosystemInformation.domain_verified": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.PublicEcosystemInformation"
+    },
+    "services.provider.v1.PublicEcosystemInformation.name": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.PublicEcosystemInformation"
+    },
+    "services.provider.v1.PublicEcosystemInformation.style_display": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.PublicEcosystemInformation"
     },
     "services.provider.v1.RefreshDomainVerificationStatusRequest": {
       "type": "message",
@@ -3080,6 +3140,7 @@
         "services.provider.v1.Provider.AddWebhook",
         "services.provider.v1.Provider.DeleteWebhook",
         "services.provider.v1.Provider.EcosystemInfo",
+        "services.provider.v1.Provider.GetPublicEcosystemInfo",
         "services.provider.v1.Provider.GenerateToken",
         "services.provider.v1.Provider.Invite",
         "services.provider.v1.Provider.InvitationStatus",
@@ -3110,6 +3171,9 @@
         "services.provider.v1.DeleteWebhookResponse",
         "services.provider.v1.EcosystemInfoRequest",
         "services.provider.v1.EcosystemInfoResponse",
+        "services.provider.v1.GetPublicEcosystemInfoRequest",
+        "services.provider.v1.GetPublicEcosystemInfoResponse",
+        "services.provider.v1.PublicEcosystemInformation",
         "services.provider.v1.GenerateTokenRequest",
         "services.provider.v1.GenerateTokenResponse",
         "services.provider.v1.GetOberonKeyRequest",
@@ -3178,6 +3242,12 @@
         "services.provider.v1.DeleteWebhookRequest.webhook_id",
         "services.provider.v1.DeleteWebhookResponse.ecosystem",
         "services.provider.v1.EcosystemInfoResponse.ecosystem",
+        "services.provider.v1.GetPublicEcosystemInfoRequest.ecosystem_id",
+        "services.provider.v1.GetPublicEcosystemInfoResponse.ecosystem",
+        "services.provider.v1.PublicEcosystemInformation.name",
+        "services.provider.v1.PublicEcosystemInformation.domain",
+        "services.provider.v1.PublicEcosystemInformation.domain_verified",
+        "services.provider.v1.PublicEcosystemInformation.style_display",
         "services.provider.v1.GenerateTokenRequest.description",
         "services.provider.v1.GenerateTokenResponse.profile",
         "services.provider.v1.GetOberonKeyResponse.key",
@@ -3524,6 +3594,7 @@
         "services.provider.v1.Provider.AddWebhook",
         "services.provider.v1.Provider.DeleteWebhook",
         "services.provider.v1.Provider.EcosystemInfo",
+        "services.provider.v1.Provider.GetPublicEcosystemInfo",
         "services.provider.v1.Provider.GenerateToken",
         "services.provider.v1.Provider.Invite",
         "services.provider.v1.Provider.InvitationStatus",
@@ -3692,6 +3763,13 @@
       "input_type": "services.provider.v1.GetOberonKeyRequest",
       "output_type": "services.provider.v1.GetOberonKeyResponse",
       "description": "Returns the public key being used to create/verify oberon tokens"
+    },
+    "services.provider.v1.Provider.GetPublicEcosystemInfo": {
+      "name": "GetPublicEcosystemInfo",
+      "full_name": "services.provider.v1.Provider.GetPublicEcosystemInfo",
+      "input_type": "services.provider.v1.GetPublicEcosystemInfoRequest",
+      "output_type": "services.provider.v1.GetPublicEcosystemInfoResponse",
+      "description": "Get public ecosystem information about *any* ecosystem"
     },
     "services.provider.v1.Provider.GrantAuthorization": {
       "name": "GrantAuthorization",
@@ -4345,6 +4423,26 @@
       "messages": [],
       "enums": []
     },
+    "services.provider.v1.GetPublicEcosystemInfoRequest": {
+      "name": "GetPublicEcosystemInfoRequest",
+      "full_name": "services.provider.v1.GetPublicEcosystemInfoRequest",
+      "description": "Request to fetch information about an ecosystem",
+      "fields": [
+        "services.provider.v1.GetPublicEcosystemInfoRequest.ecosystem_id"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.provider.v1.GetPublicEcosystemInfoResponse": {
+      "name": "GetPublicEcosystemInfoResponse",
+      "full_name": "services.provider.v1.GetPublicEcosystemInfoResponse",
+      "description": "Response to `InfoRequest`",
+      "fields": [
+        "services.provider.v1.GetPublicEcosystemInfoResponse.ecosystem"
+      ],
+      "messages": [],
+      "enums": []
+    },
     "services.provider.v1.Grant": {
       "name": "Grant",
       "full_name": "services.provider.v1.Grant",
@@ -4430,6 +4528,19 @@
       "fields": [
         "services.provider.v1.InviteResponse.invitation_id",
         "services.provider.v1.InviteResponse.invitation_code"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.provider.v1.PublicEcosystemInformation": {
+      "name": "PublicEcosystemInformation",
+      "full_name": "services.provider.v1.PublicEcosystemInformation",
+      "description": "",
+      "fields": [
+        "services.provider.v1.PublicEcosystemInformation.name",
+        "services.provider.v1.PublicEcosystemInformation.domain",
+        "services.provider.v1.PublicEcosystemInformation.domain_verified",
+        "services.provider.v1.PublicEcosystemInformation.style_display"
       ],
       "messages": [],
       "enums": []
@@ -5880,7 +5991,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "Ecosystem",
       "full_type": "services.provider.v1.Ecosystem",
-      "description": "Ecosystem corresponding to requested `ecosystem_id`"
+      "description": "Ecosystem corresponding to current ecosystem in the account token"
     },
     "services.provider.v1.GenerateTokenRequest.description": {
       "name": "description",
@@ -5932,6 +6043,22 @@
       "type": "string",
       "full_type": "string",
       "description": "Oberon Public Key as RAW base64-url encoded string"
+    },
+    "services.provider.v1.GetPublicEcosystemInfoRequest.ecosystem_id": {
+      "name": "ecosystem_id",
+      "full_name": "services.provider.v1.GetPublicEcosystemInfoRequest.ecosystem_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
+    },
+    "services.provider.v1.GetPublicEcosystemInfoResponse.ecosystem": {
+      "name": "ecosystem",
+      "full_name": "services.provider.v1.GetPublicEcosystemInfoResponse.ecosystem",
+      "label": "LABEL_OPTIONAL",
+      "type": "PublicEcosystemInformation",
+      "full_type": "services.provider.v1.PublicEcosystemInformation",
+      "description": "Ecosystem corresponding to requested `ecosystem_id`"
     },
     "services.provider.v1.Grant.actions": {
       "name": "actions",
@@ -6058,6 +6185,38 @@
       "type": "string",
       "full_type": "string",
       "description": "ID of created invitation"
+    },
+    "services.provider.v1.PublicEcosystemInformation.domain": {
+      "name": "domain",
+      "full_name": "services.provider.v1.PublicEcosystemInformation.domain",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Public domain for the owner of this ecosystem"
+    },
+    "services.provider.v1.PublicEcosystemInformation.domain_verified": {
+      "name": "domain_verified",
+      "full_name": "services.provider.v1.PublicEcosystemInformation.domain_verified",
+      "label": "LABEL_OPTIONAL",
+      "type": "bool",
+      "full_type": "bool",
+      "description": "Trinsic verified the domain is owned by the owner of this ecosystem"
+    },
+    "services.provider.v1.PublicEcosystemInformation.name": {
+      "name": "name",
+      "full_name": "services.provider.v1.PublicEcosystemInformation.name",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Public name of this ecosystem"
+    },
+    "services.provider.v1.PublicEcosystemInformation.style_display": {
+      "name": "style_display",
+      "full_name": "services.provider.v1.PublicEcosystemInformation.style_display",
+      "label": "LABEL_OPTIONAL",
+      "type": "EcosystemDisplay",
+      "full_type": "services.provider.v1.EcosystemDisplay",
+      "description": "Style display information"
     },
     "services.provider.v1.RefreshDomainVerificationStatusResponse.domain": {
       "name": "domain",
