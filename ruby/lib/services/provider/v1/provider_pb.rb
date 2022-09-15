@@ -101,6 +101,18 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "services.provider.v1.EcosystemInfoResponse" do
       optional :ecosystem, :message, 1, "services.provider.v1.Ecosystem"
     end
+    add_message "services.provider.v1.GetPublicEcosystemInfoRequest" do
+      optional :ecosystem_id, :string, 1
+    end
+    add_message "services.provider.v1.GetPublicEcosystemInfoResponse" do
+      optional :ecosystem, :message, 1, "services.provider.v1.PublicEcosystemInformation"
+    end
+    add_message "services.provider.v1.PublicEcosystemInformation" do
+      optional :name, :string, 1
+      optional :domain, :string, 2
+      optional :domain_verified, :bool, 3
+      optional :style_display, :message, 4, "services.provider.v1.EcosystemDisplay"
+    end
     add_message "services.provider.v1.GenerateTokenRequest" do
       optional :description, :string, 1
     end
@@ -201,6 +213,9 @@ module Services
       DeleteWebhookResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.DeleteWebhookResponse").msgclass
       EcosystemInfoRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.EcosystemInfoRequest").msgclass
       EcosystemInfoResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.EcosystemInfoResponse").msgclass
+      GetPublicEcosystemInfoRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GetPublicEcosystemInfoRequest").msgclass
+      GetPublicEcosystemInfoResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GetPublicEcosystemInfoResponse").msgclass
+      PublicEcosystemInformation = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.PublicEcosystemInformation").msgclass
       GenerateTokenRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GenerateTokenRequest").msgclass
       GenerateTokenResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GenerateTokenResponse").msgclass
       GetOberonKeyRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.GetOberonKeyRequest").msgclass

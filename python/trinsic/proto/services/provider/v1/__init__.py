@@ -310,7 +310,37 @@ class EcosystemInfoResponse(betterproto.Message):
     """Response to `InfoRequest`"""
 
     ecosystem: "Ecosystem" = betterproto.message_field(1)
+    """Ecosystem corresponding to current ecosystem in the account token"""
+
+
+@dataclass(eq=False, repr=False)
+class GetPublicEcosystemInfoRequest(betterproto.Message):
+    """Request to fetch information about an ecosystem"""
+
+    ecosystem_id: str = betterproto.string_field(1)
+
+
+@dataclass(eq=False, repr=False)
+class GetPublicEcosystemInfoResponse(betterproto.Message):
+    """Response to `InfoRequest`"""
+
+    ecosystem: "PublicEcosystemInformation" = betterproto.message_field(1)
     """Ecosystem corresponding to requested `ecosystem_id`"""
+
+
+@dataclass(eq=False, repr=False)
+class PublicEcosystemInformation(betterproto.Message):
+    name: str = betterproto.string_field(1)
+    """Public name of this ecosystem"""
+
+    domain: str = betterproto.string_field(2)
+    """Public domain for the owner of this ecosystem"""
+
+    domain_verified: bool = betterproto.bool_field(3)
+    """Trinsic verified the domain is owned by the owner of this ecosystem"""
+
+    style_display: "EcosystemDisplay" = betterproto.message_field(4)
+    """Style display information"""
 
 
 @dataclass(eq=False, repr=False)
@@ -650,6 +680,22 @@ class ProviderStub(betterproto.ServiceStub):
             metadata=metadata,
         )
 
+    async def get_public_ecosystem_info(
+        self,
+        get_public_ecosystem_info_request: "GetPublicEcosystemInfoRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "GetPublicEcosystemInfoResponse":
+        return await self._unary_unary(
+            "/services.provider.v1.Provider/GetPublicEcosystemInfo",
+            get_public_ecosystem_info_request,
+            GetPublicEcosystemInfoResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
     async def generate_token(
         self,
         generate_token_request: "GenerateTokenRequest",
@@ -820,6 +866,11 @@ class ProviderBase(ServiceBase):
     ) -> "EcosystemInfoResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
+    async def get_public_ecosystem_info(
+        self, get_public_ecosystem_info_request: "GetPublicEcosystemInfoRequest"
+    ) -> "GetPublicEcosystemInfoResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
     async def generate_token(
         self, generate_token_request: "GenerateTokenRequest"
     ) -> "GenerateTokenResponse":
@@ -898,6 +949,13 @@ class ProviderBase(ServiceBase):
     async def __rpc_ecosystem_info(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.ecosystem_info(request)
+        await stream.send_message(response)
+
+    async def __rpc_get_public_ecosystem_info(
+        self, stream: grpclib.server.Stream
+    ) -> None:
+        request = await stream.recv_message()
+        response = await self.get_public_ecosystem_info(request)
         await stream.send_message(response)
 
     async def __rpc_generate_token(self, stream: grpclib.server.Stream) -> None:
@@ -995,6 +1053,12 @@ class ProviderBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 EcosystemInfoRequest,
                 EcosystemInfoResponse,
+            ),
+            "/services.provider.v1.Provider/GetPublicEcosystemInfo": grpclib.const.Handler(
+                self.__rpc_get_public_ecosystem_info,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                GetPublicEcosystemInfoRequest,
+                GetPublicEcosystemInfoResponse,
             ),
             "/services.provider.v1.Provider/GenerateToken": grpclib.const.Handler(
                 self.__rpc_generate_token,

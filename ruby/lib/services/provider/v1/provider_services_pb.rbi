@@ -84,6 +84,14 @@ module Services::Provider::V1::Provider
 
     sig do
       params(
+        request: Services::Provider::V1::GetPublicEcosystemInfoRequest
+      ).returns(Services::Provider::V1::GetPublicEcosystemInfoResponse)
+    end
+    def get_public_ecosystem_info(request)
+    end
+
+    sig do
+      params(
         request: Services::Provider::V1::GenerateTokenRequest
       ).returns(Services::Provider::V1::GenerateTokenResponse)
     end

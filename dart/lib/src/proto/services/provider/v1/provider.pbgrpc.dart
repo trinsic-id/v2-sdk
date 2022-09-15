@@ -62,6 +62,12 @@ class ProviderClient extends $grpc.Client {
           ($4.EcosystemInfoRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $4.EcosystemInfoResponse.fromBuffer(value));
+  static final _$getPublicEcosystemInfo = $grpc.ClientMethod<
+          $4.GetPublicEcosystemInfoRequest, $4.GetPublicEcosystemInfoResponse>(
+      '/services.provider.v1.Provider/GetPublicEcosystemInfo',
+      ($4.GetPublicEcosystemInfoRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) =>
+          $4.GetPublicEcosystemInfoResponse.fromBuffer(value));
   static final _$generateToken =
       $grpc.ClientMethod<$4.GenerateTokenRequest, $4.GenerateTokenResponse>(
           '/services.provider.v1.Provider/GenerateToken',
@@ -166,6 +172,13 @@ class ProviderClient extends $grpc.Client {
       $4.EcosystemInfoRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$ecosystemInfo, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$4.GetPublicEcosystemInfoResponse>
+      getPublicEcosystemInfo($4.GetPublicEcosystemInfoRequest request,
+          {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getPublicEcosystemInfo, request,
+        options: options);
   }
 
   $grpc.ResponseFuture<$4.GenerateTokenResponse> generateToken(
@@ -295,6 +308,15 @@ abstract class ProviderServiceBase extends $grpc.Service {
             ($core.List<$core.int> value) =>
                 $4.EcosystemInfoRequest.fromBuffer(value),
             ($4.EcosystemInfoResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.GetPublicEcosystemInfoRequest,
+            $4.GetPublicEcosystemInfoResponse>(
+        'GetPublicEcosystemInfo',
+        getPublicEcosystemInfo_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) =>
+            $4.GetPublicEcosystemInfoRequest.fromBuffer(value),
+        ($4.GetPublicEcosystemInfoResponse value) => value.writeToBuffer()));
     $addMethod(
         $grpc.ServiceMethod<$4.GenerateTokenRequest, $4.GenerateTokenResponse>(
             'GenerateToken',
@@ -416,6 +438,12 @@ abstract class ProviderServiceBase extends $grpc.Service {
     return ecosystemInfo(call, await request);
   }
 
+  $async.Future<$4.GetPublicEcosystemInfoResponse> getPublicEcosystemInfo_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$4.GetPublicEcosystemInfoRequest> request) async {
+    return getPublicEcosystemInfo(call, await request);
+  }
+
   $async.Future<$4.GenerateTokenResponse> generateToken_Pre(
       $grpc.ServiceCall call,
       $async.Future<$4.GenerateTokenRequest> request) async {
@@ -483,6 +511,8 @@ abstract class ProviderServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $4.DeleteWebhookRequest request);
   $async.Future<$4.EcosystemInfoResponse> ecosystemInfo(
       $grpc.ServiceCall call, $4.EcosystemInfoRequest request);
+  $async.Future<$4.GetPublicEcosystemInfoResponse> getPublicEcosystemInfo(
+      $grpc.ServiceCall call, $4.GetPublicEcosystemInfoRequest request);
   $async.Future<$4.GenerateTokenResponse> generateToken(
       $grpc.ServiceCall call, $4.GenerateTokenRequest request);
   $async.Future<$4.InviteResponse> invite(

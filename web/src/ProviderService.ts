@@ -120,6 +120,13 @@ export class ProviderService extends ServiceBase {
       metadata: await this.buildMetadata(EcosystemInfoRequest.encode(request).finish())
     });
   }
+  /** Get public ecosystem information about *any* ecosystem */
+  public async getPublicEcosystemInfo(request: GetPublicEcosystemInfoRequest): Promise<GetPublicEcosystemInfoResponse> {
+    
+    return this.client.getPublicEcosystemInfo(request, {
+      metadata: await this.buildMetadata()
+    });
+  }
   /** Generates an unprotected authentication token that can be used to
 * configure server side applications */
   public async generateToken(request: GenerateTokenRequest): Promise<GenerateTokenResponse> {
@@ -157,8 +164,8 @@ export class ProviderService extends ServiceBase {
     });
   }
   /** Retrieve a random hash TXT that can be used to verify domain ownership */
-  public async retrieveDomainVerificationRecord(request: RetrieveDomainVerificationRecordRequest): Promise<RetrieveDomainVerificationRecordResponse> {
-    
+  public async retrieveDomainVerificationRecord(): Promise<RetrieveDomainVerificationRecordResponse> {
+    let request = RetrieveDomainVerificationRecordRequest.fromPartial({});
     return this.client.retrieveDomainVerificationRecord(request, {
       metadata: await this.buildMetadata(RetrieveDomainVerificationRecordRequest.encode(request).finish())
     });

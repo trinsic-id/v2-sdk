@@ -1962,6 +1962,287 @@ class EcosystemInfoResponse extends $pb.GeneratedMessage {
   Ecosystem ensureEcosystem() => $_ensure(0);
 }
 
+class GetPublicEcosystemInfoRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'GetPublicEcosystemInfoRequest',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'ecosystemId')
+    ..hasRequiredFields = false;
+
+  GetPublicEcosystemInfoRequest._() : super();
+  factory GetPublicEcosystemInfoRequest({
+    $core.String? ecosystemId,
+  }) {
+    final _result = create();
+    if (ecosystemId != null) {
+      _result.ecosystemId = ecosystemId;
+    }
+    return _result;
+  }
+  factory GetPublicEcosystemInfoRequest.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory GetPublicEcosystemInfoRequest.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  GetPublicEcosystemInfoRequest clone() =>
+      GetPublicEcosystemInfoRequest()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  GetPublicEcosystemInfoRequest copyWith(
+          void Function(GetPublicEcosystemInfoRequest) updates) =>
+      super.copyWith(
+              (message) => updates(message as GetPublicEcosystemInfoRequest))
+          as GetPublicEcosystemInfoRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetPublicEcosystemInfoRequest create() =>
+      GetPublicEcosystemInfoRequest._();
+  GetPublicEcosystemInfoRequest createEmptyInstance() => create();
+  static $pb.PbList<GetPublicEcosystemInfoRequest> createRepeated() =>
+      $pb.PbList<GetPublicEcosystemInfoRequest>();
+  @$core.pragma('dart2js:noInline')
+  static GetPublicEcosystemInfoRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<GetPublicEcosystemInfoRequest>(create);
+  static GetPublicEcosystemInfoRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get ecosystemId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set ecosystemId($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasEcosystemId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearEcosystemId() => clearField(1);
+}
+
+class GetPublicEcosystemInfoResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'GetPublicEcosystemInfoResponse',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..aOM<PublicEcosystemInformation>(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'ecosystem',
+        subBuilder: PublicEcosystemInformation.create)
+    ..hasRequiredFields = false;
+
+  GetPublicEcosystemInfoResponse._() : super();
+  factory GetPublicEcosystemInfoResponse({
+    PublicEcosystemInformation? ecosystem,
+  }) {
+    final _result = create();
+    if (ecosystem != null) {
+      _result.ecosystem = ecosystem;
+    }
+    return _result;
+  }
+  factory GetPublicEcosystemInfoResponse.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory GetPublicEcosystemInfoResponse.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  GetPublicEcosystemInfoResponse clone() =>
+      GetPublicEcosystemInfoResponse()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  GetPublicEcosystemInfoResponse copyWith(
+          void Function(GetPublicEcosystemInfoResponse) updates) =>
+      super.copyWith(
+              (message) => updates(message as GetPublicEcosystemInfoResponse))
+          as GetPublicEcosystemInfoResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetPublicEcosystemInfoResponse create() =>
+      GetPublicEcosystemInfoResponse._();
+  GetPublicEcosystemInfoResponse createEmptyInstance() => create();
+  static $pb.PbList<GetPublicEcosystemInfoResponse> createRepeated() =>
+      $pb.PbList<GetPublicEcosystemInfoResponse>();
+  @$core.pragma('dart2js:noInline')
+  static GetPublicEcosystemInfoResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<GetPublicEcosystemInfoResponse>(create);
+  static GetPublicEcosystemInfoResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  PublicEcosystemInformation get ecosystem => $_getN(0);
+  @$pb.TagNumber(1)
+  set ecosystem(PublicEcosystemInformation v) {
+    setField(1, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasEcosystem() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearEcosystem() => clearField(1);
+  @$pb.TagNumber(1)
+  PublicEcosystemInformation ensureEcosystem() => $_ensure(0);
+}
+
+class PublicEcosystemInformation extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          ? ''
+          : 'PublicEcosystemInformation',
+      package: const $pb.PackageName(
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+              ? ''
+              : 'services.provider.v1'),
+      createEmptyInstance: create)
+    ..aOS(
+        1,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'name')
+    ..aOS(
+        2,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'domain')
+    ..aOB(
+        3,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'domainVerified')
+    ..aOM<EcosystemDisplay>(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'styleDisplay',
+        subBuilder: EcosystemDisplay.create)
+    ..hasRequiredFields = false;
+
+  PublicEcosystemInformation._() : super();
+  factory PublicEcosystemInformation({
+    $core.String? name,
+    $core.String? domain,
+    $core.bool? domainVerified,
+    EcosystemDisplay? styleDisplay,
+  }) {
+    final _result = create();
+    if (name != null) {
+      _result.name = name;
+    }
+    if (domain != null) {
+      _result.domain = domain;
+    }
+    if (domainVerified != null) {
+      _result.domainVerified = domainVerified;
+    }
+    if (styleDisplay != null) {
+      _result.styleDisplay = styleDisplay;
+    }
+    return _result;
+  }
+  factory PublicEcosystemInformation.fromBuffer($core.List<$core.int> i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(i, r);
+  factory PublicEcosystemInformation.fromJson($core.String i,
+          [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(i, r);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+      'Will be removed in next major version')
+  PublicEcosystemInformation clone() =>
+      PublicEcosystemInformation()..mergeFromMessage(this);
+  @$core.Deprecated('Using this can add significant overhead to your binary. '
+      'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+      'Will be removed in next major version')
+  PublicEcosystemInformation copyWith(
+          void Function(PublicEcosystemInformation) updates) =>
+      super.copyWith(
+              (message) => updates(message as PublicEcosystemInformation))
+          as PublicEcosystemInformation; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static PublicEcosystemInformation create() => PublicEcosystemInformation._();
+  PublicEcosystemInformation createEmptyInstance() => create();
+  static $pb.PbList<PublicEcosystemInformation> createRepeated() =>
+      $pb.PbList<PublicEcosystemInformation>();
+  @$core.pragma('dart2js:noInline')
+  static PublicEcosystemInformation getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<PublicEcosystemInformation>(create);
+  static PublicEcosystemInformation? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get name => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set name($core.String v) {
+    $_setString(0, v);
+  }
+
+  @$pb.TagNumber(1)
+  $core.bool hasName() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearName() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get domain => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set domain($core.String v) {
+    $_setString(1, v);
+  }
+
+  @$pb.TagNumber(2)
+  $core.bool hasDomain() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearDomain() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.bool get domainVerified => $_getBF(2);
+  @$pb.TagNumber(3)
+  set domainVerified($core.bool v) {
+    $_setBool(2, v);
+  }
+
+  @$pb.TagNumber(3)
+  $core.bool hasDomainVerified() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearDomainVerified() => clearField(3);
+
+  @$pb.TagNumber(4)
+  EcosystemDisplay get styleDisplay => $_getN(3);
+  @$pb.TagNumber(4)
+  set styleDisplay(EcosystemDisplay v) {
+    setField(4, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasStyleDisplay() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearStyleDisplay() => clearField(4);
+  @$pb.TagNumber(4)
+  EcosystemDisplay ensureStyleDisplay() => $_ensure(3);
+}
+
 class GenerateTokenRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')

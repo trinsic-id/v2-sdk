@@ -12,7 +12,7 @@ public interface EcosystemInfoResponseOrBuilder
    *
    *
    * <pre>
-   * Ecosystem corresponding to requested `ecosystem_id`
+   * Ecosystem corresponding to current ecosystem in the account token
    * </pre>
    *
    * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
@@ -24,7 +24,7 @@ public interface EcosystemInfoResponseOrBuilder
    *
    *
    * <pre>
-   * Ecosystem corresponding to requested `ecosystem_id`
+   * Ecosystem corresponding to current ecosystem in the account token
    * </pre>
    *
    * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
@@ -36,7 +36,7 @@ public interface EcosystemInfoResponseOrBuilder
    *
    *
    * <pre>
-   * Ecosystem corresponding to requested `ecosystem_id`
+   * Ecosystem corresponding to current ecosystem in the account token
    * </pre>
    *
    * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>

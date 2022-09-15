@@ -285,8 +285,30 @@ export interface EcosystemInfoRequest {}
 
 /** Response to `InfoRequest` */
 export interface EcosystemInfoResponse {
-  /** Ecosystem corresponding to requested `ecosystem_id` */
+  /** Ecosystem corresponding to current ecosystem in the account token */
   ecosystem: Ecosystem | undefined;
+}
+
+/** Request to fetch information about an ecosystem */
+export interface GetPublicEcosystemInfoRequest {
+  ecosystemId: string;
+}
+
+/** Response to `InfoRequest` */
+export interface GetPublicEcosystemInfoResponse {
+  /** Ecosystem corresponding to requested `ecosystem_id` */
+  ecosystem: PublicEcosystemInformation | undefined;
+}
+
+export interface PublicEcosystemInformation {
+  /** Public name of this ecosystem */
+  name: string;
+  /** Public domain for the owner of this ecosystem */
+  domain: string;
+  /** Trinsic verified the domain is owned by the owner of this ecosystem */
+  domainVerified: boolean;
+  /** Style display information */
+  styleDisplay: EcosystemDisplay | undefined;
 }
 
 /** Request to generate an authentication token for the current account */
@@ -1959,6 +1981,241 @@ export const EcosystemInfoResponse = {
   },
 };
 
+function createBaseGetPublicEcosystemInfoRequest(): GetPublicEcosystemInfoRequest {
+  return { ecosystemId: "" };
+}
+
+export const GetPublicEcosystemInfoRequest = {
+  encode(
+    message: GetPublicEcosystemInfoRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.ecosystemId !== "") {
+      writer.uint32(10).string(message.ecosystemId);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): GetPublicEcosystemInfoRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseGetPublicEcosystemInfoRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.ecosystemId = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): GetPublicEcosystemInfoRequest {
+    return {
+      ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
+    };
+  },
+
+  toJSON(message: GetPublicEcosystemInfoRequest): unknown {
+    const obj: any = {};
+    message.ecosystemId !== undefined &&
+      (obj.ecosystemId = message.ecosystemId);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<GetPublicEcosystemInfoRequest>
+  ): GetPublicEcosystemInfoRequest {
+    const message = createBaseGetPublicEcosystemInfoRequest();
+    message.ecosystemId = object.ecosystemId ?? "";
+    return message;
+  },
+};
+
+function createBaseGetPublicEcosystemInfoResponse(): GetPublicEcosystemInfoResponse {
+  return { ecosystem: undefined };
+}
+
+export const GetPublicEcosystemInfoResponse = {
+  encode(
+    message: GetPublicEcosystemInfoResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.ecosystem !== undefined) {
+      PublicEcosystemInformation.encode(
+        message.ecosystem,
+        writer.uint32(10).fork()
+      ).ldelim();
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): GetPublicEcosystemInfoResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseGetPublicEcosystemInfoResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.ecosystem = PublicEcosystemInformation.decode(
+            reader,
+            reader.uint32()
+          );
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): GetPublicEcosystemInfoResponse {
+    return {
+      ecosystem: isSet(object.ecosystem)
+        ? PublicEcosystemInformation.fromJSON(object.ecosystem)
+        : undefined,
+    };
+  },
+
+  toJSON(message: GetPublicEcosystemInfoResponse): unknown {
+    const obj: any = {};
+    message.ecosystem !== undefined &&
+      (obj.ecosystem = message.ecosystem
+        ? PublicEcosystemInformation.toJSON(message.ecosystem)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<GetPublicEcosystemInfoResponse>
+  ): GetPublicEcosystemInfoResponse {
+    const message = createBaseGetPublicEcosystemInfoResponse();
+    message.ecosystem =
+      object.ecosystem !== undefined && object.ecosystem !== null
+        ? PublicEcosystemInformation.fromPartial(object.ecosystem)
+        : undefined;
+    return message;
+  },
+};
+
+function createBasePublicEcosystemInformation(): PublicEcosystemInformation {
+  return {
+    name: "",
+    domain: "",
+    domainVerified: false,
+    styleDisplay: undefined,
+  };
+}
+
+export const PublicEcosystemInformation = {
+  encode(
+    message: PublicEcosystemInformation,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.name !== "") {
+      writer.uint32(10).string(message.name);
+    }
+    if (message.domain !== "") {
+      writer.uint32(18).string(message.domain);
+    }
+    if (message.domainVerified === true) {
+      writer.uint32(24).bool(message.domainVerified);
+    }
+    if (message.styleDisplay !== undefined) {
+      EcosystemDisplay.encode(
+        message.styleDisplay,
+        writer.uint32(34).fork()
+      ).ldelim();
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): PublicEcosystemInformation {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBasePublicEcosystemInformation();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.name = reader.string();
+          break;
+        case 2:
+          message.domain = reader.string();
+          break;
+        case 3:
+          message.domainVerified = reader.bool();
+          break;
+        case 4:
+          message.styleDisplay = EcosystemDisplay.decode(
+            reader,
+            reader.uint32()
+          );
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): PublicEcosystemInformation {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      domain: isSet(object.domain) ? String(object.domain) : "",
+      domainVerified: isSet(object.domainVerified)
+        ? Boolean(object.domainVerified)
+        : false,
+      styleDisplay: isSet(object.styleDisplay)
+        ? EcosystemDisplay.fromJSON(object.styleDisplay)
+        : undefined,
+    };
+  },
+
+  toJSON(message: PublicEcosystemInformation): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.domain !== undefined && (obj.domain = message.domain);
+    message.domainVerified !== undefined &&
+      (obj.domainVerified = message.domainVerified);
+    message.styleDisplay !== undefined &&
+      (obj.styleDisplay = message.styleDisplay
+        ? EcosystemDisplay.toJSON(message.styleDisplay)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<PublicEcosystemInformation>
+  ): PublicEcosystemInformation {
+    const message = createBasePublicEcosystemInformation();
+    message.name = object.name ?? "";
+    message.domain = object.domain ?? "";
+    message.domainVerified = object.domainVerified ?? false;
+    message.styleDisplay =
+      object.styleDisplay !== undefined && object.styleDisplay !== null
+        ? EcosystemDisplay.fromPartial(object.styleDisplay)
+        : undefined;
+    return message;
+  },
+};
+
 function createBaseGenerateTokenRequest(): GenerateTokenRequest {
   return { description: "" };
 }
@@ -3208,6 +3465,15 @@ export const ProviderDefinition = {
       requestType: EcosystemInfoRequest,
       requestStream: false,
       responseType: EcosystemInfoResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** Get public ecosystem information about *any* ecosystem */
+    getPublicEcosystemInfo: {
+      name: "GetPublicEcosystemInfo",
+      requestType: GetPublicEcosystemInfoRequest,
+      requestStream: false,
+      responseType: GetPublicEcosystemInfoResponse,
       responseStream: false,
       options: {},
     },

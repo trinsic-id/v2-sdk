@@ -10,24 +10,25 @@ package trinsic.services.provider.v1;
  * Response to `InfoRequest`
  * </pre>
  *
- * Protobuf type {@code services.provider.v1.EcosystemInfoResponse}
+ * Protobuf type {@code services.provider.v1.GetPublicEcosystemInfoResponse}
  */
-public final class EcosystemInfoResponse extends com.google.protobuf.GeneratedMessageV3
+public final class GetPublicEcosystemInfoResponse extends com.google.protobuf.GeneratedMessageV3
     implements
-    // @@protoc_insertion_point(message_implements:services.provider.v1.EcosystemInfoResponse)
-    EcosystemInfoResponseOrBuilder {
+    // @@protoc_insertion_point(message_implements:services.provider.v1.GetPublicEcosystemInfoResponse)
+    GetPublicEcosystemInfoResponseOrBuilder {
   private static final long serialVersionUID = 0L;
-  // Use EcosystemInfoResponse.newBuilder() to construct.
-  private EcosystemInfoResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use GetPublicEcosystemInfoResponse.newBuilder() to construct.
+  private GetPublicEcosystemInfoResponse(
+      com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
 
-  private EcosystemInfoResponse() {}
+  private GetPublicEcosystemInfoResponse() {}
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
-    return new EcosystemInfoResponse();
+    return new GetPublicEcosystemInfoResponse();
   }
 
   @java.lang.Override
@@ -35,7 +36,7 @@ public final class EcosystemInfoResponse extends com.google.protobuf.GeneratedMe
     return this.unknownFields;
   }
 
-  private EcosystemInfoResponse(
+  private GetPublicEcosystemInfoResponse(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -55,13 +56,14 @@ public final class EcosystemInfoResponse extends com.google.protobuf.GeneratedMe
             break;
           case 10:
             {
-              trinsic.services.provider.v1.Ecosystem.Builder subBuilder = null;
+              trinsic.services.provider.v1.PublicEcosystemInformation.Builder subBuilder = null;
               if (ecosystem_ != null) {
                 subBuilder = ecosystem_.toBuilder();
               }
               ecosystem_ =
                   input.readMessage(
-                      trinsic.services.provider.v1.Ecosystem.parser(), extensionRegistry);
+                      trinsic.services.provider.v1.PublicEcosystemInformation.parser(),
+                      extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(ecosystem_);
                 ecosystem_ = subBuilder.buildPartial();
@@ -92,29 +94,29 @@ public final class EcosystemInfoResponse extends com.google.protobuf.GeneratedMe
 
   public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
     return trinsic.services.provider.v1.ProviderOuterClass
-        .internal_static_services_provider_v1_EcosystemInfoResponse_descriptor;
+        .internal_static_services_provider_v1_GetPublicEcosystemInfoResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return trinsic.services.provider.v1.ProviderOuterClass
-        .internal_static_services_provider_v1_EcosystemInfoResponse_fieldAccessorTable
+        .internal_static_services_provider_v1_GetPublicEcosystemInfoResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.provider.v1.EcosystemInfoResponse.class,
-            trinsic.services.provider.v1.EcosystemInfoResponse.Builder.class);
+            trinsic.services.provider.v1.GetPublicEcosystemInfoResponse.class,
+            trinsic.services.provider.v1.GetPublicEcosystemInfoResponse.Builder.class);
   }
 
   public static final int ECOSYSTEM_FIELD_NUMBER = 1;
-  private trinsic.services.provider.v1.Ecosystem ecosystem_;
+  private trinsic.services.provider.v1.PublicEcosystemInformation ecosystem_;
   /**
    *
    *
    * <pre>
-   * Ecosystem corresponding to current ecosystem in the account token
+   * Ecosystem corresponding to requested `ecosystem_id`
    * </pre>
    *
-   * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
+   * <code>.services.provider.v1.PublicEcosystemInformation ecosystem = 1;</code>
    *
    * @return Whether the ecosystem field is set.
    */
@@ -126,30 +128,30 @@ public final class EcosystemInfoResponse extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Ecosystem corresponding to current ecosystem in the account token
+   * Ecosystem corresponding to requested `ecosystem_id`
    * </pre>
    *
-   * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
+   * <code>.services.provider.v1.PublicEcosystemInformation ecosystem = 1;</code>
    *
    * @return The ecosystem.
    */
   @java.lang.Override
-  public trinsic.services.provider.v1.Ecosystem getEcosystem() {
+  public trinsic.services.provider.v1.PublicEcosystemInformation getEcosystem() {
     return ecosystem_ == null
-        ? trinsic.services.provider.v1.Ecosystem.getDefaultInstance()
+        ? trinsic.services.provider.v1.PublicEcosystemInformation.getDefaultInstance()
         : ecosystem_;
   }
   /**
    *
    *
    * <pre>
-   * Ecosystem corresponding to current ecosystem in the account token
+   * Ecosystem corresponding to requested `ecosystem_id`
    * </pre>
    *
-   * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
+   * <code>.services.provider.v1.PublicEcosystemInformation ecosystem = 1;</code>
    */
   @java.lang.Override
-  public trinsic.services.provider.v1.EcosystemOrBuilder getEcosystemOrBuilder() {
+  public trinsic.services.provider.v1.PublicEcosystemInformationOrBuilder getEcosystemOrBuilder() {
     return getEcosystem();
   }
 
@@ -192,11 +194,11 @@ public final class EcosystemInfoResponse extends com.google.protobuf.GeneratedMe
     if (obj == this) {
       return true;
     }
-    if (!(obj instanceof trinsic.services.provider.v1.EcosystemInfoResponse)) {
+    if (!(obj instanceof trinsic.services.provider.v1.GetPublicEcosystemInfoResponse)) {
       return super.equals(obj);
     }
-    trinsic.services.provider.v1.EcosystemInfoResponse other =
-        (trinsic.services.provider.v1.EcosystemInfoResponse) obj;
+    trinsic.services.provider.v1.GetPublicEcosystemInfoResponse other =
+        (trinsic.services.provider.v1.GetPublicEcosystemInfoResponse) obj;
 
     if (hasEcosystem() != other.hasEcosystem()) return false;
     if (hasEcosystem()) {
@@ -222,71 +224,71 @@ public final class EcosystemInfoResponse extends com.google.protobuf.GeneratedMe
     return hash;
   }
 
-  public static trinsic.services.provider.v1.EcosystemInfoResponse parseFrom(
+  public static trinsic.services.provider.v1.GetPublicEcosystemInfoResponse parseFrom(
       java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.provider.v1.EcosystemInfoResponse parseFrom(
+  public static trinsic.services.provider.v1.GetPublicEcosystemInfoResponse parseFrom(
       java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.provider.v1.EcosystemInfoResponse parseFrom(
+  public static trinsic.services.provider.v1.GetPublicEcosystemInfoResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.provider.v1.EcosystemInfoResponse parseFrom(
+  public static trinsic.services.provider.v1.GetPublicEcosystemInfoResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.provider.v1.EcosystemInfoResponse parseFrom(byte[] data)
+  public static trinsic.services.provider.v1.GetPublicEcosystemInfoResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.provider.v1.EcosystemInfoResponse parseFrom(
+  public static trinsic.services.provider.v1.GetPublicEcosystemInfoResponse parseFrom(
       byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.provider.v1.EcosystemInfoResponse parseFrom(
+  public static trinsic.services.provider.v1.GetPublicEcosystemInfoResponse parseFrom(
       java.io.InputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.provider.v1.EcosystemInfoResponse parseFrom(
+  public static trinsic.services.provider.v1.GetPublicEcosystemInfoResponse parseFrom(
       java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
         PARSER, input, extensionRegistry);
   }
 
-  public static trinsic.services.provider.v1.EcosystemInfoResponse parseDelimitedFrom(
+  public static trinsic.services.provider.v1.GetPublicEcosystemInfoResponse parseDelimitedFrom(
       java.io.InputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.provider.v1.EcosystemInfoResponse parseDelimitedFrom(
+  public static trinsic.services.provider.v1.GetPublicEcosystemInfoResponse parseDelimitedFrom(
       java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
         PARSER, input, extensionRegistry);
   }
 
-  public static trinsic.services.provider.v1.EcosystemInfoResponse parseFrom(
+  public static trinsic.services.provider.v1.GetPublicEcosystemInfoResponse parseFrom(
       com.google.protobuf.CodedInputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.provider.v1.EcosystemInfoResponse parseFrom(
+  public static trinsic.services.provider.v1.GetPublicEcosystemInfoResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -303,7 +305,8 @@ public final class EcosystemInfoResponse extends com.google.protobuf.GeneratedMe
     return DEFAULT_INSTANCE.toBuilder();
   }
 
-  public static Builder newBuilder(trinsic.services.provider.v1.EcosystemInfoResponse prototype) {
+  public static Builder newBuilder(
+      trinsic.services.provider.v1.GetPublicEcosystemInfoResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
 
@@ -324,28 +327,28 @@ public final class EcosystemInfoResponse extends com.google.protobuf.GeneratedMe
    * Response to `InfoRequest`
    * </pre>
    *
-   * Protobuf type {@code services.provider.v1.EcosystemInfoResponse}
+   * Protobuf type {@code services.provider.v1.GetPublicEcosystemInfoResponse}
    */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
-      // @@protoc_insertion_point(builder_implements:services.provider.v1.EcosystemInfoResponse)
-      trinsic.services.provider.v1.EcosystemInfoResponseOrBuilder {
+      // @@protoc_insertion_point(builder_implements:services.provider.v1.GetPublicEcosystemInfoResponse)
+      trinsic.services.provider.v1.GetPublicEcosystemInfoResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
       return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_EcosystemInfoResponse_descriptor;
+          .internal_static_services_provider_v1_GetPublicEcosystemInfoResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_EcosystemInfoResponse_fieldAccessorTable
+          .internal_static_services_provider_v1_GetPublicEcosystemInfoResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.provider.v1.EcosystemInfoResponse.class,
-              trinsic.services.provider.v1.EcosystemInfoResponse.Builder.class);
+              trinsic.services.provider.v1.GetPublicEcosystemInfoResponse.class,
+              trinsic.services.provider.v1.GetPublicEcosystemInfoResponse.Builder.class);
     }
 
-    // Construct using trinsic.services.provider.v1.EcosystemInfoResponse.newBuilder()
+    // Construct using trinsic.services.provider.v1.GetPublicEcosystemInfoResponse.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -374,17 +377,17 @@ public final class EcosystemInfoResponse extends com.google.protobuf.GeneratedMe
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
       return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_EcosystemInfoResponse_descriptor;
+          .internal_static_services_provider_v1_GetPublicEcosystemInfoResponse_descriptor;
     }
 
     @java.lang.Override
-    public trinsic.services.provider.v1.EcosystemInfoResponse getDefaultInstanceForType() {
-      return trinsic.services.provider.v1.EcosystemInfoResponse.getDefaultInstance();
+    public trinsic.services.provider.v1.GetPublicEcosystemInfoResponse getDefaultInstanceForType() {
+      return trinsic.services.provider.v1.GetPublicEcosystemInfoResponse.getDefaultInstance();
     }
 
     @java.lang.Override
-    public trinsic.services.provider.v1.EcosystemInfoResponse build() {
-      trinsic.services.provider.v1.EcosystemInfoResponse result = buildPartial();
+    public trinsic.services.provider.v1.GetPublicEcosystemInfoResponse build() {
+      trinsic.services.provider.v1.GetPublicEcosystemInfoResponse result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -392,9 +395,9 @@ public final class EcosystemInfoResponse extends com.google.protobuf.GeneratedMe
     }
 
     @java.lang.Override
-    public trinsic.services.provider.v1.EcosystemInfoResponse buildPartial() {
-      trinsic.services.provider.v1.EcosystemInfoResponse result =
-          new trinsic.services.provider.v1.EcosystemInfoResponse(this);
+    public trinsic.services.provider.v1.GetPublicEcosystemInfoResponse buildPartial() {
+      trinsic.services.provider.v1.GetPublicEcosystemInfoResponse result =
+          new trinsic.services.provider.v1.GetPublicEcosystemInfoResponse(this);
       if (ecosystemBuilder_ == null) {
         result.ecosystem_ = ecosystem_;
       } else {
@@ -439,16 +442,16 @@ public final class EcosystemInfoResponse extends com.google.protobuf.GeneratedMe
 
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof trinsic.services.provider.v1.EcosystemInfoResponse) {
-        return mergeFrom((trinsic.services.provider.v1.EcosystemInfoResponse) other);
+      if (other instanceof trinsic.services.provider.v1.GetPublicEcosystemInfoResponse) {
+        return mergeFrom((trinsic.services.provider.v1.GetPublicEcosystemInfoResponse) other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(trinsic.services.provider.v1.EcosystemInfoResponse other) {
-      if (other == trinsic.services.provider.v1.EcosystemInfoResponse.getDefaultInstance())
+    public Builder mergeFrom(trinsic.services.provider.v1.GetPublicEcosystemInfoResponse other) {
+      if (other == trinsic.services.provider.v1.GetPublicEcosystemInfoResponse.getDefaultInstance())
         return this;
       if (other.hasEcosystem()) {
         mergeEcosystem(other.getEcosystem());
@@ -468,12 +471,12 @@ public final class EcosystemInfoResponse extends com.google.protobuf.GeneratedMe
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      trinsic.services.provider.v1.EcosystemInfoResponse parsedMessage = null;
+      trinsic.services.provider.v1.GetPublicEcosystemInfoResponse parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         parsedMessage =
-            (trinsic.services.provider.v1.EcosystemInfoResponse) e.getUnfinishedMessage();
+            (trinsic.services.provider.v1.GetPublicEcosystemInfoResponse) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -483,20 +486,20 @@ public final class EcosystemInfoResponse extends com.google.protobuf.GeneratedMe
       return this;
     }
 
-    private trinsic.services.provider.v1.Ecosystem ecosystem_;
+    private trinsic.services.provider.v1.PublicEcosystemInformation ecosystem_;
     private com.google.protobuf.SingleFieldBuilderV3<
-            trinsic.services.provider.v1.Ecosystem,
-            trinsic.services.provider.v1.Ecosystem.Builder,
-            trinsic.services.provider.v1.EcosystemOrBuilder>
+            trinsic.services.provider.v1.PublicEcosystemInformation,
+            trinsic.services.provider.v1.PublicEcosystemInformation.Builder,
+            trinsic.services.provider.v1.PublicEcosystemInformationOrBuilder>
         ecosystemBuilder_;
     /**
      *
      *
      * <pre>
-     * Ecosystem corresponding to current ecosystem in the account token
+     * Ecosystem corresponding to requested `ecosystem_id`
      * </pre>
      *
-     * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
+     * <code>.services.provider.v1.PublicEcosystemInformation ecosystem = 1;</code>
      *
      * @return Whether the ecosystem field is set.
      */
@@ -507,17 +510,17 @@ public final class EcosystemInfoResponse extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Ecosystem corresponding to current ecosystem in the account token
+     * Ecosystem corresponding to requested `ecosystem_id`
      * </pre>
      *
-     * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
+     * <code>.services.provider.v1.PublicEcosystemInformation ecosystem = 1;</code>
      *
      * @return The ecosystem.
      */
-    public trinsic.services.provider.v1.Ecosystem getEcosystem() {
+    public trinsic.services.provider.v1.PublicEcosystemInformation getEcosystem() {
       if (ecosystemBuilder_ == null) {
         return ecosystem_ == null
-            ? trinsic.services.provider.v1.Ecosystem.getDefaultInstance()
+            ? trinsic.services.provider.v1.PublicEcosystemInformation.getDefaultInstance()
             : ecosystem_;
       } else {
         return ecosystemBuilder_.getMessage();
@@ -527,12 +530,12 @@ public final class EcosystemInfoResponse extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Ecosystem corresponding to current ecosystem in the account token
+     * Ecosystem corresponding to requested `ecosystem_id`
      * </pre>
      *
-     * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
+     * <code>.services.provider.v1.PublicEcosystemInformation ecosystem = 1;</code>
      */
-    public Builder setEcosystem(trinsic.services.provider.v1.Ecosystem value) {
+    public Builder setEcosystem(trinsic.services.provider.v1.PublicEcosystemInformation value) {
       if (ecosystemBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -549,12 +552,13 @@ public final class EcosystemInfoResponse extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Ecosystem corresponding to current ecosystem in the account token
+     * Ecosystem corresponding to requested `ecosystem_id`
      * </pre>
      *
-     * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
+     * <code>.services.provider.v1.PublicEcosystemInformation ecosystem = 1;</code>
      */
-    public Builder setEcosystem(trinsic.services.provider.v1.Ecosystem.Builder builderForValue) {
+    public Builder setEcosystem(
+        trinsic.services.provider.v1.PublicEcosystemInformation.Builder builderForValue) {
       if (ecosystemBuilder_ == null) {
         ecosystem_ = builderForValue.build();
         onChanged();
@@ -568,16 +572,16 @@ public final class EcosystemInfoResponse extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Ecosystem corresponding to current ecosystem in the account token
+     * Ecosystem corresponding to requested `ecosystem_id`
      * </pre>
      *
-     * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
+     * <code>.services.provider.v1.PublicEcosystemInformation ecosystem = 1;</code>
      */
-    public Builder mergeEcosystem(trinsic.services.provider.v1.Ecosystem value) {
+    public Builder mergeEcosystem(trinsic.services.provider.v1.PublicEcosystemInformation value) {
       if (ecosystemBuilder_ == null) {
         if (ecosystem_ != null) {
           ecosystem_ =
-              trinsic.services.provider.v1.Ecosystem.newBuilder(ecosystem_)
+              trinsic.services.provider.v1.PublicEcosystemInformation.newBuilder(ecosystem_)
                   .mergeFrom(value)
                   .buildPartial();
         } else {
@@ -594,10 +598,10 @@ public final class EcosystemInfoResponse extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Ecosystem corresponding to current ecosystem in the account token
+     * Ecosystem corresponding to requested `ecosystem_id`
      * </pre>
      *
-     * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
+     * <code>.services.provider.v1.PublicEcosystemInformation ecosystem = 1;</code>
      */
     public Builder clearEcosystem() {
       if (ecosystemBuilder_ == null) {
@@ -614,12 +618,12 @@ public final class EcosystemInfoResponse extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Ecosystem corresponding to current ecosystem in the account token
+     * Ecosystem corresponding to requested `ecosystem_id`
      * </pre>
      *
-     * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
+     * <code>.services.provider.v1.PublicEcosystemInformation ecosystem = 1;</code>
      */
-    public trinsic.services.provider.v1.Ecosystem.Builder getEcosystemBuilder() {
+    public trinsic.services.provider.v1.PublicEcosystemInformation.Builder getEcosystemBuilder() {
 
       onChanged();
       return getEcosystemFieldBuilder().getBuilder();
@@ -628,17 +632,18 @@ public final class EcosystemInfoResponse extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Ecosystem corresponding to current ecosystem in the account token
+     * Ecosystem corresponding to requested `ecosystem_id`
      * </pre>
      *
-     * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
+     * <code>.services.provider.v1.PublicEcosystemInformation ecosystem = 1;</code>
      */
-    public trinsic.services.provider.v1.EcosystemOrBuilder getEcosystemOrBuilder() {
+    public trinsic.services.provider.v1.PublicEcosystemInformationOrBuilder
+        getEcosystemOrBuilder() {
       if (ecosystemBuilder_ != null) {
         return ecosystemBuilder_.getMessageOrBuilder();
       } else {
         return ecosystem_ == null
-            ? trinsic.services.provider.v1.Ecosystem.getDefaultInstance()
+            ? trinsic.services.provider.v1.PublicEcosystemInformation.getDefaultInstance()
             : ecosystem_;
       }
     }
@@ -646,22 +651,22 @@ public final class EcosystemInfoResponse extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Ecosystem corresponding to current ecosystem in the account token
+     * Ecosystem corresponding to requested `ecosystem_id`
      * </pre>
      *
-     * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
+     * <code>.services.provider.v1.PublicEcosystemInformation ecosystem = 1;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-            trinsic.services.provider.v1.Ecosystem,
-            trinsic.services.provider.v1.Ecosystem.Builder,
-            trinsic.services.provider.v1.EcosystemOrBuilder>
+            trinsic.services.provider.v1.PublicEcosystemInformation,
+            trinsic.services.provider.v1.PublicEcosystemInformation.Builder,
+            trinsic.services.provider.v1.PublicEcosystemInformationOrBuilder>
         getEcosystemFieldBuilder() {
       if (ecosystemBuilder_ == null) {
         ecosystemBuilder_ =
             new com.google.protobuf.SingleFieldBuilderV3<
-                trinsic.services.provider.v1.Ecosystem,
-                trinsic.services.provider.v1.Ecosystem.Builder,
-                trinsic.services.provider.v1.EcosystemOrBuilder>(
+                trinsic.services.provider.v1.PublicEcosystemInformation,
+                trinsic.services.provider.v1.PublicEcosystemInformation.Builder,
+                trinsic.services.provider.v1.PublicEcosystemInformationOrBuilder>(
                 getEcosystem(), getParentForChildren(), isClean());
         ecosystem_ = null;
       }
@@ -679,42 +684,42 @@ public final class EcosystemInfoResponse extends com.google.protobuf.GeneratedMe
       return super.mergeUnknownFields(unknownFields);
     }
 
-    // @@protoc_insertion_point(builder_scope:services.provider.v1.EcosystemInfoResponse)
+    // @@protoc_insertion_point(builder_scope:services.provider.v1.GetPublicEcosystemInfoResponse)
   }
 
-  // @@protoc_insertion_point(class_scope:services.provider.v1.EcosystemInfoResponse)
-  private static final trinsic.services.provider.v1.EcosystemInfoResponse DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:services.provider.v1.GetPublicEcosystemInfoResponse)
+  private static final trinsic.services.provider.v1.GetPublicEcosystemInfoResponse DEFAULT_INSTANCE;
 
   static {
-    DEFAULT_INSTANCE = new trinsic.services.provider.v1.EcosystemInfoResponse();
+    DEFAULT_INSTANCE = new trinsic.services.provider.v1.GetPublicEcosystemInfoResponse();
   }
 
-  public static trinsic.services.provider.v1.EcosystemInfoResponse getDefaultInstance() {
+  public static trinsic.services.provider.v1.GetPublicEcosystemInfoResponse getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<EcosystemInfoResponse> PARSER =
-      new com.google.protobuf.AbstractParser<EcosystemInfoResponse>() {
+  private static final com.google.protobuf.Parser<GetPublicEcosystemInfoResponse> PARSER =
+      new com.google.protobuf.AbstractParser<GetPublicEcosystemInfoResponse>() {
         @java.lang.Override
-        public EcosystemInfoResponse parsePartialFrom(
+        public GetPublicEcosystemInfoResponse parsePartialFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
-          return new EcosystemInfoResponse(input, extensionRegistry);
+          return new GetPublicEcosystemInfoResponse(input, extensionRegistry);
         }
       };
 
-  public static com.google.protobuf.Parser<EcosystemInfoResponse> parser() {
+  public static com.google.protobuf.Parser<GetPublicEcosystemInfoResponse> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<EcosystemInfoResponse> getParserForType() {
+  public com.google.protobuf.Parser<GetPublicEcosystemInfoResponse> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public trinsic.services.provider.v1.EcosystemInfoResponse getDefaultInstanceForType() {
+  public trinsic.services.provider.v1.GetPublicEcosystemInfoResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 }
