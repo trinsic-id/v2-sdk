@@ -105,12 +105,12 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Trinsic.AccountService.Info(Trinsic.Services.Account.V1.AccountInfoRequest)">
+        <member name="M:Trinsic.AccountService.Info">
             <summary>
             Get account information
             </summary>	
         </member>
-        <member name="M:Trinsic.AccountService.InfoAsync(Trinsic.Services.Account.V1.AccountInfoRequest)">
+        <member name="M:Trinsic.AccountService.InfoAsync">
             <summary>
             Get account information
             </summary>	
@@ -1805,7 +1805,60 @@
         </member>
         <member name="P:Trinsic.Services.Provider.V1.EcosystemInfoResponse.Ecosystem">
             <summary>
+            Ecosystem corresponding to current ecosystem in the account token
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.Provider.V1.GetPublicEcosystemInfoRequest">
+            <summary>
+            Request to fetch information about an ecosystem
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.GetPublicEcosystemInfoRequest.EcosystemIdFieldNumber">
+            <summary>Field number for the "ecosystem_id" field.</summary>
+        </member>
+        <member name="T:Trinsic.Services.Provider.V1.GetPublicEcosystemInfoResponse">
+            <summary>
+            Response to `InfoRequest`
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.GetPublicEcosystemInfoResponse.EcosystemFieldNumber">
+            <summary>Field number for the "ecosystem" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.GetPublicEcosystemInfoResponse.Ecosystem">
+            <summary>
             Ecosystem corresponding to requested `ecosystem_id`
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.PublicEcosystemInformation.NameFieldNumber">
+            <summary>Field number for the "name" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.PublicEcosystemInformation.Name">
+            <summary>
+            Public name of this ecosystem
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.PublicEcosystemInformation.DomainFieldNumber">
+            <summary>Field number for the "domain" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.PublicEcosystemInformation.Domain">
+            <summary>
+            Public domain for the owner of this ecosystem
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.PublicEcosystemInformation.DomainVerifiedFieldNumber">
+            <summary>Field number for the "domain_verified" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.PublicEcosystemInformation.DomainVerified">
+            <summary>
+            Trinsic verified the domain is owned by the owner of this ecosystem
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.PublicEcosystemInformation.StyleDisplayFieldNumber">
+            <summary>Field number for the "style_display" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.PublicEcosystemInformation.StyleDisplay">
+            <summary>
+            Style display information
             </summary>
         </member>
         <member name="T:Trinsic.Services.Provider.V1.GenerateTokenRequest">
@@ -1880,36 +1933,31 @@
             JWT bound to the public key provided in `GetEventTokenRequest`
             </summary>
         </member>
-        <member name="T:Trinsic.Services.Provider.V1.RetrieveVerificationRecordResponse">
+        <member name="T:Trinsic.Services.Provider.V1.RetrieveDomainVerificationRecordResponse">
             <summary>
             Response message containing a TXT record content for domain url verification
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Provider.V1.RetrieveVerificationRecordResponse.VerificationTxtFieldNumber">
+        <member name="F:Trinsic.Services.Provider.V1.RetrieveDomainVerificationRecordResponse.VerificationTxtFieldNumber">
             <summary>Field number for the "verification_txt" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.Provider.V1.RetrieveVerificationRecordResponse.VerificationTxt">
+        <member name="P:Trinsic.Services.Provider.V1.RetrieveDomainVerificationRecordResponse.VerificationTxt">
             <summary>
             TXT code to use for domain verification
             </summary>
         </member>
-        <member name="T:Trinsic.Services.Provider.V1.RefreshVerificationStatusRequest">
-            <summary>
-            TODO - Should we allow specifying which ecosystem to use?
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.RefreshVerificationStatusResponse.DomainFieldNumber">
+        <member name="F:Trinsic.Services.Provider.V1.RefreshDomainVerificationStatusResponse.DomainFieldNumber">
             <summary>Field number for the "domain" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.Provider.V1.RefreshVerificationStatusResponse.Domain">
+        <member name="P:Trinsic.Services.Provider.V1.RefreshDomainVerificationStatusResponse.Domain">
             <summary>
             Domain URL verified
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Provider.V1.RefreshVerificationStatusResponse.DomainVerifiedFieldNumber">
+        <member name="F:Trinsic.Services.Provider.V1.RefreshDomainVerificationStatusResponse.DomainVerifiedFieldNumber">
             <summary>Field number for the "domain_verified" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.Provider.V1.RefreshVerificationStatusResponse.DomainVerified">
+        <member name="P:Trinsic.Services.Provider.V1.RefreshDomainVerificationStatusResponse.DomainVerified">
             <summary>
             Specifies if the above `domain` was successfully verified
             </summary>
@@ -2029,6 +2077,72 @@
             Grants attached to account
             </summary>
         </member>
+        <member name="T:Trinsic.Services.Provider.V1.SearchWalletConfigurationsRequest">
+            <summary>
+            Search for issuers/holders/verifiers
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.SearchWalletConfigurationsRequest.QueryFilterFieldNumber">
+            <summary>Field number for the "query_filter" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.SearchWalletConfigurationsRequest.QueryFilter">
+            <summary>
+            SQL filter to execute. `SELECT * FROM _ WHERE [**queryFilter**]`
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.SearchWalletConfigurationsRequest.ContinuationTokenFieldNumber">
+            <summary>Field number for the "continuation_token" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.SearchWalletConfigurationsRequest.ContinuationToken">
+            <summary>
+            Token provided by previous `SearchResponse`
+            if more data is available for query
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.SearchWalletConfigurationResponse.ResultsFieldNumber">
+            <summary>Field number for the "results" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.SearchWalletConfigurationResponse.Results">
+            <summary>
+            Results matching the search query
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.SearchWalletConfigurationResponse.HasMoreFieldNumber">
+            <summary>Field number for the "has_more" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.SearchWalletConfigurationResponse.HasMore">
+            <summary>
+            Whether more results are available for this query via `continuation_token`
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.SearchWalletConfigurationResponse.ContinuationTokenFieldNumber">
+            <summary>Field number for the "continuation_token" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.SearchWalletConfigurationResponse.ContinuationToken">
+            <summary>
+            Token to fetch next set of results via `SearchRequest`
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.Provider.V1.WalletConfiguration">
+            <summary>
+            Strongly typed information about wallet configurations
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.WalletConfiguration.NameFieldNumber">
+            <summary>Field number for the "name" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.WalletConfiguration.EmailFieldNumber">
+            <summary>Field number for the "email" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.WalletConfiguration.SmsFieldNumber">
+            <summary>Field number for the "sms" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.WalletConfiguration.WalletIdFieldNumber">
+            <summary>Field number for the "wallet_id" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.WalletConfiguration.PublicDidFieldNumber">
+            <summary>Field number for the "public_did" field.</summary>
+        </member>
         <member name="P:Trinsic.Services.Provider.V1.Provider.Descriptor">
             <summary>Service descriptor</summary>
         </member>
@@ -2069,7 +2183,7 @@
         </member>
         <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.GetAuthorizations(Trinsic.Services.Provider.V1.GetAuthorizationsRequest,Grpc.Core.ServerCallContext)">
             <summary>
-            Retreive the list of permissions for this particular account/ecosystem
+            Retrieve the list of permissions for this particular account/ecosystem
             </summary>
             <param name="request">The request received from the client.</param>
             <param name="context">The context of the server-side call handler being invoked.</param>
@@ -2094,6 +2208,14 @@
         <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.EcosystemInfo(Trinsic.Services.Provider.V1.EcosystemInfoRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Get ecosystem information
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.GetPublicEcosystemInfo(Trinsic.Services.Provider.V1.GetPublicEcosystemInfoRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Get public ecosystem information about *any* ecosystem
             </summary>
             <param name="request">The request received from the client.</param>
             <param name="context">The context of the server-side call handler being invoked.</param>
@@ -2140,7 +2262,7 @@
             <param name="context">The context of the server-side call handler being invoked.</param>
             <returns>The response to send back to the client (wrapped by a task).</returns>
         </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.RetrieveVerificationRecord(Trinsic.Services.Provider.V1.RetrieveVerificationRecordRequest,Grpc.Core.ServerCallContext)">
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.RetrieveDomainVerificationRecord(Trinsic.Services.Provider.V1.RetrieveDomainVerificationRecordRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Retrieve a random hash TXT that can be used to verify domain ownership
             </summary>
@@ -2148,9 +2270,17 @@
             <param name="context">The context of the server-side call handler being invoked.</param>
             <returns>The response to send back to the client (wrapped by a task).</returns>
         </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.RefreshVerificationStatus(Trinsic.Services.Provider.V1.RefreshVerificationStatusRequest,Grpc.Core.ServerCallContext)">
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.RefreshDomainVerificationStatus(Trinsic.Services.Provider.V1.RefreshDomainVerificationStatusRequest,Grpc.Core.ServerCallContext)">
             <summary>
-            Call to verif
+            Call to verify domain
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.SearchWalletConfigurations(Trinsic.Services.Provider.V1.SearchWalletConfigurationsRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Search for issuers/providers/verifiers in the current ecosystem
             </summary>
             <param name="request">The request received from the client.</param>
             <param name="context">The context of the server-side call handler being invoked.</param>
@@ -2320,7 +2450,7 @@
         </member>
         <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GetAuthorizations(Trinsic.Services.Provider.V1.GetAuthorizationsRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
             <summary>
-            Retreive the list of permissions for this particular account/ecosystem
+            Retrieve the list of permissions for this particular account/ecosystem
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -2330,7 +2460,7 @@
         </member>
         <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GetAuthorizations(Trinsic.Services.Provider.V1.GetAuthorizationsRequest,Grpc.Core.CallOptions)">
             <summary>
-            Retreive the list of permissions for this particular account/ecosystem
+            Retrieve the list of permissions for this particular account/ecosystem
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="options">The options for the call.</param>
@@ -2338,7 +2468,7 @@
         </member>
         <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GetAuthorizationsAsync(Trinsic.Services.Provider.V1.GetAuthorizationsRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
             <summary>
-            Retreive the list of permissions for this particular account/ecosystem
+            Retrieve the list of permissions for this particular account/ecosystem
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -2348,7 +2478,7 @@
         </member>
         <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GetAuthorizationsAsync(Trinsic.Services.Provider.V1.GetAuthorizationsRequest,Grpc.Core.CallOptions)">
             <summary>
-            Retreive the list of permissions for this particular account/ecosystem
+            Retrieve the list of permissions for this particular account/ecosystem
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="options">The options for the call.</param>
@@ -2457,6 +2587,42 @@
         <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.EcosystemInfoAsync(Trinsic.Services.Provider.V1.EcosystemInfoRequest,Grpc.Core.CallOptions)">
             <summary>
             Get ecosystem information
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GetPublicEcosystemInfo(Trinsic.Services.Provider.V1.GetPublicEcosystemInfoRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Get public ecosystem information about *any* ecosystem
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GetPublicEcosystemInfo(Trinsic.Services.Provider.V1.GetPublicEcosystemInfoRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Get public ecosystem information about *any* ecosystem
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GetPublicEcosystemInfoAsync(Trinsic.Services.Provider.V1.GetPublicEcosystemInfoRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Get public ecosystem information about *any* ecosystem
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GetPublicEcosystemInfoAsync(Trinsic.Services.Provider.V1.GetPublicEcosystemInfoRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Get public ecosystem information about *any* ecosystem
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="options">The options for the call.</param>
@@ -2646,7 +2812,7 @@
             <param name="options">The options for the call.</param>
             <returns>The call object.</returns>
         </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RetrieveVerificationRecord(Trinsic.Services.Provider.V1.RetrieveVerificationRecordRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RetrieveDomainVerificationRecord(Trinsic.Services.Provider.V1.RetrieveDomainVerificationRecordRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
             <summary>
             Retrieve a random hash TXT that can be used to verify domain ownership
             </summary>
@@ -2656,7 +2822,7 @@
             <param name="cancellationToken">An optional token for canceling the call.</param>
             <returns>The response received from the server.</returns>
         </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RetrieveVerificationRecord(Trinsic.Services.Provider.V1.RetrieveVerificationRecordRequest,Grpc.Core.CallOptions)">
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RetrieveDomainVerificationRecord(Trinsic.Services.Provider.V1.RetrieveDomainVerificationRecordRequest,Grpc.Core.CallOptions)">
             <summary>
             Retrieve a random hash TXT that can be used to verify domain ownership
             </summary>
@@ -2664,7 +2830,7 @@
             <param name="options">The options for the call.</param>
             <returns>The response received from the server.</returns>
         </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RetrieveVerificationRecordAsync(Trinsic.Services.Provider.V1.RetrieveVerificationRecordRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RetrieveDomainVerificationRecordAsync(Trinsic.Services.Provider.V1.RetrieveDomainVerificationRecordRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
             <summary>
             Retrieve a random hash TXT that can be used to verify domain ownership
             </summary>
@@ -2674,7 +2840,7 @@
             <param name="cancellationToken">An optional token for canceling the call.</param>
             <returns>The call object.</returns>
         </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RetrieveVerificationRecordAsync(Trinsic.Services.Provider.V1.RetrieveVerificationRecordRequest,Grpc.Core.CallOptions)">
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RetrieveDomainVerificationRecordAsync(Trinsic.Services.Provider.V1.RetrieveDomainVerificationRecordRequest,Grpc.Core.CallOptions)">
             <summary>
             Retrieve a random hash TXT that can be used to verify domain ownership
             </summary>
@@ -2682,9 +2848,9 @@
             <param name="options">The options for the call.</param>
             <returns>The call object.</returns>
         </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RefreshVerificationStatus(Trinsic.Services.Provider.V1.RefreshVerificationStatusRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RefreshDomainVerificationStatus(Trinsic.Services.Provider.V1.RefreshDomainVerificationStatusRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
             <summary>
-            Call to verif
+            Call to verify domain
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -2692,17 +2858,17 @@
             <param name="cancellationToken">An optional token for canceling the call.</param>
             <returns>The response received from the server.</returns>
         </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RefreshVerificationStatus(Trinsic.Services.Provider.V1.RefreshVerificationStatusRequest,Grpc.Core.CallOptions)">
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RefreshDomainVerificationStatus(Trinsic.Services.Provider.V1.RefreshDomainVerificationStatusRequest,Grpc.Core.CallOptions)">
             <summary>
-            Call to verif
+            Call to verify domain
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="options">The options for the call.</param>
             <returns>The response received from the server.</returns>
         </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RefreshVerificationStatusAsync(Trinsic.Services.Provider.V1.RefreshVerificationStatusRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RefreshDomainVerificationStatusAsync(Trinsic.Services.Provider.V1.RefreshDomainVerificationStatusRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
             <summary>
-            Call to verif
+            Call to verify domain
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -2710,9 +2876,45 @@
             <param name="cancellationToken">An optional token for canceling the call.</param>
             <returns>The call object.</returns>
         </member>
-        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RefreshVerificationStatusAsync(Trinsic.Services.Provider.V1.RefreshVerificationStatusRequest,Grpc.Core.CallOptions)">
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.RefreshDomainVerificationStatusAsync(Trinsic.Services.Provider.V1.RefreshDomainVerificationStatusRequest,Grpc.Core.CallOptions)">
             <summary>
-            Call to verif
+            Call to verify domain
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.SearchWalletConfigurations(Trinsic.Services.Provider.V1.SearchWalletConfigurationsRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Search for issuers/providers/verifiers in the current ecosystem
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.SearchWalletConfigurations(Trinsic.Services.Provider.V1.SearchWalletConfigurationsRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Search for issuers/providers/verifiers in the current ecosystem
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.SearchWalletConfigurationsAsync(Trinsic.Services.Provider.V1.SearchWalletConfigurationsRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Search for issuers/providers/verifiers in the current ecosystem
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.SearchWalletConfigurationsAsync(Trinsic.Services.Provider.V1.SearchWalletConfigurationsRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Search for issuers/providers/verifiers in the current ecosystem
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="options">The options for the call.</param>
@@ -5183,12 +5385,12 @@
         </member>
         <member name="M:Trinsic.ProviderService.GetAuthorizations(Trinsic.Services.Provider.V1.GetAuthorizationsRequest)">
             <summary>
-            Retreive the list of permissions for this particular account/ecosystem
+            Retrieve the list of permissions for this particular account/ecosystem
             </summary>	
         </member>
         <member name="M:Trinsic.ProviderService.GetAuthorizationsAsync(Trinsic.Services.Provider.V1.GetAuthorizationsRequest)">
             <summary>
-            Retreive the list of permissions for this particular account/ecosystem
+            Retrieve the list of permissions for this particular account/ecosystem
             </summary>	
         </member>
         <member name="M:Trinsic.ProviderService.AddWebhook(Trinsic.Services.Provider.V1.AddWebhookRequest)">
@@ -5219,6 +5421,16 @@
         <member name="M:Trinsic.ProviderService.EcosystemInfoAsync(Trinsic.Services.Provider.V1.EcosystemInfoRequest)">
             <summary>
             Get ecosystem information
+            </summary>	
+        </member>
+        <member name="M:Trinsic.ProviderService.GetPublicEcosystemInfo(Trinsic.Services.Provider.V1.GetPublicEcosystemInfoRequest)">
+            <summary>
+            Get public ecosystem information about *any* ecosystem
+            </summary>	
+        </member>
+        <member name="M:Trinsic.ProviderService.GetPublicEcosystemInfoAsync(Trinsic.Services.Provider.V1.GetPublicEcosystemInfoRequest)">
+            <summary>
+            Get public ecosystem information about *any* ecosystem
             </summary>	
         </member>
         <member name="M:Trinsic.ProviderService.GenerateToken(Trinsic.Services.Provider.V1.GenerateTokenRequest)">
@@ -5273,24 +5485,34 @@
             Generate a signed token (JWT) that can be used to connect to the message bus
             </summary>	
         </member>
-        <member name="M:Trinsic.ProviderService.RetrieveVerificationRecord(Trinsic.Services.Provider.V1.RetrieveVerificationRecordRequest)">
+        <member name="M:Trinsic.ProviderService.RetrieveDomainVerificationRecord">
             <summary>
             Retrieve a random hash TXT that can be used to verify domain ownership
             </summary>	
         </member>
-        <member name="M:Trinsic.ProviderService.RetrieveVerificationRecordAsync(Trinsic.Services.Provider.V1.RetrieveVerificationRecordRequest)">
+        <member name="M:Trinsic.ProviderService.RetrieveDomainVerificationRecordAsync">
             <summary>
             Retrieve a random hash TXT that can be used to verify domain ownership
             </summary>	
         </member>
-        <member name="M:Trinsic.ProviderService.RefreshVerificationStatus(Trinsic.Services.Provider.V1.RefreshVerificationStatusRequest)">
+        <member name="M:Trinsic.ProviderService.RefreshDomainVerificationStatus(Trinsic.Services.Provider.V1.RefreshDomainVerificationStatusRequest)">
             <summary>
-            Call to verif
+            Call to verify domain
             </summary>	
         </member>
-        <member name="M:Trinsic.ProviderService.RefreshVerificationStatusAsync(Trinsic.Services.Provider.V1.RefreshVerificationStatusRequest)">
+        <member name="M:Trinsic.ProviderService.RefreshDomainVerificationStatusAsync(Trinsic.Services.Provider.V1.RefreshDomainVerificationStatusRequest)">
             <summary>
-            Call to verif
+            Call to verify domain
+            </summary>	
+        </member>
+        <member name="M:Trinsic.ProviderService.SearchWalletConfigurations(Trinsic.Services.Provider.V1.SearchWalletConfigurationsRequest)">
+            <summary>
+            Search for issuers/providers/verifiers in the current ecosystem
+            </summary>	
+        </member>
+        <member name="M:Trinsic.ProviderService.SearchWalletConfigurationsAsync(Trinsic.Services.Provider.V1.SearchWalletConfigurationsRequest)">
+            <summary>
+            Search for issuers/providers/verifiers in the current ecosystem
             </summary>	
         </member>
         <member name="M:Trinsic.OberonSecurityProvider.Base64UrlEncode(System.Byte[])">
