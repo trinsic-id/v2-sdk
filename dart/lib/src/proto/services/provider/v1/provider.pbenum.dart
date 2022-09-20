@@ -76,3 +76,28 @@ class InvitationStatusResponse_Status extends $pb.ProtobufEnum {
   const InvitationStatusResponse_Status._($core.int v, $core.String n)
       : super(v, n);
 }
+
+class IONOptions_IONNetwork extends $pb.ProtobufEnum {
+  static const IONOptions_IONNetwork TestNet = IONOptions_IONNetwork._(
+      0,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'TestNet');
+  static const IONOptions_IONNetwork MainNet = IONOptions_IONNetwork._(
+      1,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'MainNet');
+
+  static const $core.List<IONOptions_IONNetwork> values =
+      <IONOptions_IONNetwork>[
+    TestNet,
+    MainNet,
+  ];
+
+  static final $core.Map<$core.int, IONOptions_IONNetwork> _byValue =
+      $pb.ProtobufEnum.initByValue(values);
+  static IONOptions_IONNetwork? valueOf($core.int value) => _byValue[value];
+
+  const IONOptions_IONNetwork._($core.int v, $core.String n) : super(v, n);
+}

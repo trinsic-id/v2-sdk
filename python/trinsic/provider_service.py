@@ -168,6 +168,13 @@ class ProviderService(ServiceBase):
             request, metadata=self.build_metadata(request)
         )
 
+    async def upgrade_did(self, *, request: UpgradeDIDRequest) -> UpgradeDIDResponse:
+        """Upgrade a wallet's DID from `did:key` to another method"""
+
+        return await self.client.upgrade_did(
+            request, metadata=self.build_metadata(request)
+        )
+
     async def retrieve_domain_verification_record(
         self,
     ) -> RetrieveDomainVerificationRecordResponse:

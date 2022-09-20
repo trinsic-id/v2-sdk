@@ -659,6 +659,50 @@ public final class ProviderGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<
+          trinsic.services.provider.v1.UpgradeDIDRequest,
+          trinsic.services.provider.v1.UpgradeDIDResponse>
+      getUpgradeDIDMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "UpgradeDID",
+      requestType = trinsic.services.provider.v1.UpgradeDIDRequest.class,
+      responseType = trinsic.services.provider.v1.UpgradeDIDResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<
+          trinsic.services.provider.v1.UpgradeDIDRequest,
+          trinsic.services.provider.v1.UpgradeDIDResponse>
+      getUpgradeDIDMethod() {
+    io.grpc.MethodDescriptor<
+            trinsic.services.provider.v1.UpgradeDIDRequest,
+            trinsic.services.provider.v1.UpgradeDIDResponse>
+        getUpgradeDIDMethod;
+    if ((getUpgradeDIDMethod = ProviderGrpc.getUpgradeDIDMethod) == null) {
+      synchronized (ProviderGrpc.class) {
+        if ((getUpgradeDIDMethod = ProviderGrpc.getUpgradeDIDMethod) == null) {
+          ProviderGrpc.getUpgradeDIDMethod =
+              getUpgradeDIDMethod =
+                  io.grpc.MethodDescriptor
+                      .<trinsic.services.provider.v1.UpgradeDIDRequest,
+                          trinsic.services.provider.v1.UpgradeDIDResponse>
+                          newBuilder()
+                      .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                      .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UpgradeDID"))
+                      .setSampledToLocalTracing(true)
+                      .setRequestMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.provider.v1.UpgradeDIDRequest.getDefaultInstance()))
+                      .setResponseMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.provider.v1.UpgradeDIDResponse.getDefaultInstance()))
+                      .setSchemaDescriptor(new ProviderMethodDescriptorSupplier("UpgradeDID"))
+                      .build();
+        }
+      }
+    }
+    return getUpgradeDIDMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<
           trinsic.services.provider.v1.RetrieveDomainVerificationRecordRequest,
           trinsic.services.provider.v1.RetrieveDomainVerificationRecordResponse>
       getRetrieveDomainVerificationRecordMethod;
@@ -1067,6 +1111,20 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
+     * Upgrade a wallet's DID from `did:key` to another method
+     * </pre>
+     */
+    public void upgradeDID(
+        trinsic.services.provider.v1.UpgradeDIDRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.provider.v1.UpgradeDIDResponse>
+            responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUpgradeDIDMethod(), responseObserver);
+    }
+
+    /**
+     *
+     *
+     * <pre>
      * Retrieve a random hash TXT that can be used to verify domain ownership
      * </pre>
      */
@@ -1209,6 +1267,12 @@ public final class ProviderGrpc {
                       trinsic.services.provider.v1.GetEventTokenRequest,
                       trinsic.services.provider.v1.GetEventTokenResponse>(
                       this, METHODID_GET_EVENT_TOKEN)))
+          .addMethod(
+              getUpgradeDIDMethod(),
+              io.grpc.stub.ServerCalls.asyncUnaryCall(
+                  new MethodHandlers<
+                      trinsic.services.provider.v1.UpgradeDIDRequest,
+                      trinsic.services.provider.v1.UpgradeDIDResponse>(this, METHODID_UPGRADE_DID)))
           .addMethod(
               getRetrieveDomainVerificationRecordMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -1483,6 +1547,21 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
+     * Upgrade a wallet's DID from `did:key` to another method
+     * </pre>
+     */
+    public void upgradeDID(
+        trinsic.services.provider.v1.UpgradeDIDRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.provider.v1.UpgradeDIDResponse>
+            responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getUpgradeDIDMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     *
+     *
+     * <pre>
      * Retrieve a random hash TXT that can be used to verify domain ownership
      * </pre>
      */
@@ -1726,6 +1805,19 @@ public final class ProviderGrpc {
         trinsic.services.provider.v1.GetEventTokenRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetEventTokenMethod(), getCallOptions(), request);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Upgrade a wallet's DID from `did:key` to another method
+     * </pre>
+     */
+    public trinsic.services.provider.v1.UpgradeDIDResponse upgradeDID(
+        trinsic.services.provider.v1.UpgradeDIDRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getUpgradeDIDMethod(), getCallOptions(), request);
     }
 
     /**
@@ -1984,6 +2076,20 @@ public final class ProviderGrpc {
      *
      *
      * <pre>
+     * Upgrade a wallet's DID from `did:key` to another method
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<
+            trinsic.services.provider.v1.UpgradeDIDResponse>
+        upgradeDID(trinsic.services.provider.v1.UpgradeDIDRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getUpgradeDIDMethod(), getCallOptions()), request);
+    }
+
+    /**
+     *
+     *
+     * <pre>
      * Retrieve a random hash TXT that can be used to verify domain ownership
      * </pre>
      */
@@ -2042,9 +2148,10 @@ public final class ProviderGrpc {
   private static final int METHODID_INVITATION_STATUS = 11;
   private static final int METHODID_GET_OBERON_KEY = 12;
   private static final int METHODID_GET_EVENT_TOKEN = 13;
-  private static final int METHODID_RETRIEVE_DOMAIN_VERIFICATION_RECORD = 14;
-  private static final int METHODID_REFRESH_DOMAIN_VERIFICATION_STATUS = 15;
-  private static final int METHODID_SEARCH_WALLET_CONFIGURATIONS = 16;
+  private static final int METHODID_UPGRADE_DID = 14;
+  private static final int METHODID_RETRIEVE_DOMAIN_VERIFICATION_RECORD = 15;
+  private static final int METHODID_REFRESH_DOMAIN_VERIFICATION_STATUS = 16;
+  private static final int METHODID_SEARCH_WALLET_CONFIGURATIONS = 17;
 
   private static final class MethodHandlers<Req, Resp>
       implements io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -2149,6 +2256,12 @@ public final class ProviderGrpc {
               (io.grpc.stub.StreamObserver<trinsic.services.provider.v1.GetEventTokenResponse>)
                   responseObserver);
           break;
+        case METHODID_UPGRADE_DID:
+          serviceImpl.upgradeDID(
+              (trinsic.services.provider.v1.UpgradeDIDRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.provider.v1.UpgradeDIDResponse>)
+                  responseObserver);
+          break;
         case METHODID_RETRIEVE_DOMAIN_VERIFICATION_RECORD:
           serviceImpl.retrieveDomainVerificationRecord(
               (trinsic.services.provider.v1.RetrieveDomainVerificationRecordRequest) request,
@@ -2246,6 +2359,7 @@ public final class ProviderGrpc {
                       .addMethod(getInvitationStatusMethod())
                       .addMethod(getGetOberonKeyMethod())
                       .addMethod(getGetEventTokenMethod())
+                      .addMethod(getUpgradeDIDMethod())
                       .addMethod(getRetrieveDomainVerificationRecordMethod())
                       .addMethod(getRefreshDomainVerificationStatusMethod())
                       .addMethod(getSearchWalletConfigurationsMethod())

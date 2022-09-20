@@ -2975,6 +2975,236 @@ class Services::Provider::V1::WalletConfiguration
   end
 end
 
+class Services::Provider::V1::IONOptions
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::IONOptions) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::IONOptions).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::IONOptions) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::IONOptions, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      network: T.nilable(T.any(Symbol, String, Integer))
+    ).void
+  end
+  def initialize(
+    network: :TestNet
+  )
+  end
+
+  sig { returns(Symbol) }
+  def network
+  end
+
+  sig { params(value: T.any(Symbol, String, Integer)).void }
+  def network=(value)
+  end
+
+  sig { void }
+  def clear_network
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::UpgradeDIDRequest
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::UpgradeDIDRequest) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::UpgradeDIDRequest).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::UpgradeDIDRequest) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::UpgradeDIDRequest, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      email: T.nilable(String),
+      wallet_id: T.nilable(String),
+      method: T.nilable(T.any(Symbol, String, Integer)),
+      ion_options: T.nilable(Services::Provider::V1::IONOptions)
+    ).void
+  end
+  def initialize(
+    email: "",
+    wallet_id: "",
+    method: :KEY,
+    ion_options: nil
+  )
+  end
+
+  sig { returns(String) }
+  def email
+  end
+
+  sig { params(value: String).void }
+  def email=(value)
+  end
+
+  sig { void }
+  def clear_email
+  end
+
+  sig { returns(String) }
+  def wallet_id
+  end
+
+  sig { params(value: String).void }
+  def wallet_id=(value)
+  end
+
+  sig { void }
+  def clear_wallet_id
+  end
+
+  sig { returns(Symbol) }
+  def method
+  end
+
+  sig { params(value: T.any(Symbol, String, Integer)).void }
+  def method=(value)
+  end
+
+  sig { void }
+  def clear_method
+  end
+
+  sig { returns(T.nilable(Services::Provider::V1::IONOptions)) }
+  def ion_options
+  end
+
+  sig { params(value: T.nilable(Services::Provider::V1::IONOptions)).void }
+  def ion_options=(value)
+  end
+
+  sig { void }
+  def clear_ion_options
+  end
+
+  sig { returns(T.nilable(Symbol)) }
+  def account
+  end
+
+  sig { returns(T.nilable(Symbol)) }
+  def options
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::UpgradeDIDResponse
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::UpgradeDIDResponse) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::UpgradeDIDResponse).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::UpgradeDIDResponse) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::UpgradeDIDResponse, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      did: T.nilable(String)
+    ).void
+  end
+  def initialize(
+    did: ""
+  )
+  end
+
+  sig { returns(String) }
+  def did
+  end
+
+  sig { params(value: String).void }
+  def did=(value)
+  end
+
+  sig { void }
+  def clear_did
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
 class Services::Provider::V1::InviteRequest::DidCommInvitation
   include Google::Protobuf
   include Google::Protobuf::MessageExts
@@ -3038,6 +3268,23 @@ module Services::Provider::V1::InvitationStatusResponse::Status
   self::InvitationSent = T.let(1, Integer)
   self::Completed = T.let(2, Integer)
   self::Expired = T.let(3, Integer)
+
+  sig { params(value: Integer).returns(T.nilable(Symbol)) }
+  def self.lookup(value)
+  end
+
+  sig { params(value: Symbol).returns(T.nilable(Integer)) }
+  def self.resolve(value)
+  end
+
+  sig { returns(::Google::Protobuf::EnumDescriptor) }
+  def self.descriptor
+  end
+end
+
+module Services::Provider::V1::IONOptions::IONNetwork
+  self::TestNet = T.let(0, Integer)
+  self::MainNet = T.let(1, Integer)
 
   sig { params(value: Integer).returns(T.nilable(Symbol)) }
   def self.lookup(value)

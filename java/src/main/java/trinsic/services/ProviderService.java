@@ -126,6 +126,12 @@ public class ProviderService extends ServiceBase {
 
     return withMetadata(stub, request).getEventToken(request);
   }
+  /** Upgrade a wallet's DID from `did:key` to another method */
+  public ListenableFuture<UpgradeDIDResponse> upgradeDID(UpgradeDIDRequest request)
+      throws InvalidProtocolBufferException, DidException {
+
+    return withMetadata(stub, request).upgradeDID(request);
+  }
   /** Retrieve a random hash TXT that can be used to verify domain ownership */
   public ListenableFuture<RetrieveDomainVerificationRecordResponse>
       retrieveDomainVerificationRecord() throws InvalidProtocolBufferException, DidException {

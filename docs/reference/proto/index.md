@@ -50,6 +50,18 @@ Nonce used to generate an oberon proof
 | UNKNOWN_ERROR | 100 |  |
 
 
+
+<a name="services-common-v1-SupportedDIDMethod"></a>
+
+### SupportedDIDMethod
+Enum of all supported DID Methods
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| KEY | 0 | The did:key method -- all wallets use this by default |
+| ION | 1 | The did:ion method |
+
+
  <!-- end enums -->
 
  <!-- end HasExtensions -->
@@ -1327,6 +1339,7 @@ Confirmation method type for two-factor workflows
 | InvitationStatus | [InvitationStatusRequest](/reference/proto#services-provider-v1-InvitationStatusRequest) | [InvitationStatusResponse](/reference/proto#services-provider-v1-InvitationStatusResponse) | Check the status of an invitation |
 | GetOberonKey | [GetOberonKeyRequest](/reference/proto#services-provider-v1-GetOberonKeyRequest) | [GetOberonKeyResponse](/reference/proto#services-provider-v1-GetOberonKeyResponse) | Returns the public key being used to create/verify oberon tokens |
 | GetEventToken | [GetEventTokenRequest](/reference/proto#services-provider-v1-GetEventTokenRequest) | [GetEventTokenResponse](/reference/proto#services-provider-v1-GetEventTokenResponse) | Generate a signed token (JWT) that can be used to connect to the message bus |
+| UpgradeDID | [UpgradeDIDRequest](/reference/proto#services-provider-v1-UpgradeDIDRequest) | [UpgradeDIDResponse](/reference/proto#services-provider-v1-UpgradeDIDResponse) | Upgrade a wallet's DID from `did:key` to another method |
 | RetrieveDomainVerificationRecord | [RetrieveDomainVerificationRecordRequest](/reference/proto#services-provider-v1-RetrieveDomainVerificationRecordRequest) | [RetrieveDomainVerificationRecordResponse](/reference/proto#services-provider-v1-RetrieveDomainVerificationRecordResponse) | Retrieve a random hash TXT that can be used to verify domain ownership |
 | RefreshDomainVerificationStatus | [RefreshDomainVerificationStatusRequest](/reference/proto#services-provider-v1-RefreshDomainVerificationStatusRequest) | [RefreshDomainVerificationStatusResponse](/reference/proto#services-provider-v1-RefreshDomainVerificationStatusResponse) | Call to verify domain |
 | SearchWalletConfigurations | [SearchWalletConfigurationsRequest](/reference/proto#services-provider-v1-SearchWalletConfigurationsRequest) | [SearchWalletConfigurationResponse](/reference/proto#services-provider-v1-SearchWalletConfigurationResponse) | Search for issuers/providers/verifiers in the current ecosystem |
@@ -1698,6 +1711,21 @@ Response to `GrantAuthorizationRequest`
 
 
 
+<a name="services-provider-v1-IONOptions"></a>
+
+### IONOptions
+Options for creation of DID on the ION network
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| network | [IONOptions.IONNetwork](/reference/proto#services-provider-v1-IONOptions-IONNetwork) | ION network on which DID should be published |
+
+
+
+
+
+
 <a name="services-provider-v1-InvitationStatusRequest"></a>
 
 ### InvitationStatusRequest
@@ -1936,6 +1964,39 @@ Response to `UpdateEcosystemRequest`
 
 
 
+<a name="services-provider-v1-UpgradeDIDRequest"></a>
+
+### UpgradeDIDRequest
+Request to upgrade a wallet
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| email | [string](/reference/proto#string) | Email address of account to upgrade. Mutually exclusive with `walletId`. |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of account to upgrade. Mutually exclusive with `email`. |
+| method | [services.common.v1.SupportedDIDMethod](/reference/proto#services-common-v1-SupportedDIDMethod) | DID Method to which wallet should be upgraded |
+| ion_options | [IONOptions](/reference/proto#services-provider-v1-IONOptions) | Configuration for creation of DID on ION network |
+
+
+
+
+
+
+<a name="services-provider-v1-UpgradeDIDResponse"></a>
+
+### UpgradeDIDResponse
+Response to `UpgradeDIDRequest`
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| did | [string](/reference/proto#string) | New DID of wallet |
+
+
+
+
+
+
 <a name="services-provider-v1-WalletConfiguration"></a>
 
 ### WalletConfiguration
@@ -1973,6 +2034,18 @@ Webhook configured on an ecosystem
 
 
  <!-- end messages -->
+
+
+<a name="services-provider-v1-IONOptions-IONNetwork"></a>
+
+### IONOptions.IONNetwork
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| TestNet | 0 |  |
+| MainNet | 1 |  |
+
 
 
 <a name="services-provider-v1-InvitationStatusResponse-Status"></a>

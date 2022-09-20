@@ -133,6 +133,13 @@ class ProviderService extends ServiceBase {
         options: await buildMetadata(request: request));
   }
 
+  Future<UpgradeDIDResponse> upgradeDID(UpgradeDIDRequest request) async {
+    ///  Upgrade a wallet's DID from `did:key` to another method
+
+    return client.upgradeDID(request,
+        options: await buildMetadata(request: request));
+  }
+
   Future<RetrieveDomainVerificationRecordResponse>
       retrieveDomainVerificationRecord() async {
     ///  Retrieve a random hash TXT that can be used to verify domain ownership
