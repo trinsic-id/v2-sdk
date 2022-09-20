@@ -183,24 +183,24 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :wallet_id, :string, 4
       optional :public_did, :string, 5
     end
-    add_message "services.provider.v1.IONOptions" do
-      optional :network, :enum, 1, "services.provider.v1.IONOptions.IONNetwork"
+    add_message "services.provider.v1.IonOptions" do
+      optional :network, :enum, 1, "services.provider.v1.IonOptions.IonNetwork"
     end
-    add_enum "services.provider.v1.IONOptions.IONNetwork" do
+    add_enum "services.provider.v1.IonOptions.IonNetwork" do
       value :TestNet, 0
       value :MainNet, 1
     end
-    add_message "services.provider.v1.UpgradeDIDRequest" do
-      optional :method, :enum, 3, "services.common.v1.SupportedDIDMethod"
+    add_message "services.provider.v1.UpgradeDidRequest" do
+      optional :method, :enum, 3, "services.common.v1.SupportedDidMethod"
       oneof :account do
         optional :email, :string, 1
         optional :wallet_id, :string, 2
       end
       oneof :options do
-        optional :ion_options, :message, 4, "services.provider.v1.IONOptions"
+        optional :ion_options, :message, 4, "services.provider.v1.IonOptions"
       end
     end
-    add_message "services.provider.v1.UpgradeDIDResponse" do
+    add_message "services.provider.v1.UpgradeDidResponse" do
       optional :did, :string, 1
     end
     add_enum "services.provider.v1.ParticipantType" do
@@ -256,10 +256,10 @@ module Services
       SearchWalletConfigurationsRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.SearchWalletConfigurationsRequest").msgclass
       SearchWalletConfigurationResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.SearchWalletConfigurationResponse").msgclass
       WalletConfiguration = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.WalletConfiguration").msgclass
-      IONOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.IONOptions").msgclass
-      IONOptions::IONNetwork = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.IONOptions.IONNetwork").enummodule
-      UpgradeDIDRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.UpgradeDIDRequest").msgclass
-      UpgradeDIDResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.UpgradeDIDResponse").msgclass
+      IonOptions = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.IonOptions").msgclass
+      IonOptions::IonNetwork = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.IonOptions.IonNetwork").enummodule
+      UpgradeDidRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.UpgradeDidRequest").msgclass
+      UpgradeDidResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.UpgradeDidResponse").msgclass
       ParticipantType = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.ParticipantType").enummodule
     end
   end

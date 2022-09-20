@@ -10,9 +10,9 @@ package trinsic.services.common.v1;
  * Enum of all supported DID Methods
  * </pre>
  *
- * Protobuf enum {@code services.common.v1.SupportedDIDMethod}
+ * Protobuf enum {@code services.common.v1.SupportedDidMethod}
  */
-public enum SupportedDIDMethod implements com.google.protobuf.ProtocolMessageEnum {
+public enum SupportedDidMethod implements com.google.protobuf.ProtocolMessageEnum {
   /**
    *
    *
@@ -71,7 +71,7 @@ public enum SupportedDIDMethod implements com.google.protobuf.ProtocolMessageEnu
    * @deprecated Use {@link #forNumber(int)} instead.
    */
   @java.lang.Deprecated
-  public static SupportedDIDMethod valueOf(int value) {
+  public static SupportedDidMethod valueOf(int value) {
     return forNumber(value);
   }
 
@@ -79,7 +79,7 @@ public enum SupportedDIDMethod implements com.google.protobuf.ProtocolMessageEnu
    * @param value The numeric wire value of the corresponding enum entry.
    * @return The enum associated with the given numeric wire value.
    */
-  public static SupportedDIDMethod forNumber(int value) {
+  public static SupportedDidMethod forNumber(int value) {
     switch (value) {
       case 0:
         return KEY;
@@ -90,15 +90,15 @@ public enum SupportedDIDMethod implements com.google.protobuf.ProtocolMessageEnu
     }
   }
 
-  public static com.google.protobuf.Internal.EnumLiteMap<SupportedDIDMethod> internalGetValueMap() {
+  public static com.google.protobuf.Internal.EnumLiteMap<SupportedDidMethod> internalGetValueMap() {
     return internalValueMap;
   }
 
-  private static final com.google.protobuf.Internal.EnumLiteMap<SupportedDIDMethod>
+  private static final com.google.protobuf.Internal.EnumLiteMap<SupportedDidMethod>
       internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<SupportedDIDMethod>() {
-            public SupportedDIDMethod findValueByNumber(int number) {
-              return SupportedDIDMethod.forNumber(number);
+          new com.google.protobuf.Internal.EnumLiteMap<SupportedDidMethod>() {
+            public SupportedDidMethod findValueByNumber(int number) {
+              return SupportedDidMethod.forNumber(number);
             }
           };
 
@@ -118,9 +118,9 @@ public enum SupportedDIDMethod implements com.google.protobuf.ProtocolMessageEnu
     return trinsic.services.common.v1.Common.getDescriptor().getEnumTypes().get(1);
   }
 
-  private static final SupportedDIDMethod[] VALUES = values();
+  private static final SupportedDidMethod[] VALUES = values();
 
-  public static SupportedDIDMethod valueOf(
+  public static SupportedDidMethod valueOf(
       com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
     if (desc.getType() != getDescriptor()) {
       throw new java.lang.IllegalArgumentException("EnumValueDescriptor is not for this type.");
@@ -133,9 +133,9 @@ public enum SupportedDIDMethod implements com.google.protobuf.ProtocolMessageEnu
 
   private final int value;
 
-  private SupportedDIDMethod(int value) {
+  private SupportedDidMethod(int value) {
     this.value = value;
   }
 
-  // @@protoc_insertion_point(enum_scope:services.common.v1.SupportedDIDMethod)
+  // @@protoc_insertion_point(enum_scope:services.common.v1.SupportedDidMethod)
 }

@@ -52,7 +52,7 @@ type ProviderClient interface {
 	// Generate a signed token (JWT) that can be used to connect to the message bus
 	GetEventToken(ctx context.Context, in *GetEventTokenRequest, opts ...grpc.CallOption) (*GetEventTokenResponse, error)
 	// Upgrade a wallet's DID from `did:key` to another method
-	UpgradeDID(ctx context.Context, in *UpgradeDIDRequest, opts ...grpc.CallOption) (*UpgradeDIDResponse, error)
+	UpgradeDID(ctx context.Context, in *UpgradeDidRequest, opts ...grpc.CallOption) (*UpgradeDidResponse, error)
 	// Retrieve a random hash TXT that can be used to verify domain ownership
 	RetrieveDomainVerificationRecord(ctx context.Context, in *RetrieveDomainVerificationRecordRequest, opts ...grpc.CallOption) (*RetrieveDomainVerificationRecordResponse, error)
 	// Call to verify domain
@@ -195,8 +195,8 @@ func (c *providerClient) GetEventToken(ctx context.Context, in *GetEventTokenReq
 	return out, nil
 }
 
-func (c *providerClient) UpgradeDID(ctx context.Context, in *UpgradeDIDRequest, opts ...grpc.CallOption) (*UpgradeDIDResponse, error) {
-	out := new(UpgradeDIDResponse)
+func (c *providerClient) UpgradeDID(ctx context.Context, in *UpgradeDidRequest, opts ...grpc.CallOption) (*UpgradeDidResponse, error) {
+	out := new(UpgradeDidResponse)
 	err := c.cc.Invoke(ctx, "/services.provider.v1.Provider/UpgradeDID", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -265,7 +265,7 @@ type ProviderServer interface {
 	// Generate a signed token (JWT) that can be used to connect to the message bus
 	GetEventToken(context.Context, *GetEventTokenRequest) (*GetEventTokenResponse, error)
 	// Upgrade a wallet's DID from `did:key` to another method
-	UpgradeDID(context.Context, *UpgradeDIDRequest) (*UpgradeDIDResponse, error)
+	UpgradeDID(context.Context, *UpgradeDidRequest) (*UpgradeDidResponse, error)
 	// Retrieve a random hash TXT that can be used to verify domain ownership
 	RetrieveDomainVerificationRecord(context.Context, *RetrieveDomainVerificationRecordRequest) (*RetrieveDomainVerificationRecordResponse, error)
 	// Call to verify domain
@@ -321,7 +321,7 @@ func (UnimplementedProviderServer) GetOberonKey(context.Context, *GetOberonKeyRe
 func (UnimplementedProviderServer) GetEventToken(context.Context, *GetEventTokenRequest) (*GetEventTokenResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetEventToken not implemented")
 }
-func (UnimplementedProviderServer) UpgradeDID(context.Context, *UpgradeDIDRequest) (*UpgradeDIDResponse, error) {
+func (UnimplementedProviderServer) UpgradeDID(context.Context, *UpgradeDidRequest) (*UpgradeDidResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpgradeDID not implemented")
 }
 func (UnimplementedProviderServer) RetrieveDomainVerificationRecord(context.Context, *RetrieveDomainVerificationRecordRequest) (*RetrieveDomainVerificationRecordResponse, error) {
@@ -599,7 +599,7 @@ func _Provider_GetEventToken_Handler(srv interface{}, ctx context.Context, dec f
 }
 
 func _Provider_UpgradeDID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpgradeDIDRequest)
+	in := new(UpgradeDidRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -611,7 +611,7 @@ func _Provider_UpgradeDID_Handler(srv interface{}, ctx context.Context, dec func
 		FullMethod: "/services.provider.v1.Provider/UpgradeDID",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProviderServer).UpgradeDID(ctx, req.(*UpgradeDIDRequest))
+		return srv.(ProviderServer).UpgradeDID(ctx, req.(*UpgradeDidRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

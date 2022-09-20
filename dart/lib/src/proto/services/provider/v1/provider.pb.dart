@@ -3737,30 +3737,30 @@ class WalletConfiguration extends $pb.GeneratedMessage {
   void clearPublicDid() => clearField(5);
 }
 
-class IONOptions extends $pb.GeneratedMessage {
+class IonOptions extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')
           ? ''
-          : 'IONOptions',
+          : 'IonOptions',
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
-    ..e<IONOptions_IONNetwork>(
+    ..e<IonOptions_IonNetwork>(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'network',
         $pb.PbFieldType.OE,
-        defaultOrMaker: IONOptions_IONNetwork.TestNet,
-        valueOf: IONOptions_IONNetwork.valueOf,
-        enumValues: IONOptions_IONNetwork.values)
+        defaultOrMaker: IonOptions_IonNetwork.TestNet,
+        valueOf: IonOptions_IonNetwork.valueOf,
+        enumValues: IonOptions_IonNetwork.values)
     ..hasRequiredFields = false;
 
-  IONOptions._() : super();
-  factory IONOptions({
-    IONOptions_IONNetwork? network,
+  IonOptions._() : super();
+  factory IonOptions({
+    IonOptions_IonNetwork? network,
   }) {
     final _result = create();
     if (network != null) {
@@ -3768,36 +3768,36 @@ class IONOptions extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory IONOptions.fromBuffer($core.List<$core.int> i,
+  factory IonOptions.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory IONOptions.fromJson($core.String i,
+  factory IonOptions.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  IONOptions clone() => IONOptions()..mergeFromMessage(this);
+  IonOptions clone() => IonOptions()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
-  IONOptions copyWith(void Function(IONOptions) updates) =>
-      super.copyWith((message) => updates(message as IONOptions))
-          as IONOptions; // ignore: deprecated_member_use
+  IonOptions copyWith(void Function(IonOptions) updates) =>
+      super.copyWith((message) => updates(message as IonOptions))
+          as IonOptions; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static IONOptions create() => IONOptions._();
-  IONOptions createEmptyInstance() => create();
-  static $pb.PbList<IONOptions> createRepeated() => $pb.PbList<IONOptions>();
+  static IonOptions create() => IonOptions._();
+  IonOptions createEmptyInstance() => create();
+  static $pb.PbList<IonOptions> createRepeated() => $pb.PbList<IonOptions>();
   @$core.pragma('dart2js:noInline')
-  static IONOptions getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<IONOptions>(create);
-  static IONOptions? _defaultInstance;
+  static IonOptions getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<IonOptions>(create);
+  static IonOptions? _defaultInstance;
 
   @$pb.TagNumber(1)
-  IONOptions_IONNetwork get network => $_getN(0);
+  IonOptions_IonNetwork get network => $_getN(0);
   @$pb.TagNumber(1)
-  set network(IONOptions_IONNetwork v) {
+  set network(IonOptions_IonNetwork v) {
     setField(1, v);
   }
 
@@ -3807,26 +3807,26 @@ class IONOptions extends $pb.GeneratedMessage {
   void clearNetwork() => clearField(1);
 }
 
-enum UpgradeDIDRequest_Account { email, walletId, notSet }
+enum UpgradeDidRequest_Account { email, walletId, notSet }
 
-enum UpgradeDIDRequest_Options { ionOptions, notSet }
+enum UpgradeDidRequest_Options { ionOptions, notSet }
 
-class UpgradeDIDRequest extends $pb.GeneratedMessage {
-  static const $core.Map<$core.int, UpgradeDIDRequest_Account>
-      _UpgradeDIDRequest_AccountByTag = {
-    1: UpgradeDIDRequest_Account.email,
-    2: UpgradeDIDRequest_Account.walletId,
-    0: UpgradeDIDRequest_Account.notSet
+class UpgradeDidRequest extends $pb.GeneratedMessage {
+  static const $core.Map<$core.int, UpgradeDidRequest_Account>
+      _UpgradeDidRequest_AccountByTag = {
+    1: UpgradeDidRequest_Account.email,
+    2: UpgradeDidRequest_Account.walletId,
+    0: UpgradeDidRequest_Account.notSet
   };
-  static const $core.Map<$core.int, UpgradeDIDRequest_Options>
-      _UpgradeDIDRequest_OptionsByTag = {
-    4: UpgradeDIDRequest_Options.ionOptions,
-    0: UpgradeDIDRequest_Options.notSet
+  static const $core.Map<$core.int, UpgradeDidRequest_Options>
+      _UpgradeDidRequest_OptionsByTag = {
+    4: UpgradeDidRequest_Options.ionOptions,
+    0: UpgradeDidRequest_Options.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')
           ? ''
-          : 'UpgradeDIDRequest',
+          : 'UpgradeDidRequest',
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
@@ -3844,29 +3844,29 @@ class UpgradeDIDRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'walletId')
-    ..e<$6.SupportedDIDMethod>(
+    ..e<$6.SupportedDidMethod>(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'method',
         $pb.PbFieldType.OE,
-        defaultOrMaker: $6.SupportedDIDMethod.KEY,
-        valueOf: $6.SupportedDIDMethod.valueOf,
-        enumValues: $6.SupportedDIDMethod.values)
-    ..aOM<IONOptions>(
+        defaultOrMaker: $6.SupportedDidMethod.KEY,
+        valueOf: $6.SupportedDidMethod.valueOf,
+        enumValues: $6.SupportedDidMethod.values)
+    ..aOM<IonOptions>(
         4,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'ionOptions',
-        subBuilder: IONOptions.create)
+        subBuilder: IonOptions.create)
     ..hasRequiredFields = false;
 
-  UpgradeDIDRequest._() : super();
-  factory UpgradeDIDRequest({
+  UpgradeDidRequest._() : super();
+  factory UpgradeDidRequest({
     $core.String? email,
     $core.String? walletId,
-    $6.SupportedDIDMethod? method,
-    IONOptions? ionOptions,
+    $6.SupportedDidMethod? method,
+    IonOptions? ionOptions,
   }) {
     final _result = create();
     if (email != null) {
@@ -3883,39 +3883,39 @@ class UpgradeDIDRequest extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory UpgradeDIDRequest.fromBuffer($core.List<$core.int> i,
+  factory UpgradeDidRequest.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory UpgradeDIDRequest.fromJson($core.String i,
+  factory UpgradeDidRequest.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  UpgradeDIDRequest clone() => UpgradeDIDRequest()..mergeFromMessage(this);
+  UpgradeDidRequest clone() => UpgradeDidRequest()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
-  UpgradeDIDRequest copyWith(void Function(UpgradeDIDRequest) updates) =>
-      super.copyWith((message) => updates(message as UpgradeDIDRequest))
-          as UpgradeDIDRequest; // ignore: deprecated_member_use
+  UpgradeDidRequest copyWith(void Function(UpgradeDidRequest) updates) =>
+      super.copyWith((message) => updates(message as UpgradeDidRequest))
+          as UpgradeDidRequest; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static UpgradeDIDRequest create() => UpgradeDIDRequest._();
-  UpgradeDIDRequest createEmptyInstance() => create();
-  static $pb.PbList<UpgradeDIDRequest> createRepeated() =>
-      $pb.PbList<UpgradeDIDRequest>();
+  static UpgradeDidRequest create() => UpgradeDidRequest._();
+  UpgradeDidRequest createEmptyInstance() => create();
+  static $pb.PbList<UpgradeDidRequest> createRepeated() =>
+      $pb.PbList<UpgradeDidRequest>();
   @$core.pragma('dart2js:noInline')
-  static UpgradeDIDRequest getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<UpgradeDIDRequest>(create);
-  static UpgradeDIDRequest? _defaultInstance;
+  static UpgradeDidRequest getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<UpgradeDidRequest>(create);
+  static UpgradeDidRequest? _defaultInstance;
 
-  UpgradeDIDRequest_Account whichAccount() =>
-      _UpgradeDIDRequest_AccountByTag[$_whichOneof(0)]!;
+  UpgradeDidRequest_Account whichAccount() =>
+      _UpgradeDidRequest_AccountByTag[$_whichOneof(0)]!;
   void clearAccount() => clearField($_whichOneof(0));
 
-  UpgradeDIDRequest_Options whichOptions() =>
-      _UpgradeDIDRequest_OptionsByTag[$_whichOneof(1)]!;
+  UpgradeDidRequest_Options whichOptions() =>
+      _UpgradeDidRequest_OptionsByTag[$_whichOneof(1)]!;
   void clearOptions() => clearField($_whichOneof(1));
 
   @$pb.TagNumber(1)
@@ -3943,9 +3943,9 @@ class UpgradeDIDRequest extends $pb.GeneratedMessage {
   void clearWalletId() => clearField(2);
 
   @$pb.TagNumber(3)
-  $6.SupportedDIDMethod get method => $_getN(2);
+  $6.SupportedDidMethod get method => $_getN(2);
   @$pb.TagNumber(3)
-  set method($6.SupportedDIDMethod v) {
+  set method($6.SupportedDidMethod v) {
     setField(3, v);
   }
 
@@ -3955,9 +3955,9 @@ class UpgradeDIDRequest extends $pb.GeneratedMessage {
   void clearMethod() => clearField(3);
 
   @$pb.TagNumber(4)
-  IONOptions get ionOptions => $_getN(3);
+  IonOptions get ionOptions => $_getN(3);
   @$pb.TagNumber(4)
-  set ionOptions(IONOptions v) {
+  set ionOptions(IonOptions v) {
     setField(4, v);
   }
 
@@ -3966,14 +3966,14 @@ class UpgradeDIDRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearIonOptions() => clearField(4);
   @$pb.TagNumber(4)
-  IONOptions ensureIonOptions() => $_ensure(3);
+  IonOptions ensureIonOptions() => $_ensure(3);
 }
 
-class UpgradeDIDResponse extends $pb.GeneratedMessage {
+class UpgradeDidResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
       const $core.bool.fromEnvironment('protobuf.omit_message_names')
           ? ''
-          : 'UpgradeDIDResponse',
+          : 'UpgradeDidResponse',
       package: const $pb.PackageName(
           const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
@@ -3986,8 +3986,8 @@ class UpgradeDIDResponse extends $pb.GeneratedMessage {
             : 'did')
     ..hasRequiredFields = false;
 
-  UpgradeDIDResponse._() : super();
-  factory UpgradeDIDResponse({
+  UpgradeDidResponse._() : super();
+  factory UpgradeDidResponse({
     $core.String? did,
   }) {
     final _result = create();
@@ -3996,32 +3996,32 @@ class UpgradeDIDResponse extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory UpgradeDIDResponse.fromBuffer($core.List<$core.int> i,
+  factory UpgradeDidResponse.fromBuffer($core.List<$core.int> i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(i, r);
-  factory UpgradeDIDResponse.fromJson($core.String i,
+  factory UpgradeDidResponse.fromJson($core.String i,
           [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(i, r);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
       'Will be removed in next major version')
-  UpgradeDIDResponse clone() => UpgradeDIDResponse()..mergeFromMessage(this);
+  UpgradeDidResponse clone() => UpgradeDidResponse()..mergeFromMessage(this);
   @$core.Deprecated('Using this can add significant overhead to your binary. '
       'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
       'Will be removed in next major version')
-  UpgradeDIDResponse copyWith(void Function(UpgradeDIDResponse) updates) =>
-      super.copyWith((message) => updates(message as UpgradeDIDResponse))
-          as UpgradeDIDResponse; // ignore: deprecated_member_use
+  UpgradeDidResponse copyWith(void Function(UpgradeDidResponse) updates) =>
+      super.copyWith((message) => updates(message as UpgradeDidResponse))
+          as UpgradeDidResponse; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static UpgradeDIDResponse create() => UpgradeDIDResponse._();
-  UpgradeDIDResponse createEmptyInstance() => create();
-  static $pb.PbList<UpgradeDIDResponse> createRepeated() =>
-      $pb.PbList<UpgradeDIDResponse>();
+  static UpgradeDidResponse create() => UpgradeDidResponse._();
+  UpgradeDidResponse createEmptyInstance() => create();
+  static $pb.PbList<UpgradeDidResponse> createRepeated() =>
+      $pb.PbList<UpgradeDidResponse>();
   @$core.pragma('dart2js:noInline')
-  static UpgradeDIDResponse getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<UpgradeDIDResponse>(create);
-  static UpgradeDIDResponse? _defaultInstance;
+  static UpgradeDidResponse getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<UpgradeDidResponse>(create);
+  static UpgradeDidResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get did => $_getSZ(0);

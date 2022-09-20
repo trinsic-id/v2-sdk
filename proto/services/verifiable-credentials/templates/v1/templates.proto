@@ -38,7 +38,7 @@ message SearchCredentialTemplatesResponse {
 
   // Whether more results are available for this query via `continuation_token`
   bool has_more = 2;
-  
+
   // Token to fetch next set of results via `SearchCredentialTemplatesRequest`
   string continuation_token = 4;
 }
@@ -53,7 +53,7 @@ message ListCredentialTemplatesRequest {
   string continuation_token = 2 [(options.optional)=true];
 }
 
-// Response to `ListCredentialTemplatesRequest` 
+// Response to `ListCredentialTemplatesRequest`
 message ListCredentialTemplatesResponse {
   // Templates found by query
   repeated TemplateData templates = 1;
@@ -138,7 +138,7 @@ message TemplateData {
   int32 version = 3;
   // Fields defined for the template
   map<string, TemplateField> fields = 4;
-  // Whether credentials issued against this template may 
+  // Whether credentials issued against this template may
   // contain fields not defined by template
   bool allow_additional_fields = 5;
   // URI pointing to template JSON schema document
@@ -151,6 +151,8 @@ message TemplateData {
   string type = 9         [json_name="type"];
   // ID of template creator
   string created_by = 10  [json_name="createdBy"];
+  // Date when template was created as ISO 8601 utc string
+  string date_created = 11 [json_name="dateCreated"];
 }
 
 service CredentialTemplates {

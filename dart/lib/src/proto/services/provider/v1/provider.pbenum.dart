@@ -77,27 +77,27 @@ class InvitationStatusResponse_Status extends $pb.ProtobufEnum {
       : super(v, n);
 }
 
-class IONOptions_IONNetwork extends $pb.ProtobufEnum {
-  static const IONOptions_IONNetwork TestNet = IONOptions_IONNetwork._(
+class IonOptions_IonNetwork extends $pb.ProtobufEnum {
+  static const IonOptions_IonNetwork TestNet = IonOptions_IonNetwork._(
       0,
       const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'TestNet');
-  static const IONOptions_IONNetwork MainNet = IONOptions_IONNetwork._(
+  static const IonOptions_IonNetwork MainNet = IonOptions_IonNetwork._(
       1,
       const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'MainNet');
 
-  static const $core.List<IONOptions_IONNetwork> values =
-      <IONOptions_IONNetwork>[
+  static const $core.List<IonOptions_IonNetwork> values =
+      <IonOptions_IonNetwork>[
     TestNet,
     MainNet,
   ];
 
-  static final $core.Map<$core.int, IONOptions_IONNetwork> _byValue =
+  static final $core.Map<$core.int, IonOptions_IonNetwork> _byValue =
       $pb.ProtobufEnum.initByValue(values);
-  static IONOptions_IONNetwork? valueOf($core.int value) => _byValue[value];
+  static IonOptions_IonNetwork? valueOf($core.int value) => _byValue[value];
 
-  const IONOptions_IONNetwork._($core.int v, $core.String n) : super(v, n);
+  const IonOptions_IonNetwork._($core.int v, $core.String n) : super(v, n);
 }
