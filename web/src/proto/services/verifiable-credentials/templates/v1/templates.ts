@@ -187,6 +187,8 @@ export interface TemplateData {
   type: string;
   /** ID of template creator */
   createdBy: string;
+  /** Date when template was created as ISO 8601 utc string */
+  dateCreated: string;
 }
 
 export interface TemplateData_FieldsEntry {
@@ -1269,6 +1271,7 @@ function createBaseTemplateData(): TemplateData {
     ecosystemId: "",
     type: "",
     createdBy: "",
+    dateCreated: "",
   };
 }
 
@@ -1309,6 +1312,9 @@ export const TemplateData = {
     }
     if (message.createdBy !== "") {
       writer.uint32(82).string(message.createdBy);
+    }
+    if (message.dateCreated !== "") {
+      writer.uint32(90).string(message.dateCreated);
     }
     return writer;
   },
@@ -1356,6 +1362,9 @@ export const TemplateData = {
         case 10:
           message.createdBy = reader.string();
           break;
+        case 11:
+          message.dateCreated = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -1385,6 +1394,7 @@ export const TemplateData = {
       ecosystemId: isSet(object.ecosystemId) ? String(object.ecosystemId) : "",
       type: isSet(object.type) ? String(object.type) : "",
       createdBy: isSet(object.createdBy) ? String(object.createdBy) : "",
+      dateCreated: isSet(object.dateCreated) ? String(object.dateCreated) : "",
     };
   },
 
@@ -1408,6 +1418,8 @@ export const TemplateData = {
       (obj.ecosystemId = message.ecosystemId);
     message.type !== undefined && (obj.type = message.type);
     message.createdBy !== undefined && (obj.createdBy = message.createdBy);
+    message.dateCreated !== undefined &&
+      (obj.dateCreated = message.dateCreated);
     return obj;
   },
 
@@ -1430,6 +1442,7 @@ export const TemplateData = {
     message.ecosystemId = object.ecosystemId ?? "";
     message.type = object.type ?? "";
     message.createdBy = object.createdBy ?? "";
+    message.dateCreated = object.dateCreated ?? "";
     return message;
   },
 };

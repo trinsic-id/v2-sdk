@@ -30,6 +30,7 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
     ecosystemId_ = "";
     type_ = "";
     createdBy_ = "";
+    dateCreated_ = "";
   }
 
   @java.lang.Override
@@ -136,6 +137,13 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
               java.lang.String s = input.readStringRequireUtf8();
 
               createdBy_ = s;
+              break;
+            }
+          case 90:
+            {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              dateCreated_ = s;
               break;
             }
           default:
@@ -688,6 +696,55 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
     }
   }
 
+  public static final int DATE_CREATED_FIELD_NUMBER = 11;
+  private volatile java.lang.Object dateCreated_;
+  /**
+   *
+   *
+   * <pre>
+   * Date when template was created as ISO 8601 utc string
+   * </pre>
+   *
+   * <code>string date_created = 11 [json_name = "dateCreated"];</code>
+   *
+   * @return The dateCreated.
+   */
+  @java.lang.Override
+  public java.lang.String getDateCreated() {
+    java.lang.Object ref = dateCreated_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      dateCreated_ = s;
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Date when template was created as ISO 8601 utc string
+   * </pre>
+   *
+   * <code>string date_created = 11 [json_name = "dateCreated"];</code>
+   *
+   * @return The bytes for dateCreated.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getDateCreatedBytes() {
+    java.lang.Object ref = dateCreated_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      dateCreated_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -730,6 +787,9 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(createdBy_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 10, createdBy_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(dateCreated_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 11, dateCreated_);
     }
     unknownFields.writeTo(output);
   }
@@ -780,6 +840,9 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(createdBy_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, createdBy_);
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(dateCreated_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, dateCreated_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -806,6 +869,7 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
     if (!getEcosystemId().equals(other.getEcosystemId())) return false;
     if (!getType().equals(other.getType())) return false;
     if (!getCreatedBy().equals(other.getCreatedBy())) return false;
+    if (!getDateCreated().equals(other.getDateCreated())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -839,6 +903,8 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
     hash = (53 * hash) + getType().hashCode();
     hash = (37 * hash) + CREATED_BY_FIELD_NUMBER;
     hash = (53 * hash) + getCreatedBy().hashCode();
+    hash = (37 * hash) + DATE_CREATED_FIELD_NUMBER;
+    hash = (53 * hash) + getDateCreated().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -1024,6 +1090,8 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
 
       createdBy_ = "";
 
+      dateCreated_ = "";
+
       return this;
     }
 
@@ -1064,6 +1132,7 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
       result.ecosystemId_ = ecosystemId_;
       result.type_ = type_;
       result.createdBy_ = createdBy_;
+      result.dateCreated_ = dateCreated_;
       onBuilt();
       return result;
     }
@@ -1149,6 +1218,10 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
       }
       if (!other.getCreatedBy().isEmpty()) {
         createdBy_ = other.createdBy_;
+        onChanged();
+      }
+      if (!other.getDateCreated().isEmpty()) {
+        dateCreated_ = other.dateCreated_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -2223,6 +2296,112 @@ public final class TemplateData extends com.google.protobuf.GeneratedMessageV3
       checkByteStringIsUtf8(value);
 
       createdBy_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object dateCreated_ = "";
+    /**
+     *
+     *
+     * <pre>
+     * Date when template was created as ISO 8601 utc string
+     * </pre>
+     *
+     * <code>string date_created = 11 [json_name = "dateCreated"];</code>
+     *
+     * @return The dateCreated.
+     */
+    public java.lang.String getDateCreated() {
+      java.lang.Object ref = dateCreated_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        dateCreated_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Date when template was created as ISO 8601 utc string
+     * </pre>
+     *
+     * <code>string date_created = 11 [json_name = "dateCreated"];</code>
+     *
+     * @return The bytes for dateCreated.
+     */
+    public com.google.protobuf.ByteString getDateCreatedBytes() {
+      java.lang.Object ref = dateCreated_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        dateCreated_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Date when template was created as ISO 8601 utc string
+     * </pre>
+     *
+     * <code>string date_created = 11 [json_name = "dateCreated"];</code>
+     *
+     * @param value The dateCreated to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDateCreated(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      dateCreated_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Date when template was created as ISO 8601 utc string
+     * </pre>
+     *
+     * <code>string date_created = 11 [json_name = "dateCreated"];</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearDateCreated() {
+
+      dateCreated_ = getDefaultInstance().getDateCreated();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Date when template was created as ISO 8601 utc string
+     * </pre>
+     *
+     * <code>string date_created = 11 [json_name = "dateCreated"];</code>
+     *
+     * @param value The bytes for dateCreated to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDateCreatedBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
+      dateCreated_ = value;
       onChanged();
       return this;
     }

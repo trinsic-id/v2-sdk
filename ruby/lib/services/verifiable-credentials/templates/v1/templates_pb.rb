@@ -71,6 +71,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :ecosystem_id, :string, 8, json_name: "ecosystemId"
       optional :type, :string, 9, json_name: "type"
       optional :created_by, :string, 10, json_name: "createdBy"
+      optional :date_created, :string, 11, json_name: "dateCreated"
     end
     add_enum "services.verifiablecredentials.templates.v1.FieldType" do
       value :STRING, 0

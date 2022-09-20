@@ -1291,6 +1291,11 @@ class TemplateData extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'createdBy')
+    ..aOS(
+        11,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'dateCreated')
     ..hasRequiredFields = false;
 
   TemplateData._() : super();
@@ -1305,6 +1310,7 @@ class TemplateData extends $pb.GeneratedMessage {
     $core.String? ecosystemId,
     $core.String? type,
     $core.String? createdBy,
+    $core.String? dateCreated,
   }) {
     final _result = create();
     if (id != null) {
@@ -1336,6 +1342,9 @@ class TemplateData extends $pb.GeneratedMessage {
     }
     if (createdBy != null) {
       _result.createdBy = createdBy;
+    }
+    if (dateCreated != null) {
+      _result.dateCreated = dateCreated;
     }
     return _result;
   }
@@ -1476,4 +1485,16 @@ class TemplateData extends $pb.GeneratedMessage {
   $core.bool hasCreatedBy() => $_has(9);
   @$pb.TagNumber(10)
   void clearCreatedBy() => clearField(10);
+
+  @$pb.TagNumber(11)
+  $core.String get dateCreated => $_getSZ(10);
+  @$pb.TagNumber(11)
+  set dateCreated($core.String v) {
+    $_setString(10, v);
+  }
+
+  @$pb.TagNumber(11)
+  $core.bool hasDateCreated() => $_has(10);
+  @$pb.TagNumber(11)
+  void clearDateCreated() => clearField(11);
 }

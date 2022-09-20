@@ -127,7 +127,7 @@ public class ProviderService extends ServiceBase {
     return withMetadata(stub, request).getEventToken(request);
   }
   /** Upgrade a wallet's DID from `did:key` to another method */
-  public ListenableFuture<UpgradeDIDResponse> upgradeDID(UpgradeDIDRequest request)
+  public ListenableFuture<UpgradeDidResponse> upgradeDID(UpgradeDidRequest request)
       throws InvalidProtocolBufferException, DidException {
 
     return withMetadata(stub, request).upgradeDID(request);

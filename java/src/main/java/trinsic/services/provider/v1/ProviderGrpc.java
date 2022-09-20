@@ -659,22 +659,22 @@ public final class ProviderGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<
-          trinsic.services.provider.v1.UpgradeDIDRequest,
-          trinsic.services.provider.v1.UpgradeDIDResponse>
+          trinsic.services.provider.v1.UpgradeDidRequest,
+          trinsic.services.provider.v1.UpgradeDidResponse>
       getUpgradeDIDMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "UpgradeDID",
-      requestType = trinsic.services.provider.v1.UpgradeDIDRequest.class,
-      responseType = trinsic.services.provider.v1.UpgradeDIDResponse.class,
+      requestType = trinsic.services.provider.v1.UpgradeDidRequest.class,
+      responseType = trinsic.services.provider.v1.UpgradeDidResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<
-          trinsic.services.provider.v1.UpgradeDIDRequest,
-          trinsic.services.provider.v1.UpgradeDIDResponse>
+          trinsic.services.provider.v1.UpgradeDidRequest,
+          trinsic.services.provider.v1.UpgradeDidResponse>
       getUpgradeDIDMethod() {
     io.grpc.MethodDescriptor<
-            trinsic.services.provider.v1.UpgradeDIDRequest,
-            trinsic.services.provider.v1.UpgradeDIDResponse>
+            trinsic.services.provider.v1.UpgradeDidRequest,
+            trinsic.services.provider.v1.UpgradeDidResponse>
         getUpgradeDIDMethod;
     if ((getUpgradeDIDMethod = ProviderGrpc.getUpgradeDIDMethod) == null) {
       synchronized (ProviderGrpc.class) {
@@ -682,18 +682,18 @@ public final class ProviderGrpc {
           ProviderGrpc.getUpgradeDIDMethod =
               getUpgradeDIDMethod =
                   io.grpc.MethodDescriptor
-                      .<trinsic.services.provider.v1.UpgradeDIDRequest,
-                          trinsic.services.provider.v1.UpgradeDIDResponse>
+                      .<trinsic.services.provider.v1.UpgradeDidRequest,
+                          trinsic.services.provider.v1.UpgradeDidResponse>
                           newBuilder()
                       .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                       .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UpgradeDID"))
                       .setSampledToLocalTracing(true)
                       .setRequestMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.provider.v1.UpgradeDIDRequest.getDefaultInstance()))
+                              trinsic.services.provider.v1.UpgradeDidRequest.getDefaultInstance()))
                       .setResponseMarshaller(
                           io.grpc.protobuf.ProtoUtils.marshaller(
-                              trinsic.services.provider.v1.UpgradeDIDResponse.getDefaultInstance()))
+                              trinsic.services.provider.v1.UpgradeDidResponse.getDefaultInstance()))
                       .setSchemaDescriptor(new ProviderMethodDescriptorSupplier("UpgradeDID"))
                       .build();
         }
@@ -1115,8 +1115,8 @@ public final class ProviderGrpc {
      * </pre>
      */
     public void upgradeDID(
-        trinsic.services.provider.v1.UpgradeDIDRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.provider.v1.UpgradeDIDResponse>
+        trinsic.services.provider.v1.UpgradeDidRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.provider.v1.UpgradeDidResponse>
             responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUpgradeDIDMethod(), responseObserver);
     }
@@ -1271,8 +1271,8 @@ public final class ProviderGrpc {
               getUpgradeDIDMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
                   new MethodHandlers<
-                      trinsic.services.provider.v1.UpgradeDIDRequest,
-                      trinsic.services.provider.v1.UpgradeDIDResponse>(this, METHODID_UPGRADE_DID)))
+                      trinsic.services.provider.v1.UpgradeDidRequest,
+                      trinsic.services.provider.v1.UpgradeDidResponse>(this, METHODID_UPGRADE_DID)))
           .addMethod(
               getRetrieveDomainVerificationRecordMethod(),
               io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -1551,8 +1551,8 @@ public final class ProviderGrpc {
      * </pre>
      */
     public void upgradeDID(
-        trinsic.services.provider.v1.UpgradeDIDRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.provider.v1.UpgradeDIDResponse>
+        trinsic.services.provider.v1.UpgradeDidRequest request,
+        io.grpc.stub.StreamObserver<trinsic.services.provider.v1.UpgradeDidResponse>
             responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getUpgradeDIDMethod(), getCallOptions()), request, responseObserver);
@@ -1814,8 +1814,8 @@ public final class ProviderGrpc {
      * Upgrade a wallet's DID from `did:key` to another method
      * </pre>
      */
-    public trinsic.services.provider.v1.UpgradeDIDResponse upgradeDID(
-        trinsic.services.provider.v1.UpgradeDIDRequest request) {
+    public trinsic.services.provider.v1.UpgradeDidResponse upgradeDID(
+        trinsic.services.provider.v1.UpgradeDidRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getUpgradeDIDMethod(), getCallOptions(), request);
     }
@@ -2080,8 +2080,8 @@ public final class ProviderGrpc {
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<
-            trinsic.services.provider.v1.UpgradeDIDResponse>
-        upgradeDID(trinsic.services.provider.v1.UpgradeDIDRequest request) {
+            trinsic.services.provider.v1.UpgradeDidResponse>
+        upgradeDID(trinsic.services.provider.v1.UpgradeDidRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getUpgradeDIDMethod(), getCallOptions()), request);
     }
@@ -2258,8 +2258,8 @@ public final class ProviderGrpc {
           break;
         case METHODID_UPGRADE_DID:
           serviceImpl.upgradeDID(
-              (trinsic.services.provider.v1.UpgradeDIDRequest) request,
-              (io.grpc.stub.StreamObserver<trinsic.services.provider.v1.UpgradeDIDResponse>)
+              (trinsic.services.provider.v1.UpgradeDidRequest) request,
+              (io.grpc.stub.StreamObserver<trinsic.services.provider.v1.UpgradeDidResponse>)
                   responseObserver);
           break;
         case METHODID_RETRIEVE_DOMAIN_VERIFICATION_RECORD:

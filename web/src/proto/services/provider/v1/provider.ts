@@ -7,9 +7,9 @@ import {
   confirmationMethodToJSON,
 } from "../../account/v1/account";
 import {
-  SupportedDIDMethod,
-  supportedDIDMethodFromJSON,
-  supportedDIDMethodToJSON,
+  SupportedDidMethod,
+  supportedDidMethodFromJSON,
+  supportedDidMethodToJSON,
 } from "../../common/v1/common";
 import _m0 from "protobufjs/minimal";
 
@@ -462,50 +462,50 @@ export interface WalletConfiguration {
 }
 
 /** Options for creation of DID on the ION network */
-export interface IONOptions {
+export interface IonOptions {
   /** ION network on which DID should be published */
-  network: IONOptions_IONNetwork;
+  network: IonOptions_IonNetwork;
 }
 
-export enum IONOptions_IONNetwork {
+export enum IonOptions_IonNetwork {
   TestNet = 0,
   MainNet = 1,
   UNRECOGNIZED = -1,
 }
 
-export function iONOptions_IONNetworkFromJSON(
+export function ionOptions_IonNetworkFromJSON(
   object: any
-): IONOptions_IONNetwork {
+): IonOptions_IonNetwork {
   switch (object) {
     case 0:
     case "TestNet":
-      return IONOptions_IONNetwork.TestNet;
+      return IonOptions_IonNetwork.TestNet;
     case 1:
     case "MainNet":
-      return IONOptions_IONNetwork.MainNet;
+      return IonOptions_IonNetwork.MainNet;
     case -1:
     case "UNRECOGNIZED":
     default:
-      return IONOptions_IONNetwork.UNRECOGNIZED;
+      return IonOptions_IonNetwork.UNRECOGNIZED;
   }
 }
 
-export function iONOptions_IONNetworkToJSON(
-  object: IONOptions_IONNetwork
+export function ionOptions_IonNetworkToJSON(
+  object: IonOptions_IonNetwork
 ): string {
   switch (object) {
-    case IONOptions_IONNetwork.TestNet:
+    case IonOptions_IonNetwork.TestNet:
       return "TestNet";
-    case IONOptions_IONNetwork.MainNet:
+    case IonOptions_IonNetwork.MainNet:
       return "MainNet";
-    case IONOptions_IONNetwork.UNRECOGNIZED:
+    case IonOptions_IonNetwork.UNRECOGNIZED:
     default:
       return "UNRECOGNIZED";
   }
 }
 
 /** Request to upgrade a wallet */
-export interface UpgradeDIDRequest {
+export interface UpgradeDidRequest {
   /**
    * Email address of account to upgrade.
    * Mutually exclusive with `walletId`.
@@ -517,13 +517,13 @@ export interface UpgradeDIDRequest {
    */
   walletId: string | undefined;
   /** DID Method to which wallet should be upgraded */
-  method: SupportedDIDMethod;
+  method: SupportedDidMethod;
   /** Configuration for creation of DID on ION network */
-  ionOptions: IONOptions | undefined;
+  ionOptions: IonOptions | undefined;
 }
 
 /** Response to `UpgradeDIDRequest` */
-export interface UpgradeDIDResponse {
+export interface UpgradeDidResponse {
   /** New DID of wallet */
   did: string;
 }
@@ -3463,13 +3463,13 @@ export const WalletConfiguration = {
   },
 };
 
-function createBaseIONOptions(): IONOptions {
+function createBaseIonOptions(): IonOptions {
   return { network: 0 };
 }
 
-export const IONOptions = {
+export const IonOptions = {
   encode(
-    message: IONOptions,
+    message: IonOptions,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
     if (message.network !== 0) {
@@ -3478,10 +3478,10 @@ export const IONOptions = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): IONOptions {
+  decode(input: _m0.Reader | Uint8Array, length?: number): IonOptions {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseIONOptions();
+    const message = createBaseIonOptions();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -3496,29 +3496,29 @@ export const IONOptions = {
     return message;
   },
 
-  fromJSON(object: any): IONOptions {
+  fromJSON(object: any): IonOptions {
     return {
       network: isSet(object.network)
-        ? iONOptions_IONNetworkFromJSON(object.network)
+        ? ionOptions_IonNetworkFromJSON(object.network)
         : 0,
     };
   },
 
-  toJSON(message: IONOptions): unknown {
+  toJSON(message: IonOptions): unknown {
     const obj: any = {};
     message.network !== undefined &&
-      (obj.network = iONOptions_IONNetworkToJSON(message.network));
+      (obj.network = ionOptions_IonNetworkToJSON(message.network));
     return obj;
   },
 
-  fromPartial(object: DeepPartial<IONOptions>): IONOptions {
-    const message = createBaseIONOptions();
+  fromPartial(object: DeepPartial<IonOptions>): IonOptions {
+    const message = createBaseIonOptions();
     message.network = object.network ?? 0;
     return message;
   },
 };
 
-function createBaseUpgradeDIDRequest(): UpgradeDIDRequest {
+function createBaseUpgradeDidRequest(): UpgradeDidRequest {
   return {
     email: undefined,
     walletId: undefined,
@@ -3527,9 +3527,9 @@ function createBaseUpgradeDIDRequest(): UpgradeDIDRequest {
   };
 }
 
-export const UpgradeDIDRequest = {
+export const UpgradeDidRequest = {
   encode(
-    message: UpgradeDIDRequest,
+    message: UpgradeDidRequest,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
     if (message.email !== undefined) {
@@ -3542,15 +3542,15 @@ export const UpgradeDIDRequest = {
       writer.uint32(24).int32(message.method);
     }
     if (message.ionOptions !== undefined) {
-      IONOptions.encode(message.ionOptions, writer.uint32(34).fork()).ldelim();
+      IonOptions.encode(message.ionOptions, writer.uint32(34).fork()).ldelim();
     }
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): UpgradeDIDRequest {
+  decode(input: _m0.Reader | Uint8Array, length?: number): UpgradeDidRequest {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseUpgradeDIDRequest();
+    const message = createBaseUpgradeDidRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -3564,7 +3564,7 @@ export const UpgradeDIDRequest = {
           message.method = reader.int32() as any;
           break;
         case 4:
-          message.ionOptions = IONOptions.decode(reader, reader.uint32());
+          message.ionOptions = IonOptions.decode(reader, reader.uint32());
           break;
         default:
           reader.skipType(tag & 7);
@@ -3574,52 +3574,52 @@ export const UpgradeDIDRequest = {
     return message;
   },
 
-  fromJSON(object: any): UpgradeDIDRequest {
+  fromJSON(object: any): UpgradeDidRequest {
     return {
       email: isSet(object.email) ? String(object.email) : undefined,
       walletId: isSet(object.walletId) ? String(object.walletId) : undefined,
       method: isSet(object.method)
-        ? supportedDIDMethodFromJSON(object.method)
+        ? supportedDidMethodFromJSON(object.method)
         : 0,
       ionOptions: isSet(object.ionOptions)
-        ? IONOptions.fromJSON(object.ionOptions)
+        ? IonOptions.fromJSON(object.ionOptions)
         : undefined,
     };
   },
 
-  toJSON(message: UpgradeDIDRequest): unknown {
+  toJSON(message: UpgradeDidRequest): unknown {
     const obj: any = {};
     message.email !== undefined && (obj.email = message.email);
     message.walletId !== undefined && (obj.walletId = message.walletId);
     message.method !== undefined &&
-      (obj.method = supportedDIDMethodToJSON(message.method));
+      (obj.method = supportedDidMethodToJSON(message.method));
     message.ionOptions !== undefined &&
       (obj.ionOptions = message.ionOptions
-        ? IONOptions.toJSON(message.ionOptions)
+        ? IonOptions.toJSON(message.ionOptions)
         : undefined);
     return obj;
   },
 
-  fromPartial(object: DeepPartial<UpgradeDIDRequest>): UpgradeDIDRequest {
-    const message = createBaseUpgradeDIDRequest();
+  fromPartial(object: DeepPartial<UpgradeDidRequest>): UpgradeDidRequest {
+    const message = createBaseUpgradeDidRequest();
     message.email = object.email ?? undefined;
     message.walletId = object.walletId ?? undefined;
     message.method = object.method ?? 0;
     message.ionOptions =
       object.ionOptions !== undefined && object.ionOptions !== null
-        ? IONOptions.fromPartial(object.ionOptions)
+        ? IonOptions.fromPartial(object.ionOptions)
         : undefined;
     return message;
   },
 };
 
-function createBaseUpgradeDIDResponse(): UpgradeDIDResponse {
+function createBaseUpgradeDidResponse(): UpgradeDidResponse {
   return { did: "" };
 }
 
-export const UpgradeDIDResponse = {
+export const UpgradeDidResponse = {
   encode(
-    message: UpgradeDIDResponse,
+    message: UpgradeDidResponse,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
     if (message.did !== "") {
@@ -3628,10 +3628,10 @@ export const UpgradeDIDResponse = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): UpgradeDIDResponse {
+  decode(input: _m0.Reader | Uint8Array, length?: number): UpgradeDidResponse {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseUpgradeDIDResponse();
+    const message = createBaseUpgradeDidResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -3646,20 +3646,20 @@ export const UpgradeDIDResponse = {
     return message;
   },
 
-  fromJSON(object: any): UpgradeDIDResponse {
+  fromJSON(object: any): UpgradeDidResponse {
     return {
       did: isSet(object.did) ? String(object.did) : "",
     };
   },
 
-  toJSON(message: UpgradeDIDResponse): unknown {
+  toJSON(message: UpgradeDidResponse): unknown {
     const obj: any = {};
     message.did !== undefined && (obj.did = message.did);
     return obj;
   },
 
-  fromPartial(object: DeepPartial<UpgradeDIDResponse>): UpgradeDIDResponse {
-    const message = createBaseUpgradeDIDResponse();
+  fromPartial(object: DeepPartial<UpgradeDidResponse>): UpgradeDidResponse {
+    const message = createBaseUpgradeDidResponse();
     message.did = object.did ?? "";
     return message;
   },
@@ -3802,9 +3802,9 @@ export const ProviderDefinition = {
     /** Upgrade a wallet's DID from `did:key` to another method */
     upgradeDID: {
       name: "UpgradeDID",
-      requestType: UpgradeDIDRequest,
+      requestType: UpgradeDidRequest,
       requestStream: false,
-      responseType: UpgradeDIDResponse,
+      responseType: UpgradeDidResponse,
       responseStream: false,
       options: {},
     },

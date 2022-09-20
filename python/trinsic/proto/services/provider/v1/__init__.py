@@ -819,6 +819,7 @@ class ProviderStub(betterproto.ServiceStub):
 
     async def upgrade_did(
         self,
+        upgrade_did_request: "UpgradeDidRequest",
         timeout: Optional[float] = None,
         deadline: Optional["Deadline"] = None,
         metadata: Optional["_MetadataLike"] = None,
@@ -950,7 +951,9 @@ class ProviderBase(ServiceBase):
     ) -> "GetEventTokenResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def upgrade_did(self) -> "UpgradeDidResponse":
+    async def upgrade_did(
+        self, upgrade_did_request: "UpgradeDidRequest"
+    ) -> "UpgradeDidResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def retrieve_domain_verification_record(
