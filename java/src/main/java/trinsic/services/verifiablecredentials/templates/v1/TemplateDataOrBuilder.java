@@ -276,4 +276,29 @@ public interface TemplateDataOrBuilder
    * @return The bytes for createdBy.
    */
   com.google.protobuf.ByteString getCreatedByBytes();
+
+  /**
+   *
+   *
+   * <pre>
+   * Date when template was created as ISO 8601 utc string
+   * </pre>
+   *
+   * <code>string date_created = 11 [json_name = "dateCreated"];</code>
+   *
+   * @return The dateCreated.
+   */
+  java.lang.String getDateCreated();
+  /**
+   *
+   *
+   * <pre>
+   * Date when template was created as ISO 8601 utc string
+   * </pre>
+   *
+   * <code>string date_created = 11 [json_name = "dateCreated"];</code>
+   *
+   * @return The bytes for dateCreated.
+   */
+  com.google.protobuf.ByteString getDateCreatedBytes();
 }

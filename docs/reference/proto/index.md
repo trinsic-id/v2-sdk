@@ -509,6 +509,7 @@ Credential Template
 | ecosystem_id | [string](/reference/proto#string) | ID of ecosystem in which template resides |
 | type | [string](/reference/proto#string) | Template type (`VerifiableCredential`) |
 | created_by | [string](/reference/proto#string) | ID of template creator |
+| date_created | [string](/reference/proto#string) | Date when template was created as ISO 8601 utc string |
 
 
 

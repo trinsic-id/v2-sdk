@@ -1040,7 +1040,8 @@ class Services::Verifiablecredentials::Templates::V1::TemplateData
       context_uri: T.nilable(String),
       ecosystem_id: T.nilable(String),
       type: T.nilable(String),
-      created_by: T.nilable(String)
+      created_by: T.nilable(String),
+      date_created: T.nilable(String)
     ).void
   end
   def initialize(
@@ -1053,7 +1054,8 @@ class Services::Verifiablecredentials::Templates::V1::TemplateData
     context_uri: "",
     ecosystem_id: "",
     type: "",
-    created_by: ""
+    created_by: "",
+    date_created: ""
   )
   end
 
@@ -1175,6 +1177,18 @@ class Services::Verifiablecredentials::Templates::V1::TemplateData
 
   sig { void }
   def clear_created_by
+  end
+
+  sig { returns(String) }
+  def date_created
+  end
+
+  sig { params(value: String).void }
+  def date_created=(value)
+  end
+
+  sig { void }
+  def clear_date_created
   end
 
   sig { params(field: String).returns(T.untyped) }

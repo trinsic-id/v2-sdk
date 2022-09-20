@@ -2400,6 +2400,12 @@
       "file": "services/verifiable-credentials/templates/v1/templates.proto",
       "parent": "services.verifiablecredentials.templates.v1.TemplateData"
     },
+    "services.verifiablecredentials.templates.v1.TemplateData.date_created": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.TemplateData"
+    },
     "services.verifiablecredentials.templates.v1.TemplateData.ecosystem_id": {
       "type": "field",
       "collection": "fields",
@@ -3599,6 +3605,7 @@
         "services.verifiablecredentials.templates.v1.TemplateData.ecosystem_id",
         "services.verifiablecredentials.templates.v1.TemplateData.type",
         "services.verifiablecredentials.templates.v1.TemplateData.created_by",
+        "services.verifiablecredentials.templates.v1.TemplateData.date_created",
         "services.verifiablecredentials.templates.v1.TemplateData.FieldsEntry.key",
         "services.verifiablecredentials.templates.v1.TemplateData.FieldsEntry.value"
       ],
@@ -5275,7 +5282,8 @@
         "services.verifiablecredentials.templates.v1.TemplateData.context_uri",
         "services.verifiablecredentials.templates.v1.TemplateData.ecosystem_id",
         "services.verifiablecredentials.templates.v1.TemplateData.type",
-        "services.verifiablecredentials.templates.v1.TemplateData.created_by"
+        "services.verifiablecredentials.templates.v1.TemplateData.created_by",
+        "services.verifiablecredentials.templates.v1.TemplateData.date_created"
       ],
       "messages": [
         "services.verifiablecredentials.templates.v1.TemplateData.FieldsEntry"
@@ -7270,7 +7278,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "bool",
       "full_type": "bool",
-      "description": "Whether credentials issued against this template may \ncontain fields not defined by template"
+      "description": "Whether credentials issued against this template may\ncontain fields not defined by template"
     },
     "services.verifiablecredentials.templates.v1.TemplateData.context_uri": {
       "name": "context_uri",
@@ -7287,6 +7295,14 @@
       "type": "string",
       "full_type": "string",
       "description": "ID of template creator"
+    },
+    "services.verifiablecredentials.templates.v1.TemplateData.date_created": {
+      "name": "date_created",
+      "full_name": "services.verifiablecredentials.templates.v1.TemplateData.date_created",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Date when template was created as ISO 8601 utc string"
     },
     "services.verifiablecredentials.templates.v1.TemplateData.ecosystem_id": {
       "name": "ecosystem_id",
