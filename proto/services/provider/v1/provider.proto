@@ -395,18 +395,18 @@ message WalletConfiguration {
 }
 
 // Options for creation of DID on the ION network
-message IONOptions {
-    enum IONNetwork {
+message IonOptions {
+    enum IonNetwork {
         TestNet = 0;
         MainNet = 1;
     }
 
     // ION network on which DID should be published
-    IONNetwork network = 1; 
+    IonNetwork network = 1; 
 }
 
 // Request to upgrade a wallet 
-message UpgradeDIDRequest {
+message UpgradeDidRequest {
     oneof account {
         // Email address of account to upgrade.
         // Mutually exclusive with `walletId`.
@@ -418,16 +418,16 @@ message UpgradeDIDRequest {
     }
 
     // DID Method to which wallet should be upgraded
-    services.common.v1.SupportedDIDMethod method = 3; 
+    services.common.v1.SupportedDidMethod method = 3; 
 
     oneof options {
         // Configuration for creation of DID on ION network
-        IONOptions ion_options = 4; 
+        IonOptions ion_options = 4; 
     }
 }
 
 // Response to `UpgradeDIDRequest`
-message UpgradeDIDResponse {
+message UpgradeDidResponse {
     // New DID of wallet
     string did = 1;
 }
@@ -483,7 +483,7 @@ service Provider {
     rpc GetEventToken(GetEventTokenRequest) returns (GetEventTokenResponse);
 
     // Upgrade a wallet's DID from `did:key` to another method
-    rpc UpgradeDID(UpgradeDIDRequest) returns (UpgradeDIDResponse);
+    rpc UpgradeDID(UpgradeDidRequest) returns (UpgradeDidResponse);
     
     // Retrieve a random hash TXT that can be used to verify domain ownership
     rpc RetrieveDomainVerificationRecord(RetrieveDomainVerificationRecordRequest) returns (RetrieveDomainVerificationRecordResponse) {
