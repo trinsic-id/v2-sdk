@@ -56,3 +56,27 @@ class ResponseStatus extends $pb.ProtobufEnum {
 
   const ResponseStatus._($core.int v, $core.String n) : super(v, n);
 }
+
+class SupportedDIDMethod extends $pb.ProtobufEnum {
+  static const SupportedDIDMethod KEY = SupportedDIDMethod._(
+      0,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'KEY');
+  static const SupportedDIDMethod ION = SupportedDIDMethod._(
+      1,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'ION');
+
+  static const $core.List<SupportedDIDMethod> values = <SupportedDIDMethod>[
+    KEY,
+    ION,
+  ];
+
+  static final $core.Map<$core.int, SupportedDIDMethod> _byValue =
+      $pb.ProtobufEnum.initByValue(values);
+  static SupportedDIDMethod? valueOf($core.int value) => _byValue[value];
+
+  const SupportedDIDMethod._($core.int v, $core.String n) : super(v, n);
+}

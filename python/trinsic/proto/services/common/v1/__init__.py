@@ -16,6 +16,13 @@ class ResponseStatus(betterproto.Enum):
     UNKNOWN_ERROR = 100
 
 
+class SupportedDidMethod(betterproto.Enum):
+    """Enum of all supported DID Methods"""
+
+    KEY = 0
+    ION = 1
+
+
 @dataclass(eq=False, repr=False)
 class Nonce(betterproto.Message):
     """Nonce used to generate an oberon proof"""

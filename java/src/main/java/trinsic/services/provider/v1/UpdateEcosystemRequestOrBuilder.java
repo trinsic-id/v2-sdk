@@ -43,7 +43,7 @@ public interface UpdateEcosystemRequestOrBuilder
    * <code>string uri = 2 [deprecated = true];</code>
    *
    * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
-   *     services/provider/v1/provider.proto;l=160
+   *     services/provider/v1/provider.proto;l=161
    * @return The uri.
    */
   @java.lang.Deprecated
@@ -58,7 +58,7 @@ public interface UpdateEcosystemRequestOrBuilder
    * <code>string uri = 2 [deprecated = true];</code>
    *
    * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
-   *     services/provider/v1/provider.proto;l=160
+   *     services/provider/v1/provider.proto;l=161
    * @return The bytes for uri.
    */
   @java.lang.Deprecated

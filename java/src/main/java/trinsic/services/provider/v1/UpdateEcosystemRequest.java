@@ -199,7 +199,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
    * <code>string uri = 2 [deprecated = true];</code>
    *
    * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
-   *     services/provider/v1/provider.proto;l=160
+   *     services/provider/v1/provider.proto;l=161
    * @return The uri.
    */
   @java.lang.Override
@@ -225,7 +225,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
    * <code>string uri = 2 [deprecated = true];</code>
    *
    * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
-   *     services/provider/v1/provider.proto;l=160
+   *     services/provider/v1/provider.proto;l=161
    * @return The bytes for uri.
    */
   @java.lang.Override
@@ -899,7 +899,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      * <code>string uri = 2 [deprecated = true];</code>
      *
      * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
-     *     services/provider/v1/provider.proto;l=160
+     *     services/provider/v1/provider.proto;l=161
      * @return The uri.
      */
     @java.lang.Deprecated
@@ -924,7 +924,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      * <code>string uri = 2 [deprecated = true];</code>
      *
      * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
-     *     services/provider/v1/provider.proto;l=160
+     *     services/provider/v1/provider.proto;l=161
      * @return The bytes for uri.
      */
     @java.lang.Deprecated
@@ -949,7 +949,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      * <code>string uri = 2 [deprecated = true];</code>
      *
      * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
-     *     services/provider/v1/provider.proto;l=160
+     *     services/provider/v1/provider.proto;l=161
      * @param value The uri to set.
      * @return This builder for chaining.
      */
@@ -973,7 +973,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      * <code>string uri = 2 [deprecated = true];</code>
      *
      * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
-     *     services/provider/v1/provider.proto;l=160
+     *     services/provider/v1/provider.proto;l=161
      * @return This builder for chaining.
      */
     @java.lang.Deprecated
@@ -993,7 +993,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      * <code>string uri = 2 [deprecated = true];</code>
      *
      * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
-     *     services/provider/v1/provider.proto;l=160
+     *     services/provider/v1/provider.proto;l=161
      * @param value The bytes for uri to set.
      * @return This builder for chaining.
      */

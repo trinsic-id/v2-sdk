@@ -59,6 +59,42 @@ export function responseStatusToJSON(object: ResponseStatus): string {
   }
 }
 
+/** Enum of all supported DID Methods */
+export enum SupportedDIDMethod {
+  /** KEY - The did:key method -- all wallets use this by default */
+  KEY = 0,
+  /** ION - The did:ion method */
+  ION = 1,
+  UNRECOGNIZED = -1,
+}
+
+export function supportedDIDMethodFromJSON(object: any): SupportedDIDMethod {
+  switch (object) {
+    case 0:
+    case "KEY":
+      return SupportedDIDMethod.KEY;
+    case 1:
+    case "ION":
+      return SupportedDIDMethod.ION;
+    case -1:
+    case "UNRECOGNIZED":
+    default:
+      return SupportedDIDMethod.UNRECOGNIZED;
+  }
+}
+
+export function supportedDIDMethodToJSON(object: SupportedDIDMethod): string {
+  switch (object) {
+    case SupportedDIDMethod.KEY:
+      return "KEY";
+    case SupportedDIDMethod.ION:
+      return "ION";
+    case SupportedDIDMethod.UNRECOGNIZED:
+    default:
+      return "UNRECOGNIZED";
+  }
+}
+
 /** Nonce used to generate an oberon proof */
 export interface Nonce {
   /** UTC unix millisecond timestamp the request was made */

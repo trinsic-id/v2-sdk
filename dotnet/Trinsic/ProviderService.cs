@@ -287,6 +287,22 @@ public class ProviderService : ServiceBase
     }
 
 	/// <summary>
+    /// Upgrade a wallet's DID from `did:key` to another method
+    /// </summary>	
+    public UpgradeDIDResponse UpgradeDID(UpgradeDIDRequest request) {
+        
+        return Client.UpgradeDID(request, BuildMetadata(request));
+    }
+	
+	/// <summary>
+    /// Upgrade a wallet's DID from `did:key` to another method
+    /// </summary>	
+    public async Task<UpgradeDIDResponse> UpgradeDIDAsync(UpgradeDIDRequest request) {
+        
+        return await Client.UpgradeDIDAsync(request, await BuildMetadataAsync(request));
+    }
+
+	/// <summary>
     /// Retrieve a random hash TXT that can be used to verify domain ownership
     /// </summary>	
     public RetrieveDomainVerificationRecordResponse RetrieveDomainVerificationRecord() {

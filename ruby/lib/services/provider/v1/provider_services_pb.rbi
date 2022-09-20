@@ -132,6 +132,14 @@ module Services::Provider::V1::Provider
 
     sig do
       params(
+        request: Services::Provider::V1::UpgradeDIDRequest
+      ).returns(Services::Provider::V1::UpgradeDIDResponse)
+    end
+    def upgrade_did(request)
+    end
+
+    sig do
+      params(
         request: Services::Provider::V1::RetrieveDomainVerificationRecordRequest
       ).returns(Services::Provider::V1::RetrieveDomainVerificationRecordResponse)
     end

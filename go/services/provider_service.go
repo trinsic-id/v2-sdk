@@ -55,6 +55,8 @@ type ProviderService interface {
 	GetOberonKey(userContext context.Context, request *provider.GetOberonKeyRequest) (*provider.GetOberonKeyResponse, error)
 	// GetEventToken  Generate a signed token (JWT) that can be used to connect to the message bus
 	GetEventToken(userContext context.Context, request *provider.GetEventTokenRequest) (*provider.GetEventTokenResponse, error)
+	// UpgradeDID  Upgrade a wallet's DID from `did:key` to another method
+	UpgradeDID(userContext context.Context, request *provider.UpgradeDIDRequest) (*provider.UpgradeDIDResponse, error)
 	// RetrieveDomainVerificationRecord  Retrieve a random hash TXT that can be used to verify domain ownership
 	RetrieveDomainVerificationRecord(userContext context.Context) (*provider.RetrieveDomainVerificationRecordResponse, error)
 	// RefreshDomainVerificationStatus  Call to verify domain
@@ -266,6 +268,19 @@ func (p *providerBase) GetEventToken(userContext context.Context, request *provi
 		return nil, err
 	}
 	response, err := p.client.GetEventToken(md, request)
+	if err != nil {
+		return nil, err
+	}
+	return response, nil
+}
+
+// UpgradeDID  Upgrade a wallet's DID from `did:key` to another method
+func (p *providerBase) UpgradeDID(userContext context.Context, request *provider.UpgradeDIDRequest) (*provider.UpgradeDIDResponse, error) {
+	md, err := p.GetMetadataContext(userContext, request)
+	if err != nil {
+		return nil, err
+	}
+	response, err := p.client.UpgradeDID(md, request)
 	if err != nil {
 		return nil, err
 	}

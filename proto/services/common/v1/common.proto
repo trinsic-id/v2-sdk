@@ -15,6 +15,12 @@ enum ResponseStatus {
     UNKNOWN_ERROR = 100;
 }
 
+// Enum of all supported DID Methods
+enum SupportedDIDMethod {
+    KEY = 0; //The did:key method -- all wallets use this by default
+    ION = 1; //The did:ion method
+}
+
 // Nonce used to generate an oberon proof
 message Nonce {
     int64 timestamp = 1; // UTC unix millisecond timestamp the request was made

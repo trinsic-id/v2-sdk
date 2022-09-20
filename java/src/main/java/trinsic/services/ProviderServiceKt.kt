@@ -99,6 +99,11 @@ class ProviderServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(
     return withMetadata(stub, request).getEventToken(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
+  suspend fun upgradeDID(request: UpgradeDIDRequest): UpgradeDIDResponse {
+    /** Upgrade a wallet's DID from `did:key` to another method */
+    return withMetadata(stub, request).upgradeDID(request)
+  }
+  @Throws(InvalidProtocolBufferException::class, DidException::class)
   suspend fun retrieveDomainVerificationRecord(): RetrieveDomainVerificationRecordResponse {
     /** Retrieve a random hash TXT that can be used to verify domain ownership */
     val request = RetrieveDomainVerificationRecordRequest.newBuilder().build()
