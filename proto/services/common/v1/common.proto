@@ -16,7 +16,7 @@ enum ResponseStatus {
 }
 
 // Enum of all supported DID Methods
-enum SupportedDIDMethod {
+enum SupportedDidMethod {
     KEY = 0; //The did:key method -- all wallets use this by default
     ION = 1; //The did:ion method
 }
