@@ -98,11 +98,11 @@ class ProviderClient extends $grpc.Client {
           ($core.List<$core.int> value) =>
               $4.GetEventTokenResponse.fromBuffer(value));
   static final _$upgradeDID =
-      $grpc.ClientMethod<$4.UpgradeDIDRequest, $4.UpgradeDIDResponse>(
+      $grpc.ClientMethod<$4.UpgradeDidRequest, $4.UpgradeDidResponse>(
           '/services.provider.v1.Provider/UpgradeDID',
-          ($4.UpgradeDIDRequest value) => value.writeToBuffer(),
+          ($4.UpgradeDidRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $4.UpgradeDIDResponse.fromBuffer(value));
+              $4.UpgradeDidResponse.fromBuffer(value));
   static final _$retrieveDomainVerificationRecord = $grpc.ClientMethod<
           $4.RetrieveDomainVerificationRecordRequest,
           $4.RetrieveDomainVerificationRecordResponse>(
@@ -216,8 +216,8 @@ class ProviderClient extends $grpc.Client {
     return $createUnaryCall(_$getEventToken, request, options: options);
   }
 
-  $grpc.ResponseFuture<$4.UpgradeDIDResponse> upgradeDID(
-      $4.UpgradeDIDRequest request,
+  $grpc.ResponseFuture<$4.UpgradeDidResponse> upgradeDID(
+      $4.UpgradeDidRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$upgradeDID, request, options: options);
   }
@@ -372,13 +372,13 @@ abstract class ProviderServiceBase extends $grpc.Service {
             ($core.List<$core.int> value) =>
                 $4.GetEventTokenRequest.fromBuffer(value),
             ($4.GetEventTokenResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$4.UpgradeDIDRequest, $4.UpgradeDIDResponse>(
+    $addMethod($grpc.ServiceMethod<$4.UpgradeDidRequest, $4.UpgradeDidResponse>(
         'UpgradeDID',
         upgradeDID_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $4.UpgradeDIDRequest.fromBuffer(value),
-        ($4.UpgradeDIDResponse value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $4.UpgradeDidRequest.fromBuffer(value),
+        ($4.UpgradeDidResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$4.RetrieveDomainVerificationRecordRequest,
             $4.RetrieveDomainVerificationRecordResponse>(
         'RetrieveDomainVerificationRecord',
@@ -492,8 +492,8 @@ abstract class ProviderServiceBase extends $grpc.Service {
     return getEventToken(call, await request);
   }
 
-  $async.Future<$4.UpgradeDIDResponse> upgradeDID_Pre($grpc.ServiceCall call,
-      $async.Future<$4.UpgradeDIDRequest> request) async {
+  $async.Future<$4.UpgradeDidResponse> upgradeDID_Pre($grpc.ServiceCall call,
+      $async.Future<$4.UpgradeDidRequest> request) async {
     return upgradeDID(call, await request);
   }
 
@@ -547,8 +547,8 @@ abstract class ProviderServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $4.GetOberonKeyRequest request);
   $async.Future<$4.GetEventTokenResponse> getEventToken(
       $grpc.ServiceCall call, $4.GetEventTokenRequest request);
-  $async.Future<$4.UpgradeDIDResponse> upgradeDID(
-      $grpc.ServiceCall call, $4.UpgradeDIDRequest request);
+  $async.Future<$4.UpgradeDidResponse> upgradeDID(
+      $grpc.ServiceCall call, $4.UpgradeDidRequest request);
   $async.Future<$4.RetrieveDomainVerificationRecordResponse>
       retrieveDomainVerificationRecord($grpc.ServiceCall call,
           $4.RetrieveDomainVerificationRecordRequest request);

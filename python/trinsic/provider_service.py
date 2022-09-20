@@ -168,7 +168,7 @@ class ProviderService(ServiceBase):
             request, metadata=self.build_metadata(request)
         )
 
-    async def upgrade_did(self, *, request: UpgradeDIDRequest) -> UpgradeDIDResponse:
+    async def upgrade_did(self, *, request: UpgradeDidRequest) -> UpgradeDidResponse:
         """Upgrade a wallet's DID from `did:key` to another method"""
 
         return await self.client.upgrade_did(
