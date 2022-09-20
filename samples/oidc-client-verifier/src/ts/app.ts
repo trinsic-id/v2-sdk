@@ -9,7 +9,7 @@ import {TRINSIC_ECOSYSTEM, TRINSIC_ENVIRONMENT, TRINSIC_SCHEMA} from "./constant
 const authority_urls = {
     prod: "https://connect.trinsic.cloud/",
     staging: "https://connect-staging.trinsic.cloud/",
-    dev: "https://localhost:7266",
+    dev: "https://connect-dev.trinsic.cloud",
 };
 
 let config: OidcClientSettings = {
