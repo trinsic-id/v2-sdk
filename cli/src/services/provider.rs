@@ -1,6 +1,8 @@
 use super::Output;
 use super::{super::parser::provider::*, Item};
-use crate::proto::services::provider::v1::{AddWebhookRequest, DeleteWebhookRequest, EcosystemInfoRequest, UpdateEcosystemRequest};
+use crate::proto::services::provider::v1::{
+    AddWebhookRequest, DeleteWebhookRequest, EcosystemInfoRequest, UpdateEcosystemRequest, UpgradeDidRequest,
+};
 use crate::utils::to_value;
 use crate::{
     dict,
@@ -26,7 +28,41 @@ pub(crate) fn execute(args: &Command, config: CliConfig) -> Result<Output, Error
         Command::AddWebhook(args) => add_webhook(args, &config),
         Command::DeleteWebhook(args) => delete_webhook(args, &config),
         Command::InvitationStatus => todo!(),
+        Command::UpgradeDid(args) => upgrade_did(args, &config),
     }
+}
+
+#[tokio::main]
+async fn upgrade_did(args: &UpgradeDidArgs, config: &CliConfig) -> Result<Output, Error> {
+    let mut client = grpc_client_with_auth!(ProviderClient<Channel>, config.to_owned());
+
+    let request = tonic::Request::new(UpgradeDidRequest {
+        method: match args.method.as_str() {
+            "ion" => crate::proto::services::common::v1::SupportedDidMethod::Ion as i32,
+            "key" => crate::proto::services::common::v1::SupportedDidMethod::Key as i32,
+            _ => return Err(Error::InvalidArgument("Unsupported did method".into())),
+        },
+        account: Some(match &args.email {
+            Some(email) => crate::proto::services::provider::v1::upgrade_did_request::Account::Email(email.clone()),
+            None => crate::proto::services::provider::v1::upgrade_did_request::Account::WalletId(
+                args.wallet_id.as_ref().expect("wallet id missing").into(),
+            ),
+        }),
+        options: args.method_options.as_ref().map(|x| {
+            crate::proto::services::provider::v1::upgrade_did_request::Options::IonOptions(crate::proto::services::provider::v1::IonOptions {
+                network: match x.as_str() {
+                    "testnet" => crate::proto::services::provider::v1::ion_options::IonNetwork::TestNet as i32,
+                    "mainnet" => crate::proto::services::provider::v1::ion_options::IonNetwork::MainNet as i32,
+                    _ => panic!("Unsupported network"),
+                },
+            })
+        }),
+    });
+
+    let response = client.upgrade_did(request).await?.into_inner();
+    Ok(dict! {
+        "did".into() => Item::String(response.did),
+    })
 }
 
 #[tokio::main]
