@@ -1192,7 +1192,7 @@
           <li class="md-nav__item">
   <a href="#supporteddidmethod" class="md-nav__link">
     <span class="md-ellipsis">
-      SupportedDIDMethod
+      SupportedDidMethod
     </span>
   </a>
   
@@ -2198,15 +2198,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ionoptions" class="md-nav__link">
-    <span class="md-ellipsis">
-      IONOptions
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#invitationstatusrequest" class="md-nav__link">
     <span class="md-ellipsis">
       InvitationStatusRequest
@@ -2246,6 +2237,15 @@
   <a href="#inviteresponse" class="md-nav__link">
     <span class="md-ellipsis">
       InviteResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ionoptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      IonOptions
     </span>
   </a>
   
@@ -2353,7 +2353,7 @@
           <li class="md-nav__item">
   <a href="#upgradedidrequest" class="md-nav__link">
     <span class="md-ellipsis">
-      UpgradeDIDRequest
+      UpgradeDidRequest
     </span>
   </a>
   
@@ -2362,7 +2362,7 @@
           <li class="md-nav__item">
   <a href="#upgradedidresponse" class="md-nav__link">
     <span class="md-ellipsis">
-      UpgradeDIDResponse
+      UpgradeDidResponse
     </span>
   </a>
   
@@ -2387,18 +2387,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ionoptionsionnetwork" class="md-nav__link">
+  <a href="#invitationstatusresponsestatus" class="md-nav__link">
     <span class="md-ellipsis">
-      IONOptions.IONNetwork
+      InvitationStatusResponse.Status
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#invitationstatusresponsestatus" class="md-nav__link">
+  <a href="#ionoptionsionnetwork" class="md-nav__link">
     <span class="md-ellipsis">
-      InvitationStatusResponse.Status
+      IonOptions.IonNetwork
     </span>
   </a>
   
@@ -3324,8 +3324,8 @@
 </tr>
 </tbody>
 </table>
-<p><a name="services-common-v1-SupportedDIDMethod"></a></p>
-<h3 id="supporteddidmethod">SupportedDIDMethod<a class="headerlink" href="#supporteddidmethod" title="Permanent link">&para;</a></h3>
+<p><a name="services-common-v1-SupportedDidMethod"></a></p>
+<h3 id="supporteddidmethod">SupportedDidMethod<a class="headerlink" href="#supporteddidmethod" title="Permanent link">&para;</a></h3>
 <p>Enum of all supported DID Methods</p>
 <table>
 <thead>
@@ -4004,6 +4004,11 @@
 <td>created_by</td>
 <td><a href="/reference/proto#string">string</a></td>
 <td>ID of template creator</td>
+</tr>
+<tr>
+<td>date_created</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Date when template was created as ISO 8601 utc string</td>
 </tr>
 </tbody>
 </table>
@@ -5371,8 +5376,8 @@ like email, SMS, etc.</p>
 </tr>
 <tr>
 <td>UpgradeDID</td>
-<td><a href="/reference/proto#services-provider-v1-UpgradeDIDRequest">UpgradeDIDRequest</a></td>
-<td><a href="/reference/proto#services-provider-v1-UpgradeDIDResponse">UpgradeDIDResponse</a></td>
+<td><a href="/reference/proto#services-provider-v1-UpgradeDidRequest">UpgradeDidRequest</a></td>
+<td><a href="/reference/proto#services-provider-v1-UpgradeDidResponse">UpgradeDidResponse</a></td>
 <td>Upgrade a wallet's DID from <code>did:key</code> to another method</td>
 </tr>
 <tr>
@@ -5895,25 +5900,6 @@ to verify authentication token validity</p>
 <p><a name="services-provider-v1-GrantAuthorizationResponse"></a></p>
 <h3 id="grantauthorizationresponse">GrantAuthorizationResponse<a class="headerlink" href="#grantauthorizationresponse" title="Permanent link">&para;</a></h3>
 <p>Response to <code>GrantAuthorizationRequest</code></p>
-<p><a name="services-provider-v1-IONOptions"></a></p>
-<h3 id="ionoptions">IONOptions<a class="headerlink" href="#ionoptions" title="Permanent link">&para;</a></h3>
-<p>Options for creation of DID on the ION network</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>network</td>
-<td><a href="/reference/proto#services-provider-v1-IONOptions-IONNetwork">IONOptions.IONNetwork</a></td>
-<td>ION network on which DID should be published</td>
-</tr>
-</tbody>
-</table>
 <p><a name="services-provider-v1-InvitationStatusRequest"></a></p>
 <h3 id="invitationstatusrequest">InvitationStatusRequest<a class="headerlink" href="#invitationstatusrequest" title="Permanent link">&para;</a></h3>
 <p>Request details for the status of an invitation</p>
@@ -6009,6 +5995,25 @@ to verify authentication token validity</p>
 <td>invitation_code</td>
 <td><a href="/reference/proto#string">string</a></td>
 <td>Invitation code -- must be passed back in <code>LoginRequest</code></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-IonOptions"></a></p>
+<h3 id="ionoptions">IonOptions<a class="headerlink" href="#ionoptions" title="Permanent link">&para;</a></h3>
+<p>Options for creation of DID on the ION network</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>network</td>
+<td><a href="/reference/proto#services-provider-v1-IonOptions-IonNetwork">IonOptions.IonNetwork</a></td>
+<td>ION network on which DID should be published</td>
 </tr>
 </tbody>
 </table>
@@ -6238,8 +6243,8 @@ to verify authentication token validity</p>
 </tr>
 </tbody>
 </table>
-<p><a name="services-provider-v1-UpgradeDIDRequest"></a></p>
-<h3 id="upgradedidrequest">UpgradeDIDRequest<a class="headerlink" href="#upgradedidrequest" title="Permanent link">&para;</a></h3>
+<p><a name="services-provider-v1-UpgradeDidRequest"></a></p>
+<h3 id="upgradedidrequest">UpgradeDidRequest<a class="headerlink" href="#upgradedidrequest" title="Permanent link">&para;</a></h3>
 <p>Request to upgrade a wallet</p>
 <table>
 <thead>
@@ -6262,18 +6267,18 @@ to verify authentication token validity</p>
 </tr>
 <tr>
 <td>method</td>
-<td><a href="/reference/proto#services-common-v1-SupportedDIDMethod">services.common.v1.SupportedDIDMethod</a></td>
+<td><a href="/reference/proto#services-common-v1-SupportedDidMethod">services.common.v1.SupportedDidMethod</a></td>
 <td>DID Method to which wallet should be upgraded</td>
 </tr>
 <tr>
 <td>ion_options</td>
-<td><a href="/reference/proto#services-provider-v1-IONOptions">IONOptions</a></td>
+<td><a href="/reference/proto#services-provider-v1-IonOptions">IonOptions</a></td>
 <td>Configuration for creation of DID on ION network</td>
 </tr>
 </tbody>
 </table>
-<p><a name="services-provider-v1-UpgradeDIDResponse"></a></p>
-<h3 id="upgradedidresponse">UpgradeDIDResponse<a class="headerlink" href="#upgradedidresponse" title="Permanent link">&para;</a></h3>
+<p><a name="services-provider-v1-UpgradeDidResponse"></a></p>
+<h3 id="upgradedidresponse">UpgradeDidResponse<a class="headerlink" href="#upgradedidresponse" title="Permanent link">&para;</a></h3>
 <p>Response to <code>UpgradeDIDRequest</code></p>
 <table>
 <thead>
@@ -6366,29 +6371,6 @@ to verify authentication token validity</p>
 </table>
 <!-- end messages -->
 
-<p><a name="services-provider-v1-IONOptions-IONNetwork"></a></p>
-<h3 id="ionoptionsionnetwork">IONOptions.IONNetwork<a class="headerlink" href="#ionoptionsionnetwork" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Number</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TestNet</td>
-<td>0</td>
-<td></td>
-</tr>
-<tr>
-<td>MainNet</td>
-<td>1</td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <p><a name="services-provider-v1-InvitationStatusResponse-Status"></a></p>
 <h3 id="invitationstatusresponsestatus">InvitationStatusResponse.Status<a class="headerlink" href="#invitationstatusresponsestatus" title="Permanent link">&para;</a></h3>
 <table>
@@ -6419,6 +6401,29 @@ to verify authentication token validity</p>
 <td>Expired</td>
 <td>3</td>
 <td>The invite has expired</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-IonOptions-IonNetwork"></a></p>
+<h3 id="ionoptionsionnetwork">IonOptions.IonNetwork<a class="headerlink" href="#ionoptionsionnetwork" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TestNet</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>MainNet</td>
+<td>1</td>
+<td></td>
 </tr>
 </tbody>
 </table>
