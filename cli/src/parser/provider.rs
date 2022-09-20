@@ -4,17 +4,19 @@ use std::fmt::{self, Display, Formatter};
 
 pub(crate) fn parse(args: &ArgMatches) -> Result<Command, Error> {
     if args.subcommand_matches("create-ecosystem").is_some() {
-        create_ecosystem(&args.subcommand_matches("create-ecosystem").expect("Error parsing request"))
+        create_ecosystem(args.subcommand_matches("create-ecosystem").ok_or(Error::MissingArguments)?)
     } else if args.subcommand_matches("update-ecosystem").is_some() {
-        update_ecosystem(&args.subcommand_matches("update-ecosystem").expect("Error parsing request"))
+        update_ecosystem(args.subcommand_matches("update-ecosystem").ok_or(Error::MissingArguments)?)
     } else if args.subcommand_matches("ecosystem-info").is_some() {
         ecosystem_info()
     } else if args.subcommand_matches("invite").is_some() {
-        invite(&args.subcommand_matches("invite").expect("Error parsing request"))
+        invite(args.subcommand_matches("invite").ok_or(Error::MissingArguments)?)
     } else if args.subcommand_matches("add-webhook").is_some() {
-        add_webhook(&args.subcommand_matches("add-webhook").expect("Error parsing request"))
+        add_webhook(args.subcommand_matches("add-webhook").ok_or(Error::MissingArguments)?)
     } else if args.subcommand_matches("delete-webhook").is_some() {
-        delete_webhook(&args.subcommand_matches("delete-webhook").expect("Error parsing request"))
+        delete_webhook(args.subcommand_matches("delete-webhook").ok_or(Error::MissingArguments)?)
+    } else if args.subcommand_matches("upgrade-did").is_some() {
+        upgrade_did(args.subcommand_matches("upgrade-did").ok_or(Error::MissingArguments)?)
     } else {
         Err(Error::MissingArguments)
     }
@@ -89,6 +91,17 @@ fn invite(args: &ArgMatches) -> Result<Command, Error> {
     }))
 }
 
+fn upgrade_did(args: &ArgMatches) -> Result<Command, Error> {
+    let ecosystem = UpgradeDidArgs {
+        method: args.value_of("method").ok_or_else(|| Error::MissingArguments)?.into(),
+        email: args.value_of("email").map(|x| x.into()),
+        wallet_id: args.value_of("wallet-id").map(|x| x.into()),
+        method_options: args.value_of("method-options").map(|x| x.into()),
+    };
+
+    Ok(Command::UpgradeDid(ecosystem))
+}
+
 #[derive(Debug, PartialEq)]
 pub enum Command<'a> {
     CreateEcosystem(CreateEcosystemArgs),
@@ -97,6 +110,7 @@ pub enum Command<'a> {
     AddWebhook(AddWebhookArgs),
     DeleteWebhook(DeleteWebhookArgs),
     Invite(InviteArgs<'a>),
+    UpgradeDid(UpgradeDidArgs),
     InvitationStatus,
 }
 
@@ -105,6 +119,14 @@ pub struct CreateEcosystemArgs {
     pub name: Option<String>,
     pub email: Option<String>,
     pub alias: String,
+}
+
+#[derive(Debug, PartialEq)]
+pub struct UpgradeDidArgs {
+    pub method: String,
+    pub method_options: Option<String>,
+    pub email: Option<String>,
+    pub wallet_id: Option<String>,
 }
 
 #[derive(Debug, PartialEq)]

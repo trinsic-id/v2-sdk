@@ -329,6 +329,31 @@ subcommands:
                   required: false
         - invitation_status:
             about: Check invitation status
+        - upgrade-did:
+            about: Upgrade a public DID to a different method
+            args:
+              - email:
+                  long: email
+                  help: Email address of the wallet owner
+                  takes_value: true
+                  required: false
+              - wallet-id:
+                  long: wallet-id
+                  help: Wallet ID of the owner
+                  takes_value: true
+                  required: false
+              - method:
+                  long: method
+                  help: "DID method to upgrade to (ex: 'ion')"
+                  takes_value: true
+                  required: true
+              - method-options:
+                  long: method-options
+                  help: "DID method options (ex: 'mainnet', 'testnet')"
+                  takes_value: true
+                  required: false
+
+
 args:
   - json:
       long: json

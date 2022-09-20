@@ -248,9 +248,37 @@ pub struct EcosystemInfoRequest {}
 /// Response to `InfoRequest`
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct EcosystemInfoResponse {
-    /// Ecosystem corresponding to requested `ecosystem_id`
+    /// Ecosystem corresponding to current ecosystem in the account token
     #[prost(message, optional, tag = "1")]
     pub ecosystem: ::core::option::Option<Ecosystem>,
+}
+/// Request to fetch information about an ecosystem
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct GetPublicEcosystemInfoRequest {
+    #[prost(string, tag = "1")]
+    pub ecosystem_id: ::prost::alloc::string::String,
+}
+/// Response to `InfoRequest`
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct GetPublicEcosystemInfoResponse {
+    /// Ecosystem corresponding to requested `ecosystem_id`
+    #[prost(message, optional, tag = "1")]
+    pub ecosystem: ::core::option::Option<PublicEcosystemInformation>,
+}
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct PublicEcosystemInformation {
+    /// Public name of this ecosystem
+    #[prost(string, tag = "1")]
+    pub name: ::prost::alloc::string::String,
+    /// Public domain for the owner of this ecosystem
+    #[prost(string, tag = "2")]
+    pub domain: ::prost::alloc::string::String,
+    /// Trinsic verified the domain is owned by the owner of this ecosystem
+    #[prost(bool, tag = "3")]
+    pub domain_verified: bool,
+    /// Style display information
+    #[prost(message, optional, tag = "4")]
+    pub style_display: ::core::option::Option<EcosystemDisplay>,
 }
 /// Request to generate an authentication token for the current account
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
@@ -293,19 +321,18 @@ pub struct GetEventTokenResponse {
     pub token: ::prost::alloc::string::String,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
-pub struct RetrieveVerificationRecordRequest {}
+pub struct RetrieveDomainVerificationRecordRequest {}
 /// Response message containing a TXT record content for domain url verification
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
-pub struct RetrieveVerificationRecordResponse {
+pub struct RetrieveDomainVerificationRecordResponse {
     /// TXT code to use for domain verification
     #[prost(string, tag = "1")]
     pub verification_txt: ::prost::alloc::string::String,
 }
-/// TODO - Should we allow specifying which ecosystem to use?
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
-pub struct RefreshVerificationStatusRequest {}
+pub struct RefreshDomainVerificationStatusRequest {}
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
-pub struct RefreshVerificationStatusResponse {
+pub struct RefreshDomainVerificationStatusResponse {
     /// Domain URL verified
     #[prost(string, tag = "1")]
     pub domain: ::prost::alloc::string::String,
@@ -383,6 +410,109 @@ pub struct GetAuthorizationsResponse {
     /// Grants attached to account
     #[prost(message, repeated, tag = "1")]
     pub grants: ::prost::alloc::vec::Vec<Grant>,
+}
+/// Search for issuers/holders/verifiers
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct SearchWalletConfigurationsRequest {
+    /// SQL filter to execute. `SELECT * FROM _ WHERE \[**queryFilter**\]`
+    #[prost(string, tag = "1")]
+    pub query_filter: ::prost::alloc::string::String,
+    /// Token provided by previous `SearchResponse`
+    /// if more data is available for query
+    #[prost(string, tag = "2")]
+    pub continuation_token: ::prost::alloc::string::String,
+}
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct SearchWalletConfigurationResponse {
+    /// Results matching the search query
+    #[prost(message, repeated, tag = "1")]
+    pub results: ::prost::alloc::vec::Vec<WalletConfiguration>,
+    /// Whether more results are available for this query via `continuation_token`
+    #[prost(bool, tag = "2")]
+    pub has_more: bool,
+    /// Token to fetch next set of results via `SearchRequest`
+    #[prost(string, tag = "4")]
+    pub continuation_token: ::prost::alloc::string::String,
+}
+/// Strongly typed information about wallet configurations
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct WalletConfiguration {
+    #[prost(string, tag = "1")]
+    pub name: ::prost::alloc::string::String,
+    #[prost(string, tag = "2")]
+    pub email: ::prost::alloc::string::String,
+    #[prost(string, tag = "3")]
+    pub sms: ::prost::alloc::string::String,
+    #[prost(string, tag = "4")]
+    pub wallet_id: ::prost::alloc::string::String,
+    #[prost(string, tag = "5")]
+    pub public_did: ::prost::alloc::string::String,
+}
+/// Options for creation of DID on the ION network
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct IonOptions {
+    /// ION network on which DID should be published
+    #[prost(enumeration = "ion_options::IonNetwork", tag = "1")]
+    pub network: i32,
+}
+/// Nested message and enum types in `IonOptions`.
+pub mod ion_options {
+    #[derive(::serde::Serialize, ::serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[repr(i32)]
+    pub enum IonNetwork {
+        TestNet = 0,
+        MainNet = 1,
+    }
+    impl IonNetwork {
+        /// String value of the enum field names used in the ProtoBuf definition.
+        ///
+        /// The values are not transformed in any way and thus are considered stable
+        /// (if the ProtoBuf definition does not change) and safe for programmatic use.
+        pub fn as_str_name(&self) -> &'static str {
+            match self {
+                IonNetwork::TestNet => "TestNet",
+                IonNetwork::MainNet => "MainNet",
+            }
+        }
+    }
+}
+/// Request to upgrade a wallet
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct UpgradeDidRequest {
+    /// DID Method to which wallet should be upgraded
+    #[prost(enumeration = "super::super::common::v1::SupportedDidMethod", tag = "3")]
+    pub method: i32,
+    #[prost(oneof = "upgrade_did_request::Account", tags = "1, 2")]
+    pub account: ::core::option::Option<upgrade_did_request::Account>,
+    #[prost(oneof = "upgrade_did_request::Options", tags = "4")]
+    pub options: ::core::option::Option<upgrade_did_request::Options>,
+}
+/// Nested message and enum types in `UpgradeDidRequest`.
+pub mod upgrade_did_request {
+    #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Oneof)]
+    pub enum Account {
+        /// Email address of account to upgrade.
+        /// Mutually exclusive with `walletId`.
+        #[prost(string, tag = "1")]
+        Email(::prost::alloc::string::String),
+        /// Wallet ID of account to upgrade.
+        /// Mutually exclusive with `email`.
+        #[prost(string, tag = "2")]
+        WalletId(::prost::alloc::string::String),
+    }
+    #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Oneof)]
+    pub enum Options {
+        /// Configuration for creation of DID on ION network
+        #[prost(message, tag = "4")]
+        IonOptions(super::IonOptions),
+    }
+}
+/// Response to `UpgradeDIDRequest`
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct UpgradeDidResponse {
+    /// New DID of wallet
+    #[prost(string, tag = "1")]
+    pub did: ::prost::alloc::string::String,
 }
 /// Type of participant being invited to ecosystem
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
@@ -519,7 +649,7 @@ pub mod provider_client {
             let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/RevokeAuthorization");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        /// Retreive the list of permissions for this particular account/ecosystem
+        /// Retrieve the list of permissions for this particular account/ecosystem
         pub async fn get_authorizations(
             &mut self,
             request: impl tonic::IntoRequest<super::GetAuthorizationsRequest>,
@@ -569,6 +699,19 @@ pub mod provider_client {
                 .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/EcosystemInfo");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        /// Get public ecosystem information about *any* ecosystem
+        pub async fn get_public_ecosystem_info(
+            &mut self,
+            request: impl tonic::IntoRequest<super::GetPublicEcosystemInfoRequest>,
+        ) -> Result<tonic::Response<super::GetPublicEcosystemInfoResponse>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/GetPublicEcosystemInfo");
             self.inner.unary(request.into_request(), path, codec).await
         }
         /// Generates an unprotected authentication token that can be used to
@@ -637,30 +780,56 @@ pub mod provider_client {
             let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/GetEventToken");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        /// Retrieve a random hash TXT that can be used to verify domain ownership
-        pub async fn retrieve_verification_record(
+        /// Upgrade a wallet's DID from `did:key` to another method
+        pub async fn upgrade_did(
             &mut self,
-            request: impl tonic::IntoRequest<super::RetrieveVerificationRecordRequest>,
-        ) -> Result<tonic::Response<super::RetrieveVerificationRecordResponse>, tonic::Status> {
+            request: impl tonic::IntoRequest<super::UpgradeDidRequest>,
+        ) -> Result<tonic::Response<super::UpgradeDidResponse>, tonic::Status> {
             self.inner
                 .ready()
                 .await
                 .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/RetrieveVerificationRecord");
+            let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/UpgradeDID");
             self.inner.unary(request.into_request(), path, codec).await
         }
-        /// Call to verif
-        pub async fn refresh_verification_status(
+        /// Retrieve a random hash TXT that can be used to verify domain ownership
+        pub async fn retrieve_domain_verification_record(
             &mut self,
-            request: impl tonic::IntoRequest<super::RefreshVerificationStatusRequest>,
-        ) -> Result<tonic::Response<super::RefreshVerificationStatusResponse>, tonic::Status> {
+            request: impl tonic::IntoRequest<super::RetrieveDomainVerificationRecordRequest>,
+        ) -> Result<tonic::Response<super::RetrieveDomainVerificationRecordResponse>, tonic::Status> {
             self.inner
                 .ready()
                 .await
                 .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
-            let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/RefreshVerificationStatus");
+            let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/RetrieveDomainVerificationRecord");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        /// Call to verify domain
+        pub async fn refresh_domain_verification_status(
+            &mut self,
+            request: impl tonic::IntoRequest<super::RefreshDomainVerificationStatusRequest>,
+        ) -> Result<tonic::Response<super::RefreshDomainVerificationStatusResponse>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/RefreshDomainVerificationStatus");
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        /// Search for issuers/providers/verifiers in the current ecosystem
+        pub async fn search_wallet_configurations(
+            &mut self,
+            request: impl tonic::IntoRequest<super::SearchWalletConfigurationsRequest>,
+        ) -> Result<tonic::Response<super::SearchWalletConfigurationResponse>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static("/services.provider.v1.Provider/SearchWalletConfigurations");
             self.inner.unary(request.into_request(), path, codec).await
         }
     }
