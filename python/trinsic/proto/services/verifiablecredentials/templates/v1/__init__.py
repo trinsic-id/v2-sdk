@@ -219,7 +219,7 @@ class TemplateData(betterproto.Message):
 
     allow_additional_fields: bool = betterproto.bool_field(5)
     """
-    Whether credentials issued against this template may  contain fields not
+    Whether credentials issued against this template may contain fields not
     defined by template
     """
 
@@ -237,6 +237,9 @@ class TemplateData(betterproto.Message):
 
     created_by: str = betterproto.string_field(10)
     """ID of template creator"""
+
+    date_created: str = betterproto.string_field(11)
+    """Date when template was created as ISO 8601 utc string"""
 
 
 class CredentialTemplatesStub(betterproto.ServiceStub):

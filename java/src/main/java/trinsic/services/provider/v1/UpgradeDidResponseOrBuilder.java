@@ -3,9 +3,9 @@
 
 package trinsic.services.provider.v1;
 
-public interface UpgradeDIDResponseOrBuilder
+public interface UpgradeDidResponseOrBuilder
     extends
-    // @@protoc_insertion_point(interface_extends:services.provider.v1.UpgradeDIDResponse)
+    // @@protoc_insertion_point(interface_extends:services.provider.v1.UpgradeDidResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**

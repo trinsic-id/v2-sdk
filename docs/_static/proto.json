@@ -486,23 +486,23 @@
       "file": "services/common/v1/common.proto",
       "parent": "services.common.v1.ResponseStatus"
     },
-    "services.common.v1.SupportedDIDMethod": {
+    "services.common.v1.SupportedDidMethod": {
       "type": "enum",
       "collection": "enums",
       "file": "services/common/v1/common.proto",
       "parent": ""
     },
-    "services.common.v1.SupportedDIDMethod.ION": {
+    "services.common.v1.SupportedDidMethod.ION": {
       "type": "enum_value",
       "collection": "enum_values",
       "file": "services/common/v1/common.proto",
-      "parent": "services.common.v1.SupportedDIDMethod"
+      "parent": "services.common.v1.SupportedDidMethod"
     },
-    "services.common.v1.SupportedDIDMethod.KEY": {
+    "services.common.v1.SupportedDidMethod.KEY": {
       "type": "enum_value",
       "collection": "enum_values",
       "file": "services/common/v1/common.proto",
-      "parent": "services.common.v1.SupportedDIDMethod"
+      "parent": "services.common.v1.SupportedDidMethod"
     },
     "services.options.SdkTemplateOption": {
       "type": "message",
@@ -918,36 +918,6 @@
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
-    "services.provider.v1.IONOptions": {
-      "type": "message",
-      "collection": "messages",
-      "file": "services/provider/v1/provider.proto",
-      "parent": ""
-    },
-    "services.provider.v1.IONOptions.IONNetwork": {
-      "type": "enum",
-      "collection": "enums",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.IONOptions"
-    },
-    "services.provider.v1.IONOptions.IONNetwork.MainNet": {
-      "type": "enum_value",
-      "collection": "enum_values",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.IONOptions.IONNetwork"
-    },
-    "services.provider.v1.IONOptions.IONNetwork.TestNet": {
-      "type": "enum_value",
-      "collection": "enum_values",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.IONOptions.IONNetwork"
-    },
-    "services.provider.v1.IONOptions.network": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.IONOptions"
-    },
     "services.provider.v1.InvitationStatusRequest": {
       "type": "message",
       "collection": "messages",
@@ -1055,6 +1025,36 @@
       "collection": "fields",
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.InviteResponse"
+    },
+    "services.provider.v1.IonOptions": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.IonOptions.IonNetwork": {
+      "type": "enum",
+      "collection": "enums",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.IonOptions"
+    },
+    "services.provider.v1.IonOptions.IonNetwork.MainNet": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.IonOptions.IonNetwork"
+    },
+    "services.provider.v1.IonOptions.IonNetwork.TestNet": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.IonOptions.IonNetwork"
+    },
+    "services.provider.v1.IonOptions.network": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.IonOptions"
     },
     "services.provider.v1.ParticipantType": {
       "type": "enum",
@@ -1386,47 +1386,47 @@
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.UpdateEcosystemResponse"
     },
-    "services.provider.v1.UpgradeDIDRequest": {
+    "services.provider.v1.UpgradeDidRequest": {
       "type": "message",
       "collection": "messages",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
-    "services.provider.v1.UpgradeDIDRequest.email": {
+    "services.provider.v1.UpgradeDidRequest.email": {
       "type": "field",
       "collection": "fields",
       "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.UpgradeDIDRequest"
+      "parent": "services.provider.v1.UpgradeDidRequest"
     },
-    "services.provider.v1.UpgradeDIDRequest.ion_options": {
+    "services.provider.v1.UpgradeDidRequest.ion_options": {
       "type": "field",
       "collection": "fields",
       "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.UpgradeDIDRequest"
+      "parent": "services.provider.v1.UpgradeDidRequest"
     },
-    "services.provider.v1.UpgradeDIDRequest.method": {
+    "services.provider.v1.UpgradeDidRequest.method": {
       "type": "field",
       "collection": "fields",
       "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.UpgradeDIDRequest"
+      "parent": "services.provider.v1.UpgradeDidRequest"
     },
-    "services.provider.v1.UpgradeDIDRequest.wallet_id": {
+    "services.provider.v1.UpgradeDidRequest.wallet_id": {
       "type": "field",
       "collection": "fields",
       "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.UpgradeDIDRequest"
+      "parent": "services.provider.v1.UpgradeDidRequest"
     },
-    "services.provider.v1.UpgradeDIDResponse": {
+    "services.provider.v1.UpgradeDidResponse": {
       "type": "message",
       "collection": "messages",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
-    "services.provider.v1.UpgradeDIDResponse.did": {
+    "services.provider.v1.UpgradeDidResponse.did": {
       "type": "field",
       "collection": "fields",
       "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.UpgradeDIDResponse"
+      "parent": "services.provider.v1.UpgradeDidResponse"
     },
     "services.provider.v1.WalletConfiguration": {
       "type": "message",
@@ -2400,6 +2400,12 @@
       "file": "services/verifiable-credentials/templates/v1/templates.proto",
       "parent": "services.verifiablecredentials.templates.v1.TemplateData"
     },
+    "services.verifiablecredentials.templates.v1.TemplateData.date_created": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/templates/v1/templates.proto",
+      "parent": "services.verifiablecredentials.templates.v1.TemplateData"
+    },
     "services.verifiablecredentials.templates.v1.TemplateData.ecosystem_id": {
       "type": "field",
       "collection": "fields",
@@ -3136,7 +3142,7 @@
       ],
       "enums": [
         "services.common.v1.ResponseStatus",
-        "services.common.v1.SupportedDIDMethod"
+        "services.common.v1.SupportedDidMethod"
       ],
       "enum_values": [
         "services.common.v1.ResponseStatus.SUCCESS",
@@ -3145,8 +3151,8 @@
         "services.common.v1.ResponseStatus.ITEM_NOT_FOUND",
         "services.common.v1.ResponseStatus.SERIALIZATION_ERROR",
         "services.common.v1.ResponseStatus.UNKNOWN_ERROR",
-        "services.common.v1.SupportedDIDMethod.KEY",
-        "services.common.v1.SupportedDIDMethod.ION"
+        "services.common.v1.SupportedDidMethod.KEY",
+        "services.common.v1.SupportedDidMethod.ION"
       ]
     },
     "services/event/v1/event.proto": {
@@ -3293,9 +3299,9 @@
         "services.provider.v1.SearchWalletConfigurationsRequest",
         "services.provider.v1.SearchWalletConfigurationResponse",
         "services.provider.v1.WalletConfiguration",
-        "services.provider.v1.IONOptions",
-        "services.provider.v1.UpgradeDIDRequest",
-        "services.provider.v1.UpgradeDIDResponse"
+        "services.provider.v1.IonOptions",
+        "services.provider.v1.UpgradeDidRequest",
+        "services.provider.v1.UpgradeDidResponse"
       ],
       "fields": [
         "services.provider.v1.InviteRequest.participant",
@@ -3378,16 +3384,16 @@
         "services.provider.v1.WalletConfiguration.sms",
         "services.provider.v1.WalletConfiguration.wallet_id",
         "services.provider.v1.WalletConfiguration.public_did",
-        "services.provider.v1.IONOptions.network",
-        "services.provider.v1.UpgradeDIDRequest.email",
-        "services.provider.v1.UpgradeDIDRequest.wallet_id",
-        "services.provider.v1.UpgradeDIDRequest.method",
-        "services.provider.v1.UpgradeDIDRequest.ion_options",
-        "services.provider.v1.UpgradeDIDResponse.did"
+        "services.provider.v1.IonOptions.network",
+        "services.provider.v1.UpgradeDidRequest.email",
+        "services.provider.v1.UpgradeDidRequest.wallet_id",
+        "services.provider.v1.UpgradeDidRequest.method",
+        "services.provider.v1.UpgradeDidRequest.ion_options",
+        "services.provider.v1.UpgradeDidResponse.did"
       ],
       "enums": [
         "services.provider.v1.InvitationStatusResponse.Status",
-        "services.provider.v1.IONOptions.IONNetwork",
+        "services.provider.v1.IonOptions.IonNetwork",
         "services.provider.v1.ParticipantType"
       ],
       "enum_values": [
@@ -3395,8 +3401,8 @@
         "services.provider.v1.InvitationStatusResponse.Status.InvitationSent",
         "services.provider.v1.InvitationStatusResponse.Status.Completed",
         "services.provider.v1.InvitationStatusResponse.Status.Expired",
-        "services.provider.v1.IONOptions.IONNetwork.TestNet",
-        "services.provider.v1.IONOptions.IONNetwork.MainNet",
+        "services.provider.v1.IonOptions.IonNetwork.TestNet",
+        "services.provider.v1.IonOptions.IonNetwork.MainNet",
         "services.provider.v1.ParticipantType.participant_type_individual",
         "services.provider.v1.ParticipantType.participant_type_organization"
       ]
@@ -3599,6 +3605,7 @@
         "services.verifiablecredentials.templates.v1.TemplateData.ecosystem_id",
         "services.verifiablecredentials.templates.v1.TemplateData.type",
         "services.verifiablecredentials.templates.v1.TemplateData.created_by",
+        "services.verifiablecredentials.templates.v1.TemplateData.date_created",
         "services.verifiablecredentials.templates.v1.TemplateData.FieldsEntry.key",
         "services.verifiablecredentials.templates.v1.TemplateData.FieldsEntry.value"
       ],
@@ -3943,8 +3950,8 @@
     "services.provider.v1.Provider.UpgradeDID": {
       "name": "UpgradeDID",
       "full_name": "services.provider.v1.Provider.UpgradeDID",
-      "input_type": "services.provider.v1.UpgradeDIDRequest",
-      "output_type": "services.provider.v1.UpgradeDIDResponse",
+      "input_type": "services.provider.v1.UpgradeDidRequest",
+      "output_type": "services.provider.v1.UpgradeDidResponse",
       "description": "Upgrade a wallet's DID from `did:key` to another method"
     },
     "services.trustregistry.v1.TrustRegistry.AddFramework": {
@@ -4596,18 +4603,6 @@
       "messages": [],
       "enums": []
     },
-    "services.provider.v1.IONOptions": {
-      "name": "IONOptions",
-      "full_name": "services.provider.v1.IONOptions",
-      "description": "Options for creation of DID on the ION network",
-      "fields": [
-        "services.provider.v1.IONOptions.network"
-      ],
-      "messages": [],
-      "enums": [
-        "services.provider.v1.IONOptions.IONNetwork"
-      ]
-    },
     "services.provider.v1.InvitationStatusRequest": {
       "name": "InvitationStatusRequest",
       "full_name": "services.provider.v1.InvitationStatusRequest",
@@ -4663,6 +4658,18 @@
       ],
       "messages": [],
       "enums": []
+    },
+    "services.provider.v1.IonOptions": {
+      "name": "IonOptions",
+      "full_name": "services.provider.v1.IonOptions",
+      "description": "Options for creation of DID on the ION network",
+      "fields": [
+        "services.provider.v1.IonOptions.network"
+      ],
+      "messages": [],
+      "enums": [
+        "services.provider.v1.IonOptions.IonNetwork"
+      ]
     },
     "services.provider.v1.PublicEcosystemInformation": {
       "name": "PublicEcosystemInformation",
@@ -4782,25 +4789,25 @@
       "messages": [],
       "enums": []
     },
-    "services.provider.v1.UpgradeDIDRequest": {
-      "name": "UpgradeDIDRequest",
-      "full_name": "services.provider.v1.UpgradeDIDRequest",
+    "services.provider.v1.UpgradeDidRequest": {
+      "name": "UpgradeDidRequest",
+      "full_name": "services.provider.v1.UpgradeDidRequest",
       "description": "Request to upgrade a wallet",
       "fields": [
-        "services.provider.v1.UpgradeDIDRequest.email",
-        "services.provider.v1.UpgradeDIDRequest.wallet_id",
-        "services.provider.v1.UpgradeDIDRequest.method",
-        "services.provider.v1.UpgradeDIDRequest.ion_options"
+        "services.provider.v1.UpgradeDidRequest.email",
+        "services.provider.v1.UpgradeDidRequest.wallet_id",
+        "services.provider.v1.UpgradeDidRequest.method",
+        "services.provider.v1.UpgradeDidRequest.ion_options"
       ],
       "messages": [],
       "enums": []
     },
-    "services.provider.v1.UpgradeDIDResponse": {
-      "name": "UpgradeDIDResponse",
-      "full_name": "services.provider.v1.UpgradeDIDResponse",
+    "services.provider.v1.UpgradeDidResponse": {
+      "name": "UpgradeDidResponse",
+      "full_name": "services.provider.v1.UpgradeDidResponse",
       "description": "Response to `UpgradeDIDRequest`",
       "fields": [
-        "services.provider.v1.UpgradeDIDResponse.did"
+        "services.provider.v1.UpgradeDidResponse.did"
       ],
       "messages": [],
       "enums": []
@@ -5275,7 +5282,8 @@
         "services.verifiablecredentials.templates.v1.TemplateData.context_uri",
         "services.verifiablecredentials.templates.v1.TemplateData.ecosystem_id",
         "services.verifiablecredentials.templates.v1.TemplateData.type",
-        "services.verifiablecredentials.templates.v1.TemplateData.created_by"
+        "services.verifiablecredentials.templates.v1.TemplateData.created_by",
+        "services.verifiablecredentials.templates.v1.TemplateData.date_created"
       ],
       "messages": [
         "services.verifiablecredentials.templates.v1.TemplateData.FieldsEntry"
@@ -6271,14 +6279,6 @@
       "full_type": "string",
       "description": "Wallet ID of account being granted permission.\nMutually exclusive with `email`."
     },
-    "services.provider.v1.IONOptions.network": {
-      "name": "network",
-      "full_name": "services.provider.v1.IONOptions.network",
-      "label": "LABEL_OPTIONAL",
-      "type": "IONNetwork",
-      "full_type": "services.provider.v1.IONOptions.IONNetwork",
-      "description": "ION network on which DID should be published"
-    },
     "services.provider.v1.InvitationStatusRequest.invitation_id": {
       "name": "invitation_id",
       "full_name": "services.provider.v1.InvitationStatusRequest.invitation_id",
@@ -6348,6 +6348,14 @@
       "type": "string",
       "full_type": "string",
       "description": "ID of created invitation"
+    },
+    "services.provider.v1.IonOptions.network": {
+      "name": "network",
+      "full_name": "services.provider.v1.IonOptions.network",
+      "label": "LABEL_OPTIONAL",
+      "type": "IonNetwork",
+      "full_type": "services.provider.v1.IonOptions.IonNetwork",
+      "description": "ION network on which DID should be published"
     },
     "services.provider.v1.PublicEcosystemInformation.domain": {
       "name": "domain",
@@ -6528,41 +6536,41 @@
       "full_type": "services.provider.v1.Ecosystem",
       "description": "Current ecosystem metadata, post-update"
     },
-    "services.provider.v1.UpgradeDIDRequest.email": {
+    "services.provider.v1.UpgradeDidRequest.email": {
       "name": "email",
-      "full_name": "services.provider.v1.UpgradeDIDRequest.email",
+      "full_name": "services.provider.v1.UpgradeDidRequest.email",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
       "description": "Email address of account to upgrade.\nMutually exclusive with `walletId`."
     },
-    "services.provider.v1.UpgradeDIDRequest.ion_options": {
+    "services.provider.v1.UpgradeDidRequest.ion_options": {
       "name": "ion_options",
-      "full_name": "services.provider.v1.UpgradeDIDRequest.ion_options",
+      "full_name": "services.provider.v1.UpgradeDidRequest.ion_options",
       "label": "LABEL_OPTIONAL",
-      "type": "IONOptions",
-      "full_type": "services.provider.v1.IONOptions",
+      "type": "IonOptions",
+      "full_type": "services.provider.v1.IonOptions",
       "description": "Configuration for creation of DID on ION network"
     },
-    "services.provider.v1.UpgradeDIDRequest.method": {
+    "services.provider.v1.UpgradeDidRequest.method": {
       "name": "method",
-      "full_name": "services.provider.v1.UpgradeDIDRequest.method",
+      "full_name": "services.provider.v1.UpgradeDidRequest.method",
       "label": "LABEL_OPTIONAL",
-      "type": "SupportedDIDMethod",
-      "full_type": "services.common.v1.SupportedDIDMethod",
+      "type": "SupportedDidMethod",
+      "full_type": "services.common.v1.SupportedDidMethod",
       "description": "DID Method to which wallet should be upgraded"
     },
-    "services.provider.v1.UpgradeDIDRequest.wallet_id": {
+    "services.provider.v1.UpgradeDidRequest.wallet_id": {
       "name": "wallet_id",
-      "full_name": "services.provider.v1.UpgradeDIDRequest.wallet_id",
+      "full_name": "services.provider.v1.UpgradeDidRequest.wallet_id",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
       "description": "Wallet ID of account to upgrade.\nMutually exclusive with `email`."
     },
-    "services.provider.v1.UpgradeDIDResponse.did": {
+    "services.provider.v1.UpgradeDidResponse.did": {
       "name": "did",
-      "full_name": "services.provider.v1.UpgradeDIDResponse.did",
+      "full_name": "services.provider.v1.UpgradeDidResponse.did",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
@@ -7270,7 +7278,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "bool",
       "full_type": "bool",
-      "description": "Whether credentials issued against this template may \ncontain fields not defined by template"
+      "description": "Whether credentials issued against this template may\ncontain fields not defined by template"
     },
     "services.verifiablecredentials.templates.v1.TemplateData.context_uri": {
       "name": "context_uri",
@@ -7287,6 +7295,14 @@
       "type": "string",
       "full_type": "string",
       "description": "ID of template creator"
+    },
+    "services.verifiablecredentials.templates.v1.TemplateData.date_created": {
+      "name": "date_created",
+      "full_name": "services.verifiablecredentials.templates.v1.TemplateData.date_created",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Date when template was created as ISO 8601 utc string"
     },
     "services.verifiablecredentials.templates.v1.TemplateData.ecosystem_id": {
       "name": "ecosystem_id",
@@ -7814,22 +7830,13 @@
         "services.common.v1.ResponseStatus.UNKNOWN_ERROR"
       ]
     },
-    "services.common.v1.SupportedDIDMethod": {
-      "name": "SupportedDIDMethod",
-      "full_name": "services.common.v1.SupportedDIDMethod",
+    "services.common.v1.SupportedDidMethod": {
+      "name": "SupportedDidMethod",
+      "full_name": "services.common.v1.SupportedDidMethod",
       "description": "Enum of all supported DID Methods",
       "values": [
-        "services.common.v1.SupportedDIDMethod.KEY",
-        "services.common.v1.SupportedDIDMethod.ION"
-      ]
-    },
-    "services.provider.v1.IONOptions.IONNetwork": {
-      "name": "IONNetwork",
-      "full_name": "services.provider.v1.IONOptions.IONNetwork",
-      "description": "",
-      "values": [
-        "services.provider.v1.IONOptions.IONNetwork.TestNet",
-        "services.provider.v1.IONOptions.IONNetwork.MainNet"
+        "services.common.v1.SupportedDidMethod.KEY",
+        "services.common.v1.SupportedDidMethod.ION"
       ]
     },
     "services.provider.v1.InvitationStatusResponse.Status": {
@@ -7841,6 +7848,15 @@
         "services.provider.v1.InvitationStatusResponse.Status.InvitationSent",
         "services.provider.v1.InvitationStatusResponse.Status.Completed",
         "services.provider.v1.InvitationStatusResponse.Status.Expired"
+      ]
+    },
+    "services.provider.v1.IonOptions.IonNetwork": {
+      "name": "IonNetwork",
+      "full_name": "services.provider.v1.IonOptions.IonNetwork",
+      "description": "",
+      "values": [
+        "services.provider.v1.IonOptions.IonNetwork.TestNet",
+        "services.provider.v1.IonOptions.IonNetwork.MainNet"
       ]
     },
     "services.provider.v1.ParticipantType": {
@@ -7959,28 +7975,16 @@
       "description": "",
       "value": 11
     },
-    "services.common.v1.SupportedDIDMethod.ION": {
+    "services.common.v1.SupportedDidMethod.ION": {
       "name": "ION",
-      "full_name": "services.common.v1.SupportedDIDMethod.ION",
+      "full_name": "services.common.v1.SupportedDidMethod.ION",
       "description": "The did:ion method",
       "value": 1
     },
-    "services.common.v1.SupportedDIDMethod.KEY": {
+    "services.common.v1.SupportedDidMethod.KEY": {
       "name": "KEY",
-      "full_name": "services.common.v1.SupportedDIDMethod.KEY",
+      "full_name": "services.common.v1.SupportedDidMethod.KEY",
       "description": "The did:key method -- all wallets use this by default",
-      "value": 0
-    },
-    "services.provider.v1.IONOptions.IONNetwork.MainNet": {
-      "name": "MainNet",
-      "full_name": "services.provider.v1.IONOptions.IONNetwork.MainNet",
-      "description": "",
-      "value": 1
-    },
-    "services.provider.v1.IONOptions.IONNetwork.TestNet": {
-      "name": "TestNet",
-      "full_name": "services.provider.v1.IONOptions.IONNetwork.TestNet",
-      "description": "",
       "value": 0
     },
     "services.provider.v1.InvitationStatusResponse.Status.Completed": {
@@ -8006,6 +8010,18 @@
       "full_name": "services.provider.v1.InvitationStatusResponse.Status.InvitationSent",
       "description": "The participant has been invited",
       "value": 1
+    },
+    "services.provider.v1.IonOptions.IonNetwork.MainNet": {
+      "name": "MainNet",
+      "full_name": "services.provider.v1.IonOptions.IonNetwork.MainNet",
+      "description": "",
+      "value": 1
+    },
+    "services.provider.v1.IonOptions.IonNetwork.TestNet": {
+      "name": "TestNet",
+      "full_name": "services.provider.v1.IonOptions.IonNetwork.TestNet",
+      "description": "",
+      "value": 0
     },
     "services.provider.v1.ParticipantType.participant_type_individual": {
       "name": "participant_type_individual",

@@ -10,26 +10,26 @@ package trinsic.services.provider.v1;
  * Response to `UpgradeDIDRequest`
  * </pre>
  *
- * Protobuf type {@code services.provider.v1.UpgradeDIDResponse}
+ * Protobuf type {@code services.provider.v1.UpgradeDidResponse}
  */
-public final class UpgradeDIDResponse extends com.google.protobuf.GeneratedMessageV3
+public final class UpgradeDidResponse extends com.google.protobuf.GeneratedMessageV3
     implements
-    // @@protoc_insertion_point(message_implements:services.provider.v1.UpgradeDIDResponse)
-    UpgradeDIDResponseOrBuilder {
+    // @@protoc_insertion_point(message_implements:services.provider.v1.UpgradeDidResponse)
+    UpgradeDidResponseOrBuilder {
   private static final long serialVersionUID = 0L;
-  // Use UpgradeDIDResponse.newBuilder() to construct.
-  private UpgradeDIDResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use UpgradeDidResponse.newBuilder() to construct.
+  private UpgradeDidResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
 
-  private UpgradeDIDResponse() {
+  private UpgradeDidResponse() {
     did_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
-    return new UpgradeDIDResponse();
+    return new UpgradeDidResponse();
   }
 
   @java.lang.Override
@@ -37,7 +37,7 @@ public final class UpgradeDIDResponse extends com.google.protobuf.GeneratedMessa
     return this.unknownFields;
   }
 
-  private UpgradeDIDResponse(
+  private UpgradeDidResponse(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -85,17 +85,17 @@ public final class UpgradeDIDResponse extends com.google.protobuf.GeneratedMessa
 
   public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
     return trinsic.services.provider.v1.ProviderOuterClass
-        .internal_static_services_provider_v1_UpgradeDIDResponse_descriptor;
+        .internal_static_services_provider_v1_UpgradeDidResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return trinsic.services.provider.v1.ProviderOuterClass
-        .internal_static_services_provider_v1_UpgradeDIDResponse_fieldAccessorTable
+        .internal_static_services_provider_v1_UpgradeDidResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.provider.v1.UpgradeDIDResponse.class,
-            trinsic.services.provider.v1.UpgradeDIDResponse.Builder.class);
+            trinsic.services.provider.v1.UpgradeDidResponse.class,
+            trinsic.services.provider.v1.UpgradeDidResponse.Builder.class);
   }
 
   public static final int DID_FIELD_NUMBER = 1;
@@ -186,11 +186,11 @@ public final class UpgradeDIDResponse extends com.google.protobuf.GeneratedMessa
     if (obj == this) {
       return true;
     }
-    if (!(obj instanceof trinsic.services.provider.v1.UpgradeDIDResponse)) {
+    if (!(obj instanceof trinsic.services.provider.v1.UpgradeDidResponse)) {
       return super.equals(obj);
     }
-    trinsic.services.provider.v1.UpgradeDIDResponse other =
-        (trinsic.services.provider.v1.UpgradeDIDResponse) obj;
+    trinsic.services.provider.v1.UpgradeDidResponse other =
+        (trinsic.services.provider.v1.UpgradeDidResponse) obj;
 
     if (!getDid().equals(other.getDid())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -211,71 +211,71 @@ public final class UpgradeDIDResponse extends com.google.protobuf.GeneratedMessa
     return hash;
   }
 
-  public static trinsic.services.provider.v1.UpgradeDIDResponse parseFrom(java.nio.ByteBuffer data)
+  public static trinsic.services.provider.v1.UpgradeDidResponse parseFrom(java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.provider.v1.UpgradeDIDResponse parseFrom(
+  public static trinsic.services.provider.v1.UpgradeDidResponse parseFrom(
       java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.provider.v1.UpgradeDIDResponse parseFrom(
+  public static trinsic.services.provider.v1.UpgradeDidResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.provider.v1.UpgradeDIDResponse parseFrom(
+  public static trinsic.services.provider.v1.UpgradeDidResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.provider.v1.UpgradeDIDResponse parseFrom(byte[] data)
+  public static trinsic.services.provider.v1.UpgradeDidResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.provider.v1.UpgradeDIDResponse parseFrom(
+  public static trinsic.services.provider.v1.UpgradeDidResponse parseFrom(
       byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.provider.v1.UpgradeDIDResponse parseFrom(java.io.InputStream input)
+  public static trinsic.services.provider.v1.UpgradeDidResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.provider.v1.UpgradeDIDResponse parseFrom(
+  public static trinsic.services.provider.v1.UpgradeDidResponse parseFrom(
       java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
         PARSER, input, extensionRegistry);
   }
 
-  public static trinsic.services.provider.v1.UpgradeDIDResponse parseDelimitedFrom(
+  public static trinsic.services.provider.v1.UpgradeDidResponse parseDelimitedFrom(
       java.io.InputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.provider.v1.UpgradeDIDResponse parseDelimitedFrom(
+  public static trinsic.services.provider.v1.UpgradeDidResponse parseDelimitedFrom(
       java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
         PARSER, input, extensionRegistry);
   }
 
-  public static trinsic.services.provider.v1.UpgradeDIDResponse parseFrom(
+  public static trinsic.services.provider.v1.UpgradeDidResponse parseFrom(
       com.google.protobuf.CodedInputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.provider.v1.UpgradeDIDResponse parseFrom(
+  public static trinsic.services.provider.v1.UpgradeDidResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -292,7 +292,7 @@ public final class UpgradeDIDResponse extends com.google.protobuf.GeneratedMessa
     return DEFAULT_INSTANCE.toBuilder();
   }
 
-  public static Builder newBuilder(trinsic.services.provider.v1.UpgradeDIDResponse prototype) {
+  public static Builder newBuilder(trinsic.services.provider.v1.UpgradeDidResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
 
@@ -313,28 +313,28 @@ public final class UpgradeDIDResponse extends com.google.protobuf.GeneratedMessa
    * Response to `UpgradeDIDRequest`
    * </pre>
    *
-   * Protobuf type {@code services.provider.v1.UpgradeDIDResponse}
+   * Protobuf type {@code services.provider.v1.UpgradeDidResponse}
    */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
-      // @@protoc_insertion_point(builder_implements:services.provider.v1.UpgradeDIDResponse)
-      trinsic.services.provider.v1.UpgradeDIDResponseOrBuilder {
+      // @@protoc_insertion_point(builder_implements:services.provider.v1.UpgradeDidResponse)
+      trinsic.services.provider.v1.UpgradeDidResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
       return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_UpgradeDIDResponse_descriptor;
+          .internal_static_services_provider_v1_UpgradeDidResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_UpgradeDIDResponse_fieldAccessorTable
+          .internal_static_services_provider_v1_UpgradeDidResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.provider.v1.UpgradeDIDResponse.class,
-              trinsic.services.provider.v1.UpgradeDIDResponse.Builder.class);
+              trinsic.services.provider.v1.UpgradeDidResponse.class,
+              trinsic.services.provider.v1.UpgradeDidResponse.Builder.class);
     }
 
-    // Construct using trinsic.services.provider.v1.UpgradeDIDResponse.newBuilder()
+    // Construct using trinsic.services.provider.v1.UpgradeDidResponse.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -359,17 +359,17 @@ public final class UpgradeDIDResponse extends com.google.protobuf.GeneratedMessa
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
       return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_UpgradeDIDResponse_descriptor;
+          .internal_static_services_provider_v1_UpgradeDidResponse_descriptor;
     }
 
     @java.lang.Override
-    public trinsic.services.provider.v1.UpgradeDIDResponse getDefaultInstanceForType() {
-      return trinsic.services.provider.v1.UpgradeDIDResponse.getDefaultInstance();
+    public trinsic.services.provider.v1.UpgradeDidResponse getDefaultInstanceForType() {
+      return trinsic.services.provider.v1.UpgradeDidResponse.getDefaultInstance();
     }
 
     @java.lang.Override
-    public trinsic.services.provider.v1.UpgradeDIDResponse build() {
-      trinsic.services.provider.v1.UpgradeDIDResponse result = buildPartial();
+    public trinsic.services.provider.v1.UpgradeDidResponse build() {
+      trinsic.services.provider.v1.UpgradeDidResponse result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -377,9 +377,9 @@ public final class UpgradeDIDResponse extends com.google.protobuf.GeneratedMessa
     }
 
     @java.lang.Override
-    public trinsic.services.provider.v1.UpgradeDIDResponse buildPartial() {
-      trinsic.services.provider.v1.UpgradeDIDResponse result =
-          new trinsic.services.provider.v1.UpgradeDIDResponse(this);
+    public trinsic.services.provider.v1.UpgradeDidResponse buildPartial() {
+      trinsic.services.provider.v1.UpgradeDidResponse result =
+          new trinsic.services.provider.v1.UpgradeDidResponse(this);
       result.did_ = did_;
       onBuilt();
       return result;
@@ -420,16 +420,16 @@ public final class UpgradeDIDResponse extends com.google.protobuf.GeneratedMessa
 
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof trinsic.services.provider.v1.UpgradeDIDResponse) {
-        return mergeFrom((trinsic.services.provider.v1.UpgradeDIDResponse) other);
+      if (other instanceof trinsic.services.provider.v1.UpgradeDidResponse) {
+        return mergeFrom((trinsic.services.provider.v1.UpgradeDidResponse) other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(trinsic.services.provider.v1.UpgradeDIDResponse other) {
-      if (other == trinsic.services.provider.v1.UpgradeDIDResponse.getDefaultInstance())
+    public Builder mergeFrom(trinsic.services.provider.v1.UpgradeDidResponse other) {
+      if (other == trinsic.services.provider.v1.UpgradeDidResponse.getDefaultInstance())
         return this;
       if (!other.getDid().isEmpty()) {
         did_ = other.did_;
@@ -450,11 +450,11 @@ public final class UpgradeDIDResponse extends com.google.protobuf.GeneratedMessa
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      trinsic.services.provider.v1.UpgradeDIDResponse parsedMessage = null;
+      trinsic.services.provider.v1.UpgradeDidResponse parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (trinsic.services.provider.v1.UpgradeDIDResponse) e.getUnfinishedMessage();
+        parsedMessage = (trinsic.services.provider.v1.UpgradeDidResponse) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -581,42 +581,42 @@ public final class UpgradeDIDResponse extends com.google.protobuf.GeneratedMessa
       return super.mergeUnknownFields(unknownFields);
     }
 
-    // @@protoc_insertion_point(builder_scope:services.provider.v1.UpgradeDIDResponse)
+    // @@protoc_insertion_point(builder_scope:services.provider.v1.UpgradeDidResponse)
   }
 
-  // @@protoc_insertion_point(class_scope:services.provider.v1.UpgradeDIDResponse)
-  private static final trinsic.services.provider.v1.UpgradeDIDResponse DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:services.provider.v1.UpgradeDidResponse)
+  private static final trinsic.services.provider.v1.UpgradeDidResponse DEFAULT_INSTANCE;
 
   static {
-    DEFAULT_INSTANCE = new trinsic.services.provider.v1.UpgradeDIDResponse();
+    DEFAULT_INSTANCE = new trinsic.services.provider.v1.UpgradeDidResponse();
   }
 
-  public static trinsic.services.provider.v1.UpgradeDIDResponse getDefaultInstance() {
+  public static trinsic.services.provider.v1.UpgradeDidResponse getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<UpgradeDIDResponse> PARSER =
-      new com.google.protobuf.AbstractParser<UpgradeDIDResponse>() {
+  private static final com.google.protobuf.Parser<UpgradeDidResponse> PARSER =
+      new com.google.protobuf.AbstractParser<UpgradeDidResponse>() {
         @java.lang.Override
-        public UpgradeDIDResponse parsePartialFrom(
+        public UpgradeDidResponse parsePartialFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
-          return new UpgradeDIDResponse(input, extensionRegistry);
+          return new UpgradeDidResponse(input, extensionRegistry);
         }
       };
 
-  public static com.google.protobuf.Parser<UpgradeDIDResponse> parser() {
+  public static com.google.protobuf.Parser<UpgradeDidResponse> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<UpgradeDIDResponse> getParserForType() {
+  public com.google.protobuf.Parser<UpgradeDidResponse> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public trinsic.services.provider.v1.UpgradeDIDResponse getDefaultInstanceForType() {
+  public trinsic.services.provider.v1.UpgradeDidResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 }

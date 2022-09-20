@@ -3,9 +3,9 @@
 
 package trinsic.services.provider.v1;
 
-public interface IONOptionsOrBuilder
+public interface IonOptionsOrBuilder
     extends
-    // @@protoc_insertion_point(interface_extends:services.provider.v1.IONOptions)
+    // @@protoc_insertion_point(interface_extends:services.provider.v1.IonOptions)
     com.google.protobuf.MessageOrBuilder {
 
   /**
@@ -15,7 +15,7 @@ public interface IONOptionsOrBuilder
    * ION network on which DID should be published
    * </pre>
    *
-   * <code>.services.provider.v1.IONOptions.IONNetwork network = 1;</code>
+   * <code>.services.provider.v1.IonOptions.IonNetwork network = 1;</code>
    *
    * @return The enum numeric value on the wire for network.
    */
@@ -27,9 +27,9 @@ public interface IONOptionsOrBuilder
    * ION network on which DID should be published
    * </pre>
    *
-   * <code>.services.provider.v1.IONOptions.IONNetwork network = 1;</code>
+   * <code>.services.provider.v1.IonOptions.IonNetwork network = 1;</code>
    *
    * @return The network.
    */
-  trinsic.services.provider.v1.IONOptions.IONNetwork getNetwork();
+  trinsic.services.provider.v1.IonOptions.IonNetwork getNetwork();
 }

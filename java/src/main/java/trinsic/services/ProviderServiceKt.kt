@@ -99,7 +99,7 @@ class ProviderServiceKt(options: Options.ServiceOptions.Builder?) : ServiceBase(
     return withMetadata(stub, request).getEventToken(request)
   }
   @Throws(InvalidProtocolBufferException::class, DidException::class)
-  suspend fun upgradeDID(request: UpgradeDIDRequest): UpgradeDIDResponse {
+  suspend fun upgradeDID(request: UpgradeDidRequest): UpgradeDidResponse {
     /** Upgrade a wallet's DID from `did:key` to another method */
     return withMetadata(stub, request).upgradeDID(request)
   }

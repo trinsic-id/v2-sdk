@@ -128,49 +128,49 @@ func (InvitationStatusResponse_Status) EnumDescriptor() ([]byte, []int) {
 	return file_services_provider_v1_provider_proto_rawDescGZIP(), []int{3, 0}
 }
 
-type IONOptions_IONNetwork int32
+type IonOptions_IonNetwork int32
 
 const (
-	IONOptions_TestNet IONOptions_IONNetwork = 0
-	IONOptions_MainNet IONOptions_IONNetwork = 1
+	IonOptions_TestNet IonOptions_IonNetwork = 0
+	IonOptions_MainNet IonOptions_IonNetwork = 1
 )
 
-// Enum value maps for IONOptions_IONNetwork.
+// Enum value maps for IonOptions_IonNetwork.
 var (
-	IONOptions_IONNetwork_name = map[int32]string{
+	IonOptions_IonNetwork_name = map[int32]string{
 		0: "TestNet",
 		1: "MainNet",
 	}
-	IONOptions_IONNetwork_value = map[string]int32{
+	IonOptions_IonNetwork_value = map[string]int32{
 		"TestNet": 0,
 		"MainNet": 1,
 	}
 )
 
-func (x IONOptions_IONNetwork) Enum() *IONOptions_IONNetwork {
-	p := new(IONOptions_IONNetwork)
+func (x IonOptions_IonNetwork) Enum() *IonOptions_IonNetwork {
+	p := new(IonOptions_IonNetwork)
 	*p = x
 	return p
 }
 
-func (x IONOptions_IONNetwork) String() string {
+func (x IonOptions_IonNetwork) String() string {
 	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
 }
 
-func (IONOptions_IONNetwork) Descriptor() protoreflect.EnumDescriptor {
+func (IonOptions_IonNetwork) Descriptor() protoreflect.EnumDescriptor {
 	return file_services_provider_v1_provider_proto_enumTypes[2].Descriptor()
 }
 
-func (IONOptions_IONNetwork) Type() protoreflect.EnumType {
+func (IonOptions_IonNetwork) Type() protoreflect.EnumType {
 	return &file_services_provider_v1_provider_proto_enumTypes[2]
 }
 
-func (x IONOptions_IONNetwork) Number() protoreflect.EnumNumber {
+func (x IonOptions_IonNetwork) Number() protoreflect.EnumNumber {
 	return protoreflect.EnumNumber(x)
 }
 
-// Deprecated: Use IONOptions_IONNetwork.Descriptor instead.
-func (IONOptions_IONNetwork) EnumDescriptor() ([]byte, []int) {
+// Deprecated: Use IonOptions_IonNetwork.Descriptor instead.
+func (IonOptions_IonNetwork) EnumDescriptor() ([]byte, []int) {
 	return file_services_provider_v1_provider_proto_rawDescGZIP(), []int{41, 0}
 }
 
@@ -2589,17 +2589,17 @@ func (x *WalletConfiguration) GetPublicDid() string {
 }
 
 // Options for creation of DID on the ION network
-type IONOptions struct {
+type IonOptions struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
 	// ION network on which DID should be published
-	Network IONOptions_IONNetwork `protobuf:"varint,1,opt,name=network,proto3,enum=services.provider.v1.IONOptions_IONNetwork" json:"network,omitempty"`
+	Network IonOptions_IonNetwork `protobuf:"varint,1,opt,name=network,proto3,enum=services.provider.v1.IonOptions_IonNetwork" json:"network,omitempty"`
 }
 
-func (x *IONOptions) Reset() {
-	*x = IONOptions{}
+func (x *IonOptions) Reset() {
+	*x = IonOptions{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_services_provider_v1_provider_proto_msgTypes[41]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2607,13 +2607,13 @@ func (x *IONOptions) Reset() {
 	}
 }
 
-func (x *IONOptions) String() string {
+func (x *IonOptions) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*IONOptions) ProtoMessage() {}
+func (*IonOptions) ProtoMessage() {}
 
-func (x *IONOptions) ProtoReflect() protoreflect.Message {
+func (x *IonOptions) ProtoReflect() protoreflect.Message {
 	mi := &file_services_provider_v1_provider_proto_msgTypes[41]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2625,39 +2625,39 @@ func (x *IONOptions) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use IONOptions.ProtoReflect.Descriptor instead.
-func (*IONOptions) Descriptor() ([]byte, []int) {
+// Deprecated: Use IonOptions.ProtoReflect.Descriptor instead.
+func (*IonOptions) Descriptor() ([]byte, []int) {
 	return file_services_provider_v1_provider_proto_rawDescGZIP(), []int{41}
 }
 
-func (x *IONOptions) GetNetwork() IONOptions_IONNetwork {
+func (x *IonOptions) GetNetwork() IonOptions_IonNetwork {
 	if x != nil {
 		return x.Network
 	}
-	return IONOptions_TestNet
+	return IonOptions_TestNet
 }
 
 // Request to upgrade a wallet
-type UpgradeDIDRequest struct {
+type UpgradeDidRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
 	// Types that are assignable to Account:
 	//
-	//	*UpgradeDIDRequest_Email
-	//	*UpgradeDIDRequest_WalletId
-	Account isUpgradeDIDRequest_Account `protobuf_oneof:"account"`
+	//	*UpgradeDidRequest_Email
+	//	*UpgradeDidRequest_WalletId
+	Account isUpgradeDidRequest_Account `protobuf_oneof:"account"`
 	// DID Method to which wallet should be upgraded
-	Method common.SupportedDIDMethod `protobuf:"varint,3,opt,name=method,proto3,enum=services.common.v1.SupportedDIDMethod" json:"method,omitempty"`
+	Method common.SupportedDidMethod `protobuf:"varint,3,opt,name=method,proto3,enum=services.common.v1.SupportedDidMethod" json:"method,omitempty"`
 	// Types that are assignable to Options:
 	//
-	//	*UpgradeDIDRequest_IonOptions
-	Options isUpgradeDIDRequest_Options `protobuf_oneof:"options"`
+	//	*UpgradeDidRequest_IonOptions
+	Options isUpgradeDidRequest_Options `protobuf_oneof:"options"`
 }
 
-func (x *UpgradeDIDRequest) Reset() {
-	*x = UpgradeDIDRequest{}
+func (x *UpgradeDidRequest) Reset() {
+	*x = UpgradeDidRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_services_provider_v1_provider_proto_msgTypes[42]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2665,13 +2665,13 @@ func (x *UpgradeDIDRequest) Reset() {
 	}
 }
 
-func (x *UpgradeDIDRequest) String() string {
+func (x *UpgradeDidRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpgradeDIDRequest) ProtoMessage() {}
+func (*UpgradeDidRequest) ProtoMessage() {}
 
-func (x *UpgradeDIDRequest) ProtoReflect() protoreflect.Message {
+func (x *UpgradeDidRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_services_provider_v1_provider_proto_msgTypes[42]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2683,86 +2683,86 @@ func (x *UpgradeDIDRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpgradeDIDRequest.ProtoReflect.Descriptor instead.
-func (*UpgradeDIDRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpgradeDidRequest.ProtoReflect.Descriptor instead.
+func (*UpgradeDidRequest) Descriptor() ([]byte, []int) {
 	return file_services_provider_v1_provider_proto_rawDescGZIP(), []int{42}
 }
 
-func (m *UpgradeDIDRequest) GetAccount() isUpgradeDIDRequest_Account {
+func (m *UpgradeDidRequest) GetAccount() isUpgradeDidRequest_Account {
 	if m != nil {
 		return m.Account
 	}
 	return nil
 }
 
-func (x *UpgradeDIDRequest) GetEmail() string {
-	if x, ok := x.GetAccount().(*UpgradeDIDRequest_Email); ok {
+func (x *UpgradeDidRequest) GetEmail() string {
+	if x, ok := x.GetAccount().(*UpgradeDidRequest_Email); ok {
 		return x.Email
 	}
 	return ""
 }
 
-func (x *UpgradeDIDRequest) GetWalletId() string {
-	if x, ok := x.GetAccount().(*UpgradeDIDRequest_WalletId); ok {
+func (x *UpgradeDidRequest) GetWalletId() string {
+	if x, ok := x.GetAccount().(*UpgradeDidRequest_WalletId); ok {
 		return x.WalletId
 	}
 	return ""
 }
 
-func (x *UpgradeDIDRequest) GetMethod() common.SupportedDIDMethod {
+func (x *UpgradeDidRequest) GetMethod() common.SupportedDidMethod {
 	if x != nil {
 		return x.Method
 	}
-	return common.SupportedDIDMethod(0)
+	return common.SupportedDidMethod(0)
 }
 
-func (m *UpgradeDIDRequest) GetOptions() isUpgradeDIDRequest_Options {
+func (m *UpgradeDidRequest) GetOptions() isUpgradeDidRequest_Options {
 	if m != nil {
 		return m.Options
 	}
 	return nil
 }
 
-func (x *UpgradeDIDRequest) GetIonOptions() *IONOptions {
-	if x, ok := x.GetOptions().(*UpgradeDIDRequest_IonOptions); ok {
+func (x *UpgradeDidRequest) GetIonOptions() *IonOptions {
+	if x, ok := x.GetOptions().(*UpgradeDidRequest_IonOptions); ok {
 		return x.IonOptions
 	}
 	return nil
 }
 
-type isUpgradeDIDRequest_Account interface {
-	isUpgradeDIDRequest_Account()
+type isUpgradeDidRequest_Account interface {
+	isUpgradeDidRequest_Account()
 }
 
-type UpgradeDIDRequest_Email struct {
+type UpgradeDidRequest_Email struct {
 	// Email address of account to upgrade.
 	// Mutually exclusive with `walletId`.
 	Email string `protobuf:"bytes,1,opt,name=email,proto3,oneof"`
 }
 
-type UpgradeDIDRequest_WalletId struct {
+type UpgradeDidRequest_WalletId struct {
 	// Wallet ID of account to upgrade.
 	// Mutually exclusive with `email`.
 	WalletId string `protobuf:"bytes,2,opt,name=wallet_id,json=walletId,proto3,oneof"`
 }
 
-func (*UpgradeDIDRequest_Email) isUpgradeDIDRequest_Account() {}
+func (*UpgradeDidRequest_Email) isUpgradeDidRequest_Account() {}
 
-func (*UpgradeDIDRequest_WalletId) isUpgradeDIDRequest_Account() {}
+func (*UpgradeDidRequest_WalletId) isUpgradeDidRequest_Account() {}
 
-type isUpgradeDIDRequest_Options interface {
-	isUpgradeDIDRequest_Options()
+type isUpgradeDidRequest_Options interface {
+	isUpgradeDidRequest_Options()
 }
 
-type UpgradeDIDRequest_IonOptions struct {
+type UpgradeDidRequest_IonOptions struct {
 	// Configuration for creation of DID on ION network
-	IonOptions *IONOptions `protobuf:"bytes,4,opt,name=ion_options,json=ionOptions,proto3,oneof"`
+	IonOptions *IonOptions `protobuf:"bytes,4,opt,name=ion_options,json=ionOptions,proto3,oneof"`
 }
 
-func (*UpgradeDIDRequest_IonOptions) isUpgradeDIDRequest_Options() {}
+func (*UpgradeDidRequest_IonOptions) isUpgradeDidRequest_Options() {}
 
 // Response to `UpgradeDIDRequest`
-type UpgradeDIDResponse struct {
+type UpgradeDidResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -2771,8 +2771,8 @@ type UpgradeDIDResponse struct {
 	Did string `protobuf:"bytes,1,opt,name=did,proto3" json:"did,omitempty"`
 }
 
-func (x *UpgradeDIDResponse) Reset() {
-	*x = UpgradeDIDResponse{}
+func (x *UpgradeDidResponse) Reset() {
+	*x = UpgradeDidResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_services_provider_v1_provider_proto_msgTypes[43]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2780,13 +2780,13 @@ func (x *UpgradeDIDResponse) Reset() {
 	}
 }
 
-func (x *UpgradeDIDResponse) String() string {
+func (x *UpgradeDidResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpgradeDIDResponse) ProtoMessage() {}
+func (*UpgradeDidResponse) ProtoMessage() {}
 
-func (x *UpgradeDIDResponse) ProtoReflect() protoreflect.Message {
+func (x *UpgradeDidResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_services_provider_v1_provider_proto_msgTypes[43]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2798,12 +2798,12 @@ func (x *UpgradeDIDResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpgradeDIDResponse.ProtoReflect.Descriptor instead.
-func (*UpgradeDIDResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use UpgradeDidResponse.ProtoReflect.Descriptor instead.
+func (*UpgradeDidResponse) Descriptor() ([]byte, []int) {
 	return file_services_provider_v1_provider_proto_rawDescGZIP(), []int{43}
 }
 
-func (x *UpgradeDIDResponse) GetDid() string {
+func (x *UpgradeDidResponse) GetDid() string {
 	if x != nil {
 		return x.Did
 	}
@@ -3137,30 +3137,30 @@ var file_services_provider_v1_provider_proto_rawDesc = []byte{
 	0x65, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x77, 0x61, 0x6c,
 	0x6c, 0x65, 0x74, 0x49, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x70, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x5f,
 	0x64, 0x69, 0x64, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x70, 0x75, 0x62, 0x6c, 0x69,
-	0x63, 0x44, 0x69, 0x64, 0x22, 0x7b, 0x0a, 0x0a, 0x49, 0x4f, 0x4e, 0x4f, 0x70, 0x74, 0x69, 0x6f,
+	0x63, 0x44, 0x69, 0x64, 0x22, 0x7b, 0x0a, 0x0a, 0x49, 0x6f, 0x6e, 0x4f, 0x70, 0x74, 0x69, 0x6f,
 	0x6e, 0x73, 0x12, 0x45, 0x0a, 0x07, 0x6e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x18, 0x01, 0x20,
 	0x01, 0x28, 0x0e, 0x32, 0x2b, 0x2e, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2e, 0x70,
-	0x72, 0x6f, 0x76, 0x69, 0x64, 0x65, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x49, 0x4f, 0x4e, 0x4f, 0x70,
-	0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2e, 0x49, 0x4f, 0x4e, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b,
-	0x52, 0x07, 0x6e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x22, 0x26, 0x0a, 0x0a, 0x49, 0x4f, 0x4e,
+	0x72, 0x6f, 0x76, 0x69, 0x64, 0x65, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x49, 0x6f, 0x6e, 0x4f, 0x70,
+	0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2e, 0x49, 0x6f, 0x6e, 0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b,
+	0x52, 0x07, 0x6e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x22, 0x26, 0x0a, 0x0a, 0x49, 0x6f, 0x6e,
 	0x4e, 0x65, 0x74, 0x77, 0x6f, 0x72, 0x6b, 0x12, 0x0b, 0x0a, 0x07, 0x54, 0x65, 0x73, 0x74, 0x4e,
 	0x65, 0x74, 0x10, 0x00, 0x12, 0x0b, 0x0a, 0x07, 0x4d, 0x61, 0x69, 0x6e, 0x4e, 0x65, 0x74, 0x10,
-	0x01, 0x22, 0xe5, 0x01, 0x0a, 0x11, 0x55, 0x70, 0x67, 0x72, 0x61, 0x64, 0x65, 0x44, 0x49, 0x44,
+	0x01, 0x22, 0xe5, 0x01, 0x0a, 0x11, 0x55, 0x70, 0x67, 0x72, 0x61, 0x64, 0x65, 0x44, 0x69, 0x64,
 	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x16, 0x0a, 0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c,
 	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x48, 0x00, 0x52, 0x05, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x12,
 	0x1d, 0x0a, 0x09, 0x77, 0x61, 0x6c, 0x6c, 0x65, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01,
 	0x28, 0x09, 0x48, 0x00, 0x52, 0x08, 0x77, 0x61, 0x6c, 0x6c, 0x65, 0x74, 0x49, 0x64, 0x12, 0x3e,
 	0x0a, 0x06, 0x6d, 0x65, 0x74, 0x68, 0x6f, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x26,
 	0x2e, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e,
-	0x2e, 0x76, 0x31, 0x2e, 0x53, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x65, 0x64, 0x44, 0x49, 0x44,
+	0x2e, 0x76, 0x31, 0x2e, 0x53, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x65, 0x64, 0x44, 0x69, 0x64,
 	0x4d, 0x65, 0x74, 0x68, 0x6f, 0x64, 0x52, 0x06, 0x6d, 0x65, 0x74, 0x68, 0x6f, 0x64, 0x12, 0x43,
 	0x0a, 0x0b, 0x69, 0x6f, 0x6e, 0x5f, 0x6f, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x18, 0x04, 0x20,
 	0x01, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2e, 0x70,
-	0x72, 0x6f, 0x76, 0x69, 0x64, 0x65, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x49, 0x4f, 0x4e, 0x4f, 0x70,
+	0x72, 0x6f, 0x76, 0x69, 0x64, 0x65, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x49, 0x6f, 0x6e, 0x4f, 0x70,
 	0x74, 0x69, 0x6f, 0x6e, 0x73, 0x48, 0x01, 0x52, 0x0a, 0x69, 0x6f, 0x6e, 0x4f, 0x70, 0x74, 0x69,
 	0x6f, 0x6e, 0x73, 0x42, 0x09, 0x0a, 0x07, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x42, 0x09,
 	0x0a, 0x07, 0x6f, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x22, 0x26, 0x0a, 0x12, 0x55, 0x70, 0x67,
-	0x72, 0x61, 0x64, 0x65, 0x44, 0x49, 0x44, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
+	0x72, 0x61, 0x64, 0x65, 0x44, 0x69, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
 	0x10, 0x0a, 0x03, 0x64, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x64, 0x69,
 	0x64, 0x2a, 0x55, 0x0a, 0x0f, 0x50, 0x61, 0x72, 0x74, 0x69, 0x63, 0x69, 0x70, 0x61, 0x6e, 0x74,
 	0x54, 0x79, 0x70, 0x65, 0x12, 0x1f, 0x0a, 0x1b, 0x70, 0x61, 0x72, 0x74, 0x69, 0x63, 0x69, 0x70,
@@ -3269,9 +3269,9 @@ var file_services_provider_v1_provider_proto_rawDesc = []byte{
 	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x5f, 0x0a, 0x0a, 0x55, 0x70, 0x67, 0x72, 0x61, 0x64,
 	0x65, 0x44, 0x49, 0x44, 0x12, 0x27, 0x2e, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2e,
 	0x70, 0x72, 0x6f, 0x76, 0x69, 0x64, 0x65, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x55, 0x70, 0x67, 0x72,
-	0x61, 0x64, 0x65, 0x44, 0x49, 0x44, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x28, 0x2e,
+	0x61, 0x64, 0x65, 0x44, 0x69, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x28, 0x2e,
 	0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x76, 0x69, 0x64, 0x65,
-	0x72, 0x2e, 0x76, 0x31, 0x2e, 0x55, 0x70, 0x67, 0x72, 0x61, 0x64, 0x65, 0x44, 0x49, 0x44, 0x52,
+	0x72, 0x2e, 0x76, 0x31, 0x2e, 0x55, 0x70, 0x67, 0x72, 0x61, 0x64, 0x65, 0x44, 0x69, 0x64, 0x52,
 	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0xa9, 0x01, 0x0a, 0x20, 0x52, 0x65, 0x74, 0x72,
 	0x69, 0x65, 0x76, 0x65, 0x44, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x56, 0x65, 0x72, 0x69, 0x66, 0x69,
 	0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x63, 0x6f, 0x72, 0x64, 0x12, 0x3d, 0x2e, 0x73,
@@ -3328,7 +3328,7 @@ var file_services_provider_v1_provider_proto_msgTypes = make([]protoimpl.Message
 var file_services_provider_v1_provider_proto_goTypes = []interface{}{
 	(ParticipantType)(0),                             // 0: services.provider.v1.ParticipantType
 	(InvitationStatusResponse_Status)(0),             // 1: services.provider.v1.InvitationStatusResponse.Status
-	(IONOptions_IONNetwork)(0),                       // 2: services.provider.v1.IONOptions.IONNetwork
+	(IonOptions_IonNetwork)(0),                       // 2: services.provider.v1.IonOptions.IonNetwork
 	(*InviteRequest)(nil),                            // 3: services.provider.v1.InviteRequest
 	(*InviteResponse)(nil),                           // 4: services.provider.v1.InviteResponse
 	(*InvitationStatusRequest)(nil),                  // 5: services.provider.v1.InvitationStatusRequest
@@ -3370,14 +3370,14 @@ var file_services_provider_v1_provider_proto_goTypes = []interface{}{
 	(*SearchWalletConfigurationsRequest)(nil),        // 41: services.provider.v1.SearchWalletConfigurationsRequest
 	(*SearchWalletConfigurationResponse)(nil),        // 42: services.provider.v1.SearchWalletConfigurationResponse
 	(*WalletConfiguration)(nil),                      // 43: services.provider.v1.WalletConfiguration
-	(*IONOptions)(nil),                               // 44: services.provider.v1.IONOptions
-	(*UpgradeDIDRequest)(nil),                        // 45: services.provider.v1.UpgradeDIDRequest
-	(*UpgradeDIDResponse)(nil),                       // 46: services.provider.v1.UpgradeDIDResponse
+	(*IonOptions)(nil),                               // 44: services.provider.v1.IonOptions
+	(*UpgradeDidRequest)(nil),                        // 45: services.provider.v1.UpgradeDidRequest
+	(*UpgradeDidResponse)(nil),                       // 46: services.provider.v1.UpgradeDidResponse
 	(*InviteRequest_DidCommInvitation)(nil),          // 47: services.provider.v1.InviteRequest.DidCommInvitation
 	(*account.AccountDetails)(nil),                   // 48: services.account.v1.AccountDetails
 	(*account.AccountProfile)(nil),                   // 49: services.account.v1.AccountProfile
 	(account.ConfirmationMethod)(0),                  // 50: services.account.v1.ConfirmationMethod
-	(common.SupportedDIDMethod)(0),                   // 51: services.common.v1.SupportedDIDMethod
+	(common.SupportedDidMethod)(0),                   // 51: services.common.v1.SupportedDidMethod
 }
 var file_services_provider_v1_provider_proto_depIdxs = []int32{
 	0,  // 0: services.provider.v1.InviteRequest.participant:type_name -> services.provider.v1.ParticipantType
@@ -3402,9 +3402,9 @@ var file_services_provider_v1_provider_proto_depIdxs = []int32{
 	49, // 19: services.provider.v1.GenerateTokenResponse.profile:type_name -> services.account.v1.AccountProfile
 	9,  // 20: services.provider.v1.GetAuthorizationsResponse.grants:type_name -> services.provider.v1.Grant
 	43, // 21: services.provider.v1.SearchWalletConfigurationResponse.results:type_name -> services.provider.v1.WalletConfiguration
-	2,  // 22: services.provider.v1.IONOptions.network:type_name -> services.provider.v1.IONOptions.IONNetwork
-	51, // 23: services.provider.v1.UpgradeDIDRequest.method:type_name -> services.common.v1.SupportedDIDMethod
-	44, // 24: services.provider.v1.UpgradeDIDRequest.ion_options:type_name -> services.provider.v1.IONOptions
+	2,  // 22: services.provider.v1.IonOptions.network:type_name -> services.provider.v1.IonOptions.IonNetwork
+	51, // 23: services.provider.v1.UpgradeDidRequest.method:type_name -> services.common.v1.SupportedDidMethod
+	44, // 24: services.provider.v1.UpgradeDidRequest.ion_options:type_name -> services.provider.v1.IonOptions
 	10, // 25: services.provider.v1.Provider.CreateEcosystem:input_type -> services.provider.v1.CreateEcosystemRequest
 	12, // 26: services.provider.v1.Provider.UpdateEcosystem:input_type -> services.provider.v1.UpdateEcosystemRequest
 	35, // 27: services.provider.v1.Provider.GrantAuthorization:input_type -> services.provider.v1.GrantAuthorizationRequest
@@ -3419,7 +3419,7 @@ var file_services_provider_v1_provider_proto_depIdxs = []int32{
 	5,  // 36: services.provider.v1.Provider.InvitationStatus:input_type -> services.provider.v1.InvitationStatusRequest
 	27, // 37: services.provider.v1.Provider.GetOberonKey:input_type -> services.provider.v1.GetOberonKeyRequest
 	29, // 38: services.provider.v1.Provider.GetEventToken:input_type -> services.provider.v1.GetEventTokenRequest
-	45, // 39: services.provider.v1.Provider.UpgradeDID:input_type -> services.provider.v1.UpgradeDIDRequest
+	45, // 39: services.provider.v1.Provider.UpgradeDID:input_type -> services.provider.v1.UpgradeDidRequest
 	31, // 40: services.provider.v1.Provider.RetrieveDomainVerificationRecord:input_type -> services.provider.v1.RetrieveDomainVerificationRecordRequest
 	33, // 41: services.provider.v1.Provider.RefreshDomainVerificationStatus:input_type -> services.provider.v1.RefreshDomainVerificationStatusRequest
 	41, // 42: services.provider.v1.Provider.SearchWalletConfigurations:input_type -> services.provider.v1.SearchWalletConfigurationsRequest
@@ -3437,7 +3437,7 @@ var file_services_provider_v1_provider_proto_depIdxs = []int32{
 	6,  // 54: services.provider.v1.Provider.InvitationStatus:output_type -> services.provider.v1.InvitationStatusResponse
 	28, // 55: services.provider.v1.Provider.GetOberonKey:output_type -> services.provider.v1.GetOberonKeyResponse
 	30, // 56: services.provider.v1.Provider.GetEventToken:output_type -> services.provider.v1.GetEventTokenResponse
-	46, // 57: services.provider.v1.Provider.UpgradeDID:output_type -> services.provider.v1.UpgradeDIDResponse
+	46, // 57: services.provider.v1.Provider.UpgradeDID:output_type -> services.provider.v1.UpgradeDidResponse
 	32, // 58: services.provider.v1.Provider.RetrieveDomainVerificationRecord:output_type -> services.provider.v1.RetrieveDomainVerificationRecordResponse
 	34, // 59: services.provider.v1.Provider.RefreshDomainVerificationStatus:output_type -> services.provider.v1.RefreshDomainVerificationStatusResponse
 	42, // 60: services.provider.v1.Provider.SearchWalletConfigurations:output_type -> services.provider.v1.SearchWalletConfigurationResponse
@@ -3947,7 +3947,7 @@ func file_services_provider_v1_provider_proto_init() {
 			}
 		}
 		file_services_provider_v1_provider_proto_msgTypes[41].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*IONOptions); i {
+			switch v := v.(*IonOptions); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3959,7 +3959,7 @@ func file_services_provider_v1_provider_proto_init() {
 			}
 		}
 		file_services_provider_v1_provider_proto_msgTypes[42].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpgradeDIDRequest); i {
+			switch v := v.(*UpgradeDidRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -3971,7 +3971,7 @@ func file_services_provider_v1_provider_proto_init() {
 			}
 		}
 		file_services_provider_v1_provider_proto_msgTypes[43].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpgradeDIDResponse); i {
+			switch v := v.(*UpgradeDidResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -4004,9 +4004,9 @@ func file_services_provider_v1_provider_proto_init() {
 		(*RevokeAuthorizationRequest_WalletId)(nil),
 	}
 	file_services_provider_v1_provider_proto_msgTypes[42].OneofWrappers = []interface{}{
-		(*UpgradeDIDRequest_Email)(nil),
-		(*UpgradeDIDRequest_WalletId)(nil),
-		(*UpgradeDIDRequest_IonOptions)(nil),
+		(*UpgradeDidRequest_Email)(nil),
+		(*UpgradeDidRequest_WalletId)(nil),
+		(*UpgradeDidRequest_IonOptions)(nil),
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{

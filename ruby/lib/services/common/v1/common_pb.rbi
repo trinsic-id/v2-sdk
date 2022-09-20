@@ -97,7 +97,7 @@ module Services::Common::V1::ResponseStatus
   end
 end
 
-module Services::Common::V1::SupportedDIDMethod
+module Services::Common::V1::SupportedDidMethod
   self::KEY = T.let(0, Integer)
   self::ION = T.let(1, Integer)
 
