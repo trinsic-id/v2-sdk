@@ -37,6 +37,8 @@ import {
     ServiceOptions,
     UpdateEcosystemRequest,
     UpdateEcosystemResponse,
+    UpgradeDidRequest,
+    UpgradeDidResponse
 } from "./proto";
 
 import type { Client as BrowserClient } from "nice-grpc-web";
