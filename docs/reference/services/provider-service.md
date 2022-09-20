@@ -270,6 +270,70 @@ Deletes a webhook from an ecosystem.
 
 {{ proto_method_tabs("services.provider.v1.Provider.DeleteWebhook") }}
 
+---
+
+## Upgrade Wallet DID
+
+!!! warning "Restricted API"
+    This feature is not yet publicly available, and the list of supported DID Methods is not final.
+
+    Please contact Trinsic to enable this endpoint on your account.
+
+!!! info "Ledger Interactions"
+    Many DID methods are based on distributed ledgers (commonly known as "blockchains"), so the following should be kept in mind when registering a DID which uses a ledger:
+
+    - Depending on the DID method chosen, registering a DID may incur a ledger write fee, which is different for each ledger. **You are responsible for these fees.**
+        - We will provide clear documentation regarding these fees before this feature becomes generally available.
+    - Newly-registered DIDs may not be immediately resolvable, as most ledgers cannot provide instantaneous writes.
+        - Issuance and verification of credentials against these DIDs will still function during this time, but only within the Trinsic platform.
+
+Upgrades a wallet's DID from the default `did:key` to another DID Method. This endpoint may only be called by an ecosystem provider.
+
+Trinsic will register a DID Document for you, and update the wallet's `public_did` property to the newly-registered DID.
+
+{{ proto_sample_start() }}
+    === "Trinsic CLI"
+        ```bash
+        trinsic provider upgrade-did --wallet-id {wallet_id} --method ion --method-options testnet
+        ```
+
+    === "TypeScript"
+        <!--codeinclude--> 
+        ```typescript
+        [UpgradeDid](../../../web/test/ProviderService.test.ts) inside_block:upgradeDid
+        ```
+        <!--/codeinclude-->
+
+    === "C#"
+        <!--codeinclude-->
+        ```csharp
+        [UpgradeDid](../../../dotnet/Tests/Tests.cs) inside_block:upgradeDid
+        ```
+        <!--/codeinclude-->
+
+    === "Python"
+        <!--codeinclude-->
+        ```python
+        [UpgradeDid](../../../python/samples/provider_demo.py) inside_block:upgradeDid
+        ```
+        <!--/codeinclude-->
+
+    === "Go"
+        <!--codeinclude-->
+        ```golang
+        [UpgradeDid](../../../go/services/provider_service_test.go) inside_block:upgradeDid
+        ```
+        <!--/codeinclude-->
+
+    === "Java"
+        <!--codeinclude-->
+        ```java
+        [UpgradeDid](../../../java/src/test/java/trinsic/ProviderServiceTest.java) inside_block:upgradeDid
+        ```
+        <!--/codeinclude-->
+
+{{ proto_method_tabs("services.provider.v1.Provider.UpgradeDID") }}
+
 <!-- 
 // This call is not yet implemented
 ## List Ecosystems
