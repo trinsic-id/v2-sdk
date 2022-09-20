@@ -46,7 +46,7 @@ module Services
           # Generate a signed token (JWT) that can be used to connect to the message bus
           rpc :GetEventToken, ::Services::Provider::V1::GetEventTokenRequest, ::Services::Provider::V1::GetEventTokenResponse
           # Upgrade a wallet's DID from `did:key` to another method
-          rpc :UpgradeDID, ::Services::Provider::V1::UpgradeDIDRequest, ::Services::Provider::V1::UpgradeDIDResponse
+          rpc :UpgradeDID, ::Services::Provider::V1::UpgradeDidRequest, ::Services::Provider::V1::UpgradeDidResponse
           # Retrieve a random hash TXT that can be used to verify domain ownership
           rpc :RetrieveDomainVerificationRecord, ::Services::Provider::V1::RetrieveDomainVerificationRecordRequest, ::Services::Provider::V1::RetrieveDomainVerificationRecordResponse
           # Call to verify domain

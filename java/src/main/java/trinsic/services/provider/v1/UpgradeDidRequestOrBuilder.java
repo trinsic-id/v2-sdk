@@ -3,9 +3,9 @@
 
 package trinsic.services.provider.v1;
 
-public interface UpgradeDIDRequestOrBuilder
+public interface UpgradeDidRequestOrBuilder
     extends
-    // @@protoc_insertion_point(interface_extends:services.provider.v1.UpgradeDIDRequest)
+    // @@protoc_insertion_point(interface_extends:services.provider.v1.UpgradeDidRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
@@ -95,7 +95,7 @@ public interface UpgradeDIDRequestOrBuilder
    * DID Method to which wallet should be upgraded
    * </pre>
    *
-   * <code>.services.common.v1.SupportedDIDMethod method = 3;</code>
+   * <code>.services.common.v1.SupportedDidMethod method = 3;</code>
    *
    * @return The enum numeric value on the wire for method.
    */
@@ -107,11 +107,11 @@ public interface UpgradeDIDRequestOrBuilder
    * DID Method to which wallet should be upgraded
    * </pre>
    *
-   * <code>.services.common.v1.SupportedDIDMethod method = 3;</code>
+   * <code>.services.common.v1.SupportedDidMethod method = 3;</code>
    *
    * @return The method.
    */
-  trinsic.services.common.v1.SupportedDIDMethod getMethod();
+  trinsic.services.common.v1.SupportedDidMethod getMethod();
 
   /**
    *
@@ -120,7 +120,7 @@ public interface UpgradeDIDRequestOrBuilder
    * Configuration for creation of DID on ION network
    * </pre>
    *
-   * <code>.services.provider.v1.IONOptions ion_options = 4;</code>
+   * <code>.services.provider.v1.IonOptions ion_options = 4;</code>
    *
    * @return Whether the ionOptions field is set.
    */
@@ -132,11 +132,11 @@ public interface UpgradeDIDRequestOrBuilder
    * Configuration for creation of DID on ION network
    * </pre>
    *
-   * <code>.services.provider.v1.IONOptions ion_options = 4;</code>
+   * <code>.services.provider.v1.IonOptions ion_options = 4;</code>
    *
    * @return The ionOptions.
    */
-  trinsic.services.provider.v1.IONOptions getIonOptions();
+  trinsic.services.provider.v1.IonOptions getIonOptions();
   /**
    *
    *
@@ -144,11 +144,11 @@ public interface UpgradeDIDRequestOrBuilder
    * Configuration for creation of DID on ION network
    * </pre>
    *
-   * <code>.services.provider.v1.IONOptions ion_options = 4;</code>
+   * <code>.services.provider.v1.IonOptions ion_options = 4;</code>
    */
-  trinsic.services.provider.v1.IONOptionsOrBuilder getIonOptionsOrBuilder();
+  trinsic.services.provider.v1.IonOptionsOrBuilder getIonOptionsOrBuilder();
 
-  public trinsic.services.provider.v1.UpgradeDIDRequest.AccountCase getAccountCase();
+  public trinsic.services.provider.v1.UpgradeDidRequest.AccountCase getAccountCase();
 
-  public trinsic.services.provider.v1.UpgradeDIDRequest.OptionsCase getOptionsCase();
+  public trinsic.services.provider.v1.UpgradeDidRequest.OptionsCase getOptionsCase();
 }

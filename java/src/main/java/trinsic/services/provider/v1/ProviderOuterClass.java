@@ -181,17 +181,17 @@ public final class ProviderOuterClass {
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_provider_v1_WalletConfiguration_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_provider_v1_IONOptions_descriptor;
+      internal_static_services_provider_v1_IonOptions_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_provider_v1_IONOptions_fieldAccessorTable;
+      internal_static_services_provider_v1_IonOptions_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_provider_v1_UpgradeDIDRequest_descriptor;
+      internal_static_services_provider_v1_UpgradeDidRequest_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_provider_v1_UpgradeDIDRequest_fieldAccessorTable;
+      internal_static_services_provider_v1_UpgradeDidRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_provider_v1_UpgradeDIDResponse_descriptor;
+      internal_static_services_provider_v1_UpgradeDidResponse_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_provider_v1_UpgradeDIDResponse_fieldAccessorTable;
+      internal_static_services_provider_v1_UpgradeDidResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
@@ -339,19 +339,19 @@ public final class ProviderOuterClass {
           + "\003sms\030\003 \001(\tB\004\200\246\035\001\022\021\n"
           + "\twallet_id\030\004 \001(\t\022\022\n\n"
           + "public_did\030\005 \001(\t\"r\n\n"
-          + "IONOptions\022<\n"
-          + "\007network\030\001 \001(\0162+.services.provider.v1.IONOptions.IONNetwork\"&\n\n"
-          + "IONNetwork\022\013\n"
+          + "IonOptions\022<\n"
+          + "\007network\030\001 \001(\0162+.services.provider.v1.IonOptions.IonNetwork\"&\n\n"
+          + "IonNetwork\022\013\n"
           + "\007TestNet\020\000\022\013\n"
           + "\007MainNet\020\001\"\300\001\n"
-          + "\021UpgradeDIDRequest\022\017\n"
+          + "\021UpgradeDidRequest\022\017\n"
           + "\005email\030\001 \001(\tH\000\022\023\n"
           + "\twallet_id\030\002 \001(\tH\000\0226\n"
-          + "\006method\030\003 \001(\0162&.services.common.v1.SupportedDIDMethod\0227\n"
-          + "\013ion_options\030\004 \001(\0132 .services.provider.v1.IONOptionsH\001B\t\n"
+          + "\006method\030\003 \001(\0162&.services.common.v1.SupportedDidMethod\0227\n"
+          + "\013ion_options\030\004 \001(\0132 .services.provider.v1.IonOptionsH\001B\t\n"
           + "\007accountB\t\n"
           + "\007options\"!\n"
-          + "\022UpgradeDIDResponse\022\013\n"
+          + "\022UpgradeDidResponse\022\013\n"
           + "\003did\030\001 \001(\t*U\n"
           + "\017ParticipantType\022\037\n"
           + "\033participant_type_individual\020\000\022!\n"
@@ -385,8 +385,8 @@ public final class ProviderOuterClass {
           + "rvices.provider.v1.GetOberonKeyResponse\"\006\212\246\035\002\010\001\022h\n\r"
           + "GetEventToken\022*.services.prov"
           + "ider.v1.GetEventTokenRequest\032+.services.provider.v1.GetEventTokenResponse\022_\n\n"
-          + "UpgradeDID\022\'.services.provider.v1.UpgradeDI"
-          + "DRequest\032(.services.provider.v1.UpgradeDIDResponse\022\251\001\n"
+          + "UpgradeDID\022\'.services.provider.v1.UpgradeDi"
+          + "dRequest\032(.services.provider.v1.UpgradeDidResponse\022\251\001\n"
           + " RetrieveDomainVerificationRecord\022=.services.provider.v1.RetrieveD"
           + "omainVerificationRecordRequest\032>.service"
           + "s.provider.v1.RetrieveDomainVerificationRecordResponse\"\006\212\246\035\002\030\001\022\236\001\n"
@@ -728,27 +728,27 @@ public final class ProviderOuterClass {
             new java.lang.String[] {
               "Name", "Email", "Sms", "WalletId", "PublicDid",
             });
-    internal_static_services_provider_v1_IONOptions_descriptor =
+    internal_static_services_provider_v1_IonOptions_descriptor =
         getDescriptor().getMessageTypes().get(41);
-    internal_static_services_provider_v1_IONOptions_fieldAccessorTable =
+    internal_static_services_provider_v1_IonOptions_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_provider_v1_IONOptions_descriptor,
+            internal_static_services_provider_v1_IonOptions_descriptor,
             new java.lang.String[] {
               "Network",
             });
-    internal_static_services_provider_v1_UpgradeDIDRequest_descriptor =
+    internal_static_services_provider_v1_UpgradeDidRequest_descriptor =
         getDescriptor().getMessageTypes().get(42);
-    internal_static_services_provider_v1_UpgradeDIDRequest_fieldAccessorTable =
+    internal_static_services_provider_v1_UpgradeDidRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_provider_v1_UpgradeDIDRequest_descriptor,
+            internal_static_services_provider_v1_UpgradeDidRequest_descriptor,
             new java.lang.String[] {
               "Email", "WalletId", "Method", "IonOptions", "Account", "Options",
             });
-    internal_static_services_provider_v1_UpgradeDIDResponse_descriptor =
+    internal_static_services_provider_v1_UpgradeDidResponse_descriptor =
         getDescriptor().getMessageTypes().get(43);
-    internal_static_services_provider_v1_UpgradeDIDResponse_fieldAccessorTable =
+    internal_static_services_provider_v1_UpgradeDidResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_provider_v1_UpgradeDIDResponse_descriptor,
+            internal_static_services_provider_v1_UpgradeDidResponse_descriptor,
             new java.lang.String[] {
               "Did",
             });

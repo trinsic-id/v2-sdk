@@ -127,8 +127,8 @@ module Trinsic
     end
 
     #  Upgrade a wallet's DID from `did:key` to another method
-    # @param [UpgradeDIDRequest] request
-    # @return [Services::Provider::V1::UpgradeDIDResponse]
+    # @param [UpgradeDidRequest] request
+    # @return [Services::Provider::V1::UpgradeDidResponse]
     def upgrade_did(request)
       @client.upgrade_did(request, metadata: metadata(request))
     end

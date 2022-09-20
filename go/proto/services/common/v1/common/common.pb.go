@@ -79,49 +79,49 @@ func (ResponseStatus) EnumDescriptor() ([]byte, []int) {
 }
 
 // Enum of all supported DID Methods
-type SupportedDIDMethod int32
+type SupportedDidMethod int32
 
 const (
-	SupportedDIDMethod_KEY SupportedDIDMethod = 0 //The did:key method -- all wallets use this by default
-	SupportedDIDMethod_ION SupportedDIDMethod = 1 //The did:ion method
+	SupportedDidMethod_KEY SupportedDidMethod = 0 //The did:key method -- all wallets use this by default
+	SupportedDidMethod_ION SupportedDidMethod = 1 //The did:ion method
 )
 
-// Enum value maps for SupportedDIDMethod.
+// Enum value maps for SupportedDidMethod.
 var (
-	SupportedDIDMethod_name = map[int32]string{
+	SupportedDidMethod_name = map[int32]string{
 		0: "KEY",
 		1: "ION",
 	}
-	SupportedDIDMethod_value = map[string]int32{
+	SupportedDidMethod_value = map[string]int32{
 		"KEY": 0,
 		"ION": 1,
 	}
 )
 
-func (x SupportedDIDMethod) Enum() *SupportedDIDMethod {
-	p := new(SupportedDIDMethod)
+func (x SupportedDidMethod) Enum() *SupportedDidMethod {
+	p := new(SupportedDidMethod)
 	*p = x
 	return p
 }
 
-func (x SupportedDIDMethod) String() string {
+func (x SupportedDidMethod) String() string {
 	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
 }
 
-func (SupportedDIDMethod) Descriptor() protoreflect.EnumDescriptor {
+func (SupportedDidMethod) Descriptor() protoreflect.EnumDescriptor {
 	return file_services_common_v1_common_proto_enumTypes[1].Descriptor()
 }
 
-func (SupportedDIDMethod) Type() protoreflect.EnumType {
+func (SupportedDidMethod) Type() protoreflect.EnumType {
 	return &file_services_common_v1_common_proto_enumTypes[1]
 }
 
-func (x SupportedDIDMethod) Number() protoreflect.EnumNumber {
+func (x SupportedDidMethod) Number() protoreflect.EnumNumber {
 	return protoreflect.EnumNumber(x)
 }
 
-// Deprecated: Use SupportedDIDMethod.Descriptor instead.
-func (SupportedDIDMethod) EnumDescriptor() ([]byte, []int) {
+// Deprecated: Use SupportedDidMethod.Descriptor instead.
+func (SupportedDidMethod) EnumDescriptor() ([]byte, []int) {
 	return file_services_common_v1_common_proto_rawDescGZIP(), []int{1}
 }
 
@@ -201,7 +201,7 @@ var file_services_common_v1_common_proto_rawDesc = []byte{
 	0x12, 0x18, 0x0a, 0x13, 0x53, 0x45, 0x52, 0x49, 0x41, 0x4c, 0x49, 0x5a, 0x41, 0x54, 0x49, 0x4f,
 	0x4e, 0x5f, 0x45, 0x52, 0x52, 0x4f, 0x52, 0x10, 0xc8, 0x01, 0x12, 0x11, 0x0a, 0x0d, 0x55, 0x4e,
 	0x4b, 0x4e, 0x4f, 0x57, 0x4e, 0x5f, 0x45, 0x52, 0x52, 0x4f, 0x52, 0x10, 0x64, 0x2a, 0x26, 0x0a,
-	0x12, 0x53, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x65, 0x64, 0x44, 0x49, 0x44, 0x4d, 0x65, 0x74,
+	0x12, 0x53, 0x75, 0x70, 0x70, 0x6f, 0x72, 0x74, 0x65, 0x64, 0x44, 0x69, 0x64, 0x4d, 0x65, 0x74,
 	0x68, 0x6f, 0x64, 0x12, 0x07, 0x0a, 0x03, 0x4b, 0x45, 0x59, 0x10, 0x00, 0x12, 0x07, 0x0a, 0x03,
 	0x49, 0x4f, 0x4e, 0x10, 0x01, 0x42, 0x56, 0x0a, 0x1a, 0x74, 0x72, 0x69, 0x6e, 0x73, 0x69, 0x63,
 	0x2e, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e,
@@ -228,7 +228,7 @@ var file_services_common_v1_common_proto_enumTypes = make([]protoimpl.EnumInfo, 
 var file_services_common_v1_common_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_services_common_v1_common_proto_goTypes = []interface{}{
 	(ResponseStatus)(0),     // 0: services.common.v1.ResponseStatus
-	(SupportedDIDMethod)(0), // 1: services.common.v1.SupportedDIDMethod
+	(SupportedDidMethod)(0), // 1: services.common.v1.SupportedDidMethod
 	(*Nonce)(nil),           // 2: services.common.v1.Nonce
 }
 var file_services_common_v1_common_proto_depIdxs = []int32{

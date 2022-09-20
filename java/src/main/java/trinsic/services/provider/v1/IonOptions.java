@@ -10,26 +10,26 @@ package trinsic.services.provider.v1;
  * Options for creation of DID on the ION network
  * </pre>
  *
- * Protobuf type {@code services.provider.v1.IONOptions}
+ * Protobuf type {@code services.provider.v1.IonOptions}
  */
-public final class IONOptions extends com.google.protobuf.GeneratedMessageV3
+public final class IonOptions extends com.google.protobuf.GeneratedMessageV3
     implements
-    // @@protoc_insertion_point(message_implements:services.provider.v1.IONOptions)
-    IONOptionsOrBuilder {
+    // @@protoc_insertion_point(message_implements:services.provider.v1.IonOptions)
+    IonOptionsOrBuilder {
   private static final long serialVersionUID = 0L;
-  // Use IONOptions.newBuilder() to construct.
-  private IONOptions(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use IonOptions.newBuilder() to construct.
+  private IonOptions(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
 
-  private IONOptions() {
+  private IonOptions() {
     network_ = 0;
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
-    return new IONOptions();
+    return new IonOptions();
   }
 
   @java.lang.Override
@@ -37,7 +37,7 @@ public final class IONOptions extends com.google.protobuf.GeneratedMessageV3
     return this.unknownFields;
   }
 
-  private IONOptions(
+  private IonOptions(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -85,21 +85,21 @@ public final class IONOptions extends com.google.protobuf.GeneratedMessageV3
 
   public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
     return trinsic.services.provider.v1.ProviderOuterClass
-        .internal_static_services_provider_v1_IONOptions_descriptor;
+        .internal_static_services_provider_v1_IonOptions_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return trinsic.services.provider.v1.ProviderOuterClass
-        .internal_static_services_provider_v1_IONOptions_fieldAccessorTable
+        .internal_static_services_provider_v1_IonOptions_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.provider.v1.IONOptions.class,
-            trinsic.services.provider.v1.IONOptions.Builder.class);
+            trinsic.services.provider.v1.IonOptions.class,
+            trinsic.services.provider.v1.IonOptions.Builder.class);
   }
 
-  /** Protobuf enum {@code services.provider.v1.IONOptions.IONNetwork} */
-  public enum IONNetwork implements com.google.protobuf.ProtocolMessageEnum {
+  /** Protobuf enum {@code services.provider.v1.IonOptions.IonNetwork} */
+  public enum IonNetwork implements com.google.protobuf.ProtocolMessageEnum {
     /** <code>TestNet = 0;</code> */
     TestNet(0),
     /** <code>MainNet = 1;</code> */
@@ -126,7 +126,7 @@ public final class IONOptions extends com.google.protobuf.GeneratedMessageV3
      * @deprecated Use {@link #forNumber(int)} instead.
      */
     @java.lang.Deprecated
-    public static IONNetwork valueOf(int value) {
+    public static IonNetwork valueOf(int value) {
       return forNumber(value);
     }
 
@@ -134,7 +134,7 @@ public final class IONOptions extends com.google.protobuf.GeneratedMessageV3
      * @param value The numeric wire value of the corresponding enum entry.
      * @return The enum associated with the given numeric wire value.
      */
-    public static IONNetwork forNumber(int value) {
+    public static IonNetwork forNumber(int value) {
       switch (value) {
         case 0:
           return TestNet;
@@ -145,14 +145,14 @@ public final class IONOptions extends com.google.protobuf.GeneratedMessageV3
       }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<IONNetwork> internalGetValueMap() {
+    public static com.google.protobuf.Internal.EnumLiteMap<IonNetwork> internalGetValueMap() {
       return internalValueMap;
     }
 
-    private static final com.google.protobuf.Internal.EnumLiteMap<IONNetwork> internalValueMap =
-        new com.google.protobuf.Internal.EnumLiteMap<IONNetwork>() {
-          public IONNetwork findValueByNumber(int number) {
-            return IONNetwork.forNumber(number);
+    private static final com.google.protobuf.Internal.EnumLiteMap<IonNetwork> internalValueMap =
+        new com.google.protobuf.Internal.EnumLiteMap<IonNetwork>() {
+          public IonNetwork findValueByNumber(int number) {
+            return IonNetwork.forNumber(number);
           }
         };
 
@@ -169,12 +169,12 @@ public final class IONOptions extends com.google.protobuf.GeneratedMessageV3
     }
 
     public static final com.google.protobuf.Descriptors.EnumDescriptor getDescriptor() {
-      return trinsic.services.provider.v1.IONOptions.getDescriptor().getEnumTypes().get(0);
+      return trinsic.services.provider.v1.IonOptions.getDescriptor().getEnumTypes().get(0);
     }
 
-    private static final IONNetwork[] VALUES = values();
+    private static final IonNetwork[] VALUES = values();
 
-    public static IONNetwork valueOf(com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+    public static IonNetwork valueOf(com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
         throw new java.lang.IllegalArgumentException("EnumValueDescriptor is not for this type.");
       }
@@ -186,11 +186,11 @@ public final class IONOptions extends com.google.protobuf.GeneratedMessageV3
 
     private final int value;
 
-    private IONNetwork(int value) {
+    private IonNetwork(int value) {
       this.value = value;
     }
 
-    // @@protoc_insertion_point(enum_scope:services.provider.v1.IONOptions.IONNetwork)
+    // @@protoc_insertion_point(enum_scope:services.provider.v1.IonOptions.IonNetwork)
   }
 
   public static final int NETWORK_FIELD_NUMBER = 1;
@@ -202,7 +202,7 @@ public final class IONOptions extends com.google.protobuf.GeneratedMessageV3
    * ION network on which DID should be published
    * </pre>
    *
-   * <code>.services.provider.v1.IONOptions.IONNetwork network = 1;</code>
+   * <code>.services.provider.v1.IonOptions.IonNetwork network = 1;</code>
    *
    * @return The enum numeric value on the wire for network.
    */
@@ -217,17 +217,17 @@ public final class IONOptions extends com.google.protobuf.GeneratedMessageV3
    * ION network on which DID should be published
    * </pre>
    *
-   * <code>.services.provider.v1.IONOptions.IONNetwork network = 1;</code>
+   * <code>.services.provider.v1.IonOptions.IonNetwork network = 1;</code>
    *
    * @return The network.
    */
   @java.lang.Override
-  public trinsic.services.provider.v1.IONOptions.IONNetwork getNetwork() {
+  public trinsic.services.provider.v1.IonOptions.IonNetwork getNetwork() {
     @SuppressWarnings("deprecation")
-    trinsic.services.provider.v1.IONOptions.IONNetwork result =
-        trinsic.services.provider.v1.IONOptions.IONNetwork.valueOf(network_);
+    trinsic.services.provider.v1.IonOptions.IonNetwork result =
+        trinsic.services.provider.v1.IonOptions.IonNetwork.valueOf(network_);
     return result == null
-        ? trinsic.services.provider.v1.IONOptions.IONNetwork.UNRECOGNIZED
+        ? trinsic.services.provider.v1.IonOptions.IonNetwork.UNRECOGNIZED
         : result;
   }
 
@@ -245,7 +245,7 @@ public final class IONOptions extends com.google.protobuf.GeneratedMessageV3
 
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-    if (network_ != trinsic.services.provider.v1.IONOptions.IONNetwork.TestNet.getNumber()) {
+    if (network_ != trinsic.services.provider.v1.IonOptions.IonNetwork.TestNet.getNumber()) {
       output.writeEnum(1, network_);
     }
     unknownFields.writeTo(output);
@@ -257,7 +257,7 @@ public final class IONOptions extends com.google.protobuf.GeneratedMessageV3
     if (size != -1) return size;
 
     size = 0;
-    if (network_ != trinsic.services.provider.v1.IONOptions.IONNetwork.TestNet.getNumber()) {
+    if (network_ != trinsic.services.provider.v1.IonOptions.IonNetwork.TestNet.getNumber()) {
       size += com.google.protobuf.CodedOutputStream.computeEnumSize(1, network_);
     }
     size += unknownFields.getSerializedSize();
@@ -270,10 +270,10 @@ public final class IONOptions extends com.google.protobuf.GeneratedMessageV3
     if (obj == this) {
       return true;
     }
-    if (!(obj instanceof trinsic.services.provider.v1.IONOptions)) {
+    if (!(obj instanceof trinsic.services.provider.v1.IonOptions)) {
       return super.equals(obj);
     }
-    trinsic.services.provider.v1.IONOptions other = (trinsic.services.provider.v1.IONOptions) obj;
+    trinsic.services.provider.v1.IonOptions other = (trinsic.services.provider.v1.IonOptions) obj;
 
     if (network_ != other.network_) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -294,71 +294,71 @@ public final class IONOptions extends com.google.protobuf.GeneratedMessageV3
     return hash;
   }
 
-  public static trinsic.services.provider.v1.IONOptions parseFrom(java.nio.ByteBuffer data)
+  public static trinsic.services.provider.v1.IonOptions parseFrom(java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.provider.v1.IONOptions parseFrom(
+  public static trinsic.services.provider.v1.IonOptions parseFrom(
       java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.provider.v1.IONOptions parseFrom(
+  public static trinsic.services.provider.v1.IonOptions parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.provider.v1.IONOptions parseFrom(
+  public static trinsic.services.provider.v1.IonOptions parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.provider.v1.IONOptions parseFrom(byte[] data)
+  public static trinsic.services.provider.v1.IonOptions parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.provider.v1.IONOptions parseFrom(
+  public static trinsic.services.provider.v1.IonOptions parseFrom(
       byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.provider.v1.IONOptions parseFrom(java.io.InputStream input)
+  public static trinsic.services.provider.v1.IonOptions parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.provider.v1.IONOptions parseFrom(
+  public static trinsic.services.provider.v1.IonOptions parseFrom(
       java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
         PARSER, input, extensionRegistry);
   }
 
-  public static trinsic.services.provider.v1.IONOptions parseDelimitedFrom(
+  public static trinsic.services.provider.v1.IonOptions parseDelimitedFrom(
       java.io.InputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.provider.v1.IONOptions parseDelimitedFrom(
+  public static trinsic.services.provider.v1.IonOptions parseDelimitedFrom(
       java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
         PARSER, input, extensionRegistry);
   }
 
-  public static trinsic.services.provider.v1.IONOptions parseFrom(
+  public static trinsic.services.provider.v1.IonOptions parseFrom(
       com.google.protobuf.CodedInputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.provider.v1.IONOptions parseFrom(
+  public static trinsic.services.provider.v1.IonOptions parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -375,7 +375,7 @@ public final class IONOptions extends com.google.protobuf.GeneratedMessageV3
     return DEFAULT_INSTANCE.toBuilder();
   }
 
-  public static Builder newBuilder(trinsic.services.provider.v1.IONOptions prototype) {
+  public static Builder newBuilder(trinsic.services.provider.v1.IonOptions prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
 
@@ -396,28 +396,28 @@ public final class IONOptions extends com.google.protobuf.GeneratedMessageV3
    * Options for creation of DID on the ION network
    * </pre>
    *
-   * Protobuf type {@code services.provider.v1.IONOptions}
+   * Protobuf type {@code services.provider.v1.IonOptions}
    */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
-      // @@protoc_insertion_point(builder_implements:services.provider.v1.IONOptions)
-      trinsic.services.provider.v1.IONOptionsOrBuilder {
+      // @@protoc_insertion_point(builder_implements:services.provider.v1.IonOptions)
+      trinsic.services.provider.v1.IonOptionsOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
       return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_IONOptions_descriptor;
+          .internal_static_services_provider_v1_IonOptions_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_IONOptions_fieldAccessorTable
+          .internal_static_services_provider_v1_IonOptions_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.provider.v1.IONOptions.class,
-              trinsic.services.provider.v1.IONOptions.Builder.class);
+              trinsic.services.provider.v1.IonOptions.class,
+              trinsic.services.provider.v1.IonOptions.Builder.class);
     }
 
-    // Construct using trinsic.services.provider.v1.IONOptions.newBuilder()
+    // Construct using trinsic.services.provider.v1.IonOptions.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -442,17 +442,17 @@ public final class IONOptions extends com.google.protobuf.GeneratedMessageV3
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
       return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_IONOptions_descriptor;
+          .internal_static_services_provider_v1_IonOptions_descriptor;
     }
 
     @java.lang.Override
-    public trinsic.services.provider.v1.IONOptions getDefaultInstanceForType() {
-      return trinsic.services.provider.v1.IONOptions.getDefaultInstance();
+    public trinsic.services.provider.v1.IonOptions getDefaultInstanceForType() {
+      return trinsic.services.provider.v1.IonOptions.getDefaultInstance();
     }
 
     @java.lang.Override
-    public trinsic.services.provider.v1.IONOptions build() {
-      trinsic.services.provider.v1.IONOptions result = buildPartial();
+    public trinsic.services.provider.v1.IonOptions build() {
+      trinsic.services.provider.v1.IonOptions result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -460,9 +460,9 @@ public final class IONOptions extends com.google.protobuf.GeneratedMessageV3
     }
 
     @java.lang.Override
-    public trinsic.services.provider.v1.IONOptions buildPartial() {
-      trinsic.services.provider.v1.IONOptions result =
-          new trinsic.services.provider.v1.IONOptions(this);
+    public trinsic.services.provider.v1.IonOptions buildPartial() {
+      trinsic.services.provider.v1.IonOptions result =
+          new trinsic.services.provider.v1.IonOptions(this);
       result.network_ = network_;
       onBuilt();
       return result;
@@ -503,16 +503,16 @@ public final class IONOptions extends com.google.protobuf.GeneratedMessageV3
 
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof trinsic.services.provider.v1.IONOptions) {
-        return mergeFrom((trinsic.services.provider.v1.IONOptions) other);
+      if (other instanceof trinsic.services.provider.v1.IonOptions) {
+        return mergeFrom((trinsic.services.provider.v1.IonOptions) other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(trinsic.services.provider.v1.IONOptions other) {
-      if (other == trinsic.services.provider.v1.IONOptions.getDefaultInstance()) return this;
+    public Builder mergeFrom(trinsic.services.provider.v1.IonOptions other) {
+      if (other == trinsic.services.provider.v1.IonOptions.getDefaultInstance()) return this;
       if (other.network_ != 0) {
         setNetworkValue(other.getNetworkValue());
       }
@@ -531,11 +531,11 @@ public final class IONOptions extends com.google.protobuf.GeneratedMessageV3
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      trinsic.services.provider.v1.IONOptions parsedMessage = null;
+      trinsic.services.provider.v1.IonOptions parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (trinsic.services.provider.v1.IONOptions) e.getUnfinishedMessage();
+        parsedMessage = (trinsic.services.provider.v1.IonOptions) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -553,7 +553,7 @@ public final class IONOptions extends com.google.protobuf.GeneratedMessageV3
      * ION network on which DID should be published
      * </pre>
      *
-     * <code>.services.provider.v1.IONOptions.IONNetwork network = 1;</code>
+     * <code>.services.provider.v1.IonOptions.IonNetwork network = 1;</code>
      *
      * @return The enum numeric value on the wire for network.
      */
@@ -568,7 +568,7 @@ public final class IONOptions extends com.google.protobuf.GeneratedMessageV3
      * ION network on which DID should be published
      * </pre>
      *
-     * <code>.services.provider.v1.IONOptions.IONNetwork network = 1;</code>
+     * <code>.services.provider.v1.IonOptions.IonNetwork network = 1;</code>
      *
      * @param value The enum numeric value on the wire for network to set.
      * @return This builder for chaining.
@@ -586,17 +586,17 @@ public final class IONOptions extends com.google.protobuf.GeneratedMessageV3
      * ION network on which DID should be published
      * </pre>
      *
-     * <code>.services.provider.v1.IONOptions.IONNetwork network = 1;</code>
+     * <code>.services.provider.v1.IonOptions.IonNetwork network = 1;</code>
      *
      * @return The network.
      */
     @java.lang.Override
-    public trinsic.services.provider.v1.IONOptions.IONNetwork getNetwork() {
+    public trinsic.services.provider.v1.IonOptions.IonNetwork getNetwork() {
       @SuppressWarnings("deprecation")
-      trinsic.services.provider.v1.IONOptions.IONNetwork result =
-          trinsic.services.provider.v1.IONOptions.IONNetwork.valueOf(network_);
+      trinsic.services.provider.v1.IonOptions.IonNetwork result =
+          trinsic.services.provider.v1.IonOptions.IonNetwork.valueOf(network_);
       return result == null
-          ? trinsic.services.provider.v1.IONOptions.IONNetwork.UNRECOGNIZED
+          ? trinsic.services.provider.v1.IonOptions.IonNetwork.UNRECOGNIZED
           : result;
     }
     /**
@@ -606,12 +606,12 @@ public final class IONOptions extends com.google.protobuf.GeneratedMessageV3
      * ION network on which DID should be published
      * </pre>
      *
-     * <code>.services.provider.v1.IONOptions.IONNetwork network = 1;</code>
+     * <code>.services.provider.v1.IonOptions.IonNetwork network = 1;</code>
      *
      * @param value The network to set.
      * @return This builder for chaining.
      */
-    public Builder setNetwork(trinsic.services.provider.v1.IONOptions.IONNetwork value) {
+    public Builder setNetwork(trinsic.services.provider.v1.IonOptions.IonNetwork value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -627,7 +627,7 @@ public final class IONOptions extends com.google.protobuf.GeneratedMessageV3
      * ION network on which DID should be published
      * </pre>
      *
-     * <code>.services.provider.v1.IONOptions.IONNetwork network = 1;</code>
+     * <code>.services.provider.v1.IonOptions.IonNetwork network = 1;</code>
      *
      * @return This builder for chaining.
      */
@@ -649,42 +649,42 @@ public final class IONOptions extends com.google.protobuf.GeneratedMessageV3
       return super.mergeUnknownFields(unknownFields);
     }
 
-    // @@protoc_insertion_point(builder_scope:services.provider.v1.IONOptions)
+    // @@protoc_insertion_point(builder_scope:services.provider.v1.IonOptions)
   }
 
-  // @@protoc_insertion_point(class_scope:services.provider.v1.IONOptions)
-  private static final trinsic.services.provider.v1.IONOptions DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:services.provider.v1.IonOptions)
+  private static final trinsic.services.provider.v1.IonOptions DEFAULT_INSTANCE;
 
   static {
-    DEFAULT_INSTANCE = new trinsic.services.provider.v1.IONOptions();
+    DEFAULT_INSTANCE = new trinsic.services.provider.v1.IonOptions();
   }
 
-  public static trinsic.services.provider.v1.IONOptions getDefaultInstance() {
+  public static trinsic.services.provider.v1.IonOptions getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<IONOptions> PARSER =
-      new com.google.protobuf.AbstractParser<IONOptions>() {
+  private static final com.google.protobuf.Parser<IonOptions> PARSER =
+      new com.google.protobuf.AbstractParser<IonOptions>() {
         @java.lang.Override
-        public IONOptions parsePartialFrom(
+        public IonOptions parsePartialFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
-          return new IONOptions(input, extensionRegistry);
+          return new IonOptions(input, extensionRegistry);
         }
       };
 
-  public static com.google.protobuf.Parser<IONOptions> parser() {
+  public static com.google.protobuf.Parser<IonOptions> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<IONOptions> getParserForType() {
+  public com.google.protobuf.Parser<IonOptions> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public trinsic.services.provider.v1.IONOptions getDefaultInstanceForType() {
+  public trinsic.services.provider.v1.IonOptions getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 }

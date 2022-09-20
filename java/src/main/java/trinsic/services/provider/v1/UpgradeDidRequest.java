@@ -10,26 +10,26 @@ package trinsic.services.provider.v1;
  * Request to upgrade a wallet
  * </pre>
  *
- * Protobuf type {@code services.provider.v1.UpgradeDIDRequest}
+ * Protobuf type {@code services.provider.v1.UpgradeDidRequest}
  */
-public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessageV3
+public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessageV3
     implements
-    // @@protoc_insertion_point(message_implements:services.provider.v1.UpgradeDIDRequest)
-    UpgradeDIDRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:services.provider.v1.UpgradeDidRequest)
+    UpgradeDidRequestOrBuilder {
   private static final long serialVersionUID = 0L;
-  // Use UpgradeDIDRequest.newBuilder() to construct.
-  private UpgradeDIDRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use UpgradeDidRequest.newBuilder() to construct.
+  private UpgradeDidRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
 
-  private UpgradeDIDRequest() {
+  private UpgradeDidRequest() {
     method_ = 0;
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
-    return new UpgradeDIDRequest();
+    return new UpgradeDidRequest();
   }
 
   @java.lang.Override
@@ -37,7 +37,7 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
     return this.unknownFields;
   }
 
-  private UpgradeDIDRequest(
+  private UpgradeDidRequest(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -78,15 +78,15 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
             }
           case 34:
             {
-              trinsic.services.provider.v1.IONOptions.Builder subBuilder = null;
+              trinsic.services.provider.v1.IonOptions.Builder subBuilder = null;
               if (optionsCase_ == 4) {
-                subBuilder = ((trinsic.services.provider.v1.IONOptions) options_).toBuilder();
+                subBuilder = ((trinsic.services.provider.v1.IonOptions) options_).toBuilder();
               }
               options_ =
                   input.readMessage(
-                      trinsic.services.provider.v1.IONOptions.parser(), extensionRegistry);
+                      trinsic.services.provider.v1.IonOptions.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom((trinsic.services.provider.v1.IONOptions) options_);
+                subBuilder.mergeFrom((trinsic.services.provider.v1.IonOptions) options_);
                 options_ = subBuilder.buildPartial();
               }
               optionsCase_ = 4;
@@ -115,17 +115,17 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
 
   public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
     return trinsic.services.provider.v1.ProviderOuterClass
-        .internal_static_services_provider_v1_UpgradeDIDRequest_descriptor;
+        .internal_static_services_provider_v1_UpgradeDidRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return trinsic.services.provider.v1.ProviderOuterClass
-        .internal_static_services_provider_v1_UpgradeDIDRequest_fieldAccessorTable
+        .internal_static_services_provider_v1_UpgradeDidRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.provider.v1.UpgradeDIDRequest.class,
-            trinsic.services.provider.v1.UpgradeDIDRequest.Builder.class);
+            trinsic.services.provider.v1.UpgradeDidRequest.class,
+            trinsic.services.provider.v1.UpgradeDidRequest.Builder.class);
   }
 
   private int accountCase_ = 0;
@@ -374,7 +374,7 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
    * DID Method to which wallet should be upgraded
    * </pre>
    *
-   * <code>.services.common.v1.SupportedDIDMethod method = 3;</code>
+   * <code>.services.common.v1.SupportedDidMethod method = 3;</code>
    *
    * @return The enum numeric value on the wire for method.
    */
@@ -389,16 +389,16 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
    * DID Method to which wallet should be upgraded
    * </pre>
    *
-   * <code>.services.common.v1.SupportedDIDMethod method = 3;</code>
+   * <code>.services.common.v1.SupportedDidMethod method = 3;</code>
    *
    * @return The method.
    */
   @java.lang.Override
-  public trinsic.services.common.v1.SupportedDIDMethod getMethod() {
+  public trinsic.services.common.v1.SupportedDidMethod getMethod() {
     @SuppressWarnings("deprecation")
-    trinsic.services.common.v1.SupportedDIDMethod result =
-        trinsic.services.common.v1.SupportedDIDMethod.valueOf(method_);
-    return result == null ? trinsic.services.common.v1.SupportedDIDMethod.UNRECOGNIZED : result;
+    trinsic.services.common.v1.SupportedDidMethod result =
+        trinsic.services.common.v1.SupportedDidMethod.valueOf(method_);
+    return result == null ? trinsic.services.common.v1.SupportedDidMethod.UNRECOGNIZED : result;
   }
 
   public static final int ION_OPTIONS_FIELD_NUMBER = 4;
@@ -409,7 +409,7 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
    * Configuration for creation of DID on ION network
    * </pre>
    *
-   * <code>.services.provider.v1.IONOptions ion_options = 4;</code>
+   * <code>.services.provider.v1.IonOptions ion_options = 4;</code>
    *
    * @return Whether the ionOptions field is set.
    */
@@ -424,16 +424,16 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
    * Configuration for creation of DID on ION network
    * </pre>
    *
-   * <code>.services.provider.v1.IONOptions ion_options = 4;</code>
+   * <code>.services.provider.v1.IonOptions ion_options = 4;</code>
    *
    * @return The ionOptions.
    */
   @java.lang.Override
-  public trinsic.services.provider.v1.IONOptions getIonOptions() {
+  public trinsic.services.provider.v1.IonOptions getIonOptions() {
     if (optionsCase_ == 4) {
-      return (trinsic.services.provider.v1.IONOptions) options_;
+      return (trinsic.services.provider.v1.IonOptions) options_;
     }
-    return trinsic.services.provider.v1.IONOptions.getDefaultInstance();
+    return trinsic.services.provider.v1.IonOptions.getDefaultInstance();
   }
   /**
    *
@@ -442,14 +442,14 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
    * Configuration for creation of DID on ION network
    * </pre>
    *
-   * <code>.services.provider.v1.IONOptions ion_options = 4;</code>
+   * <code>.services.provider.v1.IonOptions ion_options = 4;</code>
    */
   @java.lang.Override
-  public trinsic.services.provider.v1.IONOptionsOrBuilder getIonOptionsOrBuilder() {
+  public trinsic.services.provider.v1.IonOptionsOrBuilder getIonOptionsOrBuilder() {
     if (optionsCase_ == 4) {
-      return (trinsic.services.provider.v1.IONOptions) options_;
+      return (trinsic.services.provider.v1.IonOptions) options_;
     }
-    return trinsic.services.provider.v1.IONOptions.getDefaultInstance();
+    return trinsic.services.provider.v1.IonOptions.getDefaultInstance();
   }
 
   private byte memoizedIsInitialized = -1;
@@ -472,11 +472,11 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
     if (accountCase_ == 2) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, account_);
     }
-    if (method_ != trinsic.services.common.v1.SupportedDIDMethod.KEY.getNumber()) {
+    if (method_ != trinsic.services.common.v1.SupportedDidMethod.KEY.getNumber()) {
       output.writeEnum(3, method_);
     }
     if (optionsCase_ == 4) {
-      output.writeMessage(4, (trinsic.services.provider.v1.IONOptions) options_);
+      output.writeMessage(4, (trinsic.services.provider.v1.IonOptions) options_);
     }
     unknownFields.writeTo(output);
   }
@@ -493,13 +493,13 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
     if (accountCase_ == 2) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, account_);
     }
-    if (method_ != trinsic.services.common.v1.SupportedDIDMethod.KEY.getNumber()) {
+    if (method_ != trinsic.services.common.v1.SupportedDidMethod.KEY.getNumber()) {
       size += com.google.protobuf.CodedOutputStream.computeEnumSize(3, method_);
     }
     if (optionsCase_ == 4) {
       size +=
           com.google.protobuf.CodedOutputStream.computeMessageSize(
-              4, (trinsic.services.provider.v1.IONOptions) options_);
+              4, (trinsic.services.provider.v1.IonOptions) options_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -511,11 +511,11 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
     if (obj == this) {
       return true;
     }
-    if (!(obj instanceof trinsic.services.provider.v1.UpgradeDIDRequest)) {
+    if (!(obj instanceof trinsic.services.provider.v1.UpgradeDidRequest)) {
       return super.equals(obj);
     }
-    trinsic.services.provider.v1.UpgradeDIDRequest other =
-        (trinsic.services.provider.v1.UpgradeDIDRequest) obj;
+    trinsic.services.provider.v1.UpgradeDidRequest other =
+        (trinsic.services.provider.v1.UpgradeDidRequest) obj;
 
     if (method_ != other.method_) return false;
     if (!getAccountCase().equals(other.getAccountCase())) return false;
@@ -575,71 +575,71 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
     return hash;
   }
 
-  public static trinsic.services.provider.v1.UpgradeDIDRequest parseFrom(java.nio.ByteBuffer data)
+  public static trinsic.services.provider.v1.UpgradeDidRequest parseFrom(java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.provider.v1.UpgradeDIDRequest parseFrom(
+  public static trinsic.services.provider.v1.UpgradeDidRequest parseFrom(
       java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.provider.v1.UpgradeDIDRequest parseFrom(
+  public static trinsic.services.provider.v1.UpgradeDidRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.provider.v1.UpgradeDIDRequest parseFrom(
+  public static trinsic.services.provider.v1.UpgradeDidRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.provider.v1.UpgradeDIDRequest parseFrom(byte[] data)
+  public static trinsic.services.provider.v1.UpgradeDidRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
 
-  public static trinsic.services.provider.v1.UpgradeDIDRequest parseFrom(
+  public static trinsic.services.provider.v1.UpgradeDidRequest parseFrom(
       byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
 
-  public static trinsic.services.provider.v1.UpgradeDIDRequest parseFrom(java.io.InputStream input)
+  public static trinsic.services.provider.v1.UpgradeDidRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.provider.v1.UpgradeDIDRequest parseFrom(
+  public static trinsic.services.provider.v1.UpgradeDidRequest parseFrom(
       java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
         PARSER, input, extensionRegistry);
   }
 
-  public static trinsic.services.provider.v1.UpgradeDIDRequest parseDelimitedFrom(
+  public static trinsic.services.provider.v1.UpgradeDidRequest parseDelimitedFrom(
       java.io.InputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.provider.v1.UpgradeDIDRequest parseDelimitedFrom(
+  public static trinsic.services.provider.v1.UpgradeDidRequest parseDelimitedFrom(
       java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
         PARSER, input, extensionRegistry);
   }
 
-  public static trinsic.services.provider.v1.UpgradeDIDRequest parseFrom(
+  public static trinsic.services.provider.v1.UpgradeDidRequest parseFrom(
       com.google.protobuf.CodedInputStream input) throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
 
-  public static trinsic.services.provider.v1.UpgradeDIDRequest parseFrom(
+  public static trinsic.services.provider.v1.UpgradeDidRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -656,7 +656,7 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
     return DEFAULT_INSTANCE.toBuilder();
   }
 
-  public static Builder newBuilder(trinsic.services.provider.v1.UpgradeDIDRequest prototype) {
+  public static Builder newBuilder(trinsic.services.provider.v1.UpgradeDidRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
 
@@ -677,28 +677,28 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
    * Request to upgrade a wallet
    * </pre>
    *
-   * Protobuf type {@code services.provider.v1.UpgradeDIDRequest}
+   * Protobuf type {@code services.provider.v1.UpgradeDidRequest}
    */
   public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
       implements
-      // @@protoc_insertion_point(builder_implements:services.provider.v1.UpgradeDIDRequest)
-      trinsic.services.provider.v1.UpgradeDIDRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:services.provider.v1.UpgradeDidRequest)
+      trinsic.services.provider.v1.UpgradeDidRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
       return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_UpgradeDIDRequest_descriptor;
+          .internal_static_services_provider_v1_UpgradeDidRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_UpgradeDIDRequest_fieldAccessorTable
+          .internal_static_services_provider_v1_UpgradeDidRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.provider.v1.UpgradeDIDRequest.class,
-              trinsic.services.provider.v1.UpgradeDIDRequest.Builder.class);
+              trinsic.services.provider.v1.UpgradeDidRequest.class,
+              trinsic.services.provider.v1.UpgradeDidRequest.Builder.class);
     }
 
-    // Construct using trinsic.services.provider.v1.UpgradeDIDRequest.newBuilder()
+    // Construct using trinsic.services.provider.v1.UpgradeDidRequest.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -727,17 +727,17 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
       return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_UpgradeDIDRequest_descriptor;
+          .internal_static_services_provider_v1_UpgradeDidRequest_descriptor;
     }
 
     @java.lang.Override
-    public trinsic.services.provider.v1.UpgradeDIDRequest getDefaultInstanceForType() {
-      return trinsic.services.provider.v1.UpgradeDIDRequest.getDefaultInstance();
+    public trinsic.services.provider.v1.UpgradeDidRequest getDefaultInstanceForType() {
+      return trinsic.services.provider.v1.UpgradeDidRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public trinsic.services.provider.v1.UpgradeDIDRequest build() {
-      trinsic.services.provider.v1.UpgradeDIDRequest result = buildPartial();
+    public trinsic.services.provider.v1.UpgradeDidRequest build() {
+      trinsic.services.provider.v1.UpgradeDidRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -745,9 +745,9 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
     }
 
     @java.lang.Override
-    public trinsic.services.provider.v1.UpgradeDIDRequest buildPartial() {
-      trinsic.services.provider.v1.UpgradeDIDRequest result =
-          new trinsic.services.provider.v1.UpgradeDIDRequest(this);
+    public trinsic.services.provider.v1.UpgradeDidRequest buildPartial() {
+      trinsic.services.provider.v1.UpgradeDidRequest result =
+          new trinsic.services.provider.v1.UpgradeDidRequest(this);
       if (accountCase_ == 1) {
         result.account_ = account_;
       }
@@ -803,16 +803,16 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
 
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof trinsic.services.provider.v1.UpgradeDIDRequest) {
-        return mergeFrom((trinsic.services.provider.v1.UpgradeDIDRequest) other);
+      if (other instanceof trinsic.services.provider.v1.UpgradeDidRequest) {
+        return mergeFrom((trinsic.services.provider.v1.UpgradeDidRequest) other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(trinsic.services.provider.v1.UpgradeDIDRequest other) {
-      if (other == trinsic.services.provider.v1.UpgradeDIDRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(trinsic.services.provider.v1.UpgradeDidRequest other) {
+      if (other == trinsic.services.provider.v1.UpgradeDidRequest.getDefaultInstance()) return this;
       if (other.method_ != 0) {
         setMethodValue(other.getMethodValue());
       }
@@ -862,11 +862,11 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      trinsic.services.provider.v1.UpgradeDIDRequest parsedMessage = null;
+      trinsic.services.provider.v1.UpgradeDidRequest parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (trinsic.services.provider.v1.UpgradeDIDRequest) e.getUnfinishedMessage();
+        parsedMessage = (trinsic.services.provider.v1.UpgradeDidRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -1192,7 +1192,7 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
      * DID Method to which wallet should be upgraded
      * </pre>
      *
-     * <code>.services.common.v1.SupportedDIDMethod method = 3;</code>
+     * <code>.services.common.v1.SupportedDidMethod method = 3;</code>
      *
      * @return The enum numeric value on the wire for method.
      */
@@ -1207,7 +1207,7 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
      * DID Method to which wallet should be upgraded
      * </pre>
      *
-     * <code>.services.common.v1.SupportedDIDMethod method = 3;</code>
+     * <code>.services.common.v1.SupportedDidMethod method = 3;</code>
      *
      * @param value The enum numeric value on the wire for method to set.
      * @return This builder for chaining.
@@ -1225,16 +1225,16 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
      * DID Method to which wallet should be upgraded
      * </pre>
      *
-     * <code>.services.common.v1.SupportedDIDMethod method = 3;</code>
+     * <code>.services.common.v1.SupportedDidMethod method = 3;</code>
      *
      * @return The method.
      */
     @java.lang.Override
-    public trinsic.services.common.v1.SupportedDIDMethod getMethod() {
+    public trinsic.services.common.v1.SupportedDidMethod getMethod() {
       @SuppressWarnings("deprecation")
-      trinsic.services.common.v1.SupportedDIDMethod result =
-          trinsic.services.common.v1.SupportedDIDMethod.valueOf(method_);
-      return result == null ? trinsic.services.common.v1.SupportedDIDMethod.UNRECOGNIZED : result;
+      trinsic.services.common.v1.SupportedDidMethod result =
+          trinsic.services.common.v1.SupportedDidMethod.valueOf(method_);
+      return result == null ? trinsic.services.common.v1.SupportedDidMethod.UNRECOGNIZED : result;
     }
     /**
      *
@@ -1243,12 +1243,12 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
      * DID Method to which wallet should be upgraded
      * </pre>
      *
-     * <code>.services.common.v1.SupportedDIDMethod method = 3;</code>
+     * <code>.services.common.v1.SupportedDidMethod method = 3;</code>
      *
      * @param value The method to set.
      * @return This builder for chaining.
      */
-    public Builder setMethod(trinsic.services.common.v1.SupportedDIDMethod value) {
+    public Builder setMethod(trinsic.services.common.v1.SupportedDidMethod value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -1264,7 +1264,7 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
      * DID Method to which wallet should be upgraded
      * </pre>
      *
-     * <code>.services.common.v1.SupportedDIDMethod method = 3;</code>
+     * <code>.services.common.v1.SupportedDidMethod method = 3;</code>
      *
      * @return This builder for chaining.
      */
@@ -1276,9 +1276,9 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-            trinsic.services.provider.v1.IONOptions,
-            trinsic.services.provider.v1.IONOptions.Builder,
-            trinsic.services.provider.v1.IONOptionsOrBuilder>
+            trinsic.services.provider.v1.IonOptions,
+            trinsic.services.provider.v1.IonOptions.Builder,
+            trinsic.services.provider.v1.IonOptionsOrBuilder>
         ionOptionsBuilder_;
     /**
      *
@@ -1287,7 +1287,7 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
      * Configuration for creation of DID on ION network
      * </pre>
      *
-     * <code>.services.provider.v1.IONOptions ion_options = 4;</code>
+     * <code>.services.provider.v1.IonOptions ion_options = 4;</code>
      *
      * @return Whether the ionOptions field is set.
      */
@@ -1302,22 +1302,22 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
      * Configuration for creation of DID on ION network
      * </pre>
      *
-     * <code>.services.provider.v1.IONOptions ion_options = 4;</code>
+     * <code>.services.provider.v1.IonOptions ion_options = 4;</code>
      *
      * @return The ionOptions.
      */
     @java.lang.Override
-    public trinsic.services.provider.v1.IONOptions getIonOptions() {
+    public trinsic.services.provider.v1.IonOptions getIonOptions() {
       if (ionOptionsBuilder_ == null) {
         if (optionsCase_ == 4) {
-          return (trinsic.services.provider.v1.IONOptions) options_;
+          return (trinsic.services.provider.v1.IonOptions) options_;
         }
-        return trinsic.services.provider.v1.IONOptions.getDefaultInstance();
+        return trinsic.services.provider.v1.IonOptions.getDefaultInstance();
       } else {
         if (optionsCase_ == 4) {
           return ionOptionsBuilder_.getMessage();
         }
-        return trinsic.services.provider.v1.IONOptions.getDefaultInstance();
+        return trinsic.services.provider.v1.IonOptions.getDefaultInstance();
       }
     }
     /**
@@ -1327,9 +1327,9 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
      * Configuration for creation of DID on ION network
      * </pre>
      *
-     * <code>.services.provider.v1.IONOptions ion_options = 4;</code>
+     * <code>.services.provider.v1.IonOptions ion_options = 4;</code>
      */
-    public Builder setIonOptions(trinsic.services.provider.v1.IONOptions value) {
+    public Builder setIonOptions(trinsic.services.provider.v1.IonOptions value) {
       if (ionOptionsBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -1349,9 +1349,9 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
      * Configuration for creation of DID on ION network
      * </pre>
      *
-     * <code>.services.provider.v1.IONOptions ion_options = 4;</code>
+     * <code>.services.provider.v1.IonOptions ion_options = 4;</code>
      */
-    public Builder setIonOptions(trinsic.services.provider.v1.IONOptions.Builder builderForValue) {
+    public Builder setIonOptions(trinsic.services.provider.v1.IonOptions.Builder builderForValue) {
       if (ionOptionsBuilder_ == null) {
         options_ = builderForValue.build();
         onChanged();
@@ -1368,15 +1368,15 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
      * Configuration for creation of DID on ION network
      * </pre>
      *
-     * <code>.services.provider.v1.IONOptions ion_options = 4;</code>
+     * <code>.services.provider.v1.IonOptions ion_options = 4;</code>
      */
-    public Builder mergeIonOptions(trinsic.services.provider.v1.IONOptions value) {
+    public Builder mergeIonOptions(trinsic.services.provider.v1.IonOptions value) {
       if (ionOptionsBuilder_ == null) {
         if (optionsCase_ == 4
-            && options_ != trinsic.services.provider.v1.IONOptions.getDefaultInstance()) {
+            && options_ != trinsic.services.provider.v1.IonOptions.getDefaultInstance()) {
           options_ =
-              trinsic.services.provider.v1.IONOptions.newBuilder(
-                      (trinsic.services.provider.v1.IONOptions) options_)
+              trinsic.services.provider.v1.IonOptions.newBuilder(
+                      (trinsic.services.provider.v1.IonOptions) options_)
                   .mergeFrom(value)
                   .buildPartial();
         } else {
@@ -1400,7 +1400,7 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
      * Configuration for creation of DID on ION network
      * </pre>
      *
-     * <code>.services.provider.v1.IONOptions ion_options = 4;</code>
+     * <code>.services.provider.v1.IonOptions ion_options = 4;</code>
      */
     public Builder clearIonOptions() {
       if (ionOptionsBuilder_ == null) {
@@ -1425,9 +1425,9 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
      * Configuration for creation of DID on ION network
      * </pre>
      *
-     * <code>.services.provider.v1.IONOptions ion_options = 4;</code>
+     * <code>.services.provider.v1.IonOptions ion_options = 4;</code>
      */
-    public trinsic.services.provider.v1.IONOptions.Builder getIonOptionsBuilder() {
+    public trinsic.services.provider.v1.IonOptions.Builder getIonOptionsBuilder() {
       return getIonOptionsFieldBuilder().getBuilder();
     }
     /**
@@ -1437,17 +1437,17 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
      * Configuration for creation of DID on ION network
      * </pre>
      *
-     * <code>.services.provider.v1.IONOptions ion_options = 4;</code>
+     * <code>.services.provider.v1.IonOptions ion_options = 4;</code>
      */
     @java.lang.Override
-    public trinsic.services.provider.v1.IONOptionsOrBuilder getIonOptionsOrBuilder() {
+    public trinsic.services.provider.v1.IonOptionsOrBuilder getIonOptionsOrBuilder() {
       if ((optionsCase_ == 4) && (ionOptionsBuilder_ != null)) {
         return ionOptionsBuilder_.getMessageOrBuilder();
       } else {
         if (optionsCase_ == 4) {
-          return (trinsic.services.provider.v1.IONOptions) options_;
+          return (trinsic.services.provider.v1.IonOptions) options_;
         }
-        return trinsic.services.provider.v1.IONOptions.getDefaultInstance();
+        return trinsic.services.provider.v1.IonOptions.getDefaultInstance();
       }
     }
     /**
@@ -1457,23 +1457,23 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
      * Configuration for creation of DID on ION network
      * </pre>
      *
-     * <code>.services.provider.v1.IONOptions ion_options = 4;</code>
+     * <code>.services.provider.v1.IonOptions ion_options = 4;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-            trinsic.services.provider.v1.IONOptions,
-            trinsic.services.provider.v1.IONOptions.Builder,
-            trinsic.services.provider.v1.IONOptionsOrBuilder>
+            trinsic.services.provider.v1.IonOptions,
+            trinsic.services.provider.v1.IonOptions.Builder,
+            trinsic.services.provider.v1.IonOptionsOrBuilder>
         getIonOptionsFieldBuilder() {
       if (ionOptionsBuilder_ == null) {
         if (!(optionsCase_ == 4)) {
-          options_ = trinsic.services.provider.v1.IONOptions.getDefaultInstance();
+          options_ = trinsic.services.provider.v1.IonOptions.getDefaultInstance();
         }
         ionOptionsBuilder_ =
             new com.google.protobuf.SingleFieldBuilderV3<
-                trinsic.services.provider.v1.IONOptions,
-                trinsic.services.provider.v1.IONOptions.Builder,
-                trinsic.services.provider.v1.IONOptionsOrBuilder>(
-                (trinsic.services.provider.v1.IONOptions) options_,
+                trinsic.services.provider.v1.IonOptions,
+                trinsic.services.provider.v1.IonOptions.Builder,
+                trinsic.services.provider.v1.IonOptionsOrBuilder>(
+                (trinsic.services.provider.v1.IonOptions) options_,
                 getParentForChildren(),
                 isClean());
         options_ = null;
@@ -1495,42 +1495,42 @@ public final class UpgradeDIDRequest extends com.google.protobuf.GeneratedMessag
       return super.mergeUnknownFields(unknownFields);
     }
 
-    // @@protoc_insertion_point(builder_scope:services.provider.v1.UpgradeDIDRequest)
+    // @@protoc_insertion_point(builder_scope:services.provider.v1.UpgradeDidRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:services.provider.v1.UpgradeDIDRequest)
-  private static final trinsic.services.provider.v1.UpgradeDIDRequest DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:services.provider.v1.UpgradeDidRequest)
+  private static final trinsic.services.provider.v1.UpgradeDidRequest DEFAULT_INSTANCE;
 
   static {
-    DEFAULT_INSTANCE = new trinsic.services.provider.v1.UpgradeDIDRequest();
+    DEFAULT_INSTANCE = new trinsic.services.provider.v1.UpgradeDidRequest();
   }
 
-  public static trinsic.services.provider.v1.UpgradeDIDRequest getDefaultInstance() {
+  public static trinsic.services.provider.v1.UpgradeDidRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<UpgradeDIDRequest> PARSER =
-      new com.google.protobuf.AbstractParser<UpgradeDIDRequest>() {
+  private static final com.google.protobuf.Parser<UpgradeDidRequest> PARSER =
+      new com.google.protobuf.AbstractParser<UpgradeDidRequest>() {
         @java.lang.Override
-        public UpgradeDIDRequest parsePartialFrom(
+        public UpgradeDidRequest parsePartialFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
-          return new UpgradeDIDRequest(input, extensionRegistry);
+          return new UpgradeDidRequest(input, extensionRegistry);
         }
       };
 
-  public static com.google.protobuf.Parser<UpgradeDIDRequest> parser() {
+  public static com.google.protobuf.Parser<UpgradeDidRequest> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<UpgradeDIDRequest> getParserForType() {
+  public com.google.protobuf.Parser<UpgradeDidRequest> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public trinsic.services.provider.v1.UpgradeDIDRequest getDefaultInstanceForType() {
+  public trinsic.services.provider.v1.UpgradeDidRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 }

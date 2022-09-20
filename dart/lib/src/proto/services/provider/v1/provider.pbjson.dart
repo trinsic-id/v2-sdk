@@ -797,37 +797,37 @@ const WalletConfiguration$json = const {
 /// Descriptor for `WalletConfiguration`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List walletConfigurationDescriptor = $convert.base64Decode(
     'ChNXYWxsZXRDb25maWd1cmF0aW9uEhIKBG5hbWUYASABKAlSBG5hbWUSGgoFZW1haWwYAiABKAlCBICmHQFSBWVtYWlsEhYKA3NtcxgDIAEoCUIEgKYdAVIDc21zEhsKCXdhbGxldF9pZBgEIAEoCVIId2FsbGV0SWQSHQoKcHVibGljX2RpZBgFIAEoCVIJcHVibGljRGlk');
-@$core.Deprecated('Use iONOptionsDescriptor instead')
-const IONOptions$json = const {
-  '1': 'IONOptions',
+@$core.Deprecated('Use ionOptionsDescriptor instead')
+const IonOptions$json = const {
+  '1': 'IonOptions',
   '2': const [
     const {
       '1': 'network',
       '3': 1,
       '4': 1,
       '5': 14,
-      '6': '.services.provider.v1.IONOptions.IONNetwork',
+      '6': '.services.provider.v1.IonOptions.IonNetwork',
       '10': 'network'
     },
   ],
-  '4': const [IONOptions_IONNetwork$json],
+  '4': const [IonOptions_IonNetwork$json],
 };
 
-@$core.Deprecated('Use iONOptionsDescriptor instead')
-const IONOptions_IONNetwork$json = const {
-  '1': 'IONNetwork',
+@$core.Deprecated('Use ionOptionsDescriptor instead')
+const IonOptions_IonNetwork$json = const {
+  '1': 'IonNetwork',
   '2': const [
     const {'1': 'TestNet', '2': 0},
     const {'1': 'MainNet', '2': 1},
   ],
 };
 
-/// Descriptor for `IONOptions`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List iONOptionsDescriptor = $convert.base64Decode(
-    'CgpJT05PcHRpb25zEkUKB25ldHdvcmsYASABKA4yKy5zZXJ2aWNlcy5wcm92aWRlci52MS5JT05PcHRpb25zLklPTk5ldHdvcmtSB25ldHdvcmsiJgoKSU9OTmV0d29yaxILCgdUZXN0TmV0EAASCwoHTWFpbk5ldBAB');
-@$core.Deprecated('Use upgradeDIDRequestDescriptor instead')
-const UpgradeDIDRequest$json = const {
-  '1': 'UpgradeDIDRequest',
+/// Descriptor for `IonOptions`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List ionOptionsDescriptor = $convert.base64Decode(
+    'CgpJb25PcHRpb25zEkUKB25ldHdvcmsYASABKA4yKy5zZXJ2aWNlcy5wcm92aWRlci52MS5Jb25PcHRpb25zLklvbk5ldHdvcmtSB25ldHdvcmsiJgoKSW9uTmV0d29yaxILCgdUZXN0TmV0EAASCwoHTWFpbk5ldBAB');
+@$core.Deprecated('Use upgradeDidRequestDescriptor instead')
+const UpgradeDidRequest$json = const {
+  '1': 'UpgradeDidRequest',
   '2': const [
     const {'1': 'email', '3': 1, '4': 1, '5': 9, '9': 0, '10': 'email'},
     const {'1': 'wallet_id', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'walletId'},
@@ -836,7 +836,7 @@ const UpgradeDIDRequest$json = const {
       '3': 3,
       '4': 1,
       '5': 14,
-      '6': '.services.common.v1.SupportedDIDMethod',
+      '6': '.services.common.v1.SupportedDidMethod',
       '10': 'method'
     },
     const {
@@ -844,7 +844,7 @@ const UpgradeDIDRequest$json = const {
       '3': 4,
       '4': 1,
       '5': 11,
-      '6': '.services.provider.v1.IONOptions',
+      '6': '.services.provider.v1.IonOptions',
       '9': 1,
       '10': 'ionOptions'
     },
@@ -855,17 +855,17 @@ const UpgradeDIDRequest$json = const {
   ],
 };
 
-/// Descriptor for `UpgradeDIDRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List upgradeDIDRequestDescriptor = $convert.base64Decode(
-    'ChFVcGdyYWRlRElEUmVxdWVzdBIWCgVlbWFpbBgBIAEoCUgAUgVlbWFpbBIdCgl3YWxsZXRfaWQYAiABKAlIAFIId2FsbGV0SWQSPgoGbWV0aG9kGAMgASgOMiYuc2VydmljZXMuY29tbW9uLnYxLlN1cHBvcnRlZERJRE1ldGhvZFIGbWV0aG9kEkMKC2lvbl9vcHRpb25zGAQgASgLMiAuc2VydmljZXMucHJvdmlkZXIudjEuSU9OT3B0aW9uc0gBUgppb25PcHRpb25zQgkKB2FjY291bnRCCQoHb3B0aW9ucw==');
-@$core.Deprecated('Use upgradeDIDResponseDescriptor instead')
-const UpgradeDIDResponse$json = const {
-  '1': 'UpgradeDIDResponse',
+/// Descriptor for `UpgradeDidRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List upgradeDidRequestDescriptor = $convert.base64Decode(
+    'ChFVcGdyYWRlRGlkUmVxdWVzdBIWCgVlbWFpbBgBIAEoCUgAUgVlbWFpbBIdCgl3YWxsZXRfaWQYAiABKAlIAFIId2FsbGV0SWQSPgoGbWV0aG9kGAMgASgOMiYuc2VydmljZXMuY29tbW9uLnYxLlN1cHBvcnRlZERpZE1ldGhvZFIGbWV0aG9kEkMKC2lvbl9vcHRpb25zGAQgASgLMiAuc2VydmljZXMucHJvdmlkZXIudjEuSW9uT3B0aW9uc0gBUgppb25PcHRpb25zQgkKB2FjY291bnRCCQoHb3B0aW9ucw==');
+@$core.Deprecated('Use upgradeDidResponseDescriptor instead')
+const UpgradeDidResponse$json = const {
+  '1': 'UpgradeDidResponse',
   '2': const [
     const {'1': 'did', '3': 1, '4': 1, '5': 9, '10': 'did'},
   ],
 };
 
-/// Descriptor for `UpgradeDIDResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List upgradeDIDResponseDescriptor = $convert
-    .base64Decode('ChJVcGdyYWRlRElEUmVzcG9uc2USEAoDZGlkGAEgASgJUgNkaWQ=');
+/// Descriptor for `UpgradeDidResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List upgradeDidResponseDescriptor = $convert
+    .base64Decode('ChJVcGdyYWRlRGlkUmVzcG9uc2USEAoDZGlkGAEgASgJUgNkaWQ=');
