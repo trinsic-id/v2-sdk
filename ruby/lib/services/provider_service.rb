@@ -126,6 +126,13 @@ module Trinsic
       @client.get_event_token(request, metadata: metadata(request))
     end
 
+    #  Upgrade a wallet's DID from `did:key` to another method
+    # @param [UpgradeDIDRequest] request
+    # @return [Services::Provider::V1::UpgradeDIDResponse]
+    def upgrade_did(request)
+      @client.upgrade_did(request, metadata: metadata(request))
+    end
+
     #  Retrieve a random hash TXT that can be used to verify domain ownership
     # @param [RetrieveDomainVerificationRecordRequest] request
     # @return [Services::Provider::V1::RetrieveDomainVerificationRecordResponse]

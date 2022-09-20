@@ -25,6 +25,18 @@ const ResponseStatus$json = const {
 /// Descriptor for `ResponseStatus`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List responseStatusDescriptor = $convert.base64Decode(
     'Cg5SZXNwb25zZVN0YXR1cxILCgdTVUNDRVNTEAASGAoUV0FMTEVUX0FDQ0VTU19ERU5JRUQQChIRCg1XQUxMRVRfRVhJU1RTEAsSEgoOSVRFTV9OT1RfRk9VTkQQFBIYChNTRVJJQUxJWkFUSU9OX0VSUk9SEMgBEhEKDVVOS05PV05fRVJST1IQZA==');
+@$core.Deprecated('Use supportedDIDMethodDescriptor instead')
+const SupportedDIDMethod$json = const {
+  '1': 'SupportedDIDMethod',
+  '2': const [
+    const {'1': 'KEY', '2': 0},
+    const {'1': 'ION', '2': 1},
+  ],
+};
+
+/// Descriptor for `SupportedDIDMethod`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List supportedDIDMethodDescriptor = $convert
+    .base64Decode('ChJTdXBwb3J0ZWRESURNZXRob2QSBwoDS0VZEAASBwoDSU9OEAE=');
 @$core.Deprecated('Use nonceDescriptor instead')
 const Nonce$json = const {
   '1': 'Nonce',

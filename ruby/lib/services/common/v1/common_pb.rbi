@@ -96,3 +96,20 @@ module Services::Common::V1::ResponseStatus
   def self.descriptor
   end
 end
+
+module Services::Common::V1::SupportedDIDMethod
+  self::KEY = T.let(0, Integer)
+  self::ION = T.let(1, Integer)
+
+  sig { params(value: Integer).returns(T.nilable(Symbol)) }
+  def self.lookup(value)
+  end
+
+  sig { params(value: Symbol).returns(T.nilable(Integer)) }
+  def self.resolve(value)
+  end
+
+  sig { returns(::Google::Protobuf::EnumDescriptor) }
+  def self.descriptor
+  end
+end

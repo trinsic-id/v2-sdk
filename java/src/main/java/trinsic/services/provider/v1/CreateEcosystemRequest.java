@@ -254,7 +254,7 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
    * <code>string uri = 3 [deprecated = true, (.services.options.optional) = true];</code>
    *
    * @deprecated services.provider.v1.CreateEcosystemRequest.uri is deprecated. See
-   *     services/provider/v1/provider.proto;l=136
+   *     services/provider/v1/provider.proto;l=137
    * @return The uri.
    */
   @java.lang.Override
@@ -280,7 +280,7 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
    * <code>string uri = 3 [deprecated = true, (.services.options.optional) = true];</code>
    *
    * @deprecated services.provider.v1.CreateEcosystemRequest.uri is deprecated. See
-   *     services/provider/v1/provider.proto;l=136
+   *     services/provider/v1/provider.proto;l=137
    * @return The bytes for uri.
    */
   @java.lang.Override
@@ -1026,7 +1026,7 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
      * <code>string uri = 3 [deprecated = true, (.services.options.optional) = true];</code>
      *
      * @deprecated services.provider.v1.CreateEcosystemRequest.uri is deprecated. See
-     *     services/provider/v1/provider.proto;l=136
+     *     services/provider/v1/provider.proto;l=137
      * @return The uri.
      */
     @java.lang.Deprecated
@@ -1051,7 +1051,7 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
      * <code>string uri = 3 [deprecated = true, (.services.options.optional) = true];</code>
      *
      * @deprecated services.provider.v1.CreateEcosystemRequest.uri is deprecated. See
-     *     services/provider/v1/provider.proto;l=136
+     *     services/provider/v1/provider.proto;l=137
      * @return The bytes for uri.
      */
     @java.lang.Deprecated
@@ -1076,7 +1076,7 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
      * <code>string uri = 3 [deprecated = true, (.services.options.optional) = true];</code>
      *
      * @deprecated services.provider.v1.CreateEcosystemRequest.uri is deprecated. See
-     *     services/provider/v1/provider.proto;l=136
+     *     services/provider/v1/provider.proto;l=137
      * @param value The uri to set.
      * @return This builder for chaining.
      */
@@ -1100,7 +1100,7 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
      * <code>string uri = 3 [deprecated = true, (.services.options.optional) = true];</code>
      *
      * @deprecated services.provider.v1.CreateEcosystemRequest.uri is deprecated. See
-     *     services/provider/v1/provider.proto;l=136
+     *     services/provider/v1/provider.proto;l=137
      * @return This builder for chaining.
      */
     @java.lang.Deprecated
@@ -1120,7 +1120,7 @@ public final class CreateEcosystemRequest extends com.google.protobuf.GeneratedM
      * <code>string uri = 3 [deprecated = true, (.services.options.optional) = true];</code>
      *
      * @deprecated services.provider.v1.CreateEcosystemRequest.uri is deprecated. See
-     *     services/provider/v1/provider.proto;l=136
+     *     services/provider/v1/provider.proto;l=137
      * @param value The bytes for uri to set.
      * @return This builder for chaining.
      */

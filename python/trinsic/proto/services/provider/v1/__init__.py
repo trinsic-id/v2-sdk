@@ -15,6 +15,7 @@ import grpclib
 from betterproto.grpc.grpclib_server import ServiceBase
 
 from ...account import v1 as __account_v1__
+from ...common import v1 as __common_v1__
 
 
 if TYPE_CHECKING:
@@ -44,6 +45,11 @@ class InvitationStatusResponseStatus(betterproto.Enum):
 
     Expired = 3
     """The invite has expired"""
+
+
+class IonOptionsIonNetwork(betterproto.Enum):
+    TestNet = 0
+    MainNet = 1
 
 
 @dataclass(eq=False, repr=False)
@@ -551,6 +557,41 @@ class WalletConfiguration(betterproto.Message):
     public_did: str = betterproto.string_field(5)
 
 
+@dataclass(eq=False, repr=False)
+class IonOptions(betterproto.Message):
+    """Options for creation of DID on the ION network"""
+
+    network: "IonOptionsIonNetwork" = betterproto.enum_field(1)
+    """ION network on which DID should be published"""
+
+
+@dataclass(eq=False, repr=False)
+class UpgradeDidRequest(betterproto.Message):
+    """Request to upgrade a wallet"""
+
+    email: str = betterproto.string_field(1, group="account")
+    """
+    Email address of account to upgrade. Mutually exclusive with `walletId`.
+    """
+
+    wallet_id: str = betterproto.string_field(2, group="account")
+    """Wallet ID of account to upgrade. Mutually exclusive with `email`."""
+
+    method: "__common_v1__.SupportedDidMethod" = betterproto.enum_field(3)
+    """DID Method to which wallet should be upgraded"""
+
+    ion_options: "IonOptions" = betterproto.message_field(4, group="options")
+    """Configuration for creation of DID on ION network"""
+
+
+@dataclass(eq=False, repr=False)
+class UpgradeDidResponse(betterproto.Message):
+    """Response to `UpgradeDIDRequest`"""
+
+    did: str = betterproto.string_field(1)
+    """New DID of wallet"""
+
+
 class ProviderStub(betterproto.ServiceStub):
     async def create_ecosystem(
         self,
@@ -776,6 +817,21 @@ class ProviderStub(betterproto.ServiceStub):
             metadata=metadata,
         )
 
+    async def upgrade_did(
+        self,
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "UpgradeDidResponse":
+        return await self._unary_unary(
+            "/services.provider.v1.Provider/UpgradeDID",
+            upgrade_did_request,
+            UpgradeDidResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
     async def retrieve_domain_verification_record(
         self,
         retrieve_domain_verification_record_request: "RetrieveDomainVerificationRecordRequest",
@@ -894,6 +950,9 @@ class ProviderBase(ServiceBase):
     ) -> "GetEventTokenResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
+    async def upgrade_did(self) -> "UpgradeDidResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
     async def retrieve_domain_verification_record(
         self,
         retrieve_domain_verification_record_request: "RetrieveDomainVerificationRecordRequest",
@@ -981,6 +1040,11 @@ class ProviderBase(ServiceBase):
     async def __rpc_get_event_token(self, stream: grpclib.server.Stream) -> None:
         request = await stream.recv_message()
         response = await self.get_event_token(request)
+        await stream.send_message(response)
+
+    async def __rpc_upgrade_did(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.upgrade_did(request)
         await stream.send_message(response)
 
     async def __rpc_retrieve_domain_verification_record(
@@ -1089,6 +1153,12 @@ class ProviderBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 GetEventTokenRequest,
                 GetEventTokenResponse,
+            ),
+            "/services.provider.v1.Provider/UpgradeDID": grpclib.const.Handler(
+                self.__rpc_upgrade_did,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                UpgradeDidRequest,
+                UpgradeDidResponse,
             ),
             "/services.provider.v1.Provider/RetrieveDomainVerificationRecord": grpclib.const.Handler(
                 self.__rpc_retrieve_domain_verification_record,

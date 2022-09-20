@@ -180,6 +180,18 @@ public final class ProviderOuterClass {
       internal_static_services_provider_v1_WalletConfiguration_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_provider_v1_WalletConfiguration_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_provider_v1_IONOptions_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_IONOptions_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_provider_v1_UpgradeDIDRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_UpgradeDIDRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_provider_v1_UpgradeDIDResponse_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_UpgradeDIDResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
@@ -191,8 +203,8 @@ public final class ProviderOuterClass {
     java.lang.String[] descriptorData = {
       "\n"
           + "#services/provider/v1/provider.proto\022\024s"
-          + "ervices.provider.v1\032!services/account/v1"
-          + "/account.proto\032$services/options/field-options.proto\"\267\001\n\r"
+          + "ervices.provider.v1\032!services/account/v1/account.proto\032$services/options/field-o"
+          + "ptions.proto\032\037services/common/v1/common.proto\"\267\001\n\r"
           + "InviteRequest\022:\n"
           + "\013participant\030\001 \001(\0162%.services.provider.v1.ParticipantType\022\031\n"
           + "\013description\030\002 \001(\tB\004\200\246\035\001\022:\n"
@@ -206,8 +218,8 @@ public final class ProviderOuterClass {
           + "\027InvitationStatusRequest\022\025\n\r"
           + "invitation_id\030\001 \001(\t\"\276\001\n"
           + "\030InvitationStatusResponse\022E\n"
-          + "\006status\030\001 \001(\0162"
-          + "5.services.provider.v1.InvitationStatusResponse.Status\022\026\n"
+          + "\006status\030\001 \001(\01625.servi"
+          + "ces.provider.v1.InvitationStatusResponse.Status\022\026\n"
           + "\016status_details\030\002 \001(\t\"C\n"
           + "\006Status\022\t\n"
           + "\005Error\020\000\022\022\n"
@@ -326,53 +338,67 @@ public final class ProviderOuterClass {
           + "\005email\030\002 \001(\tB\004\200\246\035\001\022\021\n"
           + "\003sms\030\003 \001(\tB\004\200\246\035\001\022\021\n"
           + "\twallet_id\030\004 \001(\t\022\022\n\n"
-          + "public_did\030\005 \001(\t*U\n"
+          + "public_did\030\005 \001(\t\"r\n\n"
+          + "IONOptions\022<\n"
+          + "\007network\030\001 \001(\0162+.services.provider.v1.IONOptions.IONNetwork\"&\n\n"
+          + "IONNetwork\022\013\n"
+          + "\007TestNet\020\000\022\013\n"
+          + "\007MainNet\020\001\"\300\001\n"
+          + "\021UpgradeDIDRequest\022\017\n"
+          + "\005email\030\001 \001(\tH\000\022\023\n"
+          + "\twallet_id\030\002 \001(\tH\000\0226\n"
+          + "\006method\030\003 \001(\0162&.services.common.v1.SupportedDIDMethod\0227\n"
+          + "\013ion_options\030\004 \001(\0132 .services.provider.v1.IONOptionsH\001B\t\n"
+          + "\007accountB\t\n"
+          + "\007options\"!\n"
+          + "\022UpgradeDIDResponse\022\013\n"
+          + "\003did\030\001 \001(\t*U\n"
           + "\017ParticipantType\022\037\n"
           + "\033participant_type_individual\020\000\022!\n"
-          + "\035participant_type_organization\020\0012\211\020\n"
+          + "\035participant_type_organization\020\0012\352\020\n"
           + "\010Provider\022v\n"
-          + "\017CreateEcosystem\022,.services.provider.v1.CreateEcosystemRequest\032-.service"
-          + "s.provider.v1.CreateEcosystemResponse\"\006\212\246\035\002\020\001\022n\n"
-          + "\017UpdateEcosystem\022,.services.prov"
-          + "ider.v1.UpdateEcosystemRequest\032-.services.provider.v1.UpdateEcosystemResponse\022w\n"
-          + "\022GrantAuthorization\022/.services.provider."
-          + "v1.GrantAuthorizationRequest\0320.services."
-          + "provider.v1.GrantAuthorizationResponse\022z\n"
-          + "\023RevokeAuthorization\0220.services.provide"
-          + "r.v1.RevokeAuthorizationRequest\0321.servic"
-          + "es.provider.v1.RevokeAuthorizationResponse\022t\n"
-          + "\021GetAuthorizations\022..services.provider.v1.GetAuthorizationsRequest\032/.servic"
-          + "es.provider.v1.GetAuthorizationsResponse\022_\n\n"
-          + "AddWebhook\022\'.services.provider.v1.Ad"
-          + "dWebhookRequest\032(.services.provider.v1.AddWebhookResponse\022h\n\r"
-          + "DeleteWebhook\022*.services.provider.v1.DeleteWebhookRequest\032+"
-          + ".services.provider.v1.DeleteWebhookResponse\022h\n\r"
-          + "EcosystemInfo\022*.services.provider"
-          + ".v1.EcosystemInfoRequest\032+.services.provider.v1.EcosystemInfoResponse\022\213\001\n"
-          + "\026GetPublicEcosystemInfo\0223.services.provider.v1."
-          + "GetPublicEcosystemInfoRequest\0324.services"
-          + ".provider.v1.GetPublicEcosystemInfoResponse\"\006\212\246\035\002\010\001\022h\n\r"
-          + "GenerateToken\022*.services."
-          + "provider.v1.GenerateTokenRequest\032+.services.provider.v1.GenerateTokenResponse\022S\n"
-          + "\006Invite\022#.services.provider.v1.InviteReq"
-          + "uest\032$.services.provider.v1.InviteResponse\022q\n"
-          + "\020InvitationStatus\022-.services.provid"
-          + "er.v1.InvitationStatusRequest\032..services.provider.v1.InvitationStatusResponse\022m\n"
-          + "\014GetOberonKey\022).services.provider.v1.Get"
-          + "OberonKeyRequest\032*.services.provider.v1.GetOberonKeyResponse\"\006\212\246\035\002\010\001\022h\n\r"
-          + "GetEventToken\022*.services.provider.v1.GetEventTok"
-          + "enRequest\032+.services.provider.v1.GetEventTokenResponse\022\251\001\n"
-          + " RetrieveDomainVerificationRecord\022=.services.provider.v1.Retri"
-          + "eveDomainVerificationRecordRequest\032>.ser"
-          + "vices.provider.v1.RetrieveDomainVerificationRecordResponse\"\006\212\246\035\002\030\001\022\236\001\n"
-          + "\037RefreshDomainVerificationStatus\022<.services.provid"
-          + "er.v1.RefreshDomainVerificationStatusReq"
-          + "uest\032=.services.provider.v1.RefreshDomainVerificationStatusResponse\022\216\001\n"
-          + "\032SearchWalletConfigurations\0227.services.provider.v"
-          + "1.SearchWalletConfigurationsRequest\0327.se"
-          + "rvices.provider.v1.SearchWalletConfigurationResponseB^\n"
-          + "\034trinsic.services.provider.v1P\001Z\035services/provider/v1/provider\252\002\034"
-          + "Trinsic.Services.Provider.V1b\006proto3"
+          + "\017CreateEcosystem\022,.services.provider.v1.CreateEcosyst"
+          + "emRequest\032-.services.provider.v1.CreateEcosystemResponse\"\006\212\246\035\002\020\001\022n\n"
+          + "\017UpdateEcosystem\022,.services.provider.v1.UpdateEcosyst"
+          + "emRequest\032-.services.provider.v1.UpdateEcosystemResponse\022w\n"
+          + "\022GrantAuthorization\022/.services.provider.v1.GrantAuthorization"
+          + "Request\0320.services.provider.v1.GrantAuthorizationResponse\022z\n"
+          + "\023RevokeAuthorization\0220.services.provider.v1.RevokeAuthorizat"
+          + "ionRequest\0321.services.provider.v1.RevokeAuthorizationResponse\022t\n"
+          + "\021GetAuthorizations\022..services.provider.v1.GetAuthorizati"
+          + "onsRequest\032/.services.provider.v1.GetAuthorizationsResponse\022_\n\n"
+          + "AddWebhook\022\'.serv"
+          + "ices.provider.v1.AddWebhookRequest\032(.services.provider.v1.AddWebhookResponse\022h\n\r"
+          + "DeleteWebhook\022*.services.provider.v1.Del"
+          + "eteWebhookRequest\032+.services.provider.v1.DeleteWebhookResponse\022h\n\r"
+          + "EcosystemInfo\022*.services.provider.v1.EcosystemInfoRequ"
+          + "est\032+.services.provider.v1.EcosystemInfoResponse\022\213\001\n"
+          + "\026GetPublicEcosystemInfo\0223.services.provider.v1.GetPublicEcosystemInf"
+          + "oRequest\0324.services.provider.v1.GetPublicEcosystemInfoResponse\"\006\212\246\035\002\010\001\022h\n\r"
+          + "GenerateToken\022*.services.provider.v1.GenerateT"
+          + "okenRequest\032+.services.provider.v1.GenerateTokenResponse\022S\n"
+          + "\006Invite\022#.services.pr"
+          + "ovider.v1.InviteRequest\032$.services.provider.v1.InviteResponse\022q\n"
+          + "\020InvitationStatus\022-.services.provider.v1.InvitationStatu"
+          + "sRequest\032..services.provider.v1.InvitationStatusResponse\022m\n"
+          + "\014GetOberonKey\022).services.provider.v1.GetOberonKeyRequest\032*.se"
+          + "rvices.provider.v1.GetOberonKeyResponse\"\006\212\246\035\002\010\001\022h\n\r"
+          + "GetEventToken\022*.services.prov"
+          + "ider.v1.GetEventTokenRequest\032+.services.provider.v1.GetEventTokenResponse\022_\n\n"
+          + "UpgradeDID\022\'.services.provider.v1.UpgradeDI"
+          + "DRequest\032(.services.provider.v1.UpgradeDIDResponse\022\251\001\n"
+          + " RetrieveDomainVerificationRecord\022=.services.provider.v1.RetrieveD"
+          + "omainVerificationRecordRequest\032>.service"
+          + "s.provider.v1.RetrieveDomainVerificationRecordResponse\"\006\212\246\035\002\030\001\022\236\001\n"
+          + "\037RefreshDomainVerificationStatus\022<.services.provider.v"
+          + "1.RefreshDomainVerificationStatusRequest"
+          + "\032=.services.provider.v1.RefreshDomainVerificationStatusResponse\022\216\001\n"
+          + "\032SearchWalletConfigurations\0227.services.provider.v1.Se"
+          + "archWalletConfigurationsRequest\0327.servic"
+          + "es.provider.v1.SearchWalletConfigurationResponseB^\n"
+          + "\034trinsic.services.provider.v1"
+          + "P\001Z\035services/provider/v1/provider\252\002\034Trin"
+          + "sic.Services.Provider.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -380,6 +406,7 @@ public final class ProviderOuterClass {
             new com.google.protobuf.Descriptors.FileDescriptor[] {
               trinsic.services.account.v1.AccountOuterClass.getDescriptor(),
               trinsic.services.protobuf.options.FieldOptions.getDescriptor(),
+              trinsic.services.common.v1.Common.getDescriptor(),
             });
     internal_static_services_provider_v1_InviteRequest_descriptor =
         getDescriptor().getMessageTypes().get(0);
@@ -701,6 +728,30 @@ public final class ProviderOuterClass {
             new java.lang.String[] {
               "Name", "Email", "Sms", "WalletId", "PublicDid",
             });
+    internal_static_services_provider_v1_IONOptions_descriptor =
+        getDescriptor().getMessageTypes().get(41);
+    internal_static_services_provider_v1_IONOptions_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_provider_v1_IONOptions_descriptor,
+            new java.lang.String[] {
+              "Network",
+            });
+    internal_static_services_provider_v1_UpgradeDIDRequest_descriptor =
+        getDescriptor().getMessageTypes().get(42);
+    internal_static_services_provider_v1_UpgradeDIDRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_provider_v1_UpgradeDIDRequest_descriptor,
+            new java.lang.String[] {
+              "Email", "WalletId", "Method", "IonOptions", "Account", "Options",
+            });
+    internal_static_services_provider_v1_UpgradeDIDResponse_descriptor =
+        getDescriptor().getMessageTypes().get(43);
+    internal_static_services_provider_v1_UpgradeDIDResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_provider_v1_UpgradeDIDResponse_descriptor,
+            new java.lang.String[] {
+              "Did",
+            });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(trinsic.services.protobuf.options.FieldOptions.optional);
@@ -709,6 +760,7 @@ public final class ProviderOuterClass {
         descriptor, registry);
     trinsic.services.account.v1.AccountOuterClass.getDescriptor();
     trinsic.services.protobuf.options.FieldOptions.getDescriptor();
+    trinsic.services.common.v1.Common.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)
