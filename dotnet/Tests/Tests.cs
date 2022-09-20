@@ -26,12 +26,12 @@ namespace Tests;
 [SuppressMessage("ReSharper", "MethodHasAsyncOverload")]
 public class Tests
 {
-#if DEBUG
+#if DEBUG && false
     private const string DefaultEndpoint = "localhost";
     private const int DefaultPort = 5000;
     private const bool DefaultUseTls = false;
 #else
-    private const string DefaultEndpoint = "staging-internal.trinsic.cloud";
+    private const string DefaultEndpoint = "dev-internal.trinsic.cloud";
     private const int DefaultPort = 443;
     private const bool DefaultUseTls = true;
 #endif

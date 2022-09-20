@@ -1,14 +1,18 @@
 import asyncio
 import base64
+from python.trinsic.proto.services.common.v1 import SupportedDidMethod
 
 from trinsic.proto.services.account.v1 import AccountDetails
 from trinsic.proto.services.provider.v1 import (
     AddWebhookRequest,
     DeleteWebhookRequest,
     EcosystemInfoRequest,
+    IonOptions,
+    IonOptionsIonNetwork,
     ParticipantType,
     InviteRequest,
     UpdateEcosystemRequest,
+    UpgradeDidRequest,
 )
 
 from trinsic.trinsic_service import TrinsicService
@@ -67,6 +71,25 @@ async def provider_demo():
             )
         )
         assert invite_response
+    except:
+        pass
+
+    info_response = await trinsic.account.info()
+    wallet_id = info_response.wallet_id
+
+    # Try/catch this as ecosystems currently can't upgrade DIDs by default
+    try:
+        # upgradeDid() {
+        upgrade_response = await trinsic.provider.upgrade_did(
+            request=UpgradeDidRequest(
+                wallet_id=wallet_id,
+                method=SupportedDidMethod.ION,
+                ion_options=IonOptions(
+                    network=IonOptionsIonNetwork.TestNet
+                )
+            )
+        )
+        # }
     except:
         pass
 
