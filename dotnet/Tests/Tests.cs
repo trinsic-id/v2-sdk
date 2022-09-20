@@ -254,6 +254,27 @@ public class Tests
             var inviteStatus = await trinsic.Provider.InvitationStatusAsync(new() { InvitationId = invitationId });
             // }
         } catch (Exception) { } // This is expected as a doc sample
+
+
+        // Test upgrading account DID
+        var accountInfo = await trinsic.Account.InfoAsync();
+        var walletId = accountInfo.WalletId;
+
+        // Wrap in try-catch as this ecosystem will not presently have DID upgrade permissions
+        try {
+            // upgradeDid() {
+            var upgradeResponse = await trinsic.Provider.UpgradeDIDAsync(new() {
+                WalletId = walletId,
+                Method = SupportedDidMethod.Ion,
+                IonOptions = new() {
+                    Network = IonOptions.Types.IonNetwork.TestNet
+                }
+            });
+            // }
+        } catch (RpcException e)
+        {
+            e.StatusCode.Should().Be(StatusCode.PermissionDenied);
+        }
     }
 
     [Fact]
