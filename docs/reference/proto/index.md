@@ -51,9 +51,9 @@ Nonce used to generate an oberon proof
 
 
 
-<a name="services-common-v1-SupportedDIDMethod"></a>
+<a name="services-common-v1-SupportedDidMethod"></a>
 
-### SupportedDIDMethod
+### SupportedDidMethod
 Enum of all supported DID Methods
 
 | Name | Number | Description |
@@ -1339,7 +1339,7 @@ Confirmation method type for two-factor workflows
 | InvitationStatus | [InvitationStatusRequest](/reference/proto#services-provider-v1-InvitationStatusRequest) | [InvitationStatusResponse](/reference/proto#services-provider-v1-InvitationStatusResponse) | Check the status of an invitation |
 | GetOberonKey | [GetOberonKeyRequest](/reference/proto#services-provider-v1-GetOberonKeyRequest) | [GetOberonKeyResponse](/reference/proto#services-provider-v1-GetOberonKeyResponse) | Returns the public key being used to create/verify oberon tokens |
 | GetEventToken | [GetEventTokenRequest](/reference/proto#services-provider-v1-GetEventTokenRequest) | [GetEventTokenResponse](/reference/proto#services-provider-v1-GetEventTokenResponse) | Generate a signed token (JWT) that can be used to connect to the message bus |
-| UpgradeDID | [UpgradeDIDRequest](/reference/proto#services-provider-v1-UpgradeDIDRequest) | [UpgradeDIDResponse](/reference/proto#services-provider-v1-UpgradeDIDResponse) | Upgrade a wallet's DID from `did:key` to another method |
+| UpgradeDID | [UpgradeDidRequest](/reference/proto#services-provider-v1-UpgradeDidRequest) | [UpgradeDidResponse](/reference/proto#services-provider-v1-UpgradeDidResponse) | Upgrade a wallet's DID from `did:key` to another method |
 | RetrieveDomainVerificationRecord | [RetrieveDomainVerificationRecordRequest](/reference/proto#services-provider-v1-RetrieveDomainVerificationRecordRequest) | [RetrieveDomainVerificationRecordResponse](/reference/proto#services-provider-v1-RetrieveDomainVerificationRecordResponse) | Retrieve a random hash TXT that can be used to verify domain ownership |
 | RefreshDomainVerificationStatus | [RefreshDomainVerificationStatusRequest](/reference/proto#services-provider-v1-RefreshDomainVerificationStatusRequest) | [RefreshDomainVerificationStatusResponse](/reference/proto#services-provider-v1-RefreshDomainVerificationStatusResponse) | Call to verify domain |
 | SearchWalletConfigurations | [SearchWalletConfigurationsRequest](/reference/proto#services-provider-v1-SearchWalletConfigurationsRequest) | [SearchWalletConfigurationResponse](/reference/proto#services-provider-v1-SearchWalletConfigurationResponse) | Search for issuers/providers/verifiers in the current ecosystem |
@@ -1711,21 +1711,6 @@ Response to `GrantAuthorizationRequest`
 
 
 
-<a name="services-provider-v1-IONOptions"></a>
-
-### IONOptions
-Options for creation of DID on the ION network
-
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| network | [IONOptions.IONNetwork](/reference/proto#services-provider-v1-IONOptions-IONNetwork) | ION network on which DID should be published |
-
-
-
-
-
-
 <a name="services-provider-v1-InvitationStatusRequest"></a>
 
 ### InvitationStatusRequest
@@ -1794,6 +1779,21 @@ Response to `InviteRequest`
 | ----- | ---- | ----------- |
 | invitation_id | [string](/reference/proto#string) | ID of created invitation |
 | invitation_code | [string](/reference/proto#string) | Invitation code -- must be passed back in `LoginRequest` |
+
+
+
+
+
+
+<a name="services-provider-v1-IonOptions"></a>
+
+### IonOptions
+Options for creation of DID on the ION network
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| network | [IonOptions.IonNetwork](/reference/proto#services-provider-v1-IonOptions-IonNetwork) | ION network on which DID should be published |
 
 
 
@@ -1964,9 +1964,9 @@ Response to `UpdateEcosystemRequest`
 
 
 
-<a name="services-provider-v1-UpgradeDIDRequest"></a>
+<a name="services-provider-v1-UpgradeDidRequest"></a>
 
-### UpgradeDIDRequest
+### UpgradeDidRequest
 Request to upgrade a wallet
 
 
@@ -1974,17 +1974,17 @@ Request to upgrade a wallet
 | ----- | ---- | ----------- |
 | email | [string](/reference/proto#string) | Email address of account to upgrade. Mutually exclusive with `walletId`. |
 | wallet_id | [string](/reference/proto#string) | Wallet ID of account to upgrade. Mutually exclusive with `email`. |
-| method | [services.common.v1.SupportedDIDMethod](/reference/proto#services-common-v1-SupportedDIDMethod) | DID Method to which wallet should be upgraded |
-| ion_options | [IONOptions](/reference/proto#services-provider-v1-IONOptions) | Configuration for creation of DID on ION network |
+| method | [services.common.v1.SupportedDidMethod](/reference/proto#services-common-v1-SupportedDidMethod) | DID Method to which wallet should be upgraded |
+| ion_options | [IonOptions](/reference/proto#services-provider-v1-IonOptions) | Configuration for creation of DID on ION network |
 
 
 
 
 
 
-<a name="services-provider-v1-UpgradeDIDResponse"></a>
+<a name="services-provider-v1-UpgradeDidResponse"></a>
 
-### UpgradeDIDResponse
+### UpgradeDidResponse
 Response to `UpgradeDIDRequest`
 
 
@@ -2036,18 +2036,6 @@ Webhook configured on an ecosystem
  <!-- end messages -->
 
 
-<a name="services-provider-v1-IONOptions-IONNetwork"></a>
-
-### IONOptions.IONNetwork
-
-
-| Name | Number | Description |
-| ---- | ------ | ----------- |
-| TestNet | 0 |  |
-| MainNet | 1 |  |
-
-
-
 <a name="services-provider-v1-InvitationStatusResponse-Status"></a>
 
 ### InvitationStatusResponse.Status
@@ -2059,6 +2047,18 @@ Webhook configured on an ecosystem
 | InvitationSent | 1 | The participant has been invited |
 | Completed | 2 | The participant has been onboarded |
 | Expired | 3 | The invite has expired |
+
+
+
+<a name="services-provider-v1-IonOptions-IonNetwork"></a>
+
+### IonOptions.IonNetwork
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| TestNet | 0 |  |
+| MainNet | 1 |  |
 
 
 

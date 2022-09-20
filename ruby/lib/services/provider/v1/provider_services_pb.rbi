@@ -132,8 +132,8 @@ module Services::Provider::V1::Provider
 
     sig do
       params(
-        request: Services::Provider::V1::UpgradeDIDRequest
-      ).returns(Services::Provider::V1::UpgradeDIDResponse)
+        request: Services::Provider::V1::UpgradeDidRequest
+      ).returns(Services::Provider::V1::UpgradeDidResponse)
     end
     def upgrade_did(request)
     end

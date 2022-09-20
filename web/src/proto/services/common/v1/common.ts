@@ -60,7 +60,7 @@ export function responseStatusToJSON(object: ResponseStatus): string {
 }
 
 /** Enum of all supported DID Methods */
-export enum SupportedDIDMethod {
+export enum SupportedDidMethod {
   /** KEY - The did:key method -- all wallets use this by default */
   KEY = 0,
   /** ION - The did:ion method */
@@ -68,28 +68,28 @@ export enum SupportedDIDMethod {
   UNRECOGNIZED = -1,
 }
 
-export function supportedDIDMethodFromJSON(object: any): SupportedDIDMethod {
+export function supportedDidMethodFromJSON(object: any): SupportedDidMethod {
   switch (object) {
     case 0:
     case "KEY":
-      return SupportedDIDMethod.KEY;
+      return SupportedDidMethod.KEY;
     case 1:
     case "ION":
-      return SupportedDIDMethod.ION;
+      return SupportedDidMethod.ION;
     case -1:
     case "UNRECOGNIZED":
     default:
-      return SupportedDIDMethod.UNRECOGNIZED;
+      return SupportedDidMethod.UNRECOGNIZED;
   }
 }
 
-export function supportedDIDMethodToJSON(object: SupportedDIDMethod): string {
+export function supportedDidMethodToJSON(object: SupportedDidMethod): string {
   switch (object) {
-    case SupportedDIDMethod.KEY:
+    case SupportedDidMethod.KEY:
       return "KEY";
-    case SupportedDIDMethod.ION:
+    case SupportedDidMethod.ION:
       return "ION";
-    case SupportedDIDMethod.UNRECOGNIZED:
+    case SupportedDidMethod.UNRECOGNIZED:
     default:
       return "UNRECOGNIZED";
   }

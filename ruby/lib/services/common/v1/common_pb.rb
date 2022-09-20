@@ -17,7 +17,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       value :SERIALIZATION_ERROR, 200
       value :UNKNOWN_ERROR, 100
     end
-    add_enum "services.common.v1.SupportedDIDMethod" do
+    add_enum "services.common.v1.SupportedDidMethod" do
       value :KEY, 0
       value :ION, 1
     end
@@ -29,7 +29,7 @@ module Services
     module V1
       Nonce = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.common.v1.Nonce").msgclass
       ResponseStatus = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.common.v1.ResponseStatus").enummodule
-      SupportedDIDMethod = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.common.v1.SupportedDIDMethod").enummodule
+      SupportedDidMethod = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.common.v1.SupportedDidMethod").enummodule
     end
   end
 end

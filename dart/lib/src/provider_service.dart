@@ -133,7 +133,7 @@ class ProviderService extends ServiceBase {
         options: await buildMetadata(request: request));
   }
 
-  Future<UpgradeDIDResponse> upgradeDID(UpgradeDIDRequest request) async {
+  Future<UpgradeDidResponse> upgradeDID(UpgradeDidRequest request) async {
     ///  Upgrade a wallet's DID from `did:key` to another method
 
     return client.upgradeDID(request,

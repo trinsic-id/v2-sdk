@@ -76,7 +76,7 @@ object ProviderGrpcKt {
   val getEventTokenMethod: MethodDescriptor<GetEventTokenRequest, GetEventTokenResponse>
     @JvmStatic get() = ProviderGrpc.getGetEventTokenMethod()
 
-  val upgradeDIDMethod: MethodDescriptor<UpgradeDIDRequest, UpgradeDIDResponse>
+  val upgradeDIDMethod: MethodDescriptor<UpgradeDidRequest, UpgradeDidResponse>
     @JvmStatic get() = ProviderGrpc.getUpgradeDIDMethod()
 
   val retrieveDomainVerificationRecordMethod:
@@ -354,9 +354,9 @@ object ProviderGrpcKt {
      * @return The single response from the server.
      */
     suspend fun upgradeDID(
-        request: UpgradeDIDRequest,
+        request: UpgradeDidRequest,
         headers: Metadata = Metadata()
-    ): UpgradeDIDResponse =
+    ): UpgradeDidResponse =
         unaryRpc(channel, ProviderGrpc.getUpgradeDIDMethod(), request, callOptions, headers)
     /**
      * Executes this RPC and returns the response message, suspending until the RPC completes with
@@ -661,7 +661,7 @@ object ProviderGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun upgradeDID(request: UpgradeDIDRequest): UpgradeDIDResponse =
+    open suspend fun upgradeDID(request: UpgradeDidRequest): UpgradeDidResponse =
         throw StatusException(
             UNIMPLEMENTED.withDescription(
                 "Method services.provider.v1.Provider.UpgradeDID is unimplemented"))

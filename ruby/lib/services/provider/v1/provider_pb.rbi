@@ -2975,24 +2975,24 @@ class Services::Provider::V1::WalletConfiguration
   end
 end
 
-class Services::Provider::V1::IONOptions
+class Services::Provider::V1::IonOptions
   include Google::Protobuf
   include Google::Protobuf::MessageExts
   extend Google::Protobuf::MessageExts::ClassMethods
 
-  sig { params(str: String).returns(Services::Provider::V1::IONOptions) }
+  sig { params(str: String).returns(Services::Provider::V1::IonOptions) }
   def self.decode(str)
   end
 
-  sig { params(msg: Services::Provider::V1::IONOptions).returns(String) }
+  sig { params(msg: Services::Provider::V1::IonOptions).returns(String) }
   def self.encode(msg)
   end
 
-  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::IONOptions) }
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::IonOptions) }
   def self.decode_json(str, **kw)
   end
 
-  sig { params(msg: Services::Provider::V1::IONOptions, kw: T.untyped).returns(String) }
+  sig { params(msg: Services::Provider::V1::IonOptions, kw: T.untyped).returns(String) }
   def self.encode_json(msg, **kw)
   end
 
@@ -3035,24 +3035,24 @@ class Services::Provider::V1::IONOptions
   end
 end
 
-class Services::Provider::V1::UpgradeDIDRequest
+class Services::Provider::V1::UpgradeDidRequest
   include Google::Protobuf
   include Google::Protobuf::MessageExts
   extend Google::Protobuf::MessageExts::ClassMethods
 
-  sig { params(str: String).returns(Services::Provider::V1::UpgradeDIDRequest) }
+  sig { params(str: String).returns(Services::Provider::V1::UpgradeDidRequest) }
   def self.decode(str)
   end
 
-  sig { params(msg: Services::Provider::V1::UpgradeDIDRequest).returns(String) }
+  sig { params(msg: Services::Provider::V1::UpgradeDidRequest).returns(String) }
   def self.encode(msg)
   end
 
-  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::UpgradeDIDRequest) }
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::UpgradeDidRequest) }
   def self.decode_json(str, **kw)
   end
 
-  sig { params(msg: Services::Provider::V1::UpgradeDIDRequest, kw: T.untyped).returns(String) }
+  sig { params(msg: Services::Provider::V1::UpgradeDidRequest, kw: T.untyped).returns(String) }
   def self.encode_json(msg, **kw)
   end
 
@@ -3065,7 +3065,7 @@ class Services::Provider::V1::UpgradeDIDRequest
       email: T.nilable(String),
       wallet_id: T.nilable(String),
       method: T.nilable(T.any(Symbol, String, Integer)),
-      ion_options: T.nilable(Services::Provider::V1::IONOptions)
+      ion_options: T.nilable(Services::Provider::V1::IonOptions)
     ).void
   end
   def initialize(
@@ -3112,11 +3112,11 @@ class Services::Provider::V1::UpgradeDIDRequest
   def clear_method
   end
 
-  sig { returns(T.nilable(Services::Provider::V1::IONOptions)) }
+  sig { returns(T.nilable(Services::Provider::V1::IonOptions)) }
   def ion_options
   end
 
-  sig { params(value: T.nilable(Services::Provider::V1::IONOptions)).void }
+  sig { params(value: T.nilable(Services::Provider::V1::IonOptions)).void }
   def ion_options=(value)
   end
 
@@ -3145,24 +3145,24 @@ class Services::Provider::V1::UpgradeDIDRequest
   end
 end
 
-class Services::Provider::V1::UpgradeDIDResponse
+class Services::Provider::V1::UpgradeDidResponse
   include Google::Protobuf
   include Google::Protobuf::MessageExts
   extend Google::Protobuf::MessageExts::ClassMethods
 
-  sig { params(str: String).returns(Services::Provider::V1::UpgradeDIDResponse) }
+  sig { params(str: String).returns(Services::Provider::V1::UpgradeDidResponse) }
   def self.decode(str)
   end
 
-  sig { params(msg: Services::Provider::V1::UpgradeDIDResponse).returns(String) }
+  sig { params(msg: Services::Provider::V1::UpgradeDidResponse).returns(String) }
   def self.encode(msg)
   end
 
-  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::UpgradeDIDResponse) }
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::UpgradeDidResponse) }
   def self.decode_json(str, **kw)
   end
 
-  sig { params(msg: Services::Provider::V1::UpgradeDIDResponse, kw: T.untyped).returns(String) }
+  sig { params(msg: Services::Provider::V1::UpgradeDidResponse, kw: T.untyped).returns(String) }
   def self.encode_json(msg, **kw)
   end
 
@@ -3282,7 +3282,7 @@ module Services::Provider::V1::InvitationStatusResponse::Status
   end
 end
 
-module Services::Provider::V1::IONOptions::IONNetwork
+module Services::Provider::V1::IonOptions::IonNetwork
   self::TestNet = T.let(0, Integer)
   self::MainNet = T.let(1, Integer)
 
