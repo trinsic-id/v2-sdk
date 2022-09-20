@@ -9,6 +9,7 @@ option java_multiple_files = true;
 
 import "services/account/v1/account.proto";
 import "services/options/field-options.proto";
+import "services/common/v1/common.proto";
 
 // Request to invite a participant to an ecosystem
 message InviteRequest {
@@ -374,6 +375,7 @@ message SearchWalletConfigurationsRequest {
     // if more data is available for query
     string continuation_token = 2 [(options.optional)=true];
 }
+
 message SearchWalletConfigurationResponse {
     // Results matching the search query
     repeated WalletConfiguration results = 1;
@@ -382,6 +384,7 @@ message SearchWalletConfigurationResponse {
     // Token to fetch next set of results via `SearchRequest`
     string continuation_token = 4;
 }
+
 // Strongly typed information about wallet configurations
 message WalletConfiguration {
     string name = 1;
@@ -391,6 +394,43 @@ message WalletConfiguration {
     string public_did = 5;
 }
 
+// Options for creation of DID on the ION network
+message IONOptions {
+    enum IONNetwork {
+        TestNet = 0;
+        MainNet = 1;
+    }
+
+    // ION network on which DID should be published
+    IONNetwork network = 1; 
+}
+
+// Request to upgrade a wallet 
+message UpgradeDIDRequest {
+    oneof account {
+        // Email address of account to upgrade.
+        // Mutually exclusive with `walletId`.
+        string email = 1;
+    
+        // Wallet ID of account to upgrade.
+        // Mutually exclusive with `email`.
+        string wallet_id = 2;
+    }
+
+    // DID Method to which wallet should be upgraded
+    services.common.v1.SupportedDIDMethod method = 3; 
+
+    oneof options {
+        // Configuration for creation of DID on ION network
+        IONOptions ion_options = 4; 
+    }
+}
+
+// Response to `UpgradeDIDRequest`
+message UpgradeDIDResponse {
+    // New DID of wallet
+    string did = 1;
+}
 
 service Provider {
     // Create new ecosystem and assign the authenticated user as owner
@@ -442,6 +482,9 @@ service Provider {
     // Generate a signed token (JWT) that can be used to connect to the message bus
     rpc GetEventToken(GetEventTokenRequest) returns (GetEventTokenResponse);
 
+    // Upgrade a wallet's DID from `did:key` to another method
+    rpc UpgradeDID(UpgradeDIDRequest) returns (UpgradeDIDResponse);
+    
     // Retrieve a random hash TXT that can be used to verify domain ownership
     rpc RetrieveDomainVerificationRecord(RetrieveDomainVerificationRecordRequest) returns (RetrieveDomainVerificationRecordResponse) {
         option (options.sdk_template_option).no_arguments = true;
