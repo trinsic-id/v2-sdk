@@ -8,11 +8,11 @@ package provider
 
 import (
 	account "github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
+	common "github.com/trinsic-id/sdk/go/proto/services/common/v1/common"
 	_ "github.com/trinsic-id/sdk/go/proto/services/options"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
-	common "services/common/v1/common"
 	sync "sync"
 )
 
