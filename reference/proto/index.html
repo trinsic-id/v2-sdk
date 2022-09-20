@@ -15,7 +15,7 @@
       
       
       <link rel="icon" href="../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.5.0+insiders-4.23.4">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.5.3+insiders-4.23.5">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.9e1efae6.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.fb3608a7.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
@@ -1189,6 +1189,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#supporteddidmethod" class="md-nav__link">
+    <span class="md-ellipsis">
+      SupportedDIDMethod
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2189,6 +2198,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#ionoptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      IONOptions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#invitationstatusrequest" class="md-nav__link">
     <span class="md-ellipsis">
       InvitationStatusRequest
@@ -2333,6 +2351,24 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#upgradedidrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      UpgradeDIDRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upgradedidresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      UpgradeDIDResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#walletconfiguration" class="md-nav__link">
     <span class="md-ellipsis">
       WalletConfiguration
@@ -2345,6 +2381,15 @@
   <a href="#webhookconfig" class="md-nav__link">
     <span class="md-ellipsis">
       WebhookConfig
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ionoptionsionnetwork" class="md-nav__link">
+    <span class="md-ellipsis">
+      IONOptions.IONNetwork
     </span>
   </a>
   
@@ -3276,6 +3321,30 @@
 <td>UNKNOWN_ERROR</td>
 <td>100</td>
 <td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-common-v1-SupportedDIDMethod"></a></p>
+<h3 id="supporteddidmethod">SupportedDIDMethod<a class="headerlink" href="#supporteddidmethod" title="Permanent link">&para;</a></h3>
+<p>Enum of all supported DID Methods</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KEY</td>
+<td>0</td>
+<td>The did:key method -- all wallets use this by default</td>
+</tr>
+<tr>
+<td>ION</td>
+<td>1</td>
+<td>The did:ion method</td>
 </tr>
 </tbody>
 </table>
@@ -5301,6 +5370,12 @@ like email, SMS, etc.</p>
 <td>Generate a signed token (JWT) that can be used to connect to the message bus</td>
 </tr>
 <tr>
+<td>UpgradeDID</td>
+<td><a href="/reference/proto#services-provider-v1-UpgradeDIDRequest">UpgradeDIDRequest</a></td>
+<td><a href="/reference/proto#services-provider-v1-UpgradeDIDResponse">UpgradeDIDResponse</a></td>
+<td>Upgrade a wallet's DID from <code>did:key</code> to another method</td>
+</tr>
+<tr>
 <td>RetrieveDomainVerificationRecord</td>
 <td><a href="/reference/proto#services-provider-v1-RetrieveDomainVerificationRecordRequest">RetrieveDomainVerificationRecordRequest</a></td>
 <td><a href="/reference/proto#services-provider-v1-RetrieveDomainVerificationRecordResponse">RetrieveDomainVerificationRecordResponse</a></td>
@@ -5820,6 +5895,25 @@ to verify authentication token validity</p>
 <p><a name="services-provider-v1-GrantAuthorizationResponse"></a></p>
 <h3 id="grantauthorizationresponse">GrantAuthorizationResponse<a class="headerlink" href="#grantauthorizationresponse" title="Permanent link">&para;</a></h3>
 <p>Response to <code>GrantAuthorizationRequest</code></p>
+<p><a name="services-provider-v1-IONOptions"></a></p>
+<h3 id="ionoptions">IONOptions<a class="headerlink" href="#ionoptions" title="Permanent link">&para;</a></h3>
+<p>Options for creation of DID on the ION network</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>network</td>
+<td><a href="/reference/proto#services-provider-v1-IONOptions-IONNetwork">IONOptions.IONNetwork</a></td>
+<td>ION network on which DID should be published</td>
+</tr>
+</tbody>
+</table>
 <p><a name="services-provider-v1-InvitationStatusRequest"></a></p>
 <h3 id="invitationstatusrequest">InvitationStatusRequest<a class="headerlink" href="#invitationstatusrequest" title="Permanent link">&para;</a></h3>
 <p>Request details for the status of an invitation</p>
@@ -6144,6 +6238,59 @@ to verify authentication token validity</p>
 </tr>
 </tbody>
 </table>
+<p><a name="services-provider-v1-UpgradeDIDRequest"></a></p>
+<h3 id="upgradedidrequest">UpgradeDIDRequest<a class="headerlink" href="#upgradedidrequest" title="Permanent link">&para;</a></h3>
+<p>Request to upgrade a wallet</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>email</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Email address of account to upgrade. Mutually exclusive with <code>walletId</code>.</td>
+</tr>
+<tr>
+<td>wallet_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Wallet ID of account to upgrade. Mutually exclusive with <code>email</code>.</td>
+</tr>
+<tr>
+<td>method</td>
+<td><a href="/reference/proto#services-common-v1-SupportedDIDMethod">services.common.v1.SupportedDIDMethod</a></td>
+<td>DID Method to which wallet should be upgraded</td>
+</tr>
+<tr>
+<td>ion_options</td>
+<td><a href="/reference/proto#services-provider-v1-IONOptions">IONOptions</a></td>
+<td>Configuration for creation of DID on ION network</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-UpgradeDIDResponse"></a></p>
+<h3 id="upgradedidresponse">UpgradeDIDResponse<a class="headerlink" href="#upgradedidresponse" title="Permanent link">&para;</a></h3>
+<p>Response to <code>UpgradeDIDRequest</code></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>did</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>New DID of wallet</td>
+</tr>
+</tbody>
+</table>
 <p><a name="services-provider-v1-WalletConfiguration"></a></p>
 <h3 id="walletconfiguration">WalletConfiguration<a class="headerlink" href="#walletconfiguration" title="Permanent link">&para;</a></h3>
 <p>Strongly typed information about wallet configurations</p>
@@ -6219,6 +6366,29 @@ to verify authentication token validity</p>
 </table>
 <!-- end messages -->
 
+<p><a name="services-provider-v1-IONOptions-IONNetwork"></a></p>
+<h3 id="ionoptionsionnetwork">IONOptions.IONNetwork<a class="headerlink" href="#ionoptionsionnetwork" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TestNet</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>MainNet</td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p><a name="services-provider-v1-InvitationStatusResponse-Status"></a></p>
 <h3 id="invitationstatusresponsestatus">InvitationStatusResponse.Status<a class="headerlink" href="#invitationstatusresponsestatus" title="Permanent link">&para;</a></h3>
 <table>
@@ -7082,7 +7252,7 @@ Only one of <code>did_uri</code>, <code>wallet_id</code>, or <code>email</code> 
             </div>
           
           
-<script>var input,hash=location.hash.slice(1);hash.startsWith("__tabbed_")&&((input=document.getElementById(hash)).checked=!0)</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
       </main>
@@ -7140,7 +7310,7 @@ Only one of <code>did_uri</code>, <code>wallet_id</code>, or <code>email</code> 
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "announce.dismiss", "navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.sections"], "search": "../../assets/javascripts/workers/search.720157f5.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.ac3bc377.min.js"></script>
+      <script src="../../assets/javascripts/bundle.0d3e07ec.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
       
