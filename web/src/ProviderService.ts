@@ -166,10 +166,10 @@ export class ProviderService extends ServiceBase {
     });
   }
   /** Upgrade a wallet's DID from `did:key` to another method */
-  public async upgradeDID(request: UpgradeDIDRequest): Promise<UpgradeDIDResponse> {
+  public async upgradeDID(request: UpgradeDidRequest): Promise<UpgradeDidResponse> {
     
     return this.client.upgradeDID(request, {
-      metadata: await this.buildMetadata(UpgradeDIDRequest.encode(request).finish())
+      metadata: await this.buildMetadata(UpgradeDidRequest.encode(request).finish())
     });
   }
   /** Retrieve a random hash TXT that can be used to verify domain ownership */

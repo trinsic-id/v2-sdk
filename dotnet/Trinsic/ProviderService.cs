@@ -289,7 +289,7 @@ public class ProviderService : ServiceBase
 	/// <summary>
     /// Upgrade a wallet's DID from `did:key` to another method
     /// </summary>	
-    public UpgradeDIDResponse UpgradeDID(UpgradeDIDRequest request) {
+    public UpgradeDidResponse UpgradeDID(UpgradeDidRequest request) {
         
         return Client.UpgradeDID(request, BuildMetadata(request));
     }
@@ -297,7 +297,7 @@ public class ProviderService : ServiceBase
 	/// <summary>
     /// Upgrade a wallet's DID from `did:key` to another method
     /// </summary>	
-    public async Task<UpgradeDIDResponse> UpgradeDIDAsync(UpgradeDIDRequest request) {
+    public async Task<UpgradeDidResponse> UpgradeDIDAsync(UpgradeDidRequest request) {
         
         return await Client.UpgradeDIDAsync(request, await BuildMetadataAsync(request));
     }
