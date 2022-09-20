@@ -159,6 +159,9 @@ pub struct TemplateData {
     /// ID of template creator
     #[prost(string, tag = "10")]
     pub created_by: ::prost::alloc::string::String,
+    /// Date when template was created as ISO 8601 utc string
+    #[prost(string, tag = "11")]
+    pub date_created: ::prost::alloc::string::String,
 }
 /// Valid types for credential fields
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
