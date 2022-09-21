@@ -50,6 +50,8 @@ public class ProviderServiceTest {
     public void testUpgradeDid() throws IOException, DidException, ExecutionException, InterruptedException {
         var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
 
+        var ecoCreateResponse = trinsic.provider().createEcosystem(CreateEcosystemRequest.getDefaultInstance()).get();
+
         var infoResponse = trinsic.account().info().get();
         var walletId = infoResponse.getWalletId();
 
@@ -66,7 +68,7 @@ public class ProviderServiceTest {
 
             var upgradeResponse = trinsic.provider().upgradeDID(upgradeRequest).get();
             // }
-        } catch (GrpcException e) {
+        } catch (Exception e) {
 
         }
     }
