@@ -119,7 +119,7 @@ func TestUpgradeDid(t *testing.T) {
 	// }
 
 	// Should error as ecosystems cannot upgrade by default ATM
-	if assert2.Nil(err) || assert2.NotNil(upgradeResponse) {
+	if assert2.NotNil(err) || assert2.Nil(upgradeResponse) {
 		return
 	}
 
