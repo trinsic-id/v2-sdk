@@ -281,6 +281,21 @@
         <member name="P:Trinsic.Services.Common.V1.CommonReflection.Descriptor">
             <summary>File descriptor for services/common/v1/common.proto</summary>
         </member>
+        <member name="T:Trinsic.Services.Common.V1.SupportedDidMethod">
+            <summary>
+            Enum of all supported DID Methods
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Common.V1.SupportedDidMethod.Key">
+             <summary>
+            The did:key method -- all wallets use this by default
+             </summary>
+        </member>
+        <member name="F:Trinsic.Services.Common.V1.SupportedDidMethod.Ion">
+             <summary>
+            The did:ion method
+             </summary>
+        </member>
         <member name="T:Trinsic.Services.Common.V1.Nonce">
             <summary>
             Nonce used to generate an oberon proof
@@ -2143,6 +2158,80 @@
         <member name="F:Trinsic.Services.Provider.V1.WalletConfiguration.PublicDidFieldNumber">
             <summary>Field number for the "public_did" field.</summary>
         </member>
+        <member name="T:Trinsic.Services.Provider.V1.IonOptions">
+            <summary>
+            Options for creation of DID on the ION network
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.IonOptions.NetworkFieldNumber">
+            <summary>Field number for the "network" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.IonOptions.Network">
+            <summary>
+            ION network on which DID should be published
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.Provider.V1.IonOptions.Types">
+            <summary>Container for nested types declared in the IonOptions message type.</summary>
+        </member>
+        <member name="T:Trinsic.Services.Provider.V1.UpgradeDidRequest">
+            <summary>
+            Request to upgrade a wallet 
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.UpgradeDidRequest.EmailFieldNumber">
+            <summary>Field number for the "email" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.UpgradeDidRequest.Email">
+            <summary>
+            Email address of account to upgrade.
+            Mutually exclusive with `walletId`.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.UpgradeDidRequest.WalletIdFieldNumber">
+            <summary>Field number for the "wallet_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.UpgradeDidRequest.WalletId">
+            <summary>
+            Wallet ID of account to upgrade.
+            Mutually exclusive with `email`.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.UpgradeDidRequest.MethodFieldNumber">
+            <summary>Field number for the "method" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.UpgradeDidRequest.Method">
+            <summary>
+            DID Method to which wallet should be upgraded
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.UpgradeDidRequest.IonOptionsFieldNumber">
+            <summary>Field number for the "ion_options" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.UpgradeDidRequest.IonOptions">
+            <summary>
+            Configuration for creation of DID on ION network
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.Provider.V1.UpgradeDidRequest.AccountOneofCase">
+            <summary>Enum of possible cases for the "account" oneof.</summary>
+        </member>
+        <member name="T:Trinsic.Services.Provider.V1.UpgradeDidRequest.OptionsOneofCase">
+            <summary>Enum of possible cases for the "options" oneof.</summary>
+        </member>
+        <member name="T:Trinsic.Services.Provider.V1.UpgradeDidResponse">
+            <summary>
+            Response to `UpgradeDIDRequest`
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.UpgradeDidResponse.DidFieldNumber">
+            <summary>Field number for the "did" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.UpgradeDidResponse.Did">
+            <summary>
+            New DID of wallet
+            </summary>
+        </member>
         <member name="P:Trinsic.Services.Provider.V1.Provider.Descriptor">
             <summary>Service descriptor</summary>
         </member>
@@ -2257,6 +2346,14 @@
         <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.GetEventToken(Trinsic.Services.Provider.V1.GetEventTokenRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Generate a signed token (JWT) that can be used to connect to the message bus
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderBase.UpgradeDID(Trinsic.Services.Provider.V1.UpgradeDidRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Upgrade a wallet's DID from `did:key` to another method
             </summary>
             <param name="request">The request received from the client.</param>
             <param name="context">The context of the server-side call handler being invoked.</param>
@@ -2807,6 +2904,42 @@
         <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.GetEventTokenAsync(Trinsic.Services.Provider.V1.GetEventTokenRequest,Grpc.Core.CallOptions)">
             <summary>
             Generate a signed token (JWT) that can be used to connect to the message bus
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.UpgradeDID(Trinsic.Services.Provider.V1.UpgradeDidRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Upgrade a wallet's DID from `did:key` to another method
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.UpgradeDID(Trinsic.Services.Provider.V1.UpgradeDidRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Upgrade a wallet's DID from `did:key` to another method
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.UpgradeDIDAsync(Trinsic.Services.Provider.V1.UpgradeDidRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Upgrade a wallet's DID from `did:key` to another method
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.Provider.ProviderClient.UpgradeDIDAsync(Trinsic.Services.Provider.V1.UpgradeDidRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Upgrade a wallet's DID from `did:key` to another method
             </summary>
             <param name="request">The request to send to the server.</param>
             <param name="options">The options for the call.</param>
@@ -4188,7 +4321,7 @@
         </member>
         <member name="T:Trinsic.Services.VerifiableCredentials.Templates.V1.ListCredentialTemplatesResponse">
             <summary>
-            Response to `ListCredentialTemplatesRequest` 
+            Response to `ListCredentialTemplatesRequest`
             </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.ListCredentialTemplatesResponse.TemplatesFieldNumber">
@@ -4376,7 +4509,7 @@
         </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.AllowAdditionalFields">
             <summary>
-            Whether credentials issued against this template may 
+            Whether credentials issued against this template may
             contain fields not defined by template
             </summary>
         </member>
@@ -4418,6 +4551,14 @@
         <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.CreatedBy">
             <summary>
             ID of template creator
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.DateCreatedFieldNumber">
+            <summary>Field number for the "date_created" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.TemplateData.DateCreated">
+            <summary>
+            Date when template was created as ISO 8601 utc string
             </summary>
         </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.Templates.V1.CredentialTemplates.Descriptor">
@@ -5483,6 +5624,16 @@
         <member name="M:Trinsic.ProviderService.GetEventTokenAsync(Trinsic.Services.Provider.V1.GetEventTokenRequest)">
             <summary>
             Generate a signed token (JWT) that can be used to connect to the message bus
+            </summary>	
+        </member>
+        <member name="M:Trinsic.ProviderService.UpgradeDID(Trinsic.Services.Provider.V1.UpgradeDidRequest)">
+            <summary>
+            Upgrade a wallet's DID from `did:key` to another method
+            </summary>	
+        </member>
+        <member name="M:Trinsic.ProviderService.UpgradeDIDAsync(Trinsic.Services.Provider.V1.UpgradeDidRequest)">
+            <summary>
+            Upgrade a wallet's DID from `did:key` to another method
             </summary>	
         </member>
         <member name="M:Trinsic.ProviderService.RetrieveDomainVerificationRecord">

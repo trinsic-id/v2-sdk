@@ -2,6 +2,7 @@ package services
 
 import (
 	"context"
+	"github.com/trinsic-id/sdk/go/proto/services/common/v1/common"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -86,6 +87,42 @@ func TestEcosystemUpdateInfo(t *testing.T) {
 	if !assert2.Equal(infoResponse.Ecosystem.Description, updateResponse.Ecosystem.Description) {
 		return
 	}
+}
+
+func TestUpgradeDid(t *testing.T) {
+	assert2 := assert.New(t)
+
+	trinsic, err := CreateTestTrinsicWithNewEcosystem()
+	if !assert2.Nil(err) {
+		return
+	}
+
+	info, err := trinsic.Account().Info(context.Background())
+	if !assert2.Nil(err) {
+		return
+	}
+
+	walletId := info.WalletId
+
+	// upgradeDid() {
+	upgradeResponse, err := trinsic.Provider().UpgradeDID(context.Background(), &provider.UpgradeDidRequest{
+		Account: &provider.UpgradeDidRequest_WalletId{
+			WalletId: walletId,
+		},
+		Method: common.SupportedDidMethod_ION,
+		Options: &provider.UpgradeDidRequest_IonOptions{
+			IonOptions: &provider.IonOptions{
+				Network: provider.IonOptions_TestNet,
+			},
+		},
+	})
+	// }
+
+	// Should error as ecosystems cannot upgrade by default ATM
+	if assert2.NotNil(err) || assert2.Nil(upgradeResponse) {
+		return
+	}
+
 }
 
 func TestProviderBase_InviteParticipant(t *testing.T) {
