@@ -26,7 +26,7 @@ namespace Tests;
 [SuppressMessage("ReSharper", "MethodHasAsyncOverload")]
 public class Tests
 {
-#if DEBUG && false
+#if DEBUG
     private const string DefaultEndpoint = "localhost";
     private const int DefaultPort = 5000;
     private const bool DefaultUseTls = false;
