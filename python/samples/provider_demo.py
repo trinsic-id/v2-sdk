@@ -1,6 +1,6 @@
 import asyncio
 import base64
-from python.trinsic.proto.services.common.v1 import SupportedDidMethod
+from trinsic.proto.services.common.v1 import SupportedDidMethod
 
 from trinsic.proto.services.account.v1 import AccountDetails
 from trinsic.proto.services.provider.v1 import (
