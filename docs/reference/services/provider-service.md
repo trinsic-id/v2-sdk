@@ -289,7 +289,9 @@ Deletes a webhook from an ecosystem.
 
 Upgrades a wallet's DID from the default `did:key` to another DID Method. This endpoint may only be called by an ecosystem provider.
 
-Trinsic will register a DID Document for you, and update the wallet's `public_did` property to the newly-registered DID.
+Trinsic will register a DID Document for you, and update the wallet's `public_did` property to the newly-registered DID. Credentials previously issued by this wallet will not have their `issuer` field updated to the new DID, but they will still verify correctly.
+
+Presently, once a wallet's DID has been upgraded, its DID Method cannot be changed again. However, it is possible to perform further upgrades _within_ a method, to go from a testing to production network (for example, `did:ion:test` to `did:ion`). 
 
 {{ proto_sample_start() }}
     === "Trinsic CLI"
