@@ -1122,6 +1122,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#upgrade-wallet-did" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upgrade Wallet DID
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2137,6 +2146,109 @@
 </div>
 <div class="tabbed-block">
 <p><div class='proto-obj-container' data-proto-name='services.provider.v1.DeleteWebhookResponse'><div class='proto-obj-name'><a name='services.provider.v1.DeleteWebhookResponse' href='/reference/proto#services.provider.v1.DeleteWebhookResponse'>DeleteWebhookResponse</a></div><div class='proto-obj-description'>Response to <code>DeleteWebhookRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>ecosystem</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.Ecosystem'>Ecosystem</a></div><div class='proto-field-description'>Ecosystem data after removal of webhook</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>URN of the ecosystem</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>name</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Globally unique name for the ecosystem</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>description</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Ecosystem description</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>uri</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>External URL associated with the organization or ecosystem entity</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>webhooks</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.WebhookConfig'>WebhookConfig</a>[]</div><div class='proto-field-description'>Configured webhooks, if any</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.webhooks[<span class='proto-context-array-key'>i</span>].</span>id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>UUID of the webhook</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.webhooks[<span class='proto-context-array-key'>i</span>].</span>destination_url</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>HTTPS URL to POST webhook calls to</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.webhooks[<span class='proto-context-array-key'>i</span>].</span>events</div> <div class='proto-field-type'>string[]</div><div class='proto-field-description'>Events the webhook is subscribed to</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.webhooks[<span class='proto-context-array-key'>i</span>].</span>status</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Last known status of webhook (whether or not Trinsic can successfully reach destination)</div></div></div></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>display</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.EcosystemDisplay'>EcosystemDisplay</a></div><div class='proto-field-description'>Display details</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.display.</span>dark</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.EcosystemDisplayDetails'>EcosystemDisplayDetails</a></div><div class='proto-field-description'></div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.display.dark.</span>logo_url</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>string id = 1; string name = 2;</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.display.dark.</span>color</div> <div class='proto-field-type'>string</div><div class='proto-field-description'></div></div></div></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.display.</span>light</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.EcosystemDisplayDetails'>EcosystemDisplayDetails</a></div><div class='proto-field-description'></div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.display.light.</span>logo_url</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>string id = 1; string name = 2;</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.display.light.</span>color</div> <div class='proto-field-type'>string</div><div class='proto-field-description'></div></div></div></div></div></div></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ecosystem.</span>domain</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Domain</div></div></div></div></div></div></div></p>
+</div>
+</div>
+</div>
+<hr />
+<h2 id="upgrade-wallet-did">Upgrade Wallet DID<a class="headerlink" href="#upgrade-wallet-did" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Restricted API</p>
+<p>This feature is not yet publicly available, and the list of supported DID Methods is not final.</p>
+<p>Please contact Trinsic to enable this endpoint on your account.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Ledger Interactions</p>
+<p>Many DID methods are based on distributed ledgers (commonly known as "blockchains"), so the following should be kept in mind when registering a DID which uses a ledger:</p>
+<ul>
+<li>Depending on the DID method chosen, registering a DID may incur a ledger write fee, which is different for each ledger. <strong>You are responsible for these fees.</strong><ul>
+<li>We will provide clear documentation regarding these fees before this feature becomes generally available.</li>
+</ul>
+</li>
+<li>Newly-registered DIDs may not be immediately resolvable, as most ledgers cannot provide instantaneous writes.<ul>
+<li>Issuance and verification of credentials against these DIDs will still function during this time, but only within the Trinsic platform.</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Upgrades a wallet's DID from the default <code>did:key</code> to another DID Method. This endpoint may only be called by an ecosystem provider.</p>
+<p>Trinsic will register a DID Document for you, and update the wallet's <code>public_did</code> property to the newly-registered DID. Credentials previously issued by this wallet will not have their <code>issuer</code> field updated to the new DID, but they will still verify correctly.</p>
+<p>Presently, once a wallet's DID has been upgraded, its DID Method cannot be changed again. However, it is possible to perform further upgrades <em>within</em> a method, to go from a testing to production network (for example, <code>did:ion:test</code> to <code>did:ion</code>). </p>
+<div class='proto-method-tabs-marker'></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:3"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><input id="__tabbed_11_3" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.6 16.6 4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4m-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4Z"/></svg></span> Sample</label><label for="__tabbed_11_2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5v2h6.59L4 18.59 5.41 20 17 8.41V15h2V5"/></svg></span> Request</label><label for="__tabbed_11_3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41"/></svg></span> Response</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="12:6"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><input id="__tabbed_12_3" name="__tabbed_12" type="radio" /><input id="__tabbed_12_4" name="__tabbed_12" type="radio" /><input id="__tabbed_12_5" name="__tabbed_12" type="radio" /><input id="__tabbed_12_6" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Trinsic CLI</label><label for="__tabbed_12_2">TypeScript</label><label for="__tabbed_12_3">C#</label><label for="__tabbed_12_4">Python</label><label for="__tabbed_12_5">Go</label><label for="__tabbed_12_6">Java</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>trinsic provider upgrade-did --wallet-id <span class="o">{</span>wallet_id<span class="o">}</span> --method ion --method-options testnet
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">upgradeResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">provider</span><span class="p">().</span><span class="nx">upgradeDID</span><span class="p">(</span><span class="nx">UpgradeDidRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
+<span class="w">    </span><span class="nx">walletId</span><span class="o">:</span><span class="w"> </span><span class="kt">walletId</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="kt">SupportedDidMethod.ION</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">ionOptions</span><span class="o">:</span><span class="w"> </span><span class="kt">IonOptions.fromPartial</span><span class="p">({</span><span class="w"></span>
+<span class="w">        </span><span class="nx">network</span><span class="o">:</span><span class="w"> </span><span class="kt">IonOptions_IonNetwork.TestNet</span><span class="w"></span>
+<span class="w">    </span><span class="p">})</span><span class="w"></span>
+<span class="p">}));</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">upgradeResponse</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Provider</span><span class="p">.</span><span class="n">UpgradeDIDAsync</span><span class="p">(</span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">WalletId</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">walletId</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">Method</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">SupportedDidMethod</span><span class="p">.</span><span class="n">Ion</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">IonOptions</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">Network</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">IonOptions</span><span class="p">.</span><span class="n">Types</span><span class="p">.</span><span class="n">IonNetwork</span><span class="p">.</span><span class="n">TestNet</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">});</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">upgrade_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">trinsic</span><span class="o">.</span><span class="n">provider</span><span class="o">.</span><span class="n">upgrade_did</span><span class="p">(</span>
+    <span class="n">request</span><span class="o">=</span><span class="n">UpgradeDidRequest</span><span class="p">(</span>
+        <span class="n">wallet_id</span><span class="o">=</span><span class="n">wallet_id</span><span class="p">,</span>
+        <span class="n">method</span><span class="o">=</span><span class="n">SupportedDidMethod</span><span class="o">.</span><span class="n">ION</span><span class="p">,</span>
+        <span class="n">ion_options</span><span class="o">=</span><span class="n">IonOptions</span><span class="p">(</span>
+            <span class="n">network</span><span class="o">=</span><span class="n">IonOptionsIonNetwork</span><span class="o">.</span><span class="n">TestNet</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nx">upgradeResponse</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">Provider</span><span class="p">().</span><span class="nx">UpgradeDID</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">UpgradeDidRequest</span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">Account</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">UpgradeDidRequest_WalletId</span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">WalletId</span><span class="p">:</span><span class="w"> </span><span class="nx">walletId</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nx">Method</span><span class="p">:</span><span class="w"> </span><span class="nx">common</span><span class="p">.</span><span class="nx">SupportedDidMethod_ION</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nx">Options</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">UpgradeDidRequest_IonOptions</span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">IonOptions</span><span class="p">:</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">provider</span><span class="p">.</span><span class="nx">IonOptions</span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nx">Network</span><span class="p">:</span><span class="w"> </span><span class="nx">provider</span><span class="p">.</span><span class="nx">IonOptions_TestNet</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="p">})</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">upgradeRequest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UpgradeDidRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="na">setWalletId</span><span class="p">(</span><span class="n">walletId</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="na">setMethod</span><span class="p">(</span><span class="n">SupportedDidMethod</span><span class="p">.</span><span class="na">ION</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="na">setIonOptions</span><span class="p">(</span><span class="n">IonOptions</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">setNetwork</span><span class="p">(</span><span class="n">IonOptions</span><span class="p">.</span><span class="na">IonNetwork</span><span class="p">.</span><span class="na">TestNet</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">).</span><span class="na">build</span><span class="p">();</span><span class="w"></span>
+
+<span class="kd">var</span><span class="w"> </span><span class="n">upgradeResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">provider</span><span class="p">().</span><span class="na">upgradeDID</span><span class="p">(</span><span class="n">upgradeRequest</span><span class="p">).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.provider.v1.UpgradeDidRequest'><div class='proto-obj-name'><a name='services.provider.v1.UpgradeDidRequest' href='/reference/proto#services.provider.v1.UpgradeDidRequest'>UpgradeDidRequest</a></div><div class='proto-obj-description'>Request to upgrade a wallet</div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>email</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Email address of account to upgrade. Mutually exclusive with <code>walletId</code>.</div></div><div class='proto-field'><div class='proto-field-name'>wallet_id</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>Wallet ID of account to upgrade. Mutually exclusive with <code>email</code>.</div></div><div class='proto-field'><div class='proto-field-name'>method</div> <div class='proto-field-type'><a href='/reference/proto#services.common.v1.SupportedDidMethod'>SupportedDidMethod</a></div><div class='proto-field-description'>DID Method to which wallet should be upgraded</div><div class='proto-field-expand-btn' data-sub-type='enum' onclick='expandSubField(this);'>Show enum values</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>SupportedDidMethod.</span>KEY</div> <div class='proto-field-type'> = 0</div><div class='proto-field-description'>The did:key method -- all wallets use this by default</div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>SupportedDidMethod.</span>ION</div> <div class='proto-field-type'> = 1</div><div class='proto-field-description'>The did:ion method</div></div></div></div></div><div class='proto-field'><div class='proto-field-name'>ion_options</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.IonOptions'>IonOptions</a></div><div class='proto-field-description'>Configuration for creation of DID on ION network</div><div class='proto-field-expand-btn' data-sub-type='message' onclick='expandSubField(this);'>Show child attributes</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>ion_options.</span>network</div> <div class='proto-field-type'><a href='/reference/proto#services.provider.v1.IonOptions.IonNetwork'>IonNetwork</a></div><div class='proto-field-description'>ION network on which DID should be published</div><div class='proto-field-expand-btn' data-sub-type='enum' onclick='expandSubField(this);'>Show enum values</div><div class='proto-field-sub-child hidden'><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>IonNetwork.</span>TestNet</div> <div class='proto-field-type'> = 0</div><div class='proto-field-description'></div></div><div class='proto-field'><div class='proto-field-name'><span class='proto-obj-subtype-context'>IonNetwork.</span>MainNet</div> <div class='proto-field-type'> = 1</div><div class='proto-field-description'></div></div></div></div></div></div></div></div></div></div></p>
+</div>
+<div class="tabbed-block">
+<p><div class='proto-obj-container' data-proto-name='services.provider.v1.UpgradeDidResponse'><div class='proto-obj-name'><a name='services.provider.v1.UpgradeDidResponse' href='/reference/proto#services.provider.v1.UpgradeDidResponse'>UpgradeDidResponse</a></div><div class='proto-obj-description'>Response to <code>UpgradeDIDRequest</code></div><div class='proto-obj-fields'><div class='proto-field'><div class='proto-field-name'>did</div> <div class='proto-field-type'>string</div><div class='proto-field-description'>New DID of wallet</div></div></div></div></p>
 </div>
 </div>
 </div>
