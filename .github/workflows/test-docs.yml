@@ -63,7 +63,7 @@ jobs:
       - name: Get Changed Docs
         id: docsite
         run: |
-          python ./devops/build_sdks.py --language=doc_site --github-token=${{ secrets.GITHUB_TOKEN }} --github-sha=${{ github.sha }} --github-head-ref=${{ github.head_ref }} --docs-branch-name=${{ env.DOCS_BRANCH_NAME }}
+          python ./devops/build_sdks.py --language=doc_site --github-sha=${{ github.sha }} --github-head-ref=${{ github.head_ref }} --docs-branch-name=${{ env.DOCS_BRANCH_NAME }}
       - uses: mshick/add-pr-comment@v1
         with:
           message: |
