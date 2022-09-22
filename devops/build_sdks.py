@@ -245,7 +245,7 @@ def build_docs(args):
 def build_docs_site(args):
     # git diff --name-only
     proc = subprocess.run(
-        ["git", "diff", "main", "--name-only"], capture_output=True, text=True
+        ["git", "diff", "origin/main", "--name-only"], capture_output=True, text=True
     )
     output = proc.stdout.split("\n")
     print(output)
