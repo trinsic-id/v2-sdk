@@ -248,6 +248,7 @@ def build_docs_site(args):
         ["git", "diff", "main", "--name-only"], capture_output=True, text=True
     )
     output = proc.stdout.split("\n")
+    print(output)
     # Skip the warning about line feed
     output = [
         line
