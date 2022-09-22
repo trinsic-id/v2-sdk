@@ -260,22 +260,18 @@ def build_docs_site(args):
     output = [line for line in output if line.lower().endswith(".md")]
     # Export a markdown formatted list of changed pages
     github_comment = [
-        f"[Preview docs site for ${ args.github_head_ref }@${ args.github_sha }](https://${ args.docs_branch_name }.netlify.app/)"
+        f"[Preview docs site for { args.github_head_ref }@{ args.github_sha }](https://{ args.docs_branch_name }.netlify.app/)"
     ]
     github_comment.append("Changed paths:")
     github_comment.extend(
         [
-            f"{ij}. [{md_file}](https://${ args.docs_branch_name }.netlify.app/{md_file.replace('.md','.html')})"
+            f"{ij+1}. [{md_file}](https://{ args.docs_branch_name }.netlify.app/{md_file.replace('.md','.html')})"
             for ij, md_file in enumerate(output)
         ]
     )
     # TODO - maybe cap it if there are too many files to list?
-    from github import Github
-
-    g = Github(args.github_token)
-    repo = g.get_repo(args.repo_name)
-    pr = repo.get_pull(args.pr_number)
-    pr.create_issue_comment("\n".join(github_comment))
+    md_text = "\n".join(github_comment)
+    print(f"::set-output name=netlify_comment::{md_text}")
 
 
 def build_none(args) -> None:
@@ -292,7 +288,6 @@ def parse_arguments():
     parser.add_argument("--github-head-ref", help="Github head ref")
     parser.add_argument("--docs-branch-name", help="docs branch name")
     parser.add_argument("--github-sha", help="Github SHA")
-    parser.add_argument("--github-token", help="Github Token")
     parser.add_argument(
         "--language", help="Comma-separated languages to build", default="all"
     )

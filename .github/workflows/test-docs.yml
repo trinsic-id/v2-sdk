@@ -60,11 +60,14 @@ jobs:
         run: |
           echo "Deploying site ${{ env.DOCS_BRANCH_NAME }}"
           netlify deploy --site "${{ env.DOCS_BRANCH_NAME }}" --dir ./ --prod
-      - run: python ./devops/build_sdks.py --language=doc_site --github-token=${{ secrets.GITHUB_TOKEN }} --github-sha=${{ github.sha }} --github-head-ref=${{ github.head_ref }} --docs-branch-name=${{ env.DOCS_BRANCH_NAME }}
+      - name: Get Changed Docs
+        id: docsite
+        run: |
+          python ./devops/build_sdks.py --language=doc_site --github-token=${{ secrets.GITHUB_TOKEN }} --github-sha=${{ github.sha }} --github-head-ref=${{ github.head_ref }} --docs-branch-name=${{ env.DOCS_BRANCH_NAME }}
       - uses: mshick/add-pr-comment@v1
         with:
           message: |
-            [Preview docs site for ${{ github.head_ref }}@${{ github.sha }}](https://${{ env.DOCS_BRANCH_NAME }}.netlify.app/)
+            ${{ steps.docsite.outputs.netlify_comment }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: 'github-actions[bot]'
           allow-repeats: false
