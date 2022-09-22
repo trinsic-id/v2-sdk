@@ -270,7 +270,8 @@ def build_docs_site(args):
         ]
     )
     # TODO - maybe cap it if there are too many files to list?
-    md_text = "\n".join(github_comment)
+    # This is a github action newline escape
+    md_text = '%0A'.join(github_comment)
     print(f"::set-output name=netlify_comment::{md_text}")
 
 
