@@ -125,7 +125,9 @@ def build_java(args) -> None:
     )
     update_line(
         join(java_dir, "src", "main", "java", "trinsic", "TrinsicUtilities.java"),
-        {"final String sdkVersion = ": f'    final String sdkVersion = "{get_package_versions(args)}";'},
+        {
+            "final String sdkVersion = ": f'    final String sdkVersion = "{get_package_versions(args)}";'
+        },
     )
     copy_okapi_libs(abspath(join(java_dir, "..", "libs")))
 
@@ -148,7 +150,9 @@ def build_golang(args) -> None:
     golang_dir = abspath(join(get_language_dir("go"), "services"))
     update_line(
         join(golang_dir, "services.go"),
-        {"const sdkVersion = ": f'    const sdkVersion = "{get_package_versions(args)}"'},
+        {
+            "const sdkVersion = ": f'    const sdkVersion = "{get_package_versions(args)}"'
+        },
     )
     # Copy in the binaries
     copy_okapi_libs(golang_dir, "windows-gnu")
@@ -238,6 +242,42 @@ def build_docs(args):
     build_go_docs(args)
 
 
+def build_docs_site(args):
+    # git diff --name-only
+    proc = subprocess.run(
+        ["git", "diff", "--name-only"], capture_output=True, text=True
+    )
+    output = proc.stdout.split("\n")
+    # Skip the warning about line feed
+    output = [
+        line
+        for line in output
+        if not line.lower().startswith("warning:")
+        and not line.lower().startswith("the file will have its")
+        and line
+    ]
+    # Get only markdown files
+    output = [line for line in output if line.lower().endswith(".md")]
+    # Export a markdown formatted list of changed pages
+    github_comment = [
+        f"[Preview docs site for ${ args.github_head_ref }@${ args.github_sha }](https://${ args.docs_branch_name }.netlify.app/)"
+    ]
+    github_comment.append("Changed paths:")
+    github_comment.extend(
+        [
+            f"{ij}. [{md_file}](https://${ args.docs_branch_name }.netlify.app/{md_file.replace('.md','.html')})"
+            for ij, md_file in enumerate(output)
+        ]
+    )
+    # TODO - maybe cap it if there are too many files to list?
+    from github import Github
+
+    g = Github(args.github_token)
+    repo = g.get_repo(args.repo_name)
+    pr = repo.get_pull(args.pr_number)
+    pr.create_issue_comment("\n".join(github_comment))
+
+
 def build_none(args) -> None:
     """
     This is here, so you can specify no language to update - eg just download plugins
@@ -248,6 +288,11 @@ def build_none(args) -> None:
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Process SDK building")
     parser.add_argument("--package-version", help="Manual override package version")
+    # TODO - Get the SHA and head-ref programmatically?
+    parser.add_argument("--github-head-ref", help="Github head ref")
+    parser.add_argument("--docs-branch-name", help="docs branch name")
+    parser.add_argument("--github-sha", help="Github SHA")
+    parser.add_argument("--github-token", help="Github Token")
     parser.add_argument(
         "--language", help="Comma-separated languages to build", default="all"
     )
@@ -267,6 +312,7 @@ def main():
         "java": build_java,
         "dart": build_dart,
         "typescript": build_typescript,
+        "doc_site": build_docs_site,
         "none": build_none,
     }
     # If "all" is specified, set the array of languages to build to the list of all languages we _can_ build.

@@ -2,3 +2,4 @@ git+https://github.com/danielgtaylor/python-betterproto.git@3ca092a72494f9225bcb
 grpcio-tools
 requests
 markupsafe==2.1.1
+pygithub

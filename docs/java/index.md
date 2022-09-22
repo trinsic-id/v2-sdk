@@ -1,6 +1,6 @@
-# The Trinsic Java SDK
+# The Trinsic Java / Kotlin SDK
 
-The Trinsic Java SDK makes it easy to interact with the Trinsic API from any Java application. The most recent version of the package is found on the [Github Release](https://github.com/trinsic-id/sdk/releases). You can find the SDKs source on [Github](https://github.com/trinsic-id/sdk/tree/main/java).
+The Trinsic Java / Kotlin SDK makes it easy to interact with the Trinsic API from any Java (or Kotlin) application. The most recent version of the package is found on the [Github Release](https://github.com/trinsic-id/sdk/releases). You can find the SDKs source on [Github](https://github.com/trinsic-id/sdk/tree/main/java).
 
 ## Installation
 1. Add the `urlFile` code shown below to your `build.gradle`.
