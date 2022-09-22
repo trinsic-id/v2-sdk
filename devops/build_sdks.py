@@ -266,13 +266,13 @@ def build_docs_site(args):
     github_comment.append("Changed paths:")
     github_comment.extend(
         [
-            f"{ij+1}. [{md_file}](https://{ args.docs_branch_name }.netlify.app/{md_file.replace('.md','.html')})"
+            f"{ij+1}. [{md_file}](https://{ args.docs_branch_name }.netlify.app/{md_file.replace('.md','').replace('docs/','')})"
             for ij, md_file in enumerate(output)
         ]
     )
     # TODO - maybe cap it if there are too many files to list?
     # This is a github action newline escape
-    md_text = '%0A'.join(github_comment)
+    md_text = "%0A".join(github_comment)
     print(f"::set-output name=netlify_comment::{md_text}")
 
 
