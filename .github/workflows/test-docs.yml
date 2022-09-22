@@ -11,6 +11,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0  # Get everything so that the `mkdocs-git-authors` plugin answers correctly
+          ref: ${{ github.head_ref }}
       - uses: actions/setup-node@v3
         name: Setup Node v18
         with:
