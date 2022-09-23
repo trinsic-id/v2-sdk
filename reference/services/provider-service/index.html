@@ -2208,9 +2208,7 @@
     <span class="n">request</span><span class="o">=</span><span class="n">UpgradeDidRequest</span><span class="p">(</span>
         <span class="n">wallet_id</span><span class="o">=</span><span class="n">wallet_id</span><span class="p">,</span>
         <span class="n">method</span><span class="o">=</span><span class="n">SupportedDidMethod</span><span class="o">.</span><span class="n">ION</span><span class="p">,</span>
-        <span class="n">ion_options</span><span class="o">=</span><span class="n">IonOptions</span><span class="p">(</span>
-            <span class="n">network</span><span class="o">=</span><span class="n">IonOptionsIonNetwork</span><span class="o">.</span><span class="n">TestNet</span>
-        <span class="p">)</span>
+        <span class="n">ion_options</span><span class="o">=</span><span class="n">IonOptions</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">IonOptionsIonNetwork</span><span class="o">.</span><span class="n">TestNet</span><span class="p">),</span>
     <span class="p">)</span>
 <span class="p">)</span>
 </code></pre></div>
@@ -2230,13 +2228,13 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">upgradeRequest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UpgradeDidRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="p">.</span><span class="na">setWalletId</span><span class="p">(</span><span class="n">walletId</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="p">.</span><span class="na">setMethod</span><span class="p">(</span><span class="n">SupportedDidMethod</span><span class="p">.</span><span class="na">ION</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="p">.</span><span class="na">setIonOptions</span><span class="p">(</span><span class="n">IonOptions</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">setNetwork</span><span class="p">(</span><span class="n">IonOptions</span><span class="p">.</span><span class="na">IonNetwork</span><span class="p">.</span><span class="na">TestNet</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="p">).</span><span class="na">build</span><span class="p">();</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="n">upgradeRequest</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    </span><span class="n">UpgradeDidRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">setWalletId</span><span class="p">(</span><span class="n">walletId</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">setMethod</span><span class="p">(</span><span class="n">SupportedDidMethod</span><span class="p">.</span><span class="na">ION</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">setIonOptions</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="n">IonOptions</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setNetwork</span><span class="p">(</span><span class="n">IonOptions</span><span class="p">.</span><span class="na">IonNetwork</span><span class="p">.</span><span class="na">TestNet</span><span class="p">).</span><span class="na">build</span><span class="p">())</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">();</span><span class="w"></span>
 
 <span class="kd">var</span><span class="w"> </span><span class="n">upgradeResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="na">provider</span><span class="p">().</span><span class="na">upgradeDID</span><span class="p">(</span><span class="n">upgradeRequest</span><span class="p">).</span><span class="na">get</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
