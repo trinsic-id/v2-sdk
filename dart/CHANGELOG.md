@@ -1,3 +1,7 @@
+## 1.8.0
+
+**Full Changelog**: https://github.com/trinsic-id/sdk/compare/v1.7.0...v1.8.0
+
 ## 1.7.0
 
 ### Language-Specific Changes
