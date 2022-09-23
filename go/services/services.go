@@ -11,7 +11,7 @@ import (
 
 // GetSdkVersion used to send metadata
 func GetSdkVersion() string {
-	const sdkVersion = "1.0.0"
+    const sdkVersion = "1.8.0"
 	return sdkVersion
 }
 

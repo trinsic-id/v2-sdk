@@ -8,12 +8,15 @@ import os
 import platform
 import shutil
 import subprocess
-
-import pygit2
-import requests
 from os.path import join, abspath, dirname, isdir, split
 from typing import Dict
-from pygit2 import Repository
+
+try:
+    import requests
+except:
+    os.system("pip install requests")
+    import requests
+
 
 
 def parse_version_tag():

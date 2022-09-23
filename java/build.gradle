@@ -21,7 +21,7 @@ java {
 def jarDomainId = "id"
 def jarGroupId = "trinsic"
 def jarArtifactId = "services"
-def jarVersion = "1.4.0"
+def jarVersion = "1.8.0"
 
 apply plugin: 'kotlin'
 
