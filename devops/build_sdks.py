@@ -165,7 +165,7 @@ def build_dart(args) -> None:
     update_line(
         join(lang_dir, "lib", "src", "trinsic_util.dart"),
         {
-            'const sdkVersion = "1.0.0";': f'  const sdkVersion = "{get_package_versions(args)}";'
+            'const sdkVersion = "': f'  const sdkVersion = "{get_package_versions(args)}";'
         },
     )
 
@@ -175,7 +175,7 @@ def build_typescript(args) -> None:
     update_line(
         join(lang_dir, "src", "Version.ts"),
         {
-            '    const sdkVersion = "1.0.0";': f'    const sdkVersion = "{get_package_versions(args)}";'
+            '    const sdkVersion = "': f'    const sdkVersion = "{get_package_versions(args)}";'
         },
     )
 
