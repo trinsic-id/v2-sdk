@@ -22,4 +22,3 @@ Once the go package is installed and configured, you're ready to start building!
 
 [Start Walkthrough](../walkthroughs/vaccination.md){ .md-button .md-button--primary } [Explore API](../reference/index.md){ .md-button } [Go API Reference](../reference/index.md){ .md-button }
 
-

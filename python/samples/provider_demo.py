@@ -84,9 +84,7 @@ async def provider_demo():
             request=UpgradeDidRequest(
                 wallet_id=wallet_id,
                 method=SupportedDidMethod.ION,
-                ion_options=IonOptions(
-                    network=IonOptionsIonNetwork.TestNet
-                )
+                ion_options=IonOptions(network=IonOptionsIonNetwork.TestNet),
             )
         )
         # }

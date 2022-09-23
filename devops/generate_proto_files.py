@@ -185,7 +185,7 @@ def update_golang():
         'okapiproto "github.com/trinsic-id/sdk/go/okapiproto"': 'okapiproto "github.com/trinsic-id/okapi/go/okapiproto"',
         '_ "services/options"': '_ "github.com/trinsic-id/sdk/go/proto/services/options"',
         'account "services/account/v1/account"': 'account "github.com/trinsic-id/sdk/go/proto/services/account/v1/account"',
-        'common "services/common/v1/common"': 'account "github.com/trinsic-id/sdk/go/proto/services/common/v1/common"',
+        'common "services/common/v1/common"': 'common "github.com/trinsic-id/sdk/go/proto/services/common/v1/common"',
     }
     for file_name in glob.glob(join(go_proto_path, "**", "*.go"), recursive=True):
         update_line(file_name, replace_pairs)

@@ -8,14 +8,12 @@ import os
 import platform
 import shutil
 import subprocess
+
+import pygit2
+import requests
 from os.path import join, abspath, dirname, isdir, split
 from typing import Dict
-
-try:
-    import requests
-except:
-    os.system("pip install requests")
-    import requests
+from pygit2 import Repository
 
 
 def parse_version_tag():
@@ -97,7 +95,8 @@ def get_language_dir(language_name: str) -> str:
     return abspath(join(dirname(abspath(__file__)), "..", language_name))
 
 
-def get_sdk_dir() -> str:
+@property
+def sdk_dir() -> str:
     """Get the full path of the root of the sdk repository"""
     return abspath(join(dirname(abspath(__file__)), ".."))
 
@@ -125,7 +124,9 @@ def build_java(args) -> None:
     )
     update_line(
         join(java_dir, "src", "main", "java", "trinsic", "TrinsicUtilities.java"),
-        {"final String sdkVersion = ": f'    final String sdkVersion = "{get_package_versions(args)}";'},
+        {
+            "final String sdkVersion = ": f'    final String sdkVersion = "{get_package_versions(args)}";'
+        },
     )
     copy_okapi_libs(abspath(join(java_dir, "..", "libs")))
 
@@ -148,7 +149,9 @@ def build_golang(args) -> None:
     golang_dir = abspath(join(get_language_dir("go"), "services"))
     update_line(
         join(golang_dir, "services.go"),
-        {"const sdkVersion = ": f'    const sdkVersion = "{get_package_versions(args)}"'},
+        {
+            "const sdkVersion = ": f'    const sdkVersion = "{get_package_versions(args)}"'
+        },
     )
     # Copy in the binaries
     copy_okapi_libs(golang_dir, "windows-gnu")
@@ -195,7 +198,7 @@ def build_java_docs(args):
     # npm ci in the root of sdk
     subprocess.Popen(
         r"node ./node_modules/groovydoc-to-markdown/src/doc2md.js  ./java java ./docs/reference/java",
-        cwd=get_sdk_dir(),
+        cwd=sdk_dir(),
     ).wait()
 
 
@@ -204,10 +207,10 @@ def build_dotnet_docs(args) -> None:
     # dotnet tool install DefaultDocumentation.Console -g
     assembly_file = "./dotnet/Trinsic/bin/Debug/net6.0/Trinsic.dll"
     output_doc_folder = "./docs/reference/dotnet"
-    clean_dir(abspath(join(get_sdk_dir(), output_doc_folder)))
+    clean_dir(abspath(join(sdk_dir(), output_doc_folder)))
     subprocess.Popen(
         f"defaultdocumentation --AssemblyFilePath {assembly_file} --OutputDirectoryPath {output_doc_folder} --FileNameMode Name --GeneratedPages Namespaces",
-        cwd=get_sdk_dir(),
+        cwd=sdk_dir(),
     ).wait()
 
 
@@ -238,6 +241,46 @@ def build_docs(args):
     build_go_docs(args)
 
 
+def build_docs_site(args):
+    # git diff --name-only
+    proc = subprocess.run(
+        ["git", "diff", "origin/main", "--name-only"], capture_output=True, text=True
+    )
+    output = proc.stdout.split("\n")
+    # Skip the warning about line feed
+    output = [
+        line
+        for line in output
+        if not line.lower().startswith("warning:")
+           and not line.lower().startswith("the file will have its")
+           and line
+    ]
+    # Get only markdown files
+    output = [line for line in output if line.lower().endswith(".md")]
+
+    proc = subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True)
+    github_sha = proc.stdout.strip()
+    proc = subprocess.run(["git", "rev-parse", "--abbrev-ref", "HEAD"], capture_output=True, text=True)
+    github_head_ref = proc.stdout.strip()
+
+
+    # Export a markdown formatted list of changed pages
+    github_comment = [
+        f"[Preview docs site for {github_head_ref}@{github_sha}](https://{args.docs_branch_name}.netlify.app/)"
+    ]
+    github_comment.append("Changed paths:")
+    github_comment.extend(
+        [
+            f"{ij + 1}. [{md_file}](https://{args.docs_branch_name}.netlify.app/{md_file.replace('.md', '').replace('docs/', '')})"
+            for ij, md_file in enumerate(output)
+        ]
+    )
+    # TODO - maybe cap it if there are too many files to list?
+    # This is a github action newline escape
+    md_text = "%0A".join(github_comment)
+    print(f"::set-output name=netlify_comment::{md_text}")
+
+
 def build_none(args) -> None:
     """
     This is here, so you can specify no language to update - eg just download plugins
@@ -248,6 +291,7 @@ def build_none(args) -> None:
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Process SDK building")
     parser.add_argument("--package-version", help="Manual override package version")
+    parser.add_argument("--docs-branch-name", help="docs branch name")
     parser.add_argument(
         "--language", help="Comma-separated languages to build", default="all"
     )
@@ -267,6 +311,7 @@ def main():
         "java": build_java,
         "dart": build_dart,
         "typescript": build_typescript,
+        "docs_pr_automation": build_docs_site,
         "none": build_none,
     }
     # If "all" is specified, set the array of languages to build to the list of all languages we _can_ build.
