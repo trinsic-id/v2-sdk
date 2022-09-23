@@ -169,6 +169,13 @@ def build_dart(args) -> None:
         },
     )
 
+    update_line(
+        join(lang_dir, "pubspec.yaml"),
+        {
+            'version:': f'version: "{get_package_versions(args)}"'
+        },
+    )
+
 
 def build_typescript(args) -> None:
     lang_dir = get_language_dir("web")
