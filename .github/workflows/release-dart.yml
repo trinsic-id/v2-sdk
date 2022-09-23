@@ -33,7 +33,7 @@ jobs:
         working-directory: dart
       - name: Build, Test, Pack
         run: |
-          python ../devops/build_sdks.py --language=dart
+          python ../devops/build_sdks.py --language=dart --package-version=${{ steps.setversion.outputs.packageVersion }}
           dart pub publish --dry-run
         shell: pwsh
         working-directory: dart

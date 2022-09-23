@@ -24,6 +24,10 @@ jobs:
         with:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
       - uses: arduino/setup-protoc@v1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
@@ -36,6 +40,7 @@ jobs:
       - run: |
           npm ci
           npm version ${{ steps.setversion.outputs.packageVersion }} --no-git-tag-version --yes
+          python ../devops/build_sdks.py --package-version=${{ steps.setversion.outputs.packageVersion }} --language=typescript
           npm run build
           npm publish --no-git-tag-version --yes --no-verify-access
         env:
