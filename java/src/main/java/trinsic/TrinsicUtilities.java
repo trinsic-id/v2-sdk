@@ -92,7 +92,7 @@ public class TrinsicUtilities {
   }
 
   public static String getSdkVersion() {
-    final String sdkVersion = "1.0.0";
+    final String sdkVersion = "1.8.0";
     return sdkVersion;
   }
 }
