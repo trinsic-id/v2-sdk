@@ -172,7 +172,7 @@ def build_dart(args) -> None:
     update_line(
         join(lang_dir, "pubspec.yaml"),
         {
-            'version:': f'version: "{get_package_versions(args)}";'
+            'version:': f'version: "{get_package_versions(args)}"'
         },
     )
 
