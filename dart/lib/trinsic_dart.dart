@@ -9,5 +9,3 @@ export 'src/provider_service.dart';
 export 'src/template_service.dart';
 export 'src/trustregistry_service.dart';
 export 'src/wallet_service.dart';
-
-// TODO: Export any libraries intended for clients of this package.
