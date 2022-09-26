@@ -20,6 +20,7 @@ nav:
       - What is Trinsic?: learn/platform/intro.md
       - Security Overview: learn/platform/security.md
       - Templates: learn/platform/templates.md
+      - DIDs: learn/platform/dids.md
       - Wallets: learn/platform/wallets.md
       - Webhooks: learn/platform/webhooks.md
     - Tutorials:
