@@ -15,24 +15,19 @@ import {
     UpdateEcosystemRequest,
 } from "@trinsic/trinsic";
 import { ECOSYSTEM_DOMAIN, TRINSIC_ENVIRONMENT } from "./ts/constants";
+import {getCloudEndpoint} from "./utilities";
 
 /**
  * Replace these with your own values
  */
-// const ECOSYSTEM_ID = "urn:trinsic:ecosystems:clever-bassi-N4VYHjUg2Jk";
 const ECOSYSTEM_TOKEN =
-    "CiVodHRwczovL3RyaW5zaWMuaWQvc2VjdXJpdHkvdjEvb2Jlcm9uEoMBCip1cm46dHJpbnNpYzp3YWxsZXRzOlBhUE1aQVVrTGhoS3REOWV4UkRMOUISJDc4NDViMjAyLTQ2NjQtNDAzNi1hNDhhLTlmMjRmZjBiY2RiMSIvdXJuOnRyaW5zaWM6ZWNvc3lzdGVtczpjbGV2ZXItYmFzc2ktTjRWWUhqVWcySmsaMI9-GilmVQj9QTsgTkU-tF-zT5E7LNSy_SCs66_UVptFlp8D5BC_gZmtH8Zec3paZyIA";
+    "PUT YOUR TOKEN HERE";
 const LOGO_URL_DARK = "https://cdn.trinsic.id/assets/logo/512x512.png";
 const LOGO_URL_LIGHT = "https://cdn.trinsic.id/assets/logo/512x512-circle.png";
 const COLOR_LIGHT = "#6af06f";
 const COLOR_DARK = "#601b46";
 
-const endpoints = {
-    prod: "prod.trinsic.cloud",
-    staging: "staging-internal.trinsic.cloud",
-    dev: "dev-internal.trinsic.cloud",
-};
-const TRINSIC_ENDPOINT = endpoints[TRINSIC_ENVIRONMENT];
+const TRINSIC_ENDPOINT = getCloudEndpoint(TRINSIC_ENVIRONMENT);
 
 const service = new TrinsicService(
     ServiceOptions.fromPartial({ serverEndpoint: TRINSIC_ENDPOINT })
