@@ -91,6 +91,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs-v2.trinsic.id/learn/platform/dids/</loc>
+         <lastmod>2022-09-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs-v2.trinsic.id/learn/platform/intro/</loc>
          <lastmod>2022-09-27</lastmod>
          <changefreq>daily</changefreq>
