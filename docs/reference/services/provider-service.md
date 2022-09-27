@@ -280,12 +280,9 @@ Deletes a webhook from an ecosystem.
     Please contact Trinsic to enable this endpoint on your account.
 
 !!! info "Ledger Interactions"
-    Many DID methods are based on distributed ledgers (commonly known as "blockchains"), so the following should be kept in mind when registering a DID which uses a ledger:
+    Depending on the DID Method chosen, you may be responsible for ledger write fees; additionally, there are some logistical concerns to be aware of.
 
-    - Depending on the DID method chosen, registering a DID may incur a ledger write fee, which is different for each ledger. **You are responsible for these fees.**
-        - We will provide clear documentation regarding these fees before this feature becomes generally available.
-    - Newly-registered DIDs may not be immediately resolvable, as most ledgers cannot provide instantaneous writes.
-        - Issuance and verification of credentials against these DIDs will still function during this time, but only within the Trinsic platform.
+    [Click here](/learn/platform/dids#upgrading-wallet-dids) to learn more. 
 
 Upgrades a wallet's DID from the default `did:key` to another DID Method. This endpoint may only be called by an ecosystem provider.
 
