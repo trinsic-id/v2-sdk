@@ -88,6 +88,17 @@ def define_env(env):
         return print_enum(name).replace("\n", "").replace("\r", "")
 
     @env.macro
+    def proto_event(name: str):
+        """
+        Generates the documentation for a specific protobuf event.
+        
+        A "protobuf event" is a protobuf message which is used as the payload
+        for a webhook (EGFCreated, Ping, etc.)
+        """
+
+        return print_event(name).replace("\n", "").replace("\r", "")
+
+    @env.macro
     def all_proto_objs():
         """
         Prints all protobuf objects in file order
@@ -120,11 +131,11 @@ def define_env(env):
                 continue
 
             message = get_entity(messageName)
-            shortName = message["name"]
+            shortName = get_event_canonical_name(messageName)
             ret += "\n"
             ret += f"### {shortName}"
             ret += "\n"
-            ret += print_message(messageName)
+            ret += print_event(messageName)
             # ret += "<br/>"
 
         return ret
@@ -193,6 +204,39 @@ def print_enum_values(enumName: str):
     fields += "</div>"
 
     return fields
+
+def print_event(messageName: str, context: str = None):
+    """
+    Generates the HTML for a protobuf event's documentation
+    """
+
+    try:
+        # Fetch the protobuf message by name
+        entity = get_entity(messageName)
+
+        # Replace newlines in the comments of the message with spaces
+        message_desc = entity['description'].replace("\n", " ").replace("\r", " ")
+        event_name = get_event_canonical_name(messageName)
+
+        ret = (
+            f"<div class='proto-obj-container'data-proto-name='{entity['full_name']}'>"
+            f"<div class='proto-obj-name'><a name='{entity['full_name']}' href='/reference/proto#{entity['full_name']}'>{entity['name']}</a></div>"
+            f"<div class='proto-obj-description'>"
+            f"Event name: <code>{event_name}</code><br/>"
+            f"{message_desc}"
+            "</div>"
+        )
+
+        if len(entity["fields"]) > 0:
+            ret += print_message_fields(messageName, context)
+        else:
+            ret += "<i style='display:block; font-size: 0.65rem; margin-top: 0.5rem'>This message has no fields</i>"
+
+        ret += "</div>"
+
+        return ret
+    except Exception as e:
+        return f"Cannot print proto message: {e}"
 
 def print_message(messageName: str, context: str = None):
     """
@@ -353,6 +397,28 @@ def print_field(fieldName, context: str = None):
     ret += "</div>"
     return ret
 
+def get_event_canonical_name(messageName):
+    """
+    Returns the canonical name for an event's protobuf message
+
+    EG, the `TemplateCreated` event has a canonical name of `TEMPLATE_CREATED`
+    """
+
+    message = get_entity(messageName)
+    if message["options"] is None or "trinsic.services.event.event_type" not in message["options"]:
+        return None
+
+    option_val = message["options"]["trinsic.services.event.event_type"]
+
+    enum_type = option_val["enum_type"]
+    enum_val_int = option_val["enum_value"]
+
+    enum_val = get_enumval_by_value(enum_type, enum_val_int)
+    enum_val_name = enum_val["name"]
+
+    return enum_val_name.lower()
+
+ 
 def field_is_primitive(field):
     """
     Determines if a field's protobuf type is primitive (string/bool/etc.) or not (AccountDetails/etc.)
@@ -402,6 +468,25 @@ def get_map_key_value_types(message_full_type):
     
     return (key_type, value_type)
 
+def get_enumval_by_value(enum_name: str, entry_val: int):
+    """
+    Returns the definition of an enumvalue from its integer value
+    """
+
+    enum = get_entity(enum_name)
+
+    if enum is None:
+        return None
+
+    for valueName in enum["values"]:
+        enumVal = get_entity(valueName)
+        if enumVal is None:
+            continue
+        
+        if enumVal["value"] == entry_val:
+            return enumVal
+    
+    return None
 
 def get_index_entry(name: str):
     """

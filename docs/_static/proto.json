@@ -3791,7 +3791,10 @@
       "full_name": "services.account.v1.Account.Info",
       "input_type": "services.account.v1.AccountInfoRequest",
       "output_type": "services.account.v1.AccountInfoResponse",
-      "description": "Get account information"
+      "description": "Get account information",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.account.v1.Account.ListDevices": {
       "name": "ListDevices",
@@ -3805,14 +3808,20 @@
       "full_name": "services.account.v1.Account.Login",
       "input_type": "services.account.v1.LoginRequest",
       "output_type": "services.account.v1.LoginResponse",
-      "description": "Begin login flow for specified account, creating one if it does not already exist"
+      "description": "Begin login flow for specified account, creating one if it does not already exist",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.account.v1.Account.LoginConfirm": {
       "name": "LoginConfirm",
       "full_name": "services.account.v1.Account.LoginConfirm",
       "input_type": "services.account.v1.LoginConfirmRequest",
       "output_type": "services.account.v1.LoginConfirmResponse",
-      "description": "Finalize login flow with two-factor confirmation code"
+      "description": "Finalize login flow with two-factor confirmation code",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.account.v1.Account.RevokeDevice": {
       "name": "RevokeDevice",
@@ -3826,7 +3835,11 @@
       "full_name": "services.account.v1.Account.SignIn",
       "input_type": "services.account.v1.SignInRequest",
       "output_type": "services.account.v1.SignInResponse",
-      "description": "Sign in to an already existing account"
+      "description": "Sign in to an already existing account",
+      "options": {
+        "deprecated": true,
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.provider.v1.Provider.AddWebhook": {
       "name": "AddWebhook",
@@ -3840,7 +3853,10 @@
       "full_name": "services.provider.v1.Provider.CreateEcosystem",
       "input_type": "services.provider.v1.CreateEcosystemRequest",
       "output_type": "services.provider.v1.CreateEcosystemResponse",
-      "description": "Create new ecosystem and assign the authenticated user as owner"
+      "description": "Create new ecosystem and assign the authenticated user as owner",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.provider.v1.Provider.DeleteWebhook": {
       "name": "DeleteWebhook",
@@ -3882,14 +3898,20 @@
       "full_name": "services.provider.v1.Provider.GetOberonKey",
       "input_type": "services.provider.v1.GetOberonKeyRequest",
       "output_type": "services.provider.v1.GetOberonKeyResponse",
-      "description": "Returns the public key being used to create/verify oberon tokens"
+      "description": "Returns the public key being used to create/verify oberon tokens",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.provider.v1.Provider.GetPublicEcosystemInfo": {
       "name": "GetPublicEcosystemInfo",
       "full_name": "services.provider.v1.Provider.GetPublicEcosystemInfo",
       "input_type": "services.provider.v1.GetPublicEcosystemInfoRequest",
       "output_type": "services.provider.v1.GetPublicEcosystemInfoResponse",
-      "description": "Get public ecosystem information about *any* ecosystem"
+      "description": "Get public ecosystem information about *any* ecosystem",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.provider.v1.Provider.GrantAuthorization": {
       "name": "GrantAuthorization",
@@ -3924,7 +3946,10 @@
       "full_name": "services.provider.v1.Provider.RetrieveDomainVerificationRecord",
       "input_type": "services.provider.v1.RetrieveDomainVerificationRecordRequest",
       "output_type": "services.provider.v1.RetrieveDomainVerificationRecordResponse",
-      "description": "Retrieve a random hash TXT that can be used to verify domain ownership"
+      "description": "Retrieve a random hash TXT that can be used to verify domain ownership",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.provider.v1.Provider.RevokeAuthorization": {
       "name": "RevokeAuthorization",
@@ -3966,7 +3991,10 @@
       "full_name": "services.trustregistry.v1.TrustRegistry.FetchData",
       "input_type": "services.trustregistry.v1.FetchDataRequest",
       "output_type": "services.trustregistry.v1.FetchDataResponse",
-      "description": "Not implemented."
+      "description": "Not implemented.",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
     },
     "services.trustregistry.v1.TrustRegistry.GetMembershipStatus": {
       "name": "GetMembershipStatus",
@@ -5501,6 +5529,12 @@
       "name": "EGFCreated",
       "full_name": "trinsic.services.event.EGFCreated",
       "description": "Entity Governance Framework created and attached to ecosystem",
+      "options": {
+        "trinsic.services.event.event_type": {
+          "enum_type": "trinsic.services.event.EventType",
+          "enum_value": 5
+        }
+      },
       "fields": [
         "trinsic.services.event.EGFCreated.id",
         "trinsic.services.event.EGFCreated.ecosystem_id",
@@ -5531,6 +5565,12 @@
       "name": "ItemReceived",
       "full_name": "trinsic.services.event.ItemReceived",
       "description": "Item inserted into wallet",
+      "options": {
+        "trinsic.services.event.event_type": {
+          "enum_type": "trinsic.services.event.EventType",
+          "enum_value": 16
+        }
+      },
       "fields": [
         "trinsic.services.event.ItemReceived.id",
         "trinsic.services.event.ItemReceived.received"
@@ -5542,6 +5582,12 @@
       "name": "Ping",
       "full_name": "trinsic.services.event.Ping",
       "description": "Webhook test event",
+      "options": {
+        "trinsic.services.event.event_type": {
+          "enum_type": "trinsic.services.event.EventType",
+          "enum_value": 0
+        }
+      },
       "fields": [
         "trinsic.services.event.Ping.id",
         "trinsic.services.event.Ping.webhook_id",
@@ -5555,6 +5601,12 @@
       "name": "TemplateCreated",
       "full_name": "trinsic.services.event.TemplateCreated",
       "description": "Template created in ecosystem",
+      "options": {
+        "trinsic.services.event.event_type": {
+          "enum_type": "trinsic.services.event.EventType",
+          "enum_value": 10
+        }
+      },
       "fields": [
         "trinsic.services.event.TemplateCreated.id",
         "trinsic.services.event.TemplateCreated.ecosystem_id",
@@ -5702,7 +5754,10 @@
       "label": "LABEL_REPEATED",
       "type": "AccountEcosystem",
       "full_type": "services.account.v1.AccountEcosystem",
-      "description": "Use `ecosystem_id` instead"
+      "description": "Use `ecosystem_id` instead",
+      "options": {
+        "deprecated": true
+      }
     },
     "services.account.v1.AccountInfoResponse.public_did": {
       "name": "public_did",
@@ -6106,7 +6161,10 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "External URL associated with the organization or ecosystem entity"
+      "description": "External URL associated with the organization or ecosystem entity",
+      "options": {
+        "deprecated": true
+      }
     },
     "services.provider.v1.Ecosystem.webhooks": {
       "name": "webhooks",
@@ -6526,7 +6584,10 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "New external URL associated with the organization or ecosystem entity"
+      "description": "New external URL associated with the organization or ecosystem entity",
+      "options": {
+        "deprecated": true
+      }
     },
     "services.provider.v1.UpdateEcosystemResponse.Ecosystem": {
       "name": "Ecosystem",
@@ -7585,7 +7646,10 @@
       "label": "LABEL_REPEATED",
       "type": "string",
       "full_type": "string",
-      "description": "Use `validation_results` instead"
+      "description": "Use `validation_results` instead",
+      "options": {
+        "deprecated": true
+      }
     },
     "services.verifiablecredentials.v1.VerifyProofResponse.validation_results": {
       "name": "validation_results",
