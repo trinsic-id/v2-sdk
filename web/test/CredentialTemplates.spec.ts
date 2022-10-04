@@ -1,4 +1,4 @@
-import { TrinsicService } from "../browser";
+import { CreateCredentialTemplateResponse, TrinsicService } from "../browser";
 // @ts-ignore
 import templateCertFrame from "./data/credential-template-frame.json";
 import { getTestServerOptions, setTestTimeout } from "./env";
@@ -13,6 +13,7 @@ const { nameField, numberOfBags, dateOfBirth, isVaccinated } =
     createRequiredTestObjects();
 
 let trinsic: TrinsicService;
+let createdTemplate: CreateCredentialTemplateResponse;
 
 describe("Demo: Credential Templates", () => {
     setTestTimeout();
@@ -21,14 +22,17 @@ describe("Demo: Credential Templates", () => {
         trinsic.options.authToken = await trinsic.account().loginAnonymous();
     });
 
-    it("should run create credential templates", async () => {
-        let response = await createCredentialTemplateTest(trinsic);
+    it("should run create and delete credential templates", async () => {
+        createdTemplate = await createCredentialTemplateTest(trinsic);
 
-        const fieldsMap = response.data?.fields!;
+        const fieldsMap = createdTemplate.data?.fields!;
         expect(fieldsMap["name"]).toEqual(nameField);
         expect(fieldsMap["numberOfBags"]).toEqual(numberOfBags);
         expect(fieldsMap["dateOfBirth"]).toEqual(dateOfBirth);
         expect(fieldsMap["vaccinated"]).toEqual(isVaccinated);
+
+        let deletedTemplate = await trinsic.template().delete({id: createdTemplate.data?.id ?? ""});
+        console.log(deletedTemplate);
     });
 
     it("Issue Credential From Template", async () => {
