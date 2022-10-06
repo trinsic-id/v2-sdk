@@ -101,7 +101,7 @@ export interface VerifyProofResponse_ValidationResultsEntry {
 
 /** Result of a validation check on a proof */
 export interface ValidationMessage {
-  /** Whether or not this validation check passed */
+  /** Whether this validation check passed */
   isValid: boolean;
   /** If validation failed, contains messages explaining why */
   messages: string[];

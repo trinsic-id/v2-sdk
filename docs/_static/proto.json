@@ -7598,7 +7598,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "bool",
       "full_type": "bool",
-      "description": "Whether or not this validation check passed"
+      "description": "Whether this validation check passed"
     },
     "services.verifiablecredentials.v1.ValidationMessage.messages": {
       "name": "messages",
