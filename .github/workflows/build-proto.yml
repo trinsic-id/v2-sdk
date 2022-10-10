@@ -50,7 +50,7 @@ jobs:
         uses: OleksiyRudenko/gha-git-credentials@v2
         with:
           token: '${{ secrets.GITHUB_TOKEN }}'
-      
+
       - uses: trinsic-id/protoc-gen-sdk@main
         id: buildsdkwrappers
       - name: Install protobuf plugins
@@ -62,21 +62,21 @@ jobs:
         run: |
           python ./devops/generate_proto_files.py --language=all
 
-      - name: Commit Changes
-        run: |
-          if git diff --exit-code --quiet; then
-            exit 0;
-          fi
-          HeadRef="${{ github.head_ref }}"
-          # If HeadRef null, make it `my` so it expands to `my-generated-protos`
-          if [ -z "$HeadRef" ]; then
-            HeadRef="my"
-          fi
-          git checkout -b "$HeadRef-generated-protos"
-          git add .
-          git commit -m "Generated code from proto files"
-          git push --force --set-upstream origin "$HeadRef-generated-protos"
-          echo ${{ secrets.GITHUB_TOKEN }} | gh auth login --with-token
-          # Line below can fail if PR already exists, there isn't a flag to say, "ignore if already exists"
-          PrTitle="Generated Protos for $HeadRef"
-          gh pr create --base ${{ github.head_ref }} --title "$PrTitle" --body "Generated files from proto"
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: Mewmba
+          author_email: mewmba@trinsic.id
+          message: 'Generated code from proto files on branch ${{ github.head_ref }}'
+          new_branch: 'mewmba-${{ github.head_ref }}-generated-protos'
+          push: true
+
+      - name: pull-request
+        uses: repo-sync/pull-request@v2
+        with:
+          source_branch: "mewmba-${{ github.head_ref }}-generated-protos"  # From previous step
+          destination_branch: ${{ github.head_ref }}
+          pr_title: "Generated Protos for ${{ github.head_ref }}"
+          pr_body: ":rocket: Generated protos"
+          pr_allow_empty: false
+          github_token: ${{ secrets.GITHUB_TOKEN }}
