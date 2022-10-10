@@ -71,7 +71,7 @@ Our new platform uses hyrbid wallets with cloud-hosted credential storage and ed
 
 Our existing platform uses decentralized ledgers based on Indy Node to store credential artifacts in a public network. These artifacts include DIDs, Schemas, Credential Definitions and Revocation Registries. The instances of Indy networks we supported includes Sovrin, Indicio and BCovrin, for production and test workloads.
 
-The new platform uses decentralized ledgers or blockchains for DIDs only. Schemas and [revocation registries](#revocation-registries) use web infrastructure and are published at a well known URL address. The need for credential definitions is removed thanks to improved credential signature schemes. The new platform is built independent of a single network, thus being truly ledger agnostic. Currently supported networks for DIDs are Bitcoin (using layer 2 protocol [Sidetree](https://identity.foundation/sidetree/spec/)), Indy, EBSI, with more to come. 
+The new platform uses decentralized ledgers or blockchains for DIDs only. Schemas and [revocation registries](#revocation-registries) use web infrastructure and are published at a well known URL address. The need for credential definitions is removed thanks to improved credential signature schemes. The new platform is built independent of a single network, thus being truly ledger agnostic. Currently supported networks for DIDs are Bitcoin (using layer 2 protocol [Sidetree](https://identity.foundation/sidetree/spec/)), Indy, EBSI, with more to come.
 
 !!! cite ""
 
@@ -142,7 +142,7 @@ Our existing platform uses the cryptographic suite [Anoncreds](https://hyperledg
 
 ### Revocation Registries
 
-Revocation in our existing platform uses Anoncreds with RSA accumulator. This is a powerful, privacy preserving solution, but cumbersome when it comes to maintaining accumulator states. It requires publishing revocation registry state on the ledger, writing to the ledger whenever credentials are revoked, publishing a tails file on a web resource, and layering workarounds on top to make it all scalable. Even after all of this, the performance of holders creating non-revocation proofs was below an acceptable level for production use. 
+Revocation in our existing platform uses Anoncreds with RSA accumulator. This is a powerful, privacy preserving solution, but cumbersome when it comes to maintaining accumulator states. It requires publishing revocation registry state on the ledger, writing to the ledger whenever credentials are revoked, publishing a tails file on a web resource, and layering workarounds on top to make it all scalable. Even after all of this, the performance of holders creating non-revocation proofs was below an acceptable level for production use.
 
 Our new platform uses a more flexible solution based on [Status List](https://w3c-ccg.github.io/vc-status-list-2021/). This approach is based on a W3C community published specification with a much simpler and flexible approach to revocation, albeit without the same privacy guarantees.
 
@@ -195,3 +195,4 @@ Our new platform is intended to support a broader set of verification options fo
 ### What's next?
 
 If you're looking to do a migration and need help, please drop us a line on [Slack](https://join.slack.com/t/trinsiccommunity/shared_invite/zt-pcsdy7kn-h4vtdPEpqQUlmirU8FFzSQ) or Intercom. Otherwise, feel free to explore our documentation, try the Getting Started guide or watch an introductory video.
+
