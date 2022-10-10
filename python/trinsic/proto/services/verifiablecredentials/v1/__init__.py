@@ -149,7 +149,7 @@ class ValidationMessage(betterproto.Message):
     """Result of a validation check on a proof"""
 
     is_valid: bool = betterproto.bool_field(1)
-    """Whether or not this validation check passed"""
+    """Whether this validation check passed"""
 
     messages: List[str] = betterproto.string_field(2)
     """If validation failed, contains messages explaining why"""

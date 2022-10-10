@@ -40,89 +40,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
     return this.unknownFields;
   }
 
-  private UpdateEcosystemRequest(
-      com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
-    try {
-      boolean done = false;
-      while (!done) {
-        int tag = input.readTag();
-        switch (tag) {
-          case 0:
-            done = true;
-            break;
-          case 10:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              description_ = s;
-              break;
-            }
-          case 18:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              uri_ = s;
-              break;
-            }
-          case 26:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              domain_ = s;
-              break;
-            }
-          case 34:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              name_ = s;
-              break;
-            }
-          case 42:
-            {
-              trinsic.services.provider.v1.EcosystemDisplay.Builder subBuilder = null;
-              if (display_ != null) {
-                subBuilder = display_.toBuilder();
-              }
-              display_ =
-                  input.readMessage(
-                      trinsic.services.provider.v1.EcosystemDisplay.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(display_);
-                display_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-          default:
-            {
-              if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-        }
-      }
-    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
-    } catch (com.google.protobuf.UninitializedMessageException e) {
-      throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
-    } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
-    } finally {
-      this.unknownFields = unknownFields.build();
-      makeExtensionsImmutable();
-    }
-  }
-
   public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
     return trinsic.services.provider.v1.ProviderOuterClass
         .internal_static_services_provider_v1_UpdateEcosystemRequest_descriptor;
@@ -341,7 +258,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
   }
 
   public static final int DISPLAY_FIELD_NUMBER = 5;
-  private trinsic.services.provider.v1.EcosystemDisplay display_;
+  private trinsic.services.provider.v1.EcosystemDisplayRequest display_;
   /**
    *
    *
@@ -349,7 +266,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
    * Display details
    * </pre>
    *
-   * <code>.services.provider.v1.EcosystemDisplay display = 5;</code>
+   * <code>.services.provider.v1.EcosystemDisplayRequest display = 5;</code>
    *
    * @return Whether the display field is set.
    */
@@ -364,14 +281,14 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
    * Display details
    * </pre>
    *
-   * <code>.services.provider.v1.EcosystemDisplay display = 5;</code>
+   * <code>.services.provider.v1.EcosystemDisplayRequest display = 5;</code>
    *
    * @return The display.
    */
   @java.lang.Override
-  public trinsic.services.provider.v1.EcosystemDisplay getDisplay() {
+  public trinsic.services.provider.v1.EcosystemDisplayRequest getDisplay() {
     return display_ == null
-        ? trinsic.services.provider.v1.EcosystemDisplay.getDefaultInstance()
+        ? trinsic.services.provider.v1.EcosystemDisplayRequest.getDefaultInstance()
         : display_;
   }
   /**
@@ -381,10 +298,10 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
    * Display details
    * </pre>
    *
-   * <code>.services.provider.v1.EcosystemDisplay display = 5;</code>
+   * <code>.services.provider.v1.EcosystemDisplayRequest display = 5;</code>
    */
   @java.lang.Override
-  public trinsic.services.provider.v1.EcosystemDisplayOrBuilder getDisplayOrBuilder() {
+  public trinsic.services.provider.v1.EcosystemDisplayRequestOrBuilder getDisplayOrBuilder() {
     return getDisplay();
   }
 
@@ -417,7 +334,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
     if (display_ != null) {
       output.writeMessage(5, getDisplay());
     }
-    unknownFields.writeTo(output);
+    getUnknownFields().writeTo(output);
   }
 
   @java.lang.Override
@@ -441,7 +358,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
     if (display_ != null) {
       size += com.google.protobuf.CodedOutputStream.computeMessageSize(5, getDisplay());
     }
-    size += unknownFields.getSerializedSize();
+    size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
   }
@@ -465,7 +382,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
     if (hasDisplay()) {
       if (!getDisplay().equals(other.getDisplay())) return false;
     }
-    if (!unknownFields.equals(other.unknownFields)) return false;
+    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
 
@@ -488,7 +405,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
       hash = (37 * hash) + DISPLAY_FIELD_NUMBER;
       hash = (53 * hash) + getDisplay().hashCode();
     }
-    hash = (29 * hash) + unknownFields.hashCode();
+    hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
@@ -617,17 +534,10 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
     }
 
     // Construct using trinsic.services.provider.v1.UpdateEcosystemRequest.newBuilder()
-    private Builder() {
-      maybeForceBuilderInitialization();
-    }
+    private Builder() {}
 
     private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-      maybeForceBuilderInitialization();
-    }
-
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
     }
 
     @java.lang.Override
@@ -752,7 +662,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
       if (other.hasDisplay()) {
         mergeDisplay(other.getDisplay());
       }
-      this.mergeUnknownFields(other.unknownFields);
+      this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
     }
@@ -767,18 +677,61 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      trinsic.services.provider.v1.UpdateEcosystemRequest parsedMessage = null;
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       try {
-        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10:
+              {
+                description_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 10
+            case 18:
+              {
+                uri_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 18
+            case 26:
+              {
+                domain_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 26
+            case 34:
+              {
+                name_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 34
+            case 42:
+              {
+                input.readMessage(getDisplayFieldBuilder().getBuilder(), extensionRegistry);
+
+                break;
+              } // case 42
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+          } // switch (tag)
+        } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage =
-            (trinsic.services.provider.v1.UpdateEcosystemRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
-        if (parsedMessage != null) {
-          mergeFrom(parsedMessage);
-        }
-      }
+        onChanged();
+      } // finally
       return this;
     }
 
@@ -1221,11 +1174,11 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
       return this;
     }
 
-    private trinsic.services.provider.v1.EcosystemDisplay display_;
+    private trinsic.services.provider.v1.EcosystemDisplayRequest display_;
     private com.google.protobuf.SingleFieldBuilderV3<
-            trinsic.services.provider.v1.EcosystemDisplay,
-            trinsic.services.provider.v1.EcosystemDisplay.Builder,
-            trinsic.services.provider.v1.EcosystemDisplayOrBuilder>
+            trinsic.services.provider.v1.EcosystemDisplayRequest,
+            trinsic.services.provider.v1.EcosystemDisplayRequest.Builder,
+            trinsic.services.provider.v1.EcosystemDisplayRequestOrBuilder>
         displayBuilder_;
     /**
      *
@@ -1234,7 +1187,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      * Display details
      * </pre>
      *
-     * <code>.services.provider.v1.EcosystemDisplay display = 5;</code>
+     * <code>.services.provider.v1.EcosystemDisplayRequest display = 5;</code>
      *
      * @return Whether the display field is set.
      */
@@ -1248,14 +1201,14 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      * Display details
      * </pre>
      *
-     * <code>.services.provider.v1.EcosystemDisplay display = 5;</code>
+     * <code>.services.provider.v1.EcosystemDisplayRequest display = 5;</code>
      *
      * @return The display.
      */
-    public trinsic.services.provider.v1.EcosystemDisplay getDisplay() {
+    public trinsic.services.provider.v1.EcosystemDisplayRequest getDisplay() {
       if (displayBuilder_ == null) {
         return display_ == null
-            ? trinsic.services.provider.v1.EcosystemDisplay.getDefaultInstance()
+            ? trinsic.services.provider.v1.EcosystemDisplayRequest.getDefaultInstance()
             : display_;
       } else {
         return displayBuilder_.getMessage();
@@ -1268,9 +1221,9 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      * Display details
      * </pre>
      *
-     * <code>.services.provider.v1.EcosystemDisplay display = 5;</code>
+     * <code>.services.provider.v1.EcosystemDisplayRequest display = 5;</code>
      */
-    public Builder setDisplay(trinsic.services.provider.v1.EcosystemDisplay value) {
+    public Builder setDisplay(trinsic.services.provider.v1.EcosystemDisplayRequest value) {
       if (displayBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -1290,10 +1243,10 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      * Display details
      * </pre>
      *
-     * <code>.services.provider.v1.EcosystemDisplay display = 5;</code>
+     * <code>.services.provider.v1.EcosystemDisplayRequest display = 5;</code>
      */
     public Builder setDisplay(
-        trinsic.services.provider.v1.EcosystemDisplay.Builder builderForValue) {
+        trinsic.services.provider.v1.EcosystemDisplayRequest.Builder builderForValue) {
       if (displayBuilder_ == null) {
         display_ = builderForValue.build();
         onChanged();
@@ -1310,13 +1263,13 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      * Display details
      * </pre>
      *
-     * <code>.services.provider.v1.EcosystemDisplay display = 5;</code>
+     * <code>.services.provider.v1.EcosystemDisplayRequest display = 5;</code>
      */
-    public Builder mergeDisplay(trinsic.services.provider.v1.EcosystemDisplay value) {
+    public Builder mergeDisplay(trinsic.services.provider.v1.EcosystemDisplayRequest value) {
       if (displayBuilder_ == null) {
         if (display_ != null) {
           display_ =
-              trinsic.services.provider.v1.EcosystemDisplay.newBuilder(display_)
+              trinsic.services.provider.v1.EcosystemDisplayRequest.newBuilder(display_)
                   .mergeFrom(value)
                   .buildPartial();
         } else {
@@ -1336,7 +1289,7 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      * Display details
      * </pre>
      *
-     * <code>.services.provider.v1.EcosystemDisplay display = 5;</code>
+     * <code>.services.provider.v1.EcosystemDisplayRequest display = 5;</code>
      */
     public Builder clearDisplay() {
       if (displayBuilder_ == null) {
@@ -1356,9 +1309,9 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      * Display details
      * </pre>
      *
-     * <code>.services.provider.v1.EcosystemDisplay display = 5;</code>
+     * <code>.services.provider.v1.EcosystemDisplayRequest display = 5;</code>
      */
-    public trinsic.services.provider.v1.EcosystemDisplay.Builder getDisplayBuilder() {
+    public trinsic.services.provider.v1.EcosystemDisplayRequest.Builder getDisplayBuilder() {
 
       onChanged();
       return getDisplayFieldBuilder().getBuilder();
@@ -1370,14 +1323,14 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      * Display details
      * </pre>
      *
-     * <code>.services.provider.v1.EcosystemDisplay display = 5;</code>
+     * <code>.services.provider.v1.EcosystemDisplayRequest display = 5;</code>
      */
-    public trinsic.services.provider.v1.EcosystemDisplayOrBuilder getDisplayOrBuilder() {
+    public trinsic.services.provider.v1.EcosystemDisplayRequestOrBuilder getDisplayOrBuilder() {
       if (displayBuilder_ != null) {
         return displayBuilder_.getMessageOrBuilder();
       } else {
         return display_ == null
-            ? trinsic.services.provider.v1.EcosystemDisplay.getDefaultInstance()
+            ? trinsic.services.provider.v1.EcosystemDisplayRequest.getDefaultInstance()
             : display_;
       }
     }
@@ -1388,19 +1341,19 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      * Display details
      * </pre>
      *
-     * <code>.services.provider.v1.EcosystemDisplay display = 5;</code>
+     * <code>.services.provider.v1.EcosystemDisplayRequest display = 5;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-            trinsic.services.provider.v1.EcosystemDisplay,
-            trinsic.services.provider.v1.EcosystemDisplay.Builder,
-            trinsic.services.provider.v1.EcosystemDisplayOrBuilder>
+            trinsic.services.provider.v1.EcosystemDisplayRequest,
+            trinsic.services.provider.v1.EcosystemDisplayRequest.Builder,
+            trinsic.services.provider.v1.EcosystemDisplayRequestOrBuilder>
         getDisplayFieldBuilder() {
       if (displayBuilder_ == null) {
         displayBuilder_ =
             new com.google.protobuf.SingleFieldBuilderV3<
-                trinsic.services.provider.v1.EcosystemDisplay,
-                trinsic.services.provider.v1.EcosystemDisplay.Builder,
-                trinsic.services.provider.v1.EcosystemDisplayOrBuilder>(
+                trinsic.services.provider.v1.EcosystemDisplayRequest,
+                trinsic.services.provider.v1.EcosystemDisplayRequest.Builder,
+                trinsic.services.provider.v1.EcosystemDisplayRequestOrBuilder>(
                 getDisplay(), getParentForChildren(), isClean());
         display_ = null;
       }
@@ -1439,7 +1392,18 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
-          return new UpdateEcosystemRequest(input, extensionRegistry);
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
         }
       };
 

@@ -300,7 +300,7 @@ const UpdateEcosystemRequest$json = const {
       '3': 5,
       '4': 1,
       '5': 11,
-      '6': '.services.provider.v1.EcosystemDisplay',
+      '6': '.services.provider.v1.EcosystemDisplayRequest',
       '10': 'display'
     },
   ],
@@ -309,7 +309,66 @@ const UpdateEcosystemRequest$json = const {
 /// Descriptor for `UpdateEcosystemRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List updateEcosystemRequestDescriptor =
     $convert.base64Decode(
-        'ChZVcGRhdGVFY29zeXN0ZW1SZXF1ZXN0EiAKC2Rlc2NyaXB0aW9uGAEgASgJUgtkZXNjcmlwdGlvbhIUCgN1cmkYAiABKAlCAhgBUgN1cmkSFgoGZG9tYWluGAMgASgJUgZkb21haW4SEgoEbmFtZRgEIAEoCVIEbmFtZRJACgdkaXNwbGF5GAUgASgLMiYuc2VydmljZXMucHJvdmlkZXIudjEuRWNvc3lzdGVtRGlzcGxheVIHZGlzcGxheQ==');
+        'ChZVcGRhdGVFY29zeXN0ZW1SZXF1ZXN0EiAKC2Rlc2NyaXB0aW9uGAEgASgJUgtkZXNjcmlwdGlvbhIUCgN1cmkYAiABKAlCAhgBUgN1cmkSFgoGZG9tYWluGAMgASgJUgZkb21haW4SEgoEbmFtZRgEIAEoCVIEbmFtZRJHCgdkaXNwbGF5GAUgASgLMi0uc2VydmljZXMucHJvdmlkZXIudjEuRWNvc3lzdGVtRGlzcGxheVJlcXVlc3RSB2Rpc3BsYXk=');
+@$core.Deprecated('Use ecosystemDisplayRequestDescriptor instead')
+const EcosystemDisplayRequest$json = const {
+  '1': 'EcosystemDisplayRequest',
+  '2': const [
+    const {
+      '1': 'dark',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.services.provider.v1.EcosystemDisplayDetailsRequest',
+      '10': 'dark'
+    },
+    const {
+      '1': 'light',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.services.provider.v1.EcosystemDisplayDetailsRequest',
+      '10': 'light'
+    },
+  ],
+};
+
+/// Descriptor for `EcosystemDisplayRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List ecosystemDisplayRequestDescriptor =
+    $convert.base64Decode(
+        'ChdFY29zeXN0ZW1EaXNwbGF5UmVxdWVzdBJICgRkYXJrGAEgASgLMjQuc2VydmljZXMucHJvdmlkZXIudjEuRWNvc3lzdGVtRGlzcGxheURldGFpbHNSZXF1ZXN0UgRkYXJrEkoKBWxpZ2h0GAIgASgLMjQuc2VydmljZXMucHJvdmlkZXIudjEuRWNvc3lzdGVtRGlzcGxheURldGFpbHNSZXF1ZXN0UgVsaWdodA==');
+@$core.Deprecated('Use ecosystemDisplayDetailsRequestDescriptor instead')
+const EcosystemDisplayDetailsRequest$json = const {
+  '1': 'EcosystemDisplayDetailsRequest',
+  '2': const [
+    const {'1': 'color', '3': 4, '4': 1, '5': 9, '10': 'color'},
+    const {'1': 'logo_data', '3': 5, '4': 1, '5': 12, '10': 'logoData'},
+  ],
+};
+
+/// Descriptor for `EcosystemDisplayDetailsRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List ecosystemDisplayDetailsRequestDescriptor =
+    $convert.base64Decode(
+        'Ch5FY29zeXN0ZW1EaXNwbGF5RGV0YWlsc1JlcXVlc3QSFAoFY29sb3IYBCABKAlSBWNvbG9yEhsKCWxvZ29fZGF0YRgFIAEoDFIIbG9nb0RhdGE=');
+@$core.Deprecated('Use updateEcosystemResponseDescriptor instead')
+const UpdateEcosystemResponse$json = const {
+  '1': 'UpdateEcosystemResponse',
+  '2': const [
+    const {
+      '1': 'Ecosystem',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.services.provider.v1.Ecosystem',
+      '10': 'Ecosystem'
+    },
+  ],
+};
+
+/// Descriptor for `UpdateEcosystemResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List updateEcosystemResponseDescriptor =
+    $convert.base64Decode(
+        'ChdVcGRhdGVFY29zeXN0ZW1SZXNwb25zZRI9CglFY29zeXN0ZW0YASABKAsyHy5zZXJ2aWNlcy5wcm92aWRlci52MS5FY29zeXN0ZW1SCUVjb3N5c3RlbQ==');
 @$core.Deprecated('Use ecosystemDisplayDescriptor instead')
 const EcosystemDisplay$json = const {
   '1': 'EcosystemDisplay',
@@ -349,25 +408,6 @@ const EcosystemDisplayDetails$json = const {
 final $typed_data.Uint8List ecosystemDisplayDetailsDescriptor =
     $convert.base64Decode(
         'ChdFY29zeXN0ZW1EaXNwbGF5RGV0YWlscxIZCghsb2dvX3VybBgDIAEoCVIHbG9nb1VybBIUCgVjb2xvchgEIAEoCVIFY29sb3I=');
-@$core.Deprecated('Use updateEcosystemResponseDescriptor instead')
-const UpdateEcosystemResponse$json = const {
-  '1': 'UpdateEcosystemResponse',
-  '2': const [
-    const {
-      '1': 'Ecosystem',
-      '3': 1,
-      '4': 1,
-      '5': 11,
-      '6': '.services.provider.v1.Ecosystem',
-      '10': 'Ecosystem'
-    },
-  ],
-};
-
-/// Descriptor for `UpdateEcosystemResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List updateEcosystemResponseDescriptor =
-    $convert.base64Decode(
-        'ChdVcGRhdGVFY29zeXN0ZW1SZXNwb25zZRI9CglFY29zeXN0ZW0YASABKAsyHy5zZXJ2aWNlcy5wcm92aWRlci52MS5FY29zeXN0ZW1SCUVjb3N5c3RlbQ==');
 @$core.Deprecated('Use addWebhookRequestDescriptor instead')
 const AddWebhookRequest$json = const {
   '1': 'AddWebhookRequest',

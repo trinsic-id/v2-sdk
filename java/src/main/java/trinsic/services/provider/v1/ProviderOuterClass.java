@@ -57,6 +57,18 @@ public final class ProviderOuterClass {
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_provider_v1_UpdateEcosystemRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_provider_v1_EcosystemDisplayRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_EcosystemDisplayRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_provider_v1_EcosystemDisplayDetailsRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_EcosystemDisplayDetailsRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_provider_v1_UpdateEcosystemResponse_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_UpdateEcosystemResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
       internal_static_services_provider_v1_EcosystemDisplay_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_provider_v1_EcosystemDisplay_fieldAccessorTable;
@@ -64,10 +76,6 @@ public final class ProviderOuterClass {
       internal_static_services_provider_v1_EcosystemDisplayDetails_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_provider_v1_EcosystemDisplayDetails_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_provider_v1_UpdateEcosystemResponse_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_services_provider_v1_UpdateEcosystemResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
       internal_static_services_provider_v1_AddWebhookRequest_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -253,21 +261,30 @@ public final class ProviderOuterClass {
           + "\tecosystem\030\001 \001(\0132\037.services.provider.v1.Ecosystem\0224\n"
           + "\007profile\030\002 \001(\0132#.services.account.v1.AccountProfile\022D\n"
           + "\023confirmation_method\030\003"
-          + " \001(\0162\'.services.account.v1.ConfirmationMethod\"\225\001\n"
+          + " \001(\0162\'.services.account.v1.ConfirmationMethod\"\234\001\n"
           + "\026UpdateEcosystemRequest\022\023\n"
           + "\013description\030\001 \001(\t\022\017\n"
           + "\003uri\030\002 \001(\tB\002\030\001\022\016\n"
           + "\006domain\030\003 \001(\t\022\014\n"
-          + "\004name\030\004 \001(\t\0227\n"
-          + "\007display\030\005 \001(\0132&.services.provider.v1.EcosystemDisplay\"\215\001\n"
+          + "\004name\030\004 \001(\t\022>\n"
+          + "\007display\030\005"
+          + " \001(\0132-.services.provider.v1.EcosystemDisplayRequest\"\242\001\n"
+          + "\027EcosystemDisplayRequest\022B\n"
+          + "\004dark\030\001"
+          + " \001(\01324.services.provider.v1.EcosystemDisplayDetailsRequest\022C\n"
+          + "\005light\030\002 \001(\01324.services.provider.v1.EcosystemDisplayDetailsRequest\"B\n"
+          + "\036EcosystemDisplayDetailsRequest\022\r\n"
+          + "\005color\030\004 \001(\t\022\021\n"
+          + "\tlogo_data\030\005 \001(\014\"M\n"
+          + "\027UpdateEcosystemResponse\0222\n"
+          + "\tEcosystem\030\001 \001(\0132\037.services.provider.v1.Ecosystem\"\215\001\n"
           + "\020EcosystemDisplay\022;\n"
           + "\004dark\030\001 \001(\0132-.services.provider.v1.EcosystemDisplayDetails\022<\n"
           + "\005light\030\002 \001(\0132-.services.provider.v1.EcosystemDisplayDetails\":\n"
           + "\027EcosystemDisplayDetails\022\020\n"
-          + "\010logo_url\030\003 \001(\t\022\r\n"
-          + "\005color\030\004 \001(\t\"M\n"
-          + "\027UpdateEcosystemResponse\0222\n"
-          + "\tEcosystem\030\001 \001(\0132\037.services.provider.v1.Ecosystem\"L\n"
+          + "\010logo_url\030\003 \001(\t\022\r"
+          + "\n"
+          + "\005color\030\004 \001(\t\"L\n"
           + "\021AddWebhookRequest\022\027\n"
           + "\017destination_url\030\001 \001(\t\022\016\n"
           + "\006secret\030\002 \001(\t\022\016\n"
@@ -494,21 +511,21 @@ public final class ProviderOuterClass {
             new java.lang.String[] {
               "Description", "Uri", "Domain", "Name", "Display",
             });
-    internal_static_services_provider_v1_EcosystemDisplay_descriptor =
+    internal_static_services_provider_v1_EcosystemDisplayRequest_descriptor =
         getDescriptor().getMessageTypes().get(10);
-    internal_static_services_provider_v1_EcosystemDisplay_fieldAccessorTable =
+    internal_static_services_provider_v1_EcosystemDisplayRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_provider_v1_EcosystemDisplay_descriptor,
+            internal_static_services_provider_v1_EcosystemDisplayRequest_descriptor,
             new java.lang.String[] {
               "Dark", "Light",
             });
-    internal_static_services_provider_v1_EcosystemDisplayDetails_descriptor =
+    internal_static_services_provider_v1_EcosystemDisplayDetailsRequest_descriptor =
         getDescriptor().getMessageTypes().get(11);
-    internal_static_services_provider_v1_EcosystemDisplayDetails_fieldAccessorTable =
+    internal_static_services_provider_v1_EcosystemDisplayDetailsRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_provider_v1_EcosystemDisplayDetails_descriptor,
+            internal_static_services_provider_v1_EcosystemDisplayDetailsRequest_descriptor,
             new java.lang.String[] {
-              "LogoUrl", "Color",
+              "Color", "LogoData",
             });
     internal_static_services_provider_v1_UpdateEcosystemResponse_descriptor =
         getDescriptor().getMessageTypes().get(12);
@@ -518,8 +535,24 @@ public final class ProviderOuterClass {
             new java.lang.String[] {
               "Ecosystem",
             });
-    internal_static_services_provider_v1_AddWebhookRequest_descriptor =
+    internal_static_services_provider_v1_EcosystemDisplay_descriptor =
         getDescriptor().getMessageTypes().get(13);
+    internal_static_services_provider_v1_EcosystemDisplay_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_provider_v1_EcosystemDisplay_descriptor,
+            new java.lang.String[] {
+              "Dark", "Light",
+            });
+    internal_static_services_provider_v1_EcosystemDisplayDetails_descriptor =
+        getDescriptor().getMessageTypes().get(14);
+    internal_static_services_provider_v1_EcosystemDisplayDetails_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_provider_v1_EcosystemDisplayDetails_descriptor,
+            new java.lang.String[] {
+              "LogoUrl", "Color",
+            });
+    internal_static_services_provider_v1_AddWebhookRequest_descriptor =
+        getDescriptor().getMessageTypes().get(15);
     internal_static_services_provider_v1_AddWebhookRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_AddWebhookRequest_descriptor,
@@ -527,7 +560,7 @@ public final class ProviderOuterClass {
               "DestinationUrl", "Secret", "Events",
             });
     internal_static_services_provider_v1_AddWebhookResponse_descriptor =
-        getDescriptor().getMessageTypes().get(14);
+        getDescriptor().getMessageTypes().get(16);
     internal_static_services_provider_v1_AddWebhookResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_AddWebhookResponse_descriptor,
@@ -535,7 +568,7 @@ public final class ProviderOuterClass {
               "Ecosystem",
             });
     internal_static_services_provider_v1_DeleteWebhookRequest_descriptor =
-        getDescriptor().getMessageTypes().get(15);
+        getDescriptor().getMessageTypes().get(17);
     internal_static_services_provider_v1_DeleteWebhookRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_DeleteWebhookRequest_descriptor,
@@ -543,7 +576,7 @@ public final class ProviderOuterClass {
               "WebhookId",
             });
     internal_static_services_provider_v1_DeleteWebhookResponse_descriptor =
-        getDescriptor().getMessageTypes().get(16);
+        getDescriptor().getMessageTypes().get(18);
     internal_static_services_provider_v1_DeleteWebhookResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_DeleteWebhookResponse_descriptor,
@@ -551,13 +584,13 @@ public final class ProviderOuterClass {
               "Ecosystem",
             });
     internal_static_services_provider_v1_EcosystemInfoRequest_descriptor =
-        getDescriptor().getMessageTypes().get(17);
+        getDescriptor().getMessageTypes().get(19);
     internal_static_services_provider_v1_EcosystemInfoRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_EcosystemInfoRequest_descriptor,
             new java.lang.String[] {});
     internal_static_services_provider_v1_EcosystemInfoResponse_descriptor =
-        getDescriptor().getMessageTypes().get(18);
+        getDescriptor().getMessageTypes().get(20);
     internal_static_services_provider_v1_EcosystemInfoResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_EcosystemInfoResponse_descriptor,
@@ -565,7 +598,7 @@ public final class ProviderOuterClass {
               "Ecosystem",
             });
     internal_static_services_provider_v1_GetPublicEcosystemInfoRequest_descriptor =
-        getDescriptor().getMessageTypes().get(19);
+        getDescriptor().getMessageTypes().get(21);
     internal_static_services_provider_v1_GetPublicEcosystemInfoRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_GetPublicEcosystemInfoRequest_descriptor,
@@ -573,7 +606,7 @@ public final class ProviderOuterClass {
               "EcosystemId",
             });
     internal_static_services_provider_v1_GetPublicEcosystemInfoResponse_descriptor =
-        getDescriptor().getMessageTypes().get(20);
+        getDescriptor().getMessageTypes().get(22);
     internal_static_services_provider_v1_GetPublicEcosystemInfoResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_GetPublicEcosystemInfoResponse_descriptor,
@@ -581,7 +614,7 @@ public final class ProviderOuterClass {
               "Ecosystem",
             });
     internal_static_services_provider_v1_PublicEcosystemInformation_descriptor =
-        getDescriptor().getMessageTypes().get(21);
+        getDescriptor().getMessageTypes().get(23);
     internal_static_services_provider_v1_PublicEcosystemInformation_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_PublicEcosystemInformation_descriptor,
@@ -589,7 +622,7 @@ public final class ProviderOuterClass {
               "Name", "Domain", "DomainVerified", "StyleDisplay",
             });
     internal_static_services_provider_v1_GenerateTokenRequest_descriptor =
-        getDescriptor().getMessageTypes().get(22);
+        getDescriptor().getMessageTypes().get(24);
     internal_static_services_provider_v1_GenerateTokenRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_GenerateTokenRequest_descriptor,
@@ -597,7 +630,7 @@ public final class ProviderOuterClass {
               "Description",
             });
     internal_static_services_provider_v1_GenerateTokenResponse_descriptor =
-        getDescriptor().getMessageTypes().get(23);
+        getDescriptor().getMessageTypes().get(25);
     internal_static_services_provider_v1_GenerateTokenResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_GenerateTokenResponse_descriptor,
@@ -605,13 +638,13 @@ public final class ProviderOuterClass {
               "Profile",
             });
     internal_static_services_provider_v1_GetOberonKeyRequest_descriptor =
-        getDescriptor().getMessageTypes().get(24);
+        getDescriptor().getMessageTypes().get(26);
     internal_static_services_provider_v1_GetOberonKeyRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_GetOberonKeyRequest_descriptor,
             new java.lang.String[] {});
     internal_static_services_provider_v1_GetOberonKeyResponse_descriptor =
-        getDescriptor().getMessageTypes().get(25);
+        getDescriptor().getMessageTypes().get(27);
     internal_static_services_provider_v1_GetOberonKeyResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_GetOberonKeyResponse_descriptor,
@@ -619,7 +652,7 @@ public final class ProviderOuterClass {
               "Key",
             });
     internal_static_services_provider_v1_GetEventTokenRequest_descriptor =
-        getDescriptor().getMessageTypes().get(26);
+        getDescriptor().getMessageTypes().get(28);
     internal_static_services_provider_v1_GetEventTokenRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_GetEventTokenRequest_descriptor,
@@ -627,7 +660,7 @@ public final class ProviderOuterClass {
               "Pk",
             });
     internal_static_services_provider_v1_GetEventTokenResponse_descriptor =
-        getDescriptor().getMessageTypes().get(27);
+        getDescriptor().getMessageTypes().get(29);
     internal_static_services_provider_v1_GetEventTokenResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_GetEventTokenResponse_descriptor,
@@ -635,13 +668,13 @@ public final class ProviderOuterClass {
               "Token",
             });
     internal_static_services_provider_v1_RetrieveDomainVerificationRecordRequest_descriptor =
-        getDescriptor().getMessageTypes().get(28);
+        getDescriptor().getMessageTypes().get(30);
     internal_static_services_provider_v1_RetrieveDomainVerificationRecordRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_RetrieveDomainVerificationRecordRequest_descriptor,
             new java.lang.String[] {});
     internal_static_services_provider_v1_RetrieveDomainVerificationRecordResponse_descriptor =
-        getDescriptor().getMessageTypes().get(29);
+        getDescriptor().getMessageTypes().get(31);
     internal_static_services_provider_v1_RetrieveDomainVerificationRecordResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_RetrieveDomainVerificationRecordResponse_descriptor,
@@ -649,13 +682,13 @@ public final class ProviderOuterClass {
               "VerificationTxt",
             });
     internal_static_services_provider_v1_RefreshDomainVerificationStatusRequest_descriptor =
-        getDescriptor().getMessageTypes().get(30);
+        getDescriptor().getMessageTypes().get(32);
     internal_static_services_provider_v1_RefreshDomainVerificationStatusRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_RefreshDomainVerificationStatusRequest_descriptor,
             new java.lang.String[] {});
     internal_static_services_provider_v1_RefreshDomainVerificationStatusResponse_descriptor =
-        getDescriptor().getMessageTypes().get(31);
+        getDescriptor().getMessageTypes().get(33);
     internal_static_services_provider_v1_RefreshDomainVerificationStatusResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_RefreshDomainVerificationStatusResponse_descriptor,
@@ -663,7 +696,7 @@ public final class ProviderOuterClass {
               "Domain", "DomainVerified",
             });
     internal_static_services_provider_v1_GrantAuthorizationRequest_descriptor =
-        getDescriptor().getMessageTypes().get(32);
+        getDescriptor().getMessageTypes().get(34);
     internal_static_services_provider_v1_GrantAuthorizationRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_GrantAuthorizationRequest_descriptor,
@@ -671,13 +704,13 @@ public final class ProviderOuterClass {
               "Email", "WalletId", "Resource", "Action", "Account",
             });
     internal_static_services_provider_v1_GrantAuthorizationResponse_descriptor =
-        getDescriptor().getMessageTypes().get(33);
+        getDescriptor().getMessageTypes().get(35);
     internal_static_services_provider_v1_GrantAuthorizationResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_GrantAuthorizationResponse_descriptor,
             new java.lang.String[] {});
     internal_static_services_provider_v1_RevokeAuthorizationRequest_descriptor =
-        getDescriptor().getMessageTypes().get(34);
+        getDescriptor().getMessageTypes().get(36);
     internal_static_services_provider_v1_RevokeAuthorizationRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_RevokeAuthorizationRequest_descriptor,
@@ -685,19 +718,19 @@ public final class ProviderOuterClass {
               "Email", "WalletId", "Resource", "Action", "Account",
             });
     internal_static_services_provider_v1_RevokeAuthorizationResponse_descriptor =
-        getDescriptor().getMessageTypes().get(35);
+        getDescriptor().getMessageTypes().get(37);
     internal_static_services_provider_v1_RevokeAuthorizationResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_RevokeAuthorizationResponse_descriptor,
             new java.lang.String[] {});
     internal_static_services_provider_v1_GetAuthorizationsRequest_descriptor =
-        getDescriptor().getMessageTypes().get(36);
+        getDescriptor().getMessageTypes().get(38);
     internal_static_services_provider_v1_GetAuthorizationsRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_GetAuthorizationsRequest_descriptor,
             new java.lang.String[] {});
     internal_static_services_provider_v1_GetAuthorizationsResponse_descriptor =
-        getDescriptor().getMessageTypes().get(37);
+        getDescriptor().getMessageTypes().get(39);
     internal_static_services_provider_v1_GetAuthorizationsResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_GetAuthorizationsResponse_descriptor,
@@ -705,7 +738,7 @@ public final class ProviderOuterClass {
               "Grants",
             });
     internal_static_services_provider_v1_SearchWalletConfigurationsRequest_descriptor =
-        getDescriptor().getMessageTypes().get(38);
+        getDescriptor().getMessageTypes().get(40);
     internal_static_services_provider_v1_SearchWalletConfigurationsRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_SearchWalletConfigurationsRequest_descriptor,
@@ -713,7 +746,7 @@ public final class ProviderOuterClass {
               "QueryFilter", "ContinuationToken",
             });
     internal_static_services_provider_v1_SearchWalletConfigurationResponse_descriptor =
-        getDescriptor().getMessageTypes().get(39);
+        getDescriptor().getMessageTypes().get(41);
     internal_static_services_provider_v1_SearchWalletConfigurationResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_SearchWalletConfigurationResponse_descriptor,
@@ -721,7 +754,7 @@ public final class ProviderOuterClass {
               "Results", "HasMore", "ContinuationToken",
             });
     internal_static_services_provider_v1_WalletConfiguration_descriptor =
-        getDescriptor().getMessageTypes().get(40);
+        getDescriptor().getMessageTypes().get(42);
     internal_static_services_provider_v1_WalletConfiguration_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_WalletConfiguration_descriptor,
@@ -729,7 +762,7 @@ public final class ProviderOuterClass {
               "Name", "Email", "Sms", "WalletId", "PublicDid",
             });
     internal_static_services_provider_v1_IonOptions_descriptor =
-        getDescriptor().getMessageTypes().get(41);
+        getDescriptor().getMessageTypes().get(43);
     internal_static_services_provider_v1_IonOptions_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_IonOptions_descriptor,
@@ -737,7 +770,7 @@ public final class ProviderOuterClass {
               "Network",
             });
     internal_static_services_provider_v1_UpgradeDidRequest_descriptor =
-        getDescriptor().getMessageTypes().get(42);
+        getDescriptor().getMessageTypes().get(44);
     internal_static_services_provider_v1_UpgradeDidRequest_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_UpgradeDidRequest_descriptor,
@@ -745,7 +778,7 @@ public final class ProviderOuterClass {
               "Email", "WalletId", "Method", "IonOptions", "Account", "Options",
             });
     internal_static_services_provider_v1_UpgradeDidResponse_descriptor =
-        getDescriptor().getMessageTypes().get(43);
+        getDescriptor().getMessageTypes().get(45);
     internal_static_services_provider_v1_UpgradeDidResponse_fieldAccessorTable =
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_UpgradeDidResponse_descriptor,

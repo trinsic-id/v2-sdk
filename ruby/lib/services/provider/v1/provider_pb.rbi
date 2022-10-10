@@ -867,7 +867,7 @@ class Services::Provider::V1::UpdateEcosystemRequest
       uri: T.nilable(String),
       domain: T.nilable(String),
       name: T.nilable(String),
-      display: T.nilable(Services::Provider::V1::EcosystemDisplay)
+      display: T.nilable(Services::Provider::V1::EcosystemDisplayRequest)
     ).void
   end
   def initialize(
@@ -927,16 +927,218 @@ class Services::Provider::V1::UpdateEcosystemRequest
   def clear_name
   end
 
-  sig { returns(T.nilable(Services::Provider::V1::EcosystemDisplay)) }
+  sig { returns(T.nilable(Services::Provider::V1::EcosystemDisplayRequest)) }
   def display
   end
 
-  sig { params(value: T.nilable(Services::Provider::V1::EcosystemDisplay)).void }
+  sig { params(value: T.nilable(Services::Provider::V1::EcosystemDisplayRequest)).void }
   def display=(value)
   end
 
   sig { void }
   def clear_display
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::EcosystemDisplayRequest
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::EcosystemDisplayRequest) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::EcosystemDisplayRequest).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::EcosystemDisplayRequest) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::EcosystemDisplayRequest, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      dark: T.nilable(Services::Provider::V1::EcosystemDisplayDetailsRequest),
+      light: T.nilable(Services::Provider::V1::EcosystemDisplayDetailsRequest)
+    ).void
+  end
+  def initialize(
+    dark: nil,
+    light: nil
+  )
+  end
+
+  sig { returns(T.nilable(Services::Provider::V1::EcosystemDisplayDetailsRequest)) }
+  def dark
+  end
+
+  sig { params(value: T.nilable(Services::Provider::V1::EcosystemDisplayDetailsRequest)).void }
+  def dark=(value)
+  end
+
+  sig { void }
+  def clear_dark
+  end
+
+  sig { returns(T.nilable(Services::Provider::V1::EcosystemDisplayDetailsRequest)) }
+  def light
+  end
+
+  sig { params(value: T.nilable(Services::Provider::V1::EcosystemDisplayDetailsRequest)).void }
+  def light=(value)
+  end
+
+  sig { void }
+  def clear_light
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::EcosystemDisplayDetailsRequest
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::EcosystemDisplayDetailsRequest) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::EcosystemDisplayDetailsRequest).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::EcosystemDisplayDetailsRequest) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::EcosystemDisplayDetailsRequest, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      color: T.nilable(String),
+      logo_data: T.nilable(String)
+    ).void
+  end
+  def initialize(
+    color: "",
+    logo_data: ""
+  )
+  end
+
+  sig { returns(String) }
+  def color
+  end
+
+  sig { params(value: String).void }
+  def color=(value)
+  end
+
+  sig { void }
+  def clear_color
+  end
+
+  sig { returns(String) }
+  def logo_data
+  end
+
+  sig { params(value: String).void }
+  def logo_data=(value)
+  end
+
+  sig { void }
+  def clear_logo_data
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::UpdateEcosystemResponse
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::UpdateEcosystemResponse) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::UpdateEcosystemResponse).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::UpdateEcosystemResponse) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::UpdateEcosystemResponse, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  # Constants of the form Constant_1 are invalid. We've declined to type this as a result, taking a hash instead.
+  sig { params(args: T::Hash[T.untyped, T.untyped]).void }
+  def initialize(args); end
+
+  sig { returns(T.nilable(Services::Provider::V1::Ecosystem)) }
+  def Ecosystem
+  end
+
+  sig { params(value: T.nilable(Services::Provider::V1::Ecosystem)).void }
+  def Ecosystem=(value)
+  end
+
+  sig { void }
+  def clear_Ecosystem
   end
 
   sig { params(field: String).returns(T.untyped) }
@@ -1085,60 +1287,6 @@ class Services::Provider::V1::EcosystemDisplayDetails
 
   sig { void }
   def clear_color
-  end
-
-  sig { params(field: String).returns(T.untyped) }
-  def [](field)
-  end
-
-  sig { params(field: String, value: T.untyped).void }
-  def []=(field, value)
-  end
-
-  sig { returns(T::Hash[Symbol, T.untyped]) }
-  def to_h
-  end
-end
-
-class Services::Provider::V1::UpdateEcosystemResponse
-  include Google::Protobuf
-  include Google::Protobuf::MessageExts
-  extend Google::Protobuf::MessageExts::ClassMethods
-
-  sig { params(str: String).returns(Services::Provider::V1::UpdateEcosystemResponse) }
-  def self.decode(str)
-  end
-
-  sig { params(msg: Services::Provider::V1::UpdateEcosystemResponse).returns(String) }
-  def self.encode(msg)
-  end
-
-  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::UpdateEcosystemResponse) }
-  def self.decode_json(str, **kw)
-  end
-
-  sig { params(msg: Services::Provider::V1::UpdateEcosystemResponse, kw: T.untyped).returns(String) }
-  def self.encode_json(msg, **kw)
-  end
-
-  sig { returns(Google::Protobuf::Descriptor) }
-  def self.descriptor
-  end
-
-  # Constants of the form Constant_1 are invalid. We've declined to type this as a result, taking a hash instead.
-  sig { params(args: T::Hash[T.untyped, T.untyped]).void }
-  def initialize(args); end
-
-  sig { returns(T.nilable(Services::Provider::V1::Ecosystem)) }
-  def Ecosystem
-  end
-
-  sig { params(value: T.nilable(Services::Provider::V1::Ecosystem)).void }
-  def Ecosystem=(value)
-  end
-
-  sig { void }
-  def clear_Ecosystem
   end
 
   sig { params(field: String).returns(T.untyped) }
