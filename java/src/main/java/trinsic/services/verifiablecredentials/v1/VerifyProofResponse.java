@@ -37,83 +37,6 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
     return this.unknownFields;
   }
 
-  private VerifyProofResponse(
-      com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
-    int mutable_bitField0_ = 0;
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
-    try {
-      boolean done = false;
-      while (!done) {
-        int tag = input.readTag();
-        switch (tag) {
-          case 0:
-            done = true;
-            break;
-          case 8:
-            {
-              isValid_ = input.readBool();
-              break;
-            }
-          case 18:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                validationMessages_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              validationMessages_.add(s);
-              break;
-            }
-          case 26:
-            {
-              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                validationResults_ =
-                    com.google.protobuf.MapField.newMapField(
-                        ValidationResultsDefaultEntryHolder.defaultEntry);
-                mutable_bitField0_ |= 0x00000002;
-              }
-              com.google.protobuf.MapEntry<
-                      java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>
-                  validationResults__ =
-                      input.readMessage(
-                          ValidationResultsDefaultEntryHolder.defaultEntry.getParserForType(),
-                          extensionRegistry);
-              validationResults_
-                  .getMutableMap()
-                  .put(validationResults__.getKey(), validationResults__.getValue());
-              break;
-            }
-          default:
-            {
-              if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-        }
-      }
-    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
-    } catch (com.google.protobuf.UninitializedMessageException e) {
-      throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
-    } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
-    } finally {
-      if (((mutable_bitField0_ & 0x00000001) != 0)) {
-        validationMessages_ = validationMessages_.getUnmodifiableView();
-      }
-      this.unknownFields = unknownFields.build();
-      makeExtensionsImmutable();
-    }
-  }
-
   public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
     return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
         .internal_static_services_verifiablecredentials_v1_VerifyProofResponse_descriptor;
@@ -389,7 +312,7 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
         internalGetValidationResults(),
         ValidationResultsDefaultEntryHolder.defaultEntry,
         3);
-    unknownFields.writeTo(output);
+    getUnknownFields().writeTo(output);
   }
 
   @java.lang.Override
@@ -422,7 +345,7 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
                   .build();
       size += com.google.protobuf.CodedOutputStream.computeMessageSize(3, validationResults__);
     }
-    size += unknownFields.getSerializedSize();
+    size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
   }
@@ -441,7 +364,7 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
     if (getIsValid() != other.getIsValid()) return false;
     if (!getValidationMessagesList().equals(other.getValidationMessagesList())) return false;
     if (!internalGetValidationResults().equals(other.internalGetValidationResults())) return false;
-    if (!unknownFields.equals(other.unknownFields)) return false;
+    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
 
@@ -462,7 +385,7 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
       hash = (37 * hash) + VALIDATION_RESULTS_FIELD_NUMBER;
       hash = (53 * hash) + internalGetValidationResults().hashCode();
     }
-    hash = (29 * hash) + unknownFields.hashCode();
+    hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
@@ -612,17 +535,10 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
     }
 
     // Construct using trinsic.services.verifiablecredentials.v1.VerifyProofResponse.newBuilder()
-    private Builder() {
-      maybeForceBuilderInitialization();
-    }
+    private Builder() {}
 
     private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-      maybeForceBuilderInitialization();
-    }
-
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
     }
 
     @java.lang.Override
@@ -735,7 +651,7 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
         onChanged();
       }
       internalGetMutableValidationResults().mergeFrom(other.internalGetValidationResults());
-      this.mergeUnknownFields(other.unknownFields);
+      this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
     }
@@ -750,19 +666,58 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      trinsic.services.verifiablecredentials.v1.VerifyProofResponse parsedMessage = null;
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       try {
-        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8:
+              {
+                isValid_ = input.readBool();
+
+                break;
+              } // case 8
+            case 18:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+                ensureValidationMessagesIsMutable();
+                validationMessages_.add(s);
+                break;
+              } // case 18
+            case 26:
+              {
+                com.google.protobuf.MapEntry<
+                        java.lang.String,
+                        trinsic.services.verifiablecredentials.v1.ValidationMessage>
+                    validationResults__ =
+                        input.readMessage(
+                            ValidationResultsDefaultEntryHolder.defaultEntry.getParserForType(),
+                            extensionRegistry);
+                internalGetMutableValidationResults()
+                    .getMutableMap()
+                    .put(validationResults__.getKey(), validationResults__.getValue());
+                break;
+              } // case 26
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+          } // switch (tag)
+        } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage =
-            (trinsic.services.verifiablecredentials.v1.VerifyProofResponse)
-                e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
-        if (parsedMessage != null) {
-          mergeFrom(parsedMessage);
-        }
-      }
+        onChanged();
+      } // finally
       return this;
     }
 
@@ -1256,7 +1211,18 @@ public final class VerifyProofResponse extends com.google.protobuf.GeneratedMess
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
-          return new VerifyProofResponse(input, extensionRegistry);
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
         }
       };
 

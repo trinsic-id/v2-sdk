@@ -165,7 +165,26 @@ message UpdateEcosystemRequest {
     // New name
     string name = 4;
     // Display details
-    EcosystemDisplay display = 5;
+    EcosystemDisplayRequest display = 5;
+}
+
+message EcosystemDisplayRequest {
+    EcosystemDisplayDetailsRequest dark = 1;
+    EcosystemDisplayDetailsRequest light = 2;
+}
+
+message EcosystemDisplayDetailsRequest {
+    // string id = 1;
+    // string name = 2;
+//    string logo_url = 3;
+    string color = 4;
+    bytes logo_data = 5;
+}
+
+// Response to `UpdateEcosystemRequest`
+message UpdateEcosystemResponse {
+    // Current ecosystem metadata, post-update
+    Ecosystem Ecosystem = 1;
 }
 
 message EcosystemDisplay {
@@ -178,12 +197,6 @@ message EcosystemDisplayDetails {
     // string name = 2;
     string logo_url = 3;
     string color = 4;
-}
-
-// Response to `UpdateEcosystemRequest`
-message UpdateEcosystemResponse {
-    // Current ecosystem metadata, post-update
-    Ecosystem Ecosystem = 1;
 }
 
 // Request to add a webhook to an ecosystem
@@ -402,27 +415,27 @@ message IonOptions {
     }
 
     // ION network on which DID should be published
-    IonNetwork network = 1; 
+    IonNetwork network = 1;
 }
 
-// Request to upgrade a wallet 
+// Request to upgrade a wallet
 message UpgradeDidRequest {
     oneof account {
         // Email address of account to upgrade.
         // Mutually exclusive with `walletId`.
         string email = 1;
-    
+
         // Wallet ID of account to upgrade.
         // Mutually exclusive with `email`.
         string wallet_id = 2;
     }
 
     // DID Method to which wallet should be upgraded
-    services.common.v1.SupportedDidMethod method = 3; 
+    services.common.v1.SupportedDidMethod method = 3;
 
     oneof options {
         // Configuration for creation of DID on ION network
-        IonOptions ion_options = 4; 
+        IonOptions ion_options = 4;
     }
 }
 
@@ -484,7 +497,7 @@ service Provider {
 
     // Upgrade a wallet's DID from `did:key` to another method
     rpc UpgradeDID(UpgradeDidRequest) returns (UpgradeDidResponse);
-    
+
     // Retrieve a random hash TXT that can be used to verify domain ownership
     rpc RetrieveDomainVerificationRecord(RetrieveDomainVerificationRecordRequest) returns (RetrieveDomainVerificationRecordResponse) {
         option (options.sdk_template_option).no_arguments = true;

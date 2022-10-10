@@ -228,7 +228,28 @@ export interface UpdateEcosystemRequest {
   /** New name */
   name: string;
   /** Display details */
-  display: EcosystemDisplay | undefined;
+  display: EcosystemDisplayRequest | undefined;
+}
+
+export interface EcosystemDisplayRequest {
+  dark: EcosystemDisplayDetailsRequest | undefined;
+  light: EcosystemDisplayDetailsRequest | undefined;
+}
+
+export interface EcosystemDisplayDetailsRequest {
+  /**
+   * string id = 1;
+   * string name = 2;
+   *    string logo_url = 3;
+   */
+  color: string;
+  logoData: Uint8Array;
+}
+
+/** Response to `UpdateEcosystemRequest` */
+export interface UpdateEcosystemResponse {
+  /** Current ecosystem metadata, post-update */
+  Ecosystem: Ecosystem | undefined;
 }
 
 export interface EcosystemDisplay {
@@ -243,12 +264,6 @@ export interface EcosystemDisplayDetails {
    */
   logoUrl: string;
   color: string;
-}
-
-/** Response to `UpdateEcosystemRequest` */
-export interface UpdateEcosystemResponse {
-  /** Current ecosystem metadata, post-update */
-  Ecosystem: Ecosystem | undefined;
 }
 
 /** Request to add a webhook to an ecosystem */
@@ -1381,7 +1396,7 @@ export const UpdateEcosystemRequest = {
       writer.uint32(34).string(message.name);
     }
     if (message.display !== undefined) {
-      EcosystemDisplay.encode(
+      EcosystemDisplayRequest.encode(
         message.display,
         writer.uint32(42).fork()
       ).ldelim();
@@ -1412,7 +1427,10 @@ export const UpdateEcosystemRequest = {
           message.name = reader.string();
           break;
         case 5:
-          message.display = EcosystemDisplay.decode(reader, reader.uint32());
+          message.display = EcosystemDisplayRequest.decode(
+            reader,
+            reader.uint32()
+          );
           break;
         default:
           reader.skipType(tag & 7);
@@ -1429,7 +1447,7 @@ export const UpdateEcosystemRequest = {
       domain: isSet(object.domain) ? String(object.domain) : "",
       name: isSet(object.name) ? String(object.name) : "",
       display: isSet(object.display)
-        ? EcosystemDisplay.fromJSON(object.display)
+        ? EcosystemDisplayRequest.fromJSON(object.display)
         : undefined,
     };
   },
@@ -1443,7 +1461,7 @@ export const UpdateEcosystemRequest = {
     message.name !== undefined && (obj.name = message.name);
     message.display !== undefined &&
       (obj.display = message.display
-        ? EcosystemDisplay.toJSON(message.display)
+        ? EcosystemDisplayRequest.toJSON(message.display)
         : undefined);
     return obj;
   },
@@ -1458,7 +1476,237 @@ export const UpdateEcosystemRequest = {
     message.name = object.name ?? "";
     message.display =
       object.display !== undefined && object.display !== null
-        ? EcosystemDisplay.fromPartial(object.display)
+        ? EcosystemDisplayRequest.fromPartial(object.display)
+        : undefined;
+    return message;
+  },
+};
+
+function createBaseEcosystemDisplayRequest(): EcosystemDisplayRequest {
+  return { dark: undefined, light: undefined };
+}
+
+export const EcosystemDisplayRequest = {
+  encode(
+    message: EcosystemDisplayRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.dark !== undefined) {
+      EcosystemDisplayDetailsRequest.encode(
+        message.dark,
+        writer.uint32(10).fork()
+      ).ldelim();
+    }
+    if (message.light !== undefined) {
+      EcosystemDisplayDetailsRequest.encode(
+        message.light,
+        writer.uint32(18).fork()
+      ).ldelim();
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): EcosystemDisplayRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseEcosystemDisplayRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.dark = EcosystemDisplayDetailsRequest.decode(
+            reader,
+            reader.uint32()
+          );
+          break;
+        case 2:
+          message.light = EcosystemDisplayDetailsRequest.decode(
+            reader,
+            reader.uint32()
+          );
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): EcosystemDisplayRequest {
+    return {
+      dark: isSet(object.dark)
+        ? EcosystemDisplayDetailsRequest.fromJSON(object.dark)
+        : undefined,
+      light: isSet(object.light)
+        ? EcosystemDisplayDetailsRequest.fromJSON(object.light)
+        : undefined,
+    };
+  },
+
+  toJSON(message: EcosystemDisplayRequest): unknown {
+    const obj: any = {};
+    message.dark !== undefined &&
+      (obj.dark = message.dark
+        ? EcosystemDisplayDetailsRequest.toJSON(message.dark)
+        : undefined);
+    message.light !== undefined &&
+      (obj.light = message.light
+        ? EcosystemDisplayDetailsRequest.toJSON(message.light)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<EcosystemDisplayRequest>
+  ): EcosystemDisplayRequest {
+    const message = createBaseEcosystemDisplayRequest();
+    message.dark =
+      object.dark !== undefined && object.dark !== null
+        ? EcosystemDisplayDetailsRequest.fromPartial(object.dark)
+        : undefined;
+    message.light =
+      object.light !== undefined && object.light !== null
+        ? EcosystemDisplayDetailsRequest.fromPartial(object.light)
+        : undefined;
+    return message;
+  },
+};
+
+function createBaseEcosystemDisplayDetailsRequest(): EcosystemDisplayDetailsRequest {
+  return { color: "", logoData: new Uint8Array() };
+}
+
+export const EcosystemDisplayDetailsRequest = {
+  encode(
+    message: EcosystemDisplayDetailsRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.color !== "") {
+      writer.uint32(34).string(message.color);
+    }
+    if (message.logoData.length !== 0) {
+      writer.uint32(42).bytes(message.logoData);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): EcosystemDisplayDetailsRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseEcosystemDisplayDetailsRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 4:
+          message.color = reader.string();
+          break;
+        case 5:
+          message.logoData = reader.bytes();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): EcosystemDisplayDetailsRequest {
+    return {
+      color: isSet(object.color) ? String(object.color) : "",
+      logoData: isSet(object.logoData)
+        ? bytesFromBase64(object.logoData)
+        : new Uint8Array(),
+    };
+  },
+
+  toJSON(message: EcosystemDisplayDetailsRequest): unknown {
+    const obj: any = {};
+    message.color !== undefined && (obj.color = message.color);
+    message.logoData !== undefined &&
+      (obj.logoData = base64FromBytes(
+        message.logoData !== undefined ? message.logoData : new Uint8Array()
+      ));
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<EcosystemDisplayDetailsRequest>
+  ): EcosystemDisplayDetailsRequest {
+    const message = createBaseEcosystemDisplayDetailsRequest();
+    message.color = object.color ?? "";
+    message.logoData = object.logoData ?? new Uint8Array();
+    return message;
+  },
+};
+
+function createBaseUpdateEcosystemResponse(): UpdateEcosystemResponse {
+  return { Ecosystem: undefined };
+}
+
+export const UpdateEcosystemResponse = {
+  encode(
+    message: UpdateEcosystemResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.Ecosystem !== undefined) {
+      Ecosystem.encode(message.Ecosystem, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): UpdateEcosystemResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseUpdateEcosystemResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.Ecosystem = Ecosystem.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): UpdateEcosystemResponse {
+    return {
+      Ecosystem: isSet(object.Ecosystem)
+        ? Ecosystem.fromJSON(object.Ecosystem)
+        : undefined,
+    };
+  },
+
+  toJSON(message: UpdateEcosystemResponse): unknown {
+    const obj: any = {};
+    message.Ecosystem !== undefined &&
+      (obj.Ecosystem = message.Ecosystem
+        ? Ecosystem.toJSON(message.Ecosystem)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<UpdateEcosystemResponse>
+  ): UpdateEcosystemResponse {
+    const message = createBaseUpdateEcosystemResponse();
+    message.Ecosystem =
+      object.Ecosystem !== undefined && object.Ecosystem !== null
+        ? Ecosystem.fromPartial(object.Ecosystem)
         : undefined;
     return message;
   },
@@ -1615,71 +1863,6 @@ export const EcosystemDisplayDetails = {
     const message = createBaseEcosystemDisplayDetails();
     message.logoUrl = object.logoUrl ?? "";
     message.color = object.color ?? "";
-    return message;
-  },
-};
-
-function createBaseUpdateEcosystemResponse(): UpdateEcosystemResponse {
-  return { Ecosystem: undefined };
-}
-
-export const UpdateEcosystemResponse = {
-  encode(
-    message: UpdateEcosystemResponse,
-    writer: _m0.Writer = _m0.Writer.create()
-  ): _m0.Writer {
-    if (message.Ecosystem !== undefined) {
-      Ecosystem.encode(message.Ecosystem, writer.uint32(10).fork()).ldelim();
-    }
-    return writer;
-  },
-
-  decode(
-    input: _m0.Reader | Uint8Array,
-    length?: number
-  ): UpdateEcosystemResponse {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseUpdateEcosystemResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.Ecosystem = Ecosystem.decode(reader, reader.uint32());
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-
-  fromJSON(object: any): UpdateEcosystemResponse {
-    return {
-      Ecosystem: isSet(object.Ecosystem)
-        ? Ecosystem.fromJSON(object.Ecosystem)
-        : undefined,
-    };
-  },
-
-  toJSON(message: UpdateEcosystemResponse): unknown {
-    const obj: any = {};
-    message.Ecosystem !== undefined &&
-      (obj.Ecosystem = message.Ecosystem
-        ? Ecosystem.toJSON(message.Ecosystem)
-        : undefined);
-    return obj;
-  },
-
-  fromPartial(
-    object: DeepPartial<UpdateEcosystemResponse>
-  ): UpdateEcosystemResponse {
-    const message = createBaseUpdateEcosystemResponse();
-    message.Ecosystem =
-      object.Ecosystem !== undefined && object.Ecosystem !== null
-        ? Ecosystem.fromPartial(object.Ecosystem)
-        : undefined;
     return message;
   },
 };

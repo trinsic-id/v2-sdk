@@ -42,118 +42,6 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
     return this.unknownFields;
   }
 
-  private AccountInfoResponse(
-      com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
-    int mutable_bitField0_ = 0;
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
-    try {
-      boolean done = false;
-      while (!done) {
-        int tag = input.readTag();
-        switch (tag) {
-          case 0:
-            done = true;
-            break;
-          case 10:
-            {
-              trinsic.services.account.v1.AccountDetails.Builder subBuilder = null;
-              if (details_ != null) {
-                subBuilder = details_.toBuilder();
-              }
-              details_ =
-                  input.readMessage(
-                      trinsic.services.account.v1.AccountDetails.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(details_);
-                details_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-          case 18:
-            {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                ecosystems_ =
-                    new java.util.ArrayList<trinsic.services.account.v1.AccountEcosystem>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              ecosystems_.add(
-                  input.readMessage(
-                      trinsic.services.account.v1.AccountEcosystem.parser(), extensionRegistry));
-              break;
-            }
-          case 26:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              walletId_ = s;
-              break;
-            }
-          case 34:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              deviceId_ = s;
-              break;
-            }
-          case 42:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              ecosystemId_ = s;
-              break;
-            }
-          case 50:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              publicDid_ = s;
-              break;
-            }
-          case 58:
-            {
-              java.lang.String s = input.readStringRequireUtf8();
-              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                authorizedWebhooks_ = new com.google.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000002;
-              }
-              authorizedWebhooks_.add(s);
-              break;
-            }
-          default:
-            {
-              if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-        }
-      }
-    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
-    } catch (com.google.protobuf.UninitializedMessageException e) {
-      throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
-    } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
-    } finally {
-      if (((mutable_bitField0_ & 0x00000001) != 0)) {
-        ecosystems_ = java.util.Collections.unmodifiableList(ecosystems_);
-      }
-      if (((mutable_bitField0_ & 0x00000002) != 0)) {
-        authorizedWebhooks_ = authorizedWebhooks_.getUnmodifiableView();
-      }
-      this.unknownFields = unknownFields.build();
-      makeExtensionsImmutable();
-    }
-  }
-
   public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
     return trinsic.services.account.v1.AccountOuterClass
         .internal_static_services_account_v1_AccountInfoResponse_descriptor;
@@ -588,7 +476,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
     for (int i = 0; i < authorizedWebhooks_.size(); i++) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 7, authorizedWebhooks_.getRaw(i));
     }
-    unknownFields.writeTo(output);
+    getUnknownFields().writeTo(output);
   }
 
   @java.lang.Override
@@ -623,7 +511,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
       size += dataSize;
       size += 1 * getAuthorizedWebhooksList().size();
     }
-    size += unknownFields.getSerializedSize();
+    size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
   }
@@ -649,7 +537,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
     if (!getEcosystemId().equals(other.getEcosystemId())) return false;
     if (!getPublicDid().equals(other.getPublicDid())) return false;
     if (!getAuthorizedWebhooksList().equals(other.getAuthorizedWebhooksList())) return false;
-    if (!unknownFields.equals(other.unknownFields)) return false;
+    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
 
@@ -680,7 +568,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
       hash = (37 * hash) + AUTHORIZED_WEBHOOKS_FIELD_NUMBER;
       hash = (53 * hash) + getAuthorizedWebhooksList().hashCode();
     }
-    hash = (29 * hash) + unknownFields.hashCode();
+    hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
@@ -809,19 +697,10 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
     }
 
     // Construct using trinsic.services.account.v1.AccountInfoResponse.newBuilder()
-    private Builder() {
-      maybeForceBuilderInitialization();
-    }
+    private Builder() {}
 
     private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-      maybeForceBuilderInitialization();
-    }
-
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
-        getEcosystemsFieldBuilder();
-      }
     }
 
     @java.lang.Override
@@ -835,10 +714,11 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
       }
       if (ecosystemsBuilder_ == null) {
         ecosystems_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
       } else {
+        ecosystems_ = null;
         ecosystemsBuilder_.clear();
       }
+      bitField0_ = (bitField0_ & ~0x00000001);
       walletId_ = "";
 
       deviceId_ = "";
@@ -1006,7 +886,7 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
         }
         onChanged();
       }
-      this.mergeUnknownFields(other.unknownFields);
+      this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
     }
@@ -1021,17 +901,81 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      trinsic.services.account.v1.AccountInfoResponse parsedMessage = null;
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       try {
-        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10:
+              {
+                input.readMessage(getDetailsFieldBuilder().getBuilder(), extensionRegistry);
+
+                break;
+              } // case 10
+            case 18:
+              {
+                trinsic.services.account.v1.AccountEcosystem m =
+                    input.readMessage(
+                        trinsic.services.account.v1.AccountEcosystem.parser(), extensionRegistry);
+                if (ecosystemsBuilder_ == null) {
+                  ensureEcosystemsIsMutable();
+                  ecosystems_.add(m);
+                } else {
+                  ecosystemsBuilder_.addMessage(m);
+                }
+                break;
+              } // case 18
+            case 26:
+              {
+                walletId_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 26
+            case 34:
+              {
+                deviceId_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 34
+            case 42:
+              {
+                ecosystemId_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 42
+            case 50:
+              {
+                publicDid_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 50
+            case 58:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+                ensureAuthorizedWebhooksIsMutable();
+                authorizedWebhooks_.add(s);
+                break;
+              } // case 58
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+          } // switch (tag)
+        } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (trinsic.services.account.v1.AccountInfoResponse) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
-        if (parsedMessage != null) {
-          mergeFrom(parsedMessage);
-        }
-      }
+        onChanged();
+      } // finally
       return this;
     }
 
@@ -2247,7 +2191,18 @@ public final class AccountInfoResponse extends com.google.protobuf.GeneratedMess
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
-          return new AccountInfoResponse(input, extensionRegistry);
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
         }
       };
 
