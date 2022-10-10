@@ -2073,6 +2073,24 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#ecosystemdisplaydetailsrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      EcosystemDisplayDetailsRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecosystemdisplayrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      EcosystemDisplayRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ecosysteminforequest" class="md-nav__link">
     <span class="md-ellipsis">
       EcosystemInfoRequest
@@ -4145,7 +4163,7 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 <tr>
 <td>is_valid</td>
 <td><a href="/reference/proto#bool">bool</a></td>
-<td>Whether or not this validation check passed</td>
+<td>Whether this validation check passed</td>
 </tr>
 <tr>
 <td>messages</td>
@@ -5622,6 +5640,52 @@ like email, SMS, etc.</p>
 </tr>
 </tbody>
 </table>
+<p><a name="services-provider-v1-EcosystemDisplayDetailsRequest"></a></p>
+<h3 id="ecosystemdisplaydetailsrequest">EcosystemDisplayDetailsRequest<a class="headerlink" href="#ecosystemdisplaydetailsrequest" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>color</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>string id = 1; string name = 2; string logo_url = 3;</td>
+</tr>
+<tr>
+<td>logo_data</td>
+<td><a href="/reference/proto#bytes">bytes</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-EcosystemDisplayRequest"></a></p>
+<h3 id="ecosystemdisplayrequest">EcosystemDisplayRequest<a class="headerlink" href="#ecosystemdisplayrequest" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dark</td>
+<td><a href="/reference/proto#services-provider-v1-EcosystemDisplayDetailsRequest">EcosystemDisplayDetailsRequest</a></td>
+<td></td>
+</tr>
+<tr>
+<td>light</td>
+<td><a href="/reference/proto#services-provider-v1-EcosystemDisplayDetailsRequest">EcosystemDisplayDetailsRequest</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p><a name="services-provider-v1-EcosystemInfoRequest"></a></p>
 <h3 id="ecosysteminforequest">EcosystemInfoRequest<a class="headerlink" href="#ecosysteminforequest" title="Permanent link">&para;</a></h3>
 <p>Request to fetch information about an ecosystem</p>
@@ -6190,7 +6254,7 @@ to verify authentication token validity</p>
 </tr>
 <tr>
 <td>display</td>
-<td><a href="/reference/proto#services-provider-v1-EcosystemDisplay">EcosystemDisplay</a></td>
+<td><a href="/reference/proto#services-provider-v1-EcosystemDisplayRequest">EcosystemDisplayRequest</a></td>
 <td>Display details</td>
 </tr>
 </tbody>

@@ -732,6 +732,42 @@
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.EcosystemDisplayDetails"
     },
+    "services.provider.v1.EcosystemDisplayDetailsRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.EcosystemDisplayDetailsRequest.color": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.EcosystemDisplayDetailsRequest"
+    },
+    "services.provider.v1.EcosystemDisplayDetailsRequest.logo_data": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.EcosystemDisplayDetailsRequest"
+    },
+    "services.provider.v1.EcosystemDisplayRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/provider.proto",
+      "parent": ""
+    },
+    "services.provider.v1.EcosystemDisplayRequest.dark": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.EcosystemDisplayRequest"
+    },
+    "services.provider.v1.EcosystemDisplayRequest.light": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.EcosystemDisplayRequest"
+    },
     "services.provider.v1.EcosystemInfoRequest": {
       "type": "message",
       "collection": "messages",
@@ -3268,9 +3304,11 @@
         "services.provider.v1.CreateEcosystemRequest",
         "services.provider.v1.CreateEcosystemResponse",
         "services.provider.v1.UpdateEcosystemRequest",
+        "services.provider.v1.EcosystemDisplayRequest",
+        "services.provider.v1.EcosystemDisplayDetailsRequest",
+        "services.provider.v1.UpdateEcosystemResponse",
         "services.provider.v1.EcosystemDisplay",
         "services.provider.v1.EcosystemDisplayDetails",
-        "services.provider.v1.UpdateEcosystemResponse",
         "services.provider.v1.AddWebhookRequest",
         "services.provider.v1.AddWebhookResponse",
         "services.provider.v1.DeleteWebhookRequest",
@@ -3339,11 +3377,15 @@
         "services.provider.v1.UpdateEcosystemRequest.domain",
         "services.provider.v1.UpdateEcosystemRequest.name",
         "services.provider.v1.UpdateEcosystemRequest.display",
+        "services.provider.v1.EcosystemDisplayRequest.dark",
+        "services.provider.v1.EcosystemDisplayRequest.light",
+        "services.provider.v1.EcosystemDisplayDetailsRequest.color",
+        "services.provider.v1.EcosystemDisplayDetailsRequest.logo_data",
+        "services.provider.v1.UpdateEcosystemResponse.Ecosystem",
         "services.provider.v1.EcosystemDisplay.dark",
         "services.provider.v1.EcosystemDisplay.light",
         "services.provider.v1.EcosystemDisplayDetails.logo_url",
         "services.provider.v1.EcosystemDisplayDetails.color",
-        "services.provider.v1.UpdateEcosystemResponse.Ecosystem",
         "services.provider.v1.AddWebhookRequest.destination_url",
         "services.provider.v1.AddWebhookRequest.secret",
         "services.provider.v1.AddWebhookRequest.events",
@@ -4480,6 +4522,28 @@
       "fields": [
         "services.provider.v1.EcosystemDisplayDetails.logo_url",
         "services.provider.v1.EcosystemDisplayDetails.color"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.provider.v1.EcosystemDisplayDetailsRequest": {
+      "name": "EcosystemDisplayDetailsRequest",
+      "full_name": "services.provider.v1.EcosystemDisplayDetailsRequest",
+      "description": "",
+      "fields": [
+        "services.provider.v1.EcosystemDisplayDetailsRequest.color",
+        "services.provider.v1.EcosystemDisplayDetailsRequest.logo_data"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.provider.v1.EcosystemDisplayRequest": {
+      "name": "EcosystemDisplayRequest",
+      "full_name": "services.provider.v1.EcosystemDisplayRequest",
+      "description": "",
+      "fields": [
+        "services.provider.v1.EcosystemDisplayRequest.dark",
+        "services.provider.v1.EcosystemDisplayRequest.light"
       ],
       "messages": [],
       "enums": []
@@ -6206,6 +6270,38 @@
       "full_type": "string",
       "description": "string id = 1;\nstring name = 2;"
     },
+    "services.provider.v1.EcosystemDisplayDetailsRequest.color": {
+      "name": "color",
+      "full_name": "services.provider.v1.EcosystemDisplayDetailsRequest.color",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "string id = 1;\nstring name = 2;\n   string logo_url = 3;"
+    },
+    "services.provider.v1.EcosystemDisplayDetailsRequest.logo_data": {
+      "name": "logo_data",
+      "full_name": "services.provider.v1.EcosystemDisplayDetailsRequest.logo_data",
+      "label": "LABEL_OPTIONAL",
+      "type": "bytes",
+      "full_type": "bytes",
+      "description": ""
+    },
+    "services.provider.v1.EcosystemDisplayRequest.dark": {
+      "name": "dark",
+      "full_name": "services.provider.v1.EcosystemDisplayRequest.dark",
+      "label": "LABEL_OPTIONAL",
+      "type": "EcosystemDisplayDetailsRequest",
+      "full_type": "services.provider.v1.EcosystemDisplayDetailsRequest",
+      "description": ""
+    },
+    "services.provider.v1.EcosystemDisplayRequest.light": {
+      "name": "light",
+      "full_name": "services.provider.v1.EcosystemDisplayRequest.light",
+      "label": "LABEL_OPTIONAL",
+      "type": "EcosystemDisplayDetailsRequest",
+      "full_type": "services.provider.v1.EcosystemDisplayDetailsRequest",
+      "description": ""
+    },
     "services.provider.v1.EcosystemInfoResponse.ecosystem": {
       "name": "ecosystem",
       "full_name": "services.provider.v1.EcosystemInfoResponse.ecosystem",
@@ -6558,8 +6654,8 @@
       "name": "display",
       "full_name": "services.provider.v1.UpdateEcosystemRequest.display",
       "label": "LABEL_OPTIONAL",
-      "type": "EcosystemDisplay",
-      "full_type": "services.provider.v1.EcosystemDisplay",
+      "type": "EcosystemDisplayRequest",
+      "full_type": "services.provider.v1.EcosystemDisplayRequest",
       "description": "Display details"
     },
     "services.provider.v1.UpdateEcosystemRequest.domain": {
@@ -7598,7 +7694,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "bool",
       "full_type": "bool",
-      "description": "Whether or not this validation check passed"
+      "description": "Whether this validation check passed"
     },
     "services.verifiablecredentials.v1.ValidationMessage.messages": {
       "name": "messages",
