@@ -4,6 +4,7 @@ git+https://github.com/trinsic-id/mkdocs-codeinclude-plugin@master#egg=mkdocs-co
 mkdocs-macros-plugin
 git+https://github.com/trinsic-id/mkdocs-git-authors-plugin@sort-order#egg=mkdocs-git-authors-plugin
 mkdocstrings
+mkdocs-git-authors-plugin
 mkdocstrings-python-legacy
 mkdocs-autorefs
 markdown-fenced-code-tabs
