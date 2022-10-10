@@ -121,7 +121,7 @@ public interface UpdateEcosystemRequestOrBuilder
    * Display details
    * </pre>
    *
-   * <code>.services.provider.v1.EcosystemDisplay display = 5;</code>
+   * <code>.services.provider.v1.EcosystemDisplayRequest display = 5;</code>
    *
    * @return Whether the display field is set.
    */
@@ -133,11 +133,11 @@ public interface UpdateEcosystemRequestOrBuilder
    * Display details
    * </pre>
    *
-   * <code>.services.provider.v1.EcosystemDisplay display = 5;</code>
+   * <code>.services.provider.v1.EcosystemDisplayRequest display = 5;</code>
    *
    * @return The display.
    */
-  trinsic.services.provider.v1.EcosystemDisplay getDisplay();
+  trinsic.services.provider.v1.EcosystemDisplayRequest getDisplay();
   /**
    *
    *
@@ -145,7 +145,7 @@ public interface UpdateEcosystemRequestOrBuilder
    * Display details
    * </pre>
    *
-   * <code>.services.provider.v1.EcosystemDisplay display = 5;</code>
+   * <code>.services.provider.v1.EcosystemDisplayRequest display = 5;</code>
    */
-  trinsic.services.provider.v1.EcosystemDisplayOrBuilder getDisplayOrBuilder();
+  trinsic.services.provider.v1.EcosystemDisplayRequestOrBuilder getDisplayOrBuilder();
 }

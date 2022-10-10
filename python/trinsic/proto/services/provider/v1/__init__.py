@@ -230,7 +230,7 @@ class UpdateEcosystemRequest(betterproto.Message):
     name: str = betterproto.string_field(4)
     """New name"""
 
-    display: "EcosystemDisplay" = betterproto.message_field(5)
+    display: "EcosystemDisplayRequest" = betterproto.message_field(5)
     """Display details"""
 
     def __post_init__(self) -> None:
@@ -239,6 +239,28 @@ class UpdateEcosystemRequest(betterproto.Message):
             warnings.warn(
                 "UpdateEcosystemRequest.uri is deprecated", DeprecationWarning
             )
+
+
+@dataclass(eq=False, repr=False)
+class EcosystemDisplayRequest(betterproto.Message):
+    dark: "EcosystemDisplayDetailsRequest" = betterproto.message_field(1)
+    light: "EcosystemDisplayDetailsRequest" = betterproto.message_field(2)
+
+
+@dataclass(eq=False, repr=False)
+class EcosystemDisplayDetailsRequest(betterproto.Message):
+    color: str = betterproto.string_field(4)
+    """string id = 1; string name = 2;    string logo_url = 3;"""
+
+    logo_data: bytes = betterproto.bytes_field(5)
+
+
+@dataclass(eq=False, repr=False)
+class UpdateEcosystemResponse(betterproto.Message):
+    """Response to `UpdateEcosystemRequest`"""
+
+    ecosystem: "Ecosystem" = betterproto.message_field(1)
+    """Current ecosystem metadata, post-update"""
 
 
 @dataclass(eq=False, repr=False)
@@ -253,14 +275,6 @@ class EcosystemDisplayDetails(betterproto.Message):
     """string id = 1; string name = 2;"""
 
     color: str = betterproto.string_field(4)
-
-
-@dataclass(eq=False, repr=False)
-class UpdateEcosystemResponse(betterproto.Message):
-    """Response to `UpdateEcosystemRequest`"""
-
-    ecosystem: "Ecosystem" = betterproto.message_field(1)
-    """Current ecosystem metadata, post-update"""
 
 
 @dataclass(eq=False, repr=False)
