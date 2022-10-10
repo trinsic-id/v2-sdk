@@ -15,7 +15,7 @@
       
       
       <link rel="icon" href="../../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.4.0, mkdocs-material-8.5.6+insiders-4.25.2">
+      <meta name="generator" content="mkdocs-1.4.0, mkdocs-material-8.5.6+insiders-4.25.4">
     
     
       
@@ -1923,6 +1923,7 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
+  
                   
 
   <a href="https://github.com/trinsic-id/sdk/edit/main/docs/learn/migrate.md" title="Edit this page" class="md-content__button md-icon">
@@ -1983,7 +1984,7 @@ Ecosystems represent your enterprise network as an established model of relation
 </div>
 <h3 id="ledgers-and-decentralized-infrastructure">Ledgers and Decentralized Infrastructure<a class="headerlink" href="#ledgers-and-decentralized-infrastructure" title="Permanent link">&para;</a></h3>
 <p>Our existing platform uses decentralized ledgers based on Indy Node to store credential artifacts in a public network. These artifacts include DIDs, Schemas, Credential Definitions and Revocation Registries. The instances of Indy networks we supported includes Sovrin, Indicio and BCovrin, for production and test workloads.</p>
-<p>The new platform uses decentralized ledgers or blockchains for DIDs only. Schemas and <a href="#revocation-registries">revocation registries</a> use web infrastructure and are published at a well known URL address. The need for credential definitions is removed thanks to improved credential signature schemes. The new platform is built independent of a single network, thus being truly ledger agnostic. Currently supported networks for DIDs are Bitcoin (using layer 2 protocol <a href="https://identity.foundation/sidetree/spec/">Sidetree</a>), Indy, EBSI, with more to come. </p>
+<p>The new platform uses decentralized ledgers or blockchains for DIDs only. Schemas and <a href="#revocation-registries">revocation registries</a> use web infrastructure and are published at a well known URL address. The need for credential definitions is removed thanks to improved credential signature schemes. The new platform is built independent of a single network, thus being truly ledger agnostic. Currently supported networks for DIDs are Bitcoin (using layer 2 protocol <a href="https://identity.foundation/sidetree/spec/">Sidetree</a>), Indy, EBSI, with more to come.</p>
 <div class="admonition cite">
 <ul>
 <li>Indy Node based</li>
@@ -2050,7 +2051,7 @@ The schemas are not written on a ledger, they are instead published as a web res
 <li>Flexible proof format (Data Integrity, JOSE)</li>
 </ul>
 <h3 id="revocation-registries">Revocation Registries<a class="headerlink" href="#revocation-registries" title="Permanent link">&para;</a></h3>
-<p>Revocation in our existing platform uses Anoncreds with RSA accumulator. This is a powerful, privacy preserving solution, but cumbersome when it comes to maintaining accumulator states. It requires publishing revocation registry state on the ledger, writing to the ledger whenever credentials are revoked, publishing a tails file on a web resource, and layering workarounds on top to make it all scalable. Even after all of this, the performance of holders creating non-revocation proofs was below an acceptable level for production use. </p>
+<p>Revocation in our existing platform uses Anoncreds with RSA accumulator. This is a powerful, privacy preserving solution, but cumbersome when it comes to maintaining accumulator states. It requires publishing revocation registry state on the ledger, writing to the ledger whenever credentials are revoked, publishing a tails file on a web resource, and layering workarounds on top to make it all scalable. Even after all of this, the performance of holders creating non-revocation proofs was below an acceptable level for production use.</p>
 <p>Our new platform uses a more flexible solution based on <a href="https://w3c-ccg.github.io/vc-status-list-2021/">Status List</a>. This approach is based on a W3C community published specification with a much simpler and flexible approach to revocation, albeit without the same privacy guarantees.</p>
 <div class="admonition info">
 <p class="admonition-title">Future considerations</p>
@@ -2101,12 +2102,13 @@ The schemas are not written on a ledger, they are instead published as a web res
       <span class="md-source-file__fact">
         <span class="md-icon" title="Contributors">
           
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4Z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.536 5.536 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13v-1.75M0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20H0m24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9V20Z"/></svg>
           
         </span>
         <nav>
           
-            <a href="mailto:josh@trinsic.id">Joshua Coffey</a>
+            <a href="mailto:josh@trinsic.id">Joshua Coffey</a>, 
+            <a href="mailto:polygonguru@gmail.com">Scott Phillips</a>
         </nav>
       </span>
     
@@ -2118,6 +2120,10 @@ The schemas are not written on a ledger, they are instead published as a web res
 
 
                 
+
+  
+  
+
               </article>
             </div>
           
@@ -2133,18 +2139,18 @@ The schemas are not written on a ledger, they are instead published as a web res
     app_id: "ybx42zlr"
   };
 </script>
-  
+
 <script>
     (function () {
-        var w = window;
-        var ic = w.Intercom;
+        const w = window;
+        const ic = w.Intercom;
 
         if (typeof ic === "function") {
             ic("reattach_activator");
             ic("update", w.intercomSettings);
         } else {
-            var d = document;
-            var i = function () {
+            const d = document;
+            const i = function () {
                 i.c(arguments);
             };
             i.q = [];
@@ -2152,12 +2158,12 @@ The schemas are not written on a ledger, they are instead published as a web res
                 i.q.push(args);
             };
             w.Intercom = i;
-            var l = function () {
-                var s = d.createElement("script");
+            const l = function () {
+                const s = d.createElement("script");
                 s.type = "text/javascript";
                 s.async = true;
                 s.src = "https://widget.intercom.io/widget/ybx42zlr";
-                var x = d.getElementsByTagName("script")[0];
+                const x = d.getElementsByTagName("script")[0];
                 x.parentNode.insertBefore(s, x);
             };
 
@@ -2180,7 +2186,7 @@ The schemas are not written on a ledger, they are instead published as a web res
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "announce.dismiss", "navigation.tabs", "navigation.tabs.sticky", "toc.integrate", "navigation.sections"], "search": "../../assets/javascripts/workers/search.720157f5.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.b7e8f764.min.js"></script>
+      <script src="../../assets/javascripts/bundle.abceede4.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
       
