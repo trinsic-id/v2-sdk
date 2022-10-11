@@ -69,7 +69,7 @@ jobs:
           author_email: mewmba@trinsic.id
           message: 'Generated code from proto files on branch ${{ github.head_ref }}'
           new_branch: 'mewmba-${{ github.head_ref }}-generated-protos'
-          push: true
+          push: --force
 
       - name: pull-request
         uses: repo-sync/pull-request@v2
