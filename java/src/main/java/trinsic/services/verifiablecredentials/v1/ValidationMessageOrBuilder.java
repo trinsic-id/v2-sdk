@@ -3,72 +3,58 @@
 
 package trinsic.services.verifiablecredentials.v1;
 
-public interface ValidationMessageOrBuilder
-    extends
+public interface ValidationMessageOrBuilder extends
     // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.v1.ValidationMessage)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   *
-   *
    * <pre>
    * Whether or not this validation check passed
    * </pre>
    *
    * <code>bool is_valid = 1;</code>
-   *
    * @return The isValid.
    */
   boolean getIsValid();
 
   /**
-   *
-   *
    * <pre>
    * If validation failed, contains messages explaining why
    * </pre>
    *
    * <code>repeated string messages = 2;</code>
-   *
    * @return A list containing the messages.
    */
-  java.util.List<java.lang.String> getMessagesList();
+  java.util.List<java.lang.String>
+      getMessagesList();
   /**
-   *
-   *
    * <pre>
    * If validation failed, contains messages explaining why
    * </pre>
    *
    * <code>repeated string messages = 2;</code>
-   *
    * @return The count of messages.
    */
   int getMessagesCount();
   /**
-   *
-   *
    * <pre>
    * If validation failed, contains messages explaining why
    * </pre>
    *
    * <code>repeated string messages = 2;</code>
-   *
    * @param index The index of the element to return.
    * @return The messages at the given index.
    */
   java.lang.String getMessages(int index);
   /**
-   *
-   *
    * <pre>
    * If validation failed, contains messages explaining why
    * </pre>
    *
    * <code>repeated string messages = 2;</code>
-   *
    * @param index The index of the value to return.
    * @return The bytes of the messages at the given index.
    */
-  com.google.protobuf.ByteString getMessagesBytes(int index);
+  com.google.protobuf.ByteString
+      getMessagesBytes(int index);
 }

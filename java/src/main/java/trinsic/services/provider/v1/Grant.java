@@ -4,24 +4,21 @@
 package trinsic.services.provider.v1;
 
 /**
- *
- *
  * <pre>
  * A grant authorizing `actions` on a `resourceId`
  * </pre>
  *
  * Protobuf type {@code services.provider.v1.Grant}
  */
-public final class Grant extends com.google.protobuf.GeneratedMessageV3
-    implements
+public final class Grant extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:services.provider.v1.Grant)
     GrantOrBuilder {
-  private static final long serialVersionUID = 0L;
+private static final long serialVersionUID = 0L;
   // Use Grant.newBuilder() to construct.
   private Grant(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private Grant() {
     resourceId_ = "";
     actions_ = com.google.protobuf.LazyStringArrayList.EMPTY;
@@ -30,41 +27,107 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new Grant();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
     return this.unknownFields;
   }
+  private Grant(
+      com.google.protobuf.CodedInputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    this();
+    if (extensionRegistry == null) {
+      throw new java.lang.NullPointerException();
+    }
+    int mutable_bitField0_ = 0;
+    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+        com.google.protobuf.UnknownFieldSet.newBuilder();
+    try {
+      boolean done = false;
+      while (!done) {
+        int tag = input.readTag();
+        switch (tag) {
+          case 0:
+            done = true;
+            break;
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return trinsic.services.provider.v1.ProviderOuterClass
-        .internal_static_services_provider_v1_Grant_descriptor;
+            resourceId_ = s;
+            break;
+          }
+          case 18: {
+            java.lang.String s = input.readStringRequireUtf8();
+            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+              actions_ = new com.google.protobuf.LazyStringArrayList();
+              mutable_bitField0_ |= 0x00000001;
+            }
+            actions_.add(s);
+            break;
+          }
+          case 26: {
+            if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+              childGrants_ = new java.util.ArrayList<trinsic.services.provider.v1.Grant>();
+              mutable_bitField0_ |= 0x00000002;
+            }
+            childGrants_.add(
+                input.readMessage(trinsic.services.provider.v1.Grant.parser(), extensionRegistry));
+            break;
+          }
+          default: {
+            if (!parseUnknownField(
+                input, unknownFields, extensionRegistry, tag)) {
+              done = true;
+            }
+            break;
+          }
+        }
+      }
+    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      throw e.setUnfinishedMessage(this);
+    } catch (com.google.protobuf.UninitializedMessageException e) {
+      throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+    } catch (java.io.IOException e) {
+      throw new com.google.protobuf.InvalidProtocolBufferException(
+          e).setUnfinishedMessage(this);
+    } finally {
+      if (((mutable_bitField0_ & 0x00000001) != 0)) {
+        actions_ = actions_.getUnmodifiableView();
+      }
+      if (((mutable_bitField0_ & 0x00000002) != 0)) {
+        childGrants_ = java.util.Collections.unmodifiableList(childGrants_);
+      }
+      this.unknownFields = unknownFields.build();
+      makeExtensionsImmutable();
+    }
+  }
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_Grant_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.provider.v1.ProviderOuterClass
-        .internal_static_services_provider_v1_Grant_fieldAccessorTable
+    return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_Grant_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.provider.v1.Grant.class,
-            trinsic.services.provider.v1.Grant.Builder.class);
+            trinsic.services.provider.v1.Grant.class, trinsic.services.provider.v1.Grant.Builder.class);
   }
 
   public static final int RESOURCEID_FIELD_NUMBER = 1;
   private volatile java.lang.Object resourceId_;
   /**
-   *
-   *
    * <pre>
    * the urn of the resource
    * </pre>
    *
    * <code>string resourceId = 1;</code>
-   *
    * @return The resourceId.
    */
   @java.lang.Override
@@ -73,29 +136,29 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       resourceId_ = s;
       return s;
     }
   }
   /**
-   *
-   *
    * <pre>
    * the urn of the resource
    * </pre>
    *
    * <code>string resourceId = 1;</code>
-   *
    * @return The bytes for resourceId.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getResourceIdBytes() {
+  public com.google.protobuf.ByteString
+      getResourceIdBytes() {
     java.lang.Object ref = resourceId_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       resourceId_ = b;
       return b;
     } else {
@@ -106,42 +169,34 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
   public static final int ACTIONS_FIELD_NUMBER = 2;
   private com.google.protobuf.LazyStringList actions_;
   /**
-   *
-   *
    * <pre>
    * list of actions that are allowed
    * </pre>
    *
    * <code>repeated string actions = 2;</code>
-   *
    * @return A list containing the actions.
    */
-  public com.google.protobuf.ProtocolStringList getActionsList() {
+  public com.google.protobuf.ProtocolStringList
+      getActionsList() {
     return actions_;
   }
   /**
-   *
-   *
    * <pre>
    * list of actions that are allowed
    * </pre>
    *
    * <code>repeated string actions = 2;</code>
-   *
    * @return The count of actions.
    */
   public int getActionsCount() {
     return actions_.size();
   }
   /**
-   *
-   *
    * <pre>
    * list of actions that are allowed
    * </pre>
    *
    * <code>repeated string actions = 2;</code>
-   *
    * @param index The index of the element to return.
    * @return The actions at the given index.
    */
@@ -149,26 +204,22 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
     return actions_.get(index);
   }
   /**
-   *
-   *
    * <pre>
    * list of actions that are allowed
    * </pre>
    *
    * <code>repeated string actions = 2;</code>
-   *
    * @param index The index of the value to return.
    * @return The bytes of the actions at the given index.
    */
-  public com.google.protobuf.ByteString getActionsBytes(int index) {
+  public com.google.protobuf.ByteString
+      getActionsBytes(int index) {
     return actions_.getByteString(index);
   }
 
   public static final int CHILD_GRANTS_FIELD_NUMBER = 3;
   private java.util.List<trinsic.services.provider.v1.Grant> childGrants_;
   /**
-   *
-   *
    * <pre>
    * any child grants
    * </pre>
@@ -180,8 +231,6 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
     return childGrants_;
   }
   /**
-   *
-   *
    * <pre>
    * any child grants
    * </pre>
@@ -189,13 +238,11 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
    * <code>repeated .services.provider.v1.Grant child_grants = 3;</code>
    */
   @java.lang.Override
-  public java.util.List<? extends trinsic.services.provider.v1.GrantOrBuilder>
+  public java.util.List<? extends trinsic.services.provider.v1.GrantOrBuilder> 
       getChildGrantsOrBuilderList() {
     return childGrants_;
   }
   /**
-   *
-   *
    * <pre>
    * any child grants
    * </pre>
@@ -207,8 +254,6 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
     return childGrants_.size();
   }
   /**
-   *
-   *
    * <pre>
    * any child grants
    * </pre>
@@ -220,8 +265,6 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
     return childGrants_.get(index);
   }
   /**
-   *
-   *
    * <pre>
    * any child grants
    * </pre>
@@ -229,12 +272,12 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
    * <code>repeated .services.provider.v1.Grant child_grants = 3;</code>
    */
   @java.lang.Override
-  public trinsic.services.provider.v1.GrantOrBuilder getChildGrantsOrBuilder(int index) {
+  public trinsic.services.provider.v1.GrantOrBuilder getChildGrantsOrBuilder(
+      int index) {
     return childGrants_.get(index);
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -246,7 +289,8 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(resourceId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, resourceId_);
     }
@@ -256,7 +300,7 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
     for (int i = 0; i < childGrants_.size(); i++) {
       output.writeMessage(3, childGrants_.get(i));
     }
-    getUnknownFields().writeTo(output);
+    unknownFields.writeTo(output);
   }
 
   @java.lang.Override
@@ -277,9 +321,10 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
       size += 1 * getActionsList().size();
     }
     for (int i = 0; i < childGrants_.size(); i++) {
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(3, childGrants_.get(i));
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(3, childGrants_.get(i));
     }
-    size += getUnknownFields().getSerializedSize();
+    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
@@ -287,17 +332,20 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof trinsic.services.provider.v1.Grant)) {
       return super.equals(obj);
     }
     trinsic.services.provider.v1.Grant other = (trinsic.services.provider.v1.Grant) obj;
 
-    if (!getResourceId().equals(other.getResourceId())) return false;
-    if (!getActionsList().equals(other.getActionsList())) return false;
-    if (!getChildGrantsList().equals(other.getChildGrantsList())) return false;
-    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+    if (!getResourceId()
+        .equals(other.getResourceId())) return false;
+    if (!getActionsList()
+        .equals(other.getActionsList())) return false;
+    if (!getChildGrantsList()
+        .equals(other.getChildGrantsList())) return false;
+    if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
 
@@ -318,140 +366,141 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
       hash = (37 * hash) + CHILD_GRANTS_FIELD_NUMBER;
       hash = (53 * hash) + getChildGrantsList().hashCode();
     }
-    hash = (29 * hash) + getUnknownFields().hashCode();
+    hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static trinsic.services.provider.v1.Grant parseFrom(java.nio.ByteBuffer data)
+  public static trinsic.services.provider.v1.Grant parseFrom(
+      java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.provider.v1.Grant parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
-  public static trinsic.services.provider.v1.Grant parseFrom(com.google.protobuf.ByteString data)
+  public static trinsic.services.provider.v1.Grant parseFrom(
+      com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.provider.v1.Grant parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.provider.v1.Grant parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.provider.v1.Grant parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.provider.v1.Grant parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static trinsic.services.provider.v1.Grant parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static trinsic.services.provider.v1.Grant parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static trinsic.services.provider.v1.Grant parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static trinsic.services.provider.v1.Grant parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static trinsic.services.provider.v1.Grant parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
   public static Builder newBuilder(trinsic.services.provider.v1.Grant prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
-   *
-   *
    * <pre>
    * A grant authorizing `actions` on a `resourceId`
    * </pre>
    *
    * Protobuf type {@code services.provider.v1.Grant}
    */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:services.provider.v1.Grant)
       trinsic.services.provider.v1.GrantOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_Grant_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_Grant_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_Grant_fieldAccessorTable
+      return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_Grant_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.provider.v1.Grant.class,
-              trinsic.services.provider.v1.Grant.Builder.class);
+              trinsic.services.provider.v1.Grant.class, trinsic.services.provider.v1.Grant.Builder.class);
     }
 
     // Construct using trinsic.services.provider.v1.Grant.newBuilder()
-    private Builder() {}
-
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
+    private Builder() {
+      maybeForceBuilderInitialization();
     }
 
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
+      maybeForceBuilderInitialization();
+    }
+    private void maybeForceBuilderInitialization() {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+        getChildGrantsFieldBuilder();
+      }
+    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -461,18 +510,17 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
       bitField0_ = (bitField0_ & ~0x00000001);
       if (childGrantsBuilder_ == null) {
         childGrants_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000002);
       } else {
-        childGrants_ = null;
         childGrantsBuilder_.clear();
       }
-      bitField0_ = (bitField0_ & ~0x00000002);
       return this;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_Grant_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_Grant_descriptor;
     }
 
     @java.lang.Override
@@ -516,39 +564,38 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof trinsic.services.provider.v1.Grant) {
-        return mergeFrom((trinsic.services.provider.v1.Grant) other);
+        return mergeFrom((trinsic.services.provider.v1.Grant)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -589,16 +636,15 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
             childGrantsBuilder_ = null;
             childGrants_ = other.childGrants_;
             bitField0_ = (bitField0_ & ~0x00000002);
-            childGrantsBuilder_ =
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
-                    ? getChildGrantsFieldBuilder()
-                    : null;
+            childGrantsBuilder_ = 
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                 getChildGrantsFieldBuilder() : null;
           } else {
             childGrantsBuilder_.addAllMessages(other.childGrants_);
           }
         }
       }
-      this.mergeUnknownFields(other.getUnknownFields());
+      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -613,78 +659,35 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
+      trinsic.services.provider.v1.Grant parsedMessage = null;
       try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10:
-              {
-                resourceId_ = input.readStringRequireUtf8();
-
-                break;
-              } // case 10
-            case 18:
-              {
-                java.lang.String s = input.readStringRequireUtf8();
-                ensureActionsIsMutable();
-                actions_.add(s);
-                break;
-              } // case 18
-            case 26:
-              {
-                trinsic.services.provider.v1.Grant m =
-                    input.readMessage(
-                        trinsic.services.provider.v1.Grant.parser(), extensionRegistry);
-                if (childGrantsBuilder_ == null) {
-                  ensureChildGrantsIsMutable();
-                  childGrants_.add(m);
-                } else {
-                  childGrantsBuilder_.addMessage(m);
-                }
-                break;
-              } // case 26
-            default:
-              {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-          } // switch (tag)
-        } // while (!done)
+        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        parsedMessage = (trinsic.services.provider.v1.Grant) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
-        onChanged();
-      } // finally
+        if (parsedMessage != null) {
+          mergeFrom(parsedMessage);
+        }
+      }
       return this;
     }
-
     private int bitField0_;
 
     private java.lang.Object resourceId_ = "";
     /**
-     *
-     *
      * <pre>
      * the urn of the resource
      * </pre>
      *
      * <code>string resourceId = 1;</code>
-     *
      * @return The resourceId.
      */
     public java.lang.String getResourceId() {
       java.lang.Object ref = resourceId_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         resourceId_ = s;
         return s;
@@ -693,21 +696,20 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * the urn of the resource
      * </pre>
      *
      * <code>string resourceId = 1;</code>
-     *
      * @return The bytes for resourceId.
      */
-    public com.google.protobuf.ByteString getResourceIdBytes() {
+    public com.google.protobuf.ByteString
+        getResourceIdBytes() {
       java.lang.Object ref = resourceId_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         resourceId_ = b;
         return b;
       } else {
@@ -715,112 +717,95 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * the urn of the resource
      * </pre>
      *
      * <code>string resourceId = 1;</code>
-     *
      * @param value The resourceId to set.
      * @return This builder for chaining.
      */
-    public Builder setResourceId(java.lang.String value) {
+    public Builder setResourceId(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       resourceId_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * the urn of the resource
      * </pre>
      *
      * <code>string resourceId = 1;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearResourceId() {
-
+      
       resourceId_ = getDefaultInstance().getResourceId();
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * the urn of the resource
      * </pre>
      *
      * <code>string resourceId = 1;</code>
-     *
      * @param value The bytes for resourceId to set.
      * @return This builder for chaining.
      */
-    public Builder setResourceIdBytes(com.google.protobuf.ByteString value) {
+    public Builder setResourceIdBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       resourceId_ = value;
       onChanged();
       return this;
     }
 
-    private com.google.protobuf.LazyStringList actions_ =
-        com.google.protobuf.LazyStringArrayList.EMPTY;
-
+    private com.google.protobuf.LazyStringList actions_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     private void ensureActionsIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
         actions_ = new com.google.protobuf.LazyStringArrayList(actions_);
         bitField0_ |= 0x00000001;
-      }
+       }
     }
     /**
-     *
-     *
      * <pre>
      * list of actions that are allowed
      * </pre>
      *
      * <code>repeated string actions = 2;</code>
-     *
      * @return A list containing the actions.
      */
-    public com.google.protobuf.ProtocolStringList getActionsList() {
+    public com.google.protobuf.ProtocolStringList
+        getActionsList() {
       return actions_.getUnmodifiableView();
     }
     /**
-     *
-     *
      * <pre>
      * list of actions that are allowed
      * </pre>
      *
      * <code>repeated string actions = 2;</code>
-     *
      * @return The count of actions.
      */
     public int getActionsCount() {
       return actions_.size();
     }
     /**
-     *
-     *
      * <pre>
      * list of actions that are allowed
      * </pre>
      *
      * <code>repeated string actions = 2;</code>
-     *
      * @param index The index of the element to return.
      * @return The actions at the given index.
      */
@@ -828,90 +813,80 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
       return actions_.get(index);
     }
     /**
-     *
-     *
      * <pre>
      * list of actions that are allowed
      * </pre>
      *
      * <code>repeated string actions = 2;</code>
-     *
      * @param index The index of the value to return.
      * @return The bytes of the actions at the given index.
      */
-    public com.google.protobuf.ByteString getActionsBytes(int index) {
+    public com.google.protobuf.ByteString
+        getActionsBytes(int index) {
       return actions_.getByteString(index);
     }
     /**
-     *
-     *
      * <pre>
      * list of actions that are allowed
      * </pre>
      *
      * <code>repeated string actions = 2;</code>
-     *
      * @param index The index to set the value at.
      * @param value The actions to set.
      * @return This builder for chaining.
      */
-    public Builder setActions(int index, java.lang.String value) {
+    public Builder setActions(
+        int index, java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureActionsIsMutable();
+    throw new NullPointerException();
+  }
+  ensureActionsIsMutable();
       actions_.set(index, value);
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * list of actions that are allowed
      * </pre>
      *
      * <code>repeated string actions = 2;</code>
-     *
      * @param value The actions to add.
      * @return This builder for chaining.
      */
-    public Builder addActions(java.lang.String value) {
+    public Builder addActions(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureActionsIsMutable();
+    throw new NullPointerException();
+  }
+  ensureActionsIsMutable();
       actions_.add(value);
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * list of actions that are allowed
      * </pre>
      *
      * <code>repeated string actions = 2;</code>
-     *
      * @param values The actions to add.
      * @return This builder for chaining.
      */
-    public Builder addAllActions(java.lang.Iterable<java.lang.String> values) {
+    public Builder addAllActions(
+        java.lang.Iterable<java.lang.String> values) {
       ensureActionsIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(values, actions_);
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, actions_);
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * list of actions that are allowed
      * </pre>
      *
      * <code>repeated string actions = 2;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearActions() {
@@ -921,22 +896,20 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * list of actions that are allowed
      * </pre>
      *
      * <code>repeated string actions = 2;</code>
-     *
      * @param value The bytes of the actions to add.
      * @return This builder for chaining.
      */
-    public Builder addActionsBytes(com.google.protobuf.ByteString value) {
+    public Builder addActionsBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
       ensureActionsIsMutable();
       actions_.add(value);
       onChanged();
@@ -944,24 +917,18 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
     }
 
     private java.util.List<trinsic.services.provider.v1.Grant> childGrants_ =
-        java.util.Collections.emptyList();
-
+      java.util.Collections.emptyList();
     private void ensureChildGrantsIsMutable() {
       if (!((bitField0_ & 0x00000002) != 0)) {
         childGrants_ = new java.util.ArrayList<trinsic.services.provider.v1.Grant>(childGrants_);
         bitField0_ |= 0x00000002;
-      }
+       }
     }
 
     private com.google.protobuf.RepeatedFieldBuilderV3<
-            trinsic.services.provider.v1.Grant,
-            trinsic.services.provider.v1.Grant.Builder,
-            trinsic.services.provider.v1.GrantOrBuilder>
-        childGrantsBuilder_;
+        trinsic.services.provider.v1.Grant, trinsic.services.provider.v1.Grant.Builder, trinsic.services.provider.v1.GrantOrBuilder> childGrantsBuilder_;
 
     /**
-     *
-     *
      * <pre>
      * any child grants
      * </pre>
@@ -976,8 +943,6 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * any child grants
      * </pre>
@@ -992,8 +957,6 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * any child grants
      * </pre>
@@ -1008,15 +971,14 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * any child grants
      * </pre>
      *
      * <code>repeated .services.provider.v1.Grant child_grants = 3;</code>
      */
-    public Builder setChildGrants(int index, trinsic.services.provider.v1.Grant value) {
+    public Builder setChildGrants(
+        int index, trinsic.services.provider.v1.Grant value) {
       if (childGrantsBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -1030,8 +992,6 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * any child grants
      * </pre>
@@ -1050,8 +1010,6 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * any child grants
      * </pre>
@@ -1072,15 +1030,14 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * any child grants
      * </pre>
      *
      * <code>repeated .services.provider.v1.Grant child_grants = 3;</code>
      */
-    public Builder addChildGrants(int index, trinsic.services.provider.v1.Grant value) {
+    public Builder addChildGrants(
+        int index, trinsic.services.provider.v1.Grant value) {
       if (childGrantsBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -1094,15 +1051,14 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * any child grants
      * </pre>
      *
      * <code>repeated .services.provider.v1.Grant child_grants = 3;</code>
      */
-    public Builder addChildGrants(trinsic.services.provider.v1.Grant.Builder builderForValue) {
+    public Builder addChildGrants(
+        trinsic.services.provider.v1.Grant.Builder builderForValue) {
       if (childGrantsBuilder_ == null) {
         ensureChildGrantsIsMutable();
         childGrants_.add(builderForValue.build());
@@ -1113,8 +1069,6 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * any child grants
      * </pre>
@@ -1133,8 +1087,6 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * any child grants
      * </pre>
@@ -1145,7 +1097,8 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
         java.lang.Iterable<? extends trinsic.services.provider.v1.Grant> values) {
       if (childGrantsBuilder_ == null) {
         ensureChildGrantsIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, childGrants_);
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, childGrants_);
         onChanged();
       } else {
         childGrantsBuilder_.addAllMessages(values);
@@ -1153,8 +1106,6 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * any child grants
      * </pre>
@@ -1172,8 +1123,6 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * any child grants
      * </pre>
@@ -1191,44 +1140,39 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * any child grants
      * </pre>
      *
      * <code>repeated .services.provider.v1.Grant child_grants = 3;</code>
      */
-    public trinsic.services.provider.v1.Grant.Builder getChildGrantsBuilder(int index) {
+    public trinsic.services.provider.v1.Grant.Builder getChildGrantsBuilder(
+        int index) {
       return getChildGrantsFieldBuilder().getBuilder(index);
     }
     /**
-     *
-     *
      * <pre>
      * any child grants
      * </pre>
      *
      * <code>repeated .services.provider.v1.Grant child_grants = 3;</code>
      */
-    public trinsic.services.provider.v1.GrantOrBuilder getChildGrantsOrBuilder(int index) {
+    public trinsic.services.provider.v1.GrantOrBuilder getChildGrantsOrBuilder(
+        int index) {
       if (childGrantsBuilder_ == null) {
-        return childGrants_.get(index);
-      } else {
+        return childGrants_.get(index);  } else {
         return childGrantsBuilder_.getMessageOrBuilder(index);
       }
     }
     /**
-     *
-     *
      * <pre>
      * any child grants
      * </pre>
      *
      * <code>repeated .services.provider.v1.Grant child_grants = 3;</code>
      */
-    public java.util.List<? extends trinsic.services.provider.v1.GrantOrBuilder>
-        getChildGrantsOrBuilderList() {
+    public java.util.List<? extends trinsic.services.provider.v1.GrantOrBuilder> 
+         getChildGrantsOrBuilderList() {
       if (childGrantsBuilder_ != null) {
         return childGrantsBuilder_.getMessageOrBuilderList();
       } else {
@@ -1236,8 +1180,6 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * any child grants
      * </pre>
@@ -1245,54 +1187,49 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
      * <code>repeated .services.provider.v1.Grant child_grants = 3;</code>
      */
     public trinsic.services.provider.v1.Grant.Builder addChildGrantsBuilder() {
-      return getChildGrantsFieldBuilder()
-          .addBuilder(trinsic.services.provider.v1.Grant.getDefaultInstance());
+      return getChildGrantsFieldBuilder().addBuilder(
+          trinsic.services.provider.v1.Grant.getDefaultInstance());
     }
     /**
-     *
-     *
      * <pre>
      * any child grants
      * </pre>
      *
      * <code>repeated .services.provider.v1.Grant child_grants = 3;</code>
      */
-    public trinsic.services.provider.v1.Grant.Builder addChildGrantsBuilder(int index) {
-      return getChildGrantsFieldBuilder()
-          .addBuilder(index, trinsic.services.provider.v1.Grant.getDefaultInstance());
+    public trinsic.services.provider.v1.Grant.Builder addChildGrantsBuilder(
+        int index) {
+      return getChildGrantsFieldBuilder().addBuilder(
+          index, trinsic.services.provider.v1.Grant.getDefaultInstance());
     }
     /**
-     *
-     *
      * <pre>
      * any child grants
      * </pre>
      *
      * <code>repeated .services.provider.v1.Grant child_grants = 3;</code>
      */
-    public java.util.List<trinsic.services.provider.v1.Grant.Builder> getChildGrantsBuilderList() {
+    public java.util.List<trinsic.services.provider.v1.Grant.Builder> 
+         getChildGrantsBuilderList() {
       return getChildGrantsFieldBuilder().getBuilderList();
     }
-
     private com.google.protobuf.RepeatedFieldBuilderV3<
-            trinsic.services.provider.v1.Grant,
-            trinsic.services.provider.v1.Grant.Builder,
-            trinsic.services.provider.v1.GrantOrBuilder>
+        trinsic.services.provider.v1.Grant, trinsic.services.provider.v1.Grant.Builder, trinsic.services.provider.v1.GrantOrBuilder> 
         getChildGrantsFieldBuilder() {
       if (childGrantsBuilder_ == null) {
-        childGrantsBuilder_ =
-            new com.google.protobuf.RepeatedFieldBuilderV3<
-                trinsic.services.provider.v1.Grant,
-                trinsic.services.provider.v1.Grant.Builder,
-                trinsic.services.provider.v1.GrantOrBuilder>(
-                childGrants_, ((bitField0_ & 0x00000002) != 0), getParentForChildren(), isClean());
+        childGrantsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            trinsic.services.provider.v1.Grant, trinsic.services.provider.v1.Grant.Builder, trinsic.services.provider.v1.GrantOrBuilder>(
+                childGrants_,
+                ((bitField0_ & 0x00000002) != 0),
+                getParentForChildren(),
+                isClean());
         childGrants_ = null;
       }
       return childGrantsBuilder_;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -1302,12 +1239,12 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:services.provider.v1.Grant)
   }
 
   // @@protoc_insertion_point(class_scope:services.provider.v1.Grant)
   private static final trinsic.services.provider.v1.Grant DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new trinsic.services.provider.v1.Grant();
   }
@@ -1316,27 +1253,16 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<Grant> PARSER =
-      new com.google.protobuf.AbstractParser<Grant>() {
-        @java.lang.Override
-        public Grant parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
+  private static final com.google.protobuf.Parser<Grant>
+      PARSER = new com.google.protobuf.AbstractParser<Grant>() {
+    @java.lang.Override
+    public Grant parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return new Grant(input, extensionRegistry);
+    }
+  };
 
   public static com.google.protobuf.Parser<Grant> parser() {
     return PARSER;
@@ -1351,4 +1277,6 @@ public final class Grant extends com.google.protobuf.GeneratedMessageV3
   public trinsic.services.provider.v1.Grant getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

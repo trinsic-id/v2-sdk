@@ -388,8 +388,9 @@ public class Tests
     [Fact]
     public async Task TestInvitationIdSet() {
         var trinsic = new TrinsicService(MemoryTokenProvider.StaticInstance, _options.Clone());
-        _ = await trinsic.Provider.CreateEcosystemAsync(new());
+        var (ecosystem, authToken) = await trinsic.Provider.CreateEcosystemAsync(new());
 
+        trinsic.SetAuthToken(authToken);
         var invitationResponse = await trinsic.Provider.InviteAsync(new());
 
         invitationResponse.Should().NotBeNull();

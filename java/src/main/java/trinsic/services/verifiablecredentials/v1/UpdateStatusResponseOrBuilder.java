@@ -3,7 +3,7 @@
 
 package trinsic.services.verifiablecredentials.v1;
 
-public interface UpdateStatusResponseOrBuilder
-    extends
+public interface UpdateStatusResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.v1.UpdateStatusResponse)
-    com.google.protobuf.MessageOrBuilder {}
+    com.google.protobuf.MessageOrBuilder {
+}

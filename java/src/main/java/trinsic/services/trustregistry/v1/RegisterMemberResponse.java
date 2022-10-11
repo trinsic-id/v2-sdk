@@ -4,54 +4,89 @@
 package trinsic.services.trustregistry.v1;
 
 /**
- *
- *
  * <pre>
  * Response to `RegisterMemberRequest`
  * </pre>
  *
  * Protobuf type {@code services.trustregistry.v1.RegisterMemberResponse}
  */
-public final class RegisterMemberResponse extends com.google.protobuf.GeneratedMessageV3
-    implements
+public final class RegisterMemberResponse extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:services.trustregistry.v1.RegisterMemberResponse)
     RegisterMemberResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+private static final long serialVersionUID = 0L;
   // Use RegisterMemberResponse.newBuilder() to construct.
   private RegisterMemberResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
-  private RegisterMemberResponse() {}
+  private RegisterMemberResponse() {
+  }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new RegisterMemberResponse();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
     return this.unknownFields;
   }
-
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-        .internal_static_services_trustregistry_v1_RegisterMemberResponse_descriptor;
+  private RegisterMemberResponse(
+      com.google.protobuf.CodedInputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    this();
+    if (extensionRegistry == null) {
+      throw new java.lang.NullPointerException();
+    }
+    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+        com.google.protobuf.UnknownFieldSet.newBuilder();
+    try {
+      boolean done = false;
+      while (!done) {
+        int tag = input.readTag();
+        switch (tag) {
+          case 0:
+            done = true;
+            break;
+          default: {
+            if (!parseUnknownField(
+                input, unknownFields, extensionRegistry, tag)) {
+              done = true;
+            }
+            break;
+          }
+        }
+      }
+    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      throw e.setUnfinishedMessage(this);
+    } catch (com.google.protobuf.UninitializedMessageException e) {
+      throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+    } catch (java.io.IOException e) {
+      throw new com.google.protobuf.InvalidProtocolBufferException(
+          e).setUnfinishedMessage(this);
+    } finally {
+      this.unknownFields = unknownFields.build();
+      makeExtensionsImmutable();
+    }
+  }
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterMemberResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-        .internal_static_services_trustregistry_v1_RegisterMemberResponse_fieldAccessorTable
+    return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterMemberResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.trustregistry.v1.RegisterMemberResponse.class,
-            trinsic.services.trustregistry.v1.RegisterMemberResponse.Builder.class);
+            trinsic.services.trustregistry.v1.RegisterMemberResponse.class, trinsic.services.trustregistry.v1.RegisterMemberResponse.Builder.class);
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -63,8 +98,9 @@ public final class RegisterMemberResponse extends com.google.protobuf.GeneratedM
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-    getUnknownFields().writeTo(output);
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
+    unknownFields.writeTo(output);
   }
 
   @java.lang.Override
@@ -73,7 +109,7 @@ public final class RegisterMemberResponse extends com.google.protobuf.GeneratedM
     if (size != -1) return size;
 
     size = 0;
-    size += getUnknownFields().getSerializedSize();
+    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
@@ -81,15 +117,14 @@ public final class RegisterMemberResponse extends com.google.protobuf.GeneratedM
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof trinsic.services.trustregistry.v1.RegisterMemberResponse)) {
       return super.equals(obj);
     }
-    trinsic.services.trustregistry.v1.RegisterMemberResponse other =
-        (trinsic.services.trustregistry.v1.RegisterMemberResponse) obj;
+    trinsic.services.trustregistry.v1.RegisterMemberResponse other = (trinsic.services.trustregistry.v1.RegisterMemberResponse) obj;
 
-    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+    if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
 
@@ -100,142 +135,140 @@ public final class RegisterMemberResponse extends com.google.protobuf.GeneratedM
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (29 * hash) + getUnknownFields().hashCode();
+    hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
   public static trinsic.services.trustregistry.v1.RegisterMemberResponse parseFrom(
-      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.trustregistry.v1.RegisterMemberResponse parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.trustregistry.v1.RegisterMemberResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.trustregistry.v1.RegisterMemberResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.trustregistry.v1.RegisterMemberResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.trustregistry.v1.RegisterMemberResponse parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
-  public static trinsic.services.trustregistry.v1.RegisterMemberResponse parseFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-  }
-
-  public static trinsic.services.trustregistry.v1.RegisterMemberResponse parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+  public static trinsic.services.trustregistry.v1.RegisterMemberResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
-  public static trinsic.services.trustregistry.v1.RegisterMemberResponse parseDelimitedFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static trinsic.services.trustregistry.v1.RegisterMemberResponse parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
-  }
-
   public static trinsic.services.trustregistry.v1.RegisterMemberResponse parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
+  public static trinsic.services.trustregistry.v1.RegisterMemberResponse parseDelimitedFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
+  }
+  public static trinsic.services.trustregistry.v1.RegisterMemberResponse parseDelimitedFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+  }
+  public static trinsic.services.trustregistry.v1.RegisterMemberResponse parseFrom(
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
+  }
   public static trinsic.services.trustregistry.v1.RegisterMemberResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
-  public static Builder newBuilder(
-      trinsic.services.trustregistry.v1.RegisterMemberResponse prototype) {
+  public static Builder newBuilder(trinsic.services.trustregistry.v1.RegisterMemberResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
-   *
-   *
    * <pre>
    * Response to `RegisterMemberRequest`
    * </pre>
    *
    * Protobuf type {@code services.trustregistry.v1.RegisterMemberResponse}
    */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.RegisterMemberResponse)
       trinsic.services.trustregistry.v1.RegisterMemberResponseOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-          .internal_static_services_trustregistry_v1_RegisterMemberResponse_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterMemberResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-          .internal_static_services_trustregistry_v1_RegisterMemberResponse_fieldAccessorTable
+      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterMemberResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.trustregistry.v1.RegisterMemberResponse.class,
-              trinsic.services.trustregistry.v1.RegisterMemberResponse.Builder.class);
+              trinsic.services.trustregistry.v1.RegisterMemberResponse.class, trinsic.services.trustregistry.v1.RegisterMemberResponse.Builder.class);
     }
 
     // Construct using trinsic.services.trustregistry.v1.RegisterMemberResponse.newBuilder()
-    private Builder() {}
-
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
+    private Builder() {
+      maybeForceBuilderInitialization();
     }
 
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
+      maybeForceBuilderInitialization();
+    }
+    private void maybeForceBuilderInitialization() {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+      }
+    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -243,9 +276,9 @@ public final class RegisterMemberResponse extends com.google.protobuf.GeneratedM
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-          .internal_static_services_trustregistry_v1_RegisterMemberResponse_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterMemberResponse_descriptor;
     }
 
     @java.lang.Override
@@ -264,8 +297,7 @@ public final class RegisterMemberResponse extends com.google.protobuf.GeneratedM
 
     @java.lang.Override
     public trinsic.services.trustregistry.v1.RegisterMemberResponse buildPartial() {
-      trinsic.services.trustregistry.v1.RegisterMemberResponse result =
-          new trinsic.services.trustregistry.v1.RegisterMemberResponse(this);
+      trinsic.services.trustregistry.v1.RegisterMemberResponse result = new trinsic.services.trustregistry.v1.RegisterMemberResponse(this);
       onBuilt();
       return result;
     }
@@ -274,39 +306,38 @@ public final class RegisterMemberResponse extends com.google.protobuf.GeneratedM
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof trinsic.services.trustregistry.v1.RegisterMemberResponse) {
-        return mergeFrom((trinsic.services.trustregistry.v1.RegisterMemberResponse) other);
+        return mergeFrom((trinsic.services.trustregistry.v1.RegisterMemberResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -314,9 +345,8 @@ public final class RegisterMemberResponse extends com.google.protobuf.GeneratedM
     }
 
     public Builder mergeFrom(trinsic.services.trustregistry.v1.RegisterMemberResponse other) {
-      if (other == trinsic.services.trustregistry.v1.RegisterMemberResponse.getDefaultInstance())
-        return this;
-      this.mergeUnknownFields(other.getUnknownFields());
+      if (other == trinsic.services.trustregistry.v1.RegisterMemberResponse.getDefaultInstance()) return this;
+      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -331,36 +361,22 @@ public final class RegisterMemberResponse extends com.google.protobuf.GeneratedM
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
+      trinsic.services.trustregistry.v1.RegisterMemberResponse parsedMessage = null;
       try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default:
-              {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-          } // switch (tag)
-        } // while (!done)
+        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        parsedMessage = (trinsic.services.trustregistry.v1.RegisterMemberResponse) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
-        onChanged();
-      } // finally
+        if (parsedMessage != null) {
+          mergeFrom(parsedMessage);
+        }
+      }
       return this;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -370,12 +386,12 @@ public final class RegisterMemberResponse extends com.google.protobuf.GeneratedM
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:services.trustregistry.v1.RegisterMemberResponse)
   }
 
   // @@protoc_insertion_point(class_scope:services.trustregistry.v1.RegisterMemberResponse)
   private static final trinsic.services.trustregistry.v1.RegisterMemberResponse DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new trinsic.services.trustregistry.v1.RegisterMemberResponse();
   }
@@ -384,27 +400,16 @@ public final class RegisterMemberResponse extends com.google.protobuf.GeneratedM
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<RegisterMemberResponse> PARSER =
-      new com.google.protobuf.AbstractParser<RegisterMemberResponse>() {
-        @java.lang.Override
-        public RegisterMemberResponse parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
+  private static final com.google.protobuf.Parser<RegisterMemberResponse>
+      PARSER = new com.google.protobuf.AbstractParser<RegisterMemberResponse>() {
+    @java.lang.Override
+    public RegisterMemberResponse parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return new RegisterMemberResponse(input, extensionRegistry);
+    }
+  };
 
   public static com.google.protobuf.Parser<RegisterMemberResponse> parser() {
     return PARSER;
@@ -419,4 +424,6 @@ public final class RegisterMemberResponse extends com.google.protobuf.GeneratedM
   public trinsic.services.trustregistry.v1.RegisterMemberResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

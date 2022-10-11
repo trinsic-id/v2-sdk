@@ -3,33 +3,27 @@
 
 package trinsic.services.trustregistry.v1;
 
-public interface RemoveFrameworkRequestOrBuilder
-    extends
+public interface RemoveFrameworkRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.RemoveFrameworkRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   *
-   *
    * <pre>
    * ID of governance framework to remove
    * </pre>
    *
    * <code>string id = 1;</code>
-   *
    * @return The id.
    */
   java.lang.String getId();
   /**
-   *
-   *
    * <pre>
    * ID of governance framework to remove
    * </pre>
    *
    * <code>string id = 1;</code>
-   *
    * @return The bytes for id.
    */
-  com.google.protobuf.ByteString getIdBytes();
+  com.google.protobuf.ByteString
+      getIdBytes();
 }

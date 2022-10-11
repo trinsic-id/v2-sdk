@@ -3,171 +3,136 @@
 
 package trinsic.services.trustregistry.v1;
 
-public interface UnregisterMemberRequestOrBuilder
-    extends
+public interface UnregisterMemberRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.UnregisterMemberRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   *
-   *
    * <pre>
    * DID URI of member to unregister
    * </pre>
    *
    * <code>string did_uri = 1;</code>
-   *
    * @return Whether the didUri field is set.
    */
   boolean hasDidUri();
   /**
-   *
-   *
    * <pre>
    * DID URI of member to unregister
    * </pre>
    *
    * <code>string did_uri = 1;</code>
-   *
    * @return The didUri.
    */
   java.lang.String getDidUri();
   /**
-   *
-   *
    * <pre>
    * DID URI of member to unregister
    * </pre>
    *
    * <code>string did_uri = 1;</code>
-   *
    * @return The bytes for didUri.
    */
-  com.google.protobuf.ByteString getDidUriBytes();
+  com.google.protobuf.ByteString
+      getDidUriBytes();
 
   /**
-   *
-   *
    * <pre>
    * Trinsic Wallet ID of member to unregister
    * </pre>
    *
    * <code>string wallet_id = 3;</code>
-   *
    * @return Whether the walletId field is set.
    */
   boolean hasWalletId();
   /**
-   *
-   *
    * <pre>
    * Trinsic Wallet ID of member to unregister
    * </pre>
    *
    * <code>string wallet_id = 3;</code>
-   *
    * @return The walletId.
    */
   java.lang.String getWalletId();
   /**
-   *
-   *
    * <pre>
    * Trinsic Wallet ID of member to unregister
    * </pre>
    *
    * <code>string wallet_id = 3;</code>
-   *
    * @return The bytes for walletId.
    */
-  com.google.protobuf.ByteString getWalletIdBytes();
+  com.google.protobuf.ByteString
+      getWalletIdBytes();
 
   /**
-   *
-   *
    * <pre>
    * Email address of member to unregister. Must be associated with an existing Trinsic account.
    * </pre>
    *
    * <code>string email = 4;</code>
-   *
    * @return Whether the email field is set.
    */
   boolean hasEmail();
   /**
-   *
-   *
    * <pre>
    * Email address of member to unregister. Must be associated with an existing Trinsic account.
    * </pre>
    *
    * <code>string email = 4;</code>
-   *
    * @return The email.
    */
   java.lang.String getEmail();
   /**
-   *
-   *
    * <pre>
    * Email address of member to unregister. Must be associated with an existing Trinsic account.
    * </pre>
    *
    * <code>string email = 4;</code>
-   *
    * @return The bytes for email.
    */
-  com.google.protobuf.ByteString getEmailBytes();
+  com.google.protobuf.ByteString
+      getEmailBytes();
 
   /**
-   *
-   *
    * <pre>
    * URI of credential schema to unregister member as authorized issuer of
    * </pre>
    *
    * <code>string schema_uri = 10;</code>
-   *
    * @return The schemaUri.
    */
   java.lang.String getSchemaUri();
   /**
-   *
-   *
    * <pre>
    * URI of credential schema to unregister member as authorized issuer of
    * </pre>
    *
    * <code>string schema_uri = 10;</code>
-   *
    * @return The bytes for schemaUri.
    */
-  com.google.protobuf.ByteString getSchemaUriBytes();
+  com.google.protobuf.ByteString
+      getSchemaUriBytes();
 
   /**
-   *
-   *
    * <pre>
    * ID of the governance framework that member is being removed from
    * </pre>
    *
    * <code>string framework_id = 20;</code>
-   *
    * @return The frameworkId.
    */
   java.lang.String getFrameworkId();
   /**
-   *
-   *
    * <pre>
    * ID of the governance framework that member is being removed from
    * </pre>
    *
    * <code>string framework_id = 20;</code>
-   *
    * @return The bytes for frameworkId.
    */
-  com.google.protobuf.ByteString getFrameworkIdBytes();
+  com.google.protobuf.ByteString
+      getFrameworkIdBytes();
 
   public trinsic.services.trustregistry.v1.UnregisterMemberRequest.MemberCase getMemberCase();
 }

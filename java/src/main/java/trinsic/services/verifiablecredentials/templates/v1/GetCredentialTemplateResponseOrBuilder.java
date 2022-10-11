@@ -3,38 +3,29 @@
 
 package trinsic.services.verifiablecredentials.templates.v1;
 
-public interface GetCredentialTemplateResponseOrBuilder
-    extends
+public interface GetCredentialTemplateResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   *
-   *
    * <pre>
    * Template fetched by ID
    * </pre>
    *
    * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
-   *
    * @return Whether the template field is set.
    */
   boolean hasTemplate();
   /**
-   *
-   *
    * <pre>
    * Template fetched by ID
    * </pre>
    *
    * <code>.services.verifiablecredentials.templates.v1.TemplateData template = 1;</code>
-   *
    * @return The template.
    */
   trinsic.services.verifiablecredentials.templates.v1.TemplateData getTemplate();
   /**
-   *
-   *
    * <pre>
    * Template fetched by ID
    * </pre>

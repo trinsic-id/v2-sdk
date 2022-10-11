@@ -3,33 +3,27 @@
 
 package trinsic.services.universalwallet.v1;
 
-public interface InsertItemResponseOrBuilder
-    extends
+public interface InsertItemResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:services.universalwallet.v1.InsertItemResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   *
-   *
    * <pre>
    * ID of item inserted into wallet
    * </pre>
    *
    * <code>string item_id = 2;</code>
-   *
    * @return The itemId.
    */
   java.lang.String getItemId();
   /**
-   *
-   *
    * <pre>
    * ID of item inserted into wallet
    * </pre>
    *
    * <code>string item_id = 2;</code>
-   *
    * @return The bytes for itemId.
    */
-  com.google.protobuf.ByteString getItemIdBytes();
+  com.google.protobuf.ByteString
+      getItemIdBytes();
 }

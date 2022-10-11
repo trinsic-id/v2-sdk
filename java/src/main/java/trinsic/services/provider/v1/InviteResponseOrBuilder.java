@@ -3,58 +3,47 @@
 
 package trinsic.services.provider.v1;
 
-public interface InviteResponseOrBuilder
-    extends
+public interface InviteResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:services.provider.v1.InviteResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   *
-   *
    * <pre>
    * ID of created invitation
    * </pre>
    *
    * <code>string invitation_id = 10;</code>
-   *
    * @return The invitationId.
    */
   java.lang.String getInvitationId();
   /**
-   *
-   *
    * <pre>
    * ID of created invitation
    * </pre>
    *
    * <code>string invitation_id = 10;</code>
-   *
    * @return The bytes for invitationId.
    */
-  com.google.protobuf.ByteString getInvitationIdBytes();
+  com.google.protobuf.ByteString
+      getInvitationIdBytes();
 
   /**
-   *
-   *
    * <pre>
    * Invitation code -- must be passed back in `LoginRequest`
    * </pre>
    *
    * <code>string invitation_code = 11;</code>
-   *
    * @return The invitationCode.
    */
   java.lang.String getInvitationCode();
   /**
-   *
-   *
    * <pre>
    * Invitation code -- must be passed back in `LoginRequest`
    * </pre>
    *
    * <code>string invitation_code = 11;</code>
-   *
    * @return The bytes for invitationCode.
    */
-  com.google.protobuf.ByteString getInvitationCodeBytes();
+  com.google.protobuf.ByteString
+      getInvitationCodeBytes();
 }

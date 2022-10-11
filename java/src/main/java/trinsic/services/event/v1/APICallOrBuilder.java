@@ -3,34 +3,30 @@
 
 package trinsic.services.event.v1;
 
-public interface APICallOrBuilder
-    extends
+public interface APICallOrBuilder extends
     // @@protoc_insertion_point(interface_extends:trinsic.services.event.APICall)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>string source = 1;</code>
-   *
    * @return The source.
    */
   java.lang.String getSource();
   /**
    * <code>string source = 1;</code>
-   *
    * @return The bytes for source.
    */
-  com.google.protobuf.ByteString getSourceBytes();
+  com.google.protobuf.ByteString
+      getSourceBytes();
 
   /**
    * <code>bytes request = 2;</code>
-   *
    * @return The request.
    */
   com.google.protobuf.ByteString getRequest();
 
   /**
    * <code>bytes response = 3;</code>
-   *
    * @return The response.
    */
   com.google.protobuf.ByteString getResponse();

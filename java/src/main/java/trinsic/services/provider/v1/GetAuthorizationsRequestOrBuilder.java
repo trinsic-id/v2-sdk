@@ -3,7 +3,7 @@
 
 package trinsic.services.provider.v1;
 
-public interface GetAuthorizationsRequestOrBuilder
-    extends
+public interface GetAuthorizationsRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:services.provider.v1.GetAuthorizationsRequest)
-    com.google.protobuf.MessageOrBuilder {}
+    com.google.protobuf.MessageOrBuilder {
+}

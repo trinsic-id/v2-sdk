@@ -4,24 +4,21 @@
 package trinsic.services.trustregistry.v1;
 
 /**
- *
- *
  * <pre>
  * Request to search all governance frameworks within ecosystem
  * </pre>
  *
  * Protobuf type {@code services.trustregistry.v1.SearchRegistryRequest}
  */
-public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMessageV3
-    implements
+public final class SearchRegistryRequest extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:services.trustregistry.v1.SearchRegistryRequest)
     SearchRegistryRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+private static final long serialVersionUID = 0L;
   // Use SearchRegistryRequest.newBuilder() to construct.
   private SearchRegistryRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private SearchRegistryRequest() {
     query_ = "";
     continuationToken_ = "";
@@ -29,41 +26,88 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new SearchRegistryRequest();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
     return this.unknownFields;
   }
+  private SearchRegistryRequest(
+      com.google.protobuf.CodedInputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    this();
+    if (extensionRegistry == null) {
+      throw new java.lang.NullPointerException();
+    }
+    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+        com.google.protobuf.UnknownFieldSet.newBuilder();
+    try {
+      boolean done = false;
+      while (!done) {
+        int tag = input.readTag();
+        switch (tag) {
+          case 0:
+            done = true;
+            break;
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-        .internal_static_services_trustregistry_v1_SearchRegistryRequest_descriptor;
+            query_ = s;
+            break;
+          }
+          case 18: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            continuationToken_ = s;
+            break;
+          }
+          default: {
+            if (!parseUnknownField(
+                input, unknownFields, extensionRegistry, tag)) {
+              done = true;
+            }
+            break;
+          }
+        }
+      }
+    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      throw e.setUnfinishedMessage(this);
+    } catch (com.google.protobuf.UninitializedMessageException e) {
+      throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+    } catch (java.io.IOException e) {
+      throw new com.google.protobuf.InvalidProtocolBufferException(
+          e).setUnfinishedMessage(this);
+    } finally {
+      this.unknownFields = unknownFields.build();
+      makeExtensionsImmutable();
+    }
+  }
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_SearchRegistryRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-        .internal_static_services_trustregistry_v1_SearchRegistryRequest_fieldAccessorTable
+    return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_SearchRegistryRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.trustregistry.v1.SearchRegistryRequest.class,
-            trinsic.services.trustregistry.v1.SearchRegistryRequest.Builder.class);
+            trinsic.services.trustregistry.v1.SearchRegistryRequest.class, trinsic.services.trustregistry.v1.SearchRegistryRequest.Builder.class);
   }
 
   public static final int QUERY_FIELD_NUMBER = 1;
   private volatile java.lang.Object query_;
   /**
-   *
-   *
    * <pre>
    * SQL query to execute against frameworks. Example: `SELECT c from c where c.type == 'GovernanceFramework'`
    * </pre>
    *
    * <code>string query = 1;</code>
-   *
    * @return The query.
    */
   @java.lang.Override
@@ -72,29 +116,29 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       query_ = s;
       return s;
     }
   }
   /**
-   *
-   *
    * <pre>
    * SQL query to execute against frameworks. Example: `SELECT c from c where c.type == 'GovernanceFramework'`
    * </pre>
    *
    * <code>string query = 1;</code>
-   *
    * @return The bytes for query.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getQueryBytes() {
+  public com.google.protobuf.ByteString
+      getQueryBytes() {
     java.lang.Object ref = query_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       query_ = b;
       return b;
     } else {
@@ -105,14 +149,11 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
   public static final int CONTINUATION_TOKEN_FIELD_NUMBER = 2;
   private volatile java.lang.Object continuationToken_;
   /**
-   *
-   *
    * <pre>
    * Token to fetch next set of results, from previous `SearchRegistryResponse`
    * </pre>
    *
    * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
-   *
    * @return The continuationToken.
    */
   @java.lang.Override
@@ -121,29 +162,29 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       continuationToken_ = s;
       return s;
     }
   }
   /**
-   *
-   *
    * <pre>
    * Token to fetch next set of results, from previous `SearchRegistryResponse`
    * </pre>
    *
    * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
-   *
    * @return The bytes for continuationToken.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getContinuationTokenBytes() {
+  public com.google.protobuf.ByteString
+      getContinuationTokenBytes() {
     java.lang.Object ref = continuationToken_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       continuationToken_ = b;
       return b;
     } else {
@@ -152,7 +193,6 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -164,14 +204,15 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(query_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, query_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(continuationToken_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, continuationToken_);
     }
-    getUnknownFields().writeTo(output);
+    unknownFields.writeTo(output);
   }
 
   @java.lang.Override
@@ -186,7 +227,7 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(continuationToken_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, continuationToken_);
     }
-    size += getUnknownFields().getSerializedSize();
+    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
@@ -194,17 +235,18 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof trinsic.services.trustregistry.v1.SearchRegistryRequest)) {
       return super.equals(obj);
     }
-    trinsic.services.trustregistry.v1.SearchRegistryRequest other =
-        (trinsic.services.trustregistry.v1.SearchRegistryRequest) obj;
+    trinsic.services.trustregistry.v1.SearchRegistryRequest other = (trinsic.services.trustregistry.v1.SearchRegistryRequest) obj;
 
-    if (!getQuery().equals(other.getQuery())) return false;
-    if (!getContinuationToken().equals(other.getContinuationToken())) return false;
-    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+    if (!getQuery()
+        .equals(other.getQuery())) return false;
+    if (!getContinuationToken()
+        .equals(other.getContinuationToken())) return false;
+    if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
 
@@ -219,142 +261,140 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
     hash = (53 * hash) + getQuery().hashCode();
     hash = (37 * hash) + CONTINUATION_TOKEN_FIELD_NUMBER;
     hash = (53 * hash) + getContinuationToken().hashCode();
-    hash = (29 * hash) + getUnknownFields().hashCode();
+    hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
   public static trinsic.services.trustregistry.v1.SearchRegistryRequest parseFrom(
-      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.trustregistry.v1.SearchRegistryRequest parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.trustregistry.v1.SearchRegistryRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.trustregistry.v1.SearchRegistryRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.trustregistry.v1.SearchRegistryRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.trustregistry.v1.SearchRegistryRequest parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
-  public static trinsic.services.trustregistry.v1.SearchRegistryRequest parseFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-  }
-
-  public static trinsic.services.trustregistry.v1.SearchRegistryRequest parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+  public static trinsic.services.trustregistry.v1.SearchRegistryRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
-  public static trinsic.services.trustregistry.v1.SearchRegistryRequest parseDelimitedFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static trinsic.services.trustregistry.v1.SearchRegistryRequest parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
-  }
-
   public static trinsic.services.trustregistry.v1.SearchRegistryRequest parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
+  public static trinsic.services.trustregistry.v1.SearchRegistryRequest parseDelimitedFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
+  }
+  public static trinsic.services.trustregistry.v1.SearchRegistryRequest parseDelimitedFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+  }
+  public static trinsic.services.trustregistry.v1.SearchRegistryRequest parseFrom(
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
+  }
   public static trinsic.services.trustregistry.v1.SearchRegistryRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
-  public static Builder newBuilder(
-      trinsic.services.trustregistry.v1.SearchRegistryRequest prototype) {
+  public static Builder newBuilder(trinsic.services.trustregistry.v1.SearchRegistryRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
-   *
-   *
    * <pre>
    * Request to search all governance frameworks within ecosystem
    * </pre>
    *
    * Protobuf type {@code services.trustregistry.v1.SearchRegistryRequest}
    */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.SearchRegistryRequest)
       trinsic.services.trustregistry.v1.SearchRegistryRequestOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-          .internal_static_services_trustregistry_v1_SearchRegistryRequest_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_SearchRegistryRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-          .internal_static_services_trustregistry_v1_SearchRegistryRequest_fieldAccessorTable
+      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_SearchRegistryRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.trustregistry.v1.SearchRegistryRequest.class,
-              trinsic.services.trustregistry.v1.SearchRegistryRequest.Builder.class);
+              trinsic.services.trustregistry.v1.SearchRegistryRequest.class, trinsic.services.trustregistry.v1.SearchRegistryRequest.Builder.class);
     }
 
     // Construct using trinsic.services.trustregistry.v1.SearchRegistryRequest.newBuilder()
-    private Builder() {}
-
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
+    private Builder() {
+      maybeForceBuilderInitialization();
     }
 
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
+      maybeForceBuilderInitialization();
+    }
+    private void maybeForceBuilderInitialization() {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+      }
+    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -366,9 +406,9 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-          .internal_static_services_trustregistry_v1_SearchRegistryRequest_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_SearchRegistryRequest_descriptor;
     }
 
     @java.lang.Override
@@ -387,8 +427,7 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
 
     @java.lang.Override
     public trinsic.services.trustregistry.v1.SearchRegistryRequest buildPartial() {
-      trinsic.services.trustregistry.v1.SearchRegistryRequest result =
-          new trinsic.services.trustregistry.v1.SearchRegistryRequest(this);
+      trinsic.services.trustregistry.v1.SearchRegistryRequest result = new trinsic.services.trustregistry.v1.SearchRegistryRequest(this);
       result.query_ = query_;
       result.continuationToken_ = continuationToken_;
       onBuilt();
@@ -399,39 +438,38 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof trinsic.services.trustregistry.v1.SearchRegistryRequest) {
-        return mergeFrom((trinsic.services.trustregistry.v1.SearchRegistryRequest) other);
+        return mergeFrom((trinsic.services.trustregistry.v1.SearchRegistryRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -439,8 +477,7 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
     }
 
     public Builder mergeFrom(trinsic.services.trustregistry.v1.SearchRegistryRequest other) {
-      if (other == trinsic.services.trustregistry.v1.SearchRegistryRequest.getDefaultInstance())
-        return this;
+      if (other == trinsic.services.trustregistry.v1.SearchRegistryRequest.getDefaultInstance()) return this;
       if (!other.getQuery().isEmpty()) {
         query_ = other.query_;
         onChanged();
@@ -449,7 +486,7 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
         continuationToken_ = other.continuationToken_;
         onChanged();
       }
-      this.mergeUnknownFields(other.getUnknownFields());
+      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -464,62 +501,34 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
+      trinsic.services.trustregistry.v1.SearchRegistryRequest parsedMessage = null;
       try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10:
-              {
-                query_ = input.readStringRequireUtf8();
-
-                break;
-              } // case 10
-            case 18:
-              {
-                continuationToken_ = input.readStringRequireUtf8();
-
-                break;
-              } // case 18
-            default:
-              {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-          } // switch (tag)
-        } // while (!done)
+        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        parsedMessage = (trinsic.services.trustregistry.v1.SearchRegistryRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
-        onChanged();
-      } // finally
+        if (parsedMessage != null) {
+          mergeFrom(parsedMessage);
+        }
+      }
       return this;
     }
 
     private java.lang.Object query_ = "";
     /**
-     *
-     *
      * <pre>
      * SQL query to execute against frameworks. Example: `SELECT c from c where c.type == 'GovernanceFramework'`
      * </pre>
      *
      * <code>string query = 1;</code>
-     *
      * @return The query.
      */
     public java.lang.String getQuery() {
       java.lang.Object ref = query_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         query_ = s;
         return s;
@@ -528,21 +537,20 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
       }
     }
     /**
-     *
-     *
      * <pre>
      * SQL query to execute against frameworks. Example: `SELECT c from c where c.type == 'GovernanceFramework'`
      * </pre>
      *
      * <code>string query = 1;</code>
-     *
      * @return The bytes for query.
      */
-    public com.google.protobuf.ByteString getQueryBytes() {
+    public com.google.protobuf.ByteString
+        getQueryBytes() {
       java.lang.Object ref = query_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         query_ = b;
         return b;
       } else {
@@ -550,61 +558,54 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
       }
     }
     /**
-     *
-     *
      * <pre>
      * SQL query to execute against frameworks. Example: `SELECT c from c where c.type == 'GovernanceFramework'`
      * </pre>
      *
      * <code>string query = 1;</code>
-     *
      * @param value The query to set.
      * @return This builder for chaining.
      */
-    public Builder setQuery(java.lang.String value) {
+    public Builder setQuery(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       query_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * SQL query to execute against frameworks. Example: `SELECT c from c where c.type == 'GovernanceFramework'`
      * </pre>
      *
      * <code>string query = 1;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearQuery() {
-
+      
       query_ = getDefaultInstance().getQuery();
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * SQL query to execute against frameworks. Example: `SELECT c from c where c.type == 'GovernanceFramework'`
      * </pre>
      *
      * <code>string query = 1;</code>
-     *
      * @param value The bytes for query to set.
      * @return This builder for chaining.
      */
-    public Builder setQueryBytes(com.google.protobuf.ByteString value) {
+    public Builder setQueryBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       query_ = value;
       onChanged();
       return this;
@@ -612,20 +613,18 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
 
     private java.lang.Object continuationToken_ = "";
     /**
-     *
-     *
      * <pre>
      * Token to fetch next set of results, from previous `SearchRegistryResponse`
      * </pre>
      *
      * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
-     *
      * @return The continuationToken.
      */
     public java.lang.String getContinuationToken() {
       java.lang.Object ref = continuationToken_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         continuationToken_ = s;
         return s;
@@ -634,21 +633,20 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
       }
     }
     /**
-     *
-     *
      * <pre>
      * Token to fetch next set of results, from previous `SearchRegistryResponse`
      * </pre>
      *
      * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
-     *
      * @return The bytes for continuationToken.
      */
-    public com.google.protobuf.ByteString getContinuationTokenBytes() {
+    public com.google.protobuf.ByteString
+        getContinuationTokenBytes() {
       java.lang.Object ref = continuationToken_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         continuationToken_ = b;
         return b;
       } else {
@@ -656,68 +654,61 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
       }
     }
     /**
-     *
-     *
      * <pre>
      * Token to fetch next set of results, from previous `SearchRegistryResponse`
      * </pre>
      *
      * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
-     *
      * @param value The continuationToken to set.
      * @return This builder for chaining.
      */
-    public Builder setContinuationToken(java.lang.String value) {
+    public Builder setContinuationToken(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       continuationToken_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Token to fetch next set of results, from previous `SearchRegistryResponse`
      * </pre>
      *
      * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearContinuationToken() {
-
+      
       continuationToken_ = getDefaultInstance().getContinuationToken();
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Token to fetch next set of results, from previous `SearchRegistryResponse`
      * </pre>
      *
      * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
-     *
      * @param value The bytes for continuationToken to set.
      * @return This builder for chaining.
      */
-    public Builder setContinuationTokenBytes(com.google.protobuf.ByteString value) {
+    public Builder setContinuationTokenBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       continuationToken_ = value;
       onChanged();
       return this;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -727,12 +718,12 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:services.trustregistry.v1.SearchRegistryRequest)
   }
 
   // @@protoc_insertion_point(class_scope:services.trustregistry.v1.SearchRegistryRequest)
   private static final trinsic.services.trustregistry.v1.SearchRegistryRequest DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new trinsic.services.trustregistry.v1.SearchRegistryRequest();
   }
@@ -741,27 +732,16 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<SearchRegistryRequest> PARSER =
-      new com.google.protobuf.AbstractParser<SearchRegistryRequest>() {
-        @java.lang.Override
-        public SearchRegistryRequest parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
+  private static final com.google.protobuf.Parser<SearchRegistryRequest>
+      PARSER = new com.google.protobuf.AbstractParser<SearchRegistryRequest>() {
+    @java.lang.Override
+    public SearchRegistryRequest parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return new SearchRegistryRequest(input, extensionRegistry);
+    }
+  };
 
   public static com.google.protobuf.Parser<SearchRegistryRequest> parser() {
     return PARSER;
@@ -776,4 +756,6 @@ public final class SearchRegistryRequest extends com.google.protobuf.GeneratedMe
   public trinsic.services.trustregistry.v1.SearchRegistryRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

@@ -3,32 +3,25 @@
 
 package trinsic.services.trustregistry.v1;
 
-public interface GetMembershipStatusResponseOrBuilder
-    extends
+public interface GetMembershipStatusResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.GetMembershipStatusResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   *
-   *
    * <pre>
    * Status of member for given credential schema
    * </pre>
    *
    * <code>.services.trustregistry.v1.RegistrationStatus status = 1;</code>
-   *
    * @return The enum numeric value on the wire for status.
    */
   int getStatusValue();
   /**
-   *
-   *
    * <pre>
    * Status of member for given credential schema
    * </pre>
    *
    * <code>.services.trustregistry.v1.RegistrationStatus status = 1;</code>
-   *
    * @return The status.
    */
   trinsic.services.trustregistry.v1.RegistrationStatus getStatus();

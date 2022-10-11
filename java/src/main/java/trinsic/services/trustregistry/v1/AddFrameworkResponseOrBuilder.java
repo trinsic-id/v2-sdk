@@ -3,83 +3,67 @@
 
 package trinsic.services.trustregistry.v1;
 
-public interface AddFrameworkResponseOrBuilder
-    extends
+public interface AddFrameworkResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.AddFrameworkResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   *
-   *
    * <pre>
    * Unique framework identifier
    * </pre>
    *
    * <code>string id = 1;</code>
-   *
    * @return The id.
    */
   java.lang.String getId();
   /**
-   *
-   *
    * <pre>
    * Unique framework identifier
    * </pre>
    *
    * <code>string id = 1;</code>
-   *
    * @return The bytes for id.
    */
-  com.google.protobuf.ByteString getIdBytes();
+  com.google.protobuf.ByteString
+      getIdBytes();
 
   /**
-   *
-   *
    * <pre>
    * DID URI of Trinsic account which created the governance framework
    * </pre>
    *
    * <code>string governing_authority = 2;</code>
-   *
    * @return The governingAuthority.
    */
   java.lang.String getGoverningAuthority();
   /**
-   *
-   *
    * <pre>
    * DID URI of Trinsic account which created the governance framework
    * </pre>
    *
    * <code>string governing_authority = 2;</code>
-   *
    * @return The bytes for governingAuthority.
    */
-  com.google.protobuf.ByteString getGoverningAuthorityBytes();
+  com.google.protobuf.ByteString
+      getGoverningAuthorityBytes();
 
   /**
-   *
-   *
    * <pre>
    * URN of trust registry for governance framework
    * </pre>
    *
    * <code>string trust_registry = 3;</code>
-   *
    * @return The trustRegistry.
    */
   java.lang.String getTrustRegistry();
   /**
-   *
-   *
    * <pre>
    * URN of trust registry for governance framework
    * </pre>
    *
    * <code>string trust_registry = 3;</code>
-   *
    * @return The bytes for trustRegistry.
    */
-  com.google.protobuf.ByteString getTrustRegistryBytes();
+  com.google.protobuf.ByteString
+      getTrustRegistryBytes();
 }

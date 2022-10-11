@@ -3,7 +3,7 @@
 
 package trinsic.services.trustregistry.v1;
 
-public interface UnregisterMemberResponseOrBuilder
-    extends
+public interface UnregisterMemberResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.UnregisterMemberResponse)
-    com.google.protobuf.MessageOrBuilder {}
+    com.google.protobuf.MessageOrBuilder {
+}
