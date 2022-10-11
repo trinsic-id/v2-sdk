@@ -3,18 +3,17 @@
 
 package trinsic.services.provider.v1;
 
-/**
- * Protobuf type {@code services.provider.v1.PublicEcosystemInformation}
- */
-public final class PublicEcosystemInformation extends
-    com.google.protobuf.GeneratedMessageV3 implements
+/** Protobuf type {@code services.provider.v1.PublicEcosystemInformation} */
+public final class PublicEcosystemInformation extends com.google.protobuf.GeneratedMessageV3
+    implements
     // @@protoc_insertion_point(message_implements:services.provider.v1.PublicEcosystemInformation)
     PublicEcosystemInformationOrBuilder {
-private static final long serialVersionUID = 0L;
+  private static final long serialVersionUID = 0L;
   // Use PublicEcosystemInformation.newBuilder() to construct.
   private PublicEcosystemInformation(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
+
   private PublicEcosystemInformation() {
     name_ = "";
     domain_ = "";
@@ -22,106 +21,41 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
     return new PublicEcosystemInformation();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet
-  getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
     return this.unknownFields;
   }
-  private PublicEcosystemInformation(
-      com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
-    try {
-      boolean done = false;
-      while (!done) {
-        int tag = input.readTag();
-        switch (tag) {
-          case 0:
-            done = true;
-            break;
-          case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
 
-            name_ = s;
-            break;
-          }
-          case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            domain_ = s;
-            break;
-          }
-          case 24: {
-
-            domainVerified_ = input.readBool();
-            break;
-          }
-          case 34: {
-            trinsic.services.provider.v1.EcosystemDisplay.Builder subBuilder = null;
-            if (styleDisplay_ != null) {
-              subBuilder = styleDisplay_.toBuilder();
-            }
-            styleDisplay_ = input.readMessage(trinsic.services.provider.v1.EcosystemDisplay.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(styleDisplay_);
-              styleDisplay_ = subBuilder.buildPartial();
-            }
-
-            break;
-          }
-          default: {
-            if (!parseUnknownField(
-                input, unknownFields, extensionRegistry, tag)) {
-              done = true;
-            }
-            break;
-          }
-        }
-      }
-    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
-    } catch (com.google.protobuf.UninitializedMessageException e) {
-      throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
-    } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
-    } finally {
-      this.unknownFields = unknownFields.build();
-      makeExtensionsImmutable();
-    }
-  }
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_PublicEcosystemInformation_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    return trinsic.services.provider.v1.ProviderOuterClass
+        .internal_static_services_provider_v1_PublicEcosystemInformation_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_PublicEcosystemInformation_fieldAccessorTable
+    return trinsic.services.provider.v1.ProviderOuterClass
+        .internal_static_services_provider_v1_PublicEcosystemInformation_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.provider.v1.PublicEcosystemInformation.class, trinsic.services.provider.v1.PublicEcosystemInformation.Builder.class);
+            trinsic.services.provider.v1.PublicEcosystemInformation.class,
+            trinsic.services.provider.v1.PublicEcosystemInformation.Builder.class);
   }
 
   public static final int NAME_FIELD_NUMBER = 1;
   private volatile java.lang.Object name_;
   /**
+   *
+   *
    * <pre>
    * Public name of this ecosystem
    * </pre>
    *
    * <code>string name = 1;</code>
+   *
    * @return The name.
    */
   @java.lang.Override
@@ -130,29 +64,29 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       name_ = s;
       return s;
     }
   }
   /**
+   *
+   *
    * <pre>
    * Public name of this ecosystem
    * </pre>
    *
    * <code>string name = 1;</code>
+   *
    * @return The bytes for name.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getNameBytes() {
+  public com.google.protobuf.ByteString getNameBytes() {
     java.lang.Object ref = name_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       name_ = b;
       return b;
     } else {
@@ -163,11 +97,14 @@ private static final long serialVersionUID = 0L;
   public static final int DOMAIN_FIELD_NUMBER = 2;
   private volatile java.lang.Object domain_;
   /**
+   *
+   *
    * <pre>
    * Public domain for the owner of this ecosystem
    * </pre>
    *
    * <code>string domain = 2;</code>
+   *
    * @return The domain.
    */
   @java.lang.Override
@@ -176,29 +113,29 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       domain_ = s;
       return s;
     }
   }
   /**
+   *
+   *
    * <pre>
    * Public domain for the owner of this ecosystem
    * </pre>
    *
    * <code>string domain = 2;</code>
+   *
    * @return The bytes for domain.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getDomainBytes() {
+  public com.google.protobuf.ByteString getDomainBytes() {
     java.lang.Object ref = domain_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       domain_ = b;
       return b;
     } else {
@@ -209,11 +146,14 @@ private static final long serialVersionUID = 0L;
   public static final int DOMAIN_VERIFIED_FIELD_NUMBER = 3;
   private boolean domainVerified_;
   /**
+   *
+   *
    * <pre>
    * Trinsic verified the domain is owned by the owner of this ecosystem
    * </pre>
    *
    * <code>bool domain_verified = 3;</code>
+   *
    * @return The domainVerified.
    */
   @java.lang.Override
@@ -224,11 +164,14 @@ private static final long serialVersionUID = 0L;
   public static final int STYLE_DISPLAY_FIELD_NUMBER = 4;
   private trinsic.services.provider.v1.EcosystemDisplay styleDisplay_;
   /**
+   *
+   *
    * <pre>
    * Style display information
    * </pre>
    *
    * <code>.services.provider.v1.EcosystemDisplay style_display = 4;</code>
+   *
    * @return Whether the styleDisplay field is set.
    */
   @java.lang.Override
@@ -236,18 +179,25 @@ private static final long serialVersionUID = 0L;
     return styleDisplay_ != null;
   }
   /**
+   *
+   *
    * <pre>
    * Style display information
    * </pre>
    *
    * <code>.services.provider.v1.EcosystemDisplay style_display = 4;</code>
+   *
    * @return The styleDisplay.
    */
   @java.lang.Override
   public trinsic.services.provider.v1.EcosystemDisplay getStyleDisplay() {
-    return styleDisplay_ == null ? trinsic.services.provider.v1.EcosystemDisplay.getDefaultInstance() : styleDisplay_;
+    return styleDisplay_ == null
+        ? trinsic.services.provider.v1.EcosystemDisplay.getDefaultInstance()
+        : styleDisplay_;
   }
   /**
+   *
+   *
    * <pre>
    * Style display information
    * </pre>
@@ -260,6 +210,7 @@ private static final long serialVersionUID = 0L;
   }
 
   private byte memoizedIsInitialized = -1;
+
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -271,8 +222,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
     }
@@ -285,7 +235,7 @@ private static final long serialVersionUID = 0L;
     if (styleDisplay_ != null) {
       output.writeMessage(4, getStyleDisplay());
     }
-    unknownFields.writeTo(output);
+    getUnknownFields().writeTo(output);
   }
 
   @java.lang.Override
@@ -301,14 +251,12 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, domain_);
     }
     if (domainVerified_ != false) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(3, domainVerified_);
+      size += com.google.protobuf.CodedOutputStream.computeBoolSize(3, domainVerified_);
     }
     if (styleDisplay_ != null) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(4, getStyleDisplay());
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, getStyleDisplay());
     }
-    size += unknownFields.getSerializedSize();
+    size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
   }
@@ -316,25 +264,22 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-     return true;
+      return true;
     }
     if (!(obj instanceof trinsic.services.provider.v1.PublicEcosystemInformation)) {
       return super.equals(obj);
     }
-    trinsic.services.provider.v1.PublicEcosystemInformation other = (trinsic.services.provider.v1.PublicEcosystemInformation) obj;
+    trinsic.services.provider.v1.PublicEcosystemInformation other =
+        (trinsic.services.provider.v1.PublicEcosystemInformation) obj;
 
-    if (!getName()
-        .equals(other.getName())) return false;
-    if (!getDomain()
-        .equals(other.getDomain())) return false;
-    if (getDomainVerified()
-        != other.getDomainVerified()) return false;
+    if (!getName().equals(other.getName())) return false;
+    if (!getDomain().equals(other.getDomain())) return false;
+    if (getDomainVerified() != other.getDomainVerified()) return false;
     if (hasStyleDisplay() != other.hasStyleDisplay()) return false;
     if (hasStyleDisplay()) {
-      if (!getStyleDisplay()
-          .equals(other.getStyleDisplay())) return false;
+      if (!getStyleDisplay().equals(other.getStyleDisplay())) return false;
     }
-    if (!unknownFields.equals(other.unknownFields)) return false;
+    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
 
@@ -350,142 +295,139 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + DOMAIN_FIELD_NUMBER;
     hash = (53 * hash) + getDomain().hashCode();
     hash = (37 * hash) + DOMAIN_VERIFIED_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-        getDomainVerified());
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getDomainVerified());
     if (hasStyleDisplay()) {
       hash = (37 * hash) + STYLE_DISPLAY_FIELD_NUMBER;
       hash = (53 * hash) + getStyleDisplay().hashCode();
     }
-    hash = (29 * hash) + unknownFields.hashCode();
+    hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
   public static trinsic.services.provider.v1.PublicEcosystemInformation parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static trinsic.services.provider.v1.PublicEcosystemInformation parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static trinsic.services.provider.v1.PublicEcosystemInformation parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static trinsic.services.provider.v1.PublicEcosystemInformation parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static trinsic.services.provider.v1.PublicEcosystemInformation parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static trinsic.services.provider.v1.PublicEcosystemInformation parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static trinsic.services.provider.v1.PublicEcosystemInformation parseFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
-  }
+
   public static trinsic.services.provider.v1.PublicEcosystemInformation parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
-  public static trinsic.services.provider.v1.PublicEcosystemInformation parseDelimitedFrom(java.io.InputStream input)
+
+  public static trinsic.services.provider.v1.PublicEcosystemInformation parseFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
+
   public static trinsic.services.provider.v1.PublicEcosystemInformation parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
+
+  public static trinsic.services.provider.v1.PublicEcosystemInformation parseDelimitedFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+        PARSER, input, extensionRegistry);
+  }
+
   public static trinsic.services.provider.v1.PublicEcosystemInformation parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static trinsic.services.provider.v1.PublicEcosystemInformation parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
+  public Builder newBuilderForType() {
+    return newBuilder();
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(trinsic.services.provider.v1.PublicEcosystemInformation prototype) {
+
+  public static Builder newBuilder(
+      trinsic.services.provider.v1.PublicEcosystemInformation prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-  }
-  @java.lang.Override
-  public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  public Builder toBuilder() {
+    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+  }
+
+  @java.lang.Override
+  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
-  /**
-   * Protobuf type {@code services.provider.v1.PublicEcosystemInformation}
-   */
-  public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+  /** Protobuf type {@code services.provider.v1.PublicEcosystemInformation} */
+  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+      implements
       // @@protoc_insertion_point(builder_implements:services.provider.v1.PublicEcosystemInformation)
       trinsic.services.provider.v1.PublicEcosystemInformationOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_PublicEcosystemInformation_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.services.provider.v1.ProviderOuterClass
+          .internal_static_services_provider_v1_PublicEcosystemInformation_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_PublicEcosystemInformation_fieldAccessorTable
+      return trinsic.services.provider.v1.ProviderOuterClass
+          .internal_static_services_provider_v1_PublicEcosystemInformation_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.provider.v1.PublicEcosystemInformation.class, trinsic.services.provider.v1.PublicEcosystemInformation.Builder.class);
+              trinsic.services.provider.v1.PublicEcosystemInformation.class,
+              trinsic.services.provider.v1.PublicEcosystemInformation.Builder.class);
     }
 
     // Construct using trinsic.services.provider.v1.PublicEcosystemInformation.newBuilder()
-    private Builder() {
-      maybeForceBuilderInitialization();
+    private Builder() {}
+
+    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
     }
 
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-      }
-    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -505,9 +447,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
-      return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_PublicEcosystemInformation_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return trinsic.services.provider.v1.ProviderOuterClass
+          .internal_static_services_provider_v1_PublicEcosystemInformation_descriptor;
     }
 
     @java.lang.Override
@@ -526,7 +468,8 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public trinsic.services.provider.v1.PublicEcosystemInformation buildPartial() {
-      trinsic.services.provider.v1.PublicEcosystemInformation result = new trinsic.services.provider.v1.PublicEcosystemInformation(this);
+      trinsic.services.provider.v1.PublicEcosystemInformation result =
+          new trinsic.services.provider.v1.PublicEcosystemInformation(this);
       result.name_ = name_;
       result.domain_ = domain_;
       result.domainVerified_ = domainVerified_;
@@ -543,38 +486,39 @@ private static final long serialVersionUID = 0L;
     public Builder clone() {
       return super.clone();
     }
+
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.setField(field, value);
     }
+
     @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
+
     @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
+
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
+
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
+
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof trinsic.services.provider.v1.PublicEcosystemInformation) {
-        return mergeFrom((trinsic.services.provider.v1.PublicEcosystemInformation)other);
+        return mergeFrom((trinsic.services.provider.v1.PublicEcosystemInformation) other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -582,7 +526,8 @@ private static final long serialVersionUID = 0L;
     }
 
     public Builder mergeFrom(trinsic.services.provider.v1.PublicEcosystemInformation other) {
-      if (other == trinsic.services.provider.v1.PublicEcosystemInformation.getDefaultInstance()) return this;
+      if (other == trinsic.services.provider.v1.PublicEcosystemInformation.getDefaultInstance())
+        return this;
       if (!other.getName().isEmpty()) {
         name_ = other.name_;
         onChanged();
@@ -597,7 +542,7 @@ private static final long serialVersionUID = 0L;
       if (other.hasStyleDisplay()) {
         mergeStyleDisplay(other.getStyleDisplay());
       }
-      this.mergeUnknownFields(other.unknownFields);
+      this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
     }
@@ -612,34 +557,74 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      trinsic.services.provider.v1.PublicEcosystemInformation parsedMessage = null;
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       try {
-        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10:
+              {
+                name_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 10
+            case 18:
+              {
+                domain_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 18
+            case 24:
+              {
+                domainVerified_ = input.readBool();
+
+                break;
+              } // case 24
+            case 34:
+              {
+                input.readMessage(getStyleDisplayFieldBuilder().getBuilder(), extensionRegistry);
+
+                break;
+              } // case 34
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+          } // switch (tag)
+        } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (trinsic.services.provider.v1.PublicEcosystemInformation) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
-        if (parsedMessage != null) {
-          mergeFrom(parsedMessage);
-        }
-      }
+        onChanged();
+      } // finally
       return this;
     }
 
     private java.lang.Object name_ = "";
     /**
+     *
+     *
      * <pre>
      * Public name of this ecosystem
      * </pre>
      *
      * <code>string name = 1;</code>
+     *
      * @return The name.
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         name_ = s;
         return s;
@@ -648,20 +633,21 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Public name of this ecosystem
      * </pre>
      *
      * <code>string name = 1;</code>
+     *
      * @return The bytes for name.
      */
-    public com.google.protobuf.ByteString
-        getNameBytes() {
+    public com.google.protobuf.ByteString getNameBytes() {
       java.lang.Object ref = name_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         name_ = b;
         return b;
       } else {
@@ -669,54 +655,61 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Public name of this ecosystem
      * </pre>
      *
      * <code>string name = 1;</code>
+     *
      * @param value The name to set.
      * @return This builder for chaining.
      */
-    public Builder setName(
-        java.lang.String value) {
+    public Builder setName(java.lang.String value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        throw new NullPointerException();
+      }
+
       name_ = value;
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Public name of this ecosystem
      * </pre>
      *
      * <code>string name = 1;</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearName() {
-      
+
       name_ = getDefaultInstance().getName();
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Public name of this ecosystem
      * </pre>
      *
      * <code>string name = 1;</code>
+     *
      * @param value The bytes for name to set.
      * @return This builder for chaining.
      */
-    public Builder setNameBytes(
-        com.google.protobuf.ByteString value) {
+    public Builder setNameBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
       name_ = value;
       onChanged();
       return this;
@@ -724,18 +717,20 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object domain_ = "";
     /**
+     *
+     *
      * <pre>
      * Public domain for the owner of this ecosystem
      * </pre>
      *
      * <code>string domain = 2;</code>
+     *
      * @return The domain.
      */
     public java.lang.String getDomain() {
       java.lang.Object ref = domain_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         domain_ = s;
         return s;
@@ -744,20 +739,21 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Public domain for the owner of this ecosystem
      * </pre>
      *
      * <code>string domain = 2;</code>
+     *
      * @return The bytes for domain.
      */
-    public com.google.protobuf.ByteString
-        getDomainBytes() {
+    public com.google.protobuf.ByteString getDomainBytes() {
       java.lang.Object ref = domain_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         domain_ = b;
         return b;
       } else {
@@ -765,66 +761,76 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Public domain for the owner of this ecosystem
      * </pre>
      *
      * <code>string domain = 2;</code>
+     *
      * @param value The domain to set.
      * @return This builder for chaining.
      */
-    public Builder setDomain(
-        java.lang.String value) {
+    public Builder setDomain(java.lang.String value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        throw new NullPointerException();
+      }
+
       domain_ = value;
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Public domain for the owner of this ecosystem
      * </pre>
      *
      * <code>string domain = 2;</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearDomain() {
-      
+
       domain_ = getDefaultInstance().getDomain();
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Public domain for the owner of this ecosystem
      * </pre>
      *
      * <code>string domain = 2;</code>
+     *
      * @param value The bytes for domain to set.
      * @return This builder for chaining.
      */
-    public Builder setDomainBytes(
-        com.google.protobuf.ByteString value) {
+    public Builder setDomainBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
       domain_ = value;
       onChanged();
       return this;
     }
 
-    private boolean domainVerified_ ;
+    private boolean domainVerified_;
     /**
+     *
+     *
      * <pre>
      * Trinsic verified the domain is owned by the owner of this ecosystem
      * </pre>
      *
      * <code>bool domain_verified = 3;</code>
+     *
      * @return The domainVerified.
      */
     @java.lang.Override
@@ -832,30 +838,36 @@ private static final long serialVersionUID = 0L;
       return domainVerified_;
     }
     /**
+     *
+     *
      * <pre>
      * Trinsic verified the domain is owned by the owner of this ecosystem
      * </pre>
      *
      * <code>bool domain_verified = 3;</code>
+     *
      * @param value The domainVerified to set.
      * @return This builder for chaining.
      */
     public Builder setDomainVerified(boolean value) {
-      
+
       domainVerified_ = value;
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Trinsic verified the domain is owned by the owner of this ecosystem
      * </pre>
      *
      * <code>bool domain_verified = 3;</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearDomainVerified() {
-      
+
       domainVerified_ = false;
       onChanged();
       return this;
@@ -863,34 +875,47 @@ private static final long serialVersionUID = 0L;
 
     private trinsic.services.provider.v1.EcosystemDisplay styleDisplay_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        trinsic.services.provider.v1.EcosystemDisplay, trinsic.services.provider.v1.EcosystemDisplay.Builder, trinsic.services.provider.v1.EcosystemDisplayOrBuilder> styleDisplayBuilder_;
+            trinsic.services.provider.v1.EcosystemDisplay,
+            trinsic.services.provider.v1.EcosystemDisplay.Builder,
+            trinsic.services.provider.v1.EcosystemDisplayOrBuilder>
+        styleDisplayBuilder_;
     /**
+     *
+     *
      * <pre>
      * Style display information
      * </pre>
      *
      * <code>.services.provider.v1.EcosystemDisplay style_display = 4;</code>
+     *
      * @return Whether the styleDisplay field is set.
      */
     public boolean hasStyleDisplay() {
       return styleDisplayBuilder_ != null || styleDisplay_ != null;
     }
     /**
+     *
+     *
      * <pre>
      * Style display information
      * </pre>
      *
      * <code>.services.provider.v1.EcosystemDisplay style_display = 4;</code>
+     *
      * @return The styleDisplay.
      */
     public trinsic.services.provider.v1.EcosystemDisplay getStyleDisplay() {
       if (styleDisplayBuilder_ == null) {
-        return styleDisplay_ == null ? trinsic.services.provider.v1.EcosystemDisplay.getDefaultInstance() : styleDisplay_;
+        return styleDisplay_ == null
+            ? trinsic.services.provider.v1.EcosystemDisplay.getDefaultInstance()
+            : styleDisplay_;
       } else {
         return styleDisplayBuilder_.getMessage();
       }
     }
     /**
+     *
+     *
      * <pre>
      * Style display information
      * </pre>
@@ -911,6 +936,8 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Style display information
      * </pre>
@@ -929,6 +956,8 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Style display information
      * </pre>
@@ -939,7 +968,9 @@ private static final long serialVersionUID = 0L;
       if (styleDisplayBuilder_ == null) {
         if (styleDisplay_ != null) {
           styleDisplay_ =
-            trinsic.services.provider.v1.EcosystemDisplay.newBuilder(styleDisplay_).mergeFrom(value).buildPartial();
+              trinsic.services.provider.v1.EcosystemDisplay.newBuilder(styleDisplay_)
+                  .mergeFrom(value)
+                  .buildPartial();
         } else {
           styleDisplay_ = value;
         }
@@ -951,6 +982,8 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Style display information
      * </pre>
@@ -969,6 +1002,8 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Style display information
      * </pre>
@@ -976,11 +1011,13 @@ private static final long serialVersionUID = 0L;
      * <code>.services.provider.v1.EcosystemDisplay style_display = 4;</code>
      */
     public trinsic.services.provider.v1.EcosystemDisplay.Builder getStyleDisplayBuilder() {
-      
+
       onChanged();
       return getStyleDisplayFieldBuilder().getBuilder();
     }
     /**
+     *
+     *
      * <pre>
      * Style display information
      * </pre>
@@ -991,11 +1028,14 @@ private static final long serialVersionUID = 0L;
       if (styleDisplayBuilder_ != null) {
         return styleDisplayBuilder_.getMessageOrBuilder();
       } else {
-        return styleDisplay_ == null ?
-            trinsic.services.provider.v1.EcosystemDisplay.getDefaultInstance() : styleDisplay_;
+        return styleDisplay_ == null
+            ? trinsic.services.provider.v1.EcosystemDisplay.getDefaultInstance()
+            : styleDisplay_;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Style display information
      * </pre>
@@ -1003,21 +1043,24 @@ private static final long serialVersionUID = 0L;
      * <code>.services.provider.v1.EcosystemDisplay style_display = 4;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        trinsic.services.provider.v1.EcosystemDisplay, trinsic.services.provider.v1.EcosystemDisplay.Builder, trinsic.services.provider.v1.EcosystemDisplayOrBuilder> 
+            trinsic.services.provider.v1.EcosystemDisplay,
+            trinsic.services.provider.v1.EcosystemDisplay.Builder,
+            trinsic.services.provider.v1.EcosystemDisplayOrBuilder>
         getStyleDisplayFieldBuilder() {
       if (styleDisplayBuilder_ == null) {
-        styleDisplayBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            trinsic.services.provider.v1.EcosystemDisplay, trinsic.services.provider.v1.EcosystemDisplay.Builder, trinsic.services.provider.v1.EcosystemDisplayOrBuilder>(
-                getStyleDisplay(),
-                getParentForChildren(),
-                isClean());
+        styleDisplayBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                trinsic.services.provider.v1.EcosystemDisplay,
+                trinsic.services.provider.v1.EcosystemDisplay.Builder,
+                trinsic.services.provider.v1.EcosystemDisplayOrBuilder>(
+                getStyleDisplay(), getParentForChildren(), isClean());
         styleDisplay_ = null;
       }
       return styleDisplayBuilder_;
     }
+
     @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -1027,12 +1070,12 @@ private static final long serialVersionUID = 0L;
       return super.mergeUnknownFields(unknownFields);
     }
 
-
     // @@protoc_insertion_point(builder_scope:services.provider.v1.PublicEcosystemInformation)
   }
 
   // @@protoc_insertion_point(class_scope:services.provider.v1.PublicEcosystemInformation)
   private static final trinsic.services.provider.v1.PublicEcosystemInformation DEFAULT_INSTANCE;
+
   static {
     DEFAULT_INSTANCE = new trinsic.services.provider.v1.PublicEcosystemInformation();
   }
@@ -1041,16 +1084,27 @@ private static final long serialVersionUID = 0L;
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<PublicEcosystemInformation>
-      PARSER = new com.google.protobuf.AbstractParser<PublicEcosystemInformation>() {
-    @java.lang.Override
-    public PublicEcosystemInformation parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return new PublicEcosystemInformation(input, extensionRegistry);
-    }
-  };
+  private static final com.google.protobuf.Parser<PublicEcosystemInformation> PARSER =
+      new com.google.protobuf.AbstractParser<PublicEcosystemInformation>() {
+        @java.lang.Override
+        public PublicEcosystemInformation parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
 
   public static com.google.protobuf.Parser<PublicEcosystemInformation> parser() {
     return PARSER;
@@ -1065,6 +1119,4 @@ private static final long serialVersionUID = 0L;
   public trinsic.services.provider.v1.PublicEcosystemInformation getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
-
 }
-

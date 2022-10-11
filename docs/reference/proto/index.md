@@ -546,7 +546,7 @@ Result of a validation check on a proof
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| is_valid | [bool](/reference/proto#bool) | Whether or not this validation check passed |
+| is_valid | [bool](/reference/proto#bool) | Whether this validation check passed |
 | messages | [string](/reference/proto#string)[] | If validation failed, contains messages explaining why |
 
 
@@ -1439,6 +1439,38 @@ Details of an ecosystem
 
 
 
+<a name="services-provider-v1-EcosystemDisplayDetailsRequest"></a>
+
+### EcosystemDisplayDetailsRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| color | [string](/reference/proto#string) | string id = 1; string name = 2; string logo_url = 3; |
+| logo_data | [bytes](/reference/proto#bytes) |  |
+
+
+
+
+
+
+<a name="services-provider-v1-EcosystemDisplayRequest"></a>
+
+### EcosystemDisplayRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| dark | [EcosystemDisplayDetailsRequest](/reference/proto#services-provider-v1-EcosystemDisplayDetailsRequest) |  |
+| light | [EcosystemDisplayDetailsRequest](/reference/proto#services-provider-v1-EcosystemDisplayDetailsRequest) |  |
+
+
+
+
+
+
 <a name="services-provider-v1-EcosystemInfoRequest"></a>
 
 ### EcosystemInfoRequest
@@ -1883,7 +1915,7 @@ Request to update an ecosystem's metadata
 | uri | [string](/reference/proto#string) | **Deprecated.** New external URL associated with the organization or ecosystem entity |
 | domain | [string](/reference/proto#string) | New domain URL |
 | name | [string](/reference/proto#string) | New name |
-| display | [EcosystemDisplay](/reference/proto#services-provider-v1-EcosystemDisplay) | Display details |
+| display | [EcosystemDisplayRequest](/reference/proto#services-provider-v1-EcosystemDisplayRequest) | Display details |
 
 
 

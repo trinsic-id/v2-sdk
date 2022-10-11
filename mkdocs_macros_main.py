@@ -2,14 +2,16 @@
 Macros created by Trinsic for documentation site
 """
 
-from requests import head
-from os.path import abspath, relpath, join, dirname, exists
-from pathlib import Path
 import json
+from os.path import abspath, join, dirname
+from pathlib import Path
+
 
 def define_env(env):
     @env.macro
-    def include_section(file_name: str, section_name: str, include_heading: bool=False):
+    def include_section(
+        file_name: str, section_name: str, include_heading: bool = False
+    ):
         """
         Import a subsection of another markdown file
         """
@@ -23,19 +25,23 @@ def define_env(env):
             return f"File {file_name} not found to inject from."
 
         markdown_text = file_path.read_text()
-        markdown_lines = markdown_text.split('\n')
-        header_indexes = [(index, line) for index, line in enumerate(markdown_lines) if line.strip().startswith("#")]
+        markdown_lines = markdown_text.split("\n")
+        header_indexes = [
+            (index, line)
+            for index, line in enumerate(markdown_lines)
+            if line.strip().startswith("#")
+        ]
         # Append a section for the end
-        header_indexes.append((len(markdown_lines),"<<INVALID>>"))
+        header_indexes.append((len(markdown_lines), "<<INVALID>>"))
         for (ij, index_tuple) in enumerate(header_indexes):
             index, header_line = index_tuple
             if section_name in header_line:
                 chatter(f"Found section={header_line}")
-                next_index=header_indexes[ij+1][0]
+                next_index = header_indexes[ij + 1][0]
                 if not include_heading:
-                    index+=1
+                    index += 1
                 return "\n".join(markdown_lines[index:next_index])
-                
+
         return f"TODO: Include {file_name}#{section_name} {'with' if include_heading else 'without'} heading"
 
     @env.macro
@@ -57,7 +63,7 @@ def define_env(env):
 
         # Get method
         method = get_entity(method_name)
-        
+
         # The content of the Request and Response tabs is just
         # the rendered input / output types.
         request_html = proto_message(method["input_type"])
@@ -76,8 +82,8 @@ def define_env(env):
         """
         Generates the documentation for a specific protobuf message.
         """
-        
-        return print_message(name).replace("\n","").replace("\r","")
+
+        return print_message(name).replace("\n", "").replace("\r", "")
 
     @env.macro
     def proto_enum(name: str):
@@ -91,7 +97,7 @@ def define_env(env):
     def proto_event(name: str):
         """
         Generates the documentation for a specific protobuf event.
-        
+
         A "protobuf event" is a protobuf message which is used as the payload
         for a webhook (EGFCreated, Ping, etc.)
         """
@@ -118,7 +124,10 @@ def define_env(env):
         """
         Prints all protobuf events -- intended for usage in the Events Reference docs page
         """
-        IGNORE_MESSAGES = ["trinsic.services.event.Event", "trinsic.services.event.APICall"]
+        IGNORE_MESSAGES = [
+            "trinsic.services.event.Event",
+            "trinsic.services.event.APICall",
+        ]
 
         proto_json = get_proto_json()
         file = proto_json["files"]["services/event/v1/event.proto"]
@@ -143,6 +152,7 @@ def define_env(env):
 
 ###### Helper methods below
 
+
 def print_enum(enumName: str):
     """
     Generates the HTML for a protobuf enum's documentation
@@ -153,7 +163,7 @@ def print_enum(enumName: str):
         entity = get_entity(enumName)
 
         # Replace newlines in the comments of the enum with spaces
-        enum_desc = entity['description'].replace("\n", " ").replace("\r", " ")
+        enum_desc = entity["description"].replace("\n", " ").replace("\r", " ")
 
         ret = (
             f"<div class='proto-obj-container' data-proto-name='{entity['full_name']}'>"
@@ -171,6 +181,7 @@ def print_enum(enumName: str):
         return ret
     except Exception as e:
         return f"Cannot print proto message: {e}"
+
 
 def print_enum_values(enumName: str):
     """
@@ -195,15 +206,16 @@ def print_enum_values(enumName: str):
 
         fields += (
             "<div class='proto-field'>"
-                f"<div class='proto-field-name'><span class='proto-obj-subtype-context'>{enumShortName}.</span>{value['name']}</div> "
-                f"<div class='proto-field-type'> = {value['value']}</div>"
-                f"<div class='proto-field-description'>{value_desc}</div>"
+            f"<div class='proto-field-name'><span class='proto-obj-subtype-context'>{enumShortName}.</span>{value['name']}</div> "
+            f"<div class='proto-field-type'> = {value['value']}</div>"
+            f"<div class='proto-field-description'>{value_desc}</div>"
             "</div>"
         )
 
     fields += "</div>"
 
     return fields
+
 
 def print_event(messageName: str, context: str = None):
     """
@@ -215,7 +227,7 @@ def print_event(messageName: str, context: str = None):
         entity = get_entity(messageName)
 
         # Replace newlines in the comments of the message with spaces
-        message_desc = entity['description'].replace("\n", " ").replace("\r", " ")
+        message_desc = entity["description"].replace("\n", " ").replace("\r", " ")
         event_name = get_event_canonical_name(messageName)
 
         ret = (
@@ -238,6 +250,7 @@ def print_event(messageName: str, context: str = None):
     except Exception as e:
         return f"Cannot print proto message: {e}"
 
+
 def print_message(messageName: str, context: str = None):
     """
     Generates the HTML for a protobuf message's documentation
@@ -248,7 +261,7 @@ def print_message(messageName: str, context: str = None):
         entity = get_entity(messageName)
 
         # Replace newlines in the comments of the message with spaces
-        message_desc = entity['description'].replace("\n", " ").replace("\r", " ")
+        message_desc = entity["description"].replace("\n", " ").replace("\r", " ")
 
         ret = (
             f"<div class='proto-obj-container' data-proto-name='{entity['full_name']}'>"
@@ -287,6 +300,7 @@ def print_message_fields(messageName: str, context: str = None):
 
     return fields
 
+
 def print_field(fieldName, context: str = None):
     """
     Generates the HTML for a single protobuf field.
@@ -303,7 +317,7 @@ def print_field(fieldName, context: str = None):
     is_map = field_is_map(field)
 
     is_array = field["label"] == "LABEL_REPEATED"
-    
+
     field_type = field["type"]
     field_full_type = field["full_type"]
 
@@ -311,13 +325,15 @@ def print_field(fieldName, context: str = None):
     if is_map:
         (key_type, value_type) = get_map_key_value_types(field["full_type"])
         value_ent = try_get_entity(value_type)
-        value_is_prim = (value_ent is None)
+        value_is_prim = value_ent is None
 
         value_type_name = value_type
         if not value_is_prim:
             value_msg = get_entity(value_type)
             value_short_type = value_msg["name"]
-            value_type_name = f"<a href='/reference/proto#{value_type}'>{value_short_type}</a>"
+            value_type_name = (
+                f"<a href='/reference/proto#{value_type}'>{value_short_type}</a>"
+            )
 
         field_type = f"map({key_type} -> {value_type_name})"
 
@@ -331,7 +347,9 @@ def print_field(fieldName, context: str = None):
     else:
         # Generate a link for a non-primitive type
         if not is_prim:
-            field_type = f"<a href='/reference/proto#{field['full_type']}'>{field['type']}</a>"
+            field_type = (
+                f"<a href='/reference/proto#{field['full_type']}'>{field['type']}</a>"
+            )
 
         # Add array indicator
         if is_array:
@@ -342,7 +360,7 @@ def print_field(fieldName, context: str = None):
     if "options" in field and "services.options.optional" in field["options"]:
         field_type = "optional " + field_type
 
-    field_short_name = field['name']
+    field_short_name = field["name"]
 
     # If this is a field for a nested message, add the context
     # IE, `details` -> `details.account` -> `details.account.id`
@@ -354,9 +372,9 @@ def print_field(fieldName, context: str = None):
 
     ret = (
         "<div class='proto-field'>"
-            f"<div class='proto-field-name'>{field_short_name}</div> "
-            f"<div class='proto-field-type'>{field_type}</div>"
-            f"<div class='proto-field-description'>{field_desc}</div>"
+        f"<div class='proto-field-name'>{field_short_name}</div> "
+        f"<div class='proto-field-type'>{field_type}</div>"
+        f"<div class='proto-field-description'>{field_desc}</div>"
     )
 
     # If the message isn't primitive, expand its type and document it
@@ -371,7 +389,7 @@ def print_field(fieldName, context: str = None):
         if field_type_index["type"] == "message":
             # Add the current field name to `context`
             if context is None:
-                context = field['name']
+                context = field["name"]
             else:
                 context += f".{field['name']}"
 
@@ -379,8 +397,7 @@ def print_field(fieldName, context: str = None):
                 context += "[<span class='proto-context-array-key'>key</span>]"
             elif is_array:
                 context += "[<span class='proto-context-array-key'>i</span>]"
-            
-            
+
             # Embed just the sub-type's fields, not its name or description
             sub_content = print_message_fields(field_full_type, context)
             sub_content_msg = "Show child attributes"
@@ -397,6 +414,7 @@ def print_field(fieldName, context: str = None):
     ret += "</div>"
     return ret
 
+
 def get_event_canonical_name(messageName):
     """
     Returns the canonical name for an event's protobuf message
@@ -405,7 +423,10 @@ def get_event_canonical_name(messageName):
     """
 
     message = get_entity(messageName)
-    if message["options"] is None or "trinsic.services.event.event_type" not in message["options"]:
+    if (
+        message["options"] is None
+        or "trinsic.services.event.event_type" not in message["options"]
+    ):
         return None
 
     option_val = message["options"]["trinsic.services.event.event_type"]
@@ -418,7 +439,7 @@ def get_event_canonical_name(messageName):
 
     return enum_val_name.lower()
 
- 
+
 def field_is_primitive(field):
     """
     Determines if a field's protobuf type is primitive (string/bool/etc.) or not (AccountDetails/etc.)
@@ -427,6 +448,7 @@ def field_is_primitive(field):
     whereas a Message might be "AccountDetails"/"services.account.v1.AccountDetails"
     """
     return field["type"] == field["full_type"]
+
 
 def field_is_map(field):
     """
@@ -439,11 +461,13 @@ def field_is_map(field):
     msg = get_entity(field["full_type"])
     return message_is_map_entry(msg)
 
+
 def message_is_map_entry(msg):
     """
     Determines if a message is a MapEntry type
     """
     return "is_map_entry" in msg and msg["is_map_entry"]
+
 
 def get_map_key_value_types(message_full_type):
     """
@@ -453,7 +477,7 @@ def get_map_key_value_types(message_full_type):
 
     if not message_is_map_entry(msg):
         return None
-    
+
     # Find the Key and Value fields
     key_type = None
     value_type = None
@@ -465,8 +489,9 @@ def get_map_key_value_types(message_full_type):
             key_type = field_obj["full_type"]
         elif field_obj["name"] == "value":
             value_type = field_obj["full_type"]
-    
-    return (key_type, value_type)
+
+    return key_type, value_type
+
 
 def get_enumval_by_value(enum_name: str, entry_val: int):
     """
@@ -482,11 +507,12 @@ def get_enumval_by_value(enum_name: str, entry_val: int):
         enumVal = get_entity(valueName)
         if enumVal is None:
             continue
-        
+
         if enumVal["value"] == entry_val:
             return enumVal
-    
+
     return None
+
 
 def get_index_entry(name: str):
     """
@@ -501,6 +527,7 @@ def get_index_entry(name: str):
 
     return index[name]
 
+
 def try_get_entity(name: str):
     """
     Tries to fetch a protobuf entity by name, returning None on failure
@@ -509,6 +536,7 @@ def try_get_entity(name: str):
         return get_entity(name)
     except:
         return None
+
 
 def get_entity(name: str):
     """
@@ -520,9 +548,11 @@ def get_entity(name: str):
     index_entry = get_index_entry(name)
 
     return proto_json[index_entry["collection"]][name]
-    
+
 
 __proto_json = None
+
+
 def get_proto_json():
     """
     Returns a deserialized `proto.json`

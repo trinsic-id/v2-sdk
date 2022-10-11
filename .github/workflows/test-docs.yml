@@ -23,6 +23,7 @@ jobs:
           cache: pip
       - run: |
           pip install -r ./docs/requirements.txt
+          pip install -r ./devops/requirements.txt
           pip install -r ./python/requirements.txt
           pip install git+https://${{ secrets.MKDOCS_INSIDERS_TOKEN }}@github.com/squidfunk/mkdocs-material-insiders.git
       - name: Set up Go
@@ -35,10 +36,9 @@ jobs:
         run: |
           go install github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc@latest
           go install github.com/trinsic-id/protoc-gen-json@latest
-          pip install -r ./devops/requirements.txt
       - name: Install netlify
         run: npm install netlify-cli --save-dev
-      - run: python ./devops/generate_proto_files.py --language docs # Generate protobuf documentation files
+      - run: python ./devops/generate_proto_files.py --language=docs # Generate protobuf documentation files
       - run: mkdocs build
       - name: Determine Branch Name
         run: |
@@ -49,7 +49,7 @@ jobs:
         continue-on-error: true
         working-directory: ./docs-site/
         env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }} 
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         run: |
           echo "Creating site ${{ env.DOCS_BRANCH_NAME }}"
           netlify sites:create --name "${{ env.DOCS_BRANCH_NAME }}" -a josh-abi1wqk
@@ -57,7 +57,7 @@ jobs:
         continue-on-error: true
         working-directory: ./docs-site/
         env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }} 
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         run: |
           echo "Deploying site ${{ env.DOCS_BRANCH_NAME }}"
           netlify deploy --site "${{ env.DOCS_BRANCH_NAME }}" --dir ./ --prod

@@ -3,118 +3,149 @@
 
 package trinsic.services.provider.v1;
 
-public interface UpdateEcosystemRequestOrBuilder extends
+public interface UpdateEcosystemRequestOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.provider.v1.UpdateEcosystemRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * New description of the ecosystem
    * </pre>
    *
    * <code>string description = 1;</code>
+   *
    * @return The description.
    */
   java.lang.String getDescription();
   /**
+   *
+   *
    * <pre>
    * New description of the ecosystem
    * </pre>
    *
    * <code>string description = 1;</code>
+   *
    * @return The bytes for description.
    */
-  com.google.protobuf.ByteString
-      getDescriptionBytes();
+  com.google.protobuf.ByteString getDescriptionBytes();
 
   /**
+   *
+   *
    * <pre>
    * New external URL associated with the organization or ecosystem entity
    * </pre>
    *
    * <code>string uri = 2 [deprecated = true];</code>
-   * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated.
-   *     See services/provider/v1/provider.proto;l=161
+   *
+   * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
+   *     services/provider/v1/provider.proto;l=161
    * @return The uri.
    */
-  @java.lang.Deprecated java.lang.String getUri();
+  @java.lang.Deprecated
+  java.lang.String getUri();
   /**
+   *
+   *
    * <pre>
    * New external URL associated with the organization or ecosystem entity
    * </pre>
    *
    * <code>string uri = 2 [deprecated = true];</code>
-   * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated.
-   *     See services/provider/v1/provider.proto;l=161
+   *
+   * @deprecated services.provider.v1.UpdateEcosystemRequest.uri is deprecated. See
+   *     services/provider/v1/provider.proto;l=161
    * @return The bytes for uri.
    */
-  @java.lang.Deprecated com.google.protobuf.ByteString
-      getUriBytes();
+  @java.lang.Deprecated
+  com.google.protobuf.ByteString getUriBytes();
 
   /**
+   *
+   *
    * <pre>
    * New domain URL
    * </pre>
    *
    * <code>string domain = 3;</code>
+   *
    * @return The domain.
    */
   java.lang.String getDomain();
   /**
+   *
+   *
    * <pre>
    * New domain URL
    * </pre>
    *
    * <code>string domain = 3;</code>
+   *
    * @return The bytes for domain.
    */
-  com.google.protobuf.ByteString
-      getDomainBytes();
+  com.google.protobuf.ByteString getDomainBytes();
 
   /**
+   *
+   *
    * <pre>
    * New name
    * </pre>
    *
    * <code>string name = 4;</code>
+   *
    * @return The name.
    */
   java.lang.String getName();
   /**
+   *
+   *
    * <pre>
    * New name
    * </pre>
    *
    * <code>string name = 4;</code>
+   *
    * @return The bytes for name.
    */
-  com.google.protobuf.ByteString
-      getNameBytes();
+  com.google.protobuf.ByteString getNameBytes();
 
   /**
+   *
+   *
    * <pre>
    * Display details
    * </pre>
    *
-   * <code>.services.provider.v1.EcosystemDisplay display = 5;</code>
+   * <code>.services.provider.v1.EcosystemDisplayRequest display = 5;</code>
+   *
    * @return Whether the display field is set.
    */
   boolean hasDisplay();
   /**
+   *
+   *
    * <pre>
    * Display details
    * </pre>
    *
-   * <code>.services.provider.v1.EcosystemDisplay display = 5;</code>
+   * <code>.services.provider.v1.EcosystemDisplayRequest display = 5;</code>
+   *
    * @return The display.
    */
-  trinsic.services.provider.v1.EcosystemDisplay getDisplay();
+  trinsic.services.provider.v1.EcosystemDisplayRequest getDisplay();
   /**
+   *
+   *
    * <pre>
    * Display details
    * </pre>
    *
-   * <code>.services.provider.v1.EcosystemDisplay display = 5;</code>
+   * <code>.services.provider.v1.EcosystemDisplayRequest display = 5;</code>
    */
-  trinsic.services.provider.v1.EcosystemDisplayOrBuilder getDisplayOrBuilder();
+  trinsic.services.provider.v1.EcosystemDisplayRequestOrBuilder getDisplayOrBuilder();
 }

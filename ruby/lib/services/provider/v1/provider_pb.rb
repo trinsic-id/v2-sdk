@@ -70,7 +70,18 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :uri, :string, 2
       optional :domain, :string, 3
       optional :name, :string, 4
-      optional :display, :message, 5, "services.provider.v1.EcosystemDisplay"
+      optional :display, :message, 5, "services.provider.v1.EcosystemDisplayRequest"
+    end
+    add_message "services.provider.v1.EcosystemDisplayRequest" do
+      optional :dark, :message, 1, "services.provider.v1.EcosystemDisplayDetailsRequest"
+      optional :light, :message, 2, "services.provider.v1.EcosystemDisplayDetailsRequest"
+    end
+    add_message "services.provider.v1.EcosystemDisplayDetailsRequest" do
+      optional :color, :string, 4
+      optional :logo_data, :bytes, 5
+    end
+    add_message "services.provider.v1.UpdateEcosystemResponse" do
+      optional :Ecosystem, :message, 1, "services.provider.v1.Ecosystem"
     end
     add_message "services.provider.v1.EcosystemDisplay" do
       optional :dark, :message, 1, "services.provider.v1.EcosystemDisplayDetails"
@@ -79,9 +90,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "services.provider.v1.EcosystemDisplayDetails" do
       optional :logo_url, :string, 3
       optional :color, :string, 4
-    end
-    add_message "services.provider.v1.UpdateEcosystemResponse" do
-      optional :Ecosystem, :message, 1, "services.provider.v1.Ecosystem"
     end
     add_message "services.provider.v1.AddWebhookRequest" do
       optional :destination_url, :string, 1
@@ -225,9 +233,11 @@ module Services
       CreateEcosystemRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.CreateEcosystemRequest").msgclass
       CreateEcosystemResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.CreateEcosystemResponse").msgclass
       UpdateEcosystemRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.UpdateEcosystemRequest").msgclass
+      EcosystemDisplayRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.EcosystemDisplayRequest").msgclass
+      EcosystemDisplayDetailsRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.EcosystemDisplayDetailsRequest").msgclass
+      UpdateEcosystemResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.UpdateEcosystemResponse").msgclass
       EcosystemDisplay = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.EcosystemDisplay").msgclass
       EcosystemDisplayDetails = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.EcosystemDisplayDetails").msgclass
-      UpdateEcosystemResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.UpdateEcosystemResponse").msgclass
       AddWebhookRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.AddWebhookRequest").msgclass
       AddWebhookResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.AddWebhookResponse").msgclass
       DeleteWebhookRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.DeleteWebhookRequest").msgclass

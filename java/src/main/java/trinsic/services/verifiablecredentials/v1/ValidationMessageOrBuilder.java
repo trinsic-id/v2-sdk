@@ -9,7 +9,7 @@ public interface ValidationMessageOrBuilder extends
 
   /**
    * <pre>
-   * Whether or not this validation check passed
+   * Whether this validation check passed
    * </pre>
    *
    * <code>bool is_valid = 1;</code>
