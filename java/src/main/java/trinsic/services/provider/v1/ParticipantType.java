@@ -4,15 +4,18 @@
 package trinsic.services.provider.v1;
 
 /**
+ *
+ *
  * <pre>
  * Type of participant being invited to ecosystem
  * </pre>
  *
  * Protobuf enum {@code services.provider.v1.ParticipantType}
  */
-public enum ParticipantType
-    implements com.google.protobuf.ProtocolMessageEnum {
+public enum ParticipantType implements com.google.protobuf.ProtocolMessageEnum {
   /**
+   *
+   *
    * <pre>
    * Participant is an individual
    * </pre>
@@ -21,6 +24,8 @@ public enum ParticipantType
    */
   participant_type_individual(0),
   /**
+   *
+   *
    * <pre>
    * Participant is an organization
    * </pre>
@@ -32,6 +37,8 @@ public enum ParticipantType
   ;
 
   /**
+   *
+   *
    * <pre>
    * Participant is an individual
    * </pre>
@@ -40,6 +47,8 @@ public enum ParticipantType
    */
   public static final int participant_type_individual_VALUE = 0;
   /**
+   *
+   *
    * <pre>
    * Participant is an organization
    * </pre>
@@ -47,7 +56,6 @@ public enum ParticipantType
    * <code>participant_type_organization = 1;</code>
    */
   public static final int participant_type_organization_VALUE = 1;
-
 
   public final int getNumber() {
     if (this == UNRECOGNIZED) {
@@ -73,48 +81,47 @@ public enum ParticipantType
    */
   public static ParticipantType forNumber(int value) {
     switch (value) {
-      case 0: return participant_type_individual;
-      case 1: return participant_type_organization;
-      default: return null;
+      case 0:
+        return participant_type_individual;
+      case 1:
+        return participant_type_organization;
+      default:
+        return null;
     }
   }
 
-  public static com.google.protobuf.Internal.EnumLiteMap<ParticipantType>
-      internalGetValueMap() {
+  public static com.google.protobuf.Internal.EnumLiteMap<ParticipantType> internalGetValueMap() {
     return internalValueMap;
   }
-  private static final com.google.protobuf.Internal.EnumLiteMap<
-      ParticipantType> internalValueMap =
-        new com.google.protobuf.Internal.EnumLiteMap<ParticipantType>() {
-          public ParticipantType findValueByNumber(int number) {
-            return ParticipantType.forNumber(number);
-          }
-        };
 
-  public final com.google.protobuf.Descriptors.EnumValueDescriptor
-      getValueDescriptor() {
+  private static final com.google.protobuf.Internal.EnumLiteMap<ParticipantType> internalValueMap =
+      new com.google.protobuf.Internal.EnumLiteMap<ParticipantType>() {
+        public ParticipantType findValueByNumber(int number) {
+          return ParticipantType.forNumber(number);
+        }
+      };
+
+  public final com.google.protobuf.Descriptors.EnumValueDescriptor getValueDescriptor() {
     if (this == UNRECOGNIZED) {
       throw new java.lang.IllegalStateException(
           "Can't get the descriptor of an unrecognized enum value.");
     }
     return getDescriptor().getValues().get(ordinal());
   }
-  public final com.google.protobuf.Descriptors.EnumDescriptor
-      getDescriptorForType() {
+
+  public final com.google.protobuf.Descriptors.EnumDescriptor getDescriptorForType() {
     return getDescriptor();
   }
-  public static final com.google.protobuf.Descriptors.EnumDescriptor
-      getDescriptor() {
+
+  public static final com.google.protobuf.Descriptors.EnumDescriptor getDescriptor() {
     return trinsic.services.provider.v1.ProviderOuterClass.getDescriptor().getEnumTypes().get(0);
   }
 
   private static final ParticipantType[] VALUES = values();
 
-  public static ParticipantType valueOf(
-      com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+  public static ParticipantType valueOf(com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
     if (desc.getType() != getDescriptor()) {
-      throw new java.lang.IllegalArgumentException(
-        "EnumValueDescriptor is not for this type.");
+      throw new java.lang.IllegalArgumentException("EnumValueDescriptor is not for this type.");
     }
     if (desc.getIndex() == -1) {
       return UNRECOGNIZED;
@@ -130,4 +137,3 @@ public enum ParticipantType
 
   // @@protoc_insertion_point(enum_scope:services.provider.v1.ParticipantType)
 }
-

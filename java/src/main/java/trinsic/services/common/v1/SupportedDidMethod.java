@@ -4,25 +4,30 @@
 package trinsic.services.common.v1;
 
 /**
+ *
+ *
  * <pre>
  * Enum of all supported DID Methods
  * </pre>
  *
  * Protobuf enum {@code services.common.v1.SupportedDidMethod}
  */
-public enum SupportedDidMethod
-    implements com.google.protobuf.ProtocolMessageEnum {
+public enum SupportedDidMethod implements com.google.protobuf.ProtocolMessageEnum {
   /**
+   *
+   *
    * <pre>
-   *The did:key method -- all wallets use this by default
+   * The did:key method -- all wallets use this by default
    * </pre>
    *
    * <code>KEY = 0;</code>
    */
   KEY(0),
   /**
+   *
+   *
    * <pre>
-   *The did:ion method
+   * The did:ion method
    * </pre>
    *
    * <code>ION = 1;</code>
@@ -32,22 +37,25 @@ public enum SupportedDidMethod
   ;
 
   /**
+   *
+   *
    * <pre>
-   *The did:key method -- all wallets use this by default
+   * The did:key method -- all wallets use this by default
    * </pre>
    *
    * <code>KEY = 0;</code>
    */
   public static final int KEY_VALUE = 0;
   /**
+   *
+   *
    * <pre>
-   *The did:ion method
+   * The did:ion method
    * </pre>
    *
    * <code>ION = 1;</code>
    */
   public static final int ION_VALUE = 1;
-
 
   public final int getNumber() {
     if (this == UNRECOGNIZED) {
@@ -73,38 +81,40 @@ public enum SupportedDidMethod
    */
   public static SupportedDidMethod forNumber(int value) {
     switch (value) {
-      case 0: return KEY;
-      case 1: return ION;
-      default: return null;
+      case 0:
+        return KEY;
+      case 1:
+        return ION;
+      default:
+        return null;
     }
   }
 
-  public static com.google.protobuf.Internal.EnumLiteMap<SupportedDidMethod>
-      internalGetValueMap() {
+  public static com.google.protobuf.Internal.EnumLiteMap<SupportedDidMethod> internalGetValueMap() {
     return internalValueMap;
   }
-  private static final com.google.protobuf.Internal.EnumLiteMap<
-      SupportedDidMethod> internalValueMap =
-        new com.google.protobuf.Internal.EnumLiteMap<SupportedDidMethod>() {
-          public SupportedDidMethod findValueByNumber(int number) {
-            return SupportedDidMethod.forNumber(number);
-          }
-        };
 
-  public final com.google.protobuf.Descriptors.EnumValueDescriptor
-      getValueDescriptor() {
+  private static final com.google.protobuf.Internal.EnumLiteMap<SupportedDidMethod>
+      internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<SupportedDidMethod>() {
+            public SupportedDidMethod findValueByNumber(int number) {
+              return SupportedDidMethod.forNumber(number);
+            }
+          };
+
+  public final com.google.protobuf.Descriptors.EnumValueDescriptor getValueDescriptor() {
     if (this == UNRECOGNIZED) {
       throw new java.lang.IllegalStateException(
           "Can't get the descriptor of an unrecognized enum value.");
     }
     return getDescriptor().getValues().get(ordinal());
   }
-  public final com.google.protobuf.Descriptors.EnumDescriptor
-      getDescriptorForType() {
+
+  public final com.google.protobuf.Descriptors.EnumDescriptor getDescriptorForType() {
     return getDescriptor();
   }
-  public static final com.google.protobuf.Descriptors.EnumDescriptor
-      getDescriptor() {
+
+  public static final com.google.protobuf.Descriptors.EnumDescriptor getDescriptor() {
     return trinsic.services.common.v1.Common.getDescriptor().getEnumTypes().get(1);
   }
 
@@ -113,8 +123,7 @@ public enum SupportedDidMethod
   public static SupportedDidMethod valueOf(
       com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
     if (desc.getType() != getDescriptor()) {
-      throw new java.lang.IllegalArgumentException(
-        "EnumValueDescriptor is not for this type.");
+      throw new java.lang.IllegalArgumentException("EnumValueDescriptor is not for this type.");
     }
     if (desc.getIndex() == -1) {
       return UNRECOGNIZED;
@@ -130,4 +139,3 @@ public enum SupportedDidMethod
 
   // @@protoc_insertion_point(enum_scope:services.common.v1.SupportedDidMethod)
 }
-

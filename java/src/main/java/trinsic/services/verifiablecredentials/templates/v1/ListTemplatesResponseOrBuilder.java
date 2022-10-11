@@ -3,14 +3,15 @@
 
 package trinsic.services.verifiablecredentials.templates.v1;
 
-public interface ListTemplatesResponseOrBuilder extends
+public interface ListTemplatesResponseOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.templates.v1.ListTemplatesResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
    */
-  java.util.List<trinsic.services.verifiablecredentials.templates.v1.TemplateData> 
+  java.util.List<trinsic.services.verifiablecredentials.templates.v1.TemplateData>
       getTemplatesList();
   /**
    * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
@@ -23,7 +24,8 @@ public interface ListTemplatesResponseOrBuilder extends
   /**
    * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
    */
-  java.util.List<? extends trinsic.services.verifiablecredentials.templates.v1.TemplateDataOrBuilder> 
+  java.util.List<
+          ? extends trinsic.services.verifiablecredentials.templates.v1.TemplateDataOrBuilder>
       getTemplatesOrBuilderList();
   /**
    * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>

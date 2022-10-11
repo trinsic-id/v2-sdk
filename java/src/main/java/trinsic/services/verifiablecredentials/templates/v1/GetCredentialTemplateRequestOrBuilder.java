@@ -3,27 +3,33 @@
 
 package trinsic.services.verifiablecredentials.templates.v1;
 
-public interface GetCredentialTemplateRequestOrBuilder extends
+public interface GetCredentialTemplateRequestOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * ID of template to fetch
    * </pre>
    *
    * <code>string id = 1;</code>
+   *
    * @return The id.
    */
   java.lang.String getId();
   /**
+   *
+   *
    * <pre>
    * ID of template to fetch
    * </pre>
    *
    * <code>string id = 1;</code>
+   *
    * @return The bytes for id.
    */
-  com.google.protobuf.ByteString
-      getIdBytes();
+  com.google.protobuf.ByteString getIdBytes();
 }

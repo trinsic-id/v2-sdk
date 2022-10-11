@@ -3,76 +3,98 @@
 
 package trinsic.services.account.v1;
 
-public interface SignInRequestOrBuilder extends
+public interface SignInRequestOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.account.v1.SignInRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * Account registration details
    * </pre>
    *
-   * <code>.services.account.v1.AccountDetails details = 1 [(.services.options.optional) = true];</code>
+   * <code>.services.account.v1.AccountDetails details = 1 [(.services.options.optional) = true];
+   * </code>
+   *
    * @return Whether the details field is set.
    */
   boolean hasDetails();
   /**
+   *
+   *
    * <pre>
    * Account registration details
    * </pre>
    *
-   * <code>.services.account.v1.AccountDetails details = 1 [(.services.options.optional) = true];</code>
+   * <code>.services.account.v1.AccountDetails details = 1 [(.services.options.optional) = true];
+   * </code>
+   *
    * @return The details.
    */
   trinsic.services.account.v1.AccountDetails getDetails();
   /**
+   *
+   *
    * <pre>
    * Account registration details
    * </pre>
    *
-   * <code>.services.account.v1.AccountDetails details = 1 [(.services.options.optional) = true];</code>
+   * <code>.services.account.v1.AccountDetails details = 1 [(.services.options.optional) = true];
+   * </code>
    */
   trinsic.services.account.v1.AccountDetailsOrBuilder getDetailsOrBuilder();
 
   /**
+   *
+   *
    * <pre>
    * Invitation code associated with this registration
    * </pre>
    *
    * <code>string invitation_code = 2 [(.services.options.optional) = true];</code>
+   *
    * @return The invitationCode.
    */
   java.lang.String getInvitationCode();
   /**
+   *
+   *
    * <pre>
    * Invitation code associated with this registration
    * </pre>
    *
    * <code>string invitation_code = 2 [(.services.options.optional) = true];</code>
+   *
    * @return The bytes for invitationCode.
    */
-  com.google.protobuf.ByteString
-      getInvitationCodeBytes();
+  com.google.protobuf.ByteString getInvitationCodeBytes();
 
   /**
+   *
+   *
    * <pre>
    * ID of Ecosystem to use
    * Ignored if `invitation_code` is passed
    * </pre>
    *
    * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
+   *
    * @return The ecosystemId.
    */
   java.lang.String getEcosystemId();
   /**
+   *
+   *
    * <pre>
    * ID of Ecosystem to use
    * Ignored if `invitation_code` is passed
    * </pre>
    *
    * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
+   *
    * @return The bytes for ecosystemId.
    */
-  com.google.protobuf.ByteString
-      getEcosystemIdBytes();
+  com.google.protobuf.ByteString getEcosystemIdBytes();
 }

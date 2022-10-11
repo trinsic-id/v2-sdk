@@ -3,29 +3,35 @@
 
 package trinsic.services.verifiablecredentials.v1;
 
-public interface IssueResponseOrBuilder extends
+public interface IssueResponseOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.v1.IssueResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * Verifiable Credential document, signed with public key
    * tied to caller of `IssueRequest`
    * </pre>
    *
    * <code>string signed_document_json = 1;</code>
+   *
    * @return The signedDocumentJson.
    */
   java.lang.String getSignedDocumentJson();
   /**
+   *
+   *
    * <pre>
    * Verifiable Credential document, signed with public key
    * tied to caller of `IssueRequest`
    * </pre>
    *
    * <code>string signed_document_json = 1;</code>
+   *
    * @return The bytes for signedDocumentJson.
    */
-  com.google.protobuf.ByteString
-      getSignedDocumentJsonBytes();
+  com.google.protobuf.ByteString getSignedDocumentJsonBytes();
 }

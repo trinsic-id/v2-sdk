@@ -3,36 +3,45 @@
 
 package trinsic.services.provider.v1;
 
-public interface RefreshDomainVerificationStatusResponseOrBuilder extends
+public interface RefreshDomainVerificationStatusResponseOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.provider.v1.RefreshDomainVerificationStatusResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * Domain URL verified
    * </pre>
    *
    * <code>string domain = 1;</code>
+   *
    * @return The domain.
    */
   java.lang.String getDomain();
   /**
+   *
+   *
    * <pre>
    * Domain URL verified
    * </pre>
    *
    * <code>string domain = 1;</code>
+   *
    * @return The bytes for domain.
    */
-  com.google.protobuf.ByteString
-      getDomainBytes();
+  com.google.protobuf.ByteString getDomainBytes();
 
   /**
+   *
+   *
    * <pre>
    * Specifies if the above `domain` was successfully verified
    * </pre>
    *
    * <code>bool domain_verified = 2;</code>
+   *
    * @return The domainVerified.
    */
   boolean getDomainVerified();

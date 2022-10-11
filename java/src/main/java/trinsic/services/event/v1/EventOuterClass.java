@@ -5,145 +5,183 @@ package trinsic.services.event.v1;
 
 public final class EventOuterClass {
   private EventOuterClass() {}
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
+
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {
     registry.add(trinsic.services.event.v1.EventOuterClass.eventType);
   }
 
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions((com.google.protobuf.ExtensionRegistryLite) registry);
   }
+
   public static final int EVENT_TYPE_FIELD_NUMBER = 60002;
   /**
+   *
+   *
    * <pre>
    * Event type associated with this Event message.
    * </pre>
    *
    * <code>extend .google.protobuf.MessageOptions { ... }</code>
    */
-  public static final
-    com.google.protobuf.GeneratedMessage.GeneratedExtension<
-      com.google.protobuf.DescriptorProtos.MessageOptions,
-      trinsic.services.event.v1.EventType> eventType = com.google.protobuf.GeneratedMessage
-          .newFileScopedGeneratedExtension(
-        trinsic.services.event.v1.EventType.class,
-        null);
+  public static final com.google.protobuf.GeneratedMessage.GeneratedExtension<
+          com.google.protobuf.DescriptorProtos.MessageOptions, trinsic.services.event.v1.EventType>
+      eventType =
+          com.google.protobuf.GeneratedMessage.newFileScopedGeneratedExtension(
+              trinsic.services.event.v1.EventType.class, null);
+
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_trinsic_services_event_Event_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_trinsic_services_event_Event_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_trinsic_services_event_Event_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_trinsic_services_event_APICall_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_trinsic_services_event_APICall_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_trinsic_services_event_APICall_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_trinsic_services_event_Ping_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_trinsic_services_event_Ping_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_trinsic_services_event_Ping_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_trinsic_services_event_EGFCreated_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_trinsic_services_event_EGFCreated_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_trinsic_services_event_EGFCreated_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_trinsic_services_event_TemplateCreated_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_trinsic_services_event_TemplateCreated_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_trinsic_services_event_TemplateCreated_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_trinsic_services_event_ItemReceived_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_trinsic_services_event_ItemReceived_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_trinsic_services_event_ItemReceived_fieldAccessorTable;
 
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
+  public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
+
+  private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
+
   static {
     java.lang.String[] descriptorData = {
-      "\n\035services/event/v1/event.proto\022\026trinsic" +
-      ".services.event\032 google/protobuf/descrip" +
-      "tor.proto\"e\n\005Event\022\n\n\002id\030\001 \001(\t\022/\n\004type\030\002" +
-      " \001(\0162!.trinsic.services.event.EventType\022" +
-      "\021\n\ttimestamp\030\003 \001(\t\022\014\n\004data\030\004 \001(\014\"<\n\007APIC" +
-      "all\022\016\n\006source\030\001 \001(\t\022\017\n\007request\030\002 \001(\014\022\020\n\010" +
-      "response\030\003 \001(\014\"P\n\004Ping\022\n\n\002id\030\001 \001(\t\022\022\n\nwe" +
-      "bhook_id\030\002 \001(\t\022\021\n\ttimestamp\030\003 \001(\t\022\017\n\007mes" +
-      "sage\030\004 \001(\t:\004\220\246\035\000\"\270\001\n\nEGFCreated\022\n\n\002id\030\001 " +
-      "\001(\t\022\024\n\014ecosystem_id\030\002 \001(\t\022\026\n\016trust_regis" +
-      "try\030\003 \001(\t\022\033\n\023governing_authority\030\004 \001(\t\022\014" +
-      "\n\004type\030\005 \001(\t\022\014\n\004name\030\006 \001(\t\022\023\n\013descriptio" +
-      "n\030\007 \001(\t\022\034\n\024governance_framework\030\010 \001(\t:\004\220" +
-      "\246\035\005\"i\n\017TemplateCreated\022\n\n\002id\030\001 \001(\t\022\024\n\014ec" +
-      "osystem_id\030\002 \001(\t\022\014\n\004name\030\003 \001(\t\022\014\n\004type\030\004" +
-      " \001(\t\022\022\n\ncreated_by\030\005 \001(\t:\004\220\246\035\n\"2\n\014ItemRe" +
-      "ceived\022\n\n\002id\030\001 \001(\t\022\020\n\010received\030\002 \001(\t:\004\220\246" +
-      "\035\020*\272\001\n\tEventType\022\010\n\004PING\020\000\022\007\n\003LOG\020\001\022\017\n\013E" +
-      "GF_CREATED\020\005\022\031\n\025EGF_MEMBER_REGISTERED\020\006\022" +
-      "\033\n\027EGF_MEMBER_UNREGISTERED\020\007\022\024\n\020TEMPLATE" +
-      "_CREATED\020\n\022\024\n\020TEMPLATE_DELETED\020\013\022\022\n\016WALL" +
-      "ET_CREATED\020\017\022\021\n\rITEM_RECEIVED\020\020:[\n\nevent" +
-      "_type\022\037.google.protobuf.MessageOptions\030\342" +
-      "\324\003 \001(\0162!.trinsic.services.event.EventTyp" +
-      "e\210\001\001BD\n\031trinsic.services.event.v1P\001Z\t./e" +
-      "ventpb\252\002\031Trinsic.Services.Event.V1b\006prot" +
-      "o3"
+      "\n"
+          + "\035services/event/v1/event.proto\022\026trinsic.services.event\032"
+          + " google/protobuf/descriptor.proto\"e\n"
+          + "\005Event\022\n\n"
+          + "\002id\030\001 \001(\t\022/\n"
+          + "\004type\030\002 \001(\0162!.trinsic.services.event.EventType\022\021\n"
+          + "\ttimestamp\030\003 \001(\t\022\014\n"
+          + "\004data\030\004 \001(\014\"<\n"
+          + "\007APICall\022\016\n"
+          + "\006source\030\001 \001(\t\022\017\n"
+          + "\007request\030\002 \001(\014\022\020\n"
+          + "\010response\030\003 \001(\014\"P\n"
+          + "\004Ping\022\n\n"
+          + "\002id\030\001 \001(\t\022\022\n\n"
+          + "webhook_id\030\002 \001(\t\022\021\n"
+          + "\ttimestamp\030\003 \001(\t\022\017\n"
+          + "\007message\030\004 \001(\t:\004\220\246\035\000\"\270\001\n\n"
+          + "EGFCreated\022\n\n"
+          + "\002id\030\001 \001(\t\022\024\n"
+          + "\014ecosystem_id\030\002 \001(\t\022\026\n"
+          + "\016trust_registry\030\003 \001(\t\022\033\n"
+          + "\023governing_authority\030\004 \001(\t\022\014\n"
+          + "\004type\030\005 \001(\t\022\014\n"
+          + "\004name\030\006 \001(\t\022\023\n"
+          + "\013description\030\007 \001(\t\022\034\n"
+          + "\024governance_framework\030\010 \001(\t:\004\220\246\035\005\"i\n"
+          + "\017TemplateCreated\022\n\n"
+          + "\002id\030\001 \001(\t\022\024\n"
+          + "\014ecosystem_id\030\002 \001(\t\022\014\n"
+          + "\004name\030\003 \001(\t\022\014\n"
+          + "\004type\030\004 \001(\t\022\022\n\n"
+          + "created_by\030\005 \001(\t:\004\220\246\035\n"
+          + "\"2\n"
+          + "\014ItemReceived\022\n\n"
+          + "\002id\030\001 \001(\t\022\020\n"
+          + "\010received\030\002 \001(\t:\004\220\246\035\020*\272\001\n"
+          + "\tEventType\022\010\n"
+          + "\004PING\020\000\022\007\n"
+          + "\003LOG\020\001\022\017\n"
+          + "\013EGF_CREATED\020\005\022\031\n"
+          + "\025EGF_MEMBER_REGISTERED\020\006\022\033\n"
+          + "\027EGF_MEMBER_UNREGISTERED\020\007\022\024\n"
+          + "\020TEMPLATE_CREATED\020\n"
+          + "\022\024\n"
+          + "\020TEMPLATE_DELETED\020\013\022\022\n"
+          + "\016WALLET_CREATED\020\017\022\021\n\r"
+          + "ITEM_RECEIVED\020\020:[\n\n"
+          + "event_type\022\037.google.protobuf.MessageOptions\030\342\324\003"
+          + " \001(\0162!.trinsic.services.event.EventType\210\001\001BD\n"
+          + "\031trinsic.services.event.v1P\001Z\t./e"
+          + "ventpb\252\002\031Trinsic.Services.Event.V1b\006proto3"
     };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-          com.google.protobuf.DescriptorProtos.getDescriptor(),
-        });
+    descriptor =
+        com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
+            descriptorData,
+            new com.google.protobuf.Descriptors.FileDescriptor[] {
+              com.google.protobuf.DescriptorProtos.getDescriptor(),
+            });
     internal_static_trinsic_services_event_Event_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_trinsic_services_event_Event_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_trinsic_services_event_Event_descriptor,
-        new java.lang.String[] { "Id", "Type", "Timestamp", "Data", });
+        getDescriptor().getMessageTypes().get(0);
+    internal_static_trinsic_services_event_Event_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_trinsic_services_event_Event_descriptor,
+            new java.lang.String[] {
+              "Id", "Type", "Timestamp", "Data",
+            });
     internal_static_trinsic_services_event_APICall_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_trinsic_services_event_APICall_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_trinsic_services_event_APICall_descriptor,
-        new java.lang.String[] { "Source", "Request", "Response", });
+        getDescriptor().getMessageTypes().get(1);
+    internal_static_trinsic_services_event_APICall_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_trinsic_services_event_APICall_descriptor,
+            new java.lang.String[] {
+              "Source", "Request", "Response",
+            });
     internal_static_trinsic_services_event_Ping_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_trinsic_services_event_Ping_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_trinsic_services_event_Ping_descriptor,
-        new java.lang.String[] { "Id", "WebhookId", "Timestamp", "Message", });
+        getDescriptor().getMessageTypes().get(2);
+    internal_static_trinsic_services_event_Ping_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_trinsic_services_event_Ping_descriptor,
+            new java.lang.String[] {
+              "Id", "WebhookId", "Timestamp", "Message",
+            });
     internal_static_trinsic_services_event_EGFCreated_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_trinsic_services_event_EGFCreated_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_trinsic_services_event_EGFCreated_descriptor,
-        new java.lang.String[] { "Id", "EcosystemId", "TrustRegistry", "GoverningAuthority", "Type", "Name", "Description", "GovernanceFramework", });
+        getDescriptor().getMessageTypes().get(3);
+    internal_static_trinsic_services_event_EGFCreated_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_trinsic_services_event_EGFCreated_descriptor,
+            new java.lang.String[] {
+              "Id",
+              "EcosystemId",
+              "TrustRegistry",
+              "GoverningAuthority",
+              "Type",
+              "Name",
+              "Description",
+              "GovernanceFramework",
+            });
     internal_static_trinsic_services_event_TemplateCreated_descriptor =
-      getDescriptor().getMessageTypes().get(4);
-    internal_static_trinsic_services_event_TemplateCreated_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_trinsic_services_event_TemplateCreated_descriptor,
-        new java.lang.String[] { "Id", "EcosystemId", "Name", "Type", "CreatedBy", });
+        getDescriptor().getMessageTypes().get(4);
+    internal_static_trinsic_services_event_TemplateCreated_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_trinsic_services_event_TemplateCreated_descriptor,
+            new java.lang.String[] {
+              "Id", "EcosystemId", "Name", "Type", "CreatedBy",
+            });
     internal_static_trinsic_services_event_ItemReceived_descriptor =
-      getDescriptor().getMessageTypes().get(5);
-    internal_static_trinsic_services_event_ItemReceived_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_trinsic_services_event_ItemReceived_descriptor,
-        new java.lang.String[] { "Id", "Received", });
+        getDescriptor().getMessageTypes().get(5);
+    internal_static_trinsic_services_event_ItemReceived_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_trinsic_services_event_ItemReceived_descriptor,
+            new java.lang.String[] {
+              "Id", "Received",
+            });
     eventType.internalInit(descriptor.getExtensions().get(0));
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(trinsic.services.event.v1.EventOuterClass.eventType);
-    com.google.protobuf.Descriptors.FileDescriptor
-        .internalUpdateFileDescriptor(descriptor, registry);
+    com.google.protobuf.Descriptors.FileDescriptor.internalUpdateFileDescriptor(
+        descriptor, registry);
     com.google.protobuf.DescriptorProtos.getDescriptor();
   }
 

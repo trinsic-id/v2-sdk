@@ -3,29 +3,38 @@
 
 package trinsic.services.provider.v1;
 
-public interface UpdateEcosystemResponseOrBuilder extends
+public interface UpdateEcosystemResponseOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.provider.v1.UpdateEcosystemResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * Current ecosystem metadata, post-update
    * </pre>
    *
    * <code>.services.provider.v1.Ecosystem Ecosystem = 1;</code>
+   *
    * @return Whether the ecosystem field is set.
    */
   boolean hasEcosystem();
   /**
+   *
+   *
    * <pre>
    * Current ecosystem metadata, post-update
    * </pre>
    *
    * <code>.services.provider.v1.Ecosystem Ecosystem = 1;</code>
+   *
    * @return The ecosystem.
    */
   trinsic.services.provider.v1.Ecosystem getEcosystem();
   /**
+   *
+   *
    * <pre>
    * Current ecosystem metadata, post-update
    * </pre>

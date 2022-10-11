@@ -3,116 +3,147 @@
 
 package trinsic.services.verifiablecredentials.v1;
 
-public interface SendRequestOrBuilder extends
+public interface SendRequestOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.v1.SendRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * Email address of user to send item to
    * </pre>
    *
    * <code>string email = 1;</code>
+   *
    * @return Whether the email field is set.
    */
   boolean hasEmail();
   /**
+   *
+   *
    * <pre>
    * Email address of user to send item to
    * </pre>
    *
    * <code>string email = 1;</code>
+   *
    * @return The email.
    */
   java.lang.String getEmail();
   /**
+   *
+   *
    * <pre>
    * Email address of user to send item to
    * </pre>
    *
    * <code>string email = 1;</code>
+   *
    * @return The bytes for email.
    */
-  com.google.protobuf.ByteString
-      getEmailBytes();
+  com.google.protobuf.ByteString getEmailBytes();
 
   /**
+   *
+   *
    * <pre>
    * DID of recipient (presently unsupported)
    * </pre>
    *
    * <code>string did_uri = 2;</code>
+   *
    * @return Whether the didUri field is set.
    */
   boolean hasDidUri();
   /**
+   *
+   *
    * <pre>
    * DID of recipient (presently unsupported)
    * </pre>
    *
    * <code>string did_uri = 2;</code>
+   *
    * @return The didUri.
    */
   java.lang.String getDidUri();
   /**
+   *
+   *
    * <pre>
    * DID of recipient (presently unsupported)
    * </pre>
    *
    * <code>string did_uri = 2;</code>
+   *
    * @return The bytes for didUri.
    */
-  com.google.protobuf.ByteString
-      getDidUriBytes();
+  com.google.protobuf.ByteString getDidUriBytes();
 
   /**
+   *
+   *
    * <pre>
    * DIDComm out-of-band invitation JSON (presently unsupported)
    * </pre>
    *
    * <code>string didcomm_invitation_json = 3;</code>
+   *
    * @return Whether the didcommInvitationJson field is set.
    */
   boolean hasDidcommInvitationJson();
   /**
+   *
+   *
    * <pre>
    * DIDComm out-of-band invitation JSON (presently unsupported)
    * </pre>
    *
    * <code>string didcomm_invitation_json = 3;</code>
+   *
    * @return The didcommInvitationJson.
    */
   java.lang.String getDidcommInvitationJson();
   /**
+   *
+   *
    * <pre>
    * DIDComm out-of-band invitation JSON (presently unsupported)
    * </pre>
    *
    * <code>string didcomm_invitation_json = 3;</code>
+   *
    * @return The bytes for didcommInvitationJson.
    */
-  com.google.protobuf.ByteString
-      getDidcommInvitationJsonBytes();
+  com.google.protobuf.ByteString getDidcommInvitationJsonBytes();
 
   /**
+   *
+   *
    * <pre>
    * JSON document to send to recipient
    * </pre>
    *
    * <code>string document_json = 100;</code>
+   *
    * @return The documentJson.
    */
   java.lang.String getDocumentJson();
   /**
+   *
+   *
    * <pre>
    * JSON document to send to recipient
    * </pre>
    *
    * <code>string document_json = 100;</code>
+   *
    * @return The bytes for documentJson.
    */
-  com.google.protobuf.ByteString
-      getDocumentJsonBytes();
+  com.google.protobuf.ByteString getDocumentJsonBytes();
 
-  public trinsic.services.verifiablecredentials.v1.SendRequest.DeliveryMethodCase getDeliveryMethodCase();
+  public trinsic.services.verifiablecredentials.v1.SendRequest.DeliveryMethodCase
+      getDeliveryMethodCase();
 }

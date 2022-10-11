@@ -3,92 +3,113 @@
 
 package trinsic.services.provider.v1;
 
-public interface AddWebhookRequestOrBuilder extends
+public interface AddWebhookRequestOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.provider.v1.AddWebhookRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * Destination to post webhook calls to.
    * Must be a reachable HTTPS URL.
    * </pre>
    *
    * <code>string destination_url = 1;</code>
+   *
    * @return The destinationUrl.
    */
   java.lang.String getDestinationUrl();
   /**
+   *
+   *
    * <pre>
    * Destination to post webhook calls to.
    * Must be a reachable HTTPS URL.
    * </pre>
    *
    * <code>string destination_url = 1;</code>
+   *
    * @return The bytes for destinationUrl.
    */
-  com.google.protobuf.ByteString
-      getDestinationUrlBytes();
+  com.google.protobuf.ByteString getDestinationUrlBytes();
 
   /**
+   *
+   *
    * <pre>
    * Secret string used for HMAC-SHA256 signing of webhook payloads
    * to verify that a webhook comes from Trinsic
    * </pre>
    *
    * <code>string secret = 2;</code>
+   *
    * @return The secret.
    */
   java.lang.String getSecret();
   /**
+   *
+   *
    * <pre>
    * Secret string used for HMAC-SHA256 signing of webhook payloads
    * to verify that a webhook comes from Trinsic
    * </pre>
    *
    * <code>string secret = 2;</code>
+   *
    * @return The bytes for secret.
    */
-  com.google.protobuf.ByteString
-      getSecretBytes();
+  com.google.protobuf.ByteString getSecretBytes();
 
   /**
+   *
+   *
    * <pre>
    * Events to subscribe to. Default is "*" (all events)
    * </pre>
    *
    * <code>repeated string events = 3;</code>
+   *
    * @return A list containing the events.
    */
-  java.util.List<java.lang.String>
-      getEventsList();
+  java.util.List<java.lang.String> getEventsList();
   /**
+   *
+   *
    * <pre>
    * Events to subscribe to. Default is "*" (all events)
    * </pre>
    *
    * <code>repeated string events = 3;</code>
+   *
    * @return The count of events.
    */
   int getEventsCount();
   /**
+   *
+   *
    * <pre>
    * Events to subscribe to. Default is "*" (all events)
    * </pre>
    *
    * <code>repeated string events = 3;</code>
+   *
    * @param index The index of the element to return.
    * @return The events at the given index.
    */
   java.lang.String getEvents(int index);
   /**
+   *
+   *
    * <pre>
    * Events to subscribe to. Default is "*" (all events)
    * </pre>
    *
    * <code>repeated string events = 3;</code>
+   *
    * @param index The index of the value to return.
    * @return The bytes of the events at the given index.
    */
-  com.google.protobuf.ByteString
-      getEventsBytes(int index);
+  com.google.protobuf.ByteString getEventsBytes(int index);
 }
