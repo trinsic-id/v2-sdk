@@ -4,7 +4,7 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /** */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 1.46.0)",
+    value = "by gRPC proto compiler (version 1.49.2)",
     comments = "Source: services/universal-wallet/v1/universal-wallet.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class UniversalWalletGrpc {

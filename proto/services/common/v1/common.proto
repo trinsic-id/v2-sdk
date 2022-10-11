@@ -24,5 +24,5 @@ enum SupportedDidMethod {
 // Nonce used to generate an oberon proof
 message Nonce {
     int64 timestamp = 1; // UTC unix millisecond timestamp the request was made
-    bytes request_hash = 2; // blake3256 hash of the request body
+    bytes request_hash = 2; // blake3-256 hash of the request body
 }

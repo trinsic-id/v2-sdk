@@ -314,7 +314,7 @@
         </member>
         <member name="P:Trinsic.Services.Common.V1.Nonce.RequestHash">
             <summary>
-            blake3256 hash of the request body
+            blake3-256 hash of the request body
             </summary>
         </member>
         <member name="T:Trinsic.Services.Account.V1.AccountReflection">

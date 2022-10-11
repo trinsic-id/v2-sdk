@@ -99,7 +99,7 @@ export function supportedDidMethodToJSON(object: SupportedDidMethod): string {
 export interface Nonce {
   /** UTC unix millisecond timestamp the request was made */
   timestamp: number;
-  /** blake3256 hash of the request body */
+  /** blake3-256 hash of the request body */
   requestHash: Uint8Array;
 }
 

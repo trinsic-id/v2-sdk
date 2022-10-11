@@ -25,7 +25,7 @@ public interface NonceOrBuilder
    *
    *
    * <pre>
-   * blake3256 hash of the request body
+   * blake3-256 hash of the request body
    * </pre>
    *
    * <code>bytes request_hash = 2;</code>
