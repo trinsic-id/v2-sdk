@@ -3,47 +3,58 @@
 
 package trinsic.services.universalwallet.v1;
 
-public interface GetItemResponseOrBuilder extends
+public interface GetItemResponseOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.universalwallet.v1.GetItemResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * Item data as a JSON string
    * </pre>
    *
    * <code>string item_json = 1;</code>
+   *
    * @return The itemJson.
    */
   java.lang.String getItemJson();
   /**
+   *
+   *
    * <pre>
    * Item data as a JSON string
    * </pre>
    *
    * <code>string item_json = 1;</code>
+   *
    * @return The bytes for itemJson.
    */
-  com.google.protobuf.ByteString
-      getItemJsonBytes();
+  com.google.protobuf.ByteString getItemJsonBytes();
 
   /**
+   *
+   *
    * <pre>
    * Type of item specified when item was inserted into wallet
    * </pre>
    *
    * <code>string item_type = 2;</code>
+   *
    * @return The itemType.
    */
   java.lang.String getItemType();
   /**
+   *
+   *
    * <pre>
    * Type of item specified when item was inserted into wallet
    * </pre>
    *
    * <code>string item_type = 2;</code>
+   *
    * @return The bytes for itemType.
    */
-  com.google.protobuf.ByteString
-      getItemTypeBytes();
+  com.google.protobuf.ByteString getItemTypeBytes();
 }

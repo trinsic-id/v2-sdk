@@ -5,50 +5,47 @@ package trinsic.services.common.v1;
 
 public final class Common {
   private Common() {}
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
+
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {}
+
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions((com.google.protobuf.ExtensionRegistryLite) registry);
   }
 
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
-  }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_common_v1_Nonce_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_common_v1_Nonce_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_common_v1_Nonce_fieldAccessorTable;
 
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
+  public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
+
+  private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
+
   static {
     java.lang.String[] descriptorData = {
-      "\n\037services/common/v1/common.proto\022\022servi" +
-      "ces.common.v1\"0\n\005Nonce\022\021\n\ttimestamp\030\001 \001(" +
-      "\003\022\024\n\014request_hash\030\002 \001(\014*\213\001\n\016ResponseStat" +
-      "us\022\013\n\007SUCCESS\020\000\022\030\n\024WALLET_ACCESS_DENIED\020" +
-      "\n\022\021\n\rWALLET_EXISTS\020\013\022\022\n\016ITEM_NOT_FOUND\020\024" +
-      "\022\030\n\023SERIALIZATION_ERROR\020\310\001\022\021\n\rUNKNOWN_ER" +
-      "ROR\020d*&\n\022SupportedDidMethod\022\007\n\003KEY\020\000\022\007\n\003" +
-      "ION\020\001BV\n\032trinsic.services.common.v1P\001Z\031s" +
-      "ervices/common/v1/common\252\002\032Trinsic.Servi" +
-      "ces.Common.V1b\006proto3"
+      "\n\037services/common/v1/common.proto\022\022servi"
+          + "ces.common.v1\"0\n\005Nonce\022\021\n\ttimestamp\030\001 \001("
+          + "\003\022\024\n\014request_hash\030\002 \001(\014*\213\001\n\016ResponseStat"
+          + "us\022\013\n\007SUCCESS\020\000\022\030\n\024WALLET_ACCESS_DENIED\020"
+          + "\n\022\021\n\rWALLET_EXISTS\020\013\022\022\n\016ITEM_NOT_FOUND\020\024"
+          + "\022\030\n\023SERIALIZATION_ERROR\020\310\001\022\021\n\rUNKNOWN_ER"
+          + "ROR\020d*&\n\022SupportedDidMethod\022\007\n\003KEY\020\000\022\007\n\003"
+          + "ION\020\001BV\n\032trinsic.services.common.v1P\001Z\031s"
+          + "ervices/common/v1/common\252\002\032Trinsic.Servi"
+          + "ces.Common.V1b\006proto3"
     };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-        });
-    internal_static_services_common_v1_Nonce_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_services_common_v1_Nonce_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_common_v1_Nonce_descriptor,
-        new java.lang.String[] { "Timestamp", "RequestHash", });
+    descriptor =
+        com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
+            descriptorData, new com.google.protobuf.Descriptors.FileDescriptor[] {});
+    internal_static_services_common_v1_Nonce_descriptor = getDescriptor().getMessageTypes().get(0);
+    internal_static_services_common_v1_Nonce_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_common_v1_Nonce_descriptor,
+            new java.lang.String[] {
+              "Timestamp", "RequestHash",
+            });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

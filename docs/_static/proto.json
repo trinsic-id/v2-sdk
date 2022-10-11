@@ -6023,7 +6023,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "bytes",
       "full_type": "bytes",
-      "description": "blake3256 hash of the request body"
+      "description": "blake3-256 hash of the request body"
     },
     "services.common.v1.Nonce.timestamp": {
       "name": "timestamp",

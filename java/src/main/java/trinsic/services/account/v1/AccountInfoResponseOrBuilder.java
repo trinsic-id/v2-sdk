@@ -3,31 +3,40 @@
 
 package trinsic.services.account.v1;
 
-public interface AccountInfoResponseOrBuilder extends
+public interface AccountInfoResponseOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.account.v1.AccountInfoResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * The account details associated with
    * the calling request context
    * </pre>
    *
    * <code>.services.account.v1.AccountDetails details = 1;</code>
+   *
    * @return Whether the details field is set.
    */
   boolean hasDetails();
   /**
+   *
+   *
    * <pre>
    * The account details associated with
    * the calling request context
    * </pre>
    *
    * <code>.services.account.v1.AccountDetails details = 1;</code>
+   *
    * @return The details.
    */
   trinsic.services.account.v1.AccountDetails getDetails();
   /**
+   *
+   *
    * <pre>
    * The account details associated with
    * the calling request context
@@ -38,169 +47,212 @@ public interface AccountInfoResponseOrBuilder extends
   trinsic.services.account.v1.AccountDetailsOrBuilder getDetailsOrBuilder();
 
   /**
+   *
+   *
    * <pre>
    * Use `ecosystem_id` instead
    * </pre>
    *
    * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
    */
-  @java.lang.Deprecated java.util.List<trinsic.services.account.v1.AccountEcosystem> 
-      getEcosystemsList();
+  @java.lang.Deprecated
+  java.util.List<trinsic.services.account.v1.AccountEcosystem> getEcosystemsList();
   /**
+   *
+   *
    * <pre>
    * Use `ecosystem_id` instead
    * </pre>
    *
    * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
    */
-  @java.lang.Deprecated trinsic.services.account.v1.AccountEcosystem getEcosystems(int index);
+  @java.lang.Deprecated
+  trinsic.services.account.v1.AccountEcosystem getEcosystems(int index);
   /**
+   *
+   *
    * <pre>
    * Use `ecosystem_id` instead
    * </pre>
    *
    * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
    */
-  @java.lang.Deprecated int getEcosystemsCount();
+  @java.lang.Deprecated
+  int getEcosystemsCount();
   /**
+   *
+   *
    * <pre>
    * Use `ecosystem_id` instead
    * </pre>
    *
    * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
    */
-  @java.lang.Deprecated java.util.List<? extends trinsic.services.account.v1.AccountEcosystemOrBuilder> 
+  @java.lang.Deprecated
+  java.util.List<? extends trinsic.services.account.v1.AccountEcosystemOrBuilder>
       getEcosystemsOrBuilderList();
   /**
+   *
+   *
    * <pre>
    * Use `ecosystem_id` instead
    * </pre>
    *
    * <code>repeated .services.account.v1.AccountEcosystem ecosystems = 2 [deprecated = true];</code>
    */
-  @java.lang.Deprecated trinsic.services.account.v1.AccountEcosystemOrBuilder getEcosystemsOrBuilder(
-      int index);
+  @java.lang.Deprecated
+  trinsic.services.account.v1.AccountEcosystemOrBuilder getEcosystemsOrBuilder(int index);
 
   /**
+   *
+   *
    * <pre>
    * The wallet ID associated with this account
    * </pre>
    *
    * <code>string wallet_id = 3;</code>
+   *
    * @return The walletId.
    */
   java.lang.String getWalletId();
   /**
+   *
+   *
    * <pre>
    * The wallet ID associated with this account
    * </pre>
    *
    * <code>string wallet_id = 3;</code>
+   *
    * @return The bytes for walletId.
    */
-  com.google.protobuf.ByteString
-      getWalletIdBytes();
+  com.google.protobuf.ByteString getWalletIdBytes();
 
   /**
+   *
+   *
    * <pre>
    * The device ID associated with this account session
    * </pre>
    *
    * <code>string device_id = 4;</code>
+   *
    * @return The deviceId.
    */
   java.lang.String getDeviceId();
   /**
+   *
+   *
    * <pre>
    * The device ID associated with this account session
    * </pre>
    *
    * <code>string device_id = 4;</code>
+   *
    * @return The bytes for deviceId.
    */
-  com.google.protobuf.ByteString
-      getDeviceIdBytes();
+  com.google.protobuf.ByteString getDeviceIdBytes();
 
   /**
+   *
+   *
    * <pre>
    * The ecosystem ID within which this account resides
    * </pre>
    *
    * <code>string ecosystem_id = 5;</code>
+   *
    * @return The ecosystemId.
    */
   java.lang.String getEcosystemId();
   /**
+   *
+   *
    * <pre>
    * The ecosystem ID within which this account resides
    * </pre>
    *
    * <code>string ecosystem_id = 5;</code>
+   *
    * @return The bytes for ecosystemId.
    */
-  com.google.protobuf.ByteString
-      getEcosystemIdBytes();
+  com.google.protobuf.ByteString getEcosystemIdBytes();
 
   /**
+   *
+   *
    * <pre>
    * The public DID associated with this account.
    * This DID is used as the `issuer` when signing verifiable credentials
    * </pre>
    *
    * <code>string public_did = 6;</code>
+   *
    * @return The publicDid.
    */
   java.lang.String getPublicDid();
   /**
+   *
+   *
    * <pre>
    * The public DID associated with this account.
    * This DID is used as the `issuer` when signing verifiable credentials
    * </pre>
    *
    * <code>string public_did = 6;</code>
+   *
    * @return The bytes for publicDid.
    */
-  com.google.protobuf.ByteString
-      getPublicDidBytes();
+  com.google.protobuf.ByteString getPublicDidBytes();
 
   /**
+   *
+   *
    * <pre>
    * Webhook events, if any, this wallet has authorized
    * </pre>
    *
    * <code>repeated string authorized_webhooks = 7;</code>
+   *
    * @return A list containing the authorizedWebhooks.
    */
-  java.util.List<java.lang.String>
-      getAuthorizedWebhooksList();
+  java.util.List<java.lang.String> getAuthorizedWebhooksList();
   /**
+   *
+   *
    * <pre>
    * Webhook events, if any, this wallet has authorized
    * </pre>
    *
    * <code>repeated string authorized_webhooks = 7;</code>
+   *
    * @return The count of authorizedWebhooks.
    */
   int getAuthorizedWebhooksCount();
   /**
+   *
+   *
    * <pre>
    * Webhook events, if any, this wallet has authorized
    * </pre>
    *
    * <code>repeated string authorized_webhooks = 7;</code>
+   *
    * @param index The index of the element to return.
    * @return The authorizedWebhooks at the given index.
    */
   java.lang.String getAuthorizedWebhooks(int index);
   /**
+   *
+   *
    * <pre>
    * Webhook events, if any, this wallet has authorized
    * </pre>
    *
    * <code>repeated string authorized_webhooks = 7;</code>
+   *
    * @param index The index of the value to return.
    * @return The bytes of the authorizedWebhooks at the given index.
    */
-  com.google.protobuf.ByteString
-      getAuthorizedWebhooksBytes(int index);
+  com.google.protobuf.ByteString getAuthorizedWebhooksBytes(int index);
 }

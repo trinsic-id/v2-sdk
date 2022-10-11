@@ -3,7 +3,7 @@
 
 package trinsic.services.universalwallet.v1;
 
-public interface DeleteItemResponseOrBuilder extends
+public interface DeleteItemResponseOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.universalwallet.v1.DeleteItemResponse)
-    com.google.protobuf.MessageOrBuilder {
-}
+    com.google.protobuf.MessageOrBuilder {}

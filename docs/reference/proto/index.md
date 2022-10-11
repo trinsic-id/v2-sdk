@@ -2397,7 +2397,7 @@ Nonce used to generate an oberon proof
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | timestamp | [int64](/reference/proto#int64) | UTC unix millisecond timestamp the request was made |
-| request_hash | [bytes](/reference/proto#bytes) | blake3256 hash of the request body |
+| request_hash | [bytes](/reference/proto#bytes) | blake3-256 hash of the request body |
 
 
 

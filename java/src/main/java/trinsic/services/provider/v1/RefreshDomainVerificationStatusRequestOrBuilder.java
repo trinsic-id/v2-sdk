@@ -3,7 +3,7 @@
 
 package trinsic.services.provider.v1;
 
-public interface RefreshDomainVerificationStatusRequestOrBuilder extends
+public interface RefreshDomainVerificationStatusRequestOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.provider.v1.RefreshDomainVerificationStatusRequest)
-    com.google.protobuf.MessageOrBuilder {
-}
+    com.google.protobuf.MessageOrBuilder {}

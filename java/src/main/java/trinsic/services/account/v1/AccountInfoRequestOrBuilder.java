@@ -3,7 +3,7 @@
 
 package trinsic.services.account.v1;
 
-public interface AccountInfoRequestOrBuilder extends
+public interface AccountInfoRequestOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.account.v1.AccountInfoRequest)
-    com.google.protobuf.MessageOrBuilder {
-}
+    com.google.protobuf.MessageOrBuilder {}

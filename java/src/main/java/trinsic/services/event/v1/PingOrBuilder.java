@@ -3,87 +3,108 @@
 
 package trinsic.services.event.v1;
 
-public interface PingOrBuilder extends
+public interface PingOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:trinsic.services.event.Ping)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * UUID of this ping
    * </pre>
    *
    * <code>string id = 1;</code>
+   *
    * @return The id.
    */
   java.lang.String getId();
   /**
+   *
+   *
    * <pre>
    * UUID of this ping
    * </pre>
    *
    * <code>string id = 1;</code>
+   *
    * @return The bytes for id.
    */
-  com.google.protobuf.ByteString
-      getIdBytes();
+  com.google.protobuf.ByteString getIdBytes();
 
   /**
+   *
+   *
    * <pre>
    * UUID of the webhook receiving the ping
    * </pre>
    *
    * <code>string webhook_id = 2;</code>
+   *
    * @return The webhookId.
    */
   java.lang.String getWebhookId();
   /**
+   *
+   *
    * <pre>
    * UUID of the webhook receiving the ping
    * </pre>
    *
    * <code>string webhook_id = 2;</code>
+   *
    * @return The bytes for webhookId.
    */
-  com.google.protobuf.ByteString
-      getWebhookIdBytes();
+  com.google.protobuf.ByteString getWebhookIdBytes();
 
   /**
+   *
+   *
    * <pre>
    * Timestamp ping was requested, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
    * </pre>
    *
    * <code>string timestamp = 3;</code>
+   *
    * @return The timestamp.
    */
   java.lang.String getTimestamp();
   /**
+   *
+   *
    * <pre>
    * Timestamp ping was requested, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
    * </pre>
    *
    * <code>string timestamp = 3;</code>
+   *
    * @return The bytes for timestamp.
    */
-  com.google.protobuf.ByteString
-      getTimestampBytes();
+  com.google.protobuf.ByteString getTimestampBytes();
 
   /**
+   *
+   *
    * <pre>
    * Arbitrary message specified when ping was requested
    * </pre>
    *
    * <code>string message = 4;</code>
+   *
    * @return The message.
    */
   java.lang.String getMessage();
   /**
+   *
+   *
    * <pre>
    * Arbitrary message specified when ping was requested
    * </pre>
    *
    * <code>string message = 4;</code>
+   *
    * @return The bytes for message.
    */
-  com.google.protobuf.ByteString
-      getMessageBytes();
+  com.google.protobuf.ByteString getMessageBytes();
 }

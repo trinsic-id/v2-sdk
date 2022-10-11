@@ -3,30 +3,39 @@
 
 package trinsic.services.account.v1;
 
-public interface SignInResponseOrBuilder extends
+public interface SignInResponseOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.account.v1.SignInResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * Indicates if confirmation of account is required.
    * </pre>
    *
    * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
+   *
    * @return The enum numeric value on the wire for confirmationMethod.
    */
   int getConfirmationMethodValue();
   /**
+   *
+   *
    * <pre>
    * Indicates if confirmation of account is required.
    * </pre>
    *
    * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
+   *
    * @return The confirmationMethod.
    */
   trinsic.services.account.v1.ConfirmationMethod getConfirmationMethod();
 
   /**
+   *
+   *
    * <pre>
    * Contains authentication data for use with the current device.
    * This object must be stored in a secure place. It can also be
@@ -36,10 +45,13 @@ public interface SignInResponseOrBuilder extends
    * </pre>
    *
    * <code>.services.account.v1.AccountProfile profile = 4;</code>
+   *
    * @return Whether the profile field is set.
    */
   boolean hasProfile();
   /**
+   *
+   *
    * <pre>
    * Contains authentication data for use with the current device.
    * This object must be stored in a secure place. It can also be
@@ -49,10 +61,13 @@ public interface SignInResponseOrBuilder extends
    * </pre>
    *
    * <code>.services.account.v1.AccountProfile profile = 4;</code>
+   *
    * @return The profile.
    */
   trinsic.services.account.v1.AccountProfile getProfile();
   /**
+   *
+   *
    * <pre>
    * Contains authentication data for use with the current device.
    * This object must be stored in a secure place. It can also be

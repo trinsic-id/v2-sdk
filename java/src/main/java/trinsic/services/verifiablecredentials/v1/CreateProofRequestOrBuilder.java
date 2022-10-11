@@ -3,97 +3,119 @@
 
 package trinsic.services.verifiablecredentials.v1;
 
-public interface CreateProofRequestOrBuilder extends
+public interface CreateProofRequestOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.v1.CreateProofRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * A valid JSON-LD frame describing which fields should be
-   * revealed in the generated proof. 
+   * revealed in the generated proof.
    * If unspecified, all fields in the document will be revealed
    * </pre>
    *
    * <code>string reveal_document_json = 1;</code>
+   *
    * @return The revealDocumentJson.
    */
   java.lang.String getRevealDocumentJson();
   /**
+   *
+   *
    * <pre>
    * A valid JSON-LD frame describing which fields should be
-   * revealed in the generated proof. 
+   * revealed in the generated proof.
    * If unspecified, all fields in the document will be revealed
    * </pre>
    *
    * <code>string reveal_document_json = 1;</code>
+   *
    * @return The bytes for revealDocumentJson.
    */
-  com.google.protobuf.ByteString
-      getRevealDocumentJsonBytes();
+  com.google.protobuf.ByteString getRevealDocumentJsonBytes();
 
   /**
+   *
+   *
    * <pre>
    * ID of wallet item stored in a Trinsic cloud wallet
    * </pre>
    *
    * <code>string item_id = 2;</code>
+   *
    * @return Whether the itemId field is set.
    */
   boolean hasItemId();
   /**
+   *
+   *
    * <pre>
    * ID of wallet item stored in a Trinsic cloud wallet
    * </pre>
    *
    * <code>string item_id = 2;</code>
+   *
    * @return The itemId.
    */
   java.lang.String getItemId();
   /**
+   *
+   *
    * <pre>
    * ID of wallet item stored in a Trinsic cloud wallet
    * </pre>
    *
    * <code>string item_id = 2;</code>
+   *
    * @return The bytes for itemId.
    */
-  com.google.protobuf.ByteString
-      getItemIdBytes();
+  com.google.protobuf.ByteString getItemIdBytes();
 
   /**
+   *
+   *
    * <pre>
-   * A valid JSON-LD Verifiable Credential document string 
+   * A valid JSON-LD Verifiable Credential document string
    * with an unbound signature. The proof will be derived from this
    * document directly. The document will not be stored in the wallet.
    * </pre>
    *
    * <code>string document_json = 3;</code>
+   *
    * @return Whether the documentJson field is set.
    */
   boolean hasDocumentJson();
   /**
+   *
+   *
    * <pre>
-   * A valid JSON-LD Verifiable Credential document string 
+   * A valid JSON-LD Verifiable Credential document string
    * with an unbound signature. The proof will be derived from this
    * document directly. The document will not be stored in the wallet.
    * </pre>
    *
    * <code>string document_json = 3;</code>
+   *
    * @return The documentJson.
    */
   java.lang.String getDocumentJson();
   /**
+   *
+   *
    * <pre>
-   * A valid JSON-LD Verifiable Credential document string 
+   * A valid JSON-LD Verifiable Credential document string
    * with an unbound signature. The proof will be derived from this
    * document directly. The document will not be stored in the wallet.
    * </pre>
    *
    * <code>string document_json = 3;</code>
+   *
    * @return The bytes for documentJson.
    */
-  com.google.protobuf.ByteString
-      getDocumentJsonBytes();
+  com.google.protobuf.ByteString getDocumentJsonBytes();
 
   public trinsic.services.verifiablecredentials.v1.CreateProofRequest.ProofCase getProofCase();
 }

@@ -3,63 +3,35 @@
 
 package trinsic.services.common.v1;
 
-/**
- * Protobuf enum {@code services.common.v1.ResponseStatus}
- */
-public enum ResponseStatus
-    implements com.google.protobuf.ProtocolMessageEnum {
-  /**
-   * <code>SUCCESS = 0;</code>
-   */
+/** Protobuf enum {@code services.common.v1.ResponseStatus} */
+public enum ResponseStatus implements com.google.protobuf.ProtocolMessageEnum {
+  /** <code>SUCCESS = 0;</code> */
   SUCCESS(0),
-  /**
-   * <code>WALLET_ACCESS_DENIED = 10;</code>
-   */
+  /** <code>WALLET_ACCESS_DENIED = 10;</code> */
   WALLET_ACCESS_DENIED(10),
-  /**
-   * <code>WALLET_EXISTS = 11;</code>
-   */
+  /** <code>WALLET_EXISTS = 11;</code> */
   WALLET_EXISTS(11),
-  /**
-   * <code>ITEM_NOT_FOUND = 20;</code>
-   */
+  /** <code>ITEM_NOT_FOUND = 20;</code> */
   ITEM_NOT_FOUND(20),
-  /**
-   * <code>SERIALIZATION_ERROR = 200;</code>
-   */
+  /** <code>SERIALIZATION_ERROR = 200;</code> */
   SERIALIZATION_ERROR(200),
-  /**
-   * <code>UNKNOWN_ERROR = 100;</code>
-   */
+  /** <code>UNKNOWN_ERROR = 100;</code> */
   UNKNOWN_ERROR(100),
   UNRECOGNIZED(-1),
   ;
 
-  /**
-   * <code>SUCCESS = 0;</code>
-   */
+  /** <code>SUCCESS = 0;</code> */
   public static final int SUCCESS_VALUE = 0;
-  /**
-   * <code>WALLET_ACCESS_DENIED = 10;</code>
-   */
+  /** <code>WALLET_ACCESS_DENIED = 10;</code> */
   public static final int WALLET_ACCESS_DENIED_VALUE = 10;
-  /**
-   * <code>WALLET_EXISTS = 11;</code>
-   */
+  /** <code>WALLET_EXISTS = 11;</code> */
   public static final int WALLET_EXISTS_VALUE = 11;
-  /**
-   * <code>ITEM_NOT_FOUND = 20;</code>
-   */
+  /** <code>ITEM_NOT_FOUND = 20;</code> */
   public static final int ITEM_NOT_FOUND_VALUE = 20;
-  /**
-   * <code>SERIALIZATION_ERROR = 200;</code>
-   */
+  /** <code>SERIALIZATION_ERROR = 200;</code> */
   public static final int SERIALIZATION_ERROR_VALUE = 200;
-  /**
-   * <code>UNKNOWN_ERROR = 100;</code>
-   */
+  /** <code>UNKNOWN_ERROR = 100;</code> */
   public static final int UNKNOWN_ERROR_VALUE = 100;
-
 
   public final int getNumber() {
     if (this == UNRECOGNIZED) {
@@ -85,52 +57,55 @@ public enum ResponseStatus
    */
   public static ResponseStatus forNumber(int value) {
     switch (value) {
-      case 0: return SUCCESS;
-      case 10: return WALLET_ACCESS_DENIED;
-      case 11: return WALLET_EXISTS;
-      case 20: return ITEM_NOT_FOUND;
-      case 200: return SERIALIZATION_ERROR;
-      case 100: return UNKNOWN_ERROR;
-      default: return null;
+      case 0:
+        return SUCCESS;
+      case 10:
+        return WALLET_ACCESS_DENIED;
+      case 11:
+        return WALLET_EXISTS;
+      case 20:
+        return ITEM_NOT_FOUND;
+      case 200:
+        return SERIALIZATION_ERROR;
+      case 100:
+        return UNKNOWN_ERROR;
+      default:
+        return null;
     }
   }
 
-  public static com.google.protobuf.Internal.EnumLiteMap<ResponseStatus>
-      internalGetValueMap() {
+  public static com.google.protobuf.Internal.EnumLiteMap<ResponseStatus> internalGetValueMap() {
     return internalValueMap;
   }
-  private static final com.google.protobuf.Internal.EnumLiteMap<
-      ResponseStatus> internalValueMap =
-        new com.google.protobuf.Internal.EnumLiteMap<ResponseStatus>() {
-          public ResponseStatus findValueByNumber(int number) {
-            return ResponseStatus.forNumber(number);
-          }
-        };
 
-  public final com.google.protobuf.Descriptors.EnumValueDescriptor
-      getValueDescriptor() {
+  private static final com.google.protobuf.Internal.EnumLiteMap<ResponseStatus> internalValueMap =
+      new com.google.protobuf.Internal.EnumLiteMap<ResponseStatus>() {
+        public ResponseStatus findValueByNumber(int number) {
+          return ResponseStatus.forNumber(number);
+        }
+      };
+
+  public final com.google.protobuf.Descriptors.EnumValueDescriptor getValueDescriptor() {
     if (this == UNRECOGNIZED) {
       throw new java.lang.IllegalStateException(
           "Can't get the descriptor of an unrecognized enum value.");
     }
     return getDescriptor().getValues().get(ordinal());
   }
-  public final com.google.protobuf.Descriptors.EnumDescriptor
-      getDescriptorForType() {
+
+  public final com.google.protobuf.Descriptors.EnumDescriptor getDescriptorForType() {
     return getDescriptor();
   }
-  public static final com.google.protobuf.Descriptors.EnumDescriptor
-      getDescriptor() {
+
+  public static final com.google.protobuf.Descriptors.EnumDescriptor getDescriptor() {
     return trinsic.services.common.v1.Common.getDescriptor().getEnumTypes().get(0);
   }
 
   private static final ResponseStatus[] VALUES = values();
 
-  public static ResponseStatus valueOf(
-      com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+  public static ResponseStatus valueOf(com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
     if (desc.getType() != getDescriptor()) {
-      throw new java.lang.IllegalArgumentException(
-        "EnumValueDescriptor is not for this type.");
+      throw new java.lang.IllegalArgumentException("EnumValueDescriptor is not for this type.");
     }
     if (desc.getIndex() == -1) {
       return UNRECOGNIZED;
@@ -146,4 +121,3 @@ public enum ResponseStatus
 
   // @@protoc_insertion_point(enum_scope:services.common.v1.ResponseStatus)
 }
-

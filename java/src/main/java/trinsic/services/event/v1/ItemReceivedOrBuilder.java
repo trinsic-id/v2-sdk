@@ -3,47 +3,58 @@
 
 package trinsic.services.event.v1;
 
-public interface ItemReceivedOrBuilder extends
+public interface ItemReceivedOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:trinsic.services.event.ItemReceived)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * UUID of the new item
    * </pre>
    *
    * <code>string id = 1;</code>
+   *
    * @return The id.
    */
   java.lang.String getId();
   /**
+   *
+   *
    * <pre>
    * UUID of the new item
    * </pre>
    *
    * <code>string id = 1;</code>
+   *
    * @return The bytes for id.
    */
-  com.google.protobuf.ByteString
-      getIdBytes();
+  com.google.protobuf.ByteString getIdBytes();
 
   /**
+   *
+   *
    * <pre>
    * Timestamp when the item was received, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
    * </pre>
    *
    * <code>string received = 2;</code>
+   *
    * @return The received.
    */
   java.lang.String getReceived();
   /**
+   *
+   *
    * <pre>
    * Timestamp when the item was received, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
    * </pre>
    *
    * <code>string received = 2;</code>
+   *
    * @return The bytes for received.
    */
-  com.google.protobuf.ByteString
-      getReceivedBytes();
+  com.google.protobuf.ByteString getReceivedBytes();
 }

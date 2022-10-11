@@ -132,7 +132,7 @@ type Nonce struct {
 	unknownFields protoimpl.UnknownFields
 
 	Timestamp   int64  `protobuf:"varint,1,opt,name=timestamp,proto3" json:"timestamp,omitempty"`                       // UTC unix millisecond timestamp the request was made
-	RequestHash []byte `protobuf:"bytes,2,opt,name=request_hash,json=requestHash,proto3" json:"request_hash,omitempty"` // blake3256 hash of the request body
+	RequestHash []byte `protobuf:"bytes,2,opt,name=request_hash,json=requestHash,proto3" json:"request_hash,omitempty"` // blake3-256 hash of the request body
 }
 
 func (x *Nonce) Reset() {

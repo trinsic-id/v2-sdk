@@ -2,8 +2,7 @@ package trinsic.services.verifiablecredentials.templates.v1;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
-/**
- */
+/** */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.49.2)",
     comments = "Source: services/verifiable-credentials/templates/v1/templates.proto")
@@ -12,308 +11,441 @@ public final class CredentialTemplatesGrpc {
 
   private CredentialTemplatesGrpc() {}
 
-  public static final String SERVICE_NAME = "services.verifiablecredentials.templates.v1.CredentialTemplates";
+  public static final String SERVICE_NAME =
+      "services.verifiablecredentials.templates.v1.CredentialTemplates";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest,
-      trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse> getCreateMethod;
+  private static volatile io.grpc.MethodDescriptor<
+          trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest,
+          trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse>
+      getCreateMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Create",
-      requestType = trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest.class,
-      responseType = trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse.class,
+      requestType =
+          trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest.class,
+      responseType =
+          trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse
+              .class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest,
-      trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse> getCreateMethod() {
-    io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest, trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse> getCreateMethod;
+  public static io.grpc.MethodDescriptor<
+          trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest,
+          trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse>
+      getCreateMethod() {
+    io.grpc.MethodDescriptor<
+            trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest,
+            trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse>
+        getCreateMethod;
     if ((getCreateMethod = CredentialTemplatesGrpc.getCreateMethod) == null) {
       synchronized (CredentialTemplatesGrpc.class) {
         if ((getCreateMethod = CredentialTemplatesGrpc.getCreateMethod) == null) {
-          CredentialTemplatesGrpc.getCreateMethod = getCreateMethod =
-              io.grpc.MethodDescriptor.<trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest, trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Create"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new CredentialTemplatesMethodDescriptorSupplier("Create"))
-              .build();
+          CredentialTemplatesGrpc.getCreateMethod =
+              getCreateMethod =
+                  io.grpc.MethodDescriptor
+                      .<trinsic.services.verifiablecredentials.templates.v1
+                              .CreateCredentialTemplateRequest,
+                          trinsic.services.verifiablecredentials.templates.v1
+                              .CreateCredentialTemplateResponse>
+                          newBuilder()
+                      .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                      .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Create"))
+                      .setSampledToLocalTracing(true)
+                      .setRequestMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.verifiablecredentials.templates.v1
+                                  .CreateCredentialTemplateRequest.getDefaultInstance()))
+                      .setResponseMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.verifiablecredentials.templates.v1
+                                  .CreateCredentialTemplateResponse.getDefaultInstance()))
+                      .setSchemaDescriptor(
+                          new CredentialTemplatesMethodDescriptorSupplier("Create"))
+                      .build();
         }
       }
     }
     return getCreateMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest,
-      trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse> getGetMethod;
+  private static volatile io.grpc.MethodDescriptor<
+          trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest,
+          trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse>
+      getGetMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Get",
-      requestType = trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest.class,
-      responseType = trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse.class,
+      requestType =
+          trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest.class,
+      responseType =
+          trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest,
-      trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse> getGetMethod() {
-    io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest, trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse> getGetMethod;
+  public static io.grpc.MethodDescriptor<
+          trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest,
+          trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse>
+      getGetMethod() {
+    io.grpc.MethodDescriptor<
+            trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest,
+            trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse>
+        getGetMethod;
     if ((getGetMethod = CredentialTemplatesGrpc.getGetMethod) == null) {
       synchronized (CredentialTemplatesGrpc.class) {
         if ((getGetMethod = CredentialTemplatesGrpc.getGetMethod) == null) {
-          CredentialTemplatesGrpc.getGetMethod = getGetMethod =
-              io.grpc.MethodDescriptor.<trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest, trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Get"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new CredentialTemplatesMethodDescriptorSupplier("Get"))
-              .build();
+          CredentialTemplatesGrpc.getGetMethod =
+              getGetMethod =
+                  io.grpc.MethodDescriptor
+                      .<trinsic.services.verifiablecredentials.templates.v1
+                              .GetCredentialTemplateRequest,
+                          trinsic.services.verifiablecredentials.templates.v1
+                              .GetCredentialTemplateResponse>
+                          newBuilder()
+                      .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                      .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Get"))
+                      .setSampledToLocalTracing(true)
+                      .setRequestMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.verifiablecredentials.templates.v1
+                                  .GetCredentialTemplateRequest.getDefaultInstance()))
+                      .setResponseMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.verifiablecredentials.templates.v1
+                                  .GetCredentialTemplateResponse.getDefaultInstance()))
+                      .setSchemaDescriptor(new CredentialTemplatesMethodDescriptorSupplier("Get"))
+                      .build();
         }
       }
     }
     return getGetMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest,
-      trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse> getListMethod;
+  private static volatile io.grpc.MethodDescriptor<
+          trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest,
+          trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse>
+      getListMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "List",
-      requestType = trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest.class,
-      responseType = trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse.class,
+      requestType =
+          trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest.class,
+      responseType =
+          trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest,
-      trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse> getListMethod() {
-    io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest, trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse> getListMethod;
+  public static io.grpc.MethodDescriptor<
+          trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest,
+          trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse>
+      getListMethod() {
+    io.grpc.MethodDescriptor<
+            trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest,
+            trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse>
+        getListMethod;
     if ((getListMethod = CredentialTemplatesGrpc.getListMethod) == null) {
       synchronized (CredentialTemplatesGrpc.class) {
         if ((getListMethod = CredentialTemplatesGrpc.getListMethod) == null) {
-          CredentialTemplatesGrpc.getListMethod = getListMethod =
-              io.grpc.MethodDescriptor.<trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest, trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "List"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new CredentialTemplatesMethodDescriptorSupplier("List"))
-              .build();
+          CredentialTemplatesGrpc.getListMethod =
+              getListMethod =
+                  io.grpc.MethodDescriptor
+                      .<trinsic.services.verifiablecredentials.templates.v1
+                              .ListCredentialTemplatesRequest,
+                          trinsic.services.verifiablecredentials.templates.v1
+                              .ListCredentialTemplatesResponse>
+                          newBuilder()
+                      .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                      .setFullMethodName(generateFullMethodName(SERVICE_NAME, "List"))
+                      .setSampledToLocalTracing(true)
+                      .setRequestMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.verifiablecredentials.templates.v1
+                                  .ListCredentialTemplatesRequest.getDefaultInstance()))
+                      .setResponseMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.verifiablecredentials.templates.v1
+                                  .ListCredentialTemplatesResponse.getDefaultInstance()))
+                      .setSchemaDescriptor(new CredentialTemplatesMethodDescriptorSupplier("List"))
+                      .build();
         }
       }
     }
     return getListMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest,
-      trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse> getSearchMethod;
+  private static volatile io.grpc.MethodDescriptor<
+          trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest,
+          trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse>
+      getSearchMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Search",
-      requestType = trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest.class,
-      responseType = trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse.class,
+      requestType =
+          trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
+              .class,
+      responseType =
+          trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse
+              .class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest,
-      trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse> getSearchMethod() {
-    io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest, trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse> getSearchMethod;
+  public static io.grpc.MethodDescriptor<
+          trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest,
+          trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse>
+      getSearchMethod() {
+    io.grpc.MethodDescriptor<
+            trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest,
+            trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse>
+        getSearchMethod;
     if ((getSearchMethod = CredentialTemplatesGrpc.getSearchMethod) == null) {
       synchronized (CredentialTemplatesGrpc.class) {
         if ((getSearchMethod = CredentialTemplatesGrpc.getSearchMethod) == null) {
-          CredentialTemplatesGrpc.getSearchMethod = getSearchMethod =
-              io.grpc.MethodDescriptor.<trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest, trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Search"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new CredentialTemplatesMethodDescriptorSupplier("Search"))
-              .build();
+          CredentialTemplatesGrpc.getSearchMethod =
+              getSearchMethod =
+                  io.grpc.MethodDescriptor
+                      .<trinsic.services.verifiablecredentials.templates.v1
+                              .SearchCredentialTemplatesRequest,
+                          trinsic.services.verifiablecredentials.templates.v1
+                              .SearchCredentialTemplatesResponse>
+                          newBuilder()
+                      .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                      .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Search"))
+                      .setSampledToLocalTracing(true)
+                      .setRequestMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.verifiablecredentials.templates.v1
+                                  .SearchCredentialTemplatesRequest.getDefaultInstance()))
+                      .setResponseMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.verifiablecredentials.templates.v1
+                                  .SearchCredentialTemplatesResponse.getDefaultInstance()))
+                      .setSchemaDescriptor(
+                          new CredentialTemplatesMethodDescriptorSupplier("Search"))
+                      .build();
         }
       }
     }
     return getSearchMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest,
-      trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse> getDeleteMethod;
+  private static volatile io.grpc.MethodDescriptor<
+          trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest,
+          trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse>
+      getDeleteMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Delete",
-      requestType = trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest.class,
-      responseType = trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse.class,
+      requestType =
+          trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest.class,
+      responseType =
+          trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse
+              .class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest,
-      trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse> getDeleteMethod() {
-    io.grpc.MethodDescriptor<trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest, trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse> getDeleteMethod;
+  public static io.grpc.MethodDescriptor<
+          trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest,
+          trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse>
+      getDeleteMethod() {
+    io.grpc.MethodDescriptor<
+            trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest,
+            trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse>
+        getDeleteMethod;
     if ((getDeleteMethod = CredentialTemplatesGrpc.getDeleteMethod) == null) {
       synchronized (CredentialTemplatesGrpc.class) {
         if ((getDeleteMethod = CredentialTemplatesGrpc.getDeleteMethod) == null) {
-          CredentialTemplatesGrpc.getDeleteMethod = getDeleteMethod =
-              io.grpc.MethodDescriptor.<trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest, trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Delete"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new CredentialTemplatesMethodDescriptorSupplier("Delete"))
-              .build();
+          CredentialTemplatesGrpc.getDeleteMethod =
+              getDeleteMethod =
+                  io.grpc.MethodDescriptor
+                      .<trinsic.services.verifiablecredentials.templates.v1
+                              .DeleteCredentialTemplateRequest,
+                          trinsic.services.verifiablecredentials.templates.v1
+                              .DeleteCredentialTemplateResponse>
+                          newBuilder()
+                      .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                      .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Delete"))
+                      .setSampledToLocalTracing(true)
+                      .setRequestMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.verifiablecredentials.templates.v1
+                                  .DeleteCredentialTemplateRequest.getDefaultInstance()))
+                      .setResponseMarshaller(
+                          io.grpc.protobuf.ProtoUtils.marshaller(
+                              trinsic.services.verifiablecredentials.templates.v1
+                                  .DeleteCredentialTemplateResponse.getDefaultInstance()))
+                      .setSchemaDescriptor(
+                          new CredentialTemplatesMethodDescriptorSupplier("Delete"))
+                      .build();
         }
       }
     }
     return getDeleteMethod;
   }
 
-  /**
-   * Creates a new async stub that supports all call types for the service
-   */
+  /** Creates a new async stub that supports all call types for the service */
   public static CredentialTemplatesStub newStub(io.grpc.Channel channel) {
     io.grpc.stub.AbstractStub.StubFactory<CredentialTemplatesStub> factory =
-      new io.grpc.stub.AbstractStub.StubFactory<CredentialTemplatesStub>() {
-        @java.lang.Override
-        public CredentialTemplatesStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-          return new CredentialTemplatesStub(channel, callOptions);
-        }
-      };
+        new io.grpc.stub.AbstractStub.StubFactory<CredentialTemplatesStub>() {
+          @java.lang.Override
+          public CredentialTemplatesStub newStub(
+              io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+            return new CredentialTemplatesStub(channel, callOptions);
+          }
+        };
     return CredentialTemplatesStub.newStub(factory, channel);
   }
 
   /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
-  public static CredentialTemplatesBlockingStub newBlockingStub(
-      io.grpc.Channel channel) {
+  public static CredentialTemplatesBlockingStub newBlockingStub(io.grpc.Channel channel) {
     io.grpc.stub.AbstractStub.StubFactory<CredentialTemplatesBlockingStub> factory =
-      new io.grpc.stub.AbstractStub.StubFactory<CredentialTemplatesBlockingStub>() {
-        @java.lang.Override
-        public CredentialTemplatesBlockingStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-          return new CredentialTemplatesBlockingStub(channel, callOptions);
-        }
-      };
+        new io.grpc.stub.AbstractStub.StubFactory<CredentialTemplatesBlockingStub>() {
+          @java.lang.Override
+          public CredentialTemplatesBlockingStub newStub(
+              io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+            return new CredentialTemplatesBlockingStub(channel, callOptions);
+          }
+        };
     return CredentialTemplatesBlockingStub.newStub(factory, channel);
   }
 
-  /**
-   * Creates a new ListenableFuture-style stub that supports unary calls on the service
-   */
-  public static CredentialTemplatesFutureStub newFutureStub(
-      io.grpc.Channel channel) {
+  /** Creates a new ListenableFuture-style stub that supports unary calls on the service */
+  public static CredentialTemplatesFutureStub newFutureStub(io.grpc.Channel channel) {
     io.grpc.stub.AbstractStub.StubFactory<CredentialTemplatesFutureStub> factory =
-      new io.grpc.stub.AbstractStub.StubFactory<CredentialTemplatesFutureStub>() {
-        @java.lang.Override
-        public CredentialTemplatesFutureStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-          return new CredentialTemplatesFutureStub(channel, callOptions);
-        }
-      };
+        new io.grpc.stub.AbstractStub.StubFactory<CredentialTemplatesFutureStub>() {
+          @java.lang.Override
+          public CredentialTemplatesFutureStub newStub(
+              io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+            return new CredentialTemplatesFutureStub(channel, callOptions);
+          }
+        };
     return CredentialTemplatesFutureStub.newStub(factory, channel);
   }
 
-  /**
-   */
-  public static abstract class CredentialTemplatesImplBase implements io.grpc.BindableService {
+  /** */
+  public abstract static class CredentialTemplatesImplBase implements io.grpc.BindableService {
 
     /**
+     *
+     *
      * <pre>
      * Create a credential template in the current ecosystem
      * </pre>
      */
-    public void create(trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse> responseObserver) {
+    public void create(
+        trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest request,
+        io.grpc.stub.StreamObserver<
+                trinsic.services.verifiablecredentials.templates.v1
+                    .CreateCredentialTemplateResponse>
+            responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCreateMethod(), responseObserver);
     }
 
     /**
+     *
+     *
      * <pre>
      * Fetch a credential template by ID
      * </pre>
      */
-    public void get(trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse> responseObserver) {
+    public void get(
+        trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest request,
+        io.grpc.stub.StreamObserver<
+                trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse>
+            responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetMethod(), responseObserver);
     }
 
     /**
+     *
+     *
      * <pre>
      * Search credential templates using SQL, returning strongly-typed template data
      * </pre>
      */
-    public void list(trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse> responseObserver) {
+    public void list(
+        trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest request,
+        io.grpc.stub.StreamObserver<
+                trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse>
+            responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListMethod(), responseObserver);
     }
 
     /**
+     *
+     *
      * <pre>
      * Search credential templates using SQL, returning raw JSON data
      * </pre>
      */
-    public void search(trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse> responseObserver) {
+    public void search(
+        trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
+            request,
+        io.grpc.stub.StreamObserver<
+                trinsic.services.verifiablecredentials.templates.v1
+                    .SearchCredentialTemplatesResponse>
+            responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSearchMethod(), responseObserver);
     }
 
     /**
+     *
+     *
      * <pre>
      * Delete a credential template from the current ecosystem by ID
      * </pre>
      */
-    public void delete(trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse> responseObserver) {
+    public void delete(
+        trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest request,
+        io.grpc.stub.StreamObserver<
+                trinsic.services.verifiablecredentials.templates.v1
+                    .DeleteCredentialTemplateResponse>
+            responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDeleteMethod(), responseObserver);
     }
 
-    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
+    @java.lang.Override
+    public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
-            getCreateMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest,
-                trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse>(
-                  this, METHODID_CREATE)))
+              getCreateMethod(),
+              io.grpc.stub.ServerCalls.asyncUnaryCall(
+                  new MethodHandlers<
+                      trinsic.services.verifiablecredentials.templates.v1
+                          .CreateCredentialTemplateRequest,
+                      trinsic.services.verifiablecredentials.templates.v1
+                          .CreateCredentialTemplateResponse>(this, METHODID_CREATE)))
           .addMethod(
-            getGetMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest,
-                trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse>(
-                  this, METHODID_GET)))
+              getGetMethod(),
+              io.grpc.stub.ServerCalls.asyncUnaryCall(
+                  new MethodHandlers<
+                      trinsic.services.verifiablecredentials.templates.v1
+                          .GetCredentialTemplateRequest,
+                      trinsic.services.verifiablecredentials.templates.v1
+                          .GetCredentialTemplateResponse>(this, METHODID_GET)))
           .addMethod(
-            getListMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest,
-                trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse>(
-                  this, METHODID_LIST)))
+              getListMethod(),
+              io.grpc.stub.ServerCalls.asyncUnaryCall(
+                  new MethodHandlers<
+                      trinsic.services.verifiablecredentials.templates.v1
+                          .ListCredentialTemplatesRequest,
+                      trinsic.services.verifiablecredentials.templates.v1
+                          .ListCredentialTemplatesResponse>(this, METHODID_LIST)))
           .addMethod(
-            getSearchMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest,
-                trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse>(
-                  this, METHODID_SEARCH)))
+              getSearchMethod(),
+              io.grpc.stub.ServerCalls.asyncUnaryCall(
+                  new MethodHandlers<
+                      trinsic.services.verifiablecredentials.templates.v1
+                          .SearchCredentialTemplatesRequest,
+                      trinsic.services.verifiablecredentials.templates.v1
+                          .SearchCredentialTemplatesResponse>(this, METHODID_SEARCH)))
           .addMethod(
-            getDeleteMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest,
-                trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse>(
-                  this, METHODID_DELETE)))
+              getDeleteMethod(),
+              io.grpc.stub.ServerCalls.asyncUnaryCall(
+                  new MethodHandlers<
+                      trinsic.services.verifiablecredentials.templates.v1
+                          .DeleteCredentialTemplateRequest,
+                      trinsic.services.verifiablecredentials.templates.v1
+                          .DeleteCredentialTemplateResponse>(this, METHODID_DELETE)))
           .build();
     }
   }
 
-  /**
-   */
-  public static final class CredentialTemplatesStub extends io.grpc.stub.AbstractAsyncStub<CredentialTemplatesStub> {
-    private CredentialTemplatesStub(
-        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+  /** */
+  public static final class CredentialTemplatesStub
+      extends io.grpc.stub.AbstractAsyncStub<CredentialTemplatesStub> {
+    private CredentialTemplatesStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
@@ -324,64 +456,93 @@ public final class CredentialTemplatesGrpc {
     }
 
     /**
+     *
+     *
      * <pre>
      * Create a credential template in the current ecosystem
      * </pre>
      */
-    public void create(trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse> responseObserver) {
+    public void create(
+        trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest request,
+        io.grpc.stub.StreamObserver<
+                trinsic.services.verifiablecredentials.templates.v1
+                    .CreateCredentialTemplateResponse>
+            responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getCreateMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
+     *
+     *
      * <pre>
      * Fetch a credential template by ID
      * </pre>
      */
-    public void get(trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse> responseObserver) {
+    public void get(
+        trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest request,
+        io.grpc.stub.StreamObserver<
+                trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse>
+            responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
+     *
+     *
      * <pre>
      * Search credential templates using SQL, returning strongly-typed template data
      * </pre>
      */
-    public void list(trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse> responseObserver) {
+    public void list(
+        trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest request,
+        io.grpc.stub.StreamObserver<
+                trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse>
+            responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getListMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
+     *
+     *
      * <pre>
      * Search credential templates using SQL, returning raw JSON data
      * </pre>
      */
-    public void search(trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse> responseObserver) {
+    public void search(
+        trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
+            request,
+        io.grpc.stub.StreamObserver<
+                trinsic.services.verifiablecredentials.templates.v1
+                    .SearchCredentialTemplatesResponse>
+            responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getSearchMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
+     *
+     *
      * <pre>
      * Delete a credential template from the current ecosystem by ID
      * </pre>
      */
-    public void delete(trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest request,
-        io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse> responseObserver) {
+    public void delete(
+        trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest request,
+        io.grpc.stub.StreamObserver<
+                trinsic.services.verifiablecredentials.templates.v1
+                    .DeleteCredentialTemplateResponse>
+            responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getDeleteMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
-  /**
-   */
-  public static final class CredentialTemplatesBlockingStub extends io.grpc.stub.AbstractBlockingStub<CredentialTemplatesBlockingStub> {
+  /** */
+  public static final class CredentialTemplatesBlockingStub
+      extends io.grpc.stub.AbstractBlockingStub<CredentialTemplatesBlockingStub> {
     private CredentialTemplatesBlockingStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -394,59 +555,81 @@ public final class CredentialTemplatesGrpc {
     }
 
     /**
+     *
+     *
      * <pre>
      * Create a credential template in the current ecosystem
      * </pre>
      */
-    public trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse create(trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest request) {
+    public trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse
+        create(
+            trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest
+                request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getCreateMethod(), getCallOptions(), request);
     }
 
     /**
+     *
+     *
      * <pre>
      * Fetch a credential template by ID
      * </pre>
      */
-    public trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse get(trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest request) {
+    public trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse get(
+        trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetMethod(), getCallOptions(), request);
     }
 
     /**
+     *
+     *
      * <pre>
      * Search credential templates using SQL, returning strongly-typed template data
      * </pre>
      */
-    public trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse list(trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest request) {
+    public trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse list(
+        trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest
+            request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getListMethod(), getCallOptions(), request);
     }
 
     /**
+     *
+     *
      * <pre>
      * Search credential templates using SQL, returning raw JSON data
      * </pre>
      */
-    public trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse search(trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest request) {
+    public trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse
+        search(
+            trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
+                request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getSearchMethod(), getCallOptions(), request);
     }
 
     /**
+     *
+     *
      * <pre>
      * Delete a credential template from the current ecosystem by ID
      * </pre>
      */
-    public trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse delete(trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest request) {
+    public trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse
+        delete(
+            trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest
+                request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getDeleteMethod(), getCallOptions(), request);
     }
   }
 
-  /**
-   */
-  public static final class CredentialTemplatesFutureStub extends io.grpc.stub.AbstractFutureStub<CredentialTemplatesFutureStub> {
+  /** */
+  public static final class CredentialTemplatesFutureStub
+      extends io.grpc.stub.AbstractFutureStub<CredentialTemplatesFutureStub> {
     private CredentialTemplatesFutureStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -459,56 +642,81 @@ public final class CredentialTemplatesGrpc {
     }
 
     /**
+     *
+     *
      * <pre>
      * Create a credential template in the current ecosystem
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse> create(
-        trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<
+            trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse>
+        create(
+            trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest
+                request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getCreateMethod(), getCallOptions()), request);
     }
 
     /**
+     *
+     *
      * <pre>
      * Fetch a credential template by ID
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse> get(
-        trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<
+            trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse>
+        get(
+            trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest
+                request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetMethod(), getCallOptions()), request);
     }
 
     /**
+     *
+     *
      * <pre>
      * Search credential templates using SQL, returning strongly-typed template data
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse> list(
-        trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<
+            trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse>
+        list(
+            trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest
+                request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getListMethod(), getCallOptions()), request);
     }
 
     /**
+     *
+     *
      * <pre>
      * Search credential templates using SQL, returning raw JSON data
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse> search(
-        trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<
+            trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse>
+        search(
+            trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
+                request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getSearchMethod(), getCallOptions()), request);
     }
 
     /**
+     *
+     *
      * <pre>
      * Delete a credential template from the current ecosystem by ID
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse> delete(
-        trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<
+            trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse>
+        delete(
+            trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest
+                request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getDeleteMethod(), getCallOptions()), request);
     }
@@ -520,11 +728,11 @@ public final class CredentialTemplatesGrpc {
   private static final int METHODID_SEARCH = 3;
   private static final int METHODID_DELETE = 4;
 
-  private static final class MethodHandlers<Req, Resp> implements
-      io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
-      io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
-      io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
-      io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
+  private static final class MethodHandlers<Req, Resp>
+      implements io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
+          io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
+          io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
+          io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
     private final CredentialTemplatesImplBase serviceImpl;
     private final int methodId;
 
@@ -538,24 +746,49 @@ public final class CredentialTemplatesGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_CREATE:
-          serviceImpl.create((trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest) request,
-              (io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateResponse>) responseObserver);
+          serviceImpl.create(
+              (trinsic.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest)
+                  request,
+              (io.grpc.stub.StreamObserver<
+                      trinsic.services.verifiablecredentials.templates.v1
+                          .CreateCredentialTemplateResponse>)
+                  responseObserver);
           break;
         case METHODID_GET:
-          serviceImpl.get((trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest) request,
-              (io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateResponse>) responseObserver);
+          serviceImpl.get(
+              (trinsic.services.verifiablecredentials.templates.v1.GetCredentialTemplateRequest)
+                  request,
+              (io.grpc.stub.StreamObserver<
+                      trinsic.services.verifiablecredentials.templates.v1
+                          .GetCredentialTemplateResponse>)
+                  responseObserver);
           break;
         case METHODID_LIST:
-          serviceImpl.list((trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest) request,
-              (io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse>) responseObserver);
+          serviceImpl.list(
+              (trinsic.services.verifiablecredentials.templates.v1.ListCredentialTemplatesRequest)
+                  request,
+              (io.grpc.stub.StreamObserver<
+                      trinsic.services.verifiablecredentials.templates.v1
+                          .ListCredentialTemplatesResponse>)
+                  responseObserver);
           break;
         case METHODID_SEARCH:
-          serviceImpl.search((trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest) request,
-              (io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesResponse>) responseObserver);
+          serviceImpl.search(
+              (trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest)
+                  request,
+              (io.grpc.stub.StreamObserver<
+                      trinsic.services.verifiablecredentials.templates.v1
+                          .SearchCredentialTemplatesResponse>)
+                  responseObserver);
           break;
         case METHODID_DELETE:
-          serviceImpl.delete((trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest) request,
-              (io.grpc.stub.StreamObserver<trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse>) responseObserver);
+          serviceImpl.delete(
+              (trinsic.services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest)
+                  request,
+              (io.grpc.stub.StreamObserver<
+                      trinsic.services.verifiablecredentials.templates.v1
+                          .DeleteCredentialTemplateResponse>)
+                  responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -573,8 +806,9 @@ public final class CredentialTemplatesGrpc {
     }
   }
 
-  private static abstract class CredentialTemplatesBaseDescriptorSupplier
-      implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
+  private abstract static class CredentialTemplatesBaseDescriptorSupplier
+      implements io.grpc.protobuf.ProtoFileDescriptorSupplier,
+          io.grpc.protobuf.ProtoServiceDescriptorSupplier {
     CredentialTemplatesBaseDescriptorSupplier() {}
 
     @java.lang.Override
@@ -616,14 +850,16 @@ public final class CredentialTemplatesGrpc {
       synchronized (CredentialTemplatesGrpc.class) {
         result = serviceDescriptor;
         if (result == null) {
-          serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
-              .setSchemaDescriptor(new CredentialTemplatesFileDescriptorSupplier())
-              .addMethod(getCreateMethod())
-              .addMethod(getGetMethod())
-              .addMethod(getListMethod())
-              .addMethod(getSearchMethod())
-              .addMethod(getDeleteMethod())
-              .build();
+          serviceDescriptor =
+              result =
+                  io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
+                      .setSchemaDescriptor(new CredentialTemplatesFileDescriptorSupplier())
+                      .addMethod(getCreateMethod())
+                      .addMethod(getGetMethod())
+                      .addMethod(getListMethod())
+                      .addMethod(getSearchMethod())
+                      .addMethod(getDeleteMethod())
+                      .build();
         }
       }
     }

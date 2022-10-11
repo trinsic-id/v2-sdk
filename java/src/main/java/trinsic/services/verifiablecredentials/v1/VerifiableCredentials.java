@@ -5,269 +5,282 @@ package trinsic.services.verifiablecredentials.v1;
 
 public final class VerifiableCredentials {
   private VerifiableCredentials() {}
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
+
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {}
+
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions((com.google.protobuf.ExtensionRegistryLite) registry);
   }
 
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
-  }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_v1_IssueRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_v1_IssueRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_v1_IssueRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_v1_IssueResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_v1_IssueResponse_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_v1_IssueResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_v1_IssueFromTemplateRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_v1_IssueFromTemplateRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_v1_IssueFromTemplateRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_v1_IssueFromTemplateResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_v1_IssueFromTemplateResponse_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_v1_IssueFromTemplateResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_v1_CreateProofRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_v1_CreateProofRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_v1_CreateProofRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_v1_CreateProofResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_v1_CreateProofResponse_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_v1_CreateProofResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_v1_VerifyProofRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_v1_VerifyProofRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_v1_VerifyProofRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_v1_VerifyProofResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_v1_VerifyProofResponse_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_v1_VerifyProofResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_v1_VerifyProofResponse_ValidationResultsEntry_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_v1_VerifyProofResponse_ValidationResultsEntry_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_v1_VerifyProofResponse_ValidationResultsEntry_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_v1_ValidationMessage_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_v1_ValidationMessage_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_v1_ValidationMessage_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_v1_SendRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_v1_SendRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_v1_SendRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_v1_SendResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_v1_SendResponse_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_v1_SendResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_v1_UpdateStatusRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_v1_UpdateStatusRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_v1_UpdateStatusRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_v1_UpdateStatusResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_v1_UpdateStatusResponse_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_v1_UpdateStatusResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_v1_CheckStatusRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_v1_CheckStatusRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_v1_CheckStatusRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_verifiablecredentials_v1_CheckStatusResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_verifiablecredentials_v1_CheckStatusResponse_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_verifiablecredentials_v1_CheckStatusResponse_fieldAccessorTable;
 
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
+  public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
+
+  private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
+
   static {
     java.lang.String[] descriptorData = {
-      "\n?services/verifiable-credentials/v1/ver" +
-      "ifiable-credentials.proto\022!services.veri" +
-      "fiablecredentials.v1\032$services/options/f" +
-      "ield-options.proto\"%\n\014IssueRequest\022\025\n\rdo" +
-      "cument_json\030\001 \001(\t\"-\n\rIssueResponse\022\034\n\024si" +
-      "gned_document_json\030\001 \001(\t\"`\n\030IssueFromTem" +
-      "plateRequest\022\023\n\013template_id\030\001 \001(\t\022\023\n\013val" +
-      "ues_json\030\002 \001(\t\022\032\n\014framework_id\030\003 \001(\tB\004\200\246" +
-      "\035\001\"2\n\031IssueFromTemplateResponse\022\025\n\rdocum" +
-      "ent_json\030\001 \001(\t\"g\n\022CreateProofRequest\022\034\n\024" +
-      "reveal_document_json\030\001 \001(\t\022\021\n\007item_id\030\002 " +
-      "\001(\tH\000\022\027\n\rdocument_json\030\003 \001(\tH\000B\007\n\005proof\"" +
-      "2\n\023CreateProofResponse\022\033\n\023proof_document" +
-      "_json\030\001 \001(\t\"1\n\022VerifyProofRequest\022\033\n\023pro" +
-      "of_document_json\030\001 \001(\t\"\243\002\n\023VerifyProofRe" +
-      "sponse\022\020\n\010is_valid\030\001 \001(\010\022\037\n\023validation_m" +
-      "essages\030\002 \003(\tB\002\030\001\022i\n\022validation_results\030" +
-      "\003 \003(\0132M.services.verifiablecredentials.v" +
-      "1.VerifyProofResponse.ValidationResultsE" +
-      "ntry\032n\n\026ValidationResultsEntry\022\013\n\003key\030\001 " +
-      "\001(\t\022C\n\005value\030\002 \001(\01324.services.verifiable" +
-      "credentials.v1.ValidationMessage:\0028\001\"7\n\021" +
-      "ValidationMessage\022\020\n\010is_valid\030\001 \001(\010\022\020\n\010m" +
-      "essages\030\002 \003(\t\"~\n\013SendRequest\022\017\n\005email\030\001 " +
-      "\001(\tH\000\022\021\n\007did_uri\030\002 \001(\tH\000\022!\n\027didcomm_invi" +
-      "tation_json\030\003 \001(\tH\000\022\025\n\rdocument_json\030d \001" +
-      "(\tB\021\n\017delivery_method\"\016\n\014SendResponse\"D\n" +
-      "\023UpdateStatusRequest\022\034\n\024credential_statu" +
-      "s_id\030\001 \001(\t\022\017\n\007revoked\030\002 \001(\010\"\026\n\024UpdateSta" +
-      "tusResponse\"2\n\022CheckStatusRequest\022\034\n\024cre" +
-      "dential_status_id\030\001 \001(\t\"&\n\023CheckStatusRe" +
-      "sponse\022\017\n\007revoked\030\001 \001(\0102\367\006\n\024VerifiableCr" +
-      "edential\022j\n\005Issue\022/.services.verifiablec" +
-      "redentials.v1.IssueRequest\0320.services.ve" +
-      "rifiablecredentials.v1.IssueResponse\022\216\001\n" +
-      "\021IssueFromTemplate\022;.services.verifiable" +
-      "credentials.v1.IssueFromTemplateRequest\032" +
-      "<.services.verifiablecredentials.v1.Issu" +
-      "eFromTemplateResponse\022|\n\013CheckStatus\0225.s" +
-      "ervices.verifiablecredentials.v1.CheckSt" +
-      "atusRequest\0326.services.verifiablecredent" +
-      "ials.v1.CheckStatusResponse\022\177\n\014UpdateSta" +
-      "tus\0226.services.verifiablecredentials.v1." +
-      "UpdateStatusRequest\0327.services.verifiabl" +
-      "ecredentials.v1.UpdateStatusResponse\022|\n\013" +
-      "CreateProof\0225.services.verifiablecredent" +
-      "ials.v1.CreateProofRequest\0326.services.ve" +
-      "rifiablecredentials.v1.CreateProofRespon" +
-      "se\022|\n\013VerifyProof\0225.services.verifiablec" +
-      "redentials.v1.VerifyProofRequest\0326.servi" +
-      "ces.verifiablecredentials.v1.VerifyProof" +
-      "Response\022g\n\004Send\022..services.verifiablecr" +
-      "edentials.v1.SendRequest\032/.services.veri" +
-      "fiablecredentials.v1.SendResponseB\231\001\n)tr" +
-      "insic.services.verifiablecredentials.v1P" +
-      "\001Z,services/verifiablecredentials/v1/cre" +
-      "dential\242\002\017TrinsicServices\252\002)Trinsic.Serv" +
-      "ices.VerifiableCredentials.V1b\006proto3"
+      "\n?services/verifiable-credentials/v1/ver"
+          + "ifiable-credentials.proto\022!services.veri"
+          + "fiablecredentials.v1\032$services/options/f"
+          + "ield-options.proto\"%\n\014IssueRequest\022\025\n\rdo"
+          + "cument_json\030\001 \001(\t\"-\n\rIssueResponse\022\034\n\024si"
+          + "gned_document_json\030\001 \001(\t\"`\n\030IssueFromTem"
+          + "plateRequest\022\023\n\013template_id\030\001 \001(\t\022\023\n\013val"
+          + "ues_json\030\002 \001(\t\022\032\n\014framework_id\030\003 \001(\tB\004\200\246"
+          + "\035\001\"2\n\031IssueFromTemplateResponse\022\025\n\rdocum"
+          + "ent_json\030\001 \001(\t\"g\n\022CreateProofRequest\022\034\n\024"
+          + "reveal_document_json\030\001 \001(\t\022\021\n\007item_id\030\002 "
+          + "\001(\tH\000\022\027\n\rdocument_json\030\003 \001(\tH\000B\007\n\005proof\""
+          + "2\n\023CreateProofResponse\022\033\n\023proof_document"
+          + "_json\030\001 \001(\t\"1\n\022VerifyProofRequest\022\033\n\023pro"
+          + "of_document_json\030\001 \001(\t\"\243\002\n\023VerifyProofRe"
+          + "sponse\022\020\n\010is_valid\030\001 \001(\010\022\037\n\023validation_m"
+          + "essages\030\002 \003(\tB\002\030\001\022i\n\022validation_results\030"
+          + "\003 \003(\0132M.services.verifiablecredentials.v"
+          + "1.VerifyProofResponse.ValidationResultsE"
+          + "ntry\032n\n\026ValidationResultsEntry\022\013\n\003key\030\001 "
+          + "\001(\t\022C\n\005value\030\002 \001(\01324.services.verifiable"
+          + "credentials.v1.ValidationMessage:\0028\001\"7\n\021"
+          + "ValidationMessage\022\020\n\010is_valid\030\001 \001(\010\022\020\n\010m"
+          + "essages\030\002 \003(\t\"~\n\013SendRequest\022\017\n\005email\030\001 "
+          + "\001(\tH\000\022\021\n\007did_uri\030\002 \001(\tH\000\022!\n\027didcomm_invi"
+          + "tation_json\030\003 \001(\tH\000\022\025\n\rdocument_json\030d \001"
+          + "(\tB\021\n\017delivery_method\"\016\n\014SendResponse\"D\n"
+          + "\023UpdateStatusRequest\022\034\n\024credential_statu"
+          + "s_id\030\001 \001(\t\022\017\n\007revoked\030\002 \001(\010\"\026\n\024UpdateSta"
+          + "tusResponse\"2\n\022CheckStatusRequest\022\034\n\024cre"
+          + "dential_status_id\030\001 \001(\t\"&\n\023CheckStatusRe"
+          + "sponse\022\017\n\007revoked\030\001 \001(\0102\367\006\n\024VerifiableCr"
+          + "edential\022j\n\005Issue\022/.services.verifiablec"
+          + "redentials.v1.IssueRequest\0320.services.ve"
+          + "rifiablecredentials.v1.IssueResponse\022\216\001\n"
+          + "\021IssueFromTemplate\022;.services.verifiable"
+          + "credentials.v1.IssueFromTemplateRequest\032"
+          + "<.services.verifiablecredentials.v1.Issu"
+          + "eFromTemplateResponse\022|\n\013CheckStatus\0225.s"
+          + "ervices.verifiablecredentials.v1.CheckSt"
+          + "atusRequest\0326.services.verifiablecredent"
+          + "ials.v1.CheckStatusResponse\022\177\n\014UpdateSta"
+          + "tus\0226.services.verifiablecredentials.v1."
+          + "UpdateStatusRequest\0327.services.verifiabl"
+          + "ecredentials.v1.UpdateStatusResponse\022|\n\013"
+          + "CreateProof\0225.services.verifiablecredent"
+          + "ials.v1.CreateProofRequest\0326.services.ve"
+          + "rifiablecredentials.v1.CreateProofRespon"
+          + "se\022|\n\013VerifyProof\0225.services.verifiablec"
+          + "redentials.v1.VerifyProofRequest\0326.servi"
+          + "ces.verifiablecredentials.v1.VerifyProof"
+          + "Response\022g\n\004Send\022..services.verifiablecr"
+          + "edentials.v1.SendRequest\032/.services.veri"
+          + "fiablecredentials.v1.SendResponseB\231\001\n)tr"
+          + "insic.services.verifiablecredentials.v1P"
+          + "\001Z,services/verifiablecredentials/v1/cre"
+          + "dential\242\002\017TrinsicServices\252\002)Trinsic.Serv"
+          + "ices.VerifiableCredentials.V1b\006proto3"
     };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-          trinsic.services.protobuf.options.FieldOptions.getDescriptor(),
-        });
+    descriptor =
+        com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
+            descriptorData,
+            new com.google.protobuf.Descriptors.FileDescriptor[] {
+              trinsic.services.protobuf.options.FieldOptions.getDescriptor(),
+            });
     internal_static_services_verifiablecredentials_v1_IssueRequest_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_services_verifiablecredentials_v1_IssueRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_v1_IssueRequest_descriptor,
-        new java.lang.String[] { "DocumentJson", });
+        getDescriptor().getMessageTypes().get(0);
+    internal_static_services_verifiablecredentials_v1_IssueRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_v1_IssueRequest_descriptor,
+            new java.lang.String[] {
+              "DocumentJson",
+            });
     internal_static_services_verifiablecredentials_v1_IssueResponse_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_services_verifiablecredentials_v1_IssueResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_v1_IssueResponse_descriptor,
-        new java.lang.String[] { "SignedDocumentJson", });
+        getDescriptor().getMessageTypes().get(1);
+    internal_static_services_verifiablecredentials_v1_IssueResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_v1_IssueResponse_descriptor,
+            new java.lang.String[] {
+              "SignedDocumentJson",
+            });
     internal_static_services_verifiablecredentials_v1_IssueFromTemplateRequest_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_services_verifiablecredentials_v1_IssueFromTemplateRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_v1_IssueFromTemplateRequest_descriptor,
-        new java.lang.String[] { "TemplateId", "ValuesJson", "FrameworkId", });
+        getDescriptor().getMessageTypes().get(2);
+    internal_static_services_verifiablecredentials_v1_IssueFromTemplateRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_v1_IssueFromTemplateRequest_descriptor,
+            new java.lang.String[] {
+              "TemplateId", "ValuesJson", "FrameworkId",
+            });
     internal_static_services_verifiablecredentials_v1_IssueFromTemplateResponse_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_services_verifiablecredentials_v1_IssueFromTemplateResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_v1_IssueFromTemplateResponse_descriptor,
-        new java.lang.String[] { "DocumentJson", });
+        getDescriptor().getMessageTypes().get(3);
+    internal_static_services_verifiablecredentials_v1_IssueFromTemplateResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_v1_IssueFromTemplateResponse_descriptor,
+            new java.lang.String[] {
+              "DocumentJson",
+            });
     internal_static_services_verifiablecredentials_v1_CreateProofRequest_descriptor =
-      getDescriptor().getMessageTypes().get(4);
-    internal_static_services_verifiablecredentials_v1_CreateProofRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_v1_CreateProofRequest_descriptor,
-        new java.lang.String[] { "RevealDocumentJson", "ItemId", "DocumentJson", "Proof", });
+        getDescriptor().getMessageTypes().get(4);
+    internal_static_services_verifiablecredentials_v1_CreateProofRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_v1_CreateProofRequest_descriptor,
+            new java.lang.String[] {
+              "RevealDocumentJson", "ItemId", "DocumentJson", "Proof",
+            });
     internal_static_services_verifiablecredentials_v1_CreateProofResponse_descriptor =
-      getDescriptor().getMessageTypes().get(5);
-    internal_static_services_verifiablecredentials_v1_CreateProofResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_v1_CreateProofResponse_descriptor,
-        new java.lang.String[] { "ProofDocumentJson", });
+        getDescriptor().getMessageTypes().get(5);
+    internal_static_services_verifiablecredentials_v1_CreateProofResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_v1_CreateProofResponse_descriptor,
+            new java.lang.String[] {
+              "ProofDocumentJson",
+            });
     internal_static_services_verifiablecredentials_v1_VerifyProofRequest_descriptor =
-      getDescriptor().getMessageTypes().get(6);
-    internal_static_services_verifiablecredentials_v1_VerifyProofRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_v1_VerifyProofRequest_descriptor,
-        new java.lang.String[] { "ProofDocumentJson", });
+        getDescriptor().getMessageTypes().get(6);
+    internal_static_services_verifiablecredentials_v1_VerifyProofRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_v1_VerifyProofRequest_descriptor,
+            new java.lang.String[] {
+              "ProofDocumentJson",
+            });
     internal_static_services_verifiablecredentials_v1_VerifyProofResponse_descriptor =
-      getDescriptor().getMessageTypes().get(7);
-    internal_static_services_verifiablecredentials_v1_VerifyProofResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_v1_VerifyProofResponse_descriptor,
-        new java.lang.String[] { "IsValid", "ValidationMessages", "ValidationResults", });
+        getDescriptor().getMessageTypes().get(7);
+    internal_static_services_verifiablecredentials_v1_VerifyProofResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_v1_VerifyProofResponse_descriptor,
+            new java.lang.String[] {
+              "IsValid", "ValidationMessages", "ValidationResults",
+            });
     internal_static_services_verifiablecredentials_v1_VerifyProofResponse_ValidationResultsEntry_descriptor =
-      internal_static_services_verifiablecredentials_v1_VerifyProofResponse_descriptor.getNestedTypes().get(0);
-    internal_static_services_verifiablecredentials_v1_VerifyProofResponse_ValidationResultsEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_v1_VerifyProofResponse_ValidationResultsEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
+        internal_static_services_verifiablecredentials_v1_VerifyProofResponse_descriptor
+            .getNestedTypes()
+            .get(0);
+    internal_static_services_verifiablecredentials_v1_VerifyProofResponse_ValidationResultsEntry_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_v1_VerifyProofResponse_ValidationResultsEntry_descriptor,
+            new java.lang.String[] {
+              "Key", "Value",
+            });
     internal_static_services_verifiablecredentials_v1_ValidationMessage_descriptor =
-      getDescriptor().getMessageTypes().get(8);
-    internal_static_services_verifiablecredentials_v1_ValidationMessage_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_v1_ValidationMessage_descriptor,
-        new java.lang.String[] { "IsValid", "Messages", });
+        getDescriptor().getMessageTypes().get(8);
+    internal_static_services_verifiablecredentials_v1_ValidationMessage_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_v1_ValidationMessage_descriptor,
+            new java.lang.String[] {
+              "IsValid", "Messages",
+            });
     internal_static_services_verifiablecredentials_v1_SendRequest_descriptor =
-      getDescriptor().getMessageTypes().get(9);
-    internal_static_services_verifiablecredentials_v1_SendRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_v1_SendRequest_descriptor,
-        new java.lang.String[] { "Email", "DidUri", "DidcommInvitationJson", "DocumentJson", "DeliveryMethod", });
+        getDescriptor().getMessageTypes().get(9);
+    internal_static_services_verifiablecredentials_v1_SendRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_v1_SendRequest_descriptor,
+            new java.lang.String[] {
+              "Email", "DidUri", "DidcommInvitationJson", "DocumentJson", "DeliveryMethod",
+            });
     internal_static_services_verifiablecredentials_v1_SendResponse_descriptor =
-      getDescriptor().getMessageTypes().get(10);
-    internal_static_services_verifiablecredentials_v1_SendResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_v1_SendResponse_descriptor,
-        new java.lang.String[] { });
+        getDescriptor().getMessageTypes().get(10);
+    internal_static_services_verifiablecredentials_v1_SendResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_v1_SendResponse_descriptor,
+            new java.lang.String[] {});
     internal_static_services_verifiablecredentials_v1_UpdateStatusRequest_descriptor =
-      getDescriptor().getMessageTypes().get(11);
-    internal_static_services_verifiablecredentials_v1_UpdateStatusRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_v1_UpdateStatusRequest_descriptor,
-        new java.lang.String[] { "CredentialStatusId", "Revoked", });
+        getDescriptor().getMessageTypes().get(11);
+    internal_static_services_verifiablecredentials_v1_UpdateStatusRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_v1_UpdateStatusRequest_descriptor,
+            new java.lang.String[] {
+              "CredentialStatusId", "Revoked",
+            });
     internal_static_services_verifiablecredentials_v1_UpdateStatusResponse_descriptor =
-      getDescriptor().getMessageTypes().get(12);
-    internal_static_services_verifiablecredentials_v1_UpdateStatusResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_v1_UpdateStatusResponse_descriptor,
-        new java.lang.String[] { });
+        getDescriptor().getMessageTypes().get(12);
+    internal_static_services_verifiablecredentials_v1_UpdateStatusResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_v1_UpdateStatusResponse_descriptor,
+            new java.lang.String[] {});
     internal_static_services_verifiablecredentials_v1_CheckStatusRequest_descriptor =
-      getDescriptor().getMessageTypes().get(13);
-    internal_static_services_verifiablecredentials_v1_CheckStatusRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_v1_CheckStatusRequest_descriptor,
-        new java.lang.String[] { "CredentialStatusId", });
+        getDescriptor().getMessageTypes().get(13);
+    internal_static_services_verifiablecredentials_v1_CheckStatusRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_v1_CheckStatusRequest_descriptor,
+            new java.lang.String[] {
+              "CredentialStatusId",
+            });
     internal_static_services_verifiablecredentials_v1_CheckStatusResponse_descriptor =
-      getDescriptor().getMessageTypes().get(14);
-    internal_static_services_verifiablecredentials_v1_CheckStatusResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_verifiablecredentials_v1_CheckStatusResponse_descriptor,
-        new java.lang.String[] { "Revoked", });
+        getDescriptor().getMessageTypes().get(14);
+    internal_static_services_verifiablecredentials_v1_CheckStatusResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_verifiablecredentials_v1_CheckStatusResponse_descriptor,
+            new java.lang.String[] {
+              "Revoked",
+            });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(trinsic.services.protobuf.options.FieldOptions.optional);
-    com.google.protobuf.Descriptors.FileDescriptor
-        .internalUpdateFileDescriptor(descriptor, registry);
+    com.google.protobuf.Descriptors.FileDescriptor.internalUpdateFileDescriptor(
+        descriptor, registry);
     trinsic.services.protobuf.options.FieldOptions.getDescriptor();
   }
 

@@ -3,36 +3,46 @@
 
 package trinsic.services.account.v1;
 
-public interface TokenProtectionOrBuilder extends
+public interface TokenProtectionOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.account.v1.TokenProtection)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * Indicates if token is protected using a PIN,
    * security code, HSM secret, etc.
    * </pre>
    *
    * <code>bool enabled = 1;</code>
+   *
    * @return The enabled.
    */
   boolean getEnabled();
 
   /**
+   *
+   *
    * <pre>
    * The method used to protect the token
    * </pre>
    *
    * <code>.services.account.v1.ConfirmationMethod method = 2;</code>
+   *
    * @return The enum numeric value on the wire for method.
    */
   int getMethodValue();
   /**
+   *
+   *
    * <pre>
    * The method used to protect the token
    * </pre>
    *
    * <code>.services.account.v1.ConfirmationMethod method = 2;</code>
+   *
    * @return The method.
    */
   trinsic.services.account.v1.ConfirmationMethod getMethod();
