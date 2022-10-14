@@ -10,10 +10,6 @@ Build Status
 [![Rust](https://github.com/trinsic-id/sdk/actions/workflows/build-rust.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/build-rust.yml)
 [![TypeScript](https://github.com/trinsic-id/sdk/actions/workflows/build-typescript.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/build-typescript.yml)
 
-Test Coverage
-
-[![codecov](https://codecov.io/gh/trinsic-id/sdk/branch/main/graph/badge.svg?token=DB0RIHWA6A)](https://codecov.io/gh/trinsic-id/sdk)
-
 Library is available for use with different languages
 
 [![Gem](https://img.shields.io/gem/v/trinsic-services?color=e9563f)](https://rubygems.org/gems/trinsic-services)
