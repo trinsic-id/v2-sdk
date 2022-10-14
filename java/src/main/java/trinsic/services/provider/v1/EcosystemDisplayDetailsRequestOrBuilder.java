@@ -43,4 +43,29 @@ public interface EcosystemDisplayDetailsRequestOrBuilder
    * @return The logoData.
    */
   com.google.protobuf.ByteString getLogoData();
+
+  /**
+   *
+   *
+   * <pre>
+   * MIME type of the file
+   * </pre>
+   *
+   * <code>string logo_format = 6;</code>
+   *
+   * @return The logoFormat.
+   */
+  java.lang.String getLogoFormat();
+  /**
+   *
+   *
+   * <pre>
+   * MIME type of the file
+   * </pre>
+   *
+   * <code>string logo_format = 6;</code>
+   *
+   * @return The bytes for logoFormat.
+   */
+  com.google.protobuf.ByteString getLogoFormatBytes();
 }

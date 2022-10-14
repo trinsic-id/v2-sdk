@@ -1449,6 +1449,7 @@ Details of an ecosystem
 | ----- | ---- | ----------- |
 | color | [string](/reference/proto#string) | string id = 1; string name = 2; string logo_url = 3; |
 | logo_data | [bytes](/reference/proto#bytes) |  |
+| logo_format | [string](/reference/proto#string) | MIME type of the file |
 
 
 
@@ -2397,7 +2398,7 @@ Nonce used to generate an oberon proof
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | timestamp | [int64](/reference/proto#int64) | UTC unix millisecond timestamp the request was made |
-| request_hash | [bytes](/reference/proto#bytes) | blake3-256 hash of the request body |
+| request_hash | [bytes](/reference/proto#bytes) | blake3256 hash of the request body |
 
 
 

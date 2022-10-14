@@ -1054,12 +1054,14 @@ class Services::Provider::V1::EcosystemDisplayDetailsRequest
   sig do
     params(
       color: T.nilable(String),
-      logo_data: T.nilable(String)
+      logo_data: T.nilable(String),
+      logo_format: T.nilable(String)
     ).void
   end
   def initialize(
     color: "",
-    logo_data: ""
+    logo_data: "",
+    logo_format: ""
   )
   end
 
@@ -1085,6 +1087,18 @@ class Services::Provider::V1::EcosystemDisplayDetailsRequest
 
   sig { void }
   def clear_logo_data
+  end
+
+  sig { returns(String) }
+  def logo_format
+  end
+
+  sig { params(value: String).void }
+  def logo_format=(value)
+  end
+
+  sig { void }
+  def clear_logo_format
   end
 
   sig { params(field: String).returns(T.untyped) }

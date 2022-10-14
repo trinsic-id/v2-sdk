@@ -253,6 +253,8 @@ class EcosystemDisplayDetailsRequest(betterproto.Message):
     """string id = 1; string name = 2;    string logo_url = 3;"""
 
     logo_data: bytes = betterproto.bytes_field(5)
+    logo_format: str = betterproto.string_field(6)
+    """MIME type of the file"""
 
 
 @dataclass(eq=False, repr=False)
