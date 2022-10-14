@@ -179,6 +179,8 @@ message EcosystemDisplayDetailsRequest {
 //    string logo_url = 3;
     string color = 4;
     bytes logo_data = 5;
+    // MIME type of the file
+    string logo_format = 6;
 }
 
 // Response to `UpdateEcosystemRequest`
