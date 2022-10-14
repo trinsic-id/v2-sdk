@@ -133,7 +133,7 @@ func (a *accountBase) Protect(authtoken, securityCode string) (string, error) {
 		return "", err
 	}
 
-	token, err := a.Service.GetSecurityProvider().UnblindToken(profile.AuthToken, []byte(securityCode))
+	token, err := a.Service.GetSecurityProvider().BlindToken(profile.AuthToken, []byte(securityCode))
 
 	if err != nil {
 		return "", err
