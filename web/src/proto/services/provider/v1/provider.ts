@@ -244,6 +244,8 @@ export interface EcosystemDisplayDetailsRequest {
    */
   color: string;
   logoData: Uint8Array;
+  /** MIME type of the file */
+  logoFormat: string;
 }
 
 /** Response to `UpdateEcosystemRequest` */
@@ -1577,7 +1579,7 @@ export const EcosystemDisplayRequest = {
 };
 
 function createBaseEcosystemDisplayDetailsRequest(): EcosystemDisplayDetailsRequest {
-  return { color: "", logoData: new Uint8Array() };
+  return { color: "", logoData: new Uint8Array(), logoFormat: "" };
 }
 
 export const EcosystemDisplayDetailsRequest = {
@@ -1590,6 +1592,9 @@ export const EcosystemDisplayDetailsRequest = {
     }
     if (message.logoData.length !== 0) {
       writer.uint32(42).bytes(message.logoData);
+    }
+    if (message.logoFormat !== "") {
+      writer.uint32(50).string(message.logoFormat);
     }
     return writer;
   },
@@ -1610,6 +1615,9 @@ export const EcosystemDisplayDetailsRequest = {
         case 5:
           message.logoData = reader.bytes();
           break;
+        case 6:
+          message.logoFormat = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -1624,6 +1632,7 @@ export const EcosystemDisplayDetailsRequest = {
       logoData: isSet(object.logoData)
         ? bytesFromBase64(object.logoData)
         : new Uint8Array(),
+      logoFormat: isSet(object.logoFormat) ? String(object.logoFormat) : "",
     };
   },
 
@@ -1634,6 +1643,7 @@ export const EcosystemDisplayDetailsRequest = {
       (obj.logoData = base64FromBytes(
         message.logoData !== undefined ? message.logoData : new Uint8Array()
       ));
+    message.logoFormat !== undefined && (obj.logoFormat = message.logoFormat);
     return obj;
   },
 
@@ -1643,6 +1653,7 @@ export const EcosystemDisplayDetailsRequest = {
     const message = createBaseEcosystemDisplayDetailsRequest();
     message.color = object.color ?? "";
     message.logoData = object.logoData ?? new Uint8Array();
+    message.logoFormat = object.logoFormat ?? "";
     return message;
   },
 };

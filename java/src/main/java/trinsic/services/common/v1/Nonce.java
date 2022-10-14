@@ -74,7 +74,7 @@ public final class Nonce extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * blake3-256 hash of the request body
+   * blake3256 hash of the request body
    * </pre>
    *
    * <code>bytes request_hash = 2;</code>
@@ -487,7 +487,7 @@ public final class Nonce extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * blake3-256 hash of the request body
+     * blake3256 hash of the request body
      * </pre>
      *
      * <code>bytes request_hash = 2;</code>
@@ -502,7 +502,7 @@ public final class Nonce extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * blake3-256 hash of the request body
+     * blake3256 hash of the request body
      * </pre>
      *
      * <code>bytes request_hash = 2;</code>
@@ -523,7 +523,7 @@ public final class Nonce extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * blake3-256 hash of the request body
+     * blake3256 hash of the request body
      * </pre>
      *
      * <code>bytes request_hash = 2;</code>
