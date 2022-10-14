@@ -1,6 +1,6 @@
 # The Trinsic Go SDK
 
-The Trinsic Go SDK makes it easy to interact with the Trinsic API from any Go application. The most recent version of the library can be found on ____. You can find the SDKs source on [Github]([https://github.com/trinsic-id/sdk/go](https://github.com/trinsic-id/sdk/tree/main/go).
+The Trinsic Go SDK makes it easy to interact with the Trinsic API from any Go application. The most recent version of the library can be found on ____. You can find the SDKs source on [Github](https://github.com/trinsic-id/sdk/tree/main/go).
 
 ## Installation and Configuration
 * NOTE: Windows installation is possible, but requires jumping through a few hoops. More details to come later.
