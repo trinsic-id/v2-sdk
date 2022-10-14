@@ -5,14 +5,11 @@ import (
 	"crypto/x509"
 	"errors"
 	"fmt"
-	"github.com/trinsic-id/okapi/go/okapi"
+
 	"github.com/trinsic-id/sdk/go/proto/sdk/options/v1/options"
 	"github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
 
 	"runtime"
-
-	//"github.com/trinsic-id/sdk/go/proto/sdk/options/v1/options"
-	//"github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
@@ -56,6 +53,8 @@ type Service interface {
 	GetChannel() *grpc.ClientConn
 	// GetTokenProvider returns the Token provider
 	GetTokenProvider() TokenProvider
+	// GetSecurityProvider returns the security provider
+	GetSecurityProvider() SecurityProvider
 }
 
 type serviceBase struct {
@@ -70,6 +69,9 @@ func (s *serviceBase) GetChannel() *grpc.ClientConn {
 }
 func (s *serviceBase) GetTokenProvider() TokenProvider {
 	return s.tokenProvider
+}
+func (s *serviceBase) GetSecurityProvider() SecurityProvider {
+	return s.securityProvider
 }
 
 func (s *serviceBase) SetAuthToken(authtoken string) {
@@ -117,11 +119,7 @@ func (s *serviceBase) BuildMetadata(message proto.Message) (metadata.MD, error) 
 	if len(s.options.ServiceOptions.AuthToken) == 0 {
 		return nil, errors.New("cannot call authenticated endpoint: auth token must be set in service options")
 	}
-	okapiVersion, err := okapi.OkapiMetadata().GetMetadata()
-	if err != nil {
-		return nil, err
-	}
-	md.Set("TrinsicOkapiVersion", okapiVersion.Version)
+
 	md.Set("TrinsicSDKVersion", GetSdkVersion())
 	md.Set("TrinsicSDKLanguage", "golang")
 

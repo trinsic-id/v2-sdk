@@ -5,8 +5,8 @@ import (
 	"encoding/base64"
 	"errors"
 
-	"github.com/trinsic-id/okapi/go/okapi"
-	"github.com/trinsic-id/okapi/go/okapiproto"
+	"lukechampine.com/blake3"
+
 	"github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
 
 	"google.golang.org/protobuf/proto"
@@ -108,17 +108,13 @@ func (a *accountBase) Unprotect(authtoken, securityCode string) (string, error) 
 		return "", err
 	}
 
-	request := &okapiproto.UnBlindOberonTokenRequest{
-		Token:    profile.AuthToken,
-		Blinding: append([][]byte{}, []byte(securityCode)),
-	}
+	token, err := a.Service.GetSecurityProvider().UnblindToken(profile.AuthToken, []byte(securityCode))
 
-	response, err := okapi.Oberon().UnBlindToken(request)
 	if err != nil {
 		return "", err
 	}
 
-	profile.AuthToken = response.Token
+	profile.AuthToken = token
 	profile.Protection = &account.TokenProtection{
 		Enabled: false,
 		Method:  account.ConfirmationMethod_None,
@@ -137,17 +133,13 @@ func (a *accountBase) Protect(authtoken, securityCode string) (string, error) {
 		return "", err
 	}
 
-	request := &okapiproto.BlindOberonTokenRequest{
-		Token:    profile.AuthToken,
-		Blinding: append([][]byte{}, []byte(securityCode)),
-	}
+	token, err := a.Service.GetSecurityProvider().UnblindToken(profile.AuthToken, []byte(securityCode))
 
-	response, err := okapi.Oberon().BlindToken(request)
 	if err != nil {
 		return "", err
 	}
 
-	profile.AuthToken = response.Token
+	profile.AuthToken = token
 	profile.Protection = &account.TokenProtection{
 		Enabled: true,
 		Method:  account.ConfirmationMethod_Other,
@@ -167,15 +159,12 @@ func (a *accountBase) Login(userContext context.Context, request *account.LoginR
 
 func (a *accountBase) LoginConfirm(userContext context.Context, challenge []byte, authCode string) (string, error) {
 	// Hash the authcode
-	codeHash, err := okapi.Hashing().Blake3Hash(&okapiproto.Blake3HashRequest{Data: []byte(authCode)})
-	if err != nil {
-		return "", err
-	}
+	codeHash := blake3.Sum512([]byte(authCode))
 
 	// Generate request
 	request := &account.LoginConfirmRequest{
 		Challenge:              challenge,
-		ConfirmationCodeHashed: codeHash.Digest,
+		ConfirmationCodeHashed: codeHash[:],
 	}
 
 	// Send request

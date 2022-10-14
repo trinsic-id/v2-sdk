@@ -3,28 +3,35 @@ package services
 import (
 	"context"
 	"encoding/json"
+	"testing"
+
 	"github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/templates/v1/template"
 	"github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/v1/credential"
-	"testing"
 
 	"github.com/stretchr/testify/assert"
 )
 
 func TestIssueAndVerify(t *testing.T) {
-	assert2 := assert.New(t)
+	assert := assert.New(t)
 
 	trinsic, err := CreateTestTrinsicWithNewEcosystem()
-	assert2.Nil(err)
+	assert.Nil(err)
 
 	// Create a simple template to issue against
 	templateRequest := &template.CreateCredentialTemplateRequest{Name: "Test", AllowAdditionalFields: false, Fields: make(map[string]*template.TemplateField)}
 	templateRequest.Fields["name"] = &template.TemplateField{Description: "Name of credential recipient"}
 
-	createdTemplate, _ := trinsic.Template().Create(context.Background(), templateRequest)
+	createdTemplate, err := trinsic.Template().Create(context.Background(), templateRequest)
+	if !assert.Nil(err, "error creating template") {
+		return
+	}
 	templateId := createdTemplate.Data.Id
 
 	// Issue from template
-	valuesBytes, _ := json.Marshal(struct{ name string }{name: "A Realperson"})
+	valuesBytes, err := json.Marshal(struct{ name string }{name: "A Realperson"})
+	if !assert.Nil(err, "error marshalling template") {
+		return
+	}
 	valuesJson := string(valuesBytes)
 
 	// issueFromTemplate() {
@@ -37,8 +44,12 @@ func TestIssueAndVerify(t *testing.T) {
 
 	credentialJson := issueTemplateResponse.DocumentJson
 
-	assert2.Nil(err)
-	assert2.NotNil(issueTemplateResponse)
+	if !assert.Nil(err, "error issuing credential from template") {
+		return
+	}
+	if !assert.NotNil(issueTemplateResponse, "Issue template response undefined") {
+		return
+	}
 
 	// Issue (not from template) -- can just be any JSON blob
 	unsignedCredential := valuesJson
@@ -50,7 +61,8 @@ func TestIssueAndVerify(t *testing.T) {
 		})
 	// }
 
-	assert2.NotNil(issueResponse)
+	assert.Nil(err)
+	assert.NotNil(issueResponse)
 
 	// Create a proof
 	// createProof() {
@@ -63,8 +75,8 @@ func TestIssueAndVerify(t *testing.T) {
 	proofResponse, err := trinsic.Credential().CreateProof(context.Background(), request)
 	// }
 
-	assert2.NotNil(proofResponse)
-	assert2.Nil(err)
+	assert.NotNil(proofResponse)
+	assert.Nil(err)
 
 	proofJson := proofResponse.ProofDocumentJson
 
@@ -75,8 +87,8 @@ func TestIssueAndVerify(t *testing.T) {
 	})
 	// }
 
-	assert2.NotNil(verifyResponse)
-	assert2.Nil(err)
+	assert.NotNil(verifyResponse)
+	assert.Nil(err)
 
 	// Send credential
 	// sendCredential() {
@@ -89,6 +101,6 @@ func TestIssueAndVerify(t *testing.T) {
 	// }
 
 	// Send() isn't implemented yet, should error
-	assert2.Nil(sendResponse)
-	assert2.NotNil(err)
+	assert.Nil(sendResponse)
+	assert.NotNil(err)
 }
