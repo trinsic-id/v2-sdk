@@ -79,6 +79,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "services.provider.v1.EcosystemDisplayDetailsRequest" do
       optional :color, :string, 4
       optional :logo_data, :bytes, 5
+      optional :logo_format, :string, 6
     end
     add_message "services.provider.v1.UpdateEcosystemResponse" do
       optional :Ecosystem, :message, 1, "services.provider.v1.Ecosystem"

@@ -1398,12 +1398,18 @@ class EcosystemDisplayDetailsRequest extends $pb.GeneratedMessage {
             ? ''
             : 'logoData',
         $pb.PbFieldType.OY)
+    ..aOS(
+        6,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'logoFormat')
     ..hasRequiredFields = false;
 
   EcosystemDisplayDetailsRequest._() : super();
   factory EcosystemDisplayDetailsRequest({
     $core.String? color,
     $core.List<$core.int>? logoData,
+    $core.String? logoFormat,
   }) {
     final _result = create();
     if (color != null) {
@@ -1411,6 +1417,9 @@ class EcosystemDisplayDetailsRequest extends $pb.GeneratedMessage {
     }
     if (logoData != null) {
       _result.logoData = logoData;
+    }
+    if (logoFormat != null) {
+      _result.logoFormat = logoFormat;
     }
     return _result;
   }
@@ -1468,6 +1477,18 @@ class EcosystemDisplayDetailsRequest extends $pb.GeneratedMessage {
   $core.bool hasLogoData() => $_has(1);
   @$pb.TagNumber(5)
   void clearLogoData() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.String get logoFormat => $_getSZ(2);
+  @$pb.TagNumber(6)
+  set logoFormat($core.String v) {
+    $_setString(2, v);
+  }
+
+  @$pb.TagNumber(6)
+  $core.bool hasLogoFormat() => $_has(2);
+  @$pb.TagNumber(6)
+  void clearLogoFormat() => clearField(6);
 }
 
 class UpdateEcosystemResponse extends $pb.GeneratedMessage {

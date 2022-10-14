@@ -18,6 +18,7 @@ public final class EcosystemDisplayDetailsRequest extends com.google.protobuf.Ge
   private EcosystemDisplayDetailsRequest() {
     color_ = "";
     logoData_ = com.google.protobuf.ByteString.EMPTY;
+    logoFormat_ = "";
   }
 
   @java.lang.Override
@@ -111,6 +112,55 @@ public final class EcosystemDisplayDetailsRequest extends com.google.protobuf.Ge
     return logoData_;
   }
 
+  public static final int LOGO_FORMAT_FIELD_NUMBER = 6;
+  private volatile java.lang.Object logoFormat_;
+  /**
+   *
+   *
+   * <pre>
+   * MIME type of the file
+   * </pre>
+   *
+   * <code>string logo_format = 6;</code>
+   *
+   * @return The logoFormat.
+   */
+  @java.lang.Override
+  public java.lang.String getLogoFormat() {
+    java.lang.Object ref = logoFormat_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      logoFormat_ = s;
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * MIME type of the file
+   * </pre>
+   *
+   * <code>string logo_format = 6;</code>
+   *
+   * @return The bytes for logoFormat.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getLogoFormatBytes() {
+    java.lang.Object ref = logoFormat_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      logoFormat_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -131,6 +181,9 @@ public final class EcosystemDisplayDetailsRequest extends com.google.protobuf.Ge
     if (!logoData_.isEmpty()) {
       output.writeBytes(5, logoData_);
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(logoFormat_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 6, logoFormat_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -145,6 +198,9 @@ public final class EcosystemDisplayDetailsRequest extends com.google.protobuf.Ge
     }
     if (!logoData_.isEmpty()) {
       size += com.google.protobuf.CodedOutputStream.computeBytesSize(5, logoData_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(logoFormat_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, logoFormat_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -164,6 +220,7 @@ public final class EcosystemDisplayDetailsRequest extends com.google.protobuf.Ge
 
     if (!getColor().equals(other.getColor())) return false;
     if (!getLogoData().equals(other.getLogoData())) return false;
+    if (!getLogoFormat().equals(other.getLogoFormat())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -179,6 +236,8 @@ public final class EcosystemDisplayDetailsRequest extends com.google.protobuf.Ge
     hash = (53 * hash) + getColor().hashCode();
     hash = (37 * hash) + LOGO_DATA_FIELD_NUMBER;
     hash = (53 * hash) + getLogoData().hashCode();
+    hash = (37 * hash) + LOGO_FORMAT_FIELD_NUMBER;
+    hash = (53 * hash) + getLogoFormat().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -314,6 +373,8 @@ public final class EcosystemDisplayDetailsRequest extends com.google.protobuf.Ge
 
       logoData_ = com.google.protobuf.ByteString.EMPTY;
 
+      logoFormat_ = "";
+
       return this;
     }
 
@@ -343,6 +404,7 @@ public final class EcosystemDisplayDetailsRequest extends com.google.protobuf.Ge
           new trinsic.services.provider.v1.EcosystemDisplayDetailsRequest(this);
       result.color_ = color_;
       result.logoData_ = logoData_;
+      result.logoFormat_ = logoFormat_;
       onBuilt();
       return result;
     }
@@ -400,6 +462,10 @@ public final class EcosystemDisplayDetailsRequest extends com.google.protobuf.Ge
       if (other.getLogoData() != com.google.protobuf.ByteString.EMPTY) {
         setLogoData(other.getLogoData());
       }
+      if (!other.getLogoFormat().isEmpty()) {
+        logoFormat_ = other.logoFormat_;
+        onChanged();
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -438,6 +504,12 @@ public final class EcosystemDisplayDetailsRequest extends com.google.protobuf.Ge
 
                 break;
               } // case 42
+            case 50:
+              {
+                logoFormat_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 50
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -604,6 +676,112 @@ public final class EcosystemDisplayDetailsRequest extends com.google.protobuf.Ge
     public Builder clearLogoData() {
 
       logoData_ = getDefaultInstance().getLogoData();
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object logoFormat_ = "";
+    /**
+     *
+     *
+     * <pre>
+     * MIME type of the file
+     * </pre>
+     *
+     * <code>string logo_format = 6;</code>
+     *
+     * @return The logoFormat.
+     */
+    public java.lang.String getLogoFormat() {
+      java.lang.Object ref = logoFormat_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        logoFormat_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * MIME type of the file
+     * </pre>
+     *
+     * <code>string logo_format = 6;</code>
+     *
+     * @return The bytes for logoFormat.
+     */
+    public com.google.protobuf.ByteString getLogoFormatBytes() {
+      java.lang.Object ref = logoFormat_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        logoFormat_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * MIME type of the file
+     * </pre>
+     *
+     * <code>string logo_format = 6;</code>
+     *
+     * @param value The logoFormat to set.
+     * @return This builder for chaining.
+     */
+    public Builder setLogoFormat(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      logoFormat_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * MIME type of the file
+     * </pre>
+     *
+     * <code>string logo_format = 6;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearLogoFormat() {
+
+      logoFormat_ = getDefaultInstance().getLogoFormat();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * MIME type of the file
+     * </pre>
+     *
+     * <code>string logo_format = 6;</code>
+     *
+     * @param value The bytes for logoFormat to set.
+     * @return This builder for chaining.
+     */
+    public Builder setLogoFormatBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
+      logoFormat_ = value;
       onChanged();
       return this;
     }
