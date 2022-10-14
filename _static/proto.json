@@ -750,6 +750,12 @@
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.EcosystemDisplayDetailsRequest"
     },
+    "services.provider.v1.EcosystemDisplayDetailsRequest.logo_format": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.EcosystemDisplayDetailsRequest"
+    },
     "services.provider.v1.EcosystemDisplayRequest": {
       "type": "message",
       "collection": "messages",
@@ -3381,6 +3387,7 @@
         "services.provider.v1.EcosystemDisplayRequest.light",
         "services.provider.v1.EcosystemDisplayDetailsRequest.color",
         "services.provider.v1.EcosystemDisplayDetailsRequest.logo_data",
+        "services.provider.v1.EcosystemDisplayDetailsRequest.logo_format",
         "services.provider.v1.UpdateEcosystemResponse.Ecosystem",
         "services.provider.v1.EcosystemDisplay.dark",
         "services.provider.v1.EcosystemDisplay.light",
@@ -4532,7 +4539,8 @@
       "description": "",
       "fields": [
         "services.provider.v1.EcosystemDisplayDetailsRequest.color",
-        "services.provider.v1.EcosystemDisplayDetailsRequest.logo_data"
+        "services.provider.v1.EcosystemDisplayDetailsRequest.logo_data",
+        "services.provider.v1.EcosystemDisplayDetailsRequest.logo_format"
       ],
       "messages": [],
       "enums": []
@@ -6023,7 +6031,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "bytes",
       "full_type": "bytes",
-      "description": "blake3-256 hash of the request body"
+      "description": "blake3256 hash of the request body"
     },
     "services.common.v1.Nonce.timestamp": {
       "name": "timestamp",
@@ -6285,6 +6293,14 @@
       "type": "bytes",
       "full_type": "bytes",
       "description": ""
+    },
+    "services.provider.v1.EcosystemDisplayDetailsRequest.logo_format": {
+      "name": "logo_format",
+      "full_name": "services.provider.v1.EcosystemDisplayDetailsRequest.logo_format",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "MIME type of the file"
     },
     "services.provider.v1.EcosystemDisplayRequest.dark": {
       "name": "dark",
