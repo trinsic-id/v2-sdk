@@ -39,7 +39,7 @@ func (o *OberonSecurityProvider) GetAuthHeader(profile *account.AccountProfile, 
 		return "", err
 	}
 
-	requestHash := blake3.Sum512([]byte(requestBytes))
+	requestHash := blake3.Sum512(requestBytes)
 	nonce := &common.Nonce{
 		Timestamp:   time.Now().UnixMilli(),
 		RequestHash: requestHash[:],
@@ -56,8 +56,8 @@ func (o *OberonSecurityProvider) GetAuthHeader(profile *account.AccountProfile, 
 	}
 
 	proof, err := o.CreateProof(
-		authData,
 		authToken,
+		authData,
 		nonceBytes,
 	)
 	if err != nil {
