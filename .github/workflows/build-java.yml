@@ -49,7 +49,7 @@ jobs:
           name: ${{ matrix.os-artifact[1] }}
       - uses: axel-op/googlejavaformat-action@v3
         with:
-          args: "--set-exit-if-changed"
+          args: "--set-exit-if-changed --dry-run"
           files: java/**/*.java
           githubToken: ${{ secrets.GITHUB_TOKEN }}
       - name: Build with Gradle
