@@ -44,7 +44,7 @@ jobs:
         uses: wearerequired/lint-action@v2
         with:
           dotnet_format: true
-          dotnet_dir: dotnet/
+          dotnet_format_dir: dotnet/
       - name: "Upload coverage to Codecov"
         uses: codecov/codecov-action@v3
         with:
