@@ -42,11 +42,6 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           cache: 'pip'
-      - name: Run linters
-        uses: wearerequired/lint-action@v2.0.1
-        with:
-          black_dir: python/
-          black: true
       - name: Build, Test, Pack
         run: |
           python -m pip install -r requirements.txt
@@ -61,6 +56,11 @@ jobs:
           TEST_SERVER_ENDPOINT: ${{ secrets.TEST_SERVER_ENDPOINT }}
           TEST_SERVER_PORT: ${{ secrets.TEST_SERVER_PORT }}
           TEST_SERVER_USE_TLS: ${{ secrets.TEST_SERVER_USE_TLS }}
+      - name: Run linters
+        uses: wearerequired/lint-action@v2.0.1
+        with:
+          black_dir: python/
+          black: true
       - name: "Upload coverage to Codecov"
         uses: codecov/codecov-action@v3
         with:
