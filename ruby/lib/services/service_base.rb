@@ -14,6 +14,7 @@ module Trinsic
       @token_provider = token_provider || MemoryTokenProvider.new
     end
 
+    # rubocop:disable Metrics/MethodLength
     def metadata(message)
       call_metadata = { 'TrinsicOkapiVersion'.downcase => Okapi::Utils.version.version,
                         'TrinsicSDKLanguage'.downcase => 'ruby', 'TrinsicSDKVersion'.downcase => Trinsic::VERSION }
@@ -29,6 +30,7 @@ module Trinsic
       end
       call_metadata
     end
+    # rubocop:enable Metrics/MethodLength
 
     def auth_token=(new_profile)
       @service_options.auth_token = new_profile
