@@ -53,7 +53,7 @@ jobs:
         uses: wearerequired/lint-action@v2
         with:
           prettier: true
-          prettier_dir: web/
+          prettier_dir: web/src/
       - name: "Upload coverage to Codecov"
         uses: codecov/codecov-action@v3
         with:

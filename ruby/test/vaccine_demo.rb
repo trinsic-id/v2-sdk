@@ -48,7 +48,7 @@ def vaccine_demo_run
   # }
 
   trinsic.auth_token = clinic
-  info = trinsic.account_service.get_info
+  info = trinsic.account_service.info
   puts("account info #{info}")
 
   # Create a template
