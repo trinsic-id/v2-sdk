@@ -65,6 +65,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
+      - run: npm install prettier
       - name: Run linters
         uses: wearerequired/lint-action@v2
         with:
