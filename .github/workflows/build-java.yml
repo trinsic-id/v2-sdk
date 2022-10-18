@@ -47,11 +47,6 @@ jobs:
           repo: trinsic-id/okapi
           github_token: ${{ secrets.GITHUB_TOKEN }}
           name: ${{ matrix.os-artifact[1] }}
-      - uses: axel-op/googlejavaformat-action@v3
-        with:
-          args: "--set-exit-if-changed --dry-run"
-          files: java/**/*.java
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
       - name: Build with Gradle
         run: |
           python ../devops/build_sdks.py --language=java
@@ -72,3 +67,20 @@ jobs:
           fail_ci_if_error: true
           directory: java/build/reports/jacoco/test
           token: ${{ secrets.CODECOV_TOKEN }}
+  code_format:
+    name: Verify Java Formatting
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '15'
+          distribution: 'adopt'
+
+      - uses: axel-op/googlejavaformat-action@v3
+        with:
+          args: "--set-exit-if-changed --dry-run"
+          files: java/src/**/*.java
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
