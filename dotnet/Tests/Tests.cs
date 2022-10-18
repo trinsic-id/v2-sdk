@@ -261,7 +261,8 @@ public class Tests
         var walletId = accountInfo.WalletId;
 
         // Wrap in try-catch as this ecosystem will not presently have DID upgrade permissions
-        try {
+        try
+        {
             // upgradeDid() {
             var upgradeResponse = await trinsic.Provider.UpgradeDIDAsync(new() {
                 WalletId = walletId,
