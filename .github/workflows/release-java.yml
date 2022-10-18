@@ -23,8 +23,8 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          java-version: '15'
-          distribution: 'adopt'
+          java-version: '11'
+          distribution: 'temurin'
       - name: Download workflow artifact
         uses: dawidd6/action-download-artifact@v2.22.0
         with:

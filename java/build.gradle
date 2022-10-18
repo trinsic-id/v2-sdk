@@ -13,8 +13,9 @@ plugins {
     id 'jacoco'
 }
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
 }
 
 // Gradle doesn't allow these at the top of the file - go figure?
@@ -66,7 +67,7 @@ dependencies {
     implementation 'io.grpc:grpc-protobuf:1.49.2'
     // This has to match the version of protoc-gen-grpc-java used in `sdk/devops/generate_proto_files.py`
     implementation 'io.grpc:grpc-stub:1.49.2'
-    implementation urlFile('https://github.com/trinsic-id/okapi/releases/download/v1.6.0/trinsic-okapi-1.6.0.jar', 'trinsic-okapi-1.6.0')
+    implementation urlFile('https://github.com/trinsic-id/okapi/releases/download/v1.6.0/trinsic-okapi-1.6.1.jar', 'trinsic-okapi-1.6.1')
 }
 
 test {
