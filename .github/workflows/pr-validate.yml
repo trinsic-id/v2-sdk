@@ -37,12 +37,17 @@ jobs:
           echo $GOFMT_TARGETS
           exit 1
           fi
+        working-directory: go
       - name: Setup dotnet
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: 6.0.x
       - name: Run dotnet format validation
         run: dotnet format ./dotnet/TrinsicSdk.sln --verify-no-changes --no-restore
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@v1
+      - run: dart format -o none --set-exit-if-changed
+        working-directory: dart
       - name: Setup python
         uses: actions/setup-python@v4
         with:
@@ -50,5 +55,4 @@ jobs:
       - name: Run python format validation
         run: |
           python -m pip install black
-          python -m black ./python --check
-      
+          python -m black ./ --check

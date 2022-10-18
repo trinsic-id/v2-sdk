@@ -18,7 +18,6 @@ except:
     import requests
 
 
-
 def parse_version_tag():
     raise NotImplementedError
 
@@ -171,9 +170,7 @@ def build_dart(args) -> None:
 
     update_line(
         join(lang_dir, "pubspec.yaml"),
-        {
-            'version:': f'version: "{get_package_versions(args)}"'
-        },
+        {"version:": f'version: "{get_package_versions(args)}"'},
     )
 
 
@@ -262,17 +259,20 @@ def build_docs_site(args):
         line
         for line in output
         if not line.lower().startswith("warning:")
-           and not line.lower().startswith("the file will have its")
-           and line
+        and not line.lower().startswith("the file will have its")
+        and line
     ]
     # Get only markdown files
     output = [line for line in output if line.lower().endswith(".md")]
 
-    proc = subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True)
+    proc = subprocess.run(
+        ["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True
+    )
     github_sha = proc.stdout.strip()
-    proc = subprocess.run(["git", "rev-parse", "--abbrev-ref", "HEAD"], capture_output=True, text=True)
+    proc = subprocess.run(
+        ["git", "rev-parse", "--abbrev-ref", "HEAD"], capture_output=True, text=True
+    )
     github_head_ref = proc.stdout.strip()
-
 
     # Export a markdown formatted list of changed pages
     github_comment = [
