@@ -49,14 +49,24 @@ jobs:
           TEST_SERVER_PORT: ${{ secrets.TEST_SERVER_PORT }}
           TEST_SERVER_USE_TLS: ${{ secrets.TEST_SERVER_USE_TLS }}
         shell: pwsh  
-      - name: Run linters
-        uses: wearerequired/lint-action@v2
-        with:
-          prettier: true
-          prettier_dir: web/src/
       - name: "Upload coverage to Codecov"
         uses: codecov/codecov-action@v3
         with:
           fail_ci_if_error: true
           directory: web
           token: ${{ secrets.CODECOV_TOKEN }}
+  code_format:
+    name: Verify Typescript Formatting
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        name: Setup Node v18
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - name: Run linters
+        uses: wearerequired/lint-action@v2
+        with:
+          prettier: true
+          prettier_dir: web/src/
