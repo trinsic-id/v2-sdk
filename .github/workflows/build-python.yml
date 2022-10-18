@@ -63,7 +63,7 @@ jobs:
           directory: python
           token: ${{ secrets.CODECOV_TOKEN }}
   code_format:
-    name: Verify Typescript Formatting
+    name: Verify Python Formatting
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
