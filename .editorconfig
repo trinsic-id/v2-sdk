@@ -22,6 +22,9 @@ indent_style = tab
 [{m,M}akefile]
 indent_style = tabs
 
+[*.{yaml,yml}]
+indent_size = 2
+
 [*.cs]
 # CS1701: Assuming assembly reference matches identity
 dotnet_diagnostic.CS1701.severity = silent
