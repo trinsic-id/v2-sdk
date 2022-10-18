@@ -4,24 +4,21 @@
 package trinsic.services.provider.v1;
 
 /**
- *
- *
  * <pre>
  * Request to invite a participant to an ecosystem
  * </pre>
  *
  * Protobuf type {@code services.provider.v1.InviteRequest}
  */
-public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
-    implements
+public final class InviteRequest extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:services.provider.v1.InviteRequest)
     InviteRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+private static final long serialVersionUID = 0L;
   // Use InviteRequest.newBuilder() to construct.
   private InviteRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private InviteRequest() {
     participant_ = 0;
     description_ = "";
@@ -29,75 +26,177 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new InviteRequest();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
     return this.unknownFields;
   }
+  private InviteRequest(
+      com.google.protobuf.CodedInputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    this();
+    if (extensionRegistry == null) {
+      throw new java.lang.NullPointerException();
+    }
+    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+        com.google.protobuf.UnknownFieldSet.newBuilder();
+    try {
+      boolean done = false;
+      while (!done) {
+        int tag = input.readTag();
+        switch (tag) {
+          case 0:
+            done = true;
+            break;
+          case 8: {
+            int rawValue = input.readEnum();
 
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return trinsic.services.provider.v1.ProviderOuterClass
-        .internal_static_services_provider_v1_InviteRequest_descriptor;
+            participant_ = rawValue;
+            break;
+          }
+          case 18: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            description_ = s;
+            break;
+          }
+          case 26: {
+            trinsic.services.account.v1.AccountDetails.Builder subBuilder = null;
+            if (details_ != null) {
+              subBuilder = details_.toBuilder();
+            }
+            details_ = input.readMessage(trinsic.services.account.v1.AccountDetails.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(details_);
+              details_ = subBuilder.buildPartial();
+            }
+
+            break;
+          }
+          default: {
+            if (!parseUnknownField(
+                input, unknownFields, extensionRegistry, tag)) {
+              done = true;
+            }
+            break;
+          }
+        }
+      }
+    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      throw e.setUnfinishedMessage(this);
+    } catch (com.google.protobuf.UninitializedMessageException e) {
+      throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+    } catch (java.io.IOException e) {
+      throw new com.google.protobuf.InvalidProtocolBufferException(
+          e).setUnfinishedMessage(this);
+    } finally {
+      this.unknownFields = unknownFields.build();
+      makeExtensionsImmutable();
+    }
+  }
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_InviteRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.provider.v1.ProviderOuterClass
-        .internal_static_services_provider_v1_InviteRequest_fieldAccessorTable
+    return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_InviteRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.provider.v1.InviteRequest.class,
-            trinsic.services.provider.v1.InviteRequest.Builder.class);
+            trinsic.services.provider.v1.InviteRequest.class, trinsic.services.provider.v1.InviteRequest.Builder.class);
   }
 
-  public interface DidCommInvitationOrBuilder
-      extends
+  public interface DidCommInvitationOrBuilder extends
       // @@protoc_insertion_point(interface_extends:services.provider.v1.InviteRequest.DidCommInvitation)
-      com.google.protobuf.MessageOrBuilder {}
-  /** Protobuf type {@code services.provider.v1.InviteRequest.DidCommInvitation} */
-  public static final class DidCommInvitation extends com.google.protobuf.GeneratedMessageV3
-      implements
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code services.provider.v1.InviteRequest.DidCommInvitation}
+   */
+  public static final class DidCommInvitation extends
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:services.provider.v1.InviteRequest.DidCommInvitation)
       DidCommInvitationOrBuilder {
-    private static final long serialVersionUID = 0L;
+  private static final long serialVersionUID = 0L;
     // Use DidCommInvitation.newBuilder() to construct.
     private DidCommInvitation(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-
-    private DidCommInvitation() {}
+    private DidCommInvitation() {
+    }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
       return new DidCommInvitation();
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
       return this.unknownFields;
     }
-
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_InviteRequest_DidCommInvitation_descriptor;
+    private DidCommInvitation(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_InviteRequest_DidCommInvitation_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_InviteRequest_DidCommInvitation_fieldAccessorTable
+      return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_InviteRequest_DidCommInvitation_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.provider.v1.InviteRequest.DidCommInvitation.class,
-              trinsic.services.provider.v1.InviteRequest.DidCommInvitation.Builder.class);
+              trinsic.services.provider.v1.InviteRequest.DidCommInvitation.class, trinsic.services.provider.v1.InviteRequest.DidCommInvitation.Builder.class);
     }
 
     private byte memoizedIsInitialized = -1;
-
     @java.lang.Override
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -109,8 +208,9 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
     }
 
     @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-      getUnknownFields().writeTo(output);
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      unknownFields.writeTo(output);
     }
 
     @java.lang.Override
@@ -119,7 +219,7 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
       if (size != -1) return size;
 
       size = 0;
-      size += getUnknownFields().getSerializedSize();
+      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -127,15 +227,14 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-        return true;
+       return true;
       }
       if (!(obj instanceof trinsic.services.provider.v1.InviteRequest.DidCommInvitation)) {
         return super.equals(obj);
       }
-      trinsic.services.provider.v1.InviteRequest.DidCommInvitation other =
-          (trinsic.services.provider.v1.InviteRequest.DidCommInvitation) obj;
+      trinsic.services.provider.v1.InviteRequest.DidCommInvitation other = (trinsic.services.provider.v1.InviteRequest.DidCommInvitation) obj;
 
-      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
 
@@ -146,100 +245,93 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (29 * hash) + getUnknownFields().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
     public static trinsic.services.provider.v1.InviteRequest.DidCommInvitation parseFrom(
-        java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-
     public static trinsic.services.provider.v1.InviteRequest.DidCommInvitation parseFrom(
-        java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-
     public static trinsic.services.provider.v1.InviteRequest.DidCommInvitation parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-
     public static trinsic.services.provider.v1.InviteRequest.DidCommInvitation parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-
-    public static trinsic.services.provider.v1.InviteRequest.DidCommInvitation parseFrom(
-        byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
+    public static trinsic.services.provider.v1.InviteRequest.DidCommInvitation parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-
     public static trinsic.services.provider.v1.InviteRequest.DidCommInvitation parseFrom(
-        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-
-    public static trinsic.services.provider.v1.InviteRequest.DidCommInvitation parseFrom(
-        java.io.InputStream input) throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-    }
-
-    public static trinsic.services.provider.v1.InviteRequest.DidCommInvitation parseFrom(
-        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+    public static trinsic.services.provider.v1.InviteRequest.DidCommInvitation parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-          PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
-
-    public static trinsic.services.provider.v1.InviteRequest.DidCommInvitation parseDelimitedFrom(
-        java.io.InputStream input) throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-    }
-
-    public static trinsic.services.provider.v1.InviteRequest.DidCommInvitation parseDelimitedFrom(
-        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-          PARSER, input, extensionRegistry);
-    }
-
     public static trinsic.services.provider.v1.InviteRequest.DidCommInvitation parseFrom(
-        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
-
+    public static trinsic.services.provider.v1.InviteRequest.DidCommInvitation parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static trinsic.services.provider.v1.InviteRequest.DidCommInvitation parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static trinsic.services.provider.v1.InviteRequest.DidCommInvitation parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
     public static trinsic.services.provider.v1.InviteRequest.DidCommInvitation parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-          PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
     @java.lang.Override
-    public Builder newBuilderForType() {
-      return newBuilder();
-    }
-
+    public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-
-    public static Builder newBuilder(
-        trinsic.services.provider.v1.InviteRequest.DidCommInvitation prototype) {
+    public static Builder newBuilder(trinsic.services.provider.v1.InviteRequest.DidCommInvitation prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-
     @java.lang.Override
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -248,34 +340,41 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
       Builder builder = new Builder(parent);
       return builder;
     }
-    /** Protobuf type {@code services.provider.v1.InviteRequest.DidCommInvitation} */
-    public static final class Builder
-        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-        implements
+    /**
+     * Protobuf type {@code services.provider.v1.InviteRequest.DidCommInvitation}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:services.provider.v1.InviteRequest.DidCommInvitation)
         trinsic.services.provider.v1.InviteRequest.DidCommInvitationOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-        return trinsic.services.provider.v1.ProviderOuterClass
-            .internal_static_services_provider_v1_InviteRequest_DidCommInvitation_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_InviteRequest_DidCommInvitation_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return trinsic.services.provider.v1.ProviderOuterClass
-            .internal_static_services_provider_v1_InviteRequest_DidCommInvitation_fieldAccessorTable
+        return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_InviteRequest_DidCommInvitation_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                trinsic.services.provider.v1.InviteRequest.DidCommInvitation.class,
-                trinsic.services.provider.v1.InviteRequest.DidCommInvitation.Builder.class);
+                trinsic.services.provider.v1.InviteRequest.DidCommInvitation.class, trinsic.services.provider.v1.InviteRequest.DidCommInvitation.Builder.class);
       }
 
       // Construct using trinsic.services.provider.v1.InviteRequest.DidCommInvitation.newBuilder()
-      private Builder() {}
-
-      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
+      private Builder() {
+        maybeForceBuilderInitialization();
       }
 
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
       @java.lang.Override
       public Builder clear() {
         super.clear();
@@ -283,14 +382,13 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
       }
 
       @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-        return trinsic.services.provider.v1.ProviderOuterClass
-            .internal_static_services_provider_v1_InviteRequest_DidCommInvitation_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_InviteRequest_DidCommInvitation_descriptor;
       }
 
       @java.lang.Override
-      public trinsic.services.provider.v1.InviteRequest.DidCommInvitation
-          getDefaultInstanceForType() {
+      public trinsic.services.provider.v1.InviteRequest.DidCommInvitation getDefaultInstanceForType() {
         return trinsic.services.provider.v1.InviteRequest.DidCommInvitation.getDefaultInstance();
       }
 
@@ -305,8 +403,7 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
 
       @java.lang.Override
       public trinsic.services.provider.v1.InviteRequest.DidCommInvitation buildPartial() {
-        trinsic.services.provider.v1.InviteRequest.DidCommInvitation result =
-            new trinsic.services.provider.v1.InviteRequest.DidCommInvitation(this);
+        trinsic.services.provider.v1.InviteRequest.DidCommInvitation result = new trinsic.services.provider.v1.InviteRequest.DidCommInvitation(this);
         onBuilt();
         return result;
       }
@@ -315,41 +412,38 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
       public Builder clone() {
         return super.clone();
       }
-
       @java.lang.Override
       public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
         return super.setField(field, value);
       }
-
       @java.lang.Override
-      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
         return super.clearField(field);
       }
-
       @java.lang.Override
-      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return super.clearOneof(oneof);
       }
-
       @java.lang.Override
       public Builder setRepeatedField(
           com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index,
-          java.lang.Object value) {
+          int index, java.lang.Object value) {
         return super.setRepeatedField(field, index, value);
       }
-
       @java.lang.Override
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
         return super.addRepeatedField(field, value);
       }
-
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof trinsic.services.provider.v1.InviteRequest.DidCommInvitation) {
-          return mergeFrom((trinsic.services.provider.v1.InviteRequest.DidCommInvitation) other);
+          return mergeFrom((trinsic.services.provider.v1.InviteRequest.DidCommInvitation)other);
         } else {
           super.mergeFrom(other);
           return this;
@@ -357,10 +451,8 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
       }
 
       public Builder mergeFrom(trinsic.services.provider.v1.InviteRequest.DidCommInvitation other) {
-        if (other
-            == trinsic.services.provider.v1.InviteRequest.DidCommInvitation.getDefaultInstance())
-          return this;
-        this.mergeUnknownFields(other.getUnknownFields());
+        if (other == trinsic.services.provider.v1.InviteRequest.DidCommInvitation.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
@@ -375,34 +467,19 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
+        trinsic.services.provider.v1.InviteRequest.DidCommInvitation parsedMessage = null;
         try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              default:
-                {
-                  if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                    done = true; // was an endgroup tag
-                  }
-                  break;
-                } // default:
-            } // switch (tag)
-          } // while (!done)
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (trinsic.services.provider.v1.InviteRequest.DidCommInvitation) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
-          onChanged();
-        } // finally
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
         return this;
       }
-
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -415,44 +492,30 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
         return super.mergeUnknownFields(unknownFields);
       }
 
+
       // @@protoc_insertion_point(builder_scope:services.provider.v1.InviteRequest.DidCommInvitation)
     }
 
     // @@protoc_insertion_point(class_scope:services.provider.v1.InviteRequest.DidCommInvitation)
-    private static final trinsic.services.provider.v1.InviteRequest.DidCommInvitation
-        DEFAULT_INSTANCE;
-
+    private static final trinsic.services.provider.v1.InviteRequest.DidCommInvitation DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new trinsic.services.provider.v1.InviteRequest.DidCommInvitation();
     }
 
-    public static trinsic.services.provider.v1.InviteRequest.DidCommInvitation
-        getDefaultInstance() {
+    public static trinsic.services.provider.v1.InviteRequest.DidCommInvitation getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<DidCommInvitation> PARSER =
-        new com.google.protobuf.AbstractParser<DidCommInvitation>() {
-          @java.lang.Override
-          public DidCommInvitation parsePartialFrom(
-              com.google.protobuf.CodedInputStream input,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws com.google.protobuf.InvalidProtocolBufferException {
-            Builder builder = newBuilder();
-            try {
-              builder.mergeFrom(input, extensionRegistry);
-            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-              throw e.setUnfinishedMessage(builder.buildPartial());
-            } catch (com.google.protobuf.UninitializedMessageException e) {
-              throw e.asInvalidProtocolBufferException()
-                  .setUnfinishedMessage(builder.buildPartial());
-            } catch (java.io.IOException e) {
-              throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                  .setUnfinishedMessage(builder.buildPartial());
-            }
-            return builder.buildPartial();
-          }
-        };
+    private static final com.google.protobuf.Parser<DidCommInvitation>
+        PARSER = new com.google.protobuf.AbstractParser<DidCommInvitation>() {
+      @java.lang.Override
+      public DidCommInvitation parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DidCommInvitation(input, extensionRegistry);
+      }
+    };
 
     public static com.google.protobuf.Parser<DidCommInvitation> parser() {
       return PARSER;
@@ -464,59 +527,47 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
     }
 
     @java.lang.Override
-    public trinsic.services.provider.v1.InviteRequest.DidCommInvitation
-        getDefaultInstanceForType() {
+    public trinsic.services.provider.v1.InviteRequest.DidCommInvitation getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
+
   }
 
   public static final int PARTICIPANT_FIELD_NUMBER = 1;
   private int participant_;
   /**
-   *
-   *
    * <pre>
    * Type of participant being invited (individual/organization)
    * </pre>
    *
    * <code>.services.provider.v1.ParticipantType participant = 1;</code>
-   *
    * @return The enum numeric value on the wire for participant.
    */
-  @java.lang.Override
-  public int getParticipantValue() {
+  @java.lang.Override public int getParticipantValue() {
     return participant_;
   }
   /**
-   *
-   *
    * <pre>
    * Type of participant being invited (individual/organization)
    * </pre>
    *
    * <code>.services.provider.v1.ParticipantType participant = 1;</code>
-   *
    * @return The participant.
    */
-  @java.lang.Override
-  public trinsic.services.provider.v1.ParticipantType getParticipant() {
+  @java.lang.Override public trinsic.services.provider.v1.ParticipantType getParticipant() {
     @SuppressWarnings("deprecation")
-    trinsic.services.provider.v1.ParticipantType result =
-        trinsic.services.provider.v1.ParticipantType.valueOf(participant_);
+    trinsic.services.provider.v1.ParticipantType result = trinsic.services.provider.v1.ParticipantType.valueOf(participant_);
     return result == null ? trinsic.services.provider.v1.ParticipantType.UNRECOGNIZED : result;
   }
 
   public static final int DESCRIPTION_FIELD_NUMBER = 2;
   private volatile java.lang.Object description_;
   /**
-   *
-   *
    * <pre>
    * Description of invitation
    * </pre>
    *
    * <code>string description = 2 [(.services.options.optional) = true];</code>
-   *
    * @return The description.
    */
   @java.lang.Override
@@ -525,29 +576,29 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       description_ = s;
       return s;
     }
   }
   /**
-   *
-   *
    * <pre>
    * Description of invitation
    * </pre>
    *
    * <code>string description = 2 [(.services.options.optional) = true];</code>
-   *
    * @return The bytes for description.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getDescriptionBytes() {
+  public com.google.protobuf.ByteString
+      getDescriptionBytes() {
     java.lang.Object ref = description_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       description_ = b;
       return b;
     } else {
@@ -558,15 +609,11 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
   public static final int DETAILS_FIELD_NUMBER = 3;
   private trinsic.services.account.v1.AccountDetails details_;
   /**
-   *
-   *
    * <pre>
    * Account details of invitee
    * </pre>
    *
-   * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];
-   * </code>
-   *
+   * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];</code>
    * @return Whether the details field is set.
    */
   @java.lang.Override
@@ -574,32 +621,23 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
     return details_ != null;
   }
   /**
-   *
-   *
    * <pre>
    * Account details of invitee
    * </pre>
    *
-   * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];
-   * </code>
-   *
+   * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];</code>
    * @return The details.
    */
   @java.lang.Override
   public trinsic.services.account.v1.AccountDetails getDetails() {
-    return details_ == null
-        ? trinsic.services.account.v1.AccountDetails.getDefaultInstance()
-        : details_;
+    return details_ == null ? trinsic.services.account.v1.AccountDetails.getDefaultInstance() : details_;
   }
   /**
-   *
-   *
    * <pre>
    * Account details of invitee
    * </pre>
    *
-   * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];
-   * </code>
+   * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];</code>
    */
   @java.lang.Override
   public trinsic.services.account.v1.AccountDetailsOrBuilder getDetailsOrBuilder() {
@@ -607,7 +645,6 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -619,9 +656,9 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-    if (participant_
-        != trinsic.services.provider.v1.ParticipantType.participant_type_individual.getNumber()) {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
+    if (participant_ != trinsic.services.provider.v1.ParticipantType.participant_type_individual.getNumber()) {
       output.writeEnum(1, participant_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
@@ -630,7 +667,7 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
     if (details_ != null) {
       output.writeMessage(3, getDetails());
     }
-    getUnknownFields().writeTo(output);
+    unknownFields.writeTo(output);
   }
 
   @java.lang.Override
@@ -639,17 +676,18 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
     if (size != -1) return size;
 
     size = 0;
-    if (participant_
-        != trinsic.services.provider.v1.ParticipantType.participant_type_individual.getNumber()) {
-      size += com.google.protobuf.CodedOutputStream.computeEnumSize(1, participant_);
+    if (participant_ != trinsic.services.provider.v1.ParticipantType.participant_type_individual.getNumber()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(1, participant_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, description_);
     }
     if (details_ != null) {
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(3, getDetails());
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(3, getDetails());
     }
-    size += getUnknownFields().getSerializedSize();
+    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
@@ -657,21 +695,22 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof trinsic.services.provider.v1.InviteRequest)) {
       return super.equals(obj);
     }
-    trinsic.services.provider.v1.InviteRequest other =
-        (trinsic.services.provider.v1.InviteRequest) obj;
+    trinsic.services.provider.v1.InviteRequest other = (trinsic.services.provider.v1.InviteRequest) obj;
 
     if (participant_ != other.participant_) return false;
-    if (!getDescription().equals(other.getDescription())) return false;
+    if (!getDescription()
+        .equals(other.getDescription())) return false;
     if (hasDetails() != other.hasDetails()) return false;
     if (hasDetails()) {
-      if (!getDetails().equals(other.getDetails())) return false;
+      if (!getDetails()
+          .equals(other.getDetails())) return false;
     }
-    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+    if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
 
@@ -690,141 +729,140 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
       hash = (37 * hash) + DETAILS_FIELD_NUMBER;
       hash = (53 * hash) + getDetails().hashCode();
     }
-    hash = (29 * hash) + getUnknownFields().hashCode();
+    hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static trinsic.services.provider.v1.InviteRequest parseFrom(java.nio.ByteBuffer data)
+  public static trinsic.services.provider.v1.InviteRequest parseFrom(
+      java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.provider.v1.InviteRequest parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.provider.v1.InviteRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.provider.v1.InviteRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.provider.v1.InviteRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.provider.v1.InviteRequest parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.provider.v1.InviteRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static trinsic.services.provider.v1.InviteRequest parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
-  public static trinsic.services.provider.v1.InviteRequest parseDelimitedFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static trinsic.services.provider.v1.InviteRequest parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+  public static trinsic.services.provider.v1.InviteRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
   }
-
+  public static trinsic.services.provider.v1.InviteRequest parseDelimitedFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+  }
   public static trinsic.services.provider.v1.InviteRequest parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static trinsic.services.provider.v1.InviteRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
   public static Builder newBuilder(trinsic.services.provider.v1.InviteRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
-   *
-   *
    * <pre>
    * Request to invite a participant to an ecosystem
    * </pre>
    *
    * Protobuf type {@code services.provider.v1.InviteRequest}
    */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:services.provider.v1.InviteRequest)
       trinsic.services.provider.v1.InviteRequestOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_InviteRequest_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_InviteRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_InviteRequest_fieldAccessorTable
+      return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_InviteRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.provider.v1.InviteRequest.class,
-              trinsic.services.provider.v1.InviteRequest.Builder.class);
+              trinsic.services.provider.v1.InviteRequest.class, trinsic.services.provider.v1.InviteRequest.Builder.class);
     }
 
     // Construct using trinsic.services.provider.v1.InviteRequest.newBuilder()
-    private Builder() {}
-
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
+    private Builder() {
+      maybeForceBuilderInitialization();
     }
 
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
+      maybeForceBuilderInitialization();
+    }
+    private void maybeForceBuilderInitialization() {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+      }
+    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -842,9 +880,9 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_InviteRequest_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_InviteRequest_descriptor;
     }
 
     @java.lang.Override
@@ -863,8 +901,7 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
 
     @java.lang.Override
     public trinsic.services.provider.v1.InviteRequest buildPartial() {
-      trinsic.services.provider.v1.InviteRequest result =
-          new trinsic.services.provider.v1.InviteRequest(this);
+      trinsic.services.provider.v1.InviteRequest result = new trinsic.services.provider.v1.InviteRequest(this);
       result.participant_ = participant_;
       result.description_ = description_;
       if (detailsBuilder_ == null) {
@@ -880,39 +917,38 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof trinsic.services.provider.v1.InviteRequest) {
-        return mergeFrom((trinsic.services.provider.v1.InviteRequest) other);
+        return mergeFrom((trinsic.services.provider.v1.InviteRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -931,7 +967,7 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
       if (other.hasDetails()) {
         mergeDetails(other.getDetails());
       }
-      this.mergeUnknownFields(other.getUnknownFields());
+      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -946,113 +982,67 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
+      trinsic.services.provider.v1.InviteRequest parsedMessage = null;
       try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8:
-              {
-                participant_ = input.readEnum();
-
-                break;
-              } // case 8
-            case 18:
-              {
-                description_ = input.readStringRequireUtf8();
-
-                break;
-              } // case 18
-            case 26:
-              {
-                input.readMessage(getDetailsFieldBuilder().getBuilder(), extensionRegistry);
-
-                break;
-              } // case 26
-            default:
-              {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-          } // switch (tag)
-        } // while (!done)
+        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        parsedMessage = (trinsic.services.provider.v1.InviteRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
-        onChanged();
-      } // finally
+        if (parsedMessage != null) {
+          mergeFrom(parsedMessage);
+        }
+      }
       return this;
     }
 
     private int participant_ = 0;
     /**
-     *
-     *
      * <pre>
      * Type of participant being invited (individual/organization)
      * </pre>
      *
      * <code>.services.provider.v1.ParticipantType participant = 1;</code>
-     *
      * @return The enum numeric value on the wire for participant.
      */
-    @java.lang.Override
-    public int getParticipantValue() {
+    @java.lang.Override public int getParticipantValue() {
       return participant_;
     }
     /**
-     *
-     *
      * <pre>
      * Type of participant being invited (individual/organization)
      * </pre>
      *
      * <code>.services.provider.v1.ParticipantType participant = 1;</code>
-     *
      * @param value The enum numeric value on the wire for participant to set.
      * @return This builder for chaining.
      */
     public Builder setParticipantValue(int value) {
-
+      
       participant_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Type of participant being invited (individual/organization)
      * </pre>
      *
      * <code>.services.provider.v1.ParticipantType participant = 1;</code>
-     *
      * @return The participant.
      */
     @java.lang.Override
     public trinsic.services.provider.v1.ParticipantType getParticipant() {
       @SuppressWarnings("deprecation")
-      trinsic.services.provider.v1.ParticipantType result =
-          trinsic.services.provider.v1.ParticipantType.valueOf(participant_);
+      trinsic.services.provider.v1.ParticipantType result = trinsic.services.provider.v1.ParticipantType.valueOf(participant_);
       return result == null ? trinsic.services.provider.v1.ParticipantType.UNRECOGNIZED : result;
     }
     /**
-     *
-     *
      * <pre>
      * Type of participant being invited (individual/organization)
      * </pre>
      *
      * <code>.services.provider.v1.ParticipantType participant = 1;</code>
-     *
      * @param value The participant to set.
      * @return This builder for chaining.
      */
@@ -1060,24 +1050,21 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
       if (value == null) {
         throw new NullPointerException();
       }
-
+      
       participant_ = value.getNumber();
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Type of participant being invited (individual/organization)
      * </pre>
      *
      * <code>.services.provider.v1.ParticipantType participant = 1;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearParticipant() {
-
+      
       participant_ = 0;
       onChanged();
       return this;
@@ -1085,20 +1072,18 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
 
     private java.lang.Object description_ = "";
     /**
-     *
-     *
      * <pre>
      * Description of invitation
      * </pre>
      *
      * <code>string description = 2 [(.services.options.optional) = true];</code>
-     *
      * @return The description.
      */
     public java.lang.String getDescription() {
       java.lang.Object ref = description_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         description_ = s;
         return s;
@@ -1107,21 +1092,20 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * Description of invitation
      * </pre>
      *
      * <code>string description = 2 [(.services.options.optional) = true];</code>
-     *
      * @return The bytes for description.
      */
-    public com.google.protobuf.ByteString getDescriptionBytes() {
+    public com.google.protobuf.ByteString
+        getDescriptionBytes() {
       java.lang.Object ref = description_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         description_ = b;
         return b;
       } else {
@@ -1129,61 +1113,54 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
       }
     }
     /**
-     *
-     *
      * <pre>
      * Description of invitation
      * </pre>
      *
      * <code>string description = 2 [(.services.options.optional) = true];</code>
-     *
      * @param value The description to set.
      * @return This builder for chaining.
      */
-    public Builder setDescription(java.lang.String value) {
+    public Builder setDescription(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       description_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Description of invitation
      * </pre>
      *
      * <code>string description = 2 [(.services.options.optional) = true];</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearDescription() {
-
+      
       description_ = getDefaultInstance().getDescription();
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Description of invitation
      * </pre>
      *
      * <code>string description = 2 [(.services.options.optional) = true];</code>
-     *
      * @param value The bytes for description to set.
      * @return This builder for chaining.
      */
-    public Builder setDescriptionBytes(com.google.protobuf.ByteString value) {
+    public Builder setDescriptionBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       description_ = value;
       onChanged();
       return this;
@@ -1191,55 +1168,39 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
 
     private trinsic.services.account.v1.AccountDetails details_;
     private com.google.protobuf.SingleFieldBuilderV3<
-            trinsic.services.account.v1.AccountDetails,
-            trinsic.services.account.v1.AccountDetails.Builder,
-            trinsic.services.account.v1.AccountDetailsOrBuilder>
-        detailsBuilder_;
+        trinsic.services.account.v1.AccountDetails, trinsic.services.account.v1.AccountDetails.Builder, trinsic.services.account.v1.AccountDetailsOrBuilder> detailsBuilder_;
     /**
-     *
-     *
      * <pre>
      * Account details of invitee
      * </pre>
      *
-     * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];
-     * </code>
-     *
+     * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];</code>
      * @return Whether the details field is set.
      */
     public boolean hasDetails() {
       return detailsBuilder_ != null || details_ != null;
     }
     /**
-     *
-     *
      * <pre>
      * Account details of invitee
      * </pre>
      *
-     * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];
-     * </code>
-     *
+     * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];</code>
      * @return The details.
      */
     public trinsic.services.account.v1.AccountDetails getDetails() {
       if (detailsBuilder_ == null) {
-        return details_ == null
-            ? trinsic.services.account.v1.AccountDetails.getDefaultInstance()
-            : details_;
+        return details_ == null ? trinsic.services.account.v1.AccountDetails.getDefaultInstance() : details_;
       } else {
         return detailsBuilder_.getMessage();
       }
     }
     /**
-     *
-     *
      * <pre>
      * Account details of invitee
      * </pre>
      *
-     * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];
-     * </code>
+     * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];</code>
      */
     public Builder setDetails(trinsic.services.account.v1.AccountDetails value) {
       if (detailsBuilder_ == null) {
@@ -1255,16 +1216,14 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Account details of invitee
      * </pre>
      *
-     * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];
-     * </code>
+     * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];</code>
      */
-    public Builder setDetails(trinsic.services.account.v1.AccountDetails.Builder builderForValue) {
+    public Builder setDetails(
+        trinsic.services.account.v1.AccountDetails.Builder builderForValue) {
       if (detailsBuilder_ == null) {
         details_ = builderForValue.build();
         onChanged();
@@ -1275,22 +1234,17 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Account details of invitee
      * </pre>
      *
-     * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];
-     * </code>
+     * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];</code>
      */
     public Builder mergeDetails(trinsic.services.account.v1.AccountDetails value) {
       if (detailsBuilder_ == null) {
         if (details_ != null) {
           details_ =
-              trinsic.services.account.v1.AccountDetails.newBuilder(details_)
-                  .mergeFrom(value)
-                  .buildPartial();
+            trinsic.services.account.v1.AccountDetails.newBuilder(details_).mergeFrom(value).buildPartial();
         } else {
           details_ = value;
         }
@@ -1302,14 +1256,11 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Account details of invitee
      * </pre>
      *
-     * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];
-     * </code>
+     * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];</code>
      */
     public Builder clearDetails() {
       if (detailsBuilder_ == null) {
@@ -1323,68 +1274,55 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Account details of invitee
      * </pre>
      *
-     * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];
-     * </code>
+     * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];</code>
      */
     public trinsic.services.account.v1.AccountDetails.Builder getDetailsBuilder() {
-
+      
       onChanged();
       return getDetailsFieldBuilder().getBuilder();
     }
     /**
-     *
-     *
      * <pre>
      * Account details of invitee
      * </pre>
      *
-     * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];
-     * </code>
+     * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];</code>
      */
     public trinsic.services.account.v1.AccountDetailsOrBuilder getDetailsOrBuilder() {
       if (detailsBuilder_ != null) {
         return detailsBuilder_.getMessageOrBuilder();
       } else {
-        return details_ == null
-            ? trinsic.services.account.v1.AccountDetails.getDefaultInstance()
-            : details_;
+        return details_ == null ?
+            trinsic.services.account.v1.AccountDetails.getDefaultInstance() : details_;
       }
     }
     /**
-     *
-     *
      * <pre>
      * Account details of invitee
      * </pre>
      *
-     * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];
-     * </code>
+     * <code>.services.account.v1.AccountDetails details = 3 [(.services.options.optional) = true];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-            trinsic.services.account.v1.AccountDetails,
-            trinsic.services.account.v1.AccountDetails.Builder,
-            trinsic.services.account.v1.AccountDetailsOrBuilder>
+        trinsic.services.account.v1.AccountDetails, trinsic.services.account.v1.AccountDetails.Builder, trinsic.services.account.v1.AccountDetailsOrBuilder> 
         getDetailsFieldBuilder() {
       if (detailsBuilder_ == null) {
-        detailsBuilder_ =
-            new com.google.protobuf.SingleFieldBuilderV3<
-                trinsic.services.account.v1.AccountDetails,
-                trinsic.services.account.v1.AccountDetails.Builder,
-                trinsic.services.account.v1.AccountDetailsOrBuilder>(
-                getDetails(), getParentForChildren(), isClean());
+        detailsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            trinsic.services.account.v1.AccountDetails, trinsic.services.account.v1.AccountDetails.Builder, trinsic.services.account.v1.AccountDetailsOrBuilder>(
+                getDetails(),
+                getParentForChildren(),
+                isClean());
         details_ = null;
       }
       return detailsBuilder_;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -1394,12 +1332,12 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:services.provider.v1.InviteRequest)
   }
 
   // @@protoc_insertion_point(class_scope:services.provider.v1.InviteRequest)
   private static final trinsic.services.provider.v1.InviteRequest DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new trinsic.services.provider.v1.InviteRequest();
   }
@@ -1408,27 +1346,16 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<InviteRequest> PARSER =
-      new com.google.protobuf.AbstractParser<InviteRequest>() {
-        @java.lang.Override
-        public InviteRequest parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
+  private static final com.google.protobuf.Parser<InviteRequest>
+      PARSER = new com.google.protobuf.AbstractParser<InviteRequest>() {
+    @java.lang.Override
+    public InviteRequest parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return new InviteRequest(input, extensionRegistry);
+    }
+  };
 
   public static com.google.protobuf.Parser<InviteRequest> parser() {
     return PARSER;
@@ -1443,4 +1370,6 @@ public final class InviteRequest extends com.google.protobuf.GeneratedMessageV3
   public trinsic.services.provider.v1.InviteRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

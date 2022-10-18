@@ -3,33 +3,26 @@
 
 package trinsic.services.common.v1;
 
-public interface NonceOrBuilder
-    extends
+public interface NonceOrBuilder extends
     // @@protoc_insertion_point(interface_extends:services.common.v1.Nonce)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   *
-   *
    * <pre>
    * UTC unix millisecond timestamp the request was made
    * </pre>
    *
    * <code>int64 timestamp = 1;</code>
-   *
    * @return The timestamp.
    */
   long getTimestamp();
 
   /**
-   *
-   *
    * <pre>
    * blake3256 hash of the request body
    * </pre>
    *
    * <code>bytes request_hash = 2;</code>
-   *
    * @return The requestHash.
    */
   com.google.protobuf.ByteString getRequestHash();

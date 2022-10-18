@@ -3,208 +3,167 @@
 
 package trinsic.services.event.v1;
 
-public interface EGFCreatedOrBuilder
-    extends
+public interface EGFCreatedOrBuilder extends
     // @@protoc_insertion_point(interface_extends:trinsic.services.event.EGFCreated)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   *
-   *
    * <pre>
    * UUID of the governance framework
    * </pre>
    *
    * <code>string id = 1;</code>
-   *
    * @return The id.
    */
   java.lang.String getId();
   /**
-   *
-   *
    * <pre>
    * UUID of the governance framework
    * </pre>
    *
    * <code>string id = 1;</code>
-   *
    * @return The bytes for id.
    */
-  com.google.protobuf.ByteString getIdBytes();
+  com.google.protobuf.ByteString
+      getIdBytes();
 
   /**
-   *
-   *
    * <pre>
    * UUID of the ecosystem that owns this EGF
    * </pre>
    *
    * <code>string ecosystem_id = 2;</code>
-   *
    * @return The ecosystemId.
    */
   java.lang.String getEcosystemId();
   /**
-   *
-   *
    * <pre>
    * UUID of the ecosystem that owns this EGF
    * </pre>
    *
    * <code>string ecosystem_id = 2;</code>
-   *
    * @return The bytes for ecosystemId.
    */
-  com.google.protobuf.ByteString getEcosystemIdBytes();
+  com.google.protobuf.ByteString
+      getEcosystemIdBytes();
 
   /**
-   *
-   *
    * <pre>
    * Trust registry associated with this EGF
    * </pre>
    *
    * <code>string trust_registry = 3;</code>
-   *
    * @return The trustRegistry.
    */
   java.lang.String getTrustRegistry();
   /**
-   *
-   *
    * <pre>
    * Trust registry associated with this EGF
    * </pre>
    *
    * <code>string trust_registry = 3;</code>
-   *
    * @return The bytes for trustRegistry.
    */
-  com.google.protobuf.ByteString getTrustRegistryBytes();
+  com.google.protobuf.ByteString
+      getTrustRegistryBytes();
 
   /**
-   *
-   *
    * <pre>
    * Wallet ID of the authority for this EGF
    * </pre>
    *
    * <code>string governing_authority = 4;</code>
-   *
    * @return The governingAuthority.
    */
   java.lang.String getGoverningAuthority();
   /**
-   *
-   *
    * <pre>
    * Wallet ID of the authority for this EGF
    * </pre>
    *
    * <code>string governing_authority = 4;</code>
-   *
    * @return The bytes for governingAuthority.
    */
-  com.google.protobuf.ByteString getGoverningAuthorityBytes();
+  com.google.protobuf.ByteString
+      getGoverningAuthorityBytes();
 
   /**
-   *
-   *
    * <pre>
    * Type of EGF
    * </pre>
    *
    * <code>string type = 5;</code>
-   *
    * @return The type.
    */
   java.lang.String getType();
   /**
-   *
-   *
    * <pre>
    * Type of EGF
    * </pre>
    *
    * <code>string type = 5;</code>
-   *
    * @return The bytes for type.
    */
-  com.google.protobuf.ByteString getTypeBytes();
+  com.google.protobuf.ByteString
+      getTypeBytes();
 
   /**
-   *
-   *
    * <pre>
    * User-friendly name for the EGF
    * </pre>
    *
    * <code>string name = 6;</code>
-   *
    * @return The name.
    */
   java.lang.String getName();
   /**
-   *
-   *
    * <pre>
    * User-friendly name for the EGF
    * </pre>
    *
    * <code>string name = 6;</code>
-   *
    * @return The bytes for name.
    */
-  com.google.protobuf.ByteString getNameBytes();
+  com.google.protobuf.ByteString
+      getNameBytes();
 
   /**
-   *
-   *
    * <pre>
    * Description of the EGF
    * </pre>
    *
    * <code>string description = 7;</code>
-   *
    * @return The description.
    */
   java.lang.String getDescription();
   /**
-   *
-   *
    * <pre>
    * Description of the EGF
    * </pre>
    *
    * <code>string description = 7;</code>
-   *
    * @return The bytes for description.
    */
-  com.google.protobuf.ByteString getDescriptionBytes();
+  com.google.protobuf.ByteString
+      getDescriptionBytes();
 
   /**
-   *
-   *
    * <pre>
    * URI for the EGF
    * </pre>
    *
    * <code>string governance_framework = 8;</code>
-   *
    * @return The governanceFramework.
    */
   java.lang.String getGovernanceFramework();
   /**
-   *
-   *
    * <pre>
    * URI for the EGF
    * </pre>
    *
    * <code>string governance_framework = 8;</code>
-   *
    * @return The bytes for governanceFramework.
    */
-  com.google.protobuf.ByteString getGovernanceFrameworkBytes();
+  com.google.protobuf.ByteString
+      getGovernanceFrameworkBytes();
 }

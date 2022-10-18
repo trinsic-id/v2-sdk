@@ -3,7 +3,7 @@
 
 package trinsic.services.provider.v1;
 
-public interface RevokeAuthorizationResponseOrBuilder
-    extends
+public interface RevokeAuthorizationResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:services.provider.v1.RevokeAuthorizationResponse)
-    com.google.protobuf.MessageOrBuilder {}
+    com.google.protobuf.MessageOrBuilder {
+}

@@ -3,25 +3,20 @@
 
 package trinsic.services.verifiablecredentials.templates.v1;
 
-public interface ListCredentialTemplatesResponseOrBuilder
-    extends
+public interface ListCredentialTemplatesResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.templates.v1.ListCredentialTemplatesResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   *
-   *
    * <pre>
    * Templates found by query
    * </pre>
    *
    * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
    */
-  java.util.List<trinsic.services.verifiablecredentials.templates.v1.TemplateData>
+  java.util.List<trinsic.services.verifiablecredentials.templates.v1.TemplateData> 
       getTemplatesList();
   /**
-   *
-   *
    * <pre>
    * Templates found by query
    * </pre>
@@ -30,8 +25,6 @@ public interface ListCredentialTemplatesResponseOrBuilder
    */
   trinsic.services.verifiablecredentials.templates.v1.TemplateData getTemplates(int index);
   /**
-   *
-   *
    * <pre>
    * Templates found by query
    * </pre>
@@ -40,20 +33,15 @@ public interface ListCredentialTemplatesResponseOrBuilder
    */
   int getTemplatesCount();
   /**
-   *
-   *
    * <pre>
    * Templates found by query
    * </pre>
    *
    * <code>repeated .services.verifiablecredentials.templates.v1.TemplateData templates = 1;</code>
    */
-  java.util.List<
-          ? extends trinsic.services.verifiablecredentials.templates.v1.TemplateDataOrBuilder>
+  java.util.List<? extends trinsic.services.verifiablecredentials.templates.v1.TemplateDataOrBuilder> 
       getTemplatesOrBuilderList();
   /**
-   *
-   *
    * <pre>
    * Templates found by query
    * </pre>
@@ -64,40 +52,32 @@ public interface ListCredentialTemplatesResponseOrBuilder
       int index);
 
   /**
-   *
-   *
    * <pre>
    * Whether more results are available for this query via `continuation_token`
    * </pre>
    *
    * <code>bool has_more_results = 2;</code>
-   *
    * @return The hasMoreResults.
    */
   boolean getHasMoreResults();
 
   /**
-   *
-   *
    * <pre>
    * Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
    * </pre>
    *
    * <code>string continuation_token = 3;</code>
-   *
    * @return The continuationToken.
    */
   java.lang.String getContinuationToken();
   /**
-   *
-   *
    * <pre>
    * Token to fetch next set of resuts via `ListCredentialTemplatesRequest`
    * </pre>
    *
    * <code>string continuation_token = 3;</code>
-   *
    * @return The bytes for continuationToken.
    */
-  com.google.protobuf.ByteString getContinuationTokenBytes();
+  com.google.protobuf.ByteString
+      getContinuationTokenBytes();
 }
