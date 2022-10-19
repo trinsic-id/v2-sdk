@@ -11,42 +11,48 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 class EventType extends $pb.ProtobufEnum {
   static const EventType PING = EventType._(
-      0, $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'PING');
+      0,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'PING');
   static const EventType LOG = EventType._(
-      1, $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'LOG');
+      1,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'LOG');
   static const EventType EGF_CREATED = EventType._(
       5,
-      $core.bool.fromEnvironment('protobuf.omit_enum_names')
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'EGF_CREATED');
   static const EventType EGF_MEMBER_REGISTERED = EventType._(
       6,
-      $core.bool.fromEnvironment('protobuf.omit_enum_names')
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'EGF_MEMBER_REGISTERED');
   static const EventType EGF_MEMBER_UNREGISTERED = EventType._(
       7,
-      $core.bool.fromEnvironment('protobuf.omit_enum_names')
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'EGF_MEMBER_UNREGISTERED');
   static const EventType TEMPLATE_CREATED = EventType._(
       10,
-      $core.bool.fromEnvironment('protobuf.omit_enum_names')
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'TEMPLATE_CREATED');
   static const EventType TEMPLATE_DELETED = EventType._(
       11,
-      $core.bool.fromEnvironment('protobuf.omit_enum_names')
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'TEMPLATE_DELETED');
   static const EventType WALLET_CREATED = EventType._(
       15,
-      $core.bool.fromEnvironment('protobuf.omit_enum_names')
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'WALLET_CREATED');
   static const EventType ITEM_RECEIVED = EventType._(
       16,
-      $core.bool.fromEnvironment('protobuf.omit_enum_names')
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'ITEM_RECEIVED');
 

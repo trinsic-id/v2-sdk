@@ -9,10 +9,10 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../account/v1/account.pb.dart' as $2;
+import '../../account/v1/account.pb.dart' as $3;
 
 import 'provider.pbenum.dart';
-import '../../account/v1/account.pbenum.dart' as $2;
+import '../../account/v1/account.pbenum.dart' as $3;
 import '../../common/v1/common.pbenum.dart' as $6;
 
 export 'provider.pbenum.dart';
@@ -23,7 +23,7 @@ class InviteRequest_DidCommInvitation extends $pb.GeneratedMessage {
           ? ''
           : 'InviteRequest.DidCommInvitation',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -70,7 +70,7 @@ class InviteRequest extends $pb.GeneratedMessage {
           ? ''
           : 'InviteRequest',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -88,19 +88,19 @@ class InviteRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'description')
-    ..aOM<$2.AccountDetails>(
+    ..aOM<$3.AccountDetails>(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'details',
-        subBuilder: $2.AccountDetails.create)
+        subBuilder: $3.AccountDetails.create)
     ..hasRequiredFields = false;
 
   InviteRequest._() : super();
   factory InviteRequest({
     ParticipantType? participant,
     $core.String? description,
-    $2.AccountDetails? details,
+    $3.AccountDetails? details,
   }) {
     final _result = create();
     if (participant != null) {
@@ -166,9 +166,9 @@ class InviteRequest extends $pb.GeneratedMessage {
   void clearDescription() => clearField(2);
 
   @$pb.TagNumber(3)
-  $2.AccountDetails get details => $_getN(2);
+  $3.AccountDetails get details => $_getN(2);
   @$pb.TagNumber(3)
-  set details($2.AccountDetails v) {
+  set details($3.AccountDetails v) {
     setField(3, v);
   }
 
@@ -177,7 +177,7 @@ class InviteRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   void clearDetails() => clearField(3);
   @$pb.TagNumber(3)
-  $2.AccountDetails ensureDetails() => $_ensure(2);
+  $3.AccountDetails ensureDetails() => $_ensure(2);
 }
 
 class InviteResponse extends $pb.GeneratedMessage {
@@ -186,7 +186,7 @@ class InviteResponse extends $pb.GeneratedMessage {
           ? ''
           : 'InviteResponse',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -274,7 +274,7 @@ class InvitationStatusRequest extends $pb.GeneratedMessage {
           ? ''
           : 'InvitationStatusRequest',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -343,7 +343,7 @@ class InvitationStatusResponse extends $pb.GeneratedMessage {
           ? ''
           : 'InvitationStatusResponse',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -437,7 +437,7 @@ class Ecosystem extends $pb.GeneratedMessage {
           ? ''
           : 'Ecosystem',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -630,7 +630,7 @@ class WebhookConfig extends $pb.GeneratedMessage {
           ? ''
           : 'WebhookConfig',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -751,7 +751,7 @@ class Grant extends $pb.GeneratedMessage {
           ? ''
           : 'Grant',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -844,7 +844,7 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
           ? ''
           : 'CreateEcosystemRequest',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -863,12 +863,12 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'uri')
-    ..aOM<$2.AccountDetails>(
+    ..aOM<$3.AccountDetails>(
         4,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'details',
-        subBuilder: $2.AccountDetails.create)
+        subBuilder: $3.AccountDetails.create)
     ..aOS(
         5,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -881,7 +881,7 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
     $core.String? name,
     $core.String? description,
     @$core.Deprecated('This field is deprecated.') $core.String? uri,
-    $2.AccountDetails? details,
+    $3.AccountDetails? details,
     $core.String? domain,
   }) {
     final _result = create();
@@ -973,9 +973,9 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
   void clearUri() => clearField(3);
 
   @$pb.TagNumber(4)
-  $2.AccountDetails get details => $_getN(3);
+  $3.AccountDetails get details => $_getN(3);
   @$pb.TagNumber(4)
-  set details($2.AccountDetails v) {
+  set details($3.AccountDetails v) {
     setField(4, v);
   }
 
@@ -984,7 +984,7 @@ class CreateEcosystemRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   void clearDetails() => clearField(4);
   @$pb.TagNumber(4)
-  $2.AccountDetails ensureDetails() => $_ensure(3);
+  $3.AccountDetails ensureDetails() => $_ensure(3);
 
   @$pb.TagNumber(5)
   $core.String get domain => $_getSZ(4);
@@ -1005,7 +1005,7 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
           ? ''
           : 'CreateEcosystemResponse',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -1015,28 +1015,28 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
             ? ''
             : 'ecosystem',
         subBuilder: Ecosystem.create)
-    ..aOM<$2.AccountProfile>(
+    ..aOM<$3.AccountProfile>(
         2,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'profile',
-        subBuilder: $2.AccountProfile.create)
-    ..e<$2.ConfirmationMethod>(
+        subBuilder: $3.AccountProfile.create)
+    ..e<$3.ConfirmationMethod>(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'confirmationMethod',
         $pb.PbFieldType.OE,
-        defaultOrMaker: $2.ConfirmationMethod.None,
-        valueOf: $2.ConfirmationMethod.valueOf,
-        enumValues: $2.ConfirmationMethod.values)
+        defaultOrMaker: $3.ConfirmationMethod.None,
+        valueOf: $3.ConfirmationMethod.valueOf,
+        enumValues: $3.ConfirmationMethod.values)
     ..hasRequiredFields = false;
 
   CreateEcosystemResponse._() : super();
   factory CreateEcosystemResponse({
     Ecosystem? ecosystem,
-    $2.AccountProfile? profile,
-    $2.ConfirmationMethod? confirmationMethod,
+    $3.AccountProfile? profile,
+    $3.ConfirmationMethod? confirmationMethod,
   }) {
     final _result = create();
     if (ecosystem != null) {
@@ -1094,9 +1094,9 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
   Ecosystem ensureEcosystem() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $2.AccountProfile get profile => $_getN(1);
+  $3.AccountProfile get profile => $_getN(1);
   @$pb.TagNumber(2)
-  set profile($2.AccountProfile v) {
+  set profile($3.AccountProfile v) {
     setField(2, v);
   }
 
@@ -1105,12 +1105,12 @@ class CreateEcosystemResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearProfile() => clearField(2);
   @$pb.TagNumber(2)
-  $2.AccountProfile ensureProfile() => $_ensure(1);
+  $3.AccountProfile ensureProfile() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $2.ConfirmationMethod get confirmationMethod => $_getN(2);
+  $3.ConfirmationMethod get confirmationMethod => $_getN(2);
   @$pb.TagNumber(3)
-  set confirmationMethod($2.ConfirmationMethod v) {
+  set confirmationMethod($3.ConfirmationMethod v) {
     setField(3, v);
   }
 
@@ -1126,7 +1126,7 @@ class UpdateEcosystemRequest extends $pb.GeneratedMessage {
           ? ''
           : 'UpdateEcosystemRequest',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -1287,7 +1287,7 @@ class EcosystemDisplayRequest extends $pb.GeneratedMessage {
           ? ''
           : 'EcosystemDisplayRequest',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -1383,7 +1383,7 @@ class EcosystemDisplayDetailsRequest extends $pb.GeneratedMessage {
           ? ''
           : 'EcosystemDisplayDetailsRequest',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -1497,7 +1497,7 @@ class UpdateEcosystemResponse extends $pb.GeneratedMessage {
           ? ''
           : 'UpdateEcosystemResponse',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -1570,7 +1570,7 @@ class EcosystemDisplay extends $pb.GeneratedMessage {
           ? ''
           : 'EcosystemDisplay',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -1664,7 +1664,7 @@ class EcosystemDisplayDetails extends $pb.GeneratedMessage {
           ? ''
           : 'EcosystemDisplayDetails',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -1754,7 +1754,7 @@ class AddWebhookRequest extends $pb.GeneratedMessage {
           ? ''
           : 'AddWebhookRequest',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -1854,7 +1854,7 @@ class AddWebhookResponse extends $pb.GeneratedMessage {
           ? ''
           : 'AddWebhookResponse',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -1924,7 +1924,7 @@ class DeleteWebhookRequest extends $pb.GeneratedMessage {
           ? ''
           : 'DeleteWebhookRequest',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -1992,7 +1992,7 @@ class DeleteWebhookResponse extends $pb.GeneratedMessage {
           ? ''
           : 'DeleteWebhookResponse',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -2064,7 +2064,7 @@ class EcosystemInfoRequest extends $pb.GeneratedMessage {
           ? ''
           : 'EcosystemInfoRequest',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -2107,7 +2107,7 @@ class EcosystemInfoResponse extends $pb.GeneratedMessage {
           ? ''
           : 'EcosystemInfoResponse',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -2179,7 +2179,7 @@ class GetPublicEcosystemInfoRequest extends $pb.GeneratedMessage {
           ? ''
           : 'GetPublicEcosystemInfoRequest',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -2250,7 +2250,7 @@ class GetPublicEcosystemInfoResponse extends $pb.GeneratedMessage {
           ? ''
           : 'GetPublicEcosystemInfoResponse',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -2324,7 +2324,7 @@ class PublicEcosystemInformation extends $pb.GeneratedMessage {
           ? ''
           : 'PublicEcosystemInformation',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -2460,7 +2460,7 @@ class GenerateTokenRequest extends $pb.GeneratedMessage {
           ? ''
           : 'GenerateTokenRequest',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -2528,21 +2528,21 @@ class GenerateTokenResponse extends $pb.GeneratedMessage {
           ? ''
           : 'GenerateTokenResponse',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
-    ..aOM<$2.AccountProfile>(
+    ..aOM<$3.AccountProfile>(
         1,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'profile',
-        subBuilder: $2.AccountProfile.create)
+        subBuilder: $3.AccountProfile.create)
     ..hasRequiredFields = false;
 
   GenerateTokenResponse._() : super();
   factory GenerateTokenResponse({
-    $2.AccountProfile? profile,
+    $3.AccountProfile? profile,
   }) {
     final _result = create();
     if (profile != null) {
@@ -2580,9 +2580,9 @@ class GenerateTokenResponse extends $pb.GeneratedMessage {
   static GenerateTokenResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $2.AccountProfile get profile => $_getN(0);
+  $3.AccountProfile get profile => $_getN(0);
   @$pb.TagNumber(1)
-  set profile($2.AccountProfile v) {
+  set profile($3.AccountProfile v) {
     setField(1, v);
   }
 
@@ -2591,7 +2591,7 @@ class GenerateTokenResponse extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearProfile() => clearField(1);
   @$pb.TagNumber(1)
-  $2.AccountProfile ensureProfile() => $_ensure(0);
+  $3.AccountProfile ensureProfile() => $_ensure(0);
 }
 
 class GetOberonKeyRequest extends $pb.GeneratedMessage {
@@ -2600,7 +2600,7 @@ class GetOberonKeyRequest extends $pb.GeneratedMessage {
           ? ''
           : 'GetOberonKeyRequest',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -2642,7 +2642,7 @@ class GetOberonKeyResponse extends $pb.GeneratedMessage {
           ? ''
           : 'GetOberonKeyResponse',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -2710,7 +2710,7 @@ class GetEventTokenRequest extends $pb.GeneratedMessage {
           ? ''
           : 'GetEventTokenRequest',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -2779,7 +2779,7 @@ class GetEventTokenResponse extends $pb.GeneratedMessage {
           ? ''
           : 'GetEventTokenResponse',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -2848,7 +2848,7 @@ class RetrieveDomainVerificationRecordRequest extends $pb.GeneratedMessage {
           ? ''
           : 'RetrieveDomainVerificationRecordRequest',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -2896,7 +2896,7 @@ class RetrieveDomainVerificationRecordResponse extends $pb.GeneratedMessage {
           ? ''
           : 'RetrieveDomainVerificationRecordResponse',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -2970,7 +2970,7 @@ class RefreshDomainVerificationStatusRequest extends $pb.GeneratedMessage {
           ? ''
           : 'RefreshDomainVerificationStatusRequest',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -3018,7 +3018,7 @@ class RefreshDomainVerificationStatusResponse extends $pb.GeneratedMessage {
           ? ''
           : 'RefreshDomainVerificationStatusResponse',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -3120,7 +3120,7 @@ class GrantAuthorizationRequest extends $pb.GeneratedMessage {
           ? ''
           : 'GrantAuthorizationRequest',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -3258,7 +3258,7 @@ class GrantAuthorizationResponse extends $pb.GeneratedMessage {
           ? ''
           : 'GrantAuthorizationResponse',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -3311,7 +3311,7 @@ class RevokeAuthorizationRequest extends $pb.GeneratedMessage {
           ? ''
           : 'RevokeAuthorizationRequest',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -3450,7 +3450,7 @@ class RevokeAuthorizationResponse extends $pb.GeneratedMessage {
           ? ''
           : 'RevokeAuthorizationResponse',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -3496,7 +3496,7 @@ class GetAuthorizationsRequest extends $pb.GeneratedMessage {
           ? ''
           : 'GetAuthorizationsRequest',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -3540,7 +3540,7 @@ class GetAuthorizationsResponse extends $pb.GeneratedMessage {
           ? ''
           : 'GetAuthorizationsResponse',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -3602,7 +3602,7 @@ class SearchWalletConfigurationsRequest extends $pb.GeneratedMessage {
           ? ''
           : 'SearchWalletConfigurationsRequest',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -3695,7 +3695,7 @@ class SearchWalletConfigurationResponse extends $pb.GeneratedMessage {
           ? ''
           : 'SearchWalletConfigurationResponse',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -3802,7 +3802,7 @@ class WalletConfiguration extends $pb.GeneratedMessage {
           ? ''
           : 'WalletConfiguration',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -3953,7 +3953,7 @@ class IonOptions extends $pb.GeneratedMessage {
           ? ''
           : 'IonOptions',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -4038,7 +4038,7 @@ class UpgradeDidRequest extends $pb.GeneratedMessage {
           ? ''
           : 'UpgradeDidRequest',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)
@@ -4185,7 +4185,7 @@ class UpgradeDidResponse extends $pb.GeneratedMessage {
           ? ''
           : 'UpgradeDidResponse',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.provider.v1'),
       createEmptyInstance: create)

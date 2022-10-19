@@ -10,31 +10,34 @@ import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class ResponseStatus extends $pb.ProtobufEnum {
-  static const ResponseStatus SUCCESS = ResponseStatus._(0,
-      $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'SUCCESS');
+  static const ResponseStatus SUCCESS = ResponseStatus._(
+      0,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'SUCCESS');
   static const ResponseStatus WALLET_ACCESS_DENIED = ResponseStatus._(
       10,
-      $core.bool.fromEnvironment('protobuf.omit_enum_names')
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'WALLET_ACCESS_DENIED');
   static const ResponseStatus WALLET_EXISTS = ResponseStatus._(
       11,
-      $core.bool.fromEnvironment('protobuf.omit_enum_names')
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'WALLET_EXISTS');
   static const ResponseStatus ITEM_NOT_FOUND = ResponseStatus._(
       20,
-      $core.bool.fromEnvironment('protobuf.omit_enum_names')
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'ITEM_NOT_FOUND');
   static const ResponseStatus SERIALIZATION_ERROR = ResponseStatus._(
       200,
-      $core.bool.fromEnvironment('protobuf.omit_enum_names')
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'SERIALIZATION_ERROR');
   static const ResponseStatus UNKNOWN_ERROR = ResponseStatus._(
       100,
-      $core.bool.fromEnvironment('protobuf.omit_enum_names')
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'UNKNOWN_ERROR');
 
@@ -56,9 +59,15 @@ class ResponseStatus extends $pb.ProtobufEnum {
 
 class SupportedDidMethod extends $pb.ProtobufEnum {
   static const SupportedDidMethod KEY = SupportedDidMethod._(
-      0, $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'KEY');
+      0,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'KEY');
   static const SupportedDidMethod ION = SupportedDidMethod._(
-      1, $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'ION');
+      1,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'ION');
 
   static const $core.List<SupportedDidMethod> values = <SupportedDidMethod>[
     KEY,

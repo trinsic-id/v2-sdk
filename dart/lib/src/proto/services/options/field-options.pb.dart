@@ -15,7 +15,7 @@ class SdkTemplateOption extends $pb.GeneratedMessage {
           ? ''
           : 'SdkTemplateOption',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.options'),
       createEmptyInstance: create)

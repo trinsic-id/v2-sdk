@@ -20,7 +20,7 @@ class AddFrameworkRequest extends $pb.GeneratedMessage {
           ? ''
           : 'AddFrameworkRequest',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.trustregistry.v1'),
       createEmptyInstance: create)
@@ -129,7 +129,7 @@ class AddFrameworkResponse extends $pb.GeneratedMessage {
           ? ''
           : 'AddFrameworkResponse',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.trustregistry.v1'),
       createEmptyInstance: create)
@@ -239,7 +239,7 @@ class RemoveFrameworkRequest extends $pb.GeneratedMessage {
           ? ''
           : 'RemoveFrameworkRequest',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.trustregistry.v1'),
       createEmptyInstance: create)
@@ -308,7 +308,7 @@ class RemoveFrameworkResponse extends $pb.GeneratedMessage {
           ? ''
           : 'RemoveFrameworkResponse',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.trustregistry.v1'),
       createEmptyInstance: create)
@@ -352,7 +352,7 @@ class SearchRegistryRequest extends $pb.GeneratedMessage {
           ? ''
           : 'SearchRegistryRequest',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.trustregistry.v1'),
       createEmptyInstance: create)
@@ -442,7 +442,7 @@ class SearchRegistryResponse extends $pb.GeneratedMessage {
           ? ''
           : 'SearchRegistryResponse',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.trustregistry.v1'),
       createEmptyInstance: create)
@@ -553,7 +553,7 @@ class GovernanceFramework extends $pb.GeneratedMessage {
           ? ''
           : 'GovernanceFramework',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.trustregistry.v1'),
       createEmptyInstance: create)
@@ -671,7 +671,7 @@ class RegisterMemberRequest extends $pb.GeneratedMessage {
           ? ''
           : 'RegisterMemberRequest',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.trustregistry.v1'),
       createEmptyInstance: create)
@@ -875,7 +875,7 @@ class RegisterMemberResponse extends $pb.GeneratedMessage {
           ? ''
           : 'RegisterMemberResponse',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.trustregistry.v1'),
       createEmptyInstance: create)
@@ -928,7 +928,7 @@ class UnregisterMemberRequest extends $pb.GeneratedMessage {
           ? ''
           : 'UnregisterMemberRequest',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.trustregistry.v1'),
       createEmptyInstance: create)
@@ -1086,7 +1086,7 @@ class UnregisterMemberResponse extends $pb.GeneratedMessage {
           ? ''
           : 'UnregisterMemberResponse',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.trustregistry.v1'),
       createEmptyInstance: create)
@@ -1138,7 +1138,7 @@ class GetMembershipStatusRequest extends $pb.GeneratedMessage {
           ? ''
           : 'GetMembershipStatusRequest',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.trustregistry.v1'),
       createEmptyInstance: create)
@@ -1276,7 +1276,7 @@ class GetMembershipStatusResponse extends $pb.GeneratedMessage {
           ? ''
           : 'GetMembershipStatusResponse',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.trustregistry.v1'),
       createEmptyInstance: create)
@@ -1351,7 +1351,7 @@ class FetchDataRequest extends $pb.GeneratedMessage {
           ? ''
           : 'FetchDataRequest',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.trustregistry.v1'),
       createEmptyInstance: create)
@@ -1439,7 +1439,7 @@ class FetchDataResponse extends $pb.GeneratedMessage {
           ? ''
           : 'FetchDataResponse',
       package: const $pb.PackageName(
-          $core.bool.fromEnvironment('protobuf.omit_message_names')
+          const $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.trustregistry.v1'),
       createEmptyInstance: create)
