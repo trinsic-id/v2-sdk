@@ -13,13 +13,13 @@ class CodeGeneratorResponse_Feature extends $pb.ProtobufEnum {
   static const CodeGeneratorResponse_Feature FEATURE_NONE =
       CodeGeneratorResponse_Feature._(
           0,
-          const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          $core.bool.fromEnvironment('protobuf.omit_enum_names')
               ? ''
               : 'FEATURE_NONE');
   static const CodeGeneratorResponse_Feature FEATURE_PROTO3_OPTIONAL =
       CodeGeneratorResponse_Feature._(
           1,
-          const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          $core.bool.fromEnvironment('protobuf.omit_enum_names')
               ? ''
               : 'FEATURE_PROTO3_OPTIONAL');
 

@@ -18,7 +18,7 @@ class Timestamp extends $pb.GeneratedMessage with $mixin.TimestampMixin {
           ? ''
           : 'Timestamp',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create,

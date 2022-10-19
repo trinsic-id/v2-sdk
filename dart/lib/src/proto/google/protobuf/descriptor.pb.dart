@@ -20,7 +20,7 @@ class FileDescriptorSet extends $pb.GeneratedMessage {
           ? ''
           : 'FileDescriptorSet',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -79,7 +79,7 @@ class FileDescriptorProto extends $pb.GeneratedMessage {
           ? ''
           : 'FileDescriptorProto',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -329,7 +329,7 @@ class DescriptorProto_ExtensionRange extends $pb.GeneratedMessage {
           ? ''
           : 'DescriptorProto.ExtensionRange',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -446,7 +446,7 @@ class DescriptorProto_ReservedRange extends $pb.GeneratedMessage {
           ? ''
           : 'DescriptorProto.ReservedRange',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -540,7 +540,7 @@ class DescriptorProto extends $pb.GeneratedMessage {
           ? ''
           : 'DescriptorProto',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -740,7 +740,7 @@ class ExtensionRangeOptions extends $pb.GeneratedMessage {
           ? ''
           : 'ExtensionRangeOptions',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -802,7 +802,7 @@ class FieldDescriptorProto extends $pb.GeneratedMessage {
           ? ''
           : 'FieldDescriptorProto',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -1092,7 +1092,7 @@ class OneofDescriptorProto extends $pb.GeneratedMessage {
           ? ''
           : 'OneofDescriptorProto',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -1183,7 +1183,7 @@ class EnumDescriptorProto_EnumReservedRange extends $pb.GeneratedMessage {
           ? ''
           : 'EnumDescriptorProto.EnumReservedRange',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -1279,7 +1279,7 @@ class EnumDescriptorProto extends $pb.GeneratedMessage {
           ? ''
           : 'EnumDescriptorProto',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -1410,7 +1410,7 @@ class EnumValueDescriptorProto extends $pb.GeneratedMessage {
           ? ''
           : 'EnumValueDescriptorProto',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -1524,7 +1524,7 @@ class ServiceDescriptorProto extends $pb.GeneratedMessage {
           ? ''
           : 'ServiceDescriptorProto',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -1630,7 +1630,7 @@ class MethodDescriptorProto extends $pb.GeneratedMessage {
           ? ''
           : 'MethodDescriptorProto',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -1806,7 +1806,7 @@ class FileOptions extends $pb.GeneratedMessage {
           ? ''
           : 'FileOptions',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -2297,7 +2297,7 @@ class MessageOptions extends $pb.GeneratedMessage {
           ? ''
           : 'MessageOptions',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -2441,7 +2441,7 @@ class FieldOptions extends $pb.GeneratedMessage {
           ? ''
           : 'FieldOptions',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -2656,7 +2656,7 @@ class OneofOptions extends $pb.GeneratedMessage {
           ? ''
           : 'OneofOptions',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -2716,7 +2716,7 @@ class EnumOptions extends $pb.GeneratedMessage {
           ? ''
           : 'EnumOptions',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -2817,7 +2817,7 @@ class EnumValueOptions extends $pb.GeneratedMessage {
           ? ''
           : 'EnumValueOptions',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -2898,7 +2898,7 @@ class ServiceOptions extends $pb.GeneratedMessage {
           ? ''
           : 'ServiceOptions',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -2979,7 +2979,7 @@ class MethodOptions extends $pb.GeneratedMessage {
           ? ''
           : 'MethodOptions',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -3085,7 +3085,7 @@ class UninterpretedOption_NamePart extends $pb.GeneratedMessage {
           ? ''
           : 'UninterpretedOption.NamePart',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -3177,7 +3177,7 @@ class UninterpretedOption extends $pb.GeneratedMessage {
           ? ''
           : 'UninterpretedOption',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -3366,7 +3366,7 @@ class SourceCodeInfo_Location extends $pb.GeneratedMessage {
           ? ''
           : 'SourceCodeInfo.Location',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -3494,7 +3494,7 @@ class SourceCodeInfo extends $pb.GeneratedMessage {
           ? ''
           : 'SourceCodeInfo',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -3554,7 +3554,7 @@ class GeneratedCodeInfo_Annotation extends $pb.GeneratedMessage {
           ? ''
           : 'GeneratedCodeInfo.Annotation',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -3682,7 +3682,7 @@ class GeneratedCodeInfo extends $pb.GeneratedMessage {
           ? ''
           : 'GeneratedCodeInfo',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)

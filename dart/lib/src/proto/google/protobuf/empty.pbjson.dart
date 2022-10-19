@@ -10,7 +10,7 @@ import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
 
 @$core.Deprecated('Use emptyDescriptor instead')
-const Empty$json = const {
+const Empty$json = {
   '1': 'Empty',
 };
 

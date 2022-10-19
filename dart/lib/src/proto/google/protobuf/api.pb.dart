@@ -20,7 +20,7 @@ class Api extends $pb.GeneratedMessage {
           ? ''
           : 'Api',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -198,7 +198,7 @@ class Method extends $pb.GeneratedMessage {
           ? ''
           : 'Method',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -387,7 +387,7 @@ class Mixin extends $pb.GeneratedMessage {
           ? ''
           : 'Mixin',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)

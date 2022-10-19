@@ -147,7 +147,7 @@ public class AccountService : ServiceBase
             request.EcosystemId = DefaultEcosystem;
 
         var response = Client.Login(request, BuildMetadata());
-        
+
         if (response.ResponseCase == LoginResponse.ResponseOneofCase.Profile)
         {
             TokenProvider.Save(Base64Url.Encode(response.Profile.ToByteArray()));

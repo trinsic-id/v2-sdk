@@ -12,7 +12,7 @@ import 'package:protobuf/protobuf.dart' as $pb;
 class NullValue extends $pb.ProtobufEnum {
   static const NullValue NULL_VALUE = NullValue._(
       0,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+      $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'NULL_VALUE');
 

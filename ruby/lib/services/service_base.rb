@@ -14,10 +14,12 @@ module Trinsic
       @token_provider = token_provider || MemoryTokenProvider.new
     end
 
+    # rubocop:disable Metrics/MethodLength
     def metadata(message)
       call_metadata = { 'TrinsicOkapiVersion'.downcase => Okapi::Utils.version.version,
                         'TrinsicSDKLanguage'.downcase => 'ruby', 'TrinsicSDKVersion'.downcase => Trinsic::VERSION }
       unless message.nil?
+        # TODO: Check the token provider?
         if @service_options.nil? || @service_options.auth_token.nil?
           raise Error, 'Cannot call authenticated endpoint: profile must be set'
         end
@@ -29,6 +31,7 @@ module Trinsic
       end
       call_metadata
     end
+    # rubocop:enable Metrics/MethodLength
 
     def auth_token=(new_profile)
       @service_options.auth_token = new_profile
