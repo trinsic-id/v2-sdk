@@ -10,15 +10,15 @@ import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
 
 @$core.Deprecated('Use responseStatusDescriptor instead')
-const ResponseStatus$json = {
+const ResponseStatus$json = const {
   '1': 'ResponseStatus',
-  '2': [
-    {'1': 'SUCCESS', '2': 0},
-    {'1': 'WALLET_ACCESS_DENIED', '2': 10},
-    {'1': 'WALLET_EXISTS', '2': 11},
-    {'1': 'ITEM_NOT_FOUND', '2': 20},
-    {'1': 'SERIALIZATION_ERROR', '2': 200},
-    {'1': 'UNKNOWN_ERROR', '2': 100},
+  '2': const [
+    const {'1': 'SUCCESS', '2': 0},
+    const {'1': 'WALLET_ACCESS_DENIED', '2': 10},
+    const {'1': 'WALLET_EXISTS', '2': 11},
+    const {'1': 'ITEM_NOT_FOUND', '2': 20},
+    const {'1': 'SERIALIZATION_ERROR', '2': 200},
+    const {'1': 'UNKNOWN_ERROR', '2': 100},
   ],
 };
 
@@ -26,11 +26,11 @@ const ResponseStatus$json = {
 final $typed_data.Uint8List responseStatusDescriptor = $convert.base64Decode(
     'Cg5SZXNwb25zZVN0YXR1cxILCgdTVUNDRVNTEAASGAoUV0FMTEVUX0FDQ0VTU19ERU5JRUQQChIRCg1XQUxMRVRfRVhJU1RTEAsSEgoOSVRFTV9OT1RfRk9VTkQQFBIYChNTRVJJQUxJWkFUSU9OX0VSUk9SEMgBEhEKDVVOS05PV05fRVJST1IQZA==');
 @$core.Deprecated('Use supportedDidMethodDescriptor instead')
-const SupportedDidMethod$json = {
+const SupportedDidMethod$json = const {
   '1': 'SupportedDidMethod',
-  '2': [
-    {'1': 'KEY', '2': 0},
-    {'1': 'ION', '2': 1},
+  '2': const [
+    const {'1': 'KEY', '2': 0},
+    const {'1': 'ION', '2': 1},
   ],
 };
 
@@ -38,11 +38,11 @@ const SupportedDidMethod$json = {
 final $typed_data.Uint8List supportedDidMethodDescriptor = $convert
     .base64Decode('ChJTdXBwb3J0ZWREaWRNZXRob2QSBwoDS0VZEAASBwoDSU9OEAE=');
 @$core.Deprecated('Use nonceDescriptor instead')
-const Nonce$json = {
+const Nonce$json = const {
   '1': 'Nonce',
-  '2': [
-    {'1': 'timestamp', '3': 1, '4': 1, '5': 3, '10': 'timestamp'},
-    {'1': 'request_hash', '3': 2, '4': 1, '5': 12, '10': 'requestHash'},
+  '2': const [
+    const {'1': 'timestamp', '3': 1, '4': 1, '5': 3, '10': 'timestamp'},
+    const {'1': 'request_hash', '3': 2, '4': 1, '5': 12, '10': 'requestHash'},
   ],
 };
 

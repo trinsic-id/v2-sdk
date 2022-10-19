@@ -10,16 +10,16 @@ import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
 
 @$core.Deprecated('Use searchRequestDescriptor instead')
-const SearchRequest$json = {
+const SearchRequest$json = const {
   '1': 'SearchRequest',
-  '2': [
-    {'1': 'query', '3': 1, '4': 1, '5': 9, '10': 'query'},
-    {
+  '2': const [
+    const {'1': 'query', '3': 1, '4': 1, '5': 9, '10': 'query'},
+    const {
       '1': 'continuation_token',
       '3': 2,
       '4': 1,
       '5': 9,
-      '8': {},
+      '8': const {},
       '10': 'continuationToken'
     },
   ],
@@ -29,12 +29,12 @@ const SearchRequest$json = {
 final $typed_data.Uint8List searchRequestDescriptor = $convert.base64Decode(
     'Cg1TZWFyY2hSZXF1ZXN0EhQKBXF1ZXJ5GAEgASgJUgVxdWVyeRIzChJjb250aW51YXRpb25fdG9rZW4YAiABKAlCBICmHQFSEWNvbnRpbnVhdGlvblRva2Vu');
 @$core.Deprecated('Use searchResponseDescriptor instead')
-const SearchResponse$json = {
+const SearchResponse$json = const {
   '1': 'SearchResponse',
-  '2': [
-    {'1': 'items', '3': 1, '4': 3, '5': 9, '10': 'items'},
-    {'1': 'has_more', '3': 2, '4': 1, '5': 8, '10': 'hasMore'},
-    {
+  '2': const [
+    const {'1': 'items', '3': 1, '4': 3, '5': 9, '10': 'items'},
+    const {'1': 'has_more', '3': 2, '4': 1, '5': 8, '10': 'hasMore'},
+    const {
       '1': 'continuation_token',
       '3': 4,
       '4': 1,
@@ -48,10 +48,10 @@ const SearchResponse$json = {
 final $typed_data.Uint8List searchResponseDescriptor = $convert.base64Decode(
     'Cg5TZWFyY2hSZXNwb25zZRIUCgVpdGVtcxgBIAMoCVIFaXRlbXMSGQoIaGFzX21vcmUYAiABKAhSB2hhc01vcmUSLQoSY29udGludWF0aW9uX3Rva2VuGAQgASgJUhFjb250aW51YXRpb25Ub2tlbg==');
 @$core.Deprecated('Use getItemRequestDescriptor instead')
-const GetItemRequest$json = {
+const GetItemRequest$json = const {
   '1': 'GetItemRequest',
-  '2': [
-    {'1': 'item_id', '3': 1, '4': 1, '5': 9, '10': 'itemId'},
+  '2': const [
+    const {'1': 'item_id', '3': 1, '4': 1, '5': 9, '10': 'itemId'},
   ],
 };
 
@@ -59,11 +59,11 @@ const GetItemRequest$json = {
 final $typed_data.Uint8List getItemRequestDescriptor = $convert
     .base64Decode('Cg5HZXRJdGVtUmVxdWVzdBIXCgdpdGVtX2lkGAEgASgJUgZpdGVtSWQ=');
 @$core.Deprecated('Use getItemResponseDescriptor instead')
-const GetItemResponse$json = {
+const GetItemResponse$json = const {
   '1': 'GetItemResponse',
-  '2': [
-    {'1': 'item_json', '3': 1, '4': 1, '5': 9, '10': 'itemJson'},
-    {'1': 'item_type', '3': 2, '4': 1, '5': 9, '10': 'itemType'},
+  '2': const [
+    const {'1': 'item_json', '3': 1, '4': 1, '5': 9, '10': 'itemJson'},
+    const {'1': 'item_type', '3': 2, '4': 1, '5': 9, '10': 'itemType'},
   ],
 };
 
@@ -71,11 +71,18 @@ const GetItemResponse$json = {
 final $typed_data.Uint8List getItemResponseDescriptor = $convert.base64Decode(
     'Cg9HZXRJdGVtUmVzcG9uc2USGwoJaXRlbV9qc29uGAEgASgJUghpdGVtSnNvbhIbCglpdGVtX3R5cGUYAiABKAlSCGl0ZW1UeXBl');
 @$core.Deprecated('Use updateItemRequestDescriptor instead')
-const UpdateItemRequest$json = {
+const UpdateItemRequest$json = const {
   '1': 'UpdateItemRequest',
-  '2': [
-    {'1': 'item_id', '3': 1, '4': 1, '5': 9, '10': 'itemId'},
-    {'1': 'item_type', '3': 2, '4': 1, '5': 9, '8': {}, '10': 'itemType'},
+  '2': const [
+    const {'1': 'item_id', '3': 1, '4': 1, '5': 9, '10': 'itemId'},
+    const {
+      '1': 'item_type',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '8': const {},
+      '10': 'itemType'
+    },
   ],
 };
 
@@ -83,7 +90,7 @@ const UpdateItemRequest$json = {
 final $typed_data.Uint8List updateItemRequestDescriptor = $convert.base64Decode(
     'ChFVcGRhdGVJdGVtUmVxdWVzdBIXCgdpdGVtX2lkGAEgASgJUgZpdGVtSWQSIQoJaXRlbV90eXBlGAIgASgJQgSAph0BUghpdGVtVHlwZQ==');
 @$core.Deprecated('Use updateItemResponseDescriptor instead')
-const UpdateItemResponse$json = {
+const UpdateItemResponse$json = const {
   '1': 'UpdateItemResponse',
 };
 
@@ -91,11 +98,18 @@ const UpdateItemResponse$json = {
 final $typed_data.Uint8List updateItemResponseDescriptor =
     $convert.base64Decode('ChJVcGRhdGVJdGVtUmVzcG9uc2U=');
 @$core.Deprecated('Use insertItemRequestDescriptor instead')
-const InsertItemRequest$json = {
+const InsertItemRequest$json = const {
   '1': 'InsertItemRequest',
-  '2': [
-    {'1': 'item_json', '3': 1, '4': 1, '5': 9, '10': 'itemJson'},
-    {'1': 'item_type', '3': 2, '4': 1, '5': 9, '8': {}, '10': 'itemType'},
+  '2': const [
+    const {'1': 'item_json', '3': 1, '4': 1, '5': 9, '10': 'itemJson'},
+    const {
+      '1': 'item_type',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '8': const {},
+      '10': 'itemType'
+    },
   ],
 };
 
@@ -103,10 +117,10 @@ const InsertItemRequest$json = {
 final $typed_data.Uint8List insertItemRequestDescriptor = $convert.base64Decode(
     'ChFJbnNlcnRJdGVtUmVxdWVzdBIbCglpdGVtX2pzb24YASABKAlSCGl0ZW1Kc29uEiEKCWl0ZW1fdHlwZRgCIAEoCUIEgKYdAVIIaXRlbVR5cGU=');
 @$core.Deprecated('Use insertItemResponseDescriptor instead')
-const InsertItemResponse$json = {
+const InsertItemResponse$json = const {
   '1': 'InsertItemResponse',
-  '2': [
-    {'1': 'item_id', '3': 2, '4': 1, '5': 9, '10': 'itemId'},
+  '2': const [
+    const {'1': 'item_id', '3': 2, '4': 1, '5': 9, '10': 'itemId'},
   ],
 };
 
@@ -115,10 +129,10 @@ final $typed_data.Uint8List insertItemResponseDescriptor =
     $convert.base64Decode(
         'ChJJbnNlcnRJdGVtUmVzcG9uc2USFwoHaXRlbV9pZBgCIAEoCVIGaXRlbUlk');
 @$core.Deprecated('Use deleteItemRequestDescriptor instead')
-const DeleteItemRequest$json = {
+const DeleteItemRequest$json = const {
   '1': 'DeleteItemRequest',
-  '2': [
-    {'1': 'item_id', '3': 1, '4': 1, '5': 9, '10': 'itemId'},
+  '2': const [
+    const {'1': 'item_id', '3': 1, '4': 1, '5': 9, '10': 'itemId'},
   ],
 };
 
@@ -126,7 +140,7 @@ const DeleteItemRequest$json = {
 final $typed_data.Uint8List deleteItemRequestDescriptor = $convert.base64Decode(
     'ChFEZWxldGVJdGVtUmVxdWVzdBIXCgdpdGVtX2lkGAEgASgJUgZpdGVtSWQ=');
 @$core.Deprecated('Use deleteItemResponseDescriptor instead')
-const DeleteItemResponse$json = {
+const DeleteItemResponse$json = const {
   '1': 'DeleteItemResponse',
 };
 

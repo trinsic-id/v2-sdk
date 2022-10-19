@@ -10,12 +10,12 @@ import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
 
 @$core.Deprecated('Use sdkTemplateOptionDescriptor instead')
-const SdkTemplateOption$json = {
+const SdkTemplateOption$json = const {
   '1': 'SdkTemplateOption',
-  '2': [
-    {'1': 'anonymous', '3': 1, '4': 1, '5': 8, '10': 'anonymous'},
-    {'1': 'ignore', '3': 2, '4': 1, '5': 8, '10': 'ignore'},
-    {'1': 'no_arguments', '3': 3, '4': 1, '5': 8, '10': 'noArguments'},
+  '2': const [
+    const {'1': 'anonymous', '3': 1, '4': 1, '5': 8, '10': 'anonymous'},
+    const {'1': 'ignore', '3': 2, '4': 1, '5': 8, '10': 'ignore'},
+    const {'1': 'no_arguments', '3': 3, '4': 1, '5': 8, '10': 'noArguments'},
   ],
 };
 
