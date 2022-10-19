@@ -27,12 +27,12 @@ module Trinsic
       @tokens = {}
     end
 
-    def save(_auth_token, _name = 'default')
-      @tokens[_name] = _auth_token
+    def save(auth_token, name = 'default')
+      @tokens[name] = auth_token
     end
 
-    def get(_name)
-      @tokens[_name]
+    def get(name)
+      @tokens[name]
     end
   end
 end

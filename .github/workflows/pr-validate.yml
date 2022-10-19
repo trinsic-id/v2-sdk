@@ -44,9 +44,21 @@ jobs:
           dotnet-version: 6.0.x
       - name: Run dotnet format validation
         run: dotnet format ./dotnet/TrinsicSdk.sln --verify-no-changes --no-restore
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1
+          bundler-cache: true
+      - name: Run ruby format validation
+        run: |
+          gem install rubocop
+          rubocop
+        shell: pwsh
+        working-directory: ruby
       - name: Set up Dart
         uses: dart-lang/setup-dart@v1
-      - run: dart format -o none --set-exit-if-changed ./dart
+      - name: Run dart format validation
+        run: dart format -o none --set-exit-if-changed ./dart
         working-directory: dart
       - name: Setup python
         uses: actions/setup-python@v4
