@@ -1,5 +1,14 @@
 # Trinsic SDK
 
+Prod Test Status
+[![.NET](https://github.com/trinsic-id/sdk/actions/workflows/test-dotnet.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/test-dotnet.yml)
+[![Go](https://github.com/trinsic-id/sdk/actions/workflows/test-golang.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/test-golang.yml)
+[![Java](https://github.com/trinsic-id/sdk/actions/workflows/test-java.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/test-java.yml)
+[![Python](https://github.com/trinsic-id/sdk/actions/workflows/test-python.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/test-python.yml)
+[![Ruby](https://github.com/trinsic-id/sdk/actions/workflows/test-ruby.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/test-ruby.yml)
+[![Rust](https://github.com/trinsic-id/sdk/actions/workflows/test-infrastructure.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/test-infrastructure.yml)
+[![TypeScript](https://github.com/trinsic-id/sdk/actions/workflows/test-typescript.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/test-typescript.yml)
+
 Build Status
 
 [![.NET](https://github.com/trinsic-id/sdk/actions/workflows/build-dotnet.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/build-dotnet.yml)
