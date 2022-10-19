@@ -58,7 +58,7 @@ jobs:
       - name: Set up Dart
         uses: dart-lang/setup-dart@v1
       - name: Run dart format validation
-        run: dart format -o none --set-exit-if-changed ./dart
+        run: dart format -o none --set-exit-if-changed .
         working-directory: dart
       - name: Setup python
         uses: actions/setup-python@v4
