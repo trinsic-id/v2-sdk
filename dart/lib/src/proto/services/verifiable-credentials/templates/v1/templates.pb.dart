@@ -19,7 +19,7 @@ class GetCredentialTemplateRequest extends $pb.GeneratedMessage {
           ? ''
           : 'GetCredentialTemplateRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.templates.v1'),
       createEmptyInstance: create)
@@ -90,7 +90,7 @@ class GetCredentialTemplateResponse extends $pb.GeneratedMessage {
           ? ''
           : 'GetCredentialTemplateResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.templates.v1'),
       createEmptyInstance: create)
@@ -164,7 +164,7 @@ class SearchCredentialTemplatesRequest extends $pb.GeneratedMessage {
           ? ''
           : 'SearchCredentialTemplatesRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.templates.v1'),
       createEmptyInstance: create)
@@ -257,7 +257,7 @@ class SearchCredentialTemplatesResponse extends $pb.GeneratedMessage {
           ? ''
           : 'SearchCredentialTemplatesResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.templates.v1'),
       createEmptyInstance: create)
@@ -371,7 +371,7 @@ class ListCredentialTemplatesRequest extends $pb.GeneratedMessage {
           ? ''
           : 'ListCredentialTemplatesRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.templates.v1'),
       createEmptyInstance: create)
@@ -463,7 +463,7 @@ class ListCredentialTemplatesResponse extends $pb.GeneratedMessage {
           ? ''
           : 'ListCredentialTemplatesResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.templates.v1'),
       createEmptyInstance: create)
@@ -570,7 +570,7 @@ class DeleteCredentialTemplateRequest extends $pb.GeneratedMessage {
           ? ''
           : 'DeleteCredentialTemplateRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.templates.v1'),
       createEmptyInstance: create)
@@ -642,7 +642,7 @@ class DeleteCredentialTemplateResponse extends $pb.GeneratedMessage {
           ? ''
           : 'DeleteCredentialTemplateResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.templates.v1'),
       createEmptyInstance: create)
@@ -689,7 +689,7 @@ class CreateCredentialTemplateRequest extends $pb.GeneratedMessage {
           ? ''
           : 'CreateCredentialTemplateRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.templates.v1'),
       createEmptyInstance: create)
@@ -800,7 +800,7 @@ class CreateCredentialTemplateResponse extends $pb.GeneratedMessage {
           ? ''
           : 'CreateCredentialTemplateResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.templates.v1'),
       createEmptyInstance: create)
@@ -875,7 +875,7 @@ class TemplateField extends $pb.GeneratedMessage {
           ? ''
           : 'TemplateField',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.templates.v1'),
       createEmptyInstance: create)
@@ -988,7 +988,7 @@ class GetTemplateRequest extends $pb.GeneratedMessage {
           ? ''
           : 'GetTemplateRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.templates.v1'),
       createEmptyInstance: create)
@@ -1055,7 +1055,7 @@ class GetTemplateResponse extends $pb.GeneratedMessage {
           ? ''
           : 'GetTemplateResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.templates.v1'),
       createEmptyInstance: create)
@@ -1125,7 +1125,7 @@ class ListTemplatesRequest extends $pb.GeneratedMessage {
           ? ''
           : 'ListTemplatesRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.templates.v1'),
       createEmptyInstance: create)
@@ -1168,7 +1168,7 @@ class ListTemplatesResponse extends $pb.GeneratedMessage {
           ? ''
           : 'ListTemplatesResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.templates.v1'),
       createEmptyInstance: create)
@@ -1230,7 +1230,7 @@ class TemplateData extends $pb.GeneratedMessage {
           ? ''
           : 'TemplateData',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.templates.v1'),
       createEmptyInstance: create)

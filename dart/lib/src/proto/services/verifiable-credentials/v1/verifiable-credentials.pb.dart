@@ -15,7 +15,7 @@ class IssueRequest extends $pb.GeneratedMessage {
           ? ''
           : 'IssueRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.v1'),
       createEmptyInstance: create)
@@ -82,7 +82,7 @@ class IssueResponse extends $pb.GeneratedMessage {
           ? ''
           : 'IssueResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.v1'),
       createEmptyInstance: create)
@@ -149,7 +149,7 @@ class IssueFromTemplateRequest extends $pb.GeneratedMessage {
           ? ''
           : 'IssueFromTemplateRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.v1'),
       createEmptyInstance: create)
@@ -260,7 +260,7 @@ class IssueFromTemplateResponse extends $pb.GeneratedMessage {
           ? ''
           : 'IssueFromTemplateResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.v1'),
       createEmptyInstance: create)
@@ -337,7 +337,7 @@ class CreateProofRequest extends $pb.GeneratedMessage {
           ? ''
           : 'CreateProofRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.v1'),
       createEmptyInstance: create)
@@ -451,7 +451,7 @@ class CreateProofResponse extends $pb.GeneratedMessage {
           ? ''
           : 'CreateProofResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.v1'),
       createEmptyInstance: create)
@@ -518,7 +518,7 @@ class VerifyProofRequest extends $pb.GeneratedMessage {
           ? ''
           : 'VerifyProofRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.v1'),
       createEmptyInstance: create)
@@ -585,7 +585,7 @@ class VerifyProofResponse extends $pb.GeneratedMessage {
           ? ''
           : 'VerifyProofResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.v1'),
       createEmptyInstance: create)
@@ -685,7 +685,7 @@ class ValidationMessage extends $pb.GeneratedMessage {
           ? ''
           : 'ValidationMessage',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.v1'),
       createEmptyInstance: create)
@@ -773,7 +773,7 @@ class SendRequest extends $pb.GeneratedMessage {
           ? ''
           : 'SendRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.v1'),
       createEmptyInstance: create)
@@ -907,7 +907,7 @@ class SendResponse extends $pb.GeneratedMessage {
           ? ''
           : 'SendResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.v1'),
       createEmptyInstance: create)
@@ -949,7 +949,7 @@ class UpdateStatusRequest extends $pb.GeneratedMessage {
           ? ''
           : 'UpdateStatusRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.v1'),
       createEmptyInstance: create)
@@ -1037,7 +1037,7 @@ class UpdateStatusResponse extends $pb.GeneratedMessage {
           ? ''
           : 'UpdateStatusResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.v1'),
       createEmptyInstance: create)
@@ -1080,7 +1080,7 @@ class CheckStatusRequest extends $pb.GeneratedMessage {
           ? ''
           : 'CheckStatusRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.v1'),
       createEmptyInstance: create)
@@ -1147,7 +1147,7 @@ class CheckStatusResponse extends $pb.GeneratedMessage {
           ? ''
           : 'CheckStatusResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.verifiablecredentials.v1'),
       createEmptyInstance: create)

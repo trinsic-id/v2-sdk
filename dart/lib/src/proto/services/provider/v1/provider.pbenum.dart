@@ -12,13 +12,13 @@ import 'package:protobuf/protobuf.dart' as $pb;
 class ParticipantType extends $pb.ProtobufEnum {
   static const ParticipantType participant_type_individual = ParticipantType._(
       0,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+      $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'participant_type_individual');
   static const ParticipantType participant_type_organization =
       ParticipantType._(
           1,
-          const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          $core.bool.fromEnvironment('protobuf.omit_enum_names')
               ? ''
               : 'participant_type_organization');
 
@@ -38,25 +38,25 @@ class InvitationStatusResponse_Status extends $pb.ProtobufEnum {
   static const InvitationStatusResponse_Status Error =
       InvitationStatusResponse_Status._(
           0,
-          const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          $core.bool.fromEnvironment('protobuf.omit_enum_names')
               ? ''
               : 'Error');
   static const InvitationStatusResponse_Status InvitationSent =
       InvitationStatusResponse_Status._(
           1,
-          const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          $core.bool.fromEnvironment('protobuf.omit_enum_names')
               ? ''
               : 'InvitationSent');
   static const InvitationStatusResponse_Status Completed =
       InvitationStatusResponse_Status._(
           2,
-          const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          $core.bool.fromEnvironment('protobuf.omit_enum_names')
               ? ''
               : 'Completed');
   static const InvitationStatusResponse_Status Expired =
       InvitationStatusResponse_Status._(
           3,
-          const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          $core.bool.fromEnvironment('protobuf.omit_enum_names')
               ? ''
               : 'Expired');
 
@@ -78,16 +78,10 @@ class InvitationStatusResponse_Status extends $pb.ProtobufEnum {
 }
 
 class IonOptions_IonNetwork extends $pb.ProtobufEnum {
-  static const IonOptions_IonNetwork TestNet = IonOptions_IonNetwork._(
-      0,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'TestNet');
-  static const IonOptions_IonNetwork MainNet = IonOptions_IonNetwork._(
-      1,
-      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
-          ? ''
-          : 'MainNet');
+  static const IonOptions_IonNetwork TestNet = IonOptions_IonNetwork._(0,
+      $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'TestNet');
+  static const IonOptions_IonNetwork MainNet = IonOptions_IonNetwork._(1,
+      $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'MainNet');
 
   static const $core.List<IonOptions_IonNetwork> values =
       <IonOptions_IonNetwork>[

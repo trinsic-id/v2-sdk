@@ -21,7 +21,7 @@ class Struct extends $pb.GeneratedMessage with $mixin.StructMixin {
           ? ''
           : 'Struct',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create,
@@ -104,7 +104,7 @@ class Value extends $pb.GeneratedMessage with $mixin.ValueMixin {
           ? ''
           : 'Value',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create,
@@ -292,7 +292,7 @@ class ListValue extends $pb.GeneratedMessage with $mixin.ListValueMixin {
           ? ''
           : 'ListValue',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create,

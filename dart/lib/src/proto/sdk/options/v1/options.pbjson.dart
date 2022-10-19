@@ -10,19 +10,13 @@ import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
 
 @$core.Deprecated('Use serviceOptionsDescriptor instead')
-const ServiceOptions$json = const {
+const ServiceOptions$json = {
   '1': 'ServiceOptions',
-  '2': const [
-    const {
-      '1': 'server_endpoint',
-      '3': 1,
-      '4': 1,
-      '5': 9,
-      '10': 'serverEndpoint'
-    },
-    const {'1': 'server_port', '3': 2, '4': 1, '5': 5, '10': 'serverPort'},
-    const {'1': 'server_use_tls', '3': 3, '4': 1, '5': 8, '10': 'serverUseTls'},
-    const {'1': 'auth_token', '3': 4, '4': 1, '5': 9, '10': 'authToken'},
+  '2': [
+    {'1': 'server_endpoint', '3': 1, '4': 1, '5': 9, '10': 'serverEndpoint'},
+    {'1': 'server_port', '3': 2, '4': 1, '5': 5, '10': 'serverPort'},
+    {'1': 'server_use_tls', '3': 3, '4': 1, '5': 8, '10': 'serverUseTls'},
+    {'1': 'auth_token', '3': 4, '4': 1, '5': 9, '10': 'authToken'},
   ],
 };
 

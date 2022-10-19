@@ -19,7 +19,7 @@ class Event extends $pb.GeneratedMessage {
           ? ''
           : 'Event',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'trinsic.services.event'),
       createEmptyInstance: create)
@@ -153,7 +153,7 @@ class APICall extends $pb.GeneratedMessage {
           ? ''
           : 'APICall',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'trinsic.services.event'),
       createEmptyInstance: create)
@@ -263,7 +263,7 @@ class Ping extends $pb.GeneratedMessage {
           ? ''
           : 'Ping',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'trinsic.services.event'),
       createEmptyInstance: create)
@@ -392,7 +392,7 @@ class EGFCreated extends $pb.GeneratedMessage {
           ? ''
           : 'EGFCreated',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'trinsic.services.event'),
       createEmptyInstance: create)
@@ -605,7 +605,7 @@ class TemplateCreated extends $pb.GeneratedMessage {
           ? ''
           : 'TemplateCreated',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'trinsic.services.event'),
       createEmptyInstance: create)
@@ -756,7 +756,7 @@ class ItemReceived extends $pb.GeneratedMessage {
           ? ''
           : 'ItemReceived',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'trinsic.services.event'),
       createEmptyInstance: create)

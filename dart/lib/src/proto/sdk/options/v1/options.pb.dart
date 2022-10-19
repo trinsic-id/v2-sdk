@@ -15,7 +15,7 @@ class ServiceOptions extends $pb.GeneratedMessage {
           ? ''
           : 'ServiceOptions',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'sdk.options.v1'),
       createEmptyInstance: create)

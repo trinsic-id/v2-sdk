@@ -18,7 +18,7 @@ class DoubleValue extends $pb.GeneratedMessage with $mixin.DoubleValueMixin {
           ? ''
           : 'DoubleValue',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create,
@@ -87,7 +87,7 @@ class FloatValue extends $pb.GeneratedMessage with $mixin.FloatValueMixin {
           ? ''
           : 'FloatValue',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create,
@@ -156,7 +156,7 @@ class Int64Value extends $pb.GeneratedMessage with $mixin.Int64ValueMixin {
           ? ''
           : 'Int64Value',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create,
@@ -224,7 +224,7 @@ class UInt64Value extends $pb.GeneratedMessage with $mixin.UInt64ValueMixin {
           ? ''
           : 'UInt64Value',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create,
@@ -294,7 +294,7 @@ class Int32Value extends $pb.GeneratedMessage with $mixin.Int32ValueMixin {
           ? ''
           : 'Int32Value',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create,
@@ -363,7 +363,7 @@ class UInt32Value extends $pb.GeneratedMessage with $mixin.UInt32ValueMixin {
           ? ''
           : 'UInt32Value',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create,
@@ -432,7 +432,7 @@ class BoolValue extends $pb.GeneratedMessage with $mixin.BoolValueMixin {
           ? ''
           : 'BoolValue',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create,
@@ -500,7 +500,7 @@ class StringValue extends $pb.GeneratedMessage with $mixin.StringValueMixin {
           ? ''
           : 'StringValue',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create,
@@ -568,7 +568,7 @@ class BytesValue extends $pb.GeneratedMessage with $mixin.BytesValueMixin {
           ? ''
           : 'BytesValue',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create,

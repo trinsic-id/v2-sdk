@@ -15,7 +15,7 @@ class SearchRequest extends $pb.GeneratedMessage {
           ? ''
           : 'SearchRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -103,7 +103,7 @@ class SearchResponse extends $pb.GeneratedMessage {
           ? ''
           : 'SearchResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -203,7 +203,7 @@ class GetItemRequest extends $pb.GeneratedMessage {
           ? ''
           : 'GetItemRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -270,7 +270,7 @@ class GetItemResponse extends $pb.GeneratedMessage {
           ? ''
           : 'GetItemResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -358,7 +358,7 @@ class UpdateItemRequest extends $pb.GeneratedMessage {
           ? ''
           : 'UpdateItemRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -446,7 +446,7 @@ class UpdateItemResponse extends $pb.GeneratedMessage {
           ? ''
           : 'UpdateItemResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -488,7 +488,7 @@ class InsertItemRequest extends $pb.GeneratedMessage {
           ? ''
           : 'InsertItemRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -576,7 +576,7 @@ class InsertItemResponse extends $pb.GeneratedMessage {
           ? ''
           : 'InsertItemResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -643,7 +643,7 @@ class DeleteItemRequest extends $pb.GeneratedMessage {
           ? ''
           : 'DeleteItemRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)
@@ -710,7 +710,7 @@ class DeleteItemResponse extends $pb.GeneratedMessage {
           ? ''
           : 'DeleteItemResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'services.universalwallet.v1'),
       createEmptyInstance: create)

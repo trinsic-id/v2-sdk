@@ -22,7 +22,7 @@ class Type extends $pb.GeneratedMessage {
           ? ''
           : 'Type',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -177,7 +177,7 @@ class Field extends $pb.GeneratedMessage {
           ? ''
           : 'Field',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -435,7 +435,7 @@ class Enum extends $pb.GeneratedMessage {
           ? ''
           : 'Enum',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -578,7 +578,7 @@ class EnumValue extends $pb.GeneratedMessage {
           ? ''
           : 'EnumValue',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)
@@ -680,7 +680,7 @@ class Option extends $pb.GeneratedMessage {
           ? ''
           : 'Option',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf'),
       createEmptyInstance: create)

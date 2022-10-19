@@ -20,7 +20,7 @@ class Version extends $pb.GeneratedMessage {
           ? ''
           : 'Version',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf.compiler'),
       createEmptyInstance: create)
@@ -152,7 +152,7 @@ class CodeGeneratorRequest extends $pb.GeneratedMessage {
           ? ''
           : 'CodeGeneratorRequest',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf.compiler'),
       createEmptyInstance: create)
@@ -269,7 +269,7 @@ class CodeGeneratorResponse_File extends $pb.GeneratedMessage {
           ? ''
           : 'CodeGeneratorResponse.File',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf.compiler'),
       createEmptyInstance: create)
@@ -405,7 +405,7 @@ class CodeGeneratorResponse extends $pb.GeneratedMessage {
           ? ''
           : 'CodeGeneratorResponse',
       package: const $pb.PackageName(
-          const $core.bool.fromEnvironment('protobuf.omit_message_names')
+          $core.bool.fromEnvironment('protobuf.omit_message_names')
               ? ''
               : 'google.protobuf.compiler'),
       createEmptyInstance: create)

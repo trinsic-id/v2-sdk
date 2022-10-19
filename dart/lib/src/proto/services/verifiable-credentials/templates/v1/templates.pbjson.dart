@@ -10,13 +10,13 @@ import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
 
 @$core.Deprecated('Use fieldTypeDescriptor instead')
-const FieldType$json = const {
+const FieldType$json = {
   '1': 'FieldType',
-  '2': const [
-    const {'1': 'STRING', '2': 0},
-    const {'1': 'NUMBER', '2': 1},
-    const {'1': 'BOOL', '2': 2},
-    const {'1': 'DATETIME', '2': 4},
+  '2': [
+    {'1': 'STRING', '2': 0},
+    {'1': 'NUMBER', '2': 1},
+    {'1': 'BOOL', '2': 2},
+    {'1': 'DATETIME', '2': 4},
   ],
 };
 
@@ -24,10 +24,10 @@ const FieldType$json = const {
 final $typed_data.Uint8List fieldTypeDescriptor = $convert.base64Decode(
     'CglGaWVsZFR5cGUSCgoGU1RSSU5HEAASCgoGTlVNQkVSEAESCAoEQk9PTBACEgwKCERBVEVUSU1FEAQ=');
 @$core.Deprecated('Use getCredentialTemplateRequestDescriptor instead')
-const GetCredentialTemplateRequest$json = const {
+const GetCredentialTemplateRequest$json = {
   '1': 'GetCredentialTemplateRequest',
-  '2': const [
-    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
   ],
 };
 
@@ -36,10 +36,10 @@ final $typed_data.Uint8List getCredentialTemplateRequestDescriptor =
     $convert.base64Decode(
         'ChxHZXRDcmVkZW50aWFsVGVtcGxhdGVSZXF1ZXN0Eg4KAmlkGAEgASgJUgJpZA==');
 @$core.Deprecated('Use getCredentialTemplateResponseDescriptor instead')
-const GetCredentialTemplateResponse$json = const {
+const GetCredentialTemplateResponse$json = {
   '1': 'GetCredentialTemplateResponse',
-  '2': const [
-    const {
+  '2': [
+    {
       '1': 'template',
       '3': 1,
       '4': 1,
@@ -55,16 +55,16 @@ final $typed_data.Uint8List getCredentialTemplateResponseDescriptor =
     $convert.base64Decode(
         'Ch1HZXRDcmVkZW50aWFsVGVtcGxhdGVSZXNwb25zZRJVCgh0ZW1wbGF0ZRgBIAEoCzI5LnNlcnZpY2VzLnZlcmlmaWFibGVjcmVkZW50aWFscy50ZW1wbGF0ZXMudjEuVGVtcGxhdGVEYXRhUgh0ZW1wbGF0ZQ==');
 @$core.Deprecated('Use searchCredentialTemplatesRequestDescriptor instead')
-const SearchCredentialTemplatesRequest$json = const {
+const SearchCredentialTemplatesRequest$json = {
   '1': 'SearchCredentialTemplatesRequest',
-  '2': const [
-    const {'1': 'query', '3': 1, '4': 1, '5': 9, '10': 'query'},
-    const {
+  '2': [
+    {'1': 'query', '3': 1, '4': 1, '5': 9, '10': 'query'},
+    {
       '1': 'continuation_token',
       '3': 2,
       '4': 1,
       '5': 9,
-      '8': const {},
+      '8': {},
       '10': 'continuationToken'
     },
   ],
@@ -75,12 +75,12 @@ final $typed_data.Uint8List searchCredentialTemplatesRequestDescriptor =
     $convert.base64Decode(
         'CiBTZWFyY2hDcmVkZW50aWFsVGVtcGxhdGVzUmVxdWVzdBIUCgVxdWVyeRgBIAEoCVIFcXVlcnkSMwoSY29udGludWF0aW9uX3Rva2VuGAIgASgJQgSAph0BUhFjb250aW51YXRpb25Ub2tlbg==');
 @$core.Deprecated('Use searchCredentialTemplatesResponseDescriptor instead')
-const SearchCredentialTemplatesResponse$json = const {
+const SearchCredentialTemplatesResponse$json = {
   '1': 'SearchCredentialTemplatesResponse',
-  '2': const [
-    const {'1': 'items_json', '3': 1, '4': 1, '5': 9, '10': 'itemsJson'},
-    const {'1': 'has_more', '3': 2, '4': 1, '5': 8, '10': 'hasMore'},
-    const {
+  '2': [
+    {'1': 'items_json', '3': 1, '4': 1, '5': 9, '10': 'itemsJson'},
+    {'1': 'has_more', '3': 2, '4': 1, '5': 8, '10': 'hasMore'},
+    {
       '1': 'continuation_token',
       '3': 4,
       '4': 1,
@@ -95,16 +95,16 @@ final $typed_data.Uint8List searchCredentialTemplatesResponseDescriptor =
     $convert.base64Decode(
         'CiFTZWFyY2hDcmVkZW50aWFsVGVtcGxhdGVzUmVzcG9uc2USHQoKaXRlbXNfanNvbhgBIAEoCVIJaXRlbXNKc29uEhkKCGhhc19tb3JlGAIgASgIUgdoYXNNb3JlEi0KEmNvbnRpbnVhdGlvbl90b2tlbhgEIAEoCVIRY29udGludWF0aW9uVG9rZW4=');
 @$core.Deprecated('Use listCredentialTemplatesRequestDescriptor instead')
-const ListCredentialTemplatesRequest$json = const {
+const ListCredentialTemplatesRequest$json = {
   '1': 'ListCredentialTemplatesRequest',
-  '2': const [
-    const {'1': 'query', '3': 1, '4': 1, '5': 9, '10': 'query'},
-    const {
+  '2': [
+    {'1': 'query', '3': 1, '4': 1, '5': 9, '10': 'query'},
+    {
       '1': 'continuation_token',
       '3': 2,
       '4': 1,
       '5': 9,
-      '8': const {},
+      '8': {},
       '10': 'continuationToken'
     },
   ],
@@ -115,10 +115,10 @@ final $typed_data.Uint8List listCredentialTemplatesRequestDescriptor =
     $convert.base64Decode(
         'Ch5MaXN0Q3JlZGVudGlhbFRlbXBsYXRlc1JlcXVlc3QSFAoFcXVlcnkYASABKAlSBXF1ZXJ5EjMKEmNvbnRpbnVhdGlvbl90b2tlbhgCIAEoCUIEgKYdAVIRY29udGludWF0aW9uVG9rZW4=');
 @$core.Deprecated('Use listCredentialTemplatesResponseDescriptor instead')
-const ListCredentialTemplatesResponse$json = const {
+const ListCredentialTemplatesResponse$json = {
   '1': 'ListCredentialTemplatesResponse',
-  '2': const [
-    const {
+  '2': [
+    {
       '1': 'templates',
       '3': 1,
       '4': 3,
@@ -126,14 +126,8 @@ const ListCredentialTemplatesResponse$json = const {
       '6': '.services.verifiablecredentials.templates.v1.TemplateData',
       '10': 'templates'
     },
-    const {
-      '1': 'has_more_results',
-      '3': 2,
-      '4': 1,
-      '5': 8,
-      '10': 'hasMoreResults'
-    },
-    const {
+    {'1': 'has_more_results', '3': 2, '4': 1, '5': 8, '10': 'hasMoreResults'},
+    {
       '1': 'continuation_token',
       '3': 3,
       '4': 1,
@@ -148,10 +142,10 @@ final $typed_data.Uint8List listCredentialTemplatesResponseDescriptor =
     $convert.base64Decode(
         'Ch9MaXN0Q3JlZGVudGlhbFRlbXBsYXRlc1Jlc3BvbnNlElcKCXRlbXBsYXRlcxgBIAMoCzI5LnNlcnZpY2VzLnZlcmlmaWFibGVjcmVkZW50aWFscy50ZW1wbGF0ZXMudjEuVGVtcGxhdGVEYXRhUgl0ZW1wbGF0ZXMSKAoQaGFzX21vcmVfcmVzdWx0cxgCIAEoCFIOaGFzTW9yZVJlc3VsdHMSLQoSY29udGludWF0aW9uX3Rva2VuGAMgASgJUhFjb250aW51YXRpb25Ub2tlbg==');
 @$core.Deprecated('Use deleteCredentialTemplateRequestDescriptor instead')
-const DeleteCredentialTemplateRequest$json = const {
+const DeleteCredentialTemplateRequest$json = {
   '1': 'DeleteCredentialTemplateRequest',
-  '2': const [
-    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
   ],
 };
 
@@ -160,7 +154,7 @@ final $typed_data.Uint8List deleteCredentialTemplateRequestDescriptor =
     $convert.base64Decode(
         'Ch9EZWxldGVDcmVkZW50aWFsVGVtcGxhdGVSZXF1ZXN0Eg4KAmlkGAEgASgJUgJpZA==');
 @$core.Deprecated('Use deleteCredentialTemplateResponseDescriptor instead')
-const DeleteCredentialTemplateResponse$json = const {
+const DeleteCredentialTemplateResponse$json = {
   '1': 'DeleteCredentialTemplateResponse',
 };
 
@@ -168,11 +162,11 @@ const DeleteCredentialTemplateResponse$json = const {
 final $typed_data.Uint8List deleteCredentialTemplateResponseDescriptor =
     $convert.base64Decode('CiBEZWxldGVDcmVkZW50aWFsVGVtcGxhdGVSZXNwb25zZQ==');
 @$core.Deprecated('Use createCredentialTemplateRequestDescriptor instead')
-const CreateCredentialTemplateRequest$json = const {
+const CreateCredentialTemplateRequest$json = {
   '1': 'CreateCredentialTemplateRequest',
-  '2': const [
-    const {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
-    const {
+  '2': [
+    {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
+    {
       '1': 'fields',
       '3': 2,
       '4': 3,
@@ -181,7 +175,7 @@ const CreateCredentialTemplateRequest$json = const {
           '.services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest.FieldsEntry',
       '10': 'fields'
     },
-    const {
+    {
       '1': 'allow_additional_fields',
       '3': 3,
       '4': 1,
@@ -189,15 +183,15 @@ const CreateCredentialTemplateRequest$json = const {
       '10': 'allowAdditionalFields'
     },
   ],
-  '3': const [CreateCredentialTemplateRequest_FieldsEntry$json],
+  '3': [CreateCredentialTemplateRequest_FieldsEntry$json],
 };
 
 @$core.Deprecated('Use createCredentialTemplateRequestDescriptor instead')
-const CreateCredentialTemplateRequest_FieldsEntry$json = const {
+const CreateCredentialTemplateRequest_FieldsEntry$json = {
   '1': 'FieldsEntry',
-  '2': const [
-    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
-    const {
+  '2': [
+    {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    {
       '1': 'value',
       '3': 2,
       '4': 1,
@@ -206,7 +200,7 @@ const CreateCredentialTemplateRequest_FieldsEntry$json = const {
       '10': 'value'
     },
   ],
-  '7': const {'7': true},
+  '7': {'7': true},
 };
 
 /// Descriptor for `CreateCredentialTemplateRequest`. Decode as a `google.protobuf.DescriptorProto`.
@@ -214,10 +208,10 @@ final $typed_data.Uint8List createCredentialTemplateRequestDescriptor =
     $convert.base64Decode(
         'Ch9DcmVhdGVDcmVkZW50aWFsVGVtcGxhdGVSZXF1ZXN0EhIKBG5hbWUYASABKAlSBG5hbWUScAoGZmllbGRzGAIgAygLMlguc2VydmljZXMudmVyaWZpYWJsZWNyZWRlbnRpYWxzLnRlbXBsYXRlcy52MS5DcmVhdGVDcmVkZW50aWFsVGVtcGxhdGVSZXF1ZXN0LkZpZWxkc0VudHJ5UgZmaWVsZHMSNgoXYWxsb3dfYWRkaXRpb25hbF9maWVsZHMYAyABKAhSFWFsbG93QWRkaXRpb25hbEZpZWxkcxp1CgtGaWVsZHNFbnRyeRIQCgNrZXkYASABKAlSA2tleRJQCgV2YWx1ZRgCIAEoCzI6LnNlcnZpY2VzLnZlcmlmaWFibGVjcmVkZW50aWFscy50ZW1wbGF0ZXMudjEuVGVtcGxhdGVGaWVsZFIFdmFsdWU6AjgB');
 @$core.Deprecated('Use createCredentialTemplateResponseDescriptor instead')
-const CreateCredentialTemplateResponse$json = const {
+const CreateCredentialTemplateResponse$json = {
   '1': 'CreateCredentialTemplateResponse',
-  '2': const [
-    const {
+  '2': [
+    {
       '1': 'data',
       '3': 1,
       '4': 1,
@@ -233,12 +227,12 @@ final $typed_data.Uint8List createCredentialTemplateResponseDescriptor =
     $convert.base64Decode(
         'CiBDcmVhdGVDcmVkZW50aWFsVGVtcGxhdGVSZXNwb25zZRJNCgRkYXRhGAEgASgLMjkuc2VydmljZXMudmVyaWZpYWJsZWNyZWRlbnRpYWxzLnRlbXBsYXRlcy52MS5UZW1wbGF0ZURhdGFSBGRhdGE=');
 @$core.Deprecated('Use templateFieldDescriptor instead')
-const TemplateField$json = const {
+const TemplateField$json = {
   '1': 'TemplateField',
-  '2': const [
-    const {'1': 'description', '3': 2, '4': 1, '5': 9, '10': 'description'},
-    const {'1': 'optional', '3': 3, '4': 1, '5': 8, '10': 'optional'},
-    const {
+  '2': [
+    {'1': 'description', '3': 2, '4': 1, '5': 9, '10': 'description'},
+    {'1': 'optional', '3': 3, '4': 1, '5': 8, '10': 'optional'},
+    {
       '1': 'type',
       '3': 4,
       '4': 1,
@@ -253,10 +247,10 @@ const TemplateField$json = const {
 final $typed_data.Uint8List templateFieldDescriptor = $convert.base64Decode(
     'Cg1UZW1wbGF0ZUZpZWxkEiAKC2Rlc2NyaXB0aW9uGAIgASgJUgtkZXNjcmlwdGlvbhIaCghvcHRpb25hbBgDIAEoCFIIb3B0aW9uYWwSSgoEdHlwZRgEIAEoDjI2LnNlcnZpY2VzLnZlcmlmaWFibGVjcmVkZW50aWFscy50ZW1wbGF0ZXMudjEuRmllbGRUeXBlUgR0eXBl');
 @$core.Deprecated('Use getTemplateRequestDescriptor instead')
-const GetTemplateRequest$json = const {
+const GetTemplateRequest$json = {
   '1': 'GetTemplateRequest',
-  '2': const [
-    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
   ],
 };
 
@@ -264,10 +258,10 @@ const GetTemplateRequest$json = const {
 final $typed_data.Uint8List getTemplateRequestDescriptor =
     $convert.base64Decode('ChJHZXRUZW1wbGF0ZVJlcXVlc3QSDgoCaWQYASABKAlSAmlk');
 @$core.Deprecated('Use getTemplateResponseDescriptor instead')
-const GetTemplateResponse$json = const {
+const GetTemplateResponse$json = {
   '1': 'GetTemplateResponse',
-  '2': const [
-    const {
+  '2': [
+    {
       '1': 'data',
       '3': 1,
       '4': 1,
@@ -282,7 +276,7 @@ const GetTemplateResponse$json = const {
 final $typed_data.Uint8List getTemplateResponseDescriptor = $convert.base64Decode(
     'ChNHZXRUZW1wbGF0ZVJlc3BvbnNlEk0KBGRhdGEYASABKAsyOS5zZXJ2aWNlcy52ZXJpZmlhYmxlY3JlZGVudGlhbHMudGVtcGxhdGVzLnYxLlRlbXBsYXRlRGF0YVIEZGF0YQ==');
 @$core.Deprecated('Use listTemplatesRequestDescriptor instead')
-const ListTemplatesRequest$json = const {
+const ListTemplatesRequest$json = {
   '1': 'ListTemplatesRequest',
 };
 
@@ -290,10 +284,10 @@ const ListTemplatesRequest$json = const {
 final $typed_data.Uint8List listTemplatesRequestDescriptor =
     $convert.base64Decode('ChRMaXN0VGVtcGxhdGVzUmVxdWVzdA==');
 @$core.Deprecated('Use listTemplatesResponseDescriptor instead')
-const ListTemplatesResponse$json = const {
+const ListTemplatesResponse$json = {
   '1': 'ListTemplatesResponse',
-  '2': const [
-    const {
+  '2': [
+    {
       '1': 'templates',
       '3': 1,
       '4': 3,
@@ -308,13 +302,13 @@ const ListTemplatesResponse$json = const {
 final $typed_data.Uint8List listTemplatesResponseDescriptor = $convert.base64Decode(
     'ChVMaXN0VGVtcGxhdGVzUmVzcG9uc2USVwoJdGVtcGxhdGVzGAEgAygLMjkuc2VydmljZXMudmVyaWZpYWJsZWNyZWRlbnRpYWxzLnRlbXBsYXRlcy52MS5UZW1wbGF0ZURhdGFSCXRlbXBsYXRlcw==');
 @$core.Deprecated('Use templateDataDescriptor instead')
-const TemplateData$json = const {
+const TemplateData$json = {
   '1': 'TemplateData',
-  '2': const [
-    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
-    const {'1': 'name', '3': 2, '4': 1, '5': 9, '10': 'name'},
-    const {'1': 'version', '3': 3, '4': 1, '5': 5, '10': 'version'},
-    const {
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    {'1': 'name', '3': 2, '4': 1, '5': 9, '10': 'name'},
+    {'1': 'version', '3': 3, '4': 1, '5': 5, '10': 'version'},
+    {
       '1': 'fields',
       '3': 4,
       '4': 3,
@@ -323,29 +317,29 @@ const TemplateData$json = const {
           '.services.verifiablecredentials.templates.v1.TemplateData.FieldsEntry',
       '10': 'fields'
     },
-    const {
+    {
       '1': 'allow_additional_fields',
       '3': 5,
       '4': 1,
       '5': 8,
       '10': 'allowAdditionalFields'
     },
-    const {'1': 'schema_uri', '3': 6, '4': 1, '5': 9, '10': 'schemaUri'},
-    const {'1': 'context_uri', '3': 7, '4': 1, '5': 9, '10': 'contextUri'},
-    const {'1': 'ecosystem_id', '3': 8, '4': 1, '5': 9, '10': 'ecosystemId'},
-    const {'1': 'type', '3': 9, '4': 1, '5': 9, '10': 'type'},
-    const {'1': 'created_by', '3': 10, '4': 1, '5': 9, '10': 'createdBy'},
-    const {'1': 'date_created', '3': 11, '4': 1, '5': 9, '10': 'dateCreated'},
+    {'1': 'schema_uri', '3': 6, '4': 1, '5': 9, '10': 'schemaUri'},
+    {'1': 'context_uri', '3': 7, '4': 1, '5': 9, '10': 'contextUri'},
+    {'1': 'ecosystem_id', '3': 8, '4': 1, '5': 9, '10': 'ecosystemId'},
+    {'1': 'type', '3': 9, '4': 1, '5': 9, '10': 'type'},
+    {'1': 'created_by', '3': 10, '4': 1, '5': 9, '10': 'createdBy'},
+    {'1': 'date_created', '3': 11, '4': 1, '5': 9, '10': 'dateCreated'},
   ],
-  '3': const [TemplateData_FieldsEntry$json],
+  '3': [TemplateData_FieldsEntry$json],
 };
 
 @$core.Deprecated('Use templateDataDescriptor instead')
-const TemplateData_FieldsEntry$json = const {
+const TemplateData_FieldsEntry$json = {
   '1': 'FieldsEntry',
-  '2': const [
-    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
-    const {
+  '2': [
+    {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    {
       '1': 'value',
       '3': 2,
       '4': 1,
@@ -354,7 +348,7 @@ const TemplateData_FieldsEntry$json = const {
       '10': 'value'
     },
   ],
-  '7': const {'7': true},
+  '7': {'7': true},
 };
 
 /// Descriptor for `TemplateData`. Decode as a `google.protobuf.DescriptorProto`.
