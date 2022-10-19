@@ -46,7 +46,7 @@ jobs:
         run: dotnet format ./dotnet/TrinsicSdk.sln --verify-no-changes --no-restore
       - name: Set up Dart
         uses: dart-lang/setup-dart@v1
-      - run: dart format -o none --set-exit-if-changed
+      - run: dart format -o none --set-exit-if-changed ./dart
         working-directory: dart
       - name: Setup python
         uses: actions/setup-python@v4
