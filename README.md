@@ -1,6 +1,8 @@
 # Trinsic SDK
 
-Prod Test Status
+## Status
+#### Production
+
 [![.NET](https://github.com/trinsic-id/sdk/actions/workflows/test-dotnet.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/test-dotnet.yml)
 [![Go](https://github.com/trinsic-id/sdk/actions/workflows/test-golang.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/test-golang.yml)
 [![Java](https://github.com/trinsic-id/sdk/actions/workflows/test-java.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/test-java.yml)
@@ -9,7 +11,7 @@ Prod Test Status
 [![Rust](https://github.com/trinsic-id/sdk/actions/workflows/test-infrastructure.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/test-infrastructure.yml)
 [![TypeScript](https://github.com/trinsic-id/sdk/actions/workflows/test-typescript.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/test-typescript.yml)
 
-Build Status
+#### Development / Build
 
 [![.NET](https://github.com/trinsic-id/sdk/actions/workflows/build-dotnet.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/build-dotnet.yml)
 [![Go](https://github.com/trinsic-id/sdk/actions/workflows/build-golang.yml/badge.svg?branch=main)](https://github.com/trinsic-id/sdk/actions/workflows/build-golang.yml)
@@ -22,7 +24,8 @@ Build Status
 Library is available for use with different languages
 
 [![Gem](https://img.shields.io/gem/v/trinsic-services?color=e9563f)](https://rubygems.org/gems/trinsic-services)
-[![Go)](https://img.shields.io/github/v/tag/trinsic-id/okapi?sort=semver)](https://github.com/trinsic-id/sdk/tree/main/go/)
+[![Go](https://img.shields.io/github/v/tag/trinsic-id/okapi?sort=semver)](https://github.com/trinsic-id/sdk/tree/main/go/)
+[![Java](https://img.shields.io/github/v/release/trinsic-id/sdk?color=green&label=java)](https://github.com/trinsic-id/sdk/)
 [![Nuget](https://img.shields.io/nuget/v/trinsic)](https://www.nuget.org/packages/Trinsic/)
 [![npm](https://img.shields.io/npm/v/@trinsic/trinsic?color=CC3534)](https://www.npmjs.com/package/@trinsic/trinsic)
 [![PyPI](https://img.shields.io/pypi/v/trinsic-sdk?color=%230074b7)](https://pypi.org/project/trinsic-sdk/)
