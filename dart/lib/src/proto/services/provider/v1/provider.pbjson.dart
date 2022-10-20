@@ -294,7 +294,6 @@ const UpdateEcosystemRequest$json = const {
       '10': 'uri',
     },
     const {'1': 'domain', '3': 3, '4': 1, '5': 9, '10': 'domain'},
-    const {'1': 'name', '3': 4, '4': 1, '5': 9, '10': 'name'},
     const {
       '1': 'display',
       '3': 5,
@@ -309,7 +308,7 @@ const UpdateEcosystemRequest$json = const {
 /// Descriptor for `UpdateEcosystemRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List updateEcosystemRequestDescriptor =
     $convert.base64Decode(
-        'ChZVcGRhdGVFY29zeXN0ZW1SZXF1ZXN0EiAKC2Rlc2NyaXB0aW9uGAEgASgJUgtkZXNjcmlwdGlvbhIUCgN1cmkYAiABKAlCAhgBUgN1cmkSFgoGZG9tYWluGAMgASgJUgZkb21haW4SEgoEbmFtZRgEIAEoCVIEbmFtZRJHCgdkaXNwbGF5GAUgASgLMi0uc2VydmljZXMucHJvdmlkZXIudjEuRWNvc3lzdGVtRGlzcGxheVJlcXVlc3RSB2Rpc3BsYXk=');
+        'ChZVcGRhdGVFY29zeXN0ZW1SZXF1ZXN0EiAKC2Rlc2NyaXB0aW9uGAEgASgJUgtkZXNjcmlwdGlvbhIUCgN1cmkYAiABKAlCAhgBUgN1cmkSFgoGZG9tYWluGAMgASgJUgZkb21haW4SRwoHZGlzcGxheRgFIAEoCzItLnNlcnZpY2VzLnByb3ZpZGVyLnYxLkVjb3N5c3RlbURpc3BsYXlSZXF1ZXN0UgdkaXNwbGF5');
 @$core.Deprecated('Use ecosystemDisplayRequestDescriptor instead')
 const EcosystemDisplayRequest$json = const {
   '1': 'EcosystemDisplayRequest',
@@ -553,13 +552,14 @@ const PublicEcosystemInformation$json = const {
       '6': '.services.provider.v1.EcosystemDisplay',
       '10': 'styleDisplay'
     },
+    const {'1': 'description', '3': 5, '4': 1, '5': 9, '10': 'description'},
   ],
 };
 
 /// Descriptor for `PublicEcosystemInformation`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List publicEcosystemInformationDescriptor =
     $convert.base64Decode(
-        'ChpQdWJsaWNFY29zeXN0ZW1JbmZvcm1hdGlvbhISCgRuYW1lGAEgASgJUgRuYW1lEhYKBmRvbWFpbhgCIAEoCVIGZG9tYWluEicKD2RvbWFpbl92ZXJpZmllZBgDIAEoCFIOZG9tYWluVmVyaWZpZWQSSwoNc3R5bGVfZGlzcGxheRgEIAEoCzImLnNlcnZpY2VzLnByb3ZpZGVyLnYxLkVjb3N5c3RlbURpc3BsYXlSDHN0eWxlRGlzcGxheQ==');
+        'ChpQdWJsaWNFY29zeXN0ZW1JbmZvcm1hdGlvbhISCgRuYW1lGAEgASgJUgRuYW1lEhYKBmRvbWFpbhgCIAEoCVIGZG9tYWluEicKD2RvbWFpbl92ZXJpZmllZBgDIAEoCFIOZG9tYWluVmVyaWZpZWQSSwoNc3R5bGVfZGlzcGxheRgEIAEoCzImLnNlcnZpY2VzLnByb3ZpZGVyLnYxLkVjb3N5c3RlbURpc3BsYXlSDHN0eWxlRGlzcGxheRIgCgtkZXNjcmlwdGlvbhgFIAEoCVILZGVzY3JpcHRpb24=');
 @$core.Deprecated('Use generateTokenRequestDescriptor instead')
 const GenerateTokenRequest$json = const {
   '1': 'GenerateTokenRequest',
@@ -654,11 +654,18 @@ const RetrieveDomainVerificationRecordResponse$json = const {
   '1': 'RetrieveDomainVerificationRecordResponse',
   '2': const [
     const {
-      '1': 'verification_txt',
+      '1': 'verification_record_name',
       '3': 1,
       '4': 1,
       '5': 9,
-      '10': 'verificationTxt'
+      '10': 'verificationRecordName'
+    },
+    const {
+      '1': 'verification_record_Value',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '10': 'verificationRecordValue'
     },
   ],
 };
@@ -666,7 +673,7 @@ const RetrieveDomainVerificationRecordResponse$json = const {
 /// Descriptor for `RetrieveDomainVerificationRecordResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List retrieveDomainVerificationRecordResponseDescriptor =
     $convert.base64Decode(
-        'CihSZXRyaWV2ZURvbWFpblZlcmlmaWNhdGlvblJlY29yZFJlc3BvbnNlEikKEHZlcmlmaWNhdGlvbl90eHQYASABKAlSD3ZlcmlmaWNhdGlvblR4dA==');
+        'CihSZXRyaWV2ZURvbWFpblZlcmlmaWNhdGlvblJlY29yZFJlc3BvbnNlEjgKGHZlcmlmaWNhdGlvbl9yZWNvcmRfbmFtZRgBIAEoCVIWdmVyaWZpY2F0aW9uUmVjb3JkTmFtZRI6Chl2ZXJpZmljYXRpb25fcmVjb3JkX1ZhbHVlGAIgASgJUhd2ZXJpZmljYXRpb25SZWNvcmRWYWx1ZQ==');
 @$core
     .Deprecated('Use refreshDomainVerificationStatusRequestDescriptor instead')
 const RefreshDomainVerificationStatusRequest$json = const {
