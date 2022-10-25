@@ -4,37 +4,18 @@
 name: Test Environment
 
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
-      serverEndpoint:
-        description: 'The endpoint of the server to test (ex. example.com)'
-        required: true
-        default: 'staging-internal.trinsic.cloud'
-      serverPort:
-        description: 'The service port of the endpoint (ex. 443)'
-        required: true
-        default: 443
-      useTls:
-        description: 'Indicates if TLS should be used'
-        required: true
-        default: true
+      environment:
+        type: string
+        description: 'the environment to test'
+        required: false
+        default: 'Staging'
 
 jobs:
   test_infra:
-    name: Run .NET SDK Tests
-    runs-on: macos-latest
+    name: Run CLI tests
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: '6.0.x'
-      - run: |
-          dotnet workload install ios
-          dotnet restore
-          dotnet build -c Release -f net6.0
-          dotnet test -c Release -f net6.0 -v n
-        working-directory: ./dotnet/
-        env:
-          TEST_SERVER_ENDPOINT: ${{ github.event.inputs.serverEndpoint }}
-          TEST_SERVER_PORT: ${{ github.event.inputs.serverPort }}
-          TEST_SERVER_USE_TLS: ${{ github.event.inputs.useTls }}
+      - run: ./cli/test/Run-Demo.ps1 -Environment ${{ inputs.environment }} -CommandPath ./cli/target/debug/trinsic
