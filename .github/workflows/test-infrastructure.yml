@@ -30,8 +30,6 @@ jobs:
           brew tap trinsic-id/tap
           brew install trinsic-cli
       - name: Run CLI Demos
-        run: |
-          ./cli/test/Run-Demo.ps1 -Environment ${{ inputs.environment }} -CommandPath ./target/debug/trinsic
-          gradle build
+        run: cli/test/Run-Demo.ps1 -Environment ${{ inputs.environment }} -CommandPath ./target/debug/trinsic
         shell: pwsh
         working-directory: samples/java
