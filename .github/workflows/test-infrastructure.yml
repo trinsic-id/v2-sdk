@@ -3,7 +3,11 @@
 
 name: Test Environment
 
+
 on:
+  pull_request:
+    paths:
+      - ".github/workflows/test-ifnrastructure.yml"
   workflow_call:
     inputs:
       environment:
@@ -13,8 +17,17 @@ on:
         default: 'Staging'
 
 jobs:
-  test_infra:
-    uses: ./.github/workflows/build-rust.yaml
-    with:
-      environment: ${{ inputs.environment }}
-    secrets: inherit
+  test-infra:
+    name: Test Infrastructure ${{ inputs.environment }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          brew tap trinsic-id/tap
+          brew install trinsic-cli
+      - name: Run CLI Demos
+        run: |
+          ./cli/test/Run-Demo.ps1 -Environment ${{ inputs.environment }} -CommandPath ./target/debug/trinsic
+          gradle build
+        shell: pwsh
+        working-directory: samples/java
