@@ -14,8 +14,7 @@ on:
 
 jobs:
   test_infra:
-    name: Run CLI tests
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: ./cli/test/Run-Demo.ps1 -Environment ${{ inputs.environment }} -CommandPath ./cli/target/debug/trinsic
+    uses: ./.github/workflows/build-rust.yaml
+    with:
+      environment: ${{ inputs.environment }}
+    secrets: inherit
