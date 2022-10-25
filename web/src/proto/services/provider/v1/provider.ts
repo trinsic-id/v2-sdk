@@ -225,9 +225,11 @@ export interface UpdateEcosystemRequest {
   uri: string;
   /** New domain URL */
   domain: string;
-  /** New name */
-  name: string;
-  /** Display details */
+  /**
+   * New name
+   * string name = 4;
+   * Display details
+   */
   display: EcosystemDisplayRequest | undefined;
 }
 
@@ -331,6 +333,8 @@ export interface PublicEcosystemInformation {
   domainVerified: boolean;
   /** Style display information */
   styleDisplay: EcosystemDisplay | undefined;
+  /** Description of the ecosystem */
+  description: string;
 }
 
 /** Request to generate an authentication token for the current account */
@@ -376,8 +380,10 @@ export interface RetrieveDomainVerificationRecordRequest {}
 
 /** Response message containing a TXT record content for domain url verification */
 export interface RetrieveDomainVerificationRecordResponse {
-  /** TXT code to use for domain verification */
-  verificationTxt: string;
+  /** TXT record name to use for domain verification */
+  verificationRecordName: string;
+  /** TXT code for domain verification */
+  verificationRecordValue: string;
 }
 
 export interface RefreshDomainVerificationStatusRequest {}
@@ -1377,7 +1383,7 @@ export const CreateEcosystemResponse = {
 };
 
 function createBaseUpdateEcosystemRequest(): UpdateEcosystemRequest {
-  return { description: "", uri: "", domain: "", name: "", display: undefined };
+  return { description: "", uri: "", domain: "", display: undefined };
 }
 
 export const UpdateEcosystemRequest = {
@@ -1393,9 +1399,6 @@ export const UpdateEcosystemRequest = {
     }
     if (message.domain !== "") {
       writer.uint32(26).string(message.domain);
-    }
-    if (message.name !== "") {
-      writer.uint32(34).string(message.name);
     }
     if (message.display !== undefined) {
       EcosystemDisplayRequest.encode(
@@ -1425,9 +1428,6 @@ export const UpdateEcosystemRequest = {
         case 3:
           message.domain = reader.string();
           break;
-        case 4:
-          message.name = reader.string();
-          break;
         case 5:
           message.display = EcosystemDisplayRequest.decode(
             reader,
@@ -1447,7 +1447,6 @@ export const UpdateEcosystemRequest = {
       description: isSet(object.description) ? String(object.description) : "",
       uri: isSet(object.uri) ? String(object.uri) : "",
       domain: isSet(object.domain) ? String(object.domain) : "",
-      name: isSet(object.name) ? String(object.name) : "",
       display: isSet(object.display)
         ? EcosystemDisplayRequest.fromJSON(object.display)
         : undefined,
@@ -1460,7 +1459,6 @@ export const UpdateEcosystemRequest = {
       (obj.description = message.description);
     message.uri !== undefined && (obj.uri = message.uri);
     message.domain !== undefined && (obj.domain = message.domain);
-    message.name !== undefined && (obj.name = message.name);
     message.display !== undefined &&
       (obj.display = message.display
         ? EcosystemDisplayRequest.toJSON(message.display)
@@ -1475,7 +1473,6 @@ export const UpdateEcosystemRequest = {
     message.description = object.description ?? "";
     message.uri = object.uri ?? "";
     message.domain = object.domain ?? "";
-    message.name = object.name ?? "";
     message.display =
       object.display !== undefined && object.display !== null
         ? EcosystemDisplayRequest.fromPartial(object.display)
@@ -2382,6 +2379,7 @@ function createBasePublicEcosystemInformation(): PublicEcosystemInformation {
     domain: "",
     domainVerified: false,
     styleDisplay: undefined,
+    description: "",
   };
 }
 
@@ -2404,6 +2402,9 @@ export const PublicEcosystemInformation = {
         message.styleDisplay,
         writer.uint32(34).fork()
       ).ldelim();
+    }
+    if (message.description !== "") {
+      writer.uint32(42).string(message.description);
     }
     return writer;
   },
@@ -2433,6 +2434,9 @@ export const PublicEcosystemInformation = {
             reader.uint32()
           );
           break;
+        case 5:
+          message.description = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -2451,6 +2455,7 @@ export const PublicEcosystemInformation = {
       styleDisplay: isSet(object.styleDisplay)
         ? EcosystemDisplay.fromJSON(object.styleDisplay)
         : undefined,
+      description: isSet(object.description) ? String(object.description) : "",
     };
   },
 
@@ -2464,6 +2469,8 @@ export const PublicEcosystemInformation = {
       (obj.styleDisplay = message.styleDisplay
         ? EcosystemDisplay.toJSON(message.styleDisplay)
         : undefined);
+    message.description !== undefined &&
+      (obj.description = message.description);
     return obj;
   },
 
@@ -2478,6 +2485,7 @@ export const PublicEcosystemInformation = {
       object.styleDisplay !== undefined && object.styleDisplay !== null
         ? EcosystemDisplay.fromPartial(object.styleDisplay)
         : undefined;
+    message.description = object.description ?? "";
     return message;
   },
 };
@@ -2863,7 +2871,7 @@ export const RetrieveDomainVerificationRecordRequest = {
 };
 
 function createBaseRetrieveDomainVerificationRecordResponse(): RetrieveDomainVerificationRecordResponse {
-  return { verificationTxt: "" };
+  return { verificationRecordName: "", verificationRecordValue: "" };
 }
 
 export const RetrieveDomainVerificationRecordResponse = {
@@ -2871,8 +2879,11 @@ export const RetrieveDomainVerificationRecordResponse = {
     message: RetrieveDomainVerificationRecordResponse,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
-    if (message.verificationTxt !== "") {
-      writer.uint32(10).string(message.verificationTxt);
+    if (message.verificationRecordName !== "") {
+      writer.uint32(10).string(message.verificationRecordName);
+    }
+    if (message.verificationRecordValue !== "") {
+      writer.uint32(18).string(message.verificationRecordValue);
     }
     return writer;
   },
@@ -2888,7 +2899,10 @@ export const RetrieveDomainVerificationRecordResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.verificationTxt = reader.string();
+          message.verificationRecordName = reader.string();
+          break;
+        case 2:
+          message.verificationRecordValue = reader.string();
           break;
         default:
           reader.skipType(tag & 7);
@@ -2900,16 +2914,21 @@ export const RetrieveDomainVerificationRecordResponse = {
 
   fromJSON(object: any): RetrieveDomainVerificationRecordResponse {
     return {
-      verificationTxt: isSet(object.verificationTxt)
-        ? String(object.verificationTxt)
+      verificationRecordName: isSet(object.verificationRecordName)
+        ? String(object.verificationRecordName)
+        : "",
+      verificationRecordValue: isSet(object.verificationRecordValue)
+        ? String(object.verificationRecordValue)
         : "",
     };
   },
 
   toJSON(message: RetrieveDomainVerificationRecordResponse): unknown {
     const obj: any = {};
-    message.verificationTxt !== undefined &&
-      (obj.verificationTxt = message.verificationTxt);
+    message.verificationRecordName !== undefined &&
+      (obj.verificationRecordName = message.verificationRecordName);
+    message.verificationRecordValue !== undefined &&
+      (obj.verificationRecordValue = message.verificationRecordValue);
     return obj;
   },
 
@@ -2917,7 +2936,8 @@ export const RetrieveDomainVerificationRecordResponse = {
     object: DeepPartial<RetrieveDomainVerificationRecordResponse>
   ): RetrieveDomainVerificationRecordResponse {
     const message = createBaseRetrieveDomainVerificationRecordResponse();
-    message.verificationTxt = object.verificationTxt ?? "";
+    message.verificationRecordName = object.verificationRecordName ?? "";
+    message.verificationRecordValue = object.verificationRecordValue ?? "";
     return message;
   },
 };

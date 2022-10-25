@@ -26,7 +26,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
     description_ = "";
     uri_ = "";
     domain_ = "";
-    name_ = "";
   }
 
   @java.lang.Override
@@ -208,61 +207,14 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
     }
   }
 
-  public static final int NAME_FIELD_NUMBER = 4;
-  private volatile java.lang.Object name_;
-  /**
-   *
-   *
-   * <pre>
-   * New name
-   * </pre>
-   *
-   * <code>string name = 4;</code>
-   *
-   * @return The name.
-   */
-  @java.lang.Override
-  public java.lang.String getName() {
-    java.lang.Object ref = name_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      name_ = s;
-      return s;
-    }
-  }
-  /**
-   *
-   *
-   * <pre>
-   * New name
-   * </pre>
-   *
-   * <code>string name = 4;</code>
-   *
-   * @return The bytes for name.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString getNameBytes() {
-    java.lang.Object ref = name_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-      name_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
   public static final int DISPLAY_FIELD_NUMBER = 5;
   private trinsic.services.provider.v1.EcosystemDisplayRequest display_;
   /**
    *
    *
    * <pre>
+   * New name
+   * string name = 4;
    * Display details
    * </pre>
    *
@@ -278,6 +230,8 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
    *
    *
    * <pre>
+   * New name
+   * string name = 4;
    * Display details
    * </pre>
    *
@@ -295,6 +249,8 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
    *
    *
    * <pre>
+   * New name
+   * string name = 4;
    * Display details
    * </pre>
    *
@@ -328,9 +284,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(domain_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, domain_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, name_);
-    }
     if (display_ != null) {
       output.writeMessage(5, getDisplay());
     }
@@ -351,9 +304,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(domain_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, domain_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, name_);
     }
     if (display_ != null) {
       size += com.google.protobuf.CodedOutputStream.computeMessageSize(5, getDisplay());
@@ -377,7 +327,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
     if (!getDescription().equals(other.getDescription())) return false;
     if (!getUri().equals(other.getUri())) return false;
     if (!getDomain().equals(other.getDomain())) return false;
-    if (!getName().equals(other.getName())) return false;
     if (hasDisplay() != other.hasDisplay()) return false;
     if (hasDisplay()) {
       if (!getDisplay().equals(other.getDisplay())) return false;
@@ -399,8 +348,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
     hash = (53 * hash) + getUri().hashCode();
     hash = (37 * hash) + DOMAIN_FIELD_NUMBER;
     hash = (53 * hash) + getDomain().hashCode();
-    hash = (37 * hash) + NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getName().hashCode();
     if (hasDisplay()) {
       hash = (37 * hash) + DISPLAY_FIELD_NUMBER;
       hash = (53 * hash) + getDisplay().hashCode();
@@ -549,8 +496,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
 
       domain_ = "";
 
-      name_ = "";
-
       if (displayBuilder_ == null) {
         display_ = null;
       } else {
@@ -587,7 +532,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
       result.description_ = description_;
       result.uri_ = uri_;
       result.domain_ = domain_;
-      result.name_ = name_;
       if (displayBuilder_ == null) {
         result.display_ = display_;
       } else {
@@ -655,10 +599,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
         domain_ = other.domain_;
         onChanged();
       }
-      if (!other.getName().isEmpty()) {
-        name_ = other.name_;
-        onChanged();
-      }
       if (other.hasDisplay()) {
         mergeDisplay(other.getDisplay());
       }
@@ -706,12 +646,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
 
                 break;
               } // case 26
-            case 34:
-              {
-                name_ = input.readStringRequireUtf8();
-
-                break;
-              } // case 34
             case 42:
               {
                 input.readMessage(getDisplayFieldBuilder().getBuilder(), extensionRegistry);
@@ -1068,112 +1002,6 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
       return this;
     }
 
-    private java.lang.Object name_ = "";
-    /**
-     *
-     *
-     * <pre>
-     * New name
-     * </pre>
-     *
-     * <code>string name = 4;</code>
-     *
-     * @return The name.
-     */
-    public java.lang.String getName() {
-      java.lang.Object ref = name_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        name_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * New name
-     * </pre>
-     *
-     * <code>string name = 4;</code>
-     *
-     * @return The bytes for name.
-     */
-    public com.google.protobuf.ByteString getNameBytes() {
-      java.lang.Object ref = name_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        name_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * New name
-     * </pre>
-     *
-     * <code>string name = 4;</code>
-     *
-     * @param value The name to set.
-     * @return This builder for chaining.
-     */
-    public Builder setName(java.lang.String value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-
-      name_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * New name
-     * </pre>
-     *
-     * <code>string name = 4;</code>
-     *
-     * @return This builder for chaining.
-     */
-    public Builder clearName() {
-
-      name_ = getDefaultInstance().getName();
-      onChanged();
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * New name
-     * </pre>
-     *
-     * <code>string name = 4;</code>
-     *
-     * @param value The bytes for name to set.
-     * @return This builder for chaining.
-     */
-    public Builder setNameBytes(com.google.protobuf.ByteString value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
-      name_ = value;
-      onChanged();
-      return this;
-    }
-
     private trinsic.services.provider.v1.EcosystemDisplayRequest display_;
     private com.google.protobuf.SingleFieldBuilderV3<
             trinsic.services.provider.v1.EcosystemDisplayRequest,
@@ -1184,6 +1012,8 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
+     * New name
+     * string name = 4;
      * Display details
      * </pre>
      *
@@ -1198,6 +1028,8 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
+     * New name
+     * string name = 4;
      * Display details
      * </pre>
      *
@@ -1218,6 +1050,8 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
+     * New name
+     * string name = 4;
      * Display details
      * </pre>
      *
@@ -1240,6 +1074,8 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
+     * New name
+     * string name = 4;
      * Display details
      * </pre>
      *
@@ -1260,6 +1096,8 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
+     * New name
+     * string name = 4;
      * Display details
      * </pre>
      *
@@ -1286,6 +1124,8 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
+     * New name
+     * string name = 4;
      * Display details
      * </pre>
      *
@@ -1306,6 +1146,8 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
+     * New name
+     * string name = 4;
      * Display details
      * </pre>
      *
@@ -1320,6 +1162,8 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
+     * New name
+     * string name = 4;
      * Display details
      * </pre>
      *
@@ -1338,6 +1182,8 @@ public final class UpdateEcosystemRequest extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
+     * New name
+     * string name = 4;
      * Display details
      * </pre>
      *
