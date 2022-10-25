@@ -3,24 +3,30 @@ hide:
   - toc
 ---
 # Introduction
-!!! Note "Get Started in 15 Minutes"
-    Want to get started using digital credentials quickly? Try our [tutorial](walkthroughs/vaccination) to get a conceptual walkthrough of a common use case.
+
     
-## Issue and verify universally-accepted digital credentials.
-Trinsic is the proof of anything platform. We make it easy for people and organizations to prove things about themselves with technology instead of paper documents. Our software is based on Decentralized Identifiers (DIDs) and Verifiable Credentials (VCs), a new digital identity standard. 
+## Build the future of identity
 
-Using Trinsic, organizations and their customers share data between each other in a trustworthy, standardized, and privacy-preserving way without requiring a centralized server or database. 
+Welcome to Trinsic, the leading infrastructure for building identity products based on identity wallets and verifiable credentials. We work with teams building IDtech products across myriad use cases, industries, and geographies.
 
-We make all of this possible by signing, sharing and storing verifiable data within identity wallets owned by individuals. People can easily share them with others to prove things about themselves anywhere.
+Trinsic is a cloud-native, web5-native developer platform, which means your product will inherit features such as user-centricity, interoperability, and decentralization out of the box. We strive to make these concepts easy to understand and use. 
 
-Learn how to issue and verify universally-accepted digital credentials so that anywhere people go online or in-person, they can simply tap their phone, prove who they are, and get what they need.
-## Our Products
-### Trinsic Core 
-Trinsic Core is infrastructure for digital trust. It's our set of APIs for sending verifiable data between digital identity wallets. Core gives people and organizations the ability to easily and securely prove things about themselves with digital credentials.
+We’re glad you’re here. We’ve been developer-focused since our beginnings in 2019, and now power many of the most successful decentralized identity products. As you explore our documentation, we’d love your feedback through our Slack community, the chat bubble on the page, or [email](mailto:support@trinsic.id). And if you want to complain (or say nice things) to the CEO, feel free to email me (Riley at trinsic.id).
 
-With Core, you can transform credentials, licenses, passes, and certificates into a W3C standard format that can be exchanged digitally and verified instantly by anyone called a "verifiable credential".
+!!! Note "Get Started in 15 Minutes"
+    Try our CLI [tutorial](walkthroughs/vaccination) to get familiar with Trinsic through a common use case.
+    
+**Learn about Trinsic**
 
-### Trinsic Ecosystems
-A layer built on top of Core, Trinsic Ecosystems is a product for organizations that want to build an ecosystem of different issuers, holders, and verifiers of credentials. By ecosystem, we mean a network of companies and consumers that need to be able to securely share and instantly verify data. 
+Dive deeper into the technology & standards that power our platform.
+[Learn More](../learn/platform/intro.md){ .md-button .md-button--primary } 
 
-At Trinsic, we call the organizations that bring together these ecosystems of companies and customers "providers", since they are providing digital trust to the ecosystem through Trinsic's infrastructure.
+**Product concepts**
+
+Learn about why digital wallets and verifiable credentials enable amazing identity products.
+[Learn More](../learn/concepts/ecosystems.md){ .md-button } 
+
+**API reference**
+
+Dive in to our API reference to start building right away.
+[Explore API](../reference/index.md){ .md-button }
