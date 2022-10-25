@@ -7,7 +7,7 @@ name: Test Environment
 on:
   pull_request:
     paths:
-      - ".github/workflows/test-ifnrastructure.yml"
+      - ".github/workflows/test-infrastructure.yml"
   workflow_dispatch:
   workflow_call:
     inputs:
