@@ -22,7 +22,11 @@ jobs:
     name: Test Infrastructure ${{ inputs.environment }}
     runs-on: ubuntu-latest
     steps:
+      # Because called actions run in caller repository, we have to be explicit here.
       - uses: actions/checkout@v3
+        with:
+          repository: trinsic-id/sdk
+          path: ./sdk
       - name: Set up Homebrew
         id: set-up-homebrew
         uses: Homebrew/actions/setup-homebrew@master
@@ -30,5 +34,5 @@ jobs:
           brew tap trinsic-id/tap
           brew install trinsic-cli
       - name: Run CLI Demos
-        run: ./cli/test/Run-Demo.ps1 -Environment "${{ inputs.environment }}"
+        run: ./sdk/cli/test/Run-Demo.ps1 -Environment "${{ inputs.environment }}"
         shell: pwsh
