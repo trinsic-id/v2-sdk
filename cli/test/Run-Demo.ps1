@@ -1,9 +1,13 @@
 param
 (
-    [ValidateSet('Development', 'Staging', 'Production')]
+    [ValidateSet('Development', 'Staging', 'Production', '')]
     $Environment = 'Production',
     $CommandPath = $(Get-Command trinsic | ForEach-Object { $_.Source })
 )
+
+if ($Environment -eq "") {
+    $Environment = "Production"
+}
 
 $ErrorActionPreference = "Stop"
 function Stop-OnError {
