@@ -17,6 +17,7 @@ public final class PublicEcosystemInformation extends com.google.protobuf.Genera
   private PublicEcosystemInformation() {
     name_ = "";
     domain_ = "";
+    description_ = "";
   }
 
   @java.lang.Override
@@ -209,6 +210,55 @@ public final class PublicEcosystemInformation extends com.google.protobuf.Genera
     return getStyleDisplay();
   }
 
+  public static final int DESCRIPTION_FIELD_NUMBER = 5;
+  private volatile java.lang.Object description_;
+  /**
+   *
+   *
+   * <pre>
+   * Description of the ecosystem
+   * </pre>
+   *
+   * <code>string description = 5;</code>
+   *
+   * @return The description.
+   */
+  @java.lang.Override
+  public java.lang.String getDescription() {
+    java.lang.Object ref = description_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      description_ = s;
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Description of the ecosystem
+   * </pre>
+   *
+   * <code>string description = 5;</code>
+   *
+   * @return The bytes for description.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getDescriptionBytes() {
+    java.lang.Object ref = description_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      description_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -235,6 +285,9 @@ public final class PublicEcosystemInformation extends com.google.protobuf.Genera
     if (styleDisplay_ != null) {
       output.writeMessage(4, getStyleDisplay());
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, description_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -255,6 +308,9 @@ public final class PublicEcosystemInformation extends com.google.protobuf.Genera
     }
     if (styleDisplay_ != null) {
       size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, getStyleDisplay());
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, description_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -279,6 +335,7 @@ public final class PublicEcosystemInformation extends com.google.protobuf.Genera
     if (hasStyleDisplay()) {
       if (!getStyleDisplay().equals(other.getStyleDisplay())) return false;
     }
+    if (!getDescription().equals(other.getDescription())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -300,6 +357,8 @@ public final class PublicEcosystemInformation extends com.google.protobuf.Genera
       hash = (37 * hash) + STYLE_DISPLAY_FIELD_NUMBER;
       hash = (53 * hash) + getStyleDisplay().hashCode();
     }
+    hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
+    hash = (53 * hash) + getDescription().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -443,6 +502,8 @@ public final class PublicEcosystemInformation extends com.google.protobuf.Genera
         styleDisplay_ = null;
         styleDisplayBuilder_ = null;
       }
+      description_ = "";
+
       return this;
     }
 
@@ -478,6 +539,7 @@ public final class PublicEcosystemInformation extends com.google.protobuf.Genera
       } else {
         result.styleDisplay_ = styleDisplayBuilder_.build();
       }
+      result.description_ = description_;
       onBuilt();
       return result;
     }
@@ -542,6 +604,10 @@ public final class PublicEcosystemInformation extends com.google.protobuf.Genera
       if (other.hasStyleDisplay()) {
         mergeStyleDisplay(other.getStyleDisplay());
       }
+      if (!other.getDescription().isEmpty()) {
+        description_ = other.description_;
+        onChanged();
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -592,6 +658,12 @@ public final class PublicEcosystemInformation extends com.google.protobuf.Genera
 
                 break;
               } // case 34
+            case 42:
+              {
+                description_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 42
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -1057,6 +1129,112 @@ public final class PublicEcosystemInformation extends com.google.protobuf.Genera
         styleDisplay_ = null;
       }
       return styleDisplayBuilder_;
+    }
+
+    private java.lang.Object description_ = "";
+    /**
+     *
+     *
+     * <pre>
+     * Description of the ecosystem
+     * </pre>
+     *
+     * <code>string description = 5;</code>
+     *
+     * @return The description.
+     */
+    public java.lang.String getDescription() {
+      java.lang.Object ref = description_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        description_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Description of the ecosystem
+     * </pre>
+     *
+     * <code>string description = 5;</code>
+     *
+     * @return The bytes for description.
+     */
+    public com.google.protobuf.ByteString getDescriptionBytes() {
+      java.lang.Object ref = description_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        description_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Description of the ecosystem
+     * </pre>
+     *
+     * <code>string description = 5;</code>
+     *
+     * @param value The description to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDescription(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      description_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Description of the ecosystem
+     * </pre>
+     *
+     * <code>string description = 5;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearDescription() {
+
+      description_ = getDefaultInstance().getDescription();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Description of the ecosystem
+     * </pre>
+     *
+     * <code>string description = 5;</code>
+     *
+     * @param value The bytes for description to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDescriptionBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
+      description_ = value;
+      onChanged();
+      return this;
     }
 
     @java.lang.Override

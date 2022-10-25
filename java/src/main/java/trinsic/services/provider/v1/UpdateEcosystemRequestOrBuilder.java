@@ -94,30 +94,7 @@ public interface UpdateEcosystemRequestOrBuilder
    *
    * <pre>
    * New name
-   * </pre>
-   *
-   * <code>string name = 4;</code>
-   *
-   * @return The name.
-   */
-  java.lang.String getName();
-  /**
-   *
-   *
-   * <pre>
-   * New name
-   * </pre>
-   *
-   * <code>string name = 4;</code>
-   *
-   * @return The bytes for name.
-   */
-  com.google.protobuf.ByteString getNameBytes();
-
-  /**
-   *
-   *
-   * <pre>
+   * string name = 4;
    * Display details
    * </pre>
    *
@@ -130,6 +107,8 @@ public interface UpdateEcosystemRequestOrBuilder
    *
    *
    * <pre>
+   * New name
+   * string name = 4;
    * Display details
    * </pre>
    *
@@ -142,6 +121,8 @@ public interface UpdateEcosystemRequestOrBuilder
    *
    *
    * <pre>
+   * New name
+   * string name = 4;
    * Display details
    * </pre>
    *

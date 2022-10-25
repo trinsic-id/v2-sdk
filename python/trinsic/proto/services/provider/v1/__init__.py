@@ -227,11 +227,8 @@ class UpdateEcosystemRequest(betterproto.Message):
     domain: str = betterproto.string_field(3)
     """New domain URL"""
 
-    name: str = betterproto.string_field(4)
-    """New name"""
-
     display: "EcosystemDisplayRequest" = betterproto.message_field(5)
-    """Display details"""
+    """New name string name = 4; Display details"""
 
     def __post_init__(self) -> None:
         super().__post_init__()
@@ -364,6 +361,9 @@ class PublicEcosystemInformation(betterproto.Message):
     style_display: "EcosystemDisplay" = betterproto.message_field(4)
     """Style display information"""
 
+    description: str = betterproto.string_field(5)
+    """Description of the ecosystem"""
+
 
 @dataclass(eq=False, repr=False)
 class GenerateTokenRequest(betterproto.Message):
@@ -430,8 +430,11 @@ class RetrieveDomainVerificationRecordResponse(betterproto.Message):
     verification
     """
 
-    verification_txt: str = betterproto.string_field(1)
-    """TXT code to use for domain verification"""
+    verification_record_name: str = betterproto.string_field(1)
+    """TXT record name to use for domain verification"""
+
+    verification_record_value: str = betterproto.string_field(2)
+    """TXT code for domain verification"""
 
 
 @dataclass(eq=False, repr=False)

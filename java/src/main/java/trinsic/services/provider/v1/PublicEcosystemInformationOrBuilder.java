@@ -105,4 +105,29 @@ public interface PublicEcosystemInformationOrBuilder
    * <code>.services.provider.v1.EcosystemDisplay style_display = 4;</code>
    */
   trinsic.services.provider.v1.EcosystemDisplayOrBuilder getStyleDisplayOrBuilder();
+
+  /**
+   *
+   *
+   * <pre>
+   * Description of the ecosystem
+   * </pre>
+   *
+   * <code>string description = 5;</code>
+   *
+   * @return The description.
+   */
+  java.lang.String getDescription();
+  /**
+   *
+   *
+   * <pre>
+   * Description of the ecosystem
+   * </pre>
+   *
+   * <code>string description = 5;</code>
+   *
+   * @return The bytes for description.
+   */
+  com.google.protobuf.ByteString getDescriptionBytes();
 }
