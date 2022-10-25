@@ -2,12 +2,6 @@ name: Rust
 
 on:
   workflow_call:
-    inputs:
-      environment:
-        type: string
-        description: 'the environment to test'
-        required: false
-        default: 'Staging'
   pull_request:
     paths:
       - "cli/**"
@@ -59,5 +53,5 @@ jobs:
           args: --manifest-path cli/Cargo.toml
       - name: Test CLI directly
         run: |
-          ./test/Run-Demo.ps1 -Environment ${{ inputs.environment }} -CommandPath ./target/debug/trinsic
+          ./test/Run-Demo.ps1 -Environment Staging -CommandPath ./target/debug/trinsic
         shell: pwsh
