@@ -1,12 +1,17 @@
 param
 (
-    [ValidateSet('Development', 'Staging', 'Production', '')]
+    [ValidateSet('Development', 'Staging', 'Production', '', 'dev', 'staging', 'prod')]
     $Environment = 'Production',
     $CommandPath = $(Get-Command trinsic | ForEach-Object { $_.Source })
 )
 
-if ($Environment -eq "") {
-    $Environment = "Production"
+# Coerce to relevant environment names
+switch ($Environment)
+{
+    "dev" {$Environment = "Development"}
+    "staging" {$Environment = "Staging"}
+    "prod" {$Environment = "Production"}
+    "" {$Environment = "Production"}
 }
 
 $ErrorActionPreference = "Stop"

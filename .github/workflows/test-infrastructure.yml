@@ -8,6 +8,7 @@ on:
   pull_request:
     paths:
       - ".github/workflows/test-infrastructure.yml"
+      - "cli/test/Run-Demo.ps1"
   workflow_dispatch:
   workflow_call:
     inputs:
