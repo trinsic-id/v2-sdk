@@ -6,12 +6,12 @@ param
 )
 
 # Coerce to relevant environment names
-$Environment = switch ($Environment)
+switch ($Environment)
 {
-    "dev" {"Development"}
-    "staging" {"Staging"}
-    "prod" {"Production"}
-    "" {"Production"}
+    "dev" {$Environment = "Development"}
+    "staging" {$Environment = "Staging"}
+    "prod" {$Environment = "Production"}
+    "" {$Environment = "Production"}
 }
 
 $ErrorActionPreference = "Stop"
