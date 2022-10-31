@@ -20,13 +20,13 @@ Credit card networks represent only one kind of trust ecosystem. A trust ecosyst
 
 Before diving into the value provided by each participant, it’s helpful to cover how it works at a high level. You may dive deeper into any of these items by clicking into the respective pages. We’ll use the analogy of a payment network to conceptualize the purpose of each component.
 
-[Wallet](../../platform/wallets.md) - A place to securely store verifiable credentials.
+[Wallet](../../platform/wallets/) - A place to securely store verifiable credentials.
 
 [Credential](./credentials.md) - W3C Verifiable Credentials that contain valuable data about a subject. These are signed and issued by an issuer.
 
 [Pass](../credentials/#verifications) - A presentation of a verifiable credential that only includes the information required for use case.
 
-[Underlying Tech](../standards.md) - All of the additional standardized technology Trinsic uses to build trust ecosystems.
+[Underlying Tech](../standards/) - All of the additional standardized technology Trinsic uses to build trust ecosystems.
 
 ## Value of Trust Ecosystems to Participants
 
