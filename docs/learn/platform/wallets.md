@@ -1,21 +1,16 @@
 # Wallets
-## What are wallets? 
-A wallet is a secure place to store credentials. You can create a wallet using the Trinsic CLI or SDK and begin using it to store and share credentials. 
-Wallet storage is scoped to a single person or subject. Each wallet has the capability to store and share credentials and proofs. A provider wallet can also define templates, create an ecosystem governance framework, and invite wallets to their ecosystem. 
 
-Data wallets are meant to help individuals manage their digital credentials and cryptographic keys. 
+In Trinsic’s platform, identity wallets are secure, partitioned data stores scoped to a single holder, capable of storing and sharing credentials and proofs. Endless configurations of wallets exist (custodial, non-custodial, etc.) each with different trade-offs; Trinsic has designed a hybrid-cloud wallet system intended to strike the ideal balance between security and usability: 
+
+- Cloud-based data store
+- Edge-based authentication keys
+
+For a deeper-dive into how hybrid-cloud wallets work, see our security overview. 
 
 ### How to use wallets in your app
-Instead of users creating accounts when they sign up for your app, users can instead connect their wallet. Because many users will be first-time wallet holders, if a user is signing up for your app and they don't have a wallet, we make it easy to create new wallets for your users with the `invite` command. Once you've invited a user to a wallet, they can enter the 2fa code to log in. 
 
-You can give each of your end-users a wallet tied to their email address or phone number. 
+When a user creates an account in your product, you will create a wallet for them. This wallet is tied to the user’s identity using either their email or phone number (for now)—after the user enters the code to prove control of their identifier and claim their wallet, you’ll be off to the races. 
 
-### Wallet Architecture 
-While wallets are hosted on our server, your client application must connect with the wallet (using device stored keys). Wallet communication is peer to peer. 
+The user will interact with and control their wallet through your application. From your application’s perspective, wallet storage should be treated in parallel with the database you use to manage user data. When users obtain credentials from inside or outside your ecosystem, those credentials will be inserted in the wallet. When users want to share credentials with verifiers, your product will need to obtain user consent before the data is shared.
 
-Wallets can be thought of a little like an email inbox. Each wallet can only be accessed by a set of keys stored on devices. 
-
-## Commands
-- Store Item
-- Search
-- Send
+All the participants in an ecosystem, not just holders, will technically have wallets behind them. Therefore any participant can issue, verify, and hold credentials to establish trust.
