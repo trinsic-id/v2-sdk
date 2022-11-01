@@ -12,19 +12,19 @@ Once created, applications and organizations can issue data to the identity wall
 
 Using identity wallets, you can build powerful products that preserve your end-users' privacy without compromising on convenience.
 
-[Wallet Service](../../reference/services/wallet-service/)
+[Wallet Service](../../../reference/services/wallet-service/)
 ## Credentials & Proofs
 Trinsic's wallets are built to represent verifiable data as credentials. This allows any information sent to the identity wallet to be easily verified using interoperable standards. Because we follow a standardized open data model, identity wallets can bridge software platforms, letting individuals use their data wherever they choose. 
 
 To minimize the amount of information that is requested from identity wallets, a credential's attributes can be filtered to generate a proof of the credential with only the data required to fulfill a verifier's request.
 
-[Credential Service](../../reference/services/credential-service/)
+[Credential Service](../../../reference/services/credential-service/)
 ## Templates
 Credential templates let you publish a credential format for others to follow. There are often more than one issuer of the same type of credential, and this allows issuers to reuse the same credential format and share the same attribute types. 
 
 When data models can be reused, more interoperability can be achieved between different systems. This lets data that previously had to be manually entered via form or sent via custom API integration get automatically exchanged and verified without needing human interaction. 
 
-[Template Service](../../reference/services/template-service/)
+[Template Service](../../../reference/services/template-service/)
 
 ## Trust Registries
 A trust registry is a way for a wallet to publish a list of other wallets that it trusts to issue and verifier credentials. 
@@ -33,16 +33,16 @@ This is useful when building trust without a centralized service or database. If
 
 When verifying a credential, a verifier can cross-reference the issuer's identifier within the credential with a trust registry to ensure it was actually issued by an organization that they trust.
 
-[Trust Registry Service](../../reference/services/trust-registry-service/)
+[Trust Registry Service](../../../reference/services/trust-registry-service/)
 
 ## Ecosystems
 When creating a product that uses identity wallets, it is useful to have the tools to onboard participants that want to either issue, store, or verify credentials. Trinsic Ecosystems is a set of tools built so you can invite participants to an ecosystem and configure their wallets for them. This makes it possible to quickly go live with a proof of concept or pilot without requiring your ecosystem participants to do any setup or integrations themselves.
 
-[Provider Service](../../reference/services/provider-service/)
+[Provider Service](../../../reference/services/provider-service/)
 ## Open Standards
 Trinsic's technology is all based on open web standards. Our goal is to promote a future of applications where identity and personal data is independent from applications. To meet this end, we use decentralized identifiers that can be generated and resolved without needing a centralized database. We also follow the data model for verifiable credentials so that data sent by one application can be presented at another without requiring a specific vendor. 
 
-[Learn More](../concepts/standards/)
+[Learn More](../../../concepts/standards/)
 ## Security and Privacy
 As a hosting provider of identity wallets, we've recognized the need for strong security and privacy since before we started building. 
 
