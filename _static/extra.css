@@ -198,3 +198,51 @@ input {
 .proto-method-tabs-marker+.tabbed-set > .tabbed-labels > label {
     font-size: 0.7rem;
 }
+
+.card-container {
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: space-evenly;
+}
+
+.card {
+    position: relative;
+    flex-direction: column; 
+    flex: 1 1 0%; 
+    justify-content: space-between; 
+    margin: 1rem; 
+    padding: 1rem;
+    padding-bottom: 2rem; 
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+}
+
+.card > a {
+    position: absolute;
+    bottom: 1rem;
+    font-weight: bold; 
+    color: inherit; 
+    display: flex; 
+    align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+    .card-container {
+        flex-direction: column;
+    }
+}
+
+.homepage-main-intro-text {
+    display: flex;
+    flex-direction: column; 
+    flex-basis: 70%;
+}
+
+@media (max-width: 712px) {
+    .homepage-main-image {
+        display: none;
+    }
+
+    .homepage-main-intro-text {
+        flex-basis: 100%;
+    }
+}
