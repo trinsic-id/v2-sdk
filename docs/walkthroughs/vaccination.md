@@ -208,7 +208,7 @@ The clinic's account will **issue** the credential, Allison's account will **hol
     Note that accounts are tied to their ecosystem. If you create an account tied to `bob@example.com` in the `example1` ecosystem, it will not be visible in any other ecosystem. The same email address can be used to create accounts in multiple ecosystems.
 
 !!! abstract "Further Reading: Accounts and Wallets"
-    - Learn more about [Wallets](/learn/platform/wallets.md){target=_blank}
+    - Learn more about [Wallets](/learn/platform/wallets/){target=_blank}
     - Browse the [Account API reference](/reference/services/account-service/){target=_blank}
     - Read about [authentication tokens and security](/learn/platform/security/){target=_blank}
 
