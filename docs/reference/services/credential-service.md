@@ -387,7 +387,7 @@ The specified email address must be tied to an existing account in the same ecos
 {{ proto_method_tabs("services.verifiablecredentials.v1.VerifiableCredential.Send") }}
 
 !!! info "Alternative Exchange Protocols"
-    During this beta period, credentials may only be sent to a wallet via email address or with the [InsertItem](/reference/services/wallet-service#insert-item) call.
+    Credentials may only be sent to a wallet via email address or with the [InsertItem](/reference/services/wallet-service#insert-item) call.
 
     
     There are a number of ongoing industry efforts to standardize exchange protocols, such as:

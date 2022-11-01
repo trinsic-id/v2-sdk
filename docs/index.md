@@ -17,7 +17,7 @@ hide:
     </svg>
     <h4>Quickstart</h4>
     <p>Learn about Trinsic's key concepts and run starter code</p>
-    <a href="https://docs-v2.trinsic.id/learn/" rel="noreferrer">
+    <a href="https://docs.trinsic.id/learn/" rel="noreferrer">
       Get started
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="1rem" height="1rem">
         <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -44,9 +44,9 @@ hide:
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="1rem" height="1rem">
       <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
     </svg>
-    <h4>Api reference</h4>
+    <h4>API reference</h4>
     <p>Explore server-side API libraries and integrate with API endpoints</p>
-    <a href="https://docs-v2.trinsic.id/learn/" rel="noreferrer">
+    <a href="https://docs.trinsic.id/reference/" rel="noreferrer">
       View reference
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="1rem" height="1rem">
         <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
