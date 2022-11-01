@@ -6,7 +6,7 @@ hide:
 <div style="display: flex; flex-wrap: wrap;">
   <div style="display: flex; flex-direction: column; width: 50%;">
     <h1 style="font-weight: bold;">Welcome to the Docs</h1>
-    <h3>Here you'll find guides resources and references to build with Trinsic</h3>
+    <h3>Here you'll find guides, resources, and references to build with Trinsic</h3>
   </div>
   <img src="/_static/images/person-welcome.png"/>
 <hr />
