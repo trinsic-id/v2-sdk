@@ -7,7 +7,7 @@ site_url: https://docs.trinsic.id
 nav:
   - Home: index.md
   - Learn: 
-    - Overview: learn/index.md
+    - Introduction: learn/index.md
     - Key Concepts:
       - Ecosystems: learn/concepts/ecosystems.md
       - Wallets: learn/concepts/wallets.md

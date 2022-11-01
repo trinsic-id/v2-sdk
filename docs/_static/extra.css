@@ -231,17 +231,13 @@ input {
     }
 }
 
-.homepage-main-image {
-    flex-basis: 33%;
-}
-
 .homepage-main-intro-text {
     display: flex;
     flex-direction: column; 
-    flex-basis: 60%;
+    flex-basis: 70%;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 712px) {
     .homepage-main-image {
         display: none;
     }
