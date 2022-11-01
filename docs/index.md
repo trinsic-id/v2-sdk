@@ -22,7 +22,7 @@ hide:
     </svg>
     <h4>Quickstart</h4>
     <p>Learn about Trinsic's key concepts and run starter code</p>
-    <a href="https://docs.trinsic.id/learn/" rel="noreferrer">
+    <a href="/learn/" rel="noreferrer">
       Get started
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="1rem" height="1rem">
         <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -51,7 +51,7 @@ hide:
     </svg>
     <h4>API reference</h4>
     <p>Explore server-side API libraries and integrate with API endpoints</p>
-    <a href="https://docs.trinsic.id/reference/" rel="noreferrer">
+    <a href="/reference/" rel="noreferrer">
       View reference
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="1rem" height="1rem">
         <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />

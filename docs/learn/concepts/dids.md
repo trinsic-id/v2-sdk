@@ -6,7 +6,7 @@ Trinsic aims to abstract the complexities of interacting with DIDs. So while thi
 
 Trinsic abstracts away the complexities of working with DIDs and cryptography, allowing you to focus on building a great identity product.
 
-When a [wallet](https://docs-v2.trinsic.id/learn/platform/wallets) is created, Trinsic generates a cryptographic keypair and securely stores it; this keypair is what will be used to sign credentials issued by the wallet. Additionally, Trinsic generates a `did:key` DID, which encodes the public information necessary to verify credentials issued by the wallet; this is the `public_did` field of the wallet object.
+When a [wallet](https://docs-v2.trinsic.id/learn/concepts/wallets) is created, Trinsic generates a cryptographic keypair and securely stores it; this keypair is what will be used to sign credentials issued by the wallet. Additionally, Trinsic generates a `did:key` DID, which encodes the public information necessary to verify credentials issued by the wallet; this is the `public_did` field of the wallet object.
 
 ### Upgrading wallet DIDs
 

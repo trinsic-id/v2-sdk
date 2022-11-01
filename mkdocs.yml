@@ -10,14 +10,14 @@ nav:
     - Overview: learn/index.md
     - Key Concepts:
       - Ecosystems: learn/concepts/ecosystems.md
-      - Wallets: learn/platform/wallets.md
+      - Wallets: learn/concepts/wallets.md
       - Credentials: learn/concepts/credentials.md
       - Verifications: learn/concepts/verifications.md
-      - Templates: learn/platform/templates.md
-      - Identifiers: learn/platform/dids.md
+      - Templates: learn/concepts/templates.md
+      - Identifiers: learn/concepts/dids.md
       - Governance: learn/concepts/trust-registries.md
     - Trinsic Platform:
-      - Standards: learn/concepts/standards.md
+      - Standards: learn/platform/standards.md
       - Security Overview: learn/platform/security.md
       - Webhooks: learn/platform/webhooks.md
     - Tutorials:

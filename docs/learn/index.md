@@ -15,15 +15,15 @@ We’re glad you’re here. We’ve been developer-focused since our beginnings 
 Dive deeper into the technology & standards that power our platform.
 
 
-[Learn More](platform/wallets.md)
+[Learn More](/learn/concepts/ecosystems)
 
 ### **Get Started in 15 Minutes**
 Try our CLI to get familiar with Trinsic through a common use case.
 
-[Try Tutorial](../walkthroughs/vaccination)
+[Try Tutorial](/walkthroughs/vaccination)
 
 ### **API reference**
 
 Dive in to our API reference to start building right away.
 
-[Explore API](../reference/index.md)
+[Explore API](/reference/)
