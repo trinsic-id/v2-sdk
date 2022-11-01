@@ -1,56 +1,38 @@
-# What are Verifiable Credentials
-![Trust Triangle](/_static/images/trust-triangle.png)
+"Verifiable Credentials," or "VCs" are standardized, cryptographically-signed documents that attest information about an entity. They provide an interoperable way to attest and authenticate any kind of data in an IDtech application. 
 
-"Verifiable Credentials", or "VCs" are digital documents that conform to the W3C Verifiable Credential Data Model. VCs provide a standard for digitally issuing, holding, and verifying data about a subject. A verifiable credential is a set of tamper-evident claims and metadata that cryptographically prove who issued it.  [https://www.w3.org/TR/vc-data-model/](https://www.w3.org/TR/vc-data-model/)
+> A verifiable credential is a set of tamper-evident claims and metadata that cryptographically prove who issued it.
+- [W3C VC Data Model](https://www.w3.org/TR/vc-data-model/)
+> 
 
-Verifiable credentials are unique from other kinds of digital documents because they enable you to verify the following things: 
+Trinsic currently uses a verifiable credential format that complies with the W3C Verifiable Credential Data Model, but we’re watching competing standards as they evolve as well (e.g. IETF ACDCs, ISO 13018-5, Anoncreds, etc). For more details on the standards we use, see Standards.
 
-1. The original issuing entity (the source of the data) 
-2. It was issued to the entity presenting it (the subject of the data) 
+Verifiable credentials are unique from other kinds of digital documents because they enable you to verify the following things:
+
+1. The original issuing entity (the source of the data)
+2. It was issued to the entity presenting it (the subject of the data)
 3. It hasn't been tampered with (the veracity of the data)
 4. Whether the issuer revoked the credential as of a particular point in time (the status of the data)
 
-[trust triangle](https://files.readme.io/d06a672-basicSSImodel2.png)
-## Components of a Credential
+## Components of a credential
 
 To break down the components of a credential, we'll use a digital driver's license as an example.
 
-### **Issuer DID**
+### Attributes, or Data
 
-As you can see from the diagram above, a verifier will only accept a credential if they trust its source. For example, in the United States a TSA agent will only let you on an airplane if you present a valid driver's license (or other gov ID); they do this because they trust the DMV or other agency that issued it. In order to validate where a credential came from, verifiers use the **issuer's DID**.
+The most important part of a credential is the data inside it. 
 
-Each new issuer is assigned an issuer DID. The issuer DID acts as a *public-facing address* or *public key*. In self-sovereign identity, these DIDs are usually written to a public blockchain, but other locations are possible, too. Each issuer DID has an associated private key which is used to cryptographically "sign" each issued credential. In fact, each *attribute* inside the credential is signed in this manner, allowing the holder of the credential to share only a subset of the attributes when desired. For example, someone could share their name and age from their driver's license without sharing the driver's license number, address, and hair color. Using the issuer DID and straightforward public-private key cryptography, anyone can verify the attributes in the credential were attested to by the issuer. 
+In its simplest form, attributes are key-value pairs in a JSON object. These attributes are populated at issuance on a per-credential basis, based on a template. 
 
-### **Schema**
+Verifiers use attributes to request only the data from credentials that they need—for example, an age-checking verifier may only request `date_of_birth` from a driver’s license, instead of the entire credential.
 
-Each credential needs a template so the data can be shared and interpreted correctly. That template is called a Schema.
+### Templates
 
-Schemas are the general structure of the credential. In our example, they tell us what information must be included on the driver's license in order for it to be valid, like Full name, Address, Eye color, etc. 
+Credentials are issued from templates, an abstraction provided by Trinsic that makes getting started and ongoing management easy, and enables tighter integration with other features in the Trinsic platform such as governance. 
 
-In short, they are the attributes that you want to include in this credential.
+When you understand how templates work in Trinsic, you will get the benefits of semantic interoperability and governance without needing to understand the nuts and bolts of schemas, credential definitions, JSON-LD contexts, credential restrictions, and more. See our page on templates to learn more.
 
-#### Example:
-```json
-{
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "description": "Email",
-    "type": "object",
-    "properties": {
-        "emailAddress": {
-            "type": "string",
-            "format": "email"
-            }
-        },
-    "required": ["emailAddress"],
-    "additionalProperties": false
-}
-```
+### Issuer ID
 
-Schemas are nonproprietary; any issuer can view/use the schemas written by any other issuer.
+Each verifiable credential is cryptographically signed by an issuer. The signature, along with the issuer’s identifier, strongly identify the issuer, ensuring anyone can verify the source of the data in the credential. 
 
-We abstract schema creation away into the same action as creation of a credential template. Keep reading to read how to create a schema and credential template. 
-
-## Verifications
-Passes are documents generated from credentials that contain only the information required to be verified. They can be generated in advance or in real-time. Passes minimize the information about you that is shared with third parties.
-
-Credentials are signed using BLS keys. These create from the credential fields. 
+In order to be trustworthy, the issuer’s identifier needs to be resolvable. We use decentralized identifiers (DIDs), a W3C standard, for this purpose. Trinsic offers providers a number of choices of DID methods for the issuers in their ecosystems. To learn more, read more about the standards we use and Decentralized Identifiers.

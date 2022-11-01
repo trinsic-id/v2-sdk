@@ -1,10 +1,14 @@
-<div style="display: flex; flex-wrap: wrap; justify-content: center;">
-  <div style="display: flex; flex-direction: column; justify-content: center; width: 50%;">
+---
+hide:
+  - navigation
+  - toc
+---
+<div style="display: flex; flex-wrap: wrap;">
+  <div style="display: flex; flex-direction: column; width: 50%;">
     <h1 style="font-weight: bold;">Welcome to the Docs</h1>
     <h3>Here you'll find guides resources and references to build with Trinsic</h3>
   </div>
-  <img src="/_static/images/person-welcome.png" />
-</div>
+  <img src="/_static/images/person-welcome.png"/>
 <hr />
 <div class="card-container">
   <div class="card">
@@ -15,6 +19,22 @@
     <p>Learn about Trinsic's key concepts and run starter code</p>
     <a href="https://docs-v2.trinsic.id/learn/" rel="noreferrer">
       Get started
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="1rem" height="1rem">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg>
+    </a>
+  </div>
+  <div class="card">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="1rem" height="1rem">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
+    </svg>
+    <h4>Dashboard</h4>
+    <ul style="margin: 0 0 1rem 0;">
+      <li>Issue and verify credentials</li>
+      <li>Manage your ecosystem</li>
+    </ul>
+    <a href="https://dashboard.trinsic.cloud/" rel="noreferrer">
+      Let's Go
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="1rem" height="1rem">
         <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
       </svg>
@@ -33,20 +53,5 @@
       </svg>
     </a>
   </div>
-  <div class="card">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="1rem" height="1rem">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
-    </svg>
-    <h4>Dashboard</h4>
-    <ul style="margin: 0 0 1rem 0;">
-      <li>Issue and verify credentials</li>
-      <li>Manage your ecosystem</li>
-    </ul>
-    <a href="https://dashboard.trinsic.cloud/" rel="noreferrer">
-      Let's GO
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="1rem" height="1rem">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-      </svg>
-    </a>
-  </div>
 </div>
+

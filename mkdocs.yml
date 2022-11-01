@@ -5,39 +5,25 @@ edit_uri: edit/main/docs/
 repo_name: trinsic-id/sdk
 site_url: https://docs-v2.trinsic.id
 nav:
-  - Home:
-    - Introduction: index.md
-    - Join the Beta: early-adopter.md
+  - Home: index.md
   - Learn: 
     - Overview: learn/index.md
-    - Migration Guidelines: learn/migrate.md
     - Key Concepts:
-      - Identity Ecosystems: learn/concepts/ecosystems.md
-      - Credentials: learn/concepts/credentials.md
-      - Trust Registries: learn/concepts/trust-registries.md
-      - Standards: learn/concepts/standards.md
-    - Trinsic Platform:
-      - What is Trinsic?: learn/platform/intro.md
-      - Security Overview: learn/platform/security.md
-      - Templates: learn/platform/templates.md
-      - DIDs: learn/platform/dids.md
+      - Ecosystems: learn/concepts/ecosystems.md
       - Wallets: learn/platform/wallets.md
+      - Credentials: learn/concepts/credentials.md
+      - Verifications: learn/concepts/verifications.md
+      - Templates: learn/platform/templates.md
+      - Identifiers: learn/platform/dids.md
+      - Governance: learn/concepts/trust-registries.md
+    - Trinsic Platform:
+      - Standards: learn/concepts/standards.md
+      - Security Overview: learn/platform/security.md
       - Webhooks: learn/platform/webhooks.md
     - Tutorials:
       - Build a Vaccine Card: walkthroughs/vaccination.md
-  - Reference:
-    - Overview: reference/index.md
-    - SDK Services:
-      - Account Service: reference/services/account-service.md
-      - Credential Service: reference/services/credential-service.md
-      - Provider Service: reference/services/provider-service.md
-      - Template Service: reference/services/template-service.md
-      - Trust Registry Service: reference/services/trust-registry-service.md
-      - Wallet Service: reference/services/wallet-service.md
-      - Protocol Buffers Reference: reference/proto/index.md
-    - Other Services:
-      - OpenID Credential Exchange: reference/other/openid.md
-    - Events Reference: reference/events.md
+    - Resources:
+      - Migration Guidelines: learn/migrate.md
   - Tools & SDKs:
     - Trinsic CLI: cli/index.md
     - Client-Side SDKs:
@@ -51,6 +37,19 @@ nav:
       - Ruby: ruby/index.md
       - Go: go/index.md
       - Java: java/index.md
+  - Reference:
+    - Overview: reference/index.md
+    - SDK Services:
+      - Account Service: reference/services/account-service.md
+      - Credential Service: reference/services/credential-service.md
+      - Provider Service: reference/services/provider-service.md
+      - Template Service: reference/services/template-service.md
+      - Trust Registry Service: reference/services/trust-registry-service.md
+      - Wallet Service: reference/services/wallet-service.md
+      - Protocol Buffers Reference: reference/proto/index.md
+    - Other Services:
+      - OpenID Credential Exchange: reference/other/openid.md
+    - Events Reference: reference/events.md
   - Resources:
     - Roadmap: roadmap.md
     - Ask a Question: support.md
@@ -122,6 +121,7 @@ extra_css:
 
 extra:
   generator: false
+  # homepage: learn # change or remove this when updating with new landing page
 
 plugins:
   - search
