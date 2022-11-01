@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['polygonguru@gmail.com']
 
   spec.summary       = 'Trinsic Services Ruby SDK'
-  spec.description   = 'Ruby language wrapper for the Trinsic services. Documentation site is here: https://docs-v2.trinsic.id/'
+  spec.description   = 'Ruby language wrapper for the Trinsic services. Documentation site is here: https://docs.trinsic.id/'
   spec.homepage      = 'https://github.com/trinsic-id/sdk'
   spec.license       = 'MIT'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.6.0')

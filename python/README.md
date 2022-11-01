@@ -13,4 +13,4 @@ the encoded `AccountProfile`. For more information, see the documentation link b
 
 ## Documentation
 
-See [documentation here](https://docs-v2.trinsic.id/)
+See [documentation here](https://docs.trinsic.id/)

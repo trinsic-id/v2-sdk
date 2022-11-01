@@ -41,22 +41,22 @@ Learn how to issue and verify universally-accepted digital credentials so that a
 
 ## Getting Started
 
-Check our our [documentation](https://docs-v2.trinsic.id) to learn about Trinsic, work through a basic implementation, plan a full integration, and learn about our tools you can use.
+Check our our [documentation](https://docs.trinsic.id) to learn about Trinsic, work through a basic implementation, plan a full integration, and learn about our tools you can use.
 
 ## Example Implementations
 
 Check out our [dedicated repository with various examples](https://github.com/trinsic-id/sdk-examples/) and use cases for different platforms and languages.
 
 ## Available SDKs
-- [.NET](https://docs-v2.trinsic.id/dotnet)
-- [Java / Android](https://docs-v2.trinsic.id/java)
-- [Swift](https://docs-v2.trinsic.id/python)
-- [TypeScript / Node](https://docs-v2.trinsic.id/node)
-- [TypeScript / Browser](https://docs-v2.trinsic.id/node)
-- [Python](https://docs-v2.trinsic.id/python)
-- [Go](https://docs-v2.trinsic.id/go)
-- [Ruby](https://docs-v2.trinsic.id/ruby)
-- [Command Line](https://docs-v2.trinsic.id/cli)
+- [.NET](https://docs.trinsic.id/dotnet)
+- [Java / Android](https://docs.trinsic.id/java)
+- [Swift](https://docs.trinsic.id/python)
+- [TypeScript / Node](https://docs.trinsic.id/node)
+- [TypeScript / Browser](https://docs.trinsic.id/node)
+- [Python](https://docs.trinsic.id/python)
+- [Go](https://docs.trinsic.id/go)
+- [Ruby](https://docs.trinsic.id/ruby)
+- [Command Line](https://docs.trinsic.id/cli)
 
 ## Updating Proto-Generated Files
 

@@ -18,7 +18,7 @@ import { AccountService } from "@trinsic/sdk/browser";
 
 ## Documentation
 
-See [documentation here](https://docs-v2.trinsic.id/)
+See [documentation here](https://docs.trinsic.id/)
 
 ## Maintainers
 
