@@ -1903,7 +1903,7 @@
 <p>Webhooks enable providers to receive updates whenever an event occurs within the ecosystem they manage.</p>
 <hr />
 <h2 id="configuring-webhooks">Configuring Webhooks<a class="headerlink" href="#configuring-webhooks" title="Permanent link">&para;</a></h2>
-<p>Webhooks may be added to an ecosystem using the <a href="/reference/services/provider-service.md#add-webhook">AddWebhook</a> method; either with the <a href="/cli/index.md">CLI</a> or any of our SDKs. In the future, webhooks will also be configurable through a web dashboard.</p>
+<p>Webhooks may be added to an ecosystem using the <a href="/reference/services/provider-service/#add-webhook">AddWebhook</a> method; either with the <a href="/cli/">CLI</a> or any of our SDKs. In the future, webhooks will also be configurable through a web dashboard.</p>
 <p>The value chosen for <code>secret</code> should be a UTF-8 string which is never published anywhere; it is used to <a href="#verification">verify incoming payloads</a>.</p>
 <p>The <code>destination_url</code> of a webhook <strong>must</strong> be an HTTPS URL accessible over the internet.</p>
 <div class="admonition info">
@@ -1974,7 +1974,7 @@ if(trinsic_hash != computed_hash) {
 <hr />
 <h2 id="enabling-wallet-events">Enabling Wallet Events<a class="headerlink" href="#enabling-wallet-events" title="Permanent link">&para;</a></h2>
 <p>Events which occur on a <a href="/learn/platform/wallets">wallet</a> will not be sent to your webhooks unless the wallet holder has opted in.</p>
-<p>To receive webhooks for wallet events, the <a href="/reference/services/account-service.md#authorize-webhook">AuthorizeWebhook</a> method must be called for each wallet which is opting-in to propagate wallet events to the ecosystem provider.</p>
+<p>To receive webhooks for wallet events, the <a href="/reference/services/account-service/#authorize-webhook">AuthorizeWebhook</a> method must be called for each wallet which is opting-in to propagate wallet events to the ecosystem provider.</p>
 <p>This call must be performed using the wallet's authentication token.</p>
 <hr />
 <h2 id="event-types">Event Types<a class="headerlink" href="#event-types" title="Permanent link">&para;</a></h2>

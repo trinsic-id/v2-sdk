@@ -1900,26 +1900,26 @@ You can use Trinsic to give your end-users identity wallets and then share, stor
 <p>You can use Trinsic's platform to invite end-users to create a cloud-hosted identity wallet that can be accessed on any device using multi-factor passwordless authentication. </p>
 <p>Once created, applications and organizations can issue data to the identity wallet. Other applications can request to verify information from the wallet. If the end-user accepts the request, a proof of the requested information will be created and sent to the requester. </p>
 <p>Using identity wallets, you can build powerful products that preserve your end-users' privacy without compromising on convenience.</p>
-<p><a href="../reference/services/wallet-service.md">Wallet Service</a></p>
+<p><a href="../../../reference/services/wallet-service/">Wallet Service</a></p>
 <h2 id="credentials-proofs">Credentials &amp; Proofs<a class="headerlink" href="#credentials-proofs" title="Permanent link">&para;</a></h2>
 <p>Trinsic's wallets are built to represent verifiable data as credentials. This allows any information sent to the identity wallet to be easily verified using interoperable standards. Because we follow a standardized open data model, identity wallets can bridge software platforms, letting individuals use their data wherever they choose. </p>
 <p>To minimize the amount of information that is requested from identity wallets, a credential's attributes can be filtered to generate a proof of the credential with only the data required to fulfill a verifier's request.</p>
-<p><a href="../reference/services/credential-service.md">Credential Service</a></p>
+<p><a href="../../../reference/services/credential-service/">Credential Service</a></p>
 <h2 id="templates">Templates<a class="headerlink" href="#templates" title="Permanent link">&para;</a></h2>
 <p>Credential templates let you publish a credential format for others to follow. There are often more than one issuer of the same type of credential, and this allows issuers to reuse the same credential format and share the same attribute types. </p>
 <p>When data models can be reused, more interoperability can be achieved between different systems. This lets data that previously had to be manually entered via form or sent via custom API integration get automatically exchanged and verified without needing human interaction. </p>
-<p><a href="../reference/services/template-service.md">Template Service</a></p>
+<p><a href="../../../reference/services/template-service/">Template Service</a></p>
 <h2 id="trust-registries">Trust Registries<a class="headerlink" href="#trust-registries" title="Permanent link">&para;</a></h2>
 <p>A trust registry is a way for a wallet to publish a list of other wallets that it trusts to issue and verifier credentials. </p>
 <p>This is useful when building trust without a centralized service or database. If you onboard wallets, it is likely that the wallet holders already have a connection with you. You can publish a list of issuers and verifiers that you've also vetted and onboarded and the wallet holders can reference this list before receiving or sharing their information with another wallet.</p>
 <p>When verifying a credential, a verifier can cross-reference the issuer's identifier within the credential with a trust registry to ensure it was actually issued by an organization that they trust.</p>
-<p><a href="../reference/services/trust-registry-service.md">Trust Registry Service</a></p>
+<p><a href="../../../reference/services/trust-registry-service/">Trust Registry Service</a></p>
 <h2 id="ecosystems">Ecosystems<a class="headerlink" href="#ecosystems" title="Permanent link">&para;</a></h2>
 <p>When creating a product that uses identity wallets, it is useful to have the tools to onboard participants that want to either issue, store, or verify credentials. Trinsic Ecosystems is a set of tools built so you can invite participants to an ecosystem and configure their wallets for them. This makes it possible to quickly go live with a proof of concept or pilot without requiring your ecosystem participants to do any setup or integrations themselves.</p>
-<p><a href="../reference/services/provider-service.md">Provider Service</a></p>
+<p><a href="../../../reference/services/provider-service/">Provider Service</a></p>
 <h2 id="open-standards">Open Standards<a class="headerlink" href="#open-standards" title="Permanent link">&para;</a></h2>
 <p>Trinsic's technology is all based on open web standards. Our goal is to promote a future of applications where identity and personal data is independent from applications. To meet this end, we use decentralized identifiers that can be generated and resolved without needing a centralized database. We also follow the data model for verifiable credentials so that data sent by one application can be presented at another without requiring a specific vendor. </p>
-<p><a href="./standards.md">Learn More</a></p>
+<p><a href="../../../learn/concepts/standards/">Learn More</a></p>
 <h2 id="security-and-privacy">Security and Privacy<a class="headerlink" href="#security-and-privacy" title="Permanent link">&para;</a></h2>
 <p>As a hosting provider of identity wallets, we've recognized the need for strong security and privacy since before we started building. </p>
 <p>Our identity wallets are secured using zero knowledge authentication. No private keys are stored or processed on our servers. They are all generated locally by our SDKs. We do this using a lightweight zero-knowledge proof protocol. Even if an adversary were to intercept a payload, they would not be able to reuse the token to gain additional access to our system.</p>
