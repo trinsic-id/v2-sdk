@@ -3,7 +3,7 @@ site_dir: docs-site
 repo_url: "https://github.com/trinsic-id/sdk"
 edit_uri: edit/main/docs/
 repo_name: trinsic-id/sdk
-site_url: https://docs-v2.trinsic.id
+site_url: https://docs.trinsic.id
 nav:
   - Home:
     - Introduction: index.md

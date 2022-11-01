@@ -1,4 +1,4 @@
-Dart bindings for Trinsic SDK https://docs-v2.trinsic.id/
+Dart bindings for Trinsic SDK https://docs.trinsic.id/
 
 
 ## Usage
@@ -11,4 +11,4 @@ var trinsic = TrinsicService(trinsicConfig(), null);
 
 ## Additional information
 
-General documentation here: https://docs-v2.trinsic.id/
+General documentation here: https://docs.trinsic.id/
