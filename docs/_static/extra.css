@@ -230,3 +230,23 @@ input {
         flex-direction: column;
     }
 }
+
+.homepage-main-image {
+    flex-basis: 33%;
+}
+
+.homepage-main-intro-text {
+    display: flex;
+    flex-direction: column; 
+    flex-basis: 60%;
+}
+
+@media (max-width: 600px) {
+    .homepage-main-image {
+        display: none;
+    }
+
+    .homepage-main-intro-text {
+        flex-basis: 100%;
+    }
+}

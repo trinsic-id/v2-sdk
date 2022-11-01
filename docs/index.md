@@ -4,11 +4,16 @@ hide:
   - toc
 ---
 <div style="display: flex; flex-wrap: wrap;">
-  <div style="display: flex; flex-direction: column; width: 50%;">
-    <h1 style="font-weight: bold;">Welcome to the Docs</h1>
+<div style="display: flex; flex-direction: row; width: 100%; justify-content: space-between;">
+  <div class="homepage-main-intro-text">
+    <h1 style="font-weight: bold;">Welcome to the Trinsic Docs</h1>
     <h3>Here you'll find guides, resources, and references to build with Trinsic</h3>
   </div>
-  <img src="/_static/images/person-welcome.png"/>
+  <div class="homepage-main-image" style="flex-basis: 33%">
+    <img src="/_static/images/person-welcome.png"/>
+  </div>
+</div>
+</div>
 <hr />
 <div class="card-container">
   <div class="card">
