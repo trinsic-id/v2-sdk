@@ -28,7 +28,6 @@ input {
 }
 
 .md-header__button.md-logo {
-    margin-bottom: .4rem;
 }
 
 .md-header__button.md-logo img,
@@ -36,7 +35,7 @@ input {
 .md-nav__title .md-nav__button.md-logo img,
 .md-nav__title .md-nav__button.md-logo svg {
     width: auto;
-    height: 1.8rem;
+    height: 1.6rem !important;
 }
 
 
