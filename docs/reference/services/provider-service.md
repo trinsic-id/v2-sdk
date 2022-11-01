@@ -282,7 +282,7 @@ Deletes a webhook from an ecosystem.
 !!! info "Ledger Interactions"
     Depending on the DID Method chosen, you may be responsible for ledger write fees; additionally, there are some logistical concerns to be aware of.
 
-    [Click here](/learn/platform/dids#upgrading-wallet-dids) to learn more. 
+    [Click here](/learn/concepts/dids#upgrading-wallet-dids) to learn more. 
 
 Upgrades a wallet's DID from the default `did:key` to another DID Method. This endpoint may only be called by an ecosystem provider.
 

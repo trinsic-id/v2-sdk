@@ -67,7 +67,7 @@ Your verification code may look like the following pseudocode:
 
 ## Enabling Wallet Events
 
-Events which occur on a [wallet](/learn/platform/wallets) will not be sent to your webhooks unless the wallet holder has opted in.
+Events which occur on a [wallet](/learn/concepts/wallets) will not be sent to your webhooks unless the wallet holder has opted in.
 
 To receive webhooks for wallet events, the [AuthorizeWebhook](/reference/services/account-service/#authorize-webhook) method must be called for each wallet which is opting-in to propagate wallet events to the ecosystem provider.
 

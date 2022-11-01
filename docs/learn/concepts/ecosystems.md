@@ -1,63 +1,63 @@
 # Ecosystems
-Exchanging credentials often requires many different participants to all communicate and collaborate. Aligning standards and incentives is challenging. 
+Successful IDtech products can be broken down into two parts:
 
-We've made it simple to create an ecosystem of participants to all exchange credentials. 
+- An identity wallet: a representation of the user’s identity
+- An ecosystem: the set of entities that can interact with the user’s identity
 
-## Potential Scenarios
+We’ve made it simple to create both wallets and ecosystems. In this section, we’ll break down the concept of an ecosystem and how Trinsic can help your ecosystem thrive. 
 
-Industry groups, enterprises, and startups who are deploying this technology to multi-party ecosystems. Our focus on building for interoperability, hyper-scalability, and ease of use means you can get to market faster with a better product with Trinsic than any other way. 
+### Example ecosystems from the real world
 
-Trust ecosystems are networks of participants that can authenticate to and share data with one another. Trust ecosystems exist all around us, but most are analog and disaggregated. The first trust ecosystems to go digital were payments networks. Visa, MasterCard, etc. introduced a standard mechanism to allow consumers to make purchases with any merchant using credit from any bank. Visa created an enduring business while simultaneously unlocking value for all participants involved.
+Trust ecosystems exist all around us, but most are analog and disaggregated and therefore filled with inefficiencies and fraud. 
 
-Credit card networks represent only one kind of trust ecosystem. A trust ecosystem at a minimum has the following 4 roles.
+**Example 1: Payments**
 
-- Provider - provides the tools and rules to the rest of the participants to ensure a healthy ecosystem, generally through a product experience that is sold to the other participants
-- Issuer - is the source of data that is shared throughout an ecosystem
-- Verifier - consumes data in an ecosystem
-- Holder - holds data, and is generally the subject of the data, in an ecosystem
+The first trust ecosystems to go digital were payments networks. Visa, MasterCard, etc. introduced a standard mechanism to allow consumers to make purchases with any merchant using credit from any bank. Visa created an enduring business while simultaneously unlocking value for all participants involved.
 
-## Anatomy of a Trust Ecosystem
+- Wallet: users carry credit cards in their physical, leather wallets and in digital wallets held on their smart devices
+- Ecosystem: the banks issuing cards and the merchants accepting cards comprise this ecosystem
 
-Before diving into the value provided by each participant, it’s helpful to cover how it works at a high level. You may dive deeper into any of these items by clicking into the respective pages. We’ll use the analogy of a payment network to conceptualize the purpose of each component.
+**Example 2: Health pass**
 
-[Wallet](../../platform/wallets/) - A place to securely store verifiable credentials.
+As Covid-19 swept over the world, jurisdictions of various kinds sought to curb the spread of the virus by instituting restrictions on travel. Health passes of various kinds were instituted across the world, enabling people who could prove recent test results or vaccine status to travel again.
 
-[Credential](./credentials.md) - W3C Verifiable Credentials that contain valuable data about a subject. These are signed and issued by an issuer.
+- Wallet: users obtained paper vaccine cards or digital health passes on their smart devices
+- Ecosystem: the airlines, community centers, venues, cruise lines, customs departments, and other places where health passes were accepted comprise this ecosystem
 
-[Pass](../credentials/#verifications) - A presentation of a verifiable credential that only includes the information required for use case.
+### Anatomy of a trust ecosystem
 
-[Underlying Tech](../standards/) - All of the additional standardized technology Trinsic uses to build trust ecosystems.
+As you dive deeper into how ecosystems work, it’s helpful to understand wallets, credentials, templates, and governance. We recommend referring back and forth between these pages to get a full picture. 
 
-## Value of Trust Ecosystems to Participants
+**Provider**
 
-The first step to successfully building a trust ecosystem that can scale is to identify the value for each of the participants. Here we will elaborate on the value derived by each actor in an ecosystem and how Trinsic’s platform is optimized to help deliver it.
+At the helm of a trust ecosystem sits a *provider*. Providers develop IDtech products that solve problems for the other participants of an ecosystem. They develop the software, adoption tools (such as templates), business models & incentives, and the governance that enables an ecosystem to be successful. 
 
-### Providers
+> Before Stripe, every growing internet platform had a payments team. Today, every growing internet platform has an Identity team. Identity verification is a core piece of economic infrastructure for online businesses.
+- *Stripe*
+> 
 
-Providers typically already have, or are building, a product or platform to sell to the issuers and verifiers with the goal of creating a sustainable business. 
+Trinsic’s product is built from the ground-up for providers. Successful providers usually target a niche or industry with the aim of creating a sustainable, growing business.
 
-Visa, for example, isn’t a currency, a bank, or a merchant. They sell the rails for transaction settlement to banks and merchants to enable the seamless transactions we all enjoy. By taking a small interchange fee, they capture value alongside the banks and merchants and have built a sustainable business.
+**Issuer**
 
-Trinsic is the only company to offer a product tailored specifically for providers. That means instead of patching together various open source components meant for issuers or verifiers, Trinsic offers a product built from the ground-up to accommodate the unique needs of providers. Ultimately, that means providers using Trinsic get to market faster with better products.
+Issuers are the source of data in an ecosystem. They transform their raw data into verifiable credentials that are usable more broadly via the user’s wallet. Common examples of issuers include universities issuing diplomas, insurance companies issuing insurance cards, and libraries issuing library cards—but with digitally-native identity, so many more possibilities open up. 
 
-### Issuers
+> Every company in the world already has valuable data and functionality housed within its systems. Capitalizing on this value, however, means liberating it from silos and making it interoperable and reusable in different contexts
+- *Google’s “State of API Economy 2021” report*
+> 
 
-Issuers realize value when they extend or augment their existing business operations. By issuing the data they already have in verifiable credential form, they often can increase revenue, reduce verification costs, and improve brand presence. 
+The value for issuers often stems from extending their existing business into a new, digital format, which can either reduce costs or increase revenue. 
 
-When credit cards were in their infancy, banks began issuing cards because it allowed them to continue their existing business (giving credit) in a new way. Likewise, the issuers that get the most value from verifiable credentials are ones who already have data about people, and simply need to give it to them in a new way (e.g. medical labs who already give paper documents can now give digital form).
+Proxy issuers can help bootstrap an ecosystem—this is when a provider uses 3rd-party APIs to verify user attributes to seed their wallet (e.g. using Twilio to verify a phone number vs getting a verifiable credential issued by AT&T).
 
-Trinsic’s platform is optimized to both reduce onboarding costs and add help issuers scale without increasing their costs
+**Holder or Subject**
 
-- Before credit cards banks could offer various consumer loans
+Holder is the umbrella term for the person or organization who controls the identity in question. Whenever possible, you should build your product to put the holder in control of their own identity. The holder should always be able to give consent before their data is shared. 
 
-### Holders
-Holders acquire the most convenient way to prove something about themselves digitally, both in-person and online
+Usually, the “subject” of the identity and the holder are the same. When Alice controls an identity wallet filled with Alice’s credentials, the holder and subject are the same. However, if Alice is a 2-year-old child, it’s likely that Alice’s father, Bob, will control her wallet. In that case, Bob is the holder and Alice is the subject. The holder and subject can also differ for business wallets, refugee/homeless/incarcerated person wallets, or for inanimate objects. 
 
-- Before credit cards, consumers needed to pay with paper. Paying with credit meant bespoke processes with each individual retailer (e.g. opening a tab at a bar, creating a Macy’s account, etc). Likewise today our digital identities are all siloed and separate, resulting in a myriad of problems for consumers.
+**Verifier** 
 
-### Verifiers
-Verifiers get instant, trusted authentication and verification without needing to maintain their own infrastructure
+Verifiers are the big winners of the move toward digital identity. They’re able to verify people with less friction and more trust, all with less expense than current systems.
 
-- Before credit card networks like Visa, merchants needed to issue credit and manage collections in-house if they wanted customers who could buy on credit. Likewise, companies in virtually every industry have compliance, risk, and identity departments where they manage this in-house. Just as Visa turned electronic payments into a simple terminal installation for merchants, so too will trust ecosystems unlock the ability for verifiers of all kinds to focus on their true business without compromising on trust and security.
-
-Like the internet itself, trust over IP represents a massive business opportunity for innovators in all industries. And like the internet itself, the vast majority of the value will be created at the application layer.
+Providers serve two important roles relative to verifiers. First, providers can aggregate the trusted issuers inside & outside the ecosystem to enable verifiers to trust a credential without maintaining their own infrastructure or registry. Second, providers can impose rules on verifiers to make sure they’re following data minimization and data protection best practices and regulations.

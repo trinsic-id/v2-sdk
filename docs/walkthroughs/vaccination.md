@@ -208,7 +208,7 @@ The clinic's account will **issue** the credential, Allison's account will **hol
     Note that accounts are tied to their ecosystem. If you create an account tied to `bob@example.com` in the `example1` ecosystem, it will not be visible in any other ecosystem. The same email address can be used to create accounts in multiple ecosystems.
 
 !!! abstract "Further Reading: Accounts and Wallets"
-    - Learn more about [Wallets](/learn/platform/wallets/){target=_blank}
+    - Learn more about [Wallets](/learn/concepts/wallets/){target=_blank}
     - Browse the [Account API reference](/reference/services/account-service/){target=_blank}
     - Read about [authentication tokens and security](/learn/platform/security/){target=_blank}
 
@@ -216,7 +216,7 @@ The clinic's account will **issue** the credential, Allison's account will **hol
 
 ## Define a Template
 
-Before we can issue a credential, we need to create a [Template](/learn/platform/templates/){target=_blank} for it. 
+Before we can issue a credential, we need to create a [Template](/learn/concepts/templates/){target=_blank} for it. 
 
 Templates are simply a list of the fields that a credential can have.
 
@@ -305,7 +305,7 @@ Templates are simply a list of the fields that a credential can have.
 
 !!! abstract "Further Reading: Templates"
 
-    - Learn more about [Templates](/learn/platform/templates){target=_blank}
+    - Learn more about [Templates](/learn/concepts/templates){target=_blank}
     - Browse the [Template API reference](/reference/services/template-service/){target=_blank}
 
 ---
@@ -462,7 +462,7 @@ Once Allison receives the credential, it must be stored in her wallet.
 The response to this call contains an Item ID; copy this down.
 
 !!! abstract "Further Reading: Wallets"
-    - Learn more about [Wallets](/learn/platform/wallets/){target=_blank}
+    - Learn more about [Wallets](/learn/concepts/wallets/){target=_blank}
     - Browse the [Wallet API reference](/reference/services/wallet-service/){target=_blank}
 
 

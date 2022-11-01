@@ -12,7 +12,7 @@ This document outlines the differences between our existing platform based on Hy
 
 **Ledger costs and transaction fees** &mdash; The high costs to write data to production Indy ledgers, and the difficulty in forecasting those costs, was a significant barrier for many developers going to production. In addition, we found the centralized governance of existing production Indy ledgers to result in "rug-pulls", "single points of failure", and sustainability concerns that introduced additional risks for developers in building a business on those networks.
 
-**Customized wallet experience** &mdash; The developers in our community consistently wanted something the Aries-based platform couldn't provide--a platform for building a customized wallet experience for their end-users, whether in a standalone wallet product or embedded into an existing product. Strong wallet products need features like cross-device synchronization, multi-language SDK support, small SDK size, offline support, all while keeping the highest security standards. See our documentation on [Wallets](/learn/platform/wallets) for more.
+**Customized wallet experience** &mdash; The developers in our community consistently wanted something the Aries-based platform couldn't provide--a platform for building a customized wallet experience for their end-users, whether in a standalone wallet product or embedded into an existing product. Strong wallet products need features like cross-device synchronization, multi-language SDK support, small SDK size, offline support, all while keeping the highest security standards. See our documentation on [Wallets](/learn/concepts/wallets) for more.
 
 ## Who should consider migration?
 
@@ -36,13 +36,18 @@ Direct comparsions of technical details between the two platforms may be enclose
 
 Let's take a deeper look of how different problems and concepts map between the existing and new platform.
 
-- [Organizations and Tenants](#organizations-and-tenants)
-- [Identity Wallets](#identity-wallets)
-- [Ledgers and Decentralized Infrastructure](#ledgers-and-decentralized-infrastructure)
-- [Credential Formats](#credential-formats)
-- [Anoncreds vs BBS](#anoncreds-vs-bbs)
-- [Revocation Registries](#revocation-registries)
-- [Verification Workflows](#verification-workflows)
+- [Migration Guidelines](#migration-guidelines)
+  - [Motivations to build the new platform](#motivations-to-build-the-new-platform)
+  - [Who should consider migration?](#who-should-consider-migration)
+  - [Concepts Comparison](#concepts-comparison)
+    - [Organizations and Tenants](#organizations-and-tenants)
+    - [Identity Wallets](#identity-wallets)
+    - [Ledgers and Decentralized Infrastructure](#ledgers-and-decentralized-infrastructure)
+    - [Credential Formats](#credential-formats)
+    - [Anoncreds vs BBS](#anoncreds-vs-bbs)
+    - [Revocation Registries](#revocation-registries)
+    - [Verification Workflows](#verification-workflows)
+    - [What's next?](#whats-next)
 
 ### Organizations and Tenants
 
