@@ -19,14 +19,14 @@ We’re glad you’re here. We’ve been developer-focused since our beginnings 
 **Learn about Trinsic**
 
 Dive deeper into the technology & standards that power our platform.
-[Learn More](../learn/platform/intro.md){ .md-button .md-button--primary } 
+[Learn More](../learn/platform/intro/){ .md-button .md-button--primary } 
 
 **Product concepts**
 
 Learn about why digital wallets and verifiable credentials enable amazing identity products.
-[Learn More](../learn/concepts/ecosystems.md){ .md-button } 
+[Learn More](../learn/concepts/ecosystems/){ .md-button } 
 
 **API reference**
 
 Dive in to our API reference to start building right away.
-[Explore API](../reference/index.md){ .md-button }
+[Explore API](../reference/){ .md-button }
