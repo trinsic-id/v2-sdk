@@ -866,7 +866,6 @@ class Services::Provider::V1::UpdateEcosystemRequest
       description: T.nilable(String),
       uri: T.nilable(String),
       domain: T.nilable(String),
-      name: T.nilable(String),
       display: T.nilable(Services::Provider::V1::EcosystemDisplayRequest)
     ).void
   end
@@ -874,7 +873,6 @@ class Services::Provider::V1::UpdateEcosystemRequest
     description: "",
     uri: "",
     domain: "",
-    name: "",
     display: nil
   )
   end
@@ -913,18 +911,6 @@ class Services::Provider::V1::UpdateEcosystemRequest
 
   sig { void }
   def clear_domain
-  end
-
-  sig { returns(String) }
-  def name
-  end
-
-  sig { params(value: String).void }
-  def name=(value)
-  end
-
-  sig { void }
-  def clear_name
   end
 
   sig { returns(T.nilable(Services::Provider::V1::EcosystemDisplayRequest)) }
@@ -1835,14 +1821,16 @@ class Services::Provider::V1::PublicEcosystemInformation
       name: T.nilable(String),
       domain: T.nilable(String),
       domain_verified: T.nilable(T::Boolean),
-      style_display: T.nilable(Services::Provider::V1::EcosystemDisplay)
+      style_display: T.nilable(Services::Provider::V1::EcosystemDisplay),
+      description: T.nilable(String)
     ).void
   end
   def initialize(
     name: "",
     domain: "",
     domain_verified: false,
-    style_display: nil
+    style_display: nil,
+    description: ""
   )
   end
 
@@ -1892,6 +1880,18 @@ class Services::Provider::V1::PublicEcosystemInformation
 
   sig { void }
   def clear_style_display
+  end
+
+  sig { returns(String) }
+  def description
+  end
+
+  sig { params(value: String).void }
+  def description=(value)
+  end
+
+  sig { void }
+  def clear_description
   end
 
   sig { params(field: String).returns(T.untyped) }
@@ -2316,24 +2316,38 @@ class Services::Provider::V1::RetrieveDomainVerificationRecordResponse
 
   sig do
     params(
-      verification_txt: T.nilable(String)
+      verification_record_name: T.nilable(String),
+      verification_record_Value: T.nilable(String)
     ).void
   end
   def initialize(
-    verification_txt: ""
+    verification_record_name: "",
+    verification_record_Value: ""
   )
   end
 
   sig { returns(String) }
-  def verification_txt
+  def verification_record_name
   end
 
   sig { params(value: String).void }
-  def verification_txt=(value)
+  def verification_record_name=(value)
   end
 
   sig { void }
-  def clear_verification_txt
+  def clear_verification_record_name
+  end
+
+  sig { returns(String) }
+  def verification_record_Value
+  end
+
+  sig { params(value: String).void }
+  def verification_record_Value=(value)
+  end
+
+  sig { void }
+  def clear_verification_record_Value
   end
 
   sig { params(field: String).returns(T.untyped) }
