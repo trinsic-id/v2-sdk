@@ -13,7 +13,7 @@ The Trinsic Java / Kotlin SDK makes it easy to interact with the Trinsic API fro
 
 !!! note Jar Download Note
 
-    If you want to included the two required Trinsic `.jar` files in your own application (android or other java), be sure to copy the following lines. They allow you to specify a remote file location as a gradle `implementation` target as shown below:
+    If you want to include the two required Trinsic `.jar` files in your own application (android or other java), be sure to copy the following lines. They allow you to specify a remote file location as a gradle `implementation` target as shown below:
 
 <!--codeinclude-->
 ```java
@@ -24,8 +24,8 @@ The Trinsic Java / Kotlin SDK makes it easy to interact with the Trinsic API fro
 ```java
 dependencies {
     // other dependencies
-    implementation urlFile('https://github.com/trinsic-id/okapi/releases/download/v1.4.0/trinsic-okapi-1.4.0.jar', 'trinsic-okapi-1.4.0')
-    implementation urlFile('https://github.com/trinsic-id/sdk/releases/download/v1.4.0/trinsic-services-1.4.1.jar', 'trinsic-services-1.4.1')
+    implementation urlFile('https://github.com/trinsic-id/okapi/releases/download/v1.6.0/trinsic-okapi-1.6.1.jar', 'trinsic-okapi-1.6.1')
+    implementation urlFile('https://github.com/trinsic-id/sdk/releases/download/v1.8.0/trinsic-services-1.8.1.jar', 'trinsic-services-1.8.1')
 }
 ```
 
