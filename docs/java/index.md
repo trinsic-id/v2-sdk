@@ -10,6 +10,7 @@ The Trinsic Java / Kotlin SDK makes it easy to interact with the Trinsic API fro
 ## Configuration
 1. Make sure you have the okapi native binaries installed on your machine. Default installation instructions are in the [readme.md here](https://github.com/trinsic-id/okapi/)
 2. If you install to a different location for debugging, use the environment variable `LD_LIBRARY_PATH`, even on Windows.
+3. For Android, the okapi binaries must be copied (currently manually) to a [specific location with a specific folder structure](https://github.com/trinsic-id/sdk-examples/tree/main/android/app/src/main/jniLibs). [The complete sample application is here](https://github.com/trinsic-id/sdk-examples/tree/main/android)
 
 !!! note Jar Download Note
 
