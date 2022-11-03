@@ -5515,6 +5515,11 @@ to verify authentication token validity</p>
 <td><a href="/reference/proto#services-provider-v1-EcosystemDisplay">EcosystemDisplay</a></td>
 <td>Style display information</td>
 </tr>
+<tr>
+<td>description</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Description of the ecosystem</td>
+</tr>
 </tbody>
 </table>
 <p><a name="services-provider-v1-RefreshDomainVerificationStatusRequest"></a></p>
@@ -5557,9 +5562,14 @@ to verify authentication token validity</p>
 </thead>
 <tbody>
 <tr>
-<td>verification_txt</td>
+<td>verification_record_name</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>TXT code to use for domain verification</td>
+<td>TXT record name to use for domain verification</td>
+</tr>
+<tr>
+<td>verification_record_Value</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>TXT code for domain verification</td>
 </tr>
 </tbody>
 </table>
@@ -5680,14 +5690,9 @@ to verify authentication token validity</p>
 <td>New domain URL</td>
 </tr>
 <tr>
-<td>name</td>
-<td><a href="/reference/proto#string">string</a></td>
-<td>New name</td>
-</tr>
-<tr>
 <td>display</td>
 <td><a href="/reference/proto#services-provider-v1-EcosystemDisplayRequest">EcosystemDisplayRequest</a></td>
-<td>Display details</td>
+<td>New name string name = 4; Display details</td>
 </tr>
 </tbody>
 </table>
@@ -7341,9 +7346,8 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
         </span>
         <nav>
           
-            <a href="mailto:josh@trinsic.id">Joshua Coffey</a>, 
             <a href="mailto:polygonguru@gmail.com">Scott Phillips</a>, 
-            <a href="mailto:not.committed.yet">Not Committed Yet</a>
+            <a href="mailto:josh@trinsic.id">Joshua Coffey</a>
         </nav>
       </span>
     

@@ -2111,7 +2111,7 @@ the use of <code>Protect</code> and <code>Unprotect</code>.</p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">securityCode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;1234&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="kt">var</span><span class="w"> </span><span class="n">myProtectedProfile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="n">Protect</span><span class="p">(</span><span class="n">myProfile</span><span class="p">,</span><span class="w"> </span><span class="n">securityCode</span><span class="p">);</span><span class="w"></span>
+<span class="kt">var</span><span class="w"> </span><span class="n">myProtectedProfile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="n">Protect</span><span class="p">(</span><span class="n">myProfile</span><span class="p">!,</span><span class="w"> </span><span class="n">securityCode</span><span class="p">);</span><span class="w"></span>
 <span class="kt">var</span><span class="w"> </span><span class="n">myUnprotectedProfile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="n">Unprotect</span><span class="p">(</span><span class="n">myProtectedProfile</span><span class="p">,</span><span class="w"> </span><span class="n">securityCode</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 </div>
@@ -2170,7 +2170,7 @@ the use of <code>Protect</code> and <code>Unprotect</code>.</p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">securityCode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;1234&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="kt">var</span><span class="w"> </span><span class="n">myProtectedProfile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="n">Protect</span><span class="p">(</span><span class="n">myProfile</span><span class="p">,</span><span class="w"> </span><span class="n">securityCode</span><span class="p">);</span><span class="w"></span>
+<span class="kt">var</span><span class="w"> </span><span class="n">myProtectedProfile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="n">Protect</span><span class="p">(</span><span class="n">myProfile</span><span class="p">!,</span><span class="w"> </span><span class="n">securityCode</span><span class="p">);</span><span class="w"></span>
 <span class="kt">var</span><span class="w"> </span><span class="n">myUnprotectedProfile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">AccountService</span><span class="p">.</span><span class="n">Unprotect</span><span class="p">(</span><span class="n">myProtectedProfile</span><span class="p">,</span><span class="w"> </span><span class="n">securityCode</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 </div>
@@ -2228,7 +2228,7 @@ the use of <code>Protect</code> and <code>Unprotect</code>.</p>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">myProfile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">SignInAsync</span><span class="p">(</span><span class="k">new</span><span class="p">());</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">myProfile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">trinsic</span><span class="p">.</span><span class="n">Account</span><span class="p">.</span><span class="n">LoginAnonymousAsync</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2279,8 +2279,8 @@ the use of <code>Protect</code> and <code>Unprotect</code>.</p>
         </span>
         <nav>
           
-            <a href="mailto:josh@trinsic.id">Joshua Coffey</a>, 
             <a href="mailto:polygonguru@gmail.com">Scott Phillips</a>, 
+            <a href="mailto:josh@trinsic.id">Joshua Coffey</a>, 
             <a href="mailto:michaeldavisboyd@gmail.com">Michael Boyd</a>
         </nav>
       </span>
