@@ -225,9 +225,11 @@ export interface UpdateEcosystemRequest {
   uri: string;
   /** New domain URL */
   domain: string;
-  /** New name */
-  name: string;
-  /** Display details */
+  /**
+   * New name
+   * string name = 4;
+   * Display details
+   */
   display: EcosystemDisplayRequest | undefined;
 }
 
@@ -331,6 +333,8 @@ export interface PublicEcosystemInformation {
   domainVerified: boolean;
   /** Style display information */
   styleDisplay: EcosystemDisplay | undefined;
+  /** Description of the ecosystem */
+  description: string;
 }
 
 /** Request to generate an authentication token for the current account */
@@ -376,8 +380,10 @@ export interface RetrieveDomainVerificationRecordRequest {}
 
 /** Response message containing a TXT record content for domain url verification */
 export interface RetrieveDomainVerificationRecordResponse {
-  /** TXT code to use for domain verification */
-  verificationTxt: string;
+  /** TXT record name to use for domain verification */
+  verificationRecordName: string;
+  /** TXT code for domain verification */
+  verificationRecordValue: string;
 }
 
 export interface RefreshDomainVerificationStatusRequest {}
@@ -543,6 +549,67 @@ export interface UpgradeDidRequest {
 export interface UpgradeDidResponse {
   /** New DID of wallet */
   did: string;
+}
+
+export interface AddRoleAssignmentRequest {
+  /** Role to assign */
+  role: string;
+  /**
+   * Email address of account to assign role to.
+   * Mutually exclusive with `walletId`.
+   */
+  email: string | undefined;
+  /**
+   * Wallet ID of account to assign role to.
+   * Mutually exclusive with `email`.
+   */
+  walletId: string | undefined;
+}
+
+export interface AddRoleAssignmentResponse {}
+
+export interface RemoveRoleAssignmentRequest {
+  /** Role to unassign */
+  role: string;
+  /**
+   * Email address of account to unassign role from.
+   * Mutually exclusive with `walletId`.
+   */
+  email: string | undefined;
+  /**
+   * Wallet ID of account to unassign role from.
+   * Mutually exclusive with `email`.
+   */
+  walletId: string | undefined;
+}
+
+export interface RemoveRoleAssignmentResponse {}
+
+/** Request to fetch the list of roles assigned to the current account */
+export interface ListRoleAssignmentsRequest {
+  /**
+   * Email address of account to unassign role from.
+   * Mutually exclusive with `walletId`.
+   */
+  email: string | undefined;
+  /**
+   * Wallet ID of account to unassign role from.
+   * Mutually exclusive with `email`.
+   */
+  walletId: string | undefined;
+}
+
+export interface ListRoleAssignmentsResponse {
+  /** List of roles */
+  roles: string[];
+}
+
+/** Request to fetch the available roles in the current ecosystem */
+export interface ListAvailableRolesRequest {}
+
+export interface ListAvailableRolesResponse {
+  /** List of roles */
+  roles: string[];
 }
 
 function createBaseInviteRequest(): InviteRequest {
@@ -1377,7 +1444,7 @@ export const CreateEcosystemResponse = {
 };
 
 function createBaseUpdateEcosystemRequest(): UpdateEcosystemRequest {
-  return { description: "", uri: "", domain: "", name: "", display: undefined };
+  return { description: "", uri: "", domain: "", display: undefined };
 }
 
 export const UpdateEcosystemRequest = {
@@ -1393,9 +1460,6 @@ export const UpdateEcosystemRequest = {
     }
     if (message.domain !== "") {
       writer.uint32(26).string(message.domain);
-    }
-    if (message.name !== "") {
-      writer.uint32(34).string(message.name);
     }
     if (message.display !== undefined) {
       EcosystemDisplayRequest.encode(
@@ -1425,9 +1489,6 @@ export const UpdateEcosystemRequest = {
         case 3:
           message.domain = reader.string();
           break;
-        case 4:
-          message.name = reader.string();
-          break;
         case 5:
           message.display = EcosystemDisplayRequest.decode(
             reader,
@@ -1447,7 +1508,6 @@ export const UpdateEcosystemRequest = {
       description: isSet(object.description) ? String(object.description) : "",
       uri: isSet(object.uri) ? String(object.uri) : "",
       domain: isSet(object.domain) ? String(object.domain) : "",
-      name: isSet(object.name) ? String(object.name) : "",
       display: isSet(object.display)
         ? EcosystemDisplayRequest.fromJSON(object.display)
         : undefined,
@@ -1460,7 +1520,6 @@ export const UpdateEcosystemRequest = {
       (obj.description = message.description);
     message.uri !== undefined && (obj.uri = message.uri);
     message.domain !== undefined && (obj.domain = message.domain);
-    message.name !== undefined && (obj.name = message.name);
     message.display !== undefined &&
       (obj.display = message.display
         ? EcosystemDisplayRequest.toJSON(message.display)
@@ -1475,7 +1534,6 @@ export const UpdateEcosystemRequest = {
     message.description = object.description ?? "";
     message.uri = object.uri ?? "";
     message.domain = object.domain ?? "";
-    message.name = object.name ?? "";
     message.display =
       object.display !== undefined && object.display !== null
         ? EcosystemDisplayRequest.fromPartial(object.display)
@@ -2382,6 +2440,7 @@ function createBasePublicEcosystemInformation(): PublicEcosystemInformation {
     domain: "",
     domainVerified: false,
     styleDisplay: undefined,
+    description: "",
   };
 }
 
@@ -2404,6 +2463,9 @@ export const PublicEcosystemInformation = {
         message.styleDisplay,
         writer.uint32(34).fork()
       ).ldelim();
+    }
+    if (message.description !== "") {
+      writer.uint32(42).string(message.description);
     }
     return writer;
   },
@@ -2433,6 +2495,9 @@ export const PublicEcosystemInformation = {
             reader.uint32()
           );
           break;
+        case 5:
+          message.description = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -2451,6 +2516,7 @@ export const PublicEcosystemInformation = {
       styleDisplay: isSet(object.styleDisplay)
         ? EcosystemDisplay.fromJSON(object.styleDisplay)
         : undefined,
+      description: isSet(object.description) ? String(object.description) : "",
     };
   },
 
@@ -2464,6 +2530,8 @@ export const PublicEcosystemInformation = {
       (obj.styleDisplay = message.styleDisplay
         ? EcosystemDisplay.toJSON(message.styleDisplay)
         : undefined);
+    message.description !== undefined &&
+      (obj.description = message.description);
     return obj;
   },
 
@@ -2478,6 +2546,7 @@ export const PublicEcosystemInformation = {
       object.styleDisplay !== undefined && object.styleDisplay !== null
         ? EcosystemDisplay.fromPartial(object.styleDisplay)
         : undefined;
+    message.description = object.description ?? "";
     return message;
   },
 };
@@ -2863,7 +2932,7 @@ export const RetrieveDomainVerificationRecordRequest = {
 };
 
 function createBaseRetrieveDomainVerificationRecordResponse(): RetrieveDomainVerificationRecordResponse {
-  return { verificationTxt: "" };
+  return { verificationRecordName: "", verificationRecordValue: "" };
 }
 
 export const RetrieveDomainVerificationRecordResponse = {
@@ -2871,8 +2940,11 @@ export const RetrieveDomainVerificationRecordResponse = {
     message: RetrieveDomainVerificationRecordResponse,
     writer: _m0.Writer = _m0.Writer.create()
   ): _m0.Writer {
-    if (message.verificationTxt !== "") {
-      writer.uint32(10).string(message.verificationTxt);
+    if (message.verificationRecordName !== "") {
+      writer.uint32(10).string(message.verificationRecordName);
+    }
+    if (message.verificationRecordValue !== "") {
+      writer.uint32(18).string(message.verificationRecordValue);
     }
     return writer;
   },
@@ -2888,7 +2960,10 @@ export const RetrieveDomainVerificationRecordResponse = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.verificationTxt = reader.string();
+          message.verificationRecordName = reader.string();
+          break;
+        case 2:
+          message.verificationRecordValue = reader.string();
           break;
         default:
           reader.skipType(tag & 7);
@@ -2900,16 +2975,21 @@ export const RetrieveDomainVerificationRecordResponse = {
 
   fromJSON(object: any): RetrieveDomainVerificationRecordResponse {
     return {
-      verificationTxt: isSet(object.verificationTxt)
-        ? String(object.verificationTxt)
+      verificationRecordName: isSet(object.verificationRecordName)
+        ? String(object.verificationRecordName)
+        : "",
+      verificationRecordValue: isSet(object.verificationRecordValue)
+        ? String(object.verificationRecordValue)
         : "",
     };
   },
 
   toJSON(message: RetrieveDomainVerificationRecordResponse): unknown {
     const obj: any = {};
-    message.verificationTxt !== undefined &&
-      (obj.verificationTxt = message.verificationTxt);
+    message.verificationRecordName !== undefined &&
+      (obj.verificationRecordName = message.verificationRecordName);
+    message.verificationRecordValue !== undefined &&
+      (obj.verificationRecordValue = message.verificationRecordValue);
     return obj;
   },
 
@@ -2917,7 +2997,8 @@ export const RetrieveDomainVerificationRecordResponse = {
     object: DeepPartial<RetrieveDomainVerificationRecordResponse>
   ): RetrieveDomainVerificationRecordResponse {
     const message = createBaseRetrieveDomainVerificationRecordResponse();
-    message.verificationTxt = object.verificationTxt ?? "";
+    message.verificationRecordName = object.verificationRecordName ?? "";
+    message.verificationRecordValue = object.verificationRecordValue ?? "";
     return message;
   },
 };
@@ -3859,6 +3940,489 @@ export const UpgradeDidResponse = {
   },
 };
 
+function createBaseAddRoleAssignmentRequest(): AddRoleAssignmentRequest {
+  return { role: "", email: undefined, walletId: undefined };
+}
+
+export const AddRoleAssignmentRequest = {
+  encode(
+    message: AddRoleAssignmentRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.role !== "") {
+      writer.uint32(10).string(message.role);
+    }
+    if (message.email !== undefined) {
+      writer.uint32(18).string(message.email);
+    }
+    if (message.walletId !== undefined) {
+      writer.uint32(26).string(message.walletId);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): AddRoleAssignmentRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseAddRoleAssignmentRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.role = reader.string();
+          break;
+        case 2:
+          message.email = reader.string();
+          break;
+        case 3:
+          message.walletId = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): AddRoleAssignmentRequest {
+    return {
+      role: isSet(object.role) ? String(object.role) : "",
+      email: isSet(object.email) ? String(object.email) : undefined,
+      walletId: isSet(object.walletId) ? String(object.walletId) : undefined,
+    };
+  },
+
+  toJSON(message: AddRoleAssignmentRequest): unknown {
+    const obj: any = {};
+    message.role !== undefined && (obj.role = message.role);
+    message.email !== undefined && (obj.email = message.email);
+    message.walletId !== undefined && (obj.walletId = message.walletId);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<AddRoleAssignmentRequest>
+  ): AddRoleAssignmentRequest {
+    const message = createBaseAddRoleAssignmentRequest();
+    message.role = object.role ?? "";
+    message.email = object.email ?? undefined;
+    message.walletId = object.walletId ?? undefined;
+    return message;
+  },
+};
+
+function createBaseAddRoleAssignmentResponse(): AddRoleAssignmentResponse {
+  return {};
+}
+
+export const AddRoleAssignmentResponse = {
+  encode(
+    _: AddRoleAssignmentResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): AddRoleAssignmentResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseAddRoleAssignmentResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): AddRoleAssignmentResponse {
+    return {};
+  },
+
+  toJSON(_: AddRoleAssignmentResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<AddRoleAssignmentResponse>
+  ): AddRoleAssignmentResponse {
+    const message = createBaseAddRoleAssignmentResponse();
+    return message;
+  },
+};
+
+function createBaseRemoveRoleAssignmentRequest(): RemoveRoleAssignmentRequest {
+  return { role: "", email: undefined, walletId: undefined };
+}
+
+export const RemoveRoleAssignmentRequest = {
+  encode(
+    message: RemoveRoleAssignmentRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.role !== "") {
+      writer.uint32(10).string(message.role);
+    }
+    if (message.email !== undefined) {
+      writer.uint32(18).string(message.email);
+    }
+    if (message.walletId !== undefined) {
+      writer.uint32(26).string(message.walletId);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): RemoveRoleAssignmentRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseRemoveRoleAssignmentRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.role = reader.string();
+          break;
+        case 2:
+          message.email = reader.string();
+          break;
+        case 3:
+          message.walletId = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): RemoveRoleAssignmentRequest {
+    return {
+      role: isSet(object.role) ? String(object.role) : "",
+      email: isSet(object.email) ? String(object.email) : undefined,
+      walletId: isSet(object.walletId) ? String(object.walletId) : undefined,
+    };
+  },
+
+  toJSON(message: RemoveRoleAssignmentRequest): unknown {
+    const obj: any = {};
+    message.role !== undefined && (obj.role = message.role);
+    message.email !== undefined && (obj.email = message.email);
+    message.walletId !== undefined && (obj.walletId = message.walletId);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<RemoveRoleAssignmentRequest>
+  ): RemoveRoleAssignmentRequest {
+    const message = createBaseRemoveRoleAssignmentRequest();
+    message.role = object.role ?? "";
+    message.email = object.email ?? undefined;
+    message.walletId = object.walletId ?? undefined;
+    return message;
+  },
+};
+
+function createBaseRemoveRoleAssignmentResponse(): RemoveRoleAssignmentResponse {
+  return {};
+}
+
+export const RemoveRoleAssignmentResponse = {
+  encode(
+    _: RemoveRoleAssignmentResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): RemoveRoleAssignmentResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseRemoveRoleAssignmentResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): RemoveRoleAssignmentResponse {
+    return {};
+  },
+
+  toJSON(_: RemoveRoleAssignmentResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<RemoveRoleAssignmentResponse>
+  ): RemoveRoleAssignmentResponse {
+    const message = createBaseRemoveRoleAssignmentResponse();
+    return message;
+  },
+};
+
+function createBaseListRoleAssignmentsRequest(): ListRoleAssignmentsRequest {
+  return { email: undefined, walletId: undefined };
+}
+
+export const ListRoleAssignmentsRequest = {
+  encode(
+    message: ListRoleAssignmentsRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    if (message.email !== undefined) {
+      writer.uint32(18).string(message.email);
+    }
+    if (message.walletId !== undefined) {
+      writer.uint32(26).string(message.walletId);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): ListRoleAssignmentsRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseListRoleAssignmentsRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 2:
+          message.email = reader.string();
+          break;
+        case 3:
+          message.walletId = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): ListRoleAssignmentsRequest {
+    return {
+      email: isSet(object.email) ? String(object.email) : undefined,
+      walletId: isSet(object.walletId) ? String(object.walletId) : undefined,
+    };
+  },
+
+  toJSON(message: ListRoleAssignmentsRequest): unknown {
+    const obj: any = {};
+    message.email !== undefined && (obj.email = message.email);
+    message.walletId !== undefined && (obj.walletId = message.walletId);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<ListRoleAssignmentsRequest>
+  ): ListRoleAssignmentsRequest {
+    const message = createBaseListRoleAssignmentsRequest();
+    message.email = object.email ?? undefined;
+    message.walletId = object.walletId ?? undefined;
+    return message;
+  },
+};
+
+function createBaseListRoleAssignmentsResponse(): ListRoleAssignmentsResponse {
+  return { roles: [] };
+}
+
+export const ListRoleAssignmentsResponse = {
+  encode(
+    message: ListRoleAssignmentsResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    for (const v of message.roles) {
+      writer.uint32(10).string(v!);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): ListRoleAssignmentsResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseListRoleAssignmentsResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.roles.push(reader.string());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): ListRoleAssignmentsResponse {
+    return {
+      roles: Array.isArray(object?.roles)
+        ? object.roles.map((e: any) => String(e))
+        : [],
+    };
+  },
+
+  toJSON(message: ListRoleAssignmentsResponse): unknown {
+    const obj: any = {};
+    if (message.roles) {
+      obj.roles = message.roles.map((e) => e);
+    } else {
+      obj.roles = [];
+    }
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<ListRoleAssignmentsResponse>
+  ): ListRoleAssignmentsResponse {
+    const message = createBaseListRoleAssignmentsResponse();
+    message.roles = object.roles?.map((e) => e) || [];
+    return message;
+  },
+};
+
+function createBaseListAvailableRolesRequest(): ListAvailableRolesRequest {
+  return {};
+}
+
+export const ListAvailableRolesRequest = {
+  encode(
+    _: ListAvailableRolesRequest,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): ListAvailableRolesRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseListAvailableRolesRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): ListAvailableRolesRequest {
+    return {};
+  },
+
+  toJSON(_: ListAvailableRolesRequest): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(
+    _: DeepPartial<ListAvailableRolesRequest>
+  ): ListAvailableRolesRequest {
+    const message = createBaseListAvailableRolesRequest();
+    return message;
+  },
+};
+
+function createBaseListAvailableRolesResponse(): ListAvailableRolesResponse {
+  return { roles: [] };
+}
+
+export const ListAvailableRolesResponse = {
+  encode(
+    message: ListAvailableRolesResponse,
+    writer: _m0.Writer = _m0.Writer.create()
+  ): _m0.Writer {
+    for (const v of message.roles) {
+      writer.uint32(10).string(v!);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number
+  ): ListAvailableRolesResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseListAvailableRolesResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.roles.push(reader.string());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): ListAvailableRolesResponse {
+    return {
+      roles: Array.isArray(object?.roles)
+        ? object.roles.map((e: any) => String(e))
+        : [],
+    };
+  },
+
+  toJSON(message: ListAvailableRolesResponse): unknown {
+    const obj: any = {};
+    if (message.roles) {
+      obj.roles = message.roles.map((e) => e);
+    } else {
+      obj.roles = [];
+    }
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<ListAvailableRolesResponse>
+  ): ListAvailableRolesResponse {
+    const message = createBaseListAvailableRolesResponse();
+    message.roles = object.roles?.map((e) => e) || [];
+    return message;
+  },
+};
+
 export type ProviderDefinition = typeof ProviderDefinition;
 export const ProviderDefinition = {
   name: "Provider",
@@ -4026,6 +4590,54 @@ export const ProviderDefinition = {
       requestType: SearchWalletConfigurationsRequest,
       requestStream: false,
       responseType: SearchWalletConfigurationResponse,
+      responseStream: false,
+      options: {},
+    },
+  },
+} as const;
+
+/**
+ * Access Management service provides methods to manage access to ecosystem resources
+ * such by assigning roles and permissions to wallet accounts
+ */
+export type AccessManagementDefinition = typeof AccessManagementDefinition;
+export const AccessManagementDefinition = {
+  name: "AccessManagement",
+  fullName: "services.provider.v1.AccessManagement",
+  methods: {
+    /** Adds a role assignment to an account */
+    addRoleAssignment: {
+      name: "AddRoleAssignment",
+      requestType: AddRoleAssignmentRequest,
+      requestStream: false,
+      responseType: AddRoleAssignmentResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** Removes a role assignment from the account */
+    removeRoleAssignment: {
+      name: "RemoveRoleAssignment",
+      requestType: RemoveRoleAssignmentRequest,
+      requestStream: false,
+      responseType: RemoveRoleAssignmentResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** List the role assignments for the given account */
+    listRoleAssignments: {
+      name: "ListRoleAssignments",
+      requestType: ListRoleAssignmentsRequest,
+      requestStream: false,
+      responseType: ListRoleAssignmentsResponse,
+      responseStream: false,
+      options: {},
+    },
+    /** List the roles available in the ecosystem */
+    listAvailableRoles: {
+      name: "ListAvailableRoles",
+      requestType: ListAvailableRolesRequest,
+      requestStream: false,
+      responseType: ListAvailableRolesResponse,
       responseStream: false,
       options: {},
     },

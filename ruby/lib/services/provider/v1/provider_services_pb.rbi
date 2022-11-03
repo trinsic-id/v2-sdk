@@ -163,3 +163,53 @@ module Services::Provider::V1::Provider
     end
   end
 end
+
+module Services::Provider::V1::AccessManagement
+  class Service
+    include GRPC::GenericService
+  end
+
+  class Stub < GRPC::ClientStub
+    sig do
+      params(
+        host: String,
+        creds: T.any(GRPC::Core::ChannelCredentials, Symbol),
+        kw: T.untyped,
+      ).void
+    end
+    def initialize(host, creds, **kw)
+    end
+
+    sig do
+      params(
+        request: Services::Provider::V1::AddRoleAssignmentRequest
+      ).returns(Services::Provider::V1::AddRoleAssignmentResponse)
+    end
+    def add_role_assignment(request)
+    end
+
+    sig do
+      params(
+        request: Services::Provider::V1::RemoveRoleAssignmentRequest
+      ).returns(Services::Provider::V1::RemoveRoleAssignmentResponse)
+    end
+    def remove_role_assignment(request)
+    end
+
+    sig do
+      params(
+        request: Services::Provider::V1::ListRoleAssignmentsRequest
+      ).returns(Services::Provider::V1::ListRoleAssignmentsResponse)
+    end
+    def list_role_assignments(request)
+    end
+
+    sig do
+      params(
+        request: Services::Provider::V1::ListAvailableRolesRequest
+      ).returns(Services::Provider::V1::ListAvailableRolesResponse)
+    end
+    def list_available_roles(request)
+    end
+  end
+end

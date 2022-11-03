@@ -55,6 +55,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       value :TEMPLATE_DELETED, 11
       value :WALLET_CREATED, 15
       value :ITEM_RECEIVED, 16
+      value :CREDENTIAL_ISSUED, 17
     end
   end
 end
