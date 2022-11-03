@@ -314,7 +314,7 @@
         </member>
         <member name="P:Trinsic.Services.Common.V1.Nonce.RequestHash">
             <summary>
-            blake3-256 hash of the request body
+            blake3256 hash of the request body
             </summary>
         </member>
         <member name="T:Trinsic.Services.Account.V1.AccountReflection">
@@ -1688,20 +1688,54 @@
             New domain URL
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Provider.V1.UpdateEcosystemRequest.NameFieldNumber">
-            <summary>Field number for the "name" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Provider.V1.UpdateEcosystemRequest.Name">
-            <summary>
-            New name
-            </summary>
-        </member>
         <member name="F:Trinsic.Services.Provider.V1.UpdateEcosystemRequest.DisplayFieldNumber">
             <summary>Field number for the "display" field.</summary>
         </member>
         <member name="P:Trinsic.Services.Provider.V1.UpdateEcosystemRequest.Display">
             <summary>
+            New name
+            string name = 4;
             Display details
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.EcosystemDisplayRequest.DarkFieldNumber">
+            <summary>Field number for the "dark" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.EcosystemDisplayRequest.LightFieldNumber">
+            <summary>Field number for the "light" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.EcosystemDisplayDetailsRequest.ColorFieldNumber">
+            <summary>Field number for the "color" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.EcosystemDisplayDetailsRequest.Color">
+            <summary>
+            string id = 1;
+            string name = 2;
+               string logo_url = 3;
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.EcosystemDisplayDetailsRequest.LogoDataFieldNumber">
+            <summary>Field number for the "logo_data" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.EcosystemDisplayDetailsRequest.LogoFormatFieldNumber">
+            <summary>Field number for the "logo_format" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.EcosystemDisplayDetailsRequest.LogoFormat">
+            <summary>
+            MIME type of the file
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.Provider.V1.UpdateEcosystemResponse">
+            <summary>
+            Response to `UpdateEcosystemRequest`
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.UpdateEcosystemResponse.EcosystemFieldNumber">
+            <summary>Field number for the "Ecosystem" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.UpdateEcosystemResponse.Ecosystem">
+            <summary>
+            Current ecosystem metadata, post-update
             </summary>
         </member>
         <member name="F:Trinsic.Services.Provider.V1.EcosystemDisplay.DarkFieldNumber">
@@ -1721,19 +1755,6 @@
         </member>
         <member name="F:Trinsic.Services.Provider.V1.EcosystemDisplayDetails.ColorFieldNumber">
             <summary>Field number for the "color" field.</summary>
-        </member>
-        <member name="T:Trinsic.Services.Provider.V1.UpdateEcosystemResponse">
-            <summary>
-            Response to `UpdateEcosystemRequest`
-            </summary>
-        </member>
-        <member name="F:Trinsic.Services.Provider.V1.UpdateEcosystemResponse.EcosystemFieldNumber">
-            <summary>Field number for the "Ecosystem" field.</summary>
-        </member>
-        <member name="P:Trinsic.Services.Provider.V1.UpdateEcosystemResponse.Ecosystem">
-            <summary>
-            Current ecosystem metadata, post-update
-            </summary>
         </member>
         <member name="T:Trinsic.Services.Provider.V1.AddWebhookRequest">
             <summary>
@@ -1876,6 +1897,14 @@
             Style display information
             </summary>
         </member>
+        <member name="F:Trinsic.Services.Provider.V1.PublicEcosystemInformation.DescriptionFieldNumber">
+            <summary>Field number for the "description" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.PublicEcosystemInformation.Description">
+            <summary>
+            Description of the ecosystem
+            </summary>
+        </member>
         <member name="T:Trinsic.Services.Provider.V1.GenerateTokenRequest">
             <summary>
             Request to generate an authentication token for the current account
@@ -1953,12 +1982,20 @@
             Response message containing a TXT record content for domain url verification
             </summary>
         </member>
-        <member name="F:Trinsic.Services.Provider.V1.RetrieveDomainVerificationRecordResponse.VerificationTxtFieldNumber">
-            <summary>Field number for the "verification_txt" field.</summary>
+        <member name="F:Trinsic.Services.Provider.V1.RetrieveDomainVerificationRecordResponse.VerificationRecordNameFieldNumber">
+            <summary>Field number for the "verification_record_name" field.</summary>
         </member>
-        <member name="P:Trinsic.Services.Provider.V1.RetrieveDomainVerificationRecordResponse.VerificationTxt">
+        <member name="P:Trinsic.Services.Provider.V1.RetrieveDomainVerificationRecordResponse.VerificationRecordName">
             <summary>
-            TXT code to use for domain verification
+            TXT record name to use for domain verification
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.RetrieveDomainVerificationRecordResponse.VerificationRecordValueFieldNumber">
+            <summary>Field number for the "verification_record_Value" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.RetrieveDomainVerificationRecordResponse.VerificationRecordValue">
+            <summary>
+            TXT code for domain verification
             </summary>
         </member>
         <member name="F:Trinsic.Services.Provider.V1.RefreshDomainVerificationStatusResponse.DomainFieldNumber">
@@ -2176,7 +2213,7 @@
         </member>
         <member name="T:Trinsic.Services.Provider.V1.UpgradeDidRequest">
             <summary>
-            Request to upgrade a wallet 
+            Request to upgrade a wallet
             </summary>
         </member>
         <member name="F:Trinsic.Services.Provider.V1.UpgradeDidRequest.EmailFieldNumber">
@@ -5002,7 +5039,7 @@
         </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.ValidationMessage.IsValid">
             <summary>
-            Whether or not this validation check passed
+            Whether this validation check passed
             </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.ValidationMessage.MessagesFieldNumber">

@@ -12,24 +12,49 @@ public interface RetrieveDomainVerificationRecordResponseOrBuilder
    *
    *
    * <pre>
-   * TXT code to use for domain verification
+   * TXT record name to use for domain verification
    * </pre>
    *
-   * <code>string verification_txt = 1;</code>
+   * <code>string verification_record_name = 1;</code>
    *
-   * @return The verificationTxt.
+   * @return The verificationRecordName.
    */
-  java.lang.String getVerificationTxt();
+  java.lang.String getVerificationRecordName();
   /**
    *
    *
    * <pre>
-   * TXT code to use for domain verification
+   * TXT record name to use for domain verification
    * </pre>
    *
-   * <code>string verification_txt = 1;</code>
+   * <code>string verification_record_name = 1;</code>
    *
-   * @return The bytes for verificationTxt.
+   * @return The bytes for verificationRecordName.
    */
-  com.google.protobuf.ByteString getVerificationTxtBytes();
+  com.google.protobuf.ByteString getVerificationRecordNameBytes();
+
+  /**
+   *
+   *
+   * <pre>
+   * TXT code for domain verification
+   * </pre>
+   *
+   * <code>string verification_record_Value = 2;</code>
+   *
+   * @return The verificationRecordValue.
+   */
+  java.lang.String getVerificationRecordValue();
+  /**
+   *
+   *
+   * <pre>
+   * TXT code for domain verification
+   * </pre>
+   *
+   * <code>string verification_record_Value = 2;</code>
+   *
+   * @return The bytes for verificationRecordValue.
+   */
+  com.google.protobuf.ByteString getVerificationRecordValueBytes();
 }

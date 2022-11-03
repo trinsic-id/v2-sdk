@@ -69,7 +69,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :description, :string, 1
       optional :uri, :string, 2
       optional :domain, :string, 3
-      optional :name, :string, 4
       optional :display, :message, 5, "services.provider.v1.EcosystemDisplayRequest"
     end
     add_message "services.provider.v1.EcosystemDisplayRequest" do
@@ -122,6 +121,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :domain, :string, 2
       optional :domain_verified, :bool, 3
       optional :style_display, :message, 4, "services.provider.v1.EcosystemDisplay"
+      optional :description, :string, 5
     end
     add_message "services.provider.v1.GenerateTokenRequest" do
       optional :description, :string, 1
@@ -143,7 +143,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "services.provider.v1.RetrieveDomainVerificationRecordRequest" do
     end
     add_message "services.provider.v1.RetrieveDomainVerificationRecordResponse" do
-      optional :verification_txt, :string, 1
+      optional :verification_record_name, :string, 1
+      optional :verification_record_Value, :string, 2
     end
     add_message "services.provider.v1.RefreshDomainVerificationStatusRequest" do
     end

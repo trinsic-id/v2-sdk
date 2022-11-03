@@ -163,7 +163,7 @@ message UpdateEcosystemRequest {
     // New domain URL
     string domain = 3;
     // New name
-    string name = 4;
+    // string name = 4;
     // Display details
     EcosystemDisplayRequest display = 5;
 }
@@ -263,6 +263,8 @@ message PublicEcosystemInformation {
     bool domain_verified = 3;
     // Style display information
     EcosystemDisplay style_display = 4;
+    // Description of the ecosystem
+    string description = 5;
 }
 
 
@@ -308,8 +310,10 @@ message RetrieveDomainVerificationRecordRequest {
 
 // Response message containing a TXT record content for domain url verification
 message RetrieveDomainVerificationRecordResponse {
-    // TXT code to use for domain verification
-    string verification_txt = 1;
+    // TXT record name to use for domain verification
+    string verification_record_name = 1;
+    // TXT code for domain verification
+    string verification_record_Value = 2;
 }
 
 message RefreshDomainVerificationStatusRequest {
