@@ -1236,6 +1236,12 @@
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
+    "services.provider.v1.PublicEcosystemInformation.description": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.PublicEcosystemInformation"
+    },
     "services.provider.v1.PublicEcosystemInformation.domain": {
       "type": "field",
       "collection": "fields",
@@ -1296,7 +1302,13 @@
       "file": "services/provider/v1/provider.proto",
       "parent": ""
     },
-    "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_txt": {
+    "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_Value": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.RetrieveDomainVerificationRecordResponse"
+    },
+    "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_name": {
       "type": "field",
       "collection": "fields",
       "file": "services/provider/v1/provider.proto",
@@ -1399,12 +1411,6 @@
       "parent": "services.provider.v1.UpdateEcosystemRequest"
     },
     "services.provider.v1.UpdateEcosystemRequest.domain": {
-      "type": "field",
-      "collection": "fields",
-      "file": "services/provider/v1/provider.proto",
-      "parent": "services.provider.v1.UpdateEcosystemRequest"
-    },
-    "services.provider.v1.UpdateEcosystemRequest.name": {
       "type": "field",
       "collection": "fields",
       "file": "services/provider/v1/provider.proto",
@@ -3381,7 +3387,6 @@
         "services.provider.v1.UpdateEcosystemRequest.description",
         "services.provider.v1.UpdateEcosystemRequest.uri",
         "services.provider.v1.UpdateEcosystemRequest.domain",
-        "services.provider.v1.UpdateEcosystemRequest.name",
         "services.provider.v1.UpdateEcosystemRequest.display",
         "services.provider.v1.EcosystemDisplayRequest.dark",
         "services.provider.v1.EcosystemDisplayRequest.light",
@@ -3406,12 +3411,14 @@
         "services.provider.v1.PublicEcosystemInformation.domain",
         "services.provider.v1.PublicEcosystemInformation.domain_verified",
         "services.provider.v1.PublicEcosystemInformation.style_display",
+        "services.provider.v1.PublicEcosystemInformation.description",
         "services.provider.v1.GenerateTokenRequest.description",
         "services.provider.v1.GenerateTokenResponse.profile",
         "services.provider.v1.GetOberonKeyResponse.key",
         "services.provider.v1.GetEventTokenRequest.pk",
         "services.provider.v1.GetEventTokenResponse.token",
-        "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_txt",
+        "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_name",
+        "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_Value",
         "services.provider.v1.RefreshDomainVerificationStatusResponse.domain",
         "services.provider.v1.RefreshDomainVerificationStatusResponse.domain_verified",
         "services.provider.v1.GrantAuthorizationRequest.email",
@@ -4779,7 +4786,8 @@
         "services.provider.v1.PublicEcosystemInformation.name",
         "services.provider.v1.PublicEcosystemInformation.domain",
         "services.provider.v1.PublicEcosystemInformation.domain_verified",
-        "services.provider.v1.PublicEcosystemInformation.style_display"
+        "services.provider.v1.PublicEcosystemInformation.style_display",
+        "services.provider.v1.PublicEcosystemInformation.description"
       ],
       "messages": [],
       "enums": []
@@ -4816,7 +4824,8 @@
       "full_name": "services.provider.v1.RetrieveDomainVerificationRecordResponse",
       "description": "Response message containing a TXT record content for domain url verification",
       "fields": [
-        "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_txt"
+        "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_name",
+        "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_Value"
       ],
       "messages": [],
       "enums": []
@@ -4873,7 +4882,6 @@
         "services.provider.v1.UpdateEcosystemRequest.description",
         "services.provider.v1.UpdateEcosystemRequest.uri",
         "services.provider.v1.UpdateEcosystemRequest.domain",
-        "services.provider.v1.UpdateEcosystemRequest.name",
         "services.provider.v1.UpdateEcosystemRequest.display"
       ],
       "messages": [],
@@ -6527,6 +6535,14 @@
       "full_type": "services.provider.v1.IonOptions.IonNetwork",
       "description": "ION network on which DID should be published"
     },
+    "services.provider.v1.PublicEcosystemInformation.description": {
+      "name": "description",
+      "full_name": "services.provider.v1.PublicEcosystemInformation.description",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Description of the ecosystem"
+    },
     "services.provider.v1.PublicEcosystemInformation.domain": {
       "name": "domain",
       "full_name": "services.provider.v1.PublicEcosystemInformation.domain",
@@ -6575,13 +6591,21 @@
       "full_type": "bool",
       "description": "Specifies if the above `domain` was successfully verified"
     },
-    "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_txt": {
-      "name": "verification_txt",
-      "full_name": "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_txt",
+    "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_Value": {
+      "name": "verification_record_Value",
+      "full_name": "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_Value",
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "TXT code to use for domain verification"
+      "description": "TXT code for domain verification"
+    },
+    "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_name": {
+      "name": "verification_record_name",
+      "full_name": "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_name",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "TXT record name to use for domain verification"
     },
     "services.provider.v1.RevokeAuthorizationRequest.action": {
       "name": "action",
@@ -6672,7 +6696,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "EcosystemDisplayRequest",
       "full_type": "services.provider.v1.EcosystemDisplayRequest",
-      "description": "Display details"
+      "description": "New name\nstring name = 4;\nDisplay details"
     },
     "services.provider.v1.UpdateEcosystemRequest.domain": {
       "name": "domain",
@@ -6681,14 +6705,6 @@
       "type": "string",
       "full_type": "string",
       "description": "New domain URL"
-    },
-    "services.provider.v1.UpdateEcosystemRequest.name": {
-      "name": "name",
-      "full_name": "services.provider.v1.UpdateEcosystemRequest.name",
-      "label": "LABEL_OPTIONAL",
-      "type": "string",
-      "full_type": "string",
-      "description": "New name"
     },
     "services.provider.v1.UpdateEcosystemRequest.uri": {
       "name": "uri",

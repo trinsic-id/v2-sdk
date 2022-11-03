@@ -206,7 +206,7 @@ service Account {
     rpc Info                (AccountInfoRequest)        returns (AccountInfoResponse) {
         option (options.sdk_template_option).no_arguments = true;
     }
-    
+
     // List all connected devices
     rpc ListDevices         (ListDevicesRequest)        returns (ListDevicesResponse);
 

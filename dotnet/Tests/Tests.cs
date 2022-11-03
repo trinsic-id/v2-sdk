@@ -26,15 +26,16 @@ namespace Tests;
 [SuppressMessage("ReSharper", "MethodHasAsyncOverload")]
 public class Tests
 {
-#if DEBUG
-    private const string DefaultEndpoint = "localhost";
-    private const int DefaultPort = 5000;
-    private const bool DefaultUseTls = false;
-#else
+    // This breaks the CI pipeline, removing DEBUG option.
+// #if DEBUG
+    // private const string DefaultEndpoint = "localhost";
+    // private const int DefaultPort = 5000;
+    // private const bool DefaultUseTls = false;
+// #else
     private const string DefaultEndpoint = "staging-internal.trinsic.cloud";
     private const int DefaultPort = 443;
     private const bool DefaultUseTls = true;
-#endif
+// #endif
 
     private readonly ITestOutputHelper _testOutputHelper;
     private readonly ServiceOptions _options;
@@ -45,7 +46,7 @@ public class Tests
         _options = new() {
             ServerEndpoint = Environment.GetEnvironmentVariable("TEST_SERVER_ENDPOINT") ?? DefaultEndpoint,
             ServerPort = int.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_PORT"), out var port) ? port : DefaultPort,
-            ServerUseTls = bool.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_USE_TLS"), out var tls) ? tls : DefaultUseTls
+            ServerUseTls = !bool.TryParse(Environment.GetEnvironmentVariable("TEST_SERVER_USE_TLS"), out var tls) || tls
         };
 
         _testOutputHelper.WriteLine($"Testing endpoint: {_options.FormatUrl()}");
@@ -362,9 +363,8 @@ public class Tests
         var trinsic = new TrinsicService(_options);
         // }
         // accountServiceSignIn() {
-        var myProfile = await trinsic.Account.SignInAsync(new());
+        var myProfile = await trinsic.Account.LoginAnonymousAsync();
         // }
-        trinsic.SetAuthToken(myProfile);
         // accountServiceGetInfo() {
         var info = await trinsic.Account.GetInfoAsync();
         // }
@@ -374,7 +374,7 @@ public class Tests
 
         // protectUnprotectProfile() {
         var securityCode = "1234";
-        var myProtectedProfile = AccountService.Protect(myProfile, securityCode);
+        var myProtectedProfile = AccountService.Protect(myProfile!, securityCode);
         var myUnprotectedProfile = AccountService.Unprotect(myProtectedProfile, securityCode);
         // }
 
