@@ -25,7 +25,8 @@ public final class RetrieveDomainVerificationRecordResponse
   }
 
   private RetrieveDomainVerificationRecordResponse() {
-    verificationTxt_ = "";
+    verificationRecordName_ = "";
+    verificationRecordValue_ = "";
   }
 
   @java.lang.Override
@@ -54,28 +55,28 @@ public final class RetrieveDomainVerificationRecordResponse
             trinsic.services.provider.v1.RetrieveDomainVerificationRecordResponse.Builder.class);
   }
 
-  public static final int VERIFICATION_TXT_FIELD_NUMBER = 1;
-  private volatile java.lang.Object verificationTxt_;
+  public static final int VERIFICATION_RECORD_NAME_FIELD_NUMBER = 1;
+  private volatile java.lang.Object verificationRecordName_;
   /**
    *
    *
    * <pre>
-   * TXT code to use for domain verification
+   * TXT record name to use for domain verification
    * </pre>
    *
-   * <code>string verification_txt = 1;</code>
+   * <code>string verification_record_name = 1;</code>
    *
-   * @return The verificationTxt.
+   * @return The verificationRecordName.
    */
   @java.lang.Override
-  public java.lang.String getVerificationTxt() {
-    java.lang.Object ref = verificationTxt_;
+  public java.lang.String getVerificationRecordName() {
+    java.lang.Object ref = verificationRecordName_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      verificationTxt_ = s;
+      verificationRecordName_ = s;
       return s;
     }
   }
@@ -83,20 +84,69 @@ public final class RetrieveDomainVerificationRecordResponse
    *
    *
    * <pre>
-   * TXT code to use for domain verification
+   * TXT record name to use for domain verification
    * </pre>
    *
-   * <code>string verification_txt = 1;</code>
+   * <code>string verification_record_name = 1;</code>
    *
-   * @return The bytes for verificationTxt.
+   * @return The bytes for verificationRecordName.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getVerificationTxtBytes() {
-    java.lang.Object ref = verificationTxt_;
+  public com.google.protobuf.ByteString getVerificationRecordNameBytes() {
+    java.lang.Object ref = verificationRecordName_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b =
           com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-      verificationTxt_ = b;
+      verificationRecordName_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int VERIFICATION_RECORD_VALUE_FIELD_NUMBER = 2;
+  private volatile java.lang.Object verificationRecordValue_;
+  /**
+   *
+   *
+   * <pre>
+   * TXT code for domain verification
+   * </pre>
+   *
+   * <code>string verification_record_Value = 2;</code>
+   *
+   * @return The verificationRecordValue.
+   */
+  @java.lang.Override
+  public java.lang.String getVerificationRecordValue() {
+    java.lang.Object ref = verificationRecordValue_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      verificationRecordValue_ = s;
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * TXT code for domain verification
+   * </pre>
+   *
+   * <code>string verification_record_Value = 2;</code>
+   *
+   * @return The bytes for verificationRecordValue.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getVerificationRecordValueBytes() {
+    java.lang.Object ref = verificationRecordValue_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      verificationRecordValue_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -117,8 +167,11 @@ public final class RetrieveDomainVerificationRecordResponse
 
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(verificationTxt_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, verificationTxt_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(verificationRecordName_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, verificationRecordName_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(verificationRecordValue_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, verificationRecordValue_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -129,8 +182,11 @@ public final class RetrieveDomainVerificationRecordResponse
     if (size != -1) return size;
 
     size = 0;
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(verificationTxt_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, verificationTxt_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(verificationRecordName_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, verificationRecordName_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(verificationRecordValue_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, verificationRecordValue_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -148,7 +204,8 @@ public final class RetrieveDomainVerificationRecordResponse
     trinsic.services.provider.v1.RetrieveDomainVerificationRecordResponse other =
         (trinsic.services.provider.v1.RetrieveDomainVerificationRecordResponse) obj;
 
-    if (!getVerificationTxt().equals(other.getVerificationTxt())) return false;
+    if (!getVerificationRecordName().equals(other.getVerificationRecordName())) return false;
+    if (!getVerificationRecordValue().equals(other.getVerificationRecordValue())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -160,8 +217,10 @@ public final class RetrieveDomainVerificationRecordResponse
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + VERIFICATION_TXT_FIELD_NUMBER;
-    hash = (53 * hash) + getVerificationTxt().hashCode();
+    hash = (37 * hash) + VERIFICATION_RECORD_NAME_FIELD_NUMBER;
+    hash = (53 * hash) + getVerificationRecordName().hashCode();
+    hash = (37 * hash) + VERIFICATION_RECORD_VALUE_FIELD_NUMBER;
+    hash = (53 * hash) + getVerificationRecordValue().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -303,7 +362,9 @@ public final class RetrieveDomainVerificationRecordResponse
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      verificationTxt_ = "";
+      verificationRecordName_ = "";
+
+      verificationRecordValue_ = "";
 
       return this;
     }
@@ -334,7 +395,8 @@ public final class RetrieveDomainVerificationRecordResponse
     public trinsic.services.provider.v1.RetrieveDomainVerificationRecordResponse buildPartial() {
       trinsic.services.provider.v1.RetrieveDomainVerificationRecordResponse result =
           new trinsic.services.provider.v1.RetrieveDomainVerificationRecordResponse(this);
-      result.verificationTxt_ = verificationTxt_;
+      result.verificationRecordName_ = verificationRecordName_;
+      result.verificationRecordValue_ = verificationRecordValue_;
       onBuilt();
       return result;
     }
@@ -388,8 +450,12 @@ public final class RetrieveDomainVerificationRecordResponse
       if (other
           == trinsic.services.provider.v1.RetrieveDomainVerificationRecordResponse
               .getDefaultInstance()) return this;
-      if (!other.getVerificationTxt().isEmpty()) {
-        verificationTxt_ = other.verificationTxt_;
+      if (!other.getVerificationRecordName().isEmpty()) {
+        verificationRecordName_ = other.verificationRecordName_;
+        onChanged();
+      }
+      if (!other.getVerificationRecordValue().isEmpty()) {
+        verificationRecordValue_ = other.verificationRecordValue_;
         onChanged();
       }
       this.mergeUnknownFields(other.getUnknownFields());
@@ -420,10 +486,16 @@ public final class RetrieveDomainVerificationRecordResponse
               break;
             case 10:
               {
-                verificationTxt_ = input.readStringRequireUtf8();
+                verificationRecordName_ = input.readStringRequireUtf8();
 
                 break;
               } // case 10
+            case 18:
+              {
+                verificationRecordValue_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 18
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -441,24 +513,24 @@ public final class RetrieveDomainVerificationRecordResponse
       return this;
     }
 
-    private java.lang.Object verificationTxt_ = "";
+    private java.lang.Object verificationRecordName_ = "";
     /**
      *
      *
      * <pre>
-     * TXT code to use for domain verification
+     * TXT record name to use for domain verification
      * </pre>
      *
-     * <code>string verification_txt = 1;</code>
+     * <code>string verification_record_name = 1;</code>
      *
-     * @return The verificationTxt.
+     * @return The verificationRecordName.
      */
-    public java.lang.String getVerificationTxt() {
-      java.lang.Object ref = verificationTxt_;
+    public java.lang.String getVerificationRecordName() {
+      java.lang.Object ref = verificationRecordName_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        verificationTxt_ = s;
+        verificationRecordName_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
@@ -468,19 +540,19 @@ public final class RetrieveDomainVerificationRecordResponse
      *
      *
      * <pre>
-     * TXT code to use for domain verification
+     * TXT record name to use for domain verification
      * </pre>
      *
-     * <code>string verification_txt = 1;</code>
+     * <code>string verification_record_name = 1;</code>
      *
-     * @return The bytes for verificationTxt.
+     * @return The bytes for verificationRecordName.
      */
-    public com.google.protobuf.ByteString getVerificationTxtBytes() {
-      java.lang.Object ref = verificationTxt_;
+    public com.google.protobuf.ByteString getVerificationRecordNameBytes() {
+      java.lang.Object ref = verificationRecordName_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        verificationTxt_ = b;
+        verificationRecordName_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -490,20 +562,20 @@ public final class RetrieveDomainVerificationRecordResponse
      *
      *
      * <pre>
-     * TXT code to use for domain verification
+     * TXT record name to use for domain verification
      * </pre>
      *
-     * <code>string verification_txt = 1;</code>
+     * <code>string verification_record_name = 1;</code>
      *
-     * @param value The verificationTxt to set.
+     * @param value The verificationRecordName to set.
      * @return This builder for chaining.
      */
-    public Builder setVerificationTxt(java.lang.String value) {
+    public Builder setVerificationRecordName(java.lang.String value) {
       if (value == null) {
         throw new NullPointerException();
       }
 
-      verificationTxt_ = value;
+      verificationRecordName_ = value;
       onChanged();
       return this;
     }
@@ -511,16 +583,16 @@ public final class RetrieveDomainVerificationRecordResponse
      *
      *
      * <pre>
-     * TXT code to use for domain verification
+     * TXT record name to use for domain verification
      * </pre>
      *
-     * <code>string verification_txt = 1;</code>
+     * <code>string verification_record_name = 1;</code>
      *
      * @return This builder for chaining.
      */
-    public Builder clearVerificationTxt() {
+    public Builder clearVerificationRecordName() {
 
-      verificationTxt_ = getDefaultInstance().getVerificationTxt();
+      verificationRecordName_ = getDefaultInstance().getVerificationRecordName();
       onChanged();
       return this;
     }
@@ -528,21 +600,127 @@ public final class RetrieveDomainVerificationRecordResponse
      *
      *
      * <pre>
-     * TXT code to use for domain verification
+     * TXT record name to use for domain verification
      * </pre>
      *
-     * <code>string verification_txt = 1;</code>
+     * <code>string verification_record_name = 1;</code>
      *
-     * @param value The bytes for verificationTxt to set.
+     * @param value The bytes for verificationRecordName to set.
      * @return This builder for chaining.
      */
-    public Builder setVerificationTxtBytes(com.google.protobuf.ByteString value) {
+    public Builder setVerificationRecordNameBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
         throw new NullPointerException();
       }
       checkByteStringIsUtf8(value);
 
-      verificationTxt_ = value;
+      verificationRecordName_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object verificationRecordValue_ = "";
+    /**
+     *
+     *
+     * <pre>
+     * TXT code for domain verification
+     * </pre>
+     *
+     * <code>string verification_record_Value = 2;</code>
+     *
+     * @return The verificationRecordValue.
+     */
+    public java.lang.String getVerificationRecordValue() {
+      java.lang.Object ref = verificationRecordValue_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        verificationRecordValue_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * TXT code for domain verification
+     * </pre>
+     *
+     * <code>string verification_record_Value = 2;</code>
+     *
+     * @return The bytes for verificationRecordValue.
+     */
+    public com.google.protobuf.ByteString getVerificationRecordValueBytes() {
+      java.lang.Object ref = verificationRecordValue_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        verificationRecordValue_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * TXT code for domain verification
+     * </pre>
+     *
+     * <code>string verification_record_Value = 2;</code>
+     *
+     * @param value The verificationRecordValue to set.
+     * @return This builder for chaining.
+     */
+    public Builder setVerificationRecordValue(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      verificationRecordValue_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * TXT code for domain verification
+     * </pre>
+     *
+     * <code>string verification_record_Value = 2;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearVerificationRecordValue() {
+
+      verificationRecordValue_ = getDefaultInstance().getVerificationRecordValue();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * TXT code for domain verification
+     * </pre>
+     *
+     * <code>string verification_record_Value = 2;</code>
+     *
+     * @param value The bytes for verificationRecordValue to set.
+     * @return This builder for chaining.
+     */
+    public Builder setVerificationRecordValueBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
+      verificationRecordValue_ = value;
       onChanged();
       return this;
     }

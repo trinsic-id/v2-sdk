@@ -98,7 +98,7 @@ public final class EventOuterClass {
           + "\"2\n"
           + "\014ItemReceived\022\n\n"
           + "\002id\030\001 \001(\t\022\020\n"
-          + "\010received\030\002 \001(\t:\004\220\246\035\020*\272\001\n"
+          + "\010received\030\002 \001(\t:\004\220\246\035\020*\321\001\n"
           + "\tEventType\022\010\n"
           + "\004PING\020\000\022\007\n"
           + "\003LOG\020\001\022\017\n"
@@ -109,11 +109,12 @@ public final class EventOuterClass {
           + "\022\024\n"
           + "\020TEMPLATE_DELETED\020\013\022\022\n"
           + "\016WALLET_CREATED\020\017\022\021\n\r"
-          + "ITEM_RECEIVED\020\020:[\n\n"
+          + "ITEM_RECEIVED\020\020\022\025\n"
+          + "\021CREDENTIAL_ISSUED\020\021:[\n\n"
           + "event_type\022\037.google.protobuf.MessageOptions\030\342\324\003"
           + " \001(\0162!.trinsic.services.event.EventType\210\001\001BD\n"
-          + "\031trinsic.services.event.v1P\001Z\t./e"
-          + "ventpb\252\002\031Trinsic.Services.Event.V1b\006proto3"
+          + "\031trinsic.services.event.v1P\001Z\t./eventpb\252\002\031Trinsic."
+          + "Services.Event.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
