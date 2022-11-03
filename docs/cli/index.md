@@ -9,8 +9,7 @@ The Trinsic CLI makes it easy to interact with the Trinsic API from your termina
 
     Then run these commands to install the Trinsic CLI
     ```
-    brew tap trinsic-id/tap
-    brew install trinsic-cli
+    brew install trinsic-id/tap/trinsic-cli
     ```
 
 === "Windows"
