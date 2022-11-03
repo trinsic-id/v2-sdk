@@ -3,7 +3,7 @@ name: Bug Report
 description: Reporting bugs found in production, staging, other environments for trinsic services v2
 title: Bug Report
 labels: 'bug'
-assignees: michaeldboyd
+assignees: chiarapaskulin fundthmcalculus
 body:
 - type: textarea
   id: repro-steps
