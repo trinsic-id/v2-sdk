@@ -27,15 +27,15 @@ namespace Tests;
 public class Tests
 {
     // This breaks the CI pipeline, removing DEBUG option.
-// #if DEBUG
+    // #if DEBUG
     // private const string DefaultEndpoint = "localhost";
     // private const int DefaultPort = 5000;
     // private const bool DefaultUseTls = false;
-// #else
+    // #else
     private const string DefaultEndpoint = "staging-internal.trinsic.cloud";
     private const int DefaultPort = 443;
     private const bool DefaultUseTls = true;
-// #endif
+    // #endif
 
     private readonly ITestOutputHelper _testOutputHelper;
     private readonly ServiceOptions _options;
