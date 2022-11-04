@@ -11,9 +11,6 @@ import (
 
 	"runtime"
 
-	//"github.com/trinsic-id/sdk/go/proto/sdk/options/v1/options"
-	//"github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
-
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/metadata"

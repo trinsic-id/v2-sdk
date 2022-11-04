@@ -5,9 +5,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/stretchr/testify/assert"
-	wallet "github.com/trinsic-id/sdk/go/proto/services/universalwallet/v1"
-	template "github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/templates/v1"
-	credential "github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/v1"
+	"github.com/trinsic-id/sdk/go/proto/services/universalwallet/v1/wallet"
+	"github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/templates/v1/template"
+	"github.com/trinsic-id/sdk/go/proto/services/verifiablecredentials/v1/credential"
 	"github.com/trinsic-id/sdk/go/services"
 	"testing"
 )
