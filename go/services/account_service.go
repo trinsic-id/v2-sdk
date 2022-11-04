@@ -4,9 +4,10 @@ import (
 	"context"
 	"encoding/base64"
 	"errors"
+	"github.com/trinsic-id/okapi/go/okapi/hashing/v1/hashing"
+	"github.com/trinsic-id/okapi/go/okapi/security/v1/security"
 
 	"github.com/trinsic-id/okapi/go/okapi"
-	"github.com/trinsic-id/okapi/go/okapiproto"
 	"github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
 
 	"google.golang.org/protobuf/proto"
@@ -108,7 +109,7 @@ func (a *accountBase) Unprotect(authtoken, securityCode string) (string, error) 
 		return "", err
 	}
 
-	request := &okapiproto.UnBlindOberonTokenRequest{
+	request := &security.UnBlindOberonTokenRequest{
 		Token:    profile.AuthToken,
 		Blinding: append([][]byte{}, []byte(securityCode)),
 	}
@@ -137,7 +138,7 @@ func (a *accountBase) Protect(authtoken, securityCode string) (string, error) {
 		return "", err
 	}
 
-	request := &okapiproto.BlindOberonTokenRequest{
+	request := &security.BlindOberonTokenRequest{
 		Token:    profile.AuthToken,
 		Blinding: append([][]byte{}, []byte(securityCode)),
 	}
@@ -167,7 +168,7 @@ func (a *accountBase) Login(userContext context.Context, request *account.LoginR
 
 func (a *accountBase) LoginConfirm(userContext context.Context, challenge []byte, authCode string) (string, error) {
 	// Hash the authcode
-	codeHash, err := okapi.Hashing().Blake3Hash(&okapiproto.Blake3HashRequest{Data: []byte(authCode)})
+	codeHash, err := okapi.Hashing().Blake3Hash(&hashing.Blake3HashRequest{Data: []byte(authCode)})
 	if err != nil {
 		return "", err
 	}

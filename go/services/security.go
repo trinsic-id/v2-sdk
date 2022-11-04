@@ -3,11 +3,12 @@ package services
 import (
 	"encoding/base64"
 	"fmt"
+	"github.com/trinsic-id/okapi/go/okapi/hashing/v1/hashing"
+	"github.com/trinsic-id/okapi/go/okapi/security/v1/security"
 
 	"time"
 
 	"github.com/trinsic-id/okapi/go/okapi"
-	"github.com/trinsic-id/okapi/go/okapiproto"
 	"github.com/trinsic-id/sdk/go/proto/services/account/v1/account"
 	"github.com/trinsic-id/sdk/go/proto/services/common/v1/common"
 
@@ -34,7 +35,7 @@ func (o OberonSecurityProvider) GetAuthHeader(profile *account.AccountProfile, m
 		return "", err
 	}
 
-	hashResult, err := okapi.Hashing().Blake3Hash(&okapiproto.Blake3HashRequest{Data: requestBytes})
+	hashResult, err := okapi.Hashing().Blake3Hash(&hashing.Blake3HashRequest{Data: requestBytes})
 	if err != nil {
 		return "", err
 	}
@@ -54,7 +55,7 @@ func (o OberonSecurityProvider) GetAuthHeader(profile *account.AccountProfile, m
 		authToken = profile.AuthToken
 	}
 
-	proof, err := okapi.Oberon().CreateProof(&okapiproto.CreateOberonProofRequest{
+	proof, err := okapi.Oberon().CreateProof(&security.CreateOberonProofRequest{
 		Data:  authData,
 		Token: authToken,
 		Nonce: nonceBytes,
