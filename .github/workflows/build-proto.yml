@@ -2,12 +2,6 @@ name: Build Proto Files
 on:
   workflow_call:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - "proto/**"
-      - "devops/*"
   pull_request:
     paths:
       - "proto/**"
@@ -68,8 +62,8 @@ jobs:
           author_name: Mewmba
           author_email: mewmba@trinsic.id
           message: 'Generated code from proto files on branch ${{ github.head_ref }}'
-          new_branch: 'mewmba-${{ github.head_ref }}-generated-protos'
-          push: '--force --set-upstream origin mewmba-${{ github.head_ref }}-generated-protos'
+          new_branch: '${{ github.head_ref }}-generated-protos'
+          push: '--force --set-upstream origin ${{ github.head_ref }}-generated-protos'
 
       - name: pull-request
         uses: repo-sync/pull-request@v2
