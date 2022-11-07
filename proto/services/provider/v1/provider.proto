@@ -411,6 +411,7 @@ message WalletConfiguration {
     string sms = 3  [(options.optional)=true];
     string wallet_id = 4;
     string public_did = 5;
+    string config_type = 6;
 }
 
 // Options for creation of DID on the ION network
@@ -449,6 +450,59 @@ message UpgradeDidRequest {
 message UpgradeDidResponse {
     // New DID of wallet
     string did = 1;
+}
+
+// Role management
+
+message AddRoleAssignmentRequest {
+    // Role to assign
+    string role = 1;
+    oneof account {
+        // Email address of account to assign role to.
+        // Mutually exclusive with `walletId`.
+        string email = 2;
+        // Wallet ID of account to assign role to.
+        // Mutually exclusive with `email`.
+        string wallet_id = 3;
+    }
+}
+message AddRoleAssignmentResponse {}
+
+message RemoveRoleAssignmentRequest {
+    // Role to unassign
+    string role = 1;
+    oneof account {
+        // Email address of account to unassign role from.
+        // Mutually exclusive with `walletId`.
+        string email = 2;
+        // Wallet ID of account to unassign role from.
+        // Mutually exclusive with `email`.
+        string wallet_id = 3;
+    }
+}
+message RemoveRoleAssignmentResponse {}
+
+// Request to fetch the list of roles assigned to the current account
+message ListRoleAssignmentsRequest {
+    oneof account {
+        // Email address of account to unassign role from.
+        // Mutually exclusive with `walletId`.
+        string email = 2;
+        // Wallet ID of account to unassign role from.
+        // Mutually exclusive with `email`.
+        string wallet_id = 3;
+    }
+}
+message ListRoleAssignmentsResponse {
+    // List of roles
+    repeated string roles = 1;
+}
+
+// Request to fetch the available roles in the current ecosystem
+message ListAvailableRolesRequest {}
+message ListAvailableRolesResponse {
+    // List of roles
+    repeated string roles = 1;
 }
 
 service Provider {
@@ -514,4 +568,22 @@ service Provider {
 
     // Search for issuers/providers/verifiers in the current ecosystem
     rpc SearchWalletConfigurations(SearchWalletConfigurationsRequest) returns (SearchWalletConfigurationResponse);
+}
+
+// Access Management service provides methods to manage access to ecosystem resources
+// such by assigning roles and permissions to wallet accounts
+service AccessManagement {
+    // Adds a role assignment to an account
+    rpc AddRoleAssignment(AddRoleAssignmentRequest) returns (AddRoleAssignmentResponse);
+
+    // Removes a role assignment from the account
+    rpc RemoveRoleAssignment(RemoveRoleAssignmentRequest) returns (RemoveRoleAssignmentResponse);
+
+    // List the role assignments for the given account
+    rpc ListRoleAssignments(ListRoleAssignmentsRequest) returns (ListRoleAssignmentsResponse);
+
+    // List the roles available in the ecosystem
+    rpc ListAvailableRoles(ListAvailableRolesRequest) returns (ListAvailableRolesResponse) {
+        option (options.sdk_template_option).ignore = true;
+    }
 }
