@@ -19,6 +19,7 @@ class EventType(betterproto.Enum):
     TEMPLATE_DELETED = 11
     WALLET_CREATED = 15
     ITEM_RECEIVED = 16
+    CREDENTIAL_ISSUED = 17
 
 
 @dataclass(eq=False, repr=False)

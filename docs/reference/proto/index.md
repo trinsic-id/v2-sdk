@@ -780,6 +780,7 @@ All event types
 | TEMPLATE_DELETED | 11 |  |
 | WALLET_CREATED | 15 |  |
 | ITEM_RECEIVED | 16 |  |
+| CREDENTIAL_ISSUED | 17 |  |
 
 
  <!-- end enums -->
@@ -863,6 +864,20 @@ Enum of all supported DID Methods
 
 
 
+<a name="services-provider-v1-AccessManagement"></a>
+
+### Service - AccessManagement
+Access Management service provides methods to manage access to ecosystem resources
+such by assigning roles and permissions to wallet accounts
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| AddRoleAssignment | [AddRoleAssignmentRequest](/reference/proto#services-provider-v1-AddRoleAssignmentRequest) | [AddRoleAssignmentResponse](/reference/proto#services-provider-v1-AddRoleAssignmentResponse) | Adds a role assignment to an account |
+| RemoveRoleAssignment | [RemoveRoleAssignmentRequest](/reference/proto#services-provider-v1-RemoveRoleAssignmentRequest) | [RemoveRoleAssignmentResponse](/reference/proto#services-provider-v1-RemoveRoleAssignmentResponse) | Removes a role assignment from the account |
+| ListRoleAssignments | [ListRoleAssignmentsRequest](/reference/proto#services-provider-v1-ListRoleAssignmentsRequest) | [ListRoleAssignmentsResponse](/reference/proto#services-provider-v1-ListRoleAssignmentsResponse) | List the role assignments for the given account |
+| ListAvailableRoles | [ListAvailableRolesRequest](/reference/proto#services-provider-v1-ListAvailableRolesRequest) | [ListAvailableRolesResponse](/reference/proto#services-provider-v1-ListAvailableRolesResponse) | List the roles available in the ecosystem |
+
+
 <a name="services-provider-v1-Provider"></a>
 
 ### Service - Provider
@@ -890,6 +905,33 @@ Enum of all supported DID Methods
 | SearchWalletConfigurations | [SearchWalletConfigurationsRequest](/reference/proto#services-provider-v1-SearchWalletConfigurationsRequest) | [SearchWalletConfigurationResponse](/reference/proto#services-provider-v1-SearchWalletConfigurationResponse) | Search for issuers/providers/verifiers in the current ecosystem |
 
  <!-- end services -->
+
+
+<a name="services-provider-v1-AddRoleAssignmentRequest"></a>
+
+### AddRoleAssignmentRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| role | [string](/reference/proto#string) | Role to assign |
+| email | [string](/reference/proto#string) | Email address of account to assign role to. Mutually exclusive with `walletId`. |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of account to assign role to. Mutually exclusive with `email`. |
+
+
+
+
+
+
+<a name="services-provider-v1-AddRoleAssignmentResponse"></a>
+
+### AddRoleAssignmentResponse
+
+
+
+
+
 
 
 <a name="services-provider-v1-AddWebhookRequest"></a>
@@ -1378,6 +1420,62 @@ Options for creation of DID on the ION network
 
 
 
+<a name="services-provider-v1-ListAvailableRolesRequest"></a>
+
+### ListAvailableRolesRequest
+Request to fetch the available roles in the current ecosystem
+
+
+
+
+
+
+<a name="services-provider-v1-ListAvailableRolesResponse"></a>
+
+### ListAvailableRolesResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| roles | [string](/reference/proto#string)[] | List of roles |
+
+
+
+
+
+
+<a name="services-provider-v1-ListRoleAssignmentsRequest"></a>
+
+### ListRoleAssignmentsRequest
+Request to fetch the list of roles assigned to the current account
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| email | [string](/reference/proto#string) | Email address of account to unassign role from. Mutually exclusive with `walletId`. |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of account to unassign role from. Mutually exclusive with `email`. |
+
+
+
+
+
+
+<a name="services-provider-v1-ListRoleAssignmentsResponse"></a>
+
+### ListRoleAssignmentsResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| roles | [string](/reference/proto#string)[] | List of roles |
+
+
+
+
+
+
 <a name="services-provider-v1-PublicEcosystemInformation"></a>
 
 ### PublicEcosystemInformation
@@ -1417,6 +1515,33 @@ Options for creation of DID on the ION network
 | ----- | ---- | ----------- |
 | domain | [string](/reference/proto#string) | Domain URL verified |
 | domain_verified | [bool](/reference/proto#bool) | Specifies if the above `domain` was successfully verified |
+
+
+
+
+
+
+<a name="services-provider-v1-RemoveRoleAssignmentRequest"></a>
+
+### RemoveRoleAssignmentRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| role | [string](/reference/proto#string) | Role to unassign |
+| email | [string](/reference/proto#string) | Email address of account to unassign role from. Mutually exclusive with `walletId`. |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of account to unassign role from. Mutually exclusive with `email`. |
+
+
+
+
+
+
+<a name="services-provider-v1-RemoveRoleAssignmentResponse"></a>
+
+### RemoveRoleAssignmentResponse
+
 
 
 
@@ -1589,6 +1714,7 @@ Strongly typed information about wallet configurations
 | sms | [string](/reference/proto#string) |  |
 | wallet_id | [string](/reference/proto#string) |  |
 | public_did | [string](/reference/proto#string) |  |
+| config_type | [string](/reference/proto#string) |  |
 
 
 

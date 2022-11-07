@@ -839,12 +839,13 @@ const WalletConfiguration$json = const {
     const {'1': 'sms', '3': 3, '4': 1, '5': 9, '8': const {}, '10': 'sms'},
     const {'1': 'wallet_id', '3': 4, '4': 1, '5': 9, '10': 'walletId'},
     const {'1': 'public_did', '3': 5, '4': 1, '5': 9, '10': 'publicDid'},
+    const {'1': 'config_type', '3': 6, '4': 1, '5': 9, '10': 'configType'},
   ],
 };
 
 /// Descriptor for `WalletConfiguration`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List walletConfigurationDescriptor = $convert.base64Decode(
-    'ChNXYWxsZXRDb25maWd1cmF0aW9uEhIKBG5hbWUYASABKAlSBG5hbWUSGgoFZW1haWwYAiABKAlCBICmHQFSBWVtYWlsEhYKA3NtcxgDIAEoCUIEgKYdAVIDc21zEhsKCXdhbGxldF9pZBgEIAEoCVIId2FsbGV0SWQSHQoKcHVibGljX2RpZBgFIAEoCVIJcHVibGljRGlk');
+    'ChNXYWxsZXRDb25maWd1cmF0aW9uEhIKBG5hbWUYASABKAlSBG5hbWUSGgoFZW1haWwYAiABKAlCBICmHQFSBWVtYWlsEhYKA3NtcxgDIAEoCUIEgKYdAVIDc21zEhsKCXdhbGxldF9pZBgEIAEoCVIId2FsbGV0SWQSHQoKcHVibGljX2RpZBgFIAEoCVIJcHVibGljRGlkEh8KC2NvbmZpZ190eXBlGAYgASgJUgpjb25maWdUeXBl');
 @$core.Deprecated('Use ionOptionsDescriptor instead')
 const IonOptions$json = const {
   '1': 'IonOptions',
@@ -917,3 +918,101 @@ const UpgradeDidResponse$json = const {
 /// Descriptor for `UpgradeDidResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List upgradeDidResponseDescriptor = $convert
     .base64Decode('ChJVcGdyYWRlRGlkUmVzcG9uc2USEAoDZGlkGAEgASgJUgNkaWQ=');
+@$core.Deprecated('Use addRoleAssignmentRequestDescriptor instead')
+const AddRoleAssignmentRequest$json = const {
+  '1': 'AddRoleAssignmentRequest',
+  '2': const [
+    const {'1': 'role', '3': 1, '4': 1, '5': 9, '10': 'role'},
+    const {'1': 'email', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'email'},
+    const {'1': 'wallet_id', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'walletId'},
+  ],
+  '8': const [
+    const {'1': 'account'},
+  ],
+};
+
+/// Descriptor for `AddRoleAssignmentRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List addRoleAssignmentRequestDescriptor =
+    $convert.base64Decode(
+        'ChhBZGRSb2xlQXNzaWdubWVudFJlcXVlc3QSEgoEcm9sZRgBIAEoCVIEcm9sZRIWCgVlbWFpbBgCIAEoCUgAUgVlbWFpbBIdCgl3YWxsZXRfaWQYAyABKAlIAFIId2FsbGV0SWRCCQoHYWNjb3VudA==');
+@$core.Deprecated('Use addRoleAssignmentResponseDescriptor instead')
+const AddRoleAssignmentResponse$json = const {
+  '1': 'AddRoleAssignmentResponse',
+};
+
+/// Descriptor for `AddRoleAssignmentResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List addRoleAssignmentResponseDescriptor =
+    $convert.base64Decode('ChlBZGRSb2xlQXNzaWdubWVudFJlc3BvbnNl');
+@$core.Deprecated('Use removeRoleAssignmentRequestDescriptor instead')
+const RemoveRoleAssignmentRequest$json = const {
+  '1': 'RemoveRoleAssignmentRequest',
+  '2': const [
+    const {'1': 'role', '3': 1, '4': 1, '5': 9, '10': 'role'},
+    const {'1': 'email', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'email'},
+    const {'1': 'wallet_id', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'walletId'},
+  ],
+  '8': const [
+    const {'1': 'account'},
+  ],
+};
+
+/// Descriptor for `RemoveRoleAssignmentRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List removeRoleAssignmentRequestDescriptor =
+    $convert.base64Decode(
+        'ChtSZW1vdmVSb2xlQXNzaWdubWVudFJlcXVlc3QSEgoEcm9sZRgBIAEoCVIEcm9sZRIWCgVlbWFpbBgCIAEoCUgAUgVlbWFpbBIdCgl3YWxsZXRfaWQYAyABKAlIAFIId2FsbGV0SWRCCQoHYWNjb3VudA==');
+@$core.Deprecated('Use removeRoleAssignmentResponseDescriptor instead')
+const RemoveRoleAssignmentResponse$json = const {
+  '1': 'RemoveRoleAssignmentResponse',
+};
+
+/// Descriptor for `RemoveRoleAssignmentResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List removeRoleAssignmentResponseDescriptor =
+    $convert.base64Decode('ChxSZW1vdmVSb2xlQXNzaWdubWVudFJlc3BvbnNl');
+@$core.Deprecated('Use listRoleAssignmentsRequestDescriptor instead')
+const ListRoleAssignmentsRequest$json = const {
+  '1': 'ListRoleAssignmentsRequest',
+  '2': const [
+    const {'1': 'email', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'email'},
+    const {'1': 'wallet_id', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'walletId'},
+  ],
+  '8': const [
+    const {'1': 'account'},
+  ],
+};
+
+/// Descriptor for `ListRoleAssignmentsRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List listRoleAssignmentsRequestDescriptor =
+    $convert.base64Decode(
+        'ChpMaXN0Um9sZUFzc2lnbm1lbnRzUmVxdWVzdBIWCgVlbWFpbBgCIAEoCUgAUgVlbWFpbBIdCgl3YWxsZXRfaWQYAyABKAlIAFIId2FsbGV0SWRCCQoHYWNjb3VudA==');
+@$core.Deprecated('Use listRoleAssignmentsResponseDescriptor instead')
+const ListRoleAssignmentsResponse$json = const {
+  '1': 'ListRoleAssignmentsResponse',
+  '2': const [
+    const {'1': 'roles', '3': 1, '4': 3, '5': 9, '10': 'roles'},
+  ],
+};
+
+/// Descriptor for `ListRoleAssignmentsResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List listRoleAssignmentsResponseDescriptor =
+    $convert.base64Decode(
+        'ChtMaXN0Um9sZUFzc2lnbm1lbnRzUmVzcG9uc2USFAoFcm9sZXMYASADKAlSBXJvbGVz');
+@$core.Deprecated('Use listAvailableRolesRequestDescriptor instead')
+const ListAvailableRolesRequest$json = const {
+  '1': 'ListAvailableRolesRequest',
+};
+
+/// Descriptor for `ListAvailableRolesRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List listAvailableRolesRequestDescriptor =
+    $convert.base64Decode('ChlMaXN0QXZhaWxhYmxlUm9sZXNSZXF1ZXN0');
+@$core.Deprecated('Use listAvailableRolesResponseDescriptor instead')
+const ListAvailableRolesResponse$json = const {
+  '1': 'ListAvailableRolesResponse',
+  '2': const [
+    const {'1': 'roles', '3': 1, '4': 3, '5': 9, '10': 'roles'},
+  ],
+};
+
+/// Descriptor for `ListAvailableRolesResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List listAvailableRolesResponseDescriptor =
+    $convert.base64Decode(
+        'ChpMaXN0QXZhaWxhYmxlUm9sZXNSZXNwb25zZRIUCgVyb2xlcxgBIAMoCVIFcm9sZXM=');
