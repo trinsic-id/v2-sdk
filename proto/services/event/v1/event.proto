@@ -19,26 +19,27 @@ extend google.protobuf.MessageOptions {
 enum EventType {
     PING = 0;
     LOG = 1;
-    
+
     EGF_CREATED = 5;
     EGF_MEMBER_REGISTERED = 6;
     EGF_MEMBER_UNREGISTERED = 7;
-    
+
     TEMPLATE_CREATED = 10;
     TEMPLATE_DELETED = 11;
 
     WALLET_CREATED = 15;
     ITEM_RECEIVED = 16;
+    CREDENTIAL_ISSUED = 17;
 }
 
-// Event 
+// Event
 message Event {
     // UUID of event
     string id = 1;
-    
+
     // Type of event
-    EventType type = 2; 
-    
+    EventType type = 2;
+
     // Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
     string timestamp = 3;
 
@@ -64,7 +65,7 @@ message Ping {
 
     // Timestamp ping was requested, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
     string timestamp = 3;
-    
+
     // Arbitrary message specified when ping was requested
     string message = 4;
 }
@@ -122,10 +123,12 @@ message TemplateCreated {
 // Item inserted into wallet
 message ItemReceived {
     option (event_type) = ITEM_RECEIVED;
-    
+
     // UUID of the new item
     string id = 1;
 
     // Timestamp when the item was received, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`)
     string received = 2;
 }
+
+
