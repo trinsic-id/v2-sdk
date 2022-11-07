@@ -57,6 +57,29 @@ module Services
 
         Stub = Service.rpc_stub_class
       end
+      module AccessManagement
+        # Access Management service provides methods to manage access to ecosystem resources
+        # such by assigning roles and permissions to wallet accounts
+        class Service
+
+          include ::GRPC::GenericService
+
+          self.marshal_class_method = :encode
+          self.unmarshal_class_method = :decode
+          self.service_name = 'services.provider.v1.AccessManagement'
+
+          # Adds a role assignment to an account
+          rpc :AddRoleAssignment, ::Services::Provider::V1::AddRoleAssignmentRequest, ::Services::Provider::V1::AddRoleAssignmentResponse
+          # Removes a role assignment from the account
+          rpc :RemoveRoleAssignment, ::Services::Provider::V1::RemoveRoleAssignmentRequest, ::Services::Provider::V1::RemoveRoleAssignmentResponse
+          # List the role assignments for the given account
+          rpc :ListRoleAssignments, ::Services::Provider::V1::ListRoleAssignmentsRequest, ::Services::Provider::V1::ListRoleAssignmentsResponse
+          # List the roles available in the ecosystem
+          rpc :ListAvailableRoles, ::Services::Provider::V1::ListAvailableRolesRequest, ::Services::Provider::V1::ListAvailableRolesResponse
+        end
+
+        Stub = Service.rpc_stub_class
+      end
     end
   end
 end

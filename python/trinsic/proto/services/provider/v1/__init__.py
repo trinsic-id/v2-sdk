@@ -574,6 +574,7 @@ class WalletConfiguration(betterproto.Message):
     sms: str = betterproto.string_field(3)
     wallet_id: str = betterproto.string_field(4)
     public_did: str = betterproto.string_field(5)
+    config_type: str = betterproto.string_field(6)
 
 
 @dataclass(eq=False, repr=False)
@@ -609,6 +610,87 @@ class UpgradeDidResponse(betterproto.Message):
 
     did: str = betterproto.string_field(1)
     """New DID of wallet"""
+
+
+@dataclass(eq=False, repr=False)
+class AddRoleAssignmentRequest(betterproto.Message):
+    role: str = betterproto.string_field(1)
+    """Role to assign"""
+
+    email: str = betterproto.string_field(2, group="account")
+    """
+    Email address of account to assign role to. Mutually exclusive with
+    `walletId`.
+    """
+
+    wallet_id: str = betterproto.string_field(3, group="account")
+    """
+    Wallet ID of account to assign role to. Mutually exclusive with `email`.
+    """
+
+
+@dataclass(eq=False, repr=False)
+class AddRoleAssignmentResponse(betterproto.Message):
+    pass
+
+
+@dataclass(eq=False, repr=False)
+class RemoveRoleAssignmentRequest(betterproto.Message):
+    role: str = betterproto.string_field(1)
+    """Role to unassign"""
+
+    email: str = betterproto.string_field(2, group="account")
+    """
+    Email address of account to unassign role from. Mutually exclusive with
+    `walletId`.
+    """
+
+    wallet_id: str = betterproto.string_field(3, group="account")
+    """
+    Wallet ID of account to unassign role from. Mutually exclusive with
+    `email`.
+    """
+
+
+@dataclass(eq=False, repr=False)
+class RemoveRoleAssignmentResponse(betterproto.Message):
+    pass
+
+
+@dataclass(eq=False, repr=False)
+class ListRoleAssignmentsRequest(betterproto.Message):
+    """Request to fetch the list of roles assigned to the current account"""
+
+    email: str = betterproto.string_field(2, group="account")
+    """
+    Email address of account to unassign role from. Mutually exclusive with
+    `walletId`.
+    """
+
+    wallet_id: str = betterproto.string_field(3, group="account")
+    """
+    Wallet ID of account to unassign role from. Mutually exclusive with
+    `email`.
+    """
+
+
+@dataclass(eq=False, repr=False)
+class ListRoleAssignmentsResponse(betterproto.Message):
+    roles: List[str] = betterproto.string_field(1)
+    """List of roles"""
+
+
+@dataclass(eq=False, repr=False)
+class ListAvailableRolesRequest(betterproto.Message):
+    """Request to fetch the available roles in the current ecosystem"""
+
+    pass
+
+
+@dataclass(eq=False, repr=False)
+class ListAvailableRolesResponse(betterproto.Message):
+    roles: List[str] = betterproto.string_field(1)
+    """List of roles"""
 
 
 class ProviderStub(betterproto.ServiceStub):
@@ -895,6 +977,72 @@ class ProviderStub(betterproto.ServiceStub):
             "/services.provider.v1.Provider/SearchWalletConfigurations",
             search_wallet_configurations_request,
             SearchWalletConfigurationResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
+
+class AccessManagementStub(betterproto.ServiceStub):
+    async def add_role_assignment(
+        self,
+        add_role_assignment_request: "AddRoleAssignmentRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "AddRoleAssignmentResponse":
+        return await self._unary_unary(
+            "/services.provider.v1.AccessManagement/AddRoleAssignment",
+            add_role_assignment_request,
+            AddRoleAssignmentResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
+    async def remove_role_assignment(
+        self,
+        remove_role_assignment_request: "RemoveRoleAssignmentRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "RemoveRoleAssignmentResponse":
+        return await self._unary_unary(
+            "/services.provider.v1.AccessManagement/RemoveRoleAssignment",
+            remove_role_assignment_request,
+            RemoveRoleAssignmentResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
+    async def list_role_assignments(
+        self,
+        list_role_assignments_request: "ListRoleAssignmentsRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "ListRoleAssignmentsResponse":
+        return await self._unary_unary(
+            "/services.provider.v1.AccessManagement/ListRoleAssignments",
+            list_role_assignments_request,
+            ListRoleAssignmentsResponse,
+            timeout=timeout,
+            deadline=deadline,
+            metadata=metadata,
+        )
+
+    async def list_available_roles(
+        self,
+        list_available_roles_request: "ListAvailableRolesRequest",
+        timeout: Optional[float] = None,
+        deadline: Optional["Deadline"] = None,
+        metadata: Optional["_MetadataLike"] = None,
+    ) -> "ListAvailableRolesResponse":
+        return await self._unary_unary(
+            "/services.provider.v1.AccessManagement/ListAvailableRoles",
+            list_available_roles_request,
+            ListAvailableRolesResponse,
             timeout=timeout,
             deadline=deadline,
             metadata=metadata,
@@ -1199,5 +1347,75 @@ class ProviderBase(ServiceBase):
                 grpclib.const.Cardinality.UNARY_UNARY,
                 SearchWalletConfigurationsRequest,
                 SearchWalletConfigurationResponse,
+            ),
+        }
+
+
+class AccessManagementBase(ServiceBase):
+    async def add_role_assignment(
+        self, add_role_assignment_request: "AddRoleAssignmentRequest"
+    ) -> "AddRoleAssignmentResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def remove_role_assignment(
+        self, remove_role_assignment_request: "RemoveRoleAssignmentRequest"
+    ) -> "RemoveRoleAssignmentResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def list_role_assignments(
+        self, list_role_assignments_request: "ListRoleAssignmentsRequest"
+    ) -> "ListRoleAssignmentsResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def list_available_roles(
+        self, list_available_roles_request: "ListAvailableRolesRequest"
+    ) -> "ListAvailableRolesResponse":
+        raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
+
+    async def __rpc_add_role_assignment(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.add_role_assignment(request)
+        await stream.send_message(response)
+
+    async def __rpc_remove_role_assignment(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.remove_role_assignment(request)
+        await stream.send_message(response)
+
+    async def __rpc_list_role_assignments(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.list_role_assignments(request)
+        await stream.send_message(response)
+
+    async def __rpc_list_available_roles(self, stream: grpclib.server.Stream) -> None:
+        request = await stream.recv_message()
+        response = await self.list_available_roles(request)
+        await stream.send_message(response)
+
+    def __mapping__(self) -> Dict[str, grpclib.const.Handler]:
+        return {
+            "/services.provider.v1.AccessManagement/AddRoleAssignment": grpclib.const.Handler(
+                self.__rpc_add_role_assignment,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                AddRoleAssignmentRequest,
+                AddRoleAssignmentResponse,
+            ),
+            "/services.provider.v1.AccessManagement/RemoveRoleAssignment": grpclib.const.Handler(
+                self.__rpc_remove_role_assignment,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                RemoveRoleAssignmentRequest,
+                RemoveRoleAssignmentResponse,
+            ),
+            "/services.provider.v1.AccessManagement/ListRoleAssignments": grpclib.const.Handler(
+                self.__rpc_list_role_assignments,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                ListRoleAssignmentsRequest,
+                ListRoleAssignmentsResponse,
+            ),
+            "/services.provider.v1.AccessManagement/ListAvailableRoles": grpclib.const.Handler(
+                self.__rpc_list_available_roles,
+                grpclib.const.Cardinality.UNARY_UNARY,
+                ListAvailableRolesRequest,
+                ListAvailableRolesResponse,
             ),
         }

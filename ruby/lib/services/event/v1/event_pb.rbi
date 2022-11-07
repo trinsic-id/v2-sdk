@@ -652,6 +652,7 @@ module Trinsic::Services::Event::EventType
   self::TEMPLATE_DELETED = T.let(11, Integer)
   self::WALLET_CREATED = T.let(15, Integer)
   self::ITEM_RECEIVED = T.let(16, Integer)
+  self::CREDENTIAL_ISSUED = T.let(17, Integer)
 
   sig { params(value: Integer).returns(T.nilable(Symbol)) }
   def self.lookup(value)

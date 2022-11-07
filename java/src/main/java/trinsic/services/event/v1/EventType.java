@@ -31,6 +31,8 @@ public enum EventType implements com.google.protobuf.ProtocolMessageEnum {
   WALLET_CREATED(15),
   /** <code>ITEM_RECEIVED = 16;</code> */
   ITEM_RECEIVED(16),
+  /** <code>CREDENTIAL_ISSUED = 17;</code> */
+  CREDENTIAL_ISSUED(17),
   UNRECOGNIZED(-1),
   ;
 
@@ -52,6 +54,8 @@ public enum EventType implements com.google.protobuf.ProtocolMessageEnum {
   public static final int WALLET_CREATED_VALUE = 15;
   /** <code>ITEM_RECEIVED = 16;</code> */
   public static final int ITEM_RECEIVED_VALUE = 16;
+  /** <code>CREDENTIAL_ISSUED = 17;</code> */
+  public static final int CREDENTIAL_ISSUED_VALUE = 17;
 
   public final int getNumber() {
     if (this == UNRECOGNIZED) {
@@ -95,6 +99,8 @@ public enum EventType implements com.google.protobuf.ProtocolMessageEnum {
         return WALLET_CREATED;
       case 16:
         return ITEM_RECEIVED;
+      case 17:
+        return CREDENTIAL_ISSUED;
       default:
         return null;
     }

@@ -192,6 +192,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :sms, :string, 3
       optional :wallet_id, :string, 4
       optional :public_did, :string, 5
+      optional :config_type, :string, 6
     end
     add_message "services.provider.v1.IonOptions" do
       optional :network, :enum, 1, "services.provider.v1.IonOptions.IonNetwork"
@@ -212,6 +213,38 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_message "services.provider.v1.UpgradeDidResponse" do
       optional :did, :string, 1
+    end
+    add_message "services.provider.v1.AddRoleAssignmentRequest" do
+      optional :role, :string, 1
+      oneof :account do
+        optional :email, :string, 2
+        optional :wallet_id, :string, 3
+      end
+    end
+    add_message "services.provider.v1.AddRoleAssignmentResponse" do
+    end
+    add_message "services.provider.v1.RemoveRoleAssignmentRequest" do
+      optional :role, :string, 1
+      oneof :account do
+        optional :email, :string, 2
+        optional :wallet_id, :string, 3
+      end
+    end
+    add_message "services.provider.v1.RemoveRoleAssignmentResponse" do
+    end
+    add_message "services.provider.v1.ListRoleAssignmentsRequest" do
+      oneof :account do
+        optional :email, :string, 2
+        optional :wallet_id, :string, 3
+      end
+    end
+    add_message "services.provider.v1.ListRoleAssignmentsResponse" do
+      repeated :roles, :string, 1
+    end
+    add_message "services.provider.v1.ListAvailableRolesRequest" do
+    end
+    add_message "services.provider.v1.ListAvailableRolesResponse" do
+      repeated :roles, :string, 1
     end
     add_enum "services.provider.v1.ParticipantType" do
       value :participant_type_individual, 0
@@ -272,6 +305,14 @@ module Services
       IonOptions::IonNetwork = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.IonOptions.IonNetwork").enummodule
       UpgradeDidRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.UpgradeDidRequest").msgclass
       UpgradeDidResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.UpgradeDidResponse").msgclass
+      AddRoleAssignmentRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.AddRoleAssignmentRequest").msgclass
+      AddRoleAssignmentResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.AddRoleAssignmentResponse").msgclass
+      RemoveRoleAssignmentRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.RemoveRoleAssignmentRequest").msgclass
+      RemoveRoleAssignmentResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.RemoveRoleAssignmentResponse").msgclass
+      ListRoleAssignmentsRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.ListRoleAssignmentsRequest").msgclass
+      ListRoleAssignmentsResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.ListRoleAssignmentsResponse").msgclass
+      ListAvailableRolesRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.ListAvailableRolesRequest").msgclass
+      ListAvailableRolesResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.ListAvailableRolesResponse").msgclass
       ParticipantType = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("services.provider.v1.ParticipantType").enummodule
     end
   end
