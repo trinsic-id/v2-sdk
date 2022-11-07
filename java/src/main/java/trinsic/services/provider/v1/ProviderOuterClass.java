@@ -200,6 +200,38 @@ public final class ProviderOuterClass {
       internal_static_services_provider_v1_UpgradeDidResponse_descriptor;
   static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_provider_v1_UpgradeDidResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_provider_v1_AddRoleAssignmentRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_AddRoleAssignmentRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_provider_v1_AddRoleAssignmentResponse_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_AddRoleAssignmentResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_provider_v1_RemoveRoleAssignmentRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_RemoveRoleAssignmentRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_provider_v1_RemoveRoleAssignmentResponse_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_RemoveRoleAssignmentResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_provider_v1_ListRoleAssignmentsRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_ListRoleAssignmentsRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_provider_v1_ListRoleAssignmentsResponse_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_ListRoleAssignmentsResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_provider_v1_ListAvailableRolesRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_ListAvailableRolesRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+      internal_static_services_provider_v1_ListAvailableRolesResponse_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_ListAvailableRolesResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
@@ -350,13 +382,14 @@ public final class ProviderOuterClass {
           + "!SearchWalletConfigurationResponse\022:\n"
           + "\007results\030\001 \003(\0132).services.provider.v1.WalletConfiguration\022\020\n"
           + "\010has_more\030\002 \001(\010\022\032\n"
-          + "\022continuation_token\030\004 \001(\t\"r\n"
+          + "\022continuation_token\030\004 \001(\t\"\207\001\n"
           + "\023WalletConfiguration\022\014\n"
           + "\004name\030\001 \001(\t\022\023\n"
           + "\005email\030\002 \001(\tB\004\200\246\035\001\022\021\n"
           + "\003sms\030\003 \001(\tB\004\200\246\035\001\022\021\n"
           + "\twallet_id\030\004 \001(\t\022\022\n\n"
-          + "public_did\030\005 \001(\t\"r\n\n"
+          + "public_did\030\005 \001(\t\022\023\n"
+          + "\013config_type\030\006 \001(\t\"r\n\n"
           + "IonOptions\022<\n"
           + "\007network\030\001 \001(\0162+.services.provider.v1.IonOptions.IonNetwork\"&\n\n"
           + "IonNetwork\022\013\n"
@@ -370,51 +403,84 @@ public final class ProviderOuterClass {
           + "\007accountB\t\n"
           + "\007options\"!\n"
           + "\022UpgradeDidResponse\022\013\n"
-          + "\003did\030\001 \001(\t*U\n"
+          + "\003did\030\001 \001(\t\"Y\n"
+          + "\030AddRoleAssignmentRequest\022\014\n"
+          + "\004role\030\001 \001(\t\022\017\n"
+          + "\005email\030\002 \001(\tH\000\022\023\n"
+          + "\twallet_id\030\003 \001(\tH\000B\t\n"
+          + "\007account\"\033\n"
+          + "\031AddRoleAssignmentResponse\"\\\n"
+          + "\033RemoveRoleAssignmentRequest\022\014\n"
+          + "\004role\030\001 \001(\t\022\017\n"
+          + "\005email\030\002 \001(\tH\000\022\023\n"
+          + "\twallet_id\030\003 \001(\tH\000B\t\n"
+          + "\007account\"\036\n"
+          + "\034RemoveRoleAssignmentResponse\"M\n"
+          + "\032ListRoleAssignmentsRequest\022\017\n"
+          + "\005email\030\002 \001(\tH\000\022\023\n"
+          + "\twallet_id\030\003 \001(\tH\000B\t\n"
+          + "\007account\",\n"
+          + "\033ListRoleAssignmentsResponse\022\r\n"
+          + "\005roles\030\001 \003(\t\"\033\n"
+          + "\031ListAvailableRolesRequest\"+\n"
+          + "\032ListAvailableRolesResponse\022\r\n"
+          + "\005roles\030\001 \003(\t*U\n"
           + "\017ParticipantType\022\037\n"
           + "\033participant_type_individual\020\000\022!\n"
           + "\035participant_type_organization\020\0012\352\020\n"
           + "\010Provider\022v\n"
-          + "\017CreateEcosystem\022,.services.provider.v1.CreateEcosystemRequest"
-          + "\032-.services.provider.v1.CreateEcosystemResponse\"\006\212\246\035\002\020\001\022n\n"
-          + "\017UpdateEcosystem\022,.services.provider.v1.UpdateEcosystemRequest"
-          + "\032-.services.provider.v1.UpdateEcosystemResponse\022w\n"
-          + "\022GrantAuthorization\022/.services.provider.v1.GrantAuthorizationRequest\0320"
-          + ".services.provider.v1.GrantAuthorizationResponse\022z\n"
-          + "\023RevokeAuthorization\0220.services.provider.v1.RevokeAuthorizationReques"
-          + "t\0321.services.provider.v1.RevokeAuthorizationResponse\022t\n"
-          + "\021GetAuthorizations\022..services.provider.v1.GetAuthorizationsReques"
-          + "t\032/.services.provider.v1.GetAuthorizationsResponse\022_\n\n"
-          + "AddWebhook\022\'.services.prov"
-          + "ider.v1.AddWebhookRequest\032(.services.provider.v1.AddWebhookResponse\022h\n\r"
-          + "DeleteWebhook\022*.services.provider.v1.DeleteWebhoo"
-          + "kRequest\032+.services.provider.v1.DeleteWebhookResponse\022h\n\r"
-          + "EcosystemInfo\022*.services.provider.v1.EcosystemInfoRequest\032+.ser"
-          + "vices.provider.v1.EcosystemInfoResponse\022\213\001\n"
-          + "\026GetPublicEcosystemInfo\0223.services.provider.v1.GetPublicEcosystemInfoRequest\032"
-          + "4.services.provider.v1.GetPublicEcosystemInfoResponse\"\006\212\246\035\002\010\001\022h\n\r"
-          + "GenerateToken\022*.services.provider.v1.GenerateTokenReque"
-          + "st\032+.services.provider.v1.GenerateTokenResponse\022S\n"
-          + "\006Invite\022#.services.provider.v1"
-          + ".InviteRequest\032$.services.provider.v1.InviteResponse\022q\n"
-          + "\020InvitationStatus\022-.services.provider.v1.InvitationStatusRequest\032"
-          + "..services.provider.v1.InvitationStatusResponse\022m\n"
-          + "\014GetOberonKey\022).services.provider.v1.GetOberonKeyRequest\032*.services.pr"
-          + "ovider.v1.GetOberonKeyResponse\"\006\212\246\035\002\010\001\022h\n\r"
-          + "GetEventToken\022*.services.provider.v1.G"
-          + "etEventTokenRequest\032+.services.provider.v1.GetEventTokenResponse\022_\n\n"
-          + "UpgradeDID\022\'.services.provider.v1.UpgradeDidRequest\032"
-          + "(.services.provider.v1.UpgradeDidResponse\022\251\001\n"
-          + " RetrieveDomainVerificationRecord\022=.services.provider.v1.RetrieveDomainVeri"
-          + "ficationRecordRequest\032>.services.provide"
-          + "r.v1.RetrieveDomainVerificationRecordResponse\"\006\212\246\035\002\030\001\022\236\001\n"
-          + "\037RefreshDomainVerificationStatus\022<.services.provider.v1.Refresh"
-          + "DomainVerificationStatusRequest\032=.servic"
-          + "es.provider.v1.RefreshDomainVerificationStatusResponse\022\216\001\n"
-          + "\032SearchWalletConfigurations\0227.services.provider.v1.SearchWalle"
-          + "tConfigurationsRequest\0327.services.provider.v1.SearchWalletConfigurationResponseB^\n"
-          + "\034trinsic.services.provider.v1P\001Z\035servi"
-          + "ces/provider/v1/provider\252\002\034Trinsic.Services.Provider.V1b\006proto3"
+          + "\017CreateEcosystem\022,.services.provider.v1.CreateEcosystemRequest\032-.services.p"
+          + "rovider.v1.CreateEcosystemResponse\"\006\212\246\035\002\020\001\022n\n"
+          + "\017UpdateEcosystem\022,.services.provide"
+          + "r.v1.UpdateEcosystemRequest\032-.services.provider.v1.UpdateEcosystemResponse\022w\n"
+          + "\022GrantAuthorization\022/.services.provider.v1."
+          + "GrantAuthorizationRequest\0320.services.provider.v1.GrantAuthorizationResponse\022z\n"
+          + "\023RevokeAuthorization\0220.services.provider.v"
+          + "1.RevokeAuthorizationRequest\0321.services."
+          + "provider.v1.RevokeAuthorizationResponse\022t\n"
+          + "\021GetAuthorizations\022..services.provider"
+          + ".v1.GetAuthorizationsRequest\032/.services.provider.v1.GetAuthorizationsResponse\022_\n"
+          + "\n"
+          + "AddWebhook\022\'.services.provider.v1.AddWe"
+          + "bhookRequest\032(.services.provider.v1.AddWebhookResponse\022h\n\r"
+          + "DeleteWebhook\022*.services.provider.v1.DeleteWebhookRequest\032+.se"
+          + "rvices.provider.v1.DeleteWebhookResponse\022h\n\r"
+          + "EcosystemInfo\022*.services.provider.v1"
+          + ".EcosystemInfoRequest\032+.services.provider.v1.EcosystemInfoResponse\022\213\001\n"
+          + "\026GetPublicEcosystemInfo\0223.services.provider.v1.Get"
+          + "PublicEcosystemInfoRequest\0324.services.pr"
+          + "ovider.v1.GetPublicEcosystemInfoResponse\"\006\212\246\035\002\010\001\022h\n\r"
+          + "GenerateToken\022*.services.pro"
+          + "vider.v1.GenerateTokenRequest\032+.services.provider.v1.GenerateTokenResponse\022S\n"
+          + "\006Invite\022#.services.provider.v1.InviteReques"
+          + "t\032$.services.provider.v1.InviteResponse\022q\n"
+          + "\020InvitationStatus\022-.services.provider."
+          + "v1.InvitationStatusRequest\032..services.provider.v1.InvitationStatusResponse\022m\n"
+          + "\014GetOberonKey\022).services.provider.v1.GetObe"
+          + "ronKeyRequest\032*.services.provider.v1.GetOberonKeyResponse\"\006\212\246\035\002\010\001\022h\n\r"
+          + "GetEventToken\022*.services.provider.v1.GetEventTokenR"
+          + "equest\032+.services.provider.v1.GetEventTokenResponse\022_\n\n"
+          + "UpgradeDID\022\'.services.pro"
+          + "vider.v1.UpgradeDidRequest\032(.services.provider.v1.UpgradeDidResponse\022\251\001\n"
+          + " RetrieveDomainVerificationRecord\022=.services.pro"
+          + "vider.v1.RetrieveDomainVerificationRecordRequest\032>.services.provider.v1.Retrieve"
+          + "DomainVerificationRecordResponse\"\006\212\246\035\002\030\001\022\236\001\n"
+          + "\037RefreshDomainVerificationStatus\022<.services.provider.v1.RefreshDomainVerific"
+          + "ationStatusRequest\032=.services.provider.v"
+          + "1.RefreshDomainVerificationStatusResponse\022\216\001\n"
+          + "\032SearchWalletConfigurations\0227.services.provider.v1.SearchWalletConfiguratio"
+          + "nsRequest\0327.services.provider.v1.SearchWalletConfigurationResponse2\204\004\n"
+          + "\020AccessManagement\022t\n"
+          + "\021AddRoleAssignment\022..services.provider.v1.AddRoleAssignmentRequest\032/.s"
+          + "ervices.provider.v1.AddRoleAssignmentResponse\022}\n"
+          + "\024RemoveRoleAssignment\0221.services.provider.v1.RemoveRoleAssignmentRequest"
+          + "\0322.services.provider.v1.RemoveRoleAssignmentResponse\022z\n"
+          + "\023ListRoleAssignments\0220.services.provider.v1.ListRoleAssignmentsRe"
+          + "quest\0321.services.provider.v1.ListRoleAssignmentsResponse\022\177\n"
+          + "\022ListAvailableRoles\022/.services.provider.v1.ListAvailableRoles"
+          + "Request\0320.services.provider.v1.ListAvailableRolesResponse\"\006\212\246\035\002\020\001B^\n"
+          + "\034trinsic.services.provider.v1P\001Z\035services/provider/v"
+          + "1/provider\252\002\034Trinsic.Services.Provider.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -758,7 +824,7 @@ public final class ProviderOuterClass {
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_provider_v1_WalletConfiguration_descriptor,
             new java.lang.String[] {
-              "Name", "Email", "Sms", "WalletId", "PublicDid",
+              "Name", "Email", "Sms", "WalletId", "PublicDid", "ConfigType",
             });
     internal_static_services_provider_v1_IonOptions_descriptor =
         getDescriptor().getMessageTypes().get(43);
@@ -783,6 +849,64 @@ public final class ProviderOuterClass {
             internal_static_services_provider_v1_UpgradeDidResponse_descriptor,
             new java.lang.String[] {
               "Did",
+            });
+    internal_static_services_provider_v1_AddRoleAssignmentRequest_descriptor =
+        getDescriptor().getMessageTypes().get(46);
+    internal_static_services_provider_v1_AddRoleAssignmentRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_provider_v1_AddRoleAssignmentRequest_descriptor,
+            new java.lang.String[] {
+              "Role", "Email", "WalletId", "Account",
+            });
+    internal_static_services_provider_v1_AddRoleAssignmentResponse_descriptor =
+        getDescriptor().getMessageTypes().get(47);
+    internal_static_services_provider_v1_AddRoleAssignmentResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_provider_v1_AddRoleAssignmentResponse_descriptor,
+            new java.lang.String[] {});
+    internal_static_services_provider_v1_RemoveRoleAssignmentRequest_descriptor =
+        getDescriptor().getMessageTypes().get(48);
+    internal_static_services_provider_v1_RemoveRoleAssignmentRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_provider_v1_RemoveRoleAssignmentRequest_descriptor,
+            new java.lang.String[] {
+              "Role", "Email", "WalletId", "Account",
+            });
+    internal_static_services_provider_v1_RemoveRoleAssignmentResponse_descriptor =
+        getDescriptor().getMessageTypes().get(49);
+    internal_static_services_provider_v1_RemoveRoleAssignmentResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_provider_v1_RemoveRoleAssignmentResponse_descriptor,
+            new java.lang.String[] {});
+    internal_static_services_provider_v1_ListRoleAssignmentsRequest_descriptor =
+        getDescriptor().getMessageTypes().get(50);
+    internal_static_services_provider_v1_ListRoleAssignmentsRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_provider_v1_ListRoleAssignmentsRequest_descriptor,
+            new java.lang.String[] {
+              "Email", "WalletId", "Account",
+            });
+    internal_static_services_provider_v1_ListRoleAssignmentsResponse_descriptor =
+        getDescriptor().getMessageTypes().get(51);
+    internal_static_services_provider_v1_ListRoleAssignmentsResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_provider_v1_ListRoleAssignmentsResponse_descriptor,
+            new java.lang.String[] {
+              "Roles",
+            });
+    internal_static_services_provider_v1_ListAvailableRolesRequest_descriptor =
+        getDescriptor().getMessageTypes().get(52);
+    internal_static_services_provider_v1_ListAvailableRolesRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_provider_v1_ListAvailableRolesRequest_descriptor,
+            new java.lang.String[] {});
+    internal_static_services_provider_v1_ListAvailableRolesResponse_descriptor =
+        getDescriptor().getMessageTypes().get(53);
+    internal_static_services_provider_v1_ListAvailableRolesResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_provider_v1_ListAvailableRolesResponse_descriptor,
+            new java.lang.String[] {
+              "Roles",
             });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();

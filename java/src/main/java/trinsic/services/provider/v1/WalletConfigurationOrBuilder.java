@@ -72,4 +72,17 @@ public interface WalletConfigurationOrBuilder
    * @return The bytes for publicDid.
    */
   com.google.protobuf.ByteString getPublicDidBytes();
+
+  /**
+   * <code>string config_type = 6;</code>
+   *
+   * @return The configType.
+   */
+  java.lang.String getConfigType();
+  /**
+   * <code>string config_type = 6;</code>
+   *
+   * @return The bytes for configType.
+   */
+  com.google.protobuf.ByteString getConfigTypeBytes();
 }
