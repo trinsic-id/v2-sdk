@@ -28,6 +28,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     sms_ = "";
     walletId_ = "";
     publicDid_ = "";
+    configType_ = "";
   }
 
   @java.lang.Override
@@ -241,6 +242,43 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     }
   }
 
+  public static final int CONFIG_TYPE_FIELD_NUMBER = 6;
+  private volatile java.lang.Object configType_;
+  /**
+   * <code>string config_type = 6;</code>
+   *
+   * @return The configType.
+   */
+  @java.lang.Override
+  public java.lang.String getConfigType() {
+    java.lang.Object ref = configType_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      configType_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string config_type = 6;</code>
+   *
+   * @return The bytes for configType.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getConfigTypeBytes() {
+    java.lang.Object ref = configType_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      configType_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -270,6 +308,9 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(publicDid_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 5, publicDid_);
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(configType_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 6, configType_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -294,6 +335,9 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(publicDid_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, publicDid_);
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(configType_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, configType_);
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -315,6 +359,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     if (!getSms().equals(other.getSms())) return false;
     if (!getWalletId().equals(other.getWalletId())) return false;
     if (!getPublicDid().equals(other.getPublicDid())) return false;
+    if (!getConfigType().equals(other.getConfigType())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -336,6 +381,8 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
     hash = (53 * hash) + getWalletId().hashCode();
     hash = (37 * hash) + PUBLIC_DID_FIELD_NUMBER;
     hash = (53 * hash) + getPublicDid().hashCode();
+    hash = (37 * hash) + CONFIG_TYPE_FIELD_NUMBER;
+    hash = (53 * hash) + getConfigType().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -484,6 +531,8 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
 
       publicDid_ = "";
 
+      configType_ = "";
+
       return this;
     }
 
@@ -516,6 +565,7 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       result.sms_ = sms_;
       result.walletId_ = walletId_;
       result.publicDid_ = publicDid_;
+      result.configType_ = configType_;
       onBuilt();
       return result;
     }
@@ -586,6 +636,10 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
         publicDid_ = other.publicDid_;
         onChanged();
       }
+      if (!other.getConfigType().isEmpty()) {
+        configType_ = other.configType_;
+        onChanged();
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -642,6 +696,12 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
 
                 break;
               } // case 42
+            case 50:
+              {
+                configType_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 50
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -1035,6 +1095,82 @@ public final class WalletConfiguration extends com.google.protobuf.GeneratedMess
       checkByteStringIsUtf8(value);
 
       publicDid_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object configType_ = "";
+    /**
+     * <code>string config_type = 6;</code>
+     *
+     * @return The configType.
+     */
+    public java.lang.String getConfigType() {
+      java.lang.Object ref = configType_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        configType_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string config_type = 6;</code>
+     *
+     * @return The bytes for configType.
+     */
+    public com.google.protobuf.ByteString getConfigTypeBytes() {
+      java.lang.Object ref = configType_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        configType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string config_type = 6;</code>
+     *
+     * @param value The configType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setConfigType(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      configType_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string config_type = 6;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearConfigType() {
+
+      configType_ = getDefaultInstance().getConfigType();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string config_type = 6;</code>
+     *
+     * @param value The bytes for configType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setConfigTypeBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
+      configType_ = value;
       onChanged();
       return this;
     }

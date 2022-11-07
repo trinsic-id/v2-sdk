@@ -3066,7 +3066,8 @@ class Services::Provider::V1::WalletConfiguration
       email: T.nilable(String),
       sms: T.nilable(String),
       wallet_id: T.nilable(String),
-      public_did: T.nilable(String)
+      public_did: T.nilable(String),
+      config_type: T.nilable(String)
     ).void
   end
   def initialize(
@@ -3074,7 +3075,8 @@ class Services::Provider::V1::WalletConfiguration
     email: "",
     sms: "",
     wallet_id: "",
-    public_did: ""
+    public_did: "",
+    config_type: ""
   )
   end
 
@@ -3136,6 +3138,18 @@ class Services::Provider::V1::WalletConfiguration
 
   sig { void }
   def clear_public_did
+  end
+
+  sig { returns(String) }
+  def config_type
+  end
+
+  sig { params(value: String).void }
+  def config_type=(value)
+  end
+
+  sig { void }
+  def clear_config_type
   end
 
   sig { params(field: String).returns(T.untyped) }
@@ -3366,6 +3380,511 @@ class Services::Provider::V1::UpgradeDidResponse
 
   sig { void }
   def clear_did
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::AddRoleAssignmentRequest
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::AddRoleAssignmentRequest) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::AddRoleAssignmentRequest).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::AddRoleAssignmentRequest) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::AddRoleAssignmentRequest, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      role: T.nilable(String),
+      email: T.nilable(String),
+      wallet_id: T.nilable(String)
+    ).void
+  end
+  def initialize(
+    role: "",
+    email: "",
+    wallet_id: ""
+  )
+  end
+
+  sig { returns(String) }
+  def role
+  end
+
+  sig { params(value: String).void }
+  def role=(value)
+  end
+
+  sig { void }
+  def clear_role
+  end
+
+  sig { returns(String) }
+  def email
+  end
+
+  sig { params(value: String).void }
+  def email=(value)
+  end
+
+  sig { void }
+  def clear_email
+  end
+
+  sig { returns(String) }
+  def wallet_id
+  end
+
+  sig { params(value: String).void }
+  def wallet_id=(value)
+  end
+
+  sig { void }
+  def clear_wallet_id
+  end
+
+  sig { returns(T.nilable(Symbol)) }
+  def account
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::AddRoleAssignmentResponse
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::AddRoleAssignmentResponse) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::AddRoleAssignmentResponse).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::AddRoleAssignmentResponse) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::AddRoleAssignmentResponse, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig {void}
+  def initialize; end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::RemoveRoleAssignmentRequest
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::RemoveRoleAssignmentRequest) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::RemoveRoleAssignmentRequest).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::RemoveRoleAssignmentRequest) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::RemoveRoleAssignmentRequest, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      role: T.nilable(String),
+      email: T.nilable(String),
+      wallet_id: T.nilable(String)
+    ).void
+  end
+  def initialize(
+    role: "",
+    email: "",
+    wallet_id: ""
+  )
+  end
+
+  sig { returns(String) }
+  def role
+  end
+
+  sig { params(value: String).void }
+  def role=(value)
+  end
+
+  sig { void }
+  def clear_role
+  end
+
+  sig { returns(String) }
+  def email
+  end
+
+  sig { params(value: String).void }
+  def email=(value)
+  end
+
+  sig { void }
+  def clear_email
+  end
+
+  sig { returns(String) }
+  def wallet_id
+  end
+
+  sig { params(value: String).void }
+  def wallet_id=(value)
+  end
+
+  sig { void }
+  def clear_wallet_id
+  end
+
+  sig { returns(T.nilable(Symbol)) }
+  def account
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::RemoveRoleAssignmentResponse
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::RemoveRoleAssignmentResponse) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::RemoveRoleAssignmentResponse).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::RemoveRoleAssignmentResponse) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::RemoveRoleAssignmentResponse, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig {void}
+  def initialize; end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::ListRoleAssignmentsRequest
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::ListRoleAssignmentsRequest) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::ListRoleAssignmentsRequest).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::ListRoleAssignmentsRequest) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::ListRoleAssignmentsRequest, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      email: T.nilable(String),
+      wallet_id: T.nilable(String)
+    ).void
+  end
+  def initialize(
+    email: "",
+    wallet_id: ""
+  )
+  end
+
+  sig { returns(String) }
+  def email
+  end
+
+  sig { params(value: String).void }
+  def email=(value)
+  end
+
+  sig { void }
+  def clear_email
+  end
+
+  sig { returns(String) }
+  def wallet_id
+  end
+
+  sig { params(value: String).void }
+  def wallet_id=(value)
+  end
+
+  sig { void }
+  def clear_wallet_id
+  end
+
+  sig { returns(T.nilable(Symbol)) }
+  def account
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::ListRoleAssignmentsResponse
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::ListRoleAssignmentsResponse) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::ListRoleAssignmentsResponse).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::ListRoleAssignmentsResponse) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::ListRoleAssignmentsResponse, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      roles: T.nilable(T::Array[String])
+    ).void
+  end
+  def initialize(
+    roles: []
+  )
+  end
+
+  sig { returns(T::Array[String]) }
+  def roles
+  end
+
+  sig { params(value: Google::Protobuf::RepeatedField).void }
+  def roles=(value)
+  end
+
+  sig { void }
+  def clear_roles
+  end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::ListAvailableRolesRequest
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::ListAvailableRolesRequest) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::ListAvailableRolesRequest).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::ListAvailableRolesRequest) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::ListAvailableRolesRequest, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig {void}
+  def initialize; end
+
+  sig { params(field: String).returns(T.untyped) }
+  def [](field)
+  end
+
+  sig { params(field: String, value: T.untyped).void }
+  def []=(field, value)
+  end
+
+  sig { returns(T::Hash[Symbol, T.untyped]) }
+  def to_h
+  end
+end
+
+class Services::Provider::V1::ListAvailableRolesResponse
+  include Google::Protobuf
+  include Google::Protobuf::MessageExts
+  extend Google::Protobuf::MessageExts::ClassMethods
+
+  sig { params(str: String).returns(Services::Provider::V1::ListAvailableRolesResponse) }
+  def self.decode(str)
+  end
+
+  sig { params(msg: Services::Provider::V1::ListAvailableRolesResponse).returns(String) }
+  def self.encode(msg)
+  end
+
+  sig { params(str: String, kw: T.untyped).returns(Services::Provider::V1::ListAvailableRolesResponse) }
+  def self.decode_json(str, **kw)
+  end
+
+  sig { params(msg: Services::Provider::V1::ListAvailableRolesResponse, kw: T.untyped).returns(String) }
+  def self.encode_json(msg, **kw)
+  end
+
+  sig { returns(Google::Protobuf::Descriptor) }
+  def self.descriptor
+  end
+
+  sig do
+    params(
+      roles: T.nilable(T::Array[String])
+    ).void
+  end
+  def initialize(
+    roles: []
+  )
+  end
+
+  sig { returns(T::Array[String]) }
+  def roles
+  end
+
+  sig { params(value: Google::Protobuf::RepeatedField).void }
+  def roles=(value)
+  end
+
+  sig { void }
+  def clear_roles
   end
 
   sig { params(field: String).returns(T.untyped) }
