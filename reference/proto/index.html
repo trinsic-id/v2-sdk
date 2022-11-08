@@ -2516,6 +2516,102 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#servicesproviderv1access-managementproto" class="md-nav__link">
+    <span class="md-ellipsis">
+      services/provider/v1/access-management.proto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="services/provider/v1/access-management.proto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-accessmanagement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service - AccessManagement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addroleassignmentrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      AddRoleAssignmentRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addroleassignmentresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      AddRoleAssignmentResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listavailablerolesrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      ListAvailableRolesRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listavailablerolesresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      ListAvailableRolesResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listroleassignmentsrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      ListRoleAssignmentsRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listroleassignmentsresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      ListRoleAssignmentsResponse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removeroleassignmentrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      RemoveRoleAssignmentRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removeroleassignmentresponse" class="md-nav__link">
+    <span class="md-ellipsis">
+      RemoveRoleAssignmentResponse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#servicesverifiable-credentialstemplatesv1templatesproto" class="md-nav__link">
     <span class="md-ellipsis">
       services/verifiable-credentials/templates/v1/templates.proto
@@ -4561,6 +4657,11 @@ like email, SMS, etc.</p>
 <td>16</td>
 <td></td>
 </tr>
+<tr>
+<td>CREDENTIAL_ISSUED</td>
+<td>17</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <!-- end enums -->
@@ -5807,6 +5908,11 @@ to verify authentication token validity</p>
 <td><a href="/reference/proto#string">string</a></td>
 <td></td>
 </tr>
+<tr>
+<td>config_type</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <p><a name="services-provider-v1-WebhookConfig"></a></p>
@@ -5925,6 +6031,182 @@ to verify authentication token validity</p>
 </tr>
 </tbody>
 </table>
+<!-- end enums -->
+
+<!-- end HasExtensions -->
+
+<p><a name="services_provider_v1_access-management-proto"></a></p>
+<p align="right"><a href="#top">Top</a></p>
+
+<h2 id="servicesproviderv1access-managementproto">services/provider/v1/access-management.proto<a class="headerlink" href="#servicesproviderv1access-managementproto" title="Permanent link">&para;</a></h2>
+<p><a name="services-provider-v1-AccessManagement"></a></p>
+<h3 id="service-accessmanagement">Service - AccessManagement<a class="headerlink" href="#service-accessmanagement" title="Permanent link">&para;</a></h3>
+<p>Access Management service provides methods to manage access to ecosystem resources
+such by assigning roles and permissions to wallet accounts</p>
+<table>
+<thead>
+<tr>
+<th>Method Name</th>
+<th>Request Type</th>
+<th>Response Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AddRoleAssignment</td>
+<td><a href="/reference/proto#services-provider-v1-AddRoleAssignmentRequest">AddRoleAssignmentRequest</a></td>
+<td><a href="/reference/proto#services-provider-v1-AddRoleAssignmentResponse">AddRoleAssignmentResponse</a></td>
+<td>Adds a role assignment to an account</td>
+</tr>
+<tr>
+<td>RemoveRoleAssignment</td>
+<td><a href="/reference/proto#services-provider-v1-RemoveRoleAssignmentRequest">RemoveRoleAssignmentRequest</a></td>
+<td><a href="/reference/proto#services-provider-v1-RemoveRoleAssignmentResponse">RemoveRoleAssignmentResponse</a></td>
+<td>Removes a role assignment from the account</td>
+</tr>
+<tr>
+<td>ListRoleAssignments</td>
+<td><a href="/reference/proto#services-provider-v1-ListRoleAssignmentsRequest">ListRoleAssignmentsRequest</a></td>
+<td><a href="/reference/proto#services-provider-v1-ListRoleAssignmentsResponse">ListRoleAssignmentsResponse</a></td>
+<td>List the role assignments for the given account</td>
+</tr>
+<tr>
+<td>ListAvailableRoles</td>
+<td><a href="/reference/proto#services-provider-v1-ListAvailableRolesRequest">ListAvailableRolesRequest</a></td>
+<td><a href="/reference/proto#services-provider-v1-ListAvailableRolesResponse">ListAvailableRolesResponse</a></td>
+<td>List the roles available in the ecosystem</td>
+</tr>
+</tbody>
+</table>
+<!-- end services -->
+
+<p><a name="services-provider-v1-AddRoleAssignmentRequest"></a></p>
+<h3 id="addroleassignmentrequest">AddRoleAssignmentRequest<a class="headerlink" href="#addroleassignmentrequest" title="Permanent link">&para;</a></h3>
+<p>Role management</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>role</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Role to assign</td>
+</tr>
+<tr>
+<td>email</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Email address of account to assign role to. Mutually exclusive with <code>walletId</code>.</td>
+</tr>
+<tr>
+<td>wallet_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Wallet ID of account to assign role to. Mutually exclusive with <code>email</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-AddRoleAssignmentResponse"></a></p>
+<h3 id="addroleassignmentresponse">AddRoleAssignmentResponse<a class="headerlink" href="#addroleassignmentresponse" title="Permanent link">&para;</a></h3>
+<p><a name="services-provider-v1-ListAvailableRolesRequest"></a></p>
+<h3 id="listavailablerolesrequest">ListAvailableRolesRequest<a class="headerlink" href="#listavailablerolesrequest" title="Permanent link">&para;</a></h3>
+<p>Request to fetch the available roles in the current ecosystem</p>
+<p><a name="services-provider-v1-ListAvailableRolesResponse"></a></p>
+<h3 id="listavailablerolesresponse">ListAvailableRolesResponse<a class="headerlink" href="#listavailablerolesresponse" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>roles</td>
+<td><a href="/reference/proto#string">string</a>[]</td>
+<td>List of roles</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-ListRoleAssignmentsRequest"></a></p>
+<h3 id="listroleassignmentsrequest">ListRoleAssignmentsRequest<a class="headerlink" href="#listroleassignmentsrequest" title="Permanent link">&para;</a></h3>
+<p>Request to fetch the list of roles assigned to the current account</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>email</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Email address of account to unassign role from. Mutually exclusive with <code>walletId</code>.</td>
+</tr>
+<tr>
+<td>wallet_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Wallet ID of account to unassign role from. Mutually exclusive with <code>email</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-ListRoleAssignmentsResponse"></a></p>
+<h3 id="listroleassignmentsresponse">ListRoleAssignmentsResponse<a class="headerlink" href="#listroleassignmentsresponse" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>roles</td>
+<td><a href="/reference/proto#string">string</a>[]</td>
+<td>List of roles</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-RemoveRoleAssignmentRequest"></a></p>
+<h3 id="removeroleassignmentrequest">RemoveRoleAssignmentRequest<a class="headerlink" href="#removeroleassignmentrequest" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>role</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Role to unassign</td>
+</tr>
+<tr>
+<td>email</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Email address of account to unassign role from. Mutually exclusive with <code>walletId</code>.</td>
+</tr>
+<tr>
+<td>wallet_id</td>
+<td><a href="/reference/proto#string">string</a></td>
+<td>Wallet ID of account to unassign role from. Mutually exclusive with <code>email</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="services-provider-v1-RemoveRoleAssignmentResponse"></a></p>
+<h3 id="removeroleassignmentresponse">RemoveRoleAssignmentResponse<a class="headerlink" href="#removeroleassignmentresponse" title="Permanent link">&para;</a></h3>
+<!-- end messages -->
+
 <!-- end enums -->
 
 <!-- end HasExtensions -->
