@@ -15,6 +15,7 @@ A zero-knowledge proof (ZKP) allows a user to prove some information is true wit
 The most important application of zero-knowledge proofs today is the ability to perform selective disclosure on the contents of a verifiable credential. This is important for the obvious privacy reasons related to data minimization, but it’s also important for the less-obvious privacy reasons of obfuscating correlatable identifiers from verifiable presentations. Over time we will add the capability for providers to offer verifiers ZKP capabilities that allow computation on values, such as ‘*is `GPA` > 3.0’* or *‘does `home_address` contain “New York”’.*
 
 Trinsic’s ZKP implementation is based on an extremely performant algorithm called BBS+ which is currently being standardized. To learn more, see here.
+<!-- TODO: add link to the bbs+ algorithm -->
 
 ## Using verifications in your app
 
@@ -31,3 +32,4 @@ Most successful providers do significant product work to understand how users an
 ## Adoption tools
 
 The first adoption tool Trinsic provides for easy verifications is an OpenID Connect (OIDC) service to fit into the legacy systems and mental models that verifiers and consumers are already familiar with. To learn more about setting up your OIDC app, please see the following documentation.
+<!-- TODO: add link to the documentation describing OIDC app setup -->
