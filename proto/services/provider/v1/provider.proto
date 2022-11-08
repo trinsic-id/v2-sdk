@@ -411,6 +411,7 @@ message WalletConfiguration {
     string sms = 3  [(options.optional)=true];
     string wallet_id = 4;
     string public_did = 5;
+    string config_type = 6;
 }
 
 // Options for creation of DID on the ION network
