@@ -5,7 +5,10 @@ Our mission is to make the world more accessible. Standards are an important par
 
 ### Interoperability
 
-There are two kinds of interoperability: 1. Everyone use the same code, so everyone is interoperable interoperability, and 2. Everyone implements against a common, agreed-upon standard interoperability.
+There are two kinds of interoperability:
+
+1. Everyone use the same code, so everyone is interoperable
+2. Everyone implements against a common, agreed-upon standard
 
 Realistically any interoperability will exist on a spectrum between these two points. For example, NFTs on Ethereum will be interoperable within that community if they adhere to the EIP-721, and seed phrase recovery for Bitcoin wallets will be interoperable within that community if they adhere to the BIP39 standard. While these examples sound like the second kind of interoperability, those NFTs won’t work outside the Ethereum ecosystem, nor will Bitcoin wallets be recoverable into wallets that don’t support Bitcoin. Thus we see, interoperability is not a black & white issue.
 

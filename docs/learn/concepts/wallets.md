@@ -5,11 +5,11 @@ In Trinsic’s platform, identity wallets are secure, partitioned data stores sc
 - Cloud-based data store
 - Edge-based authentication keys
 
-For a deeper-dive into how hybrid-cloud wallets work, see our security overview. 
+For a deeper-dive into how hybrid-cloud wallets work, see our [security overview](/learn/platform/security). 
 
 ### How to use wallets in your app
 
-When a user creates an account in your product, you will create a wallet for them. This wallet is tied to the user’s identity using either their email or phone number (for now)—after the user enters the code to prove control of their identifier and claim their wallet, you’ll be off to the races. 
+When a user creates an account in your product, you will create a wallet for them. This wallet is tied to the user’s identity using either their email or phone number (for now) - after the user enters the code to prove control of their identifier and claim their wallet, you’ll be off to the races. 
 
 The user will interact with and control their wallet through your application. From your application’s perspective, wallet storage should be treated in parallel with the database you use to manage user data. When users obtain credentials from inside or outside your ecosystem, those credentials will be inserted in the wallet. When users want to share credentials with verifiers, your product will need to obtain user consent before the data is shared.
 
