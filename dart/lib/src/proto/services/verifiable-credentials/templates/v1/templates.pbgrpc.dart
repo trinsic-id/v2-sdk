@@ -10,73 +10,73 @@ import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
-import 'templates.pb.dart' as $3;
+import 'templates.pb.dart' as $4;
 export 'templates.pb.dart';
 
 class CredentialTemplatesClient extends $grpc.Client {
-  static final _$create = $grpc.ClientMethod<$3.CreateCredentialTemplateRequest,
-          $3.CreateCredentialTemplateResponse>(
+  static final _$create = $grpc.ClientMethod<$4.CreateCredentialTemplateRequest,
+          $4.CreateCredentialTemplateResponse>(
       '/services.verifiablecredentials.templates.v1.CredentialTemplates/Create',
-      ($3.CreateCredentialTemplateRequest value) => value.writeToBuffer(),
+      ($4.CreateCredentialTemplateRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $3.CreateCredentialTemplateResponse.fromBuffer(value));
-  static final _$get = $grpc.ClientMethod<$3.GetCredentialTemplateRequest,
-          $3.GetCredentialTemplateResponse>(
+          $4.CreateCredentialTemplateResponse.fromBuffer(value));
+  static final _$get = $grpc.ClientMethod<$4.GetCredentialTemplateRequest,
+          $4.GetCredentialTemplateResponse>(
       '/services.verifiablecredentials.templates.v1.CredentialTemplates/Get',
-      ($3.GetCredentialTemplateRequest value) => value.writeToBuffer(),
+      ($4.GetCredentialTemplateRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $3.GetCredentialTemplateResponse.fromBuffer(value));
-  static final _$list = $grpc.ClientMethod<$3.ListCredentialTemplatesRequest,
-          $3.ListCredentialTemplatesResponse>(
+          $4.GetCredentialTemplateResponse.fromBuffer(value));
+  static final _$list = $grpc.ClientMethod<$4.ListCredentialTemplatesRequest,
+          $4.ListCredentialTemplatesResponse>(
       '/services.verifiablecredentials.templates.v1.CredentialTemplates/List',
-      ($3.ListCredentialTemplatesRequest value) => value.writeToBuffer(),
+      ($4.ListCredentialTemplatesRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $3.ListCredentialTemplatesResponse.fromBuffer(value));
+          $4.ListCredentialTemplatesResponse.fromBuffer(value));
   static final _$search = $grpc.ClientMethod<
-          $3.SearchCredentialTemplatesRequest,
-          $3.SearchCredentialTemplatesResponse>(
+          $4.SearchCredentialTemplatesRequest,
+          $4.SearchCredentialTemplatesResponse>(
       '/services.verifiablecredentials.templates.v1.CredentialTemplates/Search',
-      ($3.SearchCredentialTemplatesRequest value) => value.writeToBuffer(),
+      ($4.SearchCredentialTemplatesRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $3.SearchCredentialTemplatesResponse.fromBuffer(value));
-  static final _$delete = $grpc.ClientMethod<$3.DeleteCredentialTemplateRequest,
-          $3.DeleteCredentialTemplateResponse>(
+          $4.SearchCredentialTemplatesResponse.fromBuffer(value));
+  static final _$delete = $grpc.ClientMethod<$4.DeleteCredentialTemplateRequest,
+          $4.DeleteCredentialTemplateResponse>(
       '/services.verifiablecredentials.templates.v1.CredentialTemplates/Delete',
-      ($3.DeleteCredentialTemplateRequest value) => value.writeToBuffer(),
+      ($4.DeleteCredentialTemplateRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) =>
-          $3.DeleteCredentialTemplateResponse.fromBuffer(value));
+          $4.DeleteCredentialTemplateResponse.fromBuffer(value));
 
   CredentialTemplatesClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
-  $grpc.ResponseFuture<$3.CreateCredentialTemplateResponse> create(
-      $3.CreateCredentialTemplateRequest request,
+  $grpc.ResponseFuture<$4.CreateCredentialTemplateResponse> create(
+      $4.CreateCredentialTemplateRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$create, request, options: options);
   }
 
-  $grpc.ResponseFuture<$3.GetCredentialTemplateResponse> get(
-      $3.GetCredentialTemplateRequest request,
+  $grpc.ResponseFuture<$4.GetCredentialTemplateResponse> get(
+      $4.GetCredentialTemplateRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$get, request, options: options);
   }
 
-  $grpc.ResponseFuture<$3.ListCredentialTemplatesResponse> list(
-      $3.ListCredentialTemplatesRequest request,
+  $grpc.ResponseFuture<$4.ListCredentialTemplatesResponse> list(
+      $4.ListCredentialTemplatesRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$list, request, options: options);
   }
 
-  $grpc.ResponseFuture<$3.SearchCredentialTemplatesResponse> search(
-      $3.SearchCredentialTemplatesRequest request,
+  $grpc.ResponseFuture<$4.SearchCredentialTemplatesResponse> search(
+      $4.SearchCredentialTemplatesRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$search, request, options: options);
   }
 
-  $grpc.ResponseFuture<$3.DeleteCredentialTemplateResponse> delete(
-      $3.DeleteCredentialTemplateRequest request,
+  $grpc.ResponseFuture<$4.DeleteCredentialTemplateResponse> delete(
+      $4.DeleteCredentialTemplateRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$delete, request, options: options);
   }
@@ -87,91 +87,91 @@ abstract class CredentialTemplatesServiceBase extends $grpc.Service {
       'services.verifiablecredentials.templates.v1.CredentialTemplates';
 
   CredentialTemplatesServiceBase() {
-    $addMethod($grpc.ServiceMethod<$3.CreateCredentialTemplateRequest,
-            $3.CreateCredentialTemplateResponse>(
+    $addMethod($grpc.ServiceMethod<$4.CreateCredentialTemplateRequest,
+            $4.CreateCredentialTemplateResponse>(
         'Create',
         create_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $3.CreateCredentialTemplateRequest.fromBuffer(value),
-        ($3.CreateCredentialTemplateResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$3.GetCredentialTemplateRequest,
-            $3.GetCredentialTemplateResponse>(
+            $4.CreateCredentialTemplateRequest.fromBuffer(value),
+        ($4.CreateCredentialTemplateResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.GetCredentialTemplateRequest,
+            $4.GetCredentialTemplateResponse>(
         'Get',
         get_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $3.GetCredentialTemplateRequest.fromBuffer(value),
-        ($3.GetCredentialTemplateResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$3.ListCredentialTemplatesRequest,
-            $3.ListCredentialTemplatesResponse>(
+            $4.GetCredentialTemplateRequest.fromBuffer(value),
+        ($4.GetCredentialTemplateResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.ListCredentialTemplatesRequest,
+            $4.ListCredentialTemplatesResponse>(
         'List',
         list_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $3.ListCredentialTemplatesRequest.fromBuffer(value),
-        ($3.ListCredentialTemplatesResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$3.SearchCredentialTemplatesRequest,
-            $3.SearchCredentialTemplatesResponse>(
+            $4.ListCredentialTemplatesRequest.fromBuffer(value),
+        ($4.ListCredentialTemplatesResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.SearchCredentialTemplatesRequest,
+            $4.SearchCredentialTemplatesResponse>(
         'Search',
         search_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $3.SearchCredentialTemplatesRequest.fromBuffer(value),
-        ($3.SearchCredentialTemplatesResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$3.DeleteCredentialTemplateRequest,
-            $3.DeleteCredentialTemplateResponse>(
+            $4.SearchCredentialTemplatesRequest.fromBuffer(value),
+        ($4.SearchCredentialTemplatesResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$4.DeleteCredentialTemplateRequest,
+            $4.DeleteCredentialTemplateResponse>(
         'Delete',
         delete_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $3.DeleteCredentialTemplateRequest.fromBuffer(value),
-        ($3.DeleteCredentialTemplateResponse value) => value.writeToBuffer()));
+            $4.DeleteCredentialTemplateRequest.fromBuffer(value),
+        ($4.DeleteCredentialTemplateResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$3.CreateCredentialTemplateResponse> create_Pre(
+  $async.Future<$4.CreateCredentialTemplateResponse> create_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$3.CreateCredentialTemplateRequest> request) async {
+      $async.Future<$4.CreateCredentialTemplateRequest> request) async {
     return create(call, await request);
   }
 
-  $async.Future<$3.GetCredentialTemplateResponse> get_Pre(
+  $async.Future<$4.GetCredentialTemplateResponse> get_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$3.GetCredentialTemplateRequest> request) async {
+      $async.Future<$4.GetCredentialTemplateRequest> request) async {
     return get(call, await request);
   }
 
-  $async.Future<$3.ListCredentialTemplatesResponse> list_Pre(
+  $async.Future<$4.ListCredentialTemplatesResponse> list_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$3.ListCredentialTemplatesRequest> request) async {
+      $async.Future<$4.ListCredentialTemplatesRequest> request) async {
     return list(call, await request);
   }
 
-  $async.Future<$3.SearchCredentialTemplatesResponse> search_Pre(
+  $async.Future<$4.SearchCredentialTemplatesResponse> search_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$3.SearchCredentialTemplatesRequest> request) async {
+      $async.Future<$4.SearchCredentialTemplatesRequest> request) async {
     return search(call, await request);
   }
 
-  $async.Future<$3.DeleteCredentialTemplateResponse> delete_Pre(
+  $async.Future<$4.DeleteCredentialTemplateResponse> delete_Pre(
       $grpc.ServiceCall call,
-      $async.Future<$3.DeleteCredentialTemplateRequest> request) async {
+      $async.Future<$4.DeleteCredentialTemplateRequest> request) async {
     return delete(call, await request);
   }
 
-  $async.Future<$3.CreateCredentialTemplateResponse> create(
-      $grpc.ServiceCall call, $3.CreateCredentialTemplateRequest request);
-  $async.Future<$3.GetCredentialTemplateResponse> get(
-      $grpc.ServiceCall call, $3.GetCredentialTemplateRequest request);
-  $async.Future<$3.ListCredentialTemplatesResponse> list(
-      $grpc.ServiceCall call, $3.ListCredentialTemplatesRequest request);
-  $async.Future<$3.SearchCredentialTemplatesResponse> search(
-      $grpc.ServiceCall call, $3.SearchCredentialTemplatesRequest request);
-  $async.Future<$3.DeleteCredentialTemplateResponse> delete(
-      $grpc.ServiceCall call, $3.DeleteCredentialTemplateRequest request);
+  $async.Future<$4.CreateCredentialTemplateResponse> create(
+      $grpc.ServiceCall call, $4.CreateCredentialTemplateRequest request);
+  $async.Future<$4.GetCredentialTemplateResponse> get(
+      $grpc.ServiceCall call, $4.GetCredentialTemplateRequest request);
+  $async.Future<$4.ListCredentialTemplatesResponse> list(
+      $grpc.ServiceCall call, $4.ListCredentialTemplatesRequest request);
+  $async.Future<$4.SearchCredentialTemplatesResponse> search(
+      $grpc.ServiceCall call, $4.SearchCredentialTemplatesRequest request);
+  $async.Future<$4.DeleteCredentialTemplateResponse> delete(
+      $grpc.ServiceCall call, $4.DeleteCredentialTemplateRequest request);
 }

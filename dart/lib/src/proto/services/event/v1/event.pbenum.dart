@@ -55,6 +55,11 @@ class EventType extends $pb.ProtobufEnum {
       const $core.bool.fromEnvironment('protobuf.omit_enum_names')
           ? ''
           : 'ITEM_RECEIVED');
+  static const EventType CREDENTIAL_ISSUED = EventType._(
+      17,
+      const $core.bool.fromEnvironment('protobuf.omit_enum_names')
+          ? ''
+          : 'CREDENTIAL_ISSUED');
 
   static const $core.List<EventType> values = <EventType>[
     PING,
@@ -66,6 +71,7 @@ class EventType extends $pb.ProtobufEnum {
     TEMPLATE_DELETED,
     WALLET_CREATED,
     ITEM_RECEIVED,
+    CREDENTIAL_ISSUED,
   ];
 
   static final $core.Map<$core.int, EventType> _byValue =

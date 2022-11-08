@@ -780,6 +780,7 @@ All event types
 | TEMPLATE_DELETED | 11 |  |
 | WALLET_CREATED | 15 |  |
 | ITEM_RECEIVED | 16 |  |
+| CREDENTIAL_ISSUED | 17 |  |
 
 
  <!-- end enums -->
@@ -1589,6 +1590,7 @@ Strongly typed information about wallet configurations
 | sms | [string](/reference/proto#string) |  |
 | wallet_id | [string](/reference/proto#string) |  |
 | public_did | [string](/reference/proto#string) |  |
+| config_type | [string](/reference/proto#string) |  |
 
 
 
@@ -1651,6 +1653,146 @@ Type of participant being invited to ecosystem
 | participant_type_individual | 0 | Participant is an individual |
 | participant_type_organization | 1 | Participant is an organization |
 
+
+ <!-- end enums -->
+
+ <!-- end HasExtensions -->
+
+
+
+<a name="services_provider_v1_access-management-proto"></a>
+<p align="right"><a href="#top">Top</a></p>
+
+## services/provider/v1/access-management.proto
+
+
+
+<a name="services-provider-v1-AccessManagement"></a>
+
+### Service - AccessManagement
+Access Management service provides methods to manage access to ecosystem resources
+such by assigning roles and permissions to wallet accounts
+
+| Method Name | Request Type | Response Type | Description |
+| ----------- | ------------ | ------------- | ------------|
+| AddRoleAssignment | [AddRoleAssignmentRequest](/reference/proto#services-provider-v1-AddRoleAssignmentRequest) | [AddRoleAssignmentResponse](/reference/proto#services-provider-v1-AddRoleAssignmentResponse) | Adds a role assignment to an account |
+| RemoveRoleAssignment | [RemoveRoleAssignmentRequest](/reference/proto#services-provider-v1-RemoveRoleAssignmentRequest) | [RemoveRoleAssignmentResponse](/reference/proto#services-provider-v1-RemoveRoleAssignmentResponse) | Removes a role assignment from the account |
+| ListRoleAssignments | [ListRoleAssignmentsRequest](/reference/proto#services-provider-v1-ListRoleAssignmentsRequest) | [ListRoleAssignmentsResponse](/reference/proto#services-provider-v1-ListRoleAssignmentsResponse) | List the role assignments for the given account |
+| ListAvailableRoles | [ListAvailableRolesRequest](/reference/proto#services-provider-v1-ListAvailableRolesRequest) | [ListAvailableRolesResponse](/reference/proto#services-provider-v1-ListAvailableRolesResponse) | List the roles available in the ecosystem |
+
+ <!-- end services -->
+
+
+<a name="services-provider-v1-AddRoleAssignmentRequest"></a>
+
+### AddRoleAssignmentRequest
+Role management
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| role | [string](/reference/proto#string) | Role to assign |
+| email | [string](/reference/proto#string) | Email address of account to assign role to. Mutually exclusive with `walletId`. |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of account to assign role to. Mutually exclusive with `email`. |
+
+
+
+
+
+
+<a name="services-provider-v1-AddRoleAssignmentResponse"></a>
+
+### AddRoleAssignmentResponse
+
+
+
+
+
+
+
+<a name="services-provider-v1-ListAvailableRolesRequest"></a>
+
+### ListAvailableRolesRequest
+Request to fetch the available roles in the current ecosystem
+
+
+
+
+
+
+<a name="services-provider-v1-ListAvailableRolesResponse"></a>
+
+### ListAvailableRolesResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| roles | [string](/reference/proto#string)[] | List of roles |
+
+
+
+
+
+
+<a name="services-provider-v1-ListRoleAssignmentsRequest"></a>
+
+### ListRoleAssignmentsRequest
+Request to fetch the list of roles assigned to the current account
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| email | [string](/reference/proto#string) | Email address of account to unassign role from. Mutually exclusive with `walletId`. |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of account to unassign role from. Mutually exclusive with `email`. |
+
+
+
+
+
+
+<a name="services-provider-v1-ListRoleAssignmentsResponse"></a>
+
+### ListRoleAssignmentsResponse
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| roles | [string](/reference/proto#string)[] | List of roles |
+
+
+
+
+
+
+<a name="services-provider-v1-RemoveRoleAssignmentRequest"></a>
+
+### RemoveRoleAssignmentRequest
+
+
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| role | [string](/reference/proto#string) | Role to unassign |
+| email | [string](/reference/proto#string) | Email address of account to unassign role from. Mutually exclusive with `walletId`. |
+| wallet_id | [string](/reference/proto#string) | Wallet ID of account to unassign role from. Mutually exclusive with `email`. |
+
+
+
+
+
+
+<a name="services-provider-v1-RemoveRoleAssignmentResponse"></a>
+
+### RemoveRoleAssignmentResponse
+
+
+
+
+
+
+ <!-- end messages -->
 
  <!-- end enums -->
 
