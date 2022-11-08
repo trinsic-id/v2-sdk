@@ -1,0 +1,82 @@
+syntax = "proto3";
+
+package services.provider.v1;
+
+option csharp_namespace = "Trinsic.Services.Provider.V1";
+option go_package = "services/provider/v1/provider";
+option java_package = "trinsic.services.provider.v1";
+option java_multiple_files = true;
+
+import "services/account/v1/account.proto";
+import "services/options/field-options.proto";
+import "services/common/v1/common.proto";
+
+// Role management
+message AddRoleAssignmentRequest {
+    // Role to assign
+    string role = 1;
+    oneof account {
+        // Email address of account to assign role to.
+        // Mutually exclusive with `walletId`.
+        string email = 2;
+        // Wallet ID of account to assign role to.
+        // Mutually exclusive with `email`.
+        string wallet_id = 3;
+    }
+}
+message AddRoleAssignmentResponse {}
+
+message RemoveRoleAssignmentRequest {
+    // Role to unassign
+    string role = 1;
+    oneof account {
+        // Email address of account to unassign role from.
+        // Mutually exclusive with `walletId`.
+        string email = 2;
+        // Wallet ID of account to unassign role from.
+        // Mutually exclusive with `email`.
+        string wallet_id = 3;
+    }
+}
+message RemoveRoleAssignmentResponse {}
+
+// Request to fetch the list of roles assigned to the current account
+message ListRoleAssignmentsRequest {
+    oneof account {
+        // Email address of account to unassign role from.
+        // Mutually exclusive with `walletId`.
+        string email = 2;
+        // Wallet ID of account to unassign role from.
+        // Mutually exclusive with `email`.
+        string wallet_id = 3;
+    }
+}
+message ListRoleAssignmentsResponse {
+    // List of roles
+    repeated string roles = 1;
+}
+
+// Request to fetch the available roles in the current ecosystem
+message ListAvailableRolesRequest {}
+message ListAvailableRolesResponse {
+    // List of roles
+    repeated string roles = 1;
+}
+
+// Access Management service provides methods to manage access to ecosystem resources
+// such by assigning roles and permissions to wallet accounts
+service AccessManagement {
+    // Adds a role assignment to an account
+    rpc AddRoleAssignment(AddRoleAssignmentRequest) returns (AddRoleAssignmentResponse);
+
+    // Removes a role assignment from the account
+    rpc RemoveRoleAssignment(RemoveRoleAssignmentRequest) returns (RemoveRoleAssignmentResponse);
+
+    // List the role assignments for the given account
+    rpc ListRoleAssignments(ListRoleAssignmentsRequest) returns (ListRoleAssignmentsResponse);
+
+    // List the roles available in the ecosystem
+    rpc ListAvailableRoles(ListAvailableRolesRequest) returns (ListAvailableRolesResponse) {
+        option (options.sdk_template_option).ignore = true;
+    }
+}
