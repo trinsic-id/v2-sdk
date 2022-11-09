@@ -10,6 +10,11 @@ class TrinsicServiceKt @JvmOverloads constructor(options: Options.ServiceOptions
   private var _providerService: ProviderServiceKt? = null
   private var _trustRegistryService: TrustRegistryServiceKt? = null
   private var _walletService: WalletServiceKt? = null
+    private var _accessManagementService: AccessManagementServiceKt? = null
+    fun accessManagement(): AccessManagementServiceKt {
+        if (_accessManagementService == null) _accessManagementService = AccessManagementServiceKt(optionsBuilder)
+        return _accessManagementService!!
+    }
   fun account(): AccountServiceKt {
     if (_accountService == null) _accountService = AccountServiceKt(optionsBuilder)
     return _accountService!!

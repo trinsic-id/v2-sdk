@@ -29,7 +29,6 @@ require 'memoist'
 module Trinsic
   Common = Services::Common::V1
   Account = Services::Account::V1
-  Access = Services::AccessManagement::V1
   Credentials = Services::Verifiablecredentials::V1
   Options = Sdk::Options::V1
   Provider = Services::Provider::V1
@@ -56,6 +55,10 @@ module Trinsic
       super(service_options)
     end
 
+    def access_management_service
+      AccessManagementService.new(@service_options)
+    end
+
     def account_service
       AccountService.new(@service_options)
     end
@@ -80,7 +83,7 @@ module Trinsic
       WalletService.new(@service_options)
     end
 
-    memoize :account_service, :credential_service, :provider_service, :template_service, :trust_registry_service,
-            :wallet_service
+    memoize :access_management_service, :account_service, :credential_service, :provider_service, :template_service,
+            :trust_registry_service, :wallet_service
   end
 end

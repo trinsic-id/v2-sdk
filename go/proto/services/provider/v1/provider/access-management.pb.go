@@ -11,8 +11,6 @@ import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
-	_ "services/account/v1/account"
-	_ "services/common/v1/common"
 	sync "sync"
 )
 
