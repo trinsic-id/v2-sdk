@@ -5,6 +5,7 @@ import 'package:trinsic_dart/src/storage/token_provider.dart';
 import 'package:trinsic_dart/trinsic.dart';
 
 class TrinsicService extends ServiceBase {
+  AccessManagementService? _accessManagementService;
   AccountService? _accountService;
   CredentialService? _credentialService;
   ProviderService? _providerService;
@@ -13,6 +14,11 @@ class TrinsicService extends ServiceBase {
   WalletService? _walletService;
   TrinsicService(ServiceOptions? serverOptions, ITokenProvider? provider)
       : super(serverOptions, provider) {}
+
+  AccessManagementService accessManagement() {
+    _accessManagementService ??= AccessManagementService(serviceOptions, tokenProvider);
+    return _accessManagementService!;
+  }
 
   AccountService account() {
     _accountService ??= AccountService(serviceOptions, tokenProvider);
