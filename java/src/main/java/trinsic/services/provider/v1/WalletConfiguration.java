@@ -4,21 +4,24 @@
 package trinsic.services.provider.v1;
 
 /**
+ *
+ *
  * <pre>
  * Strongly typed information about wallet configurations
  * </pre>
  *
  * Protobuf type {@code services.provider.v1.WalletConfiguration}
  */
-public final class WalletConfiguration extends
-    com.google.protobuf.GeneratedMessageV3 implements
+public final class WalletConfiguration extends com.google.protobuf.GeneratedMessageV3
+    implements
     // @@protoc_insertion_point(message_implements:services.provider.v1.WalletConfiguration)
     WalletConfigurationOrBuilder {
-private static final long serialVersionUID = 0L;
+  private static final long serialVersionUID = 0L;
   // Use WalletConfiguration.newBuilder() to construct.
   private WalletConfiguration(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
+
   private WalletConfiguration() {
     name_ = "";
     email_ = "";
@@ -30,108 +33,35 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
     return new WalletConfiguration();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet
-  getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
     return this.unknownFields;
   }
-  private WalletConfiguration(
-      com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
-    try {
-      boolean done = false;
-      while (!done) {
-        int tag = input.readTag();
-        switch (tag) {
-          case 0:
-            done = true;
-            break;
-          case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
 
-            name_ = s;
-            break;
-          }
-          case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            email_ = s;
-            break;
-          }
-          case 26: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            sms_ = s;
-            break;
-          }
-          case 34: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            walletId_ = s;
-            break;
-          }
-          case 42: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            publicDid_ = s;
-            break;
-          }
-          case 50: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            configType_ = s;
-            break;
-          }
-          default: {
-            if (!parseUnknownField(
-                input, unknownFields, extensionRegistry, tag)) {
-              done = true;
-            }
-            break;
-          }
-        }
-      }
-    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
-    } catch (com.google.protobuf.UninitializedMessageException e) {
-      throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
-    } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
-    } finally {
-      this.unknownFields = unknownFields.build();
-      makeExtensionsImmutable();
-    }
-  }
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_WalletConfiguration_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    return trinsic.services.provider.v1.ProviderOuterClass
+        .internal_static_services_provider_v1_WalletConfiguration_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_WalletConfiguration_fieldAccessorTable
+    return trinsic.services.provider.v1.ProviderOuterClass
+        .internal_static_services_provider_v1_WalletConfiguration_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.provider.v1.WalletConfiguration.class, trinsic.services.provider.v1.WalletConfiguration.Builder.class);
+            trinsic.services.provider.v1.WalletConfiguration.class,
+            trinsic.services.provider.v1.WalletConfiguration.Builder.class);
   }
 
   public static final int NAME_FIELD_NUMBER = 1;
   private volatile java.lang.Object name_;
   /**
    * <code>string name = 1;</code>
+   *
    * @return The name.
    */
   @java.lang.Override
@@ -140,8 +70,7 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       name_ = s;
       return s;
@@ -149,16 +78,15 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <code>string name = 1;</code>
+   *
    * @return The bytes for name.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getNameBytes() {
+  public com.google.protobuf.ByteString getNameBytes() {
     java.lang.Object ref = name_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       name_ = b;
       return b;
     } else {
@@ -170,6 +98,7 @@ private static final long serialVersionUID = 0L;
   private volatile java.lang.Object email_;
   /**
    * <code>string email = 2 [(.services.options.optional) = true];</code>
+   *
    * @return The email.
    */
   @java.lang.Override
@@ -178,8 +107,7 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       email_ = s;
       return s;
@@ -187,16 +115,15 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <code>string email = 2 [(.services.options.optional) = true];</code>
+   *
    * @return The bytes for email.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getEmailBytes() {
+  public com.google.protobuf.ByteString getEmailBytes() {
     java.lang.Object ref = email_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       email_ = b;
       return b;
     } else {
@@ -208,6 +135,7 @@ private static final long serialVersionUID = 0L;
   private volatile java.lang.Object sms_;
   /**
    * <code>string sms = 3 [(.services.options.optional) = true];</code>
+   *
    * @return The sms.
    */
   @java.lang.Override
@@ -216,8 +144,7 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       sms_ = s;
       return s;
@@ -225,16 +152,15 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <code>string sms = 3 [(.services.options.optional) = true];</code>
+   *
    * @return The bytes for sms.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getSmsBytes() {
+  public com.google.protobuf.ByteString getSmsBytes() {
     java.lang.Object ref = sms_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       sms_ = b;
       return b;
     } else {
@@ -246,6 +172,7 @@ private static final long serialVersionUID = 0L;
   private volatile java.lang.Object walletId_;
   /**
    * <code>string wallet_id = 4;</code>
+   *
    * @return The walletId.
    */
   @java.lang.Override
@@ -254,8 +181,7 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       walletId_ = s;
       return s;
@@ -263,16 +189,15 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <code>string wallet_id = 4;</code>
+   *
    * @return The bytes for walletId.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getWalletIdBytes() {
+  public com.google.protobuf.ByteString getWalletIdBytes() {
     java.lang.Object ref = walletId_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       walletId_ = b;
       return b;
     } else {
@@ -284,6 +209,7 @@ private static final long serialVersionUID = 0L;
   private volatile java.lang.Object publicDid_;
   /**
    * <code>string public_did = 5;</code>
+   *
    * @return The publicDid.
    */
   @java.lang.Override
@@ -292,8 +218,7 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       publicDid_ = s;
       return s;
@@ -301,16 +226,15 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <code>string public_did = 5;</code>
+   *
    * @return The bytes for publicDid.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getPublicDidBytes() {
+  public com.google.protobuf.ByteString getPublicDidBytes() {
     java.lang.Object ref = publicDid_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       publicDid_ = b;
       return b;
     } else {
@@ -322,6 +246,7 @@ private static final long serialVersionUID = 0L;
   private volatile java.lang.Object configType_;
   /**
    * <code>string config_type = 6;</code>
+   *
    * @return The configType.
    */
   @java.lang.Override
@@ -330,8 +255,7 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       configType_ = s;
       return s;
@@ -339,16 +263,15 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <code>string config_type = 6;</code>
+   *
    * @return The bytes for configType.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getConfigTypeBytes() {
+  public com.google.protobuf.ByteString getConfigTypeBytes() {
     java.lang.Object ref = configType_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       configType_ = b;
       return b;
     } else {
@@ -357,6 +280,7 @@ private static final long serialVersionUID = 0L;
   }
 
   private byte memoizedIsInitialized = -1;
+
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -368,8 +292,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
     }
@@ -388,7 +311,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(configType_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 6, configType_);
     }
-    unknownFields.writeTo(output);
+    getUnknownFields().writeTo(output);
   }
 
   @java.lang.Override
@@ -415,7 +338,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(configType_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, configType_);
     }
-    size += unknownFields.getSerializedSize();
+    size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
   }
@@ -423,26 +346,21 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-     return true;
+      return true;
     }
     if (!(obj instanceof trinsic.services.provider.v1.WalletConfiguration)) {
       return super.equals(obj);
     }
-    trinsic.services.provider.v1.WalletConfiguration other = (trinsic.services.provider.v1.WalletConfiguration) obj;
+    trinsic.services.provider.v1.WalletConfiguration other =
+        (trinsic.services.provider.v1.WalletConfiguration) obj;
 
-    if (!getName()
-        .equals(other.getName())) return false;
-    if (!getEmail()
-        .equals(other.getEmail())) return false;
-    if (!getSms()
-        .equals(other.getSms())) return false;
-    if (!getWalletId()
-        .equals(other.getWalletId())) return false;
-    if (!getPublicDid()
-        .equals(other.getPublicDid())) return false;
-    if (!getConfigType()
-        .equals(other.getConfigType())) return false;
-    if (!unknownFields.equals(other.unknownFields)) return false;
+    if (!getName().equals(other.getName())) return false;
+    if (!getEmail().equals(other.getEmail())) return false;
+    if (!getSms().equals(other.getSms())) return false;
+    if (!getWalletId().equals(other.getWalletId())) return false;
+    if (!getPublicDid().equals(other.getPublicDid())) return false;
+    if (!getConfigType().equals(other.getConfigType())) return false;
+    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
 
@@ -465,140 +383,141 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getPublicDid().hashCode();
     hash = (37 * hash) + CONFIG_TYPE_FIELD_NUMBER;
     hash = (53 * hash) + getConfigType().hashCode();
-    hash = (29 * hash) + unknownFields.hashCode();
+    hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static trinsic.services.provider.v1.WalletConfiguration parseFrom(
-      java.nio.ByteBuffer data)
+  public static trinsic.services.provider.v1.WalletConfiguration parseFrom(java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static trinsic.services.provider.v1.WalletConfiguration parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static trinsic.services.provider.v1.WalletConfiguration parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static trinsic.services.provider.v1.WalletConfiguration parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static trinsic.services.provider.v1.WalletConfiguration parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static trinsic.services.provider.v1.WalletConfiguration parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static trinsic.services.provider.v1.WalletConfiguration parseFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
-  }
+
   public static trinsic.services.provider.v1.WalletConfiguration parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
-  public static trinsic.services.provider.v1.WalletConfiguration parseDelimitedFrom(java.io.InputStream input)
+
+  public static trinsic.services.provider.v1.WalletConfiguration parseFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
+
   public static trinsic.services.provider.v1.WalletConfiguration parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
+
+  public static trinsic.services.provider.v1.WalletConfiguration parseDelimitedFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+        PARSER, input, extensionRegistry);
+  }
+
   public static trinsic.services.provider.v1.WalletConfiguration parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static trinsic.services.provider.v1.WalletConfiguration parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
+  public Builder newBuilderForType() {
+    return newBuilder();
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
+
   public static Builder newBuilder(trinsic.services.provider.v1.WalletConfiguration prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
+
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
+   *
+   *
    * <pre>
    * Strongly typed information about wallet configurations
    * </pre>
    *
    * Protobuf type {@code services.provider.v1.WalletConfiguration}
    */
-  public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+      implements
       // @@protoc_insertion_point(builder_implements:services.provider.v1.WalletConfiguration)
       trinsic.services.provider.v1.WalletConfigurationOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_WalletConfiguration_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.services.provider.v1.ProviderOuterClass
+          .internal_static_services_provider_v1_WalletConfiguration_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_WalletConfiguration_fieldAccessorTable
+      return trinsic.services.provider.v1.ProviderOuterClass
+          .internal_static_services_provider_v1_WalletConfiguration_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.provider.v1.WalletConfiguration.class, trinsic.services.provider.v1.WalletConfiguration.Builder.class);
+              trinsic.services.provider.v1.WalletConfiguration.class,
+              trinsic.services.provider.v1.WalletConfiguration.Builder.class);
     }
 
     // Construct using trinsic.services.provider.v1.WalletConfiguration.newBuilder()
-    private Builder() {
-      maybeForceBuilderInitialization();
+    private Builder() {}
+
+    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
     }
 
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-      }
-    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -618,9 +537,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
-      return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_WalletConfiguration_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return trinsic.services.provider.v1.ProviderOuterClass
+          .internal_static_services_provider_v1_WalletConfiguration_descriptor;
     }
 
     @java.lang.Override
@@ -639,7 +558,8 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public trinsic.services.provider.v1.WalletConfiguration buildPartial() {
-      trinsic.services.provider.v1.WalletConfiguration result = new trinsic.services.provider.v1.WalletConfiguration(this);
+      trinsic.services.provider.v1.WalletConfiguration result =
+          new trinsic.services.provider.v1.WalletConfiguration(this);
       result.name_ = name_;
       result.email_ = email_;
       result.sms_ = sms_;
@@ -654,38 +574,39 @@ private static final long serialVersionUID = 0L;
     public Builder clone() {
       return super.clone();
     }
+
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.setField(field, value);
     }
+
     @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
+
     @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
+
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
+
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
+
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof trinsic.services.provider.v1.WalletConfiguration) {
-        return mergeFrom((trinsic.services.provider.v1.WalletConfiguration)other);
+        return mergeFrom((trinsic.services.provider.v1.WalletConfiguration) other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -693,7 +614,8 @@ private static final long serialVersionUID = 0L;
     }
 
     public Builder mergeFrom(trinsic.services.provider.v1.WalletConfiguration other) {
-      if (other == trinsic.services.provider.v1.WalletConfiguration.getDefaultInstance()) return this;
+      if (other == trinsic.services.provider.v1.WalletConfiguration.getDefaultInstance())
+        return this;
       if (!other.getName().isEmpty()) {
         name_ = other.name_;
         onChanged();
@@ -718,7 +640,7 @@ private static final long serialVersionUID = 0L;
         configType_ = other.configType_;
         onChanged();
       }
-      this.mergeUnknownFields(other.unknownFields);
+      this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
     }
@@ -733,30 +655,80 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      trinsic.services.provider.v1.WalletConfiguration parsedMessage = null;
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       try {
-        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10:
+              {
+                name_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 10
+            case 18:
+              {
+                email_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 18
+            case 26:
+              {
+                sms_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 26
+            case 34:
+              {
+                walletId_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 34
+            case 42:
+              {
+                publicDid_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 42
+            case 50:
+              {
+                configType_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 50
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+          } // switch (tag)
+        } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (trinsic.services.provider.v1.WalletConfiguration) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
-        if (parsedMessage != null) {
-          mergeFrom(parsedMessage);
-        }
-      }
+        onChanged();
+      } // finally
       return this;
     }
 
     private java.lang.Object name_ = "";
     /**
      * <code>string name = 1;</code>
+     *
      * @return The name.
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         name_ = s;
         return s;
@@ -766,15 +738,14 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>string name = 1;</code>
+     *
      * @return The bytes for name.
      */
-    public com.google.protobuf.ByteString
-        getNameBytes() {
+    public com.google.protobuf.ByteString getNameBytes() {
       java.lang.Object ref = name_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         name_ = b;
         return b;
       } else {
@@ -783,41 +754,42 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>string name = 1;</code>
+     *
      * @param value The name to set.
      * @return This builder for chaining.
      */
-    public Builder setName(
-        java.lang.String value) {
+    public Builder setName(java.lang.String value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        throw new NullPointerException();
+      }
+
       name_ = value;
       onChanged();
       return this;
     }
     /**
      * <code>string name = 1;</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearName() {
-      
+
       name_ = getDefaultInstance().getName();
       onChanged();
       return this;
     }
     /**
      * <code>string name = 1;</code>
+     *
      * @param value The bytes for name to set.
      * @return This builder for chaining.
      */
-    public Builder setNameBytes(
-        com.google.protobuf.ByteString value) {
+    public Builder setNameBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
       name_ = value;
       onChanged();
       return this;
@@ -826,13 +798,13 @@ private static final long serialVersionUID = 0L;
     private java.lang.Object email_ = "";
     /**
      * <code>string email = 2 [(.services.options.optional) = true];</code>
+     *
      * @return The email.
      */
     public java.lang.String getEmail() {
       java.lang.Object ref = email_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         email_ = s;
         return s;
@@ -842,15 +814,14 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>string email = 2 [(.services.options.optional) = true];</code>
+     *
      * @return The bytes for email.
      */
-    public com.google.protobuf.ByteString
-        getEmailBytes() {
+    public com.google.protobuf.ByteString getEmailBytes() {
       java.lang.Object ref = email_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         email_ = b;
         return b;
       } else {
@@ -859,41 +830,42 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>string email = 2 [(.services.options.optional) = true];</code>
+     *
      * @param value The email to set.
      * @return This builder for chaining.
      */
-    public Builder setEmail(
-        java.lang.String value) {
+    public Builder setEmail(java.lang.String value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        throw new NullPointerException();
+      }
+
       email_ = value;
       onChanged();
       return this;
     }
     /**
      * <code>string email = 2 [(.services.options.optional) = true];</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearEmail() {
-      
+
       email_ = getDefaultInstance().getEmail();
       onChanged();
       return this;
     }
     /**
      * <code>string email = 2 [(.services.options.optional) = true];</code>
+     *
      * @param value The bytes for email to set.
      * @return This builder for chaining.
      */
-    public Builder setEmailBytes(
-        com.google.protobuf.ByteString value) {
+    public Builder setEmailBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
       email_ = value;
       onChanged();
       return this;
@@ -902,13 +874,13 @@ private static final long serialVersionUID = 0L;
     private java.lang.Object sms_ = "";
     /**
      * <code>string sms = 3 [(.services.options.optional) = true];</code>
+     *
      * @return The sms.
      */
     public java.lang.String getSms() {
       java.lang.Object ref = sms_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         sms_ = s;
         return s;
@@ -918,15 +890,14 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>string sms = 3 [(.services.options.optional) = true];</code>
+     *
      * @return The bytes for sms.
      */
-    public com.google.protobuf.ByteString
-        getSmsBytes() {
+    public com.google.protobuf.ByteString getSmsBytes() {
       java.lang.Object ref = sms_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         sms_ = b;
         return b;
       } else {
@@ -935,41 +906,42 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>string sms = 3 [(.services.options.optional) = true];</code>
+     *
      * @param value The sms to set.
      * @return This builder for chaining.
      */
-    public Builder setSms(
-        java.lang.String value) {
+    public Builder setSms(java.lang.String value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        throw new NullPointerException();
+      }
+
       sms_ = value;
       onChanged();
       return this;
     }
     /**
      * <code>string sms = 3 [(.services.options.optional) = true];</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearSms() {
-      
+
       sms_ = getDefaultInstance().getSms();
       onChanged();
       return this;
     }
     /**
      * <code>string sms = 3 [(.services.options.optional) = true];</code>
+     *
      * @param value The bytes for sms to set.
      * @return This builder for chaining.
      */
-    public Builder setSmsBytes(
-        com.google.protobuf.ByteString value) {
+    public Builder setSmsBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
       sms_ = value;
       onChanged();
       return this;
@@ -978,13 +950,13 @@ private static final long serialVersionUID = 0L;
     private java.lang.Object walletId_ = "";
     /**
      * <code>string wallet_id = 4;</code>
+     *
      * @return The walletId.
      */
     public java.lang.String getWalletId() {
       java.lang.Object ref = walletId_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         walletId_ = s;
         return s;
@@ -994,15 +966,14 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>string wallet_id = 4;</code>
+     *
      * @return The bytes for walletId.
      */
-    public com.google.protobuf.ByteString
-        getWalletIdBytes() {
+    public com.google.protobuf.ByteString getWalletIdBytes() {
       java.lang.Object ref = walletId_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         walletId_ = b;
         return b;
       } else {
@@ -1011,41 +982,42 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>string wallet_id = 4;</code>
+     *
      * @param value The walletId to set.
      * @return This builder for chaining.
      */
-    public Builder setWalletId(
-        java.lang.String value) {
+    public Builder setWalletId(java.lang.String value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        throw new NullPointerException();
+      }
+
       walletId_ = value;
       onChanged();
       return this;
     }
     /**
      * <code>string wallet_id = 4;</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearWalletId() {
-      
+
       walletId_ = getDefaultInstance().getWalletId();
       onChanged();
       return this;
     }
     /**
      * <code>string wallet_id = 4;</code>
+     *
      * @param value The bytes for walletId to set.
      * @return This builder for chaining.
      */
-    public Builder setWalletIdBytes(
-        com.google.protobuf.ByteString value) {
+    public Builder setWalletIdBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
       walletId_ = value;
       onChanged();
       return this;
@@ -1054,13 +1026,13 @@ private static final long serialVersionUID = 0L;
     private java.lang.Object publicDid_ = "";
     /**
      * <code>string public_did = 5;</code>
+     *
      * @return The publicDid.
      */
     public java.lang.String getPublicDid() {
       java.lang.Object ref = publicDid_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         publicDid_ = s;
         return s;
@@ -1070,15 +1042,14 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>string public_did = 5;</code>
+     *
      * @return The bytes for publicDid.
      */
-    public com.google.protobuf.ByteString
-        getPublicDidBytes() {
+    public com.google.protobuf.ByteString getPublicDidBytes() {
       java.lang.Object ref = publicDid_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         publicDid_ = b;
         return b;
       } else {
@@ -1087,41 +1058,42 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>string public_did = 5;</code>
+     *
      * @param value The publicDid to set.
      * @return This builder for chaining.
      */
-    public Builder setPublicDid(
-        java.lang.String value) {
+    public Builder setPublicDid(java.lang.String value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        throw new NullPointerException();
+      }
+
       publicDid_ = value;
       onChanged();
       return this;
     }
     /**
      * <code>string public_did = 5;</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearPublicDid() {
-      
+
       publicDid_ = getDefaultInstance().getPublicDid();
       onChanged();
       return this;
     }
     /**
      * <code>string public_did = 5;</code>
+     *
      * @param value The bytes for publicDid to set.
      * @return This builder for chaining.
      */
-    public Builder setPublicDidBytes(
-        com.google.protobuf.ByteString value) {
+    public Builder setPublicDidBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
       publicDid_ = value;
       onChanged();
       return this;
@@ -1130,13 +1102,13 @@ private static final long serialVersionUID = 0L;
     private java.lang.Object configType_ = "";
     /**
      * <code>string config_type = 6;</code>
+     *
      * @return The configType.
      */
     public java.lang.String getConfigType() {
       java.lang.Object ref = configType_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         configType_ = s;
         return s;
@@ -1146,15 +1118,14 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>string config_type = 6;</code>
+     *
      * @return The bytes for configType.
      */
-    public com.google.protobuf.ByteString
-        getConfigTypeBytes() {
+    public com.google.protobuf.ByteString getConfigTypeBytes() {
       java.lang.Object ref = configType_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         configType_ = b;
         return b;
       } else {
@@ -1163,48 +1134,49 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>string config_type = 6;</code>
+     *
      * @param value The configType to set.
      * @return This builder for chaining.
      */
-    public Builder setConfigType(
-        java.lang.String value) {
+    public Builder setConfigType(java.lang.String value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        throw new NullPointerException();
+      }
+
       configType_ = value;
       onChanged();
       return this;
     }
     /**
      * <code>string config_type = 6;</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearConfigType() {
-      
+
       configType_ = getDefaultInstance().getConfigType();
       onChanged();
       return this;
     }
     /**
      * <code>string config_type = 6;</code>
+     *
      * @param value The bytes for configType to set.
      * @return This builder for chaining.
      */
-    public Builder setConfigTypeBytes(
-        com.google.protobuf.ByteString value) {
+    public Builder setConfigTypeBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
       configType_ = value;
       onChanged();
       return this;
     }
+
     @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -1214,12 +1186,12 @@ private static final long serialVersionUID = 0L;
       return super.mergeUnknownFields(unknownFields);
     }
 
-
     // @@protoc_insertion_point(builder_scope:services.provider.v1.WalletConfiguration)
   }
 
   // @@protoc_insertion_point(class_scope:services.provider.v1.WalletConfiguration)
   private static final trinsic.services.provider.v1.WalletConfiguration DEFAULT_INSTANCE;
+
   static {
     DEFAULT_INSTANCE = new trinsic.services.provider.v1.WalletConfiguration();
   }
@@ -1228,16 +1200,27 @@ private static final long serialVersionUID = 0L;
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<WalletConfiguration>
-      PARSER = new com.google.protobuf.AbstractParser<WalletConfiguration>() {
-    @java.lang.Override
-    public WalletConfiguration parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return new WalletConfiguration(input, extensionRegistry);
-    }
-  };
+  private static final com.google.protobuf.Parser<WalletConfiguration> PARSER =
+      new com.google.protobuf.AbstractParser<WalletConfiguration>() {
+        @java.lang.Override
+        public WalletConfiguration parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
 
   public static com.google.protobuf.Parser<WalletConfiguration> parser() {
     return PARSER;
@@ -1252,6 +1235,4 @@ private static final long serialVersionUID = 0L;
   public trinsic.services.provider.v1.WalletConfiguration getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
-
 }
-

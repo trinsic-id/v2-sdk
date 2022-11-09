@@ -3,20 +3,24 @@
 
 package trinsic.services.provider.v1;
 
-public interface SearchWalletConfigurationResponseOrBuilder extends
+public interface SearchWalletConfigurationResponseOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.provider.v1.SearchWalletConfigurationResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * Results matching the search query
    * </pre>
    *
    * <code>repeated .services.provider.v1.WalletConfiguration results = 1;</code>
    */
-  java.util.List<trinsic.services.provider.v1.WalletConfiguration> 
-      getResultsList();
+  java.util.List<trinsic.services.provider.v1.WalletConfiguration> getResultsList();
   /**
+   *
+   *
    * <pre>
    * Results matching the search query
    * </pre>
@@ -25,6 +29,8 @@ public interface SearchWalletConfigurationResponseOrBuilder extends
    */
   trinsic.services.provider.v1.WalletConfiguration getResults(int index);
   /**
+   *
+   *
    * <pre>
    * Results matching the search query
    * </pre>
@@ -33,51 +39,62 @@ public interface SearchWalletConfigurationResponseOrBuilder extends
    */
   int getResultsCount();
   /**
+   *
+   *
    * <pre>
    * Results matching the search query
    * </pre>
    *
    * <code>repeated .services.provider.v1.WalletConfiguration results = 1;</code>
    */
-  java.util.List<? extends trinsic.services.provider.v1.WalletConfigurationOrBuilder> 
+  java.util.List<? extends trinsic.services.provider.v1.WalletConfigurationOrBuilder>
       getResultsOrBuilderList();
   /**
+   *
+   *
    * <pre>
    * Results matching the search query
    * </pre>
    *
    * <code>repeated .services.provider.v1.WalletConfiguration results = 1;</code>
    */
-  trinsic.services.provider.v1.WalletConfigurationOrBuilder getResultsOrBuilder(
-      int index);
+  trinsic.services.provider.v1.WalletConfigurationOrBuilder getResultsOrBuilder(int index);
 
   /**
+   *
+   *
    * <pre>
    * Whether more results are available for this query via `continuation_token`
    * </pre>
    *
    * <code>bool has_more = 2;</code>
+   *
    * @return The hasMore.
    */
   boolean getHasMore();
 
   /**
+   *
+   *
    * <pre>
    * Token to fetch next set of results via `SearchRequest`
    * </pre>
    *
    * <code>string continuation_token = 4;</code>
+   *
    * @return The continuationToken.
    */
   java.lang.String getContinuationToken();
   /**
+   *
+   *
    * <pre>
    * Token to fetch next set of results via `SearchRequest`
    * </pre>
    *
    * <code>string continuation_token = 4;</code>
+   *
    * @return The bytes for continuationToken.
    */
-  com.google.protobuf.ByteString
-      getContinuationTokenBytes();
+  com.google.protobuf.ByteString getContinuationTokenBytes();
 }

@@ -3,27 +3,33 @@
 
 package trinsic.services.verifiablecredentials.v1;
 
-public interface CheckStatusRequestOrBuilder extends
+public interface CheckStatusRequestOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.v1.CheckStatusRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * Credential Status ID to check. This is not the same as the credential's ID.
    * </pre>
    *
    * <code>string credential_status_id = 1;</code>
+   *
    * @return The credentialStatusId.
    */
   java.lang.String getCredentialStatusId();
   /**
+   *
+   *
    * <pre>
    * Credential Status ID to check. This is not the same as the credential's ID.
    * </pre>
    *
    * <code>string credential_status_id = 1;</code>
+   *
    * @return The bytes for credentialStatusId.
    */
-  com.google.protobuf.ByteString
-      getCredentialStatusIdBytes();
+  com.google.protobuf.ByteString getCredentialStatusIdBytes();
 }

@@ -3,39 +3,49 @@
 
 package trinsic.services.protobuf.options;
 
-public interface SdkTemplateOptionOrBuilder extends
+public interface SdkTemplateOptionOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.options.SdkTemplateOption)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * Whether the service endpoint allows anonymous (no auth token necessary) authentication
    * This is used by the `protoc-gen-trinsic-sdk` plugin for metadata.
    * </pre>
    *
    * <code>bool anonymous = 1;</code>
+   *
    * @return The anonymous.
    */
   boolean getAnonymous();
 
   /**
+   *
+   *
    * <pre>
    * Whether the SDK template generator should ignore this method. This method will
    * be wrapped manually.
    * </pre>
    *
    * <code>bool ignore = 2;</code>
+   *
    * @return The ignore.
    */
   boolean getIgnore();
 
   /**
+   *
+   *
    * <pre>
    * Whether the SDK template generator should generate this method without arguments, eg
    * ProviderService.GetEcosystemInfo() where the request object is empty
    * </pre>
    *
    * <code>bool no_arguments = 3;</code>
+   *
    * @return The noArguments.
    */
   boolean getNoArguments();

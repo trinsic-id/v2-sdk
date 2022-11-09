@@ -3,47 +3,58 @@
 
 package trinsic.services.universalwallet.v1;
 
-public interface UpdateItemRequestOrBuilder extends
+public interface UpdateItemRequestOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.universalwallet.v1.UpdateItemRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * ID of item in wallet
    * </pre>
    *
    * <code>string item_id = 1;</code>
+   *
    * @return The itemId.
    */
   java.lang.String getItemId();
   /**
+   *
+   *
    * <pre>
    * ID of item in wallet
    * </pre>
    *
    * <code>string item_id = 1;</code>
+   *
    * @return The bytes for itemId.
    */
-  com.google.protobuf.ByteString
-      getItemIdBytes();
+  com.google.protobuf.ByteString getItemIdBytes();
 
   /**
+   *
+   *
    * <pre>
    * Item type (ex. "VerifiableCredential")
    * </pre>
    *
    * <code>string item_type = 2 [(.services.options.optional) = true];</code>
+   *
    * @return The itemType.
    */
   java.lang.String getItemType();
   /**
+   *
+   *
    * <pre>
    * Item type (ex. "VerifiableCredential")
    * </pre>
    *
    * <code>string item_type = 2 [(.services.options.optional) = true];</code>
+   *
    * @return The bytes for itemType.
    */
-  com.google.protobuf.ByteString
-      getItemTypeBytes();
+  com.google.protobuf.ByteString getItemTypeBytes();
 }

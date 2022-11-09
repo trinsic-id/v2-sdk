@@ -4,21 +4,24 @@
 package trinsic.services.event.v1;
 
 /**
+ *
+ *
  * <pre>
  * Template created in ecosystem
  * </pre>
  *
  * Protobuf type {@code trinsic.services.event.TemplateCreated}
  */
-public final class TemplateCreated extends
-    com.google.protobuf.GeneratedMessageV3 implements
+public final class TemplateCreated extends com.google.protobuf.GeneratedMessageV3
+    implements
     // @@protoc_insertion_point(message_implements:trinsic.services.event.TemplateCreated)
     TemplateCreatedOrBuilder {
-private static final long serialVersionUID = 0L;
+  private static final long serialVersionUID = 0L;
   // Use TemplateCreated.newBuilder() to construct.
   private TemplateCreated(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
+
   private TemplateCreated() {
     id_ = "";
     ecosystemId_ = "";
@@ -29,106 +32,41 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
     return new TemplateCreated();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet
-  getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
     return this.unknownFields;
   }
-  private TemplateCreated(
-      com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
-    try {
-      boolean done = false;
-      while (!done) {
-        int tag = input.readTag();
-        switch (tag) {
-          case 0:
-            done = true;
-            break;
-          case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
 
-            id_ = s;
-            break;
-          }
-          case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            ecosystemId_ = s;
-            break;
-          }
-          case 26: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            name_ = s;
-            break;
-          }
-          case 34: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            type_ = s;
-            break;
-          }
-          case 42: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            createdBy_ = s;
-            break;
-          }
-          default: {
-            if (!parseUnknownField(
-                input, unknownFields, extensionRegistry, tag)) {
-              done = true;
-            }
-            break;
-          }
-        }
-      }
-    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
-    } catch (com.google.protobuf.UninitializedMessageException e) {
-      throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
-    } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
-    } finally {
-      this.unknownFields = unknownFields.build();
-      makeExtensionsImmutable();
-    }
-  }
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return trinsic.services.event.v1.EventOuterClass.internal_static_trinsic_services_event_TemplateCreated_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    return trinsic.services.event.v1.EventOuterClass
+        .internal_static_trinsic_services_event_TemplateCreated_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.event.v1.EventOuterClass.internal_static_trinsic_services_event_TemplateCreated_fieldAccessorTable
+    return trinsic.services.event.v1.EventOuterClass
+        .internal_static_trinsic_services_event_TemplateCreated_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.event.v1.TemplateCreated.class, trinsic.services.event.v1.TemplateCreated.Builder.class);
+            trinsic.services.event.v1.TemplateCreated.class,
+            trinsic.services.event.v1.TemplateCreated.Builder.class);
   }
 
   public static final int ID_FIELD_NUMBER = 1;
   private volatile java.lang.Object id_;
   /**
+   *
+   *
    * <pre>
    * UUID of the template
    * </pre>
    *
    * <code>string id = 1;</code>
+   *
    * @return The id.
    */
   @java.lang.Override
@@ -137,29 +75,29 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       id_ = s;
       return s;
     }
   }
   /**
+   *
+   *
    * <pre>
    * UUID of the template
    * </pre>
    *
    * <code>string id = 1;</code>
+   *
    * @return The bytes for id.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getIdBytes() {
+  public com.google.protobuf.ByteString getIdBytes() {
     java.lang.Object ref = id_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       id_ = b;
       return b;
     } else {
@@ -170,11 +108,14 @@ private static final long serialVersionUID = 0L;
   public static final int ECOSYSTEM_ID_FIELD_NUMBER = 2;
   private volatile java.lang.Object ecosystemId_;
   /**
+   *
+   *
    * <pre>
    * UUID of the ecosystem that owns this template
    * </pre>
    *
    * <code>string ecosystem_id = 2;</code>
+   *
    * @return The ecosystemId.
    */
   @java.lang.Override
@@ -183,29 +124,29 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       ecosystemId_ = s;
       return s;
     }
   }
   /**
+   *
+   *
    * <pre>
    * UUID of the ecosystem that owns this template
    * </pre>
    *
    * <code>string ecosystem_id = 2;</code>
+   *
    * @return The bytes for ecosystemId.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getEcosystemIdBytes() {
+  public com.google.protobuf.ByteString getEcosystemIdBytes() {
     java.lang.Object ref = ecosystemId_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       ecosystemId_ = b;
       return b;
     } else {
@@ -216,11 +157,14 @@ private static final long serialVersionUID = 0L;
   public static final int NAME_FIELD_NUMBER = 3;
   private volatile java.lang.Object name_;
   /**
+   *
+   *
    * <pre>
    * Template name
    * </pre>
    *
    * <code>string name = 3;</code>
+   *
    * @return The name.
    */
   @java.lang.Override
@@ -229,29 +173,29 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       name_ = s;
       return s;
     }
   }
   /**
+   *
+   *
    * <pre>
    * Template name
    * </pre>
    *
    * <code>string name = 3;</code>
+   *
    * @return The bytes for name.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getNameBytes() {
+  public com.google.protobuf.ByteString getNameBytes() {
     java.lang.Object ref = name_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       name_ = b;
       return b;
     } else {
@@ -262,11 +206,14 @@ private static final long serialVersionUID = 0L;
   public static final int TYPE_FIELD_NUMBER = 4;
   private volatile java.lang.Object type_;
   /**
+   *
+   *
    * <pre>
    * Template type
    * </pre>
    *
    * <code>string type = 4;</code>
+   *
    * @return The type.
    */
   @java.lang.Override
@@ -275,29 +222,29 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       type_ = s;
       return s;
     }
   }
   /**
+   *
+   *
    * <pre>
    * Template type
    * </pre>
    *
    * <code>string type = 4;</code>
+   *
    * @return The bytes for type.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getTypeBytes() {
+  public com.google.protobuf.ByteString getTypeBytes() {
     java.lang.Object ref = type_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       type_ = b;
       return b;
     } else {
@@ -308,11 +255,14 @@ private static final long serialVersionUID = 0L;
   public static final int CREATED_BY_FIELD_NUMBER = 5;
   private volatile java.lang.Object createdBy_;
   /**
+   *
+   *
    * <pre>
    * WalletID that created the template
    * </pre>
    *
    * <code>string created_by = 5;</code>
+   *
    * @return The createdBy.
    */
   @java.lang.Override
@@ -321,29 +271,29 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       createdBy_ = s;
       return s;
     }
   }
   /**
+   *
+   *
    * <pre>
    * WalletID that created the template
    * </pre>
    *
    * <code>string created_by = 5;</code>
+   *
    * @return The bytes for createdBy.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getCreatedByBytes() {
+  public com.google.protobuf.ByteString getCreatedByBytes() {
     java.lang.Object ref = createdBy_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       createdBy_ = b;
       return b;
     } else {
@@ -352,6 +302,7 @@ private static final long serialVersionUID = 0L;
   }
 
   private byte memoizedIsInitialized = -1;
+
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -363,8 +314,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
     }
@@ -380,7 +330,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(createdBy_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 5, createdBy_);
     }
-    unknownFields.writeTo(output);
+    getUnknownFields().writeTo(output);
   }
 
   @java.lang.Override
@@ -404,7 +354,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(createdBy_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, createdBy_);
     }
-    size += unknownFields.getSerializedSize();
+    size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
   }
@@ -412,24 +362,20 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-     return true;
+      return true;
     }
     if (!(obj instanceof trinsic.services.event.v1.TemplateCreated)) {
       return super.equals(obj);
     }
-    trinsic.services.event.v1.TemplateCreated other = (trinsic.services.event.v1.TemplateCreated) obj;
+    trinsic.services.event.v1.TemplateCreated other =
+        (trinsic.services.event.v1.TemplateCreated) obj;
 
-    if (!getId()
-        .equals(other.getId())) return false;
-    if (!getEcosystemId()
-        .equals(other.getEcosystemId())) return false;
-    if (!getName()
-        .equals(other.getName())) return false;
-    if (!getType()
-        .equals(other.getType())) return false;
-    if (!getCreatedBy()
-        .equals(other.getCreatedBy())) return false;
-    if (!unknownFields.equals(other.unknownFields)) return false;
+    if (!getId().equals(other.getId())) return false;
+    if (!getEcosystemId().equals(other.getEcosystemId())) return false;
+    if (!getName().equals(other.getName())) return false;
+    if (!getType().equals(other.getType())) return false;
+    if (!getCreatedBy().equals(other.getCreatedBy())) return false;
+    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
 
@@ -450,140 +396,141 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getType().hashCode();
     hash = (37 * hash) + CREATED_BY_FIELD_NUMBER;
     hash = (53 * hash) + getCreatedBy().hashCode();
-    hash = (29 * hash) + unknownFields.hashCode();
+    hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static trinsic.services.event.v1.TemplateCreated parseFrom(
-      java.nio.ByteBuffer data)
+  public static trinsic.services.event.v1.TemplateCreated parseFrom(java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static trinsic.services.event.v1.TemplateCreated parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static trinsic.services.event.v1.TemplateCreated parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static trinsic.services.event.v1.TemplateCreated parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static trinsic.services.event.v1.TemplateCreated parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static trinsic.services.event.v1.TemplateCreated parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static trinsic.services.event.v1.TemplateCreated parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static trinsic.services.event.v1.TemplateCreated parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
-  public static trinsic.services.event.v1.TemplateCreated parseDelimitedFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
-  }
+
   public static trinsic.services.event.v1.TemplateCreated parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
+
+  public static trinsic.services.event.v1.TemplateCreated parseDelimitedFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+        PARSER, input, extensionRegistry);
+  }
+
   public static trinsic.services.event.v1.TemplateCreated parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static trinsic.services.event.v1.TemplateCreated parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
+  public Builder newBuilderForType() {
+    return newBuilder();
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
+
   public static Builder newBuilder(trinsic.services.event.v1.TemplateCreated prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
+
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
+   *
+   *
    * <pre>
    * Template created in ecosystem
    * </pre>
    *
    * Protobuf type {@code trinsic.services.event.TemplateCreated}
    */
-  public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+      implements
       // @@protoc_insertion_point(builder_implements:trinsic.services.event.TemplateCreated)
       trinsic.services.event.v1.TemplateCreatedOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.event.v1.EventOuterClass.internal_static_trinsic_services_event_TemplateCreated_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.services.event.v1.EventOuterClass
+          .internal_static_trinsic_services_event_TemplateCreated_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.event.v1.EventOuterClass.internal_static_trinsic_services_event_TemplateCreated_fieldAccessorTable
+      return trinsic.services.event.v1.EventOuterClass
+          .internal_static_trinsic_services_event_TemplateCreated_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.event.v1.TemplateCreated.class, trinsic.services.event.v1.TemplateCreated.Builder.class);
+              trinsic.services.event.v1.TemplateCreated.class,
+              trinsic.services.event.v1.TemplateCreated.Builder.class);
     }
 
     // Construct using trinsic.services.event.v1.TemplateCreated.newBuilder()
-    private Builder() {
-      maybeForceBuilderInitialization();
+    private Builder() {}
+
+    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
     }
 
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-      }
-    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -601,9 +548,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
-      return trinsic.services.event.v1.EventOuterClass.internal_static_trinsic_services_event_TemplateCreated_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return trinsic.services.event.v1.EventOuterClass
+          .internal_static_trinsic_services_event_TemplateCreated_descriptor;
     }
 
     @java.lang.Override
@@ -622,7 +569,8 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public trinsic.services.event.v1.TemplateCreated buildPartial() {
-      trinsic.services.event.v1.TemplateCreated result = new trinsic.services.event.v1.TemplateCreated(this);
+      trinsic.services.event.v1.TemplateCreated result =
+          new trinsic.services.event.v1.TemplateCreated(this);
       result.id_ = id_;
       result.ecosystemId_ = ecosystemId_;
       result.name_ = name_;
@@ -636,38 +584,39 @@ private static final long serialVersionUID = 0L;
     public Builder clone() {
       return super.clone();
     }
+
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.setField(field, value);
     }
+
     @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
+
     @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
+
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
+
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
+
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof trinsic.services.event.v1.TemplateCreated) {
-        return mergeFrom((trinsic.services.event.v1.TemplateCreated)other);
+        return mergeFrom((trinsic.services.event.v1.TemplateCreated) other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -696,7 +645,7 @@ private static final long serialVersionUID = 0L;
         createdBy_ = other.createdBy_;
         onChanged();
       }
-      this.mergeUnknownFields(other.unknownFields);
+      this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
     }
@@ -711,34 +660,80 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      trinsic.services.event.v1.TemplateCreated parsedMessage = null;
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       try {
-        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10:
+              {
+                id_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 10
+            case 18:
+              {
+                ecosystemId_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 18
+            case 26:
+              {
+                name_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 26
+            case 34:
+              {
+                type_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 34
+            case 42:
+              {
+                createdBy_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 42
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+          } // switch (tag)
+        } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (trinsic.services.event.v1.TemplateCreated) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
-        if (parsedMessage != null) {
-          mergeFrom(parsedMessage);
-        }
-      }
+        onChanged();
+      } // finally
       return this;
     }
 
     private java.lang.Object id_ = "";
     /**
+     *
+     *
      * <pre>
      * UUID of the template
      * </pre>
      *
      * <code>string id = 1;</code>
+     *
      * @return The id.
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         id_ = s;
         return s;
@@ -747,20 +742,21 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * UUID of the template
      * </pre>
      *
      * <code>string id = 1;</code>
+     *
      * @return The bytes for id.
      */
-    public com.google.protobuf.ByteString
-        getIdBytes() {
+    public com.google.protobuf.ByteString getIdBytes() {
       java.lang.Object ref = id_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         id_ = b;
         return b;
       } else {
@@ -768,54 +764,61 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * UUID of the template
      * </pre>
      *
      * <code>string id = 1;</code>
+     *
      * @param value The id to set.
      * @return This builder for chaining.
      */
-    public Builder setId(
-        java.lang.String value) {
+    public Builder setId(java.lang.String value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        throw new NullPointerException();
+      }
+
       id_ = value;
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * UUID of the template
      * </pre>
      *
      * <code>string id = 1;</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearId() {
-      
+
       id_ = getDefaultInstance().getId();
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * UUID of the template
      * </pre>
      *
      * <code>string id = 1;</code>
+     *
      * @param value The bytes for id to set.
      * @return This builder for chaining.
      */
-    public Builder setIdBytes(
-        com.google.protobuf.ByteString value) {
+    public Builder setIdBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
       id_ = value;
       onChanged();
       return this;
@@ -823,18 +826,20 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object ecosystemId_ = "";
     /**
+     *
+     *
      * <pre>
      * UUID of the ecosystem that owns this template
      * </pre>
      *
      * <code>string ecosystem_id = 2;</code>
+     *
      * @return The ecosystemId.
      */
     public java.lang.String getEcosystemId() {
       java.lang.Object ref = ecosystemId_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         ecosystemId_ = s;
         return s;
@@ -843,20 +848,21 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * UUID of the ecosystem that owns this template
      * </pre>
      *
      * <code>string ecosystem_id = 2;</code>
+     *
      * @return The bytes for ecosystemId.
      */
-    public com.google.protobuf.ByteString
-        getEcosystemIdBytes() {
+    public com.google.protobuf.ByteString getEcosystemIdBytes() {
       java.lang.Object ref = ecosystemId_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         ecosystemId_ = b;
         return b;
       } else {
@@ -864,54 +870,61 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * UUID of the ecosystem that owns this template
      * </pre>
      *
      * <code>string ecosystem_id = 2;</code>
+     *
      * @param value The ecosystemId to set.
      * @return This builder for chaining.
      */
-    public Builder setEcosystemId(
-        java.lang.String value) {
+    public Builder setEcosystemId(java.lang.String value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        throw new NullPointerException();
+      }
+
       ecosystemId_ = value;
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * UUID of the ecosystem that owns this template
      * </pre>
      *
      * <code>string ecosystem_id = 2;</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearEcosystemId() {
-      
+
       ecosystemId_ = getDefaultInstance().getEcosystemId();
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * UUID of the ecosystem that owns this template
      * </pre>
      *
      * <code>string ecosystem_id = 2;</code>
+     *
      * @param value The bytes for ecosystemId to set.
      * @return This builder for chaining.
      */
-    public Builder setEcosystemIdBytes(
-        com.google.protobuf.ByteString value) {
+    public Builder setEcosystemIdBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
       ecosystemId_ = value;
       onChanged();
       return this;
@@ -919,18 +932,20 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object name_ = "";
     /**
+     *
+     *
      * <pre>
      * Template name
      * </pre>
      *
      * <code>string name = 3;</code>
+     *
      * @return The name.
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         name_ = s;
         return s;
@@ -939,20 +954,21 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Template name
      * </pre>
      *
      * <code>string name = 3;</code>
+     *
      * @return The bytes for name.
      */
-    public com.google.protobuf.ByteString
-        getNameBytes() {
+    public com.google.protobuf.ByteString getNameBytes() {
       java.lang.Object ref = name_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         name_ = b;
         return b;
       } else {
@@ -960,54 +976,61 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Template name
      * </pre>
      *
      * <code>string name = 3;</code>
+     *
      * @param value The name to set.
      * @return This builder for chaining.
      */
-    public Builder setName(
-        java.lang.String value) {
+    public Builder setName(java.lang.String value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        throw new NullPointerException();
+      }
+
       name_ = value;
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Template name
      * </pre>
      *
      * <code>string name = 3;</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearName() {
-      
+
       name_ = getDefaultInstance().getName();
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Template name
      * </pre>
      *
      * <code>string name = 3;</code>
+     *
      * @param value The bytes for name to set.
      * @return This builder for chaining.
      */
-    public Builder setNameBytes(
-        com.google.protobuf.ByteString value) {
+    public Builder setNameBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
       name_ = value;
       onChanged();
       return this;
@@ -1015,18 +1038,20 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object type_ = "";
     /**
+     *
+     *
      * <pre>
      * Template type
      * </pre>
      *
      * <code>string type = 4;</code>
+     *
      * @return The type.
      */
     public java.lang.String getType() {
       java.lang.Object ref = type_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         type_ = s;
         return s;
@@ -1035,20 +1060,21 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Template type
      * </pre>
      *
      * <code>string type = 4;</code>
+     *
      * @return The bytes for type.
      */
-    public com.google.protobuf.ByteString
-        getTypeBytes() {
+    public com.google.protobuf.ByteString getTypeBytes() {
       java.lang.Object ref = type_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         type_ = b;
         return b;
       } else {
@@ -1056,54 +1082,61 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Template type
      * </pre>
      *
      * <code>string type = 4;</code>
+     *
      * @param value The type to set.
      * @return This builder for chaining.
      */
-    public Builder setType(
-        java.lang.String value) {
+    public Builder setType(java.lang.String value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        throw new NullPointerException();
+      }
+
       type_ = value;
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Template type
      * </pre>
      *
      * <code>string type = 4;</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearType() {
-      
+
       type_ = getDefaultInstance().getType();
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Template type
      * </pre>
      *
      * <code>string type = 4;</code>
+     *
      * @param value The bytes for type to set.
      * @return This builder for chaining.
      */
-    public Builder setTypeBytes(
-        com.google.protobuf.ByteString value) {
+    public Builder setTypeBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
       type_ = value;
       onChanged();
       return this;
@@ -1111,18 +1144,20 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object createdBy_ = "";
     /**
+     *
+     *
      * <pre>
      * WalletID that created the template
      * </pre>
      *
      * <code>string created_by = 5;</code>
+     *
      * @return The createdBy.
      */
     public java.lang.String getCreatedBy() {
       java.lang.Object ref = createdBy_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         createdBy_ = s;
         return s;
@@ -1131,20 +1166,21 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * WalletID that created the template
      * </pre>
      *
      * <code>string created_by = 5;</code>
+     *
      * @return The bytes for createdBy.
      */
-    public com.google.protobuf.ByteString
-        getCreatedByBytes() {
+    public com.google.protobuf.ByteString getCreatedByBytes() {
       java.lang.Object ref = createdBy_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         createdBy_ = b;
         return b;
       } else {
@@ -1152,61 +1188,68 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * WalletID that created the template
      * </pre>
      *
      * <code>string created_by = 5;</code>
+     *
      * @param value The createdBy to set.
      * @return This builder for chaining.
      */
-    public Builder setCreatedBy(
-        java.lang.String value) {
+    public Builder setCreatedBy(java.lang.String value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        throw new NullPointerException();
+      }
+
       createdBy_ = value;
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * WalletID that created the template
      * </pre>
      *
      * <code>string created_by = 5;</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearCreatedBy() {
-      
+
       createdBy_ = getDefaultInstance().getCreatedBy();
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * WalletID that created the template
      * </pre>
      *
      * <code>string created_by = 5;</code>
+     *
      * @param value The bytes for createdBy to set.
      * @return This builder for chaining.
      */
-    public Builder setCreatedByBytes(
-        com.google.protobuf.ByteString value) {
+    public Builder setCreatedByBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
       createdBy_ = value;
       onChanged();
       return this;
     }
+
     @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -1216,12 +1259,12 @@ private static final long serialVersionUID = 0L;
       return super.mergeUnknownFields(unknownFields);
     }
 
-
     // @@protoc_insertion_point(builder_scope:trinsic.services.event.TemplateCreated)
   }
 
   // @@protoc_insertion_point(class_scope:trinsic.services.event.TemplateCreated)
   private static final trinsic.services.event.v1.TemplateCreated DEFAULT_INSTANCE;
+
   static {
     DEFAULT_INSTANCE = new trinsic.services.event.v1.TemplateCreated();
   }
@@ -1230,16 +1273,27 @@ private static final long serialVersionUID = 0L;
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<TemplateCreated>
-      PARSER = new com.google.protobuf.AbstractParser<TemplateCreated>() {
-    @java.lang.Override
-    public TemplateCreated parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return new TemplateCreated(input, extensionRegistry);
-    }
-  };
+  private static final com.google.protobuf.Parser<TemplateCreated> PARSER =
+      new com.google.protobuf.AbstractParser<TemplateCreated>() {
+        @java.lang.Override
+        public TemplateCreated parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
 
   public static com.google.protobuf.Parser<TemplateCreated> parser() {
     return PARSER;
@@ -1254,6 +1308,4 @@ private static final long serialVersionUID = 0L;
   public trinsic.services.event.v1.TemplateCreated getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
-
 }
-

@@ -4,6 +4,8 @@
 package trinsic.services.trustregistry.v1;
 
 /**
+ *
+ *
  * <pre>
  * Request to register a member as a valid issuer of a specific credential schema.
  * Only one of `did_uri`, `wallet_id`, or `email` may be specified.
@@ -11,15 +13,16 @@ package trinsic.services.trustregistry.v1;
  *
  * Protobuf type {@code services.trustregistry.v1.RegisterMemberRequest}
  */
-public final class RegisterMemberRequest extends
-    com.google.protobuf.GeneratedMessageV3 implements
+public final class RegisterMemberRequest extends com.google.protobuf.GeneratedMessageV3
+    implements
     // @@protoc_insertion_point(message_implements:services.trustregistry.v1.RegisterMemberRequest)
     RegisterMemberRequestOrBuilder {
-private static final long serialVersionUID = 0L;
+  private static final long serialVersionUID = 0L;
   // Use RegisterMemberRequest.newBuilder() to construct.
   private RegisterMemberRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
+
   private RegisterMemberRequest() {
     schemaUri_ = "";
     frameworkId_ = "";
@@ -27,118 +30,43 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
     return new RegisterMemberRequest();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet
-  getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
     return this.unknownFields;
   }
-  private RegisterMemberRequest(
-      com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
-    try {
-      boolean done = false;
-      while (!done) {
-        int tag = input.readTag();
-        switch (tag) {
-          case 0:
-            done = true;
-            break;
-          case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
-            memberCase_ = 1;
-            member_ = s;
-            break;
-          }
-          case 26: {
-            java.lang.String s = input.readStringRequireUtf8();
-            memberCase_ = 3;
-            member_ = s;
-            break;
-          }
-          case 34: {
-            java.lang.String s = input.readStringRequireUtf8();
-            memberCase_ = 4;
-            member_ = s;
-            break;
-          }
-          case 82: {
-            java.lang.String s = input.readStringRequireUtf8();
 
-            schemaUri_ = s;
-            break;
-          }
-          case 88: {
-
-            validFromUtc_ = input.readUInt64();
-            break;
-          }
-          case 96: {
-
-            validUntilUtc_ = input.readUInt64();
-            break;
-          }
-          case 242: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            frameworkId_ = s;
-            break;
-          }
-          default: {
-            if (!parseUnknownField(
-                input, unknownFields, extensionRegistry, tag)) {
-              done = true;
-            }
-            break;
-          }
-        }
-      }
-    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
-    } catch (com.google.protobuf.UninitializedMessageException e) {
-      throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
-    } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
-    } finally {
-      this.unknownFields = unknownFields.build();
-      makeExtensionsImmutable();
-    }
-  }
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterMemberRequest_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
+        .internal_static_services_trustregistry_v1_RegisterMemberRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterMemberRequest_fieldAccessorTable
+    return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
+        .internal_static_services_trustregistry_v1_RegisterMemberRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.trustregistry.v1.RegisterMemberRequest.class, trinsic.services.trustregistry.v1.RegisterMemberRequest.Builder.class);
+            trinsic.services.trustregistry.v1.RegisterMemberRequest.class,
+            trinsic.services.trustregistry.v1.RegisterMemberRequest.Builder.class);
   }
 
   private int memberCase_ = 0;
   private java.lang.Object member_;
+
   public enum MemberCase
-      implements com.google.protobuf.Internal.EnumLite,
+      implements
+          com.google.protobuf.Internal.EnumLite,
           com.google.protobuf.AbstractMessage.InternalOneOfEnum {
     DID_URI(1),
     WALLET_ID(3),
     EMAIL(4),
     MEMBER_NOT_SET(0);
     private final int value;
+
     private MemberCase(int value) {
       this.value = value;
     }
@@ -154,42 +82,52 @@ private static final long serialVersionUID = 0L;
 
     public static MemberCase forNumber(int value) {
       switch (value) {
-        case 1: return DID_URI;
-        case 3: return WALLET_ID;
-        case 4: return EMAIL;
-        case 0: return MEMBER_NOT_SET;
-        default: return null;
+        case 1:
+          return DID_URI;
+        case 3:
+          return WALLET_ID;
+        case 4:
+          return EMAIL;
+        case 0:
+          return MEMBER_NOT_SET;
+        default:
+          return null;
       }
     }
+
     public int getNumber() {
       return this.value;
     }
   };
 
-  public MemberCase
-  getMemberCase() {
-    return MemberCase.forNumber(
-        memberCase_);
+  public MemberCase getMemberCase() {
+    return MemberCase.forNumber(memberCase_);
   }
 
   public static final int DID_URI_FIELD_NUMBER = 1;
   /**
+   *
+   *
    * <pre>
    * DID URI of member to register
    * </pre>
    *
    * <code>string did_uri = 1;</code>
+   *
    * @return Whether the didUri field is set.
    */
   public boolean hasDidUri() {
     return memberCase_ == 1;
   }
   /**
+   *
+   *
    * <pre>
    * DID URI of member to register
    * </pre>
    *
    * <code>string did_uri = 1;</code>
+   *
    * @return The didUri.
    */
   public java.lang.String getDidUri() {
@@ -200,8 +138,7 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       if (memberCase_ == 1) {
         member_ = s;
@@ -210,23 +147,24 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   *
+   *
    * <pre>
    * DID URI of member to register
    * </pre>
    *
    * <code>string did_uri = 1;</code>
+   *
    * @return The bytes for didUri.
    */
-  public com.google.protobuf.ByteString
-      getDidUriBytes() {
+  public com.google.protobuf.ByteString getDidUriBytes() {
     java.lang.Object ref = "";
     if (memberCase_ == 1) {
       ref = member_;
     }
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       if (memberCase_ == 1) {
         member_ = b;
       }
@@ -238,22 +176,28 @@ private static final long serialVersionUID = 0L;
 
   public static final int WALLET_ID_FIELD_NUMBER = 3;
   /**
+   *
+   *
    * <pre>
    * Trinsic Wallet ID of member to register
    * </pre>
    *
    * <code>string wallet_id = 3;</code>
+   *
    * @return Whether the walletId field is set.
    */
   public boolean hasWalletId() {
     return memberCase_ == 3;
   }
   /**
+   *
+   *
    * <pre>
    * Trinsic Wallet ID of member to register
    * </pre>
    *
    * <code>string wallet_id = 3;</code>
+   *
    * @return The walletId.
    */
   public java.lang.String getWalletId() {
@@ -264,8 +208,7 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       if (memberCase_ == 3) {
         member_ = s;
@@ -274,23 +217,24 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   *
+   *
    * <pre>
    * Trinsic Wallet ID of member to register
    * </pre>
    *
    * <code>string wallet_id = 3;</code>
+   *
    * @return The bytes for walletId.
    */
-  public com.google.protobuf.ByteString
-      getWalletIdBytes() {
+  public com.google.protobuf.ByteString getWalletIdBytes() {
     java.lang.Object ref = "";
     if (memberCase_ == 3) {
       ref = member_;
     }
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       if (memberCase_ == 3) {
         member_ = b;
       }
@@ -302,22 +246,28 @@ private static final long serialVersionUID = 0L;
 
   public static final int EMAIL_FIELD_NUMBER = 4;
   /**
+   *
+   *
    * <pre>
    * Email address of member to register. Must be associated with an existing Trinsic account.
    * </pre>
    *
    * <code>string email = 4;</code>
+   *
    * @return Whether the email field is set.
    */
   public boolean hasEmail() {
     return memberCase_ == 4;
   }
   /**
+   *
+   *
    * <pre>
    * Email address of member to register. Must be associated with an existing Trinsic account.
    * </pre>
    *
    * <code>string email = 4;</code>
+   *
    * @return The email.
    */
   public java.lang.String getEmail() {
@@ -328,8 +278,7 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       if (memberCase_ == 4) {
         member_ = s;
@@ -338,23 +287,24 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   *
+   *
    * <pre>
    * Email address of member to register. Must be associated with an existing Trinsic account.
    * </pre>
    *
    * <code>string email = 4;</code>
+   *
    * @return The bytes for email.
    */
-  public com.google.protobuf.ByteString
-      getEmailBytes() {
+  public com.google.protobuf.ByteString getEmailBytes() {
     java.lang.Object ref = "";
     if (memberCase_ == 4) {
       ref = member_;
     }
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       if (memberCase_ == 4) {
         member_ = b;
       }
@@ -367,11 +317,14 @@ private static final long serialVersionUID = 0L;
   public static final int SCHEMA_URI_FIELD_NUMBER = 10;
   private volatile java.lang.Object schemaUri_;
   /**
+   *
+   *
    * <pre>
    * URI of credential schema to register member as authorized issuer of
    * </pre>
    *
    * <code>string schema_uri = 10;</code>
+   *
    * @return The schemaUri.
    */
   @java.lang.Override
@@ -380,29 +333,29 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       schemaUri_ = s;
       return s;
     }
   }
   /**
+   *
+   *
    * <pre>
    * URI of credential schema to register member as authorized issuer of
    * </pre>
    *
    * <code>string schema_uri = 10;</code>
+   *
    * @return The bytes for schemaUri.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getSchemaUriBytes() {
+  public com.google.protobuf.ByteString getSchemaUriBytes() {
     java.lang.Object ref = schemaUri_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       schemaUri_ = b;
       return b;
     } else {
@@ -413,11 +366,14 @@ private static final long serialVersionUID = 0L;
   public static final int VALID_FROM_UTC_FIELD_NUMBER = 11;
   private long validFromUtc_;
   /**
+   *
+   *
    * <pre>
    * Unix Timestamp member is valid from. Member will not be considered valid before this timestamp.
    * </pre>
    *
    * <code>uint64 valid_from_utc = 11;</code>
+   *
    * @return The validFromUtc.
    */
   @java.lang.Override
@@ -428,11 +384,14 @@ private static final long serialVersionUID = 0L;
   public static final int VALID_UNTIL_UTC_FIELD_NUMBER = 12;
   private long validUntilUtc_;
   /**
+   *
+   *
    * <pre>
    * Unix Timestamp member is valid until. Member will not be considered valid after this timestamp.
    * </pre>
    *
    * <code>uint64 valid_until_utc = 12;</code>
+   *
    * @return The validUntilUtc.
    */
   @java.lang.Override
@@ -443,11 +402,14 @@ private static final long serialVersionUID = 0L;
   public static final int FRAMEWORK_ID_FIELD_NUMBER = 30;
   private volatile java.lang.Object frameworkId_;
   /**
+   *
+   *
    * <pre>
    * ID of the governance framework that member is being added to
    * </pre>
    *
    * <code>string framework_id = 30;</code>
+   *
    * @return The frameworkId.
    */
   @java.lang.Override
@@ -456,29 +418,29 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       frameworkId_ = s;
       return s;
     }
   }
   /**
+   *
+   *
    * <pre>
    * ID of the governance framework that member is being added to
    * </pre>
    *
    * <code>string framework_id = 30;</code>
+   *
    * @return The bytes for frameworkId.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getFrameworkIdBytes() {
+  public com.google.protobuf.ByteString getFrameworkIdBytes() {
     java.lang.Object ref = frameworkId_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       frameworkId_ = b;
       return b;
     } else {
@@ -487,6 +449,7 @@ private static final long serialVersionUID = 0L;
   }
 
   private byte memoizedIsInitialized = -1;
+
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -498,8 +461,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
     if (memberCase_ == 1) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, member_);
     }
@@ -521,7 +483,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(frameworkId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 30, frameworkId_);
     }
-    unknownFields.writeTo(output);
+    getUnknownFields().writeTo(output);
   }
 
   @java.lang.Override
@@ -543,17 +505,15 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, schemaUri_);
     }
     if (validFromUtc_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(11, validFromUtc_);
+      size += com.google.protobuf.CodedOutputStream.computeUInt64Size(11, validFromUtc_);
     }
     if (validUntilUtc_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(12, validUntilUtc_);
+      size += com.google.protobuf.CodedOutputStream.computeUInt64Size(12, validUntilUtc_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(frameworkId_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(30, frameworkId_);
     }
-    size += unknownFields.getSerializedSize();
+    size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
   }
@@ -561,39 +521,33 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-     return true;
+      return true;
     }
     if (!(obj instanceof trinsic.services.trustregistry.v1.RegisterMemberRequest)) {
       return super.equals(obj);
     }
-    trinsic.services.trustregistry.v1.RegisterMemberRequest other = (trinsic.services.trustregistry.v1.RegisterMemberRequest) obj;
+    trinsic.services.trustregistry.v1.RegisterMemberRequest other =
+        (trinsic.services.trustregistry.v1.RegisterMemberRequest) obj;
 
-    if (!getSchemaUri()
-        .equals(other.getSchemaUri())) return false;
-    if (getValidFromUtc()
-        != other.getValidFromUtc()) return false;
-    if (getValidUntilUtc()
-        != other.getValidUntilUtc()) return false;
-    if (!getFrameworkId()
-        .equals(other.getFrameworkId())) return false;
+    if (!getSchemaUri().equals(other.getSchemaUri())) return false;
+    if (getValidFromUtc() != other.getValidFromUtc()) return false;
+    if (getValidUntilUtc() != other.getValidUntilUtc()) return false;
+    if (!getFrameworkId().equals(other.getFrameworkId())) return false;
     if (!getMemberCase().equals(other.getMemberCase())) return false;
     switch (memberCase_) {
       case 1:
-        if (!getDidUri()
-            .equals(other.getDidUri())) return false;
+        if (!getDidUri().equals(other.getDidUri())) return false;
         break;
       case 3:
-        if (!getWalletId()
-            .equals(other.getWalletId())) return false;
+        if (!getWalletId().equals(other.getWalletId())) return false;
         break;
       case 4:
-        if (!getEmail()
-            .equals(other.getEmail())) return false;
+        if (!getEmail().equals(other.getEmail())) return false;
         break;
       case 0:
       default:
     }
-    if (!unknownFields.equals(other.unknownFields)) return false;
+    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
 
@@ -607,11 +561,9 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + SCHEMA_URI_FIELD_NUMBER;
     hash = (53 * hash) + getSchemaUri().hashCode();
     hash = (37 * hash) + VALID_FROM_UTC_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getValidFromUtc());
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getValidFromUtc());
     hash = (37 * hash) + VALID_UNTIL_UTC_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getValidUntilUtc());
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getValidUntilUtc());
     hash = (37 * hash) + FRAMEWORK_ID_FIELD_NUMBER;
     hash = (53 * hash) + getFrameworkId().hashCode();
     switch (memberCase_) {
@@ -630,102 +582,110 @@ private static final long serialVersionUID = 0L;
       case 0:
       default:
     }
-    hash = (29 * hash) + unknownFields.hashCode();
+    hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
   public static trinsic.services.trustregistry.v1.RegisterMemberRequest parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static trinsic.services.trustregistry.v1.RegisterMemberRequest parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static trinsic.services.trustregistry.v1.RegisterMemberRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static trinsic.services.trustregistry.v1.RegisterMemberRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static trinsic.services.trustregistry.v1.RegisterMemberRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static trinsic.services.trustregistry.v1.RegisterMemberRequest parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static trinsic.services.trustregistry.v1.RegisterMemberRequest parseFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
-  }
+
   public static trinsic.services.trustregistry.v1.RegisterMemberRequest parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
-  public static trinsic.services.trustregistry.v1.RegisterMemberRequest parseDelimitedFrom(java.io.InputStream input)
+
+  public static trinsic.services.trustregistry.v1.RegisterMemberRequest parseFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
+
   public static trinsic.services.trustregistry.v1.RegisterMemberRequest parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
+
+  public static trinsic.services.trustregistry.v1.RegisterMemberRequest parseDelimitedFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+        PARSER, input, extensionRegistry);
+  }
+
   public static trinsic.services.trustregistry.v1.RegisterMemberRequest parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static trinsic.services.trustregistry.v1.RegisterMemberRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
+  public Builder newBuilderForType() {
+    return newBuilder();
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(trinsic.services.trustregistry.v1.RegisterMemberRequest prototype) {
+
+  public static Builder newBuilder(
+      trinsic.services.trustregistry.v1.RegisterMemberRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-  }
-  @java.lang.Override
-  public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  public Builder toBuilder() {
+    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+  }
+
+  @java.lang.Override
+  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
+   *
+   *
    * <pre>
    * Request to register a member as a valid issuer of a specific credential schema.
    * Only one of `did_uri`, `wallet_id`, or `email` may be specified.
@@ -733,38 +693,32 @@ private static final long serialVersionUID = 0L;
    *
    * Protobuf type {@code services.trustregistry.v1.RegisterMemberRequest}
    */
-  public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+      implements
       // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.RegisterMemberRequest)
       trinsic.services.trustregistry.v1.RegisterMemberRequestOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterMemberRequest_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
+          .internal_static_services_trustregistry_v1_RegisterMemberRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterMemberRequest_fieldAccessorTable
+      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
+          .internal_static_services_trustregistry_v1_RegisterMemberRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.trustregistry.v1.RegisterMemberRequest.class, trinsic.services.trustregistry.v1.RegisterMemberRequest.Builder.class);
+              trinsic.services.trustregistry.v1.RegisterMemberRequest.class,
+              trinsic.services.trustregistry.v1.RegisterMemberRequest.Builder.class);
     }
 
     // Construct using trinsic.services.trustregistry.v1.RegisterMemberRequest.newBuilder()
-    private Builder() {
-      maybeForceBuilderInitialization();
+    private Builder() {}
+
+    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
     }
 
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-      }
-    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -782,9 +736,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_RegisterMemberRequest_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
+          .internal_static_services_trustregistry_v1_RegisterMemberRequest_descriptor;
     }
 
     @java.lang.Override
@@ -803,7 +757,8 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public trinsic.services.trustregistry.v1.RegisterMemberRequest buildPartial() {
-      trinsic.services.trustregistry.v1.RegisterMemberRequest result = new trinsic.services.trustregistry.v1.RegisterMemberRequest(this);
+      trinsic.services.trustregistry.v1.RegisterMemberRequest result =
+          new trinsic.services.trustregistry.v1.RegisterMemberRequest(this);
       if (memberCase_ == 1) {
         result.member_ = member_;
       }
@@ -826,38 +781,39 @@ private static final long serialVersionUID = 0L;
     public Builder clone() {
       return super.clone();
     }
+
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.setField(field, value);
     }
+
     @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
+
     @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
+
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
+
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
+
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof trinsic.services.trustregistry.v1.RegisterMemberRequest) {
-        return mergeFrom((trinsic.services.trustregistry.v1.RegisterMemberRequest)other);
+        return mergeFrom((trinsic.services.trustregistry.v1.RegisterMemberRequest) other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -865,7 +821,8 @@ private static final long serialVersionUID = 0L;
     }
 
     public Builder mergeFrom(trinsic.services.trustregistry.v1.RegisterMemberRequest other) {
-      if (other == trinsic.services.trustregistry.v1.RegisterMemberRequest.getDefaultInstance()) return this;
+      if (other == trinsic.services.trustregistry.v1.RegisterMemberRequest.getDefaultInstance())
+        return this;
       if (!other.getSchemaUri().isEmpty()) {
         schemaUri_ = other.schemaUri_;
         onChanged();
@@ -881,29 +838,33 @@ private static final long serialVersionUID = 0L;
         onChanged();
       }
       switch (other.getMemberCase()) {
-        case DID_URI: {
-          memberCase_ = 1;
-          member_ = other.member_;
-          onChanged();
-          break;
-        }
-        case WALLET_ID: {
-          memberCase_ = 3;
-          member_ = other.member_;
-          onChanged();
-          break;
-        }
-        case EMAIL: {
-          memberCase_ = 4;
-          member_ = other.member_;
-          onChanged();
-          break;
-        }
-        case MEMBER_NOT_SET: {
-          break;
-        }
+        case DID_URI:
+          {
+            memberCase_ = 1;
+            member_ = other.member_;
+            onChanged();
+            break;
+          }
+        case WALLET_ID:
+          {
+            memberCase_ = 3;
+            member_ = other.member_;
+            onChanged();
+            break;
+          }
+        case EMAIL:
+          {
+            memberCase_ = 4;
+            member_ = other.member_;
+            onChanged();
+            break;
+          }
+        case MEMBER_NOT_SET:
+          {
+            break;
+          }
       }
-      this.mergeUnknownFields(other.unknownFields);
+      this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
     }
@@ -918,25 +879,84 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      trinsic.services.trustregistry.v1.RegisterMemberRequest parsedMessage = null;
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       try {
-        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+                memberCase_ = 1;
+                member_ = s;
+                break;
+              } // case 10
+            case 26:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+                memberCase_ = 3;
+                member_ = s;
+                break;
+              } // case 26
+            case 34:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+                memberCase_ = 4;
+                member_ = s;
+                break;
+              } // case 34
+            case 82:
+              {
+                schemaUri_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 82
+            case 88:
+              {
+                validFromUtc_ = input.readUInt64();
+
+                break;
+              } // case 88
+            case 96:
+              {
+                validUntilUtc_ = input.readUInt64();
+
+                break;
+              } // case 96
+            case 242:
+              {
+                frameworkId_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 242
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+          } // switch (tag)
+        } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (trinsic.services.trustregistry.v1.RegisterMemberRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
-        if (parsedMessage != null) {
-          mergeFrom(parsedMessage);
-        }
-      }
+        onChanged();
+      } // finally
       return this;
     }
+
     private int memberCase_ = 0;
     private java.lang.Object member_;
-    public MemberCase
-        getMemberCase() {
-      return MemberCase.forNumber(
-          memberCase_);
+
+    public MemberCase getMemberCase() {
+      return MemberCase.forNumber(memberCase_);
     }
 
     public Builder clearMember() {
@@ -946,13 +966,15 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-
     /**
+     *
+     *
      * <pre>
      * DID URI of member to register
      * </pre>
      *
      * <code>string did_uri = 1;</code>
+     *
      * @return Whether the didUri field is set.
      */
     @java.lang.Override
@@ -960,11 +982,14 @@ private static final long serialVersionUID = 0L;
       return memberCase_ == 1;
     }
     /**
+     *
+     *
      * <pre>
      * DID URI of member to register
      * </pre>
      *
      * <code>string did_uri = 1;</code>
+     *
      * @return The didUri.
      */
     @java.lang.Override
@@ -974,8 +999,7 @@ private static final long serialVersionUID = 0L;
         ref = member_;
       }
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (memberCase_ == 1) {
           member_ = s;
@@ -986,24 +1010,25 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * DID URI of member to register
      * </pre>
      *
      * <code>string did_uri = 1;</code>
+     *
      * @return The bytes for didUri.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getDidUriBytes() {
+    public com.google.protobuf.ByteString getDidUriBytes() {
       java.lang.Object ref = "";
       if (memberCase_ == 1) {
         ref = member_;
       }
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         if (memberCase_ == 1) {
           member_ = b;
         }
@@ -1013,30 +1038,35 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * DID URI of member to register
      * </pre>
      *
      * <code>string did_uri = 1;</code>
+     *
      * @param value The didUri to set.
      * @return This builder for chaining.
      */
-    public Builder setDidUri(
-        java.lang.String value) {
+    public Builder setDidUri(java.lang.String value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  memberCase_ = 1;
+        throw new NullPointerException();
+      }
+      memberCase_ = 1;
       member_ = value;
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * DID URI of member to register
      * </pre>
      *
      * <code>string did_uri = 1;</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearDidUri() {
@@ -1048,20 +1078,22 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * DID URI of member to register
      * </pre>
      *
      * <code>string did_uri = 1;</code>
+     *
      * @param value The bytes for didUri to set.
      * @return This builder for chaining.
      */
-    public Builder setDidUriBytes(
-        com.google.protobuf.ByteString value) {
+    public Builder setDidUriBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
       memberCase_ = 1;
       member_ = value;
       onChanged();
@@ -1069,11 +1101,14 @@ private static final long serialVersionUID = 0L;
     }
 
     /**
+     *
+     *
      * <pre>
      * Trinsic Wallet ID of member to register
      * </pre>
      *
      * <code>string wallet_id = 3;</code>
+     *
      * @return Whether the walletId field is set.
      */
     @java.lang.Override
@@ -1081,11 +1116,14 @@ private static final long serialVersionUID = 0L;
       return memberCase_ == 3;
     }
     /**
+     *
+     *
      * <pre>
      * Trinsic Wallet ID of member to register
      * </pre>
      *
      * <code>string wallet_id = 3;</code>
+     *
      * @return The walletId.
      */
     @java.lang.Override
@@ -1095,8 +1133,7 @@ private static final long serialVersionUID = 0L;
         ref = member_;
       }
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (memberCase_ == 3) {
           member_ = s;
@@ -1107,24 +1144,25 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Trinsic Wallet ID of member to register
      * </pre>
      *
      * <code>string wallet_id = 3;</code>
+     *
      * @return The bytes for walletId.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getWalletIdBytes() {
+    public com.google.protobuf.ByteString getWalletIdBytes() {
       java.lang.Object ref = "";
       if (memberCase_ == 3) {
         ref = member_;
       }
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         if (memberCase_ == 3) {
           member_ = b;
         }
@@ -1134,30 +1172,35 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Trinsic Wallet ID of member to register
      * </pre>
      *
      * <code>string wallet_id = 3;</code>
+     *
      * @param value The walletId to set.
      * @return This builder for chaining.
      */
-    public Builder setWalletId(
-        java.lang.String value) {
+    public Builder setWalletId(java.lang.String value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  memberCase_ = 3;
+        throw new NullPointerException();
+      }
+      memberCase_ = 3;
       member_ = value;
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Trinsic Wallet ID of member to register
      * </pre>
      *
      * <code>string wallet_id = 3;</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearWalletId() {
@@ -1169,20 +1212,22 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Trinsic Wallet ID of member to register
      * </pre>
      *
      * <code>string wallet_id = 3;</code>
+     *
      * @param value The bytes for walletId to set.
      * @return This builder for chaining.
      */
-    public Builder setWalletIdBytes(
-        com.google.protobuf.ByteString value) {
+    public Builder setWalletIdBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
       memberCase_ = 3;
       member_ = value;
       onChanged();
@@ -1190,11 +1235,14 @@ private static final long serialVersionUID = 0L;
     }
 
     /**
+     *
+     *
      * <pre>
      * Email address of member to register. Must be associated with an existing Trinsic account.
      * </pre>
      *
      * <code>string email = 4;</code>
+     *
      * @return Whether the email field is set.
      */
     @java.lang.Override
@@ -1202,11 +1250,14 @@ private static final long serialVersionUID = 0L;
       return memberCase_ == 4;
     }
     /**
+     *
+     *
      * <pre>
      * Email address of member to register. Must be associated with an existing Trinsic account.
      * </pre>
      *
      * <code>string email = 4;</code>
+     *
      * @return The email.
      */
     @java.lang.Override
@@ -1216,8 +1267,7 @@ private static final long serialVersionUID = 0L;
         ref = member_;
       }
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (memberCase_ == 4) {
           member_ = s;
@@ -1228,24 +1278,25 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Email address of member to register. Must be associated with an existing Trinsic account.
      * </pre>
      *
      * <code>string email = 4;</code>
+     *
      * @return The bytes for email.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getEmailBytes() {
+    public com.google.protobuf.ByteString getEmailBytes() {
       java.lang.Object ref = "";
       if (memberCase_ == 4) {
         ref = member_;
       }
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         if (memberCase_ == 4) {
           member_ = b;
         }
@@ -1255,30 +1306,35 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Email address of member to register. Must be associated with an existing Trinsic account.
      * </pre>
      *
      * <code>string email = 4;</code>
+     *
      * @param value The email to set.
      * @return This builder for chaining.
      */
-    public Builder setEmail(
-        java.lang.String value) {
+    public Builder setEmail(java.lang.String value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  memberCase_ = 4;
+        throw new NullPointerException();
+      }
+      memberCase_ = 4;
       member_ = value;
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Email address of member to register. Must be associated with an existing Trinsic account.
      * </pre>
      *
      * <code>string email = 4;</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearEmail() {
@@ -1290,20 +1346,22 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Email address of member to register. Must be associated with an existing Trinsic account.
      * </pre>
      *
      * <code>string email = 4;</code>
+     *
      * @param value The bytes for email to set.
      * @return This builder for chaining.
      */
-    public Builder setEmailBytes(
-        com.google.protobuf.ByteString value) {
+    public Builder setEmailBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
       memberCase_ = 4;
       member_ = value;
       onChanged();
@@ -1312,18 +1370,20 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object schemaUri_ = "";
     /**
+     *
+     *
      * <pre>
      * URI of credential schema to register member as authorized issuer of
      * </pre>
      *
      * <code>string schema_uri = 10;</code>
+     *
      * @return The schemaUri.
      */
     public java.lang.String getSchemaUri() {
       java.lang.Object ref = schemaUri_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         schemaUri_ = s;
         return s;
@@ -1332,20 +1392,21 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * URI of credential schema to register member as authorized issuer of
      * </pre>
      *
      * <code>string schema_uri = 10;</code>
+     *
      * @return The bytes for schemaUri.
      */
-    public com.google.protobuf.ByteString
-        getSchemaUriBytes() {
+    public com.google.protobuf.ByteString getSchemaUriBytes() {
       java.lang.Object ref = schemaUri_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         schemaUri_ = b;
         return b;
       } else {
@@ -1353,66 +1414,76 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * URI of credential schema to register member as authorized issuer of
      * </pre>
      *
      * <code>string schema_uri = 10;</code>
+     *
      * @param value The schemaUri to set.
      * @return This builder for chaining.
      */
-    public Builder setSchemaUri(
-        java.lang.String value) {
+    public Builder setSchemaUri(java.lang.String value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        throw new NullPointerException();
+      }
+
       schemaUri_ = value;
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * URI of credential schema to register member as authorized issuer of
      * </pre>
      *
      * <code>string schema_uri = 10;</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearSchemaUri() {
-      
+
       schemaUri_ = getDefaultInstance().getSchemaUri();
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * URI of credential schema to register member as authorized issuer of
      * </pre>
      *
      * <code>string schema_uri = 10;</code>
+     *
      * @param value The bytes for schemaUri to set.
      * @return This builder for chaining.
      */
-    public Builder setSchemaUriBytes(
-        com.google.protobuf.ByteString value) {
+    public Builder setSchemaUriBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
       schemaUri_ = value;
       onChanged();
       return this;
     }
 
-    private long validFromUtc_ ;
+    private long validFromUtc_;
     /**
+     *
+     *
      * <pre>
      * Unix Timestamp member is valid from. Member will not be considered valid before this timestamp.
      * </pre>
      *
      * <code>uint64 valid_from_utc = 11;</code>
+     *
      * @return The validFromUtc.
      */
     @java.lang.Override
@@ -1420,42 +1491,51 @@ private static final long serialVersionUID = 0L;
       return validFromUtc_;
     }
     /**
+     *
+     *
      * <pre>
      * Unix Timestamp member is valid from. Member will not be considered valid before this timestamp.
      * </pre>
      *
      * <code>uint64 valid_from_utc = 11;</code>
+     *
      * @param value The validFromUtc to set.
      * @return This builder for chaining.
      */
     public Builder setValidFromUtc(long value) {
-      
+
       validFromUtc_ = value;
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Unix Timestamp member is valid from. Member will not be considered valid before this timestamp.
      * </pre>
      *
      * <code>uint64 valid_from_utc = 11;</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearValidFromUtc() {
-      
+
       validFromUtc_ = 0L;
       onChanged();
       return this;
     }
 
-    private long validUntilUtc_ ;
+    private long validUntilUtc_;
     /**
+     *
+     *
      * <pre>
      * Unix Timestamp member is valid until. Member will not be considered valid after this timestamp.
      * </pre>
      *
      * <code>uint64 valid_until_utc = 12;</code>
+     *
      * @return The validUntilUtc.
      */
     @java.lang.Override
@@ -1463,30 +1543,36 @@ private static final long serialVersionUID = 0L;
       return validUntilUtc_;
     }
     /**
+     *
+     *
      * <pre>
      * Unix Timestamp member is valid until. Member will not be considered valid after this timestamp.
      * </pre>
      *
      * <code>uint64 valid_until_utc = 12;</code>
+     *
      * @param value The validUntilUtc to set.
      * @return This builder for chaining.
      */
     public Builder setValidUntilUtc(long value) {
-      
+
       validUntilUtc_ = value;
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Unix Timestamp member is valid until. Member will not be considered valid after this timestamp.
      * </pre>
      *
      * <code>uint64 valid_until_utc = 12;</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearValidUntilUtc() {
-      
+
       validUntilUtc_ = 0L;
       onChanged();
       return this;
@@ -1494,18 +1580,20 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object frameworkId_ = "";
     /**
+     *
+     *
      * <pre>
      * ID of the governance framework that member is being added to
      * </pre>
      *
      * <code>string framework_id = 30;</code>
+     *
      * @return The frameworkId.
      */
     public java.lang.String getFrameworkId() {
       java.lang.Object ref = frameworkId_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         frameworkId_ = s;
         return s;
@@ -1514,20 +1602,21 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * ID of the governance framework that member is being added to
      * </pre>
      *
      * <code>string framework_id = 30;</code>
+     *
      * @return The bytes for frameworkId.
      */
-    public com.google.protobuf.ByteString
-        getFrameworkIdBytes() {
+    public com.google.protobuf.ByteString getFrameworkIdBytes() {
       java.lang.Object ref = frameworkId_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         frameworkId_ = b;
         return b;
       } else {
@@ -1535,61 +1624,68 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * ID of the governance framework that member is being added to
      * </pre>
      *
      * <code>string framework_id = 30;</code>
+     *
      * @param value The frameworkId to set.
      * @return This builder for chaining.
      */
-    public Builder setFrameworkId(
-        java.lang.String value) {
+    public Builder setFrameworkId(java.lang.String value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        throw new NullPointerException();
+      }
+
       frameworkId_ = value;
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * ID of the governance framework that member is being added to
      * </pre>
      *
      * <code>string framework_id = 30;</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearFrameworkId() {
-      
+
       frameworkId_ = getDefaultInstance().getFrameworkId();
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * ID of the governance framework that member is being added to
      * </pre>
      *
      * <code>string framework_id = 30;</code>
+     *
      * @param value The bytes for frameworkId to set.
      * @return This builder for chaining.
      */
-    public Builder setFrameworkIdBytes(
-        com.google.protobuf.ByteString value) {
+    public Builder setFrameworkIdBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
       frameworkId_ = value;
       onChanged();
       return this;
     }
+
     @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -1599,12 +1695,12 @@ private static final long serialVersionUID = 0L;
       return super.mergeUnknownFields(unknownFields);
     }
 
-
     // @@protoc_insertion_point(builder_scope:services.trustregistry.v1.RegisterMemberRequest)
   }
 
   // @@protoc_insertion_point(class_scope:services.trustregistry.v1.RegisterMemberRequest)
   private static final trinsic.services.trustregistry.v1.RegisterMemberRequest DEFAULT_INSTANCE;
+
   static {
     DEFAULT_INSTANCE = new trinsic.services.trustregistry.v1.RegisterMemberRequest();
   }
@@ -1613,16 +1709,27 @@ private static final long serialVersionUID = 0L;
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<RegisterMemberRequest>
-      PARSER = new com.google.protobuf.AbstractParser<RegisterMemberRequest>() {
-    @java.lang.Override
-    public RegisterMemberRequest parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return new RegisterMemberRequest(input, extensionRegistry);
-    }
-  };
+  private static final com.google.protobuf.Parser<RegisterMemberRequest> PARSER =
+      new com.google.protobuf.AbstractParser<RegisterMemberRequest>() {
+        @java.lang.Override
+        public RegisterMemberRequest parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
 
   public static com.google.protobuf.Parser<RegisterMemberRequest> parser() {
     return PARSER;
@@ -1637,6 +1744,4 @@ private static final long serialVersionUID = 0L;
   public trinsic.services.trustregistry.v1.RegisterMemberRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
-
 }
-

@@ -4,6 +4,8 @@
 package trinsic.services.verifiablecredentials.v1;
 
 /**
+ *
+ *
  * <pre>
  * Request to create a proof for a Verifiable Credential using public key tied to caller.
  * Either `item_id` or `document_json` may be provided, not both.
@@ -11,110 +13,58 @@ package trinsic.services.verifiablecredentials.v1;
  *
  * Protobuf type {@code services.verifiablecredentials.v1.CreateProofRequest}
  */
-public final class CreateProofRequest extends
-    com.google.protobuf.GeneratedMessageV3 implements
+public final class CreateProofRequest extends com.google.protobuf.GeneratedMessageV3
+    implements
     // @@protoc_insertion_point(message_implements:services.verifiablecredentials.v1.CreateProofRequest)
     CreateProofRequestOrBuilder {
-private static final long serialVersionUID = 0L;
+  private static final long serialVersionUID = 0L;
   // Use CreateProofRequest.newBuilder() to construct.
   private CreateProofRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
+
   private CreateProofRequest() {
     revealDocumentJson_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
     return new CreateProofRequest();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet
-  getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
     return this.unknownFields;
   }
-  private CreateProofRequest(
-      com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
-    try {
-      boolean done = false;
-      while (!done) {
-        int tag = input.readTag();
-        switch (tag) {
-          case 0:
-            done = true;
-            break;
-          case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
 
-            revealDocumentJson_ = s;
-            break;
-          }
-          case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
-            proofCase_ = 2;
-            proof_ = s;
-            break;
-          }
-          case 26: {
-            java.lang.String s = input.readStringRequireUtf8();
-            proofCase_ = 3;
-            proof_ = s;
-            break;
-          }
-          default: {
-            if (!parseUnknownField(
-                input, unknownFields, extensionRegistry, tag)) {
-              done = true;
-            }
-            break;
-          }
-        }
-      }
-    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
-    } catch (com.google.protobuf.UninitializedMessageException e) {
-      throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
-    } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
-    } finally {
-      this.unknownFields = unknownFields.build();
-      makeExtensionsImmutable();
-    }
-  }
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_CreateProofRequest_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
+        .internal_static_services_verifiablecredentials_v1_CreateProofRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_CreateProofRequest_fieldAccessorTable
+    return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
+        .internal_static_services_verifiablecredentials_v1_CreateProofRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.verifiablecredentials.v1.CreateProofRequest.class, trinsic.services.verifiablecredentials.v1.CreateProofRequest.Builder.class);
+            trinsic.services.verifiablecredentials.v1.CreateProofRequest.class,
+            trinsic.services.verifiablecredentials.v1.CreateProofRequest.Builder.class);
   }
 
   private int proofCase_ = 0;
   private java.lang.Object proof_;
+
   public enum ProofCase
-      implements com.google.protobuf.Internal.EnumLite,
+      implements
+          com.google.protobuf.Internal.EnumLite,
           com.google.protobuf.AbstractMessage.InternalOneOfEnum {
     ITEM_ID(2),
     DOCUMENT_JSON(3),
     PROOF_NOT_SET(0);
     private final int value;
+
     private ProofCase(int value) {
       this.value = value;
     }
@@ -130,33 +80,39 @@ private static final long serialVersionUID = 0L;
 
     public static ProofCase forNumber(int value) {
       switch (value) {
-        case 2: return ITEM_ID;
-        case 3: return DOCUMENT_JSON;
-        case 0: return PROOF_NOT_SET;
-        default: return null;
+        case 2:
+          return ITEM_ID;
+        case 3:
+          return DOCUMENT_JSON;
+        case 0:
+          return PROOF_NOT_SET;
+        default:
+          return null;
       }
     }
+
     public int getNumber() {
       return this.value;
     }
   };
 
-  public ProofCase
-  getProofCase() {
-    return ProofCase.forNumber(
-        proofCase_);
+  public ProofCase getProofCase() {
+    return ProofCase.forNumber(proofCase_);
   }
 
   public static final int REVEAL_DOCUMENT_JSON_FIELD_NUMBER = 1;
   private volatile java.lang.Object revealDocumentJson_;
   /**
+   *
+   *
    * <pre>
    * A valid JSON-LD frame describing which fields should be
-   * revealed in the generated proof. 
+   * revealed in the generated proof.
    * If unspecified, all fields in the document will be revealed
    * </pre>
    *
    * <code>string reveal_document_json = 1;</code>
+   *
    * @return The revealDocumentJson.
    */
   @java.lang.Override
@@ -165,31 +121,31 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       revealDocumentJson_ = s;
       return s;
     }
   }
   /**
+   *
+   *
    * <pre>
    * A valid JSON-LD frame describing which fields should be
-   * revealed in the generated proof. 
+   * revealed in the generated proof.
    * If unspecified, all fields in the document will be revealed
    * </pre>
    *
    * <code>string reveal_document_json = 1;</code>
+   *
    * @return The bytes for revealDocumentJson.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getRevealDocumentJsonBytes() {
+  public com.google.protobuf.ByteString getRevealDocumentJsonBytes() {
     java.lang.Object ref = revealDocumentJson_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       revealDocumentJson_ = b;
       return b;
     } else {
@@ -199,22 +155,28 @@ private static final long serialVersionUID = 0L;
 
   public static final int ITEM_ID_FIELD_NUMBER = 2;
   /**
+   *
+   *
    * <pre>
    * ID of wallet item stored in a Trinsic cloud wallet
    * </pre>
    *
    * <code>string item_id = 2;</code>
+   *
    * @return Whether the itemId field is set.
    */
   public boolean hasItemId() {
     return proofCase_ == 2;
   }
   /**
+   *
+   *
    * <pre>
    * ID of wallet item stored in a Trinsic cloud wallet
    * </pre>
    *
    * <code>string item_id = 2;</code>
+   *
    * @return The itemId.
    */
   public java.lang.String getItemId() {
@@ -225,8 +187,7 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       if (proofCase_ == 2) {
         proof_ = s;
@@ -235,23 +196,24 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   *
+   *
    * <pre>
    * ID of wallet item stored in a Trinsic cloud wallet
    * </pre>
    *
    * <code>string item_id = 2;</code>
+   *
    * @return The bytes for itemId.
    */
-  public com.google.protobuf.ByteString
-      getItemIdBytes() {
+  public com.google.protobuf.ByteString getItemIdBytes() {
     java.lang.Object ref = "";
     if (proofCase_ == 2) {
       ref = proof_;
     }
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       if (proofCase_ == 2) {
         proof_ = b;
       }
@@ -263,26 +225,32 @@ private static final long serialVersionUID = 0L;
 
   public static final int DOCUMENT_JSON_FIELD_NUMBER = 3;
   /**
+   *
+   *
    * <pre>
-   * A valid JSON-LD Verifiable Credential document string 
+   * A valid JSON-LD Verifiable Credential document string
    * with an unbound signature. The proof will be derived from this
    * document directly. The document will not be stored in the wallet.
    * </pre>
    *
    * <code>string document_json = 3;</code>
+   *
    * @return Whether the documentJson field is set.
    */
   public boolean hasDocumentJson() {
     return proofCase_ == 3;
   }
   /**
+   *
+   *
    * <pre>
-   * A valid JSON-LD Verifiable Credential document string 
+   * A valid JSON-LD Verifiable Credential document string
    * with an unbound signature. The proof will be derived from this
    * document directly. The document will not be stored in the wallet.
    * </pre>
    *
    * <code>string document_json = 3;</code>
+   *
    * @return The documentJson.
    */
   public java.lang.String getDocumentJson() {
@@ -293,8 +261,7 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       if (proofCase_ == 3) {
         proof_ = s;
@@ -303,25 +270,26 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   *
+   *
    * <pre>
-   * A valid JSON-LD Verifiable Credential document string 
+   * A valid JSON-LD Verifiable Credential document string
    * with an unbound signature. The proof will be derived from this
    * document directly. The document will not be stored in the wallet.
    * </pre>
    *
    * <code>string document_json = 3;</code>
+   *
    * @return The bytes for documentJson.
    */
-  public com.google.protobuf.ByteString
-      getDocumentJsonBytes() {
+  public com.google.protobuf.ByteString getDocumentJsonBytes() {
     java.lang.Object ref = "";
     if (proofCase_ == 3) {
       ref = proof_;
     }
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       if (proofCase_ == 3) {
         proof_ = b;
       }
@@ -332,6 +300,7 @@ private static final long serialVersionUID = 0L;
   }
 
   private byte memoizedIsInitialized = -1;
+
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -343,8 +312,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(revealDocumentJson_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, revealDocumentJson_);
     }
@@ -354,7 +322,7 @@ private static final long serialVersionUID = 0L;
     if (proofCase_ == 3) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, proof_);
     }
-    unknownFields.writeTo(output);
+    getUnknownFields().writeTo(output);
   }
 
   @java.lang.Override
@@ -372,7 +340,7 @@ private static final long serialVersionUID = 0L;
     if (proofCase_ == 3) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, proof_);
     }
-    size += unknownFields.getSerializedSize();
+    size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
   }
@@ -380,29 +348,27 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-     return true;
+      return true;
     }
     if (!(obj instanceof trinsic.services.verifiablecredentials.v1.CreateProofRequest)) {
       return super.equals(obj);
     }
-    trinsic.services.verifiablecredentials.v1.CreateProofRequest other = (trinsic.services.verifiablecredentials.v1.CreateProofRequest) obj;
+    trinsic.services.verifiablecredentials.v1.CreateProofRequest other =
+        (trinsic.services.verifiablecredentials.v1.CreateProofRequest) obj;
 
-    if (!getRevealDocumentJson()
-        .equals(other.getRevealDocumentJson())) return false;
+    if (!getRevealDocumentJson().equals(other.getRevealDocumentJson())) return false;
     if (!getProofCase().equals(other.getProofCase())) return false;
     switch (proofCase_) {
       case 2:
-        if (!getItemId()
-            .equals(other.getItemId())) return false;
+        if (!getItemId().equals(other.getItemId())) return false;
         break;
       case 3:
-        if (!getDocumentJson()
-            .equals(other.getDocumentJson())) return false;
+        if (!getDocumentJson().equals(other.getDocumentJson())) return false;
         break;
       case 0:
       default:
     }
-    if (!unknownFields.equals(other.unknownFields)) return false;
+    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
 
@@ -427,102 +393,110 @@ private static final long serialVersionUID = 0L;
       case 0:
       default:
     }
-    hash = (29 * hash) + unknownFields.hashCode();
+    hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
   public static trinsic.services.verifiablecredentials.v1.CreateProofRequest parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static trinsic.services.verifiablecredentials.v1.CreateProofRequest parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static trinsic.services.verifiablecredentials.v1.CreateProofRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static trinsic.services.verifiablecredentials.v1.CreateProofRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static trinsic.services.verifiablecredentials.v1.CreateProofRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static trinsic.services.verifiablecredentials.v1.CreateProofRequest parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static trinsic.services.verifiablecredentials.v1.CreateProofRequest parseFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
-  }
+
   public static trinsic.services.verifiablecredentials.v1.CreateProofRequest parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
-  public static trinsic.services.verifiablecredentials.v1.CreateProofRequest parseDelimitedFrom(java.io.InputStream input)
+
+  public static trinsic.services.verifiablecredentials.v1.CreateProofRequest parseFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
+
   public static trinsic.services.verifiablecredentials.v1.CreateProofRequest parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
+
+  public static trinsic.services.verifiablecredentials.v1.CreateProofRequest parseDelimitedFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+        PARSER, input, extensionRegistry);
+  }
+
   public static trinsic.services.verifiablecredentials.v1.CreateProofRequest parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static trinsic.services.verifiablecredentials.v1.CreateProofRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
+  public Builder newBuilderForType() {
+    return newBuilder();
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(trinsic.services.verifiablecredentials.v1.CreateProofRequest prototype) {
+
+  public static Builder newBuilder(
+      trinsic.services.verifiablecredentials.v1.CreateProofRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-  }
-  @java.lang.Override
-  public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  public Builder toBuilder() {
+    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+  }
+
+  @java.lang.Override
+  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
+   *
+   *
    * <pre>
    * Request to create a proof for a Verifiable Credential using public key tied to caller.
    * Either `item_id` or `document_json` may be provided, not both.
@@ -530,38 +504,32 @@ private static final long serialVersionUID = 0L;
    *
    * Protobuf type {@code services.verifiablecredentials.v1.CreateProofRequest}
    */
-  public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+      implements
       // @@protoc_insertion_point(builder_implements:services.verifiablecredentials.v1.CreateProofRequest)
       trinsic.services.verifiablecredentials.v1.CreateProofRequestOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_CreateProofRequest_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
+          .internal_static_services_verifiablecredentials_v1_CreateProofRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_CreateProofRequest_fieldAccessorTable
+      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
+          .internal_static_services_verifiablecredentials_v1_CreateProofRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.verifiablecredentials.v1.CreateProofRequest.class, trinsic.services.verifiablecredentials.v1.CreateProofRequest.Builder.class);
+              trinsic.services.verifiablecredentials.v1.CreateProofRequest.class,
+              trinsic.services.verifiablecredentials.v1.CreateProofRequest.Builder.class);
     }
 
     // Construct using trinsic.services.verifiablecredentials.v1.CreateProofRequest.newBuilder()
-    private Builder() {
-      maybeForceBuilderInitialization();
+    private Builder() {}
+
+    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
     }
 
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-      }
-    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -573,13 +541,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
-      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials.internal_static_services_verifiablecredentials_v1_CreateProofRequest_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return trinsic.services.verifiablecredentials.v1.VerifiableCredentials
+          .internal_static_services_verifiablecredentials_v1_CreateProofRequest_descriptor;
     }
 
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.v1.CreateProofRequest getDefaultInstanceForType() {
+    public trinsic.services.verifiablecredentials.v1.CreateProofRequest
+        getDefaultInstanceForType() {
       return trinsic.services.verifiablecredentials.v1.CreateProofRequest.getDefaultInstance();
     }
 
@@ -594,7 +563,8 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public trinsic.services.verifiablecredentials.v1.CreateProofRequest buildPartial() {
-      trinsic.services.verifiablecredentials.v1.CreateProofRequest result = new trinsic.services.verifiablecredentials.v1.CreateProofRequest(this);
+      trinsic.services.verifiablecredentials.v1.CreateProofRequest result =
+          new trinsic.services.verifiablecredentials.v1.CreateProofRequest(this);
       result.revealDocumentJson_ = revealDocumentJson_;
       if (proofCase_ == 2) {
         result.proof_ = proof_;
@@ -611,38 +581,39 @@ private static final long serialVersionUID = 0L;
     public Builder clone() {
       return super.clone();
     }
+
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.setField(field, value);
     }
+
     @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
+
     @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
+
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
+
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
+
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof trinsic.services.verifiablecredentials.v1.CreateProofRequest) {
-        return mergeFrom((trinsic.services.verifiablecredentials.v1.CreateProofRequest)other);
+        return mergeFrom((trinsic.services.verifiablecredentials.v1.CreateProofRequest) other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -650,29 +621,34 @@ private static final long serialVersionUID = 0L;
     }
 
     public Builder mergeFrom(trinsic.services.verifiablecredentials.v1.CreateProofRequest other) {
-      if (other == trinsic.services.verifiablecredentials.v1.CreateProofRequest.getDefaultInstance()) return this;
+      if (other
+          == trinsic.services.verifiablecredentials.v1.CreateProofRequest.getDefaultInstance())
+        return this;
       if (!other.getRevealDocumentJson().isEmpty()) {
         revealDocumentJson_ = other.revealDocumentJson_;
         onChanged();
       }
       switch (other.getProofCase()) {
-        case ITEM_ID: {
-          proofCase_ = 2;
-          proof_ = other.proof_;
-          onChanged();
-          break;
-        }
-        case DOCUMENT_JSON: {
-          proofCase_ = 3;
-          proof_ = other.proof_;
-          onChanged();
-          break;
-        }
-        case PROOF_NOT_SET: {
-          break;
-        }
+        case ITEM_ID:
+          {
+            proofCase_ = 2;
+            proof_ = other.proof_;
+            onChanged();
+            break;
+          }
+        case DOCUMENT_JSON:
+          {
+            proofCase_ = 3;
+            proof_ = other.proof_;
+            onChanged();
+            break;
+          }
+        case PROOF_NOT_SET:
+          {
+            break;
+          }
       }
-      this.mergeUnknownFields(other.unknownFields);
+      this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
     }
@@ -687,25 +663,59 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      trinsic.services.verifiablecredentials.v1.CreateProofRequest parsedMessage = null;
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       try {
-        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10:
+              {
+                revealDocumentJson_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 10
+            case 18:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+                proofCase_ = 2;
+                proof_ = s;
+                break;
+              } // case 18
+            case 26:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+                proofCase_ = 3;
+                proof_ = s;
+                break;
+              } // case 26
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+          } // switch (tag)
+        } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (trinsic.services.verifiablecredentials.v1.CreateProofRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
-        if (parsedMessage != null) {
-          mergeFrom(parsedMessage);
-        }
-      }
+        onChanged();
+      } // finally
       return this;
     }
+
     private int proofCase_ = 0;
     private java.lang.Object proof_;
-    public ProofCase
-        getProofCase() {
-      return ProofCase.forNumber(
-          proofCase_);
+
+    public ProofCase getProofCase() {
+      return ProofCase.forNumber(proofCase_);
     }
 
     public Builder clearProof() {
@@ -715,23 +725,24 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-
     private java.lang.Object revealDocumentJson_ = "";
     /**
+     *
+     *
      * <pre>
      * A valid JSON-LD frame describing which fields should be
-     * revealed in the generated proof. 
+     * revealed in the generated proof.
      * If unspecified, all fields in the document will be revealed
      * </pre>
      *
      * <code>string reveal_document_json = 1;</code>
+     *
      * @return The revealDocumentJson.
      */
     public java.lang.String getRevealDocumentJson() {
       java.lang.Object ref = revealDocumentJson_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         revealDocumentJson_ = s;
         return s;
@@ -740,22 +751,23 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * A valid JSON-LD frame describing which fields should be
-     * revealed in the generated proof. 
+     * revealed in the generated proof.
      * If unspecified, all fields in the document will be revealed
      * </pre>
      *
      * <code>string reveal_document_json = 1;</code>
+     *
      * @return The bytes for revealDocumentJson.
      */
-    public com.google.protobuf.ByteString
-        getRevealDocumentJsonBytes() {
+    public com.google.protobuf.ByteString getRevealDocumentJsonBytes() {
       java.lang.Object ref = revealDocumentJson_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         revealDocumentJson_ = b;
         return b;
       } else {
@@ -763,71 +775,81 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * A valid JSON-LD frame describing which fields should be
-     * revealed in the generated proof. 
+     * revealed in the generated proof.
      * If unspecified, all fields in the document will be revealed
      * </pre>
      *
      * <code>string reveal_document_json = 1;</code>
+     *
      * @param value The revealDocumentJson to set.
      * @return This builder for chaining.
      */
-    public Builder setRevealDocumentJson(
-        java.lang.String value) {
+    public Builder setRevealDocumentJson(java.lang.String value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        throw new NullPointerException();
+      }
+
       revealDocumentJson_ = value;
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * A valid JSON-LD frame describing which fields should be
-     * revealed in the generated proof. 
+     * revealed in the generated proof.
      * If unspecified, all fields in the document will be revealed
      * </pre>
      *
      * <code>string reveal_document_json = 1;</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearRevealDocumentJson() {
-      
+
       revealDocumentJson_ = getDefaultInstance().getRevealDocumentJson();
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * A valid JSON-LD frame describing which fields should be
-     * revealed in the generated proof. 
+     * revealed in the generated proof.
      * If unspecified, all fields in the document will be revealed
      * </pre>
      *
      * <code>string reveal_document_json = 1;</code>
+     *
      * @param value The bytes for revealDocumentJson to set.
      * @return This builder for chaining.
      */
-    public Builder setRevealDocumentJsonBytes(
-        com.google.protobuf.ByteString value) {
+    public Builder setRevealDocumentJsonBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
       revealDocumentJson_ = value;
       onChanged();
       return this;
     }
 
     /**
+     *
+     *
      * <pre>
      * ID of wallet item stored in a Trinsic cloud wallet
      * </pre>
      *
      * <code>string item_id = 2;</code>
+     *
      * @return Whether the itemId field is set.
      */
     @java.lang.Override
@@ -835,11 +857,14 @@ private static final long serialVersionUID = 0L;
       return proofCase_ == 2;
     }
     /**
+     *
+     *
      * <pre>
      * ID of wallet item stored in a Trinsic cloud wallet
      * </pre>
      *
      * <code>string item_id = 2;</code>
+     *
      * @return The itemId.
      */
     @java.lang.Override
@@ -849,8 +874,7 @@ private static final long serialVersionUID = 0L;
         ref = proof_;
       }
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (proofCase_ == 2) {
           proof_ = s;
@@ -861,24 +885,25 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * ID of wallet item stored in a Trinsic cloud wallet
      * </pre>
      *
      * <code>string item_id = 2;</code>
+     *
      * @return The bytes for itemId.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getItemIdBytes() {
+    public com.google.protobuf.ByteString getItemIdBytes() {
       java.lang.Object ref = "";
       if (proofCase_ == 2) {
         ref = proof_;
       }
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         if (proofCase_ == 2) {
           proof_ = b;
         }
@@ -888,30 +913,35 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * ID of wallet item stored in a Trinsic cloud wallet
      * </pre>
      *
      * <code>string item_id = 2;</code>
+     *
      * @param value The itemId to set.
      * @return This builder for chaining.
      */
-    public Builder setItemId(
-        java.lang.String value) {
+    public Builder setItemId(java.lang.String value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  proofCase_ = 2;
+        throw new NullPointerException();
+      }
+      proofCase_ = 2;
       proof_ = value;
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * ID of wallet item stored in a Trinsic cloud wallet
      * </pre>
      *
      * <code>string item_id = 2;</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearItemId() {
@@ -923,20 +953,22 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * ID of wallet item stored in a Trinsic cloud wallet
      * </pre>
      *
      * <code>string item_id = 2;</code>
+     *
      * @param value The bytes for itemId to set.
      * @return This builder for chaining.
      */
-    public Builder setItemIdBytes(
-        com.google.protobuf.ByteString value) {
+    public Builder setItemIdBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
       proofCase_ = 2;
       proof_ = value;
       onChanged();
@@ -944,13 +976,16 @@ private static final long serialVersionUID = 0L;
     }
 
     /**
+     *
+     *
      * <pre>
-     * A valid JSON-LD Verifiable Credential document string 
+     * A valid JSON-LD Verifiable Credential document string
      * with an unbound signature. The proof will be derived from this
      * document directly. The document will not be stored in the wallet.
      * </pre>
      *
      * <code>string document_json = 3;</code>
+     *
      * @return Whether the documentJson field is set.
      */
     @java.lang.Override
@@ -958,13 +993,16 @@ private static final long serialVersionUID = 0L;
       return proofCase_ == 3;
     }
     /**
+     *
+     *
      * <pre>
-     * A valid JSON-LD Verifiable Credential document string 
+     * A valid JSON-LD Verifiable Credential document string
      * with an unbound signature. The proof will be derived from this
      * document directly. The document will not be stored in the wallet.
      * </pre>
      *
      * <code>string document_json = 3;</code>
+     *
      * @return The documentJson.
      */
     @java.lang.Override
@@ -974,8 +1012,7 @@ private static final long serialVersionUID = 0L;
         ref = proof_;
       }
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (proofCase_ == 3) {
           proof_ = s;
@@ -986,26 +1023,27 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
-     * A valid JSON-LD Verifiable Credential document string 
+     * A valid JSON-LD Verifiable Credential document string
      * with an unbound signature. The proof will be derived from this
      * document directly. The document will not be stored in the wallet.
      * </pre>
      *
      * <code>string document_json = 3;</code>
+     *
      * @return The bytes for documentJson.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getDocumentJsonBytes() {
+    public com.google.protobuf.ByteString getDocumentJsonBytes() {
       java.lang.Object ref = "";
       if (proofCase_ == 3) {
         ref = proof_;
       }
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         if (proofCase_ == 3) {
           proof_ = b;
         }
@@ -1015,34 +1053,39 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
-     * A valid JSON-LD Verifiable Credential document string 
+     * A valid JSON-LD Verifiable Credential document string
      * with an unbound signature. The proof will be derived from this
      * document directly. The document will not be stored in the wallet.
      * </pre>
      *
      * <code>string document_json = 3;</code>
+     *
      * @param value The documentJson to set.
      * @return This builder for chaining.
      */
-    public Builder setDocumentJson(
-        java.lang.String value) {
+    public Builder setDocumentJson(java.lang.String value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  proofCase_ = 3;
+        throw new NullPointerException();
+      }
+      proofCase_ = 3;
       proof_ = value;
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
-     * A valid JSON-LD Verifiable Credential document string 
+     * A valid JSON-LD Verifiable Credential document string
      * with an unbound signature. The proof will be derived from this
      * document directly. The document will not be stored in the wallet.
      * </pre>
      *
      * <code>string document_json = 3;</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearDocumentJson() {
@@ -1054,30 +1097,32 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     *
+     *
      * <pre>
-     * A valid JSON-LD Verifiable Credential document string 
+     * A valid JSON-LD Verifiable Credential document string
      * with an unbound signature. The proof will be derived from this
      * document directly. The document will not be stored in the wallet.
      * </pre>
      *
      * <code>string document_json = 3;</code>
+     *
      * @param value The bytes for documentJson to set.
      * @return This builder for chaining.
      */
-    public Builder setDocumentJsonBytes(
-        com.google.protobuf.ByteString value) {
+    public Builder setDocumentJsonBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
       proofCase_ = 3;
       proof_ = value;
       onChanged();
       return this;
     }
+
     @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -1087,12 +1132,13 @@ private static final long serialVersionUID = 0L;
       return super.mergeUnknownFields(unknownFields);
     }
 
-
     // @@protoc_insertion_point(builder_scope:services.verifiablecredentials.v1.CreateProofRequest)
   }
 
   // @@protoc_insertion_point(class_scope:services.verifiablecredentials.v1.CreateProofRequest)
-  private static final trinsic.services.verifiablecredentials.v1.CreateProofRequest DEFAULT_INSTANCE;
+  private static final trinsic.services.verifiablecredentials.v1.CreateProofRequest
+      DEFAULT_INSTANCE;
+
   static {
     DEFAULT_INSTANCE = new trinsic.services.verifiablecredentials.v1.CreateProofRequest();
   }
@@ -1101,16 +1147,27 @@ private static final long serialVersionUID = 0L;
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<CreateProofRequest>
-      PARSER = new com.google.protobuf.AbstractParser<CreateProofRequest>() {
-    @java.lang.Override
-    public CreateProofRequest parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return new CreateProofRequest(input, extensionRegistry);
-    }
-  };
+  private static final com.google.protobuf.Parser<CreateProofRequest> PARSER =
+      new com.google.protobuf.AbstractParser<CreateProofRequest>() {
+        @java.lang.Override
+        public CreateProofRequest parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
 
   public static com.google.protobuf.Parser<CreateProofRequest> parser() {
     return PARSER;
@@ -1125,6 +1182,4 @@ private static final long serialVersionUID = 0L;
   public trinsic.services.verifiablecredentials.v1.CreateProofRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
-
 }
-

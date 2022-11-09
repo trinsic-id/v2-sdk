@@ -3,132 +3,166 @@
 
 package trinsic.services.verifiablecredentials.v1;
 
-public interface VerifyProofResponseOrBuilder extends
+public interface VerifyProofResponseOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.v1.VerifyProofResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * Whether all validations in `validation_results` passed
    * </pre>
    *
    * <code>bool is_valid = 1;</code>
+   *
    * @return The isValid.
    */
   boolean getIsValid();
 
   /**
+   *
+   *
    * <pre>
    * Use `validation_results` instead
    * </pre>
    *
    * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-   * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
-   *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
+   *
+   * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
+   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
    * @return A list containing the validationMessages.
    */
-  @java.lang.Deprecated java.util.List<java.lang.String>
-      getValidationMessagesList();
+  @java.lang.Deprecated
+  java.util.List<java.lang.String> getValidationMessagesList();
   /**
+   *
+   *
    * <pre>
    * Use `validation_results` instead
    * </pre>
    *
    * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-   * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
-   *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
+   *
+   * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
+   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
    * @return The count of validationMessages.
    */
-  @java.lang.Deprecated int getValidationMessagesCount();
+  @java.lang.Deprecated
+  int getValidationMessagesCount();
   /**
+   *
+   *
    * <pre>
    * Use `validation_results` instead
    * </pre>
    *
    * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-   * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
-   *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
+   *
+   * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
+   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
    * @param index The index of the element to return.
    * @return The validationMessages at the given index.
    */
-  @java.lang.Deprecated java.lang.String getValidationMessages(int index);
+  @java.lang.Deprecated
+  java.lang.String getValidationMessages(int index);
   /**
+   *
+   *
    * <pre>
    * Use `validation_results` instead
    * </pre>
    *
    * <code>repeated string validation_messages = 2 [deprecated = true];</code>
-   * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is deprecated.
-   *     See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
+   *
+   * @deprecated services.verifiablecredentials.v1.VerifyProofResponse.validation_messages is
+   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=85
    * @param index The index of the value to return.
    * @return The bytes of the validationMessages at the given index.
    */
-  @java.lang.Deprecated com.google.protobuf.ByteString
-      getValidationMessagesBytes(int index);
+  @java.lang.Deprecated
+  com.google.protobuf.ByteString getValidationMessagesBytes(int index);
 
   /**
+   *
+   *
    * <pre>
-   * Results of each validation check performed, 
+   * Results of each validation check performed,
    * such as schema conformance, revocation status, signature, etc.
    * Detailed results are provided for failed validations.
    * </pre>
    *
-   * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
+   * <code>
+   * map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;
+   * </code>
    */
   int getValidationResultsCount();
   /**
+   *
+   *
    * <pre>
-   * Results of each validation check performed, 
+   * Results of each validation check performed,
    * such as schema conformance, revocation status, signature, etc.
    * Detailed results are provided for failed validations.
    * </pre>
    *
-   * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
+   * <code>
+   * map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;
+   * </code>
    */
-  boolean containsValidationResults(
-      java.lang.String key);
-  /**
-   * Use {@link #getValidationResultsMap()} instead.
-   */
+  boolean containsValidationResults(java.lang.String key);
+  /** Use {@link #getValidationResultsMap()} instead. */
   @java.lang.Deprecated
   java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>
-  getValidationResults();
+      getValidationResults();
   /**
+   *
+   *
    * <pre>
-   * Results of each validation check performed, 
+   * Results of each validation check performed,
    * such as schema conformance, revocation status, signature, etc.
    * Detailed results are provided for failed validations.
    * </pre>
    *
-   * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
+   * <code>
+   * map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;
+   * </code>
    */
   java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.v1.ValidationMessage>
-  getValidationResultsMap();
+      getValidationResultsMap();
   /**
+   *
+   *
    * <pre>
-   * Results of each validation check performed, 
+   * Results of each validation check performed,
    * such as schema conformance, revocation status, signature, etc.
    * Detailed results are provided for failed validations.
    * </pre>
    *
-   * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
+   * <code>
+   * map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;
+   * </code>
    */
 
   /* nullable */
-trinsic.services.verifiablecredentials.v1.ValidationMessage getValidationResultsOrDefault(
+  trinsic.services.verifiablecredentials.v1.ValidationMessage getValidationResultsOrDefault(
       java.lang.String key,
       /* nullable */
-trinsic.services.verifiablecredentials.v1.ValidationMessage defaultValue);
+      trinsic.services.verifiablecredentials.v1.ValidationMessage defaultValue);
   /**
+   *
+   *
    * <pre>
-   * Results of each validation check performed, 
+   * Results of each validation check performed,
    * such as schema conformance, revocation status, signature, etc.
    * Detailed results are provided for failed validations.
    * </pre>
    *
-   * <code>map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;</code>
+   * <code>
+   * map&lt;string, .services.verifiablecredentials.v1.ValidationMessage&gt; validation_results = 3;
+   * </code>
    */
-
   trinsic.services.verifiablecredentials.v1.ValidationMessage getValidationResultsOrThrow(
       java.lang.String key);
 }

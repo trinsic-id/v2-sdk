@@ -3,29 +3,38 @@
 
 package trinsic.services.provider.v1;
 
-public interface CreateEcosystemResponseOrBuilder extends
+public interface CreateEcosystemResponseOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.provider.v1.CreateEcosystemResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * Details of the created ecosystem
    * </pre>
    *
    * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
+   *
    * @return Whether the ecosystem field is set.
    */
   boolean hasEcosystem();
   /**
+   *
+   *
    * <pre>
    * Details of the created ecosystem
    * </pre>
    *
    * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
+   *
    * @return The ecosystem.
    */
   trinsic.services.provider.v1.Ecosystem getEcosystem();
   /**
+   *
+   *
    * <pre>
    * Details of the created ecosystem
    * </pre>
@@ -35,24 +44,32 @@ public interface CreateEcosystemResponseOrBuilder extends
   trinsic.services.provider.v1.EcosystemOrBuilder getEcosystemOrBuilder();
 
   /**
+   *
+   *
    * <pre>
    * Account profile for auth of the owner of the ecosystem
    * </pre>
    *
    * <code>.services.account.v1.AccountProfile profile = 2;</code>
+   *
    * @return Whether the profile field is set.
    */
   boolean hasProfile();
   /**
+   *
+   *
    * <pre>
    * Account profile for auth of the owner of the ecosystem
    * </pre>
    *
    * <code>.services.account.v1.AccountProfile profile = 2;</code>
+   *
    * @return The profile.
    */
   trinsic.services.account.v1.AccountProfile getProfile();
   /**
+   *
+   *
    * <pre>
    * Account profile for auth of the owner of the ecosystem
    * </pre>
@@ -62,20 +79,26 @@ public interface CreateEcosystemResponseOrBuilder extends
   trinsic.services.account.v1.AccountProfileOrBuilder getProfileOrBuilder();
 
   /**
+   *
+   *
    * <pre>
    * Indicates if confirmation of account is required.
    * </pre>
    *
    * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
+   *
    * @return The enum numeric value on the wire for confirmationMethod.
    */
   int getConfirmationMethodValue();
   /**
+   *
+   *
    * <pre>
    * Indicates if confirmation of account is required.
    * </pre>
    *
    * <code>.services.account.v1.ConfirmationMethod confirmation_method = 3;</code>
+   *
    * @return The confirmationMethod.
    */
   trinsic.services.account.v1.ConfirmationMethod getConfirmationMethod();

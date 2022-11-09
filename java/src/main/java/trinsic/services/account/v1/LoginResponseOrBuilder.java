@@ -3,11 +3,14 @@
 
 package trinsic.services.account.v1;
 
-public interface LoginResponseOrBuilder extends
+public interface LoginResponseOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.account.v1.LoginResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * Random byte sequence unique to this login request.
    * If present, two-factor confirmation of login is required.
@@ -15,10 +18,13 @@ public interface LoginResponseOrBuilder extends
    * </pre>
    *
    * <code>bytes challenge = 1;</code>
+   *
    * @return Whether the challenge field is set.
    */
   boolean hasChallenge();
   /**
+   *
+   *
    * <pre>
    * Random byte sequence unique to this login request.
    * If present, two-factor confirmation of login is required.
@@ -26,29 +32,38 @@ public interface LoginResponseOrBuilder extends
    * </pre>
    *
    * <code>bytes challenge = 1;</code>
+   *
    * @return The challenge.
    */
   com.google.protobuf.ByteString getChallenge();
 
   /**
+   *
+   *
    * <pre>
    * Account profile response. If present, no confirmation of login is required.
    * </pre>
    *
    * <code>.services.account.v1.AccountProfile profile = 2;</code>
+   *
    * @return Whether the profile field is set.
    */
   boolean hasProfile();
   /**
+   *
+   *
    * <pre>
    * Account profile response. If present, no confirmation of login is required.
    * </pre>
    *
    * <code>.services.account.v1.AccountProfile profile = 2;</code>
+   *
    * @return The profile.
    */
   trinsic.services.account.v1.AccountProfile getProfile();
   /**
+   *
+   *
    * <pre>
    * Account profile response. If present, no confirmation of login is required.
    * </pre>

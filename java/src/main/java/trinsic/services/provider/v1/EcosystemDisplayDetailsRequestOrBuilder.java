@@ -3,11 +3,14 @@
 
 package trinsic.services.provider.v1;
 
-public interface EcosystemDisplayDetailsRequestOrBuilder extends
+public interface EcosystemDisplayDetailsRequestOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.provider.v1.EcosystemDisplayDetailsRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * string id = 1;
    * string name = 2;
@@ -15,10 +18,13 @@ public interface EcosystemDisplayDetailsRequestOrBuilder extends
    * </pre>
    *
    * <code>string color = 4;</code>
+   *
    * @return The color.
    */
   java.lang.String getColor();
   /**
+   *
+   *
    * <pre>
    * string id = 1;
    * string name = 2;
@@ -26,34 +32,40 @@ public interface EcosystemDisplayDetailsRequestOrBuilder extends
    * </pre>
    *
    * <code>string color = 4;</code>
+   *
    * @return The bytes for color.
    */
-  com.google.protobuf.ByteString
-      getColorBytes();
+  com.google.protobuf.ByteString getColorBytes();
 
   /**
    * <code>bytes logo_data = 5;</code>
+   *
    * @return The logoData.
    */
   com.google.protobuf.ByteString getLogoData();
 
   /**
+   *
+   *
    * <pre>
    * MIME type of the file
    * </pre>
    *
    * <code>string logo_format = 6;</code>
+   *
    * @return The logoFormat.
    */
   java.lang.String getLogoFormat();
   /**
+   *
+   *
    * <pre>
    * MIME type of the file
    * </pre>
    *
    * <code>string logo_format = 6;</code>
+   *
    * @return The bytes for logoFormat.
    */
-  com.google.protobuf.ByteString
-      getLogoFormatBytes();
+  com.google.protobuf.ByteString getLogoFormatBytes();
 }

@@ -3,11 +3,14 @@
 
 package trinsic.services.verifiablecredentials.v1;
 
-public interface IssueFromTemplateResponseOrBuilder extends
+public interface IssueFromTemplateResponseOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.v1.IssueFromTemplateResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * Verifiable Credential document, in JSON-LD form,
    * constructed from the specified template and values; signed
@@ -15,10 +18,13 @@ public interface IssueFromTemplateResponseOrBuilder extends
    * </pre>
    *
    * <code>string document_json = 1;</code>
+   *
    * @return The documentJson.
    */
   java.lang.String getDocumentJson();
   /**
+   *
+   *
    * <pre>
    * Verifiable Credential document, in JSON-LD form,
    * constructed from the specified template and values; signed
@@ -26,8 +32,8 @@ public interface IssueFromTemplateResponseOrBuilder extends
    * </pre>
    *
    * <code>string document_json = 1;</code>
+   *
    * @return The bytes for documentJson.
    */
-  com.google.protobuf.ByteString
-      getDocumentJsonBytes();
+  com.google.protobuf.ByteString getDocumentJsonBytes();
 }

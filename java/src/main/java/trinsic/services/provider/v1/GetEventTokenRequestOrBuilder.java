@@ -3,16 +3,20 @@
 
 package trinsic.services.provider.v1;
 
-public interface GetEventTokenRequestOrBuilder extends
+public interface GetEventTokenRequestOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.provider.v1.GetEventTokenRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * Raw public key to generate event token for
    * </pre>
    *
    * <code>bytes pk = 1;</code>
+   *
    * @return The pk.
    */
   com.google.protobuf.ByteString getPk();

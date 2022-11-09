@@ -3,7 +3,7 @@
 
 package trinsic.services.account.v1;
 
-public interface ListDevicesRequestOrBuilder extends
+public interface ListDevicesRequestOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.account.v1.ListDevicesRequest)
-    com.google.protobuf.MessageOrBuilder {
-}
+    com.google.protobuf.MessageOrBuilder {}
