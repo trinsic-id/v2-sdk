@@ -4,24 +4,21 @@
 package trinsic.services.provider.v1;
 
 /**
- *
- *
  * <pre>
  * Request to add a webhook to an ecosystem
  * </pre>
  *
  * Protobuf type {@code services.provider.v1.AddWebhookRequest}
  */
-public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessageV3
-    implements
+public final class AddWebhookRequest extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:services.provider.v1.AddWebhookRequest)
     AddWebhookRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+private static final long serialVersionUID = 0L;
   // Use AddWebhookRequest.newBuilder() to construct.
   private AddWebhookRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private AddWebhookRequest() {
     destinationUrl_ = "";
     secret_ = "";
@@ -30,42 +27,102 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new AddWebhookRequest();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
     return this.unknownFields;
   }
+  private AddWebhookRequest(
+      com.google.protobuf.CodedInputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    this();
+    if (extensionRegistry == null) {
+      throw new java.lang.NullPointerException();
+    }
+    int mutable_bitField0_ = 0;
+    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+        com.google.protobuf.UnknownFieldSet.newBuilder();
+    try {
+      boolean done = false;
+      while (!done) {
+        int tag = input.readTag();
+        switch (tag) {
+          case 0:
+            done = true;
+            break;
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return trinsic.services.provider.v1.ProviderOuterClass
-        .internal_static_services_provider_v1_AddWebhookRequest_descriptor;
+            destinationUrl_ = s;
+            break;
+          }
+          case 18: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            secret_ = s;
+            break;
+          }
+          case 26: {
+            java.lang.String s = input.readStringRequireUtf8();
+            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+              events_ = new com.google.protobuf.LazyStringArrayList();
+              mutable_bitField0_ |= 0x00000001;
+            }
+            events_.add(s);
+            break;
+          }
+          default: {
+            if (!parseUnknownField(
+                input, unknownFields, extensionRegistry, tag)) {
+              done = true;
+            }
+            break;
+          }
+        }
+      }
+    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      throw e.setUnfinishedMessage(this);
+    } catch (com.google.protobuf.UninitializedMessageException e) {
+      throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+    } catch (java.io.IOException e) {
+      throw new com.google.protobuf.InvalidProtocolBufferException(
+          e).setUnfinishedMessage(this);
+    } finally {
+      if (((mutable_bitField0_ & 0x00000001) != 0)) {
+        events_ = events_.getUnmodifiableView();
+      }
+      this.unknownFields = unknownFields.build();
+      makeExtensionsImmutable();
+    }
+  }
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_AddWebhookRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.provider.v1.ProviderOuterClass
-        .internal_static_services_provider_v1_AddWebhookRequest_fieldAccessorTable
+    return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_AddWebhookRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.provider.v1.AddWebhookRequest.class,
-            trinsic.services.provider.v1.AddWebhookRequest.Builder.class);
+            trinsic.services.provider.v1.AddWebhookRequest.class, trinsic.services.provider.v1.AddWebhookRequest.Builder.class);
   }
 
   public static final int DESTINATION_URL_FIELD_NUMBER = 1;
   private volatile java.lang.Object destinationUrl_;
   /**
-   *
-   *
    * <pre>
    * Destination to post webhook calls to.
    * Must be a reachable HTTPS URL.
    * </pre>
    *
    * <code>string destination_url = 1;</code>
-   *
    * @return The destinationUrl.
    */
   @java.lang.Override
@@ -74,30 +131,30 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       destinationUrl_ = s;
       return s;
     }
   }
   /**
-   *
-   *
    * <pre>
    * Destination to post webhook calls to.
    * Must be a reachable HTTPS URL.
    * </pre>
    *
    * <code>string destination_url = 1;</code>
-   *
    * @return The bytes for destinationUrl.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getDestinationUrlBytes() {
+  public com.google.protobuf.ByteString
+      getDestinationUrlBytes() {
     java.lang.Object ref = destinationUrl_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       destinationUrl_ = b;
       return b;
     } else {
@@ -108,15 +165,12 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
   public static final int SECRET_FIELD_NUMBER = 2;
   private volatile java.lang.Object secret_;
   /**
-   *
-   *
    * <pre>
    * Secret string used for HMAC-SHA256 signing of webhook payloads
    * to verify that a webhook comes from Trinsic
    * </pre>
    *
    * <code>string secret = 2;</code>
-   *
    * @return The secret.
    */
   @java.lang.Override
@@ -125,30 +179,30 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       secret_ = s;
       return s;
     }
   }
   /**
-   *
-   *
    * <pre>
    * Secret string used for HMAC-SHA256 signing of webhook payloads
    * to verify that a webhook comes from Trinsic
    * </pre>
    *
    * <code>string secret = 2;</code>
-   *
    * @return The bytes for secret.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getSecretBytes() {
+  public com.google.protobuf.ByteString
+      getSecretBytes() {
     java.lang.Object ref = secret_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       secret_ = b;
       return b;
     } else {
@@ -159,42 +213,34 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
   public static final int EVENTS_FIELD_NUMBER = 3;
   private com.google.protobuf.LazyStringList events_;
   /**
-   *
-   *
    * <pre>
    * Events to subscribe to. Default is "*" (all events)
    * </pre>
    *
    * <code>repeated string events = 3;</code>
-   *
    * @return A list containing the events.
    */
-  public com.google.protobuf.ProtocolStringList getEventsList() {
+  public com.google.protobuf.ProtocolStringList
+      getEventsList() {
     return events_;
   }
   /**
-   *
-   *
    * <pre>
    * Events to subscribe to. Default is "*" (all events)
    * </pre>
    *
    * <code>repeated string events = 3;</code>
-   *
    * @return The count of events.
    */
   public int getEventsCount() {
     return events_.size();
   }
   /**
-   *
-   *
    * <pre>
    * Events to subscribe to. Default is "*" (all events)
    * </pre>
    *
    * <code>repeated string events = 3;</code>
-   *
    * @param index The index of the element to return.
    * @return The events at the given index.
    */
@@ -202,23 +248,20 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
     return events_.get(index);
   }
   /**
-   *
-   *
    * <pre>
    * Events to subscribe to. Default is "*" (all events)
    * </pre>
    *
    * <code>repeated string events = 3;</code>
-   *
    * @param index The index of the value to return.
    * @return The bytes of the events at the given index.
    */
-  public com.google.protobuf.ByteString getEventsBytes(int index) {
+  public com.google.protobuf.ByteString
+      getEventsBytes(int index) {
     return events_.getByteString(index);
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -230,7 +273,8 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(destinationUrl_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, destinationUrl_);
     }
@@ -240,7 +284,7 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
     for (int i = 0; i < events_.size(); i++) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, events_.getRaw(i));
     }
-    getUnknownFields().writeTo(output);
+    unknownFields.writeTo(output);
   }
 
   @java.lang.Override
@@ -263,7 +307,7 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
       size += dataSize;
       size += 1 * getEventsList().size();
     }
-    size += getUnknownFields().getSerializedSize();
+    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
@@ -271,18 +315,20 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof trinsic.services.provider.v1.AddWebhookRequest)) {
       return super.equals(obj);
     }
-    trinsic.services.provider.v1.AddWebhookRequest other =
-        (trinsic.services.provider.v1.AddWebhookRequest) obj;
+    trinsic.services.provider.v1.AddWebhookRequest other = (trinsic.services.provider.v1.AddWebhookRequest) obj;
 
-    if (!getDestinationUrl().equals(other.getDestinationUrl())) return false;
-    if (!getSecret().equals(other.getSecret())) return false;
-    if (!getEventsList().equals(other.getEventsList())) return false;
-    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+    if (!getDestinationUrl()
+        .equals(other.getDestinationUrl())) return false;
+    if (!getSecret()
+        .equals(other.getSecret())) return false;
+    if (!getEventsList()
+        .equals(other.getEventsList())) return false;
+    if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
 
@@ -301,141 +347,140 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
       hash = (37 * hash) + EVENTS_FIELD_NUMBER;
       hash = (53 * hash) + getEventsList().hashCode();
     }
-    hash = (29 * hash) + getUnknownFields().hashCode();
+    hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static trinsic.services.provider.v1.AddWebhookRequest parseFrom(java.nio.ByteBuffer data)
+  public static trinsic.services.provider.v1.AddWebhookRequest parseFrom(
+      java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.provider.v1.AddWebhookRequest parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.provider.v1.AddWebhookRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.provider.v1.AddWebhookRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.provider.v1.AddWebhookRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.provider.v1.AddWebhookRequest parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.provider.v1.AddWebhookRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static trinsic.services.provider.v1.AddWebhookRequest parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
-  public static trinsic.services.provider.v1.AddWebhookRequest parseDelimitedFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static trinsic.services.provider.v1.AddWebhookRequest parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+  public static trinsic.services.provider.v1.AddWebhookRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
   }
-
+  public static trinsic.services.provider.v1.AddWebhookRequest parseDelimitedFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+  }
   public static trinsic.services.provider.v1.AddWebhookRequest parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static trinsic.services.provider.v1.AddWebhookRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
   public static Builder newBuilder(trinsic.services.provider.v1.AddWebhookRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
-   *
-   *
    * <pre>
    * Request to add a webhook to an ecosystem
    * </pre>
    *
    * Protobuf type {@code services.provider.v1.AddWebhookRequest}
    */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:services.provider.v1.AddWebhookRequest)
       trinsic.services.provider.v1.AddWebhookRequestOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_AddWebhookRequest_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_AddWebhookRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_AddWebhookRequest_fieldAccessorTable
+      return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_AddWebhookRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.provider.v1.AddWebhookRequest.class,
-              trinsic.services.provider.v1.AddWebhookRequest.Builder.class);
+              trinsic.services.provider.v1.AddWebhookRequest.class, trinsic.services.provider.v1.AddWebhookRequest.Builder.class);
     }
 
     // Construct using trinsic.services.provider.v1.AddWebhookRequest.newBuilder()
-    private Builder() {}
-
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
+    private Builder() {
+      maybeForceBuilderInitialization();
     }
 
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
+      maybeForceBuilderInitialization();
+    }
+    private void maybeForceBuilderInitialization() {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+      }
+    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -449,9 +494,9 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_AddWebhookRequest_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_AddWebhookRequest_descriptor;
     }
 
     @java.lang.Override
@@ -470,8 +515,7 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
 
     @java.lang.Override
     public trinsic.services.provider.v1.AddWebhookRequest buildPartial() {
-      trinsic.services.provider.v1.AddWebhookRequest result =
-          new trinsic.services.provider.v1.AddWebhookRequest(this);
+      trinsic.services.provider.v1.AddWebhookRequest result = new trinsic.services.provider.v1.AddWebhookRequest(this);
       int from_bitField0_ = bitField0_;
       result.destinationUrl_ = destinationUrl_;
       result.secret_ = secret_;
@@ -488,39 +532,38 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof trinsic.services.provider.v1.AddWebhookRequest) {
-        return mergeFrom((trinsic.services.provider.v1.AddWebhookRequest) other);
+        return mergeFrom((trinsic.services.provider.v1.AddWebhookRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -547,7 +590,7 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
         }
         onChanged();
       }
-      this.mergeUnknownFields(other.getUnknownFields());
+      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -562,72 +605,36 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
+      trinsic.services.provider.v1.AddWebhookRequest parsedMessage = null;
       try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10:
-              {
-                destinationUrl_ = input.readStringRequireUtf8();
-
-                break;
-              } // case 10
-            case 18:
-              {
-                secret_ = input.readStringRequireUtf8();
-
-                break;
-              } // case 18
-            case 26:
-              {
-                java.lang.String s = input.readStringRequireUtf8();
-                ensureEventsIsMutable();
-                events_.add(s);
-                break;
-              } // case 26
-            default:
-              {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-          } // switch (tag)
-        } // while (!done)
+        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        parsedMessage = (trinsic.services.provider.v1.AddWebhookRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
-        onChanged();
-      } // finally
+        if (parsedMessage != null) {
+          mergeFrom(parsedMessage);
+        }
+      }
       return this;
     }
-
     private int bitField0_;
 
     private java.lang.Object destinationUrl_ = "";
     /**
-     *
-     *
      * <pre>
      * Destination to post webhook calls to.
      * Must be a reachable HTTPS URL.
      * </pre>
      *
      * <code>string destination_url = 1;</code>
-     *
      * @return The destinationUrl.
      */
     public java.lang.String getDestinationUrl() {
       java.lang.Object ref = destinationUrl_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         destinationUrl_ = s;
         return s;
@@ -636,22 +643,21 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
       }
     }
     /**
-     *
-     *
      * <pre>
      * Destination to post webhook calls to.
      * Must be a reachable HTTPS URL.
      * </pre>
      *
      * <code>string destination_url = 1;</code>
-     *
      * @return The bytes for destinationUrl.
      */
-    public com.google.protobuf.ByteString getDestinationUrlBytes() {
+    public com.google.protobuf.ByteString
+        getDestinationUrlBytes() {
       java.lang.Object ref = destinationUrl_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         destinationUrl_ = b;
         return b;
       } else {
@@ -659,64 +665,57 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
       }
     }
     /**
-     *
-     *
      * <pre>
      * Destination to post webhook calls to.
      * Must be a reachable HTTPS URL.
      * </pre>
      *
      * <code>string destination_url = 1;</code>
-     *
      * @param value The destinationUrl to set.
      * @return This builder for chaining.
      */
-    public Builder setDestinationUrl(java.lang.String value) {
+    public Builder setDestinationUrl(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       destinationUrl_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Destination to post webhook calls to.
      * Must be a reachable HTTPS URL.
      * </pre>
      *
      * <code>string destination_url = 1;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearDestinationUrl() {
-
+      
       destinationUrl_ = getDefaultInstance().getDestinationUrl();
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Destination to post webhook calls to.
      * Must be a reachable HTTPS URL.
      * </pre>
      *
      * <code>string destination_url = 1;</code>
-     *
      * @param value The bytes for destinationUrl to set.
      * @return This builder for chaining.
      */
-    public Builder setDestinationUrlBytes(com.google.protobuf.ByteString value) {
+    public Builder setDestinationUrlBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       destinationUrl_ = value;
       onChanged();
       return this;
@@ -724,21 +723,19 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
 
     private java.lang.Object secret_ = "";
     /**
-     *
-     *
      * <pre>
      * Secret string used for HMAC-SHA256 signing of webhook payloads
      * to verify that a webhook comes from Trinsic
      * </pre>
      *
      * <code>string secret = 2;</code>
-     *
      * @return The secret.
      */
     public java.lang.String getSecret() {
       java.lang.Object ref = secret_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         secret_ = s;
         return s;
@@ -747,22 +744,21 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
       }
     }
     /**
-     *
-     *
      * <pre>
      * Secret string used for HMAC-SHA256 signing of webhook payloads
      * to verify that a webhook comes from Trinsic
      * </pre>
      *
      * <code>string secret = 2;</code>
-     *
      * @return The bytes for secret.
      */
-    public com.google.protobuf.ByteString getSecretBytes() {
+    public com.google.protobuf.ByteString
+        getSecretBytes() {
       java.lang.Object ref = secret_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         secret_ = b;
         return b;
       } else {
@@ -770,115 +766,98 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
       }
     }
     /**
-     *
-     *
      * <pre>
      * Secret string used for HMAC-SHA256 signing of webhook payloads
      * to verify that a webhook comes from Trinsic
      * </pre>
      *
      * <code>string secret = 2;</code>
-     *
      * @param value The secret to set.
      * @return This builder for chaining.
      */
-    public Builder setSecret(java.lang.String value) {
+    public Builder setSecret(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       secret_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Secret string used for HMAC-SHA256 signing of webhook payloads
      * to verify that a webhook comes from Trinsic
      * </pre>
      *
      * <code>string secret = 2;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearSecret() {
-
+      
       secret_ = getDefaultInstance().getSecret();
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Secret string used for HMAC-SHA256 signing of webhook payloads
      * to verify that a webhook comes from Trinsic
      * </pre>
      *
      * <code>string secret = 2;</code>
-     *
      * @param value The bytes for secret to set.
      * @return This builder for chaining.
      */
-    public Builder setSecretBytes(com.google.protobuf.ByteString value) {
+    public Builder setSecretBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       secret_ = value;
       onChanged();
       return this;
     }
 
-    private com.google.protobuf.LazyStringList events_ =
-        com.google.protobuf.LazyStringArrayList.EMPTY;
-
+    private com.google.protobuf.LazyStringList events_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     private void ensureEventsIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
         events_ = new com.google.protobuf.LazyStringArrayList(events_);
         bitField0_ |= 0x00000001;
-      }
+       }
     }
     /**
-     *
-     *
      * <pre>
      * Events to subscribe to. Default is "*" (all events)
      * </pre>
      *
      * <code>repeated string events = 3;</code>
-     *
      * @return A list containing the events.
      */
-    public com.google.protobuf.ProtocolStringList getEventsList() {
+    public com.google.protobuf.ProtocolStringList
+        getEventsList() {
       return events_.getUnmodifiableView();
     }
     /**
-     *
-     *
      * <pre>
      * Events to subscribe to. Default is "*" (all events)
      * </pre>
      *
      * <code>repeated string events = 3;</code>
-     *
      * @return The count of events.
      */
     public int getEventsCount() {
       return events_.size();
     }
     /**
-     *
-     *
      * <pre>
      * Events to subscribe to. Default is "*" (all events)
      * </pre>
      *
      * <code>repeated string events = 3;</code>
-     *
      * @param index The index of the element to return.
      * @return The events at the given index.
      */
@@ -886,90 +865,80 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
       return events_.get(index);
     }
     /**
-     *
-     *
      * <pre>
      * Events to subscribe to. Default is "*" (all events)
      * </pre>
      *
      * <code>repeated string events = 3;</code>
-     *
      * @param index The index of the value to return.
      * @return The bytes of the events at the given index.
      */
-    public com.google.protobuf.ByteString getEventsBytes(int index) {
+    public com.google.protobuf.ByteString
+        getEventsBytes(int index) {
       return events_.getByteString(index);
     }
     /**
-     *
-     *
      * <pre>
      * Events to subscribe to. Default is "*" (all events)
      * </pre>
      *
      * <code>repeated string events = 3;</code>
-     *
      * @param index The index to set the value at.
      * @param value The events to set.
      * @return This builder for chaining.
      */
-    public Builder setEvents(int index, java.lang.String value) {
+    public Builder setEvents(
+        int index, java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureEventsIsMutable();
+    throw new NullPointerException();
+  }
+  ensureEventsIsMutable();
       events_.set(index, value);
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Events to subscribe to. Default is "*" (all events)
      * </pre>
      *
      * <code>repeated string events = 3;</code>
-     *
      * @param value The events to add.
      * @return This builder for chaining.
      */
-    public Builder addEvents(java.lang.String value) {
+    public Builder addEvents(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      ensureEventsIsMutable();
+    throw new NullPointerException();
+  }
+  ensureEventsIsMutable();
       events_.add(value);
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Events to subscribe to. Default is "*" (all events)
      * </pre>
      *
      * <code>repeated string events = 3;</code>
-     *
      * @param values The events to add.
      * @return This builder for chaining.
      */
-    public Builder addAllEvents(java.lang.Iterable<java.lang.String> values) {
+    public Builder addAllEvents(
+        java.lang.Iterable<java.lang.String> values) {
       ensureEventsIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(values, events_);
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, events_);
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Events to subscribe to. Default is "*" (all events)
      * </pre>
      *
      * <code>repeated string events = 3;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearEvents() {
@@ -979,30 +948,28 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Events to subscribe to. Default is "*" (all events)
      * </pre>
      *
      * <code>repeated string events = 3;</code>
-     *
      * @param value The bytes of the events to add.
      * @return This builder for chaining.
      */
-    public Builder addEventsBytes(com.google.protobuf.ByteString value) {
+    public Builder addEventsBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
       ensureEventsIsMutable();
       events_.add(value);
       onChanged();
       return this;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -1012,12 +979,12 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:services.provider.v1.AddWebhookRequest)
   }
 
   // @@protoc_insertion_point(class_scope:services.provider.v1.AddWebhookRequest)
   private static final trinsic.services.provider.v1.AddWebhookRequest DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new trinsic.services.provider.v1.AddWebhookRequest();
   }
@@ -1026,27 +993,16 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<AddWebhookRequest> PARSER =
-      new com.google.protobuf.AbstractParser<AddWebhookRequest>() {
-        @java.lang.Override
-        public AddWebhookRequest parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
+  private static final com.google.protobuf.Parser<AddWebhookRequest>
+      PARSER = new com.google.protobuf.AbstractParser<AddWebhookRequest>() {
+    @java.lang.Override
+    public AddWebhookRequest parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return new AddWebhookRequest(input, extensionRegistry);
+    }
+  };
 
   public static com.google.protobuf.Parser<AddWebhookRequest> parser() {
     return PARSER;
@@ -1061,4 +1017,6 @@ public final class AddWebhookRequest extends com.google.protobuf.GeneratedMessag
   public trinsic.services.provider.v1.AddWebhookRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

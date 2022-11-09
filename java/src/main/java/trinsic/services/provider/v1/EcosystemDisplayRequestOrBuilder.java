@@ -3,38 +3,37 @@
 
 package trinsic.services.provider.v1;
 
-public interface EcosystemDisplayRequestOrBuilder
-    extends
+public interface EcosystemDisplayRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:services.provider.v1.EcosystemDisplayRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>.services.provider.v1.EcosystemDisplayDetailsRequest dark = 1;</code>
-   *
    * @return Whether the dark field is set.
    */
   boolean hasDark();
   /**
    * <code>.services.provider.v1.EcosystemDisplayDetailsRequest dark = 1;</code>
-   *
    * @return The dark.
    */
   trinsic.services.provider.v1.EcosystemDisplayDetailsRequest getDark();
-  /** <code>.services.provider.v1.EcosystemDisplayDetailsRequest dark = 1;</code> */
+  /**
+   * <code>.services.provider.v1.EcosystemDisplayDetailsRequest dark = 1;</code>
+   */
   trinsic.services.provider.v1.EcosystemDisplayDetailsRequestOrBuilder getDarkOrBuilder();
 
   /**
    * <code>.services.provider.v1.EcosystemDisplayDetailsRequest light = 2;</code>
-   *
    * @return Whether the light field is set.
    */
   boolean hasLight();
   /**
    * <code>.services.provider.v1.EcosystemDisplayDetailsRequest light = 2;</code>
-   *
    * @return The light.
    */
   trinsic.services.provider.v1.EcosystemDisplayDetailsRequest getLight();
-  /** <code>.services.provider.v1.EcosystemDisplayDetailsRequest light = 2;</code> */
+  /**
+   * <code>.services.provider.v1.EcosystemDisplayDetailsRequest light = 2;</code>
+   */
   trinsic.services.provider.v1.EcosystemDisplayDetailsRequestOrBuilder getLightOrBuilder();
 }

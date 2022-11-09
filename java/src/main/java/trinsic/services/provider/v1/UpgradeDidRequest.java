@@ -4,66 +4,130 @@
 package trinsic.services.provider.v1;
 
 /**
- *
- *
  * <pre>
  * Request to upgrade a wallet
  * </pre>
  *
  * Protobuf type {@code services.provider.v1.UpgradeDidRequest}
  */
-public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessageV3
-    implements
+public final class UpgradeDidRequest extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:services.provider.v1.UpgradeDidRequest)
     UpgradeDidRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+private static final long serialVersionUID = 0L;
   // Use UpgradeDidRequest.newBuilder() to construct.
   private UpgradeDidRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private UpgradeDidRequest() {
     method_ = 0;
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new UpgradeDidRequest();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
     return this.unknownFields;
   }
+  private UpgradeDidRequest(
+      com.google.protobuf.CodedInputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    this();
+    if (extensionRegistry == null) {
+      throw new java.lang.NullPointerException();
+    }
+    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+        com.google.protobuf.UnknownFieldSet.newBuilder();
+    try {
+      boolean done = false;
+      while (!done) {
+        int tag = input.readTag();
+        switch (tag) {
+          case 0:
+            done = true;
+            break;
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
+            accountCase_ = 1;
+            account_ = s;
+            break;
+          }
+          case 18: {
+            java.lang.String s = input.readStringRequireUtf8();
+            accountCase_ = 2;
+            account_ = s;
+            break;
+          }
+          case 24: {
+            int rawValue = input.readEnum();
 
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return trinsic.services.provider.v1.ProviderOuterClass
-        .internal_static_services_provider_v1_UpgradeDidRequest_descriptor;
+            method_ = rawValue;
+            break;
+          }
+          case 34: {
+            trinsic.services.provider.v1.IonOptions.Builder subBuilder = null;
+            if (optionsCase_ == 4) {
+              subBuilder = ((trinsic.services.provider.v1.IonOptions) options_).toBuilder();
+            }
+            options_ =
+                input.readMessage(trinsic.services.provider.v1.IonOptions.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom((trinsic.services.provider.v1.IonOptions) options_);
+              options_ = subBuilder.buildPartial();
+            }
+            optionsCase_ = 4;
+            break;
+          }
+          default: {
+            if (!parseUnknownField(
+                input, unknownFields, extensionRegistry, tag)) {
+              done = true;
+            }
+            break;
+          }
+        }
+      }
+    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      throw e.setUnfinishedMessage(this);
+    } catch (com.google.protobuf.UninitializedMessageException e) {
+      throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+    } catch (java.io.IOException e) {
+      throw new com.google.protobuf.InvalidProtocolBufferException(
+          e).setUnfinishedMessage(this);
+    } finally {
+      this.unknownFields = unknownFields.build();
+      makeExtensionsImmutable();
+    }
+  }
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_UpgradeDidRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.provider.v1.ProviderOuterClass
-        .internal_static_services_provider_v1_UpgradeDidRequest_fieldAccessorTable
+    return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_UpgradeDidRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.provider.v1.UpgradeDidRequest.class,
-            trinsic.services.provider.v1.UpgradeDidRequest.Builder.class);
+            trinsic.services.provider.v1.UpgradeDidRequest.class, trinsic.services.provider.v1.UpgradeDidRequest.Builder.class);
   }
 
   private int accountCase_ = 0;
   private java.lang.Object account_;
-
   public enum AccountCase
-      implements
-          com.google.protobuf.Internal.EnumLite,
+      implements com.google.protobuf.Internal.EnumLite,
           com.google.protobuf.AbstractMessage.InternalOneOfEnum {
     EMAIL(1),
     WALLET_ID(2),
     ACCOUNT_NOT_SET(0);
     private final int value;
-
     private AccountCase(int value) {
       this.value = value;
     }
@@ -79,37 +143,31 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
 
     public static AccountCase forNumber(int value) {
       switch (value) {
-        case 1:
-          return EMAIL;
-        case 2:
-          return WALLET_ID;
-        case 0:
-          return ACCOUNT_NOT_SET;
-        default:
-          return null;
+        case 1: return EMAIL;
+        case 2: return WALLET_ID;
+        case 0: return ACCOUNT_NOT_SET;
+        default: return null;
       }
     }
-
     public int getNumber() {
       return this.value;
     }
   };
 
-  public AccountCase getAccountCase() {
-    return AccountCase.forNumber(accountCase_);
+  public AccountCase
+  getAccountCase() {
+    return AccountCase.forNumber(
+        accountCase_);
   }
 
   private int optionsCase_ = 0;
   private java.lang.Object options_;
-
   public enum OptionsCase
-      implements
-          com.google.protobuf.Internal.EnumLite,
+      implements com.google.protobuf.Internal.EnumLite,
           com.google.protobuf.AbstractMessage.InternalOneOfEnum {
     ION_OPTIONS(4),
     OPTIONS_NOT_SET(0);
     private final int value;
-
     private OptionsCase(int value) {
       this.value = value;
     }
@@ -125,50 +183,42 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
 
     public static OptionsCase forNumber(int value) {
       switch (value) {
-        case 4:
-          return ION_OPTIONS;
-        case 0:
-          return OPTIONS_NOT_SET;
-        default:
-          return null;
+        case 4: return ION_OPTIONS;
+        case 0: return OPTIONS_NOT_SET;
+        default: return null;
       }
     }
-
     public int getNumber() {
       return this.value;
     }
   };
 
-  public OptionsCase getOptionsCase() {
-    return OptionsCase.forNumber(optionsCase_);
+  public OptionsCase
+  getOptionsCase() {
+    return OptionsCase.forNumber(
+        optionsCase_);
   }
 
   public static final int EMAIL_FIELD_NUMBER = 1;
   /**
-   *
-   *
    * <pre>
    * Email address of account to upgrade.
    * Mutually exclusive with `walletId`.
    * </pre>
    *
    * <code>string email = 1;</code>
-   *
    * @return Whether the email field is set.
    */
   public boolean hasEmail() {
     return accountCase_ == 1;
   }
   /**
-   *
-   *
    * <pre>
    * Email address of account to upgrade.
    * Mutually exclusive with `walletId`.
    * </pre>
    *
    * <code>string email = 1;</code>
-   *
    * @return The email.
    */
   public java.lang.String getEmail() {
@@ -179,7 +229,8 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       if (accountCase_ == 1) {
         account_ = s;
@@ -188,25 +239,24 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
     }
   }
   /**
-   *
-   *
    * <pre>
    * Email address of account to upgrade.
    * Mutually exclusive with `walletId`.
    * </pre>
    *
    * <code>string email = 1;</code>
-   *
    * @return The bytes for email.
    */
-  public com.google.protobuf.ByteString getEmailBytes() {
+  public com.google.protobuf.ByteString
+      getEmailBytes() {
     java.lang.Object ref = "";
     if (accountCase_ == 1) {
       ref = account_;
     }
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       if (accountCase_ == 1) {
         account_ = b;
       }
@@ -218,30 +268,24 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
 
   public static final int WALLET_ID_FIELD_NUMBER = 2;
   /**
-   *
-   *
    * <pre>
    * Wallet ID of account to upgrade.
    * Mutually exclusive with `email`.
    * </pre>
    *
    * <code>string wallet_id = 2;</code>
-   *
    * @return Whether the walletId field is set.
    */
   public boolean hasWalletId() {
     return accountCase_ == 2;
   }
   /**
-   *
-   *
    * <pre>
    * Wallet ID of account to upgrade.
    * Mutually exclusive with `email`.
    * </pre>
    *
    * <code>string wallet_id = 2;</code>
-   *
    * @return The walletId.
    */
   public java.lang.String getWalletId() {
@@ -252,7 +296,8 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       if (accountCase_ == 2) {
         account_ = s;
@@ -261,25 +306,24 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
     }
   }
   /**
-   *
-   *
    * <pre>
    * Wallet ID of account to upgrade.
    * Mutually exclusive with `email`.
    * </pre>
    *
    * <code>string wallet_id = 2;</code>
-   *
    * @return The bytes for walletId.
    */
-  public com.google.protobuf.ByteString getWalletIdBytes() {
+  public com.google.protobuf.ByteString
+      getWalletIdBytes() {
     java.lang.Object ref = "";
     if (accountCase_ == 2) {
       ref = account_;
     }
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       if (accountCase_ == 2) {
         account_ = b;
       }
@@ -292,49 +336,37 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
   public static final int METHOD_FIELD_NUMBER = 3;
   private int method_;
   /**
-   *
-   *
    * <pre>
    * DID Method to which wallet should be upgraded
    * </pre>
    *
    * <code>.services.common.v1.SupportedDidMethod method = 3;</code>
-   *
    * @return The enum numeric value on the wire for method.
    */
-  @java.lang.Override
-  public int getMethodValue() {
+  @java.lang.Override public int getMethodValue() {
     return method_;
   }
   /**
-   *
-   *
    * <pre>
    * DID Method to which wallet should be upgraded
    * </pre>
    *
    * <code>.services.common.v1.SupportedDidMethod method = 3;</code>
-   *
    * @return The method.
    */
-  @java.lang.Override
-  public trinsic.services.common.v1.SupportedDidMethod getMethod() {
+  @java.lang.Override public trinsic.services.common.v1.SupportedDidMethod getMethod() {
     @SuppressWarnings("deprecation")
-    trinsic.services.common.v1.SupportedDidMethod result =
-        trinsic.services.common.v1.SupportedDidMethod.valueOf(method_);
+    trinsic.services.common.v1.SupportedDidMethod result = trinsic.services.common.v1.SupportedDidMethod.valueOf(method_);
     return result == null ? trinsic.services.common.v1.SupportedDidMethod.UNRECOGNIZED : result;
   }
 
   public static final int ION_OPTIONS_FIELD_NUMBER = 4;
   /**
-   *
-   *
    * <pre>
    * Configuration for creation of DID on ION network
    * </pre>
    *
    * <code>.services.provider.v1.IonOptions ion_options = 4;</code>
-   *
    * @return Whether the ionOptions field is set.
    */
   @java.lang.Override
@@ -342,26 +374,21 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
     return optionsCase_ == 4;
   }
   /**
-   *
-   *
    * <pre>
    * Configuration for creation of DID on ION network
    * </pre>
    *
    * <code>.services.provider.v1.IonOptions ion_options = 4;</code>
-   *
    * @return The ionOptions.
    */
   @java.lang.Override
   public trinsic.services.provider.v1.IonOptions getIonOptions() {
     if (optionsCase_ == 4) {
-      return (trinsic.services.provider.v1.IonOptions) options_;
+       return (trinsic.services.provider.v1.IonOptions) options_;
     }
     return trinsic.services.provider.v1.IonOptions.getDefaultInstance();
   }
   /**
-   *
-   *
    * <pre>
    * Configuration for creation of DID on ION network
    * </pre>
@@ -371,13 +398,12 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
   @java.lang.Override
   public trinsic.services.provider.v1.IonOptionsOrBuilder getIonOptionsOrBuilder() {
     if (optionsCase_ == 4) {
-      return (trinsic.services.provider.v1.IonOptions) options_;
+       return (trinsic.services.provider.v1.IonOptions) options_;
     }
     return trinsic.services.provider.v1.IonOptions.getDefaultInstance();
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -389,7 +415,8 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     if (accountCase_ == 1) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, account_);
     }
@@ -402,7 +429,7 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
     if (optionsCase_ == 4) {
       output.writeMessage(4, (trinsic.services.provider.v1.IonOptions) options_);
     }
-    getUnknownFields().writeTo(output);
+    unknownFields.writeTo(output);
   }
 
   @java.lang.Override
@@ -418,14 +445,14 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, account_);
     }
     if (method_ != trinsic.services.common.v1.SupportedDidMethod.KEY.getNumber()) {
-      size += com.google.protobuf.CodedOutputStream.computeEnumSize(3, method_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(3, method_);
     }
     if (optionsCase_ == 4) {
-      size +=
-          com.google.protobuf.CodedOutputStream.computeMessageSize(
-              4, (trinsic.services.provider.v1.IonOptions) options_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(4, (trinsic.services.provider.v1.IonOptions) options_);
     }
-    size += getUnknownFields().getSerializedSize();
+    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
@@ -433,22 +460,23 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof trinsic.services.provider.v1.UpgradeDidRequest)) {
       return super.equals(obj);
     }
-    trinsic.services.provider.v1.UpgradeDidRequest other =
-        (trinsic.services.provider.v1.UpgradeDidRequest) obj;
+    trinsic.services.provider.v1.UpgradeDidRequest other = (trinsic.services.provider.v1.UpgradeDidRequest) obj;
 
     if (method_ != other.method_) return false;
     if (!getAccountCase().equals(other.getAccountCase())) return false;
     switch (accountCase_) {
       case 1:
-        if (!getEmail().equals(other.getEmail())) return false;
+        if (!getEmail()
+            .equals(other.getEmail())) return false;
         break;
       case 2:
-        if (!getWalletId().equals(other.getWalletId())) return false;
+        if (!getWalletId()
+            .equals(other.getWalletId())) return false;
         break;
       case 0:
       default:
@@ -456,12 +484,13 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
     if (!getOptionsCase().equals(other.getOptionsCase())) return false;
     switch (optionsCase_) {
       case 4:
-        if (!getIonOptions().equals(other.getIonOptions())) return false;
+        if (!getIonOptions()
+            .equals(other.getIonOptions())) return false;
         break;
       case 0:
       default:
     }
-    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+    if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
 
@@ -494,149 +523,145 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       case 0:
       default:
     }
-    hash = (29 * hash) + getUnknownFields().hashCode();
+    hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static trinsic.services.provider.v1.UpgradeDidRequest parseFrom(java.nio.ByteBuffer data)
+  public static trinsic.services.provider.v1.UpgradeDidRequest parseFrom(
+      java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.provider.v1.UpgradeDidRequest parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.provider.v1.UpgradeDidRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.provider.v1.UpgradeDidRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.provider.v1.UpgradeDidRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.provider.v1.UpgradeDidRequest parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.provider.v1.UpgradeDidRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static trinsic.services.provider.v1.UpgradeDidRequest parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
-  public static trinsic.services.provider.v1.UpgradeDidRequest parseDelimitedFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static trinsic.services.provider.v1.UpgradeDidRequest parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+  public static trinsic.services.provider.v1.UpgradeDidRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
   }
-
+  public static trinsic.services.provider.v1.UpgradeDidRequest parseDelimitedFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+  }
   public static trinsic.services.provider.v1.UpgradeDidRequest parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static trinsic.services.provider.v1.UpgradeDidRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
   public static Builder newBuilder(trinsic.services.provider.v1.UpgradeDidRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
-   *
-   *
    * <pre>
    * Request to upgrade a wallet
    * </pre>
    *
    * Protobuf type {@code services.provider.v1.UpgradeDidRequest}
    */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:services.provider.v1.UpgradeDidRequest)
       trinsic.services.provider.v1.UpgradeDidRequestOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_UpgradeDidRequest_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_UpgradeDidRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_UpgradeDidRequest_fieldAccessorTable
+      return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_UpgradeDidRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.provider.v1.UpgradeDidRequest.class,
-              trinsic.services.provider.v1.UpgradeDidRequest.Builder.class);
+              trinsic.services.provider.v1.UpgradeDidRequest.class, trinsic.services.provider.v1.UpgradeDidRequest.Builder.class);
     }
 
     // Construct using trinsic.services.provider.v1.UpgradeDidRequest.newBuilder()
-    private Builder() {}
-
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
+    private Builder() {
+      maybeForceBuilderInitialization();
     }
 
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
+      maybeForceBuilderInitialization();
+    }
+    private void maybeForceBuilderInitialization() {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+      }
+    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
       method_ = 0;
 
-      if (ionOptionsBuilder_ != null) {
-        ionOptionsBuilder_.clear();
-      }
       accountCase_ = 0;
       account_ = null;
       optionsCase_ = 0;
@@ -645,9 +670,9 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_UpgradeDidRequest_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_UpgradeDidRequest_descriptor;
     }
 
     @java.lang.Override
@@ -666,8 +691,7 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
 
     @java.lang.Override
     public trinsic.services.provider.v1.UpgradeDidRequest buildPartial() {
-      trinsic.services.provider.v1.UpgradeDidRequest result =
-          new trinsic.services.provider.v1.UpgradeDidRequest(this);
+      trinsic.services.provider.v1.UpgradeDidRequest result = new trinsic.services.provider.v1.UpgradeDidRequest(this);
       if (accountCase_ == 1) {
         result.account_ = account_;
       }
@@ -692,39 +716,38 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof trinsic.services.provider.v1.UpgradeDidRequest) {
-        return mergeFrom((trinsic.services.provider.v1.UpgradeDidRequest) other);
+        return mergeFrom((trinsic.services.provider.v1.UpgradeDidRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -737,37 +760,32 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
         setMethodValue(other.getMethodValue());
       }
       switch (other.getAccountCase()) {
-        case EMAIL:
-          {
-            accountCase_ = 1;
-            account_ = other.account_;
-            onChanged();
-            break;
-          }
-        case WALLET_ID:
-          {
-            accountCase_ = 2;
-            account_ = other.account_;
-            onChanged();
-            break;
-          }
-        case ACCOUNT_NOT_SET:
-          {
-            break;
-          }
+        case EMAIL: {
+          accountCase_ = 1;
+          account_ = other.account_;
+          onChanged();
+          break;
+        }
+        case WALLET_ID: {
+          accountCase_ = 2;
+          account_ = other.account_;
+          onChanged();
+          break;
+        }
+        case ACCOUNT_NOT_SET: {
+          break;
+        }
       }
       switch (other.getOptionsCase()) {
-        case ION_OPTIONS:
-          {
-            mergeIonOptions(other.getIonOptions());
-            break;
-          }
-        case OPTIONS_NOT_SET:
-          {
-            break;
-          }
+        case ION_OPTIONS: {
+          mergeIonOptions(other.getIonOptions());
+          break;
+        }
+        case OPTIONS_NOT_SET: {
+          break;
+        }
       }
-      this.mergeUnknownFields(other.getUnknownFields());
+      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -782,65 +800,25 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
+      trinsic.services.provider.v1.UpgradeDidRequest parsedMessage = null;
       try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10:
-              {
-                java.lang.String s = input.readStringRequireUtf8();
-                accountCase_ = 1;
-                account_ = s;
-                break;
-              } // case 10
-            case 18:
-              {
-                java.lang.String s = input.readStringRequireUtf8();
-                accountCase_ = 2;
-                account_ = s;
-                break;
-              } // case 18
-            case 24:
-              {
-                method_ = input.readEnum();
-
-                break;
-              } // case 24
-            case 34:
-              {
-                input.readMessage(getIonOptionsFieldBuilder().getBuilder(), extensionRegistry);
-                optionsCase_ = 4;
-                break;
-              } // case 34
-            default:
-              {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-          } // switch (tag)
-        } // while (!done)
+        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        parsedMessage = (trinsic.services.provider.v1.UpgradeDidRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
-        onChanged();
-      } // finally
+        if (parsedMessage != null) {
+          mergeFrom(parsedMessage);
+        }
+      }
       return this;
     }
-
     private int accountCase_ = 0;
     private java.lang.Object account_;
-
-    public AccountCase getAccountCase() {
-      return AccountCase.forNumber(accountCase_);
+    public AccountCase
+        getAccountCase() {
+      return AccountCase.forNumber(
+          accountCase_);
     }
 
     public Builder clearAccount() {
@@ -852,9 +830,10 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
 
     private int optionsCase_ = 0;
     private java.lang.Object options_;
-
-    public OptionsCase getOptionsCase() {
-      return OptionsCase.forNumber(optionsCase_);
+    public OptionsCase
+        getOptionsCase() {
+      return OptionsCase.forNumber(
+          optionsCase_);
     }
 
     public Builder clearOptions() {
@@ -864,16 +843,14 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       return this;
     }
 
+
     /**
-     *
-     *
      * <pre>
      * Email address of account to upgrade.
      * Mutually exclusive with `walletId`.
      * </pre>
      *
      * <code>string email = 1;</code>
-     *
      * @return Whether the email field is set.
      */
     @java.lang.Override
@@ -881,15 +858,12 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       return accountCase_ == 1;
     }
     /**
-     *
-     *
      * <pre>
      * Email address of account to upgrade.
      * Mutually exclusive with `walletId`.
      * </pre>
      *
      * <code>string email = 1;</code>
-     *
      * @return The email.
      */
     @java.lang.Override
@@ -899,7 +873,8 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
         ref = account_;
       }
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (accountCase_ == 1) {
           account_ = s;
@@ -910,26 +885,25 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       }
     }
     /**
-     *
-     *
      * <pre>
      * Email address of account to upgrade.
      * Mutually exclusive with `walletId`.
      * </pre>
      *
      * <code>string email = 1;</code>
-     *
      * @return The bytes for email.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString getEmailBytes() {
+    public com.google.protobuf.ByteString
+        getEmailBytes() {
       java.lang.Object ref = "";
       if (accountCase_ == 1) {
         ref = account_;
       }
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         if (accountCase_ == 1) {
           account_ = b;
         }
@@ -939,37 +913,32 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       }
     }
     /**
-     *
-     *
      * <pre>
      * Email address of account to upgrade.
      * Mutually exclusive with `walletId`.
      * </pre>
      *
      * <code>string email = 1;</code>
-     *
      * @param value The email to set.
      * @return This builder for chaining.
      */
-    public Builder setEmail(java.lang.String value) {
+    public Builder setEmail(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      accountCase_ = 1;
+    throw new NullPointerException();
+  }
+  accountCase_ = 1;
       account_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Email address of account to upgrade.
      * Mutually exclusive with `walletId`.
      * </pre>
      *
      * <code>string email = 1;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearEmail() {
@@ -981,23 +950,21 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Email address of account to upgrade.
      * Mutually exclusive with `walletId`.
      * </pre>
      *
      * <code>string email = 1;</code>
-     *
      * @param value The bytes for email to set.
      * @return This builder for chaining.
      */
-    public Builder setEmailBytes(com.google.protobuf.ByteString value) {
+    public Builder setEmailBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
       accountCase_ = 1;
       account_ = value;
       onChanged();
@@ -1005,15 +972,12 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
     }
 
     /**
-     *
-     *
      * <pre>
      * Wallet ID of account to upgrade.
      * Mutually exclusive with `email`.
      * </pre>
      *
      * <code>string wallet_id = 2;</code>
-     *
      * @return Whether the walletId field is set.
      */
     @java.lang.Override
@@ -1021,15 +985,12 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       return accountCase_ == 2;
     }
     /**
-     *
-     *
      * <pre>
      * Wallet ID of account to upgrade.
      * Mutually exclusive with `email`.
      * </pre>
      *
      * <code>string wallet_id = 2;</code>
-     *
      * @return The walletId.
      */
     @java.lang.Override
@@ -1039,7 +1000,8 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
         ref = account_;
       }
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (accountCase_ == 2) {
           account_ = s;
@@ -1050,26 +1012,25 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       }
     }
     /**
-     *
-     *
      * <pre>
      * Wallet ID of account to upgrade.
      * Mutually exclusive with `email`.
      * </pre>
      *
      * <code>string wallet_id = 2;</code>
-     *
      * @return The bytes for walletId.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString getWalletIdBytes() {
+    public com.google.protobuf.ByteString
+        getWalletIdBytes() {
       java.lang.Object ref = "";
       if (accountCase_ == 2) {
         ref = account_;
       }
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         if (accountCase_ == 2) {
           account_ = b;
         }
@@ -1079,37 +1040,32 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       }
     }
     /**
-     *
-     *
      * <pre>
      * Wallet ID of account to upgrade.
      * Mutually exclusive with `email`.
      * </pre>
      *
      * <code>string wallet_id = 2;</code>
-     *
      * @param value The walletId to set.
      * @return This builder for chaining.
      */
-    public Builder setWalletId(java.lang.String value) {
+    public Builder setWalletId(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      accountCase_ = 2;
+    throw new NullPointerException();
+  }
+  accountCase_ = 2;
       account_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Wallet ID of account to upgrade.
      * Mutually exclusive with `email`.
      * </pre>
      *
      * <code>string wallet_id = 2;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearWalletId() {
@@ -1121,23 +1077,21 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Wallet ID of account to upgrade.
      * Mutually exclusive with `email`.
      * </pre>
      *
      * <code>string wallet_id = 2;</code>
-     *
      * @param value The bytes for walletId to set.
      * @return This builder for chaining.
      */
-    public Builder setWalletIdBytes(com.google.protobuf.ByteString value) {
+    public Builder setWalletIdBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
       accountCase_ = 2;
       account_ = value;
       onChanged();
@@ -1146,65 +1100,51 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
 
     private int method_ = 0;
     /**
-     *
-     *
      * <pre>
      * DID Method to which wallet should be upgraded
      * </pre>
      *
      * <code>.services.common.v1.SupportedDidMethod method = 3;</code>
-     *
      * @return The enum numeric value on the wire for method.
      */
-    @java.lang.Override
-    public int getMethodValue() {
+    @java.lang.Override public int getMethodValue() {
       return method_;
     }
     /**
-     *
-     *
      * <pre>
      * DID Method to which wallet should be upgraded
      * </pre>
      *
      * <code>.services.common.v1.SupportedDidMethod method = 3;</code>
-     *
      * @param value The enum numeric value on the wire for method to set.
      * @return This builder for chaining.
      */
     public Builder setMethodValue(int value) {
-
+      
       method_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * DID Method to which wallet should be upgraded
      * </pre>
      *
      * <code>.services.common.v1.SupportedDidMethod method = 3;</code>
-     *
      * @return The method.
      */
     @java.lang.Override
     public trinsic.services.common.v1.SupportedDidMethod getMethod() {
       @SuppressWarnings("deprecation")
-      trinsic.services.common.v1.SupportedDidMethod result =
-          trinsic.services.common.v1.SupportedDidMethod.valueOf(method_);
+      trinsic.services.common.v1.SupportedDidMethod result = trinsic.services.common.v1.SupportedDidMethod.valueOf(method_);
       return result == null ? trinsic.services.common.v1.SupportedDidMethod.UNRECOGNIZED : result;
     }
     /**
-     *
-     *
      * <pre>
      * DID Method to which wallet should be upgraded
      * </pre>
      *
      * <code>.services.common.v1.SupportedDidMethod method = 3;</code>
-     *
      * @param value The method to set.
      * @return This builder for chaining.
      */
@@ -1212,43 +1152,34 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       if (value == null) {
         throw new NullPointerException();
       }
-
+      
       method_ = value.getNumber();
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * DID Method to which wallet should be upgraded
      * </pre>
      *
      * <code>.services.common.v1.SupportedDidMethod method = 3;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearMethod() {
-
+      
       method_ = 0;
       onChanged();
       return this;
     }
 
     private com.google.protobuf.SingleFieldBuilderV3<
-            trinsic.services.provider.v1.IonOptions,
-            trinsic.services.provider.v1.IonOptions.Builder,
-            trinsic.services.provider.v1.IonOptionsOrBuilder>
-        ionOptionsBuilder_;
+        trinsic.services.provider.v1.IonOptions, trinsic.services.provider.v1.IonOptions.Builder, trinsic.services.provider.v1.IonOptionsOrBuilder> ionOptionsBuilder_;
     /**
-     *
-     *
      * <pre>
      * Configuration for creation of DID on ION network
      * </pre>
      *
      * <code>.services.provider.v1.IonOptions ion_options = 4;</code>
-     *
      * @return Whether the ionOptions field is set.
      */
     @java.lang.Override
@@ -1256,14 +1187,11 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       return optionsCase_ == 4;
     }
     /**
-     *
-     *
      * <pre>
      * Configuration for creation of DID on ION network
      * </pre>
      *
      * <code>.services.provider.v1.IonOptions ion_options = 4;</code>
-     *
      * @return The ionOptions.
      */
     @java.lang.Override
@@ -1281,8 +1209,6 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       }
     }
     /**
-     *
-     *
      * <pre>
      * Configuration for creation of DID on ION network
      * </pre>
@@ -1303,15 +1229,14 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Configuration for creation of DID on ION network
      * </pre>
      *
      * <code>.services.provider.v1.IonOptions ion_options = 4;</code>
      */
-    public Builder setIonOptions(trinsic.services.provider.v1.IonOptions.Builder builderForValue) {
+    public Builder setIonOptions(
+        trinsic.services.provider.v1.IonOptions.Builder builderForValue) {
       if (ionOptionsBuilder_ == null) {
         options_ = builderForValue.build();
         onChanged();
@@ -1322,8 +1247,6 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Configuration for creation of DID on ION network
      * </pre>
@@ -1332,13 +1255,10 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
      */
     public Builder mergeIonOptions(trinsic.services.provider.v1.IonOptions value) {
       if (ionOptionsBuilder_ == null) {
-        if (optionsCase_ == 4
-            && options_ != trinsic.services.provider.v1.IonOptions.getDefaultInstance()) {
-          options_ =
-              trinsic.services.provider.v1.IonOptions.newBuilder(
-                      (trinsic.services.provider.v1.IonOptions) options_)
-                  .mergeFrom(value)
-                  .buildPartial();
+        if (optionsCase_ == 4 &&
+            options_ != trinsic.services.provider.v1.IonOptions.getDefaultInstance()) {
+          options_ = trinsic.services.provider.v1.IonOptions.newBuilder((trinsic.services.provider.v1.IonOptions) options_)
+              .mergeFrom(value).buildPartial();
         } else {
           options_ = value;
         }
@@ -1354,8 +1274,6 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Configuration for creation of DID on ION network
      * </pre>
@@ -1379,8 +1297,6 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Configuration for creation of DID on ION network
      * </pre>
@@ -1391,8 +1307,6 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       return getIonOptionsFieldBuilder().getBuilder();
     }
     /**
-     *
-     *
      * <pre>
      * Configuration for creation of DID on ION network
      * </pre>
@@ -1411,8 +1325,6 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       }
     }
     /**
-     *
-     *
      * <pre>
      * Configuration for creation of DID on ION network
      * </pre>
@@ -1420,32 +1332,26 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
      * <code>.services.provider.v1.IonOptions ion_options = 4;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-            trinsic.services.provider.v1.IonOptions,
-            trinsic.services.provider.v1.IonOptions.Builder,
-            trinsic.services.provider.v1.IonOptionsOrBuilder>
+        trinsic.services.provider.v1.IonOptions, trinsic.services.provider.v1.IonOptions.Builder, trinsic.services.provider.v1.IonOptionsOrBuilder> 
         getIonOptionsFieldBuilder() {
       if (ionOptionsBuilder_ == null) {
         if (!(optionsCase_ == 4)) {
           options_ = trinsic.services.provider.v1.IonOptions.getDefaultInstance();
         }
-        ionOptionsBuilder_ =
-            new com.google.protobuf.SingleFieldBuilderV3<
-                trinsic.services.provider.v1.IonOptions,
-                trinsic.services.provider.v1.IonOptions.Builder,
-                trinsic.services.provider.v1.IonOptionsOrBuilder>(
+        ionOptionsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            trinsic.services.provider.v1.IonOptions, trinsic.services.provider.v1.IonOptions.Builder, trinsic.services.provider.v1.IonOptionsOrBuilder>(
                 (trinsic.services.provider.v1.IonOptions) options_,
                 getParentForChildren(),
                 isClean());
         options_ = null;
       }
       optionsCase_ = 4;
-      onChanged();
-      ;
+      onChanged();;
       return ionOptionsBuilder_;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -1455,12 +1361,12 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:services.provider.v1.UpgradeDidRequest)
   }
 
   // @@protoc_insertion_point(class_scope:services.provider.v1.UpgradeDidRequest)
   private static final trinsic.services.provider.v1.UpgradeDidRequest DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new trinsic.services.provider.v1.UpgradeDidRequest();
   }
@@ -1469,27 +1375,16 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<UpgradeDidRequest> PARSER =
-      new com.google.protobuf.AbstractParser<UpgradeDidRequest>() {
-        @java.lang.Override
-        public UpgradeDidRequest parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
+  private static final com.google.protobuf.Parser<UpgradeDidRequest>
+      PARSER = new com.google.protobuf.AbstractParser<UpgradeDidRequest>() {
+    @java.lang.Override
+    public UpgradeDidRequest parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return new UpgradeDidRequest(input, extensionRegistry);
+    }
+  };
 
   public static com.google.protobuf.Parser<UpgradeDidRequest> parser() {
     return PARSER;
@@ -1504,4 +1399,6 @@ public final class UpgradeDidRequest extends com.google.protobuf.GeneratedMessag
   public trinsic.services.provider.v1.UpgradeDidRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

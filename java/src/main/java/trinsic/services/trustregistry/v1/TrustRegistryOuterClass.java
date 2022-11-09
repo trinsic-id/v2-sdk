@@ -5,301 +5,264 @@ package trinsic.services.trustregistry.v1;
 
 public final class TrustRegistryOuterClass {
   private TrustRegistryOuterClass() {}
-
-  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {}
-
-  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions((com.google.protobuf.ExtensionRegistryLite) registry);
+  public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistryLite registry) {
   }
 
+  public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions(
+        (com.google.protobuf.ExtensionRegistryLite) registry);
+  }
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_trustregistry_v1_AddFrameworkRequest_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    internal_static_services_trustregistry_v1_AddFrameworkRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_trustregistry_v1_AddFrameworkRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_trustregistry_v1_AddFrameworkResponse_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    internal_static_services_trustregistry_v1_AddFrameworkResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_trustregistry_v1_AddFrameworkResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_trustregistry_v1_RemoveFrameworkRequest_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    internal_static_services_trustregistry_v1_RemoveFrameworkRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_trustregistry_v1_RemoveFrameworkRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_trustregistry_v1_RemoveFrameworkResponse_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    internal_static_services_trustregistry_v1_RemoveFrameworkResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_trustregistry_v1_RemoveFrameworkResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_trustregistry_v1_SearchRegistryRequest_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    internal_static_services_trustregistry_v1_SearchRegistryRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_trustregistry_v1_SearchRegistryRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_trustregistry_v1_SearchRegistryResponse_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    internal_static_services_trustregistry_v1_SearchRegistryResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_trustregistry_v1_SearchRegistryResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_trustregistry_v1_GovernanceFramework_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    internal_static_services_trustregistry_v1_GovernanceFramework_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_trustregistry_v1_GovernanceFramework_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_trustregistry_v1_RegisterMemberRequest_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    internal_static_services_trustregistry_v1_RegisterMemberRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_trustregistry_v1_RegisterMemberRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_trustregistry_v1_RegisterMemberResponse_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    internal_static_services_trustregistry_v1_RegisterMemberResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_trustregistry_v1_RegisterMemberResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_trustregistry_v1_UnregisterMemberRequest_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    internal_static_services_trustregistry_v1_UnregisterMemberRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_trustregistry_v1_UnregisterMemberRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_trustregistry_v1_UnregisterMemberResponse_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    internal_static_services_trustregistry_v1_UnregisterMemberResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_trustregistry_v1_UnregisterMemberResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_trustregistry_v1_GetMembershipStatusRequest_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    internal_static_services_trustregistry_v1_GetMembershipStatusRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_trustregistry_v1_GetMembershipStatusRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_trustregistry_v1_GetMembershipStatusResponse_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    internal_static_services_trustregistry_v1_GetMembershipStatusResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_trustregistry_v1_GetMembershipStatusResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_trustregistry_v1_FetchDataRequest_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    internal_static_services_trustregistry_v1_FetchDataRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_trustregistry_v1_FetchDataRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_services_trustregistry_v1_FetchDataResponse_descriptor;
-  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    internal_static_services_trustregistry_v1_FetchDataResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_trustregistry_v1_FetchDataResponse_fieldAccessorTable;
 
-  public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
+  public static com.google.protobuf.Descriptors.FileDescriptor
+      getDescriptor() {
     return descriptor;
   }
-
-  private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
-
+  private static  com.google.protobuf.Descriptors.FileDescriptor
+      descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n"
-          + "/services/trust-registry/v1/trust-regis"
-          + "try.proto\022\031services.trustregistry.v1\032$services/options/field-options.proto\"Z\n"
-          + "\023AddFrameworkRequest\022 \n"
-          + "\030governance_framework_uri\030\001 \001(\t\022\014\n"
-          + "\004name\030\002 \001(\t\022\023\n"
-          + "\013description\030\003 \001(\t\"W\n"
-          + "\024AddFrameworkResponse\022\n\n"
-          + "\002id\030\001 \001(\t\022\033\n"
-          + "\023governing_authority\030\002 \001(\t\022\026\n"
-          + "\016trust_registry\030\003 \001(\t\"$\n"
-          + "\026RemoveFrameworkRequest\022\n\n"
-          + "\002id\030\001 \001(\t\"\031\n"
-          + "\027RemoveFrameworkResponse\"H\n"
-          + "\025SearchRegistryRequest\022\r\n"
-          + "\005query\030\001 \001(\t\022 \n"
-          + "\022continuation_token\030\002 \001(\tB\004\200\246\035\001\"Z\n"
-          + "\026SearchRegistryResponse\022\022\n\n"
-          + "items_json\030\001 \001(\t\022\020\n"
-          + "\010has_more\030\002 \001(\010\022\032\n"
-          + "\022continuation_token\030\004 \001(\t\"h\n"
-          + "\023GovernanceFramework\022 \n"
-          + "\030governance_framework_uri\030\001 \001(\t\022\032\n"
-          + "\022trust_registry_uri\030\002 \001(\t\022\023\n"
-          + "\013description\030\003 \001(\t\"\265\001\n"
-          + "\025RegisterMemberRequest\022\021\n"
-          + "\007did_uri\030\001 \001(\tH\000\022\023\n"
-          + "\twallet_id\030\003 \001(\tH\000\022\017\n"
-          + "\005email\030\004 \001(\tH\000\022\022\n\n"
-          + "schema_uri\030\n"
-          + " \001(\t\022\026\n"
-          + "\016valid_from_utc\030\013 \001(\004\022\027\n"
-          + "\017valid_until_utc\030\014 \001(\004\022\024\n"
-          + "\014framework_id\030\036 \001(\tB\010\n"
-          + "\006member\"\030\n"
-          + "\026RegisterMemberResponse\"\206\001\n"
-          + "\027UnregisterMemberRequest\022\021\n"
-          + "\007did_uri\030\001 \001(\tH\000\022\023\n"
-          + "\twallet_id\030\003 \001(\tH\000\022\017\n"
-          + "\005email\030\004 \001(\tH\000\022\022\n\n"
-          + "schema_uri\030\n"
-          + " \001(\t\022\024\n"
-          + "\014framework_id\030\024 \001(\tB\010\n"
-          + "\006member\"\032\n"
-          + "\030UnregisterMemberResponse\"\204\001\n"
-          + "\032GetMembershipStatusRequest\022 \n"
-          + "\030governance_framework_uri\030\001 \001(\t\022\021\n"
-          + "\007did_uri\030\002 \001(\tH\000\022\023\n"
-          + "\tx509_cert\030\003 \001(\tH\000\022\022\n\n"
-          + "schema_uri\030\004 \001(\tB\010\n"
-          + "\006member\"\\\n"
-          + "\033GetMembershipStatusResponse\022=\n"
-          + "\006status\030\001 \001(\0162-.services.trustregistry.v1.RegistrationStatus\"C\n"
-          + "\020FetchDataRequest\022 \n"
-          + "\030governance_framework_uri\030\001 \001(\t\022\r\n"
-          + "\005query\030\002 \001(\t\"`\n"
-          + "\021FetchDataResponse\022\025\n\r"
-          + "response_json\030\001 \001(\t\022\030\n"
-          + "\020has_more_results\030\002 \001(\010\022\032\n"
-          + "\022continuation_token\030\003 \001(\t*Z\n"
-          + "\022RegistrationStatus\022\013\n"
-          + "\007CURRENT\020\000\022\013\n"
-          + "\007EXPIRED\020\001\022\016\n\n"
-          + "TERMINATED\020\002\022\013\n"
-          + "\007REVOKED\020\003\022\r\n"
-          + "\tNOT_FOUND\020\n"
-          + "2\336\006\n\r"
-          + "TrustRegistry\022o\n"
-          + "\014AddFramework\022..services.trustregistry.v1.Ad"
-          + "dFrameworkRequest\032/.services.trustregistry.v1.AddFrameworkResponse\022x\n"
-          + "\017RemoveFramework\0221.services.trustregistry.v1.Remove"
-          + "FrameworkRequest\0322.services.trustregistry.v1.RemoveFrameworkResponse\022u\n"
-          + "\016SearchRegistry\0220.services.trustregistry.v1.Searc"
-          + "hRegistryRequest\0321.services.trustregistry.v1.SearchRegistryResponse\022u\n"
-          + "\016RegisterMember\0220.services.trustregistry.v1.Regist"
-          + "erMemberRequest\0321.services.trustregistry.v1.RegisterMemberResponse\022{\n"
-          + "\020UnregisterMember\0222.services.trustregistry.v1.Unreg"
-          + "isterMemberRequest\0323.services.trustregistry.v1.UnregisterMemberResponse\022\204\001\n"
-          + "\023GetMembershipStatus\0225.services.trustregistry"
-          + ".v1.GetMembershipStatusRequest\0326.service"
-          + "s.trustregistry.v1.GetMembershipStatusResponse\022p\n"
-          + "\tFetchData\022+.services.trustregistry.v1.FetchDataRequest\032,.services.trus"
-          + "tregistry.v1.FetchDataResponse\"\006\212\246\035\002\020\0010\001Br\n"
-          + "!trinsic.services.trustregistry.v1P\001Z\'services/trustregistry/v1/trustregistry"
-          + "\252\002!Trinsic.Services.TrustRegistry.V1b\006proto3"
+      "\n/services/trust-registry/v1/trust-regis" +
+      "try.proto\022\031services.trustregistry.v1\032$se" +
+      "rvices/options/field-options.proto\"Z\n\023Ad" +
+      "dFrameworkRequest\022 \n\030governance_framewor" +
+      "k_uri\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013description" +
+      "\030\003 \001(\t\"W\n\024AddFrameworkResponse\022\n\n\002id\030\001 \001" +
+      "(\t\022\033\n\023governing_authority\030\002 \001(\t\022\026\n\016trust" +
+      "_registry\030\003 \001(\t\"$\n\026RemoveFrameworkReques" +
+      "t\022\n\n\002id\030\001 \001(\t\"\031\n\027RemoveFrameworkResponse" +
+      "\"H\n\025SearchRegistryRequest\022\r\n\005query\030\001 \001(\t" +
+      "\022 \n\022continuation_token\030\002 \001(\tB\004\200\246\035\001\"Z\n\026Se" +
+      "archRegistryResponse\022\022\n\nitems_json\030\001 \001(\t" +
+      "\022\020\n\010has_more\030\002 \001(\010\022\032\n\022continuation_token" +
+      "\030\004 \001(\t\"h\n\023GovernanceFramework\022 \n\030governa" +
+      "nce_framework_uri\030\001 \001(\t\022\032\n\022trust_registr" +
+      "y_uri\030\002 \001(\t\022\023\n\013description\030\003 \001(\t\"\265\001\n\025Reg" +
+      "isterMemberRequest\022\021\n\007did_uri\030\001 \001(\tH\000\022\023\n" +
+      "\twallet_id\030\003 \001(\tH\000\022\017\n\005email\030\004 \001(\tH\000\022\022\n\ns" +
+      "chema_uri\030\n \001(\t\022\026\n\016valid_from_utc\030\013 \001(\004\022" +
+      "\027\n\017valid_until_utc\030\014 \001(\004\022\024\n\014framework_id" +
+      "\030\036 \001(\tB\010\n\006member\"\030\n\026RegisterMemberRespon" +
+      "se\"\206\001\n\027UnregisterMemberRequest\022\021\n\007did_ur" +
+      "i\030\001 \001(\tH\000\022\023\n\twallet_id\030\003 \001(\tH\000\022\017\n\005email\030" +
+      "\004 \001(\tH\000\022\022\n\nschema_uri\030\n \001(\t\022\024\n\014framework" +
+      "_id\030\024 \001(\tB\010\n\006member\"\032\n\030UnregisterMemberR" +
+      "esponse\"\204\001\n\032GetMembershipStatusRequest\022 " +
+      "\n\030governance_framework_uri\030\001 \001(\t\022\021\n\007did_" +
+      "uri\030\002 \001(\tH\000\022\023\n\tx509_cert\030\003 \001(\tH\000\022\022\n\nsche" +
+      "ma_uri\030\004 \001(\tB\010\n\006member\"\\\n\033GetMembershipS" +
+      "tatusResponse\022=\n\006status\030\001 \001(\0162-.services" +
+      ".trustregistry.v1.RegistrationStatus\"C\n\020" +
+      "FetchDataRequest\022 \n\030governance_framework" +
+      "_uri\030\001 \001(\t\022\r\n\005query\030\002 \001(\t\"`\n\021FetchDataRe" +
+      "sponse\022\025\n\rresponse_json\030\001 \001(\t\022\030\n\020has_mor" +
+      "e_results\030\002 \001(\010\022\032\n\022continuation_token\030\003 " +
+      "\001(\t*Z\n\022RegistrationStatus\022\013\n\007CURRENT\020\000\022\013" +
+      "\n\007EXPIRED\020\001\022\016\n\nTERMINATED\020\002\022\013\n\007REVOKED\020\003" +
+      "\022\r\n\tNOT_FOUND\020\n2\336\006\n\rTrustRegistry\022o\n\014Add" +
+      "Framework\022..services.trustregistry.v1.Ad" +
+      "dFrameworkRequest\032/.services.trustregist" +
+      "ry.v1.AddFrameworkResponse\022x\n\017RemoveFram" +
+      "ework\0221.services.trustregistry.v1.Remove" +
+      "FrameworkRequest\0322.services.trustregistr" +
+      "y.v1.RemoveFrameworkResponse\022u\n\016SearchRe" +
+      "gistry\0220.services.trustregistry.v1.Searc" +
+      "hRegistryRequest\0321.services.trustregistr" +
+      "y.v1.SearchRegistryResponse\022u\n\016RegisterM" +
+      "ember\0220.services.trustregistry.v1.Regist" +
+      "erMemberRequest\0321.services.trustregistry" +
+      ".v1.RegisterMemberResponse\022{\n\020Unregister" +
+      "Member\0222.services.trustregistry.v1.Unreg" +
+      "isterMemberRequest\0323.services.trustregis" +
+      "try.v1.UnregisterMemberResponse\022\204\001\n\023GetM" +
+      "embershipStatus\0225.services.trustregistry" +
+      ".v1.GetMembershipStatusRequest\0326.service" +
+      "s.trustregistry.v1.GetMembershipStatusRe" +
+      "sponse\022p\n\tFetchData\022+.services.trustregi" +
+      "stry.v1.FetchDataRequest\032,.services.trus" +
+      "tregistry.v1.FetchDataResponse\"\006\212\246\035\002\020\0010\001" +
+      "Br\n!trinsic.services.trustregistry.v1P\001Z" +
+      "\'services/trustregistry/v1/trustregistry" +
+      "\252\002!Trinsic.Services.TrustRegistry.V1b\006pr" +
+      "oto3"
     };
-    descriptor =
-        com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
-            descriptorData,
-            new com.google.protobuf.Descriptors.FileDescriptor[] {
-              trinsic.services.protobuf.options.FieldOptions.getDescriptor(),
-            });
+    descriptor = com.google.protobuf.Descriptors.FileDescriptor
+      .internalBuildGeneratedFileFrom(descriptorData,
+        new com.google.protobuf.Descriptors.FileDescriptor[] {
+          trinsic.services.protobuf.options.FieldOptions.getDescriptor(),
+        });
     internal_static_services_trustregistry_v1_AddFrameworkRequest_descriptor =
-        getDescriptor().getMessageTypes().get(0);
-    internal_static_services_trustregistry_v1_AddFrameworkRequest_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_trustregistry_v1_AddFrameworkRequest_descriptor,
-            new java.lang.String[] {
-              "GovernanceFrameworkUri", "Name", "Description",
-            });
+      getDescriptor().getMessageTypes().get(0);
+    internal_static_services_trustregistry_v1_AddFrameworkRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_services_trustregistry_v1_AddFrameworkRequest_descriptor,
+        new java.lang.String[] { "GovernanceFrameworkUri", "Name", "Description", });
     internal_static_services_trustregistry_v1_AddFrameworkResponse_descriptor =
-        getDescriptor().getMessageTypes().get(1);
-    internal_static_services_trustregistry_v1_AddFrameworkResponse_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_trustregistry_v1_AddFrameworkResponse_descriptor,
-            new java.lang.String[] {
-              "Id", "GoverningAuthority", "TrustRegistry",
-            });
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_services_trustregistry_v1_AddFrameworkResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_services_trustregistry_v1_AddFrameworkResponse_descriptor,
+        new java.lang.String[] { "Id", "GoverningAuthority", "TrustRegistry", });
     internal_static_services_trustregistry_v1_RemoveFrameworkRequest_descriptor =
-        getDescriptor().getMessageTypes().get(2);
-    internal_static_services_trustregistry_v1_RemoveFrameworkRequest_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_trustregistry_v1_RemoveFrameworkRequest_descriptor,
-            new java.lang.String[] {
-              "Id",
-            });
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_services_trustregistry_v1_RemoveFrameworkRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_services_trustregistry_v1_RemoveFrameworkRequest_descriptor,
+        new java.lang.String[] { "Id", });
     internal_static_services_trustregistry_v1_RemoveFrameworkResponse_descriptor =
-        getDescriptor().getMessageTypes().get(3);
-    internal_static_services_trustregistry_v1_RemoveFrameworkResponse_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_trustregistry_v1_RemoveFrameworkResponse_descriptor,
-            new java.lang.String[] {});
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_services_trustregistry_v1_RemoveFrameworkResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_services_trustregistry_v1_RemoveFrameworkResponse_descriptor,
+        new java.lang.String[] { });
     internal_static_services_trustregistry_v1_SearchRegistryRequest_descriptor =
-        getDescriptor().getMessageTypes().get(4);
-    internal_static_services_trustregistry_v1_SearchRegistryRequest_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_trustregistry_v1_SearchRegistryRequest_descriptor,
-            new java.lang.String[] {
-              "Query", "ContinuationToken",
-            });
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_services_trustregistry_v1_SearchRegistryRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_services_trustregistry_v1_SearchRegistryRequest_descriptor,
+        new java.lang.String[] { "Query", "ContinuationToken", });
     internal_static_services_trustregistry_v1_SearchRegistryResponse_descriptor =
-        getDescriptor().getMessageTypes().get(5);
-    internal_static_services_trustregistry_v1_SearchRegistryResponse_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_trustregistry_v1_SearchRegistryResponse_descriptor,
-            new java.lang.String[] {
-              "ItemsJson", "HasMore", "ContinuationToken",
-            });
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_services_trustregistry_v1_SearchRegistryResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_services_trustregistry_v1_SearchRegistryResponse_descriptor,
+        new java.lang.String[] { "ItemsJson", "HasMore", "ContinuationToken", });
     internal_static_services_trustregistry_v1_GovernanceFramework_descriptor =
-        getDescriptor().getMessageTypes().get(6);
-    internal_static_services_trustregistry_v1_GovernanceFramework_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_trustregistry_v1_GovernanceFramework_descriptor,
-            new java.lang.String[] {
-              "GovernanceFrameworkUri", "TrustRegistryUri", "Description",
-            });
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_services_trustregistry_v1_GovernanceFramework_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_services_trustregistry_v1_GovernanceFramework_descriptor,
+        new java.lang.String[] { "GovernanceFrameworkUri", "TrustRegistryUri", "Description", });
     internal_static_services_trustregistry_v1_RegisterMemberRequest_descriptor =
-        getDescriptor().getMessageTypes().get(7);
-    internal_static_services_trustregistry_v1_RegisterMemberRequest_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_trustregistry_v1_RegisterMemberRequest_descriptor,
-            new java.lang.String[] {
-              "DidUri",
-              "WalletId",
-              "Email",
-              "SchemaUri",
-              "ValidFromUtc",
-              "ValidUntilUtc",
-              "FrameworkId",
-              "Member",
-            });
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_services_trustregistry_v1_RegisterMemberRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_services_trustregistry_v1_RegisterMemberRequest_descriptor,
+        new java.lang.String[] { "DidUri", "WalletId", "Email", "SchemaUri", "ValidFromUtc", "ValidUntilUtc", "FrameworkId", "Member", });
     internal_static_services_trustregistry_v1_RegisterMemberResponse_descriptor =
-        getDescriptor().getMessageTypes().get(8);
-    internal_static_services_trustregistry_v1_RegisterMemberResponse_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_trustregistry_v1_RegisterMemberResponse_descriptor,
-            new java.lang.String[] {});
+      getDescriptor().getMessageTypes().get(8);
+    internal_static_services_trustregistry_v1_RegisterMemberResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_services_trustregistry_v1_RegisterMemberResponse_descriptor,
+        new java.lang.String[] { });
     internal_static_services_trustregistry_v1_UnregisterMemberRequest_descriptor =
-        getDescriptor().getMessageTypes().get(9);
-    internal_static_services_trustregistry_v1_UnregisterMemberRequest_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_trustregistry_v1_UnregisterMemberRequest_descriptor,
-            new java.lang.String[] {
-              "DidUri", "WalletId", "Email", "SchemaUri", "FrameworkId", "Member",
-            });
+      getDescriptor().getMessageTypes().get(9);
+    internal_static_services_trustregistry_v1_UnregisterMemberRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_services_trustregistry_v1_UnregisterMemberRequest_descriptor,
+        new java.lang.String[] { "DidUri", "WalletId", "Email", "SchemaUri", "FrameworkId", "Member", });
     internal_static_services_trustregistry_v1_UnregisterMemberResponse_descriptor =
-        getDescriptor().getMessageTypes().get(10);
-    internal_static_services_trustregistry_v1_UnregisterMemberResponse_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_trustregistry_v1_UnregisterMemberResponse_descriptor,
-            new java.lang.String[] {});
+      getDescriptor().getMessageTypes().get(10);
+    internal_static_services_trustregistry_v1_UnregisterMemberResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_services_trustregistry_v1_UnregisterMemberResponse_descriptor,
+        new java.lang.String[] { });
     internal_static_services_trustregistry_v1_GetMembershipStatusRequest_descriptor =
-        getDescriptor().getMessageTypes().get(11);
-    internal_static_services_trustregistry_v1_GetMembershipStatusRequest_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_trustregistry_v1_GetMembershipStatusRequest_descriptor,
-            new java.lang.String[] {
-              "GovernanceFrameworkUri", "DidUri", "X509Cert", "SchemaUri", "Member",
-            });
+      getDescriptor().getMessageTypes().get(11);
+    internal_static_services_trustregistry_v1_GetMembershipStatusRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_services_trustregistry_v1_GetMembershipStatusRequest_descriptor,
+        new java.lang.String[] { "GovernanceFrameworkUri", "DidUri", "X509Cert", "SchemaUri", "Member", });
     internal_static_services_trustregistry_v1_GetMembershipStatusResponse_descriptor =
-        getDescriptor().getMessageTypes().get(12);
-    internal_static_services_trustregistry_v1_GetMembershipStatusResponse_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_trustregistry_v1_GetMembershipStatusResponse_descriptor,
-            new java.lang.String[] {
-              "Status",
-            });
+      getDescriptor().getMessageTypes().get(12);
+    internal_static_services_trustregistry_v1_GetMembershipStatusResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_services_trustregistry_v1_GetMembershipStatusResponse_descriptor,
+        new java.lang.String[] { "Status", });
     internal_static_services_trustregistry_v1_FetchDataRequest_descriptor =
-        getDescriptor().getMessageTypes().get(13);
-    internal_static_services_trustregistry_v1_FetchDataRequest_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_trustregistry_v1_FetchDataRequest_descriptor,
-            new java.lang.String[] {
-              "GovernanceFrameworkUri", "Query",
-            });
+      getDescriptor().getMessageTypes().get(13);
+    internal_static_services_trustregistry_v1_FetchDataRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_services_trustregistry_v1_FetchDataRequest_descriptor,
+        new java.lang.String[] { "GovernanceFrameworkUri", "Query", });
     internal_static_services_trustregistry_v1_FetchDataResponse_descriptor =
-        getDescriptor().getMessageTypes().get(14);
-    internal_static_services_trustregistry_v1_FetchDataResponse_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_services_trustregistry_v1_FetchDataResponse_descriptor,
-            new java.lang.String[] {
-              "ResponseJson", "HasMoreResults", "ContinuationToken",
-            });
+      getDescriptor().getMessageTypes().get(14);
+    internal_static_services_trustregistry_v1_FetchDataResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_services_trustregistry_v1_FetchDataResponse_descriptor,
+        new java.lang.String[] { "ResponseJson", "HasMoreResults", "ContinuationToken", });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(trinsic.services.protobuf.options.FieldOptions.optional);
     registry.add(trinsic.services.protobuf.options.FieldOptions.sdkTemplateOption);
-    com.google.protobuf.Descriptors.FileDescriptor.internalUpdateFileDescriptor(
-        descriptor, registry);
+    com.google.protobuf.Descriptors.FileDescriptor
+        .internalUpdateFileDescriptor(descriptor, registry);
     trinsic.services.protobuf.options.FieldOptions.getDescriptor();
   }
 

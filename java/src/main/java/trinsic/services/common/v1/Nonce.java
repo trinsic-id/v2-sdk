@@ -4,48 +4,95 @@
 package trinsic.services.common.v1;
 
 /**
- *
- *
  * <pre>
  * Nonce used to generate an oberon proof
  * </pre>
  *
  * Protobuf type {@code services.common.v1.Nonce}
  */
-public final class Nonce extends com.google.protobuf.GeneratedMessageV3
-    implements
+public final class Nonce extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:services.common.v1.Nonce)
     NonceOrBuilder {
-  private static final long serialVersionUID = 0L;
+private static final long serialVersionUID = 0L;
   // Use Nonce.newBuilder() to construct.
   private Nonce(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private Nonce() {
     requestHash_ = com.google.protobuf.ByteString.EMPTY;
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new Nonce();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
     return this.unknownFields;
   }
+  private Nonce(
+      com.google.protobuf.CodedInputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    this();
+    if (extensionRegistry == null) {
+      throw new java.lang.NullPointerException();
+    }
+    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+        com.google.protobuf.UnknownFieldSet.newBuilder();
+    try {
+      boolean done = false;
+      while (!done) {
+        int tag = input.readTag();
+        switch (tag) {
+          case 0:
+            done = true;
+            break;
+          case 8: {
 
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+            timestamp_ = input.readInt64();
+            break;
+          }
+          case 18: {
+
+            requestHash_ = input.readBytes();
+            break;
+          }
+          default: {
+            if (!parseUnknownField(
+                input, unknownFields, extensionRegistry, tag)) {
+              done = true;
+            }
+            break;
+          }
+        }
+      }
+    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      throw e.setUnfinishedMessage(this);
+    } catch (com.google.protobuf.UninitializedMessageException e) {
+      throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+    } catch (java.io.IOException e) {
+      throw new com.google.protobuf.InvalidProtocolBufferException(
+          e).setUnfinishedMessage(this);
+    } finally {
+      this.unknownFields = unknownFields.build();
+      makeExtensionsImmutable();
+    }
+  }
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
     return trinsic.services.common.v1.Common.internal_static_services_common_v1_Nonce_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.common.v1.Common
-        .internal_static_services_common_v1_Nonce_fieldAccessorTable
+    return trinsic.services.common.v1.Common.internal_static_services_common_v1_Nonce_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             trinsic.services.common.v1.Nonce.class, trinsic.services.common.v1.Nonce.Builder.class);
   }
@@ -53,14 +100,11 @@ public final class Nonce extends com.google.protobuf.GeneratedMessageV3
   public static final int TIMESTAMP_FIELD_NUMBER = 1;
   private long timestamp_;
   /**
-   *
-   *
    * <pre>
    * UTC unix millisecond timestamp the request was made
    * </pre>
    *
    * <code>int64 timestamp = 1;</code>
-   *
    * @return The timestamp.
    */
   @java.lang.Override
@@ -71,14 +115,11 @@ public final class Nonce extends com.google.protobuf.GeneratedMessageV3
   public static final int REQUEST_HASH_FIELD_NUMBER = 2;
   private com.google.protobuf.ByteString requestHash_;
   /**
-   *
-   *
    * <pre>
    * blake3256 hash of the request body
    * </pre>
    *
    * <code>bytes request_hash = 2;</code>
-   *
    * @return The requestHash.
    */
   @java.lang.Override
@@ -87,7 +128,6 @@ public final class Nonce extends com.google.protobuf.GeneratedMessageV3
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -99,14 +139,15 @@ public final class Nonce extends com.google.protobuf.GeneratedMessageV3
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     if (timestamp_ != 0L) {
       output.writeInt64(1, timestamp_);
     }
     if (!requestHash_.isEmpty()) {
       output.writeBytes(2, requestHash_);
     }
-    getUnknownFields().writeTo(output);
+    unknownFields.writeTo(output);
   }
 
   @java.lang.Override
@@ -116,12 +157,14 @@ public final class Nonce extends com.google.protobuf.GeneratedMessageV3
 
     size = 0;
     if (timestamp_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream.computeInt64Size(1, timestamp_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(1, timestamp_);
     }
     if (!requestHash_.isEmpty()) {
-      size += com.google.protobuf.CodedOutputStream.computeBytesSize(2, requestHash_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeBytesSize(2, requestHash_);
     }
-    size += getUnknownFields().getSerializedSize();
+    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
@@ -129,16 +172,18 @@ public final class Nonce extends com.google.protobuf.GeneratedMessageV3
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof trinsic.services.common.v1.Nonce)) {
       return super.equals(obj);
     }
     trinsic.services.common.v1.Nonce other = (trinsic.services.common.v1.Nonce) obj;
 
-    if (getTimestamp() != other.getTimestamp()) return false;
-    if (!getRequestHash().equals(other.getRequestHash())) return false;
-    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+    if (getTimestamp()
+        != other.getTimestamp()) return false;
+    if (!getRequestHash()
+        .equals(other.getRequestHash())) return false;
+    if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
 
@@ -150,142 +195,144 @@ public final class Nonce extends com.google.protobuf.GeneratedMessageV3
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getTimestamp());
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getTimestamp());
     hash = (37 * hash) + REQUEST_HASH_FIELD_NUMBER;
     hash = (53 * hash) + getRequestHash().hashCode();
-    hash = (29 * hash) + getUnknownFields().hashCode();
+    hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static trinsic.services.common.v1.Nonce parseFrom(java.nio.ByteBuffer data)
+  public static trinsic.services.common.v1.Nonce parseFrom(
+      java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.common.v1.Nonce parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
-  public static trinsic.services.common.v1.Nonce parseFrom(com.google.protobuf.ByteString data)
+  public static trinsic.services.common.v1.Nonce parseFrom(
+      com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.common.v1.Nonce parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.common.v1.Nonce parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.common.v1.Nonce parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.common.v1.Nonce parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static trinsic.services.common.v1.Nonce parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static trinsic.services.common.v1.Nonce parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
   }
-
   public static trinsic.services.common.v1.Nonce parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-
   public static trinsic.services.common.v1.Nonce parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
   public static trinsic.services.common.v1.Nonce parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
   public static Builder newBuilder(trinsic.services.common.v1.Nonce prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
-   *
-   *
    * <pre>
    * Nonce used to generate an oberon proof
    * </pre>
    *
    * Protobuf type {@code services.common.v1.Nonce}
    */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:services.common.v1.Nonce)
       trinsic.services.common.v1.NonceOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
       return trinsic.services.common.v1.Common.internal_static_services_common_v1_Nonce_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.common.v1.Common
-          .internal_static_services_common_v1_Nonce_fieldAccessorTable
+      return trinsic.services.common.v1.Common.internal_static_services_common_v1_Nonce_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.common.v1.Nonce.class,
-              trinsic.services.common.v1.Nonce.Builder.class);
+              trinsic.services.common.v1.Nonce.class, trinsic.services.common.v1.Nonce.Builder.class);
     }
 
     // Construct using trinsic.services.common.v1.Nonce.newBuilder()
-    private Builder() {}
-
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
+    private Builder() {
+      maybeForceBuilderInitialization();
     }
 
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
+      maybeForceBuilderInitialization();
+    }
+    private void maybeForceBuilderInitialization() {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+      }
+    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -297,7 +344,8 @@ public final class Nonce extends com.google.protobuf.GeneratedMessageV3
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
       return trinsic.services.common.v1.Common.internal_static_services_common_v1_Nonce_descriptor;
     }
 
@@ -328,39 +376,38 @@ public final class Nonce extends com.google.protobuf.GeneratedMessageV3
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof trinsic.services.common.v1.Nonce) {
-        return mergeFrom((trinsic.services.common.v1.Nonce) other);
+        return mergeFrom((trinsic.services.common.v1.Nonce)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -375,7 +422,7 @@ public final class Nonce extends com.google.protobuf.GeneratedMessageV3
       if (other.getRequestHash() != com.google.protobuf.ByteString.EMPTY) {
         setRequestHash(other.getRequestHash());
       }
-      this.mergeUnknownFields(other.getUnknownFields());
+      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -390,56 +437,27 @@ public final class Nonce extends com.google.protobuf.GeneratedMessageV3
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
+      trinsic.services.common.v1.Nonce parsedMessage = null;
       try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8:
-              {
-                timestamp_ = input.readInt64();
-
-                break;
-              } // case 8
-            case 18:
-              {
-                requestHash_ = input.readBytes();
-
-                break;
-              } // case 18
-            default:
-              {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-          } // switch (tag)
-        } // while (!done)
+        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        parsedMessage = (trinsic.services.common.v1.Nonce) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
-        onChanged();
-      } // finally
+        if (parsedMessage != null) {
+          mergeFrom(parsedMessage);
+        }
+      }
       return this;
     }
 
-    private long timestamp_;
+    private long timestamp_ ;
     /**
-     *
-     *
      * <pre>
      * UTC unix millisecond timestamp the request was made
      * </pre>
      *
      * <code>int64 timestamp = 1;</code>
-     *
      * @return The timestamp.
      */
     @java.lang.Override
@@ -447,36 +465,30 @@ public final class Nonce extends com.google.protobuf.GeneratedMessageV3
       return timestamp_;
     }
     /**
-     *
-     *
      * <pre>
      * UTC unix millisecond timestamp the request was made
      * </pre>
      *
      * <code>int64 timestamp = 1;</code>
-     *
      * @param value The timestamp to set.
      * @return This builder for chaining.
      */
     public Builder setTimestamp(long value) {
-
+      
       timestamp_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * UTC unix millisecond timestamp the request was made
      * </pre>
      *
      * <code>int64 timestamp = 1;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearTimestamp() {
-
+      
       timestamp_ = 0L;
       onChanged();
       return this;
@@ -484,14 +496,11 @@ public final class Nonce extends com.google.protobuf.GeneratedMessageV3
 
     private com.google.protobuf.ByteString requestHash_ = com.google.protobuf.ByteString.EMPTY;
     /**
-     *
-     *
      * <pre>
      * blake3256 hash of the request body
      * </pre>
      *
      * <code>bytes request_hash = 2;</code>
-     *
      * @return The requestHash.
      */
     @java.lang.Override
@@ -499,46 +508,40 @@ public final class Nonce extends com.google.protobuf.GeneratedMessageV3
       return requestHash_;
     }
     /**
-     *
-     *
      * <pre>
      * blake3256 hash of the request body
      * </pre>
      *
      * <code>bytes request_hash = 2;</code>
-     *
      * @param value The requestHash to set.
      * @return This builder for chaining.
      */
     public Builder setRequestHash(com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       requestHash_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * blake3256 hash of the request body
      * </pre>
      *
      * <code>bytes request_hash = 2;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearRequestHash() {
-
+      
       requestHash_ = getDefaultInstance().getRequestHash();
       onChanged();
       return this;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -548,12 +551,12 @@ public final class Nonce extends com.google.protobuf.GeneratedMessageV3
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:services.common.v1.Nonce)
   }
 
   // @@protoc_insertion_point(class_scope:services.common.v1.Nonce)
   private static final trinsic.services.common.v1.Nonce DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new trinsic.services.common.v1.Nonce();
   }
@@ -562,27 +565,16 @@ public final class Nonce extends com.google.protobuf.GeneratedMessageV3
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<Nonce> PARSER =
-      new com.google.protobuf.AbstractParser<Nonce>() {
-        @java.lang.Override
-        public Nonce parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
+  private static final com.google.protobuf.Parser<Nonce>
+      PARSER = new com.google.protobuf.AbstractParser<Nonce>() {
+    @java.lang.Override
+    public Nonce parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return new Nonce(input, extensionRegistry);
+    }
+  };
 
   public static com.google.protobuf.Parser<Nonce> parser() {
     return PARSER;
@@ -597,4 +589,6 @@ public final class Nonce extends com.google.protobuf.GeneratedMessageV3
   public trinsic.services.common.v1.Nonce getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

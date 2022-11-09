@@ -4,59 +4,105 @@
 package trinsic.services.provider.v1;
 
 /**
- *
- *
  * <pre>
  * Response to `GetAuthorizationsRequest`
  * </pre>
  *
  * Protobuf type {@code services.provider.v1.GetAuthorizationsResponse}
  */
-public final class GetAuthorizationsResponse extends com.google.protobuf.GeneratedMessageV3
-    implements
+public final class GetAuthorizationsResponse extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:services.provider.v1.GetAuthorizationsResponse)
     GetAuthorizationsResponseOrBuilder {
-  private static final long serialVersionUID = 0L;
+private static final long serialVersionUID = 0L;
   // Use GetAuthorizationsResponse.newBuilder() to construct.
   private GetAuthorizationsResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private GetAuthorizationsResponse() {
     grants_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new GetAuthorizationsResponse();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
     return this.unknownFields;
   }
-
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return trinsic.services.provider.v1.ProviderOuterClass
-        .internal_static_services_provider_v1_GetAuthorizationsResponse_descriptor;
+  private GetAuthorizationsResponse(
+      com.google.protobuf.CodedInputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    this();
+    if (extensionRegistry == null) {
+      throw new java.lang.NullPointerException();
+    }
+    int mutable_bitField0_ = 0;
+    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+        com.google.protobuf.UnknownFieldSet.newBuilder();
+    try {
+      boolean done = false;
+      while (!done) {
+        int tag = input.readTag();
+        switch (tag) {
+          case 0:
+            done = true;
+            break;
+          case 10: {
+            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+              grants_ = new java.util.ArrayList<trinsic.services.provider.v1.Grant>();
+              mutable_bitField0_ |= 0x00000001;
+            }
+            grants_.add(
+                input.readMessage(trinsic.services.provider.v1.Grant.parser(), extensionRegistry));
+            break;
+          }
+          default: {
+            if (!parseUnknownField(
+                input, unknownFields, extensionRegistry, tag)) {
+              done = true;
+            }
+            break;
+          }
+        }
+      }
+    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      throw e.setUnfinishedMessage(this);
+    } catch (com.google.protobuf.UninitializedMessageException e) {
+      throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+    } catch (java.io.IOException e) {
+      throw new com.google.protobuf.InvalidProtocolBufferException(
+          e).setUnfinishedMessage(this);
+    } finally {
+      if (((mutable_bitField0_ & 0x00000001) != 0)) {
+        grants_ = java.util.Collections.unmodifiableList(grants_);
+      }
+      this.unknownFields = unknownFields.build();
+      makeExtensionsImmutable();
+    }
+  }
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_GetAuthorizationsResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.provider.v1.ProviderOuterClass
-        .internal_static_services_provider_v1_GetAuthorizationsResponse_fieldAccessorTable
+    return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_GetAuthorizationsResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.provider.v1.GetAuthorizationsResponse.class,
-            trinsic.services.provider.v1.GetAuthorizationsResponse.Builder.class);
+            trinsic.services.provider.v1.GetAuthorizationsResponse.class, trinsic.services.provider.v1.GetAuthorizationsResponse.Builder.class);
   }
 
   public static final int GRANTS_FIELD_NUMBER = 1;
   private java.util.List<trinsic.services.provider.v1.Grant> grants_;
   /**
-   *
-   *
    * <pre>
    * Grants attached to account
    * </pre>
@@ -68,8 +114,6 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
     return grants_;
   }
   /**
-   *
-   *
    * <pre>
    * Grants attached to account
    * </pre>
@@ -77,13 +121,11 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
    * <code>repeated .services.provider.v1.Grant grants = 1;</code>
    */
   @java.lang.Override
-  public java.util.List<? extends trinsic.services.provider.v1.GrantOrBuilder>
+  public java.util.List<? extends trinsic.services.provider.v1.GrantOrBuilder> 
       getGrantsOrBuilderList() {
     return grants_;
   }
   /**
-   *
-   *
    * <pre>
    * Grants attached to account
    * </pre>
@@ -95,8 +137,6 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
     return grants_.size();
   }
   /**
-   *
-   *
    * <pre>
    * Grants attached to account
    * </pre>
@@ -108,8 +148,6 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
     return grants_.get(index);
   }
   /**
-   *
-   *
    * <pre>
    * Grants attached to account
    * </pre>
@@ -117,12 +155,12 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
    * <code>repeated .services.provider.v1.Grant grants = 1;</code>
    */
   @java.lang.Override
-  public trinsic.services.provider.v1.GrantOrBuilder getGrantsOrBuilder(int index) {
+  public trinsic.services.provider.v1.GrantOrBuilder getGrantsOrBuilder(
+      int index) {
     return grants_.get(index);
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -134,11 +172,12 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     for (int i = 0; i < grants_.size(); i++) {
       output.writeMessage(1, grants_.get(i));
     }
-    getUnknownFields().writeTo(output);
+    unknownFields.writeTo(output);
   }
 
   @java.lang.Override
@@ -148,9 +187,10 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
 
     size = 0;
     for (int i = 0; i < grants_.size(); i++) {
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, grants_.get(i));
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(1, grants_.get(i));
     }
-    size += getUnknownFields().getSerializedSize();
+    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
@@ -158,16 +198,16 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof trinsic.services.provider.v1.GetAuthorizationsResponse)) {
       return super.equals(obj);
     }
-    trinsic.services.provider.v1.GetAuthorizationsResponse other =
-        (trinsic.services.provider.v1.GetAuthorizationsResponse) obj;
+    trinsic.services.provider.v1.GetAuthorizationsResponse other = (trinsic.services.provider.v1.GetAuthorizationsResponse) obj;
 
-    if (!getGrantsList().equals(other.getGrantsList())) return false;
-    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+    if (!getGrantsList()
+        .equals(other.getGrantsList())) return false;
+    if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
 
@@ -182,159 +222,157 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
       hash = (37 * hash) + GRANTS_FIELD_NUMBER;
       hash = (53 * hash) + getGrantsList().hashCode();
     }
-    hash = (29 * hash) + getUnknownFields().hashCode();
+    hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
   public static trinsic.services.provider.v1.GetAuthorizationsResponse parseFrom(
-      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.provider.v1.GetAuthorizationsResponse parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.provider.v1.GetAuthorizationsResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.provider.v1.GetAuthorizationsResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.provider.v1.GetAuthorizationsResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.provider.v1.GetAuthorizationsResponse parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
-  public static trinsic.services.provider.v1.GetAuthorizationsResponse parseFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-  }
-
-  public static trinsic.services.provider.v1.GetAuthorizationsResponse parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+  public static trinsic.services.provider.v1.GetAuthorizationsResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
-  public static trinsic.services.provider.v1.GetAuthorizationsResponse parseDelimitedFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static trinsic.services.provider.v1.GetAuthorizationsResponse parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
-  }
-
   public static trinsic.services.provider.v1.GetAuthorizationsResponse parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
+  public static trinsic.services.provider.v1.GetAuthorizationsResponse parseDelimitedFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
+  }
+  public static trinsic.services.provider.v1.GetAuthorizationsResponse parseDelimitedFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+  }
+  public static trinsic.services.provider.v1.GetAuthorizationsResponse parseFrom(
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
+  }
   public static trinsic.services.provider.v1.GetAuthorizationsResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
-  public static Builder newBuilder(
-      trinsic.services.provider.v1.GetAuthorizationsResponse prototype) {
+  public static Builder newBuilder(trinsic.services.provider.v1.GetAuthorizationsResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
-   *
-   *
    * <pre>
    * Response to `GetAuthorizationsRequest`
    * </pre>
    *
    * Protobuf type {@code services.provider.v1.GetAuthorizationsResponse}
    */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:services.provider.v1.GetAuthorizationsResponse)
       trinsic.services.provider.v1.GetAuthorizationsResponseOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_GetAuthorizationsResponse_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_GetAuthorizationsResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_GetAuthorizationsResponse_fieldAccessorTable
+      return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_GetAuthorizationsResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.provider.v1.GetAuthorizationsResponse.class,
-              trinsic.services.provider.v1.GetAuthorizationsResponse.Builder.class);
+              trinsic.services.provider.v1.GetAuthorizationsResponse.class, trinsic.services.provider.v1.GetAuthorizationsResponse.Builder.class);
     }
 
     // Construct using trinsic.services.provider.v1.GetAuthorizationsResponse.newBuilder()
-    private Builder() {}
-
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
+    private Builder() {
+      maybeForceBuilderInitialization();
     }
 
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
+      maybeForceBuilderInitialization();
+    }
+    private void maybeForceBuilderInitialization() {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+        getGrantsFieldBuilder();
+      }
+    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
       if (grantsBuilder_ == null) {
         grants_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
       } else {
-        grants_ = null;
         grantsBuilder_.clear();
       }
-      bitField0_ = (bitField0_ & ~0x00000001);
       return this;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return trinsic.services.provider.v1.ProviderOuterClass
-          .internal_static_services_provider_v1_GetAuthorizationsResponse_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_GetAuthorizationsResponse_descriptor;
     }
 
     @java.lang.Override
@@ -353,8 +391,7 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
 
     @java.lang.Override
     public trinsic.services.provider.v1.GetAuthorizationsResponse buildPartial() {
-      trinsic.services.provider.v1.GetAuthorizationsResponse result =
-          new trinsic.services.provider.v1.GetAuthorizationsResponse(this);
+      trinsic.services.provider.v1.GetAuthorizationsResponse result = new trinsic.services.provider.v1.GetAuthorizationsResponse(this);
       int from_bitField0_ = bitField0_;
       if (grantsBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
@@ -373,39 +410,38 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof trinsic.services.provider.v1.GetAuthorizationsResponse) {
-        return mergeFrom((trinsic.services.provider.v1.GetAuthorizationsResponse) other);
+        return mergeFrom((trinsic.services.provider.v1.GetAuthorizationsResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -413,8 +449,7 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
     }
 
     public Builder mergeFrom(trinsic.services.provider.v1.GetAuthorizationsResponse other) {
-      if (other == trinsic.services.provider.v1.GetAuthorizationsResponse.getDefaultInstance())
-        return this;
+      if (other == trinsic.services.provider.v1.GetAuthorizationsResponse.getDefaultInstance()) return this;
       if (grantsBuilder_ == null) {
         if (!other.grants_.isEmpty()) {
           if (grants_.isEmpty()) {
@@ -433,16 +468,15 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
             grantsBuilder_ = null;
             grants_ = other.grants_;
             bitField0_ = (bitField0_ & ~0x00000001);
-            grantsBuilder_ =
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
-                    ? getGrantsFieldBuilder()
-                    : null;
+            grantsBuilder_ = 
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                 getGrantsFieldBuilder() : null;
           } else {
             grantsBuilder_.addAllMessages(other.grants_);
           }
         }
       }
-      this.mergeUnknownFields(other.getUnknownFields());
+      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -457,68 +491,34 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
+      trinsic.services.provider.v1.GetAuthorizationsResponse parsedMessage = null;
       try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10:
-              {
-                trinsic.services.provider.v1.Grant m =
-                    input.readMessage(
-                        trinsic.services.provider.v1.Grant.parser(), extensionRegistry);
-                if (grantsBuilder_ == null) {
-                  ensureGrantsIsMutable();
-                  grants_.add(m);
-                } else {
-                  grantsBuilder_.addMessage(m);
-                }
-                break;
-              } // case 10
-            default:
-              {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-          } // switch (tag)
-        } // while (!done)
+        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        parsedMessage = (trinsic.services.provider.v1.GetAuthorizationsResponse) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
-        onChanged();
-      } // finally
+        if (parsedMessage != null) {
+          mergeFrom(parsedMessage);
+        }
+      }
       return this;
     }
-
     private int bitField0_;
 
     private java.util.List<trinsic.services.provider.v1.Grant> grants_ =
-        java.util.Collections.emptyList();
-
+      java.util.Collections.emptyList();
     private void ensureGrantsIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
         grants_ = new java.util.ArrayList<trinsic.services.provider.v1.Grant>(grants_);
         bitField0_ |= 0x00000001;
-      }
+       }
     }
 
     private com.google.protobuf.RepeatedFieldBuilderV3<
-            trinsic.services.provider.v1.Grant,
-            trinsic.services.provider.v1.Grant.Builder,
-            trinsic.services.provider.v1.GrantOrBuilder>
-        grantsBuilder_;
+        trinsic.services.provider.v1.Grant, trinsic.services.provider.v1.Grant.Builder, trinsic.services.provider.v1.GrantOrBuilder> grantsBuilder_;
 
     /**
-     *
-     *
      * <pre>
      * Grants attached to account
      * </pre>
@@ -533,8 +533,6 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
       }
     }
     /**
-     *
-     *
      * <pre>
      * Grants attached to account
      * </pre>
@@ -549,8 +547,6 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
       }
     }
     /**
-     *
-     *
      * <pre>
      * Grants attached to account
      * </pre>
@@ -565,15 +561,14 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
       }
     }
     /**
-     *
-     *
      * <pre>
      * Grants attached to account
      * </pre>
      *
      * <code>repeated .services.provider.v1.Grant grants = 1;</code>
      */
-    public Builder setGrants(int index, trinsic.services.provider.v1.Grant value) {
+    public Builder setGrants(
+        int index, trinsic.services.provider.v1.Grant value) {
       if (grantsBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -587,8 +582,6 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Grants attached to account
      * </pre>
@@ -607,8 +600,6 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Grants attached to account
      * </pre>
@@ -629,15 +620,14 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Grants attached to account
      * </pre>
      *
      * <code>repeated .services.provider.v1.Grant grants = 1;</code>
      */
-    public Builder addGrants(int index, trinsic.services.provider.v1.Grant value) {
+    public Builder addGrants(
+        int index, trinsic.services.provider.v1.Grant value) {
       if (grantsBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -651,15 +641,14 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Grants attached to account
      * </pre>
      *
      * <code>repeated .services.provider.v1.Grant grants = 1;</code>
      */
-    public Builder addGrants(trinsic.services.provider.v1.Grant.Builder builderForValue) {
+    public Builder addGrants(
+        trinsic.services.provider.v1.Grant.Builder builderForValue) {
       if (grantsBuilder_ == null) {
         ensureGrantsIsMutable();
         grants_.add(builderForValue.build());
@@ -670,8 +659,6 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Grants attached to account
      * </pre>
@@ -690,8 +677,6 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Grants attached to account
      * </pre>
@@ -702,7 +687,8 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
         java.lang.Iterable<? extends trinsic.services.provider.v1.Grant> values) {
       if (grantsBuilder_ == null) {
         ensureGrantsIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, grants_);
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, grants_);
         onChanged();
       } else {
         grantsBuilder_.addAllMessages(values);
@@ -710,8 +696,6 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Grants attached to account
      * </pre>
@@ -729,8 +713,6 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Grants attached to account
      * </pre>
@@ -748,44 +730,39 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Grants attached to account
      * </pre>
      *
      * <code>repeated .services.provider.v1.Grant grants = 1;</code>
      */
-    public trinsic.services.provider.v1.Grant.Builder getGrantsBuilder(int index) {
+    public trinsic.services.provider.v1.Grant.Builder getGrantsBuilder(
+        int index) {
       return getGrantsFieldBuilder().getBuilder(index);
     }
     /**
-     *
-     *
      * <pre>
      * Grants attached to account
      * </pre>
      *
      * <code>repeated .services.provider.v1.Grant grants = 1;</code>
      */
-    public trinsic.services.provider.v1.GrantOrBuilder getGrantsOrBuilder(int index) {
+    public trinsic.services.provider.v1.GrantOrBuilder getGrantsOrBuilder(
+        int index) {
       if (grantsBuilder_ == null) {
-        return grants_.get(index);
-      } else {
+        return grants_.get(index);  } else {
         return grantsBuilder_.getMessageOrBuilder(index);
       }
     }
     /**
-     *
-     *
      * <pre>
      * Grants attached to account
      * </pre>
      *
      * <code>repeated .services.provider.v1.Grant grants = 1;</code>
      */
-    public java.util.List<? extends trinsic.services.provider.v1.GrantOrBuilder>
-        getGrantsOrBuilderList() {
+    public java.util.List<? extends trinsic.services.provider.v1.GrantOrBuilder> 
+         getGrantsOrBuilderList() {
       if (grantsBuilder_ != null) {
         return grantsBuilder_.getMessageOrBuilderList();
       } else {
@@ -793,8 +770,6 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
       }
     }
     /**
-     *
-     *
      * <pre>
      * Grants attached to account
      * </pre>
@@ -802,54 +777,49 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
      * <code>repeated .services.provider.v1.Grant grants = 1;</code>
      */
     public trinsic.services.provider.v1.Grant.Builder addGrantsBuilder() {
-      return getGrantsFieldBuilder()
-          .addBuilder(trinsic.services.provider.v1.Grant.getDefaultInstance());
+      return getGrantsFieldBuilder().addBuilder(
+          trinsic.services.provider.v1.Grant.getDefaultInstance());
     }
     /**
-     *
-     *
      * <pre>
      * Grants attached to account
      * </pre>
      *
      * <code>repeated .services.provider.v1.Grant grants = 1;</code>
      */
-    public trinsic.services.provider.v1.Grant.Builder addGrantsBuilder(int index) {
-      return getGrantsFieldBuilder()
-          .addBuilder(index, trinsic.services.provider.v1.Grant.getDefaultInstance());
+    public trinsic.services.provider.v1.Grant.Builder addGrantsBuilder(
+        int index) {
+      return getGrantsFieldBuilder().addBuilder(
+          index, trinsic.services.provider.v1.Grant.getDefaultInstance());
     }
     /**
-     *
-     *
      * <pre>
      * Grants attached to account
      * </pre>
      *
      * <code>repeated .services.provider.v1.Grant grants = 1;</code>
      */
-    public java.util.List<trinsic.services.provider.v1.Grant.Builder> getGrantsBuilderList() {
+    public java.util.List<trinsic.services.provider.v1.Grant.Builder> 
+         getGrantsBuilderList() {
       return getGrantsFieldBuilder().getBuilderList();
     }
-
     private com.google.protobuf.RepeatedFieldBuilderV3<
-            trinsic.services.provider.v1.Grant,
-            trinsic.services.provider.v1.Grant.Builder,
-            trinsic.services.provider.v1.GrantOrBuilder>
+        trinsic.services.provider.v1.Grant, trinsic.services.provider.v1.Grant.Builder, trinsic.services.provider.v1.GrantOrBuilder> 
         getGrantsFieldBuilder() {
       if (grantsBuilder_ == null) {
-        grantsBuilder_ =
-            new com.google.protobuf.RepeatedFieldBuilderV3<
-                trinsic.services.provider.v1.Grant,
-                trinsic.services.provider.v1.Grant.Builder,
-                trinsic.services.provider.v1.GrantOrBuilder>(
-                grants_, ((bitField0_ & 0x00000001) != 0), getParentForChildren(), isClean());
+        grantsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            trinsic.services.provider.v1.Grant, trinsic.services.provider.v1.Grant.Builder, trinsic.services.provider.v1.GrantOrBuilder>(
+                grants_,
+                ((bitField0_ & 0x00000001) != 0),
+                getParentForChildren(),
+                isClean());
         grants_ = null;
       }
       return grantsBuilder_;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -859,12 +829,12 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:services.provider.v1.GetAuthorizationsResponse)
   }
 
   // @@protoc_insertion_point(class_scope:services.provider.v1.GetAuthorizationsResponse)
   private static final trinsic.services.provider.v1.GetAuthorizationsResponse DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new trinsic.services.provider.v1.GetAuthorizationsResponse();
   }
@@ -873,27 +843,16 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<GetAuthorizationsResponse> PARSER =
-      new com.google.protobuf.AbstractParser<GetAuthorizationsResponse>() {
-        @java.lang.Override
-        public GetAuthorizationsResponse parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
+  private static final com.google.protobuf.Parser<GetAuthorizationsResponse>
+      PARSER = new com.google.protobuf.AbstractParser<GetAuthorizationsResponse>() {
+    @java.lang.Override
+    public GetAuthorizationsResponse parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return new GetAuthorizationsResponse(input, extensionRegistry);
+    }
+  };
 
   public static com.google.protobuf.Parser<GetAuthorizationsResponse> parser() {
     return PARSER;
@@ -908,4 +867,6 @@ public final class GetAuthorizationsResponse extends com.google.protobuf.Generat
   public trinsic.services.provider.v1.GetAuthorizationsResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

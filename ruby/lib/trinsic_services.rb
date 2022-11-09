@@ -29,6 +29,7 @@ require 'memoist'
 module Trinsic
   Common = Services::Common::V1
   Account = Services::Account::V1
+  Access = Services::AccessManagement::V1
   Credentials = Services::Verifiablecredentials::V1
   Options = Sdk::Options::V1
   Provider = Services::Provider::V1

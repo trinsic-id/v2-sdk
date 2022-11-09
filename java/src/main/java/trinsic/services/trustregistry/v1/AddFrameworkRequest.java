@@ -4,24 +4,21 @@
 package trinsic.services.trustregistry.v1;
 
 /**
- *
- *
  * <pre>
  * Request to register a new ecosystem governance framework in the current ecosystem
  * </pre>
  *
  * Protobuf type {@code services.trustregistry.v1.AddFrameworkRequest}
  */
-public final class AddFrameworkRequest extends com.google.protobuf.GeneratedMessageV3
-    implements
+public final class AddFrameworkRequest extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:services.trustregistry.v1.AddFrameworkRequest)
     AddFrameworkRequestOrBuilder {
-  private static final long serialVersionUID = 0L;
+private static final long serialVersionUID = 0L;
   // Use AddFrameworkRequest.newBuilder() to construct.
   private AddFrameworkRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
   private AddFrameworkRequest() {
     governanceFrameworkUri_ = "";
     name_ = "";
@@ -30,41 +27,94 @@ public final class AddFrameworkRequest extends com.google.protobuf.GeneratedMess
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new AddFrameworkRequest();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
     return this.unknownFields;
   }
+  private AddFrameworkRequest(
+      com.google.protobuf.CodedInputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    this();
+    if (extensionRegistry == null) {
+      throw new java.lang.NullPointerException();
+    }
+    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+        com.google.protobuf.UnknownFieldSet.newBuilder();
+    try {
+      boolean done = false;
+      while (!done) {
+        int tag = input.readTag();
+        switch (tag) {
+          case 0:
+            done = true;
+            break;
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-        .internal_static_services_trustregistry_v1_AddFrameworkRequest_descriptor;
+            governanceFrameworkUri_ = s;
+            break;
+          }
+          case 18: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            name_ = s;
+            break;
+          }
+          case 26: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            description_ = s;
+            break;
+          }
+          default: {
+            if (!parseUnknownField(
+                input, unknownFields, extensionRegistry, tag)) {
+              done = true;
+            }
+            break;
+          }
+        }
+      }
+    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      throw e.setUnfinishedMessage(this);
+    } catch (com.google.protobuf.UninitializedMessageException e) {
+      throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+    } catch (java.io.IOException e) {
+      throw new com.google.protobuf.InvalidProtocolBufferException(
+          e).setUnfinishedMessage(this);
+    } finally {
+      this.unknownFields = unknownFields.build();
+      makeExtensionsImmutable();
+    }
+  }
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_AddFrameworkRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-        .internal_static_services_trustregistry_v1_AddFrameworkRequest_fieldAccessorTable
+    return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_AddFrameworkRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.trustregistry.v1.AddFrameworkRequest.class,
-            trinsic.services.trustregistry.v1.AddFrameworkRequest.Builder.class);
+            trinsic.services.trustregistry.v1.AddFrameworkRequest.class, trinsic.services.trustregistry.v1.AddFrameworkRequest.Builder.class);
   }
 
   public static final int GOVERNANCE_FRAMEWORK_URI_FIELD_NUMBER = 1;
   private volatile java.lang.Object governanceFrameworkUri_;
   /**
-   *
-   *
    * <pre>
    * URI of governance framework organization
    * </pre>
    *
    * <code>string governance_framework_uri = 1;</code>
-   *
    * @return The governanceFrameworkUri.
    */
   @java.lang.Override
@@ -73,29 +123,29 @@ public final class AddFrameworkRequest extends com.google.protobuf.GeneratedMess
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       governanceFrameworkUri_ = s;
       return s;
     }
   }
   /**
-   *
-   *
    * <pre>
    * URI of governance framework organization
    * </pre>
    *
    * <code>string governance_framework_uri = 1;</code>
-   *
    * @return The bytes for governanceFrameworkUri.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getGovernanceFrameworkUriBytes() {
+  public com.google.protobuf.ByteString
+      getGovernanceFrameworkUriBytes() {
     java.lang.Object ref = governanceFrameworkUri_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       governanceFrameworkUri_ = b;
       return b;
     } else {
@@ -106,14 +156,11 @@ public final class AddFrameworkRequest extends com.google.protobuf.GeneratedMess
   public static final int NAME_FIELD_NUMBER = 2;
   private volatile java.lang.Object name_;
   /**
-   *
-   *
    * <pre>
    * Name of governance framework organization
    * </pre>
    *
    * <code>string name = 2;</code>
-   *
    * @return The name.
    */
   @java.lang.Override
@@ -122,29 +169,29 @@ public final class AddFrameworkRequest extends com.google.protobuf.GeneratedMess
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       name_ = s;
       return s;
     }
   }
   /**
-   *
-   *
    * <pre>
    * Name of governance framework organization
    * </pre>
    *
    * <code>string name = 2;</code>
-   *
    * @return The bytes for name.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getNameBytes() {
+  public com.google.protobuf.ByteString
+      getNameBytes() {
     java.lang.Object ref = name_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       name_ = b;
       return b;
     } else {
@@ -155,14 +202,11 @@ public final class AddFrameworkRequest extends com.google.protobuf.GeneratedMess
   public static final int DESCRIPTION_FIELD_NUMBER = 3;
   private volatile java.lang.Object description_;
   /**
-   *
-   *
    * <pre>
    * Description of governance framework
    * </pre>
    *
    * <code>string description = 3;</code>
-   *
    * @return The description.
    */
   @java.lang.Override
@@ -171,29 +215,29 @@ public final class AddFrameworkRequest extends com.google.protobuf.GeneratedMess
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       description_ = s;
       return s;
     }
   }
   /**
-   *
-   *
    * <pre>
    * Description of governance framework
    * </pre>
    *
    * <code>string description = 3;</code>
-   *
    * @return The bytes for description.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString getDescriptionBytes() {
+  public com.google.protobuf.ByteString
+      getDescriptionBytes() {
     java.lang.Object ref = description_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b =
-          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
       description_ = b;
       return b;
     } else {
@@ -202,7 +246,6 @@ public final class AddFrameworkRequest extends com.google.protobuf.GeneratedMess
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -214,7 +257,8 @@ public final class AddFrameworkRequest extends com.google.protobuf.GeneratedMess
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(governanceFrameworkUri_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, governanceFrameworkUri_);
     }
@@ -224,7 +268,7 @@ public final class AddFrameworkRequest extends com.google.protobuf.GeneratedMess
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, description_);
     }
-    getUnknownFields().writeTo(output);
+    unknownFields.writeTo(output);
   }
 
   @java.lang.Override
@@ -242,7 +286,7 @@ public final class AddFrameworkRequest extends com.google.protobuf.GeneratedMess
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, description_);
     }
-    size += getUnknownFields().getSerializedSize();
+    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
@@ -250,18 +294,20 @@ public final class AddFrameworkRequest extends com.google.protobuf.GeneratedMess
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof trinsic.services.trustregistry.v1.AddFrameworkRequest)) {
       return super.equals(obj);
     }
-    trinsic.services.trustregistry.v1.AddFrameworkRequest other =
-        (trinsic.services.trustregistry.v1.AddFrameworkRequest) obj;
+    trinsic.services.trustregistry.v1.AddFrameworkRequest other = (trinsic.services.trustregistry.v1.AddFrameworkRequest) obj;
 
-    if (!getGovernanceFrameworkUri().equals(other.getGovernanceFrameworkUri())) return false;
-    if (!getName().equals(other.getName())) return false;
-    if (!getDescription().equals(other.getDescription())) return false;
-    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+    if (!getGovernanceFrameworkUri()
+        .equals(other.getGovernanceFrameworkUri())) return false;
+    if (!getName()
+        .equals(other.getName())) return false;
+    if (!getDescription()
+        .equals(other.getDescription())) return false;
+    if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
 
@@ -278,142 +324,140 @@ public final class AddFrameworkRequest extends com.google.protobuf.GeneratedMess
     hash = (53 * hash) + getName().hashCode();
     hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
     hash = (53 * hash) + getDescription().hashCode();
-    hash = (29 * hash) + getUnknownFields().hashCode();
+    hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
   public static trinsic.services.trustregistry.v1.AddFrameworkRequest parseFrom(
-      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.trustregistry.v1.AddFrameworkRequest parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.trustregistry.v1.AddFrameworkRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.trustregistry.v1.AddFrameworkRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.trustregistry.v1.AddFrameworkRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.trustregistry.v1.AddFrameworkRequest parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
-  public static trinsic.services.trustregistry.v1.AddFrameworkRequest parseFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-  }
-
-  public static trinsic.services.trustregistry.v1.AddFrameworkRequest parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+  public static trinsic.services.trustregistry.v1.AddFrameworkRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
-  public static trinsic.services.trustregistry.v1.AddFrameworkRequest parseDelimitedFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static trinsic.services.trustregistry.v1.AddFrameworkRequest parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
-  }
-
   public static trinsic.services.trustregistry.v1.AddFrameworkRequest parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
+  public static trinsic.services.trustregistry.v1.AddFrameworkRequest parseDelimitedFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
+  }
+  public static trinsic.services.trustregistry.v1.AddFrameworkRequest parseDelimitedFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+  }
+  public static trinsic.services.trustregistry.v1.AddFrameworkRequest parseFrom(
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
+  }
   public static trinsic.services.trustregistry.v1.AddFrameworkRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
-  public static Builder newBuilder(
-      trinsic.services.trustregistry.v1.AddFrameworkRequest prototype) {
+  public static Builder newBuilder(trinsic.services.trustregistry.v1.AddFrameworkRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
-   *
-   *
    * <pre>
    * Request to register a new ecosystem governance framework in the current ecosystem
    * </pre>
    *
    * Protobuf type {@code services.trustregistry.v1.AddFrameworkRequest}
    */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:services.trustregistry.v1.AddFrameworkRequest)
       trinsic.services.trustregistry.v1.AddFrameworkRequestOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-          .internal_static_services_trustregistry_v1_AddFrameworkRequest_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_AddFrameworkRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-          .internal_static_services_trustregistry_v1_AddFrameworkRequest_fieldAccessorTable
+      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_AddFrameworkRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.trustregistry.v1.AddFrameworkRequest.class,
-              trinsic.services.trustregistry.v1.AddFrameworkRequest.Builder.class);
+              trinsic.services.trustregistry.v1.AddFrameworkRequest.class, trinsic.services.trustregistry.v1.AddFrameworkRequest.Builder.class);
     }
 
     // Construct using trinsic.services.trustregistry.v1.AddFrameworkRequest.newBuilder()
-    private Builder() {}
-
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
+    private Builder() {
+      maybeForceBuilderInitialization();
     }
 
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
+      maybeForceBuilderInitialization();
+    }
+    private void maybeForceBuilderInitialization() {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+      }
+    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -427,9 +471,9 @@ public final class AddFrameworkRequest extends com.google.protobuf.GeneratedMess
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass
-          .internal_static_services_trustregistry_v1_AddFrameworkRequest_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.internal_static_services_trustregistry_v1_AddFrameworkRequest_descriptor;
     }
 
     @java.lang.Override
@@ -448,8 +492,7 @@ public final class AddFrameworkRequest extends com.google.protobuf.GeneratedMess
 
     @java.lang.Override
     public trinsic.services.trustregistry.v1.AddFrameworkRequest buildPartial() {
-      trinsic.services.trustregistry.v1.AddFrameworkRequest result =
-          new trinsic.services.trustregistry.v1.AddFrameworkRequest(this);
+      trinsic.services.trustregistry.v1.AddFrameworkRequest result = new trinsic.services.trustregistry.v1.AddFrameworkRequest(this);
       result.governanceFrameworkUri_ = governanceFrameworkUri_;
       result.name_ = name_;
       result.description_ = description_;
@@ -461,39 +504,38 @@ public final class AddFrameworkRequest extends com.google.protobuf.GeneratedMess
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof trinsic.services.trustregistry.v1.AddFrameworkRequest) {
-        return mergeFrom((trinsic.services.trustregistry.v1.AddFrameworkRequest) other);
+        return mergeFrom((trinsic.services.trustregistry.v1.AddFrameworkRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -501,8 +543,7 @@ public final class AddFrameworkRequest extends com.google.protobuf.GeneratedMess
     }
 
     public Builder mergeFrom(trinsic.services.trustregistry.v1.AddFrameworkRequest other) {
-      if (other == trinsic.services.trustregistry.v1.AddFrameworkRequest.getDefaultInstance())
-        return this;
+      if (other == trinsic.services.trustregistry.v1.AddFrameworkRequest.getDefaultInstance()) return this;
       if (!other.getGovernanceFrameworkUri().isEmpty()) {
         governanceFrameworkUri_ = other.governanceFrameworkUri_;
         onChanged();
@@ -515,7 +556,7 @@ public final class AddFrameworkRequest extends com.google.protobuf.GeneratedMess
         description_ = other.description_;
         onChanged();
       }
-      this.mergeUnknownFields(other.getUnknownFields());
+      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -530,68 +571,34 @@ public final class AddFrameworkRequest extends com.google.protobuf.GeneratedMess
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
+      trinsic.services.trustregistry.v1.AddFrameworkRequest parsedMessage = null;
       try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10:
-              {
-                governanceFrameworkUri_ = input.readStringRequireUtf8();
-
-                break;
-              } // case 10
-            case 18:
-              {
-                name_ = input.readStringRequireUtf8();
-
-                break;
-              } // case 18
-            case 26:
-              {
-                description_ = input.readStringRequireUtf8();
-
-                break;
-              } // case 26
-            default:
-              {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-          } // switch (tag)
-        } // while (!done)
+        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        parsedMessage = (trinsic.services.trustregistry.v1.AddFrameworkRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
-        onChanged();
-      } // finally
+        if (parsedMessage != null) {
+          mergeFrom(parsedMessage);
+        }
+      }
       return this;
     }
 
     private java.lang.Object governanceFrameworkUri_ = "";
     /**
-     *
-     *
      * <pre>
      * URI of governance framework organization
      * </pre>
      *
      * <code>string governance_framework_uri = 1;</code>
-     *
      * @return The governanceFrameworkUri.
      */
     public java.lang.String getGovernanceFrameworkUri() {
       java.lang.Object ref = governanceFrameworkUri_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         governanceFrameworkUri_ = s;
         return s;
@@ -600,21 +607,20 @@ public final class AddFrameworkRequest extends com.google.protobuf.GeneratedMess
       }
     }
     /**
-     *
-     *
      * <pre>
      * URI of governance framework organization
      * </pre>
      *
      * <code>string governance_framework_uri = 1;</code>
-     *
      * @return The bytes for governanceFrameworkUri.
      */
-    public com.google.protobuf.ByteString getGovernanceFrameworkUriBytes() {
+    public com.google.protobuf.ByteString
+        getGovernanceFrameworkUriBytes() {
       java.lang.Object ref = governanceFrameworkUri_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         governanceFrameworkUri_ = b;
         return b;
       } else {
@@ -622,61 +628,54 @@ public final class AddFrameworkRequest extends com.google.protobuf.GeneratedMess
       }
     }
     /**
-     *
-     *
      * <pre>
      * URI of governance framework organization
      * </pre>
      *
      * <code>string governance_framework_uri = 1;</code>
-     *
      * @param value The governanceFrameworkUri to set.
      * @return This builder for chaining.
      */
-    public Builder setGovernanceFrameworkUri(java.lang.String value) {
+    public Builder setGovernanceFrameworkUri(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       governanceFrameworkUri_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * URI of governance framework organization
      * </pre>
      *
      * <code>string governance_framework_uri = 1;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearGovernanceFrameworkUri() {
-
+      
       governanceFrameworkUri_ = getDefaultInstance().getGovernanceFrameworkUri();
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * URI of governance framework organization
      * </pre>
      *
      * <code>string governance_framework_uri = 1;</code>
-     *
      * @param value The bytes for governanceFrameworkUri to set.
      * @return This builder for chaining.
      */
-    public Builder setGovernanceFrameworkUriBytes(com.google.protobuf.ByteString value) {
+    public Builder setGovernanceFrameworkUriBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       governanceFrameworkUri_ = value;
       onChanged();
       return this;
@@ -684,20 +683,18 @@ public final class AddFrameworkRequest extends com.google.protobuf.GeneratedMess
 
     private java.lang.Object name_ = "";
     /**
-     *
-     *
      * <pre>
      * Name of governance framework organization
      * </pre>
      *
      * <code>string name = 2;</code>
-     *
      * @return The name.
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         name_ = s;
         return s;
@@ -706,21 +703,20 @@ public final class AddFrameworkRequest extends com.google.protobuf.GeneratedMess
       }
     }
     /**
-     *
-     *
      * <pre>
      * Name of governance framework organization
      * </pre>
      *
      * <code>string name = 2;</code>
-     *
      * @return The bytes for name.
      */
-    public com.google.protobuf.ByteString getNameBytes() {
+    public com.google.protobuf.ByteString
+        getNameBytes() {
       java.lang.Object ref = name_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         name_ = b;
         return b;
       } else {
@@ -728,61 +724,54 @@ public final class AddFrameworkRequest extends com.google.protobuf.GeneratedMess
       }
     }
     /**
-     *
-     *
      * <pre>
      * Name of governance framework organization
      * </pre>
      *
      * <code>string name = 2;</code>
-     *
      * @param value The name to set.
      * @return This builder for chaining.
      */
-    public Builder setName(java.lang.String value) {
+    public Builder setName(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       name_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Name of governance framework organization
      * </pre>
      *
      * <code>string name = 2;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearName() {
-
+      
       name_ = getDefaultInstance().getName();
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Name of governance framework organization
      * </pre>
      *
      * <code>string name = 2;</code>
-     *
      * @param value The bytes for name to set.
      * @return This builder for chaining.
      */
-    public Builder setNameBytes(com.google.protobuf.ByteString value) {
+    public Builder setNameBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       name_ = value;
       onChanged();
       return this;
@@ -790,20 +779,18 @@ public final class AddFrameworkRequest extends com.google.protobuf.GeneratedMess
 
     private java.lang.Object description_ = "";
     /**
-     *
-     *
      * <pre>
      * Description of governance framework
      * </pre>
      *
      * <code>string description = 3;</code>
-     *
      * @return The description.
      */
     public java.lang.String getDescription() {
       java.lang.Object ref = description_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         description_ = s;
         return s;
@@ -812,21 +799,20 @@ public final class AddFrameworkRequest extends com.google.protobuf.GeneratedMess
       }
     }
     /**
-     *
-     *
      * <pre>
      * Description of governance framework
      * </pre>
      *
      * <code>string description = 3;</code>
-     *
      * @return The bytes for description.
      */
-    public com.google.protobuf.ByteString getDescriptionBytes() {
+    public com.google.protobuf.ByteString
+        getDescriptionBytes() {
       java.lang.Object ref = description_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b =
-            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
         description_ = b;
         return b;
       } else {
@@ -834,68 +820,61 @@ public final class AddFrameworkRequest extends com.google.protobuf.GeneratedMess
       }
     }
     /**
-     *
-     *
      * <pre>
      * Description of governance framework
      * </pre>
      *
      * <code>string description = 3;</code>
-     *
      * @param value The description to set.
      * @return This builder for chaining.
      */
-    public Builder setDescription(java.lang.String value) {
+    public Builder setDescription(
+        java.lang.String value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-
+    throw new NullPointerException();
+  }
+  
       description_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Description of governance framework
      * </pre>
      *
      * <code>string description = 3;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearDescription() {
-
+      
       description_ = getDefaultInstance().getDescription();
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Description of governance framework
      * </pre>
      *
      * <code>string description = 3;</code>
-     *
      * @param value The bytes for description to set.
      * @return This builder for chaining.
      */
-    public Builder setDescriptionBytes(com.google.protobuf.ByteString value) {
+    public Builder setDescriptionBytes(
+        com.google.protobuf.ByteString value) {
       if (value == null) {
-        throw new NullPointerException();
-      }
-      checkByteStringIsUtf8(value);
-
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
       description_ = value;
       onChanged();
       return this;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -905,12 +884,12 @@ public final class AddFrameworkRequest extends com.google.protobuf.GeneratedMess
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:services.trustregistry.v1.AddFrameworkRequest)
   }
 
   // @@protoc_insertion_point(class_scope:services.trustregistry.v1.AddFrameworkRequest)
   private static final trinsic.services.trustregistry.v1.AddFrameworkRequest DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new trinsic.services.trustregistry.v1.AddFrameworkRequest();
   }
@@ -919,27 +898,16 @@ public final class AddFrameworkRequest extends com.google.protobuf.GeneratedMess
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<AddFrameworkRequest> PARSER =
-      new com.google.protobuf.AbstractParser<AddFrameworkRequest>() {
-        @java.lang.Override
-        public AddFrameworkRequest parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
+  private static final com.google.protobuf.Parser<AddFrameworkRequest>
+      PARSER = new com.google.protobuf.AbstractParser<AddFrameworkRequest>() {
+    @java.lang.Override
+    public AddFrameworkRequest parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return new AddFrameworkRequest(input, extensionRegistry);
+    }
+  };
 
   public static com.google.protobuf.Parser<AddFrameworkRequest> parser() {
     return PARSER;
@@ -954,4 +922,6 @@ public final class AddFrameworkRequest extends com.google.protobuf.GeneratedMess
   public trinsic.services.trustregistry.v1.AddFrameworkRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

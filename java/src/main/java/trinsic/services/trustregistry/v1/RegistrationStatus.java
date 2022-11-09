@@ -3,11 +3,12 @@
 
 package trinsic.services.trustregistry.v1;
 
-/** Protobuf enum {@code services.trustregistry.v1.RegistrationStatus} */
-public enum RegistrationStatus implements com.google.protobuf.ProtocolMessageEnum {
+/**
+ * Protobuf enum {@code services.trustregistry.v1.RegistrationStatus}
+ */
+public enum RegistrationStatus
+    implements com.google.protobuf.ProtocolMessageEnum {
   /**
-   *
-   *
    * <pre>
    * Member is currently authorized, as of the time of the query
    * </pre>
@@ -16,8 +17,6 @@ public enum RegistrationStatus implements com.google.protobuf.ProtocolMessageEnu
    */
   CURRENT(0),
   /**
-   *
-   *
    * <pre>
    * Member's authorization has expired
    * </pre>
@@ -26,8 +25,6 @@ public enum RegistrationStatus implements com.google.protobuf.ProtocolMessageEnu
    */
   EXPIRED(1),
   /**
-   *
-   *
    * <pre>
    * Member has voluntarily ceased Issuer role under the specific EGF
    * </pre>
@@ -36,8 +33,6 @@ public enum RegistrationStatus implements com.google.protobuf.ProtocolMessageEnu
    */
   TERMINATED(2),
   /**
-   *
-   *
    * <pre>
    * Member authority under specific EGF was terminated by the governing authority
    * </pre>
@@ -46,8 +41,6 @@ public enum RegistrationStatus implements com.google.protobuf.ProtocolMessageEnu
    */
   REVOKED(3),
   /**
-   *
-   *
    * <pre>
    * Member is not associated with given credential schema in the EGF
    * </pre>
@@ -59,8 +52,6 @@ public enum RegistrationStatus implements com.google.protobuf.ProtocolMessageEnu
   ;
 
   /**
-   *
-   *
    * <pre>
    * Member is currently authorized, as of the time of the query
    * </pre>
@@ -69,8 +60,6 @@ public enum RegistrationStatus implements com.google.protobuf.ProtocolMessageEnu
    */
   public static final int CURRENT_VALUE = 0;
   /**
-   *
-   *
    * <pre>
    * Member's authorization has expired
    * </pre>
@@ -79,8 +68,6 @@ public enum RegistrationStatus implements com.google.protobuf.ProtocolMessageEnu
    */
   public static final int EXPIRED_VALUE = 1;
   /**
-   *
-   *
    * <pre>
    * Member has voluntarily ceased Issuer role under the specific EGF
    * </pre>
@@ -89,8 +76,6 @@ public enum RegistrationStatus implements com.google.protobuf.ProtocolMessageEnu
    */
   public static final int TERMINATED_VALUE = 2;
   /**
-   *
-   *
    * <pre>
    * Member authority under specific EGF was terminated by the governing authority
    * </pre>
@@ -99,8 +84,6 @@ public enum RegistrationStatus implements com.google.protobuf.ProtocolMessageEnu
    */
   public static final int REVOKED_VALUE = 3;
   /**
-   *
-   *
    * <pre>
    * Member is not associated with given credential schema in the EGF
    * </pre>
@@ -108,6 +91,7 @@ public enum RegistrationStatus implements com.google.protobuf.ProtocolMessageEnu
    * <code>NOT_FOUND = 10;</code>
    */
   public static final int NOT_FOUND_VALUE = 10;
+
 
   public final int getNumber() {
     if (this == UNRECOGNIZED) {
@@ -133,49 +117,42 @@ public enum RegistrationStatus implements com.google.protobuf.ProtocolMessageEnu
    */
   public static RegistrationStatus forNumber(int value) {
     switch (value) {
-      case 0:
-        return CURRENT;
-      case 1:
-        return EXPIRED;
-      case 2:
-        return TERMINATED;
-      case 3:
-        return REVOKED;
-      case 10:
-        return NOT_FOUND;
-      default:
-        return null;
+      case 0: return CURRENT;
+      case 1: return EXPIRED;
+      case 2: return TERMINATED;
+      case 3: return REVOKED;
+      case 10: return NOT_FOUND;
+      default: return null;
     }
   }
 
-  public static com.google.protobuf.Internal.EnumLiteMap<RegistrationStatus> internalGetValueMap() {
+  public static com.google.protobuf.Internal.EnumLiteMap<RegistrationStatus>
+      internalGetValueMap() {
     return internalValueMap;
   }
+  private static final com.google.protobuf.Internal.EnumLiteMap<
+      RegistrationStatus> internalValueMap =
+        new com.google.protobuf.Internal.EnumLiteMap<RegistrationStatus>() {
+          public RegistrationStatus findValueByNumber(int number) {
+            return RegistrationStatus.forNumber(number);
+          }
+        };
 
-  private static final com.google.protobuf.Internal.EnumLiteMap<RegistrationStatus>
-      internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<RegistrationStatus>() {
-            public RegistrationStatus findValueByNumber(int number) {
-              return RegistrationStatus.forNumber(number);
-            }
-          };
-
-  public final com.google.protobuf.Descriptors.EnumValueDescriptor getValueDescriptor() {
+  public final com.google.protobuf.Descriptors.EnumValueDescriptor
+      getValueDescriptor() {
     if (this == UNRECOGNIZED) {
       throw new java.lang.IllegalStateException(
           "Can't get the descriptor of an unrecognized enum value.");
     }
     return getDescriptor().getValues().get(ordinal());
   }
-
-  public final com.google.protobuf.Descriptors.EnumDescriptor getDescriptorForType() {
+  public final com.google.protobuf.Descriptors.EnumDescriptor
+      getDescriptorForType() {
     return getDescriptor();
   }
-
-  public static final com.google.protobuf.Descriptors.EnumDescriptor getDescriptor() {
-    return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.getDescriptor()
-        .getEnumTypes()
-        .get(0);
+  public static final com.google.protobuf.Descriptors.EnumDescriptor
+      getDescriptor() {
+    return trinsic.services.trustregistry.v1.TrustRegistryOuterClass.getDescriptor().getEnumTypes().get(0);
   }
 
   private static final RegistrationStatus[] VALUES = values();
@@ -183,7 +160,8 @@ public enum RegistrationStatus implements com.google.protobuf.ProtocolMessageEnu
   public static RegistrationStatus valueOf(
       com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
     if (desc.getType() != getDescriptor()) {
-      throw new java.lang.IllegalArgumentException("EnumValueDescriptor is not for this type.");
+      throw new java.lang.IllegalArgumentException(
+        "EnumValueDescriptor is not for this type.");
     }
     if (desc.getIndex() == -1) {
       return UNRECOGNIZED;
@@ -199,3 +177,4 @@ public enum RegistrationStatus implements com.google.protobuf.ProtocolMessageEnu
 
   // @@protoc_insertion_point(enum_scope:services.trustregistry.v1.RegistrationStatus)
 }
+

@@ -3,101 +3,79 @@
 
 package trinsic.services.provider.v1;
 
-public interface PublicEcosystemInformationOrBuilder
-    extends
+public interface PublicEcosystemInformationOrBuilder extends
     // @@protoc_insertion_point(interface_extends:services.provider.v1.PublicEcosystemInformation)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   *
-   *
    * <pre>
    * Public name of this ecosystem
    * </pre>
    *
    * <code>string name = 1;</code>
-   *
    * @return The name.
    */
   java.lang.String getName();
   /**
-   *
-   *
    * <pre>
    * Public name of this ecosystem
    * </pre>
    *
    * <code>string name = 1;</code>
-   *
    * @return The bytes for name.
    */
-  com.google.protobuf.ByteString getNameBytes();
+  com.google.protobuf.ByteString
+      getNameBytes();
 
   /**
-   *
-   *
    * <pre>
    * Public domain for the owner of this ecosystem
    * </pre>
    *
    * <code>string domain = 2;</code>
-   *
    * @return The domain.
    */
   java.lang.String getDomain();
   /**
-   *
-   *
    * <pre>
    * Public domain for the owner of this ecosystem
    * </pre>
    *
    * <code>string domain = 2;</code>
-   *
    * @return The bytes for domain.
    */
-  com.google.protobuf.ByteString getDomainBytes();
+  com.google.protobuf.ByteString
+      getDomainBytes();
 
   /**
-   *
-   *
    * <pre>
    * Trinsic verified the domain is owned by the owner of this ecosystem
    * </pre>
    *
    * <code>bool domain_verified = 3;</code>
-   *
    * @return The domainVerified.
    */
   boolean getDomainVerified();
 
   /**
-   *
-   *
    * <pre>
    * Style display information
    * </pre>
    *
    * <code>.services.provider.v1.EcosystemDisplay style_display = 4;</code>
-   *
    * @return Whether the styleDisplay field is set.
    */
   boolean hasStyleDisplay();
   /**
-   *
-   *
    * <pre>
    * Style display information
    * </pre>
    *
    * <code>.services.provider.v1.EcosystemDisplay style_display = 4;</code>
-   *
    * @return The styleDisplay.
    */
   trinsic.services.provider.v1.EcosystemDisplay getStyleDisplay();
   /**
-   *
-   *
    * <pre>
    * Style display information
    * </pre>
@@ -107,27 +85,22 @@ public interface PublicEcosystemInformationOrBuilder
   trinsic.services.provider.v1.EcosystemDisplayOrBuilder getStyleDisplayOrBuilder();
 
   /**
-   *
-   *
    * <pre>
    * Description of the ecosystem
    * </pre>
    *
    * <code>string description = 5;</code>
-   *
    * @return The description.
    */
   java.lang.String getDescription();
   /**
-   *
-   *
    * <pre>
    * Description of the ecosystem
    * </pre>
    *
    * <code>string description = 5;</code>
-   *
    * @return The bytes for description.
    */
-  com.google.protobuf.ByteString getDescriptionBytes();
+  com.google.protobuf.ByteString
+      getDescriptionBytes();
 }

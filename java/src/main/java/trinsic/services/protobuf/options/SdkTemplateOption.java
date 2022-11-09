@@ -3,57 +3,109 @@
 
 package trinsic.services.protobuf.options;
 
-/** Protobuf type {@code services.options.SdkTemplateOption} */
-public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessageV3
-    implements
+/**
+ * Protobuf type {@code services.options.SdkTemplateOption}
+ */
+public final class SdkTemplateOption extends
+    com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:services.options.SdkTemplateOption)
     SdkTemplateOptionOrBuilder {
-  private static final long serialVersionUID = 0L;
+private static final long serialVersionUID = 0L;
   // Use SdkTemplateOption.newBuilder() to construct.
   private SdkTemplateOption(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-
-  private SdkTemplateOption() {}
+  private SdkTemplateOption() {
+  }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
     return new SdkTemplateOption();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
     return this.unknownFields;
   }
+  private SdkTemplateOption(
+      com.google.protobuf.CodedInputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    this();
+    if (extensionRegistry == null) {
+      throw new java.lang.NullPointerException();
+    }
+    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+        com.google.protobuf.UnknownFieldSet.newBuilder();
+    try {
+      boolean done = false;
+      while (!done) {
+        int tag = input.readTag();
+        switch (tag) {
+          case 0:
+            done = true;
+            break;
+          case 8: {
 
-  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-    return trinsic.services.protobuf.options.FieldOptions
-        .internal_static_services_options_SdkTemplateOption_descriptor;
+            anonymous_ = input.readBool();
+            break;
+          }
+          case 16: {
+
+            ignore_ = input.readBool();
+            break;
+          }
+          case 24: {
+
+            noArguments_ = input.readBool();
+            break;
+          }
+          default: {
+            if (!parseUnknownField(
+                input, unknownFields, extensionRegistry, tag)) {
+              done = true;
+            }
+            break;
+          }
+        }
+      }
+    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+      throw e.setUnfinishedMessage(this);
+    } catch (com.google.protobuf.UninitializedMessageException e) {
+      throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+    } catch (java.io.IOException e) {
+      throw new com.google.protobuf.InvalidProtocolBufferException(
+          e).setUnfinishedMessage(this);
+    } finally {
+      this.unknownFields = unknownFields.build();
+      makeExtensionsImmutable();
+    }
+  }
+  public static final com.google.protobuf.Descriptors.Descriptor
+      getDescriptor() {
+    return trinsic.services.protobuf.options.FieldOptions.internal_static_services_options_SdkTemplateOption_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.protobuf.options.FieldOptions
-        .internal_static_services_options_SdkTemplateOption_fieldAccessorTable
+    return trinsic.services.protobuf.options.FieldOptions.internal_static_services_options_SdkTemplateOption_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.protobuf.options.SdkTemplateOption.class,
-            trinsic.services.protobuf.options.SdkTemplateOption.Builder.class);
+            trinsic.services.protobuf.options.SdkTemplateOption.class, trinsic.services.protobuf.options.SdkTemplateOption.Builder.class);
   }
 
   public static final int ANONYMOUS_FIELD_NUMBER = 1;
   private boolean anonymous_;
   /**
-   *
-   *
    * <pre>
    * Whether the service endpoint allows anonymous (no auth token necessary) authentication
    * This is used by the `protoc-gen-trinsic-sdk` plugin for metadata.
    * </pre>
    *
    * <code>bool anonymous = 1;</code>
-   *
    * @return The anonymous.
    */
   @java.lang.Override
@@ -64,15 +116,12 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
   public static final int IGNORE_FIELD_NUMBER = 2;
   private boolean ignore_;
   /**
-   *
-   *
    * <pre>
    * Whether the SDK template generator should ignore this method. This method will
    * be wrapped manually.
    * </pre>
    *
    * <code>bool ignore = 2;</code>
-   *
    * @return The ignore.
    */
   @java.lang.Override
@@ -83,15 +132,12 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
   public static final int NO_ARGUMENTS_FIELD_NUMBER = 3;
   private boolean noArguments_;
   /**
-   *
-   *
    * <pre>
    * Whether the SDK template generator should generate this method without arguments, eg
    * ProviderService.GetEcosystemInfo() where the request object is empty
    * </pre>
    *
    * <code>bool no_arguments = 3;</code>
-   *
    * @return The noArguments.
    */
   @java.lang.Override
@@ -100,7 +146,6 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
   }
 
   private byte memoizedIsInitialized = -1;
-
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -112,7 +157,8 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
     if (anonymous_ != false) {
       output.writeBool(1, anonymous_);
     }
@@ -122,7 +168,7 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
     if (noArguments_ != false) {
       output.writeBool(3, noArguments_);
     }
-    getUnknownFields().writeTo(output);
+    unknownFields.writeTo(output);
   }
 
   @java.lang.Override
@@ -132,15 +178,18 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
 
     size = 0;
     if (anonymous_ != false) {
-      size += com.google.protobuf.CodedOutputStream.computeBoolSize(1, anonymous_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(1, anonymous_);
     }
     if (ignore_ != false) {
-      size += com.google.protobuf.CodedOutputStream.computeBoolSize(2, ignore_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(2, ignore_);
     }
     if (noArguments_ != false) {
-      size += com.google.protobuf.CodedOutputStream.computeBoolSize(3, noArguments_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(3, noArguments_);
     }
-    size += getUnknownFields().getSerializedSize();
+    size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
   }
@@ -148,18 +197,20 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-      return true;
+     return true;
     }
     if (!(obj instanceof trinsic.services.protobuf.options.SdkTemplateOption)) {
       return super.equals(obj);
     }
-    trinsic.services.protobuf.options.SdkTemplateOption other =
-        (trinsic.services.protobuf.options.SdkTemplateOption) obj;
+    trinsic.services.protobuf.options.SdkTemplateOption other = (trinsic.services.protobuf.options.SdkTemplateOption) obj;
 
-    if (getAnonymous() != other.getAnonymous()) return false;
-    if (getIgnore() != other.getIgnore()) return false;
-    if (getNoArguments() != other.getNoArguments()) return false;
-    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+    if (getAnonymous()
+        != other.getAnonymous()) return false;
+    if (getIgnore()
+        != other.getIgnore()) return false;
+    if (getNoArguments()
+        != other.getNoArguments()) return false;
+    if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
 
@@ -171,138 +222,144 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + ANONYMOUS_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getAnonymous());
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getAnonymous());
     hash = (37 * hash) + IGNORE_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getIgnore());
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getIgnore());
     hash = (37 * hash) + NO_ARGUMENTS_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getNoArguments());
-    hash = (29 * hash) + getUnknownFields().hashCode();
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getNoArguments());
+    hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
   public static trinsic.services.protobuf.options.SdkTemplateOption parseFrom(
-      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.protobuf.options.SdkTemplateOption parseFrom(
-      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.protobuf.options.SdkTemplateOption parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.protobuf.options.SdkTemplateOption parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
   public static trinsic.services.protobuf.options.SdkTemplateOption parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-
   public static trinsic.services.protobuf.options.SdkTemplateOption parseFrom(
-      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-
-  public static trinsic.services.protobuf.options.SdkTemplateOption parseFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-  }
-
-  public static trinsic.services.protobuf.options.SdkTemplateOption parseFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+  public static trinsic.services.protobuf.options.SdkTemplateOption parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
   }
-
-  public static trinsic.services.protobuf.options.SdkTemplateOption parseDelimitedFrom(
-      java.io.InputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-  }
-
-  public static trinsic.services.protobuf.options.SdkTemplateOption parseDelimitedFrom(
-      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-        PARSER, input, extensionRegistry);
-  }
-
   public static trinsic.services.protobuf.options.SdkTemplateOption parseFrom(
-      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
-
+  public static trinsic.services.protobuf.options.SdkTemplateOption parseDelimitedFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
+  }
+  public static trinsic.services.protobuf.options.SdkTemplateOption parseDelimitedFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+  }
+  public static trinsic.services.protobuf.options.SdkTemplateOption parseFrom(
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
+  }
   public static trinsic.services.protobuf.options.SdkTemplateOption parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-        PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() {
-    return newBuilder();
-  }
-
+  public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-
   public static Builder newBuilder(trinsic.services.protobuf.options.SdkTemplateOption prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
-
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
-  /** Protobuf type {@code services.options.SdkTemplateOption} */
-  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-      implements
+  /**
+   * Protobuf type {@code services.options.SdkTemplateOption}
+   */
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:services.options.SdkTemplateOption)
       trinsic.services.protobuf.options.SdkTemplateOptionOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return trinsic.services.protobuf.options.FieldOptions
-          .internal_static_services_options_SdkTemplateOption_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return trinsic.services.protobuf.options.FieldOptions.internal_static_services_options_SdkTemplateOption_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.protobuf.options.FieldOptions
-          .internal_static_services_options_SdkTemplateOption_fieldAccessorTable
+      return trinsic.services.protobuf.options.FieldOptions.internal_static_services_options_SdkTemplateOption_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.protobuf.options.SdkTemplateOption.class,
-              trinsic.services.protobuf.options.SdkTemplateOption.Builder.class);
+              trinsic.services.protobuf.options.SdkTemplateOption.class, trinsic.services.protobuf.options.SdkTemplateOption.Builder.class);
     }
 
     // Construct using trinsic.services.protobuf.options.SdkTemplateOption.newBuilder()
-    private Builder() {}
-
-    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
+    private Builder() {
+      maybeForceBuilderInitialization();
     }
 
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
+      maybeForceBuilderInitialization();
+    }
+    private void maybeForceBuilderInitialization() {
+      if (com.google.protobuf.GeneratedMessageV3
+              .alwaysUseFieldBuilders) {
+      }
+    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -316,9 +373,9 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-      return trinsic.services.protobuf.options.FieldOptions
-          .internal_static_services_options_SdkTemplateOption_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return trinsic.services.protobuf.options.FieldOptions.internal_static_services_options_SdkTemplateOption_descriptor;
     }
 
     @java.lang.Override
@@ -337,8 +394,7 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
 
     @java.lang.Override
     public trinsic.services.protobuf.options.SdkTemplateOption buildPartial() {
-      trinsic.services.protobuf.options.SdkTemplateOption result =
-          new trinsic.services.protobuf.options.SdkTemplateOption(this);
+      trinsic.services.protobuf.options.SdkTemplateOption result = new trinsic.services.protobuf.options.SdkTemplateOption(this);
       result.anonymous_ = anonymous_;
       result.ignore_ = ignore_;
       result.noArguments_ = noArguments_;
@@ -350,39 +406,38 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
     public Builder clone() {
       return super.clone();
     }
-
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.setField(field, value);
     }
-
     @java.lang.Override
-    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
-
     @java.lang.Override
-    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
-
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
-
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
-
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof trinsic.services.protobuf.options.SdkTemplateOption) {
-        return mergeFrom((trinsic.services.protobuf.options.SdkTemplateOption) other);
+        return mergeFrom((trinsic.services.protobuf.options.SdkTemplateOption)other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -390,8 +445,7 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
     }
 
     public Builder mergeFrom(trinsic.services.protobuf.options.SdkTemplateOption other) {
-      if (other == trinsic.services.protobuf.options.SdkTemplateOption.getDefaultInstance())
-        return this;
+      if (other == trinsic.services.protobuf.options.SdkTemplateOption.getDefaultInstance()) return this;
       if (other.getAnonymous() != false) {
         setAnonymous(other.getAnonymous());
       }
@@ -401,7 +455,7 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
       if (other.getNoArguments() != false) {
         setNoArguments(other.getNoArguments());
       }
-      this.mergeUnknownFields(other.getUnknownFields());
+      this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
     }
@@ -416,63 +470,28 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
+      trinsic.services.protobuf.options.SdkTemplateOption parsedMessage = null;
       try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8:
-              {
-                anonymous_ = input.readBool();
-
-                break;
-              } // case 8
-            case 16:
-              {
-                ignore_ = input.readBool();
-
-                break;
-              } // case 16
-            case 24:
-              {
-                noArguments_ = input.readBool();
-
-                break;
-              } // case 24
-            default:
-              {
-                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
-                  done = true; // was an endgroup tag
-                }
-                break;
-              } // default:
-          } // switch (tag)
-        } // while (!done)
+        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        parsedMessage = (trinsic.services.protobuf.options.SdkTemplateOption) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
-        onChanged();
-      } // finally
+        if (parsedMessage != null) {
+          mergeFrom(parsedMessage);
+        }
+      }
       return this;
     }
 
-    private boolean anonymous_;
+    private boolean anonymous_ ;
     /**
-     *
-     *
      * <pre>
      * Whether the service endpoint allows anonymous (no auth token necessary) authentication
      * This is used by the `protoc-gen-trinsic-sdk` plugin for metadata.
      * </pre>
      *
      * <code>bool anonymous = 1;</code>
-     *
      * @return The anonymous.
      */
     @java.lang.Override
@@ -480,54 +499,45 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
       return anonymous_;
     }
     /**
-     *
-     *
      * <pre>
      * Whether the service endpoint allows anonymous (no auth token necessary) authentication
      * This is used by the `protoc-gen-trinsic-sdk` plugin for metadata.
      * </pre>
      *
      * <code>bool anonymous = 1;</code>
-     *
      * @param value The anonymous to set.
      * @return This builder for chaining.
      */
     public Builder setAnonymous(boolean value) {
-
+      
       anonymous_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Whether the service endpoint allows anonymous (no auth token necessary) authentication
      * This is used by the `protoc-gen-trinsic-sdk` plugin for metadata.
      * </pre>
      *
      * <code>bool anonymous = 1;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearAnonymous() {
-
+      
       anonymous_ = false;
       onChanged();
       return this;
     }
 
-    private boolean ignore_;
+    private boolean ignore_ ;
     /**
-     *
-     *
      * <pre>
      * Whether the SDK template generator should ignore this method. This method will
      * be wrapped manually.
      * </pre>
      *
      * <code>bool ignore = 2;</code>
-     *
      * @return The ignore.
      */
     @java.lang.Override
@@ -535,54 +545,45 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
       return ignore_;
     }
     /**
-     *
-     *
      * <pre>
      * Whether the SDK template generator should ignore this method. This method will
      * be wrapped manually.
      * </pre>
      *
      * <code>bool ignore = 2;</code>
-     *
      * @param value The ignore to set.
      * @return This builder for chaining.
      */
     public Builder setIgnore(boolean value) {
-
+      
       ignore_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Whether the SDK template generator should ignore this method. This method will
      * be wrapped manually.
      * </pre>
      *
      * <code>bool ignore = 2;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearIgnore() {
-
+      
       ignore_ = false;
       onChanged();
       return this;
     }
 
-    private boolean noArguments_;
+    private boolean noArguments_ ;
     /**
-     *
-     *
      * <pre>
      * Whether the SDK template generator should generate this method without arguments, eg
      * ProviderService.GetEcosystemInfo() where the request object is empty
      * </pre>
      *
      * <code>bool no_arguments = 3;</code>
-     *
      * @return The noArguments.
      */
     @java.lang.Override
@@ -590,45 +591,39 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
       return noArguments_;
     }
     /**
-     *
-     *
      * <pre>
      * Whether the SDK template generator should generate this method without arguments, eg
      * ProviderService.GetEcosystemInfo() where the request object is empty
      * </pre>
      *
      * <code>bool no_arguments = 3;</code>
-     *
      * @param value The noArguments to set.
      * @return This builder for chaining.
      */
     public Builder setNoArguments(boolean value) {
-
+      
       noArguments_ = value;
       onChanged();
       return this;
     }
     /**
-     *
-     *
      * <pre>
      * Whether the SDK template generator should generate this method without arguments, eg
      * ProviderService.GetEcosystemInfo() where the request object is empty
      * </pre>
      *
      * <code>bool no_arguments = 3;</code>
-     *
      * @return This builder for chaining.
      */
     public Builder clearNoArguments() {
-
+      
       noArguments_ = false;
       onChanged();
       return this;
     }
-
     @java.lang.Override
-    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -638,12 +633,12 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
       return super.mergeUnknownFields(unknownFields);
     }
 
+
     // @@protoc_insertion_point(builder_scope:services.options.SdkTemplateOption)
   }
 
   // @@protoc_insertion_point(class_scope:services.options.SdkTemplateOption)
   private static final trinsic.services.protobuf.options.SdkTemplateOption DEFAULT_INSTANCE;
-
   static {
     DEFAULT_INSTANCE = new trinsic.services.protobuf.options.SdkTemplateOption();
   }
@@ -652,27 +647,16 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<SdkTemplateOption> PARSER =
-      new com.google.protobuf.AbstractParser<SdkTemplateOption>() {
-        @java.lang.Override
-        public SdkTemplateOption parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          Builder builder = newBuilder();
-          try {
-            builder.mergeFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(builder.buildPartial());
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(e)
-                .setUnfinishedMessage(builder.buildPartial());
-          }
-          return builder.buildPartial();
-        }
-      };
+  private static final com.google.protobuf.Parser<SdkTemplateOption>
+      PARSER = new com.google.protobuf.AbstractParser<SdkTemplateOption>() {
+    @java.lang.Override
+    public SdkTemplateOption parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return new SdkTemplateOption(input, extensionRegistry);
+    }
+  };
 
   public static com.google.protobuf.Parser<SdkTemplateOption> parser() {
     return PARSER;
@@ -687,4 +671,6 @@ public final class SdkTemplateOption extends com.google.protobuf.GeneratedMessag
   public trinsic.services.protobuf.options.SdkTemplateOption getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
+
 }
+

@@ -3,113 +3,93 @@
 
 package trinsic.services.verifiablecredentials.templates.v1;
 
-public interface CreateCredentialTemplateRequestOrBuilder
-    extends
+public interface CreateCredentialTemplateRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.templates.v1.CreateCredentialTemplateRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   *
-   *
    * <pre>
    * Name of new template
    * </pre>
    *
    * <code>string name = 1;</code>
-   *
    * @return The name.
    */
   java.lang.String getName();
   /**
-   *
-   *
    * <pre>
    * Name of new template
    * </pre>
    *
    * <code>string name = 1;</code>
-   *
    * @return The bytes for name.
    */
-  com.google.protobuf.ByteString getNameBytes();
+  com.google.protobuf.ByteString
+      getNameBytes();
 
   /**
-   *
-   *
    * <pre>
    * Fields which compose the template
    * </pre>
    *
-   * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
-   * </code>
+   * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
    */
   int getFieldsCount();
   /**
-   *
-   *
    * <pre>
    * Fields which compose the template
    * </pre>
    *
-   * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
-   * </code>
+   * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
    */
-  boolean containsFields(java.lang.String key);
-  /** Use {@link #getFieldsMap()} instead. */
+  boolean containsFields(
+      java.lang.String key);
+  /**
+   * Use {@link #getFieldsMap()} instead.
+   */
   @java.lang.Deprecated
   java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.TemplateField>
-      getFields();
+  getFields();
   /**
-   *
-   *
    * <pre>
    * Fields which compose the template
    * </pre>
    *
-   * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
-   * </code>
+   * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
    */
   java.util.Map<java.lang.String, trinsic.services.verifiablecredentials.templates.v1.TemplateField>
-      getFieldsMap();
+  getFieldsMap();
   /**
-   *
-   *
    * <pre>
    * Fields which compose the template
    * </pre>
    *
-   * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
-   * </code>
+   * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
    */
 
   /* nullable */
-  trinsic.services.verifiablecredentials.templates.v1.TemplateField getFieldsOrDefault(
+trinsic.services.verifiablecredentials.templates.v1.TemplateField getFieldsOrDefault(
       java.lang.String key,
       /* nullable */
-      trinsic.services.verifiablecredentials.templates.v1.TemplateField defaultValue);
+trinsic.services.verifiablecredentials.templates.v1.TemplateField defaultValue);
   /**
-   *
-   *
    * <pre>
    * Fields which compose the template
    * </pre>
    *
-   * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;
-   * </code>
+   * <code>map&lt;string, .services.verifiablecredentials.templates.v1.TemplateField&gt; fields = 2;</code>
    */
+
   trinsic.services.verifiablecredentials.templates.v1.TemplateField getFieldsOrThrow(
       java.lang.String key);
 
   /**
-   *
-   *
    * <pre>
    * Whether credentials may be issued against this template which have fields
    * not specified in `fields`
    * </pre>
    *
    * <code>bool allow_additional_fields = 3;</code>
-   *
    * @return The allowAdditionalFields.
    */
   boolean getAllowAdditionalFields();

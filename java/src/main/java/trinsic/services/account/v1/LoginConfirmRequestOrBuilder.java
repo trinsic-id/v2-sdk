@@ -3,34 +3,27 @@
 
 package trinsic.services.account.v1;
 
-public interface LoginConfirmRequestOrBuilder
-    extends
+public interface LoginConfirmRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:services.account.v1.LoginConfirmRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   *
-   *
    * <pre>
    * Challenge received from `Login`
    * </pre>
    *
    * <code>bytes challenge = 1;</code>
-   *
    * @return The challenge.
    */
   com.google.protobuf.ByteString getChallenge();
 
   /**
-   *
-   *
    * <pre>
    * Two-factor confirmation code sent to account email or phone,
    * hashed using Blake3. Our SDKs will handle this hashing process for you.
    * </pre>
    *
    * <code>bytes confirmation_code_hashed = 2;</code>
-   *
    * @return The confirmationCodeHashed.
    */
   com.google.protobuf.ByteString getConfirmationCodeHashed();
