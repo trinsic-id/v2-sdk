@@ -35,7 +35,7 @@ public class TrinsicService : ServiceBase
     internal TrinsicService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
         : base(options.Value, tokenProvider) {
     }
-    
+
     /// <summary>
     /// Exposes Account Service functionality
     /// </summary>
