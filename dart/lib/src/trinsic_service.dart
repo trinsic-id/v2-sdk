@@ -15,7 +15,8 @@ class TrinsicService extends ServiceBase {
       : super(serverOptions, provider) {}
 
   AccessManagementService accessManagement() {
-    _accessManagementService ??= AccessManagementService(serviceOptions, tokenProvider);
+    _accessManagementService ??=
+        AccessManagementService(serviceOptions, tokenProvider);
     return _accessManagementService!;
   }
 
