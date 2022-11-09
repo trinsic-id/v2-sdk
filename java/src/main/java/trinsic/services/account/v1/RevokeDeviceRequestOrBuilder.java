@@ -3,7 +3,7 @@
 
 package trinsic.services.account.v1;
 
-public interface RevokeDeviceRequestOrBuilder extends
+public interface RevokeDeviceRequestOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.account.v1.RevokeDeviceRequest)
-    com.google.protobuf.MessageOrBuilder {
-}
+    com.google.protobuf.MessageOrBuilder {}

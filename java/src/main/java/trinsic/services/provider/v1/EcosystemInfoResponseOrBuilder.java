@@ -3,29 +3,38 @@
 
 package trinsic.services.provider.v1;
 
-public interface EcosystemInfoResponseOrBuilder extends
+public interface EcosystemInfoResponseOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.provider.v1.EcosystemInfoResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * Ecosystem corresponding to current ecosystem in the account token
    * </pre>
    *
    * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
+   *
    * @return Whether the ecosystem field is set.
    */
   boolean hasEcosystem();
   /**
+   *
+   *
    * <pre>
    * Ecosystem corresponding to current ecosystem in the account token
    * </pre>
    *
    * <code>.services.provider.v1.Ecosystem ecosystem = 1;</code>
+   *
    * @return The ecosystem.
    */
   trinsic.services.provider.v1.Ecosystem getEcosystem();
   /**
+   *
+   *
    * <pre>
    * Ecosystem corresponding to current ecosystem in the account token
    * </pre>

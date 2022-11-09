@@ -4,103 +4,65 @@
 package trinsic.services.universalwallet.v1;
 
 /**
+ *
+ *
  * <pre>
  * Request to delete an item in a wallet
  * </pre>
  *
  * Protobuf type {@code services.universalwallet.v1.DeleteItemRequest}
  */
-public final class DeleteItemRequest extends
-    com.google.protobuf.GeneratedMessageV3 implements
+public final class DeleteItemRequest extends com.google.protobuf.GeneratedMessageV3
+    implements
     // @@protoc_insertion_point(message_implements:services.universalwallet.v1.DeleteItemRequest)
     DeleteItemRequestOrBuilder {
-private static final long serialVersionUID = 0L;
+  private static final long serialVersionUID = 0L;
   // Use DeleteItemRequest.newBuilder() to construct.
   private DeleteItemRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
+
   private DeleteItemRequest() {
     itemId_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
     return new DeleteItemRequest();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet
-  getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
     return this.unknownFields;
   }
-  private DeleteItemRequest(
-      com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
-    try {
-      boolean done = false;
-      while (!done) {
-        int tag = input.readTag();
-        switch (tag) {
-          case 0:
-            done = true;
-            break;
-          case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
 
-            itemId_ = s;
-            break;
-          }
-          default: {
-            if (!parseUnknownField(
-                input, unknownFields, extensionRegistry, tag)) {
-              done = true;
-            }
-            break;
-          }
-        }
-      }
-    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
-    } catch (com.google.protobuf.UninitializedMessageException e) {
-      throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
-    } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
-    } finally {
-      this.unknownFields = unknownFields.build();
-      makeExtensionsImmutable();
-    }
-  }
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return trinsic.services.universalwallet.v1.UniversalWalletOuterClass.internal_static_services_universalwallet_v1_DeleteItemRequest_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    return trinsic.services.universalwallet.v1.UniversalWalletOuterClass
+        .internal_static_services_universalwallet_v1_DeleteItemRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.universalwallet.v1.UniversalWalletOuterClass.internal_static_services_universalwallet_v1_DeleteItemRequest_fieldAccessorTable
+    return trinsic.services.universalwallet.v1.UniversalWalletOuterClass
+        .internal_static_services_universalwallet_v1_DeleteItemRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.universalwallet.v1.DeleteItemRequest.class, trinsic.services.universalwallet.v1.DeleteItemRequest.Builder.class);
+            trinsic.services.universalwallet.v1.DeleteItemRequest.class,
+            trinsic.services.universalwallet.v1.DeleteItemRequest.Builder.class);
   }
 
   public static final int ITEM_ID_FIELD_NUMBER = 1;
   private volatile java.lang.Object itemId_;
   /**
+   *
+   *
    * <pre>
    * ID of item to delete
    * </pre>
    *
    * <code>string item_id = 1;</code>
+   *
    * @return The itemId.
    */
   @java.lang.Override
@@ -109,29 +71,29 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       itemId_ = s;
       return s;
     }
   }
   /**
+   *
+   *
    * <pre>
    * ID of item to delete
    * </pre>
    *
    * <code>string item_id = 1;</code>
+   *
    * @return The bytes for itemId.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getItemIdBytes() {
+  public com.google.protobuf.ByteString getItemIdBytes() {
     java.lang.Object ref = itemId_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       itemId_ = b;
       return b;
     } else {
@@ -140,6 +102,7 @@ private static final long serialVersionUID = 0L;
   }
 
   private byte memoizedIsInitialized = -1;
+
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -151,12 +114,11 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(itemId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, itemId_);
     }
-    unknownFields.writeTo(output);
+    getUnknownFields().writeTo(output);
   }
 
   @java.lang.Override
@@ -168,7 +130,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(itemId_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, itemId_);
     }
-    size += unknownFields.getSerializedSize();
+    size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
   }
@@ -176,16 +138,16 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-     return true;
+      return true;
     }
     if (!(obj instanceof trinsic.services.universalwallet.v1.DeleteItemRequest)) {
       return super.equals(obj);
     }
-    trinsic.services.universalwallet.v1.DeleteItemRequest other = (trinsic.services.universalwallet.v1.DeleteItemRequest) obj;
+    trinsic.services.universalwallet.v1.DeleteItemRequest other =
+        (trinsic.services.universalwallet.v1.DeleteItemRequest) obj;
 
-    if (!getItemId()
-        .equals(other.getItemId())) return false;
-    if (!unknownFields.equals(other.unknownFields)) return false;
+    if (!getItemId().equals(other.getItemId())) return false;
+    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
 
@@ -198,140 +160,142 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + ITEM_ID_FIELD_NUMBER;
     hash = (53 * hash) + getItemId().hashCode();
-    hash = (29 * hash) + unknownFields.hashCode();
+    hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
   public static trinsic.services.universalwallet.v1.DeleteItemRequest parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static trinsic.services.universalwallet.v1.DeleteItemRequest parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static trinsic.services.universalwallet.v1.DeleteItemRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static trinsic.services.universalwallet.v1.DeleteItemRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static trinsic.services.universalwallet.v1.DeleteItemRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static trinsic.services.universalwallet.v1.DeleteItemRequest parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static trinsic.services.universalwallet.v1.DeleteItemRequest parseFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
-  }
+
   public static trinsic.services.universalwallet.v1.DeleteItemRequest parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
-  public static trinsic.services.universalwallet.v1.DeleteItemRequest parseDelimitedFrom(java.io.InputStream input)
+
+  public static trinsic.services.universalwallet.v1.DeleteItemRequest parseFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
+
   public static trinsic.services.universalwallet.v1.DeleteItemRequest parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
+
+  public static trinsic.services.universalwallet.v1.DeleteItemRequest parseDelimitedFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+        PARSER, input, extensionRegistry);
+  }
+
   public static trinsic.services.universalwallet.v1.DeleteItemRequest parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static trinsic.services.universalwallet.v1.DeleteItemRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
+  public Builder newBuilderForType() {
+    return newBuilder();
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(trinsic.services.universalwallet.v1.DeleteItemRequest prototype) {
+
+  public static Builder newBuilder(
+      trinsic.services.universalwallet.v1.DeleteItemRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-  }
-  @java.lang.Override
-  public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  public Builder toBuilder() {
+    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+  }
+
+  @java.lang.Override
+  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
+   *
+   *
    * <pre>
    * Request to delete an item in a wallet
    * </pre>
    *
    * Protobuf type {@code services.universalwallet.v1.DeleteItemRequest}
    */
-  public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+      implements
       // @@protoc_insertion_point(builder_implements:services.universalwallet.v1.DeleteItemRequest)
       trinsic.services.universalwallet.v1.DeleteItemRequestOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.universalwallet.v1.UniversalWalletOuterClass.internal_static_services_universalwallet_v1_DeleteItemRequest_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.services.universalwallet.v1.UniversalWalletOuterClass
+          .internal_static_services_universalwallet_v1_DeleteItemRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.universalwallet.v1.UniversalWalletOuterClass.internal_static_services_universalwallet_v1_DeleteItemRequest_fieldAccessorTable
+      return trinsic.services.universalwallet.v1.UniversalWalletOuterClass
+          .internal_static_services_universalwallet_v1_DeleteItemRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.universalwallet.v1.DeleteItemRequest.class, trinsic.services.universalwallet.v1.DeleteItemRequest.Builder.class);
+              trinsic.services.universalwallet.v1.DeleteItemRequest.class,
+              trinsic.services.universalwallet.v1.DeleteItemRequest.Builder.class);
     }
 
     // Construct using trinsic.services.universalwallet.v1.DeleteItemRequest.newBuilder()
-    private Builder() {
-      maybeForceBuilderInitialization();
+    private Builder() {}
+
+    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
     }
 
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-      }
-    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -341,9 +305,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
-      return trinsic.services.universalwallet.v1.UniversalWalletOuterClass.internal_static_services_universalwallet_v1_DeleteItemRequest_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return trinsic.services.universalwallet.v1.UniversalWalletOuterClass
+          .internal_static_services_universalwallet_v1_DeleteItemRequest_descriptor;
     }
 
     @java.lang.Override
@@ -362,7 +326,8 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public trinsic.services.universalwallet.v1.DeleteItemRequest buildPartial() {
-      trinsic.services.universalwallet.v1.DeleteItemRequest result = new trinsic.services.universalwallet.v1.DeleteItemRequest(this);
+      trinsic.services.universalwallet.v1.DeleteItemRequest result =
+          new trinsic.services.universalwallet.v1.DeleteItemRequest(this);
       result.itemId_ = itemId_;
       onBuilt();
       return result;
@@ -372,38 +337,39 @@ private static final long serialVersionUID = 0L;
     public Builder clone() {
       return super.clone();
     }
+
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.setField(field, value);
     }
+
     @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
+
     @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
+
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
+
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
+
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof trinsic.services.universalwallet.v1.DeleteItemRequest) {
-        return mergeFrom((trinsic.services.universalwallet.v1.DeleteItemRequest)other);
+        return mergeFrom((trinsic.services.universalwallet.v1.DeleteItemRequest) other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -411,12 +377,13 @@ private static final long serialVersionUID = 0L;
     }
 
     public Builder mergeFrom(trinsic.services.universalwallet.v1.DeleteItemRequest other) {
-      if (other == trinsic.services.universalwallet.v1.DeleteItemRequest.getDefaultInstance()) return this;
+      if (other == trinsic.services.universalwallet.v1.DeleteItemRequest.getDefaultInstance())
+        return this;
       if (!other.getItemId().isEmpty()) {
         itemId_ = other.itemId_;
         onChanged();
       }
-      this.mergeUnknownFields(other.unknownFields);
+      this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
     }
@@ -431,34 +398,56 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      trinsic.services.universalwallet.v1.DeleteItemRequest parsedMessage = null;
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       try {
-        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10:
+              {
+                itemId_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 10
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+          } // switch (tag)
+        } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (trinsic.services.universalwallet.v1.DeleteItemRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
-        if (parsedMessage != null) {
-          mergeFrom(parsedMessage);
-        }
-      }
+        onChanged();
+      } // finally
       return this;
     }
 
     private java.lang.Object itemId_ = "";
     /**
+     *
+     *
      * <pre>
      * ID of item to delete
      * </pre>
      *
      * <code>string item_id = 1;</code>
+     *
      * @return The itemId.
      */
     public java.lang.String getItemId() {
       java.lang.Object ref = itemId_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         itemId_ = s;
         return s;
@@ -467,20 +456,21 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * ID of item to delete
      * </pre>
      *
      * <code>string item_id = 1;</code>
+     *
      * @return The bytes for itemId.
      */
-    public com.google.protobuf.ByteString
-        getItemIdBytes() {
+    public com.google.protobuf.ByteString getItemIdBytes() {
       java.lang.Object ref = itemId_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         itemId_ = b;
         return b;
       } else {
@@ -488,61 +478,68 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * ID of item to delete
      * </pre>
      *
      * <code>string item_id = 1;</code>
+     *
      * @param value The itemId to set.
      * @return This builder for chaining.
      */
-    public Builder setItemId(
-        java.lang.String value) {
+    public Builder setItemId(java.lang.String value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        throw new NullPointerException();
+      }
+
       itemId_ = value;
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * ID of item to delete
      * </pre>
      *
      * <code>string item_id = 1;</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearItemId() {
-      
+
       itemId_ = getDefaultInstance().getItemId();
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * ID of item to delete
      * </pre>
      *
      * <code>string item_id = 1;</code>
+     *
      * @param value The bytes for itemId to set.
      * @return This builder for chaining.
      */
-    public Builder setItemIdBytes(
-        com.google.protobuf.ByteString value) {
+    public Builder setItemIdBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
       itemId_ = value;
       onChanged();
       return this;
     }
+
     @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -552,12 +549,12 @@ private static final long serialVersionUID = 0L;
       return super.mergeUnknownFields(unknownFields);
     }
 
-
     // @@protoc_insertion_point(builder_scope:services.universalwallet.v1.DeleteItemRequest)
   }
 
   // @@protoc_insertion_point(class_scope:services.universalwallet.v1.DeleteItemRequest)
   private static final trinsic.services.universalwallet.v1.DeleteItemRequest DEFAULT_INSTANCE;
+
   static {
     DEFAULT_INSTANCE = new trinsic.services.universalwallet.v1.DeleteItemRequest();
   }
@@ -566,16 +563,27 @@ private static final long serialVersionUID = 0L;
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<DeleteItemRequest>
-      PARSER = new com.google.protobuf.AbstractParser<DeleteItemRequest>() {
-    @java.lang.Override
-    public DeleteItemRequest parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return new DeleteItemRequest(input, extensionRegistry);
-    }
-  };
+  private static final com.google.protobuf.Parser<DeleteItemRequest> PARSER =
+      new com.google.protobuf.AbstractParser<DeleteItemRequest>() {
+        @java.lang.Override
+        public DeleteItemRequest parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
 
   public static com.google.protobuf.Parser<DeleteItemRequest> parser() {
     return PARSER;
@@ -590,6 +598,4 @@ private static final long serialVersionUID = 0L;
   public trinsic.services.universalwallet.v1.DeleteItemRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
-
 }
-

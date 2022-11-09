@@ -4,15 +4,18 @@
 package trinsic.services.account.v1;
 
 /**
+ *
+ *
  * <pre>
  * Confirmation method type for two-factor workflows
  * </pre>
  *
  * Protobuf enum {@code services.account.v1.ConfirmationMethod}
  */
-public enum ConfirmationMethod
-    implements com.google.protobuf.ProtocolMessageEnum {
+public enum ConfirmationMethod implements com.google.protobuf.ProtocolMessageEnum {
   /**
+   *
+   *
    * <pre>
    * No confirmation required
    * </pre>
@@ -21,6 +24,8 @@ public enum ConfirmationMethod
    */
   None(0),
   /**
+   *
+   *
    * <pre>
    * Email confirmation required
    * </pre>
@@ -29,6 +34,8 @@ public enum ConfirmationMethod
    */
   Email(1),
   /**
+   *
+   *
    * <pre>
    * SMS confirmation required
    * </pre>
@@ -37,6 +44,8 @@ public enum ConfirmationMethod
    */
   Sms(2),
   /**
+   *
+   *
    * <pre>
    * Confirmation from a connected device is required
    * </pre>
@@ -45,6 +54,8 @@ public enum ConfirmationMethod
    */
   ConnectedDevice(3),
   /**
+   *
+   *
    * <pre>
    * Third-party method of confirmation is required
    * </pre>
@@ -56,6 +67,8 @@ public enum ConfirmationMethod
   ;
 
   /**
+   *
+   *
    * <pre>
    * No confirmation required
    * </pre>
@@ -64,6 +77,8 @@ public enum ConfirmationMethod
    */
   public static final int None_VALUE = 0;
   /**
+   *
+   *
    * <pre>
    * Email confirmation required
    * </pre>
@@ -72,6 +87,8 @@ public enum ConfirmationMethod
    */
   public static final int Email_VALUE = 1;
   /**
+   *
+   *
    * <pre>
    * SMS confirmation required
    * </pre>
@@ -80,6 +97,8 @@ public enum ConfirmationMethod
    */
   public static final int Sms_VALUE = 2;
   /**
+   *
+   *
    * <pre>
    * Confirmation from a connected device is required
    * </pre>
@@ -88,6 +107,8 @@ public enum ConfirmationMethod
    */
   public static final int ConnectedDevice_VALUE = 3;
   /**
+   *
+   *
    * <pre>
    * Third-party method of confirmation is required
    * </pre>
@@ -95,7 +116,6 @@ public enum ConfirmationMethod
    * <code>Other = 10;</code>
    */
   public static final int Other_VALUE = 10;
-
 
   public final int getNumber() {
     if (this == UNRECOGNIZED) {
@@ -121,41 +141,46 @@ public enum ConfirmationMethod
    */
   public static ConfirmationMethod forNumber(int value) {
     switch (value) {
-      case 0: return None;
-      case 1: return Email;
-      case 2: return Sms;
-      case 3: return ConnectedDevice;
-      case 10: return Other;
-      default: return null;
+      case 0:
+        return None;
+      case 1:
+        return Email;
+      case 2:
+        return Sms;
+      case 3:
+        return ConnectedDevice;
+      case 10:
+        return Other;
+      default:
+        return null;
     }
   }
 
-  public static com.google.protobuf.Internal.EnumLiteMap<ConfirmationMethod>
-      internalGetValueMap() {
+  public static com.google.protobuf.Internal.EnumLiteMap<ConfirmationMethod> internalGetValueMap() {
     return internalValueMap;
   }
-  private static final com.google.protobuf.Internal.EnumLiteMap<
-      ConfirmationMethod> internalValueMap =
-        new com.google.protobuf.Internal.EnumLiteMap<ConfirmationMethod>() {
-          public ConfirmationMethod findValueByNumber(int number) {
-            return ConfirmationMethod.forNumber(number);
-          }
-        };
 
-  public final com.google.protobuf.Descriptors.EnumValueDescriptor
-      getValueDescriptor() {
+  private static final com.google.protobuf.Internal.EnumLiteMap<ConfirmationMethod>
+      internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ConfirmationMethod>() {
+            public ConfirmationMethod findValueByNumber(int number) {
+              return ConfirmationMethod.forNumber(number);
+            }
+          };
+
+  public final com.google.protobuf.Descriptors.EnumValueDescriptor getValueDescriptor() {
     if (this == UNRECOGNIZED) {
       throw new java.lang.IllegalStateException(
           "Can't get the descriptor of an unrecognized enum value.");
     }
     return getDescriptor().getValues().get(ordinal());
   }
-  public final com.google.protobuf.Descriptors.EnumDescriptor
-      getDescriptorForType() {
+
+  public final com.google.protobuf.Descriptors.EnumDescriptor getDescriptorForType() {
     return getDescriptor();
   }
-  public static final com.google.protobuf.Descriptors.EnumDescriptor
-      getDescriptor() {
+
+  public static final com.google.protobuf.Descriptors.EnumDescriptor getDescriptor() {
     return trinsic.services.account.v1.AccountOuterClass.getDescriptor().getEnumTypes().get(0);
   }
 
@@ -164,8 +189,7 @@ public enum ConfirmationMethod
   public static ConfirmationMethod valueOf(
       com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
     if (desc.getType() != getDescriptor()) {
-      throw new java.lang.IllegalArgumentException(
-        "EnumValueDescriptor is not for this type.");
+      throw new java.lang.IllegalArgumentException("EnumValueDescriptor is not for this type.");
     }
     if (desc.getIndex() == -1) {
       return UNRECOGNIZED;
@@ -181,4 +205,3 @@ public enum ConfirmationMethod
 
   // @@protoc_insertion_point(enum_scope:services.account.v1.ConfirmationMethod)
 }
-

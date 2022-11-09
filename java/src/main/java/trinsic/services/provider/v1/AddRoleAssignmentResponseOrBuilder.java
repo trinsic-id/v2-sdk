@@ -3,7 +3,7 @@
 
 package trinsic.services.provider.v1;
 
-public interface AddRoleAssignmentResponseOrBuilder extends
+public interface AddRoleAssignmentResponseOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.provider.v1.AddRoleAssignmentResponse)
-    com.google.protobuf.MessageOrBuilder {
-}
+    com.google.protobuf.MessageOrBuilder {}

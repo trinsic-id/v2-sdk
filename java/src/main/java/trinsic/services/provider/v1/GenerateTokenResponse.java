@@ -4,109 +4,63 @@
 package trinsic.services.provider.v1;
 
 /**
+ *
+ *
  * <pre>
  * Response to `GenerateTokenRequest`
  * </pre>
  *
  * Protobuf type {@code services.provider.v1.GenerateTokenResponse}
  */
-public final class GenerateTokenResponse extends
-    com.google.protobuf.GeneratedMessageV3 implements
+public final class GenerateTokenResponse extends com.google.protobuf.GeneratedMessageV3
+    implements
     // @@protoc_insertion_point(message_implements:services.provider.v1.GenerateTokenResponse)
     GenerateTokenResponseOrBuilder {
-private static final long serialVersionUID = 0L;
+  private static final long serialVersionUID = 0L;
   // Use GenerateTokenResponse.newBuilder() to construct.
   private GenerateTokenResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private GenerateTokenResponse() {
-  }
+
+  private GenerateTokenResponse() {}
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
     return new GenerateTokenResponse();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet
-  getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
     return this.unknownFields;
   }
-  private GenerateTokenResponse(
-      com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
-    try {
-      boolean done = false;
-      while (!done) {
-        int tag = input.readTag();
-        switch (tag) {
-          case 0:
-            done = true;
-            break;
-          case 10: {
-            trinsic.services.account.v1.AccountProfile.Builder subBuilder = null;
-            if (profile_ != null) {
-              subBuilder = profile_.toBuilder();
-            }
-            profile_ = input.readMessage(trinsic.services.account.v1.AccountProfile.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(profile_);
-              profile_ = subBuilder.buildPartial();
-            }
 
-            break;
-          }
-          default: {
-            if (!parseUnknownField(
-                input, unknownFields, extensionRegistry, tag)) {
-              done = true;
-            }
-            break;
-          }
-        }
-      }
-    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
-    } catch (com.google.protobuf.UninitializedMessageException e) {
-      throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
-    } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
-    } finally {
-      this.unknownFields = unknownFields.build();
-      makeExtensionsImmutable();
-    }
-  }
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_GenerateTokenResponse_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    return trinsic.services.provider.v1.ProviderOuterClass
+        .internal_static_services_provider_v1_GenerateTokenResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_GenerateTokenResponse_fieldAccessorTable
+    return trinsic.services.provider.v1.ProviderOuterClass
+        .internal_static_services_provider_v1_GenerateTokenResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.provider.v1.GenerateTokenResponse.class, trinsic.services.provider.v1.GenerateTokenResponse.Builder.class);
+            trinsic.services.provider.v1.GenerateTokenResponse.class,
+            trinsic.services.provider.v1.GenerateTokenResponse.Builder.class);
   }
 
   public static final int PROFILE_FIELD_NUMBER = 1;
   private trinsic.services.account.v1.AccountProfile profile_;
   /**
+   *
+   *
    * <pre>
    * Account authentication profile that contains unprotected token
    * </pre>
    *
    * <code>.services.account.v1.AccountProfile profile = 1;</code>
+   *
    * @return Whether the profile field is set.
    */
   @java.lang.Override
@@ -114,18 +68,25 @@ private static final long serialVersionUID = 0L;
     return profile_ != null;
   }
   /**
+   *
+   *
    * <pre>
    * Account authentication profile that contains unprotected token
    * </pre>
    *
    * <code>.services.account.v1.AccountProfile profile = 1;</code>
+   *
    * @return The profile.
    */
   @java.lang.Override
   public trinsic.services.account.v1.AccountProfile getProfile() {
-    return profile_ == null ? trinsic.services.account.v1.AccountProfile.getDefaultInstance() : profile_;
+    return profile_ == null
+        ? trinsic.services.account.v1.AccountProfile.getDefaultInstance()
+        : profile_;
   }
   /**
+   *
+   *
    * <pre>
    * Account authentication profile that contains unprotected token
    * </pre>
@@ -138,6 +99,7 @@ private static final long serialVersionUID = 0L;
   }
 
   private byte memoizedIsInitialized = -1;
+
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -149,12 +111,11 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
     if (profile_ != null) {
       output.writeMessage(1, getProfile());
     }
-    unknownFields.writeTo(output);
+    getUnknownFields().writeTo(output);
   }
 
   @java.lang.Override
@@ -164,10 +125,9 @@ private static final long serialVersionUID = 0L;
 
     size = 0;
     if (profile_ != null) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, getProfile());
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, getProfile());
     }
-    size += unknownFields.getSerializedSize();
+    size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
   }
@@ -175,19 +135,19 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-     return true;
+      return true;
     }
     if (!(obj instanceof trinsic.services.provider.v1.GenerateTokenResponse)) {
       return super.equals(obj);
     }
-    trinsic.services.provider.v1.GenerateTokenResponse other = (trinsic.services.provider.v1.GenerateTokenResponse) obj;
+    trinsic.services.provider.v1.GenerateTokenResponse other =
+        (trinsic.services.provider.v1.GenerateTokenResponse) obj;
 
     if (hasProfile() != other.hasProfile()) return false;
     if (hasProfile()) {
-      if (!getProfile()
-          .equals(other.getProfile())) return false;
+      if (!getProfile().equals(other.getProfile())) return false;
     }
-    if (!unknownFields.equals(other.unknownFields)) return false;
+    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
 
@@ -202,140 +162,141 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + PROFILE_FIELD_NUMBER;
       hash = (53 * hash) + getProfile().hashCode();
     }
-    hash = (29 * hash) + unknownFields.hashCode();
+    hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
   public static trinsic.services.provider.v1.GenerateTokenResponse parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static trinsic.services.provider.v1.GenerateTokenResponse parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static trinsic.services.provider.v1.GenerateTokenResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static trinsic.services.provider.v1.GenerateTokenResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static trinsic.services.provider.v1.GenerateTokenResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static trinsic.services.provider.v1.GenerateTokenResponse parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static trinsic.services.provider.v1.GenerateTokenResponse parseFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
-  }
+
   public static trinsic.services.provider.v1.GenerateTokenResponse parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
-  public static trinsic.services.provider.v1.GenerateTokenResponse parseDelimitedFrom(java.io.InputStream input)
+
+  public static trinsic.services.provider.v1.GenerateTokenResponse parseFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
+
   public static trinsic.services.provider.v1.GenerateTokenResponse parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
+
+  public static trinsic.services.provider.v1.GenerateTokenResponse parseDelimitedFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+        PARSER, input, extensionRegistry);
+  }
+
   public static trinsic.services.provider.v1.GenerateTokenResponse parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static trinsic.services.provider.v1.GenerateTokenResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
+  public Builder newBuilderForType() {
+    return newBuilder();
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
+
   public static Builder newBuilder(trinsic.services.provider.v1.GenerateTokenResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
+
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
+   *
+   *
    * <pre>
    * Response to `GenerateTokenRequest`
    * </pre>
    *
    * Protobuf type {@code services.provider.v1.GenerateTokenResponse}
    */
-  public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+      implements
       // @@protoc_insertion_point(builder_implements:services.provider.v1.GenerateTokenResponse)
       trinsic.services.provider.v1.GenerateTokenResponseOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_GenerateTokenResponse_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.services.provider.v1.ProviderOuterClass
+          .internal_static_services_provider_v1_GenerateTokenResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_GenerateTokenResponse_fieldAccessorTable
+      return trinsic.services.provider.v1.ProviderOuterClass
+          .internal_static_services_provider_v1_GenerateTokenResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.provider.v1.GenerateTokenResponse.class, trinsic.services.provider.v1.GenerateTokenResponse.Builder.class);
+              trinsic.services.provider.v1.GenerateTokenResponse.class,
+              trinsic.services.provider.v1.GenerateTokenResponse.Builder.class);
     }
 
     // Construct using trinsic.services.provider.v1.GenerateTokenResponse.newBuilder()
-    private Builder() {
-      maybeForceBuilderInitialization();
+    private Builder() {}
+
+    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
     }
 
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-      }
-    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -349,9 +310,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
-      return trinsic.services.provider.v1.ProviderOuterClass.internal_static_services_provider_v1_GenerateTokenResponse_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return trinsic.services.provider.v1.ProviderOuterClass
+          .internal_static_services_provider_v1_GenerateTokenResponse_descriptor;
     }
 
     @java.lang.Override
@@ -370,7 +331,8 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public trinsic.services.provider.v1.GenerateTokenResponse buildPartial() {
-      trinsic.services.provider.v1.GenerateTokenResponse result = new trinsic.services.provider.v1.GenerateTokenResponse(this);
+      trinsic.services.provider.v1.GenerateTokenResponse result =
+          new trinsic.services.provider.v1.GenerateTokenResponse(this);
       if (profileBuilder_ == null) {
         result.profile_ = profile_;
       } else {
@@ -384,38 +346,39 @@ private static final long serialVersionUID = 0L;
     public Builder clone() {
       return super.clone();
     }
+
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.setField(field, value);
     }
+
     @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
+
     @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
+
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
+
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
+
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof trinsic.services.provider.v1.GenerateTokenResponse) {
-        return mergeFrom((trinsic.services.provider.v1.GenerateTokenResponse)other);
+        return mergeFrom((trinsic.services.provider.v1.GenerateTokenResponse) other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -423,11 +386,12 @@ private static final long serialVersionUID = 0L;
     }
 
     public Builder mergeFrom(trinsic.services.provider.v1.GenerateTokenResponse other) {
-      if (other == trinsic.services.provider.v1.GenerateTokenResponse.getDefaultInstance()) return this;
+      if (other == trinsic.services.provider.v1.GenerateTokenResponse.getDefaultInstance())
+        return this;
       if (other.hasProfile()) {
         mergeProfile(other.getProfile());
       }
-      this.mergeUnknownFields(other.unknownFields);
+      this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
     }
@@ -442,50 +406,83 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      trinsic.services.provider.v1.GenerateTokenResponse parsedMessage = null;
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       try {
-        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10:
+              {
+                input.readMessage(getProfileFieldBuilder().getBuilder(), extensionRegistry);
+
+                break;
+              } // case 10
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+          } // switch (tag)
+        } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (trinsic.services.provider.v1.GenerateTokenResponse) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
-        if (parsedMessage != null) {
-          mergeFrom(parsedMessage);
-        }
-      }
+        onChanged();
+      } // finally
       return this;
     }
 
     private trinsic.services.account.v1.AccountProfile profile_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        trinsic.services.account.v1.AccountProfile, trinsic.services.account.v1.AccountProfile.Builder, trinsic.services.account.v1.AccountProfileOrBuilder> profileBuilder_;
+            trinsic.services.account.v1.AccountProfile,
+            trinsic.services.account.v1.AccountProfile.Builder,
+            trinsic.services.account.v1.AccountProfileOrBuilder>
+        profileBuilder_;
     /**
+     *
+     *
      * <pre>
      * Account authentication profile that contains unprotected token
      * </pre>
      *
      * <code>.services.account.v1.AccountProfile profile = 1;</code>
+     *
      * @return Whether the profile field is set.
      */
     public boolean hasProfile() {
       return profileBuilder_ != null || profile_ != null;
     }
     /**
+     *
+     *
      * <pre>
      * Account authentication profile that contains unprotected token
      * </pre>
      *
      * <code>.services.account.v1.AccountProfile profile = 1;</code>
+     *
      * @return The profile.
      */
     public trinsic.services.account.v1.AccountProfile getProfile() {
       if (profileBuilder_ == null) {
-        return profile_ == null ? trinsic.services.account.v1.AccountProfile.getDefaultInstance() : profile_;
+        return profile_ == null
+            ? trinsic.services.account.v1.AccountProfile.getDefaultInstance()
+            : profile_;
       } else {
         return profileBuilder_.getMessage();
       }
     }
     /**
+     *
+     *
      * <pre>
      * Account authentication profile that contains unprotected token
      * </pre>
@@ -506,14 +503,15 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Account authentication profile that contains unprotected token
      * </pre>
      *
      * <code>.services.account.v1.AccountProfile profile = 1;</code>
      */
-    public Builder setProfile(
-        trinsic.services.account.v1.AccountProfile.Builder builderForValue) {
+    public Builder setProfile(trinsic.services.account.v1.AccountProfile.Builder builderForValue) {
       if (profileBuilder_ == null) {
         profile_ = builderForValue.build();
         onChanged();
@@ -524,6 +522,8 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Account authentication profile that contains unprotected token
      * </pre>
@@ -534,7 +534,9 @@ private static final long serialVersionUID = 0L;
       if (profileBuilder_ == null) {
         if (profile_ != null) {
           profile_ =
-            trinsic.services.account.v1.AccountProfile.newBuilder(profile_).mergeFrom(value).buildPartial();
+              trinsic.services.account.v1.AccountProfile.newBuilder(profile_)
+                  .mergeFrom(value)
+                  .buildPartial();
         } else {
           profile_ = value;
         }
@@ -546,6 +548,8 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Account authentication profile that contains unprotected token
      * </pre>
@@ -564,6 +568,8 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Account authentication profile that contains unprotected token
      * </pre>
@@ -571,11 +577,13 @@ private static final long serialVersionUID = 0L;
      * <code>.services.account.v1.AccountProfile profile = 1;</code>
      */
     public trinsic.services.account.v1.AccountProfile.Builder getProfileBuilder() {
-      
+
       onChanged();
       return getProfileFieldBuilder().getBuilder();
     }
     /**
+     *
+     *
      * <pre>
      * Account authentication profile that contains unprotected token
      * </pre>
@@ -586,11 +594,14 @@ private static final long serialVersionUID = 0L;
       if (profileBuilder_ != null) {
         return profileBuilder_.getMessageOrBuilder();
       } else {
-        return profile_ == null ?
-            trinsic.services.account.v1.AccountProfile.getDefaultInstance() : profile_;
+        return profile_ == null
+            ? trinsic.services.account.v1.AccountProfile.getDefaultInstance()
+            : profile_;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Account authentication profile that contains unprotected token
      * </pre>
@@ -598,21 +609,24 @@ private static final long serialVersionUID = 0L;
      * <code>.services.account.v1.AccountProfile profile = 1;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        trinsic.services.account.v1.AccountProfile, trinsic.services.account.v1.AccountProfile.Builder, trinsic.services.account.v1.AccountProfileOrBuilder> 
+            trinsic.services.account.v1.AccountProfile,
+            trinsic.services.account.v1.AccountProfile.Builder,
+            trinsic.services.account.v1.AccountProfileOrBuilder>
         getProfileFieldBuilder() {
       if (profileBuilder_ == null) {
-        profileBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            trinsic.services.account.v1.AccountProfile, trinsic.services.account.v1.AccountProfile.Builder, trinsic.services.account.v1.AccountProfileOrBuilder>(
-                getProfile(),
-                getParentForChildren(),
-                isClean());
+        profileBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                trinsic.services.account.v1.AccountProfile,
+                trinsic.services.account.v1.AccountProfile.Builder,
+                trinsic.services.account.v1.AccountProfileOrBuilder>(
+                getProfile(), getParentForChildren(), isClean());
         profile_ = null;
       }
       return profileBuilder_;
     }
+
     @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -622,12 +636,12 @@ private static final long serialVersionUID = 0L;
       return super.mergeUnknownFields(unknownFields);
     }
 
-
     // @@protoc_insertion_point(builder_scope:services.provider.v1.GenerateTokenResponse)
   }
 
   // @@protoc_insertion_point(class_scope:services.provider.v1.GenerateTokenResponse)
   private static final trinsic.services.provider.v1.GenerateTokenResponse DEFAULT_INSTANCE;
+
   static {
     DEFAULT_INSTANCE = new trinsic.services.provider.v1.GenerateTokenResponse();
   }
@@ -636,16 +650,27 @@ private static final long serialVersionUID = 0L;
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<GenerateTokenResponse>
-      PARSER = new com.google.protobuf.AbstractParser<GenerateTokenResponse>() {
-    @java.lang.Override
-    public GenerateTokenResponse parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return new GenerateTokenResponse(input, extensionRegistry);
-    }
-  };
+  private static final com.google.protobuf.Parser<GenerateTokenResponse> PARSER =
+      new com.google.protobuf.AbstractParser<GenerateTokenResponse>() {
+        @java.lang.Override
+        public GenerateTokenResponse parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
 
   public static com.google.protobuf.Parser<GenerateTokenResponse> parser() {
     return PARSER;
@@ -660,6 +685,4 @@ private static final long serialVersionUID = 0L;
   public trinsic.services.provider.v1.GenerateTokenResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
-
 }
-

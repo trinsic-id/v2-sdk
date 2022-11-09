@@ -3,7 +3,7 @@
 
 package trinsic.services.provider.v1;
 
-public interface RetrieveDomainVerificationRecordRequestOrBuilder extends
+public interface RetrieveDomainVerificationRecordRequestOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.provider.v1.RetrieveDomainVerificationRecordRequest)
-    com.google.protobuf.MessageOrBuilder {
-}
+    com.google.protobuf.MessageOrBuilder {}

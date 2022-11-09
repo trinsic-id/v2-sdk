@@ -4,109 +4,64 @@
 package trinsic.services.provider.v1;
 
 /**
+ *
+ *
  * <pre>
  * Request to fetch the list of roles assigned to the current account
  * </pre>
  *
  * Protobuf type {@code services.provider.v1.ListRoleAssignmentsRequest}
  */
-public final class ListRoleAssignmentsRequest extends
-    com.google.protobuf.GeneratedMessageV3 implements
+public final class ListRoleAssignmentsRequest extends com.google.protobuf.GeneratedMessageV3
+    implements
     // @@protoc_insertion_point(message_implements:services.provider.v1.ListRoleAssignmentsRequest)
     ListRoleAssignmentsRequestOrBuilder {
-private static final long serialVersionUID = 0L;
+  private static final long serialVersionUID = 0L;
   // Use ListRoleAssignmentsRequest.newBuilder() to construct.
   private ListRoleAssignmentsRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private ListRoleAssignmentsRequest() {
-  }
+
+  private ListRoleAssignmentsRequest() {}
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
     return new ListRoleAssignmentsRequest();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet
-  getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
     return this.unknownFields;
   }
-  private ListRoleAssignmentsRequest(
-      com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
-    try {
-      boolean done = false;
-      while (!done) {
-        int tag = input.readTag();
-        switch (tag) {
-          case 0:
-            done = true;
-            break;
-          case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
-            accountCase_ = 2;
-            account_ = s;
-            break;
-          }
-          case 26: {
-            java.lang.String s = input.readStringRequireUtf8();
-            accountCase_ = 3;
-            account_ = s;
-            break;
-          }
-          default: {
-            if (!parseUnknownField(
-                input, unknownFields, extensionRegistry, tag)) {
-              done = true;
-            }
-            break;
-          }
-        }
-      }
-    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
-    } catch (com.google.protobuf.UninitializedMessageException e) {
-      throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
-    } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
-    } finally {
-      this.unknownFields = unknownFields.build();
-      makeExtensionsImmutable();
-    }
-  }
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return trinsic.services.provider.v1.AccessManagementOuterClass.internal_static_services_provider_v1_ListRoleAssignmentsRequest_descriptor;
+
+  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    return trinsic.services.provider.v1.AccessManagementOuterClass
+        .internal_static_services_provider_v1_ListRoleAssignmentsRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.provider.v1.AccessManagementOuterClass.internal_static_services_provider_v1_ListRoleAssignmentsRequest_fieldAccessorTable
+    return trinsic.services.provider.v1.AccessManagementOuterClass
+        .internal_static_services_provider_v1_ListRoleAssignmentsRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.provider.v1.ListRoleAssignmentsRequest.class, trinsic.services.provider.v1.ListRoleAssignmentsRequest.Builder.class);
+            trinsic.services.provider.v1.ListRoleAssignmentsRequest.class,
+            trinsic.services.provider.v1.ListRoleAssignmentsRequest.Builder.class);
   }
 
   private int accountCase_ = 0;
   private java.lang.Object account_;
+
   public enum AccountCase
-      implements com.google.protobuf.Internal.EnumLite,
+      implements
+          com.google.protobuf.Internal.EnumLite,
           com.google.protobuf.AbstractMessage.InternalOneOfEnum {
     EMAIL(2),
     WALLET_ID(3),
     ACCOUNT_NOT_SET(0);
     private final int value;
+
     private AccountCase(int value) {
       this.value = value;
     }
@@ -122,43 +77,52 @@ private static final long serialVersionUID = 0L;
 
     public static AccountCase forNumber(int value) {
       switch (value) {
-        case 2: return EMAIL;
-        case 3: return WALLET_ID;
-        case 0: return ACCOUNT_NOT_SET;
-        default: return null;
+        case 2:
+          return EMAIL;
+        case 3:
+          return WALLET_ID;
+        case 0:
+          return ACCOUNT_NOT_SET;
+        default:
+          return null;
       }
     }
+
     public int getNumber() {
       return this.value;
     }
   };
 
-  public AccountCase
-  getAccountCase() {
-    return AccountCase.forNumber(
-        accountCase_);
+  public AccountCase getAccountCase() {
+    return AccountCase.forNumber(accountCase_);
   }
 
   public static final int EMAIL_FIELD_NUMBER = 2;
   /**
+   *
+   *
    * <pre>
    * Email address of account to unassign role from.
    * Mutually exclusive with `walletId`.
    * </pre>
    *
    * <code>string email = 2;</code>
+   *
    * @return Whether the email field is set.
    */
   public boolean hasEmail() {
     return accountCase_ == 2;
   }
   /**
+   *
+   *
    * <pre>
    * Email address of account to unassign role from.
    * Mutually exclusive with `walletId`.
    * </pre>
    *
    * <code>string email = 2;</code>
+   *
    * @return The email.
    */
   public java.lang.String getEmail() {
@@ -169,8 +133,7 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       if (accountCase_ == 2) {
         account_ = s;
@@ -179,24 +142,25 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   *
+   *
    * <pre>
    * Email address of account to unassign role from.
    * Mutually exclusive with `walletId`.
    * </pre>
    *
    * <code>string email = 2;</code>
+   *
    * @return The bytes for email.
    */
-  public com.google.protobuf.ByteString
-      getEmailBytes() {
+  public com.google.protobuf.ByteString getEmailBytes() {
     java.lang.Object ref = "";
     if (accountCase_ == 2) {
       ref = account_;
     }
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       if (accountCase_ == 2) {
         account_ = b;
       }
@@ -208,24 +172,30 @@ private static final long serialVersionUID = 0L;
 
   public static final int WALLET_ID_FIELD_NUMBER = 3;
   /**
+   *
+   *
    * <pre>
    * Wallet ID of account to unassign role from.
    * Mutually exclusive with `email`.
    * </pre>
    *
    * <code>string wallet_id = 3;</code>
+   *
    * @return Whether the walletId field is set.
    */
   public boolean hasWalletId() {
     return accountCase_ == 3;
   }
   /**
+   *
+   *
    * <pre>
    * Wallet ID of account to unassign role from.
    * Mutually exclusive with `email`.
    * </pre>
    *
    * <code>string wallet_id = 3;</code>
+   *
    * @return The walletId.
    */
   public java.lang.String getWalletId() {
@@ -236,8 +206,7 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       if (accountCase_ == 3) {
         account_ = s;
@@ -246,24 +215,25 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   *
+   *
    * <pre>
    * Wallet ID of account to unassign role from.
    * Mutually exclusive with `email`.
    * </pre>
    *
    * <code>string wallet_id = 3;</code>
+   *
    * @return The bytes for walletId.
    */
-  public com.google.protobuf.ByteString
-      getWalletIdBytes() {
+  public com.google.protobuf.ByteString getWalletIdBytes() {
     java.lang.Object ref = "";
     if (accountCase_ == 3) {
       ref = account_;
     }
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       if (accountCase_ == 3) {
         account_ = b;
       }
@@ -274,6 +244,7 @@ private static final long serialVersionUID = 0L;
   }
 
   private byte memoizedIsInitialized = -1;
+
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -285,15 +256,14 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
     if (accountCase_ == 2) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, account_);
     }
     if (accountCase_ == 3) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, account_);
     }
-    unknownFields.writeTo(output);
+    getUnknownFields().writeTo(output);
   }
 
   @java.lang.Override
@@ -308,7 +278,7 @@ private static final long serialVersionUID = 0L;
     if (accountCase_ == 3) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, account_);
     }
-    size += unknownFields.getSerializedSize();
+    size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
   }
@@ -316,27 +286,26 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-     return true;
+      return true;
     }
     if (!(obj instanceof trinsic.services.provider.v1.ListRoleAssignmentsRequest)) {
       return super.equals(obj);
     }
-    trinsic.services.provider.v1.ListRoleAssignmentsRequest other = (trinsic.services.provider.v1.ListRoleAssignmentsRequest) obj;
+    trinsic.services.provider.v1.ListRoleAssignmentsRequest other =
+        (trinsic.services.provider.v1.ListRoleAssignmentsRequest) obj;
 
     if (!getAccountCase().equals(other.getAccountCase())) return false;
     switch (accountCase_) {
       case 2:
-        if (!getEmail()
-            .equals(other.getEmail())) return false;
+        if (!getEmail().equals(other.getEmail())) return false;
         break;
       case 3:
-        if (!getWalletId()
-            .equals(other.getWalletId())) return false;
+        if (!getWalletId().equals(other.getWalletId())) return false;
         break;
       case 0:
       default:
     }
-    if (!unknownFields.equals(other.unknownFields)) return false;
+    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
 
@@ -359,140 +328,142 @@ private static final long serialVersionUID = 0L;
       case 0:
       default:
     }
-    hash = (29 * hash) + unknownFields.hashCode();
+    hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
   public static trinsic.services.provider.v1.ListRoleAssignmentsRequest parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+      java.nio.ByteBuffer data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static trinsic.services.provider.v1.ListRoleAssignmentsRequest parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static trinsic.services.provider.v1.ListRoleAssignmentsRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static trinsic.services.provider.v1.ListRoleAssignmentsRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static trinsic.services.provider.v1.ListRoleAssignmentsRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static trinsic.services.provider.v1.ListRoleAssignmentsRequest parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static trinsic.services.provider.v1.ListRoleAssignmentsRequest parseFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
-  }
+
   public static trinsic.services.provider.v1.ListRoleAssignmentsRequest parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
-  public static trinsic.services.provider.v1.ListRoleAssignmentsRequest parseDelimitedFrom(java.io.InputStream input)
+
+  public static trinsic.services.provider.v1.ListRoleAssignmentsRequest parseFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
+
   public static trinsic.services.provider.v1.ListRoleAssignmentsRequest parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
+
+  public static trinsic.services.provider.v1.ListRoleAssignmentsRequest parseDelimitedFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+        PARSER, input, extensionRegistry);
+  }
+
   public static trinsic.services.provider.v1.ListRoleAssignmentsRequest parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static trinsic.services.provider.v1.ListRoleAssignmentsRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
+  public Builder newBuilderForType() {
+    return newBuilder();
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(trinsic.services.provider.v1.ListRoleAssignmentsRequest prototype) {
+
+  public static Builder newBuilder(
+      trinsic.services.provider.v1.ListRoleAssignmentsRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-  }
-  @java.lang.Override
-  public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  public Builder toBuilder() {
+    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+  }
+
+  @java.lang.Override
+  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
+   *
+   *
    * <pre>
    * Request to fetch the list of roles assigned to the current account
    * </pre>
    *
    * Protobuf type {@code services.provider.v1.ListRoleAssignmentsRequest}
    */
-  public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+      implements
       // @@protoc_insertion_point(builder_implements:services.provider.v1.ListRoleAssignmentsRequest)
       trinsic.services.provider.v1.ListRoleAssignmentsRequestOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.provider.v1.AccessManagementOuterClass.internal_static_services_provider_v1_ListRoleAssignmentsRequest_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.services.provider.v1.AccessManagementOuterClass
+          .internal_static_services_provider_v1_ListRoleAssignmentsRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.provider.v1.AccessManagementOuterClass.internal_static_services_provider_v1_ListRoleAssignmentsRequest_fieldAccessorTable
+      return trinsic.services.provider.v1.AccessManagementOuterClass
+          .internal_static_services_provider_v1_ListRoleAssignmentsRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.provider.v1.ListRoleAssignmentsRequest.class, trinsic.services.provider.v1.ListRoleAssignmentsRequest.Builder.class);
+              trinsic.services.provider.v1.ListRoleAssignmentsRequest.class,
+              trinsic.services.provider.v1.ListRoleAssignmentsRequest.Builder.class);
     }
 
     // Construct using trinsic.services.provider.v1.ListRoleAssignmentsRequest.newBuilder()
-    private Builder() {
-      maybeForceBuilderInitialization();
+    private Builder() {}
+
+    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
     }
 
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-      }
-    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -502,9 +473,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
-      return trinsic.services.provider.v1.AccessManagementOuterClass.internal_static_services_provider_v1_ListRoleAssignmentsRequest_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return trinsic.services.provider.v1.AccessManagementOuterClass
+          .internal_static_services_provider_v1_ListRoleAssignmentsRequest_descriptor;
     }
 
     @java.lang.Override
@@ -523,7 +494,8 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public trinsic.services.provider.v1.ListRoleAssignmentsRequest buildPartial() {
-      trinsic.services.provider.v1.ListRoleAssignmentsRequest result = new trinsic.services.provider.v1.ListRoleAssignmentsRequest(this);
+      trinsic.services.provider.v1.ListRoleAssignmentsRequest result =
+          new trinsic.services.provider.v1.ListRoleAssignmentsRequest(this);
       if (accountCase_ == 2) {
         result.account_ = account_;
       }
@@ -539,38 +511,39 @@ private static final long serialVersionUID = 0L;
     public Builder clone() {
       return super.clone();
     }
+
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.setField(field, value);
     }
+
     @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
+
     @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
+
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
+
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
+
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof trinsic.services.provider.v1.ListRoleAssignmentsRequest) {
-        return mergeFrom((trinsic.services.provider.v1.ListRoleAssignmentsRequest)other);
+        return mergeFrom((trinsic.services.provider.v1.ListRoleAssignmentsRequest) other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -578,25 +551,29 @@ private static final long serialVersionUID = 0L;
     }
 
     public Builder mergeFrom(trinsic.services.provider.v1.ListRoleAssignmentsRequest other) {
-      if (other == trinsic.services.provider.v1.ListRoleAssignmentsRequest.getDefaultInstance()) return this;
+      if (other == trinsic.services.provider.v1.ListRoleAssignmentsRequest.getDefaultInstance())
+        return this;
       switch (other.getAccountCase()) {
-        case EMAIL: {
-          accountCase_ = 2;
-          account_ = other.account_;
-          onChanged();
-          break;
-        }
-        case WALLET_ID: {
-          accountCase_ = 3;
-          account_ = other.account_;
-          onChanged();
-          break;
-        }
-        case ACCOUNT_NOT_SET: {
-          break;
-        }
+        case EMAIL:
+          {
+            accountCase_ = 2;
+            account_ = other.account_;
+            onChanged();
+            break;
+          }
+        case WALLET_ID:
+          {
+            accountCase_ = 3;
+            account_ = other.account_;
+            onChanged();
+            break;
+          }
+        case ACCOUNT_NOT_SET:
+          {
+            break;
+          }
       }
-      this.mergeUnknownFields(other.unknownFields);
+      this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
     }
@@ -611,25 +588,53 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      trinsic.services.provider.v1.ListRoleAssignmentsRequest parsedMessage = null;
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       try {
-        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 18:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+                accountCase_ = 2;
+                account_ = s;
+                break;
+              } // case 18
+            case 26:
+              {
+                java.lang.String s = input.readStringRequireUtf8();
+                accountCase_ = 3;
+                account_ = s;
+                break;
+              } // case 26
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+          } // switch (tag)
+        } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (trinsic.services.provider.v1.ListRoleAssignmentsRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
-        if (parsedMessage != null) {
-          mergeFrom(parsedMessage);
-        }
-      }
+        onChanged();
+      } // finally
       return this;
     }
+
     private int accountCase_ = 0;
     private java.lang.Object account_;
-    public AccountCase
-        getAccountCase() {
-      return AccountCase.forNumber(
-          accountCase_);
+
+    public AccountCase getAccountCase() {
+      return AccountCase.forNumber(accountCase_);
     }
 
     public Builder clearAccount() {
@@ -639,14 +644,16 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-
     /**
+     *
+     *
      * <pre>
      * Email address of account to unassign role from.
      * Mutually exclusive with `walletId`.
      * </pre>
      *
      * <code>string email = 2;</code>
+     *
      * @return Whether the email field is set.
      */
     @java.lang.Override
@@ -654,12 +661,15 @@ private static final long serialVersionUID = 0L;
       return accountCase_ == 2;
     }
     /**
+     *
+     *
      * <pre>
      * Email address of account to unassign role from.
      * Mutually exclusive with `walletId`.
      * </pre>
      *
      * <code>string email = 2;</code>
+     *
      * @return The email.
      */
     @java.lang.Override
@@ -669,8 +679,7 @@ private static final long serialVersionUID = 0L;
         ref = account_;
       }
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (accountCase_ == 2) {
           account_ = s;
@@ -681,25 +690,26 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Email address of account to unassign role from.
      * Mutually exclusive with `walletId`.
      * </pre>
      *
      * <code>string email = 2;</code>
+     *
      * @return The bytes for email.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getEmailBytes() {
+    public com.google.protobuf.ByteString getEmailBytes() {
       java.lang.Object ref = "";
       if (accountCase_ == 2) {
         ref = account_;
       }
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         if (accountCase_ == 2) {
           account_ = b;
         }
@@ -709,32 +719,37 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Email address of account to unassign role from.
      * Mutually exclusive with `walletId`.
      * </pre>
      *
      * <code>string email = 2;</code>
+     *
      * @param value The email to set.
      * @return This builder for chaining.
      */
-    public Builder setEmail(
-        java.lang.String value) {
+    public Builder setEmail(java.lang.String value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  accountCase_ = 2;
+        throw new NullPointerException();
+      }
+      accountCase_ = 2;
       account_ = value;
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Email address of account to unassign role from.
      * Mutually exclusive with `walletId`.
      * </pre>
      *
      * <code>string email = 2;</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearEmail() {
@@ -746,21 +761,23 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Email address of account to unassign role from.
      * Mutually exclusive with `walletId`.
      * </pre>
      *
      * <code>string email = 2;</code>
+     *
      * @param value The bytes for email to set.
      * @return This builder for chaining.
      */
-    public Builder setEmailBytes(
-        com.google.protobuf.ByteString value) {
+    public Builder setEmailBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
       accountCase_ = 2;
       account_ = value;
       onChanged();
@@ -768,12 +785,15 @@ private static final long serialVersionUID = 0L;
     }
 
     /**
+     *
+     *
      * <pre>
      * Wallet ID of account to unassign role from.
      * Mutually exclusive with `email`.
      * </pre>
      *
      * <code>string wallet_id = 3;</code>
+     *
      * @return Whether the walletId field is set.
      */
     @java.lang.Override
@@ -781,12 +801,15 @@ private static final long serialVersionUID = 0L;
       return accountCase_ == 3;
     }
     /**
+     *
+     *
      * <pre>
      * Wallet ID of account to unassign role from.
      * Mutually exclusive with `email`.
      * </pre>
      *
      * <code>string wallet_id = 3;</code>
+     *
      * @return The walletId.
      */
     @java.lang.Override
@@ -796,8 +819,7 @@ private static final long serialVersionUID = 0L;
         ref = account_;
       }
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (accountCase_ == 3) {
           account_ = s;
@@ -808,25 +830,26 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Wallet ID of account to unassign role from.
      * Mutually exclusive with `email`.
      * </pre>
      *
      * <code>string wallet_id = 3;</code>
+     *
      * @return The bytes for walletId.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getWalletIdBytes() {
+    public com.google.protobuf.ByteString getWalletIdBytes() {
       java.lang.Object ref = "";
       if (accountCase_ == 3) {
         ref = account_;
       }
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         if (accountCase_ == 3) {
           account_ = b;
         }
@@ -836,32 +859,37 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Wallet ID of account to unassign role from.
      * Mutually exclusive with `email`.
      * </pre>
      *
      * <code>string wallet_id = 3;</code>
+     *
      * @param value The walletId to set.
      * @return This builder for chaining.
      */
-    public Builder setWalletId(
-        java.lang.String value) {
+    public Builder setWalletId(java.lang.String value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  accountCase_ = 3;
+        throw new NullPointerException();
+      }
+      accountCase_ = 3;
       account_ = value;
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Wallet ID of account to unassign role from.
      * Mutually exclusive with `email`.
      * </pre>
      *
      * <code>string wallet_id = 3;</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearWalletId() {
@@ -873,29 +901,31 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Wallet ID of account to unassign role from.
      * Mutually exclusive with `email`.
      * </pre>
      *
      * <code>string wallet_id = 3;</code>
+     *
      * @param value The bytes for walletId to set.
      * @return This builder for chaining.
      */
-    public Builder setWalletIdBytes(
-        com.google.protobuf.ByteString value) {
+    public Builder setWalletIdBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
       accountCase_ = 3;
       account_ = value;
       onChanged();
       return this;
     }
+
     @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -905,12 +935,12 @@ private static final long serialVersionUID = 0L;
       return super.mergeUnknownFields(unknownFields);
     }
 
-
     // @@protoc_insertion_point(builder_scope:services.provider.v1.ListRoleAssignmentsRequest)
   }
 
   // @@protoc_insertion_point(class_scope:services.provider.v1.ListRoleAssignmentsRequest)
   private static final trinsic.services.provider.v1.ListRoleAssignmentsRequest DEFAULT_INSTANCE;
+
   static {
     DEFAULT_INSTANCE = new trinsic.services.provider.v1.ListRoleAssignmentsRequest();
   }
@@ -919,16 +949,27 @@ private static final long serialVersionUID = 0L;
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<ListRoleAssignmentsRequest>
-      PARSER = new com.google.protobuf.AbstractParser<ListRoleAssignmentsRequest>() {
-    @java.lang.Override
-    public ListRoleAssignmentsRequest parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return new ListRoleAssignmentsRequest(input, extensionRegistry);
-    }
-  };
+  private static final com.google.protobuf.Parser<ListRoleAssignmentsRequest> PARSER =
+      new com.google.protobuf.AbstractParser<ListRoleAssignmentsRequest>() {
+        @java.lang.Override
+        public ListRoleAssignmentsRequest parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
 
   public static com.google.protobuf.Parser<ListRoleAssignmentsRequest> parser() {
     return PARSER;
@@ -943,6 +984,4 @@ private static final long serialVersionUID = 0L;
   public trinsic.services.provider.v1.ListRoleAssignmentsRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
-
 }
-

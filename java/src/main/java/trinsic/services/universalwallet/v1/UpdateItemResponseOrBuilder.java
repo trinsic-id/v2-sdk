@@ -3,7 +3,7 @@
 
 package trinsic.services.universalwallet.v1;
 
-public interface UpdateItemResponseOrBuilder extends
+public interface UpdateItemResponseOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.universalwallet.v1.UpdateItemResponse)
-    com.google.protobuf.MessageOrBuilder {
-}
+    com.google.protobuf.MessageOrBuilder {}

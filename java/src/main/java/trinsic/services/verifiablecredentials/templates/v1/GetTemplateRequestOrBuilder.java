@@ -3,19 +3,21 @@
 
 package trinsic.services.verifiablecredentials.templates.v1;
 
-public interface GetTemplateRequestOrBuilder extends
+public interface GetTemplateRequestOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.templates.v1.GetTemplateRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>string id = 1;</code>
+   *
    * @return The id.
    */
   java.lang.String getId();
   /**
    * <code>string id = 1;</code>
+   *
    * @return The bytes for id.
    */
-  com.google.protobuf.ByteString
-      getIdBytes();
+  com.google.protobuf.ByteString getIdBytes();
 }

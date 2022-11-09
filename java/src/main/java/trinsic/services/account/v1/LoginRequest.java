@@ -4,21 +4,24 @@
 package trinsic.services.account.v1;
 
 /**
+ *
+ *
  * <pre>
  * Request to begin login flow
  * </pre>
  *
  * Protobuf type {@code services.account.v1.LoginRequest}
  */
-public final class LoginRequest extends
-    com.google.protobuf.GeneratedMessageV3 implements
+public final class LoginRequest extends com.google.protobuf.GeneratedMessageV3
+    implements
     // @@protoc_insertion_point(message_implements:services.account.v1.LoginRequest)
     LoginRequestOrBuilder {
-private static final long serialVersionUID = 0L;
+  private static final long serialVersionUID = 0L;
   // Use LoginRequest.newBuilder() to construct.
   private LoginRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
+
   private LoginRequest() {
     email_ = "";
     invitationCode_ = "";
@@ -27,94 +30,41 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
     return new LoginRequest();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet
-  getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
     return this.unknownFields;
   }
-  private LoginRequest(
-      com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
-    try {
-      boolean done = false;
-      while (!done) {
-        int tag = input.readTag();
-        switch (tag) {
-          case 0:
-            done = true;
-            break;
-          case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
 
-            email_ = s;
-            break;
-          }
-          case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            invitationCode_ = s;
-            break;
-          }
-          case 26: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            ecosystemId_ = s;
-            break;
-          }
-          default: {
-            if (!parseUnknownField(
-                input, unknownFields, extensionRegistry, tag)) {
-              done = true;
-            }
-            break;
-          }
-        }
-      }
-    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
-    } catch (com.google.protobuf.UninitializedMessageException e) {
-      throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
-    } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
-    } finally {
-      this.unknownFields = unknownFields.build();
-      makeExtensionsImmutable();
-    }
-  }
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_LoginRequest_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    return trinsic.services.account.v1.AccountOuterClass
+        .internal_static_services_account_v1_LoginRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_LoginRequest_fieldAccessorTable
+    return trinsic.services.account.v1.AccountOuterClass
+        .internal_static_services_account_v1_LoginRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.account.v1.LoginRequest.class, trinsic.services.account.v1.LoginRequest.Builder.class);
+            trinsic.services.account.v1.LoginRequest.class,
+            trinsic.services.account.v1.LoginRequest.Builder.class);
   }
 
   public static final int EMAIL_FIELD_NUMBER = 1;
   private volatile java.lang.Object email_;
   /**
+   *
+   *
    * <pre>
    * Email address of account. If unspecified, an anonymous account will be created.
    * </pre>
    *
    * <code>string email = 1 [(.services.options.optional) = true];</code>
+   *
    * @return The email.
    */
   @java.lang.Override
@@ -123,29 +73,29 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       email_ = s;
       return s;
     }
   }
   /**
+   *
+   *
    * <pre>
    * Email address of account. If unspecified, an anonymous account will be created.
    * </pre>
    *
    * <code>string email = 1 [(.services.options.optional) = true];</code>
+   *
    * @return The bytes for email.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getEmailBytes() {
+  public com.google.protobuf.ByteString getEmailBytes() {
     java.lang.Object ref = email_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       email_ = b;
       return b;
     } else {
@@ -156,11 +106,14 @@ private static final long serialVersionUID = 0L;
   public static final int INVITATION_CODE_FIELD_NUMBER = 2;
   private volatile java.lang.Object invitationCode_;
   /**
+   *
+   *
    * <pre>
    * Invitation code associated with this registration
    * </pre>
    *
    * <code>string invitation_code = 2 [(.services.options.optional) = true];</code>
+   *
    * @return The invitationCode.
    */
   @java.lang.Override
@@ -169,29 +122,29 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       invitationCode_ = s;
       return s;
     }
   }
   /**
+   *
+   *
    * <pre>
    * Invitation code associated with this registration
    * </pre>
    *
    * <code>string invitation_code = 2 [(.services.options.optional) = true];</code>
+   *
    * @return The bytes for invitationCode.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getInvitationCodeBytes() {
+  public com.google.protobuf.ByteString getInvitationCodeBytes() {
     java.lang.Object ref = invitationCode_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       invitationCode_ = b;
       return b;
     } else {
@@ -202,12 +155,15 @@ private static final long serialVersionUID = 0L;
   public static final int ECOSYSTEM_ID_FIELD_NUMBER = 3;
   private volatile java.lang.Object ecosystemId_;
   /**
+   *
+   *
    * <pre>
    * ID of Ecosystem to sign into.
    * Ignored if `invitation_code` is passed.
    * </pre>
    *
    * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
+   *
    * @return The ecosystemId.
    */
   @java.lang.Override
@@ -216,30 +172,30 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       ecosystemId_ = s;
       return s;
     }
   }
   /**
+   *
+   *
    * <pre>
    * ID of Ecosystem to sign into.
    * Ignored if `invitation_code` is passed.
    * </pre>
    *
    * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
+   *
    * @return The bytes for ecosystemId.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getEcosystemIdBytes() {
+  public com.google.protobuf.ByteString getEcosystemIdBytes() {
     java.lang.Object ref = ecosystemId_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       ecosystemId_ = b;
       return b;
     } else {
@@ -248,6 +204,7 @@ private static final long serialVersionUID = 0L;
   }
 
   private byte memoizedIsInitialized = -1;
+
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -259,8 +216,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(email_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, email_);
     }
@@ -270,7 +226,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, ecosystemId_);
     }
-    unknownFields.writeTo(output);
+    getUnknownFields().writeTo(output);
   }
 
   @java.lang.Override
@@ -288,7 +244,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(ecosystemId_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, ecosystemId_);
     }
-    size += unknownFields.getSerializedSize();
+    size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
   }
@@ -296,20 +252,17 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-     return true;
+      return true;
     }
     if (!(obj instanceof trinsic.services.account.v1.LoginRequest)) {
       return super.equals(obj);
     }
     trinsic.services.account.v1.LoginRequest other = (trinsic.services.account.v1.LoginRequest) obj;
 
-    if (!getEmail()
-        .equals(other.getEmail())) return false;
-    if (!getInvitationCode()
-        .equals(other.getInvitationCode())) return false;
-    if (!getEcosystemId()
-        .equals(other.getEcosystemId())) return false;
-    if (!unknownFields.equals(other.unknownFields)) return false;
+    if (!getEmail().equals(other.getEmail())) return false;
+    if (!getInvitationCode().equals(other.getInvitationCode())) return false;
+    if (!getEcosystemId().equals(other.getEcosystemId())) return false;
+    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
 
@@ -326,140 +279,141 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getInvitationCode().hashCode();
     hash = (37 * hash) + ECOSYSTEM_ID_FIELD_NUMBER;
     hash = (53 * hash) + getEcosystemId().hashCode();
-    hash = (29 * hash) + unknownFields.hashCode();
+    hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static trinsic.services.account.v1.LoginRequest parseFrom(
-      java.nio.ByteBuffer data)
+  public static trinsic.services.account.v1.LoginRequest parseFrom(java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static trinsic.services.account.v1.LoginRequest parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static trinsic.services.account.v1.LoginRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static trinsic.services.account.v1.LoginRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static trinsic.services.account.v1.LoginRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
+
   public static trinsic.services.account.v1.LoginRequest parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
+
   public static trinsic.services.account.v1.LoginRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static trinsic.services.account.v1.LoginRequest parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
-  public static trinsic.services.account.v1.LoginRequest parseDelimitedFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
-  }
+
   public static trinsic.services.account.v1.LoginRequest parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
+
+  public static trinsic.services.account.v1.LoginRequest parseDelimitedFrom(
+      java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+        PARSER, input, extensionRegistry);
+  }
+
   public static trinsic.services.account.v1.LoginRequest parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+      com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
+
   public static trinsic.services.account.v1.LoginRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
+  public Builder newBuilderForType() {
+    return newBuilder();
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
+
   public static Builder newBuilder(trinsic.services.account.v1.LoginRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
+
   @java.lang.Override
   public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
+    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
+   *
+   *
    * <pre>
    * Request to begin login flow
    * </pre>
    *
    * Protobuf type {@code services.account.v1.LoginRequest}
    */
-  public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+      implements
       // @@protoc_insertion_point(builder_implements:services.account.v1.LoginRequest)
       trinsic.services.account.v1.LoginRequestOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_LoginRequest_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.services.account.v1.AccountOuterClass
+          .internal_static_services_account_v1_LoginRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_LoginRequest_fieldAccessorTable
+      return trinsic.services.account.v1.AccountOuterClass
+          .internal_static_services_account_v1_LoginRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.account.v1.LoginRequest.class, trinsic.services.account.v1.LoginRequest.Builder.class);
+              trinsic.services.account.v1.LoginRequest.class,
+              trinsic.services.account.v1.LoginRequest.Builder.class);
     }
 
     // Construct using trinsic.services.account.v1.LoginRequest.newBuilder()
-    private Builder() {
-      maybeForceBuilderInitialization();
+    private Builder() {}
+
+    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
     }
 
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-      }
-    }
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -473,9 +427,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
-      return trinsic.services.account.v1.AccountOuterClass.internal_static_services_account_v1_LoginRequest_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return trinsic.services.account.v1.AccountOuterClass
+          .internal_static_services_account_v1_LoginRequest_descriptor;
     }
 
     @java.lang.Override
@@ -494,7 +448,8 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public trinsic.services.account.v1.LoginRequest buildPartial() {
-      trinsic.services.account.v1.LoginRequest result = new trinsic.services.account.v1.LoginRequest(this);
+      trinsic.services.account.v1.LoginRequest result =
+          new trinsic.services.account.v1.LoginRequest(this);
       result.email_ = email_;
       result.invitationCode_ = invitationCode_;
       result.ecosystemId_ = ecosystemId_;
@@ -506,38 +461,39 @@ private static final long serialVersionUID = 0L;
     public Builder clone() {
       return super.clone();
     }
+
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.setField(field, value);
     }
+
     @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
+
     @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
+
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
+
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
+
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof trinsic.services.account.v1.LoginRequest) {
-        return mergeFrom((trinsic.services.account.v1.LoginRequest)other);
+        return mergeFrom((trinsic.services.account.v1.LoginRequest) other);
       } else {
         super.mergeFrom(other);
         return this;
@@ -558,7 +514,7 @@ private static final long serialVersionUID = 0L;
         ecosystemId_ = other.ecosystemId_;
         onChanged();
       }
-      this.mergeUnknownFields(other.unknownFields);
+      this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
     }
@@ -573,34 +529,68 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      trinsic.services.account.v1.LoginRequest parsedMessage = null;
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       try {
-        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10:
+              {
+                email_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 10
+            case 18:
+              {
+                invitationCode_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 18
+            case 26:
+              {
+                ecosystemId_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 26
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+          } // switch (tag)
+        } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (trinsic.services.account.v1.LoginRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
-        if (parsedMessage != null) {
-          mergeFrom(parsedMessage);
-        }
-      }
+        onChanged();
+      } // finally
       return this;
     }
 
     private java.lang.Object email_ = "";
     /**
+     *
+     *
      * <pre>
      * Email address of account. If unspecified, an anonymous account will be created.
      * </pre>
      *
      * <code>string email = 1 [(.services.options.optional) = true];</code>
+     *
      * @return The email.
      */
     public java.lang.String getEmail() {
       java.lang.Object ref = email_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         email_ = s;
         return s;
@@ -609,20 +599,21 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Email address of account. If unspecified, an anonymous account will be created.
      * </pre>
      *
      * <code>string email = 1 [(.services.options.optional) = true];</code>
+     *
      * @return The bytes for email.
      */
-    public com.google.protobuf.ByteString
-        getEmailBytes() {
+    public com.google.protobuf.ByteString getEmailBytes() {
       java.lang.Object ref = email_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         email_ = b;
         return b;
       } else {
@@ -630,54 +621,61 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Email address of account. If unspecified, an anonymous account will be created.
      * </pre>
      *
      * <code>string email = 1 [(.services.options.optional) = true];</code>
+     *
      * @param value The email to set.
      * @return This builder for chaining.
      */
-    public Builder setEmail(
-        java.lang.String value) {
+    public Builder setEmail(java.lang.String value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        throw new NullPointerException();
+      }
+
       email_ = value;
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Email address of account. If unspecified, an anonymous account will be created.
      * </pre>
      *
      * <code>string email = 1 [(.services.options.optional) = true];</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearEmail() {
-      
+
       email_ = getDefaultInstance().getEmail();
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Email address of account. If unspecified, an anonymous account will be created.
      * </pre>
      *
      * <code>string email = 1 [(.services.options.optional) = true];</code>
+     *
      * @param value The bytes for email to set.
      * @return This builder for chaining.
      */
-    public Builder setEmailBytes(
-        com.google.protobuf.ByteString value) {
+    public Builder setEmailBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
       email_ = value;
       onChanged();
       return this;
@@ -685,18 +683,20 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object invitationCode_ = "";
     /**
+     *
+     *
      * <pre>
      * Invitation code associated with this registration
      * </pre>
      *
      * <code>string invitation_code = 2 [(.services.options.optional) = true];</code>
+     *
      * @return The invitationCode.
      */
     public java.lang.String getInvitationCode() {
       java.lang.Object ref = invitationCode_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         invitationCode_ = s;
         return s;
@@ -705,20 +705,21 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Invitation code associated with this registration
      * </pre>
      *
      * <code>string invitation_code = 2 [(.services.options.optional) = true];</code>
+     *
      * @return The bytes for invitationCode.
      */
-    public com.google.protobuf.ByteString
-        getInvitationCodeBytes() {
+    public com.google.protobuf.ByteString getInvitationCodeBytes() {
       java.lang.Object ref = invitationCode_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         invitationCode_ = b;
         return b;
       } else {
@@ -726,54 +727,61 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Invitation code associated with this registration
      * </pre>
      *
      * <code>string invitation_code = 2 [(.services.options.optional) = true];</code>
+     *
      * @param value The invitationCode to set.
      * @return This builder for chaining.
      */
-    public Builder setInvitationCode(
-        java.lang.String value) {
+    public Builder setInvitationCode(java.lang.String value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        throw new NullPointerException();
+      }
+
       invitationCode_ = value;
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Invitation code associated with this registration
      * </pre>
      *
      * <code>string invitation_code = 2 [(.services.options.optional) = true];</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearInvitationCode() {
-      
+
       invitationCode_ = getDefaultInstance().getInvitationCode();
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Invitation code associated with this registration
      * </pre>
      *
      * <code>string invitation_code = 2 [(.services.options.optional) = true];</code>
+     *
      * @param value The bytes for invitationCode to set.
      * @return This builder for chaining.
      */
-    public Builder setInvitationCodeBytes(
-        com.google.protobuf.ByteString value) {
+    public Builder setInvitationCodeBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
       invitationCode_ = value;
       onChanged();
       return this;
@@ -781,19 +789,21 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object ecosystemId_ = "";
     /**
+     *
+     *
      * <pre>
      * ID of Ecosystem to sign into.
      * Ignored if `invitation_code` is passed.
      * </pre>
      *
      * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
+     *
      * @return The ecosystemId.
      */
     public java.lang.String getEcosystemId() {
       java.lang.Object ref = ecosystemId_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         ecosystemId_ = s;
         return s;
@@ -802,21 +812,22 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * ID of Ecosystem to sign into.
      * Ignored if `invitation_code` is passed.
      * </pre>
      *
      * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
+     *
      * @return The bytes for ecosystemId.
      */
-    public com.google.protobuf.ByteString
-        getEcosystemIdBytes() {
+    public com.google.protobuf.ByteString getEcosystemIdBytes() {
       java.lang.Object ref = ecosystemId_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         ecosystemId_ = b;
         return b;
       } else {
@@ -824,64 +835,71 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * ID of Ecosystem to sign into.
      * Ignored if `invitation_code` is passed.
      * </pre>
      *
      * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
+     *
      * @param value The ecosystemId to set.
      * @return This builder for chaining.
      */
-    public Builder setEcosystemId(
-        java.lang.String value) {
+    public Builder setEcosystemId(java.lang.String value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        throw new NullPointerException();
+      }
+
       ecosystemId_ = value;
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * ID of Ecosystem to sign into.
      * Ignored if `invitation_code` is passed.
      * </pre>
      *
      * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearEcosystemId() {
-      
+
       ecosystemId_ = getDefaultInstance().getEcosystemId();
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * ID of Ecosystem to sign into.
      * Ignored if `invitation_code` is passed.
      * </pre>
      *
      * <code>string ecosystem_id = 3 [(.services.options.optional) = true];</code>
+     *
      * @param value The bytes for ecosystemId to set.
      * @return This builder for chaining.
      */
-    public Builder setEcosystemIdBytes(
-        com.google.protobuf.ByteString value) {
+    public Builder setEcosystemIdBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
       ecosystemId_ = value;
       onChanged();
       return this;
     }
+
     @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -891,12 +909,12 @@ private static final long serialVersionUID = 0L;
       return super.mergeUnknownFields(unknownFields);
     }
 
-
     // @@protoc_insertion_point(builder_scope:services.account.v1.LoginRequest)
   }
 
   // @@protoc_insertion_point(class_scope:services.account.v1.LoginRequest)
   private static final trinsic.services.account.v1.LoginRequest DEFAULT_INSTANCE;
+
   static {
     DEFAULT_INSTANCE = new trinsic.services.account.v1.LoginRequest();
   }
@@ -905,16 +923,27 @@ private static final long serialVersionUID = 0L;
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<LoginRequest>
-      PARSER = new com.google.protobuf.AbstractParser<LoginRequest>() {
-    @java.lang.Override
-    public LoginRequest parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return new LoginRequest(input, extensionRegistry);
-    }
-  };
+  private static final com.google.protobuf.Parser<LoginRequest> PARSER =
+      new com.google.protobuf.AbstractParser<LoginRequest>() {
+        @java.lang.Override
+        public LoginRequest parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
 
   public static com.google.protobuf.Parser<LoginRequest> parser() {
     return PARSER;
@@ -929,6 +958,4 @@ private static final long serialVersionUID = 0L;
   public trinsic.services.account.v1.LoginRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
-
 }
-

@@ -3,19 +3,21 @@
 
 package trinsic.services.provider.v1;
 
-public interface GetPublicEcosystemInfoRequestOrBuilder extends
+public interface GetPublicEcosystemInfoRequestOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.provider.v1.GetPublicEcosystemInfoRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
    * <code>string ecosystem_id = 1;</code>
+   *
    * @return The ecosystemId.
    */
   java.lang.String getEcosystemId();
   /**
    * <code>string ecosystem_id = 1;</code>
+   *
    * @return The bytes for ecosystemId.
    */
-  com.google.protobuf.ByteString
-      getEcosystemIdBytes();
+  com.google.protobuf.ByteString getEcosystemIdBytes();
 }

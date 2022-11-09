@@ -5,157 +5,164 @@ package trinsic.services.provider.v1;
 
 public final class AccessManagementOuterClass {
   private AccessManagementOuterClass() {}
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
+
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {}
+
+  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions((com.google.protobuf.ExtensionRegistryLite) registry);
   }
 
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
-  }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_provider_v1_AddRoleAssignmentRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_AddRoleAssignmentRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_provider_v1_AddRoleAssignmentRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_provider_v1_AddRoleAssignmentResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_AddRoleAssignmentResponse_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_provider_v1_AddRoleAssignmentResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_provider_v1_RemoveRoleAssignmentRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_RemoveRoleAssignmentRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_provider_v1_RemoveRoleAssignmentRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_provider_v1_RemoveRoleAssignmentResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_RemoveRoleAssignmentResponse_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_provider_v1_RemoveRoleAssignmentResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_provider_v1_ListRoleAssignmentsRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_ListRoleAssignmentsRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_provider_v1_ListRoleAssignmentsRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_provider_v1_ListRoleAssignmentsResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_ListRoleAssignmentsResponse_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_provider_v1_ListRoleAssignmentsResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_provider_v1_ListAvailableRolesRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_ListAvailableRolesRequest_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_provider_v1_ListAvailableRolesRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_services_provider_v1_ListAvailableRolesResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_services_provider_v1_ListAvailableRolesResponse_descriptor;
+  static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_services_provider_v1_ListAvailableRolesResponse_fieldAccessorTable;
 
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
+  public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
     return descriptor;
   }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
+
+  private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
+
   static {
     java.lang.String[] descriptorData = {
-      "\n,services/provider/v1/access-management" +
-      ".proto\022\024services.provider.v1\032!services/a" +
-      "ccount/v1/account.proto\032$services/option" +
-      "s/field-options.proto\032\037services/common/v" +
-      "1/common.proto\"Y\n\030AddRoleAssignmentReque" +
-      "st\022\014\n\004role\030\001 \001(\t\022\017\n\005email\030\002 \001(\tH\000\022\023\n\twal" +
-      "let_id\030\003 \001(\tH\000B\t\n\007account\"\033\n\031AddRoleAssi" +
-      "gnmentResponse\"\\\n\033RemoveRoleAssignmentRe" +
-      "quest\022\014\n\004role\030\001 \001(\t\022\017\n\005email\030\002 \001(\tH\000\022\023\n\t" +
-      "wallet_id\030\003 \001(\tH\000B\t\n\007account\"\036\n\034RemoveRo" +
-      "leAssignmentResponse\"M\n\032ListRoleAssignme" +
-      "ntsRequest\022\017\n\005email\030\002 \001(\tH\000\022\023\n\twallet_id" +
-      "\030\003 \001(\tH\000B\t\n\007account\",\n\033ListRoleAssignmen" +
-      "tsResponse\022\r\n\005roles\030\001 \003(\t\"\033\n\031ListAvailab" +
-      "leRolesRequest\"+\n\032ListAvailableRolesResp" +
-      "onse\022\r\n\005roles\030\001 \003(\t2\204\004\n\020AccessManagement" +
-      "\022t\n\021AddRoleAssignment\022..services.provide" +
-      "r.v1.AddRoleAssignmentRequest\032/.services" +
-      ".provider.v1.AddRoleAssignmentResponse\022}" +
-      "\n\024RemoveRoleAssignment\0221.services.provid" +
-      "er.v1.RemoveRoleAssignmentRequest\0322.serv" +
-      "ices.provider.v1.RemoveRoleAssignmentRes" +
-      "ponse\022z\n\023ListRoleAssignments\0220.services." +
-      "provider.v1.ListRoleAssignmentsRequest\0321" +
-      ".services.provider.v1.ListRoleAssignment" +
-      "sResponse\022\177\n\022ListAvailableRoles\022/.servic" +
-      "es.provider.v1.ListAvailableRolesRequest" +
-      "\0320.services.provider.v1.ListAvailableRol" +
-      "esResponse\"\006\212\246\035\002\020\001B^\n\034trinsic.services.p" +
-      "rovider.v1P\001Z\035services/provider/v1/provi" +
-      "der\252\002\034Trinsic.Services.Provider.V1b\006prot" +
-      "o3"
+      "\n"
+          + ",services/provider/v1/access-management"
+          + ".proto\022\024services.provider.v1\032!services/a"
+          + "ccount/v1/account.proto\032$services/option"
+          + "s/field-options.proto\032\037services/common/v1/common.proto\"Y\n"
+          + "\030AddRoleAssignmentRequest\022\014\n"
+          + "\004role\030\001 \001(\t\022\017\n"
+          + "\005email\030\002 \001(\tH\000\022\023\n"
+          + "\twallet_id\030\003 \001(\tH\000B\t\n"
+          + "\007account\"\033\n"
+          + "\031AddRoleAssignmentResponse\"\\\n"
+          + "\033RemoveRoleAssignmentRequest\022\014\n"
+          + "\004role\030\001 \001(\t\022\017\n"
+          + "\005email\030\002 \001(\tH\000\022\023\n"
+          + "\twallet_id\030\003 \001(\tH\000B\t\n"
+          + "\007account\"\036\n"
+          + "\034RemoveRoleAssignmentResponse\"M\n"
+          + "\032ListRoleAssignmentsRequest\022\017\n"
+          + "\005email\030\002 \001(\tH\000\022\023\n"
+          + "\twallet_id\030\003 \001(\tH\000B\t\n"
+          + "\007account\",\n"
+          + "\033ListRoleAssignmentsResponse\022\r\n"
+          + "\005roles\030\001 \003(\t\"\033\n"
+          + "\031ListAvailableRolesRequest\"+\n"
+          + "\032ListAvailableRolesResponse\022\r\n"
+          + "\005roles\030\001 \003(\t2\204\004\n"
+          + "\020AccessManagement\022t\n"
+          + "\021AddRoleAssignment\022..services.provider.v1.AddRoleAssignmentRequest\032/.services"
+          + ".provider.v1.AddRoleAssignmentResponse\022}\n"
+          + "\024RemoveRoleAssignment\0221.services.provid"
+          + "er.v1.RemoveRoleAssignmentRequest\0322.serv"
+          + "ices.provider.v1.RemoveRoleAssignmentResponse\022z\n"
+          + "\023ListRoleAssignments\0220.services.provider.v1.ListRoleAssignmentsRequest\0321"
+          + ".services.provider.v1.ListRoleAssignmentsResponse\022\177\n"
+          + "\022ListAvailableRoles\022/.services.provider.v1.ListAvailableRolesRequest"
+          + "\0320.services.provider.v1.ListAvailableRolesResponse\"\006\212\246\035\002\020\001B^\n"
+          + "\034trinsic.services.provider.v1P\001Z\035services/provider/v1/provi"
+          + "der\252\002\034Trinsic.Services.Provider.V1b\006proto3"
     };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-          trinsic.services.account.v1.AccountOuterClass.getDescriptor(),
-          trinsic.services.protobuf.options.FieldOptions.getDescriptor(),
-          trinsic.services.common.v1.Common.getDescriptor(),
-        });
+    descriptor =
+        com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
+            descriptorData,
+            new com.google.protobuf.Descriptors.FileDescriptor[] {
+              trinsic.services.account.v1.AccountOuterClass.getDescriptor(),
+              trinsic.services.protobuf.options.FieldOptions.getDescriptor(),
+              trinsic.services.common.v1.Common.getDescriptor(),
+            });
     internal_static_services_provider_v1_AddRoleAssignmentRequest_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_services_provider_v1_AddRoleAssignmentRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_provider_v1_AddRoleAssignmentRequest_descriptor,
-        new java.lang.String[] { "Role", "Email", "WalletId", "Account", });
+        getDescriptor().getMessageTypes().get(0);
+    internal_static_services_provider_v1_AddRoleAssignmentRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_provider_v1_AddRoleAssignmentRequest_descriptor,
+            new java.lang.String[] {
+              "Role", "Email", "WalletId", "Account",
+            });
     internal_static_services_provider_v1_AddRoleAssignmentResponse_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_services_provider_v1_AddRoleAssignmentResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_provider_v1_AddRoleAssignmentResponse_descriptor,
-        new java.lang.String[] { });
+        getDescriptor().getMessageTypes().get(1);
+    internal_static_services_provider_v1_AddRoleAssignmentResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_provider_v1_AddRoleAssignmentResponse_descriptor,
+            new java.lang.String[] {});
     internal_static_services_provider_v1_RemoveRoleAssignmentRequest_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_services_provider_v1_RemoveRoleAssignmentRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_provider_v1_RemoveRoleAssignmentRequest_descriptor,
-        new java.lang.String[] { "Role", "Email", "WalletId", "Account", });
+        getDescriptor().getMessageTypes().get(2);
+    internal_static_services_provider_v1_RemoveRoleAssignmentRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_provider_v1_RemoveRoleAssignmentRequest_descriptor,
+            new java.lang.String[] {
+              "Role", "Email", "WalletId", "Account",
+            });
     internal_static_services_provider_v1_RemoveRoleAssignmentResponse_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_services_provider_v1_RemoveRoleAssignmentResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_provider_v1_RemoveRoleAssignmentResponse_descriptor,
-        new java.lang.String[] { });
+        getDescriptor().getMessageTypes().get(3);
+    internal_static_services_provider_v1_RemoveRoleAssignmentResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_provider_v1_RemoveRoleAssignmentResponse_descriptor,
+            new java.lang.String[] {});
     internal_static_services_provider_v1_ListRoleAssignmentsRequest_descriptor =
-      getDescriptor().getMessageTypes().get(4);
-    internal_static_services_provider_v1_ListRoleAssignmentsRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_provider_v1_ListRoleAssignmentsRequest_descriptor,
-        new java.lang.String[] { "Email", "WalletId", "Account", });
+        getDescriptor().getMessageTypes().get(4);
+    internal_static_services_provider_v1_ListRoleAssignmentsRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_provider_v1_ListRoleAssignmentsRequest_descriptor,
+            new java.lang.String[] {
+              "Email", "WalletId", "Account",
+            });
     internal_static_services_provider_v1_ListRoleAssignmentsResponse_descriptor =
-      getDescriptor().getMessageTypes().get(5);
-    internal_static_services_provider_v1_ListRoleAssignmentsResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_provider_v1_ListRoleAssignmentsResponse_descriptor,
-        new java.lang.String[] { "Roles", });
+        getDescriptor().getMessageTypes().get(5);
+    internal_static_services_provider_v1_ListRoleAssignmentsResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_provider_v1_ListRoleAssignmentsResponse_descriptor,
+            new java.lang.String[] {
+              "Roles",
+            });
     internal_static_services_provider_v1_ListAvailableRolesRequest_descriptor =
-      getDescriptor().getMessageTypes().get(6);
-    internal_static_services_provider_v1_ListAvailableRolesRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_provider_v1_ListAvailableRolesRequest_descriptor,
-        new java.lang.String[] { });
+        getDescriptor().getMessageTypes().get(6);
+    internal_static_services_provider_v1_ListAvailableRolesRequest_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_provider_v1_ListAvailableRolesRequest_descriptor,
+            new java.lang.String[] {});
     internal_static_services_provider_v1_ListAvailableRolesResponse_descriptor =
-      getDescriptor().getMessageTypes().get(7);
-    internal_static_services_provider_v1_ListAvailableRolesResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_services_provider_v1_ListAvailableRolesResponse_descriptor,
-        new java.lang.String[] { "Roles", });
+        getDescriptor().getMessageTypes().get(7);
+    internal_static_services_provider_v1_ListAvailableRolesResponse_fieldAccessorTable =
+        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+            internal_static_services_provider_v1_ListAvailableRolesResponse_descriptor,
+            new java.lang.String[] {
+              "Roles",
+            });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(trinsic.services.protobuf.options.FieldOptions.sdkTemplateOption);
-    com.google.protobuf.Descriptors.FileDescriptor
-        .internalUpdateFileDescriptor(descriptor, registry);
+    com.google.protobuf.Descriptors.FileDescriptor.internalUpdateFileDescriptor(
+        descriptor, registry);
     trinsic.services.account.v1.AccountOuterClass.getDescriptor();
     trinsic.services.protobuf.options.FieldOptions.getDescriptor();
     trinsic.services.common.v1.Common.getDescriptor();

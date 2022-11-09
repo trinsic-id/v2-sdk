@@ -3,7 +3,7 @@
 
 package trinsic.services.verifiablecredentials.templates.v1;
 
-public interface ListTemplatesRequestOrBuilder extends
+public interface ListTemplatesRequestOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.templates.v1.ListTemplatesRequest)
-    com.google.protobuf.MessageOrBuilder {
-}
+    com.google.protobuf.MessageOrBuilder {}

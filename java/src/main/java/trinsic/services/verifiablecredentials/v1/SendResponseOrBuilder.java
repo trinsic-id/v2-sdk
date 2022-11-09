@@ -3,7 +3,7 @@
 
 package trinsic.services.verifiablecredentials.v1;
 
-public interface SendResponseOrBuilder extends
+public interface SendResponseOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.v1.SendResponse)
-    com.google.protobuf.MessageOrBuilder {
-}
+    com.google.protobuf.MessageOrBuilder {}

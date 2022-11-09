@@ -3,27 +3,33 @@
 
 package trinsic.services.verifiablecredentials.templates.v1;
 
-public interface DeleteCredentialTemplateRequestOrBuilder extends
+public interface DeleteCredentialTemplateRequestOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.templates.v1.DeleteCredentialTemplateRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * ID of template to delete
    * </pre>
    *
    * <code>string id = 1;</code>
+   *
    * @return The id.
    */
   java.lang.String getId();
   /**
+   *
+   *
    * <pre>
    * ID of template to delete
    * </pre>
    *
    * <code>string id = 1;</code>
+   *
    * @return The bytes for id.
    */
-  com.google.protobuf.ByteString
-      getIdBytes();
+  com.google.protobuf.ByteString getIdBytes();
 }

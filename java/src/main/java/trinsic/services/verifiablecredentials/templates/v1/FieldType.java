@@ -4,50 +4,34 @@
 package trinsic.services.verifiablecredentials.templates.v1;
 
 /**
+ *
+ *
  * <pre>
  * Valid types for credential fields
  * </pre>
  *
  * Protobuf enum {@code services.verifiablecredentials.templates.v1.FieldType}
  */
-public enum FieldType
-    implements com.google.protobuf.ProtocolMessageEnum {
-  /**
-   * <code>STRING = 0;</code>
-   */
+public enum FieldType implements com.google.protobuf.ProtocolMessageEnum {
+  /** <code>STRING = 0;</code> */
   STRING(0),
-  /**
-   * <code>NUMBER = 1;</code>
-   */
+  /** <code>NUMBER = 1;</code> */
   NUMBER(1),
-  /**
-   * <code>BOOL = 2;</code>
-   */
+  /** <code>BOOL = 2;</code> */
   BOOL(2),
-  /**
-   * <code>DATETIME = 4;</code>
-   */
+  /** <code>DATETIME = 4;</code> */
   DATETIME(4),
   UNRECOGNIZED(-1),
   ;
 
-  /**
-   * <code>STRING = 0;</code>
-   */
+  /** <code>STRING = 0;</code> */
   public static final int STRING_VALUE = 0;
-  /**
-   * <code>NUMBER = 1;</code>
-   */
+  /** <code>NUMBER = 1;</code> */
   public static final int NUMBER_VALUE = 1;
-  /**
-   * <code>BOOL = 2;</code>
-   */
+  /** <code>BOOL = 2;</code> */
   public static final int BOOL_VALUE = 2;
-  /**
-   * <code>DATETIME = 4;</code>
-   */
+  /** <code>DATETIME = 4;</code> */
   public static final int DATETIME_VALUE = 4;
-
 
   public final int getNumber() {
     if (this == UNRECOGNIZED) {
@@ -73,50 +57,53 @@ public enum FieldType
    */
   public static FieldType forNumber(int value) {
     switch (value) {
-      case 0: return STRING;
-      case 1: return NUMBER;
-      case 2: return BOOL;
-      case 4: return DATETIME;
-      default: return null;
+      case 0:
+        return STRING;
+      case 1:
+        return NUMBER;
+      case 2:
+        return BOOL;
+      case 4:
+        return DATETIME;
+      default:
+        return null;
     }
   }
 
-  public static com.google.protobuf.Internal.EnumLiteMap<FieldType>
-      internalGetValueMap() {
+  public static com.google.protobuf.Internal.EnumLiteMap<FieldType> internalGetValueMap() {
     return internalValueMap;
   }
-  private static final com.google.protobuf.Internal.EnumLiteMap<
-      FieldType> internalValueMap =
-        new com.google.protobuf.Internal.EnumLiteMap<FieldType>() {
-          public FieldType findValueByNumber(int number) {
-            return FieldType.forNumber(number);
-          }
-        };
 
-  public final com.google.protobuf.Descriptors.EnumValueDescriptor
-      getValueDescriptor() {
+  private static final com.google.protobuf.Internal.EnumLiteMap<FieldType> internalValueMap =
+      new com.google.protobuf.Internal.EnumLiteMap<FieldType>() {
+        public FieldType findValueByNumber(int number) {
+          return FieldType.forNumber(number);
+        }
+      };
+
+  public final com.google.protobuf.Descriptors.EnumValueDescriptor getValueDescriptor() {
     if (this == UNRECOGNIZED) {
       throw new java.lang.IllegalStateException(
           "Can't get the descriptor of an unrecognized enum value.");
     }
     return getDescriptor().getValues().get(ordinal());
   }
-  public final com.google.protobuf.Descriptors.EnumDescriptor
-      getDescriptorForType() {
+
+  public final com.google.protobuf.Descriptors.EnumDescriptor getDescriptorForType() {
     return getDescriptor();
   }
-  public static final com.google.protobuf.Descriptors.EnumDescriptor
-      getDescriptor() {
-    return trinsic.services.verifiablecredentials.templates.v1.Templates.getDescriptor().getEnumTypes().get(0);
+
+  public static final com.google.protobuf.Descriptors.EnumDescriptor getDescriptor() {
+    return trinsic.services.verifiablecredentials.templates.v1.Templates.getDescriptor()
+        .getEnumTypes()
+        .get(0);
   }
 
   private static final FieldType[] VALUES = values();
 
-  public static FieldType valueOf(
-      com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+  public static FieldType valueOf(com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
     if (desc.getType() != getDescriptor()) {
-      throw new java.lang.IllegalArgumentException(
-        "EnumValueDescriptor is not for this type.");
+      throw new java.lang.IllegalArgumentException("EnumValueDescriptor is not for this type.");
     }
     if (desc.getIndex() == -1) {
       return UNRECOGNIZED;
@@ -132,4 +119,3 @@ public enum FieldType
 
   // @@protoc_insertion_point(enum_scope:services.verifiablecredentials.templates.v1.FieldType)
 }
-

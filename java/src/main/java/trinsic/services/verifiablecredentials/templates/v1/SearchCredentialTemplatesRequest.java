@@ -4,21 +4,26 @@
 package trinsic.services.verifiablecredentials.templates.v1;
 
 /**
+ *
+ *
  * <pre>
  * Request to search templates using a SQL query
  * </pre>
  *
- * Protobuf type {@code services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest}
+ * Protobuf type {@code
+ * services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest}
  */
-public final class SearchCredentialTemplatesRequest extends
-    com.google.protobuf.GeneratedMessageV3 implements
+public final class SearchCredentialTemplatesRequest extends com.google.protobuf.GeneratedMessageV3
+    implements
     // @@protoc_insertion_point(message_implements:services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest)
     SearchCredentialTemplatesRequestOrBuilder {
-private static final long serialVersionUID = 0L;
+  private static final long serialVersionUID = 0L;
   // Use SearchCredentialTemplatesRequest.newBuilder() to construct.
-  private SearchCredentialTemplatesRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  private SearchCredentialTemplatesRequest(
+      com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
+
   private SearchCredentialTemplatesRequest() {
     query_ = "";
     continuationToken_ = "";
@@ -26,88 +31,43 @@ private static final long serialVersionUID = 0L;
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
+  protected java.lang.Object newInstance(UnusedPrivateParameter unused) {
     return new SearchCredentialTemplatesRequest();
   }
 
   @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet
-  getUnknownFields() {
+  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
     return this.unknownFields;
   }
-  private SearchCredentialTemplatesRequest(
-      com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
-    try {
-      boolean done = false;
-      while (!done) {
-        int tag = input.readTag();
-        switch (tag) {
-          case 0:
-            done = true;
-            break;
-          case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
 
-            query_ = s;
-            break;
-          }
-          case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            continuationToken_ = s;
-            break;
-          }
-          default: {
-            if (!parseUnknownField(
-                input, unknownFields, extensionRegistry, tag)) {
-              done = true;
-            }
-            break;
-          }
-        }
-      }
-    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
-    } catch (com.google.protobuf.UninitializedMessageException e) {
-      throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
-    } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
-    } finally {
-      this.unknownFields = unknownFields.build();
-      makeExtensionsImmutable();
-    }
-  }
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesRequest_descriptor;
+  public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+    return trinsic.services.verifiablecredentials.templates.v1.Templates
+        .internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesRequest_fieldAccessorTable
+    return trinsic.services.verifiablecredentials.templates.v1.Templates
+        .internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest.class, trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest.Builder.class);
+            trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
+                .class,
+            trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
+                .Builder.class);
   }
 
   public static final int QUERY_FIELD_NUMBER = 1;
   private volatile java.lang.Object query_;
   /**
+   *
+   *
    * <pre>
    * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
    * </pre>
    *
    * <code>string query = 1;</code>
+   *
    * @return The query.
    */
   @java.lang.Override
@@ -116,29 +76,29 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       query_ = s;
       return s;
     }
   }
   /**
+   *
+   *
    * <pre>
    * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
    * </pre>
    *
    * <code>string query = 1;</code>
+   *
    * @return The bytes for query.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getQueryBytes() {
+  public com.google.protobuf.ByteString getQueryBytes() {
     java.lang.Object ref = query_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       query_ = b;
       return b;
     } else {
@@ -149,12 +109,15 @@ private static final long serialVersionUID = 0L;
   public static final int CONTINUATION_TOKEN_FIELD_NUMBER = 2;
   private volatile java.lang.Object continuationToken_;
   /**
+   *
+   *
    * <pre>
    * Token provided by previous `SearchCredentialTemplatesResponse`
    * if more data is available for query
    * </pre>
    *
    * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
+   *
    * @return The continuationToken.
    */
   @java.lang.Override
@@ -163,30 +126,30 @@ private static final long serialVersionUID = 0L;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
       continuationToken_ = s;
       return s;
     }
   }
   /**
+   *
+   *
    * <pre>
    * Token provided by previous `SearchCredentialTemplatesResponse`
    * if more data is available for query
    * </pre>
    *
    * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
+   *
    * @return The bytes for continuationToken.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getContinuationTokenBytes() {
+  public com.google.protobuf.ByteString getContinuationTokenBytes() {
     java.lang.Object ref = continuationToken_;
     if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       continuationToken_ = b;
       return b;
     } else {
@@ -195,6 +158,7 @@ private static final long serialVersionUID = 0L;
   }
 
   private byte memoizedIsInitialized = -1;
+
   @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -206,15 +170,14 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
+  public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(query_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, query_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(continuationToken_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, continuationToken_);
     }
-    unknownFields.writeTo(output);
+    getUnknownFields().writeTo(output);
   }
 
   @java.lang.Override
@@ -229,7 +192,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(continuationToken_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, continuationToken_);
     }
-    size += unknownFields.getSerializedSize();
+    size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
   }
@@ -237,18 +200,19 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean equals(final java.lang.Object obj) {
     if (obj == this) {
-     return true;
+      return true;
     }
-    if (!(obj instanceof trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest)) {
+    if (!(obj
+        instanceof
+        trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest)) {
       return super.equals(obj);
     }
-    trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest other = (trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest) obj;
+    trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest other =
+        (trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest) obj;
 
-    if (!getQuery()
-        .equals(other.getQuery())) return false;
-    if (!getContinuationToken()
-        .equals(other.getContinuationToken())) return false;
-    if (!unknownFields.equals(other.unknownFields)) return false;
+    if (!getQuery().equals(other.getQuery())) return false;
+    if (!getContinuationToken().equals(other.getContinuationToken())) return false;
+    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
 
@@ -263,140 +227,154 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getQuery().hashCode();
     hash = (37 * hash) + CONTINUATION_TOKEN_FIELD_NUMBER;
     hash = (53 * hash) + getContinuationToken().hashCode();
-    hash = (29 * hash) + unknownFields.hashCode();
+    hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+  public static trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
+      parseFrom(java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+
+  public static trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
+      parseFrom(
+          java.nio.ByteBuffer data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest parseFrom(
-      com.google.protobuf.ByteString data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+
+  public static trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
+      parseFrom(com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest parseFrom(
-      com.google.protobuf.ByteString data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+
+  public static trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
+      parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest parseFrom(byte[] data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+
+  public static trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
+      parseFrom(byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
+
+  public static trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
+      parseFrom(byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest parseFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+
+  public static trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
+      parseFrom(java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
-  public static trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+
+  public static trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
+      parseFrom(
+          java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
-  public static trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest parseDelimitedFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
+
+  public static trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
+      parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
   }
-  public static trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+
+  public static trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
+      parseDelimitedFrom(
+          java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
+        PARSER, input, extensionRegistry);
   }
-  public static trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
+
+  public static trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
+      parseFrom(com.google.protobuf.CodedInputStream input) throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
   }
-  public static trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest parseFrom(
-      com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
+
+  public static trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
+      parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
+        PARSER, input, extensionRegistry);
   }
 
   @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
+  public Builder newBuilderForType() {
+    return newBuilder();
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest prototype) {
+
+  public static Builder newBuilder(
+      trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
+          prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-  }
-  @java.lang.Override
-  public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
   }
 
   @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+  public Builder toBuilder() {
+    return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+  }
+
+  @java.lang.Override
+  protected Builder newBuilderForType(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
     Builder builder = new Builder(parent);
     return builder;
   }
   /**
+   *
+   *
    * <pre>
    * Request to search templates using a SQL query
    * </pre>
    *
-   * Protobuf type {@code services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest}
+   * Protobuf type {@code
+   * services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest}
    */
-  public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+  public static final class Builder extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
+      implements
       // @@protoc_insertion_point(builder_implements:services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest)
-      trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequestOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesRequest_descriptor;
+      trinsic.services.verifiablecredentials.templates.v1
+          .SearchCredentialTemplatesRequestOrBuilder {
+    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesRequest_fieldAccessorTable
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest.class, trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest.Builder.class);
+              trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
+                  .class,
+              trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
+                  .Builder.class);
     }
 
-    // Construct using trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest.newBuilder()
-    private Builder() {
-      maybeForceBuilderInitialization();
-    }
+    // Construct using
+    // trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest.newBuilder()
+    private Builder() {}
 
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-      maybeForceBuilderInitialization();
     }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-      }
-    }
+
     @java.lang.Override
     public Builder clear() {
       super.clear();
@@ -408,19 +386,23 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
-      return trinsic.services.verifiablecredentials.templates.v1.Templates.internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesRequest_descriptor;
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return trinsic.services.verifiablecredentials.templates.v1.Templates
+          .internal_static_services_verifiablecredentials_templates_v1_SearchCredentialTemplatesRequest_descriptor;
     }
 
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest getDefaultInstanceForType() {
-      return trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest.getDefaultInstance();
+    public trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
+        getDefaultInstanceForType() {
+      return trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
+          .getDefaultInstance();
     }
 
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest build() {
-      trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest result = buildPartial();
+    public trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
+        build() {
+      trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest result =
+          buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -428,8 +410,11 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest buildPartial() {
-      trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest result = new trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest(this);
+    public trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
+        buildPartial() {
+      trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest result =
+          new trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest(
+              this);
       result.query_ = query_;
       result.continuationToken_ = continuationToken_;
       onBuilt();
@@ -440,46 +425,55 @@ private static final long serialVersionUID = 0L;
     public Builder clone() {
       return super.clone();
     }
+
     @java.lang.Override
     public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.setField(field, value);
     }
+
     @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
+    public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
       return super.clearField(field);
     }
+
     @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+    public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
       return super.clearOneof(oneof);
     }
+
     @java.lang.Override
     public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, int index, java.lang.Object value) {
       return super.setRepeatedField(field, index, value);
     }
+
     @java.lang.Override
     public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
+        com.google.protobuf.Descriptors.FieldDescriptor field, java.lang.Object value) {
       return super.addRepeatedField(field, value);
     }
+
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest) {
-        return mergeFrom((trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest)other);
+      if (other
+          instanceof
+          trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest) {
+        return mergeFrom(
+            (trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest)
+                other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest other) {
-      if (other == trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(
+        trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
+            other) {
+      if (other
+          == trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
+              .getDefaultInstance()) return this;
       if (!other.getQuery().isEmpty()) {
         query_ = other.query_;
         onChanged();
@@ -488,7 +482,7 @@ private static final long serialVersionUID = 0L;
         continuationToken_ = other.continuationToken_;
         onChanged();
       }
-      this.mergeUnknownFields(other.unknownFields);
+      this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
     }
@@ -503,34 +497,62 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest parsedMessage = null;
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       try {
-        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10:
+              {
+                query_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 10
+            case 18:
+              {
+                continuationToken_ = input.readStringRequireUtf8();
+
+                break;
+              } // case 18
+            default:
+              {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+          } // switch (tag)
+        } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
-        if (parsedMessage != null) {
-          mergeFrom(parsedMessage);
-        }
-      }
+        onChanged();
+      } // finally
       return this;
     }
 
     private java.lang.Object query_ = "";
     /**
+     *
+     *
      * <pre>
      * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
      * </pre>
      *
      * <code>string query = 1;</code>
+     *
      * @return The query.
      */
     public java.lang.String getQuery() {
       java.lang.Object ref = query_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         query_ = s;
         return s;
@@ -539,20 +561,21 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
      * </pre>
      *
      * <code>string query = 1;</code>
+     *
      * @return The bytes for query.
      */
-    public com.google.protobuf.ByteString
-        getQueryBytes() {
+    public com.google.protobuf.ByteString getQueryBytes() {
       java.lang.Object ref = query_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         query_ = b;
         return b;
       } else {
@@ -560,54 +583,61 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
      * </pre>
      *
      * <code>string query = 1;</code>
+     *
      * @param value The query to set.
      * @return This builder for chaining.
      */
-    public Builder setQuery(
-        java.lang.String value) {
+    public Builder setQuery(java.lang.String value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        throw new NullPointerException();
+      }
+
       query_ = value;
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
      * </pre>
      *
      * <code>string query = 1;</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearQuery() {
-      
+
       query_ = getDefaultInstance().getQuery();
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'`
      * </pre>
      *
      * <code>string query = 1;</code>
+     *
      * @param value The bytes for query to set.
      * @return This builder for chaining.
      */
-    public Builder setQueryBytes(
-        com.google.protobuf.ByteString value) {
+    public Builder setQueryBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
       query_ = value;
       onChanged();
       return this;
@@ -615,19 +645,21 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object continuationToken_ = "";
     /**
+     *
+     *
      * <pre>
      * Token provided by previous `SearchCredentialTemplatesResponse`
      * if more data is available for query
      * </pre>
      *
      * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
+     *
      * @return The continuationToken.
      */
     public java.lang.String getContinuationToken() {
       java.lang.Object ref = continuationToken_;
       if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         continuationToken_ = s;
         return s;
@@ -636,21 +668,22 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Token provided by previous `SearchCredentialTemplatesResponse`
      * if more data is available for query
      * </pre>
      *
      * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
+     *
      * @return The bytes for continuationToken.
      */
-    public com.google.protobuf.ByteString
-        getContinuationTokenBytes() {
+    public com.google.protobuf.ByteString getContinuationTokenBytes() {
       java.lang.Object ref = continuationToken_;
       if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
         continuationToken_ = b;
         return b;
       } else {
@@ -658,64 +691,71 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     *
+     *
      * <pre>
      * Token provided by previous `SearchCredentialTemplatesResponse`
      * if more data is available for query
      * </pre>
      *
      * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
+     *
      * @param value The continuationToken to set.
      * @return This builder for chaining.
      */
-    public Builder setContinuationToken(
-        java.lang.String value) {
+    public Builder setContinuationToken(java.lang.String value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        throw new NullPointerException();
+      }
+
       continuationToken_ = value;
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Token provided by previous `SearchCredentialTemplatesResponse`
      * if more data is available for query
      * </pre>
      *
      * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
+     *
      * @return This builder for chaining.
      */
     public Builder clearContinuationToken() {
-      
+
       continuationToken_ = getDefaultInstance().getContinuationToken();
       onChanged();
       return this;
     }
     /**
+     *
+     *
      * <pre>
      * Token provided by previous `SearchCredentialTemplatesResponse`
      * if more data is available for query
      * </pre>
      *
      * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
+     *
      * @param value The bytes for continuationToken to set.
      * @return This builder for chaining.
      */
-    public Builder setContinuationTokenBytes(
-        com.google.protobuf.ByteString value) {
+    public Builder setContinuationTokenBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
       continuationToken_ = value;
       onChanged();
       return this;
     }
+
     @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
+    public final Builder setUnknownFields(final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.setUnknownFields(unknownFields);
     }
 
@@ -725,30 +765,45 @@ private static final long serialVersionUID = 0L;
       return super.mergeUnknownFields(unknownFields);
     }
 
-
     // @@protoc_insertion_point(builder_scope:services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest)
   }
 
   // @@protoc_insertion_point(class_scope:services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest)
-  private static final trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest DEFAULT_INSTANCE;
+  private static final trinsic.services.verifiablecredentials.templates.v1
+          .SearchCredentialTemplatesRequest
+      DEFAULT_INSTANCE;
+
   static {
-    DEFAULT_INSTANCE = new trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest();
+    DEFAULT_INSTANCE =
+        new trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest();
   }
 
-  public static trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest getDefaultInstance() {
+  public static trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
+      getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<SearchCredentialTemplatesRequest>
-      PARSER = new com.google.protobuf.AbstractParser<SearchCredentialTemplatesRequest>() {
-    @java.lang.Override
-    public SearchCredentialTemplatesRequest parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return new SearchCredentialTemplatesRequest(input, extensionRegistry);
-    }
-  };
+  private static final com.google.protobuf.Parser<SearchCredentialTemplatesRequest> PARSER =
+      new com.google.protobuf.AbstractParser<SearchCredentialTemplatesRequest>() {
+        @java.lang.Override
+        public SearchCredentialTemplatesRequest parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
 
   public static com.google.protobuf.Parser<SearchCredentialTemplatesRequest> parser() {
     return PARSER;
@@ -760,9 +815,8 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest getDefaultInstanceForType() {
+  public trinsic.services.verifiablecredentials.templates.v1.SearchCredentialTemplatesRequest
+      getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
-
 }
-

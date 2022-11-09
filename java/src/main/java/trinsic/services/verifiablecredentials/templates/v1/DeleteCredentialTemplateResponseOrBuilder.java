@@ -3,7 +3,7 @@
 
 package trinsic.services.verifiablecredentials.templates.v1;
 
-public interface DeleteCredentialTemplateResponseOrBuilder extends
+public interface DeleteCredentialTemplateResponseOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.templates.v1.DeleteCredentialTemplateResponse)
-    com.google.protobuf.MessageOrBuilder {
-}
+    com.google.protobuf.MessageOrBuilder {}

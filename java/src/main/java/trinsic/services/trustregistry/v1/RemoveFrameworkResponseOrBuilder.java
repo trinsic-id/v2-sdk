@@ -3,7 +3,7 @@
 
 package trinsic.services.trustregistry.v1;
 
-public interface RemoveFrameworkResponseOrBuilder extends
+public interface RemoveFrameworkResponseOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.RemoveFrameworkResponse)
-    com.google.protobuf.MessageOrBuilder {
-}
+    com.google.protobuf.MessageOrBuilder {}

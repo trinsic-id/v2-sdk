@@ -3,16 +3,20 @@
 
 package trinsic.services.verifiablecredentials.v1;
 
-public interface CheckStatusResponseOrBuilder extends
+public interface CheckStatusResponseOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.verifiablecredentials.v1.CheckStatusResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * The credential's revocation status
    * </pre>
    *
    * <code>bool revoked = 1;</code>
+   *
    * @return The revoked.
    */
   boolean getRevoked();

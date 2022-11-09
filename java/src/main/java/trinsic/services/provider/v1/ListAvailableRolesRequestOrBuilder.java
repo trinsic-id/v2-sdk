@@ -3,7 +3,7 @@
 
 package trinsic.services.provider.v1;
 
-public interface ListAvailableRolesRequestOrBuilder extends
+public interface ListAvailableRolesRequestOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.provider.v1.ListAvailableRolesRequest)
-    com.google.protobuf.MessageOrBuilder {
-}
+    com.google.protobuf.MessageOrBuilder {}

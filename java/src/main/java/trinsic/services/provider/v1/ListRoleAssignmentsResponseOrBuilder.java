@@ -3,48 +3,59 @@
 
 package trinsic.services.provider.v1;
 
-public interface ListRoleAssignmentsResponseOrBuilder extends
+public interface ListRoleAssignmentsResponseOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.provider.v1.ListRoleAssignmentsResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * List of roles
    * </pre>
    *
    * <code>repeated string roles = 1;</code>
+   *
    * @return A list containing the roles.
    */
-  java.util.List<java.lang.String>
-      getRolesList();
+  java.util.List<java.lang.String> getRolesList();
   /**
+   *
+   *
    * <pre>
    * List of roles
    * </pre>
    *
    * <code>repeated string roles = 1;</code>
+   *
    * @return The count of roles.
    */
   int getRolesCount();
   /**
+   *
+   *
    * <pre>
    * List of roles
    * </pre>
    *
    * <code>repeated string roles = 1;</code>
+   *
    * @param index The index of the element to return.
    * @return The roles at the given index.
    */
   java.lang.String getRoles(int index);
   /**
+   *
+   *
    * <pre>
    * List of roles
    * </pre>
    *
    * <code>repeated string roles = 1;</code>
+   *
    * @param index The index of the value to return.
    * @return The bytes of the roles at the given index.
    */
-  com.google.protobuf.ByteString
-      getRolesBytes(int index);
+  com.google.protobuf.ByteString getRolesBytes(int index);
 }

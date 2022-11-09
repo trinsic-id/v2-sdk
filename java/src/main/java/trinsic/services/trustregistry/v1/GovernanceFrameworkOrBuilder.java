@@ -3,67 +3,83 @@
 
 package trinsic.services.trustregistry.v1;
 
-public interface GovernanceFrameworkOrBuilder extends
+public interface GovernanceFrameworkOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.GovernanceFramework)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * URI of governance framework organization
    * </pre>
    *
    * <code>string governance_framework_uri = 1;</code>
+   *
    * @return The governanceFrameworkUri.
    */
   java.lang.String getGovernanceFrameworkUri();
   /**
+   *
+   *
    * <pre>
    * URI of governance framework organization
    * </pre>
    *
    * <code>string governance_framework_uri = 1;</code>
+   *
    * @return The bytes for governanceFrameworkUri.
    */
-  com.google.protobuf.ByteString
-      getGovernanceFrameworkUriBytes();
+  com.google.protobuf.ByteString getGovernanceFrameworkUriBytes();
 
   /**
+   *
+   *
    * <pre>
    * URI of trust registry associated with governance framework
    * </pre>
    *
    * <code>string trust_registry_uri = 2;</code>
+   *
    * @return The trustRegistryUri.
    */
   java.lang.String getTrustRegistryUri();
   /**
+   *
+   *
    * <pre>
    * URI of trust registry associated with governance framework
    * </pre>
    *
    * <code>string trust_registry_uri = 2;</code>
+   *
    * @return The bytes for trustRegistryUri.
    */
-  com.google.protobuf.ByteString
-      getTrustRegistryUriBytes();
+  com.google.protobuf.ByteString getTrustRegistryUriBytes();
 
   /**
+   *
+   *
    * <pre>
    * Description of governance framework
    * </pre>
    *
    * <code>string description = 3;</code>
+   *
    * @return The description.
    */
   java.lang.String getDescription();
   /**
+   *
+   *
    * <pre>
    * Description of governance framework
    * </pre>
    *
    * <code>string description = 3;</code>
+   *
    * @return The bytes for description.
    */
-  com.google.protobuf.ByteString
-      getDescriptionBytes();
+  com.google.protobuf.ByteString getDescriptionBytes();
 }

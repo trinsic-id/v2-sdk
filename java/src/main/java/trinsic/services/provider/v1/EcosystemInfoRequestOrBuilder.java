@@ -3,7 +3,7 @@
 
 package trinsic.services.provider.v1;
 
-public interface EcosystemInfoRequestOrBuilder extends
+public interface EcosystemInfoRequestOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.provider.v1.EcosystemInfoRequest)
-    com.google.protobuf.MessageOrBuilder {
-}
+    com.google.protobuf.MessageOrBuilder {}

@@ -3,47 +3,58 @@
 
 package trinsic.services.trustregistry.v1;
 
-public interface SearchRegistryRequestOrBuilder extends
+public interface SearchRegistryRequestOrBuilder
+    extends
     // @@protoc_insertion_point(interface_extends:services.trustregistry.v1.SearchRegistryRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   *
+   *
    * <pre>
    * SQL query to execute against frameworks. Example: `SELECT c from c where c.type == 'GovernanceFramework'`
    * </pre>
    *
    * <code>string query = 1;</code>
+   *
    * @return The query.
    */
   java.lang.String getQuery();
   /**
+   *
+   *
    * <pre>
    * SQL query to execute against frameworks. Example: `SELECT c from c where c.type == 'GovernanceFramework'`
    * </pre>
    *
    * <code>string query = 1;</code>
+   *
    * @return The bytes for query.
    */
-  com.google.protobuf.ByteString
-      getQueryBytes();
+  com.google.protobuf.ByteString getQueryBytes();
 
   /**
+   *
+   *
    * <pre>
    * Token to fetch next set of results, from previous `SearchRegistryResponse`
    * </pre>
    *
    * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
+   *
    * @return The continuationToken.
    */
   java.lang.String getContinuationToken();
   /**
+   *
+   *
    * <pre>
    * Token to fetch next set of results, from previous `SearchRegistryResponse`
    * </pre>
    *
    * <code>string continuation_token = 2 [(.services.options.optional) = true];</code>
+   *
    * @return The bytes for continuationToken.
    */
-  com.google.protobuf.ByteString
-      getContinuationTokenBytes();
+  com.google.protobuf.ByteString getContinuationTokenBytes();
 }
