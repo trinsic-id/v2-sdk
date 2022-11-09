@@ -482,6 +482,7 @@ export interface WalletConfiguration {
     sms: string;
     walletId: string;
     publicDid: string;
+    configType: string;
 }
 
 /** Options for creation of DID on the ION network */
@@ -3754,7 +3755,14 @@ export const SearchWalletConfigurationResponse = {
 };
 
 function createBaseWalletConfiguration(): WalletConfiguration {
-    return { name: "", email: "", sms: "", walletId: "", publicDid: "" };
+    return {
+        name: "",
+        email: "",
+        sms: "",
+        walletId: "",
+        publicDid: "",
+        configType: "",
+    };
 }
 
 export const WalletConfiguration = {
@@ -3776,6 +3784,9 @@ export const WalletConfiguration = {
         }
         if (message.publicDid !== "") {
             writer.uint32(42).string(message.publicDid);
+        }
+        if (message.configType !== "") {
+            writer.uint32(50).string(message.configType);
         }
         return writer;
     },
@@ -3806,6 +3817,9 @@ export const WalletConfiguration = {
                 case 5:
                     message.publicDid = reader.string();
                     break;
+                case 6:
+                    message.configType = reader.string();
+                    break;
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -3821,6 +3835,9 @@ export const WalletConfiguration = {
             sms: isSet(object.sms) ? String(object.sms) : "",
             walletId: isSet(object.walletId) ? String(object.walletId) : "",
             publicDid: isSet(object.publicDid) ? String(object.publicDid) : "",
+            configType: isSet(object.configType)
+                ? String(object.configType)
+                : "",
         };
     },
 
@@ -3831,6 +3848,8 @@ export const WalletConfiguration = {
         message.sms !== undefined && (obj.sms = message.sms);
         message.walletId !== undefined && (obj.walletId = message.walletId);
         message.publicDid !== undefined && (obj.publicDid = message.publicDid);
+        message.configType !== undefined &&
+            (obj.configType = message.configType);
         return obj;
     },
 
@@ -3841,6 +3860,7 @@ export const WalletConfiguration = {
         message.sms = object.sms ?? "";
         message.walletId = object.walletId ?? "";
         message.publicDid = object.publicDid ?? "";
+        message.configType = object.configType ?? "";
         return message;
     },
 };

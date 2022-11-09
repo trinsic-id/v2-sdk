@@ -13,11 +13,11 @@ type Trinsic struct {
 	Service
 
 	as *accountBase
-	cs *credentialBase
-	ts *templateBase
+	cs *verifiableCredentialBase
+	ts *credentialTemplatesBase
 	ps *providerBase
-	tr *trustregistryBase
-	ws *walletBase
+	tr *trustRegistryBase
+	ws *universalWalletBase
 }
 
 func NewTrinsic(options ...Option) (*Trinsic, error) {
@@ -47,7 +47,7 @@ func (t *Trinsic) Account() AccountService {
 
 func (t *Trinsic) Credential() CredentialService {
 	if t.cs == nil {
-		t.cs = &credentialBase{
+		t.cs = &verifiableCredentialBase{
 			Service: t.Service,
 			client:  credential.NewVerifiableCredentialClient(t.Service.GetChannel()),
 		}
@@ -58,7 +58,7 @@ func (t *Trinsic) Credential() CredentialService {
 
 func (t *Trinsic) Template() TemplateService {
 	if t.ts == nil {
-		t.ts = &templateBase{
+		t.ts = &credentialTemplatesBase{
 			Service: t.Service,
 			client:  template.NewCredentialTemplatesClient(t.Service.GetChannel()),
 		}
@@ -80,7 +80,7 @@ func (t *Trinsic) Provider() ProviderService {
 
 func (t *Trinsic) TrustRegistry() TrustRegistryService {
 	if t.tr == nil {
-		t.tr = &trustregistryBase{
+		t.tr = &trustRegistryBase{
 			Service: t.Service,
 			client:  trustregistry.NewTrustRegistryClient(t.Service.GetChannel()),
 		}
@@ -90,7 +90,7 @@ func (t *Trinsic) TrustRegistry() TrustRegistryService {
 }
 func (t *Trinsic) Wallet() WalletService {
 	if t.ws == nil {
-		t.ws = &walletBase{
+		t.ws = &universalWalletBase{
 			Service: t.Service,
 			client:  wallet.NewUniversalWalletClient(t.Service.GetChannel()),
 		}

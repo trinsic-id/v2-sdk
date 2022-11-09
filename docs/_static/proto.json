@@ -528,6 +528,66 @@
       "file": "services/options/field-options.proto",
       "parent": "services.options.SdkTemplateOption"
     },
+    "services.provider.v1.AccessManagement": {
+      "type": "service",
+      "collection": "services",
+      "file": "services/provider/v1/access-management.proto",
+      "parent": ""
+    },
+    "services.provider.v1.AccessManagement.AddRoleAssignment": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/provider/v1/access-management.proto",
+      "parent": ""
+    },
+    "services.provider.v1.AccessManagement.ListAvailableRoles": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/provider/v1/access-management.proto",
+      "parent": ""
+    },
+    "services.provider.v1.AccessManagement.ListRoleAssignments": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/provider/v1/access-management.proto",
+      "parent": ""
+    },
+    "services.provider.v1.AccessManagement.RemoveRoleAssignment": {
+      "type": "method",
+      "collection": "methods",
+      "file": "services/provider/v1/access-management.proto",
+      "parent": ""
+    },
+    "services.provider.v1.AddRoleAssignmentRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/access-management.proto",
+      "parent": ""
+    },
+    "services.provider.v1.AddRoleAssignmentRequest.email": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/access-management.proto",
+      "parent": "services.provider.v1.AddRoleAssignmentRequest"
+    },
+    "services.provider.v1.AddRoleAssignmentRequest.role": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/access-management.proto",
+      "parent": "services.provider.v1.AddRoleAssignmentRequest"
+    },
+    "services.provider.v1.AddRoleAssignmentRequest.wallet_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/access-management.proto",
+      "parent": "services.provider.v1.AddRoleAssignmentRequest"
+    },
+    "services.provider.v1.AddRoleAssignmentResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/access-management.proto",
+      "parent": ""
+    },
     "services.provider.v1.AddWebhookRequest": {
       "type": "message",
       "collection": "messages",
@@ -1098,6 +1158,54 @@
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.IonOptions"
     },
+    "services.provider.v1.ListAvailableRolesRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/access-management.proto",
+      "parent": ""
+    },
+    "services.provider.v1.ListAvailableRolesResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/access-management.proto",
+      "parent": ""
+    },
+    "services.provider.v1.ListAvailableRolesResponse.roles": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/access-management.proto",
+      "parent": "services.provider.v1.ListAvailableRolesResponse"
+    },
+    "services.provider.v1.ListRoleAssignmentsRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/access-management.proto",
+      "parent": ""
+    },
+    "services.provider.v1.ListRoleAssignmentsRequest.email": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/access-management.proto",
+      "parent": "services.provider.v1.ListRoleAssignmentsRequest"
+    },
+    "services.provider.v1.ListRoleAssignmentsRequest.wallet_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/access-management.proto",
+      "parent": "services.provider.v1.ListRoleAssignmentsRequest"
+    },
+    "services.provider.v1.ListRoleAssignmentsResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/access-management.proto",
+      "parent": ""
+    },
+    "services.provider.v1.ListRoleAssignmentsResponse.roles": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/access-management.proto",
+      "parent": "services.provider.v1.ListRoleAssignmentsResponse"
+    },
     "services.provider.v1.ParticipantType": {
       "type": "enum",
       "collection": "enums",
@@ -1290,6 +1398,36 @@
       "file": "services/provider/v1/provider.proto",
       "parent": "services.provider.v1.RefreshDomainVerificationStatusResponse"
     },
+    "services.provider.v1.RemoveRoleAssignmentRequest": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/access-management.proto",
+      "parent": ""
+    },
+    "services.provider.v1.RemoveRoleAssignmentRequest.email": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/access-management.proto",
+      "parent": "services.provider.v1.RemoveRoleAssignmentRequest"
+    },
+    "services.provider.v1.RemoveRoleAssignmentRequest.role": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/access-management.proto",
+      "parent": "services.provider.v1.RemoveRoleAssignmentRequest"
+    },
+    "services.provider.v1.RemoveRoleAssignmentRequest.wallet_id": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/access-management.proto",
+      "parent": "services.provider.v1.RemoveRoleAssignmentRequest"
+    },
+    "services.provider.v1.RemoveRoleAssignmentResponse": {
+      "type": "message",
+      "collection": "messages",
+      "file": "services/provider/v1/access-management.proto",
+      "parent": ""
+    },
     "services.provider.v1.RetrieveDomainVerificationRecordRequest": {
       "type": "message",
       "collection": "messages",
@@ -1481,6 +1619,12 @@
       "collection": "messages",
       "file": "services/provider/v1/provider.proto",
       "parent": ""
+    },
+    "services.provider.v1.WalletConfiguration.config_type": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/provider/v1/provider.proto",
+      "parent": "services.provider.v1.WalletConfiguration"
     },
     "services.provider.v1.WalletConfiguration.email": {
       "type": "field",
@@ -2934,6 +3078,12 @@
       "file": "services/event/v1/event.proto",
       "parent": ""
     },
+    "trinsic.services.event.EventType.CREDENTIAL_ISSUED": {
+      "type": "enum_value",
+      "collection": "enum_values",
+      "file": "services/event/v1/event.proto",
+      "parent": "trinsic.services.event.EventType"
+    },
     "trinsic.services.event.EventType.EGF_CREATED": {
       "type": "enum_value",
       "collection": "enum_values",
@@ -3257,7 +3407,8 @@
         "trinsic.services.event.EventType.TEMPLATE_CREATED",
         "trinsic.services.event.EventType.TEMPLATE_DELETED",
         "trinsic.services.event.EventType.WALLET_CREATED",
-        "trinsic.services.event.EventType.ITEM_RECEIVED"
+        "trinsic.services.event.EventType.ITEM_RECEIVED",
+        "trinsic.services.event.EventType.CREDENTIAL_ISSUED"
       ]
     },
     "services/options/field-options.proto": {
@@ -3273,6 +3424,44 @@
         "services.options.SdkTemplateOption.anonymous",
         "services.options.SdkTemplateOption.ignore",
         "services.options.SdkTemplateOption.no_arguments"
+      ],
+      "enums": [],
+      "enum_values": []
+    },
+    "services/provider/v1/access-management.proto": {
+      "name": "services/provider/v1/access-management.proto",
+      "package": "services.provider.v1",
+      "description": "",
+      "services": [
+        "services.provider.v1.AccessManagement"
+      ],
+      "methods": [
+        "services.provider.v1.AccessManagement.AddRoleAssignment",
+        "services.provider.v1.AccessManagement.RemoveRoleAssignment",
+        "services.provider.v1.AccessManagement.ListRoleAssignments",
+        "services.provider.v1.AccessManagement.ListAvailableRoles"
+      ],
+      "messages": [
+        "services.provider.v1.AddRoleAssignmentRequest",
+        "services.provider.v1.AddRoleAssignmentResponse",
+        "services.provider.v1.RemoveRoleAssignmentRequest",
+        "services.provider.v1.RemoveRoleAssignmentResponse",
+        "services.provider.v1.ListRoleAssignmentsRequest",
+        "services.provider.v1.ListRoleAssignmentsResponse",
+        "services.provider.v1.ListAvailableRolesRequest",
+        "services.provider.v1.ListAvailableRolesResponse"
+      ],
+      "fields": [
+        "services.provider.v1.AddRoleAssignmentRequest.role",
+        "services.provider.v1.AddRoleAssignmentRequest.email",
+        "services.provider.v1.AddRoleAssignmentRequest.wallet_id",
+        "services.provider.v1.RemoveRoleAssignmentRequest.role",
+        "services.provider.v1.RemoveRoleAssignmentRequest.email",
+        "services.provider.v1.RemoveRoleAssignmentRequest.wallet_id",
+        "services.provider.v1.ListRoleAssignmentsRequest.email",
+        "services.provider.v1.ListRoleAssignmentsRequest.wallet_id",
+        "services.provider.v1.ListRoleAssignmentsResponse.roles",
+        "services.provider.v1.ListAvailableRolesResponse.roles"
       ],
       "enums": [],
       "enum_values": []
@@ -3440,6 +3629,7 @@
         "services.provider.v1.WalletConfiguration.sms",
         "services.provider.v1.WalletConfiguration.wallet_id",
         "services.provider.v1.WalletConfiguration.public_did",
+        "services.provider.v1.WalletConfiguration.config_type",
         "services.provider.v1.IonOptions.network",
         "services.provider.v1.UpgradeDidRequest.email",
         "services.provider.v1.UpgradeDidRequest.wallet_id",
@@ -3756,6 +3946,17 @@
         "services.account.v1.Account.AuthorizeWebhook"
       ]
     },
+    "services.provider.v1.AccessManagement": {
+      "name": "AccessManagement",
+      "full_name": "services.provider.v1.AccessManagement",
+      "description": "Access Management service provides methods to manage access to ecosystem resources\nsuch by assigning roles and permissions to wallet accounts",
+      "methods": [
+        "services.provider.v1.AccessManagement.AddRoleAssignment",
+        "services.provider.v1.AccessManagement.RemoveRoleAssignment",
+        "services.provider.v1.AccessManagement.ListRoleAssignments",
+        "services.provider.v1.AccessManagement.ListAvailableRoles"
+      ]
+    },
     "services.provider.v1.Provider": {
       "name": "Provider",
       "full_name": "services.provider.v1.Provider",
@@ -3896,6 +4097,37 @@
         "deprecated": true,
         "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
       }
+    },
+    "services.provider.v1.AccessManagement.AddRoleAssignment": {
+      "name": "AddRoleAssignment",
+      "full_name": "services.provider.v1.AccessManagement.AddRoleAssignment",
+      "input_type": "services.provider.v1.AddRoleAssignmentRequest",
+      "output_type": "services.provider.v1.AddRoleAssignmentResponse",
+      "description": "Adds a role assignment to an account"
+    },
+    "services.provider.v1.AccessManagement.ListAvailableRoles": {
+      "name": "ListAvailableRoles",
+      "full_name": "services.provider.v1.AccessManagement.ListAvailableRoles",
+      "input_type": "services.provider.v1.ListAvailableRolesRequest",
+      "output_type": "services.provider.v1.ListAvailableRolesResponse",
+      "description": "List the roles available in the ecosystem",
+      "options": {
+        "services.options.sdk_template_option": ".services.options.SdkTemplateOption"
+      }
+    },
+    "services.provider.v1.AccessManagement.ListRoleAssignments": {
+      "name": "ListRoleAssignments",
+      "full_name": "services.provider.v1.AccessManagement.ListRoleAssignments",
+      "input_type": "services.provider.v1.ListRoleAssignmentsRequest",
+      "output_type": "services.provider.v1.ListRoleAssignmentsResponse",
+      "description": "List the role assignments for the given account"
+    },
+    "services.provider.v1.AccessManagement.RemoveRoleAssignment": {
+      "name": "RemoveRoleAssignment",
+      "full_name": "services.provider.v1.AccessManagement.RemoveRoleAssignment",
+      "input_type": "services.provider.v1.RemoveRoleAssignmentRequest",
+      "output_type": "services.provider.v1.RemoveRoleAssignmentResponse",
+      "description": "Removes a role assignment from the account"
     },
     "services.provider.v1.Provider.AddWebhook": {
       "name": "AddWebhook",
@@ -4434,6 +4666,26 @@
       "messages": [],
       "enums": []
     },
+    "services.provider.v1.AddRoleAssignmentRequest": {
+      "name": "AddRoleAssignmentRequest",
+      "full_name": "services.provider.v1.AddRoleAssignmentRequest",
+      "description": "Role management",
+      "fields": [
+        "services.provider.v1.AddRoleAssignmentRequest.role",
+        "services.provider.v1.AddRoleAssignmentRequest.email",
+        "services.provider.v1.AddRoleAssignmentRequest.wallet_id"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.provider.v1.AddRoleAssignmentResponse": {
+      "name": "AddRoleAssignmentResponse",
+      "full_name": "services.provider.v1.AddRoleAssignmentResponse",
+      "description": "",
+      "fields": [],
+      "messages": [],
+      "enums": []
+    },
     "services.provider.v1.AddWebhookRequest": {
       "name": "AddWebhookRequest",
       "full_name": "services.provider.v1.AddWebhookRequest",
@@ -4778,6 +5030,45 @@
         "services.provider.v1.IonOptions.IonNetwork"
       ]
     },
+    "services.provider.v1.ListAvailableRolesRequest": {
+      "name": "ListAvailableRolesRequest",
+      "full_name": "services.provider.v1.ListAvailableRolesRequest",
+      "description": "Request to fetch the available roles in the current ecosystem",
+      "fields": [],
+      "messages": [],
+      "enums": []
+    },
+    "services.provider.v1.ListAvailableRolesResponse": {
+      "name": "ListAvailableRolesResponse",
+      "full_name": "services.provider.v1.ListAvailableRolesResponse",
+      "description": "",
+      "fields": [
+        "services.provider.v1.ListAvailableRolesResponse.roles"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.provider.v1.ListRoleAssignmentsRequest": {
+      "name": "ListRoleAssignmentsRequest",
+      "full_name": "services.provider.v1.ListRoleAssignmentsRequest",
+      "description": "Request to fetch the list of roles assigned to the current account",
+      "fields": [
+        "services.provider.v1.ListRoleAssignmentsRequest.email",
+        "services.provider.v1.ListRoleAssignmentsRequest.wallet_id"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.provider.v1.ListRoleAssignmentsResponse": {
+      "name": "ListRoleAssignmentsResponse",
+      "full_name": "services.provider.v1.ListRoleAssignmentsResponse",
+      "description": "",
+      "fields": [
+        "services.provider.v1.ListRoleAssignmentsResponse.roles"
+      ],
+      "messages": [],
+      "enums": []
+    },
     "services.provider.v1.PublicEcosystemInformation": {
       "name": "PublicEcosystemInformation",
       "full_name": "services.provider.v1.PublicEcosystemInformation",
@@ -4808,6 +5099,26 @@
         "services.provider.v1.RefreshDomainVerificationStatusResponse.domain",
         "services.provider.v1.RefreshDomainVerificationStatusResponse.domain_verified"
       ],
+      "messages": [],
+      "enums": []
+    },
+    "services.provider.v1.RemoveRoleAssignmentRequest": {
+      "name": "RemoveRoleAssignmentRequest",
+      "full_name": "services.provider.v1.RemoveRoleAssignmentRequest",
+      "description": "",
+      "fields": [
+        "services.provider.v1.RemoveRoleAssignmentRequest.role",
+        "services.provider.v1.RemoveRoleAssignmentRequest.email",
+        "services.provider.v1.RemoveRoleAssignmentRequest.wallet_id"
+      ],
+      "messages": [],
+      "enums": []
+    },
+    "services.provider.v1.RemoveRoleAssignmentResponse": {
+      "name": "RemoveRoleAssignmentResponse",
+      "full_name": "services.provider.v1.RemoveRoleAssignmentResponse",
+      "description": "",
+      "fields": [],
       "messages": [],
       "enums": []
     },
@@ -4929,7 +5240,8 @@
         "services.provider.v1.WalletConfiguration.email",
         "services.provider.v1.WalletConfiguration.sms",
         "services.provider.v1.WalletConfiguration.wallet_id",
-        "services.provider.v1.WalletConfiguration.public_did"
+        "services.provider.v1.WalletConfiguration.public_did",
+        "services.provider.v1.WalletConfiguration.config_type"
       ],
       "messages": [],
       "enums": []
@@ -6073,6 +6385,30 @@
       "full_type": "bool",
       "description": "Whether the SDK template generator should generate this method without arguments, eg\nProviderService.GetEcosystemInfo() where the request object is empty"
     },
+    "services.provider.v1.AddRoleAssignmentRequest.email": {
+      "name": "email",
+      "full_name": "services.provider.v1.AddRoleAssignmentRequest.email",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Email address of account to assign role to.\nMutually exclusive with `walletId`."
+    },
+    "services.provider.v1.AddRoleAssignmentRequest.role": {
+      "name": "role",
+      "full_name": "services.provider.v1.AddRoleAssignmentRequest.role",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Role to assign"
+    },
+    "services.provider.v1.AddRoleAssignmentRequest.wallet_id": {
+      "name": "wallet_id",
+      "full_name": "services.provider.v1.AddRoleAssignmentRequest.wallet_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Wallet ID of account to assign role to.\nMutually exclusive with `email`."
+    },
     "services.provider.v1.AddWebhookRequest.destination_url": {
       "name": "destination_url",
       "full_name": "services.provider.v1.AddWebhookRequest.destination_url",
@@ -6535,6 +6871,38 @@
       "full_type": "services.provider.v1.IonOptions.IonNetwork",
       "description": "ION network on which DID should be published"
     },
+    "services.provider.v1.ListAvailableRolesResponse.roles": {
+      "name": "roles",
+      "full_name": "services.provider.v1.ListAvailableRolesResponse.roles",
+      "label": "LABEL_REPEATED",
+      "type": "string",
+      "full_type": "string",
+      "description": "List of roles"
+    },
+    "services.provider.v1.ListRoleAssignmentsRequest.email": {
+      "name": "email",
+      "full_name": "services.provider.v1.ListRoleAssignmentsRequest.email",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Email address of account to unassign role from.\nMutually exclusive with `walletId`."
+    },
+    "services.provider.v1.ListRoleAssignmentsRequest.wallet_id": {
+      "name": "wallet_id",
+      "full_name": "services.provider.v1.ListRoleAssignmentsRequest.wallet_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Wallet ID of account to unassign role from.\nMutually exclusive with `email`."
+    },
+    "services.provider.v1.ListRoleAssignmentsResponse.roles": {
+      "name": "roles",
+      "full_name": "services.provider.v1.ListRoleAssignmentsResponse.roles",
+      "label": "LABEL_REPEATED",
+      "type": "string",
+      "full_type": "string",
+      "description": "List of roles"
+    },
     "services.provider.v1.PublicEcosystemInformation.description": {
       "name": "description",
       "full_name": "services.provider.v1.PublicEcosystemInformation.description",
@@ -6590,6 +6958,30 @@
       "type": "bool",
       "full_type": "bool",
       "description": "Specifies if the above `domain` was successfully verified"
+    },
+    "services.provider.v1.RemoveRoleAssignmentRequest.email": {
+      "name": "email",
+      "full_name": "services.provider.v1.RemoveRoleAssignmentRequest.email",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Email address of account to unassign role from.\nMutually exclusive with `walletId`."
+    },
+    "services.provider.v1.RemoveRoleAssignmentRequest.role": {
+      "name": "role",
+      "full_name": "services.provider.v1.RemoveRoleAssignmentRequest.role",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Role to unassign"
+    },
+    "services.provider.v1.RemoveRoleAssignmentRequest.wallet_id": {
+      "name": "wallet_id",
+      "full_name": "services.provider.v1.RemoveRoleAssignmentRequest.wallet_id",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": "Wallet ID of account to unassign role from.\nMutually exclusive with `email`."
     },
     "services.provider.v1.RetrieveDomainVerificationRecordResponse.verification_record_Value": {
       "name": "verification_record_Value",
@@ -6764,6 +7156,14 @@
       "type": "string",
       "full_type": "string",
       "description": "New DID of wallet"
+    },
+    "services.provider.v1.WalletConfiguration.config_type": {
+      "name": "config_type",
+      "full_name": "services.provider.v1.WalletConfiguration.config_type",
+      "label": "LABEL_OPTIONAL",
+      "type": "string",
+      "full_type": "string",
+      "description": ""
     },
     "services.provider.v1.WalletConfiguration.email": {
       "name": "email",
@@ -8096,7 +8496,8 @@
         "trinsic.services.event.EventType.TEMPLATE_CREATED",
         "trinsic.services.event.EventType.TEMPLATE_DELETED",
         "trinsic.services.event.EventType.WALLET_CREATED",
-        "trinsic.services.event.EventType.ITEM_RECEIVED"
+        "trinsic.services.event.EventType.ITEM_RECEIVED",
+        "trinsic.services.event.EventType.CREDENTIAL_ISSUED"
       ]
     }
   },
@@ -8280,6 +8681,12 @@
       "full_name": "services.verifiablecredentials.templates.v1.FieldType.STRING",
       "description": "",
       "value": 0
+    },
+    "trinsic.services.event.EventType.CREDENTIAL_ISSUED": {
+      "name": "CREDENTIAL_ISSUED",
+      "full_name": "trinsic.services.event.EventType.CREDENTIAL_ISSUED",
+      "description": "",
+      "value": 17
     },
     "trinsic.services.event.EventType.EGF_CREATED": {
       "name": "EGF_CREATED",

@@ -31,7 +31,9 @@ describe("Demo: Credential Templates", () => {
         expect(fieldsMap["dateOfBirth"]).toEqual(dateOfBirth);
         expect(fieldsMap["vaccinated"]).toEqual(isVaccinated);
 
-        let deletedTemplate = await trinsic.template().delete({id: createdTemplate.data?.id ?? ""});
+        let deletedTemplate = await trinsic
+            .template()
+            .delete({ id: createdTemplate.data?.id ?? "" });
         console.log(deletedTemplate);
     });
 

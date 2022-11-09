@@ -192,6 +192,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :sms, :string, 3
       optional :wallet_id, :string, 4
       optional :public_did, :string, 5
+      optional :config_type, :string, 6
     end
     add_message "services.provider.v1.IonOptions" do
       optional :network, :enum, 1, "services.provider.v1.IonOptions.IonNetwork"

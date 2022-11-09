@@ -13,7 +13,7 @@ import '../../account/v1/account.pb.dart' as $1;
 
 import 'provider.pbenum.dart';
 import '../../account/v1/account.pbenum.dart' as $1;
-import '../../common/v1/common.pbenum.dart' as $6;
+import '../../common/v1/common.pbenum.dart' as $7;
 
 export 'provider.pbenum.dart';
 
@@ -3853,6 +3853,11 @@ class WalletConfiguration extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'publicDid')
+    ..aOS(
+        6,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'configType')
     ..hasRequiredFields = false;
 
   WalletConfiguration._() : super();
@@ -3862,6 +3867,7 @@ class WalletConfiguration extends $pb.GeneratedMessage {
     $core.String? sms,
     $core.String? walletId,
     $core.String? publicDid,
+    $core.String? configType,
   }) {
     final _result = create();
     if (name != null) {
@@ -3878,6 +3884,9 @@ class WalletConfiguration extends $pb.GeneratedMessage {
     }
     if (publicDid != null) {
       _result.publicDid = publicDid;
+    }
+    if (configType != null) {
+      _result.configType = configType;
     }
     return _result;
   }
@@ -3967,6 +3976,18 @@ class WalletConfiguration extends $pb.GeneratedMessage {
   $core.bool hasPublicDid() => $_has(4);
   @$pb.TagNumber(5)
   void clearPublicDid() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.String get configType => $_getSZ(5);
+  @$pb.TagNumber(6)
+  set configType($core.String v) {
+    $_setString(5, v);
+  }
+
+  @$pb.TagNumber(6)
+  $core.bool hasConfigType() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearConfigType() => clearField(6);
 }
 
 class IonOptions extends $pb.GeneratedMessage {
@@ -4076,15 +4097,15 @@ class UpgradeDidRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'walletId')
-    ..e<$6.SupportedDidMethod>(
+    ..e<$7.SupportedDidMethod>(
         3,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'method',
         $pb.PbFieldType.OE,
-        defaultOrMaker: $6.SupportedDidMethod.KEY,
-        valueOf: $6.SupportedDidMethod.valueOf,
-        enumValues: $6.SupportedDidMethod.values)
+        defaultOrMaker: $7.SupportedDidMethod.KEY,
+        valueOf: $7.SupportedDidMethod.valueOf,
+        enumValues: $7.SupportedDidMethod.values)
     ..aOM<IonOptions>(
         4,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -4097,7 +4118,7 @@ class UpgradeDidRequest extends $pb.GeneratedMessage {
   factory UpgradeDidRequest({
     $core.String? email,
     $core.String? walletId,
-    $6.SupportedDidMethod? method,
+    $7.SupportedDidMethod? method,
     IonOptions? ionOptions,
   }) {
     final _result = create();
@@ -4175,9 +4196,9 @@ class UpgradeDidRequest extends $pb.GeneratedMessage {
   void clearWalletId() => clearField(2);
 
   @$pb.TagNumber(3)
-  $6.SupportedDidMethod get method => $_getN(2);
+  $7.SupportedDidMethod get method => $_getN(2);
   @$pb.TagNumber(3)
-  set method($6.SupportedDidMethod v) {
+  set method($7.SupportedDidMethod v) {
     setField(3, v);
   }
 

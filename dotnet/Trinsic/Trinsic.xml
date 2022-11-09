@@ -4,6 +4,41 @@
         <name>Trinsic</name>
     </assembly>
     <members>
+        <member name="P:Trinsic.AccessManagementService.Client">
+            <summary>
+            Gets the underlying grpc client
+            </summary>
+        </member>
+        <member name="M:Trinsic.AccessManagementService.AddRoleAssignment(Trinsic.Services.Provider.V1.AddRoleAssignmentRequest)">
+            <summary>
+            Adds a role assignment to an account
+            </summary>	
+        </member>
+        <member name="M:Trinsic.AccessManagementService.AddRoleAssignmentAsync(Trinsic.Services.Provider.V1.AddRoleAssignmentRequest)">
+            <summary>
+            Adds a role assignment to an account
+            </summary>	
+        </member>
+        <member name="M:Trinsic.AccessManagementService.RemoveRoleAssignment(Trinsic.Services.Provider.V1.RemoveRoleAssignmentRequest)">
+            <summary>
+            Removes a role assignment from the account
+            </summary>	
+        </member>
+        <member name="M:Trinsic.AccessManagementService.RemoveRoleAssignmentAsync(Trinsic.Services.Provider.V1.RemoveRoleAssignmentRequest)">
+            <summary>
+            Removes a role assignment from the account
+            </summary>	
+        </member>
+        <member name="M:Trinsic.AccessManagementService.ListRoleAssignments(Trinsic.Services.Provider.V1.ListRoleAssignmentsRequest)">
+            <summary>
+            List the role assignments for the given account
+            </summary>	
+        </member>
+        <member name="M:Trinsic.AccessManagementService.ListRoleAssignmentsAsync(Trinsic.Services.Provider.V1.ListRoleAssignmentsRequest)">
+            <summary>
+            List the role assignments for the given account
+            </summary>	
+        </member>
         <member name="T:Trinsic.AccountService">
             <summary>
             Account Service
@@ -1065,7 +1100,7 @@
         </member>
         <member name="T:Trinsic.Services.Event.V1.Event">
             <summary>
-            Event 
+            Event
             </summary>
         </member>
         <member name="F:Trinsic.Services.Event.V1.Event.IdFieldNumber">
@@ -1323,6 +1358,341 @@
             Whether the SDK template generator should generate this method without arguments, eg
             ProviderService.GetEcosystemInfo() where the request object is empty
             </summary>
+        </member>
+        <member name="T:Trinsic.Services.Provider.V1.AccessManagementReflection">
+            <summary>Holder for reflection information generated from services/provider/v1/access-management.proto</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.AccessManagementReflection.Descriptor">
+            <summary>File descriptor for services/provider/v1/access-management.proto</summary>
+        </member>
+        <member name="T:Trinsic.Services.Provider.V1.AddRoleAssignmentRequest">
+            <summary>
+            Role management
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.AddRoleAssignmentRequest.RoleFieldNumber">
+            <summary>Field number for the "role" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.AddRoleAssignmentRequest.Role">
+            <summary>
+            Role to assign
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.AddRoleAssignmentRequest.EmailFieldNumber">
+            <summary>Field number for the "email" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.AddRoleAssignmentRequest.Email">
+            <summary>
+            Email address of account to assign role to.
+            Mutually exclusive with `walletId`.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.AddRoleAssignmentRequest.WalletIdFieldNumber">
+            <summary>Field number for the "wallet_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.AddRoleAssignmentRequest.WalletId">
+            <summary>
+            Wallet ID of account to assign role to.
+            Mutually exclusive with `email`.
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.Provider.V1.AddRoleAssignmentRequest.AccountOneofCase">
+            <summary>Enum of possible cases for the "account" oneof.</summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.RemoveRoleAssignmentRequest.RoleFieldNumber">
+            <summary>Field number for the "role" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.RemoveRoleAssignmentRequest.Role">
+            <summary>
+            Role to unassign
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.RemoveRoleAssignmentRequest.EmailFieldNumber">
+            <summary>Field number for the "email" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.RemoveRoleAssignmentRequest.Email">
+            <summary>
+            Email address of account to unassign role from.
+            Mutually exclusive with `walletId`.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.RemoveRoleAssignmentRequest.WalletIdFieldNumber">
+            <summary>Field number for the "wallet_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.RemoveRoleAssignmentRequest.WalletId">
+            <summary>
+            Wallet ID of account to unassign role from.
+            Mutually exclusive with `email`.
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.Provider.V1.RemoveRoleAssignmentRequest.AccountOneofCase">
+            <summary>Enum of possible cases for the "account" oneof.</summary>
+        </member>
+        <member name="T:Trinsic.Services.Provider.V1.ListRoleAssignmentsRequest">
+            <summary>
+            Request to fetch the list of roles assigned to the current account
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.ListRoleAssignmentsRequest.EmailFieldNumber">
+            <summary>Field number for the "email" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.ListRoleAssignmentsRequest.Email">
+            <summary>
+            Email address of account to unassign role from.
+            Mutually exclusive with `walletId`.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.ListRoleAssignmentsRequest.WalletIdFieldNumber">
+            <summary>Field number for the "wallet_id" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.ListRoleAssignmentsRequest.WalletId">
+            <summary>
+            Wallet ID of account to unassign role from.
+            Mutually exclusive with `email`.
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.Provider.V1.ListRoleAssignmentsRequest.AccountOneofCase">
+            <summary>Enum of possible cases for the "account" oneof.</summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.ListRoleAssignmentsResponse.RolesFieldNumber">
+            <summary>Field number for the "roles" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.ListRoleAssignmentsResponse.Roles">
+            <summary>
+            List of roles
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.Provider.V1.ListAvailableRolesRequest">
+            <summary>
+            Request to fetch the available roles in the current ecosystem
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.ListAvailableRolesResponse.RolesFieldNumber">
+            <summary>Field number for the "roles" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.ListAvailableRolesResponse.Roles">
+            <summary>
+            List of roles
+            </summary>
+        </member>
+        <member name="T:Trinsic.Services.Provider.V1.AccessManagement">
+            <summary>
+            Access Management service provides methods to manage access to ecosystem resources
+            such by assigning roles and permissions to wallet accounts
+            </summary>
+        </member>
+        <member name="P:Trinsic.Services.Provider.V1.AccessManagement.Descriptor">
+            <summary>Service descriptor</summary>
+        </member>
+        <member name="T:Trinsic.Services.Provider.V1.AccessManagement.AccessManagementBase">
+            <summary>Base class for server-side implementations of AccessManagement</summary>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.AccessManagement.AccessManagementBase.AddRoleAssignment(Trinsic.Services.Provider.V1.AddRoleAssignmentRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Adds a role assignment to an account
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.AccessManagement.AccessManagementBase.RemoveRoleAssignment(Trinsic.Services.Provider.V1.RemoveRoleAssignmentRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            Removes a role assignment from the account
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.AccessManagement.AccessManagementBase.ListRoleAssignments(Trinsic.Services.Provider.V1.ListRoleAssignmentsRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            List the role assignments for the given account
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.AccessManagement.AccessManagementBase.ListAvailableRoles(Trinsic.Services.Provider.V1.ListAvailableRolesRequest,Grpc.Core.ServerCallContext)">
+            <summary>
+            List the roles available in the ecosystem
+            </summary>
+            <param name="request">The request received from the client.</param>
+            <param name="context">The context of the server-side call handler being invoked.</param>
+            <returns>The response to send back to the client (wrapped by a task).</returns>
+        </member>
+        <member name="T:Trinsic.Services.Provider.V1.AccessManagement.AccessManagementClient">
+            <summary>Client for AccessManagement</summary>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.AccessManagement.AccessManagementClient.#ctor(Grpc.Core.ChannelBase)">
+            <summary>Creates a new client for AccessManagement</summary>
+            <param name="channel">The channel to use to make remote calls.</param>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.AccessManagement.AccessManagementClient.#ctor(Grpc.Core.CallInvoker)">
+            <summary>Creates a new client for AccessManagement that uses a custom <c>CallInvoker</c>.</summary>
+            <param name="callInvoker">The callInvoker to use to make remote calls.</param>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.AccessManagement.AccessManagementClient.#ctor">
+            <summary>Protected parameterless constructor to allow creation of test doubles.</summary>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.AccessManagement.AccessManagementClient.#ctor(Grpc.Core.ClientBase.ClientBaseConfiguration)">
+            <summary>Protected constructor to allow creation of configured clients.</summary>
+            <param name="configuration">The client configuration.</param>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.AccessManagement.AccessManagementClient.AddRoleAssignment(Trinsic.Services.Provider.V1.AddRoleAssignmentRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Adds a role assignment to an account
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.AccessManagement.AccessManagementClient.AddRoleAssignment(Trinsic.Services.Provider.V1.AddRoleAssignmentRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Adds a role assignment to an account
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.AccessManagement.AccessManagementClient.AddRoleAssignmentAsync(Trinsic.Services.Provider.V1.AddRoleAssignmentRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Adds a role assignment to an account
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.AccessManagement.AccessManagementClient.AddRoleAssignmentAsync(Trinsic.Services.Provider.V1.AddRoleAssignmentRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Adds a role assignment to an account
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.AccessManagement.AccessManagementClient.RemoveRoleAssignment(Trinsic.Services.Provider.V1.RemoveRoleAssignmentRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Removes a role assignment from the account
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.AccessManagement.AccessManagementClient.RemoveRoleAssignment(Trinsic.Services.Provider.V1.RemoveRoleAssignmentRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Removes a role assignment from the account
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.AccessManagement.AccessManagementClient.RemoveRoleAssignmentAsync(Trinsic.Services.Provider.V1.RemoveRoleAssignmentRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Removes a role assignment from the account
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.AccessManagement.AccessManagementClient.RemoveRoleAssignmentAsync(Trinsic.Services.Provider.V1.RemoveRoleAssignmentRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Removes a role assignment from the account
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.AccessManagement.AccessManagementClient.ListRoleAssignments(Trinsic.Services.Provider.V1.ListRoleAssignmentsRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            List the role assignments for the given account
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.AccessManagement.AccessManagementClient.ListRoleAssignments(Trinsic.Services.Provider.V1.ListRoleAssignmentsRequest,Grpc.Core.CallOptions)">
+            <summary>
+            List the role assignments for the given account
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.AccessManagement.AccessManagementClient.ListRoleAssignmentsAsync(Trinsic.Services.Provider.V1.ListRoleAssignmentsRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            List the role assignments for the given account
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.AccessManagement.AccessManagementClient.ListRoleAssignmentsAsync(Trinsic.Services.Provider.V1.ListRoleAssignmentsRequest,Grpc.Core.CallOptions)">
+            <summary>
+            List the role assignments for the given account
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.AccessManagement.AccessManagementClient.ListAvailableRoles(Trinsic.Services.Provider.V1.ListAvailableRolesRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            List the roles available in the ecosystem
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.AccessManagement.AccessManagementClient.ListAvailableRoles(Trinsic.Services.Provider.V1.ListAvailableRolesRequest,Grpc.Core.CallOptions)">
+            <summary>
+            List the roles available in the ecosystem
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The response received from the server.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.AccessManagement.AccessManagementClient.ListAvailableRolesAsync(Trinsic.Services.Provider.V1.ListAvailableRolesRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            List the roles available in the ecosystem
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.AccessManagement.AccessManagementClient.ListAvailableRolesAsync(Trinsic.Services.Provider.V1.ListAvailableRolesRequest,Grpc.Core.CallOptions)">
+            <summary>
+            List the roles available in the ecosystem
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.AccessManagement.AccessManagementClient.NewInstance(Grpc.Core.ClientBase.ClientBaseConfiguration)">
+            <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.AccessManagement.BindService(Trinsic.Services.Provider.V1.AccessManagement.AccessManagementBase)">
+            <summary>Creates service definition that can be registered with a server</summary>
+            <param name="serviceImpl">An object implementing the server-side handling logic.</param>
+        </member>
+        <member name="M:Trinsic.Services.Provider.V1.AccessManagement.BindService(Grpc.Core.ServiceBinderBase,Trinsic.Services.Provider.V1.AccessManagement.AccessManagementBase)">
+            <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
+            Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
+            <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
+            <param name="serviceImpl">An object implementing the server-side handling logic.</param>
         </member>
         <member name="T:Trinsic.Services.Provider.V1.ProviderReflection">
             <summary>Holder for reflection information generated from services/provider/v1/provider.proto</summary>
@@ -2194,6 +2564,9 @@
         </member>
         <member name="F:Trinsic.Services.Provider.V1.WalletConfiguration.PublicDidFieldNumber">
             <summary>Field number for the "public_did" field.</summary>
+        </member>
+        <member name="F:Trinsic.Services.Provider.V1.WalletConfiguration.ConfigTypeFieldNumber">
+            <summary>Field number for the "config_type" field.</summary>
         </member>
         <member name="T:Trinsic.Services.Provider.V1.IonOptions">
             <summary>

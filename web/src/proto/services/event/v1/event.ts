@@ -12,6 +12,7 @@ export enum EventType {
     TEMPLATE_DELETED = 11,
     WALLET_CREATED = 15,
     ITEM_RECEIVED = 16,
+    CREDENTIAL_ISSUED = 17,
     UNRECOGNIZED = -1,
 }
 
@@ -44,6 +45,9 @@ export function eventTypeFromJSON(object: any): EventType {
         case 16:
         case "ITEM_RECEIVED":
             return EventType.ITEM_RECEIVED;
+        case 17:
+        case "CREDENTIAL_ISSUED":
+            return EventType.CREDENTIAL_ISSUED;
         case -1:
         case "UNRECOGNIZED":
         default:
@@ -71,6 +75,8 @@ export function eventTypeToJSON(object: EventType): string {
             return "WALLET_CREATED";
         case EventType.ITEM_RECEIVED:
             return "ITEM_RECEIVED";
+        case EventType.CREDENTIAL_ISSUED:
+            return "CREDENTIAL_ISSUED";
         case EventType.UNRECOGNIZED:
         default:
             return "UNRECOGNIZED";

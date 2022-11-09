@@ -3066,7 +3066,8 @@ class Services::Provider::V1::WalletConfiguration
       email: T.nilable(String),
       sms: T.nilable(String),
       wallet_id: T.nilable(String),
-      public_did: T.nilable(String)
+      public_did: T.nilable(String),
+      config_type: T.nilable(String)
     ).void
   end
   def initialize(
@@ -3074,7 +3075,8 @@ class Services::Provider::V1::WalletConfiguration
     email: "",
     sms: "",
     wallet_id: "",
-    public_did: ""
+    public_did: "",
+    config_type: ""
   )
   end
 
@@ -3136,6 +3138,18 @@ class Services::Provider::V1::WalletConfiguration
 
   sig { void }
   def clear_public_did
+  end
+
+  sig { returns(String) }
+  def config_type
+  end
+
+  sig { params(value: String).void }
+  def config_type=(value)
+  end
+
+  sig { void }
+  def clear_config_type
   end
 
   sig { params(field: String).returns(T.untyped) }

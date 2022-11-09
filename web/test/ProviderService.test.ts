@@ -90,23 +90,22 @@ describe("ProviderService Unit Tests", () => {
 
         expect(ecosystem).toEqual(updateResponse.Ecosystem);
 
-
         let accountInfoResponse = await trinsic.account().info();
         let walletId = accountInfoResponse.walletId;
 
         // Try/catch this as ecosystems currently can't upgrade DIDs by default
         try {
             // upgradeDid() {
-            let upgradeResponse = await trinsic.provider().upgradeDID(UpgradeDidRequest.fromPartial({
-                walletId: walletId,
-                method: SupportedDidMethod.ION,
-                ionOptions: IonOptions.fromPartial({
-                    network: IonOptions_IonNetwork.TestNet
+            let upgradeResponse = await trinsic.provider().upgradeDID(
+                UpgradeDidRequest.fromPartial({
+                    walletId: walletId,
+                    method: SupportedDidMethod.ION,
+                    ionOptions: IonOptions.fromPartial({
+                        network: IonOptions_IonNetwork.TestNet,
+                    }),
                 })
-            }));
+            );
             // }
-        } catch (e) {
-        }
-
+        } catch (e) {}
     });
 });

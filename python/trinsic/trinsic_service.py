@@ -1,5 +1,6 @@
 from functools import cached_property
 
+from trinsic.access_management_service import AccessManagementService
 from trinsic.account_service import AccountService
 from trinsic.credential_service import CredentialService
 from trinsic.proto.sdk.options.v1 import ServiceOptions
@@ -28,6 +29,12 @@ class TrinsicService(ServiceBase):
         self.provider.close()
         self.trust_registry.close()
         self.wallet.close()
+
+    @cached_property
+    def accessManagement(self) -> AccessManagementService:
+        return AccessManagementService(
+            server_config=self.service_options, token_provider=self.token_provider
+        )
 
     @cached_property
     def account(self) -> AccountService:

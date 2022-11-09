@@ -839,12 +839,13 @@ const WalletConfiguration$json = const {
     const {'1': 'sms', '3': 3, '4': 1, '5': 9, '8': const {}, '10': 'sms'},
     const {'1': 'wallet_id', '3': 4, '4': 1, '5': 9, '10': 'walletId'},
     const {'1': 'public_did', '3': 5, '4': 1, '5': 9, '10': 'publicDid'},
+    const {'1': 'config_type', '3': 6, '4': 1, '5': 9, '10': 'configType'},
   ],
 };
 
 /// Descriptor for `WalletConfiguration`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List walletConfigurationDescriptor = $convert.base64Decode(
-    'ChNXYWxsZXRDb25maWd1cmF0aW9uEhIKBG5hbWUYASABKAlSBG5hbWUSGgoFZW1haWwYAiABKAlCBICmHQFSBWVtYWlsEhYKA3NtcxgDIAEoCUIEgKYdAVIDc21zEhsKCXdhbGxldF9pZBgEIAEoCVIId2FsbGV0SWQSHQoKcHVibGljX2RpZBgFIAEoCVIJcHVibGljRGlk');
+    'ChNXYWxsZXRDb25maWd1cmF0aW9uEhIKBG5hbWUYASABKAlSBG5hbWUSGgoFZW1haWwYAiABKAlCBICmHQFSBWVtYWlsEhYKA3NtcxgDIAEoCUIEgKYdAVIDc21zEhsKCXdhbGxldF9pZBgEIAEoCVIId2FsbGV0SWQSHQoKcHVibGljX2RpZBgFIAEoCVIJcHVibGljRGlkEh8KC2NvbmZpZ190eXBlGAYgASgJUgpjb25maWdUeXBl');
 @$core.Deprecated('Use ionOptionsDescriptor instead')
 const IonOptions$json = const {
   '1': 'IonOptions',

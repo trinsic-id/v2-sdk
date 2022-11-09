@@ -319,7 +319,7 @@ public class Tests
         // }
     }
 
-    [Fact]
+    [Fact(Skip = "Named login example for docs")]
     public async Task TestLogin() {
         var trinsic = new TrinsicService(MemoryTokenProvider.StaticInstance, _options.Clone());
         var (ecosystem, _) = await trinsic.Provider.CreateEcosystemAsync(new());
@@ -386,7 +386,7 @@ public class Tests
         Assert.NotNull(trinsic.Account.GetInfo());
     }
 
-    [Fact]
+    [Fact(Skip = "Ecosystem support not complete yet")]
     public async Task TestInvitationIdSet() {
         var trinsic = new TrinsicService(MemoryTokenProvider.StaticInstance, _options.Clone());
         var (ecosystem, authToken) = await trinsic.Provider.CreateEcosystemAsync(new());

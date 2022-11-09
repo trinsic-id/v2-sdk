@@ -9,6 +9,7 @@ namespace Trinsic;
 /// </summary>
 public class TrinsicService : ServiceBase
 {
+    private AccessManagementService? _accessManagement;
     private AccountService? _account;
     private CredentialService? _credential;
     private TemplateService? _template;
@@ -34,6 +35,11 @@ public class TrinsicService : ServiceBase
     internal TrinsicService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
         : base(options.Value, tokenProvider) {
     }
+
+    /// <summary>
+    /// Exposes Account Service functionality
+    /// </summary>
+    public AccessManagementService AccessManagement => _accessManagement ??= new(TokenProvider, MicrosoftOptions.Create(Options));
 
     /// <summary>
     /// Exposes Account Service functionality
