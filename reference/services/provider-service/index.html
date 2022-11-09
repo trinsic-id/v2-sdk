@@ -2209,13 +2209,15 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">upgradeResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">provider</span><span class="p">().</span><span class="nx">upgradeDID</span><span class="p">(</span><span class="nx">UpgradeDidRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
-<span class="w">    </span><span class="nx">walletId</span><span class="o">:</span><span class="w"> </span><span class="kt">walletId</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="kt">SupportedDidMethod.ION</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nx">ionOptions</span><span class="o">:</span><span class="w"> </span><span class="kt">IonOptions.fromPartial</span><span class="p">({</span><span class="w"></span>
-<span class="w">        </span><span class="nx">network</span><span class="o">:</span><span class="w"> </span><span class="kt">IonOptions_IonNetwork.TestNet</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nx">upgradeResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">trinsic</span><span class="p">.</span><span class="nx">provider</span><span class="p">().</span><span class="nx">upgradeDID</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="nx">UpgradeDidRequest</span><span class="p">.</span><span class="nx">fromPartial</span><span class="p">({</span><span class="w"></span>
+<span class="w">        </span><span class="nx">walletId</span><span class="o">:</span><span class="w"> </span><span class="kt">walletId</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="kt">SupportedDidMethod.ION</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">ionOptions</span><span class="o">:</span><span class="w"> </span><span class="kt">IonOptions.fromPartial</span><span class="p">({</span><span class="w"></span>
+<span class="w">            </span><span class="nx">network</span><span class="o">:</span><span class="w"> </span><span class="kt">IonOptions_IonNetwork.TestNet</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="p">}),</span><span class="w"></span>
 <span class="w">    </span><span class="p">})</span><span class="w"></span>
-<span class="p">}));</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
