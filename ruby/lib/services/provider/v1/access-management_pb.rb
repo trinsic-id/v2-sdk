@@ -3,9 +3,7 @@
 
 require 'google/protobuf'
 
-require 'services/account/v1/account_pb'
 require 'services/options/field-options_pb'
-require 'services/common/v1/common_pb'
 
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("services/provider/v1/access-management.proto", :syntax => :proto3) do
