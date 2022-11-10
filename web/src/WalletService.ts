@@ -1,17 +1,11 @@
 import ServiceBase from "./ServiceBase";
 import {
-    DeleteItemRequest,
-    DeleteItemResponse,
-    GetItemRequest,
-    GetItemResponse,
-    InsertItemRequest,
-    InsertItemResponse,
     SearchRequest,
     SearchResponse,
     ServiceOptions,
     UniversalWalletDefinition,
-    UpdateItemRequest,
-    UpdateItemResponse,
+
+
 } from "./proto";
 import * as proto from "./proto";
 

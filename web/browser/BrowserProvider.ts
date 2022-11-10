@@ -18,7 +18,7 @@ export class BrowserProvider implements IPlatformProvider {
         securityCode: Uint8Array
     ): Promise<Uint8Array> {
         let response = await Oberon.blindToken({
-            token: cloned.authToken,
+            token: cloned.authToken!,
             blinding: [securityCode],
         });
         return response.token;
@@ -29,9 +29,9 @@ export class BrowserProvider implements IPlatformProvider {
         nonceUint8: Uint8Array
     ): Promise<Uint8Array> {
         let proof = await Oberon.createProof({
-            data: profile.authData,
+            data: profile.authData!,
             nonce: nonceUint8,
-            token: profile.authToken,
+            token: profile.authToken!,
             blinding: [],
         });
         return proof.proof;
@@ -46,7 +46,7 @@ export class BrowserProvider implements IPlatformProvider {
         securityCode: Uint8Array
     ): Promise<Uint8Array> {
         let response = await Oberon.unblindToken({
-            token: cloned.authToken,
+            token: cloned.authToken!,
             blinding: [securityCode],
         });
         return response.token;
