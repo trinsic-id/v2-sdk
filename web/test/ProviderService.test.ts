@@ -37,7 +37,7 @@ describe("ProviderService Unit Tests", () => {
         expect(createResponse).not.toBeNull();
         expect(createResponse.ecosystem).not.toBeNull();
         expect(
-            createResponse.ecosystem!.id.startsWith("urn:trinsic:ecosystems:")
+            createResponse.ecosystem!.id!.startsWith("urn:trinsic:ecosystems:")
         ).toBeTruthy();
 
         // addWebhook() {
@@ -50,9 +50,9 @@ describe("ProviderService Unit Tests", () => {
         );
         //}
 
-        expect(addResponse.ecosystem?.webhooks.length).toBe(1);
+        expect(addResponse.ecosystem?.webhooks?.length).toBe(1);
 
-        const webhook = addResponse.ecosystem?.webhooks[0];
+        const webhook = addResponse.ecosystem?.webhooks![0];
         const webhookId = webhook?.id;
 
         // deleteWebhook() {
@@ -63,7 +63,8 @@ describe("ProviderService Unit Tests", () => {
         );
         //}
 
-        expect(deleteResponse.ecosystem?.webhooks.length).toBe(0);
+        expect(deleteResponse.ecosystem).not.toBeNull();
+        expect(deleteResponse.ecosystem!.webhooks!.length).toBe(0);
 
         // updateEcosystem() {
         let updateResponse = await trinsic.provider().updateEcosystem(

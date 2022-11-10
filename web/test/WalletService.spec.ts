@@ -56,7 +56,7 @@ describe("wallet service tests", () => {
 
         let searchResponse = await trinsic.wallet().searchWallet();
         expect(searchResponse).not.toBeNull();
-        expect(searchResponse.items.length).toBeGreaterThan(0);
+        expect(searchResponse.items!.length).toBeGreaterThan(0);
     });
 
     it("Demo: template management and credential issuance from template", async () => {
@@ -91,12 +91,12 @@ describe("wallet service tests", () => {
         });
 
         let issueResponse = await trinsic.credential().issueFromTemplate(
-            IssueFromTemplateRequest.fromPartial({
+            {
                 templateId: template!.data!.id,
                 valuesJson: values,
-            })
+            }
         );
-        let jsonDocument = JSON.parse(issueResponse.documentJson);
+        let jsonDocument = JSON.parse(issueResponse.documentJson!);
 
         expect(issueResponse).not.toBeNull();
         expect(jsonDocument.hasOwnProperty("id")).toBeTruthy();
