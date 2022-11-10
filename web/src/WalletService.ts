@@ -4,8 +4,6 @@ import {
     SearchResponse,
     ServiceOptions,
     UniversalWalletDefinition,
-
-
 } from "./proto";
 import * as proto from "./proto";
 
