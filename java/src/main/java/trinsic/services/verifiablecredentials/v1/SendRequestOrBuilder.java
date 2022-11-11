@@ -52,10 +52,13 @@ public interface SendRequestOrBuilder
    * DID of recipient (presently unsupported)
    * </pre>
    *
-   * <code>string did_uri = 2;</code>
+   * <code>string did_uri = 2 [deprecated = true];</code>
    *
+   * @deprecated services.verifiablecredentials.v1.SendRequest.did_uri is deprecated. See
+   *     services/verifiable-credentials/v1/verifiable-credentials.proto;l=108
    * @return Whether the didUri field is set.
    */
+  @java.lang.Deprecated
   boolean hasDidUri();
   /**
    *
@@ -64,10 +67,13 @@ public interface SendRequestOrBuilder
    * DID of recipient (presently unsupported)
    * </pre>
    *
-   * <code>string did_uri = 2;</code>
+   * <code>string did_uri = 2 [deprecated = true];</code>
    *
+   * @deprecated services.verifiablecredentials.v1.SendRequest.did_uri is deprecated. See
+   *     services/verifiable-credentials/v1/verifiable-credentials.proto;l=108
    * @return The didUri.
    */
+  @java.lang.Deprecated
   java.lang.String getDidUri();
   /**
    *
@@ -76,10 +82,13 @@ public interface SendRequestOrBuilder
    * DID of recipient (presently unsupported)
    * </pre>
    *
-   * <code>string did_uri = 2;</code>
+   * <code>string did_uri = 2 [deprecated = true];</code>
    *
+   * @deprecated services.verifiablecredentials.v1.SendRequest.did_uri is deprecated. See
+   *     services/verifiable-credentials/v1/verifiable-credentials.proto;l=108
    * @return The bytes for didUri.
    */
+  @java.lang.Deprecated
   com.google.protobuf.ByteString getDidUriBytes();
 
   /**
@@ -89,10 +98,13 @@ public interface SendRequestOrBuilder
    * DIDComm out-of-band invitation JSON (presently unsupported)
    * </pre>
    *
-   * <code>string didcomm_invitation_json = 3;</code>
+   * <code>string didcomm_invitation_json = 3 [deprecated = true];</code>
    *
+   * @deprecated services.verifiablecredentials.v1.SendRequest.didcomm_invitation_json is
+   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=110
    * @return Whether the didcommInvitationJson field is set.
    */
+  @java.lang.Deprecated
   boolean hasDidcommInvitationJson();
   /**
    *
@@ -101,10 +113,13 @@ public interface SendRequestOrBuilder
    * DIDComm out-of-band invitation JSON (presently unsupported)
    * </pre>
    *
-   * <code>string didcomm_invitation_json = 3;</code>
+   * <code>string didcomm_invitation_json = 3 [deprecated = true];</code>
    *
+   * @deprecated services.verifiablecredentials.v1.SendRequest.didcomm_invitation_json is
+   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=110
    * @return The didcommInvitationJson.
    */
+  @java.lang.Deprecated
   java.lang.String getDidcommInvitationJson();
   /**
    *
@@ -113,11 +128,27 @@ public interface SendRequestOrBuilder
    * DIDComm out-of-band invitation JSON (presently unsupported)
    * </pre>
    *
-   * <code>string didcomm_invitation_json = 3;</code>
+   * <code>string didcomm_invitation_json = 3 [deprecated = true];</code>
    *
+   * @deprecated services.verifiablecredentials.v1.SendRequest.didcomm_invitation_json is
+   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=110
    * @return The bytes for didcommInvitationJson.
    */
+  @java.lang.Deprecated
   com.google.protobuf.ByteString getDidcommInvitationJsonBytes();
+
+  /**
+   *
+   *
+   * <pre>
+   * Send email notification that credential has been sent to a wallet
+   * </pre>
+   *
+   * <code>bool send_notification = 4;</code>
+   *
+   * @return The sendNotification.
+   */
+  boolean getSendNotification();
 
   /**
    *

@@ -108,41 +108,42 @@ public final class VerifiableCredentials {
           + "\001(\t\022C\n\005value\030\002 \001(\01324.services.verifiable"
           + "credentials.v1.ValidationMessage:\0028\001\"7\n\021"
           + "ValidationMessage\022\020\n\010is_valid\030\001 \001(\010\022\020\n\010m"
-          + "essages\030\002 \003(\t\"~\n\013SendRequest\022\017\n\005email\030\001 "
-          + "\001(\tH\000\022\021\n\007did_uri\030\002 \001(\tH\000\022!\n\027didcomm_invi"
-          + "tation_json\030\003 \001(\tH\000\022\025\n\rdocument_json\030d \001"
-          + "(\tB\021\n\017delivery_method\"\016\n\014SendResponse\"D\n"
-          + "\023UpdateStatusRequest\022\034\n\024credential_statu"
-          + "s_id\030\001 \001(\t\022\017\n\007revoked\030\002 \001(\010\"\026\n\024UpdateSta"
-          + "tusResponse\"2\n\022CheckStatusRequest\022\034\n\024cre"
-          + "dential_status_id\030\001 \001(\t\"&\n\023CheckStatusRe"
-          + "sponse\022\017\n\007revoked\030\001 \001(\0102\367\006\n\024VerifiableCr"
-          + "edential\022j\n\005Issue\022/.services.verifiablec"
-          + "redentials.v1.IssueRequest\0320.services.ve"
-          + "rifiablecredentials.v1.IssueResponse\022\216\001\n"
-          + "\021IssueFromTemplate\022;.services.verifiable"
-          + "credentials.v1.IssueFromTemplateRequest\032"
-          + "<.services.verifiablecredentials.v1.Issu"
-          + "eFromTemplateResponse\022|\n\013CheckStatus\0225.s"
-          + "ervices.verifiablecredentials.v1.CheckSt"
-          + "atusRequest\0326.services.verifiablecredent"
-          + "ials.v1.CheckStatusResponse\022\177\n\014UpdateSta"
-          + "tus\0226.services.verifiablecredentials.v1."
-          + "UpdateStatusRequest\0327.services.verifiabl"
-          + "ecredentials.v1.UpdateStatusResponse\022|\n\013"
-          + "CreateProof\0225.services.verifiablecredent"
-          + "ials.v1.CreateProofRequest\0326.services.ve"
-          + "rifiablecredentials.v1.CreateProofRespon"
-          + "se\022|\n\013VerifyProof\0225.services.verifiablec"
-          + "redentials.v1.VerifyProofRequest\0326.servi"
-          + "ces.verifiablecredentials.v1.VerifyProof"
-          + "Response\022g\n\004Send\022..services.verifiablecr"
-          + "edentials.v1.SendRequest\032/.services.veri"
-          + "fiablecredentials.v1.SendResponseB\231\001\n)tr"
-          + "insic.services.verifiablecredentials.v1P"
-          + "\001Z,services/verifiablecredentials/v1/cre"
-          + "dential\242\002\017TrinsicServices\252\002)Trinsic.Serv"
-          + "ices.VerifiableCredentials.V1b\006proto3"
+          + "essages\030\002 \003(\t\"\241\001\n\013SendRequest\022\017\n\005email\030\001"
+          + " \001(\tH\000\022\025\n\007did_uri\030\002 \001(\tB\002\030\001H\000\022%\n\027didcomm"
+          + "_invitation_json\030\003 \001(\tB\002\030\001H\000\022\031\n\021send_not"
+          + "ification\030\004 \001(\010\022\025\n\rdocument_json\030d \001(\tB\021"
+          + "\n\017delivery_method\"\016\n\014SendResponse\"D\n\023Upd"
+          + "ateStatusRequest\022\034\n\024credential_status_id"
+          + "\030\001 \001(\t\022\017\n\007revoked\030\002 \001(\010\"\026\n\024UpdateStatusR"
+          + "esponse\"2\n\022CheckStatusRequest\022\034\n\024credent"
+          + "ial_status_id\030\001 \001(\t\"&\n\023CheckStatusRespon"
+          + "se\022\017\n\007revoked\030\001 \001(\0102\367\006\n\024VerifiableCreden"
+          + "tial\022j\n\005Issue\022/.services.verifiablecrede"
+          + "ntials.v1.IssueRequest\0320.services.verifi"
+          + "ablecredentials.v1.IssueResponse\022\216\001\n\021Iss"
+          + "ueFromTemplate\022;.services.verifiablecred"
+          + "entials.v1.IssueFromTemplateRequest\032<.se"
+          + "rvices.verifiablecredentials.v1.IssueFro"
+          + "mTemplateResponse\022|\n\013CheckStatus\0225.servi"
+          + "ces.verifiablecredentials.v1.CheckStatus"
+          + "Request\0326.services.verifiablecredentials"
+          + ".v1.CheckStatusResponse\022\177\n\014UpdateStatus\022"
+          + "6.services.verifiablecredentials.v1.Upda"
+          + "teStatusRequest\0327.services.verifiablecre"
+          + "dentials.v1.UpdateStatusResponse\022|\n\013Crea"
+          + "teProof\0225.services.verifiablecredentials"
+          + ".v1.CreateProofRequest\0326.services.verifi"
+          + "ablecredentials.v1.CreateProofResponse\022|"
+          + "\n\013VerifyProof\0225.services.verifiablecrede"
+          + "ntials.v1.VerifyProofRequest\0326.services."
+          + "verifiablecredentials.v1.VerifyProofResp"
+          + "onse\022g\n\004Send\022..services.verifiablecreden"
+          + "tials.v1.SendRequest\032/.services.verifiab"
+          + "lecredentials.v1.SendResponseB\231\001\n)trinsi"
+          + "c.services.verifiablecredentials.v1P\001Z,s"
+          + "ervices/verifiablecredentials/v1/credent"
+          + "ial\242\002\017TrinsicServices\252\002)Trinsic.Services"
+          + ".VerifiableCredentials.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
@@ -238,7 +239,12 @@ public final class VerifiableCredentials {
         new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
             internal_static_services_verifiablecredentials_v1_SendRequest_descriptor,
             new java.lang.String[] {
-              "Email", "DidUri", "DidcommInvitationJson", "DocumentJson", "DeliveryMethod",
+              "Email",
+              "DidUri",
+              "DidcommInvitationJson",
+              "SendNotification",
+              "DocumentJson",
+              "DeliveryMethod",
             });
     internal_static_services_verifiablecredentials_v1_SendResponse_descriptor =
         getDescriptor().getMessageTypes().get(10);

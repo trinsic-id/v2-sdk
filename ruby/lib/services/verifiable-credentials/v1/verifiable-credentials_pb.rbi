@@ -674,6 +674,7 @@ class Services::Verifiablecredentials::V1::SendRequest
       email: T.nilable(String),
       did_uri: T.nilable(String),
       didcomm_invitation_json: T.nilable(String),
+      send_notification: T.nilable(T::Boolean),
       document_json: T.nilable(String)
     ).void
   end
@@ -681,6 +682,7 @@ class Services::Verifiablecredentials::V1::SendRequest
     email: "",
     did_uri: "",
     didcomm_invitation_json: "",
+    send_notification: false,
     document_json: ""
   )
   end
@@ -719,6 +721,18 @@ class Services::Verifiablecredentials::V1::SendRequest
 
   sig { void }
   def clear_didcomm_invitation_json
+  end
+
+  sig { returns(T::Boolean) }
+  def send_notification
+  end
+
+  sig { params(value: T::Boolean).void }
+  def send_notification=(value)
+  end
+
+  sig { void }
+  def clear_send_notification
   end
 
   sig { returns(String) }

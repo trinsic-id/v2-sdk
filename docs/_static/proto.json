@@ -2814,6 +2814,12 @@
       "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
       "parent": "services.verifiablecredentials.v1.SendRequest"
     },
+    "services.verifiablecredentials.v1.SendRequest.send_notification": {
+      "type": "field",
+      "collection": "fields",
+      "file": "services/verifiable-credentials/v1/verifiable-credentials.proto",
+      "parent": "services.verifiablecredentials.v1.SendRequest"
+    },
     "services.verifiablecredentials.v1.SendResponse": {
       "type": "message",
       "collection": "messages",
@@ -3921,6 +3927,7 @@
         "services.verifiablecredentials.v1.SendRequest.email",
         "services.verifiablecredentials.v1.SendRequest.did_uri",
         "services.verifiablecredentials.v1.SendRequest.didcomm_invitation_json",
+        "services.verifiablecredentials.v1.SendRequest.send_notification",
         "services.verifiablecredentials.v1.SendRequest.document_json",
         "services.verifiablecredentials.v1.UpdateStatusRequest.credential_status_id",
         "services.verifiablecredentials.v1.UpdateStatusRequest.revoked",
@@ -4415,7 +4422,7 @@
       "full_name": "services.verifiablecredentials.v1.VerifiableCredential.IssueFromTemplate",
       "input_type": "services.verifiablecredentials.v1.IssueFromTemplateRequest",
       "output_type": "services.verifiablecredentials.v1.IssueFromTemplateResponse",
-      "description": "Sign and issue a verifiable credential from a pre-defined template.\nThis process will also add schema validation and \nrevocation registry values to the credential."
+      "description": "Sign and issue a verifiable credential from a pre-defined template.\nThis process will also add schema validation and\nrevocation registry values to the credential."
     },
     "services.verifiablecredentials.v1.VerifiableCredential.Send": {
       "name": "Send",
@@ -5826,6 +5833,7 @@
         "services.verifiablecredentials.v1.SendRequest.email",
         "services.verifiablecredentials.v1.SendRequest.did_uri",
         "services.verifiablecredentials.v1.SendRequest.didcomm_invitation_json",
+        "services.verifiablecredentials.v1.SendRequest.send_notification",
         "services.verifiablecredentials.v1.SendRequest.document_json"
       ],
       "messages": [],
@@ -7995,7 +8003,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "A valid JSON-LD Verifiable Credential document string \nwith an unbound signature. The proof will be derived from this\ndocument directly. The document will not be stored in the wallet."
+      "description": "A valid JSON-LD Verifiable Credential document string\nwith an unbound signature. The proof will be derived from this\ndocument directly. The document will not be stored in the wallet."
     },
     "services.verifiablecredentials.v1.CreateProofRequest.item_id": {
       "name": "item_id",
@@ -8011,7 +8019,7 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "A valid JSON-LD frame describing which fields should be\nrevealed in the generated proof. \nIf unspecified, all fields in the document will be revealed"
+      "description": "A valid JSON-LD frame describing which fields should be\nrevealed in the generated proof.\nIf unspecified, all fields in the document will be revealed"
     },
     "services.verifiablecredentials.v1.CreateProofResponse.proof_document_json": {
       "name": "proof_document_json",
@@ -8078,7 +8086,10 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "DID of recipient (presently unsupported)"
+      "description": "DID of recipient (presently unsupported)",
+      "options": {
+        "deprecated": true
+      }
     },
     "services.verifiablecredentials.v1.SendRequest.didcomm_invitation_json": {
       "name": "didcomm_invitation_json",
@@ -8086,7 +8097,10 @@
       "label": "LABEL_OPTIONAL",
       "type": "string",
       "full_type": "string",
-      "description": "DIDComm out-of-band invitation JSON (presently unsupported)"
+      "description": "DIDComm out-of-band invitation JSON (presently unsupported)",
+      "options": {
+        "deprecated": true
+      }
     },
     "services.verifiablecredentials.v1.SendRequest.document_json": {
       "name": "document_json",
@@ -8103,6 +8117,14 @@
       "type": "string",
       "full_type": "string",
       "description": "Email address of user to send item to"
+    },
+    "services.verifiablecredentials.v1.SendRequest.send_notification": {
+      "name": "send_notification",
+      "full_name": "services.verifiablecredentials.v1.SendRequest.send_notification",
+      "label": "LABEL_OPTIONAL",
+      "type": "bool",
+      "full_type": "bool",
+      "description": "Send email notification that credential has been sent to a wallet"
     },
     "services.verifiablecredentials.v1.UpdateStatusRequest.credential_status_id": {
       "name": "credential_status_id",
@@ -8185,7 +8207,7 @@
       "label": "LABEL_REPEATED",
       "type": "ValidationResultsEntry",
       "full_type": "services.verifiablecredentials.v1.VerifyProofResponse.ValidationResultsEntry",
-      "description": "Results of each validation check performed, \nsuch as schema conformance, revocation status, signature, etc.\nDetailed results are provided for failed validations."
+      "description": "Results of each validation check performed,\nsuch as schema conformance, revocation status, signature, etc.\nDetailed results are provided for failed validations."
     },
     "trinsic.services.event.APICall.request": {
       "name": "request",
