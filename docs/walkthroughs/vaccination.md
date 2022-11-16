@@ -56,7 +56,7 @@ Before we begin, you'll need an [ecosystem](/learn/concepts/ecosystems) -- somew
 
 ### Use Existing Ecosystem
 
-If you've already [signed up as a customer](https://form.typeform.com/to/EIO26xym){target:_blank}, you'll have received an email with an ecosystem ID and authentication token. 
+If you've already [signed up as a customer](https://dashboard.trinsic.id/){target:_blank}, you'll have received an email with an ecosystem ID and authentication token.
 
 Copy this ecosystem ID down, and [skip to the next step](#create-accounts).
 
@@ -64,7 +64,7 @@ Copy this ecosystem ID down, and [skip to the next step](#create-accounts).
 
 If you don't already have an ecosystem provisioned for you, you'll need to create one first. 
 
-This will be a *sandbox* ecosystem; suitable for prototyping and testing, but not production purposes. To receive a production ecosystem, [sign up](https://form.typeform.com/to/EIO26xym){target:_blank}.
+This will be a *sandbox* ecosystem; suitable for prototyping and testing, but not production purposes. To receive a production ecosystem, [sign up](https://dashboard.trinsic.id/){target:_blank}.
 
 === "Trinsic CLI"
     ```
