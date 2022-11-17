@@ -338,6 +338,10 @@ To issue a vaccine certificate, we'll use the template we created in the last st
     ```
 
     The output of this command will contain a signed JSON document, which has been saved to `credential.json`.
+    
+    Note that TEMPLATE_ID refers to the "Schema" URI of the template you created earlier called "VaccinationCertificate". 
+    More specifically, it's the property 'schema_uri' in the JSON returned by the `trinsic template create...` command.
+
 
 === "Typescript"
     <!--codeinclude-->
@@ -379,7 +383,6 @@ To issue a vaccine certificate, we'll use the template we created in the last st
     [Create Ecosystem](../../ruby/test/vaccine_demo.rb) inside_block:issueCredential
     ```
     <!--/codeinclude-->
-
 
 
 !!! abstract "Further Reading: Issuance and Credentials"
