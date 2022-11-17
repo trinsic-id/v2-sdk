@@ -135,7 +135,7 @@ A `credential_status_id` can be found in a credential's `credentialStatus.id` fi
     === "TypeScript"
         <!--codeinclude-->
         ```typescript
-        [Check Revocation Status](../../../web/test/CredentialTemplateShared.ts) inside_block:checkCredentialStatus
+        [Check Revocation Status](../../../web/test/CredentialTemplates.spec.ts) inside_block:checkCredentialStatus
         ```
         <!--/codeinclude-->
 
@@ -190,7 +190,7 @@ A `credential_status_id` can be found in a credential's `credentialStatus.id` fi
     === "TypeScript"
         <!--codeinclude-->
         ```typescript
-        [Update Revocation Status](../../../web/test/CredentialTemplateShared.ts) inside_block:updateCredentialStatus
+        [Update Revocation Status](../../../web/test/CredentialTemplates.spec.ts) inside_block:updateCredentialStatus
         ```
         <!--/codeinclude-->
 
