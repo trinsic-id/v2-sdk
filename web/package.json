@@ -28,6 +28,7 @@
     "scripts": {
         "build": "npm run build:proto && npm run build:typescript",
         "build:proto": "pwsh Generate-Proto.ps1",
+        "build:prettier": "npx prettier ./src --write",
         "build:typescript": "npx tsc",
         "test:node": "jest --config .config/jest.config.cjs --no-cache",
         "test:browser": "karma start .config/karma.conf.cjs",
