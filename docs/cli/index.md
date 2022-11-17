@@ -1,6 +1,6 @@
 # The Trinsic CLI
 
-The Trinsic CLI makes it easy to interact with the Trinsic API from your terminal. You can get the CLI on homebrew or build the CLI from source on [Github](https://github.com/trinsic-id/sdk/cli). It contains all the commands of Trinsic's SDKs and makes them interactive. 
+The Trinsic CLI makes it easy to interact with the Trinsic API from your terminal. You can get the CLI on homebrew or build the CLI from source on [Github](https://github.com/trinsic-id/sdk/tree/main/cli). It contains all the commands of Trinsic's SDKs and makes them interactive. 
 
 ## Installation
 
