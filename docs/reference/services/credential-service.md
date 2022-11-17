@@ -132,6 +132,13 @@ A `credential_status_id` can be found in a credential's `credentialStatus.id` fi
         trinsic vc get-status --credential-status-id <ID>
         ```
 
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [Check Revocation Status](../../../web/test/CredentialTemplateShared.ts) inside_block:checkCredentialStatus
+        ```
+        <!--/codeinclude-->
+
     === "C#"
         <!--codeinclude-->
         ```csharp
@@ -179,6 +186,13 @@ A `credential_status_id` can be found in a credential's `credentialStatus.id` fi
         # Unrevoke a credential
         trinsic vc update-status --unrevoked --credential-status-id <ID>
         ```
+
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [Update Revocation Status](../../../web/test/CredentialTemplateShared.ts) inside_block:updateCredentialStatus
+        ```
+        <!--/codeinclude-->
 
     === "C#"
         <!--codeinclude-->

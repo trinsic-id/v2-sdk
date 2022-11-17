@@ -1,4 +1,4 @@
-import { CreateCredentialTemplateResponse, TrinsicService } from "../browser";
+import {CheckStatusRequest, CreateCredentialTemplateResponse, TrinsicService, UpdateStatusRequest} from "../src";
 // @ts-ignore
 import templateCertFrame from "./data/credential-template-frame.json";
 import { getTestServerOptions, setTestTimeout } from "./env";
@@ -59,4 +59,20 @@ describe("Demo: Credential Templates", () => {
         );
         expect(response).toBeTruthy();
     });
+
+    it("Update Revocation Status for Template", async () => {
+        try {
+            // checkCredentialStatus() {
+            let checkStatusResponse = await trinsic.credential().checkStatus(CheckStatusRequest.fromPartial({}));
+            // }
+        } catch { // This is okay as an example
+        }
+
+        try {
+            // updateCredentialStatus() {
+            let updateStatusResponse = await trinsic.credential().updateStatus(UpdateStatusRequest.fromPartial({}));
+            // }
+        } catch { // This is okay as an example
+        }
+    })
 });
