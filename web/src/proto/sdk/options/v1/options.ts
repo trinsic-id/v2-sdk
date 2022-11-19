@@ -4,13 +4,13 @@ import _m0 from "protobufjs/minimal";
 /** Configuration for Trinsic SDK Services */
 export interface ServiceOptions {
     /** Trinsic API endpoint. Defaults to `prod.trinsic.cloud` */
-    serverEndpoint: string;
+    serverEndpoint?: string;
     /** Trinsic API port; defaults to `443` */
-    serverPort: number;
+    serverPort?: number;
     /** Whether TLS is enabled between SDK and Trinsic API; defaults to `true` */
-    serverUseTls: boolean;
+    serverUseTls?: boolean;
     /** Authentication token for SDK calls; defaults to empty string (unauthenticated) */
-    authToken: string;
+    authToken?: string;
 }
 
 function createBaseServiceOptions(): ServiceOptions {
@@ -27,16 +27,19 @@ export const ServiceOptions = {
         message: ServiceOptions,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.serverEndpoint !== "") {
+        if (
+            message.serverEndpoint !== undefined &&
+            message.serverEndpoint !== ""
+        ) {
             writer.uint32(10).string(message.serverEndpoint);
         }
-        if (message.serverPort !== 0) {
+        if (message.serverPort !== undefined && message.serverPort !== 0) {
             writer.uint32(16).int32(message.serverPort);
         }
         if (message.serverUseTls === true) {
             writer.uint32(24).bool(message.serverUseTls);
         }
-        if (message.authToken !== "") {
+        if (message.authToken !== undefined && message.authToken !== "") {
             writer.uint32(34).string(message.authToken);
         }
         return writer;

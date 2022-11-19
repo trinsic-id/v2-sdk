@@ -1,8 +1,8 @@
 /* eslint-disable */
 import {
-    ConfirmationMethod,
     AccountDetails,
     AccountProfile,
+    ConfirmationMethod,
     confirmationMethodFromJSON,
     confirmationMethodToJSON,
 } from "../../account/v1/account";
@@ -52,11 +52,11 @@ export function participantTypeToJSON(object: ParticipantType): string {
 /** Request to invite a participant to an ecosystem */
 export interface InviteRequest {
     /** Type of participant being invited (individual/organization) */
-    participant: ParticipantType;
+    participant?: ParticipantType;
     /** Description of invitation */
-    description: string;
+    description?: string;
     /** Account details of invitee */
-    details: AccountDetails | undefined;
+    details?: AccountDetails;
 }
 
 export interface InviteRequest_DidCommInvitation {}
@@ -64,23 +64,23 @@ export interface InviteRequest_DidCommInvitation {}
 /** Response to `InviteRequest` */
 export interface InviteResponse {
     /** ID of created invitation */
-    invitationId: string;
+    invitationId?: string;
     /** Invitation code -- must be passed back in `LoginRequest` */
-    invitationCode: string;
+    invitationCode?: string;
 }
 
 /** Request details for the status of an invitation */
 export interface InvitationStatusRequest {
     /** ID of invitation, received from `InviteResponse` */
-    invitationId: string;
+    invitationId?: string;
 }
 
 /** Response to `InvitationStatusRequest` */
 export interface InvitationStatusResponse {
     /** Status of invitation */
-    status: InvitationStatusResponse_Status;
+    status?: InvitationStatusResponse_Status;
     /** Human-readable string with details about invitation status */
-    statusDetails: string;
+    statusDetails?: string;
 }
 
 export enum InvitationStatusResponse_Status {
@@ -139,45 +139,45 @@ export function invitationStatusResponse_StatusToJSON(
 /** Details of an ecosystem */
 export interface Ecosystem {
     /** URN of the ecosystem */
-    id: string;
+    id?: string;
     /** Globally unique name for the ecosystem */
-    name: string;
+    name?: string;
     /** Ecosystem description */
-    description: string;
+    description?: string;
     /**
      * External URL associated with the organization or ecosystem entity
      *
      * @deprecated
      */
-    uri: string;
+    uri?: string;
     /** Configured webhooks, if any */
-    webhooks: WebhookConfig[];
+    webhooks?: WebhookConfig[];
     /** Display details */
-    display: EcosystemDisplay | undefined;
+    display?: EcosystemDisplay;
     /** Domain */
-    domain: string;
+    domain?: string;
 }
 
 /** Webhook configured on an ecosystem */
 export interface WebhookConfig {
     /** UUID of the webhook */
-    id: string;
+    id?: string;
     /** HTTPS URL to POST webhook calls to */
-    destinationUrl: string;
+    destinationUrl?: string;
     /** Events the webhook is subscribed to */
-    events: string[];
+    events?: string[];
     /** Last known status of webhook (whether or not Trinsic can successfully reach destination) */
-    status: string;
+    status?: string;
 }
 
 /** A grant authorizing `actions` on a `resourceId` */
 export interface Grant {
     /** the urn of the resource */
-    resourceId: string;
+    resourceId?: string;
     /** list of actions that are allowed */
-    actions: string[];
+    actions?: string[];
     /** any child grants */
-    childGrants: Grant[];
+    childGrants?: Grant[];
 }
 
 /** Request to create an ecosystem */
@@ -188,54 +188,54 @@ export interface CreateEcosystemRequest {
      * Allowed characters are lowercase letters, numbers, underscore and hyphen.
      * If not passed, ecosystem name will be auto-generated.
      */
-    name: string;
+    name?: string;
     /** Ecosystem description */
-    description: string;
+    description?: string;
     /**
      * External URL associated with your organization or ecosystem entity
      *
      * @deprecated
      */
-    uri: string;
+    uri?: string;
     /** The account details of the owner of the ecosystem */
-    details: AccountDetails | undefined;
+    details?: AccountDetails;
     /** New domain URL */
-    domain: string;
+    domain?: string;
 }
 
 /** Response to `CreateEcosystemRequest` */
 export interface CreateEcosystemResponse {
     /** Details of the created ecosystem */
-    ecosystem: Ecosystem | undefined;
+    ecosystem?: Ecosystem;
     /** Account profile for auth of the owner of the ecosystem */
-    profile: AccountProfile | undefined;
+    profile?: AccountProfile;
     /** Indicates if confirmation of account is required. */
-    confirmationMethod: ConfirmationMethod;
+    confirmationMethod?: ConfirmationMethod;
 }
 
 /** Request to update an ecosystem's metadata */
 export interface UpdateEcosystemRequest {
     /** New description of the ecosystem */
-    description: string;
+    description?: string;
     /**
      * New external URL associated with the organization or ecosystem entity
      *
      * @deprecated
      */
-    uri: string;
+    uri?: string;
     /** New domain URL */
-    domain: string;
+    domain?: string;
     /**
      * New name
      * string name = 4;
      * Display details
      */
-    display: EcosystemDisplayRequest | undefined;
+    display?: EcosystemDisplayRequest;
 }
 
 export interface EcosystemDisplayRequest {
-    dark: EcosystemDisplayDetailsRequest | undefined;
-    light: EcosystemDisplayDetailsRequest | undefined;
+    dark?: EcosystemDisplayDetailsRequest;
+    light?: EcosystemDisplayDetailsRequest;
 }
 
 export interface EcosystemDisplayDetailsRequest {
@@ -244,21 +244,21 @@ export interface EcosystemDisplayDetailsRequest {
      * string name = 2;
      *    string logo_url = 3;
      */
-    color: string;
-    logoData: Uint8Array;
+    color?: string;
+    logoData?: Uint8Array;
     /** MIME type of the file */
-    logoFormat: string;
+    logoFormat?: string;
 }
 
 /** Response to `UpdateEcosystemRequest` */
 export interface UpdateEcosystemResponse {
     /** Current ecosystem metadata, post-update */
-    Ecosystem: Ecosystem | undefined;
+    Ecosystem?: Ecosystem;
 }
 
 export interface EcosystemDisplay {
-    dark: EcosystemDisplayDetails | undefined;
-    light: EcosystemDisplayDetails | undefined;
+    dark?: EcosystemDisplayDetails;
+    light?: EcosystemDisplayDetails;
 }
 
 export interface EcosystemDisplayDetails {
@@ -266,8 +266,8 @@ export interface EcosystemDisplayDetails {
      * string id = 1;
      * string name = 2;
      */
-    logoUrl: string;
-    color: string;
+    logoUrl?: string;
+    color?: string;
 }
 
 /** Request to add a webhook to an ecosystem */
@@ -276,32 +276,32 @@ export interface AddWebhookRequest {
      * Destination to post webhook calls to.
      * Must be a reachable HTTPS URL.
      */
-    destinationUrl: string;
+    destinationUrl?: string;
     /**
      * Secret string used for HMAC-SHA256 signing of webhook payloads
      * to verify that a webhook comes from Trinsic
      */
-    secret: string;
+    secret?: string;
     /** Events to subscribe to. Default is "*" (all events) */
-    events: string[];
+    events?: string[];
 }
 
 /** Response to `AddWebhookRequest` */
 export interface AddWebhookResponse {
     /** Ecosystem data with new webhook */
-    ecosystem: Ecosystem | undefined;
+    ecosystem?: Ecosystem;
 }
 
 /** Request to delete a webhook from an ecosystem */
 export interface DeleteWebhookRequest {
     /** ID of webhook to delete */
-    webhookId: string;
+    webhookId?: string;
 }
 
 /** Response to `DeleteWebhookRequest` */
 export interface DeleteWebhookResponse {
     /** Ecosystem data after removal of webhook */
-    ecosystem: Ecosystem | undefined;
+    ecosystem?: Ecosystem;
 }
 
 /** Request to fetch information about an ecosystem */
@@ -310,43 +310,43 @@ export interface EcosystemInfoRequest {}
 /** Response to `InfoRequest` */
 export interface EcosystemInfoResponse {
     /** Ecosystem corresponding to current ecosystem in the account token */
-    ecosystem: Ecosystem | undefined;
+    ecosystem?: Ecosystem;
 }
 
 /** Request to fetch information about an ecosystem */
 export interface GetPublicEcosystemInfoRequest {
-    ecosystemId: string;
+    ecosystemId?: string;
 }
 
 /** Response to `InfoRequest` */
 export interface GetPublicEcosystemInfoResponse {
     /** Ecosystem corresponding to requested `ecosystem_id` */
-    ecosystem: PublicEcosystemInformation | undefined;
+    ecosystem?: PublicEcosystemInformation;
 }
 
 export interface PublicEcosystemInformation {
     /** Public name of this ecosystem */
-    name: string;
+    name?: string;
     /** Public domain for the owner of this ecosystem */
-    domain: string;
+    domain?: string;
     /** Trinsic verified the domain is owned by the owner of this ecosystem */
-    domainVerified: boolean;
+    domainVerified?: boolean;
     /** Style display information */
-    styleDisplay: EcosystemDisplay | undefined;
+    styleDisplay?: EcosystemDisplay;
     /** Description of the ecosystem */
-    description: string;
+    description?: string;
 }
 
 /** Request to generate an authentication token for the current account */
 export interface GenerateTokenRequest {
     /** Description to identify this token */
-    description: string;
+    description?: string;
 }
 
 /** Response to `GenerateTokenRequest` */
 export interface GenerateTokenResponse {
     /** Account authentication profile that contains unprotected token */
-    profile: AccountProfile | undefined;
+    profile?: AccountProfile;
 }
 
 /**
@@ -358,13 +358,13 @@ export interface GetOberonKeyRequest {}
 /** Response to `GetOberonKeyRequest` */
 export interface GetOberonKeyResponse {
     /** Oberon Public Key as RAW base64-url encoded string */
-    key: string;
+    key?: string;
 }
 
 /** Generates an events token bound to the provided ed25519 public key. */
 export interface GetEventTokenRequest {
     /** Raw public key to generate event token for */
-    pk: Uint8Array;
+    pk?: Uint8Array;
 }
 
 /**
@@ -373,7 +373,7 @@ export interface GetEventTokenRequest {
  */
 export interface GetEventTokenResponse {
     /** JWT bound to the public key provided in `GetEventTokenRequest` */
-    token: string;
+    token?: string;
 }
 
 export interface RetrieveDomainVerificationRecordRequest {}
@@ -381,18 +381,18 @@ export interface RetrieveDomainVerificationRecordRequest {}
 /** Response message containing a TXT record content for domain url verification */
 export interface RetrieveDomainVerificationRecordResponse {
     /** TXT record name to use for domain verification */
-    verificationRecordName: string;
+    verificationRecordName?: string;
     /** TXT code for domain verification */
-    verificationRecordValue: string;
+    verificationRecordValue?: string;
 }
 
 export interface RefreshDomainVerificationStatusRequest {}
 
 export interface RefreshDomainVerificationStatusResponse {
     /** Domain URL verified */
-    domain: string;
+    domain?: string;
     /** Specifies if the above `domain` was successfully verified */
-    domainVerified: boolean;
+    domainVerified?: boolean;
 }
 
 /** Grant permissions to a resource or path in the ecosystem */
@@ -401,19 +401,19 @@ export interface GrantAuthorizationRequest {
      * Email address of account being granted permission.
      * Mutually exclusive with `walletId`.
      */
-    email: string | undefined;
+    email?: string | undefined;
     /**
      * Wallet ID of account being granted permission.
      * Mutually exclusive with `email`.
      */
-    walletId: string | undefined;
+    walletId?: string | undefined;
     /**
      * Resource string that account is receiving permissions for.
      * Resources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted.
      */
-    resource: string;
+    resource?: string;
     /** Action to authorize. Default is "*" (all) */
-    action: string;
+    action?: string;
 }
 
 /** Response to `GrantAuthorizationRequest` */
@@ -425,19 +425,19 @@ export interface RevokeAuthorizationRequest {
      * Email address of account having permission revoked.
      * Mutually exclusive with `walletId`.
      */
-    email: string | undefined;
+    email?: string | undefined;
     /**
      * Wallet ID of account having permission revoked.
      * Mutually exclusive with `email`.
      */
-    walletId: string | undefined;
+    walletId?: string | undefined;
     /**
      * Resource string that account is losing permissions for.
      * Resources are specified as a RESTful path: /{ecoId}/{resource type}/{resource id}. `ecoId` may be omitted.
      */
-    resource: string;
+    resource?: string;
     /** Action to revoke. Default is "*" (all) */
-    action: string;
+    action?: string;
 }
 
 /** Response to `RevokeAuthorizationRequest` */
@@ -452,43 +452,43 @@ export interface GetAuthorizationsRequest {}
 /** Response to `GetAuthorizationsRequest` */
 export interface GetAuthorizationsResponse {
     /** Grants attached to account */
-    grants: Grant[];
+    grants?: Grant[];
 }
 
 /** Search for issuers/holders/verifiers */
 export interface SearchWalletConfigurationsRequest {
     /** SQL filter to execute. `SELECT * FROM _ WHERE [**queryFilter**]` */
-    queryFilter: string;
+    queryFilter?: string;
     /**
      * Token provided by previous `SearchResponse`
      * if more data is available for query
      */
-    continuationToken: string;
+    continuationToken?: string;
 }
 
 export interface SearchWalletConfigurationResponse {
     /** Results matching the search query */
-    results: WalletConfiguration[];
+    results?: WalletConfiguration[];
     /** Whether more results are available for this query via `continuation_token` */
-    hasMore: boolean;
+    hasMore?: boolean;
     /** Token to fetch next set of results via `SearchRequest` */
-    continuationToken: string;
+    continuationToken?: string;
 }
 
 /** Strongly typed information about wallet configurations */
 export interface WalletConfiguration {
-    name: string;
-    email: string;
-    sms: string;
-    walletId: string;
-    publicDid: string;
-    configType: string;
+    name?: string;
+    email?: string;
+    sms?: string;
+    walletId?: string;
+    publicDid?: string;
+    configType?: string;
 }
 
 /** Options for creation of DID on the ION network */
 export interface IonOptions {
     /** ION network on which DID should be published */
-    network: IonOptions_IonNetwork;
+    network?: IonOptions_IonNetwork;
 }
 
 export enum IonOptions_IonNetwork {
@@ -534,22 +534,22 @@ export interface UpgradeDidRequest {
      * Email address of account to upgrade.
      * Mutually exclusive with `walletId`.
      */
-    email: string | undefined;
+    email?: string | undefined;
     /**
      * Wallet ID of account to upgrade.
      * Mutually exclusive with `email`.
      */
-    walletId: string | undefined;
+    walletId?: string | undefined;
     /** DID Method to which wallet should be upgraded */
-    method: SupportedDidMethod;
+    method?: SupportedDidMethod;
     /** Configuration for creation of DID on ION network */
-    ionOptions: IonOptions | undefined;
+    ionOptions?: IonOptions | undefined;
 }
 
 /** Response to `UpgradeDIDRequest` */
 export interface UpgradeDidResponse {
     /** New DID of wallet */
-    did: string;
+    did?: string;
 }
 
 function createBaseInviteRequest(): InviteRequest {
@@ -561,10 +561,10 @@ export const InviteRequest = {
         message: InviteRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.participant !== 0) {
+        if (message.participant !== undefined && message.participant !== 0) {
             writer.uint32(8).int32(message.participant);
         }
-        if (message.description !== "") {
+        if (message.description !== undefined && message.description !== "") {
             writer.uint32(18).string(message.description);
         }
         if (message.details !== undefined) {
@@ -700,10 +700,13 @@ export const InviteResponse = {
         message: InviteResponse,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.invitationId !== "") {
+        if (message.invitationId !== undefined && message.invitationId !== "") {
             writer.uint32(82).string(message.invitationId);
         }
-        if (message.invitationCode !== "") {
+        if (
+            message.invitationCode !== undefined &&
+            message.invitationCode !== ""
+        ) {
             writer.uint32(90).string(message.invitationCode);
         }
         return writer;
@@ -768,7 +771,7 @@ export const InvitationStatusRequest = {
         message: InvitationStatusRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.invitationId !== "") {
+        if (message.invitationId !== undefined && message.invitationId !== "") {
             writer.uint32(10).string(message.invitationId);
         }
         return writer;
@@ -829,10 +832,13 @@ export const InvitationStatusResponse = {
         message: InvitationStatusResponse,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.status !== 0) {
+        if (message.status !== undefined && message.status !== 0) {
             writer.uint32(8).int32(message.status);
         }
-        if (message.statusDetails !== "") {
+        if (
+            message.statusDetails !== undefined &&
+            message.statusDetails !== ""
+        ) {
             writer.uint32(18).string(message.statusDetails);
         }
         return writer;
@@ -912,20 +918,22 @@ export const Ecosystem = {
         message: Ecosystem,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.id !== "") {
+        if (message.id !== undefined && message.id !== "") {
             writer.uint32(10).string(message.id);
         }
-        if (message.name !== "") {
+        if (message.name !== undefined && message.name !== "") {
             writer.uint32(18).string(message.name);
         }
-        if (message.description !== "") {
+        if (message.description !== undefined && message.description !== "") {
             writer.uint32(26).string(message.description);
         }
-        if (message.uri !== "") {
+        if (message.uri !== undefined && message.uri !== "") {
             writer.uint32(34).string(message.uri);
         }
-        for (const v of message.webhooks) {
-            WebhookConfig.encode(v!, writer.uint32(42).fork()).ldelim();
+        if (message.webhooks !== undefined && message.webhooks.length !== 0) {
+            for (const v of message.webhooks) {
+                WebhookConfig.encode(v!, writer.uint32(42).fork()).ldelim();
+            }
         }
         if (message.display !== undefined) {
             EcosystemDisplay.encode(
@@ -933,7 +941,7 @@ export const Ecosystem = {
                 writer.uint32(50).fork()
             ).ldelim();
         }
-        if (message.domain !== "") {
+        if (message.domain !== undefined && message.domain !== "") {
             writer.uint32(58).string(message.domain);
         }
         return writer;
@@ -960,7 +968,7 @@ export const Ecosystem = {
                     message.uri = reader.string();
                     break;
                 case 5:
-                    message.webhooks.push(
+                    message.webhooks!.push(
                         WebhookConfig.decode(reader, reader.uint32())
                     );
                     break;
@@ -1047,16 +1055,21 @@ export const WebhookConfig = {
         message: WebhookConfig,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.id !== "") {
+        if (message.id !== undefined && message.id !== "") {
             writer.uint32(10).string(message.id);
         }
-        if (message.destinationUrl !== "") {
+        if (
+            message.destinationUrl !== undefined &&
+            message.destinationUrl !== ""
+        ) {
             writer.uint32(18).string(message.destinationUrl);
         }
-        for (const v of message.events) {
-            writer.uint32(34).string(v!);
+        if (message.events !== undefined && message.events.length !== 0) {
+            for (const v of message.events) {
+                writer.uint32(34).string(v!);
+            }
         }
-        if (message.status !== "") {
+        if (message.status !== undefined && message.status !== "") {
             writer.uint32(42).string(message.status);
         }
         return writer;
@@ -1077,7 +1090,7 @@ export const WebhookConfig = {
                     message.destinationUrl = reader.string();
                     break;
                 case 4:
-                    message.events.push(reader.string());
+                    message.events!.push(reader.string());
                     break;
                 case 5:
                     message.status = reader.string();
@@ -1136,14 +1149,21 @@ export const Grant = {
         message: Grant,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.resourceId !== "") {
+        if (message.resourceId !== undefined && message.resourceId !== "") {
             writer.uint32(10).string(message.resourceId);
         }
-        for (const v of message.actions) {
-            writer.uint32(18).string(v!);
+        if (message.actions !== undefined && message.actions.length !== 0) {
+            for (const v of message.actions) {
+                writer.uint32(18).string(v!);
+            }
         }
-        for (const v of message.childGrants) {
-            Grant.encode(v!, writer.uint32(26).fork()).ldelim();
+        if (
+            message.childGrants !== undefined &&
+            message.childGrants.length !== 0
+        ) {
+            for (const v of message.childGrants) {
+                Grant.encode(v!, writer.uint32(26).fork()).ldelim();
+            }
         }
         return writer;
     },
@@ -1160,10 +1180,10 @@ export const Grant = {
                     message.resourceId = reader.string();
                     break;
                 case 2:
-                    message.actions.push(reader.string());
+                    message.actions!.push(reader.string());
                     break;
                 case 3:
-                    message.childGrants.push(
+                    message.childGrants!.push(
                         Grant.decode(reader, reader.uint32())
                     );
                     break;
@@ -1233,13 +1253,13 @@ export const CreateEcosystemRequest = {
         message: CreateEcosystemRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.name !== "") {
+        if (message.name !== undefined && message.name !== "") {
             writer.uint32(10).string(message.name);
         }
-        if (message.description !== "") {
+        if (message.description !== undefined && message.description !== "") {
             writer.uint32(18).string(message.description);
         }
-        if (message.uri !== "") {
+        if (message.uri !== undefined && message.uri !== "") {
             writer.uint32(26).string(message.uri);
         }
         if (message.details !== undefined) {
@@ -1248,7 +1268,7 @@ export const CreateEcosystemRequest = {
                 writer.uint32(34).fork()
             ).ldelim();
         }
-        if (message.domain !== "") {
+        if (message.domain !== undefined && message.domain !== "") {
             writer.uint32(42).string(message.domain);
         }
         return writer;
@@ -1356,7 +1376,10 @@ export const CreateEcosystemResponse = {
                 writer.uint32(18).fork()
             ).ldelim();
         }
-        if (message.confirmationMethod !== 0) {
+        if (
+            message.confirmationMethod !== undefined &&
+            message.confirmationMethod !== 0
+        ) {
             writer.uint32(24).int32(message.confirmationMethod);
         }
         return writer;
@@ -1453,13 +1476,13 @@ export const UpdateEcosystemRequest = {
         message: UpdateEcosystemRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.description !== "") {
+        if (message.description !== undefined && message.description !== "") {
             writer.uint32(10).string(message.description);
         }
-        if (message.uri !== "") {
+        if (message.uri !== undefined && message.uri !== "") {
             writer.uint32(18).string(message.uri);
         }
-        if (message.domain !== "") {
+        if (message.domain !== undefined && message.domain !== "") {
             writer.uint32(26).string(message.domain);
         }
         if (message.display !== undefined) {
@@ -1650,13 +1673,13 @@ export const EcosystemDisplayDetailsRequest = {
         message: EcosystemDisplayDetailsRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.color !== "") {
+        if (message.color !== undefined && message.color !== "") {
             writer.uint32(34).string(message.color);
         }
-        if (message.logoData.length !== 0) {
+        if (message.logoData !== undefined && message.logoData.length !== 0) {
             writer.uint32(42).bytes(message.logoData);
         }
-        if (message.logoFormat !== "") {
+        if (message.logoFormat !== undefined && message.logoFormat !== "") {
             writer.uint32(50).string(message.logoFormat);
         }
         return writer;
@@ -1898,10 +1921,10 @@ export const EcosystemDisplayDetails = {
         message: EcosystemDisplayDetails,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.logoUrl !== "") {
+        if (message.logoUrl !== undefined && message.logoUrl !== "") {
             writer.uint32(26).string(message.logoUrl);
         }
-        if (message.color !== "") {
+        if (message.color !== undefined && message.color !== "") {
             writer.uint32(34).string(message.color);
         }
         return writer;
@@ -1965,14 +1988,19 @@ export const AddWebhookRequest = {
         message: AddWebhookRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.destinationUrl !== "") {
+        if (
+            message.destinationUrl !== undefined &&
+            message.destinationUrl !== ""
+        ) {
             writer.uint32(10).string(message.destinationUrl);
         }
-        if (message.secret !== "") {
+        if (message.secret !== undefined && message.secret !== "") {
             writer.uint32(18).string(message.secret);
         }
-        for (const v of message.events) {
-            writer.uint32(26).string(v!);
+        if (message.events !== undefined && message.events.length !== 0) {
+            for (const v of message.events) {
+                writer.uint32(26).string(v!);
+            }
         }
         return writer;
     },
@@ -1992,7 +2020,7 @@ export const AddWebhookRequest = {
                     message.secret = reader.string();
                     break;
                 case 3:
-                    message.events.push(reader.string());
+                    message.events!.push(reader.string());
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -2115,7 +2143,7 @@ export const DeleteWebhookRequest = {
         message: DeleteWebhookRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.webhookId !== "") {
+        if (message.webhookId !== undefined && message.webhookId !== "") {
             writer.uint32(10).string(message.webhookId);
         }
         return writer;
@@ -2363,7 +2391,7 @@ export const GetPublicEcosystemInfoRequest = {
         message: GetPublicEcosystemInfoRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.ecosystemId !== "") {
+        if (message.ecosystemId !== undefined && message.ecosystemId !== "") {
             writer.uint32(10).string(message.ecosystemId);
         }
         return writer;
@@ -2502,10 +2530,10 @@ export const PublicEcosystemInformation = {
         message: PublicEcosystemInformation,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.name !== "") {
+        if (message.name !== undefined && message.name !== "") {
             writer.uint32(10).string(message.name);
         }
-        if (message.domain !== "") {
+        if (message.domain !== undefined && message.domain !== "") {
             writer.uint32(18).string(message.domain);
         }
         if (message.domainVerified === true) {
@@ -2517,7 +2545,7 @@ export const PublicEcosystemInformation = {
                 writer.uint32(34).fork()
             ).ldelim();
         }
-        if (message.description !== "") {
+        if (message.description !== undefined && message.description !== "") {
             writer.uint32(42).string(message.description);
         }
         return writer;
@@ -2616,7 +2644,7 @@ export const GenerateTokenRequest = {
         message: GenerateTokenRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.description !== "") {
+        if (message.description !== undefined && message.description !== "") {
             writer.uint32(10).string(message.description);
         }
         return writer;
@@ -2795,7 +2823,7 @@ export const GetOberonKeyResponse = {
         message: GetOberonKeyResponse,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.key !== "") {
+        if (message.key !== undefined && message.key !== "") {
             writer.uint32(10).string(message.key);
         }
         return writer;
@@ -2853,7 +2881,7 @@ export const GetEventTokenRequest = {
         message: GetEventTokenRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.pk.length !== 0) {
+        if (message.pk !== undefined && message.pk.length !== 0) {
             writer.uint32(10).bytes(message.pk);
         }
         return writer;
@@ -2916,7 +2944,7 @@ export const GetEventTokenResponse = {
         message: GetEventTokenResponse,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.token !== "") {
+        if (message.token !== undefined && message.token !== "") {
             writer.uint32(10).string(message.token);
         }
         return writer;
@@ -3022,10 +3050,16 @@ export const RetrieveDomainVerificationRecordResponse = {
         message: RetrieveDomainVerificationRecordResponse,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.verificationRecordName !== "") {
+        if (
+            message.verificationRecordName !== undefined &&
+            message.verificationRecordName !== ""
+        ) {
             writer.uint32(10).string(message.verificationRecordName);
         }
-        if (message.verificationRecordValue !== "") {
+        if (
+            message.verificationRecordValue !== undefined &&
+            message.verificationRecordValue !== ""
+        ) {
             writer.uint32(18).string(message.verificationRecordValue);
         }
         return writer;
@@ -3143,7 +3177,7 @@ export const RefreshDomainVerificationStatusResponse = {
         message: RefreshDomainVerificationStatusResponse,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.domain !== "") {
+        if (message.domain !== undefined && message.domain !== "") {
             writer.uint32(10).string(message.domain);
         }
         if (message.domainVerified === true) {
@@ -3219,10 +3253,10 @@ export const GrantAuthorizationRequest = {
         if (message.walletId !== undefined) {
             writer.uint32(18).string(message.walletId);
         }
-        if (message.resource !== "") {
+        if (message.resource !== undefined && message.resource !== "") {
             writer.uint32(26).string(message.resource);
         }
-        if (message.action !== "") {
+        if (message.action !== undefined && message.action !== "") {
             writer.uint32(34).string(message.action);
         }
         return writer;
@@ -3354,10 +3388,10 @@ export const RevokeAuthorizationRequest = {
         if (message.walletId !== undefined) {
             writer.uint32(18).string(message.walletId);
         }
-        if (message.resource !== "") {
+        if (message.resource !== undefined && message.resource !== "") {
             writer.uint32(26).string(message.resource);
         }
-        if (message.action !== "") {
+        if (message.action !== undefined && message.action !== "") {
             writer.uint32(34).string(message.action);
         }
         return writer;
@@ -3531,8 +3565,10 @@ export const GetAuthorizationsResponse = {
         message: GetAuthorizationsResponse,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        for (const v of message.grants) {
-            Grant.encode(v!, writer.uint32(10).fork()).ldelim();
+        if (message.grants !== undefined && message.grants.length !== 0) {
+            for (const v of message.grants) {
+                Grant.encode(v!, writer.uint32(10).fork()).ldelim();
+            }
         }
         return writer;
     },
@@ -3549,7 +3585,7 @@ export const GetAuthorizationsResponse = {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
-                    message.grants.push(Grant.decode(reader, reader.uint32()));
+                    message.grants!.push(Grant.decode(reader, reader.uint32()));
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -3597,10 +3633,13 @@ export const SearchWalletConfigurationsRequest = {
         message: SearchWalletConfigurationsRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.queryFilter !== "") {
+        if (message.queryFilter !== undefined && message.queryFilter !== "") {
             writer.uint32(10).string(message.queryFilter);
         }
-        if (message.continuationToken !== "") {
+        if (
+            message.continuationToken !== undefined &&
+            message.continuationToken !== ""
+        ) {
             writer.uint32(18).string(message.continuationToken);
         }
         return writer;
@@ -3670,13 +3709,21 @@ export const SearchWalletConfigurationResponse = {
         message: SearchWalletConfigurationResponse,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        for (const v of message.results) {
-            WalletConfiguration.encode(v!, writer.uint32(10).fork()).ldelim();
+        if (message.results !== undefined && message.results.length !== 0) {
+            for (const v of message.results) {
+                WalletConfiguration.encode(
+                    v!,
+                    writer.uint32(10).fork()
+                ).ldelim();
+            }
         }
         if (message.hasMore === true) {
             writer.uint32(16).bool(message.hasMore);
         }
-        if (message.continuationToken !== "") {
+        if (
+            message.continuationToken !== undefined &&
+            message.continuationToken !== ""
+        ) {
             writer.uint32(34).string(message.continuationToken);
         }
         return writer;
@@ -3694,7 +3741,7 @@ export const SearchWalletConfigurationResponse = {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
-                    message.results.push(
+                    message.results!.push(
                         WalletConfiguration.decode(reader, reader.uint32())
                     );
                     break;
@@ -3770,22 +3817,22 @@ export const WalletConfiguration = {
         message: WalletConfiguration,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.name !== "") {
+        if (message.name !== undefined && message.name !== "") {
             writer.uint32(10).string(message.name);
         }
-        if (message.email !== "") {
+        if (message.email !== undefined && message.email !== "") {
             writer.uint32(18).string(message.email);
         }
-        if (message.sms !== "") {
+        if (message.sms !== undefined && message.sms !== "") {
             writer.uint32(26).string(message.sms);
         }
-        if (message.walletId !== "") {
+        if (message.walletId !== undefined && message.walletId !== "") {
             writer.uint32(34).string(message.walletId);
         }
-        if (message.publicDid !== "") {
+        if (message.publicDid !== undefined && message.publicDid !== "") {
             writer.uint32(42).string(message.publicDid);
         }
-        if (message.configType !== "") {
+        if (message.configType !== undefined && message.configType !== "") {
             writer.uint32(50).string(message.configType);
         }
         return writer;
@@ -3874,7 +3921,7 @@ export const IonOptions = {
         message: IonOptions,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.network !== 0) {
+        if (message.network !== undefined && message.network !== 0) {
             writer.uint32(8).int32(message.network);
         }
         return writer;
@@ -3941,7 +3988,7 @@ export const UpgradeDidRequest = {
         if (message.walletId !== undefined) {
             writer.uint32(18).string(message.walletId);
         }
-        if (message.method !== 0) {
+        if (message.method !== undefined && message.method !== 0) {
             writer.uint32(24).int32(message.method);
         }
         if (message.ionOptions !== undefined) {
@@ -4034,7 +4081,7 @@ export const UpgradeDidResponse = {
         message: UpgradeDidResponse,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.did !== "") {
+        if (message.did !== undefined && message.did !== "") {
             writer.uint32(10).string(message.did);
         }
         return writer;

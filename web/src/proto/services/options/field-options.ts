@@ -6,17 +6,17 @@ export interface SdkTemplateOption {
      * Whether the service endpoint allows anonymous (no auth token necessary) authentication
      * This is used by the `protoc-gen-trinsic-sdk` plugin for metadata.
      */
-    anonymous: boolean;
+    anonymous?: boolean;
     /**
      * Whether the SDK template generator should ignore this method. This method will
      * be wrapped manually.
      */
-    ignore: boolean;
+    ignore?: boolean;
     /**
      * Whether the SDK template generator should generate this method without arguments, eg
      * ProviderService.GetEcosystemInfo() where the request object is empty
      */
-    noArguments: boolean;
+    noArguments?: boolean;
 }
 
 function createBaseSdkTemplateOption(): SdkTemplateOption {

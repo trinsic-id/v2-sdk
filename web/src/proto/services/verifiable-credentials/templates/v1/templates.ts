@@ -50,61 +50,61 @@ export function fieldTypeToJSON(object: FieldType): string {
 /** Request to fetch a template by ID */
 export interface GetCredentialTemplateRequest {
     /** ID of template to fetch */
-    id: string;
+    id?: string;
 }
 
 /** Response to `GetCredentialTemplateRequest` */
 export interface GetCredentialTemplateResponse {
     /** Template fetched by ID */
-    template: TemplateData | undefined;
+    template?: TemplateData;
 }
 
 /** Request to search templates using a SQL query */
 export interface SearchCredentialTemplatesRequest {
     /** SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'` */
-    query: string;
+    query?: string;
     /**
      * Token provided by previous `SearchCredentialTemplatesResponse`
      * if more data is available for query
      */
-    continuationToken: string;
+    continuationToken?: string;
 }
 
 /** Response to `SearchCredentialTemplatesRequest` */
 export interface SearchCredentialTemplatesResponse {
     /** Raw JSON data returned from query */
-    itemsJson: string;
+    itemsJson?: string;
     /** Whether more results are available for this query via `continuation_token` */
-    hasMore: boolean;
+    hasMore?: boolean;
     /** Token to fetch next set of results via `SearchCredentialTemplatesRequest` */
-    continuationToken: string;
+    continuationToken?: string;
 }
 
 /** Request to list templates using a SQL query */
 export interface ListCredentialTemplatesRequest {
     /** SQL query to execute. Example: `SELECT * FROM c WHERE c.name = 'Diploma'` */
-    query: string;
+    query?: string;
     /**
      * Token provided by previous `ListCredentialTemplatesResponse`
      * if more data is available for query
      */
-    continuationToken: string;
+    continuationToken?: string;
 }
 
 /** Response to `ListCredentialTemplatesRequest` */
 export interface ListCredentialTemplatesResponse {
     /** Templates found by query */
-    templates: TemplateData[];
+    templates?: TemplateData[];
     /** Whether more results are available for this query via `continuation_token` */
-    hasMoreResults: boolean;
+    hasMoreResults?: boolean;
     /** Token to fetch next set of resuts via `ListCredentialTemplatesRequest` */
-    continuationToken: string;
+    continuationToken?: string;
 }
 
 /** Request to delete a template by ID */
 export interface DeleteCredentialTemplateRequest {
     /** ID of template to delete */
-    id: string;
+    id?: string;
 }
 
 /** Response to `DeleteCredentialTemplateRequest` */
@@ -113,45 +113,45 @@ export interface DeleteCredentialTemplateResponse {}
 /** Request to create a new template */
 export interface CreateCredentialTemplateRequest {
     /** Name of new template */
-    name: string;
+    name?: string;
     /** Fields which compose the template */
-    fields: { [key: string]: TemplateField };
+    fields?: { [key: string]: TemplateField };
     /**
      * Whether credentials may be issued against this template which have fields
      * not specified in `fields`
      */
-    allowAdditionalFields: boolean;
+    allowAdditionalFields?: boolean;
 }
 
 export interface CreateCredentialTemplateRequest_FieldsEntry {
     key: string;
-    value: TemplateField | undefined;
+    value?: TemplateField;
 }
 
 /** Response to `CreateCredentialTemplateRequest` */
 export interface CreateCredentialTemplateResponse {
     /** Created template */
-    data: TemplateData | undefined;
+    data?: TemplateData;
 }
 
 /** A field defined in a template */
 export interface TemplateField {
     /** Human-readable description of the field */
-    description: string;
+    description?: string;
     /** Whether this field may be omitted when a credential is issued against the template */
-    optional: boolean;
+    optional?: boolean;
     /** The type of the field */
-    type: FieldType;
+    type?: FieldType;
 }
 
 /** Unused */
 export interface GetTemplateRequest {
-    id: string;
+    id?: string;
 }
 
 /** Unused */
 export interface GetTemplateResponse {
-    data: TemplateData | undefined;
+    data?: TemplateData;
 }
 
 /** Unused */
@@ -159,41 +159,41 @@ export interface ListTemplatesRequest {}
 
 /** Unused */
 export interface ListTemplatesResponse {
-    templates: TemplateData[];
+    templates?: TemplateData[];
 }
 
 /** Credential Template */
 export interface TemplateData {
     /** Template ID */
-    id: string;
+    id?: string;
     /** Template name */
-    name: string;
+    name?: string;
     /** Template version number */
-    version: number;
+    version?: number;
     /** Fields defined for the template */
-    fields: { [key: string]: TemplateField };
+    fields?: { [key: string]: TemplateField };
     /**
      * Whether credentials issued against this template may
      * contain fields not defined by template
      */
-    allowAdditionalFields: boolean;
+    allowAdditionalFields?: boolean;
     /** URI pointing to template JSON schema document */
-    schemaUri: string;
+    schemaUri?: string;
     /** URI pointing to template JSON-LD context document */
-    contextUri: string;
+    contextUri?: string;
     /** ID of ecosystem in which template resides */
-    ecosystemId: string;
+    ecosystemId?: string;
     /** Template type (`VerifiableCredential`) */
-    type: string;
+    type?: string;
     /** ID of template creator */
-    createdBy: string;
+    createdBy?: string;
     /** Date when template was created as ISO 8601 utc string */
-    dateCreated: string;
+    dateCreated?: string;
 }
 
 export interface TemplateData_FieldsEntry {
     key: string;
-    value: TemplateField | undefined;
+    value?: TemplateField;
 }
 
 function createBaseGetCredentialTemplateRequest(): GetCredentialTemplateRequest {
@@ -205,7 +205,7 @@ export const GetCredentialTemplateRequest = {
         message: GetCredentialTemplateRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.id !== "") {
+        if (message.id !== undefined && message.id !== "") {
             writer.uint32(10).string(message.id);
         }
         return writer;
@@ -335,10 +335,13 @@ export const SearchCredentialTemplatesRequest = {
         message: SearchCredentialTemplatesRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.query !== "") {
+        if (message.query !== undefined && message.query !== "") {
             writer.uint32(10).string(message.query);
         }
-        if (message.continuationToken !== "") {
+        if (
+            message.continuationToken !== undefined &&
+            message.continuationToken !== ""
+        ) {
             writer.uint32(18).string(message.continuationToken);
         }
         return writer;
@@ -405,13 +408,16 @@ export const SearchCredentialTemplatesResponse = {
         message: SearchCredentialTemplatesResponse,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.itemsJson !== "") {
+        if (message.itemsJson !== undefined && message.itemsJson !== "") {
             writer.uint32(10).string(message.itemsJson);
         }
         if (message.hasMore === true) {
             writer.uint32(16).bool(message.hasMore);
         }
-        if (message.continuationToken !== "") {
+        if (
+            message.continuationToken !== undefined &&
+            message.continuationToken !== ""
+        ) {
             writer.uint32(34).string(message.continuationToken);
         }
         return writer;
@@ -484,10 +490,13 @@ export const ListCredentialTemplatesRequest = {
         message: ListCredentialTemplatesRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.query !== "") {
+        if (message.query !== undefined && message.query !== "") {
             writer.uint32(10).string(message.query);
         }
-        if (message.continuationToken !== "") {
+        if (
+            message.continuationToken !== undefined &&
+            message.continuationToken !== ""
+        ) {
             writer.uint32(18).string(message.continuationToken);
         }
         return writer;
@@ -554,13 +563,18 @@ export const ListCredentialTemplatesResponse = {
         message: ListCredentialTemplatesResponse,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        for (const v of message.templates) {
-            TemplateData.encode(v!, writer.uint32(10).fork()).ldelim();
+        if (message.templates !== undefined && message.templates.length !== 0) {
+            for (const v of message.templates) {
+                TemplateData.encode(v!, writer.uint32(10).fork()).ldelim();
+            }
         }
         if (message.hasMoreResults === true) {
             writer.uint32(16).bool(message.hasMoreResults);
         }
-        if (message.continuationToken !== "") {
+        if (
+            message.continuationToken !== undefined &&
+            message.continuationToken !== ""
+        ) {
             writer.uint32(26).string(message.continuationToken);
         }
         return writer;
@@ -578,7 +592,7 @@ export const ListCredentialTemplatesResponse = {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
-                    message.templates.push(
+                    message.templates!.push(
                         TemplateData.decode(reader, reader.uint32())
                     );
                     break;
@@ -647,7 +661,7 @@ export const DeleteCredentialTemplateRequest = {
         message: DeleteCredentialTemplateRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.id !== "") {
+        if (message.id !== undefined && message.id !== "") {
             writer.uint32(10).string(message.id);
         }
         return writer;
@@ -753,10 +767,10 @@ export const CreateCredentialTemplateRequest = {
         message: CreateCredentialTemplateRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.name !== "") {
+        if (message.name !== undefined && message.name !== "") {
             writer.uint32(10).string(message.name);
         }
-        Object.entries(message.fields).forEach(([key, value]) => {
+        Object.entries(message.fields || {}).forEach(([key, value]) => {
             CreateCredentialTemplateRequest_FieldsEntry.encode(
                 { key: key as any, value },
                 writer.uint32(18).fork()
@@ -789,7 +803,7 @@ export const CreateCredentialTemplateRequest = {
                             reader.uint32()
                         );
                     if (entry2.value !== undefined) {
-                        message.fields[entry2.key] = entry2.value;
+                        message.fields![entry2.key] = entry2.value;
                     }
                     break;
                 case 3:
@@ -1011,13 +1025,13 @@ export const TemplateField = {
         message: TemplateField,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.description !== "") {
+        if (message.description !== undefined && message.description !== "") {
             writer.uint32(18).string(message.description);
         }
         if (message.optional === true) {
             writer.uint32(24).bool(message.optional);
         }
-        if (message.type !== 0) {
+        if (message.type !== undefined && message.type !== 0) {
             writer.uint32(32).int32(message.type);
         }
         return writer;
@@ -1086,7 +1100,7 @@ export const GetTemplateRequest = {
         message: GetTemplateRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.id !== "") {
+        if (message.id !== undefined && message.id !== "") {
             writer.uint32(10).string(message.id);
         }
         return writer;
@@ -1255,8 +1269,10 @@ export const ListTemplatesResponse = {
         message: ListTemplatesResponse,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        for (const v of message.templates) {
-            TemplateData.encode(v!, writer.uint32(10).fork()).ldelim();
+        if (message.templates !== undefined && message.templates.length !== 0) {
+            for (const v of message.templates) {
+                TemplateData.encode(v!, writer.uint32(10).fork()).ldelim();
+            }
         }
         return writer;
     },
@@ -1273,7 +1289,7 @@ export const ListTemplatesResponse = {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
-                    message.templates.push(
+                    message.templates!.push(
                         TemplateData.decode(reader, reader.uint32())
                     );
                     break;
@@ -1336,16 +1352,16 @@ export const TemplateData = {
         message: TemplateData,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.id !== "") {
+        if (message.id !== undefined && message.id !== "") {
             writer.uint32(10).string(message.id);
         }
-        if (message.name !== "") {
+        if (message.name !== undefined && message.name !== "") {
             writer.uint32(18).string(message.name);
         }
-        if (message.version !== 0) {
+        if (message.version !== undefined && message.version !== 0) {
             writer.uint32(24).int32(message.version);
         }
-        Object.entries(message.fields).forEach(([key, value]) => {
+        Object.entries(message.fields || {}).forEach(([key, value]) => {
             TemplateData_FieldsEntry.encode(
                 { key: key as any, value },
                 writer.uint32(34).fork()
@@ -1354,22 +1370,22 @@ export const TemplateData = {
         if (message.allowAdditionalFields === true) {
             writer.uint32(40).bool(message.allowAdditionalFields);
         }
-        if (message.schemaUri !== "") {
+        if (message.schemaUri !== undefined && message.schemaUri !== "") {
             writer.uint32(50).string(message.schemaUri);
         }
-        if (message.contextUri !== "") {
+        if (message.contextUri !== undefined && message.contextUri !== "") {
             writer.uint32(58).string(message.contextUri);
         }
-        if (message.ecosystemId !== "") {
+        if (message.ecosystemId !== undefined && message.ecosystemId !== "") {
             writer.uint32(66).string(message.ecosystemId);
         }
-        if (message.type !== "") {
+        if (message.type !== undefined && message.type !== "") {
             writer.uint32(74).string(message.type);
         }
-        if (message.createdBy !== "") {
+        if (message.createdBy !== undefined && message.createdBy !== "") {
             writer.uint32(82).string(message.createdBy);
         }
-        if (message.dateCreated !== "") {
+        if (message.dateCreated !== undefined && message.dateCreated !== "") {
             writer.uint32(90).string(message.dateCreated);
         }
         return writer;
@@ -1398,7 +1414,7 @@ export const TemplateData = {
                         reader.uint32()
                     );
                     if (entry4.value !== undefined) {
-                        message.fields[entry4.key] = entry4.value;
+                        message.fields![entry4.key] = entry4.value;
                     }
                     break;
                 case 5:

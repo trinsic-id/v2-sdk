@@ -78,7 +78,7 @@ export default abstract class ServiceBase {
                 `Oberon ` +
                     `ver=1,` +
                     `proof=${Base64.fromUint8Array(proof, true)},` +
-                    `data=${Base64.fromUint8Array(profile.authData, true)},` +
+                    `data=${Base64.fromUint8Array(profile.authData!, true)},` +
                     `nonce=${Base64.fromUint8Array(nonceUint8, true)}`
             );
         }

@@ -4,34 +4,34 @@ import _m0 from "protobufjs/minimal";
 /** Role management */
 export interface AddRoleAssignmentRequest {
     /** Role to assign */
-    role: string;
+    role?: string;
     /**
      * Email address of account to assign role to.
      * Mutually exclusive with `walletId`.
      */
-    email: string | undefined;
+    email?: string | undefined;
     /**
      * Wallet ID of account to assign role to.
      * Mutually exclusive with `email`.
      */
-    walletId: string | undefined;
+    walletId?: string | undefined;
 }
 
 export interface AddRoleAssignmentResponse {}
 
 export interface RemoveRoleAssignmentRequest {
     /** Role to unassign */
-    role: string;
+    role?: string;
     /**
      * Email address of account to unassign role from.
      * Mutually exclusive with `walletId`.
      */
-    email: string | undefined;
+    email?: string | undefined;
     /**
      * Wallet ID of account to unassign role from.
      * Mutually exclusive with `email`.
      */
-    walletId: string | undefined;
+    walletId?: string | undefined;
 }
 
 export interface RemoveRoleAssignmentResponse {}
@@ -42,17 +42,17 @@ export interface ListRoleAssignmentsRequest {
      * Email address of account to unassign role from.
      * Mutually exclusive with `walletId`.
      */
-    email: string | undefined;
+    email?: string | undefined;
     /**
      * Wallet ID of account to unassign role from.
      * Mutually exclusive with `email`.
      */
-    walletId: string | undefined;
+    walletId?: string | undefined;
 }
 
 export interface ListRoleAssignmentsResponse {
     /** List of roles */
-    roles: string[];
+    roles?: string[];
 }
 
 /** Request to fetch the available roles in the current ecosystem */
@@ -60,7 +60,7 @@ export interface ListAvailableRolesRequest {}
 
 export interface ListAvailableRolesResponse {
     /** List of roles */
-    roles: string[];
+    roles?: string[];
 }
 
 function createBaseAddRoleAssignmentRequest(): AddRoleAssignmentRequest {
@@ -72,7 +72,7 @@ export const AddRoleAssignmentRequest = {
         message: AddRoleAssignmentRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.role !== "") {
+        if (message.role !== undefined && message.role !== "") {
             writer.uint32(10).string(message.role);
         }
         if (message.email !== undefined) {
@@ -198,7 +198,7 @@ export const RemoveRoleAssignmentRequest = {
         message: RemoveRoleAssignmentRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.role !== "") {
+        if (message.role !== undefined && message.role !== "") {
             writer.uint32(10).string(message.role);
         }
         if (message.email !== undefined) {
@@ -393,8 +393,10 @@ export const ListRoleAssignmentsResponse = {
         message: ListRoleAssignmentsResponse,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        for (const v of message.roles) {
-            writer.uint32(10).string(v!);
+        if (message.roles !== undefined && message.roles.length !== 0) {
+            for (const v of message.roles) {
+                writer.uint32(10).string(v!);
+            }
         }
         return writer;
     },
@@ -411,7 +413,7 @@ export const ListRoleAssignmentsResponse = {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
-                    message.roles.push(reader.string());
+                    message.roles!.push(reader.string());
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -505,8 +507,10 @@ export const ListAvailableRolesResponse = {
         message: ListAvailableRolesResponse,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        for (const v of message.roles) {
-            writer.uint32(10).string(v!);
+        if (message.roles !== undefined && message.roles.length !== 0) {
+            for (const v of message.roles) {
+                writer.uint32(10).string(v!);
+            }
         }
         return writer;
     },
@@ -523,7 +527,7 @@ export const ListAvailableRolesResponse = {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
-                    message.roles.push(reader.string());
+                    message.roles!.push(reader.string());
                     break;
                 default:
                     reader.skipType(tag & 7);

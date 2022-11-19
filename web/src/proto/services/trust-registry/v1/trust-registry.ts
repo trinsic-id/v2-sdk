@@ -61,27 +61,27 @@ export function registrationStatusToJSON(object: RegistrationStatus): string {
 /** Request to register a new ecosystem governance framework in the current ecosystem */
 export interface AddFrameworkRequest {
     /** URI of governance framework organization */
-    governanceFrameworkUri: string;
+    governanceFrameworkUri?: string;
     /** Name of governance framework organization */
-    name: string;
+    name?: string;
     /** Description of governance framework */
-    description: string;
+    description?: string;
 }
 
 /** Response to `AddFrameworkRequest` */
 export interface AddFrameworkResponse {
     /** Unique framework identifier */
-    id: string;
+    id?: string;
     /** DID URI of Trinsic account which created the governance framework */
-    governingAuthority: string;
+    governingAuthority?: string;
     /** URN of trust registry for governance framework */
-    trustRegistry: string;
+    trustRegistry?: string;
 }
 
 /** Request to remove a governance framework from the current ecosystem */
 export interface RemoveFrameworkRequest {
     /** ID of governance framework to remove */
-    id: string;
+    id?: string;
 }
 
 /** Response to `RemoveFrameworkRequest` */
@@ -90,29 +90,29 @@ export interface RemoveFrameworkResponse {}
 /** Request to search all governance frameworks within ecosystem */
 export interface SearchRegistryRequest {
     /** SQL query to execute against frameworks. Example: `SELECT c from c where c.type == 'GovernanceFramework'` */
-    query: string;
+    query?: string;
     /** Token to fetch next set of results, from previous `SearchRegistryResponse` */
-    continuationToken: string;
+    continuationToken?: string;
 }
 
 /** Response to `SearchRegistryRequest` */
 export interface SearchRegistryResponse {
     /** JSON string containing array of resultant objects */
-    itemsJson: string;
+    itemsJson?: string;
     /** Whether more data is available to fetch for query */
-    hasMore: boolean;
+    hasMore?: boolean;
     /** Token to fetch next set of results via `SearchRegistryRequest` */
-    continuationToken: string;
+    continuationToken?: string;
 }
 
 /** Ecosystem Governance Framework */
 export interface GovernanceFramework {
     /** URI of governance framework organization */
-    governanceFrameworkUri: string;
+    governanceFrameworkUri?: string;
     /** URI of trust registry associated with governance framework */
-    trustRegistryUri: string;
+    trustRegistryUri?: string;
     /** Description of governance framework */
-    description: string;
+    description?: string;
 }
 
 /**
@@ -121,19 +121,19 @@ export interface GovernanceFramework {
  */
 export interface RegisterMemberRequest {
     /** DID URI of member to register */
-    didUri: string | undefined;
+    didUri?: string | undefined;
     /** Trinsic Wallet ID of member to register */
-    walletId: string | undefined;
+    walletId?: string | undefined;
     /** Email address of member to register. Must be associated with an existing Trinsic account. */
-    email: string | undefined;
+    email?: string | undefined;
     /** URI of credential schema to register member as authorized issuer of */
-    schemaUri: string;
+    schemaUri?: string;
     /** Unix Timestamp member is valid from. Member will not be considered valid before this timestamp. */
-    validFromUtc: number;
+    validFromUtc?: number;
     /** Unix Timestamp member is valid until. Member will not be considered valid after this timestamp. */
-    validUntilUtc: number;
+    validUntilUtc?: number;
     /** ID of the governance framework that member is being added to */
-    frameworkId: string;
+    frameworkId?: string;
 }
 
 /** Response to `RegisterMemberRequest` */
@@ -145,15 +145,15 @@ export interface RegisterMemberResponse {}
  */
 export interface UnregisterMemberRequest {
     /** DID URI of member to unregister */
-    didUri: string | undefined;
+    didUri?: string | undefined;
     /** Trinsic Wallet ID of member to unregister */
-    walletId: string | undefined;
+    walletId?: string | undefined;
     /** Email address of member to unregister. Must be associated with an existing Trinsic account. */
-    email: string | undefined;
+    email?: string | undefined;
     /** URI of credential schema to unregister member as authorized issuer of */
-    schemaUri: string;
+    schemaUri?: string;
     /** ID of the governance framework that member is being removed from */
-    frameworkId: string;
+    frameworkId?: string;
 }
 
 /** Response to `UnregisterMemberRequest` */
@@ -165,32 +165,32 @@ export interface UnregisterMemberResponse {}
  */
 export interface GetMembershipStatusRequest {
     /** URI of governance framework */
-    governanceFrameworkUri: string;
+    governanceFrameworkUri?: string;
     /** DID URI of member */
-    didUri: string | undefined;
+    didUri?: string | undefined;
     /** X.509 certificate of member */
-    x509Cert: string | undefined;
+    x509Cert?: string | undefined;
     /** URI of credential schema associated with membership */
-    schemaUri: string;
+    schemaUri?: string;
 }
 
 /** Response to `GetMembershipStatusRequest` */
 export interface GetMembershipStatusResponse {
     /** Status of member for given credential schema */
-    status: RegistrationStatus;
+    status?: RegistrationStatus;
 }
 
 /** Not implemented. */
 export interface FetchDataRequest {
-    governanceFrameworkUri: string;
-    query: string;
+    governanceFrameworkUri?: string;
+    query?: string;
 }
 
 /** Not implemented. */
 export interface FetchDataResponse {
-    responseJson: string;
-    hasMoreResults: boolean;
-    continuationToken: string;
+    responseJson?: string;
+    hasMoreResults?: boolean;
+    continuationToken?: string;
 }
 
 function createBaseAddFrameworkRequest(): AddFrameworkRequest {
@@ -202,13 +202,16 @@ export const AddFrameworkRequest = {
         message: AddFrameworkRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.governanceFrameworkUri !== "") {
+        if (
+            message.governanceFrameworkUri !== undefined &&
+            message.governanceFrameworkUri !== ""
+        ) {
             writer.uint32(10).string(message.governanceFrameworkUri);
         }
-        if (message.name !== "") {
+        if (message.name !== undefined && message.name !== "") {
             writer.uint32(18).string(message.name);
         }
-        if (message.description !== "") {
+        if (message.description !== undefined && message.description !== "") {
             writer.uint32(26).string(message.description);
         }
         return writer;
@@ -282,13 +285,19 @@ export const AddFrameworkResponse = {
         message: AddFrameworkResponse,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.id !== "") {
+        if (message.id !== undefined && message.id !== "") {
             writer.uint32(10).string(message.id);
         }
-        if (message.governingAuthority !== "") {
+        if (
+            message.governingAuthority !== undefined &&
+            message.governingAuthority !== ""
+        ) {
             writer.uint32(18).string(message.governingAuthority);
         }
-        if (message.trustRegistry !== "") {
+        if (
+            message.trustRegistry !== undefined &&
+            message.trustRegistry !== ""
+        ) {
             writer.uint32(26).string(message.trustRegistry);
         }
         return writer;
@@ -364,7 +373,7 @@ export const RemoveFrameworkRequest = {
         message: RemoveFrameworkRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.id !== "") {
+        if (message.id !== undefined && message.id !== "") {
             writer.uint32(10).string(message.id);
         }
         return writer;
@@ -470,10 +479,13 @@ export const SearchRegistryRequest = {
         message: SearchRegistryRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.query !== "") {
+        if (message.query !== undefined && message.query !== "") {
             writer.uint32(10).string(message.query);
         }
-        if (message.continuationToken !== "") {
+        if (
+            message.continuationToken !== undefined &&
+            message.continuationToken !== ""
+        ) {
             writer.uint32(18).string(message.continuationToken);
         }
         return writer;
@@ -540,13 +552,16 @@ export const SearchRegistryResponse = {
         message: SearchRegistryResponse,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.itemsJson !== "") {
+        if (message.itemsJson !== undefined && message.itemsJson !== "") {
             writer.uint32(10).string(message.itemsJson);
         }
         if (message.hasMore === true) {
             writer.uint32(16).bool(message.hasMore);
         }
-        if (message.continuationToken !== "") {
+        if (
+            message.continuationToken !== undefined &&
+            message.continuationToken !== ""
+        ) {
             writer.uint32(34).string(message.continuationToken);
         }
         return writer;
@@ -623,13 +638,19 @@ export const GovernanceFramework = {
         message: GovernanceFramework,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.governanceFrameworkUri !== "") {
+        if (
+            message.governanceFrameworkUri !== undefined &&
+            message.governanceFrameworkUri !== ""
+        ) {
             writer.uint32(10).string(message.governanceFrameworkUri);
         }
-        if (message.trustRegistryUri !== "") {
+        if (
+            message.trustRegistryUri !== undefined &&
+            message.trustRegistryUri !== ""
+        ) {
             writer.uint32(18).string(message.trustRegistryUri);
         }
-        if (message.description !== "") {
+        if (message.description !== undefined && message.description !== "") {
             writer.uint32(26).string(message.description);
         }
         return writer;
@@ -723,16 +744,19 @@ export const RegisterMemberRequest = {
         if (message.email !== undefined) {
             writer.uint32(34).string(message.email);
         }
-        if (message.schemaUri !== "") {
+        if (message.schemaUri !== undefined && message.schemaUri !== "") {
             writer.uint32(82).string(message.schemaUri);
         }
-        if (message.validFromUtc !== 0) {
+        if (message.validFromUtc !== undefined && message.validFromUtc !== 0) {
             writer.uint32(88).uint64(message.validFromUtc);
         }
-        if (message.validUntilUtc !== 0) {
+        if (
+            message.validUntilUtc !== undefined &&
+            message.validUntilUtc !== 0
+        ) {
             writer.uint32(96).uint64(message.validUntilUtc);
         }
-        if (message.frameworkId !== "") {
+        if (message.frameworkId !== undefined && message.frameworkId !== "") {
             writer.uint32(242).string(message.frameworkId);
         }
         return writer;
@@ -904,10 +928,10 @@ export const UnregisterMemberRequest = {
         if (message.email !== undefined) {
             writer.uint32(34).string(message.email);
         }
-        if (message.schemaUri !== "") {
+        if (message.schemaUri !== undefined && message.schemaUri !== "") {
             writer.uint32(82).string(message.schemaUri);
         }
-        if (message.frameworkId !== "") {
+        if (message.frameworkId !== undefined && message.frameworkId !== "") {
             writer.uint32(162).string(message.frameworkId);
         }
         return writer;
@@ -1047,7 +1071,10 @@ export const GetMembershipStatusRequest = {
         message: GetMembershipStatusRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.governanceFrameworkUri !== "") {
+        if (
+            message.governanceFrameworkUri !== undefined &&
+            message.governanceFrameworkUri !== ""
+        ) {
             writer.uint32(10).string(message.governanceFrameworkUri);
         }
         if (message.didUri !== undefined) {
@@ -1056,7 +1083,7 @@ export const GetMembershipStatusRequest = {
         if (message.x509Cert !== undefined) {
             writer.uint32(26).string(message.x509Cert);
         }
-        if (message.schemaUri !== "") {
+        if (message.schemaUri !== undefined && message.schemaUri !== "") {
             writer.uint32(34).string(message.schemaUri);
         }
         return writer;
@@ -1137,7 +1164,7 @@ export const GetMembershipStatusResponse = {
         message: GetMembershipStatusResponse,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.status !== 0) {
+        if (message.status !== undefined && message.status !== 0) {
             writer.uint32(8).int32(message.status);
         }
         return writer;
@@ -1198,10 +1225,13 @@ export const FetchDataRequest = {
         message: FetchDataRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.governanceFrameworkUri !== "") {
+        if (
+            message.governanceFrameworkUri !== undefined &&
+            message.governanceFrameworkUri !== ""
+        ) {
             writer.uint32(10).string(message.governanceFrameworkUri);
         }
-        if (message.query !== "") {
+        if (message.query !== undefined && message.query !== "") {
             writer.uint32(18).string(message.query);
         }
         return writer;
@@ -1263,13 +1293,16 @@ export const FetchDataResponse = {
         message: FetchDataResponse,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.responseJson !== "") {
+        if (message.responseJson !== undefined && message.responseJson !== "") {
             writer.uint32(10).string(message.responseJson);
         }
         if (message.hasMoreResults === true) {
             writer.uint32(16).bool(message.hasMoreResults);
         }
-        if (message.continuationToken !== "") {
+        if (
+            message.continuationToken !== undefined &&
+            message.continuationToken !== ""
+        ) {
             writer.uint32(26).string(message.continuationToken);
         }
         return writer;

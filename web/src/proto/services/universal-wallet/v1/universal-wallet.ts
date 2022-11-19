@@ -4,44 +4,44 @@ import _m0 from "protobufjs/minimal";
 /** Request to search items in wallet */
 export interface SearchRequest {
     /** SQL Query to execute against items in wallet */
-    query: string;
+    query?: string;
     /**
      * Token provided by previous `SearchResponse`
      * if more data is available for query
      */
-    continuationToken: string;
+    continuationToken?: string;
 }
 
 /** Response to `SearchRequest` */
 export interface SearchResponse {
     /** Array of query results, as JSON strings */
-    items: string[];
+    items?: string[];
     /** Whether more results are available for this query via `continuation_token` */
-    hasMore: boolean;
+    hasMore?: boolean;
     /** Token to fetch next set of results via `SearchRequest` */
-    continuationToken: string;
+    continuationToken?: string;
 }
 
 /** Request to fetch an item from wallet */
 export interface GetItemRequest {
     /** ID of item in wallet */
-    itemId: string;
+    itemId?: string;
 }
 
 /** Response to `GetItemRequest` */
 export interface GetItemResponse {
     /** Item data as a JSON string */
-    itemJson: string;
+    itemJson?: string;
     /** Type of item specified when item was inserted into wallet */
-    itemType: string;
+    itemType?: string;
 }
 
 /** Request to update item in wallet */
 export interface UpdateItemRequest {
     /** ID of item in wallet */
-    itemId: string;
+    itemId?: string;
     /** Item type (ex. "VerifiableCredential") */
-    itemType: string;
+    itemType?: string;
 }
 
 /** Response to `UpdateItemRequest` */
@@ -50,21 +50,21 @@ export interface UpdateItemResponse {}
 /** Request to insert a JSON document into a wallet */
 export interface InsertItemRequest {
     /** Document to insert; must be stringified JSON */
-    itemJson: string;
+    itemJson?: string;
     /** Item type (ex. "VerifiableCredential") */
-    itemType: string;
+    itemType?: string;
 }
 
 /** Response to `InsertItemRequest` */
 export interface InsertItemResponse {
     /** ID of item inserted into wallet */
-    itemId: string;
+    itemId?: string;
 }
 
 /** Request to delete an item in a wallet */
 export interface DeleteItemRequest {
     /** ID of item to delete */
-    itemId: string;
+    itemId?: string;
 }
 
 /** Response to `DeleteItemRequest` */
@@ -79,10 +79,13 @@ export const SearchRequest = {
         message: SearchRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.query !== "") {
+        if (message.query !== undefined && message.query !== "") {
             writer.uint32(10).string(message.query);
         }
-        if (message.continuationToken !== "") {
+        if (
+            message.continuationToken !== undefined &&
+            message.continuationToken !== ""
+        ) {
             writer.uint32(18).string(message.continuationToken);
         }
         return writer;
@@ -144,13 +147,18 @@ export const SearchResponse = {
         message: SearchResponse,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        for (const v of message.items) {
-            writer.uint32(10).string(v!);
+        if (message.items !== undefined && message.items.length !== 0) {
+            for (const v of message.items) {
+                writer.uint32(10).string(v!);
+            }
         }
         if (message.hasMore === true) {
             writer.uint32(16).bool(message.hasMore);
         }
-        if (message.continuationToken !== "") {
+        if (
+            message.continuationToken !== undefined &&
+            message.continuationToken !== ""
+        ) {
             writer.uint32(34).string(message.continuationToken);
         }
         return writer;
@@ -165,7 +173,7 @@ export const SearchResponse = {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
-                    message.items.push(reader.string());
+                    message.items!.push(reader.string());
                     break;
                 case 2:
                     message.hasMore = reader.bool();
@@ -224,7 +232,7 @@ export const GetItemRequest = {
         message: GetItemRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.itemId !== "") {
+        if (message.itemId !== undefined && message.itemId !== "") {
             writer.uint32(10).string(message.itemId);
         }
         return writer;
@@ -277,10 +285,10 @@ export const GetItemResponse = {
         message: GetItemResponse,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.itemJson !== "") {
+        if (message.itemJson !== undefined && message.itemJson !== "") {
             writer.uint32(10).string(message.itemJson);
         }
-        if (message.itemType !== "") {
+        if (message.itemType !== undefined && message.itemType !== "") {
             writer.uint32(18).string(message.itemType);
         }
         return writer;
@@ -339,10 +347,10 @@ export const UpdateItemRequest = {
         message: UpdateItemRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.itemId !== "") {
+        if (message.itemId !== undefined && message.itemId !== "") {
             writer.uint32(10).string(message.itemId);
         }
-        if (message.itemType !== "") {
+        if (message.itemType !== undefined && message.itemType !== "") {
             writer.uint32(18).string(message.itemType);
         }
         return writer;
@@ -447,10 +455,10 @@ export const InsertItemRequest = {
         message: InsertItemRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.itemJson !== "") {
+        if (message.itemJson !== undefined && message.itemJson !== "") {
             writer.uint32(10).string(message.itemJson);
         }
-        if (message.itemType !== "") {
+        if (message.itemType !== undefined && message.itemType !== "") {
             writer.uint32(18).string(message.itemType);
         }
         return writer;
@@ -509,7 +517,7 @@ export const InsertItemResponse = {
         message: InsertItemResponse,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.itemId !== "") {
+        if (message.itemId !== undefined && message.itemId !== "") {
             writer.uint32(18).string(message.itemId);
         }
         return writer;
@@ -565,7 +573,7 @@ export const DeleteItemRequest = {
         message: DeleteItemRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.itemId !== "") {
+        if (message.itemId !== undefined && message.itemId !== "") {
             writer.uint32(10).string(message.itemId);
         }
         return writer;

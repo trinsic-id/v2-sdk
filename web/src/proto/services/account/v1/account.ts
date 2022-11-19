@@ -61,24 +61,24 @@ export function confirmationMethodToJSON(object: ConfirmationMethod): string {
 /** Request for creating or signing into an account */
 export interface SignInRequest {
     /** Account registration details */
-    details: AccountDetails | undefined;
+    details?: AccountDetails;
     /** Invitation code associated with this registration */
-    invitationCode: string;
+    invitationCode?: string;
     /**
      * ID of Ecosystem to use
      * Ignored if `invitation_code` is passed
      */
-    ecosystemId: string;
+    ecosystemId?: string;
 }
 
 /** Account registration details */
 export interface AccountDetails {
     /** Account name */
-    name: string;
+    name?: string;
     /** Email address of account */
-    email: string;
+    email?: string;
     /** SMS number including country code */
-    sms: string;
+    sms?: string;
 }
 
 /**
@@ -89,7 +89,7 @@ export interface AccountDetails {
  */
 export interface SignInResponse {
     /** Indicates if confirmation of account is required. */
-    confirmationMethod: ConfirmationMethod;
+    confirmationMethod?: ConfirmationMethod;
     /**
      * Contains authentication data for use with the current device.
      * This object must be stored in a secure place. It can also be
@@ -97,7 +97,7 @@ export interface SignInResponse {
      * See the docs at https://docs.trinsic.id for more information
      * on working with authentication data.
      */
-    profile: AccountProfile | undefined;
+    profile?: AccountProfile;
 }
 
 /**
@@ -109,17 +109,17 @@ export interface AccountProfile {
      * The type of profile, used to differentiate between
      * protocol schemes or versions
      */
-    profileType: string;
+    profileType?: string;
     /** Auth data containg information about the current device access */
-    authData: Uint8Array;
+    authData?: Uint8Array;
     /** Secure token issued by server used to generate zero-knowledge proofs */
-    authToken: Uint8Array;
+    authToken?: Uint8Array;
     /**
      * Token security information about the token.
      * If token protection is enabled, implementations must supply
      * protection secret before using the token for authentication.
      */
-    protection: TokenProtection | undefined;
+    protection?: TokenProtection;
 }
 
 /** Token protection info */
@@ -128,9 +128,9 @@ export interface TokenProtection {
      * Indicates if token is protected using a PIN,
      * security code, HSM secret, etc.
      */
-    enabled: boolean;
+    enabled?: boolean;
     /** The method used to protect the token */
-    method: ConfirmationMethod;
+    method?: ConfirmationMethod;
 }
 
 /** Request for information about the account used to make the request */
@@ -142,26 +142,26 @@ export interface AccountInfoResponse {
      * The account details associated with
      * the calling request context
      */
-    details: AccountDetails | undefined;
+    details?: AccountDetails;
     /**
      * Use `ecosystem_id` instead
      *
      * @deprecated
      */
-    ecosystems: AccountEcosystem[];
+    ecosystems?: AccountEcosystem[];
     /** The wallet ID associated with this account */
-    walletId: string;
+    walletId?: string;
     /** The device ID associated with this account session */
-    deviceId: string;
+    deviceId?: string;
     /** The ecosystem ID within which this account resides */
-    ecosystemId: string;
+    ecosystemId?: string;
     /**
      * The public DID associated with this account.
      * This DID is used as the `issuer` when signing verifiable credentials
      */
-    publicDid: string;
+    publicDid?: string;
     /** Webhook events, if any, this wallet has authorized */
-    authorizedWebhooks: string[];
+    authorizedWebhooks?: string[];
 }
 
 export interface ListDevicesRequest {}
@@ -174,23 +174,23 @@ export interface RevokeDeviceResponse {}
 
 /** Deprecated */
 export interface AccountEcosystem {
-    id: string;
-    name: string;
-    description: string;
-    uri: string;
+    id?: string;
+    name?: string;
+    description?: string;
+    uri?: string;
 }
 
 /** Request to begin login flow */
 export interface LoginRequest {
     /** Email address of account. If unspecified, an anonymous account will be created. */
-    email: string;
+    email?: string;
     /** Invitation code associated with this registration */
-    invitationCode: string;
+    invitationCode?: string;
     /**
      * ID of Ecosystem to sign into.
      * Ignored if `invitation_code` is passed.
      */
-    ecosystemId: string;
+    ecosystemId?: string;
 }
 
 /** Response to `LoginRequest` */
@@ -200,20 +200,20 @@ export interface LoginResponse {
      * If present, two-factor confirmation of login is required.
      * Must be sent back, unaltered, in `LoginConfirm`.
      */
-    challenge: Uint8Array | undefined;
+    challenge?: Uint8Array | undefined;
     /** Account profile response. If present, no confirmation of login is required. */
-    profile: AccountProfile | undefined;
+    profile?: AccountProfile | undefined;
 }
 
 /** Request to finalize login flow */
 export interface LoginConfirmRequest {
     /** Challenge received from `Login` */
-    challenge: Uint8Array;
+    challenge?: Uint8Array;
     /**
      * Two-factor confirmation code sent to account email or phone,
      * hashed using Blake3. Our SDKs will handle this hashing process for you.
      */
-    confirmationCodeHashed: Uint8Array;
+    confirmationCodeHashed?: Uint8Array;
 }
 
 /** Response to `LoginConfirmRequest` */
@@ -222,7 +222,7 @@ export interface LoginConfirmResponse {
      * Profile response; must be unprotected using unhashed confirmation code.
      * Our SDKs will handle this process for you, and return to you an authentication token string.
      */
-    profile: AccountProfile | undefined;
+    profile?: AccountProfile;
 }
 
 /**
@@ -231,7 +231,7 @@ export interface LoginConfirmResponse {
  */
 export interface AuthorizeWebhookRequest {
     /** Events to authorize access to. Default is "*" (all events) */
-    events: string[];
+    events?: string[];
 }
 
 /** Response to `AuthorizeWebhookRequest` */
@@ -252,10 +252,13 @@ export const SignInRequest = {
                 writer.uint32(10).fork()
             ).ldelim();
         }
-        if (message.invitationCode !== "") {
+        if (
+            message.invitationCode !== undefined &&
+            message.invitationCode !== ""
+        ) {
             writer.uint32(18).string(message.invitationCode);
         }
-        if (message.ecosystemId !== "") {
+        if (message.ecosystemId !== undefined && message.ecosystemId !== "") {
             writer.uint32(26).string(message.ecosystemId);
         }
         return writer;
@@ -337,13 +340,13 @@ export const AccountDetails = {
         message: AccountDetails,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.name !== "") {
+        if (message.name !== undefined && message.name !== "") {
             writer.uint32(10).string(message.name);
         }
-        if (message.email !== "") {
+        if (message.email !== undefined && message.email !== "") {
             writer.uint32(18).string(message.email);
         }
-        if (message.sms !== "") {
+        if (message.sms !== undefined && message.sms !== "") {
             writer.uint32(26).string(message.sms);
         }
         return writer;
@@ -408,7 +411,10 @@ export const SignInResponse = {
         message: SignInResponse,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.confirmationMethod !== 0) {
+        if (
+            message.confirmationMethod !== undefined &&
+            message.confirmationMethod !== 0
+        ) {
             writer.uint32(24).int32(message.confirmationMethod);
         }
         if (message.profile !== undefined) {
@@ -494,13 +500,13 @@ export const AccountProfile = {
         message: AccountProfile,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.profileType !== "") {
+        if (message.profileType !== undefined && message.profileType !== "") {
             writer.uint32(10).string(message.profileType);
         }
-        if (message.authData.length !== 0) {
+        if (message.authData !== undefined && message.authData.length !== 0) {
             writer.uint32(18).bytes(message.authData);
         }
-        if (message.authToken.length !== 0) {
+        if (message.authToken !== undefined && message.authToken.length !== 0) {
             writer.uint32(26).bytes(message.authToken);
         }
         if (message.protection !== undefined) {
@@ -608,7 +614,7 @@ export const TokenProtection = {
         if (message.enabled === true) {
             writer.uint32(8).bool(message.enabled);
         }
-        if (message.method !== 0) {
+        if (message.method !== undefined && message.method !== 0) {
             writer.uint32(16).int32(message.method);
         }
         return writer;
@@ -730,23 +736,33 @@ export const AccountInfoResponse = {
                 writer.uint32(10).fork()
             ).ldelim();
         }
-        for (const v of message.ecosystems) {
-            AccountEcosystem.encode(v!, writer.uint32(18).fork()).ldelim();
+        if (
+            message.ecosystems !== undefined &&
+            message.ecosystems.length !== 0
+        ) {
+            for (const v of message.ecosystems) {
+                AccountEcosystem.encode(v!, writer.uint32(18).fork()).ldelim();
+            }
         }
-        if (message.walletId !== "") {
+        if (message.walletId !== undefined && message.walletId !== "") {
             writer.uint32(26).string(message.walletId);
         }
-        if (message.deviceId !== "") {
+        if (message.deviceId !== undefined && message.deviceId !== "") {
             writer.uint32(34).string(message.deviceId);
         }
-        if (message.ecosystemId !== "") {
+        if (message.ecosystemId !== undefined && message.ecosystemId !== "") {
             writer.uint32(42).string(message.ecosystemId);
         }
-        if (message.publicDid !== "") {
+        if (message.publicDid !== undefined && message.publicDid !== "") {
             writer.uint32(50).string(message.publicDid);
         }
-        for (const v of message.authorizedWebhooks) {
-            writer.uint32(58).string(v!);
+        if (
+            message.authorizedWebhooks !== undefined &&
+            message.authorizedWebhooks.length !== 0
+        ) {
+            for (const v of message.authorizedWebhooks) {
+                writer.uint32(58).string(v!);
+            }
         }
         return writer;
     },
@@ -769,7 +785,7 @@ export const AccountInfoResponse = {
                     );
                     break;
                 case 2:
-                    message.ecosystems.push(
+                    message.ecosystems!.push(
                         AccountEcosystem.decode(reader, reader.uint32())
                     );
                     break;
@@ -786,7 +802,7 @@ export const AccountInfoResponse = {
                     message.publicDid = reader.string();
                     break;
                 case 7:
-                    message.authorizedWebhooks.push(reader.string());
+                    message.authorizedWebhooks!.push(reader.string());
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -1056,16 +1072,16 @@ export const AccountEcosystem = {
         message: AccountEcosystem,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.id !== "") {
+        if (message.id !== undefined && message.id !== "") {
             writer.uint32(10).string(message.id);
         }
-        if (message.name !== "") {
+        if (message.name !== undefined && message.name !== "") {
             writer.uint32(18).string(message.name);
         }
-        if (message.description !== "") {
+        if (message.description !== undefined && message.description !== "") {
             writer.uint32(26).string(message.description);
         }
-        if (message.uri !== "") {
+        if (message.uri !== undefined && message.uri !== "") {
             writer.uint32(34).string(message.uri);
         }
         return writer;
@@ -1139,13 +1155,16 @@ export const LoginRequest = {
         message: LoginRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.email !== "") {
+        if (message.email !== undefined && message.email !== "") {
             writer.uint32(10).string(message.email);
         }
-        if (message.invitationCode !== "") {
+        if (
+            message.invitationCode !== undefined &&
+            message.invitationCode !== ""
+        ) {
             writer.uint32(18).string(message.invitationCode);
         }
-        if (message.ecosystemId !== "") {
+        if (message.ecosystemId !== undefined && message.ecosystemId !== "") {
             writer.uint32(26).string(message.ecosystemId);
         }
         return writer;
@@ -1301,10 +1320,13 @@ export const LoginConfirmRequest = {
         message: LoginConfirmRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.challenge.length !== 0) {
+        if (message.challenge !== undefined && message.challenge.length !== 0) {
             writer.uint32(10).bytes(message.challenge);
         }
-        if (message.confirmationCodeHashed.length !== 0) {
+        if (
+            message.confirmationCodeHashed !== undefined &&
+            message.confirmationCodeHashed.length !== 0
+        ) {
             writer.uint32(18).bytes(message.confirmationCodeHashed);
         }
         return writer;
@@ -1453,8 +1475,10 @@ export const AuthorizeWebhookRequest = {
         message: AuthorizeWebhookRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        for (const v of message.events) {
-            writer.uint32(10).string(v!);
+        if (message.events !== undefined && message.events.length !== 0) {
+            for (const v of message.events) {
+                writer.uint32(10).string(v!);
+            }
         }
         return writer;
     },
@@ -1471,7 +1495,7 @@ export const AuthorizeWebhookRequest = {
             const tag = reader.uint32();
             switch (tag >>> 3) {
                 case 1:
-                    message.events.push(reader.string());
+                    message.events!.push(reader.string());
                     break;
                 default:
                     reader.skipType(tag & 7);

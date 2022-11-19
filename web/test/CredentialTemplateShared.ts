@@ -79,7 +79,7 @@ export async function verifyCredential(
         .credential()
         .verifyProof(verifyProofRequest);
 
-    return verifyProofResponse.isValid;
+    return verifyProofResponse.isValid!;
 }
 
 export async function createCredentialTemplateTest(

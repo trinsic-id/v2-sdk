@@ -4,7 +4,7 @@ import _m0 from "protobufjs/minimal";
 /** Request to sign a JSON-LD Credential using public key tied to caller */
 export interface IssueRequest {
     /** Valid JSON-LD Credential document to be signed, in string form */
-    documentJson: string;
+    documentJson?: string;
 }
 
 /** Response to `IssueRequest` */
@@ -13,24 +13,24 @@ export interface IssueResponse {
      * Verifiable Credential document, signed with public key
      * tied to caller of `IssueRequest`
      */
-    signedDocumentJson: string;
+    signedDocumentJson?: string;
 }
 
 /** Request to create and sign a JSON-LD Verifiable Credential from a template using public key tied to caller */
 export interface IssueFromTemplateRequest {
     /** ID of template to use */
-    templateId: string;
+    templateId?: string;
     /**
      * JSON document string with keys corresponding to the fields of
      * the template referenced by `template_id`
      */
-    valuesJson: string;
+    valuesJson?: string;
     /**
      * Governance framework ID to use with issuance of this credential.
      * If specified, the issued credential will contain extended issuer
      * metadata with membership info for the given ecosystem governance framework (EGF)
      */
-    frameworkId: string;
+    frameworkId?: string;
 }
 
 /** Response to `IssueFromTemplateRequest` */
@@ -40,7 +40,7 @@ export interface IssueFromTemplateResponse {
      * constructed from the specified template and values; signed
      * with public key tied to caller of `IssueFromTemplateRequest`
      */
-    documentJson: string;
+    documentJson?: string;
 }
 
 /**
@@ -53,70 +53,70 @@ export interface CreateProofRequest {
      * revealed in the generated proof.
      * If unspecified, all fields in the document will be revealed
      */
-    revealDocumentJson: string;
+    revealDocumentJson?: string;
     /** ID of wallet item stored in a Trinsic cloud wallet */
-    itemId: string | undefined;
+    itemId?: string | undefined;
     /**
      * A valid JSON-LD Verifiable Credential document string
      * with an unbound signature. The proof will be derived from this
      * document directly. The document will not be stored in the wallet.
      */
-    documentJson: string | undefined;
+    documentJson?: string | undefined;
 }
 
 /** Response to `CreateProofRequest` */
 export interface CreateProofResponse {
     /** Valid JSON-LD proof for the specified credential */
-    proofDocumentJson: string;
+    proofDocumentJson?: string;
 }
 
 /** Request to verify a proof */
 export interface VerifyProofRequest {
     /** JSON-LD proof document string to verify */
-    proofDocumentJson: string;
+    proofDocumentJson?: string;
 }
 
 /** Response to `VerifyProofRequest` */
 export interface VerifyProofResponse {
     /** Whether all validations in `validation_results` passed */
-    isValid: boolean;
+    isValid?: boolean;
     /**
      * Use `validation_results` instead
      *
      * @deprecated
      */
-    validationMessages: string[];
+    validationMessages?: string[];
     /**
      * Results of each validation check performed,
      * such as schema conformance, revocation status, signature, etc.
      * Detailed results are provided for failed validations.
      */
-    validationResults: { [key: string]: ValidationMessage };
+    validationResults?: { [key: string]: ValidationMessage };
 }
 
 export interface VerifyProofResponse_ValidationResultsEntry {
     key: string;
-    value: ValidationMessage | undefined;
+    value?: ValidationMessage;
 }
 
 /** Result of a validation check on a proof */
 export interface ValidationMessage {
     /** Whether this validation check passed */
-    isValid: boolean;
+    isValid?: boolean;
     /** If validation failed, contains messages explaining why */
-    messages: string[];
+    messages?: string[];
 }
 
 /** Request to send a document to another user's wallet */
 export interface SendRequest {
     /** Email address of user to send item to */
-    email: string | undefined;
+    email?: string | undefined;
     /** DID of recipient (presently unsupported) */
-    didUri: string | undefined;
+    didUri?: string | undefined;
     /** DIDComm out-of-band invitation JSON (presently unsupported) */
-    didcommInvitationJson: string | undefined;
+    didcommInvitationJson?: string | undefined;
     /** JSON document to send to recipient */
-    documentJson: string;
+    documentJson?: string;
 }
 
 /** Response to `SendRequest` */
@@ -125,9 +125,9 @@ export interface SendResponse {}
 /** Request to update a credential's revocation status */
 export interface UpdateStatusRequest {
     /** Credential Status ID to update. This is not the same as the credential's ID. */
-    credentialStatusId: string;
+    credentialStatusId?: string;
     /** New revocation status of credential */
-    revoked: boolean;
+    revoked?: boolean;
 }
 
 /** Response to `UpdateStatusRequest` */
@@ -136,13 +136,13 @@ export interface UpdateStatusResponse {}
 /** Request to check a credential's revocation status */
 export interface CheckStatusRequest {
     /** Credential Status ID to check. This is not the same as the credential's ID. */
-    credentialStatusId: string;
+    credentialStatusId?: string;
 }
 
 /** Response to `CheckStatusRequest` */
 export interface CheckStatusResponse {
     /** The credential's revocation status */
-    revoked: boolean;
+    revoked?: boolean;
 }
 
 function createBaseIssueRequest(): IssueRequest {
@@ -154,7 +154,7 @@ export const IssueRequest = {
         message: IssueRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.documentJson !== "") {
+        if (message.documentJson !== undefined && message.documentJson !== "") {
             writer.uint32(10).string(message.documentJson);
         }
         return writer;
@@ -210,7 +210,10 @@ export const IssueResponse = {
         message: IssueResponse,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.signedDocumentJson !== "") {
+        if (
+            message.signedDocumentJson !== undefined &&
+            message.signedDocumentJson !== ""
+        ) {
             writer.uint32(10).string(message.signedDocumentJson);
         }
         return writer;
@@ -266,13 +269,13 @@ export const IssueFromTemplateRequest = {
         message: IssueFromTemplateRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.templateId !== "") {
+        if (message.templateId !== undefined && message.templateId !== "") {
             writer.uint32(10).string(message.templateId);
         }
-        if (message.valuesJson !== "") {
+        if (message.valuesJson !== undefined && message.valuesJson !== "") {
             writer.uint32(18).string(message.valuesJson);
         }
-        if (message.frameworkId !== "") {
+        if (message.frameworkId !== undefined && message.frameworkId !== "") {
             writer.uint32(26).string(message.frameworkId);
         }
         return writer;
@@ -351,7 +354,7 @@ export const IssueFromTemplateResponse = {
         message: IssueFromTemplateResponse,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.documentJson !== "") {
+        if (message.documentJson !== undefined && message.documentJson !== "") {
             writer.uint32(10).string(message.documentJson);
         }
         return writer;
@@ -416,7 +419,10 @@ export const CreateProofRequest = {
         message: CreateProofRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.revealDocumentJson !== "") {
+        if (
+            message.revealDocumentJson !== undefined &&
+            message.revealDocumentJson !== ""
+        ) {
             writer.uint32(10).string(message.revealDocumentJson);
         }
         if (message.itemId !== undefined) {
@@ -496,7 +502,10 @@ export const CreateProofResponse = {
         message: CreateProofResponse,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.proofDocumentJson !== "") {
+        if (
+            message.proofDocumentJson !== undefined &&
+            message.proofDocumentJson !== ""
+        ) {
             writer.uint32(10).string(message.proofDocumentJson);
         }
         return writer;
@@ -555,7 +564,10 @@ export const VerifyProofRequest = {
         message: VerifyProofRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.proofDocumentJson !== "") {
+        if (
+            message.proofDocumentJson !== undefined &&
+            message.proofDocumentJson !== ""
+        ) {
             writer.uint32(10).string(message.proofDocumentJson);
         }
         return writer;
@@ -617,15 +629,22 @@ export const VerifyProofResponse = {
         if (message.isValid === true) {
             writer.uint32(8).bool(message.isValid);
         }
-        for (const v of message.validationMessages) {
-            writer.uint32(18).string(v!);
+        if (
+            message.validationMessages !== undefined &&
+            message.validationMessages.length !== 0
+        ) {
+            for (const v of message.validationMessages) {
+                writer.uint32(18).string(v!);
+            }
         }
-        Object.entries(message.validationResults).forEach(([key, value]) => {
-            VerifyProofResponse_ValidationResultsEntry.encode(
-                { key: key as any, value },
-                writer.uint32(26).fork()
-            ).ldelim();
-        });
+        Object.entries(message.validationResults || {}).forEach(
+            ([key, value]) => {
+                VerifyProofResponse_ValidationResultsEntry.encode(
+                    { key: key as any, value },
+                    writer.uint32(26).fork()
+                ).ldelim();
+            }
+        );
         return writer;
     },
 
@@ -644,7 +663,7 @@ export const VerifyProofResponse = {
                     message.isValid = reader.bool();
                     break;
                 case 2:
-                    message.validationMessages.push(reader.string());
+                    message.validationMessages!.push(reader.string());
                     break;
                 case 3:
                     const entry3 =
@@ -653,7 +672,7 @@ export const VerifyProofResponse = {
                             reader.uint32()
                         );
                     if (entry3.value !== undefined) {
-                        message.validationResults[entry3.key] = entry3.value;
+                        message.validationResults![entry3.key] = entry3.value;
                     }
                     break;
                 default:
@@ -808,8 +827,10 @@ export const ValidationMessage = {
         if (message.isValid === true) {
             writer.uint32(8).bool(message.isValid);
         }
-        for (const v of message.messages) {
-            writer.uint32(18).string(v!);
+        if (message.messages !== undefined && message.messages.length !== 0) {
+            for (const v of message.messages) {
+                writer.uint32(18).string(v!);
+            }
         }
         return writer;
     },
@@ -826,7 +847,7 @@ export const ValidationMessage = {
                     message.isValid = reader.bool();
                     break;
                 case 2:
-                    message.messages.push(reader.string());
+                    message.messages!.push(reader.string());
                     break;
                 default:
                     reader.skipType(tag & 7);
@@ -887,7 +908,7 @@ export const SendRequest = {
         if (message.didcommInvitationJson !== undefined) {
             writer.uint32(26).string(message.didcommInvitationJson);
         }
-        if (message.documentJson !== "") {
+        if (message.documentJson !== undefined && message.documentJson !== "") {
             writer.uint32(802).string(message.documentJson);
         }
         return writer;
@@ -1008,7 +1029,10 @@ export const UpdateStatusRequest = {
         message: UpdateStatusRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.credentialStatusId !== "") {
+        if (
+            message.credentialStatusId !== undefined &&
+            message.credentialStatusId !== ""
+        ) {
             writer.uint32(10).string(message.credentialStatusId);
         }
         if (message.revoked === true) {
@@ -1122,7 +1146,10 @@ export const CheckStatusRequest = {
         message: CheckStatusRequest,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.credentialStatusId !== "") {
+        if (
+            message.credentialStatusId !== undefined &&
+            message.credentialStatusId !== ""
+        ) {
             writer.uint32(10).string(message.credentialStatusId);
         }
         return writer;

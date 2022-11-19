@@ -86,73 +86,73 @@ export function eventTypeToJSON(object: EventType): string {
 /** Event */
 export interface Event {
     /** UUID of event */
-    id: string;
+    id?: string;
     /** Type of event */
-    type: EventType;
+    type?: EventType;
     /** Timestamp event occurred, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`) */
-    timestamp: string;
+    timestamp?: string;
     /** Event-specific payload, as an encoded protobuf message */
-    data: Uint8Array;
+    data?: Uint8Array;
 }
 
 export interface APICall {
-    source: string;
-    request: Uint8Array;
-    response: Uint8Array;
+    source?: string;
+    request?: Uint8Array;
+    response?: Uint8Array;
 }
 
 /** Webhook test event */
 export interface Ping {
     /** UUID of this ping */
-    id: string;
+    id?: string;
     /** UUID of the webhook receiving the ping */
-    webhookId: string;
+    webhookId?: string;
     /** Timestamp ping was requested, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`) */
-    timestamp: string;
+    timestamp?: string;
     /** Arbitrary message specified when ping was requested */
-    message: string;
+    message?: string;
 }
 
 /** Entity Governance Framework created and attached to ecosystem */
 export interface EGFCreated {
     /** UUID of the governance framework */
-    id: string;
+    id?: string;
     /** UUID of the ecosystem that owns this EGF */
-    ecosystemId: string;
+    ecosystemId?: string;
     /** Trust registry associated with this EGF */
-    trustRegistry: string;
+    trustRegistry?: string;
     /** Wallet ID of the authority for this EGF */
-    governingAuthority: string;
+    governingAuthority?: string;
     /** Type of EGF */
-    type: string;
+    type?: string;
     /** User-friendly name for the EGF */
-    name: string;
+    name?: string;
     /** Description of the EGF */
-    description: string;
+    description?: string;
     /** URI for the EGF */
-    governanceFramework: string;
+    governanceFramework?: string;
 }
 
 /** Template created in ecosystem */
 export interface TemplateCreated {
     /** UUID of the template */
-    id: string;
+    id?: string;
     /** UUID of the ecosystem that owns this template */
-    ecosystemId: string;
+    ecosystemId?: string;
     /** Template name */
-    name: string;
+    name?: string;
     /** Template type */
-    type: string;
+    type?: string;
     /** WalletID that created the template */
-    createdBy: string;
+    createdBy?: string;
 }
 
 /** Item inserted into wallet */
 export interface ItemReceived {
     /** UUID of the new item */
-    id: string;
+    id?: string;
     /** Timestamp when the item was received, in ISO 8601 format (ex. `2022-07-07T08:09:10.11Z`) */
-    received: string;
+    received?: string;
 }
 
 function createBaseEvent(): Event {
@@ -164,16 +164,16 @@ export const Event = {
         message: Event,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.id !== "") {
+        if (message.id !== undefined && message.id !== "") {
             writer.uint32(10).string(message.id);
         }
-        if (message.type !== 0) {
+        if (message.type !== undefined && message.type !== 0) {
             writer.uint32(16).int32(message.type);
         }
-        if (message.timestamp !== "") {
+        if (message.timestamp !== undefined && message.timestamp !== "") {
             writer.uint32(26).string(message.timestamp);
         }
-        if (message.data.length !== 0) {
+        if (message.data !== undefined && message.data.length !== 0) {
             writer.uint32(34).bytes(message.data);
         }
         return writer;
@@ -254,13 +254,13 @@ export const APICall = {
         message: APICall,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.source !== "") {
+        if (message.source !== undefined && message.source !== "") {
             writer.uint32(10).string(message.source);
         }
-        if (message.request.length !== 0) {
+        if (message.request !== undefined && message.request.length !== 0) {
             writer.uint32(18).bytes(message.request);
         }
-        if (message.response.length !== 0) {
+        if (message.response !== undefined && message.response.length !== 0) {
             writer.uint32(26).bytes(message.response);
         }
         return writer;
@@ -339,16 +339,16 @@ export const Ping = {
         message: Ping,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.id !== "") {
+        if (message.id !== undefined && message.id !== "") {
             writer.uint32(10).string(message.id);
         }
-        if (message.webhookId !== "") {
+        if (message.webhookId !== undefined && message.webhookId !== "") {
             writer.uint32(18).string(message.webhookId);
         }
-        if (message.timestamp !== "") {
+        if (message.timestamp !== undefined && message.timestamp !== "") {
             writer.uint32(26).string(message.timestamp);
         }
-        if (message.message !== "") {
+        if (message.message !== undefined && message.message !== "") {
             writer.uint32(34).string(message.message);
         }
         return writer;
@@ -428,28 +428,37 @@ export const EGFCreated = {
         message: EGFCreated,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.id !== "") {
+        if (message.id !== undefined && message.id !== "") {
             writer.uint32(10).string(message.id);
         }
-        if (message.ecosystemId !== "") {
+        if (message.ecosystemId !== undefined && message.ecosystemId !== "") {
             writer.uint32(18).string(message.ecosystemId);
         }
-        if (message.trustRegistry !== "") {
+        if (
+            message.trustRegistry !== undefined &&
+            message.trustRegistry !== ""
+        ) {
             writer.uint32(26).string(message.trustRegistry);
         }
-        if (message.governingAuthority !== "") {
+        if (
+            message.governingAuthority !== undefined &&
+            message.governingAuthority !== ""
+        ) {
             writer.uint32(34).string(message.governingAuthority);
         }
-        if (message.type !== "") {
+        if (message.type !== undefined && message.type !== "") {
             writer.uint32(42).string(message.type);
         }
-        if (message.name !== "") {
+        if (message.name !== undefined && message.name !== "") {
             writer.uint32(50).string(message.name);
         }
-        if (message.description !== "") {
+        if (message.description !== undefined && message.description !== "") {
             writer.uint32(58).string(message.description);
         }
-        if (message.governanceFramework !== "") {
+        if (
+            message.governanceFramework !== undefined &&
+            message.governanceFramework !== ""
+        ) {
             writer.uint32(66).string(message.governanceFramework);
         }
         return writer;
@@ -559,19 +568,19 @@ export const TemplateCreated = {
         message: TemplateCreated,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.id !== "") {
+        if (message.id !== undefined && message.id !== "") {
             writer.uint32(10).string(message.id);
         }
-        if (message.ecosystemId !== "") {
+        if (message.ecosystemId !== undefined && message.ecosystemId !== "") {
             writer.uint32(18).string(message.ecosystemId);
         }
-        if (message.name !== "") {
+        if (message.name !== undefined && message.name !== "") {
             writer.uint32(26).string(message.name);
         }
-        if (message.type !== "") {
+        if (message.type !== undefined && message.type !== "") {
             writer.uint32(34).string(message.type);
         }
-        if (message.createdBy !== "") {
+        if (message.createdBy !== undefined && message.createdBy !== "") {
             writer.uint32(42).string(message.createdBy);
         }
         return writer;
@@ -651,10 +660,10 @@ export const ItemReceived = {
         message: ItemReceived,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.id !== "") {
+        if (message.id !== undefined && message.id !== "") {
             writer.uint32(10).string(message.id);
         }
-        if (message.received !== "") {
+        if (message.received !== undefined && message.received !== "") {
             writer.uint32(18).string(message.received);
         }
         return writer;

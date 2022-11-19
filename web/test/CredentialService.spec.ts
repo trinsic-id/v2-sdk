@@ -30,7 +30,7 @@ describe("CredentialService Unit Tests", () => {
         // }
 
         expect(issueResponse?.signedDocumentJson).not.toBeNull();
-        const credential = JSON.parse(issueResponse?.signedDocumentJson);
+        const credential = JSON.parse(issueResponse.signedDocumentJson!);
 
         expect(credential).not.toBeNull();
         expect(credential.proof).not.toBeNull();

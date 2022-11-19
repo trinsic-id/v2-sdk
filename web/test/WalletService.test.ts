@@ -94,7 +94,7 @@ describe("WalletService Unit Tests", () => {
         // }
 
         expect(
-            verifyResponse.validationResults["SignatureVerification"].isValid
+            verifyResponse.validationResults!["SignatureVerification"].isValid
         ).toBeTruthy();
     });
 
@@ -135,7 +135,7 @@ describe("WalletService Unit Tests", () => {
                 valuesJson: values,
             })
         );
-        let jsonDocument = JSON.parse(issueResponse.documentJson);
+        let jsonDocument = JSON.parse(issueResponse.documentJson!);
 
         expect(jsonDocument).not.toBeNull();
         expect(jsonDocument.hasOwnProperty("id")).toBeTruthy();

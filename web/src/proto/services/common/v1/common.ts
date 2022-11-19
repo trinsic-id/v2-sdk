@@ -98,9 +98,9 @@ export function supportedDidMethodToJSON(object: SupportedDidMethod): string {
 /** Nonce used to generate an oberon proof */
 export interface Nonce {
     /** UTC unix millisecond timestamp the request was made */
-    timestamp: number;
+    timestamp?: number;
     /** blake3256 hash of the request body */
-    requestHash: Uint8Array;
+    requestHash?: Uint8Array;
 }
 
 function createBaseNonce(): Nonce {
@@ -112,10 +112,13 @@ export const Nonce = {
         message: Nonce,
         writer: _m0.Writer = _m0.Writer.create()
     ): _m0.Writer {
-        if (message.timestamp !== 0) {
+        if (message.timestamp !== undefined && message.timestamp !== 0) {
             writer.uint32(8).int64(message.timestamp);
         }
-        if (message.requestHash.length !== 0) {
+        if (
+            message.requestHash !== undefined &&
+            message.requestHash.length !== 0
+        ) {
             writer.uint32(18).bytes(message.requestHash);
         }
         return writer;
