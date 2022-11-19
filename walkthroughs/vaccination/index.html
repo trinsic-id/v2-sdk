@@ -2324,6 +2324,8 @@ trinsic account login --ecosystem <span class="o">{</span>ECOSYSTEM_ID<span clas
 trinsic vc issue-from-template --template-id <span class="o">{</span>TEMPLATE_ID<span class="o">}</span> --values-file values.json --out credential.json
 </code></pre></div>
 <p>The output of this command will contain a signed JSON document, which has been saved to <code>credential.json</code>.</p>
+<p>Note that TEMPLATE_ID refers to the "Schema" URI of the template you created earlier called "VaccinationCertificate". 
+More specifically, it's the property 'schema_uri' in the JSON returned by the <code>trinsic template create...</code> command.</p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// Prepare the credential values JSON document</span><span class="w"></span>
