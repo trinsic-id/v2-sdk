@@ -7,6 +7,7 @@ import {
     InsertItemRequest,
     IssueFromTemplateRequest,
     IssueFromTemplateResponse,
+    SearchCredentialTemplatesRequest,
     TemplateField,
     TrinsicService,
     VerifyProofRequest,
@@ -129,4 +130,11 @@ export async function issueCredentialFromTemplate(
     // }
 
     return response;
+}
+
+export async function searchTemplate() {
+    // searchCredentialTemplate() {
+    let searchTemplateResponse = await trinsic.template().search(SearchCredentialTemplatesRequest.fromPartial({query: "Select * from c"}));
+    // }
+    return searchTemplateResponse;
 }
