@@ -7,7 +7,7 @@ import {
     InsertItemRequest,
     IssueFromTemplateRequest,
     IssueFromTemplateResponse,
-    SearchCredentialTemplatesReques,
+    SearchCredentialTemplatesRequest,
     TemplateField,
     TrinsicService,
     VerifyProofRequest,
