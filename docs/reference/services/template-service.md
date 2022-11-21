@@ -160,6 +160,13 @@ If no `query` is specified, this call by default returns the first 100 templates
             --query "SELECT * FROM c"
         ```
 
+    === "TypeScript"
+        <!--codeinclude-->
+        ```typescript
+        [CreateTemplate](../../../web/test/CredentialTemplateShared.ts) inside_block:searchCredentialTemplate
+        ```
+        <!--/codeinclude-->
+
     === "C#"
         <!--codeinclude-->
         ```csharp
