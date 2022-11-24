@@ -35,11 +35,16 @@ Configure your OIDC library with the following parameters:
 | `scope`                         | `openid`                                                                                                                                                                   |
 | `client_id`                     | Any string which uniquely represents your client application                                                                                                               |
 | `redirect_uri`                  | The URI your user should be redirected to once they have completed (or canceled) the flow                                                                                  |
+| `nonce`                         | *(Optional)* Random nonce value that will be used to bind the generated presentation to the issued token. If not specified, one will be randomly generated. Use this to prevent presentation replays.      |
 | **Trinsic-Specific Parameters** |
 | `trinsic:ecosystem`             | ID of ecosystem user wallet resides in                                                                                                                                     |
 | `trinsic:schema`                | *(Optional)* Comma-separated listed of Schema URLs. Only credentials which match one of these schemas will be returned.                                                    |
 | `trinsic:issuer`                | *(Optional)* Comma-separated list of Issuer DIDs. Only credentials issued by one of these issuers will be returned.                                                        |
 | `trinsic:egf`                   | *(Optional)* Comma-separated list of [Entity Governance Framework](/learn/concepts/trust-registries) IDs. Only credentials bound to one of these EGF IDs will be returned. |
+
+### Presentation Replays and ID Tokens
+
+In order to prevent verifiable presentation replays, always specify the `nonce` parameter in the initial call to the authorization endpoint. This will ensure that the generated presentation and the ID token match the current request.
 
 ### Response Data
 
@@ -82,22 +87,24 @@ You will receive a JSON object of the following form:
 ```
 
 !!! info "Credential Format"
-    Note that the above data has been modified for brevity. 
+    Note that the above data has been modified for brevity.
 
     The `@context` and `type` arrays will contain additional entries which are specific to the credential.
 
 
 ### Verify the Received Proof
 
-`vp_token` is a Verifiable Proof; before making use of its data, you must verify it. 
+`vp_token` is a Verifiable Proof; before making use of its data, you must verify it.
 
 This proof can be verified with any library that supports VC verifications for BBS+ signatures. It can also be verified using Trinsic's SDK; this is as simple as [passing the proof to the VerifyProof call](../../services/credential-service/#verify-proof).
+
+If you specified a `nonce` in the authorization request, always verify that the `nonce` claim in the JWT ID token matches the similarly named value in the `_vp_token` document. You may find the nonce in the `_vp_token.proof.nonce` path in the JSON structure. Note that the value in this proof may be specified in base64 format, so you may need to reformat your nonce before comparing. If you specified the nonce as base64 in the request, the two values should match with direct string comparison.
 
 
 !!! warning "Always Verify"
     It may be tempting to simply take the data in `vp_token` and act upon it without first verifying the proof.
 
-    **Always verify the proof** before making use of its data. 
+    **Always verify the proof** before making use of its data.
 
     Without verification, the received proof is of no more value than an unsubstantiated claim made by your user.
 
