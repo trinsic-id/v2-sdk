@@ -299,13 +299,15 @@ class Services::Verifiablecredentials::V1::CreateProofRequest
     params(
       reveal_document_json: T.nilable(String),
       item_id: T.nilable(String),
-      document_json: T.nilable(String)
+      document_json: T.nilable(String),
+      nonce: T.nilable(String)
     ).void
   end
   def initialize(
     reveal_document_json: "",
     item_id: "",
-    document_json: ""
+    document_json: "",
+    nonce: ""
   )
   end
 
@@ -343,6 +345,18 @@ class Services::Verifiablecredentials::V1::CreateProofRequest
 
   sig { void }
   def clear_document_json
+  end
+
+  sig { returns(String) }
+  def nonce
+  end
+
+  sig { params(value: String).void }
+  def nonce=(value)
+  end
+
+  sig { void }
+  def clear_nonce
   end
 
   sig { returns(T.nilable(Symbol)) }
@@ -674,6 +688,7 @@ class Services::Verifiablecredentials::V1::SendRequest
       email: T.nilable(String),
       did_uri: T.nilable(String),
       didcomm_invitation_json: T.nilable(String),
+      send_notification: T.nilable(T::Boolean),
       document_json: T.nilable(String)
     ).void
   end
@@ -681,6 +696,7 @@ class Services::Verifiablecredentials::V1::SendRequest
     email: "",
     did_uri: "",
     didcomm_invitation_json: "",
+    send_notification: false,
     document_json: ""
   )
   end
@@ -719,6 +735,18 @@ class Services::Verifiablecredentials::V1::SendRequest
 
   sig { void }
   def clear_didcomm_invitation_json
+  end
+
+  sig { returns(T::Boolean) }
+  def send_notification
+  end
+
+  sig { params(value: T::Boolean).void }
+  def send_notification=(value)
+  end
+
+  sig { void }
+  def clear_send_notification
   end
 
   sig { returns(String) }

@@ -357,6 +357,12 @@ class CreateProofRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'documentJson')
+    ..a<$core.List<$core.int>>(
+        10,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'nonce',
+        $pb.PbFieldType.OY)
     ..hasRequiredFields = false;
 
   CreateProofRequest._() : super();
@@ -364,6 +370,7 @@ class CreateProofRequest extends $pb.GeneratedMessage {
     $core.String? revealDocumentJson,
     $core.String? itemId,
     $core.String? documentJson,
+    $core.List<$core.int>? nonce,
   }) {
     final _result = create();
     if (revealDocumentJson != null) {
@@ -374,6 +381,9 @@ class CreateProofRequest extends $pb.GeneratedMessage {
     }
     if (documentJson != null) {
       _result.documentJson = documentJson;
+    }
+    if (nonce != null) {
+      _result.nonce = nonce;
     }
     return _result;
   }
@@ -443,6 +453,18 @@ class CreateProofRequest extends $pb.GeneratedMessage {
   $core.bool hasDocumentJson() => $_has(2);
   @$pb.TagNumber(3)
   void clearDocumentJson() => clearField(3);
+
+  @$pb.TagNumber(10)
+  $core.List<$core.int> get nonce => $_getN(3);
+  @$pb.TagNumber(10)
+  set nonce($core.List<$core.int> v) {
+    $_setBytes(3, v);
+  }
+
+  @$pb.TagNumber(10)
+  $core.bool hasNonce() => $_has(3);
+  @$pb.TagNumber(10)
+  void clearNonce() => clearField(10);
 }
 
 class CreateProofResponse extends $pb.GeneratedMessage {
@@ -793,6 +815,11 @@ class SendRequest extends $pb.GeneratedMessage {
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
             ? ''
             : 'didcommInvitationJson')
+    ..aOB(
+        4,
+        const $core.bool.fromEnvironment('protobuf.omit_field_names')
+            ? ''
+            : 'sendNotification')
     ..aOS(
         100,
         const $core.bool.fromEnvironment('protobuf.omit_field_names')
@@ -803,8 +830,10 @@ class SendRequest extends $pb.GeneratedMessage {
   SendRequest._() : super();
   factory SendRequest({
     $core.String? email,
-    $core.String? didUri,
-    $core.String? didcommInvitationJson,
+    @$core.Deprecated('This field is deprecated.') $core.String? didUri,
+    @$core.Deprecated('This field is deprecated.')
+        $core.String? didcommInvitationJson,
+    $core.bool? sendNotification,
     $core.String? documentJson,
   }) {
     final _result = create();
@@ -812,10 +841,15 @@ class SendRequest extends $pb.GeneratedMessage {
       _result.email = email;
     }
     if (didUri != null) {
+      // ignore: deprecated_member_use_from_same_package
       _result.didUri = didUri;
     }
     if (didcommInvitationJson != null) {
+      // ignore: deprecated_member_use_from_same_package
       _result.didcommInvitationJson = didcommInvitationJson;
+    }
+    if (sendNotification != null) {
+      _result.sendNotification = sendNotification;
     }
     if (documentJson != null) {
       _result.documentJson = documentJson;
@@ -864,39 +898,59 @@ class SendRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   void clearEmail() => clearField(1);
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(2)
   $core.String get didUri => $_getSZ(1);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(2)
   set didUri($core.String v) {
     $_setString(1, v);
   }
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(2)
   $core.bool hasDidUri() => $_has(1);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(2)
   void clearDidUri() => clearField(2);
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(3)
   $core.String get didcommInvitationJson => $_getSZ(2);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(3)
   set didcommInvitationJson($core.String v) {
     $_setString(2, v);
   }
 
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(3)
   $core.bool hasDidcommInvitationJson() => $_has(2);
+  @$core.Deprecated('This field is deprecated.')
   @$pb.TagNumber(3)
   void clearDidcommInvitationJson() => clearField(3);
 
+  @$pb.TagNumber(4)
+  $core.bool get sendNotification => $_getBF(3);
+  @$pb.TagNumber(4)
+  set sendNotification($core.bool v) {
+    $_setBool(3, v);
+  }
+
+  @$pb.TagNumber(4)
+  $core.bool hasSendNotification() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearSendNotification() => clearField(4);
+
   @$pb.TagNumber(100)
-  $core.String get documentJson => $_getSZ(3);
+  $core.String get documentJson => $_getSZ(4);
   @$pb.TagNumber(100)
   set documentJson($core.String v) {
-    $_setString(3, v);
+    $_setString(4, v);
   }
 
   @$pb.TagNumber(100)
-  $core.bool hasDocumentJson() => $_has(3);
+  $core.bool hasDocumentJson() => $_has(4);
   @$pb.TagNumber(100)
   void clearDocumentJson() => clearField(100);
 }
