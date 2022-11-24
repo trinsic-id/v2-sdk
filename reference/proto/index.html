@@ -4920,6 +4920,11 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 <td><a href="/reference/proto#string">string</a></td>
 <td>A valid JSON-LD Verifiable Credential document string with an unbound signature. The proof will be derived from this document directly. The document will not be stored in the wallet.</td>
 </tr>
+<tr>
+<td>nonce</td>
+<td><a href="/reference/proto#bytes">bytes</a></td>
+<td>Nonce value used to derive the proof. If not specified, a random nonce will be generated. This value may be represented in base64 format in the proof model.</td>
+</tr>
 </tbody>
 </table>
 <p><a name="services-verifiablecredentials-v1-CreateProofResponse"></a></p>
@@ -5047,12 +5052,17 @@ Either <code>item_id</code> or <code>document_json</code> may be provided, not b
 <tr>
 <td>did_uri</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>DID of recipient (presently unsupported)</td>
+<td><strong>Deprecated.</strong> DID of recipient (presently unsupported)</td>
 </tr>
 <tr>
 <td>didcomm_invitation_json</td>
 <td><a href="/reference/proto#string">string</a></td>
-<td>DIDComm out-of-band invitation JSON (presently unsupported)</td>
+<td><strong>Deprecated.</strong> DIDComm out-of-band invitation JSON (presently unsupported)</td>
+</tr>
+<tr>
+<td>send_notification</td>
+<td><a href="/reference/proto#bool">bool</a></td>
+<td>Send email notification that credential has been sent to a wallet</td>
 </tr>
 <tr>
 <td>document_json</td>
@@ -7632,7 +7642,7 @@ like email, SMS, etc.</p>
           
             <a href="mailto:josh@trinsic.id">Joshua Coffey</a>, 
             <a href="mailto:polygonguru@gmail.com">Scott Phillips</a>, 
-            <a href="mailto:not.committed.yet">Not Committed Yet</a>
+            <a href="mailto:115157536+mewmba@users.noreply.github.com">Mewmba</a>
         </nav>
       </span>
     
