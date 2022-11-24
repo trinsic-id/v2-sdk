@@ -85,7 +85,7 @@ class CreateProofRequest(betterproto.Message):
     reveal_document_json: str = betterproto.string_field(1)
     """
     A valid JSON-LD frame describing which fields should be revealed in the
-    generated proof.  If unspecified, all fields in the document will be
+    generated proof. If unspecified, all fields in the document will be
     revealed
     """
 
@@ -94,9 +94,16 @@ class CreateProofRequest(betterproto.Message):
 
     document_json: str = betterproto.string_field(3, group="proof")
     """
-    A valid JSON-LD Verifiable Credential document string  with an unbound
+    A valid JSON-LD Verifiable Credential document string with an unbound
     signature. The proof will be derived from this document directly. The
     document will not be stored in the wallet.
+    """
+
+    nonce: bytes = betterproto.bytes_field(10)
+    """
+    Nonce value used to derive the proof. If not specified, a random nonce will
+    be generated. This value may be represented in base64 format in the proof
+    model.
     """
 
 
@@ -130,7 +137,7 @@ class VerifyProofResponse(betterproto.Message):
         3, betterproto.TYPE_STRING, betterproto.TYPE_MESSAGE
     )
     """
-    Results of each validation check performed,  such as schema conformance,
+    Results of each validation check performed, such as schema conformance,
     revocation status, signature, etc. Detailed results are provided for failed
     validations.
     """
@@ -168,8 +175,20 @@ class SendRequest(betterproto.Message):
     didcomm_invitation_json: str = betterproto.string_field(3, group="delivery_method")
     """DIDComm out-of-band invitation JSON (presently unsupported)"""
 
+    send_notification: bool = betterproto.bool_field(4)
+    """Send email notification that credential has been sent to a wallet"""
+
     document_json: str = betterproto.string_field(100)
     """JSON document to send to recipient"""
+
+    def __post_init__(self) -> None:
+        super().__post_init__()
+        if self.is_set("did_uri"):
+            warnings.warn("SendRequest.did_uri is deprecated", DeprecationWarning)
+        if self.is_set("didcomm_invitation_json"):
+            warnings.warn(
+                "SendRequest.didcomm_invitation_json is deprecated", DeprecationWarning
+            )
 
 
 @dataclass(eq=False, repr=False)

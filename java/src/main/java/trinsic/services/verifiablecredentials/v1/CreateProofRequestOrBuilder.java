@@ -117,5 +117,19 @@ public interface CreateProofRequestOrBuilder
    */
   com.google.protobuf.ByteString getDocumentJsonBytes();
 
+  /**
+   *
+   *
+   * <pre>
+   * Nonce value used to derive the proof. If not specified, a random nonce will be generated.
+   * This value may be represented in base64 format in the proof model.
+   * </pre>
+   *
+   * <code>bytes nonce = 10 [(.services.options.optional) = true];</code>
+   *
+   * @return The nonce.
+   */
+  com.google.protobuf.ByteString getNonce();
+
   public trinsic.services.verifiablecredentials.v1.CreateProofRequest.ProofCase getProofCase();
 }

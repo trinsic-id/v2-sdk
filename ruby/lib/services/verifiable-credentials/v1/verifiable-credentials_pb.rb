@@ -23,6 +23,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_message "services.verifiablecredentials.v1.CreateProofRequest" do
       optional :reveal_document_json, :string, 1
+      optional :nonce, :bytes, 10
       oneof :proof do
         optional :item_id, :string, 2
         optional :document_json, :string, 3
@@ -44,6 +45,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       repeated :messages, :string, 2
     end
     add_message "services.verifiablecredentials.v1.SendRequest" do
+      optional :send_notification, :bool, 4
       optional :document_json, :string, 100
       oneof :delivery_method do
         optional :email, :string, 1
