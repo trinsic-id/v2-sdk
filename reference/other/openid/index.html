@@ -1630,6 +1630,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#presentation-replays-and-id-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Presentation Replays and ID Tokens
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#response-data" class="md-nav__link">
     <span class="md-ellipsis">
       Response Data
@@ -1919,6 +1928,10 @@
 <td>The URI your user should be redirected to once they have completed (or canceled) the flow</td>
 </tr>
 <tr>
+<td><code>nonce</code></td>
+<td><em>(Optional)</em> Random nonce value that will be used to bind the generated presentation to the issued token. If not specified, one will be randomly generated. Use this to prevent presentation replays.</td>
+</tr>
+<tr>
 <td><strong>Trinsic-Specific Parameters</strong></td>
 <td></td>
 </tr>
@@ -1940,6 +1953,8 @@
 </tr>
 </tbody>
 </table>
+<h3 id="presentation-replays-and-id-tokens">Presentation Replays and ID Tokens<a class="headerlink" href="#presentation-replays-and-id-tokens" title="Permanent link">&para;</a></h3>
+<p>In order to prevent verifiable presentation replays, always specify the <code>nonce</code> parameter in the initial call to the authorization endpoint. This will ensure that the generated presentation and the ID token match the current request.</p>
 <h3 id="response-data">Response Data<a class="headerlink" href="#response-data" title="Permanent link">&para;</a></h3>
 <p>Once the user has returned to your redirect URL, exchange the authorization code (added to your redirect URI as a query parameter named <code>code</code>) for an identity token using your OIDC library.</p>
 <p>You will receive a JSON object of the following form:</p>
@@ -1977,16 +1992,17 @@
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Credential Format</p>
-<p>Note that the above data has been modified for brevity. </p>
+<p>Note that the above data has been modified for brevity.</p>
 <p>The <code>@context</code> and <code>type</code> arrays will contain additional entries which are specific to the credential.</p>
 </div>
 <h3 id="verify-the-received-proof">Verify the Received Proof<a class="headerlink" href="#verify-the-received-proof" title="Permanent link">&para;</a></h3>
-<p><code>vp_token</code> is a Verifiable Proof; before making use of its data, you must verify it. </p>
+<p><code>vp_token</code> is a Verifiable Proof; before making use of its data, you must verify it.</p>
 <p>This proof can be verified with any library that supports VC verifications for BBS+ signatures. It can also be verified using Trinsic's SDK; this is as simple as <a href="../../services/credential-service/#verify-proof">passing the proof to the VerifyProof call</a>.</p>
+<p>If you specified a <code>nonce</code> in the authorization request, always verify that the <code>nonce</code> claim in the JWT ID token matches the similarly named value in the <code>_vp_token</code> document. You may find the nonce in the <code>_vp_token.proof.nonce</code> path in the JSON structure. Note that the value in this proof may be specified in base64 format, so you may need to reformat your nonce before comparing. If you specified the nonce as base64 in the request, the two values should match with direct string comparison.</p>
 <div class="admonition warning">
 <p class="admonition-title">Always Verify</p>
 <p>It may be tempting to simply take the data in <code>vp_token</code> and act upon it without first verifying the proof.</p>
-<p><strong>Always verify the proof</strong> before making use of its data. </p>
+<p><strong>Always verify the proof</strong> before making use of its data.</p>
 <p>Without verification, the received proof is of no more value than an unsubstantiated claim made by your user.</p>
 </div>
 <h2 id="sample">Sample<a class="headerlink" href="#sample" title="Permanent link">&para;</a></h2>
