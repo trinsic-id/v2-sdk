@@ -53,52 +53,42 @@ public final class AccessManagementOuterClass {
 
   static {
     java.lang.String[] descriptorData = {
-      "\n"
-          + ",services/provider/v1/access-management"
-          + ".proto\022\024services.provider.v1\032!services/a"
-          + "ccount/v1/account.proto\032$services/option"
-          + "s/field-options.proto\032\037services/common/v1/common.proto\"Y\n"
-          + "\030AddRoleAssignmentRequest\022\014\n"
-          + "\004role\030\001 \001(\t\022\017\n"
-          + "\005email\030\002 \001(\tH\000\022\023\n"
-          + "\twallet_id\030\003 \001(\tH\000B\t\n"
-          + "\007account\"\033\n"
-          + "\031AddRoleAssignmentResponse\"\\\n"
-          + "\033RemoveRoleAssignmentRequest\022\014\n"
-          + "\004role\030\001 \001(\t\022\017\n"
-          + "\005email\030\002 \001(\tH\000\022\023\n"
-          + "\twallet_id\030\003 \001(\tH\000B\t\n"
-          + "\007account\"\036\n"
-          + "\034RemoveRoleAssignmentResponse\"M\n"
-          + "\032ListRoleAssignmentsRequest\022\017\n"
-          + "\005email\030\002 \001(\tH\000\022\023\n"
-          + "\twallet_id\030\003 \001(\tH\000B\t\n"
-          + "\007account\",\n"
-          + "\033ListRoleAssignmentsResponse\022\r\n"
-          + "\005roles\030\001 \003(\t\"\033\n"
-          + "\031ListAvailableRolesRequest\"+\n"
-          + "\032ListAvailableRolesResponse\022\r\n"
-          + "\005roles\030\001 \003(\t2\204\004\n"
-          + "\020AccessManagement\022t\n"
-          + "\021AddRoleAssignment\022..services.provider.v1.AddRoleAssignmentRequest\032/.services"
-          + ".provider.v1.AddRoleAssignmentResponse\022}\n"
-          + "\024RemoveRoleAssignment\0221.services.provid"
-          + "er.v1.RemoveRoleAssignmentRequest\0322.serv"
-          + "ices.provider.v1.RemoveRoleAssignmentResponse\022z\n"
-          + "\023ListRoleAssignments\0220.services.provider.v1.ListRoleAssignmentsRequest\0321"
-          + ".services.provider.v1.ListRoleAssignmentsResponse\022\177\n"
-          + "\022ListAvailableRoles\022/.services.provider.v1.ListAvailableRolesRequest"
-          + "\0320.services.provider.v1.ListAvailableRolesResponse\"\006\212\246\035\002\020\001B^\n"
-          + "\034trinsic.services.provider.v1P\001Z\035services/provider/v1/provi"
-          + "der\252\002\034Trinsic.Services.Provider.V1b\006proto3"
+      "\n,services/provider/v1/access-management"
+          + ".proto\022\024services.provider.v1\032$services/o"
+          + "ptions/field-options.proto\"Y\n\030AddRoleAss"
+          + "ignmentRequest\022\014\n\004role\030\001 \001(\t\022\017\n\005email\030\002 "
+          + "\001(\tH\000\022\023\n\twallet_id\030\003 \001(\tH\000B\t\n\007account\"\033\n"
+          + "\031AddRoleAssignmentResponse\"\\\n\033RemoveRole"
+          + "AssignmentRequest\022\014\n\004role\030\001 \001(\t\022\017\n\005email"
+          + "\030\002 \001(\tH\000\022\023\n\twallet_id\030\003 \001(\tH\000B\t\n\007account"
+          + "\"\036\n\034RemoveRoleAssignmentResponse\"M\n\032List"
+          + "RoleAssignmentsRequest\022\017\n\005email\030\002 \001(\tH\000\022"
+          + "\023\n\twallet_id\030\003 \001(\tH\000B\t\n\007account\",\n\033ListR"
+          + "oleAssignmentsResponse\022\r\n\005roles\030\001 \003(\t\"\033\n"
+          + "\031ListAvailableRolesRequest\"+\n\032ListAvaila"
+          + "bleRolesResponse\022\r\n\005roles\030\001 \003(\t2\204\004\n\020Acce"
+          + "ssManagement\022t\n\021AddRoleAssignment\022..serv"
+          + "ices.provider.v1.AddRoleAssignmentReques"
+          + "t\032/.services.provider.v1.AddRoleAssignme"
+          + "ntResponse\022}\n\024RemoveRoleAssignment\0221.ser"
+          + "vices.provider.v1.RemoveRoleAssignmentRe"
+          + "quest\0322.services.provider.v1.RemoveRoleA"
+          + "ssignmentResponse\022z\n\023ListRoleAssignments"
+          + "\0220.services.provider.v1.ListRoleAssignme"
+          + "ntsRequest\0321.services.provider.v1.ListRo"
+          + "leAssignmentsResponse\022\177\n\022ListAvailableRo"
+          + "les\022/.services.provider.v1.ListAvailable"
+          + "RolesRequest\0320.services.provider.v1.List"
+          + "AvailableRolesResponse\"\006\212\246\035\002\020\001B^\n\034trinsi"
+          + "c.services.provider.v1P\001Z\035services/provi"
+          + "der/v1/provider\252\002\034Trinsic.Services.Provi"
+          + "der.V1b\006proto3"
     };
     descriptor =
         com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
             descriptorData,
             new com.google.protobuf.Descriptors.FileDescriptor[] {
-              trinsic.services.account.v1.AccountOuterClass.getDescriptor(),
               trinsic.services.protobuf.options.FieldOptions.getDescriptor(),
-              trinsic.services.common.v1.Common.getDescriptor(),
             });
     internal_static_services_provider_v1_AddRoleAssignmentRequest_descriptor =
         getDescriptor().getMessageTypes().get(0);
@@ -163,9 +153,7 @@ public final class AccessManagementOuterClass {
     registry.add(trinsic.services.protobuf.options.FieldOptions.sdkTemplateOption);
     com.google.protobuf.Descriptors.FileDescriptor.internalUpdateFileDescriptor(
         descriptor, registry);
-    trinsic.services.account.v1.AccountOuterClass.getDescriptor();
     trinsic.services.protobuf.options.FieldOptions.getDescriptor();
-    trinsic.services.common.v1.Common.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -19,10 +19,11 @@ public class TrinsicService extends ServiceBase {
     super(options);
   }
 
-    public AccessManagementService accessManagement() {
-        if (_accessManagementService == null) _accessManagementService = new AccessManagementService(this.getOptionsBuilder());
-        return _accessManagementService;
-    }
+  public AccessManagementService accessManagement() {
+    if (_accessManagementService == null)
+      _accessManagementService = new AccessManagementService(this.getOptionsBuilder());
+    return _accessManagementService;
+  }
 
   public AccountService account() {
     if (_accountService == null) _accountService = new AccountService(this.getOptionsBuilder());

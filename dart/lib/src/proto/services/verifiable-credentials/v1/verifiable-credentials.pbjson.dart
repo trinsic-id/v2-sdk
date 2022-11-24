@@ -90,6 +90,14 @@ const CreateProofRequest$json = const {
       '9': 0,
       '10': 'documentJson'
     },
+    const {
+      '1': 'nonce',
+      '3': 10,
+      '4': 1,
+      '5': 12,
+      '8': const {},
+      '10': 'nonce'
+    },
   ],
   '8': const [
     const {'1': 'proof'},
@@ -98,7 +106,7 @@ const CreateProofRequest$json = const {
 
 /// Descriptor for `CreateProofRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List createProofRequestDescriptor = $convert.base64Decode(
-    'ChJDcmVhdGVQcm9vZlJlcXVlc3QSMAoUcmV2ZWFsX2RvY3VtZW50X2pzb24YASABKAlSEnJldmVhbERvY3VtZW50SnNvbhIZCgdpdGVtX2lkGAIgASgJSABSBml0ZW1JZBIlCg1kb2N1bWVudF9qc29uGAMgASgJSABSDGRvY3VtZW50SnNvbkIHCgVwcm9vZg==');
+    'ChJDcmVhdGVQcm9vZlJlcXVlc3QSMAoUcmV2ZWFsX2RvY3VtZW50X2pzb24YASABKAlSEnJldmVhbERvY3VtZW50SnNvbhIZCgdpdGVtX2lkGAIgASgJSABSBml0ZW1JZBIlCg1kb2N1bWVudF9qc29uGAMgASgJSABSDGRvY3VtZW50SnNvbhIaCgVub25jZRgKIAEoDEIEgKYdAVIFbm9uY2VCBwoFcHJvb2Y=');
 @$core.Deprecated('Use createProofResponseDescriptor instead')
 const CreateProofResponse$json = const {
   '1': 'CreateProofResponse',
@@ -196,14 +204,30 @@ const SendRequest$json = const {
   '1': 'SendRequest',
   '2': const [
     const {'1': 'email', '3': 1, '4': 1, '5': 9, '9': 0, '10': 'email'},
-    const {'1': 'did_uri', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'didUri'},
+    const {
+      '1': 'did_uri',
+      '3': 2,
+      '4': 1,
+      '5': 9,
+      '8': const {'3': true},
+      '9': 0,
+      '10': 'didUri',
+    },
     const {
       '1': 'didcomm_invitation_json',
       '3': 3,
       '4': 1,
       '5': 9,
+      '8': const {'3': true},
       '9': 0,
-      '10': 'didcommInvitationJson'
+      '10': 'didcommInvitationJson',
+    },
+    const {
+      '1': 'send_notification',
+      '3': 4,
+      '4': 1,
+      '5': 8,
+      '10': 'sendNotification'
     },
     const {
       '1': 'document_json',
@@ -220,7 +244,7 @@ const SendRequest$json = const {
 
 /// Descriptor for `SendRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List sendRequestDescriptor = $convert.base64Decode(
-    'CgtTZW5kUmVxdWVzdBIWCgVlbWFpbBgBIAEoCUgAUgVlbWFpbBIZCgdkaWRfdXJpGAIgASgJSABSBmRpZFVyaRI4ChdkaWRjb21tX2ludml0YXRpb25fanNvbhgDIAEoCUgAUhVkaWRjb21tSW52aXRhdGlvbkpzb24SIwoNZG9jdW1lbnRfanNvbhhkIAEoCVIMZG9jdW1lbnRKc29uQhEKD2RlbGl2ZXJ5X21ldGhvZA==');
+    'CgtTZW5kUmVxdWVzdBIWCgVlbWFpbBgBIAEoCUgAUgVlbWFpbBIdCgdkaWRfdXJpGAIgASgJQgIYAUgAUgZkaWRVcmkSPAoXZGlkY29tbV9pbnZpdGF0aW9uX2pzb24YAyABKAlCAhgBSABSFWRpZGNvbW1JbnZpdGF0aW9uSnNvbhIrChFzZW5kX25vdGlmaWNhdGlvbhgEIAEoCFIQc2VuZE5vdGlmaWNhdGlvbhIjCg1kb2N1bWVudF9qc29uGGQgASgJUgxkb2N1bWVudEpzb25CEQoPZGVsaXZlcnlfbWV0aG9k');
 @$core.Deprecated('Use sendResponseDescriptor instead')
 const SendResponse$json = const {
   '1': 'SendResponse',

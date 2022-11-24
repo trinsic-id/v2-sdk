@@ -25,6 +25,7 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
 
   private CreateProofRequest() {
     revealDocumentJson_ = "";
+    nonce_ = com.google.protobuf.ByteString.EMPTY;
   }
 
   @java.lang.Override
@@ -299,6 +300,25 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
     }
   }
 
+  public static final int NONCE_FIELD_NUMBER = 10;
+  private com.google.protobuf.ByteString nonce_;
+  /**
+   *
+   *
+   * <pre>
+   * Nonce value used to derive the proof. If not specified, a random nonce will be generated.
+   * This value may be represented in base64 format in the proof model.
+   * </pre>
+   *
+   * <code>bytes nonce = 10 [(.services.options.optional) = true];</code>
+   *
+   * @return The nonce.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getNonce() {
+    return nonce_;
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -322,6 +342,9 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
     if (proofCase_ == 3) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, proof_);
     }
+    if (!nonce_.isEmpty()) {
+      output.writeBytes(10, nonce_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -340,6 +363,9 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
     if (proofCase_ == 3) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, proof_);
     }
+    if (!nonce_.isEmpty()) {
+      size += com.google.protobuf.CodedOutputStream.computeBytesSize(10, nonce_);
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -357,6 +383,7 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
         (trinsic.services.verifiablecredentials.v1.CreateProofRequest) obj;
 
     if (!getRevealDocumentJson().equals(other.getRevealDocumentJson())) return false;
+    if (!getNonce().equals(other.getNonce())) return false;
     if (!getProofCase().equals(other.getProofCase())) return false;
     switch (proofCase_) {
       case 2:
@@ -381,6 +408,8 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + REVEAL_DOCUMENT_JSON_FIELD_NUMBER;
     hash = (53 * hash) + getRevealDocumentJson().hashCode();
+    hash = (37 * hash) + NONCE_FIELD_NUMBER;
+    hash = (53 * hash) + getNonce().hashCode();
     switch (proofCase_) {
       case 2:
         hash = (37 * hash) + ITEM_ID_FIELD_NUMBER;
@@ -535,6 +564,8 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
       super.clear();
       revealDocumentJson_ = "";
 
+      nonce_ = com.google.protobuf.ByteString.EMPTY;
+
       proofCase_ = 0;
       proof_ = null;
       return this;
@@ -572,6 +603,7 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
       if (proofCase_ == 3) {
         result.proof_ = proof_;
       }
+      result.nonce_ = nonce_;
       result.proofCase_ = proofCase_;
       onBuilt();
       return result;
@@ -627,6 +659,9 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
       if (!other.getRevealDocumentJson().isEmpty()) {
         revealDocumentJson_ = other.revealDocumentJson_;
         onChanged();
+      }
+      if (other.getNonce() != com.google.protobuf.ByteString.EMPTY) {
+        setNonce(other.getNonce());
       }
       switch (other.getProofCase()) {
         case ITEM_ID:
@@ -694,6 +729,12 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
                 proof_ = s;
                 break;
               } // case 26
+            case 82:
+              {
+                nonce_ = input.readBytes();
+
+                break;
+              } // case 82
             default:
               {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
@@ -1117,6 +1158,64 @@ public final class CreateProofRequest extends com.google.protobuf.GeneratedMessa
       checkByteStringIsUtf8(value);
       proofCase_ = 3;
       proof_ = value;
+      onChanged();
+      return this;
+    }
+
+    private com.google.protobuf.ByteString nonce_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     *
+     *
+     * <pre>
+     * Nonce value used to derive the proof. If not specified, a random nonce will be generated.
+     * This value may be represented in base64 format in the proof model.
+     * </pre>
+     *
+     * <code>bytes nonce = 10 [(.services.options.optional) = true];</code>
+     *
+     * @return The nonce.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getNonce() {
+      return nonce_;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Nonce value used to derive the proof. If not specified, a random nonce will be generated.
+     * This value may be represented in base64 format in the proof model.
+     * </pre>
+     *
+     * <code>bytes nonce = 10 [(.services.options.optional) = true];</code>
+     *
+     * @param value The nonce to set.
+     * @return This builder for chaining.
+     */
+    public Builder setNonce(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      nonce_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Nonce value used to derive the proof. If not specified, a random nonce will be generated.
+     * This value may be represented in base64 format in the proof model.
+     * </pre>
+     *
+     * <code>bytes nonce = 10 [(.services.options.optional) = true];</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearNonce() {
+
+      nonce_ = getDefaultInstance().getNonce();
       onChanged();
       return this;
     }

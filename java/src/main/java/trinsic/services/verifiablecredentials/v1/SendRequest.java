@@ -60,7 +60,9 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
           com.google.protobuf.Internal.EnumLite,
           com.google.protobuf.AbstractMessage.InternalOneOfEnum {
     EMAIL(1),
+    @java.lang.Deprecated
     DID_URI(2),
+    @java.lang.Deprecated
     DIDCOMM_INVITATION_JSON(3),
     DELIVERYMETHOD_NOT_SET(0);
     private final int value;
@@ -180,10 +182,13 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
    * DID of recipient (presently unsupported)
    * </pre>
    *
-   * <code>string did_uri = 2;</code>
+   * <code>string did_uri = 2 [deprecated = true];</code>
    *
+   * @deprecated services.verifiablecredentials.v1.SendRequest.did_uri is deprecated. See
+   *     services/verifiable-credentials/v1/verifiable-credentials.proto;l=112
    * @return Whether the didUri field is set.
    */
+  @java.lang.Deprecated
   public boolean hasDidUri() {
     return deliveryMethodCase_ == 2;
   }
@@ -194,10 +199,13 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
    * DID of recipient (presently unsupported)
    * </pre>
    *
-   * <code>string did_uri = 2;</code>
+   * <code>string did_uri = 2 [deprecated = true];</code>
    *
+   * @deprecated services.verifiablecredentials.v1.SendRequest.did_uri is deprecated. See
+   *     services/verifiable-credentials/v1/verifiable-credentials.proto;l=112
    * @return The didUri.
    */
+  @java.lang.Deprecated
   public java.lang.String getDidUri() {
     java.lang.Object ref = "";
     if (deliveryMethodCase_ == 2) {
@@ -221,10 +229,13 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
    * DID of recipient (presently unsupported)
    * </pre>
    *
-   * <code>string did_uri = 2;</code>
+   * <code>string did_uri = 2 [deprecated = true];</code>
    *
+   * @deprecated services.verifiablecredentials.v1.SendRequest.did_uri is deprecated. See
+   *     services/verifiable-credentials/v1/verifiable-credentials.proto;l=112
    * @return The bytes for didUri.
    */
+  @java.lang.Deprecated
   public com.google.protobuf.ByteString getDidUriBytes() {
     java.lang.Object ref = "";
     if (deliveryMethodCase_ == 2) {
@@ -250,10 +261,13 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
    * DIDComm out-of-band invitation JSON (presently unsupported)
    * </pre>
    *
-   * <code>string didcomm_invitation_json = 3;</code>
+   * <code>string didcomm_invitation_json = 3 [deprecated = true];</code>
    *
+   * @deprecated services.verifiablecredentials.v1.SendRequest.didcomm_invitation_json is
+   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=114
    * @return Whether the didcommInvitationJson field is set.
    */
+  @java.lang.Deprecated
   public boolean hasDidcommInvitationJson() {
     return deliveryMethodCase_ == 3;
   }
@@ -264,10 +278,13 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
    * DIDComm out-of-band invitation JSON (presently unsupported)
    * </pre>
    *
-   * <code>string didcomm_invitation_json = 3;</code>
+   * <code>string didcomm_invitation_json = 3 [deprecated = true];</code>
    *
+   * @deprecated services.verifiablecredentials.v1.SendRequest.didcomm_invitation_json is
+   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=114
    * @return The didcommInvitationJson.
    */
+  @java.lang.Deprecated
   public java.lang.String getDidcommInvitationJson() {
     java.lang.Object ref = "";
     if (deliveryMethodCase_ == 3) {
@@ -291,10 +308,13 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
    * DIDComm out-of-band invitation JSON (presently unsupported)
    * </pre>
    *
-   * <code>string didcomm_invitation_json = 3;</code>
+   * <code>string didcomm_invitation_json = 3 [deprecated = true];</code>
    *
+   * @deprecated services.verifiablecredentials.v1.SendRequest.didcomm_invitation_json is
+   *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=114
    * @return The bytes for didcommInvitationJson.
    */
+  @java.lang.Deprecated
   public com.google.protobuf.ByteString getDidcommInvitationJsonBytes() {
     java.lang.Object ref = "";
     if (deliveryMethodCase_ == 3) {
@@ -310,6 +330,24 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
+  }
+
+  public static final int SEND_NOTIFICATION_FIELD_NUMBER = 4;
+  private boolean sendNotification_;
+  /**
+   *
+   *
+   * <pre>
+   * Send email notification that credential has been sent to a wallet
+   * </pre>
+   *
+   * <code>bool send_notification = 4;</code>
+   *
+   * @return The sendNotification.
+   */
+  @java.lang.Override
+  public boolean getSendNotification() {
+    return sendNotification_;
   }
 
   public static final int DOCUMENT_JSON_FIELD_NUMBER = 100;
@@ -384,6 +422,9 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
     if (deliveryMethodCase_ == 3) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, deliveryMethod_);
     }
+    if (sendNotification_ != false) {
+      output.writeBool(4, sendNotification_);
+    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(documentJson_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 100, documentJson_);
     }
@@ -405,6 +446,9 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
     if (deliveryMethodCase_ == 3) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, deliveryMethod_);
     }
+    if (sendNotification_ != false) {
+      size += com.google.protobuf.CodedOutputStream.computeBoolSize(4, sendNotification_);
+    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(documentJson_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(100, documentJson_);
     }
@@ -424,6 +468,7 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
     trinsic.services.verifiablecredentials.v1.SendRequest other =
         (trinsic.services.verifiablecredentials.v1.SendRequest) obj;
 
+    if (getSendNotification() != other.getSendNotification()) return false;
     if (!getDocumentJson().equals(other.getDocumentJson())) return false;
     if (!getDeliveryMethodCase().equals(other.getDeliveryMethodCase())) return false;
     switch (deliveryMethodCase_) {
@@ -450,6 +495,8 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + SEND_NOTIFICATION_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getSendNotification());
     hash = (37 * hash) + DOCUMENT_JSON_FIELD_NUMBER;
     hash = (53 * hash) + getDocumentJson().hashCode();
     switch (deliveryMethodCase_) {
@@ -607,6 +654,8 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      sendNotification_ = false;
+
       documentJson_ = "";
 
       deliveryMethodCase_ = 0;
@@ -647,6 +696,7 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
       if (deliveryMethodCase_ == 3) {
         result.deliveryMethod_ = deliveryMethod_;
       }
+      result.sendNotification_ = sendNotification_;
       result.documentJson_ = documentJson_;
       result.deliveryMethodCase_ = deliveryMethodCase_;
       onBuilt();
@@ -699,6 +749,9 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
     public Builder mergeFrom(trinsic.services.verifiablecredentials.v1.SendRequest other) {
       if (other == trinsic.services.verifiablecredentials.v1.SendRequest.getDefaultInstance())
         return this;
+      if (other.getSendNotification() != false) {
+        setSendNotification(other.getSendNotification());
+      }
       if (!other.getDocumentJson().isEmpty()) {
         documentJson_ = other.documentJson_;
         onChanged();
@@ -777,6 +830,12 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
                 deliveryMethod_ = s;
                 break;
               } // case 26
+            case 32:
+              {
+                sendNotification_ = input.readBool();
+
+                break;
+              } // case 32
             case 802:
               {
                 documentJson_ = input.readStringRequireUtf8();
@@ -955,11 +1014,14 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
      * DID of recipient (presently unsupported)
      * </pre>
      *
-     * <code>string did_uri = 2;</code>
+     * <code>string did_uri = 2 [deprecated = true];</code>
      *
+     * @deprecated services.verifiablecredentials.v1.SendRequest.did_uri is deprecated. See
+     *     services/verifiable-credentials/v1/verifiable-credentials.proto;l=112
      * @return Whether the didUri field is set.
      */
     @java.lang.Override
+    @java.lang.Deprecated
     public boolean hasDidUri() {
       return deliveryMethodCase_ == 2;
     }
@@ -970,11 +1032,14 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
      * DID of recipient (presently unsupported)
      * </pre>
      *
-     * <code>string did_uri = 2;</code>
+     * <code>string did_uri = 2 [deprecated = true];</code>
      *
+     * @deprecated services.verifiablecredentials.v1.SendRequest.did_uri is deprecated. See
+     *     services/verifiable-credentials/v1/verifiable-credentials.proto;l=112
      * @return The didUri.
      */
     @java.lang.Override
+    @java.lang.Deprecated
     public java.lang.String getDidUri() {
       java.lang.Object ref = "";
       if (deliveryMethodCase_ == 2) {
@@ -998,11 +1063,14 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
      * DID of recipient (presently unsupported)
      * </pre>
      *
-     * <code>string did_uri = 2;</code>
+     * <code>string did_uri = 2 [deprecated = true];</code>
      *
+     * @deprecated services.verifiablecredentials.v1.SendRequest.did_uri is deprecated. See
+     *     services/verifiable-credentials/v1/verifiable-credentials.proto;l=112
      * @return The bytes for didUri.
      */
     @java.lang.Override
+    @java.lang.Deprecated
     public com.google.protobuf.ByteString getDidUriBytes() {
       java.lang.Object ref = "";
       if (deliveryMethodCase_ == 2) {
@@ -1026,11 +1094,14 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
      * DID of recipient (presently unsupported)
      * </pre>
      *
-     * <code>string did_uri = 2;</code>
+     * <code>string did_uri = 2 [deprecated = true];</code>
      *
+     * @deprecated services.verifiablecredentials.v1.SendRequest.did_uri is deprecated. See
+     *     services/verifiable-credentials/v1/verifiable-credentials.proto;l=112
      * @param value The didUri to set.
      * @return This builder for chaining.
      */
+    @java.lang.Deprecated
     public Builder setDidUri(java.lang.String value) {
       if (value == null) {
         throw new NullPointerException();
@@ -1047,10 +1118,13 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
      * DID of recipient (presently unsupported)
      * </pre>
      *
-     * <code>string did_uri = 2;</code>
+     * <code>string did_uri = 2 [deprecated = true];</code>
      *
+     * @deprecated services.verifiablecredentials.v1.SendRequest.did_uri is deprecated. See
+     *     services/verifiable-credentials/v1/verifiable-credentials.proto;l=112
      * @return This builder for chaining.
      */
+    @java.lang.Deprecated
     public Builder clearDidUri() {
       if (deliveryMethodCase_ == 2) {
         deliveryMethodCase_ = 0;
@@ -1066,11 +1140,14 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
      * DID of recipient (presently unsupported)
      * </pre>
      *
-     * <code>string did_uri = 2;</code>
+     * <code>string did_uri = 2 [deprecated = true];</code>
      *
+     * @deprecated services.verifiablecredentials.v1.SendRequest.did_uri is deprecated. See
+     *     services/verifiable-credentials/v1/verifiable-credentials.proto;l=112
      * @param value The bytes for didUri to set.
      * @return This builder for chaining.
      */
+    @java.lang.Deprecated
     public Builder setDidUriBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
         throw new NullPointerException();
@@ -1089,11 +1166,14 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
      * DIDComm out-of-band invitation JSON (presently unsupported)
      * </pre>
      *
-     * <code>string didcomm_invitation_json = 3;</code>
+     * <code>string didcomm_invitation_json = 3 [deprecated = true];</code>
      *
+     * @deprecated services.verifiablecredentials.v1.SendRequest.didcomm_invitation_json is
+     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=114
      * @return Whether the didcommInvitationJson field is set.
      */
     @java.lang.Override
+    @java.lang.Deprecated
     public boolean hasDidcommInvitationJson() {
       return deliveryMethodCase_ == 3;
     }
@@ -1104,11 +1184,14 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
      * DIDComm out-of-band invitation JSON (presently unsupported)
      * </pre>
      *
-     * <code>string didcomm_invitation_json = 3;</code>
+     * <code>string didcomm_invitation_json = 3 [deprecated = true];</code>
      *
+     * @deprecated services.verifiablecredentials.v1.SendRequest.didcomm_invitation_json is
+     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=114
      * @return The didcommInvitationJson.
      */
     @java.lang.Override
+    @java.lang.Deprecated
     public java.lang.String getDidcommInvitationJson() {
       java.lang.Object ref = "";
       if (deliveryMethodCase_ == 3) {
@@ -1132,11 +1215,14 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
      * DIDComm out-of-band invitation JSON (presently unsupported)
      * </pre>
      *
-     * <code>string didcomm_invitation_json = 3;</code>
+     * <code>string didcomm_invitation_json = 3 [deprecated = true];</code>
      *
+     * @deprecated services.verifiablecredentials.v1.SendRequest.didcomm_invitation_json is
+     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=114
      * @return The bytes for didcommInvitationJson.
      */
     @java.lang.Override
+    @java.lang.Deprecated
     public com.google.protobuf.ByteString getDidcommInvitationJsonBytes() {
       java.lang.Object ref = "";
       if (deliveryMethodCase_ == 3) {
@@ -1160,11 +1246,14 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
      * DIDComm out-of-band invitation JSON (presently unsupported)
      * </pre>
      *
-     * <code>string didcomm_invitation_json = 3;</code>
+     * <code>string didcomm_invitation_json = 3 [deprecated = true];</code>
      *
+     * @deprecated services.verifiablecredentials.v1.SendRequest.didcomm_invitation_json is
+     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=114
      * @param value The didcommInvitationJson to set.
      * @return This builder for chaining.
      */
+    @java.lang.Deprecated
     public Builder setDidcommInvitationJson(java.lang.String value) {
       if (value == null) {
         throw new NullPointerException();
@@ -1181,10 +1270,13 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
      * DIDComm out-of-band invitation JSON (presently unsupported)
      * </pre>
      *
-     * <code>string didcomm_invitation_json = 3;</code>
+     * <code>string didcomm_invitation_json = 3 [deprecated = true];</code>
      *
+     * @deprecated services.verifiablecredentials.v1.SendRequest.didcomm_invitation_json is
+     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=114
      * @return This builder for chaining.
      */
+    @java.lang.Deprecated
     public Builder clearDidcommInvitationJson() {
       if (deliveryMethodCase_ == 3) {
         deliveryMethodCase_ = 0;
@@ -1200,11 +1292,14 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
      * DIDComm out-of-band invitation JSON (presently unsupported)
      * </pre>
      *
-     * <code>string didcomm_invitation_json = 3;</code>
+     * <code>string didcomm_invitation_json = 3 [deprecated = true];</code>
      *
+     * @deprecated services.verifiablecredentials.v1.SendRequest.didcomm_invitation_json is
+     *     deprecated. See services/verifiable-credentials/v1/verifiable-credentials.proto;l=114
      * @param value The bytes for didcommInvitationJson to set.
      * @return This builder for chaining.
      */
+    @java.lang.Deprecated
     public Builder setDidcommInvitationJsonBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
         throw new NullPointerException();
@@ -1212,6 +1307,58 @@ public final class SendRequest extends com.google.protobuf.GeneratedMessageV3
       checkByteStringIsUtf8(value);
       deliveryMethodCase_ = 3;
       deliveryMethod_ = value;
+      onChanged();
+      return this;
+    }
+
+    private boolean sendNotification_;
+    /**
+     *
+     *
+     * <pre>
+     * Send email notification that credential has been sent to a wallet
+     * </pre>
+     *
+     * <code>bool send_notification = 4;</code>
+     *
+     * @return The sendNotification.
+     */
+    @java.lang.Override
+    public boolean getSendNotification() {
+      return sendNotification_;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Send email notification that credential has been sent to a wallet
+     * </pre>
+     *
+     * <code>bool send_notification = 4;</code>
+     *
+     * @param value The sendNotification to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSendNotification(boolean value) {
+
+      sendNotification_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Send email notification that credential has been sent to a wallet
+     * </pre>
+     *
+     * <code>bool send_notification = 4;</code>
+     *
+     * @return This builder for chaining.
+     */
+    public Builder clearSendNotification() {
+
+      sendNotification_ = false;
       onChanged();
       return this;
     }
