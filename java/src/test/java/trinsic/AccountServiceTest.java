@@ -18,7 +18,7 @@ class AccountServiceTest {
   public void testLogin() {
     var trinsic = new TrinsicService(TrinsicUtilities.getTrinsicServiceOptions());
       LoginResponse myLoginResponse = LoginResponse.newBuilder().build();
-    Assertions.assertThrows(ExecutionException.class, () -> {
+    Assertions.assertThrows(Exception.class, () -> {
         // loginRequest() {
         var loginResponse =
             trinsic
