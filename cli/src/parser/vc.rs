@@ -105,6 +105,7 @@ pub struct CreateProofArgs {
     pub reveal_document: Option<String>,
     pub document_file: Option<String>,
     pub item_id: Option<String>,
+    pub nonce: Option<String>,
     pub out: Option<String>,
 }
 

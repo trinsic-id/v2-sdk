@@ -195,14 +195,14 @@
         <member name="M:Trinsic.CredentialService.IssueFromTemplate(Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest)">
             <summary>
             Sign and issue a verifiable credential from a pre-defined template.
-             This process will also add schema validation and 
+             This process will also add schema validation and
              revocation registry values to the credential.
             </summary>	
         </member>
         <member name="M:Trinsic.CredentialService.IssueFromTemplateAsync(Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest)">
             <summary>
             Sign and issue a verifiable credential from a pre-defined template.
-             This process will also add schema validation and 
+             This process will also add schema validation and
              revocation registry values to the credential.
             </summary>	
         </member>
@@ -5320,7 +5320,7 @@
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.RevealDocumentJson">
             <summary>
             A valid JSON-LD frame describing which fields should be
-            revealed in the generated proof. 
+            revealed in the generated proof.
             If unspecified, all fields in the document will be revealed
             </summary>
         </member>
@@ -5337,9 +5337,18 @@
         </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.DocumentJson">
             <summary>
-            A valid JSON-LD Verifiable Credential document string 
+            A valid JSON-LD Verifiable Credential document string
             with an unbound signature. The proof will be derived from this
             document directly. The document will not be stored in the wallet.
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.NonceFieldNumber">
+            <summary>Field number for the "nonce" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.Nonce">
+            <summary>
+            Nonce value used to derive the proof. If not specified, a random nonce will be generated.
+            This value may be represented in base64 format in the proof model.
             </summary>
         </member>
         <member name="T:Trinsic.Services.VerifiableCredentials.V1.CreateProofRequest.ProofOneofCase">
@@ -5397,7 +5406,7 @@
         </member>
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.VerifyProofResponse.ValidationResults">
             <summary>
-            Results of each validation check performed, 
+            Results of each validation check performed,
             such as schema conformance, revocation status, signature, etc.
             Detailed results are provided for failed validations.
             </summary>
@@ -5450,6 +5459,14 @@
         <member name="P:Trinsic.Services.VerifiableCredentials.V1.SendRequest.DidcommInvitationJson">
             <summary>
             DIDComm out-of-band invitation JSON (presently unsupported)
+            </summary>
+        </member>
+        <member name="F:Trinsic.Services.VerifiableCredentials.V1.SendRequest.SendNotificationFieldNumber">
+            <summary>Field number for the "send_notification" field.</summary>
+        </member>
+        <member name="P:Trinsic.Services.VerifiableCredentials.V1.SendRequest.SendNotification">
+            <summary>
+            Send email notification that credential has been sent to a wallet
             </summary>
         </member>
         <member name="F:Trinsic.Services.VerifiableCredentials.V1.SendRequest.DocumentJsonFieldNumber">
@@ -5538,7 +5555,7 @@
         <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialBase.IssueFromTemplate(Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest,Grpc.Core.ServerCallContext)">
             <summary>
             Sign and issue a verifiable credential from a pre-defined template.
-            This process will also add schema validation and 
+            This process will also add schema validation and
             revocation registry values to the credential.
             </summary>
             <param name="request">The request received from the client.</param>
@@ -5648,7 +5665,7 @@
         <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.IssueFromTemplate(Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
             <summary>
             Sign and issue a verifiable credential from a pre-defined template.
-            This process will also add schema validation and 
+            This process will also add schema validation and
             revocation registry values to the credential.
             </summary>
             <param name="request">The request to send to the server.</param>
@@ -5660,7 +5677,7 @@
         <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.IssueFromTemplate(Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest,Grpc.Core.CallOptions)">
             <summary>
             Sign and issue a verifiable credential from a pre-defined template.
-            This process will also add schema validation and 
+            This process will also add schema validation and
             revocation registry values to the credential.
             </summary>
             <param name="request">The request to send to the server.</param>
@@ -5670,7 +5687,7 @@
         <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.IssueFromTemplateAsync(Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
             <summary>
             Sign and issue a verifiable credential from a pre-defined template.
-            This process will also add schema validation and 
+            This process will also add schema validation and
             revocation registry values to the credential.
             </summary>
             <param name="request">The request to send to the server.</param>
@@ -5682,7 +5699,7 @@
         <member name="M:Trinsic.Services.VerifiableCredentials.V1.VerifiableCredential.VerifiableCredentialClient.IssueFromTemplateAsync(Trinsic.Services.VerifiableCredentials.V1.IssueFromTemplateRequest,Grpc.Core.CallOptions)">
             <summary>
             Sign and issue a verifiable credential from a pre-defined template.
-            This process will also add schema validation and 
+            This process will also add schema validation and
             revocation registry values to the credential.
             </summary>
             <param name="request">The request to send to the server.</param>
@@ -6177,6 +6194,11 @@
         <member name="T:Trinsic.TrinsicService">
             <summary>
             Trinsic Service
+            </summary>
+        </member>
+        <member name="P:Trinsic.TrinsicService.AccessManagement">
+            <summary>
+            Exposes Account Service functionality
             </summary>
         </member>
         <member name="P:Trinsic.TrinsicService.Account">

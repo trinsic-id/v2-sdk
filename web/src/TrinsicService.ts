@@ -6,8 +6,10 @@ import { TemplateService } from "./TemplateService";
 import { ProviderService } from "./ProviderService";
 import { TrustRegistryService } from "./TrustRegistryService";
 import { WalletService } from "./WalletService";
+import {AccessManagementService} from "./AccessManagementService";
 
 export class TrinsicService extends ServiceBase {
+    private _access: AccessManagementService | undefined;
     private _account: AccountService | undefined;
     private _credential: CredentialService | undefined;
     private _provider: ProviderService | undefined;
@@ -17,6 +19,12 @@ export class TrinsicService extends ServiceBase {
 
     constructor(options?: ServiceOptions) {
         super(options);
+    }
+
+    public access(): AccessManagementService {
+        this._access = this._access || new AccessManagementService(this.options);
+        this._access.options = this.options;
+        return this._access!;
     }
 
     public account(): AccountService {
