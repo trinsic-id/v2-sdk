@@ -120,15 +120,14 @@ async fn create_proof(args: &CreateProofArgs, config: CliConfig) -> Result<Outpu
         Some(x) => read_file(x)?,
         None => String::default(),
     };
-    let nonce = match &args.nonce {
-        Some(x) =>
-    }
+    // TODO - Read the nonce in.
+    let nonce: Vec<u8> = Vec::new();
 
     let mut client = grpc_client_with_auth!(VerifiableCredentialClient<Channel>, config);
 
     let request = tonic::Request::new(CreateProofRequest {
         reveal_document_json,
-        nonce: ::prost::alloc::vec::Vec<u8>,
+        nonce,
         proof: Some(if document_json.is_empty() {
             Proof::ItemId(args.item_id.as_ref().ok_or(Error::MissingArguments)?.clone())
         } else {

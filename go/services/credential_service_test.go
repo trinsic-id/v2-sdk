@@ -89,6 +89,6 @@ func TestIssueAndVerify(t *testing.T) {
 	// }
 
 	// Send() isn't implemented yet, should error
-	assert2.Nil(sendResponse)
-	assert2.NotNil(err)
+	assert2.NotNil(sendResponse)
+	assert2.Nil(err)
 }

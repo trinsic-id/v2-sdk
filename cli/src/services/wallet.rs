@@ -11,6 +11,7 @@ use crate::{
     utils::{as_value, read_file},
 };
 use std::default::*;
+use std::str::FromStr;
 use tonic::transport::Channel;
 
 #[allow(clippy::unit_arg)]
@@ -86,11 +87,13 @@ async fn delete_item(args: &DeleteItemArgs, config: CliConfig) -> Result<Output,
 #[tokio::main]
 async fn send(args: &SendArgs, config: CliConfig) -> Result<Output, Error> {
     let item = read_file(args.item.ok_or(Error::InvalidArgument("input document must be specified".to_string()))?)?;
+    let send_notification = Some(args.send_notification.map(|x| bool::from_str(x).unwrap_or(false))).unwrap();
 
     let mut client = grpc_client_with_auth!(VerifiableCredentialClient<Channel>, config.to_owned());
     let _response = client
         .send(SendRequest {
             delivery_method: Some(DeliveryMethod::Email(args.email.expect("Email must be specified").to_string())),
+            send_notification: send_notification.unwrap_or_default(),
             document_json: item,
         })
         .await?
