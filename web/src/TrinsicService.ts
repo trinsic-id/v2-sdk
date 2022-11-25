@@ -6,7 +6,7 @@ import { TemplateService } from "./TemplateService";
 import { ProviderService } from "./ProviderService";
 import { TrustRegistryService } from "./TrustRegistryService";
 import { WalletService } from "./WalletService";
-import {AccessManagementService} from "./AccessManagementService";
+import { AccessManagementService } from "./AccessManagementService";
 
 export class TrinsicService extends ServiceBase {
     private _access: AccessManagementService | undefined;
@@ -22,7 +22,8 @@ export class TrinsicService extends ServiceBase {
     }
 
     public access(): AccessManagementService {
-        this._access = this._access || new AccessManagementService(this.options);
+        this._access =
+            this._access || new AccessManagementService(this.options);
         this._access.options = this.options;
         return this._access!;
     }
