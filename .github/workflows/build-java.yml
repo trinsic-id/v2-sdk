@@ -34,6 +34,7 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
+          cache: gradle
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -51,9 +52,14 @@ jobs:
       - name: Build with Gradle
         run: |
           python ../devops/build_sdks.py --language=java
-          gradle build --stacktrace
         shell: pwsh
         working-directory: java
+        env:
+          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # This has github maven package repo permissions
+      - uses: gradle/gradle-build-action@v2
+        with:
+        arguments: build --scan
         env:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # This has github maven package repo permissions
