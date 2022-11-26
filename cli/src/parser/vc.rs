@@ -54,7 +54,6 @@ fn create_proof(args: &ArgMatches) -> Result<Command, Error> {
         reveal_document: args.value_of("reveal-document-file").map(|x| x.into()),
         document_file: args.value_of("document-file").map(|x| x.into()),
         item_id: args.value_of("item-id").map(|x| x.into()),
-        nonce: args.value_of("nonce").map(|x| x.into()),
         out: args.value_of("out").map(|x| x.into()),
     }))
 }
@@ -106,7 +105,6 @@ pub struct CreateProofArgs {
     pub reveal_document: Option<String>,
     pub document_file: Option<String>,
     pub item_id: Option<String>,
-    pub nonce: Option<String>,
     pub out: Option<String>,
 }
 
