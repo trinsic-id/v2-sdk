@@ -52,14 +52,8 @@ jobs:
       - name: Build with Gradle
         run: |
           python ../devops/build_sdks.py --language=java
+          gradle build --scan
         shell: pwsh
-        working-directory: java
-        env:
-          API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # This has github maven package repo permissions
-      - uses: gradle/gradle-build-action@v2
-        with:
-          arguments: build --scan
         working-directory: java
         env:
           API_GITHUB_TOKEN: ${{ secrets.API_GITHUB_TOKEN }}
