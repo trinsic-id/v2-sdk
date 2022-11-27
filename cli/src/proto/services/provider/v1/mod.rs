@@ -177,11 +177,37 @@ pub struct UpdateEcosystemRequest {
     #[prost(string, tag = "3")]
     pub domain: ::prost::alloc::string::String,
     /// New name
-    #[prost(string, tag = "4")]
-    pub name: ::prost::alloc::string::String,
+    /// string name = 4;
     /// Display details
     #[prost(message, optional, tag = "5")]
-    pub display: ::core::option::Option<EcosystemDisplay>,
+    pub display: ::core::option::Option<EcosystemDisplayRequest>,
+}
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct EcosystemDisplayRequest {
+    #[prost(message, optional, tag = "1")]
+    pub dark: ::core::option::Option<EcosystemDisplayDetailsRequest>,
+    #[prost(message, optional, tag = "2")]
+    pub light: ::core::option::Option<EcosystemDisplayDetailsRequest>,
+}
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct EcosystemDisplayDetailsRequest {
+    /// string id = 1;
+    /// string name = 2;
+    ///     string logo_url = 3;
+    #[prost(string, tag = "4")]
+    pub color: ::prost::alloc::string::String,
+    #[prost(bytes = "vec", tag = "5")]
+    pub logo_data: ::prost::alloc::vec::Vec<u8>,
+    /// MIME type of the file
+    #[prost(string, tag = "6")]
+    pub logo_format: ::prost::alloc::string::String,
+}
+/// Response to `UpdateEcosystemRequest`
+#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+pub struct UpdateEcosystemResponse {
+    /// Current ecosystem metadata, post-update
+    #[prost(message, optional, tag = "1")]
+    pub ecosystem: ::core::option::Option<Ecosystem>,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct EcosystemDisplay {
@@ -198,13 +224,6 @@ pub struct EcosystemDisplayDetails {
     pub logo_url: ::prost::alloc::string::String,
     #[prost(string, tag = "4")]
     pub color: ::prost::alloc::string::String,
-}
-/// Response to `UpdateEcosystemRequest`
-#[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
-pub struct UpdateEcosystemResponse {
-    /// Current ecosystem metadata, post-update
-    #[prost(message, optional, tag = "1")]
-    pub ecosystem: ::core::option::Option<Ecosystem>,
 }
 /// Request to add a webhook to an ecosystem
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
@@ -279,6 +298,9 @@ pub struct PublicEcosystemInformation {
     /// Style display information
     #[prost(message, optional, tag = "4")]
     pub style_display: ::core::option::Option<EcosystemDisplay>,
+    /// Description of the ecosystem
+    #[prost(string, tag = "5")]
+    pub description: ::prost::alloc::string::String,
 }
 /// Request to generate an authentication token for the current account
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
@@ -325,9 +347,12 @@ pub struct RetrieveDomainVerificationRecordRequest {}
 /// Response message containing a TXT record content for domain url verification
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct RetrieveDomainVerificationRecordResponse {
-    /// TXT code to use for domain verification
+    /// TXT record name to use for domain verification
     #[prost(string, tag = "1")]
-    pub verification_txt: ::prost::alloc::string::String,
+    pub verification_record_name: ::prost::alloc::string::String,
+    /// TXT code for domain verification
+    #[prost(string, tag = "2")]
+    pub verification_record_value: ::prost::alloc::string::String,
 }
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct RefreshDomainVerificationStatusRequest {}
@@ -447,6 +472,8 @@ pub struct WalletConfiguration {
     pub wallet_id: ::prost::alloc::string::String,
     #[prost(string, tag = "5")]
     pub public_did: ::prost::alloc::string::String,
+    #[prost(string, tag = "6")]
+    pub config_type: ::prost::alloc::string::String,
 }
 /// Options for creation of DID on the ION network
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]

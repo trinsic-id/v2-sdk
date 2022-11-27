@@ -38,6 +38,7 @@ fn send(args: &ArgMatches) -> Result<Command, Error> {
     Ok(Command::Send(SendArgs {
         email: args.value_of("email"),
         item: args.value_of("item"),
+        send_notification: args.value_of("send_notification"),
     }))
 }
 
@@ -69,6 +70,7 @@ pub struct DeleteItemArgs<'a> {
 pub struct SendArgs<'a> {
     pub email: Option<&'a str>,
     pub item: Option<&'a str>,
+    pub send_notification: Option<&'a str>,
 }
 
 #[derive(Debug, PartialEq)]

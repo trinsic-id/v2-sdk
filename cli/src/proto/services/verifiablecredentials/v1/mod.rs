@@ -47,6 +47,10 @@ pub struct CreateProofRequest {
     /// If unspecified, all fields in the document will be revealed
     #[prost(string, tag = "1")]
     pub reveal_document_json: ::prost::alloc::string::String,
+    /// Nonce value used to derive the proof. If not specified, a random nonce will be generated.
+    /// This value may be represented in base64 format in the proof model.
+    #[prost(bytes = "vec", tag = "10")]
+    pub nonce: ::prost::alloc::vec::Vec<u8>,
     /// Specify the input to be used to derive this proof.
     /// Input can be an existing item in the wallet or an input document
     #[prost(oneof = "create_proof_request::Proof", tags = "2, 3")]
@@ -101,7 +105,7 @@ pub struct VerifyProofResponse {
 /// Result of a validation check on a proof
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct ValidationMessage {
-    /// Whether or not this validation check passed
+    /// Whether this validation check passed
     #[prost(bool, tag = "1")]
     pub is_valid: bool,
     /// If validation failed, contains messages explaining why
@@ -111,6 +115,9 @@ pub struct ValidationMessage {
 /// Request to send a document to another user's wallet
 #[derive(::serde::Serialize, ::serde::Deserialize, Clone, PartialEq, ::prost::Message)]
 pub struct SendRequest {
+    /// Send email notification that credential has been sent to a wallet
+    #[prost(bool, tag = "4")]
+    pub send_notification: bool,
     /// JSON document to send to recipient
     #[prost(string, tag = "100")]
     pub document_json: ::prost::alloc::string::String,
