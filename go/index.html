@@ -15,7 +15,7 @@
       
       
       <link rel="icon" href="../_static/logo.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10+insiders-4.26.5">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10+insiders-4.26.6">
     
     
       
@@ -1258,6 +1258,30 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#diagnostics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnostics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Diagnostics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#m1-architecture-install-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      M1 Architecture install issues
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1810,6 +1834,10 @@
 <h1 id="the-trinsic-go-sdk">The Trinsic Go SDK<a class="headerlink" href="#the-trinsic-go-sdk" title="Permanent link">&para;</a></h1>
 <p>The Trinsic Go SDK makes it easy to interact with the Trinsic API from any Go application. The most recent version of the library can be found on ____. You can find the SDKs source on <a href="https://github.com/trinsic-id/sdk/tree/main/go">Github</a>.</p>
 <h2 id="installation-and-configuration">Installation and Configuration<a class="headerlink" href="#installation-and-configuration" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>If you're installing go on M1, the <a href="https://go.dev/doc/install">Standard Go.dev Install Page</a> actually defaults to still showing you an amd64 install pkg even if you're on an M1.</p>
+</blockquote>
+<p>You have to go to the <a href="https://go.dev/dl/">other downloads</a> page to get the <code>arm64</code> version for sure.</p>
 <ul>
 <li>NOTE: Windows installation is possible, but requires jumping through a few hoops. More details to come later.</li>
 <li>Make sure you have the okapi native binaries installed on your machine. Default installation instructions are in the <a href="https://github.com/trinsic-id/okapi/">readme.md here</a></li>
@@ -1833,6 +1861,26 @@
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <p>Once the go package is installed and configured, you're ready to start building! We recommend going through the <a href="../walkthroughs/vaccination/">walkthrough</a> next. If you're ready to dive into building your ecosystem, check out our <a href="../reference/">API Reference</a></p>
 <p><a class="md-button md-button--primary" href="../walkthroughs/vaccination/">Start Walkthrough</a> <a class="md-button" href="../reference/">Explore API</a> <a class="md-button" href="../reference/">Go API Reference</a></p>
+<h2 id="diagnostics">Diagnostics<a class="headerlink" href="#diagnostics" title="Permanent link">&para;</a></h2>
+<h3 id="m1-architecture-install-issues">M1 Architecture install issues<a class="headerlink" href="#m1-architecture-install-issues" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>uname -m
+<span class="nb">echo</span> <span class="nv">$GOARCH</span>
+</code></pre></div>
+<p>The go architecture and apple processor architecture need to match for the dynamic okapi library loading to work.</p>
+<p>The long story short is though, when that happens, it actually sets all the environment variables also to AMD, including <code>GOHOSTARCH</code>, <code>GOARCH</code>, and <code>GOTOOLDIR</code>. This, then causes the bad env variable to impact the linker.</p>
+<p>If you receive an error that looks like the following on Apple M1 architecture, it is possible that you have the wrong architecture of golang installed/configured.
+<div class="highlight"><pre><span></span><code>panic: unable to open a handle to the library <span class="o">[</span>recovered<span class="o">]</span>
+panic: unable to open a handle to the library
+</code></pre></div></p>
+<p>Try running a test code with the following env vars set:
+<div class="highlight"><pre><span></span><code><span class="nv">GOARCH</span><span class="o">=</span>arm64  go <span class="nb">test</span> ./...
+</code></pre></div></p>
+<p>If <code>CGO</code> is not enabled, you will receive an error like the following:
+<div class="highlight"><pre><span></span><code>go/pkg/mod/github.com/trinsic-id/okapi/go@v1.6.1/okapi/didcomm.go:22:9: undefined: callOkapiNative
+</code></pre></div></p>
+<p>Try running with the following env var set:
+<div class="highlight"><pre><span></span><code><span class="nv">CGO_ENABLED</span><span class="o">=</span><span class="m">1</span>  go <span class="nb">test</span> ./...
+</code></pre></div></p>
 
 
   <aside class="md-source-file">
