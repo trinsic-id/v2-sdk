@@ -132,9 +132,13 @@ export async function issueCredentialFromTemplate(
     return response;
 }
 
-export async function searchTemplate() {
+export async function searchTemplate(trinsic: TrinsicService) {
     // searchCredentialTemplate() {
-    let searchTemplateResponse = await trinsic.template().search(SearchCredentialTemplatesRequest.fromPartial({query: "Select * from c"}));
+    let searchTemplateResponse = await trinsic.template().search(
+        SearchCredentialTemplatesRequest.fromPartial({
+            query: "Select * from c",
+        })
+    );
     // }
     return searchTemplateResponse;
 }
