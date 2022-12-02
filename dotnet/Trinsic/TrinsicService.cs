@@ -1,3 +1,4 @@
+using Grpc.Core.Interceptors;
 using Microsoft.Extensions.Options;
 using Trinsic.Sdk.Options.V1;
 using MicrosoftOptions = Microsoft.Extensions.Options.Options;
@@ -39,37 +40,37 @@ public class TrinsicService : ServiceBase
     /// <summary>
     /// Exposes Account Service functionality
     /// </summary>
-    public AccessManagementService AccessManagement => _accessManagement ??= new(TokenProvider, MicrosoftOptions.Create(Options));
+    public AccessManagementService AccessManagement => _accessManagement ??= new(TokenProvider, Invoker);
 
     /// <summary>
     /// Exposes Account Service functionality
     /// </summary>
-    public AccountService Account => _account ??= new(TokenProvider, MicrosoftOptions.Create(Options));
+    public AccountService Account => _account ??= new(TokenProvider, Invoker);
 
     /// <summary>
     /// Exposes Credential Service functionality
     /// </summary>
-    public CredentialService Credential => _credential ??= new(TokenProvider, MicrosoftOptions.Create(Options));
+    public CredentialService Credential => _credential ??= new(TokenProvider, Invoker);
 
     /// <summary>
     /// Exposes Template Service functionality
     /// </summary>
-    public TemplateService Template => _template ??= new(TokenProvider, MicrosoftOptions.Create(Options));
+    public TemplateService Template => _template ??= new(TokenProvider, Invoker);
 
     /// <summary>
     /// Exposes Provider Service functionality
     /// </summary>
-    public ProviderService Provider => _provider ??= new(TokenProvider, MicrosoftOptions.Create(Options));
+    public ProviderService Provider => _provider ??= new(TokenProvider, Invoker);
 
     /// <summary>
     /// Exposes Trust Registry Service functionality
     /// </summary>
-    public TrustRegistryService TrustRegistry => _trustRegistry ??= new(TokenProvider, MicrosoftOptions.Create(Options));
+    public TrustRegistryService TrustRegistry => _trustRegistry ??= new(TokenProvider, Invoker);
 
     /// <summary>
     /// Exposes Wallet Service functionality
     /// </summary>
-    public WalletService Wallet => _wallet ??= new(TokenProvider, MicrosoftOptions.Create(Options));
+    public WalletService Wallet => _wallet ??= new(TokenProvider, Invoker);
 
     /// <summary>
     /// Sets the Auth Token of this instance's ServiceOptions, and returns the instance for chaining.

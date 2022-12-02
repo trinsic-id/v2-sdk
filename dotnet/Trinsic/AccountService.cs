@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Google.Protobuf;
+using Grpc.Core;
 using Microsoft.Extensions.Options;
 using Okapi.Security;
 using Okapi.Security.V1;
@@ -16,20 +17,23 @@ public class AccountService : ServiceBase
 {
     public AccountService(ServiceOptions options)
         : base(options) {
-        Client = new(Channel);
+        Client = new(Invoker);
     }
 
     public AccountService() {
-        Client = new(Channel);
+        Client = new(Invoker);
     }
 
     internal AccountService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
-        Client = new(Channel);
+        Client = new(Invoker);
     }
 
     internal AccountService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
         : base(options.Value, tokenProvider) {
-        Client = new(Channel);
+        Client = new(Invoker);
+    }
+    internal AccountService(ITokenProvider tokenProvider, CallInvoker invoker) : base(tokenProvider, null, invoker) {
+        Client = new(Invoker);
     }
 
     /// <summary>

@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Grpc.Core;
 using Microsoft.Extensions.Options;
 using Trinsic.Sdk.Options.V1;
 using Trinsic.Services.VerifiableCredentials.Templates.V1;
@@ -11,20 +12,24 @@ public class CredentialService : ServiceBase
 {
     public CredentialService(ServiceOptions options)
         : base(options) {
-        Client = new(Channel);
+        Client = new(Invoker);
     }
 
     public CredentialService() {
-        Client = new(Channel);
+        Client = new(Invoker);
     }
 
     internal CredentialService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
-        Client = new(Channel);
+        Client = new(Invoker);
+    }
+
+    internal CredentialService(ITokenProvider tokenProvider, CallInvoker invoker) : base(tokenProvider, null, invoker) {
+        Client = new(Invoker);
     }
 
     internal CredentialService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
         : base(options.Value, tokenProvider) {
-        Client = new(Channel);
+        Client = new(Invoker);
     }
 
     private VerifiableCredential.VerifiableCredentialClient Client { get; }

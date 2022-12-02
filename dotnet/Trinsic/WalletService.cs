@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Grpc.Core;
 using Microsoft.Extensions.Options;
 using Trinsic.Sdk.Options.V1;
 using Trinsic.Services.UniversalWallet.V1;
@@ -10,11 +11,11 @@ public class WalletService : ServiceBase
 {
     public WalletService(ServiceOptions options)
         : base(options) {
-        Client = new(Channel);
+        Client = new(Invoker);
     }
 
     public WalletService() {
-        Client = new(Channel);
+        Client = new(Invoker);
     }
 
     internal WalletService(ITokenProvider tokenProvider)
@@ -22,7 +23,10 @@ public class WalletService : ServiceBase
 
     internal WalletService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
         : base(options.Value, tokenProvider) {
-        Client = new(Channel);
+        Client = new(Invoker);
+    }
+    internal WalletService(ITokenProvider tokenProvider, CallInvoker invoker) : base(tokenProvider, null, invoker) {
+        Client = new(Invoker);
     }
 
     private UniversalWallet.UniversalWalletClient Client { get; }

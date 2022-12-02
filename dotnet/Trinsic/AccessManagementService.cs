@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Grpc.Core;
 using Microsoft.Extensions.Options;
 using Trinsic.Sdk.Options.V1;
 using Trinsic.Services.Provider.V1;
@@ -9,20 +10,24 @@ public class AccessManagementService : ServiceBase
 {
     public AccessManagementService(ServiceOptions options)
         : base(options) {
-        Client = new(Channel);
+        Client = new(Invoker);
     }
 
     public AccessManagementService() {
-        Client = new(Channel);
+        Client = new(Invoker);
     }
 
     internal AccessManagementService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
-        Client = new(Channel);
+        Client = new(Invoker);
     }
 
     internal AccessManagementService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
         : base(options.Value, tokenProvider) {
-        Client = new(Channel);
+        Client = new(Invoker);
+    }
+
+    internal AccessManagementService(ITokenProvider tokenProvider, CallInvoker invoker) : base(tokenProvider, null, invoker) {
+        Client = new(Invoker);
     }
 
     /// <summary>

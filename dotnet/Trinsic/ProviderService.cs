@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Google.Protobuf;
+using Grpc.Core;
 using Microsoft.Extensions.Options;
 using Trinsic.Sdk.Options.V1;
 using Trinsic.Services.Provider.V1;
@@ -11,20 +12,24 @@ public class ProviderService : ServiceBase
 {
     public ProviderService(ServiceOptions options)
         : base(options) {
-        Client = new(Channel);
+        Client = new(Invoker);
     }
 
     public ProviderService() {
-        Client = new(Channel);
+        Client = new(Invoker);
     }
 
     internal ProviderService(ITokenProvider tokenProvider) : base(new(), tokenProvider) {
-        Client = new(Channel);
+        Client = new(Invoker);
     }
 
     internal ProviderService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
         : base(options.Value, tokenProvider) {
-        Client = new(Channel);
+        Client = new(Invoker);
+    }
+
+    internal ProviderService(ITokenProvider tokenProvider, CallInvoker invoker) : base(tokenProvider, null, invoker) {
+        Client = new(Invoker);
     }
 
     private Provider.ProviderClient Client { get; }

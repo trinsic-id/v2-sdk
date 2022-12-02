@@ -12,11 +12,11 @@ public class TrustRegistryService : ServiceBase
 {
     public TrustRegistryService(ServiceOptions options)
         : base(options) {
-        Client = new(Channel);
+        Client = new(Invoker);
     }
 
     public TrustRegistryService() {
-        Client = new(Channel);
+        Client = new(Invoker);
     }
 
     internal TrustRegistryService(ITokenProvider tokenProvider)
@@ -24,7 +24,10 @@ public class TrustRegistryService : ServiceBase
 
     internal TrustRegistryService(ITokenProvider tokenProvider, IOptions<ServiceOptions> options)
         : base(options.Value, tokenProvider) {
-        Client = new(Channel);
+        Client = new(Invoker);
+    }
+    internal TrustRegistryService(ITokenProvider tokenProvider, CallInvoker invoker) : base(tokenProvider, null, invoker) {
+        Client = new(Invoker);
     }
 
     private TrustRegistry.TrustRegistryClient Client { get; }
@@ -42,7 +45,7 @@ public class TrustRegistryService : ServiceBase
     }
 
     public SearchRegistryResponse Search(SearchRegistryRequest request) {
-        if (String.IsNullOrWhiteSpace(request.Query))
+        if (string.IsNullOrWhiteSpace(request.Query))
             request.Query = "SELECT * FROM _ OFFSET 0 LIMIT 100";
 
         return SearchRegistry(request);

@@ -1,14 +1,15 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
-using Grpc.Core;
-using Google.Protobuf;
-using Trinsic.Services.Common.V1;
-using Trinsic.Services.Account.V1;
 using System.Threading.Tasks;
+using Google.Protobuf;
+using Grpc.Core;
+using Grpc.Core.Interceptors;
 using Grpc.Net.Client;
 using Okapi.Metadata;
 using Trinsic.Sdk.Options.V1;
+using Trinsic.Services.Account.V1;
+using Trinsic.Services.Common.V1;
 #if __BROWSER__
 using System.Net.Http;
 using Grpc.Net.Client.Web;
@@ -24,24 +25,55 @@ public abstract class ServiceBase
     internal const int DefaultServerPort = 443;
     internal const string DefaultServerEndpoint = "prod.trinsic.cloud";
 
+    private readonly ISecurityProvider _securityProvider = new OberonSecurityProvider();
+
     protected internal readonly ITokenProvider TokenProvider;
 
-    protected internal ServiceBase() : this(new()) { }
+    /// <summary>
+    ///     Gets the options set on this service.
+    /// </summary>
+    public ServiceOptions Options { get; }
+    protected CallInvoker Invoker { get; set; }
 
-    protected internal ServiceBase(ServiceOptions options) {
-        Options = options;
-        EnsureOptionDefaults();
-        Channel = CreateChannel(Options);
-
-#if __IOS__
-        TokenProvider = KeyChainTokenProvider.StaticInstance;
-#else
-        TokenProvider = FileTokenProvider.StaticInstance;
-#endif
+    private MetadataResponse? _okapiMetadata;
+    /// <summary>
+    ///     The cached metadata of the Okapi library being used.
+    /// </summary>
+    private MetadataResponse CachedOkapiMetadata
+    {
+        get
+        {
+            _okapiMetadata ??= OkapiMetadata.GetMetadata();
+            return _okapiMetadata;
+        }
     }
 
-    protected internal ServiceBase(ServiceOptions options, ITokenProvider tokenProvider) : this(options) {
-        TokenProvider = tokenProvider;
+    protected internal ServiceBase() : this(null, null, null) { }
+
+    protected internal ServiceBase(ServiceOptions options) : this(null, options, null) {
+    }
+
+    protected internal ServiceBase(ServiceOptions options, ITokenProvider tokenProvider) : this(tokenProvider, options, null) {
+    }
+
+    protected internal ServiceBase(ITokenProvider? tokenProvider, ServiceOptions? options, CallInvoker? invoker) {
+        TokenProvider = tokenProvider ?? GetDefaultTokenProvider();
+        Options = options ?? new();
+        EnsureOptionDefaults();
+        Invoker = (invoker ?? CreateChannel(Options).CreateCallInvoker())
+            .Intercept(metadata => {
+                var headers = new Metadata {
+                {"TrinsicSDKLanguage", "dotnet"},
+                {"TrinsicSDKVersion", GetSdkVersion()},
+                {"TrinsicOkapiVersion", CachedOkapiMetadata.Version}
+            };
+                foreach (var x in metadata) headers.Add(x);
+                return headers;
+            });
+    }
+
+    public void AddInterceptor(Func<Metadata, Metadata> interceptor) {
+        Invoker = Invoker.Intercept(interceptor);
     }
 
     private void EnsureOptionDefaults() {
@@ -59,44 +91,21 @@ public abstract class ServiceBase
 #endif
     }
 
-    private readonly ISecurityProvider _securityProvider = new OberonSecurityProvider();
-
-    /// <summary>
-    /// Gets the options set on this service.
-    /// </summary>
-    public ServiceOptions Options { get; }
-
-    /// <summary>
-    /// Gets the gRPC channel used by this service. This channel can be reused
-    /// by passing this instance to other service constructors.
-    /// </summary>
-    protected GrpcChannel Channel { get; }
-
-    private MetadataResponse? _okapiMetadata;
-    /// <summary>
-    /// The cached metadata of the Okapi library being used.
-    /// </summary>
-    private MetadataResponse CachedOkapiMetadata
-    {
-        get
-        {
-            _okapiMetadata ??= OkapiMetadata.GetMetadata();
-            return _okapiMetadata;
-        }
+    private static ITokenProvider GetDefaultTokenProvider() {
+#if __IOS__
+        return KeyChainTokenProvider.StaticInstance;
+#else
+        return FileTokenProvider.StaticInstance;
+#endif
     }
 
     /// <summary>
-    /// Create call metadata by setting authentication and version headers
+    ///     Create call metadata by setting authentication and version headers
     /// </summary>
     /// <param name="request">Protobuf request message to create headers for</param>
     /// <returns></returns>
     protected async Task<Metadata> BuildMetadataAsync(IMessage? request = null) {
-        var headers = new Metadata() {
-            {"TrinsicSDKLanguage", "dotnet"},
-            {"TrinsicSDKVersion", GetSdkVersion()},
-            {"TrinsicOkapiVersion", CachedOkapiMetadata.Version}
-        };
-
+        var headers = new Metadata();
         // If no authentication needed, return early
         if (request == null)
             return headers;
@@ -116,17 +125,12 @@ public abstract class ServiceBase
     }
 
     /// <summary>
-    /// Create call metadata by setting the required authentication and version headers for provided request
+    ///     Create call metadata by setting the required authentication and version headers for provided request
     /// </summary>
     /// <param name="request">Protobuf request message to create headers for</param>
     /// <returns></returns>
     protected Metadata BuildMetadata(IMessage? request = null) {
-        var headers = new Metadata() {
-            {"TrinsicSDKLanguage", "dotnet"},
-            {"TrinsicSDKVersion", GetSdkVersion()},
-            {"TrinsicOkapiVersion", CachedOkapiMetadata.Version}
-        };
-
+        var headers = new Metadata();
         // If no authentication needed, return early
         if (request == null)
             return headers;
@@ -146,7 +150,7 @@ public abstract class ServiceBase
     }
 
     /// <summary>
-    /// Fetches the current version of the SDK
+    ///     Fetches the current version of the SDK
     /// </summary>
     /// <returns></returns>
     private string GetSdkVersion() {

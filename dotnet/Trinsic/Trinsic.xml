@@ -6102,37 +6102,31 @@
         </member>
         <member name="P:Trinsic.ServiceBase.Options">
             <summary>
-            Gets the options set on this service.
-            </summary>
-        </member>
-        <member name="P:Trinsic.ServiceBase.Channel">
-            <summary>
-            Gets the gRPC channel used by this service. This channel can be reused
-            by passing this instance to other service constructors.
+                Gets the options set on this service.
             </summary>
         </member>
         <member name="P:Trinsic.ServiceBase.CachedOkapiMetadata">
             <summary>
-            The cached metadata of the Okapi library being used.
+                The cached metadata of the Okapi library being used.
             </summary>
         </member>
         <member name="M:Trinsic.ServiceBase.BuildMetadataAsync(Google.Protobuf.IMessage)">
             <summary>
-            Create call metadata by setting authentication and version headers
+                Create call metadata by setting authentication and version headers
             </summary>
             <param name="request">Protobuf request message to create headers for</param>
             <returns></returns>
         </member>
         <member name="M:Trinsic.ServiceBase.BuildMetadata(Google.Protobuf.IMessage)">
             <summary>
-            Create call metadata by setting the required authentication and version headers for provided request
+                Create call metadata by setting the required authentication and version headers for provided request
             </summary>
             <param name="request">Protobuf request message to create headers for</param>
             <returns></returns>
         </member>
         <member name="M:Trinsic.ServiceBase.GetSdkVersion">
             <summary>
-            Fetches the current version of the SDK
+                Fetches the current version of the SDK
             </summary>
             <returns></returns>
         </member>
