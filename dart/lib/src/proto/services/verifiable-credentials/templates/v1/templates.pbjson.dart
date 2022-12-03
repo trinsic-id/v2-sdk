@@ -17,12 +17,13 @@ const FieldType$json = const {
     const {'1': 'NUMBER', '2': 1},
     const {'1': 'BOOL', '2': 2},
     const {'1': 'DATETIME', '2': 4},
+    const {'1': 'URI', '2': 5},
   ],
 };
 
 /// Descriptor for `FieldType`. Decode as a `google.protobuf.EnumDescriptorProto`.
 final $typed_data.Uint8List fieldTypeDescriptor = $convert.base64Decode(
-    'CglGaWVsZFR5cGUSCgoGU1RSSU5HEAASCgoGTlVNQkVSEAESCAoEQk9PTBACEgwKCERBVEVUSU1FEAQ=');
+    'CglGaWVsZFR5cGUSCgoGU1RSSU5HEAASCgoGTlVNQkVSEAESCAoEQk9PTBACEgwKCERBVEVUSU1FEAQSBwoDVVJJEAU=');
 @$core.Deprecated('Use getCredentialTemplateRequestDescriptor instead')
 const GetCredentialTemplateRequest$json = const {
   '1': 'GetCredentialTemplateRequest',
@@ -246,12 +247,32 @@ const TemplateField$json = const {
       '6': '.services.verifiablecredentials.templates.v1.FieldType',
       '10': 'type'
     },
+    const {
+      '1': 'annotations',
+      '3': 5,
+      '4': 3,
+      '5': 11,
+      '6':
+          '.services.verifiablecredentials.templates.v1.TemplateField.AnnotationsEntry',
+      '10': 'annotations'
+    },
   ],
+  '3': const [TemplateField_AnnotationsEntry$json],
+};
+
+@$core.Deprecated('Use templateFieldDescriptor instead')
+const TemplateField_AnnotationsEntry$json = const {
+  '1': 'AnnotationsEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
+  ],
+  '7': const {'7': true},
 };
 
 /// Descriptor for `TemplateField`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List templateFieldDescriptor = $convert.base64Decode(
-    'Cg1UZW1wbGF0ZUZpZWxkEiAKC2Rlc2NyaXB0aW9uGAIgASgJUgtkZXNjcmlwdGlvbhIaCghvcHRpb25hbBgDIAEoCFIIb3B0aW9uYWwSSgoEdHlwZRgEIAEoDjI2LnNlcnZpY2VzLnZlcmlmaWFibGVjcmVkZW50aWFscy50ZW1wbGF0ZXMudjEuRmllbGRUeXBlUgR0eXBl');
+    'Cg1UZW1wbGF0ZUZpZWxkEiAKC2Rlc2NyaXB0aW9uGAIgASgJUgtkZXNjcmlwdGlvbhIaCghvcHRpb25hbBgDIAEoCFIIb3B0aW9uYWwSSgoEdHlwZRgEIAEoDjI2LnNlcnZpY2VzLnZlcmlmaWFibGVjcmVkZW50aWFscy50ZW1wbGF0ZXMudjEuRmllbGRUeXBlUgR0eXBlEm0KC2Fubm90YXRpb25zGAUgAygLMksuc2VydmljZXMudmVyaWZpYWJsZWNyZWRlbnRpYWxzLnRlbXBsYXRlcy52MS5UZW1wbGF0ZUZpZWxkLkFubm90YXRpb25zRW50cnlSC2Fubm90YXRpb25zGj4KEEFubm90YXRpb25zRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSFAoFdmFsdWUYAiABKAlSBXZhbHVlOgI4AQ==');
 @$core.Deprecated('Use getTemplateRequestDescriptor instead')
 const GetTemplateRequest$json = const {
   '1': 'GetTemplateRequest',
