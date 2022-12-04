@@ -143,8 +143,8 @@ public class Tests
         // }
 
         // registerGovernanceFramework() {
-        var schemaUri = "https://schema.org/Card";
-        var frameworkUri = "https://example.com";
+        const string schemaUri = "https://schema.org/Card";
+        const string frameworkUri = "https://example.com";
         var registerFrameworkResponse = await trinsic.TrustRegistry.AddFrameworkAsync(new() {
             Name = "Demo framework",
             Description = "My governance framework",
@@ -154,7 +154,7 @@ public class Tests
 
 
         // registerIssuerSample() {
-        var didUri = "did:example:test";
+        const string didUri = "did:example:test";
         var registerMemberResponse = await trinsic.TrustRegistry.RegisterMemberAsync(new() {
             DidUri = didUri,
             FrameworkId = registerFrameworkResponse.Id,
